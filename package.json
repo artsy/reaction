@@ -1,0 +1,22 @@
+{
+  "name": "reaction-force",
+  "version": "0.1.0",
+  "description": "Force’s React Components",
+  "main": "src/index.ts",
+  "repository": "https://github.com/artsy/reaction-force.git",
+  "author": "Eloy Durán <eloy.de.enige@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "@types/react": "^15.0.7",
+    "awesome-typescript-loader": "^3.0.3",
+    "react-dom": "^15.4.2",
+    "typescript": "^2.1.5"
+  },
+  "dependencies": {
+    "react": "^15.4.2"
+  }
+}
