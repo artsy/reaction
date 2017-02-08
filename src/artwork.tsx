@@ -3,7 +3,12 @@ import * as Relay from "react-relay"
 
 export class Artwork extends React.Component<RelayProps, null> {
   render() {
-    return <div>Hello World</div>
+    return (
+      <div>
+        <img src={this.props.artwork.image.url} />
+        <p>{this.props.artwork.title}</p>
+      </div>
+    )
   }
 }
 

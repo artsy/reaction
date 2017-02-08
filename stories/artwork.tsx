@@ -7,9 +7,24 @@ import Artwork from "../src/artwork"
 import { artsyNetworkLayer } from "../src/relay/config"
 import { ArtworkQueryConfig } from "../src/relay/root_queries"
 
+function ArtworkExample(props: { artworkID: string }) {
+  Relay.injectNetworkLayer(artsyNetworkLayer())
+  return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
+}
+
 storiesOf("Artwork", Artwork)
-  .add("Hello World", () => {
-    Relay.injectNetworkLayer(artsyNetworkLayer())
-    const artworkRoute = new ArtworkQueryConfig({ artworkID: "hieronymus-bosch-the-garden-of-earthly-delights-2" })
-    return <Relay.RootContainer Component={Artwork} route={artworkRoute} />
-  })
+  .add("A square artwork", () => (
+    <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />
+  ))
+  .add("A landscape artwork", () => (
+    <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />
+  ))
+  .add("A landscape artwork (extra wide)", () => (
+    <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />
+  ))
+  .add("A portrait artwork", () => (
+    <ArtworkExample artworkID="ester-curini-my-eyes-my-soul" />
+  ))
+  .add("A portrait artwork (extra tall)", () => (
+    <ArtworkExample artworkID="snik-untitled-vertical" />
+  ))
