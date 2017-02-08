@@ -1,9 +1,17 @@
 machine:
   node:
     version: 7
+
 dependencies:
   override:
     - yarn
+
 test:
   override:
     - yarn test
+
+deployment:
+  demo:
+    branch: master
+    commands:
+      - yarn deploy-storybook
