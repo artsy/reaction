@@ -7,16 +7,30 @@
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
+    "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
     "@types/react": "^15.0.7",
+    "@types/react-relay": "^0.9.10",
     "awesome-typescript-loader": "^3.0.3",
+    "babel-plugin-react-relay": "^0.10.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
+    "graphql-config-parser": "^1.2.1",
     "react-dom": "^15.4.2",
     "typescript": "^2.1.5"
   },
   "dependencies": {
-    "react": "^15.4.2"
+    "react": "^15.4.2",
+    "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz"
+  },
+  "graphql": {
+    "file": "data/schema.json",
+    "tsInterfaceName": "RelayProps"
   }
 }
