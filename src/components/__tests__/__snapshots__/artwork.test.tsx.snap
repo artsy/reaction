@@ -1,0 +1,14 @@
+exports[`Artwork renders correctly 1`] = `
+<div>
+  <img
+    src="artsy.net/image-url"
+    style={
+      Object {
+        "width": "100%",
+      }
+    } />
+  <p>
+    Some Kind of Dinosaur
+  </p>
+</div>
+`;
