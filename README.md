@@ -19,7 +19,7 @@
 
 * __State:__ development
 * __Demo:__ https://artsy.github.io/reaction-force
-* __CI:__ n/a
+* __CI:__ [![CircleCI](https://circleci.com/gh/artsy/reaction-force.svg?style=shield)](https://circleci.com/gh/artsy/reaction-force)
 * __Point People:__ [@alloy](https://github.com/alloy) & [@broskoski](https://github.com/broskoski)
 
 ## Installation
