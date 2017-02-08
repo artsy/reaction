@@ -49,3 +49,10 @@ $ yarn install
 * When using new changes in metaphysics’ schema, be sure to update the local schema copy:
 
         $ yarn sync-schema
+
+## TODO
+
+* [ ] Actually make useful components.
+* [ ] Add CI (also run `yarn deploy-storybook` on merged PRs).
+* [ ] Publish as npm package.
+* [ ] Integrate into Force.
