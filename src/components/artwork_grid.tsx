@@ -10,10 +10,10 @@ export class ArtworkGrid extends React.Component<RelayProps, null> {
     return (
       <div>
         <div style={{ width: 200, float: "left" }}>
-          { column1Artworks.map(artwork => <Artwork artwork={artwork} key={artwork.__id} />) }
+          { column1Artworks.map(artwork => <Artwork artwork={artwork as any} key={artwork.__id} />) }
         </div>
         <div style={{ width: 200, float: "left" }}>
-          { column2Artworks.map(artwork => <Artwork artwork={artwork} key={artwork.__id} />) }
+          { column2Artworks.map(artwork => <Artwork artwork={artwork as any} key={artwork.__id} />) }
         </div>
       </div>
     )
@@ -31,7 +31,7 @@ export default Relay.createContainer(ArtworkGrid, {
       }
     `
   },
-})
+}) as Relay.RelayContainerClass<RelayProps> // FIXME: Needed until this is released https://github.com/DefinitelyTyped/DefinitelyTyped/pull/14508
 
 interface RelayProps {
   artist: {
