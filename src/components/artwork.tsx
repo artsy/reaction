@@ -5,7 +5,7 @@ export class Artwork extends React.Component<RelayProps, null> {
   render() {
     return (
       <div>
-        <img src={this.props.artwork.image.url} />
+        <img src={this.props.artwork.image.url} style={{ width: "100%" }} />
         <p>{this.props.artwork.title}</p>
       </div>
     )
