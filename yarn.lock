@@ -1989,7 +1989,7 @@ graphql-config-parser@^1.2.0, graphql-config-parser@^1.2.1:
     node-fetch "^1.6.3"
     valid-url "^1.0.9"
 
-"graphql@0.7.1 - 1.0.0", graphql@0.8.2:
+"graphql@0.7.1 - 1.0.0", graphql@0.8.2, "graphql@0.8.2 - 1.0.0":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.8.2.tgz#eb1bb524b38104bbf2c9157f9abc67db2feba7d2"
   dependencies:
@@ -3468,6 +3468,15 @@ regjsparser@^0.1.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
   dependencies:
     jsesc "~0.5.0"
+
+relay2ts@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/relay2ts/-/relay2ts-0.2.0.tgz#964f903c0a943a7aa8fa0b8a0ccdfd63f826e669"
+  dependencies:
+    graphql "0.8.2 - 1.0.0"
+    graphql-config-parser "^1.2.1"
+    minimist "^1.2.0"
+    typescript "^2.1.5"
 
 repeat-element@^1.1.2:
   version "1.1.2"

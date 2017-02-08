@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "relay2ts": "relay2ts src/{,**/}*.ts* --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data"
   },
@@ -23,6 +24,7 @@
     "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
     "graphql-config-parser": "^1.2.1",
     "react-dom": "^15.4.2",
+    "relay2ts": "^0.2.0",
     "typescript": "^2.1.5"
   },
   "dependencies": {
