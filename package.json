@@ -8,12 +8,14 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook-deployer": "^1.2.0",
     "@types/react": "^15.0.7",
     "@types/react-relay": "^0.9.10",
     "awesome-typescript-loader": "^3.0.3",
