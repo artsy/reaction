@@ -63,6 +63,5 @@ $ yarn install
 ## TODO
 
 * [ ] Actually make useful components.
-* [ ] Add CI (also run `yarn deploy-storybook` on merged PRs).
 * [ ] Publish as npm package.
 * [ ] Integrate into Force.
