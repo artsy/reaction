@@ -110,9 +110,9 @@
   version "18.1.1"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-18.1.1.tgz#6f63488c64726900885ab9cd5697bb7fa1b416cc"
 
-"@types/react-relay@^0.9.10":
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-0.9.10.tgz#ebfafbd870ba4243d32204de6206ed6b61926977"
+"@types/react-relay@^0.9.11":
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-0.9.11.tgz#34601bd00bee46da9e52b2210149f9536d6ffcb8"
   dependencies:
     "@types/react" "*"
 
@@ -174,13 +174,9 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
-amdefine@1.0.0:
+amdefine@1.0.0, amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
-
-amdefine@>=0.0.4:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
 ansi-escapes@^1.4.0:
   version "1.4.0"

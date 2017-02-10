@@ -31,7 +31,7 @@ export default Relay.createContainer(ArtworkGrid, {
       }
     `
   },
-}) as Relay.RelayContainerClass<RelayProps> // FIXME: Needed until this is released https://github.com/DefinitelyTyped/DefinitelyTyped/pull/14508
+})
 
 interface RelayProps {
   artist: {
