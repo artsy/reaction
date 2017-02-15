@@ -1,11 +1,16 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+import styled from "styled-components"
+
+const Image = styled.img`
+  width: 100%;
+`
 
 export class Artwork extends React.Component<RelayProps, null> {
   render() {
     return (
       <div>
-        <img src={this.props.artwork.image.url} style={{ width: "100%" }} />
+        <Image src={this.props.artwork.image.url} />
         <p>{this.props.artwork.title}</p>
       </div>
     )
