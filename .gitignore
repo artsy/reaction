@@ -1,3 +1,5 @@
 node_modules
 .awcache
 out*
+.DS_Store
+.storybook/.DS_Store

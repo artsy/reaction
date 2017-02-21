@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/static",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
