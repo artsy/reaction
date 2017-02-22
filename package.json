@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/static",
+    "storybook": "node fuse.js",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
@@ -20,12 +20,13 @@
     "@types/jest": "^18.1.1",
     "@types/react": "^15.0.7",
     "@types/react-relay": "^0.9.11",
-    "awesome-typescript-loader": "^3.0.3",
+    "awesome-typescript-loader": "^3.0.5",
     "babel-plugin-react-relay": "^0.10.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
     "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
+    "fuse-box": "^1.3.118",
     "graphql-config-parser": "^1.2.1",
     "jest": "^18.1.0",
     "react-dom": "^15.4.2",
@@ -35,6 +36,7 @@
     "typescript": "^2.1.5"
   },
   "dependencies": {
+    "asap": "https://github.com/alloy/asap.git",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
     "styled-components": "^1.4.3"

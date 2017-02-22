@@ -1,5 +1,7 @@
 node_modules
 .awcache
+.fusebox
 out*
 .DS_Store
 .storybook/.DS_Store
+.storybook/manager.js
