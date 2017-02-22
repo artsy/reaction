@@ -14,6 +14,8 @@ const fuse = fsbx.FuseBox.init({
   outFile: "./assets/reaction-force.js",
   plugins: [
     fsbx.BabelPlugin({}),
+    fsbx.StylusPlugin(), 
+    fsbx.CSSPlugin()
   ]
 })
 

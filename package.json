@@ -36,10 +36,13 @@
     "typescript": "^2.1.5"
   },
   "dependencies": {
+    "@types/react-bootstrap": "^0.0.45",
     "asap": "https://github.com/alloy/asap.git",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
-    "styled-components": "^1.4.3"
+    "styled-components": "^1.4.3",
+    "stylus": "^0.54.5"
   },
   "graphql": {
     "file": "data/schema.json",
