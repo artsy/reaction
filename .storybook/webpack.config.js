@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loaders: ["awesome-typescript-loader?configFileName=./tsconfig.json&silent=true&target=es6&useBabel=true&useCache=true"],
+        loaders: ["awesome-typescript-loader?configFileName=./tsconfig.json&silent=true&transpileOnly=true&target=es6&useBabel=true&useCache=true"],
       },
     ],
   },
