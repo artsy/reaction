@@ -6,4 +6,4 @@ function loadStories() {
   require("../components/__stories__/login_header")
 }
 
-configure(loadStories, module);
+configure(loadStories, module)
