@@ -22,4 +22,6 @@ const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +componen
 
 // Serve Storybook bootstrap HTML
 const app = server.httpServer.app
+
+app.
 app.use("/", require("express").static("./.storybook"))

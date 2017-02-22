@@ -2,6 +2,7 @@ import * as React from 'react'
 import icons, { IconName } from '../assets/icons'
 import styled from 'styled-components'
 import colors from '../assets/colors'
+import '../assets/fonts'
 
 export type FontName = string
 
