@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.fusebox": true,
+        "**/reaction-force*": true
+    },
+    "search.exclude": {
+        "**/node_modules": true
+    }
+}

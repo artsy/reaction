@@ -8,6 +8,9 @@ const Image = styled.img`
 
 export class Artwork extends React.Component<RelayProps, null> {
   render() {
+    console.log("Hello world")
+    const a = "12"
+    const b = 12
     return (
       <div>
         <Image src={this.props.artwork.image.url} />
