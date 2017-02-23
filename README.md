@@ -58,7 +58,7 @@ $ yarn install
 
         $ yarn sync-schema
 
-* There are some suggested VSCode extensions in `.vscode/extensions.json`.
+* There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
 
 ## TODO
 
