@@ -3,5 +3,6 @@ node_modules
 .fusebox
 out*
 
+reaction-force.js*
 assets
 .storybook/manager.js

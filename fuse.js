@@ -1,6 +1,4 @@
 const fsbx = require("fuse-box")
-const artsySourceMap = require("./lib/fusebox/ArtsySourceMaps")
-const fs = require("fs")
 
 // The Storybook UI
 const storybookManager = fsbx.FuseBox.init({
@@ -19,19 +17,12 @@ const fuse = fsbx.FuseBox.init({
       outFile: "./reaction-force.js.map",
     },
   plugins: [
-    fsbx.BabelPlugin({}),
-    artsySourceMap()
+    fsbx.BabelPlugin({})
   ],
 })
-fuse.triggerPost = () => {
-  console.log("AFTER")
-      //   const sourceMap = fs.readFileSync("reaction-force.js.map").toString()
-      // const revisedSourceMap = sourceMap.replace(/\.jsx/g, ".tsx")
-      // fs.writeFileSync("reaction-force.js.map", revisedSourceMap)
-}
 
 // Serve stories
-const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +components/__stories__/*.tsx", { root: "." })
+const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +components/__stories__/*.tsx")
 
 // Serve Storybook bootstrap HTML
 const app = server.httpServer.app
