@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Icon from "./icons"
+import logotype from "../assets/logotype.svg"
 
 const Header = styled.header`
   margin: 20px;
@@ -14,7 +15,7 @@ export default class LoginHeader extends React.Component<any, null> {
     return (
       <div>
         <Header>
-          <Icon name={"logotype"} color={"black"} />
+          <div dangerouslySetInnerHTML={ {__html: logotype} } />
         </Header>
       </div>
     )
