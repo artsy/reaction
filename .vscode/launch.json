@@ -10,6 +10,5 @@
     "name": "Launch Chrome",
     "url": "http://localhost:4444",
     "webRoot": "${workspaceRoot}/src"
-  }
-  ]
+  }]
 }

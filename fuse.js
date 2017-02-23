@@ -17,12 +17,12 @@ const fuse = fsbx.FuseBox.init({
       outFile: "./reaction-force.js.map",
     },
   plugins: [
-    fsbx.BabelPlugin({})
-  ],
+    fsbx.BabelPlugin({}),
+  ]
 })
 
 // Serve stories
-const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +components/__stories__/*.tsx")
+const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +components/__stories__/*.tsx", { root: "." })
 
 // Serve Storybook bootstrap HTML
 const app = server.httpServer.app
