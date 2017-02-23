@@ -2,9 +2,10 @@
 	// See http://go.microsoft.com/fwlink/?LinkId=827846
 	// for the documentation about the extensions.json format
 	"recommendations": [
-		"christian-kohler.path-intellisense",
 		"christian-kohler.npm-intellisense",
 		"Orta.vscode-jest",
-		"kumar-harsh.graphql-for-vscode"
+		"kumar-harsh.graphql-for-vscode",
+		"eg2.tslint",
+		"msjsdiag.debugger-for-chrome"
 	]
 }
