@@ -1,48 +1,103 @@
 import * as React from 'react'
-import * as Bootstrap from 'react-bootstrap'
 import styled from 'styled-components'
 import colors from '../assets/colors'
+import * as fonts from '../assets/fonts'
 
-debugger
-const buttonsStyles = require('../../externals/elan/components/buttons/index.styl')
-console.log(buttonsStyles)
+interface ButtonProps extends React.HTMLProps<Button> {
+    buttonStyle?: ButtonStyle
+    state?: ButtonState
+}
 
-// buttonsStyles.
+export class ButtonStyle extends String {
+    static Default: ButtonStyle = "default"
+    static Ghost: ButtonStyle = "ghost"
+    static Inverted: ButtonStyle = "inverted"
+}
 
-
-interface ButtonProps extends Bootstrap.ButtonProps {
-    primary?: boolean
+export class ButtonState extends String {
+    static Default: ButtonState = "default"
+    static Loading: ButtonState = "loading"
+    static Success: ButtonState = "success"
+    static Failure: ButtonState = "failure"
 }
 
 class Button extends React.Component<ButtonProps, any> {
-    render(): JSX.Element {
-        let bsStyle = (this.props.bsStyle || 'default')
+    static defaultProps: ButtonProps = {
+        buttonStyle: ButtonStyle.Default,
+        state: ButtonState.Default,
+    }
 
-        if (this.props.primary) {
-            bsStyle = 'primary'
-        }
-        const newProps = {...this.props, bsStyle, className: 'circle-button'}
-        delete newProps.primary
+    render(): JSX.Element {
+        const newProps: any = {...this.props}
+        delete newProps.buttonStyle
+        delete newProps.state
 
         return (
-            <div className={this.props.className}>
-            <Bootstrap.Button {...newProps}>
+            <button className={this.props.className} {...newProps}>
                 {this.props.children}
-            </Bootstrap.Button>
-            </div>
+            </button>
         )
     }
 }
 
+const backgroundColor = props => {
+    switch(props.buttonStyle) {
+        case ButtonStyle.Inverted: 
+            if (props.disabled) return colors.grayBold
+            return 'black'
+        case ButtonStyle.Ghost: return 'white'
+        case ButtonStyle.Default:
+        default:
+            if (props.state == ButtonState.Success) return colors.greenRegular
+            if (props.state == ButtonState.Failure) return colors.redRegular
+            return colors.gray
+    }
+}
+
+const hoverBackgroundColor = props => {
+    switch(props.buttonStyle) {
+        case ButtonStyle.Inverted: return colors.purpleRegular
+        case ButtonStyle.Ghost: return 'white'
+        case ButtonStyle.Default: 
+        default: 
+            if (props.state == ButtonState.Success) return colors.greenBold
+            if (props.state == ButtonState.Failure) return colors.redBold
+            return colors.grayRegular
+    }
+}
+
+const color = props => {
+    switch(props.buttonStyle) {
+        case ButtonStyle.Inverted: return 'white'
+        case ButtonStyle.Ghost: return 'black'
+        case ButtonStyle.Default:
+        default:
+            if (props.disabled) return 'rgba(0,0,0,0.5)'
+            if (props.state == ButtonState.Success) return 'white'
+            if (props.state == ButtonState.Failure) return 'white'
+            return 'black'
+    }
+}
 
 export default styled(Button)`
-    background: ${props => {
-        if (props.primary) {
-            return colors.purpleRegular
-        }
+    background: ${backgroundColor};
+    color: ${color};
+    
+    padding: 15px 30px;
+    font-size: 13px;
+    line-height: 1;
+    outline: 0;
+    border: ${props => props.buttonStyle == ButtonStyle.Ghost ? `1px solid ${colors.grayRegular}` : 0};
+    transition: background-color .25s,color .25s;
+    margin: 10px;
 
-        return 'black'
-    }};
-    color: white;
-    ${buttonsStyles}
+    &:hover {
+        background: ${hoverBackgroundColor};
+    }
+
+    &:hover:disabled {
+        background: ${backgroundColor};
+    }
+
+    ${fonts.primary.style}
 `
