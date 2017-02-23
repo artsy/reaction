@@ -4,5 +4,5 @@ node_modules
 out*
 .DS_Store
 .storybook/.DS_Store
-assets
+assets/reaction-force.js
 .storybook/manager.js
