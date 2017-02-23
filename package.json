@@ -26,7 +26,7 @@
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
     "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
-    "fuse-box": "^1.3.118",
+    "fuse-box": "^1.3.121",
     "graphql-config-parser": "^1.2.1",
     "jest": "^18.1.0",
     "react-dom": "^15.4.2",
