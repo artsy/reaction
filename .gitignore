@@ -2,7 +2,7 @@ node_modules
 .awcache
 .fusebox
 out*
-
-reaction-force.js*
-assets
+.DS_Store
+.storybook/.DS_Store
+assets/reaction-force.js
 .storybook/manager.js

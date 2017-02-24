@@ -1,1 +1,0 @@
-../src/__stories__/config.js
