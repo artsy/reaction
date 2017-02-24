@@ -6,5 +6,6 @@
   ],
   "plugins": [
     "react-relay"
-  ]
+  ],
+  "retainLines": true
 }

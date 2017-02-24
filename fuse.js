@@ -11,7 +11,11 @@ storybookManager.bundle("> index.js")
 const fuse = fsbx.FuseBox.init({
   homeDir: "src",
   tsConfig: "./tsconfig.json",
-  outFile: "./assets/reaction-force.js",
+  outFile: "./reaction-force.js",
+    sourceMap: {
+      bundleReference: "./reaction-force.js.map",
+      outFile: "./reaction-force.js.map",
+    },
   plugins: [
     fsbx.BabelPlugin({}),
     fsbx.StylusPlugin(), 
