@@ -45,3 +45,8 @@ storiesOf("Buttons", Button)
             </div>
         )
     })
+    .add("Block Button", () => {
+        return (
+            <Button block>Block Button</Button>
+        )
+    })

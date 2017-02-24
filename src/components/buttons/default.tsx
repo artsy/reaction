@@ -1,10 +1,11 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import colors from '../../assets/colors'
 import * as fonts from '../../assets/fonts'
 
 interface ButtonProps extends React.HTMLProps<Button> {
     state?: ButtonState
+    block?: boolean
 }
 
 export class ButtonState extends String {
@@ -19,7 +20,6 @@ class Button extends React.Component<ButtonProps, any> {
 
     render(): JSX.Element {
         const newProps: any = {...this.props}
-        delete newProps.buttonStyle
         delete newProps.state
 
         return this.props.href 
@@ -66,10 +66,20 @@ export const StyledButton = styled(Button)`
     }
 
     ${fonts.primary.style}
+
+    ${props => {
+        if (props.block)
+            return css`
+                display: block;
+                width: 100%;
+                margin: 10px auto;
+            `
+    }}
 `
 
 StyledButton.defaultProps = {
     state: ButtonState.Default,
+    block: false
 }
 
 export default StyledButton
