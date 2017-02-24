@@ -18,8 +18,6 @@ const fuse = fsbx.FuseBox.init({
     },
   plugins: [
     fsbx.BabelPlugin({}),
-    fsbx.StylusPlugin(), 
-    fsbx.CSSPlugin()
   ]
 })
 
