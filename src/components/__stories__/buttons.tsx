@@ -2,7 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import { storiesOf, action } from "@kadira/storybook"
 
-import Button, { ButtonStyle, ButtonState } from '../buttons/default'
+import Button, { ButtonState } from '../buttons/default'
 import GhostButton from '../buttons/ghost'
 import InvertedButton from '../buttons/inverted'
 

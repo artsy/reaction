@@ -28,6 +28,6 @@ export const secondary = {
     fontFamily: secondaryFontFamily,
     style: `
         font-family: ${secondaryFontFamily};
-        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
     `
 }
