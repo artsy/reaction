@@ -2,10 +2,12 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import colors from '../../assets/colors'
 import * as fonts from '../../assets/fonts'
+import Icon from '../icon'
 
-interface ButtonProps extends React.HTMLProps<Button> {
+export interface ButtonProps extends React.HTMLProps<Button> {
     state?: ButtonState
     block?: boolean
+    icon?: Icon
 }
 
 export enum ButtonState {
@@ -26,10 +28,12 @@ class Button extends React.Component<ButtonProps, any> {
         return this.props.href 
             ? (
                 <a className={this.props.className} {...newProps}>
+                    {this.props.icon}
                     {this.props.children}
                 </a> 
             ) : (
                 <button className={this.props.className} {...newProps}>
+                    {this.props.icon}
                     {this.props.children}
                 </button>
             )
@@ -48,7 +52,9 @@ export const StyledButton = styled(Button)`
         if (props.state !== ButtonState.Default) return 'white' 
         return 'black'
     }};
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 15px 30px;
     font-size: 13px;
     line-height: 1;
