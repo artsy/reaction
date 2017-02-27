@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, css } from 'styled-components'
 
 injectGlobal`
     @font-face {
@@ -14,7 +14,7 @@ const primaryFontFamily = `'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01
 
 export const primary = {
     fontFamily: primaryFontFamily,
-    style: `
+    style: css`
         font-family: ${primaryFontFamily};
         -webkit-font-smoothing: antialiased;
         text-transform: uppercase;
@@ -26,7 +26,7 @@ const secondaryFontFamily = `'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaram
 
 export const secondary = {
     fontFamily: secondaryFontFamily,
-    style: `
+    style: css`
         font-family: ${secondaryFontFamily};
         -webkit-font-smoothing: antialiased;
     `

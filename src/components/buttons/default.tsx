@@ -8,11 +8,11 @@ interface ButtonProps extends React.HTMLProps<Button> {
     block?: boolean
 }
 
-export class ButtonState extends String {
-    static Default: ButtonState = "default"
-    static Loading: ButtonState = "loading"
-    static Success: ButtonState = "success"
-    static Failure: ButtonState = "failure"
+export enum ButtonState {
+    Default,
+    Loading,
+    Success,
+    Failure
 }
 
 class Button extends React.Component<ButtonProps, any> {
@@ -21,6 +21,7 @@ class Button extends React.Component<ButtonProps, any> {
     render(): JSX.Element {
         const newProps: any = {...this.props}
         delete newProps.state
+        delete newProps.block
 
         return this.props.href 
             ? (
