@@ -36,7 +36,7 @@ $ yarn install
 * Development of components happen in [storybooks](https://getstorybook.io):
 
         $ yarn storybook
-        $ open http://localhost:9001/
+        $ open http://localhost:4444/
 
 * Run the tests:
 
