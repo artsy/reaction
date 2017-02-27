@@ -12,7 +12,8 @@
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
-    "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data"
+    "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
+    "lint": "node_modules/.bin/tslint -c tslint.json --project tsconfig.json"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -33,6 +34,8 @@
     "react-test-renderer": "^15.4.2",
     "relay2ts": "^0.2.0",
     "ts-jest": "^18.0.3",
+    "tslint": "^4.5.0",
+    "tslint-react": "^2.4.0",
     "typescript": "^2.1.5"
   },
   "dependencies": {
