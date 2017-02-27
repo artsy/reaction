@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Button, { ButtonProps } from './default'
-import Icon, { IconProps } from '../icon'
+import Icon from '../icon'
 import styled from 'styled-components'
 
 const FacebookButton = (props: ButtonProps) => {
@@ -18,4 +18,3 @@ export default styled(FacebookButton)`
         background: #252C68;
     }
 `
-
