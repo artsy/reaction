@@ -7,8 +7,10 @@ export default {
   purpleLight: "#e2d2ff",
   purpleRegular: "#6e1fff",
   redRegular: "#f7625a",
+  redBold: "#F1170D",
   yellowRegular: "#fdefd1",
   yellowMedium: "#fce1a8",
   yellowBold: "#f1af1b",
-  greenRegular: "#0eda83"
+  greenRegular: "#0eda83",
+  greenBold: "#0aa462"
 }
