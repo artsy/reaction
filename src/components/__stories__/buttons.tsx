@@ -5,6 +5,8 @@ import { storiesOf, action } from "@kadira/storybook"
 import Button, { ButtonState } from '../buttons/default'
 import GhostButton from '../buttons/ghost'
 import InvertedButton from '../buttons/inverted'
+import FacebookButton from '../buttons/facebook'
+import TwitterButton from '../buttons/twitter'
 
 storiesOf("Buttons", Button)
     .add("Default Button", () => {
@@ -48,5 +50,15 @@ storiesOf("Buttons", Button)
     .add("Block Button", () => {
         return (
             <Button block>Block Button</Button>
+        )
+    })
+    .add("Facebook Button", () => {
+        return (
+            <FacebookButton />
+        )
+    })
+    .add("Twitter Button", () => {
+        return (
+            <TwitterButton />
         )
     })
