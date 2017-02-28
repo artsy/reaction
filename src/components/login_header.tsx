@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import Icon from "./icons"
+import Icon from "./icon"
 import Title from "./title"
 
 const Header = styled.header`
