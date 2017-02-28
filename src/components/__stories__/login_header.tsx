@@ -5,5 +5,5 @@ import LoginHeader from "../login_header"
 
 storiesOf("LoginHeader", LoginHeader)
   .add("Simple login header", () => (
-    <LoginHeader/>
+    <LoginHeader title={"Welcome back, please log in to your account"}/>
   ))
