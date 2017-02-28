@@ -16,7 +16,7 @@ const titleSizes = {
   xxlarge: '72px'
 }
 
-class Title extends React.Component<TitleProps, any> {
+export class Title extends React.Component<TitleProps, any> {
   render() {
     return (
       <div className={this.props.className} >
