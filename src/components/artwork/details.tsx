@@ -1,33 +1,39 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
+import colors from '../../assets/colors'
+import TextLink from '../text_link'
 
-export class ArtworkDetails extends React.Component<RelayProps, null> {
+export interface DetailsProps extends React.HTMLProps<ArtworkDetails> {
+    artwork: any
+}
+
+export class ArtworkDetails extends React.Component<DetailsProps, null> {
 
   artistLine() {
     const cultural_maker = this.props.artwork.cultural_maker
     const artists = this.props.artwork.artists
 
     if (cultural_maker) {
-      return (<h4>{cultural_maker}</h4>)
+      return (<div><strong>{cultural_maker}</strong></div>)
     } else if (artists && artists.length) {
       let artistsEl = []
       for (var i=0; i < artists.length; i++) {
-        artistsEl.push(<a href={artists[i].href} >{artists[i].name}</a>)
+        artistsEl.push(<TextLink href={artists[i].href}>{artists[i].name}</TextLink>)
         if (i !== artists.length - 1) {
           artistsEl.push(<span>,</span>)
         }
       } 
-      return (<h4>{artistsEl}</h4>)
+      return (<div><strong>{artistsEl}</strong></div>)
     }
   }
 
   titleLine() {
     return (
-      <a href={this.props.artwork.href}>
+      <TextLink href={this.props.artwork.href}>
         <em>{this.props.artwork.title}</em>
         { this.props.artwork.date ? `, ${this.props.artwork.date}` : null }
-      </a>
+      </TextLink>
     )
   }
 
@@ -37,9 +43,9 @@ export class ArtworkDetails extends React.Component<RelayProps, null> {
     } else {
       return (
         <div>
-          <a href={this.props.artwork.partner.href}>
+          <TextLink href={this.props.artwork.partner.href}>
             {this.props.artwork.partner.name}
-          </a>
+          </TextLink>
         </div>
       )
     }
@@ -68,7 +74,7 @@ export class ArtworkDetails extends React.Component<RelayProps, null> {
   }
 }
 
-export default Relay.createContainer(ArtworkDetails, {
+export default Relay.createContainer(ArtworkDetails , {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {

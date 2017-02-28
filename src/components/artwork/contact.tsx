@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+import TextLink from '../text_link'
 
 export class ArtworkContact extends React.Component<RelayProps, null> {
 
@@ -16,7 +17,7 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
     const artwork = this.props.artwork
     if (artwork.sale.is_live_open) {
       return (
-        <a href={artwork.href}>Enter Live Auction</a>
+        <TextLink href={artwork.href}>Enter Live Auction</TextLink>
       )
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
@@ -34,19 +35,19 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
             {sa.opening_bid.display}
           </span>
         )
-      } else if (artwork.sale.is_closed) {
-        return (<span>Auction closed</span>)
-      } else {
-        return (<span/>)
       }
+    } else if (artwork.sale.is_closed) {
+      return (<span>Auction closed</span>)
+    } else {
+      return (<span/>)
     }
   }
 
   contactPartnerLine() {
     return (
-      <a href={this.props.artwork.href}>
+      <TextLink href={this.props.artwork.href}>
         Contact {this.props.artwork.partner.type.toLowerCase()}
-      </a>
+      </TextLink>
     )
   }
 
