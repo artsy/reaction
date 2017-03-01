@@ -6,21 +6,17 @@ import '../assets/fonts'
 
 export type FontName = string
 
-export interface IconProps extends React.Props<Icon>, React.HTMLAttributes<Icon> {
+export interface IconProps extends React.HTMLProps<JSX.Element> {
   font?: FontName
   name: IconName
   color?: string
 }
 
-export class Icon extends React.Component<IconProps, null> {
-  render() {
-    return (
-      <span className={this.props.className}>
-        {icons[this.props.name]}
-      </span>
-    )
-  }
-}
+const Icon: React.SFC<IconProps> = props => (
+  <span className={props.className}>
+    {icons[props.name]}
+  </span>
+)
 
 export default styled(Icon)`
   font-family: ${props => props.font || 'artsy-icons'};
