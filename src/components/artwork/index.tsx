@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import ArtworkMetadata from './metadata'
+import ArtworkMetadata from "./metadata"
 
 const Image = styled.img`
   width: 100%;

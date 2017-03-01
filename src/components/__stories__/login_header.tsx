@@ -10,4 +10,3 @@ storiesOf("LoginHeader", LoginHeader)
       <Title>Welcome back, please log in to your account.</Title>
     </LoginHeader>
   ))
-  
