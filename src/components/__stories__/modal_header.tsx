@@ -1,7 +1,7 @@
 import { action, storiesOf } from "@kadira/storybook"
 import * as React from "react"
 
-import ModalHeader from "../login_header"
+import ModalHeader from "../modal_header"
 import Title from "../title"
 
 storiesOf("ModalHeader", ModalHeader)
