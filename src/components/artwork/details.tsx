@@ -77,6 +77,7 @@ export default Relay.createContainer(ArtworkDetails , {
         sale_message
         cultural_maker
         artists(shallow: true) {
+          __id
           href
           name
         }
