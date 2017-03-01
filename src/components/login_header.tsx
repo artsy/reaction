@@ -8,7 +8,6 @@ const Header = styled.header`
   font-size: 26px;
   line-height: 1.3;
   text-align: center;
-  width: 400px;
 `
 
 export default class LoginHeader extends React.Component<any, null> {
