@@ -14,14 +14,12 @@ const Header = styled.header`
 export default class LoginHeader extends React.Component<any, null> {
   render() {
     return (
-      <div>
-        <Header>
-          <Icon name={"logotype"} color={"black"} />
-          <Title titleSize={'small'}>
-            {this.props.title}
-          </Title>
-        </Header>
-      </div>
+      <Header>
+        <Icon name="logotype" color="black" />
+        <Title titleSize="small">
+          {this.props.children}
+        </Title>
+      </Header>
     )
   }
 }
