@@ -76,17 +76,13 @@ export default Relay.createContainer(ArtworkContact, {
         sale_artwork {
           highest_bid {
             display
-          }
+          
           opening_bid {
             display
           }
           counts {
             bidder_positions
           }
-        }
-        partner(shallow: true) {
-          type
-          href
         }
       }
     `

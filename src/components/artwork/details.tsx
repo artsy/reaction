@@ -32,7 +32,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     return (
       <TextLink href={this.props.artwork.href}>
         <em>{this.props.artwork.title}</em>
-        { this.props.artwork.date ? `, ${this.props.artwork.date}` : null }
+        { this.props.artwork.date && `, ${this.props.artwork.date}` }
       </TextLink>
     )
   }
@@ -90,6 +90,7 @@ export default Relay.createContainer(ArtworkDetails , {
         collecting_institution
         partner(shallow: true) {
           name
+          href
         }
         sale {
           is_auction
