@@ -1,7 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
 import Icon from "./icon"
-import Title from "./title"
 
 const Header = styled.header`
   margin: 20px auto;
@@ -10,15 +9,11 @@ const Header = styled.header`
   text-align: center;
 `
 
-export default class LoginHeader extends React.Component<any, null> {
-  render() {
-    return (
-      <Header>
-        <Icon name="logotype" color="black" />
-        <Title titleSize="small">
-          { this.props.children }
-        </Title>
-      </Header>
-    )
-  }
-}
+const ModalHeader: React.SFC<any> = props => (
+  <Header>
+    <Icon name="logotype" color="black" />
+    {props.children}
+  </Header>
+)
+
+export default ModalHeader;

@@ -1,12 +1,12 @@
 import { action, storiesOf } from "@kadira/storybook"
 import * as React from "react"
 
-import LoginHeader from "../login_header"
+import ModalHeader from "../login_header"
 import Title from "../title"
 
-storiesOf("LoginHeader", LoginHeader)
+storiesOf("ModalHeader", ModalHeader)
   .add("Simple login header", () => (
-    <LoginHeader> 
+    <ModalHeader> 
       <Title>Welcome back, please log in to your account.</Title>
-    </LoginHeader>
+    </ModalHeader>
   ))
