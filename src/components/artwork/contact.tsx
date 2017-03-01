@@ -26,7 +26,7 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
         const s = bids > 1 ? 's' : ''
         return (
           <span>
-            {sa.highest_bid.display}(bid{s})
+            {sa.highest_bid.display} ({bids} bid{s})
           </span>
         )
       } else {
