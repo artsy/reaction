@@ -3,9 +3,9 @@
         "module": "commonjs",
         "target": "es6",
         "sourceMap": true,
-        "rootDir": ".",
+        "rootDir": "src",
         "jsx": "react",
-        "allowJs": true,
+        "allowJs": false,
         "allowSyntheticDefaultImports": true
     },
     "exclude": [

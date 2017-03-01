@@ -1,12 +1,12 @@
+import { action, storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
-import { storiesOf, action } from "@kadira/storybook"
 
-import Button, { ButtonState } from '../buttons/default'
-import GhostButton from '../buttons/ghost'
-import InvertedButton from '../buttons/inverted'
-import FacebookButton from '../buttons/facebook'
-import TwitterButton from '../buttons/twitter'
+import Button, { ButtonState } from "../buttons/default"
+import FacebookButton from "../buttons/facebook"
+import GhostButton from "../buttons/ghost"
+import InvertedButton from "../buttons/inverted"
+import TwitterButton from "../buttons/twitter"
 
 storiesOf("Buttons", Button)
     .add("Default Button", () => {
@@ -17,12 +17,12 @@ storiesOf("Buttons", Button)
                     <Button disabled>Button</Button>
                 </div>
                 <div>
-                    <Button state={ButtonState.Success}>Button</Button>
-                    <Button state={ButtonState.Success} disabled>Button</Button>
+                    <Button state={ ButtonState.Success }>Button</Button>
+                    <Button state={ ButtonState.Success } disabled>Button</Button>
                 </div>
                 <div>
-                    <Button state={ButtonState.Failure}>Button</Button>
-                    <Button state={ButtonState.Failure} disabled>Button</Button>
+                    <Button state={ ButtonState.Failure }>Button</Button>
+                    <Button state={ ButtonState.Failure } disabled>Button</Button>
                 </div>
             </div>
         )

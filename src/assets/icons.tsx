@@ -1,4 +1,4 @@
-export type IconName =   
+export type IconName =
   "circle-chevron" |
   "grid" |
   "list" |
@@ -97,7 +97,7 @@ const IconNames: { [i: string]: string; } = {
   "follow-circle" : "\ue629",
   "follow-circle.is-following" : "\ue628",
   "instagram" : "\ue62a",
-  "search" : "\ue62c"
+  "search" : "\ue62c",
 }
 
 export default IconNames
