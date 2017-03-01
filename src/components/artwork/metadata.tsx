@@ -25,7 +25,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
 export const StyledMetadata = styled(ArtworkMetadata)`
     ${fonts.secondary.style}
     color: ${colors.grayBold};
-    font-size: 13px;
+    font-size: 15px;
 `
 
 export default Relay.createContainer(StyledMetadata, {
