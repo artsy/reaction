@@ -11,8 +11,8 @@ export class Artwork extends React.Component<RelayProps, null> {
   render() {
     return (
       <div>
-        <Image src={this.props.artwork.image.url} />
-        <ArtworkMetadata artwork={this.props.artwork} />
+        <Image src={ this.props.artwork.image.url } />
+        <ArtworkMetadata artwork={ this.props.artwork } />
       </div>
     )
   }
@@ -28,7 +28,7 @@ export default Relay.createContainer(Artwork, {
         }
        ${ArtworkMetadata.getFragment("artwork")}
       }
-    `
+    `,
   },
 })
 

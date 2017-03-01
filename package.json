@@ -15,6 +15,7 @@
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "node_modules/.bin/tslint -c tslint.json --project tsconfig.json"
   },
+  "pre-commit": [ "lint" ],
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
     "@kadira/storybook-deployer": "^1.2.0",
@@ -30,6 +31,7 @@
     "fuse-box": "latest",
     "graphql-config-parser": "^1.2.1",
     "jest": "^18.1.0",
+    "pre-commit": "^1.2.2",
     "react-dom": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "relay2ts": "^0.2.0",

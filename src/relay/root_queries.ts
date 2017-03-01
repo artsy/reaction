@@ -1,7 +1,7 @@
 import * as Relay from "react-relay"
 
 export class ArtworkQueryConfig extends Relay.Route {
-  static queries = {
+  public static queries = {
     artwork: (component, params) => Relay.QL`
       query {
         artwork(id: $artworkID) {
@@ -11,15 +11,15 @@ export class ArtworkQueryConfig extends Relay.Route {
     `,
   }
 
-  static paramDefinitions = {
+  public static paramDefinitions = {
     artworkID: { required: true },
   }
 
-  static routeName = "ArtworkQueryConfig"
+  public static routeName = "ArtworkQueryConfig"
 }
 
 export class ArtistQueryConfig extends Relay.Route {
-  static queries = {
+  public static queries = {
     artist: (component, params) => Relay.QL`
       query {
         artist(id: $artistID) {
@@ -29,9 +29,9 @@ export class ArtistQueryConfig extends Relay.Route {
     `,
   }
 
-  static paramDefinitions = {
+  public static paramDefinitions = {
     artistID: { required: true },
   }
 
-  static routeName = "ArtistQueryConfig"
+  public static routeName = "ArtistQueryConfig"
 }

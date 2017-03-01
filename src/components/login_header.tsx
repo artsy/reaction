@@ -16,7 +16,7 @@ export default class LoginHeader extends React.Component<any, null> {
       <Header>
         <Icon name="logotype" color="black" />
         <Title titleSize="small">
-          {this.props.children}
+          { this.props.children }
         </Title>
       </Header>
     )
