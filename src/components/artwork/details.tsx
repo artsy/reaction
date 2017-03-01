@@ -19,7 +19,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     } else if (artists && artists.length) {
       let artistsEl = []
       for (let i = 0; i < artists.length; i++) {
-        artistsEl.push(<TextLink href={ artists[i].href }>{ artists[i].name }</TextLink>)
+        artistsEl.push(<TextLink href={ artists[i].href } key={ i }>{ artists[i].name }</TextLink>)
         if (i !== artists.length - 1) {
           artistsEl.push(<span>,</span>)
         }
