@@ -73,6 +73,9 @@ export default Relay.createContainer(ArtworkContact, {
           is_open
           is_closed
         }
+        partner(shallow: true) {
+          type
+        }
         sale_artwork {
           highest_bid {
             display
