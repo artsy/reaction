@@ -6,7 +6,7 @@ import Button, { ButtonState } from '../buttons/default'
 import GhostButton from '../buttons/ghost'
 import InvertedButton from '../buttons/inverted'
 import FacebookButton from '../buttons/facebook'
-// import TwitterButton from '../buttons/twitter'
+import TwitterButton from '../buttons/twitter'
 
 storiesOf("Buttons", Button)
     .add("Default Button", () => {
@@ -57,8 +57,8 @@ storiesOf("Buttons", Button)
             <FacebookButton />
         )
     })
-    // .add("Twitter Button", () => {
-    //     return (
-    //         <TwitterButton />
-    //     )
-    // })
+    .add("Twitter Button", () => {
+        return (
+            <TwitterButton />
+        )
+    })
