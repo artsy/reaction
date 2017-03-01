@@ -2,7 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import { storiesOf, action } from "@kadira/storybook"
 
-import Artwork from "../artwork"
+import Artwork from "../artwork/index"
 
 import { artsyNetworkLayer } from "../../relay/config"
 import { ArtworkQueryConfig } from "../../relay/root_queries"

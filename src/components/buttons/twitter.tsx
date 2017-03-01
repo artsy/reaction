@@ -18,4 +18,3 @@ export default styled(TwitterButton)`
         background: #0D73B6;
     }
 `
-

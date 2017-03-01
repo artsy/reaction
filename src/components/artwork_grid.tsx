@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Artwork from "./artwork"
+import Artwork from "./artwork/index"
 
 export class ArtworkGrid extends React.Component<RelayProps, null> {
   render() {
