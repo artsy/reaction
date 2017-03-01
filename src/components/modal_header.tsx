@@ -12,8 +12,8 @@ const Header = styled.header`
 const ModalHeader: React.SFC<any> = props => (
   <Header>
     <Icon name="logotype" color="black" />
-    {props.children}
+    { props.children }
   </Header>
 )
 
-export default ModalHeader;
+export default ModalHeader
