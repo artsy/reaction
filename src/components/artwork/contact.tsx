@@ -17,7 +17,7 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
     const artwork = this.props.artwork
     if (artwork.sale.is_live_open) {
       return (
-        <TextLink href={artwork.href}>Enter Live Auction</TextLink>
+        <TextLink href={artwork.href} underline={true}>Enter Live Auction</TextLink>
       )
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
@@ -45,7 +45,7 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
 
   contactPartnerLine() {
     return (
-      <TextLink href={this.props.artwork.href}>
+      <TextLink href={this.props.artwork.href} underline={true}>
         Contact {this.props.artwork.partner.type.toLowerCase()}
       </TextLink>
     )
