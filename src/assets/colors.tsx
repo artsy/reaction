@@ -1,7 +1,7 @@
 export default {
   gray: "#f8f8f8",
-  grayRegular: "#e5e5e5",
   grayMedium: "#cccccc",
+  grayRegular: "#e5e5e5",
   graySemibold: "#666666",
   grayBold: "#333333",
   purpleLight: "#e2d2ff",
@@ -12,5 +12,5 @@ export default {
   yellowMedium: "#fce1a8",
   yellowBold: "#f1af1b",
   greenRegular: "#0eda83",
-  greenBold: "#0aa462"
+  greenBold: "#0aa462",
 }

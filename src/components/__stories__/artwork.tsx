@@ -1,6 +1,6 @@
+import { action, storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
-import { storiesOf, action } from "@kadira/storybook"
 
 import Artwork from "../artwork/index"
 
@@ -9,7 +9,7 @@ import { ArtworkQueryConfig } from "../../relay/root_queries"
 
 function ArtworkExample(props: { artworkID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
+  return <Relay.RootContainer Component={ Artwork } route={ new ArtworkQueryConfig({ artworkID: props.artworkID }) } />
 }
 
 storiesOf("Artwork", Artwork)

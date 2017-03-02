@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-import TextLink from '../text_link'
+import TextLink from "../text_link"
 
 export interface ContactProps extends React.HTMLProps<ArtworkContact> {
   artwork: any
@@ -21,22 +21,22 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
     const artwork = this.props.artwork
     if (artwork.sale.is_live_open) {
       return (
-        <TextLink href={artwork.href} underline={true}>Enter Live Auction</TextLink>
+        <TextLink href={ artwork.href } underline={ true }>Enter Live Auction</TextLink>
       )
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
       const bids = sa.counts.bidder_positions
       if (bids > 0) {
-        const s = bids > 1 ? 's' : ''
+        const s = bids > 1 ? "s" : ""
         return (
           <span>
-            {sa.highest_bid.display} ({bids} bid{s})
+            { sa.highest_bid.display } ({ bids } bid{ s })
           </span>
         )
       } else {
         return (
           <span>
-            {sa.opening_bid.display}
+            { sa.opening_bid.display }
           </span>
         )
       }
@@ -49,8 +49,8 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
 
   contactPartnerLine() {
     return (
-      <TextLink href={this.props.artwork.href} underline={true}>
-        Contact {this.props.artwork.partner.type.toLowerCase()}
+      <TextLink href={ this.props.artwork.href } underline={ true }>
+        Contact { this.props.artwork.partner.type.toLowerCase() }
       </TextLink>
     )
   }
@@ -58,7 +58,7 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
   render() {
     return (
       <div>
-        {this.contactLine()}
+        { this.contactLine() }
       </div>
     )
   }
@@ -92,6 +92,6 @@ export default Relay.createContainer(ArtworkContact, {
           }
         }
       }
-    `
+    `,
   },
 })

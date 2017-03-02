@@ -1,14 +1,19 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "0.1.0",
-    "command": "yarn",
-    "isShellCommand": true,
-    "showOutput": "never",
-    "suppressTaskName": true,
-    "isBackground": true,
-    "tasks": [{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "0.1.0",
+  "command": "yarn",
+  "isShellCommand": true,
+  "showOutput": "never",
+  "suppressTaskName": true,
+  "isBackground": true,
+  "tasks": [
+    {
       "taskName": "storybook",
-      "args": ["run", "storybook"]
-    }]
+      "args": [
+        "run",
+        "storybook"
+      ]
+    }
+  ]
 }

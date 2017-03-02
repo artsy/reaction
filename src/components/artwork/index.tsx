@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import ArtworkMetadata from './metadata'
+import ArtworkMetadata from "./metadata"
 
 const Image = styled.img`
   width: 100%;
@@ -11,8 +11,8 @@ export class Artwork extends React.Component<RelayProps, null> {
   render() {
     return (
       <div>
-        <Image src={this.props.artwork.image.url} />
-        <ArtworkMetadata artwork={this.props.artwork} />
+        <Image src={ this.props.artwork.image.url } />
+        <ArtworkMetadata artwork={ this.props.artwork } />
       </div>
     )
   }
@@ -29,7 +29,7 @@ export default Relay.createContainer(Artwork, {
         }
        ${ArtworkMetadata.getFragment("artwork")}
       }
-    `
+    `,
   },
 })
 

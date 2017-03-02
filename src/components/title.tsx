@@ -1,6 +1,6 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import * as fonts from '../assets/fonts'
+import * as React from "react"
+import styled from "styled-components"
+import * as fonts from "../assets/fonts"
 
 type TitleSize = "small" | "medium" | "large" | "xlarge" | "xxlarge"
 
@@ -9,16 +9,16 @@ interface TitleProps extends React.HTMLProps<JSX.Element> {
 }
 
 const titleSizes = {
-  small: '25px',
-  medium: '30px',
-  large: '37px',
-  xlarge: '50px',
-  xxlarge: '72px'
+  small: "25px",
+  medium: "30px",
+  large: "37px",
+  xlarge: "50px",
+  xxlarge: "72px",
 }
 
 const Title: React.SFC<TitleProps> = props => (
-  <div className={props.className}>
-    {props.children}
+  <div className={ props.className }>
+    { props.children }
   </div>
 )
 
@@ -29,7 +29,7 @@ const StyledTitle = styled(Title)`
 `
 
 StyledTitle.defaultProps = {
-  titleSize: 'medium'
+  titleSize: "medium",
 }
 
 export default StyledTitle
