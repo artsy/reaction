@@ -2,6 +2,7 @@ import * as React from "react"
 import styled, { css } from "styled-components"
 import colors from "../../assets/colors"
 import * as fonts from "../../assets/fonts"
+import { block } from "../helpers"
 import Icon from "../icon"
 
 export interface ButtonProps extends React.HTMLProps<Button> {
@@ -73,15 +74,7 @@ export const StyledButton = styled(Button)`
     }
 
     ${fonts.primary.style}
-
-    ${props => {
-        if (props.block)
-            return css`
-                display: block;
-                width: 100%;
-                margin: 10px auto;
-            `
-    }}
+    ${block()}
 `
 
 StyledButton.defaultProps = {
