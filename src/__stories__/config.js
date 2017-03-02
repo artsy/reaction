@@ -7,6 +7,7 @@ function loadStories() {
   require("../components/__stories__/buttons")
   require("../components/__stories__/title")
   require("../components/__stories__/input")
+  require("../components/__stories__/grid")
 }
 
 configure(loadStories, module)
