@@ -2,7 +2,11 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import TextLink from '../text_link'
 
-export class ArtworkContact extends React.Component<RelayProps, null> {
+export interface ContactProps extends React.HTMLProps<ArtworkContact> {
+  artwork: any
+}
+
+export class ArtworkContact extends React.Component<ContactProps, null> {
 
   contactLine() {
     const artwork = this.props.artwork
