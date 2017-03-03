@@ -5,7 +5,7 @@ import TextLink from "../text_link"
 export class ArtworkContact extends React.Component<RelayProps, null> {
 
   contactLine() {
-    const artwork = this.props.artwork
+    const { artwork } = this.props
     if (artwork.sale && artwork.sale.is_auction) {
       return this.auctionLine()
     } else if (artwork.is_inquireable) {
@@ -14,32 +14,22 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
   }
 
   auctionLine() {
-    const artwork = this.props.artwork
+    const { artwork } = this.props
     if (artwork.sale.is_live_open) {
-      return (
-        <TextLink href={ artwork.href } underline={ true }>Enter Live Auction</TextLink>
-      )
+      return <TextLink href={ artwork.href } underline={ true }>Enter Live Auction</TextLink>
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
       const bids = sa.counts.bidder_positions
       if (bids > 0) {
         const s = bids > 1 ? "s" : ""
-        return (
-          <span>
-            { sa.highest_bid.display } ({ bids } bid{ s })
-          </span>
-        )
+        return <span>{ sa.highest_bid.display } ({ bids } bid{ s })</span>
       } else {
-        return (
-          <span>
-            { sa.opening_bid.display }
-          </span>
-        )
+        return <span>{ sa.opening_bid.display }</span>
       }
     } else if (artwork.sale.is_closed) {
-      return (<span>Auction closed</span>)
+      return <span>Auction closed</span>
     } else {
-      return (<span/>)
+      return <span/>
     }
   }
 
@@ -52,11 +42,7 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
   }
 
   render() {
-    return (
-      <div>
-        { this.contactLine() }
-      </div>
-    )
+    return <div>{ this.contactLine() }</div>
   }
 }
 
