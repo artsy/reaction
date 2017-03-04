@@ -3,12 +3,12 @@ import styled, { css } from "styled-components"
 import colors from "../../assets/colors"
 import * as fonts from "../../assets/fonts"
 import { block } from "../helpers"
-import Icon from "../icon"
+import { IconProps } from "../icon"
 
 export interface ButtonProps extends React.HTMLProps<Button> {
   state?: ButtonState
   block?: boolean
-  icon?: Icon
+  icon?: React.ReactElement<IconProps>
 }
 
 export enum ButtonState {

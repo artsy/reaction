@@ -13,7 +13,8 @@
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
-    "lint": "node_modules/.bin/tslint -c tslint.json --project tsconfig.json"
+    "lint": "tslint -c tslint.json --project tsconfig.json",
+    "type-check": "tsc --noEmit --pretty"
   },
   "precommit": [
     "lint",
