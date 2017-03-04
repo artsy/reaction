@@ -8,9 +8,9 @@ dependencies:
 
 test:
   override:
-    - yarn test
-  post:
     - yarn lint
+    - yarn type-check
+    - yarn test
 
 deployment:
   demo:
