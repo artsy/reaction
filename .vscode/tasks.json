@@ -14,6 +14,26 @@
         "run",
         "storybook"
       ]
+    },
+    {
+      "taskName": "TSLint: Lint all files",
+      "command": "yarn",
+      "args": ["lint"],
+      "problemMatcher": {
+        "owner": "tslint",
+        "fileLocation": [
+          "relative",
+          "${workspaceRoot}"
+        ],
+        "severity": "warning",
+        "pattern": {
+          "regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        }
+      }
     }
   ]
 }
