@@ -17,8 +17,8 @@ const titleSizes = {
 }
 
 const Title: React.SFC<TitleProps> = props => (
-  <div className={ props.className }>
-    { props.children }
+  <div className={props.className}>
+    {props.children}
   </div>
 )
 

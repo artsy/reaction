@@ -13,9 +13,9 @@ export interface ArtworkMetadataProps extends React.HTMLProps<ArtworkMetadata> {
 export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null> {
   render() {
     return (
-      <div className={ this.props.className } >
-        <ArtworkDetails artwork={ this.props.artwork } />
-        <ArtworkContact artwork={ this.props.artwork } />
+      <div className={this.props.className} >
+        <ArtworkDetails artwork={this.props.artwork} />
+        <ArtworkContact artwork={this.props.artwork} />
       </div>
     )
   }

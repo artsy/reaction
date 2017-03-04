@@ -6,15 +6,15 @@ import { block } from "./helpers"
 import { borderedInput } from "./mixins"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
-    error?: boolean
-    block?: boolean
+  error?: boolean
+  block?: boolean
 }
 
 const Input: React.SFC<InputProps> = props => (
-    <input { ...props } />
+  <input {...props} />
 )
 
 export default styled(Input)`
-    ${borderedInput}
-    ${block(24)}
+  ${borderedInput}
+  ${block(24)}
 `

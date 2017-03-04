@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-eslint-rules"],
   "rules": {
     "curly": false,
     "semicolon": [ true, "never" ],
@@ -16,9 +16,11 @@
     "member-access": [ false ],
     "no-unused-expression": false,
     "max-classes-per-file": [ true, 2 ],
-    
+
     "jsx-no-lambda": true,
-    "jsx-curly-spacing": [ true, "always" ],
-    "jsx-wrap-multiline": [ true, "always" ]
+    "jsx-curly-spacing": [ true, "never" ],
+    "jsx-wrap-multiline": [ true, "always" ],
+
+    "ter-indent": [true, 2]
   }
 }

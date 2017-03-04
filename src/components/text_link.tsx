@@ -13,15 +13,15 @@ export class TextLink extends React.Component<LinkProps, null> {
 
   render() {
     return (
-      <a href={ this.props.href } className={ this.props.className }>
-        { this.props.children }
+      <a href={this.props.href} className={this.props.className}>
+        {this.props.children}
       </a>
     )
   }
 }
 
 TextLink.defaultProps = {
-    underline: false,
+  underline: false,
 }
 
 export default styled(TextLink)`

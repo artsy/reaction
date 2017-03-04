@@ -13,8 +13,8 @@ export interface IconProps extends React.HTMLProps<JSX.Element> {
 }
 
 const Icon: React.SFC<IconProps> = props => (
-  <span className={ props.className }>
-    { icons[props.name] }
+  <span className={props.className}>
+    {icons[props.name]}
   </span>
 )
 

@@ -16,15 +16,15 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
   auctionLine() {
     const { artwork } = this.props
     if (artwork.sale.is_live_open) {
-      return <TextLink href={ artwork.href } underline={ true }>Enter Live Auction</TextLink>
+      return <TextLink href={artwork.href} underline={true}>Enter Live Auction</TextLink>
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
       const bids = sa.counts.bidder_positions
       if (bids > 0) {
         const s = bids > 1 ? "s" : ""
-        return <span>{ sa.highest_bid.display } ({ bids } bid{ s })</span>
+        return <span>{sa.highest_bid.display} ({bids} bid{s})</span>
       } else {
-        return <span>{ sa.opening_bid.display }</span>
+        return <span>{sa.opening_bid.display}</span>
       }
     } else if (artwork.sale.is_closed) {
       return <span>Auction closed</span>
@@ -35,14 +35,14 @@ export class ArtworkContact extends React.Component<RelayProps, null> {
 
   contactPartnerLine() {
     return (
-      <TextLink href={ this.props.artwork.href } underline={ true }>
-        Contact { this.props.artwork.partner.type.toLowerCase() }
+      <TextLink href={this.props.artwork.href} underline={true}>
+        Contact {this.props.artwork.partner.type.toLowerCase()}
       </TextLink>
     )
   }
 
   render() {
-    return <div>{ this.contactLine() }</div>
+    return <div>{this.contactLine()}</div>
   }
 }
 
