@@ -36,9 +36,12 @@ interface RelayProps {
 
 function GridExample(props: { artistID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer
-    Component={ArtistArtworksContainer}
-    route={new ArtistQueryConfig({ artistID: props.artistID })} />
+  return (
+    <Relay.RootContainer
+      Component={ArtistArtworksContainer}
+      route={new ArtistQueryConfig({ artistID: props.artistID })}
+    />
+  )
 }
 
 storiesOf("ArtworkGrid", ArtworkGrid)

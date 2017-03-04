@@ -10,7 +10,7 @@ export interface GridProps extends RelayProps, React.HTMLProps<ArtworkGrid> {
 }
 
 export class ArtworkGrid extends React.Component<GridProps, null> {
-  public static defaultProps: GridProps
+  public static defaultProps: Partial<GridProps>
 
   sectionedArtworks() {
     const sectionedArtworks: ArtworkRelayProps[][] = []
@@ -22,8 +22,8 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
       sectionRatioSums.push(0)
     }
 
-    for (let i = 0; i < artworks.length; i++) {
-      const artwork = artworks[i].node
+    artworks.forEach(artworkEdge => {
+      const artwork = artworkEdge.node
 
       // There are artworks without images and other ‘issues’. Like Force we’re just going to reject those for now.
       // See: https://github.com/artsy/eigen/issues/1667
@@ -49,7 +49,7 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
           sectionRatioSums[sectionIndex] += (1 / aspectRatio)
         }
       }
-    }
+    })
 
     return sectionedArtworks
   }
@@ -66,10 +66,8 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
         artworkComponents.push(
-          <Artwork
-            artwork={artwork}
-            key={"artwork-" + j + "-" + artwork.__id}
-          />)
+          <Artwork artwork={artwork as any} key={"artwork-" + j + "-" + artwork.__id} />,
+        )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
         if (j < sectionedArtworks[i].length - 1) {
           artworkComponents.push(
@@ -84,9 +82,7 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
       }
 
       sections.push(
-        <div style={sectionSpecificStyle} key={i}>
-          {artworkComponents}
-        </div>,
+        <div style={sectionSpecificStyle} key={i}>{artworkComponents}</div>,
       )
     }
     return sections

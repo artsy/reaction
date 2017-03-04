@@ -22,7 +22,6 @@ export default Relay.createContainer(Artwork, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        id
         image {
           url(version: "large")
           aspect_ratio
@@ -35,21 +34,9 @@ export default Relay.createContainer(Artwork, {
 
 interface RelayProps {
   artwork: {
-    id: string | null
-    title: string | null,
-    date: string | null,
-    sale_message: string | null,
-    is_in_auction: boolean | null,
     image: {
       url: string | null,
       aspect_ratio: number | null,
     } | null,
-    artists: Array<{
-      name: string | null,
-    } | null> | null,
-    partner: {
-      name: string | null,
-    } | null,
-    href: string | null,
-  }
+  },
 }
