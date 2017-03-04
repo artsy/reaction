@@ -41,6 +41,7 @@
     "relay2ts": "^0.2.0",
     "ts-jest": "^18.0.3",
     "tslint": "^4.5.0",
+    "tslint-eslint-rules": "^3.4.0",
     "tslint-react": "^2.4.0",
     "typescript": "^2.1.5"
   },
