@@ -9,11 +9,11 @@ export class ArtworkGrid extends React.Component<RelayProps, null> {
     const column2Artworks = this.props.artist.artworks.filter((_, index) => (index % 2) === 1)
     return (
       <div>
-        <div style={ { width: 200, float: "left" } }>
-          { column1Artworks.map(artwork => <Artwork artwork={ artwork as any } key={ artwork.__id } />) }
+        <div style={{ width: 200, float: "left" }}>
+          {column1Artworks.map(artwork => <Artwork artwork={artwork as any} key={artwork.__id} />)}
         </div>
-        <div style={ { width: 200, float: "left" } }>
-          { column2Artworks.map(artwork => <Artwork artwork={ artwork as any } key={ artwork.__id } />) }
+        <div style={{ width: 200, float: "left" }}>
+          {column2Artworks.map(artwork => <Artwork artwork={artwork as any} key={artwork.__id} />)}
         </div>
       </div>
     )

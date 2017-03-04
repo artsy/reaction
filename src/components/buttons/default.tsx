@@ -28,14 +28,14 @@ class Button extends React.Component<ButtonProps, any> {
 
     return this.props.href
       ? (
-        <a className={ this.props.className } { ...newProps }>
-          { this.props.icon }
-          { this.props.children }
+        <a className={this.props.className} {...newProps}>
+          {this.props.icon}
+          {this.props.children}
         </a>
       ) : (
-        <button className={ this.props.className } { ...newProps }>
-          { this.props.icon }
-          { this.props.children }
+        <button className={this.props.className} {...newProps}>
+          {this.props.icon}
+          {this.props.children}
         </button>
       )
   }

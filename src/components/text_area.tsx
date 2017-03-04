@@ -11,7 +11,7 @@ interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
 }
 
 const TextArea: React.SFC<TextAreaProps> = props => (
-  <textarea { ...props } />
+  <textarea {...props} />
 )
 
 export default styled(TextArea)`

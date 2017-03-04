@@ -6,7 +6,7 @@ import Button, { ButtonProps } from "./default"
 const TwitterButton = (props: ButtonProps) => {
   const icon = <Icon name="twitter" color="white" />
   return (
-    <Button { ...props } icon={ icon }>Log in with Twitter</Button>
+    <Button {...props} icon={icon}>Log in with Twitter</Button>
   )
 }
 

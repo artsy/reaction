@@ -11,7 +11,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 const Input: React.SFC<InputProps> = props => (
-  <input { ...props } />
+  <input {...props} />
 )
 
 export default styled(Input)`

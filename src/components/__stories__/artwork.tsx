@@ -9,7 +9,7 @@ import { ArtworkQueryConfig } from "../../relay/root_queries"
 
 function ArtworkExample(props: { artworkID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={ Artwork } route={ new ArtworkQueryConfig({ artworkID: props.artworkID }) } />
+  return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
 }
 
 storiesOf("Artwork", Artwork)
