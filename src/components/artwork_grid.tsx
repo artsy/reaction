@@ -1,9 +1,9 @@
 import * as React from "react"
+import * as Relay from "react-relay"
 import styled from "styled-components"
 import Artwork from "./artwork/index"
 
-export interface GridProps extends React.HTMLProps<ArtworkGrid> {
-  artworks?: any,
+export interface GridProps extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
   sectionMargin?: number,
   itemMargin?: number,
@@ -13,7 +13,7 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
   public static defaultProps: GridProps
 
   sectionedArtworks() {
-    const sectionedArtworks = []
+    const sectionedArtworks: ArtworkRelayProps[][] = []
     const sectionRatioSums = []
     const artworks = this.props.artworks ? this.props.artworks.edges : []
 
@@ -58,7 +58,6 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
     const spacerStyle = {
       height: this.props.itemMargin,
     }
-    const artworks = this.props.artworks ? this.props.artworks.edges : []
     const sectionedArtworks = this.sectionedArtworks()
     const sections = []
 
@@ -69,12 +68,12 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
         artworkComponents.push(
           <Artwork
             artwork={artwork}
-            key={"artwork-" + j + "-" + artwork.id}
+            key={"artwork-" + j + "-" + artwork.__id}
           />)
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
-        if (j < artworks.length - 1) {
+        if (j < sectionedArtworks[i].length - 1) {
           artworkComponents.push(
-            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.id} />,
+            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />,
           )
         }
       }
@@ -109,8 +108,45 @@ ArtworkGrid.defaultProps = {
   itemMargin: 20,
 }
 
-export const StyledGrid = styled(ArtworkGrid)`
+const StyledGrid = styled(ArtworkGrid)`
   display: flex
 `
 
-export default StyledGrid
+const ArtworkFragment = Relay.QL`
+  fragment on Artwork {
+    __id
+    image {
+      aspect_ratio
+    }
+    ${Artwork.getFragment("artwork")}
+  }
+`
+
+export default Relay.createContainer(StyledGrid, {
+  fragments: {
+    artworks: () => Relay.QL`
+      fragment on ArtworkConnection {
+        edges {
+          node {
+            ${ArtworkFragment}
+          }
+        }
+      }
+    `,
+  },
+})
+
+interface ArtworkRelayProps {
+  __id: string,
+  image: {
+    aspect_ratio: number | null,
+  } | null,
+}
+
+interface RelayProps {
+  artworks: {
+    edges: Array<{
+      node: ArtworkRelayProps | null,
+    } | null> | null,
+  },
+}

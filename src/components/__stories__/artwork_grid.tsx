@@ -11,7 +11,7 @@ import { ArtistQueryConfig } from "../../relay/root_queries"
 export class ArtistArtworks extends React.Component<RelayProps, null> {
   render() {
     return (
-      <ArtworkGrid artworks={this.props.artist.artworks} />
+      <ArtworkGrid artworks={this.props.artist.artworks as any} />
     )
   }
 }
@@ -21,15 +21,7 @@ const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
     artist: () => Relay.QL`
       fragment on Artist {
         artworks: artworks_connection(first: 10) {
-          edges {
-            node {
-              id
-              image {
-                aspect_ratio
-              }
-              ${Artwork.getFragment("artwork")}
-            }
-          }
+          ${ArtworkGrid.getFragment("artworks")}
         }
       }
     `,
@@ -38,10 +30,8 @@ const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
 
 interface RelayProps {
   artist: {
-    artworks: Array<{
-      __id: string,
-    } | null> | null,
-  }
+    artworks: Array<any | null> | null,
+  },
 }
 
 function GridExample(props: { artistID: string }) {
