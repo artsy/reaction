@@ -6,15 +6,15 @@ import { block } from "./helpers"
 import { borderedInput } from "./mixins"
 
 interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
-    error?: boolean
-    block?: boolean
+  error?: boolean
+  block?: boolean
 }
 
 const TextArea: React.SFC<TextAreaProps> = props => (
-    <textarea { ...props } />
+  <textarea { ...props } />
 )
 
 export default styled(TextArea)`
-    ${borderedInput}
-    ${block(24)}
+  ${borderedInput}
+  ${block(24)}
 `

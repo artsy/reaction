@@ -5,7 +5,7 @@ import colors from "../../assets/colors"
 import TextLink from "../text_link"
 
 export interface DetailsProps extends React.HTMLProps<ArtworkDetails> {
-    artwork: any
+  artwork: any
 }
 
 export class ArtworkDetails extends React.Component<DetailsProps, null> {
@@ -67,7 +67,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
   }
 }
 
-export default Relay.createContainer(ArtworkDetails , {
+export default Relay.createContainer(ArtworkDetails, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {

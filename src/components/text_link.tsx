@@ -21,7 +21,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 }
 
 TextLink.defaultProps = {
-    underline: false,
+  underline: false,
 }
 
 export default styled(TextLink)`
