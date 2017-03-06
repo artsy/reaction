@@ -21,7 +21,7 @@ const NavBar: React.SFC<any> = props => (
     <NavIcon>
       <Icon name="logo" color="black" fontSize="32px" />
     </NavIcon>
-    { props.children }
+    {props.children}
   </Nav>
 )
 
