@@ -8,6 +8,7 @@ function loadStories() {
   require("../components/__stories__/title")
   require("../components/__stories__/input")
   require("../components/__stories__/grid")
+  require("../components/__stories__/modal")
 }
 
 configure(loadStories, module)
