@@ -45,4 +45,3 @@ class Login extends React.Component<LoginProps, LoginState> {
 }
 
 export default Login
-
