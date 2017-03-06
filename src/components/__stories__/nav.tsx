@@ -11,6 +11,6 @@ import * as fonts from "../../assets/fonts"
 storiesOf("Nav", Nav)
   .add("Simple Nav Bar", () => (
     <Nav>
-      <NavItem href="https://www.artsy.net" >Back To Artsy</NavItem>
+      <NavItem href="https://www.artsy.net">Back To Artsy</NavItem>
     </Nav>
   ))
