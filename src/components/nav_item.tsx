@@ -15,6 +15,7 @@ const StyledLink = styled.a`
   line-height: 12px;
   text-decoration: none;
   color: black;
+  text-transform: uppercase;
 `
 
 const NavItem: React.SFC<NavLinkProps> = props => (
