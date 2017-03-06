@@ -4,7 +4,7 @@ import * as fonts from "../assets/fonts"
 
 type TitleSize = "small" | "medium" | "large" | "xlarge" | "xxlarge"
 
-interface TitleProps extends React.HTMLProps<JSX.Element> {
+interface TitleProps extends React.HTMLProps<HTMLDivElement> {
   titleSize?: TitleSize
 }
 
@@ -17,7 +17,7 @@ const titleSizes = {
 }
 
 const Title: React.SFC<TitleProps> = props => (
-  <div className={props.className}>
+  <div className={props.className} {...props}>
     {props.children}
   </div>
 )
