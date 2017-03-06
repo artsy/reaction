@@ -13,6 +13,9 @@ const FacebookButton = (props: ButtonProps) => {
 export default styled(FacebookButton)`
   background: #39439C;
   color: white;
+  height: 40px;
+  padding: 0 30px;
+  margin: 10px auto 2px;
 
   &:hover:not(:disabled) {
     background: #252C68;

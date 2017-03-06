@@ -12,6 +12,10 @@ export const borderedInput = (props: InputProps) => {
     transition: border-color .25s;
     margin-right: 10px;
     resize: none;
+
+    :placeholder {
+      
+    }
     ${fonts.secondary.style}
 
     &:focus {

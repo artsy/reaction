@@ -6,5 +6,6 @@
     },
     "search.exclude": {
         "**/node_modules": true
-    }
+    },
+    "editor.tabSize": 2
 }
