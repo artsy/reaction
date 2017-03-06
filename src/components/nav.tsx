@@ -1,12 +1,11 @@
 import * as React from "react"
 import styled from "styled-components"
 import colors from "../assets/colors"
-import "../assets/fonts"
-import * as fonts from "../assets/fonts"
 import Icon from "./icon"
 
 const Nav = styled.div`
   border-bottom: 1px solid ${ colors.grayRegular };
+  display: flex;
 `
 
 const NavIcon = styled.div`
@@ -17,7 +16,7 @@ const NavIcon = styled.div`
   margin-right: 10px;
 `
 
-const SimpleNav: React.SFC<any> = props => (
+const NavBar: React.SFC<any> = props => (
   <Nav>
     <NavIcon>
       <Icon name="logo" color="black" fontSize="32px" />
@@ -26,4 +25,4 @@ const SimpleNav: React.SFC<any> = props => (
   </Nav>
 )
 
-export default SimpleNav
+export default NavBar
