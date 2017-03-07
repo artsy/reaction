@@ -10,7 +10,11 @@ import Login from "../login"
 
 storiesOf("Login Page", Login)
   .add("no modal", () => (
+<<<<<<< HEAD
     <Login form={{url: "/"}} />
+=======
+    <Login form={{url: "/", forgotPasswordUrl: "/"}} />
+>>>>>>> [Login] adds prop for passing form url and params
   ))
   .add("w/ modal", () => {
     class ModalDemo extends React.Component<any, any> {
