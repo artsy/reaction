@@ -13,6 +13,7 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   zIndex: 9999;
   background: #fff;
+  width: 420px;
 `
 
 const Overlay = styled.div`
