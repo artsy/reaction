@@ -8,12 +8,12 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "storybook": "node fuse.js",
+    "storybook": "rm -rf .fusebox/cache && node fuse.js",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
-    "lint": "tslint -c tslint.json --project tsconfig.json --fix",
+    "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty"
   },
   "precommit": [

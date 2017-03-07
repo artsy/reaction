@@ -6,7 +6,7 @@ import icons, { IconName } from "../assets/icons"
 
 export type FontName = string
 
-export interface IconProps extends React.HTMLProps<HTMLSpanElement> {
+export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   font?: FontName
   name: IconName
   color?: string
@@ -14,9 +14,9 @@ export interface IconProps extends React.HTMLProps<HTMLSpanElement> {
 }
 
 const Icon: React.SFC<IconProps> = props => (
-  <span className={props.className}>
+  <div className={props.className}>
     {icons[props.name]}
-  </span>
+  </div>
 )
 
 export default styled(Icon)`
@@ -24,4 +24,5 @@ export default styled(Icon)`
   color: ${props => props.color || "purple"};
   font-size: ${ props => props.fontSize || "24px"};
   margin: 0 5px;
+  display: inline-block;
 `
