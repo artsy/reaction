@@ -97,6 +97,7 @@ type Artist implements Node {
   is_shareable: Boolean
   bio: String
   counts: ArtistCounts
+  artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
   artworks(
     # The number of Artworks to return
     size: Int
@@ -268,6 +269,7 @@ type ArtistItem implements Node {
   is_shareable: Boolean
   bio: String
   counts: ArtistCounts
+  artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
   artworks(
     # The number of Artworks to return
     size: Int
@@ -394,6 +396,7 @@ type ArtistSearchEntity implements Node {
   is_shareable: Boolean
   bio: String
   counts: ArtistCounts
+  artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
   artworks(
     # The number of Artworks to return
     size: Int
@@ -614,6 +617,15 @@ enum ArtworkAggregation {
   ARTIST
   FOLLOWED_ARTISTS
   MERCHANDISABLE_ARTISTS
+}
+
+# A connection to a list of items.
+type ArtworkConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArtworkEdge]
 }
 
 union ArtworkContext = ArtworkContextAuction | ArtworkContextSale | ArtworkContextFair | ArtworkContextPartnerShow
@@ -915,6 +927,38 @@ type ArtworkContextSale {
 
   # Auction's buyer's premium policy.
   buyers_premium: [BuyersPremium]
+}
+
+# An edge in a connection.
+type ArtworkEdge {
+  # The item at the end of the edge
+  node: Artwork
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type ArtworkInquiry {
+  id: ID
+  artwork: Artwork!
+}
+
+# A connection to a list of items.
+type ArtworkInquiryConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArtworkInquiryEdge]
+}
+
+# An edge in a connection.
+type ArtworkInquiryEdge {
+  # The item at the end of the edge
+  node: ArtworkInquiry
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 type ArtworkLayer {
@@ -1447,6 +1491,39 @@ type Gene implements Node {
     sort: String
     sale_id: ID
   ): FilterArtworks
+  artworks_connection(
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    estimate_range: String
+    page: Int
+    size: Int
+    sort: String
+    sale_id: ID
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   href: String
   name: String
   description: String
@@ -1496,6 +1573,39 @@ type GeneItem implements Node {
     sort: String
     sale_id: ID
   ): FilterArtworks
+  artworks_connection(
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    estimate_range: String
+    page: Int
+    size: Int
+    sort: String
+    sale_id: ID
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   href: String
   name: String
   description: String
@@ -1880,6 +1990,39 @@ type HomePageModuleContextGene implements Node {
     sort: String
     sale_id: ID
   ): FilterArtworks
+  artworks_connection(
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    estimate_range: String
+    page: Int
+    size: Int
+    sort: String
+    sale_id: ID
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   href: String
   name: String
   description: String
@@ -2146,6 +2289,12 @@ type Me {
     # Pagination, need I say more?
     page: Int
   ): [Artist]
+
+  # A list of feed items, indicating published artworks (grouped by date and artists).
+  notifications_connection(after: String, first: Int, before: String, last: Int): NotificationsFeedItemConnection
+
+  # A list of the current user’s inquiry requests
+  artwork_inquiries_connection(after: String, first: Int, before: String, last: Int): ArtworkInquiryConnection
 }
 
 input Near {
@@ -2158,6 +2307,45 @@ input Near {
 interface Node {
   # The ID of the object.
   __id: ID!
+}
+
+type NotificationsFeedItem {
+  status: NotificationsFeedItemStatus
+  artists: String
+  message: String
+  date(
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+    convert_to_utc: Boolean
+  ): String
+
+  # List of artworks in this notification bundle
+  artworks: [Artwork]
+}
+
+# A connection to a list of items.
+type NotificationsFeedItemConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [NotificationsFeedItemEdge]
+}
+
+# An edge in a connection.
+type NotificationsFeedItemEdge {
+  # The item at the end of the edge
+  node: NotificationsFeedItem
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+enum NotificationsFeedItemStatus {
+  READ
+  UNREAD
 }
 
 type OrderedSet {
@@ -2176,6 +2364,21 @@ type OrderedSet {
 
 type organizer {
   profile_id: ID
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
 }
 
 type Partner implements Node {
@@ -2686,7 +2889,7 @@ type RootQueryType {
   ): Artist
 
   # A list of Artists
-  artists(size: Int, sort: ArtistSorts): [Artist]
+  artists(size: Int, sort: ArtistSorts, page: Int = 1): [Artist]
 
   # An External Partner not on the platform
   external_partner(
@@ -2902,9 +3105,6 @@ type RootQueryType {
     # Fetch the top artists for each metric within double the base time period
     double_time_period: Boolean = false
   ): TrendingArtists
-
-  # A wildcard used to support complex root queries in Relay
-  viewer: Viewer
   me: Me
 
   # Creates, and authorizes, a JWT custom for Causality
@@ -3364,36 +3564,4 @@ enum TrendingMetrics {
 
   # Cumulative price achieved at auction. Base time period: 12 weeks
   ARTIST_AUCTION_LOT
-}
-
-# A wildcard used to support complex root queries in Relay
-type Viewer {
-  # Creates, and authorizes, a JWT custom for Causality
-  causality_jwt(
-    # The id of the auction to participate in
-    sale_id: String!
-    role: Role
-  ): String
-  me: Me
-
-  # A Sale
-  sale(
-    # The slug or ID of the Sale
-    id: String!
-  ): Sale
-
-  # A list of Sales
-  sales(
-    size: Int
-
-    # Limit by auction.
-    is_auction: Boolean = true
-
-    # Limit by published status.
-    published: Boolean = true
-
-    # Limit by live status.
-    live: Boolean = true
-    sort: SaleSorts
-  ): [Sale]
 }

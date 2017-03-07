@@ -18,6 +18,7 @@
   },
   "precommit": [
     "lint",
+    "type-check",
     "test"
   ],
   "devDependencies": {
