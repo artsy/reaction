@@ -4,9 +4,9 @@ import colors from "../assets/colors"
 import "../assets/fonts"
 import icons, { IconName } from "../assets/icons"
 
-export type FontName = string
+type FontName = string
 
-export interface IconProps extends React.HTMLProps<HTMLSpanElement> {
+interface IconProps extends React.HTMLProps<HTMLSpanElement> {
   font?: FontName
   name: IconName
   color?: string

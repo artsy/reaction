@@ -3,12 +3,12 @@ import styled from "styled-components"
 import colors from "../assets/colors"
 import "../assets/fonts"
 
-export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
+interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
   href?: string
   underline?: boolean
 }
 
-export class TextLink extends React.Component<LinkProps, null> {
+class TextLink extends React.Component<LinkProps, null> {
   public static defaultProps: LinkProps
 
   render() {
