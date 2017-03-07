@@ -6,5 +6,5 @@ import Login from "../login"
 
 storiesOf("Login Page", Login)
   .add("no modal", () => (
-    <Login form={{url: "/", forgotPasswordUrl: "/"}} />
+    <Login form={{url: "/"}} />
   ))
