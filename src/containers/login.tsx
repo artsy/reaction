@@ -13,7 +13,6 @@ interface LoginProps extends React.Props<HTMLParagraphElement> {
   form: {
     url: string,
     csrfToken?: string,
-    forgotPasswordUrl: string,
   },
   onSubmit?: () => void
 }
@@ -59,7 +58,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
         <Text align="center">
           <span>Don't have an account? </span>
-          <TextLink href={form.forgotPasswordUrl} underline>Sign Up</TextLink>
+          <TextLink underline>Sign Up</TextLink>
         </Text>
       </LoginContainer>
     )
