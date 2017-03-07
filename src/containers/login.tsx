@@ -6,9 +6,16 @@ import Button from "../components/buttons/inverted"
 import TwitterButton from "../components/buttons/twitter"
 import Icon from "../components/icon"
 import Input from "../components/input"
-import Title from "../components/title"
+import Text from "../components/text"
+import TextLink from "../components/text_link"
 
-interface LoginProps extends React.Props<HTMLDivElement> {
+interface LoginProps extends React.Props<HTMLParagraphElement> {
+  form: {
+    url: string,
+    csrfToken?: string,
+    forgotPasswordUrl: string,
+  },
+  onSubmit?: () => void
 }
 
 interface LoginState {}
@@ -27,18 +34,33 @@ const StyledInput = styled(Input)`margin: 5px 0`
 
 class Login extends React.Component<LoginProps, LoginState> {
   render() {
+    const form = this.props.form
+
     return (
       <LoginContainer>
         <Icon name="logotype" color="black" fontSize="30px" />
-        <Title titleSize="small" style={{ textAlign: "center" }}>Welcome back, please log in to your account.</Title>
+        <Text textSize="large" align="center">
+          Welcome back, please log in <br /> to your account.
+        </Text>
 
-        <StyledInput placeholder="Email" block />
-        <StyledInput placeholder="Password" type="password" block />
+        <form action={form.url} method="POST" onSubmit={this.props.onSubmit}>
+          <StyledInput name="email" placeholder="Email" block />
+          <StyledInput name="password" placeholder="Password" type="password" block />
 
-        <Button block>Log In</Button>
-        
-        <FacebookButton block />
-        <TwitterButton block />
+          {form.csrfToken && <input type="hidden" name="_csrf" value={form.csrfToken} />}
+
+          <Button block>Log In</Button>
+          <div style={{textAlign: "center"}}>or</div>
+          <FacebookButton block />
+          <TwitterButton block />
+        </form>
+
+        <br />
+
+        <Text align="center">
+          <span>Don't have an account? </span>
+          <TextLink href={form.forgotPasswordUrl} underline>Sign Up</TextLink>
+        </Text>
       </LoginContainer>
     )
   }
