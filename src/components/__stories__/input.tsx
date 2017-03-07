@@ -21,13 +21,13 @@ storiesOf("Input", Input)
         </div>
     ))
     .add("Form", () => (
-        <div style={ {padding: 10} }>
+        <div style={{padding: 10}}>
             <Input placeholder="First Name" block />
             <TextArea placeholder="Your Message" block />
         </div>
     ))
     .add("Form w/ Button", () => (
-        <div style={ {padding: 10} }>
+        <div style={{padding: 10}}>
             <Input placeholder="Email" block />
             <Input type="password" placeholder="Password" block />
             <Button block>Submit</Button>
