@@ -1,4 +1,6 @@
 const fsbx = require("fuse-box")
+const express = require("express")
+const path = require("path")
 
 // The Storybook UI
 const storybookManager = fsbx.FuseBox.init({
@@ -27,4 +29,5 @@ const server = fuse.devServer(">__stories__/config.js +babel-runtime/* +componen
 // Serve Storybook bootstrap HTML
 const app = server.httpServer.app
 
-app.use("/", require("express").static("./.storybook"))
+app.use("/", express.static("./.storybook"))
+

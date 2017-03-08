@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "storybook": "rm -rf .fusebox/cache && node fuse.js",
+    "storybook": "rm -rf .fusebox/cache && node fuse/storybook.js",
+    "spa": "rm -rf .fusebox/cache && node fuse/spa.js",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
@@ -48,9 +49,11 @@
     "typescript": "^2.1.5"
   },
   "dependencies": {
+    "@types/react-router": "^3.0.6",
     "asap": "https://github.com/alloy/asap.git",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
+    "react-router": "^3.0.2",
     "styled-components": "^1.4.3"
   },
   "graphql": {

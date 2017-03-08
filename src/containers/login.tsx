@@ -10,7 +10,7 @@ import Text from "../components/text"
 import TextLink from "../components/text_link"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
-  form: {
+  form?: {
     url: string,
     csrfToken?: string,
   },
@@ -33,7 +33,7 @@ const StyledInput = styled(Input)`margin: 5px 0`
 
 class Login extends React.Component<LoginProps, LoginState> {
   render() {
-    const form = this.props.form
+    const form = this.props.form || {url: "/"}
 
     return (
       <LoginContainer>

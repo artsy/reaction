@@ -6,7 +6,12 @@
         "rootDir": "src",
         "jsx": "react",
         "allowJs": false,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "paths": {
+            "components/*": ["./src/components/*"],
+            "containers/*": ["./src/containers/*"]
+        }
     },
     "exclude": [
         "node_modules",
