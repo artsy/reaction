@@ -9,6 +9,7 @@ function loadStories() {
   require("../components/__stories__/input")
   require("../components/__stories__/grid")
   require("../components/__stories__/nav")
+  require("../components/__stories__/artwork_filter")
 }
 
 configure(loadStories, module)

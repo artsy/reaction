@@ -1,11 +1,25 @@
 import * as Relay from "react-relay"
 
+export class FilterArtworksQueryConfig extends Relay.Route {
+  public static queries = {
+    filter_artworks: (component, params) => Relay.QL`
+      query {
+        viewer {
+          ${component.getFragment('filter_artworks')}
+        }
+      }
+    `,
+  }
+
+  public static routeName = "FilterArtworksQueryConfig"
+}
+
 export class ArtworkQueryConfig extends Relay.Route {
   public static queries = {
     artwork: (component, params) => Relay.QL`
       query {
         artwork(id: $artworkID) {
-          ${component.getFragment("artwork", params)}
+          ${component.getFragment('artwork', params)}
         }
       }
     `,
@@ -23,7 +37,7 @@ export class ArtistQueryConfig extends Relay.Route {
     artist: (component, params) => Relay.QL`
       query {
         artist(id: $artistID) {
-          ${component.getFragment("artist", params)}
+          ${component.getFragment('artist', params)}
         }
       }
     `,
