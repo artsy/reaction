@@ -13,6 +13,9 @@ const TwitterButton = (props: ButtonProps) => {
 export default styled(TwitterButton)`
   background: #1D9EF4;
   color: white;
+  height: 40px;
+  padding: 0 30px;
+  margin: 5px auto 5px;
 
   &:hover:not(:disabled) {
     background: #0D73B6;
