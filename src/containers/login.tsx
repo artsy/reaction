@@ -29,7 +29,10 @@ const LoginContainer = styled.div`
   flex-direction: column;
 `
 
-const StyledInput = styled(Input)`margin: 5px 0`
+const StyledInput = styled(Input)`
+  margin: 5px 0;
+  width: 100%;
+`
 
 class Login extends React.Component<LoginProps, LoginState> {
   render() {

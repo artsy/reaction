@@ -3,5 +3,5 @@ export function login(email, pass, cb) {
 }
 
 export function loggedIn() {
-  return false
+  return true
 }
