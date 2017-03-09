@@ -9,6 +9,7 @@ import { primary, secondary } from "../../assets/fonts"
 
 export interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
+  onSelect?: any
 }
 
 export interface DropdownState {
@@ -32,7 +33,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   render() {
     const navItems = this.props.aggregation.counts.map((count) =>{
       return (
-        <NavItem>
+        <NavItem onClick={() => this.props.onSelect(count)}>
           <span>{count.name}</span>
           <NavItemCount> ({count.count})</NavItemCount>
         </NavItem>

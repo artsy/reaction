@@ -8,15 +8,46 @@ import { FilterArtworksQueryConfig } from "../../relay/root_queries"
 import Dropdown from "../artwork_filter/dropdown"
 import TotalCount from "../artwork_filter/total_count"
 
-export class FilterArtworksDropdown extends React.Component<DropdownRelayProps, null> {
-  render() {
-    let dropdowns = []
-    this.props.filter_artworks.filter_artworks.aggregations.forEach((aggregation) => {
-      dropdowns.push(<Dropdown aggregation={aggregation}/>)
+export interface FilterArtworksDropdownState {
+  selected: string
+}
+
+export class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      selected: ""
+    }
+  } 
+
+  showSelection(count) {
+    this.setState ({
+      selected: count.name
     })
+  }
+
+  render() {
+    const dropdowns = this.props
+      .filter_artworks
+      .filter_artworks.aggregations.map((aggregation) => 
+        <Dropdown 
+          aggregation={aggregation} 
+          key={aggregation.slice}
+          onSelect={(aggregation) => {
+            this.showSelection(aggregation)
+          }}
+        />
+      )
+    
+    const selected = <div>{this.state.selected}</div>
+
     return (
-      <div style={{display: 'inline-block'}}>
-        {dropdowns}
+      <div>
+        <div>{dropdowns}</div>
+        <div style={{padding: "20px 0"}}>
+          Selected: {selected}
+        </div>
       </div>
     )
   }
