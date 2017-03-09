@@ -6,8 +6,9 @@ import { artsyNetworkLayer } from "../../relay/config"
 import { FilterArtworksQueryConfig } from "../../relay/root_queries"
 
 import Dropdown from "../artwork_filter/dropdown"
+import TotalCount from "../artwork_filter/total_count"
 
-export class FilterArtworks extends React.Component<RelayProps, null> {
+export class FilterArtworksDropdown extends React.Component<DropdownRelayProps, null> {
   render() {
     let dropdowns = []
     this.props.filter_artworks.filter_artworks.aggregations.forEach((aggregation) => {
@@ -21,7 +22,7 @@ export class FilterArtworks extends React.Component<RelayProps, null> {
   }
 }
 
-const FilterArtworksContainer = Relay.createContainer(FilterArtworks, {
+const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDropdown, {
   fragments: {
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
@@ -38,7 +39,7 @@ const FilterArtworksContainer = Relay.createContainer(FilterArtworks, {
   },
 })
 
-interface RelayProps {
+interface DropdownRelayProps {
   filter_artworks: {
     filter_artworks: {
       aggregations: Array<{
@@ -53,11 +54,52 @@ interface RelayProps {
   } | null,
 }
 
-function FilterArtworksExample(props: { aggregations: [string] }) {
+export class FilterArtworksTotalCount extends React.Component<TotalCountRelayProps, null> {
+  render() {
+    return (<TotalCount filter_artworks={this.props.filter_artworks.filter_artworks} />)
+  }
+}
+
+const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTotalCount, {
+  fragments: {
+    filter_artworks: () => Relay.QL`
+      fragment on Viewer {
+        filter_artworks(
+          aggregations: [TOTAL], 
+          artist_id: "christopher-williams"
+        ) {
+          ${TotalCount.getFragment('filter_artworks')}
+        }
+      }
+    `,
+  },
+})
+
+interface TotalCountRelayProps {
+  filter_artworks: {
+    filter_artworks: {
+      counts: {
+        total: number | null,
+      } | null,
+    } | null,
+  } | null,
+}
+
+function FilterArtworksDropdownExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
   return (
     <Relay.RootContainer
-      Component={FilterArtworksContainer}
+      Component={FilterArtworksDropdownContainer}
+      route={new FilterArtworksQueryConfig()}
+    />
+  )
+}
+
+function FilterArtworksTotalCountExample() {
+  Relay.injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <Relay.RootContainer
+      Component={FilterArtworksTotalCountContainer}
       route={new FilterArtworksQueryConfig()}
     />
   )
@@ -65,5 +107,8 @@ function FilterArtworksExample(props: { aggregations: [string] }) {
 
 storiesOf("Artwork Filter Components", Dropdown)
   .add("Filter dropdown", () => (
-    <FilterArtworksExample aggregations={['TOTAL', 'MEDIUM']}/>
+    <FilterArtworksDropdownExample/>
+  ))
+  .add("Total Count", () => (
+    <FilterArtworksTotalCountExample/>
   ))
