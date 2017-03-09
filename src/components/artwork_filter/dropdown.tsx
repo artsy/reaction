@@ -34,7 +34,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <NavItem>
           <span>{count.name}</span>
-          <span> ({count.count})</span>
+          <NavItemCount> ({count.count})</NavItemCount>
         </NavItem>
       )
     })
@@ -94,19 +94,26 @@ const Nav = styled.div`
 `
 
 const NavItem = styled.div`
+  ${secondary.style}
   text-align: left;
   color: white;
   display: block;
   border-bottom: 1px solid #333;
   padding: 15px 18px 10px 18px;
   text-transform: capitalize;
-  ${secondary.style}
+  &:hover {
+    background: ${colors.grayBold};
+  }
+`
+const NavItemCount = styled.span`
+  color: ${colors.graySemibold}
 `
 
 const StyledDropdown = styled(Dropdown)`
   position: relative;
   display: inline-block;
   cursor: pointer;
+  margin-left: -1px;
 `
 
 export default Relay.createContainer(StyledDropdown, {
