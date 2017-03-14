@@ -11,10 +11,11 @@ export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   name: IconName
   color?: string
   fontSize?: string
+  style?: any
 }
 
 const Icon: React.SFC<IconProps> = props => (
-  <div className={props.className}>
+  <div className={props.className} style={props.style}>
     {icons[props.name]}
   </div>
 )

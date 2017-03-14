@@ -13,14 +13,16 @@ interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
 }
 
 interface DropdownState {
-  isHovered: boolean
+  isHovered: boolean,
+  selected: any
 }
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   constructor(props) {
     super(props)
     this.state = {
-      isHovered: false
+      isHovered: false,
+      selected: {}
     }
   }
   
@@ -30,10 +32,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
   }
 
+  onSelect(count) {
+    this.setState({
+      selected: count
+    })
+  }
+
   render() {
     const navItems = this.props.aggregation.counts.map((count) =>{
       return (
-        <NavItem onClick={() => this.props.onSelect(count)}>
+        <NavItem onClick={() => {
+          this.onSelect(count)
+          this.props.onSelect(count)
+        }}>
           <span>{count.name}</span>
           <NavItemCount> ({count.count})</NavItemCount>
         </NavItem>
@@ -42,13 +53,22 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     let buttonColor = "white"
     let buttonTextColor = "black"
+    let superLabelColor = "black"
     let navStyle = { display: "none" }
+
+    if (this.state.selected.name) {
+      buttonTextColor = colors.purpleRegular
+    }
 
     if (this.state.isHovered) {
       buttonColor = "black"
       buttonTextColor = "white"
+      superLabelColor = "white"
       navStyle = { display: "block" }
     }
+
+    const labelText = this.state.selected.name || this.props.aggregation.slice
+    const superLabelText = this.state.selected.name ? this.props.aggregation.slice : null
 
     return (
       <div 
@@ -57,11 +77,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         onMouseLeave={() => this.toggleHover()}
       >
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
-          {this.props.aggregation.slice}
+          {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
+          {labelText}
           <Icon 
             name="arrow-down" 
             fontSize="9px" 
             color={buttonTextColor}
+            style={{
+              position: "absolute",
+              right: 15
+            }}
           />
         </Button>
         <Nav style={navStyle}>
@@ -78,9 +103,13 @@ const Button = styled.div`
   border: 1px solid ${colors.grayRegular};
   display: inline-block;
   line-height: 160%;
-  padding: 15px 18px 10px 18px;
+  padding: 15px 35px 10px 18px;
   font-size: 13px;
   vertical-align: middle;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   ${primary.style}
 `
 
@@ -92,6 +121,13 @@ const Nav = styled.div`
   left: 1px;
   width: 300px;
   border: 1px solid #333;
+`
+
+const SuperLabel = styled.div`
+  position: absolute
+  font-size: 9px
+  margin-top: -15px;
+  color: black
 `
 
 const NavItem = styled.div`
