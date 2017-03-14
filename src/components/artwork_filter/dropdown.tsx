@@ -7,26 +7,26 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 import { primary, secondary } from "../../assets/fonts"
 
-export interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
+interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
   onSelect?: any
 }
 
-export interface DropdownState {
-  is_hovered: boolean
+interface DropdownState {
+  isHovered: boolean
 }
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   constructor(props) {
     super(props)
     this.state = {
-      is_hovered: false
+      isHovered: false
     }
   }
   
   toggleHover() {
     this.setState({
-      is_hovered: !this.state.is_hovered
+      isHovered: !this.state.isHovered
     })
   }
 
@@ -44,7 +44,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     let buttonTextColor = "black"
     let navStyle = { display: "none" }
 
-    if (this.state.is_hovered) {
+    if (this.state.isHovered) {
       buttonColor = "black"
       buttonTextColor = "white"
       navStyle = { display: "block" }
