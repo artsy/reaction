@@ -6,6 +6,7 @@ import Icon from '../icon'
 import styled from "styled-components"
 import colors from "../../assets/colors"
 import { primary, secondary } from "../../assets/fonts"
+import { labelMap } from "./param_map"
 
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
@@ -51,15 +52,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       )
     })
 
+    const allLabel = labelMap[this.props.aggregation.slice.toLowerCase()].plural
+
     navItems.unshift(
       <NavItem key='all' onClick={() => {
         this.onSelect({})
         this.props.onSelect({})
       }}>
-        <span>All {this.props.aggregation.slice.toLowerCase()}</span>
+        <span>All {allLabel}</span>
       </NavItem>
     )
-
 
     let buttonColor = "white"
     let buttonTextColor = "black"
