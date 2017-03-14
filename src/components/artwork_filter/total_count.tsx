@@ -12,7 +12,7 @@ export class TotalCount extends React.Component<TotalCountProps, null> {
 
   render() {
     const total = this.props.filter_artworks.counts.total
-    const s = total > 1 ? "s" : ""
+    const s = total !== 1 ? "s" : ""
     return (
       <div className={this.props.className}>
         {total} Work{s}
