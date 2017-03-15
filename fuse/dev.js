@@ -38,8 +38,8 @@ module.exports = opts => {
 
     const app = server.httpServer.app;
     app.use(express.static(path.resolve(__dirname, '..', opts.root)));
-    app.use(express.static(path.resolve(__dirname, '..', 'assets')));
+    app.use(express.static(path.resolve( __dirname,'..', 'assets')));
     app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, opts.root, '..', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '..', opts.root, 'index.html'));
     });
 }
