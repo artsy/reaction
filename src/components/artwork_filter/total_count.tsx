@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+import * as numeral from "numeral"
 
 import styled from "styled-components"
 import { secondary } from "../../assets/fonts"
@@ -15,7 +16,7 @@ export class TotalCount extends React.Component<TotalCountProps, null> {
     const s = total !== 1 ? "s" : ""
     return (
       <div className={this.props.className}>
-        {total} Work{s}
+        {numeral(total).format("0,0")} Work{s}
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+import * as numeral from "numeral"
 
 import Icon from '../icon'
 
@@ -47,7 +48,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
           this.props.onSelect(count)
         }}>
           <span>{count.name}</span>
-          <NavItemCount> ({count.count})</NavItemCount>
+          <NavItemCount> ({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
       )
     })
