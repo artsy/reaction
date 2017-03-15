@@ -1,11 +1,11 @@
+import * as numeral from "numeral"
 import * as React from "react"
 import * as Relay from "react-relay"
-import * as numeral from "numeral"
 
 import styled from "styled-components"
 import { secondary } from "../../assets/fonts"
 
-export interface TotalCountProps extends RelayProps, React.HTMLProps<TotalCount> {
+interface TotalCountProps extends RelayProps, React.HTMLProps<TotalCount> {
   filter_artworks: any
 }
 
@@ -44,5 +44,5 @@ interface RelayProps {
     counts: {
       total: number | null,
     } | null,
-  } 
+  }
 }

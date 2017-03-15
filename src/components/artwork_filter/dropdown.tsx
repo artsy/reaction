@@ -1,8 +1,8 @@
+import * as numeral from "numeral"
 import * as React from "react"
 import * as Relay from "react-relay"
-import * as numeral from "numeral"
 
-import Icon from '../icon'
+import Icon from "../icon"
 
 import styled from "styled-components"
 import colors from "../../assets/colors"
@@ -24,44 +24,41 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     super(props)
     this.state = {
       isHovered: false,
-      selected: {}
+      selected: {},
     }
   }
-  
+
   toggleHover() {
     this.setState({
-      isHovered: !this.state.isHovered
+      isHovered: !this.state.isHovered,
     })
   }
 
   onSelect(count, slice) {
     this.setState({
-      selected: count
+      selected: count,
     })
     this.props.onSelect(count, slice)
   }
 
   render() {
     const slice = this.props.aggregation.slice
-    let navItems = this.props.aggregation.counts.map((count) =>{
+    let navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => {
-          this.onSelect(count, slice)
-        }}>
+        <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
           <span>{count.name}</span>
-          <NavItemCount> ({numeral(count.count).format("0,0")})</NavItemCount>
+          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
       )
     })
 
     const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
-
     navItems.unshift(
-      <NavItem key='all' onClick={() => {
-        this.onSelect({value: '*'}, slice)
-      }}>
-        <span>All {labels.plural}</span>
-      </NavItem>
+      (
+        <NavItem key="all" onClick={() => this.onSelect({value: "*"}, slice)}>
+          <span>All {labels.plural}</span>
+        </NavItem>
+      ),
     )
 
     let buttonColor = "white"
@@ -81,25 +78,22 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
 
     const labelText = this.state.selected.name || labels.label
-    const superLabelText = this.state.selected.name ? labels.label: null
+    const superLabelText = this.state.selected.name ? labels.label : null
 
     return (
-      <div 
+      <div
         className={this.props.className}
-        onMouseEnter={() => this.toggleHover()} 
+        onMouseEnter={() => this.toggleHover()}
         onMouseLeave={() => this.toggleHover()}
       >
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
           {labelText}
-          <Icon 
-            name="arrow-down" 
-            fontSize="9px" 
+          <Icon
+            name="arrow-down"
+            fontSize="9px"
             color={buttonTextColor}
-            style={{
-              position: "absolute",
-              right: 15
-            }}
+            style={{ position: "absolute", right: 15 }}
           />
         </Button>
         <Nav style={navStyle}>
@@ -188,7 +182,6 @@ interface RelayProps {
       name: string | null,
       id: string | null,
       count: number | null,
-    }
+    },
   } | null,
 }
-

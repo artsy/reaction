@@ -1,10 +1,10 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-
 import styled from "styled-components"
+
+import Artworks from "../artwork_grid"
 import Dropdown from "./dropdown"
 import TotalCount from "./total_count"
-import Artworks from "../artwork_grid"
 
 const PageSize = 10
 
@@ -17,25 +17,26 @@ interface FilterArtworksDropdownState {
   selected: {
     dimension_range: any,
     price_range: any,
-    medium: any
+    medium: any,
   }
 }
 
 class ArtworkFilter extends React.Component<ArtworkFilterProps, null> {
   onSelect(count, slice) {
-    console.log('onSelect', count, slice, this)
     this.props.relay.setVariables({
-      [slice.toLowerCase()]: count.id 
+      [slice.toLowerCase()]: count.id,
     })
   }
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
-    const dropdowns = filterArtworks.aggregations.map((aggregation) => 
-      <Dropdown 
-        aggregation={aggregation} 
-        key={aggregation.slice}
-        onSelect={(count, slice) => this.onSelect(count, slice)}
-      />
+    const dropdowns = filterArtworks.aggregations.map(aggregation =>
+      (
+        <Dropdown
+          aggregation={aggregation}
+          key={aggregation.slice}
+          onSelect={(count, slice) => this.onSelect(count, slice)}
+        />
+      ),
     )
     return (
       <div>
@@ -67,7 +68,7 @@ export default Relay.createContainer(ArtworkFilter, {
     medium: "*",
     aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
     price_range: "*",
-    dimension_range: "*"
+    dimension_range: "*",
   },
   fragments: {
     filter_artworks: () => Relay.QL`
@@ -79,12 +80,12 @@ export default Relay.createContainer(ArtworkFilter, {
           price_range: $price_range,
           dimension_range: $dimension_range
         ) {
-          ${TotalCount.getFragment('filter_artworks')}
+          ${TotalCount.getFragment("filter_artworks")}
           aggregations {
-            ${Dropdown.getFragment('aggregation')}
+            ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $size) {
-            ${Artworks.getFragment('artworks')}
+            ${Artworks.getFragment("artworks")}
           }
         }
       }

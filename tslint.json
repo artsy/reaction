@@ -15,12 +15,10 @@
     "object-literal-sort-keys": false,
     "member-access": [ false ],
     "no-unused-expression": false,
-    "max-classes-per-file": [ true, 2 ],
-
-    "jsx-no-lambda": true,
+    "max-classes-per-file": [false],
+    "jsx-no-lambda": false,
     "jsx-curly-spacing": [ true, "never" ],
     "jsx-wrap-multiline": [ true, "always" ],
-
     "ter-indent": [true, 2]
   }
 }

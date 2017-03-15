@@ -5,7 +5,7 @@ export class FilterArtworksQueryConfig extends Relay.Route {
     filter_artworks: (component, params) => Relay.QL`
       query {
         viewer {
-          ${component.getFragment('filter_artworks')}
+          ${component.getFragment("filter_artworks")}
         }
       }
     `,
@@ -19,7 +19,7 @@ export class ArtworkQueryConfig extends Relay.Route {
     artwork: (component, params) => Relay.QL`
       query {
         artwork(id: $artworkID) {
-          ${component.getFragment('artwork', params)}
+          ${component.getFragment("artwork", params)}
         }
       }
     `,
@@ -37,7 +37,7 @@ export class ArtistQueryConfig extends Relay.Route {
     artist: (component, params) => Relay.QL`
       query {
         artist(id: $artistID) {
-          ${component.getFragment('artist', params)}
+          ${component.getFragment("artist", params)}
         }
       }
     `,

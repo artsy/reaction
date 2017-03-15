@@ -52,7 +52,6 @@
     "numeral": "^2.0.4",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
-    "react-url-query": "^1.1.1",
     "styled-components": "^1.4.3"
   },
   "graphql": {
