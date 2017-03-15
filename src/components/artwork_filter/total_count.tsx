@@ -43,5 +43,5 @@ interface RelayProps {
     counts: {
       total: number | null,
     } | null,
-  } 
+  }
 }

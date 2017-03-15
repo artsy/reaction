@@ -13,33 +13,32 @@ interface FilterArtworksDropdownState {
 }
 
 class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
-  
   constructor(props) {
     super(props)
     this.state = {
-      selected: ""
+      selected: "",
     }
-  } 
+  }
 
   showSelection(count) {
     this.setState ({
-      selected: count.name
+      selected: count.name,
     })
   }
 
   render() {
     const dropdowns = this.props
       .filter_artworks
-      .filter_artworks.aggregations.map((aggregation) => 
-        <Dropdown 
-          aggregation={aggregation} 
-          key={aggregation.slice}
-          onSelect={(aggregation) => {
-            this.showSelection(aggregation)
-          }}
-        />
+      .filter_artworks.aggregations.map(aggregation =>
+        (
+          <Dropdown
+            aggregation={aggregation}
+            key={aggregation.slice}
+            onSelect={this.showSelection}
+          />
+        ),
       )
-    
+
     const selected = <div>{this.state.selected}</div>
 
     return (
@@ -62,7 +61,7 @@ const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDrop
           artist_id: "christopher-williams"
         ) {
           aggregations {
-            ${Dropdown.getFragment('aggregation')}
+            ${Dropdown.getFragment("aggregation")}
           }
         }
       }
@@ -79,7 +78,7 @@ interface DropdownRelayProps {
           name: string | null,
           count: number | null,
           id: string | null,
-        }
+        },
       } | null> | null,
     } | null,
   } | null,
@@ -99,7 +98,7 @@ const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTo
           aggregations: [TOTAL], 
           artist_id: "christopher-williams"
         ) {
-          ${TotalCount.getFragment('filter_artworks')}
+          ${TotalCount.getFragment("filter_artworks")}
         }
       }
     `,

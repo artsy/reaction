@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Icon from '../icon'
+import Icon from "../icon"
 
 import styled from "styled-components"
 import colors from "../../assets/colors"
@@ -23,31 +23,28 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     super(props)
     this.state = {
       isHovered: false,
-      selected: {}
+      selected: {},
     }
   }
-  
+
   toggleHover() {
     this.setState({
-      isHovered: !this.state.isHovered
+      isHovered: !this.state.isHovered,
     })
   }
 
   onSelect(count) {
     this.setState({
-      selected: count
+      selected: count,
     })
   }
 
   render() {
-    let navItems = this.props.aggregation.counts.map((count) =>{
+    let navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => {
-          this.onSelect(count)
-          this.props.onSelect(count)
-        }}>
+        <NavItem key={count.id} onClick={() => this.onSelect(count)}>
           <span>{count.name}</span>
-          <NavItemCount> ({count.count})</NavItemCount>
+          <NavItemCount>&nbsp;({count.count})</NavItemCount>
         </NavItem>
       )
     })
@@ -55,12 +52,11 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     const allLabel = labelMap[this.props.aggregation.slice.toLowerCase()].plural
 
     navItems.unshift(
-      <NavItem key='all' onClick={() => {
-        this.onSelect({})
-        this.props.onSelect({})
-      }}>
-        <span>All {allLabel}</span>
-      </NavItem>
+      (
+        <NavItem key="all" onClick={() => this.onSelect({})}>
+          <span>All {allLabel}</span>
+        </NavItem>
+      ),
     )
 
     let buttonColor = "white"
@@ -83,22 +79,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     const superLabelText = this.state.selected.name ? this.props.aggregation.slice : null
 
     return (
-      <div 
+      <div
         className={this.props.className}
-        onMouseEnter={() => this.toggleHover()} 
+        onMouseEnter={() => this.toggleHover()}
         onMouseLeave={() => this.toggleHover()}
       >
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
           {labelText}
-          <Icon 
-            name="arrow-down" 
-            fontSize="9px" 
+          <Icon
+            name="arrow-down"
+            fontSize="9px"
             color={buttonTextColor}
-            style={{
-              position: "absolute",
-              right: 15
-            }}
+            style={{ position: "absolute", right: 15 }}
           />
         </Button>
         <Nav style={navStyle}>
@@ -187,7 +180,6 @@ interface RelayProps {
       name: string | null,
       id: string | null,
       count: number | null,
-    }
+    },
   } | null,
 }
-
