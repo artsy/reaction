@@ -9,14 +9,13 @@
         "allowSyntheticDefaultImports": true,
         "baseUrl": "src",
         "paths": {
-            "components/*": ["./src/components/*"],
-            "containers/*": ["./src/containers/*"]
-        }
+            "components/*": ["./components/*"]
+        },
+        "outDir": "dist"
     },
     "exclude": [
         "node_modules",
-        "out",
-        "dangerfile.js",
+        "dist",
         "data",
         "externals"
     ]

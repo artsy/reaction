@@ -3,9 +3,9 @@ import { render } from "react-dom"
 import { browserHistory, IndexRoute, Link, Route, Router } from "react-router"
 import * as auth from "./auth"
 
-import Inquiries from "../../containers/inquiries"
-import Login from "../../containers/login"
 import App from "./app"
+import Inquiries from "./containers/inquiries"
+import Login from "./containers/login"
 
 function requireAuth(nextState, replace) {
   if (!auth.loggedIn()) {

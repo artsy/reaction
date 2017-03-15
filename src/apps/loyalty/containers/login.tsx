@@ -1,13 +1,13 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import FacebookButton from "../components/buttons/facebook"
-import Button from "../components/buttons/inverted"
-import TwitterButton from "../components/buttons/twitter"
-import Icon from "../components/icon"
-import Input from "../components/input"
-import Text from "../components/text"
-import TextLink from "../components/text_link"
+import FacebookButton from "../../../components/buttons/facebook"
+import Button from "../../../components/buttons/inverted"
+import TwitterButton from "../../../components/buttons/twitter"
+import Icon from "../../../components/icon"
+import Input from "../../../components/input"
+import Text from "../../../components/text"
+import TextLink from "../../../components/text_link"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
