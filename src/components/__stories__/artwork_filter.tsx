@@ -8,11 +8,11 @@ import { FilterArtworksQueryConfig } from "../../relay/root_queries"
 import Dropdown from "../artwork_filter/dropdown"
 import TotalCount from "../artwork_filter/total_count"
 
-export interface FilterArtworksDropdownState {
+interface FilterArtworksDropdownState {
   selected: string
 }
 
-export class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
+class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
   
   constructor(props) {
     super(props)
@@ -85,7 +85,7 @@ interface DropdownRelayProps {
   } | null,
 }
 
-export class FilterArtworksTotalCount extends React.Component<TotalCountRelayProps, null> {
+class FilterArtworksTotalCount extends React.Component<TotalCountRelayProps, null> {
   render() {
     return (<TotalCount filter_artworks={this.props.filter_artworks.filter_artworks} />)
   }
