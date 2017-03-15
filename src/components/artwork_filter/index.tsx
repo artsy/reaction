@@ -10,17 +10,33 @@ const PageSize = 10
 
 interface ArtworkFilterProps extends RelayProps, React.HTMLProps<ArtworkFilter> {
   filter_artworks: any
+  relay: any
+}
+
+interface FilterArtworksDropdownState {
+  selected: {
+    dimension_range: any,
+    price_range: any,
+    medium: any
+  }
 }
 
 class ArtworkFilter extends React.Component<ArtworkFilterProps, null> {
+  onSelect(count, slice) {
+    console.log('onSelect', count, slice, this)
+    this.props.relay.setVariables({
+      [slice.toLowerCase()]: count.id 
+    })
+  }
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
     const dropdowns = filterArtworks.aggregations.map((aggregation) => 
-        <Dropdown 
-          aggregation={aggregation} 
-          key={aggregation.slice}
-        />
-      )
+      <Dropdown 
+        aggregation={aggregation} 
+        key={aggregation.slice}
+        onSelect={(count, slice) => this.onSelect(count, slice)}
+      />
+    )
     return (
       <div>
         <FilterBar>
@@ -47,27 +63,27 @@ const SubFilterBar = styled.div`
 
 export default Relay.createContainer(ArtworkFilter, {
   initialVariables: {
-    totalSize: PageSize,
+    size: PageSize,
     medium: "*",
     aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
-    priceRange: "*",
-    dimensionRange: "*"
+    price_range: "*",
+    dimension_range: "*"
   },
   fragments: {
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
           aggregations: $aggregations, 
-          size: $totalSize,
+          size: $size,
           medium: $medium,
-          price_range: $priceRange,
-          dimension_range: $dimensionRange
+          price_range: $price_range,
+          dimension_range: $dimension_range
         ) {
           ${TotalCount.getFragment('filter_artworks')}
           aggregations {
             ${Dropdown.getFragment('aggregation')}
           }
-          artworks: artworks_connection(first: $totalSize) {
+          artworks: artworks_connection(first: $size) {
             ${Artworks.getFragment('artworks')}
           }
         }

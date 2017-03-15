@@ -34,18 +34,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
   }
 
-  onSelect(count) {
+  onSelect(count, slice) {
     this.setState({
       selected: count
     })
+    this.props.onSelect(count, slice)
   }
 
   render() {
+    const slice = this.props.aggregation.slice
     let navItems = this.props.aggregation.counts.map((count) =>{
       return (
         <NavItem key={count.id} onClick={() => {
-          this.onSelect(count)
-          this.props.onSelect(count)
+          this.onSelect(count, slice)
         }}>
           <span>{count.name}</span>
           <NavItemCount> ({numeral(count.count).format("0,0")})</NavItemCount>
@@ -57,8 +58,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     navItems.unshift(
       <NavItem key='all' onClick={() => {
-        this.onSelect({})
-        this.props.onSelect({})
+        this.onSelect({value: '*'}, slice)
       }}>
         <span>All {labels.plural}</span>
       </NavItem>
