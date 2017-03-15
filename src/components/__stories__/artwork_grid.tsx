@@ -21,7 +21,7 @@ const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
     artist: () => Relay.QL`
       fragment on Artist {
         artworks: artworks_connection(first: 10) {
-          ${ArtworkGrid.getFragment("artworks")}
+          ${ArtworkGrid.getFragment('artworks')}
         }
       }
     `,

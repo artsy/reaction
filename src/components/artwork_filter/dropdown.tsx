@@ -52,14 +52,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       )
     })
 
-    const allLabel = labelMap[this.props.aggregation.slice.toLowerCase()].plural
+    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
 
     navItems.unshift(
       <NavItem key='all' onClick={() => {
         this.onSelect({})
         this.props.onSelect({})
       }}>
-        <span>All {allLabel}</span>
+        <span>All {labels.plural}</span>
       </NavItem>
     )
 
@@ -79,8 +79,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       navStyle = { display: "block" }
     }
 
-    const labelText = this.state.selected.name || this.props.aggregation.slice
-    const superLabelText = this.state.selected.name ? this.props.aggregation.slice : null
+    const labelText = this.state.selected.name || labels.label
+    const superLabelText = this.state.selected.name ? labels.label: null
 
     return (
       <div 

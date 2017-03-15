@@ -7,12 +7,13 @@ import { FilterArtworksQueryConfig } from "../../relay/root_queries"
 
 import Dropdown from "../artwork_filter/dropdown"
 import TotalCount from "../artwork_filter/total_count"
+import ArtworksFilter from "../artwork_filter/index"
 
-export interface FilterArtworksDropdownState {
+interface FilterArtworksDropdownState {
   selected: string
 }
 
-export class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
+class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterArtworksDropdownState> {
   
   constructor(props) {
     super(props)
@@ -136,10 +137,23 @@ function FilterArtworksTotalCountExample() {
   )
 }
 
+function FilterArtworksExample() {
+  Relay.injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <Relay.RootContainer
+      Component={ArtworksFilter}
+      route={new FilterArtworksQueryConfig()}
+    />
+  )
+}
+
 storiesOf("Artwork Filter Components", Dropdown)
   .add("Filter dropdown", () => (
-    <FilterArtworksDropdownExample/>
+    <FilterArtworksDropdownExample />
   ))
   .add("Total Count", () => (
-    <FilterArtworksTotalCountExample/>
+    <FilterArtworksTotalCountExample />
   ))
+  .add("Artwork filter", () => (
+    <FilterArtworksExample />
+  )) 
