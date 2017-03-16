@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
 import Dropdown from "./dropdown"
+import Headline from "./headline"
 import TotalCount from "./total_count"
 
 const PageSize = 10
@@ -14,19 +15,29 @@ interface ArtworkFilterProps extends RelayProps, React.HTMLProps<ArtworkFilter> 
 }
 
 interface FilterArtworksDropdownState {
-  selected: {
-    dimension_range: any,
-    price_range: any,
-    medium: any,
-  }
+  dimension_range: any,
+  price_range: any,
+  medium: any,
 }
 
-class ArtworkFilter extends React.Component<ArtworkFilterProps, null> {
+class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDropdownState> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      dimension_range: "*",
+      price_range: "*",
+      medium: "*",
+    }
+  }
   onSelect(count, slice) {
+    this.setState({
+      [slice.toLowerCase()]: count.name,
+    })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
     })
   }
+
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
     const dropdowns = filterArtworks.aggregations.map(aggregation =>
@@ -44,7 +55,14 @@ class ArtworkFilter extends React.Component<ArtworkFilterProps, null> {
           {dropdowns}
         </FilterBar>
         <SubFilterBar>
-          <TotalCount filter_artworks={filterArtworks} />
+          <div>
+            <Headline
+              medium={this.state.medium}
+              price_range={this.state.price_range}
+              dimension_range={this.state.dimension_range} 
+            />
+            <TotalCount filter_artworks={filterArtworks} />
+          </div>
         </SubFilterBar>
         <Artworks artworks={filterArtworks.artworks} />
       </div>
