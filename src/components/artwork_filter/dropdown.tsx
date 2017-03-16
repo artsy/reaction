@@ -28,15 +28,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
   }
 
-  toggleHover() {
+  toggleHover(value) {
     this.setState({
-      isHovered: !this.state.isHovered,
+      isHovered: value,
     })
   }
 
   onSelect(count, slice) {
     this.setState({
       selected: count,
+      isHovered: false,
     })
     this.props.onSelect(count, slice)
   }
@@ -47,7 +48,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
           <span>{count.name}</span>
-          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
+          <NavItemCount>&nbsp;({ numeral(count.count).format("0,0") })</NavItemCount>
         </NavItem>
       )
     })
@@ -83,8 +84,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     return (
       <div
         className={this.props.className}
-        onMouseEnter={() => this.toggleHover()}
-        onMouseLeave={() => this.toggleHover()}
+        onMouseEnter={() => this.toggleHover(true)}
+        onMouseLeave={() => this.toggleHover(false)}
       >
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
