@@ -24,7 +24,7 @@ export class Headline extends React.Component<HeadlineProps, null> {
     if (this.props.medium && this.props.medium !== "*") {
       return this.props.medium
     }
-    return "works"
+    return "Works"
   }
 
   priceRange() {
