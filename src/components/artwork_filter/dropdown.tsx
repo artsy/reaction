@@ -48,7 +48,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
           <span>{count.name}</span>
-          <NavItemCount>&nbsp;({ numeral(count.count).format("0,0") })</NavItemCount>
+          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
       )
     })

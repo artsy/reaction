@@ -59,7 +59,7 @@ class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDr
             <Headline
               medium={this.state.medium}
               price_range={this.state.price_range}
-              dimension_range={this.state.dimension_range} 
+              dimension_range={this.state.dimension_range}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
