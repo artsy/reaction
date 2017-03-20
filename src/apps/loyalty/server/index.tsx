@@ -3,7 +3,6 @@ import * as path from "path"
 import * as React from "react"
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
-import routes from "../routes"
 import renderPage from "./template"
 
 import Inquiries from "../containers/inquiries"
