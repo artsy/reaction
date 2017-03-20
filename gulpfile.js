@@ -1,34 +1,37 @@
 const gulp = require('gulp');
 const fsbx = require("fuse-box");
 const clean = require('gulp-clean');
+const tsc = require('gulp-typescript');
 const express = require('express');
 const path = require('path');
-const { dev, production, storybook } = require('./fuse');
+const { dev, storybook } = require('./fuse');
 
 let node;
 
+// TODO: read app name from command line option
 const appName = 'loyalty';
-const devReactFolder = `dist/apps/${appName}/development`;
-const prodReactFolder = `dist/apps/${appName}/production`;
-
-gulp.task("copy-ui-development-html", ['clean'], () => {
-    gulp.src(`src/apps/${appName}/index.html`)
-        .pipe(gulp.dest(devReactFolder))
-});
 
 gulp.task('clean', function() {
     return gulp.src('dist', { read: false })
         .pipe(clean());
 });
 
-gulp.task('dev', ['copy-ui-development-html'], function() {
-    return dev({ root: devReactFolder, port: 8080 });
+gulp.task('compile-server', () => {
+    const tsProject = tsc.createProject('tsconfig.json', {
+        target: "es5",
+    })
+
+    return gulp.src(`src/**/*.{ts,tsx}`)
+        .pipe(tsProject())
+        .pipe(gulp.dest('dist'))
+})
+
+gulp.task('dev', ['compile-server'], function() {
+    return dev({ root: `dist/apps/${appName}/server`, port: 3000 });
 });
 
 gulp.task('storybook', () => {
     return storybook();
 });
 
-gulp.task("prod", (done) => {
-    return production({ root: prodReactFolder });
-});
+gulp.task('start', ['storybook', 'dev']);

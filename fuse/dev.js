@@ -14,10 +14,20 @@ module.exports = opts => {
         homeDir: "src"
     }).bundle({
         [`${opts.root}/bundles/vendor.js`]: REACT_DEPS
-    });
+    })
 
-    // Start dev Socket
-    // Isolate dependencies
+    const containerNames = ["login", "inquiries"]
+    const multipleBundles = (() => {
+        let bundles = {}
+
+        for (let name of containerNames) {
+            bundles[`${opts.root}/bundles/${name}.js`] = 
+                `>apps/loyalty/client/containers/${name}/browser.tsx`
+        }
+
+        return bundles
+    })()
+
     const config = fsbx.FuseBox.init({
         homeDir: "src",
         tsConfig: "./tsconfig.json",
@@ -33,13 +43,12 @@ module.exports = opts => {
         outFile: `${opts.root}/bundles/app.js`,
     })
     
-    config.bundle(">[apps/loyalty/router.tsx]")
-    const server = config.devServer(">[apps/loyalty/router.tsx] +process", opts);
+    config.bundle(multipleBundles)
 
-    const app = server.httpServer.app;
-    app.use(express.static(path.resolve(__dirname, '..', opts.root)));
-    app.use(express.static(path.resolve( __dirname,'..', 'assets')));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '..', opts.root, 'index.html'));
-    });
+    const app = require(path.resolve(__dirname, '..', opts.root)).default
+    app.use(express.static(path.resolve(__dirname, '..', 'assets')))
+    
+    app.listen(opts.port, () => {
+        console.log(`✨  Listening on http://localhost:${opts.port}`)
+    })
 }

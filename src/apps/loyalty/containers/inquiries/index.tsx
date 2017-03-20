@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import Button from "../../../components/buttons/inverted"
-import Nav from "../../../components/nav"
-import NavItem from "../../../components/nav_item"
-import TextArea from "../../../components/text_area"
-import Title from "../../../components/title"
+import Button from "../../../../components/buttons/inverted"
+import Nav from "../../../../components/nav"
+import NavItem from "../../../../components/nav_item"
+import TextArea from "../../../../components/text_area"
+import Title from "../../../../components/title"
 
 class Inquiries extends React.Component<any, any> {
   render() {

@@ -11,7 +11,8 @@
         "paths": {
             "components/*": ["./components/*"]
         },
-        "outDir": "dist"
+        "outDir": "dist",
+        "inlineSourceMap": true
     },
     "exclude": [
         "node_modules",
