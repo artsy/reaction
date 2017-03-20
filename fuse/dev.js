@@ -6,7 +6,6 @@ module.exports = opts => {
     const REACT_DEPS = `
         +react
         +react-dom
-        +react-router
         +styled-components
     `
     // bundle vendor
