@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const fsbx = require("fuse-box");
 const clean = require('gulp-clean');
 const tsc = require('gulp-typescript');
+const sourcemaps = require('gulp-sourcemaps');
 const express = require('express');
 const path = require('path');
 const { dev, storybook } = require('./fuse');
@@ -18,11 +19,15 @@ gulp.task('clean', function() {
 
 gulp.task('compile-server', () => {
     const tsProject = tsc.createProject('tsconfig.json', {
-        target: "es5",
+        target: "es5"
     })
 
-    return gulp.src(`src/**/*.{ts,tsx}`)
+    const tsResult = gulp.src(`src/**/*.{ts,tsx}`)
+        .pipe(sourcemaps.init())
         .pipe(tsProject())
+
+    return tsResult.js
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })
 
