@@ -1,3 +1,4 @@
+const babel = require('gulp-babel');
 const gulp = require('gulp');
 const fsbx = require("fuse-box");
 const clean = require('gulp-clean');
@@ -18,15 +19,24 @@ gulp.task('clean', function() {
 });
 
 gulp.task('compile-server', () => {
-    const tsProject = tsc.createProject('tsconfig.json', {
-        target: "es5"
-    })
+    const tsProject = tsc.createProject('tsconfig.json')
 
     const tsResult = gulp.src(`src/**/*.{ts,tsx}`)
         .pipe(sourcemaps.init())
         .pipe(tsProject())
 
     return tsResult.js
+        .pipe(babel({
+            presets: [
+                "es2015",
+                "stage-3",
+                "react"
+            ],
+            plugins: [
+                "react-relay"
+            ],
+            retainLines: true
+        }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })
@@ -39,4 +49,7 @@ gulp.task('storybook', () => {
     return storybook();
 });
 
-gulp.task('start', ['storybook', 'dev']);
+// gulp.task('start', ['storybook', 'dev']);
+gulp.task('start', () => {
+
+})

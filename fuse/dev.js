@@ -2,6 +2,8 @@ const fsbx = require("fuse-box")
 const express = require("express")
 const path = require("path")
 
+require("dotenv").load()
+
 module.exports = opts => {
     const REACT_DEPS = `
         +react
@@ -31,7 +33,7 @@ module.exports = opts => {
         homeDir: "src",
         tsConfig: "./tsconfig.json",
         log: true,
-        debug: true,
+        debug: false,
         alias: {
             "components/*": `~/components/*`,
         },
@@ -48,6 +50,6 @@ module.exports = opts => {
     app.use(express.static(path.resolve(__dirname, '..', 'assets')))
     
     app.listen(opts.port, () => {
-        console.log(`✨  Listening on http://localhost:${opts.port}`)
+        console.log(`✨ Listening on http://localhost:${opts.port}`)
     })
 }

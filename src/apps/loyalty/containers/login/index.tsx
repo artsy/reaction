@@ -13,6 +13,8 @@ interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
     url: string,
     csrfToken?: string,
+    facebookPath?: string,
+    twitterPath?: string
   },
   onSubmit?: () => void
 }
@@ -36,7 +38,7 @@ const StyledInput = styled(Input)`
 
 class Login extends React.Component<LoginProps, LoginState> {
   render() {
-    const form = this.props.form || {url: "/"}
+    const form = this.props.form || {url: "/login"}
 
     return (
       <LoginContainer>
@@ -53,8 +55,8 @@ class Login extends React.Component<LoginProps, LoginState> {
 
           <Button block>Log In</Button>
           <div style={{textAlign: "center"}}>or</div>
-          <FacebookButton block />
-          <TwitterButton block />
+          <FacebookButton href={form.facebookPath} block />
+          <TwitterButton href={form.twitterPath} block />
         </form>
 
         <br />

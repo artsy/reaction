@@ -4,6 +4,7 @@ export default ({styles, html, entrypoint}) => {
   return `
       <html>
         <head>
+          <title>Loyalty Program - Artsy</title>
           <link type="text/css" rel="stylesheet" href="${fontsURL}">
           <style>${styles}</style>
         </head>
