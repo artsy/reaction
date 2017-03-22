@@ -14,7 +14,7 @@ interface LoginProps extends React.Props<HTMLParagraphElement> {
     url: string,
     csrfToken?: string,
     facebookPath?: string,
-    twitterPath?: string
+    twitterPath?: string,
   },
   onSubmit?: () => void
 }
