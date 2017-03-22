@@ -49,7 +49,4 @@ gulp.task('storybook', () => {
     return storybook();
 });
 
-// gulp.task('start', ['storybook', 'dev']);
-gulp.task('start', () => {
-
-})
+gulp.task('start', ['storybook', 'dev']);
