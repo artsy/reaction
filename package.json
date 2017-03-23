@@ -1,5 +1,5 @@
 {
-  "name": "reaction-force",
+  "name": "@artsy/reaction-force",
   "version": "0.1.0",
   "description": "Force’s React Components",
   "main": "dist/apps/index.js",
