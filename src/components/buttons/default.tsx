@@ -63,6 +63,8 @@ export const StyledButton = styled(Button)`
   transition: background-color .25s,color .25s;
   margin: 10px;
   border: none;
+  box-sizing: border-box;
+  text-decoration: none;
 
   &:hover:not(:disabled) {
     background: ${props => {
