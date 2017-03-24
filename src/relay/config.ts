@@ -11,18 +11,11 @@ export function artsyNetworkLayer() {
   })
 }
 
-// TODO: Send to definitely typed?
-declare module "react-relay" {
-  class Environment {
-    injectNetworkLayer(networkLayer: RelayNetworkLayer): void
-  }
-}
+
 
 /*
  * For the client.
  */
 export function artsyRelayEnvironment() {
-  const env: any = new Relay.Environment()
-  env.injectNetworkLayer(artsyNetworkLayer())
-  return env
+  Relay.injectNetworkLayer(artsyNetworkLayer())
 }

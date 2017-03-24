@@ -168,10 +168,6 @@
   version "2.0.41"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.41.tgz#b87ba051011f99edbe586d8f97282e7786e01a6d"
 
-"@types/lodash@^4.14.55":
-  version "4.14.55"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.55.tgz#75d7d4eba020ee4103d4cbd0f2a3ef5db8f7534f"
-
 "@types/mime@*":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
@@ -186,9 +182,9 @@
   dependencies:
     "@types/express" "*"
 
-"@types/react-relay@^0.9.11":
-  version "0.9.11"
-  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-0.9.11.tgz#34601bd00bee46da9e52b2210149f9536d6ffcb8"
+"@types/react-relay@^0.9.12":
+  version "0.9.12"
+  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-0.9.12.tgz#a5fba413a2aae3536adbd5c873ac77269972a8bc"
   dependencies:
     "@types/react" "*"
 
@@ -5167,7 +5163,7 @@ passport-oauth1@1.x.x:
     passport-strategy "1.x.x"
     utils-merge "1.x.x"
 
-passport-oauth2@1.x.x, passport-oauth2@^1.4.0:
+passport-oauth2@1.x.x:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.4.0.tgz#f62f81583cbe12609be7ce6f160b9395a27b86ad"
   dependencies:

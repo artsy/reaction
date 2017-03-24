@@ -6,7 +6,6 @@
     "quotemark": [
        true,
        "double",
-       "jsx-double",
        "avoid-escape"
     ],
     "arrow-parens": [ true, "ban-single-arg-parens" ],

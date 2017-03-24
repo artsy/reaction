@@ -12,7 +12,7 @@ export default ({styles, html, entrypoint}) => {
           <div id="app-container">
             ${html}
           </div>
-          <script src="${entrypoint}" />
+          <script src="${entrypoint}"></script>
         </body>
       </html>
     `

@@ -3,15 +3,20 @@ import * as cookieParser from "cookie-parser"
 import * as csurf from "csurf"
 import * as express from "express"
 import * as session from "express-session"
+import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as path from "path"
 import * as React from "react"
+import * as Relay from "react-relay"
+
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
 import renderPage from "./template"
 
+import CurrentUserRoute from "../../../relay/queries/current_user"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
 import CurrentUser from "./current_user"
+import { RelayMiddleware } from "./relay"
 
 const app = express()
 const artsyPassport = require("artsy-passport")
@@ -29,6 +34,8 @@ app.use(artsyPassport(Object.assign({}, process.env, {
   CurrentUser,
   loginPagePath: "/login",
 })))
+app.use(RelayMiddleware)
+
 
 const {
   loginPagePath,
@@ -62,13 +69,25 @@ app.get("/inquiries", (req, res) => {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  const html = renderToString(<Inquiries />)
-  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  res.send(renderPage({
-    styles,
-    html,
-    entrypoint: "/bundles/inquiries.js",
-  }))
+  let promise = IsomorphicRelay.prepareData({
+    Container: Inquiries,
+    queryConfig: new CurrentUserRoute(),
+  }, res.locals.networkLayer)
+
+  promise
+    .then(({data, props}) => {
+      console.log(data, props)
+      const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
+      const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+      res.send(renderPage({
+        styles,
+        html,
+        entrypoint: "/bundles/inquiries.js",
+      }))
+    })
+    .catch(err => {
+      console.log(err)
+    })
 })
 
 export default app
