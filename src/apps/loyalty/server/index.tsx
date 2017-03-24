@@ -36,7 +36,6 @@ app.use(artsyPassport(Object.assign({}, process.env, {
 })))
 app.use(RelayMiddleware)
 
-
 const {
   loginPagePath,
   facebookPath,
@@ -76,7 +75,6 @@ app.get("/inquiries", (req, res) => {
 
   promise
     .then(({data, props}) => {
-      console.log(data, props)
       const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
       res.send(renderPage({
@@ -84,9 +82,6 @@ app.get("/inquiries", (req, res) => {
         html,
         entrypoint: "/bundles/inquiries.js",
       }))
-    })
-    .catch(err => {
-      console.log(err)
     })
 })
 

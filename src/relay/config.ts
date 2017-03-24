@@ -11,8 +11,6 @@ export function artsyNetworkLayer() {
   })
 }
 
-
-
 /*
  * For the client.
  */
