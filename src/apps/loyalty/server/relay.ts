@@ -10,7 +10,7 @@ export const RelayMiddleware = (req: Request, res: Response, next: NextFunction)
   }
 
   res.locals.networkLayer = new Relay.DefaultNetworkLayer(
-    process.env.METAPHYSICS_URL,
+    process.env.METAPHYSICS_ENDPOINT,
     options,
   )
 

@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+import styled from "styled-components"
 
 import Artwork from "../../../../components/artwork"
 import Button from "../../../../components/buttons/inverted"
@@ -8,21 +9,36 @@ import NavItem from "../../../../components/nav_item"
 import TextArea from "../../../../components/text_area"
 import Title from "../../../../components/title"
 
+
+const InquiryContainer = styled.div`
+  display: inline-block;
+`
+
+const Container = styled.div`
+  text-align: center;
+
+  & .footer {
+    max-width: 500;
+    margin: 10px auto;
+  }
+`
+
 class Inquiries extends React.Component<any, any> {
   renderArtworks() {
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
+      const artwork = edge.node
       return (
-        <div style={{width: "300px", maxHeight: "450px", display: "inline-block"}}>
-          <Artwork artwork={edge.node.artwork} />
-        </div>
+        <InquiryContainer>
+          <Artwork key={artwork.__id} artwork={artwork} />
+        </InquiryContainer>
       )
     })
   }
 
   render() {
     return (
-      <div style={{textAlign: "center"}}>
+      <Container>
         <Nav>
           <NavItem href="https://www.artsy.net">Back To Artsy</NavItem>
         </Nav>
@@ -30,12 +46,12 @@ class Inquiries extends React.Component<any, any> {
         <div className="artworks">
           {this.renderArtworks()}
         </div>
-        <footer style={{maxWidth: 500, margin: "10px auto"}}>
+        <footer className="footer">
           <Title titleSize="small">If you purchased any works not listed above, please list them.</Title>
           <TextArea block placeholder="Artwork, Artist, Gallery" />
           <Button block>Submit purchases</Button>
         </footer>
-      </div>
+      </Container>
     )
   }
 }
