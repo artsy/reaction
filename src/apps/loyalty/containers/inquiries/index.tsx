@@ -9,7 +9,6 @@ import NavItem from "../../../../components/nav_item"
 import TextArea from "../../../../components/text_area"
 import Title from "../../../../components/title"
 
-
 const InquiryContainer = styled.div`
   display: inline-block;
 `
@@ -23,11 +22,15 @@ const Container = styled.div`
   }
 `
 
-class Inquiries extends React.Component<any, any> {
+class Inquiries extends React.Component<RelayProps, any> {
   renderArtworks() {
+    if (!this.props.user) {
+      return []
+    }
+
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
-      const artwork = edge.node
+      const artwork: any = edge.node
       return (
         <InquiryContainer>
           <Artwork key={artwork.__id} artwork={artwork} />
@@ -74,3 +77,16 @@ export default Relay.createContainer(Inquiries, {
     `,
   },
 })
+
+interface RelayProps {
+  user: {
+    artwork_inquiries_connection: {
+      edges: Array<{
+        node: {
+          id: string | null,
+          artwork: Array<any | null> | null,
+        } | null,
+      } | null> | null,
+    } | null,
+  },
+}
