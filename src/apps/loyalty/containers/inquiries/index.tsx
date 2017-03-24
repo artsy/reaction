@@ -22,7 +22,7 @@ const Container = styled.div`
   }
 `
 
-class Inquiries extends React.Component<RelayProps, any> {
+class Inquiries extends React.Component<any, any> {
   renderArtworks() {
     if (!this.props.user) {
       return []
@@ -30,10 +30,10 @@ class Inquiries extends React.Component<RelayProps, any> {
 
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
-      const artwork: any = edge.node
+      const artwork = edge.node.artwork
       return (
         <InquiryContainer>
-          <Artwork key={artwork.__id} artwork={artwork} />
+          <Artwork key={artwork.id} artwork={artwork} />
         </InquiryContainer>
       )
     })
@@ -68,7 +68,7 @@ export default Relay.createContainer(Inquiries, {
             node {
               id
               artwork {
-                ${(Artwork.getFragment("artwork"))}
+                ${Artwork.getFragment("artwork")}
               }
             }
           }
