@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/apps/loyalty/auth.ts"],"names":[],"mappings":";AAAA,eAAsB,KAAK,EAAE,IAAI,EAAE,EAAE;IACnC,EAAE,CAAC,IAAI,CAAC,CAAA;AACV,CAAC;AAFD,sBAEC;AAED;IACE,MAAM,CAAC,IAAI,CAAA;AACb,CAAC;AAFD,4BAEC","file":"auth.js","sourcesContent":["export function login(email, pass, cb) {\n  cb(true)\n}\n\nexport function loggedIn() {\n  return true\n}\n"]}
