@@ -51,22 +51,12 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     }
   }
 
-  // saleLine() {
-  //   const artwork = this.props.artwork
-  //   const hasSaleMessage = artwork.sale_message && artwork.sale_message !== "Contact For Price"
-  //   const notInAuction = !(artwork.sale && artwork.sale.is_auction)
-  //   if (hasSaleMessage && notInAuction) {
-  //     return <div>{artwork.sale_message}</div>
-  //   }
-  // }
-
   render() {
     return (
       <div>
         {this.artistLine()}
         {this.titleLine()}
         {this.partnerLine()}
-        {/*{this.saleLine()}*/}
       </div>
     )
   }
