@@ -11,6 +11,7 @@ function loadStories() {
   require("../components/__stories__/modal")
   require("../components/__stories__/nav")
   require("../components/__stories__/artwork_filter")
+  require("../components/__stories__/inquiry_artwork")
 }
 
 configure(loadStories, module)
