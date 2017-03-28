@@ -1,11 +1,9 @@
-import { PositionInFile } from 'tslint/lib/test/lintError';
-import { IEnableDisablePosition } from 'tslint/lib';
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import ArtworkMetadata from "./metadata"
 import colors from "../../assets/colors"
 import Icon from "../icon"
+import ArtworkMetadata from "./metadata"
 
 const ImageContainer = styled.div`
   height: 350px; 
@@ -56,15 +54,23 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
       isSelected: false,
     }
   }
-  onSelect() {
+  onSelect(e) {
     this.setState({
       isSelected: !this.state.isSelected,
     })
   }
 
   render() {
+    let selectedOverlay
+    if (this.state.isSelected) {
+      selectedOverlay = (
+        <SelectedArtworkOverlay onClick={this.onSelect.bind(this)} > 
+          <Icon name="check" color="white" />
+        </SelectedArtworkOverlay>
+      )
+    }
     return (
-      <div style={ { position: "relative" } } >
+      <div style={{position: "relative"}} >
         <ImageContainer>
           <ImageOuterContainer onClick={this.onSelect.bind(this)} >
             <ImageInnerContainer>
@@ -73,9 +79,8 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
           </ImageOuterContainer>
         </ImageContainer>
         <ArtworkMetadata artwork={this.props.artwork} />
-        {this.state.isSelected &&<SelectedArtworkOverlay onClick={this.onSelect.bind(this)}> 
-          <Icon name="check" color="white"/>
-        </SelectedArtworkOverlay>}
+
+        {selectedOverlay}
       </div>
     )
   }
