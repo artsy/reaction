@@ -3,6 +3,7 @@ import * as Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 import * as fonts from "../../assets/fonts"
+
 import ArtworkContact from "./contact"
 import ArtworkDetails from "./details"
 
