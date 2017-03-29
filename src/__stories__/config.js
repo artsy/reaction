@@ -11,7 +11,6 @@ function loadStories() {
   require("../components/__stories__/modal")
   require("../components/__stories__/nav")
   require("../components/__stories__/artwork_filter")
-  require("../containers/__stories__/login")
 }
 
 configure(loadStories, module)

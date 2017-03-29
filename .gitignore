@@ -1,6 +1,7 @@
 node_modules
 .awcache
 .fusebox
+.env
 out*
 .DS_Store
 .storybook/.DS_Store
