@@ -59,9 +59,3 @@ $ yarn install
         $ yarn sync-schema
 
 * There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
-
-## TODO
-
-* [ ] Actually make useful components.
-* [ ] Publish as npm package.
-* [ ] Integrate into Force.
