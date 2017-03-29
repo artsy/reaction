@@ -20,7 +20,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     if (cultural_maker) {
       return <div><strong>{cultural_maker}</strong></div>
     } else if (artists && artists.length) {
-      let artistLine = artists
+      const artistLine = artists
         .map(artist => <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>)
         .reduce((prev, curr) => [prev, ", ", curr])
 

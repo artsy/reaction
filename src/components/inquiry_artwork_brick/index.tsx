@@ -5,6 +5,10 @@ import colors from "../../assets/colors"
 import Icon from "../icon"
 import ArtworkMetadata from "./metadata"
 
+const InquiryArtworkBrick = styled.div`
+  position: relative;
+`
+
 const ImageContainer = styled.div`
   height: 350px; 
   width: 350px;
@@ -16,6 +20,7 @@ const ImageOuterContainer = styled.div`
   width: 100%;
   height: 100%;
 `
+
 const ImageInnerContainer = styled.div`
   display: table-cell;
   vertical-align: middle;
@@ -41,9 +46,10 @@ const SelectedArtworkOverlay = styled.div`
   opacity: 0.8;
   text-align: center;
   line-height: 350px;
+  pointer-events: none;
 `
 
-export class ArtworkState {
+class ArtworkState {
   isSelected: boolean
 }
 
@@ -54,7 +60,8 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
       isSelected: false,
     }
   }
-  onSelect(e) {
+
+  onSelect() {
     this.setState({
       isSelected: !this.state.isSelected,
     })
@@ -64,13 +71,13 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
     let selectedOverlay
     if (this.state.isSelected) {
       selectedOverlay = (
-        <SelectedArtworkOverlay onClick={this.onSelect.bind(this)} > 
+        <SelectedArtworkOverlay> 
           <Icon name="check" color="white" />
         </SelectedArtworkOverlay>
       )
     }
     return (
-      <div style={{position: "relative"}} >
+      <InquiryArtworkBrick>
         <ImageContainer>
           <ImageOuterContainer onClick={this.onSelect.bind(this)} >
             <ImageInnerContainer>
@@ -81,7 +88,7 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
         <ArtworkMetadata artwork={this.props.artwork} />
 
         {selectedOverlay}
-      </div>
+      </InquiryArtworkBrick>
     )
   }
 }
@@ -92,7 +99,6 @@ export default Relay.createContainer(Artwork, {
       fragment on Artwork {
         image {
           url(version: "large")
-          aspect_ratio
         }
        ${ArtworkMetadata.getFragment("artwork")}
       }
@@ -104,7 +110,6 @@ interface RelayProps {
   artwork: {
     image: {
       url: string | null,
-      aspect_ratio: number | null,
     } | null,
   },
 }
