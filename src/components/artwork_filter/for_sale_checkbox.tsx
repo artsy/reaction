@@ -33,10 +33,8 @@ export class ForSaleCheckbox extends React.Component<ForSaleCheckboxProps, ForSa
   render() {
     const { isChecked } = this.state
 
-
-
     return (
-      <div className={this.props.className} onClick={()=> this.onClick()}>
+      <div className={this.props.className} onClick={() => this.onClick()}>
         <StyledCheckbox checked={isChecked} />
         <label>Only for Sale</label>
       </div>

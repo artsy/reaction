@@ -64,4 +64,4 @@ const Label = styled.label`
   }
 `
 
-export default StyledCheckbox 
+export default StyledCheckbox
