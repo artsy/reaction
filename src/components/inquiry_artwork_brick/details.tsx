@@ -4,7 +4,7 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 import TextLink from "../text_link"
 
-export interface DetailsProps extends React.HTMLProps<ArtworkDetails> {
+interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {
   artwork: any
 }
 
