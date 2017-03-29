@@ -3,11 +3,11 @@ import * as React from "react"
 import styled from "styled-components"
 import colors from "../assets/colors"
 
-interface CheckboxProps extends React.HTMLProps<Checkbox> {
+interface Props extends React.HTMLProps<Checkbox> {
   checked: boolean
 }
 
-export class Checkbox extends React.Component<CheckboxProps, null> {
+export class Checkbox extends React.Component<Props, null> {
   static defaultProps = {
     checked: true,
   }
