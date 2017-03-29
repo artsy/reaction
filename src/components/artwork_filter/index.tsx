@@ -10,19 +10,19 @@ import TotalCount from "./total_count"
 
 const PageSize = 10
 
-interface ArtworkFilterProps extends RelayProps, React.HTMLProps<ArtworkFilter> {
+interface Props extends RelayProps, React.HTMLProps<ArtworkFilter> {
   filter_artworks: any
   relay: any
 }
 
-interface FilterArtworksDropdownState {
-  for_sale: any,
-  dimension_range: any,
-  price_range: any,
-  medium: any,
+interface State {
+  for_sale: boolean,
+  dimension_range: string,
+  price_range: string,
+  medium: string,
 }
 
-class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDropdownState> {
+class ArtworkFilter extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {

@@ -6,31 +6,37 @@ import labelMap from "./param_map"
 import { compact } from "lodash"
 import styled from "styled-components"
 
-interface HeadlineProps extends React.HTMLProps<Headline> {
-  medium: any,
-  price_range: any,
-  dimension_range: any,
+interface Props extends React.HTMLProps<Headline> {
+  medium: string,
+  price_range: string,
+  dimension_range: string,
   for_sale: boolean,
 }
 
-export class Headline extends React.Component<HeadlineProps, null> {
+export class Headline extends React.Component<Props, null> {
   size() {
-    if (this.props.dimension_range && this.props.dimension_range !== "*") {
-      return this.props.dimension_range
+    const { dimension_range } = this.props
+
+    if (dimension_range && dimension_range !== "*") {
+      return dimension_range
     }
     return false
   }
 
   medium() {
-    if (this.props.medium && this.props.medium !== "*") {
-      return this.props.medium
+    const { medium } = this.props
+
+    if (medium && medium !== "*") {
+      return medium
     }
     return "Works"
   }
 
   priceRange() {
-    if (this.props.price_range && this.props.price_range !== "*") {
-      return this.props.price_range
+    const { price_range } = this.props
+
+    if (price_range && price_range !== "*") {
+      return price_range
     }
     return false
   }

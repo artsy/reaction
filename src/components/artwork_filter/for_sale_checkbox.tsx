@@ -6,15 +6,15 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 import { primary } from "../../assets/fonts"
 
-interface ForSaleCheckboxProps extends React.HTMLProps<ForSaleCheckbox> {
+interface Props extends React.HTMLProps<ForSaleCheckbox> {
   onClick?: any
 }
 
-interface ForSaleState {
+interface State {
   isChecked: boolean,
 }
 
-export class ForSaleCheckbox extends React.Component<ForSaleCheckboxProps, ForSaleState> {
+export class ForSaleCheckbox extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
