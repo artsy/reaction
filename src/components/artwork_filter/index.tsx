@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
 import Dropdown from "./dropdown"
+import ForSaleCheckbox from "./for_sale_checkbox"
 import Headline from "./headline"
 import TotalCount from "./total_count"
 
@@ -15,6 +16,7 @@ interface ArtworkFilterProps extends RelayProps, React.HTMLProps<ArtworkFilter> 
 }
 
 interface FilterArtworksDropdownState {
+  for_sale: any,
   dimension_range: any,
   price_range: any,
   medium: any,
@@ -24,11 +26,25 @@ class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDr
   constructor(props) {
     super(props)
     this.state = {
+      for_sale: false,
       dimension_range: "*",
       price_range: "*",
       medium: "*",
     }
   }
+
+  setForSale() {
+    const isForSale = !this.state.for_sale
+    const forSaleVar = isForSale ? true : null
+
+    this.setState({
+      for_sale: isForSale,
+    })
+    this.props.relay.setVariables({
+      for_sale: forSaleVar,
+    })
+  }
+
   onSelect(count, slice) {
     this.setState({
       [slice.toLowerCase()]: count.name,
@@ -52,6 +68,7 @@ class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDr
     return (
       <div>
         <FilterBar>
+          <ForSaleCheckbox checked={this.state.for_sale} onClick={() => this.setForSale()}/>
           {dropdowns}
         </FilterBar>
         <SubFilterBar>
@@ -60,6 +77,7 @@ class ArtworkFilter extends React.Component<ArtworkFilterProps, FilterArtworksDr
               medium={this.state.medium}
               price_range={this.state.price_range}
               dimension_range={this.state.dimension_range}
+              for_sale={this.state.for_sale}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
@@ -83,6 +101,7 @@ const SubFilterBar = styled.div`
 export default Relay.createContainer(ArtworkFilter, {
   initialVariables: {
     size: PageSize,
+    for_sale: null,
     medium: "*",
     aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
     price_range: "*",
@@ -94,6 +113,7 @@ export default Relay.createContainer(ArtworkFilter, {
         filter_artworks(
           aggregations: $aggregations, 
           size: $size,
+          for_sale: $for_sale,
           medium: $medium,
           price_range: $price_range,
           dimension_range: $dimension_range

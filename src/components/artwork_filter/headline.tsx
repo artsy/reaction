@@ -10,6 +10,7 @@ interface HeadlineProps extends React.HTMLProps<Headline> {
   medium: any,
   price_range: any,
   dimension_range: any,
+  for_sale: boolean,
 }
 
 export class Headline extends React.Component<HeadlineProps, null> {
@@ -34,11 +35,19 @@ export class Headline extends React.Component<HeadlineProps, null> {
     return false
   }
 
+  forSale() {
+    if (this.props.for_sale) {
+      return "For Sale"
+    }
+    return false
+  }
+
   renderHeadline() {
     const headline = compact([
       this.size(),
       this.medium(),
       this.priceRange(),
+      this.forSale(),
     ]).join(" ")
     if (headline === "works") {
       return "Artworks"
