@@ -1,0 +1,113 @@
+import * as React from "react"
+
+import Icon from "./icon"
+
+import styled from "styled-components"
+import colors from "../assets/colors"
+import { secondary } from "../assets/fonts"
+
+interface Props extends React.HTMLProps<BorderedPulldown> {
+  options: any,
+  defaultValue: string,
+}
+
+interface State {
+  selected: any,
+  isHovered: boolean,
+}
+
+export class BorderedPulldown extends React.Component<Props, State> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selected: null,
+      isHovered: false,
+    }
+  }
+
+  render() {
+    const { options, defaultValue } = this.props
+
+    const optionEls = options.map(option => {
+      return (
+        <a data-sort={option.val} key={option.val}>{option.name}</a>
+      )
+    })
+
+    return (
+      <div className={this.props.className}>
+        <Toggle>
+          <span>
+            {defaultValue}
+          </span>
+          <CaretHolder>
+            <Icon
+              name="arrow-down"
+              fontSize="9px"
+              color={colors.grayMedium}
+            />
+          </CaretHolder>
+        </Toggle>
+        <PulldownOptions className="bordered-pulldown-options">
+          {optionEls}
+        </PulldownOptions>
+      </div>
+    )
+  }
+}
+
+const StyledBorderedPulldown = styled(BorderedPulldown)`
+  ${secondary.style}
+  display: inline-block;
+  width: 200px;
+  position :relative;
+  border: 2px solid ${colors.grayMedium};
+  text-align: left;
+  font-size: 17px;
+  &:hover > .bordered-pulldown-options {
+    display: block;
+    border-color: gray-color;
+  }
+  &.is-disabled {
+    .bordered-pulldown-toggle {
+      cursor: default;
+      color: ${colors.grayBold};
+    }
+  }
+`
+
+const Toggle = styled.div`
+  display: block;
+  padding: 8px 10px 6px;
+  text-decoration: none;
+`
+
+const CaretHolder = styled.div`
+  float: right;
+  padding-left: 5px;
+  border-left: 1px solid ${colors.grayMedium};
+`
+
+const PulldownOptions = styled.div`
+  display: none;
+  position: absolute;
+  background: white;
+  border: 2px solid ${colors.grayMedium};
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  z-index: 2;
+  > a {
+    text-decoration: none;
+    overflow: ellipsis;
+    display: block;
+    padding: 8px 10px 6px;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background-color: ${colors.gray};
+    } 
+  } 
+`
+
+export default StyledBorderedPulldown

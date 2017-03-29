@@ -3,6 +3,7 @@ import * as Relay from "react-relay"
 import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
+import BorderedPulldown from "../bordered_pulldown"
 import Dropdown from "./dropdown"
 import ForSaleCheckbox from "./for_sale_checkbox"
 import Headline from "./headline"
@@ -65,6 +66,11 @@ class ArtworkFilter extends React.Component<Props, State> {
         />
       ),
     )
+    const pulldownOptions = [
+      { val: "-partner_updated_at", name: "Recently Updated" },
+      { val: "-year", name: "Artwork Year (desc.)" },
+      { val: "year", name: "Artwork Year (asc.)" },
+    ]
     return (
       <div>
         <FilterBar>
@@ -81,6 +87,10 @@ class ArtworkFilter extends React.Component<Props, State> {
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
+          <BorderedPulldown
+            defaultValue="Recently Updated"
+            options={pulldownOptions}
+          />
         </SubFilterBar>
         <Artworks artworks={filterArtworks.artworks} />
       </div>
@@ -94,8 +104,9 @@ const FilterBar = styled.div`
 
 const SubFilterBar = styled.div`
   display: flex;
-  align-items: space-between;
+  justify-content: space-between;
   padding: 20px 0;
+  align-items: center;
 `
 
 export default Relay.createContainer(ArtworkFilter, {
