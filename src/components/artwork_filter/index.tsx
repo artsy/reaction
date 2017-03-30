@@ -118,7 +118,7 @@ const SubFilterBar = styled.div`
 
 export default Relay.createContainer(ArtworkFilter, {
   initialVariables: {
-    sort: '-partner_updated_at',
+    sort: "-partner_updated_at",
     size: PageSize,
     for_sale: null,
     medium: "*",
