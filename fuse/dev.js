@@ -22,8 +22,8 @@ module.exports = opts => {
         let bundles = {}
 
         for (let name of containerNames) {
-            bundles[`${opts.root}/bundles/${name}.js`] = 
-                `>apps/loyalty/client/containers/${name}/browser.tsx`
+            bundles[`${opts.root}/bundles/${name}.js`] =
+              `>apps/loyalty/client/containers/${name}/browser.ts`
         }
 
         return bundles
