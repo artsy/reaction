@@ -9,6 +9,7 @@ import { secondary } from "../assets/fonts"
 interface Props extends React.HTMLProps<BorderedPulldown> {
   options: any,
   defaultValue: string,
+  onChange?: any,
 }
 
 interface State {
@@ -25,20 +26,34 @@ export class BorderedPulldown extends React.Component<Props, State> {
     }
   }
 
+  onChange(option) {
+    this.setState({
+      selected: option,
+    })
+    this.props.onChange(option)
+  }
+
   render() {
     const { options, defaultValue } = this.props
 
     const optionEls = options.map(option => {
       return (
-        <a data-sort={option.val} key={option.val}>{option.name}</a>
+        <a
+          key={option.val}
+          onClick={() =>  this.onChange(option)}
+        >
+          {option.name}
+        </a>
       )
     })
+
+    const displayValue = this.state.selected && this.state.selected.name || defaultValue
 
     return (
       <div className={this.props.className}>
         <Toggle>
           <span>
-            {defaultValue}
+            {displayValue}
           </span>
           <CaretHolder>
             <Icon

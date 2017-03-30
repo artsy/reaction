@@ -55,6 +55,12 @@ class ArtworkFilter extends React.Component<Props, State> {
     })
   }
 
+  onChangeSort(option) {
+    this.props.relay.setVariables({
+      sort: option.val,
+    })
+  }
+
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
     const dropdowns = filterArtworks.aggregations.map(aggregation =>
@@ -90,6 +96,7 @@ class ArtworkFilter extends React.Component<Props, State> {
           <BorderedPulldown
             defaultValue="Recently Updated"
             options={pulldownOptions}
+            onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
         <Artworks artworks={filterArtworks.artworks} />
@@ -111,6 +118,7 @@ const SubFilterBar = styled.div`
 
 export default Relay.createContainer(ArtworkFilter, {
   initialVariables: {
+    sort: '-partner_updated_at',
     size: PageSize,
     for_sale: null,
     medium: "*",
@@ -127,7 +135,8 @@ export default Relay.createContainer(ArtworkFilter, {
           for_sale: $for_sale,
           medium: $medium,
           price_range: $price_range,
-          dimension_range: $dimension_range
+          dimension_range: $dimension_range,
+          sort: $sort
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
