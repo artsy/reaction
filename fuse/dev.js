@@ -43,12 +43,12 @@ module.exports = opts => {
         ],
         outFile: `${opts.root}/bundles/app.js`,
     })
-    
+
     config.bundle(multipleBundles)
 
     const app = require(path.resolve(__dirname, '..', opts.root)).default
     app.use(express.static(path.resolve(__dirname, '..', 'assets')))
-    
+
     app.listen(opts.port, () => {
         console.log(`✨ Listening on http://localhost:${opts.port}`)
     })
