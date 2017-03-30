@@ -28,3 +28,6 @@ storiesOf("Inquiry Artwork", Artwork)
   .add("A portrait artwork (extra tall)", () => (
     <ArtworkExample artworkID="snik-untitled-vertical" />
   ))
+  .add("Artwork with two artists", () => (
+    <ArtworkExample artworkID="/william-kentridge-self-portrait-as-a-coffee-pot-iii" />
+  ))
