@@ -13,9 +13,24 @@ interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
   color?: string,
 }
 
-const textSizes = {
-  small: "17px",
+const textSizesForPrimaryStyle = {
+  xlarge: "24px",
+  large: "17px",
+  medium: "15px",
+  small: "13px",
+  xsmall: "11px",
+}
+
+const textSizesForSecondaryStyle = {
   large: "20px",
+  medium: "17px",
+  small: "15px",
+  xsmall: "11px",
+}
+
+const TextStyleToTextSize = {
+  primary: textSizesForPrimaryStyle,
+  secondary: textSizesForSecondaryStyle,
 }
 
 const textStyleNameToCss = {
@@ -30,7 +45,7 @@ const RawText: React.SFC<TextProps> = props => (
 )
 
 const Text = styled(RawText)`
-  font-size: ${props => textSizes[props.textSize]};
+  font-size: ${props => TextStyleToTextSize[props.textStyle][props.textSize]};
   text-align: ${props => props.align};
   color: ${props => props.color};
   ${props => textStyleNameToCss[props.textStyle]};
