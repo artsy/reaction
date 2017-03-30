@@ -4,9 +4,7 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 import TextLink from "../text_link"
 
-interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {
-  artwork: any
-}
+interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {}
 
 const DetailsContainer = styled.div`
   height: 100px;
@@ -92,11 +90,14 @@ interface RelayProps {
     date: string | null,
     cultural_maker: string | null,
     artists: Array<{
+      __id: string | null,
+      href: string | null,
       name: string | null,
     } | null> | null,
     collecting_institution: string | null,
     partner: {
       name: string | null,
+      href: string | null,
     } | null,
   },
 }
