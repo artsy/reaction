@@ -16,13 +16,13 @@ const textSizes = {
   large: "20px",
 }
 
-const Text: React.SFC<TextProps> = props => (
+const RawText: React.SFC<TextProps> = props => (
   <p className={props.className}>
     {props.children}
   </p>
 )
 
-export default styled(Text)`
+const Text = styled(RawText)`
   font-size: ${props => textSizes[props.textSize]};
   text-align: ${props => props.align};
   color: ${props => props.color};
@@ -34,3 +34,5 @@ Text.defaultProps = {
   align: "start",
   color: "currentcolor",
 }
+
+export default Text
