@@ -13,6 +13,7 @@ import * as styleSheet from "styled-components/lib/models/StyleSheet"
 import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
+import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
 import CurrentUser from "./current_user"
@@ -85,6 +86,16 @@ app.get("/inquiries", (req, res) => {
         bootstrapData: `var DATA = ${JSON.stringify(data)}; var USER_DATA = ${JSON.stringify(req.user.toJSON())};`,
       }))
     })
+})
+
+app.get("/acb-thank-you", (req, res) => {
+  if (!req.user) {
+    return res.redirect(req.baseUrl + "/login")
+  }
+
+  const html = renderToString(<AcbThankYou />)
+  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+  res.send(renderPage({ styles, html, entrypoint: "" }))
 })
 
 export default app
