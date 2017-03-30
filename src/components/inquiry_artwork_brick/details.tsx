@@ -20,7 +20,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     } else if (artists && artists.length) {
       const artistLine = artists
         .map(artist => <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>)
-        .reduce((prev, curr) => [prev, ", ", curr])
+        .reduce((acc, element, index) => acc.concat(index === 0 ? [element] : [", ", element]), [])
 
       return <div><strong>{artistLine}</strong></div>
     }
