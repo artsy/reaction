@@ -6,7 +6,7 @@ const tsc = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
 const express = require('express');
 const path = require('path');
-const { dev, storybook } = require('./fuse');
+const { dev, storybook } = require('./dev-tools');
 
 let node;
 
