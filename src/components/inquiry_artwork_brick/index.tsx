@@ -49,7 +49,7 @@ const SelectedArtworkOverlay = styled.div`
   pointer-events: none;
 `
 
-class ArtworkState {
+interface ArtworkState {
   isSelected: boolean
 }
 
