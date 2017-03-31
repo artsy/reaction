@@ -2845,7 +2845,7 @@ function-bind@^1.0.2, function-bind@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
 
-fuse-box@latest:
+fuse-box@^1.3.129:
   version "1.3.130"
   resolved "https://registry.yarnpkg.com/fuse-box/-/fuse-box-1.3.130.tgz#ef3b0a8e3faca54d4c0480999bf4369b85a96dab"
   dependencies:

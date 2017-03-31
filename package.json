@@ -44,7 +44,7 @@
     "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
     "chokidar": "^1.6.1",
     "dotenv": "^4.0.0",
-    "fuse-box": "latest",
+    "fuse-box": "^1.3.129",
     "graphql-config-parser": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
