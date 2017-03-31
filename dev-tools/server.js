@@ -39,7 +39,6 @@ watcher.on("ready", function () {
     // console.log(`Clearing module cache in: ${srcPath}`)
     Object.keys(require.cache).forEach(function (id) {
       if (id.startsWith(srcPath)) {
-        console.log(`Reload: ${id}`)
         delete require.cache[id]
       }
     });
@@ -62,7 +61,13 @@ app.use(function (req, res, next) {
 })
 process.on("uncaughtException", (error) => {
   if (currentResponse) {
-    currentResponse.status(500).send(`<html><body><pre>${error.stack}</pre></body></html>`)
+    currentResponse.status(500).send(`
+      <html>
+        <body>
+          <pre>${error.stack}</pre>
+        </body>
+      </html>
+    `)
     currentResponse = null
   } else {
     console.error(error)
@@ -71,14 +76,27 @@ process.on("uncaughtException", (error) => {
 })
 
 // Dynamically load app routes so that they can be reloaded in development.
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   const subapps = require(path.join(srcPath, "apps")).default
+  const subappNames = Object.keys(subapps)
   const router = express.Router()
-  Object.keys(subapps).forEach(subapp => {
-    router.use(`/${subapp}`, subapps[subapp])
+  subappNames.forEach(subappName => {
+    router.use(`/${subappName}`, subapps[subappName])
+  })
+  router.get("/", () => {
+    res.send(`
+      <html>
+        <body>
+          <h1>Available applications:</h1>
+          <ul>
+            ${subappNames.map(name => `<li><a href="/${name}">${name}</a></li>`)}
+          </ul>
+        </body>
+      </html>
+    `)
   })
   router(req, res, next)
-});
+})
 
 app.listen(3000, () => {
   console.log("✨  Listening on http://localhost:3000") // tslint:disable-line
