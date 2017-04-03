@@ -5,13 +5,16 @@ import colors from "../../assets/colors"
 import Icon from "../icon"
 import ArtworkMetadata from "./metadata"
 
+const defaultHeight = "350px"
+const defaultWidth = "350px"
+
 const InquiryArtworkBrick = styled.div`
   position: relative;
 `
 
 const ImageContainer = styled.div`
-  height: 350px; 
-  width: 350px;
+  height: ${defaultHeight}; 
+  width: ${defaultWidth};
   overflow: hidden;
 `
 
@@ -31,21 +34,21 @@ const ImageInnerContainer = styled.div`
 
 const Image = styled.img`
   max-width: 100%;
-  max-height: 350px;
+  max-height: ${defaultHeight};
   margin: auto;
 `
 
 const SelectedArtworkOverlay = styled.div`
   background-color: ${colors.purpleRegular};
-  height: 350px;
-  width: 350px;
+  height: ${defaultHeight};
+  width: ${defaultWidth};
   position: absolute;
   z-index: 10;
   top: 0;
   left: 0;
   opacity: 0.8;
   text-align: center;
-  line-height: 350px;
+  line-height: ${defaultHeight};
   pointer-events: none;
 `
 
