@@ -15,26 +15,27 @@ require("dotenv").load()
 
 const app = express()
 app.use(morgan("dev"))
+app.use("/fonts", express.static("./assets/fonts"))
 
-// const webpack = require("webpack");
-// const config = require("./webpack.config");
-// const compiler = webpack(config);
-// // Dynamically host assets to browser.
-// app.use(require("webpack-dev-middleware")(compiler, {
-//   noInfo: true,
-//   publicPath: config.output.publicPath,
-//   serverSideRender: true,
-// }));
-// // Allow client to be notified of changes to sources.
-// app.use(require("webpack-hot-middleware")(compiler));
+// Dynamically host assets to browser.
+const webpack = require("webpack");
+const config = require("./webpack.config");
+const compiler = webpack(config);
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath,
+  serverSideRender: true,
+}));
+// Allow client to be notified of changes to sources.
+app.use(require("webpack-hot-middleware")(compiler));
 
 // Watch for FS changes in `../src` and clear cached modules when a change occurs,
 // thus effectively reloading the file on a subsequent request.
-const srcPath = path.resolve(__dirname, "../src")
+const srcPath = path.resolve(__dirname, "./src")
 const watcher = require("chokidar").watch(srcPath)
 watcher.on("ready", function () {
-  // TODO See if this can be optimsed to reload less files.
-  //      Basically need to know dependency graph of modules, maybe flow can help?
+  // TODO In the future this could be optimised to only reload the changed files and those that are dependent on it:
+  //      https://github.com/alloy/relational-theory/tree/optimised-reloading-of-server-sources
   watcher.on("all", function () {
     // console.log(`Clearing module cache in: ${srcPath}`)
     Object.keys(require.cache).forEach(function (id) {

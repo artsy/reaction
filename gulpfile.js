@@ -1,12 +1,8 @@
 const babel = require('gulp-babel');
 const gulp = require('gulp');
-const fsbx = require("fuse-box");
 const clean = require('gulp-clean');
 const tsc = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
-const express = require('express');
-const path = require('path');
-const { dev, storybook } = require('./dev-tools');
 
 let node;
 
@@ -26,27 +22,7 @@ gulp.task('compile-server', () => {
         .pipe(tsProject())
 
     return tsResult.js
-        .pipe(babel({
-            presets: [
-                "es2015",
-                "stage-3",
-                "react"
-            ],
-            plugins: [
-                "react-relay"
-            ],
-            retainLines: true
-        }))
+        .pipe(babel())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })
-
-gulp.task('dev', ['compile-server'], function() {
-    return dev({ root: `dist/apps/${appName}/server`, port: 3000 });
-});
-
-gulp.task('storybook', () => {
-    return storybook();
-});
-
-gulp.task('start', ['storybook', 'dev']);
