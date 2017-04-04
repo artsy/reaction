@@ -106,7 +106,8 @@ ArtworkGrid.defaultProps = {
 
 const StyledGrid = styled(ArtworkGrid)`
   display: flex;
-  max-width: 960px;
+  width: 1085px;
+  margin: 0 auto;
 `
 
 const ArtworkFragment = Relay.QL`
