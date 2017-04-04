@@ -19,7 +19,7 @@ module.exports = {
     rules: [
       { test: /\.json$/, loader: "json-loader" },
       {
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /__stories__/],
         loaders: ["react-hot-loader", "awesome-typescript-loader?configFileName=./tsconfig.json&silent=true&target=es6&useBabel=true&useCache=true"],
         test: /\.tsx?$/,
       },

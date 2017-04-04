@@ -18,6 +18,7 @@
     "jsx-no-lambda": false,
     "jsx-curly-spacing": [ true, "never" ],
     "jsx-wrap-multiline": [ true, "always" ],
+    "jsx-boolean-value": [ true, "never" ],
     "ter-indent": [true, 2],
     "no-var-requires": false
   }

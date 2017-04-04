@@ -15,7 +15,7 @@ require("dotenv").load()
 
 const app = express()
 app.use(morgan("dev"))
-app.use("/fonts", express.static("./assets/fonts"))
+app.use("/assets/fonts", express.static("./assets/fonts"))
 
 // Dynamically host assets to browser.
 const webpack = require("webpack");
