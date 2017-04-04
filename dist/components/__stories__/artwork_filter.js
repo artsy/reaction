@@ -5,6 +5,7 @@ var Relay = require("react-relay");
 var config_1 = require("../../relay/config");
 var root_queries_1 = require("../../relay/root_queries");
 var dropdown_1 = require("../artwork_filter/dropdown");
+var index_1 = require("../artwork_filter/index");
 var total_count_1 = require("../artwork_filter/total_count");var
 FilterArtworksDropdown = function (_React$Component) {_inherits(FilterArtworksDropdown, _React$Component);
     function FilterArtworksDropdown(props) {_classCallCheck(this, FilterArtworksDropdown);var _this = _possibleConstructorReturn(this, (FilterArtworksDropdown.__proto__ || Object.getPrototypeOf(FilterArtworksDropdown)).call(this,
@@ -73,7 +74,12 @@ function FilterArtworksTotalCountExample() {
     Relay.injectNetworkLayer(config_1.artsyNetworkLayer());
     return React.createElement(Relay.RootContainer, { Component: FilterArtworksTotalCountContainer, route: new root_queries_1.FilterArtworksQueryConfig() });
 }
+function FilterArtworksExample() {
+    Relay.injectNetworkLayer(config_1.artsyNetworkLayer());
+    return React.createElement(Relay.RootContainer, { Component: index_1.default, route: new root_queries_1.FilterArtworksQueryConfig() });
+}
 storybook_1.storiesOf("Artwork Filter Components", dropdown_1.default).
 add("Filter dropdown", function () {return React.createElement(FilterArtworksDropdownExample, null);}).
-add("Total Count", function () {return React.createElement(FilterArtworksTotalCountExample, null);});
+add("Total Count", function () {return React.createElement(FilterArtworksTotalCountExample, null);}).
+add("Artwork filter", function () {return React.createElement(FilterArtworksExample, null);});
 //# sourceMappingURL=artwork_filter.js.map

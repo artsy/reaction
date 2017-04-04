@@ -1,4 +1,5 @@
 "use strict";var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _templateObject = _taggedTemplateLiteral(["\n  background: white;\n  color: black;\n  border: 1px solid ", ";\n  display: inline-block;\n  line-height: 160%;\n  padding: 15px 35px 10px 18px;\n  font-size: 13px;\n  vertical-align: middle;\n  max-width: 120px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  ", "\n"], ["\n  background: white;\n  color: black;\n  border: 1px solid ", ";\n  display: inline-block;\n  line-height: 160%;\n  padding: 15px 35px 10px 18px;\n  font-size: 13px;\n  vertical-align: middle;\n  max-width: 120px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  ", "\n"]),_templateObject2 = _taggedTemplateLiteral(["\n  z-index: 2;\n  background: black;\n  position: absolute;\n  top: 45px;\n  left: 1px;\n  width: 300px;\n  border: 1px solid #333;\n"], ["\n  z-index: 2;\n  background: black;\n  position: absolute;\n  top: 45px;\n  left: 1px;\n  width: 300px;\n  border: 1px solid #333;\n"]),_templateObject3 = _taggedTemplateLiteral(["\n  position: absolute\n  font-size: 9px\n  margin-top: -15px;\n  color: black\n"], ["\n  position: absolute\n  font-size: 9px\n  margin-top: -15px;\n  color: black\n"]),_templateObject4 = _taggedTemplateLiteral(["\n  ", "\n  text-align: left;\n  color: white;\n  display: block;\n  border-bottom: 1px solid #333;\n  padding: 15px 18px 10px 18px;\n  text-transform: capitalize;\n  &:hover {\n    background: ", ";\n  }\n"], ["\n  ", "\n  text-align: left;\n  color: white;\n  display: block;\n  border-bottom: 1px solid #333;\n  padding: 15px 18px 10px 18px;\n  text-transform: capitalize;\n  &:hover {\n    background: ", ";\n  }\n"]),_templateObject5 = _taggedTemplateLiteral(["\n  color: ", "\n"], ["\n  color: ", "\n"]),_templateObject6 = _taggedTemplateLiteral(["\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n  margin-left: -1px;\n"], ["\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n  margin-left: -1px;\n"]);function _taggedTemplateLiteral(strings, raw) {return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}
+var numeral = require("numeral");
 var React = require("react");
 var Relay = require("react-relay");
 var icon_1 = require("../icon");
@@ -13,31 +14,34 @@ Dropdown = function (_React$Component) {_inherits(Dropdown, _React$Component);
             isHovered: false,
             selected: {} };return _this;
 
-    }_createClass(Dropdown, [{ key: "toggleHover", value: function toggleHover()
-        {
+    }_createClass(Dropdown, [{ key: "toggleHover", value: function toggleHover(
+        value) {
             this.setState({
-                isHovered: !this.state.isHovered });
+                isHovered: value });
 
         } }, { key: "onSelect", value: function onSelect(
-        count) {
+        count, slice) {
             this.setState({
-                selected: count });
+                selected: count,
+                isHovered: false });
 
+            this.props.onSelect(count, slice);
         } }, { key: "render", value: function render()
         {var _this2 = this;
+            var slice = this.props.aggregation.slice;
             var navItems = this.props.aggregation.counts.map(function (count) {
-                return React.createElement(NavItem, { key: count.id, onClick: function onClick() {return _this2.onSelect(count);} },
+                return React.createElement(NavItem, { key: count.id, onClick: function onClick() {return _this2.onSelect(count, slice);} },
                 React.createElement("span", null, count.name),
                 React.createElement(NavItemCount, null,
                 "\xA0(",
-                count.count,
+                numeral(count.count).format("0,0"),
                 ")"));
             });
-            var allLabel = param_map_1.labelMap[this.props.aggregation.slice.toLowerCase()].plural;
-            navItems.unshift(React.createElement(NavItem, { key: "all", onClick: function onClick() {return _this2.onSelect({});} },
+            var labels = param_map_1.labelMap[this.props.aggregation.slice.toLowerCase()];
+            navItems.unshift(React.createElement(NavItem, { key: "all", onClick: function onClick() {return _this2.onSelect({ value: "*" }, slice);} },
             React.createElement("span", null,
             "All ",
-            allLabel)));
+            labels.plural)));
             var buttonColor = "white";
             var buttonTextColor = "black";
             var superLabelColor = "black";
@@ -51,9 +55,9 @@ Dropdown = function (_React$Component) {_inherits(Dropdown, _React$Component);
                 superLabelColor = "white";
                 navStyle = { display: "block" };
             }
-            var labelText = this.state.selected.name || this.props.aggregation.slice;
-            var superLabelText = this.state.selected.name ? this.props.aggregation.slice : null;
-            return React.createElement("div", { className: this.props.className, onMouseEnter: function onMouseEnter() {return _this2.toggleHover();}, onMouseLeave: function onMouseLeave() {return _this2.toggleHover();} },
+            var labelText = this.state.selected.name || labels.label;
+            var superLabelText = this.state.selected.name ? labels.label : null;
+            return React.createElement("div", { className: this.props.className, onMouseEnter: function onMouseEnter() {return _this2.toggleHover(true);}, onMouseLeave: function onMouseLeave() {return _this2.toggleHover(false);} },
             React.createElement(Button, { style: { backgroundColor: buttonColor, color: buttonTextColor } },
             superLabelText && React.createElement(SuperLabel, { style: { color: superLabelColor } }, superLabelText),
             labelText,

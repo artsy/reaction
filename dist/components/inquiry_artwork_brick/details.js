@@ -17,7 +17,7 @@ ArtworkDetails = function (_React$Component) {_inherits(ArtworkDetails, _React$C
             if (artists && artists.length) {
                 var artistLine = artists.
                 map(function (artist) {return React.createElement(text_link_1.default, { href: artist.href, key: artist.__id }, artist.name);}).
-                reduce(function (prev, curr) {return [prev, ", ", curr];});
+                reduce(function (acc, element, index) {return acc.concat(index === 0 ? [element] : [", ", element]);}, []);
                 return React.createElement("div", null,
                 React.createElement("strong", null, artistLine));
             }
@@ -35,16 +35,8 @@ ArtworkDetails = function (_React$Component) {_inherits(ArtworkDetails, _React$C
                 return React.createElement("div", null,
                 React.createElement(text_link_1.default, { href: this.props.artwork.partner.href }, this.props.artwork.partner.name));
             }
-        }
-        // saleLine() {
-        //   const artwork = this.props.artwork
-        //   const hasSaleMessage = artwork.sale_message && artwork.sale_message !== "Contact For Price"
-        //   const notInAuction = !(artwork.sale && artwork.sale.is_auction)
-        //   if (hasSaleMessage && notInAuction) {
-        //     return <div>{artwork.sale_message}</div>
-        //   }
-        // }
-    }, { key: "render", value: function render() {
+        } }, { key: "render", value: function render()
+        {
             return React.createElement("div", null,
             this.artistLine(),
             this.titleLine(),
