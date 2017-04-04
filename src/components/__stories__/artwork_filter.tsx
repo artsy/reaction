@@ -6,6 +6,7 @@ import { artsyNetworkLayer } from "../../relay/config"
 import { FilterArtworksQueryConfig } from "../../relay/root_queries"
 
 import Dropdown from "../artwork_filter/dropdown"
+import ArtworksFilter from "../artwork_filter/index"
 import TotalCount from "../artwork_filter/total_count"
 
 interface FilterArtworksDropdownState {
@@ -135,10 +136,23 @@ function FilterArtworksTotalCountExample() {
   )
 }
 
+function FilterArtworksExample() {
+  Relay.injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <Relay.RootContainer
+      Component={ArtworksFilter}
+      route={new FilterArtworksQueryConfig()}
+    />
+  )
+}
+
 storiesOf("Artwork Filter Components", Dropdown)
   .add("Filter dropdown", () => (
-    <FilterArtworksDropdownExample/>
+    <FilterArtworksDropdownExample />
   ))
   .add("Total Count", () => (
-    <FilterArtworksTotalCountExample/>
+    <FilterArtworksTotalCountExample />
+  ))
+  .add("Artwork filter", () => (
+    <FilterArtworksExample />
   ))

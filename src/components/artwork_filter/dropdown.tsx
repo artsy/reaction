@@ -1,3 +1,4 @@
+import * as numeral from "numeral"
 import * as React from "react"
 import * as Relay from "react-relay"
 
@@ -27,34 +28,36 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
   }
 
-  toggleHover() {
+  toggleHover(value) {
     this.setState({
-      isHovered: !this.state.isHovered,
+      isHovered: value,
     })
   }
 
-  onSelect(count) {
+  onSelect(count, slice) {
     this.setState({
       selected: count,
+      isHovered: false,
     })
+    this.props.onSelect(count, slice)
   }
 
   render() {
+    const slice = this.props.aggregation.slice
     let navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => this.onSelect(count)}>
+        <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
           <span>{count.name}</span>
-          <NavItemCount>&nbsp;({count.count})</NavItemCount>
+          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
       )
     })
 
-    const allLabel = labelMap[this.props.aggregation.slice.toLowerCase()].plural
-
+    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
     navItems.unshift(
       (
-        <NavItem key="all" onClick={() => this.onSelect({})}>
-          <span>All {allLabel}</span>
+        <NavItem key="all" onClick={() => this.onSelect({value: "*"}, slice)}>
+          <span>All {labels.plural}</span>
         </NavItem>
       ),
     )
@@ -75,14 +78,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       navStyle = { display: "block" }
     }
 
-    const labelText = this.state.selected.name || this.props.aggregation.slice
-    const superLabelText = this.state.selected.name ? this.props.aggregation.slice : null
+    const labelText = this.state.selected.name || labels.label
+    const superLabelText = this.state.selected.name ? labels.label : null
 
     return (
       <div
         className={this.props.className}
-        onMouseEnter={() => this.toggleHover()}
-        onMouseLeave={() => this.toggleHover()}
+        onMouseEnter={() => this.toggleHover(true)}
+        onMouseLeave={() => this.toggleHover(false)}
       >
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
