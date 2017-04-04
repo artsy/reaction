@@ -2,7 +2,7 @@
   "name": "@artsy/reaction-force",
   "version": "0.1.0",
   "description": "Force’s React Components",
-  "main": "dist/apps/index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
