@@ -9,10 +9,9 @@ export default ({styles, html, entrypoint}) => {
           <style>${styles}</style>
         </head>
         <body>
-          <div id="app-container">
-            ${html}
-          </div>
-          <script src="${entrypoint}" />
+          <div id="app-container">${html}</div>
+          <script src="/bundles/commons.chunk.js"></script>
+          <script src="${entrypoint}"></script>
         </body>
       </html>
     `

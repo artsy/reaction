@@ -32,8 +32,8 @@ export default Relay.createContainer(StyledMetadata, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        ${ArtworkDetails.getFragment("artwork")}
-        ${ArtworkContact.getFragment("artwork")}
+        ${(ArtworkDetails.getFragment("artwork"))}
+        ${(ArtworkContact.getFragment("artwork"))}
       }
     `,
   },
