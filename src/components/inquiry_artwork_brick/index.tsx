@@ -5,11 +5,14 @@ import colors from "../../assets/colors"
 import Icon from "../icon"
 import ArtworkMetadata from "./metadata"
 
-const defaultHeight = "350px"
-const defaultWidth = "350px"
+const defaultHeight = "250px"
+const defaultWidth = "250px"
 
 const InquiryArtworkBrick = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 `
 
 const ImageContainer = styled.div`
@@ -39,7 +42,7 @@ const Image = styled.img`
 `
 
 const SelectedArtworkOverlay = styled.div`
-  background-color: ${colors.purpleRegular};
+  background-color: rgba(110, 0, 255, 0.75);
   height: ${defaultHeight};
   width: ${defaultWidth};
   position: absolute;
@@ -81,16 +84,18 @@ export class Artwork extends React.Component<RelayProps, ArtworkState> {
     }
     return (
       <InquiryArtworkBrick>
-        <ImageContainer>
-          <ImageOuterContainer onClick={this.onSelect.bind(this)} >
-            <ImageInnerContainer>
-              <Image src={this.props.artwork.image.url} />
-            </ImageInnerContainer>
-          </ImageOuterContainer>
-        </ImageContainer>
-        <ArtworkMetadata artwork={this.props.artwork} />
+        <div style={{position: "relative"}}>
+          <ImageContainer>
+            <ImageOuterContainer onClick={this.onSelect.bind(this)} >
+              <ImageInnerContainer>
+                <Image src={this.props.artwork.image.url} />
+              </ImageInnerContainer>
+            </ImageOuterContainer>
+          </ImageContainer>
+          <ArtworkMetadata artwork={this.props.artwork} />
 
-        {selectedOverlay}
+          {selectedOverlay}
+      </div>
       </InquiryArtworkBrick>
     )
   }

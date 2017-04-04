@@ -24,7 +24,8 @@ export const StyledMetadata = styled(ArtworkMetadata)`
     ${fonts.secondary.style}
     color: ${colors.grayBold};
     font-size: 15px;
-    height: 100px;
+    height: 70px;
+    width: 250px;
 `
 
 export default Relay.createContainer(StyledMetadata, {

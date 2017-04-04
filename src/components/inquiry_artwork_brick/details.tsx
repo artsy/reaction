@@ -7,7 +7,7 @@ import TextLink from "../text_link"
 interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {}
 
 const DetailsContainer = styled.div`
-  height: 100px;
+  height: 70px;
   margin-top: 10px;
 `
 
@@ -51,11 +51,11 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
 
   render() {
     return (
-      <div>
+      <DetailsContainer>
         {this.artistLine()}
         {this.titleLine()}
         {this.partnerLine()}
-      </div>
+      </DetailsContainer>
     )
   }
 }

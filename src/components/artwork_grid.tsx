@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import Artwork from "./artwork/index"
+import Artwork from "./inquiry_artwork_brick"
 
 export interface GridProps extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
@@ -99,13 +99,14 @@ export class ArtworkGrid extends React.Component<GridProps, null> {
 }
 
 ArtworkGrid.defaultProps = {
-  columnCount: 3,
-  sectionMargin: 20,
+  columnCount: 4,
+  sectionMargin: 30,
   itemMargin: 20,
 }
 
 const StyledGrid = styled(ArtworkGrid)`
-  display: flex
+  display: flex;
+  max-width: 960px;
 `
 
 const ArtworkFragment = Relay.QL`
