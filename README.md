@@ -29,6 +29,7 @@ $ git clone --recursive https://github.com/artsy/reaction-force.git
 $ cd reaction-force
 $ npm install -g yarn
 $ yarn install
+$ cp .env.oss .env
 ```
 
 ## Instructions

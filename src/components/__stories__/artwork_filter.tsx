@@ -3,7 +3,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 
 import { artsyNetworkLayer } from "../../relay/config"
-import { FilterArtworksQueryConfig } from "../../relay/root_queries"
+import FilterArtworksQueryConfig from "../../relay/queries/filter_artworks"
 
 import Dropdown from "../artwork_filter/dropdown"
 import ArtworksFilter from "../artwork_filter/index"
