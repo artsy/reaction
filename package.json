@@ -71,10 +71,6 @@
   "dependencies": {
     "artsy-passport": "^1.6.1",
     "artsy-xapp": "^1.0.4",
-<<<<<<< HEAD
-=======
-    "asap": "https://github.com/alloy/asap.git",
->>>>>>> master
     "backbone": "^1.3.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
