@@ -3,7 +3,7 @@ import * as Relay from "react-relay"
 import styled from "styled-components"
 
 import Button from "../../../../components/buttons/inverted"
-import Artwork from "../../../../components/inquiry_artwork_brick"
+import Artwork from "../../../../components/inquiry_artwork"
 import Nav from "../../../../components/nav"
 import NavItem from "../../../../components/nav_item"
 import TextArea from "../../../../components/text_area"

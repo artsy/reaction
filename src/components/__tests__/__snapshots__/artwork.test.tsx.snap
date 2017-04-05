@@ -1,8 +1,14 @@
 exports[`Artwork renders correctly 1`] = `
-<div>
-  <img
-    className="ffkRGz"
-    src="artsy.net/image-url" />
+<div
+  onClick={[Function]}>
+  <div
+    className="fmQTpg"
+    size={250}>
+    <img
+      className="eltJDW"
+      size={250}
+      src="artsy.net/image-url" />
+  </div>
   <div
     className="jsqocU">
     <div>
@@ -30,11 +36,7 @@ exports[`Artwork renders correctly 1`] = `
           Gallery 1261
         </a>
       </div>
-      <div>
-        $875
-      </div>
     </div>
-    <div />
   </div>
 </div>
 `;

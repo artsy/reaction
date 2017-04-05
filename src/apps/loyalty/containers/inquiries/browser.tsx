@@ -25,5 +25,3 @@ IsomorphicRelay.prepareInitialRender({
     document.getElementById("app-container"),
   )
 })
-
-
