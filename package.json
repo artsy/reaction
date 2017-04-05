@@ -1,6 +1,6 @@
 {
   "name": "reaction-force",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
