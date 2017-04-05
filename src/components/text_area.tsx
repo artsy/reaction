@@ -10,9 +10,11 @@ interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
   block?: boolean
 }
 
-const TextArea: React.SFC<TextAreaProps> = props => (
-  <textarea {...props} />
-)
+const TextArea: React.SFC<TextAreaProps> = props => {
+  const newProps = {...props}
+  delete newProps.block
+  return <textarea {...newProps} />
+}
 
 export default styled(TextArea)`
   ${borderedInput}

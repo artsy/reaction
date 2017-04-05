@@ -60,6 +60,7 @@ app.get(loginPagePath, (req, res) => {
     styles,
     html,
     entrypoint: "/bundles/login.js",
+    bootstrapData: `var FORM_DATA = ${JSON.stringify(formConfig)};`,
   }))
 })
 
@@ -81,6 +82,7 @@ app.get("/inquiries", (req, res) => {
         styles,
         html,
         entrypoint: "/bundles/inquiries.js",
+        bootstrapData: `var DATA = ${JSON.stringify(data)};`,
       }))
     })
 })

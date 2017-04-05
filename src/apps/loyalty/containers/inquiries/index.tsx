@@ -2,8 +2,8 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Artwork from "../../../../components/artwork"
 import Button from "../../../../components/buttons/inverted"
+import Artwork from "../../../../components/inquiry_artwork_brick"
 import Nav from "../../../../components/nav"
 import NavItem from "../../../../components/nav_item"
 import TextArea from "../../../../components/text_area"
@@ -30,10 +30,11 @@ class Inquiries extends React.Component<RelayProps, any> {
 
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
-      const { __id, artwork } = edge.node
+      // TODO: swap id with __id
+      const { id, artwork } = edge.node
       return (
-        <InquiryContainer>
-          <Artwork key={__id} artwork={artwork as any} />
+        <InquiryContainer key={id}>
+          <Artwork artwork={artwork as any} />
         </InquiryContainer>
       )
     })
@@ -66,7 +67,7 @@ export default Relay.createContainer(Inquiries, {
         artwork_inquiries_connection(first: 10) {
           edges {
             node {
-              __id
+              id
               artwork {
                 ${Artwork.getFragment("artwork")}
               }
@@ -83,7 +84,7 @@ interface RelayProps {
     artwork_inquiries_connection: {
       edges: Array<{
         node: {
-          __id: string,
+          id: string,
           artwork: Array<any | null> | null,
         } | null,
       } | null> | null,
