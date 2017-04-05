@@ -466,10 +466,6 @@ artsy-xapp@^1.0.4:
   dependencies:
     superagent "^1.2.0"
 
-"asap@https://github.com/alloy/asap.git", asap@~2.0.3:
-  version "2.0.5"
-  resolved "https://github.com/alloy/asap.git#2d04541dcb564fb3617d24ec1e9167c41fb2512b"
-
 asn1@~0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.3.tgz#dac8787713c9966849fc8180777ebe9c1ddf3b86"
