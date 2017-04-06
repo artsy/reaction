@@ -1,7 +1,8 @@
 exports[`Artwork renders correctly 1`] = `
-<div>
+<div
+  style={undefined}>
   <img
-    className="kFAvJH"
+    className="bMAZFf"
     src="artsy.net/image-url" />
   <div
     className="jsqocU">
