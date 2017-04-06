@@ -21,6 +21,7 @@ interface State {
   dimension_range: string,
   price_range: string,
   medium: string,
+  loading: boolean,
 }
 
 class ArtworkFilter extends React.Component<Props, State> {
@@ -31,7 +32,20 @@ class ArtworkFilter extends React.Component<Props, State> {
       dimension_range: "*",
       price_range: "*",
       medium: "*",
+      loading: false,
     }
+  }
+
+  handleLoadMore() {
+    this.setState({ loading: true }, () => {
+      this.props.relay.setVariables({
+        size: this.props.relay.variables.size + PageSize,
+      }, readyState => {
+        if (readyState.done) {
+          this.setState({ loading: false })
+        }
+      })
+    })
   }
 
   setForSale() {
@@ -99,7 +113,7 @@ class ArtworkFilter extends React.Component<Props, State> {
             onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
-        <Artworks artworks={filterArtworks.artworks} />
+        <Artworks artworks={filterArtworks.artworks} onLoadMore={() => this.handleLoadMore()} />
       </div>
     )
   }
