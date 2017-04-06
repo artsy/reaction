@@ -3,14 +3,29 @@ import * as Relay from "react-relay"
 import styled from "styled-components"
 import Artwork from "./artwork/index"
 
-export interface GridProps extends RelayProps, React.HTMLProps<ArtworkGrid> {
+interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
   sectionMargin?: number,
   itemMargin?: number,
+  onLoadMore?: any,
 }
 
-export class ArtworkGrid extends React.Component<GridProps, null> {
-  public static defaultProps: Partial<GridProps>
+interface State {
+  loading: boolean,
+}
+
+export class ArtworkGrid extends React.Component<Props, State> {
+  public static defaultProps: Partial<Props>
+
+  componentDidMount() {
+    window.onscroll = () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if (this.props.onLoadMore) {
+          this.props.onLoadMore()
+        }
+      }
+    }
+  }
 
   sectionedArtworks() {
     const sectionedArtworks: ArtworkRelayProps[][] = []
