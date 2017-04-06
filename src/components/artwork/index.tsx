@@ -5,6 +5,7 @@ import ArtworkMetadata from "./metadata"
 
 const Image = styled.img`
   max-height: 450px;
+  width: 100%;
 `
 
 export class Artwork extends React.Component<RelayProps, null> {
