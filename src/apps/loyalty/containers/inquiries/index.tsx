@@ -33,7 +33,7 @@ class Inquiries extends React.Component<RelayProps, any> {
       const { __id, artwork } = edge.node
       return (
         <InquiryContainer>
-          <Artwork key={__id} artwork={artwork as any} />
+          <Artwork key={__id} artwork={artwork as any} style={{"max-height": "450px"}} />
         </InquiryContainer>
       )
     })

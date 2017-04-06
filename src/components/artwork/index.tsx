@@ -7,10 +7,14 @@ const Image = styled.img`
   width: 100%;
 `
 
-export class Artwork extends React.Component<RelayProps, null> {
+interface Props extends RelayProps, React.HTMLProps<Artwork> {
+  style?: any
+}
+
+export class Artwork extends React.Component<Props, null> {
   render() {
     return (
-      <div>
+      <div style={this.props.style}>
         <Image src={this.props.artwork.image.url} />
         <ArtworkMetadata artwork={this.props.artwork} />
       </div>
