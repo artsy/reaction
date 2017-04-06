@@ -141,7 +141,7 @@ function FilterArtworksExample() {
   return (
     <Relay.RootContainer
       Component={ArtworksFilter}
-      route={new FilterArtworksQueryConfig()}
+      route={new FilterArtworksQueryConfig({ tag_id: "butt" })}
     />
   )
 }

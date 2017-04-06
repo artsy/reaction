@@ -139,6 +139,9 @@ export default Relay.createContainer(ArtworkFilter, {
     aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
     price_range: "*",
     dimension_range: "*",
+    gene_id: null,
+    tag_id: null,
+    artist_id: null,
   },
   fragments: {
     filter_artworks: () => Relay.QL`
@@ -150,7 +153,10 @@ export default Relay.createContainer(ArtworkFilter, {
           medium: $medium,
           price_range: $price_range,
           dimension_range: $dimension_range,
-          sort: $sort
+          sort: $sort,
+          gene_id: $gene_id,
+          tag_id: $tag_id,
+          artist_id: $artist_id,
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
