@@ -155,7 +155,6 @@ export default Relay.createContainer(ArtworkFilter, {
           dimension_range: $dimension_range,
           sort: $sort,
           gene_id: $gene_id,
-          tag_id: $tag_id,
           artist_id: $artist_id,
         ) {
           ${TotalCount.getFragment("filter_artworks")}
