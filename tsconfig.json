@@ -13,6 +13,20 @@
         },
         "outDir": "dist"
     },
+    "awesomeTypescriptLoaderOptions": {
+        "silent": false,
+        "useBabel": true,
+        "babelOptions": {
+            "presets": [
+                "es2015",
+                "stage-3",
+                "react"
+            ],
+            "plugins": [
+                "react-relay"
+            ]
+        }
+    },
     "exclude": [
         "node_modules",
         "dist",

@@ -60,7 +60,8 @@ app.use(function (req, res, next) {
   })
   next()
 })
-process.on("uncaughtException", (error) => {
+
+let errorHandler = (error) => {
   if (currentResponse) {
     currentResponse.status(500).send(`
       <html>
@@ -74,7 +75,10 @@ process.on("uncaughtException", (error) => {
     console.error(error)
     process.abort()
   }
-})
+}
+
+process.on("uncaughtException", errorHandler)
+process.on("unhandledRejection", errorHandler)
 
 // Dynamically load app routes so that they can be reloaded in development.
 app.use((req, res, next) => {

@@ -7,13 +7,21 @@ import { artsyNetworkLayer } from "../../../../relay/config"
 import CurrentUserRoute from "../../../../relay/queries/current_user"
 import Inquiries from "./index"
 
-Relay.injectNetworkLayer(artsyNetworkLayer())
+declare var window: any
 
-render((
-    <Relay.RootContainer
-      Component={Inquiries}
-      route={new CurrentUserRoute()}
-    />
-  ),
-  document.getElementById("app-container"),
-)
+const env = new (Relay as any).Environment()
+env.injectNetworkLayer(artsyNetworkLayer())
+
+IsomorphicRelay.injectPreparedData(env, window.DATA)
+
+IsomorphicRelay.prepareInitialRender({
+  Container: Inquiries,
+  queryConfig: new CurrentUserRoute(),
+  environment: env,
+}).then(props => {
+  render((
+      <IsomorphicRelay.Renderer {...props} />
+    ),
+    document.getElementById("app-container"),
+  )
+})

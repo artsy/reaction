@@ -562,7 +562,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.20.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@^6.0.0, babel-core@^6.0.2, babel-core@^6.11.4, babel-core@^6.24.0:
+babel-core@^6.0.0, babel-core@^6.0.2, babel-core@^6.11.4, babel-core@^6.24.0, babel-core@^6.9.1:
   version "6.24.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.24.0.tgz#8f36a0a77f5c155aed6f920b844d23ba56742a02"
   dependencies:
@@ -1145,7 +1145,7 @@ babel-preset-env@0.0.6:
     babel-plugin-transform-regenerator "^6.6.0"
     browserslist "^1.4.0"
 
-babel-preset-es2015@^6.16.0, babel-preset-es2015@^6.22.0:
+babel-preset-es2015@^6.16.0, babel-preset-es2015@^6.22.0, babel-preset-es2015@^6.9.0:
   version "6.24.0"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.24.0.tgz#c162d68b1932696e036cd3110dc1ccd303d2673a"
   dependencies:
@@ -7056,6 +7056,14 @@ trim-right@^1.0.1:
 tryor@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/tryor/-/tryor-0.1.2.tgz#8145e4ca7caff40acde3ccf946e8b8bb75b4172b"
+
+ts-babel-node@orta/ts-babel-node#tsx:
+  version "1.1.1"
+  resolved "https://codeload.github.com/orta/ts-babel-node/tar.gz/579a44fc8d6c2cf2229cd60cb79ca6af25a86084"
+  dependencies:
+    babel-core "^6.9.1"
+    babel-preset-es2015 "^6.9.0"
+    source-map-support "^0.4.0"
 
 ts-jest@^18.0.3:
   version "18.0.3"

@@ -4,7 +4,9 @@ import { render } from "react-dom"
 
 import Login from "./index"
 
+const formData = (window as any).FORM_DATA
+
 render(
-  <Login />,
+  <Login form={formData} />,
   document.getElementById("app-container"),
 )

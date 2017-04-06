@@ -1,42 +1,70 @@
 import * as React from "react"
-import * as Relay from "react-relay"
-import styled from "styled-components"
-import ArtworkMetadata from "./metadata"
 
-const Image = styled.img`
-  max-height: 450px;
+import styled from "styled-components"
+import ArtworkMetadata, { ArtworkMetadataProps } from "./metadata"
+import createContainer, { RelayProps } from "./relay"
+
+const ImageContainer = styled.div`
+  height: ${props => `${props.size}px`};
+  width: ${props => `${props.size}px`};
+  display: flex;
+  justify-content: center;
+  position: relative;
 `
 
-export class Artwork extends React.Component<RelayProps, null> {
+const Image = styled.img`
+  max-width: 100%;
+  max-height: ${props => `${props.size}px`};
+  margin: auto;
+`
+
+export interface ArtworkProps extends RelayProps {
+  size?: number
+  extended?: boolean
+  overlay?: JSX.Element
+}
+
+export interface ArtworkState {
+  isSelected: boolean
+}
+
+export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
+  static defaultProps = {
+    size: 250,
+    extended: true,
+    overlay: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isSelected: false,
+    }
+  }
+
+  onSelected(e) {
+    if (!this.props.overlay) {
+      return
+    }
+
+    this.setState({
+      isSelected: !this.state.isSelected,
+    })
+  }
+
   render() {
+    const { size, artwork, overlay } = this.props
+
     return (
-      <div>
-        <Image src={this.props.artwork.image.url} />
-        <ArtworkMetadata artwork={this.props.artwork} />
+      <div onClick={this.onSelected.bind(this)}>
+        <ImageContainer size={size}>
+          <Image src={artwork.image.url} size={size} />
+          {this.state.isSelected && overlay}
+        </ImageContainer>
+        <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
 }
 
-export default Relay.createContainer(Artwork, {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        image {
-          url(version: "large")
-          aspect_ratio
-        }
-       ${ArtworkMetadata.getFragment("artwork")}
-      }
-    `,
-  },
-})
-
-interface RelayProps {
-  artwork: {
-    image: {
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
-}
+export default createContainer<ArtworkProps, ArtworkMetadataProps>(Artwork, ArtworkMetadata)
