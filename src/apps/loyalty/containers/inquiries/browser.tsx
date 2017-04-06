@@ -10,7 +10,10 @@ import Inquiries from "./index"
 declare var window: any
 
 const env = new (Relay as any).Environment()
-env.injectNetworkLayer(artsyNetworkLayer())
+const networkLayer = artsyNetworkLayer(window.USER_DATA)
+
+env.injectDefaultNetworkLayer(networkLayer)
+Relay.injectNetworkLayer(networkLayer)
 
 IsomorphicRelay.injectPreparedData(env, window.DATA)
 
