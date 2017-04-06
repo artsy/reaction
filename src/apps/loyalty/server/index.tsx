@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 
 app.get(loginPagePath, (req, res) => {
   const formConfig = {
-    url: req.baseUrl + req.path,
+    url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl}`,
     csrfToken: req.csrfToken(),
     facebookPath,
     twitterPath,

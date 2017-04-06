@@ -5,7 +5,7 @@
     "react"
   ],
   "plugins": [
-    "./data/schema"
+    "react-relay"
   ],
   "retainLines": true
 }
