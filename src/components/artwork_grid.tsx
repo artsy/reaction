@@ -157,7 +157,7 @@ interface ArtworkRelayProps {
 interface RelayProps {
   artworks: {
     edges: Array<{
-      node: ArtworkRelayProps | null,
+      node: Array<any | null> | null,
     } | null> | null,
   },
 }
