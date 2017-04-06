@@ -113,7 +113,11 @@ class ArtworkFilter extends React.Component<Props, State> {
             onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
-        <Artworks artworks={filterArtworks.artworks} onLoadMore={() => this.handleLoadMore()} />
+        <Artworks
+          artworks={filterArtworks.artworks}
+          onLoadMore={() => this.handleLoadMore()}
+          columnCount={4}
+        />
       </div>
     )
   }
