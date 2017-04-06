@@ -6,7 +6,7 @@ import icons, { IconName } from "../assets/icons"
 
 export type FontName = string
 
-interface IconProps extends React.HTMLProps<HTMLDivElement> {
+export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   font?: FontName
   name: IconName
   color?: string
