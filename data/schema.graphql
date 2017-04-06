@@ -1,5 +1,6 @@
 schema {
   query: RootQueryType
+  mutation: RootMutationType
 }
 
 # One item in an aggregation
@@ -11,6 +12,7 @@ type AggregationCount {
   id: String!
   count: Int
   name: String
+  sortable_id: String
 }
 
 type Article implements Node {
@@ -21,6 +23,8 @@ type Article implements Node {
   id: String!
   cached: Int
   author: Author
+  channel_id: String
+  contributing_authors: [Author]
   href: String
   published_at(
     convert_to_utc: Boolean
@@ -33,6 +37,7 @@ type Article implements Node {
   thumbnail_title: String
   thumbnail_teaser: String
   thumbnail_image: Image
+  tier: Int
   title: String
   updated_at(
     convert_to_utc: Boolean
@@ -604,7 +609,6 @@ type Artwork implements Node {
 }
 
 enum ArtworkAggregation {
-  ARTIST
   COLOR
   DIMENSION_RANGE
   FOLLOWED_ARTISTS
@@ -648,6 +652,7 @@ type ArtworkContextAuction {
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
   ): [Artwork]
+  associated_sale: Sale
   auction_state: String @deprecated(reason: "Favor `status` for consistency with other models")
 
   # A bid increment policy that explains minimum bids in ranges.
@@ -658,6 +663,7 @@ type ArtworkContextAuction {
   cover_image: Image
   currency: String
   description: String
+  eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
     format: String
@@ -714,6 +720,7 @@ type ArtworkContextAuction {
   ): String
   status: String
   sale_artwork(id: String!): SaleArtwork
+  symbol: String
 }
 
 type ArtworkContextFair {
@@ -771,15 +778,16 @@ type ArtworkContextPartnerShow implements Node {
   cached: Int
   artists: [Artist]
   artworks(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
     all: Boolean
-    for_sale: Boolean
 
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    page: Int = 1
+
+    # Number of artworks to return
+    size: Int = 25
   ): [Artwork]
   counts: PartnerShowCounts
   cover_image: Image
@@ -861,6 +869,7 @@ type ArtworkContextSale {
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
   ): [Artwork]
+  associated_sale: Sale
   auction_state: String @deprecated(reason: "Favor `status` for consistency with other models")
 
   # A bid increment policy that explains minimum bids in ranges.
@@ -871,6 +880,7 @@ type ArtworkContextSale {
   cover_image: Image
   currency: String
   description: String
+  eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
     format: String
@@ -927,6 +937,7 @@ type ArtworkContextSale {
   ): String
   status: String
   sale_artwork(id: String!): SaleArtwork
+  symbol: String
 }
 
 # An edge in a connection.
@@ -941,6 +952,7 @@ type ArtworkEdge {
 type ArtworkInquiry {
   artwork: Artwork!
   id: ID
+  impulse_conversation_id: String
 }
 
 # A connection to a list of items.
@@ -1241,6 +1253,16 @@ type BidIncrement {
   to: Int
 }
 
+enum BuyerOutcomeTypes {
+  PURCHASED
+  STILL_CONSIDERING
+  HIGH_PRICE
+  LOST_INTEREST
+  WORK_UNAVAILABLE
+  OTHER
+  BLANK
+}
+
 type BuyersPremium {
   # A formatted price with various currency formatting options.
   amount(
@@ -1259,6 +1281,79 @@ type BuyersPremium {
 enum CategoryType {
   GALLERY
   INSTITUTION
+}
+
+type CollectorProfileType {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+  email: String
+  name: String
+  confirmed_buyer_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  collector_level: Int
+  self_reported_purchases: String
+  loyalty_applicant_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  professional_buyer_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  professional_buyer_applied_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+}
+
+# A conversation.
+type ConversationType {
+  # Impulse id.
+  id: String
+
+  # Gravity inquiry id.
+  inquiry_id: String
+  from_id: String!
+  from_type: String!
+  from_name: String!
+  from_email: String!
+  to_id: String!
+  to_type: String!
+  to_name: String!
+  buyer_outcome: String
+  buyer_outcome_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  created_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  initial_message: String
+  purchase_request: Boolean
 }
 
 type coordinates {
@@ -1432,6 +1527,28 @@ type FilterPartners {
   total: Int
 }
 
+type FilterSaleArtworks {
+  # Returns aggregation counts for the given filter query.
+  aggregations: [SaleArtworksAggregationResults]
+  counts: FilterSaleArtworksCounts
+
+  # Sale Artwork results.
+  hits: [SaleArtwork]
+}
+
+type FilterSaleArtworksCounts {
+  total(
+    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    format: String
+    label: String
+  ): FormattedNumber
+  followed_artists(
+    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    format: String
+    label: String
+  ): FormattedNumber
+}
+
 type FollowArtistCounts {
   artists: Int
 }
@@ -1485,11 +1602,12 @@ type Gene implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
     after: String
     first: Int
     before: String
@@ -1521,11 +1639,12 @@ type Gene implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
   ): FilterArtworks
   href: String
   image: Image
@@ -1567,11 +1686,12 @@ type GeneItem implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
     after: String
     first: Int
     before: String
@@ -1603,11 +1723,12 @@ type GeneItem implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
   ): FilterArtworks
   href: String
   image: Image
@@ -1657,6 +1778,8 @@ type HighlightedArticle implements Node {
   id: String!
   cached: Int
   author: Author
+  channel_id: String
+  contributing_authors: [Author]
   href: String
   published_at(
     convert_to_utc: Boolean
@@ -1669,6 +1792,7 @@ type HighlightedArticle implements Node {
   thumbnail_title: String
   thumbnail_teaser: String
   thumbnail_image: Image
+  tier: Int
   title: String
   updated_at(
     convert_to_utc: Boolean
@@ -1691,15 +1815,16 @@ type HighlightedShow implements Node {
   cached: Int
   artists: [Artist]
   artworks(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
     all: Boolean
-    for_sale: Boolean
 
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    page: Int = 1
+
+    # Number of artworks to return
+    size: Int = 25
   ): [Artwork]
   counts: PartnerShowCounts
   cover_image: Image
@@ -1984,11 +2109,12 @@ type HomePageModuleContextGene implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
     after: String
     first: Int
     before: String
@@ -2020,11 +2146,12 @@ type HomePageModuleContextGene implements Node {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
   ): FilterArtworks
   href: String
   image: Image
@@ -2055,6 +2182,7 @@ type HomePageModuleContextSale {
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
   ): [Artwork]
+  associated_sale: Sale
   auction_state: String @deprecated(reason: "Favor `status` for consistency with other models")
 
   # A bid increment policy that explains minimum bids in ranges.
@@ -2065,6 +2193,7 @@ type HomePageModuleContextSale {
   cover_image: Image
   currency: String
   description: String
+  eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
     format: String
@@ -2121,6 +2250,7 @@ type HomePageModuleContextSale {
   ): String
   status: String
   sale_artwork(id: String!): SaleArtwork
+  symbol: String
 }
 
 type HomePageModuleContextTrending {
@@ -2227,6 +2357,8 @@ type Me {
     # Only the bidder positions for a specific auction
     sale_id: String
   ): [BidderPosition]
+  collector_profile: CollectorProfileType
+  conversations(page: Int, size: Int): [ConversationType]
   created_at(
     convert_to_utc: Boolean
     format: String
@@ -2309,7 +2441,9 @@ interface Node {
   __id: ID!
 }
 
-type NotificationsFeedItem {
+type NotificationsFeedItem implements Node {
+  # A globally unique ID.
+  __id: ID!
   artists: String
 
   # List of artworks in this notification bundle
@@ -2323,6 +2457,7 @@ type NotificationsFeedItem {
   ): String
   message: String
   status: NotificationsFeedItemStatus
+  image: Image
 }
 
 # A connection to a list of items.
@@ -2572,15 +2707,16 @@ type PartnerShow implements Node {
   cached: Int
   artists: [Artist]
   artworks(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
     all: Boolean
-    for_sale: Boolean
 
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    page: Int = 1
+
+    # Number of artworks to return
+    size: Int = 25
   ): [Artwork]
   counts: PartnerShowCounts
   cover_image: Image
@@ -2688,15 +2824,16 @@ type PartnerShowSearchEntity implements Node {
   cached: Int
   artists: [Artist]
   artworks(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
     all: Boolean
-    for_sale: Boolean
 
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    page: Int = 1
+
+    # Number of artworks to return
+    size: Int = 25
   ): [Artwork]
   counts: PartnerShowCounts
   cover_image: Image
@@ -2856,6 +2993,11 @@ enum Role {
   OPERATOR
 }
 
+type RootMutationType {
+  updateCollectorProfile(loyalty_applicant: Boolean, professional_buyer: Boolean, self_reported_purchases: String): CollectorProfileType
+  updateConversation(buyer_outcome: BuyerOutcomeTypes!, id: String!): ConversationType
+}
+
 type RootQueryType {
   # An Article
   article(
@@ -2864,7 +3006,7 @@ type RootQueryType {
   ): Article
 
   # A list of Articles
-  articles(published: Boolean = true, show_id: String, sort: ArticleSorts): [Article]
+  articles(auction_id: String, published: Boolean = true, show_id: String, sort: ArticleSorts): [Article]
 
   # An Artwork
   artwork(
@@ -2906,71 +3048,6 @@ type RootQueryType {
 
   # A list of Fairs
   fairs(fair_organizer_id: String, has_full_feature: Boolean, has_homepage_section: Boolean, has_listing: Boolean, near: Near, page: Int, size: Int, sort: FairSorts, status: EventStatus): [Fair]
-  gene(
-    # The slug or ID of the Gene
-    id: String!
-  ): Gene
-
-  # Home screen content
-  home_page: HomePage
-  me: Me
-
-  # Fetches an object given its Globally Unique ID
-  node(
-    # The ID of the object
-    __id: ID!
-  ): Node
-
-  # A Profile
-  profile(
-    # The slug or ID of the Profile
-    id: String!
-  ): Profile
-
-  # A collection of OrderedSets
-  ordered_sets(
-    # Key to the OrderedSet or group of OrderedSets
-    key: String!
-    public: Boolean = true
-  ): [OrderedSet]
-
-  # A Partner
-  partner(
-    # The slug or ID of the Partner
-    id: String!
-  ): Partner
-
-  # A list of Partners
-  partners(
-    default_profile_public: Boolean
-    eligible_for_carousel: Boolean
-
-    # Indicates an active subscription
-    eligible_for_listing: Boolean
-
-    # Indicates tier 1/2 for gallery, 1 for institution
-    eligible_for_primary_bucket: Boolean
-
-    # Indicates tier 3/4 for gallery, 2 for institution
-    eligible_for_secondary_bucket: Boolean
-    has_full_profile: Boolean
-
-    # Coordinates to find partners closest to
-    near: String
-    page: Int
-
-    #
-    #         Only return partners of the specified partner categories.
-    #         Accepts list of slugs.
-    #       
-    partner_categories: [String]
-    size: Int
-    sort: PartnersSortType
-
-    # term used for searching Partners
-    term: String
-    type: [PartnerClassification]
-  ): [Partner]
 
   # Partners Elastic Search results
   filter_partners(
@@ -3029,18 +3106,43 @@ type RootQueryType {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
   ): FilterArtworks
 
-  # A PartnerCategory
-  partner_category(
-    # The slug or ID of the PartnerCategory
+  # Sale Artworks Elastic Search results
+  filter_sale_artworks(aggregations: [SaleArtworkAggregation], artist_ids: [String], include_artworks_by_followed_artists: Boolean, gene_ids: [String], estimate_range: String, page: Int, sale_id: ID, size: Int, sort: String): FilterSaleArtworks
+  gene(
+    # The slug or ID of the Gene
     id: String!
-  ): PartnerCategory
+  ): Gene
+
+  # Home screen content
+  home_page: HomePage
+  me: Me
+
+  # Fetches an object given its Globally Unique ID
+  node(
+    # The ID of the object
+    __id: ID!
+  ): Node
+
+  # A collection of OrderedSets
+  ordered_sets(
+    # Key to the OrderedSet or group of OrderedSets
+    key: String!
+    public: Boolean = true
+  ): [OrderedSet]
+
+  # A Partner
+  partner(
+    # The slug or ID of the Partner
+    id: String!
+  ): Partner
 
   # A list of PartnerCategories
   partner_categories(
@@ -3051,6 +3153,12 @@ type RootQueryType {
     size: Int
   ): [PartnerCategory]
 
+  # A PartnerCategory
+  partner_category(
+    # The slug or ID of the PartnerCategory
+    id: String!
+  ): PartnerCategory
+
   # A Partner Show
   partner_show(
     # The slug or ID of the PartnerShow
@@ -3060,11 +3168,55 @@ type RootQueryType {
   # A list of PartnerShows
   partner_shows(at_a_fair: Boolean, displayable: Boolean = true, fair_id: String, featured: Boolean, near: Near, partner_id: String, size: Int, sort: PartnerShowSorts, status: EventStatus): [PartnerShow]
 
+  # A list of Partners
+  partners(
+    default_profile_public: Boolean
+    eligible_for_carousel: Boolean
+
+    # Indicates an active subscription
+    eligible_for_listing: Boolean
+
+    # Indicates tier 1/2 for gallery, 1 for institution
+    eligible_for_primary_bucket: Boolean
+
+    # Indicates tier 3/4 for gallery, 2 for institution
+    eligible_for_secondary_bucket: Boolean
+    has_full_profile: Boolean
+
+    # Coordinates to find partners closest to
+    near: String
+    page: Int
+
+    #
+    #         Only return partners of the specified partner categories.
+    #         Accepts list of slugs.
+    #       
+    partner_categories: [String]
+    size: Int
+    sort: PartnersSortType
+
+    # term used for searching Partners
+    term: String
+    type: [PartnerClassification]
+  ): [Partner]
+
+  # A Profile
+  profile(
+    # The slug or ID of the Profile
+    id: String!
+  ): Profile
+
   # A Sale
   sale(
     # The slug or ID of the Sale
     id: String!
   ): Sale
+
+  # A Sale Artwork
+  sale_artwork(
+    # The slug or ID of the SaleArtwork
+    id: String!
+  ): SaleArtwork
 
   # A list of Sales
   sales(
@@ -3079,12 +3231,6 @@ type RootQueryType {
     size: Int
     sort: SaleSorts
   ): [Sale]
-
-  # A Sale Artwork
-  sale_artwork(
-    # The slug or ID of the SaleArtwork
-    id: String!
-  ): SaleArtwork
 
   # A Search
   search(
@@ -3136,6 +3282,7 @@ type Sale {
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
   ): [Artwork]
+  associated_sale: Sale
   auction_state: String @deprecated(reason: "Favor `status` for consistency with other models")
 
   # A bid increment policy that explains minimum bids in ranges.
@@ -3146,6 +3293,7 @@ type Sale {
   cover_image: Image
   currency: String
   description: String
+  eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
     format: String
@@ -3202,6 +3350,7 @@ type Sale {
   ): String
   status: String
   sale_artwork(id: String!): SaleArtwork
+  symbol: String
 }
 
 type SaleArtwork {
@@ -3234,7 +3383,8 @@ type SaleArtwork {
   # Can bids be placed on the artwork?
   is_biddable: Boolean
   is_with_reserve: Boolean
-  lot_number: String
+  lot_label: String
+  lot_number: String @deprecated(reason: "Favor `lot_label`")
   low_estimate: SaleArtworkLowEstimate
   low_estimate_cents: Int @deprecated(reason: "Favor `low_estimate`")
   minimum_next_bid: SaleArtworkMinimumNextBid
@@ -3250,6 +3400,13 @@ type SaleArtwork {
 
   # Currency symbol (e.g. "$")
   symbol: String
+}
+
+enum SaleArtworkAggregation {
+  ARTIST
+  FOLLOWED_ARTISTS
+  MEDIUM
+  TOTAL
 }
 
 type SaleArtworkCounts {
@@ -3398,6 +3555,12 @@ type SaleArtworkReserve {
 
   # A pre-formatted price.
   display: String
+}
+
+# The results for one of the requested aggregations
+type SaleArtworksAggregationResults {
+  counts: [AggregationCount]
+  slice: SaleArtworkAggregation
 }
 
 type SaleRegistration {
@@ -3595,10 +3758,11 @@ type Viewer {
     partner_id: ID
     partner_cities: [String]
     price_range: String
-    estimate_range: String
     page: Int
     sale_id: ID
     size: Int
     sort: String
+    tag_id: String
+    keyword: String
   ): FilterArtworks
 }
