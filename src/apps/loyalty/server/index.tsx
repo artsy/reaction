@@ -13,6 +13,7 @@ import * as styleSheet from "styled-components/lib/models/StyleSheet"
 import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
+import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
@@ -88,12 +89,13 @@ app.get("/inquiries", (req, res) => {
     })
 })
 
-app.get("/acb-thank-you", (req, res) => {
+app.get("/thank-you", (req, res) => {
   if (!req.user) {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  const html = renderToString(<AcbThankYou />)
+  const html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
+  // const html = renderToString(<AcbThankYou />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
   res.send(renderPage({ styles, html, entrypoint: "" }))
 })
