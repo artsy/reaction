@@ -7,6 +7,7 @@ import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as path from "path"
 import * as React from "react"
 import * as Relay from "react-relay"
+import * as request from "request"
 
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
@@ -68,6 +69,18 @@ app.get("/inquiries", (req, res) => {
   if (!req.user) {
     return res.redirect(req.baseUrl + "/login")
   }
+
+  let headers = { "X-Access-Token": req.user.get('accessToken') }
+  let options = { url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`, headers: headers }
+  let cb = (err, resp, body) => {
+    if (!err && resp.statusCode == 200) {
+      var info = JSON.parse(body);
+      console.log(info.loyalty_applicant_at)
+      console.log(info.confirmed_buyer_at)
+    }
+  }
+
+  request(options, cb)
 
   let promise = IsomorphicRelay.prepareData({
     Container: Inquiries,
