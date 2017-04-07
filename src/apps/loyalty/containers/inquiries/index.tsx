@@ -2,12 +2,13 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Button from "../../../../components/buttons/inverted"
-import Artwork from "../../../../components/inquiry_artwork"
-import Nav from "../../../../components/nav"
-import NavItem from "../../../../components/nav_item"
-import TextArea from "../../../../components/text_area"
-import Title from "../../../../components/title"
+import Button from "components/buttons/inverted"
+import Artwork from "components/inquiry_artwork"
+import Nav from "components/nav"
+import NavItem from "components/nav_item"
+import Text from "components/text"
+import TextArea from "components/text_area"
+import Title from "components/title"
 
 const InquiryContainer = styled.div`
   display: inline-block;
@@ -16,10 +17,18 @@ const InquiryContainer = styled.div`
 const Container = styled.div`
   text-align: center;
 
+  & .artworks {
+    padding: 20px 0;
+  }
+
   & .footer {
     max-width: 500;
     margin: 10px auto;
   }
+`
+
+const Header = styled.header`
+  margin-top: 40px;
 `
 
 class Inquiries extends React.Component<RelayProps, any> {
@@ -44,14 +53,16 @@ class Inquiries extends React.Component<RelayProps, any> {
     return (
       <Container>
         <Nav>
-          <NavItem href="https://www.artsy.net">Back To Artsy</NavItem>
+          <NavItem href="/">Back To Artsy</NavItem>
         </Nav>
-        <Title>Please select all works your purchased</Title>
+        <Header>
+          <Title>Please select all works your purchased</Title>
+        </Header>
         <div className="artworks">
           {this.renderArtworks()}
         </div>
         <footer className="footer">
-          <Title titleSize="small">If you purchased any works not listed above, please list them.</Title>
+          <Text textSize="large">If you purchased any works not included<br /> above, please list them.</Text>
           <TextArea block placeholder="Artwork, Artist, Gallery" />
           <Button block>Submit purchases</Button>
         </footer>
@@ -69,7 +80,7 @@ export default Relay.createContainer(Inquiries, {
             node {
               id
               artwork {
-                ${Artwork.getFragment("artwork")}
+                ${(Artwork.getFragment("artwork"))}
               }
             }
           }

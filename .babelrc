@@ -5,7 +5,12 @@
     "react"
   ],
   "plugins": [
-    "react-relay"
+    "react-relay",
+    ["module-resolver", {
+      "alias": {
+        "components": "./src/components"
+      }
+    }]
   ],
   "retainLines": true
 }

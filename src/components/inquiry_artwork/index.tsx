@@ -35,7 +35,7 @@ export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
   )
 
   return (
-    <StyledArtwork {...props} extended={false} overlay={overlay} />
+    <Artwork {...props} extended={false} overlay={overlay} />
   )
 }
 
