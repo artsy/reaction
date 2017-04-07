@@ -37,7 +37,12 @@ $ cp .env.oss .env
 * Development of components happen in [storybooks](https://getstorybook.io):
 
         $ yarn storybook
-        $ open http://localhost:4444/
+        $ open http://localhost:9001/
+
+* To run the node server and browse available apps:
+
+        $ yarn start
+        $ open http://localhost:3000/
 
 * Run the tests:
 
