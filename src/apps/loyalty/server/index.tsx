@@ -1,3 +1,4 @@
+import * as Backbone from "backbone"
 import * as bodyParser from "body-parser"
 import * as cookieParser from "cookie-parser"
 import * as csurf from "csurf"
@@ -16,7 +17,6 @@ import renderPage from "./template"
 import CurrentUserRoute from "../../../relay/queries/current_user"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
-import CurrentUser from "./current_user"
 import { RelayMiddleware } from "./relay"
 
 const app = express()
@@ -31,8 +31,9 @@ app.use(session({
   secret: process.env.ARTSY_SECRET,
   cookie: {},
 }))
+
 app.use(artsyPassport(Object.assign({}, process.env, {
-  CurrentUser,
+  CurrentUser: Backbone.Model,
   loginPagePath: "/login",
 })))
 app.use(RelayMiddleware)
