@@ -20,11 +20,13 @@ import { RelayMiddleware } from "./relay"
 
 const app = express()
 const artsyPassport = require("artsy-passport")
+const sharify = require("sharify")
 
 app.use(express.static(path.resolve(__dirname)))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(sharify)
 app.use(cookieParser())
 app.use(session({
   secret: process.env.ARTSY_SECRET,
@@ -56,11 +58,13 @@ app.get(loginPagePath, (req, res) => {
   const html = renderToString(<Login form={formConfig} />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
 
+  res.locals.sharify.data.FORM_DATA = formConfig
+
   res.send(renderPage({
     styles,
     html,
     entrypoint: "/bundles/login.js",
-    bootstrapData: `var FORM_DATA = ${JSON.stringify(formConfig)};`,
+    sharify: res.locals.sharify.script(),
   }))
 })
 
@@ -78,11 +82,15 @@ app.get("/inquiries", (req, res) => {
     .then(({data, props}) => {
       const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+
+      res.locals.sharify.data.USER_DATA = req.user.toJSON()
+      res.locals.sharify.data.DATA = data
+
       res.send(renderPage({
         styles,
         html,
         entrypoint: "/bundles/inquiries.js",
-        bootstrapData: `var DATA = ${JSON.stringify(data)}; var USER_DATA = ${JSON.stringify(req.user.toJSON())};`,
+        sharify: res.locals.sharify.script(),
       }))
     })
 })

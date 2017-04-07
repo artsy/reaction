@@ -7,15 +7,14 @@ import { artsyNetworkLayer } from "../../../../relay/config"
 import CurrentUserRoute from "../../../../relay/queries/current_user"
 import Inquiries from "./index"
 
-declare var window: any
-
+const sharify = require("sharify")
 const env = new (Relay as any).Environment()
-const networkLayer = artsyNetworkLayer(window.USER_DATA)
+const networkLayer = artsyNetworkLayer(sharify.data.USER_DATA)
 
 env.injectDefaultNetworkLayer(networkLayer)
 Relay.injectNetworkLayer(networkLayer)
 
-IsomorphicRelay.injectPreparedData(env, window.DATA)
+IsomorphicRelay.injectPreparedData(env, sharify.data.DATA)
 
 IsomorphicRelay.prepareInitialRender({
   Container: Inquiries,
