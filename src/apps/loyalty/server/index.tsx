@@ -70,13 +70,13 @@ app.get("/inquiries", (req, res) => {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  let headers = { "X-Access-Token": req.user.get('accessToken') }
-  let options = { url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`, headers: headers }
-  let cb = (err, resp, body) => {
-    if (!err && resp.statusCode == 200) {
-      var info = JSON.parse(body);
-      console.log(info.loyalty_applicant_at)
-      console.log(info.confirmed_buyer_at)
+  const headers = { "X-Access-Token": req.user.get("accessToken") }
+  const options = { url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`, headers }
+  const cb = (err, resp, body) => {
+    if (!err && resp.statusCode === 200) {
+      const info = JSON.parse(body)
+      console.log(info.loyalty_applicant_at) // tslint:disable-line:no-console
+      console.log(info.confirmed_buyer_at) // tslint:disable-line:no-console
     }
   }
 
