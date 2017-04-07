@@ -82,7 +82,7 @@ app.get("/inquiries", (req, res) => {
         styles,
         html,
         entrypoint: "/bundles/inquiries.js",
-        bootstrapData: `var DATA = ${JSON.stringify(data)};`,
+        bootstrapData: `var DATA = ${JSON.stringify(data)}; var USER_DATA = ${JSON.stringify(req.user.toJSON())};`,
       }))
     })
 })

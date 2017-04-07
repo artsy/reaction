@@ -2,12 +2,12 @@ import * as Relay from "react-relay"
 
 export const metaphysicsURL = "https://metaphysics-staging.artsy.net"
 
-export function artsyNetworkLayer() {
+export function artsyNetworkLayer(user?: any) {
   return new Relay.DefaultNetworkLayer(metaphysicsURL, {
-    headers: {
-      // 'X-USER-ID': Emission.userID,
-      // 'X-ACCESS-TOKEN': Emission.authenticationToken,
-    },
+    headers: !!user ? {
+      "X-USER-ID": user.id,
+      "X-ACCESS-TOKEN": user.accessToken,
+    } : {},
   })
 }
 
