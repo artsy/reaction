@@ -8,6 +8,7 @@ import Nav from "../../../../components/nav"
 import NavItem from "../../../../components/nav_item"
 import TextArea from "../../../../components/text_area"
 import Title from "../../../../components/title"
+import UpdateCollectorProfileMutation from "./update_collector_profile"
 
 const InquiryContainer = styled.div`
   display: inline-block;
@@ -22,43 +23,9 @@ const Container = styled.div`
   }
 `
 
-interface State {
+export interface State {
   loyalty_applicant: boolean,
   self_reported_purchases?: string
-}
-
-type RelayMutationProps = State
-
-class UpdateCollectorProfileMutation extends Relay.Mutation<RelayMutationProps, any> {
-  getMutation() {
-    return Relay.QL `mutation {
-      updateCollectorProfile
-    }`
-  }
-
-  getVariables() {
-    return {
-      self_reported_purchases: this.props.self_reported_purchases,
-      loyalty_applicant: this.props.loyalty_applicant,
-    }
-  }
-
-  getFatQuery() {
-    return Relay.QL `
-    fragment on UpdateCollectorProfilePayload {
-      loyalty_applicant_at
-    }`
-  }
-
-  getConfigs() {
-    return [{
-      type: "REQUIRED_CHILDREN",
-      children: [Relay.QL`
-        fragment on UpdateCollectorProfilePayload {
-          loyalty_applicant_at
-        }`],
-    }]
-  }
 }
 
 class Inquiries extends React.Component<RelayProps, State> {
@@ -84,11 +51,11 @@ class Inquiries extends React.Component<RelayProps, State> {
     })
   }
 
-  handleTextboxChange(e) {
+  onTextboxChange(e) {
     this.setState({ self_reported_purchases: e.target.value })
   }
 
-  handleClick(e) {
+  onButtonClick(e) {
     e.preventDefault()
 
     const onSuccess = response => {
@@ -122,8 +89,8 @@ class Inquiries extends React.Component<RelayProps, State> {
         </div>
         <footer className="footer">
           <Title titleSize="small">If you purchased any works not listed above, please list them.</Title>
-          <TextArea onChange={this.handleTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
-          <Button onClick={this.handleClick.bind(this)} block>Submit purchases</Button>
+          <TextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
+          <Button onClick={this.onButtonClick.bind(this)} block>Submit purchases</Button>
         </footer>
       </Container>
     )
