@@ -30,7 +30,9 @@ app.use(sharify)
 app.use(cookieParser())
 app.use(session({
   secret: process.env.ARTSY_SECRET,
-  cookie: {},
+  cookie: {
+    maxAge: 60000,
+  },
 }))
 app.use(artsyPassport(Object.assign({}, process.env, {
   CurrentUser,

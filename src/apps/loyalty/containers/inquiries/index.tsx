@@ -3,6 +3,7 @@ import * as Relay from "react-relay"
 import styled from "styled-components"
 
 import Button from "components/buttons/inverted"
+import { Col, Row } from "components/grid"
 import Artwork from "components/inquiry_artwork"
 import Nav from "components/nav"
 import NavItem from "components/nav_item"
@@ -14,6 +15,7 @@ import UpdateCollectorProfileMutation from "./update_collector_profile"
 
 const InquiryContainer = styled.div`
   display: inline-block;
+  margin-bottom: 20px;
 `
 
 const Container = styled.div`
@@ -21,6 +23,8 @@ const Container = styled.div`
 
   & .artworks {
     padding: 20px 0;
+    max-width: 1024px;
+    margin: 20px auto;
   }
 
   & .footer {
@@ -31,6 +35,10 @@ const Container = styled.div`
 
 const Header = styled.header`
   margin-top: 40px;
+
+  & .header-title {
+    margin-bottom: 0;
+  }
 `
 
 export interface State {
@@ -54,9 +62,11 @@ class Inquiries extends React.Component<RelayProps, State> {
       // TODO: swap id with __id
       const { id, artwork } = edge.node
       return (
-        <InquiryContainer key={id}>
-          <Artwork artwork={artwork as any} />
-        </InquiryContainer>
+        <Col>
+          <InquiryContainer key={id}>
+            <Artwork artwork={artwork as any} />
+          </InquiryContainer>
+        </Col>
       )
     })
   }
@@ -94,10 +104,14 @@ class Inquiries extends React.Component<RelayProps, State> {
           <NavItem href="/">Back To Artsy</NavItem>
         </Nav>
         <Header>
-          <Title>Please select all works your purchased</Title>
+          <Title titleSize="large" className="header-title">Please select all works your purchased</Title>
+          <Text>We will confirm submitted purchases with the galleries 
+            in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
+          <Row>
           {this.renderArtworks()}
+          </Row>
         </div>
         <footer className="footer">
           <Text textSize="large">If you purchased any works not included<br /> above, please list them.</Text>
