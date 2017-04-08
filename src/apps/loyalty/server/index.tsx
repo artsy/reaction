@@ -7,6 +7,7 @@ import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as path from "path"
 import * as React from "react"
 import * as Relay from "react-relay"
+import * as request from "request"
 
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
@@ -94,10 +95,30 @@ app.get("/thank-you", (req, res) => {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  const html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
-  // const html = renderToString(<AcbThankYou />)
-  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  res.send(renderPage({ styles, html, entrypoint: "" }))
+  request({
+    url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`,
+    headers: {
+      "X-Access-Token": req.user.get("accessToken"),
+    },
+  }, (err, resp, body) => {
+    if (!err && resp.statusCode === 200) {
+      const info = JSON.parse(body)
+      let html
+
+      if (!info.loyalty_applicant_at) {
+        if (!info.confirmed_buyer_at) {
+          html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
+        } else {
+          html = renderToString(<AcbThankYou />)
+        }
+      } else {
+        return res.redirect(req.baseUrl) // baseUrl already has "/loyalty" so no need to append it.
+      }
+
+      const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+      res.send(renderPage({ styles, html, entrypoint: "" }))
+    }
+  })
 })
 
 export default app
