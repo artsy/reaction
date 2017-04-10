@@ -8,7 +8,6 @@ import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as path from "path"
 import * as React from "react"
 import * as Relay from "react-relay"
-import * as request from "request"
 
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
@@ -19,7 +18,7 @@ import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
-import { fetchCollectorProfile, markCollector } from "./enroll_loyalty_applicant"
+import { fetchCollectorProfile, markCollectorAsLoyaltyApplicant } from "./enroll_loyalty_applicant"
 import { RelayMiddleware } from "./relay"
 
 const app = express()
@@ -80,14 +79,15 @@ app.get("/inquiries", (req, res) => {
   }
 
   fetchCollectorProfile(req.user.get("accessToken"))
+    .then(body => body.json())
     .then(info => {
-
       if (info.loyalty_applicant_at) {
         return res.redirect(req.baseUrl + "/thank-you")
       }
 
       if (info.confirmed_buyer_at) {
-        markCollector(req.user.get("accessToken"))
+        markCollectorAsLoyaltyApplicant(req.user.get("accessToken"))
+          .then(body => body.json())
           .then(profile => {
             return res.redirect(req.baseUrl + "/thank-you")
           })
@@ -120,6 +120,7 @@ app.get("/thank-you", (req, res) => {
   }
 
   fetchCollectorProfile(req.user.get("accessToken"))
+    .then(body => body.json())
     .then(info => {
       let html
       if (info.loyalty_applicant_at) {

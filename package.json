@@ -75,6 +75,7 @@
     "express-session": "^1.15.1",
     "isomorphic-relay": "^0.7.4",
     "lodash": "^4.17.4",
+    "node-fetch": "^1.6.3",
     "numeral": "^2.0.4",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
