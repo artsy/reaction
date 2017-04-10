@@ -28,7 +28,7 @@ export interface State {
   self_reported_purchases?: string
 }
 
-class Inquiries extends React.Component<RelayProps, State> {
+export class Inquiries extends React.Component<RelayProps, State> {
   constructor() {
     super()
     this.state = { loyalty_applicant: true }
