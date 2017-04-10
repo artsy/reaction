@@ -1,3 +1,4 @@
+import * as Backbone from "backbone"
 import * as bodyParser from "body-parser"
 import * as cookieParser from "cookie-parser"
 import * as csurf from "csurf"
@@ -18,7 +19,7 @@ import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
-import CurrentUser from "./current_user"
+import { fetchCollectorProfile, markCollector } from "./enroll_loyalty_applicant"
 import { RelayMiddleware } from "./relay"
 
 const app = express()
@@ -38,7 +39,7 @@ app.use(session({
   },
 }))
 app.use(artsyPassport(Object.assign({}, process.env, {
-  CurrentUser,
+  CurrentUser: Backbone.Model,
   loginPagePath: "/login",
 })))
 app.use(RelayMiddleware)
@@ -78,26 +79,39 @@ app.get("/inquiries", (req, res) => {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  let promise = IsomorphicRelay.prepareData({
-    Container: Inquiries,
-    queryConfig: new CurrentUserRoute(),
-  }, res.locals.networkLayer)
+  fetchCollectorProfile(req.user.get("accessToken"))
+    .then(info => {
 
-  promise
-    .then(({data, props}) => {
-      const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
-      const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+      if (info.loyalty_applicant_at) {
+        return res.redirect(req.baseUrl + "/thank-you")
+      }
 
-      res.locals.sharify.data.USER_DATA = req.user.toJSON()
-      res.locals.sharify.data.DATA = data
+      if (info.confirmed_buyer_at) {
+        markCollector(req.user.get("accessToken"))
+          .then(profile => {
+            return res.redirect(req.baseUrl + "/thank-you")
+          })
+          .catch(err => console.error(err))
+      }
 
-      res.send(renderPage({
-        styles,
-        html,
-        entrypoint: "/bundles/inquiries.js",
-        sharify: res.locals.sharify.script(),
-      }))
+      let promise = IsomorphicRelay.prepareData({
+        Container: Inquiries,
+        queryConfig: new CurrentUserRoute(),
+      }, res.locals.networkLayer)
+
+      promise
+        .then(({data, props}) => {
+          const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
+          const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+          res.send(renderPage({
+            styles,
+            html,
+            entrypoint: "/bundles/inquiries.js",
+            bootstrapData: `var DATA = ${JSON.stringify(data)}; var USER_DATA = ${JSON.stringify(req.user.toJSON())};`,
+          }))
+        })
     })
+    .catch(err => console.error(err))
 })
 
 app.get("/thank-you", (req, res) => {
@@ -105,21 +119,14 @@ app.get("/thank-you", (req, res) => {
     return res.redirect(req.baseUrl + "/login")
   }
 
-  request({
-    url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`,
-    headers: {
-      "X-Access-Token": req.user.get("accessToken"),
-    },
-  }, (err, resp, body) => {
-    if (!err && resp.statusCode === 200) {
-      const info = JSON.parse(body)
+  fetchCollectorProfile(req.user.get("accessToken"))
+    .then(info => {
       let html
-
-      if (!info.loyalty_applicant_at) {
-        if (!info.confirmed_buyer_at) {
-          html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
-        } else {
+      if (info.loyalty_applicant_at) {
+        if (info.confirmed_buyer_at) {
           html = renderToString(<AcbThankYou />)
+        } else {
+          html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
         }
       } else {
         return res.redirect(req.baseUrl) // baseUrl already has "/loyalty" so no need to append it.
@@ -127,8 +134,8 @@ app.get("/thank-you", (req, res) => {
 
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
       res.send(renderPage({ styles, html, entrypoint: "" }))
-    }
-  })
+    })
+    .catch(err => console.error(err))
 })
 
 export default app
