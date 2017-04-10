@@ -15,14 +15,14 @@ exports[`Artwork renders correctly 1`] = `
       <div>
         <strong>
           <a
-            className="fXYvAY"
+            className="ksITCE"
             href={undefined}>
             Mikael Olson
           </a>
         </strong>
       </div>
       <a
-        className="fXYvAY"
+        className="ksITCE"
         href="/artwork/mikael-olson-some-kind-of-dinosaur">
         <em>
           Some Kind of Dinosaur
@@ -31,7 +31,7 @@ exports[`Artwork renders correctly 1`] = `
       </a>
       <div>
         <a
-          className="fXYvAY"
+          className="ksITCE"
           href={undefined}>
           Gallery 1261
         </a>

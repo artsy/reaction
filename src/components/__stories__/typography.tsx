@@ -30,6 +30,17 @@ storiesOf("Typography", Title)
       </Text>
 
       <Title>
+        Fonts
+      </Title>
+
+      <Text textStyle="primary">
+        ITC Avant Garde Gothic W04
+      </Text>
+      <Text textStyle="secondary">
+        Adobe Garamond W08
+      </Text>
+
+      <Title>
         Alignment
       </Title>
 
