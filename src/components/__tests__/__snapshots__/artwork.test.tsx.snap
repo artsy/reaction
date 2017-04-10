@@ -10,19 +10,19 @@ exports[`Artwork renders correctly 1`] = `
       src="artsy.net/image-url" />
   </div>
   <div
-    className="jsqocU">
+    className="tEGyX">
     <div>
       <div>
         <strong>
           <a
-            className="ksITCE"
+            className="jehOuL"
             href={undefined}>
             Mikael Olson
           </a>
         </strong>
       </div>
       <a
-        className="ksITCE"
+        className="jehOuL"
         href="/artwork/mikael-olson-some-kind-of-dinosaur">
         <em>
           Some Kind of Dinosaur
@@ -31,7 +31,7 @@ exports[`Artwork renders correctly 1`] = `
       </a>
       <div>
         <a
-          className="ksITCE"
+          className="jehOuL"
           href={undefined}>
           Gallery 1261
         </a>
