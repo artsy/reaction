@@ -104,7 +104,7 @@ class Inquiries extends React.Component<RelayProps, State> {
           <NavItem href="/">Back To Artsy</NavItem>
         </Nav>
         <Header>
-          <Title titleSize="large" className="header-title">Please select all works your purchased</Title>
+          <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
           <Text>We will confirm submitted purchases with the galleries 
             in order to qualify you for the program membership.</Text>
         </Header>

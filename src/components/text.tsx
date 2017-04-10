@@ -4,33 +4,58 @@ import * as fonts from "../assets/fonts"
 
 type TextAlign = "start" | "center" | "end"
 type TextSize = "small" | "large"
+type TextStyle = "primary" | "secondary"
 
 interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
   textSize?: TextSize,
+  textStyle?: TextStyle,
   align?: TextAlign,
   color?: string,
 }
 
-const textSizes = {
-  small: "17px",
-  large: "20px",
+const textSizesForPrimaryStyle = {
+  xlarge: "24px",
+  large: "17px",
+  medium: "15px",
+  small: "13px",
+  xsmall: "11px",
 }
 
-const Text: React.SFC<TextProps> = props => (
+const textSizesForSecondaryStyle = {
+  large: "20px",
+  medium: "17px",
+  small: "15px",
+  xsmall: "11px",
+}
+
+const TextStyleToTextSize = {
+  primary: textSizesForPrimaryStyle,
+  secondary: textSizesForSecondaryStyle,
+}
+
+const textStyleNameToCss = {
+  primary: fonts.primary.style,
+  secondary: fonts.secondary.style,
+}
+
+const RawText: React.SFC<TextProps> = props => (
   <p className={props.className}>
     {props.children}
   </p>
 )
 
-export default styled(Text)`
-  font-size: ${props => textSizes[props.textSize]};
+const Text = styled(RawText)`
+  font-size: ${props => TextStyleToTextSize[props.textStyle][props.textSize]};
   text-align: ${props => props.align};
   color: ${props => props.color};
-  ${fonts.secondary.style};
+  ${props => textStyleNameToCss[props.textStyle]};
 `
 
 Text.defaultProps = {
   textSize: "small",
+  textStyle: "secondary",
   align: "start",
   color: "currentcolor",
 }
+
+export default Text
