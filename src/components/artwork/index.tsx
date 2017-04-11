@@ -1,60 +1,70 @@
 import * as React from "react"
-import * as Relay from "react-relay"
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import ArtworkMetadata from "./metadata"
+
+import ArtworkMetadata, { ArtworkMetadataProps } from "./metadata"
+import createContainer, { RelayProps } from "./relay"
+
+const ImageContainer = styled.div`
+  height: ${props => `${props.size}px`};
+  width: ${props => `${props.size}px`};
+  display: flex;
+  justify-content: center;
+  position: relative;
+`
 
 const Image = styled.img`
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  max-width: 100%;
+  max-height: ${props => `${props.size}px`};
+  margin: auto;
 `
 
-const Placeholder = styled.div`
-  background-color: ${colors.grayMedium};
-  position: relative;
-  width 100%;
-`
-
-interface Props extends RelayProps, React.HTMLProps<Artwork> {
-  style?: any
+export interface ArtworkProps extends RelayProps {
+  size?: number
+  extended?: boolean
+  overlay?: JSX.Element
 }
 
-export class Artwork extends React.Component<Props, null> {
+export interface ArtworkState {
+  isSelected: boolean
+}
+
+export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
+  static defaultProps = {
+    size: 250,
+    extended: true,
+    overlay: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isSelected: false,
+    }
+  }
+
+  onSelected(e) {
+    if (!this.props.overlay) {
+      return
+    }
+
+    this.setState({
+      isSelected: !this.state.isSelected,
+    })
+  }
+
   render() {
+    const { size, artwork, overlay } = this.props
+
     return (
-      <div style={this.props.style}>
-        <Placeholder style={{ paddingBottom: this.props.artwork.image.placeholder }}>
-          <Image src={this.props.artwork.image.url} />
-        </Placeholder>
-        <ArtworkMetadata artwork={this.props.artwork} />
+      <div onClick={this.onSelected.bind(this)}>
+        <ImageContainer size={size}>
+          <Image src={artwork.image.url} size={size} />
+          {this.state.isSelected && overlay}
+        </ImageContainer>
+        <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
 }
 
-export default Relay.createContainer(Artwork, {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        image {
-          placeholder
-          url(version: "large")
-          aspect_ratio
-        }
-       ${ArtworkMetadata.getFragment("artwork")}
-      }
-    `,
-  },
-})
-
-interface RelayProps {
-  artwork: {
-    image: {
-      placeholder: number | null,
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
-}
+export default createContainer<ArtworkProps, ArtworkMetadataProps>(Artwork, ArtworkMetadata)

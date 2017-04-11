@@ -1,31 +1,28 @@
 exports[`Artwork renders correctly 1`] = `
 <div
-  style={undefined}>
+  onClick={[Function]}>
   <div
-    className="jUeipo"
-    style={
-      Object {
-        "paddingBottom": 200,
-      }
-    }>
+    className="fmQTpg"
+    size={250}>
     <img
-      className="clFfoo"
+      className="eltJDW"
+      size={250}
       src="artsy.net/image-url" />
   </div>
   <div
-    className="jsqocU">
+    className="tEGyX">
     <div>
       <div>
         <strong>
           <a
-            className="fXYvAY"
+            className="jehOuL"
             href={undefined}>
             Mikael Olson
           </a>
         </strong>
       </div>
       <a
-        className="fXYvAY"
+        className="jehOuL"
         href="/artwork/mikael-olson-some-kind-of-dinosaur">
         <em>
           Some Kind of Dinosaur
@@ -34,16 +31,12 @@ exports[`Artwork renders correctly 1`] = `
       </a>
       <div>
         <a
-          className="fXYvAY"
+          className="jehOuL"
           href={undefined}>
           Gallery 1261
         </a>
       </div>
-      <div>
-        $875
-      </div>
     </div>
-    <div />
   </div>
 </div>
 `;

@@ -2327,7 +2327,7 @@ type LotStanding {
   sale_artwork: SaleArtwork
 }
 
-type Me {
+type Me implements Node {
   # A globally unique ID.
   __id: ID!
 
@@ -2994,8 +2994,8 @@ enum Role {
 }
 
 type RootMutationType {
-  updateCollectorProfile(loyalty_applicant: Boolean, professional_buyer: Boolean, self_reported_purchases: String): CollectorProfileType
-  updateConversation(buyer_outcome: BuyerOutcomeTypes!, id: String!): ConversationType
+  updateCollectorProfile(input: UpdateCollectorProfileInput!): UpdateCollectorProfilePayload
+  updateConversation(input: UpdateConversationInput!): UpdateConversationPayload
 }
 
 type RootQueryType {
@@ -3732,8 +3732,150 @@ enum TrendingMetrics {
   ARTIST_SEARCH
 }
 
+input UpdateCollectorProfileInput {
+  loyalty_applicant: Boolean
+  professional_buyer: Boolean
+  self_reported_purchases: String
+  clientMutationId: String
+}
+
+type UpdateCollectorProfilePayload {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+  email: String
+  name: String
+  confirmed_buyer_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  collector_level: Int
+  self_reported_purchases: String
+  loyalty_applicant_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  professional_buyer_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  professional_buyer_applied_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  clientMutationId: String
+}
+
+input UpdateConversationInput {
+  buyer_outcome: BuyerOutcomeTypes!
+  ids: [String]
+  clientMutationId: String
+}
+
+type UpdateConversationPayload {
+  conversations: [ConversationType]
+  clientMutationId: String
+}
+
 # A wildcard used to support complex root queries in Relay
 type Viewer {
+  # An Article
+  article(
+    # The ID of the Article
+    id: String!
+  ): Article
+
+  # A list of Articles
+  articles(auction_id: String, published: Boolean = true, show_id: String, sort: ArticleSorts): [Article]
+
+  # An Artwork
+  artwork(
+    # The slug or ID of the Artwork
+    id: String!
+  ): Artwork
+
+  # A list of Artworks
+  artworks(ids: [String]): [Artwork]
+
+  # An Artist
+  artist(
+    # The slug or ID of the Artist
+    id: String!
+  ): Artist
+
+  # A list of Artists
+  artists(page: Int = 1, size: Int, sort: ArtistSorts): [Artist]
+
+  # Creates, and authorizes, a JWT custom for Causality
+  causality_jwt(
+    role: Role
+
+    # The id of the auction to participate in
+    sale_id: String!
+  ): String
+
+  # An External Partner not on the platform
+  external_partner(
+    # The ID of the Partner
+    id: String!
+  ): ExternalPartner
+
+  # A Fair
+  fair(
+    # The slug or ID of the Fair
+    id: String!
+  ): Fair
+
+  # A list of Fairs
+  fairs(fair_organizer_id: String, has_full_feature: Boolean, has_homepage_section: Boolean, has_listing: Boolean, near: Near, page: Int, size: Int, sort: FairSorts, status: EventStatus): [Fair]
+
+  # Partners Elastic Search results
+  filter_partners(
+    default_profile_public: Boolean
+    eligible_for_carousel: Boolean
+
+    # Indicates an active subscription
+    eligible_for_listing: Boolean
+
+    # Indicates tier 1/2 for gallery, 1 for institution
+    eligible_for_primary_bucket: Boolean
+
+    # Indicates tier 3/4 for gallery, 2 for institution
+    eligible_for_secondary_bucket: Boolean
+    has_full_profile: Boolean
+
+    # Coordinates to find partners closest to
+    near: String
+    page: Int
+
+    #
+    #         Only return partners of the specified partner categories.
+    #         Accepts list of slugs.
+    #       
+    partner_categories: [String]
+    size: Int
+    sort: PartnersSortType
+
+    # term used for searching Partners
+    term: String
+    type: [PartnerClassification]
+    aggregations: [PartnersAggregation]!
+  ): FilterPartners
+
   # Artworks Elastic Search results
   filter_artworks(
     aggregation_partner_cities: [String]
@@ -3765,4 +3907,150 @@ type Viewer {
     tag_id: String
     keyword: String
   ): FilterArtworks
+
+  # Sale Artworks Elastic Search results
+  filter_sale_artworks(aggregations: [SaleArtworkAggregation], artist_ids: [String], include_artworks_by_followed_artists: Boolean, gene_ids: [String], estimate_range: String, page: Int, sale_id: ID, size: Int, sort: String): FilterSaleArtworks
+  gene(
+    # The slug or ID of the Gene
+    id: String!
+  ): Gene
+
+  # Home screen content
+  home_page: HomePage
+  me: Me
+
+  # Fetches an object given its Globally Unique ID
+  node(
+    # The ID of the object
+    __id: ID!
+  ): Node
+
+  # A collection of OrderedSets
+  ordered_sets(
+    # Key to the OrderedSet or group of OrderedSets
+    key: String!
+    public: Boolean = true
+  ): [OrderedSet]
+
+  # A Partner
+  partner(
+    # The slug or ID of the Partner
+    id: String!
+  ): Partner
+
+  # A list of PartnerCategories
+  partner_categories(
+    category_type: CategoryType
+
+    # Filter by whether category is internal
+    internal: Boolean = false
+    size: Int
+  ): [PartnerCategory]
+
+  # A PartnerCategory
+  partner_category(
+    # The slug or ID of the PartnerCategory
+    id: String!
+  ): PartnerCategory
+
+  # A Partner Show
+  partner_show(
+    # The slug or ID of the PartnerShow
+    id: String!
+  ): PartnerShow
+
+  # A list of PartnerShows
+  partner_shows(at_a_fair: Boolean, displayable: Boolean = true, fair_id: String, featured: Boolean, near: Near, partner_id: String, size: Int, sort: PartnerShowSorts, status: EventStatus): [PartnerShow]
+
+  # A list of Partners
+  partners(
+    default_profile_public: Boolean
+    eligible_for_carousel: Boolean
+
+    # Indicates an active subscription
+    eligible_for_listing: Boolean
+
+    # Indicates tier 1/2 for gallery, 1 for institution
+    eligible_for_primary_bucket: Boolean
+
+    # Indicates tier 3/4 for gallery, 2 for institution
+    eligible_for_secondary_bucket: Boolean
+    has_full_profile: Boolean
+
+    # Coordinates to find partners closest to
+    near: String
+    page: Int
+
+    #
+    #         Only return partners of the specified partner categories.
+    #         Accepts list of slugs.
+    #       
+    partner_categories: [String]
+    size: Int
+    sort: PartnersSortType
+
+    # term used for searching Partners
+    term: String
+    type: [PartnerClassification]
+  ): [Partner]
+
+  # A Profile
+  profile(
+    # The slug or ID of the Profile
+    id: String!
+  ): Profile
+
+  # A Sale
+  sale(
+    # The slug or ID of the Sale
+    id: String!
+  ): Sale
+
+  # A Sale Artwork
+  sale_artwork(
+    # The slug or ID of the SaleArtwork
+    id: String!
+  ): SaleArtwork
+
+  # A list of Sales
+  sales(
+    # Limit by auction.
+    is_auction: Boolean = true
+
+    # Limit by live status.
+    live: Boolean = true
+
+    # Limit by published status.
+    published: Boolean = true
+    size: Int
+    sort: SaleSorts
+  ): [Sale]
+
+  # A Search
+  search(
+    # Your search term
+    term: String!
+  ): Search
+
+  # A Show
+  show(
+    # The slug or ID of the Show
+    id: String!
+  ): Show
+  status: Status
+
+  # Trending artists
+  trending_artists(
+    # Fetch the top artists for each metric within double the base time period
+    double_time_period: Boolean = false
+
+    # Trending method
+    method: String = "fetch"
+
+    # Trending metric name
+    name: TrendingMetrics!
+
+    # Number of results to return
+    size: Int = 40
+  ): TrendingArtists
 }

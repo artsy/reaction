@@ -14,13 +14,20 @@ module.exports = {
       "./src/apps/loyalty/containers/login/browser",
       "webpack-hot-middleware/client",
     ],
+    "inquiries": [
+      "./src/apps/loyalty/containers/inquiries/browser",
+      "webpack-hot-middleware/client"
+    ]
   },
   module: {
     rules: [
       { test: /\.json$/, loader: "json-loader" },
       {
         exclude: [/node_modules/, /__stories__/],
-        loaders: ["react-hot-loader", "awesome-typescript-loader?configFileName=./tsconfig.json&silent=true&target=es6&useBabel=true&useCache=true"],
+        use: [
+          "react-hot-loader",
+          "awesome-typescript-loader",
+        ],
         test: /\.tsx?$/,
       },
     ],
@@ -38,5 +45,5 @@ module.exports = {
   resolve: {
     extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
   },
-  devtool: "#inline-source-map", // TODO: For production we should output a source-map file instead.
+  devtool: "inline-source-map", // TODO: For production we should output a source-map file instead.
 };
