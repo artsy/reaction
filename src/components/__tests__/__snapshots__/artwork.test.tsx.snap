@@ -1,9 +1,17 @@
 exports[`Artwork renders correctly 1`] = `
 <div
   style={undefined}>
-  <img
-    className="bMAZFf"
-    src="artsy.net/image-url" />
+  <div
+    className="jUeipo"
+    style={
+      Object {
+        "paddingBottom": undefined,
+      }
+    }>
+    <img
+      className="clFfoo"
+      src="artsy.net/image-url" />
+  </div>
   <div
     className="jsqocU">
     <div>
