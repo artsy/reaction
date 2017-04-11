@@ -1,6 +1,6 @@
 import * as React from "react"
-
 import styled from "styled-components"
+
 import ArtworkMetadata, { ArtworkMetadataProps } from "./metadata"
 import createContainer, { RelayProps } from "./relay"
 

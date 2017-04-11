@@ -2,24 +2,42 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Button from "../../../../components/buttons/inverted"
-import Artwork from "../../../../components/inquiry_artwork"
-import Nav from "../../../../components/nav"
-import NavItem from "../../../../components/nav_item"
-import TextArea from "../../../../components/text_area"
-import Title from "../../../../components/title"
+import Button from "components/buttons/inverted"
+import { Col, Row } from "components/grid"
+import Artwork from "components/inquiry_artwork"
+import Nav from "components/nav"
+import NavItem from "components/nav_item"
+import Text from "components/text"
+import TextArea from "components/text_area"
+import Title from "components/title"
+
 import UpdateCollectorProfileMutation from "./update_collector_profile"
 
 const InquiryContainer = styled.div`
   display: inline-block;
+  margin-bottom: 20px;
 `
 
 const Container = styled.div`
   text-align: center;
 
+  & .artworks {
+    padding: 20px 0;
+    max-width: 1024px;
+    margin: 20px auto;
+  }
+
   & .footer {
     max-width: 500;
     margin: 10px auto;
+  }
+`
+
+const Header = styled.header`
+  margin-top: 40px;
+
+  & .header-title {
+    margin-bottom: 0;
   }
 `
 
@@ -44,9 +62,11 @@ export class Inquiries extends React.Component<RelayProps, State> {
       // TODO: swap id with __id
       const { id, artwork } = edge.node
       return (
-        <InquiryContainer key={id}>
-          <Artwork artwork={artwork as any} />
-        </InquiryContainer>
+        <Col>
+          <InquiryContainer key={id}>
+            <Artwork artwork={artwork as any} />
+          </InquiryContainer>
+        </Col>
       )
     })
   }
@@ -81,14 +101,20 @@ export class Inquiries extends React.Component<RelayProps, State> {
     return (
       <Container>
         <Nav>
-          <NavItem href="https://www.artsy.net">Back To Artsy</NavItem>
+          <NavItem href="/">Back To Artsy</NavItem>
         </Nav>
-        <Title>Please select all works your purchased</Title>
+        <Header>
+          <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
+          <Text>We will confirm submitted purchases with the galleries 
+            in order to qualify you for the program membership.</Text>
+        </Header>
         <div className="artworks">
+          <Row>
           {this.renderArtworks()}
+          </Row>
         </div>
         <footer className="footer">
-          <Title titleSize="small">If you purchased any works not listed above, please list them.</Title>
+          <Text textSize="large">If you purchased any works not included<br /> above, please list them.</Text>
           <TextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
           <Button onClick={this.onButtonClick.bind(this)} block>Submit purchases</Button>
         </footer>
@@ -106,7 +132,7 @@ export default Relay.createContainer(Inquiries, {
             node {
               id
               artwork {
-                ${Artwork.getFragment("artwork")}
+                ${(Artwork.getFragment("artwork"))}
               }
             }
           }

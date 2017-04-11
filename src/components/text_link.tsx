@@ -25,7 +25,7 @@ TextLink.defaultProps = {
 }
 
 export default styled(TextLink)`
-  line-height: 12px;
+  font-size: 15px;
   color: ${colors.grayBold};
   text-decoration: ${props => props.underline ? "underline" : "none"}
 `
