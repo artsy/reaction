@@ -37,15 +37,17 @@ class ArtworkFilter extends React.Component<Props, State> {
   }
 
   handleLoadMore() {
-    this.setState({ loading: true }, () => {
-      this.props.relay.setVariables({
-        size: this.props.relay.variables.size + PageSize,
-      }, readyState => {
-        if (readyState.done) {
-          this.setState({ loading: false })
-        }
+    if (!this.state.loading) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.setVariables({
+          size: this.props.relay.variables.size + PageSize,
+        }, readyState => {
+          if (readyState.done) {
+            this.setState({ loading: false })
+          }
+        })
       })
-    })
+    }
   }
 
   setForSale() {
