@@ -11,6 +11,7 @@ describe("Artwork", () => {
       sale_message: "$875",
       is_in_auction: false,
       image: {
+        placeholder: 200,
         url: "artsy.net/image-url",
         aspect_ratio: 0.74,
       },

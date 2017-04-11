@@ -21,6 +21,7 @@ interface State {
   dimension_range: string,
   price_range: string,
   medium: string,
+  loading: boolean,
 }
 
 class ArtworkFilter extends React.Component<Props, State> {
@@ -31,6 +32,21 @@ class ArtworkFilter extends React.Component<Props, State> {
       dimension_range: "*",
       price_range: "*",
       medium: "*",
+      loading: false,
+    }
+  }
+
+  handleLoadMore() {
+    if (!this.state.loading) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.setVariables({
+          size: this.props.relay.variables.size + PageSize,
+        }, readyState => {
+          if (readyState.done) {
+            this.setState({ loading: false })
+          }
+        })
+      })
     }
   }
 
@@ -99,7 +115,11 @@ class ArtworkFilter extends React.Component<Props, State> {
             onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
-        <Artworks artworks={filterArtworks.artworks} />
+        <Artworks
+          artworks={filterArtworks.artworks}
+          onLoadMore={() => this.handleLoadMore()}
+          columnCount={4}
+        />
       </div>
     )
   }
@@ -125,6 +145,9 @@ export default Relay.createContainer(ArtworkFilter, {
     aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
     price_range: "*",
     dimension_range: "*",
+    gene_id: null,
+    tag_id: null,
+    artist_id: null,
   },
   fragments: {
     filter_artworks: () => Relay.QL`
@@ -136,7 +159,9 @@ export default Relay.createContainer(ArtworkFilter, {
           medium: $medium,
           price_range: $price_range,
           dimension_range: $dimension_range,
-          sort: $sort
+          sort: $sort,
+          gene_id: $gene_id,
+          artist_id: $artist_id,
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
