@@ -20,6 +20,7 @@ import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
 import { fetchCollectorProfile, markCollectorAsLoyaltyApplicant } from "./enroll_loyalty_applicant"
 import { RelayMiddleware } from "./relay"
+import { Home } from "./route_handlers"
 
 const app = express()
 const artsyPassport = require("artsy-passport")
@@ -49,9 +50,7 @@ const {
   twitterPath,
 } = artsyPassport.options
 
-app.get("/", (req, res) => {
-  res.redirect(req.baseUrl + "/inquiries")
-})
+app.get("/", Home)
 
 app.get(loginPagePath, (req, res) => {
   const formConfig = {
