@@ -62,17 +62,11 @@ export class Inquiries extends React.Component<RelayProps, State> {
       // TODO: swap id with __id
       const { id, artwork } = edge.node
       return (
-<<<<<<< HEAD
-        <InquiryContainer>
-          <Artwork key={__id} artwork={artwork as any} style={{"max-height": "450px"}} />
-        </InquiryContainer>
-=======
         <Col>
           <InquiryContainer key={id}>
             <Artwork artwork={artwork as any} />
           </InquiryContainer>
         </Col>
->>>>>>> master
       )
     })
   }
