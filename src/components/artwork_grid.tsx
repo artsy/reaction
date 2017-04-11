@@ -1,5 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
+
+import { debounce } from "lodash"
 import styled from "styled-components"
 import Artwork from "./artwork/grid_item"
 
@@ -19,12 +21,12 @@ export class ArtworkGrid extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.props.onLoadMore) {
-      window.addEventListener("scroll", () => this.runOnScroll())
+      setInterval( () => { this.maybeLoadMore() }, 150 )
     }
   }
 
-  runOnScroll() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+  maybeLoadMore() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight / 2) {
       this.props.onLoadMore()
     }
   }
