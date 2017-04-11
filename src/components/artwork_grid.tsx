@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import Artwork from "./artwork/index"
+import Artwork from "./artwork/grid_item"
 
 interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
