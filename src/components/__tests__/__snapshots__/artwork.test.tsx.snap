@@ -5,7 +5,7 @@ exports[`Artwork renders correctly 1`] = `
     className="jUeipo"
     style={
       Object {
-        "paddingBottom": undefined,
+        "paddingBottom": 200,
       }
     }>
     <img
