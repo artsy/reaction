@@ -11,7 +11,8 @@ import Text from "components/text"
 import TextArea from "components/text_area"
 import Title from "components/title"
 
-import UpdateCollectorProfileMutation from "./update_collector_profile"
+import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
+import UpdateConversationMutation from "./mutations/update_conversation"
 
 const InquiryContainer = styled.div`
   display: inline-block;
@@ -43,13 +44,18 @@ const Header = styled.header`
 
 export interface State {
   loyalty_applicant: boolean,
-  self_reported_purchases?: string
+  self_reported_purchases?: string,
+  selected_artworks?: {string?: boolean}
 }
 
-class Inquiries extends React.Component<RelayProps, State> {
-  constructor() {
-    super()
-    this.state = { loyalty_applicant: true }
+export class Inquiries extends React.Component<RelayProps, State> {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loyalty_applicant: true,
+      selected_artworks: {},
+    }
   }
 
   renderArtworks() {
@@ -59,15 +65,26 @@ class Inquiries extends React.Component<RelayProps, State> {
 
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
-      // TODO: swap id with __id
-      const { id, artwork } = edge.node
+      const { id, artwork, impulse_conversation_id } = edge.node
       return (
         <Col>
           <InquiryContainer key={id}>
-            <Artwork artwork={artwork as any} />
+            <Artwork
+              artwork={artwork as any}
+              onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id)}
+            />
           </InquiryContainer>
         </Col>
       )
+    })
+  }
+
+  onArtworkSelected(conversationId: string, selected: boolean) {
+    const selectedArtworks = this.state.selected_artworks
+    selectedArtworks[conversationId] = selected
+
+    this.setState({
+      selected_artworks: selectedArtworks,
     })
   }
 
@@ -77,24 +94,50 @@ class Inquiries extends React.Component<RelayProps, State> {
 
   onButtonClick(e) {
     e.preventDefault()
+    this.submitInquiriesUpdate()
+  }
 
-    const onSuccess = response => {
-      if (!response.updateCollectorProfile.loyalty_applicant_at) {
-        console.log("Loyalty Applicant Not Saved") // tslint:disable-line:no-console
-      } else {
-        console.log("Success") // tslint:disable-line:no-console
+  submitCollectorProfileUpdate() {
+    const mutation = new UpdateCollectorProfileMutation(this.state)
+
+    Relay.Store.commitUpdate(mutation, {
+      onFailure: this.onSubmitUpdatesFailed,
+      onSuccess: response => {
+        if (!response.updateCollectorProfile.loyalty_applicant_at) {
+          console.log("Loyalty Applicant Not Saved") // tslint:disable-line:no-console
+        } else {
+          console.log("Success") // tslint:disable-line:no-console
+        }
+      },
+    })
+  }
+
+  submitInquiriesUpdate() {
+    let ids: string[] = []
+    const artworks = this.state.selected_artworks
+
+    for (let artworkId of Object.keys(artworks)) {
+      if (artworks[artworkId]) {
+        ids.push(artworkId)
       }
     }
 
-    const onFailure = transaction => {
-      console.log(transaction.getError()) // tslint:disable-line:no-console
-    }
+    const mutation = new UpdateConversationMutation({
+      conversationIds: ids,
+      buyerOutcome: "purchased",
+    })
 
-    const mutation = new UpdateCollectorProfileMutation(this.state)
+    Relay.Store.commitUpdate(mutation, {
+      onFailure: this.onSubmitUpdatesFailed,
+      onSuccess: response => {
+        console.log("Success inquiries update", response) // tslint:disable-line:no-console
+        this.submitCollectorProfileUpdate()
+      },
+    })
+  }
 
-    Relay.Store.commitUpdate(
-      mutation, {onFailure, onSuccess},
-    )
+  onSubmitUpdatesFailed(transaction) {
+    console.log(transaction.getError()) // tslint:disable-line:no-console
   }
 
   render() {
@@ -105,7 +148,7 @@ class Inquiries extends React.Component<RelayProps, State> {
         </Nav>
         <Header>
           <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
-          <Text>We will confirm submitted purchases with the galleries 
+          <Text align="center">We will confirm submitted purchases with the galleries 
             in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
@@ -114,7 +157,9 @@ class Inquiries extends React.Component<RelayProps, State> {
           </Row>
         </div>
         <footer className="footer">
-          <Text textSize="large">If you purchased any works not included<br /> above, please list them.</Text>
+          <Text align="center" textSize="large">
+            If you purchased any works not included<br /> above, please list them.
+          </Text>
           <TextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
           <Button onClick={this.onButtonClick.bind(this)} block>Submit purchases</Button>
         </footer>
@@ -131,6 +176,7 @@ export default Relay.createContainer(Inquiries, {
           edges {
             node {
               id
+              impulse_conversation_id
               artwork {
                 ${(Artwork.getFragment("artwork"))}
               }
@@ -148,6 +194,7 @@ interface RelayProps {
       edges: Array<{
         node: {
           id: string | null,
+          impulse_conversation_id: string | null,
           artwork: Array<any | null> | null,
         } | null,
       } | null> | null,

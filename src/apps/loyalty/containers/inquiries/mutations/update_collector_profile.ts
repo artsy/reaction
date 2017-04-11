@@ -1,5 +1,5 @@
 import * as Relay from "react-relay"
-import { State } from "./index"
+import { State } from "../index"
 
 type RelayMutationProps = State
 
