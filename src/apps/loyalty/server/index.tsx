@@ -1,3 +1,4 @@
+import * as Backbone from "backbone"
 import * as bodyParser from "body-parser"
 import * as cookieParser from "cookie-parser"
 import * as csurf from "csurf"
@@ -18,7 +19,6 @@ import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
 import Login from "../containers/login"
-import CurrentUser from "./current_user"
 import { RelayMiddleware } from "./relay"
 
 const app = express()
@@ -33,8 +33,9 @@ app.use(session({
   secret: process.env.ARTSY_SECRET,
   cookie: {},
 }))
+
 app.use(artsyPassport(Object.assign({}, process.env, {
-  CurrentUser,
+  CurrentUser: Backbone.Model,
   loginPagePath: "/login",
 })))
 app.use(RelayMiddleware)
@@ -71,6 +72,18 @@ app.get("/inquiries", (req, res) => {
   if (!req.user) {
     return res.redirect(req.baseUrl + "/login")
   }
+
+  const headers = { "X-Access-Token": req.user.get("accessToken") }
+  const options = { url: `${process.env.ARTSY_URL}/api/v1/me/collector_profile`, headers }
+  const cb = (err, resp, body) => {
+    if (!err && resp.statusCode === 200) {
+      const info = JSON.parse(body)
+      console.log(info.loyalty_applicant_at) // tslint:disable-line:no-console
+      console.log(info.confirmed_buyer_at) // tslint:disable-line:no-console
+    }
+  }
+
+  request(options, cb)
 
   let promise = IsomorphicRelay.prepareData({
     Container: Inquiries,
