@@ -52,7 +52,7 @@ export default Relay.createContainer(Artwork, {
 interface RelayProps {
   artwork: {
     image: {
-      placeholder: string | null,
+      placeholder: number | null,
       url: string | null,
       aspect_ratio: number | null,
     } | null,

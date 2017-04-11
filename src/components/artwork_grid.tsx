@@ -7,7 +7,7 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
   sectionMargin?: number,
   itemMargin?: number,
-  onLoadMore?: any,
+  onLoadMore: () => any,
 }
 
 interface State {
@@ -18,12 +18,14 @@ export class ArtworkGrid extends React.Component<Props, State> {
   public static defaultProps: Partial<Props>
 
   componentDidMount() {
-    window.onscroll = () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        if (this.props.onLoadMore) {
-          this.props.onLoadMore()
-        }
-      }
+    if (this.props.onLoadMore) {
+      window.addEventListener("scroll", () => this.runOnScroll())
+    }
+  }
+
+  runOnScroll() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+      this.props.onLoadMore()
     }
   }
 
