@@ -40,7 +40,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
       return <div>{this.props.artwork.collecting_institution}</div>
-    } else {
+    } else if (this.props.artwork.partner) {
       return (
         <div>
           <TextLink href={this.props.artwork.partner.href}>

@@ -74,6 +74,7 @@ const StyledHeadline = styled(Headline)`
   ${secondary.style}
   font-weight: normal;
   margin: 0;
+  font-size: 2em;
 `
 
 export default StyledHeadline
