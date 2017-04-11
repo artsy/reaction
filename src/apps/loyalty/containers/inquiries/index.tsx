@@ -103,10 +103,8 @@ export class Inquiries extends React.Component<RelayProps, State> {
     Relay.Store.commitUpdate(mutation, {
       onFailure: this.onSubmitUpdatesFailed,
       onSuccess: response => {
-        if (!response.updateCollectorProfile.loyalty_applicant_at) {
-          console.log("Loyalty Applicant Not Saved") // tslint:disable-line:no-console
-        } else {
-          console.log("Success") // tslint:disable-line:no-console
+        if (response.updateCollectorProfile.loyalty_applicant_at) {
+          window.location.pathname = "/loyalty/thank-you"
         }
       },
     })
@@ -122,15 +120,14 @@ export class Inquiries extends React.Component<RelayProps, State> {
       }
     }
 
-    const mutation = new UpdateConversationMutation({
-      conversationIds: ids,
-      buyerOutcome: "purchased",
-    })
+    const mutation = new UpdateConversationMutation({input: {
+      ids,
+      buyerOutcome: "PURCHASED",
+    }})
 
     Relay.Store.commitUpdate(mutation, {
       onFailure: this.onSubmitUpdatesFailed,
       onSuccess: response => {
-        console.log("Success inquiries update", response) // tslint:disable-line:no-console
         this.submitCollectorProfileUpdate()
       },
     })

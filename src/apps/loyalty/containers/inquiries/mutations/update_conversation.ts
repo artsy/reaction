@@ -1,16 +1,18 @@
 import * as Relay from "react-relay"
 
 export type BuyerOutcome =
-  "purchased" |
-  "still_considering" |
-  "high_price" |
-  "lost_interest" |
-  "work_unavailable" |
-  "other"
+  "PURCHASED" |
+  "STILL_CONSIDERING" |
+  "HIGH_PRICE" |
+  "LOST_INTEREST" |
+  "WORK_UNAVAILABLE" |
+  "OTHER"
 
 interface MutationProps {
-  conversationIds: string[]
-  buyerOutcome: BuyerOutcome
+  input: {
+    ids: string[],
+    buyerOutcome: BuyerOutcome,
+  }
 }
 
 export default class UpdateConversationMutation extends Relay.Mutation<MutationProps, any> {
@@ -24,15 +26,17 @@ export default class UpdateConversationMutation extends Relay.Mutation<MutationP
 
   getVariables() {
     return {
-      ids: this.props.conversationIds,
-      buyer_outcome: this.props.buyerOutcome,
+      ids: this.props.input.ids,
+      buyer_outcome: this.props.input.buyerOutcome,
     }
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on UpdateConversationPayload {
-
+        conversations {
+          id
+        }
       }
     `
   }
