@@ -101,11 +101,13 @@ app.get("/inquiries", (req, res) => {
         .then(({data, props}) => {
           const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
           const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+          res.locals.sharify.data.USER_DATA = req.user.toJSON()
+          res.locals.sharify.data.DATA = data
           res.send(renderPage({
             styles,
             html,
             entrypoint: "/bundles/inquiries.js",
-            bootstrapData: `var DATA = ${JSON.stringify(data)}; var USER_DATA = ${JSON.stringify(req.user.toJSON())};`,
+            sharify: res.locals.sharify.script(),
           }))
         })
     })
