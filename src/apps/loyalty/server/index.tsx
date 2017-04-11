@@ -79,7 +79,6 @@ app.get("/inquiries", (req, res) => {
   }
 
   fetchCollectorProfile(req.user.get("accessToken"))
-    .then(body => body.json())
     .then(info => {
       if (info.loyalty_applicant_at) {
         return res.redirect(req.baseUrl + "/thank-you")
@@ -87,7 +86,6 @@ app.get("/inquiries", (req, res) => {
 
       if (info.confirmed_buyer_at) {
         markCollectorAsLoyaltyApplicant(req.user.get("accessToken"))
-          .then(body => body.json())
           .then(profile => {
             return res.redirect(req.baseUrl + "/thank-you")
           })
@@ -120,7 +118,6 @@ app.get("/thank-you", (req, res) => {
   }
 
   fetchCollectorProfile(req.user.get("accessToken"))
-    .then(body => body.json())
     .then(info => {
       let html
       if (info.loyalty_applicant_at) {
