@@ -9,7 +9,7 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
   sectionMargin?: number,
   itemMargin?: number,
-  onLoadMore: () => any,
+  onLoadMore?: () => any,
 }
 
 interface State {
