@@ -72,16 +72,16 @@
     "backbone": "^1.3.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
     "express": "^4.15.2",
-    "express-session": "^1.15.1",
     "isomorphic-relay": "^0.7.4",
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
     "numeral": "^2.0.4",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
-    "sharify": "^0.1.6",
     "request": "^2.81.0",
+    "sharify": "^0.1.6",
     "styled-components": "^1.4.3"
   },
   "graphql": {
