@@ -33,6 +33,7 @@ app.use(artsyPassport(Object.assign({
   CurrentUser: Backbone.Model,
 }, process.env)))
 app.use(RelayMiddleware)
+app.use(UserMiddleware)
 
 app.get("/", (req, res) => {
   res.redirect(req.baseUrl + "/inquiries")
