@@ -1,9 +1,10 @@
+import { partition } from "lodash"
 import * as React from "react"
 import * as Relay from "react-relay"
+import { Col, Grid, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 
 import Button from "components/buttons/inverted"
-import { Col, Row } from "components/grid"
 import Artwork from "components/inquiry_artwork"
 import Nav from "components/nav"
 import NavItem from "components/nav_item"
@@ -23,9 +24,7 @@ const Container = styled.div`
   text-align: center;
 
   & .artworks {
-    padding: 20px 0;
-    max-width: 1024px;
-    margin: 20px auto;
+    margin: 30px 0;
   }
 
   & .footer {
@@ -40,6 +39,15 @@ const Header = styled.header`
   & .header-title {
     margin-bottom: 0;
   }
+
+  & .header-subtitle {
+    margin-top: 5px;
+  }
+`
+
+const LargeTextArea = styled(TextArea)`
+  width: 100%;
+  height: 130px;
 `
 
 export interface State {
@@ -67,8 +75,8 @@ export class Inquiries extends React.Component<RelayProps, State> {
     return edges.map(edge => {
       const { id, artwork, impulse_conversation_id } = edge.node
       return (
-        <Col>
-          <InquiryContainer key={id}>
+        <Col md={3} xs={6} key={id}>
+          <InquiryContainer>
             <Artwork
               artwork={artwork as any}
               onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id)}
@@ -145,19 +153,19 @@ export class Inquiries extends React.Component<RelayProps, State> {
         </Nav>
         <Header>
           <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
-          <Text align="center">We will confirm submitted purchases with the galleries 
+          <Text align="center" className="header-subtitle">We will confirm submitted purchases with the galleries 
             in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
-          <Row>
-          {this.renderArtworks()}
-          </Row>
+          <Grid>
+            <Row>{this.renderArtworks()}</Row>
+          </Grid>
         </div>
         <footer className="footer">
           <Text align="center" textSize="large">
             If you purchased any works not included<br /> above, please list them.
           </Text>
-          <TextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
+          <LargeTextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
           <Button onClick={this.onButtonClick.bind(this)} block>Submit purchases</Button>
         </footer>
       </Container>
