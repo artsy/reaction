@@ -6,8 +6,12 @@
 const express = require("express")
 const morgan = require("morgan")
 const path = require("path")
+const session = require("cookie-session")
+const cookieParser = require("cookie-parser")
+const sharify = require("sharify")
+const bodyParser = require("body-parser")
 
-// Long symbolicated stack traces
+// Long symbolicated stack traces, which includes traces that occurred in an earlier tick of the event loop.
 require("longjohn")
 
 // Load environment from disk
@@ -16,6 +20,18 @@ require("dotenv").load()
 const app = express()
 app.use(morgan("dev"))
 app.use("/assets/fonts", express.static("./assets/fonts"))
+
+// Force provided middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(sharify)
+app.use(cookieParser())
+app.use(session({
+  secret: "secret",
+  name: "reaction-force.sess",
+  maxAge: 31536000000,
+  secure: false,
+}))
 
 // Dynamically host assets to browser.
 const webpack = require("webpack");
