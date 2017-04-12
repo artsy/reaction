@@ -29,7 +29,7 @@ app.use(cookieParser())
 app.use(session({
   secret: "secret",
   name: "reaction-force.sess",
-  maxAge: 60000,
+  maxAge: 31536000000,
   secure: false,
 }))
 
