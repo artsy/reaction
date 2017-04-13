@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -15,7 +15,8 @@
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
-    "type-check": "tsc --noEmit --pretty"
+    "type-check": "tsc --noEmit --pretty",
+    "prepublish": "rm -rf dist && webpack -p && gulp compile-server"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",

@@ -3,10 +3,10 @@
  * instead you will have to restart the process to do so.
  */
 
-var webpack = require("webpack");
-var path = require("path");
+const webpack = require("webpack");
+const path = require("path");
 
-var { CheckerPlugin } = require("awesome-typescript-loader")
+const { CheckerPlugin } = require("awesome-typescript-loader")
 
 module.exports = {
   entry: {
