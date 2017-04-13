@@ -2,12 +2,13 @@ import * as React from "react"
 import styled from "styled-components"
 
 import colors from "../../../../assets/colors"
-import Button from "../../../../components/buttons/inverted"
-import Nav from "../../../../components/nav"
-import NavItem from "../../../../components/nav_item"
-import Text from "../../../../components/text"
-import TextLink from "../../../../components/text_link"
-import Title from "../../../../components/title"
+
+import Button from "components/buttons/inverted"
+import Nav from "components/nav"
+import NavItem from "components/nav_item"
+import Text from "components/text"
+import TextLink from "components/text_link"
+import Title from "components/title"
 
 const Container = styled.div`
   text-align: center;

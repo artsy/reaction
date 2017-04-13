@@ -1,6 +1,8 @@
 exports[`Artwork renders correctly 1`] = `
 <div
-  onClick={[Function]}>
+  className="iCSZmV"
+  onClick={[Function]}
+  size={250}>
   <div
     className="fmQTpg"
     size={250}>
