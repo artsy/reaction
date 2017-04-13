@@ -119,10 +119,10 @@ export class Inquiries extends React.Component<RelayProps, State> {
   }
 
   submitInquiriesUpdate() {
-    let ids: string[] = []
+    const ids: string[] = []
     const artworks = this.state.selected_artworks
 
-    for (let artworkId of Object.keys(artworks)) {
+    for (const artworkId of Object.keys(artworks)) {
       if (artworks[artworkId]) {
         ids.push(artworkId)
       }
@@ -142,7 +142,7 @@ export class Inquiries extends React.Component<RelayProps, State> {
   }
 
   onSubmitUpdatesFailed(transaction) {
-    console.log(transaction.getError()) // tslint:disable-line:no-console
+    alert("Sorry, there was an error with your submission, please try again")
   }
 
   render() {

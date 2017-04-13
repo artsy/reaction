@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express"
 import { fetchCollectorProfile } from "../gravity"
 
-export default (req: Request, res: Response, next: NextFunction) => {
-  if (req.user && !res.locals.profile) {
+export default function UserMiddleware(req: Request, res: Response, next: NextFunction) {
+  if (req.user) {
     fetchCollectorProfile(req.user.get("accessToken"))
       .then(data => {
         req.user.set("profile", data)
