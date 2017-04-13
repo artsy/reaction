@@ -8,7 +8,7 @@
     "react-relay",
     ["module-resolver", {
       "alias": {
-        "components": "./src/components"
+        "components": "./dist/components"
       }
     }]
   ],
