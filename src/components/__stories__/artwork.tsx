@@ -5,7 +5,7 @@ import * as Relay from "react-relay"
 import Artwork from "../artwork/index"
 
 import { artsyNetworkLayer } from "../../relay/config"
-import { ArtworkQueryConfig } from "../../relay/root_queries"
+import ArtworkQueryConfig from "../../relay/queries/artwork"
 
 function ArtworkExample(props: { artworkID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())

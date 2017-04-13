@@ -1,0 +1,6 @@
+.awcache
+.vscode
+.env
+
+.babelrc
+externals

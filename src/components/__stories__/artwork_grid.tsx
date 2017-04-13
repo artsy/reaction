@@ -6,7 +6,7 @@ import Artwork from "../artwork/index"
 import ArtworkGrid from "../artwork_grid"
 
 import { artsyNetworkLayer } from "../../relay/config"
-import { ArtistQueryConfig } from "../../relay/root_queries"
+import ArtistQueryConfig from "../../relay/queries/artist"
 
 export class ArtistArtworks extends React.Component<RelayProps, null> {
   render() {
@@ -21,7 +21,7 @@ const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
     artist: () => Relay.QL`
       fragment on Artist {
         artworks: artworks_connection(first: 10) {
-          ${ArtworkGrid.getFragment("artworks")}
+          ${(ArtworkGrid.getFragment("artworks"))}
         }
       }
     `,

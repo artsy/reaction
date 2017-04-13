@@ -6,9 +6,14 @@ import TextLink from "../text_link"
 
 export interface DetailsProps extends React.HTMLProps<ArtworkDetails> {
   artwork: any
+  showSaleLine: boolean
 }
 
 export class ArtworkDetails extends React.Component<DetailsProps, null> {
+  static defaultProps = {
+    showSaleLine: true,
+  }
+
   artistLine() {
     const { cultural_maker, artists } = this.props.artwork
 
@@ -35,7 +40,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
       return <div>{this.props.artwork.collecting_institution}</div>
-    } else {
+    } else if (this.props.artwork.partner) {
       return (
         <div>
           <TextLink href={this.props.artwork.partner.href}>
@@ -61,7 +66,7 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
         {this.artistLine()}
         {this.titleLine()}
         {this.partnerLine()}
-        {this.saleLine()}
+        {this.props.showSaleLine && this.saleLine()}
       </div>
     )
   }

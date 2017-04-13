@@ -6,11 +6,13 @@ import Artwork from "../artwork"
 describe("Artwork", () => {
   it("renders correctly", () => {
     const artworkProps = {
+      id: "mikael-olson-some-kind-of-dinosaur",
       title: "Some Kind of Dinosaur",
       date: "2015",
       sale_message: "$875",
       is_in_auction: false,
       image: {
+        placeholder: 200,
         url: "artsy.net/image-url",
         aspect_ratio: 0.74,
       },

@@ -20,7 +20,7 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
   auctionLine() {
     const { artwork } = this.props
     if (artwork.sale.is_live_open) {
-      return <TextLink href={artwork.href} underline={true}>Enter Live Auction</TextLink>
+      return <TextLink href={artwork.href} underline>Enter Live Auction</TextLink>
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
       const bids = sa.counts.bidder_positions
@@ -39,7 +39,7 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
 
   contactPartnerLine() {
     return (
-      <TextLink href={this.props.artwork.href} underline={true}>
+      <TextLink href={this.props.artwork.href} underline>
         Contact {this.props.artwork.partner.type.toLowerCase()}
       </TextLink>
     )

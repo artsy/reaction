@@ -1,16 +1,35 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-import styled from "styled-components"
-import Artwork from "./artwork/index"
 
-export interface GridProps extends RelayProps, React.HTMLProps<ArtworkGrid> {
+import { debounce } from "lodash"
+import styled from "styled-components"
+import Artwork from "./artwork/grid_item"
+
+interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number,
   sectionMargin?: number,
   itemMargin?: number,
+  onLoadMore?: () => any,
 }
 
-export class ArtworkGrid extends React.Component<GridProps, null> {
-  public static defaultProps: Partial<GridProps>
+interface State {
+  loading: boolean,
+}
+
+export class ArtworkGrid extends React.Component<Props, State> {
+  public static defaultProps: Partial<Props>
+
+  componentDidMount() {
+    if (this.props.onLoadMore) {
+      setInterval( () => { this.maybeLoadMore() }, 150 )
+    }
+  }
+
+  maybeLoadMore() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight / 2) {
+      this.props.onLoadMore()
+    }
+  }
 
   sectionedArtworks() {
     const sectionedArtworks: ArtworkRelayProps[][] = []
@@ -142,7 +161,7 @@ interface ArtworkRelayProps {
 interface RelayProps {
   artworks: {
     edges: Array<{
-      node: ArtworkRelayProps | null,
+      node: any,
     } | null> | null,
   },
 }

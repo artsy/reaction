@@ -3,9 +3,11 @@ node_modules
 .fusebox
 .env
 out*
+dist
 .DS_Store
 .storybook/.DS_Store
 assets/reaction-force.js
 .storybook/manager.js
 reaction-force.js
 reaction-force.js.map
+dist

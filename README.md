@@ -29,6 +29,7 @@ $ git clone --recursive https://github.com/artsy/reaction-force.git
 $ cd reaction-force
 $ npm install -g yarn
 $ yarn install
+$ cp .env.oss .env
 ```
 
 ## Instructions
@@ -36,7 +37,12 @@ $ yarn install
 * Development of components happen in [storybooks](https://getstorybook.io):
 
         $ yarn storybook
-        $ open http://localhost:4444/
+        $ open http://localhost:9001/
+
+* To run the node server and browse available apps:
+
+        $ yarn start
+        $ open http://localhost:3000/
 
 * Run the tests:
 
@@ -59,9 +65,3 @@ $ yarn install
         $ yarn sync-schema
 
 * There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
-
-## TODO
-
-* [ ] Actually make useful components.
-* [ ] Publish as npm package.
-* [ ] Integrate into Force.

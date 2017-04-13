@@ -9,14 +9,19 @@ import ArtworkDetails from "./details"
 
 export interface ArtworkMetadataProps extends React.HTMLProps<ArtworkMetadata> {
   artwork: any
+  extended?: boolean
 }
 
 export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null> {
+  static defaultProps = {
+    extended: false,
+  }
+
   render() {
     return (
-      <div className={this.props.className} >
-        <ArtworkDetails artwork={this.props.artwork} />
-        <ArtworkContact artwork={this.props.artwork} />
+      <div className={this.props.className}>
+        <ArtworkDetails showSaleLine={this.props.extended} artwork={this.props.artwork} />
+        {this.props.extended && <ArtworkContact artwork={this.props.artwork} />}
       </div>
     )
   }
@@ -25,15 +30,18 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
 export const StyledMetadata = styled(ArtworkMetadata)`
     ${fonts.secondary.style}
     color: ${colors.grayBold};
+    margin-top: 12px;
     font-size: 15px;
+    text-align: left;
+    line-height: 20px;
 `
 
 export default Relay.createContainer(StyledMetadata, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        ${ArtworkDetails.getFragment("artwork")}
-        ${ArtworkContact.getFragment("artwork")}
+        ${(ArtworkDetails.getFragment("artwork"))}
+        ${(ArtworkContact.getFragment("artwork"))}
       }
     `,
   },

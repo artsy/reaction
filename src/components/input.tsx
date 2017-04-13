@@ -10,7 +10,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
 }
 
-const Input: React.SFC<InputProps> = props => (
+const Input: React.SFC<InputProps> = ({ block, ...props }) => (
   <input {...props} />
 )
 

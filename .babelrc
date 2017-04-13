@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "es2015",
+    "stage-3",
+    "react"
+  ],
+  "plugins": [
+    "react-relay",
+    ["module-resolver", {
+      "alias": {
+        "components": "./src/components"
+      }
+    }]
+  ],
+  "retainLines": true
+}
