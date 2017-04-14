@@ -20,7 +20,7 @@ export default ({styles, html, entrypoint, bootstrapData, sharify}: TemplateData
           <div id="app-container">${html}</div>
           ${sharify ? sharify : ""}
           ${bootstrapData ? "<script>" + bootstrapData + "</script>" : ""}
-          <script src="/bundles/commons.chunk.js"></script>
+          <script src="/loyalty/bundles/commons.chunk.js"></script>
           <script src="${entrypoint}"></script>
         </body>
       </html>

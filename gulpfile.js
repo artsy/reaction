@@ -39,7 +39,7 @@ gulp.task("compile-server", () => {
     .pipe(gulp.dest(outDir))
 })
 
-gulp.task("compile-client", function() {
+gulp.task("compile-client", "clean", function() {
   if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = "production"
   }
@@ -52,9 +52,9 @@ gulp.task("compile-client", function() {
 
   return gulp.src(entries)
     .pipe(webpackStream(config, webpack))
-    .pipe(gulp.dest(path.join(outDir, config.output.publicPath)))
+    .pipe(gulp.dest(config.output.path))
 })
 
-gulp.task("compile", ["compile-server", "compile-client"])
+gulp.task("compile", ["clean", "compile-server", "compile-client"])
 
 gulp.task("default", ["compile"])
