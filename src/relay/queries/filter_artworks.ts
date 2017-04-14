@@ -5,7 +5,7 @@ export default class FilterArtworksQueryConfig extends Relay.Route {
     filter_artworks: (component, params) => Relay.QL`
       query {
         viewer {
-          ${(component.getFragment("filter_artworks", { ...params}))},
+          ${component.getFragment("filter_artworks", { ...params})},
         }
       }
     `,

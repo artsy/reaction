@@ -5,7 +5,7 @@ export default class ArtistQueryConfig extends Relay.Route {
     artist: (component, params) => Relay.QL`
       query {
         artist(id: $artistID) {
-          ${(component.getFragment("artist", params))}
+          ${component.getFragment("artist", params)}
         }
       }
     `,

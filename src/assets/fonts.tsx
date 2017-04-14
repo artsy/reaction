@@ -1,14 +1,18 @@
 import { css, injectGlobal } from "styled-components"
 
+const BaseFontURL = process.env.NODE_ENV === "production"
+  ? "https://d1s2w0upia4e9w.cloudfront.net"
+  : ""
+
 injectGlobal`
   @font-face {
     font-family: 'artsy-icons';
-    src: url("../../assets/fonts/artsy-icons.eot?uo9ko");
-    src: url("../../assets/fonts/artsy-icons.eot?#iefixuo9ko") format('embedded-opentype'),
-         url("../../assets/fonts/artsy-icons.woff2?uo9ko") format('woff2'),
-         url("../../assets/fonts/artsy-icons.ttf?uo9ko") format('truetype'),
-         url("../../assets/fonts/artsy-icons.woff?uo9ko") format('woff'),
-         url("../../assets/fonts/artsy-icons.svg?uo9ko#artsy-icons") format('svg');
+    src: url("${BaseFontURL}/fonts/artsy-icons.eot?uo9ko");
+    src: url("${BaseFontURL}/fonts/artsy-icons.eot?#iefixuo9ko") format('embedded-opentype'),
+         url("${BaseFontURL}/fonts/artsy-icons.woff2?uo9ko") format('woff2'),
+         url("${BaseFontURL}/fonts/artsy-icons.ttf?uo9ko") format('truetype'),
+         url("${BaseFontURL}/fonts/artsy-icons.woff?uo9ko") format('woff'),
+         url("${BaseFontURL}/fonts/artsy-icons.svg?uo9ko#artsy-icons") format('svg');
     font-weight: normal;
     font-style: normal;
   }

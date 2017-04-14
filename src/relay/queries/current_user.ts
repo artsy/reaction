@@ -5,7 +5,7 @@ export default class CurrentUserRoute extends Relay.Route {
     user: (container, params) => Relay.QL`
       query {
         me {
-          ${(container.getFragment("user"))}
+          ${container.getFragment("user")}
         }
       }
     `,

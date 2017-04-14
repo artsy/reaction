@@ -4,6 +4,7 @@
  */
 
 const express = require("express")
+const fs = require("fs")
 const morgan = require("morgan")
 const path = require("path")
 const session = require("cookie-session")
@@ -17,9 +18,12 @@ require("longjohn")
 // Load environment from disk
 require("dotenv").load()
 
+const srcPath = path.resolve(__dirname, process.argv[2] || "./src")
+console.log(`📝  Loading server source from ${srcPath}`)
+
 const app = express()
 app.use(morgan("dev"))
-app.use("/assets/fonts", express.static("./assets/fonts"))
+app.use("/fonts", express.static("./assets/fonts"))
 
 // Force provided middleware
 app.use(bodyParser.json())
@@ -33,21 +37,25 @@ app.use(session({
   secure: false,
 }))
 
-// Dynamically host assets to browser.
-const webpack = require("webpack");
-const config = require("./webpack.config");
-const compiler = webpack(config);
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath,
-  serverSideRender: true,
-}));
-// Allow client to be notified of changes to sources.
-app.use(require("webpack-hot-middleware")(compiler));
+const bundlesPath = path.join(srcPath, "bundles")
+if (fs.existsSync(bundlesPath)) {
+  app.use("/bundles", express.static(bundlesPath))
+} else {
+  // Dynamically host assets to browser.
+  const webpack = require("webpack");
+  const config = require("./webpack");
+  const compiler = webpack(config);
+  app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath,
+    serverSideRender: true,
+  }));
+  // Allow client to be notified of changes to sources.
+  app.use(require("webpack-hot-middleware")(compiler));
+}
 
-// Watch for FS changes in `../src` and clear cached modules when a change occurs,
+// Watch for FS changes in `srcPath` and clear cached modules when a change occurs,
 // thus effectively reloading the file on a subsequent request.
-const srcPath = path.resolve(__dirname, "./src")
 const watcher = require("chokidar").watch(srcPath)
 watcher.on("ready", function () {
   // TODO In the future this could be optimised to only reload the changed files and those that are dependent on it:

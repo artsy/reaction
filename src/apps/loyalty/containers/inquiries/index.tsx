@@ -4,13 +4,13 @@ import * as Relay from "react-relay"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 
-import Button from "components/buttons/inverted"
-import Artwork from "components/inquiry_artwork"
-import Nav from "components/nav"
-import NavItem from "components/nav_item"
-import Text from "components/text"
-import TextArea from "components/text_area"
-import Title from "components/title"
+import Button from "../../../../components/buttons/inverted"
+import Artwork from "../../../../components/inquiry_artwork"
+import Nav from "../../../../components/nav"
+import NavItem from "../../../../components/nav_item"
+import Text from "../../../../components/text"
+import TextArea from "../../../../components/text_area"
+import Title from "../../../../components/title"
 
 import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
 import UpdateConversationMutation from "./mutations/update_conversation"
@@ -153,7 +153,7 @@ export class Inquiries extends React.Component<RelayProps, State> {
         </Nav>
         <Header>
           <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
-          <Text align="center" className="header-subtitle">We will confirm submitted purchases with the galleries 
+          <Text align="center" className="header-subtitle">We will confirm submitted purchases with the galleries
             in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
@@ -183,7 +183,7 @@ export default Relay.createContainer(Inquiries, {
               id
               impulse_conversation_id
               artwork {
-                ${(Artwork.getFragment("artwork"))}
+                ${Artwork.getFragment("artwork")}
               }
             }
           }

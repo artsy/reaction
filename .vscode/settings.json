@@ -1,8 +1,10 @@
 {
     "files.exclude": {
-        "**/.git": true,
-        "**/.fusebox": true,
-        "**/reaction-force*": true
+        ".git/": true,
+        ".awcache/": true,
+        "node_modules/": true,
+        "dist/": true,
+        "externals/": true
     },
     "search.exclude": {
         "**/node_modules": true
