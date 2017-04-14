@@ -5,10 +5,6 @@
     "react"
   ],
   "plugins": [
-    "react-relay",
-    ["module-resolver", {
-      "extensions": [".ts", ".tsx"],
-      "root": ["./src"]
-    }]
+    "react-relay"
   ]
 }
