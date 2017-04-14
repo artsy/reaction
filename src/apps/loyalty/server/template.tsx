@@ -4,9 +4,10 @@ interface TemplateData {
   entrypoint: string
   bootstrapData?: string
   sharify?: string
+  baseURL: string
 }
 
-export default ({styles, html, entrypoint, bootstrapData, sharify}: TemplateData) => {
+export default ({styles, html, entrypoint, bootstrapData, sharify, baseURL}: TemplateData) => {
   const fontsURL = "//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css"
 
   return `
@@ -20,7 +21,7 @@ export default ({styles, html, entrypoint, bootstrapData, sharify}: TemplateData
           <div id="app-container">${html}</div>
           ${sharify ? sharify : ""}
           ${bootstrapData ? "<script>" + bootstrapData + "</script>" : ""}
-          <script src="/loyalty/bundles/commons.chunk.js"></script>
+          <script src="${baseURL}/bundles/commons.chunk.js"></script>
           <script src="${entrypoint}"></script>
         </body>
       </html>
