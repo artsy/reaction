@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.1.5",
+  "version": "0.1.10",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -9,14 +9,14 @@
   "scripts": {
     "start": "ts-babel-node index.js",
     "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./assets",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty",
-    "prepublish": "rm -rf dist && webpack -p && gulp compile-server"
+    "prepublishOnly": "rm -rf dist && gulp compile-server && webpack -p"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",

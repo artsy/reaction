@@ -19,7 +19,7 @@ require("dotenv").load()
 
 const app = express()
 app.use(morgan("dev"))
-app.use("/assets/fonts", express.static("./assets/fonts"))
+app.use("/fonts", express.static("./assets/fonts"))
 
 // Force provided middleware
 app.use(bodyParser.json())
