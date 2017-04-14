@@ -4,6 +4,7 @@
  */
 
 const express = require("express")
+const fs = require("fs")
 const morgan = require("morgan")
 const path = require("path")
 const session = require("cookie-session")
@@ -36,17 +37,22 @@ app.use(session({
   secure: false,
 }))
 
-// Dynamically host assets to browser.
-const webpack = require("webpack");
-const config = require("./webpack");
-const compiler = webpack(config);
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath,
-  serverSideRender: true,
-}));
-// Allow client to be notified of changes to sources.
-app.use(require("webpack-hot-middleware")(compiler));
+const bundlesPath = path.join(srcPath, "bundles")
+if (fs.existsSync(bundlesPath)) {
+  app.use("/bundles", express.static(bundlesPath))
+} else {
+  // Dynamically host assets to browser.
+  const webpack = require("webpack");
+  const config = require("./webpack");
+  const compiler = webpack(config);
+  app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath,
+    serverSideRender: true,
+  }));
+  // Allow client to be notified of changes to sources.
+  app.use(require("webpack-hot-middleware")(compiler));
+}
 
 // Watch for FS changes in `srcPath` and clear cached modules when a change occurs,
 // thus effectively reloading the file on a subsequent request.

@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-babel-node index.js",
+    "start:dist": "npm run compile && node index.js ./dist",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./assets",
     "deploy-storybook": "storybook-to-ghpages",
