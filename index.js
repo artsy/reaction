@@ -39,7 +39,6 @@ app.use(session({
 // Dynamically host assets to browser.
 const webpack = require("webpack");
 const config = require("./webpack");
-console.log(config)
 const compiler = webpack(config);
 app.use(require("webpack-dev-middleware")(compiler, {
   noInfo: true,

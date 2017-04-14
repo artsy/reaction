@@ -7,7 +7,6 @@
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gulp compile-server",
     "start": "ts-babel-node index.js",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./assets",
@@ -17,7 +16,10 @@
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty",
-    "prepublishOnly": "rm -rf dist && gulp"
+    "compile:server": "gulp compile-server",
+    "compile:client": "gulp compile-client",
+    "compile": "gulp compile",
+    "prepublishOnly": "rm -rf dist && npm run compile"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",

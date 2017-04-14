@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Server",
-      "preLaunchTask": "build",
+      "preLaunchTask": "compile:server",
       "program": "${workspaceRoot}/index.js",
       "args": [
         "${workspaceRoot}/dist"

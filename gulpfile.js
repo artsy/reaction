@@ -55,4 +55,6 @@ gulp.task("compile-client", function() {
     .pipe(gulp.dest(path.join(outDir, config.output.publicPath)))
 })
 
-gulp.task("default", ["compile-server", "compile-client"])
+gulp.task("compile", ["compile-server", "compile-client"])
+
+gulp.task("default", ["compile"])

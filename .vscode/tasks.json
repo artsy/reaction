@@ -9,12 +9,12 @@
   "isBackground": true,
   "tasks": [
     {
-      "taskName": "build",
+      "taskName": "compile:server",
       "isBuildCommand": true,
       "isTestCommand": false,
       "showOutput": "always",
       "args": [
-        "build"
+        "compile:server"
       ]
     },
     {
