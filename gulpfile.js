@@ -4,6 +4,8 @@ const gulp = require("gulp")
 const path = require("path")
 const sourcemaps = require("gulp-sourcemaps")
 const tsc = require("gulp-typescript")
+const webpack = require("webpack")
+const webpackStream = require("webpack-stream")
 
 const srcDir = "./src"
 const outDir = "./dist"
@@ -36,3 +38,21 @@ gulp.task("compile-server", () => {
     }))
     .pipe(gulp.dest(outDir))
 })
+
+gulp.task("compile-client", function() {
+  if (!process.env.NODE_ENV) {
+    process.env.NODE_ENV = "production"
+  }
+  const config = require("./webpack")
+
+  let entries = []
+  Object.keys(config.entry).forEach(entryName => {
+    entries = entries.concat(config.entry[entryName])
+  })
+
+  return gulp.src(entries)
+    .pipe(webpackStream(config, webpack))
+    .pipe(gulp.dest(path.join(outDir, config.output.publicPath)))
+})
+
+gulp.task("default", ["compile-server", "compile-client"])
