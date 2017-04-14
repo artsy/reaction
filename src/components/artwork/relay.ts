@@ -13,7 +13,7 @@ function createContainer<T, S>(ComponentClass: React.ComponentClass<T> | React.S
             url(version: "large")
             aspect_ratio
           }
-        ${(ChildComponent.getFragment("artwork"))}
+        ${ChildComponent.getFragment("artwork")}
         }
       `,
     },

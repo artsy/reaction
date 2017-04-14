@@ -183,7 +183,7 @@ export default Relay.createContainer(Inquiries, {
               id
               impulse_conversation_id
               artwork {
-                ${(Artwork.getFragment("artwork"))}
+                ${Artwork.getFragment("artwork")}
               }
             }
           }
