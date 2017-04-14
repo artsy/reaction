@@ -22,7 +22,22 @@ gulp.task('compile-server', () => {
         .pipe(tsProject())
 
     return tsResult.js
-        .pipe(babel())
+        .pipe(babel({
+            "presets": [
+                "es2015",
+                "stage-3",
+                "react"
+            ],
+            "plugins": [
+                "react-relay",
+                ["module-resolver", {
+                    "alias": {
+                        "components": "./dist/components"
+                    }
+                }]
+            ],
+            "retainLines": true
+        }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })

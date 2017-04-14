@@ -2,7 +2,7 @@ import { css, injectGlobal } from "styled-components"
 
 const BaseFontURL = process.env.NODE_ENV === "production"
   ? "https://d1s2w0upia4e9w.cloudfront.net"
-  : "../../assets"
+  : ""
 
 injectGlobal`
   @font-face {
