@@ -7,10 +7,8 @@
   "plugins": [
     "react-relay",
     ["module-resolver", {
-      "root": ["./src", "./dist"],
-      "alias": {
-        "components": "./components"
-      }
+      "extensions": [".ts", ".tsx"],
+      "root": ["./src"]
     }]
   ]
 }
