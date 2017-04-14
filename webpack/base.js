@@ -25,8 +25,8 @@ module.exports = () => {
     },
     output: {
       filename: "[name].js",
-      path: path.join(__dirname, "../dist/bundles"),
-      publicPath: "/bundles",
+      path: path.join(__dirname, "../dist/apps/loyalty/server/bundles"),
+      publicPath: "/loyalty/bundles",
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin("commons.chunk"),

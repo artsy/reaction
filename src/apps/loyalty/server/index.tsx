@@ -54,8 +54,9 @@ app.get(loginPagePath, (req, res) => {
   res.send(renderPage({
     styles,
     html,
-    entrypoint: "/bundles/login.js",
+    entrypoint: req.baseUrl + "/bundles/login.js",
     sharify: res.locals.sharify.script(),
+    baseURL: req.baseUrl,
   }))
 })
 
@@ -89,8 +90,9 @@ app.get("/inquiries", (req, res) => {
       res.send(renderPage({
         styles,
         html,
-        entrypoint: "/bundles/inquiries.js",
+        entrypoint: req.baseUrl + "/bundles/inquiries.js",
         sharify: res.locals.sharify.script(),
+        baseURL: req.baseUrl,
       }))
     })
 })
@@ -114,7 +116,7 @@ app.get("/thank-you", (req, res) => {
   }
 
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  res.send(renderPage({ styles, html, entrypoint: "" }))
+  res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl }))
 })
 
 export default app
