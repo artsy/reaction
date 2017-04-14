@@ -7,10 +7,10 @@
   "plugins": [
     "react-relay",
     ["module-resolver", {
+      "root": ["./src", "./dist"],
       "alias": {
-        "components": "./src/components"
+        "components": "./components"
       }
     }]
-  ],
-  "retainLines": true
+  ]
 }
