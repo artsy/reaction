@@ -1280,17 +1280,17 @@ babel-register@^6.24.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-relay-plugin@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/babel-relay-plugin/-/babel-relay-plugin-0.9.3.tgz#4dd92693f68b00cd1cb68a705470f8f9cfaed5d6"
-  dependencies:
-    graphql "^0.6.0"
-
 babel-relay-plugin@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/babel-relay-plugin/-/babel-relay-plugin-0.10.0.tgz#c7adede2b27dcc4aeedcb1ae760e364b2bacfaa0"
   dependencies:
     graphql "0.8.2"
+
+"babel-relay-plugin@https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz":
+  version "0.9.3"
+  resolved "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz#65054ab034af4b4489104e2eaeb886661b3f127a"
+  dependencies:
+    graphql "^0.6.0"
 
 babel-runtime@6.11.6:
   version "6.11.6"
