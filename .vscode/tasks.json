@@ -9,6 +9,15 @@
   "isBackground": true,
   "tasks": [
     {
+      "taskName": "build",
+      "isBuildCommand": true,
+      "isTestCommand": false,
+      "showOutput": "always",
+      "args": [
+        "build"
+      ]
+    },
+    {
       "taskName": "storybook",
       "args": [
         "run",

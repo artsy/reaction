@@ -3,7 +3,23 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
-  "configurations": [{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server",
+      "preLaunchTask": "build",
+      "program": "${workspaceRoot}/index.js",
+      "args": [
+        "${workspaceRoot}/dist"
+      ],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceRoot}/dist/**/*.js"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
     "type": "chrome",
     "request": "launch",
     "preLaunchTask": "storybook",

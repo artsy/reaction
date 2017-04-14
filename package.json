@@ -7,6 +7,7 @@
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "gulp compile-server",
     "start": "ts-babel-node index.js",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook",
