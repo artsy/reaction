@@ -2,8 +2,6 @@ import * as artsyPassport from "artsy-passport"
 import * as Backbone from "backbone"
 import * as express from "express"
 import * as path from "path"
-import * as React from "react"
-import * as Relay from "react-relay"
 
 import RelayMiddleware from "./middlewares/relay"
 import UserMiddleware from "./middlewares/user"
