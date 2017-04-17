@@ -1,5 +1,5 @@
 import fetch, { Response } from "node-fetch"
-const { ARTSY_URL } = process.env
+const { API_URL } = process.env
 
 interface CollectorProfileResponse {
   loyalty_applicant_at: string,
@@ -8,7 +8,7 @@ interface CollectorProfileResponse {
 
 function gravity<T>(accessToken: string, path: string, method?: string): Promise<T> {
   const verb = method || "GET"
-  return fetch(`${ARTSY_URL}/${path}`, {
+  return fetch(`${API_URL}/${path}`, {
     headers: {
       "X-Access-Token": accessToken,
     },
