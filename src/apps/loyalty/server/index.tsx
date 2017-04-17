@@ -11,13 +11,12 @@ import * as styleSheet from "styled-components/lib/models/StyleSheet"
 import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
-import ThreewThankYou from "../containers/3w_thank_you"
-import AcbThankYou from "../containers/acb_thank_you"
+
 import Inquiries from "../containers/inquiries"
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
 import RelayMiddleware from "./middlewares/relay"
 import UserMiddleware from "./middlewares/user"
-import { Home, Login } from "./route_handlers"
+import { Home, Login, ThankYou } from "./route_handlers"
 
 const app = express.Router()
 
@@ -35,6 +34,7 @@ app.use(UserMiddleware)
 
 app.get("/", Home)
 app.get(loginPagePath, Login)
+app.get("/thank-you", ThankYou)
 
 app.get("/inquiries", (req, res) => {
   if (!req.user) {
@@ -71,28 +71,6 @@ app.get("/inquiries", (req, res) => {
         baseURL: req.baseUrl,
       }))
     })
-})
-
-app.get("/thank-you", (req, res) => {
-  if (!req.user) {
-    return res.redirect(req.baseUrl + loginPagePath)
-  }
-
-  const info = req.user.get("profile")
-  let html
-
-  if (info.loyalty_applicant_at) {
-    if (info.confirmed_buyer_at) {
-      html = renderToString(<AcbThankYou />)
-    } else {
-      html = renderToString(<ThreewThankYou userName={req.user.attributes.name} />)
-    }
-  } else {
-    return res.redirect(req.baseUrl) // baseUrl already has "/loyalty" so no need to append it.
-  }
-
-  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl }))
 })
 
 export default app
