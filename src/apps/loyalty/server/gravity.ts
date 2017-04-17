@@ -1,7 +1,7 @@
 import fetch, { Response } from "node-fetch"
 const { API_URL } = process.env
 
-interface CollectorProfileResponse {
+export interface CollectorProfileResponse {
   loyalty_applicant_at: string,
   confirmed_buyer_at: string,
 }

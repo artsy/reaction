@@ -1,0 +1,56 @@
+exports[`ACB Thank You renders the snapshot 1`] = `
+<div
+  className="jBvxsI">
+  <div
+    className="hiqXMD">
+    <div
+      className="dHhWkf">
+      <div
+        className="gQelpA"
+        style={undefined}>
+        
+      </div>
+    </div>
+    <a
+      className="iDuDUI"
+      href="/">
+      Back To Artsy
+    </a>
+  </div>
+  <div
+    className="ChQBa">
+    <p
+      className="etNsCH">
+      EARLY ACCESS
+    </p>
+  </div>
+  <div
+    className="dvtHsH">
+    Artsy Collector Loyalty Program
+  </div>
+  <div
+    className="ChQBa">
+    <p
+      className="fTgPgI">
+      Thank you for your interest in the program.
+      <br />
+      Have questions? Get in touch:  
+      <a
+        className="ickHKL"
+        href="mailto:loyalty@artsy.net">
+        loyalty@artsy.net
+      </a>
+    </p>
+  </div>
+  <div
+    className="jzLjyo">
+    <a
+      className="hAmmpZ"
+      href="/">
+      <span>
+        Back to Artsy
+      </span>
+    </a>
+  </div>
+</div>
+`;

@@ -1,0 +1,94 @@
+exports[`login renders the snapshot 1`] = `
+<div
+  className="FLXHp">
+  <div
+    className="cVIAuV"
+    style={undefined}>
+    
+  </div>
+  <p
+    className="fTgPgI">
+    Welcome back, please log in 
+    <br />
+     to your account.
+  </p>
+  <form
+    action="/log_in"
+    method="POST"
+    onSubmit={undefined}>
+    <input
+      className="dyTjMO"
+      name="email"
+      placeholder="Email" />
+    <input
+      className="dyTjMO"
+      name="password"
+      placeholder="Password"
+      type="password" />
+    <input
+      name="_csrf"
+      type="hidden"
+      value="csrf" />
+    <button
+      className="jkaRYz">
+      <span>
+        Log In
+      </span>
+    </button>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }>
+      or
+    </div>
+    <a
+      className="OZEVy hUOVI"
+      href="/facebook"
+      icon={
+        <Styled(Icon)
+          color="white"
+          name="facebook" />
+      }>
+      <div
+        className="kEzGjr"
+        style={undefined}>
+        
+      </div>
+      <span>
+        Log in with Facebook
+      </span>
+    </a>
+    <a
+      className="iuQEPI hUOVI"
+      href="/twitter"
+      icon={
+        <Styled(Icon)
+          color="white"
+          name="twitter" />
+      }>
+      <div
+        className="kEzGjr"
+        style={undefined}>
+        
+      </div>
+      <span>
+        Log in with Twitter
+      </span>
+    </a>
+  </form>
+  <br />
+  <p
+    className="fLunyJ">
+    <span>
+      Don\'t have an account? 
+    </span>
+    <a
+      className="ickHKL"
+      href={undefined}>
+      Sign Up
+    </a>
+  </p>
+</div>
+`;
