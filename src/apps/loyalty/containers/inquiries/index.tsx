@@ -74,6 +74,9 @@ export class Inquiries extends React.Component<RelayProps, State> {
     const edges = this.props.user.artwork_inquiries_connection.edges || []
     return edges.map(edge => {
       const { id, artwork, impulse_conversation_id } = edge.node
+      if (!impulse_conversation_id) {
+        return null
+      }
       return (
         <Col md={3} xs={6} key={id}>
           <InquiryContainer>

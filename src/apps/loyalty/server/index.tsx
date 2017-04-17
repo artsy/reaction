@@ -20,6 +20,7 @@ import RelayMiddleware from "./middlewares/relay"
 import UserMiddleware from "./middlewares/user"
 
 const app = express.Router()
+const { API_URL } = process.env
 
 app.use(express.static(path.resolve(__dirname)))
 
@@ -31,7 +32,9 @@ const {
 
 app.use(artsyPassport(Object.assign({
   CurrentUser: Backbone.Model,
+  ARTSY_URL: API_URL,
 }, process.env)))
+
 app.use(RelayMiddleware)
 app.use(UserMiddleware)
 
