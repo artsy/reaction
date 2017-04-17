@@ -14,11 +14,10 @@ import CurrentUserRoute from "../../../relay/queries/current_user"
 import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import Inquiries from "../containers/inquiries"
-import Login from "../containers/login"
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
 import RelayMiddleware from "./middlewares/relay"
 import UserMiddleware from "./middlewares/user"
-import { Home } from "./route_handlers"
+import { Home, Login } from "./route_handlers"
 
 const app = express.Router()
 
@@ -26,8 +25,6 @@ app.use(express.static(path.resolve(__dirname)))
 
 const {
   loginPagePath,
-  facebookPath,
-  twitterPath,
 } = artsyPassport.options
 
 app.use(artsyPassport(Object.assign({
@@ -37,27 +34,7 @@ app.use(RelayMiddleware)
 app.use(UserMiddleware)
 
 app.get("/", Home)
-
-app.get(loginPagePath, (req, res) => {
-  const formConfig = {
-    url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl + "/inquiries/"}`,
-    csrfToken: req.csrfToken(),
-    facebookPath,
-    twitterPath,
-  }
-  const html = renderToString(<Login form={formConfig} />)
-  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-
-  res.locals.sharify.data.FORM_DATA = formConfig
-
-  res.send(renderPage({
-    styles,
-    html,
-    entrypoint: req.baseUrl + "/bundles/login.js",
-    sharify: res.locals.sharify.script(),
-    baseURL: req.baseUrl,
-  }))
-})
+app.get(loginPagePath, Login)
 
 app.get("/inquiries", (req, res) => {
   if (!req.user) {
