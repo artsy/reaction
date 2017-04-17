@@ -9,6 +9,15 @@
   "isBackground": true,
   "tasks": [
     {
+      "taskName": "compile:server",
+      "isBuildCommand": true,
+      "isTestCommand": false,
+      "showOutput": "always",
+      "args": [
+        "compile:server"
+      ]
+    },
+    {
       "taskName": "storybook",
       "args": [
         "run",

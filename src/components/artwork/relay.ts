@@ -8,11 +8,12 @@ function createContainer<T, S>(ComponentClass: React.ComponentClass<T> | React.S
     fragments: {
       artwork: () => Relay.QL`
         fragment on Artwork {
+          id
           image {
             url(version: "large")
             aspect_ratio
           }
-        ${(ChildComponent.getFragment("artwork"))}
+        ${ChildComponent.getFragment("artwork")}
         }
       `,
     },
@@ -23,6 +24,7 @@ export default createContainer
 
 export interface RelayProps {
   artwork: {
+    id: string | null,
     image: {
       url: string | null,
       aspect_ratio: number | null,

@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.1.4",
+  "version": "0.1.13",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -8,14 +8,19 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-babel-node index.js",
+    "start:dist": "npm run compile && node index.js ./dist",
     "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./assets",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
-    "type-check": "tsc --noEmit --pretty"
+    "type-check": "tsc --noEmit --pretty",
+    "compile:server": "gulp compile-server",
+    "compile:client": "gulp compile-client",
+    "compile": "gulp compile",
+    "prepublishOnly": "rm -rf dist && npm run compile"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -34,12 +39,13 @@
     "@types/react-relay": "^0.9.12",
     "awesome-typescript-loader": "^3.1.2",
     "babel-core": "^6.24.0",
-    "babel-plugin-module-resolver": "^2.7.0",
     "babel-plugin-react-relay": "^0.10.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
     "babel-relay-plugin": "https://github.com/alloy/relay/releases/download/v0.9.3/babel-relay-plugin-0.9.3.tgz",
+    "babel-template": "^6.2.0",
+    "babel-types": "^6.2.0",
     "chokidar": "^1.6.1",
     "dotenv": "^4.0.0",
     "graphql-config-parser": "^1.2.1",
@@ -63,8 +69,12 @@
     "tslint-eslint-rules": "^3.4.0",
     "tslint-react": "^2.4.0",
     "typescript": "^2.1.5",
+    "uglify-js": "^2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.2",
     "webpack": "^2.3.3",
-    "webpack-dev-middleware": "^1.10.1"
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-stream": "^3.2.0"
   },
   "dependencies": {
     "artsy-passport": "^1.6.1",
@@ -72,16 +82,17 @@
     "backbone": "^1.3.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
     "express": "^4.15.2",
-    "express-session": "^1.15.1",
     "isomorphic-relay": "^0.7.4",
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
     "numeral": "^2.0.4",
     "react": "^15.4.2",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
-    "sharify": "^0.1.6",
+    "react-styled-flexboxgrid": "^1.0.2",
     "request": "^2.81.0",
+    "sharify": "^0.1.6",
     "styled-components": "^1.4.3"
   },
   "graphql": {

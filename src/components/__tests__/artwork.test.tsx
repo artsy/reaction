@@ -6,6 +6,7 @@ import Artwork from "../artwork"
 describe("Artwork", () => {
   it("renders correctly", () => {
     const artworkProps = {
+      id: "mikael-olson-some-kind-of-dinosaur",
       title: "Some Kind of Dinosaur",
       date: "2015",
       sale_message: "$875",

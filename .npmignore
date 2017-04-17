@@ -1,6 +1,13 @@
 .awcache
 .vscode
-.env
-
+.env*
+.storybook
+.fusebox
 .babelrc
+
 externals
+src
+__mocks__
+reaction-force.js
+reaction-force.js.map
+gulpfile.js
