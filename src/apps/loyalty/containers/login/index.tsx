@@ -53,7 +53,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
           {form.csrfToken && <input type="hidden" name="_csrf" value={form.csrfToken} />}
 
-          <Button block>Log In</Button>
+          <Button block style={{flexDirection: "column"}}>Log In</Button>
           <div style={{textAlign: "center"}}>or</div>
           <FacebookButton href={form.facebookPath} block />
           <TwitterButton href={form.twitterPath} block />

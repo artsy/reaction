@@ -30,7 +30,12 @@ exports[`login renders the snapshot 1`] = `
       type="hidden"
       value="csrf" />
     <button
-      className="jkaRYz">
+      className="jkaRYz"
+      style={
+        Object {
+          "flexDirection": "column",
+        }
+      }>
       <span>
         Log In
       </span>
