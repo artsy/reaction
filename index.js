@@ -29,6 +29,9 @@ app.use("/fonts", express.static("./assets/fonts"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(sharify)
+// Inject METAPHYSICS_ENDPOINT to sharify data
+// Todo/Enhancement: inject any 'safe ENV vars?
+sharify.data.METAPHYSICS_ENDPOINT = process.env.METAPHYSICS_ENDPOINT
 app.use(cookieParser())
 app.use(session({
   secret: "secret",
