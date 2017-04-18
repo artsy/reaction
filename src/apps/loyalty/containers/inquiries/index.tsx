@@ -17,7 +17,7 @@ import UpdateConversationMutation from "./mutations/update_conversation"
 
 const InquiryContainer = styled.div`
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 `
 
 const Container = styled.div`
