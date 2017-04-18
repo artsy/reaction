@@ -39,7 +39,7 @@ gulp.task("compile-server", () => {
     .pipe(gulp.dest(outDir))
 })
 
-gulp.task("compile-client", "clean", function() {
+gulp.task("compile-client", ["clean"], function() {
   if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = "production"
   }
