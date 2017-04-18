@@ -16,6 +16,7 @@ export default styled(FacebookButton)`
   height: 40px;
   padding: 0 30px;
   margin: 10px auto 2px;
+  flex-direction: row;
 
   &:hover:not(:disabled) {
     background: #252C68;

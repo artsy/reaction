@@ -54,6 +54,7 @@ export const StyledButton = styled(Button)`
     return "black"
   }};
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 15px 30px;

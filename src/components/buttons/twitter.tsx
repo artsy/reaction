@@ -16,6 +16,7 @@ export default styled(TwitterButton)`
   height: 40px;
   padding: 0 30px;
   margin: 5px auto 5px;
+  flex-direction: row;
 
   &:hover:not(:disabled) {
     background: #0D73B6;
