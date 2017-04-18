@@ -48,7 +48,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         </Text>
 
         <form action={form.url} method="POST" onSubmit={this.props.onSubmit}>
-          <StyledInput name="email" placeholder="Email" block />
+          <StyledInput name="email" placeholder="Email" autoFocus block />
           <StyledInput name="password" placeholder="Password" type="password" block />
 
           {form.csrfToken && <input type="hidden" name="_csrf" value={form.csrfToken} />}
