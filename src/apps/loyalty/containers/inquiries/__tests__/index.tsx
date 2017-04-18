@@ -1,10 +1,11 @@
 import * as React from "react"
-import * as ReactTestUtils from "react-dom/test-utils"
+import * as TestUtils from "react-dom/test-utils"
 import * as renderer from "react-test-renderer"
 
-import { Inquiries } from "../index"
+import { Artwork } from "../../../../../components/artwork"
+import { Inquiries, Props } from "../index"
 
-const inquiryProps = {
+const inquiryProps: Props = {
   user: {
     artwork_inquiries_connection: {
       edges: [
@@ -41,7 +42,7 @@ const inquiryProps = {
       ],
     },
   },
-} as any
+}
 
 describe("inquiries", () => {
   it("renders the inquiries listing", () => {
@@ -50,11 +51,48 @@ describe("inquiries", () => {
   })
 
   it("renders the artist information", () => {
-    const inquiries = ReactTestUtils.renderIntoDocument(<Inquiries {...inquiryProps}/>)
-    const aTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(inquiries, "a")
+    const inquiries = TestUtils.renderIntoDocument(<Inquiries {...inquiryProps}/>) as Inquiries
+    const aTags = TestUtils.scryRenderedDOMComponentsWithTag(inquiries, "a") as HTMLAnchorElement[]
     const artistLink = aTags.find(tag => tag.href === "/percy-z" && tag.textContent === "Percy Z")
     expect(artistLink).toBeTruthy()
     const noConvoLink = aTags.find(tag => tag.href === "/percy-z-without-conversation")
     expect(noConvoLink).toBeUndefined()
+  })
+
+  describe("concerning the submit button", () => {
+    let inquiries: Inquiries
+    let button: HTMLButtonElement
+
+    beforeEach(() => {
+      inquiries = TestUtils.renderIntoDocument(<Inquiries {...inquiryProps} />) as Inquiries
+      button = TestUtils.findRenderedDOMComponentWithTag(inquiries, "button") as HTMLButtonElement
+    })
+
+    it("disables the submit button by default", () => {
+      expect(button.disabled).toEqual(true)
+    })
+
+    it("enables the submit button when text is entered into the free-form textarea", () => {
+      const textArea = TestUtils.findRenderedDOMComponentWithTag(inquiries, "textarea") as HTMLTextAreaElement
+
+      textArea.value = "Mona Lisa, Don’t recall the dude’s name, Louvre Gift Shop"
+      TestUtils.Simulate.change(textArea)
+      expect(button.disabled).toEqual(false)
+
+      textArea.value = " \n"
+      TestUtils.Simulate.change(textArea)
+      expect(button.disabled).toEqual(true)
+    })
+
+    it("enables the submit button when an inquiry is selected", () => {
+      const artwork = TestUtils.findRenderedComponentWithType(inquiries, Artwork)
+      const container = TestUtils.scryRenderedDOMComponentsWithTag(artwork, "div")[0]
+
+      TestUtils.Simulate.click(container)
+      expect(button.disabled).toEqual(false)
+
+      TestUtils.Simulate.click(container)
+      expect(button.disabled).toEqual(true)
+    })
   })
 })

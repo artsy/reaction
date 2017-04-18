@@ -103,7 +103,8 @@ exports[`inquiries renders the inquiries listing 1`] = `
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery" />
     <button
-      className="dLWLJv"
+      className="fuhvSe"
+      disabled={true}
       onClick={[Function]}>
       <span>
         Submit purchases
