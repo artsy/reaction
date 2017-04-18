@@ -80,15 +80,16 @@ exports[`login renders the snapshot 1`] = `
   </form>
   <br />
   <p
-    className="fLunyJ">
+    className="eXluOx">
     <span>
       Don\'t have an account? 
     </span>
     <a
-      className="ickHKL"
+      className="kfGluK"
       href={undefined}>
-      Sign Up
+      Sign up
     </a>
+    .
   </p>
 </div>
 `;

@@ -9,6 +9,7 @@ import Input from "../../../../components/input"
 import Text from "../../../../components/text"
 import TextLink from "../../../../components/text_link"
 
+import colors from "../../../../assets/colors"
 import * as fonts from "../../../../assets/fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
@@ -55,7 +56,7 @@ const StyledOrText = styled.div`
     bottom: 50%;
     left: 0;
     right: 0;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid ${colors.grayRegular};
     z-index: -1;
   }
 `
@@ -87,9 +88,9 @@ class Login extends React.Component<LoginProps, LoginState> {
 
         <br />
 
-        <Text align="center">
+        <Text color={colors.graySemibold} align="center">
           <span>Don't have an account? </span>
-          <TextLink underline>Sign Up</TextLink>
+          <TextLink color={colors.graySemibold} underline>Sign up</TextLink>.
         </Text>
       </LoginContainer>
     )
