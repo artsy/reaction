@@ -43,12 +43,27 @@ exports[`login renders the inquiries listing 1`] = `
               onClick={[Function]}
               size={250}>
               <div
-                className="fmQTpg"
+                className="hmGDjd"
                 size={250}>
                 <img
                   className="eltJDW"
                   size={250}
                   src="http://path.to.cat.pics" />
+                <div
+                  className="overlay-container hovered">
+                  <div
+                    className="dtjypd">
+                    <div
+                      className="gNTyvH"
+                      selected={false}>
+                      <div
+                        className="kEzGjr"
+                        style={undefined}>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="tEGyX">
