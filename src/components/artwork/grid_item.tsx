@@ -2,6 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../assets/colors"
+import SaveButton from "../save"
 import ArtworkMetadata from "./metadata"
 
 const Image = styled.img`
@@ -23,13 +24,18 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItem> {
 
 export class ArtworkGridItem extends React.Component<Props, null> {
   render() {
+    const { style, artwork } = this.props
     return (
-      <div style={this.props.style}>
-        <Placeholder style={{ paddingBottom: this.props.artwork.image.placeholder }}>
-          <Image src={this.props.artwork.image.url} />
+      <div style={style}>
+        <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
+          <Image src={artwork.image.url} />
+          <SaveButton
+            artwork={artwork}
+            style={{position: "absolute", right: "10px", bottom: "10px"}}
+          />
         </Placeholder>
       
-        <ArtworkMetadata artwork={this.props.artwork} />
+        <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
@@ -45,6 +51,7 @@ export default Relay.createContainer(ArtworkGridItem, {
           aspect_ratio
         }
        ${ArtworkMetadata.getFragment("artwork")}
+       ${SaveButton.getFragment("artwork")}
       }
     `,
   },
