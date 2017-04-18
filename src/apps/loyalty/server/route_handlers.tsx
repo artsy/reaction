@@ -75,7 +75,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
       res.locals.sharify.data.USER_DATA = req.user.toJSON()
       res.locals.sharify.data.DATA = data
-      res.send(renderPage({
+      return res.send(renderPage({
         styles,
         html,
         entrypoint: req.baseUrl + "/bundles/inquiries.js",

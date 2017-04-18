@@ -1,3 +1,3 @@
 module.exports = {
-  container: container => container
+  container: container => container,
 }

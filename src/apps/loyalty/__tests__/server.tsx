@@ -10,6 +10,14 @@ describe ("Home page", () => {
   })
 })
 
+describe("ThankYouHTML", () => {
+  it("renders the acb template for confirmed buyers", () => {
+    let profile = { confirmed_buyer_at: "trust me im a buyer" } as any
+    let html = ThankYouHtml(profile)
+    expect(html).toMatch("EARLY ACCESS")
+  })
+})
+
 describe ("ThankYou page", () => {
   it("redirects to /login if there is no user", () => {
     let req = { baseUrl: "loyalty" } as any
@@ -17,5 +25,18 @@ describe ("ThankYou page", () => {
     let next = jest.fn() as any
     ThankYou(req, res, next)
     expect(res.redirect).toHaveBeenCalledWith("loyalty/login")
+  })
+
+  it("redirects to /loyalty if the user is not a loyalty applicant", () => {
+    let get = () => {
+      return {
+        loyalty_applicant_at: null,
+      }
+    }
+    let req = { baseUrl: "loyalty", user: { get } } as any
+    let res = { redirect: jest.fn() } as any
+    let next = jest.fn() as any
+    ThankYou(req, res, next)
+    expect(res.redirect).toHaveBeenCalledWith("loyalty")
   })
 })
