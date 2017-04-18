@@ -98,7 +98,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
         <ImageContainer size={size}>
           <Image src={artwork.image.url} size={size} />
           <div className={overlayClasses}>
-            <Overlay selected={this.state.isSelected} />
+            {Overlay && <Overlay selected={this.state.isSelected} />}
           </div>
         </ImageContainer>
         <ArtworkMetadata artwork={artwork} />
