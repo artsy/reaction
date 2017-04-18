@@ -4,12 +4,14 @@ exports[`Artwork renders correctly 1`] = `
   onClick={[Function]}
   size={250}>
   <div
-    className="fmQTpg"
+    className="hmGDjd"
     size={250}>
     <img
       className="eltJDW"
       size={250}
       src="artsy.net/image-url" />
+    <div
+      className="overlay-container" />
   </div>
   <div
     className="tEGyX">
