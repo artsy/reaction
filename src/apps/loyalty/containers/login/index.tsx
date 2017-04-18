@@ -9,6 +9,8 @@ import Input from "../../../../components/input"
 import Text from "../../../../components/text"
 import TextLink from "../../../../components/text_link"
 
+import * as fonts from "../../../../assets/fonts"
+
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
     url: string,
@@ -36,6 +38,28 @@ const StyledInput = styled(Input)`
   width: 100%;
 `
 
+const StyledOrContainer = styled.div`
+  position: relative;
+  text-align: center;
+`
+const StyledOrText = styled.div`
+  background-color: white;
+  display: inline-block;
+  z-index: 100;
+  padding: 10px;
+  ${fonts.primary.style}
+  font-size: 11px;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: -1;
+  }
+`
+
 class Login extends React.Component<LoginProps, LoginState> {
   render() {
     const form = this.props.form || {url: "/login"}
@@ -54,7 +78,9 @@ class Login extends React.Component<LoginProps, LoginState> {
           {form.csrfToken && <input type="hidden" name="_csrf" value={form.csrfToken} />}
 
           <Button block>Log In</Button>
-          <div style={{textAlign: "center"}}>or</div>
+          <StyledOrContainer>
+            <StyledOrText>or</StyledOrText>
+          </StyledOrContainer>
           <FacebookButton href={form.facebookPath} block />
           <TwitterButton href={form.twitterPath} block />
         </form>

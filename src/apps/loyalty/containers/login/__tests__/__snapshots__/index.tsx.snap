@@ -17,6 +17,7 @@ exports[`login renders the snapshot 1`] = `
     method="POST"
     onSubmit={undefined}>
     <input
+      autoFocus={true}
       className="dyTjMO"
       name="email"
       placeholder="Email" />
@@ -36,12 +37,11 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </button>
     <div
-      style={
-        Object {
-          "textAlign": "center",
-        }
-      }>
-      or
+      className="fKkZFB">
+      <div
+        className="jNrPFU">
+        or
+      </div>
     </div>
     <a
       className="OZEVy hUOVI"
