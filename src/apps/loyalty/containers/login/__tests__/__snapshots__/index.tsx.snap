@@ -31,7 +31,7 @@ exports[`login renders the snapshot 1`] = `
       type="hidden"
       value="csrf" />
     <button
-      className="dLWLJv">
+      className="bXgzbp">
       <span>
         Log In
       </span>
@@ -44,7 +44,7 @@ exports[`login renders the snapshot 1`] = `
       </div>
     </div>
     <a
-      className="dzvQZu eYaNZQ"
+      className="dzvQZu exUgyi"
       href="/facebook"
       icon={
         <Styled(Icon)
@@ -61,7 +61,7 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </a>
     <a
-      className="eTVvmy eYaNZQ"
+      className="eTVvmy exUgyi"
       href="/twitter"
       icon={
         <Styled(Icon)
