@@ -2,7 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../assets/colors"
-import { Artwork, ArtworkProps } from "../artwork"
+import { Artwork, ArtworkProps, OverlayProps } from "../artwork"
 import ArtworkMetadata, { ArtworkMetadataProps } from "../artwork/metadata"
 import createContainer from "../artwork/relay"
 import Icon from "../icon"
@@ -23,19 +23,39 @@ const OverlayBackground = styled.div`
   align-items: center;
 `
 
+const Circle = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: 5px solid ${props => props.selected ? "white" : "transparent"};
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: border-color 0.3s;
+`
+
 const StyledArtwork = styled(Artwork)`
   text-align: center;
 `
 
-export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
-  const overlay = (
-    <OverlayBackground>
+const Overlay: React.SFC<OverlayProps> = props => (
+  <OverlayBackground>
+    <Circle selected={props.selected}>
       <Icon name="check" color="white" />
-    </OverlayBackground>
-  )
+    </Circle>
+  </OverlayBackground>
+)
 
+export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
   return (
-    <Artwork {...props} extended={false} overlay={overlay} />
+    <Artwork
+      {...props}
+      extended={false}
+      Overlay={Overlay}
+      showOverlayOnHover
+    />
   )
 }
 
