@@ -1,0 +1,99 @@
+exports[`login renders the inquiries listing 1`] = `
+<div
+  className="bXZydp">
+  <div
+    className="hiqXMD">
+    <div
+      className="dHhWkf">
+      <div
+        className="gQelpA"
+        style={undefined}>
+        
+      </div>
+    </div>
+    <a
+      className="iDuDUI"
+      href="/">
+      Back To Artsy
+    </a>
+  </div>
+  <header
+    className="dtwjRD">
+    <div
+      className="header-title ccrmRr">
+      Please select all works you purchased
+    </div>
+    <p
+      className="header-subtitle fLunyJ">
+      We will confirm submitted purchases with the galleries in order to qualify you for the program membership.
+    </p>
+  </header>
+  <div
+    className="artworks">
+    <div
+      className="gGgzvo">
+      <div
+        className="jhQCSn">
+        <div
+          className="erlken">
+          <div
+            className="loRosL">
+            <div
+              className="iCSZmV"
+              onClick={[Function]}
+              size={250}>
+              <div
+                className="fmQTpg"
+                size={250}>
+                <img
+                  className="eltJDW"
+                  size={250}
+                  src="http://path.to.cat.pics" />
+              </div>
+              <div
+                className="tEGyX">
+                <div>
+                  <div>
+                    <strong>
+                      <a
+                        className="jehOuL"
+                        href="/percy-z">
+                        Percy Z
+                      </a>
+                    </strong>
+                  </div>
+                  <a
+                    className="jehOuL"
+                    href={undefined}>
+                    <em />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="footer">
+    <p
+      className="fTgPgI">
+      If you purchased any works not included
+      <br />
+       above, please list them.
+    </p>
+    <textarea
+      className="NrqUR"
+      onChange={[Function]}
+      placeholder="Artwork, Artist, Gallery" />
+    <button
+      className="jkaRYz"
+      onClick={[Function]}>
+      <span>
+        Submit purchases
+      </span>
+    </button>
+  </footer>
+</div>
+`;
