@@ -1,0 +1,44 @@
+exports[`RepeatVisitor renders the snapshot 1`] = `
+<div
+  className="jBvxsI">
+  <div
+    className="hiqXMD">
+    <div
+      className="dHhWkf">
+      <div
+        className="gQelpA"
+        style={undefined}>
+        
+      </div>
+    </div>
+    <a
+      className="iDuDUI"
+      href="/">
+      Back To Artsy
+    </a>
+  </div>
+  <div
+    className="dvtHsH">
+    Your purchases are being reviewed
+  </div>
+  <div
+    className="ChQBa">
+    <p
+      className="fTgPgI">
+      We will be in touch once we confirm your
+      <br />
+      purchases with the galleries.
+    </p>
+  </div>
+  <div
+    className="ChQBa">
+    <a
+      className="gwPnRz"
+      href="/">
+      <span>
+        Back to Artsy
+      </span>
+    </a>
+  </div>
+</div>
+`;

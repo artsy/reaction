@@ -1,4 +1,5 @@
-import { Home, ThankYou, ThankYouHtml } from "../server/route_handlers"
+import { ThankYouHtml } from "../server/helpers"
+import { Home, ThankYou } from "../server/route_handlers"
 
 describe ("Home page", () => {
   it("redirects to /inquiries", () => {
@@ -13,8 +14,12 @@ describe ("Home page", () => {
 describe("ThankYouHTML", () => {
   it("renders the acb template for confirmed buyers", () => {
     let profile = { confirmed_buyer_at: "trust me im a buyer" } as any
-    let html = ThankYouHtml(profile)
+    let html = ThankYouHtml(profile, null, true)
     expect(html).toMatch("EARLY ACCESS")
+  })
+  it("renders the repeat visitor template when revisiting the page", () => {
+    let html = ThankYouHtml({} as any, null, false)
+    expect(html).toMatch("Your purchases are being reviewed")
   })
 })
 
