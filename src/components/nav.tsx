@@ -9,7 +9,7 @@ const Nav = styled.div`
   display: flex;
 `
 
-const NavIcon = styled.div`
+const NavIcon = styled.a`
   border-right: 1px solid ${ colors.grayRegular };
   display: inline-block;
   font-size: 32px;
@@ -25,7 +25,7 @@ injectGlobal`
 
 const NavBar: React.SFC<any> = props => (
   <Nav>
-    <NavIcon>
+    <NavIcon href="/">
       <Icon name="logo" color="black" fontSize="32px" />
     </NavIcon>
     {props.children}

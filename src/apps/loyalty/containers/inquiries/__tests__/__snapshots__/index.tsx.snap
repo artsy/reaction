@@ -3,14 +3,15 @@ exports[`inquiries renders the inquiries listing 1`] = `
   className="bXZydp">
   <div
     className="hiqXMD">
-    <div
-      className="dHhWkf">
+    <a
+      className="dHhWkf"
+      href="/">
       <div
         className="gQelpA"
         style={undefined}>
         
       </div>
-    </div>
+    </a>
     <a
       className="iDuDUI"
       href="/">
