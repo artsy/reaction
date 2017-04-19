@@ -7,10 +7,10 @@
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-babel-node index.js",
+    "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
-    "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./assets",
+    "test": "node verify-node-version.js && jest",
+    "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
