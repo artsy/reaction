@@ -115,7 +115,7 @@ export class Inquiries extends React.Component<RelayProps, State> {
       onFailure: this.onSubmitUpdatesFailed,
       onSuccess: response => {
         if (response.updateCollectorProfile.loyalty_applicant_at) {
-          window.location.pathname = "/loyalty/thank-you"
+          window.location.href = "/loyalty/thank-you?recent_applicant=true"
         }
       },
     })

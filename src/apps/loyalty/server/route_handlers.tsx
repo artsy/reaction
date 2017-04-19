@@ -14,6 +14,7 @@ import CurrentUserRoute from "../../../relay/queries/current_user"
 import ThreewThankYou from "../containers/3w_thank_you"
 import AcbThankYou from "../containers/acb_thank_you"
 import InquiriesContainer from "../containers/inquiries"
+import RepeatVisitor from "../containers/repeat_visitor"
 
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
 
@@ -21,11 +22,14 @@ export function Home(req: Request, res: Response, next: NextFunction) {
   return res.redirect(req.baseUrl + "/inquiries")
 }
 
-export function ThankYouHtml(info: CollectorProfileResponse, userName?: string): string {
-  if (info.confirmed_buyer_at) {
-    return renderToString(<AcbThankYou />)
+export function ThankYouHtml(info: CollectorProfileResponse, userName?: string, recentApplicant?: boolean): string {
+  if (recentApplicant) {
+    if (info.confirmed_buyer_at) {
+      return renderToString(<AcbThankYou />)
+    }
+    return renderToString(<ThreewThankYou userName={userName} />)
   }
-  return renderToString(<ThreewThankYou userName={userName} />)
+  return renderToString(<RepeatVisitor />)
 }
 
 export function ThankYou(req: Request, res: Response, next: NextFunction) {
@@ -38,7 +42,7 @@ export function ThankYou(req: Request, res: Response, next: NextFunction) {
   let html
 
   if (info.loyalty_applicant_at) {
-    html = ThankYouHtml(info, req.user.attributes.name)
+    html = ThankYouHtml(info, req.user.attributes.name, req.query.recent_applicant)
   } else {
     return res.redirect(req.baseUrl) // baseUrl already has "/loyalty" so no need to append it.
   }

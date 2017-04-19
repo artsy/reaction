@@ -13,8 +13,12 @@ describe ("Home page", () => {
 describe("ThankYouHTML", () => {
   it("renders the acb template for confirmed buyers", () => {
     let profile = { confirmed_buyer_at: "trust me im a buyer" } as any
-    let html = ThankYouHtml(profile)
+    let html = ThankYouHtml(profile, null, true)
     expect(html).toMatch("EARLY ACCESS")
+  })
+  it("renders the repeat visitor template when revisiting the page", () => {
+    let html = ThankYouHtml({} as any, null, false)
+    expect(html).toMatch("Your purchases are being reviewed")
   })
 })
 
