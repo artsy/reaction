@@ -3,6 +3,8 @@ machine:
     version: 7
 
 dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
   override:
     - yarn
 
@@ -17,3 +19,7 @@ deployment:
     branch: master
     commands:
       - yarn deploy-storybook
+    npm:
+      tag: /v[0-9]+(\.[0-9]+)*/
+      commands:
+        - npm publish
