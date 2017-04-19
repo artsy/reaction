@@ -17,6 +17,7 @@ exports[`login renders the snapshot 1`] = `
     method="POST"
     onSubmit={undefined}>
     <input
+      autoFocus={true}
       className="dyTjMO"
       name="email"
       placeholder="Email" />
@@ -30,21 +31,20 @@ exports[`login renders the snapshot 1`] = `
       type="hidden"
       value="csrf" />
     <button
-      className="jkaRYz">
+      className="dLWLJv">
       <span>
         Log In
       </span>
     </button>
     <div
-      style={
-        Object {
-          "textAlign": "center",
-        }
-      }>
-      or
+      className="fKkZFB">
+      <div
+        className="jNrPFU">
+        or
+      </div>
     </div>
     <a
-      className="OZEVy hUOVI"
+      className="dzvQZu eYaNZQ"
       href="/facebook"
       icon={
         <Styled(Icon)
@@ -61,7 +61,7 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </a>
     <a
-      className="iuQEPI hUOVI"
+      className="eTVvmy eYaNZQ"
       href="/twitter"
       icon={
         <Styled(Icon)
@@ -80,15 +80,16 @@ exports[`login renders the snapshot 1`] = `
   </form>
   <br />
   <p
-    className="fLunyJ">
+    className="eXluOx">
     <span>
       Don\'t have an account? 
     </span>
     <a
-      className="ickHKL"
+      className="kfGluK"
       href={undefined}>
-      Sign Up
+      Sign up
     </a>
+    .
   </p>
 </div>
 `;
