@@ -11,25 +11,13 @@ import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
 
-import ThreewThankYou from "../containers/3w_thank_you"
-import AcbThankYou from "../containers/acb_thank_you"
 import InquiriesContainer from "../containers/inquiries"
-import RepeatVisitor from "../containers/repeat_visitor"
 
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
+import { ThankYouHtml } from "./helpers"
 
 export function Home(req: Request, res: Response, next: NextFunction) {
   return res.redirect(req.baseUrl + "/inquiries")
-}
-
-export function ThankYouHtml(info: CollectorProfileResponse, userName?: string, recentApplicant?: boolean): string {
-  if (recentApplicant) {
-    if (info.confirmed_buyer_at) {
-      return renderToString(<AcbThankYou />)
-    }
-    return renderToString(<ThreewThankYou userName={userName} />)
-  }
-  return renderToString(<RepeatVisitor />)
 }
 
 export function ThankYou(req: Request, res: Response, next: NextFunction) {
