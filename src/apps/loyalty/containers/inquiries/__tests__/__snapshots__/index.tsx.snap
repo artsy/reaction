@@ -1,4 +1,4 @@
-exports[`login renders the inquiries listing 1`] = `
+exports[`inquiries renders the inquiries listing 1`] = `
 <div
   className="bXZydp">
   <div
@@ -37,7 +37,7 @@ exports[`login renders the inquiries listing 1`] = `
         <div
           className="erlken">
           <div
-            className="loRosL">
+            className="fXCsUe">
             <div
               className="iCSZmV"
               onClick={[Function]}
@@ -103,7 +103,7 @@ exports[`login renders the inquiries listing 1`] = `
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery" />
     <button
-      className="jkaRYz"
+      className="dLWLJv"
       onClick={[Function]}>
       <span>
         Submit purchases

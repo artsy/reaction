@@ -43,7 +43,7 @@ const inquiryProps = {
   },
 } as any
 
-describe("login", () => {
+describe("inquiries", () => {
   it("renders the inquiries listing", () => {
     const inquiries = renderer.create(<Inquiries {...inquiryProps}/>)
     expect(inquiries).toMatchSnapshot()
