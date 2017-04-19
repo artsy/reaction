@@ -71,14 +71,14 @@ exports[`inquiries renders the inquiries listing 1`] = `
                   <div>
                     <strong>
                       <a
-                        className="jehOuL"
+                        className="cXjeFh"
                         href="/percy-z">
                         Percy Z
                       </a>
                     </strong>
                   </div>
                   <a
-                    className="jehOuL"
+                    className="cXjeFh"
                     href={undefined}>
                     <em />
                   </a>

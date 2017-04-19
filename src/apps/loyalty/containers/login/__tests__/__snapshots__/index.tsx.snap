@@ -85,7 +85,7 @@ exports[`login renders the snapshot 1`] = `
       Don\'t have an account? 
     </span>
     <a
-      className="kfGluK"
+      className="lkuLzT"
       href={undefined}>
       Sign up
     </a>
