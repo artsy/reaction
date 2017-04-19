@@ -11,7 +11,7 @@ describe("ACB Thank You", () => {
   })
 
   it("renders the correct content", () => {
-    const thankYou = ReactTestUtils.renderIntoDocument(AcbThankYou({}))
+    const thankYou = ReactTestUtils.renderIntoDocument(AcbThankYou({})) as any
     const pTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(thankYou, "p")
     const earlyAccessTag = pTags.find(tag => tag.textContent === "EARLY ACCESS")
     expect(earlyAccessTag).toBeTruthy()

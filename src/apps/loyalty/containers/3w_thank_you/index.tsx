@@ -26,7 +26,11 @@ const ButtonWrapper = styled.div`
   marginTop: 40px;
 `
 
-export default props => (
+interface Props {
+  userName: string
+}
+
+const ThreeWThankYou: React.SFC<Props> = props => (
   <Container>
     <Nav>
       <NavItem href="/">Back To Artsy</NavItem>
@@ -51,3 +55,5 @@ export default props => (
     </ButtonWrapper>
   </Container>
 )
+
+export default ThreeWThankYou

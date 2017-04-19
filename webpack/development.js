@@ -5,6 +5,10 @@ const { CheckerPlugin } = require("awesome-typescript-loader")
 const commonConfig = require("./base")
 
 module.exports = () => {
+  const base = commonConfig()
+  const tsLoader = base.module.rules.find(rule => {
+    return rule.use && rule.use.includes("awesome-typescript-loader")
+  })
   return webpackMerge.smart({
     devtool: "inline-source-map",
     entry: {
@@ -17,18 +21,12 @@ module.exports = () => {
     },
     module: {
       rules: [
-        {
-          exclude: [/node_modules/, /__stories__/],
-          use: [
-            "react-hot-loader",
-          ],
-          test: /\.tsx?$/,
-        }
+        Object.assign({}, tsLoader, { use: ["react-hot-loader"] }),
       ],
     },
     plugins: [
       new CheckerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
     ],
-  }, commonConfig())
+  }, base)
 }
