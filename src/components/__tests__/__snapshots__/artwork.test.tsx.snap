@@ -1,13 +1,13 @@
 exports[`Artwork renders correctly 1`] = `
 <div
-  className="iCSZmV"
+  className="bMAZFf"
   onClick={[Function]}
   size={250}>
   <div
-    className="hmGDjd"
+    className="ddCyPb"
     size={250}>
     <img
-      className="eltJDW"
+      className="egJSlo"
       size={250}
       src="artsy.net/image-url" />
     <div

@@ -1,16 +1,17 @@
 exports[`login renders the inquiries listing 1`] = `
 <div
-  className="bXZydp">
+  className="cpeEEg">
   <div
     className="hiqXMD">
-    <div
-      className="dHhWkf">
+    <a
+      className="dHhWkf"
+      href="/">
       <div
         className="gQelpA"
         style={undefined}>
         
       </div>
-    </div>
+    </a>
     <a
       className="iDuDUI"
       href="/">
@@ -18,9 +19,9 @@ exports[`login renders the inquiries listing 1`] = `
     </a>
   </div>
   <header
-    className="dtwjRD">
+    className="ieaZgB">
     <div
-      className="header-title ccrmRr">
+      className="header-title kmIhCZ">
       Please select all works you purchased
     </div>
     <p
@@ -31,22 +32,22 @@ exports[`login renders the inquiries listing 1`] = `
   <div
     className="artworks">
     <div
-      className="kPvckt">
+      className="gGgzvo">
       <div
-        className="lhocqZ">
+        className="cbCpoO">
         <div
-          className="gKWnrg">
+          className="hzDQZd">
           <div
-            className="loRosL">
+            className="dsunRf">
             <div
-              className="iCSZmV"
+              className="bMAZFf"
               onClick={[Function]}
               size={250}>
               <div
-                className="hmGDjd"
+                className="ddCyPb"
                 size={250}>
                 <img
-                  className="eltJDW"
+                  className="egJSlo"
                   size={250}
                   src="http://path.to.cat.pics" />
                 <div
@@ -103,7 +104,7 @@ exports[`login renders the inquiries listing 1`] = `
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery" />
     <button
-      className="jkaRYz"
+      className="dLWLJv"
       onClick={[Function]}>
       <span>
         Submit purchases

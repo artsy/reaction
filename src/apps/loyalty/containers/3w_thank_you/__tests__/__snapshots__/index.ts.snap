@@ -3,14 +3,15 @@ exports[`3-way Handshake Thank You renders the snapshot 1`] = `
   className="jBvxsI">
   <div
     className="hiqXMD">
-    <div
-      className="dHhWkf">
+    <a
+      className="dHhWkf"
+      href={undefined}>
       <div
         className="gQelpA"
         style={undefined}>
         
       </div>
-    </div>
+    </a>
     <a
       className="iDuDUI"
       href="/">
@@ -20,7 +21,7 @@ exports[`3-way Handshake Thank You renders the snapshot 1`] = `
   <div
     className="gIFuVs">
     <div
-      className="dvtHsH">
+      className="idoycl">
       Thank you, 
       Percy
     </div>
