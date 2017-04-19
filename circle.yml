@@ -1,6 +1,6 @@
-machine:
-  node:
-    version: 7
+checkout:
+  post:
+    - nvm install && nvm alias default node
 
 dependencies:
   override:
