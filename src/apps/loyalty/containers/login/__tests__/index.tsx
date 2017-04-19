@@ -23,8 +23,8 @@ describe("login", () => {
       facebookPath: "/facebook",
       twitterPath: "/twitter",
     }
-    const login = ReactTestUtils.renderIntoDocument(<Login form={formConfig} />)
-    const aTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(login, "a")
+    const login = ReactTestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
+    const aTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(login, "a") as HTMLAnchorElement[]
     const facebookLink = aTags.find(tag => tag.href === "/facebook")
     expect(facebookLink).toBeTruthy()
     const twitterLink = aTags.find(tag => tag.href === "/twitter")

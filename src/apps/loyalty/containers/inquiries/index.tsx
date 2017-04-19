@@ -67,19 +67,23 @@ const LargeTextArea = styled(TextArea)`
   height: 130px;
 `
 
-export interface State {
-  loyalty_applicant: boolean,
-  self_reported_purchases?: string,
-  selected_artworks?: {string?: boolean}
+export interface Props extends RelayProps {
 }
 
-export class Inquiries extends React.Component<RelayProps, State> {
+export interface State {
+  loyalty_applicant: boolean,
+  self_reported_purchases: string | null,
+  selected_artworks: { string?: boolean }
+}
+
+export class Inquiries extends React.Component<Props, State> {
   constructor(props) {
     super(props)
 
     this.state = {
       loyalty_applicant: true,
       selected_artworks: {},
+      self_reported_purchases: null,
     }
   }
 
@@ -98,7 +102,7 @@ export class Inquiries extends React.Component<RelayProps, State> {
         <Col md={3} xs={6} key={id}>
           <InquiryContainer>
             <Artwork
-              artwork={artwork as any}
+              artwork={artwork}
               onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id)}
             />
           </InquiryContainer>
@@ -108,16 +112,14 @@ export class Inquiries extends React.Component<RelayProps, State> {
   }
 
   onArtworkSelected(conversationId: string, selected: boolean) {
-    const selectedArtworks = this.state.selected_artworks
-    selectedArtworks[conversationId] = selected
-
     this.setState({
-      selected_artworks: selectedArtworks,
+      selected_artworks: Object.assign({}, this.state.selected_artworks, { [conversationId]: selected }),
     })
   }
 
-  onTextboxChange(e) {
-    this.setState({ self_reported_purchases: e.target.value })
+  onTextboxChange(e: React.FormEvent<HTMLTextAreaElement>) {
+    const value = e.currentTarget.value.trim()
+    this.setState({ self_reported_purchases: value.length > 0 ? value : null })
   }
 
   onButtonClick(e) {
@@ -165,6 +167,11 @@ export class Inquiries extends React.Component<RelayProps, State> {
     alert("Sorry, there was an error with your submission, please try again")
   }
 
+  enableSubmitButton() {
+    const { selected_artworks, self_reported_purchases } = this.state
+    return !!self_reported_purchases || Object.keys(selected_artworks).some(id => selected_artworks[id])
+  }
+
   render() {
     return (
       <Container>
@@ -188,7 +195,9 @@ export class Inquiries extends React.Component<RelayProps, State> {
             If you purchased any works not included<br /> above, please list them.
           </Text>
           <LargeTextArea onChange={this.onTextboxChange.bind(this)} block placeholder="Artwork, Artist, Gallery" />
-          <Button onClick={this.onButtonClick.bind(this)} block>Submit purchases</Button>
+          <Button disabled={!this.enableSubmitButton()} onClick={this.onButtonClick.bind(this)} block>
+            Submit purchases
+          </Button>
         </footer>
       </Container>
     )
@@ -222,7 +231,7 @@ interface RelayProps {
         node: {
           id: string | null,
           impulse_conversation_id: string | null,
-          artwork: Array<any | null> | null,
+          artwork: any,
         } | null,
       } | null> | null,
     } | null,

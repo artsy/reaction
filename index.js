@@ -29,6 +29,9 @@ app.use("/fonts", express.static("./assets/fonts"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(sharify)
+// Inject METAPHYSICS_ENDPOINT to sharify data
+// Todo/Enhancement: inject any 'safe ENV vars?
+sharify.data.METAPHYSICS_ENDPOINT = process.env.METAPHYSICS_ENDPOINT
 app.use(cookieParser())
 app.use(session({
   secret: "secret",
@@ -42,16 +45,16 @@ if (fs.existsSync(bundlesPath)) {
   app.use("/bundles", express.static(bundlesPath))
 } else {
   // Dynamically host assets to browser.
-  const webpack = require("webpack");
-  const config = require("./webpack");
-  const compiler = webpack(config);
+  const webpack = require("webpack")
+  const config = require("./webpack")
+  const compiler = webpack(config)
   app.use(require("webpack-dev-middleware")(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath,
     serverSideRender: true,
-  }));
+  }))
   // Allow client to be notified of changes to sources.
-  app.use(require("webpack-hot-middleware")(compiler));
+  app.use(require("webpack-hot-middleware")(compiler))
 }
 
 // Watch for FS changes in `srcPath` and clear cached modules when a change occurs,

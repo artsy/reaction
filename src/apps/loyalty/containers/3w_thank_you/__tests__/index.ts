@@ -11,7 +11,7 @@ describe("3-way Handshake Thank You", () => {
   })
 
   it("renders the correct content", () => {
-    const thankYou = ReactTestUtils.renderIntoDocument(ThreeWThankYou({ userName: "Percy" }))
+    const thankYou = ReactTestUtils.renderIntoDocument(ThreeWThankYou({ userName: "Percy" })) as any
     const divTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(thankYou, "div")
     const titleTag = divTags.find(tag => tag.textContent === "Thank you, Percy")
     expect(titleTag).toBeTruthy()

@@ -15,7 +15,7 @@ module.exports = () => {
       rules: [
         { test: /\.json$/, loader: "json-loader" },
         {
-          exclude: [/node_modules/, /__stories__/],
+          exclude: [/node_modules/, /__stories__/, /__tests__/],
           use: [
             "awesome-typescript-loader",
           ],

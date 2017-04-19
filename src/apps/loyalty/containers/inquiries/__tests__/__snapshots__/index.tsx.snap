@@ -1,4 +1,4 @@
-exports[`login renders the inquiries listing 1`] = `
+exports[`inquiries renders the inquiries listing 1`] = `
 <div
   className="cpeEEg">
   <div
@@ -72,14 +72,14 @@ exports[`login renders the inquiries listing 1`] = `
                   <div>
                     <strong>
                       <a
-                        className="jehOuL"
+                        className="cXjeFh"
                         href="/percy-z">
                         Percy Z
                       </a>
                     </strong>
                   </div>
                   <a
-                    className="jehOuL"
+                    className="cXjeFh"
                     href={undefined}>
                     <em />
                   </a>
@@ -104,7 +104,8 @@ exports[`login renders the inquiries listing 1`] = `
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery" />
     <button
-      className="dLWLJv"
+      className="fuhvSe"
+      disabled={true}
       onClick={[Function]}>
       <span>
         Submit purchases
