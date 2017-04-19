@@ -1,8 +1,11 @@
 import { partition } from "lodash"
 import * as React from "react"
 import * as Relay from "react-relay"
-import { Col, Grid, Row } from "react-styled-flexboxgrid"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
+
+import theme from "../../../../assets/theme"
+import { Col, Grid, Row } from "../../../../components/grid"
+import { media } from "../../../../components/helpers"
 
 import Button from "../../../../components/buttons/inverted"
 import Artwork from "../../../../components/inquiry_artwork"
@@ -16,12 +19,13 @@ import UpdateCollectorProfileMutation from "./mutations/update_collector_profile
 import UpdateConversationMutation from "./mutations/update_conversation"
 
 const InquiryContainer = styled.div`
-  display: inline-block;
   margin-bottom: 60px;
+  width: 100%;
 `
 
 const Container = styled.div`
   text-align: center;
+  width: 100%;
 
   & .artworks {
     margin: 30px 0;
@@ -30,6 +34,10 @@ const Container = styled.div`
   & .footer {
     max-width: 500;
     margin: 10px auto;
+
+    ${media.sm`
+      margin: 20px 1.5rem 60px;
+    `}
   }
 `
 
@@ -42,7 +50,16 @@ const Header = styled.header`
 
   & .header-subtitle {
     margin-top: 5px;
+
+    ${media.sm`
+      margin-top: 10px;
+      line-height: 23px;
+    `}
   }
+
+  ${media.sm`
+    margin: 20px 3rem;
+  `}
 `
 
 const LargeTextArea = styled(TextArea)`
@@ -158,7 +175,7 @@ export class Inquiries extends React.Component<Props, State> {
   render() {
     return (
       <Container>
-        <Nav>
+        <Nav logoLink="/">
           <NavItem href="/">Back To Artsy</NavItem>
         </Nav>
         <Header>
@@ -167,9 +184,11 @@ export class Inquiries extends React.Component<Props, State> {
             in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
-          <Grid>
-            <Row>{this.renderArtworks()}</Row>
-          </Grid>
+          <ThemeProvider theme={theme}>
+            <Grid>
+              <Row>{this.renderArtworks()}</Row>
+            </Grid>
+          </ThemeProvider>
         </div>
         <footer className="footer">
           <Text align="center" textSize="large">

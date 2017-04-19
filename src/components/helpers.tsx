@@ -1,4 +1,5 @@
 import { css } from "styled-components"
+import theme from "../assets/theme"
 
 /**
  * Helper function to display an element as a block that inherits its parents width
@@ -14,3 +15,17 @@ export const block = (margin: number = 0) => {
     }
   }
 }
+
+const sizes = theme.flexboxgrid.breakpoints
+
+export const media: any = Object.keys(sizes).reduce((accumulator, label) => {
+  // using px in breakpoints to maintain uniform units with flexbox-grid
+  // https://zellwk.com/blog/media-query-units/
+  const emSize = sizes[label]
+  accumulator[label] = (strings, ...args) => css`
+    @media (max-width: ${emSize}px) {
+      ${css(strings, ...args)}
+    }
+  `
+  return accumulator
+}, {})

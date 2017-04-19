@@ -1,24 +1,26 @@
 import * as React from "react"
 import styled from "styled-components"
 
-const gapSize = 20
+import {
+  Col as FlexCol,
+  Grid as FlexGrid,
+  Row as FlexRow,
+} from "react-styled-flexboxgrid"
 
-export const Row = styled.div`
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-right: -${ gapSize / 2 }px;
-  margin-left: -${ gapSize / 2 }px;
-  margin-bottom: ${ gapSize }px;
-`
+import { media } from "./helpers"
 
-export const Col = styled.div`
-  flex: ${ props => props.size } 0 auto;
-  padding-right: ${ gapSize / 2 }px;
-  padding-left: ${ gapSize / 2 }px;
-`
+export const Grid = FlexGrid
 
-Col.defaultProps = {
-  size: 1,
-}
+export const Col: FlexCol = styled(FlexCol)`
+     ${media.sm`
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    `}
+  `
+
+export const Row: FlexRow = styled(FlexRow)`
+    ${media.sm`
+      margin-left: 1rem;
+      margin-right: 1rem;
+    `}
+  `

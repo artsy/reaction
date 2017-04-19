@@ -2,7 +2,7 @@
     "files.exclude": {
         ".git/": true,
         ".awcache/": true,
-        "node_modules/": true,
+        "node_modules/": false,
         "dist/": false,
         "externals/": true
     },

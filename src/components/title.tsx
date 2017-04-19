@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import * as fonts from "../assets/fonts"
+import { media } from "./helpers"
 
 type TitleSize = "small" | "medium" | "large" | "xlarge" | "xxlarge"
 
@@ -31,6 +32,10 @@ const StyledTitle = styled(Title)`
   font-size: ${props => titleSizes[props.titleSize]};
   margin: 20px 0;
   ${fonts.secondary.style}
+
+  ${media.sm`
+    font-size: ${titleSizes.small};
+  `}
 `
 
 StyledTitle.defaultProps = {
