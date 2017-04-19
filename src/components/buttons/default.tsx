@@ -68,6 +68,7 @@ export const StyledButton = styled(Button)`
   text-decoration: none;
 
   &:hover:not(:disabled) {
+    cursor: pointer;
     background: ${props => {
       if (props.state === ButtonState.Success) return colors.greenBold
       if (props.state === ButtonState.Failure) return colors.redBold
