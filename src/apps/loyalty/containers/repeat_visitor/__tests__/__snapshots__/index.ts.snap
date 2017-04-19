@@ -3,14 +3,15 @@ exports[`RepeatVisitor renders the snapshot 1`] = `
   className="jBvxsI">
   <div
     className="hiqXMD">
-    <div
-      className="dHhWkf">
+    <a
+      className="dHhWkf"
+      href={undefined}>
       <div
         className="gQelpA"
         style={undefined}>
         
       </div>
-    </div>
+    </a>
     <a
       className="iDuDUI"
       href="/">
@@ -18,7 +19,7 @@ exports[`RepeatVisitor renders the snapshot 1`] = `
     </a>
   </div>
   <div
-    className="dvtHsH">
+    className="idoycl">
     Your purchases are being reviewed
   </div>
   <div
@@ -33,7 +34,7 @@ exports[`RepeatVisitor renders the snapshot 1`] = `
   <div
     className="ChQBa">
     <a
-      className="gwPnRz"
+      className="jVdhvd"
       href="/">
       <span>
         Back to Artsy

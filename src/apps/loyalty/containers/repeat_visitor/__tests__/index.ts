@@ -11,7 +11,7 @@ describe("RepeatVisitor", () => {
   })
 
   it("renders the correct content", () => {
-    const repeatVisitor = ReactTestUtils.renderIntoDocument(RepeatVisitor({}))
+    const repeatVisitor: any = ReactTestUtils.renderIntoDocument(RepeatVisitor({}))
     const divTags = ReactTestUtils.scryRenderedDOMComponentsWithTag(repeatVisitor, "div")
     const titleTag = divTags.find(tag => tag.textContent === "Your purchases are being reviewed")
     expect(titleTag).toBeTruthy()
