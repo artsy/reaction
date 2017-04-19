@@ -1,20 +1,24 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
+import theme from "../../assets/theme"
 import ArtworkMetadata, { ArtworkMetadataProps } from "./metadata"
 import createContainer, { RelayProps } from "./relay"
 
 const Container = styled.div`
-  width: ${props => `${props.size}px`};
+  width: 100%;
 `
 
 const ImageContainer = styled.div`
-  height: ${props => `${props.size}px`};
-  width: ${props => `${props.size}px`};
-  display: flex;
-  justify-content: center;
+  width: 100%;
   position: relative;
   cursor: pointer;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 
   & .overlay-container {
     transition: opacity 0.25s;
@@ -30,15 +34,24 @@ const ImageContainer = styled.div`
 
   &:hover {
     & .overlay-container.hovered {
-      opacity: 1;
+      ${css`
+        @media (min-width: ${theme.flexboxgrid.breakpoints.sm + 1}px) {
+          opacity: 1;
+        }
+      `}
     }
   }
 `
 
 const Image = styled.img`
   max-width: 100%;
-  max-height: ${props => `${props.size}px`};
+  max-height: 100%;
   margin: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
 `
 
 export interface OverlayProps {

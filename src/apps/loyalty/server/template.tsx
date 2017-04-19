@@ -15,6 +15,8 @@ export default ({styles, html, entrypoint, bootstrapData, sharify, baseURL}: Tem
         <head>
           <title>Loyalty Program - Artsy</title>
           <link type="text/css" rel="stylesheet" href="${fontsURL}">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <style>#app-container { width: 100%; overflow: hidden;  }</style>
           <style>${styles}</style>
         </head>
         <body>
