@@ -76,32 +76,39 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   static fragments = {
     artwork: () => Relay.QL`
       fragment on Artwork {
+        _id
         id
+        is_saved
       }
     `,
   }
 
   getMutation() {
-    return Relay.QL`mutation {saveArtwork}`
+    return Relay.QL`mutation { saveArtwork }`
   }
 
   getVariables() {
     return {
       artwork_id: this.props.artwork.id,
-      remove: !!this.props.artwork.is_saved,
+      remove: this.props.artwork.is_saved ? true : false,
     }
   }
 
   getOptimisticResponse() {
     return {
-      is_saved: !this.props.artwork.is_saved,
+      artwork: {
+        id: this.props.artwork.id,
+        is_saved: this.props.artwork.is_saved ? false : true,
+      },
     }
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on SaveArtworkPayload {
-        is_saved
+        artwork {
+          is_saved
+        }
       }
     `
   }
@@ -110,7 +117,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
     return [{
       type: "FIELDS_CHANGE",
       fieldIDs: {
-        is_saved: this.props.artwork.id,
+        artwork: this.props.artwork,
       },
     }]
   }
@@ -120,6 +127,8 @@ export default Relay.createContainer(StyledSaveButton, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
+        id
+        _id
         is_saved
         ${SaveArtworkMutation.getFragment("artwork")}
       }
