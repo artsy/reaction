@@ -29,7 +29,7 @@ export default ({styles, html, entrypoint, bootstrapData, sharify, baseURL}: Tem
         </head>
         <body>
           <div id="app-container">${html}</div>
-          ${sharify.script()}
+          ${sharify ? sharify.script() : ""}
           ${bootstrapData ? "<script>" + bootstrapData + "</script>" : ""}
           <script src="${baseURL}/bundles/commons.chunk.js"></script>
           <script src="${entrypoint}"></script>
