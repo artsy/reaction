@@ -71,7 +71,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
         styles,
         html,
         entrypoint: req.baseUrl + "/bundles/inquiries.js",
-        sharify: res.locals.sharify.script(),
+        sharify: res.locals.sharify,
         baseURL: req.baseUrl,
       }))
     })
@@ -97,7 +97,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     styles,
     html,
     entrypoint: req.baseUrl + "/bundles/login.js",
-    sharify: res.locals.sharify.script(),
+    sharify: res.locals.sharify,
     baseURL: req.baseUrl,
   }))
 }
