@@ -18,6 +18,8 @@ import Title from "../../../../components/title"
 import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
 import UpdateConversationMutation from "./mutations/update_conversation"
 
+const sharify = require("sharify")
+
 const InquiryContainer = styled.div`
   margin-bottom: 60px;
   width: 100%;
@@ -70,10 +72,15 @@ const LargeTextArea = styled(TextArea)`
 export interface Props extends RelayProps {
 }
 
+interface SelectedConversation {
+  id: string,
+  inquiry_id: string,
+}
+
 export interface State {
   loyalty_applicant: boolean,
   self_reported_purchases: string | null,
-  selected_artworks: { string?: boolean }
+  selected_conversations: SelectedConversation[],
 }
 
 export class Inquiries extends React.Component<Props, State> {
@@ -82,8 +89,8 @@ export class Inquiries extends React.Component<Props, State> {
 
     this.state = {
       loyalty_applicant: true,
-      selected_artworks: {},
       self_reported_purchases: null,
+      selected_conversations: [],
     }
   }
 
@@ -103,7 +110,7 @@ export class Inquiries extends React.Component<Props, State> {
           <InquiryContainer>
             <Artwork
               artwork={artwork}
-              onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id)}
+              onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id, id)}
             />
           </InquiryContainer>
         </Col>
@@ -111,9 +118,18 @@ export class Inquiries extends React.Component<Props, State> {
     })
   }
 
-  onArtworkSelected(conversationId: string, selected: boolean) {
+  onArtworkSelected(conversationId: string, inquiryId: string, selected: boolean) {
+    const selectedConversation = {
+      id: conversationId,
+      inquiry_id: inquiryId,
+    }
+
+    const selectedConversations = selected
+      ? this.state.selected_conversations.concat([selectedConversation])
+      : this.state.selected_conversations.filter(val => val.id !== conversationId)
+
     this.setState({
-      selected_artworks: Object.assign({}, this.state.selected_artworks, { [conversationId]: selected }),
+      selected_conversations: selectedConversations,
     })
   }
 
@@ -134,6 +150,7 @@ export class Inquiries extends React.Component<Props, State> {
       onFailure: this.onSubmitUpdatesFailed,
       onSuccess: response => {
         if (response.updateCollectorProfile.loyalty_applicant_at) {
+          this.trackSuccessfulSubmission()
           window.location.href = "/loyalty/thank-you?recent_applicant=true"
         }
       },
@@ -141,14 +158,7 @@ export class Inquiries extends React.Component<Props, State> {
   }
 
   submitInquiriesUpdate() {
-    const ids: string[] = []
-    const artworks = this.state.selected_artworks
-
-    for (const artworkId of Object.keys(artworks)) {
-      if (artworks[artworkId]) {
-        ids.push(artworkId)
-      }
-    }
+    const ids = this.state.selected_conversations.map(value => value.id)
 
     const mutation = new UpdateConversationMutation({input: {
       ids,
@@ -167,9 +177,21 @@ export class Inquiries extends React.Component<Props, State> {
     alert("Sorry, there was an error with your submission, please try again")
   }
 
+  trackSuccessfulSubmission() {
+    const ids = this.state.selected_conversations.map(value => value.id)
+
+    const props = {
+      user_id: sharify.data.USER_DATA.id,
+      inquiry_ids: ids,
+      additional_response: this.state.self_reported_purchases,
+      purchase_count: ids.length,
+    }
+    window.analytics.track("Submitted loyalty purchases", props)
+  }
+
   enableSubmitButton() {
-    const { selected_artworks, self_reported_purchases } = this.state
-    return !!self_reported_purchases || Object.keys(selected_artworks).some(id => selected_artworks[id])
+    const { selected_conversations, self_reported_purchases } = this.state
+    return !!self_reported_purchases || selected_conversations.length > 0
   }
 
   render() {

@@ -36,7 +36,7 @@ export function ThankYou(req: Request, res: Response, next: NextFunction) {
   }
 
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  return res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl }))
+  return res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl, sharify: res.locals.sharify }))
 }
 
 export function Inquiries(req: Request, res: Response, next: NextFunction) {
