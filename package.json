@@ -81,6 +81,7 @@
   "dependencies": {
     "artsy-passport": "^1.6.1",
     "artsy-xapp": "^1.0.4",
+    "babel-polyfill": "^6.23.0",
     "backbone": "^1.3.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
