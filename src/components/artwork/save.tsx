@@ -1,10 +1,10 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Icon from "./icon"
+import Icon from "../icon"
 
 import styled from "styled-components"
-import colors from "../assets/colors"
+import colors from "../../assets/colors"
 
 const SIZE = 40
 
@@ -76,15 +76,14 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   static fragments = {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        _id
-        id
+        __id
         is_saved
       }
     `,
   }
 
   getMutation() {
-    return Relay.QL`mutation { saveArtwork }`
+    return Relay.QL`mutation{saveArtwork}`
   }
 
   getVariables() {
@@ -97,17 +96,20 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   getOptimisticResponse() {
     return {
       artwork: {
-        id: this.props.artwork.id,
         is_saved: this.props.artwork.is_saved ? false : true,
       },
     }
   }
 
+  // __id needs to be explictly added here because of our Relay fork
+  // If __id is not here, Relay will try to use `id` to match up value
+  // that is returned with its cached version (instead of using `__id`)
   getFatQuery() {
     return Relay.QL`
       fragment on SaveArtworkPayload {
-        artwork {
-          is_saved
+        artwork { 
+          __id
+          is_saved 
         }
       }
     `
@@ -117,7 +119,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
     return [{
       type: "FIELDS_CHANGE",
       fieldIDs: {
-        artwork: this.props.artwork,
+        artwork: this.props.artwork.__id,
       },
     }]
   }
@@ -127,8 +129,6 @@ export default Relay.createContainer(StyledSaveButton, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        id
-        _id
         is_saved
         ${SaveArtworkMutation.getFragment("artwork")}
       }
