@@ -5,11 +5,11 @@ module.exports = () => {
   return {
     entry: {
       "login": [
-        "./src/apps/loyalty/containers/login/browser",
+        "babel-polyfill", "./src/apps/loyalty/containers/login/browser",
       ],
       "inquiries": [
-        "./src/apps/loyalty/containers/inquiries/browser",
-      ]
+        "babel-polyfill", "./src/apps/loyalty/containers/inquiries/browser",
+      ],
     },
     module: {
       rules: [

@@ -25,10 +25,12 @@ const ImageContainer = styled.div`
 
     &.hovered {
       opacity: 0;
+      visibility: hidden;
     }
 
     &.selected {
       opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -37,6 +39,7 @@ const ImageContainer = styled.div`
       ${css`
         @media (min-width: ${theme.flexboxgrid.breakpoints.sm + 1}px) {
           opacity: 1;
+          visibility: visible;
         }
       `}
     }
