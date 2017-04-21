@@ -36,7 +36,7 @@ export function ThankYou(req: Request, res: Response, next: NextFunction) {
   }
 
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-  return res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl }))
+  return res.send(renderPage({ styles, html, entrypoint: "", baseURL: req.baseUrl, sharify: res.locals.sharify }))
 }
 
 export function Inquiries(req: Request, res: Response, next: NextFunction) {
@@ -71,7 +71,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
         styles,
         html,
         entrypoint: req.baseUrl + "/bundles/inquiries.js",
-        sharify: res.locals.sharify.script(),
+        sharify: res.locals.sharify,
         baseURL: req.baseUrl,
       }))
     })
@@ -97,7 +97,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     styles,
     html,
     entrypoint: req.baseUrl + "/bundles/login.js",
-    sharify: res.locals.sharify.script(),
+    sharify: res.locals.sharify,
     baseURL: req.baseUrl,
   }))
 }

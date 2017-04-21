@@ -32,6 +32,7 @@ app.use(sharify)
 // Inject METAPHYSICS_ENDPOINT to sharify data
 // Todo/Enhancement: inject any 'safe ENV vars?
 sharify.data.METAPHYSICS_ENDPOINT = process.env.METAPHYSICS_ENDPOINT
+sharify.data.SEGMENT_WRITE_KEY =  process.env.SEGMENT_WRITE_KEY
 app.use(cookieParser())
 app.use(session({
   secret: "secret",
