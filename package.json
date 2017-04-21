@@ -1,11 +1,17 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "assets",
+    "data",
+    "docs"
+  ],
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
