@@ -88,9 +88,11 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     facebookPath,
     twitterPath,
   }
+
   const html = renderToString(<LoginContainer form={formConfig} />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
 
+  res.locals.sharify.data.BASE_URL = req.baseUrl
   res.locals.sharify.data.FORM_DATA = formConfig
 
   return res.send(renderPage({
