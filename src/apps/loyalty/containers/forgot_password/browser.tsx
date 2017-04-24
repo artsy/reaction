@@ -1,10 +1,8 @@
 import * as React from "react"
 import { render } from "react-dom"
-import Login from "./index"
-
-const formData = require("sharify").data.FORM_DATA
+import ForgotPassword from "./index"
 
 render(
-  <Login form={formData} />,
+  <ForgotPassword />,
   document.getElementById("app-container"),
 )

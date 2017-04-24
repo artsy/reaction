@@ -8,6 +8,7 @@ import { borderedInput } from "./mixins"
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: boolean
   block?: boolean
+  rightView?: JSX.Element
 }
 
 const Input: React.SFC<InputProps> = ({ block, ...props }) => (

@@ -5,13 +5,14 @@ import * as React from "react"
 
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
-import LoginContainer from "../containers/login"
 import { CollectorProfileResponse } from "./gravity"
 import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
 
+import ForgotPasswordContainer from "../containers/forgot_password"
 import InquiriesContainer from "../containers/inquiries"
+import LoginContainer from "../containers/login"
 
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
 import { ThankYouHtml } from "./helpers"
@@ -99,5 +100,18 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     entrypoint: req.baseUrl + "/bundles/login.js",
     sharify: res.locals.sharify,
     baseURL: req.baseUrl,
+  }))
+}
+
+export function ForgotPassword(req: Request, res: Response, next: NextFunction) {
+  const html = renderToString(<ForgotPasswordContainer />)
+  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+
+  return res.send(renderPage({
+    styles,
+    html,
+    entrypoint: req.baseUrl + "/bundles/forgot_password.js",
+    baseURL: req.baseUrl,
+    sharify: res.locals.sharify,
   }))
 }
