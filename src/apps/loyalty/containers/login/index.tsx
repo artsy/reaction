@@ -1,4 +1,4 @@
-import *  as fetch from "isomorphic-fetch"
+import * as fetch from "isomorphic-fetch"
 import * as React from "react"
 const sharify = require("sharify")
 import styled from "styled-components"
@@ -67,16 +67,15 @@ const StyledOrText = styled.div`
   }
 `
 const ErrorMessage = styled.div`
-  color: ${colors.grayBold};
+  color: ${colors.graySemibold};
   width: 100%;
   text-align: left;
-  text-transform: capitalize;
   padding: 10px 0px;
   border: 1px solid ${colors.redRegular};
   box-shadow: none;
   font-size: 15px;
   text-align: center;
-  background-color: rgba(210, 163, 163, 0.4);
+  background-color: rgba(247, 98, 90, 0.2);
 `
 
 class Login extends React.Component<LoginProps, LoginState> {
@@ -101,7 +100,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
   onSubmit (e) {
     e.preventDefault()
-    const options = {
+    const options: RequestInit = {
       method: "POST",
       credentials: "same-origin",
       headers: {
@@ -124,6 +123,8 @@ class Login extends React.Component<LoginProps, LoginState> {
           error: decodeURI(res.url.split("error=")[1]),
         })
       }
+    }).catch(err => {
+      console.error(err)
     })
   }
 
