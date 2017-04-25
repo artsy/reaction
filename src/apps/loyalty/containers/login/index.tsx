@@ -1,3 +1,4 @@
+import * as fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -14,6 +15,7 @@ import * as fonts from "../../../../assets/fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
+    baseUrl?: string,
     url: string,
     csrfToken?: string,
     facebookPath?: string,
@@ -22,7 +24,11 @@ interface LoginProps extends React.Props<HTMLParagraphElement> {
   onSubmit?: () => void
 }
 
-interface LoginState {}
+interface LoginState {
+  email: string,
+  password: string,
+  error?: string,
+}
 
 const LoginContainer = styled.div`
   padding: 20px;
@@ -61,8 +67,77 @@ const StyledOrText = styled.div`
   }
 `
 
+const ErrorMessage = styled.div`
+  color: ${colors.graySemibold};
+  width: 100%;
+  text-align: left;
+  padding: 10px 0px;
+  border: 1px solid ${colors.redRegular};
+  box-shadow: none;
+  font-size: 15px;
+  text-align: center;
+  background-color: rgba(247, 98, 90, 0.2);
+`
+
 class Login extends React.Component<LoginProps, LoginState> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: "",
+      password: "",
+    }
+    this.onSubmit = this.onSubmit.bind(this)
+    this.handleEmailChange = this.handleEmailChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+  }
+
+  handleEmailChange (e) {
+    this.setState({email: e.target.value})
+  }
+
+  handlePasswordChange (e) {
+    this.setState({password: e.target.value})
+  }
+
+  onSubmit (e) {
+    e.preventDefault()
+    const options: RequestInit = {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        _csrf: this.props.form.csrfToken,
+      }),
+    }
+
+    fetch(this.props.form.url, options).then(res => {
+      if (res.status === 200) {
+        // redirect to '/inquiries'
+        this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
+      } else {
+        this.setState({
+          error: decodeURI(res.url.split("error=")[1]),
+        })
+      }
+    }).catch(err => {
+      console.error(err)
+      this.setState({
+        error: "Internal Error. Pleasse contact support@artsy.net",
+      })
+    })
+  }
+
+  redirectTo(url: string) {
+    window.location.assign(url)
+  }
+
   render() {
+    const error = this.state.error
     const form = this.props.form || {url: "/login"}
 
     return (
@@ -72,11 +147,25 @@ class Login extends React.Component<LoginProps, LoginState> {
           Welcome back, please log in <br /> to your account.
         </Text>
 
-        <form action={form.url} method="POST" onSubmit={this.props.onSubmit}>
-          <StyledInput name="email" placeholder="Email" autoFocus block />
-          <StyledInput name="password" placeholder="Password" type="password" block />
+        {error && <ErrorMessage className="error">{error}</ErrorMessage>}
 
-          {form.csrfToken && <input type="hidden" name="_csrf" value={form.csrfToken} />}
+        <form action={form.url} method="POST" onSubmit={this.onSubmit}>
+          <StyledInput
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            autoFocus
+            block
+          />
+          <StyledInput
+            name="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            type="password"
+            block
+          />
 
           <Button block>Log In</Button>
           <StyledOrContainer>
