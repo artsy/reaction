@@ -503,7 +503,6 @@ type Artwork implements Node {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
-  cached: Int
   additional_information(format: Format): String
   artist(
     # Use whatever is in the original response instead of making a request
@@ -579,6 +578,7 @@ type Artwork implements Node {
 
   # True for inquireable artworks that have an exact price.
   is_purchasable: Boolean
+  is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
   is_unique: Boolean
@@ -606,6 +606,7 @@ type Artwork implements Node {
   title: String
   to_s: String
   website: String
+  cached: Int
 }
 
 enum ArtworkAggregation {
@@ -709,6 +710,7 @@ type ArtworkContextAuction {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+  require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_type: String
   start_at(
@@ -926,6 +928,7 @@ type ArtworkContextSale {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+  require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_type: String
   start_at(
@@ -1007,7 +1010,6 @@ type ArtworkSearchEntity implements Node {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
-  cached: Int
   additional_information(format: Format): String
   artist(
     # Use whatever is in the original response instead of making a request
@@ -1083,6 +1085,7 @@ type ArtworkSearchEntity implements Node {
 
   # True for inquireable artworks that have an exact price.
   is_purchasable: Boolean
+  is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
   is_unique: Boolean
@@ -1110,6 +1113,7 @@ type ArtworkSearchEntity implements Node {
   title: String
   to_s: String
   website: String
+  cached: Int
 }
 
 enum ArtworkSorts {
@@ -1264,6 +1268,15 @@ enum BuyerOutcomeTypes {
 }
 
 type BuyersPremium {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # A type-specific Gravity Mongo Document ID.
+  _id: String!
+
   # A formatted price with various currency formatting options.
   amount(
     decimal: String = "."
@@ -2239,6 +2252,7 @@ type HomePageModuleContextSale {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+  require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_type: String
   start_at(
@@ -2276,14 +2290,23 @@ type Image {
 
   # A type-specific ID.
   id: String
+  image_url: String
+  image_versions: [String]
   is_default: Boolean
   is_zoomable: Boolean
+  max_tiled_height: Int
+  max_tiled_width: Int
+  original_height: Int
+  original_width: Int
   orientation: String
 
   # Value to use when `padding-bottom` for fluid image placeholders
   placeholder: String
   position: Int
   resized(width: Int, height: Int, version: [String]): ResizedImageUrl
+  tile_base_url: String
+  tile_format: String
+  tile_size: Int
   title: String
   width: Int
   url(version: [String]): String
@@ -2499,6 +2522,7 @@ type OrderedSet {
 
 type organizer {
   profile_id: ID
+  profile: Profile
 }
 
 # Information about pagination in a connection.
@@ -2951,6 +2975,7 @@ type Profile {
   initials(length: Int = 3): String
   is_published: Boolean
   name: String
+  is_publically_visible: Boolean
 }
 
 type ProfileCounts {
@@ -2979,6 +3004,7 @@ type ProfileSearchEntity {
   initials(length: Int = 3): String
   is_published: Boolean
   name: String
+  is_publically_visible: Boolean
 }
 
 type ResizedImageUrl {
@@ -2996,6 +3022,7 @@ enum Role {
 type RootMutationType {
   updateCollectorProfile(input: UpdateCollectorProfileInput!): UpdateCollectorProfilePayload
   updateConversation(input: UpdateConversationInput!): UpdateConversationPayload
+  saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
 }
 
 type RootQueryType {
@@ -3339,6 +3366,7 @@ type Sale {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+  require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_type: String
   start_at(
@@ -3584,6 +3612,17 @@ enum SaleSorts {
   START_AT_DESC
   TIMELY_AT_NAME_ASC
   TIMELY_AT_NAME_DESC
+}
+
+input SaveArtworkInput {
+  artwork_id: String
+  remove: Boolean
+  clientMutationId: String
+}
+
+type SaveArtworkPayload {
+  artwork: Artwork
+  clientMutationId: String
 }
 
 type Search {
