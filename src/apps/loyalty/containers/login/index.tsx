@@ -92,11 +92,17 @@ class Login extends React.Component<LoginProps, LoginState> {
   }
 
   handleEmailChange (e) {
-    this.setState({email: e.target.value})
+    this.setState({
+      email: e.target.value,
+      error: "",
+    })
   }
 
   handlePasswordChange (e) {
-    this.setState({password: e.target.value})
+    this.setState({
+      password: e.target.value,
+      error: "",
+    })
   }
 
   onSubmit (e) {
@@ -107,6 +113,7 @@ class Login extends React.Component<LoginProps, LoginState> {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
       },
       body: JSON.stringify({
         email: this.state.email,
@@ -121,13 +128,13 @@ class Login extends React.Component<LoginProps, LoginState> {
         this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
       } else {
         this.setState({
-          error: decodeURI(res.url.split("error=")[1]),
+          error: "Invalid email or password",
         })
       }
     }).catch(err => {
       console.error(err)
       this.setState({
-        error: "Internal Error. Pleasse contact support@artsy.net",
+        error: "Internal Error. Please contact support@artsy.net",
       })
     })
   }

@@ -91,7 +91,7 @@ describe("login", () => {
     // because `setState` isn’t going to re-render until the next tick either.
     setImmediate(() => {
       const error = TestUtils.findRenderedDOMComponentWithClass(login, "error")
-      expect(error.textContent).toBe("Internal Error. Pleasse contact support@artsy.net")
+      expect(error.textContent).toBe("Internal Error. Please contact support@artsy.net")
       done()
     })
   })
