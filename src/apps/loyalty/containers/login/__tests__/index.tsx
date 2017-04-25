@@ -35,7 +35,7 @@ describe("login", () => {
     expect(twitterLink).toBeTruthy()
   })
 
-  it("displays correct error message", (done) => {
+  it("displays correct error message", done => {
     const fetch = require("isomorphic-fetch")
     fetch.mockImplementation(() => {
       return Promise.resolve({
@@ -75,7 +75,7 @@ describe("login", () => {
     TestUtils.Simulate.submit(TestUtils.findRenderedDOMComponentWithTag(renderedComponent, "form"))
   })
 
-  it("displays error message from catch", (done) => {
+  it("displays error message from catch", done => {
     const fetch = require("isomorphic-fetch")
     fetch.mockImplementation(() => {
       return Promise.reject({
