@@ -6,7 +6,7 @@ import Icon from "../icon"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 
-const { CURRENT_USER } = require("sharify")
+const { CURRENT_USER } = require("sharify").data
 const SIZE = 40
 
 export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
