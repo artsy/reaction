@@ -83,6 +83,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     twitterPath,
   } = artsyPassport.options
   const formConfig = {
+    baseUrl: req.baseUrl,
     url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl + "/inquiries/"}`,
     csrfToken: req.csrfToken(),
     facebookPath,

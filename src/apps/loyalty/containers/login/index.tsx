@@ -1,6 +1,5 @@
 import * as fetch from "isomorphic-fetch"
 import * as React from "react"
-const sharify = require("sharify")
 import styled from "styled-components"
 
 import FacebookButton from "../../../../components/buttons/facebook"
@@ -16,6 +15,7 @@ import * as fonts from "../../../../assets/fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
+    baseUrl: string,
     url: string,
     csrfToken?: string,
     facebookPath?: string,
@@ -66,6 +66,7 @@ const StyledOrText = styled.div`
     z-index: -1;
   }
 `
+
 const ErrorMessage = styled.div`
   color: ${colors.graySemibold};
   width: 100%;
@@ -117,7 +118,7 @@ class Login extends React.Component<LoginProps, LoginState> {
     fetch(this.props.form.url, options).then(res => {
       if (res.status === 200) {
         // redirect to '/inquiries'
-        window.location.assign(`${sharify.data.BASE_URL}/inquiries`)
+        this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
       } else {
         this.setState({
           error: decodeURI(res.url.split("error=")[1]),
@@ -125,7 +126,14 @@ class Login extends React.Component<LoginProps, LoginState> {
       }
     }).catch(err => {
       console.error(err)
+      this.setState({
+        error: "Internal Error. Pleasse contact support@artsy.net",
+      })
     })
+  }
+
+  redirectTo(url: string) {
+    window.location.assign(url)
   }
 
   render() {
@@ -139,7 +147,7 @@ class Login extends React.Component<LoginProps, LoginState> {
           Welcome back, please log in <br /> to your account.
         </Text>
 
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {error && <ErrorMessage className="error">{error}</ErrorMessage>}
 
         <form action={form.url} method="POST" onSubmit={this.onSubmit}>
           <StyledInput
