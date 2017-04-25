@@ -6,6 +6,7 @@ import Icon from "../icon"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 
+const { CURRENT_USER } = require("sharify")
 const SIZE = 40
 
 export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
@@ -17,11 +18,15 @@ export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
 export class SaveButton extends React.Component<Props, null> {
 
   handleSave() {
-    this.props.relay.commitUpdate(
-      new SaveArtworkMutation({
-        artwork: this.props.artwork,
-      }),
-    )
+    if (CURRENT_USER && CURRENT_USER.id) {
+      this.props.relay.commitUpdate(
+        new SaveArtworkMutation({
+          artwork: this.props.artwork,
+        }),
+      )
+    } else {
+      window.location.href = "/login"
+    }
   }
 
   render() {
