@@ -14,7 +14,7 @@ function ArtworkExample(props: { artworkID: string, user?: any }) {
 }
 
 storiesOf("Save Button", SaveButton)
-  .add("Save Button (logged in)", () => {
+  .add("Save Button", () => {
     return (
       <div style={{width: "200px"}}>
         <ArtworkExample
