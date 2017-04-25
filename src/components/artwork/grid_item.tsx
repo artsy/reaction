@@ -2,8 +2,8 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../assets/colors"
-import SaveButton from "./save"
 import ArtworkMetadata from "./metadata"
+import SaveButton from "./save"
 
 const Image = styled.img`
   width: 100%;
