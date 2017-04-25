@@ -15,7 +15,7 @@ import * as fonts from "../../../../assets/fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
-    baseUrl: string,
+    baseUrl?: string,
     url: string,
     csrfToken?: string,
     facebookPath?: string,
