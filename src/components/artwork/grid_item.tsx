@@ -45,7 +45,6 @@ export default Relay.createContainer(ArtworkGridItem, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
-        id
         image {
           placeholder
           url(version: "large")

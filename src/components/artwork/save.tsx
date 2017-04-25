@@ -96,6 +96,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   getOptimisticResponse() {
     return {
       artwork: {
+        __id: this.props.artwork.__id,
         is_saved: this.props.artwork.is_saved ? false : true,
       },
     }

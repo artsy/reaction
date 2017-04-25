@@ -19,7 +19,6 @@ storiesOf("Save Button", SaveButton)
       <div style={{width: "200px"}}>
         <ArtworkExample
           artworkID="damon-zucconi-tetradic-edit-1"
-          user={{id: "547e891d7261691220dc0000", accessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NDdlODkxZDcyNjE2OTEyMjBkYzAwMDAiLCJzYWx0X2hhc2giOiI2OTg3ZjUzZmExOTQxZGUwM2E0YTA2NWNjZjA0YjBiZiIsInJvbGVzIjoidXNlcixhZG1pbiIsInBhcnRuZXJfaWRzIjpbXSwiZXhwIjoxNDk1OTg1MTU0LCJpYXQiOjE0OTA4MDExNTQsImF1ZCI6IjRlMzZlZmE0ZGI0ZTMyMDAwMTAwMDM1OSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1OGRiZDIwMjhiMGMxNDU3OWQ1YTEzOTgifQ.NNxQnjIAX8DTLtkR8XwB8-FTrZNqjLU9Y_Sf20kviLc"}}
         />
       </div>
     )

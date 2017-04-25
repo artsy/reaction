@@ -1,6 +1,8 @@
 import * as Relay from "react-relay"
 const sharify = require("sharify")
 
+export const metaphysicsURL = "https://metaphysics-production.artsy.net"
+
 export function artsyNetworkLayer(user?: any) {
   return new Relay.DefaultNetworkLayer(sharify.data.METAPHYSICS_ENDPOINT, {
     headers: !!user ? {
