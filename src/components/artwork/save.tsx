@@ -82,6 +82,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
     artwork: () => Relay.QL`
       fragment on Artwork {
         __id
+        id
         is_saved
       }
     `,
