@@ -132,7 +132,7 @@ const FilterBar = styled.div`
 const SubFilterBar = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 40px 0;
   align-items: center;
 `
 
