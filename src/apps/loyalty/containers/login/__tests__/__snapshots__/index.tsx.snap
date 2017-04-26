@@ -15,21 +15,21 @@ exports[`login renders the snapshot 1`] = `
   <form
     action="/log_in"
     method="POST"
-    onSubmit={undefined}>
+    onSubmit={[Function]}>
     <input
       autoFocus={true}
       className="dyTjMO"
       name="email"
-      placeholder="Email" />
+      onChange={[Function]}
+      placeholder="Email"
+      value="" />
     <input
       className="dyTjMO"
       name="password"
+      onChange={[Function]}
       placeholder="Password"
-      type="password" />
-    <input
-      name="_csrf"
-      type="hidden"
-      value="csrf" />
+      type="password"
+      value="" />
     <button
       className="bXgzbp">
       <span>
