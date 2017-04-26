@@ -1,4 +1,5 @@
 import * as React from "react"
+import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
 import { debounce } from "lodash"
@@ -26,7 +27,9 @@ export class ArtworkGrid extends React.Component<Props, State> {
   }
 
   maybeLoadMore() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight / 2) {
+    const threshold = window.innerHeight + window.scrollY
+    const el = ReactDOM.findDOMNode(this)
+    if (threshold >= el.clientHeight + el.scrollTop) {
       this.props.onLoadMore()
     }
   }
