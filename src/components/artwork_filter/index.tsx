@@ -118,7 +118,7 @@ class ArtworkFilter extends React.Component<Props, State> {
         <Artworks
           artworks={filterArtworks.artworks}
           onLoadMore={() => this.handleLoadMore()}
-          columnCount={4}
+          columnCount={3}
         />
       </div>
     )
