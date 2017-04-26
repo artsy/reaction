@@ -11,11 +11,46 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   rightView?: JSX.Element
 }
 
-const Input: React.SFC<InputProps> = ({ block, ...props }) => (
-  <input {...props} />
-)
-
-export default styled(Input)`
+const StyledInput = styled.input`
   ${borderedInput}
   ${block(24)}
 `
+
+const BorderlessInput = styled.input`
+  border-color: transparent !important;
+  ${fonts.secondary.style}
+  font-size: 17px;
+  outline: none;
+  flex: 1;
+`
+
+const StyledDiv = styled.div`
+  ${borderedInput}
+  margin-right: 0;
+  display: flex;
+
+  & input:focus + :after {
+    display: absolute;
+    background: red;
+  }
+`
+
+const Input: React.SFC<InputProps> = ({ block, ...props }) => {
+  if (props.rightView) {
+    const newProps: any = {...props}
+    delete newProps.className
+
+    return (
+      <StyledDiv {...{tabindex: 0}}>
+        <BorderlessInput {...newProps} />
+        {props.rightView}
+      </StyledDiv>
+    )
+  }
+
+  return (
+    <StyledInput {...props} />
+  )
+}
+
+export default Input

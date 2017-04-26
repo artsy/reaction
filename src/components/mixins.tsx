@@ -3,7 +3,7 @@ import colors from "../assets/colors"
 import * as fonts from "../assets/fonts"
 import { InputProps } from "./input"
 
-export const borderedInput = (props: InputProps) => {
+export const borderedInput = (props: InputProps = {}) => {
   return css`
     padding: 10px;
     border: 2px solid ${props.error ? colors.redRegular : colors.grayRegular};

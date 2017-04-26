@@ -86,6 +86,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
   const formConfig = {
     baseUrl: req.baseUrl,
     url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl + "/inquiries/"}`,
+    forgotPasswordUrl: req.baseUrl + "/forgot-password",
     csrfToken: req.csrfToken(),
     facebookPath,
     twitterPath,
