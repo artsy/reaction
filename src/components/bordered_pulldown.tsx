@@ -32,7 +32,6 @@ export class BorderedPulldown extends React.Component<Props, State> {
     })
   }
 
-
   onChange(option) {
     this.setState({
       selected: option,
