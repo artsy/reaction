@@ -194,32 +194,32 @@ type ArtistCarousel {
 
 type ArtistCounts {
   artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   follows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   for_sale_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   partner_shows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   related_artists(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   articles(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -952,6 +952,25 @@ type ArtworkEdge {
   cursor: String!
 }
 
+union ArtworkFilterFacet = ArtworkFilterTag
+
+type ArtworkFilterTag {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # A type-specific Gravity Mongo Document ID.
+  _id: String!
+  cached: Int
+  description: String
+  name: String
+  href: String
+  image: Image
+  count: Int
+}
+
 type ArtworkInquiry {
   artwork: Artwork!
   id: ID
@@ -1519,16 +1538,17 @@ type FilterArtworks {
   # Returns a list of merchandisable artists sorted by merch score.
   merchandisable_artists: [Artist]
   total: Int @deprecated(reason: "Favor `counts.total`")
+  facet: ArtworkFilterFacet
 }
 
 type FilterArtworksCounts {
   total(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   followed_artists(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -1551,12 +1571,12 @@ type FilterSaleArtworks {
 
 type FilterSaleArtworksCounts {
   total(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   followed_artists(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -2586,12 +2606,12 @@ type PartnerArtist {
 
 type PartnerArtistCounts {
   artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   for_sale_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -2651,57 +2671,57 @@ enum PartnerClassification {
 
 type PartnerCounts {
   artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   artists(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   partner_artists(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   eligible_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   published_for_sale_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   published_not_for_sale_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   shows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   displayable_shows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   current_displayable_shows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   artist_documents(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
   partner_show_documents(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -2810,7 +2830,7 @@ type PartnerShowCounts {
     artist_id: String
   ): Int
   eligible_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -2980,7 +3000,7 @@ type Profile {
 
 type ProfileCounts {
   follows(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -3271,6 +3291,10 @@ type RootQueryType {
     id: String!
   ): Show
   status: Status
+  tag(
+    # The slug or ID of the Tag
+    id: String!
+  ): Tag
 
   # Trending artists
   trending_artists(
@@ -3439,7 +3463,7 @@ enum SaleArtworkAggregation {
 
 type SaleArtworkCounts {
   bidder_positions(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -3729,7 +3753,7 @@ type ShowCounts {
     artist_id: String
   ): Int
   eligible_artworks(
-    # Returns a `String` when format is specified. e.g.`"0,0.0000"`
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
     label: String
   ): FormattedNumber
@@ -3745,6 +3769,23 @@ type Status {
 # Gravity ping
 type StatusGravity {
   ping: Boolean
+}
+
+type Tag {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # A type-specific Gravity Mongo Document ID.
+  _id: String!
+  cached: Int
+  description: String
+  name: String
+  href: String
+  image: Image
+  count: Int
 }
 
 type TrendingArtists {
@@ -4077,6 +4118,10 @@ type Viewer {
     id: String!
   ): Show
   status: Status
+  tag(
+    # The slug or ID of the Tag
+    id: String!
+  ): Tag
 
   # Trending artists
   trending_artists(
