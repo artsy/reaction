@@ -93,6 +93,7 @@ class ArtworkFilter extends React.Component<Props, State> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
+
     return (
       <div>
         <FilterBar>
@@ -106,6 +107,7 @@ class ArtworkFilter extends React.Component<Props, State> {
               price_range={this.state.price_range}
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
+              facet={filterArtworks.facet}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
@@ -170,6 +172,9 @@ export default Relay.createContainer(ArtworkFilter, {
           }
           artworks: artworks_connection(first: $size) {
             ${Artworks.getFragment("artworks")}
+          }
+          facet {
+            ${Headline.getFragment("facet")}
           }
         }
       }
