@@ -1,4 +1,5 @@
 import * as artsyPassport from "artsy-passport"
+import * as artsyXapp from "artsy-xapp"
 import { NextFunction, Request, Response } from "express"
 import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as React from "react"
@@ -108,8 +109,12 @@ export function Login(req: Request, res: Response, next: NextFunction) {
 }
 
 export function ForgotPassword(req: Request, res: Response, next: NextFunction) {
-  const html = renderToString(<ForgotPasswordContainer />)
+  const submitUrl = process.env.API_URL + "/api/v1/users/send_reset_password_instructions"
+  const html = renderToString(<ForgotPasswordContainer submitEmailUrl={submitUrl} appToken={artsyXapp.token} />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+
+  res.locals.sharify.data.SUBMIT_URL = submitUrl
+  res.locals.sharify.data.APP_TOKEN = artsyXapp.token
 
   return res.send(renderPage({
     styles,

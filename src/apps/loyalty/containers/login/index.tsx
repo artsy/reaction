@@ -167,7 +167,6 @@ class Login extends React.Component<LoginProps, LoginState> {
             placeholder="Email"
             value={this.state.email}
             onChange={this.handleEmailChange}
-            rightView={forgotPasswordLink}
             autoFocus
             block
           />
@@ -176,6 +175,7 @@ class Login extends React.Component<LoginProps, LoginState> {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handlePasswordChange}
+            rightView={forgotPasswordLink}
             type="password"
             block
           />

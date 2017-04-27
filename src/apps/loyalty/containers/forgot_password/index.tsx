@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Button from "../../../../components/buttons/inverted"
 import Icon from "../../../../components/icon"
 import Input from "../../../../components/input"
+import Message from "../../../../components/message"
 import Text from "../../../../components/text"
 import TextLink from "../../../../components/text_link"
 
@@ -24,26 +25,14 @@ const StyledInput = styled(Input)`
   width: 100%;
 `
 
-const Message = styled.div`
-   color: ${colors.graySemibold};
-   width: 100%;
-   text-align: left;
-   padding: 10px;
-   border: 1px solid ${props => colors.yellowRegular};
-   box-shadow: none;
-   font-size: 15px;
-   text-align: center;
-   background-color: ${props => colors.yellowMedium};
-   box-sizing: border-box;
- `
-
 interface Props {
-
+  submitEmailUrl: string,
+  appToken: string
 }
 
 interface State {
   email: string
-  error?: string
+  error?: boolean
   showMessage: boolean
   isEmailValid: boolean
 }
@@ -65,20 +54,51 @@ class ForgotPasswordForm extends React.Component<Props, any> {
     this.setState({
       email: value,
       isEmailValid: validateEmail(value),
+      showMessage: false,
     })
   }
 
-  onClickSubmitButton(e) {
+  onClickSubmitButton(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault()
     // TODO: send reset email, show error message if failed
-    this.setState({
-      showMessage: true,
+
+
+    const options: RequestInit = {
+      method: "POST",
+      // credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-XAPP-TOKEN": this.props.appToken,
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+      }),
+    }
+
+    fetch(this.props.submitEmailUrl, options).then(res => {
+      if (res.status === 201) {
+        this.setState({
+          showMessage: true,
+          error: false,
+        })
+      } else if (res.status === 400) { // Email Not Found
+        this.setState({
+          showMessage: true,
+          error: true,
+        })
+      }
     })
   }
 
-  renderSuccessBox() {
+  renderMessageBox() {
+    const message = this.state.error
+          ? <span>No account exists for <b>{this.state.email}</b></span>
+          : <span>Instructions on how to reset your password have been sent to <b>{this.state.email}</b></span>
+
     return this.state.showMessage ? (
-      <Message>
-        Instructions on how to reset your password have been sent to <b>{this.state.email}</b>
+      <Message error={!!this.state.error} >
+        {message}
       </Message>
     ) : ""
   }
@@ -92,12 +112,13 @@ class ForgotPasswordForm extends React.Component<Props, any> {
           Enter the email address associated<br />with your account.
         </Text>
 
-        {this.renderSuccessBox()}
+        {this.renderMessageBox()}
 
         <StyledInput
           name="email"
           placeholder="Email"
           onChange={this.handleEmailFieldChange.bind(this)}
+          value={this.state.email}
           autoFocus
           block
         />
