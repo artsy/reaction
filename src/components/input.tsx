@@ -3,12 +3,16 @@ import styled from "styled-components"
 import colors from "../assets/colors"
 import * as fonts from "../assets/fonts"
 import { block } from "./helpers"
-import { borderedInput } from "./mixins"
+import { border, borderedInput } from "./mixins"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: boolean
   block?: boolean
   rightView?: JSX.Element
+}
+
+interface InputState {
+  borderClasses: string
 }
 
 const StyledInput = styled.input`
@@ -17,7 +21,7 @@ const StyledInput = styled.input`
 `
 
 const BorderlessInput = styled.input`
-  border-color: transparent !important;
+  border: 0;
   ${fonts.secondary.style}
   font-size: 17px;
   outline: none;
@@ -26,31 +30,75 @@ const BorderlessInput = styled.input`
 
 const StyledDiv = styled.div`
   ${borderedInput}
+  border: 0;
+  padding: 12px;
   margin-right: 0;
   display: flex;
+  position: relative;
 
-  & input:focus + :after {
-    display: absolute;
-    background: red;
+  & .border-container {
+    z-index: -1;
+    ${border}
+    position: absolute;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    top: 0;
+    left: 0;
   }
 `
 
-const Input: React.SFC<InputProps> = ({ block, ...props }) => {
-  if (props.rightView) {
-    const newProps: any = {...props}
-    delete newProps.className
+const BorderClassname = "border-container"
 
-    return (
-      <StyledDiv {...{tabindex: 0}}>
-        <BorderlessInput {...newProps} />
-        {props.rightView}
-      </StyledDiv>
-    )
+class Input extends React.Component<InputProps, any> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      borderClasses: BorderClassname,
+    }
   }
 
-  return (
-    <StyledInput {...props} />
-  )
+  onFocus(e: React.FocusEvent<HTMLInputElement>) {
+    this.setState({
+      borderClasses: `${BorderClassname} focused`,
+    })
+
+    if (this.props.onFocus) {
+      this.props.onFocus(e)
+    }
+  }
+
+  onBlur(e: React.FocusEvent<HTMLInputElement>) {
+    this.setState({
+      borderClasses: BorderClassname,
+    })
+
+    if (this.props.onBlur) {
+      this.props.onBlur(e)
+    }
+  }
+
+  render() {
+    if (this.props.rightView) {
+      const newProps: any = {...this.props}
+      delete newProps.className
+
+      return (
+        <StyledDiv>
+          <div className={this.state.borderClasses} />
+          <BorderlessInput
+            {...newProps}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          />
+          {this.props.rightView}
+        </StyledDiv>
+      )
+    }
+
+    return (
+      <StyledInput {...this.props} />
+    )
+  }
 }
 
 export default Input
