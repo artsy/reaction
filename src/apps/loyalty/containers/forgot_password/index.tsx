@@ -1,3 +1,4 @@
+import fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 

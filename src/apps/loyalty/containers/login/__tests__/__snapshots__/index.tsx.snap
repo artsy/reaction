@@ -18,19 +18,21 @@ exports[`login renders the snapshot 1`] = `
     onSubmit={[Function]}>
     <input
       autoFocus={true}
-      className="gUzbJk dZGRwh"
+      className="gUzbJk VzJlT"
       name="email"
       onChange={[Function]}
       placeholder="Email"
       value="" />
     <div
-      className="blwjyv">
+      className="kBsaGc">
       <div
         className="border-container" />
       <input
-        className="jVgAsE"
+        className="dWzpRU"
         name="password"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         placeholder="Password"
         type="password"
         value="" />

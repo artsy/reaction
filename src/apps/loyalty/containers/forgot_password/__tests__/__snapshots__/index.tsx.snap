@@ -1,0 +1,44 @@
+exports[`Reset password renders the snapshot 1`] = `
+<div
+  className="FLXHp">
+  <div
+    className="cVIAuV"
+    style={undefined}>
+    
+  </div>
+  <p
+    className="fTgPgI">
+    Enter the email address associated
+    <br />
+    with your account.
+  </p>
+  
+  <input
+    autoFocus={true}
+    className="gUzbJk VzJlT"
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    value="" />
+  <button
+    className="cpyCro"
+    disabled={true}
+    onClick={[Function]}>
+    <span>
+      Reset Password
+    </span>
+  </button>
+  <p
+    className="eXluOx">
+    <span>
+      Don\'t have an account? 
+    </span>
+    <a
+      className="lkuLzT"
+      href={undefined}>
+      Sign up
+    </a>
+    .
+  </p>
+</div>
+`;
