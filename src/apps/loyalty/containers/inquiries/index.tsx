@@ -1,6 +1,7 @@
 import { partition } from "lodash"
 import * as React from "react"
 import * as Relay from "react-relay"
+import * as sharify from "sharify"
 import styled, { ThemeProvider } from "styled-components"
 
 import theme from "../../../../assets/theme"
@@ -17,8 +18,6 @@ import Title from "../../../../components/title"
 
 import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
 import UpdateConversationMutation from "./mutations/update_conversation"
-
-const sharify = require("sharify")
 
 const InquiryContainer = styled.div`
   margin-bottom: 60px;

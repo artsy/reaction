@@ -62,11 +62,10 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
     Container: InquiriesContainer,
     queryConfig: new CurrentUserRoute(),
   }, res.locals.networkLayer).then(
-    ({data, props}) => {
+    ({ data, props }) => {
       const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-      res.locals.sharify.data.USER_DATA = req.user.toJSON()
-      res.locals.sharify.data.DATA = data
+      res.locals.sharify.data.RELAY_DATA = data
       return res.send(renderPage({
         styles,
         html,
