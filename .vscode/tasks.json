@@ -20,13 +20,20 @@
     {
       "taskName": "storybook",
       "args": [
-        "run",
         "storybook"
       ]
     },
     {
+      "taskName": "TypeScript: Run type-checker",
+      "command": "tsc",
+      "isShellCommand": true,
+      "args": ["-w", "-p", ".", "--noEmit"],
+      "showOutput": "silent",
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    },
+    {
       "taskName": "TSLint: Lint all files",
-      "command": "yarn",
       "args": ["lint"],
       "problemMatcher": {
         "owner": "tslint",
