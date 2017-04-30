@@ -180,7 +180,7 @@ export class Inquiries extends React.Component<Props, State> {
     const ids = this.state.selected_conversations.map(value => value.id)
 
     const props = {
-      user_id: sharify.data.USER_DATA.id,
+      user_id: sharify.data.CURRENT_USER.id, // FIXME This is relying on the singleton for user data, should use res.locals
       inquiry_ids: ids,
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,

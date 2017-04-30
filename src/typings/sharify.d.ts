@@ -1,23 +1,41 @@
-interface CurrentUser {
-  id: string,
-  accessToken: string,
-}
+declare module "sharify" {
+  function sharify(): void
+  export = sharify
 
-interface Data {
-  CURRENT_USER?: CurrentUser,
-  // These are reaction-force specific
-  METAPHYSICS_ENDPOINT: string,
-  RELAY_DATA?: any,
-}
+  namespace sharify {
+    /**
+     * Do **not** use this on the server-side to store/access data that’s related to a single request. Instead use
+     * `Response.locals.sharify.data`, which is data associated to individual requests.
+     *
+     * @see {ResponseLocals}
+     */
+    export const data: GlobalData
 
-declare function sharify(): void
-export = sharify
+    /**
+     * These properties are set by Force and configured through environment variables.
+     */
+    export interface GlobalData {
+      readonly METAPHYSICS_ENDPOINT: string,
+      readonly SEGMENT_WRITE_KEY: string,
+    }
 
-declare namespace sharify {
-  const data: Data
+    export interface ResponseLocalData extends GlobalData {
+      readonly CURRENT_USER?: CurrentUser,
+      RELAY_DATA?: any,
+    }
 
-  export interface ResponseLocals {
-    data: Data,
-    script: () => string,
+    export interface ResponseLocal {
+      /**
+       * Request specific data. Use this to store data that’s to be used by other parts of the stack during the
+       * processing of the remainder of the request and to store data that’s to be made available to the client.
+       */
+      data: ResponseLocalData,
+      script: () => string,
+    }
+
+    export interface CurrentUser {
+      id: string,
+      accessToken: string,
+    }
   }
 }

@@ -1,11 +1,11 @@
-import sharify from "sharify"
+import { ResponseLocal } from "sharify"
 
 interface TemplateData {
   styles: string
   html: string
   entrypoint: string
   bootstrapData?: string
-  sharify?: sharify.ResponseLocals,
+  sharify?: ResponseLocal,
   baseURL: string
 }
 

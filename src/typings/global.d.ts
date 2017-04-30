@@ -1,7 +1,7 @@
 /// <reference types="segment-analytics" />
 
 import * as Relay from "react-relay"
-import sharify from "sharify"
+import * as sharify from "sharify"
 
 declare global {
   interface Window {
@@ -13,10 +13,12 @@ declare global {
 }
 
 declare module "express" {
+  interface ArtsyResponseLocals {
+    sharify: sharify.ResponseLocal,
+    networkLayer: Relay.DefaultNetworkLayer,
+  }
+
   interface Response {
-    locals: {
-      sharify: sharify.ResponseLocals,
-      networkLayer: Relay.DefaultNetworkLayer,
-    },
+    locals: ArtsyResponseLocals,
   }
 }

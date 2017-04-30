@@ -8,15 +8,17 @@ import CurrentUserRoute from "../../../../relay/queries/current_user"
 import Inquiries from "./index"
 
 import * as sharify from "sharify"
-const { CURRENT_USER } = sharify.data
+import { ResponseLocalData } from "../../types"
+
+const { CURRENT_USER, RELAY_DATA } = sharify.data as ResponseLocalData
 
 const env = new (Relay as any).Environment()
-const networkLayer = artsyNetworkLayer(sharify.data.CURRENT_USER)
+const networkLayer = artsyNetworkLayer(CURRENT_USER)
 
 env.injectDefaultNetworkLayer(networkLayer)
 Relay.injectNetworkLayer(networkLayer)
 
-IsomorphicRelay.injectPreparedData(env, sharify.data.RELAY_DATA)
+IsomorphicRelay.injectPreparedData(env, RELAY_DATA)
 
 IsomorphicRelay.prepareInitialRender({
   Container: Inquiries,

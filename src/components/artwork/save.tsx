@@ -7,7 +7,7 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 
 import * as sharify from "sharify"
-const { CURRENT_USER } = sharify.data
+const { CURRENT_USER } = sharify.data // FIXME This is relying on the singleton for user data, should use res.locals
 const SIZE = 40
 
 export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
