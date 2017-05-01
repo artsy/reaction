@@ -6,11 +6,11 @@ import Icon from "../icon"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 
-import * as sharify from "sharify"
-const { CURRENT_USER } = sharify.data // FIXME This is relying on the singleton for user data, should use res.locals
+import * as Artsy from "../../components/artsy"
+
 const SIZE = 40
 
-export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
+export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.ContextProps {
   artwork: any
   style?: any
   relay?: any
@@ -19,11 +19,10 @@ export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
 export class SaveButton extends React.Component<Props, null> {
 
   handleSave() {
-    if (CURRENT_USER && CURRENT_USER.id) {
-      this.props.relay.commitUpdate(
-        new SaveArtworkMutation({
-          artwork: this.props.artwork,
-        }),
+    const { artsy, artwork, relay } = this.props
+    if (artsy.currentUser && artsy.currentUser.id) {
+      relay.commitUpdate(
+        new SaveArtworkMutation({ artwork }),
       )
     } else {
       window.location.href = "/login"
@@ -132,7 +131,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   }
 }
 
-export default Relay.createContainer(StyledSaveButton, {
+export default Relay.createContainer(Artsy.ContextConsumer(StyledSaveButton), {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {

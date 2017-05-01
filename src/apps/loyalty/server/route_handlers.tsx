@@ -14,6 +14,7 @@ import { CollectorProfileResponse, markCollectorAsLoyaltyApplicant } from "./gra
 import { ThankYouHtml } from "./helpers"
 import renderPage from "./template"
 
+import * as Artsy from "../../../components/artsy"
 import { FormData, ResponseLocalData } from "../types"
 
 export function Home(req: Request, res: Response, next: NextFunction) {
@@ -63,7 +64,11 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
     queryConfig: new CurrentUserRoute(),
   }, res.locals.networkLayer).then(
     ({ data, props }) => {
-      const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
+      const html = renderToString(
+        <Artsy.ContextProvider currentUser={res.locals.sharify.data.CURRENT_USER}>
+          <IsomorphicRelay.Renderer {...props} />
+        </Artsy.ContextProvider>,
+      )
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
       res.locals.sharify.data.RELAY_DATA = data
       return res.send(renderPage({

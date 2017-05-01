@@ -10,6 +10,8 @@ import Inquiries from "./index"
 import * as sharify from "sharify"
 import { ResponseLocalData } from "../../types"
 
+import * as Artsy from "../../../../components/artsy"
+
 const { CURRENT_USER, RELAY_DATA } = sharify.data as ResponseLocalData
 
 const env = new (Relay as any).Environment()
@@ -25,8 +27,11 @@ IsomorphicRelay.prepareInitialRender({
   queryConfig: new CurrentUserRoute(),
   environment: env,
 }).then(props => {
-  render((
-      <IsomorphicRelay.Renderer {...props} />
+  render(
+    (
+      <Artsy.ContextProvider currentUser={CURRENT_USER}>
+        <IsomorphicRelay.Renderer {...props} />
+      </Artsy.ContextProvider>
     ),
     document.getElementById("app-container"),
   )
