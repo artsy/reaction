@@ -17,17 +17,19 @@ export interface CurrentUser extends sharify.CurrentUser {}
  *       optional and simply remove it from the props that a component wrapped with the `ContextConsumer` HOC accepts.
  */
 export interface ContextProps {
-  artsy?: Props
-}
-
-interface Props {
   currentUser?: CurrentUser,
 }
 
-const ContextTypes = {
-  artsy: PropTypes.shape({
-    currentUser: PropTypes.object,
-  }),
+interface PrivateContextProps extends ContextProps {
+  /**
+   * This prop solely exists to verify that a consumer is nested inside a provider.
+   */
+  _isNestedInProvider: boolean,
+}
+
+const ContextTypes: React.ValidationMap<PrivateContextProps> = {
+  _isNestedInProvider: PropTypes.bool,
+  currentUser: PropTypes.object,
 }
 
 /**
@@ -36,7 +38,8 @@ const ContextTypes = {
  *
  * @see {@link ContextConsumer}
  */
-export class ContextProvider extends React.Component<Props, null> {
+export class ContextProvider extends React.Component<ContextProps, null>
+                             implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
   constructor(props) {
@@ -46,11 +49,10 @@ export class ContextProvider extends React.Component<Props, null> {
     super(props)
   }
 
-  getChildContext(): ContextProps {
+  getChildContext() {
     return {
-      artsy: {
-        currentUser: this.props.currentUser,
-      },
+      _isNestedInProvider: true,
+      currentUser: this.props.currentUser,
     }
   }
 
@@ -78,8 +80,8 @@ export function ContextConsumer<P>(
     static contextTypes = ContextTypes
     static displayName = `Artsy(${name})`
 
-    constructor(props, context) {
-      if (!context.artsy) {
+    constructor(props, context: PrivateContextProps) {
+      if (!context._isNestedInProvider) {
         const start = name || "A component"
         throw new Error(`${start}, which needs Artsy props, was not wrapped inside a ContextProvider component.`)
       }
@@ -87,7 +89,9 @@ export function ContextConsumer<P>(
     }
 
     render() {
-      return <Component {...this.props} {...this.context} />
+      const currentUser = this.context.currentUser
+      const props = Object.assign({ currentUser }, this.props)
+      return <Component {...props} />
     }
   }
 }

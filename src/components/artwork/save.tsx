@@ -19,8 +19,8 @@ export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.Co
 export class SaveButton extends React.Component<Props, null> {
 
   handleSave() {
-    const { artsy, artwork, relay } = this.props
-    if (artsy.currentUser && artsy.currentUser.id) {
+    const { currentUser, artwork, relay } = this.props
+    if (currentUser && currentUser.id) {
       relay.commitUpdate(
         new SaveArtworkMutation({ artwork }),
       )

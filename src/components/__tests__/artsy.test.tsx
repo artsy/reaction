@@ -3,24 +3,38 @@ import * as renderer from "react-test-renderer"
 
 import * as Artsy from "../artsy"
 
-const ShowCurrentUser: React.SFC<Artsy.ContextProps> = props => {
-  return <div>{props.artsy.currentUser.id}</div>
+const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
+  let text = props.currentUser.id
+  if (props.additionalProp) {
+    text = `${text} & ${props.additionalProp}`
+  }
+  return <div>{text}</div>
 }
 // This HOC adds the context to the component.
 const WithCurrentUser = Artsy.ContextConsumer(ShowCurrentUser)
 
 describe("Artsy context", () => {
+  const currentUser: Artsy.CurrentUser = {
+    id: "andy-warhol",
+    accessToken: "secret",
+  }
+
   it("exposes the currently signed-in user", () => {
-    const currentUser: Artsy.CurrentUser = {
-      id: "andy-warhol",
-      accessToken: "secret",
-    }
     const div = renderer.create(
       <Artsy.ContextProvider currentUser={currentUser}>
         <WithCurrentUser />
       </Artsy.ContextProvider>,
     ).toJSON()
     expect(div.children[0]).toEqual("andy-warhol")
+  })
+
+  it("passes other props on", () => {
+    const div = renderer.create(
+      <Artsy.ContextProvider currentUser={currentUser}>
+        <WithCurrentUser additionalProp="friends" />
+      </Artsy.ContextProvider>,
+    ).toJSON()
+    expect(div.children[0]).toEqual("andy-warhol & friends")
   })
 
   it("throws an error when not embedded in a context provider", () => {
