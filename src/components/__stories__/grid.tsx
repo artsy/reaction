@@ -1,6 +1,5 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
-import * as Relay from "react-relay"
 
 import { Col, Row } from "../grid"
 

@@ -1,7 +1,5 @@
-import { partition } from "lodash"
 import * as React from "react"
 import * as Relay from "react-relay"
-import * as sharify from "sharify"
 import styled, { ThemeProvider } from "styled-components"
 
 import theme from "../../../../assets/theme"

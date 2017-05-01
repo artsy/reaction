@@ -1,4 +1,3 @@
-import * as express from "express"
 import * as sharify from "sharify"
 
 export interface FormData {

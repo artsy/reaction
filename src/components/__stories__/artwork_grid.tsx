@@ -1,8 +1,7 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Artwork from "../artwork/index"
 import ArtworkGrid from "../artwork_grid"
 
 import { artsyNetworkLayer } from "../../relay/config"

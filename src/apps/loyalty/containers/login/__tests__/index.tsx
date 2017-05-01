@@ -65,10 +65,6 @@ describe("login", () => {
       })
     })
 
-    const mockRedirectTo = Login.prototype.redirectTo = (url: string) => {
-      expect(url).toEqual("/loyalty/inquiries")
-    }
-
     const login = <Login form={formConfig} />
     const renderedComponent = TestUtils.renderIntoDocument(login) as Login
 

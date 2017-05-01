@@ -10,7 +10,7 @@ import CurrentUserRoute from "../../../relay/queries/current_user"
 import InquiriesContainer from "../containers/inquiries"
 import LoginContainer from "../containers/login"
 
-import { CollectorProfileResponse, markCollectorAsLoyaltyApplicant } from "./gravity"
+import { markCollectorAsLoyaltyApplicant } from "./gravity"
 import { ThankYouHtml } from "./helpers"
 import renderPage from "./template"
 
