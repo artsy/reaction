@@ -73,13 +73,15 @@ export class ContextProvider extends React.Component<Props, null> {
 export function ContextConsumer<P>(
   Component: React.ComponentClass<P> | React.StatelessComponent<P>,
 ): React.ComponentClass<P> {
+  const name = Component.displayName || Component.name
   return class extends React.Component<P, void> {
     static contextTypes = ContextTypes
+    static displayName = `Artsy(${name})`
 
     constructor(props, context) {
       if (!context.artsy) {
-        const name = Component.displayName || Component.name || "A component"
-        throw new Error(`${name}, which needs Artsy context props, was not wrapped inside a ContextProvider component.`)
+        const start = name || "A component"
+        throw new Error(`${start}, which needs Artsy props, was not wrapped inside a ContextProvider component.`)
       }
       super(props, context)
     }

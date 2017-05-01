@@ -39,4 +39,8 @@ describe("Artsy context", () => {
       )
     }).toThrowErrorMatchingSnapshot()
   })
+
+  it("has a display name for React DevTools purposes", () => {
+    expect(WithCurrentUser.displayName).toEqual("Artsy(ShowCurrentUser)")
+  })
 })
