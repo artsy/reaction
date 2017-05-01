@@ -1,4 +1,4 @@
-import fetch from "isomorphic-fetch"
+// import * as fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -59,11 +59,7 @@ class ForgotPasswordForm extends React.Component<Props, any> {
     })
   }
 
-  onClickSubmitButton(e: React.FormEvent<HTMLButtonElement>) {
-    e.preventDefault()
-    // TODO: send reset email, show error message if failed
-
-
+  onClickSubmitButton(e) {
     const options: RequestInit = {
       method: "POST",
       // credentials: "same-origin",
@@ -77,7 +73,7 @@ class ForgotPasswordForm extends React.Component<Props, any> {
       }),
     }
 
-    fetch(this.props.submitEmailUrl, options).then(res => {
+    return fetch(this.props.submitEmailUrl, options).then(res => {
       if (res.status === 201) {
         this.setState({
           showMessage: true,
@@ -97,8 +93,9 @@ class ForgotPasswordForm extends React.Component<Props, any> {
           ? <span>No account exists for <b>{this.state.email}</b></span>
           : <span>Instructions on how to reset your password have been sent to <b>{this.state.email}</b></span>
 
+    // console.log("rendering message", message)
     return this.state.showMessage ? (
-      <Message error={!!this.state.error} >
+      <Message error={!!this.state.error}>
         {message}
       </Message>
     ) : ""
@@ -113,7 +110,9 @@ class ForgotPasswordForm extends React.Component<Props, any> {
           Enter the email address associated<br />with your account.
         </Text>
 
-        {this.renderMessageBox()}
+        <div className="message-box">
+          {this.renderMessageBox()}
+        </div>
 
         <StyledInput
           name="email"

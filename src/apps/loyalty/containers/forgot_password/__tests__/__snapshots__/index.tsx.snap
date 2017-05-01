@@ -1,4 +1,4 @@
-exports[`Reset password renders the snapshot 1`] = `
+exports[`<ForgotPassword /> renders the snapshot 1`] = `
 <div
   className="FLXHp">
   <div
@@ -12,7 +12,10 @@ exports[`Reset password renders the snapshot 1`] = `
     <br />
     with your account.
   </p>
-  
+  <div
+    className="message-box">
+    
+  </div>
   <input
     autoFocus={true}
     className="gUzbJk VzJlT"
