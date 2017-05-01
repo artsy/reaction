@@ -1,3 +1,4 @@
+import * as PropTypes from "prop-types"
 import * as React from "react"
 import * as sharify from "sharify"
 
@@ -24,8 +25,8 @@ interface Props {
 }
 
 const ContextTypes = {
-  artsy: React.PropTypes.shape({
-    currentUser: React.PropTypes.object,
+  artsy: PropTypes.shape({
+    currentUser: PropTypes.object,
   }),
 }
 
