@@ -16,9 +16,9 @@ export class Spinner extends React.Component<Props, null> {
 }
 
 const spin = keyframes`
-	100% {
-		transform: rotate(360deg)
-	}
+  100% {
+    transform: rotate(360deg)
+  }
 `
 
 const StyledSpinner = styled(Spinner)`
