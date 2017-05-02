@@ -1,4 +1,4 @@
-import fetch, { Response } from "node-fetch"
+import fetch from "node-fetch"
 const { API_URL } = process.env
 
 export interface CollectorProfileResponse {

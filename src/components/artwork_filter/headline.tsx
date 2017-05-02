@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import { secondary } from "../../assets/fonts"
-import labelMap from "./param_map"
 
 import { compact } from "lodash"
 import styled from "styled-components"

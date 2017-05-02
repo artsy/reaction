@@ -1,6 +1,5 @@
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../assets/colors"
 import "../assets/fonts"
 import icons, { IconName } from "../assets/icons"
 

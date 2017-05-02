@@ -1,11 +1,13 @@
-import IsomorphicRelay from "isomorphic-relay"
 import * as React from "react"
 import { render } from "react-dom"
 import Login from "./index"
 
-const formData = require("sharify").data.FORM_DATA
+import * as sharify from "sharify"
+import { ResponseLocalData } from "../../types"
+
+const data = sharify.data as ResponseLocalData
 
 render(
-  <Login form={formData} />,
+  <Login form={data.FORM_DATA} />,
   document.getElementById("app-container"),
 )

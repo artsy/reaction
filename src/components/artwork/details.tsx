@@ -1,11 +1,8 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-import styled from "styled-components"
-import colors from "../../assets/colors"
 import TextLink from "../text_link"
 
-export interface DetailsProps extends React.HTMLProps<ArtworkDetails> {
-  artwork: any
+export interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {
   showSaleLine: boolean
 }
 
@@ -20,10 +17,9 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
     if (cultural_maker) {
       return <div><strong>{cultural_maker}</strong></div>
     } else if (artists && artists.length) {
-      let artistLine = artists
-        .map(artist => <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>)
-        .reduce((prev, curr) => [prev, ", ", curr])
-
+      const artistLine = artists.reduce((acc, artist) => {
+        return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
+      }, []).slice(1)
       return <div><strong>{artistLine}</strong></div>
     }
   }
@@ -110,11 +106,14 @@ interface RelayProps {
     sale_message: string | null,
     cultural_maker: string | null,
     artists: Array<{
+      __id: string,
+      href: string | null,
       name: string | null,
     } | null> | null,
     collecting_institution: string | null,
     partner: {
       name: string | null,
+      href: string | null,
     } | null,
     sale: {
       is_auction: boolean | null,

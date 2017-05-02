@@ -1,7 +1,5 @@
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../assets/colors"
-import * as fonts from "../assets/fonts"
 import { block } from "./helpers"
 import { borderedInput } from "./mixins"
 

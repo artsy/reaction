@@ -18,6 +18,7 @@ const inquiryProps: Props = {
                 url: "http://path.to.cat.pics",
               },
               artists: [{
+                __id: "percy-z",
                 name: "Percy Z",
                 href: "/percy-z",
               }],
@@ -33,6 +34,7 @@ const inquiryProps: Props = {
                 url: "http://path.to.cat.pics",
               },
               artists: [{
+                __id: "percy-z-convoless",
                 name: "Percy Z Without Conversation",
                 href: "/percy-z-without-conversation",
               }],
