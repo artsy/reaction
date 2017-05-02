@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
 import BorderedPulldown from "../bordered_pulldown"
+import Spinner from "../spinner"
+
 import Dropdown from "./dropdown"
 import ForSaleCheckbox from "./for_sale_checkbox"
 import Headline from "./headline"
@@ -122,6 +124,9 @@ class ArtworkFilter extends React.Component<Props, State> {
           onLoadMore={() => this.handleLoadMore()}
           columnCount={3}
         />
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
       </div>
     )
   }
@@ -136,6 +141,12 @@ const SubFilterBar = styled.div`
   justify-content: space-between;
   padding: 40px 0 20px;
   align-items: center;
+`
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 200px;
+  position: relative;
 `
 
 export default Relay.createContainer(ArtworkFilter, {
