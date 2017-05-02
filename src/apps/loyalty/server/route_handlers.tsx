@@ -1,4 +1,5 @@
 import * as artsyPassport from "artsy-passport"
+import * as artsyXapp from "artsy-xapp"
 import { NextFunction, Request, Response } from "express"
 import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as React from "react"
@@ -7,6 +8,7 @@ import * as styleSheet from "styled-components/lib/models/StyleSheet"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
 
+import ForgotPasswordContainer from "../containers/forgot_password"
 import InquiriesContainer from "../containers/inquiries"
 import LoginContainer from "../containers/login"
 
@@ -89,6 +91,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
   const formConfig: FormData = {
     baseUrl: req.baseUrl,
     url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl + "/inquiries/"}`,
+    forgotPasswordUrl: req.baseUrl + "/forgot-password",
     csrfToken: req.csrfToken(),
     facebookPath,
     twitterPath,
@@ -106,5 +109,22 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     entrypoint: req.baseUrl + "/bundles/login.js",
     sharify: res.locals.sharify,
     baseURL: req.baseUrl,
+  }))
+}
+
+export function ForgotPassword(req: Request, res: Response, next: NextFunction) {
+  const submitUrl = process.env.API_URL + "/api/v1/users/send_reset_password_instructions"
+  const html = renderToString(<ForgotPasswordContainer submitEmailUrl={submitUrl} appToken={artsyXapp.token} />)
+  const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+
+  res.locals.sharify.data.SUBMIT_URL = submitUrl
+  res.locals.sharify.data.APP_TOKEN = artsyXapp.token
+
+  return res.send(renderPage({
+    styles,
+    html,
+    entrypoint: req.baseUrl + "/bundles/forgot_password.js",
+    baseURL: req.baseUrl,
+    sharify: res.locals.sharify,
   }))
 }

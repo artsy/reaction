@@ -4,6 +4,7 @@ export interface FormData {
   baseUrl: string,
   url: string,
   csrfToken: string,
+  forgotPasswordUrl: string,
   facebookPath: string,
   twitterPath: string,
 }

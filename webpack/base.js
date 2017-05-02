@@ -5,11 +5,17 @@ module.exports = () => {
   return {
     entry: {
       "login": [
-        "babel-polyfill", "./src/apps/loyalty/containers/login/browser",
+        "babel-polyfill",
+        "./src/apps/loyalty/containers/login/browser",
       ],
       "inquiries": [
-        "babel-polyfill", "./src/apps/loyalty/containers/inquiries/browser",
+        "babel-polyfill",
+        "./src/apps/loyalty/containers/inquiries/browser",
       ],
+      "forgot_password": [
+        "babel-polyfill",
+        "./src/apps/loyalty/containers/forgot_password/browser"
+      ]
     },
     module: {
       rules: [

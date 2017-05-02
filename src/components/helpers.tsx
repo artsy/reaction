@@ -6,7 +6,7 @@ import theme from "../assets/theme"
  * @param margin value in pixels to remove from width 100%
  */
 export const block = (margin: number = 0) => {
-  return props => {
+  return (props: any = {}) => {
     if (props.block) {
       return css`
         width: calc(100% - ${margin}px);

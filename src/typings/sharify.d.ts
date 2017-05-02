@@ -15,13 +15,15 @@ declare module "sharify" {
      * These properties are set by Force and configured through environment variables.
      */
     export interface GlobalData {
-      readonly METAPHYSICS_ENDPOINT: string,
-      readonly SEGMENT_WRITE_KEY: string,
+      readonly METAPHYSICS_ENDPOINT: string
+      readonly SEGMENT_WRITE_KEY: string
     }
 
     export interface ResponseLocalData extends GlobalData {
-      readonly CURRENT_USER?: CurrentUser,
-      RELAY_DATA?: any,
+      readonly CURRENT_USER?: CurrentUser
+      RELAY_DATA?: any
+      SUBMIT_URL?: string
+      APP_TOKEN?: string
     }
 
     export interface ResponseLocal {
@@ -29,13 +31,13 @@ declare module "sharify" {
        * Request specific data. Use this to store data that’s to be used by other parts of the stack during the
        * processing of the remainder of the request and to store data that’s to be made available to the client.
        */
-      data: ResponseLocalData,
-      script: () => string,
+      data: ResponseLocalData
+      script: () => string
     }
 
     export interface CurrentUser {
-      id: string,
-      accessToken: string,
+      id: string
+      accessToken: string
     }
   }
 }

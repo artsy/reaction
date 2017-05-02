@@ -11,6 +11,7 @@ const session = require("cookie-session")
 const cookieParser = require("cookie-parser")
 const sharify = require("sharify")
 const bodyParser = require("body-parser")
+const artsyXapp = require("artsy-xapp")
 
 // Long symbolicated stack traces, which includes traces that occurred in an earlier tick of the event loop.
 require("longjohn")
@@ -131,6 +132,9 @@ app.use((req, res, next) => {
   router(req, res, next)
 })
 
-app.listen(3000, () => {
-  console.log("✨  Listening on http://localhost:3000") // tslint:disable-line
+const { API_URL, ARTSY_ID, ARTSY_SECRET } = process.env
+artsyXapp.init({ url: API_URL, id: ARTSY_ID, secret: ARTSY_SECRET }, () => {
+  app.listen(3000, () => {
+    console.log("✨  Listening on http://localhost:3000") // tslint:disable-line
+  })
 })
