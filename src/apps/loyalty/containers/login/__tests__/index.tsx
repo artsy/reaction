@@ -71,12 +71,31 @@ describe("login", () => {
     TestUtils.Simulate.submit(TestUtils.findRenderedDOMComponentWithTag(renderedComponent, "form"))
   })
 
-  it("displays error message from catch", done => {
+  it("displays an internal error message", done => {
     const fetch = require("isomorphic-fetch")
     fetch.mockImplementation(() => {
-      return Promise.reject({
+      return Promise.resolve({
         status: 500,
       })
+    })
+
+    const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
+
+    TestUtils.Simulate.submit(TestUtils.findRenderedDOMComponentWithTag(login, "form"))
+
+    // Wait till the next event loop tick to assert on the expected DOM state,
+    // because `setState` isn’t going to re-render until the next tick either.
+    setImmediate(() => {
+      const error = TestUtils.findRenderedDOMComponentWithClass(login, "error")
+      expect(error.textContent).toBe("Internal Error. Please contact support@artsy.net")
+      done()
+    })
+  })
+
+  it("displays a connection error message from catch", done => {
+    const fetch = require("isomorphic-fetch")
+    fetch.mockImplementation(() => {
+      return Promise.reject(new Error("Oh noes!"))
     })
 
     const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
