@@ -3,11 +3,8 @@ import * as artsyXapp from "artsy-xapp"
 import { NextFunction, Request, Response } from "express"
 import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as React from "react"
-
 import { renderToString } from "react-dom/server"
 import * as styleSheet from "styled-components/lib/models/StyleSheet"
-import { CollectorProfileResponse } from "./gravity"
-import renderPage from "./template"
 
 import CurrentUserRoute from "../../../relay/queries/current_user"
 
@@ -17,6 +14,10 @@ import LoginContainer from "../containers/login"
 
 import { markCollectorAsLoyaltyApplicant } from "./gravity"
 import { ThankYouHtml } from "./helpers"
+import renderPage from "./template"
+
+import * as Artsy from "../../../components/artsy"
+import { FormData, ResponseLocalData } from "../types"
 
 export function Home(req: Request, res: Response, next: NextFunction) {
   return res.redirect(req.baseUrl + "/inquiries")
@@ -64,11 +65,14 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
     Container: InquiriesContainer,
     queryConfig: new CurrentUserRoute(),
   }, res.locals.networkLayer).then(
-    ({data, props}) => {
-      const html = renderToString(<IsomorphicRelay.Renderer {...props} />)
+    ({ data, props }) => {
+      const html = renderToString(
+        <Artsy.ContextProvider currentUser={res.locals.sharify.data.CURRENT_USER}>
+          <IsomorphicRelay.Renderer {...props} />
+        </Artsy.ContextProvider>,
+      )
       const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-      res.locals.sharify.data.USER_DATA = req.user.toJSON()
-      res.locals.sharify.data.DATA = data
+      res.locals.sharify.data.RELAY_DATA = data
       return res.send(renderPage({
         styles,
         html,
@@ -84,7 +88,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
     facebookPath,
     twitterPath,
   } = artsyPassport.options
-  const formConfig = {
+  const formConfig: FormData = {
     baseUrl: req.baseUrl,
     url: `${req.baseUrl + req.path}?redirect-to=${req.baseUrl + "/inquiries/"}`,
     forgotPasswordUrl: req.baseUrl + "/forgot-password",
@@ -96,8 +100,8 @@ export function Login(req: Request, res: Response, next: NextFunction) {
   const html = renderToString(<LoginContainer form={formConfig} />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
 
-  res.locals.sharify.data.BASE_URL = req.baseUrl
-  res.locals.sharify.data.FORM_DATA = formConfig
+  const data = res.locals.sharify.data as ResponseLocalData
+  data.FORM_DATA = formConfig
 
   return res.send(renderPage({
     styles,

@@ -1,7 +1,6 @@
 import { shallow } from "enzyme"
 import * as fetchMock from "fetch-mock"
 import * as React from "react"
-import * as TestUtils from "react-dom/test-utils"
 import * as renderer from "react-test-renderer"
 
 import Button from "../../../../../components/buttons/inverted"

@@ -1,4 +1,4 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
 
@@ -58,7 +58,7 @@ const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDrop
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
-          aggregations: [MEDIUM, GALLERY], 
+          aggregations: [MEDIUM, GALLERY],
           artist_id: "christopher-williams"
         ) {
           aggregations {
@@ -96,7 +96,7 @@ const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTo
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
-          aggregations: [TOTAL], 
+          aggregations: [TOTAL],
           artist_id: "christopher-williams"
         ) {
           ${TotalCount.getFragment("filter_artworks")}

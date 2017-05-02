@@ -124,21 +124,24 @@ class Login extends React.Component<LoginProps, LoginState> {
       }),
     }
 
-    fetch(this.props.form.url, options).then(res => {
-      if (res.status === 200) {
-        // redirect to '/inquiries'
-        this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
-      } else {
+    fetch(this.props.form.url, options)
+      .then(res => res.status >= 500 ? Promise.reject(res) : res)
+      .then(res => {
+        if (res.status === 200) {
+          this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
+        } else {
+          this.setState({
+            error: "Invalid email or password",
+          })
+        }
+      }).catch(err => {
+        if (process.env.NODE_ENV !== "test") {
+          console.error(err)
+        }
         this.setState({
-          error: "Invalid email or password",
+          error: "Internal Error. Please contact support@artsy.net",
         })
-      }
-    }).catch(err => {
-      console.error(err)
-      this.setState({
-        error: "Internal Error. Please contact support@artsy.net",
       })
-    })
   }
 
   redirectTo(url: string) {

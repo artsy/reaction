@@ -1,6 +1,5 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
-import * as Relay from "react-relay"
 
 import Button, { ButtonState } from "../buttons/default"
 import FacebookButton from "../buttons/facebook"

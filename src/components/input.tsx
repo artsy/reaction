@@ -1,6 +1,5 @@
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../assets/colors"
 import * as fonts from "../assets/fonts"
 import { block } from "./helpers"
 import { border, borderedInput } from "./mixins"
@@ -49,7 +48,7 @@ const StyledDiv = styled.div`
 
 const BorderClassname = "border-container"
 
-class Input extends React.Component<InputProps, any> {
+class Input extends React.Component<InputProps, InputState> {
   constructor(props) {
     super(props)
     this.state = {

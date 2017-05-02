@@ -1,7 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
 import * as fonts from "../assets/fonts"
-import TextLink from "./text_link"
 
 interface NavLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   href: string

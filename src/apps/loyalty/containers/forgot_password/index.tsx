@@ -27,7 +27,7 @@ const StyledInput = styled(Input)`
 `
 
 interface Props {
-  submitEmailUrl: string,
+  submitEmailUrl: string
   appToken: string
 }
 
@@ -38,7 +38,7 @@ interface State {
   isEmailValid: boolean
 }
 
-class ForgotPasswordForm extends React.Component<Props, any> {
+class ForgotPasswordForm extends React.Component<Props, State> {
   constructor(props) {
     super(props)
 
@@ -62,7 +62,6 @@ class ForgotPasswordForm extends React.Component<Props, any> {
   onClickSubmitButton(e) {
     const options: RequestInit = {
       method: "POST",
-      // credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -142,5 +141,5 @@ class ForgotPasswordForm extends React.Component<Props, any> {
 export default ForgotPasswordForm
 
 function validateEmail(email) {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+  return /^\w+([+\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
 }

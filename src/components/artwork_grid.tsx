@@ -2,7 +2,6 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
-import { debounce } from "lodash"
 import styled from "styled-components"
 import Artwork from "./artwork/grid_item"
 

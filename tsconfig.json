@@ -8,7 +8,8 @@
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
         "baseUrl": "src",
-        "outDir": "dist"
+        "outDir": "dist",
+        "noUnusedLocals": true
     },
     "awesomeTypescriptLoaderOptions": {
         "silent": false,

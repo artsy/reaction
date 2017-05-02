@@ -1,4 +1,4 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
 
 import Button from "../buttons/inverted"

@@ -1,7 +1,6 @@
 import * as React from "react"
 import styled, { injectGlobal } from "styled-components"
 import colors from "../assets/colors"
-import * as fonts from "../assets/fonts"
 import Icon from "./icon"
 
 const Nav = styled.div`
