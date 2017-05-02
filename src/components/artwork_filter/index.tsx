@@ -61,6 +61,7 @@ class ArtworkFilter extends React.Component<Props, State> {
     })
     this.props.relay.setVariables({
       for_sale: forSaleVar,
+      size: PageSize,
     })
   }
 
@@ -70,12 +71,14 @@ class ArtworkFilter extends React.Component<Props, State> {
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
+      size: PageSize,
     })
   }
 
   onChangeSort(option) {
     this.props.relay.setVariables({
       sort: option.val,
+      size: PageSize,
     })
   }
 
