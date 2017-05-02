@@ -6,6 +6,7 @@ import ArtworkGrid from "../artwork_grid"
 
 import { artsyNetworkLayer } from "../../relay/config"
 import ArtistQueryConfig from "../../relay/queries/artist"
+import * as Artsy from "../artsy"
 
 export class ArtistArtworks extends React.Component<RelayProps, null> {
   render() {
@@ -44,6 +45,14 @@ function GridExample(props: { artistID: string }) {
 }
 
 storiesOf("ArtworkGrid", ArtworkGrid)
-  .add("A typical grid", () => (
-    <GridExample artistID="banksy" />
-  ))
+  .add("A typical grid", () => {
+    const user: Artsy.CurrentUser = {
+      id: "some-id",
+      accessToken: "some-token",
+    }
+    return (
+      <Artsy.ContextProvider currentUser={user}>
+        <GridExample artistID="banksy" />
+      </Artsy.ContextProvider>
+    )
+  })
