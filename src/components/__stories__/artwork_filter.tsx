@@ -2,6 +2,7 @@ import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
 
+import * as Artsy from "../../components/artsy"
 import { artsyNetworkLayer } from "../../relay/config"
 import FilterArtworksQueryConfig from "../../relay/queries/filter_artworks"
 
@@ -138,11 +139,17 @@ function FilterArtworksTotalCountExample() {
 
 function FilterArtworksExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
+  const user: Artsy.CurrentUser = {
+    id: "some-id",
+    accessToken: "some-token",
+  }
   return (
-    <Relay.RootContainer
-      Component={ArtworksFilter}
-      route={new FilterArtworksQueryConfig()}
-    />
+    <Artsy.ContextProvider currentUser={user}>
+      <Relay.RootContainer
+        Component={ArtworksFilter}
+        route={new FilterArtworksQueryConfig()}
+      />
+    </Artsy.ContextProvider>
   )
 }
 
