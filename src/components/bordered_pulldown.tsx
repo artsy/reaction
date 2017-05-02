@@ -26,9 +26,16 @@ export class BorderedPulldown extends React.Component<Props, State> {
     }
   }
 
+  toggleHover(value) {
+    this.setState({
+      isHovered: value,
+    })
+  }
+
   onChange(option) {
     this.setState({
       selected: option,
+      isHovered: false,
     })
     this.props.onChange(option)
   }
@@ -48,9 +55,20 @@ export class BorderedPulldown extends React.Component<Props, State> {
     })
 
     const displayValue = this.state.selected && this.state.selected.name || defaultValue
+    let pulldownStyles = {}
+
+    if (this.state.isHovered) {
+      pulldownStyles = {
+        display: "block",
+      }
+    }
 
     return (
-      <div className={this.props.className}>
+      <div
+        className={this.props.className}
+        onMouseEnter={() => this.toggleHover(true)}
+        onMouseLeave={() => this.toggleHover(false)}
+      >
         <Toggle>
           <span>
             {displayValue}
@@ -63,7 +81,7 @@ export class BorderedPulldown extends React.Component<Props, State> {
             />
           </CaretHolder>
         </Toggle>
-        <PulldownOptions className="bordered-pulldown-options">
+        <PulldownOptions style={pulldownStyles}>
           {optionEls}
         </PulldownOptions>
       </div>
@@ -79,10 +97,6 @@ const StyledBorderedPulldown = styled(BorderedPulldown)`
   border: 2px solid ${colors.grayMedium};
   text-align: left;
   font-size: 17px;
-  &:hover > .bordered-pulldown-options {
-    display: block;
-    border-color: gray-color;
-  }
   &.is-disabled {
     .bordered-pulldown-toggle {
       cursor: default;

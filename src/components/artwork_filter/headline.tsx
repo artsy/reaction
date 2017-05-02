@@ -1,4 +1,5 @@
 import * as React from "react"
+import * as Relay from "react-relay"
 
 import { secondary } from "../../assets/fonts"
 
@@ -10,6 +11,7 @@ interface Props extends React.HTMLProps<Headline> {
   price_range: string,
   dimension_range: string,
   for_sale: boolean,
+  facet?: any,
 }
 
 export class Headline extends React.Component<Props, null> {
@@ -23,11 +25,16 @@ export class Headline extends React.Component<Props, null> {
   }
 
   medium() {
-    const { medium } = this.props
+    const { medium, facet } = this.props
 
     if (medium && medium !== "*") {
       return medium
     }
+
+    if (facet && facet.name) {
+      return facet.name
+    }
+
     return "Works"
   }
 
@@ -76,4 +83,14 @@ const StyledHeadline = styled(Headline)`
   font-size: 2em;
 `
 
-export default StyledHeadline
+export default Relay.createContainer(StyledHeadline, {
+  fragments: {
+    facet: () => Relay.QL`
+      fragment on ArtworkFilterFacet {
+        ... on ArtworkFilterTag {
+          name
+        }
+      }
+    `,
+  },
+})
