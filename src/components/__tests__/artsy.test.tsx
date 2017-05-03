@@ -4,7 +4,7 @@ import * as renderer from "react-test-renderer"
 import * as Artsy from "../artsy"
 
 const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
-  let text = props.currentUser.id
+  let text = props.currentUser.name
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
   }
@@ -14,9 +14,10 @@ const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string 
 const WithCurrentUser = Artsy.ContextConsumer(ShowCurrentUser)
 
 describe("Artsy context", () => {
-  const currentUser: Artsy.CurrentUser = {
+  const currentUser: User = {
     id: "andy-warhol",
     accessToken: "secret",
+    name: "Andy Warhol",
   }
 
   it("exposes the currently signed-in user", () => {
@@ -25,7 +26,7 @@ describe("Artsy context", () => {
         <WithCurrentUser />
       </Artsy.ContextProvider>,
     ).toJSON()
-    expect(div.children[0]).toEqual("andy-warhol")
+    expect(div.children[0]).toEqual("Andy Warhol")
   })
 
   it("passes other props on", () => {
@@ -34,7 +35,7 @@ describe("Artsy context", () => {
         <WithCurrentUser additionalProp="friends" />
       </Artsy.ContextProvider>,
     ).toJSON()
-    expect(div.children[0]).toEqual("andy-warhol & friends")
+    expect(div.children[0]).toEqual("Andy Warhol & friends")
   })
 
   it("throws an error when not embedded in a context provider", () => {

@@ -25,22 +25,22 @@ describe("ThankYouHTML", () => {
 
 describe ("ThankYou page", () => {
   it("redirects to /login if there is no user", () => {
-    let req = { baseUrl: "loyalty" } as any
-    let res = { redirect: jest.fn() } as any
-    let next = jest.fn() as any
+    const req = { baseUrl: "loyalty" } as any
+    const res = { redirect: jest.fn(), locals: { sd: { CURRENT_USER: undefined } } } as any
+    const next = jest.fn() as any
     ThankYou(req, res, next)
     expect(res.redirect).toHaveBeenCalledWith("loyalty/login")
   })
 
   it("redirects to /loyalty if the user is not a loyalty applicant", () => {
-    let get = () => {
-      return {
+    const CURRENT_USER = {
+      profile: {
         loyalty_applicant_at: null,
       }
     }
-    let req = { baseUrl: "loyalty", user: { get } } as any
-    let res = { redirect: jest.fn() } as any
-    let next = jest.fn() as any
+    const req = { baseUrl: "loyalty" } as any
+    const res = { redirect: jest.fn(), locals: { sd: { CURRENT_USER } } } as any
+    const next = jest.fn() as any
     ThankYou(req, res, next)
     expect(res.redirect).toHaveBeenCalledWith("loyalty")
   })

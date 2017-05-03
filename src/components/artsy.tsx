@@ -1,11 +1,5 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
-import * as sharify from "sharify"
-
-/**
- * The currently signed-in user.
- */
-export interface CurrentUser extends sharify.CurrentUser {}
 
 /**
  * The Artsy specific props injected by the higher-order component produced by `ContextConsumer`.
@@ -17,7 +11,10 @@ export interface CurrentUser extends sharify.CurrentUser {}
  *       optional and simply remove it from the props that a component wrapped with the `ContextConsumer` HOC accepts.
  */
 export interface ContextProps {
-  currentUser?: CurrentUser,
+  /**
+   * The currently signed-in user.
+   */
+  currentUser?: User,
 }
 
 interface PrivateContextProps extends ContextProps {

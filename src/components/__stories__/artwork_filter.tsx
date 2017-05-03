@@ -139,10 +139,10 @@ function FilterArtworksTotalCountExample() {
 
 function FilterArtworksExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  const user: Artsy.CurrentUser = {
+  const user = {
     id: "some-id",
     accessToken: "some-token",
-  }
+  } as User
   return (
     <Artsy.ContextProvider currentUser={user}>
       <Relay.RootContainer

@@ -20,7 +20,7 @@ declare module "sharify" {
     }
 
     export interface ResponseLocalData extends GlobalData {
-      readonly CURRENT_USER?: CurrentUser
+      readonly CURRENT_USER?: User
       RELAY_DATA?: any
       SUBMIT_URL?: string
       APP_TOKEN?: string
@@ -33,11 +33,6 @@ declare module "sharify" {
        */
       data: ResponseLocalData
       script: () => string
-    }
-
-    export interface CurrentUser {
-      id: string
-      accessToken: string
     }
   }
 }
