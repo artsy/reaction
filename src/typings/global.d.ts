@@ -14,11 +14,23 @@ declare global {
 
 declare module "express" {
   interface ArtsyResponseLocals {
-    sharify: sharify.ResponseLocal,
-    networkLayer: Relay.DefaultNetworkLayer,
+    sharify: sharify.ResponseLocal
+
+    /**
+     * A short-hand convenience accessor for `sharify.data`.
+     */
+    sd: sharify.ResponseLocalData
+
+    /**
+     * A Relay network layer configured for Artsy’s GraphQL service (metaphysics).
+     */
+    networkLayer: Relay.DefaultNetworkLayer
   }
 
   interface Response {
-    locals: ArtsyResponseLocals,
+    /**
+     * An interface for `response.locals` that can be extended with route specific locals.
+     */
+    locals: ArtsyResponseLocals
   }
 }

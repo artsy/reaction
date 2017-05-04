@@ -17,25 +17,27 @@ import { ThankYouHtml } from "./helpers"
 import renderPage from "./template"
 
 import * as Artsy from "../../../components/artsy"
-import { FormData, ResponseLocalData } from "../types"
+import { FormData, LoginResponseLocalData } from "../types"
 
 export function Home(req: Request, res: Response, next: NextFunction) {
   return res.redirect(req.baseUrl + "/inquiries")
 }
 
 export function ThankYou(req: Request, res: Response, next: NextFunction) {
-  const { loginPagePath } = artsyPassport.options
-  if (!req.user) {
+  const { CURRENT_USER } = res.locals.sd
+
+  if (!CURRENT_USER) {
+    const { loginPagePath } = artsyPassport.options
     return res.redirect(req.baseUrl + loginPagePath)
   }
 
-  const info = req.user.get("profile")
+  const info = CURRENT_USER.profile
   let html
 
   if (info.loyalty_applicant_at) {
-    html = ThankYouHtml(info, req.user.attributes.name, req.query.recent_applicant)
+    html = ThankYouHtml(info, CURRENT_USER.name, req.query.recent_applicant)
   } else {
-    return res.redirect(req.baseUrl) // baseUrl already has "/loyalty" so no need to append it.
+    return res.redirect(req.baseUrl) // TODO add test: baseUrl already has "/loyalty" so no need to append it.
   }
 
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
@@ -43,18 +45,20 @@ export function ThankYou(req: Request, res: Response, next: NextFunction) {
 }
 
 export function Inquiries(req: Request, res: Response, next: NextFunction) {
-  const { loginPagePath } = artsyPassport.options
-  if (!req.user) {
+  const { CURRENT_USER } = res.locals.sd
+
+  if (!CURRENT_USER) {
+    const { loginPagePath } = artsyPassport.options
     return res.redirect(req.baseUrl + loginPagePath)
   }
 
-  const info = req.user.get("profile")
+  const info = CURRENT_USER.profile
   if (info.loyalty_applicant_at) {
     return res.redirect(req.baseUrl + "/thank-you")
   }
 
   if (info.confirmed_buyer_at) {
-    markCollectorAsLoyaltyApplicant(req.user.get("accessToken"))
+    markCollectorAsLoyaltyApplicant(CURRENT_USER.accessToken)
       .then(profile => {
         res.redirect(req.baseUrl + "/thank-you")
       })
@@ -66,7 +70,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
     }, res.locals.networkLayer).then(
       ({ data, props }) => {
         const html = renderToString(
-          <Artsy.ContextProvider currentUser={res.locals.sharify.data.CURRENT_USER}>
+          <Artsy.ContextProvider currentUser={CURRENT_USER}>
             <IsomorphicRelay.Renderer {...props} />
           </Artsy.ContextProvider>,
         )
@@ -100,7 +104,7 @@ export function Login(req: Request, res: Response, next: NextFunction) {
   const html = renderToString(<LoginContainer form={formConfig} />)
   const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
 
-  const data = res.locals.sharify.data as ResponseLocalData
+  const data = res.locals.sd as LoginResponseLocalData
   data.FORM_DATA = formConfig
 
   return res.send(renderPage({
