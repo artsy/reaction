@@ -56,31 +56,31 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
   if (info.confirmed_buyer_at) {
     markCollectorAsLoyaltyApplicant(req.user.get("accessToken"))
       .then(profile => {
-        return res.redirect(req.baseUrl + "/thank-you")
+        res.redirect(req.baseUrl + "/thank-you")
       })
       .catch(err => console.error(err))
+  } else {
+    IsomorphicRelay.prepareData({
+      Container: InquiriesContainer,
+      queryConfig: new CurrentUserRoute(),
+    }, res.locals.networkLayer).then(
+      ({ data, props }) => {
+        const html = renderToString(
+          <Artsy.ContextProvider currentUser={res.locals.sharify.data.CURRENT_USER}>
+            <IsomorphicRelay.Renderer {...props} />
+          </Artsy.ContextProvider>,
+        )
+        const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
+        res.locals.sharify.data.RELAY_DATA = data
+        return res.send(renderPage({
+          styles,
+          html,
+          entrypoint: req.baseUrl + "/bundles/inquiries.js",
+          sharify: res.locals.sharify,
+          baseURL: req.baseUrl,
+        }))
+      })
   }
-
-  IsomorphicRelay.prepareData({
-    Container: InquiriesContainer,
-    queryConfig: new CurrentUserRoute(),
-  }, res.locals.networkLayer).then(
-    ({ data, props }) => {
-      const html = renderToString(
-        <Artsy.ContextProvider currentUser={res.locals.sharify.data.CURRENT_USER}>
-          <IsomorphicRelay.Renderer {...props} />
-        </Artsy.ContextProvider>,
-      )
-      const styles = styleSheet.rules().map(rule => rule.cssText).join("\n")
-      res.locals.sharify.data.RELAY_DATA = data
-      return res.send(renderPage({
-        styles,
-        html,
-        entrypoint: req.baseUrl + "/bundles/inquiries.js",
-        sharify: res.locals.sharify,
-        baseURL: req.baseUrl,
-      }))
-    })
 }
 
 export function Login(req: Request, res: Response, next: NextFunction) {
