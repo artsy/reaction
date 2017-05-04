@@ -1,8 +1,8 @@
 import { extend, pick } from "lodash"
 import * as sharify from "sharify"
 
-import { ResponseLocalData } from "./types"
-const data = sharify.data as ResponseLocalData
+import { LoginResponseLocalData } from "./types"
+const data = sharify.data as LoginResponseLocalData
 
 export function initAnalytics() {
   Identify()
