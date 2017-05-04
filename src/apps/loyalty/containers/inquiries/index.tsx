@@ -181,7 +181,7 @@ export class Inquiries extends React.Component<Props, State> {
 
     const props = {
       user_id: this.props.currentUser.id,
-      inquiry_ids: ids,
+      impulse_conversation_ids: ids,
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,
     }
