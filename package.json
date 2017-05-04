@@ -112,7 +112,8 @@
     "react-styled-flexboxgrid": "^1.0.2",
     "request": "^2.81.0",
     "sharify": "^0.1.6",
-    "styled-components": "^1.4.3"
+    "styled-components": "^1.4.3",
+    "uuid": "^3.0.1"
   },
   "graphql": {
     "file": "data/schema.json",

@@ -185,6 +185,7 @@ export class Inquiries extends React.Component<Props, State> {
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,
     }
+
     window.analytics.track("Submitted loyalty purchases", props)
   }
 
