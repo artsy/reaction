@@ -19,6 +19,8 @@ import * as Artsy from "../../../../components/artsy"
 import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
 import UpdateConversationMutation from "./mutations/update_conversation"
 
+import { TrackSubmission } from "../../analytics"
+
 const InquiryContainer = styled.div`
   margin-bottom: 60px;
   width: 100%;
@@ -185,7 +187,7 @@ export class Inquiries extends React.Component<Props, State> {
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,
     }
-    window.analytics.track("Submitted loyalty purchases", props)
+    TrackSubmission(props)
   }
 
   enableSubmitButton() {

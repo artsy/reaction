@@ -24,6 +24,7 @@ declare module "sharify" {
       RELAY_DATA?: any
       SUBMIT_URL?: string
       APP_TOKEN?: string
+      SESSION_ID?: string
     }
 
     export interface ResponseLocal {
