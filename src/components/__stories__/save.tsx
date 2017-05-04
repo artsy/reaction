@@ -9,7 +9,7 @@ import * as Artsy from "../../components/artsy"
 import { artsyNetworkLayer } from "../../relay/config"
 import ArtworkQueryConfig from "../../relay/queries/artwork"
 
-function ArtworkExample(props: { artworkID: string, user: Artsy.CurrentUser }) {
+function ArtworkExample(props: { artworkID: string, user: User }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
   Relay.injectNetworkLayer(artsyNetworkLayer())
@@ -22,10 +22,10 @@ function ArtworkExample(props: { artworkID: string, user: Artsy.CurrentUser }) {
 
 storiesOf("Save Button", SaveButton)
   .add("Save Button", () => {
-    const user: Artsy.CurrentUser = {
+    const user = {
       id: "some-id",
       accessToken: "some-token",
-    }
+    } as User
     return (
       <div style={{width: "200px"}}>
         <ArtworkExample

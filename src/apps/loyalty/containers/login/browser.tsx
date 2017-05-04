@@ -3,9 +3,9 @@ import { render } from "react-dom"
 import Login from "./index"
 
 import * as sharify from "sharify"
-import { ResponseLocalData } from "../../types"
+import { LoginResponseLocalData } from "../../types"
 
-const data = sharify.data as ResponseLocalData
+const data = sharify.data as LoginResponseLocalData
 
 render(
   <Login form={data.FORM_DATA} />,

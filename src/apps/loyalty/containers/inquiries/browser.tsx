@@ -8,13 +8,13 @@ import CurrentUserRoute from "../../../../relay/queries/current_user"
 import Inquiries from "./index"
 
 import * as sharify from "sharify"
-import { ResponseLocalData } from "../../types"
+import { LoginResponseLocalData } from "../../types"
 
 import * as Artsy from "../../../../components/artsy"
 
 import { initAnalytics } from "../../analytics"
 
-const { CURRENT_USER, RELAY_DATA } = sharify.data as ResponseLocalData
+const { CURRENT_USER, RELAY_DATA } = sharify.data as LoginResponseLocalData
 
 const env = new (Relay as any).Environment()
 const networkLayer = artsyNetworkLayer(CURRENT_USER)

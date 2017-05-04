@@ -43,7 +43,6 @@
     "@types/isomorphic-fetch": "^0.0.33",
     "@types/jest": "^18.1.1",
     "@types/node-fetch": "^1.6.7",
-    "@types/passport": "^0.3.3",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.7",
     "@types/react-dom": "^15.5.0",

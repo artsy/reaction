@@ -46,10 +46,10 @@ function GridExample(props: { artistID: string }) {
 
 storiesOf("ArtworkGrid", ArtworkGrid)
   .add("A typical grid", () => {
-    const user: Artsy.CurrentUser = {
+    const user = {
       id: "some-id",
       accessToken: "some-token",
-    }
+    } as User
     return (
       <Artsy.ContextProvider currentUser={user}>
         <GridExample artistID="banksy" />
