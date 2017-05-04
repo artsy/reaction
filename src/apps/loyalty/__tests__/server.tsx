@@ -36,7 +36,7 @@ describe ("ThankYou page", () => {
     const CURRENT_USER = {
       profile: {
         loyalty_applicant_at: null,
-      }
+      },
     }
     const req = { baseUrl: "loyalty" } as any
     const res = { redirect: jest.fn(), locals: { sd: { CURRENT_USER } } } as any
