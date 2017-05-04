@@ -9,6 +9,6 @@ export interface FormData {
   twitterPath: string,
 }
 
-export interface ResponseLocalData extends sharify.ResponseLocalData {
+export interface LoginResponseLocalData extends sharify.ResponseLocalData {
   FORM_DATA?: FormData
 }
