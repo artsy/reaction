@@ -12,6 +12,8 @@ import { ResponseLocalData } from "../../types"
 
 import * as Artsy from "../../../../components/artsy"
 
+import { initAnalytics } from "../../analytics"
+
 const { CURRENT_USER, RELAY_DATA } = sharify.data as ResponseLocalData
 
 const env = new (Relay as any).Environment()
@@ -27,6 +29,7 @@ IsomorphicRelay.prepareInitialRender({
   queryConfig: new CurrentUserRoute(),
   environment: env,
 }).then(props => {
+  initAnalytics()
   render(
     (
       <Artsy.ContextProvider currentUser={CURRENT_USER}>
