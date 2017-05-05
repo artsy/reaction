@@ -1,3 +1,13 @@
+/*
+This file contains common/helper analytics methods that should
+only be used client-side. For example, calling `initAnalytics()`
+will set up all the standard pageview/user/bounce rate tracking.
+
+This relies on `window.analytics` (wrapping Segment's Analytics.js)
+to perform its analytics calls. That library automatically includes
+enriched client-side information in its payload, which is why we
+require/prefer that some calls happen cient-side.
+*/
 import { extend, pick } from "lodash"
 import * as sharify from "sharify"
 
@@ -5,6 +15,9 @@ import { LoginResponseLocalData } from "./types"
 const data = sharify.data as LoginResponseLocalData
 
 export function initAnalytics() {
+  if (typeof(window) === "undefined") {
+    throw new Error("Method should only be used client-side")
+  }
   Identify()
   Pageview()
   FifteenSecondBounceRate()
@@ -35,7 +48,7 @@ function FifteenSecondBounceRate() {
 
 function ThreeMinuteBounceRate() {
   const options = {
-    category: "15 seconds",
+    category: "3 minutes",
     message: location.pathname,
   }
   setTimeout(() => {
