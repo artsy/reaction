@@ -128,6 +128,7 @@ class Login extends React.Component<LoginProps, LoginState> {
       .then(res => res.status >= 500 ? Promise.reject(res) : res)
       .then(res => {
         if (res.status === 200) {
+          window.analytics.track("Successfully logged in")
           this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
         } else {
           this.setState({

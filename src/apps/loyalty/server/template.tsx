@@ -35,6 +35,7 @@ export default ({ styles, html, entrypoint, bootstrapData, sharify, baseURL }: T
           ${bootstrapData ? "<script>" + bootstrapData + "</script>" : ""}
           <script src="${baseURL}/bundles/commons.chunk.js"></script>
           <script src="${entrypoint}"></script>
+          <script src="${baseURL}/bundles/analytics.js"></script>
         </body>
       </html>
     `
