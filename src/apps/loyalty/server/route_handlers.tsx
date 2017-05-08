@@ -62,13 +62,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
       .then(profile => {
         res.redirect(req.baseUrl + "/thank-you")
       })
-      .catch(err => {
-        if (process.env.NODE_ENV === "development") {
-          next(err)
-        } else {
-          next()
-        }
-      })
+      .catch(err => next(err))
   } else {
     IsomorphicRelay.prepareData({
       Container: InquiriesContainer,
@@ -90,13 +84,7 @@ export function Inquiries(req: Request, res: Response, next: NextFunction) {
           baseURL: req.baseUrl,
         }))
       })
-    .catch(err => {
-      if (process.env.NODE_ENV === "development") {
-        next(err)
-      } else {
-        next()
-      }
-    })
+    .catch(err => next(err))
   }
 }
 
