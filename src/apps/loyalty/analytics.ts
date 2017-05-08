@@ -26,8 +26,8 @@ export function initAnalytics() {
 
 function Identify() {
   if (data.CURRENT_USER) {
-    let whitelist = ["collector_level", "default_profile_id", "email", "id", "name", "phone", "type"]
-    let traits = extend(pick(data.CURRENT_USER, whitelist), { session_id: data.SESSION_ID })
+    const whitelist = ["collector_level", "default_profile_id", "email", "id", "name", "phone", "type"]
+    const traits = extend(pick(data.CURRENT_USER, whitelist), { session_id: data.SESSION_ID })
 
     const options = {
       integrations: { Marketo: false },

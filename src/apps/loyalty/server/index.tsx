@@ -4,7 +4,7 @@ import * as express from "express"
 import * as path from "path"
 
 import RelayMiddleware from "./middlewares/relay"
-import SetSessionMiddleware from "./middlewares/session"
+import SetSessionIDMiddleware from "./middlewares/track_session"
 import UserMiddleware from "./middlewares/user"
 import { ForgotPassword, Home, Inquiries, Login, ThankYou } from "./route_handlers"
 
@@ -24,7 +24,7 @@ app.use(artsyPassport(Object.assign({
 
 app.use(RelayMiddleware)
 app.use(UserMiddleware)
-app.use(SetSessionMiddleware)
+app.use(SetSessionIDMiddleware)
 
 app.get("/", Home)
 app.get(loginPagePath, Login)
