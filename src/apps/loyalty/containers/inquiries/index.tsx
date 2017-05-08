@@ -173,6 +173,7 @@ export class Inquiries extends React.Component<Props, State> {
   }
 
   onSubmitUpdatesFailed(transaction) {
+    console.error(transaction.getError())
     alert("Sorry, there was an error with your submission, please try again")
   }
 
