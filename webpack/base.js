@@ -15,6 +15,10 @@ module.exports = () => {
       "forgot_password": [
         "babel-polyfill",
         "./src/apps/loyalty/containers/forgot_password/browser"
+      ],
+      "analytics": [
+        "babel-polyfill",
+        "./src/apps/loyalty/client_side_analytics"
       ]
     },
     module: {
