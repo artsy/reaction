@@ -173,6 +173,7 @@ export class Inquiries extends React.Component<Props, State> {
   }
 
   onSubmitUpdatesFailed(transaction) {
+    console.error(transaction.getError())
     alert("Sorry, there was an error with your submission, please try again")
   }
 
@@ -185,6 +186,7 @@ export class Inquiries extends React.Component<Props, State> {
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,
     }
+
     window.analytics.track("Submitted loyalty purchases", props)
   }
 
