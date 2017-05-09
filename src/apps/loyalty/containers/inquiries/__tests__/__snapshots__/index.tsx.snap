@@ -100,7 +100,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
        above, please list them.
     </p>
     <textarea
-      className="NrqUR"
+      className="bsvbiv"
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery" />
     <button

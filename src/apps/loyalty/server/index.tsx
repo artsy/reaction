@@ -5,7 +5,7 @@ import * as path from "path"
 
 import RelayMiddleware from "./middlewares/relay"
 import UserMiddleware from "./middlewares/user"
-import { Home, Inquiries, Login, ThankYou } from "./route_handlers"
+import { ForgotPassword, Home, Inquiries, Login, ThankYou } from "./route_handlers"
 
 const app = express.Router()
 const { API_URL } = process.env
@@ -28,5 +28,6 @@ app.get("/", Home)
 app.get(loginPagePath, Login)
 app.get("/thank-you", ThankYou)
 app.get("/inquiries", Inquiries)
+app.get("/forgot-password", ForgotPassword)
 
 export default app

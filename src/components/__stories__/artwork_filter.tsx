@@ -1,7 +1,8 @@
-import { action, storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@kadira/storybook"
 import * as React from "react"
 import * as Relay from "react-relay"
 
+import * as Artsy from "../../components/artsy"
 import { artsyNetworkLayer } from "../../relay/config"
 import FilterArtworksQueryConfig from "../../relay/queries/filter_artworks"
 
@@ -58,7 +59,7 @@ const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDrop
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
-          aggregations: [MEDIUM, GALLERY], 
+          aggregations: [MEDIUM, GALLERY],
           artist_id: "christopher-williams"
         ) {
           aggregations {
@@ -96,7 +97,7 @@ const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTo
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
-          aggregations: [TOTAL], 
+          aggregations: [TOTAL],
           artist_id: "christopher-williams"
         ) {
           ${TotalCount.getFragment("filter_artworks")}
@@ -138,11 +139,17 @@ function FilterArtworksTotalCountExample() {
 
 function FilterArtworksExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
+  const user = {
+    id: "some-id",
+    accessToken: "some-token",
+  } as User
   return (
-    <Relay.RootContainer
-      Component={ArtworksFilter}
-      route={new FilterArtworksQueryConfig()}
-    />
+    <Artsy.ContextProvider currentUser={user}>
+      <Relay.RootContainer
+        Component={ArtworksFilter}
+        route={new FilterArtworksQueryConfig()}
+      />
+    </Artsy.ContextProvider>
   )
 }
 

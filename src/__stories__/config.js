@@ -13,6 +13,7 @@ function loadStories() {
   require("../components/__stories__/artwork_filter")
   require("../components/__stories__/inquiry_artwork")
   require("../components/__stories__/save")
+  require("../components/__stories__/spinner")
 }
 
 configure(loadStories, module)

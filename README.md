@@ -52,6 +52,9 @@ $ cp .env.oss .env
 
         $ yarn test -- --watch
 
+* In vscode, run the `TypeScript: Run type-checker` task and open the `PROBLEMS` view to see continuous type-checker
+  results.
+
 * After updating components, be sure to deploy a new demo (sharing is caring!):
 
         $ yarn deploy-storybook

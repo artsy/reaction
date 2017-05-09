@@ -18,6 +18,7 @@ interface LoginProps extends React.Props<HTMLParagraphElement> {
     baseUrl?: string,
     url: string,
     csrfToken?: string,
+    forgotPasswordUrl?: string,
     facebookPath?: string,
     twitterPath?: string,
   },
@@ -49,6 +50,7 @@ const StyledOrContainer = styled.div`
   position: relative;
   text-align: center;
 `
+
 const StyledOrText = styled.div`
   background-color: white;
   display: inline-block;
@@ -122,21 +124,24 @@ class Login extends React.Component<LoginProps, LoginState> {
       }),
     }
 
-    fetch(this.props.form.url, options).then(res => {
-      if (res.status === 200) {
-        // redirect to '/inquiries'
-        this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
-      } else {
+    fetch(this.props.form.url, options)
+      .then(res => res.status >= 500 ? Promise.reject(res) : res)
+      .then(res => {
+        if (res.status === 200) {
+          this.redirectTo(`${this.props.form.baseUrl}/inquiries`)
+        } else {
+          this.setState({
+            error: "Invalid email or password",
+          })
+        }
+      }).catch(err => {
+        if (process.env.NODE_ENV !== "test") {
+          console.error(err)
+        }
         this.setState({
-          error: "Invalid email or password",
+          error: "Internal Error. Please contact support@artsy.net",
         })
-      }
-    }).catch(err => {
-      console.error(err)
-      this.setState({
-        error: "Internal Error. Please contact support@artsy.net",
       })
-    })
   }
 
   redirectTo(url: string) {
@@ -145,7 +150,10 @@ class Login extends React.Component<LoginProps, LoginState> {
 
   render() {
     const error = this.state.error
-    const form = this.props.form || {url: "/login"}
+    const form = this.props.form
+    const forgotPasswordLink = (
+      <TextLink href={form.forgotPasswordUrl}>Forgot?</TextLink>
+    )
 
     return (
       <LoginContainer>
@@ -170,6 +178,7 @@ class Login extends React.Component<LoginProps, LoginState> {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handlePasswordChange}
+            rightView={forgotPasswordLink}
             type="password"
             block
           />

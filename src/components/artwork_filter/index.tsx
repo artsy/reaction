@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
 import BorderedPulldown from "../bordered_pulldown"
+import Spinner from "../spinner"
+
 import Dropdown from "./dropdown"
 import ForSaleCheckbox from "./for_sale_checkbox"
 import Headline from "./headline"
@@ -59,6 +61,7 @@ class ArtworkFilter extends React.Component<Props, State> {
     })
     this.props.relay.setVariables({
       for_sale: forSaleVar,
+      size: PageSize,
     })
   }
 
@@ -68,12 +71,14 @@ class ArtworkFilter extends React.Component<Props, State> {
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
+      size: PageSize,
     })
   }
 
   onChangeSort(option) {
     this.props.relay.setVariables({
       sort: option.val,
+      size: PageSize,
     })
   }
 
@@ -93,6 +98,7 @@ class ArtworkFilter extends React.Component<Props, State> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
+
     return (
       <div>
         <FilterBar>
@@ -106,6 +112,7 @@ class ArtworkFilter extends React.Component<Props, State> {
               price_range={this.state.price_range}
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
+              facet={filterArtworks.facet}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
@@ -118,8 +125,11 @@ class ArtworkFilter extends React.Component<Props, State> {
         <Artworks
           artworks={filterArtworks.artworks}
           onLoadMore={() => this.handleLoadMore()}
-          columnCount={4}
+          columnCount={3}
         />
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
       </div>
     )
   }
@@ -132,8 +142,14 @@ const FilterBar = styled.div`
 const SubFilterBar = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 40px 0 20px;
   align-items: center;
+`
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 200px;
+  position: relative;
 `
 
 export default Relay.createContainer(ArtworkFilter, {
@@ -170,6 +186,9 @@ export default Relay.createContainer(ArtworkFilter, {
           }
           artworks: artworks_connection(first: $size) {
             ${Artworks.getFragment("artworks")}
+          }
+          facet {
+            ${Headline.getFragment("facet")}
           }
         }
       }

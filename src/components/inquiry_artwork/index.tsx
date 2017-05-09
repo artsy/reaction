@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 import { Artwork, ArtworkProps, OverlayProps } from "../artwork"
@@ -34,10 +33,6 @@ const Circle = styled.div`
   align-items: center;
   text-align: center;
   transition: border-color 0.3s;
-`
-
-const StyledArtwork = styled(Artwork)`
-  text-align: center;
 `
 
 const Overlay: React.SFC<OverlayProps> = props => (

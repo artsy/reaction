@@ -1,7 +1,7 @@
 import * as Relay from "react-relay"
-const sharify = require("sharify")
+import * as sharify from "sharify"
 
-export function artsyNetworkLayer(user?: any) {
+export function artsyNetworkLayer(user?: User) {
   return new Relay.DefaultNetworkLayer(sharify.data.METAPHYSICS_ENDPOINT, {
     headers: !!user ? {
       "X-USER-ID": user.id,

@@ -1,4 +1,3 @@
-import { partition } from "lodash"
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled, { ThemeProvider } from "styled-components"
@@ -15,10 +14,10 @@ import Text from "../../../../components/text"
 import TextArea from "../../../../components/text_area"
 import Title from "../../../../components/title"
 
+import * as Artsy from "../../../../components/artsy"
+
 import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
 import UpdateConversationMutation from "./mutations/update_conversation"
-
-const sharify = require("sharify")
 
 const InquiryContainer = styled.div`
   margin-bottom: 60px;
@@ -69,7 +68,7 @@ const LargeTextArea = styled(TextArea)`
   height: 130px;
 `
 
-export interface Props extends RelayProps {
+export interface Props extends RelayProps, Artsy.ContextProps {
 }
 
 interface SelectedConversation {
@@ -181,7 +180,7 @@ export class Inquiries extends React.Component<Props, State> {
     const ids = this.state.selected_conversations.map(value => value.id)
 
     const props = {
-      user_id: sharify.data.USER_DATA.id,
+      user_id: this.props.currentUser.id,
       inquiry_ids: ids,
       additional_response: this.state.self_reported_purchases,
       purchase_count: ids.length,
@@ -226,7 +225,7 @@ export class Inquiries extends React.Component<Props, State> {
   }
 }
 
-export default Relay.createContainer(Inquiries, {
+export default Relay.createContainer(Artsy.ContextConsumer(Inquiries), {
   fragments: {
     user: () => Relay.QL`
       fragment on Me {

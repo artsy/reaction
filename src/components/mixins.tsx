@@ -3,10 +3,9 @@ import colors from "../assets/colors"
 import * as fonts from "../assets/fonts"
 import { InputProps } from "./input"
 
-export const borderedInput = (props: InputProps) => {
+export const borderedInput = (props: InputProps = {}) => {
   return css`
     padding: 10px;
-    border: 2px solid ${props.error ? colors.redRegular : colors.grayRegular};
     box-shadow: none;
     font-size: 17px;
     transition: border-color .25s;
@@ -14,14 +13,22 @@ export const borderedInput = (props: InputProps) => {
     resize: none;
 
     ${fonts.secondary.style}
+    ${border(props)}
+  `
+}
 
-    &:focus {
-      border-color: ${props.error ? colors.redRegular : colors.purpleRegular};
-      outline: 0;
-    }
+export const border = (props: InputProps = {}) => {
+  return css`
+      border: 2px solid ${props.error ? colors.redRegular : colors.grayRegular};
+      transition: border-color .25s;
 
-    &:disabled {
-      border: 2px dotted ${colors.grayRegular};
-    }
+      &:focus, &.focused {
+        border-color: ${props.error ? colors.redRegular : colors.purpleRegular};
+        outline: 0;
+      }
+
+      &:disabled {
+        border: 2px dotted ${colors.grayRegular};
+      }
   `
 }

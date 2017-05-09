@@ -6,10 +6,11 @@ import Icon from "../icon"
 import styled from "styled-components"
 import colors from "../../assets/colors"
 
-const { CURRENT_USER } = require("sharify").data
+import * as Artsy from "../../components/artsy"
+
 const SIZE = 40
 
-export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
+export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.ContextProps {
   artwork: any
   style?: any
   relay?: any
@@ -18,11 +19,10 @@ export interface Props extends RelayProps, React.HTMLProps<SaveButton> {
 export class SaveButton extends React.Component<Props, null> {
 
   handleSave() {
-    if (CURRENT_USER && CURRENT_USER.id) {
-      this.props.relay.commitUpdate(
-        new SaveArtworkMutation({
-          artwork: this.props.artwork,
-        }),
+    const { currentUser, artwork, relay } = this.props
+    if (currentUser && currentUser.id) {
+      relay.commitUpdate(
+        new SaveArtworkMutation({ artwork }),
       )
     } else {
       window.location.href = "/login"
@@ -74,7 +74,7 @@ export const StyledSaveButton = styled(SaveButton)`
     &:hover {
       background-color: ${colors.redBold};
     }
-  } 
+  }
 `
 class SaveArtworkMutation extends Relay.Mutation<Props, null> {
 
@@ -82,6 +82,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
     artwork: () => Relay.QL`
       fragment on Artwork {
         __id
+        id
         is_saved
       }
     `,
@@ -113,9 +114,9 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   getFatQuery() {
     return Relay.QL`
       fragment on SaveArtworkPayload {
-        artwork { 
+        artwork {
           __id
-          is_saved 
+          is_saved
         }
       }
     `
@@ -131,7 +132,7 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   }
 }
 
-export default Relay.createContainer(StyledSaveButton, {
+export default Relay.createContainer(Artsy.ContextConsumer(StyledSaveButton), {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
