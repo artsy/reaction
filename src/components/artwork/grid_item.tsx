@@ -28,7 +28,9 @@ export class ArtworkGridItem extends React.Component<Props, null> {
     return (
       <div style={style}>
         <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
-          <Image src={artwork.image.url} />
+          <a href={artwork.href}>
+            <Image src={artwork.image.url} />
+          </a>
           <SaveButton
             artwork={artwork}
             style={{position: "absolute", right: "10px", bottom: "10px"}}
@@ -50,8 +52,9 @@ export default Relay.createContainer(ArtworkGridItem, {
           url(version: "large")
           aspect_ratio
         }
-       ${ArtworkMetadata.getFragment("artwork")}
-       ${SaveButton.getFragment("artwork")}
+        href
+        ${ArtworkMetadata.getFragment("artwork")}
+        ${SaveButton.getFragment("artwork")}
       }
     `,
   },
@@ -59,6 +62,7 @@ export default Relay.createContainer(ArtworkGridItem, {
 
 interface RelayProps {
   artwork: {
+    href: string | null,
     image: {
       placeholder: number | null,
       url: string | null,
