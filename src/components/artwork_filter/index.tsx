@@ -125,7 +125,7 @@ class ArtworkFilter extends React.Component<Props, State> {
         <Artworks
           artworks={filterArtworks.artworks}
           onLoadMore={() => this.handleLoadMore()}
-          columnCount={3}
+          columnCount={4}
         />
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
