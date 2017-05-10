@@ -12,7 +12,7 @@ import ArtworkQueryConfig from "../../relay/queries/artwork"
 function ArtworkExample(props: { artworkID: string, user: Artsy.CurrentUser }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
   return (
     <Artsy.ContextProvider currentUser={props.user}>
       <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />

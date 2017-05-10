@@ -136,6 +136,7 @@ export default Relay.createContainer(Artsy.ContextConsumer(StyledSaveButton), {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
+        __id
         is_saved
         ${SaveArtworkMutation.getFragment("artwork")}
       }
