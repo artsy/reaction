@@ -1,20 +1,20 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Measure from "react-measure"
+import * as Dimensions from "react-dimensions"
 import styled from "styled-components"
 import Artwork from "./fillwidth_item"
 
+import { find } from "lodash"
+
 interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
-  targetHeight?: number
+  targetHeight?: number,
+  containerWidth?: number,
 }
 
 interface State {
   loading: boolean,
-  dimensions: {
-    width: number,
-    height: number,
-  }
+  dimensions?: any
 }
 
 export class Fillwidth extends React.Component<Props, State> {
@@ -24,35 +24,43 @@ export class Fillwidth extends React.Component<Props, State> {
     super(props)
     this.state = {
       loading: true,
-      dimensions: {
-        width: -1,
-        height: -1,
-      },
     }
   }
 
-  renderArtwork(artwork) {
+  renderArtwork(artwork, dimensions) {
+    const artworkSize = find(dimensions, ["__id", artwork.__id])
     return (
       <Artwork
         artwork={artwork as any}
         key={"artwork--" + artwork.__id}
         targetHeight={this.props.targetHeight}
-        width={100}
+        imageHeight={artworkSize.height}
+        width={artworkSize.width}
+        margin={10}
       />
     )
   }
 
+  getDimensions(containerWidth) {
+    console.log('containerWidth', containerWidth)
+    const artworks = this.props.artworks.edges
+    const dimensions = artworks.map(artwork => {
+      return {
+        __id: artwork.node.__id,
+        width: this.props.targetHeight * artwork.node.image.aspect_ratio,
+        height: this.props.targetHeight,
+      }
+    })
+    return dimensions
+  }
+
   render() {
     const artworks = this.props.artworks.edges
-    console.log('Measure', Measure)
+    const dimensions = this.getDimensions(this.props.containerWidth)
     return (
-      <Measure
-        onMeasure={dimensions => this.setState({dimensions})}
-      >
-        <div ref="artworks" className={this.props.className}>
-          {artworks.map(artwork => this.renderArtwork(artwork.node))}
-        </div>
-      </Measure>
+      <div ref="artworks" className={this.props.className}>
+        {artworks.map(artwork => this.renderArtwork(artwork.node, dimensions))}
+      </div>
     )
   }
 }
@@ -83,7 +91,9 @@ interface RelayProps {
   },
 }
 
-export default Relay.createContainer(StyledFillwidth, {
+const FillwidthDimensions = Dimensions()(StyledFillwidth)
+
+export default Relay.createContainer(FillwidthDimensions, {
   fragments: {
     artworks: () => Relay.QL`
       fragment on ArtworkConnection {
