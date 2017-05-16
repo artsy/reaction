@@ -67,4 +67,15 @@ $ cp .env.oss .env
 
         $ yarn sync-schema
 
+
 * There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
+
+## Deployments
+
+Circle CI is set up to publish reaction-force in a consistent and reliable way. To update the package version and deploy it on NPM.
+
+```
+$ npm version <new_version>
+$ git push --follow-tags
+```
+The package.json file will be updated and a commit staged. When a tag is pushed to `master`, Circle CI will publish to NPM. See [circle.yml](https://circleci.com/docs/1.0/npm-continuous-deployment/) and the [npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages).
