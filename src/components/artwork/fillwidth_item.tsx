@@ -24,11 +24,12 @@ interface Props extends RelayProps, React.HTMLProps<FillwidthItem> {
   targetHeight?: number,
   imageHeight?: number,
   width?: number,
+  margin?: number,
 }
 
 export class FillwidthItem extends React.Component<Props, null> {
   render() {
-    const { artwork, className, targetHeight, imageHeight } = this.props
+    const { artwork, className, targetHeight, imageHeight, margin } = this.props
     return (
       <div className={className}>
         <Placeholder style={{ height: targetHeight }}>
@@ -53,6 +54,7 @@ const StyledFillwidthItem = styled(FillwidthItem)`
   display: inline-block;
   width: ${props => props.width}px;
   vertical-align: top;
+  margin-right: ${props => props.margin}px;
 `
 
 export default Relay.createContainer(StyledFillwidthItem, {
