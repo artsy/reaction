@@ -2,11 +2,20 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import TextLink from "../text_link"
 
-export interface DetailsProps extends RelayProps, React.HTMLProps<ArtworkDetails> {
+import styled from "styled-components"
+
+const TruncatedTextLink = styled(TextLink)`
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`
+
+interface Props extends RelayProps, React.HTMLProps<ArtworkDetails> {
   showSaleLine: boolean
 }
 
-export class ArtworkDetails extends React.Component<DetailsProps, null> {
+export class ArtworkDetails extends React.Component<Props, null> {
   static defaultProps = {
     showSaleLine: true,
   }
@@ -25,17 +34,11 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
   }
 
   titleLine() {
-    const titleStyle = {
-      display: "block",
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      whiteSpace: "nowrap",
-    }
     return (
-      <TextLink href={this.props.artwork.href} style={titleStyle}>
+      <TruncatedTextLink href={this.props.artwork.href}>
         <em>{this.props.artwork.title}</em>
         {this.props.artwork.date && `, ${this.props.artwork.date}`}
-      </TextLink>
+      </TruncatedTextLink>
     )
   }
 

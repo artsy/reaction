@@ -7,7 +7,6 @@ export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<T
   href?: string
   underline?: boolean
   color?: string,
-  style?: any,
 }
 
 export class TextLink extends React.Component<LinkProps, null> {
