@@ -42,7 +42,6 @@ export class Fillwidth extends React.Component<Props, State> {
   }
 
   getDimensions(containerWidth) {
-    console.log('containerWidth', containerWidth)
     const artworks = this.props.artworks.edges
     const dimensions = artworks.map(artwork => {
       return {
@@ -58,7 +57,7 @@ export class Fillwidth extends React.Component<Props, State> {
     const artworks = this.props.artworks.edges
     const dimensions = this.getDimensions(this.props.containerWidth)
     return (
-      <div ref="artworks" className={this.props.className}>
+      <div className={this.props.className}>
         {artworks.map(artwork => this.renderArtwork(artwork.node, dimensions))}
       </div>
     )
@@ -106,4 +105,3 @@ export default Relay.createContainer(FillwidthDimensions, {
     `,
   },
 })
-
