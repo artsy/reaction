@@ -6,7 +6,8 @@ import "../assets/fonts"
 export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
   href?: string
   underline?: boolean
-  color?: string
+  color?: string,
+  style?: any,
 }
 
 export class TextLink extends React.Component<LinkProps, null> {
