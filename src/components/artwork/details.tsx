@@ -25,8 +25,14 @@ export class ArtworkDetails extends React.Component<DetailsProps, null> {
   }
 
   titleLine() {
+    const titleStyle = {
+      display: "block",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+    }
     return (
-      <TextLink href={this.props.artwork.href}>
+      <TextLink href={this.props.artwork.href} style={titleStyle}>
         <em>{this.props.artwork.title}</em>
         {this.props.artwork.date && `, ${this.props.artwork.date}`}
       </TextLink>
