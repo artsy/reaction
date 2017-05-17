@@ -79,7 +79,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
                     </strong>
                   </div>
                   <a
-                    className="cXjeFh"
+                    className="ihYxRh"
                     href={undefined}>
                     <em />
                   </a>

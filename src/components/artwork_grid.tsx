@@ -99,6 +99,7 @@ export class ArtworkGrid extends React.Component<Props, State> {
 
       const sectionSpecificStyle = {
         flex: 1,
+        minWidth: 0,
         marginRight: (i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin),
       }
 
@@ -126,7 +127,9 @@ ArtworkGrid.defaultProps = {
 }
 
 const StyledGrid = styled(ArtworkGrid)`
-  display: flex
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `
 
 const ArtworkFragment = Relay.QL`
