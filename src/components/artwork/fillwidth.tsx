@@ -63,9 +63,7 @@ export class Fillwidth extends React.Component<Props, null> {
     let dir = this.widthDiff(dimensions) < 0 ? -1 : 1
 
     // Keep looping until we get an acceptable width difference
-    const list = new Array(999)
-
-    for (let i of list) { // eslint-disable-line no-unused-vars
+    while (true) {
       for (let img of dimensions) {
         resizeHeight(img, dir)
         if (this.widthDiff(dimensions) > 1) { break }
