@@ -20,7 +20,7 @@ const FillwidthContainer = Relay.createContainer(FillwidthArtistArtworks, {
   fragments: {
     artist: () => Relay.QL`
       fragment on Artist {
-        artworks: artworks_connection(first: 10) {
+        artworks: artworks_connection(first: 6) {
           ${Fillwidth.getFragment("artworks")}
         }
       }

@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import * as Dimensions from "react-dimensions"
+import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import Artwork from "./fillwidth_item"
 
@@ -16,9 +16,9 @@ interface RelayProps {
 }
 
 interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
-  targetHeight?: number,
-  containerWidth?: number,
+  targetHeight?: number
   gutter?: number
+  size?: any
 }
 
 /**
@@ -43,7 +43,7 @@ export class Fillwidth extends React.Component<Props, null> {
     const currentWidth = reduce(dimensions, (sum, img) => {
       return sum + img.width
     }, 0)
-    return this.props.containerWidth - currentWidth - this.totalWhitespace()
+    return this.props.size.width - currentWidth - this.totalWhitespace()
   }
 
   getDimensions(containerWidth) {
@@ -101,7 +101,7 @@ export class Fillwidth extends React.Component<Props, null> {
 
   render() {
     const artworks = this.props.artworks.edges
-    const dimensions = this.getDimensions(this.props.containerWidth)
+    const dimensions = this.getDimensions(this.props.size.width)
     return (
       <div className={this.props.className}>
         {artworks.map((artwork, i) => this.renderArtwork(artwork.node, dimensions, i))}
@@ -129,7 +129,7 @@ const ArtworkFragment = Relay.QL`
   }
 `
 
-const FillwidthDimensions = Dimensions()(StyledFillwidth)
+const FillwidthDimensions = sizeMe()(StyledFillwidth)
 
 export default Relay.createContainer(FillwidthDimensions, {
   fragments: {
