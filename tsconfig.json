@@ -9,7 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "baseUrl": "src",
         "outDir": "dist",
-        "noUnusedLocals": true
+        "noUnusedLocals": false
     },
     "awesomeTypescriptLoaderOptions": {
         "silent": false,

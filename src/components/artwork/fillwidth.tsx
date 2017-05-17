@@ -64,6 +64,7 @@ export class Fillwidth extends React.Component<Props, null> {
 
     // Keep looping until we get an acceptable width difference
     const list = new Array(999)
+
     for (let i of list) { // eslint-disable-line no-unused-vars
       for (let img of dimensions) {
         resizeHeight(img, dir)
@@ -129,7 +130,7 @@ const ArtworkFragment = Relay.QL`
   }
 `
 
-const FillwidthDimensions = sizeMe()(StyledFillwidth)
+const FillwidthDimensions = sizeMe()(StyledFillwidth) as React.StatelessComponent<Props>
 
 export default Relay.createContainer(FillwidthDimensions, {
   fragments: {
