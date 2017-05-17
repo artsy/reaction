@@ -5,52 +5,98 @@ import * as Dimensions from "react-dimensions"
 import styled from "styled-components"
 import Artwork from "./fillwidth_item"
 
-import { find } from "lodash"
+import { find, map, max, reduce } from "lodash"
+
+interface RelayProps {
+  artworks: {
+    edges: Array<{
+      node: any,
+    } | null> | null,
+  },
+}
 
 interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
   targetHeight?: number,
   containerWidth?: number,
+  gutter?: number
 }
 
-interface State {
-  loading: boolean,
-  dimensions?: any
+/**
+ * Scales an image object proportionally based on a direction (either -1 or 1)
+ * @param img a dimension object that references an artwork image
+ * @param dir the direction we need to scale an image, either -1 or 1
+ */
+const resizeHeight = (img, dir) => {
+  img.width += (img.width / img.height) * dir
+  img.height += dir
 }
 
-export class Fillwidth extends React.Component<Props, State> {
+export class Fillwidth extends React.Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
+  totalWhitespace() {
+    const artworks = this.props.artworks.edges
+    return (artworks.length - 1) * this.props.gutter
   }
 
-  renderArtwork(artwork, dimensions) {
-    const artworkSize = find(dimensions, ["__id", artwork.__id])
-    return (
-      <Artwork
-        artwork={artwork as any}
-        key={"artwork--" + artwork.__id}
-        targetHeight={this.props.targetHeight}
-        imageHeight={artworkSize.height}
-        width={artworkSize.width}
-        margin={10}
-      />
-    )
+  widthDiff(dimensions) {
+    const currentWidth = reduce(dimensions, (sum, img) => {
+      return sum + img.width
+    }, 0)
+    return this.props.containerWidth - currentWidth - this.totalWhitespace()
   }
 
   getDimensions(containerWidth) {
     const artworks = this.props.artworks.edges
-    const dimensions = artworks.map(artwork => {
+
+    // Get initial dimensions based on the targetHeight
+    let dimensions = artworks.map(artwork => {
       return {
         __id: artwork.node.__id,
         width: this.props.targetHeight * artwork.node.image.aspect_ratio,
         height: this.props.targetHeight,
       }
     })
+
+    // If the total width difference is less than 0, it is larger than the container
+    // so we need to scale down. If not, scale up.
+    let dir = this.widthDiff(dimensions) < 0 ? -1 : 1
+
+    // Keep looping until we get an acceptable width difference
+    const list = new Array(999)
+    for (let i of list) { // eslint-disable-line no-unused-vars
+      for (let img of dimensions) {
+        resizeHeight(img, dir)
+        if (this.widthDiff(dimensions) > 1) { break }
+      }
+      if (this.widthDiff(dimensions) > 1) { break }
+    }
+
+    // Round image dimensions to whole numbers
+    for (let img of dimensions) {
+      img.width = Math.floor(img.width)
+      img.height = Math.floor(img.height)
+      if (this.widthDiff(dimensions) === 0) { break }
+    }
+
+    // Voila, sizes for our images
     return dimensions
+  }
+
+  renderArtwork(artwork, dimensions, i) {
+    const { gutter } = this.props
+    const artworkSize = find(dimensions, ["__id", artwork.__id])
+    const targetHeight = max(map(dimensions, "height")) + gutter
+    return (
+      <Artwork
+        artwork={artwork as any}
+        key={"artwork--" + artwork.__id}
+        targetHeight={targetHeight}
+        imageHeight={artworkSize.height}
+        width={artworkSize.width}
+        margin={i === (dimensions.length - 1) ? 0 : gutter}
+      />
+    )
   }
 
   render() {
@@ -58,7 +104,7 @@ export class Fillwidth extends React.Component<Props, State> {
     const dimensions = this.getDimensions(this.props.containerWidth)
     return (
       <div className={this.props.className}>
-        {artworks.map(artwork => this.renderArtwork(artwork.node, dimensions))}
+        {artworks.map((artwork, i) => this.renderArtwork(artwork.node, dimensions, i))}
       </div>
     )
   }
@@ -70,6 +116,7 @@ const StyledFillwidth = styled(Fillwidth)`
 
 StyledFillwidth.defaultProps = {
   targetHeight: 180,
+  gutter: 10,
 }
 
 const ArtworkFragment = Relay.QL`
@@ -81,14 +128,6 @@ const ArtworkFragment = Relay.QL`
     ${Artwork.getFragment("artwork")}
   }
 `
-
-interface RelayProps {
-  artworks: {
-    edges: Array<{
-      node: any,
-    } | null> | null,
-  },
-}
 
 const FillwidthDimensions = Dimensions()(StyledFillwidth)
 
