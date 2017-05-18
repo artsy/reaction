@@ -14,6 +14,7 @@ function loadStories() {
   require("../components/__stories__/inquiry_artwork")
   require("../components/__stories__/save")
   require("../components/__stories__/spinner")
+  require("../components/__stories__/fillwidth")
 }
 
 configure(loadStories, module)
