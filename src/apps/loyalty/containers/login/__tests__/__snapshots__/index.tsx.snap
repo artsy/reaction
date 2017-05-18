@@ -91,17 +91,5 @@ exports[`login renders the snapshot 1`] = `
     </a>
   </form>
   <br />
-  <p
-    className="eXluOx">
-    <span>
-      Don\'t have an account? 
-    </span>
-    <a
-      className="lkuLzT"
-      href={undefined}>
-      Sign up
-    </a>
-    .
-  </p>
 </div>
 `;

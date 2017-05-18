@@ -7,9 +7,9 @@ import Icon from "../../../../components/icon"
 import Input from "../../../../components/input"
 import Message from "../../../../components/message"
 import Text from "../../../../components/text"
-import TextLink from "../../../../components/text_link"
+// import TextLink from "../../../../components/text_link"
 
-import colors from "../../../../assets/colors"
+// import colors from "../../../../assets/colors"
 
 const Container = styled.div`
   padding: 20px;
@@ -128,11 +128,6 @@ class ForgotPasswordForm extends React.Component<Props, State> {
         >
             Reset Password
         </Button>
-
-        <Text color={colors.graySemibold} align="center">
-          <span>Don't have an account? </span>
-          <TextLink color={colors.graySemibold} underline>Sign up</TextLink>.
-        </Text>
       </Container>
     )
   }
