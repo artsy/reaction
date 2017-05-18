@@ -193,11 +193,6 @@ class Login extends React.Component<LoginProps, LoginState> {
         </form>
 
         <br />
-
-        <Text color={colors.graySemibold} align="center">
-          <span>Don't have an account? </span>
-          <TextLink color={colors.graySemibold} underline>Sign up</TextLink>.
-        </Text>
       </LoginContainer>
     )
   }

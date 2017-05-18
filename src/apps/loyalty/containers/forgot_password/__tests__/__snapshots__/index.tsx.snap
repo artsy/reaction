@@ -31,17 +31,5 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
       Reset Password
     </span>
   </button>
-  <p
-    className="eXluOx">
-    <span>
-      Don\'t have an account? 
-    </span>
-    <a
-      className="lkuLzT"
-      href={undefined}>
-      Sign up
-    </a>
-    .
-  </p>
 </div>
 `;
