@@ -18,6 +18,7 @@ deployment:
   demo:
     branch: master
     commands:
+      - cp .env.oss .env
       - yarn deploy-storybook
   npm:
     tag: /v[0-9]+(\.[0-9]+)*/
