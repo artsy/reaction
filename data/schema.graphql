@@ -123,6 +123,7 @@ type Artist implements Node {
 
   # Only specific Artists should show a link to auction results.
   is_display_auction_link: Boolean
+  is_followed: Boolean
   is_public: Boolean
   is_shareable: Boolean
   location: String
@@ -192,6 +193,15 @@ type ArtistCarousel {
   images: [Image]
 }
 
+# A connection to a list of items.
+type ArtistConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArtistEdge]
+}
+
 type ArtistCounts {
   artworks(
     # Returns a `String` when format is specified. e.g.`'0,0.0000''`
@@ -223,6 +233,15 @@ type ArtistCounts {
     format: String
     label: String
   ): FormattedNumber
+}
+
+# An edge in a connection.
+type ArtistEdge {
+  # The item at the end of the edge
+  node: Artist
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 type ArtistItem implements Node {
@@ -295,6 +314,7 @@ type ArtistItem implements Node {
 
   # Only specific Artists should show a link to auction results.
   is_display_auction_link: Boolean
+  is_followed: Boolean
   is_public: Boolean
   is_shareable: Boolean
   location: String
@@ -422,6 +442,7 @@ type ArtistSearchEntity implements Node {
 
   # Only specific Artists should show a link to auction results.
   is_display_auction_link: Boolean
+  is_followed: Boolean
   is_public: Boolean
   is_shareable: Boolean
   location: String
@@ -551,7 +572,7 @@ type Artwork implements Node {
   # Is this artwork part of an auction that is currently running?
   is_biddable: Boolean
 
-  # When in an auction, can the work be bought before any bids are placed
+  # When in an auction, can the work be bought immediately
   is_buy_nowable: Boolean
   is_comparable_with_auction_results: Boolean
 
@@ -1077,7 +1098,7 @@ type ArtworkSearchEntity implements Node {
   # Is this artwork part of an auction that is currently running?
   is_biddable: Boolean
 
-  # When in an auction, can the work be bought before any bids are placed
+  # When in an auction, can the work be bought immediately
   is_buy_nowable: Boolean
   is_comparable_with_auction_results: Boolean
 
@@ -1313,6 +1334,24 @@ type BuyersPremium {
 enum CategoryType {
   GALLERY
   INSTITUTION
+}
+
+type Collection implements Node {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # A type-specific Gravity Mongo Document ID.
+  _id: String!
+  cached: Int
+  artworks_connection(after: String, first: Int, before: String, last: Int): ArtworkConnection
+  description: String!
+  default: Boolean!
+  name: String!
+  private: Boolean!
+  slug: String!
 }
 
 type CollectorProfileType {
@@ -1582,8 +1621,48 @@ type FilterSaleArtworksCounts {
   ): FormattedNumber
 }
 
+type FollowArtist {
+  artist: Artist
+  auto: Boolean
+
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+}
+
+# A connection to a list of items.
+type FollowArtistConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [FollowArtistEdge]
+}
+
 type FollowArtistCounts {
   artists: Int
+}
+
+# An edge in a connection.
+type FollowArtistEdge {
+  # The item at the end of the edge
+  node: FollowArtist
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+input FollowArtistInput {
+  artist_id: String
+  unfollow: Boolean = false
+  clientMutationId: String
+}
+
+type FollowArtistPayload {
+  artist: Artist
+  clientMutationId: String
 }
 
 type FollowArtists {
@@ -1612,6 +1691,7 @@ type Gene implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
+  artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
@@ -1681,6 +1761,7 @@ type Gene implements Node {
   ): FilterArtworks
   href: String
   image: Image
+  mode: String
   name: String
   trending_artists(sample: Int): [Artist]
 }
@@ -1696,6 +1777,7 @@ type GeneItem implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
+  artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
@@ -1765,6 +1847,7 @@ type GeneItem implements Node {
   ): FilterArtworks
   href: String
   image: Image
+  mode: String
   name: String
   trending_artists(sample: Int): [Artist]
 }
@@ -1975,14 +2058,14 @@ type HomePageArtistModule implements Node {
 }
 
 enum HomePageArtistModuleTypes {
-  # The most searched for artists.
-  POPULAR
-
   # Artists recommended for the specific user.
   SUGGESTED
 
   # The trending artists.
   TRENDING
+
+  # The most searched for artists.
+  POPULAR
 }
 
 type HomePageArtworkModule implements Node {
@@ -2119,6 +2202,7 @@ type HomePageModuleContextGene implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
+  artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
@@ -2188,6 +2272,7 @@ type HomePageModuleContextGene implements Node {
   ): FilterArtworks
   href: String
   image: Image
+  mode: String
   name: String
   trending_artists(sample: Int): [Artist]
 }
@@ -2414,6 +2499,9 @@ type Me implements Node {
   # A list of the current user’s artist follows
   follow_artists(page: Int, size: Int): FollowArtists
 
+  # A list of the current user’s inquiry requests
+  followed_artists_connection(after: String, first: Int, before: String, last: Int): FollowArtistConnection
+
   # The current user's status relating to bids on artworks
   lot_standing(artwork_id: String!, sale_id: String!): LotStanding
 
@@ -2448,6 +2536,7 @@ type Me implements Node {
     size: Int
     sort: SaleSorts
   ): [SaleRegistration]
+  saved_artworks: Collection
 
   # A list of the current user’s suggested artists, based on a single artist
   suggested_artists(
@@ -3040,6 +3129,7 @@ enum Role {
 }
 
 type RootMutationType {
+  followArtist(input: FollowArtistInput!): FollowArtistPayload
   updateCollectorProfile(input: UpdateCollectorProfileInput!): UpdateCollectorProfilePayload
   updateConversation(input: UpdateConversationInput!): UpdateConversationPayload
   saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
@@ -3080,6 +3170,10 @@ type RootQueryType {
     # The id of the auction to participate in
     sale_id: String!
   ): String
+  collection(
+    # The slug or ID of the Collection
+    id: String!
+  ): Collection
 
   # An External Partner not on the platform
   external_partner(
@@ -3907,6 +4001,10 @@ type Viewer {
     # The id of the auction to participate in
     sale_id: String!
   ): String
+  collection(
+    # The slug or ID of the Collection
+    id: String!
+  ): Collection
 
   # An External Partner not on the platform
   external_partner(
