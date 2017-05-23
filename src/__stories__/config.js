@@ -15,6 +15,7 @@ function loadStories() {
   require("../components/__stories__/save")
   require("../components/__stories__/spinner")
   require("../components/__stories__/fillwidth")
+  require("../components/__stories__/artist_follow")
 }
 
 configure(loadStories, module)
