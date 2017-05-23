@@ -8,7 +8,7 @@ import colors from "../assets/colors"
 
 import * as Artsy from "../components/artsy"
 
-const SIZE = 40
+const SIZE = 32
 
 interface Props extends RelayProps, React.HTMLProps<FollowButton>, Artsy.ContextProps {
   artist: any
@@ -31,7 +31,6 @@ export class FollowButton extends React.Component<Props, null> {
 
   render() {
     const { style, artist } = this.props
-    const followText = artist.is_followed ? "Unfollow" : "Follow"
 
     return (
       <div
@@ -41,12 +40,10 @@ export class FollowButton extends React.Component<Props, null> {
         data-followed={artist.is_followed}
       >
         <Icon
-          name="plus-small"
+          name="follow-circle"
           height={SIZE}
-          color="white"
-          style={{verticalAlign: "middle"}}
+          style={{verticalAlign: "middle", color: "inherit"}}
         />
-        {followText}
       </div>
     )
   }
@@ -59,16 +56,27 @@ interface RelayProps {
 }
 
 export const StyledFollowButton = styled(FollowButton)`
+  display: flex;
   cursor: pointer;
   color: black;
   font-size: 16px;
+  align-items: center;
+  &:after {
+    content: 'Follow';
+  }
   &:hover {
     color: ${colors.purpleRegular};
   }
   &[data-followed='true'] {
     color: ${colors.purpleRegular};
+    &:after {
+      content: 'Following';
+    }
     &:hover {
       color: ${colors.redBold};
+      &:after {
+        content: 'Unfollow';
+      }
     }
   }
 `
@@ -90,16 +98,16 @@ class FollowArtistMutation extends Relay.Mutation<Props, null> {
 
   getVariables() {
     return {
-      artwork_id: this.props.artist.id,
+      artist_id: this.props.artist.id,
       unfollow: this.props.artist.is_followed ? true : false,
     }
   }
 
   getOptimisticResponse() {
     return {
-      artwork: {
+      artist: {
         __id: this.props.artist.__id,
-        is_saved: this.props.artist.is_followed ? false : true,
+        is_followed: this.props.artist.is_followed ? false : true,
       },
     }
   }
