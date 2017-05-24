@@ -10,12 +10,12 @@ import { artsyNetworkLayer } from "../../relay/config"
 import ArtistQueryConfig from "../../relay/queries/artist"
 import GeneQueryConfig from "../../relay/queries/gene"
 
-function GeneExample(props: { geneID: string, user: User }) {
+function GeneExample(props: { geneID: string }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
+  Relay.injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Artsy.ContextProvider currentUser={props.user}>
+    <Artsy.ContextProvider>
       <Relay.RootContainer Component={GeneContent} route={new GeneQueryConfig({ geneID: props.geneID })} />
     </Artsy.ContextProvider>
   )
@@ -43,15 +43,10 @@ storiesOf("Gene", GeneContent)
     )
   })
   .add("Gene page (integration)", () => {
-    const user = {
-      id: "some-id",
-      accessToken: "some-token",
-    } as User
     return (
       <div>
         <GeneExample
           geneID="conceptual-art"
-          user={user}
         />
       </div>
     )
