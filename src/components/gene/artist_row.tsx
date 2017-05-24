@@ -50,8 +50,8 @@ export default Relay.createContainer(ArtistRow, {
 
 
 interface RelayProps {
-  gene: {
-    mode: string | null,
+  artist: {
     name: string | null,
+    artworks: any,
   } | any
 }
