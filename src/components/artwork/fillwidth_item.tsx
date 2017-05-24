@@ -44,7 +44,7 @@ export class FillwidthItem extends React.Component<Props, null> {
             style={{position: "absolute", right: "10px", bottom: "10px"}}
           />
         </Placeholder>
-        <ArtworkMetadata artwork={artwork} extended={true} />
+        <ArtworkMetadata artwork={artwork} extended/>
       </div>
     )
   }

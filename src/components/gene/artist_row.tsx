@@ -6,7 +6,6 @@ import Fillwidth from "../artwork/fillwidth"
 import FollowButton from "../follow"
 import Text from "../text"
 
-
 interface Props extends RelayProps, React.HTMLProps<ArtistRow> {
   artist: any
 }
@@ -46,8 +45,6 @@ export default Relay.createContainer(ArtistRow, {
     `,
   },
 })
-
-
 
 interface RelayProps {
   artist: {
