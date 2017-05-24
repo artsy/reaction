@@ -1,53 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`ACB Thank You renders the snapshot 1`] = `
 <div
-  className="jBvxsI">
+  className="jBvxsI"
+>
   <div
-    className="hiqXMD">
+    className="hiqXMD"
+  >
     <a
       className="dHhWkf"
-      href={undefined}>
+      href={undefined}
+    >
       <div
         className="gQelpA"
-        style={undefined}>
+        style={undefined}
+      >
         
       </div>
     </a>
     <a
       className="iDuDUI"
-      href="/">
+      href="/"
+    >
       Back To Artsy
     </a>
   </div>
   <div
-    className="ChQBa">
+    className="ChQBa"
+  >
     <p
-      className="etNsCH">
+      className="etNsCH"
+    >
       EARLY ACCESS
     </p>
   </div>
   <div
-    className="idoycl">
+    className="idoycl"
+  >
     Artsy Collector Loyalty Program
   </div>
   <div
-    className="ChQBa">
+    className="ChQBa"
+  >
     <p
-      className="fTgPgI">
+      className="fTgPgI"
+    >
       Thank you for your interest in the program.
       <br />
       Have questions? Get in touch:  
       <a
         className="hNDkSz"
-        href="mailto:loyalty@artsy.net">
+        href="mailto:loyalty@artsy.net"
+      >
         loyalty@artsy.net
       </a>
     </p>
   </div>
   <div
-    className="jzLjyo">
+    className="jzLjyo"
+  >
     <a
       className="jVdhvd"
-      href="/">
+      href="/"
+    >
       <span>
         Back to Artsy
       </span>

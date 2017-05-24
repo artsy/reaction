@@ -1,42 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Artwork renders correctly 1`] = `
 <div
   className="bMAZFf"
   onClick={[Function]}
-  size={250}>
+  size={250}
+>
   <div
     className="cvbFbx"
-    size={250}>
+    size={250}
+  >
     <img
       className="egJSlo"
       size={250}
-      src="artsy.net/image-url" />
+      src="artsy.net/image-url"
+    />
     <div
-      className="overlay-container" />
+      className="overlay-container"
+    />
   </div>
   <div
-    className="tEGyX">
+    className="tEGyX"
+  >
     <div>
-      <div>
+      <div
+        className="dVxCB"
+      >
         <strong>
           <a
             className="cXjeFh"
-            href={undefined}>
+            href={undefined}
+          >
             Mikael Olson
           </a>
         </strong>
       </div>
-      <a
-        className="ihYxRh"
-        href="/artwork/mikael-olson-some-kind-of-dinosaur">
-        <em>
-          Some Kind of Dinosaur
-        </em>
-        , 2015
-      </a>
-      <div>
+      <div
+        className="dVxCB"
+      >
         <a
           className="cXjeFh"
-          href={undefined}>
+          href="/artwork/mikael-olson-some-kind-of-dinosaur"
+        >
+          <em>
+            Some Kind of Dinosaur
+          </em>
+          , 2015
+        </a>
+      </div>
+      <div
+        className="dVxCB"
+      >
+        <a
+          className="cXjeFh"
+          href={undefined}
+        >
           Gallery 1261
         </a>
       </div>

@@ -173,7 +173,7 @@ const SpinnerContainer = styled.div`
 
 export default Relay.createContainer(GeneContents, {
   initialVariables: {
-    showArtists: false,
+    showArtists: true,
     artworksSize: PageSize,
     artistsSize: PageSize,
     medium: "*",
@@ -201,7 +201,7 @@ export default Relay.createContainer(GeneContents, {
           price_range: $price_range,
           dimension_range: $dimension_range,
           sort: $sort,
-        ) @skip(if: $showArtists) {
+        ) {
           ${Artworks.getFragment("artworks")}
         }
         filtered_artworks(

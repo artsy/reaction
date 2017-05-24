@@ -1,65 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`inquiries renders the inquiries listing 1`] = `
 <div
-  className="cpeEEg">
+  className="cpeEEg"
+>
   <div
-    className="hiqXMD">
+    className="hiqXMD"
+  >
     <a
       className="dHhWkf"
-      href="/">
+      href="/"
+    >
       <div
         className="gQelpA"
-        style={undefined}>
+        style={undefined}
+      >
         
       </div>
     </a>
     <a
       className="iDuDUI"
-      href="/">
+      href="/"
+    >
       Back To Artsy
     </a>
   </div>
   <header
-    className="ieaZgB">
+    className="ieaZgB"
+  >
     <div
-      className="header-title kmIhCZ">
+      className="header-title kmIhCZ"
+    >
       Please select all works you purchased
     </div>
     <p
-      className="header-subtitle fLunyJ">
+      className="header-subtitle fLunyJ"
+    >
       We will confirm submitted purchases with the galleries in order to qualify you for the program membership.
     </p>
   </header>
   <div
-    className="artworks">
+    className="artworks"
+  >
     <div
-      className="gGgzvo">
+      className="gGgzvo"
+    >
       <div
-        className="cbCpoO">
+        className="cbCpoO"
+      >
         <div
-          className="hzDQZd">
+          className="hzDQZd"
+        >
           <div
-            className="dsunRf">
+            className="dsunRf"
+          >
             <div
               className="bMAZFf"
               onClick={[Function]}
-              size={250}>
+              size={250}
+            >
               <div
                 className="cvbFbx"
-                size={250}>
+                size={250}
+              >
                 <img
                   className="egJSlo"
                   size={250}
-                  src="http://path.to.cat.pics" />
+                  src="http://path.to.cat.pics"
+                />
                 <div
-                  className="overlay-container hovered">
+                  className="overlay-container hovered"
+                >
                   <div
-                    className="dtjypd">
+                    className="dtjypd"
+                  >
                     <div
                       className="gNTyvH"
-                      selected={false}>
+                      selected={false}
+                    >
                       <div
                         className="kEzGjr"
-                        style={undefined}>
+                        style={undefined}
+                      >
                         
                       </div>
                     </div>
@@ -67,22 +89,31 @@ exports[`inquiries renders the inquiries listing 1`] = `
                 </div>
               </div>
               <div
-                className="tEGyX">
+                className="tEGyX"
+              >
                 <div>
-                  <div>
+                  <div
+                    className="dVxCB"
+                  >
                     <strong>
                       <a
                         className="cXjeFh"
-                        href="/percy-z">
+                        href="/percy-z"
+                      >
                         Percy Z
                       </a>
                     </strong>
                   </div>
-                  <a
-                    className="ihYxRh"
-                    href={undefined}>
-                    <em />
-                  </a>
+                  <div
+                    className="dVxCB"
+                  >
+                    <a
+                      className="cXjeFh"
+                      href={undefined}
+                    >
+                      <em />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,9 +123,11 @@ exports[`inquiries renders the inquiries listing 1`] = `
     </div>
   </div>
   <footer
-    className="footer">
+    className="footer"
+  >
     <p
-      className="fTgPgI">
+      className="fTgPgI"
+    >
       If you purchased any works not included
       <br />
        above, please list them.
@@ -102,11 +135,13 @@ exports[`inquiries renders the inquiries listing 1`] = `
     <textarea
       className="bsvbiv"
       onChange={[Function]}
-      placeholder="Artwork, Artist, Gallery" />
+      placeholder="Artwork, Artist, Gallery"
+    />
     <button
       className="cpyCro"
       disabled={true}
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       <span>
         Submit purchases
       </span>

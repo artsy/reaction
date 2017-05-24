@@ -46,7 +46,7 @@ storiesOf("Gene", GeneContent)
     return (
       <div>
         <GeneExample
-          geneID="conceptual-art"
+          geneID="minimalism"
         />
       </div>
     )
