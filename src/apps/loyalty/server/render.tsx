@@ -1,15 +1,30 @@
+import * as React from "react"
+import { renderToString } from "react-dom/server"
 import { ResponseLocal } from "sharify"
+import { ServerStyleSheet } from "styled-components"
 
-interface TemplateData {
-  styles: string
+interface RenderResult {
+  css: string
   html: string
-  entrypoint: string
+}
+
+interface TemplateOptions {
+  entrypoint?: string
   bootstrapData?: string
   sharify?: ResponseLocal,
   baseURL: string
 }
 
-export default ({ styles, html, entrypoint, bootstrapData, sharify, baseURL }: TemplateData) => {
+export function renderElement(element: React.ReactElement<any>): RenderResult {
+  const sheet = new ServerStyleSheet()
+  const html = renderToString(sheet.collectStyles(element))
+  const css = sheet.getStyleTags()
+  return { html, css }
+}
+
+export function renderTemplate({
+  css, html, entrypoint, bootstrapData, sharify, baseURL,
+}: RenderResult & TemplateOptions): string {
   const fontsURL = "//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css"
   const segmentWriteKey = sharify.data.SEGMENT_WRITE_KEY
   /* tslint:disable:max-line-length */
@@ -26,17 +41,21 @@ export default ({ styles, html, entrypoint, bootstrapData, sharify, baseURL }: T
           <link type="text/css" rel="stylesheet" href="${fontsURL}">
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
           <style>#app-container { width: 100%; overflow: hidden;  }</style>
-          <style>${styles}</style>
+          ${css}
           <script type="text/javascript">${segmentJS}</script>
         </head>
         <body>
           <div id="app-container">${html}</div>
           ${sharify ? sharify.script() : ""}
-          ${bootstrapData ? "<script>" + bootstrapData + "</script>" : ""}
+          ${bootstrapData ? `<script>${bootstrapData}</script>` : ""}
           <script src="${baseURL}/bundles/commons.chunk.js"></script>
-          <script src="${entrypoint}"></script>
+          ${entrypoint ? `<script src="${entrypoint}"></script>` : ""}
           <script src="${baseURL}/bundles/analytics.js"></script>
         </body>
       </html>
     `
+}
+
+export default function render(element: React.ReactElement<any>, templateOptions: TemplateOptions): string {
+  return renderTemplate(Object.assign({}, renderElement(element), templateOptions))
 }
