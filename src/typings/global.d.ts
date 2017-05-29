@@ -1,5 +1,6 @@
 /// <reference types="segment-analytics" />
 
+import * as React from "react"
 import * as Relay from "react-relay"
 import * as sharify from "sharify"
 
@@ -32,5 +33,15 @@ declare module "express" {
      * An interface for `response.locals` that can be extended with route specific locals.
      */
     locals: ArtsyResponseLocals
+  }
+}
+
+declare module "styled-components" {
+  // TODO This can be removed once this is released: https://github.com/styled-components/styled-components/pull/839
+  class ServerStyleSheet {
+    collectStyles(children: React.ReactElement<any>): React.ReactElement<any>
+    getStyleTags(): string
+    getStyleElement(): React.ReactElement<any>[]
+    static create(): StyleSheet
   }
 }
