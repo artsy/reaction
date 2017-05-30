@@ -6,6 +6,7 @@ import Modal from "./modal/modal"
 import ArtworkGrid from "./artwork_grid"
 import BorderedPulldown from "./bordered_pulldown"
 import Checkbox from "./checkbox"
+import Gene from "./gene/index"
 import Grid from "./grid"
 import Icon from "./icon"
 import Input from "./input"
@@ -23,6 +24,7 @@ export default {
   ArtworkGrid,
   BorderedPulldown,
   Checkbox,
+  Gene,
   Grid,
   Icon,
   Input,
