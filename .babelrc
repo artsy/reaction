@@ -5,6 +5,13 @@
     "react"
   ],
   "plugins": [
-    "react-relay"
+    "react-relay",
+    ["styled-components", {
+      "ssr": true //,
+      // "displayName": true,
+      // "minify": true,
+      // "transpileTemplateLiterals": true,
+      // "preprocess": true
+    }]
   ]
 }

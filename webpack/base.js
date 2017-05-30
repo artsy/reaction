@@ -26,9 +26,14 @@ module.exports = () => {
         { test: /\.json$/, loader: "json-loader" },
         {
           exclude: [/node_modules/, /__stories__/, /__tests__/],
-          use: [
-            "awesome-typescript-loader",
-          ],
+          use: [{
+            loader: "awesome-typescript-loader",
+            options: {
+              useBabel: true,
+              useCache: true,
+              useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+            },
+          }],
           test: /\.tsx?$/,
         },
       ],
