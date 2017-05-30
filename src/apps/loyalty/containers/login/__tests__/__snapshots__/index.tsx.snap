@@ -1,13 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`login renders the snapshot 1`] = `
 <div
-  className="FLXHp">
+  className="FLXHp"
+>
   <div
     className="cVIAuV"
-    style={undefined}>
+    style={undefined}
+  >
     
   </div>
   <p
-    className="fTgPgI">
+    className="fTgPgI"
+  >
     Welcome back, please log in 
     <br />
      to your account.
@@ -15,18 +20,22 @@ exports[`login renders the snapshot 1`] = `
   <form
     action="/log_in"
     method="POST"
-    onSubmit={[Function]}>
+    onSubmit={[Function]}
+  >
     <input
       autoFocus={true}
       className="gUzbJk VzJlT"
       name="email"
       onChange={[Function]}
       placeholder="Email"
-      value="" />
+      value=""
+    />
     <div
-      className="kBsaGc">
+      className="kBsaGc"
+    >
       <div
-        className="border-container" />
+        className="border-container"
+      />
       <input
         className="dWzpRU"
         name="password"
@@ -35,23 +44,28 @@ exports[`login renders the snapshot 1`] = `
         onFocus={[Function]}
         placeholder="Password"
         type="password"
-        value="" />
+        value=""
+      />
       <a
         className="cXjeFh"
-        href={undefined}>
+        href={undefined}
+      >
         Forgot?
       </a>
     </div>
     <button
-      className="bXgzbp">
+      className="bXgzbp"
+    >
       <span>
         Log In
       </span>
     </button>
     <div
-      className="fKkZFB">
+      className="fKkZFB"
+    >
       <div
-        className="jNrPFU">
+        className="jNrPFU"
+      >
         or
       </div>
     </div>
@@ -61,11 +75,14 @@ exports[`login renders the snapshot 1`] = `
       icon={
         <Styled(Icon)
           color="white"
-          name="facebook" />
-      }>
+          name="facebook"
+        />
+      }
+    >
       <div
         className="kEzGjr"
-        style={undefined}>
+        style={undefined}
+      >
         
       </div>
       <span>
@@ -78,11 +95,14 @@ exports[`login renders the snapshot 1`] = `
       icon={
         <Styled(Icon)
           color="white"
-          name="twitter" />
-      }>
+          name="twitter"
+        />
+      }
+    >
       <div
         className="kEzGjr"
-        style={undefined}>
+        style={undefined}
+      >
         
       </div>
       <span>

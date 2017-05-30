@@ -1,41 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`RepeatVisitor renders the snapshot 1`] = `
 <div
-  className="jBvxsI">
+  className="jBvxsI"
+>
   <div
-    className="hiqXMD">
+    className="hiqXMD"
+  >
     <a
       className="dHhWkf"
-      href={undefined}>
+      href={undefined}
+    >
       <div
         className="gQelpA"
-        style={undefined}>
+        style={undefined}
+      >
         
       </div>
     </a>
     <a
       className="iDuDUI"
-      href="/">
+      href="/"
+    >
       Back To Artsy
     </a>
   </div>
   <div
-    className="idoycl">
+    className="idoycl"
+  >
     Your purchases are being reviewed
   </div>
   <div
-    className="ChQBa">
+    className="ChQBa"
+  >
     <p
-      className="fTgPgI">
+      className="fTgPgI"
+    >
       We will be in touch once we confirm your
       <br />
       purchases with the galleries.
     </p>
   </div>
   <div
-    className="ChQBa">
+    className="ChQBa"
+  >
     <a
       className="jVdhvd"
-      href="/">
+      href="/"
+    >
       <span>
         Back to Artsy
       </span>

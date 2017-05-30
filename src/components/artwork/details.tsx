@@ -4,7 +4,7 @@ import TextLink from "../text_link"
 
 import styled from "styled-components"
 
-const TruncatedTextLink = styled(TextLink)`
+const TruncatedLine = styled.div`
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -24,34 +24,36 @@ export class ArtworkDetails extends React.Component<Props, null> {
     const { cultural_maker, artists } = this.props.artwork
 
     if (cultural_maker) {
-      return <div><strong>{cultural_maker}</strong></div>
+      return <TruncatedLine><strong>{cultural_maker}</strong></TruncatedLine>
     } else if (artists && artists.length) {
       const artistLine = artists.reduce((acc, artist) => {
         return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
       }, []).slice(1)
-      return <div><strong>{artistLine}</strong></div>
+      return <TruncatedLine><strong>{artistLine}</strong></TruncatedLine>
     }
   }
 
   titleLine() {
     return (
-      <TruncatedTextLink href={this.props.artwork.href}>
-        <em>{this.props.artwork.title}</em>
-        {this.props.artwork.date && `, ${this.props.artwork.date}`}
-      </TruncatedTextLink>
+      <TruncatedLine>
+        <TextLink href={this.props.artwork.href}>
+          <em>{this.props.artwork.title}</em>
+          {this.props.artwork.date && `, ${this.props.artwork.date}`}
+        </TextLink>
+      </TruncatedLine>
     )
   }
 
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
-      return <div>{this.props.artwork.collecting_institution}</div>
+      return <TruncatedLine>{this.props.artwork.collecting_institution}</TruncatedLine>
     } else if (this.props.artwork.partner) {
       return (
-        <div>
+        <TruncatedLine>
           <TextLink href={this.props.artwork.partner.href}>
             {this.props.artwork.partner.name}
           </TextLink>
-        </div>
+        </TruncatedLine>
       )
     }
   }
