@@ -15,7 +15,7 @@ export class ArtistRow extends React.Component<Props, null> {
   render() {
     const { artist } = this.props
     return (
-      <div>
+      <Container >
         <Header>
           <Text textSize="small" textStyle="primary">
             {artist.name}
@@ -23,13 +23,17 @@ export class ArtistRow extends React.Component<Props, null> {
           <FollowButton artist={artist}/>
         </Header>
         <Fillwidth artworks={artist.artworks as any} />
-      </div>
+      </Container>
     )
   }
 }
 
 const Header = styled.div`
   display: flex;
+`
+
+const Container = styled.div`
+  margin-bottom: 40px;
 `
 
 export default Relay.createContainer(ArtistRow, {
