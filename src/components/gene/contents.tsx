@@ -106,10 +106,9 @@ export class GeneContents extends React.Component<Props, State> {
       artists,
       filtered_artworks,
       mode,
-      artworks,
     } = this.props.gene
 
-    const showArtists = this.props.relay.variables.showArtists
+    const { showArtists } = this.props.relay.variables
 
     let artistRows = artists && artists.edges.map(edge => {
       return (
@@ -167,7 +166,7 @@ export class GeneContents extends React.Component<Props, State> {
           />
         </SubFilterBar>
         <Artworks
-          artworks={artworks}
+          artworks={filtered_artworks.artworks}
           columnCount={4}
         />
         <SpinnerContainer>
@@ -242,15 +241,6 @@ export default Relay.createContainer(GeneContents, {
             }
           }
         }
-        artworks: artworks_connection(
-          first: $artworksSize,
-          medium: $medium,
-          price_range: $price_range,
-          dimension_range: $dimension_range,
-          sort: $sort,
-        )  @skip(if: $showArtists) {
-          ${Artworks.getFragment("artworks")}
-        }
         filtered_artworks(
           aggregations: $aggregations, 
           size: $artworksSize,
@@ -263,6 +253,9 @@ export default Relay.createContainer(GeneContents, {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
             ${Dropdown.getFragment("aggregation")}
+          }
+          artworks: artworks_connection(first: $artworksSize) {
+            ${Artworks.getFragment("artworks")}
           }
         }
       }
