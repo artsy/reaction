@@ -15,6 +15,8 @@ import Spinner from "../spinner"
 import Artworks from "../artwork_grid"
 import ArtistRow from "./artist_row"
 
+import * as fonts from "../../assets/fonts"
+
 const PageSize = 10
 
 interface Props extends RelayProps, React.HTMLProps<GeneContents> {
@@ -85,6 +87,20 @@ export class GeneContents extends React.Component<Props, State> {
     })
   }
 
+  loadMoreArtists() {
+    if (!this.state.loading) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.setVariables({
+          artistsSize: this.props.relay.variables.artistsSize + PageSize,
+        }, readyState => {
+          if (readyState.done) {
+            this.setState({ loading: false })
+          }
+        })
+      })
+    }
+  }
+
   setShowArtists() {
     this.setState({
       for_sale: false,
@@ -110,11 +126,24 @@ export class GeneContents extends React.Component<Props, State> {
 
     const { showArtists } = this.props.relay.variables
 
-    let artistRows = artists && artists.edges.map(edge => {
+    const artistRows = artists && artists.edges.map(edge => {
       return (
         <ArtistRow artist={edge.node as any} key={edge.__dataID__} />
       )
     })
+
+    const loadMoreButton = (
+      <LoadMoreContainer>
+        <LoadMoreButton onClick={() => this.loadMoreArtists()}>Load More</LoadMoreButton>
+      </LoadMoreContainer>
+    )
+
+    const artistEl = (
+      <div>
+        {artistRows}
+        {artists.pageInfo.hasNextPage && loadMoreButton}
+      </div>
+    )
 
     const dropdowns = filtered_artworks.aggregations.map(aggregation =>
       (
@@ -146,7 +175,7 @@ export class GeneContents extends React.Component<Props, State> {
       </ArtistFilterButtons>
     ) : ""
 
-    const content = this.props.relay.variables.showArtists ? artistRows : (
+    const content = this.props.relay.variables.showArtists ? artistEl : (
       <div>
         <SubFilterBar>
           <div>
@@ -217,6 +246,19 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
+const LoadMoreContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const LoadMoreButton = styled.a`
+  font-family: ${ fonts.primary.fontFamily };
+  font-size: 14px;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+`
+
 export default Relay.createContainer(GeneContents, {
   initialVariables: {
     showArtists: true,
@@ -235,6 +277,9 @@ export default Relay.createContainer(GeneContents, {
         mode
         name
         artists: artists_connection(first: $artistsSize) @include(if: $showArtists) {
+          pageInfo {
+            hasNextPage
+          }
           edges {
             node {
               ${ArtistRow.getFragment("artist")}
