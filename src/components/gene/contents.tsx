@@ -87,6 +87,20 @@ export class GeneContents extends React.Component<Props, State> {
     })
   }
 
+  loadMoreArtworks() {
+    if (!this.state.loading) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.setVariables({
+          artworksSize: this.props.relay.variables.artworksSize + PageSize,
+        }, readyState => {
+          if (readyState.done) {
+            this.setState({ loading: false })
+          }
+        })
+      })
+    }
+  }
+
   loadMoreArtists() {
     if (!this.state.loading) {
       this.setState({ loading: true }, () => {
@@ -141,7 +155,10 @@ export class GeneContents extends React.Component<Props, State> {
     const artistEl = (
       <div>
         {artistRows}
-        {artists.pageInfo.hasNextPage && loadMoreButton}
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
+        {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
       </div>
     )
 
@@ -197,6 +214,7 @@ export class GeneContents extends React.Component<Props, State> {
         <Artworks
           artworks={filtered_artworks.artworks}
           columnCount={4}
+          onLoadMore={() => this.loadMoreArtworks()}
         />
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
