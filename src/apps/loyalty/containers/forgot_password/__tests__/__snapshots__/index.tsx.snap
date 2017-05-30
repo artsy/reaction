@@ -2,16 +2,16 @@
 
 exports[`<ForgotPassword /> renders the snapshot 1`] = `
 <div
-  className="FLXHp"
+  className="file__Container-soz9g-0 pWqFh"
 >
   <div
-    className="cVIAuV"
+    className="file-s1qxsvco-0 eQNIgp"
     style={undefined}
   >
     
   </div>
   <p
-    className="fTgPgI"
+    className="file__Text-s1vkb2x7-0 jZOqwQ"
   >
     Enter the email address associated
     <br />
@@ -24,14 +24,14 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
   </div>
   <input
     autoFocus={true}
-    className="gUzbJk VzJlT"
+    className="file__StyledInput-soz9g-1 gIYfKo file__StyledInput-uz2par-0 lUHYj"
     name="email"
     onChange={[Function]}
     placeholder="Email"
     value=""
   />
   <button
-    className="cpyCro"
+    className="file__InvertedButton-glkvqw-0 gHJAPQ file__StyledButton-s1j9xyt8-0 cQgowX"
     disabled={true}
     onClick={[Function]}
   >
