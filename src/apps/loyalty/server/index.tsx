@@ -1,4 +1,4 @@
-import * as artsyPassport from "artsy-passport"
+import artsyPassport from "artsy-passport"
 import * as Backbone from "backbone"
 import * as express from "express"
 import * as path from "path"

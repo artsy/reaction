@@ -1,4 +1,4 @@
-// import * as fetch from "isomorphic-fetch"
+import fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -7,9 +7,6 @@ import Icon from "../../../../components/icon"
 import Input from "../../../../components/input"
 import Message from "../../../../components/message"
 import Text from "../../../../components/text"
-// import TextLink from "../../../../components/text_link"
-
-// import colors from "../../../../assets/colors"
 
 const Container = styled.div`
   padding: 20px;
