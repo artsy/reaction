@@ -131,15 +131,7 @@ export class GeneContents extends React.Component<Props, State> {
     })
   }
 
-  render() {
-    const {
-      artists,
-      filtered_artworks,
-      mode,
-    } = this.props.gene
-
-    const { showArtists } = this.props.relay.variables
-
+  renderArtistRows(artists) {
     const artistRows = artists && artists.edges.map(edge => {
       return (
         <ArtistRow artist={edge.node as any} key={edge.__dataID__} />
@@ -152,15 +144,27 @@ export class GeneContents extends React.Component<Props, State> {
       </LoadMoreContainer>
     )
 
-    const artistEl = (
-      <div>
+    return (
+      <ArtistRowsContainer>
         {artistRows}
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
         </SpinnerContainer>
         {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
-      </div>
+      </ArtistRowsContainer>
     )
+  }
+
+  render() {
+    const {
+      artists,
+      filtered_artworks,
+      mode,
+    } = this.props.gene
+
+    const { showArtists } = this.props.relay.variables
+
+    const artistEl = this.renderArtistRows(artists)
 
     const dropdowns = filtered_artworks.aggregations.map(aggregation =>
       (
@@ -262,6 +266,10 @@ const SpinnerContainer = styled.div`
   width: 100%;
   height: 200px;
   position: relative;
+`
+
+const ArtistRowsContainer = styled.div`
+  margin: 40px 0;
 `
 
 const LoadMoreContainer = styled.div`
