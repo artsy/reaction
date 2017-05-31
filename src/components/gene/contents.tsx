@@ -29,6 +29,7 @@ interface Props extends RelayProps, React.HTMLProps<GeneContents> {
   gene: any
   relay?: any,
   filtered_artworks?: any,
+  onChangeUrlQueryParams?: any,
 }
 
 interface RelayProps {
@@ -46,13 +47,11 @@ interface State {
   loading: boolean,
 }
 
-function mapUrlToProps(url, props) {
-  return {
-    for_sale: decode(UrlQueryParamTypes.boolean, url.for_saleInUrl),
-    dimension_range: url.dimension_range,
-    price_range: url.price_range,
-    medium: url.medium,
-  }
+const urlPropsQueryConfig = {
+  for_sale: { type: UrlQueryParamTypes.boolean },
+  price_range: { type: UrlQueryParamTypes.string },
+  medium: { type: UrlQueryParamTypes.string },
+  dimension_range: { type: UrlQueryParamTypes.string },
 }
 
 export class GeneContents extends React.Component<Props, State> {
@@ -79,6 +78,9 @@ export class GeneContents extends React.Component<Props, State> {
   onSelect(count, slice) {
     this.setState({
       [slice.toLowerCase()]: count.name,
+    })
+    this.props.onChangeUrlQueryParams({
+      [slice.toLowerCase()]: count.id,
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
@@ -312,7 +314,7 @@ const LoadMoreButton = styled.a`
   }
 `
 
-const GeneContentsUrl = addUrlProps({ mapUrlToProps })(GeneContents) as React.StatelessComponent<Props>
+const GeneContentsUrl = addUrlProps({ urlPropsQueryConfig })(GeneContents) as React.StatelessComponent<Props>
 
 export default Relay.createContainer(GeneContentsUrl, {
   initialVariables: {
