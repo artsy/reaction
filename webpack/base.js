@@ -19,6 +19,10 @@ module.exports = () => {
       "analytics": [
         "babel-polyfill",
         "./src/apps/loyalty/client_side_analytics"
+      ],
+      "gene_filter": [
+        "babel-polyfill",
+        "./src/apps/gene_filter/client"
       ]
     },
     module: {

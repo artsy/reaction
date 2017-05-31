@@ -2,6 +2,12 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
+import {
+  addUrlProps,
+  decode,
+  UrlQueryParamTypes,
+} from "react-url-query"
+
 import Dropdown from "../artwork_filter/dropdown"
 import ForSaleCheckbox from "../artwork_filter/for_sale_checkbox"
 import Headline from "../artwork_filter/headline"
@@ -25,12 +31,28 @@ interface Props extends RelayProps, React.HTMLProps<GeneContents> {
   filtered_artworks?: any,
 }
 
+interface RelayProps {
+  gene: {
+    mode: string | null,
+    name: string | null,
+  } | any
+}
+
 interface State {
   for_sale: boolean,
   dimension_range: string,
   price_range: string,
   medium: string,
   loading: boolean,
+}
+
+function mapUrlToProps(url, props) {
+  return {
+    for_sale: decode(UrlQueryParamTypes.boolean, url.for_saleInUrl),
+    dimension_range: url.dimension_range,
+    price_range: url.price_range,
+    medium: url.medium,
+  }
 }
 
 export class GeneContents extends React.Component<Props, State> {
@@ -290,7 +312,9 @@ const LoadMoreButton = styled.a`
   }
 `
 
-export default Relay.createContainer(GeneContents, {
+const GeneContentsUrl = addUrlProps({ mapUrlToProps })(GeneContents) as React.StatelessComponent<Props>
+
+export default Relay.createContainer(GeneContentsUrl, {
   initialVariables: {
     showArtists: true,
     artworksSize: PageSize,
@@ -338,10 +362,3 @@ export default Relay.createContainer(GeneContents, {
     `,
   },
 })
-
-interface RelayProps {
-  gene: {
-    mode: string | null,
-    name: string | null,
-  } | any
-}
