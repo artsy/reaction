@@ -15,8 +15,8 @@ import TextArea from "./text_area"
 import TextLink from "./text_link"
 import Title from "./title"
 
-import React from "react"
-import ReactDOM from "react-dom"
+import * as React from "react"
+import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
 import { artsyNetworkLayer } from "../relay/config"
