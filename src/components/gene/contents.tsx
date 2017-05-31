@@ -4,7 +4,6 @@ import styled from "styled-components"
 
 import {
   addUrlProps,
-  decode,
   UrlQueryParamTypes,
 } from "react-url-query"
 
