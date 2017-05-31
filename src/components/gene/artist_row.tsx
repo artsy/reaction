@@ -15,7 +15,7 @@ export class ArtistRow extends React.Component<Props, null> {
   render() {
     const { artist } = this.props
     return (
-      <Container >
+      <Container>
         <Header>
           <Text textSize="small" textStyle="primary">
             {artist.name}
