@@ -140,7 +140,9 @@ export class GeneContents extends React.Component<Props, State> {
 
     const loadMoreButton = (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={() => this.loadMoreArtists()}>Load More</LoadMoreButton>
+        <LoadMoreButton onClick={() => this.loadMoreArtists()}>
+          Load More
+        </LoadMoreButton>
       </LoadMoreContainer>
     )
 
@@ -281,8 +283,11 @@ const LoadMoreContainer = styled.div`
 const LoadMoreButton = styled.a`
   font-family: ${ fonts.primary.fontFamily };
   font-size: 14px;
-  border-bottom: 2px solid black;
   cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    border-bottom: 2px solid black;
+  }
 `
 
 export default Relay.createContainer(GeneContents, {
