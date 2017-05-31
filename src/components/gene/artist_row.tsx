@@ -30,10 +30,11 @@ export class ArtistRow extends React.Component<Props, null> {
 
 const Header = styled.div`
   display: flex;
+  margin-bottom: 20px;
 `
 
 const Container = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 `
 
 export default Relay.createContainer(ArtistRow, {
