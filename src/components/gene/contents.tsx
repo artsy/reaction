@@ -79,7 +79,7 @@ export class GeneContents extends React.Component<Props, State> {
     )
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { relay, gene } = this.props
     // Allow us to set variables from URL params
     if (this.anyArtworkFilters()) {
