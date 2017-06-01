@@ -19,10 +19,8 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
-import { configureUrlQuery } from "react-url-query"
 import { artsyNetworkLayer } from "../relay/config"
 import * as Artsy from "./artsy"
-import history from "./history"
 
 interface InitOptions {
   user: User,
@@ -32,7 +30,6 @@ interface InitOptions {
 }
 
 export function init(options: InitOptions) {
-  configureUrlQuery({ history })
   Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
 
   const rootRoute = (
