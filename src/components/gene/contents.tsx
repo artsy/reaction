@@ -29,6 +29,10 @@ interface Props extends RelayProps, React.HTMLProps<GeneContents> {
   relay?: any,
   filtered_artworks?: any,
   onChangeUrlQueryParams?: any,
+  for_sale?: boolean,
+  dimension_range?: string,
+  price_range?: string,
+  medium?: string
 }
 
 interface RelayProps {
@@ -47,7 +51,7 @@ interface State {
 }
 
 const urlPropsQueryConfig = {
-  for_sale: { type: UrlQueryParamTypes.boolean },
+  for_sale: { type: UrlQueryParamTypes.string },
   price_range: { type: UrlQueryParamTypes.string },
   medium: { type: UrlQueryParamTypes.string },
   dimension_range: { type: UrlQueryParamTypes.string },
@@ -58,25 +62,43 @@ export class GeneContents extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+      for_sale: props.for_sale || false,
+      dimension_range: props.dimension_range || "*",
+      price_range: props.price_range || "*",
+      medium: props.medium || "*",
       loading: false,
     }
   }
 
+  anyArtworkFilters() {
+    return (
+      this.props.for_sale ||
+      (this.props.dimension_range !== "*" && this.props.dimension_range ) ||
+      (this.props.price_range !== "*" && this.props.price_range) ||
+      (this.props.medium !== "*" && this.props.medium)
+    )
+  }
+
   componentDidMount() {
     const { relay, gene } = this.props
-
-    relay.setVariables({
-      showArtists: gene.mode === "artist",
-    })
+    // Allow us to set variables from URL params
+    if (this.anyArtworkFilters()) {
+      relay.setVariables({
+        for_sale: this.props.for_sale,
+        dimension_range: this.props.dimension_range,
+        price_range: this.props.price_range,
+        medium: this.props.medium,
+      })
+    } else {
+      relay.setVariables({
+        showArtists: gene.mode === "artist",
+      })
+    }
   }
 
   onSelect(count, slice) {
     this.setState({
-      [slice.toLowerCase()]: count.name,
+      [slice.toLowerCase()]: count.id,
     })
     this.props.onChangeUrlQueryParams({
       [slice.toLowerCase()]: count.id,
@@ -102,6 +124,9 @@ export class GeneContents extends React.Component<Props, State> {
 
     this.setState({
       for_sale: isForSale,
+    })
+    this.props.onChangeUrlQueryParams({
+      for_sale: forSaleVar,
     })
     this.props.relay.setVariables({
       for_sale: forSaleVar,
@@ -188,6 +213,7 @@ export class GeneContents extends React.Component<Props, State> {
     } = this.props.gene
 
     const { showArtists } = this.props.relay.variables
+    const shouldShowArtists = showArtists && !this.anyArtworkFilters()
 
     const artistEl = this.renderArtistRows(artists)
 
@@ -213,7 +239,7 @@ export class GeneContents extends React.Component<Props, State> {
         <span>By Artists:</span>
         <Button
           onClick={() => this.setShowArtists()}
-          state={showArtists ? ButtonState.Success : ButtonState.Default}
+          state={shouldShowArtists ? ButtonState.Success : ButtonState.Default}
         >
           All Artists
         </Button>
@@ -221,7 +247,7 @@ export class GeneContents extends React.Component<Props, State> {
       </ArtistFilterButtons>
     ) : ""
 
-    const content = this.props.relay.variables.showArtists ? artistEl : (
+    const content = shouldShowArtists ? artistEl : (
       <div>
         <SubFilterBar>
           <div>
@@ -231,6 +257,7 @@ export class GeneContents extends React.Component<Props, State> {
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
               facet={this.props.gene}
+              aggregations={filtered_artworks.aggregations}
             />
             <TotalCount filter_artworks={filtered_artworks} />
           </div>
@@ -353,6 +380,11 @@ export default Relay.createContainer(GeneContentsUrl, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
+            slice 
+            counts {
+              id
+              name
+            }
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $artworksSize) {

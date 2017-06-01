@@ -9,9 +9,12 @@ import colors from "../../assets/colors"
 import { primary, secondary } from "../../assets/fonts"
 import { labelMap } from "./param_map"
 
+import { find } from "lodash"
+
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
-  onSelect?: any
+  onSelect?: any,
+  selected?: any,
 }
 
 interface DropdownState {
@@ -24,7 +27,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     super(props)
     this.state = {
       isHovered: false,
-      selected: {},
+      selected: props.selected || {},
     }
   }
 
@@ -36,14 +39,22 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
   onSelect(count, slice) {
     this.setState({
-      selected: count,
+      selected: count.id,
       isHovered: false,
     })
     this.props.onSelect(count, slice)
   }
 
+  getSelectedName(id) {
+    const selectedCount = find(this.props.aggregation.counts, count => count.id === id)
+    return selectedCount ? selectedCount.name : null
+  }
+
   render() {
     const slice = this.props.aggregation.slice
+    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
+    const selectedName = this.getSelectedName(this.state.selected)
+
     let navItems = this.props.aggregation.counts.map(count => {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
@@ -53,7 +64,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       )
     })
 
-    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
     navItems.unshift(
       (
         <NavItem key="all" onClick={() => this.onSelect({value: "*"}, slice)}>
@@ -67,7 +77,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     let superLabelColor = "black"
     let navStyle = { display: "none" }
 
-    if (this.state.selected.name) {
+    if (selectedName) {
       buttonTextColor = colors.purpleRegular
     }
 
@@ -78,8 +88,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       navStyle = { display: "block" }
     }
 
-    const labelText = this.state.selected.name || labels.label
-    const superLabelText = this.state.selected.name ? labels.label : null
+    const labelText = selectedName || labels.label
+    const superLabelText = selectedName  ? labels.label : null
 
     return (
       <div
