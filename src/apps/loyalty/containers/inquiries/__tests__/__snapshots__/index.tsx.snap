@@ -46,10 +46,10 @@ exports[`inquiries renders the inquiries listing 1`] = `
       className="Grid__Grid-bojwg eRfKLT"
     >
       <div
-        className="file__Row-s1g64ph2-1 cZTJps Row__Row-kNtYPA hicFUP"
+        className="file__Row-ey2tf-1 mMHbU Row__Row-kNtYPA hicFUP"
       >
         <div
-          className="file__Col-s1g64ph2-0 JEdiW Col__Col-hCQanm gzwuLD"
+          className="file__Col-ey2tf-0 kavutv Col__Col-hCQanm gzwuLD"
         >
           <div
             className="file__InquiryContainer-s1fyqn7p-0 hxDycY"
@@ -138,7 +138,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
       placeholder="Artwork, Artist, Gallery"
     />
     <button
-      className="file__InvertedButton-glkvqw-0 gHJAPQ file__StyledButton-s1j9xyt8-0 cQgowX"
+      className="file__InvertedButton-glkvqw-0 gHJAPQ file__StyledButton-s1b5cz0b-0 jookwW"
       disabled={true}
       onClick={[Function]}
     >

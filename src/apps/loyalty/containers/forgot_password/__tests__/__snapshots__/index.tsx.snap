@@ -31,7 +31,7 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
     value=""
   />
   <button
-    className="file__InvertedButton-glkvqw-0 gHJAPQ file__StyledButton-s1j9xyt8-0 cQgowX"
+    className="file__InvertedButton-glkvqw-0 gHJAPQ file__StyledButton-s1b5cz0b-0 jookwW"
     disabled={true}
     onClick={[Function]}
   >
