@@ -7,11 +7,11 @@
   "plugins": [
     "react-relay",
     ["styled-components", {
-      "ssr": true //,
-      // "displayName": true,
-      // "minify": true,
-      // "transpileTemplateLiterals": true,
-      // "preprocess": true
+      "ssr": true,
+      "displayName": true,
+      "minify": true,
+      "transpileTemplateLiterals": true
+      // "preprocess": true // still experimental
     }]
   ]
 }

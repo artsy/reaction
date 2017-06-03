@@ -823,9 +823,9 @@ babel-plugin-react-relay@^0.10.0:
     deasync "^0.1.7"
     graphql-config-parser "^1.2.0"
 
-babel-plugin-styled-components@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.4.tgz#b0e6d5bb01059bc7ab9118d3d686f6472ee8e91f"
+"babel-plugin-styled-components@https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz":
+  version "1.1.4+stabler-component-id"
+  resolved "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz#12918ceafce406b8a4a92393ccf2e99950674af0"
   dependencies:
     stylis "2.0.0"
 
@@ -6990,13 +6990,9 @@ styled-components@^2.0.0:
     stylis "^2.0.0"
     supports-color "^3.2.3"
 
-stylis@2.0.0:
+stylis@2.0.0, stylis@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-2.0.0.tgz#6785a6546bd73478799a67d49d67086953b50ad5"
-
-stylis@^2.0.0:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-2.0.12.tgz#547253055d170f2a7ac2f6d09365d70635f2bec6"
 
 superagent-proxy@^1.0.0:
   version "1.0.2"

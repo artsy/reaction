@@ -52,7 +52,7 @@
     "awesome-typescript-loader": "^3.1.2",
     "babel-core": "^6.24.0",
     "babel-plugin-react-relay": "^0.10.0",
-    "babel-plugin-styled-components": "^1.1.4",
+    "babel-plugin-styled-components": "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
