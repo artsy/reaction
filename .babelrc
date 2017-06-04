@@ -7,11 +7,20 @@
   "plugins": [
     "react-relay",
     ["styled-components", {
-      "ssr": true,
+      "ssr": "use-mtime",
       "displayName": true,
       "minify": true,
       "transpileTemplateLiterals": true
       // "preprocess": true // still experimental
     }]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        ["styled-components", {
+          "ssr": "use-content"
+        }]
+      ]
+    }
+  }
 }

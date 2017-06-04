@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
-    "test": "node verify-node-version.js && jest",
+    "test": "node verify-node-version.js && env NODE_ENV=test jest",
     "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets",
     "deploy-storybook": "storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
@@ -52,7 +52,7 @@
     "awesome-typescript-loader": "^3.1.2",
     "babel-core": "^6.24.0",
     "babel-plugin-react-relay": "^0.10.0",
-    "babel-plugin-styled-components": "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz",
+    "babel-plugin-styled-components": "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstable-component-id-2/babel-plugin-styled-components-1.1.4.stabler-component-id-2.tgz",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",

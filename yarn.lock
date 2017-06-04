@@ -823,6 +823,12 @@ babel-plugin-react-relay@^0.10.0:
     deasync "^0.1.7"
     graphql-config-parser "^1.2.0"
 
+"babel-plugin-styled-components@https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstable-component-id-2/babel-plugin-styled-components-1.1.4.stabler-component-id-2.tgz":
+  version "1.1.4+stabler-component-id-2"
+  resolved "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstable-component-id-2/babel-plugin-styled-components-1.1.4.stabler-component-id-2.tgz#95997fc9e85cfae196e668596f8927e2505d69f0"
+  dependencies:
+    stylis "2.0.0"
+
 "babel-plugin-styled-components@https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz":
   version "1.1.4+stabler-component-id"
   resolved "https://github.com/alloy/babel-plugin-styled-components/releases/download/v1.1.4%2Bstabler-component-id/babel-plugin-styled-components-1.1.4.stabler-component-id.tgz#12918ceafce406b8a4a92393ccf2e99950674af0"
