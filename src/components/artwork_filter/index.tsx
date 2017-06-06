@@ -15,7 +15,11 @@ const PageSize = 10
 
 interface Props extends RelayProps, React.HTMLProps<ArtworkFilter> {
   filter_artworks: any
-  relay: any
+  relay: any,
+  for_sale?: boolean,
+  dimension_range?: string,
+  price_range?: string,
+  medium?: string
 }
 
 interface State {
@@ -30,10 +34,10 @@ class ArtworkFilter extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+      for_sale: props.for_sale || false,
+      dimension_range: props.dimension_range || "*",
+      price_range: props.price_range || "*",
+      medium: props.medium || "*",
       loading: false,
     }
   }
@@ -67,7 +71,7 @@ class ArtworkFilter extends React.Component<Props, State> {
 
   onSelect(count, slice) {
     this.setState({
-      [slice.toLowerCase()]: count.name,
+      [slice.toLowerCase()]: count.id,
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
@@ -113,6 +117,7 @@ class ArtworkFilter extends React.Component<Props, State> {
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
               facet={filterArtworks.facet}
+              aggregations={filterArtworks.aggregations}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
@@ -182,6 +187,11 @@ export default Relay.createContainer(ArtworkFilter, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
+            slice 
+            counts {
+              id
+              name
+            }
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $size) {

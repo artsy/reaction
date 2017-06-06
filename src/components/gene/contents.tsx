@@ -2,6 +2,11 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
+import {
+  addUrlProps,
+  UrlQueryParamTypes,
+} from "react-url-query"
+
 import Dropdown from "../artwork_filter/dropdown"
 import ForSaleCheckbox from "../artwork_filter/for_sale_checkbox"
 import Headline from "../artwork_filter/headline"
@@ -23,6 +28,18 @@ interface Props extends RelayProps, React.HTMLProps<GeneContents> {
   gene: any
   relay?: any,
   filtered_artworks?: any,
+  onChangeUrlQueryParams?: any,
+  for_sale?: boolean,
+  dimension_range?: string,
+  price_range?: string,
+  medium?: string
+}
+
+interface RelayProps {
+  gene: {
+    mode: string | null,
+    name: string | null,
+  } | any
 }
 
 interface State {
@@ -33,30 +50,58 @@ interface State {
   loading: boolean,
 }
 
+const urlPropsQueryConfig = {
+  for_sale: { type: UrlQueryParamTypes.string },
+  price_range: { type: UrlQueryParamTypes.string },
+  medium: { type: UrlQueryParamTypes.string },
+  dimension_range: { type: UrlQueryParamTypes.string },
+}
+
 export class GeneContents extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
     this.state = {
-      for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+      for_sale: props.for_sale || false,
+      dimension_range: props.dimension_range || "*",
+      price_range: props.price_range || "*",
+      medium: props.medium || "*",
       loading: false,
     }
   }
 
-  componentDidMount() {
-    const { relay, gene } = this.props
+  anyArtworkFilters() {
+    return (
+      this.props.for_sale ||
+      (this.props.dimension_range !== "*" && this.props.dimension_range ) ||
+      (this.props.price_range !== "*" && this.props.price_range) ||
+      (this.props.medium !== "*" && this.props.medium)
+    )
+  }
 
-    relay.setVariables({
-      showArtists: gene.mode === "artist",
-    })
+  componentWillMount() {
+    const { relay, gene } = this.props
+    // Allow us to set variables from URL params
+    if (this.anyArtworkFilters()) {
+      relay.setVariables({
+        for_sale: this.props.for_sale,
+        dimension_range: this.props.dimension_range,
+        price_range: this.props.price_range,
+        medium: this.props.medium,
+      })
+    } else {
+      relay.setVariables({
+        showArtists: gene.mode === "artist",
+      })
+    }
   }
 
   onSelect(count, slice) {
     this.setState({
-      [slice.toLowerCase()]: count.name,
+      [slice.toLowerCase()]: count.id,
+    })
+    this.props.onChangeUrlQueryParams({
+      [slice.toLowerCase()]: count.id,
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
@@ -79,6 +124,9 @@ export class GeneContents extends React.Component<Props, State> {
 
     this.setState({
       for_sale: isForSale,
+    })
+    this.props.onChangeUrlQueryParams({
+      for_sale: forSaleVar,
     })
     this.props.relay.setVariables({
       for_sale: forSaleVar,
@@ -140,7 +188,9 @@ export class GeneContents extends React.Component<Props, State> {
 
     const loadMoreButton = (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={() => this.loadMoreArtists()}>Load More</LoadMoreButton>
+        <LoadMoreButton onClick={() => this.loadMoreArtists()}>
+          Load More
+        </LoadMoreButton>
       </LoadMoreContainer>
     )
 
@@ -163,6 +213,7 @@ export class GeneContents extends React.Component<Props, State> {
     } = this.props.gene
 
     const { showArtists } = this.props.relay.variables
+    const shouldShowArtists = showArtists && !this.anyArtworkFilters()
 
     const artistEl = this.renderArtistRows(artists)
 
@@ -188,7 +239,7 @@ export class GeneContents extends React.Component<Props, State> {
         <span>By Artists:</span>
         <Button
           onClick={() => this.setShowArtists()}
-          state={showArtists ? ButtonState.Success : ButtonState.Default}
+          state={shouldShowArtists ? ButtonState.Success : ButtonState.Default}
         >
           All Artists
         </Button>
@@ -196,7 +247,7 @@ export class GeneContents extends React.Component<Props, State> {
       </ArtistFilterButtons>
     ) : ""
 
-    const content = this.props.relay.variables.showArtists ? artistEl : (
+    const content = shouldShowArtists ? artistEl : (
       <div>
         <SubFilterBar>
           <div>
@@ -206,6 +257,7 @@ export class GeneContents extends React.Component<Props, State> {
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
               facet={this.props.gene}
+              aggregations={filtered_artworks.aggregations}
             />
             <TotalCount filter_artworks={filtered_artworks} />
           </div>
@@ -281,11 +333,16 @@ const LoadMoreContainer = styled.div`
 const LoadMoreButton = styled.a`
   font-family: ${ fonts.primary.fontFamily };
   font-size: 14px;
-  border-bottom: 2px solid black;
   cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    border-bottom: 2px solid black;
+  }
 `
 
-export default Relay.createContainer(GeneContents, {
+const GeneContentsUrl = addUrlProps({ urlPropsQueryConfig })(GeneContents) as React.StatelessComponent<Props>
+
+export default Relay.createContainer(GeneContentsUrl, {
   initialVariables: {
     showArtists: true,
     artworksSize: PageSize,
@@ -323,6 +380,11 @@ export default Relay.createContainer(GeneContents, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
+            slice 
+            counts {
+              id
+              name
+            }
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $artworksSize) {
@@ -333,10 +395,3 @@ export default Relay.createContainer(GeneContents, {
     `,
   },
 })
-
-interface RelayProps {
-  gene: {
-    mode: string | null,
-    name: string | null,
-  } | any
-}
