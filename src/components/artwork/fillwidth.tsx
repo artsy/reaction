@@ -4,7 +4,7 @@ import * as Relay from "react-relay"
 import sizeMe from "react-sizeme"
 import Artwork from "./fillwidth_item"
 
-import { find, map, max, reduce } from "lodash"
+import { find, reduce } from "lodash"
 
 interface RelayProps {
   artworks: {
