@@ -31,6 +31,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ selected: nextProps.selected })
+  }
+
   toggleHover(value) {
     this.setState({
       isHovered: value,

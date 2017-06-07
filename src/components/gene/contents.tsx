@@ -72,10 +72,10 @@ export class GeneContents extends React.Component<Props, State> {
 
   anyArtworkFilters() {
     return (
-      this.props.for_sale ||
-      (this.props.dimension_range !== "*" && this.props.dimension_range ) ||
-      (this.props.price_range !== "*" && this.props.price_range) ||
-      (this.props.medium !== "*" && this.props.medium)
+      this.state.for_sale ||
+      (this.state.dimension_range !== "*" && !!this.state.dimension_range ) ||
+      (this.state.price_range !== "*" && !!this.state.price_range) ||
+      (this.state.medium !== "*" && !!this.state.medium)
     )
   }
 
@@ -111,6 +111,9 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   onChangeSort(option) {
+    this.props.onChangeUrlQueryParams({
+      sort: option.val,
+    })
     this.props.relay.setVariables({
       sort: option.val,
       artworksSize: PageSize,
@@ -165,10 +168,16 @@ export class GeneContents extends React.Component<Props, State> {
 
   setShowArtists() {
     this.setState({
+      dimension_range: null,
+      price_range: null,
+      medium: null,
       for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+    })
+    this.props.onChangeUrlQueryParams({
+      dimension_range: null,
+      price_range: null,
+      medium: null,
+      for_sale: false,
     })
     this.props.relay.setVariables({
       showArtists: true,
@@ -214,19 +223,19 @@ export class GeneContents extends React.Component<Props, State> {
 
     const { showArtists } = this.props.relay.variables
     const shouldShowArtists = showArtists && !this.anyArtworkFilters()
-
     const artistEl = this.renderArtistRows(artists)
 
-    const dropdowns = filtered_artworks.aggregations.map(aggregation =>
-      (
+    const dropdowns = filtered_artworks.aggregations.map(aggregation => {
+      console.log("this.state[aggregation.slice.toLowerCase()]", this.state[aggregation.slice.toLowerCase()])
+      return (
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
           selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
           onSelect={(count, slice) => this.onSelect(count, slice)}
         />
-      ),
-    )
+      )
+    })
 
     const pulldownOptions = [
       { val: "-partner_updated_at", name: "Recently Updated" },
