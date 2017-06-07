@@ -29,7 +29,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
 
 export const StyledMetadata = styled(ArtworkMetadata)`
     ${fonts.secondary.style}
-    color: ${colors.grayBold};
+    color: ${colors.graySemibold};
     margin-top: 12px;
     font-size: 15px;
     text-align: left;
