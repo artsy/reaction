@@ -278,6 +278,7 @@ export class GeneContents extends React.Component<Props, State> {
         <Artworks
           artworks={filtered_artworks.artworks}
           columnCount={4}
+          itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
         />
         <SpinnerContainer>
