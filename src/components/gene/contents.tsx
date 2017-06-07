@@ -226,7 +226,7 @@ export class GeneContents extends React.Component<Props, State> {
     const artistEl = this.renderArtistRows(artists)
 
     const dropdowns = filtered_artworks.aggregations.map(aggregation => {
-      console.log("this.state[aggregation.slice.toLowerCase()]", this.state[aggregation.slice.toLowerCase()])
+      console.log(aggregation.slice.toLowerCase(), aggregation)
       return (
         <Dropdown
           aggregation={aggregation}
@@ -312,8 +312,8 @@ const FilterBar = styled.div`
 const ArtistFilterButtons = styled.div`
   margin-right: 10px;
   button {
-    height: 47px;
-    padding: 15px;
+    height: 52px;
+    padding: 16px;
   }
 `
 
@@ -326,12 +326,12 @@ const SubFilterBar = styled.div`
 
 const SpinnerContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: relative;
 `
 
 const ArtistRowsContainer = styled.div`
-  margin: 40px 0;
+  margin: 40px 0 20px;
 `
 
 const LoadMoreContainer = styled.div`
@@ -345,6 +345,7 @@ const LoadMoreButton = styled.a`
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;
+  border-bottom: 2px solid transparent;
   &:hover {
     border-bottom: 2px solid black;
   }
