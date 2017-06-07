@@ -29,19 +29,19 @@ interface Props extends RelayProps, React.HTMLProps<FillwidthItem> {
 
 export class FillwidthItem extends React.Component<Props, null> {
   render() {
-    const { artwork, className, targetHeight, imageHeight } = this.props
+    const { artwork, className, height } = this.props
     return (
       <div className={className}>
-        <Placeholder style={{ height: targetHeight }}>
+        <Placeholder style={{ height }}>
           <ImageLink href={artwork.href}>
             <Image
               src={artwork.image.url}
-              height={imageHeight}
+              height={height}
             />
           </ImageLink>
           <SaveButton
             artwork={artwork}
-            style={{position: "absolute", right: "10px", bottom: "10px"}}
+            style={{position: "absolute", right: "5px", bottom: "5px"}}
           />
         </Placeholder>
         <ArtworkMetadata artwork={artwork} extended/>
