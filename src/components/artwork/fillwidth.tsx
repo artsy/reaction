@@ -110,7 +110,7 @@ export class Fillwidth extends React.Component<Props, null> {
 }
 
 const StyledFillwidth = styled(Fillwidth)`
-  height: ${props => props.targetHeight + 100}px;
+  margin-bottom: 50px;
 `
 
 StyledFillwidth.defaultProps = {
