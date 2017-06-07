@@ -126,8 +126,13 @@ const ArtworkFragment = Relay.QL`
     ${Artwork.getFragment("artwork")}
   }
 `
+const sizeMeOptions = {
+  monitorHeight: false,
+  refreshRate: 64,
+  refreshMode: "debounce",
+}
 
-const FillwidthDimensions = sizeMe()(StyledFillwidth) as React.StatelessComponent<Props>
+const FillwidthDimensions = sizeMe(sizeMeOptions)(StyledFillwidth) as React.StatelessComponent<Props>
 
 export default Relay.createContainer(FillwidthDimensions, {
   fragments: {
