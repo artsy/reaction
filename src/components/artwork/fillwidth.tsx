@@ -115,7 +115,7 @@ const StyledFillwidth = styled(Fillwidth)`
 
 StyledFillwidth.defaultProps = {
   targetHeight: 180,
-  gutter: 10,
+  gutter: 15,
 }
 
 const ArtworkFragment = Relay.QL`

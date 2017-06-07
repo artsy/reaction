@@ -226,7 +226,6 @@ export class GeneContents extends React.Component<Props, State> {
     const artistEl = this.renderArtistRows(artists)
 
     const dropdowns = filtered_artworks.aggregations.map(aggregation => {
-      console.log(aggregation.slice.toLowerCase(), aggregation)
       return (
         <Dropdown
           aggregation={aggregation}
