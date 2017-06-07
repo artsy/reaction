@@ -40,6 +40,7 @@ export class FillwidthItem extends React.Component<Props, null> {
             />
           </ImageLink>
           <SaveButton
+            className="artwork-save"
             artwork={artwork}
             style={{position: "absolute", right: "5px", bottom: "5px"}}
           />
@@ -55,6 +56,12 @@ const StyledFillwidthItem = styled(FillwidthItem)`
   width: ${props => props.width}px;
   vertical-align: top;
   margin-right: ${props => props.margin}px;
+  .artwork-save {
+    opacity: 0;
+  }
+  &:hover .artwork-save {
+    opacity: 1;
+  }
 `
 
 export default Relay.createContainer(StyledFillwidthItem, {
