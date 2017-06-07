@@ -2,6 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 
 import sizeMe from "react-sizeme"
+import styled from "styled-components"
 import Artwork from "./fillwidth_item"
 
 import { find, reduce } from "lodash"
@@ -88,7 +89,8 @@ export class Fillwidth extends React.Component<Props, null> {
       <Artwork
         artwork={artwork as any}
         key={"artwork--" + artwork.__id}
-        height={artworkSize.height}
+        targetHeight={artworkSize.height}
+        imageHeight={artworkSize.height}
         width={artworkSize.width}
         margin={i === (dimensions.length - 1) ? 0 : gutter}
       />
@@ -106,9 +108,13 @@ export class Fillwidth extends React.Component<Props, null> {
   }
 }
 
-Fillwidth.defaultProps = {
+const StyledFillwidth = styled(Fillwidth)`
+  margin-bottom: 50px;
+`
+
+StyledFillwidth.defaultProps = {
   targetHeight: 180,
-  gutter: 15,
+  gutter: 10,
 }
 
 const ArtworkFragment = Relay.QL`
@@ -121,7 +127,7 @@ const ArtworkFragment = Relay.QL`
   }
 `
 
-const FillwidthDimensions = sizeMe()(Fillwidth) as React.StatelessComponent<Props>
+const FillwidthDimensions = sizeMe()(StyledFillwidth) as React.StatelessComponent<Props>
 
 export default Relay.createContainer(FillwidthDimensions, {
   fragments: {
