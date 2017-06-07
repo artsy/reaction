@@ -24,7 +24,7 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItem> {
 
 export class ArtworkGridItem extends React.Component<Props, null> {
   render() {
-    const { style,className, artwork } = this.props
+    const { style, className, artwork } = this.props
     return (
       <div className={className} style={style}>
         <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
