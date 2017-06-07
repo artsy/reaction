@@ -139,7 +139,8 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   loadMoreArtworks() {
-    if (!this.state.loading) {
+    const hasMore = this.props.gene.filtered_artworks.artworks.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
         this.props.relay.setVariables({
           artworksSize: this.props.relay.variables.artworksSize + PageSize,
@@ -153,7 +154,8 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   loadMoreArtists() {
-    if (!this.state.loading) {
+    const hasMore = this.props.gene.artists.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
         this.props.relay.setVariables({
           artistsSize: this.props.relay.variables.artistsSize + PageSize,
@@ -399,6 +401,9 @@ export default Relay.createContainer(GeneContentsUrl, {
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $artworksSize) {
+            pageInfo {
+              hasNextPage
+            }
             ${Artworks.getFragment("artworks")}
           }
         }
