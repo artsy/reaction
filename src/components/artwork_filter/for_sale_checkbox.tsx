@@ -51,7 +51,7 @@ const StyledForSaleCheckbox = styled(ForSaleCheckbox)`
   border: 1px solid ${colors.grayRegular};
   font-size: 13px;
   line-height: 160%;
-  padding: 15px 18px 10px 18px;
+  padding: 15px 18px;
   font-size: 13px;
   vertical-align: middle;
   white-space: nowrap;
