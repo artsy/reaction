@@ -14,6 +14,7 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
 
 interface State {
   loading: boolean,
+  interval: any,
 }
 
 export class ArtworkGrid extends React.Component<Props, State> {
@@ -21,8 +22,13 @@ export class ArtworkGrid extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.props.onLoadMore) {
-      setInterval( () => { this.maybeLoadMore() }, 150 )
+      const interval = setInterval( () => { this.maybeLoadMore() }, 150 )
+      this.setState({ interval })
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.interval)
   }
 
   maybeLoadMore() {
