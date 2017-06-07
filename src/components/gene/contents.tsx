@@ -313,6 +313,7 @@ const ArtistFilterButtons = styled.div`
   margin-right: 10px;
   button {
     height: 47px;
+    padding: 15px;
   }
 `
 
