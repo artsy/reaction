@@ -72,10 +72,10 @@ export class GeneContents extends React.Component<Props, State> {
 
   anyArtworkFilters() {
     return (
-      this.props.for_sale ||
-      (this.props.dimension_range !== "*" && this.props.dimension_range ) ||
-      (this.props.price_range !== "*" && this.props.price_range) ||
-      (this.props.medium !== "*" && this.props.medium)
+      this.state.for_sale ||
+      (this.state.dimension_range !== "*" && !!this.state.dimension_range ) ||
+      (this.state.price_range !== "*" && !!this.state.price_range) ||
+      (this.state.medium !== "*" && !!this.state.medium)
     )
   }
 
@@ -111,6 +111,9 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   onChangeSort(option) {
+    this.props.onChangeUrlQueryParams({
+      sort: option.val,
+    })
     this.props.relay.setVariables({
       sort: option.val,
       artworksSize: PageSize,
@@ -136,7 +139,8 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   loadMoreArtworks() {
-    if (!this.state.loading) {
+    const hasMore = this.props.gene.filtered_artworks.artworks.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
         this.props.relay.setVariables({
           artworksSize: this.props.relay.variables.artworksSize + PageSize,
@@ -150,7 +154,8 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   loadMoreArtists() {
-    if (!this.state.loading) {
+    const hasMore = this.props.gene.artists.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
         this.props.relay.setVariables({
           artistsSize: this.props.relay.variables.artistsSize + PageSize,
@@ -165,10 +170,16 @@ export class GeneContents extends React.Component<Props, State> {
 
   setShowArtists() {
     this.setState({
+      dimension_range: null,
+      price_range: null,
+      medium: null,
       for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+    })
+    this.props.onChangeUrlQueryParams({
+      dimension_range: null,
+      price_range: null,
+      medium: null,
+      for_sale: false,
     })
     this.props.relay.setVariables({
       showArtists: true,
@@ -214,19 +225,18 @@ export class GeneContents extends React.Component<Props, State> {
 
     const { showArtists } = this.props.relay.variables
     const shouldShowArtists = showArtists && !this.anyArtworkFilters()
-
     const artistEl = this.renderArtistRows(artists)
 
-    const dropdowns = filtered_artworks.aggregations.map(aggregation =>
-      (
+    const dropdowns = filtered_artworks.aggregations.map(aggregation => {
+      return (
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
           selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
           onSelect={(count, slice) => this.onSelect(count, slice)}
         />
-      ),
-    )
+      )
+    })
 
     const pulldownOptions = [
       { val: "-partner_updated_at", name: "Recently Updated" },
@@ -270,6 +280,7 @@ export class GeneContents extends React.Component<Props, State> {
         <Artworks
           artworks={filtered_artworks.artworks}
           columnCount={4}
+          itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
         />
         <SpinnerContainer>
@@ -303,7 +314,8 @@ const FilterBar = styled.div`
 const ArtistFilterButtons = styled.div`
   margin-right: 10px;
   button {
-    height: 47px;
+    height: 52px;
+    padding: 16px;
   }
 `
 
@@ -316,12 +328,12 @@ const SubFilterBar = styled.div`
 
 const SpinnerContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: relative;
 `
 
 const ArtistRowsContainer = styled.div`
-  margin: 40px 0;
+  margin: 40px 0 20px;
 `
 
 const LoadMoreContainer = styled.div`
@@ -335,6 +347,7 @@ const LoadMoreButton = styled.a`
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;
+  border-bottom: 2px solid transparent;
   &:hover {
     border-bottom: 2px solid black;
   }
@@ -388,6 +401,9 @@ export default Relay.createContainer(GeneContentsUrl, {
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $artworksSize) {
+            pageInfo {
+              hasNextPage
+            }
             ${Artworks.getFragment("artworks")}
           }
         }

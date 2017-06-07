@@ -32,6 +32,8 @@ export class FollowButton extends React.Component<Props, null> {
   render() {
     const { style, artist } = this.props
 
+    const iconName = artist.is_followed ? "follow-circle.is-following" : "follow-circle"
+
     return (
       <div
         className={this.props.className}
@@ -40,9 +42,9 @@ export class FollowButton extends React.Component<Props, null> {
         data-followed={artist.is_followed}
       >
         <Icon
-          name="follow-circle"
+          name={iconName}
           height={SIZE}
-          style={{verticalAlign: "middle", color: "inherit"}}
+          style={{ verticalAlign: "middle", color: "inherit", margin: 0 }}
         />
       </div>
     )
@@ -61,6 +63,7 @@ export const StyledFollowButton = styled(FollowButton)`
   color: black;
   font-size: 16px;
   align-items: center;
+  margin-left: 5px;
   &:after {
     content: 'Follow';
   }
@@ -68,7 +71,6 @@ export const StyledFollowButton = styled(FollowButton)`
     color: ${colors.purpleRegular};
   }
   &[data-followed='true'] {
-    color: ${colors.purpleRegular};
     &:after {
       content: 'Following';
     }

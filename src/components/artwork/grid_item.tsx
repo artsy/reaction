@@ -24,26 +24,35 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItem> {
 
 export class ArtworkGridItem extends React.Component<Props, null> {
   render() {
-    const { style, artwork } = this.props
+    const { style, className, artwork } = this.props
     return (
-      <div style={style}>
+      <div className={className} style={style}>
         <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
           <a href={artwork.href}>
             <Image src={artwork.image.url} />
           </a>
           <SaveButton
+            className="artwork-save"
             artwork={artwork}
             style={{position: "absolute", right: "10px", bottom: "10px"}}
           />
         </Placeholder>
-      
         <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
 }
 
-export default Relay.createContainer(ArtworkGridItem, {
+const StyledArtworkGridItem = styled(ArtworkGridItem)`
+  .artwork-save {
+    opacity: 0;
+  }
+  &:hover .artwork-save {
+    opacity: 1;
+  }
+`
+
+export default Relay.createContainer(StyledArtworkGridItem, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {

@@ -31,6 +31,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ selected: nextProps.selected })
+  }
+
   toggleHover(value) {
     this.setState({
       isHovered: value,
@@ -121,7 +125,7 @@ const Button = styled.div`
   border: 1px solid ${colors.grayRegular};
   display: inline-block;
   line-height: 160%;
-  padding: 15px 35px 10px 18px;
+  padding: 15px 35px 15px 18px;
   font-size: 13px;
   vertical-align: middle;
   max-width: 120px;
