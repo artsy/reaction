@@ -25,7 +25,7 @@
     },
     {
       "taskName": "TypeScript: Run type-checker",
-      "command": "tsc",
+      "command": "${workspaceRoot}/node_modules/.bin/tsc",
       "isShellCommand": true,
       "args": ["-w", "-p", ".", "--noEmit"],
       "showOutput": "silent",
