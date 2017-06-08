@@ -2,7 +2,7 @@
 
 exports[`inquiries renders the inquiries listing 1`] = `
 <div
-  className="file__Container-s1fyqn7p-1 lXigO"
+  className="file__Container-s1fyqn7p-1 fmWDlQ"
 >
   <div
     className="file__Nav-s4x8b4-0 hnMEDI"
@@ -26,10 +26,10 @@ exports[`inquiries renders the inquiries listing 1`] = `
     </a>
   </div>
   <header
-    className="file__Header-s1fyqn7p-2 fPXjbq"
+    className="file__Header-s1fyqn7p-2 bPTllQ"
   >
     <div
-      className="header-title file__StyledTitle-s3pz4jh-0 kAZInq"
+      className="header-title file__StyledTitle-s3pz4jh-0 jziesf"
     >
       Please select all works you purchased
     </div>
@@ -43,13 +43,13 @@ exports[`inquiries renders the inquiries listing 1`] = `
     className="artworks"
   >
     <div
-      className="Grid__Grid-bojwg eRfKLT"
+      className="Grid__Grid-bojwg gdLArs"
     >
       <div
-        className="file__Row-ey2tf-1 mMHbU Row__Row-kNtYPA hicFUP"
+        className="file__Row-ey2tf-1 bRTQrk Row__Row-kNtYPA hicFUP"
       >
         <div
-          className="file__Col-ey2tf-0 kavutv Col__Col-hCQanm gzwuLD"
+          className="file__Col-ey2tf-0 fPXCLP Col__Col-hCQanm jItcmX"
         >
           <div
             className="file__InquiryContainer-s1fyqn7p-0 hxDycY"
@@ -60,7 +60,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
               size={250}
             >
               <div
-                className="file__ImageContainer-s1284ws5-1 hHXDTr"
+                className="file__ImageContainer-s1284ws5-1 jtqwav"
                 size={250}
               >
                 <img
