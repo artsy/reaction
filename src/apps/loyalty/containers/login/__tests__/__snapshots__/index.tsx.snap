@@ -2,7 +2,7 @@
 
 exports[`login renders the snapshot 1`] = `
 <div
-  className="file__LoginContainer-s1i1anw9-0 hFROBA"
+  className="file__LoginContainer-s18xd4r-0 cqtPtb"
 >
   <div
     className="file-s1qxsvco-0 eQNIgp"
@@ -24,7 +24,7 @@ exports[`login renders the snapshot 1`] = `
   >
     <input
       autoFocus={true}
-      className="file__StyledInput-s1i1anw9-1 diGhwz file__StyledInput-uz2par-0 lUHYj"
+      className="file__StyledInput-s18xd4r-1 kDeYMU file__StyledInput-uz2par-0 lUHYj"
       name="email"
       onChange={[Function]}
       placeholder="Email"
@@ -61,10 +61,10 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </button>
     <div
-      className="file__StyledOrContainer-s1i1anw9-2 lezXwD"
+      className="file__StyledOrContainer-s18xd4r-2 btKMCi"
     >
       <div
-        className="file__StyledOrText-s1i1anw9-3 gHwNgw"
+        className="file__StyledOrText-s18xd4r-3 jbKswM"
       >
         or
       </div>

@@ -35,13 +35,3 @@ declare module "express" {
     locals: ArtsyResponseLocals
   }
 }
-
-declare module "styled-components" {
-  // TODO This can be removed once this is released: https://github.com/styled-components/styled-components/pull/839
-  class ServerStyleSheet {
-    collectStyles(children: React.ReactElement<any>): React.ReactElement<any>
-    getStyleTags(): string
-    getStyleElement(): React.ReactElement<any>[]
-    static create(): StyleSheet
-  }
-}
