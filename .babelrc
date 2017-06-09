@@ -5,6 +5,22 @@
     "react"
   ],
   "plugins": [
-    "react-relay"
-  ]
+    "react-relay",
+    ["styled-components", {
+      "ssr": "use-mtime",
+      "displayName": true,
+      "minify": true,
+      "transpileTemplateLiterals": true
+      // "preprocess": true // still experimental
+    }]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        ["styled-components", {
+          "ssr": "use-content"
+        }]
+      ]
+    }
+  }
 }

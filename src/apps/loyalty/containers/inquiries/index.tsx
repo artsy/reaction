@@ -207,7 +207,7 @@ export class Inquiries extends React.Component<Props, State> {
             in order to qualify you for the program membership.</Text>
         </Header>
         <div className="artworks">
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme as object}>
             <Grid>
               <Row>{this.renderArtworks()}</Row>
             </Grid>

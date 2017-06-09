@@ -2,50 +2,50 @@
 
 exports[`3-way Handshake Thank You renders the snapshot 1`] = `
 <div
-  className="jBvxsI"
+  className="file__Container-lchbjh-0 fXlmkj"
 >
   <div
-    className="hiqXMD"
+    className="file__Nav-s4x8b4-0 hnMEDI"
   >
     <a
-      className="dHhWkf"
+      className="file__NavIcon-s4x8b4-1 UWNZP"
       href={undefined}
     >
       <div
-        className="gQelpA"
+        className="file-s1qxsvco-0 iMAXVz"
         style={undefined}
       >
         
       </div>
     </a>
     <a
-      className="iDuDUI"
+      className="file__StyledLink-s1lrjrzq-0 cuFtvy"
       href="/"
     >
       Back To Artsy
     </a>
   </div>
   <div
-    className="gIFuVs"
+    className="file__TitleSection-lchbjh-1 JNkmv"
   >
     <div
-      className="idoycl"
+      className="file__StyledTitle-s3pz4jh-0 izQygJ"
     >
       Thank you, 
       Percy
     </div>
   </div>
   <div
-    className="eJDOxo"
+    className="file__TextSection-lchbjh-2 hxjgTH"
   >
     <p
-      className="fTgPgI"
+      className="file__Text-s1vkb2x7-0 jZOqwQ"
     >
       Thank you for your interest in the program.
       <br />
       Have questions? Get in touch:  
       <a
-        className="hNDkSz"
+        className="file__StyledTextLink-l9d9k6-0 blqQaU"
         href="mailto:loyalty@artsy.net"
       >
         loyalty@artsy.net
@@ -53,10 +53,10 @@ exports[`3-way Handshake Thank You renders the snapshot 1`] = `
     </p>
   </div>
   <div
-    className="ChQBa"
+    className="file__ButtonWrapper-lchbjh-3 eItCQi"
   >
     <a
-      className="jVdhvd"
+      className="file__InvertedButton-glkvqw-0 ferdzZ file__StyledButton-s1b5cz0b-0 gxuurP"
       href="/"
     >
       <span>

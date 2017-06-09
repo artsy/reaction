@@ -2,16 +2,16 @@
 
 exports[`login renders the snapshot 1`] = `
 <div
-  className="FLXHp"
+  className="file__LoginContainer-s18xd4r-0 cqtPtb"
 >
   <div
-    className="cVIAuV"
+    className="file-s1qxsvco-0 eQNIgp"
     style={undefined}
   >
     
   </div>
   <p
-    className="fTgPgI"
+    className="file__Text-s1vkb2x7-0 jZOqwQ"
   >
     Welcome back, please log in 
     <br />
@@ -24,20 +24,20 @@ exports[`login renders the snapshot 1`] = `
   >
     <input
       autoFocus={true}
-      className="gUzbJk VzJlT"
+      className="file__StyledInput-s18xd4r-1 kDeYMU file__StyledInput-uz2par-0 lUHYj"
       name="email"
       onChange={[Function]}
       placeholder="Email"
       value=""
     />
     <div
-      className="kBsaGc"
+      className="file__StyledDiv-uz2par-2 jRrBXs"
     >
       <div
         className="border-container"
       />
       <input
-        className="dWzpRU"
+        className="file__BorderlessInput-uz2par-1 cKnHnp"
         name="password"
         onBlur={[Function]}
         onChange={[Function]}
@@ -47,40 +47,34 @@ exports[`login renders the snapshot 1`] = `
         value=""
       />
       <a
-        className="cXjeFh"
+        className="file__StyledTextLink-l9d9k6-0 cORdQE"
         href={undefined}
       >
         Forgot?
       </a>
     </div>
     <button
-      className="bXgzbp"
+      className="file__InvertedButton-glkvqw-0 ferdzZ file__StyledButton-s1b5cz0b-0 eycIkQ"
     >
       <span>
         Log In
       </span>
     </button>
     <div
-      className="fKkZFB"
+      className="file__StyledOrContainer-s18xd4r-2 btKMCi"
     >
       <div
-        className="jNrPFU"
+        className="file__StyledOrText-s18xd4r-3 jbKswM"
       >
         or
       </div>
     </div>
     <a
-      className="dzvQZu exUgyi"
+      className="file-s1kc47tb-0 rYMhD file__StyledButton-s1b5cz0b-0 eycIkQ"
       href="/facebook"
-      icon={
-        <Styled(Icon)
-          color="white"
-          name="facebook"
-        />
-      }
     >
       <div
-        className="kEzGjr"
+        className="file-s1qxsvco-0 jiiNWJ"
         style={undefined}
       >
         
@@ -90,17 +84,11 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </a>
     <a
-      className="eTVvmy exUgyi"
+      className="file-lfy513-0 ipUiUu file__StyledButton-s1b5cz0b-0 eycIkQ"
       href="/twitter"
-      icon={
-        <Styled(Icon)
-          color="white"
-          name="twitter"
-        />
-      }
     >
       <div
-        className="kEzGjr"
+        className="file-s1qxsvco-0 jiiNWJ"
         style={undefined}
       >
         

@@ -6,9 +6,11 @@ const commonConfig = require("./base")
 
 module.exports = () => {
   const base = commonConfig()
+
   const tsLoader = base.module.rules.find(rule => {
-    return rule.use && rule.use.includes("awesome-typescript-loader")
+    return rule.use && rule.use.find(entry => entry.loader === "awesome-typescript-loader")
   })
+
   return webpackMerge.smart({
     devtool: "inline-source-map",
     entry: {

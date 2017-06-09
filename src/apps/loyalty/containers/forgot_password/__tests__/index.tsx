@@ -1,7 +1,9 @@
 import { shallow } from "enzyme"
-import * as fetchMock from "fetch-mock"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
+
+jest.mock("isomorphic-fetch")
+const fetch = require("isomorphic-fetch").default
 
 import Button from "../../../../../components/buttons/inverted"
 import Message from "../../../../../components/message"
@@ -11,9 +13,7 @@ describe("<ForgotPassword />", () => {
   const APP_TOKEN = "force-staging"
   const SUBMIT_URL = "https://stagingapi.artsy.net/api/v1/users/send_reset_password_instructions"
 
-  afterEach(() => {
-    fetchMock.restore()
-  })
+  afterEach(fetch.mockReset)
 
   it("renders the snapshot", () => {
     const component = renderer.create(<ForgotPassword appToken={APP_TOKEN} submitEmailUrl={SUBMIT_URL} />)
@@ -21,7 +21,7 @@ describe("<ForgotPassword />", () => {
   })
 
   it("displays correct message on success", done => {
-    fetchMock.post("*", {status: 201})
+    fetch.mockImplementation(() => Promise.resolve({ status: 201 }))
 
     const expectedResult = (
       <span>
@@ -41,7 +41,7 @@ describe("<ForgotPassword />", () => {
   })
 
   it("displays correct message on failure", done => {
-    fetchMock.post("*", {status: 400})
+    fetch.mockImplementation(() => Promise.resolve({ status: 400 }))
 
     const expectedResult = (
       <span>No account exists for <b>test@artsymail.com</b></span>

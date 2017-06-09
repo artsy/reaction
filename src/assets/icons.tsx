@@ -1,55 +1,4 @@
-export type IconName =
-  "circle-chevron" |
-  "grid" |
-  "list" |
-  "check" |
-  "logo" |
-  "facebook" |
-  "facebook-f" |
-  "linkedin" |
-  "twitter" |
-  "pinterest" |
-  "chevron-right" |
-  "heart" |
-  "tumblr" |
-  "write" |
-  "view-in-room" |
-  "download" |
-  "close" |
-  "chevron-up" |
-  "mail" |
-  "info" |
-  "info-filled" |
-  "chevron-left" |
-  "chevron-down" |
-  "auction" |
-  "frame" |
-  "follow" |
-  "ellipsis" |
-  "edit" |
-  "link" |
-  "person" |
-  "share" |
-  "website" |
-  "artwork" |
-  "arrow-down" |
-  "logotype" |
-  "logotype-unscaled" |
-  "logo-unscaled" |
-  "chevron-small-up" |
-  "chevron-small-left" |
-  "chevron-small-down" |
-  "remove-small" |
-  "heart-small" |
-  "chevron-small-right" |
-  "plus-small" |
-  "minus-small" |
-  "follow-circle" |
-  "follow-circle.is-following" |
-  "instagram" |
-  "search"
-
-const IconNames: { [i: string]: string; } = {
+const IconNames = {
   "circle-chevron" : "\ue630",
   "grid" : "\ue62e",
   "list" : "\ue62f",
@@ -99,5 +48,7 @@ const IconNames: { [i: string]: string; } = {
   "instagram" : "\ue62a",
   "search" : "\ue62c",
 }
+
+export type IconName = keyof typeof IconNames
 
 export default IconNames

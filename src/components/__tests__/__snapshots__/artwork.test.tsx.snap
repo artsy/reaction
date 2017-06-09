@@ -2,16 +2,16 @@
 
 exports[`Artwork renders correctly 1`] = `
 <div
-  className="bMAZFf"
+  className="file__Container-s1284ws5-0 kvlZnW"
   onClick={[Function]}
   size={250}
 >
   <div
-    className="cvbFbx"
+    className="file__ImageContainer-s1284ws5-1 jtqwav"
     size={250}
   >
     <img
-      className="egJSlo"
+      className="file__Image-s1284ws5-2 kDvufT"
       size={250}
       src="artsy.net/image-url"
     />
@@ -20,15 +20,15 @@ exports[`Artwork renders correctly 1`] = `
     />
   </div>
   <div
-    className="hHYABC"
+    className="file__StyledMetadata-s1l3srti-0 iIhayI"
   >
     <div>
       <div
-        className="dVxCB"
+        className="file__TruncatedLine-s1q0z912-0 igrfOy"
       >
         <strong>
           <a
-            className="cXjeFh"
+            className="file__StyledTextLink-l9d9k6-0 cORdQE"
             href={undefined}
           >
             Mikael Olson
@@ -36,10 +36,10 @@ exports[`Artwork renders correctly 1`] = `
         </strong>
       </div>
       <div
-        className="dVxCB"
+        className="file__TruncatedLine-s1q0z912-0 igrfOy"
       >
         <a
-          className="cXjeFh"
+          className="file__StyledTextLink-l9d9k6-0 cORdQE"
           href="/artwork/mikael-olson-some-kind-of-dinosaur"
         >
           <em>
@@ -49,10 +49,10 @@ exports[`Artwork renders correctly 1`] = `
         </a>
       </div>
       <div
-        className="dVxCB"
+        className="file__TruncatedLine-s1q0z912-0 igrfOy"
       >
         <a
-          className="cXjeFh"
+          className="file__StyledTextLink-l9d9k6-0 cORdQE"
           href={undefined}
         >
           Gallery 1261
