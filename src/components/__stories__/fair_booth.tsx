@@ -22,7 +22,7 @@ storiesOf("Fair", FairBooth)
     return (
       <div>
         <BoothExample
-          showID="galleri-nicolai-wallner-galleri-nicolai-wallner-at-art-basel-2017"
+          showID="stephen-friedman-gallery-stephen-friedman-gallery-at-art-basel-2017"
         />
       </div>
     )
