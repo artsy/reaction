@@ -32,7 +32,7 @@ export class FairBooth extends React.Component<Props, null> {
         <Header>
           <div>
             <Text textSize="small" textStyle="primary">
-              {show.name}
+              {show.partner.name}
             </Text>
             {showLocation}
           </div>
@@ -67,6 +67,12 @@ export default Relay.createContainer(FairBooth, {
         name
         location {
           display
+        }
+        partner {
+          __typename
+          ... on Partner {
+            name
+          }
         }
         artworks: artworks_connection(first: $artworksSize) {
           pageInfo {

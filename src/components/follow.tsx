@@ -55,12 +55,12 @@ export class FollowButton extends React.Component<Props, null> {
 }
 
 interface RelayProps {
-  artist: {
+  artist?: {
     is_followed: boolean | null,
-  } | any,
-  profile: {
+  } |  any,
+  profile?: {
     is_followed: boolean | null,
-  } | any,
+  } |  any,
 }
 
 export const StyledFollowButton = styled(FollowButton)`
