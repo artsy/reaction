@@ -59,7 +59,7 @@ export class FairBooth extends React.Component<Props, State> {
 
     const loadMoreButton = (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={() => this.loadMoreArtists()}>
+        <LoadMoreButton onClick={() => this.loadMoreArtworks()}>
           Load More
         </LoadMoreButton>
       </LoadMoreContainer>
