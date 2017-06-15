@@ -6,18 +6,48 @@ import Artworks from "../artwork_grid"
 import Button from "../buttons/ghost"
 import Text from "../text"
 
+import * as fonts from "../../assets/fonts"
+
 const PageSize = 10
 
 interface Props extends RelayProps, React.HTMLProps<FairBooth> {
   show: any
-  onContactGallery?: () => any,
+  relay?: any,
+  onContactGallery?: (showId: number) => any,
 }
 
 const LocationText = styled(Text)`
   display: block
 `
 
-export class FairBooth extends React.Component<Props, null> {
+interface State {
+  loading: boolean,
+}
+
+export class FairBooth extends React.Component<Props, State> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
+    }
+  }
+
+  loadMoreArtworks() {
+    const hasMore = this.props.show.artworks.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.setVariables({
+          artworksSize: this.props.relay.variables.artworksSize + PageSize,
+        }, readyState => {
+          if (readyState.done) {
+            this.setState({ loading: false })
+          }
+        })
+      })
+    }
+  }
+
   render() {
     const { show, onContactGallery } = this.props
 
@@ -25,6 +55,14 @@ export class FairBooth extends React.Component<Props, null> {
       <LocationText textSize="small" textStyle="secondary">
         {show.location.display}
       </LocationText>
+    )
+
+    const loadMoreButton = (
+      <LoadMoreContainer>
+        <LoadMoreButton onClick={() => this.loadMoreArtists()}>
+          Load More
+        </LoadMoreButton>
+      </LoadMoreContainer>
     )
 
     return (
@@ -37,7 +75,7 @@ export class FairBooth extends React.Component<Props, null> {
             {showLocation}
           </div>
           <div>
-            <Button onClick={() => onContactGallery()}>
+            <Button onClick={() => onContactGallery(show.id)}>
               Contact Gallery
             </Button>
           </div>
@@ -45,7 +83,10 @@ export class FairBooth extends React.Component<Props, null> {
         <Artworks
           artworks={show.artworks}
           columnCount={4}
+          itemMargin={40}
+          onLoadMore={() => this.loadMoreArtworks()}
         />
+        {show.artworks && show.artworks.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
       </div>
     )
   }
@@ -57,6 +98,23 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
+const LoadMoreContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const LoadMoreButton = styled.a`
+  font-family: ${ fonts.primary.fontFamily };
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-bottom: 2px solid black;
+  }
+`
+
 export default Relay.createContainer(FairBooth, {
   initialVariables: {
     artworksSize: PageSize,
@@ -64,6 +122,7 @@ export default Relay.createContainer(FairBooth, {
   fragments: {
     show: () => Relay.QL`
       fragment on Show {
+        id
         name
         location {
           display
@@ -87,6 +146,7 @@ export default Relay.createContainer(FairBooth, {
 
 interface RelayProps {
   show: {
+    id: string | null,
     name: string | null,
     artworks: any,
     partner: {
