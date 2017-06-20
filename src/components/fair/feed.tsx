@@ -1,8 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-// import styled from "styled-components"
-
 import Booth from "./booth"
 
 const PageSize = 4

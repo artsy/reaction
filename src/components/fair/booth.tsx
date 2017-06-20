@@ -58,7 +58,8 @@ export class FairBooth extends React.Component<Props, State> {
 
     const artworksLeft =  show.counts.artworks - relay.variables.artworksSize
 
-    const loadMoreButton = artworks && artworks.pageInfo.hasNextPage && !loading && (
+    const showLoadMore = artworks && artworks.pageInfo.hasNextPage && !loading
+    const loadMoreButton = showLoadMore && (
       <LoadMoreContainer>
         <LoadMoreButton onClick={this.loadMoreArtworks}>
           See {artworksLeft} more artworks
