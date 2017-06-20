@@ -11,8 +11,6 @@ import * as Artsy from "../components/artsy"
 const SIZE = 32
 
 interface Props extends RelayProps, React.HTMLProps<FollowButton>, Artsy.ContextProps {
-  artist?: any
-  profile?: any
   style?: any
   relay?: any
   type: string
