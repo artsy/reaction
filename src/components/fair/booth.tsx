@@ -12,9 +12,8 @@ import * as fonts from "../../assets/fonts"
 const PageSize = 8
 
 interface Props extends RelayProps, React.HTMLProps<FairBooth> {
-  show: any
   relay?: any,
-  onContactGallery?: (showId: number) => any,
+  onContactGallery?: (showId: string) => any,
 }
 
 interface State {
@@ -47,6 +46,8 @@ export class FairBooth extends React.Component<Props, State> {
 
   render() {
     const { show, onContactGallery, relay } = this.props
+    const { artworks } = show
+    const { loading } = this.state
 
     const showLocation = show.location && show.location.display && (
       <LocationText textSize="small" textStyle="secondary">
@@ -56,7 +57,7 @@ export class FairBooth extends React.Component<Props, State> {
 
     const artworksLeft =  show.counts.artworks - relay.variables.artworksSize
 
-    const loadMoreButton = (
+    const loadMoreButton = artworks && artworks.pageInfo.hasNextPage && !loading && (
       <LoadMoreContainer>
         <LoadMoreButton onClick={() => this.loadMoreArtworks()}>
           See {artworksLeft} more artworks
@@ -87,7 +88,7 @@ export class FairBooth extends React.Component<Props, State> {
           columnCount={4}
           itemMargin={40}
         />
-        {show.artworks && show.artworks.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
+        {loadMoreButton}
       </div>
     )
   }
