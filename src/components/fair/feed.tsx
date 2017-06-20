@@ -36,13 +36,11 @@ export default Relay.createContainer(ShowsFeed, {
   fragments: {
     fair: () => Relay.QL`
       fragment on Fair {
-        id
         shows: shows_connection(first: $showSize) {
           pageInfo {
             hasNextPage
           }
           edges {
-            id: cursor
             node {
               id
               ${Booth.getFragment("show")}

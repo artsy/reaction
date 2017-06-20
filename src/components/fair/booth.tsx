@@ -136,7 +136,6 @@ export default Relay.createContainer(FairBooth, {
   fragments: {
     show: () => Relay.QL`
       fragment on Show {
-        id
         name
         location {
           display
