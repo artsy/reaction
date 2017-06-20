@@ -9,7 +9,7 @@ import Text from "../text"
 
 import * as fonts from "../../assets/fonts"
 
-const PageSize = 10
+const PageSize = 8
 
 interface Props extends RelayProps, React.HTMLProps<FairBooth> {
   show: any
@@ -46,7 +46,7 @@ export class FairBooth extends React.Component<Props, State> {
   }
 
   render() {
-    const { show, onContactGallery } = this.props
+    const { show, onContactGallery, relay } = this.props
 
     const showLocation = show.location && show.location.display && (
       <LocationText textSize="small" textStyle="secondary">
@@ -54,10 +54,12 @@ export class FairBooth extends React.Component<Props, State> {
       </LocationText>
     )
 
+    const artworksLeft =  show.counts.artworks - relay.variables.artworksSize
+
     const loadMoreButton = (
       <LoadMoreContainer>
         <LoadMoreButton onClick={() => this.loadMoreArtworks()}>
-          Load More
+          See {artworksLeft} more artworks
         </LoadMoreButton>
       </LoadMoreContainer>
     )
@@ -84,7 +86,6 @@ export class FairBooth extends React.Component<Props, State> {
           artworks={show.artworks}
           columnCount={4}
           itemMargin={40}
-          onLoadMore={() => this.loadMoreArtworks()}
         />
         {show.artworks && show.artworks.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
       </div>
@@ -102,6 +103,7 @@ const LoadMoreContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 40px 0;
 `
 
 const LoadMoreButton = styled.a`
@@ -109,10 +111,7 @@ const LoadMoreButton = styled.a`
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;
-  border-bottom: 2px solid transparent;
-  &:hover {
-    border-bottom: 2px solid black;
-  }
+  border-bottom: 2px solid black;
 `
 
 const PartnerLine = styled.div`
@@ -138,6 +137,9 @@ export default Relay.createContainer(FairBooth, {
         name
         location {
           display
+        }
+        counts {
+          artworks
         }
         partner {
           __typename
