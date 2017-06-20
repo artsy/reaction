@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Artworks from "../artwork_grid"
 import Button from "../buttons/ghost"
+import FollowButton from "../follow"
 import Text from "../text"
 
 import * as fonts from "../../assets/fonts"
@@ -15,10 +16,6 @@ interface Props extends RelayProps, React.HTMLProps<FairBooth> {
   relay?: any,
   onContactGallery?: (showId: number) => any,
 }
-
-const LocationText = styled(Text)`
-  display: block
-`
 
 interface State {
   loading: boolean,
@@ -69,9 +66,12 @@ export class FairBooth extends React.Component<Props, State> {
       <div>
         <Header>
           <div>
-            <Text textSize="small" textStyle="primary">
-              {show.partner.name}
-            </Text>
+            <PartnerLine>
+              <PartnerText textSize="small" textStyle="primary">
+                {show.partner.name}
+              </PartnerText>
+              <FollowButton type="profile" profile={show.partner.profile}/>
+            </PartnerLine>
             {showLocation}
           </div>
           <div>
@@ -115,6 +115,18 @@ const LoadMoreButton = styled.a`
   }
 `
 
+const PartnerLine = styled.div`
+  display: flex;
+`
+
+const PartnerText = styled(Text)`
+  display: inline-block;
+`
+
+const LocationText = styled(Text)`
+  display: block;
+`
+
 export default Relay.createContainer(FairBooth, {
   initialVariables: {
     artworksSize: PageSize,
@@ -131,6 +143,9 @@ export default Relay.createContainer(FairBooth, {
           __typename
           ... on Partner {
             name
+            profile {
+              is_followed
+            }
           }
         }
         artworks: artworks_connection(first: $artworksSize) {
