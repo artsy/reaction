@@ -27,6 +27,7 @@ export class FairBooth extends React.Component<Props, State> {
     this.state = {
       loading: false,
     }
+    this.loadMoreArtworks = this.loadMoreArtworks.bind(this)
   }
 
   loadMoreArtworks() {
@@ -59,7 +60,7 @@ export class FairBooth extends React.Component<Props, State> {
 
     const loadMoreButton = artworks && artworks.pageInfo.hasNextPage && !loading && (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={() => this.loadMoreArtworks()}>
+        <LoadMoreButton onClick={this.loadMoreArtworks}>
           See {artworksLeft} more artworks
         </LoadMoreButton>
       </LoadMoreContainer>
