@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="display-artwork"
+>
+  <img
+    className="display-artwork__image"
+    src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+    width="100%"
+  />
+  <div
+    className="display-artwork__caption"
+  >
+    <div
+      className="file__TruncatedLine-o7d9lc-0 bXGnxu"
+    >
+      <strong>
+        <span>
+          Fernando Botero
+          
+        </span>
+      </strong>
+    </div>
+    <div
+      className="file__TruncatedLine-o7d9lc-0 bXGnxu"
+    >
+      <span
+        className="title"
+      >
+        <em>
+          Nude on the Beach
+        </em>
+      </span>
+      <span
+        className="spacer"
+      >
+        , 
+      </span>
+      <span
+        className="date"
+      >
+        2000
+      </span>
+    </div>
+    <div
+      className="file__TruncatedLine-o7d9lc-0 bXGnxu"
+    >
+      Gary Nader
+    </div>
+  </div>
+</div>
+`;
