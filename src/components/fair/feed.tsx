@@ -17,7 +17,7 @@ export class ShowsFeed extends React.Component<Props, null> {
 
     const shows = fair.shows.edges.map(show => {
       return (
-        <Booth show={show.node} key={show.cursor}/>
+        <Booth show={show.node} key={show.node.__id}/>
       )
     })
 
@@ -42,7 +42,7 @@ export default Relay.createContainer(ShowsFeed, {
           }
           edges {
             node {
-              id
+              __id
               ${Booth.getFragment("show")}
             }
           }

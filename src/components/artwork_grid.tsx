@@ -20,6 +20,14 @@ interface State {
 export class ArtworkGrid extends React.Component<Props, State> {
   public static defaultProps: Partial<Props>
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      interval: null,
+      loading: false,
+    }
+  }
+
   componentDidMount() {
     if (this.props.onLoadMore) {
       const interval = setInterval( () => { this.maybeLoadMore() }, 150 )
@@ -28,7 +36,9 @@ export class ArtworkGrid extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.interval)
+    if (this.state.interval) {
+      clearInterval(this.state.interval)
+    }
   }
 
   maybeLoadMore() {

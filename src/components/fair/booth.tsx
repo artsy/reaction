@@ -75,7 +75,7 @@ export class FairBooth extends React.Component<Props, State> {
               <PartnerText textSize="small" textStyle="primary">
                 {show.partner.name}
               </PartnerText>
-              <FollowButton type="profile" profile={show.partner.profile}/>
+              <FollowButton type="profile" artist={null} profile={show.partner.profile}/>
             </PartnerLine>
             {showLocation}
           </div>
@@ -136,6 +136,7 @@ export default Relay.createContainer(FairBooth, {
   fragments: {
     show: () => Relay.QL`
       fragment on Show {
+        __id
         name
         location {
           display
@@ -165,7 +166,7 @@ export default Relay.createContainer(FairBooth, {
 
 interface RelayProps {
   show: {
-    id: string | null,
+    __id: string | null,
     name: string | null,
     artworks: any,
     partner: {
