@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Artworks from "../artwork_grid"
 import Button from "../buttons/ghost"
 import FollowButton from "../follow"
+import Spinner from "../spinner"
 import Text from "../text"
 
 import * as fonts from "../../assets/fonts"
@@ -58,12 +59,17 @@ export class FairBooth extends React.Component<Props, State> {
 
     const artworksLeft =  show.counts.artworks - relay.variables.artworksSize
 
-    const showLoadMore = artworks && artworks.pageInfo.hasNextPage && !loading
-    const loadMoreButton = showLoadMore && (
+    const showLoadMore = artworks && artworks.pageInfo.hasNextPage
+    const loadMoreContent = loading ? (
+      <Spinner />
+    ) : (
+      <LoadMoreButton onClick={this.loadMoreArtworks}>
+        See {artworksLeft} more artworks
+      </LoadMoreButton>
+    )
+    const loadMore = showLoadMore && (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={this.loadMoreArtworks}>
-          See {artworksLeft} more artworks
-        </LoadMoreButton>
+        {loadMoreContent}
       </LoadMoreContainer>
     )
 
@@ -90,7 +96,7 @@ export class FairBooth extends React.Component<Props, State> {
           columnCount={4}
           itemMargin={40}
         />
-        {loadMoreButton}
+        {loadMore}
       </div>
     )
   }
@@ -107,6 +113,8 @@ const LoadMoreContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 40px 0;
+  position: relative;
+  height: 200px;
 `
 
 const LoadMoreButton = styled.a`
