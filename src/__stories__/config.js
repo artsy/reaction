@@ -1,4 +1,4 @@
-const { configure } = require("@kadira/storybook")
+const { configure } = require("@storybook/react")
 
 function loadStories() {
   require("../components/__stories__/artwork")
