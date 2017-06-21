@@ -14,7 +14,7 @@ interface Props extends RelayProps, React.HTMLProps<ShowsFeed> {
   relay?: any,
   section?: string,
   sort?: string,
-  onContactGallery?: (showId: number) => any,
+  onContactGallery?: (showId: string) => any,
 }
 
 interface State {
