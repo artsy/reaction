@@ -17,13 +17,10 @@ function BoothExample(props: { showID: string }) {
   )
 }
 
-storiesOf("Fair", FairBooth)
-  .add("Booth", () => {
-    return (
-      <div>
-        <BoothExample
-          showID="sies-plus-hoke-1-sies-plus-hoke-at-art-basel-2017"
-        />
-      </div>
-    )
-  })
+storiesOf("Fair", FairBooth).add("Booth", () => {
+  return (
+    <div>
+      <BoothExample showID="sies-plus-hoke-1-sies-plus-hoke-at-art-basel-2017" />
+    </div>
+  )
+})

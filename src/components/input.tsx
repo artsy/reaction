@@ -78,25 +78,19 @@ class Input extends React.Component<InputProps, InputState> {
 
   render() {
     if (this.props.rightView) {
-      const newProps: any = {...this.props}
+      const newProps: any = { ...this.props }
       delete newProps.className
 
       return (
         <StyledDiv>
           <div className={this.state.borderClasses} />
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-          />
+          <BorderlessInput {...newProps} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} />
           {this.props.rightView}
         </StyledDiv>
       )
     }
 
-    return (
-      <StyledInput {...this.props} />
-    )
+    return <StyledInput {...this.props} />
   }
 }
 

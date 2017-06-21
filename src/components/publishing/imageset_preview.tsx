@@ -50,7 +50,7 @@ class ImagesetPreview extends Component<any, any> {
       widths.push(adjustedWidth)
       const total = widths.reduce((a, b) => a + b, 0)
       const margins = widths.length * 10
-      if ((total + margins + 50) > 560) {
+      if (total + margins + 50 > 560) {
         hidden = hidden + 1
       }
     })
@@ -67,7 +67,8 @@ class ImagesetPreview extends Component<any, any> {
             src={src || ""}
             height="150"
             className="imageset-preview__image"
-            style={{marginRight: 10}} />
+            style={{ marginRight: 10 }}
+          />
         )
       }
     }, this)
@@ -87,7 +88,7 @@ class ImagesetPreview extends Component<any, any> {
 
     return (
       <Wrapper className="imageset-preview">
-        <div className="imageset-preview__container" style={{display: "flex"}}>
+        <div className="imageset-preview__container" style={{ display: "flex" }}>
           {this.renderImages(images)}
         </div>
         <Remaining className="imageset-preview__remaining">

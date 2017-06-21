@@ -11,7 +11,6 @@ interface Props extends RelayProps, React.HTMLProps<ArtistRow> {
 }
 
 export class ArtistRow extends React.Component<Props, null> {
-
   render() {
     const { artist } = this.props
     return (
@@ -20,7 +19,7 @@ export class ArtistRow extends React.Component<Props, null> {
           <Text textSize="small" textStyle="primary">
             {artist.name}
           </Text>
-          <FollowButton type="artist" artist={artist}/>
+          <FollowButton type="artist" artist={artist} />
         </Header>
         <Fillwidth artworks={artist.artworks as any} />
       </Container>
@@ -52,8 +51,10 @@ export default Relay.createContainer(ArtistRow, {
 })
 
 interface RelayProps {
-  artist: {
-    name: string | null,
-    artworks: any,
-  } | any
+  artist:
+    | {
+        name: string | null
+        artworks: any
+      }
+    | any
 }

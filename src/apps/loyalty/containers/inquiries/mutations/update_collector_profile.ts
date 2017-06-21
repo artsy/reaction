@@ -5,7 +5,7 @@ type RelayMutationProps = State
 
 export default class UpdateCollectorProfileMutation extends Relay.Mutation<RelayMutationProps, any> {
   getMutation() {
-    return Relay.QL `mutation {
+    return Relay.QL`mutation {
       updateCollectorProfile
     }`
   }
@@ -18,19 +18,23 @@ export default class UpdateCollectorProfileMutation extends Relay.Mutation<Relay
   }
 
   getFatQuery() {
-    return Relay.QL `
+    return Relay.QL`
     fragment on UpdateCollectorProfilePayload {
       loyalty_applicant_at
     }`
   }
 
   getConfigs() {
-    return [{
-      type: "REQUIRED_CHILDREN",
-      children: [Relay.QL`
+    return [
+      {
+        type: "REQUIRED_CHILDREN",
+        children: [
+          Relay.QL`
         fragment on UpdateCollectorProfilePayload {
           loyalty_applicant_at
-        }`],
-    }]
+        }`,
+        ],
+      },
+    ]
   }
 }

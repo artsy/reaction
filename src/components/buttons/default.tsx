@@ -29,17 +29,14 @@ class Button extends React.Component<ButtonProps, any> {
     delete newProps.icon
 
     return this.props.href
-      ? (
-        <a className={this.props.className} {...newProps}>
+      ? <a className={this.props.className} {...newProps}>
           {this.props.icon}
           <span>{this.props.children}</span>
         </a>
-      ) : (
-        <button className={this.props.className} {...newProps}>
+      : <button className={this.props.className} {...newProps}>
           {this.props.icon}
           <span>{this.props.children}</span>
         </button>
-      )
   }
 }
 

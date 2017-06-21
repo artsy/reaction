@@ -11,7 +11,7 @@ interface RenderResult {
 interface TemplateOptions {
   entrypoint?: string
   bootstrapData?: string
-  sharify?: ResponseLocal,
+  sharify?: ResponseLocal
   baseURL: string
 }
 
@@ -23,7 +23,12 @@ export function renderElement(element: React.ReactElement<any>): RenderResult {
 }
 
 export function renderTemplate({
-  css, html, entrypoint, bootstrapData, sharify, baseURL,
+  css,
+  html,
+  entrypoint,
+  bootstrapData,
+  sharify,
+  baseURL,
 }: RenderResult & TemplateOptions): string {
   const fontsURL = "//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css"
   const segmentWriteKey = sharify.data.SEGMENT_WRITE_KEY

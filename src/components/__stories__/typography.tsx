@@ -7,7 +7,7 @@ import TextLink from "../text_link"
 import Title from "../title"
 
 storiesOf("Typography", Title)
-  .add("Headings", () => (
+  .add("Headings", () =>
     <div>
       <Title titleSize="xxlarge">XXLarge Title: 72px</Title>
       <Title titleSize="xlarge">XLarge Title: 50px</Title>
@@ -15,8 +15,8 @@ storiesOf("Typography", Title)
       <Title titleSize="medium">Medium Title: 30px</Title>
       <Title titleSize="small">Small Title: 25px</Title>
     </div>
-  ))
-  .add("Text", () => (
+  )
+  .add("Text", () =>
     <div>
       <Title>
         Plain Text
@@ -66,4 +66,4 @@ storiesOf("Typography", Title)
         <TextLink href="#">youremail@example.com</TextLink>
       </Text>
     </div>
-  ))
+  )

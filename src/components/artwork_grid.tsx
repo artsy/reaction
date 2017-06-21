@@ -6,15 +6,15 @@ import styled from "styled-components"
 import Artwork from "./artwork/grid_item"
 
 interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
-  columnCount?: number,
-  sectionMargin?: number,
-  itemMargin?: number,
-  onLoadMore?: () => any,
+  columnCount?: number
+  sectionMargin?: number
+  itemMargin?: number
+  onLoadMore?: () => any
 }
 
 interface State {
-  loading: boolean,
-  interval: any,
+  loading: boolean
+  interval: any
 }
 
 export class ArtworkGrid extends React.Component<Props, State> {
@@ -22,7 +22,9 @@ export class ArtworkGrid extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.props.onLoadMore) {
-      const interval = setInterval( () => { this.maybeLoadMore() }, 150 )
+      const interval = setInterval(() => {
+        this.maybeLoadMore()
+      }, 150)
       this.setState({ interval })
     }
   }
@@ -73,7 +75,7 @@ export class ArtworkGrid extends React.Component<Props, State> {
           // Keep track of total section aspect ratio
           const aspectRatio = artwork.image.aspect_ratio || 1 // Ensure we never divide by null/0
           // Invert the aspect ratio so that a lower value means a shorter section.
-          sectionRatioSums[sectionIndex] += (1 / aspectRatio)
+          sectionRatioSums[sectionIndex] += 1 / aspectRatio
         }
       }
     })
@@ -92,26 +94,20 @@ export class ArtworkGrid extends React.Component<Props, State> {
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        artworkComponents.push(
-          <Artwork artwork={artwork as any} key={"artwork-" + j + "-" + artwork.__id} />,
-        )
+        artworkComponents.push(<Artwork artwork={artwork as any} key={"artwork-" + j + "-" + artwork.__id} />)
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
         if (j < sectionedArtworks[i].length - 1) {
-          artworkComponents.push(
-            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />,
-          )
+          artworkComponents.push(<div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />)
         }
       }
 
       const sectionSpecificStyle = {
         flex: 1,
         minWidth: 0,
-        marginRight: (i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin),
+        marginRight: i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
-      sections.push(
-        <div style={sectionSpecificStyle} key={i}>{artworkComponents}</div>,
-      )
+      sections.push(<div style={sectionSpecificStyle} key={i}>{artworkComponents}</div>)
     }
     return sections
   }
@@ -163,16 +159,16 @@ export default Relay.createContainer(StyledGrid, {
 })
 
 interface ArtworkRelayProps {
-  __id: string,
+  __id: string
   image: {
-    aspect_ratio: number | null,
-  } | null,
+    aspect_ratio: number | null
+  } | null
 }
 
 interface RelayProps {
   artworks: {
     edges: Array<{
-      node: any,
-    } | null> | null,
-  },
+      node: any
+    } | null> | null
+  }
 }

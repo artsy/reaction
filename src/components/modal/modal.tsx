@@ -51,10 +51,10 @@ class Modal extends React.Component<ModalProps, any> {
     }
     return (
       <div>
-         <ModalContainer {...newProps}>
-           {this.props.children}
-         </ModalContainer>
-        <Overlay onClick={this.close}/>
+        <ModalContainer {...newProps}>
+          {this.props.children}
+        </ModalContainer>
+        <Overlay onClick={this.close} />
       </div>
     )
   }

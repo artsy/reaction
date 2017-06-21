@@ -33,10 +33,12 @@ describe("login", () => {
   })
 
   it("displays correct error message", done => {
-    fetch.mockImplementation(() => Promise.resolve({
-      url: "http://localhost:3000/log_in?error=Invalid%20email%20or%20password",
-      status: 404,
-    }))
+    fetch.mockImplementation(() =>
+      Promise.resolve({
+        url: "http://localhost:3000/log_in?error=Invalid%20email%20or%20password",
+        status: 404,
+      })
+    )
 
     const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
 

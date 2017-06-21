@@ -21,10 +21,10 @@ const Placeholder = styled.div`
 `
 
 interface Props extends RelayProps, React.HTMLProps<FillwidthItem> {
-  targetHeight?: number,
-  imageHeight?: number,
-  width?: number,
-  margin?: number,
+  targetHeight?: number
+  imageHeight?: number
+  width?: number
+  margin?: number
 }
 
 export class FillwidthItem extends React.Component<Props, null> {
@@ -34,18 +34,15 @@ export class FillwidthItem extends React.Component<Props, null> {
       <div className={className}>
         <Placeholder style={{ height: targetHeight }}>
           <ImageLink href={artwork.href}>
-            <Image
-              src={artwork.image.url}
-              height={imageHeight}
-            />
+            <Image src={artwork.image.url} height={imageHeight} />
           </ImageLink>
           <SaveButton
             className="artwork-save"
             artwork={artwork}
-            style={{position: "absolute", right: "5px", bottom: "5px"}}
+            style={{ position: "absolute", right: "5px", bottom: "5px" }}
           />
         </Placeholder>
-        <ArtworkMetadata artwork={artwork} extended/>
+        <ArtworkMetadata artwork={artwork} extended />
       </div>
     )
   }
@@ -83,11 +80,11 @@ export default Relay.createContainer(StyledFillwidthItem, {
 
 interface RelayProps {
   artwork: {
-    href: string | null,
+    href: string | null
     image: {
-      placeholder: number | null,
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
+      placeholder: number | null
+      url: string | null
+      aspect_ratio: number | null
+    } | null
+  }
 }

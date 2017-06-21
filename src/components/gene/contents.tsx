@@ -2,10 +2,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import {
-  addUrlProps,
-  UrlQueryParamTypes,
-} from "react-url-query"
+import { addUrlProps, UrlQueryParamTypes } from "react-url-query"
 
 import Dropdown from "../artwork_filter/dropdown"
 import ForSaleCheckbox from "../artwork_filter/for_sale_checkbox"
@@ -26,28 +23,30 @@ const PageSize = 10
 
 interface Props extends RelayProps, React.HTMLProps<GeneContents> {
   gene: any
-  relay?: any,
-  filtered_artworks?: any,
-  onChangeUrlQueryParams?: any,
-  for_sale?: boolean,
-  dimension_range?: string,
-  price_range?: string,
+  relay?: any
+  filtered_artworks?: any
+  onChangeUrlQueryParams?: any
+  for_sale?: boolean
+  dimension_range?: string
+  price_range?: string
   medium?: string
 }
 
 interface RelayProps {
-  gene: {
-    mode: string | null,
-    name: string | null,
-  } | any
+  gene:
+    | {
+        mode: string | null
+        name: string | null
+      }
+    | any
 }
 
 interface State {
-  for_sale: boolean,
-  dimension_range: string,
-  price_range: string,
-  medium: string,
-  loading: boolean,
+  for_sale: boolean
+  dimension_range: string
+  price_range: string
+  medium: string
+  loading: boolean
 }
 
 const urlPropsQueryConfig = {
@@ -58,7 +57,6 @@ const urlPropsQueryConfig = {
 }
 
 export class GeneContents extends React.Component<Props, State> {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -73,7 +71,7 @@ export class GeneContents extends React.Component<Props, State> {
   anyArtworkFilters() {
     return (
       this.state.for_sale ||
-      (this.state.dimension_range !== "*" && !!this.state.dimension_range ) ||
+      (this.state.dimension_range !== "*" && !!this.state.dimension_range) ||
       (this.state.price_range !== "*" && !!this.state.price_range) ||
       (this.state.medium !== "*" && !!this.state.medium)
     )
@@ -142,13 +140,16 @@ export class GeneContents extends React.Component<Props, State> {
     const hasMore = this.props.gene.filtered_artworks.artworks.pageInfo.hasNextPage
     if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
-        this.props.relay.setVariables({
-          artworksSize: this.props.relay.variables.artworksSize + PageSize,
-        }, readyState => {
-          if (readyState.done) {
-            this.setState({ loading: false })
+        this.props.relay.setVariables(
+          {
+            artworksSize: this.props.relay.variables.artworksSize + PageSize,
+          },
+          readyState => {
+            if (readyState.done) {
+              this.setState({ loading: false })
+            }
           }
-        })
+        )
       })
     }
   }
@@ -157,13 +158,16 @@ export class GeneContents extends React.Component<Props, State> {
     const hasMore = this.props.gene.artists.pageInfo.hasNextPage
     if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
-        this.props.relay.setVariables({
-          artistsSize: this.props.relay.variables.artistsSize + PageSize,
-        }, readyState => {
-          if (readyState.done) {
-            this.setState({ loading: false })
+        this.props.relay.setVariables(
+          {
+            artistsSize: this.props.relay.variables.artistsSize + PageSize,
+          },
+          readyState => {
+            if (readyState.done) {
+              this.setState({ loading: false })
+            }
           }
-        })
+        )
       })
     }
   }
@@ -191,11 +195,11 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   renderArtistRows(artists) {
-    const artistRows = artists && artists.edges.map(edge => {
-      return (
-        <ArtistRow artist={edge.node as any} key={edge.__dataID__} />
-      )
-    })
+    const artistRows =
+      artists &&
+      artists.edges.map(edge => {
+        return <ArtistRow artist={edge.node as any} key={edge.__dataID__} />
+      })
 
     const loadMoreButton = (
       <LoadMoreContainer>
@@ -217,11 +221,7 @@ export class GeneContents extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      artists,
-      filtered_artworks,
-      mode,
-    } = this.props.gene
+    const { artists, filtered_artworks, mode } = this.props.gene
 
     const { showArtists } = this.props.relay.variables
     const shouldShowArtists = showArtists && !this.anyArtworkFilters()
@@ -244,56 +244,56 @@ export class GeneContents extends React.Component<Props, State> {
       { val: "year", name: "Artwork Year (asc.)" },
     ]
 
-    const artistFilter = mode === "artist" ? (
-      <ArtistFilterButtons>
-        <span>By Artists:</span>
-        <Button
-          onClick={() => this.setShowArtists()}
-          state={shouldShowArtists ? ButtonState.Success : ButtonState.Default}
-        >
-          All Artists
-        </Button>
-        <span>By Work:</span>
-      </ArtistFilterButtons>
-    ) : ""
+    const artistFilter = mode === "artist"
+      ? <ArtistFilterButtons>
+          <span>By Artists:</span>
+          <Button
+            onClick={() => this.setShowArtists()}
+            state={shouldShowArtists ? ButtonState.Success : ButtonState.Default}
+          >
+            All Artists
+          </Button>
+          <span>By Work:</span>
+        </ArtistFilterButtons>
+      : ""
 
-    const content = shouldShowArtists ? artistEl : (
-      <div>
-        <SubFilterBar>
-          <div>
-            <Headline
-              medium={this.state.medium}
-              price_range={this.state.price_range}
-              dimension_range={this.state.dimension_range}
-              for_sale={this.state.for_sale}
-              facet={this.props.gene}
-              aggregations={filtered_artworks.aggregations}
+    const content = shouldShowArtists
+      ? artistEl
+      : <div>
+          <SubFilterBar>
+            <div>
+              <Headline
+                medium={this.state.medium}
+                price_range={this.state.price_range}
+                dimension_range={this.state.dimension_range}
+                for_sale={this.state.for_sale}
+                facet={this.props.gene}
+                aggregations={filtered_artworks.aggregations}
+              />
+              <TotalCount filter_artworks={filtered_artworks} />
+            </div>
+            <BorderedPulldown
+              defaultValue="Recently Updated"
+              options={pulldownOptions}
+              onChange={option => this.onChangeSort(option)}
             />
-            <TotalCount filter_artworks={filtered_artworks} />
-          </div>
-          <BorderedPulldown
-            defaultValue="Recently Updated"
-            options={pulldownOptions}
-            onChange={option => this.onChangeSort(option)}
+          </SubFilterBar>
+          <Artworks
+            artworks={filtered_artworks.artworks}
+            columnCount={4}
+            itemMargin={40}
+            onLoadMore={() => this.loadMoreArtworks()}
           />
-        </SubFilterBar>
-        <Artworks
-          artworks={filtered_artworks.artworks}
-          columnCount={4}
-          itemMargin={40}
-          onLoadMore={() => this.loadMoreArtworks()}
-        />
-        <SpinnerContainer>
-          {this.state.loading ? <Spinner /> : ""}
-        </SpinnerContainer>
-      </div>
-    )
+          <SpinnerContainer>
+            {this.state.loading ? <Spinner /> : ""}
+          </SpinnerContainer>
+        </div>
 
     return (
       <div>
         <FilterBar>
           {artistFilter}
-          <ForSaleCheckbox checked={this.state.for_sale} onClick={() => this.setForSale()}/>
+          <ForSaleCheckbox checked={this.state.for_sale} onClick={() => this.setForSale()} />
           {dropdowns}
         </FilterBar>
         {content}
@@ -343,7 +343,7 @@ const LoadMoreContainer = styled.div`
 `
 
 const LoadMoreButton = styled.a`
-  font-family: ${ fonts.primary.fontFamily };
+  font-family: ${fonts.primary.fontFamily};
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;

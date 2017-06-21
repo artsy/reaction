@@ -23,10 +23,10 @@ import { artsyNetworkLayer } from "../relay/config"
 import * as Artsy from "./artsy"
 
 interface InitOptions {
-  user: User,
-  component: any,
-  domID: string,
-  queryConfig: any,
+  user: User
+  component: any
+  domID: string
+  queryConfig: any
 }
 
 export function init(options: InitOptions) {
@@ -34,10 +34,7 @@ export function init(options: InitOptions) {
 
   const rootRoute = (
     <Artsy.ContextProvider currentUser={options.user}>
-      <Relay.RootContainer
-        Component={options.component}
-        route={options.queryConfig}
-      />
+      <Relay.RootContainer Component={options.component} route={options.queryConfig} />
     </Artsy.ContextProvider>
   )
 

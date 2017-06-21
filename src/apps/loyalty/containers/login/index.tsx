@@ -15,20 +15,20 @@ import * as fonts from "../../../../assets/fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {
-    baseUrl?: string,
-    url: string,
-    csrfToken?: string,
-    forgotPasswordUrl?: string,
-    facebookPath?: string,
-    twitterPath?: string,
-  },
+    baseUrl?: string
+    url: string
+    csrfToken?: string
+    forgotPasswordUrl?: string
+    facebookPath?: string
+    twitterPath?: string
+  }
   onSubmit?: () => void
 }
 
 interface LoginState {
-  email: string,
-  password: string,
-  error?: string,
+  email: string
+  password: string
+  error?: string
 }
 
 const LoginContainer = styled.div`
@@ -93,28 +93,28 @@ class Login extends React.Component<LoginProps, LoginState> {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
 
-  handleEmailChange (e) {
+  handleEmailChange(e) {
     this.setState({
       email: e.target.value,
       error: "",
     })
   }
 
-  handlePasswordChange (e) {
+  handlePasswordChange(e) {
     this.setState({
       password: e.target.value,
       error: "",
     })
   }
 
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     const options: RequestInit = {
       method: "POST",
       credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
         "X-Requested-With": "XMLHttpRequest",
       },
       body: JSON.stringify({
@@ -136,7 +136,8 @@ class Login extends React.Component<LoginProps, LoginState> {
             error: "Invalid email or password",
           })
         }
-      }).catch(err => {
+      })
+      .catch(err => {
         if (process.env.NODE_ENV !== "test") {
           console.error(err)
         }
@@ -153,9 +154,7 @@ class Login extends React.Component<LoginProps, LoginState> {
   render() {
     const error = this.state.error
     const form = this.props.form
-    const forgotPasswordLink = (
-      <TextLink href={form.forgotPasswordUrl}>Forgot?</TextLink>
-    )
+    const forgotPasswordLink = <TextLink href={form.forgotPasswordUrl}>Forgot?</TextLink>
 
     return (
       <LoginContainer>

@@ -10,9 +10,7 @@ import * as Artsy from "../artsy"
 
 export class ArtistArtworks extends React.Component<RelayProps, null> {
   render() {
-    return (
-      <ArtworkGrid artworks={this.props.artist.artworks as any} />
-    )
+    return <ArtworkGrid artworks={this.props.artist.artworks as any} />
   }
 }
 
@@ -30,8 +28,8 @@ const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
 
 interface RelayProps {
   artist: {
-    artworks: Array<any | null> | null,
-  },
+    artworks: Array<any | null> | null
+  }
 }
 
 function GridExample(props: { artistID: string }) {
@@ -44,15 +42,14 @@ function GridExample(props: { artistID: string }) {
   )
 }
 
-storiesOf("ArtworkGrid", ArtworkGrid)
-  .add("A typical grid", () => {
-    const user = {
-      id: "some-id",
-      accessToken: "some-token",
-    } as User
-    return (
-      <Artsy.ContextProvider currentUser={user}>
-        <GridExample artistID="banksy" />
-      </Artsy.ContextProvider>
-    )
-  })
+storiesOf("ArtworkGrid", ArtworkGrid).add("A typical grid", () => {
+  const user = {
+    id: "some-id",
+    accessToken: "some-token",
+  } as User
+  return (
+    <Artsy.ContextProvider currentUser={user}>
+      <GridExample artistID="banksy" />
+    </Artsy.ContextProvider>
+  )
+})

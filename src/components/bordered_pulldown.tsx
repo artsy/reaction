@@ -7,14 +7,14 @@ import colors from "../assets/colors"
 import { secondary } from "../assets/fonts"
 
 interface Props extends React.HTMLProps<BorderedPulldown> {
-  options: any,
-  defaultValue: string,
-  onChange?: any,
+  options: any
+  defaultValue: string
+  onChange?: any
 }
 
 interface State {
-  selected: any,
-  isHovered: boolean,
+  selected: any
+  isHovered: boolean
 }
 
 export class BorderedPulldown extends React.Component<Props, State> {
@@ -45,16 +45,13 @@ export class BorderedPulldown extends React.Component<Props, State> {
 
     const optionEls = options.map(option => {
       return (
-        <a
-          key={option.val}
-          onClick={() =>  this.onChange(option)}
-        >
+        <a key={option.val} onClick={() => this.onChange(option)}>
           {option.name}
         </a>
       )
     })
 
-    const displayValue = this.state.selected && this.state.selected.name || defaultValue
+    const displayValue = (this.state.selected && this.state.selected.name) || defaultValue
     let pulldownStyles = {}
 
     if (this.state.isHovered) {
@@ -74,11 +71,7 @@ export class BorderedPulldown extends React.Component<Props, State> {
             {displayValue}
           </span>
           <CaretHolder>
-            <Icon
-              name="arrow-down"
-              fontSize="9px"
-              color={colors.grayMedium}
-            />
+            <Icon name="arrow-down" fontSize="9px" color={colors.grayMedium} />
           </CaretHolder>
         </Toggle>
         <PulldownOptions style={pulldownStyles}>

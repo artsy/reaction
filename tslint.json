@@ -1,25 +1,53 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-eslint-rules"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "curly": false,
-    "semicolon": [ true, "never" ],
-    "quotemark": [
-       true,
-       "double",
-       "avoid-escape"
+    "semicolon": [
+      true,
+      "never"
     ],
-    "arrow-parens": [ true, "ban-single-arg-parens" ],
-    "arrow-return-shorthand": [ true ],
-    "interface-name": [ true, "never-prefix" ],
+    "quotemark": [
+      true,
+      "double",
+      "avoid-escape"
+    ],
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
+    ],
+    "arrow-return-shorthand": [
+      true
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
     "object-literal-sort-keys": false,
-    "member-access": [ false ],
+    "member-access": [
+      false
+    ],
     "no-unused-expression": false,
-    "max-classes-per-file": [false],
+    "max-classes-per-file": [
+      false
+    ],
     "jsx-no-lambda": false,
-    "jsx-curly-spacing": [ true, "never" ],
-    "jsx-wrap-multiline": [ true, "always" ],
-    "jsx-boolean-value": [ true, "never" ],
-    "ter-indent": [true, 2],
+    "jsx-curly-spacing": [
+      true,
+      "never"
+    ],
+    "jsx-boolean-value": [
+      true,
+      "never"
+    ],
+    "ter-indent": [
+      true,
+      2
+    ],
     "no-var-requires": false
   }
 }

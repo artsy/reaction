@@ -12,16 +12,15 @@ import * as fonts from "../../assets/fonts"
 const PageSize = 8
 
 interface Props extends RelayProps, React.HTMLProps<FairBooth> {
-  relay?: any,
-  onContactGallery?: (showId: string) => any,
+  relay?: any
+  onContactGallery?: (showId: string) => any
 }
 
 interface State {
-  loading: boolean,
+  loading: boolean
 }
 
 export class FairBooth extends React.Component<Props, State> {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -34,13 +33,16 @@ export class FairBooth extends React.Component<Props, State> {
     const hasMore = this.props.show.artworks.pageInfo.hasNextPage
     if (!this.state.loading && hasMore) {
       this.setState({ loading: true }, () => {
-        this.props.relay.setVariables({
-          artworksSize: this.props.relay.variables.artworksSize + PageSize,
-        }, readyState => {
-          if (readyState.done) {
-            this.setState({ loading: false })
+        this.props.relay.setVariables(
+          {
+            artworksSize: this.props.relay.variables.artworksSize + PageSize,
+          },
+          readyState => {
+            if (readyState.done) {
+              this.setState({ loading: false })
+            }
           }
-        })
+        )
       })
     }
   }
@@ -50,21 +52,24 @@ export class FairBooth extends React.Component<Props, State> {
     const { artworks } = show
     const { loading } = this.state
 
-    const showLocation = show.location && show.location.display && (
+    const showLocation =
+      show.location &&
+      show.location.display &&
       <LocationText textSize="small" textStyle="secondary">
         {show.location.display}
       </LocationText>
-    )
 
-    const artworksLeft =  show.counts.artworks - relay.variables.artworksSize
+    const artworksLeft = show.counts.artworks - relay.variables.artworksSize
 
-    const loadMoreButton = artworks && artworks.pageInfo.hasNextPage && !loading && (
+    const loadMoreButton =
+      artworks &&
+      artworks.pageInfo.hasNextPage &&
+      !loading &&
       <LoadMoreContainer>
         <LoadMoreButton onClick={this.loadMoreArtworks}>
           See {artworksLeft} more artworks
         </LoadMoreButton>
       </LoadMoreContainer>
-    )
 
     return (
       <div>
@@ -74,7 +79,7 @@ export class FairBooth extends React.Component<Props, State> {
               <PartnerText textSize="small" textStyle="primary">
                 {show.partner.name}
               </PartnerText>
-              <FollowButton type="profile" profile={show.partner.profile}/>
+              <FollowButton type="profile" profile={show.partner.profile} />
             </PartnerLine>
             {showLocation}
           </div>
@@ -84,11 +89,7 @@ export class FairBooth extends React.Component<Props, State> {
             </Button>
           </div>
         </Header>
-        <Artworks
-          artworks={show.artworks}
-          columnCount={4}
-          itemMargin={40}
-        />
+        <Artworks artworks={show.artworks} columnCount={4} itemMargin={40} />
         {loadMoreButton}
       </div>
     )
@@ -109,7 +110,7 @@ const LoadMoreContainer = styled.div`
 `
 
 const LoadMoreButton = styled.a`
-  font-family: ${ fonts.primary.fontFamily };
+  font-family: ${fonts.primary.fontFamily};
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;
@@ -164,18 +165,24 @@ export default Relay.createContainer(FairBooth, {
 })
 
 interface RelayProps {
-  show: {
-    id: string | null,
-    name: string | null,
-    artworks: any,
-    partner: {
-      name: string | null,
-      profile: {
-        is_followed: boolean | null,
-      } | any,
-    }
-    location: {
-      display: string | null,
-    } | any,
-  } | any
+  show:
+    | {
+        id: string | null
+        name: string | null
+        artworks: any
+        partner: {
+          name: string | null
+          profile:
+            | {
+                is_followed: boolean | null
+              }
+            | any
+        }
+        location:
+          | {
+              display: string | null
+            }
+          | any
+      }
+    | any
 }

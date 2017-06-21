@@ -29,7 +29,7 @@ describe("<ForgotPassword />", () => {
       </span>
     )
     const wrapper = shallow(<ForgotPassword appToken={APP_TOKEN} submitEmailUrl={SUBMIT_URL} />)
-    wrapper.setState({email: "test@artsymail.com"})
+    wrapper.setState({ email: "test@artsymail.com" })
     const button = wrapper.find(Button)
     button.simulate("click")
 
@@ -43,11 +43,9 @@ describe("<ForgotPassword />", () => {
   it("displays correct message on failure", done => {
     fetch.mockImplementation(() => Promise.resolve({ status: 400 }))
 
-    const expectedResult = (
-      <span>No account exists for <b>test@artsymail.com</b></span>
-    )
+    const expectedResult = <span>No account exists for <b>test@artsymail.com</b></span>
     const wrapper = shallow(<ForgotPassword appToken={APP_TOKEN} submitEmailUrl={SUBMIT_URL} />)
-    wrapper.setState({email: "test@artsymail.com"})
+    wrapper.setState({ email: "test@artsymail.com" })
     const button = wrapper.find(Button)
     button.simulate("click")
 

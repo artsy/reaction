@@ -26,7 +26,7 @@ const Circle = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 100%;
-  border: 5px solid ${props => props.selected ? "white" : "transparent"};
+  border: 5px solid ${props => (props.selected ? "white" : "transparent")};
   background: transparent;
   display: flex;
   justify-content: center;
@@ -35,23 +35,15 @@ const Circle = styled.div`
   transition: border-color 0.3s;
 `
 
-const Overlay: React.SFC<OverlayProps> = props => (
+const Overlay: React.SFC<OverlayProps> = props =>
   <OverlayBackground>
     <Circle selected={props.selected}>
       <Icon name="check" color="white" />
     </Circle>
   </OverlayBackground>
-)
 
 export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
-  return (
-    <Artwork
-      {...props}
-      extended={false}
-      Overlay={Overlay}
-      showOverlayOnHover
-    />
-  )
+  return <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
 }
 
 export default createContainer<ArtworkProps, ArtworkMetadataProps>(InquiryArtwork, ArtworkMetadata)

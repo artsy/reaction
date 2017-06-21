@@ -1,9 +1,10 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-function createContainer<T, S>(ComponentClass: React.ComponentClass<T> | React.StatelessComponent<T>,
-                               ChildComponent: Relay.RelayContainerClass<S>):
-                               Relay.RelayContainerClass<T> {
+function createContainer<T, S>(
+  ComponentClass: React.ComponentClass<T> | React.StatelessComponent<T>,
+  ChildComponent: Relay.RelayContainerClass<S>
+): Relay.RelayContainerClass<T> {
   return Relay.createContainer(ComponentClass, {
     fragments: {
       artwork: () => Relay.QL`
@@ -24,10 +25,10 @@ export default createContainer
 
 export interface RelayProps {
   artwork: {
-    id: string | null,
+    id: string | null
     image: {
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
+      url: string | null
+      aspect_ratio: number | null
+    } | null
+  }
 }

@@ -17,11 +17,13 @@ const inquiryProps: Props = {
               image: {
                 url: "http://path.to.cat.pics",
               },
-              artists: [{
-                __id: "percy-z",
-                name: "Percy Z",
-                href: "/percy-z",
-              }],
+              artists: [
+                {
+                  __id: "percy-z",
+                  name: "Percy Z",
+                  href: "/percy-z",
+                },
+              ],
             },
           },
         },
@@ -33,11 +35,13 @@ const inquiryProps: Props = {
               image: {
                 url: "http://path.to.cat.pics",
               },
-              artists: [{
-                __id: "percy-z-convoless",
-                name: "Percy Z Without Conversation",
-                href: "/percy-z-without-conversation",
-              }],
+              artists: [
+                {
+                  __id: "percy-z-convoless",
+                  name: "Percy Z Without Conversation",
+                  href: "/percy-z-without-conversation",
+                },
+              ],
             },
           },
         },
@@ -48,12 +52,12 @@ const inquiryProps: Props = {
 
 describe("inquiries", () => {
   it("renders the inquiries listing", () => {
-    const inquiries = renderer.create(<Inquiries {...inquiryProps}/>)
+    const inquiries = renderer.create(<Inquiries {...inquiryProps} />)
     expect(inquiries).toMatchSnapshot()
   })
 
   it("renders the artist information", () => {
-    const inquiries = TestUtils.renderIntoDocument(<Inquiries {...inquiryProps}/>) as Inquiries
+    const inquiries = TestUtils.renderIntoDocument(<Inquiries {...inquiryProps} />) as Inquiries
     const aTags = TestUtils.scryRenderedDOMComponentsWithTag(inquiries, "a") as HTMLAnchorElement[]
     const artistLink = aTags.find(tag => tag.href === "/percy-z" && tag.textContent === "Percy Z")
     expect(artistLink).toBeTruthy()

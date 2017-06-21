@@ -19,7 +19,7 @@ const ButtonWrapper = styled.div`
   marginTop: 40px;
 `
 
-export default props => (
+export default props =>
   <Container>
     <Nav>
       <NavItem href="/">Back To Artsy</NavItem>
@@ -38,4 +38,3 @@ export default props => (
       <Button href="/">Back to Artsy</Button>
     </ButtonWrapper>
   </Container>
-)

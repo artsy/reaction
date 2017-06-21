@@ -10,9 +10,9 @@ import { find, reduce } from "lodash"
 interface RelayProps {
   artworks: {
     edges: Array<{
-      node: any,
-    } | null> | null,
-  },
+      node: any
+    } | null> | null
+  }
 }
 
 interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
@@ -27,7 +27,7 @@ interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
  * @param dir the direction we need to scale an image, either -1 or 1
  */
 const resizeHeight = (img, dir) => {
-  img.width += (img.width / img.height) * dir
+  img.width += img.width / img.height * dir
   img.height += dir
 }
 
@@ -40,9 +40,13 @@ export class Fillwidth extends React.Component<Props, null> {
   }
 
   widthDiff(dimensions) {
-    const currentWidth = reduce(dimensions, (sum, img) => {
-      return sum + img.width
-    }, 0)
+    const currentWidth = reduce(
+      dimensions,
+      (sum, img) => {
+        return sum + img.width
+      },
+      0
+    )
     return this.props.size.width - currentWidth - this.totalWhitespace()
   }
 
@@ -66,16 +70,22 @@ export class Fillwidth extends React.Component<Props, null> {
     while (true) {
       for (let img of dimensions) {
         resizeHeight(img, dir)
-        if (this.widthDiff(dimensions) > 1) { break }
+        if (this.widthDiff(dimensions) > 1) {
+          break
+        }
       }
-      if (this.widthDiff(dimensions) > 1) { break }
+      if (this.widthDiff(dimensions) > 1) {
+        break
+      }
     }
 
     // Round image dimensions to whole numbers
     for (let img of dimensions) {
       img.width = Math.floor(img.width)
       img.height = Math.floor(img.height)
-      if (this.widthDiff(dimensions) === 0) { break }
+      if (this.widthDiff(dimensions) === 0) {
+        break
+      }
     }
 
     // Voila, sizes for our images
@@ -92,7 +102,7 @@ export class Fillwidth extends React.Component<Props, null> {
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}
         width={artworkSize.width}
-        margin={i === (dimensions.length - 1) ? 0 : gutter}
+        margin={i === dimensions.length - 1 ? 0 : gutter}
       />
     )
   }

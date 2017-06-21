@@ -7,7 +7,4 @@ import { LoginResponseLocalData } from "../../types"
 
 const data = sharify.data as LoginResponseLocalData
 
-render(
-  <Login form={data.FORM_DATA} />,
-  document.getElementById("app-container"),
-)
+render(<Login form={data.FORM_DATA} />, document.getElementById("app-container"))

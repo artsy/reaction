@@ -17,13 +17,10 @@ interface Props extends RelayProps, React.HTMLProps<FollowButton>, Artsy.Context
 }
 
 export class FollowButton extends React.Component<Props, null> {
-
   handleFollow() {
     const { currentUser, relay, type } = this.props
     if (currentUser && currentUser.id) {
-      relay.commitUpdate(
-        new mutationTypes[type]({ [type]: this.props[type] }),
-      )
+      relay.commitUpdate(new mutationTypes[type]({ [type]: this.props[type] }))
     } else {
       window.location.href = "/login"
     }
@@ -42,23 +39,23 @@ export class FollowButton extends React.Component<Props, null> {
         onClick={() => this.handleFollow()}
         data-followed={followable.is_followed}
       >
-        <Icon
-          name={iconName}
-          height={SIZE}
-          style={{ verticalAlign: "middle", color: "inherit", margin: 0 }}
-        />
+        <Icon name={iconName} height={SIZE} style={{ verticalAlign: "middle", color: "inherit", margin: 0 }} />
       </div>
     )
   }
 }
 
 interface RelayProps {
-  artist?: {
-    is_followed: boolean | null,
-  } |  any,
-  profile?: {
-    is_followed: boolean | null,
-  } |  any,
+  artist?:
+    | {
+        is_followed: boolean | null
+      }
+    | any
+  profile?:
+    | {
+        is_followed: boolean | null
+      }
+    | any
 }
 
 export const StyledFollowButton = styled(FollowButton)`
@@ -87,7 +84,6 @@ export const StyledFollowButton = styled(FollowButton)`
   }
 `
 class FollowArtistMutation extends Relay.Mutation<Props, null> {
-
   static fragments = {
     artist: () => Relay.QL`
       fragment on Artist {
@@ -133,17 +129,18 @@ class FollowArtistMutation extends Relay.Mutation<Props, null> {
   }
 
   getConfigs() {
-    return [{
-      type: "FIELDS_CHANGE",
-      fieldIDs: {
-        artist: this.props.artist.__id,
+    return [
+      {
+        type: "FIELDS_CHANGE",
+        fieldIDs: {
+          artist: this.props.artist.__id,
+        },
       },
-    }]
+    ]
   }
 }
 
 class FollowProfileMutation extends Relay.Mutation<Props, null> {
-
   static fragments = {
     profile: () => Relay.QL`
       fragment on Profile {
@@ -189,12 +186,14 @@ class FollowProfileMutation extends Relay.Mutation<Props, null> {
   }
 
   getConfigs() {
-    return [{
-      type: "FIELDS_CHANGE",
-      fieldIDs: {
-        artist: this.props.profile.__id,
+    return [
+      {
+        type: "FIELDS_CHANGE",
+        fieldIDs: {
+          artist: this.props.profile.__id,
+        },
       },
-    }]
+    ]
   }
 }
 

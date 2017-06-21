@@ -1,4 +1,4 @@
-declare interface User {
+interface User {
   id: string
   accessToken: string
   name: string
@@ -9,8 +9,8 @@ declare interface User {
   profile?: CollectorProfile
 }
 
-declare interface CollectorProfile {
-  confirmed_buyer_at: string,
-  loyalty_applicant_at: string,
-  name: string,
+interface CollectorProfile {
+  confirmed_buyer_at: string
+  loyalty_applicant_at: string
+  name: string
 }

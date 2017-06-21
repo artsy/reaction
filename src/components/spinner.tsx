@@ -3,15 +3,13 @@ import * as React from "react"
 import styled, { keyframes } from "styled-components"
 
 interface Props extends React.HTMLProps<Spinner> {
-  width?: number,
+  width?: number
   height?: number
 }
 
 export class Spinner extends React.Component<Props, null> {
   render() {
-    return (
-      <div className={this.props.className} />
-    )
+    return <div className={this.props.className} />
   }
 }
 
