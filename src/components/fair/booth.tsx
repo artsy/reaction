@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Artworks from "../artwork_grid"
 import Button from "../buttons/ghost"
 import FollowButton from "../follow"
+import Spinner from "../spinner"
 import Text from "../text"
 
 import * as fonts from "../../assets/fonts"
@@ -61,14 +62,16 @@ export class FairBooth extends React.Component<Props, State> {
 
     const artworksLeft = show.counts.artworks - relay.variables.artworksSize
 
-    const loadMoreButton =
-      artworks &&
-      artworks.pageInfo.hasNextPage &&
-      !loading &&
-      <LoadMoreContainer>
-        <LoadMoreButton onClick={this.loadMoreArtworks}>
+    const showLoadMore = artworks && artworks.pageInfo.hasNextPage
+    const loadMoreContent = loading
+      ? <Spinner />
+      : <LoadMoreButton onClick={this.loadMoreArtworks}>
           See {artworksLeft} more artworks
         </LoadMoreButton>
+    const loadMore =
+      showLoadMore &&
+      <LoadMoreContainer>
+        {loadMoreContent}
       </LoadMoreContainer>
 
     return (
@@ -79,7 +82,7 @@ export class FairBooth extends React.Component<Props, State> {
               <PartnerText textSize="small" textStyle="primary">
                 {show.partner.name}
               </PartnerText>
-              <FollowButton type="profile" profile={show.partner.profile} />
+              <FollowButton type="profile" artist={null} profile={show.partner.profile} />
             </PartnerLine>
             {showLocation}
           </div>
@@ -90,7 +93,7 @@ export class FairBooth extends React.Component<Props, State> {
           </div>
         </Header>
         <Artworks artworks={show.artworks} columnCount={4} itemMargin={40} />
-        {loadMoreButton}
+        {loadMore}
       </div>
     )
   }
@@ -107,6 +110,8 @@ const LoadMoreContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 40px 0;
+  position: relative;
+  height: 200px;
 `
 
 const LoadMoreButton = styled.a`
@@ -136,7 +141,7 @@ export default Relay.createContainer(FairBooth, {
   fragments: {
     show: () => Relay.QL`
       fragment on Show {
-        id
+        __id
         name
         location {
           display
@@ -167,7 +172,7 @@ export default Relay.createContainer(FairBooth, {
 interface RelayProps {
   show:
     | {
-        id: string | null
+        __id: string | null
         name: string | null
         artworks: any
         partner: {

@@ -2,34 +2,34 @@
 
 exports[`ACB Thank You renders the snapshot 1`] = `
 <div
-  className="file__Container-mw245f-0 kvlfNZ"
+  className="file__Container-s1k4n81i-0 hGpafc"
 >
   <div
-    className="file__Nav-s4x8b4-0 hnMEDI"
+    className="file__Nav-s1w500ep-0 krvdox"
   >
     <a
-      className="file__NavIcon-s4x8b4-1 UWNZP"
+      className="file__NavIcon-s1w500ep-1 eNnazU"
       href={undefined}
     >
       <div
-        className="file-s1qxsvco-0 iMAXVz"
+        className="file-s1ekx40u-0 krLqUx"
         style={undefined}
       >
         
       </div>
     </a>
     <a
-      className="file__StyledLink-s1lrjrzq-0 cuFtvy"
+      className="file__StyledLink-mgasw5-0 dIJcvg"
       href="/"
     >
       Back To Artsy
     </a>
   </div>
   <div
-    className="file__Section-mw245f-1 liqVsf"
+    className="file__Section-s1k4n81i-1 corYNg"
   >
     <p
-      className="file__Text-s1vkb2x7-0 dBVuGH"
+      className="file__Text-s4rtu63-0 btgjDp"
     >
       EARLY ACCESS
     </p>
@@ -40,16 +40,16 @@ exports[`ACB Thank You renders the snapshot 1`] = `
     Artsy Collector Loyalty Program
   </div>
   <div
-    className="file__Section-mw245f-1 liqVsf"
+    className="file__Section-s1k4n81i-1 corYNg"
   >
     <p
-      className="file__Text-s1vkb2x7-0 jZOqwQ"
+      className="file__Text-s4rtu63-0 eEhqjQ"
     >
       Thank you for your interest in the program.
       <br />
       Have questions? Get in touch:  
       <a
-        className="file__StyledTextLink-l9d9k6-0 blqQaU"
+        className="file__StyledTextLink-s18afosz-0 bJfHCj"
         href="mailto:loyalty@artsy.net"
       >
         loyalty@artsy.net
@@ -57,10 +57,10 @@ exports[`ACB Thank You renders the snapshot 1`] = `
     </p>
   </div>
   <div
-    className="file__ButtonWrapper-mw245f-2 bRbPB"
+    className="file__ButtonWrapper-s1k4n81i-2 jFIzwE"
   >
     <a
-      className="file__InvertedButton-glkvqw-0 ferdzZ file__StyledButton-s1b5cz0b-0 gxuurP"
+      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 exlWFO"
       href="/"
     >
       <span>

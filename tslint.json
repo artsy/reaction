@@ -44,10 +44,6 @@
       true,
       "never"
     ],
-    "ter-indent": [
-      true,
-      2
-    ],
     "no-var-requires": false
   }
 }
