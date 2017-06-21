@@ -1,6 +1,8 @@
 import React, { Component } from "react"
-import IconImageset from "./icons/icon_imageset"
 import styled from "styled-components"
+
+import IconImageset from "./icons/icon_imageset"
+
 import * as fonts from "../../assets/fonts"
 
 const Wrapper = styled.div`
