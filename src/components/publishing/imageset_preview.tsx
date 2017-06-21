@@ -8,15 +8,16 @@ import * as fonts from "../../assets/fonts"
 const Wrapper = styled.div`
   max-width: 580px;
   width: 100%;
+  height: 150px;
   display: flex;
 `
-const Text = styled.p`
+const Text = styled.div`
   ${fonts.primary.style}
   font-size: 11px;
+  line-height: 1.35em;
   margin: 0;
 `
 const Remaining = styled.div`
-  height: 130px;
   min-width: 50px;
   padding: 10px;
   flex: 1;

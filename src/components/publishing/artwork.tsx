@@ -8,6 +8,7 @@ const TruncatedLine = styled.div`
   overflow: hidden;
   white-space: nowrap;
   font-size: 15px;
+  line-height: 1.35em;
   color: #666;
 `
 
@@ -50,7 +51,7 @@ class Artwork extends Component<any, null>  {
         </span>
       )
     } else {
-      return <span>artist.name{spacer}</span>
+      return <span>{artist.name}{spacer}</span>
     }
   }
 
