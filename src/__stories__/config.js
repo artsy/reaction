@@ -21,3 +21,12 @@ function loadStories() {
 }
 
 configure(loadStories, module)
+
+import { setOptions } from '@storybook/addon-options';
+
+setOptions({
+  name: 'Reaction Force',
+  url: 'http://artsy.github.io',
+  showDownPanel: false,
+  sortStoriesByKind: true,
+})
