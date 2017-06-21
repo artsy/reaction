@@ -1,5 +1,35 @@
 import React, { Component } from "react"
 import IconImageset from "./icons/icon_imageset"
+import styled from "styled-components"
+import * as fonts from "../../assets/fonts"
+
+const Wrapper = styled.div`
+  max-width: 580px;
+  width: 100%;
+  display: flex;
+`
+const Text = styled.p`
+  ${fonts.primary.style}
+  font-size: 11px;
+  margin: 0;
+`
+const Remaining = styled.div`
+  height: 130px;
+  min-width: 50px;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+`
+const IconContainer = styled.div`
+  width: 32px;
+  margin-bottom: 10px;
+  position: relative;
+`
 
 class ImagesetPreview extends Component<any, any> {
   constructor(props) {
@@ -32,8 +62,9 @@ class ImagesetPreview extends Component<any, any> {
           <img
             key={"imageset-" + i}
             src={src || ""}
+            height="150"
             className="imageset-preview__image"
-            style={styles.image} />
+            style={{marginRight: 10}} />
         )
       }
     }, this)
@@ -42,75 +73,31 @@ class ImagesetPreview extends Component<any, any> {
 
   render() {
     const { images } = this.props
-
+    const length = {
+      position: "absolute",
+      left: 8,
+      top: 14,
+    }
     if (images.length > 9) {
-      styles.length.left = 4
+      length.left = 4
     }
 
     return (
-      <div className="imageset-preview" style={styles.imageset}>
-        <div className="imageset-preview__container" style={styles.container}>
+      <Wrapper className="imageset-preview">
+        <div className="imageset-preview__container" style={{display: "flex"}}>
           {this.renderImages(images)}
         </div>
-        <div className="imageset-preview__remaining" style={styles.remaining}>
-          <div className="imageset-preview__icon" style={styles.icon} >
+        <Remaining className="imageset-preview__remaining">
+          <IconContainer className="imageset-preview__icon-container">
             <IconImageset />
-            <span className="length" style={styles.length}>{images.length}</span>
-          </div>
-          <div className="imageset-preview__text">Enter Slideshow</div>
-        </div>
-      </div>
+            <div className="imageset-preview__length" style={length}>
+              <Text>{images.length}</Text>
+            </div>
+          </IconContainer>
+          <Text className="imageset-preview__text">Enter Slideshow</Text>
+        </Remaining>
+      </Wrapper>
     )
   }
 }
-
 export default ImagesetPreview
-
-const styles = {
-  imageset: {
-    maxWidth: 580,
-    width: "100%",
-    display: "flex",
-  },
-  container: {
-    display: "flex",
-  },
-  image: {
-    height: 150,
-    width: "auto",
-    marginRight: 10,
-  },
-  remaining: {
-    height: 130,
-    minWidth: 50,
-    padding: 10,
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    border: "1px solid #e5e5e5",
-    fontSize: 11,
-    lineHeight: 1.33,
-    letterSpacing: 1,
-    textTransform: "uppercase",
-    fontFamily: `
-      'ITC Avant Garde Gothic W04',
-      'AvantGardeGothicITCW01D 731075',
-      'AvantGardeGothicITCW01Dm',
-      'Helvetica', 
-      'sans-serif'
-    `,
-  },
-  icon: {
-    width: 32,
-    marginBottom: 10,
-    position: "relative",
-  },
-  length: {
-    position: "absolute",
-    left: 8,
-    top: 13,
-  },
-}

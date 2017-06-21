@@ -1,4 +1,15 @@
 import React, { Component } from "react"
+import styled from "styled-components"
+import TextLink from "../text_link"
+
+const TruncatedLine = styled.div`
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  color: #666;
+`
 
 class Artwork extends Component<any, null>  {
 
@@ -7,11 +18,11 @@ class Artwork extends Component<any, null>  {
       <img
         src={artwork.image}
         className="display-artwork__image"
-        style={styles.image} />
+        width={"100%"} />
     )
     if (this.props.linked) {
       return (
-        <a href={"/artwork/" + artwork.slug} style={styles.a}>{image}</a>
+        <TextLink href={"/artwork/" + artwork.slug} color="#666">{image}</TextLink>
       )
     } else {
       return image
@@ -30,11 +41,11 @@ class Artwork extends Component<any, null>  {
   }
 
   renderArtistName(artist, i) {
-    const spacer = i < this.props.artwork.artists.length ? this.renderSpacer() : ""
+    const spacer = i < this.props.artwork.artists.length - 1 ? this.renderSpacer() : ""
     if (this.props.linked && artist.slug) {
       return (
         <span key={"artist-" + i}>
-          <a href={"/artist/" + artist.slug} style={styles.a}>{artist.name}</a>
+          <TextLink href={"/artist/" + artist.slug} color="#666">{artist.name}</TextLink>
           {spacer}
         </span>
       )
@@ -46,14 +57,14 @@ class Artwork extends Component<any, null>  {
   renderTitleDate(artwork) {
     if (artwork.title && artwork.date) {
       return (
-        <p style={styles.p}>
+        <TruncatedLine>
           {this.renderTitle(artwork)}
           {this.renderSpacer()}
           {this.renderDate(artwork)}
-        </p>
+        </TruncatedLine>
       )
     } else {
-      return <p style={styles.p}>{this.renderTitle(artwork)}</p>
+      return <TruncatedLine>{this.renderTitle(artwork)}</TruncatedLine>
     }
   }
 
@@ -62,9 +73,9 @@ class Artwork extends Component<any, null>  {
       if (this.props.linked) {
         return (
           <span className="title">
-            <a href={"/artwork/" + artwork.slug} style={styles.a}>
+            <TextLink href={"/artwork/" + artwork.slug} color={"#666"}>
               <em>{artwork.title}</em>
-            </a>
+            </TextLink>
           </span>
         )
       } else {
@@ -86,12 +97,10 @@ class Artwork extends Component<any, null>  {
     if (artwork.partner.name) {
       if (this.props.linked && artwork.partner.slug) {
         return (
-          <p style={styles.p}>
-            <a href={"/" + artwork.partner.slug} style={styles.a}>{artwork.partner.name}</a>
-          </p>
+            <TextLink href={"/" + artwork.partner.slug} color="#666">{artwork.partner.name}</TextLink>
         )
       } else {
-        return <p style={styles.p}>{artwork.partner.name}</p>
+        return artwork.partner.name
       }
     }
     return false
@@ -102,42 +111,13 @@ class Artwork extends Component<any, null>  {
     return (
       <div className="display-artwork">
         {this.renderImage(artwork)}
-        <div className="display-artwork__caption" style={styles.caption}>
-          <p style={styles.p}><strong>{this.renderArtists(artwork)}</strong></p>
+        <div className="display-artwork__caption">
+          <TruncatedLine><strong>{this.renderArtists(artwork)}</strong></TruncatedLine>
           {this.renderTitleDate(artwork)}
-          {this.renderPartner(artwork)}
+          <TruncatedLine>{this.renderPartner(artwork)}</TruncatedLine>
         </div>
       </div>
     )
   }
 }
 export default Artwork
-
-const styles = {
-  caption: {
-    color: "#666",
-    fontSize: 15,
-    lineHeight: 1.25,
-    marginTop: 10,
-    whiteSpace: "initial",
-    fontFamily: `
-      'Adobe Garamond W08',
-      'adobe-garamond-pro',
-      'AGaramondPro-Regular',
-      'Times New Roman',
-      'Times',
-      'serif'
-    `,
-  },
-  p: {
-    margin: 0,
-  },
-  a: {
-    textDecoration: "none",
-    color: "#666",
-  },
-  image: {
-    width: "100%",
-    height: "auto",
-  },
-}
