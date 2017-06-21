@@ -1,8 +1,3 @@
-schema {
-  query: RootQueryType
-  mutation: RootMutationType
-}
-
 # One item in an aggregation
 type AggregationCount {
   # A globally unique ID.
@@ -13,6 +8,21 @@ type AggregationCount {
   count: Int
   name: String
   sortable_id: String
+}
+
+input AppendConversationThreadInput {
+  # The id of the conversation to be updated
+  id: String!
+
+  # The email address of the message sender
+  from: String!
+  body_text: String!
+  clientMutationId: String
+}
+
+type AppendConversationThreadPayload {
+  message: MessagePayloadType
+  clientMutationId: String
 }
 
 type Article implements Node {
@@ -715,6 +725,7 @@ type ArtworkContextAuction {
   is_open: Boolean
   is_live_open: Boolean
   is_preview: Boolean
+  is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
     convert_to_utc: Boolean
@@ -770,6 +781,17 @@ type ArtworkContextFair {
   location: Location
   name: String
   profile: Profile
+  shows_connection(
+    # Number of artworks to return
+    section: String
+
+    # Sorts for shows in a fair
+    sort: ShowSort = FEATURED_DESC
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
   start_at(
     convert_to_utc: Boolean
     format: String
@@ -933,6 +955,7 @@ type ArtworkContextSale {
   is_open: Boolean
   is_live_open: Boolean
   is_preview: Boolean
+  is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
     convert_to_utc: Boolean
@@ -1014,6 +1037,121 @@ type ArtworkInquiryEdge {
 
   # A cursor for use in pagination
   cursor: String!
+}
+
+type ArtworkItem implements Node {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # A type-specific Gravity Mongo Document ID.
+  _id: String!
+  additional_information(format: Format): String
+  artist(
+    # Use whatever is in the original response instead of making a request
+    shallow: Boolean
+  ): Artist
+  artists(
+    # Use whatever is in the original response instead of making a request
+    shallow: Boolean
+  ): [Artist]
+  artist_names: String
+  articles(size: Int): [Article]
+  availability: String
+  can_share_image: Boolean @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
+  category: String
+  collecting_institution: String
+  contact_label: String
+
+  # Pre-filled inquiry text
+  contact_message: String
+
+  # Returns the associated Fair/Sale/PartnerShow
+  context: ArtworkContext
+  cultural_maker: String
+  date: String
+  description(format: Format): String
+  dimensions: dimensions
+
+  # Returns an HTML string representing the embedded content (video)
+  embed(width: Int = 853, height: Int = 450, autoplay: Boolean = false): String
+  edition_of: String
+  edition_sets: [EditionSet]
+  exhibition_history(format: Format): String
+  fair: Fair
+
+  # Returns the highlighted shows and articles
+  highlights: [Highlighted]
+  href: String
+  image: Image
+  image_rights: String
+  image_title: String
+  images(size: Int): [Image]
+
+  # Whether work can be purchased through e-commerce
+  is_acquireable: Boolean
+
+  # Is this artwork part of an auction that is currently running?
+  is_biddable: Boolean
+
+  # When in an auction, can the work be bought immediately
+  is_buy_nowable: Boolean
+  is_comparable_with_auction_results: Boolean
+
+  # Are we able to display a contact form on artwork pages?
+  is_contactable: Boolean @deprecated(reason: "Prefer to use is_inquireable")
+  is_downloadable: Boolean
+  is_embeddable_video: Boolean
+  is_ecommerce: Boolean @deprecated(reason: "Should not be used to determine anything UI-level")
+  is_for_sale: Boolean
+  is_hangable: Boolean
+
+  # Do we want to encourage inquiries on this work?
+  is_inquireable: Boolean
+
+  # Is this artwork part of an auction?
+  is_in_auction: Boolean
+
+  # Is this artwork part of a current show
+  is_in_show: Boolean
+  is_not_for_sale: String
+  is_on_hold: String
+  is_price_hidden: Boolean
+  is_price_range: Boolean
+
+  # True for inquireable artworks that have an exact price.
+  is_purchasable: Boolean
+  is_saved: Boolean
+  is_shareable: Boolean
+  is_sold: Boolean
+  is_unique: Boolean
+  layer(id: String): ArtworkLayer
+  layers: [ArtworkLayer]
+  literature(format: Format): String
+  manufacturer(format: Format): String
+  medium: String
+  meta: ArtworkMeta
+  partner(
+    # Use whatever is in the original response instead of making a request
+    shallow: Boolean
+  ): Partner
+  price: String
+  provenance(format: Format): String
+  publisher(format: Format): String
+  related(size: Int): [Artwork]
+  sale: Sale
+  sale_artwork: SaleArtwork
+  sale_message: String
+  series(format: Format): String
+  show(size: Int, active: Boolean, at_a_fair: Boolean, sort: PartnerShowSorts): PartnerShow
+  shows(size: Int, active: Boolean, at_a_fair: Boolean, sort: PartnerShowSorts): [PartnerShow]
+  signature(format: Format): String
+  title: String
+  to_s: String
+  website: String
+  cached: Int
 }
 
 type ArtworkLayer {
@@ -1394,6 +1532,30 @@ type CollectorProfileType {
   ): String
 }
 
+# The participant who started the conversation, currently always a User
+type ConversationInitiatorType {
+  # Impulse id.
+  id: String!
+
+  # The type of participant, e.g. Partner or User
+  type: String!
+  name: String!
+  email: String!
+}
+
+# The participant responding to the conversation, currently always a Partner
+type ConversationResponderType {
+  # Impulse id.
+  id: String!
+
+  # The type of participant, e.g. Partner or User
+  type: String!
+  name: String!
+
+  # An array of Impulse IDs that correspond to all email addresses that messages should be sent to
+  reply_to_impulse_ids: [String]!
+}
+
 # A conversation.
 type ConversationType {
   # Impulse id.
@@ -1401,13 +1563,12 @@ type ConversationType {
 
   # Gravity inquiry id.
   inquiry_id: String
-  from_id: String!
-  from_type: String!
-  from_name: String!
-  from_email: String!
-  to_id: String!
-  to_type: String!
-  to_name: String!
+
+  # The participant who initiated the conversation
+  from: ConversationInitiatorType!
+
+  # The participant(s) responding to the conversation
+  to: ConversationResponderType!
   buyer_outcome: String
   buyer_outcome_at(
     convert_to_utc: Boolean
@@ -1423,8 +1584,38 @@ type ConversationType {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
-  initial_message: String
   purchase_request: Boolean
+  initial_message: String!
+  last_message: String!
+  last_message_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  artworks: [Artwork]
+
+  # A connection for all messages in a single conversation
+  messages(after: String, first: Int, before: String, last: Int): MessageTypeConnection
+}
+
+# A connection to a list of items.
+type ConversationTypeConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ConversationTypeEdge]
+}
+
+# An edge in a connection.
+type ConversationTypeEdge {
+  # The item at the end of the edge
+  node: ConversationType
+
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 type coordinates {
@@ -1526,6 +1717,17 @@ type Fair {
   location: Location
   name: String
   profile: Profile
+  shows_connection(
+    # Number of artworks to return
+    section: String
+
+    # Sorts for shows in a fair
+    sort: ShowSort = FEATURED_DESC
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
   start_at(
     convert_to_utc: Boolean
     format: String
@@ -1764,6 +1966,12 @@ type Gene implements Node {
   mode: String
   name: String
   trending_artists(sample: Int): [Artist]
+}
+
+type GeneFamily {
+  id: String!
+  name: String!
+  genes: [Gene]
 }
 
 type GeneItem implements Node {
@@ -2163,6 +2371,17 @@ type HomePageModuleContextFair {
   location: Location
   name: String
   profile: Profile
+  shows_connection(
+    # Number of artworks to return
+    section: String
+
+    # Sorts for shows in a fair
+    sort: ShowSort = FEATURED_DESC
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
   start_at(
     convert_to_utc: Boolean
     format: String
@@ -2341,6 +2560,7 @@ type HomePageModuleContextSale {
   is_open: Boolean
   is_live_open: Boolean
   is_preview: Boolean
+  is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
     convert_to_utc: Boolean
@@ -2418,7 +2638,7 @@ type Image {
   versions: [String]
 }
 
-union Item = ArtistItem | FeaturedLinkItem | GeneItem
+union Item = ArtistItem | ArtworkItem | FeaturedLinkItem | GeneItem
 
 type Location {
   # A globally unique ID.
@@ -2486,7 +2706,13 @@ type Me implements Node {
     sale_id: String
   ): [BidderPosition]
   collector_profile: CollectorProfileType
-  conversations(page: Int, size: Int): [ConversationType]
+
+  # A conversation, usually between a user and a partner
+  conversation(
+    # The ID of the Conversation
+    id: String!
+  ): ConversationType
+  conversations(after: String, first: Int, before: String, last: Int): ConversationTypeConnection
   created_at(
     convert_to_utc: Boolean
     format: String
@@ -2559,6 +2785,54 @@ type Me implements Node {
     size: Int
   ): [Artist]
   type: String
+}
+
+# Expected payload from a successful message post
+type MessagePayloadType {
+  # Impulse id.
+  id: String!
+  radiation_message_id: String!
+}
+
+# A message in a conversation.
+type MessageType {
+  # Impulse id.
+  id: String!
+
+  # Email address of sender.
+  from_email_address: String!
+
+  # A snippet of the full message
+  snippet: String!
+  radiation_message_id: String!
+}
+
+# A connection to a list of items.
+type MessageTypeConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [MessageTypeEdge]
+}
+
+# An edge in a connection.
+type MessageTypeEdge {
+  # The item at the end of the edge
+  node: MessageType
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type Mutation {
+  followArtist(input: FollowArtistInput!): FollowArtistPayload
+  updateCollectorProfile(input: UpdateCollectorProfileInput!): UpdateCollectorProfilePayload
+  updateConversation(input: UpdateConversationInput!): UpdateConversationPayload
+
+  # Appending a message to a conversation thread
+  appendConversationThread(input: AppendConversationThreadInput!): AppendConversationThreadPayload
+  saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
 }
 
 input Near {
@@ -3082,6 +3356,7 @@ type Profile {
   icon: Image
   image: Image
   initials(length: Int = 3): String
+  is_followed: Boolean
   is_published: Boolean
   name: String
   is_publically_visible: Boolean
@@ -3111,31 +3386,13 @@ type ProfileSearchEntity {
   icon: Image
   image: Image
   initials(length: Int = 3): String
+  is_followed: Boolean
   is_published: Boolean
   name: String
   is_publically_visible: Boolean
 }
 
-type ResizedImageUrl {
-  factor: Float
-  width: Int
-  height: Int
-  url: String
-}
-
-enum Role {
-  PARTICIPANT
-  OPERATOR
-}
-
-type RootMutationType {
-  followArtist(input: FollowArtistInput!): FollowArtistPayload
-  updateCollectorProfile(input: UpdateCollectorProfileInput!): UpdateCollectorProfilePayload
-  updateConversation(input: UpdateConversationInput!): UpdateConversationPayload
-  saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
-}
-
-type RootQueryType {
+type Query {
   # An Article
   article(
     # The ID of the Article
@@ -3262,8 +3519,27 @@ type RootQueryType {
     id: String!
   ): Gene
 
+  # A list of Gene Families
+  gene_families: [GeneFamily]
+  gene_family: GeneFamily
+
   # Home screen content
   home_page: HomePage
+
+  # A Search for Artists
+  match_artist(
+    # Your search term
+    term: String!
+
+    # Maximum number of items to retrieve. Default: 5.
+    size: Int
+
+    # Page to retrieve. Default: 1.
+    page: Int
+
+    # Exclude these MongoDB ids from results
+    exclude_ids: [String]
+  ): [Artist]
   me: Me
 
   # Fetches an object given its Globally Unique ID
@@ -3271,6 +3547,12 @@ type RootQueryType {
     # The ID of the object
     __id: ID!
   ): Node
+
+  # An OrderedSet
+  ordered_set(
+    # The ID of the OrderedSet
+    id: String!
+  ): OrderedSet
 
   # A collection of OrderedSets
   ordered_sets(
@@ -3409,6 +3691,18 @@ type RootQueryType {
   viewer: Viewer
 }
 
+type ResizedImageUrl {
+  factor: Float
+  width: Int
+  height: Int
+  url: String
+}
+
+enum Role {
+  PARTICIPANT
+  OPERATOR
+}
+
 type Sale {
   # A globally unique ID.
   __id: ID!
@@ -3468,6 +3762,7 @@ type Sale {
   is_open: Boolean
   is_live_open: Boolean
   is_preview: Boolean
+  is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
     convert_to_utc: Boolean
@@ -3783,6 +4078,21 @@ type Show implements Node {
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
   ): [Artwork]
+  artworks_connection(
+    # Number of artworks to return
+    size: Int = 25
+    published: Boolean = true
+    page: Int = 1
+    all: Boolean
+    for_sale: Boolean
+
+    # List of artwork IDs to exclude from the response (irrespective of size)
+    exclude: [String]
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   artists_without_artworks: [Artist]
   city: String
   cover_image: Image
@@ -3841,6 +4151,15 @@ type Show implements Node {
   type: String
 }
 
+# A connection to a list of items.
+type ShowConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ShowEdge]
+}
+
 type ShowCounts {
   artworks(
     # The slug or ID of an artist in the show.
@@ -3851,6 +4170,30 @@ type ShowCounts {
     format: String
     label: String
   ): FormattedNumber
+}
+
+# An edge in a connection.
+type ShowEdge {
+  # The item at the end of the edge
+  node: Show
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+enum ShowSort {
+  START_AT_ASC
+  START_AT_DESC
+  END_AT_ASC
+  END_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  NAME_ASC
+  NAME_DESC
+  FEATURED_ASC
+  FEATURED_DESC
+  SORTABLE_NAME_ASC
+  SORTABLE_NAME_DESC
 }
 
 type Status {
@@ -4093,8 +4436,27 @@ type Viewer {
     id: String!
   ): Gene
 
+  # A list of Gene Families
+  gene_families: [GeneFamily]
+  gene_family: GeneFamily
+
   # Home screen content
   home_page: HomePage
+
+  # A Search for Artists
+  match_artist(
+    # Your search term
+    term: String!
+
+    # Maximum number of items to retrieve. Default: 5.
+    size: Int
+
+    # Page to retrieve. Default: 1.
+    page: Int
+
+    # Exclude these MongoDB ids from results
+    exclude_ids: [String]
+  ): [Artist]
   me: Me
 
   # Fetches an object given its Globally Unique ID
@@ -4102,6 +4464,12 @@ type Viewer {
     # The ID of the object
     __id: ID!
   ): Node
+
+  # An OrderedSet
+  ordered_set(
+    # The ID of the OrderedSet
+    id: String!
+  ): OrderedSet
 
   # A collection of OrderedSets
   ordered_sets(

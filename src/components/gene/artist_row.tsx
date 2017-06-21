@@ -20,7 +20,7 @@ export class ArtistRow extends React.Component<Props, null> {
           <Text textSize="small" textStyle="primary">
             {artist.name}
           </Text>
-          <FollowButton artist={artist}/>
+          <FollowButton type="artist" artist={artist}/>
         </Header>
         <Fillwidth artworks={artist.artworks as any} />
       </Container>

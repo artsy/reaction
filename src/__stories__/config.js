@@ -17,6 +17,7 @@ function loadStories() {
   require("../components/__stories__/fillwidth")
   require("../components/__stories__/artist_follow")
   require("../components/__stories__/gene")
+  require("../components/__stories__/fair_booth")
   require("../components/publishing/__stories__/publishing")
 }
 

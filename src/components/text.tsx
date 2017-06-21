@@ -3,7 +3,7 @@ import styled from "styled-components"
 import * as fonts from "../assets/fonts"
 
 type TextAlign = "start" | "center" | "end"
-type TextSize = "small" | "large"
+type TextSize = "small" | "medium" | "large"
 type TextStyle = "primary" | "secondary"
 
 interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
