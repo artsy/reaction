@@ -8,7 +8,7 @@ interface NavLinkProps extends React.HTMLProps<HTMLAnchorElement> {
 
 const StyledLink = styled.a`
   align-self: center;
-  font-family: ${ fonts.primary.fontFamily };
+  font-family: ${fonts.primary.fontFamily};
   font-size: 14px;
   line-height: 12px;
   text-decoration: none;
@@ -18,10 +18,9 @@ const StyledLink = styled.a`
   letter-spacing: 0.8;
 `
 
-const NavItem: React.SFC<NavLinkProps> = props => (
+const NavItem: React.SFC<NavLinkProps> = props =>
   <StyledLink href={props.href}>
     {props.children}
   </StyledLink>
-)
 
 export default NavItem

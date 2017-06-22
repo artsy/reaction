@@ -15,7 +15,7 @@ import { LoginResponseLocalData } from "./types"
 const data = sharify.data as LoginResponseLocalData
 
 export function initAnalytics() {
-  if (typeof(window) === "undefined") {
+  if (typeof window === "undefined") {
     throw new Error("Method should only be used client-side")
   }
   Identify()

@@ -47,17 +47,11 @@ storiesOf("Buttons", Button)
     )
   })
   .add("Block Button", () => {
-    return (
-      <Button block>Block Button</Button>
-    )
+    return <Button block>Block Button</Button>
   })
   .add("Facebook Button", () => {
-    return (
-      <FacebookButton />
-    )
+    return <FacebookButton />
   })
   .add("Twitter Button", () => {
-    return (
-      <TwitterButton />
-    )
+    return <TwitterButton />
   })

@@ -21,20 +21,24 @@ describe("Artsy context", () => {
   }
 
   it("exposes the currently signed-in user", () => {
-    const div = renderer.create(
-      <Artsy.ContextProvider currentUser={currentUser}>
-        <WithCurrentUser />
-      </Artsy.ContextProvider>,
-    ).toJSON()
+    const div = renderer
+      .create(
+        <Artsy.ContextProvider currentUser={currentUser}>
+          <WithCurrentUser />
+        </Artsy.ContextProvider>
+      )
+      .toJSON()
     expect(div.children[0]).toEqual("Andy Warhol")
   })
 
   it("passes other props on", () => {
-    const div = renderer.create(
-      <Artsy.ContextProvider currentUser={currentUser}>
-        <WithCurrentUser additionalProp="friends" />
-      </Artsy.ContextProvider>,
-    ).toJSON()
+    const div = renderer
+      .create(
+        <Artsy.ContextProvider currentUser={currentUser}>
+          <WithCurrentUser additionalProp="friends" />
+        </Artsy.ContextProvider>
+      )
+      .toJSON()
     expect(div.children[0]).toEqual("Andy Warhol & friends")
   })
 
@@ -50,7 +54,7 @@ describe("Artsy context", () => {
         <Artsy.ContextProvider>
           <WithCurrentUser />
           <div />
-        </Artsy.ContextProvider>,
+        </Artsy.ContextProvider>
       )
     }).toThrowErrorMatchingSnapshot()
   })

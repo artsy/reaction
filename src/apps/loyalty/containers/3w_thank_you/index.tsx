@@ -28,7 +28,7 @@ interface Props {
   userName: string
 }
 
-const ThreeWThankYou: React.SFC<Props> = props => (
+const ThreeWThankYou: React.SFC<Props> = props =>
   <Container>
     <Nav>
       <NavItem href="/">Back To Artsy</NavItem>
@@ -52,6 +52,5 @@ const ThreeWThankYou: React.SFC<Props> = props => (
       <Button href="/">Back to Artsy</Button>
     </ButtonWrapper>
   </Container>
-)
 
 export default ThreeWThankYou

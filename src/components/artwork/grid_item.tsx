@@ -27,14 +27,14 @@ export class ArtworkGridItem extends React.Component<Props, null> {
     const { style, className, artwork } = this.props
     return (
       <div className={className} style={style}>
-        <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
+        <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
           <a href={artwork.href}>
             <Image src={artwork.image.url} />
           </a>
           <SaveButton
             className="artwork-save"
             artwork={artwork}
-            style={{position: "absolute", right: "10px", bottom: "10px"}}
+            style={{ position: "absolute", right: "10px", bottom: "10px" }}
           />
         </Placeholder>
         <ArtworkMetadata artwork={artwork} />
@@ -71,11 +71,11 @@ export default Relay.createContainer(StyledArtworkGridItem, {
 
 interface RelayProps {
   artwork: {
-    href: string | null,
+    href: string | null
     image: {
-      placeholder: number | null,
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
+      placeholder: number | null
+      url: string | null
+      aspect_ratio: number | null
+    } | null
+  }
 }

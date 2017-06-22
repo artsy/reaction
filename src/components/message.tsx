@@ -20,10 +20,10 @@ export default styled(Message)`
    width: 100%;
    text-align: left;
    padding: 15px 30px;
-   border: 1px solid ${props => props.error ? colors.redMedium : colors.yellowMedium};
+   border: 1px solid ${props => (props.error ? colors.redMedium : colors.yellowMedium)};
    box-shadow: none;
    font-size: 15px;
    text-align: center;
-   background-color: ${props => props.error ? colors.redRegular : colors.yellowRegular};
+   background-color: ${props => (props.error ? colors.redRegular : colors.yellowRegular)};
    box-sizing: border-box;
 `

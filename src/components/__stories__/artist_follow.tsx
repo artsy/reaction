@@ -8,7 +8,7 @@ import * as Artsy from "../../components/artsy"
 import { artsyNetworkLayer } from "../../relay/config"
 import ArtistQueryConfig from "../../relay/queries/artist"
 
-function ArtistExample(props: { artistID: string, user: User }) {
+function ArtistExample(props: { artistID: string; user: User }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
   Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
@@ -19,18 +19,14 @@ function ArtistExample(props: { artistID: string, user: User }) {
   )
 }
 
-storiesOf("Follow Button", FollowButton)
-  .add("Follow Button (artist)", () => {
-    const user = {
-      id: "some-id",
-      accessToken: "some-token",
-    } as User
-    return (
-      <div>
-        <ArtistExample
-          artistID="damon-zucconi"
-          user={user}
-        />
-      </div>
-    )
-  })
+storiesOf("Follow Button", FollowButton).add("Follow Button (artist)", () => {
+  const user = {
+    id: "some-id",
+    accessToken: "some-token",
+  } as User
+  return (
+    <div>
+      <ArtistExample artistID="damon-zucconi" user={user} />
+    </div>
+  )
+})

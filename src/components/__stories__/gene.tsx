@@ -36,18 +36,14 @@ storiesOf("Gene", GeneContent)
   .add("Artist row", () => {
     return (
       <div>
-        <ArtistExample
-          artistID="stephen-willats"
-        />
+        <ArtistExample artistID="stephen-willats" />
       </div>
     )
   })
   .add("Gene page (integration)", () => {
     return (
       <div>
-        <GeneExample
-          geneID="minimalism"
-        />
+        <GeneExample geneID="minimalism" />
       </div>
     )
   })

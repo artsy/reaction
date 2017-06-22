@@ -13,14 +13,19 @@ const { API_URL } = process.env
 
 app.use(express.static(path.resolve(__dirname)))
 
-const {
-  loginPagePath,
-} = artsyPassport.options
+const { loginPagePath } = artsyPassport.options
 
-app.use(artsyPassport(Object.assign({
-  CurrentUser: Backbone.Model,
-  ARTSY_URL: API_URL,
-}, process.env)))
+app.use(
+  artsyPassport(
+    Object.assign(
+      {
+        CurrentUser: Backbone.Model,
+        ARTSY_URL: API_URL,
+      },
+      process.env
+    )
+  )
+)
 
 app.use(RelayMiddleware)
 app.use(UserMiddleware)

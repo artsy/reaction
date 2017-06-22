@@ -1,6 +1,6 @@
 import { Home, ThankYou } from "../server/route_handlers"
 
-describe ("Home page", () => {
+describe("Home page", () => {
   it("redirects to /inquiries", () => {
     let req = { baseUrl: "loyalty" } as any
     let res = { redirect: jest.fn() } as any
@@ -10,7 +10,7 @@ describe ("Home page", () => {
   })
 })
 
-describe ("ThankYou page", () => {
+describe("ThankYou page", () => {
   it("redirects to /login if there is no user", () => {
     const req = { baseUrl: "loyalty" } as any
     const res = { redirect: jest.fn(), locals: { sd: { CURRENT_USER: undefined } } } as any

@@ -7,16 +7,15 @@ import { compact, find } from "lodash"
 import styled from "styled-components"
 
 interface Props extends React.HTMLProps<Headline> {
-  aggregations?: any,
-  medium: string,
-  price_range: string,
-  dimension_range: string,
-  for_sale: boolean,
-  facet?: any,
+  aggregations?: any
+  medium: string
+  price_range: string
+  dimension_range: string
+  for_sale: boolean
+  facet?: any
 }
 
 export class Headline extends React.Component<Props, null> {
-
   getCountName(aggregation, id) {
     const selectedAggregation = find(this.props.aggregations, agg => agg.slice === aggregation.toUpperCase())
     const selectedCount = find(selectedAggregation.counts, count => count.id === id)
@@ -63,12 +62,7 @@ export class Headline extends React.Component<Props, null> {
   }
 
   renderHeadline() {
-    const headline = compact([
-      this.size(),
-      this.medium(),
-      this.priceRange(),
-      this.forSale(),
-    ]).join(" ")
+    const headline = compact([this.size(), this.medium(), this.priceRange(), this.forSale()]).join(" ")
     if (headline === "works") {
       return "Artworks"
     }

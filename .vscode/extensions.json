@@ -6,6 +6,7 @@
 		"Orta.vscode-jest",
 		"kumar-harsh.graphql-for-vscode",
 		"eg2.tslint",
-		"msjsdiag.debugger-for-chrome"
+		"msjsdiag.debugger-for-chrome",
+		"esbenp.prettier-vscode"
 	]
 }

@@ -11,11 +11,10 @@ interface Props extends React.HTMLProps<ForSaleCheckbox> {
 }
 
 interface State {
-  isChecked: boolean,
+  isChecked: boolean
 }
 
 export class ForSaleCheckbox extends React.Component<Props, State> {
-
   constructor(props) {
     super(props)
     this.state = {

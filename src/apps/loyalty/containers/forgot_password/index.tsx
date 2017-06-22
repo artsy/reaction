@@ -61,7 +61,7 @@ class ForgotPasswordForm extends React.Component<Props, State> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
         "X-XAPP-TOKEN": this.props.appToken,
       },
       body: JSON.stringify({
@@ -75,7 +75,8 @@ class ForgotPasswordForm extends React.Component<Props, State> {
           showMessage: true,
           error: false,
         })
-      } else if (res.status === 400) { // Email Not Found
+      } else if (res.status === 400) {
+        // Email Not Found
         this.setState({
           showMessage: true,
           error: true,
@@ -86,15 +87,15 @@ class ForgotPasswordForm extends React.Component<Props, State> {
 
   renderMessageBox() {
     const message = this.state.error
-          ? <span>No account exists for <b>{this.state.email}</b></span>
-          : <span>Instructions on how to reset your password have been sent to <b>{this.state.email}</b></span>
+      ? <span>No account exists for <b>{this.state.email}</b></span>
+      : <span>Instructions on how to reset your password have been sent to <b>{this.state.email}</b></span>
 
     // console.log("rendering message", message)
-    return this.state.showMessage ? (
-      <Message error={!!this.state.error}>
-        {message}
-      </Message>
-    ) : ""
+    return this.state.showMessage
+      ? <Message error={!!this.state.error}>
+          {message}
+        </Message>
+      : ""
   }
 
   render() {
@@ -118,12 +119,8 @@ class ForgotPasswordForm extends React.Component<Props, State> {
           autoFocus
           block
         />
-        <Button
-          onClick={this.onClickSubmitButton.bind(this)}
-          disabled={!this.state.isEmailValid}
-          block
-        >
-            Reset Password
+        <Button onClick={this.onClickSubmitButton.bind(this)} disabled={!this.state.isEmailValid} block>
+          Reset Password
         </Button>
       </Container>
     )

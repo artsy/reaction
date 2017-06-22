@@ -68,18 +68,17 @@ const LargeTextArea = styled(TextArea)`
   height: 130px;
 `
 
-export interface Props extends RelayProps, Artsy.ContextProps {
-}
+export interface Props extends RelayProps, Artsy.ContextProps {}
 
 interface SelectedConversation {
-  id: string,
-  inquiry_id: string,
+  id: string
+  inquiry_id: string
 }
 
 export interface State {
-  loyalty_applicant: boolean,
-  self_reported_purchases: string | null,
-  selected_conversations: SelectedConversation[],
+  loyalty_applicant: boolean
+  self_reported_purchases: string | null
+  selected_conversations: SelectedConversation[]
 }
 
 export class Inquiries extends React.Component<Props, State> {
@@ -107,10 +106,7 @@ export class Inquiries extends React.Component<Props, State> {
       return (
         <Col md={3} xs={6} key={id}>
           <InquiryContainer>
-            <Artwork
-              artwork={artwork}
-              onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id, id)}
-            />
+            <Artwork artwork={artwork} onSelect={this.onArtworkSelected.bind(this, impulse_conversation_id, id)} />
           </InquiryContainer>
         </Col>
       )
@@ -159,10 +155,12 @@ export class Inquiries extends React.Component<Props, State> {
   submitInquiriesUpdate() {
     const ids = this.state.selected_conversations.map(value => value.id)
 
-    const mutation = new UpdateConversationMutation({input: {
-      ids,
-      buyerOutcome: "PURCHASED",
-    }})
+    const mutation = new UpdateConversationMutation({
+      input: {
+        ids,
+        buyerOutcome: "PURCHASED",
+      },
+    })
 
     Relay.Store.commitUpdate(mutation, {
       onFailure: this.onSubmitUpdatesFailed,
@@ -203,8 +201,10 @@ export class Inquiries extends React.Component<Props, State> {
         </Nav>
         <Header>
           <Title titleSize="large" className="header-title">Please select all works you purchased</Title>
-          <Text align="center" className="header-subtitle">We will confirm submitted purchases with the galleries
-            in order to qualify you for the program membership.</Text>
+          <Text align="center" className="header-subtitle">
+            We will confirm submitted purchases with the galleries
+            in order to qualify you for the program membership.
+          </Text>
         </Header>
         <div className="artworks">
           <ThemeProvider theme={theme as object}>
@@ -252,11 +252,11 @@ interface RelayProps {
     artwork_inquiries_connection: {
       edges: Array<{
         node: {
-          id: string | null,
-          impulse_conversation_id: string | null,
-          artwork: any,
-        } | null,
-      } | null> | null,
-    } | null,
-  },
+          id: string | null
+          impulse_conversation_id: string | null
+          artwork: any
+        } | null
+      } | null> | null
+    } | null
+  }
 }

@@ -18,7 +18,7 @@ const titleSizes = {
 }
 
 const Title: React.SFC<TitleProps> = props => {
-  const newProps: TitleProps = {...props}
+  const newProps: TitleProps = { ...props }
   delete newProps.titleSize
 
   return (

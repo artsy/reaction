@@ -13,12 +13,12 @@ import { find } from "lodash"
 
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
-  onSelect?: any,
-  selected?: any,
+  onSelect?: any
+  selected?: any
 }
 
 interface DropdownState {
-  isHovered: boolean,
+  isHovered: boolean
   selected: any
 }
 
@@ -69,11 +69,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
 
     navItems.unshift(
-      (
-        <NavItem key="all" onClick={() => this.onSelect({value: "*"}, slice)}>
-          <span>All {labels.plural}</span>
-        </NavItem>
-      ),
+      <NavItem key="all" onClick={() => this.onSelect({ value: "*" }, slice)}>
+        <span>All {labels.plural}</span>
+      </NavItem>
     )
 
     let buttonColor = "white"
@@ -93,7 +91,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
 
     const labelText = selectedName || labels.label
-    const superLabelText = selectedName  ? labels.label : null
+    const superLabelText = selectedName ? labels.label : null
 
     return (
       <div
@@ -104,12 +102,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
           {labelText}
-          <Icon
-            name="arrow-down"
-            fontSize="9px"
-            color={buttonTextColor}
-            style={{ position: "absolute", right: 15 }}
-          />
+          <Icon name="arrow-down" fontSize="9px" color={buttonTextColor} style={{ position: "absolute", right: 15 }} />
         </Button>
         <Nav style={navStyle}>
           {navItems}
@@ -192,11 +185,11 @@ export default Relay.createContainer(StyledDropdown, {
 
 interface RelayProps {
   aggregation: {
-    slice: string | null,
+    slice: string | null
     counts: {
-      name: string | null,
-      id: string | null,
-      count: number | null,
-    },
-  } | null,
+      name: string | null
+      id: string | null
+      count: number | null
+    }
+  } | null
 }

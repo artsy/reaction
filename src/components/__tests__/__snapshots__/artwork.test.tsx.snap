@@ -24,11 +24,11 @@ exports[`Artwork renders correctly 1`] = `
   >
     <div>
       <div
-        className="file__TruncatedLine-s1q0z912-0 igrfOy"
+        className="file__TruncatedLine-bzokla-0 dATVjh"
       >
         <strong>
           <a
-            className="file__StyledTextLink-l9d9k6-0 cORdQE"
+            className="file__StyledTextLink-s18afosz-0 hlqDRc"
             href={undefined}
           >
             Mikael Olson
@@ -36,10 +36,10 @@ exports[`Artwork renders correctly 1`] = `
         </strong>
       </div>
       <div
-        className="file__TruncatedLine-s1q0z912-0 igrfOy"
+        className="file__TruncatedLine-bzokla-0 dATVjh"
       >
         <a
-          className="file__StyledTextLink-l9d9k6-0 cORdQE"
+          className="file__StyledTextLink-s18afosz-0 hlqDRc"
           href="/artwork/mikael-olson-some-kind-of-dinosaur"
         >
           <em>
@@ -49,10 +49,10 @@ exports[`Artwork renders correctly 1`] = `
         </a>
       </div>
       <div
-        className="file__TruncatedLine-s1q0z912-0 igrfOy"
+        className="file__TruncatedLine-bzokla-0 dATVjh"
       >
         <a
-          className="file__StyledTextLink-l9d9k6-0 cORdQE"
+          className="file__StyledTextLink-s18afosz-0 hlqDRc"
           href={undefined}
         >
           Gallery 1261

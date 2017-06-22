@@ -12,19 +12,11 @@ const TruncatedLine = styled.div`
   color: #666;
 `
 
-class Artwork extends Component<any, null>  {
-
+class Artwork extends Component<any, null> {
   renderImage(artwork) {
-    const image = (
-      <img
-        src={artwork.image}
-        className="display-artwork__image"
-        width={"100%"} />
-    )
+    const image = <img src={artwork.image} className="display-artwork__image" width={"100%"} />
     if (this.props.linked) {
-      return (
-        <TextLink href={"/artwork/" + artwork.slug} color="#666">{image}</TextLink>
-      )
+      return <TextLink href={"/artwork/" + artwork.slug} color="#666">{image}</TextLink>
     } else {
       return image
     }
@@ -37,7 +29,7 @@ class Artwork extends Component<any, null>  {
       })
       return names
     } else {
-      return (artwork.artist != null ? artwork.artist.name : undefined)
+      return artwork.artist != null ? artwork.artist.name : undefined
     }
   }
 
@@ -97,9 +89,7 @@ class Artwork extends Component<any, null>  {
   renderPartner(artwork) {
     if (artwork.partner.name) {
       if (this.props.linked && artwork.partner.slug) {
-        return (
-            <TextLink href={"/" + artwork.partner.slug} color="#666">{artwork.partner.name}</TextLink>
-        )
+        return <TextLink href={"/" + artwork.partner.slug} color="#666">{artwork.partner.name}</TextLink>
       } else {
         return artwork.partner.name
       }

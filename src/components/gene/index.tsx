@@ -16,9 +16,7 @@ export class GenePage extends React.Component<Props, null> {
 
   render() {
     const { gene } = this.props
-    return (
-      <GeneContents gene={gene}/>
-    )
+    return <GeneContents gene={gene} />
   }
 }
 
@@ -34,7 +32,9 @@ export default Relay.createContainer(GenePage, {
 })
 
 interface RelayProps {
-  gene: {
-    mode: string | null,
-  } | any
+  gene:
+    | {
+        mode: string | null
+      }
+    | any
 }

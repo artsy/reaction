@@ -10,9 +10,7 @@ import * as Artsy from "../artsy"
 
 export class FillwidthArtistArtworks extends React.Component<RelayProps, null> {
   render() {
-    return (
-      <Fillwidth artworks={this.props.artist.artworks as any} />
-    )
+    return <Fillwidth artworks={this.props.artist.artworks as any} />
   }
 }
 
@@ -30,29 +28,25 @@ const FillwidthContainer = Relay.createContainer(FillwidthArtistArtworks, {
 
 interface RelayProps {
   artist: {
-    artworks: Array<any | null> | null,
-  },
+    artworks: Array<any | null> | null
+  }
 }
 
 function FillwidthExample(props: { artistID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Relay.RootContainer
-      Component={FillwidthContainer}
-      route={new ArtistQueryConfig({ artistID: props.artistID })}
-    />
+    <Relay.RootContainer Component={FillwidthContainer} route={new ArtistQueryConfig({ artistID: props.artistID })} />
   )
 }
 
-storiesOf("Fillwidth", Fillwidth)
-  .add("A typical fillwidth", () => {
-    const user = {
-      id: "some-id",
-      accessToken: "some-token",
-    } as User
-    return (
-      <Artsy.ContextProvider currentUser={user}>
-        <FillwidthExample artistID="stephen-willats" />
-      </Artsy.ContextProvider>
-    )
-  })
+storiesOf("Fillwidth", Fillwidth).add("A typical fillwidth", () => {
+  const user = {
+    id: "some-id",
+    accessToken: "some-token",
+  } as User
+  return (
+    <Artsy.ContextProvider currentUser={user}>
+      <FillwidthExample artistID="stephen-willats" />
+    </Artsy.ContextProvider>
+  )
+})

@@ -13,18 +13,8 @@ function ArtworkExample(props: { artworkID: string }) {
 }
 
 storiesOf("Artwork", Artwork)
-  .add("A square artwork", () => (
-    <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />
-  ))
-  .add("A landscape artwork", () => (
-    <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />
-  ))
-  .add("A landscape artwork (extra wide)", () => (
-    <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />
-  ))
-  .add("A portrait artwork", () => (
-    <ArtworkExample artworkID="ester-curini-my-eyes-my-soul" />
-  ))
-  .add("A portrait artwork (extra tall)", () => (
-    <ArtworkExample artworkID="snik-untitled-vertical" />
-  ))
+  .add("A square artwork", () => <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />)
+  .add("A landscape artwork", () => <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />)
+  .add("A landscape artwork (extra wide)", () => <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />)
+  .add("A portrait artwork", () => <ArtworkExample artworkID="ester-curini-my-eyes-my-soul" />)
+  .add("A portrait artwork (extra tall)", () => <ArtworkExample artworkID="snik-untitled-vertical" />)

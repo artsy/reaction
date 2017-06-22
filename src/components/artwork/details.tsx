@@ -26,9 +26,11 @@ export class ArtworkDetails extends React.Component<Props, null> {
     if (cultural_maker) {
       return <TruncatedLine><strong>{cultural_maker}</strong></TruncatedLine>
     } else if (artists && artists.length) {
-      const artistLine = artists.reduce((acc, artist) => {
-        return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
-      }, []).slice(1)
+      const artistLine = artists
+        .reduce((acc, artist) => {
+          return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
+        }, [])
+        .slice(1)
       return <TruncatedLine><strong>{artistLine}</strong></TruncatedLine>
     }
   }
@@ -111,26 +113,26 @@ export default Relay.createContainer(ArtworkDetails, {
 
 interface RelayProps {
   artwork: {
-    href: string | null,
-    title: string | null,
-    date: string | null,
-    sale_message: string | null,
-    cultural_maker: string | null,
+    href: string | null
+    title: string | null
+    date: string | null
+    sale_message: string | null
+    cultural_maker: string | null
     artists: Array<{
-      __id: string,
-      href: string | null,
-      name: string | null,
-    } | null> | null,
-    collecting_institution: string | null,
+      __id: string
+      href: string | null
+      name: string | null
+    } | null> | null
+    collecting_institution: string | null
     partner: {
-      name: string | null,
-      href: string | null,
-    } | null,
+      name: string | null
+      href: string | null
+    } | null
     sale: {
-      is_auction: boolean | null,
-      is_live_open: boolean | null,
-      is_open: boolean | null,
-      is_closed: boolean | null,
-    } | null,
-  },
+      is_auction: boolean | null
+      is_live_open: boolean | null
+      is_open: boolean | null
+      is_closed: boolean | null
+    } | null
+  }
 }

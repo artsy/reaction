@@ -9,11 +9,10 @@ const Header = styled.header`
   text-align: center;
 `
 
-const ModalHeader: React.SFC<any> = props => (
+const ModalHeader: React.SFC<any> = props =>
   <Header>
     <Icon name="logotype" color="black" />
     {props.children}
   </Header>
-)
 
 export default ModalHeader
