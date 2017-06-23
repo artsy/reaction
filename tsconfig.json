@@ -16,6 +16,7 @@
         "node_modules",
         "dist",
         "data",
-        "externals"
+        "externals",
+        "danger"
     ]
 }
