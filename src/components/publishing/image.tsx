@@ -1,15 +1,17 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Font from "./font"
+import Fonts from "./fonts"
 
 const Figcaption = styled.div`
   & > p {
+    ${Fonts.unica("s14")}
     margin: 0;
     color: #999;
   }
 `
 
 const CaptionLink = styled.div`
+  ${Fonts.unica("s14")}
   margin: 0;
   border-bottom: 1px solid black;
   cursor: pointer;
@@ -29,7 +31,7 @@ class Image extends Component<any, null> {
         <img src={image.url} width={"100%"} />
         <CaptionContainer>
           <Figcaption dangerouslySetInnerHTML={{ __html: image.caption }} />
-          <CaptionLink><Font family="unica" size="t14">View Fullscreen</Font></CaptionLink>
+          <CaptionLink>View Fullscreen</CaptionLink>
         </CaptionContainer>
       </div>
     )
