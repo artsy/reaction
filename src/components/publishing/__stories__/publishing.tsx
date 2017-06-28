@@ -3,6 +3,7 @@ import * as React from "react"
 
 import Artwork from "../artwork"
 import IconImageset from "../icons/icon_imageset"
+import Image from "../image"
 import ImagesetPreview from "../imageset_preview"
 
 import { Images } from "../__test__/fixtures"
@@ -23,6 +24,13 @@ storiesOf("Publishing", Artwork)
       <div style={{ width: 50 }}>
         <IconImageset />
         <p>Imageset</p>
+      </div>
+    )
+  })
+  .add("Image", () => {
+    return (
+      <div style={{ width: 400 }}>
+        <Image image={Images[1]} />
       </div>
     )
   })
