@@ -21,6 +21,11 @@ const CaptionLink = styled.div`
 const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 10px 0 10px 0;
+`
+
+const BlockImage = styled.img`
+  display: block;
 `
 
 class Image extends Component<any, null> {
@@ -28,7 +33,7 @@ class Image extends Component<any, null> {
     const { image } = this.props
     return (
       <div className="article-image">
-        <img src={image.url} width={"100%"} />
+        <BlockImage src={image.url} width={"100%"} />
         <CaptionContainer>
           <Figcaption dangerouslySetInnerHTML={{ __html: image.caption }} />
           <CaptionLink>View Fullscreen</CaptionLink>

@@ -2,6 +2,10 @@ import { css } from "styled-components"
 import * as fonts from "../../assets/fonts"
 
 const textSizesForGaramond = {
+  s15: {
+    size: "15px",
+    height: "1.25em",
+  },
   s17: {
     size: "17px",
     height: "1.1em",

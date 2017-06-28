@@ -13,7 +13,7 @@ exports[`renders properly 1`] = `
     className="display-artwork__caption"
   >
     <div
-      className="file__TruncatedLine-nxhk6l-0 jEXuOS"
+      className="file__TruncatedLine-s17lpc25-0 kUJrpk"
     >
       <strong>
         <span>
@@ -23,7 +23,7 @@ exports[`renders properly 1`] = `
       </strong>
     </div>
     <div
-      className="file__TruncatedLine-nxhk6l-0 jEXuOS"
+      className="file__TruncatedLine-s17lpc25-0 kUJrpk"
     >
       <span
         className="title"
@@ -44,7 +44,7 @@ exports[`renders properly 1`] = `
       </span>
     </div>
     <div
-      className="file__TruncatedLine-nxhk6l-0 jEXuOS"
+      className="file__TruncatedLine-s17lpc25-0 kUJrpk"
     >
       Gary Nader
     </div>
