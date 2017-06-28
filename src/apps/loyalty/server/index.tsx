@@ -13,7 +13,7 @@ const { API_URL } = process.env
 
 app.use(express.static(path.resolve(__dirname)))
 
-const { loginPagePath } = artsyPassport.options
+const { loginPagePath } = (artsyPassport as any).options
 
 app.use(
   artsyPassport(
