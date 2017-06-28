@@ -9,10 +9,10 @@ exports[`renders properly 1`] = `
     width="100%"
   />
   <div
-    className="file__CaptionContainer-s1y81467-2 kOKQhC"
+    className="file__CaptionContainer-s1oo7nf0-2 jtBPES"
   >
     <div
-      className="file__Figcaption-s1y81467-0 duaOYV"
+      className="file__Figcaption-s1oo7nf0-0 dyMMgx"
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
@@ -20,7 +20,7 @@ exports[`renders properly 1`] = `
       }
     />
     <div
-      className="file__CaptionLink-s1y81467-1 fgctHp"
+      className="file__CaptionLink-s1oo7nf0-1 kKsIpx"
     >
       View Fullscreen
     </div>
