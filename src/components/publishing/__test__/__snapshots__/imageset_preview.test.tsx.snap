@@ -32,6 +32,16 @@ exports[`renders properly 1`] = `
         }
       }
     />
+    <img
+      className="imageset-preview__image"
+      height="150"
+      src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+      style={
+        Object {
+          "marginRight": 10,
+        }
+      }
+    />
   </div>
   <div
     className="imageset-preview__remaining file__Remaining-sbmbcn-2 iNyvXG"
@@ -69,7 +79,7 @@ exports[`renders properly 1`] = `
         <div
           className="file__Text-sbmbcn-1 iqmobi"
         >
-          2
+          3
         </div>
       </div>
     </div>

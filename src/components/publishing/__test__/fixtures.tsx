@@ -30,4 +30,11 @@ export const Images = [
     height: 1200,
     caption: "<p>Photo by Adam Kuehl for Artsy.</p>",
   },
+  {
+    url: "https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg",
+    type: "image",
+    width: 816,
+    height: 1024,
+    caption: "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+  },
 ]

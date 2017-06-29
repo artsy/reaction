@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import TextLink from "../text_link"
+import Fonts from "./fonts"
 
 const TruncatedLine = styled.div`
+  ${Fonts.garamond("s15")}
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 15px;
-  line-height: 1.35em;
   color: #666;
 `
 
