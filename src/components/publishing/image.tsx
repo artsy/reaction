@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import Fonts from "./fonts"
 
@@ -13,6 +13,7 @@ const Figcaption = styled.div`
 const CaptionLink = styled.div`
   ${Fonts.unica("s14")}
   margin: 0;
+  margin-left: 10px;
   border-bottom: 1px solid black;
   cursor: pointer;
   display: inline-block;
@@ -28,19 +29,17 @@ const BlockImage = styled.img`
   display: block;
 `
 
-class Image extends Component<any, null> {
-  render() {
-    const { image } = this.props
-    return (
-      <div className="article-image">
-        <BlockImage src={image.url} width={"100%"} />
-        <CaptionContainer>
-          <Figcaption dangerouslySetInnerHTML={{ __html: image.caption }} />
-          <CaptionLink>View Fullscreen</CaptionLink>
-        </CaptionContainer>
-      </div>
-    )
-  }
+function Image(props) {
+  const { image } = props
+  return (
+    <div className="article-image">
+      <BlockImage src={image.url} width="100%" />
+      <CaptionContainer>
+        <Figcaption dangerouslySetInnerHTML={{ __html: image.caption }} />
+        <CaptionLink>View Fullscreen</CaptionLink>
+      </CaptionContainer>
+    </div>
+  )
 }
 
 export default Image

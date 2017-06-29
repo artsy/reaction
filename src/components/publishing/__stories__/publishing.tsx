@@ -29,8 +29,13 @@ storiesOf("Publishing", Artwork)
   })
   .add("Image", () => {
     return (
-      <div style={{ width: 400 }}>
-        <Image image={Images[1]} />
+      <div>
+        <div style={{ width: 400 }}>
+          <Image image={Images[1]} />
+        </div>
+        <div style={{ width: 400 }}>
+          <Image image={Images[2]} />
+        </div>
       </div>
     )
   })

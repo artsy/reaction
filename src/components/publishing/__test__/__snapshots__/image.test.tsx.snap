@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`renders a long caption properly 1`] = `
 <div
   className="article-image"
 >
   <img
-    className="file__BlockImage-ejrji7-3 bbdYlF"
+    className="file__BlockImage-s1tnoxw9-3 cNPjWO"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
   <div
-    className="file__CaptionContainer-ejrji7-2 VbLSF"
+    className="file__CaptionContainer-s1tnoxw9-2 bDyCZt"
   >
     <div
-      className="file__Figcaption-ejrji7-0 iKgMTG"
+      className="file__Figcaption-s1tnoxw9-0 blqjDg"
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
@@ -21,7 +21,36 @@ exports[`renders properly 1`] = `
       }
     />
     <div
-      className="file__CaptionLink-ejrji7-1 dlBpu"
+      className="file__CaptionLink-s1tnoxw9-1 ljYkiJ"
+    >
+      View Fullscreen
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders properly 1`] = `
+<div
+  className="article-image"
+>
+  <img
+    className="file__BlockImage-s1tnoxw9-3 cNPjWO"
+    src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+    width="100%"
+  />
+  <div
+    className="file__CaptionContainer-s1tnoxw9-2 bDyCZt"
+  >
+    <div
+      className="file__Figcaption-s1tnoxw9-0 blqjDg"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+        }
+      }
+    />
+    <div
+      className="file__CaptionLink-s1tnoxw9-1 ljYkiJ"
     >
       View Fullscreen
     </div>
