@@ -38,3 +38,13 @@ export const Images = [
     caption: "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
   },
 ]
+
+export const FullscreenHeaders = {
+  type: "full",
+  title: "New York's Next Art District",
+  url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+  vertical: "Market Analysis",
+  author: "",
+  date: "",
+  subheader: "",
+}

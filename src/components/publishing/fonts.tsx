@@ -67,7 +67,7 @@ const textSizesForAvantGarde = {
 }
 
 const unicaFontFamily = `
-  'Unica77LLWebRegular',
+  'Unica77LLWebMedium',
   'Arial',
   'serif'
 `

@@ -1,7 +1,6 @@
 import { css, injectGlobal } from "styled-components"
 
 const BaseFontURL = process.env.NODE_ENV === "production" ? "https://d1s2w0upia4e9w.cloudfront.net" : ""
-
 injectGlobal`
   @font-face {
     font-family: 'artsy-icons';
@@ -11,6 +10,24 @@ injectGlobal`
          url("${BaseFontURL}/fonts/artsy-icons.ttf?uo9ko") format('truetype'),
          url("${BaseFontURL}/fonts/artsy-icons.woff?uo9ko") format('woff'),
          url("${BaseFontURL}/fonts/artsy-icons.svg?uo9ko#artsy-icons") format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Unica77LLWebRegular";
+    src: url("${BaseFontURL}/fonts/Unica77LLWeb-Regular.eot");
+    src: url("${BaseFontURL}/fonts/Unica77LLWeb-Regular.eot?#iefix") format("embedded-opentype"),
+         url("${BaseFontURL}/fonts/Unica77LLWeb-Regular.woff2") format("woff2"),
+         url("${BaseFontURL}/fonts/Unica77LLWeb-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+   @font-face {
+    font-family: "Unica77LLWebMedium";
+    src: url("${BaseFontURL}/fonts/Unica77LLWeb-Medium.eot");
+    src: url("${BaseFontURL}/fonts/Unica77LLWeb-Medium.eot?#iefix") format("embedded-opentype"),
+         url("${BaseFontURL}/fonts/Unica77LLWeb-Medium.woff2") format("woff2"),
+         url("${BaseFontURL}/fonts/Unica77LLWeb-Medium.woff") format("woff");
     font-weight: normal;
     font-style: normal;
   }
