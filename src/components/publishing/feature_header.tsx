@@ -23,17 +23,6 @@ function renderImage(url, layout) {
     return false
   }
 }
-function renderSubHeader(header) {
-  return (
-    <SubHeader data-layout={header.layout}>
-      <SubHeaderText data-layout={header.layout}>{header.subheader}</SubHeaderText>
-      <AuthorDate>
-        <BulletText data-layout={header.layout}>{header.author}</BulletText>
-        <BulletText data-layout={header.layout}>{header.date}</BulletText>
-      </AuthorDate>
-    </SubHeader>
-  )
-}
 
 function FeatureHeader(props) {
   const { header } = props
@@ -44,7 +33,13 @@ function FeatureHeader(props) {
         <HeaderText data-layout={header.layout}>
           <Vertical>{header.vertical}</Vertical>
           <Title data-layout={header.layout}>{header.title}</Title>
-          {renderSubHeader(header)}
+          <SubHeader data-layout={header.layout}>
+            <SubHeaderText data-layout={header.layout}>{header.subheader}</SubHeaderText>
+            <AuthorDate>
+              <BulletText data-layout={header.layout}>{header.author}</BulletText>
+              <BulletText data-layout={header.layout}>{header.date}</BulletText>
+            </AuthorDate>
+          </SubHeader>
         </HeaderText>
         {renderImage(header.url, header.layout)}
       </HeaderTextContainer>
