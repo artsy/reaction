@@ -85,7 +85,8 @@ const HeaderText = Div.extend`
 `
 const FeatureImage = Div.extend`
   width: ${props => (props["data-layout"] === "split" ? "50%" : "100%")};
-  position: ${props => (props["data-layout"] === "text" ? "relative" : "absolute")};
+  border: ${props => (props["data-layout"] === "split" ? "20px solid white" : "0px")};
+  position: absolute;
   background-image: url(${props => (props.src ? props.src : "")});
   background-size: cover;
   background-repeat: no-repeat;

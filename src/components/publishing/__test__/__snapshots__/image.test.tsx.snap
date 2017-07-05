@@ -5,15 +5,15 @@ exports[`renders a long caption properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s1tnoxw9-3 cNPjWO"
+    className="file__BlockImage-s78s1xf-3 egmXXX"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
   <div
-    className="file__CaptionContainer-s1tnoxw9-2 bDyCZt"
+    className="file__CaptionContainer-s78s1xf-2 bliArz"
   >
     <div
-      className="file__Figcaption-s1tnoxw9-0 blqjDg"
+      className="file__Figcaption-s78s1xf-0 hWohua"
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
@@ -21,7 +21,7 @@ exports[`renders a long caption properly 1`] = `
       }
     />
     <div
-      className="file__CaptionLink-s1tnoxw9-1 ljYkiJ"
+      className="file__CaptionLink-s78s1xf-1 crDnBO"
     >
       View Fullscreen
     </div>
@@ -34,15 +34,15 @@ exports[`renders properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s1tnoxw9-3 cNPjWO"
+    className="file__BlockImage-s78s1xf-3 egmXXX"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
   <div
-    className="file__CaptionContainer-s1tnoxw9-2 bDyCZt"
+    className="file__CaptionContainer-s78s1xf-2 bliArz"
   >
     <div
-      className="file__Figcaption-s1tnoxw9-0 blqjDg"
+      className="file__Figcaption-s78s1xf-0 hWohua"
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
@@ -50,7 +50,7 @@ exports[`renders properly 1`] = `
       }
     />
     <div
-      className="file__CaptionLink-s1tnoxw9-1 ljYkiJ"
+      className="file__CaptionLink-s78s1xf-1 crDnBO"
     >
       View Fullscreen
     </div>
