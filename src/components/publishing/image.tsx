@@ -4,14 +4,14 @@ import Fonts from "./fonts"
 
 const Figcaption = styled.div`
   & > p {
-    ${Fonts.unica("s14")}
+    ${Fonts.unica("s14", "medium")}
     margin: 0;
     color: #999;
   }
 `
 
 const CaptionLink = styled.div`
-  ${Fonts.unica("s14")}
+  ${Fonts.unica("s14", "medium")}
   margin: 0;
   margin-left: 10px;
   border-bottom: 1px solid black;

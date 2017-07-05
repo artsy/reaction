@@ -55,6 +55,23 @@ const textSizesForUnica = {
   },
 }
 
+const fontFamilyForUnica = {
+  regular: "Unica77LLWebRegular",
+  italic: "Unica77LLWebItalic",
+  medium: "Unica77LLWebMedium",
+  mediumItalic: "Unica77LLWebMediumItalic",
+}
+
+const unicaFontFamily = family => {
+  return (
+    fontFamilyForUnica[family] +
+    ` ,
+      'Arial',
+      'serif'
+    `
+  )
+}
+
 const textSizesForAvantGarde = {
   s11: {
     size: "11px",
@@ -66,18 +83,12 @@ const textSizesForAvantGarde = {
   },
 }
 
-const unicaFontFamily = `
-  'Unica77LLWebMedium',
-  'Arial',
-  'serif'
-`
-
-const unica = size => {
+const unica = (size, family = "regular") => {
   const evaluatedSize = textSizesForUnica[size]
   const style = css`
-    font-family: ${unicaFontFamily};
+    font-family: ${unicaFontFamily(family)};
     -webkit-font-smoothing: antialiased;
-    size: ${evaluatedSize.size};
+    font-size: ${evaluatedSize.size};
     line-height: ${evaluatedSize.height};
   `
   return style
@@ -86,7 +97,7 @@ const unica = size => {
 const avantgarde = size => {
   const style = fonts.primary.style
   const sizeStyles = css`
-    size: ${textSizesForAvantGarde[size].size};
+    font-size: ${textSizesForAvantGarde[size].size};
     line-height: ${textSizesForAvantGarde[size].height};
   `
   return style.concat(sizeStyles)
@@ -95,7 +106,7 @@ const avantgarde = size => {
 const garamond = size => {
   const style = fonts.secondary.style
   const sizeStyles = css`
-    size: ${textSizesForGaramond[size].size};
+    font-size: ${textSizesForGaramond[size].size};
     line-height: ${textSizesForGaramond[size].height};
   `
   return style.concat(sizeStyles)
