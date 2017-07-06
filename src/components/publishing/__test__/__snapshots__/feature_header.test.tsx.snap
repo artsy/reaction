@@ -2,12 +2,12 @@
 
 exports[`renders full layout properly 1`] = `
 <div
-  className="file__Div-s1u3dywm-0 hkoCIJ"
+  className="sc-ifAKCX hMpiYk"
+  data-layout="full"
 >
   <div>
     <div
-      className="sc-bxivhb kYDCQk"
-      data-layout="full"
+      className="sc-bxivhb bAkBat"
       src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
     />
     <div
@@ -16,45 +16,38 @@ exports[`renders full layout properly 1`] = `
   </div>
   <div
     className="sc-bwzfXH domCCz"
-    data-layout="full"
   >
     <div
-      className="sc-htpNat bNJdeQ"
-      data-layout="full"
+      className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-s1u3dywm-2 kdIBRV"
+        className="file__Vertical-xem9vw-2 bhdvPs"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-s1u3dywm-1 bHQkmI"
-        data-layout="full"
+        className="file__Title-xem9vw-1 igXYRE"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-s1u3dywm-4 kQANSd"
-        data-layout="full"
+        className="file__SubHeader-xem9vw-4 hpRiCe"
       >
         <div
-          className="file__SubHeaderText-s1u3dywm-6 hDonyV"
-          data-layout="full"
+          className="file__SubHeaderText-xem9vw-6 ZcHLn"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+          className="file__AuthorDate-xem9vw-7 hjcNYe"
         >
           <div
-            className="file__BulletText-s1u3dywm-5 bbNxrk"
-            data-layout="full"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-s1u3dywm-5 bbNxrk"
-            data-layout="full"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Jan 4, 2017
           </div>
@@ -67,54 +60,47 @@ exports[`renders full layout properly 1`] = `
 
 exports[`renders split layout properly 1`] = `
 <div
-  className="file__Div-s1u3dywm-0 hkoCIJ"
+  className="sc-ifAKCX hMpiYk"
+  data-layout="split"
 >
   <div
-    className="sc-bxivhb ctXMVI"
-    data-layout="split"
+    className="sc-bxivhb bAkBat"
     src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
   />
   <div
     className="sc-bwzfXH domCCz"
-    data-layout="split"
   >
     <div
-      className="sc-htpNat kCvWzu"
-      data-layout="split"
+      className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-s1u3dywm-2 kdIBRV"
+        className="file__Vertical-xem9vw-2 bhdvPs"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-s1u3dywm-1 dJTyCj"
-        data-layout="split"
+        className="file__Title-xem9vw-1 igXYRE"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-s1u3dywm-4 jxWOJw"
-        data-layout="split"
+        className="file__SubHeader-xem9vw-4 hpRiCe"
       >
         <div
-          className="file__SubHeaderText-s1u3dywm-6 kdaIuy"
-          data-layout="split"
+          className="file__SubHeaderText-xem9vw-6 ZcHLn"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+          className="file__AuthorDate-xem9vw-7 hjcNYe"
         >
           <div
-            className="file__BulletText-s1u3dywm-5 kQxxSr"
-            data-layout="split"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-s1u3dywm-5 kQxxSr"
-            data-layout="split"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Jan 4, 2017
           </div>
@@ -127,49 +113,43 @@ exports[`renders split layout properly 1`] = `
 
 exports[`renders text layout properly 1`] = `
 <div
-  className="file__Div-s1u3dywm-0 hkoCIJ"
+  className="sc-ifAKCX hMpiYk"
+  data-layout="text"
 >
   <div
     className="sc-bwzfXH domCCz"
-    data-layout="text"
   >
     <div
-      className="sc-htpNat llConQ"
-      data-layout="text"
+      className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-s1u3dywm-2 kdIBRV"
+        className="file__Vertical-xem9vw-2 bhdvPs"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-s1u3dywm-1 kugSPq"
-        data-layout="text"
+        className="file__Title-xem9vw-1 igXYRE"
       >
         Looking Into the Future
       </div>
       <div
-        className="file__SubHeader-s1u3dywm-4 kQANSd"
-        data-layout="text"
+        className="file__SubHeader-xem9vw-4 hpRiCe"
       >
         <div
-          className="file__SubHeaderText-s1u3dywm-6 hDonyV"
-          data-layout="text"
+          className="file__SubHeaderText-xem9vw-6 ZcHLn"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+          className="file__AuthorDate-xem9vw-7 hjcNYe"
         >
           <div
-            className="file__BulletText-s1u3dywm-5 bmXXhD"
-            data-layout="text"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-s1u3dywm-5 bmXXhD"
-            data-layout="text"
+            className="file__BulletText-xem9vw-5 kkJwtL"
           >
             Jan 4, 2017
           </div>
@@ -177,7 +157,7 @@ exports[`renders text layout properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-s1u3dywm-3 iSZcou"
+      className="file__Image-xem9vw-3 gxZoGM"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
