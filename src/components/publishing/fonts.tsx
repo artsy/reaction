@@ -77,7 +77,7 @@ const unica = size => {
   const style = css`
     font-family: ${unicaFontFamily};
     -webkit-font-smoothing: antialiased;
-    size: ${evaluatedSize.size};
+    font-size: ${evaluatedSize.size};
     line-height: ${evaluatedSize.height};
   `
   return style
@@ -86,7 +86,7 @@ const unica = size => {
 const avantgarde = size => {
   const style = fonts.primary.style
   const sizeStyles = css`
-    size: ${textSizesForAvantGarde[size].size};
+    font-size: ${textSizesForAvantGarde[size].size};
     line-height: ${textSizesForAvantGarde[size].height};
   `
   return style.concat(sizeStyles)
@@ -95,7 +95,7 @@ const avantgarde = size => {
 const garamond = size => {
   const style = fonts.secondary.style
   const sizeStyles = css`
-    size: ${textSizesForGaramond[size].size};
+    font-size: ${textSizesForGaramond[size].size};
     line-height: ${textSizesForGaramond[size].height};
   `
   return style.concat(sizeStyles)

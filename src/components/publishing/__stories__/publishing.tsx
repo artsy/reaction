@@ -8,6 +8,8 @@ import ImagesetPreview from "../imageset_preview"
 
 import { Images } from "../__test__/fixtures"
 
+import Typography from "./typography"
+
 storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
     return (
@@ -38,4 +40,7 @@ storiesOf("Publishing", Artwork)
         </div>
       </div>
     )
+  })
+  .add("Typography", () => {
+    return <Typography />
   })
