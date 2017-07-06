@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders full layout properly 1`] = `
+<div
+  className="file__Div-s1u3dywm-0 hkoCIJ"
+>
+  <div>
+    <div
+      className="sc-bxivhb kYDCQk"
+      data-layout="full"
+      src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+    />
+    <div
+      className="sc-bdVaJa jYxQQe"
+    />
+  </div>
+  <div
+    className="sc-bwzfXH domCCz"
+    data-layout="full"
+  >
+    <div
+      className="sc-htpNat bNJdeQ"
+      data-layout="full"
+    >
+      <div
+        className="file__Vertical-s1u3dywm-2 kdIBRV"
+      >
+        Market Analysis
+      </div>
+      <div
+        className="file__Title-s1u3dywm-1 bHQkmI"
+        data-layout="full"
+      >
+        New York's Next Art District
+      </div>
+      <div
+        className="file__SubHeader-s1u3dywm-4 kQANSd"
+        data-layout="full"
+      >
+        <div
+          className="file__SubHeaderText-s1u3dywm-6 hDonyV"
+          data-layout="full"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+        >
+          <div
+            className="file__BulletText-s1u3dywm-5 bbNxrk"
+            data-layout="full"
+          >
+            Daniel Kunitz
+          </div>
+          <div
+            className="file__BulletText-s1u3dywm-5 bbNxrk"
+            data-layout="full"
+          >
+            Jan 4, 2017
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders split layout properly 1`] = `
+<div
+  className="file__Div-s1u3dywm-0 hkoCIJ"
+>
+  <div
+    className="sc-bxivhb ctXMVI"
+    data-layout="split"
+    src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+  />
+  <div
+    className="sc-bwzfXH domCCz"
+    data-layout="split"
+  >
+    <div
+      className="sc-htpNat kCvWzu"
+      data-layout="split"
+    >
+      <div
+        className="file__Vertical-s1u3dywm-2 kdIBRV"
+      >
+        Market Analysis
+      </div>
+      <div
+        className="file__Title-s1u3dywm-1 dJTyCj"
+        data-layout="split"
+      >
+        New York's Next Art District
+      </div>
+      <div
+        className="file__SubHeader-s1u3dywm-4 jxWOJw"
+        data-layout="split"
+      >
+        <div
+          className="file__SubHeaderText-s1u3dywm-6 kdaIuy"
+          data-layout="split"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+        >
+          <div
+            className="file__BulletText-s1u3dywm-5 kQxxSr"
+            data-layout="split"
+          >
+            Daniel Kunitz
+          </div>
+          <div
+            className="file__BulletText-s1u3dywm-5 kQxxSr"
+            data-layout="split"
+          >
+            Jan 4, 2017
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders text layout properly 1`] = `
+<div
+  className="file__Div-s1u3dywm-0 hkoCIJ"
+>
+  <div
+    className="sc-bwzfXH domCCz"
+    data-layout="text"
+  >
+    <div
+      className="sc-htpNat llConQ"
+      data-layout="text"
+    >
+      <div
+        className="file__Vertical-s1u3dywm-2 kdIBRV"
+      >
+        Market Analysis
+      </div>
+      <div
+        className="file__Title-s1u3dywm-1 kugSPq"
+        data-layout="text"
+      >
+        Looking Into the Future
+      </div>
+      <div
+        className="file__SubHeader-s1u3dywm-4 kQANSd"
+        data-layout="text"
+      >
+        <div
+          className="file__SubHeaderText-s1u3dywm-6 hDonyV"
+          data-layout="text"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDate-s1u3dywm-7 kiZezS"
+        >
+          <div
+            className="file__BulletText-s1u3dywm-5 bmXXhD"
+            data-layout="text"
+          >
+            Daniel Kunitz
+          </div>
+          <div
+            className="file__BulletText-s1u3dywm-5 bmXXhD"
+            data-layout="text"
+          >
+            Jan 4, 2017
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      className="file__Image-s1u3dywm-3 iSZcou"
+      src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
+    />
+  </div>
+</div>
+`;

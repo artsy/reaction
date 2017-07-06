@@ -6,12 +6,12 @@ function renderFeatureImage(url, layout) {
   if (layout === "full") {
     return (
       <div>
-        <FeatureImage src={url} data-layout="full" />
+        <FeatureImage src={url} />
         <Overlay />
       </div>
     )
   } else if (layout === "split") {
-    return <FeatureImage src={url} data-layout="split" />
+    return <FeatureImage src={url} />
   } else {
     return false
   }
@@ -27,23 +27,23 @@ function renderImage(url, layout) {
 function FeatureHeader(props) {
   const { header } = props
   return (
-    <Div>
+    <FeatureHeaderContainer data-layout={header.layout}>
       {renderFeatureImage(header.url, header.layout)}
-      <HeaderTextContainer data-layout={header.layout}>
-        <HeaderText data-layout={header.layout}>
+      <HeaderTextContainer>
+        <HeaderText>
           <Vertical>{header.vertical}</Vertical>
-          <Title data-layout={header.layout}>{header.title}</Title>
-          <SubHeader data-layout={header.layout}>
-            <SubHeaderText data-layout={header.layout}>{header.subheader}</SubHeaderText>
+          <Title>{header.title}</Title>
+          <SubHeader>
+            <SubHeaderText>{header.subheader}</SubHeaderText>
             <AuthorDate>
-              <BulletText data-layout={header.layout}>{header.author}</BulletText>
-              <BulletText data-layout={header.layout}>{header.date}</BulletText>
+              <BulletText>{header.author}</BulletText>
+              <BulletText>{header.date}</BulletText>
             </AuthorDate>
           </SubHeader>
         </HeaderText>
         {renderImage(header.url, header.layout)}
       </HeaderTextContainer>
-    </Div>
+    </FeatureHeaderContainer>
   )
 }
 const Div = styled.div`
@@ -58,8 +58,7 @@ const Overlay = Div.extend`
 `
 const Title = styled.div`
   ${Fonts.unica("s100")}
-  margin-bottom: ${props => (props["data-layout"] !== "text" ? "75px" : "150px")};
-  flex-grow: ${props => (props["data-layout"] === "split" ? 1 : 0)};
+  margin-bottom: 75px;
 `
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -71,22 +70,20 @@ const HeaderText = Div.extend`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: ${props => (props["data-layout"] !== "split" ? "100%" : "50%")};
-  max-width: ${props => (props["data-layout"] === "text" ? "none" : "1250px")};
-  padding: ${props => (props["data-layout"] !== "full" ? "20px" : "50px")};
-  color: ${props => (props["data-layout"] === "full" ? "#fff" : "#000")};
-  justify-content: ${props => (props["data-layout"] === "full" ? "flex-end" : "flex-start")};
-  margin: ${props => (props["data-layout"] === "full" ? "auto" : "")};
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px;
+  color: #000;
+  justify-content: flex-start;
 `
 const FeatureImage = Div.extend`
-  width: ${props => (props["data-layout"] === "split" ? "50%" : "100%")};
-  border: ${props => (props["data-layout"] === "split" ? "20px solid white" : "0px")};
   position: absolute;
   background-image: url(${props => (props.src ? props.src : "")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   right: 0;
+  width: 100%;
 `
 const Image = styled.img`
   width: 100%;
@@ -98,12 +95,11 @@ const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
   display: flex;
   justify-content: space-between;
-  align-items: ${props => (props["data-layout"] === "split" ? "flex-start" : "center")};
-  flex-direction: ${props => (props["data-layout"] === "split" ? "column" : "row")};
+  align-items: center;
+  flex-direction: row;
 `
 const BulletText = styled.div`
-  margin-left: ${props => (props["data-layout"] === "split" ? "0px" : "30px")};
-  margin-right: ${props => (props["data-layout"] === "split" ? "30px" : "0px")};
+  margin-left: 30px;
   &:before {
     content: "";
     display: inline-block;
@@ -111,15 +107,58 @@ const BulletText = styled.div`
     height: 10px;
     border-radius: 50%;
     margin-right: 10px;
-    background-color: ${props => (props["data-layout"] === "full" ? "#fff" : "#000")};
+    background-color: #000;
   }
 `
 const SubHeaderText = styled.div`
   max-width: 600px;
-  margin-bottom: ${props => (props["data-layout"] === "split" ? "30px" : "0px")};
 `
 const AuthorDate = styled.div`
   display: flex;
+`
+const FeatureHeaderContainer = Div.extend`
+  &[data-layout='text'] {
+    ${Title} {
+      margin-bottom: 150px;
+    }
+    ${HeaderText} {
+      max-width: none;
+    }
+  }
+  &[data-layout='split'] {
+    ${Title} {
+      flex-grow: 1;
+    }
+    ${HeaderText} {
+      width: 50%;
+    }
+    ${FeatureImage} {
+      width: 50%;
+      border: 20px solid white;
+    }
+    ${SubHeader} {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    ${BulletText} {
+      margin-left: 0px;
+      margin-right: 30px;
+      &:before {
+        background-color: #000;
+      }
+    }
+    ${SubHeaderText} {
+      margin-bottom: 30px;
+    }
+  }
+  &[data-layout='full']{
+    ${HeaderText} {
+      padding: 50px;
+      color: #fff;
+      justify-content: flex-end;
+      margin: auto;
+    }
+  }
 `
 
 export default FeatureHeader
