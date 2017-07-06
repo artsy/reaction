@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import IconImageset from "./icons/icon_imageset"
 
-import * as fonts from "../../assets/fonts"
+import Fonts from "./fonts"
 
 const Wrapper = styled.div`
   max-width: 580px;
@@ -12,8 +12,7 @@ const Wrapper = styled.div`
   display: flex;
 `
 const Text = styled.div`
-  ${fonts.primary.style}
-  font-size: 11px;
+  ${Fonts.avantgarde("s11")}
   line-height: 1.35em;
   margin: 0;
 `

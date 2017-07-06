@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="imageset-preview file__Wrapper-sbmbcn-0 dZQoDi"
+  className="imageset-preview file__Wrapper-s1kcylax-0 dhMNpw"
 >
   <div
     className="imageset-preview__container"
@@ -44,10 +44,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="imageset-preview__remaining file__Remaining-sbmbcn-2 iNyvXG"
+    className="imageset-preview__remaining file__Remaining-s1kcylax-2 dKUrma"
   >
     <div
-      className="imageset-preview__icon-container file__IconContainer-sbmbcn-3 jjGfRY"
+      className="imageset-preview__icon-container file__IconContainer-s1kcylax-3 iRPqyk"
     >
       <svg
         data-name="imageset"
@@ -77,14 +77,14 @@ exports[`renders properly 1`] = `
         }
       >
         <div
-          className="file__Text-sbmbcn-1 iqmobi"
+          className="file__Text-s1kcylax-1 kKsBXM"
         >
           3
         </div>
       </div>
     </div>
     <div
-      className="imageset-preview__text file__Text-sbmbcn-1 iqmobi"
+      className="imageset-preview__text file__Text-s1kcylax-1 kKsBXM"
     >
       Enter Slideshow
     </div>

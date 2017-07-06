@@ -9,6 +9,8 @@ import ImagesetPreview from "../imageset_preview"
 
 import { FeatureHeaders, Images } from "../__test__/fixtures"
 
+import Typography from "./typography"
+
 storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
     return (
@@ -60,4 +62,7 @@ storiesOf("Publishing", Artwork)
         <FeatureHeader header={FeatureHeaders[2]} />
       </div>
     )
+  })
+  .add("Typography", () => {
+    return <Typography />
   })
