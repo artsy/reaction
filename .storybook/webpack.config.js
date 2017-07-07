@@ -1,18 +1,18 @@
-const env = require("dotenv");
-const fs = require("fs");
-const path = require("path");
-const sharify = require("./sharify");
+const env = require("dotenv")
+const fs = require("fs")
+const path = require("path")
+const sharify = require("./sharify")
 
-const webpack = require("webpack");
-const webpackMerge = require("webpack-merge");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+const webpack = require("webpack")
+const webpackMerge = require("webpack-merge")
+const { CheckerPlugin } = require("awesome-typescript-loader")
 
 /**
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
  */
-const { METAPHYSICS_ENDPOINT } = env.config().parsed;
-const sharifyPath = sharify({ METAPHYSICS_ENDPOINT });
+const { METAPHYSICS_ENDPOINT } = env.config().parsed
+const sharifyPath = sharify({ METAPHYSICS_ENDPOINT })
 
 // A mix of  the base from Emission's webpack setup, and the simple config for
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
@@ -22,8 +22,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      sharify: sharifyPath.replace(/\.js$/, "")
-    }
+      sharify: sharifyPath.replace(/\.js$/, ""),
+    },
   },
   module: {
     rules: [
@@ -36,13 +36,13 @@ module.exports = {
             options: {
               useBabel: true,
               useCache: true,
-              useTranspileModule: true // Supposedly faster, won’t work if/when we emit TS declaration files.
-            }
-          }
+              useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+            },
+          },
         ],
-        test: /\.tsx?$/
-      }
-    ]
+        test: /\.tsx?$/,
+      },
+    ],
   },
-  plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()]
-};
+  plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()],
+}

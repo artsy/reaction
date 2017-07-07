@@ -41,37 +41,37 @@ exports[`renders properly 1`] = `
   </div>
   <hr />
   <div
-    className="file__UnicaS130-s1oblygz-13 hmdFdX"
+    className="file__UnicaS130-s1oblygz-13 ezQoXc"
   >
     Unica s130: 130px / 1.1em
   </div>
   <div
-    className="file__UnicaS100-s1oblygz-12 XkHPd"
+    className="file__UnicaS100-s1oblygz-12 gJRXzn"
   >
     Unica s100: 100px / 1.1em
   </div>
   <div
-    className="file__UnicaS80-s1oblygz-11 cpMizb"
+    className="file__UnicaS80-s1oblygz-11 cPDFjm"
   >
     Unica s80: 80px / 1.1em
   </div>
   <div
-    className="file__UnicaS69-s1oblygz-10 fowekV"
+    className="file__UnicaS69-s1oblygz-10 fHdxDA"
   >
     Unica s69: 69px / 1em
   </div>
   <div
-    className="file__UnicaS40-s1oblygz-9 fWjFGP"
+    className="file__UnicaS40-s1oblygz-9 cZqGjd"
   >
     Unica s40: 40px / 1.1em
   </div>
   <div
-    className="file__UnicaS19-s1oblygz-8 hooKRC"
+    className="file__UnicaS19-s1oblygz-8 jdWlrG"
   >
     Unica s19: 19px / 1.5em
   </div>
   <div
-    className="file__UnicaS14-s1oblygz-7 eMFRpB"
+    className="file__UnicaS14-s1oblygz-7 dvaeYl"
   >
     Unica s14: 14px / 1.1em
   </div>

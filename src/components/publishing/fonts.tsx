@@ -55,6 +55,23 @@ const textSizesForUnica = {
   },
 }
 
+const fontFamilyForUnica = {
+  regular: "Unica77LLWebRegular",
+  italic: "Unica77LLWebItalic",
+  medium: "Unica77LLWebMedium",
+  mediumItalic: "Unica77LLWebMediumItalic",
+}
+
+const unicaFontFamily = family => {
+  return (
+    fontFamilyForUnica[family] +
+    ` ,
+      'Arial',
+      'serif'
+    `
+  )
+}
+
 const textSizesForAvantGarde = {
   s11: {
     size: "11px",
@@ -66,16 +83,10 @@ const textSizesForAvantGarde = {
   },
 }
 
-const unicaFontFamily = `
-  'Unica77LLWebRegular',
-  'Arial',
-  'serif'
-`
-
-const unica = size => {
+const unica = (size, family = "regular") => {
   const evaluatedSize = textSizesForUnica[size]
   const style = css`
-    font-family: ${unicaFontFamily};
+    font-family: ${unicaFontFamily(family)};
     -webkit-font-smoothing: antialiased;
     font-size: ${evaluatedSize.size};
     line-height: ${evaluatedSize.height};

@@ -38,3 +38,33 @@ export const Images = [
     caption: "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
   },
 ]
+
+export const FeatureHeaders = [
+  {
+    layout: "text",
+    title: "Looking Into the Future",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+    vertical: "Market Analysis",
+    author: "Daniel Kunitz",
+    date: "Jan 4, 2017",
+    subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+  },
+  {
+    layout: "split",
+    title: "New York's Next Art District",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    vertical: "Market Analysis",
+    author: "Daniel Kunitz",
+    date: "Jan 4, 2017",
+    subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+  },
+  {
+    layout: "full",
+    title: "New York's Next Art District",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    vertical: "Market Analysis",
+    author: "Daniel Kunitz",
+    date: "Jan 4, 2017",
+    subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+  },
+]
