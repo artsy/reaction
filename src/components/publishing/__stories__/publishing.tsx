@@ -5,6 +5,7 @@ import Artwork from "../artwork"
 import FeatureHeader from "../feature_header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
+import ImageCollection from "../image_collection"
 import ImagesetPreview from "../imageset_preview"
 import ImagesetPreviewClassic from "../imageset_preview_classic"
 
@@ -40,6 +41,7 @@ storiesOf("Publishing", Artwork)
       </div>
     )
   })
+<<<<<<< HEAD
   .add("Imageset Preview - Classic", () => {
     return <ImagesetPreviewClassic images={Images} />
   })
@@ -49,6 +51,12 @@ storiesOf("Publishing", Artwork)
         <ImagesetPreview section={ImageSetFull} />
         <br />
         <ImagesetPreview section={ImageSetMini} />
+=======
+  .add("Image Collection", () => {
+    return (
+      <div>
+        <ImageCollection images={Images} />
+>>>>>>> 6bad1cf... Adds image collection component and starts fillwidth by extracting dimensions
       </div>
     )
   })
