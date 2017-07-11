@@ -143,9 +143,6 @@ const FeatureHeaderContainer = Div.extend`
     ${BulletText} {
       margin-left: 0px;
       margin-right: 30px;
-      &:before {
-        background-color: #000;
-      }
     }
     ${SubHeaderText} {
       margin-bottom: 30px;
@@ -157,6 +154,11 @@ const FeatureHeaderContainer = Div.extend`
       color: #fff;
       justify-content: flex-end;
       margin: auto;
+    }
+    ${BulletText} {
+      &:before {
+        background-color: #fff;
+      }
     }
   }
 `
