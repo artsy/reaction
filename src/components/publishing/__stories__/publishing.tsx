@@ -5,6 +5,7 @@ import Artwork from "../artwork"
 import FeatureHeader from "../feature_header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
+import ImageCollection from "../image_collection"
 import ImagesetPreview from "../imageset_preview"
 
 import { FeatureHeaders, Images } from "../__test__/fixtures"
@@ -39,6 +40,13 @@ storiesOf("Publishing", Artwork)
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
         </div>
+      </div>
+    )
+  })
+  .add("Image Collection", () => {
+    return (
+      <div>
+        <ImageCollection images={Images} />
       </div>
     )
   })
