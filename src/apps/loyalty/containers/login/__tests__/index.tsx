@@ -2,10 +2,9 @@ import * as React from "react"
 import * as TestUtils from "react-dom/test-utils"
 import * as renderer from "react-test-renderer"
 
-// 1. We’re telling Jest to return a mock each time that code requires the isomorphic-fetch module.
-// 2. Then we’re mocking the implementation where required.
-// 3. And finally we reset the mock after each test to ensure our mocked implementation doesn’t bleed into other tests.
 jest.mock("isomorphic-fetch")
+const fetch = require("isomorphic-fetch").default
+
 import Login from "../index"
 
 describe("login", () => {
@@ -17,9 +16,7 @@ describe("login", () => {
     twitterPath: "/twitter",
   }
 
-  afterEach(() => {
-    require("isomorphic-fetch").mockReset()
-  })
+  afterEach(fetch.mockReset)
 
   it("renders the snapshot", () => {
     const login = renderer.create(<Login form={formConfig} />)
@@ -36,13 +33,12 @@ describe("login", () => {
   })
 
   it("displays correct error message", done => {
-    const fetch = require("isomorphic-fetch")
-    fetch.mockImplementation(() => {
-      return Promise.resolve({
+    fetch.mockImplementation(() =>
+      Promise.resolve({
         url: "http://localhost:3000/log_in?error=Invalid%20email%20or%20password",
         status: 404,
       })
-    })
+    )
 
     const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
 
@@ -58,12 +54,7 @@ describe("login", () => {
   })
 
   it("successful redirects after login", () => {
-    const fetch = require("isomorphic-fetch")
-    fetch.mockImplementation(() => {
-      return Promise.resolve({
-        status: 200,
-      })
-    })
+    fetch.mockImplementation(() => Promise.resolve({ status: 200 }))
 
     const login = <Login form={formConfig} />
     const renderedComponent = TestUtils.renderIntoDocument(login) as Login
@@ -72,12 +63,7 @@ describe("login", () => {
   })
 
   it("displays an internal error message", done => {
-    const fetch = require("isomorphic-fetch")
-    fetch.mockImplementation(() => {
-      return Promise.resolve({
-        status: 500,
-      })
-    })
+    fetch.mockImplementation(() => Promise.resolve({ status: 500 }))
 
     const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
 
@@ -93,10 +79,7 @@ describe("login", () => {
   })
 
   it("displays a connection error message from catch", done => {
-    const fetch = require("isomorphic-fetch")
-    fetch.mockImplementation(() => {
-      return Promise.reject(new Error("Oh noes!"))
-    })
+    fetch.mockImplementation(() => Promise.reject(new Error("Oh noes!")))
 
     const login = TestUtils.renderIntoDocument(<Login form={formConfig} />) as Login
 

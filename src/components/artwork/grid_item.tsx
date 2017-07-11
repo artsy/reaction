@@ -24,24 +24,35 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItem> {
 
 export class ArtworkGridItem extends React.Component<Props, null> {
   render() {
-    const { style, artwork } = this.props
+    const { style, className, artwork } = this.props
     return (
-      <div style={style}>
-        <Placeholder style={{ paddingBottom:  artwork.image.placeholder }}>
-          <Image src={artwork.image.url} />
+      <div className={className} style={style}>
+        <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
+          <a href={artwork.href}>
+            <Image src={artwork.image.url} />
+          </a>
           <SaveButton
+            className="artwork-save"
             artwork={artwork}
-            style={{position: "absolute", right: "10px", bottom: "10px"}}
+            style={{ position: "absolute", right: "10px", bottom: "10px" }}
           />
         </Placeholder>
-      
         <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
 }
 
-export default Relay.createContainer(ArtworkGridItem, {
+const StyledArtworkGridItem = styled(ArtworkGridItem)`
+  .artwork-save {
+    opacity: 0;
+  }
+  &:hover .artwork-save {
+    opacity: 1;
+  }
+`
+
+export default Relay.createContainer(StyledArtworkGridItem, {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
@@ -50,8 +61,9 @@ export default Relay.createContainer(ArtworkGridItem, {
           url(version: "large")
           aspect_ratio
         }
-       ${ArtworkMetadata.getFragment("artwork")}
-       ${SaveButton.getFragment("artwork")}
+        href
+        ${ArtworkMetadata.getFragment("artwork")}
+        ${SaveButton.getFragment("artwork")}
       }
     `,
   },
@@ -59,10 +71,11 @@ export default Relay.createContainer(ArtworkGridItem, {
 
 interface RelayProps {
   artwork: {
+    href: string | null
     image: {
-      placeholder: number | null,
-      url: string | null,
-      aspect_ratio: number | null,
-    } | null,
-  },
+      placeholder: number | null
+      url: string | null
+      aspect_ratio: number | null
+    } | null
+  }
 }

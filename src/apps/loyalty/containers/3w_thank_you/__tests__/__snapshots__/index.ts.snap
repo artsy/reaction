@@ -1,50 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`3-way Handshake Thank You renders the snapshot 1`] = `
 <div
-  className="jBvxsI">
+  className="file__Container-apq9gn-0 dwepOC"
+>
   <div
-    className="hiqXMD">
+    className="file__Nav-s1w500ep-0 krvdox"
+  >
     <a
-      className="dHhWkf"
-      href={undefined}>
+      className="file__NavIcon-s1w500ep-1 eNnazU"
+      href={undefined}
+    >
       <div
-        className="gQelpA"
-        style={undefined}>
+        className="file-s1ekx40u-0 krLqUx"
+        style={undefined}
+      >
         
       </div>
     </a>
     <a
-      className="iDuDUI"
-      href="/">
+      className="file__StyledLink-mgasw5-0 dIJcvg"
+      href="/"
+    >
       Back To Artsy
     </a>
   </div>
   <div
-    className="gIFuVs">
+    className="file__TitleSection-apq9gn-1 fdjVYi"
+  >
     <div
-      className="idoycl">
+      className="file__StyledTitle-s3pz4jh-0 izQygJ"
+    >
       Thank you, 
       Percy
     </div>
   </div>
   <div
-    className="eJDOxo">
+    className="file__TextSection-apq9gn-2 UaJpw"
+  >
     <p
-      className="fTgPgI">
+      className="file__Text-s4rtu63-0 eEhqjQ"
+    >
       Thank you for your interest in the program.
       <br />
       Have questions? Get in touch:  
       <a
-        className="hNDkSz"
-        href="mailto:loyalty@artsy.net">
+        className="file__StyledTextLink-s18afosz-0 bJfHCj"
+        href="mailto:loyalty@artsy.net"
+      >
         loyalty@artsy.net
       </a>
     </p>
   </div>
   <div
-    className="ChQBa">
+    className="file__ButtonWrapper-apq9gn-3 kwchyp"
+  >
     <a
-      className="jVdhvd"
-      href="/">
+      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 exlWFO"
+      href="/"
+    >
       <span>
         Back to Artsy
       </span>

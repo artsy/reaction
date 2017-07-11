@@ -16,24 +16,28 @@ const PageSize = 10
 interface Props extends RelayProps, React.HTMLProps<ArtworkFilter> {
   filter_artworks: any
   relay: any
+  for_sale?: boolean
+  dimension_range?: string
+  price_range?: string
+  medium?: string
 }
 
 interface State {
-  for_sale: boolean,
-  dimension_range: string,
-  price_range: string,
-  medium: string,
-  loading: boolean,
+  for_sale: boolean
+  dimension_range: string
+  price_range: string
+  medium: string
+  loading: boolean
 }
 
 class ArtworkFilter extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
-      for_sale: false,
-      dimension_range: "*",
-      price_range: "*",
-      medium: "*",
+      for_sale: props.for_sale || false,
+      dimension_range: props.dimension_range || "*",
+      price_range: props.price_range || "*",
+      medium: props.medium || "*",
       loading: false,
     }
   }
@@ -41,13 +45,16 @@ class ArtworkFilter extends React.Component<Props, State> {
   handleLoadMore() {
     if (!this.state.loading) {
       this.setState({ loading: true }, () => {
-        this.props.relay.setVariables({
-          size: this.props.relay.variables.size + PageSize,
-        }, readyState => {
-          if (readyState.done) {
-            this.setState({ loading: false })
+        this.props.relay.setVariables(
+          {
+            size: this.props.relay.variables.size + PageSize,
+          },
+          readyState => {
+            if (readyState.done) {
+              this.setState({ loading: false })
+            }
           }
-        })
+        )
       })
     }
   }
@@ -67,7 +74,7 @@ class ArtworkFilter extends React.Component<Props, State> {
 
   onSelect(count, slice) {
     this.setState({
-      [slice.toLowerCase()]: count.name,
+      [slice.toLowerCase()]: count.id,
     })
     this.props.relay.setVariables({
       [slice.toLowerCase()]: count.id,
@@ -85,13 +92,11 @@ class ArtworkFilter extends React.Component<Props, State> {
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
     const dropdowns = filterArtworks.aggregations.map(aggregation =>
-      (
-        <Dropdown
-          aggregation={aggregation}
-          key={aggregation.slice}
-          onSelect={(count, slice) => this.onSelect(count, slice)}
-        />
-      ),
+      <Dropdown
+        aggregation={aggregation}
+        key={aggregation.slice}
+        onSelect={(count, slice) => this.onSelect(count, slice)}
+      />
     )
     const pulldownOptions = [
       { val: "-partner_updated_at", name: "Recently Updated" },
@@ -102,7 +107,7 @@ class ArtworkFilter extends React.Component<Props, State> {
     return (
       <div>
         <FilterBar>
-          <ForSaleCheckbox checked={this.state.for_sale} onClick={() => this.setForSale()}/>
+          <ForSaleCheckbox checked={this.state.for_sale} onClick={() => this.setForSale()} />
           {dropdowns}
         </FilterBar>
         <SubFilterBar>
@@ -113,6 +118,7 @@ class ArtworkFilter extends React.Component<Props, State> {
               dimension_range={this.state.dimension_range}
               for_sale={this.state.for_sale}
               facet={filterArtworks.facet}
+              aggregations={filterArtworks.aggregations}
             />
             <TotalCount filter_artworks={filterArtworks} />
           </div>
@@ -122,11 +128,7 @@ class ArtworkFilter extends React.Component<Props, State> {
             onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
-        <Artworks
-          artworks={filterArtworks.artworks}
-          onLoadMore={() => this.handleLoadMore()}
-          columnCount={3}
-        />
+        <Artworks artworks={filterArtworks.artworks} onLoadMore={() => this.handleLoadMore()} columnCount={4} />
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
         </SpinnerContainer>
@@ -182,6 +184,11 @@ export default Relay.createContainer(ArtworkFilter, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
+            slice 
+            counts {
+              id
+              name
+            }
             ${Dropdown.getFragment("aggregation")}
           }
           artworks: artworks_connection(first: $size) {
@@ -199,11 +206,11 @@ export default Relay.createContainer(ArtworkFilter, {
 interface RelayProps {
   filter_artworks: {
     filter_artworks: {
-      artworks: Array<any | null> | null,
+      artworks: Array<any | null> | null
       counts: {
-        total: number | null,
-      } | null,
-      aggregations: Array<any | null> | null,
-    } | null,
-  } | null,
+        total: number | null
+      } | null
+      aggregations: Array<any | null> | null
+    } | null
+  } | null
 }

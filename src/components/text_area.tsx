@@ -9,7 +9,7 @@ interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
 }
 
 const TextArea: React.SFC<TextAreaProps> = props => {
-  const newProps = {...props}
+  const newProps = { ...props }
   delete newProps.block
   return <textarea {...newProps} />
 }

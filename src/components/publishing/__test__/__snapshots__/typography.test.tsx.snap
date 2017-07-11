@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div>
+  <div
+    className="file__GaramondS50-s1oblygz-4 jMfNbR"
+  >
+    Garamond s50: 50px / 1.1em
+  </div>
+  <div
+    className="file__GaramondS40-s1oblygz-3 kTEHXI"
+  >
+    Garamond s40: 40px / 1.1em
+  </div>
+  <div
+    className="file__GaramondS23-s1oblygz-2 kNxUxx"
+  >
+    Garamond s23: 23px / 1.5em
+  </div>
+  <div
+    className="file__GaramondS17-s1oblygz-1 hnwPor"
+  >
+    Garamond s17: 17px / 1.1em
+  </div>
+  <div
+    className="file__GaramondS15-s1oblygz-0 gywbkR"
+  >
+    Garamond s15: 15px / 1.25em
+  </div>
+  <hr />
+  <br />
+  <div
+    className="file__AvantGardeS13-s1oblygz-6 fbqBnx"
+  >
+    Avant Garde s13: 13px / 1.1em
+  </div>
+  <div
+    className="file__AvantGardeS11-s1oblygz-5 isZHkF"
+  >
+    Avant Garde s11: 11px / 1.1em
+  </div>
+  <hr />
+  <div
+    className="file__UnicaS130-s1oblygz-13 ezQoXc"
+  >
+    Unica s130: 130px / 1.1em
+  </div>
+  <div
+    className="file__UnicaS100-s1oblygz-12 gJRXzn"
+  >
+    Unica s100: 100px / 1.1em
+  </div>
+  <div
+    className="file__UnicaS80-s1oblygz-11 cPDFjm"
+  >
+    Unica s80: 80px / 1.1em
+  </div>
+  <div
+    className="file__UnicaS69-s1oblygz-10 fHdxDA"
+  >
+    Unica s69: 69px / 1em
+  </div>
+  <div
+    className="file__UnicaS40-s1oblygz-9 cZqGjd"
+  >
+    Unica s40: 40px / 1.1em
+  </div>
+  <div
+    className="file__UnicaS19-s1oblygz-8 jdWlrG"
+  >
+    Unica s19: 19px / 1.5em
+  </div>
+  <div
+    className="file__UnicaS14-s1oblygz-7 dvaeYl"
+  >
+    Unica s14: 14px / 1.1em
+  </div>
+</div>
+`;

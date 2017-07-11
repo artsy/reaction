@@ -22,22 +22,21 @@ class Button extends React.Component<ButtonProps, any> {
   public static defaultProps: ButtonProps
 
   render(): JSX.Element {
+    // TODO Do we really need to pass an opaque object along or do we know which props should be passed along?
     const newProps: any = { ...this.props }
     delete newProps.state
     delete newProps.block
+    delete newProps.icon
 
     return this.props.href
-      ? (
-        <a className={this.props.className} {...newProps}>
+      ? <a className={this.props.className} {...newProps}>
           {this.props.icon}
           <span>{this.props.children}</span>
         </a>
-      ) : (
-        <button className={this.props.className} {...newProps}>
+      : <button className={this.props.className} {...newProps}>
           {this.props.icon}
           <span>{this.props.children}</span>
         </button>
-      )
   }
 }
 

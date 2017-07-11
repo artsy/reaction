@@ -18,7 +18,9 @@ export const block = (margin: number = 0) => {
 
 const sizes = theme.flexboxgrid.breakpoints
 
-export const media: any = Object.keys(sizes).reduce((accumulator, label) => {
+type Media = { [S in keyof typeof sizes]: typeof css }
+
+export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   // using px in breakpoints to maintain uniform units with flexbox-grid
   // https://zellwk.com/blog/media-query-units/
   const emSize = sizes[label]
@@ -28,4 +30,4 @@ export const media: any = Object.keys(sizes).reduce((accumulator, label) => {
     }
   `
   return accumulator
-}, {})
+}, {}) as Media

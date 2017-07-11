@@ -1,17 +1,17 @@
 import * as Relay from "react-relay"
 
 export type BuyerOutcome =
-  "PURCHASED" |
-  "STILL_CONSIDERING" |
-  "HIGH_PRICE" |
-  "LOST_INTEREST" |
-  "WORK_UNAVAILABLE" |
-  "OTHER"
+  | "PURCHASED"
+  | "STILL_CONSIDERING"
+  | "HIGH_PRICE"
+  | "LOST_INTEREST"
+  | "WORK_UNAVAILABLE"
+  | "OTHER"
 
 interface MutationProps {
   input: {
-    ids: string[],
-    buyerOutcome: BuyerOutcome,
+    ids: string[]
+    buyerOutcome: BuyerOutcome
   }
 }
 

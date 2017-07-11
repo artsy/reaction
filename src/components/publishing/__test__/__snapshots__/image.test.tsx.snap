@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a long caption properly 1`] = `
+<div
+  className="article-image"
+>
+  <img
+    className="file__BlockImage-s1ssw3ww-3 izKvXl"
+    src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+    width="100%"
+  />
+  <div
+    className="file__CaptionContainer-s1ssw3ww-2 ghGDNw"
+  >
+    <div
+      className="file__Figcaption-s1ssw3ww-0 jJxQfi"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+        }
+      }
+    />
+    <div
+      className="file__CaptionLink-s1ssw3ww-1 esbHjb"
+    >
+      View Fullscreen
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders properly 1`] = `
+<div
+  className="article-image"
+>
+  <img
+    className="file__BlockImage-s1ssw3ww-3 izKvXl"
+    src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+    width="100%"
+  />
+  <div
+    className="file__CaptionContainer-s1ssw3ww-2 ghGDNw"
+  >
+    <div
+      className="file__Figcaption-s1ssw3ww-0 jJxQfi"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+        }
+      }
+    />
+    <div
+      className="file__CaptionLink-s1ssw3ww-1 esbHjb"
+    >
+      View Fullscreen
+    </div>
+  </div>
+</div>
+`;

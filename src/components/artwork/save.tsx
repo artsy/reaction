@@ -17,13 +17,10 @@ export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.Co
 }
 
 export class SaveButton extends React.Component<Props, null> {
-
   handleSave() {
     const { currentUser, artwork, relay } = this.props
     if (currentUser && currentUser.id) {
-      relay.commitUpdate(
-        new SaveArtworkMutation({ artwork }),
-      )
+      relay.commitUpdate(new SaveArtworkMutation({ artwork }))
     } else {
       window.location.href = "/login"
     }
@@ -38,12 +35,7 @@ export class SaveButton extends React.Component<Props, null> {
         onClick={() => this.handleSave()}
         data-saved={artwork.is_saved}
       >
-        <Icon
-          name="heart"
-          height={SIZE}
-          color="white"
-          style={{verticalAlign: "middle"}}
-        />
+        <Icon name="heart" height={SIZE} color="white" style={{ verticalAlign: "middle" }} />
       </div>
     )
   }
@@ -51,8 +43,8 @@ export class SaveButton extends React.Component<Props, null> {
 
 interface RelayProps {
   artwork: {
-    is_saved: boolean | null,
-  },
+    is_saved: boolean | null
+  }
 }
 
 export const StyledSaveButton = styled(SaveButton)`
@@ -77,7 +69,6 @@ export const StyledSaveButton = styled(SaveButton)`
   }
 `
 class SaveArtworkMutation extends Relay.Mutation<Props, null> {
-
   static fragments = {
     artwork: () => Relay.QL`
       fragment on Artwork {
@@ -123,12 +114,14 @@ class SaveArtworkMutation extends Relay.Mutation<Props, null> {
   }
 
   getConfigs() {
-    return [{
-      type: "FIELDS_CHANGE",
-      fieldIDs: {
-        artwork: this.props.artwork.__id,
+    return [
+      {
+        type: "FIELDS_CHANGE",
+        fieldIDs: {
+          artwork: this.props.artwork.__id,
+        },
       },
-    }]
+    ]
   }
 }
 
@@ -136,6 +129,7 @@ export default Relay.createContainer(Artsy.ContextConsumer(StyledSaveButton), {
   fragments: {
     artwork: () => Relay.QL`
       fragment on Artwork {
+        __id
         is_saved
         ${SaveArtworkMutation.getFragment("artwork")}
       }

@@ -1,4 +1,4 @@
-import { storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
@@ -23,30 +23,22 @@ class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterA
   }
 
   showSelection(count) {
-    this.setState ({
+    this.setState({
       selected: count.name,
     })
   }
 
   render() {
-    const dropdowns = this.props
-      .filter_artworks
-      .filter_artworks.aggregations.map(aggregation =>
-        (
-          <Dropdown
-            aggregation={aggregation}
-            key={aggregation.slice}
-            onSelect={this.showSelection}
-          />
-        ),
-      )
+    const dropdowns = this.props.filter_artworks.filter_artworks.aggregations.map(aggregation =>
+      <Dropdown aggregation={aggregation} key={aggregation.slice} onSelect={this.showSelection} />
+    )
 
     const selected = <div>{this.state.selected}</div>
 
     return (
       <div>
         <div>{dropdowns}</div>
-        <div style={{padding: "20px 0"}}>
+        <div style={{ padding: "20px 0" }}>
           Selected: {selected}
         </div>
       </div>
@@ -75,20 +67,20 @@ interface DropdownRelayProps {
   filter_artworks: {
     filter_artworks: {
       aggregations: Array<{
-        slice: string | null,
+        slice: string | null
         counts: {
-          name: string | null,
-          count: number | null,
-          id: string | null,
-        },
-      } | null> | null,
-    } | null,
-  } | null,
+          name: string | null
+          count: number | null
+          id: string | null
+        }
+      } | null> | null
+    } | null
+  } | null
 }
 
 class FilterArtworksTotalCount extends React.Component<TotalCountRelayProps, null> {
   render() {
-    return (<TotalCount filter_artworks={this.props.filter_artworks.filter_artworks} />)
+    return <TotalCount filter_artworks={this.props.filter_artworks.filter_artworks} />
   }
 }
 
@@ -111,30 +103,20 @@ interface TotalCountRelayProps {
   filter_artworks: {
     filter_artworks: {
       counts: {
-        total: number | null,
-      } | null,
-    } | null,
-  } | null,
+        total: number | null
+      } | null
+    } | null
+  } | null
 }
 
 function FilterArtworksDropdownExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return (
-    <Relay.RootContainer
-      Component={FilterArtworksDropdownContainer}
-      route={new FilterArtworksQueryConfig()}
-    />
-  )
+  return <Relay.RootContainer Component={FilterArtworksDropdownContainer} route={new FilterArtworksQueryConfig()} />
 }
 
 function FilterArtworksTotalCountExample() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return (
-    <Relay.RootContainer
-      Component={FilterArtworksTotalCountContainer}
-      route={new FilterArtworksQueryConfig()}
-    />
-  )
+  return <Relay.RootContainer Component={FilterArtworksTotalCountContainer} route={new FilterArtworksQueryConfig()} />
 }
 
 function FilterArtworksExample() {
@@ -145,21 +127,12 @@ function FilterArtworksExample() {
   } as User
   return (
     <Artsy.ContextProvider currentUser={user}>
-      <Relay.RootContainer
-        Component={ArtworksFilter}
-        route={new FilterArtworksQueryConfig()}
-      />
+      <Relay.RootContainer Component={ArtworksFilter} route={new FilterArtworksQueryConfig()} />
     </Artsy.ContextProvider>
   )
 }
 
 storiesOf("Artwork Filter Components", Dropdown)
-  .add("Filter dropdown", () => (
-    <FilterArtworksDropdownExample />
-  ))
-  .add("Total Count", () => (
-    <FilterArtworksTotalCountExample />
-  ))
-  .add("Artwork filter", () => (
-    <FilterArtworksExample />
-  ))
+  .add("Filter dropdown", () => <FilterArtworksDropdownExample />)
+  .add("Total Count", () => <FilterArtworksTotalCountExample />)
+  .add("Artwork filter", () => <FilterArtworksExample />)

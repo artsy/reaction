@@ -28,11 +28,9 @@ IsomorphicRelay.prepareInitialRender({
   environment: env,
 }).then(props => {
   render(
-    (
-      <Artsy.ContextProvider currentUser={CURRENT_USER}>
-        <IsomorphicRelay.Renderer {...props} />
-      </Artsy.ContextProvider>
-    ),
-    document.getElementById("app-container"),
+    <Artsy.ContextProvider currentUser={CURRENT_USER}>
+      <IsomorphicRelay.Renderer {...props} />
+    </Artsy.ContextProvider>,
+    document.getElementById("app-container")
   )
 })

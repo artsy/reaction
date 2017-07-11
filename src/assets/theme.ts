@@ -6,13 +6,13 @@ export default {
     container: {
       sm: 46, // rem
       md: 61, // rem
-      lg: 76,  // rem
+      lg: 76, // rem
     },
     breakpoints: {
-      xs: 0,
-      sm: 768,
-      md: 1024,
-      lg: 1200,
+      xs: 0, // em
+      sm: 48, // em
+      md: 64, // em
+      lg: 75, // em
     },
   },
 }

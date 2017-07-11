@@ -1,4 +1,4 @@
-import fetch from "node-fetch"
+import fetch from "isomorphic-fetch"
 const { API_URL } = process.env
 
 function gravity<T>(accessToken: string, path: string, method?: string): Promise<T> {
@@ -8,7 +8,7 @@ function gravity<T>(accessToken: string, path: string, method?: string): Promise
       "X-Access-Token": accessToken,
     },
     method: verb,
-  }).then(resp => resp.json<T>())
+  }).then<T>(resp => resp.json())
 }
 
 export function fetchCollectorProfile(accessToken: string): Promise<CollectorProfile> {

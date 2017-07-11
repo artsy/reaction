@@ -1,13 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`login renders the snapshot 1`] = `
 <div
-  className="FLXHp">
+  className="file__LoginContainer-s1d01h8e-0 gwuPpF"
+>
   <div
-    className="cVIAuV"
-    style={undefined}>
+    className="file-s1ekx40u-0 iuEcGN"
+    style={undefined}
+  >
     
   </div>
   <p
-    className="fTgPgI">
+    className="file__Text-s4rtu63-0 eEhqjQ"
+  >
     Welcome back, please log in 
     <br />
      to your account.
@@ -15,57 +20,63 @@ exports[`login renders the snapshot 1`] = `
   <form
     action="/log_in"
     method="POST"
-    onSubmit={[Function]}>
+    onSubmit={[Function]}
+  >
     <input
       autoFocus={true}
-      className="gUzbJk VzJlT"
+      className="file__StyledInput-s1d01h8e-1 qmhxa file__StyledInput-s2fklig-0 ffQmtI"
       name="email"
       onChange={[Function]}
       placeholder="Email"
-      value="" />
+      value=""
+    />
     <div
-      className="kBsaGc">
+      className="file__StyledDiv-s2fklig-2 gnqeba"
+    >
       <div
-        className="border-container" />
+        className="border-container"
+      />
       <input
-        className="dWzpRU"
+        className="file__BorderlessInput-s2fklig-1 fbjzqZ"
         name="password"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Password"
         type="password"
-        value="" />
+        value=""
+      />
       <a
-        className="cXjeFh"
-        href={undefined}>
+        className="file__StyledTextLink-s18afosz-0 hlqDRc"
+        href={undefined}
+      >
         Forgot?
       </a>
     </div>
     <button
-      className="bXgzbp">
+      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 fBHbtu"
+    >
       <span>
         Log In
       </span>
     </button>
     <div
-      className="fKkZFB">
+      className="file__StyledOrContainer-s1d01h8e-2 iqvrnM"
+    >
       <div
-        className="jNrPFU">
+        className="file__StyledOrText-s1d01h8e-3 ggmqfI"
+      >
         or
       </div>
     </div>
     <a
-      className="dzvQZu exUgyi"
+      className="file-y6ly8y-0 bxHoRp file__StyledButton-muis26-0 fBHbtu"
       href="/facebook"
-      icon={
-        <Styled(Icon)
-          color="white"
-          name="facebook" />
-      }>
+    >
       <div
-        className="kEzGjr"
-        style={undefined}>
+        className="file-s1ekx40u-0 bDXcCT"
+        style={undefined}
+      >
         
       </div>
       <span>
@@ -73,16 +84,13 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </a>
     <a
-      className="eTVvmy exUgyi"
+      className="file-cy64ue-0 gjiGIK file__StyledButton-muis26-0 fBHbtu"
       href="/twitter"
-      icon={
-        <Styled(Icon)
-          color="white"
-          name="twitter" />
-      }>
+    >
       <div
-        className="kEzGjr"
-        style={undefined}>
+        className="file-s1ekx40u-0 bDXcCT"
+        style={undefined}
+      >
         
       </div>
       <span>
@@ -91,17 +99,5 @@ exports[`login renders the snapshot 1`] = `
     </a>
   </form>
   <br />
-  <p
-    className="eXluOx">
-    <span>
-      Don\'t have an account? 
-    </span>
-    <a
-      className="lkuLzT"
-      href={undefined}>
-      Sign up
-    </a>
-    .
-  </p>
 </div>
 `;

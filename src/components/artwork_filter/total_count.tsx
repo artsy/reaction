@@ -10,7 +10,6 @@ interface TotalCountProps extends RelayProps, React.HTMLProps<TotalCount> {
 }
 
 export class TotalCount extends React.Component<TotalCountProps, null> {
-
   render() {
     const total = this.props.filter_artworks.counts.total
     const s = total !== 1 ? "s" : ""
@@ -42,7 +41,7 @@ export default Relay.createContainer(StyledTotalCount, {
 interface RelayProps {
   filter_artworks: {
     counts: {
-      total: number | null,
-    } | null,
+      total: number | null
+    } | null
   }
 }

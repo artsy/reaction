@@ -1,47 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<ForgotPassword /> renders the snapshot 1`] = `
 <div
-  className="FLXHp">
+  className="file__Container-yxmg7g-0 gDnvxk"
+>
   <div
-    className="cVIAuV"
-    style={undefined}>
+    className="file-s1ekx40u-0 iuEcGN"
+    style={undefined}
+  >
     
   </div>
   <p
-    className="fTgPgI">
+    className="file__Text-s4rtu63-0 eEhqjQ"
+  >
     Enter the email address associated
     <br />
     with your account.
   </p>
   <div
-    className="message-box">
+    className="message-box"
+  >
     
   </div>
   <input
     autoFocus={true}
-    className="gUzbJk VzJlT"
+    className="file__StyledInput-yxmg7g-1 ebBPuw file__StyledInput-s2fklig-0 ffQmtI"
     name="email"
     onChange={[Function]}
     placeholder="Email"
-    value="" />
+    value=""
+  />
   <button
-    className="cpyCro"
+    className="file__InvertedButton-s2qkmvo-0 hmYmGS file__StyledButton-muis26-0 kaBVMO"
     disabled={true}
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     <span>
       Reset Password
     </span>
   </button>
-  <p
-    className="eXluOx">
-    <span>
-      Don\'t have an account? 
-    </span>
-    <a
-      className="lkuLzT"
-      href={undefined}>
-      Sign up
-    </a>
-    .
-  </p>
 </div>
 `;

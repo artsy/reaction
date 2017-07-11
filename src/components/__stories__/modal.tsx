@@ -1,4 +1,4 @@
-import { storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
 import Button from "../buttons/default"
@@ -37,7 +37,7 @@ class ModalDemo extends React.Component<any, any> {
           </ModalHeader>
           <div>
             <p>This is modal contents</p>
-            <hr/>
+            <hr />
             <div>Even more contents</div>
           </div>
         </Modal>
@@ -46,7 +46,4 @@ class ModalDemo extends React.Component<any, any> {
   }
 }
 
-storiesOf("ModalDemo", ModalDemo)
-  .add("ModalDemo", () => (
-      <ModalDemo/>
-  ))
+storiesOf("ModalDemo", ModalDemo).add("ModalDemo", () => <ModalDemo />)

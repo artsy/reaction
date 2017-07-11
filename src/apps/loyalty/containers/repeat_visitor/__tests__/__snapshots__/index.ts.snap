@@ -1,41 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`RepeatVisitor renders the snapshot 1`] = `
 <div
-  className="jBvxsI">
+  className="file__Container-s8sp4hp-0 gLSdEp"
+>
   <div
-    className="hiqXMD">
+    className="file__Nav-s1w500ep-0 krvdox"
+  >
     <a
-      className="dHhWkf"
-      href={undefined}>
+      className="file__NavIcon-s1w500ep-1 eNnazU"
+      href={undefined}
+    >
       <div
-        className="gQelpA"
-        style={undefined}>
+        className="file-s1ekx40u-0 krLqUx"
+        style={undefined}
+      >
         
       </div>
     </a>
     <a
-      className="iDuDUI"
-      href="/">
+      className="file__StyledLink-mgasw5-0 dIJcvg"
+      href="/"
+    >
       Back To Artsy
     </a>
   </div>
   <div
-    className="idoycl">
+    className="file__StyledTitle-s3pz4jh-0 izQygJ"
+  >
     Your purchases are being reviewed
   </div>
   <div
-    className="ChQBa">
+    className="file__Section-s8sp4hp-1 ehXvzZ"
+  >
     <p
-      className="fTgPgI">
+      className="file__Text-s4rtu63-0 eEhqjQ"
+    >
       We will be in touch once we confirm your
       <br />
       purchases with the galleries.
     </p>
   </div>
   <div
-    className="ChQBa">
+    className="file__ButtonWrapper-s8sp4hp-2 lpPHz"
+  >
     <a
-      className="jVdhvd"
-      href="/">
+      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 exlWFO"
+      href="/"
+    >
       <span>
         Back to Artsy
       </span>

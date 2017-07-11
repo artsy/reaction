@@ -2,11 +2,9 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import TextLink from "../text_link"
 
-export interface ContactProps extends RelayProps, React.HTMLProps<ArtworkContact> {
-}
+export interface ContactProps extends RelayProps, React.HTMLProps<ArtworkContact> {}
 
 export class ArtworkContact extends React.Component<ContactProps, null> {
-
   contactLine() {
     const { artwork } = this.props
     if (artwork.sale && artwork.sale.is_auction) {
@@ -32,7 +30,7 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
     } else if (artwork.sale.is_closed) {
       return <span>Auction closed</span>
     } else {
-      return <span/>
+      return <span />
     }
   }
 
@@ -83,28 +81,28 @@ export default Relay.createContainer(ArtworkContact, {
 
 interface RelayProps {
   artwork: {
-    _id: string,
-    href: string | null,
-    is_inquireable: boolean | null,
+    _id: string
+    href: string | null
+    is_inquireable: boolean | null
     sale: {
-      is_auction: boolean | null,
-      is_live_open: boolean | null,
-      is_open: boolean | null,
-      is_closed: boolean | null,
-    } | null,
+      is_auction: boolean | null
+      is_live_open: boolean | null
+      is_open: boolean | null
+      is_closed: boolean | null
+    } | null
     partner: {
-      type: string | null,
-    } | null,
+      type: string | null
+    } | null
     sale_artwork: {
       highest_bid: {
-        display: string | null,
-      } | null,
+        display: string | null
+      } | null
       opening_bid: {
-        display: string | null,
-      } | null,
+        display: string | null
+      } | null
       counts: {
-        bidder_positions: boolean | number | string | null,
-      } | null,
-    } | null,
-  },
+        bidder_positions: boolean | number | string | null
+      } | null
+    } | null
+  }
 }

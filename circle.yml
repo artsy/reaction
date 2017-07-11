@@ -1,3 +1,8 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
 checkout:
   post:
     - nvm install && nvm alias default node
@@ -12,12 +17,13 @@ test:
   override:
     - yarn lint
     - yarn type-check
-    - yarn test
+    - yarn test -- --runInBand
 
 deployment:
   demo:
     branch: master
     commands:
+      - cp .env.oss .env
       - yarn deploy-storybook
   npm:
     tag: /v[0-9]+(\.[0-9]+)*/

@@ -9,13 +9,16 @@ import colors from "../../assets/colors"
 import { primary, secondary } from "../../assets/fonts"
 import { labelMap } from "./param_map"
 
+import { find } from "lodash"
+
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
   onSelect?: any
+  selected?: any
 }
 
 interface DropdownState {
-  isHovered: boolean,
+  isHovered: boolean
   selected: any
 }
 
@@ -24,8 +27,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     super(props)
     this.state = {
       isHovered: false,
-      selected: {},
+      selected: props.selected || {},
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ selected: nextProps.selected })
   }
 
   toggleHover(value) {
@@ -36,14 +43,22 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
   onSelect(count, slice) {
     this.setState({
-      selected: count,
+      selected: count.id,
       isHovered: false,
     })
     this.props.onSelect(count, slice)
   }
 
+  getSelectedName(id) {
+    const selectedCount = find(this.props.aggregation.counts, count => count.id === id)
+    return selectedCount ? selectedCount.name : null
+  }
+
   render() {
     const slice = this.props.aggregation.slice
+    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
+    const selectedName = this.getSelectedName(this.state.selected)
+
     let navItems = this.props.aggregation.counts.map(count => {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
@@ -53,13 +68,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       )
     })
 
-    const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
     navItems.unshift(
-      (
-        <NavItem key="all" onClick={() => this.onSelect({value: "*"}, slice)}>
-          <span>All {labels.plural}</span>
-        </NavItem>
-      ),
+      <NavItem key="all" onClick={() => this.onSelect({ value: "*" }, slice)}>
+        <span>All {labels.plural}</span>
+      </NavItem>
     )
 
     let buttonColor = "white"
@@ -67,7 +79,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     let superLabelColor = "black"
     let navStyle = { display: "none" }
 
-    if (this.state.selected.name) {
+    if (selectedName) {
       buttonTextColor = colors.purpleRegular
     }
 
@@ -78,8 +90,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       navStyle = { display: "block" }
     }
 
-    const labelText = this.state.selected.name || labels.label
-    const superLabelText = this.state.selected.name ? labels.label : null
+    const labelText = selectedName || labels.label
+    const superLabelText = selectedName ? labels.label : null
 
     return (
       <div
@@ -90,12 +102,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
           {labelText}
-          <Icon
-            name="arrow-down"
-            fontSize="9px"
-            color={buttonTextColor}
-            style={{ position: "absolute", right: 15 }}
-          />
+          <Icon name="arrow-down" fontSize="9px" color={buttonTextColor} style={{ position: "absolute", right: 15 }} />
         </Button>
         <Nav style={navStyle}>
           {navItems}
@@ -111,7 +118,7 @@ const Button = styled.div`
   border: 1px solid ${colors.grayRegular};
   display: inline-block;
   line-height: 160%;
-  padding: 15px 35px 10px 18px;
+  padding: 15px 35px 15px 18px;
   font-size: 13px;
   vertical-align: middle;
   max-width: 120px;
@@ -178,11 +185,11 @@ export default Relay.createContainer(StyledDropdown, {
 
 interface RelayProps {
   aggregation: {
-    slice: string | null,
+    slice: string | null
     counts: {
-      name: string | null,
-      id: string | null,
-      count: number | null,
-    },
-  } | null,
+      name: string | null
+      id: string | null
+      count: number | null
+    }
+  } | null
 }

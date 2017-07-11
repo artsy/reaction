@@ -1,4 +1,4 @@
-const { configure } = require("@kadira/storybook")
+const { configure } = require("@storybook/react")
 
 function loadStories() {
   require("../components/__stories__/artwork")
@@ -14,6 +14,20 @@ function loadStories() {
   require("../components/__stories__/inquiry_artwork")
   require("../components/__stories__/save")
   require("../components/__stories__/spinner")
+  require("../components/__stories__/fillwidth")
+  require("../components/__stories__/artist_follow")
+  require("../components/__stories__/gene")
+  require("../components/__stories__/fair_booth")
+  require("../components/publishing/__stories__/publishing")
 }
 
 configure(loadStories, module)
+
+import { setOptions } from '@storybook/addon-options';
+
+setOptions({
+  name: 'Reaction Force',
+  url: 'http://artsy.github.io',
+  showDownPanel: false,
+  sortStoriesByKind: true,
+})

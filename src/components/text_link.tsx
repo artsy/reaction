@@ -23,7 +23,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 
 const StyledTextLink = styled(TextLink)`
   color: ${props => props.color};
-  text-decoration: ${props => props.underline ? "underline" : "none"}
+  text-decoration: ${props => (props.underline ? "underline" : "none")}
 `
 
 StyledTextLink.defaultProps = {

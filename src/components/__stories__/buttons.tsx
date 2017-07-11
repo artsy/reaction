@@ -1,4 +1,4 @@
-import { storiesOf } from "@kadira/storybook"
+import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
 import Button, { ButtonState } from "../buttons/default"
@@ -47,17 +47,11 @@ storiesOf("Buttons", Button)
     )
   })
   .add("Block Button", () => {
-    return (
-      <Button block>Block Button</Button>
-    )
+    return <Button block>Block Button</Button>
   })
   .add("Facebook Button", () => {
-    return (
-      <FacebookButton />
-    )
+    return <FacebookButton />
   })
   .add("Twitter Button", () => {
-    return (
-      <TwitterButton />
-    )
+    return <TwitterButton />
   })

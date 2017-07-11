@@ -14,14 +14,14 @@ export interface ContextProps {
   /**
    * The currently signed-in user.
    */
-  currentUser?: User,
+  currentUser?: User
 }
 
 interface PrivateContextProps extends ContextProps {
   /**
    * This prop solely exists to verify that a consumer is nested inside a provider.
    */
-  _isNestedInProvider: boolean,
+  _isNestedInProvider: boolean
 }
 
 const ContextTypes: React.ValidationMap<PrivateContextProps> = {
@@ -36,7 +36,7 @@ const ContextTypes: React.ValidationMap<PrivateContextProps> = {
  * @see {@link ContextConsumer}
  */
 export class ContextProvider extends React.Component<ContextProps, null>
-                             implements React.ChildContextProvider<PrivateContextProps> {
+  implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
   constructor(props) {
@@ -70,7 +70,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
  * @param Component The component that needs Artsy specific context props.
  */
 export function ContextConsumer<P>(
-  Component: React.ComponentClass<P> | React.StatelessComponent<P>,
+  Component: React.ComponentClass<P> | React.StatelessComponent<P>
 ): React.ComponentClass<P> {
   const name = Component.displayName || Component.name
   return class extends React.Component<P, void> {
