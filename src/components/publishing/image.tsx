@@ -18,6 +18,7 @@ const CaptionLink = styled.div`
   cursor: pointer;
   display: inline-block;
   min-width: 7.1em;
+  white-space: nowrap;
   align-self: flex-start;
 `
 
