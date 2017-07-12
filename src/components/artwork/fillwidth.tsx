@@ -3,7 +3,7 @@ import * as Relay from "react-relay"
 
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import getDimensions from "../fillwidth"
+import fillwidthDimensions from "../../utils/fillwidth"
 import Artwork from "./fillwidth_item"
 
 import { find } from "lodash"
@@ -42,7 +42,7 @@ export class Fillwidth extends React.Component<Props, null> {
 
   render() {
     const artworks = this.props.artworks.edges
-    const dimensions = getDimensions(
+    const dimensions = fillwidthDimensions(
       this.props.artworks.edges,
       this.props.size.width,
       this.props.gutter,

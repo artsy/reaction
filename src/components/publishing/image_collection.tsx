@@ -1,51 +1,42 @@
 import { find } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
-import getDimensions from "../fillwidth"
+import fillwidthDimensions from "../../utils/fillwidth"
 import Artwork from "./artwork"
 import Image from "./image"
+import ImageCollectionItem from "./image_collection_item"
 
 function renderImages(images, dimensions, gutter) {
   const renderedImages = images.map((image, i) => {
     const url = image.url ? image.url : image.image
     const imageSize = find(dimensions, ["__id", url])
+
+    let renderedImage
     if (image.type === "image") {
-      return (
-        <FillwidthItem
-          style={{
-            marginRight: i === dimensions.length - 1 ? 0 : gutter,
-            width: imageSize.width,
-            height: imageSize.height,
-          }}
-          key={image.url}
-        >
-          <Image image={image} />
-        </FillwidthItem>
-      )
+      renderedImage = <Image image={image} />
     } else if (image.type === "artwork") {
-      return (
-        <FillwidthItem
-          style={{
-            marginRight: i === dimensions.length - 1 ? 0 : gutter,
-            width: imageSize.width,
-            height: imageSize.height,
-          }}
-          key={image.url}
-        >
-          <Artwork artwork={image} />
-        </FillwidthItem>
-      )
+      renderedImage = <Artwork artwork={image} />
+    } else {
+      return false
     }
+
+    return (
+      <ImageCollectionItem
+        key={image.url}
+        margin={i === dimensions.length - 1 ? 0 : gutter}
+        width={imageSize.width}
+        height={imageSize.height}
+      >
+        {renderedImage}
+      </ImageCollectionItem>
+    )
   })
   return renderedImages
 }
 
 function ImageCollection(props) {
-  const { images } = props
-  const gutter = 10
-  const width = 900
-  const targetHeight = 400
-  const dimensions = getDimensions(images, width, gutter, targetHeight)
+  const { images, width, targetHeight, gutter } = props
+  const dimensions = fillwidthDimensions(images, width, gutter, targetHeight)
   return (
     <ImageCollectionContainer>
       {renderImages(images, dimensions, gutter)}
@@ -57,7 +48,5 @@ const ImageCollectionContainer = styled.div`
   width: 100%;
   display: flex;
 `
-const FillwidthItem = styled.div`
 
-`
 export default ImageCollection
