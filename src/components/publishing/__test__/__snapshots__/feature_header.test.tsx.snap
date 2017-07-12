@@ -2,7 +2,7 @@
 
 exports[`renders full layout properly 1`] = `
 <div
-  className="sc-ifAKCX hMpiYk"
+  className="sc-ifAKCX cPQXDn"
   data-layout="full"
 >
   <div>
@@ -21,33 +21,33 @@ exports[`renders full layout properly 1`] = `
       className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-xem9vw-2 bhdvPs"
+        className="file__Vertical-s8ykefz-2 eqHQXD"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-xem9vw-1 igXYRE"
+        className="file__Title-s8ykefz-1 fwKXkC"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-xem9vw-4 hpRiCe"
+        className="file__SubHeader-s8ykefz-4 tMQel"
       >
         <div
-          className="file__SubHeaderText-xem9vw-6 ZcHLn"
+          className="file__SubHeaderText-s8ykefz-6 Drobf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-xem9vw-7 hjcNYe"
+          className="file__AuthorDate-s8ykefz-7 fOLxmk"
         >
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Jan 4, 2017
           </div>
@@ -60,7 +60,7 @@ exports[`renders full layout properly 1`] = `
 
 exports[`renders split layout properly 1`] = `
 <div
-  className="sc-ifAKCX hMpiYk"
+  className="sc-ifAKCX cPQXDn"
   data-layout="split"
 >
   <div
@@ -74,33 +74,33 @@ exports[`renders split layout properly 1`] = `
       className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-xem9vw-2 bhdvPs"
+        className="file__Vertical-s8ykefz-2 eqHQXD"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-xem9vw-1 igXYRE"
+        className="file__Title-s8ykefz-1 fwKXkC"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-xem9vw-4 hpRiCe"
+        className="file__SubHeader-s8ykefz-4 tMQel"
       >
         <div
-          className="file__SubHeaderText-xem9vw-6 ZcHLn"
+          className="file__SubHeaderText-s8ykefz-6 Drobf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-xem9vw-7 hjcNYe"
+          className="file__AuthorDate-s8ykefz-7 fOLxmk"
         >
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Jan 4, 2017
           </div>
@@ -113,7 +113,7 @@ exports[`renders split layout properly 1`] = `
 
 exports[`renders text layout properly 1`] = `
 <div
-  className="sc-ifAKCX hMpiYk"
+  className="sc-ifAKCX cPQXDn"
   data-layout="text"
 >
   <div
@@ -123,33 +123,33 @@ exports[`renders text layout properly 1`] = `
       className="sc-htpNat dcTJHt"
     >
       <div
-        className="file__Vertical-xem9vw-2 bhdvPs"
+        className="file__Vertical-s8ykefz-2 eqHQXD"
       >
         Market Analysis
       </div>
       <div
-        className="file__Title-xem9vw-1 igXYRE"
+        className="file__Title-s8ykefz-1 fwKXkC"
       >
         Looking Into the Future
       </div>
       <div
-        className="file__SubHeader-xem9vw-4 hpRiCe"
+        className="file__SubHeader-s8ykefz-4 tMQel"
       >
         <div
-          className="file__SubHeaderText-xem9vw-6 ZcHLn"
+          className="file__SubHeaderText-s8ykefz-6 Drobf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDate-xem9vw-7 hjcNYe"
+          className="file__AuthorDate-s8ykefz-7 fOLxmk"
         >
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Daniel Kunitz
           </div>
           <div
-            className="file__BulletText-xem9vw-5 kkJwtL"
+            className="file__BulletText-s8ykefz-5 cjAXZc"
           >
             Jan 4, 2017
           </div>
@@ -157,7 +157,7 @@ exports[`renders text layout properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-xem9vw-3 gxZoGM"
+      className="file__Image-s8ykefz-3 hmZbdW"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
