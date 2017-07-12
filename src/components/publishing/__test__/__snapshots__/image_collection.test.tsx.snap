@@ -2,17 +2,13 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-s7oiy6p-0 lcMizR"
+  className="file__ImageCollectionContainer-s47wg1-0 eXgPCO"
 >
   <div
-    className="file__FillwidthItem-s7oiy6p-1 bIgagF"
-    style={
-      Object {
-        "height": 298,
-        "marginRight": 10,
-        "width": 415,
-      }
-    }
+    className="file-s295gfq-0 dQkKFU"
+    height={298}
+    margin={10}
+    width={415}
   >
     <div
       className="display-artwork"
@@ -65,14 +61,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__FillwidthItem-s7oiy6p-1 bIgagF"
-    style={
-      Object {
-        "height": 299,
-        "marginRight": 10,
-        "width": 224,
-      }
-    }
+    className="file-s295gfq-0 gkaePh"
+    height={299}
+    margin={10}
+    width={224}
   >
     <div
       className="article-image"
@@ -102,14 +94,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__FillwidthItem-s7oiy6p-1 bIgagF"
-    style={
-      Object {
-        "height": 299,
-        "marginRight": 0,
-        "width": 238,
-      }
-    }
+    className="file-s295gfq-0 etObiv"
+    height={299}
+    margin={0}
+    width={238}
   >
     <div
       className="article-image"
