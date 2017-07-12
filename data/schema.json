@@ -2373,6 +2373,16 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Conversation",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Message",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "NotificationsFeedItem",
               "ofType": null
             },
@@ -22207,7 +22217,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ConversationType",
+                "name": "Conversation",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -22215,7 +22225,7 @@
             },
             {
               "name": "conversations",
-              "description": null,
+              "description": "Conversations, usually between a user and partner.",
               "args": [
                 {
                   "name": "after",
@@ -22260,7 +22270,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ConversationTypeConnection",
+                "name": "ConversationConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -22509,6 +22519,29 @@
               "name": "name",
               "description": null,
               "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "initials",
+              "description": null,
+              "args": [
+                {
+                  "name": "length",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "3"
+                }
+              ],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -24098,9 +24131,25 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ConversationType",
+          "name": "Conversation",
           "description": "A conversation.",
           "fields": [
+            {
+              "name": "__id",
+              "description": "A globally unique ID.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "id",
               "description": "Impulse id.",
@@ -24134,7 +24183,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ConversationInitiatorType",
+                  "name": "ConversationInitiator",
                   "ofType": null
                 }
               },
@@ -24150,7 +24199,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ConversationResponderType",
+                  "name": "ConversationResponder",
                   "ofType": null
                 }
               },
@@ -24405,7 +24454,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "MessageTypeConnection",
+                "name": "MessageConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -24413,13 +24462,19 @@
             }
           ],
           "inputFields": null,
-          "interfaces": [],
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },
         {
           "kind": "OBJECT",
-          "name": "ConversationInitiatorType",
+          "name": "ConversationInitiator",
           "description": "The participant who started the conversation, currently always a User",
           "fields": [
             {
@@ -24485,6 +24540,29 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "initials",
+              "description": null,
+              "args": [
+                {
+                  "name": "length",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "3"
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -24494,7 +24572,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ConversationResponderType",
+          "name": "ConversationResponder",
           "description": "The participant responding to the conversation, currently always a Partner",
           "fields": [
             {
@@ -24564,6 +24642,29 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "initials",
+              "description": null,
+              "args": [
+                {
+                  "name": "length",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "3"
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -24573,7 +24674,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "MessageTypeConnection",
+          "name": "MessageConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -24601,7 +24702,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "MessageTypeEdge",
+                  "name": "MessageEdge",
                   "ofType": null
                 }
               },
@@ -24616,7 +24717,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "MessageTypeEdge",
+          "name": "MessageEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -24625,7 +24726,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "MessageType",
+                "name": "Message",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -24655,12 +24756,28 @@
         },
         {
           "kind": "OBJECT",
-          "name": "MessageType",
+          "name": "Message",
           "description": "A message in a conversation.",
           "fields": [
             {
+              "name": "__id",
+              "description": "A globally unique ID.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "id",
-              "description": "Impulse id.",
+              "description": "Impulse message id.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -24670,13 +24787,53 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "impulse_id",
+              "description": "Impulse message id.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "is_from_user",
+              "description": "True if message is from the user to the partner.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "from_email_address",
-              "description": "Email address of sender.",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "raw_text",
+              "description": "Full unsanitized text.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -24691,8 +24848,96 @@
               "deprecationReason": null
             },
             {
-              "name": "snippet",
-              "description": "A snippet of the full message",
+              "name": "attachments",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Attachment",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "is_invoice",
+              "description": "True if message is an invoice message",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "created_at",
+              "description": null,
+              "args": [
+                {
+                  "name": "convert_to_utc",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "format",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "timezone",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Attachment",
+          "description": null,
+          "fields": [
+            {
+              "name": "id",
+              "description": "Attachment id.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -24707,7 +24952,39 @@
               "deprecationReason": null
             },
             {
-              "name": "radiation_message_id",
+              "name": "content_type",
+              "description": "Content type of file.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "file_name",
+              "description": "File name.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "download_url",
               "description": null,
               "args": [],
               "type": {
@@ -24730,7 +25007,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ConversationTypeConnection",
+          "name": "ConversationConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -24758,7 +25035,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ConversationTypeEdge",
+                  "name": "ConversationEdge",
                   "ofType": null
                 }
               },
@@ -24773,7 +25050,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ConversationTypeEdge",
+          "name": "ConversationEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -24782,7 +25059,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "ConversationType",
+                "name": "Conversation",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -34669,7 +34946,7 @@
             },
             {
               "name": "updateConversation",
-              "description": null,
+              "description": "Updating buyer outcome of a conversation.",
               "args": [
                 {
                   "name": "input",
@@ -34679,7 +34956,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "UpdateConversationInput",
+                      "name": "UpdateConversationMutationInput",
                       "ofType": null
                     }
                   },
@@ -34688,14 +34965,14 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "UpdateConversationPayload",
+                "name": "UpdateConversationMutationPayload",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "appendConversationThread",
+              "name": "sendConversationMessage",
               "description": "Appending a message to a conversation thread",
               "args": [
                 {
@@ -34706,7 +34983,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "AppendConversationThreadInput",
+                      "name": "SendConversationMessageMutationInput",
                       "ofType": null
                     }
                   },
@@ -34715,7 +34992,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "AppendConversationThreadPayload",
+                "name": "SendConversationMessageMutationPayload",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -35158,7 +35435,7 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "UpdateConversationInput",
+          "name": "UpdateConversationMutationInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -35260,7 +35537,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "UpdateConversationPayload",
+          "name": "UpdateConversationMutationPayload",
           "description": null,
           "fields": [
             {
@@ -35272,7 +35549,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ConversationType",
+                  "name": "Conversation",
                   "ofType": null
                 }
               },
@@ -35299,7 +35576,7 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "AppendConversationThreadInput",
+          "name": "SendConversationMessageMutationInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -35346,6 +35623,20 @@
               "defaultValue": null
             },
             {
+              "name": "reply_to_message_id",
+              "description": "The message being replied to",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "clientMutationId",
               "description": null,
               "type": {
@@ -35362,16 +35653,28 @@
         },
         {
           "kind": "OBJECT",
-          "name": "AppendConversationThreadPayload",
+          "name": "SendConversationMessageMutationPayload",
           "description": null,
           "fields": [
             {
-              "name": "message",
+              "name": "conversation",
               "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "MessagePayloadType",
+                "name": "Conversation",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "messageEdge",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "MessageEdge",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -35385,49 +35688,6 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "MessagePayloadType",
-          "description": "Expected payload from a successful message post",
-          "fields": [
-            {
-              "name": "id",
-              "description": "Impulse id.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "radiation_message_id",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
               },
               "isDeprecated": false,
               "deprecationReason": null
