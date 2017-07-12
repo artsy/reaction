@@ -41,22 +41,10 @@ storiesOf("Publishing", Artwork)
       </div>
     )
   })
-<<<<<<< HEAD
-  .add("Imageset Preview - Classic", () => {
-    return <ImagesetPreviewClassic images={Images} />
-  })
-  .add("Imageset Preview", () => {
-    return (
-      <div style={{ maxWidth: 680, width: "100%" }}>
-        <ImagesetPreview section={ImageSetFull} />
-        <br />
-        <ImagesetPreview section={ImageSetMini} />
-=======
   .add("Image Collection", () => {
     return (
       <div>
         <ImageCollection images={Images} />
->>>>>>> 6bad1cf... Adds image collection component and starts fillwidth by extracting dimensions
       </div>
     )
   })
