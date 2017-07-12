@@ -5,6 +5,6 @@ import ImageCollection from "../image_collection"
 import { Images } from "./fixtures"
 
 it("renders properly", () => {
-  const image = renderer.create(<ImageCollection image={Images} />).toJSON()
+  const image = renderer.create(<ImageCollection images={Images} />).toJSON()
   expect(image).toMatchSnapshot()
 })

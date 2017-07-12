@@ -1,6 +1,6 @@
 import { reduce } from "lodash"
 
-const getDimensions = (items, containerWidth, gutter, targetHeight) => {
+const fillwidthDimensions = (items, containerWidth, gutter, targetHeight) => {
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
    * @param img a dimension object that references an artwork image
@@ -74,4 +74,4 @@ const getDimensions = (items, containerWidth, gutter, targetHeight) => {
   return dimensions
 }
 
-export default getDimensions
+export default fillwidthDimensions
