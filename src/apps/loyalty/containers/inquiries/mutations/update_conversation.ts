@@ -33,7 +33,7 @@ export default class UpdateConversationMutation extends Relay.Mutation<MutationP
 
   getFatQuery() {
     return Relay.QL`
-      fragment on UpdateConversationPayload {
+      fragment on UpdateConversationMutationPayload {
         conversations {
           id
         }
