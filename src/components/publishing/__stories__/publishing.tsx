@@ -46,7 +46,7 @@ storiesOf("Publishing", Artwork)
   .add("Image Collection", () => {
     return (
       <div>
-        <ImageCollection images={Images} />
+        <ImageCollection images={Images} style={{ width: "100%" }} />
       </div>
     )
   })

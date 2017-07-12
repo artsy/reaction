@@ -1,14 +1,6 @@
-// import * as React from "react"
-
-// import sizeMe from "react-sizeme"
-// import styled from "styled-components"
-// import FillWidthItem from "./fillwidth_item"
-
 import { reduce } from "lodash"
 
-const getDimensions = (items, containerWidth, gutter, width, targetHeight) => {
-  // const items = this.props.items.edges
-
+const getDimensions = (items, containerWidth, gutter, targetHeight) => {
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
    * @param img a dimension object that references an artwork image
@@ -31,14 +23,23 @@ const getDimensions = (items, containerWidth, gutter, width, targetHeight) => {
       },
       0
     )
-    return width - currentWidth - totalWhitespace()
+    return containerWidth - currentWidth - totalWhitespace()
   }
 
   // Get initial dimensions based on the targetHeight
   let dimensions = items.map(item => {
+    let id
+    let aspectRatio
+    if (item.node) {
+      id = item.node.__id
+      aspectRatio = item.node.image.aspect_ratio
+    } else {
+      id = item.url ? item.url : item.image
+      aspectRatio = item.width / item.height
+    }
     return {
-      __id: item.node.__id,
-      width: targetHeight * item.node.image.aspect_ratio,
+      __id: id,
+      width: targetHeight * aspectRatio,
       height: targetHeight,
     }
   })
