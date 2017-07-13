@@ -1,6 +1,6 @@
 import { reduce } from "lodash"
 
-const fillwidthDimensions = (items, containerWidth, gutter, targetHeight) => {
+const fillwidthDimensions = (items, containerWidth, gutter = 10, targetHeight) => {
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
    * @param img a dimension object that references an artwork image
@@ -30,6 +30,8 @@ const fillwidthDimensions = (items, containerWidth, gutter, targetHeight) => {
   let dimensions = items.map(item => {
     let id
     let aspectRatio
+
+    // Set id and aspectRatio for Relay or publishing
     if (item.node) {
       id = item.node.__id
       aspectRatio = item.node.image.aspect_ratio
@@ -37,6 +39,7 @@ const fillwidthDimensions = (items, containerWidth, gutter, targetHeight) => {
       id = item.url ? item.url : item.image
       aspectRatio = item.width / item.height
     }
+
     return {
       __id: id,
       width: targetHeight * aspectRatio,
