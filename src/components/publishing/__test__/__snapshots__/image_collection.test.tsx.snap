@@ -2,10 +2,10 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-s47wg1-0 eXgPCO"
+  className="file__ImageCollectionContainer-s19j8h0e-0 jFhFbf"
 >
   <div
-    className="file-s295gfq-0 dQkKFU"
+    className="file-s1eyfy8g-0 kCijgr"
     height={298}
     margin={10}
     width={415}
@@ -61,7 +61,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s295gfq-0 gkaePh"
+    className="file-s1eyfy8g-0 cXowyh"
     height={299}
     margin={10}
     width={224}
@@ -94,7 +94,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s295gfq-0 etObiv"
+    className="file-s1eyfy8g-0 bqIqBX"
     height={299}
     margin={0}
     width={238}

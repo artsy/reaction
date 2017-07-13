@@ -2,7 +2,7 @@
 
 exports[`<ForgotPassword /> renders the snapshot 1`] = `
 <div
-  className="file__Container-yxmg7g-0 gDnvxk"
+  className="file__Container-s1up4l80-0 eEevDd"
 >
   <div
     className="file-s1ekx40u-0 iuEcGN"
@@ -24,7 +24,7 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
   </div>
   <input
     autoFocus={true}
-    className="file__StyledInput-yxmg7g-1 ebBPuw file__StyledInput-s2fklig-0 ffQmtI"
+    className="file__StyledInput-s1up4l80-1 koOAAW file__StyledInput-s2fklig-0 ffQmtI"
     name="email"
     onChange={[Function]}
     placeholder="Email"
