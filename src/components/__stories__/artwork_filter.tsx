@@ -30,7 +30,7 @@ class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterA
 
   render() {
     const dropdowns = this.props.filter_artworks.filter_artworks.aggregations.map(aggregation =>
-      <Dropdown aggregation={aggregation} key={aggregation.slice} onSelect={this.showSelection} />
+      <Dropdown aggregation={aggregation} key={aggregation.slice} onSelect={this.showSelection.bind(this)} />
     )
 
     const selected = <div>{this.state.selected}</div>

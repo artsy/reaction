@@ -1,4 +1,4 @@
-import * as numeral from "numeral"
+import numeral from "numeral"
 import * as React from "react"
 import * as Relay from "react-relay"
 
@@ -102,7 +102,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
           {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
           {labelText}
-          <Icon name="arrow-down" fontSize="9px" color={buttonTextColor} style={{ position: "absolute", right: 15 }} />
+          <Icon name="arrow-down" fontSize="9px" color={buttonTextColor} style={{ position: "absolute", right: 15, lineHeight: "inherit" }} />
         </Button>
         <Nav style={navStyle}>
           {navItems}
