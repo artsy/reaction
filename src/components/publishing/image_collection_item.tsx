@@ -2,13 +2,15 @@ import * as React from "react"
 import styled from "styled-components"
 
 interface FillwidthItemProps extends React.HTMLProps<HTMLDivElement> {
-  width?: any
-  height?: any
-  margin?: any
+  width?: number
+  height?: number
+  margin?: number
+  key: string
 }
 
 const FillwidthItem: React.SFC<FillwidthItemProps> = props => {
-  return <div {...props} />
+  const { key, ...rest } = Object.assign({}, props)
+  return <div {...rest} key={key} />
 }
 
 export default styled(FillwidthItem)`

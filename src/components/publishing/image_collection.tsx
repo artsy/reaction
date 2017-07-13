@@ -22,7 +22,7 @@ function renderImages(images, dimensions, gutter) {
 
     return (
       <ImageCollectionItem
-        key={image.url}
+        key={url}
         margin={i === dimensions.length - 1 ? 0 : gutter}
         width={imageSize.width}
         height={imageSize.height}
@@ -33,8 +33,14 @@ function renderImages(images, dimensions, gutter) {
   })
   return renderedImages
 }
+interface ImageCollectionProps {
+  images: object
+  width: number
+  targetHeight?: number
+  gutter?: number
+}
 
-function ImageCollection(props) {
+const ImageCollection: React.SFC<ImageCollectionProps> = props => {
   const { images, width, targetHeight, gutter } = props
   const dimensions = fillwidthDimensions(images, width, gutter, targetHeight)
   return (
