@@ -15,8 +15,15 @@ import Typography from "./typography"
 storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
     return (
-      <div style={{ width: 400 }}>
-        <Artwork linked artwork={Images[0]} />
+      <div>
+        <div style={{ width: 400 }}>
+          <Artwork linked artwork={Images[0]} />
+        </div>
+        <hr />
+        <p>Classic: </p>
+        <div style={{ width: 400 }}>
+          <Artwork linked artwork={Images[0]} layout="classic" />
+        </div>
       </div>
     )
   })
@@ -34,11 +41,17 @@ storiesOf("Publishing", Artwork)
   .add("Image", () => {
     return (
       <div>
+        <p>Standard:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[1]} />
         </div>
+        <p>Long Caption:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
+        </div>
+        <p>Classic:</p>
+        <div style={{ width: 400 }}>
+          <Image layout="classic" image={Images[2]} />
         </div>
       </div>
     )
