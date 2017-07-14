@@ -1,6 +1,10 @@
 import React from "react"
-import TextLink from "../text_link"
+import styled from "styled-components"
 import ArtworkCaption from "./artwork_caption"
+
+const ArtworkImageLink = styled.a`
+  text-underline: none;
+`
 
 interface ArtworkImageProps {
   artwork: any
@@ -9,11 +13,14 @@ interface ArtworkImageProps {
 }
 
 const ArtworkImage: React.SFC<ArtworkImageProps> = props => {
-  const { artwork, linked, layout } = props
+  const { artwork, linked } = props
   const image = <img src={artwork.image} className="display-artwork__image" width={"100%"} />
   if (linked) {
-    const color = layout === "classic" ? "#666" : "#999"
-    return <TextLink href={"/artwork/" + artwork.slug} color={color}>{image}</TextLink>
+    return (
+      <ArtworkImageLink href={"/artwork/" + artwork.slug}>
+        {image}
+      </ArtworkImageLink>
+    )
   } else {
     return image
   }

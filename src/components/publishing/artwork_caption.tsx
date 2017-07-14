@@ -4,12 +4,21 @@ import TextLink from "../text_link"
 import Fonts from "./fonts"
 
 const TruncatedLine = styled.div`
+  color: #999;
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  ${Fonts.unica("s14", "medium")}
-  color: #999;
+`
+
+interface StyledArtworkCaptionProps {
+  layout?: string
+}
+
+const StyledArtworkCaption = styled.div`
+  ${(props: StyledArtworkCaptionProps) =>
+    props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium")}
+  display: ${(props: StyledArtworkCaptionProps) => (props.layout === "classic" ? "block" : "flex")}
 `
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
@@ -104,17 +113,19 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     const { artwork, layout } = this.props
     if (layout === "classic") {
       return (
-        <div className="display-artwork__caption">
-          <strong>
-            {this.renderArtists(artwork)}
-          </strong>
-          {this.renderTitleDate(artwork)}
-          {this.renderPartner(artwork)}
-        </div>
+        <StyledArtworkCaption layout={layout} className="display-artwork__caption">
+          <TruncatedLine>
+            <strong>
+              {this.renderArtists(artwork)}
+            </strong>
+            {this.renderTitleDate(artwork)}
+            {this.renderPartner(artwork)}
+          </TruncatedLine>
+        </StyledArtworkCaption>
       )
     } else {
       return (
-        <div className="display-artwork__caption">
+        <StyledArtworkCaption layout={layout} className="display-artwork__caption">
           <TruncatedLine>
             <strong>
               {this.renderArtists(artwork)}
@@ -124,7 +135,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           <TruncatedLine>
             {this.renderPartner(artwork)}
           </TruncatedLine>
-        </div>
+        </StyledArtworkCaption>
       )
     }
   }
