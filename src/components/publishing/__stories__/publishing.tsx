@@ -5,9 +5,10 @@ import Artwork from "../artwork"
 import FeatureHeader from "../feature_header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
+import Imageset from "../imageset"
 import ImagesetPreview from "../imageset_preview"
 
-import { FeatureHeaders, Images } from "../__test__/fixtures"
+import { FeatureHeaders, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
 
 import Typography from "./typography"
 
@@ -19,12 +20,9 @@ storiesOf("Publishing", Artwork)
       </div>
     )
   })
-  .add("Imageset Preview", () => {
-    return <ImagesetPreview images={Images} />
-  })
   .add("Icons", () => {
     return (
-      <div style={{ width: 50 }}>
+      <div style={{ width: 45 }}>
         <IconImageset />
         <p>Imageset</p>
       </div>
@@ -39,6 +37,18 @@ storiesOf("Publishing", Artwork)
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
         </div>
+      </div>
+    )
+  })
+  .add("Imageset Preview - Classic", () => {
+    return <ImagesetPreview images={Images} />
+  })
+  .add("Imageset Preview", () => {
+    return (
+      <div style={{ maxWidth: 680, width: "100%" }}>
+        <Imageset section={ImageSetFull} />
+        <br />
+        <Imageset section={ImageSetMini} />
       </div>
     )
   })
