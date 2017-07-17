@@ -5,16 +5,19 @@ import ArtworkCaption from "./artwork_caption"
 const ArtworkImageLink = styled.a`
   text-underline: none;
 `
+const BlockImage = styled.img`
+  display: block;
+`
 
-interface ArtworkImageProps {
+interface ArtworkProps {
   artwork: any
-  linked?: boolean
   layout?: string
+  linked?: boolean
 }
 
-const ArtworkImage: React.SFC<ArtworkImageProps> = props => {
+const ArtworkImage: React.SFC<ArtworkProps> = props => {
   const { artwork, linked } = props
-  const image = <img src={artwork.image} className="display-artwork__image" width={"100%"} />
+  const image = <BlockImage src={artwork.image} className="display-artwork__image" width="100%" />
   if (linked) {
     return (
       <ArtworkImageLink href={"/artwork/" + artwork.slug}>
@@ -25,18 +28,12 @@ const ArtworkImage: React.SFC<ArtworkImageProps> = props => {
     return image
   }
 }
-interface ArtworkProps {
-  artwork?: any
-  layout?: string
-  linked?: boolean
-}
 
 const Artwork: React.SFC<ArtworkProps> = props => {
-  const { artwork, layout } = props
   return (
     <div className="display-artwork">
-      <ArtworkImage linked artwork={artwork} />
-      <ArtworkCaption artwork={artwork} layout={layout} />
+      <ArtworkImage {...props} />
+      <ArtworkCaption {...props} />
     </div>
   )
 }

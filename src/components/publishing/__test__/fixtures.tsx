@@ -39,6 +39,49 @@ export const Images = [
   },
 ]
 
+export const Artworks = [
+  {
+    type: "artwork",
+    id: "589a6291275b2410d1beb6a5",
+    slug: "fernando-botero-nude-on-the-beach",
+    date: "2000",
+    title: "Nude on the Beach",
+    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    partner: {
+      name: "Gary Nader",
+    },
+    artist: {
+      name: "Fernando Botero",
+    },
+    width: 1152,
+    height: 826,
+  },
+  {
+    type: "artwork",
+    id: "589a6291275b2410d1beb6a5",
+    slug: "fernando-botero-nude-on-the-beach",
+    date: "2000",
+    title: "Nude on the Beach",
+    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    partner: {
+      name: "Gary Nader",
+      slug: "gary-nader",
+    },
+    artists: [
+      {
+        name: "Fernando Botero",
+        slug: "fernando-botero",
+      },
+      {
+        name: "Frida Kahlo",
+        slug: "frida-kahlo",
+      },
+    ],
+    width: 1152,
+    height: 826,
+  },
+]
+
 export const FeatureHeaders = [
   {
     layout: "text",
