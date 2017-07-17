@@ -61,24 +61,24 @@ const SubTitleCount = styled.div`
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
-  margin-left: 40px;
+  margin-left: 20px;
   text-align: right;
   > svg {
     height: 98%;
   }
 `
 
-class ImagesetPreview extends Component<any, any> {
+class ImageSetPreview extends Component<any, any> {
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
     return src
   }
-  textSection(layout) {
-    if (layout === "mini") {
+  textSection() {
+    if (this.props.section.layout === "mini") {
       return (
         <MiniWrapper>
-          {this.image(layout)}
+          {this.image()}
           <MiniInner>
             {this.title()}
             {this.icon()}
@@ -94,10 +94,10 @@ class ImagesetPreview extends Component<any, any> {
       )
     }
   }
-  image(layout) {
+  image() {
     const src = this.getImageUrl()
-    const width = layout === "full" ? "100%" : "auto"
-    const height = layout === "mini" ? "100%" : "auto"
+    const width = this.props.section.layout === "full" ? "100%" : "auto"
+    const height = this.props.section.layout === "mini" ? "100%" : "auto"
     return <img src={src} width={width} height={height} />
   }
   title() {
@@ -119,14 +119,13 @@ class ImagesetPreview extends Component<any, any> {
     )
   }
   render() {
-    const { layout } = this.props.section
-    const image = layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : ""
+    const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
     return (
       <div style={{ position: "relative" }}>
-        {this.textSection(layout)}
+        {this.textSection()}
         {image}
       </div>
     )
   }
 }
-export default ImagesetPreview
+export default ImageSetPreview

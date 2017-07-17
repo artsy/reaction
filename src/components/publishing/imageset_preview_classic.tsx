@@ -33,7 +33,7 @@ const IconContainer = styled.div`
   position: relative;
 `
 
-class ImagesetPreviewClassic extends Component<any, any> {
+class ImageSetPreviewClassic extends Component<any, any> {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,12 +44,16 @@ class ImagesetPreviewClassic extends Component<any, any> {
   getVisibleImages(images) {
     let widths = []
     let hidden = 0
+    let container = 560
+    let containerHeight = 150
+    let iconContainer = 50
+    let margin = 10
     images.map((item, i) => {
-      const adjustedWidth = 150 * item.width / item.height
+      const adjustedWidth = containerHeight * item.width / item.height
       widths.push(adjustedWidth)
       const total = widths.reduce((a, b) => a + b, 0)
-      const margins = widths.length * 10
-      if (total + margins + 50 > 560) {
+      const margins = widths.length * margin
+      if (total + margins + iconContainer > container) {
         hidden = hidden + 1
       }
     })
@@ -58,12 +62,12 @@ class ImagesetPreviewClassic extends Component<any, any> {
 
   renderImages(images) {
     const items = images.slice(0, 4).map((item, i) => {
-      const src = item.image ? item.image : item.url
+      const src = item.image || item.url || ""
       if (i < this.state.visibleImages) {
         return (
           <img
             key={"imageset-" + i}
-            src={src || ""}
+            src={src}
             height="150"
             className="imageset-preview__image"
             style={{ marginRight: 10 }}
@@ -103,4 +107,4 @@ class ImagesetPreviewClassic extends Component<any, any> {
     )
   }
 }
-export default ImagesetPreviewClassic
+export default ImageSetPreviewClassic
