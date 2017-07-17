@@ -1,5 +1,5 @@
-import fillwidth from "./fillwidth"
+import fillwidthDimensions from "./fillwidth"
 
 export default {
-  fillwidth,
+  fillwidthDimensions,
 }

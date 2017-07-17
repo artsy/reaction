@@ -4,49 +4,61 @@ exports[`renders properly 1`] = `
 <div
   className="display-artwork"
 >
-  <img
-    className="display-artwork__image"
-    src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-    width="100%"
-  />
+  <a
+    className="file__ArtworkImageLink-s1wdol0a-0 hZsObq"
+    href="/artwork/fernando-botero-nude-on-the-beach"
+  >
+    <img
+      className="display-artwork__image"
+      src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+      width="100%"
+    />
+  </a>
   <div
-    className="display-artwork__caption"
+    className="display-artwork__caption sc-bdVaJa doqzCy"
   >
     <div
-      className="file__TruncatedLine-s1fags0c-0 cAwELk"
-    >
-      <strong>
-        <span>
-          Fernando Botero
-          
-        </span>
-      </strong>
-    </div>
-    <div
-      className="file__TruncatedLine-s1fags0c-0 cAwELk"
+      className="file__TruncatedLine-s1uu86vb-0 keVTMa"
     >
       <span
-        className="title"
+        className="artist-name"
       >
-        <em>
-          Nude on the Beach
-        </em>
+        <span
+          className="name"
+        >
+          Fernando Botero
+        </span>
+      </span>
+      <span>
+        <span
+          className="title"
+        >
+          <em>
+            Nude on the Beach
+          </em>
+        </span>
+        <span
+          className="comma"
+        >
+          , 
+        </span>
+        <span
+          className="date"
+        >
+          2000
+        </span>
       </span>
       <span
-        className="spacer"
+        className="comma"
       >
         , 
       </span>
-      <span
-        className="date"
-      >
-        2000
-      </span>
+      Gary Nader
     </div>
     <div
-      className="file__TruncatedLine-s1fags0c-0 cAwELk"
+      className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
     >
-      Gary Nader
+      View Fullscreen
     </div>
   </div>
 </div>

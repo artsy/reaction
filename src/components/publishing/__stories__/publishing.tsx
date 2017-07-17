@@ -16,12 +16,12 @@ storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
     return (
       <div>
-        <div style={{ width: 400 }}>
+        <div style={{ width: 800 }}>
           <Artwork linked artwork={Images[0]} />
         </div>
         <hr />
         <p>Classic: </p>
-        <div style={{ width: 400 }}>
+        <div style={{ width: 800 }}>
           <Artwork linked artwork={Images[0]} layout="classic" />
         </div>
       </div>
