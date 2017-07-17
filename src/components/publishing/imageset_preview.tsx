@@ -1,105 +1,131 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
+import Fonts from "./fonts"
 import IconImageset from "./icons/icon_imageset"
 
-import Fonts from "./fonts"
-
-const Wrapper = styled.div`
-  max-width: 580px;
-  width: 100%;
-  height: 150px;
+const FullWrapper = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  min-height: 50px;
+  width: auto;
+  max-width: calc(100% - 80px);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  `
+const MiniWrapper = styled.div`
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid #e5e5e5;
 `
-const Text = styled.div`
-  ${Fonts.avantgarde("s11")}
-  line-height: 1.35em;
-  margin: 0;
-`
-const Remaining = styled.div`
-  min-width: 50px;
-  padding: 10px;
+const MiniInner = styled.div`
+  display: flex;
+  justify-content: space-between;
   flex: 1;
+  width: auto;
+  margin-left: 20px;
+`
+const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #e5e5e5;
-  text-align: center;
+  justify-content: space-between;
+  height: 100%;
+  &[data-layout='mini'] {
+    height: 50px;
+  }
+`
+const Title = styled.div`
+  ${Fonts.unica("s19", "medium")}
+  margin-bottom: 8px;
+  line-height: 1.1em;
+  `
+const SubTitle = styled.div`
+  display: flex;
+`
+const SubTitlePrompt = styled.div`
+  ${Fonts.unica("s14", "medium")}
+`
+const SubTitleCount = styled.div`
+  ${Fonts.unica("s14")}
+  margin-left: 20px;
 `
 const IconContainer = styled.div`
-  width: 32px;
-  margin-bottom: 10px;
+  height: 45px;
   position: relative;
+  margin-left: 40px;
+  text-align: right;
+  > svg {
+    height: 98%;
+  }
 `
 
 class ImagesetPreview extends Component<any, any> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      visibleImages: this.getVisibleImages(this.props.images),
+  getImageUrl() {
+    const image = this.props.section.images[0]
+    const src = image.url ? image.url : image.image
+    return src
+  }
+  textSection(layout) {
+    if (layout === "mini") {
+      return (
+        <MiniWrapper>
+          {this.image(layout)}
+          <MiniInner>
+            {this.title()}
+            {this.icon()}
+          </MiniInner>
+        </MiniWrapper>
+      )
+    } else {
+      return (
+        <FullWrapper>
+          {this.title()}
+          {this.icon()}
+        </FullWrapper>
+      )
     }
   }
-
-  getVisibleImages(images) {
-    let widths = []
-    let hidden = 0
-    images.map((item, i) => {
-      const adjustedWidth = 150 * item.width / item.height
-      widths.push(adjustedWidth)
-      const total = widths.reduce((a, b) => a + b, 0)
-      const margins = widths.length * 10
-      if (total + margins + 50 > 560) {
-        hidden = hidden + 1
-      }
-    })
-    return widths.length - hidden
+  image(layout) {
+    const src = this.getImageUrl()
+    const width = layout === "full" ? "100%" : "auto"
+    const height = layout === "mini" ? "100%" : "auto"
+    return <img src={src} width={width} height={height} />
   }
-
-  renderImages(images) {
-    const items = images.slice(0, 4).map((item, i) => {
-      const src = item.image ? item.image : item.url
-      if (i < this.state.visibleImages) {
-        return (
-          <img
-            key={"imageset-" + i}
-            src={src || ""}
-            height="150"
-            className="imageset-preview__image"
-            style={{ marginRight: 10 }}
-          />
-        )
-      }
-    }, this)
-    return items
-  }
-
-  render() {
-    const { images } = this.props
-    const length = {
-      position: "absolute",
-      left: 8,
-      top: 14,
-    }
-    if (images.length > 9) {
-      length.left = 4
-    }
-
+  title() {
     return (
-      <Wrapper className="imageset-preview">
-        <div className="imageset-preview__container" style={{ display: "flex" }}>
-          {this.renderImages(images)}
-        </div>
-        <Remaining className="imageset-preview__remaining">
-          <IconContainer className="imageset-preview__icon-container">
-            <IconImageset />
-            <div className="imageset-preview__length" style={length}>
-              <Text>{images.length}</Text>
-            </div>
-          </IconContainer>
-          <Text className="imageset-preview__text">Enter Slideshow</Text>
-        </Remaining>
-      </Wrapper>
+      <TitleWrapper data-layout={this.props.section.layout}>
+        <Title>{this.props.section.title}</Title>
+        <SubTitle>
+          <SubTitlePrompt>View Slideshow</SubTitlePrompt>
+          <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+        </SubTitle>
+      </TitleWrapper>
+    )
+  }
+  icon() {
+    return (
+      <IconContainer>
+        <IconImageset />
+      </IconContainer>
+    )
+  }
+  render() {
+    const { layout } = this.props.section
+    const image = layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : ""
+    return (
+      <div style={{ position: "relative" }}>
+        {this.textSection(layout)}
+        {image}
+      </div>
     )
   }
 }
