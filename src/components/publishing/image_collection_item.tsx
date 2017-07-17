@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 
 interface FillwidthItemProps extends React.HTMLProps<HTMLDivElement> {
   width?: number
@@ -8,13 +8,10 @@ interface FillwidthItemProps extends React.HTMLProps<HTMLDivElement> {
   key: string
 }
 
-const FillwidthItem: React.SFC<FillwidthItemProps> = props => {
-  const { key, ...rest } = Object.assign({}, props)
-  return <div {...rest} key={key} />
-}
+const div: StyledFunction<FillwidthItemProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-export default styled(FillwidthItem)`
-  margin-right: ${props => props.margin + "px" || 0};
-  width: ${props => props.width + "px" || "auto"};
-  height: ${props => props.height + "px" || "auto"};
+export default div`
+  margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
+  width: ${props => (props.width ? props.width + "px" : "auto")};
+  height: ${props => (props.height ? props.height + "px" : "auto")};
 `
