@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="file__ImageCollectionContainer-s19j8h0e-0 jFhFbf"
+>
+  <div
+    className="sc-bdVaJa dmDgFe"
+    height={298}
+    width={415}
+  >
+    <div
+      className="display-artwork"
+    >
+      <img
+        className="display-artwork__image"
+        src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+        width="100%"
+      />
+      <div
+        className="display-artwork__caption"
+      >
+        <div
+          className="file__TruncatedLine-s1fags0c-0 cAwELk"
+        >
+          <strong>
+            <span>
+              Fernando Botero
+              
+            </span>
+          </strong>
+        </div>
+        <div
+          className="file__TruncatedLine-s1fags0c-0 cAwELk"
+        >
+          <span
+            className="title"
+          >
+            <em>
+              Nude on the Beach
+            </em>
+          </span>
+          <span
+            className="spacer"
+          >
+            , 
+          </span>
+          <span
+            className="date"
+          >
+            2000
+          </span>
+        </div>
+        <div
+          className="file__TruncatedLine-s1fags0c-0 cAwELk"
+        >
+          Gary Nader
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-bdVaJa gGBma"
+    height={299}
+    width={224}
+  >
+    <div
+      className="article-image"
+    >
+      <img
+        className="file__BlockImage-mvwcj2-3 WFCj"
+        src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+        width="100%"
+      />
+      <div
+        className="file__CaptionContainer-mvwcj2-2 dqVbIF"
+      >
+        <div
+          className="file__Figcaption-mvwcj2-0 frYyrr"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+            }
+          }
+        />
+        <div
+          className="file__CaptionLink-mvwcj2-1 bmAGxU"
+        >
+          View Fullscreen
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-bdVaJa iKUmlK"
+    height={299}
+    width={238}
+  >
+    <div
+      className="article-image"
+    >
+      <img
+        className="file__BlockImage-mvwcj2-3 WFCj"
+        src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+        width="100%"
+      />
+      <div
+        className="file__CaptionContainer-mvwcj2-2 dqVbIF"
+      >
+        <div
+          className="file__Figcaption-mvwcj2-0 frYyrr"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+            }
+          }
+        />
+        <div
+          className="file__CaptionLink-mvwcj2-1 bmAGxU"
+        >
+          View Fullscreen
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

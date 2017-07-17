@@ -90,7 +90,6 @@ class ForgotPasswordForm extends React.Component<Props, State> {
       ? <span>No account exists for <b>{this.state.email}</b></span>
       : <span>Instructions on how to reset your password have been sent to <b>{this.state.email}</b></span>
 
-    // console.log("rendering message", message)
     return this.state.showMessage
       ? <Message error={!!this.state.error}>
           {message}
