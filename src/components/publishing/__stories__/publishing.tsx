@@ -5,6 +5,7 @@ import Artwork from "../artwork"
 import FeatureHeader from "../feature_header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
+import ImageCollection from "../image_collection"
 import ImagesetPreview from "../imageset_preview"
 import ImagesetPreviewClassic from "../imageset_preview_classic"
 
@@ -49,6 +50,13 @@ storiesOf("Publishing", Artwork)
         <ImagesetPreview section={ImageSetFull} />
         <br />
         <ImagesetPreview section={ImageSetMini} />
+      </div>
+    )
+  })
+  .add("Image Collection", () => {
+    return (
+      <div>
+        <ImageCollection images={Images} width={900} targetHeight={400} gutter={10} />
       </div>
     )
   })
