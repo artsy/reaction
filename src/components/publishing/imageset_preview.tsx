@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 
 import Fonts from "./fonts"
-import IconImageset from "./icons/icon_imageset"
+import IconImageSet from "./icons/icon_imageset"
 
 const FullWrapper = styled.div`
   position: absolute;
@@ -114,7 +114,7 @@ class ImageSetPreview extends Component<any, any> {
   icon() {
     return (
       <IconContainer>
-        <IconImageset />
+        <IconImageSet />
       </IconContainer>
     )
   }

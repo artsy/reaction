@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import IconImageset from "./icons/icon_imageset"
+import IconImageSet from "./icons/icon_imageset"
 
 import Fonts from "./fonts"
 
@@ -96,7 +96,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
         </div>
         <Remaining className="imageset-preview__remaining">
           <IconContainer className="imageset-preview__icon-container">
-            <IconImageset />
+            <IconImageSet />
             <div className="imageset-preview__length" style={length}>
               <Text>{images.length}</Text>
             </div>
