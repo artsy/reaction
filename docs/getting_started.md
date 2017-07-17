@@ -60,7 +60,7 @@ interface State {
 class IconImageSet extends Component<Props, State> {
 ```
 
-If you don't have state at all, write `void` instead in the second argument: `Component<Props, void>`. That's your 
+If you don't have state at all, write `null` instead in the second argument: `Component<Props, null>`. That's your 
 compiler errors sorted, so your component is working. Next, you want to preview it in Storybooks.
 
 #### Storybooks
