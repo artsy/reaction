@@ -32,6 +32,10 @@ const IconContainer = styled.div`
   margin-bottom: 10px;
   position: relative;
 `
+const container = 560
+const containerHeight = 150
+const iconContainer = 50
+const margin = 10
 
 class ImageSetPreviewClassic extends Component<any, any> {
   constructor(props) {
@@ -44,10 +48,6 @@ class ImageSetPreviewClassic extends Component<any, any> {
   getVisibleImages(images) {
     let widths = []
     let hidden = 0
-    let container = 560
-    let containerHeight = 150
-    let iconContainer = 50
-    let margin = 10
     images.map((item, i) => {
       const adjustedWidth = containerHeight * item.width / item.height
       widths.push(adjustedWidth)
@@ -70,7 +70,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
             src={src}
             height="150"
             className="imageset-preview__image"
-            style={{ marginRight: 10 }}
+            style={{ marginRight: margin }}
           />
         )
       }
