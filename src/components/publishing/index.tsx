@@ -9,6 +9,7 @@ export default {
   Artwork,
   FeatureHeader,
   Image,
+  ImageCollection,
   ImagesetPreview,
   ImagesetPreviewClassic,
 }

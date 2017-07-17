@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import IconImageset from "./icons/icon_imageset"
+import IconImageSet from "./icons/icon_imageset"
 
 import Fonts from "./fonts"
 
@@ -32,8 +32,12 @@ const IconContainer = styled.div`
   margin-bottom: 10px;
   position: relative;
 `
+const container = 560
+const containerHeight = 150
+const iconContainer = 50
+const margin = 10
 
-class ImagesetPreviewClassic extends Component<any, any> {
+class ImageSetPreviewClassic extends Component<any, any> {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,11 +49,11 @@ class ImagesetPreviewClassic extends Component<any, any> {
     let widths = []
     let hidden = 0
     images.map((item, i) => {
-      const adjustedWidth = 150 * item.width / item.height
+      const adjustedWidth = containerHeight * item.width / item.height
       widths.push(adjustedWidth)
       const total = widths.reduce((a, b) => a + b, 0)
-      const margins = widths.length * 10
-      if (total + margins + 50 > 560) {
+      const margins = widths.length * margin
+      if (total + margins + iconContainer > container) {
         hidden = hidden + 1
       }
     })
@@ -58,15 +62,15 @@ class ImagesetPreviewClassic extends Component<any, any> {
 
   renderImages(images) {
     const items = images.slice(0, 4).map((item, i) => {
-      const src = item.image ? item.image : item.url
+      const src = item.image || item.url || ""
       if (i < this.state.visibleImages) {
         return (
           <img
             key={"imageset-" + i}
-            src={src || ""}
-            height="150"
+            src={src}
+            height={containerHeight}
             className="imageset-preview__image"
-            style={{ marginRight: 10 }}
+            style={{ marginRight: margin }}
           />
         )
       }
@@ -92,7 +96,7 @@ class ImagesetPreviewClassic extends Component<any, any> {
         </div>
         <Remaining className="imageset-preview__remaining">
           <IconContainer className="imageset-preview__icon-container">
-            <IconImageset />
+            <IconImageSet />
             <div className="imageset-preview__length" style={length}>
               <Text>{images.length}</Text>
             </div>
@@ -103,4 +107,4 @@ class ImagesetPreviewClassic extends Component<any, any> {
     )
   }
 }
-export default ImagesetPreviewClassic
+export default ImageSetPreviewClassic

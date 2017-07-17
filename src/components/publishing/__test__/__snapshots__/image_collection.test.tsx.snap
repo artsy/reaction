@@ -5,9 +5,8 @@ exports[`renders properly 1`] = `
   className="file__ImageCollectionContainer-s19j8h0e-0 jFhFbf"
 >
   <div
-    className="file-s1eyfy8g-0 kCijgr"
+    className="sc-bdVaJa dmDgFe"
     height={298}
-    margin={10}
     width={415}
   >
     <div
@@ -61,24 +60,23 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s1eyfy8g-0 cXowyh"
+    className="sc-bdVaJa gGBma"
     height={299}
-    margin={10}
     width={224}
   >
     <div
       className="article-image"
     >
       <img
-        className="file__BlockImage-mvwcj2-3 WFCj"
+        className="file__BlockImage-s19m6t81-3 blhqgP"
         src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
         width="100%"
       />
       <div
-        className="file__CaptionContainer-mvwcj2-2 dqVbIF"
+        className="file__CaptionContainer-s19m6t81-2 hauXGz"
       >
         <div
-          className="file__Figcaption-mvwcj2-0 frYyrr"
+          className="file__Figcaption-s19m6t81-0 dpmSam"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
@@ -86,7 +84,7 @@ exports[`renders properly 1`] = `
           }
         />
         <div
-          className="file__CaptionLink-mvwcj2-1 bmAGxU"
+          className="file__CaptionLink-s19m6t81-1 eqYtww"
         >
           View Fullscreen
         </div>
@@ -94,24 +92,23 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s1eyfy8g-0 bqIqBX"
+    className="sc-bdVaJa iKUmlK"
     height={299}
-    margin={0}
     width={238}
   >
     <div
       className="article-image"
     >
       <img
-        className="file__BlockImage-mvwcj2-3 WFCj"
+        className="file__BlockImage-s19m6t81-3 blhqgP"
         src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
         width="100%"
       />
       <div
-        className="file__CaptionContainer-mvwcj2-2 dqVbIF"
+        className="file__CaptionContainer-s19m6t81-2 hauXGz"
       >
         <div
-          className="file__Figcaption-mvwcj2-0 frYyrr"
+          className="file__Figcaption-s19m6t81-0 dpmSam"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
@@ -119,7 +116,7 @@ exports[`renders properly 1`] = `
           }
         />
         <div
-          className="file__CaptionLink-mvwcj2-1 bmAGxU"
+          className="file__CaptionLink-s19m6t81-1 eqYtww"
         >
           View Fullscreen
         </div>

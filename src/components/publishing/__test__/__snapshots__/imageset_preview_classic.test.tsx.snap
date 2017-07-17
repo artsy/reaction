@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="imageset-preview file__Wrapper-iktebn-0 lcBLBS"
+  className="imageset-preview file__Wrapper-s1l6im62-0 krPgOf"
 >
   <div
     className="imageset-preview__container"
@@ -14,7 +14,7 @@ exports[`renders properly 1`] = `
   >
     <img
       className="imageset-preview__image"
-      height="150"
+      height={150}
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
       style={
         Object {
@@ -24,7 +24,7 @@ exports[`renders properly 1`] = `
     />
     <img
       className="imageset-preview__image"
-      height="150"
+      height={150}
       src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
       style={
         Object {
@@ -34,7 +34,7 @@ exports[`renders properly 1`] = `
     />
     <img
       className="imageset-preview__image"
-      height="150"
+      height={150}
       src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
       style={
         Object {
@@ -44,10 +44,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="imageset-preview__remaining file__Remaining-iktebn-2 gKdSIg"
+    className="imageset-preview__remaining file__Remaining-s1l6im62-2 kUzkwY"
   >
     <div
-      className="imageset-preview__icon-container file__IconContainer-iktebn-3 dFbBrj"
+      className="imageset-preview__icon-container file__IconContainer-s1l6im62-3 gaazlU"
     >
       <svg
         data-name="imageset"
@@ -77,14 +77,14 @@ exports[`renders properly 1`] = `
         }
       >
         <div
-          className="file__Text-iktebn-1 ibdhcQ"
+          className="file__Text-s1l6im62-1 cWalav"
         >
           3
         </div>
       </div>
     </div>
     <div
-      className="imageset-preview__text file__Text-iktebn-1 ibdhcQ"
+      className="imageset-preview__text file__Text-s1l6im62-1 cWalav"
     >
       Enter Slideshow
     </div>

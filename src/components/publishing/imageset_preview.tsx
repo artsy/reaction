@@ -1,8 +1,15 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 
 import Fonts from "./fonts"
-import IconImageset from "./icons/icon_imageset"
+import IconImageSet from "./icons/icon_imageset"
+
+type Layout = "mini" | "full"
+
+interface DivLayoutProps {
+  layout: Layout
+}
+const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const FullWrapper = styled.div`
   position: absolute;
@@ -19,6 +26,12 @@ const FullWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   `
+const TitleWrapper = div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: ${props => (props.layout === "mini" ? "50px" : "100%")};
+`
 const MiniWrapper = styled.div`
   height: 100px;
   display: flex;
@@ -33,15 +46,6 @@ const MiniInner = styled.div`
   flex: 1;
   width: auto;
   margin-left: 20px;
-`
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  &[data-layout='mini'] {
-    height: 50px;
-  }
 `
 const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -61,24 +65,35 @@ const SubTitleCount = styled.div`
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
-  margin-left: 40px;
+  margin-left: 20px;
   text-align: right;
   > svg {
     height: 98%;
   }
 `
+export interface Props {
+  section: {
+    type: string
+    images: Array<{
+      url?: string
+      image?: string
+    }>
+    layout: Layout
+    title: string
+  }
+}
 
-class ImagesetPreview extends Component<any, any> {
+class ImageSetPreview extends Component<Props, null> {
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
     return src
   }
-  textSection(layout) {
-    if (layout === "mini") {
+  textSection() {
+    if (this.props.section.layout === "mini") {
       return (
         <MiniWrapper>
-          {this.image(layout)}
+          {this.image()}
           <MiniInner>
             {this.title()}
             {this.icon()}
@@ -94,15 +109,15 @@ class ImagesetPreview extends Component<any, any> {
       )
     }
   }
-  image(layout) {
+  image() {
     const src = this.getImageUrl()
-    const width = layout === "full" ? "100%" : "auto"
-    const height = layout === "mini" ? "100%" : "auto"
+    const width = this.props.section.layout === "full" ? "100%" : "auto"
+    const height = this.props.section.layout === "mini" ? "100%" : "auto"
     return <img src={src} width={width} height={height} />
   }
   title() {
     return (
-      <TitleWrapper data-layout={this.props.section.layout}>
+      <TitleWrapper layout={this.props.section.layout}>
         <Title>{this.props.section.title}</Title>
         <SubTitle>
           <SubTitlePrompt>View Slideshow</SubTitlePrompt>
@@ -114,19 +129,18 @@ class ImagesetPreview extends Component<any, any> {
   icon() {
     return (
       <IconContainer>
-        <IconImageset />
+        <IconImageSet />
       </IconContainer>
     )
   }
   render() {
-    const { layout } = this.props.section
-    const image = layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : ""
+    const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
     return (
       <div style={{ position: "relative" }}>
-        {this.textSection(layout)}
+        {this.textSection()}
         {image}
       </div>
     )
   }
 }
-export default ImagesetPreview
+export default ImageSetPreview
