@@ -68,7 +68,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
           <img
             key={"imageset-" + i}
             src={src}
-            height="150"
+            height={containerHeight}
             className="imageset-preview__image"
             style={{ marginRight: margin }}
           />
