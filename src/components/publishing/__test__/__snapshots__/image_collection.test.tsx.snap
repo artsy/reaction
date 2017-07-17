@@ -5,9 +5,8 @@ exports[`renders properly 1`] = `
   className="file__ImageCollectionContainer-s19j8h0e-0 jFhFbf"
 >
   <div
-    className="file-s1eyfy8g-0 kCijgr"
+    className="sc-bdVaJa dmDgFe"
     height={298}
-    margin={10}
     width={415}
   >
     <div
@@ -61,9 +60,8 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s1eyfy8g-0 cXowyh"
+    className="sc-bdVaJa gGBma"
     height={299}
-    margin={10}
     width={224}
   >
     <div
@@ -94,9 +92,8 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file-s1eyfy8g-0 bqIqBX"
+    className="sc-bdVaJa iKUmlK"
     height={299}
-    margin={0}
     width={238}
   >
     <div
