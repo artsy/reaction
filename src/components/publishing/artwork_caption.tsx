@@ -1,11 +1,12 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import TextLink from "../text_link"
 import Fonts from "./fonts"
+import ViewFullscreen from "./view_fullscreen"
 
 const TruncatedLine = styled.div`
   color: #999;
-  display: block;
+  display: flex;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -15,10 +16,11 @@ interface StyledArtworkCaptionProps {
   layout?: string
 }
 
-const StyledArtworkCaption = styled.div`
-  ${(props: StyledArtworkCaptionProps) =>
-    props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium")}
-  display: ${(props: StyledArtworkCaptionProps) => (props.layout === "classic" ? "block" : "flex")}
+const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
+const StyledArtworkCaption = div`
+  ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
+  display: ${props => (props.layout === "classic" ? "block" : "flex")}
 `
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
@@ -27,7 +29,7 @@ interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   linked?: boolean
 }
 
-class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
+class ArtworkCaption extends React.Component<ArtworkCaptionProps, void> {
   renderArtists(artwork) {
     if (artwork.artists != null ? artwork.artists[0] : undefined) {
       let names = artwork.artists.map((artist, i) => {
@@ -56,18 +58,14 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   renderTitleDate(artwork) {
     if (artwork.title && artwork.date) {
       return (
-        <TruncatedLine>
+        <div>
           {this.renderTitle(artwork)}
           {this.renderSpacer()}
           {this.renderDate(artwork)}
-        </TruncatedLine>
+        </div>
       )
     } else {
-      return (
-        <TruncatedLine>
-          {this.renderTitle(artwork)}
-        </TruncatedLine>
-      )
+      return this.renderTitle(artwork)
     }
   }
 
@@ -97,7 +95,11 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (artwork.partner.name) {
       if (this.props.linked && artwork.partner.slug) {
         const color = this.props.layout === "classic" ? "#666" : "#999"
-        return <TextLink href={"/partner/" + artwork.partner.slug} color={color}>{artwork.partner.name}</TextLink>
+        return (
+          <TextLink href={"/partner/" + artwork.partner.slug} color={color}>
+            {artwork.partner.name}
+          </TextLink>
+        )
       } else {
         return artwork.partner.name
       }
@@ -118,7 +120,11 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             <strong>
               {this.renderArtists(artwork)}
             </strong>
+          </TruncatedLine>
+          <TruncatedLine>
             {this.renderTitleDate(artwork)}
+          </TruncatedLine>
+          <TruncatedLine>
             {this.renderPartner(artwork)}
           </TruncatedLine>
         </StyledArtworkCaption>
@@ -130,11 +136,11 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             <strong>
               {this.renderArtists(artwork)}
             </strong>
-          </TruncatedLine>
-          {this.renderTitleDate(artwork)}
-          <TruncatedLine>
+            <span className="spacer" />
+            {this.renderTitleDate(artwork)}
             {this.renderPartner(artwork)}
           </TruncatedLine>
+          <ViewFullscreen />
         </StyledArtworkCaption>
       )
     }

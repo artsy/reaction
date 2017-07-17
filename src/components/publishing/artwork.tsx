@@ -28,6 +28,7 @@ const ArtworkImage: React.SFC<ArtworkImageProps> = props => {
 interface ArtworkProps {
   artwork?: any
   layout?: string
+  linked?: boolean
 }
 
 const Artwork: React.SFC<ArtworkProps> = props => {

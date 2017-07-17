@@ -1,17 +1,7 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Fonts from "./fonts"
-
-const CaptionLink = styled.div`
-  ${Fonts.unica("s14", "medium")}
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  align-self: flex-start;
-`
+import ViewFullscreen from "./view_fullscreen"
 
 const CaptionContainer = styled.div`
   display: flex;
@@ -19,25 +9,25 @@ const CaptionContainer = styled.div`
   margin: 10px 0 10px 0;
 `
 
-// Caption
-interface FigcaptionProps extends React.HTMLProps<HTMLDivElement> {
+interface FigcaptionProps {
   layout: string
 }
-const Figcaption = styled.div`
+const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Figcaption = div`
   & > p {
-    ${(props: FigcaptionProps) => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
-    color: ${(props: FigcaptionProps) => (props.layout === "classic" ? "#666" : "#999")};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
+    color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;
   }
 `
+
 interface CaptionProps {
   image: any
   layout?: string
 }
-
 const Caption: React.SFC<CaptionProps> = props => {
   const { layout, image } = props
-  const viewFullscreen = layout !== "classic" ? <CaptionLink>View Fullscreen</CaptionLink> : false
+  const viewFullscreen = layout !== "classic" ? <ViewFullscreen /> : false
 
   return (
     <CaptionContainer>
