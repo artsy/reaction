@@ -4,11 +4,16 @@ exports[`renders properly 1`] = `
 <div
   className="display-artwork"
 >
-  <img
-    className="display-artwork__image file__BlockImage-s1b0ss2l-1 BjLdn"
-    src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-    width="100%"
-  />
+  <a
+    className="file__ArtworkImageLink-puphad-0 dOeRCh"
+    href="/artwork/fernando-botero-nude-on-the-beach"
+  >
+    <img
+      className="display-artwork__image file__BlockImage-puphad-1 fJSmLl"
+      src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+      width="100%"
+    />
+  </a>
   <div
     className="display-artwork__caption sc-bdVaJa bLvhbP"
   >
@@ -21,15 +26,23 @@ exports[`renders properly 1`] = `
         <span
           className="name"
         >
-          Fernando Botero
+          <a
+            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            href="/artist/fernando-botero"
+          >
+            Fernando Botero
+          </a>
         </span>
       </span>
       <span
         className="title"
       >
-        <em>
+        <a
+          className="file__StyledTextLink-s18afosz-0 hOUyga"
+          href="/artwork/fernando-botero-nude-on-the-beach"
+        >
           Nude on the Beach
-        </em>
+        </a>
       </span>
       <span
         className="comma"
@@ -46,7 +59,12 @@ exports[`renders properly 1`] = `
       >
         , 
       </span>
-      Gary Nader
+      <a
+        className="file__StyledTextLink-s18afosz-0 hOUyga"
+        href="/partner/gary-nader"
+      >
+        Gary Nader
+      </a>
     </div>
     <div
       className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
