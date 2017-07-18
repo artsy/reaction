@@ -127,3 +127,32 @@ export const FeatureHeaders = [
     subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
 ]
+
+export const Articles = [
+  {
+    title: "New York's Next Art District",
+    contributing_authors: [
+      {
+        name: "Molly Gottschalk",
+        id: "12345",
+      },
+    ],
+    published_at: "2017-05-19T13:09:18.567Z",
+    layout: "classic",
+  },
+  {
+    title: "New York's Next Art District",
+    contributing_authors: [
+      {
+        name: "Molly Gottschalk",
+        id: "12345",
+      },
+    ],
+    published_at: "2017-05-19T13:09:18.567Z",
+    layout: "standard",
+    vertical: {
+      name: "Art Market",
+      id: "12345",
+    },
+  },
+]

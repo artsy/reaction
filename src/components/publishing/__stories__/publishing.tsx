@@ -2,14 +2,15 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
 import Artwork from "../artwork"
-import FeatureHeader from "../feature_header"
+import FeatureHeader from "../header/feature_header"
+import Header from "../header/header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
 import ImageCollection from "../image_collection"
 import ImageSetPreview from "../imageset_preview"
 import ImageSetPreviewClassic from "../imageset_preview_classic"
 
-import { Artworks, FeatureHeaders, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
+import { Articles, Artworks, FeatureHeaders, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
 
 import Typography from "./typography"
 
@@ -85,6 +86,20 @@ storiesOf("Publishing", Artwork)
         <ImageSetPreview section={ImageSetFull} />
         <br />
         <ImageSetPreview section={ImageSetMini} />
+      </div>
+    )
+  })
+  .add("Classic Header", () => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+        <Header article={Articles[0]} />
+      </div>
+    )
+  })
+  .add("Standard Header", () => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+        <Header article={Articles[1]} />
       </div>
     )
   })

@@ -1,8 +1,8 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 
-import FeatureHeader from "../feature_header"
-import { FeatureHeaders } from "./fixtures"
+import FeatureHeader from "../../header/feature_header"
+import { FeatureHeaders } from "../fixtures"
 
 it("renders text layout properly", () => {
   const header = renderer.create(<FeatureHeader header={FeatureHeaders[0]} />).toJSON()

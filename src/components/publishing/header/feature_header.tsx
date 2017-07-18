@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Fonts from "./fonts"
+import Fonts from "../fonts"
 
 function renderFeatureImage(url, layout) {
   if (layout === "full") {
