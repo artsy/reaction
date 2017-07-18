@@ -39,6 +39,20 @@ export const Images = [
   },
 ]
 
+export const ImageSetFull = {
+  type: "image_set",
+  layout: "full",
+  title: "The Work of Bruce M. Sherman",
+  images: Images,
+}
+
+export const ImageSetMini = {
+  type: "image_set",
+  layout: "mini",
+  title: "The Work of Bruce M. Sherman",
+  images: Images,
+}
+
 export const FeatureHeaders = [
   {
     layout: "text",

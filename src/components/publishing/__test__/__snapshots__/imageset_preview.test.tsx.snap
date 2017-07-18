@@ -1,53 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`renders a full image set properly 1`] = `
 <div
-  className="imageset-preview file__Wrapper-s1kcylax-0 dhMNpw"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
 >
   <div
-    className="imageset-preview__container"
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
-  >
-    <img
-      className="imageset-preview__image"
-      height="150"
-      src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-      style={
-        Object {
-          "marginRight": 10,
-        }
-      }
-    />
-    <img
-      className="imageset-preview__image"
-      height="150"
-      src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
-      style={
-        Object {
-          "marginRight": 10,
-        }
-      }
-    />
-    <img
-      className="imageset-preview__image"
-      height="150"
-      src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-      style={
-        Object {
-          "marginRight": 10,
-        }
-      }
-    />
-  </div>
-  <div
-    className="imageset-preview__remaining file__Remaining-s1kcylax-2 dKUrma"
+    className="file__FullWrapper-eikg27-0 hNctSb"
   >
     <div
-      className="imageset-preview__icon-container file__IconContainer-s1kcylax-3 iRPqyk"
+      className="sc-bdVaJa hskcns"
+    >
+      <div
+        className="file__Title-eikg27-3 efUpPv"
+      >
+        The Work of Bruce M. Sherman
+      </div>
+      <div
+        className="file__SubTitle-eikg27-4 fNQczw"
+      >
+        <div
+          className="file__SubTitlePrompt-eikg27-5 ejSUTC"
+        >
+          View Slideshow
+        </div>
+        <div
+          className="file__SubTitleCount-eikg27-6 fxnvXM"
+        >
+          3
+           Images
+        </div>
+      </div>
+    </div>
+    <div
+      className="file__IconContainer-eikg27-7 Cyigh"
     >
       <svg
         data-name="imageset"
@@ -66,27 +55,79 @@ exports[`renders properly 1`] = `
           points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
         />
       </svg>
+    </div>
+  </div>
+  <img
+    src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`renders a mini image set properly 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <div
+    className="file__MiniWrapper-eikg27-1 exaGtO"
+  >
+    <img
+      height="100%"
+      src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+      width="auto"
+    />
+    <div
+      className="file__MiniInner-eikg27-2 gfrrgU"
+    >
       <div
-        className="imageset-preview__length"
-        style={
-          Object {
-            "left": 8,
-            "position": "absolute",
-            "top": 14,
-          }
-        }
+        className="sc-bdVaJa lmSTxo"
       >
         <div
-          className="file__Text-s1kcylax-1 kKsBXM"
+          className="file__Title-eikg27-3 efUpPv"
         >
-          3
+          The Work of Bruce M. Sherman
+        </div>
+        <div
+          className="file__SubTitle-eikg27-4 fNQczw"
+        >
+          <div
+            className="file__SubTitlePrompt-eikg27-5 ejSUTC"
+          >
+            View Slideshow
+          </div>
+          <div
+            className="file__SubTitleCount-eikg27-6 fxnvXM"
+          >
+            3
+             Images
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="imageset-preview__text file__Text-s1kcylax-1 kKsBXM"
-    >
-      Enter Slideshow
+      <div
+        className="file__IconContainer-eikg27-7 Cyigh"
+      >
+        <svg
+          data-name="imageset"
+          id="imageset"
+          viewBox="0 0 44 44"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
+            transform="translate(-6728.67 -507.72)"
+          />
+          <polygon
+            points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
+          />
+          <polygon
+            points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </div>
