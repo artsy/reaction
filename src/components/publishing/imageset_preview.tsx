@@ -69,22 +69,19 @@ const IconContainer = styled.div`
     height: 98%;
   }
 `
-
-interface ImageSetPreviewProps {
+interface Props {
   section: {
-    images: [
-      {
-        key: string
-        name?: "string"
-        url?: "string"
-        image?: "string"
-      }
-    ]
-    layout: "mini" | "full"
-    title: "string"
+    type: string
+    images: Array<{
+      url?: string
+      image?: string
+    }>
+    // TODO - convert to typescript string enums
+    layout: "mini" | "full" | string
+    title: string
   }
 }
-class ImageSetPreview extends Component<ImageSetPreviewProps, null> {
+class ImageSetPreview extends Component<Props, null> {
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
