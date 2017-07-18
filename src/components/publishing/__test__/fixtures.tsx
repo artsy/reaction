@@ -98,33 +98,30 @@ export const ImageSetMini: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
-export const FeatureHeaders = [
+export const HeroSections = [
   {
-    layout: "text",
-    title: "Looking Into the Future",
+    type: "text",
     url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
-    vertical: "Market Analysis",
-    author: "Daniel Kunitz",
-    date: "Jan 4, 2017",
     subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
-    layout: "split",
-    title: "New York's Next Art District",
+    type: "split",
     url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
-    vertical: "Market Analysis",
-    author: "Daniel Kunitz",
-    date: "Jan 4, 2017",
     subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
-    layout: "full",
-    title: "New York's Next Art District",
+    type: "fullscreen",
     url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
-    vertical: "Market Analysis",
-    author: "Daniel Kunitz",
-    date: "Jan 4, 2017",
     subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+  },
+  {
+    type: "image",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+  },
+  {
+    type: "video",
+    url: "https://www.youtube.com/watch?v=Z1UC4R6-EiQ",
+    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
   },
 ]
 
@@ -139,6 +136,7 @@ export const Articles = [
     ],
     published_at: "2017-05-19T13:09:18.567Z",
     layout: "classic",
+    vertical: null,
   },
   {
     title: "New York's Next Art District",
@@ -150,6 +148,21 @@ export const Articles = [
     ],
     published_at: "2017-05-19T13:09:18.567Z",
     layout: "standard",
+    vertical: {
+      name: "Art Market",
+      id: "12345",
+    },
+  },
+  {
+    title: "New York's Next Art District",
+    contributing_authors: [
+      {
+        name: "Molly Gottschalk",
+        id: "12345",
+      },
+    ],
+    published_at: "2017-05-19T13:09:18.567Z",
+    layout: "feature",
     vertical: {
       name: "Art Market",
       id: "12345",

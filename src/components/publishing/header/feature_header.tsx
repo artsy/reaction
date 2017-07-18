@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import Fonts from "../fonts"
+import AuthorDate from "./author_date"
 
 function renderFeatureImage(url, layout) {
-  if (layout === "full") {
+  if (layout === "fullscreen") {
     return (
       <div>
         <FeatureImage src={url} />
@@ -24,28 +25,31 @@ function renderImage(url, layout) {
   }
 }
 
-function FeatureHeader(props) {
-  const { header } = props
+interface FeatureHeaderProps {
+  article?: any
+}
+
+const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
+  const { article } = props
+  const hero = article.hero_section
   return (
-    <FeatureHeaderContainer data-layout={header.layout}>
-      {renderFeatureImage(header.url, header.layout)}
+    <FeatureHeaderContainer data-type={hero.type}>
+      {renderFeatureImage(hero.url, hero.type)}
       <HeaderTextContainer>
         <HeaderText>
-          <Vertical>{header.vertical}</Vertical>
-          <Title>{header.title}</Title>
+          <Vertical>{article.vertical.name}</Vertical>
+          <Title>{article.title}</Title>
           <SubHeader>
-            <SubHeaderText>{header.subheader}</SubHeaderText>
-            <AuthorDate>
-              <BulletText>{header.author}</BulletText>
-              <BulletText>{header.date}</BulletText>
-            </AuthorDate>
+            <SubHeaderText>{hero.subheader}</SubHeaderText>
+            <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
-        {renderImage(header.url, header.layout)}
+        {renderImage(hero.url, hero.type)}
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )
 }
+
 const Div = styled.div`
   width: 100%;
   height: 100%;
@@ -98,26 +102,13 @@ const SubHeader = styled.div`
   align-items: center;
   flex-direction: row;
 `
-const BulletText = styled.div`
-  margin-left: 30px;
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: #000;
-  }
-`
+
 const SubHeaderText = styled.div`
   max-width: 600px;
 `
-const AuthorDate = styled.div`
-  display: flex;
-`
+
 const FeatureHeaderContainer = Div.extend`
-  &[data-layout='text'] {
+  &[data-type='text'] {
     ${Title} {
       margin-bottom: 150px;
     }
@@ -125,7 +116,7 @@ const FeatureHeaderContainer = Div.extend`
       max-width: none;
     }
   }
-  &[data-layout='split'] {
+  &[data-type='split'] {
     ${Title} {
       flex-grow: 1;
     }
@@ -140,25 +131,16 @@ const FeatureHeaderContainer = Div.extend`
       align-items: flex-start;
       flex-direction: column;
     }
-    ${BulletText} {
-      margin-left: 0px;
-      margin-right: 30px;
-    }
     ${SubHeaderText} {
       margin-bottom: 30px;
     }
   }
-  &[data-layout='full']{
+  &[data-type='full']{
     ${HeaderText} {
       padding: 50px;
       color: #fff;
       justify-content: flex-end;
       margin: auto;
-    }
-    ${BulletText} {
-      &:before {
-        background-color: #fff;
-      }
     }
   }
 `
