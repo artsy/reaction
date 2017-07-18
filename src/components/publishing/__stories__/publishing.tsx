@@ -8,15 +8,37 @@ import Image from "../image"
 import ImageCollection from "../image_collection"
 import ImagesetPreview from "../imageset_preview"
 
-import { FeatureHeaders, Images } from "../__test__/fixtures"
+import { Artworks, FeatureHeaders, Images } from "../__test__/fixtures"
 
 import Typography from "./typography"
 
 storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
     return (
-      <div style={{ width: 400 }}>
-        <Artwork linked artwork={Images[0]} />
+      <div>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[0]} />
+        </div>
+        <hr />
+        <p>Multiple Artists: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Unlinked: </p>
+        <div style={{ width: 800 }}>
+          <Artwork linked={false} artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Small: </p>
+        <div style={{ width: 400 }}>
+          <Artwork artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Classic: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[0]} layout="classic" />
+        </div>
       </div>
     )
   })
@@ -34,11 +56,17 @@ storiesOf("Publishing", Artwork)
   .add("Image", () => {
     return (
       <div>
+        <p>Standard:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[1]} />
         </div>
+        <p>Long Caption:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
+        </div>
+        <p>Classic:</p>
+        <div style={{ width: 400 }}>
+          <Image layout="classic" image={Images[2]} />
         </div>
       </div>
     )
