@@ -17,12 +17,12 @@ storiesOf("Publishing", Artwork)
     return (
       <div>
         <div style={{ width: 800 }}>
-          <Artwork linked artwork={Artworks[0]} />
+          <Artwork artwork={Artworks[0]} />
         </div>
         <hr />
         <p>Multiple Artists: </p>
         <div style={{ width: 800 }}>
-          <Artwork linked artwork={Artworks[1]} />
+          <Artwork artwork={Artworks[1]} />
         </div>
         <hr />
         <p>Unlinked: </p>
@@ -32,12 +32,12 @@ storiesOf("Publishing", Artwork)
         <hr />
         <p>Small: </p>
         <div style={{ width: 400 }}>
-          <Artwork linked artwork={Artworks[1]} />
+          <Artwork artwork={Artworks[1]} />
         </div>
         <hr />
         <p>Classic: </p>
         <div style={{ width: 800 }}>
-          <Artwork linked artwork={Artworks[0]} layout="classic" />
+          <Artwork artwork={Artworks[0]} layout="classic" />
         </div>
       </div>
     )

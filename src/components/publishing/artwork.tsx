@@ -38,4 +38,8 @@ const Artwork: React.SFC<ArtworkProps> = props => {
   )
 }
 
+Artwork.defaultProps = {
+  linked: true,
+}
+
 export default Artwork
