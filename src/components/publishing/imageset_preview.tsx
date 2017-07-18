@@ -1,8 +1,13 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 
 import Fonts from "./fonts"
 import IconImageSet from "./icons/icon_imageset"
+
+interface DivLayoutProps {
+  layout: string
+}
+const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const FullWrapper = styled.div`
   position: absolute;
@@ -19,6 +24,12 @@ const FullWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   `
+const TitleWrapper = div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: ${props => (props.layout === "mini" ? "50px" : "100%")};
+`
 const MiniWrapper = styled.div`
   height: 100px;
   display: flex;
@@ -33,15 +44,6 @@ const MiniInner = styled.div`
   flex: 1;
   width: auto;
   margin-left: 20px;
-`
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  &[data-layout='mini'] {
-    height: 50px;
-  }
 `
 const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -68,7 +70,21 @@ const IconContainer = styled.div`
   }
 `
 
-class ImageSetPreview extends Component<any, any> {
+interface ImageSetPreviewProps {
+  section: {
+    images: [
+      {
+        key: string
+        name?: "string"
+        url?: "string"
+        image?: "string"
+      }
+    ]
+    layout: "mini" | "full"
+    title: "string"
+  }
+}
+class ImageSetPreview extends Component<ImageSetPreviewProps, null> {
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
@@ -102,7 +118,7 @@ class ImageSetPreview extends Component<any, any> {
   }
   title() {
     return (
-      <TitleWrapper data-layout={this.props.section.layout}>
+      <TitleWrapper layout={this.props.section.layout}>
         <Title>{this.props.section.title}</Title>
         <SubTitle>
           <SubTitlePrompt>View Slideshow</SubTitlePrompt>

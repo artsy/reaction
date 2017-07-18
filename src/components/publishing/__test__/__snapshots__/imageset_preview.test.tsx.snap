@@ -9,27 +9,26 @@ exports[`renders a full image set properly 1`] = `
   }
 >
   <div
-    className="file__FullWrapper-s1x4ygsx-0 jcuYwD"
+    className="file__FullWrapper-eikg27-0 hNctSb"
   >
     <div
-      className="file__TitleWrapper-s1x4ygsx-3 kREUlU"
-      data-layout="full"
+      className="sc-bdVaJa hskcns"
     >
       <div
-        className="file__Title-s1x4ygsx-4 erllsr"
+        className="file__Title-eikg27-3 efUpPv"
       >
         The Work of Bruce M. Sherman
       </div>
       <div
-        className="file__SubTitle-s1x4ygsx-5 dlPgRc"
+        className="file__SubTitle-eikg27-4 fNQczw"
       >
         <div
-          className="file__SubTitlePrompt-s1x4ygsx-6 fHTrtu"
+          className="file__SubTitlePrompt-eikg27-5 ejSUTC"
         >
           View Slideshow
         </div>
         <div
-          className="file__SubTitleCount-s1x4ygsx-7 fwNFCM"
+          className="file__SubTitleCount-eikg27-6 fxnvXM"
         >
           3
            Images
@@ -37,7 +36,7 @@ exports[`renders a full image set properly 1`] = `
       </div>
     </div>
     <div
-      className="file__IconContainer-s1x4ygsx-8 cLLfEt"
+      className="file__IconContainer-eikg27-7 Cyigh"
     >
       <svg
         data-name="imageset"
@@ -74,7 +73,7 @@ exports[`renders a mini image set properly 1`] = `
   }
 >
   <div
-    className="file__MiniWrapper-s1x4ygsx-1 YMOHT"
+    className="file__MiniWrapper-eikg27-1 exaGtO"
   >
     <img
       height="100%"
@@ -82,27 +81,26 @@ exports[`renders a mini image set properly 1`] = `
       width="auto"
     />
     <div
-      className="file__MiniInner-s1x4ygsx-2 dzwRNi"
+      className="file__MiniInner-eikg27-2 gfrrgU"
     >
       <div
-        className="file__TitleWrapper-s1x4ygsx-3 kREUlU"
-        data-layout="mini"
+        className="sc-bdVaJa lmSTxo"
       >
         <div
-          className="file__Title-s1x4ygsx-4 erllsr"
+          className="file__Title-eikg27-3 efUpPv"
         >
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="file__SubTitle-s1x4ygsx-5 dlPgRc"
+          className="file__SubTitle-eikg27-4 fNQczw"
         >
           <div
-            className="file__SubTitlePrompt-s1x4ygsx-6 fHTrtu"
+            className="file__SubTitlePrompt-eikg27-5 ejSUTC"
           >
             View Slideshow
           </div>
           <div
-            className="file__SubTitleCount-s1x4ygsx-7 fwNFCM"
+            className="file__SubTitleCount-eikg27-6 fxnvXM"
           >
             3
              Images
@@ -110,7 +108,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
       </div>
       <div
-        className="file__IconContainer-s1x4ygsx-8 cLLfEt"
+        className="file__IconContainer-eikg27-7 Cyigh"
       >
         <svg
           data-name="imageset"
