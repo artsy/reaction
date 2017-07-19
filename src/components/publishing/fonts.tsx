@@ -25,8 +25,16 @@ const textSizesForGaramond = {
 }
 
 const textSizesForUnica = {
+  s12: {
+    size: "12px",
+    height: "1.1em",
+  },
   s14: {
     size: "14px",
+    height: "1.1em",
+  },
+  s16: {
+    size: "16px",
     height: "1.1em",
   },
   s19: {

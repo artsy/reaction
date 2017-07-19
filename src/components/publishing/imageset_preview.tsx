@@ -51,16 +51,25 @@ const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
   margin-bottom: 8px;
   line-height: 1.1em;
-  `
+  @media (max-width: 600px) {
+    ${Fonts.unica("s16", "medium")}
+  }
+`
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
   ${Fonts.unica("s14", "medium")}
+  @media (max-width: 600px) {
+    ${Fonts.unica("s12", "medium")}
+  }
 `
 const SubTitleCount = styled.div`
   ${Fonts.unica("s14")}
   margin-left: 20px;
+  @media (max-width: 600px) {
+    ${Fonts.unica("s12")}
+  }
 `
 const IconContainer = styled.div`
   height: 45px;
@@ -69,6 +78,9 @@ const IconContainer = styled.div`
   text-align: right;
   > svg {
     height: 98%;
+  }
+  @media (max-width: 600px) {
+    display: none;
   }
 `
 export interface Props {
