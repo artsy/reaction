@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Fonts from "../fonts"
+import AuthorDate from "./author_date"
 
 const StandardHeaderContainer = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ const StandardHeaderContainer = styled.div`
 `
 const Title = styled.div`
   ${Fonts.garamond("s50")}
+  margin-bottom: 60px
 `
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -24,6 +26,7 @@ const StandardHeader: React.SFC<StandardHeaderProps> = props => {
       <Title>
         {article.title}
       </Title>
+      <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="standard" />
     </StandardHeaderContainer>
   )
 }

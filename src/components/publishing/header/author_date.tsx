@@ -1,6 +1,7 @@
 import moment from "moment"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
+import Fonts from "../fonts"
 
 interface BulletTextProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string
@@ -10,9 +11,13 @@ const div: StyledFunction<BulletTextProps> = styled.div
 
 const getAuthorByline = authors => {
   if (authors) {
-    authors.reduce((prev, curr, i) => {
-      return prev + (i === authors.length - 1 ? " and " : ", ") + curr.name
-    }, "")
+    if (authors.length > 1) {
+      authors.reduce((prev, curr, i) => {
+        return prev + (i === authors.length - 1 ? " and " : ", ") + curr.name
+      }, "")
+    } else {
+      return authors[0].name
+    }
   } else {
     return "Artsy Editorial"
   }
@@ -37,7 +42,8 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
 }
 
 const BulletText = div`
-  margin: ${props => (props.layout !== "split" ? "0 0 0 30px" : "0 30px 0 0")};
+  ${Fonts.unica("s19", "medium")}
+  margin: ${props => (props.layout === "split" || props.layout === "standard" ? "0 30px 0 0" : "0 0 0 30px")};
   &:before {
     content: "";
     display: inline-block;

@@ -6,19 +6,19 @@ import Header from "../header/header"
 import { Articles, HeroSections } from "./fixtures"
 
 it("renders feature text header properly", () => {
-  const article = _.extend({}, Articles[2], HeroSections[0])
+  const article = _.extend({}, Articles[2], { hero_section: HeroSections[0] })
   const header = renderer.create(<Header article={article} />).toJSON()
   expect(header).toMatchSnapshot()
 })
 
 it("renders feature split header properly", () => {
-  const article = _.extend({}, Articles[2], HeroSections[1])
+  const article = _.extend({}, Articles[2], { hero_section: HeroSections[1] })
   const header = renderer.create(<Header article={article} />).toJSON()
   expect(header).toMatchSnapshot()
 })
 
 it("renders feature full header properly", () => {
-  const article = _.extend({}, Articles[2], HeroSections[2])
+  const article = _.extend({}, Articles[2], { hero_section: HeroSections[2] })
   const header = renderer.create(<Header article={article} />).toJSON()
   expect(header).toMatchSnapshot()
 })

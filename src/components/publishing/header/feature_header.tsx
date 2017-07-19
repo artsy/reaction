@@ -135,7 +135,7 @@ const FeatureHeaderContainer = Div.extend`
       margin-bottom: 30px;
     }
   }
-  &[data-type='full']{
+  &[data-type='fullscreen']{
     ${HeaderText} {
       padding: 50px;
       color: #fff;
