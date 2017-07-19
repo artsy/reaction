@@ -1,22 +1,36 @@
 import React from "react"
 import styled from "styled-components"
+import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureImage(url, layout) {
+function renderFeatureAsset(url, layout) {
   if (layout === "fullscreen") {
     return (
       <div>
-        <FeatureImage src={url} />
+        {renderAsset(url)}
         <Overlay />
       </div>
     )
   } else if (layout === "split") {
-    return <FeatureImage src={url} />
+    return renderAsset(url)
   } else {
     return false
   }
 }
+
+function renderAsset(url) {
+  if (url.includes("mp4")) {
+    return (
+      <FeatureVideoContainer>
+        <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
+      </FeatureVideoContainer>
+    )
+  } else {
+    return <FeatureImage src={url} />
+  }
+}
+
 function renderImage(url, layout) {
   if (layout === "text") {
     return <Image src={url} />
@@ -34,7 +48,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const hero = article.hero_section
   return (
     <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureImage(hero.url, hero.type)}
+      {renderFeatureAsset(hero.url, hero.type)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{article.vertical.name}</Vertical>
@@ -63,9 +77,15 @@ const Overlay = Div.extend`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
+  ${pMedia.sm`
+    ${Fonts.unica("s69")}
+  `}
 `
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
+  ${pMedia.sm`
+    ${Fonts.unica("s16", "medium")}
+  `}
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
@@ -89,6 +109,19 @@ const FeatureImage = Div.extend`
   right: 0;
   width: 100%;
 `
+const FeatureVideo = styled.video`
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+`
+const FeatureVideoContainer = Div.extend`
+  width: 100%;
+  height: 100%;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+`
+
 const Image = styled.img`
   width: 100%;
   height: auto;
@@ -101,16 +134,27 @@ const SubHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  ${pMedia.sm`
+    align-items: flex-start;
+    flex-direction: column;
+  `}
 `
 
 const SubHeaderText = styled.div`
-  max-width: 600px;
+  max-width: 460px;
+  ${pMedia.sm`
+    margin-bottom: 28px;
+    ${Fonts.unica("s16", "medium")}
+  `}
 `
 
 const FeatureHeaderContainer = Div.extend`
   &[data-type='text'] {
     ${Title} {
       margin-bottom: 150px;
+      ${pMedia.sm`
+        ${Fonts.unica("s69")}
+      `}
     }
     ${HeaderText} {
       max-width: none;
@@ -127,6 +171,13 @@ const FeatureHeaderContainer = Div.extend`
       width: 50%;
       border: 20px solid white;
     }
+    ${FeatureVideoContainer} {
+      width: 50%;
+      border: 20px solid white;
+    }
+    ${FeatureVideo} {
+      width: 50vw;
+    }
     ${SubHeader} {
       align-items: flex-start;
       flex-direction: column;
@@ -134,6 +185,20 @@ const FeatureHeaderContainer = Div.extend`
     ${SubHeaderText} {
       margin-bottom: 30px;
     }
+    ${pMedia.sm`
+      ${HeaderText} {
+        width: 100%;
+      }
+      ${FeatureImage} {
+        width: 100%;
+      }
+      ${FeatureVideoContainer} {
+        width: 100%;
+      }
+      ${FeatureVideo} {
+        width: 100vw;
+      }
+    `}
   }
   &[data-type='fullscreen']{
     ${HeaderText} {
@@ -142,6 +207,14 @@ const FeatureHeaderContainer = Div.extend`
       justify-content: flex-end;
       margin: auto;
     }
+    ${pMedia.sm`
+      ${HeaderText} {
+        padding: 20px;
+      }
+      ${Title} {
+        ${Fonts.unica("s45")}
+      }
+    `}
   }
 `
 

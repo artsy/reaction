@@ -2,7 +2,7 @@
 
 exports[`renders feature full header properly 1`] = `
 <div
-  className="sc-EHOje jiFYUh"
+  className="sc-bZQynM gHjOeL"
   data-type="fullscreen"
 >
   <div>
@@ -21,25 +21,25 @@ exports[`renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-r0izi3-2 NelzW"
+        className="file__Vertical-mi9nrl-2 lhtBqF"
       >
         Art Market
       </div>
       <div
-        className="file__Title-r0izi3-1 ecVNSR"
+        className="file__Title-mi9nrl-1 ixuaPH"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-r0izi3-4 zgtNr"
+        className="file__SubHeader-mi9nrl-5 bppYha"
       >
         <div
-          className="file__SubHeaderText-r0izi3-5 lmRjeb"
+          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1lftf5r-0 UgNHb"
+          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
         >
           <div
             className="sc-bdVaJa eYectO"
@@ -50,6 +50,7 @@ exports[`renders feature full header properly 1`] = `
             className="sc-bdVaJa eYectO"
           >
             May 19th, 2017 9:09 am
+             EST
           </div>
         </div>
       </div>
@@ -60,7 +61,7 @@ exports[`renders feature full header properly 1`] = `
 
 exports[`renders feature split header properly 1`] = `
 <div
-  className="sc-EHOje jiFYUh"
+  className="sc-bZQynM gHjOeL"
   data-type="split"
 >
   <div
@@ -74,25 +75,25 @@ exports[`renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-r0izi3-2 NelzW"
+        className="file__Vertical-mi9nrl-2 lhtBqF"
       >
         Art Market
       </div>
       <div
-        className="file__Title-r0izi3-1 ecVNSR"
+        className="file__Title-mi9nrl-1 ixuaPH"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-r0izi3-4 zgtNr"
+        className="file__SubHeader-mi9nrl-5 bppYha"
       >
         <div
-          className="file__SubHeaderText-r0izi3-5 lmRjeb"
+          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1lftf5r-0 UgNHb"
+          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
         >
           <div
             className="sc-bdVaJa frSGFj"
@@ -103,6 +104,7 @@ exports[`renders feature split header properly 1`] = `
             className="sc-bdVaJa frSGFj"
           >
             May 19th, 2017 9:09 am
+             EST
           </div>
         </div>
       </div>
@@ -113,7 +115,7 @@ exports[`renders feature split header properly 1`] = `
 
 exports[`renders feature text header properly 1`] = `
 <div
-  className="sc-EHOje jiFYUh"
+  className="sc-bZQynM gHjOeL"
   data-type="text"
 >
   <div
@@ -123,25 +125,25 @@ exports[`renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-r0izi3-2 NelzW"
+        className="file__Vertical-mi9nrl-2 lhtBqF"
       >
         Art Market
       </div>
       <div
-        className="file__Title-r0izi3-1 ecVNSR"
+        className="file__Title-mi9nrl-1 ixuaPH"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-r0izi3-4 zgtNr"
+        className="file__SubHeader-mi9nrl-5 bppYha"
       >
         <div
-          className="file__SubHeaderText-r0izi3-5 lmRjeb"
+          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1lftf5r-0 UgNHb"
+          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
         >
           <div
             className="sc-bdVaJa gpNTgG"
@@ -152,12 +154,13 @@ exports[`renders feature text header properly 1`] = `
             className="sc-bdVaJa gpNTgG"
           >
             May 19th, 2017 9:09 am
+             EST
           </div>
         </div>
       </div>
     </div>
     <img
-      className="file__Image-r0izi3-3 jrqYyd"
+      className="file__Image-mi9nrl-4 bodpUM"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
@@ -179,7 +182,7 @@ exports[`renders standard header properly 1`] = `
     New York's Next Art District
   </div>
   <div
-    className="file__AuthorDateContainer-s1lftf5r-0 UgNHb"
+    className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
   >
     <div
       className="sc-bdVaJa frSGFj"
@@ -190,6 +193,7 @@ exports[`renders standard header properly 1`] = `
       className="sc-bdVaJa frSGFj"
     >
       May 19th, 2017 9:09 am
+       EST
     </div>
   </div>
 </div>

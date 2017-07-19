@@ -45,6 +45,10 @@ const textSizesForUnica = {
     size: "40px",
     height: "1.1em",
   },
+  s45: {
+    size: "45px",
+    height: "1.1em",
+  },
   s69: {
     size: "69px",
     height: "1em",

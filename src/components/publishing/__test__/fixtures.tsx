@@ -115,13 +115,14 @@ export const HeroSections = [
     subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
-    type: "image",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    type: "split",
+    url: "http://files.artsy.net/videos/sanpaolo-short-quality.mp4",
+    subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
-    type: "video",
-    url: "https://www.youtube.com/watch?v=Z1UC4R6-EiQ",
-    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    type: "fullscreen",
+    url: "http://files.artsy.net/videos/sanpaolo-short-quality.mp4",
+    subheader: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
 ]
 
