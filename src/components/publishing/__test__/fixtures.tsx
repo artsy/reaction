@@ -1,3 +1,5 @@
+import { Props as ImageSetPreviewProps } from "../imageset_preview"
+
 export const Images = [
   {
     type: "artwork",
@@ -81,6 +83,20 @@ export const Artworks = [
     height: 826,
   },
 ]
+
+export const ImageSetFull: ImageSetPreviewProps["section"] = {
+  type: "image_set",
+  layout: "full",
+  title: "The Work of Bruce M. Sherman",
+  images: Images,
+}
+
+export const ImageSetMini: ImageSetPreviewProps["section"] = {
+  type: "image_set",
+  layout: "mini",
+  title: "The Work of Bruce M. Sherman",
+  images: Images,
+}
 
 export const FeatureHeaders = [
   {
