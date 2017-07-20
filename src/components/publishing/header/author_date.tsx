@@ -24,7 +24,7 @@ const getAuthorByline = authors => {
   }
 }
 
-const getDate = date => moment(date).tz("America/New_York").format("MMM Do, YYYY h:mm a")
+const getDate = date => moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 
 interface AuthorDateProps {
   authors: any
@@ -37,7 +37,7 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
   return (
     <AuthorDateContainer>
       <BulletText layout={layout}>By {getAuthorByline(authors)}</BulletText>
-      <BulletText layout={layout}>{getDate(date)} EST</BulletText>
+      <BulletText layout={layout}>{getDate(date)}</BulletText>
     </AuthorDateContainer>
   )
 }
@@ -56,7 +56,7 @@ const BulletText = div`
   }
   ${pMedia.sm`
     margin: 0 20px 0 0;
-    ${Fonts.unica("s16", "medium")}
+    ${Fonts.unica("s14", "medium")}
     &:before {
       width: 8px;
       height: 8px;

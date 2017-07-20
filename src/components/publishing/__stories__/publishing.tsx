@@ -105,9 +105,15 @@ storiesOf("Publishing", Artwork)
   })
   .add("Feature Header - Text", () => {
     const article = _.extend({}, Articles[2], { hero_section: HeroSections[0] })
+    const article2 = _.extend({}, Articles[2], { hero_section: HeroSections[5] })
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Header article={article} />
+      <div>
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Header article={article} />
+        </div>
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Header article={article2} />
+        </div>
       </div>
     )
   })

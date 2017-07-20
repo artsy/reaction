@@ -1,4 +1,5 @@
 import React from "react"
+import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
@@ -20,7 +21,7 @@ function renderFeatureAsset(url, layout) {
 }
 
 function renderAsset(url) {
-  if (url.includes("mp4")) {
+  if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
         <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
@@ -31,37 +32,71 @@ function renderAsset(url) {
   }
 }
 
-function renderImage(url, layout) {
+function renderTextLayoutAsset(url, layout) {
   if (layout === "text") {
-    return <Image src={url} />
+    if (isVideo(url)) {
+      return <Video src={url} autoPlay controls={false} loop muted playsInline />
+    } else {
+      return <Image src={url} />
+    }
   } else {
     return false
   }
 }
 
+function isVideo(url) {
+  return url.includes("mp4")
+}
+
 interface FeatureHeaderProps {
   article?: any
+  size?: any
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const { article } = props
+  const { width } = props.size
   const hero = article.hero_section
-  return (
-    <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureAsset(hero.url, hero.type)}
-      <HeaderTextContainer>
-        <HeaderText>
-          <Vertical>{article.vertical.name}</Vertical>
-          <Title>{article.title}</Title>
-          <SubHeader>
-            <SubHeaderText>{hero.subheader}</SubHeaderText>
-            <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
-          </SubHeader>
-        </HeaderText>
-        {renderImage(hero.url, hero.type)}
-      </HeaderTextContainer>
-    </FeatureHeaderContainer>
-  )
+  if (width < 600 && hero.type === "split") {
+    return (
+      <FeatureHeaderContainer data-type={hero.type}>
+        <HeaderTextContainer>
+          <HeaderText>
+            <Vertical>{article.vertical.name}</Vertical>
+            <Title>{article.title}</Title>
+            {renderFeatureAsset(hero.url, hero.type)}
+            <SubHeader>
+              <SubHeaderText>{hero.subheader}</SubHeaderText>
+              <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
+            </SubHeader>
+          </HeaderText>
+        </HeaderTextContainer>
+      </FeatureHeaderContainer>
+    )
+  } else {
+    return (
+      <FeatureHeaderContainer data-type={hero.type}>
+        {renderFeatureAsset(hero.url, hero.type)}
+        <HeaderTextContainer>
+          <HeaderText>
+            <Vertical>{article.vertical.name}</Vertical>
+            <Title>{article.title}</Title>
+            <SubHeader>
+              <SubHeaderText>{hero.subheader}</SubHeaderText>
+              <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
+            </SubHeader>
+          </HeaderText>
+          {renderTextLayoutAsset(hero.url, hero.type)}
+        </HeaderTextContainer>
+      </FeatureHeaderContainer>
+    )
+  }
+}
+
+FeatureHeader.defaultProps = {
+  size: {
+    width: 0,
+  },
 }
 
 const Div = styled.div`
@@ -77,8 +112,11 @@ const Overlay = Div.extend`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
+  ${pMedia.md`
+    ${Fonts.unica("s80")}
+  `}
   ${pMedia.sm`
-    ${Fonts.unica("s69")}
+    ${Fonts.unica("s45")}
   `}
 `
 const Vertical = styled.div`
@@ -128,6 +166,9 @@ const Image = styled.img`
   padding: 20px;
   box-sizing: border-box;
 `
+const Video = styled.video`
+  width: 100vw;
+`
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
   display: flex;
@@ -152,9 +193,6 @@ const FeatureHeaderContainer = Div.extend`
   &[data-type='text'] {
     ${Title} {
       margin-bottom: 150px;
-      ${pMedia.sm`
-        ${Fonts.unica("s69")}
-      `}
     }
     ${HeaderText} {
       max-width: none;
@@ -186,14 +224,23 @@ const FeatureHeaderContainer = Div.extend`
       margin-bottom: 30px;
     }
     ${pMedia.sm`
+      ${Title} {
+        margin-bottom: 20px;
+      }
       ${HeaderText} {
         width: 100%;
       }
       ${FeatureImage} {
         width: 100%;
+        position: relative;
+        border: 0px;
+        margin-bottom: 30px;
       }
       ${FeatureVideoContainer} {
         width: 100%;
+        position: relative;
+        border: 0px;
+        margin-bottom: 30px;
       }
       ${FeatureVideo} {
         width: 100vw;
@@ -211,11 +258,13 @@ const FeatureHeaderContainer = Div.extend`
       ${HeaderText} {
         padding: 20px;
       }
-      ${Title} {
-        ${Fonts.unica("s45")}
-      }
     `}
   }
 `
 
-export default FeatureHeader
+const sizeMeConfig = {
+  monitorWidth: true,
+  refreshRate: 64,
+}
+
+export default sizeMe(sizeMeConfig)(FeatureHeader)

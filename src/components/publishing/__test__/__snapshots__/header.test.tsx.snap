@@ -1,8 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders feature full header properly 1`] = `
+exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="sc-bZQynM gHjOeL"
+  className="file__StandardHeaderContainer-s1xyqpn5-0 duMUC"
+>
+  <div
+    className="file__Vertical-s1xyqpn5-2 kVgChY"
+  >
+    Art Market
+  </div>
+  <div
+    className="file__Title-s1xyqpn5-1 gnGENJ"
+  >
+    New York's Next Art District
+  </div>
+  <div
+    className="file__AuthorDateContainer-s16zxk7i-0 dWPMt"
+  >
+    <div
+      className="sc-bdVaJa bcNlZk"
+    >
+      By 
+      Molly Gottschalk
+    </div>
+    <div
+      className="sc-bdVaJa bcNlZk"
+    >
+      May 19, 2017 9:09 am
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature full header properly 1`] = `
+<div
+  className="sc-bZQynM kWJANm"
   data-type="fullscreen"
 >
   <div>
@@ -21,36 +53,36 @@ exports[`renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-mi9nrl-2 lhtBqF"
+        className="file__Vertical-j3b788-2 lvQQw"
       >
         Art Market
       </div>
       <div
-        className="file__Title-mi9nrl-1 ixuaPH"
+        className="file__Title-j3b788-1 jtnKiS"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-mi9nrl-5 bppYha"
+        className="file__SubHeader-j3b788-5 cxEerl"
       >
         <div
-          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
+          className="file__SubHeaderText-j3b788-6 cPqxJK"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
+          className="file__AuthorDateContainer-s16zxk7i-0 dWPMt"
         >
           <div
-            className="sc-bdVaJa eYectO"
+            className="sc-bdVaJa bfrJtG"
           >
+            By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa eYectO"
+            className="sc-bdVaJa bfrJtG"
           >
-            May 19th, 2017 9:09 am
-             EST
+            May 19, 2017 9:09 am
           </div>
         </div>
       </div>
@@ -59,15 +91,11 @@ exports[`renders feature full header properly 1`] = `
 </div>
 `;
 
-exports[`renders feature split header properly 1`] = `
+exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM gHjOeL"
+  className="sc-bZQynM kWJANm"
   data-type="split"
 >
-  <div
-    className="sc-ifAKCX eaHLCC"
-    src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
-  />
   <div
     className="sc-htpNat gziOsG"
   >
@@ -75,36 +103,40 @@ exports[`renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-mi9nrl-2 lhtBqF"
+        className="file__Vertical-j3b788-2 lvQQw"
       >
         Art Market
       </div>
       <div
-        className="file__Title-mi9nrl-1 ixuaPH"
+        className="file__Title-j3b788-1 jtnKiS"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-mi9nrl-5 bppYha"
+        className="sc-ifAKCX eaHLCC"
+        src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+      />
+      <div
+        className="file__SubHeader-j3b788-5 cxEerl"
       >
         <div
-          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
+          className="file__SubHeaderText-j3b788-6 cPqxJK"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
+          className="file__AuthorDateContainer-s16zxk7i-0 dWPMt"
         >
           <div
-            className="sc-bdVaJa frSGFj"
+            className="sc-bdVaJa bcNlZk"
           >
+            By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa frSGFj"
+            className="sc-bdVaJa bcNlZk"
           >
-            May 19th, 2017 9:09 am
-             EST
+            May 19, 2017 9:09 am
           </div>
         </div>
       </div>
@@ -113,9 +145,9 @@ exports[`renders feature split header properly 1`] = `
 </div>
 `;
 
-exports[`renders feature text header properly 1`] = `
+exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM gHjOeL"
+  className="sc-bZQynM kWJANm"
   data-type="text"
 >
   <div
@@ -125,76 +157,44 @@ exports[`renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-mi9nrl-2 lhtBqF"
+        className="file__Vertical-j3b788-2 lvQQw"
       >
         Art Market
       </div>
       <div
-        className="file__Title-mi9nrl-1 ixuaPH"
+        className="file__Title-j3b788-1 jtnKiS"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-mi9nrl-5 bppYha"
+        className="file__SubHeader-j3b788-5 cxEerl"
       >
         <div
-          className="file__SubHeaderText-mi9nrl-6 kGgqCD"
+          className="file__SubHeaderText-j3b788-6 cPqxJK"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
+          className="file__AuthorDateContainer-s16zxk7i-0 dWPMt"
         >
           <div
-            className="sc-bdVaJa gpNTgG"
+            className="sc-bdVaJa eeGSmv"
           >
+            By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa gpNTgG"
+            className="sc-bdVaJa eeGSmv"
           >
-            May 19th, 2017 9:09 am
-             EST
+            May 19, 2017 9:09 am
           </div>
         </div>
       </div>
     </div>
     <img
-      className="file__Image-mi9nrl-4 bodpUM"
+      className="file__Image-j3b788-4 jLWciu"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
-  </div>
-</div>
-`;
-
-exports[`renders standard header properly 1`] = `
-<div
-  className="file__StandardHeaderContainer-s8q9i40-0 eTSHYc"
->
-  <div
-    className="file__Vertical-s8q9i40-2 fPPwTE"
-  >
-    Art Market
-  </div>
-  <div
-    className="file__Title-s8q9i40-1 fmUxMp"
-  >
-    New York's Next Art District
-  </div>
-  <div
-    className="file__AuthorDateContainer-s1wj0un0-0 hkBtwO"
-  >
-    <div
-      className="sc-bdVaJa frSGFj"
-    >
-      Molly Gottschalk
-    </div>
-    <div
-      className="sc-bdVaJa frSGFj"
-    >
-      May 19th, 2017 9:09 am
-       EST
-    </div>
   </div>
 </div>
 `;
