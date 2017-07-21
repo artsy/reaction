@@ -1,6 +1,6 @@
+import * as _ from "lodash"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import _ from "underscore"
 import Header from "../header/header"
 import { Articles, HeroSections } from "./fixtures"
 

@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import _ from "lodash"
+import * as _ from "lodash"
 import * as React from "react"
 
 import Artwork from "../artwork"

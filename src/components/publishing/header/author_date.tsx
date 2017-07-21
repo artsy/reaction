@@ -8,14 +8,28 @@ interface BulletTextProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string
 }
 
-const div: StyledFunction<BulletTextProps> = styled.div
+interface AuthorDateProps {
+  authors: any
+  layout?: string
+  date?: string
+}
 
 const getAuthorByline = authors => {
   if (authors) {
     if (authors.length > 1) {
-      authors.reduce((prev, curr, i) => {
-        return prev + (i === authors.length - 1 ? " and " : ", ") + curr.name
+      const str = authors.reduce((prev, curr, i) => {
+        let delim
+        const len = authors.length
+        if (i === len - 1) {
+          delim = " and "
+        } else if (i === 0) {
+          delim = ""
+        } else {
+          delim = ", "
+        }
+        return prev + delim + curr.name
       }, "")
+      return str
     } else {
       return authors[0].name
     }
@@ -26,14 +40,8 @@ const getAuthorByline = authors => {
 
 const getDate = date => moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 
-interface AuthorDateProps {
-  authors: any
-  layout?: string
-  date?: string
-}
-
 const AuthorDate: React.SFC<AuthorDateProps> = props => {
-  const { layout, authors, date } = props
+  const { authors, layout, date } = props
   return (
     <AuthorDateContainer>
       <BulletText layout={layout}>By {getAuthorByline(authors)}</BulletText>
@@ -41,6 +49,8 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
     </AuthorDateContainer>
   )
 }
+
+const div: StyledFunction<BulletTextProps> = styled.div
 
 const BulletText = div`
   ${Fonts.unica("s19", "medium")}

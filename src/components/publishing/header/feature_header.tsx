@@ -5,7 +5,7 @@ import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureAsset(url, layout) {
+function renderFeatureAsset(url, layout, width) {
   if (layout === "fullscreen") {
     return (
       <div>
@@ -13,7 +13,15 @@ function renderFeatureAsset(url, layout) {
         <Overlay />
       </div>
     )
-  } else if (layout === "split") {
+  } else if (layout === "split" && width > 600) {
+    return renderAsset(url)
+  } else {
+    return false
+  }
+}
+
+function renderMobileSplitAsset(url, layout, width) {
+  if (layout === "split" && width < 600) {
     return renderAsset(url)
   } else {
     return false
@@ -57,40 +65,23 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const { article } = props
   const { width } = props.size
   const hero = article.hero_section
-  if (width < 600 && hero.type === "split") {
-    return (
-      <FeatureHeaderContainer data-type={hero.type}>
-        <HeaderTextContainer>
-          <HeaderText>
-            <Vertical>{article.vertical.name}</Vertical>
-            <Title>{article.title}</Title>
-            {renderFeatureAsset(hero.url, hero.type)}
-            <SubHeader>
-              <SubHeaderText>{hero.subheader}</SubHeaderText>
-              <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
-            </SubHeader>
-          </HeaderText>
-        </HeaderTextContainer>
-      </FeatureHeaderContainer>
-    )
-  } else {
-    return (
-      <FeatureHeaderContainer data-type={hero.type}>
-        {renderFeatureAsset(hero.url, hero.type)}
-        <HeaderTextContainer>
-          <HeaderText>
-            <Vertical>{article.vertical.name}</Vertical>
-            <Title>{article.title}</Title>
-            <SubHeader>
-              <SubHeaderText>{hero.subheader}</SubHeaderText>
-              <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
-            </SubHeader>
-          </HeaderText>
-          {renderTextLayoutAsset(hero.url, hero.type)}
-        </HeaderTextContainer>
-      </FeatureHeaderContainer>
-    )
-  }
+  return (
+    <FeatureHeaderContainer data-type={hero.type}>
+      {renderFeatureAsset(hero.url, hero.type, width)}
+      <HeaderTextContainer>
+        <HeaderText>
+          <Vertical>{article.vertical.name}</Vertical>
+          <Title>{article.title}</Title>
+          {renderMobileSplitAsset(hero.url, hero.type, width)}
+          <SubHeader>
+            <SubHeaderText>{hero.subheader}</SubHeaderText>
+            <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
+          </SubHeader>
+        </HeaderText>
+        {renderTextLayoutAsset(hero.url, hero.type)}
+      </HeaderTextContainer>
+    </FeatureHeaderContainer>
+  )
 }
 
 FeatureHeader.defaultProps = {
