@@ -1,15 +1,16 @@
 import { storiesOf } from "@storybook/react"
+import * as _ from "lodash"
 import * as React from "react"
 
 import Artwork from "../artwork"
-import FeatureHeader from "../feature_header"
+import Header from "../header/header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
 import ImageCollection from "../image_collection"
 import ImageSetPreview from "../imageset_preview"
 import ImageSetPreviewClassic from "../imageset_preview_classic"
 
-import { Artworks, FeatureHeaders, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
+import { Articles, Artworks, HeroSections, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
 
 import Typography from "./typography"
 
@@ -88,24 +89,59 @@ storiesOf("Publishing", Artwork)
       </div>
     )
   })
-  .add("Feature Header - Text", () => {
+  .add("Classic Header", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <FeatureHeader header={FeatureHeaders[0]} />
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+        <Header article={Articles[0]} />
+      </div>
+    )
+  })
+  .add("Standard Header", () => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+        <Header article={Articles[1]} />
+      </div>
+    )
+  })
+  .add("Feature Header - Text", () => {
+    const article = _.extend({}, Articles[2], { hero_section: HeroSections[0] })
+    const article2 = _.extend({}, Articles[2], { hero_section: HeroSections[5] })
+    return (
+      <div>
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Header article={article} />
+        </div>
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Header article={article2} />
+        </div>
       </div>
     )
   })
   .add("Feature Header - Split", () => {
+    const article = _.extend({}, Articles[2], { hero_section: HeroSections[1] })
+    const article2 = _.extend({}, Articles[2], { hero_section: HeroSections[3] })
     return (
-      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-        <FeatureHeader header={FeatureHeaders[1]} />
+      <div>
+        <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+          <Header article={article} />
+        </div>
+        <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+          <Header article={article2} />
+        </div>
       </div>
     )
   })
   .add("Feature Header - Full", () => {
+    const article = _.extend({}, Articles[2], { hero_section: HeroSections[2] })
+    const article2 = _.extend({}, Articles[2], { hero_section: HeroSections[4] })
     return (
-      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-        <FeatureHeader header={FeatureHeaders[2]} />
+      <div>
+        <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+          <Header article={article} />
+        </div>
+        <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+          <Header article={article2} />
+        </div>
       </div>
     )
   })

@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorDate renders a single author 1`] = `
+<div
+  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    By 
+    Molly Gottschalk
+  </div>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
+exports[`AuthorDate renders multiple authors 1`] = `
+<div
+  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    By 
+    Molly Gottschalk and Kana Abe
+  </div>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
+exports[`Standard Header renders standard header properly 1`] = `
+<div
+  className="file__StandardHeaderContainer-s1m9fy6s-0 WYleu"
+>
+  <div
+    className="file__Vertical-s1m9fy6s-2 iurgWf"
+  >
+    Art Market
+  </div>
+  <div
+    className="file__Title-s1m9fy6s-1 iqSRMM"
+  >
+    New York's Next Art District
+  </div>
+  <div
+    className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+  >
+    <div
+      className="sc-bdVaJa bcNlZk"
+    >
+      By 
+      Molly Gottschalk
+    </div>
+    <div
+      className="sc-bdVaJa bcNlZk"
+    >
+      May 19, 2017 9:09 am
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature full header properly 1`] = `
+<div
+  className="sc-bZQynM hrHTgX"
+  data-type="fullscreen"
+>
+  <div>
+    <div
+      className="sc-ifAKCX eaHLCC"
+      src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+    />
+    <div
+      className="sc-bwzfXH gWZoXy"
+    />
+  </div>
+  <div
+    className="sc-htpNat gziOsG"
+  >
+    <div
+      className="sc-bxivhb jzEeHb"
+    >
+      <div
+        className="file__Vertical-m5gxwf-2 hfdlZg"
+      >
+        Art Market
+      </div>
+      <div
+        className="file__Title-m5gxwf-1 krFZio"
+      >
+        New York's Next Art District
+      </div>
+      <div
+        className="file__SubHeader-m5gxwf-6 ipFoDT"
+      >
+        <div
+          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+        >
+          <div
+            className="sc-bdVaJa bfrJtG"
+          >
+            By 
+            Molly Gottschalk
+          </div>
+          <div
+            className="sc-bdVaJa bfrJtG"
+          >
+            May 19, 2017 9:09 am
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature split header properly 1`] = `
+<div
+  className="sc-bZQynM hrHTgX"
+  data-type="split"
+>
+  <div
+    className="sc-htpNat gziOsG"
+  >
+    <div
+      className="sc-bxivhb jzEeHb"
+    >
+      <div
+        className="file__Vertical-m5gxwf-2 hfdlZg"
+      >
+        Art Market
+      </div>
+      <div
+        className="file__Title-m5gxwf-1 krFZio"
+      >
+        New York's Next Art District
+      </div>
+      <div
+        className="sc-ifAKCX eaHLCC"
+        src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+      />
+      <div
+        className="file__SubHeader-m5gxwf-6 ipFoDT"
+      >
+        <div
+          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+        >
+          <div
+            className="sc-bdVaJa bcNlZk"
+          >
+            By 
+            Molly Gottschalk
+          </div>
+          <div
+            className="sc-bdVaJa bcNlZk"
+          >
+            May 19, 2017 9:09 am
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature text header properly 1`] = `
+<div
+  className="sc-bZQynM hrHTgX"
+  data-type="text"
+>
+  <div
+    className="sc-htpNat gziOsG"
+  >
+    <div
+      className="sc-bxivhb jzEeHb"
+    >
+      <div
+        className="file__Vertical-m5gxwf-2 hfdlZg"
+      >
+        Art Market
+      </div>
+      <div
+        className="file__Title-m5gxwf-1 krFZio"
+      >
+        New York's Next Art District
+      </div>
+      <div
+        className="file__SubHeader-m5gxwf-6 ipFoDT"
+      >
+        <div
+          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+        >
+          Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+        </div>
+        <div
+          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+        >
+          <div
+            className="sc-bdVaJa eeGSmv"
+          >
+            By 
+            Molly Gottschalk
+          </div>
+          <div
+            className="sc-bdVaJa eeGSmv"
+          >
+            May 19, 2017 9:09 am
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      className="file__Image-m5gxwf-4 jUzkHf"
+      src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
+    />
+  </div>
+</div>
+`;

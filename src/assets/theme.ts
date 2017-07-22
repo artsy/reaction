@@ -15,4 +15,11 @@ export default {
       lg: 75, // em
     },
   },
+  publishing: {
+    breakpoints: {
+      sm: 600, // px
+      md: 900, // px
+      lg: 1250, // px
+    },
+  },
 }
