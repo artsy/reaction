@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AuthorDate renders a single author 1`] = `
+<div
+  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    By 
+    Molly Gottschalk
+  </div>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
+exports[`AuthorDate renders multiple authors 1`] = `
+<div
+  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    By 
+    Molly Gottschalk and Kana Abe
+  </div>
+  <div
+    className="sc-bdVaJa bcNlZk"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
 exports[`Standard Header renders standard header properly 1`] = `
 <div
   className="file__StandardHeaderContainer-s1m9fy6s-0 WYleu"
