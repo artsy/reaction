@@ -3,12 +3,14 @@ import * as _ from "lodash"
 import * as React from "react"
 
 import Artwork from "../artwork"
+import Embed from "../embed"
 import Header from "../header/header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
 import ImageCollection from "../image_collection"
 import ImageSetPreview from "../imageset_preview"
 import ImageSetPreviewClassic from "../imageset_preview_classic"
+import Video from "../video"
 
 import {
   Articles,
@@ -156,6 +158,20 @@ storiesOf("Publishing", Artwork)
         <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
           <Header article={article2} />
         </div>
+      </div>
+    )
+  })
+  .add("Embed", () => {
+    return (
+      <div style={{ width: "100%" }}>
+        <Embed src={"http://files.artsy.net/documents/1parrasch.html"} />
+      </div>
+    )
+  })
+  .add("Video", () => {
+    return (
+      <div style={{ width: "100%" }}>
+        <Video src={"https://www.youtube.com/watch?v=PXi7Kjlsz9A"} />
       </div>
     )
   })
