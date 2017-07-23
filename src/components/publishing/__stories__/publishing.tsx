@@ -164,13 +164,13 @@ storiesOf("Publishing", Artwork)
   .add("Embed", () => {
     return (
       <div style={{ width: "100%" }}>
-        <Embed src={"http://files.artsy.net/documents/1parrasch.html"} />
+        <Embed src={"http://files.artsy.net/documents/1parrasch.html"} height={1000} mobileHeight={1300} />
       </div>
     )
   })
   .add("Video", () => {
     return (
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%", position: "relative" }}>
         <Video src={"https://www.youtube.com/watch?v=PXi7Kjlsz9A"} />
       </div>
     )
