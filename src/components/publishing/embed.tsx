@@ -1,6 +1,5 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../helpers"
 
 interface EmbedProps {
   section: any
@@ -21,9 +20,9 @@ const Embed: React.SFC<EmbedProps> = props => {
 const IFrame = iframe`
   width: 100%;
   height: ${props => props.height + "px"};
-  ${pMedia.sm`
+  @media (max-width: 600px) {
     height: ${props => props.mobileHeight + "px"};
-  `}
+  }
 `
 
 export default Embed
