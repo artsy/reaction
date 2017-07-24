@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../helpers"
 
 import Fonts from "./fonts"
 import IconImageSet from "./icons/icon_imageset"
@@ -7,7 +8,7 @@ import IconImageSet from "./icons/icon_imageset"
 type Layout = "mini" | "full"
 
 interface DivLayoutProps {
-  layout: Layout
+  layout?: Layout
 }
 const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
@@ -30,7 +31,7 @@ const TitleWrapper = div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: ${props => (props.layout === "mini" ? "50px" : "100%")};
+  height: ${props => (props.layout === "full" ? "50px" : "100%")};
 `
 const MiniWrapper = styled.div`
   height: 100px;
@@ -51,37 +52,37 @@ const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
   margin-bottom: 8px;
   line-height: 1.1em;
-  @media (max-width: 600px) {
+  ${pMedia.sm`
     ${Fonts.unica("s16", "medium")}
-  }
+  `}
 `
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
   ${Fonts.unica("s14", "medium")}
-  @media (max-width: 600px) {
+  ${pMedia.sm`
     ${Fonts.unica("s12", "medium")}
-  }
+  `}
 `
 const SubTitleCount = styled.div`
   ${Fonts.unica("s14")}
   margin-left: 20px;
-  @media (max-width: 600px) {
+  ${pMedia.sm`
     ${Fonts.unica("s12")}
-  }
+  `}
 `
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
-  margin-left: 20px;
+  margin-left: 40px;
   text-align: right;
   > svg {
     height: 98%;
   }
-  @media (max-width: 600px) {
+  ${pMedia.sm`  
     display: none;
-  }
+  `}
 `
 export interface Props {
   section: {
@@ -90,8 +91,8 @@ export interface Props {
       url?: string
       image?: string
     }>
-    layout: Layout
-    title: string
+    layout?: Layout
+    title?: string
   }
 }
 
@@ -101,42 +102,54 @@ class ImageSetPreview extends Component<Props, null> {
     const src = image.url ? image.url : image.image
     return src
   }
-  textSection() {
-    if (this.props.section.layout === "mini") {
+  image() {
+    const src = this.getImageUrl()
+    const width = this.props.section.layout === "full" ? "100%" : "auto"
+    const height = this.props.section.layout === "full" ? "auto" : "100%"
+    return <img src={src} width={width} height={height} />
+  }
+  wrapper() {
+    if (this.props.section.layout === "full") {
+      return (
+        <FullWrapper>
+          {this.textSection()}
+          {this.icon()}
+        </FullWrapper>
+      )
+    } else {
       return (
         <MiniWrapper>
           {this.image()}
           <MiniInner>
-            {this.title()}
+            {this.textSection()}
             {this.icon()}
           </MiniInner>
         </MiniWrapper>
       )
-    } else {
-      return (
-        <FullWrapper>
-          {this.title()}
-          {this.icon()}
-        </FullWrapper>
-      )
     }
   }
-  image() {
-    const src = this.getImageUrl()
-    const width = this.props.section.layout === "full" ? "100%" : "auto"
-    const height = this.props.section.layout === "mini" ? "100%" : "auto"
-    return <img src={src} width={width} height={height} />
-  }
-  title() {
+  textSection() {
     return (
       <TitleWrapper layout={this.props.section.layout}>
-        <Title>{this.props.section.title}</Title>
+        {this.title()}
         <SubTitle>
           <SubTitlePrompt>View Slideshow</SubTitlePrompt>
-          <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+          {this.subTitleCount()}
         </SubTitle>
       </TitleWrapper>
     )
+  }
+  title() {
+    let title = this.props.section.images.length + " Images"
+    if (this.props.section.title) {
+      title = this.props.section.title
+    }
+    return <Title>{title}</Title>
+  }
+  subTitleCount() {
+    if (this.props.section.title) {
+      return <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+    }
   }
   icon() {
     return (
@@ -149,7 +162,7 @@ class ImageSetPreview extends Component<Props, null> {
     const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
     return (
       <div style={{ position: "relative" }}>
-        {this.textSection()}
+        {this.wrapper()}
         {image}
       </div>
     )

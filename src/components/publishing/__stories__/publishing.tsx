@@ -10,7 +10,16 @@ import ImageCollection from "../image_collection"
 import ImageSetPreview from "../imageset_preview"
 import ImageSetPreviewClassic from "../imageset_preview_classic"
 
-import { Articles, Artworks, HeroSections, Images, ImageSetFull, ImageSetMini } from "../__test__/fixtures"
+import {
+  Articles,
+  Artworks,
+  HeroSections,
+  Images,
+  ImageSetFull,
+  ImageSetFullSansTitle,
+  ImageSetMini,
+  ImageSetMiniSansTitle,
+} from "../__test__/fixtures"
 
 import Typography from "./typography"
 
@@ -86,6 +95,11 @@ storiesOf("Publishing", Artwork)
         <ImageSetPreview section={ImageSetFull} />
         <br />
         <ImageSetPreview section={ImageSetMini} />
+        <br />
+        <p>Without titles:</p>
+        <ImageSetPreview section={ImageSetFullSansTitle} />
+        <br />
+        <ImageSetPreview section={ImageSetMiniSansTitle} />
       </div>
     )
   })
