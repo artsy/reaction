@@ -38,12 +38,10 @@ type PublishingMedia = { [S in keyof typeof psizes]: typeof css }
 
 export const pMedia: PublishingMedia = Object.keys(psizes).reduce((accumulator, label) => {
   const pxSize = psizes[label]
-  accumulator[label] = (strings, ...args) => {
-    return css`
-      @media (max-width: ${pxSize}px) {
-        ${css(strings, ...args)}
-      }
-    `
-  }
+  accumulator[label] = (strings, ...args) => css`
+    @media (max-width: ${pxSize}px) {
+      ${css(strings, ...args)}
+    }
+  `
   return accumulator
 }, {}) as PublishingMedia
