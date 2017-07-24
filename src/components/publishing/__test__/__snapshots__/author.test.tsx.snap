@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="file__AuthorContainer-usmevs-0 dyxSCX"
+>
+  <div
+    className="sc-bdVaJa gdIXnT"
+    src="https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg"
+  />
+  <div
+    className="file__AuthorInfo-usmevs-1 kMCbIc"
+  >
+    <div
+      className="file__Bio-usmevs-2 iDxAAH"
+    >
+      Abigail Cain is an Art Market Editor at Artsy
+    </div>
+    <a
+      className="file__TwitterHandle-usmevs-3 duuxqP"
+      href="http://twitter.com/abigailcain"
+    >
+      <div
+        className="file-s1ekx40u-0 lhOxy"
+        style={undefined}
+      >
+        
+      </div>
+      @abigailcain
+    </a>
+  </div>
+</div>
+`;

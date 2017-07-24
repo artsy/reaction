@@ -185,3 +185,12 @@ export const Articles = [
     },
   },
 ]
+
+export const Authors = [
+  {
+    image_url: "https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg",
+    name: "Abigail Cain",
+    bio: "Abigail Cain is an Art Market Editor at Artsy",
+    twitter_handle: "abigailcain",
+  },
+]

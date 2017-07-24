@@ -3,6 +3,7 @@ import * as _ from "lodash"
 import * as React from "react"
 
 import Artwork from "../artwork"
+import Author from "../author"
 import Embed from "../embed"
 import Header from "../header/header"
 import IconImageset from "../icons/icon_imageset"
@@ -15,6 +16,7 @@ import Video from "../video"
 import {
   Articles,
   Artworks,
+  Authors,
   HeroSections,
   Images,
   ImageSetFull,
@@ -172,6 +174,13 @@ storiesOf("Publishing", Artwork)
     return (
       <div style={{ width: "100%", position: "relative" }}>
         <Video src={"https://www.youtube.com/watch?v=PXi7Kjlsz9A"} />
+      </div>
+    )
+  })
+  .add("Author", () => {
+    return (
+      <div style={{ width: "100%", position: "relative" }}>
+        <Author author={Authors[0]} />
       </div>
     )
   })
