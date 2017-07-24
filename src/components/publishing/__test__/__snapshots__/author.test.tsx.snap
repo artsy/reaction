@@ -2,32 +2,40 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__AuthorContainer-usmevs-0 dyxSCX"
+  className="file__AuthorContainer-s1asr4y9-0 emAQlw"
 >
   <div
-    className="sc-bdVaJa gdIXnT"
+    className="sc-bdVaJa hwyJgp"
     src="https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg"
   />
   <div
-    className="file__AuthorInfo-usmevs-1 kMCbIc"
+    className="file__AuthorInfo-s1asr4y9-1 grPqae"
   >
-    <div
-      className="file__Bio-usmevs-2 iDxAAH"
-    >
-      Abigail Cain is an Art Market Editor at Artsy
-    </div>
-    <a
-      className="file__TwitterHandle-usmevs-3 duuxqP"
-      href="http://twitter.com/abigailcain"
-    >
-      <div
-        className="file-s1ekx40u-0 lhOxy"
-        style={undefined}
+    <span>
+      <a
+        href="https://artsy.net/abigail"
+        title={undefined}
       >
-        
-      </div>
-      @abigailcain
-    </a>
+        Abigail Cain
+      </a>
+       is an Art Market Editor at Artsy
+    </span>
+    <span
+      className="file__Twitter-s1asr4y9-2 kxuiUB"
+    >
+      <a
+        className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+        href="http://twitter.com/abigailcain"
+      >
+        <div
+          className="file-s1ekx40u-0 lhOxy"
+          style={undefined}
+        >
+          
+        </div>
+        @abigailcain
+      </a>
+    </span>
   </div>
 </div>
 `;

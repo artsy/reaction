@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import ImageCaption from "./image_caption"
+import Caption from "./caption"
 
 const BlockImage = styled.img`
   display: block;
@@ -16,7 +16,7 @@ const Image: React.SFC<ImageProps> = props => {
   return (
     <div className="article-image">
       <BlockImage src={image.url} width="100%" />
-      <ImageCaption image={image} layout={layout} />
+      <Caption caption={image.caption} layout={layout} />
     </div>
   )
 }

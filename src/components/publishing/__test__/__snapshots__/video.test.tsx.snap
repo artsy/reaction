@@ -1,11 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-<iframe
-  allowFullScreen={true}
-  className="sc-bdVaJa dzBwAj"
-  frameBorder="0"
-  height={281.25}
-  src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
-/>
+<div>
+  <div
+    className="sc-htpNat UgtSs"
+    height={281.25}
+    hidden={false}
+    onClick={[Function]}
+    src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
+  >
+    <div
+      className="file__PlayButton-q8t269-1 rSkEf"
+    >
+      <div
+        className="file__PlayButtonCaret-q8t269-0 iGxTkR"
+      />
+    </div>
+  </div>
+  <iframe
+    allowFullScreen={true}
+    className="sc-bwzfXH bSAkii"
+    frameBorder="0"
+    height={281.25}
+    src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
+  />
+  <div
+    className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
+  >
+    <div
+      className="sc-bdVaJa bGfehm"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
+        }
+      }
+    />
+  </div>
+</div>
 `;

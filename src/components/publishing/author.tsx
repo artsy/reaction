@@ -1,5 +1,7 @@
 import * as React from "react"
+import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../helpers"
 import Icon from "../icon"
 import Fonts from "./fonts"
 
@@ -13,11 +15,13 @@ const Author: React.SFC<AuthorProps> = props => {
     <AuthorContainer>
       <ProfileImage src={author.image_url} />
       <AuthorInfo>
-        <Bio>{author.bio}</Bio>
-        <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
-          <Icon name="twitter" color="black" />
-          {`@${author.twitter_handle}`}
-        </TwitterHandle>
+        <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
+        <Twitter>
+          <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
+            <Icon name="twitter" color="black" />
+            {`@${author.twitter_handle}`}
+          </TwitterHandle>
+        </Twitter>
       </AuthorInfo>
     </AuthorContainer>
   )
@@ -30,24 +34,34 @@ interface ProfileImageProps extends React.HTMLProps<HTMLDivElement> {
 const Div: StyledFunction<ProfileImageProps> = styled.div
 
 const ProfileImage = Div`
-  width: 70px;
-  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
   border-radius: 50%;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
+  ${pMedia.sm`
+    min-width: 40px;
+    min-height: 40px;
+  `}
 `
 const AuthorContainer = styled.div`
   display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 `
 const AuthorInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: block;
   margin-left: 10px;
+  ${Fonts.garamond("s23")}
+  ${pMedia.sm`
+    ${Fonts.garamond("s17")}
+  `}
+  a {
+    color: black;
+  }
 `
-const Bio = styled.div`
-  ${Fonts.garamond("s17")}
-  margin-bottom: 10px;
+const Twitter = styled.span`
+  margin-left: 20px;
 `
 const TwitterHandle = styled.a`
   ${Fonts.unica("s14", "medium")}
@@ -57,5 +71,8 @@ const TwitterHandle = styled.a`
     vertical-align: middle;
     margin: 0px;
   }
+  ${pMedia.sm`
+    ${Fonts.unica("s12", "medium")}
+  `}
 `
 export default Author

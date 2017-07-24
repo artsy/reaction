@@ -1,4 +1,5 @@
 import Artwork from "./artwork"
+import Authors from "./authors"
 import Embed from "./embed"
 import FeatureHeader from "./header/feature_header"
 import Image from "./image"
@@ -9,6 +10,7 @@ import Video from "./video"
 
 export default {
   Artwork,
+  Authors,
   Embed,
   FeatureHeader,
   Image,

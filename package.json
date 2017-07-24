@@ -117,6 +117,7 @@
     "numeral": "^2.0.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
     "react-sizeme": "^2.3.2",
     "react-styled-flexboxgrid": "^2.0.0",

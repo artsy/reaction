@@ -1,11 +1,9 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-
 import Embed from "../embed"
+import { Embeds } from "./fixtures"
 
 it("renders properly", () => {
-  const artwork = renderer
-    .create(<Embed src={"http://files.artsy.net/documents/1parrasch.html"} height={1000} mobileHeight={1300} />)
-    .toJSON()
+  const artwork = renderer.create(<Embed section={Embeds[0]} />).toJSON()
   expect(artwork).toMatchSnapshot()
 })
