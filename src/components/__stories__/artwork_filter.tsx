@@ -55,6 +55,7 @@ const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDrop
           artist_id: "christopher-williams"
         ) {
           aggregations {
+            slice
             ${Dropdown.getFragment("aggregation")}
           }
         }
@@ -68,11 +69,6 @@ interface DropdownRelayProps {
     filter_artworks: {
       aggregations: Array<{
         slice: string | null
-        counts: {
-          name: string | null
-          count: number | null
-          id: string | null
-        }
       } | null> | null
     } | null
   } | null
@@ -101,11 +97,7 @@ const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTo
 
 interface TotalCountRelayProps {
   filter_artworks: {
-    filter_artworks: {
-      counts: {
-        total: number | null
-      } | null
-    } | null
+    filter_artworks: any
   } | null
 }
 
