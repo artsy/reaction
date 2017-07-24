@@ -7,7 +7,7 @@ import IconImageSet from "./icons/icon_imageset"
 type Layout = "mini" | "full"
 
 interface DivLayoutProps {
-  layout: Layout
+  layout?: Layout
 }
 const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
@@ -30,7 +30,7 @@ const TitleWrapper = div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: ${props => (props.layout === "mini" ? "50px" : "100%")};
+  height: ${props => (props.layout === "full" ? "50px" : "100%")};
 `
 const MiniWrapper = styled.div`
   height: 100px;
@@ -74,7 +74,7 @@ const SubTitleCount = styled.div`
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
-  margin-left: 20px;
+  margin-left: 40px;
   text-align: right;
   > svg {
     height: 98%;
@@ -90,8 +90,8 @@ export interface Props {
       url?: string
       image?: string
     }>
-    layout: Layout
-    title: string
+    layout?: Layout
+    title?: string
   }
 }
 
@@ -102,7 +102,14 @@ class ImageSetPreview extends Component<Props, null> {
     return src
   }
   textSection() {
-    if (this.props.section.layout === "mini") {
+    if (this.props.section.layout === "full") {
+      return (
+        <FullWrapper>
+          {this.title()}
+          {this.icon()}
+        </FullWrapper>
+      )
+    } else {
       return (
         <MiniWrapper>
           {this.image()}
@@ -112,31 +119,35 @@ class ImageSetPreview extends Component<Props, null> {
           </MiniInner>
         </MiniWrapper>
       )
-    } else {
-      return (
-        <FullWrapper>
-          {this.title()}
-          {this.icon()}
-        </FullWrapper>
-      )
     }
   }
   image() {
     const src = this.getImageUrl()
     const width = this.props.section.layout === "full" ? "100%" : "auto"
-    const height = this.props.section.layout === "mini" ? "100%" : "auto"
+    const height = this.props.section.layout === "full" ? "auto" : "100%"
     return <img src={src} width={width} height={height} />
   }
   title() {
-    return (
-      <TitleWrapper layout={this.props.section.layout}>
-        <Title>{this.props.section.title}</Title>
-        <SubTitle>
-          <SubTitlePrompt>View Slideshow</SubTitlePrompt>
-          <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
-        </SubTitle>
-      </TitleWrapper>
-    )
+    if (this.props.section.title) {
+      return (
+        <TitleWrapper layout={this.props.section.layout}>
+          <Title>{this.props.section.title}</Title>
+          <SubTitle>
+            <SubTitlePrompt>View Slideshow</SubTitlePrompt>
+            <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+          </SubTitle>
+        </TitleWrapper>
+      )
+    } else {
+      return (
+        <TitleWrapper layout={this.props.section.layout}>
+          <Title>{this.props.section.images.length} Images</Title>
+          <SubTitle>
+            <SubTitlePrompt>View Slideshow</SubTitlePrompt>
+          </SubTitle>
+        </TitleWrapper>
+      )
+    }
   }
   icon() {
     return (

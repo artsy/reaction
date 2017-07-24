@@ -93,8 +93,18 @@ export const ImageSetFull: ImageSetPreviewProps["section"] = {
 
 export const ImageSetMini: ImageSetPreviewProps["section"] = {
   type: "image_set",
-  layout: "mini",
   title: "The Work of Bruce M. Sherman",
+  images: Images,
+}
+
+export const ImageSetFullSansTitle: ImageSetPreviewProps["section"] = {
+  type: "image_set",
+  layout: "full",
+  images: Images,
+}
+
+export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
+  type: "image_set",
   images: Images,
 }
 
