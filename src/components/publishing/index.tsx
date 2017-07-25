@@ -1,7 +1,7 @@
 import Artwork from "./artwork"
 import Authors from "./authors"
 import Embed from "./embed"
-import FeatureHeader from "./header/feature_header"
+import Header from "./header/header"
 import Image from "./image"
 import ImageCollection from "./image_collection"
 import ImagesetPreview from "./imageset_preview"
@@ -12,7 +12,7 @@ export default {
   Artwork,
   Authors,
   Embed,
-  FeatureHeader,
+  Header,
   Image,
   ImageCollection,
   ImagesetPreview,
