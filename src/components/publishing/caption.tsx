@@ -22,19 +22,24 @@ const Figcaption = div`
 `
 
 interface CaptionProps {
-  image: any
+  caption: string
   layout?: string
+  viewFullscreen?: boolean
 }
+
 const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, image } = props
-  const viewFullscreen = layout !== "classic" ? <ViewFullscreen /> : false
+  const { layout, caption, viewFullscreen } = props
 
   return (
     <CaptionContainer>
-      <Figcaption dangerouslySetInnerHTML={{ __html: image.caption }} layout={layout} />
-      {viewFullscreen}
+      <Figcaption dangerouslySetInnerHTML={{ __html: caption }} layout={layout} />
+      {viewFullscreen ? <ViewFullscreen /> : false}
     </CaptionContainer>
   )
+}
+
+Caption.defaultProps = {
+  viewFullscreen: true,
 }
 
 export default Caption

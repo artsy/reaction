@@ -3,22 +3,28 @@ import * as _ from "lodash"
 import * as React from "react"
 
 import Artwork from "../artwork"
+import AuthorInfo from "../authors"
+import Embed from "../embed"
 import Header from "../header/header"
 import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
 import ImageCollection from "../image_collection"
 import ImageSetPreview from "../imageset_preview"
 import ImageSetPreviewClassic from "../imageset_preview_classic"
+import Video from "../video"
 
 import {
   Articles,
   Artworks,
+  Authors,
+  Embeds,
   HeroSections,
   Images,
   ImageSetFull,
   ImageSetFullSansTitle,
   ImageSetMini,
   ImageSetMiniSansTitle,
+  Videos,
 } from "../__test__/fixtures"
 
 import Typography from "./typography"
@@ -103,13 +109,6 @@ storiesOf("Publishing", Artwork)
       </div>
     )
   })
-  .add("Classic Header", () => {
-    return (
-      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-        <Header article={Articles[0]} />
-      </div>
-    )
-  })
   .add("Standard Header", () => {
     return (
       <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
@@ -156,6 +155,37 @@ storiesOf("Publishing", Artwork)
         <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
           <Header article={article2} />
         </div>
+      </div>
+    )
+  })
+  .add("Embed", () => {
+    return (
+      <div style={{ width: "100%" }}>
+        <Embed section={Embeds[0]} />
+      </div>
+    )
+  })
+  .add("Video", () => {
+    return (
+      <div>
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Video section={Videos[0]} layout="standard" />
+        </div>
+        <br />
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Video section={Videos[1]} layout="standard" />
+        </div>
+        <br />
+        <div style={{ width: "100vw", position: "relative" }}>
+          <Video section={Videos[2]} layout="classic" />
+        </div>
+      </div>
+    )
+  })
+  .add("Author Info", () => {
+    return (
+      <div style={{ width: "100%", position: "relative" }}>
+        <AuthorInfo authors={Authors} />
       </div>
     )
   })

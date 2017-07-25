@@ -5,12 +5,12 @@ exports[`renders a long caption properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s186ra47-0 cutMiz"
+    className="file__BlockImage-s14mvgfn-0 juPRlh"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
   <div
-    className="file__CaptionContainer-s6d7sbx-0 ghxIfb"
+    className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
   >
     <div
       className="sc-bdVaJa bGfehm"
@@ -34,12 +34,12 @@ exports[`renders properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s186ra47-0 cutMiz"
+    className="file__BlockImage-s14mvgfn-0 juPRlh"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
   <div
-    className="file__CaptionContainer-s6d7sbx-0 ghxIfb"
+    className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
   >
     <div
       className="sc-bdVaJa bGfehm"
