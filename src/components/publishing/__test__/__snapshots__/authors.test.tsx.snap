@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="file__AuthorsContainer-jtkk3o-0 btaXLU"
+>
+  <div
+    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+  >
+    <div
+      className="sc-bdVaJa hwyJgp"
+      src="https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg"
+    />
+    <div
+      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+    >
+      <span>
+        <a
+          href="https://artsy.net/abigail"
+          title={undefined}
+        >
+          Abigail Cain
+        </a>
+         is an Art Market Editor at Artsy
+      </span>
+      <span
+        className="file__Twitter-s1asr4y9-2 kxuiUB"
+      >
+        <a
+          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          href="http://twitter.com/abigailcain"
+        >
+          <div
+            className="file-s1ekx40u-0 lhOxy"
+            style={undefined}
+          >
+            
+          </div>
+          @abigailcain
+        </a>
+      </span>
+    </div>
+  </div>
+  <div
+    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+  >
+    <div
+      className="sc-bdVaJa dzZoGz"
+      src="http://files.artsy.net/images/molly_01.jpg"
+    />
+    <div
+      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+    >
+      <span>
+        <a
+          href="https://artsy.net/molly"
+          title={undefined}
+        >
+          Molly Gottschalk
+        </a>
+         is a Features Producer at Artsy. She is a photographer and lover of cats.
+      </span>
+      <span
+        className="file__Twitter-s1asr4y9-2 kxuiUB"
+      >
+        <a
+          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          href="http://twitter.com/mollygottschalk"
+        >
+          <div
+            className="file-s1ekx40u-0 lhOxy"
+            style={undefined}
+          >
+            
+          </div>
+          @mollygottschalk
+        </a>
+      </span>
+    </div>
+  </div>
+  <div
+    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+  >
+    <div
+      className="sc-bdVaJa iDYibS"
+      src={undefined}
+    />
+    <div
+      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+    >
+      <span>
+        <a
+          href="https://artsy.net/molly"
+          title={undefined}
+        >
+          Halley Johnson
+        </a>
+         is an Writer Guru at Artsy. She enjoys speaking Georgian.
+      </span>
+      <span
+        className="file__Twitter-s1asr4y9-2 kxuiUB"
+      >
+        <a
+          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          href="http://twitter.com/halleyjohnson"
+        >
+          <div
+            className="file-s1ekx40u-0 lhOxy"
+            style={undefined}
+          >
+            
+          </div>
+          @halleyjohnson
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+`;

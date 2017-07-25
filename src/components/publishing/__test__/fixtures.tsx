@@ -102,6 +102,11 @@ export const Authors = [
       "[Molly Gottschalk](https://artsy.net/molly) is a Features Producer at Artsy. She is a photographer and lover of cats.",
     twitter_handle: "mollygottschalk",
   },
+  {
+    name: "Halley Johnson",
+    bio: "[Halley Johnson](https://artsy.net/molly) is an Writer Guru at Artsy. She enjoys speaking Georgian.",
+    twitter_handle: "halleyjohnson",
+  },
 ]
 
 export const Embeds = [
@@ -222,5 +227,8 @@ export const Videos = [
     caption:
       "<p>2016 was a memorable year for the world, and art along with it. Powered by data culled from Artsy as well as UBS’s Planet Art app, “The Year in Art 2016” will explore how the creative community responded to the cultural shifts and tribulations this year has seen—from the destruction of Palmyra to the proliferation of Virtual Reality to the U.S. election.</p>",
     cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+  },
+  {
+    url: "https://vimeo.com/191988155",
   },
 ]

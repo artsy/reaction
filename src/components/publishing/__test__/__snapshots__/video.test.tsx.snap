@@ -10,10 +10,10 @@ exports[`renders properly 1`] = `
     src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
   >
     <div
-      className="file__PlayButton-q8t269-1 rSkEf"
+      className="file__PlayButton-p1jaa3-1 bflFQU"
     >
       <div
-        className="file__PlayButtonCaret-q8t269-0 iGxTkR"
+        className="file__PlayButtonCaret-p1jaa3-0 hVsjGX"
       />
     </div>
   </div>

@@ -74,7 +74,7 @@ class Video extends React.Component<VideoProps, VideoState> {
         >
           <PlayButton><PlayButtonCaret /></PlayButton>
         </CoverImage>
-        <IFrame src={this.state.src} frameBorder={"0"} allowFullScreen height={width * videoRatio} />
+        <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
         <Caption caption={caption} layout={this.props.layout} viewFullscreen={false} />
       </div>
     )
@@ -92,10 +92,11 @@ interface CoverImageProps {
   src: string
   height?: number
 }
+
 const Div: StyledFunction<CoverImageProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const CoverImage = Div`
-  display: ${props => (props.hidden ? "none" : "flex")};
+  display: ${props => (props.hidden || !props.src ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -104,12 +105,14 @@ const CoverImage = Div`
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
 `
+
 const PlayButtonCaret = styled.div`
   color: black;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
   border-left: 30px solid black;
 `
+
 const PlayButton = styled.div`
   background: white;
   width: 70px;
@@ -122,6 +125,7 @@ const PlayButton = styled.div`
   border: 0;
   outline: 0;
 `
+
 const sizeMeConfig = {
   monitorWidth: true,
   refreshRate: 64,

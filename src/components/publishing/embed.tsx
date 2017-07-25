@@ -5,17 +5,17 @@ interface EmbedProps {
   section: any
 }
 
+const Embed: React.SFC<EmbedProps> = props => {
+  const { url, height, mobile_height } = props.section
+  return <IFrame src={url} scrolling="no" frameBorder="0" height={height} mobileHeight={mobile_height} />
+}
+
 interface FrameProps extends React.HTMLProps<HTMLIFrameElement> {
   mobileHeight?: number
   height: number
 }
 
 const iframe: StyledFunction<FrameProps & React.HTMLProps<HTMLIFrameElement>> = styled.iframe
-
-const Embed: React.SFC<EmbedProps> = props => {
-  const { url, height, mobile_height } = props.section
-  return <IFrame src={url} scrolling="no" frameBorder="0" height={height} mobileHeight={mobile_height} />
-}
 
 const IFrame = iframe`
   width: 100%;
