@@ -5,7 +5,7 @@ exports[`renders properly 1`] = `
   className="file__ImageCollectionContainer-v6w8a7-0 PVCNP"
 >
   <div
-    className="sc-htpNat eVVURc"
+    className="sc-htpNat fKRhos"
     width={undefined}
   >
     <div
@@ -83,7 +83,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat eVVURc"
+    className="sc-htpNat fKRhos"
     width={undefined}
   >
     <div
@@ -115,7 +115,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat fxbJzj"
+    className="sc-htpNat imiCrX"
     width={undefined}
   >
     <div
