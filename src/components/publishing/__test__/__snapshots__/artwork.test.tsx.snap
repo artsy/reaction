@@ -5,11 +5,12 @@ exports[`renders properly 1`] = `
   className="display-artwork"
 >
   <a
-    className="file__ArtworkImageLink-puphad-0 dOeRCh"
+    className="file__ArtworkImageLink-s18l75pq-0 endEOY"
     href="/artwork/fernando-botero-nude-on-the-beach"
   >
     <img
-      className="display-artwork__image file__BlockImage-puphad-1 fJSmLl"
+      className="display-artwork__image file__BlockImage-s18l75pq-1 gGbNWt"
+      height="auto"
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
       width="100%"
     />

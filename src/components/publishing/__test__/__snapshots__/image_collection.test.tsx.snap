@@ -2,22 +2,22 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-s19j8h0e-0 jFhFbf"
+  className="file__ImageCollectionContainer-v6w8a7-0 PVCNP"
 >
   <div
-    className="sc-htpNat grTzba"
-    height={298}
-    width={415}
+    className="sc-htpNat eVVURc"
+    width={undefined}
   >
     <div
       className="display-artwork"
     >
       <a
-        className="file__ArtworkImageLink-puphad-0 dOeRCh"
+        className="file__ArtworkImageLink-s18l75pq-0 endEOY"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
         <img
-          className="display-artwork__image file__BlockImage-puphad-1 fJSmLl"
+          className="display-artwork__image file__BlockImage-s18l75pq-1 gGbNWt"
+          height="auto"
           src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
           width="100%"
         />
@@ -83,15 +83,15 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat gdGBhL"
-    height={299}
-    width={224}
+    className="sc-htpNat eVVURc"
+    width={undefined}
   >
     <div
       className="article-image"
     >
       <img
-        className="file__BlockImage-s14mvgfn-0 juPRlh"
+        className="file__BlockImage-s1425qn5-0 kMcghC"
+        height="auto"
         src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
         width="100%"
       />
@@ -115,15 +115,15 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat hAWKir"
-    height={299}
-    width={238}
+    className="sc-htpNat fxbJzj"
+    width={undefined}
   >
     <div
       className="article-image"
     >
       <img
-        className="file__BlockImage-s14mvgfn-0 juPRlh"
+        className="file__BlockImage-s1425qn5-0 kMcghC"
+        height="auto"
         src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
         width="100%"
       />

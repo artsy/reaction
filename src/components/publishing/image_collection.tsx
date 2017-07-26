@@ -19,20 +19,15 @@ function renderImages(images, dimensions, gutter, width) {
     }
     let renderedImage
     if (image.type === "image") {
-      renderedImage = <Image image={image} />
+      renderedImage = <Image image={image} width={imageSize.width} height={imageSize.height} />
     } else if (image.type === "artwork") {
-      renderedImage = <Artwork artwork={image} />
+      renderedImage = <Artwork artwork={image} width={imageSize.width} height={imageSize.height} />
     } else {
       return false
     }
 
     return (
-      <ImageCollectionItem
-        key={url}
-        margin={i === dimensions.length - 1 ? 0 : gutter}
-        width={imageSize.width}
-        height={imageSize.height}
-      >
+      <ImageCollectionItem key={url} margin={i === dimensions.length - 1 ? 0 : gutter} width={imageSize.width}>
         {renderedImage}
       </ImageCollectionItem>
     )
@@ -55,6 +50,12 @@ const ImageCollection: React.SFC<ImageCollectionProps> = props => {
       {renderImages(images, dimensions, gutter, width)}
     </ImageCollectionContainer>
   )
+}
+
+ImageCollection.defaultProps = {
+  size: {
+    width: 500,
+  },
 }
 
 const ImageCollectionContainer = styled.div`

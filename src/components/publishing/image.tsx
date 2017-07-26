@@ -9,16 +9,23 @@ const BlockImage = styled.img`
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any
   layout?: string
+  width?: number | string
+  height?: number | string
 }
 
 const Image: React.SFC<ImageProps> = props => {
-  const { image, layout } = props
+  const { image, layout, width, height } = props
   return (
     <div className="article-image">
-      <BlockImage src={image.url} width="100%" />
-      <Caption caption={image.caption} layout={layout} />
+      <BlockImage src={image.url} width={width} height={height} />
+      <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} />
     </div>
   )
+}
+
+Image.defaultProps = {
+  width: "100%",
+  height: "auto",
 }
 
 export default Image
