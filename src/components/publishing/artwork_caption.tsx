@@ -1,3 +1,4 @@
+import * as _ from "lodash"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import TextLink from "../text_link"
@@ -36,11 +37,12 @@ interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
 
 class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinChildren(children) {
-    const joined = children.reduce((prev, curr) => {
+    const joined = _.compact(children).reduce((prev, curr) => {
       return [prev, this.renderComma(), curr]
     })
     return joined
   }
+
   renderArtists() {
     const artwork = this.props.artwork
     if (artwork.artists && artwork.artists.length > 0) {
@@ -89,7 +91,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   renderDate() {
     const artwork = this.props.artwork
-    if (artwork.date) {
+    if (artwork.date && artwork.date.length > 0) {
       return <span className="date">{artwork.date}</span>
     }
   }

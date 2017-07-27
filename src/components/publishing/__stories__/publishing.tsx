@@ -47,6 +47,11 @@ storiesOf("Publishing", Artwork)
           <Artwork linked={false} artwork={Artworks[1]} />
         </div>
         <hr />
+        <p>Missing info: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[2]} />
+        </div>
+        <hr />
         <p>Small: </p>
         <div style={{ width: 400 }}>
           <Artwork artwork={Artworks[1]} />
@@ -87,8 +92,8 @@ storiesOf("Publishing", Artwork)
   })
   .add("Image Collection", () => {
     return (
-      <div>
-        <ImageCollection images={Images} width={900} targetHeight={400} gutter={10} />
+      <div style={{ width: "100%" }}>
+        <ImageCollection images={Images} targetHeight={400} gutter={10} />
       </div>
     )
   })

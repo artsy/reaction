@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ArtworkCaption from "./artwork_caption"
 
 const ArtworkImageLink = styled.a`
-  text-underline: none;
+  text-decoration: none;
 `
 const BlockImage = styled.img`
   display: block;
@@ -13,11 +13,13 @@ interface ArtworkProps {
   artwork: any
   layout?: string
   linked?: boolean
+  width?: string | number
+  height?: string | number
 }
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
-  const { artwork, linked } = props
-  const image = <BlockImage src={artwork.image} className="display-artwork__image" width="100%" />
+  const { artwork, linked, height, width } = props
+  const image = <BlockImage src={artwork.image} className="display-artwork__image" width={width} height={height} />
   if (linked) {
     return (
       <ArtworkImageLink href={"/artwork/" + artwork.slug}>
@@ -27,6 +29,11 @@ const ArtworkImage: React.SFC<ArtworkProps> = props => {
   } else {
     return image
   }
+}
+
+ArtworkImage.defaultProps = {
+  width: "100%",
+  height: "auto",
 }
 
 const Artwork: React.SFC<ArtworkProps> = props => {

@@ -5,7 +5,8 @@ exports[`renders a long caption properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s14mvgfn-0 juPRlh"
+    className="file__BlockImage-s1425qn5-0 kMcghC"
+    height="auto"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
@@ -34,7 +35,8 @@ exports[`renders properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s14mvgfn-0 juPRlh"
+    className="file__BlockImage-s1425qn5-0 kMcghC"
+    height="auto"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
