@@ -1,3 +1,4 @@
+import Article from "./article"
 import Artwork from "./artwork"
 import Authors from "./authors"
 import Embed from "./embed"
@@ -9,6 +10,7 @@ import ImagesetPreviewClassic from "./imageset_preview_classic"
 import Video from "./video"
 
 export default {
+  Article,
   Artwork,
   Authors,
   Embed,
