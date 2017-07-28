@@ -5,7 +5,7 @@ general:
 
 checkout:
   post:
-    - nvm install && nvm alias default node
+    - nvm install && nvm alias default $(cat .nvmrc)
 
 dependencies:
   pre:
