@@ -1,4 +1,4 @@
-import ImageSetPreview from "../imageset_preview"
+import ImageSetPreview from "../sections/imageset_preview"
 import { ImageSetFull, ImageSetMini } from "./fixtures"
 
 import * as React from "react"

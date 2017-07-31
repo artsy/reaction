@@ -10,6 +10,7 @@ interface StandardHeaderProps {
 
 const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   const { article } = props
+  console.log("re-rendering")
   return (
     <StandardHeaderContainer>
       <Vertical>{article.vertical.name}</Vertical>

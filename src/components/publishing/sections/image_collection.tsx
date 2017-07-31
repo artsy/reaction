@@ -1,9 +1,8 @@
 import { find } from "lodash"
 import * as React from "react"
-import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../utils/fillwidth"
-import { pMedia } from "../helpers"
+import fillwidthDimensions from "../../../utils/fillwidth"
+import { pMedia } from "../../helpers"
 import Artwork from "./artwork"
 import Image from "./image"
 import ImageCollectionItem from "./image_collection_item"
@@ -34,16 +33,17 @@ function renderImages(images, dimensions, gutter, width) {
   })
   return renderedImages
 }
+
 interface ImageCollectionProps {
   images: object
   targetHeight?: number
   gutter?: number
-  size: any
+  width: number
 }
 
 const ImageCollection: React.SFC<ImageCollectionProps> = props => {
-  const { images, targetHeight, gutter } = props
-  const { width } = props.size
+  const { images, targetHeight, gutter, width } = props
+  console.log(width)
   const dimensions = fillwidthDimensions(images, width, gutter, targetHeight)
   return (
     <ImageCollectionContainer>
@@ -52,23 +52,11 @@ const ImageCollection: React.SFC<ImageCollectionProps> = props => {
   )
 }
 
-ImageCollection.defaultProps = {
-  size: {
-    width: 500,
-  },
-}
-
 const ImageCollectionContainer = styled.div`
-  width: 100%;
   display: flex;
   ${pMedia.sm`
     flex-direction: column;
   `}
 `
 
-const sizeMeConfig = {
-  monitorWidth: true,
-  refreshRate: 64,
-}
-
-export default sizeMe(sizeMeConfig)(ImageCollection)
+export default ImageCollection

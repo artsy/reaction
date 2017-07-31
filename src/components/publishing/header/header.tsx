@@ -7,15 +7,19 @@ import StandardHeader from "./standard_header"
 
 interface HeaderProps {
   article: any
+  size?: {
+    width?: number
+  }
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-  const { article } = props
+  const { article, size } = props
   const hero = article.hero_section
   const deck = hero && hero.deck ? <Deck className="feature__deck">{article.hero_section.deck}</Deck> : false
   if (article.layout === "feature") {
+    const isMobile = size && size.width < 600 ? true : false
     return (
-      <FeatureHeader article={article}>
+      <FeatureHeader article={article} isMobile={isMobile}>
         <FeatureTitle className="feature__title">
           {article.title}
         </FeatureTitle>

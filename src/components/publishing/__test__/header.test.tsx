@@ -3,7 +3,8 @@ import * as React from "react"
 import * as renderer from "react-test-renderer"
 import AuthorDate from "../header/author_date"
 import Header from "../header/header"
-import { Articles, HeroSections } from "./fixtures"
+import Articles from "./article_fixtures"
+import { HeroSections } from "./fixtures"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

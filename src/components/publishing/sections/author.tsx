@@ -1,9 +1,9 @@
 import * as React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../helpers"
-import Icon from "../icon"
-import Fonts from "./fonts"
+import { pMedia } from "../../helpers"
+import Icon from "../../icon"
+import Fonts from "../fonts"
 
 interface AuthorProps {
   author: any

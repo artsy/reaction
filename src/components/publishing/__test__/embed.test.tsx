@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import Embed from "../embed"
+import Embed from "../sections/embed"
 import { Embeds } from "./fixtures"
 
 it("renders properly", () => {

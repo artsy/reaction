@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import Fonts from "./fonts"
+import Fonts from "../fonts"
 
 const ViewFullscreenLink = styled.div`
   ${Fonts.unica("s14", "medium")}

@@ -1,13 +1,13 @@
 import Article from "./article"
-import Artwork from "./artwork"
-import Authors from "./authors"
-import Embed from "./embed"
 import Header from "./header/header"
-import Image from "./image"
-import ImageCollection from "./image_collection"
-import ImagesetPreview from "./imageset_preview"
-import ImagesetPreviewClassic from "./imageset_preview_classic"
-import Video from "./video"
+import Artwork from "./sections/artwork"
+import Authors from "./sections/authors"
+import Embed from "./sections/embed"
+import Image from "./sections/image"
+import ImageCollection from "./sections/image_collection"
+import ImagesetPreview from "./sections/imageset_preview"
+import ImagesetPreviewClassic from "./sections/imageset_preview_classic"
+import Video from "./sections/video"
 
 export default {
   Article,

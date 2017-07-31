@@ -1,5 +1,4 @@
 import * as React from "react"
-import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
 import Caption from "./caption"
@@ -126,9 +125,4 @@ const PlayButton = styled.div`
   outline: 0;
 `
 
-const sizeMeConfig = {
-  monitorWidth: true,
-  refreshRate: 64,
-}
-
-export default sizeMe(sizeMeConfig)(Video)
+export default Video

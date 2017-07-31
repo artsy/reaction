@@ -1,4 +1,4 @@
-import ImageSetPreviewClassic from "../imageset_preview_classic"
+import ImageSetPreviewClassic from "../sections/imageset_preview_classic"
 import { Images } from "./fixtures"
 
 import * as React from "react"

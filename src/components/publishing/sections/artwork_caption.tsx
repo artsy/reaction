@@ -1,8 +1,8 @@
 import * as _ from "lodash"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import TextLink from "../text_link"
-import Fonts from "./fonts"
+import TextLink from "../../text_link"
+import Fonts from "../fonts"
 import ViewFullscreen from "./view_fullscreen"
 
 const TruncatedLine = styled.div`

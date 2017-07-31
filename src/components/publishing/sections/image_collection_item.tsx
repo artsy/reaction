@@ -1,10 +1,9 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../helpers"
+import { pMedia } from "../../helpers"
 
 interface FillwidthItemProps extends React.HTMLProps<HTMLDivElement> {
   margin?: number
-  key: string
   width?: number
 }
 

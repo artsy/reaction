@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../helpers"
+import { pMedia } from "../../helpers"
 
-import Fonts from "./fonts"
-import IconImageSet from "./icons/icon_imageset"
+import Fonts from "../fonts"
+import IconImageSet from "../icons/icon_imageset"
 
 type Layout = "mini" | "full"
 

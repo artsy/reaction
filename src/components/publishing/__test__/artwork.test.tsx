@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 
-import Artwork from "../artwork"
+import Artwork from "../sections/artwork"
 import { Images } from "./fixtures"
 
 it("renders properly", () => {
