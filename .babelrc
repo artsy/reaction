@@ -7,7 +7,7 @@
   "plugins": [
     "react-relay",
     ["styled-components", {
-      "ssr": "use-mtime",
+      "ssr": true,
       "displayName": true,
       "minify": true,
       "transpileTemplateLiterals": true
@@ -18,7 +18,7 @@
     "test": {
       "plugins": [
         ["styled-components", {
-          "ssr": "use-content"
+          "ssr": true
         }]
       ]
     }

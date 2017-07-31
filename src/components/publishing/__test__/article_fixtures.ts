@@ -182,7 +182,7 @@ const Articles = [
       },
       {
         type: "image_collection",
-        layout: "overflow_fillwidth",
+        layout: "fillwidth",
         images: [
           {
             url: "https://artsy-media-uploads.s3.amazonaws.com/AyXXyq5bJuVJiRhhQMB1FQ%2FVisconti+Tarot+2.jpg",
@@ -453,6 +453,8 @@ const Articles = [
       {
         id: "523783258b3b815f7100055a",
         name: "Casey Lesser",
+        bio: "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
+        twitter_handle: "caseylesser",
       },
     ],
     channel_id: "5759e3efb5989e6f98f77993",

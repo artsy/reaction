@@ -1,4 +1,5 @@
 import React from "react"
+import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
@@ -57,12 +58,15 @@ function isVideo(url) {
 
 interface FeatureHeaderProps {
   article?: any
-  isMobile: boolean
+  size?: {
+    width: number
+  }
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article, isMobile } = props
+  const { article, size } = props
   const hero = article.hero_section
+  const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
       {renderFeatureAsset(hero.url, hero.type, isMobile)}
@@ -242,4 +246,10 @@ const FeatureHeaderContainer = Div.extend`
   }
 `
 
-export default FeatureHeader
+const sizeMeOptions = {
+  monitorHeight: false,
+  refreshRate: 64,
+  refreshMode: "debounce",
+}
+
+export default sizeMe(sizeMeOptions)(FeatureHeader)

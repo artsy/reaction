@@ -6,6 +6,7 @@ import Embed from "./embed"
 import ImageCollection from "./image_collection"
 import SectionContainer from "./section_container"
 // import ImagesetPreview from "./imageset_preview"
+import Text from "./text"
 import Video from "./video"
 
 import { pMedia } from "../../helpers"
@@ -16,40 +17,12 @@ interface SectionsProps {
     authors?: any
     sections: {}
   }
-  size?: {
-    width: number
-  }
 }
 
 interface StyledSectionsProps {
   layout: string
 }
 
-const Div: StyledFunction<StyledSectionsProps> = styled.div
-
-const StyledSections = Div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: ${props => (props.layout === "standard" ? "auto" : "100%")};
-  margin-top: ${props => (props.layout === "standard" ? "60px" : "80px")};
-  max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
-  ${pMedia.sm`
-    width: 100%;
-    max-width: 100%;
-    padding: 0px;
-  `}
-`
-
-const Text = styled.div`
-  p {
-    font-size: 23px;
-    line-height: 34px;
-  }
-  ${pMedia.sm`
-    padding: 20px;
-  `}
-`
 const Sections: React.SFC<SectionsProps> = props => {
   const header = props.article.layout === "standard" ? <Header article={props.article} /> : false
   return (
@@ -68,7 +41,7 @@ function renderSections(article) {
       case "image_collection":
         return (
           <SectionContainer key={i} layout={section.layout}>
-            <ImageCollection images={section.images} width={900} targetHeight={500} gutter={10} />
+            <ImageCollection images={section.images} targetHeight={500} gutter={10} />
           </SectionContainer>
         )
       // case "image_set":
@@ -106,5 +79,20 @@ function renderAuthors(authors) {
     return false
   }
 }
+
+const Div: StyledFunction<StyledSectionsProps> = styled.div
+
+const StyledSections = Div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: ${props => (props.layout === "standard" ? "60px" : "80px")} auto;
+  max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
+  ${pMedia.sm`
+    max-width: 100%;
+    padding: 0px;
+  `}
+`
 
 export default Sections

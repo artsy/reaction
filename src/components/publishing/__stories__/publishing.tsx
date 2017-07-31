@@ -94,8 +94,8 @@ storiesOf("Publishing", Artwork)
   })
   .add("Image Collection", () => {
     return (
-      <div style={{ width: 500 }}>
-        <ImageCollection images={Images} gutter={10} targetHeight={300} width={500} />
+      <div>
+        <ImageCollection images={Images} gutter={10} targetHeight={400} />
       </div>
     )
   })
@@ -119,7 +119,7 @@ storiesOf("Publishing", Artwork)
   .add("Standard Header", () => {
     return (
       <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-        <Header article={Articles[1]} size={{ width: 900 }} />
+        <Header article={Articles[1]} />
       </div>
     )
   })
@@ -129,10 +129,10 @@ storiesOf("Publishing", Artwork)
     return (
       <div>
         <div style={{ width: "100vw", position: "relative" }}>
-          <Header article={article} size={{ width: 900 }} />
+          <Header article={article} />
         </div>
         <div style={{ width: "100vw", position: "relative" }}>
-          <Header article={article2} size={{ width: 900 }} />
+          <Header article={article2} />
         </div>
       </div>
     )
@@ -200,7 +200,7 @@ storiesOf("Publishing", Artwork)
     return <Typography />
   })
   .add("Standard Article", () => {
-    return <Article article={Articles[1]} size={{ width: 900 }} />
+    return <Article article={Articles[1]} />
   })
   .add("Feature Article", () => {
     return <Article article={Articles[3]} />

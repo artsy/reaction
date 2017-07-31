@@ -10,9 +10,9 @@ const Div: StyledFunction<SectionContainerProps> = styled.div
 
 const SectionContainer = Div`
   display: flex;
+  width: 680px;
   ${pMedia.sm`
     width: 100%;
   `}
-
 `
 export default SectionContainer
