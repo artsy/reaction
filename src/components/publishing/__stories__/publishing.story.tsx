@@ -27,7 +27,7 @@ import {
   Videos,
 } from "../__test__/fixtures"
 
-import Typography from "./typography"
+import Typography from "./typography.story"
 
 storiesOf("Publishing", Artwork)
   .add("Artwork", () => {
