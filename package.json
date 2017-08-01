@@ -6,12 +6,7 @@
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
-  "files": [
-    "dist",
-    "assets",
-    "data",
-    "docs"
-  ],
+  "files": ["dist", "assets", "data", "docs"],
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
@@ -136,17 +131,10 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "setupFiles": ["./src/setup_jest.ts"]
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "tslint --fix",
-      "npm run prettier-write --",
-      "git add"
-    ]
+    "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"]
   }
 }
