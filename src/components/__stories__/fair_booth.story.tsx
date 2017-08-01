@@ -28,7 +28,7 @@ function FeedExample(props: { fairID: string }) {
   )
 }
 
-storiesOf("Fair", FairBooth)
+storiesOf("Components/Fair", module)
   .add("Booth", () => {
     return (
       <div>

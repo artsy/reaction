@@ -6,7 +6,7 @@ import Text from "../text"
 import TextLink from "../text_link"
 import Title from "../title"
 
-storiesOf("Typography", Title)
+storiesOf("Typography", module)
   .add("Headings", () =>
     <div>
       <Title titleSize="xxlarge">XXLarge Title: 72px</Title>

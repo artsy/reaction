@@ -46,4 +46,4 @@ class ModalDemo extends React.Component<any, any> {
   }
 }
 
-storiesOf("ModalDemo", ModalDemo).add("ModalDemo", () => <ModalDemo />)
+storiesOf("Components/Modal/Demo", module).add("ModalDemo", () => <ModalDemo />)

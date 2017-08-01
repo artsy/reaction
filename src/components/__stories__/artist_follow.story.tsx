@@ -19,7 +19,7 @@ function ArtistExample(props: { artistID: string; user: User }) {
   )
 }
 
-storiesOf("Follow Button", FollowButton).add("Follow Button (artist)", () => {
+storiesOf("Components/Follow Button", module).add("Follow Button (artist)", () => {
   const user = {
     id: "some-id",
     accessToken: "some-token",

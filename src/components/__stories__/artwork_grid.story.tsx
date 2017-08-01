@@ -42,7 +42,7 @@ function GridExample(props: { artistID: string }) {
   )
 }
 
-storiesOf("ArtworkGrid", ArtworkGrid).add("A typical grid", () => {
+storiesOf("Components/Artworks/ArtworkGrid", module).add("A typical grid", () => {
   const user = {
     id: "some-id",
     accessToken: "some-token",

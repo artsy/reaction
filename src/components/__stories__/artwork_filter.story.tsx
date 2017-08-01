@@ -124,7 +124,7 @@ function FilterArtworksExample() {
   )
 }
 
-storiesOf("Artwork Filter Components", Dropdown)
+storiesOf("Components/Artwork/Artwork Filter Components", module)
+  .add("All Artworks - Artwork filter", () => <FilterArtworksExample />)
   .add("Filter dropdown", () => <FilterArtworksDropdownExample />)
   .add("Total Count", () => <FilterArtworksTotalCountExample />)
-  .add("Artwork filter", () => <FilterArtworksExample />)

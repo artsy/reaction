@@ -12,7 +12,7 @@ function ArtworkExample(props: { artworkID: string }) {
   return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
 }
 
-storiesOf("Inquiry Artwork", Artwork)
+storiesOf("Components/Inquiry Artwork", module)
   .add("A square artwork", () => <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />)
   .add("A landscape artwork", () => <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />)
   .add("A landscape artwork (extra wide)", () => <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />)

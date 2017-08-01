@@ -5,7 +5,7 @@ import Button from "../buttons/inverted"
 import Input from "../input"
 import TextArea from "../text_area"
 
-storiesOf("Input", Input)
+storiesOf("Components/Input", module)
   .add("Inputs", () =>
     <div>
       <Input placeholder="First Name" />

@@ -1,25 +1,12 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import AuthorInfo from "../authors"
-import Embed from "../embed"
-import IconImageset from "../icons/icon_imageset"
 import Image from "../image"
 import ImageCollection from "../image_collection"
 
-import { Authors, Embeds, Images } from "../__test__/fixtures"
+import { Images } from "../__test__/fixtures"
 
-import Typography from "./typography_examples"
-
-storiesOf("Publishing/Typography", module)
-  .add("Icons", () => {
-    return (
-      <div style={{ width: 50 }}>
-        <IconImageset />
-        <p>Imageset</p>
-      </div>
-    )
-  })
+storiesOf("Publishing/Images", module)
   .add("Image", () => {
     return (
       <div>
@@ -44,21 +31,4 @@ storiesOf("Publishing/Typography", module)
         <ImageCollection images={Images} targetHeight={400} gutter={10} />
       </div>
     )
-  })
-  .add("Embed", () => {
-    return (
-      <div style={{ width: "100%" }}>
-        <Embed section={Embeds[0]} />
-      </div>
-    )
-  })
-  .add("Author Info", () => {
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <AuthorInfo authors={Authors} />
-      </div>
-    )
-  })
-  .add("Typography", () => {
-    return <Typography />
   })

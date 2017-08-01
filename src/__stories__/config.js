@@ -11,8 +11,8 @@ configure(loadStories, module)
 import { setOptions } from "@storybook/addon-options"
 
 setOptions({
-  name: "Reaction Force",
-  url: "http://artsy.github.io",
+  name: "Reaction",
+  url: "http://artsy.github.io/reaction",
   showDownPanel: false,
   sortStoriesByKind: true,
 })

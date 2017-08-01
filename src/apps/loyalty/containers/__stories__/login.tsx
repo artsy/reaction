@@ -6,7 +6,7 @@ import Modal from "../../../../components/modal/modal"
 
 import Login from "../login"
 
-storiesOf("Login Page", Login).add("no modal", () => <Login form={{ url: "/" }} />).add("w/ modal", () => {
+storiesOf("Login Page", module).add("no modal", () => <Login form={{ url: "/" }} />).add("w/ modal", () => {
   class ModalDemo extends React.Component<any, any> {
     constructor(props) {
       super(props)

@@ -39,7 +39,7 @@ function FillwidthExample(props: { artistID: string }) {
   )
 }
 
-storiesOf("Fillwidth", Fillwidth).add("A typical fillwidth", () => {
+storiesOf("Components/Artworks/Fillwidth", module).add("A typical fillwidth", () => {
   const user = {
     id: "some-id",
     accessToken: "some-token",
