@@ -2,16 +2,16 @@
 
 exports[`AuthorDate renders a single author 1`] = `
 <div
-  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+  className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
 >
   <div
-    className="sc-bdVaJa bcNlZk"
+    className="sc-bdVaJa etviRx"
   >
     By 
     Molly Gottschalk
   </div>
   <div
-    className="sc-bdVaJa bcNlZk"
+    className="sc-bdVaJa etviRx"
   >
     May 19, 2017 9:09 am
   </div>
@@ -20,16 +20,16 @@ exports[`AuthorDate renders a single author 1`] = `
 
 exports[`AuthorDate renders multiple authors 1`] = `
 <div
-  className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+  className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
 >
   <div
-    className="sc-bdVaJa bcNlZk"
+    className="sc-bdVaJa etviRx"
   >
     By 
     Molly Gottschalk and Kana Abe
   </div>
   <div
-    className="sc-bdVaJa bcNlZk"
+    className="sc-bdVaJa etviRx"
   >
     May 19, 2017 9:09 am
   </div>
@@ -46,21 +46,21 @@ exports[`Standard Header renders standard header properly 1`] = `
     Art Market
   </div>
   <div
-    className="file__StandardTitle-s1sluhjf-0 bGRsjT"
+    className="file__StandardTitle-uzfvbx-0 cMPyNX"
   >
     New York's Next Art District
   </div>
   <div
-    className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+    className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
   >
     <div
-      className="sc-bdVaJa bcNlZk"
+      className="sc-bdVaJa etviRx"
     >
       By 
       Molly Gottschalk
     </div>
     <div
-      className="sc-bdVaJa bcNlZk"
+      className="sc-bdVaJa etviRx"
     >
       May 19, 2017 9:09 am
     </div>
@@ -70,7 +70,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
-  className="sc-bZQynM dQyFHc"
+  className="sc-bZQynM ckpjku"
   data-type="fullscreen"
 >
   <div>
@@ -89,34 +89,34 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lq75tn-1 eZtUXf"
+        className="file__Vertical-kpxr6d-1 kNaZqE"
       >
         Art Market
       </div>
       <div
-        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-lq75tn-5 fvCnYB"
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
       >
         <div
-          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
         >
           <div
-            className="sc-bdVaJa bfrJtG"
+            className="sc-bdVaJa lfBMjK"
           >
             By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa bfrJtG"
+            className="sc-bdVaJa lfBMjK"
           >
             May 19, 2017 9:09 am
           </div>
@@ -129,7 +129,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM dQyFHc"
+  className="sc-bZQynM ckpjku"
   data-type="split"
 >
   <div
@@ -139,12 +139,12 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lq75tn-1 eZtUXf"
+        className="file__Vertical-kpxr6d-1 kNaZqE"
       >
         Art Market
       </div>
       <div
-        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
         New York's Next Art District
       </div>
@@ -153,24 +153,24 @@ exports[`feature renders feature split header properly 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-lq75tn-5 fvCnYB"
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
       >
         <div
-          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
         >
           <div
-            className="sc-bdVaJa bcNlZk"
+            className="sc-bdVaJa etviRx"
           >
             By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa bcNlZk"
+            className="sc-bdVaJa etviRx"
           >
             May 19, 2017 9:09 am
           </div>
@@ -183,7 +183,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM dQyFHc"
+  className="sc-bZQynM ckpjku"
   data-type="text"
 >
   <div
@@ -193,34 +193,34 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lq75tn-1 eZtUXf"
+        className="file__Vertical-kpxr6d-1 kNaZqE"
       >
         Art Market
       </div>
       <div
-        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-lq75tn-5 fvCnYB"
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
       >
         <div
-          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
         >
           <div
-            className="sc-bdVaJa eeGSmv"
+            className="sc-bdVaJa etviRx"
           >
             By 
             Molly Gottschalk
           </div>
           <div
-            className="sc-bdVaJa eeGSmv"
+            className="sc-bdVaJa etviRx"
           >
             May 19, 2017 9:09 am
           </div>
@@ -228,7 +228,7 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-lq75tn-3 ewYriW"
+      className="file__Image-kpxr6d-3 kqIteB"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
