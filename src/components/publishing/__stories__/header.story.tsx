@@ -4,7 +4,8 @@ import * as React from "react"
 
 import Header from "../header/header"
 
-import { Articles, HeroSections } from "../__test__/fixtures"
+import Articles from "../__test__/fixtures/articles"
+import { HeroSections } from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Headers", module)
   .add("Standard Header", () => {

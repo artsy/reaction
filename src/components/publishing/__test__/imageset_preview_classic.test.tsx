@@ -1,5 +1,5 @@
 import ImageSetPreviewClassic from "../sections/imageset_preview_classic"
-import { Images } from "./fixtures"
+import { Images } from "./fixtures/components"
 
 import * as React from "react"
 import * as renderer from "react-test-renderer"

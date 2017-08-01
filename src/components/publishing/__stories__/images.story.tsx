@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Image from "../image"
-import ImageCollection from "../image_collection"
+import Image from "../sections/image"
+import ImageCollection from "../sections/image_collection"
 
-import { Images } from "../__test__/fixtures"
+import { Images } from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Images", module)
   .add("Image", () => {

@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Video from "../video"
+import Video from "../sections/video"
 
-import { Videos } from "../__test__/fixtures"
+import { Videos } from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Video", module).add("Video", () => {
   return (

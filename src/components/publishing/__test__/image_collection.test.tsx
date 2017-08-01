@@ -2,7 +2,7 @@ import * as React from "react"
 import * as renderer from "react-test-renderer"
 
 import ImageCollection from "../sections/image_collection"
-import { Images } from "./fixtures"
+import { Images } from "./fixtures/components"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

@@ -1,13 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import AuthorInfo from "../authors"
-import Embed from "../embed"
 import IconImageset from "../icons/icon_imageset"
-import Image from "../image"
-import ImageCollection from "../image_collection"
+import AuthorInfo from "../sections/authors"
+import Embed from "../sections/embed"
+import Image from "../sections/image"
+import ImageCollection from "../sections/image_collection"
 
-import { Authors, Embeds, Images } from "../__test__/fixtures"
+import { Authors, Embeds, Images } from "../__test__/fixtures/components"
 
 import Typography from "./typography_examples"
 

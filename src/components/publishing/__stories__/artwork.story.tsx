@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Artwork from "../artwork"
+import Artwork from "../sections/artwork"
 
-import { Artworks } from "../__test__/fixtures"
+import { Artworks } from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Artwork", module).add("Artwork", () => {
   return (

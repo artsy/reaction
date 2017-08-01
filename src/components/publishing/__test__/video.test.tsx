@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 import Video from "../sections/video"
-import { Videos } from "./fixtures"
+import { Videos } from "./fixtures/components"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

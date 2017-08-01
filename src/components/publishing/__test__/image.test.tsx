@@ -2,7 +2,7 @@ import * as React from "react"
 import * as renderer from "react-test-renderer"
 
 import Image from "../sections/image"
-import { Images } from "./fixtures"
+import { Images } from "./fixtures/components"
 
 it("renders properly", () => {
   const image = renderer.create(<Image image={Images[1]} />).toJSON()
