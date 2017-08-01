@@ -10,7 +10,7 @@ const boxStyle = {
   textAlign: "center",
 }
 
-storiesOf("Grids", Row).add("Basic Usage", () => {
+storiesOf("Components/Grids", module).add("Basic Usage", () => {
   return (
     <div style={{ margin: "20px" }}>
       <Row>

@@ -3,7 +3,6 @@ import * as React from "react"
 import * as Relay from "react-relay"
 
 import Artwork from "../artwork/grid_item"
-import SaveButton from "../artwork/save"
 
 import * as Artsy from "../../components/artsy"
 import { artsyNetworkLayer } from "../../relay/config"
@@ -20,7 +19,7 @@ function ArtworkExample(props: { artworkID: string; user: User }) {
   )
 }
 
-storiesOf("Save Button", SaveButton).add("Save Button", () => {
+storiesOf("Components/Save Button", module).add("Save Button", () => {
   const user = {
     id: "some-id",
     accessToken: "some-token",

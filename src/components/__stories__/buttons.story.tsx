@@ -7,7 +7,7 @@ import GhostButton from "../buttons/ghost"
 import InvertedButton from "../buttons/inverted"
 import TwitterButton from "../buttons/twitter"
 
-storiesOf("Buttons", Button)
+storiesOf("Components/Buttons", module)
   .add("Default Button", () => {
     return (
       <div>

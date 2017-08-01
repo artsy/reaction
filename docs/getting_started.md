@@ -78,7 +78,7 @@ import * as React from "react"
 
 import IconImageSet from "../icon_image_set"
 
-storiesOf("Icons", IconImageSet)
+storiesOf("Icons", module)
   .add("Imageset Preview", () => <IconImageSet/>)
 ```
 
@@ -87,7 +87,7 @@ As this component has no props, there's no need to test different props. However
 example looking like:
 
 ```tsx
-storiesOf("Icons", IconImageSet)
+storiesOf("Icons", module)
   .add("Imageset Defaults", () => <IconImageSet/>)
   .add("Imageset Wide", () => <IconImageSet width={200}/>)
   .add("Imageset Red", () => <IconImageSet color="#bb1111"/>)
