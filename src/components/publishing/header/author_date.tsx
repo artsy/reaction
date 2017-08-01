@@ -54,7 +54,9 @@ const div: StyledFunction<BulletTextProps> = styled.div
 
 const BulletText = div`
   ${Fonts.unica("s19", "medium")}
-  margin: ${props => (props.layout === "split" || props.layout === "standard" ? "0 30px 0 0" : "0 0 0 30px")};
+  &:nth-child(2) {
+    margin: 0 0 0 30px;
+  }
   &:before {
     content: "";
     display: inline-block;

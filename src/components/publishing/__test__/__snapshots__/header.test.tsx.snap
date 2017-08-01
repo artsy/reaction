@@ -38,15 +38,15 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-s1m9fy6s-0 WYleu"
+  className="file__StandardHeaderContainer-s13evez-0 fmppsk"
 >
   <div
-    className="file__Vertical-s1m9fy6s-2 iurgWf"
+    className="file__Vertical-s13evez-1 jhCIcQ"
   >
     Art Market
   </div>
   <div
-    className="file__Title-s1m9fy6s-1 iqSRMM"
+    className="file__StandardTitle-s1sluhjf-0 bGRsjT"
   >
     New York's Next Art District
   </div>
@@ -70,7 +70,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
-  className="sc-bZQynM hrHTgX"
+  className="sc-bZQynM dQyFHc"
   data-type="fullscreen"
 >
   <div>
@@ -89,20 +89,20 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-m5gxwf-2 hfdlZg"
+        className="file__Vertical-lq75tn-1 eZtUXf"
       >
         Art Market
       </div>
       <div
-        className="file__Title-m5gxwf-1 krFZio"
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-m5gxwf-6 ipFoDT"
+        className="file__SubHeader-lq75tn-5 fvCnYB"
       >
         <div
-          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -129,7 +129,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM hrHTgX"
+  className="sc-bZQynM dQyFHc"
   data-type="split"
 >
   <div
@@ -139,12 +139,12 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-m5gxwf-2 hfdlZg"
+        className="file__Vertical-lq75tn-1 eZtUXf"
       >
         Art Market
       </div>
       <div
-        className="file__Title-m5gxwf-1 krFZio"
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
       >
         New York's Next Art District
       </div>
@@ -153,10 +153,10 @@ exports[`feature renders feature split header properly 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-m5gxwf-6 ipFoDT"
+        className="file__SubHeader-lq75tn-5 fvCnYB"
       >
         <div
-          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -183,7 +183,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM hrHTgX"
+  className="sc-bZQynM dQyFHc"
   data-type="text"
 >
   <div
@@ -193,20 +193,20 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-m5gxwf-2 hfdlZg"
+        className="file__Vertical-lq75tn-1 eZtUXf"
       >
         Art Market
       </div>
       <div
-        className="file__Title-m5gxwf-1 krFZio"
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
       >
         New York's Next Art District
       </div>
       <div
-        className="file__SubHeader-m5gxwf-6 ipFoDT"
+        className="file__SubHeader-lq75tn-5 fvCnYB"
       >
         <div
-          className="file__SubHeaderText-m5gxwf-7 lhtFhR"
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -228,7 +228,7 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-m5gxwf-4 jUzkHf"
+      className="file__Image-lq75tn-3 ewYriW"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
