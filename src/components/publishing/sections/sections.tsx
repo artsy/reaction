@@ -58,7 +58,7 @@ function renderSections(article) {
       case "video":
         return <SectionContainer key={i}><Video section={section} /></SectionContainer>
       case "embed":
-        return <SectionContainer key={i}><Embed section={section} /></SectionContainer>
+        return <SectionContainer key={i} layout={section.layout}><Embed section={section} /></SectionContainer>
       case "text":
         return (
           <SectionContainer key={i} layout={section.layout}>

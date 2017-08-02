@@ -146,6 +146,11 @@ const Articles = [
     },
     sections: [
       {
+        type: "text",
+        body:
+          "<p>What would Antoine Court de Gébelin think of the Happy Squirrel? </p><p>De Gébelin was a Protestant minister born in the 18th century. He authored the multi-volume tome <em>Le Monde primitif</em>, which insisted that the tarot deck contained secrets of the ancient Egyptians, whose priests had distilled their occult wisdom into the cards’ illustrations, imbuing them with great mystical power. Before that point, tarot was primarily a card game—meant for fun, not prophecy.</p><p>It was a bold and somewhat absurd assertion, given that de Gébelin could not read Egyptian hieroglyphics (no one could at the time, since they weren’t deciphered until the 19th century). Despite a total lack of historical evidence to back his claim, the theory stuck: Tarot decks, once a novelty, became popular tools for divination after the publication of de Gébelin’s book.</p><p>Which brings us back to the Happy Squirrel, a relatively recent addition to the tarot’s Major Arcana, and one whose provenance is less hazy: it originated on season six of <em>The Simpsons</em>. Lisa visits a fortune teller who is unconcerned when Lisa picks Death, but gasps in horror when the next card she draws is the Happy Squirrel. (When Lisa asks if the fuzzy rodent is a bad sign, the fortune teller demurs, saying that “the cards are vague and mysterious.”) Although it began as a cartoon joke, the Happy Squirrel card has made its way into over a dozen commercially available tarot decks. </p><p>So what would de Gébelin’s reaction be? The answer depends on whether tarot is a collection of timeless, mystical wisdom—or a flexible framework that has endured by changing with the times. Although tarot imagery employs supposedly universal archetypes, new decks are constantly being invented, and old decks altered. The art of tarot cards can never fully transcend its milieu. Which begs a second question: How do the cards’ art and design relate to the social changes, technological advances, and aesthetic sensibilities of their particular eras?</p><p><br></p><h2>A Wealthy Family’s Trick-Taking Game</h2>",
+      },
+      {
         type: "image_collection",
         layout: "overflow_fillwidth",
         images: [
@@ -172,41 +177,6 @@ const Articles = [
             height: 1065,
             caption:
               "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
-          },
-        ],
-      },
-      {
-        type: "text",
-        body:
-          "<p>What would Antoine Court de Gébelin think of the Happy Squirrel? </p><p>De Gébelin was a Protestant minister born in the 18th century. He authored the multi-volume tome <em>Le Monde primitif</em>, which insisted that the tarot deck contained secrets of the ancient Egyptians, whose priests had distilled their occult wisdom into the cards’ illustrations, imbuing them with great mystical power. Before that point, tarot was primarily a card game—meant for fun, not prophecy.</p><p>It was a bold and somewhat absurd assertion, given that de Gébelin could not read Egyptian hieroglyphics (no one could at the time, since they weren’t deciphered until the 19th century). Despite a total lack of historical evidence to back his claim, the theory stuck: Tarot decks, once a novelty, became popular tools for divination after the publication of de Gébelin’s book.</p><p>Which brings us back to the Happy Squirrel, a relatively recent addition to the tarot’s Major Arcana, and one whose provenance is less hazy: it originated on season six of <em>The Simpsons</em>. Lisa visits a fortune teller who is unconcerned when Lisa picks Death, but gasps in horror when the next card she draws is the Happy Squirrel. (When Lisa asks if the fuzzy rodent is a bad sign, the fortune teller demurs, saying that “the cards are vague and mysterious.”) Although it began as a cartoon joke, the Happy Squirrel card has made its way into over a dozen commercially available tarot decks. </p><p>So what would de Gébelin’s reaction be? The answer depends on whether tarot is a collection of timeless, mystical wisdom—or a flexible framework that has endured by changing with the times. Although tarot imagery employs supposedly universal archetypes, new decks are constantly being invented, and old decks altered. The art of tarot cards can never fully transcend its milieu. Which begs a second question: How do the cards’ art and design relate to the social changes, technological advances, and aesthetic sensibilities of their particular eras?</p><p><br></p><h2>A Wealthy Family’s Trick-Taking Game</h2>",
-      },
-      {
-        type: "image_collection",
-        layout: "fillwidth",
-        images: [
-          {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/AyXXyq5bJuVJiRhhQMB1FQ%2FVisconti+Tarot+2.jpg",
-            type: "image",
-            width: 1806,
-            height: 3226,
-            caption:
-              "<p>Bembo Bonifacio, <em>Female Knight (Swords)</em>, 1428-1447. Visconti Tarot from the Cary Collection of Playing Cards. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
-          },
-          {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/RAj6u6uBQuPpj34p_8aTtQ%2FVisconti+Tarot+3.jpg",
-            type: "image",
-            width: 845,
-            height: 1500,
-            caption:
-              "<p>Bembo Bonifacio, <em>Empress of Swords</em>, 1428-1447. Visconti Tarot from the Cary Collection of Playing Cards. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
-          },
-          {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/gzZEW0L1ht4609yeWlDVKA%2FVisconti+Tarot+1.jpg",
-            type: "image",
-            width: 1803,
-            height: 3226,
-            caption:
-              "<p>Bembo Bonifacio, <em>The King of Swords</em>, 1428-1447. Visconti Tarot from the Cary Collection of Playing Cards. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
           },
         ],
       },
@@ -256,28 +226,12 @@ const Articles = [
         layout: "overflow_fillwidth",
         images: [
           {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/5SVIOhkXVzJ1RFJOU4ap0Q%2F1013573.jpg",
+            url: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
             type: "image",
-            width: 1837,
-            height: 3104,
+            width: 1152,
+            height: 826,
             caption:
               "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
-          },
-          {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/2yzDfyMQ3svzUbInCTvzog%2F1013570.jpg",
-            type: "image",
-            width: 1821,
-            height: 3082,
-            caption:
-              "<p>Pamela Colman Smith, <em>The Star</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
-          },
-          {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/pkLaxZWDn5FNHK4TXklaAQ%2F1013574.jpg",
-            type: "image",
-            width: 1834,
-            height: 3099,
-            caption:
-              "<p>Pamela Colman Smith, <em>Queen of Cups</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
           },
         ],
       },
@@ -287,34 +241,11 @@ const Articles = [
           '<p>The Rider-Waite Smith deck, which debuted in 1909, remains the most recognizable and popular today. Designed by artist Pamela Colman Smith under the direction of the mystic A.E. Waite, it was the first to be mass-produced in English, and was intended for divination rather than gameplay. Smith and Waite were both active members of the Order of the Golden Dawn, a secretive organization devoted to the exploration of the paranormal and occult (allegedly Bram Stoker, Aleister Crowley, and Sir Arthur Conan Doyle were also members). </p><p>In addition to Smith’s occult bonafides, she was also an accomplished artist, championed by <a href="https://www.artsy.net/artist/alfred-stieglitz">Alfred Stieglitz</a>, who collected her work and showed it at his gallery. Smith created fully-realized illustrations of all 78 cards that made the deck a treasure-trove for cartomancers, who now had a much richer store of images to work with. (Previously, only the 22 Major Arcana cards such as the Fool, the Magician, and the Lovers had been elaborately illustrated—traditionally, the Minor Arcana cards, which are roughly analogous to the suits in a deck of modern playing cards, were not.) The Major Arcana were based on the Tarot de Marseille drawings, but rendered in an illustrative <a href="https://www.artsy.net/gene/art-nouveau">Art Nouveau</a> style rich with patterns. Even the Fool looks debonaire; he carelessly approaches the cliff, a feather in his cap and a blooming rose in his elegant fingers, wearing a floral tunic that looks straight out of <a href="https://www.artsy.net/artist/william-morris">William Morris</a>’s workshop.</p><p><br></p><h2>An Occultist’s Pure Geometry</h2>',
       },
       {
-        type: "image_collection",
+        mobile_height: 1300,
+        height: 1000,
+        url: "http://files.artsy.net/documents/1parrasch.html",
         layout: "overflow_fillwidth",
-        images: [
-          {
-            url:
-              "https://artsy-media-uploads.s3.amazonaws.com/W5wM0lwXnPtiLI5eURshsw%2FScreen+Shot+2017-07-27+at+5.59.59+PM.png",
-            type: "image",
-            width: 382,
-            height: 551,
-            caption: "<p>Frida Harris, tarot card from The Thoth deck. Photo by @cugeltje, via Instagram. </p>",
-          },
-          {
-            url:
-              "https://artsy-media-uploads.s3.amazonaws.com/6HaJBp3_9jjPmwFBTzIqLg%2FScreen+Shot+2017-07-27+at+6.00.28+PM.png",
-            type: "image",
-            width: 393,
-            height: 578,
-            caption: "<p>Frida Harris, tarot card from The Thoth deck. Photo by @cugeltje, via Instagram. </p>",
-          },
-          {
-            url:
-              "https://artsy-media-uploads.s3.amazonaws.com/mZhW6ITbM-2tDzLYYttyvg%2FScreen+Shot+2017-07-27+at+6.00.42+PM.png",
-            type: "image",
-            width: 374,
-            height: 541,
-            caption: "<p>Frida Harris, tarot card from The Thoth deck. Photo by @cugeltje, via Instagram. </p>",
-          },
-        ],
+        type: "embed",
       },
       {
         type: "text",
@@ -392,7 +323,7 @@ const Articles = [
       },
       {
         type: "image_collection",
-        layout: "overflow_fillwidth",
+        layout: "column_width",
         images: [
           {
             url: "https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg",
@@ -409,21 +340,6 @@ const Articles = [
           "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles. The familiar faces of Malcolm X, James Brown, Tina Turner, Howlin’ Wolf, Sister Rosetta Tharpe, and others emerge from the Major Arcana. Sun Ra is there too, appropriately imagined as the Sun card. At a time when Black Americans are at a high risk of being the victims of state-sponsored violence, the Black Power Tarot feels especially urgent. By situating these figures within a centuries-old framework of esoteric wisdom, Khan affirms their value and influence, the importance of their legacy. By placing them on cards used for fortune-telling, he extends their power into the future. </p><p> &nbsp;—Ariela Gittlen</p>",
       },
     ],
-  },
-  {
-    title: "New York's Next Art District",
-    contributing_authors: [
-      {
-        name: "Molly Gottschalk",
-        id: "12345",
-      },
-    ],
-    published_at: "2017-05-19T13:09:18.567Z",
-    layout: "feature",
-    vertical: {
-      name: "Art Market",
-      id: "12345",
-    },
   },
   {
     _id: "594a7e2254c37f00177c0ea9",
@@ -492,11 +408,25 @@ const Articles = [
       {
         type: "text",
         body:
+          "<p>Enthusiastically grow high-payoff infomediaries for virtual methodologies. Competently maximize reliable scenarios whereas magnetic e-services. Completely formulate sticky schemas rather than strategic technologies. Phosfluorescently disseminate long-term high-impact e-services vis-a-vis effective collaboration and idea-sharing. Credibly provide access to technically sound services through plug-and-play niches.</p>",
+      },
+      {
+        type: "video",
+        url: "https://vimeo.com/191988155",
+        caption:
+          "<p>2016 was a memorable year for the world, and art along with it. Powered by data culled from Artsy as well as UBS’s Planet Art app, “The Year in Art 2016” will explore how the creative community responded to the cultural shifts and tribulations this year has seen—from the destruction of Palmyra to the proliferation of Virtual Reality to the U.S. election.</p>",
+        cover_image_url:
+          "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+        layout: "overflow_fillwidth",
+      },
+      {
+        type: "text",
+        body:
           '<p><br></p><h2>The Application Process</h2><p>Most awards will require several images of your work, as well as a written artist statement to provide some context. With higher-stakes prizes, artists may be asked to submit recommendation letters from peers or professionals. </p><p>A somewhat obvious, though easily botched, element of the application process is following directions. “You have to be careful not to get lazy with how you submit, as it may lead to you being disqualified, which is just a waste of your time,” McIntyre explains. Be sure to read the fine print and adhere to all particulars regarding preparing, labeling, and submitting application materials.</p><p>Organizations administering prizes will allow artists to submit several—typically three to eight—images. They are generally interested in seeing recent work, created over the past two or three years. Some prizes may specify that artists create a new, original work to submit. Artists should be sure to send high-quality photographs; if resources allow, hire a photographer (or recruit a qualified friend) to have works shot professionally.</p><p>For those artists who work across mediums—perhaps printmaking one day, performance the next—know that it might not be advisable to try to include the full breadth of your practice in a single application. “Try to hone in on a single idea, or a couple of ideas,” says artist <a href="https://www.artsy.net/artist/alex-podesta">Alex Podesta</a>, who won the BOMBAY SAPPHIRE® Artisan Series in 2013, and has also served as a juror for other awards. “I’ve been on the other side of this a number of times, and when you’re reviewing applications it’s confusing and not helpful to have an artist submitting sculpture, painting, <em>and</em> a video piece. Focus on one aspect of your work.” </p><p>In addition to images, a written artist’s statement that explains and contextualizes the artist’s work is important, too. Artists should get in the habit of updating their statements regularly, adapting their texts to accurately reflect their current practices. Artist <a href="https://www.artsy.net/artist/yevgeniya-baras">Yevgeniya Baras</a>, who won an Artadia Award in New York in 2015, notes that she rewrites or edits her artist statement every two years. &nbsp;</p><p>For certain awards, artists may need to be able to speak about their work with jurors in person. If this is the case, be prepared to take full advantage of the opportunity. Baras notes that for Artadia, the panel of jurors visited her studio; she was careful to delve deeper into elements of her work that don’t come across through two-dimensional images or her online application. For the Meurice Prize for contemporary art, artists must give an oral presentation of their work. “While we don’t judge the artist on their ability to conduct a perfect verbal presentation of the work, we are of course interested to hear the artist speak of their work in a very intimate way, and that can actually be the decisive sector,” says Jennifer Flay, director of the art fair FIAC, and a juror for the Meurice Prize.</p><p><br></p><h2>Application Fees</h2><p>While it’s free to apply for some awards, it’s not uncommon to pay a fee in the range of $20 to $75—which can make a difference for artists looking to apply to multiple opportunites. Belka notes that if the stakes are high, an application fee may be worth it, but he advises that artists do their research before submitting said fees to avoid scams. </p><p>McIntyre recalls that she once applied to a competition that promised winners a show in Venice. “I was accepted, but they asked for an outrageous artist fee of €500,” she says. Later she learned that fellow artists had fallen for the scam and lost their money—and the works they had submitted. “Have discretion and awareness that your money may amount to nothing,” she counsels.</p><p><br></p><h2>Set Expectations and Be Persistent</h2><p>No one wins every award; there’s often a trail of rejections on the way to any prize. Baras, who landed the Rema Hort Mann Foundation Emerging Artist Grant in 2014 and the Artadia Award thereafter, notes that there’s been plenty of failure mixed in with those successes. (She estimates that she submits around 10 award or grant applications per year.) </p><p>“Assume that for nine out of every 10 applications that you send in, it’s not going to be the work they’re looking for,” Podesta says. “Younger artists, especially, shouldn’t get daunted. Remember that the work just isn’t resonating with the [specific] people reviewing it.”</p><p>It helps to go into the application process with an open mind, and reasonable hopes. “I went into it not expecting it to make my career, but rather for it to be an addition to it,” says <a href="https://www.artsy.net/artist/kristine-mays">Kristine Mays</a>, who won the BOMBAY SAPPHIRE® Artisan Series in 2014. Artists, she adds, should simply stay true to their craft, and keep working away.</p><p>Remember that rejection, while disappointing, can be a learning experience. “Without this kind of risk, you can’t really put yourself out there,” Baras says. “Most applications, for many amazing awards, just take a few days. It’s a way to see a new community, to seek new eyes, and I think that’s a necessary and healthy risk for an artist to take.”</p><p>Lee advises fellow artists to cast a wide net and apply to as many opportunities as possible, developing a thick skin as they do. “If you get rejected one year, apply again the next,” she says, simply. “It’s about being persistent and not taking anything personally.”</p><p><br></p>',
       },
       {
         type: "image_collection",
-        layout: "overflow_fillwidth",
+        layout: "fillwidth",
         images: [
           {
             url:

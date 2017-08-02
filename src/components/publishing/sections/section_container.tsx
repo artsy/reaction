@@ -8,9 +8,20 @@ interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
 
 const Div: StyledFunction<SectionContainerProps> = styled.div
 
+const chooseWidth = layout => {
+  if (layout) {
+    if (layout === "overflow_fillwidth") {
+      return "780px;"
+    } else if (layout === "fillwidth") {
+      return "100%;"
+    }
+  }
+  return "680px;"
+}
+
 const SectionContainer = Div`
   display: flex;
-  width: 680px;
+  width: ${props => chooseWidth(props.layout)}
   ${pMedia.sm`
     width: 100%;
   `}
