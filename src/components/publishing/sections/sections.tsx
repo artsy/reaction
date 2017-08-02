@@ -13,7 +13,7 @@ import { pMedia } from "../../helpers"
 
 interface SectionsProps {
   article: {
-    layout?: string
+    layout: string
     authors?: any
     sections: {}
   }
@@ -56,7 +56,7 @@ function renderSections(article) {
       //     </SectionContainer>
       //   )
       case "video":
-        return <SectionContainer key={i}><Video section={section} /></SectionContainer>
+        return <SectionContainer key={i} layout={section.layout}><Video section={section} /></SectionContainer>
       case "embed":
         return <SectionContainer key={i} layout={section.layout}><Embed section={section} /></SectionContainer>
       case "text":
@@ -79,7 +79,13 @@ function renderAuthors(authors) {
     return false
   }
 }
-
+const chooseMargin = layout => {
+  if (layout === "standard") {
+    return "60px 0 0 0;"
+  } else if (layout === "feature") {
+    return "80px auto 0 auto;"
+  }
+}
 const Div: StyledFunction<StyledSectionsProps> = styled.div
 
 const StyledSections = Div`
@@ -87,12 +93,8 @@ const StyledSections = Div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: ${props => (props.layout === "standard" ? "60px" : "80px")} auto;
+  margin: ${props => chooseMargin(props.layout)}
   max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
-  ${pMedia.sm`
-    max-width: 100%;
-    padding: 0px;
-  `}
 `
 
 export default Sections

@@ -19,11 +19,37 @@ const chooseWidth = layout => {
   return "680px;"
 }
 
+const chooseMargin = layout => {
+  if (layout) {
+    if (layout === "overflow_fillwidth") {
+      return "auto;"
+    } else if (layout === "fillwidth") {
+      return "auto;"
+    }
+  }
+  return "auto;"
+}
+
+const chooseMobilePadding = layout => {
+  if (layout) {
+    if (layout === "overflow_fillwidth") {
+      return "20px;"
+    } else if (layout === "fillwidth") {
+      return "0px;"
+    }
+  }
+  return "20px;"
+}
+
 const SectionContainer = Div`
+  box-sizing: border-box;
   display: flex;
   width: ${props => chooseWidth(props.layout)}
-  ${pMedia.sm`
+  margin: ${props => chooseMargin(props.layout)}
+  ${pMedia.md`
     width: 100%;
+    padding: ${props => chooseMobilePadding(props.layout)}
+    margin: 0px;
   `}
 `
 export default SectionContainer

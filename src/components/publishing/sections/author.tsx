@@ -11,9 +11,10 @@ interface AuthorProps {
 
 const Author: React.SFC<AuthorProps> = props => {
   const { author } = props
+  const profileImage = author.image_url ? <ProfileImage src={author.image_url} /> : false
   return (
     <AuthorContainer>
-      <ProfileImage src={author.image_url} />
+      {profileImage}
       <AuthorInfo>
         <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
         <Twitter>
@@ -39,6 +40,7 @@ const ProfileImage = Div`
   border-radius: 50%;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
+  margin-right: 10px;
   ${pMedia.sm`
     min-width: 40px;
     min-height: 40px;
@@ -51,7 +53,6 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  margin-left: 10px;
   ${Fonts.garamond("s23")}
   ${pMedia.sm`
     ${Fonts.garamond("s17")}
@@ -67,6 +68,7 @@ const TwitterHandle = styled.a`
   ${Fonts.unica("s14", "medium")}
   color: black;
   text-decoration: none;
+  white-space: nowrap;
   ${Icon} {
     vertical-align: middle;
     margin: 0px;

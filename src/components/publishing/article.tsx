@@ -3,7 +3,7 @@ import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import StandardLayout from "./layouts/standard_layout"
 import Sections from "./sections/sections"
-import Sidebar from "./sidebar/sidebar"
+// import Sidebar from "./sidebar/sidebar"
 
 interface ArticleProps {
   article: any
@@ -24,7 +24,7 @@ const Article: React.SFC<ArticleProps> = props => {
     return (
       <StandardLayout>
         <Sections article={article} />
-        <Sidebar article={article} />
+        {/* <Sidebar article={article} /> */}
       </StandardLayout>
     )
   }
