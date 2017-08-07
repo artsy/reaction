@@ -38,15 +38,37 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-u0fke8-0 byxSLv"
+  className="file__StandardHeaderContainer-m16dzg-0 bDDMIy"
 >
   <div
+<<<<<<< HEAD
     className="file__Vertical-u0fke8-2 bfaGXp"
+=======
+  className="file__StandardHeaderContainer-s13evez-0 fmppsk"
+>
+  <div
+    className="file__Vertical-s13evez-1 jhCIcQ"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+    className="file__Vertical-m16dzg-1 fAusxb"
+>>>>>>> 07432f8... Merge and update story
   >
     Art Market
   </div>
   <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     className="file__Title-u0fke8-1 kundHw"
+=======
+    className="file__StandardTitle-s1sluhjf-0 bGRsjT"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+    className="file__StandardTitle-uzfvbx-0 cMPyNX"
+>>>>>>> a6b54b0... Update tests
+=======
+    className="file__StandardTitle-uzfvbx-0 cMPyNX"
+>>>>>>> 07432f8... Merge and update story
   >
     New York's Next Art District
   </div>
@@ -70,7 +92,19 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   className="sc-bZQynM iBeoff"
+=======
+  className="sc-bZQynM dQyFHc"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+  className="sc-bZQynM ckpjku"
+>>>>>>> a6b54b0... Update tests
+=======
+  className="sc-bZQynM jSxUwy"
+>>>>>>> 07432f8... Merge and update story
   data-type="fullscreen"
 >
   <div>
@@ -89,20 +123,65 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Vertical-s4uy935-2 eVFgXG"
+=======
+        className="file__Vertical-lq75tn-1 eZtUXf"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__Vertical-kpxr6d-1 kNaZqE"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__Vertical-s1jf818o-1 dKkmeK"
+>>>>>>> 07432f8... Merge and update story
       >
         Creativity
       </div>
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Title-s4uy935-1 Brjfl"
+=======
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> 07432f8... Merge and update story
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__SubHeader-s4uy935-6 hdoOAM"
       >
         <div
           className="file__SubHeaderText-s4uy935-7 TrvhE"
+=======
+        className="file__SubHeader-lq75tn-5 fvCnYB"
+      >
+        <div
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__SubHeader-s1jf818o-5 JWCV"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> 07432f8... Merge and update story
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -129,7 +208,19 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   className="sc-bZQynM iBeoff"
+=======
+  className="sc-bZQynM dQyFHc"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+  className="sc-bZQynM ckpjku"
+>>>>>>> a6b54b0... Update tests
+=======
+  className="sc-bZQynM jSxUwy"
+>>>>>>> 07432f8... Merge and update story
   data-type="split"
 >
   <div
@@ -139,12 +230,36 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Vertical-s4uy935-2 eVFgXG"
+=======
+        className="file__Vertical-lq75tn-1 eZtUXf"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__Vertical-kpxr6d-1 kNaZqE"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__Vertical-s1jf818o-1 dKkmeK"
+>>>>>>> 07432f8... Merge and update story
       >
         Creativity
       </div>
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Title-s4uy935-1 Brjfl"
+=======
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> 07432f8... Merge and update story
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -153,10 +268,31 @@ exports[`feature renders feature split header properly 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__SubHeader-s4uy935-6 hdoOAM"
       >
         <div
           className="file__SubHeaderText-s4uy935-7 TrvhE"
+=======
+        className="file__SubHeader-lq75tn-5 fvCnYB"
+      >
+        <div
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__SubHeader-s1jf818o-5 JWCV"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> 07432f8... Merge and update story
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -183,7 +319,19 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   className="sc-bZQynM iBeoff"
+=======
+  className="sc-bZQynM dQyFHc"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+  className="sc-bZQynM ckpjku"
+>>>>>>> a6b54b0... Update tests
+=======
+  className="sc-bZQynM jSxUwy"
+>>>>>>> 07432f8... Merge and update story
   data-type="text"
 >
   <div
@@ -193,20 +341,65 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Vertical-s4uy935-2 eVFgXG"
+=======
+        className="file__Vertical-lq75tn-1 eZtUXf"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__Vertical-kpxr6d-1 kNaZqE"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__Vertical-s1jf818o-1 dKkmeK"
+>>>>>>> 07432f8... Merge and update story
       >
         Creativity
       </div>
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__Title-s4uy935-1 Brjfl"
+=======
+        className="feature__title file__FeatureTitle-s1sluhjf-1 lkDrMY"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+>>>>>>> 07432f8... Merge and update story
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         className="file__SubHeader-s4uy935-6 hdoOAM"
       >
         <div
           className="file__SubHeaderText-s4uy935-7 TrvhE"
+=======
+        className="file__SubHeader-lq75tn-5 fvCnYB"
+      >
+        <div
+          className="feature__subheader-text file__SubHeaderText-s1sluhjf-2 jrImbk"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> a6b54b0... Update tests
+=======
+        className="file__SubHeader-s1jf818o-5 JWCV"
+      >
+        <div
+          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+>>>>>>> 07432f8... Merge and update story
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -228,7 +421,19 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <img
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       className="file__Image-s4uy935-4 bGVoDx"
+=======
+      className="file__Image-lq75tn-3 ewYriW"
+>>>>>>> 4a8fa0d... Allow headers to pass children
+=======
+      className="file__Image-kpxr6d-3 kqIteB"
+>>>>>>> a6b54b0... Update tests
+=======
+      className="file__Image-s1jf818o-3 jQqQNj"
+>>>>>>> 07432f8... Merge and update story
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>

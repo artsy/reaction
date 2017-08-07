@@ -162,26 +162,12 @@ const SubHeader = styled.div`
     flex-direction: column;
   `}
 `
-<<<<<<< HEAD
-=======
-const SubHeaderText = styled.div`
-  max-width: 460px;
-  ${pMedia.sm`
-    margin-bottom: 28px;
-    ${Fonts.unica("s16", "medium")}
-  `}
-`
->>>>>>> baa5fe4... Layouts and sections
 const FeatureHeaderContainer = Div.extend`
   width: 100vw;
   height: 100vh;
   &[data-type='text'] {
-<<<<<<< HEAD
-    .feature__title {
-=======
     height: auto;
-    ${Title} {
->>>>>>> baa5fe4... Layouts and sections
+    .feature__title {
       margin-bottom: 150px;
     }
     ${HeaderText} {

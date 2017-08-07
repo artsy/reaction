@@ -5,29 +5,29 @@ exports[`renders properly 1`] = `
   className="sc-jzJRlG hIRJvb"
 >
   <div
-    className="file__StandardHeaderContainer-u0fke8-0 byxSLv"
+    className="file__StandardHeaderContainer-m16dzg-0 bDDMIy"
   >
     <div
-      className="file__Vertical-u0fke8-2 bfaGXp"
+      className="file__Vertical-m16dzg-1 fAusxb"
     >
       Art Market
     </div>
     <div
-      className="file__Title-u0fke8-1 kundHw"
+      className="file__StandardTitle-uzfvbx-0 cMPyNX"
     >
       New York's Next Art District
     </div>
     <div
-      className="file__AuthorDateContainer-s951nr8-0 gYwNkD"
+      className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
     >
       <div
-        className="sc-bdVaJa bcNlZk"
+        className="sc-bdVaJa etviRx"
       >
         By 
         Molly Gottschalk
       </div>
       <div
-        className="sc-bdVaJa bcNlZk"
+        className="sc-bdVaJa etviRx"
       >
         May 19, 2017 9:09 am
       </div>
@@ -469,107 +469,69 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="sc-VigVT dhqmgR"
+    className="sc-VigVT joLCeK"
   >
     <div
-      className="file__ImageCollectionContainer-s1iab4tx-0 VtdeU"
+      style={
+        Object {
+          "position": "relative",
+          "width": "100%",
+        }
+      }
     >
       <div
-        className="sc-gZMcBi dVJhAB"
-        width={220}
+        className="file__FullWrapper-s4tso9a-0 jfGOzP"
       >
         <div
-          className="article-image"
+          className="sc-gqjmRU nhnkd"
         >
-          <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
-            height={401}
-            src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
-            width={220}
-          />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__Title-s4tso9a-3 ggnjUT"
+          >
+            The Work of Bruce M. Sherman
+          </div>
+          <div
+            className="file__SubTitle-s4tso9a-4 jiIFlB"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                }
-              }
-            />
-            <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="file__SubTitlePrompt-s4tso9a-5 jzqZnG"
             >
-              View Fullscreen
+              View Slideshow
+            </div>
+            <div
+              className="file__SubTitleCount-s4tso9a-6 dGrdgh"
+            >
+              3
+               Images
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="sc-gZMcBi hhdQNH"
-        width={218}
-      >
         <div
-          className="article-image"
+          className="file__IconContainer-s4tso9a-7 hkKsVE"
         >
-          <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
-            height={401}
-            src="https://artsy-media-uploads.s3.amazonaws.com/z7BUiIKCStBxlcXh53t0Xg%2F07272017133730-0001+%28dragged%29+copy.jpg"
-            width={218}
-          />
-          <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+          <svg
+            data-name="imageset"
+            id="imageset"
+            viewBox="0 0 44 44"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div
-              className="sc-iwsKbI bXyBRu"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                }
-              }
+            <path
+              d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
+              transform="translate(-6728.67 -507.72)"
             />
-            <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
-            >
-              View Fullscreen
-            </div>
-          </div>
+            <polygon
+              points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
+            />
+            <polygon
+              points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
+            />
+          </svg>
         </div>
       </div>
-      <div
-        className="sc-gZMcBi ggZiOW"
-        width={219}
-      >
-        <div
-          className="article-image"
-        >
-          <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
-            height={402}
-            src="https://artsy-media-uploads.s3.amazonaws.com/T9g-NNJcmy8ej6qV6UQ-fA%2F07272017133839-0001.jpg"
-            width={219}
-          />
-          <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
-          >
-            <div
-              className="sc-iwsKbI bXyBRu"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                }
-              }
-            />
-            <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
-            >
-              View Fullscreen
-            </div>
-          </div>
-        </div>
-      </div>
+      <img
+        src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
+        width="100%"
+      />
     </div>
   </div>
   <div

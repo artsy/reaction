@@ -288,8 +288,9 @@ const Articles = [
           '<p>Created by the artist Bill Greer under the direction of Lloyd Morgan, the Morgan-Greer deck is, like the 1970s themselves, both opulent and optimistic. The Magician sports a mustache that would make Tom Selleck blush, and the naked and embracing Lovers would fit right in with the hirsute and curvaceous illustrations in the original 1972 edition of <em>The Joy of Sex</em>.</p><p>The ‘70s enthusiasm for all things New Age created a renewed interest in tarot as a tool for self-discovery, and the Morgan Greer deck was there to greet it. The cards’ colors are lush and the lines are fluid. Greer chose to crop his figures tightly and removed the borders, allowing the illustrations to extend to the edges. The effect is fresh and personal. Formally, the Morgan-Greer illustrations have more in common with Jefferson Starship’s <em>Spitfire</em> (1976) album cover than with contemporary painting of the same period—the pendulum had swung away from figuration and would take a few years longer to swing back—but it’s possible to find a resonance between this deck’s art and a work like <a href="https://www.artsy.net/artist/judy-chicago">Judy </a><a href="https://www.artsy.net/artist/judy-chicago">Chicago</a>’s <em>Dinner Party </em>(1979), with its powerful goddess and blooming flowers. Greer’s strong women and frank sexuality make the deck very much of its time.</p><p><br></p><h2>Minimalism &amp; Identity in the Present Day</h2>',
       },
       {
-        type: "image_collection",
-        layout: "overflow_fillwidth",
+        type: "image_set",
+        layout: "full",
+        title: "The Work of Bruce M. Sherman",
         images: [
           {
             url:
@@ -427,6 +428,25 @@ const Articles = [
       {
         type: "image_collection",
         layout: "fillwidth",
+        images: [
+          {
+            url:
+              "https://artsy-media-uploads.s3.amazonaws.com/MGjCex4gkN4ofE_qOj_DPQ%2Farticle+asset+2-hig+res+copy.jpg",
+            type: "image",
+            width: 1200,
+            height: 750,
+            caption: "<p>Illustration by Tomi Um for Artsy</p>",
+          },
+        ],
+      },
+      {
+        type: "text",
+        body:
+          "<p>Enthusiastically grow high-payoff infomediaries for virtual methodologies. Competently maximize reliable scenarios whereas magnetic e-services. Completely formulate sticky schemas rather than strategic technologies. Phosfluorescently disseminate long-term high-impact e-services vis-a-vis effective collaboration and idea-sharing. Credibly provide access to technically sound services through plug-and-play niches.</p>",
+      },
+      {
+        type: "image_set",
+        layout: "mini",
         images: [
           {
             url:
