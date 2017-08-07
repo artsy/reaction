@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-<div>
+<div
+  className="file__VideoContainer-s1h3wg2t-0 cqyrdA"
+>
   <div
     className="sc-htpNat UgtSs"
     height={281.25}
@@ -10,10 +12,10 @@ exports[`renders properly 1`] = `
     src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
   >
     <div
-      className="file__PlayButton-p1jaa3-1 bflFQU"
+      className="file__PlayButton-s1h3wg2t-2 eepQny"
     >
       <div
-        className="file__PlayButtonCaret-p1jaa3-0 hVsjGX"
+        className="file__PlayButtonCaret-s1h3wg2t-1 iFkbhg"
       />
     </div>
   </div>
@@ -25,7 +27,7 @@ exports[`renders properly 1`] = `
     src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
   />
   <div
-    className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
+    className="file__CaptionContainer-q52b23-0 ikvQHr"
   >
     <div
       className="sc-bdVaJa bGfehm"

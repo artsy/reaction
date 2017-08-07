@@ -46,9 +46,9 @@ const SectionContainer = Div`
   display: flex;
   width: ${props => chooseWidth(props.layout)}
   margin: ${props => chooseMargin(props.layout)}
-  ${pMedia.md`
+  ${props => pMedia.sm`
     width: 100%;
-    padding: ${props => chooseMobilePadding(props.layout)}
+    padding: ${chooseMobilePadding(props.layout)}
     margin: 0px;
   `}
 `

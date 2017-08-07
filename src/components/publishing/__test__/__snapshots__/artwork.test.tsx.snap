@@ -19,7 +19,7 @@ exports[`renders properly 1`] = `
     className="display-artwork__caption sc-bdVaJa bLvhbP"
   >
     <div
-      className="file__TruncatedLine-s1cowzl4-0 kHwVsJ"
+      className="file__TruncatedLine-n4uxzp-0 iAlzUN"
     >
       <span
         className="artist-name"
@@ -68,7 +68,7 @@ exports[`renders properly 1`] = `
       </a>
     </div>
     <div
-      className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
+      className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
     >
       View Fullscreen
     </div>

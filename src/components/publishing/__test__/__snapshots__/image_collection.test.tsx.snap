@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`renders a single image properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-v6w8a7-0 PVCNP"
+  className="file__ImageCollectionContainer-s1iab4tx-0 VtdeU"
 >
   <div
-    className="sc-htpNat fKRhos"
+    className="sc-htpNat imiCrX"
     width={undefined}
   >
     <div
@@ -26,7 +26,7 @@ exports[`renders properly 1`] = `
         className="display-artwork__caption sc-bdVaJa bLvhbP"
       >
         <div
-          className="file__TruncatedLine-s1cowzl4-0 kHwVsJ"
+          className="file__TruncatedLine-n4uxzp-0 iAlzUN"
         >
           <span
             className="artist-name"
@@ -75,7 +75,92 @@ exports[`renders properly 1`] = `
           </a>
         </div>
         <div
-          className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
+          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+        >
+          View Fullscreen
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders properly 1`] = `
+<div
+  className="file__ImageCollectionContainer-s1iab4tx-0 VtdeU"
+>
+  <div
+    className="sc-htpNat bNZiJe"
+    width={312}
+  >
+    <div
+      className="display-artwork"
+    >
+      <a
+        className="file__ArtworkImageLink-s18l75pq-0 endEOY"
+        href="/artwork/fernando-botero-nude-on-the-beach"
+      >
+        <img
+          className="display-artwork__image file__BlockImage-s18l75pq-1 gGbNWt"
+          height={224}
+          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+          width={312}
+        />
+      </a>
+      <div
+        className="display-artwork__caption sc-bdVaJa bLvhbP"
+      >
+        <div
+          className="file__TruncatedLine-n4uxzp-0 iAlzUN"
+        >
+          <span
+            className="artist-name"
+          >
+            <span
+              className="name"
+            >
+              <a
+                className="file__StyledTextLink-s18afosz-0 hOUyga"
+                href="/artist/fernando-botero"
+              >
+                Fernando Botero
+              </a>
+            </span>
+          </span>
+          <span
+            className="title"
+          >
+            <a
+              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              href="/artwork/fernando-botero-nude-on-the-beach"
+            >
+              Nude on the Beach
+            </a>
+          </span>
+          <span
+            className="comma"
+          >
+            , 
+          </span>
+          <span
+            className="date"
+          >
+            2000
+          </span>
+          <span
+            className="comma"
+          >
+            , 
+          </span>
+          <a
+            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            href="/partner/gary-nader"
+          >
+            Gary Nader
+          </a>
+        </div>
+        <div
+          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
         >
           View Fullscreen
         </div>
@@ -83,20 +168,20 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat fKRhos"
-    width={undefined}
+    className="sc-htpNat gxITxF"
+    width={168}
   >
     <div
       className="article-image"
     >
       <img
         className="file__BlockImage-s1425qn5-0 kMcghC"
-        height="auto"
+        height={224}
         src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
-        width="100%"
+        width={168}
       />
       <div
-        className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
+        className="file__CaptionContainer-q52b23-0 ikvQHr"
       >
         <div
           className="sc-bwzfXH gpZhql"
@@ -107,7 +192,7 @@ exports[`renders properly 1`] = `
           }
         />
         <div
-          className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
+          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
         >
           View Fullscreen
         </div>
@@ -115,20 +200,20 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat imiCrX"
-    width={undefined}
+    className="sc-htpNat egfBBj"
+    width={178}
   >
     <div
       className="article-image"
     >
       <img
         className="file__BlockImage-s1425qn5-0 kMcghC"
-        height="auto"
+        height={224}
         src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-        width="100%"
+        width={178}
       />
       <div
-        className="file__CaptionContainer-s1v1u4ci-0 dtqUlU"
+        className="file__CaptionContainer-q52b23-0 ikvQHr"
       >
         <div
           className="sc-bwzfXH gpZhql"
@@ -139,7 +224,7 @@ exports[`renders properly 1`] = `
           }
         />
         <div
-          className="file__ViewFullscreenLink-s1bkkgtk-0 gQyVOi"
+          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
         >
           View Fullscreen
         </div>

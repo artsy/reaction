@@ -86,6 +86,12 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   )
 }
 
+FeatureHeader.defaultProps = {
+  size: {
+    width: 500,
+  },
+}
+
 const Div = styled.div`
   width: 100%;
   height: 100%;

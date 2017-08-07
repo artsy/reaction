@@ -5,6 +5,6 @@ import AuthorInfo from "../sections/authors"
 import { Authors } from "./fixtures/components"
 
 it("renders properly", () => {
-  const artwork = renderer.create(<AuthorInfo authors={Authors} />).toJSON()
-  expect(artwork).toMatchSnapshot()
+  const authors = renderer.create(<AuthorInfo authors={Authors} />).toJSON()
+  expect(authors).toMatchSnapshot()
 })

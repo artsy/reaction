@@ -6,6 +6,6 @@ import { Videos } from "./fixtures/components"
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
 it("renders properly", () => {
-  const artwork = renderer.create(<Video section={Videos[0]} />).toJSON()
-  expect(artwork).toMatchSnapshot()
+  const video = renderer.create(<Video section={Videos[0]} />).toJSON()
+  expect(video).toMatchSnapshot()
 })

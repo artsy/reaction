@@ -37,7 +37,7 @@ function renderImages(images, dimensions, gutter, width) {
   const renderedImages = images.map((image, i) => {
     const url = image.url ? image.url : image.image
     let imageSize
-    if (width <= 600) {
+    if (width <= 600 || dimensions.length === 1) {
       imageSize = {}
     } else {
       imageSize = find(dimensions, ["__id", url])

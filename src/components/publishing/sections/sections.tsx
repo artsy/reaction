@@ -4,18 +4,15 @@ import Header from "../header/header"
 import Authors from "./authors"
 import Embed from "./embed"
 import ImageCollection from "./image_collection"
+import ImagesetPreview from "./imageset_preview"
 import SectionContainer from "./section_container"
-// import ImagesetPreview from "./imageset_preview"
 import Text from "./text"
 import Video from "./video"
-
-import { pMedia } from "../../helpers"
 
 interface SectionsProps {
   article: {
     layout: string
     authors?: any
-    sections: {}
   }
 }
 
@@ -44,17 +41,12 @@ function renderSections(article) {
             <ImageCollection images={section.images} targetHeight={500} gutter={10} />
           </SectionContainer>
         )
-      // case "image_set":
-      //   return (
-      //     <SectionContainer key={i}>
-      //       <ImagesetPreview
-      //         images={section.images}
-      //         layout={article.layout}
-      //         type={section.type}
-      //         title={section.title}
-      //       />
-      //     </SectionContainer>
-      //   )
+      case "image_set":
+        return (
+          <SectionContainer key={i}>
+            <ImagesetPreview section={section} />
+          </SectionContainer>
+        )
       case "video":
         return <SectionContainer key={i} layout={section.layout}><Video section={section} /></SectionContainer>
       case "embed":

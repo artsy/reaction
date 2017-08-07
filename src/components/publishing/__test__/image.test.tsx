@@ -10,6 +10,6 @@ it("renders properly", () => {
 })
 
 it("renders a long caption properly", () => {
-  const image = renderer.create(<Image image={Images[1]} />).toJSON()
+  const image = renderer.create(<Image image={Images[2]} />).toJSON()
   expect(image).toMatchSnapshot()
 })
