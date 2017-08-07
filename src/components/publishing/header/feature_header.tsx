@@ -71,10 +71,10 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{article.vertical.name}</Vertical>
-          <Title>{article.title}</Title>
+          {props.children[0]}
           {renderMobileSplitAsset(hero.url, hero.type, width)}
           <SubHeader>
-            <SubHeaderText>{hero.subheader}</SubHeaderText>
+            {props.children[1]}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
@@ -99,16 +99,6 @@ const Overlay = Div.extend`
   position: absolute;
   background-color: black;
   opacity: 0.17;
-`
-const Title = styled.div`
-  ${Fonts.unica("s100")}
-  margin-bottom: 75px;
-  ${pMedia.md`
-    ${Fonts.unica("s80")}
-  `}
-  ${pMedia.sm`
-    ${Fonts.unica("s45")}
-  `}
 `
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -150,7 +140,6 @@ const FeatureVideoContainer = Div.extend`
   position: absolute;
   overflow: hidden;
 `
-
 const Image = styled.img`
   width: 100%;
   height: auto;
@@ -171,18 +160,9 @@ const SubHeader = styled.div`
     flex-direction: column;
   `}
 `
-
-const SubHeaderText = styled.div`
-  max-width: 460px;
-  ${pMedia.sm`
-    margin-bottom: 28px;
-    ${Fonts.unica("s16", "medium")}
-  `}
-`
-
 const FeatureHeaderContainer = Div.extend`
   &[data-type='text'] {
-    ${Title} {
+    .feature__title {
       margin-bottom: 150px;
     }
     ${HeaderText} {
@@ -190,7 +170,7 @@ const FeatureHeaderContainer = Div.extend`
     }
   }
   &[data-type='split'] {
-    ${Title} {
+    .feature__title {
       flex-grow: 1;
     }
     ${HeaderText} {
@@ -211,11 +191,11 @@ const FeatureHeaderContainer = Div.extend`
       align-items: flex-start;
       flex-direction: column;
     }
-    ${SubHeaderText} {
+    .feature__deck {
       margin-bottom: 30px;
     }
     ${pMedia.sm`
-      ${Title} {
+      .feature__title {
         margin-bottom: 20px;
       }
       ${HeaderText} {

@@ -13,9 +13,7 @@ const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   return (
     <StandardHeaderContainer>
       <Vertical>{article.vertical.name}</Vertical>
-      <Title>
-        {article.title}
-      </Title>
+      {props.children}
       <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="standard" />
     </StandardHeaderContainer>
   )
@@ -25,13 +23,7 @@ const StandardHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-const Title = styled.div`
-  ${Fonts.garamond("s50")}
-  margin-bottom: 60px;
-  ${pMedia.sm`
-    ${Fonts.garamond("s34")}
-  `}
-`
+
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
   ${pMedia.sm`
