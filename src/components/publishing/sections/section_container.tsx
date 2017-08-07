@@ -19,17 +19,6 @@ const chooseWidth = layout => {
   return "680px;"
 }
 
-const chooseMargin = layout => {
-  if (layout) {
-    if (layout === "overflow_fillwidth") {
-      return "auto;"
-    } else if (layout === "fillwidth") {
-      return "auto;"
-    }
-  }
-  return "auto;"
-}
-
 const chooseMobilePadding = layout => {
   if (layout) {
     if (layout === "overflow_fillwidth") {
@@ -45,7 +34,7 @@ const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
   width: ${props => chooseWidth(props.layout)}
-  margin: ${props => chooseMargin(props.layout)}
+  margin: auto;
   ${props => pMedia.sm`
     width: 100%;
     padding: ${chooseMobilePadding(props.layout)}

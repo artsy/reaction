@@ -239,7 +239,6 @@ const FeatureHeaderContainer = Div.extend`
 `
 
 const sizeMeOptions = {
-  monitorHeight: false,
   refreshRate: 64,
   refreshMode: "debounce",
 }

@@ -9,7 +9,7 @@ import Image from "./image"
 import ImageCollectionItem from "./image_collection_item"
 
 interface ImageCollectionProps {
-  images: object
+  images: any
   targetHeight?: number
   gutter?: number
   size?: {
@@ -69,7 +69,6 @@ const ImageCollectionContainer = styled.div`
 `
 
 const sizeMeOptions = {
-  monitorHeight: false,
   refreshRate: 64,
 }
 

@@ -2,7 +2,7 @@
 
 exports[`renders a single image properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-s1iab4tx-0 VtdeU"
+  className="file__ImageCollectionContainer-s1x7oium-0 bPtpfM"
 >
   <div
     className="sc-htpNat imiCrX"
@@ -87,7 +87,7 @@ exports[`renders a single image properly 1`] = `
 
 exports[`renders properly 1`] = `
 <div
-  className="file__ImageCollectionContainer-s1iab4tx-0 VtdeU"
+  className="file__ImageCollectionContainer-s1x7oium-0 bPtpfM"
 >
   <div
     className="sc-htpNat bNZiJe"

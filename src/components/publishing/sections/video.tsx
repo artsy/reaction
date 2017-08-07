@@ -129,7 +129,6 @@ const PlayButton = styled.div`
 `
 
 const sizeMeOptions = {
-  monitorHeight: false,
   refreshRate: 64,
 }
 

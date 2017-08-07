@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__VideoContainer-s1h3wg2t-0 cqyrdA"
+  className="file__VideoContainer-s5ax5tw-0 fTLvxj"
 >
   <div
     className="sc-htpNat UgtSs"
@@ -12,10 +12,10 @@ exports[`renders properly 1`] = `
     src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
   >
     <div
-      className="file__PlayButton-s1h3wg2t-2 eepQny"
+      className="file__PlayButton-s5ax5tw-2 dFWWEK"
     >
       <div
-        className="file__PlayButtonCaret-s1h3wg2t-1 iFkbhg"
+        className="file__PlayButtonCaret-s5ax5tw-1 bWSLbp"
       />
     </div>
   </div>
