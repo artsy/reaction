@@ -34,34 +34,28 @@ const Sections: React.SFC<SectionsProps> = props => {
 function renderSections(article) {
   const sections = article.sections
   const renderedSections = sections.map((section, i) => {
-    switch (section.type) {
-      case "image_collection":
-        return (
-          <SectionContainer key={i} layout={section.layout}>
-            <ImageCollection images={section.images} targetHeight={500} gutter={10} />
-          </SectionContainer>
-        )
-      case "image_set":
-        return (
-          <SectionContainer key={i}>
-            <ImagesetPreview section={section} />
-          </SectionContainer>
-        )
-      case "video":
-        return <SectionContainer key={i} layout={section.layout}><Video section={section} /></SectionContainer>
-      case "embed":
-        return <SectionContainer key={i} layout={section.layout}><Embed section={section} /></SectionContainer>
-      case "text":
-        return (
-          <SectionContainer key={i} layout={section.layout}>
-            <Text dangerouslySetInnerHTML={{ __html: section.body }} />
-          </SectionContainer>
-        )
-      default:
-        return false
+    const child = getSection(section)
+    if (child) {
+      return (
+        <SectionContainer key={i} layout={section.layout}>
+          {child}
+        </SectionContainer>
+      )
     }
   })
   return renderedSections
+}
+
+function getSection(section) {
+  const sections = {
+    image_collection: <ImageCollection images={section.images} targetHeight={500} gutter={10} />,
+    image_set: <ImagesetPreview section={section} />,
+    video: <Video section={section} />,
+    embed: <Embed section={section} />,
+    text: <Text dangerouslySetInnerHTML={{ __html: section.body }} />,
+    default: false,
+  }
+  return sections[section.type] || sections["default"]
 }
 
 function renderAuthors(authors) {
