@@ -1,4 +1,4 @@
-import { Props as ImageSetPreviewProps } from "../imageset_preview"
+import { Props as ImageSetPreviewProps } from "../../sections/imageset_preview"
 
 export const Artworks = [
   {
@@ -55,51 +55,6 @@ export const Artworks = [
     },
     width: 1152,
     height: 826,
-  },
-]
-
-export const Articles = [
-  {
-    title: "New York's Next Art District",
-    contributing_authors: [
-      {
-        name: "Molly Gottschalk",
-        id: "12345",
-      },
-    ],
-    published_at: "2017-05-19T13:09:18.567Z",
-    layout: "classic",
-    vertical: null,
-  },
-  {
-    title: "New York's Next Art District",
-    contributing_authors: [
-      {
-        name: "Molly Gottschalk",
-        id: "12345",
-      },
-    ],
-    published_at: "2017-05-19T13:09:18.567Z",
-    layout: "standard",
-    vertical: {
-      name: "Art Market",
-      id: "12345",
-    },
-  },
-  {
-    title: "New York's Next Art District",
-    contributing_authors: [
-      {
-        name: "Molly Gottschalk",
-        id: "12345",
-      },
-    ],
-    published_at: "2017-05-19T13:09:18.567Z",
-    layout: "feature",
-    vertical: {
-      name: "Art Market",
-      id: "12345",
-    },
   },
 ]
 

@@ -1,10 +1,16 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import ImageSetPreview from "../imageset_preview"
-import ImageSetPreviewClassic from "../imageset_preview_classic"
+import ImageSetPreview from "../sections/imageset_preview"
+import ImageSetPreviewClassic from "../sections/imageset_preview_classic"
 
-import { Images, ImageSetFull, ImageSetFullSansTitle, ImageSetMini, ImageSetMiniSansTitle } from "../__test__/fixtures"
+import {
+  Images,
+  ImageSetFull,
+  ImageSetFullSansTitle,
+  ImageSetMini,
+  ImageSetMiniSansTitle,
+} from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Imageset Preview", module)
   .add("Imageset Preview - Classic", () => {

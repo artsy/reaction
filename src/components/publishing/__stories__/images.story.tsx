@@ -1,12 +1,47 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Image from "../image"
-import ImageCollection from "../image_collection"
+import Artwork from "../sections/artwork"
+import Image from "../sections/image"
+import ImageCollection from "../sections/image_collection"
 
-import { Images } from "../__test__/fixtures"
+import { Artworks, Images } from "../__test__/fixtures/components"
 
 storiesOf("Publishing/Images", module)
+  .add("Artwork", () => {
+    return (
+      <div>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[0]} />
+        </div>
+        <hr />
+        <p>Multiple Artists: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Unlinked: </p>
+        <div style={{ width: 800 }}>
+          <Artwork linked={false} artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Missing info: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[2]} />
+        </div>
+        <hr />
+        <p>Small: </p>
+        <div style={{ width: 400 }}>
+          <Artwork artwork={Artworks[1]} />
+        </div>
+        <hr />
+        <p>Classic: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[0]} layout="classic" />
+        </div>
+      </div>
+    )
+  })
   .add("Image", () => {
     return (
       <div>

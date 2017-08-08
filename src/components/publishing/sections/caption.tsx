@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Fonts from "./fonts"
+import Fonts from "../fonts"
 import ViewFullscreen from "./view_fullscreen"
 
 const CaptionContainer = styled.div`

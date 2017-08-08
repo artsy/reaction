@@ -38,10 +38,10 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-s13evez-0 fmppsk"
+  className="file__StandardHeaderContainer-m16dzg-0 bDDMIy"
 >
   <div
-    className="file__Vertical-s13evez-1 jhCIcQ"
+    className="file__Vertical-m16dzg-1 fAusxb"
   >
     Art Market
   </div>
@@ -70,7 +70,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
-  className="sc-bZQynM ckpjku"
+  className="sc-bZQynM qDqSM"
   data-type="fullscreen"
 >
   <div>
@@ -89,17 +89,17 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-kpxr6d-1 kNaZqE"
+        className="file__Vertical-s1tpzehh-1 kksYII"
       >
-        Art Market
+        Creativity
       </div>
       <div
         className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
-        New York's Next Art District
+        What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+        className="file__SubHeader-s1tpzehh-5 fPucUF"
       >
         <div
           className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
@@ -113,12 +113,12 @@ exports[`feature renders feature full header properly 1`] = `
             className="sc-bdVaJa lfBMjK"
           >
             By 
-            Molly Gottschalk
+            Casey Lesser
           </div>
           <div
             className="sc-bdVaJa lfBMjK"
           >
-            May 19, 2017 9:09 am
+            Jun 29, 2017 11:00 am
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM ckpjku"
+  className="sc-bZQynM qDqSM"
   data-type="split"
 >
   <div
@@ -139,21 +139,21 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-kpxr6d-1 kNaZqE"
+        className="file__Vertical-s1tpzehh-1 kksYII"
       >
-        Art Market
+        Creativity
       </div>
       <div
         className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
-        New York's Next Art District
+        What’s the Path to Winning an Art Prize?
       </div>
       <div
         className="sc-ifAKCX eaHLCC"
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+        className="file__SubHeader-s1tpzehh-5 fPucUF"
       >
         <div
           className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
@@ -167,12 +167,12 @@ exports[`feature renders feature split header properly 1`] = `
             className="sc-bdVaJa etviRx"
           >
             By 
-            Molly Gottschalk
+            Casey Lesser
           </div>
           <div
             className="sc-bdVaJa etviRx"
           >
-            May 19, 2017 9:09 am
+            Jun 29, 2017 11:00 am
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM ckpjku"
+  className="sc-bZQynM qDqSM"
   data-type="text"
 >
   <div
@@ -193,17 +193,17 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-kpxr6d-1 kNaZqE"
+        className="file__Vertical-s1tpzehh-1 kksYII"
       >
-        Art Market
+        Creativity
       </div>
       <div
         className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
       >
-        New York's Next Art District
+        What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-kpxr6d-5 gPxFPJ"
+        className="file__SubHeader-s1tpzehh-5 fPucUF"
       >
         <div
           className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
@@ -217,18 +217,18 @@ exports[`feature renders feature text header properly 1`] = `
             className="sc-bdVaJa etviRx"
           >
             By 
-            Molly Gottschalk
+            Casey Lesser
           </div>
           <div
             className="sc-bdVaJa etviRx"
           >
-            May 19, 2017 9:09 am
+            Jun 29, 2017 11:00 am
           </div>
         </div>
       </div>
     </div>
     <img
-      className="file__Image-kpxr6d-3 kqIteB"
+      className="file__Image-s1tpzehh-3 iwSWJj"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>

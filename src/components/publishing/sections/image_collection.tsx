@@ -2,17 +2,42 @@ import { find } from "lodash"
 import * as React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../utils/fillwidth"
-import { pMedia } from "../helpers"
+import fillwidthDimensions from "../../../utils/fillwidth"
+import { pMedia } from "../../helpers"
 import Artwork from "./artwork"
 import Image from "./image"
 import ImageCollectionItem from "./image_collection_item"
+
+interface ImageCollectionProps {
+  images: any
+  targetHeight?: number
+  gutter?: number
+  size?: {
+    width: number
+  }
+}
+
+const ImageCollection: React.SFC<ImageCollectionProps> = props => {
+  const { images, targetHeight, gutter, size } = props
+  const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
+  return (
+    <ImageCollectionContainer>
+      {renderImages(images, dimensions, gutter, size.width)}
+    </ImageCollectionContainer>
+  )
+}
+
+ImageCollection.defaultProps = {
+  size: {
+    width: 680,
+  },
+}
 
 function renderImages(images, dimensions, gutter, width) {
   const renderedImages = images.map((image, i) => {
     const url = image.url ? image.url : image.image
     let imageSize
-    if (width <= 600) {
+    if (width <= 600 || dimensions.length === 1) {
       imageSize = {}
     } else {
       imageSize = find(dimensions, ["__id", url])
@@ -27,48 +52,24 @@ function renderImages(images, dimensions, gutter, width) {
     }
 
     return (
-      <ImageCollectionItem key={url} margin={i === dimensions.length - 1 ? 0 : gutter} width={imageSize.width}>
+      <ImageCollectionItem key={i} margin={i === dimensions.length - 1 ? 0 : gutter} width={imageSize.width}>
         {renderedImage}
       </ImageCollectionItem>
     )
   })
   return renderedImages
 }
-interface ImageCollectionProps {
-  images: object
-  targetHeight?: number
-  gutter?: number
-  size: any
-}
-
-const ImageCollection: React.SFC<ImageCollectionProps> = props => {
-  const { images, targetHeight, gutter } = props
-  const { width } = props.size
-  const dimensions = fillwidthDimensions(images, width, gutter, targetHeight)
-  return (
-    <ImageCollectionContainer>
-      {renderImages(images, dimensions, gutter, width)}
-    </ImageCollectionContainer>
-  )
-}
-
-ImageCollection.defaultProps = {
-  size: {
-    width: 500,
-  },
-}
 
 const ImageCollectionContainer = styled.div`
-  width: 100%;
   display: flex;
+  width: 100%;
   ${pMedia.sm`
     flex-direction: column;
   `}
 `
 
-const sizeMeConfig = {
-  monitorWidth: true,
+const sizeMeOptions = {
   refreshRate: 64,
 }
 
-export default sizeMe(sizeMeConfig)(ImageCollection)
+export default sizeMe(sizeMeOptions)(ImageCollection)

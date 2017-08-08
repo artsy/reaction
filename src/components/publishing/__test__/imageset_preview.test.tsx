@@ -1,5 +1,5 @@
-import ImageSetPreview from "../imageset_preview"
-import { ImageSetFull, ImageSetMini } from "./fixtures"
+import ImageSetPreview from "../sections/imageset_preview"
+import { ImageSetFull, ImageSetMini } from "./fixtures/components"
 
 import * as React from "react"
 import * as renderer from "react-test-renderer"

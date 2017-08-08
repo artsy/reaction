@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../helpers"
+import { pMedia } from "../../helpers"
 
-import Fonts from "./fonts"
-import IconImageSet from "./icons/icon_imageset"
+import Fonts from "../fonts"
+import IconImageSet from "../icons/icon_imageset"
 
 type Layout = "mini" | "full"
 
@@ -161,7 +161,7 @@ class ImageSetPreview extends Component<Props, null> {
   render() {
     const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
     return (
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", width: "100%" }}>
         {this.wrapper()}
         {image}
       </div>

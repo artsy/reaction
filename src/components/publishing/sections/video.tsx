@@ -65,7 +65,7 @@ class Video extends React.Component<VideoProps, VideoState> {
     const { caption, cover_image_url } = this.props.section
     const { width } = this.props.size
     return (
-      <div>
+      <VideoContainer>
         <CoverImage
           src={cover_image_url}
           height={width * videoRatio}
@@ -76,7 +76,7 @@ class Video extends React.Component<VideoProps, VideoState> {
         </CoverImage>
         <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
         <Caption caption={caption} layout={this.props.layout} viewFullscreen={false} />
-      </div>
+      </VideoContainer>
     )
   }
 }
@@ -92,9 +92,11 @@ interface CoverImageProps {
   src: string
   height?: number
 }
-
+const VideoContainer = styled.div`
+  width: 100%;
+  position: relative;
+`
 const Div: StyledFunction<CoverImageProps & React.HTMLProps<HTMLDivElement>> = styled.div
-
 const CoverImage = Div`
   display: ${props => (props.hidden || !props.src ? "none" : "flex")};
   justify-content: center;
@@ -126,9 +128,8 @@ const PlayButton = styled.div`
   outline: 0;
 `
 
-const sizeMeConfig = {
-  monitorWidth: true,
+const sizeMeOptions = {
   refreshRate: 64,
 }
 
-export default sizeMe(sizeMeConfig)(Video)
+export default sizeMe(sizeMeOptions)(Video)

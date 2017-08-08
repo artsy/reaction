@@ -22,6 +22,9 @@ const StandardHeader: React.SFC<StandardHeaderProps> = props => {
 const StandardHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 780px;
+  width: 100%;
+  margin-bottom: 60px;
 `
 
 const Vertical = styled.div`

@@ -2,17 +2,17 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__AuthorsContainer-jtkk3o-0 btaXLU"
+  className="file__AuthorsContainer-xzl9oi-0 bQkEtP"
 >
   <div
-    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+    className="file__AuthorContainer-s17d3srt-0 chvKDX"
   >
     <div
-      className="sc-bdVaJa hwyJgp"
+      className="sc-bdVaJa gexcvn"
       src="https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg"
     />
     <div
-      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+      className="file__AuthorInfo-s17d3srt-1 hmeyXd"
     >
       <span>
         <a
@@ -24,10 +24,10 @@ exports[`renders properly 1`] = `
          is an Art Market Editor at Artsy
       </span>
       <span
-        className="file__Twitter-s1asr4y9-2 kxuiUB"
+        className="file__Twitter-s17d3srt-2 dNXQrS"
       >
         <a
-          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          className="file__TwitterHandle-s17d3srt-3 bNHNTe"
           href="http://twitter.com/abigailcain"
         >
           <div
@@ -42,14 +42,14 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+    className="file__AuthorContainer-s17d3srt-0 chvKDX"
   >
     <div
-      className="sc-bdVaJa dzZoGz"
+      className="sc-bdVaJa kzCYic"
       src="http://files.artsy.net/images/molly_01.jpg"
     />
     <div
-      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+      className="file__AuthorInfo-s17d3srt-1 hmeyXd"
     >
       <span>
         <a
@@ -61,10 +61,10 @@ exports[`renders properly 1`] = `
          is a Features Producer at Artsy. She is a photographer and lover of cats.
       </span>
       <span
-        className="file__Twitter-s1asr4y9-2 kxuiUB"
+        className="file__Twitter-s17d3srt-2 dNXQrS"
       >
         <a
-          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          className="file__TwitterHandle-s17d3srt-3 bNHNTe"
           href="http://twitter.com/mollygottschalk"
         >
           <div
@@ -79,14 +79,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__AuthorContainer-s1asr4y9-0 emAQlw"
+    className="file__AuthorContainer-s17d3srt-0 chvKDX"
   >
     <div
-      className="sc-bdVaJa iDYibS"
-      src={undefined}
-    />
-    <div
-      className="file__AuthorInfo-s1asr4y9-1 grPqae"
+      className="file__AuthorInfo-s17d3srt-1 hmeyXd"
     >
       <span>
         <a
@@ -98,10 +94,10 @@ exports[`renders properly 1`] = `
          is an Writer Guru at Artsy. She enjoys speaking Georgian.
       </span>
       <span
-        className="file__Twitter-s1asr4y9-2 kxuiUB"
+        className="file__Twitter-s17d3srt-2 dNXQrS"
       >
         <a
-          className="file__TwitterHandle-s1asr4y9-3 flWIbf"
+          className="file__TwitterHandle-s17d3srt-3 bNHNTe"
           href="http://twitter.com/halleyjohnson"
         >
           <div

@@ -1,8 +1,8 @@
 import * as _ from "lodash"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import TextLink from "../text_link"
-import Fonts from "./fonts"
+import TextLink from "../../text_link"
+import Fonts from "../fonts"
 import ViewFullscreen from "./view_fullscreen"
 
 const TruncatedLine = styled.div`
@@ -37,8 +37,8 @@ interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
 
 class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinChildren(children) {
-    const joined = _.compact(children).reduce((prev, curr) => {
-      return [prev, this.renderComma(), curr]
+    const joined = _.compact(children).reduce((prev, curr, i) => {
+      return [prev, this.renderComma(i), curr]
     })
     return joined
   }
@@ -77,14 +77,14 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (artwork.title) {
       if (this.props.linked) {
         return (
-          <span className="title">
+          <span key={0} className="title">
             <TextLink href={"/artwork/" + artwork.slug} color="#999">
               {artwork.title}
             </TextLink>
           </span>
         )
       } else {
-        return <span className="title"><em>{artwork.title}</em></span>
+        return <span key={0} className="title"><em>{artwork.title}</em></span>
       }
     }
   }
@@ -92,7 +92,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   renderDate() {
     const artwork = this.props.artwork
     if (artwork.date && artwork.date.length > 0) {
-      return <span className="date">{artwork.date}</span>
+      return <span key={1} className="date">{artwork.date}</span>
     }
   }
 
@@ -101,7 +101,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (artwork.partner.name) {
       if (this.props.linked && artwork.partner.slug) {
         return (
-          <TextLink href={"/partner/" + artwork.partner.slug} color="#999">
+          <TextLink key={2} href={"/partner/" + artwork.partner.slug} color="#999">
             {artwork.partner.name}
           </TextLink>
         )
@@ -111,8 +111,8 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     }
   }
 
-  renderComma() {
-    return <span className="comma">, </span>
+  renderComma(i) {
+    return <span key={"comma-" + i} className="comma">, </span>
   }
 
   renderTitleDatePartner() {

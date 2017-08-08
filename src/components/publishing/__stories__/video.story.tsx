@@ -1,24 +1,29 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Video from "../video"
+import Video from "../sections/video"
 
-import { Videos } from "../__test__/fixtures"
+import { Videos } from "../__test__/fixtures/components"
 
-storiesOf("Publishing/Video", module).add("Video", () => {
-  return (
-    <div>
+storiesOf("Publishing/Video", module)
+  .add("Youtube Video", () => {
+    return (
       <div style={{ width: "100vw", position: "relative" }}>
         <Video section={Videos[0]} layout="standard" />
       </div>
-      <br />
+    )
+  })
+  .add("Vimeo Video", () => {
+    return (
       <div style={{ width: "100vw", position: "relative" }}>
         <Video section={Videos[1]} layout="standard" />
       </div>
-      <br />
+    )
+  })
+  .add("Coverless Video", () => {
+    return (
       <div style={{ width: "100vw", position: "relative" }}>
         <Video section={Videos[2]} layout="classic" />
       </div>
-    </div>
-  )
-})
+    )
+  })

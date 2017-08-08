@@ -5,7 +5,7 @@ import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureAsset(url, layout, width) {
+function renderFeatureAsset(url, layout, isMobile) {
   if (layout === "fullscreen") {
     return (
       <div>
@@ -13,15 +13,15 @@ function renderFeatureAsset(url, layout, width) {
         <Overlay />
       </div>
     )
-  } else if (layout === "split" && width > 600) {
+  } else if (layout === "split" && !isMobile) {
     return renderAsset(url)
   } else {
     return false
   }
 }
 
-function renderMobileSplitAsset(url, layout, width) {
-  if (layout === "split" && width < 600) {
+function renderMobileSplitAsset(url, layout, isMobile) {
+  if (layout === "split" && isMobile) {
     return renderAsset(url)
   } else {
     return false
@@ -58,21 +58,23 @@ function isVideo(url) {
 
 interface FeatureHeaderProps {
   article?: any
-  size?: any
+  size?: {
+    width: number
+  }
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article } = props
-  const { width } = props.size
+  const { article, size } = props
   const hero = article.hero_section
+  const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureAsset(hero.url, hero.type, width)}
+      {renderFeatureAsset(hero.url, hero.type, isMobile)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{article.vertical.name}</Vertical>
           {props.children[0]}
-          {renderMobileSplitAsset(hero.url, hero.type, width)}
+          {renderMobileSplitAsset(hero.url, hero.type, isMobile)}
           <SubHeader>
             {props.children[1]}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
@@ -86,7 +88,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
 
 FeatureHeader.defaultProps = {
   size: {
-    width: 0,
+    width: 500,
   },
 }
 
@@ -161,7 +163,10 @@ const SubHeader = styled.div`
   `}
 `
 const FeatureHeaderContainer = Div.extend`
+  width: 100vw;
+  height: 100vh;
   &[data-type='text'] {
+    height: auto;
     .feature__title {
       margin-bottom: 150px;
     }
@@ -233,9 +238,9 @@ const FeatureHeaderContainer = Div.extend`
   }
 `
 
-const sizeMeConfig = {
-  monitorWidth: true,
+const sizeMeOptions = {
   refreshRate: 64,
+  refreshMode: "debounce",
 }
 
-export default sizeMe(sizeMeConfig)(FeatureHeader)
+export default sizeMe(sizeMeOptions)(FeatureHeader)
