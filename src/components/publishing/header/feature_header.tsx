@@ -104,7 +104,7 @@ const Overlay = Div.extend`
 `
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s16", "medium")}
   `}
 `
@@ -157,7 +157,7 @@ const SubHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  ${pMedia.sm`
+  ${pMedia.xs`
     align-items: flex-start;
     flex-direction: column;
   `}
@@ -199,7 +199,7 @@ const FeatureHeaderContainer = Div.extend`
     .feature__deck {
       margin-bottom: 30px;
     }
-    ${pMedia.sm`
+    ${pMedia.xs`
       .feature__title {
         margin-bottom: 20px;
       }
@@ -230,7 +230,7 @@ const FeatureHeaderContainer = Div.extend`
       justify-content: flex-end;
       margin: auto;
     }
-    ${pMedia.sm`
+    ${pMedia.xs`
       ${HeaderText} {
         padding: 20px;
       }

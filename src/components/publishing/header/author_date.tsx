@@ -66,7 +66,7 @@ const BulletText = div`
     margin-right: 10px;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
-  ${pMedia.sm`
+  ${pMedia.xs`
     margin: 0 20px 0 0;
     ${Fonts.unica("s14", "medium")}
     &:before {

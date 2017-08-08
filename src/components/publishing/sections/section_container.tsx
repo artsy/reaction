@@ -14,6 +14,8 @@ const chooseWidth = layout => {
       return "780px;"
     } else if (layout === "fillwidth") {
       return "100%;"
+    } else if (layout === "blockquote") {
+      return "940px;"
     }
   }
   return "680px;"
@@ -33,10 +35,11 @@ const chooseMobilePadding = layout => {
 const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
-  width: ${props => chooseWidth(props.layout)}
+  max-width: ${props => chooseWidth(props.layout)}
+  width: 100%;
   margin: auto;
   ${props => pMedia.sm`
-    width: 100%;
+    max-width: 100%;
     padding: ${chooseMobilePadding(props.layout)}
     margin: 0px;
   `}

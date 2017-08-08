@@ -6,7 +6,7 @@ import Embed from "./embed"
 import ImageCollection from "./image_collection"
 import ImagesetPreview from "./imageset_preview"
 import SectionContainer from "./section_container"
-import Text from "./text"
+import TextContainer from "./text_container"
 import Video from "./video"
 
 interface SectionsProps {
@@ -34,10 +34,11 @@ const Sections: React.SFC<SectionsProps> = props => {
 function renderSections(article) {
   const sections = article.sections
   const renderedSections = sections.map((section, i) => {
-    const child = getSection(section)
+    const child = getSection(section, article.layout)
+    const layout = section.body ? findBlockquote(section.body, article.layout) : section.layout
     if (child) {
       return (
-        <SectionContainer key={i} layout={section.layout}>
+        <SectionContainer key={i} layout={layout}>
           {child}
         </SectionContainer>
       )
@@ -46,13 +47,13 @@ function renderSections(article) {
   return renderedSections
 }
 
-function getSection(section) {
+function getSection(section, layout) {
   const sections = {
     image_collection: <ImageCollection images={section.images} targetHeight={500} gutter={10} />,
     image_set: <ImagesetPreview section={section} />,
     video: <Video section={section} />,
     embed: <Embed section={section} />,
-    text: <Text dangerouslySetInnerHTML={{ __html: section.body }} />,
+    text: <TextContainer html={section.body} layout={layout} />,
     default: false,
   }
   return sections[section.type] || sections["default"]
@@ -65,6 +66,7 @@ function renderAuthors(authors) {
     return false
   }
 }
+
 const chooseMargin = layout => {
   if (layout === "standard") {
     return "60px 0 0 0;"
@@ -72,6 +74,15 @@ const chooseMargin = layout => {
     return "80px auto 0 auto;"
   }
 }
+
+function findBlockquote(html, articleLayout) {
+  if (html.includes("<blockquote>")) {
+    return articleLayout === "feature" ? "blockquote" : "overflow_fillwidth"
+  } else {
+    return false
+  }
+}
+
 const Div: StyledFunction<StyledSectionsProps> = styled.div
 
 const StyledSections = Div`

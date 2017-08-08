@@ -29,7 +29,7 @@ const StandardHeaderContainer = styled.div`
 
 const Vertical = styled.div`
   ${Fonts.unica("s19", "medium")}
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s14", "medium")}
   `}
 `

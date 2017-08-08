@@ -63,7 +63,7 @@ function renderImages(images, dimensions, gutter, width) {
 const ImageCollectionContainer = styled.div`
   display: flex;
   width: 100%;
-  ${pMedia.sm`
+  ${pMedia.xs`
     flex-direction: column;
   `}
 `

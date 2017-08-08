@@ -12,7 +12,7 @@ const div: StyledFunction<FillwidthItemProps & React.HTMLProps<HTMLDivElement>> 
 export default div`
   margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
   width: ${props => (props.width ? props.width + "px" : "100%")};
-  ${pMedia.sm`
+  ${pMedia.xs`
     margin-bottom: 10px;
   `}
 `
