@@ -12,7 +12,7 @@
     "start:dist": "npm run compile && node index.js ./dist",
     "test": "node verify-node-version.js && jest",
     "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets ",
-    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook": "NODE_ENV=production storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",

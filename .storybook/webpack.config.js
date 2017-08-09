@@ -11,14 +11,14 @@ const { CheckerPlugin } = require("awesome-typescript-loader")
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
  */
-const { METAPHYSICS_ENDPOINT, NODE_ENV } = env.config().parsed
+const { METAPHYSICS_ENDPOINT } = env.config().parsed
 const sharifyPath = sharify({ METAPHYSICS_ENDPOINT })
 
 /**
  * Only use HMR plugin in dev mode
  */
 let plugins = [new CheckerPlugin()]
-if (NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
