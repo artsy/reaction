@@ -9,20 +9,20 @@ module.exports = () => {
     plugins: [
       new webpack.DefinePlugin({
         "process.env": {
-          "NODE_ENV": JSON.stringify("production"),
+          NODE_ENV: JSON.stringify("production"),
         },
       }),
       new webpack.optimize.UglifyJsPlugin({
         beautify: false,
         comments: false,
         compress: {
-          warnings: false
+          warnings: false,
         },
         mangle: {
-          keep_fnames: true
+          keep_fnames: true,
         },
         sourceMap: true,
-      })
+      }),
     ],
   })
 }
