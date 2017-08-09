@@ -11,3 +11,5 @@ assets/reaction-force.js
 reaction-force.js
 reaction-force.js.map
 dist
+yarn-error.log
+npm-debug.log

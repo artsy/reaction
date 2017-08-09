@@ -2,7 +2,6 @@ const env = require("dotenv")
 const fs = require("fs")
 const path = require("path")
 const sharify = require("./sharify")
-const _ = require("lodash")
 
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
