@@ -11,24 +11,18 @@ module.exports = () => {
     return rule.use && rule.use.find(entry => entry.loader === "awesome-typescript-loader")
   })
 
-  return webpackMerge.smart({
-    devtool: "inline-source-map",
-    entry: {
-      "login": [
-        "webpack-hot-middleware/client",
-      ],
-      "inquiries": [
-        "webpack-hot-middleware/client"
-      ]
+  return webpackMerge.smart(
+    {
+      devtool: "inline-source-map",
+      entry: {
+        login: ["webpack-hot-middleware/client"],
+        inquiries: ["webpack-hot-middleware/client"],
+      },
+      module: {
+        rules: [Object.assign({}, tsLoader, { use: ["react-hot-loader"] })],
+      },
+      plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()],
     },
-    module: {
-      rules: [
-        Object.assign({}, tsLoader, { use: ["react-hot-loader"] }),
-      ],
-    },
-    plugins: [
-      new CheckerPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-    ],
-  }, base)
+    base
+  )
 }
