@@ -2,16 +2,16 @@ import React from "react"
 import Text from "./text"
 
 interface TextContainerProps extends React.HTMLProps<HTMLDivElement> {
-  layout?: string
+  layout: "classic" | "feature" | "standard"
+  postscript?: boolean
   html?: string
 }
 
 const TextContainer: React.SFC<TextContainerProps> = props => {
-  const { html, layout } = props
-  const formattedText = <div dangerouslySetInnerHTML={{ __html: html }} />
-  const child = html ? formattedText : props.children
+  const { html, layout, postscript } = props
+  const child = html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : props.children
   return (
-    <Text layout={layout}>
+    <Text layout={layout} postscript={postscript}>
       {child}
     </Text>
   )

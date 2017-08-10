@@ -7,21 +7,21 @@ import TextContainer from "../sections/text_container"
 storiesOf("Publishing/Text", module)
   .add("Classic", () => {
     return (
-      <div style={{ width: 580, margin: "0 auto" }}>
+      <div style={{ maxWidth: 580, margin: "0 auto" }}>
         <TextContainer layout="classic" html={Text.classic} />
       </div>
     )
   })
   .add("Feature", () => {
     return (
-      <div style={{ width: 680, margin: "0 auto" }}>
+      <div style={{ maxWidth: 680, margin: "0 auto" }}>
         <TextContainer layout="feature" html={Text.feature} />
       </div>
     )
   })
   .add("Standard", () => {
     return (
-      <div style={{ width: 680, margin: "0 auto" }}>
+      <div style={{ maxWidth: 680, margin: "0 auto" }}>
         <TextContainer layout="standard" html={Text.standard} />
       </div>
     )

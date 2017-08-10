@@ -103,7 +103,7 @@ const textSizesForAvantGarde = {
   },
   s13: {
     size: "13px",
-    height: "1.1em",
+    height: "1.65em",
   },
 }
 
@@ -123,6 +123,7 @@ const avantgarde = size => {
   const sizeStyles = css`
     font-size: ${textSizesForAvantGarde[size].size};
     line-height: ${textSizesForAvantGarde[size].height};
+    letter-spacing: 1px;
   `
   return style.concat(sizeStyles)
 }

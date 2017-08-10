@@ -13,6 +13,7 @@ interface SectionsProps {
   article: {
     layout: string
     authors?: any
+    postscript?: string
   }
 }
 
@@ -26,6 +27,7 @@ const Sections: React.SFC<SectionsProps> = props => {
     <StyledSections layout={props.article.layout}>
       {header}
       {renderSections(props.article)}
+      {renderPostScript(props.article)}
       {renderAuthors(props.article.authors)}
     </StyledSections>
   )
@@ -64,6 +66,20 @@ function renderAuthors(authors) {
     return <SectionContainer><Authors authors={authors} /></SectionContainer>
   } else {
     return false
+  }
+}
+
+function renderPostScript(article) {
+  if (article.postscript) {
+    return (
+      <SectionContainer>
+        <TextContainer
+          html={article.postscript}
+          layout={article.layout}
+          postscript={article.postscript ? true : false}
+        />
+      </SectionContainer>
+    )
   }
 }
 
