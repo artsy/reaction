@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -16,8 +16,8 @@
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
     "test": "node verify-node-version.js && jest",
-    "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets",
-    "deploy-storybook": "storybook-to-ghpages",
+    "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets ",
+    "deploy-storybook": "NODE_ENV=production storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",

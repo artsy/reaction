@@ -14,6 +14,14 @@ const { CheckerPlugin } = require("awesome-typescript-loader")
 const { METAPHYSICS_ENDPOINT } = env.config().parsed
 const sharifyPath = sharify({ METAPHYSICS_ENDPOINT })
 
+/**
+ * Only use HMR plugin in dev mode
+ */
+let plugins = [new CheckerPlugin()]
+if (process.env.NODE_ENV === "development") {
+  plugins.push(new webpack.HotModuleReplacementPlugin())
+}
+
 // A mix of  the base from Emission's webpack setup, and the simple config for
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
@@ -44,5 +52,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()],
+  plugins: plugins,
 }
