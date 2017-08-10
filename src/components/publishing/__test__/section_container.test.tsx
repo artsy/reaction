@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 import SectionContainer from "../sections/section_container"
-import Text from "../sections/text"
+import TextContainer from "../sections/text_container"
 
 it("renders overflow_fillwidth properly", () => {
   const section = {
@@ -11,7 +11,7 @@ it("renders overflow_fillwidth properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} layout="standard" />
+        <TextContainer html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()
@@ -26,7 +26,7 @@ it("renders fillwidth properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} layout="standard" />
+        <TextContainer html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()
@@ -41,7 +41,7 @@ it("renders column_width properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} layout="standard" />
+        <TextContainer html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()

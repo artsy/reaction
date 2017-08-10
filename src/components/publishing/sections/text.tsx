@@ -16,18 +16,11 @@ const Text = div`
   a {
     color: black;
     text-decoration: none;
-    display: inline-block;
     position: relative;
-  }
-  a:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    height: 1em;
-    width: 100%;
-    border-bottom: 1px solid #333;
-    margin-top: 2px;
+    background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+    background-size: 1.25px 3px;
+    background-repeat: repeat-x;
+    background-position: bottom;
   }
   p, ul, ol {
     ${props => (props.layout === "classic" ? Fonts.garamond("s20") : Fonts.garamond("s23"))};
@@ -81,7 +74,8 @@ const Text = div`
     }
   }
   blockquote {
-    ${Fonts.unica("s69")};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s40") : Fonts.unica("s69"))};
+    text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
     padding-top: 46px;
     padding-bottom: 46px;
@@ -105,10 +99,10 @@ const Text = div`
     margin-left: 15px;
   }
   .artist-follow {
-    border: none;
     vertical-align: middle;
     margin-left: 10px;
     cursor: pointer;
+    background: none transparent;
     &:before {
       font-family: "artsy-icons";
       content: "\ue629";
@@ -120,27 +114,19 @@ const Text = div`
       content: "Follow";
       ${Fonts.garamond("s17")};
       text-transform: none;
-      letter-spacing: 0px;
-      border: none;
-      position: relative;
-      display: inline;
     }
   }
-  ${props => pMedia.lg`
-    blockquote {
-      max-width: calc(100% - 40px);
-      margin: auto;
-    }
-  `}
   ${props => pMedia.md`
     max-width: calc(100% - 40px);
     margin: 0 auto;
-    blockquote {
-      max-width: 100%;
-    }
   `}
   ${props => pMedia.sm`
     max-width: 100%;
+  `}
+  ${props => pMedia.xs`
+    p, ul, ol {
+      ${Fonts.garamond("s19")};
+    }
   `}
 `
 export default Text

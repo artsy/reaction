@@ -15,7 +15,7 @@ const chooseWidth = layout => {
     } else if (layout === "fillwidth") {
       return "100%;"
     } else if (layout === "blockquote") {
-      return "940px;"
+      return "900px;"
     }
   }
   return "680px;"
@@ -23,7 +23,7 @@ const chooseWidth = layout => {
 
 const chooseMobilePadding = layout => {
   if (layout) {
-    if (layout === "overflow_fillwidth") {
+    if (layout === "overflow_fillwidth" || layout === "blockquote") {
       return "20px;"
     } else if (layout === "fillwidth") {
       return "0px;"
