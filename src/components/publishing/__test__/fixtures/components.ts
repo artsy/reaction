@@ -233,7 +233,7 @@ const classicText = textElements[0].concat(textElements[2])
 const standardText = classicText.concat(textElements[3])
 const featureText = textElements[1].concat(standardText)
 
-export const Text = {
+export const SectionText = {
   classic: classicText.join(""),
   feature: featureText.join(""),
   standard: standardText.join(""),

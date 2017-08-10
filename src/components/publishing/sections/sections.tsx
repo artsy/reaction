@@ -6,7 +6,7 @@ import Embed from "./embed"
 import ImageCollection from "./image_collection"
 import ImagesetPreview from "./imageset_preview"
 import SectionContainer from "./section_container"
-import TextContainer from "./text_container"
+import Text from "./text"
 import Video from "./video"
 
 interface SectionsProps {
@@ -55,7 +55,7 @@ function getSection(section, layout) {
     image_set: <ImagesetPreview section={section} />,
     video: <Video section={section} />,
     embed: <Embed section={section} />,
-    text: <TextContainer html={section.body} layout={layout} />,
+    text: <Text html={section.body} layout={layout} />,
     default: false,
   }
   return sections[section.type] || sections["default"]
@@ -73,11 +73,7 @@ function renderPostScript(article) {
   if (article.postscript) {
     return (
       <SectionContainer>
-        <TextContainer
-          html={article.postscript}
-          layout={article.layout}
-          postscript={article.postscript ? true : false}
-        />
+        <Text html={article.postscript} layout={article.layout} postscript={article.postscript ? true : false} />
       </SectionContainer>
     )
   }

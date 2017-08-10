@@ -1,20 +1,20 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { Text } from "./fixtures/components"
+import { SectionText } from "./fixtures/components"
 
-import TextContainer from "../sections/text_container"
+import Text from "../sections/text"
 
 it("renders classic text properly", () => {
-  const text = renderer.create(<TextContainer html={Text.classic} layout="classic" />).toJSON()
+  const text = renderer.create(<Text html={SectionText.classic} layout="classic" />).toJSON()
   expect(text).toMatchSnapshot()
 })
 
 it("renders feature text properly", () => {
-  const text = renderer.create(<TextContainer html={Text.feature} layout="feature" />).toJSON()
+  const text = renderer.create(<Text html={SectionText.feature} layout="feature" />).toJSON()
   expect(text).toMatchSnapshot()
 })
 
 it("renders standard text properly", () => {
-  const text = renderer.create(<TextContainer html={Text.standard} layout="standard" />).toJSON()
+  const text = renderer.create(<Text html={SectionText.standard} layout="standard" />).toJSON()
   expect(text).toMatchSnapshot()
 })

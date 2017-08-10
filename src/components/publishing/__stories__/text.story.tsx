@@ -1,28 +1,28 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { Text } from "../__test__/fixtures/components"
-import TextContainer from "../sections/text_container"
+import { SectionText } from "../__test__/fixtures/components"
+import Text from "../sections/text"
 
 storiesOf("Publishing/Text", module)
   .add("Classic", () => {
     return (
       <div style={{ maxWidth: 580, margin: "0 auto" }}>
-        <TextContainer layout="classic" html={Text.classic} />
+        <Text layout="classic" html={SectionText.classic} />
       </div>
     )
   })
   .add("Feature", () => {
     return (
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
-        <TextContainer layout="feature" html={Text.feature} />
+        <Text layout="feature" html={SectionText.feature} />
       </div>
     )
   })
   .add("Standard", () => {
     return (
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
-        <TextContainer layout="standard" html={Text.standard} />
+        <Text layout="standard" html={SectionText.standard} />
       </div>
     )
   })

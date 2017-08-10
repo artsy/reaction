@@ -7,7 +7,7 @@ import Image from "./sections/image"
 import ImageCollection from "./sections/image_collection"
 import ImageSetPreview from "./sections/imageset_preview"
 import ImageSetPreviewClassic from "./sections/imageset_preview_classic"
-import TextContainer from "./sections/text_container"
+import Text from "./sections/text"
 import Video from "./sections/video"
 
 export default {
@@ -20,6 +20,6 @@ export default {
   ImageCollection,
   ImageSetPreview,
   ImageSetPreviewClassic,
-  TextContainer,
+  Text,
   Video,
 }
