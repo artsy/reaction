@@ -2,7 +2,7 @@
 
 exports[`AuthorDate renders a single author 1`] = `
 <div
-  className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+  className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
 >
   <div
     className="sc-bdVaJa etviRx"
@@ -20,7 +20,7 @@ exports[`AuthorDate renders a single author 1`] = `
 
 exports[`AuthorDate renders multiple authors 1`] = `
 <div
-  className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+  className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
 >
   <div
     className="sc-bdVaJa etviRx"
@@ -38,20 +38,20 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-m16dzg-0 bDDMIy"
+  className="file__StandardHeaderContainer-y0wbm4-0 hhbyEH"
 >
   <div
-    className="file__Vertical-m16dzg-1 fAusxb"
+    className="file__Vertical-y0wbm4-1 hrnegx"
   >
     Art Market
   </div>
   <div
-    className="file__StandardTitle-uzfvbx-0 cMPyNX"
+    className="file__StandardTitle-s5e9vll-0 iRmOMf"
   >
     New York's Next Art District
   </div>
   <div
-    className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+    className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
   >
     <div
       className="sc-bdVaJa etviRx"
@@ -70,7 +70,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
-  className="sc-bZQynM qDqSM"
+  className="sc-bZQynM kCQbJ"
   data-type="fullscreen"
 >
   <div>
@@ -89,25 +89,25 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-s1tpzehh-1 kksYII"
+        className="file__Vertical-lgiuiy-1 ftamvt"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-s1tpzehh-5 fPucUF"
+        className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
         >
           <div
             className="sc-bdVaJa lfBMjK"
@@ -129,7 +129,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM qDqSM"
+  className="sc-bZQynM kCQbJ"
   data-type="split"
 >
   <div
@@ -139,12 +139,12 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-s1tpzehh-1 kksYII"
+        className="file__Vertical-lgiuiy-1 ftamvt"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -153,15 +153,15 @@ exports[`feature renders feature split header properly 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-s1tpzehh-5 fPucUF"
+        className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
         >
           <div
             className="sc-bdVaJa etviRx"
@@ -183,7 +183,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM qDqSM"
+  className="sc-bZQynM kCQbJ"
   data-type="text"
 >
   <div
@@ -193,25 +193,25 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-s1tpzehh-1 kksYII"
+        className="file__Vertical-lgiuiy-1 ftamvt"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-uzfvbx-1 eLiyNe"
+        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-s1tpzehh-5 fPucUF"
+        className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-uzfvbx-2 hpNUgQ"
+          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s1hpxbyp-0 jnaeHh"
+          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
         >
           <div
             className="sc-bdVaJa etviRx"
@@ -228,7 +228,7 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-s1tpzehh-3 iwSWJj"
+      className="file__Image-lgiuiy-3 ddMYNZ"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>

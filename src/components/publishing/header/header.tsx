@@ -36,7 +36,7 @@ const Header: React.SFC<HeaderProps> = props => {
 const StandardTitle = styled.div`
   ${Fonts.garamond("s50")}
   margin-bottom: 60px;
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.garamond("s34")}
   `}
 `
@@ -46,13 +46,13 @@ const FeatureTitle = styled.div`
   ${pMedia.md`
     ${Fonts.unica("s80")}
   `}
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s45")}
   `}
 `
 const Deck = styled.div`
   max-width: 460px;
-  ${pMedia.sm`
+  ${pMedia.xs`
     margin-bottom: 28px;
     ${Fonts.unica("s16", "medium")}
   `}

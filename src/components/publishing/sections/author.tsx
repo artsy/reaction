@@ -41,7 +41,7 @@ const ProfileImage = Div`
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
   margin-right: 10px;
-  ${pMedia.sm`
+  ${pMedia.xs`
     min-width: 40px;
     min-height: 40px;
   `}
@@ -54,7 +54,7 @@ const AuthorContainer = styled.div`
 const AuthorInfo = styled.div`
   display: block;
   ${Fonts.garamond("s23")}
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.garamond("s17")}
   `}
   a {
@@ -73,7 +73,7 @@ const TwitterHandle = styled.a`
     vertical-align: middle;
     margin: 0px;
   }
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
   `}
 `

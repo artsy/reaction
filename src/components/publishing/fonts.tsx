@@ -10,9 +10,21 @@ const textSizesForGaramond = {
     size: "17px",
     height: "1.1em",
   },
+  s19: {
+    size: "19px",
+    height: "1.5em",
+  },
+  s20: {
+    size: "20px",
+    height: "27px",
+  },
   s23: {
     size: "23px",
     height: "1.5em",
+  },
+  s28: {
+    size: "28px",
+    height: "1.2em",
   },
   s34: {
     size: "34px",
@@ -95,7 +107,7 @@ const textSizesForAvantGarde = {
   },
   s13: {
     size: "13px",
-    height: "1.1em",
+    height: "1.65em",
   },
 }
 
@@ -115,6 +127,7 @@ const avantgarde = size => {
   const sizeStyles = css`
     font-size: ${textSizesForAvantGarde[size].size};
     line-height: ${textSizesForAvantGarde[size].height};
+    letter-spacing: 1px;
   `
   return style.concat(sizeStyles)
 }

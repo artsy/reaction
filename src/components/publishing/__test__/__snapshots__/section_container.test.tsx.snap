@@ -2,45 +2,54 @@
 
 exports[`renders column_width properly 1`] = `
 <div
-  className="sc-bdVaJa kbVsCx"
+  className="sc-bdVaJa jXBWHo"
 >
   <div
-    className="file__Text-ougsqy-0 eLLYuL"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<p>Hello, world!</p>",
+    className="sc-bwzfXH jTXFN"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;
 
 exports[`renders fillwidth properly 1`] = `
 <div
-  className="sc-bdVaJa eMrCRa"
+  className="sc-bdVaJa fCEylI"
 >
   <div
-    className="file__Text-ougsqy-0 eLLYuL"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<p>Hello, world!</p>",
+    className="sc-bwzfXH jTXFN"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;
 
 exports[`renders overflow_fillwidth properly 1`] = `
 <div
-  className="sc-bdVaJa biUCak"
+  className="sc-bdVaJa bSlqNG"
 >
   <div
-    className="file__Text-ougsqy-0 eLLYuL"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<p>Hello, world!</p>",
+    className="sc-bwzfXH jTXFN"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;

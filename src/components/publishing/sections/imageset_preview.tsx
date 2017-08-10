@@ -52,7 +52,7 @@ const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
   margin-bottom: 8px;
   line-height: 1.1em;
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s16", "medium")}
   `}
 `
@@ -61,14 +61,14 @@ const SubTitle = styled.div`
 `
 const SubTitlePrompt = styled.div`
   ${Fonts.unica("s14", "medium")}
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
   `}
 `
 const SubTitleCount = styled.div`
   ${Fonts.unica("s14")}
   margin-left: 20px;
-  ${pMedia.sm`
+  ${pMedia.xs`
     ${Fonts.unica("s12")}
   `}
 `
@@ -80,7 +80,7 @@ const IconContainer = styled.div`
   > svg {
     height: 98%;
   }
-  ${pMedia.sm`  
+  ${pMedia.xs`  
     display: none;
   `}
 `

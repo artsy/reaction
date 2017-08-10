@@ -11,7 +11,7 @@ it("renders overflow_fillwidth properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} />
+        <Text html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()
@@ -26,7 +26,7 @@ it("renders fillwidth properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} />
+        <Text html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()
@@ -41,7 +41,7 @@ it("renders column_width properly", () => {
   const sectionContainer = renderer
     .create(
       <SectionContainer layout={section.layout}>
-        <Text dangerouslySetInnerHTML={{ __html: section.body }} />
+        <Text html={section.body} layout="standard" />
       </SectionContainer>
     )
     .toJSON()

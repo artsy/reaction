@@ -21,7 +21,7 @@ const iframe: StyledFunction<FrameProps> = styled.iframe
 const IFrame = iframe`
   width: 100%;
   height: ${props => props.height + "px"};
-  ${props => pMedia.sm`
+  ${props => pMedia.xs`
     height: ${props.mobileHeight}px;
   `}
 `

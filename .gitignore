@@ -11,5 +11,6 @@ assets/reaction-force.js
 reaction-force.js
 reaction-force.js.map
 dist
+.vscode/cSpell.json
 yarn-error.log
 npm-debug.log

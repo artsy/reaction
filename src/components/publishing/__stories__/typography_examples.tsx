@@ -14,6 +14,9 @@ function Typography() {
       <GaramondS23>
         Garamond s23: 23px / 1.5em
       </GaramondS23>
+      <GaramondS19>
+        Garamond s19: 19px / 1.1em
+      </GaramondS19>
       <GaramondS17>
         Garamond s17: 17px / 1.1em
       </GaramondS17>
@@ -23,7 +26,7 @@ function Typography() {
       <hr />
       <br />
       <AvantGardeS13>
-        Avant Garde s13: 13px / 1.1em
+        Avant Garde s13: 13px / 1.65em
       </AvantGardeS13>
       <AvantGardeS11>
         Avant Garde s11: 11px / 1.1em
@@ -67,6 +70,10 @@ const GaramondS15 = styled.div`
 `
 const GaramondS17 = styled.div`
   ${Fonts.garamond("s17")}
+  margin-bottom: 20px;
+`
+const GaramondS19 = styled.div`
+  ${Fonts.garamond("s19")}
   margin-bottom: 20px;
 `
 const GaramondS23 = styled.div`

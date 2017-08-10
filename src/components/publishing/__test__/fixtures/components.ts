@@ -199,3 +199,42 @@ export const Videos = [
     url: "https://vimeo.com/191988155",
   },
 ]
+
+const textElements = [
+  // classic elements
+  [
+    "<p>Rines is a part of a recent migration that has galleries gravitating to the <a href='https://www.artsy.net/'>Lower East Side and Chinatown</a>. The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:</p>",
+    "<ul><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new <span style='text-decoration: line-through;'>Foxy Production</span></li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ul>",
+    "<p>And <em>not a stone’s throw away</em> are the southern bounds of the Lower East Side, where <strong>hundreds</strong> of more galleries gather.</p>",
+    "<blockquote>Hardly a week goes by without murmurings that yet another gallery is opening</blockquote>",
+    "<h3><strong>Galleries Section, Booth 10221</strong></h3><h2>neugerriemschneider</h2>",
+    "<h3><em>With works by</em> Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White</h3>",
+  ],
+  // feature elements
+  [
+    "<h1>Standard Header</h1>",
+    "<p><span class='content-start'>R</span>ines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building. The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:</p>",
+  ],
+  // classic close
+  [
+    "<p>The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.</p>",
+    "<ol><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new Foxy Production</li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ol>",
+    "<p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p>",
+    "<h2><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></h2>",
+    "<p><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></p>",
+  ],
+  // standard & feature close
+  [
+    "<p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.<span class='content-end'></span></p>",
+  ],
+]
+
+const classicText = textElements[0].concat(textElements[2])
+const standardText = classicText.concat(textElements[3])
+const featureText = textElements[1].concat(standardText)
+
+export const SectionText = {
+  classic: classicText.join(""),
+  feature: featureText.join(""),
+  standard: standardText.join(""),
+}

@@ -1,8 +1,19 @@
-import styled from "styled-components"
-import Fonts from "../fonts"
+import React from "react"
+import StyledText from "./styled_text"
 
-const Text = styled.div`
-  ${Fonts.garamond("s23")}
-`
+interface TextProps extends React.HTMLProps<HTMLDivElement> {
+  layout: "classic" | "feature" | "standard"
+  postscript?: boolean
+  html?: string
+}
 
+const Text: React.SFC<TextProps> = props => {
+  const { html, layout, postscript } = props
+  const child = html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : props.children
+  return (
+    <StyledText layout={layout} postscript={postscript}>
+      {child}
+    </StyledText>
+  )
+}
 export default Text

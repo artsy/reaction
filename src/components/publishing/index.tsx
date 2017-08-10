@@ -5,8 +5,9 @@ import Authors from "./sections/authors"
 import Embed from "./sections/embed"
 import Image from "./sections/image"
 import ImageCollection from "./sections/image_collection"
-import ImagesetPreview from "./sections/imageset_preview"
-import ImagesetPreviewClassic from "./sections/imageset_preview_classic"
+import ImageSetPreview from "./sections/imageset_preview"
+import ImageSetPreviewClassic from "./sections/imageset_preview_classic"
+import Text from "./sections/text"
 import Video from "./sections/video"
 
 export default {
@@ -17,7 +18,8 @@ export default {
   Header,
   Image,
   ImageCollection,
-  ImagesetPreview,
-  ImagesetPreviewClassic,
+  ImageSetPreview,
+  ImageSetPreviewClassic,
+  Text,
   Video,
 }
