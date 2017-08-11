@@ -129,14 +129,14 @@ const StyledText = div`
       text-transform: none;
     }
   }
-  ${pMedia.md`
+  ${props => pMedia.md`
     max-width: calc(100% - 40px);
     margin: 0 auto;
   `}
-  ${pMedia.sm`
+  ${props => pMedia.sm`
     max-width: 100%;
   `}
-  ${pMedia.xs`
+  ${props => pMedia.xs`
     p, ul, ol {
       ${Fonts.garamond("s19")};
     }
@@ -144,17 +144,17 @@ const StyledText = div`
       ${Fonts.unica("s34")};
     }
     h2 {
-      ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s34"))};
+      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s34")};
     }
     h3 {
       strong {
-        ${props => (props.layout !== "classic" ? Fonts.unica("s16", "medium") : null)};
+        ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : null};
       }
-      ${props => (props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16"))};
-      line-height: ${props => (props.layout !== "classic" ? "1.5em;" : null)};
+      ${props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16")};
+      line-height: ${props.layout !== "classic" ? "1.5em;" : null};
     }
     blockquote {
-      ${props => getBlockquoteSize(props.layout, "sm")};
+      ${getBlockquoteSize(props.layout, "sm")};
     }
     .content-start {
       font-size: 55px;
