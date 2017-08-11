@@ -1,4 +1,5 @@
 import Article from "./article"
+import FeatureHeader from "./header/feature_header"
 import Header from "./header/header"
 import Artwork from "./sections/artwork"
 import Authors from "./sections/authors"
@@ -15,6 +16,7 @@ export default {
   Artwork,
   Authors,
   Embed,
+  FeatureHeader,
   Header,
   Image,
   ImageCollection,
