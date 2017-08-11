@@ -14,10 +14,6 @@ const textSizesForGaramond = {
     size: "19px",
     height: "1.5em",
   },
-  s20: {
-    size: "20px",
-    height: "27px",
-  },
   s23: {
     size: "23px",
     height: "1.5em",
@@ -57,6 +53,10 @@ const textSizesForUnica = {
     size: "19px",
     height: "1.5em",
   },
+  s34: {
+    size: "34px",
+    height: "1.1em",
+  },
   s40: {
     size: "40px",
     height: "1.1em",
@@ -65,8 +65,8 @@ const textSizesForUnica = {
     size: "45px",
     height: "1.2em",
   },
-  s69: {
-    size: "69px",
+  s65: {
+    size: "65px",
     height: "1em",
   },
   s80: {
@@ -103,7 +103,7 @@ const unicaFontFamily = family => {
 const textSizesForAvantGarde = {
   s11: {
     size: "11px",
-    height: "1.1em",
+    height: "1.65em",
   },
   s13: {
     size: "13px",

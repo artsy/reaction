@@ -4,18 +4,20 @@ import { pMedia } from "../../helpers"
 
 interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string
+  articleLayout?: "classic" | "standard" | "feature"
 }
 
 const Div: StyledFunction<SectionContainerProps> = styled.div
 
-const chooseWidth = layout => {
+const chooseWidth = (layout, articleLayout) => {
   if (layout) {
-    if (layout === "overflow_fillwidth") {
+    if (layout === "blockquote" && articleLayout !== "classic") {
+      const sectionWidth = articleLayout === "feature" ? "900px;" : "780px;"
+      return sectionWidth
+    } else if (layout === "overflow_fillwidth" || layout === "blockquote") {
       return "780px;"
     } else if (layout === "fillwidth") {
       return "100%;"
-    } else if (layout === "blockquote") {
-      return "900px;"
     }
   }
   return "680px;"
@@ -35,7 +37,7 @@ const chooseMobilePadding = layout => {
 const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
-  max-width: ${props => chooseWidth(props.layout)}
+  max-width: ${props => chooseWidth(props.layout, props.articleLayout)}
   width: 100%;
   margin: auto;
   ${props => pMedia.sm`

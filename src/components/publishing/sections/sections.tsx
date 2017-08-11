@@ -37,10 +37,9 @@ function renderSections(article) {
   const sections = article.sections
   const renderedSections = sections.map((section, i) => {
     const child = getSection(section, article.layout)
-    const layout = section.body ? findBlockquote(section.body, article.layout) : section.layout
     if (child) {
       return (
-        <SectionContainer key={i} layout={layout}>
+        <SectionContainer key={i} layout={section.layout} articleLayout={article.layout}>
           {child}
         </SectionContainer>
       )
@@ -84,14 +83,6 @@ const chooseMargin = layout => {
     return "60px 0 0 0;"
   } else if (layout === "feature") {
     return "80px auto 0 auto;"
-  }
-}
-
-function findBlockquote(html, articleLayout) {
-  if (html.includes("<blockquote>")) {
-    return articleLayout === "feature" ? "blockquote" : "overflow_fillwidth"
-  } else {
-    return false
   }
 }
 

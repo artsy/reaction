@@ -157,6 +157,7 @@ const Articles = [
       },
       {
         type: "text",
+        layout: "blockquote",
         body:
           "<blockquote>The fixed stars exhibit no regular arrangement, either in their magnitudes, distances, or positions.</blockquote>",
       },
@@ -408,6 +409,7 @@ const Articles = [
       },
       {
         type: "text",
+        layout: "blockquote",
         body:
           "<blockquote>Land exhibitions, make influential contacts, and gain valuable feedback about your work.</blockquote>",
       },

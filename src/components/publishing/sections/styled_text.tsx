@@ -10,6 +10,19 @@ interface StyledTextProps {
 
 const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
+function getBlockquoteSize(layout, size) {
+  let font
+  const desktop = size === "lg"
+  if (layout === "classic") {
+    font = desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
+  } else if (layout === "feature") {
+    font = desktop ? Fonts.unica("s65") : Fonts.unica("s40")
+  } else if (layout === "standard") {
+    font = desktop ? Fonts.garamond("s50") : Fonts.garamond("s40")
+  }
+  return font
+}
+
 const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : null)};
@@ -23,16 +36,23 @@ const StyledText = div`
     background-position: bottom;
   }
   p, ul, ol {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s20") : Fonts.garamond("s23"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
     padding-top: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
     padding-bottom: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
     margin: 0;
     font-style: ${props => (props.postscript ? "italic;" : "inherit;")};
   }
+  p:first-child {
+    padding-top: 0;
+  }
+  p:last-child {
+    padding-bottom: 0;
+  }
   ul, ol {
     padding-left: 1em;  
   }
   li {
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
     padding-top: .5em;
     padding-bottom: .5em;
   }
@@ -74,7 +94,7 @@ const StyledText = div`
     }
   }
   blockquote {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s40") : Fonts.unica("s69"))};
+    ${props => getBlockquoteSize(props.layout, "lg")};
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
     padding-top: 46px;
@@ -82,7 +102,7 @@ const StyledText = div`
     margin: 0;
   }
   .content-start {
-    ${Fonts.unica("s69", "medium")};
+    ${Fonts.unica("s65", "medium")};
     float: left;
     line-height: .5em;
     margin-right: 10px;
@@ -126,6 +146,28 @@ const StyledText = div`
   ${props => pMedia.xs`
     p, ul, ol {
       ${Fonts.garamond("s19")};
+    }
+    li {
+      ${Fonts.garamond("s19")};
+    }
+    h1 {
+      ${Fonts.unica("s34")};
+    }
+    h2 {
+      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s34")};
+    }
+    h3 {
+      strong {
+        ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : null};
+      }
+      ${props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16")};
+      line-height: ${props.layout !== "classic" ? "1.5em;" : null};
+    }
+    blockquote {
+      ${getBlockquoteSize(props.layout, "sm")};
+    }
+    .content-start {
+      font-size: 55px;
     }
   `}
 `

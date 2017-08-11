@@ -77,14 +77,14 @@ exports[`renders properly 1`] = `
         }
       >
         <div
-          className="file__Text-s10kesmc-1 iekAPY"
+          className="file__Text-s10kesmc-1 fJMjgT"
         >
           3
         </div>
       </div>
     </div>
     <div
-      className="imageset-preview__text file__Text-s10kesmc-1 iekAPY"
+      className="imageset-preview__text file__Text-s10kesmc-1 fJMjgT"
     >
       Enter Slideshow
     </div>
