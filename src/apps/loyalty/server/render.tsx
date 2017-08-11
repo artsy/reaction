@@ -30,7 +30,7 @@ export function renderTemplate({
   sharify,
   baseURL,
 }: RenderResult & TemplateOptions): string {
-  const fontsURL = "//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css"
+  const fontsURL = "//webfonts.artsy.net/all-webfonts.css"
   const segmentWriteKey = sharify.data.SEGMENT_WRITE_KEY
   /* tslint:disable:max-line-length */
   const segmentJS = `
