@@ -3,90 +3,90 @@
 exports[`renders properly 1`] = `
 <div>
   <div
-    className="file__GaramondS50-wqw867-5 fWKVfI"
+    className="file__GaramondS50-lc5mg1-5 eWGmhI"
   >
     Garamond s50: 50px / 1.1em
   </div>
   <div
-    className="file__GaramondS40-wqw867-4 bixUSK"
+    className="file__GaramondS40-lc5mg1-4 kePINr"
   >
     Garamond s40: 40px / 1.1em
   </div>
   <div
-    className="file__GaramondS23-wqw867-3 jZIeUY"
+    className="file__GaramondS23-lc5mg1-3 izbRqE"
   >
     Garamond s23: 23px / 1.5em
   </div>
   <div
-    className="file__GaramondS19-wqw867-2 fiADBi"
+    className="file__GaramondS19-lc5mg1-2 djJEez"
   >
     Garamond s19: 19px / 1.1em
   </div>
   <div
-    className="file__GaramondS17-wqw867-1 euUzWF"
+    className="file__GaramondS17-lc5mg1-1 edzjra"
   >
     Garamond s17: 17px / 1.1em
   </div>
   <div
-    className="file__GaramondS15-wqw867-0 kVFdRe"
+    className="file__GaramondS15-lc5mg1-0 PCrfR"
   >
     Garamond s15: 15px / 1.25em
   </div>
   <hr />
   <br />
   <div
-    className="file__AvantGardeS13-wqw867-7 fgBIdz"
+    className="file__AvantGardeS13-lc5mg1-7 lkxWmq"
   >
     Avant Garde s13: 13px / 1.65em
   </div>
   <div
-    className="file__AvantGardeS11-wqw867-6 hqBWgR"
+    className="file__AvantGardeS11-lc5mg1-6 eRoIvV"
   >
     Avant Garde s11: 11px / 1.1em
   </div>
   <hr />
   <div
-    className="file__UnicaS130-wqw867-16 dfprSv"
+    className="file__UnicaS130-lc5mg1-16 ftkiXa"
   >
     Unica s130: 130px / 1.1em
   </div>
   <div
-    className="file__UnicaS100-wqw867-15 gckTCc"
+    className="file__UnicaS100-lc5mg1-15 cHxPmY"
   >
     Unica s100: 100px / 1.1em
   </div>
   <div
-    className="file__UnicaS80-wqw867-14 fwwmMP"
+    className="file__UnicaS80-lc5mg1-14 kIrKka"
   >
     Unica s80: 80px / 1.1em
   </div>
   <div
-    className="file__UnicaS69-wqw867-13 hGnsvF"
+    className="file__UnicaS65-lc5mg1-13 jpBIcX"
   >
-    Unica s69: 69px / 1em
+    Unica s65: 65px / 1em
   </div>
   <div
-    className="file__UnicaS40-wqw867-12 gxxXok"
+    className="file__UnicaS40-lc5mg1-12 cxspdH"
   >
     Unica s40: 40px / 1.1em
   </div>
   <div
-    className="file__UnicaS19-wqw867-11 ksbeqJ"
+    className="file__UnicaS19-lc5mg1-11 iEhRoM"
   >
     Unica s19: 19px / 1.5em
   </div>
   <div
-    className="file__UnicaS16-wqw867-10 ipZhBJ"
+    className="file__UnicaS16-lc5mg1-10 cRZjbH"
   >
     Unica s16: 16px / 1.1em
   </div>
   <div
-    className="file__UnicaS14-wqw867-9 doHnmq"
+    className="file__UnicaS14-lc5mg1-9 clQEbz"
   >
     Unica s14: 14px / 1.1em
   </div>
   <div
-    className="file__UnicaS12-wqw867-8 irzTXL"
+    className="file__UnicaS12-lc5mg1-8 PcycP"
   >
     Unica s12: 12px / 1.1em
   </div>

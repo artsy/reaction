@@ -74,7 +74,7 @@ const StyledText = div`
     }
   }
   blockquote {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s40") : Fonts.unica("s69"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s40") : Fonts.unica("s65"))};
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
     padding-top: 46px;
@@ -82,7 +82,7 @@ const StyledText = div`
     margin: 0;
   }
   .content-start {
-    ${Fonts.unica("s69", "medium")};
+    ${Fonts.unica("s65", "medium")};
     float: left;
     line-height: .5em;
     margin-right: 10px;
