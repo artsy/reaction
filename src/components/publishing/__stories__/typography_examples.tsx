@@ -11,6 +11,12 @@ function Typography() {
       <GaramondS40>
         Garamond s40: 40px / 1.1em
       </GaramondS40>
+      <GaramondS34>
+        Garamond s34: 34px / 1.5em
+      </GaramondS34>
+      <GaramondS28>
+        Garamond s28: 28px / 1.5em
+      </GaramondS28>
       <GaramondS23>
         Garamond s23: 23px / 1.5em
       </GaramondS23>
@@ -29,7 +35,7 @@ function Typography() {
         Avant Garde s13: 13px / 1.65em
       </AvantGardeS13>
       <AvantGardeS11>
-        Avant Garde s11: 11px / 1.1em
+        Avant Garde s11: 11px / 1.65em
       </AvantGardeS11>
       <hr />
       <UnicaS130>
@@ -44,9 +50,15 @@ function Typography() {
       <UnicaS65>
         Unica s65: 65px / 1em
       </UnicaS65>
+      <UnicaS45>
+        Unica s45: 45px / 1.1em
+      </UnicaS45>
       <UnicaS40>
         Unica s40: 40px / 1.1em
       </UnicaS40>
+      <UnicaS34>
+        Unica s34: 34px / 1.1em
+      </UnicaS34>
       <UnicaS19>
         Unica s19: 19px / 1.5em
       </UnicaS19>
@@ -78,6 +90,14 @@ const GaramondS19 = styled.div`
 `
 const GaramondS23 = styled.div`
   ${Fonts.garamond("s23")}
+  margin-bottom: 20px;
+`
+const GaramondS28 = styled.div`
+  ${Fonts.garamond("s28")}
+  margin-bottom: 20px;
+`
+const GaramondS34 = styled.div`
+  ${Fonts.garamond("s34")}
   margin-bottom: 20px;
 `
 const GaramondS40 = styled.div`
@@ -114,8 +134,16 @@ const UnicaS19 = styled.div`
   ${Fonts.unica("s19")}
   margin-bottom: 20px;
 `
+const UnicaS34 = styled.div`
+  ${Fonts.unica("s34")}
+  margin-bottom: 20px;
+`
 const UnicaS40 = styled.div`
   ${Fonts.unica("s40")}
+  margin-bottom: 20px;
+`
+const UnicaS45 = styled.div`
+  ${Fonts.unica("s45")}
   margin-bottom: 20px;
 `
 const UnicaS65 = styled.div`

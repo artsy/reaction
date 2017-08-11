@@ -10,6 +10,19 @@ interface StyledTextProps {
 
 const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
+function getBlockquoteSize(layout, size) {
+  let font
+  const desktop = size === "lg"
+  if (layout === "classic") {
+    font = desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
+  } else if (layout === "feature") {
+    font = desktop ? Fonts.unica("s65") : Fonts.unica("s40")
+  } else if (layout === "standard") {
+    font = desktop ? Fonts.garamond("s50") : Fonts.garamond("s40")
+  }
+  return font
+}
+
 const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : null)};
@@ -23,7 +36,7 @@ const StyledText = div`
     background-position: bottom;
   }
   p, ul, ol {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s20") : Fonts.garamond("s23"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
     padding-top: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
     padding-bottom: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
     margin: 0;
@@ -74,7 +87,7 @@ const StyledText = div`
     }
   }
   blockquote {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s40") : Fonts.unica("s65"))};
+    ${props => getBlockquoteSize(props.layout, "lg")};
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
     padding-top: 46px;
@@ -116,16 +129,35 @@ const StyledText = div`
       text-transform: none;
     }
   }
-  ${props => pMedia.md`
+  ${pMedia.md`
     max-width: calc(100% - 40px);
     margin: 0 auto;
   `}
-  ${props => pMedia.sm`
+  ${pMedia.sm`
     max-width: 100%;
   `}
-  ${props => pMedia.xs`
+  ${pMedia.xs`
     p, ul, ol {
       ${Fonts.garamond("s19")};
+    }
+    h1 {
+      ${Fonts.unica("s34")};
+    }
+    h2 {
+      ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s34"))};
+    }
+    h3 {
+      strong {
+        ${props => (props.layout !== "classic" ? Fonts.unica("s16", "medium") : null)};
+      }
+      ${props => (props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16"))};
+      line-height: ${props => (props.layout !== "classic" ? "1.5em;" : null)};
+    }
+    blockquote {
+      ${props => getBlockquoteSize(props.layout, "sm")};
+    }
+    .content-start {
+      font-size: 55px;
     }
   `}
 `
