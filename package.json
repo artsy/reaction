@@ -6,17 +6,12 @@
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
-  "files": [
-    "dist",
-    "assets",
-    "data",
-    "docs"
-  ],
+  "files": ["dist", "assets", "data", "docs"],
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
     "test": "node verify-node-version.js && jest",
-    "storybook": "node verify-node-version.js && start-storybook -p 9001 -c .storybook -s ./assets ",
+    "storybook": "node verify-node-version.js && start-storybook -p 9001",
     "deploy-storybook": "NODE_ENV=production storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
@@ -135,17 +130,9 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "tslint --fix",
-      "npm run prettier-write --",
-      "git add"
-    ]
+    "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"]
   }
 }

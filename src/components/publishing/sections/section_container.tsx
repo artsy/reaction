@@ -38,6 +38,7 @@ const SectionContainer = Div`
   max-width: ${props => chooseWidth(props.layout)}
   width: 100%;
   margin: auto;
+  margin-bottom: 40px;
   ${props => pMedia.sm`
     max-width: 100%;
     padding: ${chooseMobilePadding(props.layout)}
