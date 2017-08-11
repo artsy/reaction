@@ -42,10 +42,17 @@ const StyledText = div`
     margin: 0;
     font-style: ${props => (props.postscript ? "italic;" : "inherit;")};
   }
+  p:first-child {
+    padding-top: 0;
+  }
+  p:last-child {
+    padding-bottom: 0;
+  }
   ul, ol {
     padding-left: 1em;  
   }
   li {
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
     padding-top: .5em;
     padding-bottom: .5em;
   }
@@ -138,6 +145,9 @@ const StyledText = div`
   `}
   ${props => pMedia.xs`
     p, ul, ol {
+      ${Fonts.garamond("s19")};
+    }
+    li {
       ${Fonts.garamond("s19")};
     }
     h1 {
