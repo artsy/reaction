@@ -25,7 +25,7 @@ const chooseMobilePadding = layout => {
   if (layout) {
     if (layout === "overflow_fillwidth" || layout === "blockquote") {
       return "20px;"
-    } else if (layout === "fillwidth") {
+    } else {
       return "0px;"
     }
   }

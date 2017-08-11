@@ -25,6 +25,11 @@ const StandardHeaderContainer = styled.div`
   max-width: 780px;
   width: 100%;
   margin-bottom: 60px;
+  box-sizing: border-box;
+  ${pMedia.xs`
+    padding: 20px;
+    margin-bottom: 0px;
+  `}
 `
 
 const Vertical = styled.div`

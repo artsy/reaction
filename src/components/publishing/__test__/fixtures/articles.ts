@@ -132,12 +132,7 @@ const Articles = [
   },
   {
     title: "New York's Next Art District",
-    contributing_authors: [
-      {
-        name: "Molly Gottschalk",
-        id: "12345",
-      },
-    ],
+    contributing_authors: [],
     published_at: "2017-05-19T13:09:18.567Z",
     layout: "standard",
     vertical: {

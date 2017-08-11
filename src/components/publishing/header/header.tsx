@@ -38,6 +38,7 @@ const StandardTitle = styled.div`
   margin-bottom: 60px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
+    margin-bottom: 50px;
   `}
 `
 const FeatureTitle = styled.div`
