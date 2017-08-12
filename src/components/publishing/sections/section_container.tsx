@@ -22,14 +22,11 @@ const chooseWidth = layout => {
 }
 
 const chooseMobilePadding = layout => {
-  if (layout) {
-    if (layout === "overflow_fillwidth" || layout === "blockquote") {
-      return "20px;"
-    } else {
-      return "0px;"
-    }
+  if (layout && layout !== "blockquote") {
+    return "0px;"
+  } else {
+    return "20px;"
   }
-  return "20px;"
 }
 
 const SectionContainer = Div`
