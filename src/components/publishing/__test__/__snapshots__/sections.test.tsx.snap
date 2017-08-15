@@ -5,26 +5,26 @@ exports[`renders properly 1`] = `
   className="sc-cSHVUG fguCbF"
 >
   <div
-    className="file__StandardHeaderContainer-y0wbm4-0 hhbyEH"
+    className="file__StandardHeaderContainer-s6asv4k-0 iMKhyV"
   >
     <div
-      className="file__Vertical-y0wbm4-1 hrnegx"
+      className="file__Vertical-s6asv4k-1 eUnUkA"
     >
       Art Market
     </div>
     <div
-      className="file__StandardTitle-s5e9vll-0 iRmOMf"
+      className="file__StandardTitle-mnum3w-0 bmosYJ"
     >
       New York's Next Art District
     </div>
     <div
-      className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+      className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
     >
       <div
         className="sc-bdVaJa etviRx"
       >
         By 
-        Molly Gottschalk
+        Artsy Editorial
       </div>
       <div
         className="sc-bdVaJa etviRx"
@@ -34,7 +34,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -49,7 +49,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -64,7 +64,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -79,7 +79,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -94,7 +94,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
@@ -113,7 +113,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -145,7 +145,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -177,7 +177,7 @@ exports[`renders properly 1`] = `
             width={220}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -198,7 +198,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -213,7 +213,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
@@ -232,7 +232,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -264,7 +264,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -296,7 +296,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -317,7 +317,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -332,7 +332,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
@@ -351,7 +351,7 @@ exports[`renders properly 1`] = `
             width="100%"
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -372,7 +372,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -387,7 +387,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <iframe
       className="sc-htoDjs dvnATU"
@@ -398,7 +398,7 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -413,7 +413,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cfJqMS"
+    className="sc-VigVT cOTMfu"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
@@ -432,7 +432,7 @@ exports[`renders properly 1`] = `
             width={216}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -464,7 +464,7 @@ exports[`renders properly 1`] = `
             width={219}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -496,7 +496,7 @@ exports[`renders properly 1`] = `
             width={222}
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -517,7 +517,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -532,7 +532,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT iLoIJ"
   >
     <div
       style={
@@ -598,7 +598,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"
@@ -613,7 +613,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT iLoIJ"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
@@ -632,7 +632,7 @@ exports[`renders properly 1`] = `
             width="100%"
           />
           <div
-            className="file__CaptionContainer-q52b23-0 ikvQHr"
+            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
               className="sc-iwsKbI bXyBRu"
@@ -653,7 +653,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT ewOrmI"
+    className="sc-VigVT hsERLX"
   >
     <div
       className="sc-jTzLTM eAXTIl"

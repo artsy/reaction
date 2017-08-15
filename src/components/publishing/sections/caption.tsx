@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import ViewFullscreen from "./view_fullscreen"
 
@@ -7,6 +8,9 @@ const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0 10px 0;
+  ${pMedia.xs`
+    padding: 0px 10px;
+  `}
 `
 
 interface FigcaptionProps {

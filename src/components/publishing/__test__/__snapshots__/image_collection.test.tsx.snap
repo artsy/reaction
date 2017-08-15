@@ -181,7 +181,7 @@ exports[`renders properly 1`] = `
         width={168}
       />
       <div
-        className="file__CaptionContainer-q52b23-0 ikvQHr"
+        className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
       >
         <div
           className="sc-bwzfXH gpZhql"
@@ -213,7 +213,7 @@ exports[`renders properly 1`] = `
         width={178}
       />
       <div
-        className="file__CaptionContainer-q52b23-0 ikvQHr"
+        className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
       >
         <div
           className="sc-bwzfXH gpZhql"

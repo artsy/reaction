@@ -2,7 +2,7 @@
 
 exports[`AuthorDate renders a single author 1`] = `
 <div
-  className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+  className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
 >
   <div
     className="sc-bdVaJa etviRx"
@@ -20,7 +20,7 @@ exports[`AuthorDate renders a single author 1`] = `
 
 exports[`AuthorDate renders multiple authors 1`] = `
 <div
-  className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+  className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
 >
   <div
     className="sc-bdVaJa etviRx"
@@ -38,26 +38,26 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-y0wbm4-0 hhbyEH"
+  className="file__StandardHeaderContainer-s6asv4k-0 iMKhyV"
 >
   <div
-    className="file__Vertical-y0wbm4-1 hrnegx"
+    className="file__Vertical-s6asv4k-1 eUnUkA"
   >
     Art Market
   </div>
   <div
-    className="file__StandardTitle-s5e9vll-0 iRmOMf"
+    className="file__StandardTitle-mnum3w-0 bmosYJ"
   >
     New York's Next Art District
   </div>
   <div
-    className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+    className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
   >
     <div
       className="sc-bdVaJa etviRx"
     >
       By 
-      Molly Gottschalk
+      Artsy Editorial
     </div>
     <div
       className="sc-bdVaJa etviRx"
@@ -94,7 +94,7 @@ exports[`feature renders feature full header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
+        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -102,12 +102,12 @@ exports[`feature renders feature full header properly 1`] = `
         className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
+          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
         >
           <div
             className="sc-bdVaJa lfBMjK"
@@ -144,7 +144,7 @@ exports[`feature renders feature split header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
+        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -156,12 +156,12 @@ exports[`feature renders feature split header properly 1`] = `
         className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
+          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
         >
           <div
             className="sc-bdVaJa etviRx"
@@ -198,7 +198,7 @@ exports[`feature renders feature text header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s5e9vll-1 hsfCOc"
+        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -206,12 +206,12 @@ exports[`feature renders feature text header properly 1`] = `
         className="file__SubHeader-lgiuiy-5 kUaTMN"
       >
         <div
-          className="feature__deck file__Deck-s5e9vll-2 hWchAf"
+          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-s47a8zl-0 cOjkfC"
+          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
         >
           <div
             className="sc-bdVaJa etviRx"

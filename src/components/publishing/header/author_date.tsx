@@ -15,7 +15,7 @@ interface AuthorDateProps {
 }
 
 const getAuthorByline = authors => {
-  if (authors) {
+  if (authors && authors.length > 0) {
     if (authors.length > 1) {
       const str = authors.reduce((prev, curr, i) => {
         let delim

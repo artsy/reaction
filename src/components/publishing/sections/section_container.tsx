@@ -24,14 +24,11 @@ const chooseWidth = (layout, articleLayout) => {
 }
 
 const chooseMobilePadding = layout => {
-  if (layout) {
-    if (layout === "overflow_fillwidth" || layout === "blockquote") {
-      return "20px;"
-    } else if (layout === "fillwidth") {
-      return "0px;"
-    }
+  if (layout && layout !== "blockquote") {
+    return "0px;"
+  } else {
+    return "20px;"
   }
-  return "20px;"
 }
 
 const SectionContainer = Div`
@@ -40,6 +37,7 @@ const SectionContainer = Div`
   max-width: ${props => chooseWidth(props.layout, props.articleLayout)}
   width: 100%;
   margin: auto;
+  margin-bottom: 40px;
   ${props => pMedia.sm`
     max-width: 100%;
     padding: ${chooseMobilePadding(props.layout)}

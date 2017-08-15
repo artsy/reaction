@@ -11,7 +11,7 @@ exports[`renders a long caption properly 1`] = `
     width="100%"
   />
   <div
-    className="file__CaptionContainer-q52b23-0 ikvQHr"
+    className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
   >
     <div
       className="sc-bdVaJa bGfehm"
@@ -41,7 +41,7 @@ exports[`renders properly 1`] = `
     width="100%"
   />
   <div
-    className="file__CaptionContainer-q52b23-0 ikvQHr"
+    className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
   >
     <div
       className="sc-bdVaJa bGfehm"
