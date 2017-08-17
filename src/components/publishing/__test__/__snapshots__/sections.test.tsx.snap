@@ -2,42 +2,13 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="sc-cSHVUG fguCbF"
+  className="sc-iwsKbI jSRwRI"
 >
   <div
-    className="file__StandardHeaderContainer-s6asv4k-0 iMKhyV"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="file__Vertical-s6asv4k-1 eUnUkA"
-    >
-      Art Market
-    </div>
-    <div
-      className="file__StandardTitle-mnum3w-0 bmosYJ"
-    >
-      New York's Next Art District
-    </div>
-    <div
-      className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
-    >
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        By 
-        Artsy Editorial
-      </div>
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        May 19, 2017 9:09 am
-      </div>
-    </div>
-  </div>
-  <div
-    className="sc-VigVT hsERLX"
-  >
-    <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -49,10 +20,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -64,10 +35,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT kBNKEJ"
+    className="sc-bZQynM eTntTt"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -79,10 +50,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -94,13 +65,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -116,7 +87,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
@@ -132,7 +103,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -148,7 +119,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
@@ -164,7 +135,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi fVfJvK"
+        className="sc-ifAKCX gpDZRR"
         width={220}
       >
         <div
@@ -180,7 +151,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
@@ -198,10 +169,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -213,13 +184,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -235,7 +206,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
@@ -251,7 +222,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -267,7 +238,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
@@ -283,7 +254,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi ggZiOW"
+        className="sc-ifAKCX eEBxGP"
         width={219}
       >
         <div
@@ -299,7 +270,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
@@ -317,10 +288,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -332,13 +303,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi hMmXQe"
+        className="sc-ifAKCX fhpsaR"
         width={undefined}
       >
         <div
@@ -354,7 +325,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
@@ -372,10 +343,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -387,10 +358,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <iframe
-      className="sc-htoDjs dvnATU"
+      className="sc-bwzfXH pWrUX"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -398,10 +369,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -413,13 +384,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi jcidDP"
+        className="sc-ifAKCX ithBPb"
         width={216}
       >
         <div
@@ -435,7 +406,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
@@ -451,7 +422,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -467,7 +438,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
@@ -483,7 +454,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi gWLTcl"
+        className="sc-ifAKCX ePHGZF"
         width={222}
       >
         <div
@@ -499,7 +470,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
@@ -517,10 +488,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -532,7 +503,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT iLoIJ"
+    className="sc-bZQynM cNwBGE"
   >
     <div
       style={
@@ -546,7 +517,7 @@ exports[`renders properly 1`] = `
         className="file__FullWrapper-s2b2o4l-0 ipUAzx"
       >
         <div
-          className="sc-gqjmRU nhnkd"
+          className="sc-EHOje cxcyQs"
         >
           <div
             className="file__Title-s2b2o4l-3 etSjRY"
@@ -598,10 +569,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -613,13 +584,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT iLoIJ"
+    className="sc-bZQynM cNwBGE"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi hMmXQe"
+        className="sc-ifAKCX fhpsaR"
         width={undefined}
       >
         <div
@@ -635,7 +606,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
@@ -653,10 +624,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
