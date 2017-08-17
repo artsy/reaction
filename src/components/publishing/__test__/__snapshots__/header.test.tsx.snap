@@ -70,11 +70,12 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 exports[`feature renders feature full header properly 1`] = `
 <div
-  className="sc-bZQynM kCQbJ"
+  className="sc-bZQynM rGTAj"
   data-type="fullscreen"
 >
   <div>
     <div
+      alt="What’s the Path to Winning an Art Prize?"
       className="sc-ifAKCX eaHLCC"
       src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
     />
@@ -89,7 +90,7 @@ exports[`feature renders feature full header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lgiuiy-1 ftamvt"
+        className="file__Vertical-g9b1n8-1 fWaBop"
       >
         Creativity
       </div>
@@ -99,7 +100,7 @@ exports[`feature renders feature full header properly 1`] = `
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-lgiuiy-5 kUaTMN"
+        className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
           className="feature__deck file__Deck-mnum3w-2 gkZTkM"
@@ -129,7 +130,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 <div
-  className="sc-bZQynM kCQbJ"
+  className="sc-bZQynM rGTAj"
   data-type="split"
 >
   <div
@@ -139,7 +140,7 @@ exports[`feature renders feature split header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lgiuiy-1 ftamvt"
+        className="file__Vertical-g9b1n8-1 fWaBop"
       >
         Creativity
       </div>
@@ -149,11 +150,12 @@ exports[`feature renders feature split header properly 1`] = `
         What’s the Path to Winning an Art Prize?
       </div>
       <div
+        alt="What’s the Path to Winning an Art Prize?"
         className="sc-ifAKCX eaHLCC"
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-lgiuiy-5 kUaTMN"
+        className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
           className="feature__deck file__Deck-mnum3w-2 gkZTkM"
@@ -183,7 +185,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 <div
-  className="sc-bZQynM kCQbJ"
+  className="sc-bZQynM rGTAj"
   data-type="text"
 >
   <div
@@ -193,7 +195,7 @@ exports[`feature renders feature text header properly 1`] = `
       className="sc-bxivhb jzEeHb"
     >
       <div
-        className="file__Vertical-lgiuiy-1 ftamvt"
+        className="file__Vertical-g9b1n8-1 fWaBop"
       >
         Creativity
       </div>
@@ -203,7 +205,7 @@ exports[`feature renders feature text header properly 1`] = `
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-lgiuiy-5 kUaTMN"
+        className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
           className="feature__deck file__Deck-mnum3w-2 gkZTkM"
@@ -228,7 +230,8 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <img
-      className="file__Image-lgiuiy-3 ddMYNZ"
+      alt="What’s the Path to Winning an Art Prize?"
+      className="file__Image-g9b1n8-3 hOWLWH"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>

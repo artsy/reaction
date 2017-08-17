@@ -63,6 +63,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
   renderImages(images) {
     const items = images.slice(0, 4).map((item, i) => {
       const src = item.image || item.url || ""
+      const alt = item.caption ? item.caption.replace(/<[^>]*>/g, "") : item.title || ""
       if (i < this.state.visibleImages) {
         return (
           <img
@@ -71,6 +72,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
             height={containerHeight}
             className="imageset-preview__image"
             style={{ marginRight: margin }}
+            alt={alt}
           />
         )
       }

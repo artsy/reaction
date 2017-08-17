@@ -3,6 +3,7 @@ import FeatureHeader from "./header/feature_header"
 import Header from "./header/header"
 import Artwork from "./sections/artwork"
 import Authors from "./sections/authors"
+import Caption from "./sections/caption"
 import Embed from "./sections/embed"
 import Image from "./sections/image"
 import ImageCollection from "./sections/image_collection"
@@ -16,6 +17,7 @@ export default {
   Artwork,
   Authors,
   Embed,
+  Caption,
   FeatureHeader,
   Header,
   Image,

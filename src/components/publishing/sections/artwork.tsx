@@ -19,7 +19,15 @@ interface ArtworkProps {
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
   const { artwork, linked, height, width } = props
-  const image = <BlockImage src={artwork.image} className="display-artwork__image" width={width} height={height} />
+  const image = (
+    <BlockImage
+      src={artwork.image}
+      className="display-artwork__image"
+      width={width}
+      height={height}
+      alt={artwork.title}
+    />
+  )
   if (linked) {
     return (
       <ArtworkImageLink href={"/artwork/" + artwork.slug}>

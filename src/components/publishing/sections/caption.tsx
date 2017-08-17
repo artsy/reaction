@@ -33,10 +33,12 @@ interface CaptionProps {
 
 const Caption: React.SFC<CaptionProps> = props => {
   const { layout, caption, viewFullscreen } = props
-
+  const child = caption ? <div dangerouslySetInnerHTML={{ __html: caption }} /> : props.children
   return (
     <CaptionContainer>
-      <Figcaption dangerouslySetInnerHTML={{ __html: caption }} layout={layout} />
+      <Figcaption layout={layout}>
+        {child}
+      </Figcaption>
       {viewFullscreen ? <ViewFullscreen /> : false}
     </CaptionContainer>
   )
