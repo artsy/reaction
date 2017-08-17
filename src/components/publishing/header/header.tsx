@@ -35,7 +35,7 @@ const Header: React.SFC<HeaderProps> = props => {
 
 const StandardTitle = styled.div`
   ${Fonts.garamond("s50")}
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
     margin-bottom: 50px;

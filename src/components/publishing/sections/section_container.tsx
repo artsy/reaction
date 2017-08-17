@@ -27,7 +27,7 @@ const chooseMobilePadding = layout => {
   if (layout && layout !== "blockquote") {
     return "0px;"
   } else {
-    return "20px;"
+    return "0 20px;"
   }
 }
 

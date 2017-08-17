@@ -21,9 +21,12 @@ const Article: React.SFC<ArticleProps> = props => {
     )
   } else {
     return (
-      <StandardLayout>
-        <Sections article={article} />
-      </StandardLayout>
+      <div>
+        <Header article={article} />
+        <StandardLayout>
+          <Sections article={article} />
+        </StandardLayout>
+      </div>
     )
   }
 }
