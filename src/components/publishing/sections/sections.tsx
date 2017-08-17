@@ -1,6 +1,5 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Header from "../header/header"
 import Authors from "./authors"
 import Embed from "./embed"
 import ImageCollection from "./image_collection"
@@ -22,10 +21,8 @@ interface StyledSectionsProps {
 }
 
 const Sections: React.SFC<SectionsProps> = props => {
-  const header = props.article.layout === "standard" ? <Header article={props.article} /> : false
   return (
     <StyledSections layout={props.article.layout}>
-      {header}
       {renderSections(props.article)}
       {renderPostScript(props.article)}
       {renderAuthors(props.article.authors)}
@@ -80,7 +77,7 @@ function renderPostScript(article) {
 
 const chooseMargin = layout => {
   if (layout === "standard") {
-    return "60px 0 0 0;"
+    return "0;"
   } else if (layout === "feature") {
     return "80px auto 0 auto;"
   }

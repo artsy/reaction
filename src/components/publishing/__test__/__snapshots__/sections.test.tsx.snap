@@ -2,42 +2,13 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="sc-cSHVUG fguCbF"
+  className="sc-iwsKbI jSRwRI"
 >
   <div
-    className="file__StandardHeaderContainer-s6asv4k-0 iMKhyV"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="file__Vertical-s6asv4k-1 eUnUkA"
-    >
-      Art Market
-    </div>
-    <div
-      className="file__StandardTitle-mnum3w-0 bmosYJ"
-    >
-      New York's Next Art District
-    </div>
-    <div
-      className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
-    >
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        By 
-        Artsy Editorial
-      </div>
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        May 19, 2017 9:09 am
-      </div>
-    </div>
-  </div>
-  <div
-    className="sc-VigVT hsERLX"
-  >
-    <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -49,10 +20,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -64,10 +35,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT kBNKEJ"
+    className="sc-bZQynM eTntTt"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -79,10 +50,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -94,13 +65,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -118,7 +89,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -137,7 +108,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -155,7 +126,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -174,7 +145,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi fVfJvK"
+        className="sc-ifAKCX gpDZRR"
         width={220}
       >
         <div
@@ -192,7 +163,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -213,10 +184,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -228,13 +199,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -252,7 +223,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -271,7 +242,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -289,7 +260,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -308,7 +279,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi ggZiOW"
+        className="sc-ifAKCX eEBxGP"
         width={219}
       >
         <div
@@ -326,7 +297,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -347,10 +318,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -362,13 +333,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi hMmXQe"
+        className="sc-ifAKCX fhpsaR"
         width={undefined}
       >
         <div
@@ -386,7 +357,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -407,10 +378,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -422,10 +393,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <iframe
-      className="sc-htoDjs dvnATU"
+      className="sc-bwzfXH pWrUX"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -433,10 +404,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -448,13 +419,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT cOTMfu"
+    className="sc-bZQynM fJrfwz"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi jcidDP"
+        className="sc-ifAKCX ithBPb"
         width={216}
       >
         <div
@@ -472,7 +443,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -491,7 +462,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi iSVAQs"
+        className="sc-ifAKCX hDhMYi"
         width={219}
       >
         <div
@@ -509,7 +480,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -528,7 +499,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-gZMcBi gWLTcl"
+        className="sc-ifAKCX ePHGZF"
         width={222}
       >
         <div
@@ -546,7 +517,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -567,10 +538,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -582,7 +553,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT iLoIJ"
+    className="sc-bZQynM cNwBGE"
   >
     <div
       style={
@@ -596,7 +567,7 @@ exports[`renders properly 1`] = `
         className="file__FullWrapper-nomheg-0 bNmTZ"
       >
         <div
-          className="sc-gqjmRU nhnkd"
+          className="sc-EHOje cxcyQs"
         >
           <div
             className="file__Title-nomheg-3 eEgszg"
@@ -650,10 +621,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={
@@ -665,13 +636,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT iLoIJ"
+    className="sc-bZQynM cNwBGE"
   >
     <div
       className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
     >
       <div
-        className="sc-gZMcBi hMmXQe"
+        className="sc-ifAKCX fhpsaR"
         width={undefined}
       >
         <div
@@ -689,7 +660,7 @@ exports[`renders properly 1`] = `
             className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
-              className="sc-iwsKbI bXyBRu"
+              className="sc-bxivhb kDAFzE"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -710,10 +681,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-VigVT hsERLX"
+    className="sc-bZQynM cHjLMF"
   >
     <div
-      className="sc-jTzLTM eAXTIl"
+      className="sc-gzVnrw jaIoFz"
     >
       <div
         dangerouslySetInnerHTML={

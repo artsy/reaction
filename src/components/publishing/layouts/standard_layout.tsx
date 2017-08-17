@@ -5,7 +5,7 @@ export default styled.div`
   display: flex;
   max-width: 1250px;
   margin: auto;
-  padding: 20px;
+  padding: 0 20px;
   ${pMedia.md`
     padding: 0px;
   `}

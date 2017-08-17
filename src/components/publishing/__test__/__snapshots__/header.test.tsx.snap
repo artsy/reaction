@@ -38,15 +38,15 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Standard Header renders standard header properly 1`] = `
 <div
-  className="file__StandardHeaderContainer-s6asv4k-0 iMKhyV"
+  className="file__StandardHeaderContainer-s2se43n-0 boYBoN"
 >
   <div
-    className="file__Vertical-s6asv4k-1 eUnUkA"
+    className="file__Vertical-s2se43n-1 bTpUdq"
   >
     Art Market
   </div>
   <div
-    className="file__StandardTitle-mnum3w-0 bmosYJ"
+    className="file__StandardTitle-s11f72yx-0 fuOrQk"
   >
     New York's Next Art District
   </div>
@@ -95,7 +95,7 @@ exports[`feature renders feature full header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
+        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -103,7 +103,7 @@ exports[`feature renders feature full header properly 1`] = `
         className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
-          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
+          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -145,7 +145,7 @@ exports[`feature renders feature split header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
+        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -158,7 +158,7 @@ exports[`feature renders feature split header properly 1`] = `
         className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
-          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
+          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
@@ -200,7 +200,7 @@ exports[`feature renders feature text header properly 1`] = `
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-mnum3w-1 khdtfm"
+        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
       >
         What’s the Path to Winning an Art Prize?
       </div>
@@ -208,7 +208,7 @@ exports[`feature renders feature text header properly 1`] = `
         className="file__SubHeader-g9b1n8-5 hEhbIL"
       >
         <div
-          className="feature__deck file__Deck-mnum3w-2 gkZTkM"
+          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
