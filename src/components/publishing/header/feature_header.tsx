@@ -5,30 +5,30 @@ import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureAsset(url, layout, isMobile) {
+function renderFeatureAsset(url, layout, isMobile, title) {
   if (layout === "fullscreen") {
     return (
       <div>
-        {renderAsset(url)}
+        {renderAsset(url, title)}
         <Overlay />
       </div>
     )
   } else if (layout === "split" && !isMobile) {
-    return renderAsset(url)
+    return renderAsset(url, title)
   } else {
     return false
   }
 }
 
-function renderMobileSplitAsset(url, layout, isMobile) {
+function renderMobileSplitAsset(url, layout, isMobile, title) {
   if (layout === "split" && isMobile) {
-    return renderAsset(url)
+    return renderAsset(url, title)
   } else {
     return false
   }
 }
 
-function renderAsset(url) {
+function renderAsset(url, title) {
   if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
@@ -36,16 +36,16 @@ function renderAsset(url) {
       </FeatureVideoContainer>
     )
   } else {
-    return <FeatureImage src={url} />
+    return <FeatureImage src={url} alt={title} />
   }
 }
 
-function renderTextLayoutAsset(url, layout) {
+function renderTextLayoutAsset(url, layout, title) {
   if (layout === "text") {
     if (isVideo(url)) {
       return <Video src={url} autoPlay controls={false} loop muted playsInline />
     } else {
-      return <Image src={url} />
+      return <Image src={url} alt={title} />
     }
   } else {
     return false
@@ -69,18 +69,18 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureAsset(hero.url, hero.type, isMobile)}
+      {renderFeatureAsset(hero.url, hero.type, isMobile, article.title)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{article.vertical.name}</Vertical>
           {props.children[0]}
-          {renderMobileSplitAsset(hero.url, hero.type, isMobile)}
+          {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title)}
           <SubHeader>
             {props.children[1]}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
-        {renderTextLayoutAsset(hero.url, hero.type)}
+        {renderTextLayoutAsset(hero.url, hero.type, article.title)}
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )

@@ -5,22 +5,27 @@ exports[`renders a long caption properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s1425qn5-0 kMcghC"
+    alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
+    className="file__BlockImage-jslywa-0 bPPuKU"
     height="auto"
     src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
     width="100%"
   />
+   // strip caption html
   <div
-    className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+    className="file__CaptionContainer-s12l14z-0 ijlQJa"
   >
     <div
       className="sc-bdVaJa bGfehm"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div
       className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
     >
@@ -35,22 +40,27 @@ exports[`renders properly 1`] = `
   className="article-image"
 >
   <img
-    className="file__BlockImage-s1425qn5-0 kMcghC"
+    alt="Photo by Adam Kuehl for Artsy."
+    className="file__BlockImage-jslywa-0 bPPuKU"
     height="auto"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
+   // strip caption html
   <div
-    className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+    className="file__CaptionContainer-s12l14z-0 ijlQJa"
   >
     <div
       className="sc-bdVaJa bGfehm"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div
       className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
     >

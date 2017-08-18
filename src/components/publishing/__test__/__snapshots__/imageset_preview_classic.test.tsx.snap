@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="imageset-preview file__Wrapper-s10kesmc-0 emcvlf"
+  className="imageset-preview file__Wrapper-s15uby2k-0 iWFmuj"
 >
   <div
     className="imageset-preview__container"
@@ -13,6 +13,7 @@ exports[`renders properly 1`] = `
     }
   >
     <img
+      alt="Nude on the Beach"
       className="imageset-preview__image"
       height={150}
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
@@ -23,6 +24,7 @@ exports[`renders properly 1`] = `
       }
     />
     <img
+      alt="Photo by Adam Kuehl for Artsy."
       className="imageset-preview__image"
       height={150}
       src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
@@ -33,6 +35,7 @@ exports[`renders properly 1`] = `
       }
     />
     <img
+      alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
       className="imageset-preview__image"
       height={150}
       src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
@@ -44,10 +47,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="imageset-preview__remaining file__Remaining-s10kesmc-2 hNRfaI"
+    className="imageset-preview__remaining file__Remaining-s15uby2k-2 gEsbJB"
   >
     <div
-      className="imageset-preview__icon-container file__IconContainer-s10kesmc-3 jLrTpj"
+      className="imageset-preview__icon-container file__IconContainer-s15uby2k-3 gcBRML"
     >
       <svg
         data-name="imageset"
@@ -77,14 +80,14 @@ exports[`renders properly 1`] = `
         }
       >
         <div
-          className="file__Text-s10kesmc-1 fJMjgT"
+          className="file__Text-s15uby2k-1 LXJqM"
         >
           3
         </div>
       </div>
     </div>
     <div
-      className="imageset-preview__text file__Text-s10kesmc-1 fJMjgT"
+      className="imageset-preview__text file__Text-s15uby2k-1 LXJqM"
     >
       Enter Slideshow
     </div>

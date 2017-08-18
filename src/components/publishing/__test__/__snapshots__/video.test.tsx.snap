@@ -27,16 +27,19 @@ exports[`renders properly 1`] = `
     src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
   />
   <div
-    className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+    className="file__CaptionContainer-s12l14z-0 ijlQJa"
   >
     <div
       className="sc-bdVaJa bGfehm"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
+          }
         }
-      }
-    />
+      />
+    </div>
   </div>
 </div>
 `;

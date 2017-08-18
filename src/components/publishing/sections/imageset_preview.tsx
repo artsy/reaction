@@ -106,7 +106,7 @@ class ImageSetPreview extends Component<Props, null> {
     const src = this.getImageUrl()
     const width = this.props.section.layout === "full" ? "100%" : "auto"
     const height = this.props.section.layout === "full" ? "auto" : "100%"
-    return <img src={src} width={width} height={height} />
+    return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
   }
   wrapper() {
     if (this.props.section.layout === "full") {
@@ -159,7 +159,7 @@ class ImageSetPreview extends Component<Props, null> {
     )
   }
   render() {
-    const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
+    const image = this.props.section.layout === "full" ? this.image() : null
     return (
       <div style={{ position: "relative", width: "100%" }}>
         {this.wrapper()}

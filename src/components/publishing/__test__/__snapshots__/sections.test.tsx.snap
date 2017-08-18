@@ -78,22 +78,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={390}
             src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -110,22 +115,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={390}
             src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -142,22 +152,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="John Elisle, The Fool, from the reimagined female Tarot cards. Courtesy of the artist. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={391}
             src="https://artsy-media-uploads.s3.amazonaws.com/d0TIJQxkpkJCSWRci0xXsQ%2Funnamed-3.png"
             width={220}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -197,22 +212,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={425}
             src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -229,22 +249,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={425}
             src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -261,22 +286,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={426}
             src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -316,22 +346,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height="auto"
             src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
             width="100%"
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -397,22 +432,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={387}
             src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
             width={216}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -429,22 +469,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={388}
             src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
             width={219}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -461,22 +506,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height={388}
             src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
             width={222}
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
@@ -514,26 +564,26 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="file__FullWrapper-s2b2o4l-0 ipUAzx"
+        className="file__FullWrapper-nomheg-0 bNmTZ"
       >
         <div
           className="sc-EHOje cxcyQs"
         >
           <div
-            className="file__Title-s2b2o4l-3 etSjRY"
+            className="file__Title-nomheg-3 eEgszg"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="file__SubTitle-s2b2o4l-4 dphIpy"
+            className="file__SubTitle-nomheg-4 ifgou"
           >
             <div
-              className="file__SubTitlePrompt-s2b2o4l-5 dkEMKs"
+              className="file__SubTitlePrompt-nomheg-5 fQcKPY"
             >
               View Slideshow
             </div>
             <div
-              className="file__SubTitleCount-s2b2o4l-6 kLFueN"
+              className="file__SubTitleCount-nomheg-6 gqWZzX"
             >
               3
                Images
@@ -541,7 +591,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="file__IconContainer-s2b2o4l-7 jMXMtU"
+          className="file__IconContainer-nomheg-7 hDeRFJ"
         >
           <svg
             data-name="imageset"
@@ -563,6 +613,8 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <img
+        alt="The Work of Bruce M. Sherman"
+        height="auto"
         src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
         width="100%"
       />
@@ -597,22 +649,27 @@ exports[`renders properly 1`] = `
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
+            className="file__BlockImage-jslywa-0 bPPuKU"
             height="auto"
             src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
             width="100%"
           />
+           // strip caption html
           <div
-            className="file__CaptionContainer-g8fqxu-0 kDFOOQ"
+            className="file__CaptionContainer-s12l14z-0 ijlQJa"
           >
             <div
               className="sc-bxivhb kDAFzE"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
             <div
               className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
             >
