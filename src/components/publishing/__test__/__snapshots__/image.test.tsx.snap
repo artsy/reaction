@@ -13,10 +13,10 @@ exports[`renders a long caption properly 1`] = `
   />
    // strip caption html
   <div
-    className="file__CaptionContainer-s12l14z-0 ijlQJa"
+    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
   >
     <div
-      className="sc-bdVaJa bGfehm"
+      className="sc-bdVaJa idKfjw"
     >
       <div
         dangerouslySetInnerHTML={
@@ -48,10 +48,10 @@ exports[`renders properly 1`] = `
   />
    // strip caption html
   <div
-    className="file__CaptionContainer-s12l14z-0 ijlQJa"
+    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
   >
     <div
-      className="sc-bdVaJa bGfehm"
+      className="sc-bdVaJa idKfjw"
     >
       <div
         dangerouslySetInnerHTML={

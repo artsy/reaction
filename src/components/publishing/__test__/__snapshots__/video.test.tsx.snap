@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__VideoContainer-s5ax5tw-0 fTLvxj"
+  className="file__VideoContainer-s1nv5zyx-0 bUOqDY"
 >
   <div
     className="sc-htpNat UgtSs"
@@ -12,10 +12,10 @@ exports[`renders properly 1`] = `
     src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
   >
     <div
-      className="file__PlayButton-s5ax5tw-2 dFWWEK"
+      className="file__PlayButton-s1nv5zyx-2 cCYLNG"
     >
       <div
-        className="file__PlayButtonCaret-s5ax5tw-1 bWSLbp"
+        className="file__PlayButtonCaret-s1nv5zyx-1 fwFRII"
       />
     </div>
   </div>
@@ -27,10 +27,10 @@ exports[`renders properly 1`] = `
     src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
   />
   <div
-    className="file__CaptionContainer-s12l14z-0 ijlQJa"
+    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
   >
     <div
-      className="sc-bdVaJa bGfehm"
+      className="sc-bdVaJa idKfjw"
     >
       <div
         dangerouslySetInnerHTML={
