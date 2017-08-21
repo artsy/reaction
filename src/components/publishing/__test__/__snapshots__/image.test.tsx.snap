@@ -30,7 +30,8 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p {
+.c2 > p,
+.c2 p {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -113,7 +114,8 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p {
+.c2 > p,
+.c2 p {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;

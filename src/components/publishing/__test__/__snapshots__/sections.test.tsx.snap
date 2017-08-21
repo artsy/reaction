@@ -35,7 +35,8 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c9 > p {
+.c9 > p,
+.c9 p {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
