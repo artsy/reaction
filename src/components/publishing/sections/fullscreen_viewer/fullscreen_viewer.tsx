@@ -1,7 +1,9 @@
+import { compact, filter, flatten, map } from "lodash"
 import * as React from "react"
+import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Icon from "../../../icon"
-import Slides from "./slides"
+import Slide from "./slide"
 
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   sections: any
@@ -31,29 +33,65 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     this.setState({ activeIndex: newActiveIndex })
   }
 
+  getImages = () => {
+    const imageSections = filter(this.props.sections, section => section.type === "image_collection")
+    return compact(flatten(map(imageSections, "images")))
+  }
+
+  renderImageComponents = () => {
+    return map(this.getImages(), (section, i) => {
+      return (
+        <div>
+          <Slide section={section} key={i} />
+        </div>
+      )
+    })
+  }
+
   render() {
+    const sliderSettings = {
+      centerMode: true,
+      dots: false,
+      infinite: true,
+      slidesToShow: 1,
+      accessibility: true,
+      lazyLoad: true,
+      draggable: true,
+      nextArrow: <RightArrow />,
+      prevArrow: <LeftArrow />,
+    }
     return (
       <FullscreenViewerContainer>
-        <NavArrow direction="left">
-          <Icon name="chevron-left" color="black" fontSize="24px" />
-        </NavArrow>
-        <Slides sections={this.props.sections} />
+        <Slider {...sliderSettings}>
+          {this.renderImageComponents()}
+        </Slider>
         <Close onClick={this.close}>
           <Icon name="close" color="gray" fontSize="24px" />
         </Close>
-        <NavArrow direction="right">
-          <Icon name="chevron-right" color="black" fontSize="24px" />
-        </NavArrow>
       </FullscreenViewerContainer>
     )
   }
 }
 
+const LeftArrow = props => {
+  return (
+    <NavArrow direction="left" onClick={props.onClick}>
+      <Icon name="chevron-left" color="black" fontSize="24px" />
+    </NavArrow>
+  )
+}
+
+const RightArrow = props => {
+  return (
+    <NavArrow direction="right" onClick={props.onClick}>
+      <Icon name="chevron-right" color="black" fontSize="24px" />
+    </NavArrow>
+  )
+}
+
 const FullscreenViewerContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  display: flex;
-  overflow: hidden;
 `
 const Close = styled.div`
   position: absolute;
@@ -69,8 +107,7 @@ const div: StyledFunction<NavArrowProps> = styled.div
 const NavArrow = div`
   position: absolute;
   height: 100vh;
-  display: flex;
-  align-items: center;
+  top: 50%;
   ${props => (props.direction === "left" ? "left: 0px;" : "")}
   ${props => (props.direction === "right" ? "right: 0px;" : "")}
 `

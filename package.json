@@ -119,6 +119,7 @@
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
     "react-sizeme": "^2.3.2",
+    "react-slick": "^0.14.11",
     "react-styled-flexboxgrid": "^2.0.0",
     "react-url-query": "^1.1.4",
     "request": "^2.81.0",

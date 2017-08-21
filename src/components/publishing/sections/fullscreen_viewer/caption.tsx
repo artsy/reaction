@@ -1,4 +1,6 @@
 import * as React from "react"
+import styled from "styled-components"
+import Fonts from "../../fonts"
 
 interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
   caption?: string
@@ -15,13 +17,20 @@ class FullscreenViewerCaption extends React.Component<FullscreenViewerCaptionPro
   }
 
   render() {
-    const caption = this.props.caption ? <div>{this.props.caption}</div> : false
     return (
-      <div>
-        {caption}
-      </div>
+      <CaptionContainer>
+        <Caption dangerouslySetInnerHTML={{ __html: this.props.caption }} />
+      </CaptionContainer>
     )
   }
 }
+
+const Caption = styled.div`
+  ${Fonts.unica("s19")}
+`
+const CaptionContainer = styled.div`
+  height: 100px;
+  width: 100vw;
+`
 
 export default FullscreenViewerCaption
