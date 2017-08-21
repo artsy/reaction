@@ -1,112 +1,300 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c7 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.25em;
+  margin-bottom: 20px;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c5 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+.c4 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 28px;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c1 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c0 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 50px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c9 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.c8 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.c20 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c19 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c18 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c17 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c14 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+
+.c13 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 65px;
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+.c12 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 80px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 130px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
 <div>
   <div
-    className="file__GaramondS50-s1r4jrka-7 iKZhjX"
+    className="c0"
   >
     Garamond s50: 50px / 1.1em
   </div>
   <div
-    className="file__GaramondS40-s1r4jrka-6 hqNFZg"
+    className="c1"
   >
     Garamond s40: 40px / 1.1em
   </div>
   <div
-    className="file__GaramondS34-s1r4jrka-5 glkEKY"
+    className="c2"
   >
     Garamond s34: 34px / 1.5em
   </div>
   <div
-    className="file__GaramondS28-s1r4jrka-4 eMQdXO"
+    className="c3"
   >
     Garamond s28: 28px / 1.5em
   </div>
   <div
-    className="file__GaramondS23-s1r4jrka-3 hcLYdT"
+    className="c4"
   >
     Garamond s23: 23px / 1.5em
   </div>
   <div
-    className="file__GaramondS19-s1r4jrka-2 iowwaa"
+    className="c5"
   >
     Garamond s19: 19px / 1.1em
   </div>
   <div
-    className="file__GaramondS17-s1r4jrka-1 kKOkpX"
+    className="c6"
   >
     Garamond s17: 17px / 1.1em
   </div>
   <div
-    className="file__GaramondS15-s1r4jrka-0 huXVYE"
+    className="c7"
   >
     Garamond s15: 15px / 1.25em
   </div>
   <hr />
   <br />
   <div
-    className="file__AvantGardeS13-s1r4jrka-9 hroBdJ"
+    className="c8"
   >
     Avant Garde s13: 13px / 1.65em
   </div>
   <div
-    className="file__AvantGardeS11-s1r4jrka-8 iMsSBy"
+    className="c9"
   >
     Avant Garde s11: 11px / 1.65em
   </div>
   <hr />
   <div
-    className="file__UnicaS130-s1r4jrka-20 htTvQj"
+    className="c10"
   >
     Unica s130: 130px / 1.1em
   </div>
   <div
-    className="file__UnicaS100-s1r4jrka-19 ibaNIN"
+    className="c11"
   >
     Unica s100: 100px / 1.1em
   </div>
   <div
-    className="file__UnicaS80-s1r4jrka-18 jaNfXl"
+    className="c12"
   >
     Unica s80: 80px / 1.1em
   </div>
   <div
-    className="file__UnicaS65-s1r4jrka-17 ktpvWT"
+    className="c13"
   >
     Unica s65: 65px / 1em
   </div>
   <div
-    className="file__UnicaS45-s1r4jrka-16 dmYUzW"
+    className="c14"
   >
     Unica s45: 45px / 1.1em
   </div>
   <div
-    className="file__UnicaS40-s1r4jrka-15 eXmfmZ"
+    className="c15"
   >
     Unica s40: 40px / 1.1em
   </div>
   <div
-    className="file__UnicaS34-s1r4jrka-14 bvSDuV"
+    className="c16"
   >
     Unica s34: 34px / 1.1em
   </div>
   <div
-    className="file__UnicaS19-s1r4jrka-13 brNsmG"
+    className="c17"
   >
     Unica s19: 19px / 1.5em
   </div>
   <div
-    className="file__UnicaS16-s1r4jrka-12 ifzmmh"
+    className="c18"
   >
     Unica s16: 16px / 1.1em
   </div>
   <div
-    className="file__UnicaS14-s1r4jrka-11 hgAiXz"
+    className="c19"
   >
     Unica s14: 14px / 1.1em
   </div>
   <div
-    className="file__UnicaS12-s1r4jrka-10 CVwTp"
+    className="c20"
   >
     Unica s12: 12px / 1.1em
   </div>

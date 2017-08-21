@@ -1,36 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c6 > p,
+.c6 p {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: #999;
+  margin: 0;
+}
+
+.c4 {
+  width: 100%;
+  height: 281.25px;
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 281.25px;
+  position: absolute;
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.c3 {
+  color: black;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid black;
+}
+
+.c2 {
+  background: white;
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    padding: 0px 10px;
+  }
+}
+
 <div
-  className="file__VideoContainer-s1nv5zyx-0 bUOqDY"
+  className="c0"
 >
   <div
-    className="sc-htpNat UgtSs"
+    className="c1"
     height={281.25}
     hidden={false}
     onClick={[Function]}
     src="https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg"
   >
     <div
-      className="file__PlayButton-s1nv5zyx-2 cCYLNG"
+      className="c2"
     >
       <div
-        className="file__PlayButtonCaret-s1nv5zyx-1 fwFRII"
+        className="c3"
       />
     </div>
   </div>
   <iframe
     allowFullScreen={true}
-    className="sc-bwzfXH bSAkii"
+    className="c4"
     frameBorder="0"
     height={281.25}
     src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
   />
   <div
-    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
+    className="c5"
   >
     <div
-      className="sc-bdVaJa idKfjw"
+      className="c6"
     >
       <div
         dangerouslySetInnerHTML={

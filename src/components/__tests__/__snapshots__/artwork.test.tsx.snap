@@ -1,17 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
+.c5 {
+  color: #333333;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  display: block;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  color: #666666;
+  margin-top: 12px;
+  font-size: 15px;
+  -webkit-text-align: left;
+  text-align: left;
+  line-height: 20px;
+}
+
+.c0 {
+  width: 100%;
+}
+
+.c1 {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.c1:before {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+.c1 .overlay-container {
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+
+.c1 .overlay-container.hovered {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c1 .overlay-container.selected {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c2 {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: 49px) {
+  .c1:hover .overlay-container.hovered {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 <div
-  className="file__Container-s1284ws5-0 kvlZnW"
+  className="c0"
   onClick={[Function]}
   size={250}
 >
   <div
-    className="file__ImageContainer-s1284ws5-1 jtqwav"
+    className="c1"
     size={250}
   >
     <img
-      className="file__Image-s1284ws5-2 kDvufT"
+      className="c2"
       size={250}
       src="artsy.net/image-url"
     />
@@ -20,15 +94,15 @@ exports[`Artwork renders correctly 1`] = `
     />
   </div>
   <div
-    className="file__StyledMetadata-s1l3srti-0 iIhayI"
+    className="c3"
   >
     <div>
       <div
-        className="file__TruncatedLine-bzokla-0 dATVjh"
+        className="c4"
       >
         <strong>
           <a
-            className="file__StyledTextLink-s18afosz-0 hlqDRc"
+            className="c5"
             href={undefined}
           >
             Mikael Olson
@@ -36,10 +110,10 @@ exports[`Artwork renders correctly 1`] = `
         </strong>
       </div>
       <div
-        className="file__TruncatedLine-bzokla-0 dATVjh"
+        className="c4"
       >
         <a
-          className="file__StyledTextLink-s18afosz-0 hlqDRc"
+          className="c5"
           href="/artwork/mikael-olson-some-kind-of-dinosaur"
         >
           <em>
@@ -49,10 +123,10 @@ exports[`Artwork renders correctly 1`] = `
         </a>
       </div>
       <div
-        className="file__TruncatedLine-bzokla-0 dATVjh"
+        className="c4"
       >
         <a
-          className="file__StyledTextLink-s18afosz-0 hlqDRc"
+          className="c5"
           href={undefined}
         >
           Gallery 1261

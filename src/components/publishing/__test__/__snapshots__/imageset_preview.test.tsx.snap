@@ -1,6 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
+.c0 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  min-height: 50px;
+  width: auto;
+  max-width: calc(100% - 80px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.c2 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  line-height: 1.1em;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c5 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-left: 20px;
+}
+
+.c6 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c6 > svg {
+  height: 98%;
+}
+
+@media (max-width: 600px) {
+  .c2 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    display: none;
+  }
+}
+
 <div
   style={
     Object {
@@ -10,26 +126,26 @@ exports[`renders a full image set properly 1`] = `
   }
 >
   <div
-    className="file__FullWrapper-nomheg-0 bNmTZ"
+    className="c0"
   >
     <div
-      className="sc-bdVaJa lmSTxo"
+      className="c1"
     >
       <div
-        className="file__Title-nomheg-3 eEgszg"
+        className="c2"
       >
         The Work of Bruce M. Sherman
       </div>
       <div
-        className="file__SubTitle-nomheg-4 ifgou"
+        className="c3"
       >
         <div
-          className="file__SubTitlePrompt-nomheg-5 fQcKPY"
+          className="c4"
         >
           View Slideshow
         </div>
         <div
-          className="file__SubTitleCount-nomheg-6 gqWZzX"
+          className="c5"
         >
           3
            Images
@@ -37,7 +153,7 @@ exports[`renders a full image set properly 1`] = `
       </div>
     </div>
     <div
-      className="file__IconContainer-nomheg-7 hDeRFJ"
+      className="c6"
     >
       <svg
         data-name="imageset"
@@ -68,6 +184,131 @@ exports[`renders a full image set properly 1`] = `
 `;
 
 exports[`renders a mini image set properly 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.c3 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  line-height: 1.1em;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c6 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-left: 20px;
+}
+
+.c7 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c7 > svg {
+  height: 98%;
+}
+
+.c0 {
+  height: 100px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: auto;
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .c3 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c7 {
+    display: none;
+  }
+}
+
 <div
   style={
     Object {
@@ -77,7 +318,7 @@ exports[`renders a mini image set properly 1`] = `
   }
 >
   <div
-    className="file__MiniWrapper-nomheg-1 ipkiP"
+    className="c0"
   >
     <img
       alt="The Work of Bruce M. Sherman"
@@ -86,26 +327,26 @@ exports[`renders a mini image set properly 1`] = `
       width="auto"
     />
     <div
-      className="file__MiniInner-nomheg-2 eBcatD"
+      className="c1"
     >
       <div
-        className="sc-bdVaJa hskcns"
+        className="c2"
       >
         <div
-          className="file__Title-nomheg-3 eEgszg"
+          className="c3"
         >
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="file__SubTitle-nomheg-4 ifgou"
+          className="c4"
         >
           <div
-            className="file__SubTitlePrompt-nomheg-5 fQcKPY"
+            className="c5"
           >
             View Slideshow
           </div>
           <div
-            className="file__SubTitleCount-nomheg-6 gqWZzX"
+            className="c6"
           >
             3
              Images
@@ -113,7 +354,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
       </div>
       <div
-        className="file__IconContainer-nomheg-7 hDeRFJ"
+        className="c7"
       >
         <svg
           data-name="imageset"

@@ -1,5 +1,8 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
+
+import "jest-styled-components"
+
 import Sections from "../sections/sections"
 import Articles from "./fixtures/articles"
 

@@ -1,22 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a long caption properly 1`] = `
+.c3 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 7.1em;
+  white-space: nowrap;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c2 > p,
+.c2 p {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: #999;
+  margin: 0;
+}
+
+.c0 {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    padding: 0px 10px;
+  }
+}
+
 <div
   className="article-image"
 >
   <img
     alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-    className="file__BlockImage-jslywa-0 bPPuKU"
+    className="c0"
     height="auto"
     src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
     width="100%"
   />
    // strip caption html
   <div
-    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
+    className="c1"
   >
     <div
-      className="sc-bdVaJa idKfjw"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -27,7 +76,7 @@ exports[`renders a long caption properly 1`] = `
       />
     </div>
     <div
-      className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+      className="c3"
     >
       View Fullscreen
     </div>
@@ -36,22 +85,71 @@ exports[`renders a long caption properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
+.c3 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 7.1em;
+  white-space: nowrap;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c2 > p,
+.c2 p {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: #999;
+  margin: 0;
+}
+
+.c0 {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    padding: 0px 10px;
+  }
+}
+
 <div
   className="article-image"
 >
   <img
     alt="Photo by Adam Kuehl for Artsy."
-    className="file__BlockImage-jslywa-0 bPPuKU"
+    className="c0"
     height="auto"
     src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
     width="100%"
   />
    // strip caption html
   <div
-    className="file__CaptionContainer-s152o2n9-0 fwFCzC"
+    className="c1"
   >
     <div
-      className="sc-bdVaJa idKfjw"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -62,7 +160,7 @@ exports[`renders properly 1`] = `
       />
     </div>
     <div
-      className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+      className="c3"
     >
       View Fullscreen
     </div>

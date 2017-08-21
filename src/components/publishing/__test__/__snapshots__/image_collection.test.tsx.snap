@@ -1,33 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
+.c6 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 7.1em;
+  white-space: nowrap;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+}
+
+.c5 {
+  color: #999;
+  display: block;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.c5 .artist-name {
+  margin-right: 30px;
+}
+
+.c4 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c2 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  display: block;
+}
+
+.c1 {
+  margin-right: 0px;
+  width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
 <div
-  className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+  className="c0"
 >
   <div
-    className="sc-htpNat imiCrX"
+    className="c1"
     width={undefined}
   >
     <div
       className="display-artwork"
     >
       <a
-        className="file__ArtworkImageLink-fr51no-0 deCDpy"
+        className="c2"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
         <img
           alt="Nude on the Beach"
-          className="display-artwork__image file__BlockImage-fr51no-1 FxzYf"
+          className="display-artwork__image c3"
           height="auto"
           src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
           width="100%"
         />
       </a>
       <div
-        className="display-artwork__caption sc-bdVaJa bLvhbP"
+        className="display-artwork__caption c4"
       >
         <div
-          className="file__TruncatedLine-n4uxzp-0 iAlzUN"
+          className="c5"
         >
           <span
             className="artist-name"
@@ -36,7 +121,7 @@ exports[`renders a single image properly 1`] = `
               className="name"
             >
               <a
-                className="file__StyledTextLink-s18afosz-0 hOUyga"
+                className="c6"
                 href="/artist/fernando-botero"
               >
                 Fernando Botero
@@ -47,7 +132,7 @@ exports[`renders a single image properly 1`] = `
             className="title"
           >
             <a
-              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              className="c6"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -69,14 +154,14 @@ exports[`renders a single image properly 1`] = `
             , 
           </span>
           <a
-            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            className="c6"
             href="/partner/gary-nader"
           >
             Gary Nader
           </a>
         </div>
         <div
-          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+          className="c7"
         >
           View Fullscreen
         </div>
@@ -87,33 +172,172 @@ exports[`renders a single image properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
+.c6 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 7.1em;
+  white-space: nowrap;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+}
+
+.c5 {
+  color: #999;
+  display: block;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.c5 .artist-name {
+  margin-right: 30px;
+}
+
+.c4 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c2 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  display: block;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c11 > p,
+.c11 p {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: #999;
+  margin: 0;
+}
+
+.c9 {
+  display: block;
+}
+
+.c1 {
+  margin-right: 10px;
+  width: 312px;
+}
+
+.c8 {
+  margin-right: 10px;
+  width: 168px;
+}
+
+.c12 {
+  margin-right: 0px;
+  width: 178px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .c10 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c8 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c12 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
 <div
-  className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+  className="c0"
 >
   <div
-    className="sc-htpNat bNZiJe"
+    className="c1"
     width={312}
   >
     <div
       className="display-artwork"
     >
       <a
-        className="file__ArtworkImageLink-fr51no-0 deCDpy"
+        className="c2"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
         <img
           alt="Nude on the Beach"
-          className="display-artwork__image file__BlockImage-fr51no-1 FxzYf"
+          className="display-artwork__image c3"
           height={224}
           src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
           width={312}
         />
       </a>
       <div
-        className="display-artwork__caption sc-bdVaJa bLvhbP"
+        className="display-artwork__caption c4"
       >
         <div
-          className="file__TruncatedLine-n4uxzp-0 iAlzUN"
+          className="c5"
         >
           <span
             className="artist-name"
@@ -122,7 +346,7 @@ exports[`renders properly 1`] = `
               className="name"
             >
               <a
-                className="file__StyledTextLink-s18afosz-0 hOUyga"
+                className="c6"
                 href="/artist/fernando-botero"
               >
                 Fernando Botero
@@ -133,7 +357,7 @@ exports[`renders properly 1`] = `
             className="title"
           >
             <a
-              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              className="c6"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -155,14 +379,14 @@ exports[`renders properly 1`] = `
             , 
           </span>
           <a
-            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            className="c6"
             href="/partner/gary-nader"
           >
             Gary Nader
           </a>
         </div>
         <div
-          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+          className="c7"
         >
           View Fullscreen
         </div>
@@ -170,7 +394,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat gxITxF"
+    className="c8"
     width={168}
   >
     <div
@@ -178,17 +402,17 @@ exports[`renders properly 1`] = `
     >
       <img
         alt="Photo by Adam Kuehl for Artsy."
-        className="file__BlockImage-jslywa-0 bPPuKU"
+        className="c9"
         height={224}
         src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
         width={168}
       />
        // strip caption html
       <div
-        className="file__CaptionContainer-s152o2n9-0 fwFCzC"
+        className="c10"
       >
         <div
-          className="sc-bwzfXH bPAevH"
+          className="c11"
         >
           <div
             dangerouslySetInnerHTML={
@@ -199,7 +423,7 @@ exports[`renders properly 1`] = `
           />
         </div>
         <div
-          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+          className="c7"
         >
           View Fullscreen
         </div>
@@ -207,7 +431,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat egfBBj"
+    className="c12"
     width={178}
   >
     <div
@@ -215,17 +439,17 @@ exports[`renders properly 1`] = `
     >
       <img
         alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-        className="file__BlockImage-jslywa-0 bPPuKU"
+        className="c9"
         height={224}
         src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
         width={178}
       />
        // strip caption html
       <div
-        className="file__CaptionContainer-s152o2n9-0 fwFCzC"
+        className="c10"
       >
         <div
-          className="sc-bwzfXH bPAevH"
+          className="c11"
         >
           <div
             dangerouslySetInnerHTML={
@@ -236,7 +460,7 @@ exports[`renders properly 1`] = `
           />
         </div>
         <div
-          className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+          className="c7"
         >
           View Fullscreen
         </div>
