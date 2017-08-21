@@ -44,7 +44,7 @@
     "@types/express-session": "^0.0.32",
     "@types/fetch-mock": "^5.8.2",
     "@types/isomorphic-fetch": "^0.0.34",
-    "@types/jest": "^18.1.1",
+    "@types/jest": "^20.0.7",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.7",
     "@types/react-dom": "^15.5.0",
