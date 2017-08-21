@@ -1,8 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c0 {
+  max-width: 580px;
+  width: 100%;
+  height: 150px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  min-width: 50px;
+  padding: 10px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  -webkit-text-align: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 32px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.c3 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  line-height: 1.35em;
+  margin: 0;
+}
+
 <div
-  className="imageset-preview file__Wrapper-s15uby2k-0 iWFmuj"
+  className="imageset-preview c0"
 >
   <div
     className="imageset-preview__container"
@@ -47,10 +108,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="imageset-preview__remaining file__Remaining-s15uby2k-2 gEsbJB"
+    className="imageset-preview__remaining c1"
   >
     <div
-      className="imageset-preview__icon-container file__IconContainer-s15uby2k-3 gcBRML"
+      className="imageset-preview__icon-container c2"
     >
       <svg
         data-name="imageset"
@@ -80,14 +141,14 @@ exports[`renders properly 1`] = `
         }
       >
         <div
-          className="file__Text-s15uby2k-1 LXJqM"
+          className="c3"
         >
           3
         </div>
       </div>
     </div>
     <div
-      className="imageset-preview__text file__Text-s15uby2k-1 LXJqM"
+      className="imageset-preview__text c3"
     >
       Enter Slideshow
     </div>

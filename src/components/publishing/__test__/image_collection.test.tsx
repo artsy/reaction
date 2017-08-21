@@ -1,6 +1,8 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 
+import "jest-styled-components"
+
 import ImageCollection from "../sections/image_collection"
 import { Images } from "./fixtures/components"
 

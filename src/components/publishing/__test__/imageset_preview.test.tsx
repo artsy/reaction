@@ -1,6 +1,8 @@
 import ImageSetPreview from "../sections/imageset_preview"
 import { ImageSetFull, ImageSetMini } from "./fixtures/components"
 
+import "jest-styled-components"
+
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 

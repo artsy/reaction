@@ -1,17 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthorDate renders a single author 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c1:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c1:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c1:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
 <div
-  className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+  className="c0"
 >
   <div
-    className="sc-bdVaJa etviRx"
+    className="c1"
   >
     By 
     Molly Gottschalk
   </div>
   <div
-    className="sc-bdVaJa etviRx"
+    className="c1"
   >
     May 19, 2017 9:09 am
   </div>
@@ -19,17 +62,60 @@ exports[`AuthorDate renders a single author 1`] = `
 `;
 
 exports[`AuthorDate renders multiple authors 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c1:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c1:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c1:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
 <div
-  className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+  className="c0"
 >
   <div
-    className="sc-bdVaJa etviRx"
+    className="c1"
   >
     By 
     Molly Gottschalk and Kana Abe
   </div>
   <div
-    className="sc-bdVaJa etviRx"
+    className="c1"
   >
     May 19, 2017 9:09 am
   </div>
@@ -37,30 +123,134 @@ exports[`AuthorDate renders multiple authors 1`] = `
 `;
 
 exports[`Standard Header renders standard header properly 1`] = `
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c4:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c4:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1250px;
+  width: 100%;
+  margin: 60px auto;
+  box-sizing: border-box;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 50px;
+  line-height: 1.1em;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .c4 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c4:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c0 {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0 {
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c2 {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+    margin-bottom: 50px;
+  }
+}
+
 <div
-  className="file__StandardHeaderContainer-s2se43n-0 boYBoN"
+  className="c0"
 >
   <div
-    className="file__Vertical-s2se43n-1 bTpUdq"
+    className="c1"
   >
     Art Market
   </div>
   <div
-    className="file__StandardTitle-s11f72yx-0 fuOrQk"
+    className="c2"
   >
     New York's Next Art District
   </div>
   <div
-    className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+    className="c3"
   >
     <div
-      className="sc-bdVaJa etviRx"
+      className="c4"
     >
       By 
       Artsy Editorial
     </div>
     <div
-      className="sc-bdVaJa etviRx"
+      className="c4"
     >
       May 19, 2017 9:09 am
     </div>
@@ -69,55 +259,341 @@ exports[`Standard Header renders standard header properly 1`] = `
 `;
 
 exports[`feature renders feature full header properly 1`] = `
+.c13 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c13:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c13:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #fff;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-color: black;
+  opacity: 0.17;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.c6 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c2 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.c0[data-type='text'] {
+  height: auto;
+}
+
+.c0[data-type='text'] .feature__title {
+  margin-bottom: 150px;
+}
+
+.c0[data-type='text'] .c5 {
+  max-width: none;
+}
+
+.c0[data-type='split'] .feature__title {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type='split'] .c5 {
+  width: 50%;
+}
+
+.c0[data-type='split'] .c1 {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .sc-EHOje {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+  width: 50vw;
+}
+
+.c0[data-type='split'] .c9 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type='split'] .feature__deck {
+  margin-bottom: 30px;
+}
+
+.c0[data-type='fullscreen'] .c5 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.c8 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+}
+
+.c11 {
+  max-width: 460px;
+}
+
+@media (max-width: 600px) {
+  .c13 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c13:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c7 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c10 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='split'] .feature__title {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type='split'] .c5 {
+    width: 100%;
+  }
+
+  .c0[data-type='split'] .c1 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .sc-EHOje {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='fullscreen'] .c5 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .c8 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c8 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c11 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
 <div
-  className="sc-bZQynM rGTAj"
+  className="c0"
   data-type="fullscreen"
 >
   <div>
     <div
       alt="What’s the Path to Winning an Art Prize?"
-      className="sc-ifAKCX eaHLCC"
+      className="c1 c2"
       src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
     />
     <div
-      className="sc-bwzfXH gWZoXy"
+      className="c3"
     />
   </div>
   <div
-    className="sc-htpNat gziOsG"
+    className="c4"
   >
     <div
-      className="sc-bxivhb jzEeHb"
+      className="c5 c6"
     >
       <div
-        className="file__Vertical-g9b1n8-1 fWaBop"
+        className="c7"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
+        className="feature__title c8"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-g9b1n8-5 hEhbIL"
+        className="c9 c10"
       >
         <div
-          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
+          className="feature__deck c11"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+          className="c12"
         >
           <div
-            className="sc-bdVaJa lfBMjK"
+            className="c13"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="sc-bdVaJa lfBMjK"
+            className="c13"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -129,50 +605,327 @@ exports[`feature renders feature full header properly 1`] = `
 `;
 
 exports[`feature renders feature split header properly 1`] = `
+.c12 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c12:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c12:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c7 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c9 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.c0[data-type='text'] {
+  height: auto;
+}
+
+.c0[data-type='text'] .feature__title {
+  margin-bottom: 150px;
+}
+
+.c0[data-type='text'] .c2 {
+  max-width: none;
+}
+
+.c0[data-type='split'] .feature__title {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type='split'] .c2 {
+  width: 50%;
+}
+
+.c0[data-type='split'] .c6 {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .sc-EHOje {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+  width: 50vw;
+}
+
+.c0[data-type='split'] .c8 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type='split'] .feature__deck {
+  margin-bottom: 30px;
+}
+
+.c0[data-type='fullscreen'] .c2 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.c5 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+}
+
+.c10 {
+  max-width: 460px;
+}
+
+@media (max-width: 600px) {
+  .c12 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c12:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c9 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='split'] .feature__title {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type='split'] .c2 {
+    width: 100%;
+  }
+
+  .c0[data-type='split'] .c6 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .sc-EHOje {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='fullscreen'] .c2 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .c5 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c10 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
 <div
-  className="sc-bZQynM rGTAj"
+  className="c0"
   data-type="split"
 >
   <div
-    className="sc-htpNat gziOsG"
+    className="c1"
   >
     <div
-      className="sc-bxivhb jzEeHb"
+      className="c2 c3"
     >
       <div
-        className="file__Vertical-g9b1n8-1 fWaBop"
+        className="c4"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
+        className="feature__title c5"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
         alt="What’s the Path to Winning an Art Prize?"
-        className="sc-ifAKCX eaHLCC"
+        className="c6 c7"
         src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
       />
       <div
-        className="file__SubHeader-g9b1n8-5 hEhbIL"
+        className="c8 c9"
       >
         <div
-          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
+          className="feature__deck c10"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+          className="c11"
         >
           <div
-            className="sc-bdVaJa etviRx"
+            className="c12"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="sc-bdVaJa etviRx"
+            className="c12"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -184,45 +937,316 @@ exports[`feature renders feature split header properly 1`] = `
 `;
 
 exports[`feature renders feature text header properly 1`] = `
+.c10 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c10:nth-child(2) {
+  margin: 0 0 0 30px;
+}
+
+.c10:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c11 {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.c0[data-type='text'] {
+  height: auto;
+}
+
+.c0[data-type='text'] .feature__title {
+  margin-bottom: 150px;
+}
+
+.c0[data-type='text'] .c2 {
+  max-width: none;
+}
+
+.c0[data-type='split'] .feature__title {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type='split'] .c2 {
+  width: 50%;
+}
+
+.c0[data-type='split'] .sc-ifAKCX {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .sc-EHOje {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+  width: 50vw;
+}
+
+.c0[data-type='split'] .c6 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type='split'] .feature__deck {
+  margin-bottom: 30px;
+}
+
+.c0[data-type='fullscreen'] .c2 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.c5 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+}
+
+.c8 {
+  max-width: 460px;
+}
+
+@media (max-width: 600px) {
+  .c10 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c10:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c7 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='split'] .feature__title {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type='split'] .c2 {
+    width: 100%;
+  }
+
+  .c0[data-type='split'] .sc-ifAKCX {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .sc-EHOje {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .file__FeatureVideo-g9b1n8-2 {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='fullscreen'] .c2 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .c5 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c8 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
 <div
-  className="sc-bZQynM rGTAj"
+  className="c0"
   data-type="text"
 >
   <div
-    className="sc-htpNat gziOsG"
+    className="c1"
   >
     <div
-      className="sc-bxivhb jzEeHb"
+      className="c2 c3"
     >
       <div
-        className="file__Vertical-g9b1n8-1 fWaBop"
+        className="c4"
       >
         Creativity
       </div>
       <div
-        className="feature__title file__FeatureTitle-s11f72yx-1 gloyPr"
+        className="feature__title c5"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="file__SubHeader-g9b1n8-5 hEhbIL"
+        className="c6 c7"
       >
         <div
-          className="feature__deck file__Deck-s11f72yx-2 hKriWr"
+          className="feature__deck c8"
         >
           Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
         </div>
         <div
-          className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
+          className="c9"
         >
           <div
-            className="sc-bdVaJa etviRx"
+            className="c10"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="sc-bdVaJa etviRx"
+            className="c10"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -231,7 +1255,7 @@ exports[`feature renders feature text header properly 1`] = `
     </div>
     <img
       alt="What’s the Path to Winning an Art Prize?"
-      className="file__Image-g9b1n8-3 hOWLWH"
+      className="c11"
       src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
     />
   </div>
