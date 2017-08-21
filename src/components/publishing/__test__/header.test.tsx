@@ -1,6 +1,9 @@
-import * as _ from "lodash"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
+
+import "jest-styled-components"
+import * as _ from "lodash"
+
 import AuthorDate from "../header/author_date"
 import Header from "../header/header"
 import Articles from "./fixtures/articles"

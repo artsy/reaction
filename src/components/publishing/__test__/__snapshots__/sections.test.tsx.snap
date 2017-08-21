@@ -1,14 +1,605 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c14 {
+  width: 100%;
+  height: 1000px;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 7.1em;
+  white-space: nowrap;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c9 > p {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: #999;
+  margin: 0;
+}
+
+.c7 {
+  display: block;
+}
+
+.c6 {
+  margin-right: 10px;
+  width: 219px;
+}
+
+.c11 {
+  margin-right: 0px;
+  width: 220px;
+}
+
+.c12 {
+  margin-right: 0px;
+  width: 219px;
+}
+
+.c13 {
+  margin-right: 0px;
+  width: 100%;
+}
+
+.c15 {
+  margin-right: 10px;
+  width: 216px;
+}
+
+.c16 {
+  margin-right: 0px;
+  width: 222px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c18 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  min-height: 50px;
+  width: auto;
+  max-width: calc(100% - 80px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.c20 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  line-height: 1.1em;
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c22 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c23 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-left: 20px;
+}
+
+.c24 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c24 > svg {
+  height: 98%;
+}
+
+.c1 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 680px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.c3 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 780px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.c4 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 780px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.c17 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 680px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.c2 {
+  position: relative;
+  padding-bottom: ;
+}
+
+.c2 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 3px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c2 p,
+.c2 ul,
+.c2 ol {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c2 p:first-child {
+  padding-top: 0;
+}
+
+.c2 p:last-child {
+  padding-bottom: 0;
+}
+
+.c2 ul,
+.c2 ol {
+  padding-left: 1em;
+}
+
+.c2 li {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c2 h1 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  -webkit-text-align: center;
+  text-align: center;
+}
+
+.c2 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c2 h2 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c2 h3 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c2 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c2 h3 em {
+  font-style: ;
+}
+
+.c2 blockquote {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 50px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+}
+
+.c2 .content-start {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 65px;
+  line-height: 1em;
+  float: left;
+  line-height: .5em;
+  margin-right: 10px;
+  margin-top: .298em;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+}
+
+.c2 .content-end {
+  display: inline-block;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.c2 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c2 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c2 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  max-width: 780px;
+}
+
+@media (max-width: 600px) {
+  .c14 {
+    height: 1300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c8 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c11 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c12 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c13 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c15 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c16 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c5 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .c20 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c22 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c23 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c24 {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .c1 {
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c4 {
+    max-width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c17 {
+    max-width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 900px) {
+  .c2 {
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .c2 p,
+  .c2 ul,
+  .c2 ol {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c2 li {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c2 h1 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c2 h2 {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c2 h3 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c2 h3 strong {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c2 blockquote {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 40px;
+    line-height: 1.1em;
+  }
+
+  .c2 .content-start {
+    font-size: 55px;
+  }
+}
+
 <div
-  className="sc-iwsKbI jSRwRI"
+  className="c0"
 >
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -20,10 +611,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -35,10 +626,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM eTntTt"
+    className="c3"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -50,10 +641,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -65,13 +656,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM fJrfwz"
+    className="c4"
   >
     <div
-      className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+      className="c5"
     >
       <div
-        className="sc-ifAKCX hDhMYi"
+        className="c6"
         width={219}
       >
         <div
@@ -79,17 +670,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={390}
             src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -100,7 +691,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -108,7 +699,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX hDhMYi"
+        className="c6"
         width={219}
       >
         <div
@@ -116,17 +707,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={390}
             src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -137,7 +728,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -145,7 +736,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX gpDZRR"
+        className="c11"
         width={220}
       >
         <div
@@ -153,17 +744,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="John Elisle, The Fool, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={391}
             src="https://artsy-media-uploads.s3.amazonaws.com/d0TIJQxkpkJCSWRci0xXsQ%2Funnamed-3.png"
             width={220}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -174,7 +765,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -184,10 +775,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -199,13 +790,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM fJrfwz"
+    className="c4"
   >
     <div
-      className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+      className="c5"
     >
       <div
-        className="sc-ifAKCX hDhMYi"
+        className="c6"
         width={219}
       >
         <div
@@ -213,17 +804,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={425}
             src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -234,7 +825,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -242,7 +833,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX hDhMYi"
+        className="c6"
         width={219}
       >
         <div
@@ -250,17 +841,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={425}
             src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -271,7 +862,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -279,7 +870,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX eEBxGP"
+        className="c12"
         width={219}
       >
         <div
@@ -287,17 +878,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={426}
             src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -308,7 +899,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -318,10 +909,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -333,13 +924,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM fJrfwz"
+    className="c4"
   >
     <div
-      className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+      className="c5"
     >
       <div
-        className="sc-ifAKCX fhpsaR"
+        className="c13"
         width={undefined}
       >
         <div
@@ -347,17 +938,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height="auto"
             src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
             width="100%"
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -368,7 +959,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -378,10 +969,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -393,10 +984,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM fJrfwz"
+    className="c4"
   >
     <iframe
-      className="sc-bwzfXH pWrUX"
+      className="c14"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -404,10 +995,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -419,13 +1010,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM fJrfwz"
+    className="c4"
   >
     <div
-      className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+      className="c5"
     >
       <div
-        className="sc-ifAKCX ithBPb"
+        className="c15"
         width={216}
       >
         <div
@@ -433,17 +1024,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={387}
             src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
             width={216}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -454,7 +1045,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -462,7 +1053,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX hDhMYi"
+        className="c6"
         width={219}
       >
         <div
@@ -470,17 +1061,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={388}
             src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
             width={219}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -491,7 +1082,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -499,7 +1090,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-ifAKCX ePHGZF"
+        className="c16"
         width={222}
       >
         <div
@@ -507,17 +1098,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height={388}
             src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
             width={222}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -528,7 +1119,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -538,10 +1129,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -553,7 +1144,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cNwBGE"
+    className="c17"
   >
     <div
       style={
@@ -564,26 +1155,26 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="file__FullWrapper-nomheg-0 bNmTZ"
+        className="c18"
       >
         <div
-          className="sc-EHOje cxcyQs"
+          className="c19"
         >
           <div
-            className="file__Title-nomheg-3 eEgszg"
+            className="c20"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="file__SubTitle-nomheg-4 ifgou"
+            className="c21"
           >
             <div
-              className="file__SubTitlePrompt-nomheg-5 fQcKPY"
+              className="c22"
             >
               View Slideshow
             </div>
             <div
-              className="file__SubTitleCount-nomheg-6 gqWZzX"
+              className="c23"
             >
               3
                Images
@@ -591,7 +1182,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="file__IconContainer-nomheg-7 hDeRFJ"
+          className="c24"
         >
           <svg
             data-name="imageset"
@@ -621,10 +1212,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -636,13 +1227,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cNwBGE"
+    className="c17"
   >
     <div
-      className="file__ImageCollectionContainer-m7kgaz-0 kNSJUV"
+      className="c5"
     >
       <div
-        className="sc-ifAKCX fhpsaR"
+        className="c13"
         width={undefined}
       >
         <div
@@ -650,17 +1241,17 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
-            className="file__BlockImage-jslywa-0 bPPuKU"
+            className="c7"
             height="auto"
             src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
             width="100%"
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s12l14z-0 ijlQJa"
+            className="c8"
           >
             <div
-              className="sc-bxivhb kDAFzE"
+              className="c9"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -671,7 +1262,7 @@ exports[`renders properly 1`] = `
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s8d1ii9-0 jOPcML"
+              className="c10"
             >
               View Fullscreen
             </div>
@@ -681,10 +1272,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM cHjLMF"
+    className="c1"
   >
     <div
-      className="sc-gzVnrw jaIoFz"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={

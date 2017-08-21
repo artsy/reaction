@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
+
 import { SectionText } from "./fixtures/components"
 
 import Text from "../sections/text"
