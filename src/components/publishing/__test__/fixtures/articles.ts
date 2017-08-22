@@ -163,6 +163,7 @@ const Articles = [
       {
         type: "image_collection",
         layout: "overflow_fillwidth",
+        title: "A World Without Capitalism",
         images: [
           {
             url: "https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png",

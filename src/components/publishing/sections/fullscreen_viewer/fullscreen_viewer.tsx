@@ -2,6 +2,7 @@ import { compact, filter, flatten, map } from "lodash"
 import * as React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../../../helpers"
 import Icon from "../../../icon"
 import Slide from "./slide"
 
@@ -23,37 +24,33 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     console.log("closing")
   }
 
-  next = () => {
-    const newActiveIndex = this.state.activeIndex === this.props.sections.length - 1 ? this.state.activeIndex + 1 : 0
-    this.setState({ activeIndex: newActiveIndex })
-  }
-
-  prev = () => {
-    const newActiveIndex = this.state.activeIndex === 0 ? this.props.sections.length - 1 : this.state.activeIndex - 1
-    this.setState({ activeIndex: newActiveIndex })
-  }
-
   getImages = () => {
     const imageSections = filter(this.props.sections, section => section.type === "image_collection")
-    return compact(flatten(map(imageSections, "images")))
+    return compact(
+      flatten(
+        map(imageSections, imageSection => {
+          return map(imageSection.images, image => {
+            image.title = imageSection.title
+            return image
+          })
+        })
+      )
+    )
   }
 
   renderImageComponents = () => {
-    return map(this.getImages(), (section, i) => {
-      return (
-        <div>
-          <Slide section={section} key={i} />
-        </div>
-      )
+    const images = this.getImages()
+    return map(images, (section, i) => {
+      return <WrappedSlide section={section} index={i + 1} total={images.length} />
     })
   }
 
   render() {
     const sliderSettings = {
-      centerMode: true,
       dots: false,
       infinite: true,
       slidesToShow: 1,
+      slidesToScroll: 1,
       accessibility: true,
       lazyLoad: true,
       draggable: true,
@@ -88,10 +85,20 @@ const RightArrow = props => {
     </NavArrow>
   )
 }
+const WrappedSlide = props => {
+  const newProps = { ...props }
+  delete newProps.section
+  return (
+    <div {...newProps}>
+      <Slide section={props.section} total={props.total} index={props.index} />
+    </div>
+  )
+}
 
 const FullscreenViewerContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 `
 const Close = styled.div`
   position: absolute;
@@ -105,10 +112,21 @@ interface NavArrowProps extends React.HTMLProps<HTMLDivElement> {
 }
 const div: StyledFunction<NavArrowProps> = styled.div
 const NavArrow = div`
+  display: flex;
+  align-items: center;
   position: absolute;
   height: 100vh;
-  top: 50%;
+  top: 0;
+  box-sizing: border-box;
   ${props => (props.direction === "left" ? "left: 0px;" : "")}
   ${props => (props.direction === "right" ? "right: 0px;" : "")}
+  ${Icon} {
+    z-index: 10;
+    cursor: pointer;
+    padding: 60px;
+  }
+  ${pMedia.sm`
+    display: none;
+  `}
 `
 export default FullscreenViewer
