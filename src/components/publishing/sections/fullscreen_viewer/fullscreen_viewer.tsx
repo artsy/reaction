@@ -8,20 +8,18 @@ import Slide from "./slide"
 
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   sections: any
+  show: boolean
+  onClose: () => void
 }
 
-interface FullscreenViewerState {
-  open: boolean
-  activeIndex: number
-}
-
-class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
+class FullscreenViewer extends React.Component<FullscreenViewerProps, void> {
   constructor(props) {
     super(props)
   }
 
-  close = () => {
-    console.log("closing")
+  close = e => {
+    e.preventDefault()
+    this.props.onClose()
   }
 
   getImages = () => {
@@ -56,6 +54,9 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
       draggable: true,
       nextArrow: <RightArrow />,
       prevArrow: <LeftArrow />,
+    }
+    if (!this.props.show) {
+      return null
     }
     return (
       <FullscreenViewerContainer>
@@ -99,6 +100,11 @@ const FullscreenViewerContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  background-color: white;
 `
 const Close = styled.div`
   position: absolute;

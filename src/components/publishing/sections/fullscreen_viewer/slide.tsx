@@ -7,7 +7,6 @@ import Caption from "./caption"
 const Slide = props => {
   const section = props.section
   const src = section.url || section.image
-  console.log(props)
   return (
     <SlideContainer>
       <Title>{section.title}</Title>
