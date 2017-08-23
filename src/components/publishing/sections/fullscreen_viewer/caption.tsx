@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../assets/colors"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
@@ -11,23 +11,23 @@ interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
   index: number
 }
 
-interface FullscreenViewerCaptionState {
-  open: boolean
+const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
+  return (
+    <CaptionContainer>
+      <CaptionToggle />
+      <Caption dangerouslySetInnerHTML={{ __html: this.props.caption }} />
+      <Index>{`${this.props.index} of ${this.props.total}`}</Index>
+    </CaptionContainer>
+  )
 }
 
-class FullscreenViewerCaption extends React.Component<FullscreenViewerCaptionProps, FullscreenViewerCaptionState> {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <CaptionContainer>
-        <Caption dangerouslySetInnerHTML={{ __html: this.props.caption }} />
-        <Index>{`${this.props.index} of ${this.props.total}`}</Index>
-      </CaptionContainer>
-    )
-  }
+const CaptionToggle = (props, context) => {
+  const toggleMessage = context.captionOpen ? "Hide" : "View Caption"
+  return (
+    <div>
+      {toggleMessage}
+    </div>
+  )
 }
 
 const Caption = styled.div`
@@ -44,7 +44,11 @@ const Index = styled.div`
     ${Fonts.unica("s14")}
   `}
 `
-const CaptionContainer = styled.div`
+interface CaptionContainerProps {
+  open: boolean
+}
+const div: StyledFunction<CaptionContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const CaptionContainer = div`
   display: flex;
   justify-content: space-between;
   background-color: ${Colors.gray};

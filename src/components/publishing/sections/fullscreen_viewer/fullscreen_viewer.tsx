@@ -1,4 +1,5 @@
 import { compact, filter, flatten, map } from "lodash"
+import * as PropTypes from "prop-types"
 import * as React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
@@ -12,9 +13,26 @@ interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   onClose: () => void
 }
 
-class FullscreenViewer extends React.Component<FullscreenViewerProps, void> {
+interface FullscreenViewerState {
+  isCaptionOpen: boolean
+}
+
+class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
+  static childContextTypes = {
+    onToggleCaption: PropTypes.func,
+  }
+
   constructor(props) {
     super(props)
+    this.state = { isCaptionOpen: false }
+  }
+
+  getChildContext() {
+    return { onToggleCaption: this.toggleCaption }
+  }
+
+  toggleCaption() {
+    this.setState({ isCaptionOpen: !this.state.isCaptionOpen })
   }
 
   close = e => {
@@ -39,7 +57,7 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, void> {
   renderImageComponents = () => {
     const images = this.getImages()
     return map(images, (section, i) => {
-      return <WrappedSlide section={section} index={i + 1} total={images.length} />
+      return <WrappedSlide section={section} index={i + 1} total={images.length} key={i} />
     })
   }
 
@@ -86,9 +104,12 @@ const RightArrow = props => {
     </NavArrow>
   )
 }
+
 const WrappedSlide = props => {
   const newProps = { ...props }
   delete newProps.section
+  delete newProps.index
+  delete newProps.total
   return (
     <div {...newProps}>
       <Slide section={props.section} total={props.total} index={props.index} />
@@ -100,7 +121,7 @@ const FullscreenViewerContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: 0;
   left: 0;

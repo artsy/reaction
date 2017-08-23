@@ -5,6 +5,7 @@ import Artwork from "./sections/artwork"
 import Authors from "./sections/authors"
 import Caption from "./sections/caption"
 import Embed from "./sections/embed"
+import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Image from "./sections/image"
 import ImageCollection from "./sections/image_collection"
 import ImageSetPreview from "./sections/imageset_preview"
@@ -23,6 +24,7 @@ export default {
   Embed,
   Caption,
   FeatureHeader,
+  FullscreenViewer,
   Header,
   Image,
   ImageCollection,

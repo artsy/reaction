@@ -1,9 +1,14 @@
+import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
 import Fonts from "../fonts"
 
-const ViewFullscreen: React.SFC<React.Props<HTMLDivElement>> = props => {
-  return <ViewFullscreenLink>View Fullscreen</ViewFullscreenLink>
+const ViewFullscreen: React.SFC<React.Props<HTMLDivElement>> = (props, context) => {
+  return <ViewFullscreenLink onClick={context.onViewFullscreen}>View Fullscreen</ViewFullscreenLink>
+}
+
+ViewFullscreen.contextTypes = {
+  onViewFullscreen: PropTypes.func,
 }
 
 const ViewFullscreenLink = styled.div`
