@@ -18,7 +18,7 @@ interface FigcaptionProps {
 }
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 const Figcaption = div`
-  & > p, p {
+  & > p, p, .public-DraftEditorPlaceholder-root {
     ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;
@@ -33,7 +33,7 @@ interface CaptionProps {
 
 const Caption: React.SFC<CaptionProps> = props => {
   const { layout, caption, viewFullscreen } = props
-  const child = caption ? <div dangerouslySetInnerHTML={{ __html: caption }} /> : props.children
+  const child = props.children ? props.children : <div dangerouslySetInnerHTML={{ __html: caption }} />
   return (
     <CaptionContainer>
       <Figcaption layout={layout}>
