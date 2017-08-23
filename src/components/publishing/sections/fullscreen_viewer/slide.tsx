@@ -5,14 +5,21 @@ import Fonts from "../../fonts"
 import Caption from "./caption"
 
 const Slide = props => {
+  const newProps = { ...props }
+  delete newProps.section
+  delete newProps.index
+  delete newProps.total
+  delete newProps.isCaptionOpen
   const section = props.section
   const src = section.url || section.image
   return (
-    <SlideContainer>
-      <Title>{section.title}</Title>
-      <Image src={src} />
-      <Caption caption={section.caption} total={props.total} index={props.index} />
-    </SlideContainer>
+    <div {...newProps}>
+      <SlideContainer>
+        <Title>{section.title}</Title>
+        <Image src={src} />
+        <Caption open={props.isCaptionOpen} caption={section.caption} total={props.total} index={props.index} />
+      </SlideContainer>
+    </div>
   )
 }
 

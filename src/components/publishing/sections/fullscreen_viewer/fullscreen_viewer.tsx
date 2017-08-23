@@ -25,6 +25,7 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
   constructor(props) {
     super(props)
     this.state = { isCaptionOpen: false }
+    this.toggleCaption = this.toggleCaption.bind(this)
   }
 
   getChildContext() {
@@ -57,7 +58,9 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
   renderImageComponents = () => {
     const images = this.getImages()
     return map(images, (section, i) => {
-      return <WrappedSlide section={section} index={i + 1} total={images.length} key={i} />
+      return (
+        <Slide isCaptionOpen={this.state.isCaptionOpen} section={section} index={i + 1} total={images.length} key={i} />
+      )
     })
   }
 
@@ -102,18 +105,6 @@ const RightArrow = props => {
     <NavArrow direction="right" onClick={props.onClick}>
       <Icon name="chevron-right" color="black" fontSize="24px" />
     </NavArrow>
-  )
-}
-
-const WrappedSlide = props => {
-  const newProps = { ...props }
-  delete newProps.section
-  delete newProps.index
-  delete newProps.total
-  return (
-    <div {...newProps}>
-      <Slide section={props.section} total={props.total} index={props.index} />
-    </div>
   )
 }
 

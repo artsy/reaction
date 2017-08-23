@@ -1,5 +1,6 @@
+import * as PropTypes from "prop-types"
 import * as React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Colors from "../../../../assets/colors"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
@@ -9,31 +10,54 @@ interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork?: any
   total: number
   index: number
+  open: boolean
 }
 
 const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
   return (
     <CaptionContainer>
-      <CaptionToggle />
-      <Caption dangerouslySetInnerHTML={{ __html: this.props.caption }} />
-      <Index>{`${this.props.index} of ${this.props.total}`}</Index>
+      <CaptionTextContainer>
+        <CaptionToggle open={props.open} />
+        <Caption open={props.open} dangerouslySetInnerHTML={{ __html: props.caption }} />
+      </CaptionTextContainer>
+      <Index>{`${props.index} of ${props.total}`}</Index>
     </CaptionContainer>
   )
 }
 
-const CaptionToggle = (props, context) => {
-  const toggleMessage = context.captionOpen ? "Hide" : "View Caption"
+interface CaptionToggleProps extends React.Props<HTMLDivElement> {
+  open: boolean
+}
+const CaptionToggle: React.SFC<CaptionToggleProps> = (props, context) => {
+  const toggleMessage = props.open ? "Hide" : "View Caption"
   return (
-    <div>
-      {toggleMessage}
-    </div>
+    <StyledCaptionToggle onClick={context.onToggleCaption}>
+      <span>{toggleMessage}</span>
+    </StyledCaptionToggle>
   )
 }
-
+CaptionToggle.contextTypes = {
+  onToggleCaption: PropTypes.func,
+}
+const StyledCaptionToggle = styled.div`
+  display: none;
+  ${pMedia.sm`
+    ${Fonts.unica("s14", "medium")}
+    cursor: pointer;
+    display: inline-block;
+    span {
+      border-bottom: 1px solid black;
+    }
+  `}
+`
 const Caption = styled.div`
   ${Fonts.unica("s16", "medium")}
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
+  `}
+  ${pMedia.sm`
+    display: ${props => (props.open ? "block" : "none")};
+    margin-top: ${props => (props.open ? "20px" : "0px")};
   `}
 `
 const Index = styled.div`
@@ -44,11 +68,7 @@ const Index = styled.div`
     ${Fonts.unica("s14")}
   `}
 `
-interface CaptionContainerProps {
-  open: boolean
-}
-const div: StyledFunction<CaptionContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
-const CaptionContainer = div`
+const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: ${Colors.gray};
@@ -59,6 +79,10 @@ const CaptionContainer = div`
   ${pMedia.sm`
     padding: 20px;
   `}
+`
+const CaptionTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 export default FullscreenViewerCaption
