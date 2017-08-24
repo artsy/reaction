@@ -1,34 +1,39 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../assets/colors"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
+import ArtworkCaption from "../artwork_caption"
 
 interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
-  caption?: string
-  artwork?: any
+  section?: any
   total: number
   index: number
   open: boolean
 }
 
 const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
+  const caption = props.section.type === "artwork"
+    ? <ArtworkCaption layout="fullscreen" artwork={props.section} linked />
+    : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
   return (
     <CaptionContainer>
       <CaptionTextContainer>
         <CaptionToggle open={props.open} />
-        <Caption open={props.open} dangerouslySetInnerHTML={{ __html: props.caption }} />
+        <Caption open={props.open}>
+          {caption}
+        </Caption>
       </CaptionTextContainer>
       <Index>{`${props.index} of ${props.total}`}</Index>
     </CaptionContainer>
   )
 }
 
-interface CaptionToggleProps extends React.Props<HTMLDivElement> {
+interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
   open: boolean
 }
-const CaptionToggle: React.SFC<CaptionToggleProps> = (props, context) => {
+const CaptionToggle: React.SFC<CaptionOpenProps> = (props, context) => {
   const toggleMessage = props.open ? "Hide" : "View Caption"
   return (
     <StyledCaptionToggle onClick={context.onToggleCaption}>
@@ -50,7 +55,8 @@ const StyledCaptionToggle = styled.div`
     }
   `}
 `
-const Caption = styled.div`
+const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
+const Caption = CaptionDiv`
   ${Fonts.unica("s16", "medium")}
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}

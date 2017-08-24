@@ -11,6 +11,7 @@ interface ArticleProps {
 }
 interface ArticleState {
   isViewerOpen: boolean
+  slideIndex: number
 }
 
 class Article extends React.Component<ArticleProps, ArticleState> {
@@ -20,7 +21,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
   constructor(props) {
     super(props)
-    this.state = { isViewerOpen: false }
+    this.state = { isViewerOpen: false, slideIndex: 0 }
     this.openViewer = this.openViewer.bind(this)
     this.closeViewer = this.closeViewer.bind(this)
   }
@@ -29,8 +30,11 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     return { onViewFullscreen: this.openViewer }
   }
 
-  openViewer() {
-    this.setState({ isViewerOpen: true })
+  openViewer(index) {
+    this.setState({
+      isViewerOpen: true,
+      slideIndex: index,
+    })
   }
 
   closeViewer() {
@@ -46,7 +50,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           <FeatureLayout>
             <Sections article={article} />
           </FeatureLayout>
-          <FullscreenViewer onClose={this.closeViewer} show={this.state.isViewerOpen} sections={article.sections} />
+          <FullscreenViewer
+            onClose={this.closeViewer}
+            show={this.state.isViewerOpen}
+            slideIndex={this.state.slideIndex}
+            sections={article.sections}
+          />
         </div>
       )
     } else {
@@ -56,7 +65,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           <StandardLayout>
             <Sections article={article} />
           </StandardLayout>
-          <FullscreenViewer onClose={this.closeViewer} show={this.state.isViewerOpen} sections={article.sections} />
+          <FullscreenViewer
+            onClose={this.closeViewer}
+            show={this.state.isViewerOpen}
+            slideIndex={this.state.slideIndex}
+            sections={article.sections}
+          />
         </div>
       )
     }

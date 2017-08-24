@@ -1,4 +1,4 @@
-import { compact, filter, flatten, map } from "lodash"
+import { compact, filter, flatten, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import Slider from "react-slick"
@@ -11,6 +11,7 @@ interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   sections: any
   show: boolean
   onClose: () => void
+  slideIndex: number
 }
 
 interface FullscreenViewerState {
@@ -42,12 +43,14 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
   }
 
   getImages = () => {
-    const imageSections = filter(this.props.sections, section => section.type === "image_collection")
+    const imageSections = filter(this.props.sections, section =>
+      includes(["image_collection", "image_set"], section.type)
+    )
     return compact(
       flatten(
         map(imageSections, imageSection => {
           return map(imageSection.images, image => {
-            image.title = imageSection.title
+            image.setTitle = imageSection.setTitle
             return image
           })
         })
@@ -75,6 +78,7 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
       draggable: true,
       nextArrow: <RightArrow />,
       prevArrow: <LeftArrow />,
+      initialSlide: this.props.slideIndex,
     }
     if (!this.props.show) {
       return null

@@ -3,8 +3,12 @@ import * as React from "react"
 import styled from "styled-components"
 import Fonts from "../fonts"
 
-const ViewFullscreen: React.SFC<React.Props<HTMLDivElement>> = (props, context) => {
-  return <ViewFullscreenLink onClick={context.onViewFullscreen}>View Fullscreen</ViewFullscreenLink>
+interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
+  index?: number
+}
+
+const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
+  return <ViewFullscreenLink onClick={() => context.onViewFullscreen(props.index)}>View Fullscreen</ViewFullscreenLink>
 }
 
 ViewFullscreen.contextTypes = {

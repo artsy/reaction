@@ -15,9 +15,9 @@ const Slide = props => {
   return (
     <div {...newProps}>
       <SlideContainer>
-        <Title>{section.title}</Title>
+        <Title>{section.setTitle}</Title>
         <Image src={src} />
-        <Caption open={props.isCaptionOpen} caption={section.caption} total={props.total} index={props.index} />
+        <Caption open={props.isCaptionOpen} section={section} total={props.total} index={props.index} />
       </SlideContainer>
     </div>
   )

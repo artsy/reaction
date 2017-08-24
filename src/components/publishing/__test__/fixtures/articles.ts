@@ -182,12 +182,28 @@ const Articles = [
               "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
           },
           {
-            url: "https://artsy-media-uploads.s3.amazonaws.com/d0TIJQxkpkJCSWRci0xXsQ%2Funnamed-3.png",
-            type: "image",
-            width: 600,
-            height: 1065,
-            caption:
-              "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+            type: "artwork",
+            id: "596aa2851a1e864d5eea6681",
+            slug: "matt-devine-brass-tax",
+            date: "",
+            title: "Brass Tax",
+            image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+            partner: {
+              name: "Joanne Artman Gallery",
+              slug: "joanne-artman-gallery",
+            },
+            artists: [
+              {
+                name: "Matt Devine",
+                slug: "matt-devine",
+              },
+            ],
+            artist: {
+              name: "Matt Devine",
+              slug: "matt-devine",
+            },
+            width: 1500,
+            height: 2000,
           },
         ],
       },
@@ -408,6 +424,36 @@ const Articles = [
         layout: "blockquote",
         body:
           "<blockquote>Land exhibitions, make influential contacts, and gain valuable feedback about your work.</blockquote>",
+      },
+      {
+        type: "image_collection",
+        layout: "overflow_fillwidth",
+        images: [
+          {
+            type: "artwork",
+            id: "57dc83ce139b212bd7000172",
+            slug: "matt-devine-untitled-suspended",
+            date: "",
+            title: "Untitled Suspended",
+            image: "https://d32dm0rphc51dk.cloudfront.net/jDXiwSBgNP2eml1YkMIitg/larger.jpg",
+            partner: {
+              name: "Joanne Artman Gallery",
+              slug: "joanne-artman-gallery",
+            },
+            artists: [
+              {
+                name: "Matt Devine",
+                slug: "matt-devine",
+              },
+            ],
+            artist: {
+              name: "Matt Devine",
+              slug: "matt-devine",
+            },
+            width: 3134,
+            height: 2062,
+          },
+        ],
       },
       {
         type: "text",
