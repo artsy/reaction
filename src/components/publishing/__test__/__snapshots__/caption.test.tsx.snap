@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a long caption properly 1`] = `
-.c3 {
+exports[`renders a child even if a caption is provided 1`] = `
+.c2 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -18,7 +18,7 @@ exports[`renders a long caption properly 1`] = `
   align-self: flex-start;
 }
 
-.c1 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30,9 +30,9 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p,
-.c2 p,
-.c2 .public-DraftEditorPlaceholder-root {
+.c1 > p,
+.c1 p,
+.c1 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -41,52 +41,32 @@ exports[`renders a long caption properly 1`] = `
   margin: 0;
 }
 
-.c0 {
-  display: block;
-}
-
 @media (max-width: 600px) {
-  .c1 {
+  .c0 {
     padding: 0px 10px;
   }
 }
 
 <div
-  className="article-image"
+  className="c0"
 >
-  <img
-    alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-    className="c0"
-    height="auto"
-    src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-    width="100%"
-  />
-   // strip caption html
   <div
     className="c1"
   >
-    <div
-      className="c2"
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
-          }
-        }
-      />
+    <div>
+      Here is a passed child
     </div>
-    <div
-      className="c3"
-    >
-      View Fullscreen
-    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    View Fullscreen
   </div>
 </div>
 `;
 
-exports[`renders properly 1`] = `
-.c3 {
+exports[`renders a saved caption properly 1`] = `
+.c2 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -103,7 +83,7 @@ exports[`renders properly 1`] = `
   align-self: flex-start;
 }
 
-.c1 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,9 +95,9 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p,
-.c2 p,
-.c2 .public-DraftEditorPlaceholder-root {
+.c1 > p,
+.c1 p,
+.c1 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -126,46 +106,30 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c0 {
-  display: block;
-}
-
 @media (max-width: 600px) {
-  .c1 {
+  .c0 {
     padding: 0px 10px;
   }
 }
 
 <div
-  className="article-image"
+  className="c0"
 >
-  <img
-    alt="Photo by Adam Kuehl for Artsy."
-    className="c0"
-    height="auto"
-    src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
-    width="100%"
-  />
-   // strip caption html
   <div
     className="c1"
   >
     <div
-      className="c2"
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
-          }
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>This is a saved caption</p>",
         }
-      />
-    </div>
-    <div
-      className="c3"
-    >
-      View Fullscreen
-    </div>
+      }
+    />
+  </div>
+  <div
+    className="c2"
+  >
+    View Fullscreen
   </div>
 </div>
 `;
