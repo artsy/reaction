@@ -156,8 +156,8 @@ exports[`renders a full image set properly 1`] = `
       className="c6"
     >
       <svg
-        data-name="imageset"
-        id="imageset"
+        data-name="image-set"
+        id="image-set"
         viewBox="0 0 44 44"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -357,8 +357,8 @@ exports[`renders a mini image set properly 1`] = `
         className="c7"
       >
         <svg
-          data-name="imageset"
-          id="imageset"
+          data-name="image-set"
+          id="image-set"
           viewBox="0 0 44 44"
           xmlns="http://www.w3.org/2000/svg"
         >

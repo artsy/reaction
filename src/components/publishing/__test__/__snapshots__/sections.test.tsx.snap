@@ -1187,8 +1187,8 @@ exports[`renders properly 1`] = `
           className="c24"
         >
           <svg
-            data-name="imageset"
-            id="imageset"
+            data-name="image-set"
+            id="image-set"
             viewBox="0 0 44 44"
             xmlns="http://www.w3.org/2000/svg"
           >
