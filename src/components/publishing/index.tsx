@@ -12,8 +12,8 @@ import ImageSetPreviewClassic from "./sections/imageset_preview_classic"
 import Text from "./sections/text"
 import Video from "./sections/video"
 
-import IconImageSet from "./icons/imageset"
-import IconRemove from "./icons/remove"
+import IconImageSet from "./icon/image_set"
+import IconRemove from "./icon/remove"
 
 export default {
   Article,
@@ -29,7 +29,7 @@ export default {
   ImageSetPreviewClassic,
   Text,
   Video,
-  icons: {
+  icon: {
     IconImageSet,
     IconRemove,
   },

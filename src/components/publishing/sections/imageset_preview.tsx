@@ -3,7 +3,7 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 
 import Fonts from "../fonts"
-import IconImageSet from "../icons/imageset"
+import IconImageSet from "../icon/image_set"
 
 type Layout = "mini" | "full"
 
