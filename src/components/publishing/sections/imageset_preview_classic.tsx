@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import IconImageSet from "../icons/icon_imageset"
+import IconImageSet from "../icon/image_set"
 
 import Fonts from "../fonts"
 

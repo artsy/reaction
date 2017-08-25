@@ -1,11 +1,8 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-
-import "jest-styled-components"
-
-import IconImageset from "../icons/icon_imageset"
+import IconImageSet from "../../icon/image_set"
 
 it("renders properly", () => {
-  const icon = renderer.create(<IconImageset />).toJSON()
+  const icon = renderer.create(<IconImageSet />).toJSON()
   expect(icon).toMatchSnapshot()
 })
