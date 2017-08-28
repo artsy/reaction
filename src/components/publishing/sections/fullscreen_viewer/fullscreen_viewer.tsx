@@ -29,6 +29,20 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     this.toggleCaption = this.toggleCaption.bind(this)
   }
 
+  componentWillMount() {
+    document.addEventListener("keydown", this.handleKeydown.bind(this))
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeydown.bind(this))
+  }
+
+  handleKeydown(e) {
+    if (e.keyCode === 27) {
+      this.close(e)
+    }
+  }
+
   getChildContext() {
     return { onToggleCaption: this.toggleCaption }
   }
