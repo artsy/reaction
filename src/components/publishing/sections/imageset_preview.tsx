@@ -93,6 +93,7 @@ export interface Props {
     images: Array<{
       url?: string
       image?: string
+      index?: any
     }>
     layout?: Layout
     title?: string
@@ -116,7 +117,7 @@ class ImageSetPreview extends Component<Props, null> {
   }
   onClick() {
     if (this.context.onViewFullscreen) {
-      this.context.onViewFullscreen(1)
+      this.context.onViewFullscreen(this.props.section.images[0].index)
     }
   }
   wrapper() {

@@ -1,22 +1,20 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import Button from "../../buttons/default"
-import Articles from "../fixtures/articles"
+import { Images } from "../fixtures/components"
 import FullscreenViewer from "../sections/fullscreen_viewer/fullscreen_viewer"
 
 class FullscreenViewerDemo extends React.Component<any, any> {
   constructor(props) {
     super(props)
     this.state = { isViewerOpen: false }
-    this.openViewer = this.openViewer.bind(this)
-    this.closeViewer = this.closeViewer.bind(this)
   }
 
-  openViewer() {
+  openViewer = () => {
     this.setState({ isViewerOpen: true })
   }
 
-  closeViewer() {
+  closeViewer = () => {
     this.setState({ isViewerOpen: false })
   }
 
@@ -24,7 +22,7 @@ class FullscreenViewerDemo extends React.Component<any, any> {
     return (
       <div>
         <Button onClick={this.openViewer}>Open Fullscreen Viewer</Button>
-        <FullscreenViewer onClose={this.closeViewer} show={this.state.isViewerOpen} sections={Articles[1].sections} />
+        <FullscreenViewer onClose={this.closeViewer} show={this.state.isViewerOpen} images={Images} />
       </div>
     )
   }

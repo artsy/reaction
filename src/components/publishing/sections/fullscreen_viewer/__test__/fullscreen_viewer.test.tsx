@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import Articles from "../../../fixtures/articles"
+import { Images } from "../../../fixtures/components"
 import FullscreenViewer from "../fullscreen_viewer"
 
 jest.mock("react-slick", () => {
@@ -10,6 +10,6 @@ jest.mock("react-slick", () => {
 
 it("renders properly", () => {
   const onClose = jest.fn()
-  const viewer = renderer.create(<FullscreenViewer sections={Articles[1].sections} show onClose={onClose} />).toJSON()
+  const viewer = renderer.create(<FullscreenViewer images={Images} show onClose={onClose} />).toJSON()
   expect(viewer).toMatchSnapshot()
 })

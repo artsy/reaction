@@ -101,7 +101,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const { layout } = this.props
+    const { layout, artwork } = this.props
     if (layout === "classic") {
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
@@ -138,7 +138,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             </span>
             {this.renderTitleDatePartner()}
           </TruncatedLine>
-          <ViewFullscreen />
+          <ViewFullscreen index={artwork.index} />
         </StyledArtworkCaption>
       )
     }
@@ -154,7 +154,7 @@ const StyledArtworkCaption = div`
 const StyledClassicCaption = div`
   margin-top: 10px;
   display: block;
-  ${Fonts.garamond("s15")}  
+  ${Fonts.garamond("s15")}
 `
 const StyledFullscreenCaption = div`
   display: flex;

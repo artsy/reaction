@@ -8,20 +8,21 @@ interface CaptionProps {
   caption: string
   layout?: string
   viewFullscreen?: boolean
+  index?: any
 }
 interface FigcaptionProps {
   layout: string
 }
 
 const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, caption, viewFullscreen, children } = props
+  const { layout, caption, viewFullscreen, children, index } = props
   const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
   return (
     <CaptionContainer>
       <Figcaption layout={layout}>
         {child}
       </Figcaption>
-      {viewFullscreen ? <ViewFullscreen /> : false}
+      {viewFullscreen ? <ViewFullscreen index={index} /> : false}
     </CaptionContainer>
   )
 }

@@ -1,3 +1,4 @@
+import * as _ from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import Header from "./header/header"
@@ -12,6 +13,8 @@ interface ArticleProps {
 interface ArticleState {
   isViewerOpen: boolean
   slideIndex: number
+  fullscreenImages: any
+  article: any
 }
 
 class Article extends React.Component<ArticleProps, ArticleState> {
@@ -21,24 +24,49 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
   constructor(props) {
     super(props)
-    this.state = { isViewerOpen: false, slideIndex: 0 }
-    this.openViewer = this.openViewer.bind(this)
-    this.closeViewer = this.closeViewer.bind(this)
+    const { fullscreenImages, article } = this.indexImages()
+    this.state = {
+      isViewerOpen: false,
+      slideIndex: 0,
+      fullscreenImages,
+      article,
+    }
   }
 
   getChildContext() {
     return { onViewFullscreen: this.openViewer }
   }
 
-  openViewer(index) {
+  openViewer = index => {
     this.setState({
       isViewerOpen: true,
       slideIndex: index,
     })
   }
 
-  closeViewer() {
+  closeViewer = () => {
     this.setState({ isViewerOpen: false })
+  }
+
+  indexImages = () => {
+    const article = this.props.article
+    const fullscreenImages = []
+    let sectionIndex = -1
+    const newSections = _.map(_.clone(article.sections), section => {
+      if (_.includes(["image_collection", "image_set"], section.type)) {
+        const newImages = _.map(section.images, image => {
+          sectionIndex = sectionIndex + 1
+          image.setTitle = section.title
+          image.index = sectionIndex
+          fullscreenImages.push(image)
+          return image
+        })
+        section.images = newImages
+      }
+      return section
+    })
+    article.sections = newSections
+    return { fullscreenImages, article }
   }
 
   render() {
@@ -46,30 +74,30 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     if (article.layout === "feature") {
       return (
         <div>
-          <Header article={article} />
+          <Header article={this.state.article} />
           <FeatureLayout>
-            <Sections article={article} />
+            <Sections article={this.state.article} />
           </FeatureLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
             show={this.state.isViewerOpen}
             slideIndex={this.state.slideIndex}
-            sections={article.sections}
+            images={this.state.fullscreenImages}
           />
         </div>
       )
     } else {
       return (
         <div>
-          <Header article={article} />
+          <Header article={this.state.article} />
           <StandardLayout>
-            <Sections article={article} />
+            <Sections article={this.state.article} />
           </StandardLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
             show={this.state.isViewerOpen}
             slideIndex={this.state.slideIndex}
-            sections={article.sections}
+            images={this.state.fullscreenImages}
           />
         </div>
       )

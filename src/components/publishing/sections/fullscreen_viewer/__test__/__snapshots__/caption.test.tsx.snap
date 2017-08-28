@@ -2,700 +2,82 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__FullscreenViewerContainer-s1r3qb8j-0 dGWYbG"
+  className="file__CaptionContainer-s1koc55t-2 bWybux"
 >
-  <div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 hYCUYa"
-          src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            1 of 14
-          </div>
-        </div>
-      </div>
+  <div
+    className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+  >
+    <div
+      className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+      onClick={undefined}
+    >
+      <span>
+        Hide
+      </span>
     </div>
-    <div>
+    <div
+      className="sc-bxivhb gsbYNP"
+      open={true}
+    >
       <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
+        className="sc-htpNat dqiQen"
       >
         <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 iqvdwm"
-          src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
+          className="artist-name file__Line-s7zcrfi-1 jFJBbs"
         >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          <span
+            className="name"
           >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
+            <a
+              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              href="/artist/fernando-botero"
             >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            2 of 14
-          </div>
+              Fernando Botero
+            </a>
+          </span>
         </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
         <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 fYTbEc"
-          src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
+          className="file__Line-s7zcrfi-1 jFJBbs"
         >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          <span
+            className="title"
           >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
+            <a
+              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              href="/artwork/fernando-botero-nude-on-the-beach"
             >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                className="sc-htpNat dqiQen"
-              >
-                <div
-                  className="artist-name file__Line-s1va5fuv-1 fojyOT"
-                >
-                  <span
-                    className="name"
-                  >
-                    <a
-                      className="file__StyledTextLink-s18afosz-0 hOUyga"
-                      href="/artist/matt-devine"
-                    >
-                      Matt Devine
-                    </a>
-                  </span>
-                </div>
-                <div
-                  className="file__Line-s1va5fuv-1 fojyOT"
-                >
-                  <span
-                    className="title"
-                  >
-                    <a
-                      className="file__StyledTextLink-s18afosz-0 hOUyga"
-                      href="/artwork/matt-devine-brass-tax"
-                    >
-                      Brass Tax
-                    </a>
-                  </span>
-                  <span
-                    className="comma"
-                  >
-                    , 
-                  </span>
-                  <a
-                    className="file__StyledTextLink-s18afosz-0 hOUyga"
-                    href="/partner/joanne-artman-gallery"
-                  >
-                    Joanne Artman Gallery
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
+              Nude on the Beach
+            </a>
+          </span>
+          <span
+            className="comma"
           >
-            3 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 hCkSSv"
-          src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+            , 
+          </span>
+          <span
+            className="date"
           >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
+            2000
+          </span>
+          <span
+            className="comma"
           >
-            4 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 cvXlUe"
-          src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+            , 
+          </span>
+          <a
+            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            href="/partner/gary-nader"
           >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            5 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 hooYjm"
-          src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            6 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 gIalgO"
-          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            7 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 bLjpVL"
-          src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            8 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 khotmc"
-          src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            9 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 eAMJWQ"
-          src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            10 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 jEvdqt"
-          src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            11 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 erDyWd"
-          src="https://artsy-media-uploads.s3.amazonaws.com/z7BUiIKCStBxlcXh53t0Xg%2F07272017133730-0001+%28dragged%29+copy.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            12 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 bgRWEk"
-          src="https://artsy-media-uploads.s3.amazonaws.com/T9g-NNJcmy8ej6qV6UQ-fA%2F07272017133839-0001.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            13 of 14
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div
-        className="file__SlideContainer-s12qvrc9-0 dbCrtu"
-      >
-        <div
-          className="file__Title-s12qvrc9-2 yQTKs"
-        />
-        <div
-          className="file__Image-s12qvrc9-1 ldVVqQ"
-          src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
-        />
-        <div
-          className="file__CaptionContainer-s1koc55t-2 bWybux"
-        >
-          <div
-            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
-          >
-            <div
-              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="sc-bxivhb jIhHWs"
-              open={false}
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-          <div
-            className="file__Index-s1koc55t-1 gCANWd"
-          >
-            14 of 14
-          </div>
+            Gary Nader
+          </a>
         </div>
       </div>
     </div>
   </div>
   <div
-    className="file__Close-s1r3qb8j-1 ikTxWV"
-    onClick={[Function]}
+    className="file__Index-s1koc55t-1 gCANWd"
   >
-    <div
-      className="file-s1ekx40u-0 drQqZd"
-      style={undefined}
-    >
-      
-    </div>
+    2 of 10
   </div>
 </div>
 `;

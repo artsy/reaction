@@ -15,6 +15,7 @@ interface ArtworkProps {
   linked?: boolean
   width?: string | number
   height?: string | number
+  index?: any
 }
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {

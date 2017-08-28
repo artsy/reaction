@@ -46,7 +46,7 @@ function renderImages(images, dimensions, gutter, width) {
     if (image.type === "image") {
       renderedImage = <Image image={image} width={imageSize.width} height={imageSize.height} />
     } else if (image.type === "artwork") {
-      renderedImage = <Artwork artwork={image} width={imageSize.width} height={imageSize.height} />
+      renderedImage = <Artwork artwork={image} width={imageSize.width} height={imageSize.height} index={image.index} />
     } else {
       return false
     }
