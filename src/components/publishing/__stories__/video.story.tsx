@@ -3,7 +3,7 @@ import * as React from "react"
 
 import Video from "../sections/video"
 
-import { Videos } from "../__test__/fixtures/components"
+import { Videos } from "../fixtures/components"
 
 storiesOf("Publishing/Video", module)
   .add("Youtube Video", () => {

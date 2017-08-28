@@ -4,10 +4,10 @@ import * as renderer from "react-test-renderer"
 import "jest-styled-components"
 import * as _ from "lodash"
 
-import AuthorDate from "../header/author_date"
-import Header from "../header/header"
-import Articles from "./fixtures/articles"
-import { HeroSections } from "./fixtures/components"
+import Articles from "../../fixtures/articles"
+import { HeroSections } from "../../fixtures/components"
+import AuthorDate from "../author_date"
+import Header from "../header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

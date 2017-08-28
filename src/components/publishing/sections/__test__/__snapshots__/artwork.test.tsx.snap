@@ -78,7 +78,7 @@ exports[`renders properly 1`] = `
     className="display-artwork__caption c2"
   >
     <div
-      className="c3"
+      className="file__TruncatedLine-s1va5fuv-0 dZyylV"
     >
       <span
         className="artist-name"
@@ -127,7 +127,8 @@ exports[`renders properly 1`] = `
       </a>
     </div>
     <div
-      className="c5"
+      className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+      onClick={[Function]}
     >
       View Fullscreen
     </div>

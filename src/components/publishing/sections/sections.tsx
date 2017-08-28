@@ -30,9 +30,11 @@ const Sections: React.SFC<SectionsProps> = props => {
   )
 }
 
+// function indexImages(sections) {}
+
 function renderSections(article) {
-  const sections = article.sections
-  const renderedSections = sections.map((section, i) => {
+  // const sections = indexImages(article.sections)
+  const renderedSections = article.sections.map((section, i) => {
     const child = getSection(section, article.layout)
     if (child) {
       return (

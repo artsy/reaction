@@ -1,0 +1,701 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="file__FullscreenViewerContainer-s1wnwpdr-0 hkplDc"
+>
+  <div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 lopkHP"
+          src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            1 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 fBZrXv"
+          src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            2 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 ioTFQG"
+          src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                className="sc-htpNat dqiQen"
+              >
+                <div
+                  className="artist-name file__Line-s1va5fuv-1 fojyOT"
+                >
+                  <span
+                    className="name"
+                  >
+                    <a
+                      className="file__StyledTextLink-s18afosz-0 hOUyga"
+                      href="/artist/matt-devine"
+                    >
+                      Matt Devine
+                    </a>
+                  </span>
+                </div>
+                <div
+                  className="file__Line-s1va5fuv-1 fojyOT"
+                >
+                  <span
+                    className="title"
+                  >
+                    <a
+                      className="file__StyledTextLink-s18afosz-0 hOUyga"
+                      href="/artwork/matt-devine-brass-tax"
+                    >
+                      Brass Tax
+                    </a>
+                  </span>
+                  <span
+                    className="comma"
+                  >
+                    , 
+                  </span>
+                  <a
+                    className="file__StyledTextLink-s18afosz-0 hOUyga"
+                    href="/partner/joanne-artman-gallery"
+                  >
+                    Joanne Artman Gallery
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            3 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 dhHgSF"
+          src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            4 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 kyvCEL"
+          src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            5 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 bXSdmz"
+          src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            6 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 eZKlVh"
+          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            7 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 hWdbdH"
+          src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            8 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 hhMkFP"
+          src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            9 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 clisUm"
+          src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            10 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 dqPQdT"
+          src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            11 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 kEsXyq"
+          src="https://artsy-media-uploads.s3.amazonaws.com/z7BUiIKCStBxlcXh53t0Xg%2F07272017133730-0001+%28dragged%29+copy.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            12 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 gvHLnJ"
+          src="https://artsy-media-uploads.s3.amazonaws.com/T9g-NNJcmy8ej6qV6UQ-fA%2F07272017133839-0001.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>King Khan, card from the Black Power Tarot. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            13 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="file__SlideContainer-s1o97mir-0 djQklJ"
+      >
+        <div
+          className="file__Title-s1o97mir-2 MBsnT"
+        />
+        <div
+          className="file__Image-s1o97mir-1 eKdTmi"
+          src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
+        />
+        <div
+          className="file__CaptionContainer-s1koc55t-2 bWybux"
+        >
+          <div
+            className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+          >
+            <div
+              className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="sc-bxivhb jIhHWs"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="file__Index-s1koc55t-1 gCANWd"
+          >
+            14 of 14
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="file__Close-s1wnwpdr-1 kBmBOs"
+    onClick={[Function]}
+  >
+    <div
+      className="file-s1ekx40u-0 drQqZd"
+      style={undefined}
+    >
+      
+    </div>
+  </div>
+</div>
+`;

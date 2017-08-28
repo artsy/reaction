@@ -1,3 +1,4 @@
+import { omit } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../../helpers"
@@ -5,11 +6,7 @@ import Fonts from "../../fonts"
 import Caption from "./caption"
 
 const Slide = props => {
-  const newProps = { ...props }
-  delete newProps.section
-  delete newProps.index
-  delete newProps.total
-  delete newProps.isCaptionOpen
+  const newProps = omit(props, ["section", "index", "total", "isCaptionOpen"])
   const section = props.section
   const src = section.url || section.image
   return (

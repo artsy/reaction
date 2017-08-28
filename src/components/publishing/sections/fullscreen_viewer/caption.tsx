@@ -61,9 +61,9 @@ const Caption = CaptionDiv`
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
   `}
-  ${pMedia.sm`
-    display: ${props => (props.open ? "block" : "none")};
-    margin-top: ${props => (props.open ? "20px" : "0px")};
+  ${props => pMedia.sm`
+    display: ${props.open ? "block" : "none"};
+    margin-top: ${props.open ? "20px" : "0px"};
   `}
 `
 const Index = styled.div`

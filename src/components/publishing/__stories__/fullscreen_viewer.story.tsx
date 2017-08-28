@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import Button from "../../buttons/default"
-import Articles from "../__test__/fixtures/articles"
+import Articles from "../fixtures/articles"
 import FullscreenViewer from "../sections/fullscreen_viewer/fullscreen_viewer"
 
 class FullscreenViewerDemo extends React.Component<any, any> {

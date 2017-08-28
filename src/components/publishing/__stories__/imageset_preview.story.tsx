@@ -10,7 +10,7 @@ import {
   ImageSetFullSansTitle,
   ImageSetMini,
   ImageSetMiniSansTitle,
-} from "../__test__/fixtures/components"
+} from "../fixtures/components"
 
 storiesOf("Publishing/Imageset Preview", module)
   .add("Imageset Preview - Classic", () => {

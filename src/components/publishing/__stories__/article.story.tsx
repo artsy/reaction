@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Articles from "../__test__/fixtures/articles"
 import Article from "../article"
+import Articles from "../fixtures/articles"
 
 storiesOf("Publishing/Articles", module)
   .add("Standard", () => {

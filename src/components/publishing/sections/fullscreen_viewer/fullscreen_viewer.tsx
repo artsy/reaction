@@ -11,7 +11,7 @@ interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   sections: any
   show: boolean
   onClose: () => void
-  slideIndex: number
+  slideIndex?: number
 }
 
 interface FullscreenViewerState {

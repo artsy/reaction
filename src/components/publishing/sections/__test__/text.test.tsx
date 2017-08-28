@@ -1,9 +1,7 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-
-import { SectionText } from "./fixtures/components"
-
-import Text from "../sections/text"
+import { SectionText } from "../../fixtures/components"
+import Text from "../text"
 
 it("renders classic text properly", () => {
   const text = renderer.create(<Text html={SectionText.classic} layout="classic" />).toJSON()

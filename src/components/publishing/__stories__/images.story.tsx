@@ -5,7 +5,7 @@ import Artwork from "../sections/artwork"
 import Image from "../sections/image"
 import ImageCollection from "../sections/image_collection"
 
-import { Artworks, Images } from "../__test__/fixtures/components"
+import { Artworks, Images } from "../fixtures/components"
 
 storiesOf("Publishing/Images", module)
   .add("Artwork", () => {

@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { Authors, Embeds } from "../__test__/fixtures/components"
+import { Authors, Embeds } from "../fixtures/components"
 import AuthorInfo from "../sections/authors"
 import Embed from "../sections/embed"
 

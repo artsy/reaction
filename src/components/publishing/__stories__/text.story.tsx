@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { SectionText } from "../__test__/fixtures/components"
+import { SectionText } from "../fixtures/components"
 import Text from "../sections/text"
 
 storiesOf("Publishing/Text", module)

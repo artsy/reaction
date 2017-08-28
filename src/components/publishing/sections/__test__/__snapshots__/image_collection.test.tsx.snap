@@ -90,7 +90,7 @@ exports[`renders a single image properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX fhpsaR"
     width={undefined}
   >
     <div
@@ -112,7 +112,7 @@ exports[`renders a single image properly 1`] = `
         className="display-artwork__caption c4"
       >
         <div
-          className="c5"
+          className="file__TruncatedLine-s1va5fuv-0 dZyylV"
         >
           <span
             className="artist-name"
@@ -161,7 +161,8 @@ exports[`renders a single image properly 1`] = `
           </a>
         </div>
         <div
-          className="c7"
+          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          onClick={[Function]}
         >
           View Fullscreen
         </div>
@@ -316,7 +317,7 @@ exports[`renders properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX kKeSOb"
     width={312}
   >
     <div
@@ -338,7 +339,7 @@ exports[`renders properly 1`] = `
         className="display-artwork__caption c4"
       >
         <div
-          className="c5"
+          className="file__TruncatedLine-s1va5fuv-0 dZyylV"
         >
           <span
             className="artist-name"
@@ -387,7 +388,8 @@ exports[`renders properly 1`] = `
           </a>
         </div>
         <div
-          className="c7"
+          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          onClick={[Function]}
         >
           View Fullscreen
         </div>
@@ -395,7 +397,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c8"
+    className="sc-ifAKCX chmTiW"
     width={168}
   >
     <div
@@ -410,21 +412,19 @@ exports[`renders properly 1`] = `
       />
        // strip caption html
       <div
-        className="c10"
+        className="file__CaptionContainer-s7px8t2-0 imhLJG"
       >
         <div
-          className="c11"
-        >
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
-              }
+          className="sc-bxivhb kDAFzE"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
             }
           />
         </div>
         <div
-          className="c7"
+          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          onClick={[Function]}
         >
           View Fullscreen
         </div>
@@ -432,7 +432,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c12"
+    className="sc-ifAKCX esnlMb"
     width={178}
   >
     <div
@@ -447,21 +447,19 @@ exports[`renders properly 1`] = `
       />
        // strip caption html
       <div
-        className="c10"
+        className="file__CaptionContainer-s7px8t2-0 imhLJG"
       >
         <div
-          className="c11"
-        >
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
-              }
+          className="sc-bxivhb kDAFzE"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
             }
           />
         </div>
         <div
-          className="c7"
+          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          onClick={[Function]}
         >
           View Fullscreen
         </div>
