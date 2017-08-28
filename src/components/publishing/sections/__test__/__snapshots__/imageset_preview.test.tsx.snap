@@ -199,6 +199,40 @@ exports[`renders a mini image set properly 1`] = `
   height: 100%;
 }
 
+.c0 {
+  height: 100px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: auto;
+  margin-left: 20px;
+}
+
 .c3 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -240,40 +274,6 @@ exports[`renders a mini image set properly 1`] = `
 
 .c7 > svg {
   height: 98%;
-}
-
-.c0 {
-  height: 100px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  padding: 10px 20px 10px 10px;
-  border: 1px solid #e5e5e5;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: auto;
-  margin-left: 20px;
 }
 
 @media (max-width: 600px) {

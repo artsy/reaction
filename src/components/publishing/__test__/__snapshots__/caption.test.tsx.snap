@@ -59,6 +59,7 @@ exports[`renders a child even if a caption is provided 1`] = `
   </div>
   <div
     className="c2"
+    onClick={[Function]}
   >
     View Fullscreen
   </div>
@@ -128,6 +129,7 @@ exports[`renders a saved caption properly 1`] = `
   </div>
   <div
     className="c2"
+    onClick={[Function]}
   >
     View Fullscreen
   </div>

@@ -115,11 +115,7 @@ exports[`renders properly 1`] = `
     src="https://www.youtube.com/embed/PXi7Kjlsz9A?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
   />
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/video.test.tsx.snap
     className="c5"
-=======
-    className="file__CaptionContainer-s7px8t2-0 imhLJG"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/video.test.tsx.snap
   >
     <div
       className="c6"

@@ -24,6 +24,18 @@ exports[`renders a single image properly 1`] = `
   align-self: flex-start;
 }
 
+.c4 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
 .c5 {
   color: #999;
   display: block;
@@ -36,18 +48,6 @@ exports[`renders a single image properly 1`] = `
 
 .c5 .artist-name {
   margin-right: 30px;
-}
-
-.c4 {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
 }
 
 .c2 {
@@ -90,7 +90,7 @@ exports[`renders a single image properly 1`] = `
   className="c0"
 >
   <div
-    className="sc-ifAKCX fhpsaR"
+    className="c1"
     width={undefined}
   >
     <div
@@ -112,7 +112,7 @@ exports[`renders a single image properly 1`] = `
         className="display-artwork__caption c4"
       >
         <div
-          className="file__TruncatedLine-s1va5fuv-0 dZyylV"
+          className="c5"
         >
           <span
             className="artist-name"
@@ -161,7 +161,7 @@ exports[`renders a single image properly 1`] = `
           </a>
         </div>
         <div
-          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          className="c7"
           onClick={[Function]}
         >
           View Fullscreen
@@ -196,6 +196,18 @@ exports[`renders properly 1`] = `
   align-self: flex-start;
 }
 
+.c4 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
 .c5 {
   color: #999;
   display: block;
@@ -208,18 +220,6 @@ exports[`renders properly 1`] = `
 
 .c5 .artist-name {
   margin-right: 30px;
-}
-
-.c4 {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
 }
 
 .c2 {
@@ -317,7 +317,7 @@ exports[`renders properly 1`] = `
   className="c0"
 >
   <div
-    className="sc-ifAKCX kKeSOb"
+    className="c1"
     width={312}
   >
     <div
@@ -339,7 +339,7 @@ exports[`renders properly 1`] = `
         className="display-artwork__caption c4"
       >
         <div
-          className="file__TruncatedLine-s1va5fuv-0 dZyylV"
+          className="c5"
         >
           <span
             className="artist-name"
@@ -388,7 +388,7 @@ exports[`renders properly 1`] = `
           </a>
         </div>
         <div
-          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          className="c7"
           onClick={[Function]}
         >
           View Fullscreen
@@ -397,7 +397,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-ifAKCX chmTiW"
+    className="c8"
     width={168}
   >
     <div
@@ -412,18 +412,21 @@ exports[`renders properly 1`] = `
       />
        // strip caption html
       <div
-        className="file__CaptionContainer-s7px8t2-0 imhLJG"
+        className="c10"
       >
         <div
-          className="sc-bxivhb kDAFzE"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+          className="c11"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+              }
             }
           />
         </div>
         <div
-          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          className="c7"
           onClick={[Function]}
         >
           View Fullscreen
@@ -432,7 +435,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-ifAKCX esnlMb"
+    className="c12"
     width={178}
   >
     <div
@@ -447,18 +450,21 @@ exports[`renders properly 1`] = `
       />
        // strip caption html
       <div
-        className="file__CaptionContainer-s7px8t2-0 imhLJG"
+        className="c10"
       >
         <div
-          className="sc-bxivhb kDAFzE"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+          className="c11"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+              }
             }
           />
         </div>
         <div
-          className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+          className="c7"
           onClick={[Function]}
         >
           View Fullscreen

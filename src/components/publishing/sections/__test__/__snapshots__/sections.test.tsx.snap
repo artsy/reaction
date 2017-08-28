@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c14 {
+.c20 {
   width: 100%;
   height: 1000px;
+}
+
+.c16 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c10 {
@@ -21,6 +27,41 @@ exports[`renders properly 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: flex-start;
   align-self: flex-start;
+}
+
+.c14 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c15 {
+  color: #999;
+  display: block;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.c15 .artist-name {
+  margin-right: 30px;
+}
+
+.c12 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c13 {
+  display: block;
 }
 
 .c8 {
@@ -52,30 +93,35 @@ exports[`renders properly 1`] = `
 
 .c6 {
   margin-right: 10px;
-  width: 219px;
+  width: 197px;
 }
 
 .c11 {
   margin-right: 0px;
-  width: 220px;
+  width: 264px;
 }
 
-.c12 {
+.c17 {
+  margin-right: 10px;
+  width: 219px;
+}
+
+.c18 {
   margin-right: 0px;
   width: 219px;
 }
 
-.c13 {
+.c19 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c15 {
+.c21 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c16 {
+.c22 {
   margin-right: 0px;
   width: 222px;
 }
@@ -88,7 +134,7 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c18 {
+.c24 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -113,7 +159,7 @@ exports[`renders properly 1`] = `
   padding: 20px;
 }
 
-.c19 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,7 +174,7 @@ exports[`renders properly 1`] = `
   height: 50px;
 }
 
-.c20 {
+.c26 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -137,21 +183,21 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c21 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c22 {
+.c28 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
 }
 
-.c23 {
+.c29 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -159,7 +205,7 @@ exports[`renders properly 1`] = `
   margin-left: 20px;
 }
 
-.c24 {
+.c30 {
   height: 45px;
   position: relative;
   margin-left: 40px;
@@ -167,7 +213,7 @@ exports[`renders properly 1`] = `
   text-align: right;
 }
 
-.c24 > svg {
+.c30 > svg {
   height: 98%;
 }
 
@@ -207,7 +253,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c17 {
+.c23 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -403,7 +449,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c14 {
+  .c20 {
     height: 1300px;
   }
 }
@@ -427,25 +473,31 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c12 {
+  .c17 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c13 {
+  .c18 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c15 {
+  .c19 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c16 {
+  .c21 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c22 {
     margin-bottom: 10px;
   }
 }
@@ -459,7 +511,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c20 {
+  .c26 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -468,7 +520,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c22 {
+  .c28 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -477,7 +529,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c23 {
+  .c29 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -486,7 +538,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c24 {
+  .c30 {
     display: none;
   }
 }
@@ -516,7 +568,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c17 {
+  .c23 {
     max-width: 100%;
     padding: 0px;
     margin: 0px;
@@ -595,42 +647,13 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  className="sc-chPdSV fhEDnh"
+  className="c0"
 >
   <div
     className="c1"
   >
     <div
-      className="file__Vertical-s6asv4k-1 eUnUkA"
-    >
-      Art Market
-    </div>
-    <div
-      className="file__StandardTitle-mnum3w-0 bmosYJ"
-    >
-      New York's Next Art District
-    </div>
-    <div
-      className="file__AuthorDateContainer-hox9tl-0 kHGfOU"
-    >
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        By 
-        Artsy Editorial
-      </div>
-      <div
-        className="sc-bdVaJa etviRx"
-      >
-        May 19, 2017 9:09 am
-      </div>
-    </div>
-  </div>
-  <div
-    className="sc-fjdhpX bPwTWo"
-  >
-    <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -642,10 +665,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX bPwTWo"
+    className="c1"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -657,10 +680,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX kPxsvm"
+    className="c3"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -672,10 +695,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX bPwTWo"
+    className="c1"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -687,38 +710,42 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX jREFLS"
+    className="c4"
   >
     <div
       className="c5"
     >
       <div
-        className="sc-VigVT iNciLS"
+        className="c6"
         width={197}
       >
         <div
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
+            className="c7"
             height={351}
             src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
             width={197}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -727,32 +754,36 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-VigVT iNciLS"
+        className="c6"
         width={197}
       >
         <div
           className="article-image"
         >
           <img
-            className="file__BlockImage-s1425qn5-0 kMcghC"
+            alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
+            className="c7"
             height={351}
             src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
             width={197}
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -761,28 +792,29 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-VigVT hubfAC"
+        className="c11"
         width={264}
       >
         <div
           className="display-artwork"
         >
           <a
-            className="file__ArtworkImageLink-s18l75pq-0 endEOY"
+            className="c12"
             href="/artwork/matt-devine-brass-tax"
           >
             <img
-              className="display-artwork__image file__BlockImage-s18l75pq-1 gGbNWt"
+              alt="Brass Tax"
+              className="display-artwork__image c13"
               height={352}
               src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
               width={264}
             />
           </a>
           <div
-            className="display-artwork__caption sc-dnqmqq pbTVg"
+            className="display-artwork__caption c14"
           >
             <div
-              className="file__TruncatedLine-s1va5fuv-0 dZyylV"
+              className="c15"
             >
               <span
                 className="artist-name"
@@ -791,7 +823,7 @@ exports[`renders properly 1`] = `
                   className="name"
                 >
                   <a
-                    className="file__StyledTextLink-s18afosz-0 hOUyga"
+                    className="c16"
                     href="/artist/matt-devine"
                   >
                     Matt Devine
@@ -802,7 +834,7 @@ exports[`renders properly 1`] = `
                 className="title"
               >
                 <a
-                  className="file__StyledTextLink-s18afosz-0 hOUyga"
+                  className="c16"
                   href="/artwork/matt-devine-brass-tax"
                 >
                   Brass Tax
@@ -814,14 +846,14 @@ exports[`renders properly 1`] = `
                 , 
               </span>
               <a
-                className="file__StyledTextLink-s18afosz-0 hOUyga"
+                className="c16"
                 href="/partner/joanne-artman-gallery"
               >
                 Joanne Artman Gallery
               </a>
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -832,10 +864,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX bPwTWo"
+    className="c1"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -847,13 +879,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX jREFLS"
+    className="c4"
   >
     <div
       className="c5"
     >
       <div
-        className="sc-VigVT fEqBtz"
+        className="c17"
         width={219}
       >
         <div
@@ -868,18 +900,21 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -888,7 +923,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-VigVT fEqBtz"
+        className="c17"
         width={219}
       >
         <div
@@ -903,18 +938,21 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -923,7 +961,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="sc-VigVT ikAYKd"
+        className="c18"
         width={219}
       >
         <div
@@ -938,18 +976,21 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -960,10 +1001,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX bPwTWo"
+    className="c1"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -975,13 +1016,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX jREFLS"
+    className="c4"
   >
     <div
       className="c5"
     >
       <div
-        className="sc-VigVT kJGeLk"
+        className="c19"
         width={undefined}
       >
         <div
@@ -996,18 +1037,21 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
+            className="c8"
           >
             <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
+              className="c9"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Pamela Colman Smith, <em>The Empress</em>, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University.</p>",
+                  }
                 }
               />
             </div>
             <div
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
+              className="c10"
               onClick={[Function]}
             >
               View Fullscreen
@@ -1018,10 +1062,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX bPwTWo"
+    className="c1"
   >
     <div
-      className="sc-jzJRlG eVXOYf"
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1033,10 +1077,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-fjdhpX jREFLS"
+    className="c4"
   >
     <iframe
-      className="c14"
+      className="c20"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1044,14 +1088,14 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
     className="c1"
   >
     <div
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+      className="c2"
     >
       <div
         dangerouslySetInnerHTML={
+          Object {
             "__html": "<p>The Thoth deck, named for the Ibis-faced Egyptian god more commonly known as Horus, was painted by the artist Frieda Harris based on direction from the infamous occultist-about-town Aleister Crowley. Completed in the early 1940s, but not widely available until 1969, it features <a href=\\"https://www.artsy.net/gene/art-deco\\">Art Deco</a> borders resembling the pattern of a butterfly wing. </p><p>The deck is an aesthetic departure from the Rider-Waite’s homey <a href=\\"https://www.artsy.net/gene/arts-and-crafts-movement\\">Arts and Crafts</a> aesthetic. Shaped by Harris’s interest in pure geometry, the cards are reminiscent of the work of Swedish painter <a href=\\"https://www.artsy.net/artist/hilma-af-klint\\">Hilma af Klint</a> (a visionary artist who shared Harris’s interest in spiritualism and the writings of Austrian philosopher Rudolf Steiner, both popular subjects of study among the middle and upper classes in the early 20th century). Harris’s shaded orbs and compass-inscribed curves that fill the background of each card bear more than a passing resemblance to Klint’s highly-saturated geometries. Klint, considered by some to be Europe’s first abstract painter, believed that her luminous compositions were the created under the influence of spirits. (The same could easily be said of Harris because she was taking direction from Crowley, who was believed to be a medium, able to channel ancient and magical forces.) </p><p>It’s no coincidence that Klint’s paintings and Harris’s Thoth illustrations were shown in the same pavilion at the 2013 Venice Biennale, which was intended to amplify voices that had previously been excluded and “cover 100 years of dreams and visions,” <a href=\\"http://www.nytimes.com/2013/05/26/arts/design/massimiliano-gioni-of-venice-biennale.html\\">according</a> to curator Massimiliano Gioni.</p><p><br></p><h2>Sex &amp; Self-Help, ’70s Style</h2>",
           }
         }
@@ -1059,21 +1103,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
     className="c4"
-=======
-    className="sc-fjdhpX jREFLS"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
   >
     <div
       className="c5"
     >
       <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-        className="c15"
-=======
-        className="sc-VigVT iQtHxX"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+        className="c21"
         width={216}
       >
         <div
@@ -1088,7 +1124,6 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
             className="c8"
           >
             <div
@@ -1099,25 +1134,12 @@ exports[`renders properly 1`] = `
                   Object {
                     "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
                   }
-=======
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
-          >
-            <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
                 }
               />
             </div>
             <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
               className="c10"
-=======
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
               onClick={[Function]}
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
             >
               View Fullscreen
             </div>
@@ -1125,11 +1147,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-        className="c6"
-=======
-        className="sc-VigVT fEqBtz"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+        className="c17"
         width={219}
       >
         <div
@@ -1144,7 +1162,6 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
             className="c8"
           >
             <div
@@ -1155,25 +1172,12 @@ exports[`renders properly 1`] = `
                   Object {
                     "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
                   }
-=======
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
-          >
-            <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
                 }
               />
             </div>
             <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
               className="c10"
-=======
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
               onClick={[Function]}
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
             >
               View Fullscreen
             </div>
@@ -1181,11 +1185,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-        className="c16"
-=======
-        className="sc-VigVT GOnGp"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+        className="c22"
         width={222}
       >
         <div
@@ -1200,7 +1200,6 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
             className="c8"
           >
             <div
@@ -1211,25 +1210,12 @@ exports[`renders properly 1`] = `
                   Object {
                     "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
                   }
-=======
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
-          >
-            <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
                 }
               />
             </div>
             <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
               className="c10"
-=======
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
               onClick={[Function]}
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
             >
               View Fullscreen
             </div>
@@ -1239,17 +1225,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
     className="c1"
   >
     <div
       className="c2"
-=======
-    className="sc-fjdhpX bPwTWo"
-  >
-    <div
-      className="sc-jzJRlG eVXOYf"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
     >
       <div
         dangerouslySetInnerHTML={
@@ -1261,11 +1240,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-    className="c17"
-=======
-    className="sc-fjdhpX gbFCTA"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+    className="c23"
   >
     <div
       style={
@@ -1276,30 +1251,26 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="c18"
+        className="c24"
       >
         <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-          className="c19"
-=======
-          className="sc-jTzLTM igrxzH"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+          className="c25"
         >
           <div
-            className="c20"
+            className="c26"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c21"
+            className="c27"
           >
             <div
-              className="c22"
+              className="c28"
             >
               View Slideshow
             </div>
             <div
-              className="c23"
+              className="c29"
             >
               3
                Images
@@ -1307,7 +1278,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c30"
         >
           <svg
             data-name="image-set"
@@ -1337,17 +1308,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
     className="c1"
   >
     <div
       className="c2"
-=======
-    className="sc-fjdhpX bPwTWo"
-  >
-    <div
-      className="sc-jzJRlG eVXOYf"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
     >
       <div
         dangerouslySetInnerHTML={
@@ -1359,21 +1323,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-    className="c17"
-=======
-    className="sc-fjdhpX gbFCTA"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+    className="c23"
   >
     <div
       className="c5"
     >
       <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
-        className="c13"
-=======
-        className="sc-VigVT kJGeLk"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
+        className="c19"
         width={undefined}
       >
         <div
@@ -1388,7 +1344,6 @@ exports[`renders properly 1`] = `
           />
            // strip caption html
           <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
             className="c8"
           >
             <div
@@ -1399,25 +1354,12 @@ exports[`renders properly 1`] = `
                   Object {
                     "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
                   }
-=======
-            className="file__CaptionContainer-s7px8t2-0 imhLJG"
-          >
-            <div
-              className="sc-gqjmRU cVtPOZ"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
                 }
               />
             </div>
             <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
               className="c10"
-=======
-              className="file__ViewFullscreenLink-s1if1jiu-0 aXKfF"
               onClick={[Function]}
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
             >
               View Fullscreen
             </div>
@@ -1427,17 +1369,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD:src/components/publishing/__test__/__snapshots__/sections.test.tsx.snap
     className="c1"
   >
     <div
       className="c2"
-=======
-    className="sc-fjdhpX bPwTWo"
-  >
-    <div
-      className="sc-jzJRlG eVXOYf"
->>>>>>> 6fac35a... Colocate tests and start on view from index:src/components/publishing/sections/__test__/__snapshots__/sections.test.tsx.snap
     >
       <div
         dangerouslySetInnerHTML={
