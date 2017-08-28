@@ -17,8 +17,7 @@ const Image: React.SFC<ImageProps> = props => {
   const { image, layout, width, height } = props
   return (
     <div className="article-image">
-      <BlockImage src={image.url} width={width} height={height} alt={image.caption.replace(/<[^>]*>/g, "")} /> // strip
-      caption html
+      <BlockImage src={image.url} width={width} height={height} alt={image.caption.replace(/<[^>]*>/g, "")} />
       <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} />
     </div>
   )

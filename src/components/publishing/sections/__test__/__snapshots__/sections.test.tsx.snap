@@ -157,6 +157,7 @@ exports[`renders properly 1`] = `
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
+  cursor: pointer;
 }
 
 .c25 {
@@ -729,7 +730,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
             width={197}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -767,7 +767,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
             width={197}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -898,7 +897,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
             width={219}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -936,7 +934,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
             width={219}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -974,7 +971,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
             width={219}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -1035,7 +1031,6 @@ exports[`renders properly 1`] = `
             src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
             width="100%"
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -1122,7 +1117,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
             width={216}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -1160,7 +1154,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
             width={219}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -1198,7 +1191,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
             width={222}
           />
-           // strip caption html
           <div
             className="c8"
           >
@@ -1252,6 +1244,7 @@ exports[`renders properly 1`] = `
     >
       <div
         className="c24"
+        onClick={[Function]}
       >
         <div
           className="c25"
@@ -1342,7 +1335,6 @@ exports[`renders properly 1`] = `
             src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
             width="100%"
           />
-           // strip caption html
           <div
             className="c8"
           >

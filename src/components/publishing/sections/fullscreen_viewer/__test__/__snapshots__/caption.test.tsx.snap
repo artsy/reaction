@@ -2,7 +2,7 @@
 
 exports[`renders properly 1`] = `
 <div
-  className="file__FullscreenViewerContainer-s4y24vs-0 jjOCKy"
+  className="file__FullscreenViewerContainer-s1r3qb8j-0 dGWYbG"
 >
   <div>
     <div>
@@ -687,7 +687,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__Close-s4y24vs-1 gxSGdB"
+    className="file__Close-s1r3qb8j-1 ikTxWV"
     onClick={[Function]}
   >
     <div

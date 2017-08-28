@@ -24,6 +24,7 @@ exports[`renders a full image set properly 1`] = `
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
+  cursor: pointer;
 }
 
 .c1 {
@@ -127,6 +128,7 @@ exports[`renders a full image set properly 1`] = `
 >
   <div
     className="c0"
+    onClick={[Function]}
   >
     <div
       className="c1"
@@ -215,6 +217,7 @@ exports[`renders a mini image set properly 1`] = `
   justify-content: flex-start;
   padding: 10px 20px 10px 10px;
   border: 1px solid #e5e5e5;
+  cursor: pointer;
 }
 
 .c1 {
@@ -319,6 +322,7 @@ exports[`renders a mini image set properly 1`] = `
 >
   <div
     className="c0"
+    onClick={[Function]}
   >
     <img
       alt="The Work of Bruce M. Sherman"

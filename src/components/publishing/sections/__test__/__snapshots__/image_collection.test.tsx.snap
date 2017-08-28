@@ -410,7 +410,6 @@ exports[`renders properly 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
         width={168}
       />
-       // strip caption html
       <div
         className="c10"
       >
@@ -448,7 +447,6 @@ exports[`renders properly 1`] = `
         src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
         width={178}
       />
-       // strip caption html
       <div
         className="c10"
       >

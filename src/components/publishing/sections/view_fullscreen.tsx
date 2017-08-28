@@ -8,7 +8,12 @@ interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
-  return <ViewFullscreenLink onClick={() => context.onViewFullscreen(props.index)}>View Fullscreen</ViewFullscreenLink>
+  const onClick = e => {
+    if (context.onViewFullscreen) {
+      context.onViewFullscreen(props.index)
+    }
+  }
+  return <ViewFullscreenLink onClick={onClick}>View Fullscreen</ViewFullscreenLink>
 }
 
 ViewFullscreen.contextTypes = {
