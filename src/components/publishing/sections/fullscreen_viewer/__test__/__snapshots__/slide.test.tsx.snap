@@ -1,28 +1,214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c10 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c8.artist-name {
+  margin-right: 30px;
+}
+
+.c8 .c9 {
+  color: black;
+}
+
+.c5 {
+  display: none;
+}
+
+.c6 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c11 {
+  margin-left: 20px;
+  white-space: nowrap;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 30px 60px;
+}
+
+.c3 p {
+  margin: 0px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: block;
+  background: url(https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg) no-repeat center;
+  background-size: contain;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 50px 60px;
+}
+
+.c1 {
+  min-height: 25px;
+  padding: 30px 60px 0 60px;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+}
+
+@media (max-width: 720px) {
+  .c7 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .c8.artist-name {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c5 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .c5 span {
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 720px) {
+  .c6 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c6 {
+    display: none;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c11 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .c1 {
+    padding: 20px 60px 0 20px;
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+}
+
 <div
   onClose={[Function]}
   show={true}
 >
   <div
-    className="file__SlideContainer-s12qvrc9-0 dbCrtu"
+    className="c0"
   >
     <div
-      className="file__Title-s12qvrc9-2 yQTKs"
+      className="c1"
     />
     <div
-      className="file__Image-s12qvrc9-1 gIalgO"
+      className="c2"
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
     />
     <div
-      className="file__CaptionContainer-s1paa85-2 iVGOob"
+      className="c3"
     >
       <div
-        className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
+        className="c4"
       >
         <div
-          className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
+          className="fullscreen-viewer__caption-toggle c5"
           onClick={undefined}
         >
           <span>
@@ -30,20 +216,20 @@ exports[`renders properly 1`] = `
           </span>
         </div>
         <div
-          className="sc-bxivhb jIhHWs"
+          className="c6"
           open={undefined}
         >
           <div
-            className="sc-htpNat dqiQen"
+            className="c7"
           >
             <div
-              className="artist-name file__Line-s7zcrfi-1 jFJBbs"
+              className="artist-name c8"
             >
               <span
                 className="name"
               >
                 <a
-                  className="file__StyledTextLink-s18afosz-0 hOUyga"
+                  className="c9 c10"
                   href="/artist/fernando-botero"
                 >
                   Fernando Botero
@@ -51,13 +237,13 @@ exports[`renders properly 1`] = `
               </span>
             </div>
             <div
-              className="file__Line-s7zcrfi-1 jFJBbs"
+              className="c8"
             >
               <span
                 className="title"
               >
                 <a
-                  className="file__StyledTextLink-s18afosz-0 hOUyga"
+                  className="c9 c10"
                   href="/artwork/fernando-botero-nude-on-the-beach"
                 >
                   Nude on the Beach
@@ -79,7 +265,7 @@ exports[`renders properly 1`] = `
                 , 
               </span>
               <a
-                className="file__StyledTextLink-s18afosz-0 hOUyga"
+                className="c9 c10"
                 href="/partner/gary-nader"
               >
                 Gary Nader
@@ -89,7 +275,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="file__Index-s1paa85-1 jWanmW"
+        className="c11"
       >
         undefined of undefined
       </div>

@@ -1,4 +1,4 @@
-import * as _ from "lodash"
+import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import Header from "./header/header"
@@ -24,7 +24,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
   constructor(props) {
     super(props)
-    const { fullscreenImages, article } = this.indexImages()
+    const { fullscreenImages, article } = this.indexAndExtractImages()
     this.state = {
       isViewerOpen: false,
       slideIndex: 0,
@@ -48,17 +48,17 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     this.setState({ isViewerOpen: false })
   }
 
-  indexImages = () => {
-    const article = this.props.article
+  indexAndExtractImages = () => {
+    const article = cloneDeep(this.props.article)
     const fullscreenImages = []
-    let sectionIndex = -1
-    const newSections = _.map(_.clone(article.sections), section => {
-      if (_.includes(["image_collection", "image_set"], section.type)) {
-        const newImages = _.map(section.images, image => {
-          sectionIndex = sectionIndex + 1
+    let sectionIndex = 0
+    const newSections = map(article.sections, section => {
+      if (includes(["image_collection", "image_set"], section.type)) {
+        const newImages = map(section.images, image => {
           image.setTitle = section.title
           image.index = sectionIndex
           fullscreenImages.push(image)
+          sectionIndex = sectionIndex + 1
           return image
         })
         section.images = newImages
@@ -70,8 +70,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { article } = this.props
-    if (article.layout === "feature") {
+    if (this.state.article.layout === "feature") {
       return (
         <div>
           <Header article={this.state.article} />

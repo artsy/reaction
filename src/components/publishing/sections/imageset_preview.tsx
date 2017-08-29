@@ -115,7 +115,7 @@ class ImageSetPreview extends Component<Props, null> {
     const height = this.props.section.layout === "full" ? "auto" : "100%"
     return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
   }
-  onClick() {
+  onClick = () => {
     if (this.context.onViewFullscreen) {
       this.context.onViewFullscreen(this.props.section.images[0].index)
     }
@@ -123,14 +123,14 @@ class ImageSetPreview extends Component<Props, null> {
   wrapper() {
     if (this.props.section.layout === "full") {
       return (
-        <FullWrapper onClick={this.onClick.bind(this)}>
+        <FullWrapper onClick={this.onClick}>
           {this.textSection()}
           {this.icon()}
         </FullWrapper>
       )
     } else {
       return (
-        <MiniWrapper onClick={this.onClick.bind(this)}>
+        <MiniWrapper onClick={this.onClick}>
           {this.image()}
           <MiniInner>
             {this.textSection()}

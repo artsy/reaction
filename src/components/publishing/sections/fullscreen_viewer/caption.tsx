@@ -17,6 +17,7 @@ const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props =
   const caption = props.section.type === "artwork"
     ? <ArtworkCaption layout="fullscreen" artwork={props.section} linked />
     : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
+  const indexText = `${props.index} of ${props.total}`
   return (
     <CaptionContainer>
       <CaptionTextContainer>
@@ -25,7 +26,7 @@ const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props =
           {caption}
         </Caption>
       </CaptionTextContainer>
-      <Index>{`${props.index} of ${props.total}`}</Index>
+      <Index>{indexText}</Index>
     </CaptionContainer>
   )
 }

@@ -1,14 +1,153 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an artwork caption properly 1`] = `
+.c7 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c5.artist-name {
+  margin-right: 30px;
+}
+
+.c5 .c6 {
+  color: black;
+}
+
+.c2 {
+  display: none;
+}
+
+.c3 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c8 {
+  margin-left: 20px;
+  white-space: nowrap;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 30px 60px;
+}
+
+.c0 p {
+  margin: 0px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .c5.artist-name {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .c2 span {
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c8 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c0 {
+    padding: 20px;
+  }
+}
+
 <div
-  className="file__CaptionContainer-s1paa85-2 iVGOob"
+  className="c0"
 >
   <div
-    className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
+    className="c1"
   >
     <div
-      className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
+      className="fullscreen-viewer__caption-toggle c2"
       onClick={undefined}
     >
       <span>
@@ -16,20 +155,20 @@ exports[`renders an artwork caption properly 1`] = `
       </span>
     </div>
     <div
-      className="sc-bxivhb gsbYNP"
+      className="c3"
       open={true}
     >
       <div
-        className="sc-htpNat dqiQen"
+        className="c4"
       >
         <div
-          className="artist-name file__Line-s7zcrfi-1 jFJBbs"
+          className="artist-name c5"
         >
           <span
             className="name"
           >
             <a
-              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              className="c6 c7"
               href="/artist/fernando-botero"
             >
               Fernando Botero
@@ -37,13 +176,13 @@ exports[`renders an artwork caption properly 1`] = `
           </span>
         </div>
         <div
-          className="file__Line-s7zcrfi-1 jFJBbs"
+          className="c5"
         >
           <span
             className="title"
           >
             <a
-              className="file__StyledTextLink-s18afosz-0 hOUyga"
+              className="c6 c7"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -65,7 +204,7 @@ exports[`renders an artwork caption properly 1`] = `
             , 
           </span>
           <a
-            className="file__StyledTextLink-s18afosz-0 hOUyga"
+            className="c6 c7"
             href="/partner/gary-nader"
           >
             Gary Nader
@@ -75,7 +214,7 @@ exports[`renders an artwork caption properly 1`] = `
     </div>
   </div>
   <div
-    className="file__Index-s1paa85-1 jWanmW"
+    className="c8"
   >
     2 of 10
   </div>
@@ -83,14 +222,107 @@ exports[`renders an artwork caption properly 1`] = `
 `;
 
 exports[`renders an image caption properly 1`] = `
+.c2 {
+  display: none;
+}
+
+.c3 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c4 {
+  margin-left: 20px;
+  white-space: nowrap;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 30px 60px;
+}
+
+.c0 p {
+  margin: 0px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .c2 span {
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c4 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c0 {
+    padding: 20px;
+  }
+}
+
 <div
-  className="file__CaptionContainer-s1paa85-2 iVGOob"
+  className="c0"
 >
   <div
-    className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
+    className="c1"
   >
     <div
-      className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
+      className="fullscreen-viewer__caption-toggle c2"
       onClick={undefined}
     >
       <span>
@@ -98,7 +330,7 @@ exports[`renders an image caption properly 1`] = `
       </span>
     </div>
     <div
-      className="sc-bxivhb gsbYNP"
+      className="c3"
       open={true}
     >
       <div
@@ -111,7 +343,7 @@ exports[`renders an image caption properly 1`] = `
     </div>
   </div>
   <div
-    className="file__Index-s1paa85-1 jWanmW"
+    className="c4"
   >
     3 of 10
   </div>

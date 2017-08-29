@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Fonts from "../fonts"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
-  index?: any
+  index?: number
 }
 
 const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
