@@ -11,7 +11,7 @@ interface ArticleProps {
   article: any
 }
 interface ArticleState {
-  isViewerOpen: boolean
+  viewerIsOpen: boolean
   slideIndex: number
   fullscreenImages: any
   article: any
@@ -26,7 +26,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     super(props)
     const { fullscreenImages, article } = this.indexAndExtractImages()
     this.state = {
-      isViewerOpen: false,
+      viewerIsOpen: false,
       slideIndex: 0,
       fullscreenImages,
       article,
@@ -39,13 +39,13 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
   openViewer = index => {
     this.setState({
-      isViewerOpen: true,
+      viewerIsOpen: true,
       slideIndex: index,
     })
   }
 
   closeViewer = () => {
-    this.setState({ isViewerOpen: false })
+    this.setState({ viewerIsOpen: false })
   }
 
   indexAndExtractImages = () => {
@@ -79,7 +79,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           </FeatureLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
-            show={this.state.isViewerOpen}
+            show={this.state.viewerIsOpen}
             slideIndex={this.state.slideIndex}
             images={this.state.fullscreenImages}
           />
@@ -94,7 +94,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           </StandardLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
-            show={this.state.isViewerOpen}
+            show={this.state.viewerIsOpen}
             slideIndex={this.state.slideIndex}
             images={this.state.fullscreenImages}
           />

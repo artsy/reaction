@@ -261,6 +261,7 @@ exports[`renders properly 1`] = `
         <div
           className="c3"
           src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+          title={undefined}
         />
         <div
           className="c4"
@@ -353,6 +354,7 @@ exports[`renders properly 1`] = `
         <div
           className="c13"
           src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+          title="<p>Photo by Adam Kuehl for Artsy.</p>"
         />
         <div
           className="c4"
@@ -399,6 +401,7 @@ exports[`renders properly 1`] = `
         <div
           className="c14"
           src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+          title="<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>"
         />
         <div
           className="c4"

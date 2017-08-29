@@ -13,7 +13,7 @@ const Slide = props => {
     <div {...newProps}>
       <SlideContainer>
         <Title>{section.setTitle}</Title>
-        <Image src={src} />
+        <Image src={src} title={section.caption} />
         <Caption open={props.isCaptionOpen} section={section} total={props.total} index={props.index} />
       </SlideContainer>
     </div>

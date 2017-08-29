@@ -200,6 +200,7 @@ exports[`renders properly 1`] = `
     <div
       className="c2"
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+      title={undefined}
     />
     <div
       className="c3"

@@ -19,5 +19,5 @@ it("closes the viewer on ESC keydown", () => {
   const onClose = jest.fn()
   const viewer = shallow(<FullscreenViewer images={Images} show onClose={onClose} />)
   viewer.simulate("keyDown", { keyCode: 27 })
-  expect(onClose.mock.calls.length).toBeGreaterThan(0)
+  expect(onClose).toBeCalled()
 })
