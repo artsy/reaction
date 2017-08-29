@@ -36,7 +36,7 @@ interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
 const CaptionToggle: React.SFC<CaptionOpenProps> = (props, context) => {
   const toggleMessage = props.open ? "Hide" : "View Caption"
   return (
-    <StyledCaptionToggle onClick={context.onToggleCaption}>
+    <StyledCaptionToggle onClick={context.onToggleCaption} className="fullscreen-viewer__caption-toggle">
       <span>{toggleMessage}</span>
     </StyledCaptionToggle>
   )

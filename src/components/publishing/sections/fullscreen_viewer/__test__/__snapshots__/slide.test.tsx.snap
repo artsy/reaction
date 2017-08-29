@@ -16,13 +16,13 @@ exports[`renders properly 1`] = `
       src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
     />
     <div
-      className="file__CaptionContainer-s1koc55t-2 bWybux"
+      className="file__CaptionContainer-s1paa85-2 iVGOob"
     >
       <div
-        className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+        className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
       >
         <div
-          className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+          className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
           onClick={undefined}
         >
           <span>
@@ -89,7 +89,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="file__Index-s1koc55t-1 gCANWd"
+        className="file__Index-s1paa85-1 jWanmW"
       >
         undefined of undefined
       </div>

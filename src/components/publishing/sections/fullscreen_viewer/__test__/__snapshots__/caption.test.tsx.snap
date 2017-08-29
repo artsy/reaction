@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`renders an artwork caption properly 1`] = `
 <div
-  className="file__CaptionContainer-s1koc55t-2 bWybux"
+  className="file__CaptionContainer-s1paa85-2 iVGOob"
 >
   <div
-    className="file__CaptionTextContainer-s1koc55t-3 eXwGWE"
+    className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
   >
     <div
-      className="file__StyledCaptionToggle-s1koc55t-0 jiJlYL"
+      className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
       onClick={undefined}
     >
       <span>
@@ -75,9 +75,45 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__Index-s1koc55t-1 gCANWd"
+    className="file__Index-s1paa85-1 jWanmW"
   >
     2 of 10
+  </div>
+</div>
+`;
+
+exports[`renders an image caption properly 1`] = `
+<div
+  className="file__CaptionContainer-s1paa85-2 iVGOob"
+>
+  <div
+    className="file__CaptionTextContainer-s1paa85-3 bXpGAe"
+  >
+    <div
+      className="fullscreen-viewer__caption-toggle file__StyledCaptionToggle-s1paa85-0 hcjdTk"
+      onClick={undefined}
+    >
+      <span>
+        Hide
+      </span>
+    </div>
+    <div
+      className="sc-bxivhb gsbYNP"
+      open={true}
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="file__Index-s1paa85-1 jWanmW"
+  >
+    3 of 10
   </div>
 </div>
 `;

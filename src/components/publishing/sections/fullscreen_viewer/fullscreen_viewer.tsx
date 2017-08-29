@@ -26,18 +26,9 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
   constructor(props) {
     super(props)
     this.state = { isCaptionOpen: false }
-    this.toggleCaption = this.toggleCaption.bind(this)
   }
 
-  componentWillMount() {
-    document.addEventListener("keydown", this.handleKeydown.bind(this))
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeydown.bind(this))
-  }
-
-  handleKeydown(e) {
+  handleKeydown = e => {
     if (e.keyCode === 27) {
       this.close(e)
     }
@@ -47,12 +38,11 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     return { onToggleCaption: this.toggleCaption }
   }
 
-  toggleCaption() {
+  toggleCaption = () => {
     this.setState({ isCaptionOpen: !this.state.isCaptionOpen })
   }
 
   close = e => {
-    e.preventDefault()
     this.props.onClose()
   }
 
@@ -82,7 +72,7 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
       return null
     }
     return (
-      <FullscreenViewerContainer>
+      <FullscreenViewerContainer onKeyDown={this.handleKeydown}>
         <Slider {...sliderSettings}>
           {this.renderImageComponents()}
         </Slider>
