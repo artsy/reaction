@@ -8,6 +8,13 @@ import Articles from "../fixtures/articles"
 import { HeroSections } from "../fixtures/components"
 
 storiesOf("Publishing/Headers", module)
+  .add("Classic Header", () => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+        <Header article={Articles[0]} />
+      </div>
+    )
+  })
   .add("Standard Header", () => {
     return (
       <div style={{ width: "100vw", height: "100vh", position: "relative" }}>

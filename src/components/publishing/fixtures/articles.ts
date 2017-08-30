@@ -10,12 +10,12 @@ const Articles = [
     },
     layout: "classic",
     hero_section: null,
-    thumbnail_title: "Poetry in Nature/Refinement of Form",
+    thumbnail_title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
     email_metadata: {
       image_url:
         "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
       author: "Joanne Artman Gallery",
-      headline: "Poetry in Nature/Refinement of Form",
+      headline: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
     },
     send_body: false,
     tier: 2,
@@ -38,7 +38,7 @@ const Articles = [
     weekly_email: false,
     keywords: ["Joanne Artman Gallery"],
     updated_at: "2017-07-28T20:38:05.709Z",
-    title: "Poetry in Nature/Refinement of Form",
+    title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
     lead_paragraph: "<p></p>",
     id: "597b9f652d35b80017a2a6a7",
     slug: "joanne-artman-gallery-poetry-naturerefinement-form",

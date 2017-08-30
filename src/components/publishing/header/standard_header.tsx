@@ -24,7 +24,7 @@ const StandardHeaderContainer = styled.div`
   flex-direction: column;
   max-width: 1250px;
   width: 100%;
-  margin: 60px auto;
+  margin: 40px auto;
   box-sizing: border-box;
   ${pMedia.lg`
     padding: 0 20px;
@@ -35,8 +35,8 @@ const StandardHeaderContainer = styled.div`
 `
 
 const Vertical = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  margin-bottom: 5px;
+  ${Fonts.unica("s16", "medium")}
+  margin-bottom: 10px;
   ${pMedia.xs`
     ${Fonts.unica("s14", "medium")}
   `}

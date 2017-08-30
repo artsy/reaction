@@ -149,7 +149,7 @@ const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivEle
 const StyledArtworkCaption = div`
   margin-top: 10px;
   display: flex;
-  ${Fonts.unica("s14", "medium")}
+  ${Fonts.unica("s14")}
 `
 const StyledClassicCaption = div`
   margin-top: 10px;
