@@ -1,0 +1,454 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+.c16 {
+  font-family: artsy-icons;
+  color: gray;
+  font-size: 24px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c11 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c9.artist-name {
+  margin-right: 30px;
+}
+
+.c9 .c10 {
+  color: black;
+}
+
+.c6 {
+  display: none;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c12 {
+  margin-left: 20px;
+  white-space: nowrap;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 30px 60px;
+}
+
+.c4 p {
+  margin: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  display: block;
+  background: url(https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg) no-repeat center;
+  background-size: contain;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 50px 60px;
+}
+
+.c13 {
+  display: block;
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg) no-repeat center;
+  background-size: contain;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 50px 60px;
+}
+
+.c14 {
+  display: block;
+  background: url(https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg) no-repeat center;
+  background-size: contain;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 50px 60px;
+}
+
+.c2 {
+  min-height: 25px;
+  padding: 30px 60px 0 60px;
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+}
+
+.c0 {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.c15 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .c8 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .c9.artist-name {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c6 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .c6 span {
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 720px) {
+  .c7 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c7 {
+    display: none;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c12 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 720px) {
+  .c4 {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .c13 {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .c14 {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    padding: 20px 60px 0 20px;
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+}
+
+<div
+  className="c0"
+  onKeyDown={[Function]}
+>
+  <div>
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        />
+        <div
+          className="c3"
+          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+          title={undefined}
+        />
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <div
+              className="fullscreen-viewer__caption-toggle c6"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="c7"
+              open={false}
+            >
+              <div
+                className="c8"
+              >
+                <div
+                  className="artist-name c9"
+                >
+                  <span
+                    className="name"
+                  >
+                    <a
+                      className="c10 c11"
+                      href="/artist/fernando-botero"
+                    >
+                      Fernando Botero
+                    </a>
+                  </span>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <span
+                    className="title"
+                  >
+                    <a
+                      className="c10 c11"
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                    >
+                      Nude on the Beach
+                    </a>
+                  </span>
+                  <span
+                    className="comma"
+                  >
+                    , 
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                  <span
+                    className="comma"
+                  >
+                    , 
+                  </span>
+                  <a
+                    className="c10 c11"
+                    href="/partner/gary-nader"
+                  >
+                    Gary Nader
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            1 of 3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        />
+        <div
+          className="c13"
+          src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+          title="<p>Photo by Adam Kuehl for Artsy.</p>"
+        />
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <div
+              className="fullscreen-viewer__caption-toggle c6"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="c7"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            2 of 3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        />
+        <div
+          className="c14"
+          src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+          title="<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>"
+        />
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <div
+              className="fullscreen-viewer__caption-toggle c6"
+              onClick={[Function]}
+            >
+              <span>
+                View Caption
+              </span>
+            </div>
+            <div
+              className="c7"
+              open={false}
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            3 of 3
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c15"
+    onClick={[Function]}
+  >
+    <div
+      className="c16"
+      style={undefined}
+    >
+      
+    </div>
+  </div>
+</div>
+`;

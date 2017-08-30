@@ -24,6 +24,18 @@ exports[`renders properly 1`] = `
   align-self: flex-start;
 }
 
+.c2 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
 .c3 {
   color: #999;
   display: block;
@@ -36,18 +48,6 @@ exports[`renders properly 1`] = `
 
 .c3 .artist-name {
   margin-right: 30px;
-}
-
-.c2 {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
 }
 
 .c0 {
@@ -128,6 +128,7 @@ exports[`renders properly 1`] = `
     </div>
     <div
       className="c5"
+      onClick={[Function]}
     >
       View Fullscreen
     </div>

@@ -4,6 +4,32 @@ import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import ViewFullscreen from "./view_fullscreen"
 
+interface CaptionProps {
+  caption: string
+  layout?: string
+  viewFullscreen?: boolean
+  index?: any
+}
+interface FigcaptionProps {
+  layout: string
+}
+
+const Caption: React.SFC<CaptionProps> = props => {
+  const { layout, caption, viewFullscreen, children, index } = props
+  const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
+  return (
+    <CaptionContainer>
+      <Figcaption layout={layout}>
+        {child}
+      </Figcaption>
+      {viewFullscreen ? <ViewFullscreen index={index} /> : false}
+    </CaptionContainer>
+  )
+}
+Caption.defaultProps = {
+  viewFullscreen: true,
+}
+
 const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -12,10 +38,6 @@ const CaptionContainer = styled.div`
     padding: 0px 10px;
   `}
 `
-
-interface FigcaptionProps {
-  layout: string
-}
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 // includes draft placeholder class for editable text in Writer
 const Figcaption = div`
@@ -25,28 +47,5 @@ const Figcaption = div`
     margin: 0;
   }
 `
-
-interface CaptionProps {
-  caption: string
-  layout?: string
-  viewFullscreen?: boolean
-}
-
-const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, caption, viewFullscreen, children } = props
-  const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
-  return (
-    <CaptionContainer>
-      <Figcaption layout={layout}>
-        {child}
-      </Figcaption>
-      {viewFullscreen ? <ViewFullscreen /> : false}
-    </CaptionContainer>
-  )
-}
-
-Caption.defaultProps = {
-  viewFullscreen: true,
-}
 
 export default Caption

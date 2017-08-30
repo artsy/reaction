@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c14 {
+.c20 {
   width: 100%;
   height: 1000px;
+}
+
+.c16 {
+  color: #999;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c10 {
@@ -21,6 +27,41 @@ exports[`renders properly 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: flex-start;
   align-self: flex-start;
+}
+
+.c14 {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c15 {
+  color: #999;
+  display: block;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.c15 .artist-name {
+  margin-right: 30px;
+}
+
+.c12 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c13 {
+  display: block;
 }
 
 .c8 {
@@ -52,30 +93,35 @@ exports[`renders properly 1`] = `
 
 .c6 {
   margin-right: 10px;
-  width: 219px;
+  width: 197px;
 }
 
 .c11 {
   margin-right: 0px;
-  width: 220px;
+  width: 264px;
 }
 
-.c12 {
+.c17 {
+  margin-right: 10px;
+  width: 219px;
+}
+
+.c18 {
   margin-right: 0px;
   width: 219px;
 }
 
-.c13 {
+.c19 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c15 {
+.c21 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c16 {
+.c22 {
   margin-right: 0px;
   width: 222px;
 }
@@ -88,7 +134,7 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c18 {
+.c24 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -111,9 +157,10 @@ exports[`renders properly 1`] = `
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
+  cursor: pointer;
 }
 
-.c19 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,7 +175,7 @@ exports[`renders properly 1`] = `
   height: 50px;
 }
 
-.c20 {
+.c26 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -137,21 +184,21 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c21 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c22 {
+.c28 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
 }
 
-.c23 {
+.c29 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -159,7 +206,7 @@ exports[`renders properly 1`] = `
   margin-left: 20px;
 }
 
-.c24 {
+.c30 {
   height: 45px;
   position: relative;
   margin-left: 40px;
@@ -167,7 +214,7 @@ exports[`renders properly 1`] = `
   text-align: right;
 }
 
-.c24 > svg {
+.c30 > svg {
   height: 98%;
 }
 
@@ -207,7 +254,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c17 {
+.c23 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -403,7 +450,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c14 {
+  .c20 {
     height: 1300px;
   }
 }
@@ -427,25 +474,31 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c12 {
+  .c17 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c13 {
+  .c18 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c15 {
+  .c19 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c16 {
+  .c21 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c22 {
     margin-bottom: 10px;
   }
 }
@@ -459,7 +512,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c20 {
+  .c26 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -468,7 +521,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c22 {
+  .c28 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -477,7 +530,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c23 {
+  .c29 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -486,7 +539,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c24 {
+  .c30 {
     display: none;
   }
 }
@@ -516,7 +569,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c17 {
+  .c23 {
     max-width: 100%;
     padding: 0px;
     margin: 0px;
@@ -665,7 +718,7 @@ exports[`renders properly 1`] = `
     >
       <div
         className="c6"
-        width={219}
+        width={197}
       >
         <div
           className="article-image"
@@ -673,9 +726,9 @@ exports[`renders properly 1`] = `
           <img
             alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
             className="c7"
-            height={390}
+            height={351}
             src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
-            width={219}
+            width={197}
           />
           <div
             className="c8"
@@ -693,6 +746,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -701,7 +755,7 @@ exports[`renders properly 1`] = `
       </div>
       <div
         className="c6"
-        width={219}
+        width={197}
       >
         <div
           className="article-image"
@@ -709,9 +763,9 @@ exports[`renders properly 1`] = `
           <img
             alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
             className="c7"
-            height={390}
+            height={351}
             src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
-            width={219}
+            width={197}
           />
           <div
             className="c8"
@@ -729,6 +783,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -737,34 +792,68 @@ exports[`renders properly 1`] = `
       </div>
       <div
         className="c11"
-        width={220}
+        width={264}
       >
         <div
-          className="article-image"
+          className="display-artwork"
         >
-          <img
-            alt="John Elisle, The Fool, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="c7"
-            height={391}
-            src="https://artsy-media-uploads.s3.amazonaws.com/d0TIJQxkpkJCSWRci0xXsQ%2Funnamed-3.png"
-            width={220}
-          />
+          <a
+            className="c12"
+            href="/artwork/matt-devine-brass-tax"
+          >
+            <img
+              alt="Brass Tax"
+              className="display-artwork__image c13"
+              height={352}
+              src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
+              width={264}
+            />
+          </a>
           <div
-            className="c8"
+            className="display-artwork__caption c14"
           >
             <div
-              className="c9"
+              className="c15"
             >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>John Elisle, <em>The Fool</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
-                  }
-                }
-              />
+              <span
+                className="artist-name"
+              >
+                <span
+                  className="name"
+                >
+                  <a
+                    className="c16"
+                    href="/artist/matt-devine"
+                  >
+                    Matt Devine
+                  </a>
+                </span>
+              </span>
+              <span
+                className="title"
+              >
+                <a
+                  className="c16"
+                  href="/artwork/matt-devine-brass-tax"
+                >
+                  Brass Tax
+                </a>
+              </span>
+              <span
+                className="comma"
+              >
+                , 
+              </span>
+              <a
+                className="c16"
+                href="/partner/joanne-artman-gallery"
+              >
+                Joanne Artman Gallery
+              </a>
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -795,7 +884,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c6"
+        className="c17"
         width={219}
       >
         <div
@@ -824,6 +913,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -831,7 +921,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c6"
+        className="c17"
         width={219}
       >
         <div
@@ -860,6 +950,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -867,7 +958,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c18"
         width={219}
       >
         <div
@@ -896,6 +987,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -926,7 +1018,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c13"
+        className="c19"
         width={undefined}
       >
         <div
@@ -955,6 +1047,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -982,7 +1075,7 @@ exports[`renders properly 1`] = `
     className="c4"
   >
     <iframe
-      className="c14"
+      className="c20"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1011,7 +1104,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c15"
+        className="c21"
         width={216}
       >
         <div
@@ -1040,6 +1133,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -1047,7 +1141,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c6"
+        className="c17"
         width={219}
       >
         <div
@@ -1076,6 +1170,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -1083,7 +1178,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c16"
+        className="c22"
         width={222}
       >
         <div
@@ -1112,6 +1207,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>
@@ -1136,7 +1232,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c17"
+    className="c23"
   >
     <div
       style={
@@ -1147,26 +1243,27 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="c18"
+        className="c24"
+        onClick={[Function]}
       >
         <div
-          className="c19"
+          className="c25"
         >
           <div
-            className="c20"
+            className="c26"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c21"
+            className="c27"
           >
             <div
-              className="c22"
+              className="c28"
             >
               View Slideshow
             </div>
             <div
-              className="c23"
+              className="c29"
             >
               3
                Images
@@ -1174,7 +1271,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c30"
         >
           <svg
             data-name="image-set"
@@ -1219,13 +1316,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c17"
+    className="c23"
   >
     <div
       className="c5"
     >
       <div
-        className="c13"
+        className="c19"
         width={undefined}
       >
         <div
@@ -1254,6 +1351,7 @@ exports[`renders properly 1`] = `
             </div>
             <div
               className="c10"
+              onClick={[Function]}
             >
               View Fullscreen
             </div>

@@ -1,6 +1,24 @@
+import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
 import Fonts from "../fonts"
+
+interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
+  index?: number
+}
+
+const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
+  const onClick = e => {
+    if (context.onViewFullscreen) {
+      context.onViewFullscreen(props.index)
+    }
+  }
+  return <ViewFullscreenLink onClick={onClick}>View Fullscreen</ViewFullscreenLink>
+}
+
+ViewFullscreen.contextTypes = {
+  onViewFullscreen: PropTypes.func,
+}
 
 const ViewFullscreenLink = styled.div`
   ${Fonts.unica("s14", "medium")}
@@ -13,9 +31,5 @@ const ViewFullscreenLink = styled.div`
   white-space: nowrap;
   align-self: flex-start;
 `
-
-function ViewFullscreen() {
-  return <ViewFullscreenLink>View Fullscreen</ViewFullscreenLink>
-}
 
 export default ViewFullscreen

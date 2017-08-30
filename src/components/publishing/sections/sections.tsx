@@ -31,8 +31,7 @@ const Sections: React.SFC<SectionsProps> = props => {
 }
 
 function renderSections(article) {
-  const sections = article.sections
-  const renderedSections = sections.map((section, i) => {
+  const renderedSections = article.sections.map((section, i) => {
     const child = getSection(section, article.layout)
     if (child) {
       return (
