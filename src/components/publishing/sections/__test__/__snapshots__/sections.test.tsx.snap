@@ -35,7 +35,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
@@ -79,7 +79,7 @@ exports[`renders properly 1`] = `
 .c9 > p,
 .c9 p,
 .c9 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
@@ -343,9 +343,9 @@ exports[`renders properly 1`] = `
 }
 
 .c2 h2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.1em;
   font-weight: normal;
   margin: 0;
@@ -401,11 +401,11 @@ exports[`renders properly 1`] = `
 .c2 .content-end {
   display: inline-block;
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background: black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 
 .c2 .artist-follow {
@@ -614,9 +614,9 @@ exports[`renders properly 1`] = `
   }
 
   .c2 h2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 1.1em;
   }
 

@@ -11,9 +11,15 @@ function Typography() {
       <GaramondS40>
         Garamond s40: 40px / 1.1em
       </GaramondS40>
+      <GaramondS37>
+        Garamond s37: 37px / 1.2em
+      </GaramondS37>
       <GaramondS34>
         Garamond s34: 34px / 1.5em
       </GaramondS34>
+      <GaramondS30>
+        Garamond s30: 30px / 1.25em
+      </GaramondS30>
       <GaramondS28>
         Garamond s28: 28px / 1.5em
       </GaramondS28>
@@ -59,6 +65,9 @@ function Typography() {
       <UnicaS34>
         Unica s34: 34px / 1.1em
       </UnicaS34>
+      <UnicaS32>
+        Unica s32: 32px / 1.1em
+      </UnicaS32>
       <UnicaS19>
         Unica s19: 19px / 1.5em
       </UnicaS19>
@@ -96,8 +105,16 @@ const GaramondS28 = styled.div`
   ${Fonts.garamond("s28")}
   margin-bottom: 20px;
 `
+const GaramondS30 = styled.div`
+  ${Fonts.garamond("s30")}
+  margin-bottom: 20px;
+`
 const GaramondS34 = styled.div`
   ${Fonts.garamond("s34")}
+  margin-bottom: 20px;
+`
+const GaramondS37 = styled.div`
+  ${Fonts.garamond("s37")}
   margin-bottom: 20px;
 `
 const GaramondS40 = styled.div`
@@ -132,6 +149,10 @@ const UnicaS16 = styled.div`
 `
 const UnicaS19 = styled.div`
   ${Fonts.unica("s19")}
+  margin-bottom: 20px;
+`
+const UnicaS32 = styled.div`
+  ${Fonts.unica("s32")}
   margin-bottom: 20px;
 `
 const UnicaS34 = styled.div`

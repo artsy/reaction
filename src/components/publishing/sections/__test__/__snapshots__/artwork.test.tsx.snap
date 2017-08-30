@@ -30,7 +30,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
