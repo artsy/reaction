@@ -160,6 +160,7 @@ exports[`renders a react child as caption properly 1`] = `
     </div>
     <div
       className="c3"
+      onClick={[Function]}
     >
       View Fullscreen
     </div>
