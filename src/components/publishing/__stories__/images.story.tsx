@@ -53,6 +53,12 @@ storiesOf("Publishing/Images", module)
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
         </div>
+        <p>With Child as Caption:</p>
+        <div style={{ width: 400 }}>
+          <Image image={Images[2]}>
+            <div><p>A React child as caption.</p></div>
+          </Image>
+        </div>
         <p>Classic:</p>
         <div style={{ width: 400 }}>
           <Image layout="classic" image={Images[2]} />

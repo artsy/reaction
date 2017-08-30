@@ -14,7 +14,8 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const Image: React.SFC<ImageProps> = props => {
-  const { image, layout, width, height } = props
+  const { image, layout, width, height, children } = props
+  const child = children && children
   return (
     <div className="article-image">
       <BlockImage
@@ -23,7 +24,9 @@ const Image: React.SFC<ImageProps> = props => {
         height={height}
         alt={image.caption.replace(/<[^>]*>/g, "") /* strip caption html */}
       />
-      <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} index={image.index} />
+      <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} index={image.index}>
+        {child}
+      </Caption>
     </div>
   )
 }
