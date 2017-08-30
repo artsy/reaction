@@ -76,7 +76,7 @@ const StyledText = div`
     right: calc(50% - 7.5px);
   }
   h2 {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s40"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32"))};
     font-weight: normal;
     margin: 0;
   }
@@ -112,11 +112,11 @@ const StyledText = div`
   .content-end {
     display: inline-block;
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     background: black;
     border-radius: 50%;
-    margin-left: 15px;
+    margin-left: 12px;
   }
   .artist-follow {
     vertical-align: middle;
@@ -154,7 +154,7 @@ const StyledText = div`
       ${Fonts.unica("s34")};
     }
     h2 {
-      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.garamond("s34")};
+      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32")};
     }
     h3 {
       strong {

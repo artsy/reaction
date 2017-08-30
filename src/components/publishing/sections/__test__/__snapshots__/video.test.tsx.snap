@@ -16,7 +16,7 @@ exports[`renders properly 1`] = `
 .c6 > p,
 .c6 p,
 .c6 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;

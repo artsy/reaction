@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c7 {
+.c9 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
@@ -9,7 +9,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c6 {
+.c8 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
@@ -17,7 +17,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c5 {
+.c7 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -25,7 +25,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c4 {
+.c6 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -33,7 +33,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c3 {
+.c5 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 28px;
@@ -41,11 +41,27 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c2 {
+.c4 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 30px;
+  line-height: 1.25em;
+  margin-bottom: 20px;
+}
+
+.c3 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 34px;
   line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 37px;
+  line-height: 1.2em;
   margin-bottom: 20px;
 }
 
@@ -65,7 +81,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c9 {
+.c11 {
   font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
   -webkit-font-smoothing: antialiased;
   -webkit-text-transform: uppercase;
@@ -83,7 +99,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c8 {
+.c10 {
   font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
   -webkit-font-smoothing: antialiased;
   -webkit-text-transform: uppercase;
@@ -101,7 +117,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c20 {
+.c23 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 12px;
@@ -109,7 +125,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c19 {
+.c22 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -117,7 +133,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c18 {
+.c21 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -125,7 +141,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c17 {
+.c20 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -133,7 +149,15 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c16 {
+.c19 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c18 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 34px;
@@ -141,7 +165,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c15 {
+.c17 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -149,7 +173,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c14 {
+.c16 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -157,7 +181,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c13 {
+.c15 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 65px;
@@ -165,7 +189,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c12 {
+.c14 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 80px;
@@ -173,7 +197,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c11 {
+.c13 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -181,7 +205,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c10 {
+.c12 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 130px;
@@ -203,98 +227,113 @@ exports[`renders properly 1`] = `
   <div
     className="c2"
   >
-    Garamond s34: 34px / 1.5em
+    Garamond s37: 37px / 1.2em
   </div>
   <div
     className="c3"
   >
-    Garamond s28: 28px / 1.5em
+    Garamond s34: 34px / 1.5em
   </div>
   <div
     className="c4"
   >
-    Garamond s23: 23px / 1.5em
+    Garamond s30: 30px / 1.25em
   </div>
   <div
     className="c5"
   >
-    Garamond s19: 19px / 1.1em
+    Garamond s28: 28px / 1.5em
   </div>
   <div
     className="c6"
   >
-    Garamond s17: 17px / 1.1em
+    Garamond s23: 23px / 1.5em
   </div>
   <div
     className="c7"
+  >
+    Garamond s19: 19px / 1.1em
+  </div>
+  <div
+    className="c8"
+  >
+    Garamond s17: 17px / 1.1em
+  </div>
+  <div
+    className="c9"
   >
     Garamond s15: 15px / 1.25em
   </div>
   <hr />
   <br />
   <div
-    className="c8"
+    className="c10"
   >
     Avant Garde s13: 13px / 1.65em
   </div>
   <div
-    className="c9"
+    className="c11"
   >
     Avant Garde s11: 11px / 1.65em
   </div>
   <hr />
   <div
-    className="c10"
+    className="c12"
   >
     Unica s130: 130px / 1.1em
   </div>
   <div
-    className="c11"
+    className="c13"
   >
     Unica s100: 100px / 1.1em
   </div>
   <div
-    className="c12"
+    className="c14"
   >
     Unica s80: 80px / 1.1em
   </div>
   <div
-    className="c13"
+    className="c15"
   >
     Unica s65: 65px / 1em
   </div>
   <div
-    className="c14"
+    className="c16"
   >
     Unica s45: 45px / 1.1em
   </div>
   <div
-    className="c15"
+    className="c17"
   >
     Unica s40: 40px / 1.1em
   </div>
   <div
-    className="c16"
+    className="c18"
   >
     Unica s34: 34px / 1.1em
   </div>
   <div
-    className="c17"
+    className="c19"
+  >
+    Unica s32: 32px / 1.1em
+  </div>
+  <div
+    className="c20"
   >
     Unica s19: 19px / 1.5em
   </div>
   <div
-    className="c18"
+    className="c21"
   >
     Unica s16: 16px / 1.1em
   </div>
   <div
-    className="c19"
+    className="c22"
   >
     Unica s14: 14px / 1.1em
   </div>
   <div
-    className="c20"
+    className="c23"
   >
     Unica s12: 12px / 1.1em
   </div>

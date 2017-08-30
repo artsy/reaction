@@ -103,9 +103,10 @@ const Overlay = Div.extend`
   opacity: 0.17;
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s19", "medium")}
+  ${Fonts.unica("s16", "medium")}
+  margin-bottom: 10px;
   ${pMedia.xs`
-    ${Fonts.unica("s16", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `}
 `
 const HeaderTextContainer = Div.extend`

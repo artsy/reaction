@@ -90,9 +90,9 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.1em;
   font-weight: normal;
   margin: 0;
@@ -148,11 +148,11 @@ exports[`renders column_width properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background: black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 
 .c1 .artist-follow {
@@ -225,9 +225,9 @@ exports[`renders column_width properly 1`] = `
   }
 
   .c1 h2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 1.1em;
   }
 
@@ -365,9 +365,9 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.1em;
   font-weight: normal;
   margin: 0;
@@ -423,11 +423,11 @@ exports[`renders fillwidth properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background: black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 
 .c1 .artist-follow {
@@ -500,9 +500,9 @@ exports[`renders fillwidth properly 1`] = `
   }
 
   .c1 h2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 1.1em;
   }
 
@@ -640,9 +640,9 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.1em;
   font-weight: normal;
   margin: 0;
@@ -698,11 +698,11 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background: black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 
 .c1 .artist-follow {
@@ -775,9 +775,9 @@ exports[`renders overflow_fillwidth properly 1`] = `
   }
 
   .c1 h2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 1.1em;
   }
 

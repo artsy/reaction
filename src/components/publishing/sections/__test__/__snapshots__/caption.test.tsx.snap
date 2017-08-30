@@ -33,7 +33,7 @@ exports[`renders a child even if a caption is provided 1`] = `
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;
@@ -99,7 +99,7 @@ exports[`renders a saved caption properly 1`] = `
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.1em;

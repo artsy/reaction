@@ -53,7 +53,7 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
 const div: StyledFunction<BulletTextProps> = styled.div
 
 const BulletText = div`
-  ${Fonts.unica("s19", "medium")}
+  ${Fonts.unica("s16", "medium")}
   &:nth-child(2) {
     margin: 0 0 0 30px;
   }
