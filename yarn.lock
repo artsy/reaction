@@ -250,6 +250,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-slick@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.14.1.tgz#33393647e5b4db678cbedcd96b70c17fc83ead22"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-test-renderer@^15.4.4":
   version "15.4.4"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-15.4.4.tgz#bce97ffa38b8ec3fd522791f779dd0c378d5a995"
