@@ -4,7 +4,6 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import TextLink from "../../text_link"
 import Fonts from "../fonts"
-import ViewFullscreen from "./view_fullscreen"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
@@ -101,7 +100,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const { layout, artwork } = this.props
+    const { layout } = this.props
     if (layout === "classic") {
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
@@ -138,7 +137,6 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             </span>
             {this.renderTitleDatePartner()}
           </TruncatedLine>
-          <ViewFullscreen index={artwork.index} />
         </StyledArtworkCaption>
       )
     }

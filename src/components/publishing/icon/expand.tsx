@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class IconImageSet extends Component<any, null> {
+class IconExpand extends Component<any, null> {
   render() {
     return (
       <svg viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -25,4 +25,4 @@ class IconImageSet extends Component<any, null> {
     )
   }
 }
-export default IconImageSet
+export default IconExpand

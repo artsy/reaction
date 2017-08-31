@@ -1,10 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import Caption from "./caption"
-
-const BlockImage = styled.img`
-  display: block;
-`
+import ImageWrapper from "./image_wrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any
@@ -18,13 +14,15 @@ const Image: React.SFC<ImageProps> = props => {
   const child = children && children
   return (
     <div className="article-image">
-      <BlockImage
+      <ImageWrapper
+        layout={layout}
         src={image.url}
         width={width}
         height={height}
         alt={image.caption.replace(/<[^>]*>/g, "") /* strip caption html */}
+        index={image.index}
       />
-      <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} index={image.index}>
+      <Caption caption={image.caption} layout={layout}>
         {child}
       </Caption>
     </div>

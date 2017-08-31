@@ -1,13 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import ArtworkCaption from "./artwork_caption"
-
-const ArtworkImageLink = styled.a`
-  text-decoration: none;
-`
-const BlockImage = styled.img`
-  display: block;
-`
+import ImageWrapper from "./image_wrapper"
 
 interface ArtworkProps {
   artwork: any
@@ -18,14 +12,16 @@ interface ArtworkProps {
 }
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
-  const { artwork, linked, height, width } = props
+  const { artwork, linked, height, width, layout } = props
   const image = (
-    <BlockImage
+    <ImageWrapper
+      layout={layout}
       src={artwork.image}
       className="display-artwork__image"
       width={width}
       height={height}
       alt={artwork.title}
+      index={artwork.index}
     />
   )
   if (linked) {
@@ -56,5 +52,9 @@ const Artwork: React.SFC<ArtworkProps> = props => {
 Artwork.defaultProps = {
   linked: true,
 }
+
+const ArtworkImageLink = styled.a`
+  text-decoration: none;
+`
 
 export default Artwork

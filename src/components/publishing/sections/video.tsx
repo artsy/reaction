@@ -75,7 +75,7 @@ class Video extends React.Component<VideoProps, VideoState> {
           <PlayButton><PlayButtonCaret /></PlayButton>
         </CoverImage>
         <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
-        <Caption caption={caption} layout={this.props.layout} viewFullscreen={false}>
+        <Caption caption={caption} layout={this.props.layout}>
           {this.props.children}
         </Caption>
       </VideoContainer>
