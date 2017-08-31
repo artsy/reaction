@@ -2,23 +2,6 @@
 
 exports[`renders a long caption properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30,9 +13,9 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p,
-.c2 p,
-.c2 .public-DraftEditorPlaceholder-root {
+.c4 > p,
+.c4 p,
+.c4 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -41,12 +24,26 @@ exports[`renders a long caption properly 1`] = `
   margin: 0;
 }
 
+.c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .c0 {
+  position: relative;
+}
+
+.c1 {
   display: block;
 }
 
 @media (max-width: 600px) {
-  .c1 {
+  .c3 {
     padding: 0px 10px;
   }
 }
@@ -54,18 +51,72 @@ exports[`renders a long caption properly 1`] = `
 <div
   className="article-image"
 >
-  <img
-    alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-    className="c0"
-    height="auto"
-    src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-    width="100%"
-  />
   <div
-    className="c1"
+    className="c0"
   >
+    <img
+      alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
+      className="c1"
+      height="auto"
+      src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+      width="100%"
+    />
     <div
       className="c2"
+      onClick={[Function]}
+    >
+      <svg
+        version="1.1"
+        viewBox="0 0 27 27"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="1"
+        >
+          <g>
+            <circle
+              cx="13.9575195"
+              cy="13.0588379"
+              fill="#000000"
+              fillRule="nonzero"
+              opacity="0.6"
+              r="13"
+            />
+            <g
+              stroke="#FFFFFF"
+              transform="translate(8.000000, 7.000000)"
+            >
+              <g>
+                <g
+                  transform="translate(0.382532, 0.382532)"
+                >
+                  <polyline
+                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                  />
+                  <polyline
+                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                  />
+                  <path
+                    d="M10.360254,0.796942618 L0.796942618,10.360254"
+                    strokeLinecap="square"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
     >
       <div
         dangerouslySetInnerHTML={
@@ -75,35 +126,12 @@ exports[`renders a long caption properly 1`] = `
         }
       />
     </div>
-    <div
-      className="c3"
-      onClick={[Function]}
-    >
-      View Fullscreen
-    </div>
   </div>
 </div>
 `;
 
 exports[`renders a react child as caption properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,9 +143,9 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p,
-.c2 p,
-.c2 .public-DraftEditorPlaceholder-root {
+.c4 > p,
+.c4 p,
+.c4 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -126,12 +154,26 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 0;
 }
 
+.c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .c0 {
+  position: relative;
+}
+
+.c1 {
   display: block;
 }
 
 @media (max-width: 600px) {
-  .c1 {
+  .c3 {
     padding: 0px 10px;
   }
 }
@@ -139,18 +181,72 @@ exports[`renders a react child as caption properly 1`] = `
 <div
   className="article-image"
 >
-  <img
-    alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-    className="c0"
-    height="auto"
-    src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-    width="100%"
-  />
   <div
-    className="c1"
+    className="c0"
   >
+    <img
+      alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
+      className="c1"
+      height="auto"
+      src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+      width="100%"
+    />
     <div
       className="c2"
+      onClick={[Function]}
+    >
+      <svg
+        version="1.1"
+        viewBox="0 0 27 27"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="1"
+        >
+          <g>
+            <circle
+              cx="13.9575195"
+              cy="13.0588379"
+              fill="#000000"
+              fillRule="nonzero"
+              opacity="0.6"
+              r="13"
+            />
+            <g
+              stroke="#FFFFFF"
+              transform="translate(8.000000, 7.000000)"
+            >
+              <g>
+                <g
+                  transform="translate(0.382532, 0.382532)"
+                >
+                  <polyline
+                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                  />
+                  <polyline
+                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                  />
+                  <path
+                    d="M10.360254,0.796942618 L0.796942618,10.360254"
+                    strokeLinecap="square"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
     >
       <div>
         <p>
@@ -158,35 +254,12 @@ exports[`renders a react child as caption properly 1`] = `
         </p>
       </div>
     </div>
-    <div
-      className="c3"
-      onClick={[Function]}
-    >
-      View Fullscreen
-    </div>
   </div>
 </div>
 `;
 
 exports[`renders properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -198,9 +271,9 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c2 > p,
-.c2 p,
-.c2 .public-DraftEditorPlaceholder-root {
+.c4 > p,
+.c4 p,
+.c4 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -209,12 +282,26 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
+.c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .c0 {
+  position: relative;
+}
+
+.c1 {
   display: block;
 }
 
 @media (max-width: 600px) {
-  .c1 {
+  .c3 {
     padding: 0px 10px;
   }
 }
@@ -222,18 +309,72 @@ exports[`renders properly 1`] = `
 <div
   className="article-image"
 >
-  <img
-    alt="Photo by Adam Kuehl for Artsy."
-    className="c0"
-    height="auto"
-    src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
-    width="100%"
-  />
   <div
-    className="c1"
+    className="c0"
   >
+    <img
+      alt="Photo by Adam Kuehl for Artsy."
+      className="c1"
+      height="auto"
+      src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+      width="100%"
+    />
     <div
       className="c2"
+      onClick={[Function]}
+    >
+      <svg
+        version="1.1"
+        viewBox="0 0 27 27"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="1"
+        >
+          <g>
+            <circle
+              cx="13.9575195"
+              cy="13.0588379"
+              fill="#000000"
+              fillRule="nonzero"
+              opacity="0.6"
+              r="13"
+            />
+            <g
+              stroke="#FFFFFF"
+              transform="translate(8.000000, 7.000000)"
+            >
+              <g>
+                <g
+                  transform="translate(0.382532, 0.382532)"
+                >
+                  <polyline
+                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                  />
+                  <polyline
+                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                  />
+                  <path
+                    d="M10.360254,0.796942618 L0.796942618,10.360254"
+                    strokeLinecap="square"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
     >
       <div
         dangerouslySetInnerHTML={
@@ -242,12 +383,6 @@ exports[`renders properly 1`] = `
           }
         }
       />
-    </div>
-    <div
-      className="c3"
-      onClick={[Function]}
-    >
-      View Fullscreen
     </div>
   </div>
 </div>

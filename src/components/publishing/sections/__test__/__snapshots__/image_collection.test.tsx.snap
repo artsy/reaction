@@ -1,30 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
-.c6 {
+.c8 {
   color: #999;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
-.c4 {
+.c6 {
   margin-top: 10px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -36,7 +19,7 @@ exports[`renders a single image properly 1`] = `
   line-height: 1.1em;
 }
 
-.c5 {
+.c7 {
   color: #999;
   display: block;
   -webkit-text-overflow: ellipsis;
@@ -46,17 +29,31 @@ exports[`renders a single image properly 1`] = `
   width: 100%;
 }
 
-.c5 .artist-name {
+.c7 .artist-name {
   margin-right: 30px;
+}
+
+.c5 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c4 {
+  display: block;
 }
 
 .c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c3 {
-  display: block;
 }
 
 .c1 {
@@ -100,19 +97,73 @@ exports[`renders a single image properly 1`] = `
         className="c2"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
-        <img
-          alt="Nude on the Beach"
-          className="display-artwork__image c3"
-          height="auto"
-          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-          width="100%"
-        />
+        <div
+          className="c3"
+        >
+          <img
+            alt="Nude on the Beach"
+            className="display-artwork__image c4"
+            height="auto"
+            src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+            width="100%"
+          />
+          <div
+            className="c5"
+            onClick={[Function]}
+          >
+            <svg
+              version="1.1"
+              viewBox="0 0 27 27"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <g>
+                  <circle
+                    cx="13.9575195"
+                    cy="13.0588379"
+                    fill="#000000"
+                    fillRule="nonzero"
+                    opacity="0.6"
+                    r="13"
+                  />
+                  <g
+                    stroke="#FFFFFF"
+                    transform="translate(8.000000, 7.000000)"
+                  >
+                    <g>
+                      <g
+                        transform="translate(0.382532, 0.382532)"
+                      >
+                        <polyline
+                          points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                        />
+                        <polyline
+                          points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                          transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                        />
+                        <path
+                          d="M10.360254,0.796942618 L0.796942618,10.360254"
+                          strokeLinecap="square"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
       </a>
       <div
-        className="display-artwork__caption c4"
+        className="display-artwork__caption c6"
       >
         <div
-          className="c5"
+          className="c7"
         >
           <span
             className="artist-name"
@@ -121,7 +172,7 @@ exports[`renders a single image properly 1`] = `
               className="name"
             >
               <a
-                className="c6"
+                className="c8"
                 href="/artist/fernando-botero"
               >
                 Fernando Botero
@@ -132,7 +183,7 @@ exports[`renders a single image properly 1`] = `
             className="title"
           >
             <a
-              className="c6"
+              className="c8"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -154,17 +205,11 @@ exports[`renders a single image properly 1`] = `
             , 
           </span>
           <a
-            className="c6"
+            className="c8"
             href="/partner/gary-nader"
           >
             Gary Nader
           </a>
-        </div>
-        <div
-          className="c7"
-          onClick={[Function]}
-        >
-          View Fullscreen
         </div>
       </div>
     </div>
@@ -173,30 +218,13 @@ exports[`renders a single image properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c6 {
+.c8 {
   color: #999;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
-.c4 {
+.c6 {
   margin-top: 10px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -208,7 +236,7 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c5 {
+.c7 {
   color: #999;
   display: block;
   -webkit-text-overflow: ellipsis;
@@ -218,17 +246,31 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c5 .artist-name {
+.c7 .artist-name {
   margin-right: 30px;
+}
+
+.c5 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c4 {
+  display: block;
 }
 
 .c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c3 {
-  display: block;
 }
 
 .c10 {
@@ -254,16 +296,12 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c9 {
-  display: block;
-}
-
 .c1 {
   margin-right: 10px;
   width: 312px;
 }
 
-.c8 {
+.c9 {
   margin-right: 10px;
   width: 168px;
 }
@@ -294,7 +332,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c8 {
+  .c9 {
     margin-bottom: 10px;
   }
 }
@@ -327,19 +365,73 @@ exports[`renders properly 1`] = `
         className="c2"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
-        <img
-          alt="Nude on the Beach"
-          className="display-artwork__image c3"
-          height={224}
-          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-          width={312}
-        />
+        <div
+          className="c3"
+        >
+          <img
+            alt="Nude on the Beach"
+            className="display-artwork__image c4"
+            height={224}
+            src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+            width={312}
+          />
+          <div
+            className="c5"
+            onClick={[Function]}
+          >
+            <svg
+              version="1.1"
+              viewBox="0 0 27 27"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <g>
+                  <circle
+                    cx="13.9575195"
+                    cy="13.0588379"
+                    fill="#000000"
+                    fillRule="nonzero"
+                    opacity="0.6"
+                    r="13"
+                  />
+                  <g
+                    stroke="#FFFFFF"
+                    transform="translate(8.000000, 7.000000)"
+                  >
+                    <g>
+                      <g
+                        transform="translate(0.382532, 0.382532)"
+                      >
+                        <polyline
+                          points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                        />
+                        <polyline
+                          points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                          transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                        />
+                        <path
+                          d="M10.360254,0.796942618 L0.796942618,10.360254"
+                          strokeLinecap="square"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
       </a>
       <div
-        className="display-artwork__caption c4"
+        className="display-artwork__caption c6"
       >
         <div
-          className="c5"
+          className="c7"
         >
           <span
             className="artist-name"
@@ -348,7 +440,7 @@ exports[`renders properly 1`] = `
               className="name"
             >
               <a
-                className="c6"
+                className="c8"
                 href="/artist/fernando-botero"
               >
                 Fernando Botero
@@ -359,7 +451,7 @@ exports[`renders properly 1`] = `
             className="title"
           >
             <a
-              className="c6"
+              className="c8"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -381,35 +473,83 @@ exports[`renders properly 1`] = `
             , 
           </span>
           <a
-            className="c6"
+            className="c8"
             href="/partner/gary-nader"
           >
             Gary Nader
           </a>
         </div>
-        <div
-          className="c7"
-          onClick={[Function]}
-        >
-          View Fullscreen
-        </div>
       </div>
     </div>
   </div>
   <div
-    className="c8"
+    className="c9"
     width={168}
   >
     <div
       className="article-image"
     >
-      <img
-        alt="Photo by Adam Kuehl for Artsy."
-        className="c9"
-        height={224}
-        src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
-        width={168}
-      />
+      <div
+        className="c3"
+      >
+        <img
+          alt="Photo by Adam Kuehl for Artsy."
+          className="c4"
+          height={224}
+          src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+          width={168}
+        />
+        <div
+          className="c5"
+          onClick={[Function]}
+        >
+          <svg
+            version="1.1"
+            viewBox="0 0 27 27"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <g>
+                <circle
+                  cx="13.9575195"
+                  cy="13.0588379"
+                  fill="#000000"
+                  fillRule="nonzero"
+                  opacity="0.6"
+                  r="13"
+                />
+                <g
+                  stroke="#FFFFFF"
+                  transform="translate(8.000000, 7.000000)"
+                >
+                  <g>
+                    <g
+                      transform="translate(0.382532, 0.382532)"
+                    >
+                      <polyline
+                        points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                      />
+                      <polyline
+                        points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                        transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                      />
+                      <path
+                        d="M10.360254,0.796942618 L0.796942618,10.360254"
+                        strokeLinecap="square"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
       <div
         className="c10"
       >
@@ -424,12 +564,6 @@ exports[`renders properly 1`] = `
             }
           />
         </div>
-        <div
-          className="c7"
-          onClick={[Function]}
-        >
-          View Fullscreen
-        </div>
       </div>
     </div>
   </div>
@@ -440,13 +574,67 @@ exports[`renders properly 1`] = `
     <div
       className="article-image"
     >
-      <img
-        alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-        className="c9"
-        height={224}
-        src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
-        width={178}
-      />
+      <div
+        className="c3"
+      >
+        <img
+          alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
+          className="c4"
+          height={224}
+          src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+          width={178}
+        />
+        <div
+          className="c5"
+          onClick={[Function]}
+        >
+          <svg
+            version="1.1"
+            viewBox="0 0 27 27"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <g>
+                <circle
+                  cx="13.9575195"
+                  cy="13.0588379"
+                  fill="#000000"
+                  fillRule="nonzero"
+                  opacity="0.6"
+                  r="13"
+                />
+                <g
+                  stroke="#FFFFFF"
+                  transform="translate(8.000000, 7.000000)"
+                >
+                  <g>
+                    <g
+                      transform="translate(0.382532, 0.382532)"
+                    >
+                      <polyline
+                        points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                      />
+                      <polyline
+                        points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                        transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                      />
+                      <path
+                        d="M10.360254,0.796942618 L0.796942618,10.360254"
+                        strokeLinecap="square"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
       <div
         className="c10"
       >
@@ -460,12 +648,6 @@ exports[`renders properly 1`] = `
               }
             }
           />
-        </div>
-        <div
-          className="c7"
-          onClick={[Function]}
-        >
-          View Fullscreen
         </div>
       </div>
     </div>
