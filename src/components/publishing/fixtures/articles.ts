@@ -1,6 +1,6 @@
-import { ArticleProps } from "../article"
+import { ArticleData } from "../typings"
 
-export const ClassicArticle: ArticleProps["article"] = {
+export const ClassicArticle: ArticleData = {
   _id: "597b9f652d35b80017a2a6a7",
   author_id: "4f85e1b55ca0370001000072",
   partner_channel_id: "52d99185cd530e581300006c",
@@ -132,7 +132,7 @@ export const ClassicArticle: ArticleProps["article"] = {
   ],
 }
 
-export const StandardArticle: ArticleProps["article"] = {
+export const StandardArticle: ArticleData = {
   title: "New York's Next Art District",
   contributing_authors: [],
   published_at: "2017-05-19T13:09:18.567Z",
@@ -372,7 +372,7 @@ export const StandardArticle: ArticleProps["article"] = {
   ],
 }
 
-export const FeatureArticle: ArticleProps["article"] = {
+export const FeatureArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
   keywords: ["Inspiration", "Casey Lesser"],
   author_id: "57b5fc6acd530e65f8000406",
