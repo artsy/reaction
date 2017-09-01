@@ -6,6 +6,7 @@ import FeatureLayout from "./layouts/feature_layout"
 import StandardLayout from "./layouts/standard_layout"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
+import Share from "./share"
 import { ArticleData } from "./typings"
 
 export interface ArticleProps {
@@ -71,12 +72,13 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    if (this.state.article.layout === "feature") {
+    const article = this.state.article
+    if (article.layout === "feature") {
       return (
         <div>
-          <Header article={this.state.article} />
+          <Header article={article} />
           <FeatureLayout>
-            <Sections article={this.state.article} />
+            <Sections article={article} />
           </FeatureLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
@@ -89,9 +91,10 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     } else {
       return (
         <div>
-          <Header article={this.state.article} />
+          <Header article={article} />
           <StandardLayout>
-            <Sections article={this.state.article} />
+            <Sections article={article} />
+            <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
           </StandardLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
