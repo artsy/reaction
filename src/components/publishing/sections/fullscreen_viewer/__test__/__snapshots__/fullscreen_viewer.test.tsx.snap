@@ -140,7 +140,7 @@ exports[`renders properly 1`] = `
   height: 100vh;
   overflow: hidden;
   position: fixed;
-  z-index: 20;
+  z-index: 1070;
   top: 0;
   left: 0;
   background-color: white;

@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
+import IconExpand from "../icon/expand"
 import IconImageSet from "../icon/image_set"
 import IconRemove from "../icon/remove"
 import Typography from "./typography_examples"
@@ -16,6 +17,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconRemove />
           <p>Remove</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconExpand />
+          <p>Expand</p>
         </div>
       </div>
     )

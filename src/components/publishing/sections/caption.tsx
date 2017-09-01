@@ -2,32 +2,27 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
-import ViewFullscreen from "./view_fullscreen"
+import { Layout } from "../typings"
 
 interface CaptionProps {
   caption: string
-  layout?: string
-  viewFullscreen?: boolean
+  layout?: Layout
   index?: any
 }
 interface FigcaptionProps {
-  layout: string
+  layout: Layout
 }
 
 const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, caption, viewFullscreen, children, index } = props
+  const { layout, caption, children } = props
   const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
   return (
     <CaptionContainer>
       <Figcaption layout={layout}>
         {child}
       </Figcaption>
-      {viewFullscreen ? <ViewFullscreen index={index} /> : false}
     </CaptionContainer>
   )
-}
-Caption.defaultProps = {
-  viewFullscreen: true,
 }
 
 const CaptionContainer = styled.div`

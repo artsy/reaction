@@ -12,23 +12,6 @@ exports[`renders properly 1`] = `
   text-decoration: none;
 }
 
-.c10 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
 .c14 {
   margin-top: 10px;
   display: -webkit-box;
@@ -55,16 +38,30 @@ exports[`renders properly 1`] = `
   margin-right: 30px;
 }
 
-.c12 {
+.c9 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c8 {
+  display: block;
+}
+
+.c13 {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c13 {
-  display: block;
-}
-
-.c8 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -76,9 +73,9 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c9 > p,
-.c9 p,
-.c9 .public-DraftEditorPlaceholder-root {
+.c11 > p,
+.c11 p,
+.c11 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -87,16 +84,12 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c7 {
-  display: block;
-}
-
 .c6 {
   margin-right: 10px;
   width: 197px;
 }
 
-.c11 {
+.c12 {
   margin-right: 0px;
   width: 264px;
 }
@@ -456,7 +449,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c8 {
+  .c10 {
     padding: 0px 10px;
   }
 }
@@ -468,7 +461,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c11 {
+  .c12 {
     margin-bottom: 10px;
   }
 }
@@ -723,18 +716,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="c7"
-            height={351}
-            src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
-            width={197}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
+              className="c8"
+              height={351}
+              src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
+              width={197}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -743,12 +790,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -760,18 +801,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
-            className="c7"
-            height={351}
-            src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
-            width={197}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
+              className="c8"
+              height={351}
+              src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
+              width={197}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -781,33 +876,81 @@ exports[`renders properly 1`] = `
                 }
               />
             </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
-            </div>
           </div>
         </div>
       </div>
       <div
-        className="c11"
+        className="c12"
         width={264}
       >
         <div
           className="display-artwork"
         >
           <a
-            className="c12"
+            className="c13"
             href="/artwork/matt-devine-brass-tax"
           >
-            <img
-              alt="Brass Tax"
-              className="display-artwork__image c13"
-              height={352}
-              src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
-              width={264}
-            />
+            <div
+              className="c7"
+            >
+              <img
+                alt="Brass Tax"
+                className="display-artwork__image c8"
+                height={352}
+                src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
+                width={264}
+              />
+              <div
+                className="c9"
+                onClick={[Function]}
+              >
+                <svg
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        opacity="0.6"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </a>
           <div
             className="display-artwork__caption c14"
@@ -851,12 +994,6 @@ exports[`renders properly 1`] = `
                 Joanne Artman Gallery
               </a>
             </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
-            </div>
           </div>
         </div>
       </div>
@@ -890,18 +1027,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="c7"
-            height={425}
-            src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
-            width={219}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+              className="c8"
+              height={425}
+              src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
+              width={219}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -910,12 +1101,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -927,18 +1112,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="c7"
-            height={425}
-            src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
-            width={219}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+              className="c8"
+              height={425}
+              src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
+              width={219}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -947,12 +1186,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -964,18 +1197,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-            className="c7"
-            height={426}
-            src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
-            width={219}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+              className="c8"
+              height={426}
+              src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
+              width={219}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -984,12 +1271,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -1024,18 +1305,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
-            className="c7"
-            height="auto"
-            src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
-            width="100%"
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
+              className="c8"
+              height="auto"
+              src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+              width="100%"
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1044,12 +1379,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -1110,18 +1439,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="c7"
-            height={387}
-            src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
-            width={216}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+              className="c8"
+              height={387}
+              src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
+              width={216}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1130,12 +1513,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -1147,18 +1524,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="c7"
-            height={388}
-            src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
-            width={219}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+              className="c8"
+              height={388}
+              src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
+              width={219}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1167,12 +1598,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -1184,18 +1609,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-            className="c7"
-            height={388}
-            src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
-            width={222}
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
+              className="c8"
+              height={388}
+              src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
+              width={222}
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1204,12 +1683,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>
@@ -1328,18 +1801,72 @@ exports[`renders properly 1`] = `
         <div
           className="article-image"
         >
-          <img
-            alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
-            className="c7"
-            height="auto"
-            src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
-            width="100%"
-          />
           <div
-            className="c8"
+            className="c7"
           >
+            <img
+              alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
+              className="c8"
+              height="auto"
+              src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
+              width="100%"
+            />
             <div
               className="c9"
+              onClick={[Function]}
+            >
+              <svg
+                version="1.1"
+                viewBox="0 0 27 27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <g>
+                    <circle
+                      cx="13.9575195"
+                      cy="13.0588379"
+                      fill="#000000"
+                      fillRule="nonzero"
+                      opacity="0.6"
+                      r="13"
+                    />
+                    <g
+                      stroke="#FFFFFF"
+                      transform="translate(8.000000, 7.000000)"
+                    >
+                      <g>
+                        <g
+                          transform="translate(0.382532, 0.382532)"
+                        >
+                          <polyline
+                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                          />
+                          <polyline
+                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                          />
+                          <path
+                            d="M10.360254,0.796942618 L0.796942618,10.360254"
+                            strokeLinecap="square"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1348,12 +1875,6 @@ exports[`renders properly 1`] = `
                   }
                 }
               />
-            </div>
-            <div
-              className="c10"
-              onClick={[Function]}
-            >
-              View Fullscreen
             </div>
           </div>
         </div>

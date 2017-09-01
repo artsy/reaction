@@ -1,23 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a child even if a caption is provided 1`] = `
-.c2 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -57,33 +40,10 @@ exports[`renders a child even if a caption is provided 1`] = `
       Here is a passed child
     </div>
   </div>
-  <div
-    className="c2"
-    onClick={[Function]}
-  >
-    View Fullscreen
-  </div>
 </div>
 `;
 
 exports[`renders a saved caption properly 1`] = `
-.c2 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.1em;
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -126,12 +86,6 @@ exports[`renders a saved caption properly 1`] = `
         }
       }
     />
-  </div>
-  <div
-    className="c2"
-    onClick={[Function]}
-  >
-    View Fullscreen
   </div>
 </div>
 `;

@@ -23,9 +23,18 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     onToggleCaption: PropTypes.func,
   }
 
+  private slider: any
+
   constructor(props) {
     super(props)
     this.state = { isCaptionOpen: false }
+  }
+
+  componentDidUpdate() {
+    if (this.slider) {
+      this.slider.innerSlider.list.setAttribute("tabindex", 0)
+      this.slider.innerSlider.list.focus()
+    }
   }
 
   handleKeydown = e => {
@@ -73,7 +82,7 @@ class FullscreenViewer extends React.Component<FullscreenViewerProps, Fullscreen
     }
     return (
       <FullscreenViewerContainer onKeyDown={this.handleKeydown}>
-        <Slider {...sliderSettings}>
+        <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
           {this.renderImageComponents()}
         </Slider>
         <Close onClick={this.close}>
@@ -105,7 +114,7 @@ const FullscreenViewerContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   position: fixed;
-  z-index: 20;
+  z-index: 1070;
   top: 0;
   left: 0;
   background-color: white;

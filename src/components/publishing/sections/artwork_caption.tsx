@@ -4,15 +4,16 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import TextLink from "../../text_link"
 import Fonts from "../fonts"
-import ViewFullscreen from "./view_fullscreen"
+import { Layout } from "../typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
-  layout?: string
+  layout?: Layout
   linked?: boolean
+  isFullscreenCaption?: boolean
 }
 interface StyledArtworkCaptionProps {
-  layout?: string
+  layout?: Layout
 }
 
 class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
@@ -101,8 +102,19 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const { layout, artwork } = this.props
-    if (layout === "classic") {
+    const { layout, isFullscreenCaption } = this.props
+    if (isFullscreenCaption) {
+      return (
+        <StyledFullscreenCaption layout={layout}>
+          <Line className="artist-name">
+            {this.renderArtists()}
+          </Line>
+          <Line>
+            {this.renderTitleDatePartner()}
+          </Line>
+        </StyledFullscreenCaption>
+      )
+    } else if (layout === "classic") {
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
           <TruncatedLine>
@@ -118,17 +130,6 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           </TruncatedLine>
         </StyledClassicCaption>
       )
-    } else if (layout === "fullscreen") {
-      return (
-        <StyledFullscreenCaption layout={layout}>
-          <Line className="artist-name">
-            {this.renderArtists()}
-          </Line>
-          <Line>
-            {this.renderTitleDatePartner()}
-          </Line>
-        </StyledFullscreenCaption>
-      )
     } else {
       return (
         <StyledArtworkCaption layout={layout} className="display-artwork__caption">
@@ -138,7 +139,6 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             </span>
             {this.renderTitleDatePartner()}
           </TruncatedLine>
-          <ViewFullscreen index={artwork.index} />
         </StyledArtworkCaption>
       )
     }
