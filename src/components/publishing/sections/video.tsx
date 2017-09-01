@@ -2,6 +2,7 @@ import * as React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
+import { Layout } from "../typings"
 import Caption from "./caption"
 
 const QUERYSTRING =
@@ -31,7 +32,7 @@ interface VideoProps {
     cover_image_url?: string
   }
   size?: any
-  layout?: string
+  layout?: Layout
 }
 
 interface VideoState {

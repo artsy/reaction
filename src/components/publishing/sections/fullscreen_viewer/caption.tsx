@@ -15,7 +15,7 @@ interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
 
 const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
   const caption = props.section.type === "artwork"
-    ? <ArtworkCaption layout="fullscreen" artwork={props.section} linked />
+    ? <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
     : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
   const indexText = `${props.index} of ${props.total}`
   return (

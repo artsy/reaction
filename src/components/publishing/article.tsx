@@ -6,9 +6,13 @@ import FeatureLayout from "./layouts/feature_layout"
 import StandardLayout from "./layouts/standard_layout"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
+import { Layout } from "./typings"
 
-interface ArticleProps {
-  article: any
+export interface ArticleProps {
+  article: {
+    layout: Layout
+    [x: string]: any
+  }
 }
 interface ArticleState {
   viewerIsOpen: boolean

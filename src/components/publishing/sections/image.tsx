@@ -1,10 +1,11 @@
 import React from "react"
+import { Layout } from "../typings"
 import Caption from "./caption"
 import ImageWrapper from "./image_wrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any
-  layout?: string
+  layout?: Layout
   width?: number | string
   height?: number | string
 }

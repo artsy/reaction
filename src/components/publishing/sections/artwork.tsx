@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
+import { Layout } from "../typings"
 import ArtworkCaption from "./artwork_caption"
 import ImageWrapper from "./image_wrapper"
 
 interface ArtworkProps {
   artwork: any
-  layout?: string
+  layout?: Layout
   linked?: boolean
   width?: string | number
   height?: string | number

@@ -2,14 +2,15 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
+import { Layout } from "../typings"
 
 interface CaptionProps {
   caption: string
-  layout?: string
+  layout?: Layout
   index?: any
 }
 interface FigcaptionProps {
-  layout: string
+  layout: Layout
 }
 
 const Caption: React.SFC<CaptionProps> = props => {

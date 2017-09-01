@@ -1,8 +1,9 @@
 import React from "react"
+import { Layout } from "../typings"
 import StyledText from "./styled_text"
 
 interface TextProps extends React.HTMLProps<HTMLDivElement> {
-  layout: "classic" | "feature" | "standard"
+  layout: Layout
   postscript?: boolean
   html?: string
 }

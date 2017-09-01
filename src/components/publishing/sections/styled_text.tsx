@@ -2,9 +2,10 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
+import { Layout } from "../typings"
 
 interface StyledTextProps {
-  layout: String
+  layout: Layout
   postscript?: Boolean
 }
 

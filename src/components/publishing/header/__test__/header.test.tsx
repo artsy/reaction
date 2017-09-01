@@ -4,7 +4,7 @@ import * as renderer from "react-test-renderer"
 import "jest-styled-components"
 import * as _ from "lodash"
 
-import Articles from "../../fixtures/articles"
+import { ClassicArticle, FeatureArticle, StandardArticle } from "../../fixtures/articles"
 import { HeroSections } from "../../fixtures/components"
 import AuthorDate from "../author_date"
 import AuthorDateClassic from "../author_date_classic"
@@ -14,19 +14,19 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
 describe("feature", () => {
   it("renders feature text header properly", () => {
-    const article = _.extend({}, Articles[2], { hero_section: HeroSections[0] })
+    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[0] })
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
   })
 
   it("renders feature split header properly", () => {
-    const article = _.extend({}, Articles[2], { hero_section: HeroSections[1] })
+    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[1] })
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
   })
 
   it("renders feature full header properly", () => {
-    const article = _.extend({}, Articles[2], { hero_section: HeroSections[2] })
+    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
   })
@@ -34,7 +34,7 @@ describe("feature", () => {
 
 describe("Standard Header", () => {
   it("renders standard header properly", () => {
-    const header = renderer.create(<Header article={Articles[1]} />).toJSON()
+    const header = renderer.create(<Header article={StandardArticle} />).toJSON()
     expect(header).toMatchSnapshot()
   })
 })
@@ -59,7 +59,7 @@ describe("AuthorDate", () => {
 
 describe("Classic Header", () => {
   it("renders classic header properly", () => {
-    const header = renderer.create(<Header article={Articles[0]} />).toJSON()
+    const header = renderer.create(<Header article={ClassicArticle} />).toJSON()
     expect(header).toMatchSnapshot()
   })
 })

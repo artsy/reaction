@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { Layout } from "../typings"
 import Authors from "./authors"
 import Embed from "./embed"
 import ImageCollection from "./image_collection"
@@ -10,7 +11,7 @@ import Video from "./video"
 
 interface SectionsProps {
   article: {
-    layout: string
+    layout: Layout
     authors?: any
     postscript?: string
   }

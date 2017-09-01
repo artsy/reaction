@@ -1,10 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import { Layout } from "../typings"
 import ViewFullscreen from "./view_fullscreen"
 
-interface ImageWrapperProps extends React.HTMLProps<HTMLDivElement> {
+interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   src: any
-  layout?: string
+  layout?: Layout
   width?: string | number
   height?: string | number
   alt?: string
@@ -12,15 +13,12 @@ interface ImageWrapperProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
-  const { layout, index } = props
+  const { layout, index, ...blockImageProps }: any = props
   const viewFullscreen = layout !== "classic" ? <ViewFullscreen index={index} /> : false
-  const newProps: any = { ...props }
-  delete newProps.layout
-  delete newProps.index
 
   return (
     <StyledImageWrapper>
-      <BlockImage {...newProps} />
+      <BlockImage {...blockImageProps} />
       {viewFullscreen}
     </StyledImageWrapper>
   )
