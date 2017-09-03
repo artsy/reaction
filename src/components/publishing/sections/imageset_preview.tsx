@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
+import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
-
 import Fonts from "../fonts"
 import IconImageSet from "../icon/image_set"
 
@@ -107,7 +107,7 @@ class ImageSetPreview extends Component<Props, null> {
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
-    return src
+    return resize(src, { width: 1200 })
   }
   image() {
     const src = this.getImageUrl()

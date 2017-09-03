@@ -1,6 +1,7 @@
 import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { crop } from "../../utils/resizer"
 import Fonts from "./fonts"
 
 interface RelatedArticlesProps extends React.HTMLProps<HTMLDivElement> {
@@ -23,7 +24,7 @@ const RelatedArticles: React.SFC<RelatedArticlesProps> = props => {
         {_.map(articles, (article, i) => {
           return (
             <ArticleLink href={`/${article.slug}`} key={`relatedArticles-${i}`}>
-              <ArticleImage src={article.thumbnail_image} />
+              <ArticleImage src={crop(article.thumbnail_image, { width: 160, height: 110 })} />
               <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
             </ArticleLink>
           )

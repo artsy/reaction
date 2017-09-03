@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { resize } from "../../../utils/resizer"
 import { Layout } from "../typings"
 import ArtworkCaption from "./artwork_caption"
 import ImageWrapper from "./image_wrapper"
@@ -14,10 +15,11 @@ interface ArtworkProps {
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
   const { artwork, linked, height, width, layout } = props
+  const src = resize(artwork.image, { width: 1200 })
   const image = (
     <ImageWrapper
       layout={layout}
-      src={artwork.image}
+      src={src}
       className="display-artwork__image"
       width={width}
       height={height}
