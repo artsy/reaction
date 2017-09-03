@@ -93,6 +93,9 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         </div>
       )
     } else {
+      const relatedArticleSection = relatedArticles.length
+        ? <RelatedArticles label={"Related Stories"} articles={relatedArticles} />
+        : false
       return (
         <div>
           <Header article={article} />
@@ -100,7 +103,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             <Sections article={article} />
             <Sidebar>
               <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
-              <RelatedArticles label={"Related Stories"} articles={relatedArticles} />
+              {relatedArticleSection}
             </Sidebar>
           </StandardLayout>
           <FullscreenViewer
