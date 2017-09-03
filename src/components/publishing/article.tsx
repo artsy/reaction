@@ -3,7 +3,9 @@ import * as PropTypes from "prop-types"
 import * as React from "react"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
+import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
+import RelatedArticles from "./related_articles"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
 import Share from "./share"
@@ -11,6 +13,7 @@ import { ArticleData } from "./typings"
 
 export interface ArticleProps {
   article: ArticleData
+  relatedArticles?: any
 }
 interface ArticleState {
   viewerIsOpen: boolean
@@ -72,6 +75,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
+    const { relatedArticles } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
@@ -94,7 +98,10 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           <Header article={article} />
           <StandardLayout>
             <Sections article={article} />
-            <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
+            <Sidebar>
+              <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
+              <RelatedArticles label={"Related Stories"} articles={relatedArticles} />
+            </Sidebar>
           </StandardLayout>
           <FullscreenViewer
             onClose={this.closeViewer}

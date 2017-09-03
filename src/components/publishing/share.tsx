@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../helpers"
 import Icon from "../icon"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
@@ -34,9 +33,7 @@ const Share: React.SFC<ShareProps> = props => {
 const ShareContainer = styled.div`
   display: flex;
   max-width: 350px;
-  ${pMedia.md`
-    display: none;
-  `}
+  margin-bottom: 40px;
 `
 
 const IconWrapper = styled.a`
@@ -46,15 +43,16 @@ const IconWrapper = styled.a`
   flex: 1;
   height: 40px;
   width: 113px;
-  margin-left: 10px;
   text-decoration: none;
   background-color: black;
   color: white;
   border-radius: 2px;
+  border: 1px solid black;
+  margin-right: 10px;
   &:hover {
     background-color: white;
     ${Icon} {
-      color: white;
+      color: black;
     }
   }
 `

@@ -183,6 +183,26 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   type: "image_set",
   images: Images,
 }
+
+export const Related = [
+  {
+    thumbnail_title: "The 15 Top Art Schools in the United States",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
+    slug: "artsy-editorial-15-top-art-schools-united-states",
+  },
+  {
+    thumbnail_title: "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
+    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
+    slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
+  },
+  {
+    thumbnail_title: "French Art History in a Nutshell",
+    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
+    slug: "artsy-editorial-french-art-history-in-a-nutshell",
+  },
+]
+
 export const Videos = [
   {
     url: "https://www.youtube.com/watch?v=PXi7Kjlsz9A",
