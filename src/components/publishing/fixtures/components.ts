@@ -83,7 +83,7 @@ export const Embeds = [
   {
     mobile_height: 1300,
     height: 1000,
-    url: "http://files.artsy.net/documents/1parrasch.html",
+    url: "https://artsy-vanity-files-production.s3.amazonaws.com/documents/1parrasch.html",
     layout: "overflow",
     type: "embed",
   },
