@@ -69,7 +69,7 @@ const ImageCollectionContainer = styled.div`
 `
 
 const sizeMeOptions = {
-  refreshRate: 64,
+  refreshRate: 500,
 }
 
 export default sizeMe(sizeMeOptions)(ImageCollection)

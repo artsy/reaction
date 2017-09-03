@@ -243,7 +243,7 @@ const FeatureHeaderContainer = Div.extend`
 `
 
 const sizeMeOptions = {
-  refreshRate: 64,
+  refreshRate: 500,
   refreshMode: "debounce",
 }
 

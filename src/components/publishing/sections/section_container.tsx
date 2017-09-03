@@ -35,14 +35,13 @@ const chooseMobilePadding = layout => {
 const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
-  max-width: ${props => chooseWidth(props.layout, props.articleLayout)}
-  width: 100%;
+  width: ${props => chooseWidth(props.layout, props.articleLayout)}
   margin: auto;
   margin-bottom: 40px;
-  ${props => pMedia.sm`
-    max-width: 100%;
+  ${props => pMedia.md`
+    width: 100%;
     padding: ${chooseMobilePadding(props.layout)}
-    margin: 0px;
+    margin: 0 0 40px 0;
   `}
 `
 export default SectionContainer
