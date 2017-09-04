@@ -3,8 +3,8 @@
 exports[`renders a saved caption properly 1`] = `
 .c3 {
   font-family: artsy-icons;
-  color: black;
-  font-size: 24px;
+  color: white;
+  font-size: 30px;
   margin: 0 5px;
   display: inline-block;
 }
@@ -14,9 +14,8 @@ exports[`renders a saved caption properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 40px;
-  width: 360px;
-  border: 1px solid #cccccc;
+  max-width: 350px;
+  margin-bottom: 40px;
 }
 
 .c1 {
@@ -35,21 +34,23 @@ exports[`renders a saved caption properly 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  height: 40px;
+  width: 113px;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border-right: 1px solid #cccccc;
-}
-
-.c1:last-of-type {
-  border-right: none;
+  background-color: black;
+  color: white;
+  border-radius: 2px;
+  border: 1px solid black;
+  margin-right: 10px;
 }
 
 .c1:hover {
-  background-color: black;
+  background-color: white;
 }
 
 .c1:hover .c2 {
-  color: white;
+  color: black;
 }
 
 <div

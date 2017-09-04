@@ -7,7 +7,7 @@ const warn = message => {
   }
 }
 
-export const crop = (src: string, options: any) => {
+export const crop = (src: string, options: { width: number; height: number; quality?: number }) => {
   const { width, height, quality } = options
 
   if (!width && !height) {
@@ -32,7 +32,7 @@ export const crop = (src: string, options: any) => {
   return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
 }
 
-export const resize = (src: string, options: any) => {
+export const resize = (src: string, options: { width?: number; height?: number; quality?: number }) => {
   const { width, height, quality } = options
 
   let resizeTo

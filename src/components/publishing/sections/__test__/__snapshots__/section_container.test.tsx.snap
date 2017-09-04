@@ -7,8 +7,7 @@ exports[`renders column_width properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 680px;
-  width: 100%;
+  width: 680px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -179,11 +178,11 @@ exports[`renders column_width properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c0 {
-    max-width: 100%;
+    width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
@@ -282,7 +281,6 @@ exports[`renders fillwidth properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 100%;
   width: 100%;
   margin: auto;
   margin-bottom: 40px;
@@ -454,11 +452,11 @@ exports[`renders fillwidth properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c0 {
-    max-width: 100%;
+    width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
@@ -557,8 +555,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 780px;
-  width: 100%;
+  width: 780px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -729,11 +726,11 @@ exports[`renders overflow_fillwidth properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c0 {
-    max-width: 100%;
+    width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 

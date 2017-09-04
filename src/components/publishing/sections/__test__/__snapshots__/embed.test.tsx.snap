@@ -17,6 +17,6 @@ exports[`renders properly 1`] = `
   frameBorder="0"
   height={1000}
   scrolling="no"
-  src="http://files.artsy.net/documents/1parrasch.html"
+  src="https://artsy-vanity-files-production.s3.amazonaws.com/documents/1parrasch.html"
 />
 `;

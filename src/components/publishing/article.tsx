@@ -5,7 +5,7 @@ import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
-import RelatedArticles from "./related_articles"
+import RelatedArticlesPanel from "./related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
 import Share from "./share"
@@ -93,8 +93,8 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         </div>
       )
     } else {
-      const relatedArticleSection = relatedArticles.length
-        ? <RelatedArticles label={"Related Stories"} articles={relatedArticles} />
+      const relatedArticlePanel = relatedArticles
+        ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticles} />
         : false
       return (
         <div>
@@ -103,7 +103,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             <Sections article={article} />
             <Sidebar>
               <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
-              {relatedArticleSection}
+              {relatedArticlePanel}
             </Sidebar>
           </StandardLayout>
           <FullscreenViewer

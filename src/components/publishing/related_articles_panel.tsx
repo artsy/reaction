@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { crop } from "../../utils/resizer"
 import Fonts from "./fonts"
 
-interface RelatedArticlesProps extends React.HTMLProps<HTMLDivElement> {
+interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
   articles: Array<{
     thumbnail_title: string
@@ -13,7 +13,7 @@ interface RelatedArticlesProps extends React.HTMLProps<HTMLDivElement> {
   }>
 }
 
-const RelatedArticles: React.SFC<RelatedArticlesProps> = props => {
+const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
   const { articles, label } = props
   return (
     <RelatedArticlesContainer>
@@ -34,8 +34,8 @@ const RelatedArticles: React.SFC<RelatedArticlesProps> = props => {
   )
 }
 
-RelatedArticles.defaultProps = {
-  label: "Related Articles",
+RelatedArticlesPanel.defaultProps = {
+  label: "Related Stories",
 }
 const RelatedArticlesContainer = styled.div`
   max-width: 360px;
@@ -63,4 +63,4 @@ const ArticleTitle = styled.span`
   ${Fonts.garamond("s17")}
   color: black;
 `
-export default RelatedArticles
+export default RelatedArticlesPanel
