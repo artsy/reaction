@@ -37,8 +37,9 @@ function renderAsset(url, title, children) {
       </FeatureVideoContainer>
     )
   } else {
+    const alt = url.length ? title : ""
     return (
-      <FeatureImage src={url} alt={title}>
+      <FeatureImage src={url} alt={alt}>
         {children[2]}
       </FeatureImage>
     )
@@ -55,10 +56,11 @@ function renderTextLayoutAsset(url, layout, title, children) {
         </TextAsset>
       )
     } else {
+      const alt = url.length ? title : ""
       return (
         <TextAsset>
           {children[2]}
-          <Image src={url} alt={title} />
+          <Image src={url} alt={alt} />
         </TextAsset>
       )
     }
