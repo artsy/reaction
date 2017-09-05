@@ -115,7 +115,7 @@ const FullscreenViewerContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   position: fixed;
-  z-index: ${zIndex("modal")};
+  z-index: ${zIndex.modal};
   top: 0;
   left: 0;
   background-color: white;
