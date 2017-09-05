@@ -20,14 +20,15 @@ const Header: React.SFC<HeaderProps> = props => {
         <FeatureTitle className="feature__title">
           {props.children ? props.children[0] : article.title}
         </FeatureTitle>
-        {props.children ? props.children[1] : deck}
+        {props.children && props.children[1] ? <div className="feature__deck">props.children[1]</div> : deck}
+        {props.children && props.children[2]}
       </FeatureHeader>
     )
   } else if (article.layout === "standard") {
     return (
       <StandardHeader article={article}>
         <StandardTitle>
-          {props.children ? props.children[0] : article.title}
+          {props.children ? props.children : article.title}
         </StandardTitle>
       </StandardHeader>
     )
@@ -35,7 +36,7 @@ const Header: React.SFC<HeaderProps> = props => {
     return (
       <ClassicHeader article={article}>
         <ClassicTitle>
-          {props.children ? props.children[0] : article.title}
+          {props.children ? props.children : article.title}
         </ClassicTitle>
       </ClassicHeader>
     )

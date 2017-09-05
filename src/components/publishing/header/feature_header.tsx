@@ -5,47 +5,62 @@ import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureAsset(url, layout, isMobile, title) {
+function renderFeatureAsset(url, layout, isMobile, title, children) {
   if (layout === "fullscreen") {
     return (
       <div>
-        {renderAsset(url, title)}
+        {renderAsset(url, title, children)}
         <Overlay />
       </div>
     )
   } else if (layout === "split" && !isMobile) {
-    return renderAsset(url, title)
+    return renderAsset(url, title, children)
   } else {
     return false
   }
 }
 
-function renderMobileSplitAsset(url, layout, isMobile, title) {
+function renderMobileSplitAsset(url, layout, isMobile, title, children) {
   if (layout === "split" && isMobile) {
-    return renderAsset(url, title)
+    return renderAsset(url, title, children)
   } else {
     return false
   }
 }
 
-function renderAsset(url, title) {
+function renderAsset(url, title, children) {
   if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
+        {children[2]}
         <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
       </FeatureVideoContainer>
     )
   } else {
-    return <FeatureImage src={url} alt={title} />
+    return (
+      <FeatureImage src={url} alt={title}>
+        {children[2]}
+      </FeatureImage>
+    )
   }
 }
 
-function renderTextLayoutAsset(url, layout, title) {
+function renderTextLayoutAsset(url, layout, title, children) {
   if (layout === "text") {
     if (isVideo(url)) {
-      return <Video src={url} autoPlay controls={false} loop muted playsInline />
+      return (
+        <TextAsset>
+          {children[2]}
+          <Video src={url} autoPlay controls={false} loop muted playsInline />
+        </TextAsset>
+      )
     } else {
-      return <Image src={url} alt={title} />
+      return (
+        <TextAsset>
+          {children[2]}
+          <Image src={url} alt={title} />
+        </TextAsset>
+      )
     }
   } else {
     return false
@@ -64,23 +79,23 @@ interface FeatureHeaderProps {
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article, size } = props
+  const { article, size, children } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureAsset(hero.url, hero.type, isMobile, article.title)}
+      {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, children)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{article.vertical.name}</Vertical>
-          {props.children[0]}
-          {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title)}
+          {children[0]}
+          {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, children)}
           <SubHeader>
-            {props.children[1]}
+            {children[1]}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
-        {renderTextLayoutAsset(hero.url, hero.type, article.title)}
+        {renderTextLayoutAsset(hero.url, hero.type, article.title, children)}
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )
@@ -132,7 +147,7 @@ const FeatureImage = Div.extend`
   width: 100%;
 `
 const FeatureVideo = styled.video`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   object-fit: cover;
 `
@@ -146,11 +161,14 @@ const FeatureVideoContainer = Div.extend`
 const Image = styled.img`
   width: 100%;
   height: auto;
-  padding: 20px;
   box-sizing: border-box;
 `
 const Video = styled.video`
-  width: 100vw;
+  width: 100%;
+`
+const TextAsset = styled.div`
+  width: calc(100% - 40px);
+  padding: 20px;
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -164,7 +182,7 @@ const SubHeader = styled.div`
   `}
 `
 const FeatureHeaderContainer = Div.extend`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   &[data-type='text'] {
     height: auto;
@@ -220,7 +238,7 @@ const FeatureHeaderContainer = Div.extend`
         margin-bottom: 30px;
       }
       ${FeatureVideo} {
-        width: 100vw;
+        width: 100%;
       }
     `}
   }
