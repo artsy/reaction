@@ -4,7 +4,7 @@ import { Layout } from "../typings"
 import ViewFullscreen from "./view_fullscreen"
 
 interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
-  src: any
+  src: string
   layout?: Layout
   width?: string | number
   height?: string | number

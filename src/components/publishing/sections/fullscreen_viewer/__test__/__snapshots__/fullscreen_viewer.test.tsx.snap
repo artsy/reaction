@@ -98,7 +98,7 @@ exports[`renders properly 1`] = `
 
 .c3 {
   display: block;
-  background: url(https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg) no-repeat center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95) no-repeat center;
   background-size: contain;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -108,7 +108,7 @@ exports[`renders properly 1`] = `
 
 .c13 {
   display: block;
-  background: url(https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg) no-repeat center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95) no-repeat center;
   background-size: contain;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -118,7 +118,7 @@ exports[`renders properly 1`] = `
 
 .c14 {
   display: block;
-  background: url(https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg) no-repeat center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95) no-repeat center;
   background-size: contain;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -260,7 +260,7 @@ exports[`renders properly 1`] = `
         />
         <div
           className="c3"
-          src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
           title={undefined}
         />
         <div
@@ -353,7 +353,7 @@ exports[`renders properly 1`] = `
         />
         <div
           className="c13"
-          src="https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
           title="<p>Photo by Adam Kuehl for Artsy.</p>"
         />
         <div
@@ -400,7 +400,7 @@ exports[`renders properly 1`] = `
         />
         <div
           className="c14"
-          src="https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
           title="<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>"
         />
         <div

@@ -3,13 +3,17 @@ import * as PropTypes from "prop-types"
 import * as React from "react"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
+import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
+import RelatedArticlesPanel from "./related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
+import Share from "./share"
 import { ArticleData } from "./typings"
 
 export interface ArticleProps {
   article: ArticleData
+  relatedArticles?: any
 }
 interface ArticleState {
   viewerIsOpen: boolean
@@ -71,12 +75,14 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    if (this.state.article.layout === "feature") {
+    const { relatedArticles } = this.props
+    const article = this.state.article
+    if (article.layout === "feature") {
       return (
         <div>
-          <Header article={this.state.article} />
+          <Header article={article} />
           <FeatureLayout>
-            <Sections article={this.state.article} />
+            <Sections article={article} />
           </FeatureLayout>
           <FullscreenViewer
             onClose={this.closeViewer}
@@ -87,11 +93,18 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         </div>
       )
     } else {
+      const relatedArticlePanel = relatedArticles
+        ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticles} />
+        : false
       return (
         <div>
-          <Header article={this.state.article} />
+          <Header article={article} />
           <StandardLayout>
-            <Sections article={this.state.article} />
+            <Sections article={article} />
+            <Sidebar>
+              <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
+              {relatedArticlePanel}
+            </Sidebar>
           </StandardLayout>
           <FullscreenViewer
             onClose={this.closeViewer}

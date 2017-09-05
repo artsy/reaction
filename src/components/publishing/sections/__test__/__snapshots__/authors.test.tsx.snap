@@ -13,7 +13,7 @@ exports[`renders properly 1`] = `
   min-width: 70px;
   min-height: 70px;
   border-radius: 50%;
-  background: url(https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg) no-repeat center center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9vcX6FR21rKHatmvJ8K0sg%252FAbigail.jpg&width=200&quality=95) no-repeat center center;
   background-size: cover;
   margin-right: 10px;
 }
@@ -22,7 +22,7 @@ exports[`renders properly 1`] = `
   min-width: 70px;
   min-height: 70px;
   border-radius: 50%;
-  background: url(http://files.artsy.net/images/molly_01.jpg) no-repeat center center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fmolly_01.jpg&width=200&quality=95) no-repeat center center;
   background-size: cover;
   margin-right: 10px;
 }
@@ -121,7 +121,7 @@ exports[`renders properly 1`] = `
   >
     <div
       className="c2"
-      src="https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9vcX6FR21rKHatmvJ8K0sg%252FAbigail.jpg&width=200&quality=95"
     />
     <div
       className="c3"
@@ -158,7 +158,7 @@ exports[`renders properly 1`] = `
   >
     <div
       className="c8"
-      src="http://files.artsy.net/images/molly_01.jpg"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fmolly_01.jpg&width=200&quality=95"
     />
     <div
       className="c3"

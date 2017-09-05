@@ -217,8 +217,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 680px;
-  width: 100%;
+  width: 680px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -229,8 +228,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 780px;
-  width: 100%;
+  width: 780px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -241,8 +239,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 780px;
-  width: 100%;
+  width: 780px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -253,8 +250,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 680px;
-  width: 100%;
+  width: 680px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -537,35 +533,35 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c1 {
-    max-width: 100%;
+    width: 100%;
     padding: 0 20px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c3 {
-    max-width: 100%;
+    width: 100%;
     padding: 0 20px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c4 {
-    max-width: 100%;
+    width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .c23 {
-    max-width: 100%;
+    width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 40px 0;
   }
 }
 
@@ -723,7 +719,7 @@ exports[`renders properly 1`] = `
               alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
               className="c8"
               height={351}
-              src="https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=95"
               width={197}
             />
             <div
@@ -808,7 +804,7 @@ exports[`renders properly 1`] = `
               alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
               className="c8"
               height={351}
-              src="https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=95"
               width={197}
             />
             <div
@@ -897,7 +893,7 @@ exports[`renders properly 1`] = `
                 alt="Brass Tax"
                 className="display-artwork__image c8"
                 height={352}
-                src="https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
                 width={264}
               />
               <div
@@ -1034,7 +1030,7 @@ exports[`renders properly 1`] = `
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="c8"
               height={425}
-              src="https://artsy-media-uploads.s3.amazonaws.com/GwIVCQftjauWBCQie9oQ-A%2FTarot_de_Marseille_major21_world.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=95"
               width={219}
             />
             <div
@@ -1119,7 +1115,7 @@ exports[`renders properly 1`] = `
               alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="c8"
               height={425}
-              src="https://artsy-media-uploads.s3.amazonaws.com/UaNPuL9iz-X7Xm-SNtat7Q%2FTarot_de_Marseille_clubs13_queen.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
               width={219}
             />
             <div
@@ -1204,7 +1200,7 @@ exports[`renders properly 1`] = `
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="c8"
               height={426}
-              src="https://artsy-media-uploads.s3.amazonaws.com/x5EcmVNBKoUJqQa8BQgqJA%2FTarot_de_Marseille_major06_lovers.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=95"
               width={219}
             />
             <div
@@ -1312,7 +1308,7 @@ exports[`renders properly 1`] = `
               alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
               className="c8"
               height="auto"
-              src="https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
               width="100%"
             />
             <div
@@ -1446,7 +1442,7 @@ exports[`renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="c8"
               height={387}
-              src="https://artsy-media-uploads.s3.amazonaws.com/jmrvzuo7VfRidule-4zWNA%2F07272017170054-0001+%28dragged%29+copy.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
               width={216}
             />
             <div
@@ -1531,7 +1527,7 @@ exports[`renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="c8"
               height={388}
-              src="https://artsy-media-uploads.s3.amazonaws.com/66XOTGwZQzAAa0igYKSNTQ%2F07272017170207-0001+%28dragged%29.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={219}
             />
             <div
@@ -1616,7 +1612,7 @@ exports[`renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="c8"
               height={388}
-              src="https://artsy-media-uploads.s3.amazonaws.com/l0Qu946mLja0Dbv4ME4MHg%2F07272017170259-0001+%28dragged%29.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={222}
             />
             <div
@@ -1768,7 +1764,7 @@ exports[`renders properly 1`] = `
       <img
         alt="The Work of Bruce M. Sherman"
         height="auto"
-        src="https://artsy-media-uploads.s3.amazonaws.com/CzofaZln2q-XhtXFqIio5A%2F07272017133815-0001+%28dragged%29+copy.jpg"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
         width="100%"
       />
     </div>
@@ -1808,7 +1804,7 @@ exports[`renders properly 1`] = `
               alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
               className="c8"
               height="auto"
-              src="https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=95"
               width="100%"
             />
             <div

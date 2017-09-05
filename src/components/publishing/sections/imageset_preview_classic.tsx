@@ -1,9 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-
-import IconImageSet from "../icon/image_set"
-
+import { resize } from "../../../utils/resizer"
 import Fonts from "../fonts"
+import IconImageSet from "../icon/image_set"
 
 const Wrapper = styled.div`
   max-width: 580px;
@@ -62,7 +61,7 @@ class ImageSetPreviewClassic extends Component<any, any> {
 
   renderImages(images) {
     const items = images.slice(0, 4).map((item, i) => {
-      const src = item.image || item.url || ""
+      const src = resize(item.image || item.url || "", { width: 500 })
       const alt = item.caption ? item.caption.replace(/<[^>]*>/g, "") : item.title || ""
       if (i < this.state.visibleImages) {
         return (
