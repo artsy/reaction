@@ -3,6 +3,7 @@ import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
 import { resize } from "../../../utils/resizer"
+import { sizeMeRefreshRate } from "../constants"
 import { Layout } from "../typings"
 import Caption from "./caption"
 
@@ -129,7 +130,7 @@ const PlayButton = styled.div`
 `
 
 const sizeMeOptions = {
-  refreshRate: 500,
+  refreshRate: sizeMeRefreshRate,
 }
 
 export default sizeMe(sizeMeOptions)(Video)
