@@ -1,7 +1,9 @@
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
+import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
+import { sizeMeRefreshRate } from "../constants"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
@@ -37,9 +39,10 @@ function renderAsset(url, title, children) {
       </FeatureVideoContainer>
     )
   } else {
+    const src = resize(url, { width: 1200 })
     const alt = url.length ? title : ""
     return (
-      <FeatureImage src={url} alt={alt}>
+      <FeatureImage src={src} alt={alt}>
         {children[2]}
       </FeatureImage>
     )
@@ -57,10 +60,11 @@ function renderTextLayoutAsset(url, layout, title, children) {
       )
     } else {
       const alt = url.length ? title : ""
+      const src = resize(url, { width: 1200 })
       return (
         <TextAsset>
           {children[2]}
-          <Image src={url} alt={alt} />
+          <Image src={src} alt={alt} />
         </TextAsset>
       )
     }
@@ -260,7 +264,7 @@ const FeatureHeaderContainer = Div.extend`
 `
 
 const sizeMeOptions = {
-  refreshRate: 64,
+  refreshRate: sizeMeRefreshRate,
   refreshMode: "debounce",
 }
 

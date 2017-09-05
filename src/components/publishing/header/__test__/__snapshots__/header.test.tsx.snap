@@ -592,7 +592,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -662,7 +662,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
   width: 50vw;
 }
 
@@ -761,7 +761,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
     width: 100%;
   }
 }
@@ -808,7 +808,7 @@ exports[`feature renders feature full header properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
     />
     <div
       className="c3"
@@ -930,7 +930,7 @@ exports[`feature renders feature split header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1000,7 +1000,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
   width: 50vw;
 }
 
@@ -1099,7 +1099,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
     width: 100%;
   }
 }
@@ -1161,7 +1161,7 @@ exports[`feature renders feature split header properly 1`] = `
       <div
         alt="What’s the Path to Winning an Art Prize?"
         className="c6 c7"
-        src="https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
       />
       <div
         className="c8 c9"
@@ -1331,7 +1331,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
   width: 50vw;
 }
 
@@ -1430,7 +1430,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-ipgsgz-2 {
+  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
     width: 100%;
   }
 }
@@ -1520,7 +1520,7 @@ exports[`feature renders feature text header properly 1`] = `
       <img
         alt="What’s the Path to Winning an Art Prize?"
         className="c12"
-        src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&quality=95"
       />
     </div>
   </div>

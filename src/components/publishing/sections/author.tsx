@@ -1,6 +1,7 @@
 import * as React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
+import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
 import Icon from "../../icon"
 import Fonts from "../fonts"
@@ -11,7 +12,7 @@ interface AuthorProps {
 
 const Author: React.SFC<AuthorProps> = props => {
   const { author } = props
-  const profileImage = author.image_url ? <ProfileImage src={author.image_url} /> : false
+  const profileImage = author.image_url ? <ProfileImage src={resize(author.image_url, { width: 200 })} /> : false
   return (
     <AuthorContainer>
       {profileImage}

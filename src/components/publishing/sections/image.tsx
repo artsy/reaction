@@ -1,4 +1,5 @@
 import React from "react"
+import { resize } from "../../../utils/resizer"
 import { Layout } from "../typings"
 import Caption from "./caption"
 import ImageWrapper from "./image_wrapper"
@@ -13,11 +14,12 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
 const Image: React.SFC<ImageProps> = props => {
   const { image, layout, width, height, children } = props
   const child = children && children
+  const src = resize(image.url, { width: 1200 })
   return (
     <div className="article-image">
       <ImageWrapper
         layout={layout}
-        src={image.url}
+        src={src}
         width={width}
         height={height}
         alt={image.caption.replace(/<[^>]*>/g, "") /* strip caption html */}

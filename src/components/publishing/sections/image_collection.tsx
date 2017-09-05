@@ -4,6 +4,7 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../utils/fillwidth"
 import { pMedia } from "../../helpers"
+import { sizeMeRefreshRate } from "../constants"
 import Artwork from "./artwork"
 import Image from "./image"
 import ImageCollectionItem from "./image_collection_item"
@@ -69,7 +70,7 @@ const ImageCollectionContainer = styled.div`
 `
 
 const sizeMeOptions = {
-  refreshRate: 64,
+  refreshRate: sizeMeRefreshRate,
 }
 
 export default sizeMe(sizeMeOptions)(ImageCollection)

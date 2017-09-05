@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -116,6 +116,7 @@
     "moment-timezone": "^0.5.13",
     "numeral": "^2.0.4",
     "prop-types": "^15.5.10",
+    "qs": "^6.5.0",
     "react": "^15.5.4",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",

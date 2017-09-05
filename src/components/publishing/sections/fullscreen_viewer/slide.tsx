@@ -1,6 +1,7 @@
 import { omit } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
+import { resize } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
 import Caption from "./caption"
@@ -8,7 +9,7 @@ import Caption from "./caption"
 const Slide = props => {
   const newProps = omit(props, ["section", "index", "total", "isCaptionOpen"])
   const section = props.section
-  const src = section.url || section.image
+  const src = resize(section.url || section.image, { width: 1200 })
   return (
     <div {...newProps}>
       <SlideContainer>
