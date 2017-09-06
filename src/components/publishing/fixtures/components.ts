@@ -184,7 +184,7 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
-export const Related = [
+export const RelatedPanel = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
     thumbnail_image:
@@ -200,6 +200,38 @@ export const Related = [
     thumbnail_title: "French Art History in a Nutshell",
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
+  },
+]
+
+export const RelatedCanvas = [
+  {
+    thumbnail_title: "The 15 Top Art Schools in the United States",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
+    slug: "artsy-editorial-15-top-art-schools-united-states",
+    authors: [{ name: "Anna Louis-Sussman" }, { name: "Kana Abe" }],
+    published_at: "2017-05-19T13:09:18.567Z",
+  },
+  {
+    thumbnail_title: "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
+    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
+    slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
+    authors: [{ name: "Halley Johnson" }],
+    published_at: "2017-05-19T13:09:18.567Z",
+  },
+  {
+    thumbnail_title: "French Art History in a Nutshell",
+    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
+    slug: "artsy-editorial-french-art-history-in-a-nutshell",
+    authors: [{ name: "Casey Lesser" }],
+    published_at: "2017-05-19T13:09:18.567Z",
+  },
+  {
+    thumbnail_title: "Miami Artists and Museums Brace for Hurricane Irma",
+    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/jAu4NaKnr_m53OnnMaDe_w%2Fmag.jpg",
+    slug: "artsy-editorial-miami-artists-museums-brace-hurricane-irma",
+    authors: [{ name: "Owen Dodd" }],
+    published_at: "2017-05-19T13:09:18.567Z",
   },
 ]
 
