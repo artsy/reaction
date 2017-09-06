@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the related articles canvas 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 255px;
+}
+
+.c6 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c5 {
+  display: block;
+  width: 255px;
+  height: 170px;
+  margin-bottom: 10px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1250px;
+  margin: 30px auto 60px auto;
+  overflow-x: scroll;
+}
+
+.c0::-webkit-scrollbar {
+  display: none;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+.c2 {
+  margin-left: 30px;
+}
+
+.c2:before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #000;
+  margin-bottom: 5px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+@media (max-width: 1250px) {
+  .c4 {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c0 {
+    margin: 30px 20px 60px 20px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    Further Reading 
+    <span
+      className="c2"
+    >
+      Art Market
+    </span>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
+    >
+      <img
+        alt="The 15 Top Art Schools in the United States"
+        className="c5"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
+      />
+      <div
+        className="c6"
+      >
+        The 15 Top Art Schools in the United States
+      </div>
+    </div>
+    <div
+      className="c4"
+    >
+      <img
+        alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
+        className="c5"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
+      />
+      <div
+        className="c6"
+      >
+        Four Years after Walter De Maria’s Death, His Final Work Is Complete
+      </div>
+    </div>
+    <div
+      className="c4"
+    >
+      <img
+        alt="French Art History in a Nutshell"
+        className="c5"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
+      />
+      <div
+        className="c6"
+      >
+        French Art History in a Nutshell
+      </div>
+    </div>
+    <div
+      className="c4"
+    >
+      <img
+        alt="Miami Artists and Museums Brace for Hurricane Irma"
+        className="c5"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
+      />
+      <div
+        className="c6"
+      >
+        Miami Artists and Museums Brace for Hurricane Irma
+      </div>
+    </div>
+  </div>
+</div>
+`;
