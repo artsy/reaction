@@ -36,18 +36,14 @@ const RelatedArticlesContainer = styled.div`
   flex-direction: column;
   max-width: 1250px;
   margin: 30px auto 60px auto;
-  overflow-x: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   ${pMedia.lg`
   margin: 30px 20px 60px 20px;
   `}
-  `
+`
 const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
-  `
+`
 const VerticalSpan = styled.span`
   margin-left: 30px;
   &:before {
@@ -60,9 +56,17 @@ const VerticalSpan = styled.span`
     background-color: #000;
     margin-bottom: 5px;
   }
-  `
+  ${pMedia.sm`
+    margin-left: 0px;
+    display: block;
+  `}
+`
 const ArticlesWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 export default RelatedArticlesCanvas
