@@ -218,9 +218,9 @@
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
 
-"@types/jest@^18.1.1":
-  version "18.1.1"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-18.1.1.tgz#6f63488c64726900885ab9cd5697bb7fa1b416cc"
+"@types/jest@^20.0.7":
+  version "20.0.7"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.7.tgz#39cd215db8bda03928dceb933a1e63eb2cbd210e"
 
 "@types/jquery@*":
   version "2.0.41"
@@ -247,6 +247,12 @@
 "@types/react-relay@^0.9.12":
   version "0.9.12"
   resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-0.9.12.tgz#a5fba413a2aae3536adbd5c873ac77269972a8bc"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-slick@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.14.1.tgz#33393647e5b4db678cbedcd96b70c17fc83ead22"
   dependencies:
     "@types/react" "*"
 
@@ -2186,6 +2192,10 @@ camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+
 caniuse-api@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-1.6.1.tgz#b534e7c734c4f81ec5fbe8aca2ad24354b962c6c"
@@ -2777,7 +2787,7 @@ css-what@2.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
 
-css@2.X:
+css@2.X, css@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/css/-/css-2.2.1.tgz#73a4c81de85db664d4ee674f7d47085e3b2d55dc"
   dependencies:
@@ -3051,13 +3061,6 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-doctrine@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-0.7.2.tgz#7cb860359ba3be90e040b26b729ce4bfa654c523"
-  dependencies:
-    esutils "^1.1.6"
-    isarray "0.0.1"
-
 doctrine@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.0.0.tgz#c73d8d2909d22291e1a007a395804da8b665fe63"
@@ -3226,6 +3229,10 @@ enhanced-resolve@~0.9.0:
     memory-fs "^0.2.0"
     tapable "^0.1.8"
 
+enquire.js@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/enquire.js/-/enquire.js-2.1.6.tgz#3e8780c9b8b835084c3f60e166dbc3c2a3c89814"
+
 entities@^1.1.1, "entities@~ 1.1.1", entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
@@ -3388,10 +3395,6 @@ estraverse@^1.9.1:
 estraverse@^4.1.0, estraverse@^4.1.1:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
-
-esutils@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/esutils/-/esutils-1.1.6.tgz#c01ccaa9ae4b897c6d0c3e210ae52f3c7a844375"
 
 esutils@^2.0.0, esutils@^2.0.2:
   version "2.0.2"
@@ -5118,6 +5121,12 @@ jest-snapshot@^20.0.3:
     natural-compare "^1.4.0"
     pretty-format "^20.0.3"
 
+jest-styled-components@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/jest-styled-components/-/jest-styled-components-4.4.1.tgz#beade9388f74aec5ccff3b980265ed96220ee1ba"
+  dependencies:
+    css "^2.2.1"
+
 jest-util@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-20.0.3.tgz#0c07f7d80d82f4e5a67c6f8b9c3fe7f65cfd32ad"
@@ -5154,6 +5163,10 @@ jodid25519@^1.0.0:
 join-component@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/join-component/-/join-component-1.1.0.tgz#b8417b750661a392bee2c2537c68b2a9d4977cd5"
+
+jquery@>=1.7.2:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 js-base64@^2.1.9:
   version "2.1.9"
@@ -5234,6 +5247,12 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
 json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+
+json2mq@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/json2mq/-/json2mq-0.2.0.tgz#b637bd3ba9eabe122c83e9720483aeb10d2c904a"
+  dependencies:
+    string-convert "^0.2.0"
 
 json5@^0.5.0, json5@^0.5.1:
   version "0.5.1"
@@ -7099,6 +7118,10 @@ qs@6.4.0, qs@^6.1.0, qs@^6.4.0, qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
+qs@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.0.tgz#8d04954d364def3efc55b5a0793e1e2c8b1e6e49"
+
 query-string@^4.1.0, query-string@^4.2.3:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.2.tgz#ec0fd765f58a50031a3968c2431386f8947a5cdd"
@@ -7289,6 +7312,18 @@ react-sizeme@^2.3.2:
     element-resize-detector "^1.1.12"
     invariant "^2.2.2"
     lodash "^4.17.4"
+
+react-slick@^0.14.11:
+  version "0.14.11"
+  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.14.11.tgz#c2cbdbe3728c66a2ff4929be96d457e3ea0d80f3"
+  dependencies:
+    can-use-dom "^0.1.0"
+    classnames "^2.2.5"
+    create-react-class "^15.5.2"
+    enquire.js "^2.1.6"
+    json2mq "^0.2.0"
+    object-assign "^4.1.0"
+    slick-carousel "^1.6.0"
 
 react-split-pane@^0.1.65:
   version "0.1.65"
@@ -7922,6 +7957,12 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
+slick-carousel@^1.6.0:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.7.1.tgz#51f5489bbb52212542ccbe9f42689f818bd29ed2"
+  dependencies:
+    jquery ">=1.7.2"
+
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
@@ -8101,6 +8142,10 @@ stream-to@~0.2.0:
 strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
+
+string-convert@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/string-convert/-/string-convert-0.2.1.tgz#6982cc3049fbb4cd85f8b24568b9d9bf39eeff97"
 
 string-length@^1.0.1:
   version "1.0.1"
@@ -8525,12 +8570,6 @@ tsconfig@^6.0.0:
 tslint-config-prettier@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.1.0.tgz#40c026a56e4da27063b3e9bcd71f4f8109fee369"
-
-tslint-eslint-rules@^3.4.0:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-3.5.1.tgz#e43efdcdd760d6285600031720f972c92f4a058a"
-  dependencies:
-    doctrine "^0.7.2"
 
 tslint-react@^2.4.0:
   version "2.5.0"

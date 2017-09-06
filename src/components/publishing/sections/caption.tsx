@@ -2,7 +2,28 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
-import ViewFullscreen from "./view_fullscreen"
+import { Layout } from "../typings"
+
+interface CaptionProps {
+  caption: string
+  layout?: Layout
+  index?: any
+}
+interface FigcaptionProps {
+  layout: Layout
+}
+
+const Caption: React.SFC<CaptionProps> = props => {
+  const { layout, caption, children } = props
+  const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
+  return (
+    <CaptionContainer>
+      <Figcaption layout={layout}>
+        {child}
+      </Figcaption>
+    </CaptionContainer>
+  )
+}
 
 const CaptionContainer = styled.div`
   display: flex;
@@ -12,38 +33,14 @@ const CaptionContainer = styled.div`
     padding: 0px 10px;
   `}
 `
-
-interface FigcaptionProps {
-  layout: string
-}
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
+// includes draft placeholder class for editable text in Writer
 const Figcaption = div`
-  & > p {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
+  & > p, p, .public-DraftEditorPlaceholder-root {
+    ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;
   }
 `
-
-interface CaptionProps {
-  caption: string
-  layout?: string
-  viewFullscreen?: boolean
-}
-
-const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, caption, viewFullscreen } = props
-
-  return (
-    <CaptionContainer>
-      <Figcaption dangerouslySetInnerHTML={{ __html: caption }} layout={layout} />
-      {viewFullscreen ? <ViewFullscreen /> : false}
-    </CaptionContainer>
-  )
-}
-
-Caption.defaultProps = {
-  viewFullscreen: true,
-}
 
 export default Caption

@@ -2,6 +2,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
+import ClassicHeader from "./classic_header"
 import FeatureHeader from "./feature_header"
 import StandardHeader from "./standard_header"
 
@@ -17,28 +18,43 @@ const Header: React.SFC<HeaderProps> = props => {
     return (
       <FeatureHeader article={article}>
         <FeatureTitle className="feature__title">
-          {article.title}
+          {props.children ? props.children[0] : article.title}
         </FeatureTitle>
-        {deck}
+        {props.children && props.children[1] ? <div className="feature__deck">props.children[1]</div> : deck}
+        {props.children && props.children[2]}
       </FeatureHeader>
     )
   } else if (article.layout === "standard") {
     return (
       <StandardHeader article={article}>
         <StandardTitle>
-          {article.title}
+          {props.children ? props.children : article.title}
         </StandardTitle>
       </StandardHeader>
+    )
+  } else if (article.layout === "classic") {
+    return (
+      <ClassicHeader article={article}>
+        <ClassicTitle>
+          {props.children ? props.children : article.title}
+        </ClassicTitle>
+      </ClassicHeader>
     )
   }
 }
 
-const StandardTitle = styled.div`
-  ${Fonts.garamond("s50")}
-  margin-bottom: 60px;
+const ClassicTitle = styled.div`
+  ${Fonts.garamond("s37")}
+  margin-bottom: 30px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
-    margin-bottom: 50px;
+  `}
+`
+const StandardTitle = styled.div`
+  ${Fonts.garamond("s50")}
+  margin-bottom: 50px;
+  ${pMedia.xs`
+    ${Fonts.garamond("s34")}
   `}
 `
 const FeatureTitle = styled.div`
@@ -55,7 +71,7 @@ const Deck = styled.div`
   max-width: 460px;
   ${pMedia.xs`
     margin-bottom: 28px;
-    ${Fonts.unica("s16", "medium")}
+    ${Fonts.unica("s16")}
   `}
 `
 

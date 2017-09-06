@@ -1,9 +1,10 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
+import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
-
 import Fonts from "../fonts"
-import IconImageSet from "../icons/icon_imageset"
+import IconImageSet from "../icon/image_set"
 
 type Layout = "mini" | "full"
 
@@ -26,7 +27,8 @@ const FullWrapper = styled.div`
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
-  `
+  cursor: pointer;
+`
 const TitleWrapper = div`
   display: flex;
   flex-direction: column;
@@ -40,6 +42,7 @@ const MiniWrapper = styled.div`
   justify-content: flex-start;
   padding: 10px 20px 10px 10px;
   border: 1px solid #e5e5e5;
+  cursor: pointer;
 `
 const MiniInner = styled.div`
   display: flex;
@@ -80,7 +83,7 @@ const IconContainer = styled.div`
   > svg {
     height: 98%;
   }
-  ${pMedia.xs`  
+  ${pMedia.xs`
     display: none;
   `}
 `
@@ -90,6 +93,7 @@ export interface Props {
     images: Array<{
       url?: string
       image?: string
+      index?: any
     }>
     layout?: Layout
     title?: string
@@ -97,28 +101,36 @@ export interface Props {
 }
 
 class ImageSetPreview extends Component<Props, null> {
+  static contextTypes = {
+    onViewFullscreen: PropTypes.func,
+  }
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
-    return src
+    return resize(src, { width: 1200 })
   }
   image() {
     const src = this.getImageUrl()
     const width = this.props.section.layout === "full" ? "100%" : "auto"
     const height = this.props.section.layout === "full" ? "auto" : "100%"
-    return <img src={src} width={width} height={height} />
+    return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
+  }
+  onClick = () => {
+    if (this.context.onViewFullscreen) {
+      this.context.onViewFullscreen(this.props.section.images[0].index)
+    }
   }
   wrapper() {
     if (this.props.section.layout === "full") {
       return (
-        <FullWrapper>
+        <FullWrapper onClick={this.onClick}>
           {this.textSection()}
           {this.icon()}
         </FullWrapper>
       )
     } else {
       return (
-        <MiniWrapper>
+        <MiniWrapper onClick={this.onClick}>
           {this.image()}
           <MiniInner>
             {this.textSection()}
@@ -159,7 +171,7 @@ class ImageSetPreview extends Component<Props, null> {
     )
   }
   render() {
-    const image = this.props.section.layout === "full" ? <img src={this.getImageUrl()} width="100%" /> : null
+    const image = this.props.section.layout === "full" ? this.image() : null
     return (
       <div style={{ position: "relative", width: "100%" }}>
         {this.wrapper()}

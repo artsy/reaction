@@ -1,10 +1,11 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
+import { Layout } from "../typings"
 
 interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string
-  articleLayout?: "classic" | "standard" | "feature"
+  articleLayout?: Layout
 }
 
 const Div: StyledFunction<SectionContainerProps> = styled.div
@@ -27,21 +28,20 @@ const chooseMobilePadding = layout => {
   if (layout && layout !== "blockquote") {
     return "0px;"
   } else {
-    return "20px;"
+    return "0 20px;"
   }
 }
 
 const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
-  max-width: ${props => chooseWidth(props.layout, props.articleLayout)}
-  width: 100%;
+  width: ${props => chooseWidth(props.layout, props.articleLayout)}
   margin: auto;
   margin-bottom: 40px;
-  ${props => pMedia.sm`
-    max-width: 100%;
+  ${props => pMedia.md`
+    width: 100%;
     padding: ${chooseMobilePadding(props.layout)}
-    margin: 0px;
+    margin: 0 0 40px 0;
   `}
 `
 export default SectionContainer

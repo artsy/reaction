@@ -1,38 +1,19 @@
 import * as _ from "lodash"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../../helpers"
 import TextLink from "../../text_link"
 import Fonts from "../fonts"
-import ViewFullscreen from "./view_fullscreen"
-
-const TruncatedLine = styled.div`
-  color: #999;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-  .artist-name {
-    margin-right: 30px;
-  }
-`
-
-interface StyledArtworkCaptionProps {
-  layout?: string
-}
-
-const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
-
-const StyledArtworkCaption = div`
-  margin-top: 10px;
-  display: ${props => (props.layout === "classic" ? "block" : "flex")};
-  ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14", "medium"))}
-`
+import { Layout } from "../typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
-  layout?: string
+  layout?: Layout
   linked?: boolean
+  isFullscreenCaption?: boolean
+}
+interface StyledArtworkCaptionProps {
+  layout?: Layout
 }
 
 class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
@@ -121,10 +102,21 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const { layout } = this.props
-    if (layout === "classic") {
+    const { layout, isFullscreenCaption } = this.props
+    if (isFullscreenCaption) {
       return (
-        <StyledArtworkCaption layout={layout} className="display-artwork__caption">
+        <StyledFullscreenCaption layout={layout}>
+          <Line className="artist-name">
+            {this.renderArtists()}
+          </Line>
+          <Line>
+            {this.renderTitleDatePartner()}
+          </Line>
+        </StyledFullscreenCaption>
+      )
+    } else if (layout === "classic") {
+      return (
+        <StyledClassicCaption layout={layout} className="display-artwork__caption">
           <TruncatedLine>
             <strong>
               {this.renderArtists()}
@@ -136,7 +128,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           <TruncatedLine>
             {this.renderPartner()}
           </TruncatedLine>
-        </StyledArtworkCaption>
+        </StyledClassicCaption>
       )
     } else {
       return (
@@ -147,11 +139,55 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
             </span>
             {this.renderTitleDatePartner()}
           </TruncatedLine>
-          <ViewFullscreen />
         </StyledArtworkCaption>
       )
     }
   }
 }
+
+const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const StyledArtworkCaption = div`
+  margin-top: 10px;
+  display: flex;
+  ${Fonts.unica("s14")}
+`
+const StyledClassicCaption = div`
+  margin-top: 10px;
+  display: block;
+  ${Fonts.garamond("s15")}
+`
+const StyledFullscreenCaption = div`
+  display: flex;
+  flex-direction: row;
+  ${Fonts.unica("s16", "medium")}
+  ${pMedia.sm`
+    ${Fonts.unica("s14", "medium")}
+    flex-direction: column;
+  `}
+`
+const TruncatedLine = styled.div`
+  color: #999;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  .artist-name {
+    margin-right: 30px;
+  }
+`
+const Line = styled.div`
+  &.artist-name {
+    margin-right: 30px;
+  }
+  ${pMedia.sm`
+    &.artist-name {
+      margin-bottom: 5px;
+    }
+  `}
+  ${TextLink} {
+    color: black;
+  }
+`
 
 export default ArtworkCaption

@@ -2,6 +2,9 @@ import * as React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
+import { resize } from "../../../utils/resizer"
+import { sizeMeRefreshRate } from "../constants"
+import { Layout } from "../typings"
 import Caption from "./caption"
 
 const QUERYSTRING =
@@ -31,7 +34,7 @@ interface VideoProps {
     cover_image_url?: string
   }
   size?: any
-  layout?: string
+  layout?: Layout
 }
 
 interface VideoState {
@@ -64,18 +67,16 @@ class Video extends React.Component<VideoProps, VideoState> {
   render() {
     const { caption, cover_image_url } = this.props.section
     const { width } = this.props.size
+    const src = resize(cover_image_url, { width: 1200 })
     return (
       <VideoContainer>
-        <CoverImage
-          src={cover_image_url}
-          height={width * videoRatio}
-          onClick={this.playVideo}
-          hidden={this.state.hidden}
-        >
+        <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
           <PlayButton><PlayButtonCaret /></PlayButton>
         </CoverImage>
         <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
-        <Caption caption={caption} layout={this.props.layout} viewFullscreen={false} />
+        <Caption caption={caption} layout={this.props.layout}>
+          {this.props.children}
+        </Caption>
       </VideoContainer>
     )
   }
@@ -129,7 +130,7 @@ const PlayButton = styled.div`
 `
 
 const sizeMeOptions = {
-  refreshRate: 64,
+  refreshRate: sizeMeRefreshRate,
 }
 
 export default sizeMe(sizeMeOptions)(Video)

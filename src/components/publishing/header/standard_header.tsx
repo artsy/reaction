@@ -22,18 +22,21 @@ const StandardHeader: React.SFC<StandardHeaderProps> = props => {
 const StandardHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 780px;
+  max-width: 1250px;
   width: 100%;
-  margin-bottom: 60px;
+  margin: 40px auto;
   box-sizing: border-box;
-  ${pMedia.md`
-    padding: 20px;
-    margin-bottom: 0px;
+  ${pMedia.lg`
+    padding: 0 20px;
+  `}
+  ${pMedia.xs`
+    margin: 30px auto;
   `}
 `
 
 const Vertical = styled.div`
-  ${Fonts.unica("s19", "medium")}
+  ${Fonts.unica("s16", "medium")}
+  margin-bottom: 10px;
   ${pMedia.xs`
     ${Fonts.unica("s14", "medium")}
   `}

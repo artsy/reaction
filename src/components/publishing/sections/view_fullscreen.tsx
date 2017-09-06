@@ -1,21 +1,38 @@
+import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
-import Fonts from "../fonts"
+import IconExpand from "../icon/expand"
+
+interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
+  index?: number
+}
+
+const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
+  const onClick = e => {
+    e.preventDefault()
+    if (context.onViewFullscreen) {
+      context.onViewFullscreen(props.index)
+    }
+  }
+  return (
+    <ViewFullscreenLink onClick={onClick}>
+      <IconExpand />
+    </ViewFullscreenLink>
+  )
+}
+
+ViewFullscreen.contextTypes = {
+  onViewFullscreen: PropTypes.func,
+}
 
 const ViewFullscreenLink = styled.div`
-  ${Fonts.unica("s14", "medium")}
-  margin: 0;
-  margin-left: 10px;
-  border-bottom: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
-  display: inline-block;
-  min-width: 7.1em;
-  white-space: nowrap;
-  align-self: flex-start;
 `
-
-function ViewFullscreen() {
-  return <ViewFullscreenLink>View Fullscreen</ViewFullscreenLink>
-}
 
 export default ViewFullscreen

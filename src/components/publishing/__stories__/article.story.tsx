@@ -1,21 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-
-import Articles from "../__test__/fixtures/articles"
 import Article from "../article"
+import { FeatureArticle, StandardArticle } from "../fixtures/articles"
+import { Related } from "../fixtures/components"
 
 storiesOf("Publishing/Articles", module)
   .add("Standard", () => {
-    return (
-      <div>
-        <Article article={Articles[1]} />
-      </div>
-    )
+    return <Article article={StandardArticle} relatedArticles={Related} />
   })
   .add("Feature", () => {
-    return (
-      <div>
-        <Article article={Articles[2]} />
-      </div>
-    )
+    return <Article article={FeatureArticle} />
   })

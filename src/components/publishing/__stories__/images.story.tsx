@@ -5,7 +5,7 @@ import Artwork from "../sections/artwork"
 import Image from "../sections/image"
 import ImageCollection from "../sections/image_collection"
 
-import { Artworks, Images } from "../__test__/fixtures/components"
+import { Artworks, Images } from "../fixtures/components"
 
 storiesOf("Publishing/Images", module)
   .add("Artwork", () => {
@@ -52,6 +52,12 @@ storiesOf("Publishing/Images", module)
         <p>Long Caption:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[2]} />
+        </div>
+        <p>With Child as Caption:</p>
+        <div style={{ width: 400 }}>
+          <Image image={Images[2]}>
+            <div><p>A React child as caption.</p></div>
+          </Image>
         </div>
         <p>Classic:</p>
         <div style={{ width: 400 }}>

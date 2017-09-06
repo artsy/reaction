@@ -1,25 +1,32 @@
 import React from "react"
 import styled from "styled-components"
+import { resize } from "../../../utils/resizer"
+import { Layout } from "../typings"
 import ArtworkCaption from "./artwork_caption"
-
-const ArtworkImageLink = styled.a`
-  text-decoration: none;
-`
-const BlockImage = styled.img`
-  display: block;
-`
+import ImageWrapper from "./image_wrapper"
 
 interface ArtworkProps {
   artwork: any
-  layout?: string
+  layout?: Layout
   linked?: boolean
   width?: string | number
   height?: string | number
 }
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
-  const { artwork, linked, height, width } = props
-  const image = <BlockImage src={artwork.image} className="display-artwork__image" width={width} height={height} />
+  const { artwork, linked, height, width, layout } = props
+  const src = resize(artwork.image, { width: 1200 })
+  const image = (
+    <ImageWrapper
+      layout={layout}
+      src={src}
+      className="display-artwork__image"
+      width={width}
+      height={height}
+      alt={artwork.title}
+      index={artwork.index}
+    />
+  )
   if (linked) {
     return (
       <ArtworkImageLink href={"/artwork/" + artwork.slug}>
@@ -48,5 +55,9 @@ const Artwork: React.SFC<ArtworkProps> = props => {
 Artwork.defaultProps = {
   linked: true,
 }
+
+const ArtworkImageLink = styled.a`
+  text-decoration: none;
+`
 
 export default Artwork

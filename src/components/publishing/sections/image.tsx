@@ -1,24 +1,33 @@
 import React from "react"
-import styled from "styled-components"
+import { resize } from "../../../utils/resizer"
+import { Layout } from "../typings"
 import Caption from "./caption"
-
-const BlockImage = styled.img`
-  display: block;
-`
+import ImageWrapper from "./image_wrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any
-  layout?: string
+  layout?: Layout
   width?: number | string
   height?: number | string
 }
 
 const Image: React.SFC<ImageProps> = props => {
-  const { image, layout, width, height } = props
+  const { image, layout, width, height, children } = props
+  const child = children && children
+  const src = resize(image.url, { width: 1200 })
   return (
     <div className="article-image">
-      <BlockImage src={image.url} width={width} height={height} />
-      <Caption caption={image.caption} layout={layout} viewFullscreen={layout !== "classic"} />
+      <ImageWrapper
+        layout={layout}
+        src={src}
+        width={width}
+        height={height}
+        alt={image.caption.replace(/<[^>]*>/g, "") /* strip caption html */}
+        index={image.index}
+      />
+      <Caption caption={image.caption} layout={layout}>
+        {child}
+      </Caption>
     </div>
   )
 }
