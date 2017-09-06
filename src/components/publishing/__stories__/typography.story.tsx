@@ -27,15 +27,15 @@ storiesOf("Publishing/Typography", module)
         </div>
         <div style={{ width: 50 }}>
           <IconLayoutSplit />
-          <p>Layout: Split</p>
+          <p>Layout Split</p>
         </div>
         <div style={{ width: 50 }}>
           <IconLayoutText />
-          <p>Layout: Text</p>
+          <p>Layout Text</p>
         </div>
         <div style={{ width: 50 }}>
           <IconLayoutFullscreen />
-          <p>Layout: Fullscreen</p>
+          <p>Layout Fullscreen</p>
         </div>
       </div>
     )

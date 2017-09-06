@@ -40,7 +40,8 @@ export const ClassicArticle: ArticleData = {
   keywords: ["Joanne Artman Gallery"],
   updated_at: "2017-07-28T20:38:05.709Z",
   title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
-  lead_paragraph: "<p></p>",
+  lead_paragraph:
+    "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
   id: "597b9f652d35b80017a2a6a7",
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   scheduled_publish_at: null,
