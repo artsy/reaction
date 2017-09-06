@@ -6,7 +6,12 @@
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
-  "files": ["dist", "assets", "data", "docs"],
+  "files": [
+    "dist",
+    "assets",
+    "data",
+    "docs"
+  ],
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
     "start:dist": "npm run compile && node index.js ./dist",
@@ -87,7 +92,7 @@
     "typescript-babel-jest": "^1.0.3",
     "uglify-js": "^2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.2",
-    "webpack": "^2.3.3",
+    "webpack": "^3.5.6",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-merge": "^4.1.0",
     "webpack-stream": "^3.2.0"
@@ -130,9 +135,17 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "lint-staged": {
-    "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"]
+    "*.@(ts|tsx)": [
+      "tslint --fix",
+      "npm run prettier-write --",
+      "git add"
+    ]
   }
 }
