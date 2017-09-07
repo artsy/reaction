@@ -1,5 +1,4 @@
 import Article from "./article"
-import FeatureHeader from "./header/feature_header"
 import Header from "./header/header"
 import Artwork from "./sections/artwork"
 import Authors from "./sections/authors"
@@ -15,6 +14,9 @@ import Video from "./sections/video"
 
 // Icon SVGs
 import ImageSet from "./icon/image_set"
+import LayoutFullscreen from "./icon/layout_fullscreen"
+import LayoutSplit from "./icon/layout_split"
+import LayoutText from "./icon/layout_text"
 import Remove from "./icon/remove"
 
 export default {
@@ -23,7 +25,6 @@ export default {
   Authors,
   Embed,
   Caption,
-  FeatureHeader,
   FullscreenViewer,
   Header,
   Image,
@@ -34,6 +35,9 @@ export default {
   Video,
   Icon: {
     ImageSet,
+    LayoutFullscreen,
+    LayoutSplit,
+    LayoutText,
     Remove,
   },
 }
