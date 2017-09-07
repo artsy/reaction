@@ -37,7 +37,7 @@ const RelatedArticlesContainer = styled.div`
   max-width: 1250px;
   margin: 30px auto 60px auto;
   ${pMedia.lg`
-  margin: 30px 20px 60px 20px;
+    margin: 30px 20px 60px 20px;
   `}
 `
 const Title = styled.div`

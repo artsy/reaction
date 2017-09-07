@@ -34,7 +34,7 @@ const ImageTitle = styled.a`
   flex-direction: column;
   color: black;
   text-decoration: none;
-  height: 270px;
+  min-height: 270px;
   ${pMedia.sm`
     height: 235px;
   `}

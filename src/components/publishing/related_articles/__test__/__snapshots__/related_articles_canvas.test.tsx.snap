@@ -70,7 +70,7 @@ exports[`renders the related articles canvas 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  height: 270px;
+  min-height: 270px;
 }
 
 .c4 {
