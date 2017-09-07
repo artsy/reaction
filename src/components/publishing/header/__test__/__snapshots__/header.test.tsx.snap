@@ -570,11 +570,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-<<<<<<< HEAD
-.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+.c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
   width: 50vw;
 }
 
@@ -673,11 +669,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-<<<<<<< HEAD
-  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+  .c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
     width: 100%;
   }
 }
@@ -916,11 +908,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-<<<<<<< HEAD
-.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+.c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
   width: 50vw;
 }
 
@@ -1019,11 +1007,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-<<<<<<< HEAD
-  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+  .c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
     width: 100%;
   }
 }
@@ -1255,11 +1239,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-<<<<<<< HEAD
-.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+.c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
   width: 50vw;
 }
 
@@ -1358,11 +1338,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-<<<<<<< HEAD
-  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
-=======
-  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
->>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
+  .c0[data-type='split'] .file__FeatureVideo-ozg0ys-2 {
     width: 100%;
   }
 }
