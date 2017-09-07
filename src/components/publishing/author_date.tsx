@@ -1,8 +1,8 @@
 import moment from "moment-timezone"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
+import { pMedia } from "../helpers"
+import Fonts from "./fonts"
 
 interface BulletTextProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string

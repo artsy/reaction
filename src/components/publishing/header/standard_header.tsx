@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../helpers"
+import AuthorDate from "../author_date"
 import Fonts from "../fonts"
-import AuthorDate from "./author_date"
 
 interface StandardHeaderProps {
   article?: any
