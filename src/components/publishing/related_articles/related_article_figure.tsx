@@ -34,25 +34,34 @@ const ImageTitle = styled.a`
   flex-direction: column;
   color: black;
   text-decoration: none;
-  margin-bottom: 30px;
+  height: 270px;
+  ${pMedia.sm`
+    height: 235px;
+  `}
 `
 const ArticleFigure = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 255px;
-  justify-content: space-between;
   ${pMedia.lg`
     margin-right: 20px;
   `}
 `
 const ArticleTitle = styled.div`
   ${Fonts.unica("s16")}
+  ${pMedia.sm`
+    ${Fonts.unica("s14")}
+  `}
 `
 const BlockImage = styled.img`
   display: block;
   width: 255px;
   height: 170px;
   margin-bottom: 10px;
+  object-fit: cover;
+  ${pMedia.sm`
+    height: 150px;
+  `}
 `
 
 export default RelatedArticleFigure

@@ -46,42 +46,71 @@ const getDate = (date, layout) => {
 
 const AuthorDate: React.SFC<AuthorDateProps> = props => {
   const { authors, layout, date } = props
-  return (
-    <AuthorDateContainer>
-      <BulletText layout={layout}>By {getAuthorByline(authors)}</BulletText>
-      <BulletText layout={layout}>{getDate(date, layout)}</BulletText>
-    </AuthorDateContainer>
-  )
+  if (layout === "condensed") {
+    return (
+      <AuthorDateContainer>
+        <CondensedBulletText className="author" layout={layout}>By {getAuthorByline(authors)}</CondensedBulletText>
+        <CondensedBulletText className="date" layout={layout}>{getDate(date, layout)}</CondensedBulletText>
+      </AuthorDateContainer>
+    )
+  } else {
+    return (
+      <AuthorDateContainer>
+        <BulletText className="author" layout={layout}>By {getAuthorByline(authors)}</BulletText>
+        <BulletText className="date" layout={layout}>{getDate(date, layout)}</BulletText>
+      </AuthorDateContainer>
+    )
+  }
 }
-const getBulletSize = layout => (layout === "condensed" ? "8px" : "10px")
-const getBulletMargin = layout => (layout === "condensed" ? "5px" : "10px")
-const getDateMargin = layout => (layout === "condensed" ? "0 0 0 20px" : "0 0 0 30px")
 
 const div: StyledFunction<BulletTextProps> = styled.div
 
 const BulletText = div`
-  ${props => (props.layout === "condensed" ? Fonts.unica("s14", "medium") : Fonts.unica("s16", "medium"))}
-  &:nth-child(2) {
-    margin: ${props => getDateMargin(props.layout)};
-  }
+  ${Fonts.unica("s16", "medium")}
   &:before {
     content: "";
     display: inline-block;
-    width: ${props => getBulletSize(props.layout)};
-    height: ${props => getBulletSize(props.layout)};
+    min-width: 10px;
+    min-height: 10px;
     border-radius: 50%;
-    margin-right: ${props => getBulletMargin(props.layout)};
+    margin-right: 10px;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
-  ${pMedia.xs`
-    margin: 0 20px 0 0;
+  &.author {
+    display: flex;
+    align-items: baseline;
+  }
+  &.date {
+    white-space: nowrap;
+    margin: 0 0 0 30px;
+  }
+  ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
+    margin: 0 20px 0 0;
     &:before {
       width: 8px;
       height: 8px;
     }
   `}
 `
+const CondensedBulletText = BulletText.extend`
+  ${Fonts.unica("s14", "medium")}
+  &:.author:before {
+    min-width: 8px;
+    min-height: 8px;
+    margin-right: 5px;
+  }
+  &.date:before {
+    display: none;
+  }
+  &.date {
+    margin: 0 0 0 20px;
+  }
+  ${pMedia.sm`
+    ${Fonts.unica("s12", "medium")}
+  `}
+`
+
 const AuthorDateContainer = styled.div`
   display: flex;
 `

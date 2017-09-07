@@ -8,18 +8,30 @@ exports[`AuthorDate renders a single author 1`] = `
   line-height: 1.1em;
 }
 
-.c1:nth-child(2) {
-  margin: 0 0 0 30px;
-}
-
 .c1:before {
   content: "";
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  min-width: 10px;
+  min-height: 10px;
   border-radius: 50%;
   margin-right: 10px;
   background-color: #000;
+}
+
+.c1.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c1.date {
+  white-space: nowrap;
+  margin: 0 0 0 30px;
 }
 
 .c0 {
@@ -29,13 +41,13 @@ exports[`AuthorDate renders a single author 1`] = `
   display: flex;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .c1 {
-    margin: 0 20px 0 0;
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.1em;
+    margin: 0 20px 0 0;
   }
 
   .c1:before {
@@ -48,13 +60,13 @@ exports[`AuthorDate renders a single author 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="author c1"
   >
     By 
     Molly Gottschalk
   </div>
   <div
-    className="c1"
+    className="date c1"
   >
     May 19, 2017 9:09 am
   </div>
@@ -69,18 +81,30 @@ exports[`AuthorDate renders multiple authors 1`] = `
   line-height: 1.1em;
 }
 
-.c1:nth-child(2) {
-  margin: 0 0 0 30px;
-}
-
 .c1:before {
   content: "";
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  min-width: 10px;
+  min-height: 10px;
   border-radius: 50%;
   margin-right: 10px;
   background-color: #000;
+}
+
+.c1.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c1.date {
+  white-space: nowrap;
+  margin: 0 0 0 30px;
 }
 
 .c0 {
@@ -90,13 +114,13 @@ exports[`AuthorDate renders multiple authors 1`] = `
   display: flex;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .c1 {
-    margin: 0 20px 0 0;
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.1em;
+    margin: 0 20px 0 0;
   }
 
   .c1:before {
@@ -109,13 +133,13 @@ exports[`AuthorDate renders multiple authors 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="author c1"
   >
     By 
     Molly Gottschalk and Kana Abe
   </div>
   <div
-    className="c1"
+    className="date c1"
   >
     May 19, 2017 9:09 am
   </div>
