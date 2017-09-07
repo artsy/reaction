@@ -10,8 +10,11 @@ interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
 
 const Div: StyledFunction<SectionContainerProps> = styled.div
 
-const chooseWidth = (layout, articleLayout) => {
+const chooseWidth = (layout, articleLayout, media = null) => {
   if (layout) {
+    if (media && media === "lg" && articleLayout === "standard") {
+      return "680px;"
+    }
     if (layout === "blockquote" && articleLayout !== "classic") {
       const sectionWidth = articleLayout === "feature" ? "900px;" : "780px;"
       return sectionWidth
@@ -38,6 +41,9 @@ const SectionContainer = Div`
   width: ${props => chooseWidth(props.layout, props.articleLayout)}
   margin: auto;
   margin-bottom: 40px;
+  ${props => pMedia.lg`
+    width: ${chooseWidth(props.layout, props.articleLayout, "lg")}
+  `}
   ${props => pMedia.md`
     width: 100%;
     padding: ${chooseMobilePadding(props.layout)}

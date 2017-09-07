@@ -1,6 +1,7 @@
 import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
+import styled from "styled-components"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
@@ -97,7 +98,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticles} />
         : false
       return (
-        <div>
+        <StandardArticleContainer>
           <Header article={article} />
           <StandardLayout>
             <Sections article={article} />
@@ -112,10 +113,14 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             slideIndex={this.state.slideIndex}
             images={this.state.fullscreenImages}
           />
-        </div>
+        </StandardArticleContainer>
       )
     }
   }
 }
+
+const StandardArticleContainer = styled.div`
+  margin-top: 100px;
+`
 
 export default Article
