@@ -325,6 +325,20 @@ exports[`Classic Header renders classic header properly 1`] = `
   text-align: center;
 }
 
+.c0 p,
+.c0 > p {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  line-height: 1.35em;
+  -webkit-text-align: left;
+  text-align: left;
+  max-width: 580px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
 .c1 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
@@ -343,6 +357,15 @@ exports[`Classic Header renders classic header properly 1`] = `
   .c0 {
     -webkit-text-align: left;
     text-align: left;
+  }
+
+  .c0 p,
+  .c0 > p {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.1em;
+    line-height: 1.35em;
   }
 }
 
@@ -363,6 +386,13 @@ exports[`Classic Header renders classic header properly 1`] = `
   >
     New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
   </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+      }
+    }
+  />
   <div
     className="c2"
   >
@@ -662,7 +692,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
   width: 50vw;
 }
 
@@ -761,7 +791,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
     width: 100%;
   }
 }
@@ -1000,7 +1030,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
   width: 50vw;
 }
 
@@ -1099,7 +1129,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
     width: 100%;
   }
 }
@@ -1265,7 +1295,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 .c11 {
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
 }
 
@@ -1331,7 +1361,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+.c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
   width: 50vw;
 }
 
@@ -1430,7 +1460,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-e04565-2 {
+  .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
     width: 100%;
   }
 }
