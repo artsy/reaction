@@ -20,7 +20,7 @@ const Header: React.SFC<HeaderProps> = props => {
         <FeatureTitle className="feature__title">
           {props.children ? props.children[0] : article.title}
         </FeatureTitle>
-        {props.children && props.children[1] ? <div className="feature__deck">props.children[1]</div> : deck}
+        {props.children && props.children[1] ? <div className="feature__deck">{props.children[1]}</div> : deck}
         {props.children && props.children[2]}
       </FeatureHeader>
     )
@@ -33,11 +33,15 @@ const Header: React.SFC<HeaderProps> = props => {
       </StandardHeader>
     )
   } else if (article.layout === "classic") {
+    const leadParagraph = article.lead_paragraph
+      ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+      : false
     return (
       <ClassicHeader article={article}>
         <ClassicTitle>
-          {props.children ? props.children : article.title}
+          {props.children ? props.children[0] : article.title}
         </ClassicTitle>
+        {props.children ? props.children[1] : leadParagraph}
       </ClassicHeader>
     )
   }

@@ -39,7 +39,7 @@ function renderAsset(url, title, children) {
       </FeatureVideoContainer>
     )
   } else {
-    const src = resize(url, { width: 1200 })
+    const src = url.length && resize(url, { width: 1200 })
     const alt = url.length ? title : ""
     return (
       <FeatureImage src={src} alt={alt}>
@@ -60,11 +60,12 @@ function renderTextLayoutAsset(url, layout, title, children) {
       )
     } else {
       const alt = url.length ? title : ""
-      const src = resize(url, { width: 1200 })
+      const src = url.length && resize(url, { width: 1200 })
+      const image = <Image src={src} alt={alt} />
       return (
         <TextAsset>
           {children[2]}
-          <Image src={src} alt={alt} />
+          {url.length && image}
         </TextAsset>
       )
     }
@@ -88,12 +89,13 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const { article, size, children } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
+  const vertical = article.vertical.name ? article.vertical.name : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
       {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, children)}
       <HeaderTextContainer>
         <HeaderText>
-          <Vertical>{article.vertical.name}</Vertical>
+          <Vertical>{vertical}</Vertical>
           {children[0]}
           {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, children)}
           <SubHeader>
@@ -173,7 +175,7 @@ const Video = styled.video`
   width: 100%;
 `
 const TextAsset = styled.div`
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
 `
 const SubHeader = styled.div`

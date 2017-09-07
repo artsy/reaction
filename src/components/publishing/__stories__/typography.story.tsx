@@ -3,6 +3,9 @@ import * as React from "react"
 
 import IconExpand from "../icon/expand"
 import IconImageSet from "../icon/image_set"
+import IconLayoutFullscreen from "../icon/layout_fullscreen"
+import IconLayoutSplit from "../icon/layout_split"
+import IconLayoutText from "../icon/layout_text"
 import IconRemove from "../icon/remove"
 import Typography from "./typography_examples"
 
@@ -21,6 +24,18 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconExpand />
           <p>Expand</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconLayoutSplit />
+          <p>Layout Split</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconLayoutText />
+          <p>Layout Text</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconLayoutFullscreen />
+          <p>Layout Fullscreen</p>
         </div>
       </div>
     )
