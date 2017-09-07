@@ -13,6 +13,7 @@ const Sidebar: React.SFC<React.HTMLProps<HTMLDivElement>> = props => {
 const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 60px;
   ${pMedia.md`
     display: none;
   `}

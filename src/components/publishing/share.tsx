@@ -42,7 +42,7 @@ const IconWrapper = styled.a`
   align-items: center;
   flex: 1;
   height: 40px;
-  width: 113px;
+  max-width: 113px;
   text-decoration: none;
   background-color: black;
   color: white;
