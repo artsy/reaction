@@ -20,19 +20,27 @@ const RelatedArticleFigure: React.SFC<RelatedArticleFigureProps> = props => {
   const { article } = props
   return (
     <ArticleFigure href={articleHref(article.slug)}>
-      <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
-      <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
-      <AuthorDate authors={article.contributing_authors} date={article.published_at} />
+      <ImageTitle>
+        <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
+        <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
+      </ImageTitle>
+      <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="condensed" />
     </ArticleFigure>
   )
 }
 
-const ArticleFigure = styled.a`
+const ImageTitle = styled.a`
+  display: flex;
+  flex-direction: column;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 30px;
+`
+const ArticleFigure = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 255px;
-  color: black;
-  text-decoration: none;
+  justify-content: space-between;
   ${pMedia.lg`
     margin-right: 20px;
   `}

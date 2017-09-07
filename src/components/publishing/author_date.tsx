@@ -38,32 +38,39 @@ const getAuthorByline = authors => {
   }
 }
 
-const getDate = date => moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+const getDate = (date, layout) => {
+  return layout === "condensed"
+    ? moment(date).tz("America/New_York").format("MMM D, YYYY")
+    : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+}
 
 const AuthorDate: React.SFC<AuthorDateProps> = props => {
   const { authors, layout, date } = props
   return (
     <AuthorDateContainer>
       <BulletText layout={layout}>By {getAuthorByline(authors)}</BulletText>
-      <BulletText layout={layout}>{getDate(date)}</BulletText>
+      <BulletText layout={layout}>{getDate(date, layout)}</BulletText>
     </AuthorDateContainer>
   )
 }
+const getBulletSize = layout => (layout === "condensed" ? "8px" : "10px")
+const getBulletMargin = layout => (layout === "condensed" ? "5px" : "10px")
+const getDateMargin = layout => (layout === "condensed" ? "0 0 0 20px" : "0 0 0 30px")
 
 const div: StyledFunction<BulletTextProps> = styled.div
 
 const BulletText = div`
-  ${Fonts.unica("s16", "medium")}
+  ${props => (props.layout === "condensed" ? Fonts.unica("s14", "medium") : Fonts.unica("s16", "medium"))}
   &:nth-child(2) {
-    margin: 0 0 0 30px;
+    margin: ${props => getDateMargin(props.layout)};
   }
   &:before {
     content: "";
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: ${props => getBulletSize(props.layout)};
+    height: ${props => getBulletSize(props.layout)};
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: ${props => getBulletMargin(props.layout)};
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
   ${pMedia.xs`

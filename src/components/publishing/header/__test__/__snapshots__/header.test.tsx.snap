@@ -1,67 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthorDate renders a single author 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c1:nth-child(2) {
-  margin: 0 0 0 30px;
-}
-
-.c1:before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    margin: 0 20px 0 0;
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.1em;
-  }
-
-  .c1:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    By 
-    Molly Gottschalk
-  </div>
-  <div
-    className="c1"
-  >
-    May 19, 2017 9:09 am
-  </div>
-</div>
-`;
-
-exports[`AuthorDate renders a single author 2`] = `
 .c2 {
   font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
   -webkit-font-smoothing: antialiased;
@@ -137,67 +76,6 @@ exports[`AuthorDate renders a single author 2`] = `
 `;
 
 exports[`AuthorDate renders multiple authors 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c1:nth-child(2) {
-  margin: 0 0 0 30px;
-}
-
-.c1:before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    margin: 0 20px 0 0;
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.1em;
-  }
-
-  .c1:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    By 
-    Molly Gottschalk and Kana Abe
-  </div>
-  <div
-    className="c1"
-  >
-    May 19, 2017 9:09 am
-  </div>
-</div>
-`;
-
-exports[`AuthorDate renders multiple authors 2`] = `
 .c2 {
   font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
   -webkit-font-smoothing: antialiased;
@@ -692,7 +570,11 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
+<<<<<<< HEAD
 .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
   width: 50vw;
 }
 
@@ -791,7 +673,11 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
+<<<<<<< HEAD
   .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
     width: 100%;
   }
 }
@@ -1030,7 +916,11 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
+<<<<<<< HEAD
 .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
   width: 50vw;
 }
 
@@ -1129,7 +1019,11 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
+<<<<<<< HEAD
   .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
     width: 100%;
   }
 }
@@ -1361,7 +1255,11 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
+<<<<<<< HEAD
 .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+.c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
   width: 50vw;
 }
 
@@ -1460,7 +1358,11 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
+<<<<<<< HEAD
   .c0[data-type='split'] .file__FeatureVideo-q9b5i4-2 {
+=======
+  .c0[data-type='split'] .file__FeatureVideo-feovt6-2 {
+>>>>>>> 3adf1af... AuthorDate in RelatedArticlesCanvas
     width: 100%;
   }
 }

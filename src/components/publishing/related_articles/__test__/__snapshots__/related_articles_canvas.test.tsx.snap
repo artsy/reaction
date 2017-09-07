@@ -1,6 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the related articles canvas 1`] = `
+.c9 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.1em;
+}
+
+.c9:nth-child(2) {
+  margin: 0 0 0 20px;
+}
+
+.c9:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #000;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -10,16 +52,20 @@ exports[`renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 255px;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
 }
 
-.c6 {
+.c7 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c5 {
+.c6 {
   display: block;
   width: 255px;
   height: 170px;
@@ -36,11 +82,6 @@ exports[`renders the related articles canvas 1`] = `
   flex-direction: column;
   max-width: 1250px;
   margin: 30px auto 60px auto;
-  overflow-x: scroll;
-}
-
-.c0::-webkit-scrollbar {
-  display: none;
 }
 
 .c1 {
@@ -75,6 +116,26 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: space-between;
   justify-content: space-between;
+  overflow-x: scroll;
+}
+
+.c3::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .c9 {
+    margin: 0 20px 0 0;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+
+  .c9:before {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 @media (max-width: 1250px) {
@@ -86,6 +147,13 @@ exports[`renders the related articles canvas 1`] = `
 @media (max-width: 1250px) {
   .c0 {
     margin: 30px 20px 60px 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c2 {
+    margin-left: 0px;
+    display: block;
   }
 }
 
@@ -107,58 +175,138 @@ exports[`renders the related articles canvas 1`] = `
   >
     <div
       className="c4"
+      href="https://artsy.net/article/artsy-editorial-15-top-art-schools-united-states"
     >
-      <img
-        alt="The 15 Top Art Schools in the United States"
+      <a
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
-      />
-      <div
-        className="c6"
       >
-        The 15 Top Art Schools in the United States
+        <img
+          alt="The 15 Top Art Schools in the United States"
+          className="c6"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
+        />
+        <div
+          className="c7"
+        >
+          The 15 Top Art Schools in the United States
+        </div>
+      </a>
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          By 
+          Artsy Editorial
+        </div>
+        <div
+          className="c9"
+        >
+          May 19, 2017
+        </div>
       </div>
     </div>
     <div
       className="c4"
+      href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
     >
-      <img
-        alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
+      <a
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
-      />
-      <div
-        className="c6"
       >
-        Four Years after Walter De Maria’s Death, His Final Work Is Complete
+        <img
+          alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
+          className="c6"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
+        />
+        <div
+          className="c7"
+        >
+          Four Years after Walter De Maria’s Death, His Final Work Is Complete
+        </div>
+      </a>
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          By 
+          Artsy Editorial
+        </div>
+        <div
+          className="c9"
+        >
+          May 19, 2017
+        </div>
       </div>
     </div>
     <div
       className="c4"
+      href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
     >
-      <img
-        alt="French Art History in a Nutshell"
+      <a
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
-      />
-      <div
-        className="c6"
       >
-        French Art History in a Nutshell
+        <img
+          alt="French Art History in a Nutshell"
+          className="c6"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
+        />
+        <div
+          className="c7"
+        >
+          French Art History in a Nutshell
+        </div>
+      </a>
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          By 
+          Artsy Editorial
+        </div>
+        <div
+          className="c9"
+        >
+          May 19, 2017
+        </div>
       </div>
     </div>
     <div
       className="c4"
+      href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
     >
-      <img
-        alt="Miami Artists and Museums Brace for Hurricane Irma"
+      <a
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
-      />
-      <div
-        className="c6"
       >
-        Miami Artists and Museums Brace for Hurricane Irma
+        <img
+          alt="Miami Artists and Museums Brace for Hurricane Irma"
+          className="c6"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
+        />
+        <div
+          className="c7"
+        >
+          Miami Artists and Museums Brace for Hurricane Irma
+        </div>
+      </a>
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          By 
+          Artsy Editorial
+        </div>
+        <div
+          className="c9"
+        >
+          May 19, 2017
+        </div>
       </div>
     </div>
   </div>
