@@ -19,6 +19,9 @@ import LayoutSplit from "./icon/layout_split"
 import LayoutText from "./icon/layout_text"
 import Remove from "./icon/remove"
 
+// Test Fixtures
+import { ClassicArticle, FeatureArticle, StandardArticle } from "./fixtures/articles"
+
 export default {
   Article,
   Artwork,
@@ -39,5 +42,10 @@ export default {
     LayoutSplit,
     LayoutText,
     Remove,
+  },
+  Fixtures: {
+    ClassicArticle,
+    FeatureArticle,
+    StandardArticle,
   },
 }

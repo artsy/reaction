@@ -30,11 +30,36 @@ describe("feature", () => {
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
   })
+  it("renders feature header with children properly", () => {
+    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
+    const header = renderer
+      .create(
+        <Header article={article}>
+          <div>Child 0: Vertical</div>
+          <div>Child 1: Title</div>
+          <div>Child 2: Deck</div>
+          <div>Child 3: Image</div>
+        </Header>
+      )
+      .toJSON()
+    expect(header).toMatchSnapshot()
+  })
 })
 
 describe("Standard Header", () => {
   it("renders standard header properly", () => {
     const header = renderer.create(<Header article={StandardArticle} />).toJSON()
+    expect(header).toMatchSnapshot()
+  })
+  it("renders standard header with children properly", () => {
+    const header = renderer
+      .create(
+        <Header article={StandardArticle}>
+          <div>Child 0: Vertical</div>
+          <div>Child 1: Title</div>
+        </Header>
+      )
+      .toJSON()
     expect(header).toMatchSnapshot()
   })
 })
@@ -60,6 +85,17 @@ describe("AuthorDate", () => {
 describe("Classic Header", () => {
   it("renders classic header properly", () => {
     const header = renderer.create(<Header article={ClassicArticle} />).toJSON()
+    expect(header).toMatchSnapshot()
+  })
+  it("renders classic header with children properly", () => {
+    const header = renderer
+      .create(
+        <Header article={StandardArticle}>
+          <div>Child 0: Title</div>
+          <div>Child 1: Lead Paragraph</div>
+        </Header>
+      )
+      .toJSON()
     expect(header).toMatchSnapshot()
   })
 })

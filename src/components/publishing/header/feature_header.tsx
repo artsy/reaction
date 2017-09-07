@@ -34,7 +34,7 @@ function renderAsset(url, title, children) {
   if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
-        {children[2]}
+        {children[3]}
         <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
       </FeatureVideoContainer>
     )
@@ -43,7 +43,7 @@ function renderAsset(url, title, children) {
     const alt = url.length ? title : ""
     return (
       <FeatureImage src={src} alt={alt}>
-        {children[2]}
+        {children[3]}
       </FeatureImage>
     )
   }
@@ -54,7 +54,7 @@ function renderTextLayoutAsset(url, layout, title, children) {
     if (isVideo(url)) {
       return (
         <TextAsset>
-          {children[2]}
+          {children[3]}
           <Video src={url} autoPlay controls={false} loop muted playsInline />
         </TextAsset>
       )
@@ -64,7 +64,7 @@ function renderTextLayoutAsset(url, layout, title, children) {
       const image = <Image src={src} alt={alt} />
       return (
         <TextAsset>
-          {children[2]}
+          {children[3]}
           {url.length && image}
         </TextAsset>
       )
@@ -89,17 +89,17 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const { article, size, children } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
-  const vertical = article.vertical ? article.vertical.name : false
+  const vertical = article.vertical ? article.vertical.name : children[0]
   return (
     <FeatureHeaderContainer data-type={hero.type}>
       {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, children)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{vertical}</Vertical>
-          {children[0]}
+          {children[1]}
           {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, children)}
           <SubHeader>
-            {children[1]}
+            {children[2]}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>

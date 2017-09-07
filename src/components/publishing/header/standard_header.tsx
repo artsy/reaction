@@ -9,12 +9,12 @@ interface StandardHeaderProps {
 }
 
 const StandardHeader: React.SFC<StandardHeaderProps> = props => {
-  const { article } = props
-  const vertical = article.vertical ? article.vertical.name : false
+  const { article, children } = props
+  const vertical = article.vertical ? article.vertical.name : children[0]
   return (
     <StandardHeaderContainer>
       <Vertical>{vertical}</Vertical>
-      {props.children}
+      {children[1]}
       <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="standard" />
     </StandardHeaderContainer>
   )
