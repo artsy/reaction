@@ -10,7 +10,7 @@ interface StandardHeaderProps {
 
 const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   const { article } = props
-  const vertical = article.vertical.name ? article.vertical.name : false
+  const vertical = article.vertical ? article.vertical.name : false
   return (
     <StandardHeaderContainer>
       <Vertical>{vertical}</Vertical>

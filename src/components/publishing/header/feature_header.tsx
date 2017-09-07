@@ -89,7 +89,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const { article, size, children } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
-  const vertical = article.vertical.name ? article.vertical.name : false
+  const vertical = article.vertical ? article.vertical.name : false
   return (
     <FeatureHeaderContainer data-type={hero.type}>
       {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, children)}
