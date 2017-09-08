@@ -1,8 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { Authors, Embeds, Related } from "../fixtures/components"
-import RelatedArticlesPanel from "../related_articles_panel"
+import { Authors, Embeds } from "../fixtures/components"
 import AuthorInfo from "../sections/authors"
 import Embed from "../sections/embed"
 import Share from "../share"
@@ -28,7 +27,4 @@ storiesOf("Publishing/Miscellaneous", module)
         <Share url="http://artsy.net/article/point-pencils" title="The Point of Pencils" />
       </div>
     )
-  })
-  .add("Related Articles Panel", () => {
-    return <RelatedArticlesPanel articles={Related} />
   })
