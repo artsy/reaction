@@ -10,15 +10,31 @@ import { HeroSections } from "../fixtures/components"
 storiesOf("Publishing/Headers", module)
   .add("Classic Header", () => {
     return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={ClassicArticle} />
+      <div>
+        <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          <Header article={ClassicArticle} />
+        </div>
+        <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          <Header article={ClassicArticle}>
+            <div>Child 0: Title</div>
+            <p>Child 1: Lead Paragraph</p>
+          </Header>
+        </div>
       </div>
     )
   })
   .add("Standard Header", () => {
     return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={StandardArticle} />
+      <div>
+        <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          <Header article={StandardArticle} />
+        </div>
+        <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          <Header article={StandardArticle}>
+            <div>Child 0: Vertical</div>
+            <div>Child 1: Title</div>
+          </Header>
+        </div>
       </div>
     )
   })
@@ -32,6 +48,14 @@ storiesOf("Publishing/Headers", module)
         </div>
         <div style={{ width: "100%", position: "relative" }}>
           <Header article={article2} />
+        </div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header article={article2}>
+            <div>Child 0: Vertical</div>
+            <div>Child 1: Title</div>
+            <div>Child 2: Deck</div>
+            <div>Child 3: Image</div>
+          </Header>
         </div>
       </div>
     )

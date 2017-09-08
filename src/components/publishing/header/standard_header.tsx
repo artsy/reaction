@@ -6,15 +6,16 @@ import Fonts from "../fonts"
 
 interface StandardHeaderProps {
   article?: any
+  title: any
+  vertical?: any
 }
 
 const StandardHeader: React.SFC<StandardHeaderProps> = props => {
-  const { article } = props
-  const vertical = article.vertical.name ? article.vertical.name : false
+  const { article, title, vertical } = props
   return (
     <StandardHeaderContainer>
       <Vertical>{vertical}</Vertical>
-      {props.children}
+      <Title>{title}</Title>
       <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="standard" />
     </StandardHeaderContainer>
   )
@@ -34,7 +35,13 @@ const StandardHeaderContainer = styled.div`
     margin: 30px auto;
   `}
 `
-
+const Title = styled.div`
+  ${Fonts.garamond("s50")}
+  margin-bottom: 50px;
+  ${pMedia.xs`
+    ${Fonts.garamond("s34")}
+  `}
+`
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
   margin-bottom: 10px;
