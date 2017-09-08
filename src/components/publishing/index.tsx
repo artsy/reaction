@@ -1,5 +1,7 @@
 import Article from "./article"
 import Header from "./header/header"
+import RelatedArticlesCanvas from "./related_articles/related_articles_canvas"
+import RelatedArticlesPanel from "./related_articles/related_articles_panel"
 import Artwork from "./sections/artwork"
 import Authors from "./sections/authors"
 import Caption from "./sections/caption"
@@ -34,6 +36,8 @@ export default {
   ImageCollection,
   ImageSetPreview,
   ImageSetPreviewClassic,
+  RelatedArticlesCanvas,
+  RelatedArticlesPanel,
   Text,
   Video,
   Icon: {

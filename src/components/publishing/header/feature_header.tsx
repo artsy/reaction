@@ -3,9 +3,9 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
+import AuthorDate from "../author_date"
 import { sizeMeRefreshRate } from "../constants"
 import Fonts from "../fonts"
-import AuthorDate from "./author_date"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "fullscreen") {

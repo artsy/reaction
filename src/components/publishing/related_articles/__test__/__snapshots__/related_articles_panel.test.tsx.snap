@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a saved caption properly 1`] = `
+exports[`renders the related articles panel 1`] = `
 .c0 {
   max-width: 360px;
 }
