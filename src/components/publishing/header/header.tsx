@@ -1,7 +1,4 @@
 import * as React from "react"
-import styled from "styled-components"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
 import ClassicHeader from "./classic_header"
 import FeatureHeader from "./feature_header"
 import StandardHeader from "./standard_header"
@@ -10,75 +7,51 @@ interface HeaderProps {
   article: any
 }
 
-const Header: React.SFC<HeaderProps> = props => {
-  const { article } = props
-  const hero = article.hero_section
-  const deck = hero && hero.deck ? <Deck className="feature__deck">{article.hero_section.deck}</Deck> : false
-  if (article.layout === "feature") {
-    return (
-      <FeatureHeader article={article}>
-        {props.children && props.children[0]}
-        <FeatureTitle className="feature__title">
-          {props.children ? props.children[1] : article.title}
-        </FeatureTitle>
-        {props.children && props.children[2] ? <div className="feature__deck">{props.children[2]}</div> : deck}
-        {props.children && props.children[3]}
-      </FeatureHeader>
-    )
-  } else if (article.layout === "standard") {
-    return (
-      <StandardHeader article={article}>
-        {props.children && props.children[0]}
-        <StandardTitle>
-          {props.children ? props.children[1] : article.title}
-        </StandardTitle>
-      </StandardHeader>
-    )
-  } else if (article.layout === "classic") {
-    const leadParagraph = article.lead_paragraph
-      ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-      : false
-    return (
-      <ClassicHeader article={article}>
-        <ClassicTitle>
-          {props.children ? props.children[0] : article.title}
-        </ClassicTitle>
-        {props.children ? props.children[1] : leadParagraph}
-      </ClassicHeader>
-    )
+function getTitle(article, children) {
+  if (article.layout === "classic") {
+    return children ? children[0] : article.title
+  } else {
+    return children ? children[1] : article.title
   }
 }
 
-const ClassicTitle = styled.div`
-  ${Fonts.garamond("s37")}
-  margin-bottom: 30px;
-  ${pMedia.xs`
-    ${Fonts.garamond("s34")}
-  `}
-`
-const StandardTitle = styled.div`
-  ${Fonts.garamond("s50")}
-  margin-bottom: 50px;
-  ${pMedia.xs`
-    ${Fonts.garamond("s34")}
-  `}
-`
-const FeatureTitle = styled.div`
-  ${Fonts.unica("s100")}
-  margin-bottom: 75px;
-  ${pMedia.md`
-    ${Fonts.unica("s80")}
-  `}
-  ${pMedia.xs`
-    ${Fonts.unica("s45")}
-  `}
-`
-const Deck = styled.div`
-  max-width: 460px;
-  ${pMedia.xs`
-    margin-bottom: 28px;
-    ${Fonts.unica("s16")}
-  `}
-`
+function getVertical(article, children) {
+  const vertical = article.vertical ? article.vertical.name : false
+  const child = children && children[0]
+  return vertical && child ? vertical : child
+}
+
+function getLeadParagraph(article, children) {
+  const leadParagraph = article.lead_paragraph
+    ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+    : false
+  return children ? children[1] : leadParagraph
+}
+
+function getDeck(article, children) {
+  const hero = article.hero_section
+  const savedDeck = hero && hero.deck ? article.hero_section.deck : false
+  const deck = children && children[2] ? children[2] : savedDeck
+  return <div className="feature__deck">{deck}</div>
+}
+
+const Header: React.SFC<HeaderProps> = props => {
+  const { article, children } = props
+  const title = getTitle(article, children)
+
+  if (article.layout === "classic") {
+    const leadParagraph = getLeadParagraph(article, children)
+    return <ClassicHeader article={article} title={title} leadParagraph={leadParagraph} />
+  } else {
+    const deck = getDeck(article, children)
+    const vertical = getVertical(article, children)
+    const image = children && children[3]
+    if (article.layout === "feature") {
+      return <FeatureHeader article={article} title={title} vertical={vertical} deck={deck} image={image} />
+    } else {
+      return <StandardHeader article={article} vertical={vertical} title={title} />
+    }
+  }
+}
 
 export default Header

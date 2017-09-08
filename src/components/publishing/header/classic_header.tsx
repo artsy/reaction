@@ -6,13 +6,16 @@ import AuthorDateClassic from "./author_date_classic"
 
 interface ClassicHeaderProps {
   article?: any
+  title: any
+  leadParagraph?: any
 }
 
 const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
-  const { article } = props
+  const { article, leadParagraph, title } = props
   return (
     <ClassicHeaderContainer>
-      {props.children}
+      <Title>{title}</Title>
+      {leadParagraph}
       <AuthorDateClassic authors={article.contributing_authors} author={article.author} date={article.published_at} />
     </ClassicHeaderContainer>
   )
@@ -43,6 +46,13 @@ const ClassicHeaderContainer = styled.div`
       ${Fonts.garamond("s17")}
       line-height: 1.35em;
     }
+  `}
+`
+const Title = styled.div`
+  ${Fonts.garamond("s37")}
+  margin-bottom: 30px;
+  ${pMedia.xs`
+    ${Fonts.garamond("s34")}
   `}
 `
 

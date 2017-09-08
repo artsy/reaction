@@ -17,7 +17,7 @@ storiesOf("Publishing/Headers", module)
         <div style={{ width: "100%", height: "400px", position: "relative" }}>
           <Header article={ClassicArticle}>
             <div>Child 0: Title</div>
-            <div>Child 1: Lead Paragraph</div>
+            <p>Child 1: Lead Paragraph</p>
           </Header>
         </div>
       </div>

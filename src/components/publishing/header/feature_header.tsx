@@ -7,34 +7,34 @@ import { sizeMeRefreshRate } from "../constants"
 import Fonts from "../fonts"
 import AuthorDate from "./author_date"
 
-function renderFeatureAsset(url, layout, isMobile, title, children) {
+function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "fullscreen") {
     return (
       <div>
-        {renderAsset(url, title, children)}
+        {renderAsset(url, title, imageChild)}
         <Overlay />
       </div>
     )
   } else if (layout === "split" && !isMobile) {
-    return renderAsset(url, title, children)
+    return renderAsset(url, title, imageChild)
   } else {
     return false
   }
 }
 
-function renderMobileSplitAsset(url, layout, isMobile, title, children) {
+function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "split" && isMobile) {
-    return renderAsset(url, title, children)
+    return renderAsset(url, title, imageChild)
   } else {
     return false
   }
 }
 
-function renderAsset(url, title, children) {
+function renderAsset(url, title, imageChild) {
   if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
-        {children[3]}
+        {imageChild}
         <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
       </FeatureVideoContainer>
     )
@@ -43,18 +43,18 @@ function renderAsset(url, title, children) {
     const alt = url.length ? title : ""
     return (
       <FeatureImage src={src} alt={alt}>
-        {children[3]}
+        {imageChild}
       </FeatureImage>
     )
   }
 }
 
-function renderTextLayoutAsset(url, layout, title, children) {
+function renderTextLayoutAsset(url, layout, title, imageChild) {
   if (layout === "text") {
     if (isVideo(url)) {
       return (
         <TextAsset>
-          {children[3]}
+          {imageChild}
           <Video src={url} autoPlay controls={false} loop muted playsInline />
         </TextAsset>
       )
@@ -64,7 +64,7 @@ function renderTextLayoutAsset(url, layout, title, children) {
       const image = <Image src={src} alt={alt} />
       return (
         <TextAsset>
-          {children[3]}
+          {imageChild}
           {url.length && image}
         </TextAsset>
       )
@@ -80,30 +80,33 @@ function isVideo(url) {
 
 interface FeatureHeaderProps {
   article?: any
+  vertical?: any
+  title: any
+  deck?: any
+  image?: any
   size?: {
     width: number
   }
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article, size, children } = props
+  const { article, vertical, title, deck, image, size } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
-  const vertical = article.vertical ? article.vertical.name : children[0]
   return (
     <FeatureHeaderContainer data-type={hero.type}>
-      {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, children)}
+      {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, image)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{vertical}</Vertical>
-          {children[1]}
-          {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, children)}
+          <Title>{title}</Title>
+          {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, image)}
           <SubHeader>
-            {children[2]}
+            <Deck>{deck}</Deck>
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
-        {renderTextLayoutAsset(hero.url, hero.type, article.title, children)}
+        {renderTextLayoutAsset(hero.url, hero.type, article.title, image)}
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )
@@ -189,6 +192,24 @@ const SubHeader = styled.div`
     flex-direction: column;
   `}
 `
+const Title = styled.div`
+  ${Fonts.unica("s100")}
+  margin-bottom: 75px;
+  ${pMedia.md`
+    ${Fonts.unica("s80")}
+  `}
+  ${pMedia.xs`
+    ${Fonts.unica("s45")}
+  `}
+`
+const Deck = styled.div`
+  max-width: 460px;
+  ${pMedia.xs`
+    margin-bottom: 28px;
+    ${Fonts.unica("s16")}
+  `}
+`
+
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: 100vh;
