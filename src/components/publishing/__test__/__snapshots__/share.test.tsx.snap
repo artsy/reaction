@@ -35,7 +35,7 @@ exports[`renders a saved caption properly 1`] = `
   -ms-flex: 1;
   flex: 1;
   height: 40px;
-  width: 113px;
+  max-width: 113px;
   -webkit-text-decoration: none;
   text-decoration: none;
   background-color: black;

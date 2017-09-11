@@ -120,7 +120,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 }
 
 const StandardArticleContainer = styled.div`
-  margin-top: 100px;
+  margin: 100px 0;
 `
 
 export default Article
