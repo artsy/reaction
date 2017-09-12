@@ -213,6 +213,7 @@ exports[`Classic Header renders classic header properly 1`] = `
   -webkit-text-align: left;
   text-align: left;
   max-width: 580px;
+  width: 100%;
   margin: 0 auto;
   padding-bottom: 30px;
 }
@@ -729,14 +730,14 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 `;
 
 exports[`feature renders feature full header properly 1`] = `
-.c13 {
+.c15 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c13:before {
+.c15:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -746,7 +747,7 @@ exports[`feature renders feature full header properly 1`] = `
   background-color: #fff;
 }
 
-.c13.author {
+.c15.author {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -757,12 +758,12 @@ exports[`feature renders feature full header properly 1`] = `
   align-items: baseline;
 }
 
-.c13.date {
+.c15.date {
   white-space: nowrap;
   margin: 0 0 0 30px;
 }
 
-.c12 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -828,7 +829,7 @@ exports[`feature renders feature full header properly 1`] = `
   width: 100%;
 }
 
-.c10 {
+.c11 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -850,7 +851,7 @@ exports[`feature renders feature full header properly 1`] = `
   flex-direction: row;
 }
 
-.c8 {
+.c9 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -858,7 +859,7 @@ exports[`feature renders feature full header properly 1`] = `
   margin-bottom: 75px;
 }
 
-.c11 {
+.c13 {
   max-width: 460px;
 }
 
@@ -874,7 +875,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type='text'] .feature__title {
+.c0[data-type='text'] .c8 {
   margin-bottom: 150px;
 }
 
@@ -882,7 +883,7 @@ exports[`feature renders feature full header properly 1`] = `
   max-width: none;
 }
 
-.c0[data-type='split'] .feature__title {
+.c0[data-type='split'] .c8 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
   flex-grow: 1;
@@ -902,11 +903,11 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+.c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
   width: 50vw;
 }
 
-.c0[data-type='split'] .c9 {
+.c0[data-type='split'] .c10 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -916,7 +917,7 @@ exports[`feature renders feature full header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type='split'] .feature__deck {
+.c0[data-type='split'] .c12 {
   margin-bottom: 30px;
 }
 
@@ -931,7 +932,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c13 {
+  .c15 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -939,7 +940,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin: 0 20px 0 0;
   }
 
-  .c13:before {
+  .c15:before {
     width: 8px;
     height: 8px;
   }
@@ -955,7 +956,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c10 {
+  .c11 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -967,7 +968,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 900px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -976,7 +977,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -985,7 +986,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c11 {
+  .c13 {
     margin-bottom: 28px;
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
@@ -995,7 +996,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c0[data-type='split'] .feature__title {
+  .c0[data-type='split'] .c8 {
     margin-bottom: 20px;
   }
 
@@ -1017,7 +1018,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
     width: 100%;
   }
 }
@@ -1052,15 +1053,15 @@ exports[`feature renders feature full header properly 1`] = `
         className="c7"
       />
       <div
-        className="c8"
+        className="c8 c9"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="c9 c10"
+        className="c10 c11"
       >
         <div
-          className="c11"
+          className="c12 c13"
         >
           <div
             className="feature__deck"
@@ -1069,16 +1070,16 @@ exports[`feature renders feature full header properly 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c14"
         >
           <div
-            className="author c13"
+            className="author c15"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c13"
+            className="date c15"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -1090,14 +1091,14 @@ exports[`feature renders feature full header properly 1`] = `
 `;
 
 exports[`feature renders feature header with children properly 1`] = `
-.c13 {
+.c15 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c13:before {
+.c15:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -1107,7 +1108,7 @@ exports[`feature renders feature header with children properly 1`] = `
   background-color: #fff;
 }
 
-.c13.author {
+.c15.author {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1118,12 +1119,12 @@ exports[`feature renders feature header with children properly 1`] = `
   align-items: baseline;
 }
 
-.c13.date {
+.c15.date {
   white-space: nowrap;
   margin: 0 0 0 30px;
 }
 
-.c12 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1189,7 +1190,7 @@ exports[`feature renders feature header with children properly 1`] = `
   width: 100%;
 }
 
-.c10 {
+.c11 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1211,7 +1212,7 @@ exports[`feature renders feature header with children properly 1`] = `
   flex-direction: row;
 }
 
-.c8 {
+.c9 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -1219,7 +1220,7 @@ exports[`feature renders feature header with children properly 1`] = `
   margin-bottom: 75px;
 }
 
-.c11 {
+.c13 {
   max-width: 460px;
 }
 
@@ -1235,7 +1236,7 @@ exports[`feature renders feature header with children properly 1`] = `
   height: auto;
 }
 
-.c0[data-type='text'] .feature__title {
+.c0[data-type='text'] .c8 {
   margin-bottom: 150px;
 }
 
@@ -1243,7 +1244,7 @@ exports[`feature renders feature header with children properly 1`] = `
   max-width: none;
 }
 
-.c0[data-type='split'] .feature__title {
+.c0[data-type='split'] .c8 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
   flex-grow: 1;
@@ -1263,11 +1264,11 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+.c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
   width: 50vw;
 }
 
-.c0[data-type='split'] .c9 {
+.c0[data-type='split'] .c10 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1277,7 +1278,7 @@ exports[`feature renders feature header with children properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type='split'] .feature__deck {
+.c0[data-type='split'] .c12 {
   margin-bottom: 30px;
 }
 
@@ -1292,7 +1293,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c13 {
+  .c15 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1300,7 +1301,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin: 0 20px 0 0;
   }
 
-  .c13:before {
+  .c15:before {
     width: 8px;
     height: 8px;
   }
@@ -1316,7 +1317,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c10 {
+  .c11 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -1328,7 +1329,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 900px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -1337,7 +1338,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -1346,7 +1347,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c11 {
+  .c13 {
     margin-bottom: 28px;
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
@@ -1356,7 +1357,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c0[data-type='split'] .feature__title {
+  .c0[data-type='split'] .c8 {
     margin-bottom: 20px;
   }
 
@@ -1378,7 +1379,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
     width: 100%;
   }
 }
@@ -1419,17 +1420,17 @@ exports[`feature renders feature header with children properly 1`] = `
         Creativity
       </div>
       <div
-        className="c8"
+        className="c8 c9"
       >
         <div>
           Child 1: Title
         </div>
       </div>
       <div
-        className="c9 c10"
+        className="c10 c11"
       >
         <div
-          className="c11"
+          className="c12 c13"
         >
           <div
             className="feature__deck"
@@ -1440,16 +1441,16 @@ exports[`feature renders feature header with children properly 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c14"
         >
           <div
-            className="author c13"
+            className="author c15"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c13"
+            className="date c15"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -1461,6 +1462,353 @@ exports[`feature renders feature header with children properly 1`] = `
 `;
 
 exports[`feature renders feature split header properly 1`] = `
+.c14 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c14:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c14.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c14.date {
+  white-space: nowrap;
+  margin: 0 0 0 30px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c8 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c6 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+}
+
+.c12 {
+  max-width: 460px;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+}
+
+.c0[data-type='text'] {
+  height: auto;
+}
+
+.c0[data-type='text'] .c5 {
+  margin-bottom: 150px;
+}
+
+.c0[data-type='text'] .c2 {
+  max-width: none;
+}
+
+.c0[data-type='split'] .c5 {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type='split'] .c2 {
+  width: 50%;
+}
+
+.c0[data-type='split'] .c7 {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .sc-gzVnrw {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
+  width: 50vw;
+}
+
+.c0[data-type='split'] .c9 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type='split'] .c11 {
+  margin-bottom: 30px;
+}
+
+.c0[data-type='fullscreen'] .c2 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+@media (max-width: 720px) {
+  .c14 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+    margin: 0 20px 0 0;
+  }
+
+  .c14:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c10 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c12 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='split'] .c5 {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type='split'] .c2 {
+    width: 100%;
+  }
+
+  .c0[data-type='split'] .c7 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .sc-gzVnrw {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='fullscreen'] .c2 {
+    padding: 20px;
+  }
+}
+
+<div
+  className="c0"
+  data-type="split"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2 c3"
+    >
+      <div
+        className="c4"
+      />
+      <div
+        className="c5 c6"
+      >
+        What’s the Path to Winning an Art Prize?
+      </div>
+      <div
+        alt="What’s the Path to Winning an Art Prize?"
+        className="c7 c8"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+      />
+      <div
+        className="c9 c10"
+      >
+        <div
+          className="c11 c12"
+        >
+          <div
+            className="feature__deck"
+          >
+            Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+          </div>
+        </div>
+        <div
+          className="c13"
+        >
+          <div
+            className="author c14"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c14"
+          >
+            Jun 29, 2017 11:00 am
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature text header properly 1`] = `
 .c12 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -1538,20 +1886,18 @@ exports[`feature renders feature split header properly 1`] = `
   justify-content: flex-start;
 }
 
-.c7 {
+.c14 {
   width: 100%;
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
-  position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  right: 0;
-  width: 100%;
 }
 
-.c9 {
+.c13 {
+  width: 100%;
+  padding: 20px;
+}
+
+.c8 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1573,7 +1919,7 @@ exports[`feature renders feature split header properly 1`] = `
   flex-direction: row;
 }
 
-.c5 {
+.c6 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -1597,7 +1943,7 @@ exports[`feature renders feature split header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type='text'] .feature__title {
+.c0[data-type='text'] .c5 {
   margin-bottom: 150px;
 }
 
@@ -1605,7 +1951,7 @@ exports[`feature renders feature split header properly 1`] = `
   max-width: none;
 }
 
-.c0[data-type='split'] .feature__title {
+.c0[data-type='split'] .c5 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
   flex-grow: 1;
@@ -1615,7 +1961,7 @@ exports[`feature renders feature split header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type='split'] .c6 {
+.c0[data-type='split'] .sc-bZQynM {
   width: 50%;
   border: 20px solid white;
 }
@@ -1625,11 +1971,11 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+.c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
   width: 50vw;
 }
 
-.c0[data-type='split'] .c8 {
+.c0[data-type='split'] .c7 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1639,7 +1985,7 @@ exports[`feature renders feature split header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type='split'] .feature__deck {
+.c0[data-type='split'] .c9 {
   margin-bottom: 30px;
 }
 
@@ -1678,382 +2024,37 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c9 {
-    -webkit-align-items: flex-start;
-    -webkit-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 900px) {
-  .c5 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 80px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c5 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 45px;
-    line-height: 1.2em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c10 {
-    margin-bottom: 28px;
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0[data-type='split'] .feature__title {
-    margin-bottom: 20px;
-  }
-
-  .c0[data-type='split'] .c2 {
-    width: 100%;
-  }
-
-  .c0[data-type='split'] .c6 {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type='split'] .sc-gzVnrw {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0[data-type='fullscreen'] .c2 {
-    padding: 20px;
-  }
-}
-
-<div
-  className="c0"
-  data-type="split"
->
-  <div
-    className="c1"
-  >
-    <div
-      className="c2 c3"
-    >
-      <div
-        className="c4"
-      />
-      <div
-        className="c5"
-      >
-        What’s the Path to Winning an Art Prize?
-      </div>
-      <div
-        alt="What’s the Path to Winning an Art Prize?"
-        className="c6 c7"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
-      />
-      <div
-        className="c8 c9"
-      >
-        <div
-          className="c10"
-        >
-          <div
-            className="feature__deck"
-          >
-            Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
-          </div>
-        </div>
-        <div
-          className="c11"
-        >
-          <div
-            className="author c12"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c12"
-          >
-            Jun 29, 2017 11:00 am
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`feature renders feature text header properly 1`] = `
-.c10 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c10:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c10.author {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c10.date {
-  white-space: nowrap;
-  margin: 0 0 0 30px;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c4 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-.c1 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  margin: auto;
-}
-
-.c3 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1250px;
-  padding: 20px;
-  color: #000;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.c12 {
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
-
-.c11 {
-  width: 100%;
-  padding: 20px;
-}
-
-.c7 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c5 {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 100px;
-  line-height: 1.1em;
-  margin-bottom: 75px;
-}
-
-.c8 {
-  max-width: 460px;
-}
-
-.c0 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-}
-
-.c0[data-type='text'] {
-  height: auto;
-}
-
-.c0[data-type='text'] .feature__title {
-  margin-bottom: 150px;
-}
-
-.c0[data-type='text'] .c2 {
-  max-width: none;
-}
-
-.c0[data-type='split'] .feature__title {
-  -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
-  flex-grow: 1;
-}
-
-.c0[data-type='split'] .c2 {
-  width: 50%;
-}
-
-.c0[data-type='split'] .sc-bZQynM {
-  width: 50%;
-  border: 20px solid white;
-}
-
-.c0[data-type='split'] .sc-gzVnrw {
-  width: 50%;
-  border: 20px solid white;
-}
-
-.c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
-  width: 50vw;
-}
-
-.c0[data-type='split'] .c6 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0[data-type='split'] .feature__deck {
-  margin-bottom: 30px;
-}
-
-.c0[data-type='fullscreen'] .c2 {
-  padding: 50px;
-  color: #fff;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: auto;
-}
-
-@media (max-width: 720px) {
-  .c10 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.1em;
-    margin: 0 20px 0 0;
-  }
-
-  .c10:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c4 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c7 {
-    -webkit-align-items: flex-start;
-    -webkit-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 900px) {
-  .c5 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 80px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c5 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 45px;
-    line-height: 1.2em;
-  }
-}
-
-@media (max-width: 600px) {
   .c8 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c10 {
     margin-bottom: 28px;
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
@@ -2063,7 +2064,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c0[data-type='split'] .feature__title {
+  .c0[data-type='split'] .c5 {
     margin-bottom: 20px;
   }
 
@@ -2085,7 +2086,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-yeeqon-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s6qei9q-2 {
     width: 100%;
   }
 }
@@ -2110,15 +2111,15 @@ exports[`feature renders feature text header properly 1`] = `
         className="c4"
       />
       <div
-        className="c5"
+        className="c5 c6"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="c6 c7"
+        className="c7 c8"
       >
         <div
-          className="c8"
+          className="c9 c10"
         >
           <div
             className="feature__deck"
@@ -2127,16 +2128,16 @@ exports[`feature renders feature text header properly 1`] = `
           </div>
         </div>
         <div
-          className="c9"
+          className="c11"
         >
           <div
-            className="author c10"
+            className="author c12"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c10"
+            className="date c12"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -2144,11 +2145,11 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <div
-      className="c11"
+      className="c13"
     >
       <img
         alt="What’s the Path to Winning an Art Prize?"
-        className="c12"
+        className="c14"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&quality=95"
       />
     </div>
