@@ -215,7 +215,7 @@ const FeatureHeaderContainer = Div.extend`
   height: 100vh;
   &[data-type='text'] {
     height: auto;
-    .feature__title {
+    ${Title} {
       margin-bottom: 150px;
     }
     ${HeaderText} {
@@ -223,7 +223,7 @@ const FeatureHeaderContainer = Div.extend`
     }
   }
   &[data-type='split'] {
-    .feature__title {
+    ${Title} {
       flex-grow: 1;
     }
     ${HeaderText} {
@@ -244,11 +244,11 @@ const FeatureHeaderContainer = Div.extend`
       align-items: flex-start;
       flex-direction: column;
     }
-    .feature__deck {
+    ${Deck} {
       margin-bottom: 30px;
     }
     ${pMedia.xs`
-      .feature__title {
+      ${Title} {
         margin-bottom: 20px;
       }
       ${HeaderText} {
