@@ -34,6 +34,7 @@ const ClassicHeaderContainer = styled.div`
     line-height: 1.35em;
     text-align: left;
     max-width: 580px;
+    width: 100%;
     margin: 0 auto;
     padding-bottom: 30px;
   }
