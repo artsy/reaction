@@ -434,7 +434,7 @@ exports[`renders properly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  margin: 0;
+  margin: auto;
   max-width: 780px;
 }
 
@@ -533,11 +533,23 @@ exports[`renders properly 1`] = `
   }
 }
 
+@media (max-width: 1250px) {
+  .c1 {
+    width: 680px;
+  }
+}
+
 @media (max-width: 900px) {
   .c1 {
     width: 100%;
     padding: 0 20px;
     margin: 0 0 40px 0;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c3 {
+    width: 680px;
   }
 }
 
@@ -549,11 +561,23 @@ exports[`renders properly 1`] = `
   }
 }
 
+@media (max-width: 1250px) {
+  .c4 {
+    width: 680px;
+  }
+}
+
 @media (max-width: 900px) {
   .c4 {
     width: 100%;
     padding: 0px;
     margin: 0 0 40px 0;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c23 {
+    width: 680px;
   }
 }
 
@@ -633,6 +657,12 @@ exports[`renders properly 1`] = `
 
   .c2 .content-start {
     font-size: 55px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c0 {
+    max-width: 680px;
   }
 }
 

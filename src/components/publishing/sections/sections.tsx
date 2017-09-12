@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../../helpers"
 import { Layout } from "../typings"
 import Authors from "./authors"
 import Embed from "./embed"
@@ -77,7 +78,7 @@ function renderPostScript(article) {
 
 const chooseMargin = layout => {
   if (layout === "standard") {
-    return "0;"
+    return "auto;"
   } else if (layout === "feature") {
     return "80px auto 0 auto;"
   }
@@ -92,6 +93,9 @@ const StyledSections = Div`
   width: 100%;
   margin: ${props => chooseMargin(props.layout)}
   max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
+  ${props => pMedia.lg`
+    max-width: ${props.layout === "standard" ? "680px" : "auto"}
+  `}
 `
 
 export default Sections
