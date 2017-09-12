@@ -15,6 +15,7 @@ import Text from "./sections/text"
 import Video from "./sections/video"
 
 // Icon SVGs
+import ImageFullscreen from "./icon/image_fullscreen"
 import ImageSet from "./icon/image_set"
 import LayoutFullscreen from "./icon/layout_fullscreen"
 import LayoutSplit from "./icon/layout_split"
@@ -41,6 +42,7 @@ export default {
   Text,
   Video,
   Icon: {
+    ImageFullscreen,
     ImageSet,
     LayoutFullscreen,
     LayoutSplit,
