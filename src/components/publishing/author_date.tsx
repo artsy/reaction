@@ -49,15 +49,15 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
   if (layout === "condensed") {
     return (
       <AuthorDateContainer>
-        <CondensedBulletText className="author" layout={layout}>By {getAuthorByline(authors)}</CondensedBulletText>
-        <CondensedBulletText className="date" layout={layout}>{getDate(date, layout)}</CondensedBulletText>
+        <CondensedText className="author" layout={layout}>By {getAuthorByline(authors)}</CondensedText>
+        <CondensedText className="date" layout={layout}>{getDate(date, layout)}</CondensedText>
       </AuthorDateContainer>
     )
   } else {
     return (
       <AuthorDateContainer>
-        <BulletText className="author" layout={layout}>By {getAuthorByline(authors)}</BulletText>
-        <BulletText className="date" layout={layout}>{getDate(date, layout)}</BulletText>
+        <Text className="author" layout={layout}>By {getAuthorByline(authors)}</Text>
+        <Text className="date" layout={layout}>{getDate(date, layout)}</Text>
       </AuthorDateContainer>
     )
   }
@@ -65,46 +65,40 @@ const AuthorDate: React.SFC<AuthorDateProps> = props => {
 
 const div: StyledFunction<BulletTextProps> = styled.div
 
-const BulletText = div`
+const Text = div`
   ${Fonts.unica("s16", "medium")}
-  &:before {
-    content: "";
-    display: inline-block;
-    min-width: 10px;
-    min-height: 10px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
-  }
   &.author {
     display: flex;
     align-items: baseline;
+    &:before {
+      content: "";
+      display: inline-block;
+      min-width: 10px;
+      min-height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
+    }
   }
   &.date {
     white-space: nowrap;
-    margin: 0 0 0 30px;
+    margin: 0 0 0 20px;
   }
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
     margin: 0 20px 0 0;
-    &:before {
+    &.author:before {
       width: 8px;
       height: 8px;
     }
   `}
 `
-const CondensedBulletText = BulletText.extend`
+const CondensedText = Text.extend`
   ${Fonts.unica("s14", "medium")}
   &:.author:before {
     min-width: 8px;
     min-height: 8px;
     margin-right: 5px;
-  }
-  &.date:before {
-    display: none;
-  }
-  &.date {
-    margin: 0 0 0 20px;
   }
   ${pMedia.sm`
     ${Fonts.unica("s12", "medium")}
