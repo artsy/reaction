@@ -32,9 +32,12 @@ const StyledText = div`
     text-decoration: none;
     position: relative;
     background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
-    background-size: 1.25px 3px;
+    background-size: 1.25px 4px;
     background-repeat: repeat-x;
     background-position: bottom;
+    &:hover {
+      color: #999;
+    }
   }
   p, ul, ol {
     ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
