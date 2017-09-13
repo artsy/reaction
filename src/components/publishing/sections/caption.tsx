@@ -2,23 +2,25 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
-import { Layout } from "../typings"
+import { Layout, SectionLayout } from "../typings"
 
 interface CaptionProps {
   caption: string
-  layout?: Layout
   index?: any
+  layout?: Layout
+  sectionLayout?: SectionLayout
 }
 interface FigcaptionProps {
   layout: Layout
+  sectionLayout?: SectionLayout
 }
 
 const Caption: React.SFC<CaptionProps> = props => {
-  const { layout, caption, children } = props
+  const { layout, caption, sectionLayout, children } = props
   const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
   return (
     <CaptionContainer>
-      <Figcaption layout={layout}>
+      <Figcaption layout={layout} sectionLayout={sectionLayout}>
         {child}
       </Figcaption>
     </CaptionContainer>
@@ -36,6 +38,7 @@ const CaptionContainer = styled.div`
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 // includes draft placeholder class for editable text in Writer
 const Figcaption = div`
+  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
   & > p, p, .public-DraftEditorPlaceholder-root {
     ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
@@ -47,6 +50,9 @@ const Figcaption = div`
       color: black;
     }
   }
+  ${pMedia.xs`
+    padding: 0px;
+  `}
 `
 
 export default Caption

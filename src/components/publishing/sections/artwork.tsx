@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../utils/resizer"
-import { Layout } from "../typings"
+import { Layout, SectionLayout } from "../typings"
 import ArtworkCaption from "./artwork_caption"
 import ImageWrapper from "./image_wrapper"
 
 interface ArtworkProps {
   artwork: any
   layout?: Layout
+  sectionLayout?: SectionLayout
   linked?: boolean
   width?: string | number
   height?: string | number

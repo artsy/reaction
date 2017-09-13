@@ -27,6 +27,7 @@ const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
 
 const Fullscreen = styled.div`
   opacity: 0;
+  transition: opacity .3s;
 `
 
 const StyledImageWrapper = styled.div`

@@ -48,7 +48,9 @@ function renderSections(article) {
 
 function getSection(section, layout) {
   const sections = {
-    image_collection: <ImageCollection images={section.images} targetHeight={500} gutter={10} />,
+    image_collection: (
+      <ImageCollection sectionLayout={section.layout} images={section.images} targetHeight={500} gutter={10} />
+    ),
     image_set: <ImagesetPreview section={section} />,
     video: <Video section={section} />,
     embed: <Embed section={section} />,
