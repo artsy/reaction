@@ -6,7 +6,7 @@ import { RelatedPanel } from "../fixtures/components"
 
 storiesOf("Publishing/Articles", module)
   .add("Standard", () => {
-    return <Article article={StandardArticle} relatedArticles={RelatedPanel} />
+    return <Article article={StandardArticle} relatedArticles={RelatedPanel} isTruncated />
   })
   .add("Feature", () => {
     return <Article article={FeatureArticle} />

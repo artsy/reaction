@@ -17,6 +17,7 @@ import { ArticleData } from "./typings"
 export interface ArticleProps {
   article: ArticleData
   relatedArticles?: any
+  isTruncated?: boolean
 }
 interface ArticleState {
   viewerIsOpen: boolean
@@ -79,7 +80,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { relatedArticles } = this.props
+    const { relatedArticles, isTruncated } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
@@ -113,6 +114,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
               {relatedArticlePanel}
             </Sidebar>
           </StandardLayout>
+          {isTruncated ? <ReadMore>Read More</ReadMore> : false}
           <FullscreenViewer
             onClose={this.closeViewer}
             show={this.state.viewerIsOpen}
@@ -127,6 +129,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
 const StandardArticleContainer = styled.div`
   margin: 100px 0;
+`
+const ReadMore = styled.div`
+  width: 200px;
+  background-color: black;
+  height: 100px;
+  color: black;
 `
 
 export default Article
