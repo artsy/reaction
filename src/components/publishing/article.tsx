@@ -1,6 +1,7 @@
 import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
+// import track from "react-tracking"
 import styled from "styled-components"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
@@ -23,6 +24,8 @@ interface ArticleState {
   article: any
 }
 
+// TODO: Determine where to implement Segment calls
+// @track({}, { dispatch: data => console.log(data) })
 class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
@@ -103,7 +106,10 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           <StandardLayout>
             <Sections article={article} />
             <Sidebar>
-              <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
+              <Share
+                url={`http://www.artsy.net/article/${article.slug}`}
+                title={article.social_title || article.thumbnail_title}
+              />
               {relatedArticlePanel}
             </Sidebar>
           </StandardLayout>

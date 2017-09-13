@@ -59,6 +59,7 @@ exports[`renders a saved caption properly 1`] = `
   <a
     className="c1"
     href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils"
+    onClick={[Function]}
     target="_blank"
   >
     <div
@@ -71,6 +72,7 @@ exports[`renders a saved caption properly 1`] = `
   <a
     className="c1"
     href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils&text=The Point of Pencils&url=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils&via=artsy"
+    onClick={[Function]}
     target="_blank"
   >
     <div
@@ -83,6 +85,7 @@ exports[`renders a saved caption properly 1`] = `
   <a
     className="c1"
     href="mailto:?subject=The Point of Pencils&body=Check out The Point of Pencils on Artsy: http://artsy.net/article/point-pencils"
+    onClick={[Function]}
   >
     <div
       className="c2 c3"

@@ -1,4 +1,5 @@
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
 import Icon from "../icon"
 
@@ -7,10 +8,23 @@ interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   title: string
 }
 
-const Share: React.SFC<ShareProps> = props => {
-  const { url, title } = props
-  const encodedUrl = encodeURIComponent(url)
-  const getHref = type => {
+@track()
+class Share extends React.Component<ShareProps, null> {
+  constructor(props) {
+    super(props)
+    this.getHref = this.getHref.bind(this)
+    this.trackShare = this.trackShare.bind(this)
+  }
+
+  @track({ action: "share article" })
+  trackShare(e) {
+    e.preventDefault()
+    window.open(e.currentTarget.attributes.href.value, "Share", "width = 600,height = 300")
+  }
+
+  getHref(type) {
+    const { url, title } = this.props
+    const encodedUrl = encodeURIComponent(url)
     const channels = {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
       twitter: `https://twitter.com/intent/tweet?original_referer=${encodedUrl}&text=${title}&url=${encodedUrl}&via=artsy`,
@@ -18,18 +32,24 @@ const Share: React.SFC<ShareProps> = props => {
     }
     return channels[type]
   }
-  return (
-    <ShareContainer>
-      <IconWrapper href={getHref("facebook")} target="_blank">
-        <Icon name="facebook" color="white" fontSize="30px" />
-      </IconWrapper>
-      <IconWrapper href={getHref("twitter")} target="_blank">
-        <Icon name="twitter" color="white" fontSize="30px" />
-      </IconWrapper>
-      <IconWrapper href={getHref("email")}><Icon name="mail" color="white" fontSize="30px" /></IconWrapper>
-    </ShareContainer>
-  )
+
+  render() {
+    return (
+      <ShareContainer>
+        <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
+          <Icon name="facebook" color="white" fontSize="30px" />
+        </IconWrapper>
+        <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
+          <Icon name="twitter" color="white" fontSize="30px" />
+        </IconWrapper>
+        <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
+          <Icon name="mail" color="white" fontSize="30px" />
+        </IconWrapper>
+      </ShareContainer>
+    )
+  }
 }
+
 const ShareContainer = styled.div`
   display: flex;
   max-width: 350px;
