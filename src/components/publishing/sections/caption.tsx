@@ -41,6 +41,12 @@ const Figcaption = div`
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;
   }
+  & > a, a {
+    color: #999;
+    &:hover {
+      color: black;
+    }
+  }
 `
 
 export default Caption

@@ -156,7 +156,7 @@ export const Images = [
     type: "image",
     width: 816,
     height: 1024,
-    caption: "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+    caption: "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
   },
 ]
 
