@@ -8,6 +8,7 @@ import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
+import ReadMore from "./read_more"
 import RelatedArticlesPanel from "./related_articles/related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
@@ -24,6 +25,7 @@ interface ArticleState {
   slideIndex: number
   fullscreenImages: any
   article: any
+  isTruncated: boolean
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
@@ -40,6 +42,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       slideIndex: 0,
       fullscreenImages,
       article,
+      isTruncated: props.isTruncated || false,
     }
   }
 
@@ -56,6 +59,11 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
   closeViewer = () => {
     this.setState({ viewerIsOpen: false })
+  }
+
+  removeTruncation = () => {
+    console.log("i am removing")
+    this.setState({ isTruncated: false })
   }
 
   indexAndExtractImages = () => {
@@ -80,7 +88,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { relatedArticles, isTruncated } = this.props
+    const { relatedArticles } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
@@ -104,7 +112,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       return (
         <StandardArticleContainer>
           <Header article={article} />
-          <StandardLayout>
+          <StandardLayout isTruncated={this.state.isTruncated}>
             <Sections article={article} />
             <Sidebar>
               <Share
@@ -114,7 +122,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
               {relatedArticlePanel}
             </Sidebar>
           </StandardLayout>
-          {isTruncated ? <ReadMore>Read More</ReadMore> : false}
+          {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer
             onClose={this.closeViewer}
             show={this.state.viewerIsOpen}
@@ -129,12 +137,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
 const StandardArticleContainer = styled.div`
   margin: 100px 0;
-`
-const ReadMore = styled.div`
-  width: 200px;
-  background-color: black;
-  height: 100px;
-  color: black;
 `
 
 export default Article
