@@ -13,20 +13,40 @@ exports[`renders a child even if a caption is provided 1`] = `
   margin: 10px 0 10px 0;
 }
 
+.c1 {
+  padding: 0;
+}
+
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
+}
+
+.c1 > a,
+.c1 a {
+  color: #999;
+}
+
+.c1 > a:hover,
+.c1 a:hover {
+  color: black;
 }
 
 @media (max-width: 600px) {
   .c0 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    padding: 0px;
   }
 }
 
@@ -56,20 +76,40 @@ exports[`renders a saved caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
+.c1 {
+  padding: 0;
+}
+
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
+}
+
+.c1 > a,
+.c1 a {
+  color: #999;
+}
+
+.c1 > a:hover,
+.c1 a:hover {
+  color: black;
 }
 
 @media (max-width: 600px) {
   .c0 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    padding: 0px;
   }
 }
 

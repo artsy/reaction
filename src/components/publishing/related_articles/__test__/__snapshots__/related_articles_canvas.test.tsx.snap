@@ -9,17 +9,7 @@ exports[`renders the related articles canvas 1`] = `
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
-}
-
-.c9:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
+  line-height: 1.4em;
 }
 
 .c9.author {
@@ -33,23 +23,25 @@ exports[`renders the related articles canvas 1`] = `
   align-items: baseline;
 }
 
+.c9.author:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
 .c9.date {
   white-space: nowrap;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 20px;
 }
 
 .c9:.author:before {
   min-width: 8px;
   min-height: 8px;
   margin-right: 5px;
-}
-
-.c9.date:before {
-  display: none;
-}
-
-.c9.date {
-  margin: 0 0 0 20px;
 }
 
 .c8 {
@@ -155,11 +147,11 @@ exports[`renders the related articles canvas 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     margin: 0 20px 0 0;
   }
 
-  .c9:before {
+  .c9.author:before {
     width: 8px;
     height: 8px;
   }
@@ -170,7 +162,7 @@ exports[`renders the related articles canvas 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -191,7 +183,7 @@ exports[`renders the related articles canvas 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
