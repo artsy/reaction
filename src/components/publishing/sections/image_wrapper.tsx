@@ -14,7 +14,8 @@ interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
 
 const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
   const { layout, index, ...blockImageProps }: any = props
-  const viewFullscreen = layout !== "classic" ? <ViewFullscreen index={index} /> : false
+  const fullscreen = <Fullscreen><ViewFullscreen index={index} /></Fullscreen>
+  const viewFullscreen = layout !== "classic" ? fullscreen : false
 
   return (
     <StyledImageWrapper>
@@ -24,8 +25,18 @@ const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
   )
 }
 
+const Fullscreen = styled.div`
+  opacity: 0;
+  transition: opacity .3s;
+`
+
 const StyledImageWrapper = styled.div`
   position: relative;
+  &:hover {
+    ${Fullscreen} {
+      opacity: 1;
+    }
+  }
 `
 
 const BlockImage = styled.img`

@@ -62,14 +62,14 @@ exports[`renders a full image set properly 1`] = `
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
 }
 
 .c5 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   margin-left: 20px;
 }
 
@@ -99,7 +99,7 @@ exports[`renders a full image set properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -108,7 +108,7 @@ exports[`renders a full image set properly 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -256,14 +256,14 @@ exports[`renders a mini image set properly 1`] = `
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
 }
 
 .c6 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   margin-left: 20px;
 }
 
@@ -293,7 +293,7 @@ exports[`renders a mini image set properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -302,7 +302,7 @@ exports[`renders a mini image set properly 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 

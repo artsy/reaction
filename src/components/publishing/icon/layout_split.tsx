@@ -5,7 +5,7 @@ class IconLayoutSplit extends Component<any, null> {
     return (
       <svg id="layout-split" width="45px" height="30px" viewBox="0 0 45 30" xmlns="http://www.w3.org/2000/svg">
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-          <g id="group" fill={this.props.fill ? this.props.fill : "#000"}>
+          <g id="layout-split-group" fill={this.props.fill ? this.props.fill : "#000"}>
             <g>
               <polyline points="0 2 20 2 20 0 0 0" />
               <polyline points="0 7 20 7 20 5 0 5" />

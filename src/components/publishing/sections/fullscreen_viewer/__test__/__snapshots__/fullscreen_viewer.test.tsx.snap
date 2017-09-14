@@ -159,7 +159,7 @@ exports[`renders properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -177,7 +177,7 @@ exports[`renders properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     cursor: pointer;
     display: inline-block;
   }
@@ -192,7 +192,7 @@ exports[`renders properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -208,7 +208,7 @@ exports[`renders properly 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -401,7 +401,7 @@ exports[`renders properly 1`] = `
         <div
           className="c14"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
-          title="<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>"
+          title="<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>"
         />
         <div
           className="c4"
@@ -424,7 +424,7 @@ exports[`renders properly 1`] = `
               <div
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+                    "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
                   }
                 }
               />

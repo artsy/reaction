@@ -4,7 +4,7 @@ class IconImageFullscreen extends Component<any, null> {
   render() {
     return (
       <svg id="image-fullscreen" width="38px" height="22px" viewBox="0 0 38 22" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <rect
             fill={this.props.fill ? this.props.fill : "#000"}
             fillRule="nonzero"

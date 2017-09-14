@@ -4,16 +4,18 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../helpers"
 import TextLink from "../../text_link"
 import Fonts from "../fonts"
-import { Layout } from "../typings"
+import { Layout, SectionLayout } from "../typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
   layout?: Layout
+  sectionLayout?: SectionLayout
   linked?: boolean
   isFullscreenCaption?: boolean
 }
 interface StyledArtworkCaptionProps {
   layout?: Layout
+  sectionLayout?: SectionLayout
 }
 
 class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
@@ -102,7 +104,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const { layout, isFullscreenCaption } = this.props
+    const { layout, isFullscreenCaption, sectionLayout } = this.props
     if (isFullscreenCaption) {
       return (
         <StyledFullscreenCaption layout={layout}>
@@ -132,7 +134,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       )
     } else {
       return (
-        <StyledArtworkCaption layout={layout} className="display-artwork__caption">
+        <StyledArtworkCaption layout={layout} sectionLayout={sectionLayout} className="display-artwork__caption">
           <TruncatedLine>
             <span className="artist-name">
               {this.renderArtists()}
@@ -147,10 +149,14 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
 const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 const StyledArtworkCaption = div`
+  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
   margin-top: 10px;
   display: flex;
   ${Fonts.unica("s14")}
-`
+  ${pMedia.xs`
+    padding: 0 10px;
+  `}
+  `
 const StyledClassicCaption = div`
   margin-top: 10px;
   display: block;

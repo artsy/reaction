@@ -35,6 +35,11 @@ storiesOf("Publishing/Images", module)
           <Artwork artwork={Artworks[1]} />
         </div>
         <hr />
+        <p>Fillwidth: </p>
+        <div style={{ width: "100%" }}>
+          <Artwork artwork={Artworks[1]} sectionLayout="fillwidth" />
+        </div>
+        <hr />
         <p>Classic: </p>
         <div style={{ width: 800 }}>
           <Artwork artwork={Artworks[0]} layout="classic" />
@@ -58,6 +63,10 @@ storiesOf("Publishing/Images", module)
           <Image image={Images[2]}>
             <div><p>A React child as caption.</p></div>
           </Image>
+        </div>
+        <p>Fillwidth:</p>
+        <div style={{ width: "100%" }}>
+          <Image image={Images[2]} sectionLayout="fillwidth" />
         </div>
         <p>Classic:</p>
         <div style={{ width: 400 }}>
