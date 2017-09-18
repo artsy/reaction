@@ -12,7 +12,7 @@ const Text: React.SFC<TextProps> = props => {
   const { html, layout, postscript } = props
   const child = html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : props.children
   return (
-    <StyledText layout={layout} postscript={postscript}>
+    <StyledText className="article__text-section" layout={layout} postscript={postscript}>
       {child}
     </StyledText>
   )

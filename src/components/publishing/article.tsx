@@ -2,6 +2,7 @@ import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
+import colors from "../../assets/colors"
 import Events from "../../utils/events"
 import track from "../../utils/track"
 import Header from "./header/header"
@@ -9,6 +10,8 @@ import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
 import ReadMore from "./read_more"
+import ReadMoreWrapper from "./read_more_wrapper"
+import RelatedArticlesCanvas from "./related_articles/related_articles_canvas"
 import RelatedArticlesPanel from "./related_articles/related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
@@ -17,7 +20,8 @@ import { ArticleData } from "./typings"
 
 export interface ArticleProps {
   article: ArticleData
-  relatedArticles?: any
+  relatedArticlesForPanel?: any
+  relatedArticlesForCanvas?: any
   isTruncated?: boolean
 }
 interface ArticleState {
@@ -62,7 +66,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   removeTruncation = () => {
-    console.log("i am removing")
     this.setState({ isTruncated: false })
   }
 
@@ -88,7 +91,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { relatedArticles } = this.props
+    const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
@@ -106,22 +109,27 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         </div>
       )
     } else {
-      const relatedArticlePanel = relatedArticles
-        ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticles} />
+      const relatedArticlePanel = relatedArticlesForPanel
+        ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
         : false
       return (
         <StandardArticleContainer>
-          <Header article={article} />
-          <StandardLayout isTruncated={this.state.isTruncated}>
-            <Sections article={article} />
-            <Sidebar>
-              <Share
-                url={`http://www.artsy.net/article/${article.slug}`}
-                title={article.social_title || article.thumbnail_title}
-              />
-              {relatedArticlePanel}
-            </Sidebar>
-          </StandardLayout>
+          <ReadMoreWrapper isTruncated={this.state.isTruncated} id={article.id}>
+            <Header article={article} />
+            <StandardLayout>
+              <Sections article={article} />
+              <Sidebar>
+                <Share
+                  url={`http://www.artsy.net/article/${article.slug}`}
+                  title={article.social_title || article.thumbnail_title}
+                />
+                {relatedArticlePanel}
+              </Sidebar>
+            </StandardLayout>
+            <LineBreak />
+            <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+            <LineBreak />
+          </ReadMoreWrapper>
           {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer
             onClose={this.closeViewer}
@@ -136,7 +144,11 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 }
 
 const StandardArticleContainer = styled.div`
-  margin: 100px 0;
+  margin-top: 100px;
+`
+const LineBreak = styled.div`
+  border-top: 1px solid ${colors.grayRegular};
+  width: 100%;
 `
 
 export default Article

@@ -2,11 +2,17 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import Article from "../article"
 import { FeatureArticle, StandardArticle } from "../fixtures/articles"
-import { RelatedPanel } from "../fixtures/components"
+import { RelatedCanvas, RelatedPanel } from "../fixtures/components"
 
 storiesOf("Publishing/Articles", module)
   .add("Standard", () => {
-    return <Article article={StandardArticle} relatedArticles={RelatedPanel} isTruncated />
+    return (
+      <Article
+        article={StandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+      />
+    )
   })
   .add("Feature", () => {
     return <Article article={FeatureArticle} />

@@ -134,6 +134,7 @@ export const ClassicArticle: ArticleData = {
 }
 
 export const StandardArticle: ArticleData = {
+  id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
   slug: "new-yorks-next-art-district",
   contributing_authors: [],

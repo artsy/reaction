@@ -24,9 +24,8 @@ const ReadMoreButton = styled.div`
   border: 1px solid black;
   border-radius: 2px;
   ${Fonts.unica("s14", "medium")}
-  ${pMedia.sm`
+  ${pMedia.md`
     width: 100%;
-    margin: 0 20px;
   `}
   &:hover {
     cursor: pointer;
@@ -38,5 +37,11 @@ const ReadMoreContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
+  padding: 20px 0;
+  max-width: 1150px;
+  ${pMedia.lg`
+    padding: 20px;
+  `}
 `
 export default ReadMore
