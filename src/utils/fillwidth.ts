@@ -1,5 +1,7 @@
 import { reduce } from "lodash"
 
+const MAX_ITERATIONS = 1000
+
 const fillwidthDimensions = (items, containerWidth, gutter = 10, targetHeight) => {
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
@@ -47,19 +49,24 @@ const fillwidthDimensions = (items, containerWidth, gutter = 10, targetHeight) =
     }
   })
 
-  // If the total width difference is less than 0, it is larger than the container
-  // so we need to scale down. If not, scale up.
-  let dir = widthDiff(dimensions) < 0 ? -1 : 1
+  // If the total width difference is too small or negative we need to scale down. If not, scale up.
+  let dir = widthDiff(dimensions) < 1 ? -1 : 1
 
   // Keep looping until we get an acceptable width difference
-  while (true) {
+  let count = 0
+  while (widthDiff(dimensions) <= 1) {
     for (let img of dimensions) {
       resizeHeight(img, dir)
       if (widthDiff(dimensions) > 1) {
         break
       }
     }
-    if (widthDiff(dimensions) > 1) {
+    // Seeing as there have been a couple of bugs in this code and there are no proper tests yet, let’s at least make
+    // sure to no longer run into infinite loops.
+    count++
+    if (count === MAX_ITERATIONS) {
+      const data = { items, containerWidth, gutter, targetHeight, dir, dimensions }
+      console.error(`Was unable to calculate a filling width for data: ${JSON.stringify(data)}`)
       break
     }
   }
