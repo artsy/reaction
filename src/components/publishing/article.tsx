@@ -1,8 +1,9 @@
 import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
-// import track from "react-tracking"
+import track from "react-tracking"
 import styled from "styled-components"
+import Events from "../../utils/events"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
@@ -24,8 +25,7 @@ interface ArticleState {
   article: any
 }
 
-// TODO: Determine where to implement Segment calls
-// @track({}, { dispatch: data => console.log(data) })
+@track({}, { dispatch: data => Events.postEvent(data) })
 class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
