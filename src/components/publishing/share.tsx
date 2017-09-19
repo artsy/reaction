@@ -1,12 +1,40 @@
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
 import Icon from "../icon"
+
+import { track as _track, TrackingInfo, trackWithoutProps, trackWithProps } from "../../utils/track"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string
   title: string
 }
+
+/**
+ * An example of a typed `track` function that does not have types for the props used by this component and only uses
+ * the default global tracking-info types.
+ *
+ * @note This weird `import { track as _track } from "../../utils/track"` dance is only done to have this comment in the
+ *       same format as the ones below.
+ */
+const track = _track
+
+/**
+ * An example of a typed `track` function that does not have types for the props used by this component, but does allow
+ * types for the tracking-info.
+ */
+// const track = trackWithoutProps<TrackingInfo.Shareable>()
+
+/**
+ * An example of a typed `track` function that has types for the props used by this component, but only uses the default
+ * global tracking-info types.
+ */
+// const track = trackWithProps<ShareProps>()
+
+/**
+ * An example of a typed `track` function that has types for the props used by this component and specifies extended
+ * types for tracking-info, in this case the centralized types shareable tracking-info.
+ */
+// const track = trackWithProps<ShareProps, TrackingInfo.Shareable>()
 
 @track()
 class Share extends React.Component<ShareProps, null> {
@@ -16,7 +44,8 @@ class Share extends React.Component<ShareProps, null> {
     this.trackShare = this.trackShare.bind(this)
   }
 
-  @track({ action: "share article" })
+  // FIXME: This is obviously wrong, a slug is not a URL, but it’s just for illustration purposes.
+  @track(props => ({ action: "share article", slug: props.url }))
   trackShare(e) {
     e.preventDefault()
     window.open(e.currentTarget.attributes.href.value, "Share", "width = 600,height = 300")
