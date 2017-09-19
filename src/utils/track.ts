@@ -1,4 +1,4 @@
-import { Track, track as _track } from "react-tracking"
+import { default as _track, Track } from "react-tracking"
 
 // tslint:disable-next-line:no-namespace
 export namespace TrackingInfo {
