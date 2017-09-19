@@ -2,6 +2,8 @@ import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
+import Events from "../../utils/events"
+import track from "../../utils/track"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
@@ -23,6 +25,7 @@ interface ArticleState {
   article: any
 }
 
+@track({}, { dispatch: data => Events.postEvent(data) })
 class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
@@ -103,7 +106,10 @@ class Article extends React.Component<ArticleProps, ArticleState> {
           <StandardLayout>
             <Sections article={article} />
             <Sidebar>
-              <Share url={article.slug} title={article.social_title || article.thumbnail_title} />
+              <Share
+                url={`http://www.artsy.net/article/${article.slug}`}
+                title={article.social_title || article.thumbnail_title}
+              />
               {relatedArticlePanel}
             </Sidebar>
           </StandardLayout>

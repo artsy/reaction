@@ -9,6 +9,7 @@ jest.mock("react-slick", () => {
   return props => <div>{props.children}</div>
 })
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("react-tracking", () => jest.fn(c => d => d))
 
 it("indexes and titles images", () => {
   const article = shallow(<Article article={StandardArticle} />)

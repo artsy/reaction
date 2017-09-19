@@ -123,6 +123,7 @@
     "react-sizeme": "^2.3.2",
     "react-slick": "^0.14.11",
     "react-styled-flexboxgrid": "^2.0.0",
+    "react-tracking": "^4.2.1",
     "react-url-query": "^1.1.4",
     "request": "^2.81.0",
     "sharify": "^0.1.6",

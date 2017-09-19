@@ -1,22 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "rootDir": "src",
-        "jsx": "react",
-        "allowJs": false,
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": "src",
-        "outDir": "dist",
-        "noUnusedLocals": true
-    },
-    "exclude": [
-        "node_modules",
-        "dist",
-        "data",
-        "externals",
-        "danger"
-    ]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "rootDir": "src",
+    "jsx": "react",
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "outDir": "dist",
+    "noUnusedLocals": true,
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "data",
+    "externals",
+    "danger"
+  ]
 }
