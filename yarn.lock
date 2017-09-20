@@ -1052,10 +1052,6 @@ babel-plugin-react-relay@^0.10.0:
     deasync "^0.1.7"
     graphql-config-parser "^1.2.0"
 
-babel-plugin-rewire@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-rewire/-/babel-plugin-rewire-1.1.0.tgz#a6b966d9d8c06c03d95dcda2eec4e2521519549b"
-
 babel-plugin-styled-components@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.4.tgz#b0e6d5bb01059bc7ab9118d3d686f6472ee8e91f"

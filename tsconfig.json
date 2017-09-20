@@ -13,11 +13,5 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "data",
-    "externals",
-    "danger"
-  ]
+  "exclude": ["node_modules", "dist", "data", "externals", "danger"]
 }

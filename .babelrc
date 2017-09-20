@@ -1,7 +1,6 @@
 {
   "presets": ["es2015", "stage-3", "react"],
   "plugins": [
-    "rewire",
     "react-relay",
     [
       "styled-components",
