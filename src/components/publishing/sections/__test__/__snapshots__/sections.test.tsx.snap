@@ -808,6 +808,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -896,6 +897,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -988,6 +990,7 @@ exports[`renders properly 1`] = `
                   onClick={[Function]}
                 >
                   <svg
+                    className="expand"
                     version="1.1"
                     viewBox="0 0 27 27"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1128,6 +1131,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1216,6 +1220,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1304,6 +1309,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1415,6 +1421,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1552,6 +1559,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1640,6 +1648,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1728,6 +1737,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1851,8 +1861,7 @@ exports[`renders properly 1`] = `
           className="c32"
         >
           <svg
-            data-name="image-set"
-            id="image-set"
+            className="image-set"
             viewBox="0 0 44 44"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1923,6 +1932,7 @@ exports[`renders properly 1`] = `
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
