@@ -40,6 +40,7 @@ const ReadMoreContainer = styled.div`
   box-sizing: border-box;
   padding: 20px 0;
   max-width: 1150px;
+  margin: auto;
   ${pMedia.lg`
     padding: 20px;
   `}

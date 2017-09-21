@@ -16,9 +16,18 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
     this.state = {
       truncationHeight: "100%",
     }
+    window.addEventListener("resize", this.truncateArticle)
   }
 
   componentDidMount() {
+    this.truncateArticle()
+  }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize")
+  // }
+
+  truncateArticle = () => {
     if (this.props.isTruncated) {
       this.setState({ truncationHeight: this.calculateTruncationHeight() })
     }
@@ -68,9 +77,27 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
         }}
       >
         {this.props.children}
+        {/* <Child>
+          <Child2>
+            Here.
+          </Child2>
+        </Child> */}
       </div>
     )
   }
 }
+
+// class Child2 extends React.Component<any, any> {
+//   componentDidMount() {
+//     console.log("mounted child 2")
+//   }
+//   render() {
+//     return <div style={{ height: "100px", width: "100px", backgroundColor: "black" }}>HERE</div>
+//   }
+// }
+
+// const Child: React.SFC<any> = props => {
+//   return <div>{props.children}</div>
+// }
 
 export default ReadMoreWrapper

@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 import { resize } from "../../../utils/resizer"
 import { Layout, SectionLayout } from "../typings"
 import Caption from "./caption"
@@ -17,7 +18,7 @@ const Image: React.SFC<ImageProps> = props => {
   const child = children && children
   const src = resize(image.url, { width: 1200 })
   return (
-    <div className="article-image">
+    <ImageContainer className="article-image">
       <ImageWrapper
         layout={layout}
         src={src}
@@ -29,7 +30,7 @@ const Image: React.SFC<ImageProps> = props => {
       <Caption caption={image.caption} layout={layout} sectionLayout={sectionLayout}>
         {child}
       </Caption>
-    </div>
+    </ImageContainer>
   )
 }
 
@@ -37,5 +38,9 @@ Image.defaultProps = {
   width: "100%",
   height: "auto",
 }
+
+const ImageContainer = styled.div`
+  position: relative;
+`
 
 export default Image

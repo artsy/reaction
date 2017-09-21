@@ -288,7 +288,7 @@ const FeatureHeaderContainer = Div.extend`
 
 const sizeMeOptions = {
   refreshRate: sizeMeRefreshRate,
-  refreshMode: "debounce",
+  noPlaceholder: true,
 }
 
 export default sizeMe(sizeMeOptions)(FeatureHeader)
