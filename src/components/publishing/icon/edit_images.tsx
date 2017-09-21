@@ -4,7 +4,7 @@ class EditImages extends Component<any, null> {
   render() {
     return (
       <svg
-        id="edit-images"
+        className="edit-images"
         x="0px"
         y="0px"
         width={this.props.width ? this.props.width : "45px"}

@@ -4,7 +4,7 @@ class IconHeroVideo extends Component<any, null> {
   render() {
     return (
       <svg
-        id="hero-video"
+        className="hero-video"
         x="0px"
         y="0px"
         width={this.props.width ? this.props.width : "45px"}

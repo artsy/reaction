@@ -4,7 +4,7 @@ class EditText extends Component<any, null> {
   render() {
     return (
       <svg
-        id="edit-text"
+        className="edit-text"
         x="0px"
         y="0px"
         width={this.props.width ? this.props.width : "45px"}

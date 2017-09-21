@@ -3,7 +3,7 @@ import React, { Component } from "react"
 class IconExpand extends Component<any, null> {
   render() {
     return (
-      <svg viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg className="expand" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g>
             <circle fill="#000000" fillRule="nonzero" cx="13.9575195" cy="13.0588379" r="13" />
