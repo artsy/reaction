@@ -139,6 +139,7 @@ exports[`renders a single image properly 1`] = `
               onClick={[Function]}
             >
               <svg
+                className="expand"
                 version="1.1"
                 viewBox="0 0 27 27"
                 xmlns="http://www.w3.org/2000/svg"
@@ -454,6 +455,7 @@ exports[`renders properly 1`] = `
               onClick={[Function]}
             >
               <svg
+                className="expand"
                 version="1.1"
                 viewBox="0 0 27 27"
                 xmlns="http://www.w3.org/2000/svg"
@@ -581,6 +583,7 @@ exports[`renders properly 1`] = `
             onClick={[Function]}
           >
             <svg
+              className="expand"
               version="1.1"
               viewBox="0 0 27 27"
               xmlns="http://www.w3.org/2000/svg"
@@ -669,6 +672,7 @@ exports[`renders properly 1`] = `
             onClick={[Function]}
           >
             <svg
+              className="expand"
               version="1.1"
               viewBox="0 0 27 27"
               xmlns="http://www.w3.org/2000/svg"
