@@ -20,11 +20,11 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
 
   componentDidMount() {
     if (this.props.isTruncated) {
-      this.setState({ truncationHeight: this.calculateTruncation() })
+      this.setState({ truncationHeight: this.calculateTruncationHeight() })
     }
   }
 
-  calculateTruncation = () => {
+  calculateTruncationHeight = () => {
     if (this.props.isTruncated) {
       let height = 0
       let charCount = 0
