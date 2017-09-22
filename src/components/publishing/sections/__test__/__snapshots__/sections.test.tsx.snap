@@ -470,7 +470,7 @@ exports[`renders properly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  margin: auto;
+  margin: 0;
   max-width: 780px;
 }
 
@@ -711,6 +711,13 @@ exports[`renders properly 1`] = `
 @media (max-width: 1250px) {
   .c0 {
     max-width: 680px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .c0 {
+    max-width: 780px;
   }
 }
 
@@ -721,7 +728,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -736,7 +743,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -751,7 +758,7 @@ exports[`renders properly 1`] = `
     className="c3"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -766,7 +773,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1089,7 +1096,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1379,7 +1386,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1491,7 +1498,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1517,7 +1524,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1807,7 +1814,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1890,7 +1897,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -2002,7 +2009,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={

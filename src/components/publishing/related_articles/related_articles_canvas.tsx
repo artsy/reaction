@@ -23,8 +23,8 @@ const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
     <RelatedArticlesContainer>
       <Title>Further Reading <VerticalSpan>{vertical.name}</VerticalSpan></Title>
       <ArticlesWrapper>
-        {_.map(articles, article => {
-          return <RelatedArticleFigure article={article} />
+        {_.map(articles, (article, i) => {
+          return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
         })}
       </ArticlesWrapper>
     </RelatedArticlesContainer>

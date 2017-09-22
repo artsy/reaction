@@ -77,6 +77,7 @@ const ImageCollectionContainer = styled.div`
 
 const sizeMeOptions = {
   refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
 }
 
 export default sizeMe(sizeMeOptions)(ImageCollection)

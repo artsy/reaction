@@ -131,6 +131,7 @@ const PlayButton = styled.div`
 
 const sizeMeOptions = {
   refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
 }
 
 export default sizeMe(sizeMeOptions)(Video)
