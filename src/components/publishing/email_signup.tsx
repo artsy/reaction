@@ -12,7 +12,7 @@ interface EmailSignupProps {
 
 interface EmailSignupState {
   value: string
-  error: any
+  error: boolean
   submitted: boolean
   disabled: boolean
   message: string
@@ -28,7 +28,7 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
     super(props)
     this.state = {
       value: "",
-      error: null,
+      error: false,
       submitted: false,
       disabled: false,
       message: "",
@@ -42,7 +42,7 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
         uri: this.props.signupUrl,
         email: this.state.value,
       },
-      (err, response, body) => {
+      err => {
         if (err) {
           this.setState({ message: "Invalid Email... Please try again", error: true })
           setTimeout(() => {

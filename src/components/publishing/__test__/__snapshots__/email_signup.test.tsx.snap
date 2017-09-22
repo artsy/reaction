@@ -45,26 +45,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   background: #cccccc;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 360px;
-  width: 100%;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  margin-bottom: 10px;
-}
-
 .c3 {
   padding: 10px;
   box-shadow: none;
@@ -80,6 +60,7 @@ exports[`EmailSignup renders an email signup 1`] = `
   transition: border-color .25s;
   width: 100%;
   border-width: 1px;
+  color: black;
 }
 
 .c3:focus,
@@ -90,6 +71,27 @@ exports[`EmailSignup renders an email signup 1`] = `
 
 .c3:disabled {
   border: 2px dotted #e5e5e5;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 350px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -141,11 +143,13 @@ exports[`EmailSignup renders an email signup 1`] = `
       className="c3"
       onChange={[Function]}
       placeholder="Enter Your Email..."
+      readOnly={false}
       type="email"
       value=""
     />
     <button
       className="c4 c5"
+      disabled={false}
       onClick={[Function]}
     >
       <span>
