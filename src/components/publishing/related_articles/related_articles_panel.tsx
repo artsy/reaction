@@ -45,7 +45,7 @@ const Collection = styled.div`
   flex-direction: column;
 `
 const Label = styled.div`
-  ${Fonts.unica("s16", "medium")}
+  ${Fonts.unica("s19", "medium")}
   margin-bottom: 10px;
 `
 const ArticleLink = styled.a`

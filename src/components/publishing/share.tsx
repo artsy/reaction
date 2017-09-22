@@ -68,12 +68,14 @@ const IconWrapper = styled.a`
   color: white;
   border-radius: 2px;
   border: 1px solid black;
-  margin-right: 10px;
   &:hover {
     background-color: white;
     ${Icon} {
       color: black;
     }
+  }
+  &:nth-child(2) {
+    margin: 0 10px;
   }
 `
 export default Share

@@ -5,6 +5,7 @@ import styled from "styled-components"
 import colors from "../../assets/colors"
 import Events from "../../utils/events"
 import track from "../../utils/track"
+import EmailSignup from "./email_signup"
 import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
@@ -23,6 +24,7 @@ export interface ArticleProps {
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
   isTruncated?: boolean
+  emailSignupUrl?: string
 }
 interface ArticleState {
   viewerIsOpen: boolean
@@ -112,6 +114,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       const relatedArticlePanel = relatedArticlesForPanel
         ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
         : false
+      const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
       return (
         <StandardArticleContainer>
           <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
@@ -123,6 +126,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
                   url={`http://www.artsy.net/article/${article.slug}`}
                   title={article.social_title || article.thumbnail_title}
                 />
+                {emailSignup}
                 {relatedArticlePanel}
               </Sidebar>
             </StandardLayout>

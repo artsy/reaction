@@ -1,6 +1,7 @@
 import React from "react"
 import * as request from "request"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
+import Colors from "../../assets/colors"
 import InvertedButton from "../buttons/inverted"
 import { borderedInput } from "../mixins"
 import Fonts from "./fonts"
@@ -8,10 +9,18 @@ import Fonts from "./fonts"
 interface EmailSignupProps {
   signupUrl: string
 }
+
 interface EmailSignupState {
   value: string
   error: any
   submitted: boolean
+  disabled: boolean
+  message: string
+}
+
+interface InputProps {
+  isError: boolean
+  isReadOnly: boolean
 }
 
 class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
@@ -21,10 +30,13 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
       value: "",
       error: null,
       submitted: false,
+      disabled: false,
+      message: "",
     }
   }
 
   onClick = () => {
+    this.setState({ disabled: true })
     request.post(
       {
         uri: this.props.signupUrl,
@@ -32,9 +44,16 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
       },
       (err, response, body) => {
         if (err) {
-          this.setState({ error: err })
+          this.setState({ message: "Invalid Email... Please try again", error: true })
+          setTimeout(() => {
+            this.setState({ message: "", disabled: false, error: false })
+          }, 2000)
+        } else {
+          this.setState({ message: "Thank you!" })
+          setTimeout(() => {
+            this.setState({ message: "", disabled: false, submitted: true })
+          }, 2000)
         }
-        this.setState({ error: null, submitted: true })
       }
     )
   }
@@ -44,37 +63,48 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
   }
 
   render() {
-    return (
-      <EmailSignupContainer>
-        <Title>Stay up to date with Artsy Editorial</Title>
-        <Form>
-          <Input
-            type="email"
-            placeholder="Enter Your Email..."
-            onChange={this.onInputChange}
-            value={this.state.value}
-          />
-          <StyledButton onClick={this.onClick}>Subscribe</StyledButton>
-        </Form>
-      </EmailSignupContainer>
-    )
+    if (this.state.submitted) {
+      return <div />
+    } else {
+      return (
+        <EmailSignupContainer>
+          <Title>Stay up to date with Artsy Editorial</Title>
+          <Form>
+            <Input
+              type="email"
+              placeholder="Enter Your Email..."
+              onChange={this.onInputChange}
+              value={this.state.message || this.state.value}
+              readOnly={this.state.message.length > 0}
+              isError={this.state.error}
+              isReadOnly={this.state.message.length > 0}
+            />
+            <StyledButton disabled={this.state.disabled} onClick={this.onClick}>Subscribe</StyledButton>
+          </Form>
+        </EmailSignupContainer>
+      )
+    }
   }
 }
 
+const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
+const Input = input`
+  ${borderedInput}
+  width: 100%;
+  border-width: 1px;
+  color: ${props => (props.isError ? Colors.redMedium : "black")};
+  ${props => (props.isReadOnly ? Fonts.unica("s16") : "")}
+`
 const EmailSignupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 360px;
-  width: 100%
+  max-width: 350px;
+  width: 100%;
+  margin-bottom: 40px;
 `
 const Title = styled.div`
   ${Fonts.unica("s19", "medium")}
   margin-bottom: 10px;
-`
-const Input = styled.input`
-  ${borderedInput}
-  width: 100%;
-  border-width: 1px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;

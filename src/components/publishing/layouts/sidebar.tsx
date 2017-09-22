@@ -14,6 +14,7 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 60px;
+  min-width: 300px;
   ${pMedia.md`
     display: none;
   `}
