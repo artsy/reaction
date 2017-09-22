@@ -3,6 +3,7 @@ import * as React from "react"
 
 import IconEditEmbed from "../icon/edit_embed"
 import IconEditImages from "../icon/edit_images"
+import IconEditSection from "../icon/edit_section"
 import IconEditText from "../icon/edit_text"
 import IconEditVideo from "../icon/edit_video"
 import IconExpand from "../icon/expand"
@@ -71,6 +72,14 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconEditVideo />
           <p>Edit Video</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconEditSection />
+          <p>Edit Section</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconEditSection isClosing />
+          <p>Edit Section isClosing</p>
         </div>
       </div>
     )
