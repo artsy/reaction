@@ -30,7 +30,13 @@ import LayoutText from "./icon/layout_text"
 import Remove from "./icon/remove"
 
 // Test Fixtures
-import { ClassicArticle, FeatureArticle, StandardArticle } from "./fixtures/articles"
+import {
+  ClassicArticle,
+  FeatureArticle,
+  ImageHeavyStandardArticle,
+  ShortStandardArticle,
+  StandardArticle,
+} from "./fixtures/articles"
 
 export default {
   Article,
@@ -66,6 +72,8 @@ export default {
   Fixtures: {
     ClassicArticle,
     FeatureArticle,
+    ImageHeavyStandardArticle,
+    ShortStandardArticle,
     StandardArticle,
   },
 }
