@@ -90,10 +90,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     return { fullscreenImages, article }
   }
 
-  hideReadMoreButton = () => {
-    this.setState({ isTruncated: false })
-  }
-
   render() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const article = this.state.article
@@ -118,7 +114,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         : false
       return (
         <StandardArticleContainer>
-          <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.hideReadMoreButton}>
+          <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
             <Header article={article} />
             <StandardLayout>
               <Sections article={article} />
