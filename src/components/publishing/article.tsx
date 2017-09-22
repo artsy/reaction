@@ -9,8 +9,8 @@ import Header from "./header/header"
 import FeatureLayout from "./layouts/feature_layout"
 import Sidebar from "./layouts/sidebar"
 import StandardLayout from "./layouts/standard_layout"
-import ReadMore from "./read_more"
-import ReadMoreWrapper from "./read_more_wrapper"
+import ReadMore from "./read_more/read_more_button"
+import ReadMoreWrapper from "./read_more/read_more_wrapper"
 import RelatedArticlesCanvas from "./related_articles/related_articles_canvas"
 import RelatedArticlesPanel from "./related_articles/related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
@@ -90,6 +90,10 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     return { fullscreenImages, article }
   }
 
+  hideReadMoreButton = () => {
+    this.setState({ isTruncated: false })
+  }
+
   render() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const article = this.state.article
@@ -114,7 +118,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
         : false
       return (
         <StandardArticleContainer>
-          <ReadMoreWrapper isTruncated={this.state.isTruncated} id={article.id}>
+          <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.hideReadMoreButton}>
             <Header article={article} />
             <StandardLayout>
               <Sections article={article} />
@@ -144,7 +148,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 }
 
 const StandardArticleContainer = styled.div`
-  margin-top: 100px;
+  margin-top: 50px;
 `
 const LineBreak = styled.div`
   border-top: 1px solid ${colors.grayRegular};

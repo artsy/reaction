@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a long caption properly 1`] = `
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,13 +13,13 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c7 {
   padding: 0;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c7 > p,
+.c7 p,
+.c7 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -28,17 +28,17 @@ exports[`renders a long caption properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c7 > a,
+.c7 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c7 > a:hover,
+.c7 a:hover {
   color: black;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -51,58 +51,62 @@ exports[`renders a long caption properly 1`] = `
   transition: opacity .3s;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 1;
 }
 
-.c3 {
+.c4 {
   opacity: 0;
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c1:hover .c3 {
+  opacity: 1;
+}
+
+.c2 {
+  display: block;
 }
 
 .c0 {
   position: relative;
 }
 
-.c0:hover .c2 {
-  opacity: 1;
-}
-
-.c1 {
-  display: block;
-}
-
 @media (max-width: 600px) {
-  .c5 {
+  .c6 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c7 {
     padding: 0px;
   }
 }
 
 <div
-  className="article-image"
+  className="article-image c0"
 >
   <div
-    className="c0"
+    className="c1"
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="c2"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
     <div
-      className="c2 c3"
+      className="c3 c4"
     >
       <div
-        className="c4"
+        className="c5"
         onClick={[Function]}
       >
         <svg
@@ -154,10 +158,10 @@ exports[`renders a long caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <div
-      className="c6"
+      className="c7"
     >
       <div
         dangerouslySetInnerHTML={
@@ -172,7 +176,7 @@ exports[`renders a long caption properly 1`] = `
 `;
 
 exports[`renders a react child as caption properly 1`] = `
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -184,13 +188,13 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c7 {
   padding: 0;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c7 > p,
+.c7 p,
+.c7 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -199,17 +203,17 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c7 > a,
+.c7 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c7 > a:hover,
+.c7 a:hover {
   color: black;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -222,58 +226,62 @@ exports[`renders a react child as caption properly 1`] = `
   transition: opacity .3s;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 1;
 }
 
-.c3 {
+.c4 {
   opacity: 0;
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c1:hover .c3 {
+  opacity: 1;
+}
+
+.c2 {
+  display: block;
 }
 
 .c0 {
   position: relative;
 }
 
-.c0:hover .c2 {
-  opacity: 1;
-}
-
-.c1 {
-  display: block;
-}
-
 @media (max-width: 600px) {
-  .c5 {
+  .c6 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c7 {
     padding: 0px;
   }
 }
 
 <div
-  className="article-image"
+  className="article-image c0"
 >
   <div
-    className="c0"
+    className="c1"
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="c2"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
     <div
-      className="c2 c3"
+      className="c3 c4"
     >
       <div
-        className="c4"
+        className="c5"
         onClick={[Function]}
       >
         <svg
@@ -325,10 +333,10 @@ exports[`renders a react child as caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <div
-      className="c6"
+      className="c7"
     >
       <div>
         <p>
@@ -341,7 +349,7 @@ exports[`renders a react child as caption properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -353,13 +361,13 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c7 {
   padding: 0;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c7 > p,
+.c7 p,
+.c7 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -368,17 +376,17 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c7 > a,
+.c7 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c7 > a:hover,
+.c7 a:hover {
   color: black;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -391,58 +399,62 @@ exports[`renders properly 1`] = `
   transition: opacity .3s;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 1;
 }
 
-.c3 {
+.c4 {
   opacity: 0;
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c1:hover .c3 {
+  opacity: 1;
+}
+
+.c2 {
+  display: block;
 }
 
 .c0 {
   position: relative;
 }
 
-.c0:hover .c2 {
-  opacity: 1;
-}
-
-.c1 {
-  display: block;
-}
-
 @media (max-width: 600px) {
-  .c5 {
+  .c6 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c7 {
     padding: 0px;
   }
 }
 
 <div
-  className="article-image"
+  className="article-image c0"
 >
   <div
-    className="c0"
+    className="c1"
   >
     <img
       alt="Photo by Adam Kuehl for Artsy."
-      className="c1"
+      className="c2"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
       width="100%"
     />
     <div
-      className="c2 c3"
+      className="c3 c4"
     >
       <div
-        className="c4"
+        className="c5"
         onClick={[Function]}
       >
         <svg
@@ -494,10 +506,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <div
-      className="c6"
+      className="c7"
     >
       <div
         dangerouslySetInnerHTML={

@@ -1,9 +1,10 @@
 import { find } from "lodash"
 import React from "react"
+import * as ReactDOM from "react-dom"
 
 interface ReadMoreWrapperProps {
-  isTruncated?: boolean
-  id?: any
+  isTruncated: boolean
+  hideButton: () => void
 }
 
 interface ReadMoreWrapperState {
@@ -16,16 +17,16 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
     this.state = {
       truncationHeight: "100%",
     }
-    window.addEventListener("resize", this.truncateArticle)
   }
 
   componentDidMount() {
     this.truncateArticle()
+    window.addEventListener("resize", this.truncateArticle)
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize")
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.truncateArticle)
+  }
 
   truncateArticle = () => {
     if (this.props.isTruncated) {
@@ -37,23 +38,38 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
     if (this.props.isTruncated) {
       let height = 0
       let charCount = 0
-      find(document.getElementsByClassName("article__text-section"), section => {
+      const thisNode = ReactDOM.findDOMNode(this)
+
+      // Iterate over text sections
+      find(thisNode.getElementsByClassName("article__text-section"), section => {
         let sectionCharCount = 0
+
+        // Iterate over paragraph tags
         const foundTag = find(section.getElementsByTagName("p"), tag => {
           const textContent = tag.textContent
-          sectionCharCount = sectionCharCount + textContent.length
-          charCount = charCount + textContent.length
+          const textLength = textContent.length
+
+          // Update counts
+          sectionCharCount = sectionCharCount + textLength
+          charCount = charCount + textLength
+
+          // Check if we've exceeded limits
           if (textContent && sectionCharCount > 150 && charCount > 2000) {
-            height =
-              tag.getBoundingClientRect().bottom -
-              document.getElementsByClassName(`article-id__${this.props.id}`)[0].getBoundingClientRect().top
+            height = tag.getBoundingClientRect().bottom - thisNode.getBoundingClientRect().top
             return true
           }
           return false
         })
         return foundTag ? true : false
       })
-      return height > 0 ? height : "100%"
+
+      // Return found height or remove truncation if article is too short
+      if (height) {
+        return height
+      } else {
+        this.props.hideButton()
+        return "100%"
+      }
     } else {
       return "100%"
     }
@@ -70,34 +86,15 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
   render() {
     return (
       <div
-        className={`article-id__${this.props.id}`}
         style={{
           height: this.getTruncationHeight(),
           overflow: this.getOverflow(),
         }}
       >
         {this.props.children}
-        {/* <Child>
-          <Child2>
-            Here.
-          </Child2>
-        </Child> */}
       </div>
     )
   }
 }
-
-// class Child2 extends React.Component<any, any> {
-//   componentDidMount() {
-//     console.log("mounted child 2")
-//   }
-//   render() {
-//     return <div style={{ height: "100px", width: "100px", backgroundColor: "black" }}>HERE</div>
-//   }
-// }
-
-// const Child: React.SFC<any> = props => {
-//   return <div>{props.children}</div>
-// }
 
 export default ReadMoreWrapper

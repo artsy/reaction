@@ -23,11 +23,6 @@ storiesOf("Publishing/Read More", module).add("Text Article", () => {
         body:
           "<p>Efficiently seize optimal innovation for adaptive technology. Continually drive equity invested architectures and visionary best practices. Completely transition frictionless potentialities after optimal web-readiness. Proactively leverage other's reliable infomediaries rather than multifunctional mindshare. Phosfluorescently utilize frictionless technology vis-a-vis backward-compatible catalysts for change.</p>",
       },
-      {
-        type: "text",
-        body:
-          "<p>Rapidiously deliver resource sucking interfaces with superior portals. Competently coordinate covalent e-commerce whereas flexible processes. Credibly plagiarize bricks-and-clicks opportunities and value-added sources. Phosfluorescently generate value-added process improvements and vertical internal or 'organic' sources. Interactively promote granular models before efficient internal or 'organic' sources.</p>",
-      },
     ],
   })
   return (
@@ -86,10 +81,25 @@ storiesOf("Publishing/Read More", module).add("Image-heavy Article", () => {
         body:
           "<p>Efficiently seize optimal innovation for adaptive technology. Continually drive equity invested architectures and visionary best practices. Completely transition frictionless potentialities after optimal web-readiness. Proactively leverage other's reliable infomediaries rather than multifunctional mindshare. Phosfluorescently utilize frictionless technology vis-a-vis backward-compatible catalysts for change.</p>",
       },
+    ],
+  })
+  return (
+    <Article
+      article={article}
+      relatedArticlesForPanel={RelatedPanel}
+      relatedArticlesForCanvas={RelatedCanvas}
+      isTruncated
+    />
+  )
+})
+
+storiesOf("Publishing/Read More", module).add("Short Article", () => {
+  const article = extend({}, StandardArticle, {
+    sections: [
       {
         type: "text",
         body:
-          "<p>Rapidiously deliver resource sucking interfaces with superior portals. Competently coordinate covalent e-commerce whereas flexible processes. Credibly plagiarize bricks-and-clicks opportunities and value-added sources. Phosfluorescently generate value-added process improvements and vertical internal or 'organic' sources. Interactively promote granular models before efficient internal or 'organic' sources.</p>",
+          "<p>While applying for these opportunities can be daunting and time-consuming, it’s rewarding in more ways than one (even if you don’t end up winning). Artist prizes can be a path to prestige and profits, as well as a way to land exhibitions, make influential contacts, and gain valuable feedback about your work.</p><p>Based on conversations with artists who have won several different prizes, we share guidance below on how to go about applying for these opportunities, navigating the process, and benefiting from the positive outcomes they can offer.</p>",
       },
     ],
   })

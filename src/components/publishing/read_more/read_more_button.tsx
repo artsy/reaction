@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../helpers"
-import Fonts from "./fonts"
+import { pMedia } from "../../helpers"
+import Fonts from "../fonts"
 
 const ReadMore: React.SFC<any> = props => {
   return (

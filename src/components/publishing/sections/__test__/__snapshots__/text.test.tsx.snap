@@ -2,7 +2,7 @@
 
 exports[`renders classic text properly 1`] = `
 <div
-  className="sc-bdVaJa vKJlg"
+  className="article__text-section sc-bdVaJa vKJlg"
 >
   <div
     dangerouslySetInnerHTML={
@@ -16,7 +16,7 @@ exports[`renders classic text properly 1`] = `
 
 exports[`renders feature text properly 1`] = `
 <div
-  className="sc-bdVaJa gdoYdK"
+  className="article__text-section sc-bdVaJa gdoYdK"
 >
   <div
     dangerouslySetInnerHTML={
@@ -30,7 +30,7 @@ exports[`renders feature text properly 1`] = `
 
 exports[`renders standard text properly 1`] = `
 <div
-  className="sc-bdVaJa jFIhsF"
+  className="article__text-section sc-bdVaJa jFIhsF"
 >
   <div
     dangerouslySetInnerHTML={

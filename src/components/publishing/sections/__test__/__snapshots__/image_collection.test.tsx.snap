@@ -319,7 +319,7 @@ exports[`renders properly 1`] = `
   text-decoration: none;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -331,13 +331,13 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c13 {
+.c14 {
   padding: 0;
 }
 
-.c13 > p,
-.c13 p,
-.c13 .public-DraftEditorPlaceholder-root {
+.c14 > p,
+.c14 p,
+.c14 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -346,14 +346,18 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c13 > a,
-.c13 a {
+.c14 > a,
+.c14 a {
   color: #999;
 }
 
-.c13 > a:hover,
-.c13 a:hover {
+.c14 > a:hover,
+.c14 a:hover {
   color: black;
+}
+
+.c12 {
+  position: relative;
 }
 
 .c1 {
@@ -366,7 +370,7 @@ exports[`renders properly 1`] = `
   width: 168px;
 }
 
-.c14 {
+.c15 {
   margin-right: 0px;
   width: 178px;
 }
@@ -386,13 +390,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c12 {
+  .c13 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c13 {
+  .c14 {
     padding: 0px;
   }
 }
@@ -410,7 +414,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c14 {
+  .c15 {
     margin-bottom: 10px;
   }
 }
@@ -563,7 +567,7 @@ exports[`renders properly 1`] = `
     width={168}
   >
     <div
-      className="article-image"
+      className="article-image c12"
     >
       <div
         className="c3"
@@ -631,10 +635,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c13"
       >
         <div
-          className="c13"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={
@@ -648,11 +652,11 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c14"
+    className="c15"
     width={178}
   >
     <div
-      className="article-image"
+      className="article-image c12"
     >
       <div
         className="c3"
@@ -720,10 +724,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c13"
       >
         <div
-          className="c13"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={

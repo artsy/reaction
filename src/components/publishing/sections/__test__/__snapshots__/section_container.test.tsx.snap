@@ -271,7 +271,7 @@ exports[`renders column_width properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="article__text-section c1"
   >
     <div
       dangerouslySetInnerHTML={
@@ -555,7 +555,7 @@ exports[`renders fillwidth properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="article__text-section c1"
   >
     <div
       dangerouslySetInnerHTML={
@@ -839,7 +839,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="article__text-section c1"
   >
     <div
       dangerouslySetInnerHTML={
