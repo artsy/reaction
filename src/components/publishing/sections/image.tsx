@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { resize } from "../../../utils/resizer"
 import { Layout, SectionLayout } from "../typings"
 import Caption from "./caption"
