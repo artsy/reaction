@@ -18,7 +18,7 @@ const Image: React.SFC<ImageProps> = props => {
   const child = children && children
   const src = resize(image.url, { width: 1200 })
   return (
-    <ImageContainer className="article-image">
+    <div className="article-image">
       <ImageWrapper
         layout={layout}
         src={src}
@@ -30,7 +30,7 @@ const Image: React.SFC<ImageProps> = props => {
       <Caption caption={image.caption} layout={layout} sectionLayout={sectionLayout}>
         {child}
       </Caption>
-    </ImageContainer>
+    </div>
   )
 }
 
@@ -38,9 +38,5 @@ Image.defaultProps = {
   width: "100%",
   height: "auto",
 }
-
-const ImageContainer = styled.div`
-  position: relative;
-`
 
 export default Image
