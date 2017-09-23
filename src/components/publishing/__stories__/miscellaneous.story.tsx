@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
+import EmailSignup from "../email_signup"
 import { Authors, Embeds } from "../fixtures/components"
 import AuthorInfo from "../sections/authors"
 import Embed from "../sections/embed"
@@ -27,4 +28,7 @@ storiesOf("Publishing/Miscellaneous", module)
         <Share url="http://artsy.net/article/point-pencils" title="The Point of Pencils" />
       </div>
     )
+  })
+  .add("Email Signup", () => {
+    return <EmailSignup signupUrl="#" />
   })

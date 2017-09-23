@@ -11,6 +11,7 @@ storiesOf("Publishing/Articles", module)
         article={StandardArticle}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
       />
     )
   })

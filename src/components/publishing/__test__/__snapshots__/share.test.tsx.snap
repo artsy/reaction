@@ -42,7 +42,6 @@ exports[`renders a saved caption properly 1`] = `
   color: white;
   border-radius: 2px;
   border: 1px solid black;
-  margin-right: 10px;
 }
 
 .c1:hover {
@@ -51,6 +50,10 @@ exports[`renders a saved caption properly 1`] = `
 
 .c1:hover .c2 {
   color: black;
+}
+
+.c1:nth-child(2) {
+  margin: 0 10px;
 }
 
 <div
