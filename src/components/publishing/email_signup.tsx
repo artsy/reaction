@@ -4,6 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../assets/colors"
 import InvertedButton from "../buttons/inverted"
 import { borderedInput } from "../mixins"
+import { emailRegex } from "./constants"
 import Fonts from "./fonts"
 
 interface EmailSignupProps {
@@ -37,25 +38,30 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
 
   onClick = () => {
     this.setState({ disabled: true })
-    request.post(
-      {
-        uri: this.props.signupUrl,
-        body: { email: this.state.value },
-      },
-      err => {
-        if (err) {
-          this.setState({ message: "Invalid Email... Please try again", error: true })
-          setTimeout(() => {
-            this.setState({ message: "", disabled: false, error: false })
-          }, 2000)
-        } else {
-          this.setState({ message: "Thank you!" })
-          setTimeout(() => {
-            this.setState({ message: "", disabled: false, submitted: true })
-          }, 2000)
+    if (this.state.value.match(emailRegex)) {
+      request.post(
+        {
+          uri: this.props.signupUrl,
+          body: { email: this.state.value },
+        },
+        err => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true, false)
+          } else {
+            this.flashMessage("Thank you!", false, true)
+          }
         }
-      }
-    )
+      )
+    } else {
+      this.flashMessage("Invalid Email... Please try again", true, false)
+    }
+  }
+
+  flashMessage = (message, error, submitted) => {
+    this.setState({ message, error })
+    setTimeout(() => {
+      this.setState({ message: "", disabled: false, error: false, submitted })
+    }, 2000)
   }
 
   onInputChange = e => {
