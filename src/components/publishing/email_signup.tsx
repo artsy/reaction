@@ -40,7 +40,7 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
     request.post(
       {
         uri: this.props.signupUrl,
-        email: this.state.value,
+        body: { email: this.state.value },
       },
       err => {
         if (err) {

@@ -21,7 +21,7 @@ describe("EmailSignup", () => {
     viewer.setState({ value: "foo@goo.net" })
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
-    expect(request.post.mock.calls[0][0].email).toEqual("foo@goo.net")
+    expect(request.post.mock.calls[0][0].body.email).toEqual("foo@goo.net")
     request.post.mock.calls[0][1]()
     const state = viewer.state()
     expect(state.message).toEqual("Thank you!")
