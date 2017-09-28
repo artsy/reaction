@@ -79,6 +79,17 @@ export const Authors = [
   },
 ]
 
+export const Campaign = {
+  name: "Artsy",
+}
+
+export const UnitPanel = {
+  headline: "Euismod Inceptos Quam",
+  body: "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='/'>Example Link</a>",
+  image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+  logo: "",
+}
+
 export const Embeds = [
   {
     mobile_height: 1300,
