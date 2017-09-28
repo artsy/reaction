@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the display panel 1`] = `
+.c2 {
+  margin-bottom: 15px;
+  width: 100%;
+  height: 142px;
+  background-color: black;
+  box-sizing: border-box;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -15,15 +23,18 @@ exports[`renders the display panel 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
-  display: block;
-  margin-bottom: 15px;
-  width: 100%;
-  height: 142px;
-  object-fit: cover;
+.c0 .c1 {
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
+  background-size: cover;
 }
 
-.c2 {
+.c0:hover .c1 {
+  background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
+  background-size: contain;
+  border: 10px solid black;
+}
+
+.c3 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -32,7 +43,7 @@ exports[`renders the display panel 1`] = `
   margin-bottom: 3px;
 }
 
-.c3 {
+.c4 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
@@ -41,11 +52,11 @@ exports[`renders the display panel 1`] = `
   margin-bottom: 30px;
 }
 
-.c3 a {
+.c4 a {
   color: black;
 }
 
-.c4 {
+.c5 {
   font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
   -webkit-font-smoothing: antialiased;
   -webkit-text-transform: uppercase;
@@ -66,17 +77,16 @@ exports[`renders the display panel 1`] = `
 <div
   className="c0"
 >
-  <img
-    className="c1"
-    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95"
+  <div
+    className="c1 c2"
   />
   <div
-    className="c2"
+    className="c3"
   >
     Euismod Inceptos Quam
   </div>
   <div
-    className="c3"
+    className="c4"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='/'>Example Link</a>",
@@ -84,7 +94,7 @@ exports[`renders the display panel 1`] = `
     }
   />
   <div
-    className="c4"
+    className="c5"
   >
     Sponsored by Artsy
   </div>
