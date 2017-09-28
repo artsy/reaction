@@ -1,4 +1,3 @@
-import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import Colors from "../../../assets/colors"
@@ -14,7 +13,7 @@ const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
   const { unit, campaign } = props
   return (
     <DisplayPanelContainer>
-      <Image src={unit.image_url} />
+      <Image src={crop(unit.image_url, { width: 680, height: 284 })} />
       <Headline>{unit.headline}</Headline>
       <Body dangerouslySetInnerHTML={{ __html: unit.body }} />
       <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
@@ -27,11 +26,13 @@ const DisplayPanelContainer = styled.div`
   flex-direction: column;
   border: 1px solid ${Colors.grayRegular};
   padding: 20px;
-  width: 360px;
+  max-width: 360px;
+  box-sizing: border-box;
 `
 const Image = styled.img`
   display: block;
   margin-bottom: 15px;
+  width: 100%;
   height: 142px;
   object-fit: cover;
 `

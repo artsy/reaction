@@ -11,12 +11,14 @@ exports[`renders the display panel 1`] = `
   flex-direction: column;
   border: 1px solid #e5e5e5;
   padding: 20px;
-  width: 360px;
+  max-width: 360px;
+  box-sizing: border-box;
 }
 
 .c1 {
   display: block;
   margin-bottom: 15px;
+  width: 100%;
   height: 142px;
   object-fit: cover;
 }
@@ -66,7 +68,7 @@ exports[`renders the display panel 1`] = `
 >
   <img
     className="c1"
-    src="https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg"
+    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95"
   />
   <div
     className="c2"
