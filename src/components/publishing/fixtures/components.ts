@@ -87,7 +87,7 @@ export const UnitPanel = {
   headline: "Euismod Inceptos Quam",
   body: "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='/'>Example Link</a>",
   image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
-  logo: "",
+  logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
 }
 
 export const Embeds = [
