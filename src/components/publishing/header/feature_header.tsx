@@ -78,6 +78,10 @@ function isVideo(url) {
   return url.includes("mp4")
 }
 
+const renderDeck = deck => {
+  return deck ? <Deck>{deck}</Deck> : false
+}
+
 interface FeatureHeaderProps {
   article?: any
   vertical?: any
@@ -102,7 +106,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
           <Title>{title}</Title>
           {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, image)}
           <SubHeader>
-            <Deck>{deck}</Deck>
+            {renderDeck(deck)}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
@@ -125,8 +129,7 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-color: black;
-  opacity: 0.17;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
@@ -143,7 +146,6 @@ const HeaderText = Div.extend`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   justify-content: flex-start;
@@ -159,7 +161,7 @@ const FeatureImage = Div.extend`
 `
 const FeatureVideo = styled.video`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
 `
 const FeatureVideoContainer = Div.extend`
@@ -212,14 +214,11 @@ const Deck = styled.div`
 
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   &[data-type='text'] {
     height: auto;
     ${Title} {
       margin-bottom: 150px;
-    }
-    ${HeaderText} {
-      max-width: none;
     }
   }
   &[data-type='split'] {
@@ -277,6 +276,7 @@ const FeatureHeaderContainer = Div.extend`
       color: #fff;
       justify-content: flex-end;
       margin: auto;
+      text-shadow: 0 0 40px rgba(0,0,0,0.4);
     }
     ${pMedia.xs`
       ${HeaderText} {

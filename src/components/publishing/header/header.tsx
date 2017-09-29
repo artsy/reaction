@@ -18,7 +18,7 @@ function getTitle(article, children) {
 function getVertical(article, children) {
   const vertical = article.vertical ? article.vertical.name : false
   const child = children && children[0]
-  return vertical && child ? vertical : child
+  return vertical ? vertical : child
 }
 
 function getLeadParagraph(article, children) {
@@ -30,9 +30,9 @@ function getLeadParagraph(article, children) {
 
 function getDeck(article, children) {
   const hero = article.hero_section
-  const savedDeck = hero && hero.deck ? article.hero_section.deck : false
+  const savedDeck = hero && hero.deck ? hero.deck : false
   const deck = children && children[2] ? children[2] : savedDeck
-  return <div className="feature__deck">{deck}</div>
+  return deck ? <div className="feature__deck">{deck}</div> : false
 }
 
 const Header: React.SFC<HeaderProps> = props => {

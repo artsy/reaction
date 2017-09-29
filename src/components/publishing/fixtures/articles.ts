@@ -600,3 +600,7 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
     },
   ],
 })
+
+export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
+  vertical: null,
+})
