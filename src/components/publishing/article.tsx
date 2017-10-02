@@ -127,7 +127,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             </StandardLayout>
             <LineBreak />
             <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-            <LineBreak />
           </ReadMoreWrapper>
           {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer

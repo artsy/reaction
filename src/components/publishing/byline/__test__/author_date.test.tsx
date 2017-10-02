@@ -1,7 +1,7 @@
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { Author, Date } from "../byline/author_date"
+import { Author, Date } from "../author_date"
 
 describe("Author/Date", () => {
   it("renders a single author", () => {
