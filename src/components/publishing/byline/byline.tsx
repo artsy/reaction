@@ -22,6 +22,7 @@ const Byline: React.SFC<BylineProps> = props => {
     : <Share
         url={`http://www.artsy.net/article/${article.slug}`}
         title={article.social_title || article.thumbnail_title}
+        color={layout === "fullscreen" ? "white" : "black"}
       />
   return (
     <BylineContainer layout={layout}>
@@ -55,14 +56,14 @@ const BylineContainer = Div`
     min-width: 10px;
     min-height: 10px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin: 6px 10px 0 0;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
   ${props => adjustForCondensed(props.layout)}
   ${pMedia.sm`
     &:before {
-      width: 8px;
-      height: 8px;
+      min-width: 8px;
+      min-height: 8px;
     }
   `}
 `

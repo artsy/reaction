@@ -52,13 +52,13 @@ const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> =
 
 const Text = div`
   ${props => (props.layout === "condensed" ? Fonts.unica("s14", "medium") : Fonts.unica("s16", "medium"))}
-  margin-right: 30px;
+  margin: 10px 30px 0 0;
   &.date {
     white-space: nowrap;
   }
   ${pMedia.sm`
     ${props => (props.layout === "condensed" ? Fonts.unica("s12", "medium") : Fonts.unica("s14", "medium"))}
     ${Fonts.unica("s14", "medium")}
-    margin: 0 20px 0 0;
+    margin: 10px 20px 0 0;
   `}
 `

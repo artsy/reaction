@@ -1,15 +1,22 @@
 import React from "react"
 import styled from "styled-components"
 import { track } from "../../../utils/track"
-import Icon from "../../icon"
+import IconSocialEmail from "../icon/social_email"
+import IconSocialFacebook from "../icon/social_facebook"
+import IconSocialTwitter from "../icon/social_twitter"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string
   title: string
+  color?: string
 }
 
 @track()
 class Share extends React.Component<ShareProps, null> {
+  static defaultProps = {
+    color: "black",
+  }
+
   constructor(props) {
     super(props)
     this.getHref = this.getHref.bind(this)
@@ -37,13 +44,13 @@ class Share extends React.Component<ShareProps, null> {
     return (
       <ShareContainer>
         <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
-          <Icon name="facebook" color="black" fontSize="30px" />
+          <IconSocialFacebook color={this.props.color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
-          <Icon name="twitter" color="black" fontSize="30px" />
+          <IconSocialTwitter color={this.props.color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
-          <Icon name="mail" color="black" fontSize="30px" />
+          <IconSocialEmail color={this.props.color} />
         </IconWrapper>
       </ShareContainer>
     )
@@ -52,13 +59,16 @@ class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   display: flex;
+  margin-top: 5px;
 `
-
 const IconWrapper = styled.a`
   display: flex;
   justify-content: center;
   align-items: baseline;
   text-decoration: none;
-  color: black;
+  margin-right: 14px;
+  &:hover {
+    opacity: 0.6;
+  }
 `
 export default Share
