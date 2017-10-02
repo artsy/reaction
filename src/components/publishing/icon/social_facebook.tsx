@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 
 class IconSocialFacebook extends Component<any, null> {
+  static defaultProps = {
+    color: "black",
+  }
   render() {
     return (
       <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg">

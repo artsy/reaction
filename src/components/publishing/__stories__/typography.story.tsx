@@ -15,6 +15,9 @@ import IconLayoutFullscreen from "../icon/layout_fullscreen"
 import IconLayoutSplit from "../icon/layout_split"
 import IconLayoutText from "../icon/layout_text"
 import IconRemove from "../icon/remove"
+import IconSocialEmail from "../icon/social_email"
+import IconSocialFacebook from "../icon/social_facebook"
+import IconSocialTwitter from "../icon/social_twitter"
 import Typography from "./typography_examples"
 
 storiesOf("Publishing/Typography", module)
@@ -80,6 +83,18 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconEditSection isClosing />
           <p>Edit Section isClosing</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconSocialTwitter />
+          <p>Twitter</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconSocialEmail />
+          <p>Email</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconSocialFacebook />
+          <p>Facebook</p>
         </div>
       </div>
     )
