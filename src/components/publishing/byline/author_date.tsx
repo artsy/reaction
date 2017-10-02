@@ -56,8 +56,8 @@ const Text = div`
   &.date {
     white-space: nowrap;
   }
-  ${pMedia.sm`
-    ${props => (props.layout === "condensed" ? Fonts.unica("s12", "medium") : Fonts.unica("s14", "medium"))}
+  ${props => pMedia.sm`
+    ${props.layout === "condensed" ? Fonts.unica("s12", "medium") : Fonts.unica("s14", "medium")}
     ${Fonts.unica("s14", "medium")}
     margin: 10px 20px 0 0;
   `}
