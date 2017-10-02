@@ -88,17 +88,18 @@ interface FeatureHeaderProps {
   title: any
   deck?: any
   image?: any
+  height?: string
   size?: {
     width: number
   }
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, size } = props
+  const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
   return (
-    <FeatureHeaderContainer data-type={hero.type}>
+    <FeatureHeaderContainer data-type={hero.type} height={height}>
       {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, image)}
       <HeaderTextContainer>
         <HeaderText>
@@ -117,6 +118,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
 }
 
 FeatureHeader.defaultProps = {
+  height: "100vh",
   size: {
     width: 500,
   },
@@ -197,8 +199,11 @@ const SubHeader = styled.div`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
-  ${pMedia.md`
+  ${pMedia.lg`
     ${Fonts.unica("s80")}
+  `}
+  ${pMedia.md`
+    ${Fonts.unica("s65")}
   `}
   ${pMedia.xs`
     ${Fonts.unica("s45")}
@@ -211,10 +216,9 @@ const Deck = styled.div`
     ${Fonts.unica("s16")}
   `}
 `
-
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
-  height: 100%;
+  height: ${props => props.height};
   &[data-type='text'] {
     height: auto;
     ${Title} {

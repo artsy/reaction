@@ -5,6 +5,7 @@ import StandardHeader from "./standard_header"
 
 interface HeaderProps {
   article: any
+  height?: string
 }
 
 const getTitle = (article, children) => {
@@ -40,7 +41,7 @@ const getDeck = (article, children) => {
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-  const { article, children } = props
+  const { article, children, height } = props
   const title = getTitle(article, children)
 
   if (article.layout === "classic") {
@@ -51,7 +52,9 @@ const Header: React.SFC<HeaderProps> = props => {
     const vertical = getVertical(article, children)
     const image = children && children[3]
     if (article.layout === "feature") {
-      return <FeatureHeader article={article} title={title} vertical={vertical} deck={deck} image={image} />
+      return (
+        <FeatureHeader article={article} title={title} vertical={vertical} deck={deck} image={image} height={height} />
+      )
     } else {
       return <StandardHeader article={article} vertical={vertical} title={title} />
     }

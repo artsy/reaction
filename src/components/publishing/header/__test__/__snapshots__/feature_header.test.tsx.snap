@@ -140,7 +140,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .c0[data-type='text'] {
@@ -171,7 +171,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -237,12 +237,21 @@ exports[`feature renders feature full header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -288,7 +297,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -302,6 +311,7 @@ exports[`feature renders feature full header properly 1`] = `
 <div
   className="c0"
   data-type="fullscreen"
+  height="100vh"
 >
   <div>
     <div
@@ -498,7 +508,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .c0[data-type='text'] {
@@ -529,7 +539,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -543,7 +553,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type='split'] .file__Deck-s14cxtwe-8 {
+.c0[data-type='split'] .file__Deck-s1e8indf-8 {
   margin-bottom: 30px;
 }
 
@@ -595,12 +605,21 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -636,7 +655,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -650,6 +669,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 <div
   className="c0"
   data-type="fullscreen"
+  height="100vh"
 >
   <div>
     <div
@@ -841,7 +861,7 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .c0[data-type='text'] {
@@ -872,7 +892,7 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -938,12 +958,21 @@ exports[`feature renders feature header with children properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -989,7 +1018,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1003,6 +1032,7 @@ exports[`feature renders feature header with children properly 1`] = `
 <div
   className="c0"
   data-type="fullscreen"
+  height="100vh"
 >
   <div>
     <div
@@ -1203,7 +1233,7 @@ exports[`feature renders feature split header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .c0[data-type='text'] {
@@ -1234,7 +1264,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -1300,12 +1330,21 @@ exports[`feature renders feature split header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c6 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -1351,7 +1390,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1365,6 +1404,7 @@ exports[`feature renders feature split header properly 1`] = `
 <div
   className="c0"
   data-type="split"
+  height="100vh"
 >
   <div
     className="c1"
@@ -1550,7 +1590,7 @@ exports[`feature renders feature text header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .c0[data-type='text'] {
@@ -1581,7 +1621,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -1647,12 +1687,21 @@ exports[`feature renders feature text header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c6 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -1698,7 +1747,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s14cxtwe-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1712,6 +1761,7 @@ exports[`feature renders feature text header properly 1`] = `
 <div
   className="c0"
   data-type="text"
+  height="100vh"
 >
   <div
     className="c1"
