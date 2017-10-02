@@ -50,7 +50,7 @@ interface State {
 }
 
 const urlPropsQueryConfig = {
-  for_sale: { type: UrlQueryParamTypes.string },
+  for_sale: { type: UrlQueryParamTypes.boolean },
   price_range: { type: UrlQueryParamTypes.string },
   medium: { type: UrlQueryParamTypes.string },
   dimension_range: { type: UrlQueryParamTypes.string },
@@ -305,7 +305,7 @@ export class GeneContents extends React.Component<Props, State> {
 const FilterBar = styled.div`
   vertical-align: middle;
   text-align: center;
-  
+
   > div {
     display: inline-block;
   }
@@ -383,7 +383,7 @@ export default Relay.createContainer(GeneContentsUrl, {
           }
         }
         filtered_artworks(
-          aggregations: $aggregations, 
+          aggregations: $aggregations,
           size: $artworksSize,
           for_sale: $for_sale,
           medium: $medium,
@@ -393,7 +393,7 @@ export default Relay.createContainer(GeneContentsUrl, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
-            slice 
+            slice
             counts {
               id
               name
