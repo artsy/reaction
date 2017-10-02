@@ -11,7 +11,7 @@ interface AuthorDateProps {
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {
-  return <Text className="author" layout={props.layout}>By {getAuthorByline(props.authors)}</Text>
+  return <StyledAuthor className="author" layout={props.layout}>By {getAuthorByline(props.authors)}</StyledAuthor>
 }
 
 export const Date: React.SFC<AuthorDateProps> = props => {
@@ -60,5 +60,33 @@ const Text = div`
     ${props => (props.layout === "condensed" ? Fonts.unica("s12", "medium") : Fonts.unica("s14", "medium"))}
     ${Fonts.unica("s14", "medium")}
     margin: 10px 20px 0 0;
+  `}
+`
+const adjustForCondensed = layout => {
+  return layout === "condensed"
+    ? `
+  &:before {
+    min-width: 8px;
+    min-height: 8px;
+    margin-right: 5px;
+  }`
+    : ""
+}
+const StyledAuthor = Text.extend`
+  &:before {
+    content: "";
+    display: inline-block;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 50%;
+    margin: 6px 10px 0 0;
+    background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
+  }
+  ${props => adjustForCondensed(props.layout)}
+  ${pMedia.sm`
+    &:before {
+      min-width: 8px;
+      min-height: 8px;
+    }
   `}
 `

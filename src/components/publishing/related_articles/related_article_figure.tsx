@@ -42,10 +42,8 @@ const ImageTitle = styled.a`
 const ArticleFigure = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 255px;
-  ${pMedia.lg`
-    margin-right: 20px;
-  `}
+  max-width: 278px;
+  margin-right: 30px;
 `
 const ArticleTitle = styled.div`
   ${Fonts.unica("s16")}
@@ -55,8 +53,8 @@ const ArticleTitle = styled.div`
 `
 const BlockImage = styled.img`
   display: block;
-  width: 255px;
-  height: 170px;
+  width: 278px;
+  height: 185px;
   margin-bottom: 10px;
   object-fit: cover;
   ${pMedia.sm`

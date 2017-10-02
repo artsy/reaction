@@ -1,4 +1,5 @@
 import { storiesOf } from "@storybook/react"
+import { extend } from "lodash"
 import * as React from "react"
 import Byline from "../byline/byline"
 import Share from "../byline/share"
@@ -16,6 +17,16 @@ storiesOf("Publishing/Byline", module)
     return (
       <div>
         <Byline article={StandardArticle} />
+      </div>
+    )
+  })
+  .add("Many Authors Byline", () => {
+    const article = extend({}, StandardArticle, {
+      contributing_authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
+    })
+    return (
+      <div>
+        <Byline article={article} />
       </div>
     )
   })
