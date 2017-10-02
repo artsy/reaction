@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { track } from "../../utils/track"
-import Icon from "../icon"
+import { track } from "../../../utils/track"
+import Icon from "../../icon"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string
@@ -37,13 +37,13 @@ class Share extends React.Component<ShareProps, null> {
     return (
       <ShareContainer>
         <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
-          <Icon name="facebook" color="white" fontSize="30px" />
+          <Icon name="facebook" color="black" fontSize="30px" />
         </IconWrapper>
         <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
-          <Icon name="twitter" color="white" fontSize="30px" />
+          <Icon name="twitter" color="black" fontSize="30px" />
         </IconWrapper>
         <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
-          <Icon name="mail" color="white" fontSize="30px" />
+          <Icon name="mail" color="black" fontSize="30px" />
         </IconWrapper>
       </ShareContainer>
     )
@@ -52,30 +52,13 @@ class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   display: flex;
-  max-width: 350px;
-  margin-bottom: 40px;
 `
 
 const IconWrapper = styled.a`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 40px;
-  max-width: 113px;
+  align-items: baseline;
   text-decoration: none;
-  background-color: black;
-  color: white;
-  border-radius: 2px;
-  border: 1px solid black;
-  &:hover {
-    background-color: white;
-    ${Icon} {
-      color: black;
-    }
-  }
-  &:nth-child(2) {
-    margin: 0 10px;
-  }
+  color: black;
 `
 export default Share

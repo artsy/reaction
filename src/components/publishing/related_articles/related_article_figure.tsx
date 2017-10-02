@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
-import AuthorDate from "../author_date"
+import Byline from "../byline/byline"
 import { articleHref } from "../constants"
 import Fonts from "../fonts"
 
@@ -24,7 +24,7 @@ const RelatedArticleFigure: React.SFC<RelatedArticleFigureProps> = props => {
         <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
         <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
       </ImageTitle>
-      <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="condensed" />
+      <Byline article={article} layout="condensed" />
     </ArticleFigure>
   )
 }
