@@ -393,6 +393,7 @@ export const FeatureArticle: ArticleData = {
     type: "fullscreen",
     title: "What’s the Path to Winning an Art Prize?",
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck: "Lorem Ipsum",
   },
   contributing_authors: [
     {

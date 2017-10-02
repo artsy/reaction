@@ -107,6 +107,7 @@ const CondensedText = Text.extend`
 
 const AuthorDateContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `
 
 export default AuthorDate

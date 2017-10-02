@@ -7,7 +7,7 @@ interface HeaderProps {
   article: any
 }
 
-function getTitle(article, children) {
+const getTitle = (article, children) => {
   if (article.layout === "classic") {
     return children ? children[0] : article.title
   } else {
@@ -15,20 +15,24 @@ function getTitle(article, children) {
   }
 }
 
-function getVertical(article, children) {
+const getVertical = (article, children) => {
   const vertical = article.vertical ? article.vertical.name : false
   const child = children && children[0]
-  return vertical ? vertical : child
+  if (child) {
+    return vertical && child ? vertical : child
+  } else {
+    return vertical
+  }
 }
 
-function getLeadParagraph(article, children) {
+const getLeadParagraph = (article, children) => {
   const leadParagraph = article.lead_paragraph
     ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
     : false
   return children ? children[1] : leadParagraph
 }
 
-function getDeck(article, children) {
+const getDeck = (article, children) => {
   const hero = article.hero_section
   const savedDeck = hero && hero.deck ? hero.deck : false
   const deck = children && children[2] ? children[2] : savedDeck
