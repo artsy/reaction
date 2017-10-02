@@ -78,23 +78,28 @@ function isVideo(url) {
   return url.includes("mp4")
 }
 
+const renderDeck = deck => {
+  return deck ? <Deck>{deck}</Deck> : false
+}
+
 interface FeatureHeaderProps {
   article?: any
   vertical?: any
   title: any
   deck?: any
   image?: any
+  height?: string
   size?: {
     width: number
   }
 }
 
 const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, size } = props
+  const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
   const isMobile = size.width && size.width < 600 ? true : false
   return (
-    <FeatureHeaderContainer data-type={hero.type}>
+    <FeatureHeaderContainer data-type={hero.type} height={height}>
       {renderFeatureAsset(hero.url, hero.type, isMobile, article.title, image)}
       <HeaderTextContainer>
         <HeaderText>
@@ -102,7 +107,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
           <Title>{title}</Title>
           {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, image)}
           <SubHeader>
-            <Deck>{deck}</Deck>
+            {renderDeck(deck)}
             <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
           </SubHeader>
         </HeaderText>
@@ -113,6 +118,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
 }
 
 FeatureHeader.defaultProps = {
+  height: "100vh",
   size: {
     width: 500,
   },
@@ -125,8 +131,7 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-color: black;
-  opacity: 0.17;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
@@ -143,7 +148,6 @@ const HeaderText = Div.extend`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   justify-content: flex-start;
@@ -159,7 +163,7 @@ const FeatureImage = Div.extend`
 `
 const FeatureVideo = styled.video`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
 `
 const FeatureVideoContainer = Div.extend`
@@ -195,8 +199,11 @@ const SubHeader = styled.div`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
-  ${pMedia.md`
+  ${pMedia.lg`
     ${Fonts.unica("s80")}
+  `}
+  ${pMedia.md`
+    ${Fonts.unica("s65")}
   `}
   ${pMedia.xs`
     ${Fonts.unica("s45")}
@@ -209,17 +216,13 @@ const Deck = styled.div`
     ${Fonts.unica("s16")}
   `}
 `
-
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
-  height: 100vh;
+  height: ${props => props.height};
   &[data-type='text'] {
     height: auto;
     ${Title} {
       margin-bottom: 150px;
-    }
-    ${HeaderText} {
-      max-width: none;
     }
   }
   &[data-type='split'] {
@@ -277,6 +280,7 @@ const FeatureHeaderContainer = Div.extend`
       color: #fff;
       justify-content: flex-end;
       margin: auto;
+      text-shadow: 0 0 40px rgba(0,0,0,0.4);
     }
     ${pMedia.xs`
       ${HeaderText} {

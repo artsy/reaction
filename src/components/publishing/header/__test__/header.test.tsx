@@ -1,102 +1,76 @@
-import * as React from "react"
-import * as renderer from "react-test-renderer"
-
+import { shallow } from "enzyme"
 import "jest-styled-components"
-import * as _ from "lodash"
-
-import { ClassicArticle, FeatureArticle, StandardArticle } from "../../fixtures/articles"
-import { HeroSections } from "../../fixtures/components"
-import AuthorDateClassic from "../author_date_classic"
+import _ from "lodash"
+import * as React from "react"
+import {
+  ClassicArticle,
+  FeatureArticle,
+  MissingVerticalStandardArticle,
+  StandardArticle,
+} from "../../fixtures/articles"
 import Header from "../header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
-describe("feature", () => {
-  it("renders feature text header properly", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[0] })
-    const header = renderer.create(<Header article={article} />).toJSON()
-    expect(header).toMatchSnapshot()
+describe("Header", () => {
+  it("renders lead paragraph on classic article", () => {
+    const leadParagraphArticle = _.extend({}, ClassicArticle, {
+      lead_paragraph: "<p>Lead paragraph</p>",
+    })
+    const header = shallow(<Header article={leadParagraphArticle} />)
+    expect(header.html()).toContain("Lead paragraph")
   })
 
-  it("renders feature split header properly", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[1] })
-    const header = renderer.create(<Header article={article} />).toJSON()
-    expect(header).toMatchSnapshot()
-  })
-
-  it("renders feature full header properly", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
-    const header = renderer.create(<Header article={article} />).toJSON()
-    expect(header).toMatchSnapshot()
-  })
-  it("renders feature header with children properly", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
-    const header = renderer
-      .create(
-        <Header article={article}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-          <div>Child 2: Deck</div>
-          <div>Child 3: Image</div>
-        </Header>
-      )
-      .toJSON()
-    expect(header).toMatchSnapshot()
-  })
-})
-
-describe("Standard Header", () => {
-  it("renders standard header properly", () => {
-    const header = renderer.create(<Header article={StandardArticle} />).toJSON()
-    expect(header).toMatchSnapshot()
-  })
-  it("renders standard header with children properly", () => {
-    const header = renderer
-      .create(
-        <Header article={StandardArticle}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-        </Header>
-      )
-      .toJSON()
-    expect(header).toMatchSnapshot()
-  })
-})
-
-describe("Classic Header", () => {
-  it("renders classic header properly", () => {
-    const header = renderer.create(<Header article={ClassicArticle} />).toJSON()
-    expect(header).toMatchSnapshot()
-  })
-  it("renders classic header with children properly", () => {
-    const header = renderer
-      .create(
-        <Header article={StandardArticle}>
-          <div>Child 0: Title</div>
-          <div>Child 1: Lead Paragraph</div>
-        </Header>
-      )
-      .toJSON()
-    expect(header).toMatchSnapshot()
-  })
-})
-
-describe("AuthorDate", () => {
-  it("renders a single author", () => {
-    const author = "Life at Artsy"
-    const authors = [{ name: "Molly Gottschalk" }]
-    const authorDate = renderer.create(
-      <AuthorDateClassic author={author} authors={authors} date={"2017-05-19T13:09:18.567Z"} />
+  it("renders children on classic article", () => {
+    const header = shallow(
+      <Header article={ClassicArticle}><div>Title Child</div><div>Lead Paragraph Child</div></Header>
     )
-    expect(authorDate).toMatchSnapshot()
+    expect(header.html()).toContain("Title Child")
+    expect(header.html()).toContain("Lead Paragraph Child")
   })
 
-  it("renders multiple authors", () => {
-    const author = "Life at Artsy"
-    const authors = [{ name: "Molly Gottschalk" }, { name: "Kana Abe" }]
-    const authorDate = renderer.create(
-      <AuthorDateClassic author={author} authors={authors} date={"2017-05-19T13:09:18.567Z"} />
+  it("renders vertical and title on standard article", () => {
+    const header = shallow(<Header article={StandardArticle} />)
+    expect(header.html()).toContain("Art Market")
+    expect(header.html()).toContain("New York&#x27;s Next Art District")
+  })
+
+  it("renders children on standard article", () => {
+    const header = shallow(
+      <Header article={MissingVerticalStandardArticle}>
+        <div>Vertical Child</div>
+        <div>Title Child</div>
+      </Header>
     )
-    expect(authorDate).toMatchSnapshot()
+    expect(header.html()).toContain("Vertical Child")
+    expect(header.html()).toContain("Title Child")
+  })
+
+  it("renders vertical, title, deck, and image on standard article", () => {
+    const header = shallow(<Header article={FeatureArticle} />)
+    expect(header.html()).toContain("Creativity")
+    expect(header.html()).toContain("What’s the Path to Winning an Art Prize?")
+    expect(header.html()).toContain("Lorem Ipsum")
+    expect(header.html()).toContain(
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"
+    )
+  })
+
+  it("renders children on feature article", () => {
+    const MissingVerticalFeatureArticle = _.extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    const header = shallow(
+      <Header article={MissingVerticalFeatureArticle}>
+        <div>Vertical Child</div>
+        <div>Title Child</div>
+        <div>Deck Child</div>
+        <div>Image Child</div>
+      </Header>
+    )
+    expect(header.html()).toContain("Vertical Child")
+    expect(header.html()).toContain("Title Child")
+    expect(header.html()).toContain("Deck Child")
+    expect(header.html()).toContain("Image Child")
   })
 })

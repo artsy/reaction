@@ -1,0 +1,439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorDate renders a single author 1`] = `
+.c2 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #666;
+}
+
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+.c0 {
+  display: block;
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    <div
+      className="c1"
+    />
+    <div>
+      By Molly Gottschalk
+    </div>
+  </div>
+  <div
+    className="c2"
+    color="#666"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
+exports[`AuthorDate renders multiple authors 1`] = `
+.c2 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #666;
+}
+
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+.c0 {
+  display: block;
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    <div
+      className="c1"
+    />
+    <div>
+      By Molly Gottschalk and Kana Abe
+    </div>
+  </div>
+  <div
+    className="c2"
+    color="#666"
+  >
+    May 19, 2017 9:09 am
+  </div>
+</div>
+`;
+
+exports[`Classic Header renders classic header properly 1`] = `
+.c3 {
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  color: #666;
+}
+
+.c2 {
+  display: block;
+  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+  -webkit-text-align: center;
+  text-align: center;
+}
+
+.c0 p,
+.c0 > p {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  line-height: 1.35em;
+  -webkit-text-align: left;
+  text-align: left;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.c1 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 37px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1250px) {
+  .c0 {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0 {
+    -webkit-text-align: left;
+    text-align: left;
+  }
+
+  .c0 p,
+  .c0 > p {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.1em;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
+  </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+      }
+    }
+  />
+  <div
+    className="c2"
+  >
+    Joanne Artman Gallery
+    <div
+      className="c3"
+      color="#666"
+    >
+      Jul 28, 2017 4:38 pm
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Classic Header renders classic header with children properly 1`] = `
+.c4 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c4.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c4.author:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #000;
+}
+
+.c4.date {
+  white-space: nowrap;
+  margin: 0 0 0 20px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1250px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 50px;
+  line-height: 1.1em;
+  margin-bottom: 50px;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 720px) {
+  .c4 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 0 20px 0 0;
+  }
+
+  .c4.author:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c0 {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0 {
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .c2 {
+    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c1 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    Art Market
+  </div>
+  <div
+    className="c2"
+  >
+    <div>
+      Child 1: Lead Paragraph
+    </div>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="author c4"
+    >
+      By 
+      Artsy Editorial
+    </div>
+    <div
+      className="date c4"
+    >
+      May 19, 2017 9:09 am
+    </div>
+  </div>
+</div>
+`;

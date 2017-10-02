@@ -393,6 +393,7 @@ export const FeatureArticle: ArticleData = {
     type: "fullscreen",
     title: "What’s the Path to Winning an Art Prize?",
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck: "Lorem Ipsum",
   },
   contributing_authors: [
     {
@@ -599,4 +600,8 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
         "<p>While applying for these opportunities can be daunting and time-consuming, it’s rewarding in more ways than one (even if you don’t end up winning). Artist prizes can be a path to prestige and profits, as well as a way to land exhibitions, make influential contacts, and gain valuable feedback about your work.</p><p>Based on conversations with artists who have won several different prizes, we share guidance below on how to go about applying for these opportunities, navigating the process, and benefiting from the positive outcomes they can offer.</p>",
     },
   ],
+})
+
+export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
+  vertical: null,
 })

@@ -66,7 +66,8 @@ storiesOf("Publishing/Headers", module)
     return (
       <div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-          <Header article={article} />
+          <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+          <Header article={article} height="calc(100vh - 50px)" />
         </div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
           <Header article={article2} />
@@ -80,7 +81,8 @@ storiesOf("Publishing/Headers", module)
     return (
       <div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-          <Header article={article} />
+          <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+          <Header article={article} height="calc(100vh - 50px)" />
         </div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
           <Header article={article2} />

@@ -1,734 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthorDate renders a single author 1`] = `
-.c2 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 11px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  color: #666;
-}
-
-.c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 11px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  color: #000;
-}
-
-.c0 {
-  display: block;
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 13px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-}
-
-<div
-  className="c0"
->
-  <div>
-    <div
-      className="c1"
-    />
-    <div>
-      By Molly Gottschalk
-    </div>
-  </div>
-  <div
-    className="c2"
-    color="#666"
-  >
-    May 19, 2017 9:09 am
-  </div>
-</div>
-`;
-
-exports[`AuthorDate renders multiple authors 1`] = `
-.c2 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 11px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  color: #666;
-}
-
-.c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 11px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  color: #000;
-}
-
-.c0 {
-  display: block;
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 13px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-}
-
-<div
-  className="c0"
->
-  <div>
-    <div
-      className="c1"
-    />
-    <div>
-      By Molly Gottschalk and Kana Abe
-    </div>
-  </div>
-  <div
-    className="c2"
-    color="#666"
-  >
-    May 19, 2017 9:09 am
-  </div>
-</div>
-`;
-
-exports[`Classic Header renders classic header properly 1`] = `
-.c3 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 11px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  color: #666;
-}
-
-.c2 {
-  display: block;
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-  font-size: 13px;
-  line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 900px;
-  width: 100%;
-  margin: 40px auto;
-  box-sizing: border-box;
-  -webkit-text-align: center;
-  text-align: center;
-}
-
-.c0 p,
-.c0 > p {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  line-height: 1.35em;
-  -webkit-text-align: left;
-  text-align: left;
-  max-width: 580px;
-  width: 100%;
-  margin: 0 auto;
-  padding-bottom: 30px;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 37px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-@media (max-width: 1250px) {
-  .c0 {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0 {
-    -webkit-text-align: left;
-    text-align: left;
-  }
-
-  .c0 p,
-  .c0 > p {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 17px;
-    line-height: 1.1em;
-    line-height: 1.35em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
-  </div>
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
-      }
-    }
-  />
-  <div
-    className="c2"
-  >
-    Joanne Artman Gallery
-    <div
-      className="c3"
-      color="#666"
-    >
-      Jul 28, 2017 4:38 pm
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Classic Header renders classic header with children properly 1`] = `
-.c4 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c4.author {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c4.author:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c4.date {
-  white-space: nowrap;
-  margin: 0 0 0 20px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 1250px;
-  width: 100%;
-  margin: 40px auto;
-  box-sizing: border-box;
-}
-
-.c2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 50px;
-  line-height: 1.1em;
-  margin-bottom: 50px;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 720px) {
-  .c4 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 0 20px 0 0;
-  }
-
-  .c4.author:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 1250px) {
-  .c0 {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0 {
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .c2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    Art Market
-  </div>
-  <div
-    className="c2"
-  >
-    <div>
-      Child 1: Lead Paragraph
-    </div>
-  </div>
-  <div
-    className="c3"
-  >
-    <div
-      className="author c4"
-    >
-      By 
-      Artsy Editorial
-    </div>
-    <div
-      className="date c4"
-    >
-      May 19, 2017 9:09 am
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Standard Header renders standard header properly 1`] = `
-.c4 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c4.author {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c4.author:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c4.date {
-  white-space: nowrap;
-  margin: 0 0 0 20px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 1250px;
-  width: 100%;
-  margin: 40px auto;
-  box-sizing: border-box;
-}
-
-.c2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 50px;
-  line-height: 1.1em;
-  margin-bottom: 50px;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 720px) {
-  .c4 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 0 20px 0 0;
-  }
-
-  .c4.author:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 1250px) {
-  .c0 {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0 {
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .c2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  />
-  <div
-    className="c2"
-  >
-    New York's Next Art District
-  </div>
-  <div
-    className="c3"
-  >
-    <div
-      className="author c4"
-    >
-      By 
-      Artsy Editorial
-    </div>
-    <div
-      className="date c4"
-    >
-      May 19, 2017 9:09 am
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Standard Header renders standard header with children properly 1`] = `
-.c4 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c4.author {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c4.author:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: #000;
-}
-
-.c4.date {
-  white-space: nowrap;
-  margin: 0 0 0 20px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 1250px;
-  width: 100%;
-  margin: 40px auto;
-  box-sizing: border-box;
-}
-
-.c2 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 50px;
-  line-height: 1.1em;
-  margin-bottom: 50px;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 720px) {
-  .c4 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 0 20px 0 0;
-  }
-
-  .c4.author:before {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 1250px) {
-  .c0 {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c0 {
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .c2 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c1 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-<div
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    Art Market
-  </div>
-  <div
-    className="c2"
-  >
-    <div>
-      Child 1: Title
-    </div>
-  </div>
-  <div
-    className="c3"
-  >
-    <div
-      className="author c4"
-    >
-      By 
-      Artsy Editorial
-    </div>
-    <div
-      className="date c4"
-    >
-      May 19, 2017 9:09 am
-    </div>
-  </div>
-</div>
-`;
-
 exports[`feature renders feature full header properly 1`] = `
 .c15 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
@@ -768,6 +39,9 @@ exports[`feature renders feature full header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .c3 {
@@ -775,8 +49,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-color: black;
-  opacity: 0.17;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
 }
 
 .c7 {
@@ -807,7 +80,6 @@ exports[`feature renders feature full header properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   -webkit-box-pack: start;
@@ -879,10 +151,6 @@ exports[`feature renders feature full header properly 1`] = `
   margin-bottom: 150px;
 }
 
-.c0[data-type='text'] .c5 {
-  max-width: none;
-}
-
 .c0[data-type='split'] .c8 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -903,7 +171,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -929,6 +197,8 @@ exports[`feature renders feature full header properly 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   margin: auto;
+  -webkit-text-shadow: 0 0 40px rgba(0,0,0,0.4);
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 720px) {
@@ -967,12 +237,21 @@ exports[`feature renders feature full header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -1018,7 +297,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1032,6 +311,7 @@ exports[`feature renders feature full header properly 1`] = `
 <div
   className="c0"
   data-type="fullscreen"
+  height="100vh"
 >
   <div>
     <div
@@ -1051,7 +331,9 @@ exports[`feature renders feature full header properly 1`] = `
     >
       <div
         className="c7"
-      />
+      >
+        Creativity
+      </div>
       <div
         className="c8 c9"
       >
@@ -1080,6 +362,355 @@ exports[`feature renders feature full header properly 1`] = `
           </div>
           <div
             className="date c15"
+          >
+            Jun 29, 2017 11:00 am
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature full header without a deck properly 1`] = `
+.c13 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c13.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c13.author:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #fff;
+}
+
+.c13.date {
+  white-space: nowrap;
+  margin: 0 0 0 20px;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.c6 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c2 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c11 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c9 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+}
+
+.c0[data-type='text'] {
+  height: auto;
+}
+
+.c0[data-type='text'] .c8 {
+  margin-bottom: 150px;
+}
+
+.c0[data-type='split'] .c8 {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type='split'] .c5 {
+  width: 50%;
+}
+
+.c0[data-type='split'] .c1 {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .sc-gzVnrw {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
+  width: 50vw;
+}
+
+.c0[data-type='split'] .c10 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type='split'] .file__Deck-s1e8indf-8 {
+  margin-bottom: 30px;
+}
+
+.c0[data-type='fullscreen'] .c5 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+  -webkit-text-shadow: 0 0 40px rgba(0,0,0,0.4);
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 720px) {
+  .c13 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 0 20px 0 0;
+  }
+
+  .c13.author:before {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c7 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c11 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1250px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='split'] .c8 {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type='split'] .c5 {
+    width: 100%;
+  }
+
+  .c0[data-type='split'] .c1 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .sc-gzVnrw {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .c0[data-type='fullscreen'] .c5 {
+    padding: 20px;
+  }
+}
+
+<div
+  className="c0"
+  data-type="fullscreen"
+  height="100vh"
+>
+  <div>
+    <div
+      alt="What’s the Path to Winning an Art Prize?"
+      className="c1 c2"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+    />
+    <div
+      className="c3"
+    />
+  </div>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5 c6"
+    >
+      <div
+        className="c7"
+      >
+        Creativity
+      </div>
+      <div
+        className="c8 c9"
+      >
+        What’s the Path to Winning an Art Prize?
+      </div>
+      <div
+        className="c10 c11"
+      >
+        <div
+          className="c12"
+        >
+          <div
+            className="author c13"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c13"
           >
             Jun 29, 2017 11:00 am
           </div>
@@ -1129,6 +760,9 @@ exports[`feature renders feature header with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .c3 {
@@ -1136,8 +770,7 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-color: black;
-  opacity: 0.17;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
 }
 
 .c7 {
@@ -1168,7 +801,6 @@ exports[`feature renders feature header with children properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   -webkit-box-pack: start;
@@ -1240,10 +872,6 @@ exports[`feature renders feature header with children properly 1`] = `
   margin-bottom: 150px;
 }
 
-.c0[data-type='text'] .c5 {
-  max-width: none;
-}
-
 .c0[data-type='split'] .c8 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -1264,7 +892,7 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -1290,6 +918,8 @@ exports[`feature renders feature header with children properly 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   margin: auto;
+  -webkit-text-shadow: 0 0 40px rgba(0,0,0,0.4);
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 720px) {
@@ -1328,12 +958,21 @@ exports[`feature renders feature header with children properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c9 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c9 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -1379,7 +1018,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1393,6 +1032,7 @@ exports[`feature renders feature header with children properly 1`] = `
 <div
   className="c0"
   data-type="fullscreen"
+  height="100vh"
 >
   <div>
     <div
@@ -1500,6 +1140,9 @@ exports[`feature renders feature split header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .c4 {
@@ -1530,7 +1173,6 @@ exports[`feature renders feature split header properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   -webkit-box-pack: start;
@@ -1602,10 +1244,6 @@ exports[`feature renders feature split header properly 1`] = `
   margin-bottom: 150px;
 }
 
-.c0[data-type='text'] .c2 {
-  max-width: none;
-}
-
 .c0[data-type='split'] .c5 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -1626,7 +1264,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -1652,6 +1290,8 @@ exports[`feature renders feature split header properly 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   margin: auto;
+  -webkit-text-shadow: 0 0 40px rgba(0,0,0,0.4);
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 720px) {
@@ -1690,12 +1330,21 @@ exports[`feature renders feature split header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c6 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -1741,7 +1390,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -1755,6 +1404,7 @@ exports[`feature renders feature split header properly 1`] = `
 <div
   className="c0"
   data-type="split"
+  height="100vh"
 >
   <div
     className="c1"
@@ -1764,7 +1414,9 @@ exports[`feature renders feature split header properly 1`] = `
     >
       <div
         className="c4"
-      />
+      >
+        Creativity
+      </div>
       <div
         className="c5 c6"
       >
@@ -1847,6 +1499,9 @@ exports[`feature renders feature text header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .c4 {
@@ -1877,7 +1532,6 @@ exports[`feature renders feature text header properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  max-width: 1250px;
   padding: 20px;
   color: #000;
   -webkit-box-pack: start;
@@ -1947,10 +1601,6 @@ exports[`feature renders feature text header properly 1`] = `
   margin-bottom: 150px;
 }
 
-.c0[data-type='text'] .c2 {
-  max-width: none;
-}
-
 .c0[data-type='split'] .c5 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -1971,7 +1621,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
   width: 50vw;
 }
 
@@ -1997,6 +1647,8 @@ exports[`feature renders feature text header properly 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   margin: auto;
+  -webkit-text-shadow: 0 0 40px rgba(0,0,0,0.4);
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 720px) {
@@ -2035,12 +1687,21 @@ exports[`feature renders feature text header properly 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .c6 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
     line-height: 1.1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .c6 {
+    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
   }
 }
 
@@ -2086,7 +1747,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1yehjwa-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1e8indf-2 {
     width: 100%;
   }
 }
@@ -2100,6 +1761,7 @@ exports[`feature renders feature text header properly 1`] = `
 <div
   className="c0"
   data-type="text"
+  height="100vh"
 >
   <div
     className="c1"
@@ -2109,7 +1771,9 @@ exports[`feature renders feature text header properly 1`] = `
     >
       <div
         className="c4"
-      />
+      >
+        Creativity
+      </div>
       <div
         className="c5 c6"
       >
