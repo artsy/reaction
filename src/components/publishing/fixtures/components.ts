@@ -83,11 +83,87 @@ export const Campaign = {
   name: "Artsy",
 }
 
+export const UnitCanvasOverlay = {
+  headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
+  body: "",
+  layout: "overlay",
+  link: {
+    text: "Link Example",
+    url: "http://artsy.net",
+  },
+  assets: [
+    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+  ],
+  logo: "http://files.artsy.net/images/artsy_logo_full_whiteweb_transparent.png",
+  disclaimer:
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+}
+
+export const UnitCanvasImage = {
+  headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
+  body: "",
+  layout: "standard",
+  link: {
+    text: "Link Example",
+    url: "http://artsy.net",
+  },
+  assets: [
+    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+  ],
+  logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
+  disclaimer:
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+}
+
+export const UnitCanvasVideo = {
+  headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
+  body: "",
+  layout: "standard",
+  link: {
+    text: "Link Example",
+    url: "http://artsy.net",
+  },
+  assets: [{ url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4" }],
+  logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
+  disclaimer:
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+}
+
+export const UnitCanvasSlideshow = {
+  headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
+  body: "",
+  layout: "slideshow",
+  link: {
+    text: "Link Example",
+    url: "http://artsy.net",
+  },
+  assets: [
+    {
+      url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+      caption: "Nullam id dolor ultricies vehicula.",
+    },
+    { url: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg" },
+    {
+      url: "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",
+      caption: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+    },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/tjVXiaCPt3Tv1EYS3JqX5g%2FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg",
+    },
+  ],
+  logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
+  disclaimer:
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+}
+
 export const UnitPanel = {
   headline: "Euismod Inceptos Quam",
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
-  image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+  assets: [
+    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+  ],
   logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
   link: {
     text: "",
