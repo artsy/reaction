@@ -1,8 +1,7 @@
-import * as React from "react"
+import * as React from 'react';
+import styled from 'styled-components';
 
-import styled from "styled-components"
-
-import Title from "../../title"
+import Title from '../../title';
 
 export interface StepProps {
   onStateChange: ({ nextButtonEnabled }) => void
@@ -11,16 +10,25 @@ export interface StepProps {
 }
 
 const Container = styled.div`
+  max-width: 930px;
+  margin-left: auto;
+  margin-right: auto;
 `
-const Subtitle = styled(Title)`
+
+const MainTitle = styled(Title) `
+  text-align: center;
+`
+const Subtitle = styled(Title) `
   color: #999;
+  margin-bottom: 100px;
+  text-align: center;
 `
 
 export default class Step extends React.Component<StepProps, any> {
   render() {
     return (
       <Container>
-        <Title titleSize="xlarge">{this.props.title}</Title>
+        <MainTitle titleSize="xlarge">{this.props.title} </MainTitle>
         <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
         <div>{this.props.children}</div>
       </Container>

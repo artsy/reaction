@@ -1,5 +1,14 @@
-import * as React from "react"
-import Button from "../buttons/default"
+import * as React from 'react';
+import styled from 'styled-components';
+
+import Button from '../buttons/default';
+
+const ButtonContainer = styled(Button) `
+  margin: 0 auto 50px;
+  display: block;
+  width: 250px;
+
+`
 
 interface Props {
   stepComponents: Array<React.ComponentClass<any>>
@@ -38,12 +47,12 @@ class Wizard extends React.Component<Props, State> {
     })
   }
 
-  onNextButtonPressed() {
+  onNextButtonPressed(e) {
     if (this.props.stepComponents.length <= this.state.currentStep) {
       return
     }
 
-    this.currentStepComponent.submit()
+    this.currentStepComponent.submit(e)
 
     const stepIndex = this.state.currentStep + 1
     this.setState({ currentStep: stepIndex })
@@ -54,9 +63,9 @@ class Wizard extends React.Component<Props, State> {
     return (
       <div>
         {step}
-        <Button disabled={!this.state.nextButtonEnabled} onClick={this.onNextButtonPressed.bind(this)}>
+        <ButtonContainer disabled={!this.state.nextButtonEnabled} onClick={this.onNextButtonPressed.bind(this)}>
           Next
-        </Button>
+        </ButtonContainer>
       </div>
     )
   }
