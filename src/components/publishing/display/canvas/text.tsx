@@ -1,3 +1,4 @@
+import { compact, map } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../helpers"
@@ -10,18 +11,21 @@ interface DisplayCanvasTextProps extends React.HTMLProps<HTMLDivElement> {
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
   layout?: any
+  isSlideshowWithCaption?: boolean
 }
 
 const DisplayCanvasText: React.SFC<DisplayCanvasTextProps> = props => {
   const { disclaimer, unit } = props
+  const isSlideshowWithCaption = unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
+  const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
   return (
-    <CanvasInner layout={unit.layout}>
+    <CanvasInner layout={unit.layout} isSlideshowWithCaption>
       <Logo layout={unit.layout} src={unit.logo} />
       <div>
         <Headline layout={unit.layout}>{unit.headline}</Headline>
         <Link layout={unit.layout}>{unit.link.text}</Link>
       </div>
-      {disclaimer}
+      {hasDisclaimer && disclaimer}
     </CanvasInner>
   )
 }
@@ -48,7 +52,8 @@ const CanvasInner = Div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: ${props => (props.layout === "overlay" ? "space-around;" : "space-between;")}
+  justify-content: ${props =>
+    props.layout === "overlay" || props.isSlideshowWithCaption ? "space-around;" : "space-between;"}
   padding: 0 20px;
   ${props =>
     props.layout === "overlay" &&

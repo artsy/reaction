@@ -47,13 +47,13 @@ const DisplayContainer = Div`
 `
 const AdvertisementBy = styled.div`
   ${Fonts.avantgarde("s11")}
-  color: ${Colors.grayRegular};
+  color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
 `
 const Disclaimer = Div`
   ${Fonts.garamond("s11")}
-  color: ${Colors.grayRegular};
+  color: ${Colors.grayMedium};
   margin: 15px 0 0 0;
   ${props => props.layout === "overlay" && "text-align: center;"})
   ${pMedia.sm`

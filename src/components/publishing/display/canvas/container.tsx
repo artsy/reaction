@@ -2,7 +2,8 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
-import DisplayCanvasText from "./text"
+import Slideshow from "./slideshow"
+import CanvasText from "./text"
 
 interface DisplayCanvasContainerProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
@@ -36,21 +37,23 @@ const DisplayCanvasContainer: React.SFC<DisplayCanvasContainerProps> = props => 
     return (
       <Canvas href={unit.link.url} target="_blank">
         <Background backgroundUrl={unit.assets[0].url} />
-        <DisplayCanvasText unit={unit} />
+        <CanvasText unit={unit} />
       </Canvas>
     )
   } else if (unit.layout === "slideshow") {
     return (
-      <Canvas href={unit.link.url} target="_blank">
-        <DisplayCanvasText unit={unit} disclaimer={disclaimer} />
-      </Canvas>
+      <Slideshow unit={unit} disclaimer={disclaimer}>
+        <Canvas href={unit.link.url} target="_blank">
+          <CanvasText unit={unit} disclaimer={disclaimer} />
+        </Canvas>
+      </Slideshow>
     )
   } else {
     return (
       <Canvas href={unit.link.url} target="_blank">
         {renderAsset(unit.assets[0])}
         <StandardContainer>
-          <DisplayCanvasText unit={unit} disclaimer={disclaimer} />
+          <CanvasText unit={unit} disclaimer={disclaimer} />
         </StandardContainer>
       </Canvas>
     )
