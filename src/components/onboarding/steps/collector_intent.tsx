@@ -56,13 +56,11 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   submit() {
-    const keys = Object.keys(this.state.selectedOptions)
-    const intents = keys.filter(key => {
-      return this.state.selectedOptions[key]
-    })
-
-    console.log("intents:", intents)
-
+    // const keys = Object.keys(this.state.selectedOptions)
+    // const intents = keys.filter(key => {
+    //   return this.state.selectedOptions[key]
+    // })
+    // console.log("intents:", intents)
     // const options: RequestInit = {
     //   method: "PUT",
     //   credentials: "same-origin",
@@ -76,7 +74,6 @@ class CollectorIntent extends React.Component<Props, State> {
     //     intents: JSON.stringify(intents),
     //   }),
     // }
-
     // This should eventually be the collector id that is available on the props.
     // I'm thinking the endpoint should also move into some sort of sd object.
     // fetch(`https://api.artsy.net/api/v1/collector_profile/${this.props.currentUser.id}`, options)
