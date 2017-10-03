@@ -1,11 +1,11 @@
-import { storiesOf } from "@storybook/react"
-import * as React from "react"
-import styled from "styled-components"
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import styled from 'styled-components';
 
-import * as fonts from "../../assets/fonts"
-import Button from "../buttons/ghost"
-import Icon from "../icon"
-import Title from "../title"
+import * as fonts from '../../assets/fonts';
+import Button from '../buttons/ghost';
+import Icon from '../icon';
+import Title from '../title';
 
 const IconContainer = styled.div`
 width: 15px;
@@ -34,7 +34,7 @@ const Link = styled.a`
   }
 `
 
-storiesOf("Onboarding", module).add("Collector Intent", () => {
+storiesOf("Onboarding").add("Collector Intent", () => {
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: "100px" }}>

@@ -1,8 +1,8 @@
-import * as React from "react"
-import styled from "styled-components"
+import * as React from 'react';
+import styled from 'styled-components';
 
-import * as fonts from "../../assets/fonts"
-import Icon from "../icon"
+import * as fonts from '../../assets/fonts';
+import Icon from '../icon';
 
 interface SelectableLinkProps {
   href?: string
@@ -53,7 +53,7 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
     this.onSelect = this.onSelect.bind(this)
   }
 
-  onSelect(): any {
+  onSelect() {
     const state = !this.state.selected
     this.setState({ selected: state })
     if (this.props.onSelect) {
@@ -61,8 +61,7 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
     }
   }
 
-  render(): JSX.Element {
-    console.log(this.state.selected)
+  render() {
     return (
       <div>
         <Link href={this.props.href} onClick={() => this.onSelect()}>

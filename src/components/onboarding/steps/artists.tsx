@@ -1,8 +1,9 @@
-import * as React from "react"
-import Input from "../../input"
-import Step, { StepProps } from "./step"
+import * as React from 'react';
 
-export default class Artists extends React.Component<StepProps, any> {
+import Input from '../../input';
+import Step, { StepProps } from './step';
+
+export default class Artists extends React.Component<StepProps, null> {
   onInputChange = e => {
     this.props.onStateChange({ nextButtonEnabled: true })
   }
