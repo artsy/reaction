@@ -1,24 +1,25 @@
 import * as React from 'react';
 
 import Input from '../../input';
-import Step, { StepProps } from './step';
+import { StepProps } from '../types';
+import { Layout } from './layout';
 
 export default class Artists extends React.Component<StepProps, null> {
   onInputChange = e => {
-    this.props.onStateChange({ nextButtonEnabled: true })
+    // this.props.onStateChange({ nextButtonEnabled: true })
   }
 
   render() {
     return (
-      <Step
+      <Layout
         title="Follow a few artists that interest you most"
         subtitle="Follow one or more"
-        onStateChange={this.props.onStateChange}
+        onNextButtonPressed={null}
       >
         <div>
           <Input onChange={this.onInputChange} />
         </div>
-      </Step>
+      </Layout>
     )
   }
 }

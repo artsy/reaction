@@ -1,12 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import Button from '../../buttons/ghost';
 import Title from '../../title';
 
-export interface StepProps {
-  onStateChange: ({ nextButtonEnabled }) => void
+interface Props {
   title: string
   subtitle: string
+  onNextButtonPressed?: () => void
 }
 
 const Container = styled.div`
@@ -15,22 +16,32 @@ const Container = styled.div`
   margin-right: auto;
 `
 
-const MainTitle = styled(Title) `
+const MainTitle = styled(Title)`
   text-align: center;
 `
-const Subtitle = styled(Title) `
+const Subtitle = styled(Title)`
   color: #999;
   margin-bottom: 100px;
   text-align: center;
 `
 
-export default class Step extends React.Component<StepProps, any> {
+const ButtonContainer = styled(Button)`
+  margin: 0 auto 50px;
+  display: block;
+  width: 250px;
+`
+
+export class Layout extends React.Component<Props, null> {
   render() {
+    const disabled = !this.props.onNextButtonPressed
     return (
       <Container>
         <MainTitle titleSize="xlarge">{this.props.title} </MainTitle>
         <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
         <div>{this.props.children}</div>
+        <ButtonContainer disabled={disabled} onClick={this.props.onNextButtonPressed}>
+          Next
+        </ButtonContainer>
       </Container>
     )
   }
