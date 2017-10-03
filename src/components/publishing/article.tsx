@@ -16,7 +16,6 @@ import RelatedArticlesCanvas from "./related_articles/related_articles_canvas"
 import RelatedArticlesPanel from "./related_articles/related_articles_panel"
 import FullscreenViewer from "./sections/fullscreen_viewer/fullscreen_viewer"
 import Sections from "./sections/sections"
-import Share from "./share"
 import { ArticleData } from "./typings"
 
 export interface ArticleProps {
@@ -122,17 +121,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             <StandardLayout>
               <Sections article={article} />
               <Sidebar>
-                <Share
-                  url={`http://www.artsy.net/article/${article.slug}`}
-                  title={article.social_title || article.thumbnail_title}
-                />
                 {emailSignup}
                 {relatedArticlePanel}
               </Sidebar>
             </StandardLayout>
             <LineBreak />
             <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-            <LineBreak />
           </ReadMoreWrapper>
           {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer

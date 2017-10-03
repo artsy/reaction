@@ -1,15 +1,22 @@
 import React from "react"
 import styled from "styled-components"
-import { track } from "../../utils/track"
-import Icon from "../icon"
+import { track } from "../../../utils/track"
+import IconSocialEmail from "../icon/social_email"
+import IconSocialFacebook from "../icon/social_facebook"
+import IconSocialTwitter from "../icon/social_twitter"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string
   title: string
+  color?: string
 }
 
 @track()
 class Share extends React.Component<ShareProps, null> {
+  static defaultProps = {
+    color: "black",
+  }
+
   constructor(props) {
     super(props)
     this.getHref = this.getHref.bind(this)
@@ -37,13 +44,13 @@ class Share extends React.Component<ShareProps, null> {
     return (
       <ShareContainer>
         <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
-          <Icon name="facebook" color="white" fontSize="30px" />
+          <IconSocialFacebook color={this.props.color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
-          <Icon name="twitter" color="white" fontSize="30px" />
+          <IconSocialTwitter color={this.props.color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
-          <Icon name="mail" color="white" fontSize="30px" />
+          <IconSocialEmail color={this.props.color} />
         </IconWrapper>
       </ShareContainer>
     )
@@ -52,30 +59,16 @@ class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   display: flex;
-  max-width: 350px;
-  margin-bottom: 40px;
+  margin-top: 5px;
 `
-
 const IconWrapper = styled.a`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 40px;
-  max-width: 113px;
+  align-items: baseline;
   text-decoration: none;
-  background-color: black;
-  color: white;
-  border-radius: 2px;
-  border: 1px solid black;
+  margin-right: 14px;
   &:hover {
-    background-color: white;
-    ${Icon} {
-      color: black;
-    }
-  }
-  &:nth-child(2) {
-    margin: 0 10px;
+    opacity: 0.6;
   }
 `
 export default Share

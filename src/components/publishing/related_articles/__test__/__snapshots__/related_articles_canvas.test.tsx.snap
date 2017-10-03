@@ -1,44 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the related articles canvas 1`] = `
-.c9 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c10 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
+  margin: 10px 30px 0 0;
 }
 
-.c9.author {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+.c10.date {
+  white-space: nowrap;
 }
 
-.c9.author:before {
+.c9 {
+  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c9.date {
+  white-space: nowrap;
+}
+
+.c9:before {
   content: "";
   display: inline-block;
   min-width: 10px;
   min-height: 10px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 6px 10px 0 0;
   background-color: #000;
 }
 
-.c9.date {
-  white-space: nowrap;
-  margin: 0 0 0 20px;
-}
-
-.c9:.author:before {
+.c9:before {
   min-width: 8px;
   min-height: 8px;
   margin-right: 5px;
@@ -52,6 +49,14 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c5 {
@@ -76,7 +81,8 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 255px;
+  max-width: 278px;
+  margin-right: 30px;
 }
 
 .c7 {
@@ -88,8 +94,8 @@ exports[`renders the related articles canvas 1`] = `
 
 .c6 {
   display: block;
-  width: 255px;
-  height: 170px;
+  width: 278px;
+  height: 185px;
   margin-bottom: 10px;
   object-fit: cover;
 }
@@ -114,21 +120,6 @@ exports[`renders the related articles canvas 1`] = `
   margin-bottom: 30px;
 }
 
-.c2 {
-  margin-left: 30px;
-}
-
-.c2:before {
-  content: "";
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 5px;
-  background-color: #000;
-  margin-bottom: 5px;
-}
-
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -146,17 +137,16 @@ exports[`renders the related articles canvas 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c9 {
+  .c10 {
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-    margin: 0 20px 0 0;
-  }
-
-  .c9.author:before {
-    width: 8px;
-    height: 8px;
+    margin: 10px 20px 0 0;
   }
 }
 
@@ -166,18 +156,24 @@ exports[`renders the related articles canvas 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
+    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .c9:before {
+    min-width: 8px;
+    min-height: 8px;
   }
 }
 
 @media (max-width: 720px) {
   .c5 {
     height: 235px;
-  }
-}
-
-@media (max-width: 1250px) {
-  .c4 {
-    margin-right: 20px;
   }
 }
 
@@ -204,7 +200,6 @@ exports[`renders the related articles canvas 1`] = `
 
 @media (max-width: 720px) {
   .c2 {
-    margin-left: 0px;
     display: block;
   }
 }
@@ -215,7 +210,7 @@ exports[`renders the related articles canvas 1`] = `
   <div
     className="c1"
   >
-    Further Reading 
+    Further Reading in 
     <span
       className="c2"
     >
@@ -253,7 +248,7 @@ exports[`renders the related articles canvas 1`] = `
           Anna Louis-Sussman and Kana Abe
         </div>
         <div
-          className="date c9"
+          className="date c10"
         >
           May 19, 2017
         </div>
@@ -287,7 +282,7 @@ exports[`renders the related articles canvas 1`] = `
           Halley Johnson
         </div>
         <div
-          className="date c9"
+          className="date c10"
         >
           May 19, 2017
         </div>
@@ -321,7 +316,7 @@ exports[`renders the related articles canvas 1`] = `
           Casey Lesser
         </div>
         <div
-          className="date c9"
+          className="date c10"
         >
           May 19, 2017
         </div>
@@ -355,7 +350,7 @@ exports[`renders the related articles canvas 1`] = `
           Owen Dodd
         </div>
         <div
-          className="date c9"
+          className="date c10"
         >
           May 19, 2017
         </div>

@@ -3,7 +3,7 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../utils/resizer"
 import { pMedia } from "../../helpers"
-import AuthorDate from "../author_date"
+import Byline from "../byline/byline"
 import { sizeMeRefreshRate } from "../constants"
 import Fonts from "../fonts"
 
@@ -108,7 +108,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
           {renderMobileSplitAsset(hero.url, hero.type, isMobile, article.title, image)}
           <SubHeader>
             {renderDeck(deck)}
-            <AuthorDate layout={hero.type} authors={article.contributing_authors} date={article.published_at} />
+            <Byline article={article} layout={hero.type} />
           </SubHeader>
         </HeaderText>
         {renderTextLayoutAsset(hero.url, hero.type, article.title, image)}
@@ -184,12 +184,13 @@ const Video = styled.video`
 const TextAsset = styled.div`
   width: 100%;
   padding: 20px;
+  box-sizing: border-box
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: row;
   ${pMedia.xs`
     align-items: flex-start;
@@ -211,6 +212,7 @@ const Title = styled.div`
 `
 const Deck = styled.div`
   max-width: 460px;
+  margin-right: 30px;
   ${pMedia.xs`
     margin-bottom: 28px;
     ${Fonts.unica("s16")}
