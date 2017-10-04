@@ -1,7 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import Title from "../../title"
 import SelectableLink from "../selectable_link"
 import Step, { StepProps } from "./step"
 

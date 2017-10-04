@@ -152,7 +152,7 @@ class FollowProfileMutation extends Relay.Mutation<Props, null> {
   }
 
   getMutation() {
-    return Relay.QL`mutation{followProfile}`
+    return Relay.QL`mutation{updateC}`
   }
 
   getVariables() {
@@ -176,7 +176,7 @@ class FollowProfileMutation extends Relay.Mutation<Props, null> {
   // that is returned with its cached version (instead of using `__id`)
   getFatQuery() {
     return Relay.QL`
-      fragment on FollowProfilePayload {
+      fragment on FollowArtistPayload {
         profile {
           __id
           is_followed
