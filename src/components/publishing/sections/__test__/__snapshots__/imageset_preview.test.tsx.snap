@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
+.c7 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c7 > svg {
+  height: 98%;
+}
+
 .c0 {
   position: absolute;
   bottom: 20px;
@@ -20,11 +32,20 @@ exports[`renders a full image set properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border: 1px solid white;
+  border-radius: 2px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   cursor: pointer;
+}
+
+.c0:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.c0:hover .c6 {
+  fill: white;
 }
 
 .c1 {
@@ -73,16 +94,10 @@ exports[`renders a full image set properly 1`] = `
   margin-left: 20px;
 }
 
-.c6 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  -webkit-text-align: right;
-  text-align: right;
-}
-
-.c6 > svg {
-  height: 98%;
+@media (max-width: 600px) {
+  .c7 {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
@@ -109,12 +124,6 @@ exports[`renders a full image set properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c6 {
-    display: none;
   }
 }
 
@@ -155,7 +164,7 @@ exports[`renders a full image set properly 1`] = `
       </div>
     </div>
     <div
-      className="c6"
+      className="c6 c7"
     >
       <svg
         className="image-set"
@@ -185,6 +194,22 @@ exports[`renders a full image set properly 1`] = `
 `;
 
 exports[`renders a mini image set properly 1`] = `
+.c8 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c8 > svg {
+  height: 98%;
+}
+
+.czHEJa:hover .c7 {
+  fill: white;
+}
+
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -266,16 +291,10 @@ exports[`renders a mini image set properly 1`] = `
   margin-left: 20px;
 }
 
-.c7 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  -webkit-text-align: right;
-  text-align: right;
-}
-
-.c7 > svg {
-  height: 98%;
+@media (max-width: 600px) {
+  .c8 {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
@@ -302,12 +321,6 @@ exports[`renders a mini image set properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c7 {
-    display: none;
   }
 }
 
@@ -357,7 +370,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
       </div>
       <div
-        className="c7"
+        className="c7 c8"
       >
         <svg
           className="image-set"

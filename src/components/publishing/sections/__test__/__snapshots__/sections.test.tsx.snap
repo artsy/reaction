@@ -25,6 +25,13 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
+.c16 .title {
+  font-family: Unica77LLWebItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
 .c17 {
   color: #999;
   display: block;
@@ -93,6 +100,8 @@ exports[`renders properly 1`] = `
 
 .c13 {
   padding: 0;
+  width: 100%;
+  word-break: break-word;
 }
 
 .c13 > p,
@@ -159,6 +168,18 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
+.c33 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  -webkit-text-align: right;
+  text-align: right;
+}
+
+.c33 > svg {
+  height: 98%;
+}
+
 .c26 {
   position: absolute;
   bottom: 20px;
@@ -178,11 +199,20 @@ exports[`renders properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border: 1px solid white;
+  border-radius: 2px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   cursor: pointer;
+}
+
+.c26:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.c26:hover .c32 {
+  fill: white;
 }
 
 .c27 {
@@ -229,18 +259,6 @@ exports[`renders properly 1`] = `
   font-size: 14px;
   line-height: 1.4em;
   margin-left: 20px;
-}
-
-.c32 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  -webkit-text-align: right;
-  text-align: right;
-}
-
-.c32 > svg {
-  height: 98%;
 }
 
 .c1 {
@@ -549,6 +567,12 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
+  .c33 {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
   .c28 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
@@ -572,12 +596,6 @@ exports[`renders properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 600px) {
-  .c32 {
-    display: none;
   }
 }
 
@@ -1865,7 +1883,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c32"
+          className="c32 c33"
         >
           <svg
             className="image-set"

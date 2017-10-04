@@ -21,6 +21,13 @@ exports[`renders an artwork caption properly 1`] = `
   line-height: 1.1em;
 }
 
+.c4 .title {
+  font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c5.artist-name {
   margin-right: 30px;
 }
@@ -38,6 +45,10 @@ exports[`renders an artwork caption properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+}
+
+.c3 a {
+  color: black;
 }
 
 .c8 {
@@ -86,6 +97,13 @@ exports[`renders an artwork caption properly 1`] = `
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
+  .c4 .title {
+    font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
 }
 
 @media (max-width: 720px) {
@@ -115,11 +133,6 @@ exports[`renders an artwork caption properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 720px) {
-  .c3 {
     display: block;
     margin-top: 20px;
   }
@@ -136,6 +149,9 @@ exports[`renders an artwork caption properly 1`] = `
 
 @media (max-width: 720px) {
   .c0 {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
     padding: 20px;
   }
 }
@@ -233,6 +249,10 @@ exports[`renders an image caption properly 1`] = `
   line-height: 1.1em;
 }
 
+.c3 a {
+  color: black;
+}
+
 .c4 {
   margin-left: 20px;
   white-space: nowrap;
@@ -290,11 +310,6 @@ exports[`renders an image caption properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 720px) {
-  .c3 {
     display: block;
     margin-top: 20px;
   }
@@ -311,6 +326,9 @@ exports[`renders an image caption properly 1`] = `
 
 @media (max-width: 720px) {
   .c0 {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
     padding: 20px;
   }
 }
