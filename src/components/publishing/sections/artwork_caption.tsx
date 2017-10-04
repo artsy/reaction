@@ -178,6 +178,9 @@ const StyledFullscreenCaption = div`
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
     flex-direction: column;
+    .title {
+      ${Fonts.unica("s14", "mediumItalic")}
+    }
   `}
 `
 const TruncatedLine = styled.div`

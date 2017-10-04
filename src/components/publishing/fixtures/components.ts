@@ -166,6 +166,7 @@ export const Images = [
     width: 900,
     height: 1200,
     caption: "<p>Photo by Adam Kuehl for Artsy.</p>",
+    setTitle: "New York City",
   },
   {
     url: "https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg",
@@ -173,6 +174,7 @@ export const Images = [
     width: 816,
     height: 1024,
     caption: "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+    setTitle: "New York City",
   },
 ]
 
