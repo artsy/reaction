@@ -15,34 +15,34 @@ interface LinkState {
 }
 
 const IconContainer = styled.div`
-width: 15px;
-height: 15px;
-background-color: black;
-display: none;
-border-radius: 50%;
-float: right;
-margin-right: 15px;
-line-height: 11px;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  display: none;
+  border-radius: 50%;
+  float: right;
+  margin-right: 15px;
+  line-height: 11px;
 `
 
 const Link = styled.a`
-display: block;
-font-size: 14px;
-color: black;
-text-decoration: none;
-text-transform: uppercase;
-font-family: ${fonts.primary.fontFamily};
-padding: 30px 0 30px 15px;
-border-top: 1px solid #e5e5e5;
-&:hover {
-  background-color: #f8f8f8;
-}
-&:hover .collector-intent-checked {
-  display: inline;
-}
-& .collector-intent-checked.is-selected {
-  display: inline;
-}
+  display: block;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: ${fonts.primary.fontFamily};
+  padding: 30px 0 30px 15px;
+  border-top: 1px solid #e5e5e5;
+  &:hover {
+    background-color: #f8f8f8;
+  }
+  &:hover .collector-intent-checked {
+    display: inline;
+  }
+  & .collector-intent-checked.is-selected {
+    display: inline;
+  }
 `
 
 class Option extends React.Component<OptionProps, LinkState> {
@@ -54,7 +54,7 @@ class Option extends React.Component<OptionProps, LinkState> {
     this.onSelect = this.onSelect.bind(this)
   }
 
-  onSelect(): any {
+  onSelect() {
     const state = !this.state.selected
     this.setState({ selected: state })
     if (this.props.onSelect) {
@@ -62,7 +62,7 @@ class Option extends React.Component<OptionProps, LinkState> {
     }
   }
 
-  render(): JSX.Element {
+  render() {
     return (
       <div>
         <Link href={this.props.href} onClick={() => this.onSelect()}>
