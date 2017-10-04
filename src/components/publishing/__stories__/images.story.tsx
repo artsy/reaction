@@ -5,7 +5,7 @@ import Artwork from "../sections/artwork"
 import Image from "../sections/image"
 import ImageCollection from "../sections/image_collection"
 
-import { Artworks, Images } from "../fixtures/components"
+import { Artworks, Images, ImagesNarrow } from "../fixtures/components"
 
 storiesOf("Publishing/Images", module)
   .add("Artwork", () => {
@@ -77,8 +77,13 @@ storiesOf("Publishing/Images", module)
   })
   .add("Image Collection", () => {
     return (
-      <div style={{ width: "100%" }}>
-        <ImageCollection images={Images} targetHeight={400} gutter={10} />
+      <div>
+        <div style={{ width: "100%" }}>
+          <ImageCollection images={Images} targetHeight={400} gutter={10} />
+        </div>
+        <div style={{ width: 780 }}>
+          <ImageCollection images={ImagesNarrow} targetHeight={400} gutter={10} />
+        </div>
       </div>
     )
   })

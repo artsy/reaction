@@ -39,6 +39,8 @@ const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = s
 // includes draft placeholder class for editable text in Writer
 const Figcaption = div`
   padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
+  width: 100%;
+  word-break: break-word;
   & > p, p, .public-DraftEditorPlaceholder-root {
     ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
