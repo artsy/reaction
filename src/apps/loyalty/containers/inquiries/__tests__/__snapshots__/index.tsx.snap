@@ -29,7 +29,8 @@ exports[`inquiries renders the inquiries listing 1`] = `
     className="file__Header-cpd21h-2 gEkXMR"
   >
     <div
-      className="header-title file__StyledTitle-s3pz4jh-0 jziesf"
+      className="header-title file__StyledTitle-s11cvek3-0 icqqDF"
+      color="inherit"
     >
       Please select all works you purchased
     </div>

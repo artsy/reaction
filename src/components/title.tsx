@@ -7,6 +7,7 @@ type TitleSize = "small" | "medium" | "large" | "xlarge" | "xxlarge"
 
 interface TitleProps extends React.HTMLProps<HTMLDivElement> {
   titleSize?: TitleSize
+  color?: string
 }
 
 const titleSizes = {
@@ -30,6 +31,7 @@ const Title: React.SFC<TitleProps> = props => {
 
 const StyledTitle = styled(Title)`
   font-size: ${props => titleSizes[props.titleSize]};
+  color: ${props => props.color};
   margin: 20px 0;
   ${fonts.secondary.style}
 
@@ -40,6 +42,7 @@ const StyledTitle = styled(Title)`
 
 StyledTitle.defaultProps = {
   titleSize: "medium",
+  color: "inherit",
 }
 
 export default StyledTitle
