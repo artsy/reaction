@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import SelectableLink from "../selectable_link"
-import Step, { StepProps } from "./step"
+import Step, { StepProps } from "../step"
+import Option from "./option"
 
 const OptionsContainer = styled.div`
   width: 450px;
@@ -48,11 +48,13 @@ class CollectorIntent extends React.Component<StepProps, State> {
     this.props.onStateChange({ nextButtonEnabled: count > 0 })
   }
 
-  submit() {}
+  submit() {
+    //TODO: add POST call to gravity with collector intent choices
+  }
 
   render(): JSX.Element {
     const options = this.options.map((text, index) =>
-      <SelectableLink key={index} href="#" text={text} onSelect={this.onOptionSelected.bind(this, index)} />
+      <Option key={index} href="#" text={text} onSelect={this.onOptionSelected.bind(this, index)} />
     )
     return (
       <Step

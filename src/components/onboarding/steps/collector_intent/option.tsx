@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import * as fonts from "../../assets/fonts"
-import Icon from "../icon"
+import * as fonts from "../../../../assets/fonts"
+import Icon from "../../../icon"
 
-interface SelectableLinkProps {
+interface OptionProps {
   href?: string
   text?: string
   onSelect: (selected: boolean) => void
@@ -22,6 +22,7 @@ display: none;
 border-radius: 50%;
 float: right;
 margin-right: 15px;
+line-height: 11px;
 `
 
 const Link = styled.a`
@@ -44,7 +45,7 @@ border-top: 1px solid #e5e5e5;
 }
 `
 
-class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
+class Option extends React.Component<OptionProps, LinkState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -62,14 +63,13 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
   }
 
   render(): JSX.Element {
-    console.log(this.state.selected)
     return (
       <div>
         <Link href={this.props.href} onClick={() => this.onSelect()}>
           {this.props.text}
 
           <IconContainer className={`collector-intent-checked ${this.state.selected ? "is-selected" : ""}`}>
-            <Icon name="check" color="white" fontSize="8px" />
+            <Icon name="check" color="white" fontSize="7px" />
           </IconContainer>
         </Link>
       </div>
@@ -77,4 +77,4 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
   }
 }
 
-export default SelectableLink
+export default Option
