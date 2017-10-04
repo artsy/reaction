@@ -24,20 +24,20 @@ exports[`login renders the snapshot 1`] = `
   >
     <input
       autoFocus={true}
-      className="file__StyledInput-s1d01h8e-1 qmhxa file__StyledInput-s2fklig-0 ffQmtI"
+      className="file__StyledInput-s1d01h8e-1 qmhxa file__StyledInput-s14cczvx-0 kELuxT"
       name="email"
       onChange={[Function]}
       placeholder="Email"
       value=""
     />
     <div
-      className="file__StyledDiv-s2fklig-2 gnqeba"
+      className="file__StyledDiv-s14cczvx-2 eKNcia"
     >
       <div
         className="border-container"
       />
       <input
-        className="file__BorderlessInput-s2fklig-1 fbjzqZ"
+        className="file__BorderlessInput-s14cczvx-1 bxtRHC"
         name="password"
         onBlur={[Function]}
         onChange={[Function]}
