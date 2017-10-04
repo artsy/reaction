@@ -53,7 +53,7 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   submit() {
-    //TODO: add POST call to gravity with collector intent choices
+    // TODO: add POST call to gravity with collector intent choices
   }
 
   render(): JSX.Element {
