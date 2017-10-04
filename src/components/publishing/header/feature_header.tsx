@@ -39,7 +39,7 @@ function renderAsset(url, title, imageChild) {
       </FeatureVideoContainer>
     )
   } else {
-    const src = url.length && resize(url, { width: 1200 })
+    const src = url.length && resize(url, { width: 1600 })
     const alt = url.length ? title : ""
     return (
       <FeatureImage src={src} alt={alt}>
