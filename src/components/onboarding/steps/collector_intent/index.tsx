@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import Step, { StepProps } from "../step"
+import Step from "../step"
 import Option from "./option"
 
 const OptionsContainer = styled.div`
@@ -9,12 +9,16 @@ const OptionsContainer = styled.div`
   margin: 0 auto 100px;
 `
 
+interface Props {
+  onStateChange?: ({ nextButtonEnabled }) => void
+}
+
 interface State {
   selectedOptions: { [option: string]: boolean }
   selectedCount: number
 }
 
-class CollectorIntent extends React.Component<StepProps, State> {
+class CollectorIntent extends React.Component<Props, State> {
   options = [
     "Buy Art & Design",
     "Sell Art & Design",

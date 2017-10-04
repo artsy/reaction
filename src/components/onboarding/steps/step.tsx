@@ -12,16 +12,22 @@ export interface StepProps {
 
 const Container = styled.div`
 `
+
+const Header = styled.div`text-align: center;`
+
 const Subtitle = styled(Title)`
   color: #999;
 `
+
 
 export default class Step extends React.Component<StepProps, any> {
   render() {
     return (
       <Container>
-        <Title titleSize="xlarge">{this.props.title}</Title>
-        <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
+        <Header>
+          <Title titleSize="xlarge">{this.props.title}</Title>
+          <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
+        </Header>
         <div>{this.props.children}</div>
       </Container>
     )

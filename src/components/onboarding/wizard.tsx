@@ -1,4 +1,6 @@
 import * as React from "react"
+import styled from "styled-components"
+
 import Button from "../buttons/default"
 
 interface Props {
@@ -9,6 +11,8 @@ interface State {
   currentStep: number
   nextButtonEnabled: boolean
 }
+
+const Footer = styled.div`text-align: center;`
 
 class Wizard extends React.Component<Props, State> {
   currentStepComponent: any
@@ -54,9 +58,11 @@ class Wizard extends React.Component<Props, State> {
     return (
       <div>
         {step}
-        <Button disabled={!this.state.nextButtonEnabled} onClick={this.onNextButtonPressed.bind(this)}>
-          Next
-        </Button>
+        <Footer>
+          <Button disabled={!this.state.nextButtonEnabled} onClick={this.onNextButtonPressed.bind(this)}>
+            Next
+          </Button>
+        </Footer>
       </div>
     )
   }
