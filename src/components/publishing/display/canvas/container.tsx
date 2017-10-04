@@ -1,56 +1,50 @@
 import React from "react"
+import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
+import { sizeMeRefreshRate } from "../../constants"
 import Slideshow from "./slideshow"
 import CanvasText from "./text"
+import Video from "./video"
 
-interface DisplayCanvasContainerProps extends React.HTMLProps<HTMLDivElement> {
+interface DisplayCanvasContainerProps {
   unit: any
   disclaimer: any
-}
-
-interface DivProps extends React.HTMLProps<HTMLDivElement> {
-  backgroundUrl?: string
-}
-
-function isVideo(url) {
-  return url.includes("mp4")
+  size?: {
+    width: number
+  }
 }
 
 function renderAsset(asset) {
-  if (isVideo(asset.url)) {
-    return (
-      <VideoContainer>
-        <Video src={asset.url} autoPlay controls={false} loop muted playsInline />
-      </VideoContainer>
-    )
+  if (asset.url.includes("mp4")) {
+    return <Video src={asset.url} />
   } else {
     return <Image src={crop(asset.url, { width: 1200, height: 760 })} />
   }
 }
 
 const DisplayCanvasContainer: React.SFC<DisplayCanvasContainerProps> = props => {
-  const { unit, disclaimer } = props
+  const { unit, disclaimer, size } = props
 
   if (unit.layout === "overlay") {
     return (
-      <Canvas href={unit.link.url} target="_blank">
+      <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
         <Background backgroundUrl={unit.assets[0].url} />
         <CanvasText unit={unit} />
       </Canvas>
     )
   } else if (unit.layout === "slideshow") {
     return (
-      <Slideshow unit={unit} disclaimer={disclaimer}>
-        <Canvas href={unit.link.url} target="_blank">
+      <Slideshow unit={unit} disclaimer={disclaimer} containerWidth={size.width}>
+        <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
           <CanvasText unit={unit} disclaimer={disclaimer} />
         </Canvas>
       </Slideshow>
     )
   } else {
     return (
-      <Canvas href={unit.link.url} target="_blank">
+      <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
         {renderAsset(unit.assets[0])}
         <StandardContainer>
           <CanvasText unit={unit} disclaimer={disclaimer} />
@@ -60,13 +54,24 @@ const DisplayCanvasContainer: React.SFC<DisplayCanvasContainerProps> = props => 
   }
 }
 
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
+  backgroundUrl?: string
+}
+
+interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
+  containerWidth: any
+  href: any
+  layout: string
+  target: string
+}
+
 const Div: StyledFunction<DivProps> = styled.div
+const responsiveLink: StyledFunction<ResponsiveProps> = styled.a
 
 const Image = styled.img`
   display: block;
   width: 65%;
   height: 100%;
-  max-height: 460px;
   object-fit: cover;
   ${pMedia.sm`
     width: 100%;
@@ -76,27 +81,34 @@ const Image = styled.img`
     object-fit: contain;
   `}
 `
-const Canvas = styled.a`
+const Canvas = responsiveLink`
   width: 100%;
   height: 460px;
   color: #000;
   text-decoration: none;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
   align-items: center;
   position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: ${props => (props.layout === "standard" ? "space-between;" : "center;")}
+  ${props => pMedia.lg`
+    ${props.layout !== "overlay" && "max-height: " + props.containerWidth * 0.65 * 0.59 + "px;"}
+    ${props.layout === "standard" && "padding: 0 20px;width: calc(100% - 40px);"}
+  `}
   ${pMedia.sm`
+    padding: 0;
+    width: 100%;
     height: 400px;
     flex-direction: column;
     justify-content: flex-start;
   `}
 `
 const StandardContainer = styled.div`
-  max-width: 35%;
+  max-width: calc(35% - 20px);
   height: 100%;
   ${pMedia.sm`
     max-width: 100%;
+    width: 100%;
     height: auto;
   `}
 `
@@ -122,23 +134,10 @@ const Background = Div`
     opacity: .7;
   }
 `
-const VideoContainer = styled.div`
-  width: 65%;
-  max-width: 760px;
-  height: 460px;
-  overflow: hidden;
-  ${pMedia.sm`
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  `}
-`
-const Video = styled.video`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  ${pMedia.sm`
-    height: auto;
-  `}
-`
-export default DisplayCanvasContainer
+
+const sizeMeOptions = {
+  refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
+}
+
+export default sizeMe(sizeMeOptions)(DisplayCanvasContainer)

@@ -1,21 +1,17 @@
 import { compact, map } from "lodash"
 import React from "react"
-import sizeMe from "react-sizeme"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../assets/colors"
 import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
 import Icon from "../../../icon"
-import { sizeMeRefreshRate } from "../../constants"
 import Fonts from "../../fonts"
 
 interface SlideshowProps {
   unit: any
   disclaimer: any
-  size?: {
-    width: number
-  }
+  containerWidth: number
 }
 
 class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
@@ -27,10 +23,10 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
   }
 
   renderTitleCard() {
-    const { children, disclaimer, size, unit } = this.props
+    const { children, disclaimer, containerWidth, unit } = this.props
     const hasCaptions = compact(map(unit.assets, "caption")).length > 0
     return (
-      <Title containerWidth={size.width}>
+      <Title containerWidth={containerWidth}>
         {children}
         {hasCaptions && <Disclaimer>{disclaimer}</Disclaimer>}
       </Title>
@@ -38,16 +34,16 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
   }
 
   renderSlides = () => {
-    const { unit, size } = this.props
+    const { unit, containerWidth } = this.props
     return unit.assets.map((image, i) => {
       return (
-        <Slide key={i} className={i === 0 && "title-card"} containerWidth={size.width}>
-          {i === 0 && this.props.size.width >= 900 && this.renderTitleCard()}
+        <Slide key={i} className={i === 0 && "title-card"} containerWidth={containerWidth}>
+          {i === 0 && containerWidth >= 900 && this.renderTitleCard()}
           <div>
             <Image
               src={crop(image.url, { width: 780, height: 460 })}
               alt={image.caption || ""}
-              containerWidth={size.width}
+              containerWidth={containerWidth}
             />
             {image.caption && <Caption>{image.caption}</Caption>}
           </div>
@@ -61,15 +57,15 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
   }
 
   render() {
-    const { width } = this.props.size
+    const { containerWidth } = this.props
     const sliderSettings = {
       dots: false,
       lazyLoad: false,
       infinite: false,
       variableWidth: true,
       centerMode: true,
-      nextArrow: <RightArrow containerWidth={width} onRightArrow={() => this.slider.slickGoTo(0)} />,
-      prevArrow: <LeftArrow containerWidth={width} isOnTitle={this.state.isOnTitle} />,
+      nextArrow: <RightArrow containerWidth={containerWidth} onRightArrow={() => this.slider.slickGoTo(0)} />,
+      prevArrow: <LeftArrow containerWidth={containerWidth} isOnTitle={this.state.isOnTitle} />,
       initialSlide: 0,
       afterChange: currentSlide => {
         this.onSlideChange(currentSlide)
@@ -85,11 +81,11 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
     }
 
     return (
-      <SliderContainer containerWidth={width}>
+      <SliderContainer containerWidth={containerWidth}>
         <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
           {this.renderSlides()}
         </Slider>
-        {this.props.size.width < 900 && this.renderTitleCard()}
+        {containerWidth < 900 && this.renderTitleCard()}
       </SliderContainer>
     )
   }
@@ -129,14 +125,14 @@ interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
 
 const arrowDiv: StyledFunction<NavArrowProps> = styled.div
 const responsiveDiv: StyledFunction<ResponsiveProps> = styled.div
-const reponsiveImage: StyledFunction<ResponsiveProps> = styled.img
+const responsiveImage: StyledFunction<ResponsiveProps> = styled.img
 
 const NavArrow = arrowDiv`
   display: flex;
   align-items: center;
   position: absolute;
   height: 100%;
-  max-height: ${props => props.containerWidth * 0.65 * 0.59 + "px"};
+  max-height: ${props => props.containerWidth * 0.65 * 0.59 + "px;"}
   top: 0;
   box-sizing: border-box;
   opacity: ${props => (props.isVisible ? "1;" : "0;")}
@@ -159,7 +155,8 @@ const SliderContainer = responsiveDiv`
   width: 100%;
   overflow: hidden;
   .slick-list {
-    max-height: ${props => "calc(" + props.containerWidth * 0.65 * 0.59 + "px + 3em);"}
+    max-height: ${props => "calc(" + props.containerWidth * 0.65 * 0.59 + "px + 2.5em);"}
+    padding: 0 !important;
   }
 `
 const Slide = responsiveDiv`
@@ -172,13 +169,14 @@ const Slide = responsiveDiv`
       max-width: ${props.containerWidth + "px;"}
     `}
     ${props => pMedia.md`
-      max-width: ${props.containerWidth * 0.65 + "px"};
+      max-width: ${props.containerWidth * 0.65 + "px;"}
   `}
   }
 `
 const Title = responsiveDiv`
   display: inline-block;
-  width: 420px;
+  width: 380px;
+  padding: 0 20px;
   ${props => pMedia.lg`
     width: ${props.containerWidth * 0.35 + "px;"}
     a {
@@ -186,8 +184,7 @@ const Title = responsiveDiv`
     }
   `}
   ${pMedia.md`
-    width: calc(100% - 40px);
-    padding: 0 20px;
+    width: 100%;
     a {
       height: initial;
       max-height: initial;
@@ -195,20 +192,20 @@ const Title = responsiveDiv`
   `}
 `
 const Disclaimer = styled.div`
-  margin: -5px 20px 0;
+  margin: -5px 0 0;
   ${pMedia.md`
     margin: 0;
+    max-width: calc(100% - 40px);
   `}
 `
-const Image = reponsiveImage`
+const Image = responsiveImage`
   height: auto;
   max-width: 780px;
   max-height: 460px;
   object-fit: cover;
   object-position: center;
   ${props => pMedia.lg`
-    max-width: ${props.containerWidth * 0.65 + "px"};
-    max-height: ${props.containerWidth * 0.65 * 0.59 + "px"};
+    max-height: ${props.containerWidth * 0.65 * 0.59 + "px;"}
   `}
 `
 const Caption = styled.div`
@@ -217,9 +214,4 @@ const Caption = styled.div`
   margin-top: 10px;
 `
 
-const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
-  noPlaceholder: true,
-}
-
-export default sizeMe(sizeMeOptions)(DisplayCanvasSlideshow)
+export default DisplayCanvasSlideshow

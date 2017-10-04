@@ -84,9 +84,10 @@ export const Campaign = {
 }
 
 export const UnitCanvasOverlay = {
+  type: "canvas",
+  layout: "overlay",
   headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
-  layout: "overlay",
   link: {
     text: "Link Example",
     url: "http://artsy.net",
@@ -100,9 +101,10 @@ export const UnitCanvasOverlay = {
 }
 
 export const UnitCanvasImage = {
+  type: "canvas",
+  layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
-  layout: "standard",
   link: {
     text: "Link Example",
     url: "http://artsy.net",
@@ -116,9 +118,10 @@ export const UnitCanvasImage = {
 }
 
 export const UnitCanvasVideo = {
+  type: "canvas",
+  layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
-  layout: "standard",
   link: {
     text: "Link Example",
     url: "http://artsy.net",
@@ -130,9 +133,10 @@ export const UnitCanvasVideo = {
 }
 
 export const UnitCanvasSlideshow = {
+  type: "canvas",
+  layout: "slideshow",
   headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
-  layout: "slideshow",
   link: {
     text: "Link Example",
     url: "http://artsy.net",
@@ -158,6 +162,7 @@ export const UnitCanvasSlideshow = {
 }
 
 export const UnitPanel = {
+  type: "panel",
   headline: "Euismod Inceptos Quam",
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",

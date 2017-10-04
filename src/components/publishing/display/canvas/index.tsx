@@ -5,16 +5,10 @@ import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
 import Canvas from "./container"
 
-interface DisplayCanvasProps extends React.HTMLProps<HTMLDivElement> {
+interface DisplayCanvasProps {
   unit: any
   campaign: any
 }
-
-interface DivProps extends React.HTMLProps<HTMLDivElement> {
-  layout: string
-}
-
-const Div: StyledFunction<DivProps> = styled.div
 
 const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
   const { unit, campaign } = props
@@ -30,6 +24,12 @@ const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
     </DisplayContainer>
   )
 }
+
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
+  layout: string
+}
+
+const Div: StyledFunction<DivProps> = styled.div
 
 const DisplayContainer = Div`
   display: flex;

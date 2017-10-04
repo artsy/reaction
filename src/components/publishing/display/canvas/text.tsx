@@ -22,8 +22,8 @@ const DisplayCanvasText: React.SFC<DisplayCanvasTextProps> = props => {
     <CanvasInner layout={unit.layout} isSlideshowWithCaption>
       <Logo layout={unit.layout} src={unit.logo} />
       <div>
-        <Headline layout={unit.layout} isSlideshowWithCaption>{unit.headline}</Headline>
-        <Link layout={unit.layout} isSlideshowWithCaption>{unit.link.text}</Link>
+        <Headline layout={unit.layout}>{unit.headline}</Headline>
+        <Link layout={unit.layout}>{unit.link.text}</Link>
       </div>
       {hasDisclaimer && disclaimer}
     </CanvasInner>
@@ -40,7 +40,7 @@ const Logo = Img`
   max-width: ${props => (props.layout === "overlay" ? "300px;" : "185px;")}
   max-height: ${props => (props.layout === "overlay" ? "100px;" : "65px;")}
   margin: ${props => (props.layout === "overlay" ? "60px auto;" : "20px 0;")}
-  ${props => pMedia.sm`
+  ${props => pMedia.md`
     object-position: left;
     width: auto;
     ${props.layout === "overlay" &&
@@ -54,14 +54,13 @@ const CanvasInner = Div`
   flex-direction: column;
   justify-content: ${props =>
     props.layout === "overlay" || props.isSlideshowWithCaption ? "space-around;" : "space-between;"}
-  padding: 0 20px;
   ${props =>
     props.layout === "overlay" &&
     `text-align: center;
         color: #fff;
         max-width: 500px;`}
   ${props => pMedia.md`
-    ${props.isSlideshowWithCaption && "padding: 0; width: 100%;"}
+    ${props.layout === "slideshow" && "width: 100%;"}
   `}
   ${pMedia.sm`
     max-width: 100%;
@@ -74,12 +73,17 @@ const Headline = Div`
   margin-bottom: 25px;
   line-height: ${props => (props.layout === "overlay" ? "1.35em;" : "1.1em;")} 
   ${props => pMedia.lg`
-    ${props.isSlideshowWithCaption && Fonts.garamond("s23")}
+    ${props.layout !== "overlay" && Fonts.garamond("s23")}
   `}
   ${props => pMedia.sm`
-    ${props.layout === "overlay" ? Fonts.garamond("s17") : Fonts.garamond("s23")}
-    ${props.layout === "overlay" && "max-width: calc(100% - 40px);"}
-    ${props.layout === "overlay" ? "margin: 0 auto 10px auto;" : "margin-bottom: 10px;"}
+    ${props.layout === "overlay"
+      ? `margin: 0 auto 10px auto;
+         padding: 20px;`
+      : `margin-bottom: 10px;
+         max-width: calc(100% - 40px);`}
+  `}
+  ${props => pMedia.xs`
+    ${props.layout === "overlay" && Fonts.garamond("s17")}
     line-height: 1.35em;
   `}
 `
@@ -98,9 +102,9 @@ const Link = Div`
     opacity: .6;
   }
   ${props => pMedia.lg`
-    ${props.isSlideshowWithCaption && Fonts.garamond("s17")}
+    ${props.layout !== "overlay" && Fonts.garamond("s17")}
   `}
-  ${pMedia.sm`
+  ${pMedia.md`
     ${Fonts.garamond("s17")}
     line-height: 1.35em;
   `}
