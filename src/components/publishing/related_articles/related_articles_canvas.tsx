@@ -40,7 +40,7 @@ const RelatedArticlesContainer = styled.div`
   flex-direction: column;
   max-width: 1250px;
   margin: 30px auto 60px auto;
-  ${pMedia.lg`
+  ${pMedia.xl`
     margin: 30px 20px 60px 20px;
   `}
 `

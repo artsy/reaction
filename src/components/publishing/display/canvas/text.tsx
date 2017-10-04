@@ -22,8 +22,8 @@ const DisplayCanvasText: React.SFC<DisplayCanvasTextProps> = props => {
     <CanvasInner layout={unit.layout} isSlideshowWithCaption>
       <Logo layout={unit.layout} src={unit.logo} />
       <div>
-        <Headline layout={unit.layout}>{unit.headline}</Headline>
-        <Link layout={unit.layout}>{unit.link.text}</Link>
+        <Headline layout={unit.layout} isSlideshowWithCaption>{unit.headline}</Headline>
+        <Link layout={unit.layout} isSlideshowWithCaption>{unit.link.text}</Link>
       </div>
       {hasDisclaimer && disclaimer}
     </CanvasInner>
@@ -60,6 +60,9 @@ const CanvasInner = Div`
     `text-align: center;
         color: #fff;
         max-width: 500px;`}
+  ${props => pMedia.md`
+    ${props.isSlideshowWithCaption && "padding: 0; width: 100%;"}
+  `}
   ${pMedia.sm`
     max-width: 100%;
     width: 100%;
@@ -70,6 +73,9 @@ const Headline = Div`
   ${props => (props.layout === "overlay" ? Fonts.garamond("s23") : Fonts.garamond("s40"))}
   margin-bottom: 25px;
   line-height: ${props => (props.layout === "overlay" ? "1.35em;" : "1.1em;")} 
+  ${props => pMedia.lg`
+    ${props.isSlideshowWithCaption && Fonts.garamond("s23")}
+  `}
   ${props => pMedia.sm`
     ${props.layout === "overlay" ? Fonts.garamond("s17") : Fonts.garamond("s23")}
     ${props.layout === "overlay" && "max-width: calc(100% - 40px);"}
@@ -91,6 +97,9 @@ const Link = Div`
   &:hover {
     opacity: .6;
   }
+  ${props => pMedia.lg`
+    ${props.isSlideshowWithCaption && Fonts.garamond("s17")}
+  `}
   ${pMedia.sm`
     ${Fonts.garamond("s17")}
     line-height: 1.35em;

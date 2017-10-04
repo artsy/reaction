@@ -1,16 +1,21 @@
 import { compact, map } from "lodash"
 import React from "react"
+import sizeMe from "react-sizeme"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../assets/colors"
 import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
 import Icon from "../../../icon"
+import { sizeMeRefreshRate } from "../../constants"
 import Fonts from "../../fonts"
 
-interface SlideshowProps extends React.HTMLProps<HTMLDivElement> {
+interface SlideshowProps {
   unit: any
   disclaimer: any
+  size?: {
+    width: number
+  }
 }
 
 class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
@@ -21,20 +26,29 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
     this.state = { isOnTitle: true }
   }
 
-  renderSlides = () => {
-    const { children, disclaimer, unit } = this.props
+  renderTitleCard() {
+    const { children, disclaimer, size, unit } = this.props
     const hasCaptions = compact(map(unit.assets, "caption")).length > 0
+    return (
+      <Title containerWidth={size.width}>
+        {children}
+        {hasCaptions && <Disclaimer>{disclaimer}</Disclaimer>}
+      </Title>
+    )
+  }
 
+  renderSlides = () => {
+    const { unit, size } = this.props
     return unit.assets.map((image, i) => {
       return (
-        <Slide key={i} className={i === 0 && "title-card"}>
-          {i === 0 &&
-            <Title>
-              {children}
-              {hasCaptions && <Disclaimer>{disclaimer}</Disclaimer>}
-            </Title>}
+        <Slide key={i} className={i === 0 && "title-card"} containerWidth={size.width}>
+          {i === 0 && this.props.size.width >= 900 && this.renderTitleCard()}
           <div>
-            <Image src={crop(image.url, { width: 780, height: 460 })} alt={image.caption || ""} />
+            <Image
+              src={crop(image.url, { width: 780, height: 460 })}
+              alt={image.caption || ""}
+              containerWidth={size.width}
+            />
             {image.caption && <Caption>{image.caption}</Caption>}
           </div>
         </Slide>
@@ -47,25 +61,35 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
   }
 
   render() {
+    const { width } = this.props.size
     const sliderSettings = {
       dots: false,
       lazyLoad: false,
       infinite: false,
       variableWidth: true,
       centerMode: true,
-      nextArrow: <RightArrow onRightArrow={() => this.slider.slickGoTo(0)} />,
-      prevArrow: <LeftArrow isOnTitle={this.state.isOnTitle} />,
+      nextArrow: <RightArrow containerWidth={width} onRightArrow={() => this.slider.slickGoTo(0)} />,
+      prevArrow: <LeftArrow containerWidth={width} isOnTitle={this.state.isOnTitle} />,
       initialSlide: 0,
       afterChange: currentSlide => {
         this.onSlideChange(currentSlide)
       },
+      responsive: [
+        {
+          breakpoint: 900,
+          settings: {
+            infinite: true,
+          },
+        },
+      ],
     }
 
     return (
-      <SliderContainer>
+      <SliderContainer containerWidth={width}>
         <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
           {this.renderSlides()}
         </Slider>
+        {this.props.size.width < 900 && this.renderTitleCard()}
       </SliderContainer>
     )
   }
@@ -73,7 +97,12 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
 
 const LeftArrow = props => {
   return (
-    <NavArrow direction="left" onClick={props.onClick} isVisible={!props.isOnTitle}>
+    <NavArrow
+      containerWidth={props.containerWidth}
+      direction="left"
+      onClick={props.onClick}
+      isVisible={!props.isOnTitle}
+    >
       <Icon name="chevron-left" color="black" fontSize="24px" />
     </NavArrow>
   )
@@ -82,7 +111,7 @@ const LeftArrow = props => {
 const RightArrow = props => {
   const onClick = props.currentSlide + 1 === props.slideCount ? props.onRightArrow : props.onClick
   return (
-    <NavArrow direction="right" onClick={onClick} isVisible>
+    <NavArrow containerWidth={props.containerWidth} direction="right" onClick={onClick} isVisible>
       <Icon name="chevron-right" color="black" fontSize="24px" />
     </NavArrow>
   )
@@ -91,15 +120,23 @@ const RightArrow = props => {
 interface NavArrowProps extends React.HTMLProps<HTMLDivElement> {
   direction: string
   isVisible?: boolean
+  containerWidth: number
 }
 
-const div: StyledFunction<NavArrowProps> = styled.div
+interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
+  containerWidth: number
+}
 
-const NavArrow = div`
+const arrowDiv: StyledFunction<NavArrowProps> = styled.div
+const responsiveDiv: StyledFunction<ResponsiveProps> = styled.div
+const reponsiveImage: StyledFunction<ResponsiveProps> = styled.img
+
+const NavArrow = arrowDiv`
   display: flex;
   align-items: center;
   position: absolute;
   height: 100%;
+  max-height: ${props => props.containerWidth * 0.65 * 0.59 + "px"};
   top: 0;
   box-sizing: border-box;
   opacity: ${props => (props.isVisible ? "1;" : "0;")}
@@ -114,57 +151,75 @@ const NavArrow = div`
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
-  ${pMedia.sm`
+  ${pMedia.md`
     display: none;
   `}
 `
-
-const SliderContainer = styled.div`
+const SliderContainer = responsiveDiv`
   width: 100%;
   overflow: hidden;
-  .slick-slider {
-    height: 100%;
+  .slick-list {
+    max-height: ${props => "calc(" + props.containerWidth * 0.65 * 0.59 + "px + 3em);"}
   }
 `
-
-const Slide = styled.div`
-  max-width: 780px;
+const Slide = responsiveDiv`
   margin-right: 20px;
   &.title-card {
     display: flex;
     justify-content: space-between;
     width: 1200px;
-    max-width: 100%;
-  }
-  ${pMedia.xs`
-    max-width: 400px;
-    height: auto;
+    ${props => pMedia.lg`
+      max-width: ${props.containerWidth + "px;"}
+    `}
+    ${props => pMedia.md`
+      max-width: ${props.containerWidth * 0.65 + "px"};
   `}
-`
-const Title = styled.div`
-  display: inline-block;
-  a {
-    max-width: 420px;
-    width: 420px;
-    min-width: 100%;
   }
+`
+const Title = responsiveDiv`
+  display: inline-block;
+  width: 420px;
+  ${props => pMedia.lg`
+    width: ${props.containerWidth * 0.35 + "px;"}
+    a {
+      max-height: ${props.containerWidth * 0.65 * 0.59 + "px;"}
+    }
+  `}
+  ${pMedia.md`
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    a {
+      height: initial;
+      max-height: initial;
+    }
+  `}
 `
 const Disclaimer = styled.div`
   margin: -5px 20px 0;
+  ${pMedia.md`
+    margin: 0;
+  `}
 `
-const Image = styled.img`
+const Image = reponsiveImage`
   height: auto;
-  max-width: 760px;
+  max-width: 780px;
   max-height: 460px;
-  height: 100%;
   object-fit: cover;
   object-position: center;
+  ${props => pMedia.lg`
+    max-width: ${props.containerWidth * 0.65 + "px"};
+    max-height: ${props.containerWidth * 0.65 * 0.59 + "px"};
+  `}
 `
-
 const Caption = styled.div`
   ${Fonts.garamond("s11")}
   color: ${Colors.grayMedium};
   margin-top: 10px;
 `
 
-export default DisplayCanvasSlideshow
+const sizeMeOptions = {
+  refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
+}
+
+export default sizeMe(sizeMeOptions)(DisplayCanvasSlideshow)

@@ -95,7 +95,7 @@ const StyledSections = Div`
   width: 100%;
   margin: ${props => chooseMargin(props.layout)}
   max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
-  ${props => pMedia.lg`
+  ${props => pMedia.xl`
     max-width: ${props.layout === "standard" ? "680px" : "auto"};
     margin: ${props.layout === "standard" ? "auto" : "80px auto 0 auto"};
   `}
