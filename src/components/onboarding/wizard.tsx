@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react"
 
-import { StepProps } from './types';
+import { StepProps } from "./types"
 
 interface Props {
   stepComponents: Array<React.ComponentClass<StepProps>>
@@ -8,7 +8,6 @@ interface Props {
 
 interface State {
   currentStep: number
-  nextButtonEnabled: boolean
 }
 
 class Wizard extends React.Component<Props, State> {
@@ -17,7 +16,6 @@ class Wizard extends React.Component<Props, State> {
 
     this.state = {
       currentStep: 0,
-      nextButtonEnabled: false,
     }
   }
 
