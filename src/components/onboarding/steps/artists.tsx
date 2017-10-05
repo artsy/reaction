@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react"
 
-import Input from '../../input';
-import { StepProps } from '../types';
-import { Layout } from './layout';
+import Input from "../../input"
+import { StepProps } from "../types"
+import { Layout } from "./layout"
 
 export default class Artists extends React.Component<StepProps, null> {
   onInputChange = e => {

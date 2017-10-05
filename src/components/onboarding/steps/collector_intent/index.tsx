@@ -5,6 +5,7 @@ import { ContextConsumer, ContextProps } from '../../../artsy';
 import { StepProps } from '../../types';
 import { Layout } from '../layout';
 import Option from './option';
+import updateCollectorProfile from './update_collector_profile';
 
 const OptionsContainer = styled.div`
   width: 450px;
@@ -56,49 +57,22 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   submit() {
-    // const keys = Object.keys(this.state.selectedOptions)
-    // const intents = keys.filter(key => {
-    //   return this.state.selectedOptions[key]
-    // })
-    // console.log("intents:", intents)
-    // const options: RequestInit = {
-    //   method: "PUT",
-    //   credentials: "same-origin",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     "X-Requested-With": "XMLHttpRequest",
-    //     "X-Access-Token": this.props.currentUser.accessToken,
-    //   },
-    //   body: JSON.stringify({
-    //     intents: JSON.stringify(intents),
-    //   }),
-    // }
-    // This should eventually be the collector id that is available on the props.
-    // I'm thinking the endpoint should also move into some sort of sd object.
-    // fetch(`https://api.artsy.net/api/v1/collector_profile/${this.props.currentUser.id}`, options)
-    //   .then(res => {
-    //     if (res.status >= 500) {
-    //       throw new Error(`Failed with status ${res.status}`)
-    //     } else if (res.status === 200) {
-    //       window.analytics.track("Completed collector intent question")
-    //       this.props.onNextButtonPressed()
-    //     } else {
-    //       // I'm also thinking the we should also handle the error differently, but
-    //       // I'm not super clear what the error behavior should be yet.
-    //       this.setState({
-    //         error: "Invalid email or password",
-    //       })
-    //     }
-    //   })
-    //   .catch(err => {
-    //     if (process.env.NODE_ENV !== "test") {
-    //       console.error(err)
-    //     }
-    //     this.setState({
-    //       error: "Internal Error. Please contact support@artsy.net",
-    //     })
-    //   })
+    const keys = Object.keys(this.state.selectedOptions)
+    const intents = keys.filter(key => {
+      return this.state.selectedOptions[key]
+    })
+    console.log("intents:", intents)
+
+    updateCollectorProfile(this.props.currentUser, { intents })
+      .then(data => {
+        window.analytics.track("Completed collector intent question")
+        this.props.onNextButtonPressed()
+      })
+      .catch(err => {
+        this.setState({
+          error: "Invalid email or password",
+        })
+      })
   }
 
   render() {
