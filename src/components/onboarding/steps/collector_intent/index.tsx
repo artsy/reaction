@@ -61,7 +61,6 @@ class CollectorIntent extends React.Component<Props, State> {
     const intents = keys.filter(key => {
       return this.state.selectedOptions[key]
     })
-    console.log("intents:", intents)
 
     updateCollectorProfile(this.props.currentUser, { intents })
       .then(data => {
