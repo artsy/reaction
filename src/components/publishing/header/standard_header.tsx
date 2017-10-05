@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../helpers"
-import AuthorDate from "../author_date"
+import Byline from "../byline/byline"
 import Fonts from "../fonts"
 
 interface StandardHeaderProps {
@@ -16,7 +16,7 @@ const StandardHeader: React.SFC<StandardHeaderProps> = props => {
     <StandardHeaderContainer>
       <Vertical>{vertical}</Vertical>
       <Title>{title}</Title>
-      <AuthorDate authors={article.contributing_authors} date={article.published_at} layout="standard" />
+      <Byline article={article} layout="standard" />
     </StandardHeaderContainer>
   )
 }

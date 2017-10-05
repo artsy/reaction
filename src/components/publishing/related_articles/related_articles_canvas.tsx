@@ -19,16 +19,20 @@ interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
 
 const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
   const { articles, vertical } = props
-  return (
-    <RelatedArticlesContainer>
-      <Title>Further Reading <VerticalSpan>{vertical.name}</VerticalSpan></Title>
-      <ArticlesWrapper>
-        {_.map(articles, article => {
-          return <RelatedArticleFigure article={article} />
-        })}
-      </ArticlesWrapper>
-    </RelatedArticlesContainer>
-  )
+  if (!vertical) {
+    return <div />
+  } else {
+    return (
+      <RelatedArticlesContainer>
+        <Title>Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan></Title>
+        <ArticlesWrapper>
+          {_.map(articles, (article, i) => {
+            return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
+          })}
+        </ArticlesWrapper>
+      </RelatedArticlesContainer>
+    )
+  }
 }
 
 const RelatedArticlesContainer = styled.div`
@@ -45,19 +49,7 @@ const Title = styled.div`
   margin-bottom: 30px;
 `
 const VerticalSpan = styled.span`
-  margin-left: 30px;
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
-    background-color: #000;
-    margin-bottom: 5px;
-  }
   ${pMedia.sm`
-    margin-left: 0px;
     display: block;
   `}
 `

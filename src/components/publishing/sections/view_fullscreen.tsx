@@ -33,6 +33,11 @@ const ViewFullscreenLink = styled.div`
   width: 25px;
   height: 25px;
   cursor: pointer;
+  opacity: .6;
+  transition: opacity .3s;
+  &:hover {
+    opacity: 1;
+  }
 `
 
 export default ViewFullscreen

@@ -81,7 +81,7 @@ exports[`renders an artwork caption properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -99,7 +99,7 @@ exports[`renders an artwork caption properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     cursor: pointer;
     display: inline-block;
   }
@@ -114,7 +114,7 @@ exports[`renders an artwork caption properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -130,7 +130,7 @@ exports[`renders an artwork caption properly 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -274,7 +274,7 @@ exports[`renders an image caption properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
     cursor: pointer;
     display: inline-block;
   }
@@ -289,7 +289,7 @@ exports[`renders an image caption properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
@@ -305,7 +305,7 @@ exports[`renders an image caption properly 1`] = `
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 

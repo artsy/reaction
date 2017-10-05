@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a long caption properly 1`] = `
-.c3 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,18 +13,32 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c4 > p,
-.c4 p,
-.c4 .public-DraftEditorPlaceholder-root {
+.c6 {
+  padding: 0;
+}
+
+.c6 > p,
+.c6 p,
+.c6 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
 }
 
-.c2 {
+.c6 > a,
+.c6 a {
+  color: #999;
+}
+
+.c6 > a:hover,
+.c6 a:hover {
+  color: black;
+}
+
+.c4 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -32,10 +46,27 @@ exports[`renders a long caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
+  opacity: .6;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .c0 {
   position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
 }
 
 .c1 {
@@ -43,8 +74,14 @@ exports[`renders a long caption properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c3 {
+  .c5 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    padding: 0px;
   }
 }
 
@@ -62,66 +99,70 @@ exports[`renders a long caption properly 1`] = `
       width="100%"
     />
     <div
-      className="c2"
-      onClick={[Function]}
+      className="c2 c3"
     >
-      <svg
-        version="1.1"
-        viewBox="0 0 27 27"
-        xmlns="http://www.w3.org/2000/svg"
+      <div
+        className="c4"
+        onClick={[Function]}
       >
-        <g
-          fill="none"
-          fillRule="evenodd"
-          stroke="none"
-          strokeWidth="1"
+        <svg
+          className="expand"
+          version="1.1"
+          viewBox="0 0 27 27"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <g>
-            <circle
-              cx="13.9575195"
-              cy="13.0588379"
-              fill="#000000"
-              fillRule="nonzero"
-              opacity="0.6"
-              r="13"
-            />
-            <g
-              stroke="#FFFFFF"
-              transform="translate(8.000000, 7.000000)"
-            >
-              <g>
-                <g
-                  transform="translate(0.382532, 0.382532)"
-                >
-                  <polyline
-                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                  />
-                  <polyline
-                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                  />
-                  <path
-                    d="M10.360254,0.796942618 L0.796942618,10.360254"
-                    strokeLinecap="square"
-                  />
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <g>
+              <circle
+                cx="13.9575195"
+                cy="13.0588379"
+                fill="#000000"
+                fillRule="nonzero"
+                r="13"
+              />
+              <g
+                stroke="#FFFFFF"
+                transform="translate(8.000000, 7.000000)"
+              >
+                <g>
+                  <g
+                    transform="translate(0.382532, 0.382532)"
+                  >
+                    <polyline
+                      points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                    />
+                    <polyline
+                      points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                      transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                    />
+                    <path
+                      d="M10.360254,0.796942618 L0.796942618,10.360254"
+                      strokeLinecap="square"
+                    />
+                  </g>
                 </g>
               </g>
             </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   </div>
   <div
-    className="c3"
+    className="c5"
   >
     <div
-      className="c4"
+      className="c6"
     >
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<p>Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+            "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
           }
         }
       />
@@ -131,7 +172,7 @@ exports[`renders a long caption properly 1`] = `
 `;
 
 exports[`renders a react child as caption properly 1`] = `
-.c3 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -143,18 +184,32 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c4 > p,
-.c4 p,
-.c4 .public-DraftEditorPlaceholder-root {
+.c6 {
+  padding: 0;
+}
+
+.c6 > p,
+.c6 p,
+.c6 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
 }
 
-.c2 {
+.c6 > a,
+.c6 a {
+  color: #999;
+}
+
+.c6 > a:hover,
+.c6 a:hover {
+  color: black;
+}
+
+.c4 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -162,10 +217,27 @@ exports[`renders a react child as caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
+  opacity: .6;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .c0 {
   position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
 }
 
 .c1 {
@@ -173,8 +245,14 @@ exports[`renders a react child as caption properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c3 {
+  .c5 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    padding: 0px;
   }
 }
 
@@ -192,61 +270,65 @@ exports[`renders a react child as caption properly 1`] = `
       width="100%"
     />
     <div
-      className="c2"
-      onClick={[Function]}
+      className="c2 c3"
     >
-      <svg
-        version="1.1"
-        viewBox="0 0 27 27"
-        xmlns="http://www.w3.org/2000/svg"
+      <div
+        className="c4"
+        onClick={[Function]}
       >
-        <g
-          fill="none"
-          fillRule="evenodd"
-          stroke="none"
-          strokeWidth="1"
+        <svg
+          className="expand"
+          version="1.1"
+          viewBox="0 0 27 27"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <g>
-            <circle
-              cx="13.9575195"
-              cy="13.0588379"
-              fill="#000000"
-              fillRule="nonzero"
-              opacity="0.6"
-              r="13"
-            />
-            <g
-              stroke="#FFFFFF"
-              transform="translate(8.000000, 7.000000)"
-            >
-              <g>
-                <g
-                  transform="translate(0.382532, 0.382532)"
-                >
-                  <polyline
-                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                  />
-                  <polyline
-                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                  />
-                  <path
-                    d="M10.360254,0.796942618 L0.796942618,10.360254"
-                    strokeLinecap="square"
-                  />
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <g>
+              <circle
+                cx="13.9575195"
+                cy="13.0588379"
+                fill="#000000"
+                fillRule="nonzero"
+                r="13"
+              />
+              <g
+                stroke="#FFFFFF"
+                transform="translate(8.000000, 7.000000)"
+              >
+                <g>
+                  <g
+                    transform="translate(0.382532, 0.382532)"
+                  >
+                    <polyline
+                      points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                    />
+                    <polyline
+                      points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                      transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                    />
+                    <path
+                      d="M10.360254,0.796942618 L0.796942618,10.360254"
+                      strokeLinecap="square"
+                    />
+                  </g>
                 </g>
               </g>
             </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   </div>
   <div
-    className="c3"
+    className="c5"
   >
     <div
-      className="c4"
+      className="c6"
     >
       <div>
         <p>
@@ -259,7 +341,7 @@ exports[`renders a react child as caption properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c3 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -271,18 +353,32 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c4 > p,
-.c4 p,
-.c4 .public-DraftEditorPlaceholder-root {
+.c6 {
+  padding: 0;
+}
+
+.c6 > p,
+.c6 p,
+.c6 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
 }
 
-.c2 {
+.c6 > a,
+.c6 a {
+  color: #999;
+}
+
+.c6 > a:hover,
+.c6 a:hover {
+  color: black;
+}
+
+.c4 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -290,10 +386,27 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
+  opacity: .6;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .c0 {
   position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
 }
 
 .c1 {
@@ -301,8 +414,14 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c3 {
+  .c5 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c6 {
+    padding: 0px;
   }
 }
 
@@ -320,61 +439,65 @@ exports[`renders properly 1`] = `
       width="100%"
     />
     <div
-      className="c2"
-      onClick={[Function]}
+      className="c2 c3"
     >
-      <svg
-        version="1.1"
-        viewBox="0 0 27 27"
-        xmlns="http://www.w3.org/2000/svg"
+      <div
+        className="c4"
+        onClick={[Function]}
       >
-        <g
-          fill="none"
-          fillRule="evenodd"
-          stroke="none"
-          strokeWidth="1"
+        <svg
+          className="expand"
+          version="1.1"
+          viewBox="0 0 27 27"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <g>
-            <circle
-              cx="13.9575195"
-              cy="13.0588379"
-              fill="#000000"
-              fillRule="nonzero"
-              opacity="0.6"
-              r="13"
-            />
-            <g
-              stroke="#FFFFFF"
-              transform="translate(8.000000, 7.000000)"
-            >
-              <g>
-                <g
-                  transform="translate(0.382532, 0.382532)"
-                >
-                  <polyline
-                    points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                  />
-                  <polyline
-                    points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                    transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                  />
-                  <path
-                    d="M10.360254,0.796942618 L0.796942618,10.360254"
-                    strokeLinecap="square"
-                  />
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <g>
+              <circle
+                cx="13.9575195"
+                cy="13.0588379"
+                fill="#000000"
+                fillRule="nonzero"
+                r="13"
+              />
+              <g
+                stroke="#FFFFFF"
+                transform="translate(8.000000, 7.000000)"
+              >
+                <g>
+                  <g
+                    transform="translate(0.382532, 0.382532)"
+                  >
+                    <polyline
+                      points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                    />
+                    <polyline
+                      points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                      transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                    />
+                    <path
+                      d="M10.360254,0.796942618 L0.796942618,10.360254"
+                      strokeLinecap="square"
+                    />
+                  </g>
                 </g>
               </g>
             </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   </div>
   <div
-    className="c3"
+    className="c5"
   >
     <div
-      className="c4"
+      className="c6"
     >
       <div
         dangerouslySetInnerHTML={

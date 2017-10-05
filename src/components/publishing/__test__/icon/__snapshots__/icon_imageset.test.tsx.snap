@@ -2,8 +2,7 @@
 
 exports[`renders properly 1`] = `
 <svg
-  data-name="image-set"
-  id="image-set"
+  className="image-set"
   viewBox="0 0 44 44"
   xmlns="http://www.w3.org/2000/svg"
 >

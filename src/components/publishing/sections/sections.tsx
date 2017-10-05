@@ -48,7 +48,9 @@ function renderSections(article) {
 
 function getSection(section, layout) {
   const sections = {
-    image_collection: <ImageCollection images={section.images} targetHeight={500} gutter={10} />,
+    image_collection: (
+      <ImageCollection sectionLayout={section.layout} images={section.images} targetHeight={500} gutter={10} />
+    ),
     image_set: <ImagesetPreview section={section} />,
     video: <Video section={section} />,
     embed: <Embed section={section} />,
@@ -78,7 +80,7 @@ function renderPostScript(article) {
 
 const chooseMargin = layout => {
   if (layout === "standard") {
-    return "auto;"
+    return "0;"
   } else if (layout === "feature") {
     return "80px auto 0 auto;"
   }
@@ -94,7 +96,11 @@ const StyledSections = Div`
   margin: ${props => chooseMargin(props.layout)}
   max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
   ${props => pMedia.lg`
-    max-width: ${props.layout === "standard" ? "680px" : "auto"}
+    max-width: ${props.layout === "standard" ? "680px" : "auto"};
+    margin: ${props.layout === "standard" ? "auto" : "80px auto 0 auto"};
+  `}
+  ${props => pMedia.md`
+    max-width: ${props.layout === "standard" ? "780px" : "auto"};
   `}
 `
 

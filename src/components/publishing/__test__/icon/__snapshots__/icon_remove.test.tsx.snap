@@ -2,9 +2,8 @@
 
 exports[`renders properly 1`] = `
 <svg
-  data-name="remove"
+  className="remove"
   enableBackground="new 0 0 1000 1000"
-  id="remove"
   viewBox="0 0 1000 1000"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -23,9 +22,8 @@ exports[`renders properly 1`] = `
 
 exports[`renders with fill props 1`] = `
 <svg
-  data-name="remove"
+  className="remove"
   enableBackground="new 0 0 1000 1000"
-  id="remove"
   viewBox="0 0 1000 1000"
   xmlns="http://www.w3.org/2000/svg"
 >

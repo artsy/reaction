@@ -1,18 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c20 {
+.c22 {
   width: 100%;
   height: 1000px;
 }
 
-.c16 {
+.c18 {
   color: #999;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c14 {
+.c16 {
+  padding: 0;
   margin-top: 10px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -21,10 +22,10 @@ exports[`renders properly 1`] = `
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
 }
 
-.c15 {
+.c17 {
   color: #999;
   display: block;
   -webkit-text-overflow: ellipsis;
@@ -34,11 +35,11 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c15 .artist-name {
+.c17 .artist-name {
   margin-right: 30px;
 }
 
-.c9 {
+.c11 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -46,22 +47,39 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
+  opacity: .6;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.c11:hover {
+  opacity: 1;
+}
+
+.c10 {
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .c7 {
   position: relative;
 }
 
+.c7:hover .c9 {
+  opacity: 1;
+}
+
 .c8 {
   display: block;
 }
 
-.c13 {
+.c15 {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c10 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -73,15 +91,29 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c11 > p,
-.c11 p,
-.c11 .public-DraftEditorPlaceholder-root {
+.c13 {
+  padding: 0;
+}
+
+.c13 > p,
+.c13 p,
+.c13 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: #999;
   margin: 0;
+}
+
+.c13 > a,
+.c13 a {
+  color: #999;
+}
+
+.c13 > a:hover,
+.c13 a:hover {
+  color: black;
 }
 
 .c6 {
@@ -89,32 +121,32 @@ exports[`renders properly 1`] = `
   width: 197px;
 }
 
-.c12 {
+.c14 {
   margin-right: 0px;
   width: 264px;
 }
 
-.c17 {
+.c19 {
   margin-right: 10px;
   width: 219px;
 }
 
-.c18 {
+.c20 {
   margin-right: 0px;
   width: 219px;
 }
 
-.c19 {
+.c21 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c21 {
+.c23 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c22 {
+.c24 {
   margin-right: 0px;
   width: 222px;
 }
@@ -127,7 +159,7 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c24 {
+.c26 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -153,7 +185,7 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-.c25 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +200,7 @@ exports[`renders properly 1`] = `
   height: 50px;
 }
 
-.c26 {
+.c28 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -177,29 +209,29 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c27 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c28 {
+.c30 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
 }
 
-.c29 {
+.c31 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   margin-left: 20px;
 }
 
-.c30 {
+.c32 {
   height: 45px;
   position: relative;
   margin-left: 40px;
@@ -207,7 +239,7 @@ exports[`renders properly 1`] = `
   text-align: right;
 }
 
-.c30 > svg {
+.c32 > svg {
   height: 98%;
 }
 
@@ -244,7 +276,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c23 {
+.c25 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -266,9 +298,13 @@ exports[`renders properly 1`] = `
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
-  background-size: 1.25px 3px;
+  background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
+}
+
+.c2 a:hover {
+  color: #999;
 }
 
 .c2 p,
@@ -434,19 +470,31 @@ exports[`renders properly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  margin: auto;
+  margin: 0;
   max-width: 780px;
 }
 
 @media (max-width: 600px) {
-  .c20 {
+  .c22 {
     height: 1300px;
   }
 }
 
 @media (max-width: 600px) {
-  .c10 {
+  .c16 {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c12 {
     padding: 0px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c13 {
+    padding: 0px;
   }
 }
 
@@ -457,19 +505,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c12 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c17 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c18 {
+  .c14 {
     margin-bottom: 10px;
   }
 }
@@ -481,13 +517,25 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
+  .c20 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
   .c21 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c22 {
+  .c23 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c24 {
     margin-bottom: 10px;
   }
 }
@@ -501,7 +549,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c26 {
+  .c28 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -510,25 +558,25 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c28 {
+  .c30 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
 @media (max-width: 600px) {
-  .c29 {
+  .c31 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
 @media (max-width: 600px) {
-  .c30 {
+  .c32 {
     display: none;
   }
 }
@@ -576,13 +624,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 1250px) {
-  .c23 {
+  .c25 {
     width: 680px;
   }
 }
 
 @media (max-width: 900px) {
-  .c23 {
+  .c25 {
     width: 100%;
     padding: 0px;
     margin: 0 0 40px 0;
@@ -663,6 +711,13 @@ exports[`renders properly 1`] = `
 @media (max-width: 1250px) {
   .c0 {
     max-width: 680px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .c0 {
+    max-width: 780px;
   }
 }
 
@@ -673,7 +728,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -688,7 +743,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -703,7 +758,7 @@ exports[`renders properly 1`] = `
     className="c3"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -718,7 +773,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -753,61 +808,65 @@ exports[`renders properly 1`] = `
               width={197}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -838,99 +897,14 @@ exports[`renders properly 1`] = `
               width={197}
             />
             <div
-              className="c9"
-              onClick={[Function]}
-            >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-          </div>
-          <div
-            className="c10"
-          >
-            <div
-              className="c11"
+              className="c9 c10"
             >
               <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        width={264}
-      >
-        <div
-          className="display-artwork"
-        >
-          <a
-            className="c13"
-            href="/artwork/matt-devine-brass-tax"
-          >
-            <div
-              className="c7"
-            >
-              <img
-                alt="Brass Tax"
-                className="display-artwork__image c8"
-                height={352}
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
-                width={264}
-              />
-              <div
-                className="c9"
+                className="c11"
                 onClick={[Function]}
               >
                 <svg
+                  className="expand"
                   version="1.1"
                   viewBox="0 0 27 27"
                   xmlns="http://www.w3.org/2000/svg"
@@ -947,7 +921,6 @@ exports[`renders properly 1`] = `
                         cy="13.0588379"
                         fill="#000000"
                         fillRule="nonzero"
-                        opacity="0.6"
                         r="13"
                       />
                       <g
@@ -977,12 +950,106 @@ exports[`renders properly 1`] = `
                 </svg>
               </div>
             </div>
-          </a>
+          </div>
           <div
-            className="display-artwork__caption c14"
+            className="c12"
           >
             <div
-              className="c15"
+              className="c13"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c14"
+        width={264}
+      >
+        <div
+          className="display-artwork"
+        >
+          <a
+            className="c15"
+            href="/artwork/matt-devine-brass-tax"
+          >
+            <div
+              className="c7"
+            >
+              <img
+                alt="Brass Tax"
+                className="display-artwork__image c8"
+                height={352}
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
+                width={264}
+              />
+              <div
+                className="c9 c10"
+              >
+                <div
+                  className="c11"
+                  onClick={[Function]}
+                >
+                  <svg
+                    className="expand"
+                    version="1.1"
+                    viewBox="0 0 27 27"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill="none"
+                      fillRule="evenodd"
+                      stroke="none"
+                      strokeWidth="1"
+                    >
+                      <g>
+                        <circle
+                          cx="13.9575195"
+                          cy="13.0588379"
+                          fill="#000000"
+                          fillRule="nonzero"
+                          r="13"
+                        />
+                        <g
+                          stroke="#FFFFFF"
+                          transform="translate(8.000000, 7.000000)"
+                        >
+                          <g>
+                            <g
+                              transform="translate(0.382532, 0.382532)"
+                            >
+                              <polyline
+                                points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                              />
+                              <polyline
+                                points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                                transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                              />
+                              <path
+                                d="M10.360254,0.796942618 L0.796942618,10.360254"
+                                strokeLinecap="square"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div
+            className="display-artwork__caption c16"
+          >
+            <div
+              className="c17"
             >
               <span
                 className="artist-name"
@@ -991,7 +1058,7 @@ exports[`renders properly 1`] = `
                   className="name"
                 >
                   <a
-                    className="c16"
+                    className="c18"
                     href="/artist/matt-devine"
                   >
                     Matt Devine
@@ -1002,7 +1069,7 @@ exports[`renders properly 1`] = `
                 className="title"
               >
                 <a
-                  className="c16"
+                  className="c18"
                   href="/artwork/matt-devine-brass-tax"
                 >
                   Brass Tax
@@ -1014,7 +1081,7 @@ exports[`renders properly 1`] = `
                 , 
               </span>
               <a
-                className="c16"
+                className="c18"
                 href="/partner/joanne-artman-gallery"
               >
                 Joanne Artman Gallery
@@ -1029,7 +1096,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1047,7 +1114,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c17"
+        className="c19"
         width={219}
       >
         <div
@@ -1064,61 +1131,65 @@ exports[`renders properly 1`] = `
               width={219}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1132,7 +1203,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c17"
+        className="c19"
         width={219}
       >
         <div
@@ -1149,61 +1220,65 @@ exports[`renders properly 1`] = `
               width={219}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1217,7 +1292,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c18"
+        className="c20"
         width={219}
       >
         <div
@@ -1234,61 +1309,65 @@ exports[`renders properly 1`] = `
               width={219}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1307,7 +1386,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1325,7 +1404,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c19"
+        className="c21"
         width={undefined}
       >
         <div
@@ -1342,61 +1421,65 @@ exports[`renders properly 1`] = `
               width="100%"
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1415,7 +1498,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1430,7 +1513,7 @@ exports[`renders properly 1`] = `
     className="c4"
   >
     <iframe
-      className="c20"
+      className="c22"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1441,7 +1524,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1459,7 +1542,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c21"
+        className="c23"
         width={216}
       >
         <div
@@ -1476,61 +1559,65 @@ exports[`renders properly 1`] = `
               width={216}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1544,7 +1631,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c17"
+        className="c19"
         width={219}
       >
         <div
@@ -1561,61 +1648,65 @@ exports[`renders properly 1`] = `
               width={219}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1629,7 +1720,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c22"
+        className="c24"
         width={222}
       >
         <div
@@ -1646,61 +1737,65 @@ exports[`renders properly 1`] = `
               width={222}
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1719,7 +1814,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1731,7 +1826,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c23"
+    className="c25"
   >
     <div
       style={
@@ -1742,27 +1837,27 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="c24"
+        className="c26"
         onClick={[Function]}
       >
         <div
-          className="c25"
+          className="c27"
         >
           <div
-            className="c26"
+            className="c28"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c27"
+            className="c29"
           >
             <div
-              className="c28"
+              className="c30"
             >
               View Slideshow
             </div>
             <div
-              className="c29"
+              className="c31"
             >
               3
                Images
@@ -1770,11 +1865,10 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c30"
+          className="c32"
         >
           <svg
-            data-name="image-set"
-            id="image-set"
+            className="image-set"
             viewBox="0 0 44 44"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -1803,7 +1897,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1815,13 +1909,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c23"
+    className="c25"
   >
     <div
       className="c5"
     >
       <div
-        className="c19"
+        className="c21"
         width={undefined}
       >
         <div
@@ -1838,61 +1932,65 @@ exports[`renders properly 1`] = `
               width="100%"
             />
             <div
-              className="c9"
-              onClick={[Function]}
+              className="c9 c10"
             >
-              <svg
-                version="1.1"
-                viewBox="0 0 27 27"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="c11"
+                onClick={[Function]}
               >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g>
-                    <circle
-                      cx="13.9575195"
-                      cy="13.0588379"
-                      fill="#000000"
-                      fillRule="nonzero"
-                      opacity="0.6"
-                      r="13"
-                    />
-                    <g
-                      stroke="#FFFFFF"
-                      transform="translate(8.000000, 7.000000)"
-                    >
-                      <g>
-                        <g
-                          transform="translate(0.382532, 0.382532)"
-                        >
-                          <polyline
-                            points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                          />
-                          <polyline
-                            points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                            transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                          />
-                          <path
-                            d="M10.360254,0.796942618 L0.796942618,10.360254"
-                            strokeLinecap="square"
-                          />
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
                         </g>
                       </g>
                     </g>
                   </g>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
           </div>
           <div
-            className="c10"
+            className="c12"
           >
             <div
-              className="c11"
+              className="c13"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1911,7 +2009,7 @@ exports[`renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="article__text-section c2"
     >
       <div
         dangerouslySetInnerHTML={

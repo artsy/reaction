@@ -5,6 +5,7 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../utils/fillwidth"
 import { pMedia } from "../../helpers"
 import { sizeMeRefreshRate } from "../constants"
+import { SectionLayout } from "../typings"
 import Artwork from "./artwork"
 import Image from "./image"
 import ImageCollectionItem from "./image_collection_item"
@@ -13,17 +14,18 @@ interface ImageCollectionProps {
   images: any
   targetHeight?: number
   gutter?: number
+  sectionLayout?: SectionLayout
   size?: {
     width: number
   }
 }
 
 const ImageCollection: React.SFC<ImageCollectionProps> = props => {
-  const { images, targetHeight, gutter, size } = props
+  const { images, targetHeight, gutter, sectionLayout, size } = props
   const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
   return (
     <ImageCollectionContainer>
-      {renderImages(images, dimensions, gutter, size.width)}
+      {renderImages(images, dimensions, gutter, sectionLayout, size.width)}
     </ImageCollectionContainer>
   )
 }
@@ -34,7 +36,7 @@ ImageCollection.defaultProps = {
   },
 }
 
-function renderImages(images, dimensions, gutter, width) {
+function renderImages(images, dimensions, gutter, sectionLayout, width) {
   const renderedImages = images.map((image, i) => {
     const url = image.url ? image.url : image.image
     let imageSize
@@ -45,9 +47,13 @@ function renderImages(images, dimensions, gutter, width) {
     }
     let renderedImage
     if (image.type === "image") {
-      renderedImage = <Image image={image} width={imageSize.width} height={imageSize.height} />
+      renderedImage = (
+        <Image image={image} sectionLayout={sectionLayout} width={imageSize.width} height={imageSize.height} />
+      )
     } else if (image.type === "artwork") {
-      renderedImage = <Artwork artwork={image} width={imageSize.width} height={imageSize.height} />
+      renderedImage = (
+        <Artwork artwork={image} sectionLayout={sectionLayout} width={imageSize.width} height={imageSize.height} />
+      )
     } else {
       return false
     }
@@ -71,6 +77,7 @@ const ImageCollectionContainer = styled.div`
 
 const sizeMeOptions = {
   refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
 }
 
 export default sizeMe(sizeMeOptions)(ImageCollection)

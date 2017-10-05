@@ -1,8 +1,18 @@
-import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 
-import CollectorIntent from "../index"
+import { ContextProvider } from '../../../../artsy';
+import CollectorIntent from '../index';
 
 storiesOf("Onboarding", module).add("Collector Intent", () => {
-  return <CollectorIntent />
+  const currentUser = {
+    accessToken: "blah",
+    id: "my_id",
+    name: "Joe",
+  }
+  return (
+    <ContextProvider currentUser={currentUser}>
+      <CollectorIntent />
+    </ContextProvider>
+  )
 })

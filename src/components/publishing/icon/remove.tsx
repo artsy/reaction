@@ -4,8 +4,7 @@ class IconRemove extends Component<any, null> {
   render() {
     return (
       <svg
-        id="remove"
-        data-name="remove"
+        className="remove"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1000 1000"
         enableBackground="new 0 0 1000 1000"

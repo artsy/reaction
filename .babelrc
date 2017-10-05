@@ -1,25 +1,27 @@
 {
-  "presets": [
-    "es2015",
-    "stage-3",
-    "react"
-  ],
+  "presets": ["es2015", "stage-3", "react"],
   "plugins": [
     "react-relay",
-    ["styled-components", {
-      "ssr": true,
-      "displayName": true,
-      "minify": true,
-      "transpileTemplateLiterals": true
-      // "preprocess": true // still experimental
-    }]
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "minify": true,
+        "transpileTemplateLiterals": true
+        // "preprocess": true // still experimental
+      }
+    ]
   ],
   "env": {
     "test": {
       "plugins": [
-        ["styled-components", {
-          "ssr": true
-        }]
+        [
+          "styled-components",
+          {
+            "ssr": true
+          }
+        ]
       ]
     }
   }

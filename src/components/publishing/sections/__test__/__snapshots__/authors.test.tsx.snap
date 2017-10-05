@@ -59,7 +59,7 @@ exports[`renders properly 1`] = `
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
-  line-height: 1.1em;
+  line-height: 1.4em;
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -109,7 +109,7 @@ exports[`renders properly 1`] = `
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
-    line-height: 1.1em;
+    line-height: 1.4em;
   }
 }
 
