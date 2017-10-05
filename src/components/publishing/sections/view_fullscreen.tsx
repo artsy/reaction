@@ -1,28 +1,39 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
+import { track } from "../../../utils/track"
 import IconExpand from "../icon/expand"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
   index?: number
 }
 
-const ViewFullscreen: React.SFC<ViewFullscreenProps> = (props, context) => {
-  const onClick = e => {
+@track()
+class ViewFullscreen extends React.Component<ViewFullscreenProps, void> {
+  static childContextTypes = {
+    onViewFullscreen: PropTypes.func,
+  }
+
+  constructor(props) {
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+
+  @track({ action: "Clicked article impression" })
+  onClick(e) {
     e.preventDefault()
-    if (context.onViewFullscreen) {
-      context.onViewFullscreen(props.index)
+    if (this.context.onViewFullscreen) {
+      this.context.onViewFullscreen(this.props.index)
     }
   }
-  return (
-    <ViewFullscreenLink onClick={onClick}>
-      <IconExpand />
-    </ViewFullscreenLink>
-  )
-}
 
-ViewFullscreen.contextTypes = {
-  onViewFullscreen: PropTypes.func,
+  render() {
+    return (
+      <ViewFullscreenLink onClick={this.onClick}>
+        <IconExpand />
+      </ViewFullscreenLink>
+    )
+  }
 }
 
 const ViewFullscreenLink = styled.div`

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../utils/resizer"
+import { track } from "../../../utils/track"
 import { pMedia } from "../../helpers"
 import Byline from "../byline/byline"
 import { articleHref } from "../constants"
@@ -16,17 +17,37 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
   }
 }
 
-const RelatedArticleFigure: React.SFC<RelatedArticleFigureProps> = props => {
-  const { article } = props
-  return (
-    <ArticleFigure href={articleHref(article.slug)}>
-      <ImageTitle>
-        <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
-        <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
-      </ImageTitle>
-      <Byline article={article} layout="condensed" />
-    </ArticleFigure>
-  )
+@track()
+class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, void> {
+  constructor(props) {
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+
+  @track((props, [e]) => ({
+    action: "Clicked article impression",
+    article_id: props.article.id,
+    destination_path: e.currentTarget.attributes.href.value,
+    // TODO: What do we put here? According to analytics there are the valid types
+    // [newsletter signup, toc, artist follow, image set, article callout, social, related article]
+    impression_type: "related_article",
+    context_type: "article_fixed",
+  }))
+  // tslint:disable-next-line:no-empty
+  onClick(e) {}
+
+  render() {
+    const { article } = this.props
+    return (
+      <ArticleFigure>
+        <ImageTitle href={articleHref(article.slug)} onClick={this.onClick}>
+          <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
+          <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
+        </ImageTitle>
+        <Byline article={article} layout="condensed" />
+      </ArticleFigure>
+    )
+  }
 }
 
 const ImageTitle = styled.a`
@@ -44,6 +65,8 @@ const ArticleFigure = styled.div`
   flex-direction: column;
   max-width: 278px;
   margin-right: 30px;
+  text-decoration: none;
+  color: black;
 `
 const ArticleTitle = styled.div`
   ${Fonts.unica("s16")}

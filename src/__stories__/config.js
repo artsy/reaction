@@ -1,4 +1,5 @@
 const { configure } = require("@storybook/react")
+const Events = require("../utils/events").default
 
 const req = require.context("../", true, /\.story\.tsx$/)
 
@@ -16,3 +17,5 @@ setOptions({
   showDownPanel: false,
   sortStoriesByKind: true,
 })
+
+Events.onEvent(data => console.log("Tracked event", data))
