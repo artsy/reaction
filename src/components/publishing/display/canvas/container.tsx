@@ -9,8 +9,8 @@ import CanvasText from "./text"
 import Video from "./video"
 
 interface DisplayCanvasContainerProps {
-  unit: any
-  disclaimer: any
+  unit?: any
+  disclaimer?: any
   size?: {
     width: number
   }
@@ -52,6 +52,12 @@ const DisplayCanvasContainer: React.SFC<DisplayCanvasContainerProps> = props => 
       </Canvas>
     )
   }
+}
+
+DisplayCanvasContainer.defaultProps = {
+  size: {
+    width: 1250,
+  },
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {

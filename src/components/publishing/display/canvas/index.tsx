@@ -35,7 +35,7 @@ const DisplayContainer = Div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: ${props => (props.layout === "slideshow" ? "100%;" : "1200px;")});
+  max-width: ${props => (props.layout === "slideshow" ? "100%;" : "1200px;")}
   margin: 0 auto;
   box-sizing: border-box;
   a {
@@ -55,7 +55,7 @@ const Disclaimer = Div`
   ${Fonts.garamond("s11")}
   color: ${Colors.grayMedium};
   margin: 15px 0 0 0;
-  ${props => props.layout === "overlay" && "text-align: center;"})
+  ${props => props.layout === "overlay" && "text-align: center;"}
   ${pMedia.sm`
     margin: 35px 0 10px 0;
   `}
