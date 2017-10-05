@@ -11,82 +11,7 @@ type Layout = "mini" | "full"
 interface DivLayoutProps {
   layout?: Layout
 }
-const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-const FullWrapper = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  min-height: 50px;
-  width: auto;
-  max-width: calc(100% - 80px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid white;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  cursor: pointer;
-`
-const TitleWrapper = div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: ${props => (props.layout === "full" ? "50px" : "100%")};
-`
-const MiniWrapper = styled.div`
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 20px 10px 10px;
-  border: 1px solid #e5e5e5;
-  cursor: pointer;
-`
-const MiniInner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
-  width: auto;
-  margin-left: 20px;
-`
-const Title = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  margin-bottom: 8px;
-  line-height: 1.1em;
-  ${pMedia.xs`
-    ${Fonts.unica("s16", "medium")}
-  `}
-`
-const SubTitle = styled.div`
-  display: flex;
-`
-const SubTitlePrompt = styled.div`
-  ${Fonts.unica("s14", "medium")}
-  ${pMedia.xs`
-    ${Fonts.unica("s12", "medium")}
-  `}
-`
-const SubTitleCount = styled.div`
-  ${Fonts.unica("s14")}
-  margin-left: 20px;
-  ${pMedia.xs`
-    ${Fonts.unica("s12")}
-  `}
-`
-const IconContainer = styled.div`
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  text-align: right;
-  > svg {
-    height: 98%;
-  }
-  ${pMedia.xs`
-    display: none;
-  `}
-`
 export interface Props {
   section: {
     type: string
@@ -99,6 +24,8 @@ export interface Props {
     title?: string
   }
 }
+
+const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 class ImageSetPreview extends Component<Props, null> {
   static contextTypes = {
@@ -180,4 +107,87 @@ class ImageSetPreview extends Component<Props, null> {
     )
   }
 }
+const IconContainer = styled.div`
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  text-align: right;
+  > svg {
+    height: 98%;
+  }
+  ${pMedia.xs`
+    display: none;
+  `}
+`
+
+const FullWrapper = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  min-height: 50px;
+  width: auto;
+  max-width: calc(100% - 80px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    ${IconContainer} {
+      fill: white;
+    }
+  }
+`
+const TitleWrapper = div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: ${props => (props.layout === "full" ? "50px" : "100%")};
+`
+const MiniWrapper = styled.div`
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+`
+const MiniInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  width: auto;
+  margin-left: 20px;
+`
+const Title = styled.div`
+  ${Fonts.unica("s19", "medium")}
+  margin-bottom: 8px;
+  line-height: 1.1em;
+  ${pMedia.xs`
+    ${Fonts.unica("s16", "medium")}
+  `}
+`
+const SubTitle = styled.div`
+  display: flex;
+`
+const SubTitlePrompt = styled.div`
+  ${Fonts.unica("s14", "medium")}
+  ${pMedia.xs`
+    ${Fonts.unica("s12", "medium")}
+  `}
+`
+const SubTitleCount = styled.div`
+  ${Fonts.unica("s14")}
+  margin-left: 20px;
+  ${pMedia.xs`
+    ${Fonts.unica("s12")}
+  `}
+`
+
 export default ImageSetPreview

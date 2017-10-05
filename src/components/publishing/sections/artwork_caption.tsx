@@ -67,7 +67,7 @@ class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           </span>
         )
       } else {
-        return <span key={0} className="title"><em>{artwork.title}</em></span>
+        return <span key={0} className="title">{artwork.title}</span>
       }
     }
   }
@@ -153,22 +153,34 @@ const StyledArtworkCaption = div`
   margin-top: 10px;
   display: flex;
   ${Fonts.unica("s14")}
+  .title {
+    ${Fonts.unica("s14", "italic")}
+  }
   ${pMedia.xs`
     padding: 0 10px;
   `}
-  `
+`
 const StyledClassicCaption = div`
   margin-top: 10px;
   display: block;
   ${Fonts.garamond("s15")}
+  .title {
+    font-style: italic;
+  }
 `
 const StyledFullscreenCaption = div`
   display: flex;
   flex-direction: row;
   ${Fonts.unica("s16", "medium")}
+  .title {
+    ${Fonts.unica("s16", "mediumItalic")}
+  }
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
     flex-direction: column;
+    .title {
+      ${Fonts.unica("s14", "mediumItalic")}
+    }
   `}
 `
 const TruncatedLine = styled.div`
@@ -195,5 +207,4 @@ const Line = styled.div`
     color: black;
   }
 `
-
 export default ArtworkCaption

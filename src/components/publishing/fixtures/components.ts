@@ -166,6 +166,7 @@ export const Images = [
     width: 900,
     height: 1200,
     caption: "<p>Photo by Adam Kuehl for Artsy.</p>",
+    setTitle: "New York City",
   },
   {
     url: "https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg",
@@ -173,6 +174,35 @@ export const Images = [
     width: 816,
     height: 1024,
     caption: "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+    setTitle: "New York City",
+  },
+]
+
+export const ImagesNarrow = [
+  {
+    url: "https://artsy-media-uploads.s3.amazonaws.com/fUb8nBvTw5TZ3ZbU6WYbQQ%2Fsequence4c+copy.jpg",
+    type: "image",
+    width: 254,
+    height: 1200,
+    caption:
+      "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
+  },
+  {
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z2c9GQ8P69QjfW6SPXRK1Q%2Fskyscraper+copy.jpg",
+    type: "image",
+    width: 268,
+    height: 1200,
+    caption:
+      "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
+  },
+  {
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/3AW6ZGyyGscbswkyTqUQAw%2FScreen+Shot+2017-09-22+at+5.17.50+PM.png",
+    type: "image",
+    width: 598,
+    height: 596,
+    caption:
+      "<p>Installation view of Louise Bourgeois, <em>Portrait of Jean-Louis</em>, 1947-49, at the Museum of Modern Art, New York. Photo by @radicchioradicchio, via Instagram.</p>",
   },
 ]
 

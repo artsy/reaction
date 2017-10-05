@@ -132,7 +132,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -211,7 +211,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
   width: 50vw;
 }
 
@@ -357,7 +357,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
     width: 100%;
   }
 }
@@ -377,7 +377,7 @@ exports[`feature renders feature full header properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
     />
     <div
       className="c3"
@@ -645,7 +645,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -719,7 +719,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
   width: 50vw;
 }
 
@@ -733,7 +733,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type='split'] .file__Deck-s1qr63pt-8 {
+.c0[data-type='split'] .file__Deck-s1a1jou4-8 {
   margin-bottom: 30px;
 }
 
@@ -855,7 +855,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
     width: 100%;
   }
 }
@@ -875,7 +875,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
     />
     <div
       className="c3"
@@ -1134,7 +1134,7 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1213,7 +1213,7 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
   width: 50vw;
 }
 
@@ -1359,7 +1359,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
     width: 100%;
   }
 }
@@ -1379,7 +1379,7 @@ exports[`feature renders feature header with children properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
     >
       <div>
         Child 3: Image
@@ -1647,7 +1647,7 @@ exports[`feature renders feature split header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1726,7 +1726,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
   width: 50vw;
 }
 
@@ -1872,7 +1872,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
     width: 100%;
   }
 }
@@ -1907,7 +1907,7 @@ exports[`feature renders feature split header properly 1`] = `
       <div
         alt="What’s the Path to Winning an Art Prize?"
         className="c7 c8"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1200&quality=95"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
       />
       <div
         className="c9 c10"
@@ -2225,7 +2225,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+.c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
   width: 50vw;
 }
 
@@ -2371,7 +2371,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type='split'] .file__FeatureVideo-s1qr63pt-2 {
+  .c0[data-type='split'] .file__FeatureVideo-s1a1jou4-2 {
     width: 100%;
   }
 }
