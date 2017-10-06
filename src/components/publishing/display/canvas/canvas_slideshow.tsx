@@ -7,14 +7,15 @@ import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
 import Icon from "../../../icon"
 import Fonts from "../../fonts"
+import { maxAssetSize } from "./canvas_container"
 
-interface SlideshowProps {
+interface CanvasSlideshowProps {
   unit: any
   disclaimer: any
   containerWidth: number
 }
 
-class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
+class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
   private slider: any
 
   constructor(props) {
@@ -75,6 +76,7 @@ class DisplayCanvasSlideshow extends React.Component<SlideshowProps, any> {
           breakpoint: 900,
           settings: {
             infinite: true,
+            controls: false,
           },
         },
       ],
@@ -132,7 +134,7 @@ const NavArrow = arrowDiv`
   align-items: center;
   position: absolute;
   height: 100%;
-  max-height: ${props => props.containerWidth * 0.65 * 0.59 + "px;"}
+  max-height: ${props => maxAssetSize(props.containerWidth).height + "px;"}
   top: 0;
   box-sizing: border-box;
   opacity: ${props => (props.isVisible ? "1;" : "0;")}
@@ -155,7 +157,7 @@ const SliderContainer = responsiveDiv`
   width: 100%;
   overflow: hidden;
   .slick-list {
-    max-height: ${props => "calc(" + props.containerWidth * 0.65 * 0.59 + "px + 2.5em);"}
+    max-height: ${props => "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
     padding: 0 !important;
   }
 `
@@ -169,7 +171,7 @@ const Slide = responsiveDiv`
       max-width: ${props.containerWidth + "px;"}
     `}
     ${props => pMedia.md`
-      max-width: ${props.containerWidth * 0.65 + "px;"}
+      max-width: ${maxAssetSize(props.containerWidth).width + "px;"}
   `}
   }
 `
@@ -180,7 +182,7 @@ const Title = responsiveDiv`
   ${props => pMedia.lg`
     width: ${props.containerWidth * 0.35 + "px;"}
     a {
-      max-height: ${props.containerWidth * 0.65 * 0.59 + "px;"}
+      max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }
   `}
   ${pMedia.md`
@@ -205,7 +207,7 @@ const Image = responsiveImage`
   object-fit: cover;
   object-position: center;
   ${props => pMedia.lg`
-    max-height: ${props.containerWidth * 0.65 * 0.59 + "px;"}
+    max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
   `}
 `
 const Caption = styled.div`
@@ -214,4 +216,4 @@ const Caption = styled.div`
   margin-top: 10px;
 `
 
-export default DisplayCanvasSlideshow
+export default CanvasSlideshow

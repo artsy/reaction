@@ -3,7 +3,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../assets/colors"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
-import Canvas from "./container"
+import CanvasContainer from "./canvas_container"
 
 interface DisplayCanvasProps {
   unit: any
@@ -19,7 +19,7 @@ const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
       <a href={unit.link.url} target="_blank">
         <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
       </a>
-      <Canvas unit={unit} disclaimer={disclaimer} />
+      <CanvasContainer unit={unit} disclaimer={disclaimer} />
       {unit.layout === "overlay" && disclaimer}
     </DisplayContainer>
   )

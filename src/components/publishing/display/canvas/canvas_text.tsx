@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../helpers"
 import Fonts from "../../fonts"
 
-interface DisplayCanvasTextProps extends React.HTMLProps<HTMLDivElement> {
+interface CanvasTextProps {
   disclaimer?: any
   unit: any
 }
@@ -14,7 +14,7 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
   isSlideshowWithCaption?: boolean
 }
 
-const DisplayCanvasText: React.SFC<DisplayCanvasTextProps> = props => {
+const CanvasText: React.SFC<CanvasTextProps> = props => {
   const { disclaimer, unit } = props
   const isSlideshowWithCaption = unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
   const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
@@ -45,7 +45,7 @@ const Logo = Img`
     width: auto;
     ${props.layout === "overlay" &&
       `max-width: calc(100% - 60px);
-        margin: 15px auto;`}
+       margin: 15px auto;`}
   `}
 `
 const CanvasInner = Div`
@@ -70,17 +70,15 @@ const CanvasInner = Div`
 `
 const Headline = Div`
   ${props => (props.layout === "overlay" ? Fonts.garamond("s23") : Fonts.garamond("s40"))}
-  margin-bottom: 25px;
   line-height: ${props => (props.layout === "overlay" ? "1.35em;" : "1.1em;")} 
+  margin-bottom: 25px;
   ${props => pMedia.lg`
     ${props.layout !== "overlay" && Fonts.garamond("s23")}
   `}
   ${props => pMedia.sm`
-    ${props.layout === "overlay"
-      ? `margin: 0 auto 10px auto;
-         padding: 20px;`
-      : `margin-bottom: 10px;
-         max-width: calc(100% - 40px);`}
+    margin: 0 auto 10px auto;
+    max-width: calc(100% - 40px);
+    ${props.layout !== "overlay" && "margin-left: 0;"}
   `}
   ${props => pMedia.xs`
     ${props.layout === "overlay" && Fonts.garamond("s17")}
@@ -109,4 +107,4 @@ const Link = Div`
     line-height: 1.35em;
   `}
 `
-export default DisplayCanvasText
+export default CanvasText

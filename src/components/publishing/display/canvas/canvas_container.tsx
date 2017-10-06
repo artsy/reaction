@@ -4,11 +4,11 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../utils/resizer"
 import { pMedia } from "../../../helpers"
 import { sizeMeRefreshRate } from "../../constants"
-import Slideshow from "./slideshow"
-import CanvasText from "./text"
-import Video from "./video"
+import CanvasSlideshow from "./canvas_slideshow"
+import CanvasText from "./canvas_text"
+import CanvasVideo from "./canvas_video"
 
-interface DisplayCanvasContainerProps {
+interface CanvasContainerProps {
   unit?: any
   disclaimer?: any
   size?: {
@@ -18,43 +18,43 @@ interface DisplayCanvasContainerProps {
 
 function renderAsset(asset) {
   if (asset.url.includes("mp4")) {
-    return <Video src={asset.url} />
+    return <CanvasVideo src={asset.url} />
   } else {
     return <Image src={crop(asset.url, { width: 1200, height: 760 })} />
   }
 }
 
-const DisplayCanvasContainer: React.SFC<DisplayCanvasContainerProps> = props => {
+const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
   const { unit, disclaimer, size } = props
 
   if (unit.layout === "overlay") {
     return (
-      <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
+      <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
         <Background backgroundUrl={unit.assets[0].url} />
         <CanvasText unit={unit} />
-      </Canvas>
+      </CanvasLink>
     )
   } else if (unit.layout === "slideshow") {
     return (
-      <Slideshow unit={unit} disclaimer={disclaimer} containerWidth={size.width}>
-        <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
+      <CanvasSlideshow unit={unit} disclaimer={disclaimer} containerWidth={size.width}>
+        <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
           <CanvasText unit={unit} disclaimer={disclaimer} />
-        </Canvas>
-      </Slideshow>
+        </CanvasLink>
+      </CanvasSlideshow>
     )
   } else {
     return (
-      <Canvas href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
+      <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
         {renderAsset(unit.assets[0])}
         <StandardContainer>
           <CanvasText unit={unit} disclaimer={disclaimer} />
         </StandardContainer>
-      </Canvas>
+      </CanvasLink>
     )
   }
 }
 
-DisplayCanvasContainer.defaultProps = {
+CanvasContainer.defaultProps = {
   size: {
     width: 1250,
   },
@@ -74,6 +74,12 @@ interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
 const Div: StyledFunction<DivProps> = styled.div
 const responsiveLink: StyledFunction<ResponsiveProps> = styled.a
 
+export const maxAssetSize = containerWidth => {
+  const width = containerWidth * 0.65
+  const height = width * 0.59
+  return { width, height }
+}
+
 const Image = styled.img`
   display: block;
   width: 65%;
@@ -87,7 +93,7 @@ const Image = styled.img`
     object-fit: contain;
   `}
 `
-const Canvas = responsiveLink`
+const CanvasLink = responsiveLink`
   width: 100%;
   height: 460px;
   color: #000;
@@ -98,8 +104,10 @@ const Canvas = responsiveLink`
   flex-direction: row-reverse;
   justify-content: ${props => (props.layout === "standard" ? "space-between;" : "center;")}
   ${props => pMedia.lg`
-    ${props.layout !== "overlay" && "max-height: " + props.containerWidth * 0.65 * 0.59 + "px;"}
-    ${props.layout === "standard" && "padding: 0 20px;width: calc(100% - 40px);"}
+    ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
+    ${props.layout === "standard" &&
+      `padding: 0 20px;
+       width: calc(100% - 40px);`}
   `}
   ${pMedia.sm`
     padding: 0;
@@ -146,4 +154,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(DisplayCanvasContainer)
+export default sizeMe(sizeMeOptions)(CanvasContainer)

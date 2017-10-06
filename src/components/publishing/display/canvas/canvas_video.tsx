@@ -4,9 +4,6 @@ import { pMedia } from "../../../helpers"
 
 interface VideoProps {
   src: any
-  size?: {
-    width: number
-  }
 }
 
 class DisplayCanvasVideo extends React.Component<VideoProps, any> {

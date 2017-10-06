@@ -34,8 +34,8 @@ exports[`renders the canvas in overlay layout 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  margin-bottom: 25px;
   line-height: 1.35em;
+  margin-bottom: 25px;
 }
 
 .c7 {
@@ -177,7 +177,7 @@ exports[`renders the canvas in overlay layout 1`] = `
 @media (max-width: 720px) {
   .c6 {
     margin: 0 auto 10px auto;
-    padding: 20px;
+    max-width: calc(100% - 40px);
   }
 }
 
@@ -361,8 +361,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
-  margin-bottom: 25px;
   line-height: 1.1em;
+  margin-bottom: 25px;
 }
 
 .c9 {
@@ -536,8 +536,9 @@ exports[`renders the canvas in slideshow layout 1`] = `
 
 @media (max-width: 720px) {
   .c8 {
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
+    margin-left: 0;
   }
 }
 
@@ -738,8 +739,8 @@ exports[`renders the canvas in standard layout with image 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
-  margin-bottom: 25px;
   line-height: 1.1em;
+  margin-bottom: 25px;
 }
 
 .c8 {
@@ -873,8 +874,9 @@ exports[`renders the canvas in standard layout with image 1`] = `
 
 @media (max-width: 720px) {
   .c7 {
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
+    margin-left: 0;
   }
 }
 
@@ -1041,8 +1043,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
-  margin-bottom: 25px;
   line-height: 1.1em;
+  margin-bottom: 25px;
 }
 
 .c12 {
@@ -1232,8 +1234,9 @@ exports[`renders the canvas in standard layout with video 1`] = `
 
 @media (max-width: 720px) {
   .c11 {
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
+    margin-left: 0;
   }
 }
 
