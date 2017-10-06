@@ -1,9 +1,15 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import * as React from "react"
-import Events from "../../../utils/events"
-import Article from "../article"
-import { StandardArticle } from "../fixtures/articles"
+import 'jest-styled-components';
+
+import { mount } from 'enzyme';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import * as React from 'react';
+
+import Events from '../../../utils/events';
+import Article from '../article';
+import { StandardArticle } from '../fixtures/articles';
+
+Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock("react-slick", () => {
   const React = require("react")
