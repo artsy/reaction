@@ -99,7 +99,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       return (
         <div>
           <Header article={article} height={headerHeight} />
-          <FeatureLayout>
+          <FeatureLayout className="article-content">
             <Sections article={article} />
           </FeatureLayout>
           <FullscreenViewer
