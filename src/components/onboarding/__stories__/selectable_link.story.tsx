@@ -1,7 +1,7 @@
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import { storiesOf } from "@storybook/react"
+import * as React from "react"
 
-import SelectableLink from '../selectable_link';
+import SelectableLink from "../selectable_link"
 
 storiesOf("Onboarding", module).add("SelectableLink", () => {
   return (

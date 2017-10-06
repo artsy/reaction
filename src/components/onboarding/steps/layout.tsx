@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react"
+import styled from "styled-components"
 
-import Button from '../../buttons/ghost';
-import Title from '../../title';
+import Button from "../../buttons/ghost"
+import Title from "../../title"
 
 interface Props {
   title: string

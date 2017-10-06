@@ -38,7 +38,7 @@ const ClassicHeaderContainer = styled.div`
     margin: 0 auto;
     padding-bottom: 30px;
   }
-  ${pMedia.lg`
+  ${pMedia.xl`
     padding: 0 20px;
   `}
   ${pMedia.xs`

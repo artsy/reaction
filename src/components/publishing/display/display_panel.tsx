@@ -15,10 +15,11 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
 
 const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
   const { unit, campaign } = props
+  const image = unit.assets[0] ? unit.assets[0].url : ""
   return (
     <LinkWrapper href={unit.link.url}>
       <DisplayPanelContainer
-        imageUrl={crop(unit.image_url, { width: 680, height: 284 })}
+        imageUrl={crop(image, { width: 680, height: 284 })}
         hoverImageUrl={resize(unit.logo, { width: 680 })}
       >
         <Image />

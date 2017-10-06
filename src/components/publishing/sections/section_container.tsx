@@ -41,7 +41,7 @@ const SectionContainer = Div`
   width: ${props => chooseWidth(props.layout, props.articleLayout)}
   margin: auto;
   margin-bottom: 40px;
-  ${props => pMedia.lg`
+  ${props => pMedia.xl`
     width: ${chooseWidth(props.layout, props.articleLayout, "lg")}
   `}
   ${props => pMedia.md`
