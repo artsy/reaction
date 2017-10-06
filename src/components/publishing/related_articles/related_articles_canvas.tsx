@@ -1,6 +1,7 @@
 import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
+import Colors from "../../../assets/colors"
 import { pMedia } from "../../helpers"
 import Fonts from "../fonts"
 import RelatedArticleFigure from "./related_article_figure"
@@ -23,14 +24,17 @@ const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
     return <div />
   } else {
     return (
-      <RelatedArticlesContainer>
-        <Title>Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan></Title>
-        <ArticlesWrapper>
-          {_.map(articles, (article, i) => {
-            return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
-          })}
-        </ArticlesWrapper>
-      </RelatedArticlesContainer>
+      <div>
+        <LineBreak />
+        <RelatedArticlesContainer>
+          <Title>Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan></Title>
+          <ArticlesWrapper>
+            {_.map(articles, (article, i) => {
+              return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
+            })}
+          </ArticlesWrapper>
+        </RelatedArticlesContainer>
+      </div>
     )
   }
 }
@@ -61,4 +65,9 @@ const ArticlesWrapper = styled.div`
     display: none;
   }
 `
+const LineBreak = styled.div`
+  border-top: 1px solid ${Colors.grayRegular};
+  width: 100%;
+`
+
 export default RelatedArticlesCanvas

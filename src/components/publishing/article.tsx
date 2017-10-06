@@ -2,7 +2,6 @@ import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../../assets/colors"
 import Events from "../../utils/events"
 import track from "../../utils/track"
 import EmailSignup from "./email_signup"
@@ -114,6 +113,9 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       const relatedArticlePanel = relatedArticlesForPanel
         ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
         : false
+      const relatedArticleCanvas = relatedArticlesForCanvas
+        ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+        : false
       const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
       return (
         <StandardArticleContainer>
@@ -126,8 +128,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
                 {relatedArticlePanel}
               </Sidebar>
             </StandardLayout>
-            <LineBreak />
-            <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+            {relatedArticleCanvas}
           </ReadMoreWrapper>
           {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer
@@ -144,10 +145,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
 
 const StandardArticleContainer = styled.div`
   margin-top: 50px;
-`
-const LineBreak = styled.div`
-  border-top: 1px solid ${colors.grayRegular};
-  width: 100%;
 `
 
 export default Article
