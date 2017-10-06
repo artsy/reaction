@@ -20,6 +20,13 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
+.c6 .title {
+  font-family: Unica77LLWebItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
 .c7 {
   color: #999;
   display: block;

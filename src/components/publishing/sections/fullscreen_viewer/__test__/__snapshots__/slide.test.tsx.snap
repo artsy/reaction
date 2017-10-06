@@ -21,6 +21,13 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
+.c7 .title {
+  font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c8.artist-name {
   margin-right: 30px;
 }
@@ -38,6 +45,10 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+}
+
+.c6 a {
+  color: black;
 }
 
 .c11 {
@@ -86,6 +97,7 @@ exports[`renders properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  position: relative;
 }
 
 .c2 {
@@ -117,6 +129,13 @@ exports[`renders properly 1`] = `
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
+  .c7 .title {
+    font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
 }
 
 @media (max-width: 720px) {
@@ -146,11 +165,6 @@ exports[`renders properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 720px) {
-  .c6 {
     display: none;
     margin-top: 0px;
   }
@@ -167,13 +181,16 @@ exports[`renders properly 1`] = `
 
 @media (max-width: 720px) {
   .c3 {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
     padding: 20px;
   }
 }
 
 @media (max-width: 720px) {
   .c2 {
-    margin: 20px 0;
+    margin: 20px 0 80px 0;
   }
 }
 

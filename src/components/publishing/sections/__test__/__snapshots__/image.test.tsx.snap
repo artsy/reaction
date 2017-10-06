@@ -15,6 +15,8 @@ exports[`renders a long caption properly 1`] = `
 
 .c6 {
   padding: 0;
+  width: 100%;
+  word-break: break-word;
 }
 
 .c6 > p,
@@ -186,6 +188,8 @@ exports[`renders a react child as caption properly 1`] = `
 
 .c6 {
   padding: 0;
+  width: 100%;
+  word-break: break-word;
 }
 
 .c6 > p,
@@ -355,6 +359,8 @@ exports[`renders properly 1`] = `
 
 .c6 {
   padding: 0;
+  width: 100%;
+  word-break: break-word;
 }
 
 .c6 > p,

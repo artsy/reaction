@@ -59,10 +59,11 @@ const StyledCaptionToggle = styled.div`
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
 const Caption = CaptionDiv`
   ${Fonts.unica("s16", "medium")}
-  ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
-  `}
+  a {
+    color: black;
+  }
   ${props => pMedia.sm`
+    ${Fonts.unica("s14", "medium")}
     display: ${props.open ? "block" : "none"};
     margin-top: ${props.open ? "20px" : "0px"};
   `}
@@ -84,6 +85,9 @@ const CaptionContainer = styled.div`
     margin: 0px;
   }
   ${pMedia.sm`
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
     padding: 20px;
   `}
 `

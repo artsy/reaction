@@ -24,6 +24,7 @@ export interface ArticleProps {
   relatedArticlesForCanvas?: any
   isTruncated?: boolean
   emailSignupUrl?: string
+  headerHeight?: string
 }
 interface ArticleState {
   viewerIsOpen: boolean
@@ -92,12 +93,12 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
+    const { relatedArticlesForCanvas, relatedArticlesForPanel, headerHeight } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
         <div>
-          <Header article={article} />
+          <Header article={article} height={headerHeight} />
           <FeatureLayout>
             <Sections article={article} />
           </FeatureLayout>

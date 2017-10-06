@@ -20,6 +20,13 @@ exports[`renders a single image properly 1`] = `
   line-height: 1.4em;
 }
 
+.c8 .title {
+  font-family: Unica77LLWebItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
 .c9 {
   color: #999;
   display: block;
@@ -265,6 +272,13 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
+.c8 .title {
+  font-family: Unica77LLWebItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
 .c9 {
   color: #999;
   display: block;
@@ -333,6 +347,8 @@ exports[`renders properly 1`] = `
 
 .c13 {
   padding: 0;
+  width: 100%;
+  word-break: break-word;
 }
 
 .c13 > p,

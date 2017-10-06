@@ -26,6 +26,7 @@ const SlideContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 `
 const Image = styled.div`
   display: block;
@@ -34,7 +35,7 @@ const Image = styled.div`
   flex: 1;
   margin: 50px 60px;
   ${pMedia.sm`
-    margin: 20px 0;
+    margin: 20px 0 80px 0;
   `}
 `
 const Title = styled.div`

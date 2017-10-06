@@ -29,6 +29,13 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
+.c8 .title {
+  font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c9.artist-name {
   margin-right: 30px;
 }
@@ -46,6 +53,10 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+}
+
+.c7 a {
+  color: black;
 }
 
 .c12 {
@@ -94,6 +105,7 @@ exports[`renders properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  position: relative;
 }
 
 .c3 {
@@ -164,6 +176,13 @@ exports[`renders properly 1`] = `
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
+  .c8 .title {
+    font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
 }
 
 @media (max-width: 720px) {
@@ -193,11 +212,6 @@ exports[`renders properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width: 720px) {
-  .c7 {
     display: none;
     margin-top: 0px;
   }
@@ -214,25 +228,28 @@ exports[`renders properly 1`] = `
 
 @media (max-width: 720px) {
   .c4 {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 40px);
     padding: 20px;
   }
 }
 
 @media (max-width: 720px) {
   .c3 {
-    margin: 20px 0;
+    margin: 20px 0 80px 0;
   }
 }
 
 @media (max-width: 720px) {
   .c13 {
-    margin: 20px 0;
+    margin: 20px 0 80px 0;
   }
 }
 
 @media (max-width: 720px) {
   .c14 {
-    margin: 20px 0;
+    margin: 20px 0 80px 0;
   }
 }
 
@@ -350,7 +367,9 @@ exports[`renders properly 1`] = `
       >
         <div
           className="c2"
-        />
+        >
+          New York City
+        </div>
         <div
           className="c13"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
@@ -397,7 +416,9 @@ exports[`renders properly 1`] = `
       >
         <div
           className="c2"
-        />
+        >
+          New York City
+        </div>
         <div
           className="c14"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"

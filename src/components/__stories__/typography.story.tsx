@@ -61,6 +61,10 @@ storiesOf("Typography", module)
         Text Color
       </Title>
 
+      <Title color={colors.graySemibold}>
+        Contact Us
+      </Title>
+
       <Text align="center" color={colors.graySemibold}>
         Have questions? Get in touch:&nbsp;
         <TextLink href="#">youremail@example.com</TextLink>
