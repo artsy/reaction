@@ -52,18 +52,6 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     }
   }
 
-  @track((props, [e]) => ({
-    action: "Article Impression",
-    article_id: props.article.id,
-    destination_path: window.location.pathname,
-    // TODO: What do we put here? According to analytics there are the valid types
-    // [newsletter signup, toc, artist follow, image set, article callout, social, related article]
-    impression_type: "related_article",
-    context_type: "article_fixed",
-  }))
-  // tslint:disable-next-line:no-empty
-  componentDidMount() {}
-
   getChildContext() {
     return { onViewFullscreen: this.openViewer }
   }

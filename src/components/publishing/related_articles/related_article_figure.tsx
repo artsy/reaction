@@ -28,9 +28,7 @@ class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, vo
     action: "Clicked article impression",
     article_id: props.article.id,
     destination_path: e.currentTarget.attributes.href.value,
-    // TODO: What do we put here? According to analytics there are the valid types
-    // [newsletter signup, toc, artist follow, image set, article callout, social, related article]
-    impression_type: "related_article",
+    impression_type: "related_articles_canvas",
     context_type: "article_fixed",
   }))
   // tslint:disable-next-line:no-empty
