@@ -1,6 +1,6 @@
 import React from "react"
-import * as request from "request"
 import styled, { StyledFunction } from "styled-components"
+import request from "superagent"
 import Colors from "../../assets/colors"
 import InvertedButton from "../buttons/inverted"
 import { borderedInput } from "../mixins"
