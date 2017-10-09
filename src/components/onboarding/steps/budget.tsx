@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import SelectableLink from "../selectable_link"
+import SelectableToggle from "../selectable_toggle"
 import { StepProps } from "../types"
 import { Layout } from "./layout"
 
@@ -13,7 +13,11 @@ margin: 0 auto 100px;
 }
 `
 
-export default class Budget extends React.Component<StepProps, null> {
+interface State {
+  selection: string
+}
+
+export default class Budget extends React.Component<StepProps, State> {
   options = [
     "UNDER $500",
     "UNDER $2,500",
@@ -24,18 +28,39 @@ export default class Budget extends React.Component<StepProps, null> {
     "NO BUDGET IN MIND",
   ]
 
-  onOptionSelected = () => {
-    // to be continued
-    null
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selection: "",
+    }
+  }
+
+  onOptionSelected = (index: number) => {
+    let selection = { selection: this.options[index] }
+    this.setState(selection)
+  }
+
+  submit() {
+    null // coming soooon
   }
 
   render() {
     const options = this.options.map((text, index) =>
-      <SelectableLink key={index} text={text} onSelect={this.onOptionSelected.bind(this, index)} />
+      <SelectableToggle
+        key={index}
+        text={text}
+        onSelect={this.onOptionSelected.bind(this, index)}
+        selected={this.state.selection === text}
+      />
     )
 
     return (
-      <Layout title="What's your budget?" subtitle="Select one" onNextButtonPressed={null}>
+      <Layout
+        title="What's your budget?"
+        subtitle="Select one"
+        onNextButtonPressed={this.state.selection !== "" && this.submit.bind(this)}
+      >
         <OptionsContainer>
           {options}
         </OptionsContainer>
