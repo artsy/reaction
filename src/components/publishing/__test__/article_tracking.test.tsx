@@ -14,10 +14,10 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
 it("emits analytics events to an event emitter", done => {
   const article = mount(<Article article={StandardArticle} />)
   Events.onEvent(data => {
-    expect(data.action).toEqual("share article")
+    expect(data.action).toEqual("Article share")
     done()
   })
   const shareUrl = `http://www.artsy.net/article/${StandardArticle.slug}`
   const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
-  article.find(`[href='${fbURL}']`).simulate("click")
+  article.find(`[href='${fbURL}']`).first().simulate("click")
 })
