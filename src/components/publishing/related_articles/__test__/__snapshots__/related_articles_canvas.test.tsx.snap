@@ -234,14 +234,11 @@ exports[`renders the related articles canvas 1`] = `
     >
       <div
         className="c5"
-        href="https://artsy.net/article/artsy-editorial-15-top-art-schools-united-states"
-<<<<<<< HEAD
-        onClick={[Function]}
-=======
->>>>>>> e00e6b2... Update snapshots
       >
         <a
           className="c6"
+          href="https://artsy.net/article/artsy-editorial-15-top-art-schools-united-states"
+          onClick={[Function]}
         >
           <img
             alt="The 15 Top Art Schools in the United States"
@@ -270,23 +267,13 @@ exports[`renders the related articles canvas 1`] = `
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-    <div
-      className="c4"
-    >
-      <a
-        className="c5"
-        href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
-        onClick={[Function]}
-=======
       <div
         className="c5"
-        href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
->>>>>>> e00e6b2... Update snapshots
       >
         <a
           className="c6"
+          href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+          onClick={[Function]}
         >
           <img
             alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
@@ -315,23 +302,13 @@ exports[`renders the related articles canvas 1`] = `
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-    <div
-      className="c4"
-    >
-      <a
-        className="c5"
-        href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
-        onClick={[Function]}
-=======
       <div
         className="c5"
-        href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
->>>>>>> e00e6b2... Update snapshots
       >
         <a
           className="c6"
+          href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
+          onClick={[Function]}
         >
           <img
             alt="French Art History in a Nutshell"
@@ -360,23 +337,13 @@ exports[`renders the related articles canvas 1`] = `
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-    <div
-      className="c4"
-    >
-      <a
-        className="c5"
-        href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
-        onClick={[Function]}
-=======
       <div
         className="c5"
-        href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
->>>>>>> e00e6b2... Update snapshots
       >
         <a
           className="c6"
+          href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
+          onClick={[Function]}
         >
           <img
             alt="Miami Artists and Museums Brace for Hurricane Irma"

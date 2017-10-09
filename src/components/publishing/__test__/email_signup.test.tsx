@@ -5,8 +5,12 @@ import * as renderer from "react-test-renderer"
 import request from "superagent"
 import EmailSignup from "../email_signup"
 
-jest.mock("request", () => {
-  return { post: jest.fn() }
+jest.mock("superagent", () => {
+  const end = jest.fn()
+  const set = jest.fn().mockReturnValue({ end })
+  const send = jest.fn().mockReturnValue({ set })
+  const post = jest.fn().mockReturnValue({ send })
+  return { post, set, send, end }
 })
 jest.useFakeTimers()
 
@@ -21,8 +25,8 @@ describe("EmailSignup", () => {
     viewer.setState({ value: "foo@goo.net" })
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
-    expect(request.post.mock.calls[0][0].body.email).toEqual("foo@goo.net")
-    request.post.mock.calls[0][1]()
+    expect(request.send.mock.calls[0][0].email).toEqual("foo@goo.net")
+    request.end.mock.calls[0][0]()
     const state = viewer.state()
     expect(state.message).toEqual("Thank you!")
 
@@ -38,7 +42,7 @@ describe("EmailSignup", () => {
     viewer.setState({ value: "foo@goo.net" })
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
-    request.post.mock.calls[1][1]("Error")
+    request.end.mock.calls[1][0]("Error")
     const state = viewer.state()
     expect(state.message).toEqual("Error. Please try again")
     expect(state.error).toBe(true)

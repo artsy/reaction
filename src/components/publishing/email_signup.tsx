@@ -39,20 +39,13 @@ class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
   onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(emailRegex)) {
-      request.post(
-        {
-          uri: this.props.signupUrl,
-          body: { email: this.state.value },
-          json: true,
-        },
-        err => {
-          if (err) {
-            this.flashMessage("Error. Please try again", true, false)
-          } else {
-            this.flashMessage("Thank you!", false, true)
-          }
+      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
+        if (err) {
+          this.flashMessage("Error. Please try again", true, false)
+        } else {
+          this.flashMessage("Thank you!", false, true)
         }
-      )
+      })
     } else {
       this.flashMessage("Invalid Email... Please try again", true, false)
     }
