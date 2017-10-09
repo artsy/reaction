@@ -100,6 +100,12 @@ exports[`renders a single image properly 1`] = `
   }
 }
 
+@media (max-width: 720px) {
+  .c3 .c5 {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 600px) {
   .c1 {
     margin-bottom: 10px;
@@ -398,6 +404,12 @@ exports[`renders properly 1`] = `
 @media (max-width: 600px) {
   .c8 {
     padding: 0 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c3 .c5 {
+    opacity: 1;
   }
 }
 

@@ -504,6 +504,12 @@ exports[`renders properly 1`] = `
   }
 }
 
+@media (max-width: 720px) {
+  .c7 .c9 {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 600px) {
   .c12 {
     padding: 0px 10px;
