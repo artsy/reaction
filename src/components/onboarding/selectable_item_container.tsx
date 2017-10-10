@@ -1,6 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { StyledFunction } from 'styled-components'
 
+import { fadeIn, fadeOut } from "../../assets/animations"
 import colors from "../../assets/colors"
 import * as fonts from '../../assets/fonts'
 
@@ -19,7 +20,13 @@ interface SelectableItemProps {
   }>
 }
 
-const Link = styled.a`
+interface ClickableLinkState {
+  fadeIn?: boolean
+  fadeOut?: boolean
+}
+
+const anchor: StyledFunction<ClickableLinkState & React.HTMLProps<HTMLInputElement>> = styled.a
+const Link = anchor`
   display: flex;
   font-size: 14px;
   color: black;
@@ -30,6 +37,8 @@ const Link = styled.a`
   &:hover {
     background-color: #f8f8f8;
   }
+  ${props => props.fadeIn ? fadeIn : null}
+  ${props => props.fadeOut ? fadeOut : null}
 `
 
 const Avatar = styled.img`
@@ -53,10 +62,32 @@ const OnboardingSearchBox = styled.div`
   border-bottom: 1px solid #e5e5e5;
 `
 
+class ItemLink extends React.Component<React.HTMLProps<HTMLAnchorElement>, ClickableLinkState> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fadeIn: false,
+      fadeOut: false,
+    }
+  }
+
+  onClick() {
+    this.setState({ fadeOut: true })
+  }
+
+  render() {
+    return (
+      <Link onClick={this.onClick.bind(this)} fadeIn={this.state.fadeIn} fadeOut={this.state.fadeOut}>
+        {this.props.children}
+      </Link>
+    )
+  }
+}
+
 export default class SelectableItemContainer extends React.Component<SelectableItemProps, null> {
   render() {
     const items = this.props.items.map(item =>
-      <Link href="#">
+      <ItemLink href="#">
         <Col>
           <Avatar src={item.image.cropped.url} width={50} height={50} />
         </Col>
@@ -66,7 +97,7 @@ export default class SelectableItemContainer extends React.Component<SelectableI
         <Col>
           <Icon name="follow-circle" color="black" fontSize="39px" />
         </Col>
-      </Link>
+      </ItemLink>
     )
 
     return (
