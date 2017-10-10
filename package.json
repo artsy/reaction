@@ -148,7 +148,8 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "setupFiles": ["./src/setup_jest.ts"]
   },
   "lint-staged": {
     "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"],
