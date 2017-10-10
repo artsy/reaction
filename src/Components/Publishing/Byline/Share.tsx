@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { track } from "../../../Utils/Track"
+import { track } from "../../../Utils/track"
 import IconSocialEmail from "../Icon/SocialEmail"
 import IconSocialFacebook from "../Icon/SocialFacebook"
 import IconSocialTwitter from "../Icon/SocialTwitter"

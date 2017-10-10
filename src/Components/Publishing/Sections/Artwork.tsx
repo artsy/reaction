@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import { Layout, SectionLayout } from "../Typings"
 import ArtworkCaption from "./ArtworkCaption"
 import ImageWrapper from "./ImageWrapper"
@@ -29,11 +29,7 @@ const ArtworkImage: React.SFC<ArtworkProps> = props => {
     />
   )
   if (linked) {
-    return (
-      <ArtworkImageLink href={"/artwork/" + artwork.slug}>
-        {image}
-      </ArtworkImageLink>
-    )
+    return <ArtworkImageLink href={"/artwork/" + artwork.slug}>{image}</ArtworkImageLink>
   } else {
     return image
   }

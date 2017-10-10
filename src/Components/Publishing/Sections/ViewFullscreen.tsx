@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
-import { track } from "../../../Utils/Track"
+import { track } from "../../../Utils/track"
 import IconExpand from "../Icon/Expand"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
@@ -44,8 +44,8 @@ const ViewFullscreenLink = styled.div`
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: .6;
-  transition: opacity .3s;
+  opacity: 0.6;
+  transition: opacity 0.3s;
   &:hover {
     opacity: 1;
   }

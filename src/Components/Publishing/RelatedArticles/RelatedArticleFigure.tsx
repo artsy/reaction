@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/Resizer"
-import { track } from "../../../Utils/Track"
+import { crop } from "../../../Utils/resizer"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import Byline from "../Byline/Byline"
 import { articleHref } from "../Constants"
@@ -56,7 +56,7 @@ const ImageTitle = styled.a`
   min-height: 270px;
   ${pMedia.sm`
     height: 235px;
-  `}
+  `};
 `
 const ArticleFigure = styled.div`
   display: flex;
@@ -67,10 +67,9 @@ const ArticleFigure = styled.div`
   color: black;
 `
 const ArticleTitle = styled.div`
-  ${Fonts.unica("s16")}
-  ${pMedia.sm`
+  ${Fonts.unica("s16")} ${pMedia.sm`
     ${Fonts.unica("s14")}
-  `}
+  `};
 `
 const BlockImage = styled.img`
   display: block;
@@ -80,7 +79,7 @@ const BlockImage = styled.img`
   object-fit: cover;
   ${pMedia.sm`
     height: 150px;
-  `}
+  `};
 `
 
 export default RelatedArticleFigure

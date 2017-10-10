@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import "../assets/fonts"
+import "../Assets/Fonts"
 
 export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
   href?: string
@@ -23,7 +23,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 
 const StyledTextLink = styled(TextLink)`
   color: ${props => props.color};
-  text-decoration: ${props => (props.underline ? "underline" : "none")}
+  text-decoration: ${props => (props.underline ? "underline" : "none")};
 `
 
 StyledTextLink.defaultProps = {

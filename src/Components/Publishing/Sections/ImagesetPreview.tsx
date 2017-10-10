@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Fonts from "../Fonts"
 import IconImageSet from "../Icon/ImageSet"
@@ -117,7 +117,7 @@ const IconContainer = styled.div`
   }
   ${pMedia.xs`
     display: none;
-  `}
+  `};
 `
 
 const FullWrapper = styled.div`
@@ -166,28 +166,25 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  margin-bottom: 8px;
+  ${Fonts.unica("s19", "medium")} margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
     ${Fonts.unica("s16", "medium")}
-  `}
+  `};
 `
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${Fonts.unica("s14", "medium")}
-  ${pMedia.xs`
+  ${Fonts.unica("s14", "medium")} ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
-  `}
+  `};
 `
 const SubTitleCount = styled.div`
-  ${Fonts.unica("s14")}
-  margin-left: 20px;
+  ${Fonts.unica("s14")} margin-left: 20px;
   ${pMedia.xs`
     ${Fonts.unica("s12")}
-  `}
+  `};
 `
 
 export default ImageSetPreview

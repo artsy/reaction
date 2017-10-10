@@ -1,5 +1,5 @@
 import React from "react"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import { Layout, SectionLayout } from "../Typings"
 import Caption from "./Caption"
 import ImageWrapper from "./ImageWrapper"

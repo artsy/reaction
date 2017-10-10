@@ -49,9 +49,9 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: .6;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c5:hover {

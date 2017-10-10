@@ -1,7 +1,7 @@
 import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/Resizer"
+import { crop } from "../../../Utils/resizer"
 import Fonts from "../Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -17,9 +17,7 @@ const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
   const { articles, label } = props
   return (
     <RelatedArticlesContainer>
-      <Label>
-        {label}
-      </Label>
+      <Label>{label}</Label>
       <Collection>
         {_.map(articles, (article, i) => {
           return (
@@ -45,8 +43,7 @@ const Collection = styled.div`
   flex-direction: column;
 `
 const Label = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s19", "medium")} margin-bottom: 10px;
 `
 const ArticleLink = styled.a`
   text-decoration: none;
@@ -60,7 +57,6 @@ const ArticleImage = styled.img`
   margin-right: 10px;
 `
 const ArticleTitle = styled.span`
-  ${Fonts.garamond("s17")}
-  color: black;
+  ${Fonts.garamond("s17")} color: black;
 `
 export default RelatedArticlesPanel

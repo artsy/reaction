@@ -2,7 +2,7 @@ import { find } from "lodash"
 import * as React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../../Utils/Fillwidth"
+import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { sizeMeRefreshRate } from "../Constants"
 import { SectionLayout } from "../Typings"
@@ -71,7 +71,7 @@ const ImageCollectionContainer = styled.div`
   width: 100%;
   ${pMedia.xs`
     flex-direction: column;
-  `}
+  `};
 `
 
 const sizeMeOptions = {

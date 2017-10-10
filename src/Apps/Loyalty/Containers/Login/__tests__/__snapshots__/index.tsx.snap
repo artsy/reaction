@@ -2,16 +2,16 @@
 
 exports[`login renders the snapshot 1`] = `
 <div
-  className="file__LoginContainer-s1d01h8e-0 gwuPpF"
+  className="file__LoginContainer-c8o48u-0 KsHMB"
 >
   <div
-    className="file-s1ekx40u-0 iuEcGN"
+    className="file-s1p6nknl-0 eOLBnr"
     style={undefined}
   >
     
   </div>
   <p
-    className="file__Text-s4rtu63-0 eEhqjQ"
+    className="file__Text-s1j50yi-0 gnnjbx"
   >
     Welcome back, please log in 
     <br />
@@ -24,20 +24,20 @@ exports[`login renders the snapshot 1`] = `
   >
     <input
       autoFocus={true}
-      className="file__StyledInput-s1d01h8e-1 qmhxa file__StyledInput-s14cczvx-0 kELuxT"
+      className="file__StyledInput-c8o48u-1 eHLdcm file__StyledInput-nvgs54-0 guxuny"
       name="email"
       onChange={[Function]}
       placeholder="Email"
       value=""
     />
     <div
-      className="file__StyledDiv-s14cczvx-2 eKNcia"
+      className="file__StyledDiv-nvgs54-2 lipob"
     >
       <div
         className="border-container"
       />
       <input
-        className="file__BorderlessInput-s14cczvx-1 bxtRHC"
+        className="file__BorderlessInput-nvgs54-1 fIiImj"
         name="password"
         onBlur={[Function]}
         onChange={[Function]}
@@ -47,34 +47,34 @@ exports[`login renders the snapshot 1`] = `
         value=""
       />
       <a
-        className="file__StyledTextLink-s18afosz-0 hlqDRc"
+        className="file__StyledTextLink-s1973ep5-0 gWjzCq"
         href={undefined}
       >
         Forgot?
       </a>
     </div>
     <button
-      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 fBHbtu"
+      className="file__InvertedButton-v41jhc-0 iFBGcT file__StyledButton-s12zbojh-0 gKGhiA"
     >
       <span>
         Log In
       </span>
     </button>
     <div
-      className="file__StyledOrContainer-s1d01h8e-2 iqvrnM"
+      className="file__StyledOrContainer-c8o48u-2 ieoOMz"
     >
       <div
-        className="file__StyledOrText-s1d01h8e-3 ggmqfI"
+        className="file__StyledOrText-c8o48u-3 gDmSVA"
       >
         or
       </div>
     </div>
     <a
-      className="file-y6ly8y-0 bxHoRp file__StyledButton-muis26-0 fBHbtu"
+      className="file-oh833r-0 kIsyEW file__StyledButton-s12zbojh-0 gKGhiA"
       href="/facebook"
     >
       <div
-        className="file-s1ekx40u-0 bDXcCT"
+        className="file-s1p6nknl-0 eFOrfg"
         style={undefined}
       >
         
@@ -84,11 +84,11 @@ exports[`login renders the snapshot 1`] = `
       </span>
     </a>
     <a
-      className="file-cy64ue-0 gjiGIK file__StyledButton-muis26-0 fBHbtu"
+      className="file-s12x6osc-0 hlnGKP file__StyledButton-s12zbojh-0 gKGhiA"
       href="/twitter"
     >
       <div
-        className="file-s1ekx40u-0 bDXcCT"
+        className="file-s1p6nknl-0 eFOrfg"
         style={undefined}
       >
         

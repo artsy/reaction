@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import "../assets/fonts"
+import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
 
 export type FontName = string
@@ -13,10 +13,11 @@ export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   style?: any
 }
 
-const Icon: React.SFC<IconProps> = props =>
+const Icon: React.SFC<IconProps> = props => (
   <div className={props.className} style={props.style}>
     {icons[props.name]}
   </div>
+)
 
 export default styled(Icon)`
   font-family: ${props => props.font || "artsy-icons"};

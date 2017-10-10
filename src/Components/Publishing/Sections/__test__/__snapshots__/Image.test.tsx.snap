@@ -48,9 +48,9 @@ exports[`renders a long caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: .6;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c4:hover {
@@ -227,9 +227,9 @@ exports[`renders a react child as caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: .6;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c4:hover {
@@ -404,9 +404,9 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: .6;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c4:hover {

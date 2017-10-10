@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import Fonts from "../Fonts"
 import IconImageSet from "../Icon/ImageSet"
 
@@ -11,8 +11,7 @@ const Wrapper = styled.div`
   display: flex;
 `
 const Text = styled.div`
-  ${Fonts.avantgarde("s11")}
-  line-height: 1.35em;
+  ${Fonts.avantgarde("s11")} line-height: 1.35em;
   margin: 0;
 `
 const Remaining = styled.div`

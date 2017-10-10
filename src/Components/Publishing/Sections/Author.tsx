@@ -1,7 +1,7 @@
 import * as React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
 import Fonts from "../Fonts"

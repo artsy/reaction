@@ -2,40 +2,40 @@
 
 exports[`RepeatVisitor renders the snapshot 1`] = `
 <div
-  className="file__Container-s8sp4hp-0 gLSdEp"
+  className="file__Container-s1fo0l6p-0 iewgIw"
 >
   <div
-    className="file__Nav-s1w500ep-0 krvdox"
+    className="file__Nav-s3a2xky-0 jFOBxo"
   >
     <a
-      className="file__NavIcon-s1w500ep-1 eNnazU"
+      className="file__NavIcon-s3a2xky-1 iuKRRV"
       href={undefined}
     >
       <div
-        className="file-s1ekx40u-0 krLqUx"
+        className="file-s1p6nknl-0 fIydph"
         style={undefined}
       >
         
       </div>
     </a>
     <a
-      className="file__StyledLink-mgasw5-0 dIJcvg"
+      className="file__StyledLink-bkdmoh-0 kRXfDa"
       href="/"
     >
       Back To Artsy
     </a>
   </div>
   <div
-    className="file__StyledTitle-s11cvek3-0 icFPpY"
+    className="file__StyledTitle-ujwgso-0 jdYgqZ"
     color="inherit"
   >
     Your purchases are being reviewed
   </div>
   <div
-    className="file__Section-s8sp4hp-1 ehXvzZ"
+    className="file__Section-s1fo0l6p-1 hnqVsZ"
   >
     <p
-      className="file__Text-s4rtu63-0 eEhqjQ"
+      className="file__Text-s1j50yi-0 gnnjbx"
     >
       We will be in touch once we confirm your
       <br />
@@ -43,10 +43,10 @@ exports[`RepeatVisitor renders the snapshot 1`] = `
     </p>
   </div>
   <div
-    className="file__ButtonWrapper-s8sp4hp-2 lpPHz"
+    className="file__ButtonWrapper-s1fo0l6p-2 jgURHL"
   >
     <a
-      className="file__InvertedButton-s2qkmvo-0 MNMDa file__StyledButton-muis26-0 exlWFO"
+      className="file__InvertedButton-v41jhc-0 iFBGcT file__StyledButton-s12zbojh-0 irXAmg"
       href="/"
     >
       <span>

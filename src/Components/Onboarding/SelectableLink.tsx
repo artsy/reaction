@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react"
+import styled from "styled-components"
 
-import * as fonts from '../../assets/fonts';
-import Icon from '../icon';
+import * as fonts from "../../Assets/Fonts"
+import Icon from "../Icon"
 
 interface SelectableLinkProps {
   href?: string
@@ -15,35 +15,35 @@ interface LinkState {
 }
 
 const IconContainer = styled.div`
-width: 18px;
-height: 18px;
-background-color: black;
-display: none;
-border-radius: 50%;
-float: right;
-margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  display: none;
+  border-radius: 50%;
+  float: right;
+  margin-right: 15px;
 `
 
 const Link = styled.a`
-display: block;
-font-size: 14px;
-color: black;
-text-decoration: none;
-text-transform: uppercase;
-font-family: ${fonts.primary.fontFamily};
-padding: 30px 0 30px 15px;
-border-top: 1px solid #e5e5e5;
-&:hover {
-  background-color: #f8f8f8;
-}
-&:hover .collector-intent-checked {
-  display: inline-flex;
-  justify-content: center;
-}
-& .collector-intent-checked.is-selected {
-  display: inline-flex;
-  justify-content: center;
-}
+  display: block;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: ${fonts.primary.fontFamily};
+  padding: 30px 0 30px 15px;
+  border-top: 1px solid #e5e5e5;
+  &:hover {
+    background-color: #f8f8f8;
+  }
+  &:hover .collector-intent-checked {
+    display: inline-flex;
+    justify-content: center;
+  }
+  & .collector-intent-checked.is-selected {
+    display: inline-flex;
+    justify-content: center;
+  }
 `
 
 class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {

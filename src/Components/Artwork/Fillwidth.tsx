@@ -3,7 +3,7 @@ import * as Relay from "react-relay"
 
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../Utils/Fillwidth"
+import fillwidthDimensions from "../../Utils/fillwidth"
 import Artwork from "./FillwidthItem"
 
 import { find } from "lodash"

@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
-import { crop, resize } from "../../../Utils/Resizer"
+import { crop, resize } from "../../../Utils/resizer"
 import Fonts from "../Fonts"
 
 interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -36,11 +36,11 @@ const LinkWrapper = styled.a`
   color: black;
 `
 const Image = styled.div`
-margin-bottom: 15px;
-width: 100%;
-height: 142px;
-background-color: black;
-box-sizing: border-box;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 142px;
+  background-color: black;
+  box-sizing: border-box;
 `
 const Div: StyledFunction<DivUrlProps> = styled.div
 const DisplayPanelContainer = Div`
@@ -68,21 +68,18 @@ const DisplayPanelContainer = Div`
   }
 `
 const Headline = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  line-height: 1.23em;
+  ${Fonts.unica("s16", "medium")} line-height: 1.23em;
   margin-bottom: 3px;
 `
 const Body = styled.div`
-  ${Fonts.garamond("s15")}
-  line-height: 1.53em;
+  ${Fonts.garamond("s15")} line-height: 1.53em;
   margin-bottom: 30px;
   a {
     color: black;
   }
 `
 const SponsoredBy = styled.div`
-  ${Fonts.avantgarde("s11")}
-  color: ${Colors.grayRegular};
+  ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
 `
 
 export default DisplayPanel

@@ -1,17 +1,17 @@
-import * as React from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import * as React from "react"
+import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../Assets/Animations"
 import colors from "../../Assets/Colors"
-import * as fonts from '../../assets/fonts'
+import * as fonts from "../../Assets/Fonts"
 
 import Icon from "../Icon"
-import Input from '../input'
+import Input from "../Input"
 
 interface SelectableItemProps {
-  placeholder?: string,
+  placeholder?: string
   items: Array<{
-    name: string,
+    name: string
     image: {
       cropped: {
         url: string
@@ -37,8 +37,8 @@ const Link = anchor`
   &:hover {
     background-color: #f8f8f8;
   }
-  ${props => props.fadeIn ? fadeIn : null}
-  ${props => props.fadeOut ? fadeOut : null}
+  ${props => (props.fadeIn ? fadeIn : null)}
+  ${props => (props.fadeOut ? fadeOut : null)}
 `
 
 const Avatar = styled.img`
@@ -86,24 +86,26 @@ class ItemLink extends React.Component<React.HTMLProps<HTMLAnchorElement>, Click
 
 export default class SelectableItemContainer extends React.Component<SelectableItemProps, null> {
   render() {
-    const items = this.props.items.map(item =>
+    const items = this.props.items.map(item => (
       <ItemLink href="#">
         <Col>
           <Avatar src={item.image.cropped.url} width={50} height={50} />
         </Col>
-        <FullWidthCol>
-          {item.name}
-        </FullWidthCol>
+        <FullWidthCol>{item.name}</FullWidthCol>
         <Col>
           <Icon name="follow-circle" color="black" fontSize="39px" />
         </Col>
       </ItemLink>
-    )
+    ))
 
     return (
       <OnboardingSearchBox>
         <div style={{ marginBottom: "35px" }}>
-          <Input placeholder={this.props.placeholder} leftView={<Icon name="search" color={colors.graySemibold} />} block />
+          <Input
+            placeholder={this.props.placeholder}
+            leftView={<Icon name="search" color={colors.graySemibold} />}
+            block
+          />
         </div>
 
         {items}

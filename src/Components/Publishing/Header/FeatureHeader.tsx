@@ -1,7 +1,7 @@
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import { resize } from "../../../Utils/Resizer"
+import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Byline from "../Byline/Byline"
 import { sizeMeRefreshRate } from "../Constants"
