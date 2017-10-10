@@ -18,9 +18,8 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
       truncationHeight: "100%",
     }
   }
-
   componentDidMount() {
-    this.truncateArticle()
+    setTimeout(this.truncateArticle, 250)
     window.addEventListener("resize", this.truncateArticle)
   }
 

@@ -1,7 +1,12 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import Article from "../article"
-import { FeatureArticle, MissingVerticalStandardArticle, StandardArticle } from "../fixtures/articles"
+import {
+  FeatureArticle,
+  MissingVerticalStandardArticle,
+  ShortStandardArticle,
+  StandardArticle,
+} from "../fixtures/articles"
 import { RelatedCanvas, RelatedPanel } from "../fixtures/components"
 
 storiesOf("Publishing/Articles", module)
@@ -22,6 +27,17 @@ storiesOf("Publishing/Articles", module)
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
+      />
+    )
+  })
+  .add("Standard with top margin", () => {
+    return (
+      <Article
+        article={ShortStandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        marginTop={100}
       />
     )
   })

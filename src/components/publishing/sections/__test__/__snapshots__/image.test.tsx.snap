@@ -87,6 +87,12 @@ exports[`renders a long caption properly 1`] = `
   }
 }
 
+@media (max-width: 720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
 <div
   className="article-image"
 >
@@ -260,6 +266,12 @@ exports[`renders a react child as caption properly 1`] = `
   }
 }
 
+@media (max-width: 720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
 <div
   className="article-image"
 >
@@ -428,6 +440,12 @@ exports[`renders properly 1`] = `
 @media (max-width: 600px) {
   .c6 {
     padding: 0px;
+  }
+}
+
+@media (max-width: 720px) {
+  .c0 .c2 {
+    opacity: 1;
   }
 }
 

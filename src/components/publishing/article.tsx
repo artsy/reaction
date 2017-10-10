@@ -1,8 +1,7 @@
 import { cloneDeep, includes, map } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
-import styled from "styled-components"
-import colors from "../../assets/colors"
+import styled, { StyledFunction } from "styled-components"
 import Events from "../../utils/events"
 import track from "../../utils/track"
 import EmailSignup from "./email_signup"
@@ -25,13 +24,19 @@ export interface ArticleProps {
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
+  marginTop?: number
 }
+
 interface ArticleState {
   viewerIsOpen: boolean
   slideIndex: number
   fullscreenImages: any
   article: any
   isTruncated: boolean
+}
+
+interface ArticleContainerProps {
+  marginTop?: number
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
@@ -93,11 +98,11 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { relatedArticlesForCanvas, relatedArticlesForPanel, headerHeight } = this.props
+    const { relatedArticlesForCanvas, relatedArticlesForPanel, headerHeight, marginTop } = this.props
     const article = this.state.article
     if (article.layout === "feature") {
       return (
-        <div>
+        <ArticleContainer marginTop={marginTop}>
           <Header article={article} height={headerHeight} />
           <FeatureLayout className="article-content">
             <Sections article={article} />
@@ -108,15 +113,18 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             slideIndex={this.state.slideIndex}
             images={this.state.fullscreenImages}
           />
-        </div>
+        </ArticleContainer>
       )
     } else {
       const relatedArticlePanel = relatedArticlesForPanel
         ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
         : false
+      const relatedArticleCanvas = relatedArticlesForCanvas
+        ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+        : false
       const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
       return (
-        <StandardArticleContainer>
+        <ArticleContainer marginTop={marginTop}>
           <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
             <Header article={article} />
             <StandardLayout>
@@ -126,8 +134,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
                 {relatedArticlePanel}
               </Sidebar>
             </StandardLayout>
-            <LineBreak />
-            <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+            {relatedArticleCanvas}
           </ReadMoreWrapper>
           {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
           <FullscreenViewer
@@ -136,18 +143,16 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             slideIndex={this.state.slideIndex}
             images={this.state.fullscreenImages}
           />
-        </StandardArticleContainer>
+        </ArticleContainer>
       )
     }
   }
 }
 
-const StandardArticleContainer = styled.div`
-  margin-top: 50px;
-`
-const LineBreak = styled.div`
-  border-top: 1px solid ${colors.grayRegular};
-  width: 100%;
+const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
+const ArticleContainer = ArticleDiv`
+  margin-top: ${props => (props.marginTop ? props.marginTop + "px" : "50px")};
 `
 
 export default Article

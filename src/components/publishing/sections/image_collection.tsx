@@ -57,7 +57,6 @@ function renderImages(images, dimensions, gutter, sectionLayout, width) {
     } else {
       return false
     }
-
     return (
       <ImageCollectionItem key={i} margin={i === dimensions.length - 1 ? 0 : gutter} width={imageSize.width}>
         {renderedImage}

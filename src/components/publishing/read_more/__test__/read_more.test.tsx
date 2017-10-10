@@ -6,6 +6,8 @@ import { StandardArticle } from "../../fixtures/articles"
 import Sections from "../../sections/sections"
 import ReadMoreWrapper from "../read_more_wrapper"
 
+jest.useFakeTimers()
+
 describe("ReadMore", () => {
   beforeEach(() => {
     Element.prototype.getBoundingClientRect = jest.fn(() => {
@@ -23,6 +25,7 @@ describe("ReadMore", () => {
       </ReadMoreWrapper>
     )
     const viewer = mount(readMore)
+    jest.runAllTimers()
     expect(viewer.state().truncationHeight).toEqual(200)
   })
 
@@ -42,6 +45,7 @@ describe("ReadMore", () => {
       </ReadMoreWrapper>
     )
     const viewer = mount(readMore)
+    jest.runAllTimers()
     expect(viewer.state().truncationHeight).toEqual("100%")
     expect(hideButton).toBeCalled()
   })

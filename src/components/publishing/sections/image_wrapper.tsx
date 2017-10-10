@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { pMedia } from "../../helpers"
 import { Layout } from "../typings"
 import ViewFullscreen from "./view_fullscreen"
 
@@ -37,6 +38,11 @@ const StyledImageWrapper = styled.div`
       opacity: 1;
     }
   }
+  ${pMedia.sm`
+    ${Fullscreen} {
+      opacity: 1;
+    }
+  `}
 `
 
 const BlockImage = styled.img`

@@ -87,6 +87,12 @@ exports[`renders properly 1`] = `
   }
 }
 
+@media (max-width: 720px) {
+  .c1 .c3 {
+    opacity: 1;
+  }
+}
+
 <div
   className="display-artwork"
 >
