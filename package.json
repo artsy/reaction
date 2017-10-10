@@ -14,8 +14,7 @@
   ],
   "engines": {
     "node": "8.4.x",
-    "npm": "5.4.x",
-    "yarn": "1.x"
+    "npm": "5.4.x"
   },
   "scripts": {
     "start": "node verify-node-version.js && ts-babel-node index.js",
