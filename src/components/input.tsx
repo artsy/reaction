@@ -7,6 +7,7 @@ import { border, borderedInput } from "./mixins"
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: boolean
   block?: boolean
+  leftView?: JSX.Element
   rightView?: JSX.Element
 }
 
@@ -88,6 +89,17 @@ class Input extends React.Component<InputProps, InputState> {
           {this.props.rightView}
         </StyledDiv>
       )
+    } else if (this.props.leftView) {
+        const newProps: any = { ...this.props }
+        delete newProps.className
+
+        return (
+          <StyledDiv>
+            <div className={this.state.borderClasses}/>
+            {this.props.leftView}
+            <BorderlessInput {...newProps} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)}/>
+          </StyledDiv>
+        )
     }
 
     return <StyledInput {...this.props} />

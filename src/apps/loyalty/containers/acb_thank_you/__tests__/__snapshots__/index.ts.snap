@@ -35,7 +35,8 @@ exports[`ACB Thank You renders the snapshot 1`] = `
     </p>
   </div>
   <div
-    className="file__StyledTitle-s3pz4jh-0 izQygJ"
+    className="file__StyledTitle-s11cvek3-0 icFPpY"
+    color="inherit"
   >
     Artsy Collector Loyalty Program
   </div>

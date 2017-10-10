@@ -25,7 +25,7 @@ export default IconImageSet
 This is a component which returns an SVG. To move this into Reaction force, you'll need to find a place to put it. 
 
 It should go somewhere inside `src/components/` - but it will need to be a `.tsx` file. So for now, let's imagine it is
-in `src/components/icons/icon_image_set.tsx`. Make the file and paste the contents in.
+in `src/components/icon/image_set.tsx`. Make the file and paste the contents in.
 
 Doing this will cause a compiler error. Welcome to TypeScript-land.
 
@@ -33,7 +33,7 @@ Doing this will cause a compiler error. Welcome to TypeScript-land.
 class IconImageSet extends Component {
                               ~~~~~~~~~
 
-src/components/icons/icon_image_set.tsx(3,28): error TS2314: Generic type 'Component<P, S>' requires 2 type argument(s).
+src/components/icon/image_set.tsx(3,28): error TS2314: Generic type 'Component<P, S>' requires 2 type argument(s).
 ```
 
 So, this is the major difference between TypeScript React, and JavaScript React. What this error tells you is that a 
@@ -66,7 +66,7 @@ compiler errors sorted, so your component is working. Next, you want to preview 
 #### Storybooks
 
 Reaction Force uses [React Storybook](https://storybook.js.org) to let you work in a sandboxed environment for your component.
-You're going to need to create a new file for your storybook section. We keep stories inside folders which are named `__stories__`. This folder exists in the same folder as the code they test. So make `/src/components/icons/__stories__` 
+You're going to need to create a new file for your storybook section. We keep stories inside folders which are named `__stories__`. This folder exists in the same folder as the code they test. So make `/src/components/icon/__stories__` 
 and add a file called  `icon_image_set.story.tsx`. Your story should be picked up automatically assuming it 
 ends with `story.tsx`. 
 
@@ -78,7 +78,7 @@ import * as React from "react"
 
 import IconImageSet from "../icon_image_set"
 
-storiesOf("Icons", IconImageSet)
+storiesOf("Icons", module)
   .add("Imageset Preview", () => <IconImageSet/>)
 ```
 
@@ -87,7 +87,7 @@ As this component has no props, there's no need to test different props. However
 example looking like:
 
 ```tsx
-storiesOf("Icons", IconImageSet)
+storiesOf("Icon", module)
   .add("Imageset Defaults", () => <IconImageSet/>)
   .add("Imageset Wide", () => <IconImageSet width={200}/>)
   .add("Imageset Red", () => <IconImageSet color="#bb1111"/>)
@@ -102,7 +102,7 @@ So that's your dev environment. Let's look at testing.
 #### Testing with Jest 
 
 We write our tests in Jest, we also co-locate tests in the same folder structure as your code. Tests live inside a `__tests__`
-folder, and need to have `.test.ts` inside the name. So in this case, the test file would be `src/components/icons/__tests__` 
+folder, and need to have `.test.ts` inside the name. So in this case, the test file would be `src/components/icon/__tests__` 
 and `icon_image_set.test.tsx`.
 
 There are two main ways to write tests for your code in Reaction Force:
@@ -118,7 +118,7 @@ makes the same JSON object.
   import * as React from "react"
   import * as renderer from "react-test-renderer"
 
-  import IconImageSet from "../icon_image_set"
+  import IconImageSet from "../icon/image_set"
 
   it("renders properly", () => {
     const icon = renderer.create(<IconImageSet />).toJSON()

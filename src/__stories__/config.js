@@ -1,33 +1,21 @@
 const { configure } = require("@storybook/react")
+const Events = require("../utils/events").default
+
+const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
-  require("../components/__stories__/artwork")
-  require("../components/__stories__/artwork_grid")
-  require("../components/__stories__/modal_header")
-  require("../components/__stories__/buttons")
-  require("../components/__stories__/typography")
-  require("../components/__stories__/input")
-  require("../components/__stories__/grid")
-  require("../components/__stories__/modal")
-  require("../components/__stories__/nav")
-  require("../components/__stories__/artwork_filter")
-  require("../components/__stories__/inquiry_artwork")
-  require("../components/__stories__/save")
-  require("../components/__stories__/spinner")
-  require("../components/__stories__/fillwidth")
-  require("../components/__stories__/artist_follow")
-  require("../components/__stories__/gene")
-  require("../components/__stories__/fair_booth")
-  require("../components/publishing/__stories__/publishing")
+  req.keys().forEach(filename => req(filename))
 }
 
 configure(loadStories, module)
 
-import { setOptions } from '@storybook/addon-options';
+import { setOptions } from "@storybook/addon-options"
 
 setOptions({
-  name: 'Reaction Force',
-  url: 'http://artsy.github.io',
+  name: "Reaction",
+  url: "http://artsy.github.io/reaction",
   showDownPanel: false,
   sortStoriesByKind: true,
 })
+
+Events.onEvent(data => console.log("Tracked event", data))

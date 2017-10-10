@@ -2,6 +2,10 @@ import { css } from "styled-components"
 import * as fonts from "../../assets/fonts"
 
 const textSizesForGaramond = {
+  s11: {
+    size: "11px",
+    height: "1.1em",
+  },
   s15: {
     size: "15px",
     height: "1.25em",
@@ -10,13 +14,29 @@ const textSizesForGaramond = {
     size: "17px",
     height: "1.1em",
   },
+  s19: {
+    size: "19px",
+    height: "1.5em",
+  },
   s23: {
     size: "23px",
     height: "1.5em",
   },
+  s28: {
+    size: "28px",
+    height: "1.2em",
+  },
+  s30: {
+    size: "30px",
+    height: "1.25em",
+  },
   s34: {
     size: "34px",
     height: "1.1em",
+  },
+  s37: {
+    size: "37px",
+    height: "1.2em",
   },
   s40: {
     size: "40px",
@@ -31,11 +51,11 @@ const textSizesForGaramond = {
 const textSizesForUnica = {
   s12: {
     size: "12px",
-    height: "1.1em",
+    height: "1.4em",
   },
   s14: {
     size: "14px",
-    height: "1.1em",
+    height: "1.4em",
   },
   s16: {
     size: "16px",
@@ -45,6 +65,14 @@ const textSizesForUnica = {
     size: "19px",
     height: "1.5em",
   },
+  s32: {
+    size: "32px",
+    height: "1.1em",
+  },
+  s34: {
+    size: "34px",
+    height: "1.1em",
+  },
   s40: {
     size: "40px",
     height: "1.1em",
@@ -53,8 +81,8 @@ const textSizesForUnica = {
     size: "45px",
     height: "1.2em",
   },
-  s69: {
-    size: "69px",
+  s65: {
+    size: "65px",
     height: "1em",
   },
   s80: {
@@ -91,11 +119,11 @@ const unicaFontFamily = family => {
 const textSizesForAvantGarde = {
   s11: {
     size: "11px",
-    height: "1.1em",
+    height: "1.65em",
   },
   s13: {
     size: "13px",
-    height: "1.1em",
+    height: "1.65em",
   },
 }
 
@@ -115,6 +143,7 @@ const avantgarde = size => {
   const sizeStyles = css`
     font-size: ${textSizesForAvantGarde[size].size};
     line-height: ${textSizesForAvantGarde[size].height};
+    letter-spacing: 1px;
   `
   return style.concat(sizeStyles)
 }
