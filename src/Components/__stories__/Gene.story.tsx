@@ -2,8 +2,8 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import ArtistRow from "../Gene/ArtistRow"
 import GeneContent from "../Gene"
+import ArtistRow from "../Gene/ArtistRow"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"

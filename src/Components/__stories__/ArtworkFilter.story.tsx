@@ -6,8 +6,8 @@ import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"
 import FilterArtworksQueryConfig from "../../Relay/Queries/FilterArtworks"
 
-import Dropdown from "../ArtworkFilter/Dropdown"
 import ArtworksFilter from "../ArtworkFilter"
+import Dropdown from "../ArtworkFilter/Dropdown"
 import TotalCount from "../ArtworkFilter/TotalCount"
 
 interface FilterArtworksDropdownState {
