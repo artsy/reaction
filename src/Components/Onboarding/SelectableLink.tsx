@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 
 import * as fonts from "../../Assets/Fonts"
 import Icon from "../Icon"
@@ -14,14 +14,21 @@ interface LinkState {
   selected: boolean
 }
 
-const IconContainer = styled.div`
+interface IconContainerProps extends React.HTMLProps<HTMLIFrameElement> {
+  isSelected: boolean
+}
+
+const iconContainer: StyledFunction<IconContainerProps> = styled.div
+
+const IconContainer = iconContainer`
   width: 18px;
   height: 18px;
   background-color: black;
-  display: none;
   border-radius: 50%;
   float: right;
   margin-right: 15px;
+  display: ${props => (props.isSelected ? "inline-flex;" : "none;")}
+  justify-content: ${props => (props.isSelected ? "center;" : "none;")}
 `
 
 const Link = styled.a`
@@ -36,11 +43,7 @@ const Link = styled.a`
   &:hover {
     background-color: #f8f8f8;
   }
-  &:hover .collector-intent-checked {
-    display: inline-flex;
-    justify-content: center;
-  }
-  & .collector-intent-checked.is-selected {
+  &:hover ${IconContainer} {
     display: inline-flex;
     justify-content: center;
   }
@@ -69,7 +72,7 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
         <Link href={this.props.href} onClick={() => this.onSelect()}>
           {this.props.text}
 
-          <IconContainer className={`collector-intent-checked ${this.state.selected ? "is-selected" : ""}`}>
+          <IconContainer isSelected={this.state.selected}>
             <Icon name="follow-circle.is-following" color="white" fontSize="39px" style={{ alignSelf: "center" }} />
           </IconContainer>
         </Link>
