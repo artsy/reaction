@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`inquiries renders the inquiries listing 1`] = `
+<div
+  className="file__Container-s1gyj4vs-1 jmOzYx"
+>
+  <div
+    className="file__Nav-s3a2xky-0 jFOBxo"
+  >
+    <a
+      className="file__NavIcon-s3a2xky-1 iuKRRV"
+      href="/"
+    >
+      <div
+        className="file-s1p6nknl-0 fIydph"
+        style={undefined}
+      >
+        
+      </div>
+    </a>
+    <a
+      className="file__StyledLink-bkdmoh-0 kRXfDa"
+      href="/"
+    >
+      Back To Artsy
+    </a>
+  </div>
+  <header
+    className="file__Header-s1gyj4vs-2 iblxeM"
+  >
+    <div
+      className="header-title file__StyledTitle-ujwgso-0 fzZMTa"
+      color="inherit"
+    >
+      Please select all works you purchased
+    </div>
+    <p
+      className="header-subtitle file__Text-s1j50yi-0 jzToAc"
+    >
+      We will confirm submitted purchases with the galleries in order to qualify you for the program membership.
+    </p>
+  </header>
+  <div
+    className="artworks"
+  >
+    <div
+      className="Grid__Grid-bojwg gdLArs"
+    >
+      <div
+        className="file__Row-lw0n7x-1 hpRVPU Row__Row-kNtYPA hicFUP"
+      >
+        <div
+          className="file__Col-lw0n7x-0 ifVZX Col__Col-hCQanm jItcmX"
+        >
+          <div
+            className="file__InquiryContainer-s1gyj4vs-0 fFvgsu"
+          >
+            <div
+              className="file__Container-oq1ukk-0 dulJuA"
+              onClick={[Function]}
+              size={250}
+            >
+              <div
+                className="file__ImageContainer-oq1ukk-1 eUdMyJ"
+                size={250}
+              >
+                <img
+                  className="file__Image-oq1ukk-2 jNVZwb"
+                  size={250}
+                  src="http://path.to.cat.pics"
+                />
+                <div
+                  className="overlay-container hovered"
+                >
+                  <div
+                    className="file__OverlayBackground-by1ucj-0 ivWxpO"
+                  >
+                    <div
+                      className="file__Circle-by1ucj-1 hAJpWy"
+                      selected={false}
+                    >
+                      <div
+                        className="file-s1p6nknl-0 eFOrfg"
+                        style={undefined}
+                      >
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="file__StyledMetadata-s1qwxy63-0 cPCanW"
+              >
+                <div>
+                  <div
+                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                  >
+                    <strong>
+                      <a
+                        className="file__StyledTextLink-s1973ep5-0 gWjzCq"
+                        href="/percy-z"
+                      >
+                        Percy Z
+                      </a>
+                    </strong>
+                  </div>
+                  <div
+                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                  >
+                    <a
+                      className="file__StyledTextLink-s1973ep5-0 gWjzCq"
+                      href={undefined}
+                    >
+                      <em />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="footer"
+  >
+    <p
+      className="file__Text-s1j50yi-0 gnnjbx"
+    >
+      If you purchased any works not included
+      <br />
+       above, please list them.
+    </p>
+    <textarea
+      className="file__LargeTextArea-s1gyj4vs-3 MhnYV file-s1t5uhf0-0 cCANvA"
+      onChange={[Function]}
+      placeholder="Artwork, Artist, Gallery"
+    />
+    <button
+      className="file__InvertedButton-v41jhc-0 huDpF file__StyledButton-s12zbojh-0 iUONPv"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span>
+        Submit purchases
+      </span>
+    </button>
+  </footer>
+</div>
+`;
