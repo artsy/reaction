@@ -15,8 +15,8 @@ interface LinkState {
 }
 
 const IconContainer = styled.div`
-width: 15px;
-height: 15px;
+width: 18px;
+height: 18px;
 background-color: black;
 display: none;
 border-radius: 50%;
@@ -37,10 +37,12 @@ border-top: 1px solid #e5e5e5;
   background-color: #f8f8f8;
 }
 &:hover .collector-intent-checked {
-  display: inline;
+  display: inline-flex;
+  justify-content: center;
 }
 & .collector-intent-checked.is-selected {
-  display: inline;
+  display: inline-flex;
+  justify-content: center;
 }
 `
 
@@ -68,7 +70,7 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
           {this.props.text}
 
           <IconContainer className={`collector-intent-checked ${this.state.selected ? "is-selected" : ""}`}>
-            <Icon name="check" color="white" fontSize="8px" />
+            <Icon name="follow-circle.is-following" color="white" fontSize="39px" style={{ alignSelf: "center" }} />
           </IconContainer>
         </Link>
       </div>

@@ -35,6 +35,9 @@ function Typography() {
       <GaramondS15>
         Garamond s15: 15px / 1.25em
       </GaramondS15>
+      <GaramondS11>
+        Garamond s11: 11px / 1.1em
+      </GaramondS11>
       <hr />
       <br />
       <AvantGardeS13>
@@ -85,6 +88,10 @@ function Typography() {
 }
 export default Typography
 
+const GaramondS11 = styled.div`
+  ${Fonts.garamond("s11")}
+  margin-bottom: 20px;
+`
 const GaramondS15 = styled.div`
   ${Fonts.garamond("s15")}
   margin-bottom: 20px;

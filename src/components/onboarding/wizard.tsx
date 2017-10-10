@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react"
 
-import { StepProps } from './types';
+import { StepProps } from "./types"
 
 interface Props {
   stepComponents: Array<React.ComponentClass<StepProps>>

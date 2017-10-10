@@ -34,7 +34,7 @@ interface ArticleState {
   isTruncated: boolean
 }
 
-@track({}, { dispatch: data => Events.postEvent(data) })
+@track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
 class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
@@ -99,7 +99,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
       return (
         <div>
           <Header article={article} height={headerHeight} />
-          <FeatureLayout>
+          <FeatureLayout className="article-content">
             <Sections article={article} />
           </FeatureLayout>
           <FullscreenViewer

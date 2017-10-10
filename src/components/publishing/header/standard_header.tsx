@@ -28,7 +28,7 @@ const StandardHeaderContainer = styled.div`
   width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
-  ${pMedia.lg`
+  ${pMedia.xl`
     padding: 0 20px;
   `}
   ${pMedia.xs`

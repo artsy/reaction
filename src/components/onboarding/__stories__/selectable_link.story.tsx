@@ -6,12 +6,7 @@ import SelectableLink from "../selectable_link"
 storiesOf("Onboarding", module).add("SelectableLink", () => {
   return (
     <div style={{ width: "400px" }}>
-      <SelectableLink
-        text="Buy Art & Design"
-        onSelect={select => {
-          return select
-        }}
-      />
+      <SelectableLink text="Buy Art & Design" onSelect={selected => selected} />
     </div>
   )
 })

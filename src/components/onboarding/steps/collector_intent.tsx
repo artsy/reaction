@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react"
+import styled from "styled-components"
 
-import { ContextConsumer, ContextProps } from '../../artsy';
-import SelectableLink from '../selectable_link';
-import { StepProps } from '../types';
-import { Layout } from './layout';
+import { ContextConsumer, ContextProps } from "../../artsy"
+import SelectableLink from "../selectable_link"
+import { StepProps } from "../types"
+import { Layout } from "./layout"
 
 const OptionsContainer = styled.div`
   width: 450px;

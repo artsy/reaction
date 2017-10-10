@@ -83,6 +83,9 @@ exports[`renders the related articles canvas 1`] = `
   flex-direction: column;
   max-width: 278px;
   margin-right: 30px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: black;
 }
 
 .c7 {
@@ -222,10 +225,11 @@ exports[`renders the related articles canvas 1`] = `
   >
     <div
       className="c4"
-      href="https://artsy.net/article/artsy-editorial-15-top-art-schools-united-states"
     >
       <a
         className="c5"
+        href="https://artsy.net/article/artsy-editorial-15-top-art-schools-united-states"
+        onClick={[Function]}
       >
         <img
           alt="The 15 Top Art Schools in the United States"
@@ -256,10 +260,11 @@ exports[`renders the related articles canvas 1`] = `
     </div>
     <div
       className="c4"
-      href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
     >
       <a
         className="c5"
+        href="https://artsy.net/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+        onClick={[Function]}
       >
         <img
           alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
@@ -290,10 +295,11 @@ exports[`renders the related articles canvas 1`] = `
     </div>
     <div
       className="c4"
-      href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
     >
       <a
         className="c5"
+        href="https://artsy.net/article/artsy-editorial-french-art-history-in-a-nutshell"
+        onClick={[Function]}
       >
         <img
           alt="French Art History in a Nutshell"
@@ -324,10 +330,11 @@ exports[`renders the related articles canvas 1`] = `
     </div>
     <div
       className="c4"
-      href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
     >
       <a
         className="c5"
+        href="https://artsy.net/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
+        onClick={[Function]}
       >
         <img
           alt="Miami Artists and Museums Brace for Hurricane Irma"

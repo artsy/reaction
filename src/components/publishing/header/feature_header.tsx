@@ -200,7 +200,7 @@ const SubHeader = styled.div`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
-  ${pMedia.lg`
+  ${pMedia.xl`
     ${Fonts.unica("s80")}
   `}
   ${pMedia.md`

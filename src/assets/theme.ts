@@ -20,7 +20,8 @@ export default {
       xs: 600, // px
       sm: 720, // px
       md: 900, // px
-      lg: 1250, // px
+      lg: 1150, // px
+      xl: 1250, // px
     },
   },
 }
