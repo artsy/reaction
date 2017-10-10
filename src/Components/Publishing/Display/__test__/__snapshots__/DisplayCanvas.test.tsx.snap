@@ -1014,7 +1014,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
 `;
 
 exports[`renders the canvas in standard layout with video 1`] = `
-.c10 {
+.c9 {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -1023,7 +1023,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   margin: 20px 0;
 }
 
-.c9 {
+.c8 {
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1038,7 +1038,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   justify-content: space-around;
 }
 
-.c11 {
+.c10 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1047,7 +1047,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   margin-bottom: 25px;
 }
 
-.c12 {
+.c11 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1063,7 +1063,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   transition: all .3s;
 }
 
-.c12:hover {
+.c11:hover {
   opacity: .6;
 }
 
@@ -1075,7 +1075,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   position: relative;
 }
 
-.c7 {
+.c3 video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1154,7 +1154,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   justify-content: space-between;
 }
 
-.c8 {
+.c7 {
   max-width: calc(35% - 20px);
   height: 100%;
 }
@@ -1199,7 +1199,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   text-align: center;
 }
 
-.c13 {
+.c12 {
   font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
@@ -1209,14 +1209,14 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 900px) {
-  .c10 {
+  .c9 {
     object-position: left;
     width: auto;
   }
 }
 
 @media (max-width: 720px) {
-  .c9 {
+  .c8 {
     max-width: 100%;
     width: 100%;
     padding: 0;
@@ -1224,7 +1224,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 1150px) {
-  .c11 {
+  .c10 {
     font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 23px;
@@ -1233,7 +1233,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c11 {
+  .c10 {
     margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
     margin-left: 0;
@@ -1241,13 +1241,13 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c11 {
+  .c10 {
     line-height: 1.35em;
   }
 }
 
 @media (max-width: 1150px) {
-  .c12 {
+  .c11 {
     font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
@@ -1256,7 +1256,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 900px) {
-  .c12 {
+  .c11 {
     font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
@@ -1271,10 +1271,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
     height: auto;
     overflow: visible;
   }
-}
 
-@media (max-width: 720px) {
-  .c7 {
+  .c3 video {
     height: auto;
   }
 }
@@ -1303,7 +1301,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c8 {
+  .c7 {
     max-width: 100%;
     width: 100%;
     height: auto;
@@ -1317,7 +1315,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 @media (max-width: 720px) {
-  .c13 {
+  .c12 {
     margin: 35px 0 10px 0;
   }
 }
@@ -1356,36 +1354,35 @@ exports[`renders the canvas in standard layout with video 1`] = `
         </div>
       </div>
       <video
-        className="c7"
         controls={false}
         playsInline={true}
         src="https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"
       />
     </div>
     <div
-      className="c8"
+      className="c7"
     >
       <div
-        className="c9"
+        className="c8"
       >
         <img
-          className="c10"
+          className="c9"
           src="http://files.artsy.net/images/artsy-logo-wide-black.png"
         />
         <div>
           <div
-            className="c11"
+            className="c10"
           >
             Commodo Risus Pharetra Fermentum Vehicula Adipiscing
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             Link Example
           </div>
         </div>
         <div
-          className="c13"
+          className="c12"
         >
           Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         </div>
