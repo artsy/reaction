@@ -9,23 +9,24 @@ import CanvasText from "./CanvasText"
 import CanvasVideo from "./CanvasVideo"
 
 interface CanvasContainerProps {
-  unit?: any
+  campaign: any
   disclaimer?: any
   size?: {
     width: number
   }
+  unit?: any
 }
 
-function renderAsset(asset) {
+function renderAsset(asset, campaign) {
   if (asset.url.includes("mp4")) {
-    return <CanvasVideo src={asset.url} />
+    return <CanvasVideo src={asset.url} campaign={campaign} />
   } else {
     return <Image src={crop(asset.url, { width: 1200, height: 760 })} />
   }
 }
 
 const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
-  const { unit, disclaimer, size } = props
+  const { campaign, disclaimer, size, unit } = props
 
   if (unit.layout === "overlay") {
     return (
@@ -36,7 +37,7 @@ const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
     )
   } else if (unit.layout === "slideshow") {
     return (
-      <CanvasSlideshow unit={unit} disclaimer={disclaimer} containerWidth={size.width}>
+      <CanvasSlideshow unit={unit} campaign={campaign} disclaimer={disclaimer} containerWidth={size.width}>
         <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
           <CanvasText unit={unit} disclaimer={disclaimer} />
         </CanvasLink>
@@ -45,7 +46,7 @@ const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
   } else {
     return (
       <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
-        {renderAsset(unit.assets[0])}
+        {renderAsset(unit.assets[0], campaign)}
         <StandardContainer>
           <CanvasText unit={unit} disclaimer={disclaimer} />
         </StandardContainer>
@@ -106,7 +107,7 @@ const CanvasLink = responsiveLink`
   ${props => pMedia.lg`
     ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
     ${props.layout === "standard" &&
-      `padding: 0 20px;
+    `padding: 0 20px;
        width: calc(100% - 40px);`}
   `}
   ${pMedia.sm`
