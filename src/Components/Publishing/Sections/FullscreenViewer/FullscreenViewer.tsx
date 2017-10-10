@@ -3,10 +3,10 @@ import * as PropTypes from "prop-types"
 import * as React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../../helpers"
-import Icon from "../../../icon"
-import { zIndex } from "../../constants"
-import Slide from "./slide"
+import { pMedia } from "../../../Helpers"
+import Icon from "../../../Icon"
+import { zIndex } from "../../Constants"
+import Slide from "./Slide"
 
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   images: any

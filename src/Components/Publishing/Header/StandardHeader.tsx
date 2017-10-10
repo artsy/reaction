@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../helpers"
-import Byline from "../byline/byline"
-import Fonts from "../fonts"
+import { pMedia } from "../../Helpers"
+import Byline from "../Byline/Byline"
+import Fonts from "../Fonts"
 
 interface StandardHeaderProps {
   article?: any

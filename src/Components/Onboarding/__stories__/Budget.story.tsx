@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { ContextProvider } from "../../artsy"
-import Budget from "../steps/budget"
+import { ContextProvider } from "../../Artsy"
+import Budget from "../Steps/Budget"
 
 storiesOf("Onboarding").add("Budget", () => {
   const currentUser = {

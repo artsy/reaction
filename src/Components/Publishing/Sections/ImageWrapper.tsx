@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../helpers"
-import { Layout } from "../typings"
-import ViewFullscreen from "./view_fullscreen"
+import { pMedia } from "../../Helpers"
+import { Layout } from "../Typings"
+import ViewFullscreen from "./ViewFullscreen"
 
 interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   src: string

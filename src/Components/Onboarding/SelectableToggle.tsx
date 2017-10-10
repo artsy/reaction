@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import * as fonts from "../../assets/fonts"
-import Icon from "../icon"
+import * as fonts from "../../Assets/Fonts"
+import Icon from "../Icon"
 
 interface SelectableToggleProps {
   href?: string

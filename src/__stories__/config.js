@@ -1,5 +1,5 @@
 const { configure } = require("@storybook/react")
-const Events = require("../utils/events").default
+const Events = require("../Utils/events").default
 
 const req = require.context("../", true, /\.story\.tsx$/)
 

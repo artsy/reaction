@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import Button from "../../buttons/default"
-import { Images } from "../fixtures/components"
-import FullscreenViewer from "../sections/fullscreen_viewer/fullscreen_viewer"
+import Button from "../../Buttons/Default"
+import { Images } from "../Fixtures/Components"
+import FullscreenViewer from "../Sections/FullscreenViewer/FullscreenViewer"
 
 class FullscreenViewerDemo extends React.Component<any, any> {
   constructor(props) {

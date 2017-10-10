@@ -2,11 +2,11 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import FollowButton from "../follow"
+import FollowButton from "../Follow"
 
-import * as Artsy from "../../components/artsy"
-import { artsyNetworkLayer } from "../../relay/config"
-import ArtistQueryConfig from "../../relay/queries/artist"
+import * as Artsy from "../../Components/Artsy"
+import { artsyNetworkLayer } from "../../Relay/config"
+import ArtistQueryConfig from "../../Relay/Queries/Artist"
 
 function ArtistExample(props: { artistID: string; user: User }) {
   // TODO This is going to change with the stubbed local MP schema anyways.

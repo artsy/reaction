@@ -2,13 +2,13 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import * as Artsy from "../../components/artsy"
-import { artsyNetworkLayer } from "../../relay/config"
-import FilterArtworksQueryConfig from "../../relay/queries/filter_artworks"
+import * as Artsy from "../../Components/Artsy"
+import { artsyNetworkLayer } from "../../Relay/config"
+import FilterArtworksQueryConfig from "../../Relay/Queries/FilterArtworks"
 
-import Dropdown from "../artwork_filter/dropdown"
-import ArtworksFilter from "../artwork_filter/index"
-import TotalCount from "../artwork_filter/total_count"
+import Dropdown from "../ArtworkFilter/Dropdown"
+import ArtworksFilter from "../ArtworkFilter"
+import TotalCount from "../ArtworkFilter/TotalCount"
 
 interface FilterArtworksDropdownState {
   selected: string
@@ -29,18 +29,16 @@ class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterA
   }
 
   render() {
-    const dropdowns = this.props.filter_artworks.filter_artworks.aggregations.map(aggregation =>
+    const dropdowns = this.props.filter_artworks.filter_artworks.aggregations.map(aggregation => (
       <Dropdown aggregation={aggregation} key={aggregation.slice} onSelect={this.showSelection.bind(this)} />
-    )
+    ))
 
     const selected = <div>{this.state.selected}</div>
 
     return (
       <div>
         <div>{dropdowns}</div>
-        <div style={{ padding: "20px 0" }}>
-          Selected: {selected}
-        </div>
+        <div style={{ padding: "20px 0" }}>Selected: {selected}</div>
       </div>
     )
   }

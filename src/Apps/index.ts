@@ -1,4 +1,4 @@
-import loyalty from "./loyalty/server"
+import loyalty from "./Loyalty/Server"
 
 export default {
   loyalty,

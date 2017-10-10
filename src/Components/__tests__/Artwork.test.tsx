@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import Artwork from "../artwork"
+import Artwork from "../Artwork"
 
 describe("Artwork", () => {
   it("renders correctly", () => {

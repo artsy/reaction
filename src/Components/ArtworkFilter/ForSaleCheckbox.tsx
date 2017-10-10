@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import Checkbox from "../checkbox"
+import Checkbox from "../Checkbox"
 
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import { primary } from "../../assets/fonts"
+import colors from "../../Assets/Colors"
+import { primary } from "../../Assets/Fonts"
 
 interface Props extends React.HTMLProps<ForSaleCheckbox> {
   onClick?: any

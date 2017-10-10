@@ -3,10 +3,10 @@ import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
 import styled from "styled-components"
-import colors from "../../assets/colors"
+import colors from "../../Assets/Colors"
 
-import Spinner from "../spinner"
-import Booth from "./booth"
+import Spinner from "../Spinner"
+import Booth from "./Booth"
 
 const PageSize = 4
 

@@ -1,6 +1,6 @@
 import React from "react"
-import { Layout } from "../typings"
-import StyledText from "./styled_text"
+import { Layout } from "../Typings"
+import StyledText from "./StyledText"
 
 interface TextProps extends React.HTMLProps<HTMLDivElement> {
   layout: Layout

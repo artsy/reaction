@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
+import { pMedia } from "../../Helpers"
 
 interface EmbedProps {
   section: any

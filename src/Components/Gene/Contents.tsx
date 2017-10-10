@@ -4,20 +4,20 @@ import styled from "styled-components"
 
 import { addUrlProps, UrlQueryParamTypes } from "react-url-query"
 
-import Dropdown from "../artwork_filter/dropdown"
-import ForSaleCheckbox from "../artwork_filter/for_sale_checkbox"
-import Headline from "../artwork_filter/headline"
-import TotalCount from "../artwork_filter/total_count"
+import Dropdown from "../ArtworkFilter/Dropdown"
+import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
+import Headline from "../ArtworkFilter/Headline"
+import TotalCount from "../ArtworkFilter/TotalCount"
 
-import BorderedPulldown from "../bordered_pulldown"
-import { ButtonState } from "../buttons/default"
-import Button from "../buttons/ghost"
-import Spinner from "../spinner"
+import BorderedPulldown from "../BorderedPulldown"
+import { ButtonState } from "../Buttons/Default"
+import Button from "../Buttons/Ghost"
+import Spinner from "../Spinner"
 
-import Artworks from "../artwork_grid"
-import ArtistRow from "./artist_row"
+import Artworks from "../ArtworkGrid"
+import ArtistRow from "./ArtistRow"
 
-import * as fonts from "../../assets/fonts"
+import * as fonts from "../../Assets/Fonts"
 
 const PageSize = 10
 

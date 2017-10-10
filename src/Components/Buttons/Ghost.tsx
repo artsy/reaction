@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import Button, { ButtonState } from "./default"
+import colors from "../../Assets/Colors"
+import Button, { ButtonState } from "./Default"
 
 const GhostButton = styled(Button)`
     background: white;

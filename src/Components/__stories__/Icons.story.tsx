@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import icons, { IconName } from "../../assets/icons"
-import { Col, Row } from "../grid"
-import Icon from "../icon"
-import Title from "../title"
+import icons, { IconName } from "../../Assets/Icons"
+import { Col, Row } from "../Grid"
+import Icon from "../Icon"
+import Title from "../Title"
 
 storiesOf("Components/Icons", module).add("All Icons", () => {
   const iconNames = Object.keys(icons).sort()

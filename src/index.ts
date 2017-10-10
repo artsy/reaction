@@ -1,7 +1,7 @@
-import apps from "./apps"
-import components from "./components"
-import relay from "./relay/"
-import utils from "./utils"
+import apps from "./Apps"
+import components from "./Components"
+import relay from "./Relay"
+import utils from "./Utils"
 
 export default {
   apps,

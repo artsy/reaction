@@ -1,9 +1,9 @@
 import * as React from "react"
 
-import Wizard from "./wizard"
+import Wizard from "./Wizard"
 
-import Artists from "./steps/artists"
-import CollectorIntent from "./steps/collector_intent"
+import Artists from "./Steps/Artists"
+import CollectorIntent from "./Steps/CollectorIntent"
 
 export default () => {
   return <Wizard stepComponents={[CollectorIntent, Artists]} />

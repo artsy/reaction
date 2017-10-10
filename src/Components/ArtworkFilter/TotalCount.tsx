@@ -3,7 +3,7 @@ import * as React from "react"
 import * as Relay from "react-relay"
 
 import styled from "styled-components"
-import { secondary } from "../../assets/fonts"
+import { secondary } from "../../Assets/Fonts"
 
 interface TotalCountProps extends RelayProps, React.HTMLProps<TotalCount> {
   filter_artworks: any

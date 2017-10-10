@@ -4,18 +4,18 @@ import { NextFunction, Request, Response } from "express"
 import { default as IsomorphicRelay } from "isomorphic-relay"
 import * as React from "react"
 
-import CurrentUserRoute from "../../../relay/queries/current_user"
+import CurrentUserRoute from "../../../Relay/Queries/CurrentUser"
 
-import ForgotPasswordContainer from "../containers/forgot_password"
-import InquiriesContainer from "../containers/inquiries"
-import LoginContainer from "../containers/login"
-import ThankYouContainer from "../containers/thank_you"
+import ForgotPasswordContainer from "../Containers/ForgotPassword"
+import InquiriesContainer from "../Containers/Inquiries"
+import LoginContainer from "../Containers/Login"
+import ThankYouContainer from "../Containers/ThankYou"
 
-import { markCollectorAsLoyaltyApplicant } from "./gravity"
-import render from "./render"
+import { markCollectorAsLoyaltyApplicant } from "./Gravity"
+import render from "./Render"
 
-import * as Artsy from "../../../components/artsy"
-import { FormData, LoginResponseLocalData } from "../types"
+import * as Artsy from "../../../Components/Artsy"
+import { FormData, LoginResponseLocalData } from "../Types"
 
 export function Home(req: Request, res: Response, next: NextFunction) {
   return res.redirect(req.baseUrl + "/inquiries")

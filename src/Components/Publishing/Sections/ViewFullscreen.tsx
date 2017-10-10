@@ -1,8 +1,8 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
-import { track } from "../../../utils/track"
-import IconExpand from "../icon/expand"
+import { track } from "../../../Utils/Track"
+import IconExpand from "../Icon/Expand"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
   index?: number

@@ -1,10 +1,10 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../../assets/colors"
-import { pMedia } from "../../../helpers"
-import Fonts from "../../fonts"
-import ArtworkCaption from "../artwork_caption"
+import Colors from "../../../../Assets/Colors"
+import { pMedia } from "../../../Helpers"
+import Fonts from "../../Fonts"
+import ArtworkCaption from "../ArtworkCaption"
 
 interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
   section?: any

@@ -2,13 +2,13 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import ArtistRow from "../gene/artist_row"
-import GeneContent from "../gene/index"
+import ArtistRow from "../Gene/ArtistRow"
+import GeneContent from "../Gene"
 
-import * as Artsy from "../../components/artsy"
-import { artsyNetworkLayer } from "../../relay/config"
-import ArtistQueryConfig from "../../relay/queries/artist"
-import GeneQueryConfig from "../../relay/queries/gene"
+import * as Artsy from "../../Components/Artsy"
+import { artsyNetworkLayer } from "../../Relay/config"
+import ArtistQueryConfig from "../../Relay/Queries/Artist"
+import GeneQueryConfig from "../../Relay/Queries/Gene"
 
 function GeneExample(props: { geneID: string }) {
   // TODO This is going to change with the stubbed local MP schema anyways.

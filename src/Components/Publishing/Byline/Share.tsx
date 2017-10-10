@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { track } from "../../../utils/track"
-import IconSocialEmail from "../icon/social_email"
-import IconSocialFacebook from "../icon/social_facebook"
-import IconSocialTwitter from "../icon/social_twitter"
+import { track } from "../../../Utils/Track"
+import IconSocialEmail from "../Icon/SocialEmail"
+import IconSocialFacebook from "../Icon/SocialFacebook"
+import IconSocialTwitter from "../Icon/SocialTwitter"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string

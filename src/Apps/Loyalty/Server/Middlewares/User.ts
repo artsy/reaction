@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import { fetchCollectorProfile } from "../gravity"
+import { fetchCollectorProfile } from "../Gravity"
 
 export default function UserMiddleware(req: Request, res: Response, next: NextFunction) {
   const { CURRENT_USER } = res.locals.sd

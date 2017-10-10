@@ -1,9 +1,9 @@
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { ClassicArticle, StandardArticle } from "../../fixtures/articles"
-import AuthorDateClassic from "../author_date_classic"
-import Header from "../header"
+import { ClassicArticle, StandardArticle } from "../../Fixtures/Articles"
+import AuthorDateClassic from "../AuthorDateClassic"
+import Header from "../Header"
 
 describe("Classic Header", () => {
   it("renders classic header properly", () => {

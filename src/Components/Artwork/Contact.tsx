@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-import TextLink from "../text_link"
+import TextLink from "../TextLink"
 
 export interface ContactProps extends RelayProps, React.HTMLProps<ArtworkContact> {}
 

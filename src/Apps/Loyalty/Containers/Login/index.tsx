@@ -2,16 +2,16 @@ import fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 
-import FacebookButton from "../../../../components/buttons/facebook"
-import Button from "../../../../components/buttons/inverted"
-import TwitterButton from "../../../../components/buttons/twitter"
-import Icon from "../../../../components/icon"
-import Input from "../../../../components/input"
-import Text from "../../../../components/text"
-import TextLink from "../../../../components/text_link"
+import FacebookButton from "../../../../Components/Buttons/Facebook"
+import Button from "../../../../Components/Buttons/Inverted"
+import TwitterButton from "../../../../Components/Buttons/Twitter"
+import Icon from "../../../../Components/Icon"
+import Input from "../../../../Components/Input"
+import Text from "../../../../Components/Text"
+import TextLink from "../../../../Components/TextLink"
 
-import colors from "../../../../assets/colors"
-import * as fonts from "../../../../assets/fonts"
+import colors from "../../../../Assets/Colors"
+import * as fonts from "../../../../Assets/Fonts"
 
 interface LoginProps extends React.Props<HTMLParagraphElement> {
   form?: {

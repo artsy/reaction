@@ -1,14 +1,14 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
-import { Layout } from "../typings"
-import Authors from "./authors"
-import Embed from "./embed"
-import ImageCollection from "./image_collection"
-import ImagesetPreview from "./imageset_preview"
-import SectionContainer from "./section_container"
-import Text from "./text"
-import Video from "./video"
+import { pMedia } from "../../Helpers"
+import { Layout } from "../Typings"
+import Authors from "./Authors"
+import Embed from "./Embed"
+import ImageCollection from "./ImageCollection"
+import ImagesetPreview from "./ImagesetPreview"
+import SectionContainer from "./SectionContainer"
+import Text from "./Text"
+import Video from "./Video"
 
 interface SectionsProps {
   article: {

@@ -2,9 +2,9 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Fillwidth from "../artwork/fillwidth"
-import FollowButton from "../follow"
-import Text from "../text"
+import Fillwidth from "../Artwork/Fillwidth"
+import FollowButton from "../Follow"
+import Text from "../Text"
 
 interface Props extends RelayProps, React.HTMLProps<ArtistRow> {
   artist: any

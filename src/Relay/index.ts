@@ -1,9 +1,9 @@
 import { artsyNetworkLayer, artsyRelayEnvironment } from "./config"
-import ArtistQueryConfig from "./queries/artist"
-import ArtworkQueryConfig from "./queries/artwork"
-import CurrentUserRoute from "./queries/current_user"
-import FilterArtworksQueryConfig from "./queries/filter_artworks"
-import GeneQueryConfig from "./queries/gene"
+import ArtistQueryConfig from "./Queries/Artist"
+import ArtworkQueryConfig from "./Queries/Artwork"
+import CurrentUserRoute from "./Queries/CurrentUser"
+import FilterArtworksQueryConfig from "./Queries/FilterArtworks"
+import GeneQueryConfig from "./Queries/Gene"
 
 export default {
   artsyNetworkLayer,

@@ -1,12 +1,12 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Icon from "./icon"
+import Icon from "./Icon"
 
 import styled from "styled-components"
-import colors from "../assets/colors"
+import colors from "../Assets/Colors"
 
-import * as Artsy from "../components/artsy"
+import * as Artsy from "../Components/Artsy"
 
 const SIZE = 32
 

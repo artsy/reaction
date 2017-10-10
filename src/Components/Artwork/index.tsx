@@ -1,9 +1,9 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
 
-import theme from "../../assets/theme"
-import ArtworkMetadata, { ArtworkMetadataProps } from "./metadata"
-import createContainer, { RelayProps } from "./relay"
+import theme from "../../Assets/Theme"
+import ArtworkMetadata, { ArtworkMetadataProps } from "./Metadata"
+import createContainer, { RelayProps } from "./Relay"
 
 const Container = styled.div`
   width: 100%;

@@ -2,8 +2,8 @@ import { shallow } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { Images } from "../../../fixtures/components"
-import FullscreenViewer from "../fullscreen_viewer"
+import { Images } from "../../../Fixtures/Components"
+import FullscreenViewer from "../FullscreenViewer"
 
 jest.mock("react-slick", () => {
   const React = require("react")

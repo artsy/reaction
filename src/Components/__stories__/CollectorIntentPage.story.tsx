@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import styled from "styled-components"
 
-import * as fonts from "../../assets/fonts"
-import Button from "../buttons/ghost"
-import Icon from "../icon"
-import Title from "../title"
+import * as fonts from "../../Assets/Fonts"
+import Button from "../Buttons/Ghost"
+import Icon from "../Icon"
+import Title from "../Title"
 
 const IconContainer = styled.div`
 width: 15px;

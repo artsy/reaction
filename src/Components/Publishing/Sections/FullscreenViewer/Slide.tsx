@@ -1,10 +1,10 @@
 import { omit } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
-import { resize } from "../../../../utils/resizer"
-import { pMedia } from "../../../helpers"
-import Fonts from "../../fonts"
-import Caption from "./caption"
+import { resize } from "../../../../Utils/Resizer"
+import { pMedia } from "../../../Helpers"
+import Fonts from "../../Fonts"
+import Caption from "./Caption"
 
 const Slide = props => {
   const newProps = omit(props, ["section", "index", "total", "isCaptionOpen"])

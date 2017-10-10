@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/react"
 import * as _ from "lodash"
 import * as React from "react"
 
-import Header from "../header/header"
+import Header from "../Header/Header"
 
-import { ClassicArticle, FeatureArticle, StandardArticle } from "../fixtures/articles"
-import { HeroSections } from "../fixtures/components"
+import { ClassicArticle, FeatureArticle, StandardArticle } from "../Fixtures/Articles"
+import { HeroSections } from "../Fixtures/Components"
 
 storiesOf("Publishing/Headers", module)
   .add("Classic Header", () => {

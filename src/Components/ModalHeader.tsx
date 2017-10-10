@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import Icon from "./icon"
+import Icon from "./Icon"
 
 const Header = styled.header`
   margin: 20px auto;

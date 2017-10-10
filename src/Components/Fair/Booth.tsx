@@ -2,13 +2,13 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Artworks from "../artwork_grid"
-import Button from "../buttons/ghost"
-import FollowButton from "../follow"
-import Spinner from "../spinner"
-import Text from "../text"
+import Artworks from "../ArtworkGrid"
+import Button from "../Buttons/Ghost"
+import FollowButton from "../Follow"
+import Spinner from "../Spinner"
+import Text from "../Text"
 
-import * as fonts from "../../assets/fonts"
+import * as fonts from "../../Assets/Fonts"
 
 const PageSize = 8
 

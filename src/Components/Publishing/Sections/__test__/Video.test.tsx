@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import { Videos } from "../../fixtures/components"
-import Video from "../video"
+import { Videos } from "../../Fixtures/Components"
+import Video from "../Video"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

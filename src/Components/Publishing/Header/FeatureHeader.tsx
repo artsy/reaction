@@ -1,11 +1,11 @@
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import { resize } from "../../../utils/resizer"
-import { pMedia } from "../../helpers"
-import Byline from "../byline/byline"
-import { sizeMeRefreshRate } from "../constants"
-import Fonts from "../fonts"
+import { resize } from "../../../Utils/Resizer"
+import { pMedia } from "../../Helpers"
+import Byline from "../Byline/Byline"
+import { sizeMeRefreshRate } from "../Constants"
+import Fonts from "../Fonts"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "fullscreen") {

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import styled, { StyledFunction } from 'styled-components'
 
-import { fadeIn, fadeOut } from "../../assets/animations"
-import colors from "../../assets/colors"
+import { fadeIn, fadeOut } from "../../Assets/Animations"
+import colors from "../../Assets/Colors"
 import * as fonts from '../../assets/fonts'
 
-import Icon from "../icon"
+import Icon from "../Icon"
 import Input from '../input'
 
 interface SelectableItemProps {

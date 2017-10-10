@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
-import * as fonts from "../assets/fonts"
-import { media } from "./helpers"
+import * as fonts from "../Assets/Fonts"
+import { media } from "./Helpers"
 
 type TitleSize = "small" | "medium" | "large" | "xlarge" | "xxlarge"
 

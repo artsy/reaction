@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import * as Artsy from "../artsy"
+import * as Artsy from "../Artsy"
 
 const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
   let text = props.currentUser.name

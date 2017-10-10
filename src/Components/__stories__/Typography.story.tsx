@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import colors from "../../assets/colors"
-import Text from "../text"
-import TextLink from "../text_link"
-import Title from "../title"
+import colors from "../../Assets/Colors"
+import Text from "../Text"
+import TextLink from "../TextLink"
+import Title from "../Title"
 
 storiesOf("Typography", module)
   .add("Headings", () =>

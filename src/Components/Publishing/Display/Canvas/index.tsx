@@ -1,9 +1,9 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../../assets/colors"
-import { pMedia } from "../../../helpers"
-import Fonts from "../../fonts"
-import CanvasContainer from "./canvas_container"
+import Colors from "../../../../Assets/Colors"
+import { pMedia } from "../../../Helpers"
+import Fonts from "../../Fonts"
+import CanvasContainer from "./CanvasContainer"
 
 interface DisplayCanvasProps {
   unit: any

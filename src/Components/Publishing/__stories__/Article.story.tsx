@@ -1,13 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import Article from "../article"
+import Article from "../Article"
 import {
   FeatureArticle,
   MissingVerticalStandardArticle,
   ShortStandardArticle,
   StandardArticle,
-} from "../fixtures/articles"
-import { RelatedCanvas, RelatedPanel } from "../fixtures/components"
+} from "../Fixtures/Articles"
+import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
 storiesOf("Publishing/Articles", module)
   .add("Standard", () => {

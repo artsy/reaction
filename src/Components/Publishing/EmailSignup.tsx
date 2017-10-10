@@ -1,11 +1,11 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import request from "superagent"
-import Colors from "../../assets/colors"
-import InvertedButton from "../buttons/inverted"
-import { borderedInput } from "../mixins"
-import { emailRegex } from "./constants"
-import Fonts from "./fonts"
+import Colors from "../../Assets/Colors"
+import InvertedButton from "../Buttons/Inverted"
+import { borderedInput } from "../Mixins"
+import { emailRegex } from "./Constants"
+import Fonts from "./Fonts"
 
 interface EmailSignupProps {
   signupUrl: string

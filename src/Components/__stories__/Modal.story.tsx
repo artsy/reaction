@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Button from "../buttons/default"
-import Modal from "../modal/modal"
-import ModalHeader from "../modal_header"
-import Title from "../title"
+import Button from "../Buttons/Default"
+import Modal from "../Modal/Modal"
+import ModalHeader from "../ModalHeader"
+import Title from "../Title"
 
 const ModalStyle = {
   height: "500px",

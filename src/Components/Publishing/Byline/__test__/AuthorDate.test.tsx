@@ -2,7 +2,7 @@ import { shallow } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { Author, Date } from "../author_date"
+import { Author, Date } from "../AuthorDate"
 
 describe("Author/Date", () => {
   it("renders a single author", () => {

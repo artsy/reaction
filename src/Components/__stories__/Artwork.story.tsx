@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import Artwork from "../artwork/index"
+import Artwork from "../Artwork"
 
-import { artsyNetworkLayer } from "../../relay/config"
-import ArtworkQueryConfig from "../../relay/queries/artwork"
+import { artsyNetworkLayer } from "../../Relay/config"
+import ArtworkQueryConfig from "../../Relay/Queries/Artwork"
 
 function ArtworkExample(props: { artworkID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())

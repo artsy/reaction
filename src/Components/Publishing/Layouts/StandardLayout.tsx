@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { pMedia } from "../../helpers"
+import { pMedia } from "../../Helpers"
 
 const StandardLayout = styled.div`
   display: flex;

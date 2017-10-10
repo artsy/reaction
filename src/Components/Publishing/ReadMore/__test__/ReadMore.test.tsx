@@ -2,9 +2,9 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import { extend } from "lodash"
 import * as React from "react"
-import { StandardArticle } from "../../fixtures/articles"
-import Sections from "../../sections/sections"
-import ReadMoreWrapper from "../read_more_wrapper"
+import { StandardArticle } from "../../Fixtures/Articles"
+import Sections from "../../Sections/Sections"
+import ReadMoreWrapper from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
 

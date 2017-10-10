@@ -1,5 +1,5 @@
 import { css } from "styled-components"
-import theme from "../assets/theme"
+import theme from "../Assets/Theme"
 
 /**
  * Helper function to display an element as a block that inherits its parents width

@@ -2,11 +2,11 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import ArtworkGrid from "../artwork_grid"
+import ArtworkGrid from "../ArtworkGrid"
 
-import { artsyNetworkLayer } from "../../relay/config"
-import ArtistQueryConfig from "../../relay/queries/artist"
-import * as Artsy from "../artsy"
+import { artsyNetworkLayer } from "../../Relay/config"
+import ArtistQueryConfig from "../../Relay/Queries/Artist"
+import * as Artsy from "../Artsy"
 
 export class ArtistArtworks extends React.Component<RelayProps, null> {
   render() {

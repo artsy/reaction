@@ -1,5 +1,5 @@
 import { extend } from "lodash"
-import { ArticleData } from "../typings"
+import { ArticleData } from "../Typings"
 
 export const ClassicArticle: ArticleData = {
   _id: "597b9f652d35b80017a2a6a7",

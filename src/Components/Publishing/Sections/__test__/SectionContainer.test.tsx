@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import SectionContainer from "../section_container"
-import Text from "../text"
+import SectionContainer from "../SectionContainer"
+import Text from "../Text"
 
 it("renders overflow_fillwidth properly", () => {
   const section = {

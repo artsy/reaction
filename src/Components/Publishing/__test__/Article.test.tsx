@@ -1,8 +1,8 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
-import Article from "../article"
-import { StandardArticle } from "../fixtures/articles"
+import Article from "../Article"
+import { StandardArticle } from "../Fixtures/Articles"
 
 jest.mock("react-slick", () => {
   const React = require("react")

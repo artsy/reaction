@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import { StandardArticle } from "../../fixtures/articles"
-import Sections from "../sections"
+import { StandardArticle } from "../../Fixtures/Articles"
+import Sections from "../Sections"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

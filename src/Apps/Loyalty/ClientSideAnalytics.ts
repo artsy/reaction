@@ -1,3 +1,3 @@
-import { initAnalytics } from "./analytics"
+import { initAnalytics } from "./Analytics"
 
 initAnalytics()

@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { Col, Row } from "../grid"
+import { Col, Row } from "../Grid"
 
 const boxStyle = {
   backgroundColor: "#f8f8f8",

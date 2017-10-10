@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom"
 import * as Relay from "react-relay"
 
 import styled from "styled-components"
-import Artwork from "./artwork/grid_item"
+import Artwork from "./Artwork/GridItem"
 
 interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
   columnCount?: number

@@ -1,5 +1,5 @@
-import Events from "./events"
-import fillwidthDimensions from "./fillwidth"
+import Events from "./Events"
+import fillwidthDimensions from "./Fillwidth"
 
 export default {
   fillwidthDimensions,

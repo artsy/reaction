@@ -1,11 +1,11 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import * as fonts from "../../assets/fonts"
+import colors from "../../Assets/Colors"
+import * as fonts from "../../Assets/Fonts"
 
-import ArtworkContact from "./contact"
-import ArtworkDetails from "./details"
+import ArtworkContact from "./Contact"
+import ArtworkDetails from "./Details"
 
 export interface ArtworkMetadataProps extends React.HTMLProps<ArtworkMetadata> {
   artwork: any

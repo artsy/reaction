@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { Col as FlexCol, Grid as FlexGrid, Row as FlexRow } from "react-styled-flexboxgrid"
 
-import { media } from "./helpers"
+import { media } from "./Helpers"
 
 export const Grid = FlexGrid
 

@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
-import AuthorDateClassic from "./author_date_classic"
+import { pMedia } from "../../Helpers"
+import Fonts from "../Fonts"
+import AuthorDateClassic from "./AuthorDateClassic"
 
 interface ClassicHeaderProps {
   article?: any

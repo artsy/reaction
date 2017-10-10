@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import { Artwork, ArtworkProps, OverlayProps } from "../artwork"
-import ArtworkMetadata, { ArtworkMetadataProps } from "../artwork/metadata"
-import createContainer from "../artwork/relay"
-import Icon from "../icon"
+import colors from "../../Assets/Colors"
+import { Artwork, ArtworkProps, OverlayProps } from "../Artwork"
+import ArtworkMetadata, { ArtworkMetadataProps } from "../Artwork/Metadata"
+import createContainer from "../Artwork/Relay"
+import Icon from "../Icon"
 
 const OverlayBackground = styled.div`
   background-color: ${colors.purpleRegular};

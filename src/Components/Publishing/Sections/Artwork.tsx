@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { resize } from "../../../utils/resizer"
-import { Layout, SectionLayout } from "../typings"
-import ArtworkCaption from "./artwork_caption"
-import ImageWrapper from "./image_wrapper"
+import { resize } from "../../../Utils/Resizer"
+import { Layout, SectionLayout } from "../Typings"
+import ArtworkCaption from "./ArtworkCaption"
+import ImageWrapper from "./ImageWrapper"
 
 interface ArtworkProps {
   artwork: any

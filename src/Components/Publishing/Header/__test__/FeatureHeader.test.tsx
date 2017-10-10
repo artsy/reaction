@@ -2,9 +2,9 @@ import "jest-styled-components"
 import * as _ from "lodash"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { FeatureArticle } from "../../fixtures/articles"
-import { HeroSections } from "../../fixtures/components"
-import Header from "../header"
+import { FeatureArticle } from "../../Fixtures/Articles"
+import { HeroSections } from "../../Fixtures/Components"
+import Header from "../Header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

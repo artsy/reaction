@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import Icon from "./icon"
+import Icon from "./Icon"
 
 import styled from "styled-components"
-import colors from "../assets/colors"
-import { secondary } from "../assets/fonts"
+import colors from "../Assets/Colors"
+import { secondary } from "../Assets/Fonts"
 
 interface Props extends React.HTMLProps<BorderedPulldown> {
   options: any

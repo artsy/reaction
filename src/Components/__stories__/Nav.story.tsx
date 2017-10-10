@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Nav from "../nav"
-import NavItem from "../nav_item"
+import Nav from "../Nav"
+import NavItem from "../NavItem"
 
 storiesOf("Components/Nav", module).add("Simple Nav Bar", () =>
   <Nav>

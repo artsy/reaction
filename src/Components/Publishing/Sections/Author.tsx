@@ -1,10 +1,10 @@
 import * as React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
-import { resize } from "../../../utils/resizer"
-import { pMedia } from "../../helpers"
-import Icon from "../../icon"
-import Fonts from "../fonts"
+import { resize } from "../../../Utils/Resizer"
+import { pMedia } from "../../Helpers"
+import Icon from "../../Icon"
+import Fonts from "../Fonts"
 
 interface AuthorProps {
   author: any

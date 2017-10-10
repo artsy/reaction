@@ -2,14 +2,14 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled from "styled-components"
 
-import Artworks from "../artwork_grid"
-import BorderedPulldown from "../bordered_pulldown"
-import Spinner from "../spinner"
+import Artworks from "../ArtworkGrid"
+import BorderedPulldown from "../BorderedPulldown"
+import Spinner from "../Spinner"
 
-import Dropdown from "./dropdown"
-import ForSaleCheckbox from "./for_sale_checkbox"
-import Headline from "./headline"
-import TotalCount from "./total_count"
+import Dropdown from "./Dropdown"
+import ForSaleCheckbox from "./ForSaleCheckbox"
+import Headline from "./Headline"
+import TotalCount from "./TotalCount"
 
 const PageSize = 10
 

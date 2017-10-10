@@ -3,7 +3,7 @@ import { render } from "react-dom"
 import Login from "./index"
 
 import * as sharify from "sharify"
-import { LoginResponseLocalData } from "../../types"
+import { LoginResponseLocalData } from "../../Types"
 
 const data = sharify.data as LoginResponseLocalData
 

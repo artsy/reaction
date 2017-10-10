@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import Author from "./author"
+import Author from "./Author"
 
 interface AuthorsProps {
   authors: Array<object>

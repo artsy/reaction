@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { resize } from "../../../utils/resizer"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
-import IconImageSet from "../icon/image_set"
+import { resize } from "../../../Utils/Resizer"
+import { pMedia } from "../../Helpers"
+import Fonts from "../Fonts"
+import IconImageSet from "../Icon/ImageSet"
 
 type Layout = "mini" | "full"
 

@@ -1,9 +1,9 @@
 import * as React from "react"
 import * as Relay from "react-relay"
-import history from "../history"
+import history from "../History"
 
 import { configureUrlQuery } from "react-url-query"
-import GeneContents from "./contents"
+import GeneContents from "./Contents"
 
 interface Props extends RelayProps, React.HTMLProps<GenePage> {
   gene: any

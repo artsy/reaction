@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Button from "../../../../components/buttons/default"
-import Modal from "../../../../components/modal/modal"
+import Button from "../../../../Components/Buttons/Default"
+import Modal from "../../../../Components/Modal/Modal"
 
-import Login from "../login"
+import Login from "../Login"
 
 storiesOf("Login Page", module).add("no modal", () => <Login form={{ url: "/" }} />).add("w/ modal", () => {
   class ModalDemo extends React.Component<any, any> {

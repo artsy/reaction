@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import DisplayCanvas from "../display/canvas/index"
-import DisplayPanel from "../display/display_panel"
+import DisplayCanvas from "../Display/Canvas"
+import DisplayPanel from "../Display/DisplayPanel"
 import {
   Campaign,
   UnitCanvasImage,
@@ -9,7 +9,7 @@ import {
   UnitCanvasSlideshow,
   UnitCanvasVideo,
   UnitPanel,
-} from "../fixtures/components"
+} from "../Fixtures/Components"
 
 storiesOf("Publishing/Display", module)
   .add("Panel", () => {

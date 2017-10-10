@@ -1,8 +1,8 @@
 import { compact, map } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../../helpers"
-import Fonts from "../../fonts"
+import { pMedia } from "../../../Helpers"
+import Fonts from "../../Fonts"
 
 interface CanvasTextProps {
   disclaimer?: any

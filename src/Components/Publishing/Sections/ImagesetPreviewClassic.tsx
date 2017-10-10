@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { resize } from "../../../utils/resizer"
-import Fonts from "../fonts"
-import IconImageSet from "../icon/image_set"
+import { resize } from "../../../Utils/Resizer"
+import Fonts from "../Fonts"
+import IconImageSet from "../Icon/ImageSet"
 
 const Wrapper = styled.div`
   max-width: 580px;

@@ -2,22 +2,22 @@ import * as React from "react"
 import * as Relay from "react-relay"
 import styled, { ThemeProvider } from "styled-components"
 
-import theme from "../../../../assets/theme"
-import { Col, Grid, Row } from "../../../../components/grid"
-import { media } from "../../../../components/helpers"
+import theme from "../../../../Assets/Theme"
+import { Col, Grid, Row } from "../../../../Components/Grid"
+import { media } from "../../../../Components/Helpers"
 
-import Button from "../../../../components/buttons/inverted"
-import Artwork from "../../../../components/inquiry_artwork"
-import Nav from "../../../../components/nav"
-import NavItem from "../../../../components/nav_item"
-import Text from "../../../../components/text"
-import TextArea from "../../../../components/text_area"
-import Title from "../../../../components/title"
+import Button from "../../../../Components/Buttons/Inverted"
+import Artwork from "../../../../Components/InquiryArtwork"
+import Nav from "../../../../Components/Nav"
+import NavItem from "../../../../Components/NavItem"
+import Text from "../../../../Components/Text"
+import TextArea from "../../../../Components/TextArea"
+import Title from "../../../../Components/Title"
 
-import * as Artsy from "../../../../components/artsy"
+import * as Artsy from "../../../../Components/Artsy"
 
-import UpdateCollectorProfileMutation from "./mutations/update_collector_profile"
-import UpdateConversationMutation from "./mutations/update_conversation"
+import UpdateCollectorProfileMutation from "./Mutations/UpdateCollectorProfile"
+import UpdateConversationMutation from "./Mutations/UpdateConversation"
 
 const InquiryContainer = styled.div`
   margin-bottom: 60px;

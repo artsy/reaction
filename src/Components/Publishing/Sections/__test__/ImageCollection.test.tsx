@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import { Images } from "../../fixtures/components"
-import ImageCollection from "../image_collection"
+import { Images } from "../../Fixtures/Components"
+import ImageCollection from "../ImageCollection"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

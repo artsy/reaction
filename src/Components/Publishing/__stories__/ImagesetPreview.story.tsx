@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import ImageSetPreview from "../sections/imageset_preview"
-import ImageSetPreviewClassic from "../sections/imageset_preview_classic"
+import ImageSetPreview from "../Sections/ImagesetPreview"
+import ImageSetPreviewClassic from "../Sections/ImagesetPreviewClassic"
 
 import {
   Images,
@@ -10,7 +10,7 @@ import {
   ImageSetFullSansTitle,
   ImageSetMini,
   ImageSetMiniSansTitle,
-} from "../fixtures/components"
+} from "../Fixtures/Components"
 
 storiesOf("Publishing/Imageset Preview", module)
   .add("Imageset Preview - Classic", () => {

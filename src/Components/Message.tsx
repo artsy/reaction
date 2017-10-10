@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import colors from "../assets/colors"
+import colors from "../Assets/Colors"
 
 interface MessageProps extends React.HTMLProps<HTMLDivElement> {
   error?: boolean

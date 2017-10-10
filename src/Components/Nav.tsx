@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled, { injectGlobal } from "styled-components"
-import colors from "../assets/colors"
-import Icon from "./icon"
+import colors from "../Assets/Colors"
+import Icon from "./Icon"
 
 const Nav = styled.div`
   border-bottom: 1px solid ${colors.grayRegular};

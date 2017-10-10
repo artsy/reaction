@@ -8,12 +8,12 @@ import {
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
   UnitCanvasVideo,
-} from "../../fixtures/components"
-import DisplayCanvas from "../canvas/index"
+} from "../../Fixtures/Components"
+import DisplayCanvas from "../Canvas"
 
-import CanvasSlideshow from "../canvas/canvas_slideshow"
-import CanvasText from "../canvas/canvas_text"
-import CanvasVideo from "../canvas/canvas_video"
+import CanvasSlideshow from "../Canvas/CanvasSlideshow"
+import CanvasText from "../Canvas/CanvasText"
+import CanvasVideo from "../Canvas/CanvasVideo"
 
 jest.mock("react-slick", () => {
   const React = require("react")

@@ -3,10 +3,10 @@ import * as Backbone from "backbone"
 import * as express from "express"
 import * as path from "path"
 
-import RelayMiddleware from "./middlewares/relay"
-import SetSessionIDMiddleware from "./middlewares/track_session"
-import UserMiddleware from "./middlewares/user"
-import { ForgotPassword, Home, Inquiries, Login, ThankYou } from "./route_handlers"
+import RelayMiddleware from "./Middlewares/Relay"
+import SetSessionIDMiddleware from "./Middlewares/TrackSession"
+import UserMiddleware from "./Middlewares/User"
+import { ForgotPassword, Home, Inquiries, Login, ThankYou } from "./RouteHandlers"
 
 const app = express.Router()
 const { API_URL } = process.env

@@ -2,13 +2,13 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import FairBooth from "../fair/booth"
-import ShowFeed from "../fair/feed"
+import FairBooth from "../Fair/Booth"
+import ShowFeed from "../Fair/Feed"
 
-import * as Artsy from "../../components/artsy"
-import { artsyNetworkLayer } from "../../relay/config"
-import FairQueryConfig from "../../relay/queries/fair"
-import ShowQueryConfig from "../../relay/queries/show"
+import * as Artsy from "../../Components/Artsy"
+import { artsyNetworkLayer } from "../../Relay/config"
+import FairQueryConfig from "../../Relay/Queries/Fair"
+import ShowQueryConfig from "../../Relay/Queries/Show"
 
 function BoothExample(props: { showID: string }) {
   Relay.injectNetworkLayer(artsyNetworkLayer())

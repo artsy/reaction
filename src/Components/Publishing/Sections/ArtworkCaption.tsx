@@ -1,10 +1,10 @@
 import * as _ from "lodash"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
-import TextLink from "../../text_link"
-import Fonts from "../fonts"
-import { Layout, SectionLayout } from "../typings"
+import { pMedia } from "../../Helpers"
+import TextLink from "../../TextLink"
+import Fonts from "../Fonts"
+import { Layout, SectionLayout } from "../Typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any

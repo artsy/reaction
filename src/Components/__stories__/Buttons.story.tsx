@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Button, { ButtonState } from "../buttons/default"
-import FacebookButton from "../buttons/facebook"
-import GhostButton from "../buttons/ghost"
-import InvertedButton from "../buttons/inverted"
-import TwitterButton from "../buttons/twitter"
+import Button, { ButtonState } from "../Buttons/Default"
+import FacebookButton from "../Buttons/Facebook"
+import GhostButton from "../Buttons/Ghost"
+import InvertedButton from "../Buttons/Inverted"
+import TwitterButton from "../Buttons/Twitter"
 
 storiesOf("Components/Buttons", module)
   .add("Default Button", () => {

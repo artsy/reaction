@@ -2,11 +2,11 @@ import fetch from "isomorphic-fetch"
 import * as React from "react"
 import styled from "styled-components"
 
-import Button from "../../../../components/buttons/inverted"
-import Icon from "../../../../components/icon"
-import Input from "../../../../components/input"
-import Message from "../../../../components/message"
-import Text from "../../../../components/text"
+import Button from "../../../../Components/Buttons/Inverted"
+import Icon from "../../../../Components/Icon"
+import Input from "../../../../Components/Input"
+import Message from "../../../../Components/Message"
+import Text from "../../../../Components/Text"
 
 const Container = styled.div`
   padding: 20px;

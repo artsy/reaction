@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import * as fonts from "../assets/fonts"
+import * as fonts from "../Assets/Fonts"
 
 type TextAlign = "start" | "center" | "end"
 type TextSize = "small" | "medium" | "large"

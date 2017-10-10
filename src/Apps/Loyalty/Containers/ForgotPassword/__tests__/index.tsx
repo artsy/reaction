@@ -5,8 +5,8 @@ import * as renderer from "react-test-renderer"
 jest.mock("isomorphic-fetch")
 const fetch = require("isomorphic-fetch").default
 
-import Button from "../../../../../components/buttons/inverted"
-import Message from "../../../../../components/message"
+import Button from "../../../../../Components/Buttons/Inverted"
+import Message from "../../../../../Components/Message"
 import ForgotPassword from "../index"
 
 describe("<ForgotPassword />", () => {

@@ -2,12 +2,12 @@ import { compact, map } from "lodash"
 import React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../../assets/colors"
-import { crop } from "../../../../utils/resizer"
-import { pMedia } from "../../../helpers"
-import Icon from "../../../icon"
-import Fonts from "../../fonts"
-import { maxAssetSize } from "./canvas_container"
+import Colors from "../../../../Assets/Colors"
+import { crop } from "../../../../Utils/Resizer"
+import { pMedia } from "../../../Helpers"
+import Icon from "../../../Icon"
+import Fonts from "../../Fonts"
+import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {
   unit: any

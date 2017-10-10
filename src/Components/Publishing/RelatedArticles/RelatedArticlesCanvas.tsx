@@ -1,10 +1,10 @@
 import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
-import Colors from "../../../assets/colors"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
-import RelatedArticleFigure from "./related_article_figure"
+import Colors from "../../../Assets/Colors"
+import { pMedia } from "../../Helpers"
+import Fonts from "../Fonts"
+import RelatedArticleFigure from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   vertical: {

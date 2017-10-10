@@ -1,14 +1,14 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import colors from "../../../../assets/colors"
+import colors from "../../../../Assets/Colors"
 
-import Button from "../../../../components/buttons/inverted"
-import Nav from "../../../../components/nav"
-import NavItem from "../../../../components/nav_item"
-import Text from "../../../../components/text"
-import TextLink from "../../../../components/text_link"
-import Title from "../../../../components/title"
+import Button from "../../../../Components/Buttons/Inverted"
+import Nav from "../../../../Components/Nav"
+import NavItem from "../../../../Components/NavItem"
+import Text from "../../../../Components/Text"
+import TextLink from "../../../../Components/TextLink"
+import Title from "../../../../Components/Title"
 
 const Container = styled.div`
   text-align: center;

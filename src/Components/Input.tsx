@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
-import * as fonts from "../assets/fonts"
-import { block } from "./helpers"
-import { border, borderedInput } from "./mixins"
+import * as fonts from "../Assets/Fonts"
+import { block } from "./Helpers"
+import { border, borderedInput } from "./Mixins"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: boolean

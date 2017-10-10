@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { RelatedCanvas, RelatedPanel } from "../fixtures/components"
-import RelatedArticlesCanvas from "../related_articles/related_articles_canvas"
-import RelatedArticlesPanel from "../related_articles/related_articles_panel"
+import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
+import RelatedArticlesPanel from "../RelatedArticles/RelatedArticlesPanel"
 
 storiesOf("Publishing/Related Articles", module)
   .add("Related Articles Panel", () => {

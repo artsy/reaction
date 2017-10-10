@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Spinner from "../spinner"
+import Spinner from "../Spinner"
 
 storiesOf("Components/Spinner", module)
   .add("Default Spinner", () => {

@@ -1,7 +1,7 @@
 import moment from "moment-timezone"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Fonts from "../fonts"
+import Fonts from "../Fonts"
 
 interface AuthorDateClassicProps {
   authors?: any

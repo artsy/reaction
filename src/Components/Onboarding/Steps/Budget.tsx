@@ -1,9 +1,9 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import SelectableToggle from "../selectable_toggle"
-import { StepProps } from "../types"
-import { Layout } from "./layout"
+import SelectableToggle from "../SelectableToggle"
+import { StepProps } from "../Types"
+import { Layout } from "./Layout"
 
 const OptionsContainer = styled.div`
 width: 450px;

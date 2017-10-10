@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import Button from "../../buttons/ghost"
-import Title from "../../title"
+import Button from "../../Buttons/Ghost"
+import Title from "../../Title"
 
 interface Props {
   title: string

@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import { crop } from "../../../utils/resizer"
-import { track } from "../../../utils/track"
-import { pMedia } from "../../helpers"
-import Byline from "../byline/byline"
-import { articleHref } from "../constants"
-import Fonts from "../fonts"
+import { crop } from "../../../Utils/Resizer"
+import { track } from "../../../Utils/Track"
+import { pMedia } from "../../Helpers"
+import Byline from "../Byline/Byline"
+import { articleHref } from "../Constants"
+import Fonts from "../Fonts"
 
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
   article: {

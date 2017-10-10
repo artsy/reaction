@@ -1,8 +1,8 @@
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { StandardArticle } from "../../fixtures/articles"
-import Header from "../header"
+import { StandardArticle } from "../../Fixtures/Articles"
+import Header from "../Header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

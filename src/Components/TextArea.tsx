@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
-import { block } from "./helpers"
-import { borderedInput } from "./mixins"
+import { block } from "./Helpers"
+import { borderedInput } from "./Mixins"
 
 interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
   error?: boolean

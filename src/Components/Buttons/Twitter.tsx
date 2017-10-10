@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
-import Icon from "../icon"
-import Button, { ButtonProps } from "./default"
+import Icon from "../Icon"
+import Button, { ButtonProps } from "./Default"
 
 const TwitterButton = (props: ButtonProps) => {
   const icon = <Icon name="twitter" color="white" />

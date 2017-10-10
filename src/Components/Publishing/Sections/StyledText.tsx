@@ -1,8 +1,8 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
-import Fonts from "../fonts"
-import { Layout } from "../typings"
+import { pMedia } from "../../Helpers"
+import Fonts from "../Fonts"
+import { Layout } from "../Typings"
 
 interface StyledTextProps {
   layout: Layout

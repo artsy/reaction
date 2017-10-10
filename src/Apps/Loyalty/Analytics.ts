@@ -11,7 +11,7 @@ require/prefer that some calls happen cient-side.
 import { extend, pick } from "lodash"
 import * as sharify from "sharify"
 
-import { LoginResponseLocalData } from "./types"
+import { LoginResponseLocalData } from "./Types"
 const data = sharify.data as LoginResponseLocalData
 
 export function initAnalytics() {

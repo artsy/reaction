@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import colors from "../../assets/colors"
-import Button from "./default"
+import colors from "../../Assets/Colors"
+import Button from "./Default"
 
 const InvertedButton = styled(Button)`
     background: ${props => (props.disabled ? colors.graySemibold : "black")};

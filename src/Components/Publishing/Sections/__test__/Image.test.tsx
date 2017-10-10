@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import { Images } from "../../fixtures/components"
-import Image from "../image"
+import { Images } from "../../Fixtures/Components"
+import Image from "../Image"
 
 it("renders properly", () => {
   const image = renderer.create(<Image image={Images[1]} />).toJSON()

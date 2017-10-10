@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../helpers"
-import { Layout } from "../typings"
+import { pMedia } from "../../Helpers"
+import { Layout } from "../Typings"
 
 interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
   layout?: string

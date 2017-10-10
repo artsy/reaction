@@ -1,8 +1,8 @@
 import * as React from "react"
 
-import ThreewThankYou from "../3w_thank_you"
-import AcbThankYou from "../acb_thank_you"
-import RepeatVisitor from "../repeat_visitor"
+import ThreewThankYou from "../3wThankYou"
+import AcbThankYou from "../AcbThankYou"
+import RepeatVisitor from "../RepeatVisitor"
 
 interface Props {
   profile: CollectorProfile

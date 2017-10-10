@@ -1,8 +1,8 @@
-import Button from "./default"
-import FacebookButton from "./facebook"
-import GhostButton from "./ghost"
-import InvertedButton from "./inverted"
-import TwitterButton from "./twitter"
+import Button from "./Default"
+import FacebookButton from "./Facebook"
+import GhostButton from "./Ghost"
+import InvertedButton from "./Inverted"
+import TwitterButton from "./Twitter"
 
 export default {
   Button,

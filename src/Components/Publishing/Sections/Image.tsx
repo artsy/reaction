@@ -1,8 +1,8 @@
 import React from "react"
-import { resize } from "../../../utils/resizer"
-import { Layout, SectionLayout } from "../typings"
-import Caption from "./caption"
-import ImageWrapper from "./image_wrapper"
+import { resize } from "../../../Utils/Resizer"
+import { Layout, SectionLayout } from "../Typings"
+import Caption from "./Caption"
+import ImageWrapper from "./ImageWrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any

@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Relay from "react-relay"
 
-import { secondary } from "../../assets/fonts"
+import { secondary } from "../../Assets/Fonts"
 
 import { compact, find } from "lodash"
 import styled from "styled-components"

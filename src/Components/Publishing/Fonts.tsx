@@ -1,5 +1,5 @@
 import { css } from "styled-components"
-import * as fonts from "../../assets/fonts"
+import * as fonts from "../../Assets/Fonts"
 
 const textSizesForGaramond = {
   s11: {

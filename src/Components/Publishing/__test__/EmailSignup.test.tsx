@@ -3,7 +3,7 @@ import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 import request from "superagent"
-import EmailSignup from "../email_signup"
+import EmailSignup from "../EmailSignup"
 
 jest.mock("superagent", () => {
   const end = jest.fn()

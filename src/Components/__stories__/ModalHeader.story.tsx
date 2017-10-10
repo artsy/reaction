@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import ModalHeader from "../modal_header"
-import Title from "../title"
+import ModalHeader from "../ModalHeader"
+import Title from "../Title"
 
 storiesOf("Components/Modal/Header", module).add("Simple login header", () =>
   <ModalHeader>

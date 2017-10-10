@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import colors from "../../assets/colors"
-import Button from "../buttons/inverted"
-import Icon from "../icon"
-import Input from "../input"
-import TextArea from "../text_area"
+import colors from "../../Assets/Colors"
+import Button from "../Buttons/Inverted"
+import Icon from "../Icon"
+import Input from "../Input"
+import TextArea from "../TextArea"
 
 storiesOf("Components/Input", module)
   .add("Inputs", () =>

@@ -1,12 +1,12 @@
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
-import { crop } from "../../../../utils/resizer"
-import { pMedia } from "../../../helpers"
-import { sizeMeRefreshRate } from "../../constants"
-import CanvasSlideshow from "./canvas_slideshow"
-import CanvasText from "./canvas_text"
-import CanvasVideo from "./canvas_video"
+import { crop } from "../../../../Utils/Resizer"
+import { pMedia } from "../../../Helpers"
+import { sizeMeRefreshRate } from "../../Constants"
+import CanvasSlideshow from "./CanvasSlideshow"
+import CanvasText from "./CanvasText"
+import CanvasVideo from "./CanvasVideo"
 
 interface CanvasContainerProps {
   unit?: any

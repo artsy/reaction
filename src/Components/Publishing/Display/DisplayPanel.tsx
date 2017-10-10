@@ -1,8 +1,8 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../assets/colors"
-import { crop, resize } from "../../../utils/resizer"
-import Fonts from "../fonts"
+import Colors from "../../../Assets/Colors"
+import { crop, resize } from "../../../Utils/Resizer"
+import Fonts from "../Fonts"
 
 interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any

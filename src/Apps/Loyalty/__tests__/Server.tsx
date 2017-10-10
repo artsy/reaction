@@ -1,4 +1,4 @@
-import { Home, ThankYou } from "../server/route_handlers"
+import { Home, ThankYou } from "../Server/RouteHandlers"
 
 describe("Home page", () => {
   it("redirects to /inquiries", () => {

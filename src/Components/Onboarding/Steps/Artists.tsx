@@ -1,11 +1,11 @@
 import * as React from "react"
 import * as Relay from 'react-relay'
 
-import { artsyNetworkLayer } from "../../../relay/config"
-import PopularArtistQueryConfig from "../../../relay/queries/popular_artist"
-import SelectableItemContainer from "../selectable_item_container"
-import { StepProps } from "../types"
-import { Layout } from "./layout"
+import { artsyNetworkLayer } from "../../../Relay/config"
+import PopularArtistQueryConfig from "../../../Relay/Queries/PopularArtist"
+import SelectableItemContainer from "../SelectableItemContainer"
+import { StepProps } from "../Types"
+import { Layout } from "./Layout"
 
 export interface RelayProps {
   popular_artists: {

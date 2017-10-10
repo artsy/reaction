@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-import Share from "../share"
+import Share from "../Share"
 
 it("renders a saved caption properly", () => {
   const share = renderer
