@@ -1,21 +1,37 @@
 import React from "react"
 import styled from "styled-components"
+import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 
 interface VideoProps {
+  campaign: any
   src: any
 }
 
+@track()
 class DisplayCanvasVideo extends React.Component<VideoProps, any> {
+  private video: HTMLVideoElement
+
   constructor(props) {
     super(props)
+    this.onPlayVideo = this.onPlayVideo.bind(this)
     this.state = { isPlaying: false }
   }
 
-  onPlayVideo = e => {
+  @track(() => ({
+    action: "Display Play Video",
+    campaign_name: this.props.campaign.name,
+  }))
+  onPlayVideo(e) {
     e.preventDefault()
-    e.target.paused ? e.target.play() : e.target.pause()
-    this.setState({ isPlaying: !e.target.paused })
+    if (this.video) {
+      if (this.video.paused) {
+        this.video.play()
+      } else {
+        this.video.pause()
+      }
+    }
+    this.setState({ isPlaying: !this.video.paused })
   }
 
   renderCover = () => {
@@ -32,7 +48,7 @@ class DisplayCanvasVideo extends React.Component<VideoProps, any> {
     return (
       <VideoContainer onClick={this.onPlayVideo}>
         {this.renderCover()}
-        <Video src={this.props.src} controls={false} playsInline />
+        <video src={this.props.src} controls={false} playsInline ref={video => (this.video = video)} />
       </VideoContainer>
     )
   }
@@ -44,20 +60,21 @@ const VideoContainer = styled.div`
   height: 100%;
   overflow: hidden;
   position: relative;
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   ${pMedia.sm`
     width: 100%;
     height: auto;
     overflow: visible;
+    video {
+      height: auto;
+    }
   `}
 `
-const Video = styled.video`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  ${pMedia.sm`
-    height: auto;
-  `}
-`
+
 const Cover = styled.div`
   position: absolute;
   top: 0;

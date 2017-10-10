@@ -4,23 +4,39 @@ import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { crop } from "../../../../Utils/resizer"
+import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import Fonts from "../../Fonts"
 import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {
-  unit: any
-  disclaimer: any
+  campaign: any
   containerWidth: number
+  disclaimer: any
+  unit: any
 }
 
+@track()
 class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
   private slider: any
 
   constructor(props) {
     super(props)
+    this.onChangeSlide = this.onChangeSlide.bind(this)
     this.state = { isOnTitle: true }
+  }
+
+  afterSlideChange = currentSlide => {
+    this.setState({ isOnTitle: currentSlide === 0 })
+  }
+
+  @track(props => ({
+    action: "Display Navigate Slideshow",
+    campaign_name: props.campaign.name,
+  }))
+  onChangeSlide(slide) {
+    this.slider.slickGoTo(slide)
   }
 
   renderTitleCard() {
@@ -53,10 +69,6 @@ class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
     })
   }
 
-  onSlideChange = currentSlide => {
-    this.setState({ isOnTitle: currentSlide === 0 })
-  }
-
   render() {
     const { containerWidth } = this.props
     const sliderSettings = {
@@ -65,11 +77,17 @@ class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
       infinite: false,
       variableWidth: true,
       centerMode: true,
-      nextArrow: <RightArrow containerWidth={containerWidth} onRightArrow={() => this.slider.slickGoTo(0)} />,
-      prevArrow: <LeftArrow containerWidth={containerWidth} isOnTitle={this.state.isOnTitle} />,
+      nextArrow: <RightArrow containerWidth={containerWidth} onChangeSlide={slide => this.onChangeSlide(slide)} />,
+      prevArrow: (
+        <LeftArrow
+          containerWidth={containerWidth}
+          onChangeSlide={slide => this.onChangeSlide(slide)}
+          isOnTitle={this.state.isOnTitle}
+        />
+      ),
       initialSlide: 0,
       afterChange: currentSlide => {
-        this.onSlideChange(currentSlide)
+        this.afterSlideChange(currentSlide)
       },
       responsive: [
         {
@@ -94,11 +112,12 @@ class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
 }
 
 const LeftArrow = props => {
+  const slide = props.currentSlide - 1 >= 0 ? 0 : props.currentSlide - 1
   return (
     <NavArrow
       containerWidth={props.containerWidth}
       direction="left"
-      onClick={props.onClick}
+      onClick={() => props.onChangeSlide(slide)}
       isVisible={!props.isOnTitle}
     >
       <Icon name="chevron-left" color="black" fontSize="24px" />
@@ -107,9 +126,14 @@ const LeftArrow = props => {
 }
 
 const RightArrow = props => {
-  const onClick = props.currentSlide + 1 === props.slideCount ? props.onRightArrow : props.onClick
+  const slide = props.currentSlide + 1 === props.slideCount ? 0 : props.currentSlide + 1
   return (
-    <NavArrow containerWidth={props.containerWidth} direction="right" onClick={onClick} isVisible>
+    <NavArrow
+      containerWidth={props.containerWidth}
+      direction="right"
+      onClick={() => props.onChangeSlide(slide)}
+      isVisible
+    >
       <Icon name="chevron-right" color="black" fontSize="24px" />
     </NavArrow>
   )

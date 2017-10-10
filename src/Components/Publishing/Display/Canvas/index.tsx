@@ -19,7 +19,7 @@ const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
       <a href={unit.link.url} target="_blank">
         <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
       </a>
-      <CanvasContainer unit={unit} disclaimer={disclaimer} />
+      <CanvasContainer unit={unit} campaign={campaign} disclaimer={disclaimer} />
       {unit.layout === "overlay" && disclaimer}
     </DisplayContainer>
   )
