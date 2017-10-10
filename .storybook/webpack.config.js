@@ -53,10 +53,4 @@ module.exports = {
     ],
   },
   plugins: plugins,
-  node: {
-    console: true,
-    fs: "empty",
-    net: "empty",
-    tls: "empty",
-  },
 }
