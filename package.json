@@ -6,12 +6,7 @@
   "repository": "https://github.com/artsy/reaction-force.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
-  "files": [
-    "dist",
-    "assets",
-    "data",
-    "docs"
-  ],
+  "files": ["dist", "assets", "data", "docs"],
   "engines": {
     "node": "8.4.x",
     "npm": "5.4.x",
@@ -24,8 +19,10 @@
     "storybook": "node verify-node-version.js && start-storybook -p 9001",
     "deploy-storybook": "NODE_ENV=production storybook-to-ghpages",
     "relay2ts": "relay2ts src/components/*.tsx --update",
-    "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
-    "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
+    "sync-schema":
+      "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
+    "sync-colors":
+      "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty",
     "compile:server": "gulp compile-server",
@@ -151,23 +148,12 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "setupFiles": [
-      "./src/setup_jest.ts"
-    ]
+    "testPathIgnorePatterns": ["<rootDir>/dist/"],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "setupFiles": ["./src/setup_jest.ts"]
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "tslint --fix",
-      "npm run prettier-write --",
-      "git add"
-    ],
-    "*.json": [
-      "npm run prettier-write --"
-    ]
+    "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"],
+    "*.json": ["npm run prettier-write --"]
   }
 }
