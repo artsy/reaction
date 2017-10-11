@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 import styled from "styled-components"
 
 import Artworks from "../ArtworkGrid"
@@ -171,7 +171,7 @@ export default Relay.createContainer(ArtworkFilter, {
     filter_artworks: () => Relay.QL`
       fragment on Viewer {
         filter_artworks(
-          aggregations: $aggregations, 
+          aggregations: $aggregations,
           size: $size,
           for_sale: $for_sale,
           medium: $medium,
@@ -184,7 +184,7 @@ export default Relay.createContainer(ArtworkFilter, {
         ) {
           ${TotalCount.getFragment("filter_artworks")}
           aggregations {
-            slice 
+            slice
             counts {
               id
               name

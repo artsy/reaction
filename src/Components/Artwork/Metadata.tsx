@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
