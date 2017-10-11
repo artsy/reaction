@@ -7,6 +7,10 @@ import { StandardArticle } from "../../Fixtures/Articles"
 import Sections from "../Sections"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("react-slick", () => {
+  const React = require("react")
+  return props => <div>{props.children}</div>
+})
 
 it("renders properly", () => {
   const sections = renderer.create(<Sections article={StandardArticle} />).toJSON()

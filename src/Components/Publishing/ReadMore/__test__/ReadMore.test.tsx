@@ -7,6 +7,10 @@ import Sections from "../../Sections/Sections"
 import ReadMoreWrapper from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
+jest.mock("react-slick", () => {
+  const React = require("react")
+  return props => <div>{props.children}</div>
+})
 
 describe("ReadMore", () => {
   beforeEach(() => {

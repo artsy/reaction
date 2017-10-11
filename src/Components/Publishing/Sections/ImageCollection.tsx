@@ -48,11 +48,25 @@ function renderImages(images, dimensions, gutter, sectionLayout, width) {
     let renderedImage
     if (image.type === "image") {
       renderedImage = (
-        <Image image={image} sectionLayout={sectionLayout} width={imageSize.width} height={imageSize.height} />
+        <Image
+          images={images}
+          slideIndex={i}
+          image={image}
+          sectionLayout={sectionLayout}
+          width={imageSize.width}
+          height={imageSize.height}
+        />
       )
     } else if (image.type === "artwork") {
       renderedImage = (
-        <Artwork artwork={image} sectionLayout={sectionLayout} width={imageSize.width} height={imageSize.height} />
+        <Artwork
+          images={images}
+          slideIndex={i}
+          artwork={image}
+          sectionLayout={sectionLayout}
+          width={imageSize.width}
+          height={imageSize.height}
+        />
       )
     } else {
       return false

@@ -3,40 +3,54 @@ import * as React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import IconExpand from "../Icon/Expand"
+import FullscreenViewer from "./FullscreenViewer/FullscreenViewer"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
   index?: number
+  images?: [object]
+  slideIndex?: number
 }
 
 @track()
-class ViewFullscreen extends React.Component<ViewFullscreenProps, void> {
+class ViewFullscreen extends React.Component<ViewFullscreenProps, any> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
   }
 
   constructor(props) {
     super()
-    this.onClick = this.onClick.bind(this)
+    this.openViewer = this.openViewer.bind(this)
+    this.state = { viewerIsOpen: false }
   }
 
   @track({ action: "Clicked article impression" })
-  onClick(e) {
+  openViewer(e) {
     e.preventDefault()
-    if (this.context.onViewFullscreen) {
-      this.context.onViewFullscreen(this.props.index)
-    }
+    this.setState({ viewerIsOpen: true })
+  }
+
+  closeViewer = e => {
+    this.setState({ viewerIsOpen: false })
   }
 
   render() {
     return (
-      <ViewFullscreenLink onClick={this.onClick}>
-        <IconExpand />
-      </ViewFullscreenLink>
+      <div>
+        <ViewFullscreenLink onClick={this.openViewer}>
+          <IconExpand />
+        </ViewFullscreenLink>
+        <FullscreenViewer
+          slideIndex={this.props.slideIndex}
+          onClose={this.closeViewer}
+          show={this.state.viewerIsOpen}
+          images={this.props.images}
+        />
+      </div>
     )
   }
 }
 
-const ViewFullscreenLink = styled.div`
+export const ViewFullscreenLink = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
@@ -44,11 +58,8 @@ const ViewFullscreenLink = styled.div`
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0;
   transition: opacity 0.3s;
-  &:hover {
-    opacity: 1;
-  }
 `
 
 export default ViewFullscreen

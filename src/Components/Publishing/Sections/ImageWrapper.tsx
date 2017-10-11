@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
-import ViewFullscreen from "./ViewFullscreen"
+import ViewFullscreen, { ViewFullscreenLink } from "./ViewFullscreen"
 
 interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   src: string
@@ -11,11 +11,13 @@ interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   height?: string | number
   alt?: string
   index?: number
+  images?: [object]
+  slideIndex?: number
 }
 
 const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
   const { layout, index, ...blockImageProps }: any = props
-  const fullscreen = <Fullscreen><ViewFullscreen index={index} /></Fullscreen>
+  const fullscreen = <ViewFullscreen images={props.images} slideIndex={props.slideIndex} index={index} />
   const viewFullscreen = layout !== "classic" ? fullscreen : false
 
   return (
@@ -26,21 +28,16 @@ const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
   )
 }
 
-const Fullscreen = styled.div`
-  opacity: 0;
-  transition: opacity .3s;
-`
-
 const StyledImageWrapper = styled.div`
   position: relative;
   &:hover {
-    ${Fullscreen} {
-      opacity: 1;
+    ${ViewFullscreenLink} {
+      opacity: 0.6;
     }
   }
   ${pMedia.sm`
-    ${Fullscreen} {
-      opacity: 1;
+    ${ViewFullscreenLink} {
+      opacity: 0.6;
     }
   `}
 `

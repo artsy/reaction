@@ -6,6 +6,11 @@ import "jest-styled-components"
 import { Images } from "../../Fixtures/Components"
 import Image from "../Image"
 
+jest.mock("react-slick", () => {
+  const React = require("react")
+  return props => <div>{props.children}</div>
+})
+
 it("renders properly", () => {
   const image = renderer.create(<Image image={Images[1]} />).toJSON()
   expect(image).toMatchSnapshot()

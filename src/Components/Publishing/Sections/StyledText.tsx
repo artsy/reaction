@@ -53,7 +53,7 @@ const StyledText = div`
     padding-bottom: 0;
   }
   ul, ol {
-    padding-left: 1em;  
+    padding-left: 1em;
   }
   li {
     ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
@@ -142,7 +142,7 @@ const StyledText = div`
   }
   ${props => pMedia.md`
     max-width: calc(100% - 40px);
-    margin: 0 auto;
+    margin: 0;
   `}
   ${props => pMedia.sm`
     max-width: 100%;
