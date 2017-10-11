@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a long caption properly 1`] = `
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,15 +13,15 @@ exports[`renders a long caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c5 > p,
+.c5 p,
+.c5 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -30,17 +30,17 @@ exports[`renders a long caption properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c5 > a,
+.c5 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c5 > a:hover,
+.c5 a:hover {
   color: black;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -48,19 +48,9 @@ exports[`renders a long caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-}
-
-.c4:hover {
-  opacity: 1;
-}
-
-.c3 {
-  opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
 }
 
 .c0 {
@@ -68,7 +58,7 @@ exports[`renders a long caption properly 1`] = `
 }
 
 .c0:hover .c2 {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .c1 {
@@ -76,20 +66,20 @@ exports[`renders a long caption properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c5 {
+  .c4 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
 
 @media (max-width: 720px) {
   .c0 .c2 {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
@@ -106,11 +96,9 @@ exports[`renders a long caption properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
-    >
+    <div>
       <div
-        className="c4"
+        className="c2 c3"
         onClick={[Function]}
       >
         <svg
@@ -162,10 +150,10 @@ exports[`renders a long caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c4"
   >
     <div
-      className="c6"
+      className="c5"
     >
       <div
         dangerouslySetInnerHTML={
@@ -180,7 +168,7 @@ exports[`renders a long caption properly 1`] = `
 `;
 
 exports[`renders a react child as caption properly 1`] = `
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -192,15 +180,15 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c5 > p,
+.c5 p,
+.c5 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -209,17 +197,17 @@ exports[`renders a react child as caption properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c5 > a,
+.c5 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c5 > a:hover,
+.c5 a:hover {
   color: black;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -227,19 +215,9 @@ exports[`renders a react child as caption properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-}
-
-.c4:hover {
-  opacity: 1;
-}
-
-.c3 {
-  opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
 }
 
 .c0 {
@@ -247,7 +225,7 @@ exports[`renders a react child as caption properly 1`] = `
 }
 
 .c0:hover .c2 {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .c1 {
@@ -255,20 +233,20 @@ exports[`renders a react child as caption properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c5 {
+  .c4 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
 
 @media (max-width: 720px) {
   .c0 .c2 {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
@@ -285,11 +263,9 @@ exports[`renders a react child as caption properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
-    >
+    <div>
       <div
-        className="c4"
+        className="c2 c3"
         onClick={[Function]}
       >
         <svg
@@ -341,10 +317,10 @@ exports[`renders a react child as caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c4"
   >
     <div
-      className="c6"
+      className="c5"
     >
       <div>
         <p>
@@ -357,7 +333,7 @@ exports[`renders a react child as caption properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -369,15 +345,15 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c5 > p,
+.c5 p,
+.c5 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -386,17 +362,17 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c6 > a,
-.c6 a {
+.c5 > a,
+.c5 a {
   color: #999;
 }
 
-.c6 > a:hover,
-.c6 a:hover {
+.c5 > a:hover,
+.c5 a:hover {
   color: black;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -404,19 +380,9 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-}
-
-.c4:hover {
-  opacity: 1;
-}
-
-.c3 {
-  opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
 }
 
 .c0 {
@@ -424,7 +390,7 @@ exports[`renders properly 1`] = `
 }
 
 .c0:hover .c2 {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .c1 {
@@ -432,20 +398,20 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c5 {
+  .c4 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
 
 @media (max-width: 720px) {
   .c0 .c2 {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
@@ -462,11 +428,9 @@ exports[`renders properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
-    >
+    <div>
       <div
-        className="c4"
+        className="c2 c3"
         onClick={[Function]}
       >
         <svg
@@ -518,10 +482,10 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c4"
   >
     <div
-      className="c6"
+      className="c5"
     >
       <div
         dangerouslySetInnerHTML={

@@ -12,6 +12,8 @@ interface ArtworkProps {
   linked?: boolean
   width?: string | number
   height?: string | number
+  images?: [object]
+  slideIndex?: number
 }
 
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
@@ -19,6 +21,8 @@ const ArtworkImage: React.SFC<ArtworkProps> = props => {
   const src = resize(artwork.image, { width: 1200 })
   const image = (
     <ImageWrapper
+      images={props.images}
+      slideIndex={props.slideIndex}
       layout={layout}
       src={src}
       className="display-artwork__image"

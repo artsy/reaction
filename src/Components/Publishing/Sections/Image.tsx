@@ -10,6 +10,8 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   sectionLayout?: SectionLayout
   width?: number | string
   height?: number | string
+  images?: [object]
+  slideIndex?: number
 }
 
 const Image: React.SFC<ImageProps> = props => {
@@ -19,6 +21,8 @@ const Image: React.SFC<ImageProps> = props => {
   return (
     <div className="article-image">
       <ImageWrapper
+        images={props.images}
+        slideIndex={props.slideIndex}
         layout={layout}
         src={src}
         width={width}

@@ -11,7 +11,7 @@ import Slide from "./Slide"
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   images: any
   show: boolean
-  onClose: () => void
+  onClose: (e?: object) => void
   slideIndex?: number
 }
 

@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c22 {
+.c21 {
   width: 100%;
   height: 1000px;
 }
 
-.c18 {
+.c17 {
   color: #999;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c16 {
+.c15 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -25,14 +25,14 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c16 .title {
+.c15 .title {
   font-family: Unica77LLWebItalic ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c17 {
+.c16 {
   color: #999;
   display: block;
   -webkit-text-overflow: ellipsis;
@@ -42,11 +42,11 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c17 .artist-name {
+.c16 .artist-name {
   margin-right: 30px;
 }
 
-.c11 {
+.c10 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -54,19 +54,9 @@ exports[`renders properly 1`] = `
   width: 25px;
   height: 25px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-}
-
-.c11:hover {
-  opacity: 1;
-}
-
-.c10 {
-  opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
 }
 
 .c7 {
@@ -74,19 +64,19 @@ exports[`renders properly 1`] = `
 }
 
 .c7:hover .c9 {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .c8 {
   display: block;
 }
 
-.c15 {
+.c14 {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c12 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -98,15 +88,15 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c13 {
+.c12 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c13 > p,
-.c13 p,
-.c13 .public-DraftEditorPlaceholder-root {
+.c12 > p,
+.c12 p,
+.c12 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -115,13 +105,13 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c13 > a,
-.c13 a {
+.c12 > a,
+.c12 a {
   color: #999;
 }
 
-.c13 > a:hover,
-.c13 a:hover {
+.c12 > a:hover,
+.c12 a:hover {
   color: black;
 }
 
@@ -130,32 +120,32 @@ exports[`renders properly 1`] = `
   width: 197px;
 }
 
-.c14 {
+.c13 {
   margin-right: 0px;
   width: 264px;
 }
 
-.c19 {
+.c18 {
   margin-right: 10px;
+  width: 219px;
+}
+
+.c19 {
+  margin-right: 0px;
   width: 219px;
 }
 
 .c20 {
   margin-right: 0px;
-  width: 219px;
-}
-
-.c21 {
-  margin-right: 0px;
   width: 100%;
 }
 
-.c23 {
+.c22 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c24 {
+.c23 {
   margin-right: 0px;
   width: 222px;
 }
@@ -168,7 +158,7 @@ exports[`renders properly 1`] = `
   width: 100%;
 }
 
-.c33 {
+.c32 {
   height: 45px;
   position: relative;
   margin-left: 40px;
@@ -176,11 +166,11 @@ exports[`renders properly 1`] = `
   text-align: right;
 }
 
-.c33 > svg {
+.c32 > svg {
   height: 98%;
 }
 
-.c26 {
+.c25 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -206,16 +196,16 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-.c26:hover {
+.c25:hover {
   background: rgba(0, 0, 0, 0.6);
   color: white;
 }
 
-.c26:hover .c32 {
+.c25:hover .c31 {
   fill: white;
 }
 
-.c27 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -230,7 +220,7 @@ exports[`renders properly 1`] = `
   height: 50px;
 }
 
-.c28 {
+.c27 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -239,21 +229,21 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c29 {
+.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c30 {
+.c29 {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c31 {
+.c30 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -294,7 +284,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c25 {
+.c24 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -493,31 +483,31 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c22 {
+  .c21 {
     height: 1300px;
   }
 }
 
 @media (max-width: 600px) {
-  .c16 {
+  .c15 {
     padding: 0 10px;
   }
 }
 
 @media (max-width: 720px) {
   .c7 .c9 {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
 @media (max-width: 600px) {
-  .c12 {
+  .c11 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .c13 {
+  .c12 {
     padding: 0px;
   }
 }
@@ -529,7 +519,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c14 {
+  .c13 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .c18 {
     margin-bottom: 10px;
   }
 }
@@ -547,19 +543,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c21 {
+  .c22 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
   .c23 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .c24 {
     margin-bottom: 10px;
   }
 }
@@ -573,13 +563,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c33 {
+  .c32 {
     display: none;
   }
 }
 
 @media (max-width: 600px) {
-  .c28 {
+  .c27 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -588,7 +578,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c30 {
+  .c29 {
     font-family: Unica77LLWebMedium ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -597,7 +587,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 600px) {
-  .c31 {
+  .c30 {
     font-family: Unica77LLWebRegular ,      'Arial',      'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -648,13 +638,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width: 1250px) {
-  .c25 {
+  .c24 {
     width: 680px;
   }
 }
 
 @media (max-width: 900px) {
-  .c25 {
+  .c24 {
     width: 100%;
     padding: 0px;
     margin: 0 0 40px 0;
@@ -664,7 +654,7 @@ exports[`renders properly 1`] = `
 @media (max-width: 900px) {
   .c2 {
     max-width: calc(100% - 40px);
-    margin: 0 auto;
+    margin: 0;
   }
 }
 
@@ -831,11 +821,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=95"
               width={197}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -887,10 +875,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -920,11 +908,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=95"
               width={197}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -976,10 +962,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -993,14 +979,14 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
         width={264}
       >
         <div
           className="display-artwork"
         >
           <a
-            className="c15"
+            className="c14"
             href="/artwork/matt-devine-brass-tax"
           >
             <div
@@ -1013,11 +999,9 @@ exports[`renders properly 1`] = `
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
                 width={264}
               />
-              <div
-                className="c9 c10"
-              >
+              <div>
                 <div
-                  className="c11"
+                  className="c9 c10"
                   onClick={[Function]}
                 >
                   <svg
@@ -1070,10 +1054,10 @@ exports[`renders properly 1`] = `
             </div>
           </a>
           <div
-            className="display-artwork__caption c16"
+            className="display-artwork__caption c15"
           >
             <div
-              className="c17"
+              className="c16"
             >
               <span
                 className="artist-name"
@@ -1082,7 +1066,7 @@ exports[`renders properly 1`] = `
                   className="name"
                 >
                   <a
-                    className="c18"
+                    className="c17"
                     href="/artist/matt-devine"
                   >
                     Matt Devine
@@ -1093,7 +1077,7 @@ exports[`renders properly 1`] = `
                 className="title"
               >
                 <a
-                  className="c18"
+                  className="c17"
                   href="/artwork/matt-devine-brass-tax"
                 >
                   Brass Tax
@@ -1105,7 +1089,7 @@ exports[`renders properly 1`] = `
                 , 
               </span>
               <a
-                className="c18"
+                className="c17"
                 href="/partner/joanne-artman-gallery"
               >
                 Joanne Artman Gallery
@@ -1138,7 +1122,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c19"
+        className="c18"
         width={219}
       >
         <div
@@ -1154,11 +1138,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=95"
               width={219}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1210,15 +1192,102 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c18"
+        width={219}
+      >
+        <div
+          className="article-image"
+        >
+          <div
+            className="c7"
+          >
+            <img
+              alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
+              className="c8"
+              height={425}
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
+              width={219}
+            />
+            <div>
+              <div
+                className="c9 c10"
+                onClick={[Function]}
+              >
+                <svg
+                  className="expand"
+                  version="1.1"
+                  viewBox="0 0 27 27"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <g>
+                      <circle
+                        cx="13.9575195"
+                        cy="13.0588379"
+                        fill="#000000"
+                        fillRule="nonzero"
+                        r="13"
+                      />
+                      <g
+                        stroke="#FFFFFF"
+                        transform="translate(8.000000, 7.000000)"
+                      >
+                        <g>
+                          <g
+                            transform="translate(0.382532, 0.382532)"
+                          >
+                            <polyline
+                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                            />
+                            <polyline
+                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                            />
+                            <path
+                              d="M10.360254,0.796942618 L0.796942618,10.360254"
+                              strokeLinecap="square"
+                            />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+          >
+            <div
+              className="c12"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
                   }
                 }
               />
@@ -1237,106 +1306,15 @@ exports[`renders properly 1`] = `
             className="c7"
           >
             <img
-              alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
-              height={425}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
-              width={219}
-            />
-            <div
-              className="c9 c10"
-            >
-              <div
-                className="c11"
-                onClick={[Function]}
-              >
-                <svg
-                  className="expand"
-                  version="1.1"
-                  viewBox="0 0 27 27"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <g>
-                      <circle
-                        cx="13.9575195"
-                        cy="13.0588379"
-                        fill="#000000"
-                        fillRule="nonzero"
-                        r="13"
-                      />
-                      <g
-                        stroke="#FFFFFF"
-                        transform="translate(8.000000, 7.000000)"
-                      >
-                        <g>
-                          <g
-                            transform="translate(0.382532, 0.382532)"
-                          >
-                            <polyline
-                              points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                            />
-                            <polyline
-                              points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                              transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                            />
-                            <path
-                              d="M10.360254,0.796942618 L0.796942618,10.360254"
-                              strokeLinecap="square"
-                            />
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div
-            className="c12"
-          >
-            <div
-              className="c13"
-            >
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Nicolas Conver, <em>Queen of Clubs</em>. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
-                  }
-                }
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="c20"
-        width={219}
-      >
-        <div
-          className="article-image"
-        >
-          <div
-            className="c7"
-          >
-            <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="c8"
               height={426}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=95"
               width={219}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1388,10 +1366,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1428,7 +1406,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c21"
+        className="c20"
         width={undefined}
       >
         <div
@@ -1444,11 +1422,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
               width="100%"
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1500,10 +1476,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1537,7 +1513,7 @@ exports[`renders properly 1`] = `
     className="c4"
   >
     <iframe
-      className="c22"
+      className="c21"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1566,7 +1542,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c23"
+        className="c22"
         width={216}
       >
         <div
@@ -1582,11 +1558,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
               width={216}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1638,10 +1612,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1655,7 +1629,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c18"
         width={219}
       >
         <div
@@ -1671,11 +1645,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={219}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1727,10 +1699,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1744,7 +1716,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c24"
+        className="c23"
         width={222}
       >
         <div
@@ -1760,11 +1732,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={222}
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -1816,10 +1786,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
@@ -1850,7 +1820,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c24"
   >
     <div
       style={
@@ -1861,27 +1831,27 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="c26"
+        className="c25"
         onClick={[Function]}
       >
         <div
-          className="c27"
+          className="c26"
         >
           <div
-            className="c28"
+            className="c27"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c29"
+            className="c28"
           >
             <div
-              className="c30"
+              className="c29"
             >
               View Slideshow
             </div>
             <div
-              className="c31"
+              className="c30"
             >
               3
                Images
@@ -1889,7 +1859,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c32 c33"
+          className="c31 c32"
         >
           <svg
             className="image-set"
@@ -1933,13 +1903,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c24"
   >
     <div
       className="c5"
     >
       <div
-        className="c21"
+        className="c20"
         width={undefined}
       >
         <div
@@ -1955,11 +1925,9 @@ exports[`renders properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=95"
               width="100%"
             />
-            <div
-              className="c9 c10"
-            >
+            <div>
               <div
-                className="c11"
+                className="c9 c10"
                 onClick={[Function]}
               >
                 <svg
@@ -2011,10 +1979,10 @@ exports[`renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c12"
+            className="c11"
           >
             <div
-              className="c13"
+              className="c12"
             >
               <div
                 dangerouslySetInnerHTML={
