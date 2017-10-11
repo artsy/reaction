@@ -1,3 +1,11 @@
+/**
+ * FIXME: This file also used to handle ‘profile’ follows, as implemented in https://github.com/artsy/reaction/pull/175,
+ * but this was reverted because the metaphysics PR never landed https://github.com/artsy/metaphysics/pull/662.
+ *
+ * When this is revisited, rather than having this file do both, it’s probably better to have an abstract implementation
+ * and two specialised components that use composition to achieve the desired functionality.
+ */
+
 import * as React from "react"
 import * as Relay from "react-relay"
 
@@ -51,11 +59,6 @@ interface RelayProps {
         is_followed: boolean | null
       }
     | any
-  profile?:
-    | {
-        is_followed: boolean | null
-      }
-    | any
 }
 
 export const StyledFollowButton = styled(FollowButton)`
@@ -66,19 +69,19 @@ export const StyledFollowButton = styled(FollowButton)`
   align-items: center;
   margin-left: 5px;
   &:after {
-    content: 'Follow';
+    content: "Follow";
   }
   &:hover {
     color: ${colors.purpleRegular};
   }
-  &[data-followed='true'] {
+  &[data-followed="true"] {
     &:after {
-      content: 'Following';
+      content: "Following";
     }
     &:hover {
       color: ${colors.redBold};
       &:after {
-        content: 'Unfollow';
+        content: "Unfollow";
       }
     }
   }
@@ -140,66 +143,8 @@ class FollowArtistMutation extends Relay.Mutation<Props, null> {
   }
 }
 
-class FollowProfileMutation extends Relay.Mutation<Props, null> {
-  static fragments = {
-    profile: () => Relay.QL`
-      fragment on Profile {
-        __id
-        id
-        is_followed
-      }
-    `,
-  }
-
-  getMutation() {
-    return Relay.QL`mutation{followProfile}`
-  }
-
-  getVariables() {
-    return {
-      profile_id: this.props.profile.id,
-      unfollow: this.props.profile.is_followed ? true : false,
-    }
-  }
-
-  getOptimisticResponse() {
-    return {
-      profile: {
-        __id: this.props.profile.__id,
-        is_followed: this.props.profile.is_followed ? false : true,
-      },
-    }
-  }
-
-  // __id needs to be explictly added here because of our Relay fork
-  // If __id is not here, Relay will try to use `id` to match up value
-  // that is returned with its cached version (instead of using `__id`)
-  getFatQuery() {
-    return Relay.QL`
-      fragment on FollowProfilePayload {
-        profile {
-          __id
-          is_followed
-        }
-      }
-    `
-  }
-
-  getConfigs() {
-    return [
-      {
-        type: "FIELDS_CHANGE",
-        fieldIDs: {
-          artist: this.props.profile.__id,
-        },
-      },
-    ]
-  }
-}
-
 const mutationTypes = {
   artist: FollowArtistMutation,
-  profile: FollowProfileMutation,
 }
 
 export default Relay.createContainer(Artsy.ContextConsumer(StyledFollowButton), {
