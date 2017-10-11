@@ -1,4 +1,5 @@
 import Article from "./Article"
+import Constants from "./Constants"
 import Header from "./Header/Header"
 import RelatedArticlesCanvas from "./RelatedArticles/RelatedArticlesCanvas"
 import RelatedArticlesPanel from "./RelatedArticles/RelatedArticlesPanel"
@@ -42,6 +43,7 @@ export default {
   Article,
   Artwork,
   Authors,
+  Constants,
   Embed,
   Caption,
   FullscreenViewer,
