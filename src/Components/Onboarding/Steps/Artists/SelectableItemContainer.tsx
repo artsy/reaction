@@ -20,7 +20,7 @@ interface Props {
 
 class SelectableItemContainer extends React.Component<Props, null> {
   searchTextChanged(e) {
-    console.log("value", e.target.value)
+    return null
   }
 
   render() {
