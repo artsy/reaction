@@ -111,7 +111,7 @@
   },
   "dependencies": {
     "@storybook/addon-options": "^3.2.1",
-    "@storybook/react": "^3.2.0",
+    "@storybook/react": "^3.2.12",
     "artsy-passport": "^2.0.3",
     "artsy-xapp": "^1.0.4",
     "babel-polyfill": "^6.23.0",
