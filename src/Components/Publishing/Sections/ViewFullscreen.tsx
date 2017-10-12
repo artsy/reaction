@@ -10,7 +10,7 @@ interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
 
 @track()
 class ViewFullscreen extends React.Component<ViewFullscreenProps, void> {
-  static childContextTypes = {
+  static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }
 

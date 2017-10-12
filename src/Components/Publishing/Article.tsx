@@ -97,59 +97,61 @@ class Article extends React.Component<ArticleProps, ArticleState> {
     return { fullscreenImages, article }
   }
 
-  render() {
-    const { relatedArticlesForCanvas, relatedArticlesForPanel, headerHeight, marginTop } = this.props
-    const article = this.state.article
-    if (article.layout === "feature") {
-      return (
-        <ArticleContainer marginTop={marginTop}>
-          <Header article={article} height={headerHeight} />
-          <FeatureLayout className="article-content">
+  renderFeatureArticle() {
+    const { headerHeight } = this.props
+    const { article } = this.state
+    return (
+      <div>
+        <Header article={article} height={headerHeight} />
+        <FeatureLayout className="article-content">
+          <Sections article={article} />
+        </FeatureLayout>
+      </div>
+    )
+  }
+
+  renderStandardArticle() {
+    const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
+    const { article } = this.state
+    const relatedArticlePanel = relatedArticlesForPanel
+      ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
+      : false
+    const relatedArticleCanvas = relatedArticlesForCanvas
+      ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+      : false
+    const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
+    return (
+      <div>
+        <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
+          <Header article={article} />
+          <StandardLayout>
             <Sections article={article} />
-          </FeatureLayout>
-          <FullscreenViewer
-            onClose={this.closeViewer}
-            show={this.state.viewerIsOpen}
-            slideIndex={this.state.slideIndex}
-            images={this.state.fullscreenImages}
-          />
-        </ArticleContainer>
-      )
-    } else {
-      const relatedArticlePanel = relatedArticlesForPanel ? (
-        <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-      ) : (
-        false
-      )
-      const relatedArticleCanvas = relatedArticlesForCanvas ? (
-        <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-      ) : (
-        false
-      )
-      const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
-      return (
-        <ArticleContainer marginTop={marginTop}>
-          <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
-            <Header article={article} />
-            <StandardLayout>
-              <Sections article={article} />
-              <Sidebar>
-                {emailSignup}
-                {relatedArticlePanel}
-              </Sidebar>
-            </StandardLayout>
-            {relatedArticleCanvas}
-          </ReadMoreWrapper>
-          {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
-          <FullscreenViewer
-            onClose={this.closeViewer}
-            show={this.state.viewerIsOpen}
-            slideIndex={this.state.slideIndex}
-            images={this.state.fullscreenImages}
-          />
-        </ArticleContainer>
-      )
-    }
+            <Sidebar>
+              {emailSignup}
+              {relatedArticlePanel}
+            </Sidebar>
+          </StandardLayout>
+          {relatedArticleCanvas}
+        </ReadMoreWrapper>
+        {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
+      </div>
+    )
+  }
+
+  render() {
+    const { marginTop } = this.props
+    const { article } = this.state
+    return (
+      <ArticleContainer marginTop={marginTop}>
+        {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
+        <FullscreenViewer
+          onClose={this.closeViewer}
+          show={this.state.viewerIsOpen}
+          slideIndex={this.state.slideIndex}
+          images={this.state.fullscreenImages}
+        />
+      </ArticleContainer>
+    )
   }
 }
 
