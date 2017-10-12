@@ -1,15 +1,13 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
 import styled from "styled-components"
 
 import colors from "../../../../Assets/Colors"
 import Icon from "../../../Icon"
 import Input from "../../../Input"
 
-import SelectableItemContainer from "./SelectableItemContainer"
-
 import { StepProps } from "../../Types"
 import { Layout } from "../Layout"
+import ArtistList from "./ArtistList"
 
 const OnboardingSearchBox = styled.div`
   width: 450px;
@@ -17,19 +15,22 @@ const OnboardingSearchBox = styled.div`
   border-bottom: 1px solid #e5e5e5;
 `
 
-export interface RelayProps {
-  popular_artists: {
-    artists: any[]
-  }
+interface State {
+  inputText: string
 }
 
-class Artists extends React.Component<StepProps & RelayProps, null> {
+export default class Artists extends React.Component<StepProps, State> {
+  state = {
+    inputText: "",
+  }
+
   // onInputChange = e => {
   //   this.props.onStateChange({ nextButtonEnabled: true })
   // }
 
   searchTextChanged(e) {
-    return null
+    const updatedInputText = e.target.value
+    this.setState({ inputText: updatedInputText })
   }
 
   render() {
@@ -49,22 +50,9 @@ class Artists extends React.Component<StepProps & RelayProps, null> {
             onCut={this.searchTextChanged.bind(this)}
           />
           <div style={{ marginBottom: "35px" }} />
-          {/* <ArtistList /> */}
-          <SelectableItemContainer artists={this.props.popular_artists.artists} />
+          <ArtistList searchQuery={this.state.inputText} />
         </OnboardingSearchBox>
       </Layout>
     )
   }
 }
-
-export default Relay.createContainer(Artists, {
-  fragments: {
-    popular_artists: () => Relay.QL`
-      fragment on PopularArtists {
-        artists {
-          ${SelectableItemContainer.getFragment("artists")}
-        }
-      }
-    `,
-  },
-})
