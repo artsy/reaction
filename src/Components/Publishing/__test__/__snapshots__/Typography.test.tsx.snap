@@ -125,7 +125,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c24 {
+.c25 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 12px;
@@ -133,7 +133,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c23 {
+.c24 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -141,7 +141,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c22 {
+.c23 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -149,7 +149,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c21 {
+.c22 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -157,7 +157,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c20 {
+.c21 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -165,7 +165,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c19 {
+.c20 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 34px;
@@ -173,7 +173,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c18 {
+.c19 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -181,7 +181,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c17 {
+.c18 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -189,10 +189,18 @@ exports[`renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c16 {
+.c17 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 65px;
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 67px;
   line-height: 1em;
   margin-bottom: 20px;
 }
@@ -308,45 +316,50 @@ exports[`renders properly 1`] = `
   <div
     className="c16"
   >
-    Unica s65: 65px / 1em
+    Unica s67: 67px / 1em
   </div>
   <div
     className="c17"
   >
-    Unica s45: 45px / 1.1em
+    Unica s65: 65px / 1em
   </div>
   <div
     className="c18"
   >
-    Unica s40: 40px / 1.1em
+    Unica s45: 45px / 1.1em
   </div>
   <div
     className="c19"
   >
-    Unica s34: 34px / 1.1em
+    Unica s40: 40px / 1.1em
   </div>
   <div
     className="c20"
   >
-    Unica s32: 32px / 1.1em
+    Unica s34: 34px / 1.1em
   </div>
   <div
     className="c21"
   >
-    Unica s19: 19px / 1.5em
+    Unica s32: 32px / 1.1em
   </div>
   <div
     className="c22"
   >
-    Unica s16: 16px / 1.1em
+    Unica s19: 19px / 1.5em
   </div>
   <div
     className="c23"
   >
-    Unica s14: 14px / 1.1em
+    Unica s16: 16px / 1.1em
   </div>
   <div
     className="c24"
+  >
+    Unica s14: 14px / 1.1em
+  </div>
+  <div
+    className="c25"
   >
     Unica s12: 12px / 1.1em
   </div>

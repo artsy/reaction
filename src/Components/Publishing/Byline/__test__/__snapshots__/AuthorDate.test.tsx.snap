@@ -19,7 +19,7 @@ exports[`Author/Date renders a single author 1`] = `
   min-width: 10px;
   min-height: 10px;
   border-radius: 50%;
-  margin: 6px 10px 0 0;
+  margin: 6px 10px 1px 0;
   background-color: #000;
 }
 
@@ -71,7 +71,7 @@ exports[`Author/Date renders multiple authors 1`] = `
   min-width: 10px;
   min-height: 10px;
   border-radius: 50%;
-  margin: 6px 10px 0 0;
+  margin: 6px 10px 1px 0;
   background-color: #000;
 }
 
