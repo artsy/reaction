@@ -18,7 +18,7 @@ interface StyledArtworkCaptionProps {
   sectionLayout?: SectionLayout
 }
 
-class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
+export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinChildren(children) {
     const joined = _.compact(children).reduce((prev, curr, i) => {
       return [prev, this.renderComma(i), curr]
@@ -191,12 +191,12 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
   width: 100%;
   .artist-name {
-    margin-right: 30px;
+    margin-right: 20px;
   }
 `
 const Line = styled.div`
   &.artist-name {
-    margin-right: 30px;
+    margin-right: 20px;
   }
   ${pMedia.sm`
     &.artist-name {
@@ -207,4 +207,3 @@ const Line = styled.div`
     color: black;
   }
 `
-export default ArtworkCaption

@@ -29,7 +29,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 .c5.artist-name {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .c5 .c6 {

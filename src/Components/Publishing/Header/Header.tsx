@@ -40,7 +40,7 @@ const getDeck = (article, children) => {
   return deck ? <div className="feature__deck">{deck}</div> : false
 }
 
-const Header: React.SFC<HeaderProps> = props => {
+export const Header: React.SFC<HeaderProps> = props => {
   const { article, children, height } = props
   const title = getTitle(article, children)
 
@@ -60,5 +60,3 @@ const Header: React.SFC<HeaderProps> = props => {
     }
   }
 }
-
-export default Header

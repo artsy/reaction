@@ -6,7 +6,7 @@ exports[`renders a saved caption properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5px;
+  margin: 5px 0 4px;
 }
 
 .c1 {
