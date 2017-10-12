@@ -16,19 +16,19 @@ import { Text } from "./Sections/Text"
 import { Video } from "./Sections/Video"
 
 // Icon SVGs
-import { EditEmbed } from "./Icon/EditEmbed"
-import { EditImages } from "./Icon/EditImages"
-import { EditSection } from "./Icon/EditSection"
-import { EditText } from "./Icon/EditText"
-import { EditVideo } from "./Icon/EditVideo"
-import { HeroImage } from "./Icon/HeroImage"
-import { HeroVideo } from "./Icon/HeroVideo"
-import { ImageFullscreen } from "./Icon/ImageFullscreen"
-import { ImageSet } from "./Icon/ImageSet"
-import { LayoutFullscreen } from "./Icon/LayoutFullscreen"
-import { LayoutSplit } from "./Icon/LayoutSplit"
-import { LayoutText } from "./Icon/LayoutText"
-import { Remove } from "./Icon/Remove"
+import { IconEditEmbed } from "./Icon/IconEditEmbed"
+import { IconEditImages } from "./Icon/IconEditImages"
+import { IconEditSection } from "./Icon/IconEditSection"
+import { IconEditText } from "./Icon/IconEditText"
+import { IconEditVideo } from "./Icon/IconEditVideo"
+import { IconHeroImage } from "./Icon/IconHeroImage"
+import { IconHeroVideo } from "./Icon/IconHeroVideo"
+import { IconImageFullscreen } from "./Icon/IconImageFullscreen"
+import { IconImageSet } from "./Icon/IconImageSet"
+import { IconLayoutFullscreen } from "./Icon/IconLayoutFullscreen"
+import { IconLayoutSplit } from "./Icon/IconLayoutSplit"
+import { IconLayoutText } from "./Icon/IconLayoutText"
+import { IconRemove } from "./Icon/IconRemove"
 
 // Test Fixtures
 import {
@@ -57,19 +57,19 @@ export const components = {
   Text,
   Video,
   Icon: {
-    EditEmbed,
-    EditImages,
-    EditSection,
-    EditText,
-    EditVideo,
-    HeroImage,
-    HeroVideo,
-    ImageFullscreen,
-    ImageSet,
-    LayoutFullscreen,
-    LayoutSplit,
-    LayoutText,
-    Remove,
+    IconEditEmbed,
+    IconEditImages,
+    IconEditSection,
+    IconEditText,
+    IconEditVideo,
+    IconHeroImage,
+    IconHeroVideo,
+    IconImageFullscreen,
+    IconImageSet,
+    IconLayoutFullscreen,
+    IconLayoutSplit,
+    IconLayoutText,
+    IconRemove,
   },
   Fixtures: {
     ClassicArticle,
