@@ -2,17 +2,15 @@ import * as React from "react"
 import * as Relay from "react-relay"
 
 import { artsyNetworkLayer } from "../../../../Relay/config"
-import PopularArtistQueryConfig from "../../../../Relay/Queries/PopularArtist"
+import ArtistSearchQueryConfig from "../../../../Relay/Queries/ArtistSearchResults"
 
 import SelectableItemContainer from "./SelectableItemContainer"
 
 export interface RelayProps {
-  searchResults: {
-    artists?: any[]
-  }
+  searchResults: any[]
 }
 
-export default class ArtistSearchResults extends React.Component<null, null> {
+export default class ArtistSearchResults extends React.Component<any, any> {
   render() {
     return <ArtistSearchResultsContentList />
   }
@@ -20,22 +18,25 @@ export default class ArtistSearchResults extends React.Component<null, null> {
 
 function ArtistSearchResultsContentList() {
   Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={wrappedArtistSearchResultsContent} route={new PopularArtistQueryConfig()} />
+  return (
+    <Relay.RootContainer
+      Component={wrappedArtistSearchResultsContent}
+      route={new ArtistSearchQueryConfig({ term: "andy" })}
+    />
+  )
 }
 
 class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   render() {
-    return <SelectableItemContainer artists={this.props.searchResults.artists} />
+    return <SelectableItemContainer artists={this.props.searchResults} />
   }
 }
 
 const wrappedArtistSearchResultsContent = Relay.createContainer(ArtistSearchResultsContent, {
   fragments: {
-    popular_artists: () => Relay.QL`
-      fragment on PopularArtists {
-        artists {
-          ${SelectableItemContainer.getFragment("artists")}
-        }
+    searchResults: () => Relay.QL`
+      fragment on Artist @relay(plural: true) {
+        ${SelectableItemContainer.getFragment("artists")}
       }
     `,
   },
