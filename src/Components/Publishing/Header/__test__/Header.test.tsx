@@ -2,13 +2,14 @@ import { shallow } from "enzyme"
 import "jest-styled-components"
 import _ from "lodash"
 import * as React from "react"
+import { Header } from "../Header"
+
 import {
   ClassicArticle,
   FeatureArticle,
   MissingVerticalStandardArticle,
   StandardArticle,
 } from "../../Fixtures/Articles"
-import { Header } from "../Header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
@@ -23,7 +24,10 @@ describe("Header", () => {
 
   it("renders children on classic article", () => {
     const header = shallow(
-      <Header article={ClassicArticle}><div>Title Child</div><div>Lead Paragraph Child</div></Header>
+      <Header article={ClassicArticle}>
+        <div>Title Child</div>
+        <div>Lead Paragraph Child</div>
+      </Header>
     )
     expect(header.html()).toContain("Title Child")
     expect(header.html()).toContain("Lead Paragraph Child")

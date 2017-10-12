@@ -31,12 +31,12 @@ describe("feature", () => {
     const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
     const header = renderer
       .create(
-      <Header article={article}>
-        <div>Child 0: Vertical</div>
-        <div>Child 1: Title</div>
-        <div>Child 2: Deck</div>
-        <div>Child 3: Image</div>
-      </Header>
+        <Header article={article}>
+          <div>Child 0: Vertical</div>
+          <div>Child 1: Title</div>
+          <div>Child 2: Deck</div>
+          <div>Child 3: Image</div>
+        </Header>
       )
       .toJSON()
     expect(header).toMatchSnapshot()

@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { IconRemove } from "../../Icon/Remove"
+import { IconRemove } from "../../Icon/IconRemove"
 
 it("renders properly", () => {
   const icon = renderer.create(<IconRemove />).toJSON()

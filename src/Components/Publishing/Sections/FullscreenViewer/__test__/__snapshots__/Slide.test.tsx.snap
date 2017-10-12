@@ -270,7 +270,8 @@ exports[`renders properly 1`] = `
               <span
                 className="comma"
               >
-                , 
+                ,
+                 
               </span>
               <span
                 className="date"
@@ -280,7 +281,8 @@ exports[`renders properly 1`] = `
               <span
                 className="comma"
               >
-                , 
+                ,
+                 
               </span>
               <a
                 className="c9 c10"

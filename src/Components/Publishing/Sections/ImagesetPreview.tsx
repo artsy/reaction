@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { IconImageSet } from "../Icon/ImageSet"
+import { IconImageSet } from "../Icon/IconImageSet"
 
 type Layout = "mini" | "full"
 

@@ -53,7 +53,7 @@ export const StyledText = div`
     padding-bottom: 0;
   }
   ul, ol {
-    padding-left: 1em;  
+    padding-left: 1em;
   }
   li {
     ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};

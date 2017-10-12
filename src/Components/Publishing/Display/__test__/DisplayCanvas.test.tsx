@@ -2,6 +2,11 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
+import { DisplayCanvas } from "../Canvas"
+import { CanvasSlideshow } from "../Canvas/CanvasSlideshow"
+import { CanvasText } from "../Canvas/CanvasText"
+import { CanvasVideo } from "../Canvas/CanvasVideo"
+
 import {
   Campaign,
   UnitCanvasImage,
@@ -9,11 +14,6 @@ import {
   UnitCanvasSlideshow,
   UnitCanvasVideo,
 } from "../../Fixtures/Components"
-import DisplayCanvas from "../Canvas"
-
-import CanvasSlideshow from "../Canvas/CanvasSlideshow"
-import CanvasText from "../Canvas/CanvasText"
-import CanvasVideo from "../Canvas/CanvasVideo"
 
 jest.mock("react-slick", () => {
   const React = require("react")

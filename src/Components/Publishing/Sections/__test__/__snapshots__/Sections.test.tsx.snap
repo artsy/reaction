@@ -65,8 +65,8 @@ exports[`renders properly 1`] = `
 
 .c10 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c7 {
@@ -1106,7 +1106,8 @@ exports[`renders properly 1`] = `
               <span
                 className="comma"
               >
-                , 
+                ,
+                 
               </span>
               <a
                 className="c18"
