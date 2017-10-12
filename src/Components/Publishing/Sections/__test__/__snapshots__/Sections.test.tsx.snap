@@ -425,6 +425,7 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-text-align: left;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -476,6 +477,7 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-text-transform: none;
   text-transform: none;
 }
 

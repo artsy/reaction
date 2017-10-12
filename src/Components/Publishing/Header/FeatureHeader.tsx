@@ -97,7 +97,7 @@ interface FeatureHeaderProps {
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
-  const url = hero.url || ''
+  const url = hero.url || ""
   const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type} height={height}>
@@ -138,7 +138,7 @@ const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
-  `};
+  `}
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
@@ -272,7 +272,7 @@ const FeatureHeaderContainer = Div.extend`
       ${FeatureVideo} {
         width: 100%;
       }
-    `};
+    `}
   }
   &[data-type="fullscreen"] {
     ${HeaderText} {
@@ -286,7 +286,7 @@ const FeatureHeaderContainer = Div.extend`
       ${HeaderText} {
         padding: 20px;
       }
-    `};
+    `}
   }
 `
 

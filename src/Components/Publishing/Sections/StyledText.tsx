@@ -26,7 +26,7 @@ function getBlockquoteSize(layout, size) {
 
 export const StyledText = div`
   position: relative;
-  padding-bottom: ${props => (props.postscript ? "2em" : null)};
+  padding-bottom: ${props => (props.postscript ? "2em" : "")};
   a {
     color: black;
     text-decoration: none;
@@ -40,11 +40,11 @@ export const StyledText = div`
     }
   }
   p, ul, ol {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
-    padding-top: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
-    padding-bottom: ${props => (props.layout === "classic" ? ".75em;" : "1em;")};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
+    padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
+    padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     margin: 0;
-    font-style: ${props => (props.postscript ? "italic;" : "inherit;")};
+    font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
   p:first-child {
     padding-top: 0;
@@ -56,31 +56,31 @@ export const StyledText = div`
     padding-left: 1em;
   }
   li {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
     padding-top: .5em;
     padding-bottom: .5em;
   }
   h1 {
-    ${Fonts.unica("s40")};
+    ${Fonts.unica("s40")}
     font-weight: normal;
     padding-top: 107px;
     padding-bottom: 46px;
     margin: 0;
     position: relative;
     text-align: center;
-  }
-  h1:before {
-    content: "";
-    width: 15px;
-    height: 15px;
-    background: black;
-    border-radius: 50%;
-    position: absolute;
-    top: 69px;
-    right: calc(50% - 7.5px);
+    &:before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 69px;
+      right: calc(50% - 7.5px);
+    }
   }
   h2 {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32"))};
+    ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32"))}
     font-weight: normal;
     margin: 0;
     a {
@@ -88,20 +88,20 @@ export const StyledText = div`
     }
   }
   h3 {
-    ${props => (props.layout === "classic" ? Fonts.avantgarde("s13") : Fonts.unica("s19"))};
+    ${props => (props.layout === "classic" ? Fonts.avantgarde("s13") : Fonts.unica("s19"))}
     font-weight: normal;
     padding-top: 23px;
     margin: 0;
     strong {
       font-weight: normal;
-      ${props => (props.layout !== "classic" ? Fonts.unica("s19", "medium") : null)};
+      ${props => (props.layout !== "classic" ? Fonts.unica("s19", "medium") : "")}
     }
     em {
-      font-style: ${props => (props.layout === "classic" ? "normal" : null)};
+      font-style: ${props => (props.layout === "classic" ? "normal" : "")};
     }
   }
   blockquote {
-    ${props => getBlockquoteSize(props.layout, "lg")};
+    ${props => getBlockquoteSize(props.layout, "lg")}
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
     padding-top: 46px;
@@ -109,7 +109,7 @@ export const StyledText = div`
     margin: 0;
   }
   .content-start {
-    ${Fonts.unica("s67", "medium")};
+    ${Fonts.unica("s67", "medium")}
     float: left;
     line-height: .5em;
     margin-right: 10px;
@@ -139,7 +139,7 @@ export const StyledText = div`
     }
     &:after {
       content: "Follow";
-      ${Fonts.garamond("s17")};
+      ${Fonts.garamond("s17")}
       text-transform: none;
     }
   }
@@ -152,26 +152,26 @@ export const StyledText = div`
   `}
   ${props => pMedia.xs`
     p, ul, ol {
-      ${Fonts.garamond("s19")};
+      ${Fonts.garamond("s19")}
     }
     li {
-      ${Fonts.garamond("s19")};
+      ${Fonts.garamond("s19")}
     }
     h1 {
-      ${Fonts.unica("s34")};
+      ${Fonts.unica("s34")}
     }
     h2 {
-      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32")};
+      ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32")}
     }
     h3 {
-      strong {
-        ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : null};
-      }
-      ${props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16")};
-      line-height: ${props.layout !== "classic" ? "1.5em;" : null};
+      ${props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16")}
+      line-height: ${props.layout !== "classic" ? "1.5em" : ""};
+    }
+    h3 strong {
+      ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : ""}
     }
     blockquote {
-      ${getBlockquoteSize(props.layout, "sm")};
+      ${getBlockquoteSize(props.layout, "sm")}
     }
     .content-start {
       font-size: 55px;
