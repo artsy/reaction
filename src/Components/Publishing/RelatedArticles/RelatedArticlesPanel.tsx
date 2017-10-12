@@ -13,7 +13,7 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   }>
 }
 
-const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
+export const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
   const { articles, label } = props
   return (
     <RelatedArticlesContainer>
@@ -43,7 +43,7 @@ const Collection = styled.div`
   flex-direction: column;
 `
 const Label = styled.div`
-  ${Fonts.unica("s19", "medium")} margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
 const ArticleLink = styled.a`
   text-decoration: none;
@@ -59,4 +59,3 @@ const ArticleImage = styled.img`
 const ArticleTitle = styled.span`
   ${Fonts.garamond("s17")} color: black;
 `
-export default RelatedArticlesPanel

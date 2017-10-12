@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
 import Events from "../../../Utils/Events"
-import Article from "../Article"
+import { Article } from "../Article"
 import { StandardArticle } from "../Fixtures/Articles"
 
 jest.mock("react-slick", () => {

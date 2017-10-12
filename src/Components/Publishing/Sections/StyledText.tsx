@@ -83,6 +83,9 @@ const StyledText = div`
     ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32"))};
     font-weight: normal;
     margin: 0;
+    a {
+      background-size: 1.25px 6px;
+    }
   }
   h3 {
     ${props => (props.layout === "classic" ? Fonts.avantgarde("s13") : Fonts.unica("s19"))};
@@ -106,7 +109,7 @@ const StyledText = div`
     margin: 0;
   }
   .content-start {
-    ${Fonts.unica("s65", "medium")};
+    ${Fonts.unica("s67", "medium")};
     float: left;
     line-height: .5em;
     margin-right: 10px;

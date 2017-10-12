@@ -136,7 +136,7 @@ const Overlay = Div.extend`
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
   margin-bottom: 10px;
-  ${pMedia.xs`
+  ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
   `}
 `
@@ -192,7 +192,7 @@ const SubHeader = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  ${pMedia.xs`
+  ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
   `}
@@ -200,6 +200,7 @@ const SubHeader = styled.div`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
+  letter-spaceing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
   `}
@@ -213,9 +214,11 @@ const Title = styled.div`
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${pMedia.xs`
+  ${Fonts.unica("s16", "medium")}
+  line-height: 1.4em;
+  ${pMedia.sm`
     margin-bottom: 28px;
-    ${Fonts.unica("s16")}
+    ${Fonts.unica("s14", "medium")}
   `}
 `
 const FeatureHeaderContainer = Div.extend`

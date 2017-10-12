@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import Artwork from "../Sections/Artwork"
+import { Artwork } from "../Sections/Artwork"
 import Image from "../Sections/Image"
 import ImageCollection from "../Sections/ImageCollection"
 

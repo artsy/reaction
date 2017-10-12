@@ -1,7 +1,7 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
-import Article from "../Article"
+import { Article } from "../Article"
 import { StandardArticle } from "../Fixtures/Articles"
 
 jest.mock("react-slick", () => {

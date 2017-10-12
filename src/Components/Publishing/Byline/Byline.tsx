@@ -19,10 +19,10 @@ const Byline: React.SFC<BylineProps> = props => {
   const share = layout === "condensed"
     ? false
     : <Share
-        url={`http://www.artsy.net/article/${article.slug}`}
-        title={article.social_title || article.thumbnail_title}
-        color={layout === "fullscreen" ? "white" : "black"}
-      />
+      url={`http://www.artsy.net/article/${article.slug}`}
+      title={article.social_title || article.thumbnail_title}
+      color={layout === "fullscreen" ? "white" : "black"}
+    />
   return (
     <BylineContainer layout={layout}>
       <Author authors={contributing_authors} layout={layout} />
@@ -37,6 +37,6 @@ const BylineContainer = Div`
   display: flex;
   flex-wrap: wrap;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 `
 export default Byline

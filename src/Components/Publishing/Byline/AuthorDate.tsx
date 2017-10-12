@@ -68,7 +68,7 @@ const adjustForCondensed = layout => {
   &:before {
     min-width: 8px;
     min-height: 8px;
-    margin-right: 5px;
+    margin: 0 5px 1px;
   }`
     : ""
 }
@@ -79,7 +79,7 @@ const StyledAuthor = Text.extend`
     min-width: 10px;
     min-height: 10px;
     border-radius: 50%;
-    margin: 6px 10px 0 0;
+    margin: 6px 10px 1px 0;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
   ${props => adjustForCondensed(props.layout)}
