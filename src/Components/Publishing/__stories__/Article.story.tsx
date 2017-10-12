@@ -7,19 +7,33 @@ import {
   ShortStandardArticle,
   StandardArticle,
 } from "../Fixtures/Articles"
-import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
-storiesOf("Publishing/Articles", module)
-  .add("Standard", () => {
+const story = storiesOf("Publishing/Articles", module).add("Standard", () => {
+  return (
+    <Article
+      article={StandardArticle}
+      relatedArticlesForPanel={RelatedPanel}
+      relatedArticlesForCanvas={RelatedCanvas}
+      emailSignupUrl="#"
+    />
+  )
+})
+;["overlay", "image", "video", "slideshow"].forEach(type => {
+  story.add(`Standard with ${type} ad`, () => {
     return (
       <Article
         article={StandardArticle}
+        display={Display(type)}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
       />
     )
   })
+})
+
+story
   .add("Standard without Vertical", () => {
     return (
       <Article
