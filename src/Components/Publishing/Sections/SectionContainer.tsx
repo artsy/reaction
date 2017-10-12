@@ -35,7 +35,7 @@ const chooseMobilePadding = layout => {
   }
 }
 
-const SectionContainer = Div`
+export const SectionContainer = Div`
   box-sizing: border-box;
   display: flex;
   width: ${props => chooseWidth(props.layout, props.articleLayout)}
@@ -50,4 +50,3 @@ const SectionContainer = Div`
     margin: 0 0 40px 0;
   `}
 `
-export default SectionContainer

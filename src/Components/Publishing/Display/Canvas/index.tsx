@@ -3,14 +3,14 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
 import Fonts from "../../Fonts"
-import CanvasContainer from "./CanvasContainer"
+import { CanvasContainer } from "./CanvasContainer"
 
 interface DisplayCanvasProps {
   unit: any
   campaign: any
 }
 
-const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
+export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
   const { unit, campaign } = props
   const disclaimer = <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
 
@@ -46,8 +46,7 @@ const DisplayContainer = Div`
   `}
 `
 const AdvertisementBy = styled.div`
-  ${Fonts.avantgarde("s11")}
-  color: ${Colors.grayMedium};
+  ${Fonts.avantgarde("s11")} color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
 `
@@ -60,5 +59,3 @@ const Disclaimer = Div`
     margin: 35px 0 10px 0;
   `}
 `
-
-export default DisplayCanvas

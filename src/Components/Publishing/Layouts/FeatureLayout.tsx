@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default styled.div`
+export const FeatureLayout = styled.div`
   display: flex;
   width: 100%;
 `

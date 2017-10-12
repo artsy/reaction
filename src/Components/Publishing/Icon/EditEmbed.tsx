@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class EditEmbed extends Component<any, null> {
+export class EditEmbed extends Component<any, null> {
   render() {
     return (
       <svg
@@ -33,4 +33,3 @@ class EditEmbed extends Component<any, null> {
     )
   }
 }
-export default EditEmbed

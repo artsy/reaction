@@ -3,9 +3,9 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
-import Byline from "../Byline/Byline"
+import { Byline } from "../Byline/Byline"
 import { sizeMeRefreshRate } from "../Constants"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "fullscreen") {
@@ -94,7 +94,7 @@ interface FeatureHeaderProps {
   }
 }
 
-const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
+const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
   const url = hero.url || ''
@@ -118,7 +118,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   )
 }
 
-FeatureHeader.defaultProps = {
+FeatureHeaderComponent.defaultProps = {
   height: "100vh",
   size: {
     width: 500,
@@ -132,14 +132,13 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
-  `}
+  `};
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
@@ -185,53 +184,48 @@ const Video = styled.video`
 const TextAsset = styled.div`
   width: 100%;
   padding: 20px;
-  box-sizing: border-box
+  box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  display: flex;
+  ${Fonts.unica("s19", "medium")} display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
   ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
-  `}
+  `};
 `
 const Title = styled.div`
-  ${Fonts.unica("s100")}
-  margin-bottom: 75px;
+  ${Fonts.unica("s100")} margin-bottom: 75px;
   letter-spaceing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
-  `}
-  ${pMedia.md`
+  `} ${pMedia.md`
     ${Fonts.unica("s65")}
-  `}
-  ${pMedia.xs`
+  `} ${pMedia.xs`
     ${Fonts.unica("s45")}
-  `}
+  `};
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")}
-  line-height: 1.4em;
+  ${Fonts.unica("s16", "medium")} line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
-  `}
+  `};
 `
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
-  &[data-type='text'] {
+  &[data-type="text"] {
     height: auto;
     ${Title} {
       margin-bottom: 150px;
     }
   }
-  &[data-type='split'] {
+  &[data-type="split"] {
     ${Title} {
       flex-grow: 1;
     }
@@ -278,21 +272,21 @@ const FeatureHeaderContainer = Div.extend`
       ${FeatureVideo} {
         width: 100%;
       }
-    `}
+    `};
   }
-  &[data-type='fullscreen']{
+  &[data-type="fullscreen"] {
     ${HeaderText} {
       padding: 50px;
       color: #fff;
       justify-content: flex-end;
       margin: auto;
-      text-shadow: 0 0 40px rgba(0,0,0,0.4);
+      text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     }
     ${pMedia.xs`
       ${HeaderText} {
         padding: 20px;
       }
-    `}
+    `};
   }
 `
 
@@ -301,4 +295,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(FeatureHeader)
+export const FeatureHeader = sizeMe(sizeMeOptions)(FeatureHeaderComponent)

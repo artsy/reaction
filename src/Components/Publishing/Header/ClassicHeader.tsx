@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
-import AuthorDateClassic from "./AuthorDateClassic"
+import { Fonts } from "../Fonts"
+import { AuthorDateClassic } from "./AuthorDateClassic"
 
 interface ClassicHeaderProps {
   article?: any
@@ -10,7 +10,7 @@ interface ClassicHeaderProps {
   leadParagraph?: any
 }
 
-const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
+export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
   const { article, leadParagraph, title } = props
   return (
     <ClassicHeaderContainer>
@@ -29,9 +29,9 @@ const ClassicHeaderContainer = styled.div`
   margin: 40px auto;
   box-sizing: border-box;
   text-align: center;
-  p, > p {
-    ${Fonts.garamond("s19")}
-    line-height: 1.35em;
+  p,
+  > p {
+    ${Fonts.garamond("s19")} line-height: 1.35em;
     text-align: left;
     max-width: 580px;
     width: 100%;
@@ -40,21 +40,17 @@ const ClassicHeaderContainer = styled.div`
   }
   ${pMedia.xl`
     padding: 0 20px;
-  `}
-  ${pMedia.xs`
+  `} ${pMedia.xs`
     text-align: left;
     p, > p {
       ${Fonts.garamond("s17")}
       line-height: 1.35em;
     }
-  `}
+  `};
 `
 const Title = styled.div`
-  ${Fonts.garamond("s37")}
-  margin-bottom: 30px;
+  ${Fonts.garamond("s37")} margin-bottom: 30px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
-  `}
+  `};
 `
-
-export default ClassicHeader

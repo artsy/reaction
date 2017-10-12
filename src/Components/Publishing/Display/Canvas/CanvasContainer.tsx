@@ -25,7 +25,7 @@ function renderAsset(asset, campaign) {
   }
 }
 
-const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
+const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
   const { campaign, disclaimer, size, unit } = props
 
   if (unit.layout === "overlay") {
@@ -55,7 +55,7 @@ const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
   }
 }
 
-CanvasContainer.defaultProps = {
+CanvasContainerComponent.defaultProps = {
   size: {
     width: 1250,
   },
@@ -92,7 +92,7 @@ const Image = styled.img`
     height: auto;
     max-height: initial;
     object-fit: contain;
-  `}
+  `};
 `
 const CanvasLink = responsiveLink`
   width: 100%;
@@ -107,7 +107,7 @@ const CanvasLink = responsiveLink`
   ${props => pMedia.lg`
     ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
     ${props.layout === "standard" &&
-    `padding: 0 20px;
+      `padding: 0 20px;
        width: calc(100% - 40px);`}
   `}
   ${pMedia.sm`
@@ -125,7 +125,7 @@ const StandardContainer = styled.div`
     max-width: 100%;
     width: 100%;
     height: auto;
-  `}
+  `};
 `
 const Background = Div`
   background: black;
@@ -155,4 +155,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(CanvasContainer)
+export const CanvasContainer = sizeMe(sizeMeOptions)(CanvasContainerComponent)

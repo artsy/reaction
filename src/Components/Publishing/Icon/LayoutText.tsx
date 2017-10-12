@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class IconLayoutText extends Component<any, null> {
+export class IconLayoutText extends Component<any, null> {
   render() {
     return (
       <svg className="layout-text" width="45px" height="30px" viewBox="0 0 45 30" xmlns="http://www.w3.org/2000/svg">
@@ -15,4 +15,3 @@ class IconLayoutText extends Component<any, null> {
     )
   }
 }
-export default IconLayoutText

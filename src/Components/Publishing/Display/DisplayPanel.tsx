@@ -13,7 +13,7 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
   hoverImageUrl: string
 }
 
-const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
+export const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
   const { unit, campaign } = props
   const image = unit.assets[0] ? unit.assets[0].url : ""
   return (
@@ -81,5 +81,3 @@ const Body = styled.div`
 const SponsoredBy = styled.div`
   ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
 `
-
-export default DisplayPanel

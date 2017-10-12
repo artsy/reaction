@@ -4,13 +4,13 @@ import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface AuthorProps {
   author: any
 }
 
-const Author: React.SFC<AuthorProps> = props => {
+export const Author: React.SFC<AuthorProps> = props => {
   const { author } = props
   const profileImage = author.image_url ? <ProfileImage src={resize(author.image_url, { width: 200 })} /> : false
   return (
@@ -54,11 +54,9 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${Fonts.garamond("s23")}
-  ${pMedia.xs`
+  ${Fonts.garamond("s23")} ${pMedia.xs`
     ${Fonts.garamond("s17")}
-  `}
-  a {
+  `} a {
     color: black;
   }
 `
@@ -66,8 +64,7 @@ const Twitter = styled.span`
   margin-left: 20px;
 `
 const TwitterHandle = styled.a`
-  ${Fonts.unica("s14", "medium")}
-  color: black;
+  ${Fonts.unica("s14", "medium")} color: black;
   text-decoration: none;
   white-space: nowrap;
   ${Icon} {
@@ -76,6 +73,5 @@ const TwitterHandle = styled.a`
   }
   ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
-  `}
+  `};
 `
-export default Author

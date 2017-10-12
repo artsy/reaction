@@ -3,9 +3,9 @@ import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import Byline from "../Byline/Byline"
+import { Byline } from "../Byline/Byline"
 import { articleHref } from "../Constants"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
   article: {
@@ -18,7 +18,7 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, void> {
+export class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, void> {
   constructor(props) {
     super()
     this.onClick = this.onClick.bind(this)
@@ -81,5 +81,3 @@ const BlockImage = styled.img`
     height: 150px;
   `};
 `
-
-export default RelatedArticleFigure

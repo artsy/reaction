@@ -14,7 +14,7 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
   isSlideshowWithCaption?: boolean
 }
 
-const CanvasText: React.SFC<CanvasTextProps> = props => {
+export const CanvasText: React.SFC<CanvasTextProps> = props => {
   const { disclaimer, unit } = props
   const isSlideshowWithCaption = unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
   const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
@@ -107,4 +107,3 @@ const Link = Div`
     line-height: 1.35em;
   `}
 `
-export default CanvasText

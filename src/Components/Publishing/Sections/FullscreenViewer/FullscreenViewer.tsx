@@ -6,7 +6,7 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import { zIndex } from "../../Constants"
-import Slide from "./Slide"
+import { Slide } from "./Slide"
 
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
   images: any
@@ -19,7 +19,7 @@ interface FullscreenViewerState {
   isCaptionOpen: boolean
 }
 
-class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
+export class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
   static childContextTypes = {
     onToggleCaption: PropTypes.func,
   }
@@ -149,4 +149,3 @@ const NavArrow = div`
     display: none;
   `}
 `
-export default FullscreenViewer

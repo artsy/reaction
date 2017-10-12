@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class IconRemove extends Component<any, null> {
+export class IconRemove extends Component<any, null> {
   render() {
     return (
       <svg
@@ -18,4 +18,3 @@ class IconRemove extends Component<any, null> {
     )
   }
 }
-export default IconRemove

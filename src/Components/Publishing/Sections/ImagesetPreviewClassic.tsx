@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import Fonts from "../Fonts"
-import IconImageSet from "../Icon/ImageSet"
+import { Fonts } from "../Fonts"
+import { IconImageSet } from "../Icon/ImageSet"
 
 const Wrapper = styled.div`
   max-width: 580px;
@@ -35,7 +35,7 @@ const containerHeight = 150
 const iconContainer = 50
 const margin = 10
 
-class ImageSetPreviewClassic extends Component<any, any> {
+export class ImageSetPreviewClassic extends Component<any, any> {
   constructor(props) {
     super(props)
     this.state = {
@@ -107,4 +107,3 @@ class ImageSetPreviewClassic extends Component<any, any> {
     )
   }
 }
-export default ImageSetPreviewClassic

@@ -5,7 +5,7 @@ import urlParser from "url"
 import { resize } from "../../../Utils/resizer"
 import { sizeMeRefreshRate } from "../Constants"
 import { Layout } from "../Typings"
-import Caption from "./Caption"
+import { Caption } from "./Caption"
 
 const QUERYSTRING =
   "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
@@ -42,7 +42,7 @@ interface VideoState {
   hidden: boolean
 }
 
-class Video extends React.Component<VideoProps, VideoState> {
+class VideoComponent extends React.Component<VideoProps, VideoState> {
   static defaultProps = {
     size: {
       width: 500,
@@ -71,7 +71,9 @@ class Video extends React.Component<VideoProps, VideoState> {
     return (
       <VideoContainer>
         <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
-          <PlayButton><PlayButtonCaret /></PlayButton>
+          <PlayButton>
+            <PlayButtonCaret />
+          </PlayButton>
         </CoverImage>
         <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
         <Caption caption={caption} layout={this.props.layout}>
@@ -134,4 +136,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(Video)
+export const Video = sizeMe(sizeMeOptions)(VideoComponent)

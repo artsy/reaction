@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 import { Layout } from "../Typings"
 
 interface StyledTextProps {
@@ -24,7 +24,7 @@ function getBlockquoteSize(layout, size) {
   return font
 }
 
-const StyledText = div`
+export const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : null)};
   a {
@@ -178,4 +178,3 @@ const StyledText = div`
     }
   `}
 `
-export default StyledText

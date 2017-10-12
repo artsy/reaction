@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 import { Layout, SectionLayout } from "../Typings"
 
 interface CaptionProps {
@@ -15,7 +15,7 @@ interface FigcaptionProps {
   sectionLayout?: SectionLayout
 }
 
-const Caption: React.SFC<CaptionProps> = props => {
+export const Caption: React.SFC<CaptionProps> = props => {
   const { layout, caption, sectionLayout, children } = props
   const child = children ? children : <div dangerouslySetInnerHTML={{ __html: caption }} />
   return (
@@ -33,7 +33,7 @@ const CaptionContainer = styled.div`
   margin: 10px 0 10px 0;
   ${pMedia.xs`
     padding: 0px 10px;
-  `}
+  `};
 `
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 // includes draft placeholder class for editable text in Writer
@@ -56,5 +56,3 @@ const Figcaption = div`
     padding: 0px;
   `}
 `
-
-export default Caption

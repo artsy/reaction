@@ -13,7 +13,7 @@ interface ShareProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-class Share extends React.Component<ShareProps, null> {
+export class Share extends React.Component<ShareProps, null> {
   static defaultProps = {
     color: "black",
   }
@@ -82,4 +82,3 @@ const IconWrapper = styled.a`
     opacity: 0.6;
   }
 `
-export default Share

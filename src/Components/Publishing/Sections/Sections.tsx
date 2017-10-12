@@ -2,13 +2,13 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
-import Authors from "./Authors"
-import Embed from "./Embed"
-import ImageCollection from "./ImageCollection"
-import ImagesetPreview from "./ImagesetPreview"
-import SectionContainer from "./SectionContainer"
-import Text from "./Text"
-import Video from "./Video"
+import { Authors } from "./Authors"
+import { Embed } from "./Embed"
+import { ImageCollection } from "./ImageCollection"
+import { ImagesetPreview } from "./ImagesetPreview"
+import { SectionContainer } from "./SectionContainer"
+import { Text } from "./Text"
+import { Video } from "./Video"
 
 interface SectionsProps {
   article: {
@@ -22,7 +22,7 @@ interface StyledSectionsProps {
   layout: string
 }
 
-const Sections: React.SFC<SectionsProps> = props => {
+export const Sections: React.SFC<SectionsProps> = props => {
   return (
     <StyledSections layout={props.article.layout}>
       {renderSections(props.article)}
@@ -62,7 +62,11 @@ function getSection(section, layout) {
 
 function renderAuthors(authors) {
   if (authors) {
-    return <SectionContainer><Authors authors={authors} /></SectionContainer>
+    return (
+      <SectionContainer>
+        <Authors authors={authors} />
+      </SectionContainer>
+    )
   } else {
     return false
   }
@@ -103,5 +107,3 @@ const StyledSections = Div`
     max-width: ${props.layout === "standard" ? "780px" : "auto"};
   `}
 `
-
-export default Sections

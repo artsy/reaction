@@ -7,8 +7,8 @@ import { pMedia } from "../../Helpers"
 import { sizeMeRefreshRate } from "../Constants"
 import { SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
-import Image from "./Image"
-import ImageCollectionItem from "./ImageCollectionItem"
+import { Image } from "./Image"
+import { ImageCollectionItem } from "./ImageCollectionItem"
 
 interface ImageCollectionProps {
   images: any
@@ -20,7 +20,7 @@ interface ImageCollectionProps {
   }
 }
 
-const ImageCollection: React.SFC<ImageCollectionProps> = props => {
+const ImageCollectionComponent: React.SFC<ImageCollectionProps> = props => {
   const { images, targetHeight, gutter, sectionLayout, size } = props
   const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
   return (
@@ -30,7 +30,7 @@ const ImageCollection: React.SFC<ImageCollectionProps> = props => {
   )
 }
 
-ImageCollection.defaultProps = {
+ImageCollectionComponent.defaultProps = {
   size: {
     width: 680,
   },
@@ -79,4 +79,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(ImageCollection)
+export const ImageCollection = sizeMe(sizeMeOptions)(ImageCollectionComponent)

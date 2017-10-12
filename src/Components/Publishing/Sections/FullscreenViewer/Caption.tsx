@@ -3,7 +3,7 @@ import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
-import Fonts from "../../Fonts"
+import { Fonts } from "../../Fonts"
 import { ArtworkCaption } from "../ArtworkCaption"
 
 interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
@@ -13,18 +13,19 @@ interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
   open: boolean
 }
 
-const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
-  const caption = props.section.type === "artwork"
-    ? <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
-    : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
+export const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
+  const caption =
+    props.section.type === "artwork" ? (
+      <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
+    ) : (
+      <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
+    )
   const indexText = `${props.index} of ${props.total}`
   return (
     <CaptionContainer>
       <CaptionTextContainer>
         <CaptionToggle open={props.open} />
-        <Caption open={props.open}>
-          {caption}
-        </Caption>
+        <Caption open={props.open}>{caption}</Caption>
       </CaptionTextContainer>
       <Index>{indexText}</Index>
     </CaptionContainer>
@@ -54,7 +55,7 @@ const StyledCaptionToggle = styled.div`
     span {
       border-bottom: 1px solid black;
     }
-  `}
+  `};
 `
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
 const Caption = CaptionDiv`
@@ -71,10 +72,9 @@ const Caption = CaptionDiv`
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
-  ${Fonts.unica("s16")}
-  ${pMedia.sm`
+  ${Fonts.unica("s16")} ${pMedia.sm`
     ${Fonts.unica("s14")}
-  `}
+  `};
 `
 const CaptionContainer = styled.div`
   display: flex;
@@ -89,11 +89,9 @@ const CaptionContainer = styled.div`
     bottom: 0;
     width: calc(100% - 40px);
     padding: 20px;
-  `}
+  `};
 `
 const CaptionTextContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-export default FullscreenViewerCaption

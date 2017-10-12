@@ -3,8 +3,8 @@ import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
-import IconImageSet from "../Icon/ImageSet"
+import { Fonts } from "../Fonts"
+import { IconImageSet } from "../Icon/ImageSet"
 
 type Layout = "mini" | "full"
 
@@ -27,7 +27,7 @@ export interface Props {
 
 const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-class ImageSetPreview extends Component<Props, null> {
+export class ImageSetPreview extends Component<Props, null> {
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }
@@ -186,5 +186,3 @@ const SubTitleCount = styled.div`
     ${Fonts.unica("s12")}
   `};
 `
-
-export default ImageSetPreview

@@ -9,7 +9,7 @@ interface FillwidthItemProps extends React.HTMLProps<HTMLDivElement> {
 
 const div: StyledFunction<FillwidthItemProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-export default div`
+export const ImageCollectionItem = div`
   margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
   width: ${props => (props.width ? props.width + "px" : "100%")};
   ${pMedia.xs`
