@@ -6,15 +6,15 @@ import Events from "../../Utils/Events"
 import track from "../../Utils/track"
 import { EmailSignup } from "./EmailSignup"
 import { Header } from "./Header/Header"
-import FeatureLayout from "./Layouts/FeatureLayout"
-import Sidebar from "./Layouts/Sidebar"
-import StandardLayout from "./Layouts/StandardLayout"
-import ReadMore from "./ReadMore/ReadMoreButton"
-import ReadMoreWrapper from "./ReadMore/ReadMoreWrapper"
-import RelatedArticlesCanvas from "./RelatedArticles/RelatedArticlesCanvas"
+import { FeatureLayout } from "./Layouts/FeatureLayout"
+import { Sidebar } from "./Layouts/Sidebar"
+import { StandardLayout } from "./Layouts/StandardLayout"
+import { ReadMore } from "./ReadMore/ReadMoreButton"
+import { ReadMoreWrapper } from "./ReadMore/ReadMoreWrapper"
+import { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
-import FullscreenViewer from "./Sections/FullscreenViewer/FullscreenViewer"
-import Sections from "./Sections/Sections"
+import { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
+import { Sections } from "./Sections/Sections"
 import { ArticleData } from "./Typings"
 
 export interface ArticleProps {
@@ -113,12 +113,16 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   renderStandardArticle() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel
-      ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-      : false
-    const relatedArticleCanvas = relatedArticlesForCanvas
-      ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-      : false
+    const relatedArticlePanel = relatedArticlesForPanel ? (
+      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
+    ) : (
+      false
+    )
+    const relatedArticleCanvas = relatedArticlesForCanvas ? (
+      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+    ) : (
+      false
+    )
     const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
     return (
       <div>

@@ -1,8 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-
-import ImageSetPreview from "../Sections/ImagesetPreview"
-import ImageSetPreviewClassic from "../Sections/ImagesetPreviewClassic"
+import { ImageSetPreview } from "../Sections/ImagesetPreview"
+import { ImageSetPreviewClassic } from "../Sections/ImagesetPreviewClassic"
 
 import {
   Images,

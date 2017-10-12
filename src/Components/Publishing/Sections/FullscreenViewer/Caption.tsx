@@ -6,14 +6,14 @@ import { pMedia } from "../../../Helpers"
 import { Fonts } from "../../Fonts"
 import { ArtworkCaption } from "../ArtworkCaption"
 
-interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
+interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
   section?: any
   total: number
   index: number
   open: boolean
 }
 
-export const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
+export const Caption: React.SFC<CaptionProps> = props => {
   const caption =
     props.section.type === "artwork" ? (
       <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
@@ -25,7 +25,7 @@ export const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = 
     <CaptionContainer>
       <CaptionTextContainer>
         <CaptionToggle open={props.open} />
-        <Caption open={props.open}>{caption}</Caption>
+        <CaptionText open={props.open}>{caption}</CaptionText>
       </CaptionTextContainer>
       <Index>{indexText}</Index>
     </CaptionContainer>
@@ -58,7 +58,7 @@ const StyledCaptionToggle = styled.div`
   `};
 `
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
-const Caption = CaptionDiv`
+const CaptionText = CaptionDiv`
   ${Fonts.unica("s16", "medium")}
   a {
     color: black;

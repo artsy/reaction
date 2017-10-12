@@ -2,7 +2,7 @@ import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { articleHref } from "../Constants"
 import { Author, Date } from "./AuthorDate"
-import Share from "./Share"
+import { Share } from "./Share"
 
 interface BylineProps {
   article: any

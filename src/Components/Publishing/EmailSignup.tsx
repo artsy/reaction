@@ -5,7 +5,7 @@ import Colors from "../../Assets/Colors"
 import InvertedButton from "../Buttons/Inverted"
 import { borderedInput } from "../Mixins"
 import { emailRegex } from "./Constants"
-import Fonts from "./Fonts"
+import { Fonts } from "./Fonts"
 
 interface EmailSignupProps {
   signupUrl: string
@@ -39,13 +39,17 @@ export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupSt
   onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(emailRegex)) {
-      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
-        if (err) {
-          this.flashMessage("Error. Please try again", true, false)
-        } else {
-          this.flashMessage("Thank you!", false, true)
-        }
-      })
+      request
+        .post(this.props.signupUrl)
+        .send({ email: this.state.value })
+        .set("accept", "json")
+        .end((err, res) => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true, false)
+          } else {
+            this.flashMessage("Thank you!", false, true)
+          }
+        })
     } else {
       this.flashMessage("Invalid Email... Please try again", true, false)
     }
@@ -79,7 +83,9 @@ export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupSt
               isError={this.state.error}
               isReadOnly={this.state.message.length > 0}
             />
-            <StyledButton disabled={this.state.disabled} onClick={this.onClick}>Subscribe</StyledButton>
+            <StyledButton disabled={this.state.disabled} onClick={this.onClick}>
+              Subscribe
+            </StyledButton>
           </Form>
         </EmailSignupContainer>
       )
@@ -103,15 +109,14 @@ const EmailSignupContainer = styled.div`
   margin-bottom: 40px;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")}
+  ${Fonts.avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;

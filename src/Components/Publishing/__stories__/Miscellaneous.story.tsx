@@ -1,10 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-
 import { EmailSignup } from "../EmailSignup"
 import { Authors, Embeds } from "../Fixtures/Components"
-import AuthorInfo from "../Sections/Authors"
-import Embed from "../Sections/Embed"
+import { Authors as AuthorInfo } from "../Sections/Authors"
+import { Embed } from "../Sections/Embed"
 
 storiesOf("Publishing/Miscellaneous", module)
   .add("Embed", () => {

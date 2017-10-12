@@ -3,7 +3,7 @@ import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 import { Layout, SectionLayout } from "../Typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
@@ -42,7 +42,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (this.props.linked && artist.slug) {
       return (
         <span key={"artist-" + i} className="name">
-          <TextLink href={"/artist/" + artist.slug} color="#999">{artist.name}</TextLink>
+          <TextLink href={"/artist/" + artist.slug} color="#999">
+            {artist.name}
+          </TextLink>
         </span>
       )
     } else {
@@ -67,7 +69,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           </span>
         )
       } else {
-        return <span key={0} className="title">{artwork.title}</span>
+        return (
+          <span key={0} className="title">
+            {artwork.title}
+          </span>
+        )
       }
     }
   }
@@ -75,7 +81,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   renderDate() {
     const artwork = this.props.artwork
     if (artwork.date && artwork.date.length > 0) {
-      return <span key={1} className="date">{artwork.date}</span>
+      return (
+        <span key={1} className="date">
+          {artwork.date}
+        </span>
+      )
     }
   }
 
@@ -95,7 +105,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   renderComma(i) {
-    return <span key={"comma-" + i} className="comma">, </span>
+    return (
+      <span key={"comma-" + i} className="comma">
+        ,{" "}
+      </span>
+    )
   }
 
   renderTitleDatePartner() {
@@ -108,37 +122,25 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (isFullscreenCaption) {
       return (
         <StyledFullscreenCaption layout={layout}>
-          <Line className="artist-name">
-            {this.renderArtists()}
-          </Line>
-          <Line>
-            {this.renderTitleDatePartner()}
-          </Line>
+          <Line className="artist-name">{this.renderArtists()}</Line>
+          <Line>{this.renderTitleDatePartner()}</Line>
         </StyledFullscreenCaption>
       )
     } else if (layout === "classic") {
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
           <TruncatedLine>
-            <strong>
-              {this.renderArtists()}
-            </strong>
+            <strong>{this.renderArtists()}</strong>
           </TruncatedLine>
-          <TruncatedLine>
-            {this.renderTitleDate()}
-          </TruncatedLine>
-          <TruncatedLine>
-            {this.renderPartner()}
-          </TruncatedLine>
+          <TruncatedLine>{this.renderTitleDate()}</TruncatedLine>
+          <TruncatedLine>{this.renderPartner()}</TruncatedLine>
         </StyledClassicCaption>
       )
     } else {
       return (
         <StyledArtworkCaption layout={layout} sectionLayout={sectionLayout} className="display-artwork__caption">
           <TruncatedLine>
-            <span className="artist-name">
-              {this.renderArtists()}
-            </span>
+            <span className="artist-name">{this.renderArtists()}</span>
             {this.renderTitleDatePartner()}
           </TruncatedLine>
         </StyledArtworkCaption>
@@ -202,8 +204,7 @@ const Line = styled.div`
     &.artist-name {
       margin-bottom: 5px;
     }
-  `}
-  ${TextLink} {
+  `} ${TextLink} {
     color: black;
   }
 `

@@ -7,7 +7,7 @@ import { crop } from "../../../../Utils/resizer"
 import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
-import Fonts from "../../Fonts"
+import { Fonts } from "../../Fonts"
 import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {

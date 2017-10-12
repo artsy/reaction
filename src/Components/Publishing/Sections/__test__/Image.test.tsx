@@ -1,10 +1,8 @@
+import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-
-import "jest-styled-components"
-
 import { Images } from "../../Fixtures/Components"
-import Image from "../Image"
+import { Image } from "../Image"
 
 it("renders properly", () => {
   const image = renderer.create(<Image image={Images[1]} />).toJSON()
@@ -20,7 +18,9 @@ it("renders a react child as caption properly", () => {
   const image = renderer
     .create(
       <Image image={Images[2]}>
-        <div><p>A React child as caption.</p></div>
+        <div>
+          <p>A React child as caption.</p>
+        </div>
       </Image>
     )
     .toJSON()

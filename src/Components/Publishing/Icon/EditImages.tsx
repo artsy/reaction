@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export class EditImages extends Component<any, null> {
+export class IconEditImages extends Component<any, null> {
   render() {
     return (
       <svg

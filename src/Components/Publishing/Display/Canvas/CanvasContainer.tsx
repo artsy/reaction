@@ -4,9 +4,9 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
 import { sizeMeRefreshRate } from "../../Constants"
-import CanvasSlideshow from "./CanvasSlideshow"
-import CanvasText from "./CanvasText"
-import CanvasVideo from "./CanvasVideo"
+import { CanvasSlideshow } from "./CanvasSlideshow"
+import { CanvasText } from "./CanvasText"
+import { CanvasVideo } from "./CanvasVideo"
 
 interface CanvasContainerProps {
   campaign: any

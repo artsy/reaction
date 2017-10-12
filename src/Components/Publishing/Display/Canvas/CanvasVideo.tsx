@@ -9,7 +9,7 @@ interface VideoProps {
 }
 
 @track()
-export class DisplayCanvasVideo extends React.Component<VideoProps, any> {
+export class CanvasVideo extends React.Component<VideoProps, any> {
   private video: HTMLVideoElement
 
   constructor(props) {

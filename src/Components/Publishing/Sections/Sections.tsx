@@ -5,7 +5,7 @@ import { Layout } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
-import { ImagesetPreview } from "./ImagesetPreview"
+import { ImageSetPreview } from "./ImageSetPreview"
 import { SectionContainer } from "./SectionContainer"
 import { Text } from "./Text"
 import { Video } from "./Video"
@@ -51,7 +51,7 @@ function getSection(section, layout) {
     image_collection: (
       <ImageCollection sectionLayout={section.layout} images={section.images} targetHeight={500} gutter={10} />
     ),
-    image_set: <ImagesetPreview section={section} />,
+    image_set: <ImageSetPreview section={section} />,
     video: <Video section={section} />,
     embed: <Embed section={section} />,
     text: <Text html={section.body} layout={layout} />,

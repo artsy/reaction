@@ -2,7 +2,7 @@ import moment from "moment-timezone"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface AuthorDateProps {
   authors?: any
@@ -11,11 +11,19 @@ interface AuthorDateProps {
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {
-  return <StyledAuthor className="author" layout={props.layout}>By {getAuthorByline(props.authors)}</StyledAuthor>
+  return (
+    <StyledAuthor className="author" layout={props.layout}>
+      By {getAuthorByline(props.authors)}
+    </StyledAuthor>
+  )
 }
 
 export const Date: React.SFC<AuthorDateProps> = props => {
-  return <Text className="date" layout={props.layout}>{getDate(props.date, props.layout)}</Text>
+  return (
+    <Text className="date" layout={props.layout}>
+      {getDate(props.date, props.layout)}
+    </Text>
+  )
 }
 
 const getAuthorByline = authors => {
@@ -44,8 +52,12 @@ const getAuthorByline = authors => {
 
 const getDate = (date, layout) => {
   return layout === "condensed"
-    ? moment(date).tz("America/New_York").format("MMM D, YYYY")
-    : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+    ? moment(date)
+        .tz("America/New_York")
+        .format("MMM D, YYYY")
+    : moment(date)
+        .tz("America/New_York")
+        .format("MMM D, YYYY h:mm a")
 }
 
 const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> = styled.div
@@ -82,11 +94,10 @@ const StyledAuthor = Text.extend`
     margin: 6px 10px 1px 0;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
-  ${props => adjustForCondensed(props.layout)}
-  ${pMedia.sm`
+  ${props => adjustForCondensed(props.layout)} ${pMedia.sm`
     &:before {
       min-width: 8px;
       min-height: 8px;
     }
-  `}
+  `};
 `

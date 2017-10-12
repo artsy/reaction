@@ -1,8 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-
 import { SectionText } from "../Fixtures/Components"
-import Text from "../Sections/Text"
+import { Text } from "../Sections/Text"
 
 storiesOf("Publishing/Text", module)
   .add("Classic", () => {

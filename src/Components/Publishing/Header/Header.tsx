@@ -1,7 +1,7 @@
 import * as React from "react"
-import ClassicHeader from "./ClassicHeader"
-import FeatureHeader from "./FeatureHeader"
-import StandardHeader from "./StandardHeader"
+import { ClassicHeader } from "./ClassicHeader"
+import { FeatureHeader } from "./FeatureHeader"
+import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
   article: any
@@ -27,9 +27,11 @@ const getVertical = (article, children) => {
 }
 
 const getLeadParagraph = (article, children) => {
-  const leadParagraph = article.lead_paragraph
-    ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-    : false
+  const leadParagraph = article.lead_paragraph ? (
+    <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+  ) : (
+    false
+  )
   return children ? children[1] : leadParagraph
 }
 
