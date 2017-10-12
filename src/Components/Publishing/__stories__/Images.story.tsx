@@ -1,11 +1,57 @@
 import { storiesOf } from "@storybook/react"
+import * as PropTypes from "prop-types"
 import * as React from "react"
-
 import { Artwork } from "../Sections/Artwork"
+import FullscreenViewer from "../Sections/FullscreenViewer/FullscreenViewer"
 import Image from "../Sections/Image"
 import ImageCollection from "../Sections/ImageCollection"
 
 import { Artworks, Images, ImagesNarrow } from "../Fixtures/Components"
+
+class ImageCollectionDemo extends React.Component<any, any> {
+  static childContextTypes = {
+    onViewFullscreen: PropTypes.func,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { viewerIsOpen: false, slideIndex: 0 }
+  }
+
+  getChildContext() {
+    return { onViewFullscreen: this.openViewer }
+  }
+
+  openViewer = index => {
+    this.setState({
+      viewerIsOpen: true,
+      slideIndex: index,
+    })
+  }
+
+  closeViewer = () => {
+    this.setState({ viewerIsOpen: false })
+  }
+
+  render() {
+    return (
+      <div>
+        <div style={{ width: "100%" }}>
+          <ImageCollection images={Images} targetHeight={400} gutter={10} />
+        </div>
+        <div style={{ width: 780 }}>
+          <ImageCollection images={ImagesNarrow} targetHeight={400} gutter={10} />
+        </div>
+        <FullscreenViewer
+          onClose={this.closeViewer}
+          show={this.state.viewerIsOpen}
+          slideIndex={this.state.slideIndex}
+          images={Images}
+        />
+      </div>
+    )
+  }
+}
 
 storiesOf("Publishing/Images", module)
   .add("Artwork", () => {
@@ -76,14 +122,5 @@ storiesOf("Publishing/Images", module)
     )
   })
   .add("Image Collection", () => {
-    return (
-      <div>
-        <div style={{ width: "100%" }}>
-          <ImageCollection images={Images} targetHeight={400} gutter={10} />
-        </div>
-        <div style={{ width: 780 }}>
-          <ImageCollection images={ImagesNarrow} targetHeight={400} gutter={10} />
-        </div>
-      </div>
-    )
+    return <ImageCollectionDemo />
   })

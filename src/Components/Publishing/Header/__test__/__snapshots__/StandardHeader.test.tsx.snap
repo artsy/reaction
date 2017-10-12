@@ -210,7 +210,7 @@ exports[`Standard Header renders standard header properly 1`] = `
     >
       <a
         className="c7"
-        href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district"
         onClick={[Function]}
         target="_blank"
       >
@@ -236,7 +236,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -262,7 +262,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: http://www.artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg
@@ -502,7 +502,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
     >
       <a
         className="c7"
-        href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district"
         onClick={[Function]}
         target="_blank"
       >
@@ -528,7 +528,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -554,7 +554,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: http://www.artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg

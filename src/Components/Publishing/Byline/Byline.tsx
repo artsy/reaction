@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { articleHref } from "../Constants"
 import { Author, Date } from "./AuthorDate"
 import Share from "./Share"
 
@@ -19,7 +20,7 @@ const Byline: React.SFC<BylineProps> = props => {
   const share = layout === "condensed"
     ? false
     : <Share
-      url={`http://www.artsy.net/article/${article.slug}`}
+      url={articleHref(article.slug)}
       title={article.social_title || article.thumbnail_title}
       color={layout === "fullscreen" ? "white" : "black"}
     />
