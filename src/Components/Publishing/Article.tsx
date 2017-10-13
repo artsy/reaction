@@ -120,21 +120,32 @@ class Article extends React.Component<ArticleProps, ArticleState> {
   renderStandardArticle() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel
-      ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-      : false
-    const relatedArticleCanvas = relatedArticlesForCanvas
-      ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-      : false
+    const relatedArticlePanel = relatedArticlesForPanel ? (
+      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
+    ) : (
+      false
+    )
+    const relatedArticleCanvas = relatedArticlesForCanvas ? (
+      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+    ) : (
+      false
+    )
     const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
     const campaign = omit(this.props.display, "panel", "canvas")
     const readMoreTruncation = this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false
-    const displayCanvas = this.props.display
-      ? <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
-      : false
-    const displayPanel = this.props.display
-      ? <DisplayPanel unit={this.props.display.panel} campaign={campaign} />
-      : false
+    const displayCanvas = this.props.display ? (
+      <div>
+        <DisplayCanvasBreak />
+        <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+      </div>
+    ) : (
+      false
+    )
+    const displayPanel = this.props.display ? (
+      <DisplayPanel unit={this.props.display.panel} campaign={campaign} />
+    ) : (
+      false
+    )
     return (
       <div>
         <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
@@ -176,6 +187,12 @@ const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDiv
 
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => (props.marginTop ? props.marginTop + "px" : "50px")};
+`
+
+const DisplayCanvasBreak = styled.hr`
+  border: 0;
+  margin: 0;
+  border-top: 1px solid #eee;
 `
 
 export default Article

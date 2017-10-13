@@ -19,12 +19,12 @@ const story = storiesOf("Publishing/Articles", module).add("Standard", () => {
     />
   )
 })
-;["overlay", "image", "video", "slideshow"].forEach(type => {
-  story.add(`Standard with ${type} ad`, () => {
+;["overlay", "image", "video", "slideshow"].forEach(mediaType => {
+  story.add(`Standard with ${mediaType} ad`, () => {
     return (
       <Article
         article={StandardArticle}
-        display={Display(type)}
+        display={Display(mediaType)}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"

@@ -171,10 +171,10 @@ export const UnitPanel = {
   },
 }
 
-export const Display = type => ({
+export const Display = mediaType => ({
   ...Campaign,
   canvas: (() => {
-    switch (type) {
+    switch (mediaType) {
       case "overlay":
         return UnitCanvasOverlay
       case "image":
