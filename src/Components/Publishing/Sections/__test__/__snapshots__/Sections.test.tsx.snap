@@ -43,7 +43,7 @@ exports[`renders properly 1`] = `
 }
 
 .c17 .artist-name {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .c11 {
@@ -394,6 +394,10 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
+.c2 h2 a {
+  background-size: 1.25px 6px;
+}
+
 .c2 h3 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -431,7 +435,7 @@ exports[`renders properly 1`] = `
 .c2 .content-start {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 65px;
+  font-size: 67px;
   line-height: 1em;
   float: left;
   line-height: .5em;

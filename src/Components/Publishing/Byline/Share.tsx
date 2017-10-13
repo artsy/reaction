@@ -70,7 +70,7 @@ class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   display: flex;
-  margin-top: 5px;
+  margin: 5px 0 4px;
 `
 const IconWrapper = styled.a`
   display: flex;

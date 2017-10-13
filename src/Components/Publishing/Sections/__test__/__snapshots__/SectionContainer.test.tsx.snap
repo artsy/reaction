@@ -101,6 +101,10 @@ exports[`renders column_width properly 1`] = `
   margin: 0;
 }
 
+.c1 h2 a {
+  background-size: 1.25px 6px;
+}
+
 .c1 h3 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -138,7 +142,7 @@ exports[`renders column_width properly 1`] = `
 .c1 .content-start {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 65px;
+  font-size: 67px;
   line-height: 1em;
   float: left;
   line-height: .5em;
@@ -385,6 +389,10 @@ exports[`renders fillwidth properly 1`] = `
   margin: 0;
 }
 
+.c1 h2 a {
+  background-size: 1.25px 6px;
+}
+
 .c1 h3 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -422,7 +430,7 @@ exports[`renders fillwidth properly 1`] = `
 .c1 .content-start {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 65px;
+  font-size: 67px;
   line-height: 1em;
   float: left;
   line-height: .5em;
@@ -669,6 +677,10 @@ exports[`renders overflow_fillwidth properly 1`] = `
   margin: 0;
 }
 
+.c1 h2 a {
+  background-size: 1.25px 6px;
+}
+
 .c1 h3 {
   font-family: Unica77LLWebRegular ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
@@ -706,7 +718,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 .content-start {
   font-family: Unica77LLWebMedium ,      'Arial',      'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 65px;
+  font-size: 67px;
   line-height: 1em;
   float: left;
   line-height: .5em;

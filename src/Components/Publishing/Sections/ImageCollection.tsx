@@ -6,7 +6,7 @@ import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { sizeMeRefreshRate } from "../Constants"
 import { SectionLayout } from "../Typings"
-import Artwork from "./Artwork"
+import { Artwork } from "./Artwork"
 import Image from "./Image"
 import ImageCollectionItem from "./ImageCollectionItem"
 

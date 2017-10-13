@@ -38,7 +38,7 @@ exports[`renders a single image properly 1`] = `
 }
 
 .c9 .artist-name {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .c7 {
@@ -296,7 +296,7 @@ exports[`renders properly 1`] = `
 }
 
 .c9 .artist-name {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .c7 {

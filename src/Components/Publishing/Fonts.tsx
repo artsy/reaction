@@ -85,6 +85,10 @@ const textSizesForUnica = {
     size: "65px",
     height: "1em",
   },
+  s67: {
+    size: "67px",
+    height: "1em",
+  },
   s80: {
     size: "80px",
     height: "1.1em",

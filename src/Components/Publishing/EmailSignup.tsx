@@ -24,7 +24,7 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
+export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -103,7 +103,7 @@ const EmailSignupContainer = styled.div`
   margin-bottom: 40px;
 `
 const Title = styled.div`
-  ${Fonts.unica("s19", "medium")}
+  ${Fonts.unica("s16", "medium")}
   margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
@@ -116,5 +116,3 @@ const StyledButton = InvertedButton.extend`
 const Form = styled.div`
   display: flex;
 `
-
-export default EmailSignup

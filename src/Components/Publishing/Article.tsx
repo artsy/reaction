@@ -6,15 +6,15 @@ import Events from "../../Utils/Events"
 import track from "../../Utils/track"
 import DisplayCanvas from "./Display/Canvas"
 import DisplayPanel from "./Display/DisplayPanel"
-import EmailSignup from "./EmailSignup"
-import Header from "./Header/Header"
+import { EmailSignup } from "./EmailSignup"
+import { Header } from "./Header/Header"
 import FeatureLayout from "./Layouts/FeatureLayout"
 import Sidebar from "./Layouts/Sidebar"
 import StandardLayout from "./Layouts/StandardLayout"
 import ReadMore from "./ReadMore/ReadMoreButton"
 import ReadMoreWrapper from "./ReadMore/ReadMoreWrapper"
 import RelatedArticlesCanvas from "./RelatedArticles/RelatedArticlesCanvas"
-import RelatedArticlesPanel from "./RelatedArticles/RelatedArticlesPanel"
+import { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
 import FullscreenViewer from "./Sections/FullscreenViewer/FullscreenViewer"
 import Sections from "./Sections/Sections"
 import { ArticleData } from "./Typings"
@@ -47,7 +47,7 @@ interface ArticleContainerProps {
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
-class Article extends React.Component<ArticleProps, ArticleState> {
+export class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
   }
@@ -194,5 +194,3 @@ const DisplayCanvasBreak = styled.hr`
   margin: 0;
   border-top: 1px solid #eee;
 `
-
-export default Article

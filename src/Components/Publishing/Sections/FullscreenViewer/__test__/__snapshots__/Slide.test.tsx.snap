@@ -29,7 +29,7 @@ exports[`renders properly 1`] = `
 }
 
 .c8.artist-name {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .c8 .c9 {

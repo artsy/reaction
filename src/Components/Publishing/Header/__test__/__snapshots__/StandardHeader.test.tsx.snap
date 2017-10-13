@@ -31,7 +31,7 @@ exports[`Standard Header renders standard header properly 1`] = `
   min-width: 10px;
   min-height: 10px;
   border-radius: 50%;
-  margin: 6px 10px 0 0;
+  margin: 6px 10px 1px 0;
   background-color: #000;
 }
 
@@ -40,7 +40,7 @@ exports[`Standard Header renders standard header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5px;
+  margin: 5px 0 4px;
 }
 
 .c7 {
@@ -77,10 +77,10 @@ exports[`Standard Header renders standard header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c0 {
@@ -210,7 +210,7 @@ exports[`Standard Header renders standard header properly 1`] = `
     >
       <a
         className="c7"
-        href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district"
         onClick={[Function]}
         target="_blank"
       >
@@ -236,7 +236,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -262,7 +262,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: http://www.artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg
@@ -321,7 +321,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   min-width: 10px;
   min-height: 10px;
   border-radius: 50%;
-  margin: 6px 10px 0 0;
+  margin: 6px 10px 1px 0;
   background-color: #000;
 }
 
@@ -330,7 +330,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5px;
+  margin: 5px 0 4px;
 }
 
 .c7 {
@@ -367,10 +367,10 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c0 {
@@ -502,7 +502,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
     >
       <a
         className="c7"
-        href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district"
         onClick={[Function]}
         target="_blank"
       >
@@ -528,7 +528,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=http%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -554,7 +554,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: http://www.artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg

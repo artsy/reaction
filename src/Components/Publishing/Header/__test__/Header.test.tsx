@@ -8,7 +8,7 @@ import {
   MissingVerticalStandardArticle,
   StandardArticle,
 } from "../../Fixtures/Articles"
-import Header from "../Header"
+import { Header } from "../Header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

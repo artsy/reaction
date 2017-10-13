@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Layout, SectionLayout } from "../Typings"
-import ArtworkCaption from "./ArtworkCaption"
+import { ArtworkCaption } from "./ArtworkCaption"
 import ImageWrapper from "./ImageWrapper"
 
 interface ArtworkProps {
@@ -40,7 +40,7 @@ ArtworkImage.defaultProps = {
   height: "auto",
 }
 
-const Artwork: React.SFC<ArtworkProps> = props => {
+export const Artwork: React.SFC<ArtworkProps> = props => {
   return (
     <div className="display-artwork">
       <ArtworkImage {...props} />
@@ -56,5 +56,3 @@ Artwork.defaultProps = {
 const ArtworkImageLink = styled.a`
   text-decoration: none;
 `
-
-export default Artwork

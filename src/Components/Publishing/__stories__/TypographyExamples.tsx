@@ -56,6 +56,9 @@ function Typography() {
       <UnicaS80>
         Unica s80: 80px / 1.1em
       </UnicaS80>
+      <UnicaS67>
+        Unica s67: 67px / 1em
+      </UnicaS67>
       <UnicaS65>
         Unica s65: 65px / 1em
       </UnicaS65>
@@ -176,6 +179,10 @@ const UnicaS45 = styled.div`
 `
 const UnicaS65 = styled.div`
   ${Fonts.unica("s65")}
+  margin-bottom: 20px;
+`
+const UnicaS67 = styled.div`
+  ${Fonts.unica("s67")}
   margin-bottom: 20px;
 `
 const UnicaS80 = styled.div`

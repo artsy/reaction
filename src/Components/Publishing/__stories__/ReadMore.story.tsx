@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import Article from "../Article"
+import { Article } from "../Article"
 import { ImageHeavyStandardArticle, ShortStandardArticle, StandardArticle } from "../Fixtures/Articles"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
