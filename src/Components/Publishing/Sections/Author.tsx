@@ -54,17 +54,20 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${Fonts.garamond("s23")} ${pMedia.xs`
-    ${Fonts.garamond("s17")}
-  `} a {
+  ${Fonts.garamond("s23")}
+  a {
     color: black;
   }
+  ${pMedia.xs`
+    ${Fonts.garamond("s17")}
+  `}
 `
 const Twitter = styled.span`
   margin-left: 20px;
 `
 const TwitterHandle = styled.a`
-  ${Fonts.unica("s14", "medium")} color: black;
+  ${Fonts.unica("s14", "medium")}
+  color: black;
   text-decoration: none;
   white-space: nowrap;
   ${Icon} {
@@ -73,5 +76,5 @@ const TwitterHandle = styled.a`
   }
   ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
-  `};
+  `}
 `

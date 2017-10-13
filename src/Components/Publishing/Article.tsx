@@ -113,16 +113,12 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   renderStandardArticle() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel ? (
-      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-    ) : (
-      false
-    )
-    const relatedArticleCanvas = relatedArticlesForCanvas ? (
-      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-    ) : (
-      false
-    )
+    const relatedArticlePanel = relatedArticlesForPanel
+      ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
+      : false
+    const relatedArticleCanvas = relatedArticlesForCanvas
+      ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+      : false
     const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
     return (
       <div>

@@ -204,7 +204,8 @@ const Line = styled.div`
     &.artist-name {
       margin-bottom: 5px;
     }
-  `} ${TextLink} {
+  `}
+  ${TextLink} {
     color: black;
   }
 `

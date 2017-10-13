@@ -52,12 +52,8 @@ const getAuthorByline = authors => {
 
 const getDate = (date, layout) => {
   return layout === "condensed"
-    ? moment(date)
-        .tz("America/New_York")
-        .format("MMM D, YYYY")
-    : moment(date)
-        .tz("America/New_York")
-        .format("MMM D, YYYY h:mm a")
+    ? moment(date).tz("America/New_York").format("MMM D, YYYY")
+    : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 }
 
 const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> = styled.div
@@ -99,5 +95,5 @@ const StyledAuthor = Text.extend`
       min-width: 8px;
       min-height: 8px;
     }
-  `};
+  `}
 `

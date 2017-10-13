@@ -135,7 +135,8 @@ const Overlay = Div.extend`
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")}
+  margin-bottom: 10px;
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
   `}
@@ -187,17 +188,19 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${Fonts.unica("s19", "medium")} display: flex;
+  ${Fonts.unica("s19", "medium")}
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
   ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
-  `};
+  `}
 `
 const Title = styled.div`
-  ${Fonts.unica("s100")} margin-bottom: 75px;
+  ${Fonts.unica("s100")}
+  margin-bottom: 75px;
   letter-spaceing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
@@ -205,7 +208,7 @@ const Title = styled.div`
     ${Fonts.unica("s65")}
   `} ${pMedia.xs`
     ${Fonts.unica("s45")}
-  `};
+  `}
 `
 const Deck = styled.div`
   max-width: 460px;
@@ -214,7 +217,7 @@ const Deck = styled.div`
   ${pMedia.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
-  `};
+  `}
 `
 const FeatureHeaderContainer = Div.extend`
   width: 100%;

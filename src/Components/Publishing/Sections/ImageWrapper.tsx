@@ -46,7 +46,7 @@ const StyledImageWrapper = styled.div`
     ${Fullscreen} {
       opacity: 1;
     }
-  `};
+  `}
 `
 
 const BlockImage = styled.img`

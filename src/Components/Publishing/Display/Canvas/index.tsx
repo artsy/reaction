@@ -46,7 +46,8 @@ const DisplayContainer = Div`
   `}
 `
 const AdvertisementBy = styled.div`
-  ${Fonts.avantgarde("s11")} color: ${Colors.grayMedium};
+  ${Fonts.avantgarde("s11")}
+  color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
 `

@@ -21,13 +21,15 @@ const ReadMoreButton = styled.div`
   background-color: black;
   border: 1px solid black;
   border-radius: 2px;
-  ${Fonts.unica("s14", "medium")} ${pMedia.md`
-    width: 100%;
-  `} &:hover {
+  ${Fonts.unica("s14", "medium")}
+  &:hover {
     cursor: pointer;
     background-color: white;
     color: black;
   }
+  ${pMedia.md`
+    width: 100%;
+  `}
 `
 const ReadMoreContainer = styled.div`
   display: flex;
@@ -39,5 +41,5 @@ const ReadMoreContainer = styled.div`
   margin: auto;
   ${pMedia.xl`
     padding: 20px;
-  `};
+  `}
 `

@@ -29,9 +29,9 @@ const ClassicHeaderContainer = styled.div`
   margin: 40px auto;
   box-sizing: border-box;
   text-align: center;
-  p,
-  > p {
-    ${Fonts.garamond("s19")} line-height: 1.35em;
+  p, > p {
+    ${Fonts.garamond("s19")}
+    line-height: 1.35em;
     text-align: left;
     max-width: 580px;
     width: 100%;
@@ -46,11 +46,11 @@ const ClassicHeaderContainer = styled.div`
       ${Fonts.garamond("s17")}
       line-height: 1.35em;
     }
-  `};
+  `}
 `
 const Title = styled.div`
   ${Fonts.garamond("s37")} margin-bottom: 30px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
-  `};
+  `}
 `

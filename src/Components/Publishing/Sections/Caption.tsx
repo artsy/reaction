@@ -33,7 +33,7 @@ const CaptionContainer = styled.div`
   margin: 10px 0 10px 0;
   ${pMedia.xs`
     padding: 0px 10px;
-  `};
+  `}
 `
 const div: StyledFunction<FigcaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 // includes draft placeholder class for editable text in Writer

@@ -74,7 +74,7 @@ const VideoContainer = styled.div`
     video {
       height: auto;
     }
-  `};
+  `}
 `
 
 const Cover = styled.div`

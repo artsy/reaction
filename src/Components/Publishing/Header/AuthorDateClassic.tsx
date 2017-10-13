@@ -44,10 +44,7 @@ const getAuthorByline = (authors, author) => {
   }
 }
 
-const getDate = date =>
-  moment(date)
-    .tz("America/New_York")
-    .format("MMM D, YYYY h:mm a")
+const getDate = date => moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 
 export const AuthorDateClassic: React.SFC<AuthorDateClassicProps> = props => {
   const { authors, author, date } = props
@@ -67,5 +64,5 @@ const TextSm = div`
 `
 const AuthorDateClassicContainer = styled.div`
   display: block;
-  ${Fonts.avantgarde("s13")};
+  ${Fonts.avantgarde("s13")}
 `

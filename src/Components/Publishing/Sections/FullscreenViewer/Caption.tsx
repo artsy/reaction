@@ -14,12 +14,9 @@ interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const Caption: React.SFC<CaptionProps> = props => {
-  const caption =
-    props.section.type === "artwork" ? (
-      <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
-    ) : (
-      <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
-    )
+  const caption = props.section.type === "artwork"
+    ? <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
+    : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
   const indexText = `${props.index} of ${props.total}`
   return (
     <CaptionContainer>
@@ -55,7 +52,7 @@ const StyledCaptionToggle = styled.div`
     span {
       border-bottom: 1px solid black;
     }
-  `};
+  `}
 `
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
 const CaptionText = CaptionDiv`
@@ -74,7 +71,7 @@ const Index = styled.div`
   white-space: nowrap;
   ${Fonts.unica("s16")} ${pMedia.sm`
     ${Fonts.unica("s14")}
-  `};
+  `}
 `
 const CaptionContainer = styled.div`
   display: flex;
@@ -89,7 +86,7 @@ const CaptionContainer = styled.div`
     bottom: 0;
     width: calc(100% - 40px);
     padding: 20px;
-  `};
+  `}
 `
 const CaptionTextContainer = styled.div`
   display: flex;

@@ -13,5 +13,5 @@ const SidebarContainer = styled.div`
   min-width: 300px;
   ${pMedia.md`
     display: none;
-  `};
+  `}
 `

@@ -48,15 +48,16 @@ const RelatedArticlesContainer = styled.div`
   margin: 30px auto 60px auto;
   ${pMedia.xl`
     margin: 30px 20px 60px 20px;
-  `};
+  `}
 `
 const Title = styled.div`
-  ${Fonts.unica("s32")} margin-bottom: 30px;
+  ${Fonts.unica("s32")}
+  margin-bottom: 30px;
 `
 const VerticalSpan = styled.span`
   ${pMedia.sm`
     display: block;
-  `};
+  `}
 `
 const ArticlesWrapper = styled.div`
   display: flex;

@@ -92,7 +92,7 @@ const Image = styled.img`
     height: auto;
     max-height: initial;
     object-fit: contain;
-  `};
+  `}
 `
 const CanvasLink = responsiveLink`
   width: 100%;
@@ -125,7 +125,7 @@ const StandardContainer = styled.div`
     max-width: 100%;
     width: 100%;
     height: auto;
-  `};
+  `}
 `
 const Background = Div`
   background: black;

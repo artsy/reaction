@@ -222,7 +222,7 @@ const Disclaimer = styled.div`
   ${pMedia.md`
     margin: 0;
     max-width: calc(100% - 40px);
-  `};
+  `}
 `
 const Image = responsiveImage`
   height: auto;
@@ -235,6 +235,7 @@ const Image = responsiveImage`
   `}
 `
 const Caption = styled.div`
-  ${Fonts.garamond("s11")} color: ${Colors.grayMedium};
+  ${Fonts.garamond("s11")}
+  color: ${Colors.grayMedium};
   margin-top: 10px;
 `

@@ -7,5 +7,5 @@ export const StandardLayout = styled.div`
   margin: auto auto 100px auto;
   ${pMedia.md`
     padding: 0px;
-  `};
+  `}
 `
