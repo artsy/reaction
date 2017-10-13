@@ -1,34 +1,34 @@
-import { Article } from "./Article"
-import * as Constants from "./Constants"
-import { Header } from "./Header/Header"
-import { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
-import { Artwork } from "./Sections/Artwork"
-import { Authors } from "./Sections/Authors"
-import { Caption } from "./Sections/Caption"
-import { Embed } from "./Sections/Embed"
-import { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
-import { Image } from "./Sections/Image"
-import { ImageCollection } from "./Sections/ImageCollection"
-import { ImageSetPreview } from "./Sections/ImageSetPreview"
-import { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
-import { Text } from "./Sections/Text"
-import { Video } from "./Sections/Video"
+// Components
+export { Article } from "./Article"
+export { Header } from "./Header/Header"
+export { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
+export { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
+export { Artwork } from "./Sections/Artwork"
+export { Authors } from "./Sections/Authors"
+export { Caption } from "./Sections/Caption"
+export { Embed } from "./Sections/Embed"
+export { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
+export { Image } from "./Sections/Image"
+export { ImageCollection } from "./Sections/ImageCollection"
+export { ImageSetPreview } from "./Sections/ImageSetPreview"
+export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
+export { Text } from "./Sections/Text"
+export { Video } from "./Sections/Video"
 
 // Icon SVGs
-import { IconEditEmbed } from "./Icon/IconEditEmbed"
-import { IconEditImages } from "./Icon/IconEditImages"
-import { IconEditSection } from "./Icon/IconEditSection"
-import { IconEditText } from "./Icon/IconEditText"
-import { IconEditVideo } from "./Icon/IconEditVideo"
-import { IconHeroImage } from "./Icon/IconHeroImage"
-import { IconHeroVideo } from "./Icon/IconHeroVideo"
-import { IconImageFullscreen } from "./Icon/IconImageFullscreen"
-import { IconImageSet } from "./Icon/IconImageSet"
-import { IconLayoutFullscreen } from "./Icon/IconLayoutFullscreen"
-import { IconLayoutSplit } from "./Icon/IconLayoutSplit"
-import { IconLayoutText } from "./Icon/IconLayoutText"
-import { IconRemove } from "./Icon/IconRemove"
+export { IconEditEmbed } from "./Icon/IconEditEmbed"
+export { IconEditImages } from "./Icon/IconEditImages"
+export { IconEditSection } from "./Icon/IconEditSection"
+export { IconEditText } from "./Icon/IconEditText"
+export { IconEditVideo } from "./Icon/IconEditVideo"
+export { IconHeroImage } from "./Icon/IconHeroImage"
+export { IconHeroVideo } from "./Icon/IconHeroVideo"
+export { IconImageFullscreen } from "./Icon/IconImageFullscreen"
+export { IconImageSet } from "./Icon/IconImageSet"
+export { IconLayoutFullscreen } from "./Icon/IconLayoutFullscreen"
+export { IconLayoutSplit } from "./Icon/IconLayoutSplit"
+export { IconLayoutText } from "./Icon/IconLayoutText"
+export { IconRemove } from "./Icon/IconRemove"
 
 // Test Fixtures
 import {
@@ -39,43 +39,14 @@ import {
   StandardArticle,
 } from "./Fixtures/Articles"
 
-export const components = {
-  Article,
-  Artwork,
-  Authors,
-  Constants,
-  Embed,
-  Caption,
-  FullscreenViewer,
-  Header,
-  Image,
-  ImageCollection,
-  ImageSetPreview,
-  ImageSetPreviewClassic,
-  RelatedArticlesCanvas,
-  RelatedArticlesPanel,
-  Text,
-  Video,
-  Icon: {
-    IconEditEmbed,
-    IconEditImages,
-    IconEditSection,
-    IconEditText,
-    IconEditVideo,
-    IconHeroImage,
-    IconHeroVideo,
-    IconImageFullscreen,
-    IconImageSet,
-    IconLayoutFullscreen,
-    IconLayoutSplit,
-    IconLayoutText,
-    IconRemove,
-  },
-  Fixtures: {
-    ClassicArticle,
-    FeatureArticle,
-    ImageHeavyStandardArticle,
-    ShortStandardArticle,
-    StandardArticle,
-  },
+export const Fixtures = {
+  ClassicArticle,
+  FeatureArticle,
+  ImageHeavyStandardArticle,
+  ShortStandardArticle,
+  StandardArticle,
 }
+
+// Constants
+import * as AllConstants from "./Constants"
+export const Constants = AllConstants
