@@ -40,7 +40,8 @@ const ClassicHeaderContainer = styled.div`
   }
   ${pMedia.xl`
     padding: 0 20px;
-  `} ${pMedia.xs`
+  `}
+  ${pMedia.xs`
     text-align: left;
     p, > p {
       ${Fonts.garamond("s17")}
@@ -49,7 +50,8 @@ const ClassicHeaderContainer = styled.div`
   `}
 `
 const Title = styled.div`
-  ${Fonts.garamond("s37")} margin-bottom: 30px;
+  ${Fonts.garamond("s37")}
+  margin-bottom: 30px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
   `}

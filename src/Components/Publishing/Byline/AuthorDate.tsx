@@ -90,7 +90,8 @@ const StyledAuthor = Text.extend`
     margin: 6px 10px 1px 0;
     background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
   }
-  ${props => adjustForCondensed(props.layout)} ${pMedia.sm`
+  ${props => adjustForCondensed(props.layout)}
+  ${pMedia.sm`
     &:before {
       min-width: 8px;
       min-height: 8px;

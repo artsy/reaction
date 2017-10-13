@@ -204,16 +204,19 @@ const Title = styled.div`
   letter-spaceing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
-  `} ${pMedia.md`
+  `}
+  ${pMedia.md`
     ${Fonts.unica("s65")}
-  `} ${pMedia.xs`
+  `}
+  ${pMedia.xs`
     ${Fonts.unica("s45")}
   `}
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")} line-height: 1.4em;
+  ${Fonts.unica("s16", "medium")}
+  line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}

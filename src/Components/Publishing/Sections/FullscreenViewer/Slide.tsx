@@ -41,7 +41,8 @@ const Image = styled.div`
 const Title = styled.div`
   min-height: 25px;
   padding: 30px 60px 0 60px;
-  ${Fonts.unica("s40")} ${pMedia.sm`
+  ${Fonts.unica("s40")}
+  ${pMedia.sm`
     padding: 20px 60px 0 20px;
     ${Fonts.unica("s19")}
   `}

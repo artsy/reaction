@@ -30,18 +30,21 @@ const StandardHeaderContainer = styled.div`
   box-sizing: border-box;
   ${pMedia.xl`
     padding: 0 20px;
-  `} ${pMedia.xs`
+  `}
+  ${pMedia.xs`
     margin: 30px auto;
   `}
 `
 const Title = styled.div`
-  ${Fonts.garamond("s50")} margin-bottom: 50px;
+  ${Fonts.garamond("s50")}
+  margin-bottom: 50px;
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
   `}
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")}
+  margin-bottom: 10px;
   ${pMedia.xs`
     ${Fonts.unica("s14", "medium")}
   `}

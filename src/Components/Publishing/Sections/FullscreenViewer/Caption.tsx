@@ -69,7 +69,8 @@ const CaptionText = CaptionDiv`
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
-  ${Fonts.unica("s16")} ${pMedia.sm`
+  ${Fonts.unica("s16")}
+  ${pMedia.sm`
     ${Fonts.unica("s14")}
   `}
 `
