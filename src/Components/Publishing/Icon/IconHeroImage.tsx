@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 
-class IconHeroVideo extends Component<any, null> {
+export class IconHeroImage extends Component<any, null> {
   render() {
     return (
       <svg
-        className="hero-video"
+        className="hero-image"
         x="0px"
         y="0px"
         width={this.props.width ? this.props.width : "45px"}
@@ -17,9 +17,8 @@ class IconHeroVideo extends Component<any, null> {
           <polyline points="24,44 54,44 54,42 24,42 	" />
           <polyline points="24,49 48,49 48,47 24,47 	" />
         </g>
-        <path d="M0,0v31h81V0H0z M36,21.3V10l8.7,5.7L36,21.3z" />
+        <path d="M0,0v31h81V0H0z M31.2,10.2c0-1.2,1-2.1,2.1-2.1c1.2,0,2.1,1,2.1,2.1s-1,2.1-2.1,2.1C32.2,12.4,31.2,11.4,31.2,10.2z M32.1,25l7.6-9.5l2.7,2.8l2.1-1.1l4.9,7.8H32.1z" />
       </svg>
     )
   }
 }
-export default IconHeroVideo

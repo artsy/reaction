@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
-import IconSocialEmail from "../Icon/SocialEmail"
-import IconSocialFacebook from "../Icon/SocialFacebook"
-import IconSocialTwitter from "../Icon/SocialTwitter"
+import { IconSocialEmail } from "../Icon/IconSocialEmail"
+import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
+import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
 
 interface ShareProps extends React.HTMLProps<HTMLDivElement> {
   url: string
@@ -13,7 +13,7 @@ interface ShareProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-class Share extends React.Component<ShareProps, null> {
+export class Share extends React.Component<ShareProps, null> {
   static defaultProps = {
     color: "black",
   }
@@ -82,4 +82,3 @@ const IconWrapper = styled.a`
     opacity: 0.6;
   }
 `
-export default Share

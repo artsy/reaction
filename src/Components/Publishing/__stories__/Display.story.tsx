@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import DisplayCanvas from "../Display/Canvas"
-import DisplayPanel from "../Display/DisplayPanel"
+import { DisplayCanvas } from "../Display/Canvas"
+import { DisplayPanel } from "../Display/DisplayPanel"
 import {
   Campaign,
   UnitCanvasImage,

@@ -2,14 +2,14 @@ import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
-import IconExpand from "../Icon/Expand"
+import { IconExpand } from "../Icon/IconExpand"
 
 interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
   index?: number
 }
 
 @track()
-class ViewFullscreen extends React.Component<ViewFullscreenProps, void> {
+export class ViewFullscreen extends React.Component<ViewFullscreenProps, void> {
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }
@@ -50,5 +50,3 @@ const ViewFullscreenLink = styled.div`
     opacity: 1;
   }
 `
-
-export default ViewFullscreen

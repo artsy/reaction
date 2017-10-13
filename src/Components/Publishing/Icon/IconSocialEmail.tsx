@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class IconSocialEmail extends Component<any, null> {
+export class IconSocialEmail extends Component<any, null> {
   static defaultProps = {
     color: "black",
   }
@@ -17,4 +17,3 @@ class IconSocialEmail extends Component<any, null> {
     )
   }
 }
-export default IconSocialEmail

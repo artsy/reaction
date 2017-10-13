@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import Byline from "../Byline/Byline"
-import Fonts from "../Fonts"
+import { Byline } from "../Byline/Byline"
+import { Fonts } from "../Fonts"
 
 interface StandardHeaderProps {
   article?: any
@@ -10,7 +10,7 @@ interface StandardHeaderProps {
   vertical?: any
 }
 
-const StandardHeader: React.SFC<StandardHeaderProps> = props => {
+export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   const { article, title, vertical } = props
   return (
     <StandardHeaderContainer>
@@ -49,5 +49,3 @@ const Vertical = styled.div`
     ${Fonts.unica("s14", "medium")}
   `}
 `
-
-export default StandardHeader

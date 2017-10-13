@@ -4,9 +4,9 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
 import { sizeMeRefreshRate } from "../../Constants"
-import CanvasSlideshow from "./CanvasSlideshow"
-import CanvasText from "./CanvasText"
-import CanvasVideo from "./CanvasVideo"
+import { CanvasSlideshow } from "./CanvasSlideshow"
+import { CanvasText } from "./CanvasText"
+import { CanvasVideo } from "./CanvasVideo"
 
 interface CanvasContainerProps {
   campaign: any
@@ -25,7 +25,7 @@ function renderAsset(asset, campaign) {
   }
 }
 
-const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
+const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
   const { campaign, disclaimer, size, unit } = props
 
   if (unit.layout === "overlay") {
@@ -55,7 +55,7 @@ const CanvasContainer: React.SFC<CanvasContainerProps> = props => {
   }
 }
 
-CanvasContainer.defaultProps = {
+CanvasContainerComponent.defaultProps = {
   size: {
     width: 1250,
   },
@@ -107,7 +107,7 @@ const CanvasLink = responsiveLink`
   ${props => pMedia.lg`
     ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
     ${props.layout === "standard" &&
-    `padding: 0 20px;
+      `padding: 0 20px;
        width: calc(100% - 40px);`}
   `}
   ${pMedia.sm`
@@ -155,4 +155,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(CanvasContainer)
+export const CanvasContainer = sizeMe(sizeMeOptions)(CanvasContainerComponent)

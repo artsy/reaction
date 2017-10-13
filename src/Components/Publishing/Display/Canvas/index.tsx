@@ -2,15 +2,15 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
-import Fonts from "../../Fonts"
-import CanvasContainer from "./CanvasContainer"
+import { Fonts } from "../../Fonts"
+import { CanvasContainer } from "./CanvasContainer"
 
 interface DisplayCanvasProps {
   unit: any
   campaign: any
 }
 
-const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
+export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
   const { unit, campaign } = props
   const disclaimer = <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
 
@@ -60,5 +60,3 @@ const Disclaimer = Div`
     margin: 35px 0 10px 0;
   `}
 `
-
-export default DisplayCanvas

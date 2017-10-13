@@ -161,10 +161,8 @@ const garamond = size => {
   return style.concat(sizeStyles)
 }
 
-const Fonts = {
+export const Fonts = {
   garamond,
   avantgarde,
   unica,
 }
-
-export default Fonts

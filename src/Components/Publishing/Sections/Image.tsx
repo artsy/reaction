@@ -1,8 +1,8 @@
 import React from "react"
 import { resize } from "../../../Utils/resizer"
 import { Layout, SectionLayout } from "../Typings"
-import Caption from "./Caption"
-import ImageWrapper from "./ImageWrapper"
+import { Caption } from "./Caption"
+import { ImageWrapper } from "./ImageWrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   image?: any
@@ -12,7 +12,7 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   height?: number | string
 }
 
-const Image: React.SFC<ImageProps> = props => {
+export const Image: React.SFC<ImageProps> = props => {
   const { image, layout, width, height, sectionLayout, children } = props
   const child = children && children
   const src = resize(image.url, { width: 1200 })
@@ -37,5 +37,3 @@ Image.defaultProps = {
   width: "100%",
   height: "auto",
 }
-
-export default Image

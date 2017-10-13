@@ -59,8 +59,8 @@ exports[`renders a long caption properly 1`] = `
 
 .c3 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c0 {
@@ -238,8 +238,8 @@ exports[`renders a react child as caption properly 1`] = `
 
 .c3 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c0 {
@@ -415,8 +415,8 @@ exports[`renders properly 1`] = `
 
 .c3 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c0 {

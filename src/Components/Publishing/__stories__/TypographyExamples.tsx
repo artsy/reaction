@@ -1,95 +1,42 @@
 import * as React from "react"
 import styled from "styled-components"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
-function Typography() {
+export const Typography = () => {
   return (
     <div>
-      <GaramondS50>
-        Garamond s50: 50px / 1.1em
-      </GaramondS50>
-      <GaramondS40>
-        Garamond s40: 40px / 1.1em
-      </GaramondS40>
-      <GaramondS37>
-        Garamond s37: 37px / 1.2em
-      </GaramondS37>
-      <GaramondS34>
-        Garamond s34: 34px / 1.5em
-      </GaramondS34>
-      <GaramondS30>
-        Garamond s30: 30px / 1.25em
-      </GaramondS30>
-      <GaramondS28>
-        Garamond s28: 28px / 1.5em
-      </GaramondS28>
-      <GaramondS23>
-        Garamond s23: 23px / 1.5em
-      </GaramondS23>
-      <GaramondS19>
-        Garamond s19: 19px / 1.1em
-      </GaramondS19>
-      <GaramondS17>
-        Garamond s17: 17px / 1.1em
-      </GaramondS17>
-      <GaramondS15>
-        Garamond s15: 15px / 1.25em
-      </GaramondS15>
-      <GaramondS11>
-        Garamond s11: 11px / 1.1em
-      </GaramondS11>
+      <GaramondS50>Garamond s50: 50px / 1.1em</GaramondS50>
+      <GaramondS40>Garamond s40: 40px / 1.1em</GaramondS40>
+      <GaramondS37>Garamond s37: 37px / 1.2em</GaramondS37>
+      <GaramondS34>Garamond s34: 34px / 1.5em</GaramondS34>
+      <GaramondS30>Garamond s30: 30px / 1.25em</GaramondS30>
+      <GaramondS28>Garamond s28: 28px / 1.5em</GaramondS28>
+      <GaramondS23>Garamond s23: 23px / 1.5em</GaramondS23>
+      <GaramondS19>Garamond s19: 19px / 1.1em</GaramondS19>
+      <GaramondS17>Garamond s17: 17px / 1.1em</GaramondS17>
+      <GaramondS15>Garamond s15: 15px / 1.25em</GaramondS15>
+      <GaramondS11>Garamond s11: 11px / 1.1em</GaramondS11>
       <hr />
       <br />
-      <AvantGardeS13>
-        Avant Garde s13: 13px / 1.65em
-      </AvantGardeS13>
-      <AvantGardeS11>
-        Avant Garde s11: 11px / 1.65em
-      </AvantGardeS11>
+      <AvantGardeS13>Avant Garde s13: 13px / 1.65em</AvantGardeS13>
+      <AvantGardeS11>Avant Garde s11: 11px / 1.65em</AvantGardeS11>
       <hr />
-      <UnicaS130>
-        Unica s130: 130px / 1.1em
-      </UnicaS130>
-      <UnicaS100>
-        Unica s100: 100px / 1.1em
-      </UnicaS100>
-      <UnicaS80>
-        Unica s80: 80px / 1.1em
-      </UnicaS80>
-      <UnicaS67>
-        Unica s67: 67px / 1em
-      </UnicaS67>
-      <UnicaS65>
-        Unica s65: 65px / 1em
-      </UnicaS65>
-      <UnicaS45>
-        Unica s45: 45px / 1.1em
-      </UnicaS45>
-      <UnicaS40>
-        Unica s40: 40px / 1.1em
-      </UnicaS40>
-      <UnicaS34>
-        Unica s34: 34px / 1.1em
-      </UnicaS34>
-      <UnicaS32>
-        Unica s32: 32px / 1.1em
-      </UnicaS32>
-      <UnicaS19>
-        Unica s19: 19px / 1.5em
-      </UnicaS19>
-      <UnicaS16>
-        Unica s16: 16px / 1.1em
-      </UnicaS16>
-      <UnicaS14>
-        Unica s14: 14px / 1.1em
-      </UnicaS14>
-      <UnicaS12>
-        Unica s12: 12px / 1.1em
-      </UnicaS12>
+      <UnicaS130>Unica s130: 130px / 1.1em</UnicaS130>
+      <UnicaS100>Unica s100: 100px / 1.1em</UnicaS100>
+      <UnicaS80>Unica s80: 80px / 1.1em</UnicaS80>
+      <UnicaS67>Unica s67: 67px / 1em</UnicaS67>
+      <UnicaS65>Unica s65: 65px / 1em</UnicaS65>
+      <UnicaS45>Unica s45: 45px / 1.1em</UnicaS45>
+      <UnicaS40>Unica s40: 40px / 1.1em</UnicaS40>
+      <UnicaS34>Unica s34: 34px / 1.1em</UnicaS34>
+      <UnicaS32>Unica s32: 32px / 1.1em</UnicaS32>
+      <UnicaS19>Unica s19: 19px / 1.5em</UnicaS19>
+      <UnicaS16>Unica s16: 16px / 1.1em</UnicaS16>
+      <UnicaS14>Unica s14: 14px / 1.1em</UnicaS14>
+      <UnicaS12>Unica s12: 12px / 1.1em</UnicaS12>
     </div>
   )
 }
-export default Typography
 
 const GaramondS11 = styled.div`
   ${Fonts.garamond("s11")}

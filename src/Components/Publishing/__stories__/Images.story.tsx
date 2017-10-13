@@ -2,9 +2,9 @@ import { storiesOf } from "@storybook/react"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import { Artwork } from "../Sections/Artwork"
-import FullscreenViewer from "../Sections/FullscreenViewer/FullscreenViewer"
-import Image from "../Sections/Image"
-import ImageCollection from "../Sections/ImageCollection"
+import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
+import { Image } from "../Sections/Image"
+import { ImageCollection } from "../Sections/ImageCollection"
 
 import { Artworks, Images, ImagesNarrow } from "../Fixtures/Components"
 
@@ -107,7 +107,9 @@ storiesOf("Publishing/Images", module)
         <p>With Child as Caption:</p>
         <div style={{ width: 400 }}>
           <Image image={Images[2]}>
-            <div><p>A React child as caption.</p></div>
+            <div>
+              <p>A React child as caption.</p>
+            </div>
           </Image>
         </div>
         <p>Fillwidth:</p>

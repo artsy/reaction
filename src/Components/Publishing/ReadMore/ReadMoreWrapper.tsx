@@ -11,7 +11,7 @@ interface ReadMoreWrapperState {
   truncationHeight: number | string
 }
 
-class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrapperState> {
+export class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrapperState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -95,5 +95,3 @@ class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrap
     )
   }
 }
-
-export default ReadMoreWrapper

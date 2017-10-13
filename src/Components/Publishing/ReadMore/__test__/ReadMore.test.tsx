@@ -3,8 +3,8 @@ import "jest-styled-components"
 import { extend } from "lodash"
 import * as React from "react"
 import { StandardArticle } from "../../Fixtures/Articles"
-import Sections from "../../Sections/Sections"
-import ReadMoreWrapper from "../ReadMoreWrapper"
+import { Sections } from "../../Sections/Sections"
+import { ReadMoreWrapper } from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
 

@@ -1,7 +1,7 @@
 import * as React from "react"
-import ClassicHeader from "./ClassicHeader"
-import FeatureHeader from "./FeatureHeader"
-import StandardHeader from "./StandardHeader"
+import { ClassicHeader } from "./ClassicHeader"
+import { FeatureHeader } from "./FeatureHeader"
+import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
   article: any

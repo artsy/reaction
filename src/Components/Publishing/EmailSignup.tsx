@@ -5,7 +5,7 @@ import Colors from "../../Assets/Colors"
 import InvertedButton from "../Buttons/Inverted"
 import { borderedInput } from "../Mixins"
 import { emailRegex } from "./Constants"
-import Fonts from "./Fonts"
+import { Fonts } from "./Fonts"
 
 interface EmailSignupProps {
   signupUrl: string
@@ -79,7 +79,9 @@ export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupSt
               isError={this.state.error}
               isReadOnly={this.state.message.length > 0}
             />
-            <StyledButton disabled={this.state.disabled} onClick={this.onClick}>Subscribe</StyledButton>
+            <StyledButton disabled={this.state.disabled} onClick={this.onClick}>
+              Subscribe
+            </StyledButton>
           </Form>
         </EmailSignupContainer>
       )

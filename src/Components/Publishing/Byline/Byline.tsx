@@ -2,7 +2,7 @@ import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { articleHref } from "../Constants"
 import { Author, Date } from "./AuthorDate"
-import Share from "./Share"
+import { Share } from "./Share"
 
 interface BylineProps {
   article: any
@@ -13,17 +13,17 @@ interface BylineContainerProps {
   layout: string
 }
 
-const Byline: React.SFC<BylineProps> = props => {
+export const Byline: React.SFC<BylineProps> = props => {
   const article = props.article
   const layout = props.layout || article.layout
   const { contributing_authors, published_at } = article
   const share = layout === "condensed"
     ? false
     : <Share
-      url={articleHref(article.slug)}
-      title={article.social_title || article.thumbnail_title}
-      color={layout === "fullscreen" ? "white" : "black"}
-    />
+        url={articleHref(article.slug)}
+        title={article.social_title || article.thumbnail_title}
+        color={layout === "fullscreen" ? "white" : "black"}
+      />
   return (
     <BylineContainer layout={layout}>
       <Author authors={contributing_authors} layout={layout} />
@@ -40,4 +40,3 @@ const BylineContainer = Div`
   display: flex;
   align-items: flex-end;
 `
-export default Byline

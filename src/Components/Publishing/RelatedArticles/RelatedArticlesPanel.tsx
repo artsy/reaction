@@ -2,7 +2,7 @@ import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string

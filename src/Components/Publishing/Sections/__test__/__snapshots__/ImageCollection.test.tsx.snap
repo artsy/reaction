@@ -60,8 +60,8 @@ exports[`renders a single image properly 1`] = `
 
 .c6 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c3 {
@@ -233,7 +233,8 @@ exports[`renders a single image properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <span
             className="date"
@@ -243,7 +244,8 @@ exports[`renders a single image properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <a
             className="c10"
@@ -318,8 +320,8 @@ exports[`renders properly 1`] = `
 
 .c6 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c3 {
@@ -564,7 +566,8 @@ exports[`renders properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <span
             className="date"
@@ -574,7 +577,8 @@ exports[`renders properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <a
             className="c10"

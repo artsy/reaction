@@ -2,7 +2,7 @@ import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 import { Images } from "../../../Fixtures/Components"
-import Slide from "../Slide"
+import { Slide } from "../Slide"
 
 it("renders properly", () => {
   const onClose = jest.fn()

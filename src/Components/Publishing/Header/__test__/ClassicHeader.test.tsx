@@ -2,7 +2,7 @@ import "jest-styled-components"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
 import { ClassicArticle, StandardArticle } from "../../Fixtures/Articles"
-import AuthorDateClassic from "../AuthorDateClassic"
+import { AuthorDateClassic } from "../AuthorDateClassic"
 import { Header } from "../Header"
 
 describe("Classic Header", () => {
@@ -13,10 +13,10 @@ describe("Classic Header", () => {
   it("renders classic header with children properly", () => {
     const header = renderer
       .create(
-      <Header article={StandardArticle}>
-        <div>Child 0: Title</div>
-        <div>Child 1: Lead Paragraph</div>
-      </Header>
+        <Header article={StandardArticle}>
+          <div>Child 0: Title</div>
+          <div>Child 1: Lead Paragraph</div>
+        </Header>
       )
       .toJSON()
     expect(header).toMatchSnapshot()

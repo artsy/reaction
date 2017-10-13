@@ -132,6 +132,7 @@ exports[`renders column_width properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-text-align: left;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -183,6 +184,7 @@ exports[`renders column_width properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-text-transform: none;
   text-transform: none;
 }
 
@@ -420,6 +422,7 @@ exports[`renders fillwidth properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-text-align: left;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -471,6 +474,7 @@ exports[`renders fillwidth properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-text-transform: none;
   text-transform: none;
 }
 
@@ -708,6 +712,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-text-align: left;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -759,6 +764,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-text-transform: none;
   text-transform: none;
 }
 

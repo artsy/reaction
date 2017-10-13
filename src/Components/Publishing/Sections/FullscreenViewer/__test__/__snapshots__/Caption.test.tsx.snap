@@ -207,7 +207,8 @@ exports[`renders an artwork caption properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <span
             className="date"
@@ -217,7 +218,8 @@ exports[`renders an artwork caption properly 1`] = `
           <span
             className="comma"
           >
-            , 
+            ,
+             
           </span>
           <a
             className="c6 c7"

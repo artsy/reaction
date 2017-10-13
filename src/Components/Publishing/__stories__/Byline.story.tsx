@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import { extend } from "lodash"
 import * as React from "react"
-import Byline from "../Byline/Byline"
-import Share from "../Byline/Share"
+import { Byline } from "../Byline/Byline"
+import { Share } from "../Byline/Share"
 import { StandardArticle } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Byline", module)

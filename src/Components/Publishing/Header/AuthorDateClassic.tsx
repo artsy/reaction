@@ -1,7 +1,7 @@
 import moment from "moment-timezone"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface AuthorDateClassicProps {
   authors?: any
@@ -46,7 +46,7 @@ const getAuthorByline = (authors, author) => {
 
 const getDate = date => moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 
-const AuthorDateClassic: React.SFC<AuthorDateClassicProps> = props => {
+export const AuthorDateClassic: React.SFC<AuthorDateClassicProps> = props => {
   const { authors, author, date } = props
   return (
     <AuthorDateClassicContainer>
@@ -66,5 +66,3 @@ const AuthorDateClassicContainer = styled.div`
   display: block;
   ${Fonts.avantgarde("s13")}
 `
-
-export default AuthorDateClassic

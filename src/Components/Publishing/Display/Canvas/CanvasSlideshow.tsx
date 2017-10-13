@@ -7,7 +7,7 @@ import { crop } from "../../../../Utils/resizer"
 import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
-import Fonts from "../../Fonts"
+import { Fonts } from "../../Fonts"
 import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {
@@ -18,7 +18,7 @@ interface CanvasSlideshowProps {
 }
 
 @track()
-class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
+export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
   private slider: any
 
   constructor(props) {
@@ -239,5 +239,3 @@ const Caption = styled.div`
   color: ${Colors.grayMedium};
   margin-top: 10px;
 `
-
-export default CanvasSlideshow

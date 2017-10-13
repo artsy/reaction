@@ -2,7 +2,7 @@ import moment from "moment-timezone"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 interface AuthorDateProps {
   authors?: any
@@ -11,11 +11,19 @@ interface AuthorDateProps {
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {
-  return <StyledAuthor className="author" layout={props.layout}>By {getAuthorByline(props.authors)}</StyledAuthor>
+  return (
+    <StyledAuthor className="author" layout={props.layout}>
+      By {getAuthorByline(props.authors)}
+    </StyledAuthor>
+  )
 }
 
 export const Date: React.SFC<AuthorDateProps> = props => {
-  return <Text className="date" layout={props.layout}>{getDate(props.date, props.layout)}</Text>
+  return (
+    <Text className="date" layout={props.layout}>
+      {getDate(props.date, props.layout)}
+    </Text>
+  )
 }
 
 const getAuthorByline = authors => {

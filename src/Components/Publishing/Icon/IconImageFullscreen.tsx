@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class IconImageFullscreen extends Component<any, null> {
+export class IconImageFullscreen extends Component<any, null> {
   render() {
     return (
       <svg
@@ -24,4 +24,3 @@ class IconImageFullscreen extends Component<any, null> {
     )
   }
 }
-export default IconImageFullscreen

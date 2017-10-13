@@ -3,10 +3,10 @@ import * as React from "react"
 import styled from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
-import Fonts from "../../Fonts"
-import Caption from "./Caption"
+import { Fonts } from "../../Fonts"
+import { Caption } from "./Caption"
 
-const Slide = props => {
+export const Slide = props => {
   const newProps = omit(props, ["section", "index", "total", "isCaptionOpen"])
   const section = props.section
   const src = resize(section.url || section.image, { width: 1200 })
@@ -47,5 +47,3 @@ const Title = styled.div`
     ${Fonts.unica("s19")}
   `}
 `
-
-export default Slide

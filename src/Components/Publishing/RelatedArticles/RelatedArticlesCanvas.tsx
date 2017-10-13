@@ -3,8 +3,8 @@ import React from "react"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
-import RelatedArticleFigure from "./RelatedArticleFigure"
+import { Fonts } from "../Fonts"
+import { RelatedArticleFigure } from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   vertical: {
@@ -18,7 +18,7 @@ interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   }>
 }
 
-const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
+export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
   const { articles, vertical } = props
   if (!vertical) {
     return <div />
@@ -27,7 +27,9 @@ const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
       <div>
         <LineBreak />
         <RelatedArticlesContainer>
-          <Title>Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan></Title>
+          <Title>
+            Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
+          </Title>
           <ArticlesWrapper>
             {_.map(articles, (article, i) => {
               return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
@@ -69,5 +71,3 @@ const LineBreak = styled.div`
   border-top: 1px solid ${Colors.grayRegular};
   width: 100%;
 `
-
-export default RelatedArticlesCanvas

@@ -65,8 +65,8 @@ exports[`renders properly 1`] = `
 
 .c10 {
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .c7 {
@@ -425,6 +425,7 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-text-align: left;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -476,6 +477,7 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-text-transform: none;
   text-transform: none;
 }
 
@@ -1106,7 +1108,8 @@ exports[`renders properly 1`] = `
               <span
                 className="comma"
               >
-                , 
+                ,
+                 
               </span>
               <a
                 className="c18"

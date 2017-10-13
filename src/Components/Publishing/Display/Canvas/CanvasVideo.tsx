@@ -9,7 +9,7 @@ interface VideoProps {
 }
 
 @track()
-class DisplayCanvasVideo extends React.Component<VideoProps, any> {
+export class CanvasVideo extends React.Component<VideoProps, any> {
   private video: HTMLVideoElement
 
   constructor(props) {
@@ -38,7 +38,9 @@ class DisplayCanvasVideo extends React.Component<VideoProps, any> {
     if (!this.state.isPlaying) {
       return (
         <Cover>
-          <PlayButton><PlayButtonCaret /></PlayButton>
+          <PlayButton>
+            <PlayButtonCaret />
+          </PlayButton>
         </Cover>
       )
     }
@@ -104,5 +106,3 @@ const PlayButton = styled.div`
   border: 0;
   outline: 0;
 `
-
-export default DisplayCanvasVideo

@@ -1,14 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
-const ReadMore: React.SFC<any> = props => {
+export const ReadMore: React.SFC<any> = props => {
   return (
     <ReadMoreContainer onClick={props.onClick}>
-      <ReadMoreButton>
-        Read More
-      </ReadMoreButton>
+      <ReadMoreButton>Read More</ReadMoreButton>
     </ReadMoreContainer>
   )
 }
@@ -24,14 +22,14 @@ const ReadMoreButton = styled.div`
   border: 1px solid black;
   border-radius: 2px;
   ${Fonts.unica("s14", "medium")}
-  ${pMedia.md`
-    width: 100%;
-  `}
   &:hover {
     cursor: pointer;
     background-color: white;
     color: black;
   }
+  ${pMedia.md`
+    width: 100%;
+  `}
 `
 const ReadMoreContainer = styled.div`
   display: flex;
@@ -45,4 +43,3 @@ const ReadMoreContainer = styled.div`
     padding: 20px;
   `}
 `
-export default ReadMore

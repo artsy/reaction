@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class EditText extends Component<any, null> {
+export class IconEditText extends Component<any, null> {
   render() {
     return (
       <svg
@@ -19,4 +19,3 @@ class EditText extends Component<any, null> {
     )
   }
 }
-export default EditText

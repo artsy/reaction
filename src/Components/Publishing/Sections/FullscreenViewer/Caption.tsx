@@ -3,17 +3,17 @@ import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
-import Fonts from "../../Fonts"
+import { Fonts } from "../../Fonts"
 import { ArtworkCaption } from "../ArtworkCaption"
 
-interface FullscreenViewerCaptionProps extends React.HTMLProps<HTMLDivElement> {
+interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
   section?: any
   total: number
   index: number
   open: boolean
 }
 
-const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props => {
+export const Caption: React.SFC<CaptionProps> = props => {
   const caption = props.section.type === "artwork"
     ? <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
     : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
@@ -22,9 +22,7 @@ const FullscreenViewerCaption: React.SFC<FullscreenViewerCaptionProps> = props =
     <CaptionContainer>
       <CaptionTextContainer>
         <CaptionToggle open={props.open} />
-        <Caption open={props.open}>
-          {caption}
-        </Caption>
+        <CaptionText open={props.open}>{caption}</CaptionText>
       </CaptionTextContainer>
       <Index>{indexText}</Index>
     </CaptionContainer>
@@ -57,7 +55,7 @@ const StyledCaptionToggle = styled.div`
   `}
 `
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
-const Caption = CaptionDiv`
+const CaptionText = CaptionDiv`
   ${Fonts.unica("s16", "medium")}
   a {
     color: black;
@@ -95,5 +93,3 @@ const CaptionTextContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-export default FullscreenViewerCaption

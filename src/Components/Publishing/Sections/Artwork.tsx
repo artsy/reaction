@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Layout, SectionLayout } from "../Typings"
 import { ArtworkCaption } from "./ArtworkCaption"
-import ImageWrapper from "./ImageWrapper"
+import { ImageWrapper } from "./ImageWrapper"
 
 interface ArtworkProps {
   artwork: any

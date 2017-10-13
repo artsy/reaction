@@ -6,7 +6,7 @@ interface EmbedProps {
   section: any
 }
 
-const Embed: React.SFC<EmbedProps> = props => {
+export const Embed: React.SFC<EmbedProps> = props => {
   const { url, height, mobile_height } = props.section
   return <IFrame src={url} scrolling="no" frameBorder="0" height={height} mobileHeight={mobile_height} />
 }
@@ -25,5 +25,3 @@ const IFrame = iframe`
     height: ${props.mobileHeight}px;
   `}
 `
-
-export default Embed

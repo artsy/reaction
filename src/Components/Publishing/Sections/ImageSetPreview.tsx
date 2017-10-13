@@ -3,8 +3,8 @@ import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
-import Fonts from "../Fonts"
-import IconImageSet from "../Icon/ImageSet"
+import { Fonts } from "../Fonts"
+import { IconImageSet } from "../Icon/IconImageSet"
 
 type Layout = "mini" | "full"
 
@@ -27,26 +27,30 @@ export interface Props {
 
 const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-class ImageSetPreview extends Component<Props, null> {
+export class ImageSetPreview extends Component<Props, null> {
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }
+
   getImageUrl() {
     const image = this.props.section.images[0]
     const src = image.url ? image.url : image.image
     return resize(src, { width: 1200 })
   }
+
   image() {
     const src = this.getImageUrl()
     const width = this.props.section.layout === "full" ? "100%" : "auto"
     const height = this.props.section.layout === "full" ? "auto" : "100%"
     return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
   }
+
   onClick = () => {
     if (this.context.onViewFullscreen) {
       this.context.onViewFullscreen(this.props.section.images[0].index)
     }
   }
+
   wrapper() {
     if (this.props.section.layout === "full") {
       return (
@@ -67,6 +71,7 @@ class ImageSetPreview extends Component<Props, null> {
       )
     }
   }
+
   textSection() {
     return (
       <TitleWrapper layout={this.props.section.layout}>
@@ -78,6 +83,7 @@ class ImageSetPreview extends Component<Props, null> {
       </TitleWrapper>
     )
   }
+
   title() {
     let title = this.props.section.images.length + " Images"
     if (this.props.section.title) {
@@ -85,11 +91,13 @@ class ImageSetPreview extends Component<Props, null> {
     }
     return <Title>{title}</Title>
   }
+
   subTitleCount() {
     if (this.props.section.title) {
       return <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
     }
   }
+
   icon() {
     return (
       <IconContainer>
@@ -97,6 +105,7 @@ class ImageSetPreview extends Component<Props, null> {
       </IconContainer>
     )
   }
+
   render() {
     const image = this.props.section.layout === "full" ? this.image() : null
     return (
@@ -107,6 +116,7 @@ class ImageSetPreview extends Component<Props, null> {
     )
   }
 }
+
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
@@ -117,7 +127,7 @@ const IconContainer = styled.div`
   }
   ${pMedia.xs`
     display: none;
-  `};
+  `}
 `
 
 const FullWrapper = styled.div`
@@ -166,25 +176,25 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${Fonts.unica("s19", "medium")} margin-bottom: 8px;
+  ${Fonts.unica("s19", "medium")}
+  margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
     ${Fonts.unica("s16", "medium")}
-  `};
+  `}
 `
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${Fonts.unica("s14", "medium")} ${pMedia.xs`
+  ${Fonts.unica("s14", "medium")}
+  ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
-  `};
+  `}
 `
 const SubTitleCount = styled.div`
   ${Fonts.unica("s14")} margin-left: 20px;
   ${pMedia.xs`
     ${Fonts.unica("s12")}
-  `};
+  `}
 `
-
-export default ImageSetPreview

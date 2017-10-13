@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
-import ViewFullscreen from "./ViewFullscreen"
+import { ViewFullscreen } from "./ViewFullscreen"
 
 interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   src: string
@@ -13,9 +13,13 @@ interface ImageWrapperProps extends React.HTMLProps<HTMLImageElement> {
   index?: number
 }
 
-const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
+export const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
   const { layout, index, ...blockImageProps }: any = props
-  const fullscreen = <Fullscreen><ViewFullscreen index={index} /></Fullscreen>
+  const fullscreen = (
+    <Fullscreen>
+      <ViewFullscreen index={index} />
+    </Fullscreen>
+  )
   const viewFullscreen = layout !== "classic" ? fullscreen : false
 
   return (
@@ -28,7 +32,7 @@ const ImageWrapper: React.SFC<ImageWrapperProps> = props => {
 
 const Fullscreen = styled.div`
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 `
 
 const StyledImageWrapper = styled.div`
@@ -48,5 +52,3 @@ const StyledImageWrapper = styled.div`
 const BlockImage = styled.img`
   display: block;
 `
-
-export default ImageWrapper

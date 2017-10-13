@@ -2,12 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 
-const Sidebar: React.SFC<React.HTMLProps<HTMLDivElement>> = props => {
-  return (
-    <SidebarContainer>
-      {props.children}
-    </SidebarContainer>
-  )
+export const Sidebar: React.SFC<React.HTMLProps<HTMLDivElement>> = props => {
+  return <SidebarContainer>{props.children}</SidebarContainer>
 }
 
 const SidebarContainer = styled.div`
@@ -19,5 +15,3 @@ const SidebarContainer = styled.div`
     display: none;
   `}
 `
-
-export default Sidebar

@@ -3,9 +3,9 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
-import Byline from "../Byline/Byline"
+import { Byline } from "../Byline/Byline"
 import { sizeMeRefreshRate } from "../Constants"
-import Fonts from "../Fonts"
+import { Fonts } from "../Fonts"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
   if (layout === "fullscreen") {
@@ -94,10 +94,10 @@ interface FeatureHeaderProps {
   }
 }
 
-const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
+const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
-  const url = hero.url || ''
+  const url = hero.url || ""
   const isMobile = size.width && size.width < 600 ? true : false
   return (
     <FeatureHeaderContainer data-type={hero.type} height={height}>
@@ -118,7 +118,7 @@ const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   )
 }
 
-FeatureHeader.defaultProps = {
+FeatureHeaderComponent.defaultProps = {
   height: "100vh",
   size: {
     width: 500,
@@ -132,7 +132,7 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
@@ -185,7 +185,7 @@ const Video = styled.video`
 const TextAsset = styled.div`
   width: 100%;
   padding: 20px;
-  box-sizing: border-box
+  box-sizing: border-box;
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
@@ -225,13 +225,13 @@ const Deck = styled.div`
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
-  &[data-type='text'] {
+  &[data-type="text"] {
     height: auto;
     ${Title} {
       margin-bottom: 150px;
     }
   }
-  &[data-type='split'] {
+  &[data-type="split"] {
     ${Title} {
       flex-grow: 1;
     }
@@ -280,13 +280,13 @@ const FeatureHeaderContainer = Div.extend`
       }
     `}
   }
-  &[data-type='fullscreen']{
+  &[data-type="fullscreen"] {
     ${HeaderText} {
       padding: 50px;
       color: #fff;
       justify-content: flex-end;
       margin: auto;
-      text-shadow: 0 0 40px rgba(0,0,0,0.4);
+      text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     }
     ${pMedia.xs`
       ${HeaderText} {
@@ -301,4 +301,4 @@ const sizeMeOptions = {
   noPlaceholder: true,
 }
 
-export default sizeMe(sizeMeOptions)(FeatureHeader)
+export const FeatureHeader = sizeMe(sizeMeOptions)(FeatureHeaderComponent)
