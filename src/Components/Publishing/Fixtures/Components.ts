@@ -84,7 +84,6 @@ export const Campaign = {
 }
 
 export const UnitCanvasOverlay = {
-  type: "canvas",
   layout: "overlay",
   headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
@@ -101,7 +100,6 @@ export const UnitCanvasOverlay = {
 }
 
 export const UnitCanvasImage = {
-  type: "canvas",
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
@@ -118,7 +116,6 @@ export const UnitCanvasImage = {
 }
 
 export const UnitCanvasVideo = {
-  type: "canvas",
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
@@ -133,7 +130,6 @@ export const UnitCanvasVideo = {
 }
 
 export const UnitCanvasSlideshow = {
-  type: "canvas",
   layout: "slideshow",
   headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
@@ -162,7 +158,6 @@ export const UnitCanvasSlideshow = {
 }
 
 export const UnitPanel = {
-  type: "panel",
   headline: "Euismod Inceptos Quam",
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
@@ -175,6 +170,25 @@ export const UnitPanel = {
     url: "http://artsy.net",
   },
 }
+
+export const Display = mediaType => ({
+  ...Campaign,
+  canvas: (() => {
+    switch (mediaType) {
+      case "overlay":
+        return UnitCanvasOverlay
+      case "image":
+        return UnitCanvasImage
+      case "slideshow":
+        return UnitCanvasSlideshow
+      case "video":
+        return UnitCanvasVideo
+      default:
+        return UnitCanvasImage
+    }
+  })(),
+  panel: UnitPanel,
+})
 
 export const Embeds = [
   {

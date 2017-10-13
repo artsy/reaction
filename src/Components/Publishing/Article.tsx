@@ -1,9 +1,11 @@
-import { cloneDeep, includes, map } from "lodash"
+import { cloneDeep, includes, map, omit } from "lodash"
 import * as PropTypes from "prop-types"
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
+import DisplayCanvas from "./Display/Canvas"
+import DisplayPanel from "./Display/DisplayPanel"
 import { EmailSignup } from "./EmailSignup"
 import { Header } from "./Header/Header"
 import FeatureLayout from "./Layouts/FeatureLayout"
@@ -25,6 +27,11 @@ export interface ArticleProps {
   emailSignupUrl?: string
   headerHeight?: string
   marginTop?: number
+  display?: {
+    name: string
+    panel: object
+    canvas: object
+  }
 }
 
 interface ArticleState {
@@ -113,13 +120,32 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   renderStandardArticle() {
     const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel
-      ? <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-      : false
-    const relatedArticleCanvas = relatedArticlesForCanvas
-      ? <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-      : false
+    const relatedArticlePanel = relatedArticlesForPanel ? (
+      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
+    ) : (
+      false
+    )
+    const relatedArticleCanvas = relatedArticlesForCanvas ? (
+      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+    ) : (
+      false
+    )
     const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
+    const campaign = omit(this.props.display, "panel", "canvas")
+    const readMoreTruncation = this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false
+    const displayCanvas = this.props.display ? (
+      <div>
+        <DisplayCanvasBreak />
+        <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+      </div>
+    ) : (
+      false
+    )
+    const displayPanel = this.props.display ? (
+      <DisplayPanel unit={this.props.display.panel} campaign={campaign} />
+    ) : (
+      false
+    )
     return (
       <div>
         <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
@@ -129,11 +155,13 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
             <Sidebar>
               {emailSignup}
               {relatedArticlePanel}
+              {displayPanel}
             </Sidebar>
           </StandardLayout>
           {relatedArticleCanvas}
         </ReadMoreWrapper>
-        {this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false}
+        {readMoreTruncation}
+        {displayCanvas}
       </div>
     )
   }
@@ -159,4 +187,10 @@ const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDiv
 
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => (props.marginTop ? props.marginTop + "px" : "50px")};
+`
+
+const DisplayCanvasBreak = styled.hr`
+  border: 0;
+  margin: 0;
+  border-top: 1px solid #eee;
 `
