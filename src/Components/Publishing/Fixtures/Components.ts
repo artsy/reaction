@@ -1,4 +1,4 @@
-import { Props as ImageSetPreviewProps } from "../Sections/ImagesetPreview"
+import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 
 export const Artworks = [
   {
