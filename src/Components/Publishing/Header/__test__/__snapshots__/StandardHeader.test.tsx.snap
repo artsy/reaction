@@ -236,7 +236,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -262,7 +262,7 @@ exports[`Standard Header renders standard header properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg
@@ -528,7 +528,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=undefined&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
+        href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fartsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
         onClick={[Function]}
         target="_blank"
       >
@@ -554,7 +554,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
       </a>
       <a
         className="c7"
-        href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://artsy.net/article/new-yorks-next-art-district"
+        href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://artsy.net/article/new-yorks-next-art-district"
         onClick={[Function]}
       >
         <svg
