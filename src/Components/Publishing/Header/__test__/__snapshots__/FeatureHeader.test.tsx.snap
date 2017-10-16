@@ -220,7 +220,7 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
   width: 50vw;
 }
 
@@ -366,7 +366,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
     width: 100%;
   }
 }
@@ -732,7 +732,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
   width: 50vw;
 }
 
@@ -746,7 +746,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .file__Deck-nq1d22-8 {
+.c0[data-type="split"] .file__Deck-s173b3y1-8 {
   margin-bottom: 30px;
 }
 
@@ -868,7 +868,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
     width: 100%;
   }
 }
@@ -1235,7 +1235,7 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
   width: 50vw;
 }
 
@@ -1381,7 +1381,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
     width: 100%;
   }
 }
@@ -1757,7 +1757,7 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
   width: 50vw;
 }
 
@@ -1903,7 +1903,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
     width: 100%;
   }
 }
@@ -2265,7 +2265,7 @@ exports[`feature renders feature text header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
   width: 50vw;
 }
 
@@ -2411,7 +2411,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-nq1d22-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
     width: 100%;
   }
 }
