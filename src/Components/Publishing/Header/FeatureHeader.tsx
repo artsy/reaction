@@ -97,22 +97,23 @@ interface FeatureHeaderProps {
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
-  const url = hero.url || ""
+  const url = hero && hero.url || ""
+  const type = hero && hero.type || "text"
   const isMobile = size.width && size.width < 600 ? true : false
   return (
-    <FeatureHeaderContainer data-type={hero.type} height={height}>
-      {renderFeatureAsset(url, hero.type, isMobile, article.title, image)}
+    <FeatureHeaderContainer data-type={type} height={height}>
+      {renderFeatureAsset(url, type, isMobile, article.title, image)}
       <HeaderTextContainer>
         <HeaderText>
           <Vertical>{vertical}</Vertical>
           <Title>{title}</Title>
-          {renderMobileSplitAsset(url, hero.type, isMobile, article.title, image)}
+          {renderMobileSplitAsset(url, type, isMobile, article.title, image)}
           <SubHeader>
             {renderDeck(deck)}
-            <Byline article={article} layout={hero.type} />
+            <Byline article={article} layout={type} />
           </SubHeader>
         </HeaderText>
-        {renderTextLayoutAsset(url, hero.type, article.title, image)}
+        {renderTextLayoutAsset(url, type, article.title, image)}
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )
