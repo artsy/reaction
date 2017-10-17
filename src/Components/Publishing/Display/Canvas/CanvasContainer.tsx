@@ -19,9 +19,29 @@ interface CanvasContainerProps {
 
 function renderAsset(asset, campaign) {
   if (asset.url.includes("mp4")) {
-    return <CanvasVideo src={asset.url} campaign={campaign} />
+    return (
+      <CanvasVideo
+        src={asset.url}
+        campaign={campaign}
+      />
+    )
   } else {
-    return <Image src={crop(asset.url, { width: 1200, height: 760 })} />
+    return (
+      <Image
+        src={crop(asset.url, {
+          width: 1200,
+          height: 760
+        })}
+      />
+    )
+  }
+}
+
+function handleVideoLinkClick(event) {
+  // TODO: Ensure that full element can be clicked on video complete
+  // Prevent links from blocking video playback.
+  if (event.target.className.includes('CanvasVideo')) {
+    event.target.preventDefault()
   }
 }
 
@@ -45,7 +65,7 @@ const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
     )
   } else {
     return (
-      <CanvasLink href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
+      <CanvasLink onClick={handleVideoLinkClick} href={unit.link.url} target="_blank" containerWidth={size.width} layout={unit.layout}>
         {renderAsset(unit.assets[0], campaign)}
         <StandardContainer>
           <CanvasText unit={unit} disclaimer={disclaimer} />

@@ -974,6 +974,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   <a
     className="c2"
     href="http://artsy.net"
+    onClick={[Function]}
     target="_blank"
   >
     <img
@@ -1336,6 +1337,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   <a
     className="c2"
     href="http://artsy.net"
+    onClick={[Function]}
     target="_blank"
   >
     <div
