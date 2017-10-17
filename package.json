@@ -13,7 +13,7 @@
     "docs"
   ],
   "engines": {
-    "node": "8.4.x",
+    "node": "8.x.x",
     "npm": "5.4.x"
   },
   "scripts": {
