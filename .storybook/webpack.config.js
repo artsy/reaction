@@ -5,22 +5,24 @@ const sharify = require("./sharify")
 
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
-const { CheckerPlugin } = require("awesome-typescript-loader")
+
+const {
+  CheckerPlugin
+} = require("awesome-typescript-loader")
 
 /**
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
  */
-const { METAPHYSICS_ENDPOINT } = env.config().parsed
-const sharifyPath = sharify({ METAPHYSICS_ENDPOINT })
+const {
+  METAPHYSICS_ENDPOINT
+} = env.config().parsed
 
-/**
- * Only use HMR plugin in dev mode
- */
+const sharifyPath = sharify({
+  METAPHYSICS_ENDPOINT
+})
+
 let plugins = [new CheckerPlugin()]
-if (process.env.NODE_ENV === "development") {
-  plugins.push(new webpack.HotModuleReplacementPlugin())
-}
 
 // A mix of  the base from Emission's webpack setup, and the simple config for
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
@@ -34,20 +36,20 @@ module.exports = {
     },
   },
   module: {
-    rules: [
-      { test: /\.json$/, loader: "json-loader" },
+    rules: [{
+        test: /\.json$/,
+        loader: "json-loader"
+      },
       {
         exclude: [/node_modules/, /__tests__/],
-        use: [
-          {
-            loader: "awesome-typescript-loader",
-            options: {
-              useBabel: true,
-              useCache: true,
-              useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
-            },
+        use: [{
+          loader: "awesome-typescript-loader",
+          options: {
+            useBabel: true,
+            useCache: true,
+            useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
           },
-        ],
+        }, ],
         test: /\.tsx?$/,
       },
     ],
