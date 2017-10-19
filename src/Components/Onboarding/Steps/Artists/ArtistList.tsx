@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import ArtistSearchResults from "./ArtistSearchResults"
+import { ArtistSearchResults } from "./ArtistSearchResults"
 // import PopularArtists from "./PopularArtists"
 
 export interface Props {
@@ -9,7 +9,7 @@ export interface Props {
 
 export default class ArtistList extends React.Component<Props, any> {
   render() {
-    return <ArtistSearchResults />
+    return <ArtistSearchResults term={this.props.searchQuery} />
     // return <PopularArtists />
   }
 }

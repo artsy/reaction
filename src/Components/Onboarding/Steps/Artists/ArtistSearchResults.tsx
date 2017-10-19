@@ -11,21 +11,6 @@ export interface RelayProps {
   }
 }
 
-// export default class ArtistSearchResults extends React.Component<any, any> {
-//   render() {
-//     return <ArtistSearchResultsContentList />
-//   }
-// }
-
-export default function ArtistSearchResultsContentList() {
-  return (
-    <Relay.RootContainer
-      Component={wrappedArtistSearchResultsContent}
-      route={new ArtistSearchQueryConfig({ term: "andy" })}
-    />
-  )
-}
-
 class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   render() {
     return <SelectableItemContainer artists={this.props.viewer.match_artist} />
@@ -46,3 +31,13 @@ const wrappedArtistSearchResultsContent = Relay.createContainer(ArtistSearchResu
     `,
   },
 })
+
+interface Props {
+  term: string
+}
+
+export const ArtistSearchResults: React.SFC<Props> = ({ term }) => {
+  return (
+    <Relay.RootContainer Component={wrappedArtistSearchResultsContent} route={new ArtistSearchQueryConfig({ term })} />
+  )
+}
