@@ -2,6 +2,7 @@
 
 exports[`renders the display panel 1`] = `
 .c0 {
+  cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
@@ -80,9 +81,9 @@ exports[`renders the display panel 1`] = `
   color: #e5e5e5;
 }
 
-<a
+<div
   className="c0"
-  href="http://artsy.net"
+  onClick={[Function]}
 >
   <div
     className="c1"
@@ -109,5 +110,5 @@ exports[`renders the display panel 1`] = `
       Sponsored by Artsy
     </div>
   </div>
-</a>
+</div>
 `;

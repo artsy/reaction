@@ -8,16 +8,23 @@ interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
   campaign: any
 }
+
 interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
   imageUrl: string
   hoverImageUrl: string
+}
+
+// Rather than using an <a /> tag, which bad markup can oftentimes break during
+// SSR, use JS to open link.
+function handleDisplayPanelClick(url) {
+  window.open(url, '_blank');
 }
 
 export const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
   const { unit, campaign } = props
   const image = unit.assets[0] ? unit.assets[0].url : ""
   return (
-    <LinkWrapper href={unit.link.url}>
+    <Wrapper onClick={() => handleDisplayPanelClick(unit.link.url)}>
       <DisplayPanelContainer
         imageUrl={crop(image, { width: 680, height: 284 })}
         hoverImageUrl={resize(unit.logo, { width: 680 })}
@@ -27,11 +34,12 @@ export const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
         <Body dangerouslySetInnerHTML={{ __html: unit.body }} />
         <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
       </DisplayPanelContainer>
-    </LinkWrapper>
+    </Wrapper>
   )
 }
 
-const LinkWrapper = styled.a`
+const Wrapper = styled.div`
+  cursor: pointer;
   text-decoration: none;
   color: black;
 `
@@ -57,13 +65,13 @@ const DisplayPanelContainer = Div`
   &:hover {
     ${Image} {
       ${props =>
-        props.hoverImageUrl
-          ? `
+    props.hoverImageUrl
+      ? `
           background: black url(${props.hoverImageUrl}) no-repeat center center;
           background-size: contain;
           border: 10px solid black;
         `
-          : ""}
+      : ""}
     }
   }
 `
