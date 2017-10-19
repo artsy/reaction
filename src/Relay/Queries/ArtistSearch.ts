@@ -5,7 +5,6 @@ export class ArtistSearchQueryConfig extends Relay.Route {
     viewer: (component, params) => Relay.QL`
       query {
         viewer {
-          
           ${component.getFragment("viewer", params)}
         }
       }
