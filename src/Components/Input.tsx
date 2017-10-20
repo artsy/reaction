@@ -50,11 +50,8 @@ const StyledDiv = styled.div`
 const BorderClassname = "border-container"
 
 class Input extends React.Component<InputProps, InputState> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      borderClasses: BorderClassname,
-    }
+  state = {
+    borderClasses: BorderClassname,
   }
 
   onFocus(e: React.FocusEvent<HTMLInputElement>) {
