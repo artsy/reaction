@@ -59,7 +59,7 @@ class ItemLink extends React.Component<Props, State> {
     return (
       <Link onClick={this.onClick.bind(this)} fadeIn={this.state.fadeIn} fadeOut={this.state.fadeOut}>
         <Col>
-          <Avatar src={this.props.artist.image.cropped.url} width={50} height={50} />
+          {<Avatar src={this.props.artist.image ? this.props.artist.image.cropped.url : ""} width={50} height={50} />}
         </Col>
         <FullWidthCol>{this.props.artist.name}</FullWidthCol>
         <Col>

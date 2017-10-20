@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { ArtistSearchResults } from "./ArtistSearchResults"
-// import PopularArtists from "./PopularArtists"
+import PopularArtists from "./PopularArtists"
 
 export interface Props {
   searchQuery: string
@@ -9,7 +9,9 @@ export interface Props {
 
 export default class ArtistList extends React.Component<Props, any> {
   render() {
-    return <ArtistSearchResults term={this.props.searchQuery} />
-    // return <PopularArtists />
+    if (this.props.searchQuery.length > 0) {
+      return <ArtistSearchResults term={this.props.searchQuery} />
+    }
+    return <PopularArtists />
   }
 }
