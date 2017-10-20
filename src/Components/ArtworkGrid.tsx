@@ -20,12 +20,9 @@ interface State {
 export class ArtworkGrid extends React.Component<Props, State> {
   public static defaultProps: Partial<Props>
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      interval: null,
-      loading: false,
-    }
+  state = {
+    interval: null,
+    loading: false,
   }
 
   componentDidMount() {

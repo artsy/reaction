@@ -3,25 +3,22 @@
 exports[`Artwork renders correctly 1`] = `
 .c5 {
   color: #333333;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c4 {
   display: block;
-  -webkit-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .c3 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #666666;
   margin-top: 12px;
   font-size: 15px;
-  -webkit-text-align: left;
   text-align: left;
   line-height: 20px;
 }
@@ -68,7 +65,7 @@ exports[`Artwork renders correctly 1`] = `
   right: 0;
 }
 
-@media (min-width: 49px) {
+@media (min-width:49px) {
   .c1:hover .overlay-container.hovered {
     opacity: 1;
     visibility: visible;

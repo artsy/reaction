@@ -2,7 +2,7 @@
 
 exports[`renders the related articles canvas 1`] = `
 .c11 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -14,7 +14,7 @@ exports[`renders the related articles canvas 1`] = `
 }
 
 .c10 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -68,7 +68,6 @@ exports[`renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   color: black;
-  -webkit-text-decoration: none;
   text-decoration: none;
   min-height: 270px;
 }
@@ -83,13 +82,12 @@ exports[`renders the related articles canvas 1`] = `
   flex-direction: column;
   max-width: 278px;
   margin-right: 30px;
-  -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
 }
 
 .c8 {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -116,7 +114,7 @@ exports[`renders the related articles canvas 1`] = `
 }
 
 .c2 {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -128,9 +126,9 @@ exports[`renders the related articles canvas 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   overflow-x: scroll;
 }
@@ -144,13 +142,13 @@ exports[`renders the related articles canvas 1`] = `
   width: 100%;
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c11 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -158,13 +156,13 @@ exports[`renders the related articles canvas 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c10 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -172,41 +170,41 @@ exports[`renders the related articles canvas 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c10:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c6 {
     height: 235px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c8 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c7 {
     height: 150px;
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width:1250px) {
   .c1 {
     margin: 30px 20px 60px 20px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c3 {
     display: block;
   }

@@ -16,7 +16,7 @@ exports[`renders the related articles panel 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -24,7 +24,6 @@ exports[`renders the related articles panel 1`] = `
 }
 
 .c3 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   display: -webkit-box;
   display: -webkit-flex;
@@ -44,7 +43,7 @@ exports[`renders the related articles panel 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;

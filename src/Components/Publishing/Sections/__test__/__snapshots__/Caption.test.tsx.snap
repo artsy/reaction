@@ -6,9 +6,9 @@ exports[`renders a child even if a caption is provided 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 10px 0 10px 0;
 }
@@ -22,7 +22,7 @@ exports[`renders a child even if a caption is provided 1`] = `
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -40,13 +40,13 @@ exports[`renders a child even if a caption is provided 1`] = `
   color: black;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c0 {
     padding: 0px 10px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c1 {
     padding: 0px;
   }
@@ -71,9 +71,9 @@ exports[`renders a saved caption properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 10px 0 10px 0;
 }
@@ -87,7 +87,7 @@ exports[`renders a saved caption properly 1`] = `
 .c1 > p,
 .c1 p,
 .c1 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -105,13 +105,13 @@ exports[`renders a saved caption properly 1`] = `
   color: black;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c0 {
     padding: 0px 10px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c1 {
     padding: 0px;
   }

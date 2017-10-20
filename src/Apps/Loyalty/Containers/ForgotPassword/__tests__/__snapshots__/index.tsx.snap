@@ -24,7 +24,7 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
   </div>
   <input
     autoFocus={true}
-    className="file__StyledInput-s46ncg-1 dNpGkO file__StyledInput-nvgs54-0 guxuny"
+    className="file__StyledInput-s46ncg-1 dNpGkO file__StyledInput-h3ssd9-0 liOjYP"
     name="email"
     onChange={[Function]}
     placeholder="Email"

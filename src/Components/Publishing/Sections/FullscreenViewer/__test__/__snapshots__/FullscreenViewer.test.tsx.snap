@@ -11,7 +11,6 @@ exports[`renders properly 1`] = `
 
 .c11 {
   color: #999;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -23,14 +22,14 @@ exports[`renders properly 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
 .c8 .title {
-  font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -49,7 +48,7 @@ exports[`renders properly 1`] = `
 }
 
 .c7 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -62,7 +61,7 @@ exports[`renders properly 1`] = `
 .c12 {
   margin-left: 20px;
   white-space: nowrap;
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -73,9 +72,9 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: #f8f8f8;
   padding: 30px 60px;
@@ -141,7 +140,7 @@ exports[`renders properly 1`] = `
 .c2 {
   min-height: 25px;
   padding: 30px 60px 0 60px;
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -166,9 +165,9 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c8 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -178,22 +177,22 @@ exports[`renders properly 1`] = `
   }
 
   .c8 .title {
-    font-family: Unica77LLWebMediumItalic ,      'Arial',      'serif';
+    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c9.artist-name {
     margin-bottom: 5px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c6 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -206,9 +205,9 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c7 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -217,16 +216,16 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c12 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c4 {
     position: absolute;
     bottom: 0;
@@ -235,28 +234,28 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c3 {
     margin: 20px 0 80px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c13 {
     margin: 20px 0 80px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c14 {
     margin: 20px 0 80px 0;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c2 {
     padding: 20px 60px 0 20px;
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;

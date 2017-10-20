@@ -28,11 +28,9 @@ exports[`EmailSignup renders an email signup 1`] = `
   margin: 10px;
   border: none;
   box-sizing: border-box;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;
@@ -53,7 +51,7 @@ exports[`EmailSignup renders an email signup 1`] = `
   transition: border-color .25s;
   margin-right: 10px;
   resize: none;
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   border: 2px solid #e5e5e5;
   -webkit-transition: border-color .25s;
@@ -87,7 +85,7 @@ exports[`EmailSignup renders an email signup 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -101,9 +99,8 @@ exports[`EmailSignup renders an email signup 1`] = `
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;

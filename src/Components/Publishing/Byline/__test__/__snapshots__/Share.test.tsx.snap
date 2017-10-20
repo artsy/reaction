@@ -22,7 +22,6 @@ exports[`renders a saved caption properly 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-text-decoration: none;
   text-decoration: none;
   margin-right: 14px;
 }

@@ -15,11 +15,8 @@ interface State {
 }
 
 export class ForSaleCheckbox extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isChecked: false,
-    }
+  state = {
+    isChecked: false,
   }
 
   onClick() {
