@@ -23,7 +23,7 @@ interface DropdownState {
 }
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
-  constructor(props) {
+  constructor(props: DropdownProps) {
     super(props)
     this.state = {
       isHovered: false,

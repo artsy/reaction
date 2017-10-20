@@ -18,12 +18,9 @@ interface State {
 }
 
 export class BorderedPulldown extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selected: null,
-      isHovered: false,
-    }
+  state = {
+    selected: null,
+    isHovered: false,
   }
 
   toggleHover(value) {
@@ -128,8 +125,8 @@ const PulldownOptions = styled.div`
     cursor: pointer;
     &:hover {
       background-color: ${colors.gray};
-    } 
-  } 
+    }
+  }
 `
 
 export default StyledBorderedPulldown
