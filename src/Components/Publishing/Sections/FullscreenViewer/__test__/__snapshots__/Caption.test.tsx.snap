@@ -184,7 +184,7 @@ exports[`renders an artwork caption properly 1`] = `
           >
             <a
               className="c6 c7"
-              href="/artist/fernando-botero"
+              href="/artwork/fernando-botero"
             >
               Fernando Botero
             </a>
@@ -204,21 +204,9 @@ exports[`renders an artwork caption properly 1`] = `
             </a>
           </span>
           <span
-            className="comma"
-          >
-            ,
-             
-          </span>
-          <span
             className="date"
           >
             2000
-          </span>
-          <span
-            className="comma"
-          >
-            ,
-             
           </span>
           <a
             className="c6 c7"

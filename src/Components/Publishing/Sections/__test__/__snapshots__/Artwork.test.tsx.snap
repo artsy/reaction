@@ -1,11 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c8 {
-  color: #999;
-  text-decoration: none;
-}
-
 .c6 {
   padding: 0;
   margin-top: 10px;
@@ -28,15 +23,18 @@ exports[`renders properly 1`] = `
 
 .c7 {
   color: #999;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
-.c7 .artist-name {
-  margin-right: 20px;
+.c7 .name:after {
+  content: ', ';
+}
+
+.c7 .title:after {
+  content: ', ';
+}
+
+.c7 .date:after {
+  content: ', ';
 }
 
 .c5 {
@@ -169,54 +167,9 @@ exports[`renders properly 1`] = `
     <div
       className="c7"
     >
-      <span
-        className="artist-name"
-      >
-        <span
-          className="name"
-        >
-          <a
-            className="c8"
-            href="/artist/fernando-botero"
-          >
-            Fernando Botero
-          </a>
-        </span>
-      </span>
-      <span
-        className="title"
-      >
-        <a
-          className="c8"
-          href="/artwork/fernando-botero-nude-on-the-beach"
-        >
-          Nude on the Beach
-        </a>
-      </span>
-      <span
-        className="comma"
-      >
-        ,
-         
-      </span>
-      <span
-        className="date"
-      >
-        2000
-      </span>
-      <span
-        className="comma"
-      >
-        ,
-         
-      </span>
-      <a
-        className="c8"
-        href="/partner/gary-nader"
-      >
-        Gary Nader
-      </a>
+      <div />
     </div>
   </div>
+   */
 </div>
 `;

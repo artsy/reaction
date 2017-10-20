@@ -32,17 +32,29 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     context_type: "article_fixed",
   }))
   // tslint:disable-next-line:no-empty
-  onClick(e) {}
+  onClick(e) { }
 
   render() {
     const { article } = this.props
+    const href = articleHref(article.slug)
+    const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
+
     return (
       <ArticleFigure>
-        <ImageTitle href={articleHref(article.slug)} onClick={this.onClick}>
-          <BlockImage src={crop(article.thumbnail_image, { width: 510, height: 340 })} alt={article.thumbnail_title} />
-          <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
+        <ImageTitle href={href} onClick={this.onClick}>
+          <BlockImage
+            src={imageSrc}
+            alt={article.thumbnail_title}
+          />
+          <ArticleTitle>
+            {article.thumbnail_title}
+          </ArticleTitle>
         </ImageTitle>
-        <Byline article={article} layout="condensed" />
+
+        <Byline
+          article={article}
+          layout="condensed"
+        />
       </ArticleFigure>
     )
   }
@@ -58,6 +70,7 @@ const ImageTitle = styled.a`
     height: 235px;
   `};
 `
+
 const ArticleFigure = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,11 +79,13 @@ const ArticleFigure = styled.div`
   text-decoration: none;
   color: black;
 `
+
 const ArticleTitle = styled.div`
   ${Fonts.unica("s16")} ${pMedia.sm`
     ${Fonts.unica("s14")}
   `};
 `
+
 const BlockImage = styled.img`
   display: block;
   width: 278px;

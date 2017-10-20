@@ -33,10 +33,15 @@ const getAuthorByline = (authors, author) => {
     } else {
       formattedAuthor = authors[0].name
     }
+
     return (
       <div>
-        <TextSm>{author.name}</TextSm>
-        <div>{"By " + formattedAuthor}</div>
+        <TextSm>
+          {author.name}
+        </TextSm>
+        <div>
+          {"By " + formattedAuthor}
+        </div>
       </div>
     )
   } else {

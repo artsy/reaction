@@ -12,12 +12,10 @@ interface ReadMoreWrapperState {
 }
 
 export class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrapperState> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      truncationHeight: "100%",
-    }
+  state = {
+    truncationHeight: "100%",
   }
+
   componentDidMount() {
     setTimeout(this.truncateArticle, 250)
     window.addEventListener("resize", this.truncateArticle)

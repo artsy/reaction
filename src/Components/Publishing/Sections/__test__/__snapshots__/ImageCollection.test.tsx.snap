@@ -1,11 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
-.c10 {
-  color: #999;
-  text-decoration: none;
-}
-
 .c8 {
   padding: 0;
   margin-top: 10px;
@@ -28,15 +23,18 @@ exports[`renders a single image properly 1`] = `
 
 .c9 {
   color: #999;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
-.c9 .artist-name {
-  margin-right: 20px;
+.c9 .name:after {
+  content: ', ';
+}
+
+.c9 .title:after {
+  content: ', ';
+}
+
+.c9 .date:after {
+  content: ', ';
 }
 
 .c7 {
@@ -89,6 +87,10 @@ exports[`renders a single image properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 @media (max-width:600px) {
@@ -203,66 +205,16 @@ exports[`renders a single image properly 1`] = `
         <div
           className="c9"
         >
-          <span
-            className="artist-name"
-          >
-            <span
-              className="name"
-            >
-              <a
-                className="c10"
-                href="/artist/fernando-botero"
-              >
-                Fernando Botero
-              </a>
-            </span>
-          </span>
-          <span
-            className="title"
-          >
-            <a
-              className="c10"
-              href="/artwork/fernando-botero-nude-on-the-beach"
-            >
-              Nude on the Beach
-            </a>
-          </span>
-          <span
-            className="comma"
-          >
-            ,
-             
-          </span>
-          <span
-            className="date"
-          >
-            2000
-          </span>
-          <span
-            className="comma"
-          >
-            ,
-             
-          </span>
-          <a
-            className="c10"
-            href="/partner/gary-nader"
-          >
-            Gary Nader
-          </a>
+          <div />
         </div>
       </div>
+       */
     </div>
   </div>
 </div>
 `;
 
 exports[`renders properly 1`] = `
-.c10 {
-  color: #999;
-  text-decoration: none;
-}
-
 .c8 {
   padding: 0;
   margin-top: 10px;
@@ -285,15 +237,18 @@ exports[`renders properly 1`] = `
 
 .c9 {
   color: #999;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
-.c9 .artist-name {
-  margin-right: 20px;
+.c9 .name:after {
+  content: ', ';
+}
+
+.c9 .title:after {
+  content: ', ';
+}
+
+.c9 .date:after {
+  content: ', ';
 }
 
 .c7 {
@@ -335,7 +290,7 @@ exports[`renders properly 1`] = `
   text-decoration: none;
 }
 
-.c12 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -347,15 +302,15 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c13 {
+.c12 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c13 > p,
-.c13 p,
-.c13 .public-DraftEditorPlaceholder-root {
+.c12 > p,
+.c12 p,
+.c12 .public-DraftEditorPlaceholder-root {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -364,13 +319,13 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c13 > a,
-.c13 a {
+.c12 > a,
+.c12 a {
   color: #999;
 }
 
-.c13 > a:hover,
-.c13 a:hover {
+.c12 > a:hover,
+.c12 a:hover {
   color: black;
 }
 
@@ -379,12 +334,12 @@ exports[`renders properly 1`] = `
   width: 312px;
 }
 
-.c11 {
+.c10 {
   margin-right: 10px;
   width: 168px;
 }
 
-.c14 {
+.c13 {
   margin-right: 0px;
   width: 178px;
 }
@@ -395,6 +350,10 @@ exports[`renders properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 @media (max-width:600px) {
@@ -410,13 +369,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c12 {
+  .c11 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c13 {
+  .c12 {
     padding: 0px;
   }
 }
@@ -428,13 +387,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c11 {
+  .c10 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c14 {
+  .c13 {
     margin-bottom: 10px;
   }
 }
@@ -533,59 +492,14 @@ exports[`renders properly 1`] = `
         <div
           className="c9"
         >
-          <span
-            className="artist-name"
-          >
-            <span
-              className="name"
-            >
-              <a
-                className="c10"
-                href="/artist/fernando-botero"
-              >
-                Fernando Botero
-              </a>
-            </span>
-          </span>
-          <span
-            className="title"
-          >
-            <a
-              className="c10"
-              href="/artwork/fernando-botero-nude-on-the-beach"
-            >
-              Nude on the Beach
-            </a>
-          </span>
-          <span
-            className="comma"
-          >
-            ,
-             
-          </span>
-          <span
-            className="date"
-          >
-            2000
-          </span>
-          <span
-            className="comma"
-          >
-            ,
-             
-          </span>
-          <a
-            className="c10"
-            href="/partner/gary-nader"
-          >
-            Gary Nader
-          </a>
+          <div />
         </div>
       </div>
+       */
     </div>
   </div>
   <div
-    className="c11"
+    className="c10"
     width={168}
   >
     <div
@@ -657,10 +571,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c11"
       >
         <div
-          className="c13"
+          className="c12"
         >
           <div
             dangerouslySetInnerHTML={
@@ -674,7 +588,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c14"
+    className="c13"
     width={178}
   >
     <div
@@ -746,10 +660,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c11"
       >
         <div
-          className="c13"
+          className="c12"
         >
           <div
             dangerouslySetInnerHTML={

@@ -35,6 +35,7 @@ export const Sections: React.SFC<SectionsProps> = props => {
 function renderSections(article) {
   const renderedSections = article.sections.map((section, i) => {
     const child = getSection(section, article.layout)
+
     if (child) {
       return (
         <SectionContainer key={i} layout={section.layout} articleLayout={article.layout}>
@@ -49,7 +50,12 @@ function renderSections(article) {
 function getSection(section, layout) {
   const sections = {
     image_collection: (
-      <ImageCollection sectionLayout={section.layout} images={section.images} targetHeight={500} gutter={10} />
+      <ImageCollection
+        sectionLayout={section.layout}
+        images={section.images}
+        targetHeight={500}
+        gutter={10}
+      />
     ),
     image_set: <ImageSetPreview section={section} />,
     video: <Video section={section} />,

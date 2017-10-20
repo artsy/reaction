@@ -1,7 +1,7 @@
-import * as _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
+import { articleHref } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -15,15 +15,29 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
 
 export const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
   const { articles, label } = props
+
   return (
     <RelatedArticlesContainer>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+      </Label>
+
       <Collection>
-        {_.map(articles, (article, i) => {
+        {articles.map((article, i) => {
+          const href = articleHref(article.slug)
+          const articleImageSrc = crop(article.thumbnail_image, {
+            width: 160,
+            height: 110
+          })
+
           return (
-            <ArticleLink href={`/${article.slug}`} key={`relatedArticles-${i}`}>
-              <ArticleImage src={crop(article.thumbnail_image, { width: 160, height: 110 })} />
-              <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
+            <ArticleLink href={href} key={`relatedarticles-${i}`}>
+              <ArticleImage
+                src={articleImageSrc}
+              />
+              <ArticleTitle>
+                {article.thumbnail_title}
+              </ArticleTitle>
             </ArticleLink>
           )
         })}
@@ -35,27 +49,33 @@ export const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props 
 RelatedArticlesPanel.defaultProps = {
   label: "Related Stories",
 }
+
 const RelatedArticlesContainer = styled.div`
   max-width: 360px;
 `
+
 const Collection = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const Label = styled.div`
   ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
+
 const ArticleLink = styled.a`
   text-decoration: none;
   display: flex;
   justify-content: left;
   margin-bottom: 10px;
 `
+
 const ArticleImage = styled.img`
   min-width: 80px;
   height: 55px;
   margin-right: 10px;
 `
+
 const ArticleTitle = styled.span`
   ${Fonts.garamond("s17")} color: black;
 `

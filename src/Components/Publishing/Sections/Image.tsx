@@ -13,9 +13,18 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const Image: React.SFC<ImageProps> = props => {
-  const { image, layout, width, height, sectionLayout, children } = props
-  const child = children && children
+  const {
+    children,
+    height,
+    image,
+    layout,
+    sectionLayout,
+    width,
+  } = props
+
   const src = resize(image.url, { width: 1200 })
+  const alt = image.caption.replace(/<[^>]*>/g, "") /* strip caption html */
+
   return (
     <div className="article-image">
       <ImageWrapper
@@ -23,11 +32,16 @@ export const Image: React.SFC<ImageProps> = props => {
         src={src}
         width={width}
         height={height}
-        alt={image.caption.replace(/<[^>]*>/g, "") /* strip caption html */}
+        alt={alt}
         index={image.index}
       />
-      <Caption caption={image.caption} layout={layout} sectionLayout={sectionLayout}>
-        {child}
+
+      <Caption
+        caption={image.caption}
+        layout={layout}
+        sectionLayout={sectionLayout}
+      >
+        {children}
       </Caption>
     </div>
   )

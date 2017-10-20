@@ -13,36 +13,68 @@ interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
   open: boolean
 }
 
+interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
+  open: boolean
+}
+
 export const Caption: React.SFC<CaptionProps> = props => {
-  const caption = props.section.type === "artwork"
-    ? <ArtworkCaption isFullscreenCaption artwork={props.section} linked />
-    : <div dangerouslySetInnerHTML={{ __html: props.section.caption }} />
-  const indexText = `${props.index} of ${props.total}`
+  const {
+    index,
+    open,
+    section,
+    total,
+  } = props
+
+  const isArtwork = section.type === "artwork"
+  const indexText = `${index} of ${total}`
+
   return (
     <CaptionContainer>
       <CaptionTextContainer>
-        <CaptionToggle open={props.open} />
-        <CaptionText open={props.open}>{caption}</CaptionText>
+        <CaptionToggle
+          open={open}
+        />
+
+        <CaptionText open={open}>
+          {isArtwork
+            ? <ArtworkCaption
+              artwork={section}
+              isFullscreenCaption
+              linked
+            />
+            : <div dangerouslySetInnerHTML={{
+              __html: section.caption
+            }} />}
+
+        </CaptionText>
       </CaptionTextContainer>
-      <Index>{indexText}</Index>
+
+      <Index>
+        {indexText}
+      </Index>
     </CaptionContainer>
   )
 }
 
-interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
-  open: boolean
-}
 const CaptionToggle: React.SFC<CaptionOpenProps> = (props, context) => {
   const toggleMessage = props.open ? "Hide" : "View Caption"
+
   return (
-    <StyledCaptionToggle onClick={context.onToggleCaption} className="fullscreen-viewer__caption-toggle">
-      <span>{toggleMessage}</span>
+    <StyledCaptionToggle
+      onClick={context.onToggleCaption}
+      className="fullscreen-viewer__caption-toggle"
+    >
+      <span>
+        {toggleMessage}
+      </span>
     </StyledCaptionToggle>
   )
 }
+
 CaptionToggle.contextTypes = {
   onToggleCaption: PropTypes.func,
 }
+
 const StyledCaptionToggle = styled.div`
   display: none;
   ${pMedia.sm`
@@ -54,7 +86,9 @@ const StyledCaptionToggle = styled.div`
     }
   `}
 `
+
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
+
 const CaptionText = CaptionDiv`
   ${Fonts.unica("s16", "medium")}
   a {
@@ -66,6 +100,7 @@ const CaptionText = CaptionDiv`
     margin-top: ${props.open ? "20px" : "0px"};
   `}
 `
+
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
@@ -74,6 +109,7 @@ const Index = styled.div`
     ${Fonts.unica("s14")}
   `}
 `
+
 const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -89,6 +125,7 @@ const CaptionContainer = styled.div`
     padding: 20px;
   `}
 `
+
 const CaptionTextContainer = styled.div`
   display: flex;
   flex-direction: column;

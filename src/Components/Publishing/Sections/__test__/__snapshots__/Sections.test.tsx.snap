@@ -1,14 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c22 {
+.c21 {
   width: 100%;
   height: 1000px;
-}
-
-.c18 {
-  color: #999;
-  text-decoration: none;
 }
 
 .c16 {
@@ -33,15 +28,18 @@ exports[`renders properly 1`] = `
 
 .c17 {
   color: #999;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
-.c17 .artist-name {
-  margin-right: 20px;
+.c17 .name:after {
+  content: ', ';
+}
+
+.c17 .title:after {
+  content: ', ';
+}
+
+.c17 .date:after {
+  content: ', ';
 }
 
 .c11 {
@@ -132,27 +130,27 @@ exports[`renders properly 1`] = `
   width: 264px;
 }
 
-.c19 {
+.c18 {
   margin-right: 10px;
+  width: 219px;
+}
+
+.c19 {
+  margin-right: 0px;
   width: 219px;
 }
 
 .c20 {
   margin-right: 0px;
-  width: 219px;
-}
-
-.c21 {
-  margin-right: 0px;
   width: 100%;
 }
 
-.c23 {
+.c22 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c24 {
+.c23 {
   margin-right: 0px;
   width: 222px;
 }
@@ -163,20 +161,24 @@ exports[`renders properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.c33 {
+.c32 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c33 > svg {
+.c32 > svg {
   height: 98%;
 }
 
-.c26 {
+.c25 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -202,16 +204,16 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-.c26:hover {
+.c25:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c26:hover .c32 {
+.c25:hover .c31 {
   fill: white;
 }
 
-.c27 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -226,7 +228,7 @@ exports[`renders properly 1`] = `
   height: 50px;
 }
 
-.c28 {
+.c27 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -235,21 +237,21 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c29 {
+.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c30 {
+.c29 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c31 {
+.c30 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -290,7 +292,7 @@ exports[`renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c25 {
+.c24 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -485,7 +487,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c22 {
+  .c21 {
     height: 1300px;
   }
 }
@@ -527,6 +529,12 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
+  .c18 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
   .c19 {
     margin-bottom: 10px;
   }
@@ -539,19 +547,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c21 {
+  .c22 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
   .c23 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c24 {
     margin-bottom: 10px;
   }
 }
@@ -565,13 +567,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c33 {
+  .c32 {
     display: none;
   }
 }
 
 @media (max-width:600px) {
-  .c28 {
+  .c27 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -580,7 +582,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c30 {
+  .c29 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -589,7 +591,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c31 {
+  .c30 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -640,13 +642,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:1250px) {
-  .c25 {
+  .c24 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c25 {
+  .c24 {
     width: 100%;
     padding: 0px;
     margin: 0 0 40px 0;
@@ -1067,44 +1069,10 @@ exports[`renders properly 1`] = `
             <div
               className="c17"
             >
-              <span
-                className="artist-name"
-              >
-                <span
-                  className="name"
-                >
-                  <a
-                    className="c18"
-                    href="/artist/matt-devine"
-                  >
-                    Matt Devine
-                  </a>
-                </span>
-              </span>
-              <span
-                className="title"
-              >
-                <a
-                  className="c18"
-                  href="/artwork/matt-devine-brass-tax"
-                >
-                  Brass Tax
-                </a>
-              </span>
-              <span
-                className="comma"
-              >
-                ,
-                 
-              </span>
-              <a
-                className="c18"
-                href="/partner/joanne-artman-gallery"
-              >
-                Joanne Artman Gallery
-              </a>
+              <div />
             </div>
           </div>
+           */
         </div>
       </div>
     </div>
@@ -1131,7 +1099,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c19"
+        className="c18"
         width={219}
       >
         <div
@@ -1220,7 +1188,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c18"
         width={219}
       >
         <div
@@ -1309,7 +1277,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c19"
         width={219}
       >
         <div
@@ -1421,7 +1389,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c21"
+        className="c20"
         width={undefined}
       >
         <div
@@ -1530,7 +1498,7 @@ exports[`renders properly 1`] = `
     className="c4"
   >
     <iframe
-      className="c22"
+      className="c21"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1559,7 +1527,7 @@ exports[`renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c23"
+        className="c22"
         width={216}
       >
         <div
@@ -1648,7 +1616,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c18"
         width={219}
       >
         <div
@@ -1737,7 +1705,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c24"
+        className="c23"
         width={222}
       >
         <div
@@ -1843,7 +1811,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c24"
   >
     <div
       style={
@@ -1854,27 +1822,27 @@ exports[`renders properly 1`] = `
       }
     >
       <div
-        className="c26"
+        className="c25"
         onClick={[Function]}
       >
         <div
-          className="c27"
+          className="c26"
         >
           <div
-            className="c28"
+            className="c27"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c29"
+            className="c28"
           >
             <div
-              className="c30"
+              className="c29"
             >
               View Slideshow
             </div>
             <div
-              className="c31"
+              className="c30"
             >
               3
                Images
@@ -1882,7 +1850,7 @@ exports[`renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c32 c33"
+          className="c31 c32"
         >
           <svg
             className="image-set"
@@ -1926,13 +1894,13 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c24"
   >
     <div
       className="c5"
     >
       <div
-        className="c21"
+        className="c20"
         width={undefined}
       >
         <div

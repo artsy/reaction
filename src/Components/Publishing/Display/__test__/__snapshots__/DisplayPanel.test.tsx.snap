@@ -5,6 +5,7 @@ exports[`renders the display panel 1`] = `
   cursor: pointer;
   text-decoration: none;
   color: black;
+  margin-top: 50px;
 }
 
 .c3 {
