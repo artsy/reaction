@@ -23,14 +23,13 @@ exports[`renders the canvas in overlay layout 1`] = `
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
   justify-content: space-around;
-  -webkit-text-align: center;
   text-align: center;
   color: #fff;
   max-width: 500px;
 }
 
 .c6 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
@@ -39,14 +38,14 @@ exports[`renders the canvas in overlay layout 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
   line-height: 1.35em;
   margin-bottom: 10px;
   display: initial;
-  background-image: linear-gradient(to bottom, transparent 0, #FFF 2px, transparent 0);
+  background-image: linear-gradient(to bottom,transparent 0,#FFF 2px,transparent 0);
   background-position: bottom;
   background-size: 1px 5px;
   background-repeat: repeat-x;
@@ -62,7 +61,6 @@ exports[`renders the canvas in overlay layout 1`] = `
   width: 100%;
   height: 460px;
   color: #000;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -121,14 +119,12 @@ exports[`renders the canvas in overlay layout 1`] = `
 }
 
 .c0 a {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;
@@ -142,22 +138,20 @@ exports[`renders the canvas in overlay layout 1`] = `
   letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
 .c8 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   line-height: 1.1em;
   color: #cccccc;
   margin: 15px 0 0 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c5 {
     object-position: left;
     width: auto;
@@ -166,7 +160,7 @@ exports[`renders the canvas in overlay layout 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c4 {
     max-width: 100%;
     width: 100%;
@@ -174,16 +168,16 @@ exports[`renders the canvas in overlay layout 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c6 {
     margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c6 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
@@ -191,9 +185,9 @@ exports[`renders the canvas in overlay layout 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c7 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
@@ -201,7 +195,7 @@ exports[`renders the canvas in overlay layout 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c2 {
     padding: 0;
     width: 100%;
@@ -216,13 +210,13 @@ exports[`renders the canvas in overlay layout 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c0 {
     padding: 0 20px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c8 {
     margin: 35px 0 10px 0;
   }
@@ -298,9 +292,9 @@ exports[`renders the canvas in slideshow layout 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 1200px;
 }
@@ -324,7 +318,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c13 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   line-height: 1.1em;
@@ -357,7 +351,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c8 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -366,14 +360,14 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c9 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
   line-height: 1.35em;
   margin-bottom: 10px;
   display: initial;
-  background-image: linear-gradient(to bottom, transparent 0, #000 2px, transparent 0);
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
   background-position: bottom;
   background-size: 1px 5px;
   background-repeat: repeat-x;
@@ -389,7 +383,6 @@ exports[`renders the canvas in slideshow layout 1`] = `
   width: 100%;
   height: 460px;
   color: #000;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -424,14 +417,12 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c0 a {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;
@@ -445,12 +436,11 @@ exports[`renders the canvas in slideshow layout 1`] = `
   letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
 .c11 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   line-height: 1.1em;
@@ -458,19 +448,19 @@ exports[`renders the canvas in slideshow layout 1`] = `
   margin: 15px 0 0 0;
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c3.title-card {
     max-width: 1250px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c3.title-card {
     max-width: 812.5px;
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c4 {
     width: 437.5px;
   }
@@ -480,7 +470,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c4 {
     width: 100%;
   }
@@ -491,33 +481,33 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c10 {
     margin: 0;
     max-width: calc(100% - 40px);
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c12 {
     max-height: 479.375px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c7 {
     object-position: left;
     width: auto;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c6 {
     width: 100%;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c6 {
     max-width: 100%;
     width: 100%;
@@ -525,16 +515,16 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c8 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 23px;
     line-height: 1.5em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c8 {
     margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
@@ -542,24 +532,24 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c8 {
     line-height: 1.35em;
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c9 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c9 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
@@ -567,13 +557,13 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c5 {
     max-height: 479.375px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c5 {
     padding: 0;
     width: 100%;
@@ -588,7 +578,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c11 {
     margin: 35px 0 10px 0;
   }
@@ -735,7 +725,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -744,14 +734,14 @@ exports[`renders the canvas in standard layout with image 1`] = `
 }
 
 .c8 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
   line-height: 1.35em;
   margin-bottom: 10px;
   display: initial;
-  background-image: linear-gradient(to bottom, transparent 0, #000 2px, transparent 0);
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
   background-position: bottom;
   background-size: 1px 5px;
   background-repeat: repeat-x;
@@ -774,7 +764,6 @@ exports[`renders the canvas in standard layout with image 1`] = `
   width: 100%;
   height: 460px;
   color: #000;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -788,9 +777,9 @@ exports[`renders the canvas in standard layout with image 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -814,14 +803,12 @@ exports[`renders the canvas in standard layout with image 1`] = `
 }
 
 .c0 a {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;
@@ -835,12 +822,11 @@ exports[`renders the canvas in standard layout with image 1`] = `
   letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
 .c9 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   line-height: 1.1em;
@@ -848,14 +834,14 @@ exports[`renders the canvas in standard layout with image 1`] = `
   margin: 15px 0 0 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c6 {
     object-position: left;
     width: auto;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c5 {
     max-width: 100%;
     width: 100%;
@@ -863,16 +849,16 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c7 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 23px;
     line-height: 1.5em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c7 {
     margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
@@ -880,24 +866,24 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c7 {
     line-height: 1.35em;
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c8 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c8 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
@@ -905,7 +891,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c3 {
     width: 100%;
     max-width: 100%;
@@ -915,7 +901,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c2 {
     max-height: 479.375px;
     padding: 0 20px;
@@ -923,7 +909,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c2 {
     padding: 0;
     width: 100%;
@@ -938,7 +924,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c4 {
     max-width: 100%;
     width: 100%;
@@ -946,13 +932,13 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c0 {
     padding: 0 20px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c9 {
     margin: 35px 0 10px 0;
   }
@@ -1040,7 +1026,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 .c10 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -1049,14 +1035,14 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 .c11 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
   line-height: 1.35em;
   margin-bottom: 10px;
   display: initial;
-  background-image: linear-gradient(to bottom, transparent 0, #000 2px, transparent 0);
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
   background-position: bottom;
   background-size: 1px 5px;
   background-repeat: repeat-x;
@@ -1135,7 +1121,6 @@ exports[`renders the canvas in standard layout with video 1`] = `
   width: 100%;
   height: 460px;
   color: #000;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1149,9 +1134,9 @@ exports[`renders the canvas in standard layout with video 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -1175,14 +1160,12 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 .c0 a {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04',  'AvantGardeGothicITCW01D 731075',  'AvantGardeGothicITCW01Dm',  'Helvetica',  'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
   -moz-letter-spacing: 1px;
@@ -1196,12 +1179,11 @@ exports[`renders the canvas in standard layout with video 1`] = `
   letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
 .c12 {
-  font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   line-height: 1.1em;
@@ -1209,14 +1191,14 @@ exports[`renders the canvas in standard layout with video 1`] = `
   margin: 15px 0 0 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c9 {
     object-position: left;
     width: auto;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c8 {
     max-width: 100%;
     width: 100%;
@@ -1224,16 +1206,16 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c10 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 23px;
     line-height: 1.5em;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c10 {
     margin: 0 auto 10px auto;
     max-width: calc(100% - 40px);
@@ -1241,24 +1223,24 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c10 {
     line-height: 1.35em;
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c11 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .c11 {
-    font-family: 'Adobe Garamond W08',  'adobe-garamond-pro',  'AGaramondPro-Regular',  'Times New Roman',  'Times',  'serif';
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
     line-height: 1.1em;
@@ -1266,7 +1248,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c3 {
     width: 100%;
     height: auto;
@@ -1278,7 +1260,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width:1150px) {
   .c2 {
     max-height: 479.375px;
     padding: 0 20px;
@@ -1286,7 +1268,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c2 {
     padding: 0;
     width: 100%;
@@ -1301,7 +1283,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c7 {
     max-width: 100%;
     width: 100%;
@@ -1309,13 +1291,13 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c0 {
     padding: 0 20px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c12 {
     margin: 35px 0 10px 0;
   }

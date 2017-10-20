@@ -3,7 +3,6 @@
 exports[`renders properly 1`] = `
 .c8 {
   color: #999;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -14,14 +13,14 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c6 .title {
-  font-family: Unica77LLWebItalic ,      'Arial',      'serif';
+  font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -30,7 +29,6 @@ exports[`renders properly 1`] = `
 .c7 {
   color: #999;
   display: block;
-  -webkit-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -77,17 +75,16 @@ exports[`renders properly 1`] = `
 }
 
 .c0 {
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c6 {
     padding: 0 10px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .c1 .c3 {
     opacity: 1;
   }

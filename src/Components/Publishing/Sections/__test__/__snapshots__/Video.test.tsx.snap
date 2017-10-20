@@ -6,9 +6,9 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 10px 0 10px 0;
 }
@@ -22,7 +22,7 @@ exports[`renders properly 1`] = `
 .c6 > p,
 .c6 p,
 .c6 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -99,13 +99,13 @@ exports[`renders properly 1`] = `
   outline: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c5 {
     padding: 0px 10px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c6 {
     padding: 0px;
   }

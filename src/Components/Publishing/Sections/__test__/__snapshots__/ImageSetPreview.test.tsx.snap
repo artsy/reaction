@@ -5,7 +5,6 @@ exports[`renders a full image set properly 1`] = `
   height: 45px;
   position: relative;
   margin-left: 40px;
-  -webkit-text-align: right;
   text-align: right;
 }
 
@@ -24,23 +23,23 @@ exports[`renders a full image set properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
   padding: 20px;
   cursor: pointer;
 }
 
 .c0:hover {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   color: white;
 }
 
@@ -56,15 +55,15 @@ exports[`renders a full image set properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   height: 50px;
 }
 
 .c2 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -80,47 +79,47 @@ exports[`renders a full image set properly 1`] = `
 }
 
 .c4 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c5 {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c7 {
     display: none;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c2 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c4 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c5 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -198,7 +197,6 @@ exports[`renders a mini image set properly 1`] = `
   height: 45px;
   position: relative;
   margin-left: 40px;
-  -webkit-text-align: right;
   text-align: right;
 }
 
@@ -218,9 +216,9 @@ exports[`renders a mini image set properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   height: 100%;
 }
@@ -249,9 +247,9 @@ exports[`renders a mini image set properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -261,7 +259,7 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 .c3 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -277,47 +275,47 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 .c5 {
-  font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c6 {
-  font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c8 {
     display: none;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c3 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c5 {
-    font-family: Unica77LLWebMedium ,      'Arial',      'serif';
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .c6 {
-    font-family: Unica77LLWebRegular ,      'Arial',      'serif';
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
