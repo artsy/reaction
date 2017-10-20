@@ -58,7 +58,9 @@ exports[`AuthorDate renders a single author 1`] = `
   <div>
     <div
       className="c1"
-    />
+    >
+      FIXME
+    </div>
     <div>
       By Molly Gottschalk
     </div>
@@ -130,7 +132,9 @@ exports[`AuthorDate renders multiple authors 1`] = `
   <div>
     <div
       className="c1"
-    />
+    >
+      FIXME
+    </div>
     <div>
       By Molly Gottschalk and Kana Abe
     </div>
@@ -264,7 +268,7 @@ exports[`Classic Header renders classic header properly 1`] = `
   <div
     className="c2"
   >
-    Joanne Artman Gallery
+    FIXME
     <div
       className="c3"
       color="#666"

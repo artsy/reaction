@@ -174,6 +174,8 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
     // Fullscreen
     if (isFullscreenCaption) {
+      console.warn('FULLSCREEN');
+
       return (
         <StyledFullscreenCaption layout={layout}>
           <Line className="artist-name">
@@ -187,6 +189,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
       // Classic Layout
     } else if (layout === "classic") {
+
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
           <Truncator>
