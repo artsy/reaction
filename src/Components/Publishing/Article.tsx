@@ -118,50 +118,76 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderStandardArticle() {
-    const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
-    const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel ? (
-      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-    ) : (
-      false
-    )
-    const relatedArticleCanvas = relatedArticlesForCanvas ? (
-      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-    ) : (
-      false
-    )
-    const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
-    const campaign = omit(this.props.display, "panel", "canvas")
-    const readMoreTruncation = this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false
-    const displayCanvas = this.props.display ? (
-      <div>
-        <DisplayCanvasBreak />
-        <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
-      </div>
-    ) : (
-      false
-    )
-    const displayPanel = this.props.display ? (
-      <DisplayPanel unit={this.props.display.panel} campaign={campaign} />
-    ) : (
-      false
-    )
+    const {
+      relatedArticlesForCanvas,
+      relatedArticlesForPanel,
+      emailSignupUrl,
+      display,
+    } = this.props
+
+    const {
+      article,
+      isTruncated
+    } = this.state
+
+    const campaign = omit(display, "panel", "canvas")
+
     return (
       <div>
-        <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
-          <Header article={article} />
+        <ReadMoreWrapper isTruncated={isTruncated} hideButton={this.removeTruncation}>
+          <Header
+            article={article}
+          />
+
           <StandardLayout>
-            <Sections article={article} />
+            <Sections
+              article={article}
+            />
+
             <Sidebar>
-              {emailSignup}
-              {relatedArticlePanel}
-              {displayPanel}
+              {emailSignupUrl &&
+                <EmailSignup
+                  signupUrl={emailSignupUrl}
+                />
+              }
+
+              {relatedArticlesForPanel &&
+                <RelatedArticlesPanel
+                  label={"Related Stories"}
+                  articles={relatedArticlesForPanel}
+                />
+              }
+
+              {display &&
+                <DisplayPanel
+                  unit={display.panel}
+                  campaign={campaign}
+                />
+              }
             </Sidebar>
           </StandardLayout>
-          {relatedArticleCanvas}
+
+          {relatedArticlesForCanvas &&
+            <RelatedArticlesCanvas
+              articles={relatedArticlesForCanvas}
+              vertical={article.vertical}
+            />
+          }
+
         </ReadMoreWrapper>
-        {readMoreTruncation}
-        {displayCanvas}
+
+        {isTruncated &&
+          <ReadMore
+            onClick={this.removeTruncation}
+          />
+        }
+
+        { display &&
+          <div>
+            <DisplayCanvasBreak />
+            <DisplayCanvas unit={display.canvas} campaign={campaign} />
+          </div>
+        }
       </div>
     )
   }
