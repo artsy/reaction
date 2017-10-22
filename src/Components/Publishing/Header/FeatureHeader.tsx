@@ -2,7 +2,8 @@ import { get } from 'lodash'
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
+import { Responsive } from '../../../Utils/Responsive'
+import { pMedia as breakpoint } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
 
@@ -10,73 +11,80 @@ const IMAGE_QUALITY: number = 60
 
 interface FeatureHeaderProps {
   article?: any
-  vertical?: any
-  title: any
   deck?: any
-  image?: any
   height?: string
+  image?: any
+  title: any
   size?: {
     width: number
   }
+  vertical?: any
 }
 
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, size, height } = props
+  const { article, vertical, title, deck, image, height } = props
   const hero = article.hero_section
   const url = get(hero, "url", "")
   const type = get(hero, "type", "text")
-  const isMobile = size.width < 600
 
   // Video / Image / Text
   const Asset = () => renderAsset(type)(url, article.title, image)
 
-  // Layouts
-  const isFullScreenLayout = type === 'fullscreen'
-  const isDesktopSplitLayout = type === 'split' && !isMobile
-  const isMobileSplitLayout = type === "split" && isMobile
-  const isTextLayout = type === 'text'
-
   return (
     <FeatureHeaderContainer data-type={type} height={height}>
-      {isFullScreenLayout &&
-        <div>
-          <Asset />
-          <Overlay />
-        </div>}
+      <Responsive>
+        {({ isMobile }) => {
+          const isFullScreenLayout = type === 'fullscreen'
+          const isDesktopSplitLayout = type === 'split' && !isMobile
+          const isMobileSplitLayout = type === "split" && isMobile
+          const isTextLayout = type === 'text'
 
-      {isDesktopSplitLayout &&
-        <Asset />}
+          return (
+            <div>
+              {isFullScreenLayout &&
+                <div>
+                  <Asset />
+                  <Overlay />
+                </div>}
 
-      <HeaderTextContainer>
-        <HeaderText>
-          <Vertical>
-            {vertical}
-          </Vertical>
+              {isDesktopSplitLayout &&
+                <Asset />}
 
-          <Title>
-            {title}
-          </Title>
+              <HeaderTextContainer>
+                <HeaderText>
+                  <Vertical>
+                    {vertical}
+                  </Vertical>
 
-          {isMobileSplitLayout &&
-            <Asset />}
+                  <Title>
+                    {title}
+                  </Title>
 
-          <SubHeader>
-            {deck &&
-              <Deck>
-                {deck}
-              </Deck>}
+                  {/* FIXME */}
+                  {isMobileSplitLayout &&
+                    <Asset />}
 
-            <Byline
-              article={article}
-              layout={type}
-            />
-          </SubHeader>
-        </HeaderText>
+                  <SubHeader>
+                    {deck &&
+                      <Deck>
+                        {deck}
+                      </Deck>}
 
-        {isTextLayout &&
-          <Asset />}
+                    <Byline
+                      article={article}
+                      layout={type}
+                    />
+                  </SubHeader>
+                </HeaderText>
 
-      </HeaderTextContainer>
+                {isTextLayout &&
+                  <Asset />}
+
+              </HeaderTextContainer>
+            </div>
+          )
+        }}
+      </Responsive>
     </FeatureHeaderContainer>
   )
 }
@@ -84,13 +92,13 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
 FeatureHeaderComponent.defaultProps = {
   height: "100vh",
   size: {
-    width: 500,
+    width: 1024,
   },
 }
 
 // Helpers
 
-function renderAsset(type: string): Function {
+function renderAsset(type: string) {
   const isTextType = type === 'text'
 
   let Layout
@@ -168,11 +176,11 @@ const Overlay = Div.extend`
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
-  ${pMedia.sm`
+      margin-bottom: 10px;
+  ${breakpoint.sm`
     ${Fonts.unica("s14", "medium")}
   `}
-`
+      `
 const HeaderTextContainer = Div.extend`
   margin: auto;
 `
@@ -221,74 +229,80 @@ const TextAsset = styled.div`
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
-  display: flex;
+      display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  ${pMedia.sm`
+
+  ${breakpoint.sm`
     align-items: flex-start;
     flex-direction: column;
   `}
-`
+      `
 const Title = styled.div`
   ${Fonts.unica("s100")}
-  margin-bottom: 75px;
+      margin-bottom: 75px;
   letter-spaceing: -0.035em;
-  ${pMedia.xl`
+
+  ${breakpoint.xl`
     ${Fonts.unica("s80")}
   `}
-  ${pMedia.md`
+
+  ${breakpoint.md`
     ${Fonts.unica("s65")}
   `}
-  ${pMedia.xs`
+
+  ${breakpoint.xs`
     ${Fonts.unica("s45")}
   `}
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")}
   line-height: 1.4em;
-  ${pMedia.sm`
+
+  ${Fonts.unica("s16", "medium")}
+
+      ${breakpoint.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
   `}
-`
+      `
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
   &[data-type="text"] {
     height: auto;
     ${Title} {
-      margin-bottom: 150px;
+        margin - bottom: 150px;
     }
   }
   &[data-type="split"] {
-    ${Title} {
-      flex-grow: 1;
+        ${Title} {
+        flex - grow: 1;
     }
     ${HeaderText} {
-      width: 50%;
+        width: 50%;
     }
     ${FeatureImage} {
-      width: 50%;
+        width: 50%;
       border: 20px solid white;
     }
     ${FeatureVideoContainer} {
-      width: 50%;
+        width: 50%;
       border: 20px solid white;
     }
     ${FeatureVideo} {
-      width: 50vw;
+        width: 50vw;
     }
     ${SubHeader} {
-      align-items: flex-start;
+        align - items: flex-start;
       flex-direction: column;
     }
     ${Deck} {
-      margin-bottom: 30px;
+        margin - bottom: 30px;
     }
-    ${pMedia.xs`
+    ${breakpoint.xs`
       ${Title} {
         margin-bottom: 20px;
       }
@@ -311,22 +325,21 @@ const FeatureHeaderContainer = Div.extend`
         width: 100%;
       }
     `}
-  }
+      }
   &[data-type="fullscreen"] {
-    ${HeaderText} {
-      padding: 50px;
+        ${HeaderText} {
+        padding: 50px;
       color: #fff;
       justify-content: flex-end;
       margin: auto;
       text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     }
-    ${pMedia.xs`
+    ${breakpoint.xs`
       ${HeaderText} {
         padding: 20px;
       }
     `}
-  }
+      }
 `
-
-// TODO: Fix this naming ref
+// TODO: Fix component name
 export const FeatureHeader = FeatureHeaderComponent

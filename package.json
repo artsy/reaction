@@ -134,6 +134,7 @@
     "react-lines-ellipsis": "damassi/react-lines-ellipsis",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
+    "react-responsive-decorator": "^0.0.1",
     "react-sizeme": "^2.3.2",
     "react-slick": "^0.14.11",
     "react-styled-flexboxgrid": "^2.0.0",
