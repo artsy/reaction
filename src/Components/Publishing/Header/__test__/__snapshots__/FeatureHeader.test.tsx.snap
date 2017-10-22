@@ -437,7 +437,7 @@ exports[`feature renders feature full header properly 1`] = `
           >
             <a
               className="c18"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
             >
@@ -463,7 +463,7 @@ exports[`feature renders feature full header properly 1`] = `
             </a>
             <a
               className="c18"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -489,7 +489,7 @@ exports[`feature renders feature full header properly 1`] = `
             </a>
             <a
               className="c18"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://artsy.net/article/artsy-editorial-path-winning-art-prize"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
               <svg
@@ -928,7 +928,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
           >
             <a
               className="c16"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
             >
@@ -954,7 +954,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
             </a>
             <a
               className="c16"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -980,7 +980,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
             </a>
             <a
               className="c16"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://artsy.net/article/artsy-editorial-path-winning-art-prize"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
               <svg
@@ -1456,7 +1456,7 @@ exports[`feature renders feature header with children properly 1`] = `
           >
             <a
               className="c18"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
             >
@@ -1482,7 +1482,7 @@ exports[`feature renders feature header with children properly 1`] = `
             </a>
             <a
               className="c18"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -1508,7 +1508,7 @@ exports[`feature renders feature header with children properly 1`] = `
             </a>
             <a
               className="c18"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://artsy.net/article/artsy-editorial-path-winning-art-prize"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
               <svg
@@ -1963,7 +1963,7 @@ exports[`feature renders feature split header properly 1`] = `
           >
             <a
               className="c17"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
             >
@@ -1989,7 +1989,7 @@ exports[`feature renders feature split header properly 1`] = `
             </a>
             <a
               className="c17"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -2015,7 +2015,7 @@ exports[`feature renders feature split header properly 1`] = `
             </a>
             <a
               className="c17"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://artsy.net/article/artsy-editorial-path-winning-art-prize"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
               <svg
@@ -2464,7 +2464,7 @@ exports[`feature renders feature text header properly 1`] = `
           >
             <a
               className="c15"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
             >
@@ -2490,7 +2490,7 @@ exports[`feature renders feature text header properly 1`] = `
             </a>
             <a
               className="c15"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fartsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -2516,7 +2516,7 @@ exports[`feature renders feature text header properly 1`] = `
             </a>
             <a
               className="c15"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://artsy.net/article/artsy-editorial-path-winning-art-prize"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
               <svg

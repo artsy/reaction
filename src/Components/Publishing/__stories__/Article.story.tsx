@@ -19,19 +19,19 @@ const story = storiesOf("Publishing/Articles", module).add("Standard", () => {
     />
   )
 })
-;["overlay", "image", "video", "slideshow"].forEach(mediaType => {
-  story.add(`Standard with ${mediaType} ad`, () => {
-    return (
-      <Article
-        article={StandardArticle}
-        display={Display(mediaType)}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
-    )
+  ;["overlay", "image", "video", "slideshow"].forEach(mediaType => {
+    story.add(`Standard with ${mediaType} ad`, () => {
+      return (
+        <Article
+          article={StandardArticle}
+          display={Display(mediaType)}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+      )
+    })
   })
-})
 
 story
   .add("Standard without Vertical", () => {

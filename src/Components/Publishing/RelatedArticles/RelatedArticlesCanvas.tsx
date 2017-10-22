@@ -20,6 +20,7 @@ interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
 
 export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
   const { articles, vertical } = props
+
   if (!vertical) {
     return <div />
   } else {
@@ -32,7 +33,12 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
           </Title>
           <ArticlesWrapper>
             {_.map(articles, (article, i) => {
-              return <RelatedArticleFigure article={article} key={`related-article-figure-${i}`} />
+              return (
+                <RelatedArticleFigure
+                  article={article}
+                  key={`related-article-figure-${i}`}
+                />
+              )
             })}
           </ArticlesWrapper>
         </RelatedArticlesContainer>

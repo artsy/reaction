@@ -14,6 +14,19 @@ interface ArtworkProps {
   height?: string | number
 }
 
+export const Artwork: React.SFC<ArtworkProps> = props => {
+  return (
+    <div className="display-artwork">
+      <ArtworkImage {...props} />
+      <ArtworkCaption {...props} /> */
+    </div>
+  )
+}
+
+Artwork.defaultProps = {
+  linked: true,
+}
+
 const ArtworkImage: React.SFC<ArtworkProps> = props => {
   const { artwork, linked, height, width, layout } = props
   const src = resize(artwork.image, { width: 1200 })
@@ -38,19 +51,6 @@ const ArtworkImage: React.SFC<ArtworkProps> = props => {
 ArtworkImage.defaultProps = {
   width: "100%",
   height: "auto",
-}
-
-export const Artwork: React.SFC<ArtworkProps> = props => {
-  return (
-    <div className="display-artwork">
-      <ArtworkImage {...props} />
-      <ArtworkCaption {...props} />
-    </div>
-  )
-}
-
-Artwork.defaultProps = {
-  linked: true,
 }
 
 const ArtworkImageLink = styled.a`

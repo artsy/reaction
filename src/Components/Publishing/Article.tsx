@@ -169,6 +169,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   render() {
     const { marginTop } = this.props
     const { article } = this.state
+
     return (
       <ArticleContainer marginTop={marginTop}>
         {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}

@@ -1,3 +1,4 @@
+import { get } from 'lodash'
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
@@ -16,23 +17,32 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
 
 // Rather than using an <a /> tag, which bad markup can oftentimes break during
 // SSR, use JS to open link.
-function handleDisplayPanelClick(url) {
+function handleDisplayPanelClick(url: string) {
   window.open(url, '_blank');
 }
 
 export const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
   const { unit, campaign } = props
-  const image = unit.assets[0] ? unit.assets[0].url : ""
+  const image = get(unit.assets, '0.url', '')
+  const imageUrl = crop(image, { width: 680, height: 284 })
+  const hoverImageUrl = resize(unit.logo, { width: 680 })
+
   return (
     <Wrapper onClick={() => handleDisplayPanelClick(unit.link.url)}>
-      <DisplayPanelContainer
-        imageUrl={crop(image, { width: 680, height: 284 })}
-        hoverImageUrl={resize(unit.logo, { width: 680 })}
-      >
+      <DisplayPanelContainer imageUrl={imageUrl} hoverImageUrl={hoverImageUrl}>
         <Image />
-        <Headline>{unit.headline}</Headline>
-        <Body dangerouslySetInnerHTML={{ __html: unit.body }} />
-        <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+
+        <Headline>
+          {unit.headline}
+        </Headline>
+
+        <Body dangerouslySetInnerHTML={{
+          __html: unit.body
+        }} />
+
+        <SponsoredBy>
+          {`Sponsored by ${campaign.name}`}
+        </SponsoredBy>
       </DisplayPanelContainer>
     </Wrapper>
   )
@@ -42,7 +52,9 @@ const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
   color: black;
+  margin-top: 50px;
 `
+
 const Image = styled.div`
   margin-bottom: 15px;
   width: 100%;
@@ -50,7 +62,9 @@ const Image = styled.div`
   background-color: black;
   box-sizing: border-box;
 `
+
 const Div: StyledFunction<DivUrlProps> = styled.div
+
 const DisplayPanelContainer = Div`
   display: flex;
   flex-direction: column;
@@ -75,10 +89,12 @@ const DisplayPanelContainer = Div`
     }
   }
 `
+
 const Headline = styled.div`
   ${Fonts.unica("s16", "medium")} line-height: 1.23em;
   margin-bottom: 3px;
 `
+
 const Body = styled.div`
   ${Fonts.garamond("s15")} line-height: 1.53em;
   margin-bottom: 30px;
@@ -86,6 +102,7 @@ const Body = styled.div`
     color: black;
   }
 `
+
 const SponsoredBy = styled.div`
   ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
 `

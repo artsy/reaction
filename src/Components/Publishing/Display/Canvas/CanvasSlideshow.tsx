@@ -17,6 +17,16 @@ interface CanvasSlideshowProps {
   unit: any
 }
 
+interface NavArrowProps extends React.HTMLProps<HTMLDivElement> {
+  direction: string
+  isVisible?: boolean
+  containerWidth: number
+}
+
+interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
+  containerWidth: number
+}
+
 @track()
 export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
   private slider: any
@@ -24,11 +34,16 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
   constructor(props) {
     super(props)
     this.onChangeSlide = this.onChangeSlide.bind(this)
-    this.state = { isOnTitle: true }
+
+    this.state = {
+      isOnTitle: true
+    }
   }
 
   afterSlideChange = currentSlide => {
-    this.setState({ isOnTitle: currentSlide === 0 })
+    this.setState({
+      isOnTitle: currentSlide === 0
+    })
   }
 
   @track(props => ({
@@ -41,28 +56,44 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
   renderTitleCard() {
     const { children, disclaimer, containerWidth, unit } = this.props
-    const hasCaptions = compact(map(unit.assets, "caption")).length > 0
+    const renderDisclaimer = compact(map(unit.assets, "caption")).length > 0
+
     return (
       <Title containerWidth={containerWidth}>
         {children}
-        {hasCaptions && <Disclaimer>{disclaimer}</Disclaimer>}
+
+        {renderDisclaimer &&
+          <Disclaimer>
+            {disclaimer}
+          </Disclaimer>}
       </Title>
     )
   }
 
   renderSlides = () => {
     const { unit, containerWidth } = this.props
+
     return unit.assets.map((image, i) => {
+      const renderTitleCard = i === 0 && containerWidth >= 900
+      const imageSrc = crop(image.url, { width: 780, height: 460 })
+      const caption = image.caption || ''
+
       return (
         <Slide key={i} className={i === 0 && "title-card"} containerWidth={containerWidth}>
-          {i === 0 && containerWidth >= 900 && this.renderTitleCard()}
+          {renderTitleCard &&
+            this.renderTitleCard()}
+
           <div>
             <Image
-              src={crop(image.url, { width: 780, height: 460 })}
-              alt={image.caption || ""}
+              src={imageSrc}
+              alt={caption}
               containerWidth={containerWidth}
             />
-            {image.caption && <Caption>{image.caption}</Caption>}
+
+            {caption &&
+              <Caption>
+                {image.caption}
+              </Caption>}
           </div>
         </Slide>
       )
@@ -71,13 +102,19 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
   render() {
     const { containerWidth } = this.props
+
     const sliderSettings = {
       dots: false,
       lazyLoad: false,
       infinite: false,
       variableWidth: true,
       centerMode: true,
-      nextArrow: <RightArrow containerWidth={containerWidth} onChangeSlide={slide => this.onChangeSlide(slide)} />,
+      nextArrow: (
+        <RightArrow
+          containerWidth={containerWidth}
+          onChangeSlide={slide => this.onChangeSlide(slide)}
+        />
+      ),
       prevArrow: (
         <LeftArrow
           containerWidth={containerWidth}
@@ -100,12 +137,16 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
       ],
     }
 
+    const renderTitleCard = containerWidth < 900
+
     return (
       <SliderContainer containerWidth={containerWidth}>
         <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
           {this.renderSlides()}
         </Slider>
-        {containerWidth < 900 && this.renderTitleCard()}
+
+        {renderTitleCard &&
+          this.renderTitleCard()}
       </SliderContainer>
     )
   }
@@ -113,6 +154,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
 const LeftArrow = props => {
   const slide = props.currentSlide - 1 >= 0 ? 0 : props.currentSlide - 1
+
   return (
     <NavArrow
       containerWidth={props.containerWidth}
@@ -127,6 +169,7 @@ const LeftArrow = props => {
 
 const RightArrow = props => {
   const slide = props.currentSlide + 1 === props.slideCount ? 0 : props.currentSlide + 1
+
   return (
     <NavArrow
       containerWidth={props.containerWidth}
@@ -139,15 +182,6 @@ const RightArrow = props => {
   )
 }
 
-interface NavArrowProps extends React.HTMLProps<HTMLDivElement> {
-  direction: string
-  isVisible?: boolean
-  containerWidth: number
-}
-
-interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
-  containerWidth: number
-}
 
 const arrowDiv: StyledFunction<NavArrowProps> = styled.div
 const responsiveDiv: StyledFunction<ResponsiveProps> = styled.div
