@@ -1,86 +1,12 @@
+import { get } from 'lodash'
 import React from "react"
-import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { sizeMeRefreshRate } from "../Constants"
 import { Fonts } from "../Fonts"
 
-function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
-  if (layout === "fullscreen") {
-    return (
-      <div>
-        {renderAsset(url, title, imageChild)}
-        <Overlay />
-      </div>
-    )
-  } else if (layout === "split" && !isMobile) {
-    return renderAsset(url, title, imageChild)
-  } else {
-    return false
-  }
-}
-
-function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
-  if (layout === "split" && isMobile) {
-    return renderAsset(url, title, imageChild)
-  } else {
-    return false
-  }
-}
-
-function renderAsset(url, title, imageChild) {
-  if (isVideo(url)) {
-    return (
-      <FeatureVideoContainer>
-        {imageChild}
-        <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
-      </FeatureVideoContainer>
-    )
-  } else {
-    const src = url.length && resize(url, { width: 1600 })
-    const alt = url.length ? title : ""
-    return (
-      <FeatureImage src={src} alt={alt}>
-        {imageChild}
-      </FeatureImage>
-    )
-  }
-}
-
-function renderTextLayoutAsset(url, layout, title, imageChild) {
-  if (layout === "text") {
-    if (isVideo(url)) {
-      return (
-        <TextAsset>
-          {imageChild}
-          <Video src={url} autoPlay controls={false} loop muted playsInline />
-        </TextAsset>
-      )
-    } else {
-      const alt = url.length ? title : ""
-      const src = url.length && resize(url, { width: 1200 })
-      const image = <Image src={src} alt={alt} />
-      return (
-        <TextAsset>
-          {imageChild}
-          {url.length && image}
-        </TextAsset>
-      )
-    }
-  } else {
-    return false
-  }
-}
-
-function isVideo(url) {
-  return url.includes("mp4")
-}
-
-const renderDeck = deck => {
-  return deck ? <Deck>{deck}</Deck> : false
-}
+const IMAGE_QUALITY: number = 60
 
 interface FeatureHeaderProps {
   article?: any
@@ -97,23 +23,56 @@ interface FeatureHeaderProps {
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const { article, vertical, title, deck, image, size, height } = props
   const hero = article.hero_section
-  const url = hero && hero.url || ""
-  const type = hero && hero.type || "text"
-  const isMobile = size.width && size.width < 600 ? true : false
+  const url = get(hero, "url", "")
+  const type = get(hero, "type", "text")
+  const isMobile = size.width < 600
+
+  // Layouts
+  const isFullScreenLayout = type === 'fullscreen'
+  const isDesktopSplitLayout = type === 'split' && !isMobile
+  const isMobileSplitLayout = type === "split" && isMobile
+  const isTextLayout = type === 'text'
+
   return (
     <FeatureHeaderContainer data-type={type} height={height}>
-      {renderFeatureAsset(url, type, isMobile, article.title, image)}
+      {isFullScreenLayout &&
+        <div>
+          {renderAsset(type)(url, article.title, image)}
+          <Overlay />
+        </div>}
+
+      {isDesktopSplitLayout &&
+        renderAsset(type)(url, article.title, image)}
+
       <HeaderTextContainer>
         <HeaderText>
-          <Vertical>{vertical}</Vertical>
-          <Title>{title}</Title>
-          {renderMobileSplitAsset(url, type, isMobile, article.title, image)}
+          <Vertical>
+            {vertical}
+          </Vertical>
+
+          <Title>
+            {title}
+          </Title>
+
+          {isMobileSplitLayout &&
+            renderAsset(type)(url, article.title, image)}
+
           <SubHeader>
-            {renderDeck(deck)}
-            <Byline article={article} layout={type} />
+            {deck &&
+              <Deck>
+                {deck}
+              </Deck>}
+
+            <Byline
+              article={article}
+              layout={type}
+            />
           </SubHeader>
         </HeaderText>
-        {renderTextLayoutAsset(url, type, article.title, image)}
+
+        {isTextLayout &&
+          renderAsset(type)(url, article.title, image)}
+
       </HeaderTextContainer>
     </FeatureHeaderContainer>
   )
@@ -126,6 +85,73 @@ FeatureHeaderComponent.defaultProps = {
   },
 }
 
+// Helpers
+
+function renderAsset(type: string): Function {
+  const isTextType = type === 'text'
+
+  let Layout
+  let Player
+  let ImageW
+
+  if (isTextType) {
+    Layout = TextAsset
+    Player = Video
+    ImageW = Image
+  } else {
+    Layout = FeatureVideoContainer
+    Player = FeatureVideo
+    ImageW = FeatureImage
+  }
+
+  return (url: string, title: string, image: any) => {
+    const isVideo = url.includes("mp4")
+
+    if (isVideo) {
+      return (
+        <Layout>
+          {image}
+
+          <Player autoPlay loop muted playsInline
+            src={url}
+            controls={false}
+          />
+        </Layout>
+      )
+    } else {
+      const hasImage = url.length
+
+      if (hasImage) {
+        const src = resize(url, {
+          width: 1600,
+          quality: IMAGE_QUALITY
+        })
+
+        if (isTextType) {
+          return (
+            <TextAsset>
+              {image}
+
+              <ImageW
+                src={src}
+                alt={title}
+              />
+            </TextAsset>
+          )
+        } else {
+          return (
+            <ImageW src={src} alt={title}>
+              {image}
+            </ImageW>
+          )
+        }
+      }
+    }
+  }
+}
+
+// Styles
+
 const Div = styled.div`
   width: 100%;
   height: 100%;
@@ -133,7 +159,9 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+
+  // TODO: This seems to visually exacerbate the load time; do we need?
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
@@ -297,9 +325,5 @@ const FeatureHeaderContainer = Div.extend`
   }
 `
 
-const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
-  noPlaceholder: true,
-}
-
-export const FeatureHeader = sizeMe(sizeMeOptions)(FeatureHeaderComponent)
+// TODO: Fix this naming ref
+export const FeatureHeader = FeatureHeaderComponent

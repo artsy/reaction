@@ -45,9 +45,7 @@ const getAuthorByline = (authors, author) => {
       </div>
     )
   } else {
-    // FIXME
-    // return author.name
-    return "FIXME"
+    return author.name
   }
 }
 

@@ -28,7 +28,10 @@ let plugins = [new CheckerPlugin()]
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
 module.exports = {
-  devtool: "#inline-source-map", // Otherwise getting errors about e.g. `Relay` not being defined.
+  // devtool: "#inline-source-map", // Otherwise getting errors about e.g. `Relay` not being defined.
+
+  // FIXME:
+  devtool: "eval",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
