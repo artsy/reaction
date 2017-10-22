@@ -27,6 +27,9 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const type = get(hero, "type", "text")
   const isMobile = size.width < 600
 
+  // Video / Image / Text
+  const Asset = () => renderAsset(type)(url, article.title, image)
+
   // Layouts
   const isFullScreenLayout = type === 'fullscreen'
   const isDesktopSplitLayout = type === 'split' && !isMobile
@@ -37,12 +40,12 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
     <FeatureHeaderContainer data-type={type} height={height}>
       {isFullScreenLayout &&
         <div>
-          {renderAsset(type)(url, article.title, image)}
+          <Asset />
           <Overlay />
         </div>}
 
       {isDesktopSplitLayout &&
-        renderAsset(type)(url, article.title, image)}
+        <Asset />}
 
       <HeaderTextContainer>
         <HeaderText>
@@ -55,7 +58,7 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
           </Title>
 
           {isMobileSplitLayout &&
-            renderAsset(type)(url, article.title, image)}
+            <Asset />}
 
           <SubHeader>
             {deck &&
@@ -71,7 +74,7 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
         </HeaderText>
 
         {isTextLayout &&
-          renderAsset(type)(url, article.title, image)}
+          <Asset />}
 
       </HeaderTextContainer>
     </FeatureHeaderContainer>
