@@ -31,61 +31,59 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const Asset = () => renderAsset(type)(url, article.title, image)
 
   return (
-    <FeatureHeaderContainer data-type={type} height={height}>
-      <Responsive>
-        {({ isMobile }) => {
-          const isFullScreenLayout = type === 'fullscreen'
-          const isDesktopSplitLayout = type === 'split' && !isMobile
-          const isMobileSplitLayout = type === "split" && isMobile
-          const isTextLayout = type === 'text'
+    <Responsive>
+      {({ isMobile }) => {
+        const isFullScreenLayout = type === 'fullscreen'
+        const isDesktopSplitLayout = type === 'split' && !isMobile
+        const isMobileSplitLayout = type === "split" && isMobile
+        const isTextLayout = type === 'text'
 
-          return (
-            <div>
-              {isFullScreenLayout &&
-                <div>
-                  <Asset />
-                  <Overlay />
-                </div>}
+        return (
+          <FeatureHeaderContainer data-type={type} height={height}>
+            {isFullScreenLayout &&
+              <div>
+                <Asset />
+                <Overlay />
+              </div>}
 
-              {isDesktopSplitLayout &&
-                <Asset />}
+            {isDesktopSplitLayout &&
+              <Asset />}
 
-              <HeaderTextContainer>
-                <HeaderText>
-                  <Vertical>
-                    {vertical}
-                  </Vertical>
+            <HeaderTextContainer>
+              <HeaderText>
+                <Vertical>
+                  {vertical}
+                </Vertical>
 
-                  <Title>
-                    {title}
-                  </Title>
+                <Title>
+                  {title}
+                </Title>
 
-                  {/* FIXME */}
-                  {isMobileSplitLayout &&
-                    <Asset />}
-
-                  <SubHeader>
-                    {deck &&
-                      <Deck>
-                        {deck}
-                      </Deck>}
-
-                    <Byline
-                      article={article}
-                      layout={type}
-                    />
-                  </SubHeader>
-                </HeaderText>
-
-                {isTextLayout &&
+                {/* FIXME */}
+                {isMobileSplitLayout &&
                   <Asset />}
 
-              </HeaderTextContainer>
-            </div>
-          )
-        }}
-      </Responsive>
-    </FeatureHeaderContainer>
+                <SubHeader>
+                  {deck &&
+                    <Deck>
+                      {deck}
+                    </Deck>}
+
+                  <Byline
+                    article={article}
+                    layout={type}
+                  />
+                </SubHeader>
+              </HeaderText>
+
+              {isTextLayout &&
+                <Asset />}
+
+            </HeaderTextContainer>
+          </FeatureHeaderContainer>
+        )
+      }}
+    </Responsive>
   )
 }
 
@@ -176,11 +174,11 @@ const Overlay = Div.extend`
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
-      margin-bottom: 10px;
+  margin-bottom: 10px;
   ${breakpoint.sm`
     ${Fonts.unica("s14", "medium")}
   `}
-      `
+`
 const HeaderTextContainer = Div.extend`
   margin: auto;
 `
@@ -274,49 +272,52 @@ const FeatureHeaderContainer = Div.extend`
   &[data-type="text"] {
     height: auto;
     ${Title} {
-        margin - bottom: 150px;
+      margin-bottom: 150px;
     }
   }
   &[data-type="split"] {
-        ${Title} {
-        flex - grow: 1;
+      ${Title} {
+      flex-grow: 1;
     }
     ${HeaderText} {
-        width: 50%;
+      width: 50%;
     }
     ${FeatureImage} {
-        width: 50%;
+      width: 50%;
       border: 20px solid white;
     }
     ${FeatureVideoContainer} {
-        width: 50%;
+      width: 50%;
       border: 20px solid white;
     }
     ${FeatureVideo} {
-        width: 50vw;
+      width: 50vw;
     }
     ${SubHeader} {
-        align - items: flex-start;
+      align-items: flex-start;
       flex-direction: column;
     }
     ${Deck} {
-        margin - bottom: 30px;
+        margin-bottom: 30px;
     }
     ${breakpoint.xs`
       ${Title} {
         margin-bottom: 20px;
+        flex-grow: 0;
       }
       ${HeaderText} {
         width: 100%;
       }
       ${FeatureImage} {
         width: 100%;
+        height: 50%;
         position: relative;
         border: 0px;
         margin-bottom: 30px;
       }
       ${FeatureVideoContainer} {
         width: 100%;
+        height: 50%;
         position: relative;
         border: 0px;
         margin-bottom: 30px;
@@ -325,21 +326,22 @@ const FeatureHeaderContainer = Div.extend`
         width: 100%;
       }
     `}
-      }
+  }
   &[data-type="fullscreen"] {
-        ${HeaderText} {
-        padding: 50px;
-      color: #fff;
-      justify-content: flex-end;
-      margin: auto;
-      text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    ${HeaderText} {
+    padding: 50px;
+    color: #fff;
+    justify-content: flex-end;
+    margin: auto;
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  }
+  ${breakpoint.xs`
+    ${HeaderText} {
+      padding: 20px;
     }
-    ${breakpoint.xs`
-      ${HeaderText} {
-        padding: 20px;
-      }
-    `}
-      }
+  `}
+}
 `
+
 // TODO: Fix component name
 export const FeatureHeader = FeatureHeaderComponent
