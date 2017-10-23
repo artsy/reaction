@@ -238,6 +238,7 @@ exports[`renders the canvas in overlay layout 1`] = `
   <a
     className="c2"
     href="http://artsy.net"
+    onClick={[Function]}
     target="_blank"
   >
     <div
@@ -610,6 +611,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
           <a
             className="c5"
             href="http://artsy.net"
+            onClick={[Function]}
             target="_blank"
           >
             <div

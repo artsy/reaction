@@ -87,7 +87,6 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3));
 }
 
 .c7 {
@@ -131,7 +130,7 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -176,11 +175,11 @@ exports[`feature renders feature full header properly 1`] = `
 .c13 {
   max-width: 460px;
   margin-right: 30px;
+  line-height: 1.4em;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  line-height: 1.4em;
 }
 
 .c0 {
@@ -214,12 +213,12 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
   width: 50vw;
 }
 
@@ -344,6 +343,9 @@ exports[`feature renders feature full header properly 1`] = `
 @media (max-width:600px) {
   .c0[data-type="split"] .c8 {
     margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
   }
 
   .c0[data-type="split"] .c5 {
@@ -352,19 +354,21 @@ exports[`feature renders feature full header properly 1`] = `
 
   .c0[data-type="split"] .c1 {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
     width: 100%;
   }
 }
@@ -384,7 +388,7 @@ exports[`feature renders feature full header properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60"
     />
     <div
       className="c3"
@@ -607,7 +611,6 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3));
 }
 
 .c7 {
@@ -651,7 +654,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -724,12 +727,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
   width: 50vw;
 }
 
@@ -743,7 +746,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .file__Deck-s173b3y1-8 {
+.c0[data-type="split"] .file__Deck-s1lxdk5b-8 {
   margin-bottom: 30px;
 }
 
@@ -844,6 +847,9 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 @media (max-width:600px) {
   .c0[data-type="split"] .c8 {
     margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
   }
 
   .c0[data-type="split"] .c5 {
@@ -852,19 +858,21 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 
   .c0[data-type="split"] .c1 {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
     width: 100%;
   }
 }
@@ -884,7 +892,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60"
     />
     <div
       className="c3"
@@ -1098,7 +1106,6 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3));
 }
 
 .c7 {
@@ -1142,7 +1149,7 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1187,11 +1194,11 @@ exports[`feature renders feature header with children properly 1`] = `
 .c13 {
   max-width: 460px;
   margin-right: 30px;
+  line-height: 1.4em;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  line-height: 1.4em;
 }
 
 .c0 {
@@ -1225,12 +1232,12 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
   width: 50vw;
 }
 
@@ -1355,6 +1362,9 @@ exports[`feature renders feature header with children properly 1`] = `
 @media (max-width:600px) {
   .c0[data-type="split"] .c8 {
     margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
   }
 
   .c0[data-type="split"] .c5 {
@@ -1363,19 +1373,21 @@ exports[`feature renders feature header with children properly 1`] = `
 
   .c0[data-type="split"] .c1 {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
     width: 100%;
   }
 }
@@ -1395,7 +1407,7 @@ exports[`feature renders feature header with children properly 1`] = `
     <div
       alt="What’s the Path to Winning an Art Prize?"
       className="c1 c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60"
     >
       <div>
         Child 3: Image
@@ -1621,7 +1633,7 @@ exports[`feature renders feature split header properly 1`] = `
   align-items: flex-end;
 }
 
-.c4 {
+.c6 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1629,14 +1641,14 @@ exports[`feature renders feature split header properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c1 {
+.c3 {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin: auto;
 }
 
-.c3 {
+.c5 {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -1657,12 +1669,12 @@ exports[`feature renders feature split header properly 1`] = `
   justify-content: flex-start;
 }
 
-.c8 {
+.c2 {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1692,7 +1704,7 @@ exports[`feature renders feature split header properly 1`] = `
   flex-direction: row;
 }
 
-.c6 {
+.c8 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -1707,11 +1719,11 @@ exports[`feature renders feature split header properly 1`] = `
 .c12 {
   max-width: 460px;
   margin-right: 30px;
+  line-height: 1.4em;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  line-height: 1.4em;
 }
 
 .c0 {
@@ -1726,31 +1738,31 @@ exports[`feature renders feature split header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type="text"] .c5 {
+.c0[data-type="text"] .c7 {
   margin-bottom: 150px;
 }
 
-.c0[data-type="split"] .c5 {
+.c0[data-type="split"] .c7 {
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
   flex-grow: 1;
 }
 
-.c0[data-type="split"] .c2 {
+.c0[data-type="split"] .c4 {
   width: 50%;
 }
 
-.c0[data-type="split"] .c7 {
-  width: 50%;
-  border: 20px solid white;
-}
-
-.c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+.c0[data-type="split"] .c1 {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
   width: 50vw;
 }
 
@@ -1768,7 +1780,7 @@ exports[`feature renders feature split header properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c0[data-type="fullscreen"] .c2 {
+.c0[data-type="fullscreen"] .c4 {
   padding: 50px;
   color: #fff;
   -webkit-box-pack: end;
@@ -1815,7 +1827,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c4 {
+  .c6 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1836,7 +1848,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:1250px) {
-  .c6 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -1845,7 +1857,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c6 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1854,7 +1866,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c6 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -1873,35 +1885,40 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c0[data-type="split"] .c5 {
-    margin-bottom: 20px;
-  }
-
-  .c0[data-type="split"] .c2 {
-    width: 100%;
-  }
-
   .c0[data-type="split"] .c7 {
+    margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+  }
+
+  .c0[data-type="split"] .c4 {
     width: 100%;
+  }
+
+  .c0[data-type="split"] .c1 {
+    width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c0[data-type="fullscreen"] .c2 {
+  .c0[data-type="fullscreen"] .c4 {
     padding: 20px;
   }
 }
@@ -1912,26 +1929,26 @@ exports[`feature renders feature split header properly 1`] = `
   height="100vh"
 >
   <div
-    className="c1"
+    alt="What’s the Path to Winning an Art Prize?"
+    className="c1 c2"
+    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60"
+  />
+  <div
+    className="c3"
   >
     <div
-      className="c2 c3"
+      className="c4 c5"
     >
       <div
-        className="c4"
+        className="c6"
       >
         Creativity
       </div>
       <div
-        className="c5 c6"
+        className="c7 c8"
       >
         What’s the Path to Winning an Art Prize?
       </div>
-      <div
-        alt="What’s the Path to Winning an Art Prize?"
-        className="c7 c8"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
-      />
       <div
         className="c9 c10"
       >
@@ -2213,11 +2230,11 @@ exports[`feature renders feature text header properly 1`] = `
 .c10 {
   max-width: 460px;
   margin-right: 30px;
+  line-height: 1.4em;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  line-height: 1.4em;
 }
 
 .c0 {
@@ -2246,17 +2263,17 @@ exports[`feature renders feature text header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .s173b3y1-0-file__Div-dCIIWC {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-dCIIWC {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
   width: 50vw;
 }
 
@@ -2381,27 +2398,32 @@ exports[`feature renders feature text header properly 1`] = `
 @media (max-width:600px) {
   .c0[data-type="split"] .c5 {
     margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
   }
 
   .c0[data-type="split"] .c2 {
     width: 100%;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-dCIIWC {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-dCIIWC {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s173b3y1-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
     width: 100%;
+    height: 50%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s173b3y1-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
     width: 100%;
   }
 }
@@ -2549,7 +2571,7 @@ exports[`feature renders feature text header properly 1`] = `
       <img
         alt="What’s the Path to Winning an Art Prize?"
         className="c17"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&quality=95"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1600&quality=60"
       />
     </div>
   </div>

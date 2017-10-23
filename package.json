@@ -162,7 +162,7 @@
       "js"
     ],
     "setupFiles": [
-      "./src/setup_jest.ts"
+      "./src/setup_jest.js"
     ]
   },
   "lint-staged": {
