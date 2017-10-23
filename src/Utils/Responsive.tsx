@@ -1,5 +1,4 @@
 import React from 'react'
-import responsive from 'react-responsive-decorator'
 
 // TODO: IProps
 
@@ -9,14 +8,30 @@ interface State {
 
 const MOBILE_BREAKPOINT = 600
 
-@responsive
-export class Responsive extends React.Component<any, State> {
+class ResponsiveWrapper extends React.Component<any, State> {
   static defaultProps = {
+    initialState: {
+      isMobile: false // For SSR, an initial setting is needed for first load
+    },
     mobileBreakpoint: MOBILE_BREAKPOINT
   }
 
   state = {
     isMobile: false
+  }
+
+  constructor(props) {
+    super(props)
+
+    const {
+      initialState: {
+        isMobile
+      }
+    } = props
+
+    this.state = {
+      isMobile
+    }
   }
 
   componentDidMount() {
@@ -47,3 +62,20 @@ export class Responsive extends React.Component<any, State> {
     )
   }
 }
+
+/**
+ * Since Enquire.js requires a DOM, ensure that the environment is correct before
+ * returning component.
+ */
+const wrapIfClient = (Component) => {
+  const isClient = typeof window !== 'undefined'
+
+  if (isClient) {
+    const makeResponsive = require('react-responsive-decorator')
+    return makeResponsive(Component)
+  } else {
+    return Component
+  }
+}
+
+export const Responsive = wrapIfClient(ResponsiveWrapper)

@@ -25,7 +25,7 @@ const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
 
   // Props for Link units
   const linkProps = {
-    onClick: handleVideoLinkClick,
+    onClick: handleLinkClick,
     href: url,
     target: "_blank",
     containerWidth: size.width,
@@ -65,7 +65,7 @@ const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
     // Canvas -- Video / Image
   } else {
     const [asset] = unit.assets
-    const isVideo = url.includes("mp4")
+    const isVideo = asset.url.includes("mp4")
 
     return (
       <CanvasLink {...linkProps}>
@@ -75,7 +75,7 @@ const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
             campaign={campaign}
           />
           : <Image
-            src={crop(url, {
+            src={crop(asset.url, {
               width: 1200,
               height: 760
             })}
@@ -100,7 +100,7 @@ CanvasContainerComponent.defaultProps = {
 
 // TODO: Ensure that full element can be clicked on video complete
 // Prevent links from blocking video playback.
-function handleVideoLinkClick(event) {
+function handleLinkClick(event) {
   if (event.target.className.includes('CanvasVideo')) {
     event.target.preventDefault()
   }

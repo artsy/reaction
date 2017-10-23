@@ -39,6 +39,10 @@ import {
   StandardArticle,
 } from "./Fixtures/Articles"
 
+// FIXME: Refactor out SizeMe; see https://github.com/ctrlplusb/react-sizeme#server-side-rendering
+import sizeMe from "react-sizeme"
+sizeMe.noPlaceholders = true
+
 export const Fixtures = {
   ClassicArticle,
   FeatureArticle,
@@ -46,6 +50,7 @@ export const Fixtures = {
   ShortStandardArticle,
   StandardArticle,
 }
+
 
 // Constants
 import * as AllConstants from "./Constants"

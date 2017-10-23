@@ -14,6 +14,7 @@ interface FeatureHeaderProps {
   deck?: any
   height?: string
   image?: any
+  isMobile?: boolean
   title: any
   size?: {
     width: number
@@ -22,7 +23,7 @@ interface FeatureHeaderProps {
 }
 
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, height } = props
+  const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = props
   const hero = article.hero_section
   const url = get(hero, "url", "")
   const type = get(hero, "type", "text")
@@ -31,7 +32,7 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
   const Asset = () => renderAsset(type)(url, article.title, image)
 
   return (
-    <Responsive>
+    <Responsive initialState={{ isMobile: passedIsMobile }}>
       {({ isMobile }) => {
         const isFullScreenLayout = type === 'fullscreen'
         const isDesktopSplitLayout = type === 'split' && !isMobile
