@@ -5,6 +5,7 @@ import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
   article: any
+  isMobile?: boolean
   height?: string
 }
 
@@ -41,22 +42,42 @@ const getDeck = (article, children) => {
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
-  const { article, children, height } = props
+  const { article, children, height, isMobile } = props
   const title = getTitle(article, children)
 
   if (article.layout === "classic") {
     const leadParagraph = getLeadParagraph(article, children)
-    return <ClassicHeader article={article} title={title} leadParagraph={leadParagraph} />
+    return (
+      <ClassicHeader
+        isMobile={isMobile}
+        article={article}
+        title={title}
+        leadParagraph={leadParagraph}
+      />
+    )
   } else {
     const deck = getDeck(article, children)
     const vertical = getVertical(article, children)
     const image = children && children[3]
+
     if (article.layout === "feature") {
       return (
-        <FeatureHeader article={article} title={title} vertical={vertical} deck={deck} image={image} height={height} />
+        <FeatureHeader
+          article={article}
+          title={title}
+          vertical={vertical}
+          deck={deck}
+          image={image}
+          height={height}
+          isMobile={isMobile}
+        />
       )
     } else {
       return <StandardHeader article={article} vertical={vertical} title={title} />
     }
   }
+}
+
+Header.defaultProps = {
+  isMobile: false
 }

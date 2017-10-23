@@ -1,130 +1,166 @@
+import { get } from 'lodash'
 import React from "react"
-import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
+import { Responsive } from '../../../Utils/Responsive'
+import { pMedia as breakpoint } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { sizeMeRefreshRate } from "../Constants"
 import { Fonts } from "../Fonts"
 
-function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
-  if (layout === "fullscreen") {
-    return (
-      <div>
-        {renderAsset(url, title, imageChild)}
-        <Overlay />
-      </div>
-    )
-  } else if (layout === "split" && !isMobile) {
-    return renderAsset(url, title, imageChild)
-  } else {
-    return false
-  }
-}
-
-function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
-  if (layout === "split" && isMobile) {
-    return renderAsset(url, title, imageChild)
-  } else {
-    return false
-  }
-}
-
-function renderAsset(url, title, imageChild) {
-  if (isVideo(url)) {
-    return (
-      <FeatureVideoContainer>
-        {imageChild}
-        <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
-      </FeatureVideoContainer>
-    )
-  } else {
-    const src = url.length && resize(url, { width: 1600 })
-    const alt = url.length ? title : ""
-    return (
-      <FeatureImage src={src} alt={alt}>
-        {imageChild}
-      </FeatureImage>
-    )
-  }
-}
-
-function renderTextLayoutAsset(url, layout, title, imageChild) {
-  if (layout === "text") {
-    if (isVideo(url)) {
-      return (
-        <TextAsset>
-          {imageChild}
-          <Video src={url} autoPlay controls={false} loop muted playsInline />
-        </TextAsset>
-      )
-    } else {
-      const alt = url.length ? title : ""
-      const src = url.length && resize(url, { width: 1200 })
-      const image = <Image src={src} alt={alt} />
-      return (
-        <TextAsset>
-          {imageChild}
-          {url.length && image}
-        </TextAsset>
-      )
-    }
-  } else {
-    return false
-  }
-}
-
-function isVideo(url) {
-  return url.includes("mp4")
-}
-
-const renderDeck = deck => {
-  return deck ? <Deck>{deck}</Deck> : false
-}
+const IMAGE_QUALITY: number = 60
 
 interface FeatureHeaderProps {
   article?: any
-  vertical?: any
-  title: any
   deck?: any
-  image?: any
   height?: string
+  image?: any
+  isMobile?: boolean
+  title: any
   size?: {
     width: number
   }
+  vertical?: any
 }
 
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, size, height } = props
+  const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = props
   const hero = article.hero_section
-  const url = hero && hero.url || ""
-  const type = hero && hero.type || "text"
-  const isMobile = size.width && size.width < 600 ? true : false
+  const url = get(hero, "url", "")
+  const type = get(hero, "type", "text")
+
+  // Video / Image / Text
+  const Asset = () => renderAsset(type)(url, article.title, image)
+
   return (
-    <FeatureHeaderContainer data-type={type} height={height}>
-      {renderFeatureAsset(url, type, isMobile, article.title, image)}
-      <HeaderTextContainer>
-        <HeaderText>
-          <Vertical>{vertical}</Vertical>
-          <Title>{title}</Title>
-          {renderMobileSplitAsset(url, type, isMobile, article.title, image)}
-          <SubHeader>
-            {renderDeck(deck)}
-            <Byline article={article} layout={type} />
-          </SubHeader>
-        </HeaderText>
-        {renderTextLayoutAsset(url, type, article.title, image)}
-      </HeaderTextContainer>
-    </FeatureHeaderContainer>
+    <Responsive initialState={{ isMobile: passedIsMobile }}>
+      {({ isMobile }) => {
+        const isFullScreenLayout = type === 'fullscreen'
+        const isDesktopSplitLayout = type === 'split' && !isMobile
+        const isMobileSplitLayout = type === "split" && isMobile
+        const isTextLayout = type === 'text'
+
+        return (
+          <FeatureHeaderContainer data-type={type} height={height}>
+            {isFullScreenLayout &&
+              <div>
+                <Asset />
+                <Overlay />
+              </div>}
+
+            {isDesktopSplitLayout &&
+              <Asset />}
+
+            <HeaderTextContainer>
+              <HeaderText>
+                <Vertical>
+                  {vertical}
+                </Vertical>
+
+                <Title>
+                  {title}
+                </Title>
+
+                {/* FIXME */}
+                {isMobileSplitLayout &&
+                  <Asset />}
+
+                <SubHeader>
+                  {deck &&
+                    <Deck>
+                      {deck}
+                    </Deck>}
+
+                  <Byline
+                    article={article}
+                    layout={type}
+                  />
+                </SubHeader>
+              </HeaderText>
+
+              {isTextLayout &&
+                <Asset />}
+
+            </HeaderTextContainer>
+          </FeatureHeaderContainer>
+        )
+      }}
+    </Responsive>
   )
 }
 
 FeatureHeaderComponent.defaultProps = {
   height: "100vh",
   size: {
-    width: 500,
+    width: 1024,
   },
 }
+
+// Helpers
+
+function renderAsset(type: string) {
+  const isTextType = type === 'text'
+
+  let Layout
+  let Player
+  let ImageW
+
+  if (isTextType) {
+    Layout = TextAsset
+    Player = Video
+    ImageW = Image
+  } else {
+    Layout = FeatureVideoContainer
+    Player = FeatureVideo
+    ImageW = FeatureImage
+  }
+
+  return (url: string, title: string, image: any) => {
+    const isVideo = url.includes("mp4")
+
+    if (isVideo) {
+      return (
+        <Layout>
+          {image}
+
+          <Player autoPlay loop muted playsInline
+            src={url}
+            controls={false}
+          />
+        </Layout>
+      )
+    } else {
+      const hasImage = url.length
+
+      if (hasImage) {
+        const src = resize(url, {
+          width: 1600,
+          quality: IMAGE_QUALITY
+        })
+
+        if (isTextType) {
+          return (
+            <TextAsset>
+              {image}
+
+              <ImageW
+                src={src}
+                alt={title}
+              />
+            </TextAsset>
+          )
+        } else {
+          return (
+            <ImageW src={src} alt={title}>
+              {image}
+            </ImageW>
+          )
+        }
+      }
+    }
+  }
+}
+
+// Styles
 
 const Div = styled.div`
   width: 100%;
@@ -133,12 +169,14 @@ const Div = styled.div`
 `
 const Overlay = Div.extend`
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+
+  // TODO: This seems to visually exacerbate the load time; do we need?
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
   margin-bottom: 10px;
-  ${pMedia.sm`
+  ${breakpoint.sm`
     ${Fonts.unica("s14", "medium")}
   `}
 `
@@ -190,39 +228,45 @@ const TextAsset = styled.div`
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
-  display: flex;
+      display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  ${pMedia.sm`
+
+  ${breakpoint.sm`
     align-items: flex-start;
     flex-direction: column;
   `}
-`
+      `
 const Title = styled.div`
   ${Fonts.unica("s100")}
-  margin-bottom: 75px;
+      margin-bottom: 75px;
   letter-spaceing: -0.035em;
-  ${pMedia.xl`
+
+  ${breakpoint.xl`
     ${Fonts.unica("s80")}
   `}
-  ${pMedia.md`
+
+  ${breakpoint.md`
     ${Fonts.unica("s65")}
   `}
-  ${pMedia.xs`
+
+  ${breakpoint.xs`
     ${Fonts.unica("s45")}
   `}
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")}
   line-height: 1.4em;
-  ${pMedia.sm`
+
+  ${Fonts.unica("s16", "medium")}
+
+      ${breakpoint.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
   `}
-`
+      `
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
@@ -233,7 +277,7 @@ const FeatureHeaderContainer = Div.extend`
     }
   }
   &[data-type="split"] {
-    ${Title} {
+      ${Title} {
       flex-grow: 1;
     }
     ${HeaderText} {
@@ -255,23 +299,26 @@ const FeatureHeaderContainer = Div.extend`
       flex-direction: column;
     }
     ${Deck} {
-      margin-bottom: 30px;
+        margin-bottom: 30px;
     }
-    ${pMedia.xs`
+    ${breakpoint.xs`
       ${Title} {
         margin-bottom: 20px;
+        flex-grow: 0;
       }
       ${HeaderText} {
         width: 100%;
       }
       ${FeatureImage} {
         width: 100%;
+        height: 50%;
         position: relative;
         border: 0px;
         margin-bottom: 30px;
       }
       ${FeatureVideoContainer} {
         width: 100%;
+        height: 50%;
         position: relative;
         border: 0px;
         margin-bottom: 30px;
@@ -283,23 +330,19 @@ const FeatureHeaderContainer = Div.extend`
   }
   &[data-type="fullscreen"] {
     ${HeaderText} {
-      padding: 50px;
-      color: #fff;
-      justify-content: flex-end;
-      margin: auto;
-      text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-    }
-    ${pMedia.xs`
-      ${HeaderText} {
-        padding: 20px;
-      }
-    `}
+    padding: 50px;
+    color: #fff;
+    justify-content: flex-end;
+    margin: auto;
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   }
+  ${breakpoint.xs`
+    ${HeaderText} {
+      padding: 20px;
+    }
+  `}
+}
 `
 
-const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
-  noPlaceholder: true,
-}
-
-export const FeatureHeader = sizeMe(sizeMeOptions)(FeatureHeaderComponent)
+// TODO: Fix component name
+export const FeatureHeader = FeatureHeaderComponent

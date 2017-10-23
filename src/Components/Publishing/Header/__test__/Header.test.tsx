@@ -12,6 +12,7 @@ import {
 } from "../../Fixtures/Articles"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("react-responsive-decorator", () => jest.fn(x => x))
 
 describe("Header", () => {
   it("renders lead paragraph on classic article", () => {

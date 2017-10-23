@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -134,6 +134,7 @@
     "react-lines-ellipsis": "damassi/react-lines-ellipsis",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v0.9.3/react-relay-0.9.3.tgz",
+    "react-responsive-decorator": "^0.0.1",
     "react-sizeme": "^2.3.2",
     "react-slick": "^0.14.11",
     "react-styled-flexboxgrid": "^2.0.0",
@@ -161,7 +162,7 @@
       "js"
     ],
     "setupFiles": [
-      "./src/setup_jest.ts"
+      "./src/setup_jest.js"
     ]
   },
   "lint-staged": {

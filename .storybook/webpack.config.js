@@ -15,6 +15,7 @@ const {
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
  */
 const {
+  WEBPACK_DEVTOOL = "#inline-source-map", // Otherwise getting errors about e.g. `Relay` not being defined.
   METAPHYSICS_ENDPOINT
 } = env.config().parsed
 
@@ -28,7 +29,7 @@ let plugins = [new CheckerPlugin()]
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
 module.exports = {
-  devtool: "#inline-source-map", // Otherwise getting errors about e.g. `Relay` not being defined.
+  devtool: WEBPACK_DEVTOOL,
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
@@ -37,21 +38,21 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.json$/,
-        loader: "json-loader"
-      },
-      {
-        exclude: [/node_modules/, /__tests__/],
-        use: [{
-          loader: "awesome-typescript-loader",
-          options: {
-            useBabel: true,
-            useCache: true,
-            useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
-          },
-        }, ],
-        test: /\.tsx?$/,
-      },
+      test: /\.json$/,
+      loader: "json-loader"
+    },
+    {
+      exclude: [/node_modules/, /__tests__/],
+      use: [{
+        loader: "awesome-typescript-loader",
+        options: {
+          useBabel: true,
+          useCache: true,
+          useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+        },
+      },],
+      test: /\.tsx?$/,
+    },
     ],
   },
   plugins: plugins,

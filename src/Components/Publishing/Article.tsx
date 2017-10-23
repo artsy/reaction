@@ -23,6 +23,7 @@ export interface ArticleProps {
   article: ArticleData
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
+  isMobile?: boolean
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
@@ -50,6 +51,10 @@ interface ArticleContainerProps {
 export class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
+  }
+
+  static defaultProps = {
+    isMobile: false
   }
 
   constructor(props) {
@@ -105,61 +110,82 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderFeatureArticle() {
-    const { headerHeight } = this.props
+    const { headerHeight, isMobile } = this.props
     const { article } = this.state
+
     return (
       <div>
-        <Header article={article} height={headerHeight} />
+        <Header
+          article={article}
+          height={headerHeight}
+          isMobile={isMobile}
+        />
+
         <FeatureLayout className="article-content">
-          <Sections article={article} />
+          <Sections
+            article={article}
+          />
         </FeatureLayout>
       </div>
     )
   }
 
   renderStandardArticle() {
-    const { relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
+    const { isMobile, relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel ? (
-      <RelatedArticlesPanel label={"Related Stories"} articles={relatedArticlesForPanel} />
-    ) : (
-      false
-    )
-    const relatedArticleCanvas = relatedArticlesForCanvas ? (
-      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-    ) : (
-      false
-    )
+    const relatedArticlePanel = relatedArticlesForPanel ?
+      <RelatedArticlesPanel
+        label={"Related Stories"}
+        articles={relatedArticlesForPanel}
+      />
+      : false
+
+    const relatedArticleCanvas = relatedArticlesForCanvas ?
+      <RelatedArticlesCanvas
+        articles={relatedArticlesForCanvas}
+        vertical={article.vertical}
+      />
+      : false
+
     const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
     const campaign = omit(this.props.display, "panel", "canvas")
     const readMoreTruncation = this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false
-    const displayCanvas = this.props.display ? (
+    const displayCanvas = this.props.display ?
       <div>
         <DisplayCanvasBreak />
         <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
       </div>
-    ) : (
-      false
-    )
-    const displayPanel = this.props.display ? (
-      <DisplayPanel unit={this.props.display.panel} campaign={campaign} />
-    ) : (
-      false
-    )
+      : false
+
+    const displayPanel = this.props.display ?
+      <DisplayPanel
+        unit={this.props.display.panel}
+        campaign={campaign}
+      />
+      : false
+
     return (
       <div>
         <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
-          <Header article={article} />
+          <Header
+            article={article}
+            isMobile={isMobile}
+          />
+
           <StandardLayout>
-            <Sections article={article} />
+            <Sections
+              article={article}
+            />
             <Sidebar>
               {emailSignup}
               {relatedArticlePanel}
               {displayPanel}
             </Sidebar>
           </StandardLayout>
+
           {relatedArticleCanvas}
         </ReadMoreWrapper>
+
         {readMoreTruncation}
         {displayCanvas}
       </div>

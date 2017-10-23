@@ -8,6 +8,7 @@ interface ClassicHeaderProps {
   article?: any
   title: any
   leadParagraph?: any
+  isMobile?: any
 }
 
 export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
