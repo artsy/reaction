@@ -390,7 +390,7 @@ exports[`renders properly 1`] = `
 }
 
 .c2 h2 a {
-  background-size: 1.25px 6px;
+  background-size: 1.25px 1px;
 }
 
 .c2 h3 {
