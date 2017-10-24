@@ -374,10 +374,10 @@ const FeatureHeaderContainer = Div.extend`
 const SuperArticleLogos = styled.div`
   display: flex;
   align-items: center;
-  z-index: 100;
-  padding: 50px;
+  z-index: 1;
+  padding: 50px 45px 50px;
   ${breakpoint.xs`
-    padding: 20px;
+    padding: 20px 15px 20px;
   `}
 `
 const SuperArticleLogoDivider = styled.div`
