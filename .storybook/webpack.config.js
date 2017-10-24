@@ -15,7 +15,7 @@ const {
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
  */
 const {
-  WEBPACK_DEVTOOL = "#inline-source-map", // Otherwise getting errors about e.g. `Relay` not being defined.
+  WEBPACK_DEVTOOL = "#inline-source-map", // FIXME: Does this prior inline comment still apply? "Otherwise getting errors about e.g. `Relay` not being defined."
   METAPHYSICS_ENDPOINT
 } = env.config().parsed
 

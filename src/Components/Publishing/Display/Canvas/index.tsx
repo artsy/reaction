@@ -37,12 +37,14 @@ const DisplayContainer = Div`
   width: 100%;
   max-width: ${props => (props.layout === "slideshow" ? "100%;" : "1200px;")}
   margin: 0 auto;
+  margin-bottom: -44px; // Offset default force margin; FIXME: This kind of stuff needs to be globally addressed
   box-sizing: border-box;
   a {
     text-decoration: none;
   }
   ${props => pMedia.sm`
     ${props.layout !== "slideshow" && "padding: 0 20px;"}
+    margin-bottom: 0;
   `}
 `
 const AdvertisementBy = styled.div`
