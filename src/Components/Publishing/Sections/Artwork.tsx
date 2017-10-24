@@ -18,7 +18,7 @@ export const Artwork: React.SFC<ArtworkProps> = props => {
   return (
     <div className="display-artwork">
       <ArtworkImage {...props} />
-      <ArtworkCaption {...props} /> */
+      <ArtworkCaption {...props} />
     </div>
   )
 }

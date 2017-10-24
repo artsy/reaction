@@ -208,7 +208,6 @@ exports[`renders a single image properly 1`] = `
           <div />
         </div>
       </div>
-       */
     </div>
   </div>
 </div>
@@ -495,7 +494,6 @@ exports[`renders properly 1`] = `
           <div />
         </div>
       </div>
-       */
     </div>
   </div>
   <div

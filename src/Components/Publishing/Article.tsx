@@ -24,10 +24,11 @@ export interface ArticleProps {
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
   isMobile?: boolean
+  isSuper?: boolean
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
-  marginTop?: number
+  marginTop?: string
   display?: {
     name: string
     panel: object
@@ -44,7 +45,7 @@ interface ArticleState {
 }
 
 interface ArticleContainerProps {
-  marginTop?: number
+  marginTop?: string
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
@@ -54,7 +55,8 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   static defaultProps = {
-    isMobile: false
+    isMobile: false,
+    isSuper: false,
   }
 
   constructor(props) {
@@ -110,7 +112,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderFeatureArticle() {
-    const { headerHeight, isMobile } = this.props
+    const { headerHeight, isMobile, isSuper, relatedArticlesForCanvas } = this.props
     const { article } = this.state
 
     return (
@@ -122,10 +124,15 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
         />
 
         <FeatureLayout className="article-content">
-          <Sections
-            article={article}
-          />
+          <Sections article={article} />
         </FeatureLayout>
+
+        {relatedArticlesForCanvas &&
+          !isSuper &&
+          <RelatedArticlesCanvas
+            articles={relatedArticlesForCanvas}
+            vertical={article.vertical}
+          />}
       </div>
     )
   }
@@ -133,61 +140,60 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   renderStandardArticle() {
     const { isMobile, relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
-    const relatedArticlePanel = relatedArticlesForPanel ?
-      <RelatedArticlesPanel
-        label={"Related Stories"}
-        articles={relatedArticlesForPanel}
-      />
-      : false
-
-    const relatedArticleCanvas = relatedArticlesForCanvas ?
-      <RelatedArticlesCanvas
-        articles={relatedArticlesForCanvas}
-        vertical={article.vertical}
-      />
-      : false
-
-    const emailSignup = this.props.emailSignupUrl ? <EmailSignup signupUrl={this.props.emailSignupUrl} /> : false
     const campaign = omit(this.props.display, "panel", "canvas")
-    const readMoreTruncation = this.state.isTruncated ? <ReadMore onClick={this.removeTruncation} /> : false
-    const displayCanvas = this.props.display ?
-      <div>
-        <DisplayCanvasBreak />
-        <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
-      </div>
-      : false
-
-    const displayPanel = this.props.display ?
-      <DisplayPanel
-        unit={this.props.display.panel}
-        campaign={campaign}
-      />
-      : false
 
     return (
       <div>
-        <ReadMoreWrapper isTruncated={this.state.isTruncated} hideButton={this.removeTruncation}>
+        <ReadMoreWrapper
+          isTruncated={this.state.isTruncated}
+          hideButton={this.removeTruncation}
+        >
           <Header
             article={article}
             isMobile={isMobile}
           />
 
           <StandardLayout>
-            <Sections
-              article={article}
-            />
+            <Sections article={article} />
             <Sidebar>
-              {emailSignup}
-              {relatedArticlePanel}
-              {displayPanel}
+              {this.props.emailSignupUrl &&
+                <EmailSignup
+                  signupUrl={this.props.emailSignupUrl}
+                />}
+
+              {relatedArticlesForPanel &&
+                <RelatedArticlesPanel
+                  label={"Related Stories"}
+                  articles={relatedArticlesForPanel}
+                />}
+
+              {this.props.display &&
+                <DisplayPanel
+                  unit={this.props.display.panel}
+                  campaign={campaign}
+                />}
+
             </Sidebar>
           </StandardLayout>
 
-          {relatedArticleCanvas}
+          {relatedArticlesForCanvas &&
+            <RelatedArticlesCanvas
+              articles={relatedArticlesForCanvas}
+              vertical={article.vertical}
+            />}
+
         </ReadMoreWrapper>
 
-        {readMoreTruncation}
-        {displayCanvas}
+        {this.state.isTruncated &&
+          <ReadMore
+            onClick={this.removeTruncation}
+          />}
+        {this.props.display && (
+          <div>
+            <DisplayCanvasBreak />
+            <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+          </div>
+        )}
       </div>
     )
   }
@@ -213,7 +219,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const ArticleContainer = ArticleDiv`
-  margin-top: ${props => (props.marginTop ? props.marginTop + "px" : "50px")};
+  margin-top: ${props => props.marginTop || "50px"};
 `
 
 const DisplayCanvasBreak = styled.hr`
