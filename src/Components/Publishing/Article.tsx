@@ -24,6 +24,7 @@ export interface ArticleProps {
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
   isMobile?: boolean
+  isSuper?: boolean
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
@@ -55,6 +56,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
   static defaultProps = {
     isMobile: false,
+    isSuper: false,
   }
 
   constructor(props) {
@@ -110,14 +112,15 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderFeatureArticle() {
-    const { headerHeight, isMobile, relatedArticlesForCanvas } = this.props
+    const { headerHeight, isMobile, isSuper, relatedArticlesForCanvas } = this.props
     const { article } = this.state
 
-    const relatedArticleCanvas = relatedArticlesForCanvas ? (
-      <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
-    ) : (
-      false
-    )
+    const relatedArticleCanvas =
+      relatedArticlesForCanvas && !isSuper ? (
+        <RelatedArticlesCanvas articles={relatedArticlesForCanvas} vertical={article.vertical} />
+      ) : (
+        false
+      )
 
     return (
       <div>
@@ -209,7 +212,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const ArticleContainer = ArticleDiv`
-  margin-top: ${props => (props.marginTop ? props.marginTop + "px" : "50px")};
+  margin-top: ${props => (props.marginTop !== null ? props.marginTop + "px" : "50px")};
 `
 
 const DisplayCanvasBreak = styled.hr`
