@@ -11,8 +11,9 @@ const MOBILE_BREAKPOINT = 600
 class ResponsiveWrapper extends React.Component<any, State> {
   static defaultProps = {
     initialState: {
-      isMobile: false // For SSR, an initial setting is needed for first load
+      isMobile: false
     },
+    media: x => x, // FIXME: Force: `media` is not a function
     mobileBreakpoint: MOBILE_BREAKPOINT
   }
 
