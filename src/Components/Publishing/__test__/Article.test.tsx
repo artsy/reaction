@@ -2,7 +2,10 @@ import { shallow } from "enzyme"
 import "jest-styled-components"
 import * as React from "react"
 import { Article } from "../Article"
-import { StandardArticle } from "../Fixtures/Articles"
+import { FeatureArticle, StandardArticle } from "../Fixtures/Articles"
+import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 
 jest.mock("react-slick", () => {
   const React = require("react")
@@ -18,4 +21,24 @@ it("indexes and titles images", () => {
   expect(article.state("article").sections[4].images[1].index).toBe(1)
   expect(article.state("article").sections[6].images[0].index).toBe(3)
   expect(article.state("article").sections[6].images[1].index).toBe(4)
+})
+
+it("renders related articles in standard layout", () => {
+  const article = shallow(
+    <Article
+      article={StandardArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      relatedArticlesForPanel={RelatedPanel}
+    />
+  )
+  expect(article.find(RelatedArticlesPanel).length).toBe(1)
+  expect(article.find(RelatedArticlesCanvas).length).toBe(1)
+})
+
+it("renders RelatedArticlesCanvas in feature layout", () => {
+  const article = shallow(
+    <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} relatedArticlesForPanel={RelatedPanel} />
+  )
+  expect(article.find(RelatedArticlesPanel).length).toBe(0)
+  expect(article.find(RelatedArticlesCanvas).length).toBe(1)
 })
