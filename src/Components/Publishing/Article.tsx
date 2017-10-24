@@ -28,7 +28,7 @@ export interface ArticleProps {
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
-  marginTop?: number
+  marginTop?: string
   display?: {
     name: string
     panel: object
@@ -45,7 +45,7 @@ interface ArticleState {
 }
 
 interface ArticleContainerProps {
-  marginTop?: number
+  marginTop?: string
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
@@ -212,7 +212,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const ArticleContainer = ArticleDiv`
-  margin-top: ${props => (props.marginTop !== null ? props.marginTop + "px" : "50px")};
+  margin-top: ${props => (props.marginTop ? props.marginTop : "50px")};
 `
 
 const DisplayCanvasBreak = styled.hr`
