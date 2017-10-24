@@ -20,8 +20,8 @@ export const CanvasText: React.SFC<CanvasTextProps> = props => {
   const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
   return (
     <CanvasInner layout={unit.layout} isSlideshowWithCaption>
-      <Logo layout={unit.layout} src={unit.logo} />
       <div>
+        <Logo layout={unit.layout} src={unit.logo} />
         <Headline layout={unit.layout}>{unit.headline}</Headline>
         <Link layout={unit.layout}>{unit.link.text}</Link>
       </div>
@@ -37,15 +37,17 @@ const Logo = Img`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: left;
   max-width: ${props => (props.layout === "overlay" ? "300px;" : "185px;")}
   max-height: ${props => (props.layout === "overlay" ? "100px;" : "65px;")}
-  margin: ${props => (props.layout === "overlay" ? "60px auto;" : "20px 0;")}
+  margin: ${props => (props.layout === "overlay" ? "60px auto;" : "20px 0 50px 0;")}
   ${props => pMedia.md`
-    object-position: left;
     width: auto;
+    margin: 20px 0;
     ${props.layout === "overlay" &&
-      `max-width: calc(100% - 60px);
-       margin: 15px auto;`}
+    `max-width: calc(100% - 60px);
+       margin: 15px auto;
+    `}
   `}
 `
 const CanvasInner = Div`

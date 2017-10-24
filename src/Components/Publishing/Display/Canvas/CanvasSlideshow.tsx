@@ -224,7 +224,7 @@ const Slide = responsiveDiv`
   &.title-card {
     display: flex;
     justify-content: space-between;
-    width: 1200px;
+    width: 1250px;
     ${props => pMedia.lg`
       max-width: ${props.containerWidth + "px;"}
     `}
@@ -236,9 +236,10 @@ const Slide = responsiveDiv`
 const Title = responsiveDiv`
   display: inline-block;
   width: 380px;
-  padding: 0 20px;
+  padding: 0 20px 0 0;
   ${props => pMedia.lg`
     width: ${props.containerWidth * 0.35 + "px;"}
+    padding: 0 20px;
     a {
       max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }

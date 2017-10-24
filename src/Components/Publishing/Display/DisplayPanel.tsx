@@ -96,8 +96,8 @@ const Headline = styled.div`
 `
 
 const Body = styled.div`
-  ${Fonts.garamond("s15")} line-height: 1.53em;
-  margin-bottom: 30px;
+  ${Fonts.garamond("s17")} line-height: 1.53em;
+  margin-bottom: 20px;
   a {
     color: black;
   }
