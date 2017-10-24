@@ -63,7 +63,7 @@ exports[`renders the related articles panel 1`] = `
   >
     <a
       className="c3"
-      href="/article2/artsy-editorial-15-top-art-schools-united-states"
+      href="/article/artsy-editorial-15-top-art-schools-united-states"
     >
       <img
         className="c4"
@@ -77,7 +77,7 @@ exports[`renders the related articles panel 1`] = `
     </a>
     <a
       className="c3"
-      href="/article2/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+      href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
     >
       <img
         className="c4"
@@ -91,7 +91,7 @@ exports[`renders the related articles panel 1`] = `
     </a>
     <a
       className="c3"
-      href="/article2/artsy-editorial-french-art-history-in-a-nutshell"
+      href="/article/artsy-editorial-french-art-history-in-a-nutshell"
     >
       <img
         className="c4"
