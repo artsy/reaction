@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { Fonts } from "../../Fonts"
 import { CanvasContainer } from "./CanvasContainer"
@@ -10,19 +11,32 @@ interface DisplayCanvasProps {
   campaign: any
 }
 
-export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
-  const { unit, campaign } = props
-  const disclaimer = <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
+@track()
+export class DisplayCanvas extends React.Component<DisplayCanvasProps, any> {
+  @track(props => ({
+    action: "Click",
+    label: "Display ad carousel arrow",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: "canvas_slideshow"
+  }))
+  // tslint:disable-next-line:no-empty
+  componentDidMount() { }
 
-  return (
-    <DisplayContainer layout={unit.layout}>
-      <a href={unit.link.url} target="_blank">
-        <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
-      </a>
-      <CanvasContainer unit={unit} campaign={campaign} disclaimer={disclaimer} />
-      {unit.layout === "overlay" && disclaimer}
-    </DisplayContainer>
-  )
+  render() {
+    const { unit, campaign } = this.props
+    const disclaimer = <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
+
+    return (
+      <DisplayContainer layout={unit.layout}>
+        <a href={unit.link.url} target="_blank">
+          <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
+        </a>
+        <CanvasContainer unit={unit} campaign={campaign} disclaimer={disclaimer} />
+        {unit.layout === "overlay" && disclaimer}
+      </DisplayContainer>
+    )
+  }
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {

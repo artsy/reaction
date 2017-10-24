@@ -18,12 +18,14 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     this.state = { isPlaying: false }
   }
 
-  @track((props) => ({
-    action: "Display Play Video",
+  @track(props => ({
+    action: "Click",
+    label: "Display ad play video",
+    entity_type: "display_ad",
     campaign_name: props.campaign.name,
+    unit_layout: "canvas_standard"
   }))
-  onPlayVideo(e) {
-    e.preventDefault()
+  onPlayVideo() {
     if (this.video) {
       if (this.video.paused) {
         this.video.play()
