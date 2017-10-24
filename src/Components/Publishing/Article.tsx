@@ -129,9 +129,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
         {relatedArticlesForCanvas &&
           !isSuper &&
-          <RelatedArticlesPanel
-            label={"Related Stories"}
+          <RelatedArticlesCanvas
             articles={relatedArticlesForCanvas}
+            vertical={article.vertical}
           />}
       </div>
     )

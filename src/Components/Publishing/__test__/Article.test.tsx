@@ -37,7 +37,11 @@ it("renders related articles in standard layout", () => {
 
 it("renders RelatedArticlesCanvas in feature layout", () => {
   const article = shallow(
-    <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} relatedArticlesForPanel={RelatedPanel} />
+    <Article
+      article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      relatedArticlesForPanel={RelatedPanel}
+    />
   )
   expect(article.find(RelatedArticlesPanel).length).toBe(0)
   expect(article.find(RelatedArticlesCanvas).length).toBe(1)
