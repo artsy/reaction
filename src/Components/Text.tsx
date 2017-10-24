@@ -39,10 +39,11 @@ const textStyleNameToCss = {
   secondary: fonts.secondary.style,
 }
 
-const RawText: React.SFC<TextProps> = props =>
-  <p className={props.className}>
-    {props.children}
-  </p>
+const RawText: React.SFC<TextProps> = (props: TextProps) => {
+  const { textSize, textStyle, align, color, ...remainderProps } = props
+
+  return <p {...remainderProps}>{props.children}</p>
+}
 
 const Text = styled(RawText)`
   font-size: ${props => TextStyleToTextSize[props.textStyle][props.textSize]};
