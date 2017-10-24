@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as _ from "lodash"
 import * as React from "react"
-import { ClassicArticle, FeatureArticle, StandardArticle } from "../Fixtures/Articles"
+import { ClassicArticle, FeatureArticle, StandardArticle, SuperArticle } from "../Fixtures/Articles"
 import { HeroSections } from "../Fixtures/Components"
 import { Header } from "../Header/Header"
 
@@ -85,6 +85,15 @@ storiesOf("Publishing/Headers", module)
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
           <Header article={article2} />
         </div>
+      </div>
+    )
+  })
+  .add("Feature Header - SuperArticle", () => {
+    const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
+    return (
+      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+        <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+        <Header article={article} height="calc(100vh - 50px)" />
       </div>
     )
   })

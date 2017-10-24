@@ -102,6 +102,17 @@ exports[`feature renders feature full header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c6 {
@@ -166,10 +177,10 @@ exports[`feature renders feature full header properly 1`] = `
   font-size: 100px;
   line-height: 1.1em;
   margin-bottom: 75px;
-  -webkit-letter-spaceing: -0.035em;
-  -moz-letter-spaceing: -0.035em;
-  -ms-letter-spaceing: -0.035em;
-  letter-spaceing: -0.035em;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
 }
 
 .c13 {
@@ -213,12 +224,12 @@ exports[`feature renders feature full header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
   width: 50vw;
 }
 
@@ -360,7 +371,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
     width: 100%;
     height: 50%;
     position: relative;
@@ -368,7 +379,7 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
     width: 100%;
   }
 }
@@ -626,6 +637,17 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c6 {
@@ -690,10 +712,10 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   font-size: 100px;
   line-height: 1.1em;
   margin-bottom: 75px;
-  -webkit-letter-spaceing: -0.035em;
-  -moz-letter-spaceing: -0.035em;
-  -ms-letter-spaceing: -0.035em;
-  letter-spaceing: -0.035em;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
 }
 
 .c0 {
@@ -727,12 +749,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
   width: 50vw;
 }
 
@@ -746,7 +768,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .file__Deck-s1lxdk5b-8 {
+.c0[data-type="split"] .file__Deck-s10iwek3-8 {
   margin-bottom: 30px;
 }
 
@@ -864,7 +886,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
     width: 100%;
     height: 50%;
     position: relative;
@@ -872,7 +894,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
     width: 100%;
   }
 }
@@ -1121,6 +1143,17 @@ exports[`feature renders feature header with children properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c6 {
@@ -1185,10 +1218,10 @@ exports[`feature renders feature header with children properly 1`] = `
   font-size: 100px;
   line-height: 1.1em;
   margin-bottom: 75px;
-  -webkit-letter-spaceing: -0.035em;
-  -moz-letter-spaceing: -0.035em;
-  -ms-letter-spaceing: -0.035em;
-  letter-spaceing: -0.035em;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
 }
 
 .c13 {
@@ -1232,12 +1265,12 @@ exports[`feature renders feature header with children properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
   width: 50vw;
 }
 
@@ -1379,7 +1412,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
     width: 100%;
     height: 50%;
     position: relative;
@@ -1387,7 +1420,7 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
     width: 100%;
   }
 }
@@ -1646,6 +1679,17 @@ exports[`feature renders feature split header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c5 {
@@ -1710,10 +1754,10 @@ exports[`feature renders feature split header properly 1`] = `
   font-size: 100px;
   line-height: 1.1em;
   margin-bottom: 75px;
-  -webkit-letter-spaceing: -0.035em;
-  -moz-letter-spaceing: -0.035em;
-  -ms-letter-spaceing: -0.035em;
-  letter-spaceing: -0.035em;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
 }
 
 .c12 {
@@ -1757,12 +1801,12 @@ exports[`feature renders feature split header properly 1`] = `
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
   width: 50vw;
 }
 
@@ -1904,7 +1948,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
     width: 100%;
     height: 50%;
     position: relative;
@@ -1912,7 +1956,7 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
     width: 100%;
   }
 }
@@ -2158,6 +2202,17 @@ exports[`feature renders feature text header properly 1`] = `
   height: 100%;
   box-sizing: border-box;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c3 {
@@ -2221,10 +2276,10 @@ exports[`feature renders feature text header properly 1`] = `
   font-size: 100px;
   line-height: 1.1em;
   margin-bottom: 75px;
-  -webkit-letter-spaceing: -0.035em;
-  -moz-letter-spaceing: -0.035em;
-  -ms-letter-spaceing: -0.035em;
-  letter-spaceing: -0.035em;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
 }
 
 .c10 {
@@ -2263,17 +2318,17 @@ exports[`feature renders feature text header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-dCIIWC {
+.c0[data-type="split"] .s10iwek3-0-file__Div-dCIIWC {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
   width: 50%;
   border: 20px solid white;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
   width: 50vw;
 }
 
@@ -2407,7 +2462,7 @@ exports[`feature renders feature text header properly 1`] = `
     width: 100%;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-dCIIWC {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-dCIIWC {
     width: 100%;
     height: 50%;
     position: relative;
@@ -2415,7 +2470,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .s1lxdk5b-0-file__Div-bbbPPm {
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
     width: 100%;
     height: 50%;
     position: relative;
@@ -2423,7 +2478,7 @@ exports[`feature renders feature text header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-s1lxdk5b-2 {
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
     width: 100%;
   }
 }
@@ -2573,6 +2628,622 @@ exports[`feature renders feature text header properly 1`] = `
         className="c17"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1600&quality=60"
       />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders superArticle full header properly 1`] = `
+.c6 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 45px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c8 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 25px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c20 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c20.date {
+  white-space: nowrap;
+}
+
+.c19 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c19.date {
+  white-space: nowrap;
+}
+
+.c19:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: #fff;
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0 4px;
+}
+
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  text-decoration: none;
+  margin-right: 14px;
+}
+
+.c22:hover {
+  opacity: 0.6;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.c11 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c10 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c2 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c15 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c13 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
+}
+
+.c17 {
+  max-width: 460px;
+  margin-right: 30px;
+  line-height: 1.4em;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+}
+
+.c0[data-type="text"] {
+  height: auto;
+}
+
+.c0[data-type="text"] .c12 {
+  margin-bottom: 150px;
+}
+
+.c0[data-type="split"] .c12 {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type="split"] .c9 {
+  width: 50%;
+}
+
+.c0[data-type="split"] .c1 {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
+  width: 50%;
+  border: 20px solid white;
+}
+
+.c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
+  width: 50vw;
+}
+
+.c0[data-type="split"] .c14 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type="split"] .c16 {
+  margin-bottom: 30px;
+}
+
+.c0[data-type="fullscreen"] .c9 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 100;
+  padding: 50px;
+}
+
+.c7 {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 0 20px;
+}
+
+@media (max-width:720px) {
+  .c20 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c19:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:720px) {
+  .c11 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c15 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:1250px) {
+  .c13 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c13 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+  }
+}
+
+@media (max-width:600px) {
+  .c13 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width:720px) {
+  .c17 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c0[data-type="split"] .c12 {
+    margin-bottom: 20px;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+  }
+
+  .c0[data-type="split"] .c9 {
+    width: 100%;
+  }
+
+  .c0[data-type="split"] .c1 {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .s10iwek3-0-file__Div-bbbPPm {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .file__FeatureVideo-s10iwek3-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width:600px) {
+  .c0[data-type="fullscreen"] .c9 {
+    padding: 20px;
+  }
+}
+
+@media (max-width:600px) {
+  .c5 {
+    padding: 20px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin: 0 10px;
+  }
+}
+
+<div
+  className="c0"
+  data-type="fullscreen"
+  height="100vh"
+>
+  <div>
+    <div
+      alt="What’s the Path to Winning an Art Prize?"
+      className="c1 c2"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=60"
+    />
+    <div
+      className="c3"
+    />
+  </div>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5"
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="c6"
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          style={undefined}
+        >
+          
+        </div>
+      </div>
+      <a
+        href="https://www.ubs.com/microsites/planet-art/home.html"
+        target="_blank"
+      >
+        <img
+          height="50px"
+          src="https://artsy-media-uploads.s3.amazonaws.com/qp6GUcn5RkvscdYEBmqFXw%2FUBS_White.png"
+        />
+      </a>
+    </div>
+    <div
+      className="c9 c10"
+    >
+      <div
+        className="c11"
+      >
+        Creativity
+      </div>
+      <div
+        className="c12 c13"
+      >
+        What’s the Path to Winning an Art Prize?
+      </div>
+      <div
+        className="c14 c15"
+      >
+        <div
+          className="c16 c17"
+        >
+          <div
+            className="feature__deck"
+          >
+            Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+          </div>
+        </div>
+        <div
+          className="c18"
+        >
+          <div
+            className="author c19"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c20"
+          >
+            Jun 29, 2017 11:00 am
+          </div>
+          <div
+            className="c21"
+          >
+            <a
+              className="c22"
+              href="https://www.facebook.com/sharer/sharer.php?u=%2Farticle2%2Fartsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 14 14"
+                width="14px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c22"
+              href="https://twitter.com/intent/tweet?original_referer=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=%2Farticle2%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 16 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c22"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: /article2/artsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 17 14"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
