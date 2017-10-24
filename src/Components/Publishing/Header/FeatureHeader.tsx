@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from '../../../Utils/Responsive'
 import { pMedia as breakpoint } from "../../Helpers"
+import Icon from "../../Icon"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
 
@@ -51,6 +52,7 @@ const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
               <Asset />}
 
             <HeaderTextContainer>
+              {article.is_super_article && renderSuperArticleLogos(article.super_article, isMobile)}
               <HeaderText>
                 <Vertical>
                   {vertical}
@@ -160,6 +162,32 @@ function renderAsset(type: string) {
   }
 }
 
+function renderSuperArticleLogos(superArticle, isMobile) {
+  return (
+    <SuperArticleLogos>
+      <a href="/">
+        <Icon
+          name="logotype"
+          fontSize={isMobile ? "30px" : "45px"}
+          color="white" />
+      </a>
+      <SuperArticleLogoDivider>
+        <Icon
+          name="close"
+          fontSize={isMobile ? "15px" : "25px"}
+          color="white" />
+      </SuperArticleLogoDivider>
+      <a
+        href={superArticle.partner_logo_link}
+        target="_blank">
+        <img
+          src={superArticle.partner_fullscreen_header_logo || superArticle.partner_logo}
+          height={isMobile ? "32px" : "50px"} />
+      </a>
+    </SuperArticleLogos>
+  )
+}
+
 // Styles
 
 const Div = styled.div`
@@ -182,6 +210,9 @@ const Vertical = styled.div`
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 const HeaderText = Div.extend`
   position: relative;
@@ -228,7 +259,7 @@ const TextAsset = styled.div`
 `
 const SubHeader = styled.div`
   ${Fonts.unica("s19", "medium")}
-      display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
@@ -240,9 +271,8 @@ const SubHeader = styled.div`
       `
 const Title = styled.div`
   ${Fonts.unica("s100")}
-      margin-bottom: 75px;
-  letter-spaceing: -0.035em;
-
+  margin-bottom: 75px;
+  letter-spacing: -0.035em;
   ${breakpoint.xl`
     ${Fonts.unica("s80")}
   `}
@@ -259,14 +289,12 @@ const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
   line-height: 1.4em;
-
   ${Fonts.unica("s16", "medium")}
-
-      ${breakpoint.sm`
+  ${breakpoint.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
   `}
-      `
+`
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
@@ -342,6 +370,22 @@ const FeatureHeaderContainer = Div.extend`
     }
   `}
 }
+`
+const SuperArticleLogos = styled.div`
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  padding: 50px;
+  ${breakpoint.xs`
+    padding: 20px;
+  `}
+`
+const SuperArticleLogoDivider = styled.div`
+  transform: rotate(45deg);
+  margin: 0 20px;
+  ${breakpoint.xs`
+    margin: 0 10px;
+  `}
 `
 
 // TODO: Fix component name

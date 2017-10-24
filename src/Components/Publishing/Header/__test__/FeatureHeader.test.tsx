@@ -2,7 +2,7 @@ import "jest-styled-components"
 import * as _ from "lodash"
 import * as React from "react"
 import * as renderer from "react-test-renderer"
-import { FeatureArticle } from "../../Fixtures/Articles"
+import { FeatureArticle, SuperArticle } from "../../Fixtures/Articles"
 import { HeroSections } from "../../Fixtures/Components"
 import { Header } from "../Header"
 
@@ -31,12 +31,12 @@ describe("feature", () => {
     const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
     const header = renderer
       .create(
-        <Header article={article}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-          <div>Child 2: Deck</div>
-          <div>Child 3: Image</div>
-        </Header>
+      <Header article={article}>
+        <div>Child 0: Vertical</div>
+        <div>Child 1: Title</div>
+        <div>Child 2: Deck</div>
+        <div>Child 3: Image</div>
+      </Header>
       )
       .toJSON()
     expect(header).toMatchSnapshot()
@@ -45,6 +45,12 @@ describe("feature", () => {
   it("renders feature full header without a deck properly", () => {
     const decklessHero = _.extend({}, HeroSections[2], { deck: null })
     const article = _.extend({}, FeatureArticle, { hero_section: decklessHero })
+    const header = renderer.create(<Header article={article} />).toJSON()
+    expect(header).toMatchSnapshot()
+  })
+
+  it("renders superArticle full header properly", () => {
+    const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
   })

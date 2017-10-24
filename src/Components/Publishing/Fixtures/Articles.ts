@@ -866,6 +866,22 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
+export const SuperArticle = extend({}, FeatureArticle, {
+  is_super_article: true,
+  super_article: {
+    footer_blurb: "This feature is created in collaboration with UBS with data sourced from UBS’s art news app Planet Art. Planet Art provides a distilled look at contemporary news, reviews and information from the art world.",
+    partner_fullscreen_header_logo: "https://artsy-media-uploads.s3.amazonaws.com/qp6GUcn5RkvscdYEBmqFXw%2FUBS_White.png",
+    partner_link: "https://itunes.apple.com/us/app/planet-art-your-source-for/id937737095?mt=8",
+    partner_link_title: "Download the Planet Art app",
+    partner_logo: "https://artsy-media-uploads.s3.amazonaws.com/PUn-n_Zn0VHfyDKofWeLeQ%2FUBS_Black.png",
+    partner_logo_link: "https://www.ubs.com/microsites/planet-art/home.html",
+    related_articles: ["5846e12cc137140011634710", "5846e1fdc137140011634711", "58459e56104093001189a7d1", "584b0ee3e751080011bc1ad5"],
+    secondary_logo_link: "https://www.ubs.com/global/en/about_ubs/contemporary-art.html",
+    secondary_logo_text: "PRESENTED IN PARTNERSHIP WITH",
+    secondary_partner_logo: "https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+  }
+})
+
 export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
   sections: [
     {
