@@ -3,7 +3,7 @@ import styled from "styled-components"
 import * as fonts from "../Assets/Fonts"
 
 type TextAlign = "start" | "center" | "end"
-type TextSize = "small" | "medium" | "large"
+type TextSize = "small" | "medium" | "large" | "xlarge"
 type TextStyle = "primary" | "secondary"
 
 interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
@@ -22,6 +22,7 @@ const textSizesForPrimaryStyle = {
 }
 
 const textSizesForSecondaryStyle = {
+  xlarge: "26px",
   large: "20px",
   medium: "17px",
   small: "15px",

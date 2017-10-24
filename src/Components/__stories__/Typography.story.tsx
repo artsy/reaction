@@ -22,6 +22,9 @@ storiesOf("Typography", module)
         Plain Text
       </Title>
 
+      <Text textSize="xlarge">
+        Xlarge text: Thank you for your interest in the program.
+      </Text>
       <Text textSize="large">
         Large text: Thank you for your interest in the program.
       </Text>
