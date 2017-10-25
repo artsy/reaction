@@ -194,8 +194,8 @@ function renderSuperArticleLogos(superArticle, isMobile) {
 }
 
 // Styles
-const PropDiv: StyledFunction<DivProps> = styled.div
-const Div = PropDiv`
+const DivWithProps: StyledFunction<DivProps> = styled.div
+const Div = DivWithProps`
   width: 100%;
   height: 100%;
   box-sizing: border-box;

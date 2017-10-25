@@ -14,12 +14,6 @@ export const Artworks = [
     artist: {
       name: "Fernando Botero",
     },
-    artists: [
-      {
-        name: "Fernando Botero",
-        slug: "fernando-botero",
-      },
-    ],
     width: 1152,
     height: 826,
   },

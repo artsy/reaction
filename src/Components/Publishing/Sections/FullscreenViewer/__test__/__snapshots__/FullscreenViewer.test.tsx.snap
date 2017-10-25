@@ -35,6 +35,14 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
+.c8 .title:after {
+  content: ', ';
+}
+
+.c8 .date:after {
+  content: ', ';
+}
+
 .c9.artist-name {
   margin-right: 20px;
 }
@@ -273,11 +281,12 @@ exports[`renders properly 1`] = `
       >
         <div
           className="c2"
-        />
+        >
+          
+        </div>
         <div
           className="c3"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
-          title={undefined}
         />
         <div
           className="c4"
@@ -362,7 +371,6 @@ exports[`renders properly 1`] = `
         <div
           className="c13"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
-          title="<p>Photo by Adam Kuehl for Artsy.</p>"
         />
         <div
           className="c4"
@@ -411,7 +419,6 @@ exports[`renders properly 1`] = `
         <div
           className="c14"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
-          title="<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>"
         />
         <div
           className="c4"
