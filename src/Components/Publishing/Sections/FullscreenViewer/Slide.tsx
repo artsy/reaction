@@ -7,7 +7,7 @@ import { Fonts } from "../../Fonts"
 import { Caption } from "./Caption"
 
 interface ImageProps {
-  src?: string
+  src: string
 }
 
 export const Slide = props => {

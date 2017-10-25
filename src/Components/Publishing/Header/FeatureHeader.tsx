@@ -23,7 +23,7 @@ interface FeatureHeaderProps {
   vertical?: any
 }
 
-interface DivProps {
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
   height?: string
   src?: string
 }
@@ -194,12 +194,12 @@ function renderSuperArticleLogos(superArticle, isMobile) {
 }
 
 // Styles
-const DivWithProps: StyledFunction<DivProps> = styled.div
-const Div = DivWithProps`
+const Div = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 `
+const DivWithProps: StyledFunction<DivProps> = Div.extend
 const Overlay = Div.extend`
   position: absolute;
 
@@ -228,7 +228,7 @@ const HeaderText = Div.extend`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = Div.extend`
+const FeatureImage = DivWithProps`
   position: absolute;
   background-image: url(${props => (props.src || "")});
   background-size: cover;
@@ -300,7 +300,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `}
 `
-const FeatureHeaderContainer = Div.extend`
+const FeatureHeaderContainer = DivWithProps`
   width: 100%;
   height: ${props => props.height};
   &[data-type="text"] {
