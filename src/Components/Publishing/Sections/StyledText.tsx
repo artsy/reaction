@@ -84,7 +84,7 @@ export const StyledText = div`
     font-weight: normal;
     margin: 0;
     a {
-      background-size: 1.25px 6px;
+      background-size: 1.25px 1px;
     }
   }
   h3 {

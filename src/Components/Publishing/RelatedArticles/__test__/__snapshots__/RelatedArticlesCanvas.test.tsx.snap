@@ -244,6 +244,11 @@ exports[`renders the related articles canvas 1`] = `
       >
         <div
           className="c6"
+<<<<<<< HEAD
+=======
+          href="/article/artsy-editorial-15-top-art-schools-united-states"
+          onClick={[Function]}
+>>>>>>> a1ace1470e884a6f0ce9fc519ffaf07b35f81dda
         >
           <img
             alt="The 15 Top Art Schools in the United States"
@@ -279,6 +284,11 @@ exports[`renders the related articles canvas 1`] = `
       >
         <div
           className="c6"
+<<<<<<< HEAD
+=======
+          href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+          onClick={[Function]}
+>>>>>>> a1ace1470e884a6f0ce9fc519ffaf07b35f81dda
         >
           <img
             alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
@@ -314,6 +324,11 @@ exports[`renders the related articles canvas 1`] = `
       >
         <div
           className="c6"
+<<<<<<< HEAD
+=======
+          href="/article/artsy-editorial-french-art-history-in-a-nutshell"
+          onClick={[Function]}
+>>>>>>> a1ace1470e884a6f0ce9fc519ffaf07b35f81dda
         >
           <img
             alt="French Art History in a Nutshell"
@@ -349,6 +364,11 @@ exports[`renders the related articles canvas 1`] = `
       >
         <div
           className="c6"
+<<<<<<< HEAD
+=======
+          href="/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
+          onClick={[Function]}
+>>>>>>> a1ace1470e884a6f0ce9fc519ffaf07b35f81dda
         >
           <img
             alt="Miami Artists and Museums Brace for Hurricane Irma"

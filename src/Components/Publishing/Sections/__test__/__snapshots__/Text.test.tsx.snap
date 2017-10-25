@@ -88,7 +88,7 @@ exports[`renders classic text properly 1`] = `
 }
 
 .c0 h2 a {
-  background-size: 1.25px 6px;
+  background-size: 1.25px 1px;
 }
 
 .c0 h3 {
@@ -349,7 +349,7 @@ exports[`renders feature text properly 1`] = `
 }
 
 .c0 h2 a {
-  background-size: 1.25px 6px;
+  background-size: 1.25px 1px;
 }
 
 .c0 h3 {
@@ -600,7 +600,7 @@ exports[`renders standard text properly 1`] = `
 }
 
 .c0 h2 a {
-  background-size: 1.25px 6px;
+  background-size: 1.25px 1px;
 }
 
 .c0 h3 {
