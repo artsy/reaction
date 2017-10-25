@@ -281,15 +281,6 @@ const StyledFullscreenCaption = div`
 const TruncatedLine = styled.div`
   color: #999;
 
-  // TODO:
-  // Remove commented lines after validation. Covered by <ReactElipses />
-
-  // display: block;
-  // text-overflow: ellipsis;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // width: 100%;
-
   .name:after {
     content: ', ';
   }
