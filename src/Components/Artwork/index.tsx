@@ -1,15 +1,26 @@
 import * as React from "react"
-import styled, { css } from "styled-components"
+import styled, { css, StyledFunction } from "styled-components"
 
 import theme from "../../Assets/Theme"
 import ArtworkMetadata, { ArtworkMetadataProps } from "./Metadata"
 import createContainer, { RelayProps } from "./Relay"
 
-const Container = styled.div`
+interface SizeDivProps extends React.HTMLProps<HTMLDivElement> {
+  size?: number
+}
+
+interface SizeImgProps extends React.HTMLProps<HTMLImageElement> {
+  size?: number
+}
+
+const SizeDiv: StyledFunction<SizeDivProps> = styled.div
+const SizeImg: StyledFunction<SizeImgProps> = styled.img
+
+const Container = SizeDiv`
   width: 100%;
 `
 
-const ImageContainer = styled.div`
+const ImageContainer = SizeDiv`
   width: 100%;
   position: relative;
   cursor: pointer;
@@ -46,7 +57,7 @@ const ImageContainer = styled.div`
   }
 `
 
-const Image = styled.img`
+const Image = SizeImg`
   max-width: 100%;
   max-height: 100%;
   margin: auto;
@@ -88,7 +99,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
     }
   }
 
-  onSelected(e) {
+  onSelected = (e) => {
     if (!this.props.Overlay) {
       return
     }
@@ -110,7 +121,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
     overlayClasses += this.state.isSelected ? " selected" : ""
 
     return (
-      <Container onClick={this.onSelected.bind(this)} size={size}>
+      <Container onClick={this.onSelected} size={size}>
         <ImageContainer size={size}>
           <Image src={artwork.image.url} size={size} />
           <div className={overlayClasses}>
