@@ -268,6 +268,14 @@ const StyledFullscreenCaption = div`
     ${Fonts.unica("s16", "mediumItalic")}
   }
 
+  .title:after {
+    content: ', ';
+  }
+
+  .date:after {
+    content: ', ';
+  }
+
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
     flex-direction: column;
@@ -280,15 +288,6 @@ const StyledFullscreenCaption = div`
 
 const TruncatedLine = styled.div`
   color: #999;
-
-  // TODO:
-  // Remove commented lines after validation. Covered by <ReactElipses />
-
-  // display: block;
-  // text-overflow: ellipsis;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // width: 100%;
 
   .name:after {
     content: ', ';

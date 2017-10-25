@@ -1,10 +1,14 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import colors from "../../Assets/Colors"
 import { Artwork, ArtworkProps, OverlayProps } from "../Artwork"
 import ArtworkMetadata, { ArtworkMetadataProps } from "../Artwork/Metadata"
 import createContainer from "../Artwork/Relay"
 import Icon from "../Icon"
+
+interface CircleProps extends React.HTMLProps<HTMLDivElement> {
+  selected?: boolean
+}
 
 const OverlayBackground = styled.div`
   background-color: ${colors.purpleRegular};
@@ -21,8 +25,8 @@ const OverlayBackground = styled.div`
   justify-content: center;
   align-items: center;
 `
-
-const Circle = styled.div`
+const Div: StyledFunction<CircleProps> = styled.div
+const Circle = Div`
   width: 80px;
   height: 80px;
   border-radius: 100%;

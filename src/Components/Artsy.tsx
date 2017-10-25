@@ -73,7 +73,7 @@ export function ContextConsumer<P>(
   Component: React.ComponentClass<P> | React.StatelessComponent<P>
 ): React.ComponentClass<P> {
   const name = Component.displayName || Component.name
-  return class extends React.Component<P, void> {
+  return class extends React.Component<P, null> {
     static contextTypes = ContextTypes
     static displayName = `Artsy(${name})`
 
