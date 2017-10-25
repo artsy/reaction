@@ -1,10 +1,14 @@
 import { omit } from "lodash"
 import * as React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
 import { Fonts } from "../../Fonts"
 import { Caption } from "./Caption"
+
+interface ImageProps {
+  src?: string
+}
 
 export const Slide = props => {
   const newProps = omit(props, ["section", "index", "total", "isCaptionOpen"])
@@ -14,7 +18,7 @@ export const Slide = props => {
     <div {...newProps}>
       <SlideContainer>
         <Title>{section.setTitle}</Title>
-        <Image src={src} title={section.caption} />
+        <Image src={src} />
         <Caption open={props.isCaptionOpen} section={section} total={props.total} index={props.index} />
       </SlideContainer>
     </div>
@@ -28,7 +32,8 @@ const SlideContainer = styled.div`
   flex-direction: column;
   position: relative;
 `
-const Image = styled.div`
+const Img: StyledFunction<ImageProps> = styled.div
+const Image = Img`
   display: block;
   background: url(${props => props.src}) no-repeat center;
   background-size: contain;

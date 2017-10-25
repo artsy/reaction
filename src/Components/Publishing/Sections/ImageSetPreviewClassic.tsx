@@ -1,8 +1,12 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Fonts } from "../Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
+
+interface LengthProps extends React.Props<HTMLDivElement> {
+  imgLength: number
+}
 
 const Wrapper = styled.div`
   max-width: 580px;
@@ -81,14 +85,6 @@ export class ImageSetPreviewClassic extends Component<any, any> {
 
   render() {
     const { images } = this.props
-    const length = {
-      position: "absolute",
-      left: 8,
-      top: 14,
-    }
-    if (images.length > 9) {
-      length.left = 4
-    }
 
     return (
       <Wrapper className="imageset-preview">
@@ -98,9 +94,9 @@ export class ImageSetPreviewClassic extends Component<any, any> {
         <Remaining className="imageset-preview__remaining">
           <IconContainer className="imageset-preview__icon-container">
             <IconImageSet />
-            <div className="imageset-preview__length" style={length}>
+            <Length className="imageset-preview__length" imgLength={images.length}>
               <Text>{images.length}</Text>
-            </div>
+            </Length>
           </IconContainer>
           <Text className="imageset-preview__text">Enter Slideshow</Text>
         </Remaining>
@@ -108,3 +104,10 @@ export class ImageSetPreviewClassic extends Component<any, any> {
     )
   }
 }
+
+const Div: StyledFunction<LengthProps> = styled.div
+const Length = Div`
+  position: absolute;
+  left: ${props => props.imgLength > 9 ? "4px" : "8px"};
+  top: 14px;
+`

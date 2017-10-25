@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from '../../../Utils/Responsive'
 import { pMedia as breakpoint } from "../../Helpers"
@@ -21,6 +21,11 @@ interface FeatureHeaderProps {
     width: number
   }
   vertical?: any
+}
+
+interface DivProps {
+  height?: string
+  src?: string
 }
 
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
@@ -189,8 +194,8 @@ function renderSuperArticleLogos(superArticle, isMobile) {
 }
 
 // Styles
-
-const Div = styled.div`
+const PropDiv: StyledFunction<DivProps> = styled.div
+const Div = PropDiv`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -225,7 +230,7 @@ const HeaderText = Div.extend`
 `
 const FeatureImage = Div.extend`
   position: absolute;
-  background-image: url(${props => (props.src ? props.src : "")});
+  background-image: url(${props => (props.src || "")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
