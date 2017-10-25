@@ -239,7 +239,7 @@ exports[`renders the related articles canvas 1`] = `
     >
       <a
         className="c5"
-        href="/article2/artsy-editorial-15-top-art-schools-united-states"
+        href="/article/artsy-editorial-15-top-art-schools-united-states"
         onClick={[Function]}
       >
         <div
@@ -274,7 +274,7 @@ exports[`renders the related articles canvas 1`] = `
       </a>
       <a
         className="c5"
-        href="/article2/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+        href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
         onClick={[Function]}
       >
         <div
@@ -309,7 +309,7 @@ exports[`renders the related articles canvas 1`] = `
       </a>
       <a
         className="c5"
-        href="/article2/artsy-editorial-french-art-history-in-a-nutshell"
+        href="/article/artsy-editorial-french-art-history-in-a-nutshell"
         onClick={[Function]}
       >
         <div
@@ -344,7 +344,7 @@ exports[`renders the related articles canvas 1`] = `
       </a>
       <a
         className="c5"
-        href="/article2/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
+        href="/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
         onClick={[Function]}
       >
         <div
