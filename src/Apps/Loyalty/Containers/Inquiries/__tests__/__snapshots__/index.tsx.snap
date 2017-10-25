@@ -56,17 +56,14 @@ exports[`inquiries renders the inquiries listing 1`] = `
             className="file__InquiryContainer-s1gyj4vs-0 fFvgsu"
           >
             <div
-              className="sc-bdVaJa UoSJW"
+              className="file__Container-lffe97-0 bTXoSh"
               onClick={[Function]}
-              size={250}
             >
               <div
-                className="sc-bwzfXH hfXxFk"
-                size={250}
+                className="file__ImageContainer-lffe97-1 hYhPlx"
               >
                 <img
-                  className="sc-htpNat krmzVJ"
-                  size={250}
+                  className="file__Image-lffe97-2 gNDimy"
                   src="http://path.to.cat.pics"
                 />
                 <div
@@ -76,7 +73,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
                     className="file__OverlayBackground-s6bovq-0 iFFOOe"
                   >
                     <div
-                      className="sc-bxivhb kIpieB"
+                      className="sc-bdVaJa ctlSVY"
                       selected={false}
                     >
                       <div

@@ -1,26 +1,15 @@
 import * as React from "react"
-import styled, { css, StyledFunction } from "styled-components"
+import styled, { css } from "styled-components"
 
 import theme from "../../Assets/Theme"
 import ArtworkMetadata, { ArtworkMetadataProps } from "./Metadata"
 import createContainer, { RelayProps } from "./Relay"
 
-interface SizeDivProps extends React.HTMLProps<HTMLDivElement> {
-  size?: number
-}
-
-interface SizeImgProps extends React.HTMLProps<HTMLImageElement> {
-  size?: number
-}
-
-const SizeDiv: StyledFunction<SizeDivProps> = styled.div
-const SizeImg: StyledFunction<SizeImgProps> = styled.img
-
-const Container = SizeDiv`
+const Container = styled.div`
   width: 100%;
 `
 
-const ImageContainer = SizeDiv`
+const ImageContainer = styled.div`
   width: 100%;
   position: relative;
   cursor: pointer;
@@ -57,7 +46,7 @@ const ImageContainer = SizeDiv`
   }
 `
 
-const Image = SizeImg`
+const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   margin: auto;
@@ -73,7 +62,6 @@ export interface OverlayProps {
 }
 
 export interface ArtworkProps extends RelayProps {
-  size?: number
   extended?: boolean
   Overlay?: React.SFC<OverlayProps>
   onSelect?: (selected: boolean) => void
@@ -86,7 +74,6 @@ export interface ArtworkState {
 
 export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   static defaultProps = {
-    size: 250,
     extended: true,
     overlay: null,
     showOverlayOnHover: false,
@@ -114,16 +101,16 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   }
 
   render() {
-    const { size, artwork, Overlay, showOverlayOnHover } = this.props
+    const { artwork, Overlay, showOverlayOnHover } = this.props
     let overlayClasses = "overlay-container"
 
     overlayClasses += showOverlayOnHover ? " hovered" : ""
     overlayClasses += this.state.isSelected ? " selected" : ""
 
     return (
-      <Container onClick={this.onSelected} size={size}>
-        <ImageContainer size={size}>
-          <Image src={artwork.image.url} size={size} />
+      <Container onClick={this.onSelected}>
+        <ImageContainer>
+          <Image src={artwork.image.url} />
           <div className={overlayClasses}>
             {Overlay && <Overlay selected={this.state.isSelected} />}
           </div>
