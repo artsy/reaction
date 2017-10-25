@@ -27,6 +27,14 @@ exports[`renders an artwork caption properly 1`] = `
   line-height: 1.1em;
 }
 
+.c4 .title:after {
+  content: ', ';
+}
+
+.c4 .date:after {
+  content: ', ';
+}
+
 .c5.artist-name {
   margin-right: 20px;
 }

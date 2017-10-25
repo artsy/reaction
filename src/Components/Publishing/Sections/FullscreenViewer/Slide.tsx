@@ -7,7 +7,7 @@ import { Fonts } from "../../Fonts"
 import { Caption } from "./Caption"
 
 interface ImageProps {
-  src?: string
+  src: string
 }
 
 export const Slide = props => {
@@ -17,7 +17,7 @@ export const Slide = props => {
   return (
     <div {...newProps}>
       <SlideContainer>
-        <Title>{section.setTitle}</Title>
+        <Title>{section.setTitle || ''}</Title>
         <Image src={src} />
         <Caption open={props.isCaptionOpen} section={section} total={props.total} index={props.index} />
       </SlideContainer>

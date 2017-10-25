@@ -4,7 +4,7 @@ import { resize } from "../../../Utils/resizer"
 import { Fonts } from "../Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
 
-interface LengthProps extends React.Props<HTMLDivElement> {
+interface LengthProps extends React.HTMLProps<HTMLDivElement> {
   imgLength: number
 }
 
