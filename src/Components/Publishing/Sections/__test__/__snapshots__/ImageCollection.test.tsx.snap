@@ -205,7 +205,52 @@ exports[`renders a single image properly 1`] = `
         <div
           className="c9"
         >
-          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": <span>
+                  <span
+                      className="artist-name"
+                  >
+                      <span
+                          className="name"
+                      >
+                          <file__StyledTextLink
+                              color="#999"
+                              href="/artwork/fernando-botero"
+                              underline={false}
+                          >
+                              Fernando Botero
+                          </file__StyledTextLink>
+                      </span>
+                  </span>
+                  <span
+                      className="title"
+                  >
+                      <file__StyledTextLink
+                          color="#999"
+                          href="/artwork/fernando-botero-nude-on-the-beach"
+                          underline={false}
+                      >
+                          Nude on the Beach
+                      </file__StyledTextLink>
+                  </span>
+                  <span
+                      className="date"
+                  >
+                      2000
+                  </span>
+                  <file__StyledTextLink
+                      color="#999"
+                      href="/partner/gary-nader"
+                      underline={false}
+                  >
+                      Gary Nader
+                  </file__StyledTextLink>
+              </span>,
+              }
+            }
+          />
         </div>
       </div>
     </div>
@@ -491,7 +536,52 @@ exports[`renders properly 1`] = `
         <div
           className="c9"
         >
-          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": <span>
+                  <span
+                      className="artist-name"
+                  >
+                      <span
+                          className="name"
+                      >
+                          <file__StyledTextLink
+                              color="#999"
+                              href="/artwork/fernando-botero"
+                              underline={false}
+                          >
+                              Fernando Botero
+                          </file__StyledTextLink>
+                      </span>
+                  </span>
+                  <span
+                      className="title"
+                  >
+                      <file__StyledTextLink
+                          color="#999"
+                          href="/artwork/fernando-botero-nude-on-the-beach"
+                          underline={false}
+                      >
+                          Nude on the Beach
+                      </file__StyledTextLink>
+                  </span>
+                  <span
+                      className="date"
+                  >
+                      2000
+                  </span>
+                  <file__StyledTextLink
+                      color="#999"
+                      href="/partner/gary-nader"
+                      underline={false}
+                  >
+                      Gary Nader
+                  </file__StyledTextLink>
+              </span>,
+              }
+            }
+          />
         </div>
       </div>
     </div>

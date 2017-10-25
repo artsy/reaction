@@ -112,7 +112,7 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  className="c0"
+  className="VideoContainer__StyledComponent c0"
 >
   <div
     className="c1"

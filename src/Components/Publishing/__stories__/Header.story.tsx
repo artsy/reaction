@@ -1,9 +1,16 @@
 import { storiesOf } from "@storybook/react"
 import * as _ from "lodash"
 import * as React from "react"
-import { ClassicArticle, FeatureArticle, StandardArticle, SuperArticle } from "../Fixtures/Articles"
 import { HeroSections } from "../Fixtures/Components"
 import { Header } from "../Header/Header"
+
+import {
+  BasicArticle,
+  ClassicArticle,
+  FeatureArticle,
+  StandardArticle,
+  SuperArticle
+} from "../Fixtures/Articles"
 
 storiesOf("Publishing/Headers", module)
   .add("Classic Header", () => {
@@ -32,6 +39,32 @@ storiesOf("Publishing/Headers", module)
             <div>Child 0: Vertical</div>
             <div>Child 1: Title</div>
           </Header>
+        </div>
+      </div>
+    )
+  })
+  .add("Feature Header - Basic, without Embed", () => {
+    const article = _.clone(BasicArticle)
+    article.hero_section.url = false
+
+    return (
+      <div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header
+            article={BasicArticle} />
+        </div>
+      </div>
+    )
+  })
+  .add("Feature Header - Basic, with Embed", () => {
+    const article = _.clone(BasicArticle)
+    article.hero_section.url = 'https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4'
+
+    return (
+      <div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header
+            article={BasicArticle} />
         </div>
       </div>
     )
