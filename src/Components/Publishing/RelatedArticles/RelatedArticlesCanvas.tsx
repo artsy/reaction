@@ -72,6 +72,12 @@ const ArticlesWrapper = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+  a {
+    margin-right: 30px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `
 const LineBreak = styled.div`
   border-top: 1px solid ${Colors.grayRegular};

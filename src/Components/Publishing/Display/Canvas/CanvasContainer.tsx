@@ -166,6 +166,7 @@ const CanvasLink = responsiveLink`
 const StandardContainer = styled.div`
   max-width: calc(35% - 20px);
   height: 100%;
+  margin-right: auto;
   ${pMedia.sm`
     max-width: 100%;
     width: 100%;

@@ -40,8 +40,8 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
 
     return (
-      <ArticleFigure>
-        <ImageTitle href={href} onClick={this.onClick}>
+      <ArticleFigure href={href} onClick={this.onClick}>
+        <ImageTitle>
           <BlockImage
             src={imageSrc}
             alt={article.thumbnail_title}
@@ -60,7 +60,7 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
   }
 }
 
-const ImageTitle = styled.a`
+const ImageTitle = styled.div`
   display: flex;
   flex-direction: column;
   color: black;
@@ -71,11 +71,10 @@ const ImageTitle = styled.a`
   `};
 `
 
-const ArticleFigure = styled.div`
+const ArticleFigure = styled.a`
   display: flex;
   flex-direction: column;
   max-width: 278px;
-  margin-right: 30px;
   text-decoration: none;
   color: black;
 `

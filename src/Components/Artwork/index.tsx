@@ -15,7 +15,7 @@ const ImageContainer = styled.div`
   cursor: pointer;
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     padding-bottom: 100%;
   }
@@ -41,7 +41,7 @@ const ImageContainer = styled.div`
           opacity: 1;
           visibility: visible;
         }
-      `}
+      `};
     }
   }
 `
@@ -113,11 +113,9 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
       <Container onClick={this.onSelected.bind(this)} size={size}>
         <ImageContainer size={size}>
           <Image src={artwork.image.url} size={size} />
-          <div className={overlayClasses}>
-            {Overlay && <Overlay selected={this.state.isSelected} />}
-          </div>
+          <div className={overlayClasses}>{Overlay && <Overlay selected={this.state.isSelected} />}</div>
         </ImageContainer>
-        <ArtworkMetadata artwork={artwork} />
+        <ArtworkMetadata extended={this.props.extended} artwork={artwork} />
       </Container>
     )
   }
