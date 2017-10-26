@@ -24,14 +24,27 @@ export class ArtworkDetails extends React.Component<Props, null> {
     const { cultural_maker, artists } = this.props.artwork
 
     if (cultural_maker) {
-      return <TruncatedLine><strong>{cultural_maker}</strong></TruncatedLine>
+      return (
+        <TruncatedLine>
+          <strong>{cultural_maker}</strong>
+        </TruncatedLine>
+      )
     } else if (artists && artists.length) {
       const artistLine = artists
         .reduce((acc, artist) => {
-          return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
+          return acc.concat([
+            ", ",
+            <TextLink href={artist.href} key={artist.__id}>
+              {artist.name}
+            </TextLink>,
+          ])
         }, [])
         .slice(1)
-      return <TruncatedLine><strong>{artistLine}</strong></TruncatedLine>
+      return (
+        <TruncatedLine>
+          <strong>{artistLine}</strong>
+        </TruncatedLine>
+      )
     }
   }
 
@@ -52,9 +65,7 @@ export class ArtworkDetails extends React.Component<Props, null> {
     } else if (this.props.artwork.partner) {
       return (
         <TruncatedLine>
-          <TextLink href={this.props.artwork.partner.href}>
-            {this.props.artwork.partner.name}
-          </TextLink>
+          <TextLink href={this.props.artwork.partner.href}>{this.props.artwork.partner.name}</TextLink>
         </TruncatedLine>
       )
     }
