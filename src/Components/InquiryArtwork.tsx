@@ -1,10 +1,10 @@
 import * as React from "react"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 import styled, { StyledFunction } from "styled-components"
-import colors from "../../Assets/Colors"
-import { Artwork, ArtworkProps, OverlayProps } from "../Artwork"
-import ArtworkMetadata, { ArtworkMetadataProps } from "../Artwork/Metadata"
-import createContainer from "../Artwork/Relay"
-import Icon from "../Icon"
+
+import colors from "../Assets/Colors"
+import Artwork, { ArtworkProps, OverlayProps } from "./Artwork"
+import Icon from "./Icon"
 
 interface CircleProps extends React.HTMLProps<HTMLDivElement> {
   selected?: boolean
@@ -39,15 +39,23 @@ const Circle = Div`
   transition: border-color 0.3s;
 `
 
-const Overlay: React.SFC<OverlayProps> = props =>
+const Overlay: React.SFC<OverlayProps> = props => (
   <OverlayBackground>
     <Circle selected={props.selected}>
       <Icon name="check" color="white" />
     </Circle>
   </OverlayBackground>
+)
 
 export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
   return <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
 }
 
-export default createContainer<ArtworkProps, ArtworkMetadataProps>(InquiryArtwork, ArtworkMetadata)
+export default createFragmentContainer(
+  InquiryArtwork,
+  graphql`
+    fragment InquiryArtwork_artwork on Artwork {
+      ...Artwork_artwork
+    }
+  `
+)
