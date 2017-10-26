@@ -56,27 +56,24 @@ exports[`inquiries renders the inquiries listing 1`] = `
             className="file__InquiryContainer-s1gyj4vs-0 fFvgsu"
           >
             <div
-              className="file__Container-oq1ukk-0 dulJuA"
+              className="file__Container-d3mdbv-0 gvDhgm"
               onClick={[Function]}
-              size={250}
             >
               <div
-                className="file__ImageContainer-oq1ukk-1 eUdMyJ"
-                size={250}
+                className="file__ImageContainer-d3mdbv-1 iIunh"
               >
                 <img
-                  className="file__Image-oq1ukk-2 jNVZwb"
-                  size={250}
+                  className="file__Image-d3mdbv-2 iyncRx"
                   src="http://path.to.cat.pics"
                 />
                 <div
                   className="overlay-container hovered"
                 >
                   <div
-                    className="file__OverlayBackground-by1ucj-0 ivWxpO"
+                    className="file__OverlayBackground-s6bovq-0 iFFOOe"
                   >
                     <div
-                      className="file__Circle-by1ucj-1 hAJpWy"
+                      className="sc-bdVaJa ctlSVY"
                       selected={false}
                     >
                       <div
@@ -90,11 +87,11 @@ exports[`inquiries renders the inquiries listing 1`] = `
                 </div>
               </div>
               <div
-                className="file__StyledMetadata-s1qwxy63-0 cPCanW"
+                className="file__StyledMetadata-s1kgaj3f-0 fRAocE"
               >
                 <div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-zf2g9t-0 cBvebJ"
                   >
                     <strong>
                       <a
@@ -106,7 +103,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
                     </strong>
                   </div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-zf2g9t-0 cBvebJ"
                   >
                     <a
                       className="file__StyledTextLink-s1973ep5-0 gWjzCq"

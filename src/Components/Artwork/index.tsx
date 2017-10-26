@@ -62,7 +62,6 @@ export interface OverlayProps {
 }
 
 export interface ArtworkProps extends RelayProps {
-  size?: number
   extended?: boolean
   Overlay?: React.SFC<OverlayProps>
   onSelect?: (selected: boolean) => void
@@ -75,7 +74,6 @@ export interface ArtworkState {
 
 export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   static defaultProps = {
-    size: 250,
     extended: true,
     overlay: null,
     showOverlayOnHover: false,
@@ -88,7 +86,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
     }
   }
 
-  onSelected(e) {
+  onSelected = e => {
     if (!this.props.Overlay) {
       return
     }
@@ -103,16 +101,16 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   }
 
   render() {
-    const { size, artwork, Overlay, showOverlayOnHover } = this.props
+    const { artwork, Overlay, showOverlayOnHover } = this.props
     let overlayClasses = "overlay-container"
 
     overlayClasses += showOverlayOnHover ? " hovered" : ""
     overlayClasses += this.state.isSelected ? " selected" : ""
 
     return (
-      <Container onClick={this.onSelected.bind(this)} size={size}>
-        <ImageContainer size={size}>
-          <Image src={artwork.image.url} size={size} />
+      <Container onClick={this.onSelected}>
+        <ImageContainer>
+          <Image src={artwork.image.url} />
           <div className={overlayClasses}>{Overlay && <Overlay selected={this.state.isSelected} />}</div>
         </ImageContainer>
         <ArtworkMetadata extended={this.props.extended} artwork={artwork} />

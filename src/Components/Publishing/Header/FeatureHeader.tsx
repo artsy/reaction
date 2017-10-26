@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from '../../../Utils/Responsive'
 import { pMedia as breakpoint } from "../../Helpers"
@@ -21,6 +21,11 @@ interface FeatureHeaderProps {
     width: number
   }
   vertical?: any
+}
+
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
+  height?: string
+  src?: string
 }
 
 const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
@@ -189,12 +194,12 @@ function renderSuperArticleLogos(superArticle, isMobile) {
 }
 
 // Styles
-
 const Div = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 `
+const DivWithProps: StyledFunction<DivProps> = Div.extend
 const Overlay = Div.extend`
   position: absolute;
 
@@ -223,9 +228,9 @@ const HeaderText = Div.extend`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = Div.extend`
+const FeatureImage = DivWithProps`
   position: absolute;
-  background-image: url(${props => (props.src ? props.src : "")});
+  background-image: url(${props => (props.src || "")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -295,7 +300,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `}
 `
-const FeatureHeaderContainer = Div.extend`
+const FeatureHeaderContainer = DivWithProps`
   width: 100%;
   height: ${props => props.height};
   &[data-type="text"] {

@@ -6,4 +6,6 @@ export const zIndex = {
 
 export const articleHref = slug => `/article/${slug}`
 
+export const articleFullHref = slug => `https://www.artsy.net/article/${slug}`
+
 export const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
