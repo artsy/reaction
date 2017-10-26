@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 
 import Fillwidth from "../Artwork/Fillwidth"
 
@@ -32,8 +32,8 @@ interface RelayProps {
   }
 }
 
-function FillwidthExample(props: { artistID: string }) {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+function FillwidthExample(props: { artistID: string; user: User }) {
+  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
   return (
     <Relay.RootContainer Component={FillwidthContainer} route={new ArtistQueryConfig({ artistID: props.artistID })} />
   )
@@ -41,12 +41,12 @@ function FillwidthExample(props: { artistID: string }) {
 
 storiesOf("Components/Artworks/Fillwidth", module).add("A typical fillwidth", () => {
   const user = {
-    id: "some-id",
-    accessToken: "some-token",
+    id: "secret",
+    accessToken: "very-secret",
   } as User
   return (
     <Artsy.ContextProvider currentUser={user}>
-      <FillwidthExample artistID="stephen-willats" />
+      <FillwidthExample artistID="stephen-willats" user={user} />
     </Artsy.ContextProvider>
   )
 })

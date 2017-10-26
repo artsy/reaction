@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 import styled, { ThemeProvider } from "styled-components"
 
 import theme from "../../../../Assets/Theme"

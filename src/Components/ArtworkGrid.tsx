@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 
 import styled from "styled-components"
 import Artwork from "./Artwork/GridItem"
@@ -114,18 +114,18 @@ export class ArtworkGrid extends React.Component<Props, State> {
         marginRight: i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
-      sections.push(<div style={sectionSpecificStyle} key={i}>{artworkComponents}</div>)
+      sections.push(
+        <div style={sectionSpecificStyle} key={i}>
+          {artworkComponents}
+        </div>
+      )
     }
     return sections
   }
 
   render() {
     const artworks = this.renderSections() || []
-    return (
-      <div className={this.props.className}>
-        {artworks}
-      </div>
-    )
+    return <div className={this.props.className}>{artworks}</div>
   }
 }
 

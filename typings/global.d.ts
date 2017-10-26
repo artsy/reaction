@@ -1,7 +1,7 @@
 /// <reference types="segment-analytics" />
 
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 import * as sharify from "sharify"
 
 declare global {

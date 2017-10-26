@@ -1,7 +1,7 @@
 {
   "presets": ["es2015", "stage-3", "react"],
   "plugins": [
-    "react-relay",
+    ["relay", { "compat": true, "schema": "data/schema.graphql" }],
     [
       "styled-components",
       {

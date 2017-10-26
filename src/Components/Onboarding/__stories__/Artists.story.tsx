@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 
 import { artsyNetworkLayer } from "../../../Relay/config"
 import PopularArtistQueryConfig from "../../../Relay/Queries/PopularArtist"
@@ -12,4 +12,4 @@ function ConnectedPopularArtistSelector() {
   return <Relay.RootContainer Component={Artists} route={new PopularArtistQueryConfig()} />
 }
 
-storiesOf("Onboarding").add("Artist Selector", () => <ConnectedPopularArtistSelector />)
+storiesOf("Onboarding", module).add("Artist Selector", () => <ConnectedPopularArtistSelector />)

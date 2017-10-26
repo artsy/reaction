@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 
 import Artwork from "../Artwork"
 
@@ -14,7 +14,7 @@ function ArtworkExample(props: { artworkID: string }) {
 
 storiesOf("Components/Artwork/Singular", module)
   .add("A square artwork", () => <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />)
-  .add("A landscape artwork", () => <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />)
+  .add("A landscape artwork", () => <ArtworkExample artworkID="andrew-moore-puente-de-bacunayagua-via-blanca" />)
   .add("A landscape artwork (extra wide)", () => <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />)
   .add("A portrait artwork", () => <ArtworkExample artworkID="ester-curini-my-eyes-my-soul" />)
   .add("A portrait artwork (extra tall)", () => <ArtworkExample artworkID="snik-untitled-vertical" />)

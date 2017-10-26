@@ -18,6 +18,7 @@ module.exports = () => {
             {
               loader: "awesome-typescript-loader",
               options: {
+                transpileOnly: true, // FIXME: This is only for the duration of fixing all build issues during Relay migration.
                 useBabel: true,
                 useCache: true,
                 useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.

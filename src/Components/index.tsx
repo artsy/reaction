@@ -17,7 +17,7 @@ import Title from "./Title"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import * as Relay from "react-relay"
+import * as Relay from "react-relay/classic"
 
 import { artsyNetworkLayer } from "../Relay/config"
 import * as Artsy from "./Artsy"

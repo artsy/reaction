@@ -6,9 +6,7 @@ const sharify = require("./sharify")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 
-const {
-  CheckerPlugin
-} = require("awesome-typescript-loader")
+const { CheckerPlugin } = require("awesome-typescript-loader")
 
 /**
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
@@ -16,11 +14,11 @@ const {
  */
 const {
   WEBPACK_DEVTOOL = "#inline-source-map", // FIXME: Does this prior inline comment still apply? "Otherwise getting errors about e.g. `Relay` not being defined."
-  METAPHYSICS_ENDPOINT
+  METAPHYSICS_ENDPOINT,
 } = env.config().parsed
 
 const sharifyPath = sharify({
-  METAPHYSICS_ENDPOINT
+  METAPHYSICS_ENDPOINT,
 })
 
 let plugins = [new CheckerPlugin()]
@@ -37,22 +35,26 @@ module.exports = {
     },
   },
   module: {
-    rules: [{
-      test: /\.json$/,
-      loader: "json-loader"
-    },
-    {
-      exclude: [/node_modules/, /__tests__/],
-      use: [{
-        loader: "awesome-typescript-loader",
-        options: {
-          useBabel: true,
-          useCache: true,
-          useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
-        },
-      },],
-      test: /\.tsx?$/,
-    },
+    rules: [
+      {
+        test: /\.json$/,
+        loader: "json-loader",
+      },
+      {
+        exclude: [/node_modules/, /__tests__/],
+        use: [
+          {
+            loader: "awesome-typescript-loader",
+            options: {
+              transpileOnly: true, // FIXME: This is only for the duration of fixing all build issues during Relay migration.
+              useBabel: true,
+              useCache: true,
+              useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+            },
+          },
+        ],
+        test: /\.tsx?$/,
+      },
     ],
   },
   plugins: plugins,

@@ -8,13 +8,13 @@ import Icon from "../Icon"
 import Title from "../Title"
 
 const IconContainer = styled.div`
-width: 15px;
-height: 15px;
-background-color: black;
-display: none;
-border-radius: 50%;
-float: right;
-margin-right: 15px;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  display: none;
+  border-radius: 50%;
+  float: right;
+  margin-right: 15px;
 `
 
 const Link = styled.a`
@@ -34,12 +34,14 @@ const Link = styled.a`
   }
 `
 
-storiesOf("Onboarding").add("Collector Intent", () => {
+storiesOf("Onboarding", module).add("Collector Intent", () => {
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: "100px" }}>
         <Title titleSize="xlarge">Get started on Artsy, what are you most interested in doing?</Title>
-        <Title titleSize="xlarge" style={{ color: "#999999" }}>Select all that apply</Title>
+        <Title titleSize="xlarge" style={{ color: "#999999" }}>
+          Select all that apply
+        </Title>
       </div>
       <div style={{ width: "450px", margin: "0 auto 100px" }}>
         <Link href="#">
