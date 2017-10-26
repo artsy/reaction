@@ -3,6 +3,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from '../../../Utils/Responsive'
+import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import Icon from "../../Icon"
 import { Byline } from "../Byline/Byline"
@@ -28,78 +29,127 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
   src?: string
 }
 
-const FeatureHeaderComponent: React.SFC<FeatureHeaderProps> = props => {
-  const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = props
-  const hero = article.hero_section
-  const url = get(hero, "url", "")
-  const type = get(hero, "type", "text")
+@track()
+export class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, null> {
+  static defaultProps = {
+    height: "100vh",
+    size: {
+      width: 1024,
+    },
+  }
 
-  // Video / Image / Text
-  const Asset = () => renderAsset(type)(url, article.title, image)
+  constructor(props) {
+    super(props)
+    this.onClickPartnerLink = this.onClickPartnerLink.bind(this)
+  }
 
-  return (
-    <Responsive initialState={{ isMobile: passedIsMobile }}>
-      {({ isMobile }) => {
-        const isFullScreenLayout = type === 'fullscreen'
-        const isDesktopSplitLayout = type === 'split' && !isMobile
-        const isMobileSplitLayout = type === "split" && isMobile
-        const isTextLayout = type === 'text'
+  renderSuperArticleLogos = (isMobile) => {
+    const { super_article } = this.props.article
+    return (
+      <SuperArticleLogos>
+        <a href="/">
+          <Icon
+            name="logotype"
+            fontSize={isMobile ? "30px" : "45px"}
+            color="white" />
+        </a>
+        <SuperArticleLogoDivider>
+          <Icon
+            name="close"
+            fontSize={isMobile ? "15px" : "25px"}
+            color="white" />
+        </SuperArticleLogoDivider>
+        <a
+          href={super_article.partner_logo_link}
+          target="_blank"
+          onClick={this.onClickPartnerLink}>
+          <img
+            src={super_article.partner_fullscreen_header_logo || super_article.partner_logo}
+            height={isMobile ? "32px" : "50px"} />
+        </a>
+      </SuperArticleLogos>
+    )
+  }
 
-        return (
-          <FeatureHeaderContainer data-type={type} height={height}>
-            {isFullScreenLayout &&
-              <div>
-                <Asset />
-                <Overlay />
-              </div>}
+  @track(props => ({
+    action: "Click",
+    label: "Clicked primary partner logo",
+    impression_type: "sa_primary_logo",
+    destination_path: props.article.super_article.partner_logo_link,
+    context_type: "article_fixed"
+  }))
+  // tslint:disable-next-line:no-empty
+  onClickPartnerLink() { }
 
-            {isDesktopSplitLayout &&
-              <Asset />}
+  render() {
+    const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = this.props
+    const hero = article.hero_section
+    const url = get(hero, "url", "")
+    const type = get(hero, "type", "text")
 
-            <HeaderTextContainer>
-              {article.is_super_article && renderSuperArticleLogos(article.super_article, isMobile)}
-              <HeaderText>
-                <Vertical>
-                  {vertical}
-                </Vertical>
+    // Video / Image / Text
+    const Asset = () => renderAsset(type)(url, article.title, image)
 
-                <Title>
-                  {title}
-                </Title>
+    return (
+      <Responsive initialState={{ isMobile: passedIsMobile }}>
+        {({ isMobile }) => {
+          const isFullScreenLayout = type === 'fullscreen'
+          const isDesktopSplitLayout = type === 'split' && !isMobile
+          const isMobileSplitLayout = type === "split" && isMobile
+          const isTextLayout = type === 'text'
 
-                {/* FIXME */}
-                {isMobileSplitLayout &&
-                  <Asset />}
+          return (
+            <FeatureHeaderContainer data-type={type} height={height}>
+              {isFullScreenLayout &&
+                <div>
+                  <Asset />
+                  <Overlay />
+                </div>}
 
-                <SubHeader>
-                  {deck &&
-                    <Deck>
-                      {deck}
-                    </Deck>}
-
-                  <Byline
-                    article={article}
-                    layout={type}
-                  />
-                </SubHeader>
-              </HeaderText>
-
-              {isTextLayout &&
+              {isDesktopSplitLayout &&
                 <Asset />}
 
-            </HeaderTextContainer>
-          </FeatureHeaderContainer>
-        )
-      }}
-    </Responsive>
-  )
-}
+              <HeaderTextContainer>
 
-FeatureHeaderComponent.defaultProps = {
-  height: "100vh",
-  size: {
-    width: 1024,
-  },
+                {article.is_super_article &&
+                  this.renderSuperArticleLogos(isMobile)}
+
+                <HeaderText>
+                  <Vertical>
+                    {vertical}
+                  </Vertical>
+
+                  <Title>
+                    {title}
+                  </Title>
+
+                  {/* FIXME */}
+                  {isMobileSplitLayout &&
+                    <Asset />}
+
+                  <SubHeader>
+                    {deck &&
+                      <Deck>
+                        {deck}
+                      </Deck>}
+
+                    <Byline
+                      article={article}
+                      layout={type}
+                    />
+                  </SubHeader>
+                </HeaderText>
+
+                {isTextLayout &&
+                  <Asset />}
+
+              </HeaderTextContainer>
+            </FeatureHeaderContainer>
+          )
+        }}
+      </Responsive>
+    )
+  }
 }
 
 // Helpers
@@ -165,32 +215,6 @@ function renderAsset(type: string) {
       }
     }
   }
-}
-
-function renderSuperArticleLogos(superArticle, isMobile) {
-  return (
-    <SuperArticleLogos>
-      <a href="/">
-        <Icon
-          name="logotype"
-          fontSize={isMobile ? "30px" : "45px"}
-          color="white" />
-      </a>
-      <SuperArticleLogoDivider>
-        <Icon
-          name="close"
-          fontSize={isMobile ? "15px" : "25px"}
-          color="white" />
-      </SuperArticleLogoDivider>
-      <a
-        href={superArticle.partner_logo_link}
-        target="_blank">
-        <img
-          src={superArticle.partner_fullscreen_header_logo || superArticle.partner_logo}
-          height={isMobile ? "32px" : "50px"} />
-      </a>
-    </SuperArticleLogos>
-  )
 }
 
 // Styles
