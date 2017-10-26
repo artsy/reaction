@@ -56,14 +56,14 @@ exports[`inquiries renders the inquiries listing 1`] = `
             className="file__InquiryContainer-s1gyj4vs-0 fFvgsu"
           >
             <div
-              className="file__Container-lffe97-0 bTXoSh"
+              className="file__Container-d3mdbv-0 gvDhgm"
               onClick={[Function]}
             >
               <div
-                className="file__ImageContainer-lffe97-1 hYhPlx"
+                className="file__ImageContainer-d3mdbv-1 iIunh"
               >
                 <img
-                  className="file__Image-lffe97-2 gNDimy"
+                  className="file__Image-d3mdbv-2 iyncRx"
                   src="http://path.to.cat.pics"
                 />
                 <div
@@ -87,11 +87,11 @@ exports[`inquiries renders the inquiries listing 1`] = `
                 </div>
               </div>
               <div
-                className="file__StyledMetadata-s1qwxy63-0 cPCanW"
+                className="file__StyledMetadata-s1lol08u-0 jPWtex"
               >
                 <div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-zf2g9t-0 cBvebJ"
                   >
                     <strong>
                       <a
@@ -103,7 +103,7 @@ exports[`inquiries renders the inquiries listing 1`] = `
                     </strong>
                   </div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-zf2g9t-0 cBvebJ"
                   >
                     <a
                       className="file__StyledTextLink-s1973ep5-0 gWjzCq"
