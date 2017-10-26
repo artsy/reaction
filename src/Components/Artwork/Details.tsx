@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 import TextLink from "../TextLink"
 
 import styled from "styled-components"
@@ -11,11 +11,11 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
 `
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkDetails> {
+interface Props extends RelayProps, React.HTMLProps<Details> {
   showSaleLine: boolean
 }
 
-export class ArtworkDetails extends React.Component<Props, null> {
+export class Details extends React.Component<Props, null> {
   static defaultProps = {
     showSaleLine: true,
   }
@@ -24,14 +24,27 @@ export class ArtworkDetails extends React.Component<Props, null> {
     const { cultural_maker, artists } = this.props.artwork
 
     if (cultural_maker) {
-      return <TruncatedLine><strong>{cultural_maker}</strong></TruncatedLine>
+      return (
+        <TruncatedLine>
+          <strong>{cultural_maker}</strong>
+        </TruncatedLine>
+      )
     } else if (artists && artists.length) {
       const artistLine = artists
         .reduce((acc, artist) => {
-          return acc.concat([", ", <TextLink href={artist.href} key={artist.__id}>{artist.name}</TextLink>])
+          return acc.concat([
+            ", ",
+            <TextLink href={artist.href} key={artist.__id}>
+              {artist.name}
+            </TextLink>,
+          ])
         }, [])
         .slice(1)
-      return <TruncatedLine><strong>{artistLine}</strong></TruncatedLine>
+      return (
+        <TruncatedLine>
+          <strong>{artistLine}</strong>
+        </TruncatedLine>
+      )
     }
   }
 
@@ -52,9 +65,7 @@ export class ArtworkDetails extends React.Component<Props, null> {
     } else if (this.props.artwork.partner) {
       return (
         <TruncatedLine>
-          <TextLink href={this.props.artwork.partner.href}>
-            {this.props.artwork.partner.name}
-          </TextLink>
+          <TextLink href={this.props.artwork.partner.href}>{this.props.artwork.partner.name}</TextLink>
         </TruncatedLine>
       )
     }
@@ -81,35 +92,34 @@ export class ArtworkDetails extends React.Component<Props, null> {
   }
 }
 
-export default Relay.createContainer(ArtworkDetails, {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
+export default createFragmentContainer(
+  Details,
+  graphql`
+    fragment Details_artwork on Artwork {
+      href
+      title
+      date
+      sale_message
+      cultural_maker
+      artists(shallow: true) {
+        __id
         href
-        title
-        date
-        sale_message
-        cultural_maker
-        artists(shallow: true) {
-          __id
-          href
-          name
-        }
-        collecting_institution
-        partner(shallow: true) {
-          name
-          href
-        }
-        sale {
-          is_auction
-          is_live_open
-          is_open
-          is_closed
-        }
+        name
       }
-    `,
-  },
-})
+      collecting_institution
+      partner(shallow: true) {
+        name
+        href
+      }
+      sale {
+        is_auction
+        is_live_open
+        is_open
+        is_closed
+      }
+    }
+  `
+)
 
 interface RelayProps {
   artwork: {

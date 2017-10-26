@@ -1,9 +1,9 @@
 import * as React from "react"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 import styled, { css } from "styled-components"
 
 import theme from "../../Assets/Theme"
-import ArtworkMetadata, { ArtworkMetadataProps } from "./Metadata"
-import createContainer, { RelayProps } from "./Relay"
+import Metadata from "./Metadata"
 
 const Container = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const ImageContainer = styled.div`
   cursor: pointer;
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     padding-bottom: 100%;
   }
@@ -41,7 +41,7 @@ const ImageContainer = styled.div`
           opacity: 1;
           visibility: visible;
         }
-      `}
+      `};
     }
   }
 `
@@ -86,7 +86,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
     }
   }
 
-  onSelected = (e) => {
+  onSelected = e => {
     if (!this.props.Overlay) {
       return
     }
@@ -111,14 +111,34 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
       <Container onClick={this.onSelected}>
         <ImageContainer>
           <Image src={artwork.image.url} />
-          <div className={overlayClasses}>
-            {Overlay && <Overlay selected={this.state.isSelected} />}
-          </div>
+          <div className={overlayClasses}>{Overlay && <Overlay selected={this.state.isSelected} />}</div>
         </ImageContainer>
-        <ArtworkMetadata artwork={artwork} />
+        <Metadata artwork={artwork} />
       </Container>
     )
   }
 }
 
-export default createContainer<ArtworkProps, ArtworkMetadataProps>(Artwork, ArtworkMetadata)
+export default createFragmentContainer(
+  Artwork,
+  graphql`
+    fragment Artwork_artwork on Artwork {
+      id
+      image {
+        url(version: "large")
+        aspect_ratio
+      }
+      ...Metadata_artwork
+    }
+  `
+)
+
+interface RelayProps {
+  artwork: {
+    id: string | null
+    image: {
+      url: string | null
+      aspect_ratio: number | null
+    } | null
+  }
+}
