@@ -14,7 +14,7 @@ export interface ArtworkMetadataProps extends React.HTMLProps<ArtworkMetadata> {
 
 export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null> {
   static defaultProps = {
-    extended: false,
+    extended: true,
   }
 
   render() {

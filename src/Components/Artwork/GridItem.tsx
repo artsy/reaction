@@ -37,7 +37,7 @@ export class ArtworkGridItem extends React.Component<Props, null> {
             style={{ position: "absolute", right: "10px", bottom: "10px" }}
           />
         </Placeholder>
-        <ArtworkMetadata extended artwork={artwork} />
+        <ArtworkMetadata artwork={artwork} />
       </div>
     )
   }
