@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import { ArtistSearchQueryConfig } from "../../../../Relay/Queries/ArtistSearch"
 
@@ -17,20 +18,16 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   }
 }
 
-const wrappedArtistSearchResultsContent = Relay.createContainer(ArtistSearchResultsContent, {
-  initialVariables: {
-    term: null,
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        match_artist(term: $term) {
-          ${SelectableItemContainer.getFragment("artists")}
-        }
+const wrappedArtistSearchResultsContent = createFragmentContainer(
+  ArtistSearchResultsContent,
+  graphql`
+    fragment ArtistSearchResultsContent_viewer on Viewer {
+      match_artist(term: $term) {
+        ...SelectableItemContainer_artists
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface Props {
   term: string
