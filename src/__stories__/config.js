@@ -1,6 +1,5 @@
 const { configure } = require("@storybook/react")
 const Events = require("../Utils/Events").default
-
 const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
@@ -8,6 +7,7 @@ function loadStories() {
 }
 
 configure(loadStories, module)
+Events.onEvent(data => console.log("Tracked event", data))
 
 import { setOptions } from "@storybook/addon-options"
 
@@ -17,5 +17,3 @@ setOptions({
   showDownPanel: false,
   sortStoriesByKind: true,
 })
-
-Events.onEvent(data => console.log("Tracked event", data))

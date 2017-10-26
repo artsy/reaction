@@ -4,7 +4,7 @@ import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { crop } from "../../../../Utils/resizer"
-import track from "../../../../Utils/track"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import { Fonts } from "../../Fonts"
@@ -47,8 +47,11 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
   }
 
   @track(props => ({
-    action: "Display Navigate Slideshow",
+    action: "Click",
+    label: "Display ad carousel arrow",
+    entity_type: "display_ad",
     campaign_name: props.campaign.name,
+    unit_layout: "canvas_slideshow"
   }))
   onChangeSlide(slide) {
     this.slider.slickGoTo(slide)

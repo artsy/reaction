@@ -1,7 +1,9 @@
+import { once } from "lodash"
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { sizeMeRefreshRate } from "../../Constants"
 import { CanvasSlideshow } from "./CanvasSlideshow"
@@ -17,92 +19,114 @@ interface CanvasContainerProps {
   unit?: any
 }
 
-const CanvasContainerComponent: React.SFC<CanvasContainerProps> = props => {
-  const { campaign, disclaimer, size, unit } = props
-  const { assets, layout, link: { url } } = unit
-  const isOverlay = layout === 'overlay'
-  const isSlideshow = layout === 'slideshow'
-
-  // Props for Link units
-  const linkProps = {
-    onClick: handleLinkClick,
-    href: url,
-    target: "_blank",
-    containerWidth: size.width,
-    layout
+@track()
+export class CanvasContainerComponent extends React.Component<CanvasContainerProps, null> {
+  static defaultProps = {
+    size: { width: 1250 }
   }
 
-  // Overlay
-  if (isOverlay) {
-    const backgroundUrl = assets[0].url
+  constructor(props) {
+    super(props)
+    this.openLink = this.openLink.bind(this)
+  }
 
-    return (
-      <CanvasLink {...linkProps}>
-        <Background
-          backgroundUrl={backgroundUrl}
-        />
-        <CanvasText
-          unit={unit}
-        />
-      </CanvasLink>
-    )
+  @track(once((props) => ({
+    action: "Impression",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: unitLayout(props)
+  })))
+  // tslint:disable-next-line:no-empty
+  componentDidMount() { }
 
-    // Slideshow
-  } else if (isSlideshow) {
-    const slideshowProps = { unit, campaign, disclaimer, containerWidth: size.width }
+  // TODO: Ensure that full element can be clicked on video complete
+  // Prevent links from blocking video playback.
+  @track((props, [e]) => ({
+    action: "Click",
+    label: "Display ad clickthrough",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: unitLayout(props)
+  }))
+  openLink(e) {
+    e.preventDefault()
+    if (!e.target.className.includes('CanvasVideo')) {
+      window.open(e.currentTarget.attributes.href.value, '_blank')
+    }
+  }
 
-    return (
-      <CanvasSlideshow {...slideshowProps}>
+  render() {
+    const { campaign, disclaimer, size, unit } = this.props
+    const { assets, layout, link: { url } } = unit
+    const isOverlay = layout === 'overlay'
+    const isSlideshow = layout === 'slideshow'
+
+    // Props for Link units
+    const linkProps = {
+      onClick: this.openLink,
+      href: url,
+      target: "_blank",
+      containerWidth: size.width,
+      layout
+    }
+    // Overlay
+    if (isOverlay) {
+      const backgroundUrl = assets[0].url
+
+      return (
         <CanvasLink {...linkProps}>
+          <Background
+            backgroundUrl={backgroundUrl}
+          />
           <CanvasText
             unit={unit}
-            disclaimer={disclaimer}
           />
         </CanvasLink>
-      </CanvasSlideshow>
-    )
+      )
 
-    // Canvas -- Video / Image
-  } else {
-    const [asset] = unit.assets
-    const isVideo = asset.url.includes("mp4")
+      // Slideshow
+    } else if (isSlideshow) {
+      const slideshowProps = { unit, campaign, disclaimer, containerWidth: size.width }
 
-    return (
-      <CanvasLink {...linkProps}>
-        {isVideo
-          ? <CanvasVideo
-            src={asset.url}
-            campaign={campaign}
-          />
-          : <Image
-            src={crop(asset.url, {
-              width: 1200,
-              height: 760
-            })}
-          />}
+      return (
+        <CanvasSlideshow {...slideshowProps}>
+          <CanvasLink {...linkProps}>
+            <CanvasText
+              unit={unit}
+              disclaimer={disclaimer}
+            />
+          </CanvasLink>
+        </CanvasSlideshow>
+      )
 
-        <StandardContainer>
-          <CanvasText
-            unit={unit}
-            disclaimer={disclaimer}
-          />
-        </StandardContainer>
-      </CanvasLink>
-    )
-  }
-}
+      // Canvas -- Video / Image
+    } else {
+      const [asset] = unit.assets
+      const isVideo = asset.url.includes("mp4")
 
-CanvasContainerComponent.defaultProps = {
-  size: {
-    width: 1250,
-  },
-}
+      return (
+        <CanvasLink {...linkProps}>
+          {isVideo
+            ? <CanvasVideo
+              src={asset.url}
+              campaign={campaign}
+            />
+            : <Image
+              src={crop(asset.url, {
+                width: 1200,
+                height: 760
+              })}
+            />}
 
-// TODO: Ensure that full element can be clicked on video complete
-// Prevent links from blocking video playback.
-function handleLinkClick(event) {
-  if (event.target.className.includes('CanvasVideo')) {
-    event.target.preventDefault()
+          <StandardContainer>
+            <CanvasText
+              unit={unit}
+              disclaimer={disclaimer}
+            />
+          </StandardContainer>
+        </CanvasLink>
+      )
+    }
   }
 }
 
@@ -119,6 +143,14 @@ interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
 
 const Div: StyledFunction<DivProps> = styled.div
 const responsiveLink: StyledFunction<ResponsiveProps> = styled.a
+
+const unitLayout = (props) => {
+  switch (props.unit.layout) {
+    case "overlay": return "canvas_overlay"
+    case "slideshow": return "canvas_slideshow"
+    default: return "canvas_standard"
+  }
+}
 
 export const maxAssetSize = containerWidth => {
   const width = containerWidth * 0.65
