@@ -1,8 +1,9 @@
-import { get } from 'lodash'
+import { once } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { crop, resize } from "../../../Utils/resizer"
+import { track } from "../../../Utils/track"
 import { Fonts } from "../Fonts"
 
 interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -15,37 +16,53 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
   hoverImageUrl: string
 }
 
-// Rather than using an <a /> tag, which bad markup can oftentimes break during
-// SSR, use JS to open link.
-function handleDisplayPanelClick(url: string) {
-  window.open(url, '_blank');
-}
+@track()
+export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
+  constructor(props) {
+    super(props)
+    this.openLink = this.openLink.bind(this)
+  }
 
-export const DisplayPanel: React.SFC<DisplayPanelProps> = props => {
-  const { unit, campaign } = props
-  const image = get(unit.assets, '0.url', '')
-  const imageUrl = crop(image, { width: 680, height: 284 })
-  const hoverImageUrl = resize(unit.logo, { width: 680 })
+  @track(once(props => ({
+    action: "Impression",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: "panel"
+  })))
+  // tslint:disable-next-line:no-empty
+  componentDidMount() { }
 
-  return (
-    <Wrapper onClick={() => handleDisplayPanelClick(unit.link.url)}>
-      <DisplayPanelContainer imageUrl={imageUrl} hoverImageUrl={hoverImageUrl}>
-        <Image />
+  // Rather than using an <a /> tag, which bad markup can oftentimes break during
+  // SSR, use JS to open link.
+  @track((props, [e]) => ({
+    action: "Click",
+    label: "Display ad clickthrough",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: "panel"
+  }))
+  openLink(e) {
+    e.preventDefault()
+    window.open(e.currentTarget.attributes.href.value, '_blank')
+  }
 
-        <Headline>
-          {unit.headline}
-        </Headline>
-
-        <Body dangerouslySetInnerHTML={{
-          __html: unit.body
-        }} />
-
-        <SponsoredBy>
-          {`Sponsored by ${campaign.name}`}
-        </SponsoredBy>
-      </DisplayPanelContainer>
-    </Wrapper>
-  )
+  render() {
+    const { unit, campaign } = this.props
+    const image = unit.assets[0] ? unit.assets[0].url : ""
+    return (
+      <Wrapper href={unit.link.url} onClick={this.openLink}>
+        <DisplayPanelContainer
+          imageUrl={crop(image, { width: 680, height: 284 })}
+          hoverImageUrl={resize(unit.logo, { width: 680 })}
+        >
+          <Image />
+          <Headline>{unit.headline}</Headline>
+          <Body dangerouslySetInnerHTML={{ __html: unit.body }} />
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+        </DisplayPanelContainer>
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`
