@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import ItemLink from "./ItemLink"
 
@@ -15,12 +15,11 @@ class SelectableItemContainer extends React.Component<Props, null> {
   }
 }
 
-export default Relay.createContainer(SelectableItemContainer, {
-  fragments: {
-    artists: () => Relay.QL`
-      fragment on Artist @relay(plural: true) {
-        ${ItemLink.getFragment("artist")}
-      }
-    `,
-  },
-})
+export default createFragmentContainer(
+  SelectableItemContainer,
+  graphql`
+    fragment SelectableItemContainer_artists on Artist @relay(plural: true) {
+      ...ItemLink_artist
+    }
+  `
+)
