@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../../../Assets/Animations"
@@ -56,14 +56,15 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   followArtist() {
-    const mutation = new UpdateArtistFollowMutation(this.state)
+    // const mutation = new UpdateArtistFollowMutation(this.state)
 
-    Relay.Store.commitUpdate(mutation, {
-      onFailure: this.followArtistFailed,
-      onSuccess: response => {
-        // do something
-      },
-    })
+    // Relay.Store.commitUpdate(mutation, {
+    //   onFailure: this.followArtistFailed,
+    //   onSuccess: response => {
+    //     // do something
+    //   },
+    // })
+    console.log("follow artist!")
   }
 
   followArtistFailed() {
@@ -94,21 +95,20 @@ class ItemLink extends React.Component<Props, State> {
   }
 }
 
-export default Relay.createContainer(ItemLink, {
-  fragments: {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        id
-        name
-        image {
-          cropped(width: 100, height: 100) {
-            url
-          }
+export default createFragmentContainer(
+  ItemLink,
+  graphql`
+    fragment ItemLink_artist on Artist {
+      id
+      name
+      image {
+        cropped(width: 100, height: 100) {
+          url
         }
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 export interface RelayProps {
   artist: {

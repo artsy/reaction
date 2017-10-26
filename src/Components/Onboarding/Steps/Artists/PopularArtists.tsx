@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import PopularArtistQueryConfig from "../../../../Relay/Queries/PopularArtist"
 
@@ -17,17 +18,16 @@ class PopularArtistsContent extends React.Component<RelayProps, null> {
   }
 }
 
-const wrappedPopularArtistContent = Relay.createContainer(PopularArtistsContent, {
-  fragments: {
-    popular_artists: () => Relay.QL`
-      fragment on PopularArtists {
-        artists {
-          ${SelectableItemContainer.getFragment("artists")}
-        }
+const wrappedPopularArtistContent = createFragmentContainer(
+  PopularArtistsContent,
+  graphql`
+    fragment PopularArtistsContent_popular_artists on PopularArtists {
+      artists {
+        ...SelectableItemContainer_artists
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 export default function PopularArtistContentList() {
   return <Relay.RootContainer Component={wrappedPopularArtistContent} route={new PopularArtistQueryConfig()} />
