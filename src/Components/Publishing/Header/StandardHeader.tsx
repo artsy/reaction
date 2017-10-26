@@ -13,13 +13,22 @@ interface StandardHeaderProps {
 export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   const { article, title, vertical } = props
   return (
-    <StandardHeaderContainer>
-      <Vertical>{vertical}</Vertical>
-      <Title>{title}</Title>
-      <Byline article={article} layout="standard" />
-    </StandardHeaderContainer>
+    <StandardHeaderParent>
+      <StandardHeaderContainer>
+        <Vertical>{vertical}</Vertical>
+        <Title>{title}</Title>
+        <Byline article={article} layout="standard" />
+      </StandardHeaderContainer>
+    </StandardHeaderParent>
   )
 }
+
+const StandardHeaderParent = styled.div`
+  margin: 0 40px;
+  ${pMedia.sm`
+    margin: 0 20px;
+  `}
+`
 
 const StandardHeaderContainer = styled.div`
   display: flex;
@@ -28,24 +37,21 @@ const StandardHeaderContainer = styled.div`
   width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
-  ${pMedia.xl`
-    padding: 0 20px;
-  `}
-  ${pMedia.xs`
+  ${pMedia.sm`
     margin: 30px auto;
   `}
 `
 const Title = styled.div`
   ${Fonts.garamond("s50")}
   margin-bottom: 50px;
-  ${pMedia.xs`
+  ${pMedia.sm`
     ${Fonts.garamond("s34")}
   `}
 `
 const Vertical = styled.div`
   ${Fonts.unica("s16", "medium")}
   margin-bottom: 10px;
-  ${pMedia.xs`
+  ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
   `}
 `

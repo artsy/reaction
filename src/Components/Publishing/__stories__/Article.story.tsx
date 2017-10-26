@@ -4,8 +4,8 @@ import _ from "underscore"
 import { Article } from "../Article"
 import {
   FeatureArticle,
+  ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
-  ShortStandardArticle,
   StandardArticle,
   SuperArticle,
 } from "../Fixtures/Articles"
@@ -35,7 +35,7 @@ const story = storiesOf("Publishing/Articles", module)
   .add("Standard with top margin", () => {
     return (
       <Article
-        article={ShortStandardArticle}
+        article={ImageHeavyStandardArticle}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"

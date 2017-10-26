@@ -10,7 +10,7 @@ import { EmailSignup } from "./EmailSignup"
 import { Header } from "./Header/Header"
 import { FeatureLayout } from "./Layouts/FeatureLayout"
 import { Sidebar } from "./Layouts/Sidebar"
-import { StandardLayout } from "./Layouts/StandardLayout"
+import { StandardLayout, StandardLayoutParent } from "./Layouts/StandardLayout"
 import { ReadMore } from "./ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "./ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
@@ -153,28 +153,30 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
             isMobile={isMobile}
           />
 
-          <StandardLayout>
-            <Sections article={article} />
-            <Sidebar>
-              {this.props.emailSignupUrl &&
-                <EmailSignup
-                  signupUrl={this.props.emailSignupUrl}
-                />}
+          <StandardLayoutParent>
+            <StandardLayout>
+              <Sections article={article} />
+              <Sidebar>
+                {this.props.emailSignupUrl &&
+                  <EmailSignup
+                    signupUrl={this.props.emailSignupUrl}
+                  />}
 
-              {relatedArticlesForPanel &&
-                <RelatedArticlesPanel
-                  label={"Related Stories"}
-                  articles={relatedArticlesForPanel}
-                />}
+                {relatedArticlesForPanel &&
+                  <RelatedArticlesPanel
+                    label={"Related Stories"}
+                    articles={relatedArticlesForPanel}
+                  />}
 
-              {this.props.display &&
-                <DisplayPanel
-                  unit={this.props.display.panel}
-                  campaign={campaign}
-                />}
+                {this.props.display &&
+                  <DisplayPanel
+                    unit={this.props.display.panel}
+                    campaign={campaign}
+                  />}
 
-            </Sidebar>
-          </StandardLayout>
+              </Sidebar>
+            </StandardLayout>
+          </StandardLayoutParent>
 
           {relatedArticlesForCanvas &&
             <RelatedArticlesCanvas
