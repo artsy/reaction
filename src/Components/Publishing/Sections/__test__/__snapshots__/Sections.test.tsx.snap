@@ -1068,7 +1068,47 @@ exports[`renders properly 1`] = `
             <div
               className="c17"
             >
-              <div />
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": <span>
+                      <span
+                          className="artist-name"
+                      >
+                          <span
+                              className="name"
+                          >
+                              <file__StyledTextLink
+                                  color="#999"
+                                  href="/artwork/matt-devine"
+                                  underline={false}
+                              >
+                                  Matt Devine
+                              </file__StyledTextLink>
+                          </span>
+                      </span>
+                      <span
+                          className="title"
+                      >
+                          <file__StyledTextLink
+                              color="#999"
+                              href="/artwork/matt-devine-brass-tax"
+                              underline={false}
+                          >
+                              Brass Tax
+                          </file__StyledTextLink>
+                      </span>
+                      <file__StyledTextLink
+                          color="#999"
+                          href="/partner/joanne-artman-gallery"
+                          underline={false}
+                      >
+                          Joanne Artman Gallery
+                      </file__StyledTextLink>
+                  </span>,
+                  }
+                }
+              />
             </div>
           </div>
         </div>

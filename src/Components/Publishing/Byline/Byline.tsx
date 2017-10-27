@@ -51,5 +51,6 @@ const BylineContainer = Div`
   display: flex;
   flex-wrap: wrap;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  text-align: center;
 `

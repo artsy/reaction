@@ -45,6 +45,7 @@ export const Header: React.SFC<HeaderProps> = props => {
   const { article, children, height, isMobile } = props
   const title = getTitle(article, children)
 
+  // Classic Article
   if (article.layout === "classic") {
     const leadParagraph = getLeadParagraph(article, children)
     return (
@@ -55,6 +56,7 @@ export const Header: React.SFC<HeaderProps> = props => {
         leadParagraph={leadParagraph}
       />
     )
+    // Feature
   } else {
     const deck = getDeck(article, children)
     const vertical = getVertical(article, children)
@@ -72,8 +74,15 @@ export const Header: React.SFC<HeaderProps> = props => {
           isMobile={isMobile}
         />
       )
+      // Standard
     } else {
-      return <StandardHeader article={article} vertical={vertical} title={title} />
+      return (
+        <StandardHeader
+          article={article}
+          vertical={vertical}
+          title={title}
+        />
+      )
     }
   }
 }

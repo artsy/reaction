@@ -102,8 +102,6 @@ function renderImages(images, dimensions, gutter, sectionLayout, width) {
 const ImageCollectionContainer = styled.div`
   display: flex;
   width: 100%;
-
-  // TODO: Follow up on https://github.com/artsy/publishing/issues/80#issuecomment-338055364
   justify-content: center;
 
   ${pMedia.xs`

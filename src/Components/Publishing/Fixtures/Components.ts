@@ -228,6 +228,11 @@ export const HeroSections = [
     type: "text",
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
   },
+  {
+    type: "basic",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+  },
 ]
 
 export const Images = [
