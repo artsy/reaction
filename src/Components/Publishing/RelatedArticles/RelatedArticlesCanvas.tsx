@@ -1,6 +1,6 @@
 import * as _ from "lodash"
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
@@ -16,10 +16,15 @@ interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
     thumbnail_image: string
     slug: string
   }>
+  isMobile?: boolean
+}
+
+interface ScrollingContainerProps {
+  isMobile?: boolean
 }
 
 export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
-  const { articles, vertical } = props
+  const { articles, isMobile, vertical } = props
 
   if (!vertical) {
     return <div />
@@ -31,7 +36,7 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
           <Title>
             Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
           </Title>
-          <ArticlesWrapper>
+          <ArticlesWrapper isMobile={isMobile}>
             {_.map(articles, (article, i) => {
               return (
                 <RelatedArticleFigure
@@ -47,25 +52,30 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
   }
 }
 
+const ScrollingContainer: StyledFunction<ScrollingContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
 const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;
   margin: 30px auto 60px auto;
   ${pMedia.xl`
-    margin: 30px 20px 60px 20px;
+    margin: 30px 0 60px 0;
   `}
 `
 const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
+  ${pMedia.xl`
+    margin: 0 20px 30px 20px;;
+  `}
 `
 const VerticalSpan = styled.span`
   ${pMedia.sm`
     display: block;
   `}
 `
-const ArticlesWrapper = styled.div`
+const ArticlesWrapper = ScrollingContainer`
   display: flex;
   justify-content: space-between;
   overflow-x: scroll;
@@ -77,7 +87,17 @@ const ArticlesWrapper = styled.div`
     &:last-child {
       margin-right: 0;
     }
+    ${pMedia.xl`
+      margin: 0 10px;
+      &:first-child {
+        margin-left: 20px;
+      }
+      &:last-child {
+        border-right: 20px solid white;
+      }
+    `}
   }
+  ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"}
 `
 const LineBreak = styled.div`
   border-top: 1px solid ${Colors.grayRegular};

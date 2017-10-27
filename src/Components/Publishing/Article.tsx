@@ -181,6 +181,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
           {relatedArticlesForCanvas &&
             <RelatedArticlesCanvas
+              isMobile={isMobile}
               articles={relatedArticlesForCanvas}
               vertical={article.vertical}
             />}
