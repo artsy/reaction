@@ -729,7 +729,6 @@ exports[`renders properly 1`] = `
 @media (max-width:1250px) {
   .c0 {
     max-width: 680px;
-    margin: auto;
   }
 }
 

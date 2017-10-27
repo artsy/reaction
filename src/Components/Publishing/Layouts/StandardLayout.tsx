@@ -14,9 +14,3 @@ export const StandardLayout = styled.div`
   margin: auto;
   justify-content: space-between;
 `
-
-  // max-width: 1250px;
-  // margin: 0 20px 100px 20px;
-  // ${pMedia.md`
-  //   padding: 0px;
-  // `}
