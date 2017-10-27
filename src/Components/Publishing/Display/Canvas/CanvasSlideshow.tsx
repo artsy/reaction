@@ -220,6 +220,9 @@ const SliderContainer = responsiveDiv`
   .slick-list {
     max-height: ${props => "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
     padding: 0 !important;
+    ${props => pMedia.md`
+      max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
+    `}
   }
 `
 const Slide = responsiveDiv`
