@@ -454,7 +454,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   margin: 15px 0 0 0;
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c3.title-card {
     max-width: 1250px;
   }
@@ -466,7 +466,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c4 {
     width: 437.5px;
     padding: 0 20px;
@@ -495,7 +495,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c12 {
     max-height: 479.375px;
   }
@@ -522,7 +522,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c8 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -545,7 +545,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c9 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -564,7 +564,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c5 {
     max-height: 479.375px;
   }
@@ -868,7 +868,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c7 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -891,7 +891,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c8 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -920,7 +920,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
     padding: 0 20px;
@@ -1229,7 +1229,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c10 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -1252,7 +1252,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c11 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -1283,7 +1283,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
     padding: 0 20px;
