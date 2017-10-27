@@ -121,7 +121,8 @@ const CaptionContainer = styled.div`
   ${pMedia.sm`
     position: absolute;
     bottom: 0;
-    width: calc(100% - 40px);
+    width: 100%;
+    max-width: 100vh;
     padding: 20px;
   `}
 `
