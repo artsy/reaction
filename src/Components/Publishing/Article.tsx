@@ -46,6 +46,7 @@ interface ArticleState {
 
 interface ArticleContainerProps {
   marginTop?: string
+  viewerIsOpen?: boolean
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
@@ -205,7 +206,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const { article } = this.state
 
     return (
-      <ArticleContainer marginTop={marginTop}>
+      <ArticleContainer
+        marginTop={marginTop}
+        viewerIsOpen={this.state.viewerIsOpen}>
         {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
         <FullscreenViewer
           onClose={this.closeViewer}
@@ -222,6 +225,7 @@ const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDiv
 
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => props.marginTop || "50px"};
+  ${props => props.viewerIsOpen && "position: fixed;"}
 `
 
 const DisplayCanvasBreak = styled.hr`
