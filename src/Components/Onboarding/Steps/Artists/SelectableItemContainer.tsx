@@ -1,56 +1,25 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
-import styled from "styled-components"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
-import colors from "../../../../Assets/Colors"
-import Icon from "../../../Icon"
-import Input from "../../../Input"
 import ItemLink from "./ItemLink"
 
-const OnboardingSearchBox = styled.div`
-  width: 450px;
-  margin: 0 auto 100px;
-  border-bottom: 1px solid #e5e5e5;
-`
-
 interface Props {
-  placeholder: string
   artists: any[]
 }
 
 class SelectableItemContainer extends React.Component<Props, null> {
-  searchTextChanged(e) {
-    return null
-  }
-
   render() {
     const items = this.props.artists.map((artist, index) => <ItemLink href="#" artist={artist} key={index} />)
 
-    return (
-      <OnboardingSearchBox>
-        <div style={{ marginBottom: "35px" }}>
-          <Input
-            placeholder={this.props.placeholder}
-            leftView={<Icon name="search" color={colors.graySemibold} />}
-            block
-            onInput={this.searchTextChanged.bind(this)}
-            onPaste={this.searchTextChanged.bind(this)}
-            onCut={this.searchTextChanged.bind(this)}
-          />
-        </div>
-
-        {items}
-      </OnboardingSearchBox>
-    )
+    return <div>{items}</div>
   }
 }
 
-export default Relay.createContainer(SelectableItemContainer, {
-  fragments: {
-    artists: () => Relay.QL`
-      fragment on Artist @relay(plural: true) {
-        ${ItemLink.getFragment("artist")}
-      }
-    `,
-  },
-})
+export default createFragmentContainer(
+  SelectableItemContainer,
+  graphql`
+    fragment SelectableItemContainer_artists on Artist @relay(plural: true) {
+      ...ItemLink_artist
+    }
+  `
+)
