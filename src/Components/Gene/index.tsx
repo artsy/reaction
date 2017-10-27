@@ -1,9 +1,9 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 import history from "../History"
 
 import { configureUrlQuery } from "react-url-query"
-import GeneContents from "./Contents"
+import Contents from "./Contents"
 
 interface Props extends RelayProps, React.HTMLProps<GenePage> {
   gene: any
@@ -16,25 +16,21 @@ export class GenePage extends React.Component<Props, null> {
 
   render() {
     const { gene } = this.props
-    return <GeneContents gene={gene} />
+    return <Contents gene={gene} />
   }
 }
 
-export default Relay.createContainer(GenePage, {
-  fragments: {
-    gene: () => Relay.QL`
-      fragment on Gene {
-        mode
-        ${GeneContents.getFragment("gene")}
-      }
-    `,
-  },
-})
+export default createFragmentContainer(
+  GenePage,
+  graphql`
+    fragment Gene_gene on Gene {
+      ...Contents_gene
+    }
+  `
+)
 
 interface RelayProps {
-  gene:
-    | {
-        mode: string | null
-      }
-    | any
+  gene: {
+    mode: string | null
+  }
 }

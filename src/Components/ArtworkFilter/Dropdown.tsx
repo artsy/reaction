@@ -1,6 +1,6 @@
 import numeral from "numeral"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import Icon from "../Icon"
 
@@ -109,9 +109,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
             style={{ position: "absolute", right: 15, lineHeight: "inherit" }}
           />
         </Button>
-        <Nav style={navStyle}>
-          {navItems}
-        </Nav>
+        <Nav style={navStyle}>{navItems}</Nav>
       </div>
     )
   }
@@ -130,7 +128,7 @@ const Button = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${primary.style}
+  ${primary.style};
 `
 
 const Nav = styled.div`
@@ -151,8 +149,7 @@ const SuperLabel = styled.div`
 `
 
 const NavItem = styled.div`
-  ${secondary.style}
-  text-align: left;
+  ${secondary.style} text-align: left;
   color: white;
   display: block;
   border-bottom: 1px solid #333;
@@ -163,7 +160,7 @@ const NavItem = styled.div`
   }
 `
 const NavItemCount = styled.span`
-  color: ${colors.graySemibold}
+  color: ${colors.graySemibold};
 `
 
 const StyledDropdown = styled(Dropdown)`
@@ -173,20 +170,19 @@ const StyledDropdown = styled(Dropdown)`
   margin-left: -1px;
 `
 
-export default Relay.createContainer(StyledDropdown, {
-  fragments: {
-    aggregation: () => Relay.QL`
-      fragment on ArtworksAggregationResults {
-        slice
-        counts {
-          name
-          id
-          count
-        }
+export default createFragmentContainer(
+  StyledDropdown,
+  graphql`
+    fragment Dropdown_aggregation on ArtworksAggregationResults {
+      slice
+      counts {
+        name
+        id
+        count
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface RelayProps {
   aggregation: {

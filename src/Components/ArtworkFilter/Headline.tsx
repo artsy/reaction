@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import { secondary } from "../../Assets/Fonts"
 
@@ -70,29 +70,23 @@ export class Headline extends React.Component<Props, null> {
   }
 
   render() {
-    return (
-      <h1 className={this.props.className}>
-        {this.renderHeadline()}
-      </h1>
-    )
+    return <h1 className={this.props.className}>{this.renderHeadline()}</h1>
   }
 }
 
 const StyledHeadline = styled(Headline)`
-  ${secondary.style}
-  font-weight: normal;
+  ${secondary.style} font-weight: normal;
   margin: 0;
   font-size: 2em;
 `
 
-export default Relay.createContainer(StyledHeadline, {
-  fragments: {
-    facet: () => Relay.QL`
-      fragment on ArtworkFilterFacet {
-        ... on ArtworkFilterTag {
-          name
-        }
+export default createFragmentContainer(
+  StyledHeadline,
+  graphql`
+    fragment Headline_facet on ArtworkFilterFacet {
+      ... on ArtworkFilterTag {
+        name
       }
-    `,
-  },
-})
+    }
+  `
+)

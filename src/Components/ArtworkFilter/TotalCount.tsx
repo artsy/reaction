@@ -1,6 +1,6 @@
 import numeral from "numeral"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
 import styled from "styled-components"
 import { secondary } from "../../Assets/Fonts"
@@ -23,20 +23,19 @@ export class TotalCount extends React.Component<TotalCountProps, null> {
 
 const StyledTotalCount = styled(TotalCount)`
   font-style: italic;
-  ${secondary.style}
+  ${secondary.style};
 `
 
-export default Relay.createContainer(StyledTotalCount, {
-  fragments: {
-    filter_artworks: () => Relay.QL`
-      fragment on FilterArtworks {
-        counts {
-          total
-        }
+export default createFragmentContainer(
+  StyledTotalCount,
+  graphql`
+    fragment TotalCount_filter_artworks on FilterArtworks {
+      counts {
+        total
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface RelayProps {
   filter_artworks: {

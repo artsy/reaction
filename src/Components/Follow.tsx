@@ -7,7 +7,7 @@
  */
 
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { commitMutation, createFragmentContainer, graphql } from "react-relay/compat"
 
 import Icon from "./Icon"
 
@@ -21,31 +21,53 @@ const SIZE = 32
 interface Props extends RelayProps, React.HTMLProps<FollowButton>, Artsy.ContextProps {
   style?: any
   relay?: any
-  type: string
 }
 
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
-    const { currentUser, relay, type } = this.props
+    const { artist, currentUser, relay } = this.props
     if (currentUser && currentUser.id) {
-      relay.commitUpdate(new mutationTypes[type]({ [type]: this.props[type] }))
+      commitMutation(relay.environment, {
+        mutation: graphql`
+          mutation FollowArtistMutation($input: FollowArtistInput!) {
+            followArtist(input: $input) {
+              artist {
+                is_followed
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            artist_id: artist.id,
+            unfollow: artist.is_followed,
+          },
+        },
+        // TODO: Relay Modern: This is not working yet
+        optimisticResponse: {
+          followArtist: {
+            artist: {
+              __id: artist.__id,
+              is_followed: !artist.is_followed,
+            },
+          },
+        },
+      })
     } else {
       window.location.href = "/login"
     }
   }
 
   render() {
-    const { style, type } = this.props
-    const followable = this.props[type]
-
-    const iconName = followable.is_followed ? "follow-circle.is-following" : "follow-circle"
+    const { style, artist } = this.props
+    const iconName = artist.is_followed ? "follow-circle.is-following" : "follow-circle"
 
     return (
       <div
         className={this.props.className}
         style={style}
         onClick={() => this.handleFollow()}
-        data-followed={followable.is_followed}
+        data-followed={artist.is_followed}
       >
         <Icon name={iconName} height={SIZE} style={{ verticalAlign: "middle", color: "inherit", margin: 0 }} />
       </div>
@@ -54,11 +76,11 @@ export class FollowButton extends React.Component<Props, null> {
 }
 
 interface RelayProps {
-  artist?:
-    | {
-        is_followed: boolean | null
-      }
-    | any
+  artist: {
+    __id: string
+    id: string
+    is_followed: boolean | null
+  }
 }
 
 export const StyledFollowButton = styled(FollowButton)`
@@ -86,75 +108,14 @@ export const StyledFollowButton = styled(FollowButton)`
     }
   }
 `
-class FollowArtistMutation extends Relay.Mutation<Props, null> {
-  static fragments = {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        __id
-        id
-        is_followed
-      }
-    `,
-  }
 
-  getMutation() {
-    return Relay.QL`mutation{followArtist}`
-  }
-
-  getVariables() {
-    return {
-      artist_id: this.props.artist.id,
-      unfollow: this.props.artist.is_followed ? true : false,
+export default createFragmentContainer(
+  Artsy.ContextConsumer(StyledFollowButton),
+  graphql`
+    fragment Follow_artist on Artist {
+      __id
+      id
+      is_followed
     }
-  }
-
-  getOptimisticResponse() {
-    return {
-      artist: {
-        __id: this.props.artist.__id,
-        is_followed: this.props.artist.is_followed ? false : true,
-      },
-    }
-  }
-
-  // __id needs to be explictly added here because of our Relay fork
-  // If __id is not here, Relay will try to use `id` to match up value
-  // that is returned with its cached version (instead of using `__id`)
-  getFatQuery() {
-    return Relay.QL`
-      fragment on FollowArtistPayload {
-        artist {
-          __id
-          is_followed
-        }
-      }
-    `
-  }
-
-  getConfigs() {
-    return [
-      {
-        type: "FIELDS_CHANGE",
-        fieldIDs: {
-          artist: this.props.artist.__id,
-        },
-      },
-    ]
-  }
-}
-
-const mutationTypes = {
-  artist: FollowArtistMutation,
-}
-
-export default Relay.createContainer(Artsy.ContextConsumer(StyledFollowButton), {
-  fragments: {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        __id
-        is_followed
-        ${FollowArtistMutation.getFragment("artist")}
-      }
-    `,
-  },
-})
+  `
+)

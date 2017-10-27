@@ -1,8 +1,9 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { ConnectionData } from "react-relay"
+import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay/compat"
 import styled from "styled-components"
 
-import Artworks from "../ArtworkGrid"
+import ArtworkGrid from "../ArtworkGrid"
 import BorderedPulldown from "../BorderedPulldown"
 import Spinner from "../Spinner"
 
@@ -14,8 +15,7 @@ import TotalCount from "./TotalCount"
 const PageSize = 10
 
 interface Props extends RelayProps, React.HTMLProps<ArtworkFilter> {
-  filter_artworks: any
-  relay: any
+  relay: RelayPaginationProp
   for_sale?: boolean
   dimension_range?: string
   price_range?: string
@@ -31,7 +31,7 @@ interface State {
 }
 
 class ArtworkFilter extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       for_sale: props.for_sale || false,
@@ -43,18 +43,12 @@ class ArtworkFilter extends React.Component<Props, State> {
   }
 
   handleLoadMore() {
-    if (!this.state.loading) {
+    if (!this.state.loading && this.props.filter_artworks.filter_artworks.artworks.pageInfo.hasNextPage) {
       this.setState({ loading: true }, () => {
-        this.props.relay.setVariables(
-          {
-            size: this.props.relay.variables.size + PageSize,
-          },
-          readyState => {
-            if (readyState.done) {
-              this.setState({ loading: false })
-            }
-          }
-        )
+        this.props.relay.loadMore(PageSize, error => {
+          console.log(error)
+          this.setState({ loading: false })
+        })
       })
     }
   }
@@ -66,38 +60,41 @@ class ArtworkFilter extends React.Component<Props, State> {
     this.setState({
       for_sale: isForSale,
     })
-    this.props.relay.setVariables({
-      for_sale: forSaleVar,
-      size: PageSize,
-    })
+    // TODO: Relay Modern
+    // this.props.relay.setVariables({
+    //   for_sale: forSaleVar,
+    //   size: PageSize,
+    // })
   }
 
   onSelect(count, slice) {
     this.setState({
       [slice.toLowerCase()]: count.id,
     })
-    this.props.relay.setVariables({
-      [slice.toLowerCase()]: count.id,
-      size: PageSize,
-    })
+    // TODO: Relay Modern
+    // this.props.relay.setVariables({
+    //   [slice.toLowerCase()]: count.id,
+    //   size: PageSize,
+    // })
   }
 
   onChangeSort(option) {
-    this.props.relay.setVariables({
-      sort: option.val,
-      size: PageSize,
-    })
+    // TODO: Relay Modern
+    // this.props.relay.setVariables({
+    //   sort: option.val,
+    //   size: PageSize,
+    // })
   }
 
   render() {
     const filterArtworks = this.props.filter_artworks.filter_artworks
-    const dropdowns = filterArtworks.aggregations.map(aggregation =>
+    const dropdowns = filterArtworks.aggregations.map(aggregation => (
       <Dropdown
         aggregation={aggregation}
         key={aggregation.slice}
         onSelect={(count, slice) => this.onSelect(count, slice)}
       />
-    )
+    ))
     const pulldownOptions = [
       { val: "-partner_updated_at", name: "Recently Updated" },
       { val: "-year", name: "Artwork Year (desc.)" },
@@ -128,10 +125,12 @@ class ArtworkFilter extends React.Component<Props, State> {
             onChange={option => this.onChangeSort(option)}
           />
         </SubFilterBar>
-        <Artworks artworks={filterArtworks.artworks} onLoadMore={() => this.handleLoadMore()} columnCount={4} />
-        <SpinnerContainer>
-          {this.state.loading ? <Spinner /> : ""}
-        </SpinnerContainer>
+        <ArtworkGrid
+          artworks={filterArtworks.artworks as any}
+          onLoadMore={() => this.handleLoadMore()}
+          columnCount={4}
+        />
+        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
       </div>
     )
   }
@@ -154,63 +153,122 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
-export default Relay.createContainer(ArtworkFilter, {
-  initialVariables: {
-    sort: "-partner_updated_at",
-    size: PageSize,
-    for_sale: null,
-    medium: "*",
-    aggregations: ["MEDIUM", "TOTAL", "PRICE_RANGE", "DIMENSION_RANGE"],
-    price_range: "*",
-    dimension_range: "*",
-    gene_id: null,
-    tag_id: null,
-    artist_id: null,
-  },
-  fragments: {
-    filter_artworks: () => Relay.QL`
-      fragment on Viewer {
-        filter_artworks(
-          aggregations: $aggregations,
-          size: $size,
-          for_sale: $for_sale,
-          medium: $medium,
-          price_range: $price_range,
-          dimension_range: $dimension_range,
-          sort: $sort,
-          gene_id: $gene_id,
-          tag_id: $tag_id,
-          artist_id: $artist_id,
+export default createPaginationContainer(
+  ArtworkFilter,
+  {
+    filter_artworks: graphql.experimental`
+      fragment ArtworkFilter_filter_artworks on Viewer
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+          for_sale: { type: "Boolean", defaultValue: false }
+          medium: { type: "String", defaultValue: "*" }
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+          price_range: { type: "String", defaultValue: "*" }
+          dimension_range: { type: "String", defaultValue: "*" }
         ) {
-          ${TotalCount.getFragment("filter_artworks")}
+        filter_artworks(
+          aggregations: $aggregations
+          size: $count
+          for_sale: $for_sale
+          medium: $medium
+          price_range: $price_range
+          dimension_range: $dimension_range
+          sort: $sort
+        ) {
           aggregations {
             slice
             counts {
               id
               name
             }
-            ${Dropdown.getFragment("aggregation")}
+            ...Dropdown_aggregation
           }
-          artworks: artworks_connection(first: $size) {
-            ${Artworks.getFragment("artworks")}
+          ...TotalCount_filter_artworks
+          artworks: artworks_connection(first: $count, after: $cursor)
+            @connection(key: "ArtworkFilter_filter_artworks") {
+            ...ArtworkGrid_artworks
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            edges {
+              node {
+                __id
+              }
+            }
           }
           facet {
-            ${Headline.getFragment("facet")}
+            ...Headline_facet
           }
         }
       }
     `,
   },
-})
+  {
+    direction: "forward",
+    getConnectionFromProps(props) {
+      return props.filter_artworks.filter_artworks.artworks as ConnectionData
+    },
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      }
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        // in most cases, for variables other than connection filters like
+        // `first`, `after`, etc. you may want to use the previous values.
+        ...fragmentVariables,
+        count,
+        cursor,
+      }
+    },
+    query: graphql.experimental`
+      query ArtworkFilterQuery(
+        $count: Int!
+        $cursor: String
+        $sort: String
+        $for_sale: Boolean
+        $medium: String
+        $aggregations: [ArtworkAggregation]
+        $price_range: String
+        $dimension_range: String
+      ) {
+        viewer {
+          ...ArtworkFilter_filter_artworks
+            @arguments(
+              count: $count
+              cursor: $cursor
+              sort: $sort
+              for_sale: $for_sale
+              medium: $medium
+              aggregations: $aggregations
+              price_range: $price_range
+              dimension_range: $dimension_range
+            )
+        }
+      }
+    `,
+  }
+)
 
 interface RelayProps {
   filter_artworks: {
     filter_artworks: {
-      artworks: Array<any | null> | null
+      artworks: {
+        pageInfo: {
+          hasNextPage: boolean
+          endCursor: string
+        }
+      } | null
       counts: {
         total: number | null
       } | null
       aggregations: Array<any | null> | null
+      facet: any
     } | null
   } | null
 }
