@@ -1,8 +1,7 @@
 import * as React from "react"
-import * as Relay from "react-relay/classic"
-import { createFragmentContainer, graphql } from "react-relay/compat"
-
-import { ArtistSearchQueryConfig } from "../../../../Relay/Queries/ArtistSearch"
+import { Store } from "react-relay/classic"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay/compat"
+import { Environment } from "relay-runtime"
 
 import SelectableItemContainer from "./SelectableItemContainer"
 
@@ -18,7 +17,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   }
 }
 
-const wrappedArtistSearchResultsContent = createFragmentContainer(
+const ArtistSearchResultsContentContainer = createFragmentContainer(
   ArtistSearchResultsContent,
   graphql`
     fragment ArtistSearchResultsContent_viewer on Viewer {
@@ -35,6 +34,23 @@ interface Props {
 
 export const ArtistSearchResults: React.SFC<Props> = ({ term }) => {
   return (
-    <Relay.RootContainer Component={wrappedArtistSearchResultsContent} route={new ArtistSearchQueryConfig({ term })} />
+    <QueryRenderer
+      environment={(Store as any) as Environment}
+      query={graphql`
+        query ArtistSearchResultsQuery($term: String!) {
+          viewer {
+            ...ArtistSearchResultsContent_viewer
+          }
+        }
+      `}
+      variables={{ term }}
+      render={({ error, props }) => {
+        if (props) {
+          return <ArtistSearchResultsContentContainer viewer={props.viewer} />
+        } else {
+          return null
+        }
+      }}
+    />
   )
 }
