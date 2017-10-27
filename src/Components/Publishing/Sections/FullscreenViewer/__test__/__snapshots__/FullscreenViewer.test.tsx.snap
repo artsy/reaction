@@ -237,7 +237,8 @@ exports[`renders properly 1`] = `
   .c4 {
     position: absolute;
     bottom: 0;
-    width: calc(100% - 40px);
+    width: 100%;
+    max-width: 100vh;
     padding: 20px;
   }
 }

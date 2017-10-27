@@ -158,7 +158,8 @@ exports[`renders an artwork caption properly 1`] = `
   .c0 {
     position: absolute;
     bottom: 0;
-    width: calc(100% - 40px);
+    width: 100%;
+    max-width: 100vh;
     padding: 20px;
   }
 }
@@ -325,7 +326,8 @@ exports[`renders an image caption properly 1`] = `
   .c0 {
     position: absolute;
     bottom: 0;
-    width: calc(100% - 40px);
+    width: 100%;
+    max-width: 100vh;
     padding: 20px;
   }
 }
