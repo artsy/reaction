@@ -58,7 +58,7 @@ storiesOf("Publishing/Headers", module)
   })
   .add("Feature Header - Basic, with Embed", () => {
     const article = _.clone(BasicArticle)
-    article.hero_section.url = 'https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4'
+    article.hero_section.url = 'https://www.youtube.com/watch?v=ENISCG2a15g'
 
     return (
       <div>
@@ -123,6 +123,7 @@ storiesOf("Publishing/Headers", module)
   })
   .add("Feature Header - SuperArticle", () => {
     const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
+
     return (
       <div style={{ width: "100%", height: "100vh", position: "relative" }}>
         <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />

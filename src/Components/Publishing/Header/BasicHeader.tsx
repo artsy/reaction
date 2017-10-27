@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Col, Grid, Row } from 'react-styled-flexboxgrid'
 import styled, { css } from 'styled-components'
 import { Responsive } from '../../../Utils/Responsive'
+import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { Share } from "../Byline/Share"
 import { articleHref, getAuthorByline, getDate } from "../Constants"
@@ -22,8 +23,21 @@ interface State {
 }
 
 export class BasicHeader extends React.Component<Props, State> {
+  constructor(props) {
+    super(props)
+    this.trackVideoPlay = this.trackVideoPlay.bind(this)
+  }
+
+  // TODO: Waiting for final values
+  @track(props => ({
+    action: "Click",
+    label: "Track Basic feature video click ",
+    impression_type: "sa_basic_feature_video",
+    destination_path: "NEED PATH", // props.article.super_article.partner_logo_link,
+    context_type: "article_fixed"
+  }))
   trackVideoPlay() {
-    // TODO: track
+    // noop
   }
 
   render() {
@@ -146,7 +160,6 @@ const Container = styled.div`
 
 const Vertical = styled.div`
   ${defaults}
-  text-decoration: underline;
 
   ${breakpoint.xs`
     ${Fonts.unica("s14", "medium")}

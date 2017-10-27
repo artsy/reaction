@@ -100,10 +100,7 @@ interface FeatureHeaderProps {
 @track()
 class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   static defaultProps = {
-    height: "100vh",
-    size: {
-      width: 500,
-    },
+    height: "100vh"
   }
 
   @track(props => ({
@@ -113,8 +110,9 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
     destination_path: props.article.super_article.partner_logo_link,
     context_type: "article_fixed"
   }))
-  // tslint:disable-next-line:no-empty
-  onClickPartnerLink() { }
+  onClickPartnerLink() {
+    // noop
+  }
 
   render() {
     const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = this.props
@@ -140,8 +138,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
               {renderFeatureAsset(url, type, isMobile, article.title, image)}
               <HeaderTextContainer>
                 {article.is_super_article &&
-
-                  renderSuperArticleLogos(article.super_article, isMobile)}
+                  renderSuperArticleLogos(article.super_article, isMobile, this.onClickPartnerLink)}
                 <HeaderText>
                   <Vertical>{vertical}</Vertical>
                   <Title>{title}</Title>
@@ -161,7 +158,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   }
 }
 
-function renderSuperArticleLogos(superArticle, isMobile) {
+function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
   return (
     <SuperArticleLogos>
       <a href="/">
@@ -180,7 +177,9 @@ function renderSuperArticleLogos(superArticle, isMobile) {
       </SuperArticleLogoDivider>
       <a
         href={superArticle.partner_logo_link}
-        target="_blank">
+        target="_blank"
+        onClick={onClickPartnerLink}
+      >
         <img
           src={superArticle.partner_fullscreen_header_logo || superArticle.partner_logo}
           height={isMobile ? "32px" : "50px"}
@@ -240,6 +239,7 @@ const FeatureVideoContainer = Div.extend`
   overflow: hidden;
 `
 const SuperArticleLogos = styled.div`
+  position: absolute;
   display: flex;
   align-items: center;
   z-index: 1;
