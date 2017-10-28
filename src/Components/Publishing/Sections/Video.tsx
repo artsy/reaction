@@ -72,12 +72,20 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 
     return (
       <VideoContainer layout={this.props.layout} className='VideoContainer__StyledComponent'>
-        <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
-          <PlayButton>
-            <PlayButtonCaret />
-          </PlayButton>
-        </CoverImage>
-        <IFrame src={this.state.src} frameBorder="0" allowFullScreen height={width * videoRatio} />
+        {cover_image_url &&
+          <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
+            <PlayButton>
+              <PlayButtonCaret />
+            </PlayButton>
+          </CoverImage>
+        }
+
+        <IFrame
+          src={this.state.src}
+          frameBorder="0"
+          allowFullScreen
+          height={width * videoRatio}
+        />
 
         {showCaption &&
           <Caption caption={caption} layout={this.props.layout}>
