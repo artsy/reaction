@@ -4,10 +4,7 @@ const path = require("path")
 module.exports = () => {
   return {
     entry: {
-      login: ["babel-polyfill", "./src/Apps/Loyalty/Containers/Login/Browser"],
-      inquiries: ["babel-polyfill", "./src/Apps/Loyalty/Containers/Inquiries/Browser"],
-      forgot_password: ["babel-polyfill", "./src/Apps/Loyalty/Containers/ForgotPassword/Browser"],
-      analytics: ["babel-polyfill", "./src/Apps/Loyalty/ClientSideAnalytics"],
+      // TODO: currently there are no apps
     },
     module: {
       rules: [
@@ -30,9 +27,8 @@ module.exports = () => {
       ],
     },
     output: {
+      // TODO: currently there are no apps
       filename: "[name].js",
-      path: path.join(__dirname, "../dist/Apps/Loyalty/Server/bundles"),
-      publicPath: "/Loyalty/bundles",
     },
     externals: {
       react: {
