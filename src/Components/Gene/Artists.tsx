@@ -1,9 +1,21 @@
 import * as React from "react"
-import { createFragmentContainer, graphql } from "react-relay/compat"
+import { ConnectionData } from "react-relay"
+import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay/compat"
 import styled from "styled-components"
 
 import * as fonts from "../../Assets/Fonts"
+import Spinner from "../Spinner"
 import ArtistRow from "./ArtistRow"
+
+const PageSize = 10
+
+interface Props extends RelayProps {
+  relay?: RelayPaginationProp
+}
+
+interface State {
+  loading: boolean
+}
 
 const ArtistRowsContainer = styled.div`
   margin: 40px 0 20px;
@@ -26,7 +38,28 @@ const LoadMoreButton = styled.a`
   }
 `
 
-export class Artists extends React.Component<RelayProps, null> {
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
+
+export class Artists extends React.Component<Props, State> {
+  state = {
+    loading: false,
+  }
+
+  loadMoreArtists() {
+    const hasMore = this.props.gene.artists.pageInfo.hasNextPage
+    if (!this.state.loading && hasMore) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.loadMore(PageSize, error => {
+          this.setState({ loading: false })
+        })
+      })
+    }
+  }
+
   render() {
     const artists = this.props.gene.artists
 
@@ -50,27 +83,60 @@ export class Artists extends React.Component<RelayProps, null> {
   }
 }
 
-export default createFragmentContainer(
+export default createPaginationContainer(
   Artists,
-  graphql`
-    fragment Artists_gene on Gene {
-      artists: artists_connection(first: $artistsSize) {
-        pageInfo {
-          hasNextPage
-        }
-        edges {
-          node {
-            __id
-            ...ArtistRow_artist
+  {
+    gene: graphql.experimental`
+      fragment Artists_gene on Gene
+        @argumentDefinitions(count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
+        __id
+        artists: artists_connection(first: $count, after: $cursor) @connection(key: "Artists_artists") {
+          pageInfo {
+            hasNextPage
+          }
+          edges {
+            node {
+              __id
+              ...ArtistRow_artist
+            }
           }
         }
       }
-    }
-  `
+    `,
+  },
+  {
+    direction: "forward",
+    getConnectionFromProps(props) {
+      return props.gene.artists as ConnectionData
+    },
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      }
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        // in most cases, for variables other than connection filters like
+        // `first`, `after`, etc. you may want to use the previous values.
+        ...fragmentVariables,
+        count,
+        cursor,
+      }
+    },
+    query: graphql.experimental`
+      query ArtistsQuery($geneNodeID: ID!, $count: Int!, $cursor: String) {
+        node(__id: $geneNodeID) {
+          ...Artists_gene @arguments(count: $count, cursor: $cursor)
+        }
+      }
+    `,
+  }
 )
 
 interface RelayProps {
   gene: {
+    __id: string
     artists: {
       pageInfo: {
         hasNextPage: boolean
