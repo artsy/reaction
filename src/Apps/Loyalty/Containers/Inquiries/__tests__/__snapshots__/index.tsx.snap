@@ -2,40 +2,40 @@
 
 exports[`inquiries renders the inquiries listing 1`] = `
 <div
-  className="file__Container-s1gyj4vs-1 jmOzYx"
+  className="file__Container-s1pyl2uv-1 bHSzYR"
 >
   <div
-    className="file__Nav-s3a2xky-0 jFOBxo"
+    className="file__Nav-s1u3mk74-0 eyFpUf"
   >
     <a
-      className="file__NavIcon-s3a2xky-1 iuKRRV"
+      className="file__NavIcon-s1u3mk74-1 fNrbYg"
       href="/"
     >
       <div
-        className="file-s1p6nknl-0 fIydph"
+        className="file-s1c6rdye-0 kdeDrI"
         style={undefined}
       >
         
       </div>
     </a>
     <a
-      className="file__StyledLink-bkdmoh-0 kRXfDa"
+      className="file__StyledLink-lessph-0 dOrLNT"
       href="/"
     >
       Back To Artsy
     </a>
   </div>
   <header
-    className="file__Header-s1gyj4vs-2 iblxeM"
+    className="file__Header-s1pyl2uv-2 eTSwKS"
   >
     <div
-      className="header-title file__StyledTitle-ujwgso-0 fzZMTa"
+      className="header-title file__StyledTitle-s1hq9j8q-0 bLQcDL"
       color="inherit"
     >
       Please select all works you purchased
     </div>
     <p
-      className="header-subtitle file__Text-s1qz329q-0 bPbEAT"
+      className="header-subtitle file__Text-s1c2dxzg-0 iTrBpO"
     >
       We will confirm submitted purchases with the galleries in order to qualify you for the program membership.
     </p>
@@ -53,31 +53,31 @@ exports[`inquiries renders the inquiries listing 1`] = `
           className="file__Col-lw0n7x-0 ifVZX Col__Col-hCQanm jItcmX"
         >
           <div
-            className="file__InquiryContainer-s1gyj4vs-0 fFvgsu"
+            className="file__InquiryContainer-s1pyl2uv-0 ivebzq"
           >
             <div
-              className="file__Container-lffe97-0 bTXoSh"
+              className="file__Container-s1how86y-0 cAcEVx"
               onClick={[Function]}
             >
               <div
-                className="file__ImageContainer-lffe97-1 hYhPlx"
+                className="file__ImageContainer-s1how86y-1 gUTJRY"
               >
                 <img
-                  className="file__Image-lffe97-2 gNDimy"
+                  className="file__Image-s1how86y-2 kRbqOJ"
                   src="http://path.to.cat.pics"
                 />
                 <div
                   className="overlay-container hovered"
                 >
                   <div
-                    className="file__OverlayBackground-s6bovq-0 iFFOOe"
+                    className="file__OverlayBackground-s1dhbpor-0 LUZIK"
                   >
                     <div
                       className="sc-bdVaJa ctlSVY"
                       selected={false}
                     >
                       <div
-                        className="file-s1p6nknl-0 eFOrfg"
+                        className="file-s1c6rdye-0 bJkEYa"
                         style={undefined}
                       >
                         
@@ -87,15 +87,15 @@ exports[`inquiries renders the inquiries listing 1`] = `
                 </div>
               </div>
               <div
-                className="file__StyledMetadata-s1qwxy63-0 cPCanW"
+                className="file__StyledMetadata-s1axreti-0 llKWPb"
               >
                 <div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-s15cf0pi-0 gzhTFP"
                   >
                     <strong>
                       <a
-                        className="file__StyledTextLink-s1973ep5-0 gWjzCq"
+                        className="file__StyledTextLink-s1bp9p6w-0 jZfohH"
                         href="/percy-z"
                       >
                         Percy Z
@@ -103,10 +103,10 @@ exports[`inquiries renders the inquiries listing 1`] = `
                     </strong>
                   </div>
                   <div
-                    className="file__TruncatedLine-fqmumg-0 geNFWw"
+                    className="file__TruncatedLine-s15cf0pi-0 gzhTFP"
                   >
                     <a
-                      className="file__StyledTextLink-s1973ep5-0 gWjzCq"
+                      className="file__StyledTextLink-s1bp9p6w-0 jZfohH"
                       href={undefined}
                     >
                       <em />
@@ -124,19 +124,19 @@ exports[`inquiries renders the inquiries listing 1`] = `
     className="footer"
   >
     <p
-      className="file__Text-s1qz329q-0 jtAMIH"
+      className="file__Text-s1c2dxzg-0 KnAET"
     >
       If you purchased any works not included
       <br />
        above, please list them.
     </p>
     <textarea
-      className="file__LargeTextArea-s1gyj4vs-3 MhnYV file-s1t5uhf0-0 cCANvA"
+      className="file__LargeTextArea-s1pyl2uv-3 CHgWw file-s1yjr48y-0 khOUld"
       onChange={[Function]}
       placeholder="Artwork, Artist, Gallery"
     />
     <button
-      className="file__InvertedButton-v41jhc-0 huDpF file__StyledButton-s12zbojh-0 iUONPv"
+      className="file__InvertedButton-v41jhc-0 huDpF file__StyledButton-s369tly-0 bTPOQl"
       disabled={true}
       onClick={[Function]}
     >

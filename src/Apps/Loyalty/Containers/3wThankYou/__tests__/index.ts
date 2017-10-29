@@ -1,4 +1,4 @@
-import * as ReactTestUtils from "react-dom/test-utils"
+import ReactTestUtils from "react-dom/test-utils"
 import * as renderer from "react-test-renderer"
 
 import ThreeWThankYou from "../index"
