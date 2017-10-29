@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as Relay from "react-relay"
+import React from "react"
+import Relay from "react-relay"
 
 function createContainer<T, S>(
   ComponentClass: React.ComponentClass<T> | React.StatelessComponent<T>,

@@ -1,6 +1,6 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
-import * as React from "react"
+import React from "react"
 import * as renderer from "react-test-renderer"
 import { Images } from "../../../Fixtures/Components"
 import { FullscreenViewer } from "../FullscreenViewer"

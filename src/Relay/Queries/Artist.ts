@@ -1,4 +1,4 @@
-import * as Relay from "react-relay"
+import Relay from "react-relay"
 
 export default class ArtistQueryConfig extends Relay.Route {
   public static queries = {

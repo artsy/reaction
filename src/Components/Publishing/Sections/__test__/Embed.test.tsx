@@ -1,5 +1,5 @@
 import "jest-styled-components"
-import * as React from "react"
+import React from "react"
 import * as renderer from "react-test-renderer"
 import { Embeds } from "../../Fixtures/Components"
 import { Embed } from "../Embed"

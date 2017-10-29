@@ -1,5 +1,5 @@
 import "jest-styled-components"
-import * as React from "react"
+import React from "react"
 import * as renderer from "react-test-renderer"
 import { StandardArticle } from "../../Fixtures/Articles"
 import { Byline } from "../Byline"

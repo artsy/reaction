@@ -1,7 +1,7 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
 import _ from "lodash"
-import * as React from "react"
+import React from "react"
 import { Header } from "../Header"
 
 import {

@@ -2,7 +2,7 @@ import * as artsyPassport from "artsy-passport"
 import * as artsyXapp from "artsy-xapp"
 import { NextFunction, Request, Response } from "express"
 import { default as IsomorphicRelay } from "isomorphic-relay"
-import * as React from "react"
+import React from "react"
 
 import CurrentUserRoute from "../../../Relay/Queries/CurrentUser"
 

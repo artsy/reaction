@@ -74,7 +74,7 @@ A story section generally looks like this:
 
 ```tsx
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import React from "react"
 
 import IconImageSet from "../icon_image_set"
 
@@ -115,7 +115,7 @@ makes the same JSON object.
   Any individual story state is probably worth converting into a jest snapshot.
 
   ```js
-  import * as React from "react"
+  import React from "react"
   import * as renderer from "react-test-renderer"
 
   import IconImageSet from "../icon/image_set"

@@ -1,7 +1,7 @@
 import IsomorphicRelay from "isomorphic-relay"
-import * as React from "react"
+import React from "react"
 import { render } from "react-dom"
-import * as Relay from "react-relay"
+import Relay from "react-relay"
 
 import { artsyNetworkLayer } from "../../../../Relay/config"
 import CurrentUserRoute from "../../../../Relay/Queries/CurrentUser"

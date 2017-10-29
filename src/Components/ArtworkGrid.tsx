@@ -1,6 +1,6 @@
-import * as React from "react"
+import React from "react"
 import * as ReactDOM from "react-dom"
-import * as Relay from "react-relay"
+import Relay from "react-relay"
 
 import styled from "styled-components"
 import Artwork from "./Artwork/GridItem"

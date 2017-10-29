@@ -1,6 +1,6 @@
 import "jest-styled-components"
 import * as _ from "lodash"
-import * as React from "react"
+import React from "react"
 import * as renderer from "react-test-renderer"
 import { FeatureArticle, SuperArticle } from "../../Fixtures/Articles"
 import { HeroSections } from "../../Fixtures/Components"

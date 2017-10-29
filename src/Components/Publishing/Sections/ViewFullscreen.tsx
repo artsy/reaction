@@ -1,5 +1,5 @@
 import * as PropTypes from "prop-types"
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { IconExpand } from "../Icon/IconExpand"

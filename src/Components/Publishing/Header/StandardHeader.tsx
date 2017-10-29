@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"

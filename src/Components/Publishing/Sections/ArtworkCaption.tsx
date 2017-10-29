@@ -1,5 +1,5 @@
 import * as _ from "lodash"
-import * as React from "react"
+import React from "react"
 import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"

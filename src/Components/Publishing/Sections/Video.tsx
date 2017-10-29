@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
