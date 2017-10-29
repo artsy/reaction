@@ -1,6 +1,6 @@
 import "jest-styled-components"
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 import { Campaign, UnitPanel } from "../../Fixtures/Components"
 import { DisplayPanel } from "../DisplayPanel"
 

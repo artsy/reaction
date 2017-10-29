@@ -1,6 +1,6 @@
 import "jest-styled-components"
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 import { Caption } from "../Caption"
 
 it("renders a saved caption properly", () => {

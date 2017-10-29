@@ -1,5 +1,5 @@
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 import { IconImageSet } from "../../Icon/IconImageSet"
 
 it("renders properly", () => {

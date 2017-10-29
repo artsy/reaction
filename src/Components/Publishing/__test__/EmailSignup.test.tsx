@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 import request from "superagent"
 import { EmailSignup } from "../EmailSignup"
 

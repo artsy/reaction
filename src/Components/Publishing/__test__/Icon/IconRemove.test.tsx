@@ -1,5 +1,5 @@
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 import { IconRemove } from "../../Icon/IconRemove"
 
 it("renders properly", () => {

@@ -1,5 +1,5 @@
 import ReactTestUtils from "react-dom/test-utils"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 
 import AcbThankYou from "../index"
 

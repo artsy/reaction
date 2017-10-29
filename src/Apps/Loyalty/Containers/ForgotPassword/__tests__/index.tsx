@@ -1,6 +1,6 @@
 import { shallow } from "enzyme"
 import React from "react"
-import * as renderer from "react-test-renderer"
+import renderer from "react-test-renderer"
 
 jest.mock("isomorphic-fetch")
 const fetch = require("isomorphic-fetch").default
