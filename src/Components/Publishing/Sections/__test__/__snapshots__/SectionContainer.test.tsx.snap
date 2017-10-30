@@ -14,6 +14,7 @@ exports[`renders column_width properly 1`] = `
 
 .c1 {
   position: relative;
+  width: 100%;
 }
 
 .c1 a {
@@ -120,10 +121,14 @@ exports[`renders column_width properly 1`] = `
   line-height: 1.5em;
 }
 
+.c1 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c1 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.1em;
   text-align: left;
   font-weight: normal;
@@ -254,7 +259,7 @@ exports[`renders column_width properly 1`] = `
   .c1 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
@@ -294,6 +299,7 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 {
   position: relative;
+  width: 100%;
 }
 
 .c1 a {
@@ -400,10 +406,14 @@ exports[`renders fillwidth properly 1`] = `
   line-height: 1.5em;
 }
 
+.c1 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c1 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.1em;
   text-align: left;
   font-weight: normal;
@@ -534,7 +544,7 @@ exports[`renders fillwidth properly 1`] = `
   .c1 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
@@ -574,6 +584,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 {
   position: relative;
+  width: 100%;
 }
 
 .c1 a {
@@ -680,10 +691,14 @@ exports[`renders overflow_fillwidth properly 1`] = `
   line-height: 1.5em;
 }
 
+.c1 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c1 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.1em;
   text-align: left;
   font-weight: normal;
@@ -814,7 +829,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   .c1 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
