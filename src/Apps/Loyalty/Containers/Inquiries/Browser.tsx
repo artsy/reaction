@@ -7,7 +7,7 @@ import { artsyNetworkLayer } from "../../../../Relay/config"
 import CurrentUserRoute from "../../../../Relay/Queries/CurrentUser"
 import Inquiries from "./index"
 
-import * as sharify from "sharify"
+import sharify from "sharify"
 import { LoginResponseLocalData } from "../../Types"
 
 import * as Artsy from "../../../../Components/Artsy"

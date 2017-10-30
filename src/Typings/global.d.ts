@@ -2,7 +2,7 @@
 
 import React from "react"
 import Relay from "react-relay"
-import * as sharify from "sharify"
+import sharify from "sharify"
 
 declare global {
   interface Window {

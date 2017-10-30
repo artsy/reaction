@@ -1,13 +1,13 @@
 import Relay from "react-relay"
-import * as sharify from "sharify"
+import sharify from "sharify"
 
 export function artsyNetworkLayer(user?: User) {
   return new Relay.DefaultNetworkLayer(sharify.data.METAPHYSICS_ENDPOINT, {
     headers: !!user
       ? {
-          "X-USER-ID": user.id,
-          "X-ACCESS-TOKEN": user.accessToken,
-        }
+        "X-USER-ID": user.id,
+        "X-ACCESS-TOKEN": user.accessToken,
+      }
       : {},
   })
 }

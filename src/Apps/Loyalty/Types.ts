@@ -1,4 +1,4 @@
-import * as sharify from "sharify"
+import sharify from "sharify"
 
 export interface FormData {
   baseUrl: string
