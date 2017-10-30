@@ -6,7 +6,7 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c11.date {
@@ -18,7 +18,7 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c10.date {
@@ -38,7 +38,7 @@ exports[`renders the related articles canvas 1`] = `
 .c10:before {
   min-width: 8px;
   min-height: 8px;
-  margin: 0 5px 1px;
+  margin: 0 5px 1px 0;
 }
 
 .c9 {
@@ -109,7 +109,7 @@ exports[`renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 1250px;
-  margin: 30px auto 60px auto;
+  margin: 30px auto 30px auto;
 }
 
 .c2 {
@@ -214,7 +214,7 @@ exports[`renders the related articles canvas 1`] = `
 
 @media (max-width:1250px) {
   .c1 {
-    margin: 30px 0 60px 0;
+    margin: 30px 0 30px 0;
   }
 }
 

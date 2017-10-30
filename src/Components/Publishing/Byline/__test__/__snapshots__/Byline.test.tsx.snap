@@ -6,7 +6,7 @@ exports[`Byline renders a byline 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c2.date {
@@ -18,7 +18,7 @@ exports[`Byline renders a byline 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c1.date {
@@ -114,6 +114,12 @@ exports[`Byline renders a byline 1`] = `
   .c1:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c3 {
+    margin-top: 15px;
   }
 }
 
