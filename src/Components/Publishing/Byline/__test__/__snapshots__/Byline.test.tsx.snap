@@ -37,6 +37,7 @@ exports[`Byline renders a byline 1`] = `
 
 .c3 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c4 {
@@ -69,7 +70,6 @@ exports[`Byline renders a byline 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 @media (max-width:720px) {

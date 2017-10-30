@@ -38,7 +38,7 @@ exports[`renders the related articles canvas 1`] = `
 .c10:before {
   min-width: 8px;
   min-height: 8px;
-  margin: 0 5px 1px;
+  margin: 0 5px 1px 0;
 }
 
 .c9 {
@@ -57,7 +57,6 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c6 {

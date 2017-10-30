@@ -37,6 +37,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 .c7 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c8 {
@@ -69,7 +70,6 @@ exports[`Standard Header renders standard header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c0 {
@@ -330,6 +330,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 
 .c7 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c8 {
@@ -362,7 +363,6 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c0 {

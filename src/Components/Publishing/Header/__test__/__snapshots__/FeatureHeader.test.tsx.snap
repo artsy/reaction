@@ -37,6 +37,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 .c17 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c18 {
@@ -69,7 +70,6 @@ exports[`feature renders feature full header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c3 {
@@ -553,6 +553,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 
 .c15 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c16 {
@@ -585,7 +586,6 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c3 {
@@ -1040,6 +1040,7 @@ exports[`feature renders feature header with children properly 1`] = `
 
 .c17 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c18 {
@@ -1072,7 +1073,6 @@ exports[`feature renders feature header with children properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c3 {
@@ -1564,6 +1564,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 .c16 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c17 {
@@ -1596,7 +1597,6 @@ exports[`feature renders feature split header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c6 {
@@ -2067,6 +2067,7 @@ exports[`feature renders feature text header properly 1`] = `
 
 .c14 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c15 {
@@ -2099,7 +2100,6 @@ exports[`feature renders feature text header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c4 {
@@ -2589,6 +2589,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 
 .c21 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c22 {
@@ -2621,7 +2622,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  text-align: center;
 }
 
 .c3 {

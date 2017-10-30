@@ -3,6 +3,7 @@
 exports[`renders a saved caption properly 1`] = `
 .c0 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c1 {
