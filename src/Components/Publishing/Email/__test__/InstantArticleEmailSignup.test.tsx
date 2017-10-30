@@ -3,7 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import request from "superagent"
-import { EmailSignup } from "../EmailSignup"
+import { InstantArticleEmailSignup } from "../InstantArticleEmailSignup"
 
 jest.mock("superagent", () => {
   const end = jest.fn()
@@ -16,12 +16,12 @@ jest.useFakeTimers()
 
 describe("EmailSignup", () => {
   it("renders an email signup", () => {
-    const emailSignup = renderer.create(<EmailSignup signupUrl="#" />)
+    const emailSignup = renderer.create(<InstantArticleEmailSignup signupUrl="#" />)
     expect(emailSignup).toMatchSnapshot()
   })
 
-  it("submits an email and removes itself when successful", () => {
-    const viewer = mount(<EmailSignup signupUrl="#" />)
+  it("submits an email", () => {
+    const viewer = mount(<InstantArticleEmailSignup signupUrl="#" />)
     viewer.setState({ value: "foo@goo.net" })
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
@@ -32,13 +32,12 @@ describe("EmailSignup", () => {
 
     jest.runAllTimers()
     const postTimeoutState = viewer.state()
-    expect(postTimeoutState.submitted).toBe(true)
     expect(postTimeoutState.disabled).toBe(false)
     expect(postTimeoutState.message).toEqual("")
   })
 
   it("handles signup errors", () => {
-    const viewer = mount(<EmailSignup signupUrl="#" />)
+    const viewer = mount(<InstantArticleEmailSignup signupUrl="#" />)
     viewer.setState({ value: "foo@goo.net" })
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
@@ -55,7 +54,7 @@ describe("EmailSignup", () => {
   })
 
   it("validates email addresses", () => {
-    const viewer = mount(<EmailSignup signupUrl="#" />)
+    const viewer = mount(<InstantArticleEmailSignup signupUrl="#" />)
     viewer.setState({ value: "foo" })
     viewer.find("button").simulate("click")
     const state = viewer.state()
