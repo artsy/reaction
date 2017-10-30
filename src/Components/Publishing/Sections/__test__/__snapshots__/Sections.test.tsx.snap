@@ -1078,39 +1078,39 @@ exports[`renders properly 1`] = `
                   Object {
                     "__html": <span>
                       <span
-                        className="artist-name"
+                          className="artist-name"
                       >
-                        <span
-                          className="name"
-                        >
-                          <file__StyledTextLink
-                            color="#999"
-                            href="/artist/matt-devine"
-                            underline={false}
+                          <span
+                              className="name"
                           >
-                            Matt Devine
-                          </file__StyledTextLink>
-                        </span>
+                              <file__StyledTextLink
+                                  color="#999"
+                                  href="/artist/matt-devine"
+                                  underline={false}
+                              >
+                                  Matt Devine
+                              </file__StyledTextLink>
+                          </span>
                       </span>
                       <span
-                        className="title"
+                          className="title"
                       >
-                        <file__StyledTextLink
-                          color="#999"
-                          href="/artwork/matt-devine-brass-tax"
-                          underline={false}
-                        >
-                          Brass Tax
-                        </file__StyledTextLink>
+                          <file__StyledTextLink
+                              color="#999"
+                              href="/artwork/matt-devine-brass-tax"
+                              underline={false}
+                          >
+                              Brass Tax
+                          </file__StyledTextLink>
                       </span>
                       <file__StyledTextLink
-                        color="#999"
-                        href="/partner/joanne-artman-gallery"
-                        underline={false}
+                          color="#999"
+                          href="/partner/joanne-artman-gallery"
+                          underline={false}
                       >
-                        Joanne Artman Gallery
+                          Joanne Artman Gallery
                       </file__StyledTextLink>
-                    </span>,
+                  </span>,
                   }
                 }
               />
