@@ -1,7 +1,7 @@
 import artsyPassport from "artsy-passport"
-import * as Backbone from "backbone"
-import * as express from "express"
-import * as path from "path"
+import Backbone from "backbone"
+import express from "express"
+import path from "path"
 
 import RelayMiddleware from "./Middlewares/Relay"
 import SetSessionIDMiddleware from "./Middlewares/TrackSession"

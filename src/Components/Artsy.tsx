@@ -1,5 +1,5 @@
-import * as PropTypes from "prop-types"
-import * as React from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 /**
  * The Artsy specific props injected by the higher-order component produced by `ContextConsumer`.

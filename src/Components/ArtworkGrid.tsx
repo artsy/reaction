@@ -1,6 +1,6 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import * as Relay from "react-relay"
+import React from "react"
+import ReactDOM from "react-dom"
+import Relay from "react-relay"
 
 import styled from "styled-components"
 import Artwork from "./Artwork/GridItem"
@@ -135,7 +135,7 @@ ArtworkGrid.defaultProps = {
   itemMargin: 20,
 }
 
-const StyledGrid = styled(ArtworkGrid)`
+const StyledGrid = styled(ArtworkGrid) `
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

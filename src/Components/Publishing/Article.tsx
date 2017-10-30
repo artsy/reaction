@@ -1,6 +1,6 @@
 import { cloneDeep, includes, map, omit } from "lodash"
-import * as PropTypes from "prop-types"
-import * as React from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"

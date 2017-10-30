@@ -1,6 +1,6 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
-import * as React from "react"
+import React from "react"
 import { Article } from "../Article"
 import { FeatureArticle, StandardArticle } from "../Fixtures/Articles"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"

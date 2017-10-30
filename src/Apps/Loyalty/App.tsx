@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 class App extends React.Component<any, any> {
   render() {

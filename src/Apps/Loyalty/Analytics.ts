@@ -9,7 +9,7 @@ enriched client-side information in its payload, which is why we
 require/prefer that some calls happen cient-side.
 */
 import { extend, pick } from "lodash"
-import * as sharify from "sharify"
+import sharify from "sharify"
 
 import { LoginResponseLocalData } from "./Types"
 const data = sharify.data as LoginResponseLocalData

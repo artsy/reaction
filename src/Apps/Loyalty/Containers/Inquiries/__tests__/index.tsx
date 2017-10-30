@@ -1,6 +1,6 @@
-import * as React from "react"
-import * as TestUtils from "react-dom/test-utils"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import TestUtils from "react-dom/test-utils"
+import renderer from "react-test-renderer"
 
 import { Artwork } from "../../../../../Components/Artwork"
 import { Inquiries, Props } from "../index"

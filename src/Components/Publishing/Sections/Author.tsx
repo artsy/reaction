@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"

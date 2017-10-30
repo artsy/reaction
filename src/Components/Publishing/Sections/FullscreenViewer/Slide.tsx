@@ -1,5 +1,5 @@
 import { omit } from "lodash"
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"

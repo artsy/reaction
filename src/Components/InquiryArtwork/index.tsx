@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import colors from "../../Assets/Colors"
 import { Artwork, ArtworkProps, OverlayProps } from "../Artwork"

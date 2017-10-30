@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as Relay from "react-relay"
+import React from "react"
+import Relay from "react-relay"
 import styled from "styled-components"
 
 import Fillwidth from "../Artwork/Fillwidth"

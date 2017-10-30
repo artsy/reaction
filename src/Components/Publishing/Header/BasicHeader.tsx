@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from "react"
 import { Col, Grid, Row } from 'react-styled-flexboxgrid'
 import styled, { css } from 'styled-components'
 import { Responsive } from '../../../Utils/Responsive'

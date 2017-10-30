@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as Relay from "react-relay"
+import React from "react"
+import Relay from "react-relay"
 import styled, { ThemeProvider } from "styled-components"
 
 import theme from "../../../../Assets/Theme"
@@ -63,12 +63,12 @@ const Header = styled.header`
   `}
 `
 
-const LargeTextArea = styled(TextArea)`
+const LargeTextArea = styled(TextArea) `
   width: 100%;
   height: 130px;
 `
 
-export interface Props extends RelayProps, Artsy.ContextProps {}
+export interface Props extends RelayProps, Artsy.ContextProps { }
 
 interface SelectedConversation {
   id: string
