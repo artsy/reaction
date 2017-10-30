@@ -67,16 +67,19 @@ const ImageTitle = styled.div`
   text-decoration: none;
   min-height: 270px;
   ${pMedia.sm`
-    height: 235px;
+    min-height: 235px;
   `};
 `
 
 const ArticleFigure = styled.a`
   display: flex;
   flex-direction: column;
-  max-width: 278px;
+  width: 278px;
   text-decoration: none;
   color: black;
+  ${pMedia.sm`
+    width: 225px;
+  `};
 `
 
 const ArticleTitle = styled.div`
@@ -92,6 +95,7 @@ const BlockImage = styled.img`
   margin-bottom: 10px;
   object-fit: cover;
   ${pMedia.sm`
+    width: 225px;
     height: 150px;
   `};
 `
