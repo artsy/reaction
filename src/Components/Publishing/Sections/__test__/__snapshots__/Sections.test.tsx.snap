@@ -1080,17 +1080,12 @@ exports[`renders properly 1`] = `
                       <span
                           className="artist-name"
                       >
-                        <span
-                          className="name"
-                        >
-                          <file__StyledTextLink
-                            color="#999"
-                            href="/artist/matt-devine"
-                            underline={false}
+                          <span
+                              className="name"
                           >
                               <file__StyledTextLink
                                   color="#999"
-                                  href="/artwork/matt-devine"
+                                  href="/artist/matt-devine"
                                   underline={false}
                               >
                                   Matt Devine
