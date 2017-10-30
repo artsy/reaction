@@ -8,7 +8,7 @@ import * as React from "react"
  * @see {@link ContextConsumer}
  *
  * @todo Once this PR for `rest` https://github.com/Microsoft/TypeScript/pull/13470 lands we’ll be able to not make this
- * optional and simply remove it from the props that a component wrapped with the `ContextConsumer` HOC accepts.
+ *       optional and simply remove it from the props that a component wrapped with the `ContextConsumer` HOC accepts.
  */
 export interface ContextProps {
   /**
