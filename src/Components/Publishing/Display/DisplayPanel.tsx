@@ -132,17 +132,6 @@ const Image = styled.div`
   box-sizing: border-box;
 `
 
-const VideoContainer = Image.extend`
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  video {
-    object-fit: cover;
-    object-position: 50%;
-    width: 100%;
-  }
-`
 const VideoCover = Image.extend`
   position: absolute;
 `
@@ -196,4 +185,16 @@ const Body = styled.div`
 
 const SponsoredBy = styled.div`
   ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
+`
+
+const VideoContainer = Image.extend`
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+video {
+  object-fit: cover;
+  object-position: 50%;
+  width: 100%;
+}
 `
