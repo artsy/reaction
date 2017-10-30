@@ -6,7 +6,7 @@ exports[`feature renders feature full header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c16.date {
@@ -18,7 +18,7 @@ exports[`feature renders feature full header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c15.date {
@@ -266,6 +266,12 @@ exports[`feature renders feature full header properly 1`] = `
   .c15:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c17 {
+    margin-top: 15px;
   }
 }
 
@@ -512,7 +518,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c14.date {
@@ -524,7 +530,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c13.date {
@@ -765,6 +771,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c15 {
+    margin-top: 15px;
+  }
+}
+
 @media (max-width:720px) {
   .c7 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -989,7 +1001,7 @@ exports[`feature renders feature header with children properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c16.date {
@@ -1001,7 +1013,7 @@ exports[`feature renders feature header with children properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c15.date {
@@ -1249,6 +1261,12 @@ exports[`feature renders feature header with children properly 1`] = `
   .c15:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c17 {
+    margin-top: 15px;
   }
 }
 
@@ -1503,7 +1521,7 @@ exports[`feature renders feature split header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c15.date {
@@ -1515,7 +1533,7 @@ exports[`feature renders feature split header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c14.date {
@@ -1758,6 +1776,12 @@ exports[`feature renders feature split header properly 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c16 {
+    margin-top: 15px;
+  }
+}
+
 @media (max-width:720px) {
   .c6 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -1996,7 +2020,7 @@ exports[`feature renders feature text header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c13.date {
@@ -2008,7 +2032,7 @@ exports[`feature renders feature text header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c12.date {
@@ -2247,6 +2271,12 @@ exports[`feature renders feature text header properly 1`] = `
   .c12:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c14 {
+    margin-top: 15px;
   }
 }
 
@@ -2508,7 +2538,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c20.date {
@@ -2520,7 +2550,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c19.date {
@@ -2789,6 +2819,12 @@ exports[`feature renders superArticle full header properly 1`] = `
   .c19:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c21 {
+    margin-top: 15px;
   }
 }
 

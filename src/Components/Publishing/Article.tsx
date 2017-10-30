@@ -76,6 +76,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   openViewer = index => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: hidden;")
+
     this.setState({
       viewerIsOpen: true,
       slideIndex: index,
@@ -83,6 +86,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   closeViewer = () => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: scroll;")
+
     this.setState({ viewerIsOpen: false })
   }
 
@@ -180,6 +186,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
           {relatedArticlesForCanvas &&
             <RelatedArticlesCanvas
+              isMobile={isMobile}
               articles={relatedArticlesForCanvas}
               vertical={article.vertical}
             />}
@@ -205,7 +212,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const { article } = this.state
 
     return (
-      <ArticleContainer marginTop={marginTop}>
+      <ArticleContainer
+        marginTop={marginTop}
+      >
         {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
         <FullscreenViewer
           onClose={this.closeViewer}
@@ -223,9 +232,8 @@ const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDiv
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => props.marginTop || "50px"};
 `
-
 const DisplayCanvasBreak = styled.hr`
   border: 0;
-  margin: 0;
+  margin: 30px 0 0;
   border-top: 1px solid #eee;
 `

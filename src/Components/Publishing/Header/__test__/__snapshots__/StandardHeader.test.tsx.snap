@@ -6,7 +6,7 @@ exports[`Standard Header renders standard header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c6.date {
@@ -18,7 +18,7 @@ exports[`Standard Header renders standard header properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c5.date {
@@ -134,6 +134,12 @@ exports[`Standard Header renders standard header properly 1`] = `
   .c5:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-top: 15px;
   }
 }
 
@@ -289,7 +295,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c6.date {
@@ -301,7 +307,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
 }
 
 .c5.date {
@@ -417,6 +423,12 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   .c5:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-top: 15px;
   }
 }
 
