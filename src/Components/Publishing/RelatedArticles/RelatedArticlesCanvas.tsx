@@ -58,16 +58,16 @@ const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;
-  margin: 30px auto 60px auto;
+  margin: 30px auto 30px auto;
   ${pMedia.xl`
-    margin: 30px 0 60px 0;
+    margin: 30px 0 30px 0;
   `}
 `
 const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
   ${pMedia.xl`
-    margin: 0 20px 30px 20px;;
+    margin: 0 20px 30px 20px;
   `}
 `
 const VerticalSpan = styled.span`

@@ -25,6 +25,7 @@ function getBlockquoteSize(layout, size) {
 export const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : "")};
+  width: 100%;
   a {
     color: black;
     text-decoration: none;

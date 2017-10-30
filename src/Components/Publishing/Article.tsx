@@ -234,6 +234,6 @@ const ArticleContainer = ArticleDiv`
 `
 const DisplayCanvasBreak = styled.hr`
   border: 0;
-  margin: 0;
+  margin: 30px 0 0;
   border-top: 1px solid #eee;
 `

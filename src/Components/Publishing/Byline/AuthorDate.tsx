@@ -60,7 +60,7 @@ const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> =
 
 const Text = div`
   ${props => (props.layout === "condensed" ? Fonts.unica("s14", "medium") : Fonts.unica("s16", "medium"))}
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   &.date {
     white-space: nowrap;
   }
@@ -76,7 +76,7 @@ const adjustForCondensed = layout => {
   &:before {
     min-width: 8px;
     min-height: 8px;
-    margin: 0 5px 1px;
+    margin: 0 5px 1px 0;
   }`
     : ""
 }
