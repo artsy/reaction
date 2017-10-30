@@ -76,6 +76,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   openViewer = index => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: hidden;")
+
     this.setState({
       viewerIsOpen: true,
       slideIndex: index,
@@ -83,6 +86,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   closeViewer = () => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: scroll;")
+
     this.setState({ viewerIsOpen: false })
   }
 
