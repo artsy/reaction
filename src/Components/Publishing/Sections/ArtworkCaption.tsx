@@ -62,7 +62,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     const createTextLink = linked && slug
 
     if (createTextLink) {
-      const href = `/artwork/${slug}`
+      const href = `/artist/${slug}`
 
       return (
         <span key={`artist-${i}`} className="name">

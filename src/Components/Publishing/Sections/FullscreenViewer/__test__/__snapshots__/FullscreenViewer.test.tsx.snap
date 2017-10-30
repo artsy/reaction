@@ -318,7 +318,7 @@ exports[`renders properly 1`] = `
                   >
                     <a
                       className="c10 c11"
-                      href="/artwork/fernando-botero"
+                      href="/artist/fernando-botero"
                     >
                       Fernando Botero
                     </a>
