@@ -27,7 +27,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
   }
 }
 
-export const StyledMetadata = styled(ArtworkMetadata)`
+export const StyledMetadata = styled(ArtworkMetadata) `
     ${fonts.secondary.style}
     color: ${colors.graySemibold};
     margin-top: 12px;

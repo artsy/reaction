@@ -85,7 +85,7 @@
     "gulp-typescript": "^3.1.6",
     "husky": "^0.13.4",
     "jest": "^21.1.1",
-    "jest-styled-components": "^4.4.1",
+    "jest-styled-components": "^4.9.0",
     "lint-staged": "^4.0.0",
     "longjohn": "^0.2.12",
     "morgan": "^1.8.1",
@@ -163,7 +163,8 @@
     ],
     "setupFiles": [
       "./src/setup_jest.js"
-    ]
+    ],
+    "modulePathIgnorePatterns": ["<rootDir>/dist/*"]
   },
   "lint-staged": {
     "*.@(ts|tsx)": [

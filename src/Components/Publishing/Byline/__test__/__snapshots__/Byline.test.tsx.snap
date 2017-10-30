@@ -106,115 +106,22 @@ exports[`Byline renders a byline 1`] = `
 <div
   className="c0"
 >
-  .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c0.date {
-  white-space: nowrap;
-}
-
-.c0:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: #000;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c0:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-<div
-    className="author c0"
+  <div
+    className="author c1"
   >
     By 
     Artsy Editorial
   </div>
-  .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c0.date {
-  white-space: nowrap;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-<div
-    className="date c0"
+  <div
+    className="date c2"
   >
     May 19, 2017 9:09 am
   </div>
-  .c0 {
-  white-space: nowrap;
-}
-
-.c1 {
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c1:hover {
-  opacity: 0.6;
-}
-
-<div
-    className="c0"
+  <div
+    className="c3"
   >
-    .c0 {
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c0:hover {
-  opacity: 0.6;
-}
-
-<a
-      className="c0"
+    <a
+      className="c4"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -239,18 +146,8 @@ exports[`Byline renders a byline 1`] = `
         </g>
       </svg>
     </a>
-    .c0 {
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c0:hover {
-  opacity: 0.6;
-}
-
-<a
-      className="c0"
+    <a
+      className="c4"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -275,18 +172,8 @@ exports[`Byline renders a byline 1`] = `
         </g>
       </svg>
     </a>
-    .c0 {
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c0:hover {
-  opacity: 0.6;
-}
-
-<a
-      className="c0"
+    <a
+      className="c4"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
     >

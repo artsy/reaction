@@ -166,413 +166,46 @@ exports[`renders an artwork caption properly 1`] = `
 <div
   className="c0"
 >
-  .c6 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c3 .title {
-  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c3 .title:after {
-  content: ', ';
-}
-
-.c3 .date:after {
-  content: ', ';
-}
-
-.c4.artist-name {
-  margin-right: 20px;
-}
-
-.c4 .c5 {
-  color: black;
-}
-
-.c1 {
-  display: none;
-}
-
-.c2 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c2 a {
-  color: black;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  .c3 .title {
-    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c4.artist-name {
-    margin-bottom: 5px;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c1 span {
-    border-bottom: 1px solid black;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c1"
   >
-    .c0 {
-  display: none;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c0 span {
-    border-bottom: 1px solid black;
-  }
-}
-
-<div
-      className="fullscreen-viewer__caption-toggle c0"
+    <div
+      className="fullscreen-viewer__caption-toggle c2"
       onClick={undefined}
     >
       <span>
         Hide
       </span>
     </div>
-    .c4 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c1 .title {
-  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c1 .title:after {
-  content: ', ';
-}
-
-.c1 .date:after {
-  content: ', ';
-}
-
-.c2.artist-name {
-  margin-right: 20px;
-}
-
-.c2 .c3 {
-  color: black;
-}
-
-.c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 a {
-  color: black;
-}
-
-@media (max-width:720px) {
-  .c1 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  .c1 .title {
-    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c2.artist-name {
-    margin-bottom: 5px;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
-  }
-}
-
-<div
-      className="c0"
+    <div
+      className="c3"
       open={true}
     >
-      .c3 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 .title {
-  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 .title:after {
-  content: ', ';
-}
-
-.c0 .date:after {
-  content: ', ';
-}
-
-.c1.artist-name {
-  margin-right: 20px;
-}
-
-.c1 .c2 {
-  color: black;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  .c0 .title {
-    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c1.artist-name {
-    margin-bottom: 5px;
-  }
-}
-
-<div
-        className="c0"
+      <div
+        className="c4"
       >
-        .c2 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0.artist-name {
-  margin-right: 20px;
-}
-
-.c0 .c1 {
-  color: black;
-}
-
-@media (max-width:720px) {
-  .c0.artist-name {
-    margin-bottom: 5px;
-  }
-}
-
-<div
-          className="artist-name c0"
+        <div
+          className="artist-name c5"
         >
-          .c1 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 .c0 {
-  color: black;
-}
-
-<span
+          <span
             className="name"
           >
-            .c1 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 .c0 {
-  color: black;
-}
-
-<a
-              className="c0 c1"
+            <a
+              className="c6 c7"
               href="/artwork/fernando-botero"
             >
               Fernando Botero
             </a>
           </span>
         </div>
-        .c2 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0.artist-name {
-  margin-right: 20px;
-}
-
-.c0 .c1 {
-  color: black;
-}
-
-@media (max-width:720px) {
-  .c0.artist-name {
-    margin-bottom: 5px;
-  }
-}
-
-<div
-          className="c0"
+        <div
+          className="c5"
         >
-          .c1 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 .c0 {
-  color: black;
-}
-
-<span
+          <span
             className="title"
           >
-            .c1 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 .c0 {
-  color: black;
-}
-
-<a
-              className="c0 c1"
+            <a
+              className="c6 c7"
               href="/artwork/fernando-botero-nude-on-the-beach"
             >
               Nude on the Beach
@@ -583,17 +216,8 @@ exports[`renders an artwork caption properly 1`] = `
           >
             2000
           </span>
-          .c1 {
-  color: #999;
-  text-decoration: none;
-}
-
-.c0 .c0 {
-  color: black;
-}
-
-<a
-            className="c0 c1"
+          <a
+            className="c6 c7"
             href="/partner/gary-nader"
           >
             Gary Nader
@@ -602,26 +226,8 @@ exports[`renders an artwork caption properly 1`] = `
       </div>
     </div>
   </div>
-  .c0 {
-  margin-left: 20px;
-  white-space: nowrap;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c8"
   >
     2 of 10
   </div>
@@ -727,111 +333,19 @@ exports[`renders an image caption properly 1`] = `
 <div
   className="c0"
 >
-  .c1 {
-  display: none;
-}
-
-.c2 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c2 a {
-  color: black;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-@media (max-width:720px) {
-  .c1 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c1 span {
-    border-bottom: 1px solid black;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c1"
   >
-    .c0 {
-  display: none;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c0 span {
-    border-bottom: 1px solid black;
-  }
-}
-
-<div
-      className="fullscreen-viewer__caption-toggle c0"
+    <div
+      className="fullscreen-viewer__caption-toggle c2"
       onClick={undefined}
     >
       <span>
         Hide
       </span>
     </div>
-    .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 a {
-  color: black;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
-  }
-}
-
-<div
-      className="c0"
+    <div
+      className="c3"
       open={true}
     >
       <div
@@ -843,26 +357,8 @@ exports[`renders an image caption properly 1`] = `
       />
     </div>
   </div>
-  .c0 {
-  margin-left: 20px;
-  white-space: nowrap;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c4"
   >
     3 of 10
   </div>

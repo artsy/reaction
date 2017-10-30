@@ -55,41 +55,8 @@ exports[`renders a child even if a caption is provided 1`] = `
 <div
   className="c0"
 >
-  .c0 {
-  padding: 0;
-  width: 100%;
-  word-break: break-word;
-}
-
-.c0 > p,
-.c0 p,
-.c0 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-}
-
-.c0 > a,
-.c0 a {
-  color: #999;
-}
-
-.c0 > a:hover,
-.c0 a:hover {
-  color: black;
-}
-
-@media (max-width:600px) {
-  .c0 {
-    padding: 0px;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c1"
   >
     <div>
       Here is a passed child
@@ -153,41 +120,8 @@ exports[`renders a saved caption properly 1`] = `
 <div
   className="c0"
 >
-  .c0 {
-  padding: 0;
-  width: 100%;
-  word-break: break-word;
-}
-
-.c0 > p,
-.c0 p,
-.c0 .public-DraftEditorPlaceholder-root {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-}
-
-.c0 > a,
-.c0 a {
-  color: #999;
-}
-
-.c0 > a:hover,
-.c0 a:hover {
-  color: black;
-}
-
-@media (max-width:600px) {
-  .c0 {
-    padding: 0px;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c1"
   >
     <div
       dangerouslySetInnerHTML={

@@ -1,28 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
-.c5 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c4 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  color: #666666;
-  margin-top: 12px;
-  font-size: 15px;
-  text-align: left;
-  line-height: 20px;
-}
-
 .c0 {
   width: 100%;
 }
@@ -65,6 +43,28 @@ exports[`Artwork renders correctly 1`] = `
   right: 0;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  color: #666666;
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: left;
+  line-height: 20px;
+}
+
+.c4 {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c5 {
+  color: #333333;
+  text-decoration: none;
+}
+
 @media (min-width:49px) {
   .c1:hover .overlay-container.hovered {
     opacity: 1;
@@ -76,167 +76,38 @@ exports[`Artwork renders correctly 1`] = `
   className="c0"
   onClick={[Function]}
 >
-  .c0 {
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-}
-
-.c0:before {
-  content: '';
-  display: block;
-  padding-bottom: 100%;
-}
-
-.c0 .overlay-container {
-  -webkit-transition: opacity 0.25s;
-  transition: opacity 0.25s;
-}
-
-.c0 .overlay-container.hovered {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.c0 .overlay-container.selected {
-  opacity: 1;
-  visibility: visible;
-}
-
-.c1 {
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
-
-@media (min-width:49px) {
-  .c0:hover .overlay-container.hovered {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="c1"
   >
-    .c0 {
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
-
-<img
-      className="c0"
+    <img
+      className="c2"
       src="artsy.net/image-url"
     />
     <div
       className="overlay-container"
     />
   </div>
-  .c2 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c1 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c0 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  color: #666666;
-  margin-top: 12px;
-  font-size: 15px;
-  text-align: left;
-  line-height: 20px;
-}
-
-<div
-    className="c0"
+  <div
+    className="c3"
   >
-    .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-<div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-<div
-        className="c0"
+    <div>
+      <div
+        className="c4"
       >
-        .c0 {
-  color: #333333;
-  text-decoration: none;
-}
-
-<strong>
-          .c0 {
-  color: #333333;
-  text-decoration: none;
-}
-
-<a
-            className="c0"
+        <strong>
+          <a
+            className="c5"
             href={undefined}
           >
             Mikael Olson
           </a>
         </strong>
       </div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-<div
-        className="c0"
+      <div
+        className="c4"
       >
-        .c0 {
-  color: #333333;
-  text-decoration: none;
-}
-
-<a
-          className="c0"
+        <a
+          className="c5"
           href="/artwork/mikael-olson-some-kind-of-dinosaur"
         >
           <em>
@@ -245,28 +116,11 @@ exports[`Artwork renders correctly 1`] = `
           , 2015
         </a>
       </div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-<div
-        className="c0"
+      <div
+        className="c4"
       >
-        .c0 {
-  color: #333333;
-  text-decoration: none;
-}
-
-<a
-          className="c0"
+        <a
+          className="c5"
           href={undefined}
         >
           Gallery 1261
