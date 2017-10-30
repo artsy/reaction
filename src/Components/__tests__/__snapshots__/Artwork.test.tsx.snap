@@ -1,6 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
+.c5 {
+  color: #333333;
+  text-decoration: none;
+}
+
+.c4 {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  color: #666666;
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: left;
+  line-height: 20px;
+}
+
 .c0 {
   width: 100%;
 }
@@ -41,28 +63,6 @@ exports[`Artwork renders correctly 1`] = `
   top: 0;
   bottom: 0;
   right: 0;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  color: #666666;
-  margin-top: 12px;
-  font-size: 15px;
-  text-align: left;
-  line-height: 20px;
-}
-
-.c4 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c5 {
-  color: #333333;
-  text-decoration: none;
 }
 
 @media (min-width:49px) {

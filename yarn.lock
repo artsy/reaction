@@ -7674,7 +7674,7 @@ react-styled-flexboxgrid@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-styled-flexboxgrid/-/react-styled-flexboxgrid-2.0.0.tgz#931a0a80753890be9ca701dd78d58a4f01e0ec05"
 
-react-test-renderer@^15.4.2:
+react-test-renderer@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.2.tgz#d0333434fc2c438092696ca770da5ed48037efa8"
   dependencies:
