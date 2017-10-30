@@ -46,7 +46,7 @@ const adjustForCondensed = layout => {
   &:before {
     min-width: 8px;
     min-height: 8px;
-    margin: 0 5px 1px;
+    margin: 0 5px 1px 0;
   }`
     : ""
 }
