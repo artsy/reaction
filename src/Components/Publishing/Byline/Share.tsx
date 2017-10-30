@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
+import { pMedia } from "../../Helpers"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
@@ -70,6 +71,10 @@ export class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   white-space: nowrap;
+  line-height: 1em;
+  ${pMedia.xs`
+    margin-top: 15px;
+  `}
 `
 const IconWrapper = styled.a`
   text-decoration: none;
@@ -77,5 +82,8 @@ const IconWrapper = styled.a`
   padding-right: 7px;
   &:hover {
     opacity: 0.6;
+  }
+  &:first-child {
+    padding-left: 0;
   }
 `

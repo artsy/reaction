@@ -454,6 +454,12 @@ exports[`renders the canvas in slideshow layout 1`] = `
   margin: 15px 0 0 0;
 }
 
+@media (max-width:900px) {
+  .c2 {
+    max-height: 479.375px;
+  }
+}
+
 @media (max-width:1080px) {
   .c3.title-card {
     max-width: 1250px;

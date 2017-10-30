@@ -37,6 +37,7 @@ exports[`feature renders feature full header properly 1`] = `
 
 .c17 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c18 {
@@ -47,6 +48,10 @@ exports[`feature renders feature full header properly 1`] = `
 
 .c18:hover {
   opacity: 0.6;
+}
+
+.c18:first-child {
+  padding-left: 0;
 }
 
 .c14 {
@@ -61,11 +66,10 @@ exports[`feature renders feature full header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c3 {
@@ -266,6 +270,12 @@ exports[`feature renders feature full header properly 1`] = `
   .c15:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c17 {
+    margin-top: 15px;
   }
 }
 
@@ -543,6 +553,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 
 .c15 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c16 {
@@ -553,6 +564,10 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 
 .c16:hover {
   opacity: 0.6;
+}
+
+.c16:first-child {
+  padding-left: 0;
 }
 
 .c12 {
@@ -567,11 +582,10 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c3 {
@@ -762,6 +776,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   .c13:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c15 {
+    margin-top: 15px;
   }
 }
 
@@ -1020,6 +1040,7 @@ exports[`feature renders feature header with children properly 1`] = `
 
 .c17 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c18 {
@@ -1030,6 +1051,10 @@ exports[`feature renders feature header with children properly 1`] = `
 
 .c18:hover {
   opacity: 0.6;
+}
+
+.c18:first-child {
+  padding-left: 0;
 }
 
 .c14 {
@@ -1044,11 +1069,10 @@ exports[`feature renders feature header with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c3 {
@@ -1249,6 +1273,12 @@ exports[`feature renders feature header with children properly 1`] = `
   .c15:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c17 {
+    margin-top: 15px;
   }
 }
 
@@ -1534,6 +1564,7 @@ exports[`feature renders feature split header properly 1`] = `
 
 .c16 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c17 {
@@ -1544,6 +1575,10 @@ exports[`feature renders feature split header properly 1`] = `
 
 .c17:hover {
   opacity: 0.6;
+}
+
+.c17:first-child {
+  padding-left: 0;
 }
 
 .c13 {
@@ -1558,11 +1593,10 @@ exports[`feature renders feature split header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c6 {
@@ -1755,6 +1789,12 @@ exports[`feature renders feature split header properly 1`] = `
   .c14:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c16 {
+    margin-top: 15px;
   }
 }
 
@@ -2027,6 +2067,7 @@ exports[`feature renders feature text header properly 1`] = `
 
 .c14 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c15 {
@@ -2037,6 +2078,10 @@ exports[`feature renders feature text header properly 1`] = `
 
 .c15:hover {
   opacity: 0.6;
+}
+
+.c15:first-child {
+  padding-left: 0;
 }
 
 .c11 {
@@ -2051,11 +2096,10 @@ exports[`feature renders feature text header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c4 {
@@ -2247,6 +2291,12 @@ exports[`feature renders feature text header properly 1`] = `
   .c12:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c14 {
+    margin-top: 15px;
   }
 }
 
@@ -2539,6 +2589,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 
 .c21 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c22 {
@@ -2549,6 +2600,10 @@ exports[`feature renders superArticle full header properly 1`] = `
 
 .c22:hover {
   opacity: 0.6;
+}
+
+.c22:first-child {
+  padding-left: 0;
 }
 
 .c18 {
@@ -2563,11 +2618,10 @@ exports[`feature renders superArticle full header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c3 {
@@ -2789,6 +2843,12 @@ exports[`feature renders superArticle full header properly 1`] = `
   .c19:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c21 {
+    margin-top: 15px;
   }
 }
 

@@ -37,6 +37,7 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 .c7 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c8 {
@@ -47,6 +48,10 @@ exports[`Standard Header renders standard header properly 1`] = `
 
 .c8:hover {
   opacity: 0.6;
+}
+
+.c8:first-child {
+  padding-left: 0;
 }
 
 .c4 {
@@ -61,11 +66,10 @@ exports[`Standard Header renders standard header properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c0 {
@@ -134,6 +138,12 @@ exports[`Standard Header renders standard header properly 1`] = `
   .c5:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-top: 15px;
   }
 }
 
@@ -320,6 +330,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 
 .c7 {
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .c8 {
@@ -330,6 +341,10 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 
 .c8:hover {
   opacity: 0.6;
+}
+
+.c8:first-child {
+  padding-left: 0;
 }
 
 .c4 {
@@ -344,11 +359,10 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c0 {
@@ -417,6 +431,12 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   .c5:before {
     min-width: 8px;
     min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-top: 15px;
   }
 }
 

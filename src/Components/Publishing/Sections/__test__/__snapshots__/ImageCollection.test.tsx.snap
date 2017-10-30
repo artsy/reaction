@@ -217,7 +217,7 @@ exports[`renders a single image properly 1`] = `
                     >
                       <file__StyledTextLink
                         color="#999"
-                        href="/artwork/fernando-botero"
+                        href="/artist/fernando-botero"
                         underline={false}
                       >
                         Fernando Botero
@@ -548,7 +548,7 @@ exports[`renders properly 1`] = `
                     >
                       <file__StyledTextLink
                         color="#999"
-                        href="/artwork/fernando-botero"
+                        href="/artist/fernando-botero"
                         underline={false}
                       >
                         Fernando Botero
