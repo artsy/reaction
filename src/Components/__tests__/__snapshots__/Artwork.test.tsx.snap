@@ -1,28 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
-.c5 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c4 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  color: #666666;
-  margin-top: 12px;
-  font-size: 15px;
-  text-align: left;
-  line-height: 20px;
-}
-
 .c0 {
   width: 100%;
 }
@@ -63,6 +41,28 @@ exports[`Artwork renders correctly 1`] = `
   top: 0;
   bottom: 0;
   right: 0;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  color: #666666;
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: left;
+  line-height: 20px;
+}
+
+.c4 {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c5 {
+  color: #333333;
+  text-decoration: none;
 }
 
 @media (min-width:49px) {
@@ -143,19 +143,7 @@ exports[`Artwork renders correctly 1`] = `
       className="overlay-container"
     />
   </div>
-  .c2 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c1 {
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c0 {
+  .c0 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #666666;
@@ -165,32 +153,44 @@ exports[`Artwork renders correctly 1`] = `
   line-height: 20px;
 }
 
+.c1 {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c2 {
+  color: #333333;
+  text-decoration: none;
+}
+
 <div
     className="c0"
   >
-    .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
+    .c0 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.c1 {
+  color: #333333;
+  text-decoration: none;
 }
 
 <div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
+      .c0 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.c1 {
+  color: #333333;
+  text-decoration: none;
 }
 
 <div
@@ -215,16 +215,16 @@ exports[`Artwork renders correctly 1`] = `
           </a>
         </strong>
       </div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
+      .c0 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.c1 {
+  color: #333333;
+  text-decoration: none;
 }
 
 <div
@@ -245,16 +245,16 @@ exports[`Artwork renders correctly 1`] = `
           , 2015
         </a>
       </div>
-      .c1 {
-  color: #333333;
-  text-decoration: none;
-}
-
-.c0 {
+      .c0 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.c1 {
+  color: #333333;
+  text-decoration: none;
 }
 
 <div
