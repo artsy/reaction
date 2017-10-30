@@ -1,13 +1,12 @@
 import * as React from "react"
-import { createFragmentContainer, graphql } from "react-relay/compat"
+import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay/compat"
+import { SelectorStoreUpdater } from "relay-runtime"
 import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../../../Assets/Animations"
 import * as fonts from "../../../../Assets/Fonts"
 
 import Icon from "../../../Icon"
-
-import UpdateArtistFollowMutation from "./Mutations/UpdateArtistFollow"
 
 const anchor: StyledFunction<State & React.HTMLProps<HTMLInputElement>> = styled.a
 const Link = anchor`
@@ -46,7 +45,9 @@ export interface State {
   artist_id: string
 }
 
-type Props = React.HTMLProps<HTMLAnchorElement> & RelayProps
+interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
+  relay?: RelayProp
+}
 
 class ItemLink extends React.Component<Props, State> {
   state = {
@@ -56,15 +57,33 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   followArtist() {
-    // const mutation = new UpdateArtistFollowMutation(this.state)
-
-    // Relay.Store.commitUpdate(mutation, {
-    //   onFailure: this.followArtistFailed,
-    //   onSuccess: response => {
-    //     // do something
-    //   },
-    // })
     console.log("follow artist!")
+    const storeUpdater: SelectorStoreUpdater = (store, suggestedArtistData) => {
+      // Replace now followed artist in list with newly suggested artist
+    }
+
+    commitMutation(this.props.relay.environment, {
+      mutation: graphql`
+        mutation ItemLinkFollowArtistMutation($input: FollowArtistInput!) {
+          followArtist(input: $input) {
+            artist {
+              # Get related artist (not this field that’s currently used!)
+              artists(size: 1) {
+                name
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          artist_id: this.props.artist.id,
+          unfollow: false,
+        },
+      },
+      updater: storeUpdater,
+      optimisticUpdater: storeUpdater,
+    })
   }
 
   followArtistFailed() {
