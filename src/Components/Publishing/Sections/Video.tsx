@@ -155,7 +155,7 @@ const VideoContainer = Div`
         text-align: center;
         padding-bottom: 53px;
         max-width: 1200px;
-
+        margin: 0 auto;
         ${breakpoint.md`
           height: 450px;
         `}

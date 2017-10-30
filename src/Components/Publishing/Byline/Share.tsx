@@ -71,6 +71,7 @@ export class Share extends React.Component<ShareProps, null> {
 
 const ShareContainer = styled.div`
   white-space: nowrap;
+  line-height: 1em;
   ${pMedia.xs`
     margin-top: 15px;
   `}
