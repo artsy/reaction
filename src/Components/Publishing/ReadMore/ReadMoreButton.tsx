@@ -22,6 +22,7 @@ const ReadMoreButton = styled.div`
   border: 1px solid black;
   border-radius: 2px;
   ${Fonts.unica("s14", "medium")}
+  padding-top: 1px;
   &:hover {
     cursor: pointer;
     background-color: white;
