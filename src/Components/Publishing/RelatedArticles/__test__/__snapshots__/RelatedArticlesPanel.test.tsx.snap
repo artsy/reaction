@@ -53,52 +53,220 @@ exports[`renders the related articles panel 1`] = `
 <div
   className="c0"
 >
-  <div
-    className="c1"
+  .c0 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+<div
+    className="c0"
   >
     Related Stories
   </div>
-  <div
-    className="c2"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  margin-bottom: 10px;
+}
+
+.c2 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<div
+    className="c0"
   >
-    <a
-      className="c3"
+    .c0 {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<a
+      className="c0"
       href="/article/artsy-editorial-15-top-art-schools-united-states"
     >
-      <img
-        className="c4"
+      .c0 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+<img
+        className="c0"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=160&height=110&quality=95"
       />
-      <span
-        className="c5"
+      .c0 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<span
+        className="c0"
       >
         The 15 Top Art Schools in the United States
       </span>
     </a>
-    <a
-      className="c3"
+    .c0 {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<a
+      className="c0"
       href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
     >
-      <img
-        className="c4"
+      .c0 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+<img
+        className="c0"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=160&height=110&quality=95"
       />
-      <span
-        className="c5"
+      .c0 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<span
+        className="c0"
       >
         Four Years after Walter De Maria’s Death, His Final Work Is Complete
       </span>
     </a>
-    <a
-      className="c3"
+    .c0 {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<a
+      className="c0"
       href="/article/artsy-editorial-french-art-history-in-a-nutshell"
     >
-      <img
-        className="c4"
+      .c0 {
+  min-width: 80px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+<img
+        className="c0"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=160&height=110&quality=95"
       />
-      <span
-        className="c5"
+      .c0 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  color: black;
+}
+
+<span
+        className="c0"
       >
         French Art History in a Nutshell
       </span>

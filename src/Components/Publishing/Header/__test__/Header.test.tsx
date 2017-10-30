@@ -1,4 +1,4 @@
-import { shallow } from "enzyme"
+import { mount } from "enzyme"
 import "jest-styled-components"
 import _ from "lodash"
 import React from "react"
@@ -19,12 +19,12 @@ describe("Header", () => {
     const leadParagraphArticle = _.extend({}, ClassicArticle, {
       lead_paragraph: "<p>Lead paragraph</p>",
     })
-    const header = shallow(<Header article={leadParagraphArticle} />)
+    const header = mount(<Header article={leadParagraphArticle} />)
     expect(header.html()).toContain("Lead paragraph")
   })
 
   it("renders children on classic article", () => {
-    const header = shallow(
+    const header = mount(
       <Header article={ClassicArticle}>
         <div>Title Child</div>
         <div>Lead Paragraph Child</div>
@@ -35,13 +35,13 @@ describe("Header", () => {
   })
 
   it("renders vertical and title on standard article", () => {
-    const header = shallow(<Header article={StandardArticle} />)
+    const header = mount(<Header article={StandardArticle} />)
     expect(header.html()).toContain("Art Market")
-    expect(header.html()).toContain("New York&#x27;s Next Art District")
+    expect(header.html()).toContain("New York's Next Art District")
   })
 
   it("renders children on standard article", () => {
-    const header = shallow(
+    const header = mount(
       <Header article={MissingVerticalStandardArticle}>
         <div>Vertical Child</div>
         <div>Title Child</div>
@@ -52,7 +52,7 @@ describe("Header", () => {
   })
 
   it("renders vertical, title, deck, and image on standard article", () => {
-    const header = shallow(<Header article={FeatureArticle} />)
+    const header = mount(<Header article={FeatureArticle} />)
     expect(header.html()).toContain("Creativity")
     expect(header.html()).toContain("What’s the Path to Winning an Art Prize?")
     expect(header.html()).toContain("Lorem Ipsum")
@@ -65,7 +65,7 @@ describe("Header", () => {
     const MissingVerticalFeatureArticle = _.extend({}, FeatureArticle, {
       vertical: null,
     })
-    const header = shallow(
+    const header = mount(
       <Header article={MissingVerticalFeatureArticle}>
         <div>Vertical Child</div>
         <div>Title Child</div>

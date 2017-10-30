@@ -96,21 +96,116 @@ exports[`renders a long caption properly 1`] = `
 <div
   className="article-image"
 >
-  <div
+  .c4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0 {
+  position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
+}
+
+.c1 {
+  display: block;
+}
+
+@media (max-width:720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
+<div
     className="c0"
   >
-    <img
+    .c0 {
+  display: block;
+}
+
+<img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="c0"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
+    .c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c2:hover {
+  opacity: 1;
+}
+
+.c1 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c0 {
+  opacity: 1;
+}
+
+@media (max-width:720px) {
+  .c0 .c0 {
+    opacity: 1;
+  }
+}
+
+<div
+      className="c0 c1"
     >
-      <div
-        className="c4"
+      .c0 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover {
+  opacity: 1;
+}
+
+<div
+        className="c0"
         onClick={[Function]}
       >
         <svg
@@ -161,11 +256,95 @@ exports[`renders a long caption properly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="c5"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c1 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c1 > p,
+.c1 p,
+.c1 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c1 > a,
+.c1 a {
+  color: #999;
+}
+
+.c1 > a:hover,
+.c1 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    padding: 0px;
+  }
+}
+
+<div
+    className="c0"
   >
-    <div
-      className="c6"
+    .c0 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c0 > p,
+.c0 p,
+.c0 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c0 > a,
+.c0 a {
+  color: #999;
+}
+
+.c0 > a:hover,
+.c0 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px;
+  }
+}
+
+<div
+      className="c0"
     >
       <div
         dangerouslySetInnerHTML={
@@ -275,21 +454,116 @@ exports[`renders a react child as caption properly 1`] = `
 <div
   className="article-image"
 >
-  <div
+  .c4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0 {
+  position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
+}
+
+.c1 {
+  display: block;
+}
+
+@media (max-width:720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
+<div
     className="c0"
   >
-    <img
+    .c0 {
+  display: block;
+}
+
+<img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="c0"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
+    .c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c2:hover {
+  opacity: 1;
+}
+
+.c1 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c0 {
+  opacity: 1;
+}
+
+@media (max-width:720px) {
+  .c0 .c0 {
+    opacity: 1;
+  }
+}
+
+<div
+      className="c0 c1"
     >
-      <div
-        className="c4"
+      .c0 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover {
+  opacity: 1;
+}
+
+<div
+        className="c0"
         onClick={[Function]}
       >
         <svg
@@ -340,11 +614,95 @@ exports[`renders a react child as caption properly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="c5"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c1 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c1 > p,
+.c1 p,
+.c1 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c1 > a,
+.c1 a {
+  color: #999;
+}
+
+.c1 > a:hover,
+.c1 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    padding: 0px;
+  }
+}
+
+<div
+    className="c0"
   >
-    <div
-      className="c6"
+    .c0 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c0 > p,
+.c0 p,
+.c0 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c0 > a,
+.c0 a {
+  color: #999;
+}
+
+.c0 > a:hover,
+.c0 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px;
+  }
+}
+
+<div
+      className="c0"
     >
       <div>
         <p>
@@ -452,21 +810,116 @@ exports[`renders properly 1`] = `
 <div
   className="article-image"
 >
-  <div
+  .c4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0 {
+  position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
+}
+
+.c1 {
+  display: block;
+}
+
+@media (max-width:720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
+<div
     className="c0"
   >
-    <img
+    .c0 {
+  display: block;
+}
+
+<img
       alt="Photo by Adam Kuehl for Artsy."
-      className="c1"
+      className="c0"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
       width="100%"
     />
-    <div
-      className="c2 c3"
+    .c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c2:hover {
+  opacity: 1;
+}
+
+.c1 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c0 {
+  opacity: 1;
+}
+
+@media (max-width:720px) {
+  .c0 .c0 {
+    opacity: 1;
+  }
+}
+
+<div
+      className="c0 c1"
     >
-      <div
-        className="c4"
+      .c0 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover {
+  opacity: 1;
+}
+
+<div
+        className="c0"
         onClick={[Function]}
       >
         <svg
@@ -517,11 +970,95 @@ exports[`renders properly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="c5"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c1 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c1 > p,
+.c1 p,
+.c1 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c1 > a,
+.c1 a {
+  color: #999;
+}
+
+.c1 > a:hover,
+.c1 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    padding: 0px;
+  }
+}
+
+<div
+    className="c0"
   >
-    <div
-      className="c6"
+    .c0 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c0 > p,
+.c0 p,
+.c0 .public-DraftEditorPlaceholder-root {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c0 > a,
+.c0 a {
+  color: #999;
+}
+
+.c0 > a:hover,
+.c0 a:hover {
+  color: black;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0px;
+  }
+}
+
+<div
+      className="c0"
     >
       <div
         dangerouslySetInnerHTML={

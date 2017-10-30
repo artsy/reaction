@@ -18,8 +18,18 @@ exports[`renders a saved caption properly 1`] = `
 <div
   className="c0"
 >
-  <a
-    className="c1"
+  .c0 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c0:hover {
+  opacity: 0.6;
+}
+
+<a
+    className="c0"
     href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils"
     onClick={[Function]}
     target="_blank"
@@ -44,8 +54,18 @@ exports[`renders a saved caption properly 1`] = `
       </g>
     </svg>
   </a>
-  <a
-    className="c1"
+  .c0 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c0:hover {
+  opacity: 0.6;
+}
+
+<a
+    className="c0"
     href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils&text=The Point of Pencils&url=http%3A%2F%2Fartsy.net%2Farticle%2Fpoint-pencils&via=artsy"
     onClick={[Function]}
     target="_blank"
@@ -70,8 +90,18 @@ exports[`renders a saved caption properly 1`] = `
       </g>
     </svg>
   </a>
-  <a
-    className="c1"
+  .c0 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c0:hover {
+  opacity: 0.6;
+}
+
+<a
+    className="c0"
     href="mailto:?subject=The Point of Pencils&body=Check out The Point of Pencils on Artsy: http://artsy.net/article/point-pencils"
     onClick={[Function]}
   >

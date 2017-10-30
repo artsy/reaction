@@ -1,5 +1,5 @@
 import React from "react"
-import * as TestUtils from "react-dom/test-utils"
+import TestUtils from "react-dom/test-utils"
 import renderer from "react-test-renderer"
 
 jest.mock("isomorphic-fetch")

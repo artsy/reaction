@@ -91,25 +91,165 @@ exports[`renders properly 1`] = `
 <div
   className="display-artwork"
 >
-  <a
+  .c5 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c5:hover {
+  opacity: 1;
+}
+
+.c4 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c1:hover .c3 {
+  opacity: 1;
+}
+
+.c2 {
+  display: block;
+}
+
+.c0 {
+  text-decoration: none;
+}
+
+@media (max-width:720px) {
+  .c1 .c3 {
+    opacity: 1;
+  }
+}
+
+<a
     className="c0"
     href="/artwork/fernando-botero-nude-on-the-beach"
   >
-    <div
-      className="c1"
+    .c4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c4:hover {
+  opacity: 1;
+}
+
+.c3 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0 {
+  position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
+}
+
+.c1 {
+  display: block;
+}
+
+@media (max-width:720px) {
+  .c0 .c2 {
+    opacity: 1;
+  }
+}
+
+<div
+      className="c0"
     >
-      <img
+      .c0 {
+  display: block;
+}
+
+<img
         alt="Nude on the Beach"
-        className="display-artwork__image c2"
+        className="display-artwork__image c0"
         height="auto"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
         width="100%"
       />
-      <div
-        className="c3 c4"
+      .c2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c2:hover {
+  opacity: 1;
+}
+
+.c1 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c0 {
+  opacity: 1;
+}
+
+@media (max-width:720px) {
+  .c0 .c0 {
+    opacity: 1;
+  }
+}
+
+<div
+        className="c0 c1"
       >
-        <div
-          className="c5"
+        .c0 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover {
+  opacity: 1;
+}
+
+<div
+          className="c0"
           onClick={[Function]}
         >
           <svg
@@ -161,55 +301,113 @@ exports[`renders properly 1`] = `
       </div>
     </div>
   </a>
-  <div
-    className="display-artwork__caption c6"
+  .c0 {
+  padding: 0;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c0 .title {
+  font-family: Unica77LLWebItalic , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c1 {
+  color: #999;
+}
+
+.c1 .name:after {
+  content: ', ';
+}
+
+.c1 .title:after {
+  content: ', ';
+}
+
+.c1 .date:after {
+  content: ', ';
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0 10px;
+  }
+}
+
+<div
+    className="display-artwork__caption c0"
   >
-    <div
-      className="c7"
+    .c0 {
+  color: #999;
+}
+
+.c0 .name:after {
+  content: ', ';
+}
+
+.c0 .title:after {
+  content: ', ';
+}
+
+.c0 .date:after {
+  content: ', ';
+}
+
+<div
+      className="c0"
     >
       <div
         dangerouslySetInnerHTML={
           Object {
             "__html": <span>
               <span
-                  className="artist-name"
+                className="artist-name"
               >
-                  <span
-                      className="name"
-                  >
-                      <file__StyledTextLink
-                          color="#999"
-                          href="/artwork/fernando-botero"
-                          underline={false}
-                      >
-                          Fernando Botero
-                      </file__StyledTextLink>
-                  </span>
-              </span>
-              <span
-                  className="title"
-              >
+                <span
+                  className="name"
+                >
                   <file__StyledTextLink
-                      color="#999"
-                      href="/artwork/fernando-botero-nude-on-the-beach"
-                      underline={false}
+                    color="#999"
+                    href="/artwork/fernando-botero"
+                    underline={false}
                   >
-                      Nude on the Beach
+                    Fernando Botero
                   </file__StyledTextLink>
+                </span>
               </span>
               <span
-                  className="date"
+                className="title"
               >
-                  2000
+                <file__StyledTextLink
+                  color="#999"
+                  href="/artwork/fernando-botero-nude-on-the-beach"
+                  underline={false}
+                >
+                  Nude on the Beach
+                </file__StyledTextLink>
+              </span>
+              <span
+                className="date"
+              >
+                2000
               </span>
               <file__StyledTextLink
-                  color="#999"
-                  href="/partner/gary-nader"
-                  underline={false}
+                color="#999"
+                href="/partner/gary-nader"
+                underline={false}
               >
-                  Gary Nader
+                Gary Nader
               </file__StyledTextLink>
-          </span>,
+            </span>,
           }
         }
       />
