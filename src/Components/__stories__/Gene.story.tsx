@@ -1,22 +1,32 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { graphql, QueryRenderer } from "react-relay/compat"
 
-import GeneContent from "../Gene"
+import Gene from "../Gene"
 import ArtistRow from "../Gene/ArtistRow"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"
-import ArtistQueryConfig from "../../Relay/Queries/Artist"
-import GeneQueryConfig from "../../Relay/Queries/Gene"
 
 function GeneExample(props: { geneID: string }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+  injectNetworkLayer(artsyNetworkLayer())
   return (
     <Artsy.ContextProvider>
-      <Relay.RootContainer Component={GeneContent} route={new GeneQueryConfig({ geneID: props.geneID })} />
+      <QueryRenderer
+        environment={Store as any}
+        query={graphql`
+          query GeneQuery($geneID: String!) {
+            gene(id: $geneID) {
+              ...Gene_gene
+            }
+          }
+        `}
+        variables={{ artistID: props.geneID }}
+        render={readyState => readyState.props && <Gene {...readyState.props as any} />}
+      />
     </Artsy.ContextProvider>
   )
 }
@@ -24,10 +34,21 @@ function GeneExample(props: { geneID: string }) {
 function ArtistExample(props: { artistID: string }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+  injectNetworkLayer(artsyNetworkLayer())
   return (
     <Artsy.ContextProvider>
-      <Relay.RootContainer Component={ArtistRow} route={new ArtistQueryConfig({ artistID: props.artistID })} />
+      <QueryRenderer
+        environment={Store as any}
+        query={graphql`
+          query GeneArtistRowQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...ArtistRow_artist
+            }
+          }
+        `}
+        variables={{ artistID: props.artistID }}
+        render={readyState => readyState.props && <ArtistRow {...readyState.props as any} />}
+      />
     </Artsy.ContextProvider>
   )
 }

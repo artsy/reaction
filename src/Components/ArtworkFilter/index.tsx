@@ -55,7 +55,7 @@ class ArtworkFilter extends React.Component<Props, State> {
 
   setForSale() {
     const isForSale = !this.state.for_sale
-    const forSaleVar = isForSale ? true : null
+    // const forSaleVar = isForSale ? true : null
 
     this.setState({
       for_sale: isForSale,

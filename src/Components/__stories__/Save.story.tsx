@@ -1,20 +1,31 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { graphql, QueryRenderer } from "react-relay/compat"
 
-import Artwork from "../Artwork/GridItem"
+import GridItem from "../Artwork/GridItem"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"
-import ArtworkQueryConfig from "../../Relay/Queries/Artwork"
 
 function ArtworkExample(props: { artworkID: string; user: User }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
+  injectNetworkLayer(artsyNetworkLayer(props.user))
   return (
     <Artsy.ContextProvider currentUser={props.user}>
-      <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
+      <QueryRenderer
+        environment={Store as any}
+        query={graphql`
+          query SaveArtworkQuery($artworkID: String!) {
+            artwork(id: $artworkID) {
+              ...GridItem_artwork
+            }
+          }
+        `}
+        variables={{ artworkID: props.artworkID }}
+        render={readyState => readyState.props && <GridItem {...readyState.props as any} />}
+      />
     </Artsy.ContextProvider>
   )
 }

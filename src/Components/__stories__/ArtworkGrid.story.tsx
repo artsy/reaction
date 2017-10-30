@@ -1,43 +1,31 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { graphql, QueryRenderer } from "react-relay/compat"
 
 import ArtworkGrid from "../ArtworkGrid"
 
 import { artsyNetworkLayer } from "../../Relay/config"
-import ArtistQueryConfig from "../../Relay/Queries/Artist"
 import * as Artsy from "../Artsy"
 
-export class ArtistArtworks extends React.Component<RelayProps, null> {
-  render() {
-    return <ArtworkGrid artworks={this.props.artist.artworks as any} />
-  }
-}
-
-const ArtistArtworksContainer = Relay.createContainer(ArtistArtworks, {
-  fragments: {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        artworks: artworks_connection(first: 10) {
-          ${ArtworkGrid.getFragment("artworks")}
-        }
-      }
-    `,
-  },
-})
-
-interface RelayProps {
-  artist: {
-    artworks: Array<any | null> | null
-  }
-}
-
 function GridExample(props: { artistID: string }) {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Relay.RootContainer
-      Component={ArtistArtworksContainer}
-      route={new ArtistQueryConfig({ artistID: props.artistID })}
+    <QueryRenderer
+      environment={Store as any}
+      query={graphql`
+        query ArtworkGridQuery($artistID: String!) {
+          artist(id: $artistID) {
+            artworks: artworks_connection(first: 10) {
+              ...ArtworkGrid_artworks
+            }
+          }
+        }
+      `}
+      variables={{ artistID: props.artistID }}
+      render={readyState => {
+        return readyState.props && <ArtworkGrid {...readyState.props.artist as any} />
+      }}
     />
   )
 }

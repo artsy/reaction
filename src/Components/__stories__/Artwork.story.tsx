@@ -1,15 +1,28 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { graphql, QueryRenderer } from "react-relay/compat"
 
 import Artwork from "../Artwork"
 
 import { artsyNetworkLayer } from "../../Relay/config"
-import ArtworkQueryConfig from "../../Relay/Queries/Artwork"
 
 function ArtworkExample(props: { artworkID: string }) {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
+  injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <QueryRenderer
+      environment={Store as any}
+      query={graphql`
+        query ArtworkQuery($artworkID: String!) {
+          artwork(id: $artworkID) {
+            ...Artwork_artwork
+          }
+        }
+      `}
+      variables={{ artworkID: props.artworkID }}
+      render={readyState => readyState.props && <Artwork {...readyState.props as any} />}
+    />
+  )
 }
 
 storiesOf("Components/Artwork/Singular", module)

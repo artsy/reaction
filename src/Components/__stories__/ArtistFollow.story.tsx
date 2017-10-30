@@ -1,20 +1,31 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { graphql, QueryRenderer } from "react-relay/compat"
 
-import FollowButton from "../Follow"
+import Follow from "../Follow"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"
-import ArtistQueryConfig from "../../Relay/Queries/Artist"
 
 function ArtistExample(props: { artistID: string; user: User }) {
   // TODO This is going to change with the stubbed local MP schema anyways.
   // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
+  injectNetworkLayer(artsyNetworkLayer(props.user))
   return (
     <Artsy.ContextProvider currentUser={props.user}>
-      <Relay.RootContainer Component={FollowButton} route={new ArtistQueryConfig({ artistID: props.artistID })} />
+      <QueryRenderer
+        environment={Store as any}
+        query={graphql`
+          query ArtistFollowQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...Follow_artist
+            }
+          }
+        `}
+        variables={{ artistID: props.artistID }}
+        render={readyState => readyState.props && <Follow {...readyState.props as any} />}
+      />
     </Artsy.ContextProvider>
   )
 }

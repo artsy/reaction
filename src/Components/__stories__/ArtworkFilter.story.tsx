@@ -1,12 +1,12 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import * as Relay from "react-relay/classic"
+import { injectNetworkLayer, Store } from "react-relay/classic"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay/compat"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"
-import FilterArtworksQueryConfig from "../../Relay/Queries/FilterArtworks"
 
-import ArtworksFilter from "../ArtworkFilter"
+import ArtworkFilter from "../ArtworkFilter"
 import Dropdown from "../ArtworkFilter/Dropdown"
 import TotalCount from "../ArtworkFilter/TotalCount"
 
@@ -44,23 +44,19 @@ class FilterArtworksDropdown extends React.Component<DropdownRelayProps, FilterA
   }
 }
 
-const FilterArtworksDropdownContainer = Relay.createContainer(FilterArtworksDropdown, {
-  fragments: {
-    filter_artworks: () => Relay.QL`
-      fragment on Viewer {
-        filter_artworks(
-          aggregations: [MEDIUM, GALLERY],
-          artist_id: "christopher-williams"
-        ) {
-          aggregations {
-            slice
-            ${Dropdown.getFragment("aggregation")}
-          }
+const FilterArtworksDropdownContainer = createFragmentContainer(
+  FilterArtworksDropdown,
+  graphql`
+    fragment ArtworkFilter_filter_artworks on Viewer {
+      filter_artworks(aggregations: [MEDIUM, GALLERY], artist_id: "christopher-williams") {
+        aggregations {
+          slice
+          ...Dropdown_aggregation
         }
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface DropdownRelayProps {
   filter_artworks: {
@@ -72,52 +68,70 @@ interface DropdownRelayProps {
   } | null
 }
 
-class FilterArtworksTotalCount extends React.Component<TotalCountRelayProps, null> {
-  render() {
-    return <TotalCount filter_artworks={this.props.filter_artworks.filter_artworks} />
-  }
-}
-
-const FilterArtworksTotalCountContainer = Relay.createContainer(FilterArtworksTotalCount, {
-  fragments: {
-    filter_artworks: () => Relay.QL`
-      fragment on Viewer {
-        filter_artworks(
-          aggregations: [TOTAL],
-          artist_id: "christopher-williams"
-        ) {
-          ${TotalCount.getFragment("filter_artworks")}
-        }
-      }
-    `,
-  },
-})
-
-interface TotalCountRelayProps {
-  filter_artworks: {
-    filter_artworks: any
-  } | null
-}
-
 function FilterArtworksDropdownExample() {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={FilterArtworksDropdownContainer} route={new FilterArtworksQueryConfig()} />
+  injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <QueryRenderer
+      environment={Store as any}
+      query={graphql`
+        query ArtworkFilterDropdownExampleQuery {
+          viewer {
+            ...ArtworkFilter_filter_artworks
+          }
+        }
+      `}
+      variables={{}}
+      render={readyState => {
+        return readyState.props && <FilterArtworksDropdownContainer {...readyState.props as any} />
+      }}
+    />
+  )
 }
 
 function FilterArtworksTotalCountExample() {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={FilterArtworksTotalCountContainer} route={new FilterArtworksQueryConfig()} />
+  injectNetworkLayer(artsyNetworkLayer())
+  return (
+    <QueryRenderer
+      environment={Store as any}
+      query={graphql`
+        query ArtworkFilterTotalCountExampleQuery {
+          viewer {
+            filter_artworks(aggregations: [TOTAL], artist_id: "christopher-williams") {
+              ...TotalCount_filter_artworks
+            }
+          }
+        }
+      `}
+      variables={{}}
+      render={readyState => {
+        return readyState.props && <TotalCount {...readyState.props.viewer as any} />
+      }}
+    />
+  )
 }
 
 function FilterArtworksExample() {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
+  injectNetworkLayer(artsyNetworkLayer())
   const user = {
     id: "some-id",
     accessToken: "some-token",
   } as User
   return (
     <Artsy.ContextProvider currentUser={user}>
-      <Relay.RootContainer Component={ArtworksFilter} route={new FilterArtworksQueryConfig()} />
+      <QueryRenderer
+        environment={Store as any}
+        query={graphql`
+          query ArtworkFilterExampleQuery {
+            viewer {
+              ...ArtworkFilter_filter_artworks
+            }
+          }
+        `}
+        variables={{}}
+        render={readyState => {
+          return readyState.props && <ArtworkFilter {...readyState.props as any} />
+        }}
+      />
     </Artsy.ContextProvider>
   )
 }
