@@ -46,7 +46,6 @@ class ArtworkFilter extends React.Component<Props, State> {
     if (!this.state.loading && this.props.viewer.filter_artworks.artworks.pageInfo.hasNextPage) {
       this.setState({ loading: true }, () => {
         this.props.relay.loadMore(PageSize, error => {
-          console.log(error)
           this.setState({ loading: false })
         })
       })

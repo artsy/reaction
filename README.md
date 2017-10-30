@@ -25,13 +25,8 @@
 
 -   Development of components happen in [storybooks](https://getstorybook.io):
 
-          $ yarn storybook
-          $ open http://localhost:9001/
-
--   To run the node server and browse available apps:
-
           $ yarn start
-          $ open http://localhost:3000/
+          $ open http://localhost:9001/
 
 -   Run the tests:
 
@@ -47,10 +42,6 @@
 -   After updating components, be sure to deploy a new demo (sharing is caring!):
 
           $ yarn deploy-storybook
-
--   After updating a Relay query fragment, be sure to update the typings for it:
-
-          $ yarn relay2ts
 
 -   When using new changes in metaphysics’ schema, be sure to update the local schema copy:
 
