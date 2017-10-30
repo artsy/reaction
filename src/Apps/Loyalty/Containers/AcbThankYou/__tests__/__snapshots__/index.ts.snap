@@ -2,55 +2,55 @@
 
 exports[`ACB Thank You renders the snapshot 1`] = `
 <div
-  className="file__Container-s15134u5-0 dJEzwB"
+  className="file__Container-q7pn8y-0 iVHueY"
 >
   <div
-    className="file__Nav-s3a2xky-0 jFOBxo"
+    className="file__Nav-s1u3mk74-0 eyFpUf"
   >
     <a
-      className="file__NavIcon-s3a2xky-1 iuKRRV"
+      className="file__NavIcon-s1u3mk74-1 fNrbYg"
       href={undefined}
     >
       <div
-        className="file-s1p6nknl-0 fIydph"
+        className="file-s1c6rdye-0 kdeDrI"
         style={undefined}
       >
         
       </div>
     </a>
     <a
-      className="file__StyledLink-bkdmoh-0 kRXfDa"
+      className="file__StyledLink-lessph-0 dOrLNT"
       href="/"
     >
       Back To Artsy
     </a>
   </div>
   <div
-    className="file__Section-s15134u5-1 bQNJbm"
+    className="file__Section-q7pn8y-1 coTmhk"
   >
     <p
-      className="file__Text-s1qz329q-0 bVfXSh"
+      className="file__Text-s1c2dxzg-0 jnzqSX"
     >
       EARLY ACCESS
     </p>
   </div>
   <div
-    className="file__StyledTitle-ujwgso-0 jdYgqZ"
+    className="file__StyledTitle-s1hq9j8q-0 dyBmig"
     color="inherit"
   >
     Artsy Collector Loyalty Program
   </div>
   <div
-    className="file__Section-s15134u5-1 bQNJbm"
+    className="file__Section-q7pn8y-1 coTmhk"
   >
     <p
-      className="file__Text-s1qz329q-0 jtAMIH"
+      className="file__Text-s1c2dxzg-0 KnAET"
     >
       Thank you for your interest in the program.
       <br />
       Have questions? Get in touch:  
       <a
-        className="file__StyledTextLink-s1973ep5-0 cqobPp"
+        className="file__StyledTextLink-s1bp9p6w-0 fAxtkq"
         href="mailto:loyalty@artsy.net"
       >
         loyalty@artsy.net
@@ -58,10 +58,10 @@ exports[`ACB Thank You renders the snapshot 1`] = `
     </p>
   </div>
   <div
-    className="file__ButtonWrapper-s15134u5-2 ksuehy"
+    className="file__ButtonWrapper-q7pn8y-2 fXDTxB"
   >
     <a
-      className="file__InvertedButton-v41jhc-0 iFBGcT file__StyledButton-s12zbojh-0 irXAmg"
+      className="file__InvertedButton-v41jhc-0 iFBGcT file__StyledButton-s369tly-0 lbVfPC"
       href="/"
     >
       <span>

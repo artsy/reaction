@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
-import * as Relay from "react-relay"
+import React from "react"
+import Relay from "react-relay"
 
 import * as Artsy from "../../Components/Artsy"
 import { artsyNetworkLayer } from "../../Relay/config"

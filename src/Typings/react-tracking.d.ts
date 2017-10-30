@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "react-tracking" {
-  import * as React from "react"
+  import React from "react"
 
   export interface TrackingProp {
     trackEvent: ({}) => any

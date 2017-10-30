@@ -28,6 +28,7 @@ export { IconImageSet } from "./Icon/IconImageSet"
 export { IconLayoutFullscreen } from "./Icon/IconLayoutFullscreen"
 export { IconLayoutSplit } from "./Icon/IconLayoutSplit"
 export { IconLayoutText } from "./Icon/IconLayoutText"
+export { IconLayoutBasic } from "./Icon/IconLayoutBasic"
 export { IconRemove } from "./Icon/IconRemove"
 
 // Test Fixtures

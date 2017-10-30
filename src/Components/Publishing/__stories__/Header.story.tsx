@@ -1,9 +1,16 @@
 import { storiesOf } from "@storybook/react"
-import * as _ from "lodash"
-import * as React from "react"
-import { ClassicArticle, FeatureArticle, StandardArticle, SuperArticle } from "../Fixtures/Articles"
+import _ from "lodash"
+import React from "react"
 import { HeroSections } from "../Fixtures/Components"
 import { Header } from "../Header/Header"
+
+import {
+  BasicArticle,
+  ClassicArticle,
+  FeatureArticle,
+  StandardArticle,
+  SuperArticle
+} from "../Fixtures/Articles"
 
 storiesOf("Publishing/Headers", module)
   .add("Classic Header", () => {
@@ -32,6 +39,32 @@ storiesOf("Publishing/Headers", module)
             <div>Child 0: Vertical</div>
             <div>Child 1: Title</div>
           </Header>
+        </div>
+      </div>
+    )
+  })
+  .add("Feature Header - Basic, without Embed", () => {
+    const article = _.clone(BasicArticle)
+    article.hero_section.url = false
+
+    return (
+      <div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header
+            article={BasicArticle} />
+        </div>
+      </div>
+    )
+  })
+  .add("Feature Header - Basic, with Embed", () => {
+    const article = _.clone(BasicArticle)
+    article.hero_section.url = 'https://www.youtube.com/watch?v=ENISCG2a15g'
+
+    return (
+      <div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header
+            article={BasicArticle} />
         </div>
       </div>
     )
@@ -90,6 +123,7 @@ storiesOf("Publishing/Headers", module)
   })
   .add("Feature Header - SuperArticle", () => {
     const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
+
     return (
       <div style={{ width: "100%", height: "100vh", position: "relative" }}>
         <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />

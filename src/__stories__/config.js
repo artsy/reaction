@@ -9,8 +9,6 @@ function loadStories() {
 configure(loadStories, module)
 Events.onEvent(data => console.log("Tracked event", data))
 
-import { setOptions } from "@storybook/addon-options"
-
 setOptions({
   name: "Reaction",
   url: "http://artsy.github.io/reaction",

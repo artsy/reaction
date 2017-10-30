@@ -1,6 +1,6 @@
-import * as React from "react"
-import * as TestUtils from "react-dom/test-utils"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import TestUtils from "react-dom/test-utils"
+import renderer from "react-test-renderer"
 
 jest.mock("isomorphic-fetch")
 const fetch = require("isomorphic-fetch").default

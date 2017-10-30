@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { articleFullHref } from "../Constants"
 import { Author, Date } from "./AuthorDate"
@@ -51,5 +51,6 @@ const BylineContainer = Div`
   display: flex;
   flex-wrap: wrap;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  text-align: center;
 `

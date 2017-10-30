@@ -1,8 +1,8 @@
-import * as React from "react"
+import React from "react"
 import { render } from "react-dom"
 import Login from "./index"
 
-import * as sharify from "sharify"
+import sharify from "sharify"
 import { LoginResponseLocalData } from "../../Types"
 
 const data = sharify.data as LoginResponseLocalData

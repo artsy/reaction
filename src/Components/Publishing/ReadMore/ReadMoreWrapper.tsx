@@ -1,6 +1,6 @@
 import { find } from "lodash"
 import React from "react"
-import * as ReactDOM from "react-dom"
+import ReactDOM from "react-dom"
 
 interface ReadMoreWrapperProps {
   isTruncated: boolean

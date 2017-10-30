@@ -1,5 +1,5 @@
 import { find } from "lodash"
-import * as React from "react"
+import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
@@ -102,8 +102,6 @@ function renderImages(images, dimensions, gutter, sectionLayout, width) {
 const ImageCollectionContainer = styled.div`
   display: flex;
   width: 100%;
-
-  // TODO: Follow up on https://github.com/artsy/publishing/issues/80#issuecomment-338055364
   justify-content: center;
 
   ${pMedia.xs`

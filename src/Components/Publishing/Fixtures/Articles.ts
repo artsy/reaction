@@ -374,6 +374,25 @@ export const StandardArticle: ArticleData = {
   ],
 }
 
+export const BasicArticle: ArticleData = {
+  ...StandardArticle,
+  layout: 'feature',
+  lead_paragraph: "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+  title: '9 Famous Artists’ Studios You Can Visit, from Jackson Pollock to Barbara Hepworth',
+  contributing_authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck: "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+  },
+}
+
 export const FeatureArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
   keywords: ["Inspiration", "Casey Lesser"],

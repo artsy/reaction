@@ -72,16 +72,15 @@ export class Share extends React.Component<ShareProps, null> {
 const ShareContainer = styled.div`
   display: flex;
   margin: 5px 0 4px;
+  white-space: nowrap;
   ${pMedia.xs`
     margin-top: 15px;
   `}
 `
 const IconWrapper = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
   text-decoration: none;
-  margin-right: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
   &:hover {
     opacity: 0.6;
   }

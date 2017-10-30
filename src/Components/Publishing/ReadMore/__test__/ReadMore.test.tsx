@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { extend } from "lodash"
-import * as React from "react"
+import React from "react"
 import { StandardArticle } from "../../Fixtures/Articles"
 import { Sections } from "../../Sections/Sections"
 import { ReadMoreWrapper } from "../ReadMoreWrapper"

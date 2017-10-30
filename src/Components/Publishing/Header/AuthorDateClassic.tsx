@@ -1,5 +1,5 @@
 import moment from "moment-timezone"
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { Fonts } from "../Fonts"
 

@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as Relay from "react-relay"
+import React from "react"
+import Relay from "react-relay"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
@@ -27,7 +27,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
   }
 }
 
-export const StyledMetadata = styled(ArtworkMetadata)`
+export const StyledMetadata = styled(ArtworkMetadata) `
     ${fonts.secondary.style}
     color: ${colors.graySemibold};
     margin-top: 12px;
