@@ -212,8 +212,13 @@ exports[`renders a single image properly 1`] = `
                   <span
                       className="artist-name"
                   >
-                      <span
-                          className="name"
+                    <span
+                      className="name"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artist/fernando-botero"
+                        underline={false}
                       >
                           <file__StyledTextLink
                               color="#999"
@@ -543,8 +548,13 @@ exports[`renders properly 1`] = `
                   <span
                       className="artist-name"
                   >
-                      <span
-                          className="name"
+                    <span
+                      className="name"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artist/fernando-botero"
+                        underline={false}
                       >
                           <file__StyledTextLink
                               color="#999"

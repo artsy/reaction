@@ -38,7 +38,7 @@ exports[`renders the related articles canvas 1`] = `
 .c10:before {
   min-width: 8px;
   min-height: 8px;
-  margin: 0 5px 1px;
+  margin: 0 5px 1px 0;
 }
 
 .c9 {
@@ -53,11 +53,10 @@ exports[`renders the related articles canvas 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c6 {
@@ -81,7 +80,7 @@ exports[`renders the related articles canvas 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 278px;
+  width: 278px;
   text-decoration: none;
   color: black;
 }
@@ -110,7 +109,7 @@ exports[`renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 1250px;
-  margin: 30px auto 60px auto;
+  margin: 30px auto 30px auto;
 }
 
 .c2 {
@@ -187,7 +186,13 @@ exports[`renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    height: 235px;
+    min-height: 235px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    width: 225px;
   }
 }
 
@@ -202,19 +207,40 @@ exports[`renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c7 {
+    width: 225px;
     height: 150px;
   }
 }
 
 @media (max-width:1250px) {
   .c1 {
-    margin: 30px 20px 60px 20px;
+    margin: 30px 0 30px 0;
+  }
+}
+
+@media (max-width:1250px) {
+  .c2 {
+    margin: 0 20px 30px 20px;
   }
 }
 
 @media (max-width:720px) {
   .c3 {
     display: block;
+  }
+}
+
+@media (max-width:1250px) {
+  .c4 a {
+    margin: 0 10px;
+  }
+
+  .c4 a:first-child {
+    margin-left: 20px;
+  }
+
+  .c4 a:last-child {
+    border-right: 20px solid white;
   }
 }
 

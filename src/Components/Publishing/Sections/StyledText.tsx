@@ -14,12 +14,10 @@ const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> = s
 function getBlockquoteSize(layout, size) {
   let font
   const desktop = size === "lg"
-  if (layout === "classic") {
+  if (layout === "feature") {
+    font = desktop ? Fonts.unica("s40") : Fonts.unica("s34")
+  } else {
     font = desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
-  } else if (layout === "feature") {
-    font = desktop ? Fonts.unica("s65") : Fonts.unica("s40")
-  } else if (layout === "standard") {
-    font = desktop ? Fonts.garamond("s50") : Fonts.garamond("s40")
   }
   return font
 }
@@ -27,6 +25,7 @@ function getBlockquoteSize(layout, size) {
 export const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : "")};
+  width: 100%;
   a {
     color: black;
     text-decoration: none;
@@ -98,6 +97,9 @@ export const StyledText = div`
     }
     em {
       font-style: ${props => (props.layout === "classic" ? "normal" : "")};
+    }
+    a {
+      background-size: 1.25px 1px;
     }
   }
   blockquote {

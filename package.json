@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.9.12",
+  "version": "0.10.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction-force.git",
@@ -161,7 +161,9 @@
       "tsx",
       "js"
     ],
-    "modulePathIgnorePatterns": ["<rootDir>/dist/*"],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/*"
+    ],
     "setupFiles": [
       "./src/setup_jest.js"
     ]

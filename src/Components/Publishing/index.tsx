@@ -7,6 +7,7 @@ export { Artwork } from "./Sections/Artwork"
 export { Authors } from "./Sections/Authors"
 export { Caption } from "./Sections/Caption"
 export { Embed } from "./Sections/Embed"
+export { InstantArticleEmailSignup } from './Email/InstantArticleEmailSignup'
 export { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
 export { Image } from "./Sections/Image"
 export { ImageCollection } from "./Sections/ImageCollection"

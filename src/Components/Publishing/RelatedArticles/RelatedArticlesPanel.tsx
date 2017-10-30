@@ -67,7 +67,7 @@ const ArticleLink = styled.a`
   text-decoration: none;
   display: flex;
   justify-content: left;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 const ArticleImage = styled.img`

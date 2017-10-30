@@ -6,7 +6,7 @@ import Events from "../../Utils/Events"
 import track from "../../Utils/track"
 import { DisplayCanvas } from "./Display/Canvas"
 import { DisplayPanel } from "./Display/DisplayPanel"
-import { EmailSignup } from "./EmailSignup"
+import { EmailPanel } from "./Email/EmailPanel"
 import { Header } from "./Header/Header"
 import { FeatureLayout } from "./Layouts/FeatureLayout"
 import { Sidebar } from "./Layouts/Sidebar"
@@ -76,6 +76,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   openViewer = index => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: hidden;")
+
     this.setState({
       viewerIsOpen: true,
       slideIndex: index,
@@ -83,6 +86,9 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   closeViewer = () => {
+    const body = document.getElementsByTagName("BODY")[0]
+    body.setAttribute("style", "overflow: scroll;")
+
     this.setState({ viewerIsOpen: false })
   }
 
@@ -158,7 +164,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
               <Sections article={article} />
               <Sidebar>
                 {this.props.emailSignupUrl &&
-                  <EmailSignup
+                  <EmailPanel
                     signupUrl={this.props.emailSignupUrl}
                   />}
 
@@ -181,6 +187,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
           {relatedArticlesForCanvas &&
             <RelatedArticlesCanvas
               articles={relatedArticlesForCanvas}
+              isMobile={isMobile}
               vertical={article.vertical}
             />}
 
