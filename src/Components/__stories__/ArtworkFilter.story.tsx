@@ -76,7 +76,7 @@ function FilterArtworksDropdownExample() {
       query={graphql`
         query ArtworkFilterDropdownExampleQuery {
           viewer {
-            ...ArtworkFilter_filter_artworks
+            ...ArtworkFilter_viewer
           }
         }
       `}

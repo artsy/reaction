@@ -43,7 +43,7 @@ class ArtworkFilter extends React.Component<Props, State> {
   }
 
   handleLoadMore() {
-    if (!this.state.loading && this.props.filter_artworks.filter_artworks.artworks.pageInfo.hasNextPage) {
+    if (!this.state.loading && this.props.viewer.filter_artworks.artworks.pageInfo.hasNextPage) {
       this.setState({ loading: true }, () => {
         this.props.relay.loadMore(PageSize, error => {
           console.log(error)
@@ -87,7 +87,7 @@ class ArtworkFilter extends React.Component<Props, State> {
   }
 
   render() {
-    const filterArtworks = this.props.filter_artworks.filter_artworks
+    const filterArtworks = this.props.viewer.filter_artworks
     const dropdowns = filterArtworks.aggregations.map(aggregation => (
       <Dropdown
         aggregation={aggregation}
@@ -156,8 +156,8 @@ const SpinnerContainer = styled.div`
 export default createPaginationContainer(
   ArtworkFilter,
   {
-    filter_artworks: graphql.experimental`
-      fragment ArtworkFilter_filter_artworks on Viewer
+    viewer: graphql.experimental`
+      fragment ArtworkFilter_viewer on Viewer
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
@@ -209,7 +209,7 @@ export default createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.filter_artworks.filter_artworks.artworks as ConnectionData
+      return props.viewer.filter_artworks.artworks as ConnectionData
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -256,7 +256,7 @@ export default createPaginationContainer(
 )
 
 interface RelayProps {
-  filter_artworks: {
+  viewer: {
     filter_artworks: {
       artworks: {
         pageInfo: {
