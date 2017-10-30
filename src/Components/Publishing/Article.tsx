@@ -6,7 +6,7 @@ import Events from "../../Utils/Events"
 import track from "../../Utils/track"
 import { DisplayCanvas } from "./Display/Canvas"
 import { DisplayPanel } from "./Display/DisplayPanel"
-import { EmailSignup } from "./EmailSignup"
+import { EmailPanel } from "./Email/EmailPanel"
 import { Header } from "./Header/Header"
 import { FeatureLayout } from "./Layouts/FeatureLayout"
 import { Sidebar } from "./Layouts/Sidebar"
@@ -164,7 +164,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
               <Sections article={article} />
               <Sidebar>
                 {this.props.emailSignupUrl &&
-                  <EmailSignup
+                  <EmailPanel
                     signupUrl={this.props.emailSignupUrl}
                   />}
 

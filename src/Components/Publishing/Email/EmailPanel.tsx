@@ -1,17 +1,17 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import request from "superagent"
-import Colors from "../../Assets/Colors"
-import InvertedButton from "../Buttons/Inverted"
-import { borderedInput } from "../Mixins"
-import { emailRegex } from "./Constants"
-import { Fonts } from "./Fonts"
+import Colors from "../../../Assets/Colors"
+import InvertedButton from "../../Buttons/Inverted"
+import { borderedInput } from "../../Mixins"
+import { emailRegex } from "../Constants"
+import { Fonts } from "../Fonts"
 
-interface EmailSignupProps {
+interface EmailPanelProps {
   signupUrl: string
 }
 
-interface EmailSignupState {
+interface EmailPanelState {
   value: string
   error: boolean
   submitted: boolean
@@ -24,7 +24,7 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupState> {
+export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,7 +67,7 @@ export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupSt
       return <div />
     } else {
       return (
-        <EmailSignupContainer>
+        <EmailPanelContainer>
           <Title>Stay up to date with Artsy Editorial</Title>
           <Form>
             <Input
@@ -83,7 +83,7 @@ export class EmailSignup extends React.Component<EmailSignupProps, EmailSignupSt
               Subscribe
             </StyledButton>
           </Form>
-        </EmailSignupContainer>
+        </EmailPanelContainer>
       )
     }
   }
@@ -97,7 +97,7 @@ const Input = input`
   color: ${props => (props.isError ? Colors.redMedium : "black")};
   ${props => (props.isReadOnly ? Fonts.unica("s16") : "")}
 `
-const EmailSignupContainer = styled.div`
+const EmailPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 350px;
