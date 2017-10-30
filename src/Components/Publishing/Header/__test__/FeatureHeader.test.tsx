@@ -1,5 +1,5 @@
 import "jest-styled-components"
-import * as _ from "lodash"
+import _ from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import { FeatureArticle, SuperArticle } from "../../Fixtures/Articles"

@@ -1,4 +1,4 @@
-import * as _ from "lodash"
+import _ from "lodash"
 import React from "react"
 import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"

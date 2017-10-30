@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import * as _ from "lodash"
+import _ from "lodash"
 import React from "react"
 import { HeroSections } from "../Fixtures/Components"
 import { Header } from "../Header/Header"

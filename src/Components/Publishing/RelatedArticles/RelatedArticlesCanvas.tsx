@@ -1,4 +1,4 @@
-import * as _ from "lodash"
+import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
