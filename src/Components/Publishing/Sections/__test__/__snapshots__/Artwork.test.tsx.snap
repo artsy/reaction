@@ -172,44 +172,44 @@ exports[`renders properly 1`] = `
           Object {
             "__html": <span>
               <span
-                className="artist-name"
+                  className="artist-name"
               >
-                <span
-                  className="name"
-                >
-                  <file__StyledTextLink
-                    color="#999"
-                    href="/artist/fernando-botero"
-                    underline={false}
+                  <span
+                      className="name"
                   >
-                    Fernando Botero
+                      <file__StyledTextLink
+                          color="#999"
+                          href="/artist/fernando-botero"
+                          underline={false}
+                      >
+                          Fernando Botero
+                      </file__StyledTextLink>
+                  </span>
+              </span>
+              <span
+                  className="title"
+              >
+                  <file__StyledTextLink
+                      color="#999"
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                      underline={false}
+                  >
+                      Nude on the Beach
                   </file__StyledTextLink>
-                </span>
               </span>
               <span
-                className="title"
+                  className="date"
               >
-                <file__StyledTextLink
-                  color="#999"
-                  href="/artwork/fernando-botero-nude-on-the-beach"
-                  underline={false}
-                >
-                  Nude on the Beach
-                </file__StyledTextLink>
-              </span>
-              <span
-                className="date"
-              >
-                2000
+                  2000
               </span>
               <file__StyledTextLink
-                color="#999"
-                href="/partner/gary-nader"
-                underline={false}
+                  color="#999"
+                  href="/partner/gary-nader"
+                  underline={false}
               >
-                Gary Nader
+                  Gary Nader
               </file__StyledTextLink>
-            </span>,
+          </span>,
           }
         }
       />
