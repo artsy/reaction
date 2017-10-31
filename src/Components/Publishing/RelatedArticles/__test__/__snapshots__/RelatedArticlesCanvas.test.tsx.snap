@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the related articles canvas 1`] = `
+.c0 {
+  margin: 0 40px 100px 40px;
+}
+
+.c12 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c12.date {
+  white-space: nowrap;
+}
+
 .c11 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -13,19 +29,7 @@ exports[`renders the related articles canvas 1`] = `
   white-space: nowrap;
 }
 
-.c10 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c10.date {
-  white-space: nowrap;
-}
-
-.c10:before {
+.c11:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -35,13 +39,13 @@ exports[`renders the related articles canvas 1`] = `
   background-color: #000;
 }
 
-.c10:before {
+.c11:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c9 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +63,7 @@ exports[`renders the related articles canvas 1`] = `
   align-items: flex-end;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,7 +76,7 @@ exports[`renders the related articles canvas 1`] = `
   min-height: 270px;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,14 +89,14 @@ exports[`renders the related articles canvas 1`] = `
   color: black;
 }
 
-.c8 {
+.c9 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c7 {
+.c8 {
   display: block;
   width: 278px;
   height: 185px;
@@ -100,7 +104,7 @@ exports[`renders the related articles canvas 1`] = `
   object-fit: cover;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,7 +116,7 @@ exports[`renders the related articles canvas 1`] = `
   margin: 30px auto 30px auto;
 }
 
-.c2 {
+.c3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -120,7 +124,7 @@ exports[`renders the related articles canvas 1`] = `
   margin-bottom: 30px;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -132,21 +136,41 @@ exports[`renders the related articles canvas 1`] = `
   overflow-x: scroll;
 }
 
-.c4::-webkit-scrollbar {
+.c5::-webkit-scrollbar {
   display: none;
 }
 
-.c4 a {
+.c5 a {
   margin-right: 30px;
 }
 
-.c4 a:last-child {
+.c5 a:last-child {
   margin-right: 0;
 }
 
-.c0 {
+.c1 {
   border-top: 1px solid #e5e5e5;
   width: 100%;
+}
+
+@media (max-width:720px) {
+  .c0 {
+    margin: 0 0 100px 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c12 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
 }
 
 @media (max-width:720px) {
@@ -164,40 +188,26 @@ exports[`renders the related articles canvas 1`] = `
 }
 
 @media (max-width:720px) {
-  .c10 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c10:before {
+  .c11:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:720px) {
-  .c6 {
+  .c7 {
     min-height: 235px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c6 {
     width: 225px;
   }
 }
 
 @media (max-width:720px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -206,199 +216,201 @@ exports[`renders the related articles canvas 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c8 {
     width: 225px;
     height: 150px;
   }
 }
 
 @media (max-width:1250px) {
-  .c1 {
+  .c2 {
     margin: 30px 0 30px 0;
   }
 }
 
 @media (max-width:1250px) {
-  .c2 {
-    margin: 0 20px 30px 20px;
+  .c3 {
+    margin: 0 20px 30px 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c3 {
+  .c4 {
     display: block;
   }
 }
 
 @media (max-width:1250px) {
-  .c4 a {
+  .c5 a {
     margin: 0 10px;
   }
 
-  .c4 a:first-child {
-    margin-left: 20px;
+  .c5 a:first-child {
+    margin-left: 0px;
   }
 
-  .c4 a:last-child {
+  .c5 a:last-child {
     border-right: 20px solid white;
   }
 }
 
-<div>
-  <div
-    className="c0"
-  />
+<div
+  className="c0"
+>
   <div
     className="c1"
+  />
+  <div
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
     >
       Further Reading in 
       <span
-        className="c3"
+        className="c4"
       >
         Art Market
       </span>
     </div>
     <div
-      className="c4"
+      className="c5"
     >
       <a
-        className="c5"
+        className="c6"
         href="/article/artsy-editorial-15-top-art-schools-united-states"
         onClick={[Function]}
       >
         <div
-          className="c6"
+          className="c7"
         >
           <img
             alt="The 15 Top Art Schools in the United States"
-            className="c7"
+            className="c8"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
           />
           <div
-            className="c8"
+            className="c9"
           >
             The 15 Top Art Schools in the United States
           </div>
         </div>
         <div
-          className="c9"
+          className="c10"
         >
           <div
-            className="author c10"
+            className="author c11"
           >
             By 
             Anna Louis-Sussman and Kana Abe
           </div>
           <div
-            className="date c11"
+            className="date c12"
           >
             May 19, 2017
           </div>
         </div>
       </a>
       <a
-        className="c5"
+        className="c6"
         href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
         onClick={[Function]}
       >
         <div
-          className="c6"
+          className="c7"
         >
           <img
             alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
-            className="c7"
+            className="c8"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
           />
           <div
-            className="c8"
+            className="c9"
           >
             Four Years after Walter De Maria’s Death, His Final Work Is Complete
           </div>
         </div>
         <div
-          className="c9"
+          className="c10"
         >
           <div
-            className="author c10"
+            className="author c11"
           >
             By 
             Halley Johnson
           </div>
           <div
-            className="date c11"
+            className="date c12"
           >
             May 19, 2017
           </div>
         </div>
       </a>
       <a
-        className="c5"
+        className="c6"
         href="/article/artsy-editorial-french-art-history-in-a-nutshell"
         onClick={[Function]}
       >
         <div
-          className="c6"
+          className="c7"
         >
           <img
             alt="French Art History in a Nutshell"
-            className="c7"
+            className="c8"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
           />
           <div
-            className="c8"
+            className="c9"
           >
             French Art History in a Nutshell
           </div>
         </div>
         <div
-          className="c9"
+          className="c10"
         >
           <div
-            className="author c10"
+            className="author c11"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c11"
+            className="date c12"
           >
             May 19, 2017
           </div>
         </div>
       </a>
       <a
-        className="c5"
+        className="c6"
         href="/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
         onClick={[Function]}
       >
         <div
-          className="c6"
+          className="c7"
         >
           <img
             alt="Miami Artists and Museums Brace for Hurricane Irma"
-            className="c7"
+            className="c8"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
           />
           <div
-            className="c8"
+            className="c9"
           >
             Miami Artists and Museums Brace for Hurricane Irma
           </div>
         </div>
         <div
-          className="c9"
+          className="c10"
         >
           <div
-            className="author c10"
+            className="author c11"
           >
             By 
             Owen Dodd
           </div>
           <div
-            className="date c11"
+            className="date c12"
           >
             May 19, 2017
           </div>

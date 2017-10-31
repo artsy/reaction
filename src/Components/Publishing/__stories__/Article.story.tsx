@@ -67,3 +67,4 @@ story.add("Super Article", () => {
   const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
   return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
 })
+

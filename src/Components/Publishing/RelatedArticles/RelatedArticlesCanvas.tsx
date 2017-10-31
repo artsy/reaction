@@ -4,6 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
+import { StandardLayoutParent } from "../Layouts/StandardLayout"
 import { RelatedArticleFigure } from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
@@ -30,7 +31,7 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
     return <div />
   } else {
     return (
-      <div>
+      <StandardLayoutParent>
         <LineBreak />
         <RelatedArticlesContainer>
           <Title>
@@ -47,7 +48,7 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
             })}
           </ArticlesWrapper>
         </RelatedArticlesContainer>
-      </div>
+      </StandardLayoutParent>
     )
   }
 }
@@ -67,7 +68,7 @@ const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
   ${pMedia.xl`
-    margin: 0 20px 30px 20px;
+    margin: 0 20px 30px 0px;
   `}
 `
 const VerticalSpan = styled.span`
@@ -90,7 +91,7 @@ const ArticlesWrapper = ScrollingContainer`
     ${pMedia.xl`
       margin: 0 10px;
       &:first-child {
-        margin-left: 20px;
+        margin-left: 0px;
       }
       &:last-child {
         border-right: 20px solid white;

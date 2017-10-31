@@ -2,12 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
+import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 export const ReadMore: React.SFC<any> = props => {
   return (
-    <ReadMoreContainer onClick={props.onClick}>
-      <ReadMoreButton>Read More</ReadMoreButton>
-    </ReadMoreContainer>
+    <StandardLayoutParent>
+      <ReadMoreContainer onClick={props.onClick}>
+        <ReadMoreButton>Read More</ReadMoreButton>
+      </ReadMoreContainer>
+    </StandardLayoutParent>
   )
 }
 
@@ -40,7 +43,12 @@ const ReadMoreContainer = styled.div`
   padding: 20px 0;
   max-width: 1150px;
   margin: auto;
+  margin-bottom: 80px;
   ${pMedia.xl`
+    padding: 20px;
+    padding-left: 0px;
+  `}
+  ${pMedia.sm`
     padding: 20px;
   `}
 `

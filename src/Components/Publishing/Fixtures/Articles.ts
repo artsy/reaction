@@ -379,6 +379,22 @@ export const BasicArticle: ArticleData = {
   layout: 'feature',
   lead_paragraph: "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
   title: '9 Famous Artists’ Studios You Can Visit, from Jackson Pollock to Barbara Hepworth',
+  sections: [
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          type: "image",
+          width: 1200,
+          height: 750,
+          caption: "<p>Illustration by Tomi Um for Artsy.</p>",
+        },
+      ],
+    },
+    ...StandardArticle.sections
+  ],
   contributing_authors: [
     {
       id: "523783258b3b815f7100055a",
@@ -388,7 +404,7 @@ export const BasicArticle: ArticleData = {
   hero_section: {
     type: "basic",
     title: "What’s the Path to Winning an Art Prize?",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url: "https://vimeo.com/238843720",
     deck: "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
   },
 }

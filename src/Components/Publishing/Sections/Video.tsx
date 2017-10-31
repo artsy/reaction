@@ -8,6 +8,7 @@ import { sizeMeRefreshRate } from "../Constants"
 import { Layout } from "../Typings"
 import { Caption } from "./Caption"
 
+const BLACKLIST = ['gif', 'jpg', 'jpeg', 'png']
 const QUERYSTRING = "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
 const videoRatio = 0.5625
 
@@ -35,9 +36,11 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 
   constructor(props) {
     super(props)
-    const { url } = this.props.section
 
-    if (url) {
+    const { url } = this.props.section
+    const isValid = url && isValidVideoUrl(url)
+
+    if (isValid) {
       const parsedUrl = urlParser.parse(url, true)
       const playerUrl = getPlayerUrl(parsedUrl)
       const id = getId(parsedUrl)
@@ -99,6 +102,11 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 }
 
 // Utils
+export function isValidVideoUrl(url: string) {
+  const urlExtension = url && url.split('.').pop()
+  const isValid = BLACKLIST.every(bad => urlExtension !== bad)
+  return isValid
+}
 
 function getPlayerUrl(url) {
   const { hostname } = url
