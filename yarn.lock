@@ -7583,9 +7583,9 @@ react-komposer@^2.0.0:
     react-stubber "^1.0.0"
     shallowequal "^0.2.2"
 
-react-lines-ellipsis@damassi/react-lines-ellipsis:
-  version "0.7.3"
-  resolved "https://codeload.github.com/damassi/react-lines-ellipsis/tar.gz/c7cf3895efbd6eb524af3f4151bba34f481c500b"
+react-lines-ellipsis@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.8.0.tgz#922d5a70e8b14260014308389fb47d882225f83f"
 
 react-markdown@^2.5.0:
   version "2.5.0"
