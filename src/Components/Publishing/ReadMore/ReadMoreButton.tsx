@@ -1,17 +1,31 @@
 import React from "react"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
-export const ReadMore: React.SFC<any> = props => {
-  return (
-    <StandardLayoutParent>
-      <ReadMoreContainer onClick={props.onClick}>
-        <ReadMoreButton>Read More</ReadMoreButton>
-      </ReadMoreContainer>
-    </StandardLayoutParent>
-  )
+@track()
+export class ReadMore extends React.Component<any, any> {
+  constructor() {
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+
+  @track({ action: "Clicked read more" })
+  onClick() {
+    this.props.onClick(...arguments)
+  }
+
+  render() {
+    return (
+      <StandardLayoutParent>
+        <ReadMoreContainer onClick={this.onClick}>
+          <ReadMoreButton>Read More</ReadMoreButton>
+        </ReadMoreContainer>
+      </StandardLayoutParent>
+    )
+  }
 }
 
 const ReadMoreButton = styled.div`
