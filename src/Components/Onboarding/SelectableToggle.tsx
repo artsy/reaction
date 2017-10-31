@@ -2,7 +2,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 
 import * as fonts from "../../Assets/Fonts"
-import Icon from "../Icon"
+import CircleIcon from "../CircleIcon"
 
 interface SelectableToggleProps {
   href?: string
@@ -11,21 +11,15 @@ interface SelectableToggleProps {
   selected: boolean
 }
 
-interface IconContainerProps extends React.HTMLProps<HTMLIFrameElement> {
+interface IconContainerProps extends React.HTMLProps<HTMLDivElement> {
   isSelected: boolean
 }
 
-const iconContainer: StyledFunction<IconContainerProps> = styled.div
-
-const IconContainer = iconContainer`
-  width: 18px;
-  height: 18px;
-  background-color: black;
-  border-radius: 50%;
+const IconContainer = (styled.div as StyledFunction<IconContainerProps>)`
   float: right;
   margin-right: 15px;
-  display: ${props => (props.isSelected ? "inline-flex;" : "none;")}
-  justify-content: ${props => (props.isSelected ? "center;" : "none;")}
+  justify-content: center;
+  display: ${(props: IconContainerProps) => (props.isSelected ? "inline-flex" : "none")};
 `
 
 const Link = styled.a`
@@ -65,7 +59,7 @@ class SelectableToggle extends React.Component<SelectableToggleProps, null> {
           {this.props.text}
 
           <IconContainer isSelected={this.props.selected}>
-            <Icon name="follow-circle.is-following" color="white" fontSize="39px" style={{ alignSelf: "center" }} />
+            <CircleIcon name="check" color="black" fontSize="18px" ratio={0.4} />
           </IconContainer>
         </Link>
       </div>
