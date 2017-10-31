@@ -43,6 +43,17 @@ const story = storiesOf("Publishing/Articles", module)
       />
     )
   })
+  .add("Standard truncated", () => {
+    return (
+      <Article
+        article={ImageHeavyStandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        isTruncated
+      />
+    )
+  })
 
 const ads = ["overlay", "image", "video", "slideshow"]
 ads.forEach(mediaType => {
