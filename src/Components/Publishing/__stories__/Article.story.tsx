@@ -3,6 +3,7 @@ import React from "react"
 import _ from "underscore"
 import { Article } from "../Article"
 import {
+  BasicArticle,
   FeatureArticle,
   ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
@@ -59,6 +60,10 @@ ads.forEach(mediaType => {
   })
 })
 
+story.add("Basic Article", () => {
+  return <Article article={BasicArticle} />
+})
+
 story.add("Feature", () => {
   return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
 })
@@ -67,3 +72,4 @@ story.add("Super Article", () => {
   const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
   return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
 })
+

@@ -276,6 +276,25 @@ exports[`Classic Header renders classic header properly 1`] = `
 `;
 
 exports[`Classic Header renders classic header with children properly 1`] = `
+.c7 {
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.c8 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c8:hover {
+  opacity: 0.6;
+}
+
+.c8:first-child {
+  padding-left: 0;
+}
+
 .c6 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -308,25 +327,6 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: #000;
-}
-
-.c7 {
-  white-space: nowrap;
-  line-height: 1em;
-}
-
-.c8 {
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c8:hover {
-  opacity: 0.6;
-}
-
-.c8:first-child {
-  padding-left: 0;
 }
 
 .c4 {
@@ -381,6 +381,12 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   margin-bottom: 10px;
 }
 
+@media (max-width:600px) {
+  .c7 {
+    margin-top: 15px;
+  }
+}
+
 @media (max-width:720px) {
   .c6 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -413,12 +419,6 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   .c5:before {
     min-width: 8px;
     min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
-  .c7 {
-    margin-top: 15px;
   }
 }
 

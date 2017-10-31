@@ -7,7 +7,7 @@ import { pMedia as breakpoint } from "../../Helpers"
 import { Share } from "../Byline/Share"
 import { articleHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
-import { Video } from '../Sections/Video'
+import { isValidVideoUrl, Video } from '../Sections/Video'
 
 interface Props {
   article: any
@@ -54,7 +54,8 @@ export class BasicHeader extends React.Component<Props, State> {
       vertical
     } = this.props
 
-    const hasVideo = Boolean(hero_section.url)
+    const { url } = hero_section
+    const hasVideo = Boolean(url) && isValidVideoUrl(url)
 
     return (
       <Responsive initialState={{ isMobile: passedIsMobile }}>

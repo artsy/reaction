@@ -58,7 +58,7 @@ storiesOf("Publishing/Headers", module)
   })
   .add("Feature Header - Basic, with Embed", () => {
     const article = _.clone(BasicArticle)
-    article.hero_section.url = 'https://www.youtube.com/watch?v=ENISCG2a15g'
+    article.hero_section.url = 'https://vimeo.com/238843720'
 
     return (
       <div>
