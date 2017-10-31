@@ -40,6 +40,7 @@ const ReadMoreContainer = styled.div`
   padding: 20px 0;
   max-width: 1150px;
   margin: auto;
+  margin-bottom: 80px;
   ${pMedia.xl`
     padding: 20px;
   `}
