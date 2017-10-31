@@ -3,7 +3,6 @@ import React from "react"
 import _ from "underscore"
 import { Article } from "../Article"
 import {
-  BasicArticle,
   FeatureArticle,
   ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
@@ -58,10 +57,6 @@ ads.forEach(mediaType => {
       />
     )
   })
-})
-
-story.add("Basic Article", () => {
-  return <Article article={BasicArticle} />
 })
 
 story.add("Feature", () => {
