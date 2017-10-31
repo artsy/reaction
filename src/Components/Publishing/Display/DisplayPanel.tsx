@@ -188,13 +188,13 @@ const SponsoredBy = styled.div`
 `
 
 const VideoContainer = Image.extend`
-position: relative;
-overflow: hidden;
-display: flex;
-align-items: center;
-video {
-  object-fit: cover;
-  object-position: 50%;
-  width: 100%;
-}
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  video {
+    object-fit: cover;
+    object-position: 50%;
+    width: 100%;
+  }
 `
