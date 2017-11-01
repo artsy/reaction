@@ -1,7 +1,7 @@
 import { cloneDeep, includes, map, omit } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Colors from "../../Assets/Colors"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
@@ -28,9 +28,9 @@ export interface ArticleProps {
   isMobile?: boolean
   isSuper?: boolean
   isTruncated?: boolean
-  marginTop?: string | number
   emailSignupUrl?: string
   headerHeight?: string
+  marginTop?: string
   display?: {
     name: string
     panel: object
@@ -44,6 +44,10 @@ interface ArticleState {
   fullscreenImages: any
   article: any
   isTruncated: boolean
+}
+
+interface ArticleContainerProps {
+  marginTop?: string
 }
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
@@ -226,9 +230,10 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
   render() {
     const { article } = this.state
+    const { marginTop } = this.props
 
     return (
-      <div>
+      <ArticleContainer marginTop={marginTop}>
         {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
         <FullscreenViewer
           onClose={this.closeViewer}
@@ -236,10 +241,16 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
           slideIndex={this.state.slideIndex}
           images={this.state.fullscreenImages}
         />
-      </div>
+      </ArticleContainer>
     )
   }
 }
+
+const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
+const ArticleContainer = ArticleDiv`
+  margin-top: ${props => props.marginTop || "50px"};
+`
 
 const LineBreak = styled.div`
   border-top: 1px solid ${Colors.grayRegular};
