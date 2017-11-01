@@ -29,6 +29,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   constructor(props) {
     super(props)
     this.openLink = this.openLink.bind(this)
+    this.playVideo = this.playVideo.bind(this)
 
     this.state = {
       isPlaying: false
@@ -61,11 +62,14 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     window.open(this.props.unit.link.url, '_blank')
   }
 
-  onMouseLeave = () => {
-    this.video.pause()
-  }
-
-  playVideo = () => {
+  @track(once((props) => ({
+    action: "Click",
+    label: "Display ad play video",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: "panel"
+  })))
+  playVideo() {
     if (this.video) {
       if (this.video.paused) {
         this.video.play()
@@ -75,6 +79,10 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
         this.setState({ isPlaying: false })
       }
     }
+  }
+
+  onMouseLeave = () => {
+    this.video.pause()
   }
 
   renderVideo = (url) => {
