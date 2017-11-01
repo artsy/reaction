@@ -68,7 +68,7 @@ export class FullscreenViewer extends React.Component<FullscreenViewerProps, Ful
   render() {
     const sliderSettings = {
       dots: false,
-      infinite: true,
+      infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       accessibility: true,

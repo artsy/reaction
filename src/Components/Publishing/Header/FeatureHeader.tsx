@@ -7,6 +7,7 @@ import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
+import { isValidVideoUrl } from '../Sections/Video'
 import { BasicHeader } from "./BasicHeader"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
@@ -60,16 +61,24 @@ function renderTextLayoutAsset(url, layout, title, imageChild) {
           <Video src={url} autoPlay controls={false} loop muted playsInline />
         </TextAsset>
       )
-    } else {
+    } else if (layout !== "basic") {
       const alt = url.length ? title : ""
       const src = url.length && resize(url, { width: 1200 })
-      const image = <Image src={src} alt={alt} />
-      return (
-        <TextAsset>
-          {imageChild}
-          {url.length && image}
-        </TextAsset>
-      )
+
+      // When toggling between layout states, guard 'Basic' video headers stored
+      // in temporary `hero_section` auto-save state. TODO: might want to revist.
+      if (!isValidVideoUrl(url)) {
+        const image = <Image src={src} alt={alt} />
+
+        return (
+          <TextAsset>
+            {imageChild}
+            {url.length && image}
+          </TextAsset>
+        )
+      } else {
+        return false
+      }
     }
   } else {
     return false

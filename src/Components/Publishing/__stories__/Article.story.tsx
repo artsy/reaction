@@ -43,6 +43,17 @@ const story = storiesOf("Publishing/Articles", module)
       />
     )
   })
+  .add("Standard truncated", () => {
+    return (
+      <Article
+        article={ImageHeavyStandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        isTruncated
+      />
+    )
+  })
 
 const ads = ["overlay", "image", "video", "slideshow"]
 ads.forEach(mediaType => {
@@ -67,3 +78,4 @@ story.add("Super Article", () => {
   const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
   return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
 })
+

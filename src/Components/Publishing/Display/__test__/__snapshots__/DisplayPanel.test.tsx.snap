@@ -35,7 +35,7 @@ exports[`renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .szbq3h-1-file__Image-iTToDH {
+.c1 .m49hnr-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -46,7 +46,7 @@ exports[`renders the display panel with an image 1`] = `
   border: 10px solid black;
 }
 
-.c1:hover .szbq3h-1-file__Image-iTToDH {
+.c1:hover .m49hnr-1-file__Image-iTToDH {
   display: none;
 }
 
@@ -140,12 +140,12 @@ exports[`renders the display panel with video 1`] = `
   position: absolute;
 }
 
-.jglWOQ .c3 {
+.ioQrvi .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.jglWOQ:hover .c3 {
+.ioQrvi:hover .c3 {
   display: none;
 }
 
@@ -163,7 +163,7 @@ exports[`renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-szbq3h-1 {
+.c1 .file__Image-m49hnr-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz9w_n6UxxoZ_u1lzt4vwrw%252FHero%2BLoop%2B02.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -173,7 +173,7 @@ exports[`renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c1:hover .file__Image-szbq3h-1 {
+.c1:hover .file__Image-m49hnr-1 {
   background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
   background-size: contain;
   border: 10px solid black;
