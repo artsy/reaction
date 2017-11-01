@@ -3,6 +3,10 @@ import * as renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
+jest.mock("../../Relay/createEnvironment", () => ({
+  createEnvironment: (user: User) => ({ description: `A mocked env for ${user.name}` }),
+}))
+
 import * as Artsy from "../Artsy"
 
 const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
@@ -14,6 +18,12 @@ const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string 
 }
 // This HOC adds the context to the component.
 const WithCurrentUser = Artsy.ContextConsumer(ShowCurrentUser)
+
+const ShowRelayEnvironment: React.SFC<Artsy.ContextProps> = props => {
+  const mockedEnv: any = props.relayEnvironment
+  return <div>{mockedEnv.description}</div>
+}
+const WithRelayEnvironment = Artsy.ContextConsumer(ShowRelayEnvironment)
 
 describe("Artsy context", () => {
   const currentUser: User = {
@@ -31,6 +41,29 @@ describe("Artsy context", () => {
       )
       .toJSON()
     expect(div.children[0]).toEqual("Andy Warhol")
+  })
+
+  it("creates and exposes a Relay environment", () => {
+    const div = renderer
+      .create(
+        <Artsy.ContextProvider currentUser={currentUser}>
+          <WithRelayEnvironment />
+        </Artsy.ContextProvider>
+      )
+      .toJSON()
+    expect(div.children[0]).toEqual("A mocked env for Andy Warhol")
+  })
+
+  it("exposes a passed in Relay environment", () => {
+    const mockedEnv: any = { description: "A passed in mocked env" }
+    const div = renderer
+      .create(
+        <Artsy.ContextProvider currentUser={currentUser} relayEnvironment={mockedEnv}>
+          <WithRelayEnvironment />
+        </Artsy.ContextProvider>
+      )
+      .toJSON()
+    expect(div.children[0]).toEqual("A passed in mocked env")
   })
 
   it("passes other props on", () => {

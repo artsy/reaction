@@ -1,5 +1,7 @@
 import * as PropTypes from "prop-types"
 import * as React from "react"
+import { Environment } from "relay-runtime"
+import { createEnvironment } from "../Relay/createEnvironment"
 
 /**
  * The Artsy specific props injected by the higher-order component produced by `ContextConsumer`.
@@ -15,6 +17,13 @@ export interface ContextProps {
    * The currently signed-in user.
    */
   currentUser?: User
+
+  /**
+   * A configured environment object that can be used for any Relay operations  that need an environment object.
+   *
+   * If none is provided to the `ContextProvider` then one is created, using the `currentUser` if available.
+   */
+  relayEnvironment?: Environment
 }
 
 interface PrivateContextProps extends ContextProps {
@@ -27,6 +36,7 @@ interface PrivateContextProps extends ContextProps {
 const ContextTypes: React.ValidationMap<PrivateContextProps> = {
   _isNestedInProvider: PropTypes.bool,
   currentUser: PropTypes.object,
+  relayEnvironment: PropTypes.object,
 }
 
 /**
@@ -39,17 +49,21 @@ export class ContextProvider extends React.Component<ContextProps, null>
   implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
-  constructor(props) {
+  private relayEnvironment: Environment
+
+  constructor(props: ContextProps & { children?: React.ReactNode }) {
     if (React.Children.count(props.children) > 1) {
       throw new Error("A ContextProvider expects a single child.")
     }
     super(props)
+    this.relayEnvironment = props.relayEnvironment || createEnvironment(props.currentUser)
   }
 
   getChildContext() {
     return {
       _isNestedInProvider: true,
       currentUser: this.props.currentUser,
+      relayEnvironment: this.relayEnvironment,
     }
   }
 
@@ -77,7 +91,7 @@ export function ContextConsumer<P>(
     static contextTypes = ContextTypes
     static displayName = `Artsy(${name})`
 
-    constructor(props, context: PrivateContextProps) {
+    constructor(props: P, context: PrivateContextProps) {
       if (!context._isNestedInProvider) {
         const start = name || "A component"
         throw new Error(`${start}, which needs Artsy props, was not wrapped inside a ContextProvider component.`)
@@ -86,8 +100,8 @@ export function ContextConsumer<P>(
     }
 
     render() {
-      const currentUser = this.context.currentUser
-      const props = Object.assign({ currentUser }, this.props)
+      const { currentUser, relayEnvironment } = this.context
+      const props = Object.assign({ currentUser, relayEnvironment }, this.props)
       return <Component {...props} />
     }
   }
