@@ -1,6 +1,6 @@
 import numeral from "numeral"
 import * as React from "react"
-import { createFragmentContainer, graphql } from "react-relay/compat"
+import { createFragmentContainer, graphql } from "react-relay"
 
 import styled from "styled-components"
 import { secondary } from "../../Assets/Fonts"

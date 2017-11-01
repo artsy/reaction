@@ -7,7 +7,7 @@
  */
 
 import * as React from "react"
-import { commitMutation, createFragmentContainer, graphql } from "react-relay/compat"
+import { commitMutation, createFragmentContainer, graphql } from "react-relay"
 
 import Icon from "./Icon"
 

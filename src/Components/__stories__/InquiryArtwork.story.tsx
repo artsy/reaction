@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { graphql } from "react-relay/compat"
+import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import InquiryArtwork from "../InquiryArtwork"

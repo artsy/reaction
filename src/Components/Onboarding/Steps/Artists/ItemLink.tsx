@@ -1,5 +1,5 @@
 import * as React from "react"
-import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay/compat"
+import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { SelectorStoreUpdater } from "relay-runtime"
 import styled, { StyledFunction } from "styled-components"
 
@@ -57,7 +57,6 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   followArtist() {
-    console.log("follow artist!")
     const storeUpdater: SelectorStoreUpdater = (store, suggestedArtistData) => {
       // Replace now followed artist in list with newly suggested artist
     }

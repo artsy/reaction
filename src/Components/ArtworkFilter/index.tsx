@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ConnectionData } from "react-relay"
-import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay/compat"
+import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
 import styled from "styled-components"
 
 import ArtworkGrid from "../ArtworkGrid"

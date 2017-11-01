@@ -1,6 +1,6 @@
 import React from "react"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
-import { QueryRenderer } from "react-relay/compat"
+import { QueryRenderer } from "react-relay"
 import { CacheConfig, RerunParam, Variables } from "relay-runtime"
 import { ContextConsumer, ContextProps, ContextProvider } from "../Components/Artsy"
 

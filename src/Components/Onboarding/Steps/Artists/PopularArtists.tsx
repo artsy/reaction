@@ -1,5 +1,5 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay/compat"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import SelectableItemContainer from "./SelectableItemContainer"
