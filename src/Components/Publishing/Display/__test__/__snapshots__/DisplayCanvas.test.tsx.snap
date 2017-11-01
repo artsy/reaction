@@ -215,6 +215,7 @@ exports[`renders the canvas in overlay layout 1`] = `
 @media (max-width:720px) {
   .c0 {
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -593,6 +594,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 @media (max-width:720px) {
   .c0 {
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -957,6 +959,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
 @media (max-width:720px) {
   .c0 {
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -1317,6 +1320,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
 @media (max-width:720px) {
   .c0 {
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 

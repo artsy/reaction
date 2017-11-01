@@ -44,6 +44,7 @@ const DisplayContainer = Div`
   }
   ${props => pMedia.sm`
     margin-bottom: 0;
+    min-height: 400px;
   `}
 `
 const AdvertisementBy = styled.div`
