@@ -63,7 +63,7 @@ export class BasicHeader extends React.Component<Props, State> {
           <Container>
             <Grid fluid>
               {hasVideo &&
-                <Row onClick={() => this.trackVideoPlay()}>
+                <Row onClick={this.trackVideoPlay}>
                   <Col xs sm md lg>
                     <Video
                       section={hero_section}
