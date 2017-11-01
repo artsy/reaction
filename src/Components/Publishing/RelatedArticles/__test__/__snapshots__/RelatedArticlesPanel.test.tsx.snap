@@ -36,6 +36,10 @@ exports[`renders the related articles panel 1`] = `
   margin-bottom: 20px;
 }
 
+.c3:last-child {
+  margin-bottom: 0;
+}
+
 .c4 {
   min-width: 80px;
   height: 55px;

@@ -214,7 +214,6 @@ exports[`renders the canvas in overlay layout 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
   }
 }
@@ -475,7 +474,6 @@ exports[`renders the canvas in slideshow layout 1`] = `
 @media (max-width:1080px) {
   .c4 {
     width: 437.5px;
-    padding: 0 20px;
   }
 
   .c4 a {
@@ -486,6 +484,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 @media (max-width:900px) {
   .c4 {
     width: 100%;
+    padding: 0 20px;
   }
 
   .c4 a {
@@ -929,8 +928,6 @@ exports[`renders the canvas in standard layout with image 1`] = `
 @media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
-    padding: 0 20px;
-    width: calc(100% - 40px);
   }
 }
 
@@ -959,7 +956,6 @@ exports[`renders the canvas in standard layout with image 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
   }
 }
@@ -1292,8 +1288,6 @@ exports[`renders the canvas in standard layout with video 1`] = `
 @media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
-    padding: 0 20px;
-    width: calc(100% - 40px);
   }
 }
 
@@ -1322,7 +1316,6 @@ exports[`renders the canvas in standard layout with video 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
   }
 }

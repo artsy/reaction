@@ -1,7 +1,7 @@
 import { cloneDeep, includes, map, omit } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Colors from "../../Assets/Colors"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
@@ -28,6 +28,7 @@ export interface ArticleProps {
   isMobile?: boolean
   isSuper?: boolean
   isTruncated?: boolean
+  marginTop?: string | number
   emailSignupUrl?: string
   headerHeight?: string
   display?: {
@@ -144,7 +145,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const { isMobile, relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
     const campaign = omit(this.props.display, "panel", "canvas")
-    const displayOverflows = this.props.display.canvas.layout === "slideshow"
+    const displayOverflows = this.props.display && this.props.display.canvas.layout === "slideshow"
 
     return (
       <div>

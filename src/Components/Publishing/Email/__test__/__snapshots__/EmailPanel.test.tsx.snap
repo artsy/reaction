@@ -81,7 +81,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  margin-bottom: 40px;
 }
 
 .c1 {
