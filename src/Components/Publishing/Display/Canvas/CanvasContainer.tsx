@@ -183,9 +183,6 @@ const CanvasLink = responsiveLink`
   justify-content: ${props => (props.layout === "standard" ? "space-between;" : "center;")}
   ${props => pMedia.lg`
     ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
-    ${props.layout === "standard" &&
-    `padding: 0 20px;
-       width: calc(100% - 40px);`}
   `}
   ${pMedia.sm`
     padding: 0;

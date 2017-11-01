@@ -1,10 +1,8 @@
 import _ from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { StandardLayoutParent } from "../Layouts/StandardLayout"
 import { RelatedArticleFigure } from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
@@ -31,24 +29,21 @@ export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = prop
     return <div />
   } else {
     return (
-      <StandardLayoutParent>
-        <LineBreak />
-        <RelatedArticlesContainer>
-          <Title>
-            Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
-          </Title>
-          <ArticlesWrapper isMobile={isMobile}>
-            {_.map(articles, (article, i) => {
-              return (
-                <RelatedArticleFigure
-                  article={article}
-                  key={`related-article-figure-${i}`}
-                />
-              )
-            })}
-          </ArticlesWrapper>
-        </RelatedArticlesContainer>
-      </StandardLayoutParent>
+      <RelatedArticlesContainer>
+        <Title>
+          Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
+        </Title>
+        <ArticlesWrapper isMobile={isMobile}>
+          {_.map(articles, (article, i) => {
+            return (
+              <RelatedArticleFigure
+                article={article}
+                key={`related-article-figure-${i}`}
+              />
+            )
+          })}
+        </ArticlesWrapper>
+      </RelatedArticlesContainer>
     )
   }
 }
@@ -68,7 +63,10 @@ const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
   ${pMedia.xl`
-    margin: 0 20px 30px 0px;
+    margin: 0 20px 30px 40px;
+  `}
+  ${pMedia.sm`
+    margin-left: 20px;
   `}
 `
 const VerticalSpan = styled.span`
@@ -91,16 +89,17 @@ const ArticlesWrapper = ScrollingContainer`
     ${pMedia.xl`
       margin: 0 10px;
       &:first-child {
-        margin-left: 0px;
+        margin-left: 40px;
       }
       &:last-child {
         border-right: 20px solid white;
       }
     `}
+    ${pMedia.sm`
+      &:first-child {
+        margin-left: 20px;
+      }
+    `}
   }
   ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"}
-`
-const LineBreak = styled.div`
-  border-top: 1px solid ${Colors.grayRegular};
-  width: 100%;
 `

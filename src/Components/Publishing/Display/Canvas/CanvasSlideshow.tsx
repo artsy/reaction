@@ -245,13 +245,13 @@ const Title = responsiveDiv`
   padding: 0 20px 0 0;
   ${props => pMedia.lg`
     width: ${props.containerWidth * 0.35 + "px;"}
-    padding: 0 20px;
     a {
       max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }
   `}
   ${pMedia.md`
     width: 100%;
+    padding: 0 20px;
     a {
       height: initial;
       max-height: initial;
