@@ -3,7 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import { Article } from "../Article"
 import { FeatureArticle, StandardArticle } from "../Fixtures/Articles"
-import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 
@@ -27,6 +27,7 @@ it("renders related articles in standard layout", () => {
   const article = shallow(
     <Article
       article={StandardArticle}
+      display={Display("standard")}
       relatedArticlesForCanvas={RelatedCanvas}
       relatedArticlesForPanel={RelatedPanel}
     />
@@ -39,6 +40,7 @@ it("renders RelatedArticlesCanvas in feature layout", () => {
   const article = shallow(
     <Article
       article={FeatureArticle}
+      display={Display("slideshow")}
       relatedArticlesForCanvas={RelatedCanvas}
       relatedArticlesForPanel={RelatedPanel}
     />

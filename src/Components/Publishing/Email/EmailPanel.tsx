@@ -102,7 +102,6 @@ const EmailPanelContainer = styled.div`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  margin-bottom: 40px;
 `
 const Title = styled.div`
   ${Fonts.unica("s16", "medium")}
