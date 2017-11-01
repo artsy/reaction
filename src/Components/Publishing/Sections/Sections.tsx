@@ -1,4 +1,6 @@
+import { clone, once } from 'lodash'
 import React from "react"
+import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
@@ -11,79 +13,160 @@ import { Text } from "./Text"
 import { Video } from "./Video"
 
 interface SectionsProps {
+  DisplayPanel?: any
   article: {
     layout: Layout
     authors?: any
     postscript?: string
+    sections?: any
   }
+  isMobile?: boolean
 }
 
 interface StyledSectionsProps {
   layout: string
 }
 
-export const Sections: React.SFC<SectionsProps> = props => {
-  return (
-    <StyledSections layout={props.article.layout}>
-      {renderSections(props.article)}
-      {renderPostScript(props.article)}
-      {renderAuthors(props.article.authors)}
-    </StyledSections>
-  )
-}
+/**
+ * When isMobile, hide sidebar and inject DisplayAd into the body of the
+ * article at a specific paragraph index.
+ */
+const MOBILE_DISPLAY_PANEL_INJECT_INDEX = 2
 
-function renderSections(article) {
-  const renderedSections = article.sections.map((section, i) => {
-    const child = getSection(section, article.layout)
+export class Sections extends React.Component<SectionsProps, any> {
 
-    if (child) {
+  injectDisplayPanelIntoText = once((body) => {
+    const displayPanelMarkup = ReactDOM.renderToString(<this.props.DisplayPanel />)
+
+    // Inject DisplayAd after a specific paragraph index
+    const tag = '</p>'
+    const updatedBody = body
+      .split(tag)
+      .map(p => p + tag)
+      .reduce((arr, block, paragraphIndex) => {
+        if (paragraphIndex === MOBILE_DISPLAY_PANEL_INJECT_INDEX) {
+          return arr.concat([block, displayPanelMarkup])
+        } else {
+          return arr.concat([block])
+        }
+      }, [])
+      .join('')
+
+    return updatedBody
+  })
+
+  getSection(section, layout) {
+    const sections = {
+      image_collection: (
+        <ImageCollection
+          sectionLayout={section.layout}
+          images={section.images}
+          targetHeight={500}
+          gutter={10}
+        />
+      ),
+      image_set: (
+        <ImageSetPreview
+          section={section}
+        />
+      ),
+      video: (
+        <Video
+          section={section}
+        />
+      ),
+      embed: (
+        <Embed
+          section={section}
+        />
+      ),
+      text: (
+        <Text
+          html={section.body}
+          layout={layout}
+        />
+      ),
+      default: false,
+    }
+
+    const sectionComponent = sections[section.type] || sections.default
+    return sectionComponent
+  }
+
+  renderSections() {
+    const { article, isMobile } = this.props
+    let displayAdInjected = false
+
+    const renderedSections = article.sections.map((sectionItem, i) => {
+      const shouldInject = !displayAdInjected && isMobile && sectionItem.type === 'text'
+      let section = sectionItem
+
+      if (shouldInject) {
+        displayAdInjected = true
+        section = clone(sectionItem)
+        section.body = this.injectDisplayPanelIntoText(section.body)
+      }
+
+      const child = this.getSection(section, article.layout)
+
+      if (child) {
+        return (
+          <SectionContainer
+            key={i}
+            layout={section.layout}
+            articleLayout={article.layout}
+          >
+            {child}
+          </SectionContainer>
+        )
+      }
+    })
+
+    return renderedSections
+  }
+
+  renderAuthors() {
+    const {
+      article: {
+        authors
+      }
+    } = this.props
+
+    if (authors) {
       return (
-        <SectionContainer key={i} layout={section.layout} articleLayout={article.layout}>
-          {child}
+        <SectionContainer>
+          <Authors authors={authors} />
         </SectionContainer>
       )
     }
-  })
-  return renderedSections
-}
-
-function getSection(section, layout) {
-  const sections = {
-    image_collection: (
-      <ImageCollection
-        sectionLayout={section.layout}
-        images={section.images}
-        targetHeight={500}
-        gutter={10}
-      />
-    ),
-    image_set: <ImageSetPreview section={section} />,
-    video: <Video section={section} />,
-    embed: <Embed section={section} />,
-    text: <Text html={section.body} layout={layout} />,
-    default: false,
   }
-  return sections[section.type] || sections["default"]
-}
 
-function renderAuthors(authors) {
-  if (authors) {
-    return (
-      <SectionContainer>
-        <Authors authors={authors} />
-      </SectionContainer>
-    )
-  } else {
-    return false
+  renderPostScript() {
+    const { article } = this.props
+    const { layout, postscript } = article
+
+    if (postscript) {
+      return (
+        <SectionContainer>
+          <Text
+            html={postscript}
+            layout={layout}
+            postscript={Boolean(postscript)}
+          />
+        </SectionContainer>
+      )
+    }
   }
-}
 
-function renderPostScript(article) {
-  if (article.postscript) {
+  render() {
+    const { article } = this.props
+
     return (
-      <SectionContainer>
-        <Text html={article.postscript} layout={article.layout} postscript={article.postscript ? true : false} />
-      </SectionContainer>
+      <StyledSections layout={article.layout}>
+        {this.renderSections()}
+        {this.renderPostScript()}
+        {this.renderAuthors()}
+      </StyledSections>
     )
   }
 }

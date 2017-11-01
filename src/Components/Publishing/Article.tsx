@@ -1,9 +1,11 @@
+import { get } from 'lodash'
 import { cloneDeep, includes, map, omit } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../Assets/Colors"
 import Events from "../../Utils/Events"
+import { Responsive } from '../../Utils/Responsive'
 import track from "../../Utils/track"
 import { pMedia } from "../Helpers"
 import { DisplayCanvas } from "./Display/Canvas"
@@ -50,7 +52,9 @@ interface ArticleContainerProps {
   marginTop?: string
 }
 
-@track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
+@track({ page: "Article" }, {
+  dispatch: data => Events.postEvent(data)
+})
 export class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
@@ -132,7 +136,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
         />
 
         <FeatureLayout className="article-content">
-          <Sections article={article} />
+          <Sections article={article} isMobile={isMobile} />
         </FeatureLayout>
 
         {relatedArticlesForCanvas &&
@@ -146,86 +150,139 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderStandardArticle() {
-    const { isMobile, relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
-    const { article } = this.state
-    const campaign = omit(this.props.display, "panel", "canvas")
-    const displayOverflows = this.props.display && this.props.display.canvas.layout === "slideshow"
+    const {
+      display,
+      relatedArticlesForCanvas,
+      relatedArticlesForPanel
+    } = this.props
+
+    const {
+      article
+    } = this.state
+
+    const hasPanel = get(display, 'panel', false)
+    const campaign = omit(display, "panel", "canvas")
+    const displayOverflows = display && display.canvas.layout === "slideshow"
+
+    const DisplayPanelAd = () =>
+      hasPanel &&
+      <DisplayPanel
+        unit={this.props.display.panel}
+        campaign={campaign}
+      />
 
     return (
-      <div>
-        <ReadMoreWrapper
-          isTruncated={this.state.isTruncated}
-          hideButton={this.removeTruncation}
-        >
-          <Header
-            article={article}
-            isMobile={isMobile}
-          />
-
-          <StandardLayoutParent>
-            <StandardLayout>
-              <Sections article={article} />
-              <Sidebar>
-                {this.props.emailSignupUrl &&
-                  <SidebarItem>
-                    <EmailPanel
-                      signupUrl={this.props.emailSignupUrl}
-                    />
-                  </SidebarItem>
-                }
-
-                {relatedArticlesForPanel &&
-                  <SidebarItem>
-                    <RelatedArticlesPanel
-                      label={"Related Stories"}
-                      articles={relatedArticlesForPanel}
-                    />
-                  </SidebarItem>
-                }
-
-                {this.props.display &&
-                  <DisplayPanel
-                    unit={this.props.display.panel}
-                    campaign={campaign}
-                    isMobile={isMobile}
-                  />}
-
-              </Sidebar>
-            </StandardLayout>
-          </StandardLayoutParent>
-
-          {relatedArticlesForCanvas &&
+      <Responsive initialState={{ isMobile: this.props.isMobile }}>
+        {({ isMobile, xs, sm, md }) => {
+          return (
             <div>
-              <LineBreak />
-              <RelatedArticlesCanvas
-                articles={relatedArticlesForCanvas}
-                isMobile={isMobile}
-                vertical={article.vertical}
-              />
-            </div>}
+              <ReadMoreWrapper
+                isTruncated={this.state.isTruncated}
+                hideButton={this.removeTruncation}
+              >
+                {/*
+                  Header
+                */}
+                <Header
+                  article={article}
+                  isMobile={isMobile}
+                />
 
-        </ReadMoreWrapper>
+                <StandardLayoutParent>
+                  <StandardLayout>
+                    {/*
+                      Body Content
+                    */}
+                    <Sections
+                      DisplayPanel={DisplayPanelAd}
+                      article={article}
+                      isMobile={isMobile || xs || sm || md}
+                    />
 
-        {this.state.isTruncated &&
-          <ReadMore
-            onClick={this.removeTruncation}
-          />}
+                    {/*
+                      Sidebar
+                    */}
+                    <Sidebar>
+                      {this.props.emailSignupUrl &&
+                        <SidebarItem>
+                          <EmailPanel
+                            signupUrl={this.props.emailSignupUrl}
+                          />
+                        </SidebarItem>
+                      }
 
-        {this.props.display && (
-          <div>
-            <LineBreak />
-            {displayOverflows
-              ? <FooterContainerOverflow>
-                <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
-              </FooterContainerOverflow>
+                      {/*
+                        Related Articles
+                      */}
+                      {relatedArticlesForPanel &&
+                        <SidebarItem>
+                          <RelatedArticlesPanel
+                            label={"Related Stories"}
+                            articles={relatedArticlesForPanel}
+                          />
+                        </SidebarItem>
+                      }
 
-              : <FooterContainer>
-                <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
-              </FooterContainer>
-            }
-          </div>
-        )}
-      </div>
+                      {/*
+                        Display Ad
+                      */}
+                      {this.props.display &&
+                        <DisplayPanelAd />}
+
+                    </Sidebar>
+                  </StandardLayout>
+                </StandardLayoutParent>
+
+                {/*
+                  Canvas: Related Articles
+                */}
+                {relatedArticlesForCanvas &&
+                  <div>
+                    <LineBreak />
+                    <RelatedArticlesCanvas
+                      articles={relatedArticlesForCanvas}
+                      isMobile={isMobile}
+                      vertical={article.vertical}
+                    />
+                  </div>}
+
+              </ReadMoreWrapper>
+
+              {/*
+                Read More Button
+              */}
+              {this.state.isTruncated &&
+                <ReadMore
+                  onClick={this.removeTruncation}
+                />}
+
+              {/*
+                Footer
+              */}
+              {this.props.display && (
+                <div>
+                  <LineBreak />
+
+                  {displayOverflows
+                    ? <FooterContainerOverflow>
+                      <DisplayCanvas
+                        unit={this.props.display.canvas}
+                        campaign={campaign}
+                      />
+                    </FooterContainerOverflow>
+                    : <FooterContainer>
+                      <DisplayCanvas
+                        unit={this.props.display.canvas}
+                        campaign={campaign}
+                      />
+                    </FooterContainer>
+                  }
+                </div>
+              )}
+            </div>
+          )
+        }}
+      </Responsive>
     )
   }
 
