@@ -120,7 +120,7 @@ exports[`Byline renders a byline 1`] = `
     className="author c1"
   >
     By 
-    Artsy Editorial
+    Artsy Editors
   </div>
   <div
     className="date c2"
