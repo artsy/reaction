@@ -5,27 +5,34 @@ import Colors from "../../../Assets/Colors"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { Fonts } from "../Fonts"
+import { VideoControls } from '../Sections/VideoControls'
 
 interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
-  unit: any
   campaign: any
+  isMobile?: boolean
+  unit: any
 }
 
 interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
-  imageUrl?: string
-  hoverImageUrl?: string
   coverUrl?: string
+  hoverImageUrl?: string
+  isMobile?: boolean
+  imageUrl?: string
   onMouseEnter: any
   onMouseLeave: any
 }
 
 @track()
-export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
+export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   private video: HTMLVideoElement
 
   constructor(props) {
     super(props)
     this.openLink = this.openLink.bind(this)
+
+    this.state = {
+      isPlaying: false
+    }
   }
 
   @track(once(props => ({
@@ -34,8 +41,11 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
     campaign_name: props.campaign.name,
     unit_layout: "panel"
   })))
-  // tslint:disable-next-line:no-empty
-  componentDidMount() { }
+  componentDidMount() {
+    this.video.onended = () => {
+      this.setState({ isPlaying: false })
+    }
+  }
 
   // Rather than using an <a /> tag, which bad markup can oftentimes break during
   // SSR, use JS to open link.
@@ -51,26 +61,33 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
     window.open(this.props.unit.link.url, '_blank')
   }
 
-  onMouseEnter = () => {
+  onMouseLeave = () => {
+    this.video.pause()
+  }
+
+  playVideo = () => {
     if (this.video) {
       if (this.video.paused) {
         this.video.play()
+        this.setState({ isPlaying: true })
       } else {
         this.video.pause()
+        this.setState({ isPlaying: false })
       }
     }
   }
 
-  onMouseLeave = () => {
-    if (this.video) {
-      this.video.pause()
-    }
-  }
-
   renderVideo = (url) => {
+    const { isMobile } = this.props
     return (
-      <VideoContainer>
-        <VideoCover />
+      <VideoContainer onClick={isMobile && this.playVideo}>
+        {!this.state.isPlaying &&
+          <VideoCover>
+            {isMobile &&
+              <VideoControls mini />
+            }
+          </VideoCover>
+        }
         <video src={url} controls={false} playsInline ref={video => (this.video = video)} />
       </VideoContainer>
     )
@@ -78,7 +95,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
 
 
   render() {
-    const { unit, campaign } = this.props
+    const { unit, campaign, isMobile } = this.props
     const url = get(unit.assets, '0.url', '')
     const cover = unit.cover_image_url || ''
     const imageUrl = crop(url, { width: 680, height: 284 })
@@ -87,11 +104,12 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
     const isVideo = url.includes("mp4")
 
     return (
-      <Wrapper onClick={this.openLink}>
+      <Wrapper onClick={!isMobile && this.openLink}>
         <DisplayPanelContainer
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
+          onMouseEnter={!isMobile && this.playVideo}
+          onMouseLeave={!isMobile && this.onMouseLeave}
           imageUrl={imageUrl}
+          isMobile={isMobile}
           hoverImageUrl={hoverImageUrl}
           coverUrl={coverUrl}>
 
@@ -99,18 +117,19 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
             ? this.renderVideo(url)
             : <Image />
           }
+          <div onClick={isMobile && this.openLink}>
+            <Headline>
+              {unit.headline}
+            </Headline>
 
-          <Headline>
-            {unit.headline}
-          </Headline>
+            <Body dangerouslySetInnerHTML={{
+              __html: unit.body
+            }} />
 
-          <Body dangerouslySetInnerHTML={{
-            __html: unit.body
-          }} />
-
-          <SponsoredBy>
-            {`Sponsored by ${campaign.name}`}
-          </SponsoredBy>
+            <SponsoredBy>
+              {`Sponsored by ${campaign.name}`}
+            </SponsoredBy>
+          </div>
         </DisplayPanelContainer>
       </Wrapper>
     )
@@ -134,6 +153,9 @@ const Image = styled.div`
 
 const VideoCover = Image.extend`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Div: StyledFunction<DivUrlProps> = styled.div
@@ -165,7 +187,7 @@ const DisplayPanelContainer = Div`
       : ""}
     }
     ${VideoCover} {
-      display: none;
+      ${props => !props.isMobile && "display: none;"}
     }
   }
 `

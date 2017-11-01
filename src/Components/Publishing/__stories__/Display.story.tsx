@@ -19,6 +19,9 @@ storiesOf("Publishing/Display", module)
   .add("Panel: Video", () => {
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
   })
+  .add("Panel: Video (mobile)", () => {
+    return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} isMobile />
+  })
   .add("Canvas: Overlay", () => {
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
   })
