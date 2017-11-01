@@ -35,7 +35,7 @@ export const getAuthorByline = authors => {
 
     // No Author
   } else {
-    return "Artsy Editorial"
+    return "Artsy Editors"
   }
 }
 
