@@ -28,7 +28,6 @@ export interface ArticleProps {
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
-  marginTop?: string
   display?: {
     name: string
     panel: object
@@ -44,9 +43,6 @@ interface ArticleState {
   isTruncated: boolean
 }
 
-interface ArticleContainerProps {
-  marginTop?: string
-}
 
 @track({ page: "Article" }, { dispatch: data => Events.postEvent(data) })
 export class Article extends React.Component<ArticleProps, ArticleState> {
@@ -164,15 +160,21 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
               <Sections article={article} />
               <Sidebar>
                 {this.props.emailSignupUrl &&
-                  <EmailPanel
-                    signupUrl={this.props.emailSignupUrl}
-                  />}
+                  <SidebarItem>
+                    <EmailPanel
+                      signupUrl={this.props.emailSignupUrl}
+                    />
+                  </SidebarItem>
+                }
 
                 {relatedArticlesForPanel &&
-                  <RelatedArticlesPanel
-                    label={"Related Stories"}
-                    articles={relatedArticlesForPanel}
-                  />}
+                  <SidebarItem>
+                    <RelatedArticlesPanel
+                      label={"Related Stories"}
+                      articles={relatedArticlesForPanel}
+                    />
+                  </SidebarItem>
+                }
 
                 {this.props.display &&
                   <DisplayPanel
@@ -208,11 +210,10 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { marginTop } = this.props
     const { article } = this.state
 
     return (
-      <ArticleContainer marginTop={marginTop}>
+      <div>
         {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
         <FullscreenViewer
           onClose={this.closeViewer}
@@ -220,19 +221,17 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
           slideIndex={this.state.slideIndex}
           images={this.state.fullscreenImages}
         />
-      </ArticleContainer>
+      </div>
     )
   }
 }
-
-const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
-
-const ArticleContainer = ArticleDiv`
-  margin-top: ${props => props.marginTop || "50px"};
-`
 
 const DisplayCanvasBreak = styled.hr`
   border: 0;
   margin-bottom: 0px;
   border-top: 1px solid #eee;
+`
+
+const SidebarItem = styled.div`
+  margin-bottom: 40px;
 `
