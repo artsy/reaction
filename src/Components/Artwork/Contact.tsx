@@ -1,5 +1,6 @@
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+
 import TextLink from "../TextLink"
 
 export interface ContactProps extends RelayProps, React.HTMLProps<Contact> {}

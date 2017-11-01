@@ -147,8 +147,7 @@
     "uuid": "^3.0.1"
   },
   "graphql": {
-    "file": "data/schema.json",
-    "tsInterfaceName": "RelayProps"
+    "file": "data/schema.json"
   },
   "jest": {
     "transform": {

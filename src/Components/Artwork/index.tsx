@@ -79,11 +79,8 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
     showOverlayOnHover: false,
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      isSelected: false,
-    }
+  state = {
+    isSelected: false,
   }
 
   onSelected = e => {
