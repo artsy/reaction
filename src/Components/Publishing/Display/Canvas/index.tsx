@@ -16,7 +16,7 @@ export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
 
   return (
     <DisplayContainer layout={unit.layout}>
-      <a href={unit.link.url} target="_blank">
+      <a href={unit.link ? unit.link.url : ''} target="_blank">
         <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
       </a>
       <CanvasContainer unit={unit} campaign={campaign} disclaimer={disclaimer} />

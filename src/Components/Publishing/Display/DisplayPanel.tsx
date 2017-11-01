@@ -58,8 +58,11 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     unit_layout: "panel"
   }))
   openLink(e) {
+    const { link } = this.props.unit
     e.preventDefault()
-    window.open(this.props.unit.link.url, '_blank')
+    if (link) {
+      window.open(link.url, '_blank')
+    }
   }
 
   @track(once((props) => ({
