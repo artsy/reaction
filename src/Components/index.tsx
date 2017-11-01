@@ -15,13 +15,6 @@ import TextArea from "./TextArea"
 import TextLink from "./TextLink"
 import Title from "./Title"
 
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import * as Relay from "react-relay/classic"
-
-import { artsyNetworkLayer } from "../Relay/config"
-import * as Artsy from "./Artsy"
-
 interface InitOptions {
   user: User
   component: any
@@ -29,16 +22,15 @@ interface InitOptions {
   queryConfig: any
 }
 
+// TODO: Fix Force integration post Relay Modern migration
 export function init(options: InitOptions) {
-  Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
-
-  const rootRoute = (
-    <Artsy.ContextProvider currentUser={options.user}>
-      <Relay.RootContainer Component={options.component} route={options.queryConfig} />
-    </Artsy.ContextProvider>
-  )
-
-  ReactDOM.render(rootRoute, document.getElementById(options.domID))
+  // Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
+  // const rootRoute = (
+  //   <Artsy.ContextProvider currentUser={options.user}>
+  //     <Relay.RootContainer Component={options.component} route={options.queryConfig} />
+  //   </Artsy.ContextProvider>
+  // )
+  // ReactDOM.render(rootRoute, document.getElementById(options.domID))
 }
 
 export default {

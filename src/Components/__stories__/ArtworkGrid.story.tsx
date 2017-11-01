@@ -1,18 +1,14 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { injectNetworkLayer, Store } from "react-relay/classic"
-import { graphql, QueryRenderer } from "react-relay/compat"
+import { graphql } from "react-relay/compat"
 
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import ArtworkGrid from "../ArtworkGrid"
 
-import { artsyNetworkLayer } from "../../Relay/config"
-import * as Artsy from "../Artsy"
-
-function GridExample(props: { artistID: string }) {
-  injectNetworkLayer(artsyNetworkLayer())
+function GridExample(props: { artistID: string; currentUser: User }) {
   return (
-    <QueryRenderer
-      environment={Store as any}
+    <RootQueryRenderer
+      currentUser={props.currentUser}
       query={graphql`
         query ArtworkGridQuery($artistID: String!) {
           artist(id: $artistID) {
@@ -35,9 +31,5 @@ storiesOf("Components/Artworks/ArtworkGrid", module).add("A typical grid", () =>
     id: "some-id",
     accessToken: "some-token",
   } as User
-  return (
-    <Artsy.ContextProvider currentUser={user}>
-      <GridExample artistID="banksy" />
-    </Artsy.ContextProvider>
-  )
+  return <GridExample artistID="banksy" currentUser={user} />
 })

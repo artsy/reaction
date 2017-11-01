@@ -1,17 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { injectNetworkLayer, Store } from "react-relay/classic"
-import { graphql, QueryRenderer } from "react-relay/compat"
+import { graphql } from "react-relay/compat"
 
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import Metadata from "../Artwork/Metadata"
 
-import { artsyNetworkLayer } from "../../Relay/config"
-
 function ArtworkExample(props: { artworkID: string }) {
-  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <QueryRenderer
-      environment={Store as any}
+    <RootQueryRenderer
       query={graphql`
         query ArtworkMetadataQuery($artworkID: String!) {
           artwork(id: $artworkID) {

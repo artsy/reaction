@@ -1,55 +1,40 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { injectNetworkLayer, Store } from "react-relay/classic"
-import { graphql, QueryRenderer } from "react-relay/compat"
+import { graphql } from "react-relay/compat"
 
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import Gene from "../Gene"
 import ArtistRow from "../Gene/ArtistRow"
 
-import * as Artsy from "../../Components/Artsy"
-import { artsyNetworkLayer } from "../../Relay/config"
-
 function GeneExample(props: { geneID: string }) {
-  // TODO This is going to change with the stubbed local MP schema anyways.
-  // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Artsy.ContextProvider>
-      <QueryRenderer
-        environment={Store as any}
-        query={graphql`
-          query GeneQuery($geneID: String!) {
-            gene(id: $geneID) {
-              ...Gene_gene
-            }
+    <RootQueryRenderer
+      query={graphql`
+        query GeneQuery($geneID: String!) {
+          gene(id: $geneID) {
+            ...Gene_gene
           }
-        `}
-        variables={{ artistID: props.geneID }}
-        render={readyState => readyState.props && <Gene {...readyState.props as any} />}
-      />
-    </Artsy.ContextProvider>
+        }
+      `}
+      variables={{ artistID: props.geneID }}
+      render={readyState => readyState.props && <Gene {...readyState.props as any} />}
+    />
   )
 }
 
 function ArtistExample(props: { artistID: string }) {
-  // TODO This is going to change with the stubbed local MP schema anyways.
-  // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Artsy.ContextProvider>
-      <QueryRenderer
-        environment={Store as any}
-        query={graphql`
-          query GeneArtistRowQuery($artistID: String!) {
-            artist(id: $artistID) {
-              ...ArtistRow_artist
-            }
+    <RootQueryRenderer
+      query={graphql`
+        query GeneArtistRowQuery($artistID: String!) {
+          artist(id: $artistID) {
+            ...ArtistRow_artist
           }
-        `}
-        variables={{ artistID: props.artistID }}
-        render={readyState => readyState.props && <ArtistRow {...readyState.props as any} />}
-      />
-    </Artsy.ContextProvider>
+        }
+      `}
+      variables={{ artistID: props.artistID }}
+      render={readyState => readyState.props && <ArtistRow {...readyState.props as any} />}
+    />
   )
 }
 

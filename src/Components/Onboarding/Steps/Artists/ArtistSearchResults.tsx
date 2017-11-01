@@ -1,8 +1,7 @@
 import * as React from "react"
-import { Store } from "react-relay/classic"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay/compat"
-import { Environment } from "relay-runtime"
 
+import { ContextConsumer, ContextProps } from "../../../Artsy"
 import SelectableItemContainer from "./SelectableItemContainer"
 
 export interface RelayProps {
@@ -32,10 +31,10 @@ interface Props {
   term: string
 }
 
-export const ArtistSearchResults: React.SFC<Props> = ({ term }) => {
+const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
   return (
     <QueryRenderer
-      environment={(Store as any) as Environment}
+      environment={relayEnvironment}
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {
           viewer {
@@ -54,3 +53,5 @@ export const ArtistSearchResults: React.SFC<Props> = ({ term }) => {
     />
   )
 }
+
+export const ArtistSearchResults = ContextConsumer(ArtistSearchResultsComponent)

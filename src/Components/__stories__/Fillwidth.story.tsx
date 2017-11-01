@@ -1,18 +1,14 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { injectNetworkLayer, Store } from "react-relay/classic"
-import { graphql, QueryRenderer } from "react-relay/compat"
+import { graphql } from "react-relay/compat"
 
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import Fillwidth from "../Artwork/Fillwidth"
 
-import { artsyNetworkLayer } from "../../Relay/config"
-import * as Artsy from "../Artsy"
-
 function FillwidthExample(props: { artistID: string; user: User }) {
-  injectNetworkLayer(artsyNetworkLayer(props.user))
   return (
-    <QueryRenderer
-      environment={Store as any}
+    <RootQueryRenderer
+      currentUser={props.user}
       query={graphql`
         query FillwidthQuery($artistID: String!) {
           artist(id: $artistID) {
@@ -36,9 +32,5 @@ storiesOf("Components/Artworks/Fillwidth", module).add("A typical fillwidth", ()
     accessToken:
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NDdjNzNkNTcyNjE2OTJkODNkNzAwMDAiLCJzYWx0X2hhc2giOiJhMzkxZmU2NzBlYWY3MDJlZGViMmNjODk3YTk3ZTQyNSIsInJvbGVzIjoidXNlciIsInBhcnRuZXJfaWRzIjpbXSwiZXhwIjoxNTE0MjA4Nzg3LCJpYXQiOjE1MDkwMjQ3ODcsImF1ZCI6IjRlMzZlZmE0ZGI0ZTMyMDAwMTAwMDM1OSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1OWYxZTQxMzhiM2I4MTU4ZjgwZjYxNjYifQ.yK6ise21DS0ohlpqPllMacd9prqGpccraeziiS-V4MY",
   } as User
-  return (
-    <Artsy.ContextProvider currentUser={user}>
-      <FillwidthExample artistID="stephen-willats" user={user} />
-    </Artsy.ContextProvider>
-  )
+  return <FillwidthExample artistID="stephen-willats" user={user} />
 })

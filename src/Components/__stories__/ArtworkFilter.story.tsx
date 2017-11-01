@@ -1,11 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
-import { injectNetworkLayer, Store } from "react-relay/classic"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay/compat"
+import { createFragmentContainer, graphql } from "react-relay/compat"
 
-import * as Artsy from "../../Components/Artsy"
-import { artsyNetworkLayer } from "../../Relay/config"
-
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import ArtworkFilter from "../ArtworkFilter"
 import Dropdown from "../ArtworkFilter/Dropdown"
 import TotalCount from "../ArtworkFilter/TotalCount"
@@ -69,10 +66,8 @@ interface DropdownRelayProps {
 }
 
 function FilterArtworksDropdownExample() {
-  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <QueryRenderer
-      environment={Store as any}
+    <RootQueryRenderer
       query={graphql`
         query ArtworkFilterDropdownExampleQuery {
           viewer {
@@ -89,10 +84,8 @@ function FilterArtworksDropdownExample() {
 }
 
 function FilterArtworksTotalCountExample() {
-  injectNetworkLayer(artsyNetworkLayer())
   return (
-    <QueryRenderer
-      environment={Store as any}
+    <RootQueryRenderer
       query={graphql`
         query ArtworkFilterTotalCountExampleQuery {
           viewer {
@@ -111,28 +104,25 @@ function FilterArtworksTotalCountExample() {
 }
 
 function FilterArtworksExample() {
-  injectNetworkLayer(artsyNetworkLayer())
   const user = {
     id: "some-id",
     accessToken: "some-token",
   } as User
   return (
-    <Artsy.ContextProvider currentUser={user}>
-      <QueryRenderer
-        environment={Store as any}
-        query={graphql`
-          query ArtworkFilterExampleQuery {
-            viewer {
-              ...ArtworkFilter_filter_artworks
-            }
+    <RootQueryRenderer
+      currentUser={user}
+      query={graphql`
+        query ArtworkFilterExampleQuery {
+          viewer {
+            ...ArtworkFilter_filter_artworks
           }
-        `}
-        variables={{}}
-        render={readyState => {
-          return readyState.props && <ArtworkFilter {...readyState.props as any} />
-        }}
-      />
-    </Artsy.ContextProvider>
+        }
+      `}
+      variables={{}}
+      render={readyState => {
+        return readyState.props && <ArtworkFilter {...readyState.props as any} />
+      }}
+    />
   )
 }
 
