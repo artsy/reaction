@@ -71,11 +71,11 @@ ads.forEach(mediaType => {
 })
 
 story.add("Feature", () => {
-  return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
+  return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} />
 })
 
 story.add("Super Article", () => {
   const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
-  return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
+  return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} />
 })
 

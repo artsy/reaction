@@ -43,7 +43,6 @@ const DisplayContainer = Div`
     text-decoration: none;
   }
   ${props => pMedia.sm`
-    ${props.layout !== "slideshow" && "padding: 0 20px;"}
     margin-bottom: 0;
   `}
 `
