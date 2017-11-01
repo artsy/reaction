@@ -43,8 +43,10 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     unit_layout: "panel"
   })))
   componentDidMount() {
-    this.video.onended = () => {
-      this.setState({ isPlaying: false })
+    if (this.video) {
+      this.video.onended = () => {
+        this.setState({ isPlaying: false })
+      }
     }
   }
 

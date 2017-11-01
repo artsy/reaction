@@ -35,7 +35,7 @@ exports[`renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .m49hnr-1-file__Image-iTToDH {
+.c1 .mfei63-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -46,7 +46,7 @@ exports[`renders the display panel with an image 1`] = `
   border: 10px solid black;
 }
 
-.c1:hover .m49hnr-1-file__Image-iTToDH {
+.c1:hover .mfei63-1-file__Image-iTToDH {
   display: none;
 }
 
@@ -102,22 +102,26 @@ exports[`renders the display panel with an image 1`] = `
       className="c2 c3"
     />
     <div
-      className="c4"
+      onClick={undefined}
     >
-      Euismod Inceptos Quam
-    </div>
-    <div
-      className="c5"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+      <div
+        className="c4"
+      >
+        Euismod Inceptos Quam
+      </div>
+      <div
+        className="c5"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+          }
         }
-      }
-    />
-    <div
-      className="c6"
-    >
-      Sponsored by Artsy
+      />
+      <div
+        className="c6"
+      >
+        Sponsored by Artsy
+      </div>
     </div>
   </div>
 </div>
@@ -138,14 +142,26 @@ exports[`renders the display panel with video 1`] = `
   background-color: black;
   box-sizing: border-box;
   position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.ioQrvi .c3 {
+.eMZrHQ .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.ioQrvi:hover .c3 {
+.eMZrHQ:hover .c3 {
   display: none;
 }
 
@@ -163,7 +179,7 @@ exports[`renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-m49hnr-1 {
+.c1 .file__Image-mfei63-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz9w_n6UxxoZ_u1lzt4vwrw%252FHero%2BLoop%2B02.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -173,7 +189,7 @@ exports[`renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c1:hover .file__Image-m49hnr-1 {
+.c1:hover .file__Image-mfei63-1 {
   background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
   background-size: contain;
   border: 10px solid black;
@@ -257,6 +273,7 @@ exports[`renders the display panel with video 1`] = `
   >
     <div
       className="c2"
+      onClick={undefined}
     >
       <div
         className="c3 c4"
@@ -268,22 +285,26 @@ exports[`renders the display panel with video 1`] = `
       />
     </div>
     <div
-      className="c5"
+      onClick={undefined}
     >
-      Euismod Inceptos Quam
-    </div>
-    <div
-      className="c6"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+      <div
+        className="c5"
+      >
+        Euismod Inceptos Quam
+      </div>
+      <div
+        className="c6"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+          }
         }
-      }
-    />
-    <div
-      className="c7"
-    >
-      Sponsored by Artsy
+      />
+      <div
+        className="c7"
+      >
+        Sponsored by Artsy
+      </div>
     </div>
   </div>
 </div>
