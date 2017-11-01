@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
+import styled from 'styled-components'
 import _ from "underscore"
 import { Article } from "../Article"
 import {
@@ -70,18 +71,37 @@ ads.forEach(mediaType => {
   })
 })
 
-story.add(`Standard with video test ad`, () => {
+story.add(`Multiple standard articles`, () => {
+  const article = {
+    ...StandardArticle,
+    sections: [
+      {
+        type: "text",
+        body:
+        "<p>What would Antoine Court?</p>",
+      }
+    ]
+  }
   return (
     <div>
       <Article
-        article={StandardArticle}
+        article={article}
+        display={Display('slideshow')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+      <Break />
+      <Article
+        article={article}
         display={Display('video')}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
       />
+      <Break />
       <Article
-        article={StandardArticle}
+        article={article}
         display={Display('image')}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
@@ -90,6 +110,12 @@ story.add(`Standard with video test ad`, () => {
     </div>
   )
 })
+
+const Break = styled.div`
+  border-top: 1px solid #ccc;
+  width: 100%;
+  margin-top: 80px;
+`
 
 story.add("Feature", () => {
   return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />

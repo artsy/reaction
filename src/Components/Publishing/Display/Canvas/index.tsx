@@ -45,6 +45,7 @@ const DisplayContainer = Div`
   ${props => pMedia.sm`
     ${props.layout !== "slideshow" && "padding: 0 20px;"}
     margin-bottom: 0;
+    min-height: 400px;
   `}
 `
 const AdvertisementBy = styled.div`
