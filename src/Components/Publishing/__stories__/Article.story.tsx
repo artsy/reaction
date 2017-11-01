@@ -70,6 +70,27 @@ ads.forEach(mediaType => {
   })
 })
 
+story.add(`Standard with video test ad`, () => {
+  return (
+    <div>
+      <Article
+        article={StandardArticle}
+        display={Display('video')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+      <Article
+        article={StandardArticle}
+        display={Display('image')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+    </div>
+  )
+})
+
 story.add("Feature", () => {
   return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
 })

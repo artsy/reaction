@@ -115,13 +115,13 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
       nextArrow: (
         <RightArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
         />
       ),
       prevArrow: (
         <LeftArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
           isOnTitle={this.state.isOnTitle}
         />
       ),
