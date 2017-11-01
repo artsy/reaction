@@ -18,7 +18,7 @@ export const block = (margin: number = 0) => {
 
 const sizes = theme.flexboxgrid.breakpoints
 
-type Media = { [S in keyof typeof sizes]: typeof css }
+type Media = {[S in keyof typeof sizes]: typeof css }
 
 export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   // using px in breakpoints to maintain uniform units with flexbox-grid
@@ -34,7 +34,7 @@ export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
 
 const psizes = theme.publishing.breakpoints
 
-type PublishingMedia = { [S in keyof typeof psizes]: typeof css }
+type PublishingMedia = {[S in keyof typeof psizes]: typeof css }
 
 export const pMedia: PublishingMedia = Object.keys(psizes).reduce((accumulator, label) => {
   const pxSize = psizes[label]

@@ -9,11 +9,15 @@ import {
   UnitCanvasSlideshow,
   UnitCanvasVideo,
   UnitPanel,
+  UnitPanelVideo
 } from "../Fixtures/Components"
 
 storiesOf("Publishing/Display", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
+  })
+  .add("Panel: Video", () => {
+    return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
   })
   .add("Canvas: Overlay", () => {
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />

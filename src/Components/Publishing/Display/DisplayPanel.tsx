@@ -12,12 +12,17 @@ interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
-  imageUrl: string
-  hoverImageUrl: string
+  imageUrl?: string
+  hoverImageUrl?: string
+  coverUrl?: string
+  onMouseEnter: any
+  onMouseLeave: any
 }
 
 @track()
 export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
+  private video: HTMLVideoElement
+
   constructor(props) {
     super(props)
     this.openLink = this.openLink.bind(this)
@@ -46,16 +51,54 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, null> {
     window.open(this.props.unit.link.url, '_blank')
   }
 
+  onMouseEnter = () => {
+    if (this.video) {
+      if (this.video.paused) {
+        this.video.play()
+      } else {
+        this.video.pause()
+      }
+    }
+  }
+
+  onMouseLeave = () => {
+    if (this.video) {
+      this.video.pause()
+    }
+  }
+
+  renderVideo = (url) => {
+    return (
+      <VideoContainer>
+        <VideoCover />
+        <video src={url} controls={false} playsInline ref={video => (this.video = video)} />
+      </VideoContainer>
+    )
+  }
+
+
   render() {
     const { unit, campaign } = this.props
-    const image = get(unit.assets, '0.url', '')
-    const imageUrl = crop(image, { width: 680, height: 284 })
+    const url = get(unit.assets, '0.url', '')
+    const cover = get(unit.assets, '1.url', '')
+    const imageUrl = crop(url, { width: 680, height: 284 })
     const hoverImageUrl = resize(unit.logo, { width: 680 })
+    const coverUrl = crop(cover, { width: 680, height: 284 })
+    const isVideo = url.includes("mp4")
 
     return (
       <Wrapper onClick={this.openLink}>
-        <DisplayPanelContainer imageUrl={imageUrl} hoverImageUrl={hoverImageUrl}>
-          <Image />
+        <DisplayPanelContainer
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          imageUrl={imageUrl}
+          hoverImageUrl={hoverImageUrl}
+          coverUrl={coverUrl}>
+
+          {isVideo
+            ? this.renderVideo(url)
+            : <Image />
+          }
 
           <Headline>
             {unit.headline}
@@ -89,6 +132,10 @@ const Image = styled.div`
   box-sizing: border-box;
 `
 
+const VideoCover = Image.extend`
+  position: absolute;
+`
+
 const Div: StyledFunction<DivUrlProps> = styled.div
 
 const DisplayPanelContainer = Div`
@@ -102,6 +149,10 @@ const DisplayPanelContainer = Div`
     background: url(${props => (props.imageUrl ? props.imageUrl : "")}) no-repeat center center;
     background-size: cover;
   }
+  ${VideoCover} {
+    background: url(${props => (props.coverUrl ? props.coverUrl : "")}) no-repeat center center;
+    background-size: cover;
+  }
   &:hover {
     ${Image} {
       ${props =>
@@ -112,6 +163,9 @@ const DisplayPanelContainer = Div`
           border: 10px solid black;
         `
       : ""}
+    }
+    ${VideoCover} {
+      display: none;
     }
   }
 `
@@ -131,4 +185,16 @@ const Body = styled.div`
 
 const SponsoredBy = styled.div`
   ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
+`
+
+const VideoContainer = Image.extend`
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  video {
+    object-fit: cover;
+    object-position: 50%;
+    width: 100%;
+  }
 `
