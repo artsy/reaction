@@ -15,7 +15,7 @@ interface BylineContainerProps {
 
 export const Byline: React.SFC<BylineProps> = props => {
   const { article } = props
-  const { contributing_authors, published_at } = article
+  const { authors, published_at } = article
   const layout = props.layout || article.layout
   const title = article.social_title || article.thumbnail_title
   const url = articleFullHref(article.slug)
@@ -23,10 +23,7 @@ export const Byline: React.SFC<BylineProps> = props => {
   return (
     <BylineContainer layout={layout}>
       <Author
-        /*
-          FIXME: Will need to be updated with new `author_ids` backfill when ready
-        */
-        authors={contributing_authors}
+        authors={authors}
         layout={layout}
       />
 

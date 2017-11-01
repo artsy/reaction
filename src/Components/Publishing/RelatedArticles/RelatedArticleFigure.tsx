@@ -12,7 +12,7 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
     thumbnail_title: string
     thumbnail_image: string
     slug: string
-    contributing_authors: any
+    authors: any
     published_at: string
   }
 }

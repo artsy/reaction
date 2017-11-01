@@ -222,5 +222,16 @@ exports[`renders properly 1`] = `
       </span>
     </div>
   </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c3"
+    >
+      <div>
+        Kana Abe
+      </div>
+    </div>
+  </div>
 </div>
 `;
