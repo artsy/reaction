@@ -22,7 +22,7 @@ storiesOf("Publishing/Byline", module)
   })
   .add("Many Authors Byline", () => {
     const article = extend({}, StandardArticle, {
-      contributing_authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
+      authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
     })
     return (
       <div>

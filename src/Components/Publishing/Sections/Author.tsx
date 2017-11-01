@@ -17,13 +17,23 @@ export const Author: React.SFC<AuthorProps> = props => {
     <AuthorContainer>
       {profileImage}
       <AuthorInfo>
-        <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
-        <Twitter>
-          <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
-            <Icon name="twitter" color="black" />
-            {`@${author.twitter_handle}`}
-          </TwitterHandle>
-        </Twitter>
+        {
+          author.bio && author.bio.length ?
+            <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
+            :
+            <div>{author.name}</div>
+        }
+        {
+          author.twitter_handle && author.twitter_handle.length ?
+            <Twitter>
+              <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
+                <Icon name="twitter" color="black" />
+                {`@${author.twitter_handle}`}
+              </TwitterHandle>
+            </Twitter>
+            :
+            false
+        }
       </AuthorInfo>
     </AuthorContainer>
   )

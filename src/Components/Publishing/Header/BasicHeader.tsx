@@ -43,7 +43,7 @@ export class BasicHeader extends React.Component<Props, State> {
   render() {
     const {
       article: {
-      contributing_authors,
+      authors,
       hero_section,
       lead_paragraph,
       published_at,
@@ -99,7 +99,7 @@ export class BasicHeader extends React.Component<Props, State> {
                     <Row>
                       <Col xs={12} sm={12} md={12} lg={12} className='Byline__Container'>
                         <Author>
-                          By {getAuthorByline(contributing_authors)}
+                          By {getAuthorByline(authors)}
                         </Author>
                         <Date>
                           {getDate(published_at, isMobile ? 'condensed' : 'basic')}

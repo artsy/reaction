@@ -395,7 +395,7 @@ export const BasicArticle: ArticleData = {
     },
     ...StandardArticle.sections
   ],
-  contributing_authors: [
+  authors: [
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
@@ -428,12 +428,6 @@ export const FeatureArticle: ArticleData = {
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
     deck: "Lorem Ipsum",
   },
-  contributing_authors: [
-    {
-      id: "523783258b3b815f7100055a",
-      name: "Casey Lesser",
-    },
-  ],
   authors: [
     {
       id: "523783258b3b815f7100055a",

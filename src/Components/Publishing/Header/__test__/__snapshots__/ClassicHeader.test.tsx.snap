@@ -477,7 +477,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
         className="author c5"
       >
         By 
-        Artsy Editorial
+        Artsy Editors
       </div>
       <div
         className="date c6"
