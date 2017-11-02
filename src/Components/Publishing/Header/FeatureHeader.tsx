@@ -385,6 +385,7 @@ const FeatureHeaderContainer = Div.extend`
     `}
   }
   &[data-type="fullscreen"] {
+    margin-bottom: 80px;
     ${HeaderText} {
       padding: 50px;
       color: #fff;
