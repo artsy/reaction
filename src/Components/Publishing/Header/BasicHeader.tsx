@@ -55,7 +55,7 @@ export class BasicHeader extends React.Component<Props, State> {
     } = this.props
 
     const { url } = hero_section
-    const hasVideo = isValidVideoUrl(url)
+    const hasVideo = url && isValidVideoUrl(url)
 
     return (
       <Responsive initialState={{ isMobile: passedIsMobile }}>
