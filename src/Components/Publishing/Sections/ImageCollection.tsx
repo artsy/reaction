@@ -20,83 +20,82 @@ interface ImageCollectionProps {
   }
 }
 
-const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
-  noPlaceholder: true,
-}
-
-const ImageCollectionComponent: React.SFC<ImageCollectionProps> = props => {
-  const {
-    gutter,
-    images,
-    sectionLayout,
-    size,
-    targetHeight,
-  } = props
-
-  const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
-  const renderedImages = renderImages(images, dimensions, gutter, sectionLayout, size.width)
-
-  return (
-    <ImageCollectionContainer>
-      {renderedImages}
-    </ImageCollectionContainer>
-  )
-}
-
-ImageCollectionComponent.defaultProps = {
-  size: {
-    width: 680,
-  },
-}
-
-function renderImages(images, dimensions, gutter, sectionLayout, width) {
-  const renderedImages = images.map((image, i) => {
-    const url = image.url || image.image
-
-    let imageSize
-    if (width <= 600 || dimensions.length === 1) {
-      imageSize = {}
-    } else {
-      imageSize = find(dimensions, ["__id", url])
+class ImageCollectionComponent extends React.Component<ImageCollectionProps, null> {
+  static defaultProps = {
+    size: {
+      width: 680
     }
+  }
 
-    let renderedImage
-    if (image.type === "image") {
-      renderedImage = (
-        <Image
-          image={image}
-          sectionLayout={sectionLayout}
-          width={imageSize.width}
-          height={imageSize.height}
-        />
-      )
-    } else if (image.type === "artwork") {
-      renderedImage = (
-        <Artwork
-          artwork={image}
-          sectionLayout={sectionLayout}
-          width={imageSize.width}
-          height={imageSize.height}
-        />
-      )
-    } else {
-      return false
-    }
+  renderImages(dimensions) {
+    const {
+      gutter,
+      images,
+      sectionLayout,
+      size: {
+        width
+      }
+    } = this.props
 
-    const margin = i === dimensions.length - 1 ? 0 : gutter
+    const renderedImages = images.map((image, i) => {
+      const url = image.url || image.image
+
+      let imageSize
+      if (width <= 600 || dimensions.length === 1) {
+        imageSize = {}
+      } else {
+        imageSize = find(dimensions, ["__id", url])
+      }
+
+      let renderedImage
+      if (image.type === "image") {
+        renderedImage = (
+          <Image
+            image={image}
+            sectionLayout={sectionLayout}
+            width={imageSize.width}
+            height={imageSize.height}
+          />
+        )
+      } else if (image.type === "artwork") {
+        renderedImage = (
+          <Artwork
+            artwork={image}
+            sectionLayout={sectionLayout}
+            width={imageSize.width}
+            height={imageSize.height}
+          />
+        )
+      } else {
+        return false
+      }
+
+      const margin = i === dimensions.length - 1 ? 0 : gutter
+
+      return (
+        <ImageCollectionItem
+          key={i}
+          margin={margin}
+          width={imageSize.width}
+        >
+          {renderedImage}
+        </ImageCollectionItem>
+      )
+    })
+    return renderedImages
+  }
+
+  render() {
+    const { gutter, images, size, targetHeight } = this.props
+    const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
+    const renderedImages = this.renderImages(dimensions)
 
     return (
-      <ImageCollectionItem
-        key={i}
-        margin={margin}
-        width={imageSize.width}
-      >
-        {renderedImage}
-      </ImageCollectionItem>
+      <ImageCollectionContainer>
+        {renderedImages}
+      </ImageCollectionContainer>
     )
-  })
-  return renderedImages
+  }
 }
 
 const ImageCollectionContainer = styled.div`
@@ -108,5 +107,10 @@ const ImageCollectionContainer = styled.div`
     flex-direction: column;
   `};
 `
+
+const sizeMeOptions = {
+  refreshRate: sizeMeRefreshRate,
+  noPlaceholder: true,
+}
 
 export const ImageCollection = sizeMe(sizeMeOptions)(ImageCollectionComponent)

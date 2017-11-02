@@ -97,7 +97,7 @@ export class Sections extends React.Component<SectionsProps, any> {
     const { article, isMobile } = this.props
     let displayAdInjected = false
 
-    const renderedSections = article.sections.map((sectionItem, i) => {
+    const renderedSections = article.sections.map((sectionItem, index) => {
       const shouldInject = !displayAdInjected && isMobile && sectionItem.type === 'text'
       let section = sectionItem
 
@@ -112,7 +112,7 @@ export class Sections extends React.Component<SectionsProps, any> {
       if (child) {
         return (
           <SectionContainer
-            key={i}
+            key={index}
             layout={section.layout}
             articleLayout={article.layout}
           >

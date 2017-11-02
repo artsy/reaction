@@ -5,6 +5,7 @@ import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
+import { ImageWrapper } from "./ImageWrapper"
 
 type Layout = "mini" | "full"
 
@@ -25,24 +26,10 @@ export interface Props {
   }
 }
 
-const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
-
 export class ImageSetPreview extends Component<Props, null> {
+
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
-  }
-
-  getImageUrl() {
-    const image = this.props.section.images[0]
-    const src = image.url ? image.url : image.image
-    return resize(src, { width: 1200 })
-  }
-
-  image() {
-    const src = this.getImageUrl()
-    const width = this.props.section.layout === "full" ? "100%" : "auto"
-    const height = this.props.section.layout === "full" ? "auto" : "100%"
-    return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
   }
 
   onClick = () => {
@@ -51,71 +38,100 @@ export class ImageSetPreview extends Component<Props, null> {
     }
   }
 
-  wrapper() {
-    if (this.props.section.layout === "full") {
-      return (
-        <FullWrapper onClick={this.onClick}>
-          {this.textSection()}
-          {this.icon()}
-        </FullWrapper>
-      )
-    } else {
-      return (
-        <MiniWrapper onClick={this.onClick}>
-          {this.image()}
-          <MiniInner>
-            {this.textSection()}
-            {this.icon()}
-          </MiniInner>
-        </MiniWrapper>
-      )
-    }
-  }
-
   textSection() {
+    let {
+      section: {
+        images,
+        layout,
+        title
+      }
+    } = this.props
+
+    if (!title) {
+      title = images.length + " Images"
+    }
+
     return (
-      <TitleWrapper layout={this.props.section.layout}>
-        {this.title()}
+      <TitleWrapper layout={layout}>
+        <Title>
+          {title}
+        </Title>
         <SubTitle>
           <SubTitlePrompt>View Slideshow</SubTitlePrompt>
-          {this.subTitleCount()}
+          { title &&
+            <SubTitleCount>
+              {images.length} Images
+            </SubTitleCount>
+          }
         </SubTitle>
       </TitleWrapper>
     )
   }
 
-  title() {
-    let title = this.props.section.images.length + " Images"
-    if (this.props.section.title) {
-      title = this.props.section.title
-    }
-    return <Title>{title}</Title>
-  }
-
-  subTitleCount() {
-    if (this.props.section.title) {
-      return <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
-    }
-  }
-
-  icon() {
-    return (
-      <IconContainer>
-        <IconImageSet />
-      </IconContainer>
-    )
-  }
-
   render() {
-    const image = this.props.section.layout === "full" ? this.image() : null
+    const {
+      section: {
+        images,
+        layout,
+        title
+      }
+    } = this.props
+
+    const isFullLayout = layout === 'full'
+    const image = images[0]
+    const src = resize(image.url || image.image, { width: 1200 })
+    const imageProps = {
+      src,
+      width: "auto",
+      height: "100%"
+    }
+
+    if (isFullLayout) {
+      imageProps.width = "100%"
+      imageProps.height = "auto"
+    }
+
     return (
       <div style={{ position: "relative", width: "100%" }}>
-        {this.wrapper()}
-        {image}
+        {(() => {
+          if (isFullLayout) {
+            return (
+              <FullWrapper onClick={this.onClick}>
+                {this.textSection()}
+
+                <IconContainer>
+                  <IconImageSet />
+                </IconContainer>
+              </FullWrapper>
+            )
+          } else {
+            return (
+              <MiniWrapper onClick={this.onClick}>
+                 <ImageWrapper {...imageProps}
+                  alt={title || "Open Slideshow"}
+                />
+
+                <MiniInner>
+                  {this.textSection()}
+
+                  <IconContainer>
+                    <IconImageSet />
+                  </IconContainer>
+                </MiniInner>
+              </MiniWrapper>
+            )
+          }
+        })()}
+
+        <ImageWrapper {...imageProps}
+          alt={title || "Open Slideshow"}
+        />
       </div>
     )
   }
 }
+
+const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const IconContainer = styled.div`
   height: 45px;
@@ -145,6 +161,7 @@ const FullWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   cursor: pointer;
+  z-index: 1;
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
