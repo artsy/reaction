@@ -1,4 +1,6 @@
-const { configure } = require("@storybook/react")
+const {
+  configure
+} = require("@storybook/react")
 const Events = require("../Utils/Events").default
 const req = require.context("../", true, /\.story\.tsx$/)
 
@@ -7,7 +9,10 @@ function loadStories() {
 }
 
 configure(loadStories, module)
-Events.onEvent(data => console.log("Tracked event", data))
+
+Events.onEvent(data => {
+  console.log("Tracked event", data)
+})
 
 setOptions({
   name: "Reaction",

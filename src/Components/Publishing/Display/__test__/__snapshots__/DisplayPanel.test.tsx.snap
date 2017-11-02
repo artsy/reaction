@@ -34,7 +34,7 @@ exports[`renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .vmu4h5-1-file__Image-iTToDH {
+.c1 .s1jk35ya-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -45,7 +45,7 @@ exports[`renders the display panel with an image 1`] = `
   border: 10px solid black;
 }
 
-.c1:hover .vmu4h5-1-file__Image-iTToDH {
+.c1:hover .s1jk35ya-1-file__Image-iTToDH {
   display: none;
 }
 
@@ -86,6 +86,24 @@ exports[`renders the display panel with an image 1`] = `
   -ms-letter-spacing: 1px;
   letter-spacing: 1px;
   color: #e5e5e5;
+}
+
+@media (max-width:900px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    margin: auto;
+  }
 }
 
 <div
@@ -154,12 +172,12 @@ exports[`renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.cZkmNc .c3 {
+.kIJkvs .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.cZkmNc:hover .c3 {
+.kIJkvs:hover .c3 {
   display: none;
 }
 
@@ -177,7 +195,7 @@ exports[`renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-vmu4h5-1 {
+.c1 .file__Image-s1jk35ya-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz9w_n6UxxoZ_u1lzt4vwrw%252FHero%2BLoop%2B02.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -187,7 +205,7 @@ exports[`renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c1:hover .file__Image-vmu4h5-1 {
+.c1:hover .file__Image-s1jk35ya-1 {
   background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
   background-size: contain;
   border: 10px solid black;
@@ -258,6 +276,24 @@ exports[`renders the display panel with video 1`] = `
   object-fit: cover;
   object-position: 50%;
   width: 100%;
+}
+
+@media (max-width:900px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    margin: auto;
+  }
 }
 
 <div
