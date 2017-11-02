@@ -73,6 +73,16 @@ exports[`renders properly 1`] = `
   opacity: 1;
 }
 
+.c7 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c7 .image-loaded {
+  opacity: 1;
+}
+
 .c8 {
   display: block;
 }
@@ -202,6 +212,7 @@ exports[`renders properly 1`] = `
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
   padding: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .c25:hover {
@@ -825,7 +836,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height={351}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=95"
               width={197}
@@ -914,7 +925,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height={351}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=95"
               width={197}
@@ -1007,7 +1018,7 @@ exports[`renders properly 1`] = `
             >
               <img
                 alt="Brass Tax"
-                className="display-artwork__image c8"
+                className="BlockImage__container c8"
                 height={352}
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
                 width={264}
@@ -1154,7 +1165,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={425}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=95"
               width={219}
@@ -1243,7 +1254,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={425}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
               width={219}
@@ -1332,7 +1343,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={426}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=95"
               width={219}
@@ -1444,7 +1455,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
-              className="c8"
+              className="BlockImage__container c8"
               height="auto"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
               width="100%"
@@ -1582,7 +1593,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={387}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
               width={216}
@@ -1671,7 +1682,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={388}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={219}
@@ -1760,7 +1771,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={388}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
               width={222}
@@ -1914,12 +1925,71 @@ exports[`renders properly 1`] = `
           </svg>
         </div>
       </div>
-      <img
-        alt="The Work of Bruce M. Sherman"
-        height="auto"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
-        width="100%"
-      />
+      <div
+        className="c7"
+      >
+        <img
+          alt="The Work of Bruce M. Sherman"
+          className="BlockImage__container c8"
+          height="auto"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
+          width="100%"
+        />
+        <div
+          className="c9 c10"
+        >
+          <div
+            className="c11"
+            onClick={[Function]}
+          >
+            <svg
+              className="expand"
+              version="1.1"
+              viewBox="0 0 27 27"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <g>
+                  <circle
+                    cx="13.9575195"
+                    cy="13.0588379"
+                    fill="#000000"
+                    fillRule="nonzero"
+                    r="13"
+                  />
+                  <g
+                    stroke="#FFFFFF"
+                    transform="translate(8.000000, 7.000000)"
+                  >
+                    <g>
+                      <g
+                        transform="translate(0.382532, 0.382532)"
+                      >
+                        <polyline
+                          points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                        />
+                        <polyline
+                          points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                          transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                        />
+                        <path
+                          d="M10.360254,0.796942618 L0.796942618,10.360254"
+                          strokeLinecap="square"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div
@@ -1955,7 +2025,7 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height="auto"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=95"
               width="100%"

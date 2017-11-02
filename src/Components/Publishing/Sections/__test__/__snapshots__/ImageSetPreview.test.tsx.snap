@@ -1,6 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
+.c12 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c12:hover {
+  opacity: 1;
+}
+
+.c11 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c8:hover .c10 {
+  opacity: 1;
+}
+
+.c8 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c8 .image-loaded {
+  opacity: 1;
+}
+
+.c9 {
+  display: block;
+}
+
 .c7 {
   height: 45px;
   position: relative;
@@ -36,6 +81,7 @@ exports[`renders a full image set properly 1`] = `
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
   padding: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .c0:hover {
@@ -91,6 +137,12 @@ exports[`renders a full image set properly 1`] = `
   font-size: 14px;
   line-height: 1.4em;
   margin-left: 20px;
+}
+
+@media (max-width:720px) {
+  .c8 .c10 {
+    opacity: 1;
+  }
 }
 
 @media (max-width:600px) {
@@ -183,32 +235,136 @@ exports[`renders a full image set properly 1`] = `
       </svg>
     </div>
   </div>
-  <img
-    alt="The Work of Bruce M. Sherman"
-    height="auto"
-    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
-    width="100%"
-  />
+  <div
+    className="c8"
+  >
+    <img
+      alt="The Work of Bruce M. Sherman"
+      className="BlockImage__container c9"
+      height="auto"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+      width="100%"
+    />
+    <div
+      className="c10 c11"
+    >
+      <div
+        className="c12"
+        onClick={[Function]}
+      >
+        <svg
+          className="expand"
+          version="1.1"
+          viewBox="0 0 27 27"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <g>
+              <circle
+                cx="13.9575195"
+                cy="13.0588379"
+                fill="#000000"
+                fillRule="nonzero"
+                r="13"
+              />
+              <g
+                stroke="#FFFFFF"
+                transform="translate(8.000000, 7.000000)"
+              >
+                <g>
+                  <g
+                    transform="translate(0.382532, 0.382532)"
+                  >
+                    <polyline
+                      points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                    />
+                    <polyline
+                      points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                      transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                    />
+                    <path
+                      d="M10.360254,0.796942618 L0.796942618,10.360254"
+                      strokeLinecap="square"
+                    />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`renders a mini image set properly 1`] = `
-.c8 {
+.c5 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c5:hover {
+  opacity: 1;
+}
+
+.c4 {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c1:hover .c3 {
+  opacity: 1;
+}
+
+.c1 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c1 .image-loaded {
+  opacity: 1;
+}
+
+.c2 {
+  display: block;
+}
+
+.c13 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c8 > svg {
+.c13 > svg {
   height: 98%;
 }
 
-.fDfFRX:hover .c7 {
+.csZYKk:hover .c12 {
   fill: white;
 }
 
-.c2 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -242,7 +398,7 @@ exports[`renders a mini image set properly 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -258,7 +414,7 @@ exports[`renders a mini image set properly 1`] = `
   margin-left: 20px;
 }
 
-.c3 {
+.c8 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -267,21 +423,21 @@ exports[`renders a mini image set properly 1`] = `
   line-height: 1.1em;
 }
 
-.c4 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c5 {
+.c10 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c6 {
+.c11 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -289,14 +445,20 @@ exports[`renders a mini image set properly 1`] = `
   margin-left: 20px;
 }
 
+@media (max-width:720px) {
+  .c1 .c3 {
+    opacity: 1;
+  }
+}
+
 @media (max-width:600px) {
-  .c8 {
+  .c13 {
     display: none;
   }
 }
 
 @media (max-width:600px) {
-  .c3 {
+  .c8 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -305,7 +467,7 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c5 {
+  .c10 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -314,7 +476,7 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c6 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -334,33 +496,92 @@ exports[`renders a mini image set properly 1`] = `
     className="c0"
     onClick={[Function]}
   >
-    <img
-      alt="The Work of Bruce M. Sherman"
-      height="100%"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
-      width="auto"
-    />
     <div
       className="c1"
     >
+      <img
+        alt="The Work of Bruce M. Sherman"
+        className="BlockImage__container c2"
+        height="100%"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+        width="auto"
+      />
       <div
-        className="c2"
+        className="c3 c4"
       >
         <div
-          className="c3"
+          className="c5"
+          onClick={[Function]}
+        >
+          <svg
+            className="expand"
+            version="1.1"
+            viewBox="0 0 27 27"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <g>
+                <circle
+                  cx="13.9575195"
+                  cy="13.0588379"
+                  fill="#000000"
+                  fillRule="nonzero"
+                  r="13"
+                />
+                <g
+                  stroke="#FFFFFF"
+                  transform="translate(8.000000, 7.000000)"
+                >
+                  <g>
+                    <g
+                      transform="translate(0.382532, 0.382532)"
+                    >
+                      <polyline
+                        points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                      />
+                      <polyline
+                        points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                        transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                      />
+                      <path
+                        d="M10.360254,0.796942618 L0.796942618,10.360254"
+                        strokeLinecap="square"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c6"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
         >
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="c4"
+          className="c9"
         >
           <div
-            className="c5"
+            className="c10"
           >
             View Slideshow
           </div>
           <div
-            className="c6"
+            className="c11"
           >
             3
              Images
@@ -368,7 +589,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
       </div>
       <div
-        className="c7 c8"
+        className="c12 c13"
       >
         <svg
           className="image-set"
@@ -385,6 +606,71 @@ exports[`renders a mini image set properly 1`] = `
           <polygon
             points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
           />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <img
+      alt="The Work of Bruce M. Sherman"
+      className="BlockImage__container c2"
+      height="100%"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+      width="auto"
+    />
+    <div
+      className="c3 c4"
+    >
+      <div
+        className="c5"
+        onClick={[Function]}
+      >
+        <svg
+          className="expand"
+          version="1.1"
+          viewBox="0 0 27 27"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <g>
+              <circle
+                cx="13.9575195"
+                cy="13.0588379"
+                fill="#000000"
+                fillRule="nonzero"
+                r="13"
+              />
+              <g
+                stroke="#FFFFFF"
+                transform="translate(8.000000, 7.000000)"
+              >
+                <g>
+                  <g
+                    transform="translate(0.382532, 0.382532)"
+                  >
+                    <polyline
+                      points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
+                    />
+                    <polyline
+                      points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
+                      transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
+                    />
+                    <path
+                      d="M10.360254,0.796942618 L0.796942618,10.360254"
+                      strokeLinecap="square"
+                    />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
         </svg>
       </div>
     </div>

@@ -14,8 +14,6 @@ interface Props extends React.HTMLProps<HTMLImageElement> {
   index?: number
 }
 
-
-
 export class ImageWrapper extends React.Component<Props, any> {
   image = undefined
   mounted = false
@@ -25,13 +23,21 @@ export class ImageWrapper extends React.Component<Props, any> {
   }
 
   componentDidMount() {
-    const imgTag = ReactDOM.findDOMNode(this.image)
-    const imgSrc = imgTag.getAttribute('src')
     const img = new Image();
 
-    img.onload = this.onImageLoad
-    img.src = imgSrc
-    this.mounted = true
+    // Guard against snapshot tests
+    // See: https://reactjs.org/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
+    // TODO: Clean this up
+    try {
+      const imgTag = ReactDOM.findDOMNode(this.image)
+      const imgSrc = imgTag.getAttribute('src')
+      img.src = imgSrc
+    } catch (error) {
+      img.src = ''
+    } finally {
+      img.onload = this.onImageLoad
+      this.mounted = true
+    }
   }
 
   componentWillUnmount() {
@@ -48,17 +54,6 @@ export class ImageWrapper extends React.Component<Props, any> {
 
   render() {
     const { layout, index, ...blockImageProps }: any = this.props
-
-    const fullscreen = (
-      <Fullscreen>
-        <ViewFullscreen index={index} />
-      </Fullscreen>
-    )
-
-    const viewFullscreen = layout !== "classic"
-      ? fullscreen
-      : false
-
     let className = 'BlockImage__container'
 
     if (this.state.isLoaded) {
@@ -73,7 +68,11 @@ export class ImageWrapper extends React.Component<Props, any> {
           {...blockImageProps}
         />
 
-        {viewFullscreen}
+        {layout !== 'classic' &&
+          <Fullscreen>
+            <ViewFullscreen index={index} />
+          </Fullscreen>
+        }
       </StyledImageWrapper>
     )
   }
