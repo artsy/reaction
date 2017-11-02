@@ -92,7 +92,9 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   onMouseLeave = () => {
-    this.video.pause()
+    if (this.video) {
+      this.video.pause()
+    }
   }
 
   playVideo = () => {
