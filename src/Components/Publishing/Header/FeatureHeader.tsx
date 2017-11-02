@@ -168,6 +168,8 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
 }
 
 function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
+  const partnerLogo = superArticle.partner_fullscreen_header_logo || superArticle.partner_logo
+
   return (
     <SuperArticleLogos>
       <a href="/">
@@ -177,7 +179,7 @@ function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
           color="white"
         />
       </a>
-      {superArticle.partner_logo_link &&
+      {partnerLogo &&
         <SuperArticlePartnerLogo>
           <SuperArticleLogoDivider>
             <Icon
@@ -191,7 +193,7 @@ function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
             onClick={onClickPartnerLink}
           >
             <img
-              src={superArticle.partner_fullscreen_header_logo || superArticle.partner_logo}
+              src={partnerLogo}
               height={isMobile ? "32px" : "50px"}
             />
           </a>
