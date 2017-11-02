@@ -4,6 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
+import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { VideoControls } from '../Sections/VideoControls'
 
@@ -218,6 +219,18 @@ const DisplayPanelContainer = Div`
       ${props => !props.isMobile && "display: none;"}
     }
   }
+
+  ${pMedia.md`
+    margin: auto;
+  `}
+
+  ${pMedia.sm`
+    margin: auto;
+  `}
+
+  ${pMedia.xs`
+    margin: auto;
+  `}
 `
 
 const Headline = styled.div`
