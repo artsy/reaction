@@ -168,6 +168,8 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
 }
 
 function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
+  const partnerLogo = superArticle.partner_fullscreen_header_logo || superArticle.partner_logo
+
   return (
     <SuperArticleLogos>
       <a href="/">
@@ -177,23 +179,26 @@ function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
           color="white"
         />
       </a>
-      <SuperArticleLogoDivider>
-        <Icon
-          name="close"
-          fontSize={isMobile ? "15px" : "25px"}
-          color="white"
-        />
-      </SuperArticleLogoDivider>
-      <a
-        href={superArticle.partner_logo_link}
-        target="_blank"
-        onClick={onClickPartnerLink}
-      >
-        <img
-          src={superArticle.partner_fullscreen_header_logo || superArticle.partner_logo}
-          height={isMobile ? "32px" : "50px"}
-        />
-      </a>
+      {partnerLogo &&
+        <SuperArticlePartnerLogo>
+          <SuperArticleLogoDivider>
+            <Icon
+              name="close"
+              fontSize={isMobile ? "15px" : "20px"}
+              color="white" />
+          </SuperArticleLogoDivider>
+          <a
+            href={superArticle.partner_logo_link}
+            target="_blank"
+            onClick={onClickPartnerLink}
+          >
+            <img
+              src={partnerLogo}
+              height={isMobile ? "32px" : "50px"}
+            />
+          </a>
+        </SuperArticlePartnerLogo>
+      }
     </SuperArticleLogos>
   )
 }
@@ -252,11 +257,20 @@ const SuperArticleLogos = styled.div`
   display: flex;
   align-items: center;
   z-index: 1;
-  padding: 50px 45px 50px;
+  padding: 45px 45px 50px;
   ${pMedia.xs`
     padding: 20px 15px 20px;
   `}
 `
+const SuperArticlePartnerLogo = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  ${pMedia.xs`
+    padding-bottom: 10px;
+  `}
+`
+
 const SuperArticleLogoDivider = styled.div`
   transform: rotate(45deg);
   margin: 0 20px;
