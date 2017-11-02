@@ -133,6 +133,7 @@ exports[`renders classic text properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c0 .content-start {
@@ -390,6 +391,7 @@ exports[`renders feature text properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c0 .content-start {
@@ -646,6 +648,7 @@ exports[`renders standard text properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c0 .content-start {

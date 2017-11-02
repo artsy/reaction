@@ -135,6 +135,7 @@ exports[`renders column_width properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c1 .content-start {
@@ -420,6 +421,7 @@ exports[`renders fillwidth properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c1 .content-start {
@@ -705,6 +707,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
+  word-break: break-word;
 }
 
 .c1 .content-start {
