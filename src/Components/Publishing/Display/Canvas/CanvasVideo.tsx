@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
+import { VideoControls } from '../../Sections/VideoControls'
 
 interface VideoProps {
   campaign: any
@@ -41,9 +42,7 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     if (!this.state.isPlaying) {
       return (
         <Cover>
-          <PlayButton>
-            <PlayButtonCaret />
-          </PlayButton>
+          <VideoControls />
         </Cover>
       )
     }
@@ -89,23 +88,4 @@ const Cover = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
-const PlayButtonCaret = styled.div`
-  color: black;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid black;
-`
-
-const PlayButton = styled.div`
-  background: white;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
 `
