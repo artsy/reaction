@@ -45,7 +45,7 @@ storiesOf("Publishing/Headers", module)
   })
   .add("Feature Header - Basic, without Embed", () => {
     const article = _.clone(BasicArticle)
-    article.hero_section.url = false
+    article.hero_section.url = null
 
     return (
       <div>
