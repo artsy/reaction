@@ -109,6 +109,7 @@ export const StyledText = div`
     padding-top: 46px;
     padding-bottom: 46px;
     margin: 0;
+    word-break: break-word;
   }
   .content-start {
     ${Fonts.unica("s67", "medium")}
