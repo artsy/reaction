@@ -25,9 +25,10 @@ export class ImageWrapper extends React.Component<Props, any> {
   componentDidMount() {
     const img = new Image();
 
-    // Guard against snapshot tests
-    // See: https://reactjs.org/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
-    // TODO: Clean this up
+    /**
+     * TODO: Clean this up
+     * Guard against snapshot tests See: https://reactjs.org/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
+     */
     try {
       const imgTag = ReactDOM.findDOMNode(this.image)
       const imgSrc = imgTag.getAttribute('src')

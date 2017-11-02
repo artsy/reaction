@@ -64,7 +64,7 @@ export class BasicHeader extends React.Component<Props, State> {
             <Grid fluid>
               {hasVideo &&
                 <Row onClick={this.trackVideoPlay}>
-                  <Col xs sm md lg>
+                  <Col xs sm md lg className='BasicHeader__video'>
                     <Video
                       section={hero_section}
                       layout="feature"
@@ -135,7 +135,10 @@ const defaults = css`
 
 const Container = styled.div`
   text-align: center;
-  margin-bottom: 60px;
+
+  .BasicHeader__video {
+    margin-top: 40px;
+  }
 
   .Byline__Container {
     display: inherit;
