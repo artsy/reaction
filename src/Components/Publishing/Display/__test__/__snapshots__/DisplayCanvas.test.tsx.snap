@@ -1080,6 +1080,35 @@ exports[`renders the canvas in standard layout with video 1`] = `
   opacity: .6;
 }
 
+.c6 {
+  color: black;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid black;
+}
+
+.c5 {
+  background: white;
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
 .c3 {
   width: 65%;
   max-width: 760px;
@@ -1112,35 +1141,6 @@ exports[`renders the canvas in standard layout with video 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c6 {
-  color: black;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid black;
-}
-
-.c5 {
-  background: white;
-  width: 70px;
-  height: 70px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  z-index: 2;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
 }
 
 .c2 {

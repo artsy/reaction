@@ -187,6 +187,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                   <DisplayPanel
                     unit={this.props.display.panel}
                     campaign={campaign}
+                    isMobile={isMobile}
                   />}
 
               </Sidebar>

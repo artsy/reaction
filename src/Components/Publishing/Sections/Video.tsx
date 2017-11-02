@@ -7,6 +7,7 @@ import { pMedia as breakpoint } from "../../Helpers"
 import { sizeMeRefreshRate } from "../Constants"
 import { Layout } from "../Typings"
 import { Caption } from "./Caption"
+import { VideoControls } from './VideoControls'
 
 const BLACKLIST = ['gif', 'jpg', 'jpeg', 'png']
 const QUERYSTRING = "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
@@ -77,9 +78,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
       <VideoContainer layout={this.props.layout} className='VideoContainer__StyledComponent'>
         {cover_image_url &&
           <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
-            <PlayButton>
-              <PlayButtonCaret />
-            </PlayButton>
+            <VideoControls />
           </CoverImage>
         }
 
@@ -186,26 +185,6 @@ const CoverImage = Div`
   position: absolute;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
-`
-
-const PlayButtonCaret = styled.div`
-  color: black;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid black;
-`
-
-const PlayButton = styled.div`
-  background: white;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
 `
 
 const sizeMeOptions = {
