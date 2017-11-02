@@ -261,5 +261,6 @@ const VideoContainer = Image.extend`
     object-fit: cover;
     object-position: 50%;
     width: 100%;
+    height: 100%;
   }
 `
