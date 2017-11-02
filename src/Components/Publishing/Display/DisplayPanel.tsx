@@ -29,7 +29,8 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   constructor(props) {
     super(props)
     this.openLink = this.openLink.bind(this)
-    this.playVideo = this.playVideo.bind(this)
+    this.onClickVideo = this.onClickVideo.bind(this)
+    this.onMouseEnter = this.onMouseEnter.bind(this)
 
     this.state = {
       isPlaying: false
@@ -67,14 +68,33 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     }
   }
 
-  @track(once((props) => ({
+  @track(props => ({
     action: "Click",
     label: "Display ad play video",
     entity_type: "display_ad",
     campaign_name: props.campaign.name,
     unit_layout: "panel"
-  })))
-  playVideo() {
+  }))
+  onClickVideo() {
+    this.playVideo()
+  }
+
+  @track(props => ({
+    action: "MouseEnter",
+    label: "Display ad play video",
+    entity_type: "display_ad",
+    campaign_name: props.campaign.name,
+    unit_layout: "panel"
+  }))
+  onMouseEnter() {
+    this.playVideo()
+  }
+
+  onMouseLeave = () => {
+    this.video.pause()
+  }
+
+  playVideo = () => {
     if (this.video) {
       if (this.video.paused) {
         this.video.play()
@@ -86,14 +106,10 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     }
   }
 
-  onMouseLeave = () => {
-    this.video.pause()
-  }
-
   renderVideo = (url) => {
     const { isMobile } = this.props
     return (
-      <VideoContainer onClick={isMobile && this.playVideo}>
+      <VideoContainer onClick={isMobile && this.onClickVideo}>
         {!this.state.isPlaying &&
           <VideoCover>
             {isMobile &&
@@ -119,7 +135,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     return (
       <Wrapper onClick={!isMobile && this.openLink}>
         <DisplayPanelContainer
-          onMouseEnter={!isMobile && this.playVideo}
+          onMouseEnter={!isMobile && this.onMouseEnter}
           onMouseLeave={!isMobile && this.onMouseLeave}
           imageUrl={imageUrl}
           isMobile={isMobile}
