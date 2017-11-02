@@ -169,7 +169,6 @@ const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
   color: black;
-  margin-top: 50px;
 `
 
 const Image = styled.div`

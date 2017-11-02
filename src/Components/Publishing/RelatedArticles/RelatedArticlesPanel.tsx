@@ -68,6 +68,9 @@ const ArticleLink = styled.a`
   display: flex;
   justify-content: left;
   margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const ArticleImage = styled.img`

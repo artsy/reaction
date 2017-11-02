@@ -2,8 +2,10 @@ import { cloneDeep, includes, map, omit } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
+import Colors from "../../Assets/Colors"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
+import { pMedia } from "../Helpers"
 import { DisplayCanvas } from "./Display/Canvas"
 import { DisplayPanel } from "./Display/DisplayPanel"
 import { EmailPanel } from "./Email/EmailPanel"
@@ -32,7 +34,7 @@ export interface ArticleProps {
   display?: {
     name: string
     panel: object
-    canvas: object
+    canvas: any
   }
 }
 
@@ -147,6 +149,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const { isMobile, relatedArticlesForCanvas, relatedArticlesForPanel } = this.props
     const { article } = this.state
     const campaign = omit(this.props.display, "panel", "canvas")
+    const displayOverflows = this.props.display && this.props.display.canvas.layout === "slideshow"
 
     return (
       <div>
@@ -164,15 +167,21 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
               <Sections article={article} />
               <Sidebar>
                 {this.props.emailSignupUrl &&
-                  <EmailPanel
-                    signupUrl={this.props.emailSignupUrl}
-                  />}
+                  <SidebarItem>
+                    <EmailPanel
+                      signupUrl={this.props.emailSignupUrl}
+                    />
+                  </SidebarItem>
+                }
 
                 {relatedArticlesForPanel &&
-                  <RelatedArticlesPanel
-                    label={"Related Stories"}
-                    articles={relatedArticlesForPanel}
-                  />}
+                  <SidebarItem>
+                    <RelatedArticlesPanel
+                      label={"Related Stories"}
+                      articles={relatedArticlesForPanel}
+                    />
+                  </SidebarItem>
+                }
 
                 {this.props.display &&
                   <DisplayPanel
@@ -186,11 +195,14 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
           </StandardLayoutParent>
 
           {relatedArticlesForCanvas &&
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas}
-              isMobile={isMobile}
-              vertical={article.vertical}
-            />}
+            <div>
+              <LineBreak />
+              <RelatedArticlesCanvas
+                articles={relatedArticlesForCanvas}
+                isMobile={isMobile}
+                vertical={article.vertical}
+              />
+            </div>}
 
         </ReadMoreWrapper>
 
@@ -198,10 +210,19 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
           <ReadMore
             onClick={this.removeTruncation}
           />}
+
         {this.props.display && (
           <div>
-            <DisplayCanvasBreak />
-            <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+            <LineBreak />
+            {displayOverflows
+              ? <FooterContainerOverflow>
+                <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+              </FooterContainerOverflow>
+
+              : <FooterContainer>
+                <DisplayCanvas unit={this.props.display.canvas} campaign={campaign} />
+              </FooterContainer>
+            }
           </div>
         )}
       </div>
@@ -209,8 +230,8 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
   }
 
   render() {
-    const { marginTop } = this.props
     const { article } = this.state
+    const { marginTop } = this.props
 
     return (
       <ArticleContainer marginTop={marginTop}>
@@ -232,8 +253,25 @@ const ArticleContainer = ArticleDiv`
   margin-top: ${props => props.marginTop || "50px"};
 `
 
-const DisplayCanvasBreak = styled.hr`
-  border: 0;
-  margin-bottom: 0px;
-  border-top: 1px solid #eee;
+const LineBreak = styled.div`
+  border-top: 1px solid ${Colors.grayRegular};
+  width: 100%;
+`
+
+const SidebarItem = styled.div`
+  margin-bottom: 40px;
+`
+
+const FooterContainer = styled.div`
+  margin: 0 40px;
+  ${pMedia.sm`
+    margin: 0 20px;
+  `}
+`
+
+const FooterContainerOverflow = styled.div`
+  margin-left: 40px;
+  ${pMedia.md`
+    margin-left: 0
+  `}
 `

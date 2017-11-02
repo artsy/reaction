@@ -115,13 +115,13 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
       nextArrow: (
         <RightArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
         />
       ),
       prevArrow: (
         <LeftArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
           isOnTitle={this.state.isOnTitle}
         />
       ),
@@ -245,13 +245,13 @@ const Title = responsiveDiv`
   padding: 0 20px 0 0;
   ${props => pMedia.lg`
     width: ${props.containerWidth * 0.35 + "px;"}
-    padding: 0 20px;
     a {
       max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }
   `}
   ${pMedia.md`
     width: 100%;
+    padding: 0 20px;
     a {
       height: initial;
       max-height: initial;
