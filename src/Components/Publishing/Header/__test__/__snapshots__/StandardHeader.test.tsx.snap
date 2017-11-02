@@ -200,7 +200,7 @@ exports[`Standard Header renders standard header properly 1`] = `
         className="author c5"
       >
         By 
-        Artsy Editors
+        Casey Lesser
       </div>
       <div
         className="date c6"
@@ -495,7 +495,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
         className="author c5"
       >
         By 
-        Artsy Editors
+        Casey Lesser
       </div>
       <div
         className="date c6"

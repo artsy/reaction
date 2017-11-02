@@ -31,8 +31,9 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     impression_type: "related_articles_canvas",
     context_type: "article_fixed",
   }))
-  // tslint:disable-next-line:no-empty
-  onClick(e) { }
+  onClick(e) {
+    // noop
+  }
 
   render() {
     const { article } = this.props

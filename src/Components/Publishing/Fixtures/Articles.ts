@@ -135,7 +135,12 @@ export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
   slug: "new-yorks-next-art-district",
-  contributing_authors: [],
+  contributing_authors: [ // deprecated
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
   published_at: "2017-05-19T13:09:18.567Z",
   thumbnail_title: "New York's Next Art District",
   layout: "standard",
@@ -395,6 +400,12 @@ export const BasicArticle: ArticleData = {
     },
     ...StandardArticle.sections
   ],
+  contributing_authors: [ // deprecated
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
   authors: [
     {
       id: "523783258b3b815f7100055a",
@@ -429,6 +440,12 @@ export const FeatureArticle: ArticleData = {
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
     deck: "Lorem Ipsum",
   },
+  contributing_authors: [ // deprecated
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
   authors: [
     {
       id: "523783258b3b815f7100055a",

@@ -43,11 +43,12 @@ export class BasicHeader extends React.Component<Props, State> {
   render() {
     const {
       article: {
-      authors,
-      hero_section,
-      lead_paragraph,
-      published_at,
-      slug,
+        contributing_authors,
+        // authors, TODO: update when time
+        hero_section,
+        lead_paragraph,
+        published_at,
+        slug,
       },
       isMobile: passedIsMobile,
       title,
@@ -99,7 +100,7 @@ export class BasicHeader extends React.Component<Props, State> {
                     <Row>
                       <Col xs={12} sm={12} md={12} lg={12} className='Byline__Container'>
                         <Author>
-                          By {getAuthorByline(authors)}
+                          By {getAuthorByline(contributing_authors)}
                         </Author>
                         <Date>
                           {getDate(published_at, isMobile ? 'condensed' : 'basic')}

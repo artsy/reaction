@@ -15,15 +15,17 @@ interface BylineContainerProps {
 
 export const Byline: React.SFC<BylineProps> = props => {
   const { article } = props
-  const { authors, published_at } = article
+  const { contributing_authors, published_at } = article
   const layout = props.layout || article.layout
   const title = article.social_title || article.thumbnail_title
   const url = articleFullHref(article.slug)
 
+  // TODO: Replace `authors` with `contributing_authors` when ready. Also in
+  // <BasicHeader />
   return (
     <BylineContainer layout={layout}>
       <Author
-        authors={authors}
+        authors={contributing_authors}
         layout={layout}
       />
 
