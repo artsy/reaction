@@ -376,6 +376,8 @@ export const RelatedCanvas = [
     "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     slug: "artsy-editorial-15-top-art-schools-united-states",
     authors: [{ name: "Anna Louis-Sussman" }, { name: "Kana Abe" }],
+    // Deprecated
+    contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {
@@ -383,6 +385,8 @@ export const RelatedCanvas = [
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
     slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
     authors: [{ name: "Halley Johnson" }],
+    // Deprecated
+    contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {
@@ -390,6 +394,8 @@ export const RelatedCanvas = [
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
     authors: [{ name: "Casey Lesser" }],
+    // Deprecated
+    contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {

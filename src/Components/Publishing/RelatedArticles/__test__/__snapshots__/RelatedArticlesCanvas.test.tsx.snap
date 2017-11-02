@@ -293,7 +293,7 @@ exports[`renders the related articles canvas 1`] = `
           className="author c9"
         >
           By 
-          Anna Louis-Sussman and Kana Abe
+          Casey Lesser
         </div>
         <div
           className="date c10"
@@ -328,7 +328,7 @@ exports[`renders the related articles canvas 1`] = `
           className="author c9"
         >
           By 
-          Halley Johnson
+          Casey Lesser
         </div>
         <div
           className="date c10"
@@ -398,7 +398,7 @@ exports[`renders the related articles canvas 1`] = `
           className="author c9"
         >
           By 
-          Owen Dodd
+          Artsy Editors
         </div>
         <div
           className="date c10"

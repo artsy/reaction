@@ -14,43 +14,42 @@ interface ArtworkProps {
   height?: string | number
 }
 
-export const Artwork: React.SFC<ArtworkProps> = props => {
-  return (
-    <div className="display-artwork">
-      <ArtworkImage {...props} />
-      <ArtworkCaption {...props} />
-    </div>
-  )
-}
-
-Artwork.defaultProps = {
-  linked: true,
-}
-
-const ArtworkImage: React.SFC<ArtworkProps> = props => {
-  const { artwork, linked, height, width, layout } = props
-  const src = resize(artwork.image, { width: 1200 })
-  const image = (
-    <ImageWrapper
-      layout={layout}
-      src={src}
-      className="display-artwork__image"
-      width={width}
-      height={height}
-      alt={artwork.title}
-      index={artwork.index}
-    />
-  )
-  if (linked) {
-    return <ArtworkImageLink href={"/artwork/" + artwork.slug}>{image}</ArtworkImageLink>
-  } else {
-    return image
+export class Artwork extends React.Component<ArtworkProps, null> {
+  static defaultProps = {
+    linked: true,
+    width: "100%",
+    height: "auto"
   }
-}
 
-ArtworkImage.defaultProps = {
-  width: "100%",
-  height: "auto",
+  render() {
+    const { artwork, linked, height, width, layout } = this.props
+    const src = resize(artwork.image, { width: 1200 })
+
+    const Image = () =>
+      <ImageWrapper
+        layout={layout}
+        src={src}
+        width={width}
+        height={height}
+        alt={artwork.title}
+        index={artwork.index}
+      />
+
+    return (
+      <div className="display-artwork">
+        {linked
+          ? <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
+              <Image />
+            </ArtworkImageLink>
+          : <Image />
+        }
+
+        <ArtworkCaption
+          {...this.props}
+        />
+      </div>
+    )
+  }
 }
 
 const ArtworkImageLink = styled.a`

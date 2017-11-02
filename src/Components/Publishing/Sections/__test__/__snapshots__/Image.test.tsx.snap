@@ -71,6 +71,16 @@ exports[`renders a long caption properly 1`] = `
   opacity: 1;
 }
 
+.c0 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c0 .image-loaded {
+  opacity: 1;
+}
+
 .c1 {
   display: block;
 }
@@ -101,7 +111,7 @@ exports[`renders a long caption properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="BlockImage__container c1"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
@@ -250,6 +260,16 @@ exports[`renders a react child as caption properly 1`] = `
   opacity: 1;
 }
 
+.c0 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c0 .image-loaded {
+  opacity: 1;
+}
+
 .c1 {
   display: block;
 }
@@ -280,7 +300,7 @@ exports[`renders a react child as caption properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="c1"
+      className="BlockImage__container c1"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
       width="100%"
@@ -427,6 +447,16 @@ exports[`renders properly 1`] = `
   opacity: 1;
 }
 
+.c0 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c0 .image-loaded {
+  opacity: 1;
+}
+
 .c1 {
   display: block;
 }
@@ -457,7 +487,7 @@ exports[`renders properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy."
-      className="c1"
+      className="BlockImage__container c1"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
       width="100%"
