@@ -11,7 +11,7 @@ import { VideoControls } from './VideoControls'
 
 const BLACKLIST = ['gif', 'jpg', 'jpeg', 'png']
 const QUERYSTRING = "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
-const videoRatio = 0.5625
+export const VIDEO_RATIO = 0.5625
 
 interface VideoProps {
   section: {
@@ -77,7 +77,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
     return (
       <VideoContainer layout={this.props.layout} className='VideoContainer__StyledComponent'>
         {cover_image_url &&
-          <CoverImage src={src} height={width * videoRatio} onClick={this.playVideo} hidden={this.state.hidden}>
+          <CoverImage src={src} height={width * VIDEO_RATIO} onClick={this.playVideo} hidden={this.state.hidden}>
             <VideoControls />
           </CoverImage>
         }
@@ -86,7 +86,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
           src={this.state.src}
           frameBorder="0"
           allowFullScreen
-          height={width * videoRatio}
+          height={width * VIDEO_RATIO}
         />
 
         {showCaption &&
