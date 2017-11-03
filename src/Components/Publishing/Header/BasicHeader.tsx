@@ -143,7 +143,7 @@ const defaults = css`
 
 const Container = styled.div`
   text-align: center;
-
+  margin-top: 40px;
   ${CoverImage}, ${IFrame} {
     width: 100%;
 
@@ -170,10 +170,6 @@ const Container = styled.div`
     ${breakpoint.xs`
       height: ${520 * VIDEO_RATIO}px;
     `}
-  }
-
-  .BasicHeader__video {
-    margin-top: 40px;
   }
 
   .Byline__Container {
