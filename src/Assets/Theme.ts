@@ -21,7 +21,7 @@ export default {
       sm: 720, // px
       md: 900, // px
       lg: 1080, // px
-      xl: 1250, // px
+      xl: 1280, // px
     },
   },
 }

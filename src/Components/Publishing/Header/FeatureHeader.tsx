@@ -109,7 +109,7 @@ interface FeatureHeaderProps {
 @track()
 class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   static defaultProps = {
-    height: "100vh"
+    height: "calc(100vh - 50px)"
   }
 
   @track(props => ({
@@ -329,6 +329,7 @@ const Deck = styled.div`
 const FeatureHeaderContainer = Div.extend`
   width: 100%;
   height: ${props => props.height};
+  position: relative;
   &[data-type="text"] {
     height: auto;
     ${Title} {
@@ -385,7 +386,6 @@ const FeatureHeaderContainer = Div.extend`
     `}
   }
   &[data-type="fullscreen"] {
-    margin-bottom: 80px;
     ${HeaderText} {
       padding: 50px;
       color: #fff;
@@ -393,7 +393,7 @@ const FeatureHeaderContainer = Div.extend`
       margin: auto;
       text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     }
-    ${pMedia.xs`
+    ${pMedia.sm`
       ${HeaderText} {
         padding: 20px;
       }

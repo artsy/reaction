@@ -615,7 +615,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c1 {
     width: 680px;
   }
@@ -629,7 +629,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c3 {
     width: 680px;
   }
@@ -643,7 +643,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c4 {
     width: 680px;
   }
@@ -657,7 +657,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c24 {
     width: 680px;
   }
@@ -742,7 +742,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c0 {
     max-width: 680px;
   }
