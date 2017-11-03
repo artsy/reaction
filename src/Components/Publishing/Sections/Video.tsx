@@ -139,7 +139,7 @@ function getId(url) {
 
 const iframe: StyledFunction<React.HTMLProps<HTMLIFrameElement>> = styled.iframe
 
-const IFrame = iframe`
+export const IFrame = iframe`
   width: 100%;
   height: ${props => props.height + "px"};
 `
@@ -176,7 +176,7 @@ const VideoContainer = Div`
   }}
 `
 
-const CoverImage = Div`
+export const CoverImage = Div`
   display: ${props => (props.hidden || !props.src ? "none" : "flex")};
   justify-content: center;
   align-items: center;
