@@ -167,8 +167,8 @@ export class Sections extends React.Component<SectionsProps, any> {
     return (
       <StyledSections layout={article.layout}>
         {this.renderSections()}
-        {this.renderPostScript()}
         {this.renderAuthors()}
+        {this.renderPostScript()}
       </StyledSections>
     )
   }
