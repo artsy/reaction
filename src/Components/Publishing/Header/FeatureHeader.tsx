@@ -34,7 +34,7 @@ function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
 }
 
 function renderAsset(url, title, imageChild) {
-  if (isVideo(url)) {
+  if (isValidVideoUrl(url)) {
     return (
       <FeatureVideoContainer>
         {imageChild}
@@ -61,24 +61,17 @@ function renderTextLayoutAsset(url, layout, title, imageChild) {
           <Video src={url} autoPlay controls={false} loop muted playsInline />
         </TextAsset>
       )
-    } else if (layout !== "basic") {
+    } else {
       const alt = url.length ? title : ""
       const src = url.length && resize(url, { width: 1200 })
+      const image = <Image src={src} alt={alt} />
 
-      // When toggling between layout states, guard 'Basic' video headers stored
-      // in temporary `hero_section` auto-save state. TODO: might want to revist.
-      if (!isValidVideoUrl(url)) {
-        const image = <Image src={src} alt={alt} />
-
-        return (
-          <TextAsset>
-            {imageChild}
-            {url.length && image}
-          </TextAsset>
-        )
-      } else {
-        return false
-      }
+      return (
+        <TextAsset>
+          {imageChild}
+          {url.length && image}
+        </TextAsset>
+      )
     }
   } else {
     return false
