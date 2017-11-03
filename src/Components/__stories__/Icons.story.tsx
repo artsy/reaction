@@ -67,6 +67,42 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
           <CircleIcon name='logo' color='#6E1FFF' fontSize="60px" />
         </Col>
       </Row>
+
+      <Row>
+        <Title>Circle Icons with Different Scale</Title>
+      </Row>
+      <Row>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.7}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.6}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.5}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.4}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.3}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.7}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.6}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.5}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.4}/>
+        </Col>
+        <Col style={{ padding: 10 }}>
+          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.3}/>
+        </Col>
+      </Row>
     </div>
   )
 })
