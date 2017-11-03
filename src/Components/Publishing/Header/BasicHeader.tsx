@@ -7,7 +7,14 @@ import { pMedia as breakpoint } from "../../Helpers"
 import { Share } from "../Byline/Share"
 import { articleHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
-import { CoverImage, IFrame, isValidVideoUrl, Video } from '../Sections/Video'
+
+import {
+  CoverImage,
+  IFrame,
+  isValidVideoUrl,
+  Video,
+  VIDEO_RATIO,
+} from '../Sections/Video'
 
 interface Props {
   article: any
@@ -141,27 +148,27 @@ const Container = styled.div`
     width: 100%;
 
     @media screen and (min-width: 1250px) {
-      height: 619px;
+      height: ${1100 * VIDEO_RATIO};
     }
 
     ${breakpoint.xl`
-      height: 619px;
+      height: ${1100 * VIDEO_RATIO}px;
     `}
 
     ${breakpoint.lg`
-      height: 535px;
+      height: ${950 * VIDEO_RATIO}px;
     `}
 
     ${breakpoint.md`
-      height: 449px;
+      height: ${800 * VIDEO_RATIO}px;
     `}
 
     ${breakpoint.sm`
-      height: 349px;
+      height: ${620 * VIDEO_RATIO}px;
     `}
 
     ${breakpoint.xs`
-      height: 292px;
+      height: ${520 * VIDEO_RATIO}px;
     `}
   }
 
