@@ -102,9 +102,12 @@ export class Sections extends React.Component<SectionsProps, any> {
       let section = sectionItem
 
       if (shouldInject) {
-        displayAdInjected = true
-        section = clone(sectionItem)
-        section.body = this.injectDisplayPanelIntoText(section.body)
+        try {
+          displayAdInjected = true
+          section = clone(sectionItem)
+          section.body = this.injectDisplayPanelIntoText(section.body)
+        // tslint:disable-next-line:no-empty
+        } catch {}
       }
 
       const child = this.getSection(section, article.layout)
