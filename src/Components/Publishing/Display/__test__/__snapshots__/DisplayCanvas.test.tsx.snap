@@ -1357,14 +1357,15 @@ exports[`renders the canvas in standard layout with video 1`] = `
         className="c4"
       >
         <div
-          className="c5"
+          className="VideoControls__PlayButton c5"
         >
           <div
-            className="c6"
+            className="VideoControls__PlayButtonCaret c6"
           />
         </div>
       </div>
       <video
+        className="CanvasVideo__video"
         controls={false}
         playsInline={true}
         src="https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"
