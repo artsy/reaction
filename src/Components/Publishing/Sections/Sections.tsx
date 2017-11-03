@@ -107,7 +107,7 @@ export class Sections extends React.Component<SectionsProps, any> {
           section = clone(sectionItem)
           section.body = this.injectDisplayPanelIntoText(section.body)
         // tslint:disable-next-line:no-empty
-        } catch {}
+        } catch (e) {}
       }
 
       const child = this.getSection(section, article.layout)
