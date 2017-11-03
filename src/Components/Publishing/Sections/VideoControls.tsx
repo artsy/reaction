@@ -9,8 +9,8 @@ export const VideoControls: React.SFC<VideoControlsProps> = props => {
   const { mini } = props
 
   return (
-    <PlayButton mini={mini}>
-      <PlayButtonCaret mini={mini} />
+    <PlayButton mini={mini} className='VideoControls__PlayButton'>
+      <PlayButtonCaret mini={mini} className='VideoControls__PlayButtonCaret' />
     </PlayButton>
   )
 }

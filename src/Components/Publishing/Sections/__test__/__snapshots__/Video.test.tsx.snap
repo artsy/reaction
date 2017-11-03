@@ -122,10 +122,10 @@ exports[`renders properly 1`] = `
     src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=95"
   >
     <div
-      className="c2"
+      className="VideoControls__PlayButton c2"
     >
       <div
-        className="c3"
+        className="VideoControls__PlayButtonCaret c3"
       />
     </div>
   </div>

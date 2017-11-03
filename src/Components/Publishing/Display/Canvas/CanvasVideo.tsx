@@ -52,7 +52,13 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     return (
       <VideoContainer onClick={this.onPlayVideo}>
         {this.renderCover()}
-        <video src={this.props.src} controls={false} playsInline ref={video => (this.video = video)} />
+
+        <video playsInline
+          src={this.props.src}
+          className='CanvasVideo__video'
+          controls={false}
+          ref={video => (this.video = video)}
+        />
       </VideoContainer>
     )
   }

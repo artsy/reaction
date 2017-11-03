@@ -36,8 +36,9 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
     campaign_name: props.campaign.name,
     unit_layout: unitLayout(props)
   })))
-  // tslint:disable-next-line:no-empty
-  componentDidMount() { }
+  componentDidMount() {
+    // noop
+  }
 
   // TODO: Ensure that full element can be clicked on video complete
   // Prevent links from blocking video playback.
@@ -50,7 +51,14 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
   }))
   openLink(e) {
     e.preventDefault()
-    if (!e.target.className.includes('CanvasVideo')) {
+    const videoClasses = [
+      'VideoControls__PlayButton',
+      'VideoControls__PlayButtonCaret',
+      'CanvasVideo__video'
+    ]
+    const isVideoClickArea = videoClasses.some(c => e.target.className.includes(c))
+
+    if (!isVideoClickArea) {
       window.open(e.currentTarget.attributes.href.value, '_blank')
     }
   }
@@ -108,15 +116,15 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
         <CanvasLink {...linkProps}>
           {isVideo
             ? <CanvasVideo
-              src={asset.url}
-              campaign={campaign}
-            />
+                src={asset.url}
+                campaign={campaign}
+              />
             : <Image
-              src={crop(asset.url, {
-                width: 1200,
-                height: 760
-              })}
-            />}
+                src={crop(asset.url, {
+                  width: 1200,
+                  height: 760
+                })}
+              />}
 
           <StandardContainer>
             <CanvasText
