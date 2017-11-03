@@ -138,8 +138,8 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     return (
       <Wrapper onClick={!isMobile && this.openLink}>
         <DisplayPanelContainer
-          onMouseEnter={!isMobile && this.onMouseEnter}
-          onMouseLeave={!isMobile && this.onMouseLeave}
+          onMouseEnter={!isMobile && isVideo && this.onMouseEnter}
+          onMouseLeave={!isMobile && isVideo && this.onMouseLeave}
           imageUrl={imageUrl}
           isMobile={isMobile}
           hoverImageUrl={hoverImageUrl}
