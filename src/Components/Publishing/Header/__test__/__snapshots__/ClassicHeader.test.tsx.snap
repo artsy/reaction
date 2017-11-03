@@ -216,7 +216,7 @@ exports[`Classic Header renders classic header properly 1`] = `
   margin-bottom: 30px;
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c0 {
     padding: 0 20px;
   }
