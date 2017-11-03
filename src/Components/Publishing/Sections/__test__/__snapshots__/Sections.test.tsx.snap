@@ -212,7 +212,6 @@ exports[`renders properly 1`] = `
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
   padding: 20px;
   cursor: pointer;
-  z-index: 1;
 }
 
 .c25:hover {
@@ -1925,71 +1924,12 @@ exports[`renders properly 1`] = `
           </svg>
         </div>
       </div>
-      <div
-        className="c7"
-      >
-        <img
-          alt="The Work of Bruce M. Sherman"
-          className="BlockImage__container c8"
-          height="auto"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
-          width="100%"
-        />
-        <div
-          className="c9 c10"
-        >
-          <div
-            className="c11"
-            onClick={[Function]}
-          >
-            <svg
-              className="expand"
-              version="1.1"
-              viewBox="0 0 27 27"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g
-                fill="none"
-                fillRule="evenodd"
-                stroke="none"
-                strokeWidth="1"
-              >
-                <g>
-                  <circle
-                    cx="13.9575195"
-                    cy="13.0588379"
-                    fill="#000000"
-                    fillRule="nonzero"
-                    r="13"
-                  />
-                  <g
-                    stroke="#FFFFFF"
-                    transform="translate(8.000000, 7.000000)"
-                  >
-                    <g>
-                      <g
-                        transform="translate(0.382532, 0.382532)"
-                      >
-                        <polyline
-                          points="4.78165571 0 11.1571966 0 11.1571966 6.37554094"
-                        />
-                        <polyline
-                          points="-1.01881144e-06 4.78165537 6.37553992 4.78165537 6.37553992 11.1571963"
-                          transform="translate(3.187769, 7.969426) rotate(-180.000000) translate(-3.187769, -7.969426) "
-                        />
-                        <path
-                          d="M10.360254,0.796942618 L0.796942618,10.360254"
-                          strokeLinecap="square"
-                        />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
+      <img
+        alt="The Work of Bruce M. Sherman"
+        height="auto"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
+        width="100%"
+      />
     </div>
   </div>
   <div
