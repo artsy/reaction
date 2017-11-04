@@ -151,25 +151,22 @@ const Container = styled.div`
     @media screen and (min-width: 1250px) {
       height: ${1100 * VIDEO_RATIO}px;
     }
-
     ${breakpoint.xl`
       height: ${1100 * VIDEO_RATIO}px;
     `}
-
     ${breakpoint.lg`
       height: ${950 * VIDEO_RATIO}px;
     `}
-
     ${breakpoint.md`
       height: ${800 * VIDEO_RATIO}px;
     `}
-
     ${breakpoint.sm`
       height: ${620 * VIDEO_RATIO}px;
     `}
-
     ${breakpoint.xs`
-      height: ${520 * VIDEO_RATIO}px;
+      height: ${340 * VIDEO_RATIO}px;
+      margin-top: 25px;
+      margin-bottom: -25px;
     `}
   }
 

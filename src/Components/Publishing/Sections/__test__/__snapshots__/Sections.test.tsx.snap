@@ -754,6 +754,12 @@ exports[`renders properly 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c0 {
+    max-width: 780px;
+  }
+}
+
 <div
   className="c0"
 >
