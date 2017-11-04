@@ -156,8 +156,8 @@ const VideoContainer = Div`
   width: 100%;
   position: relative;
 
-  ${({ layout }) => {
-    if (layout === 'feature') {
+  ${p => {
+    if (p.layout === 'feature') {
       return `
         text-align: center;
         padding-bottom: 53px;

@@ -229,4 +229,8 @@ const StyledSections = Div`
   ${props => pMedia.md`
     max-width: ${props.layout === "standard" ? "780px" : "auto"};
   `}
+  ${props => pMedia.xs`
+    max-width: ${props.layout === "standard" ? "780px" : "auto"};
+    ${props.layout === 'feature' ? "margin: 30px auto 0 auto" : ""}
+  `}
 `
