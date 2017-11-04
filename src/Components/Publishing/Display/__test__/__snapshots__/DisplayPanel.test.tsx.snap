@@ -34,7 +34,7 @@ exports[`renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .s8uxym6-1-file__Image-iTToDH {
+.c1 .l35k4k-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -45,7 +45,7 @@ exports[`renders the display panel with an image 1`] = `
   border: 10px solid black;
 }
 
-.c1:hover .s8uxym6-1-file__Image-iTToDH {
+.c1:hover .l35k4k-1-file__Image-iTToDH {
   display: none;
 }
 
@@ -112,8 +112,9 @@ exports[`renders the display panel with an image 1`] = `
 >
   <div
     className="c1"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={undefined}
+    onMouseEnter={false}
+    onMouseLeave={false}
   >
     <div
       className="c2 c3"
@@ -172,12 +173,12 @@ exports[`renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.bMBsiB .c3 {
+.SLjRr .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.bMBsiB:hover .c3 {
+.SLjRr:hover .c3 {
   display: none;
 }
 
@@ -195,8 +196,8 @@ exports[`renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-s8uxym6-1 {
-  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz9w_n6UxxoZ_u1lzt4vwrw%252FHero%2BLoop%2B02.mp4&width=680&height=284&quality=95) no-repeat center center;
+.c1 .file__Image-l35k4k-1 {
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
@@ -205,7 +206,7 @@ exports[`renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c1:hover .file__Image-s8uxym6-1 {
+.c1:hover .file__Image-l35k4k-1 {
   background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
   background-size: contain;
   border: 10px solid black;
@@ -303,20 +304,21 @@ exports[`renders the display panel with video 1`] = `
 >
   <div
     className="c1"
+    onClick={undefined}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <div
-      className="c2"
-      onClick={undefined}
+      className="VideoContainer c2"
     >
       <div
-        className="c3 c4"
+        className="VideoContainer__VideoCover c3 c4"
       />
       <video
+        className="VideoContainer__video"
         controls={false}
         playsInline={true}
-        src="https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"
+        src="https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4"
       />
     </div>
     <div
