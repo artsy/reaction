@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components'
 import { Responsive } from '../../../Utils/Responsive'
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
-import { Share } from "../Byline/Share"
+import { pMedia } from "../../Helpers"
+import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
 import { articleHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
 
@@ -148,7 +149,7 @@ const Container = styled.div`
     width: 100%;
 
     @media screen and (min-width: 1250px) {
-      height: ${1100 * VIDEO_RATIO};
+      height: ${1100 * VIDEO_RATIO}px;
     }
 
     ${breakpoint.xl`
@@ -190,6 +191,12 @@ const Container = styled.div`
         padding-right: 0;
         margin-bottom: 10px;
       }
+    `}
+  }
+
+  ${ShareContainerStyles} {
+    ${pMedia.xs`
+      margin-top: 0;
     `}
   }
 `
