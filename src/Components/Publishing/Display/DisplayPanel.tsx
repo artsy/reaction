@@ -19,6 +19,7 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
   hoverImageUrl?: string
   isMobile?: boolean
   imageUrl?: string
+  onClick: any
   onMouseEnter: any
   onMouseLeave: any
 }
@@ -29,6 +30,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
 
   constructor(props) {
     super(props)
+
     this.openLink = this.openLink.bind(this)
     this.onClickVideo = this.onClickVideo.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
@@ -47,13 +49,24 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   componentDidMount() {
     if (this.video) {
       this.video.onended = () => {
-        this.setState({ isPlaying: false })
+        this.pauseVideo()
       }
     }
   }
 
-  // Rather than using an <a /> tag, which bad markup can oftentimes break during
-  // SSR, use JS to open link.
+  isVideoClickArea(e) {
+    const videoClasses = [
+      'VideoContainer',
+      'VideoContainer__VideoCover',
+      'VideoContainer__VideoControls',
+      'VideoContainer__video',
+      'PlayButton',
+      'PlayButton__PlayButtonCaret'
+    ]
+    const isVideoClickArea = videoClasses.some(c => e.target.className.includes(c))
+    return isVideoClickArea
+  }
+
   @track((props, [e]) => ({
     action: "Click",
     label: "Display ad clickthrough",
@@ -62,10 +75,12 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     unit_layout: "panel"
   }))
   openLink(e) {
-    const { link } = this.props.unit
     e.preventDefault()
-    if (link) {
-      window.open(link.url, '_blank')
+    const url = get(this.props, 'unit.link.url', false)
+
+    if (url && !this.isVideoClickArea(e)) {
+      this.pauseVideo()
+      window.open(url, '_blank')
     }
   }
 
@@ -76,8 +91,10 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     campaign_name: props.campaign.name,
     unit_layout: "panel"
   }))
-  onClickVideo() {
-    this.playVideo()
+  onClickVideo(e) {
+    if (this.isVideoClickArea(e)) {
+      this.toggleVideo()
+    }
   }
 
   @track(props => ({
@@ -92,39 +109,60 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   onMouseLeave = () => {
-    if (this.video) {
-      this.video.pause()
-    }
+    this.pauseVideo()
   }
 
   playVideo = () => {
     if (this.video) {
-      if (this.video.paused) {
-        this.video.play()
-        this.setState({ isPlaying: true })
-      } else {
-        this.video.pause()
-        this.setState({ isPlaying: false })
-      }
+      this.video.play()
+
+      this.setState({
+        isPlaying: true
+      })
+    }
+  }
+
+  pauseVideo = () => {
+    if (this.video) {
+      this.video.pause()
+
+      this.setState({
+        isPlaying: false
+      })
+    }
+  }
+
+  toggleVideo = () => {
+    if (this.state.isPlaying) {
+      this.pauseVideo()
+    } else {
+      this.playVideo()
     }
   }
 
   renderVideo = (url) => {
     const { isMobile } = this.props
     return (
-      <VideoContainer onClick={isMobile && this.onClickVideo}>
+      <VideoContainer className='VideoContainer'>
         {!this.state.isPlaying &&
-          <VideoCover>
+          <VideoCover className='VideoContainer__VideoCover'>
             {isMobile &&
-              <VideoControls mini />
+              <VideoControls mini
+                className='VideoContainer__VideoControls'
+              />
             }
           </VideoCover>
         }
-        <video src={url} controls={false} playsInline ref={video => (this.video = video)} />
+
+        <video playsInline
+          src={url}
+          className='VideoContainer__video'
+          controls={false}
+          ref={video => (this.video = video)}
+        />
       </VideoContainer>
     )
   }
-
 
   render() {
     const { unit, campaign, isMobile } = this.props
@@ -138,6 +176,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     return (
       <Wrapper onClick={!isMobile && this.openLink}>
         <DisplayPanelContainer
+          onClick={isMobile && this.onClickVideo}
           onMouseEnter={!isMobile && isVideo && this.onMouseEnter}
           onMouseLeave={!isMobile && isVideo && this.onMouseLeave}
           imageUrl={imageUrl}
@@ -149,6 +188,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
             ? this.renderVideo(url)
             : <Image />
           }
+
           <div onClick={isMobile && this.openLink}>
             <Headline>
               {unit.headline}

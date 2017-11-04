@@ -37,7 +37,7 @@ mobileAdInsertions.forEach(([label, unit]) => {
     article.sections = [article.sections[1]]
 
     const DisplayPanelAd = () =>
-      <DisplayPanel
+      <DisplayPanel isMobile
         unit={unit}
         campaign={Campaign}
       />
