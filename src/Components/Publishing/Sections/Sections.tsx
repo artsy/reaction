@@ -1,4 +1,4 @@
-import { clone } from 'lodash'
+import { clone, compact } from 'lodash'
 import React from "react"
 import ReactDOM from 'react-dom'
 import styled, { StyledFunction } from "styled-components"
@@ -31,7 +31,7 @@ interface StyledSectionsProps {
  * When isMobile, hide sidebar and inject DisplayAd into the body of the
  * article at a specific paragraph index.
  */
-const MOBILE_DISPLAY_INJECT_INDEX = 0
+const MOBILE_DISPLAY_INJECT_INDEX = 1
 const MOBILE_DISPLAY_INJECT_ID = '__mobile_display_inject__'
 
 export class Sections extends React.Component<SectionsProps, any> {
@@ -57,12 +57,11 @@ export class Sections extends React.Component<SectionsProps, any> {
    */
   injectDisplayPanelMarker(body) {
     const tag = '</p>'
-    const updatedBody = body
-      .split(tag)
+    const updatedBody = compact(body.split(tag))
       .map(p => p + tag)
       .reduce((arr, block, paragraphIndex) => {
         if (paragraphIndex === MOBILE_DISPLAY_INJECT_INDEX) {
-          return arr.concat([block, `<div id="${MOBILE_DISPLAY_INJECT_ID}" />`])
+          return arr.concat([block, `<div id="${MOBILE_DISPLAY_INJECT_ID}"></div>`])
         } else {
           return arr.concat([block])
         }
@@ -73,7 +72,7 @@ export class Sections extends React.Component<SectionsProps, any> {
   }
 
   mountDisplayToMarker() {
-    const displayMountPoint = document.querySelector(`#${MOBILE_DISPLAY_INJECT_ID}`)
+    const displayMountPoint = document.getElementById(`#${MOBILE_DISPLAY_INJECT_ID}`)
 
     if (displayMountPoint) {
       ReactDOM.render(<this.props.DisplayPanel />, displayMountPoint)

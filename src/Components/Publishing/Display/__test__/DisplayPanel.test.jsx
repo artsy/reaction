@@ -1,17 +1,17 @@
+import { mount } from 'enzyme'
 import 'jest-styled-components'
+import { clone } from 'lodash'
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { track } from '../../../../Utils/track'
 import { Campaign, UnitPanel, UnitPanelVideo } from '../../Fixtures/Components'
 import { DisplayPanel } from '../DisplayPanel'
-import { clone } from 'lodash'
-import { mount } from 'enzyme'
-import { track } from '../../../../Utils/track'
 
 jest.mock('../../../../Utils/track.ts', () => ({
   track: jest.fn()
 }))
 
-describe('DisplayPanel snapshots', () => {
+describe('snapshots', () => {
   it('renders the display panel with an image', () => {
     const displayPanel = renderer.create(
       <DisplayPanel unit={UnitPanel} campaign={Campaign} />
@@ -29,7 +29,7 @@ describe('DisplayPanel snapshots', () => {
   })
 })
 
-describe('DisplayPanel', () => {
+describe('units', () => {
   const getWrapper = (props = {}) => {
     return mount(
       <DisplayPanel
@@ -108,11 +108,12 @@ describe('DisplayPanel', () => {
       const wrapper = getWrapper({ isMobile: true })
       const instance = wrapper.instance()
       instance.isVideoClickArea = () => true
-      instance.video = { play: jest.fn(), pause: jest.fn() }
       const spy = jest.spyOn(instance, 'onClickVideo')
+      const toggleSpy = jest.spyOn(instance, 'toggleVideo')
       wrapper.update()
       wrapper.find('DisplayPanelContainer').simulate('click')
       expect(spy).toHaveBeenCalled()
+      expect(toggleSpy).toHaveBeenCalled()
       expect(wrapper.state().isPlaying).toEqual(true)
       wrapper.find('DisplayPanelContainer').simulate('click')
       expect(wrapper.state().isPlaying).toEqual(false)
