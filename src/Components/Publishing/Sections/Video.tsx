@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
 import { resize } from "../../../Utils/resizer"
 import { pMedia as breakpoint } from "../../Helpers"
-import { sizeMeRefreshRate } from "../Constants"
+import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { Layout } from "../Typings"
 import { Caption } from "./Caption"
 import { VideoControls } from './VideoControls'
@@ -188,7 +188,7 @@ export const CoverImage = Div`
 `
 
 const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
+  refreshRate: SIZE_ME_REFRESH_RATE,
   noPlaceholder: true,
 }
 

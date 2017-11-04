@@ -4,7 +4,7 @@ import request from "superagent"
 import Colors from "../../../Assets/Colors"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
-import { emailRegex } from "../Constants"
+import { EMAIL_REGEX } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface EmailPanelProps {
@@ -38,7 +38,7 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
 
   onClick = () => {
     this.setState({ disabled: true })
-    if (this.state.value.match(emailRegex)) {
+    if (this.state.value.match(EMAIL_REGEX)) {
       request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
         if (err) {
           this.flashMessage("Error. Please try again", true, false)

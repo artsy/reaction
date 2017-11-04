@@ -132,6 +132,234 @@ export const ClassicArticle: ArticleData = {
 }
 
 export const StandardArticle: ArticleData = {
+  "id": "59f8f0325d105d003bdf1678",
+  "title": "This Organization Is Giving Free Art Materials to Thousands of NYC Schools and Nonprofits",
+  "search_title": "",
+  "social_title": "",
+  "description": "From its massive Long Island City warehouse, Materials for the Arts fosters artmaking across the city, among artists and schoolchildren alike.",
+  "search_description": "",
+  "social_description": "",
+  "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/qMqZjOip3ut0kmTVSyKZsQ%2Fmfamagthumb.jpg",
+  "thumbnail_title": "This Organization Is Giving Free Art Materials to Thousands of NYC Schools and Nonprofits",
+  "social_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/4MAxTfxDwYTOysC9dyO6ow%2Fmfasocialthumb.jpg",
+  "published_at": "2017-11-02T19:17:52.629Z",
+  "slug": "artsy-editorial-organization-free-art-materials-thousands-nyc-schools-nonprofits",
+  "layout": "standard",
+  "featured": true,
+  "channel_id": "5759e3efb5989e6f98f77993",
+  "partner_channel_id": null,
+  "indexable": true,
+  "keywords": [
+    "Innovation",
+    "Alexxa Gotthardt"
+  ],
+  "published": true,
+  "postscript": "",
+  "is_super_article": false,
+  "is_super_sub_article": false,
+  "super_article": null,
+  "email_metadata": {
+    "headline": "This Organization Is Giving Free Art Materials to Thousands of NYC Schools and Nonprofits",
+    "author": "Alexxa Gotthardt",
+    "credit_line": "",
+    "credit_url": "",
+    "image_url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/YPAG9c6uZ7YRYWxGrNryDw%2Fmfamagthumb.jpg"
+  },
+  "authors": [
+    {
+      "image_url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/TBY50onyDN67lGYptNUyiA%2FAlexxa.jpg",
+      "twitter_handle": "",
+      "name": "Alexxa Gotthardt",
+      "id": "59949fb332a45900176937cf",
+      "bio": ""
+    }
+  ],
+  "contributing_authors": [
+    {
+      "name": "Alexxa Gotthardt"
+    }
+  ],
+  "vertical": {
+    "name": "Creativity",
+    "id": "591eaa6bfaef6a3a8e7fe1b1"
+  },
+  "hero_section": null,
+  "sections": [
+    {
+      "type": "image_collection",
+      "layout": "overflow_fillwidth",
+      "images": [
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/LKJVzxThLi9NTCZxEWirRg%2FoYky9VfaRf2xgr4onf2F_full_AM+Shopping.jpg",
+          "caption": "<p>Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 1200,
+          "height": 795
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "body": "<p>It was 2015, and the hit off-Broadway show <em>Grounded, <\/em>starring Anne Hathaway, had just closed, leaving hundreds of pounds of sand that had covered the stage without a home\u2014or so you might think. <\/p><p>While the trappings of defunct sets, like that of <em>Grounded<\/em>, often end up in trash bins, this sand had a different fate. It was heading to Materials for the Arts (MFTA), an arm of New York City\u2019s Department of Cultural Affairs that keeps discarded materials from entering landfills, and instead makes them available to creative organizations and public schools around the city, for free. <\/p><p>Several months after the sand landed at MFTA\u2019s headquarters, in Long Island City, Queens, it was reincarnated in an NYC classroom, as the foundation for a new community garden. <\/p><p>\u201cThat sand had a very rich life,\u201d Kwame Belle, MFTA\u2019s communications coordinator, tells me as we walk through the organization\u2019s 35,000-square-foot warehouse, which hosts materials ranging from sand to slop sinks, from cans of paint to spools of Pantone fabric. \u201cIt went from Anne Hathaway rolling around in it onstage, to a bunch of third graders pouring it out into their community garden,\u201d Belle continues. \u201cThat\u2019s the kind of full-circle moment we\u2019re trying to create here: culture reused as more culture.\u201d<\/p>"
+    },
+    {
+      "type": "image_collection",
+      "layout": "overflow_fillwidth",
+      "images": [
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/fXvjp8l_2BLSchRpG_TFAw%2FIMG_2522+%28photo+credit+Laura+Fuchs%29+%281%29.jpg",
+          "caption": "<p>Photo by Laura Fuchs. Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 5472,
+          "height": 3648
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "body": "<p>MFTA has been facilitating these full-circle moments, or what they refer to as \u201ccreative reuse,\u201d since 1978, when a young artist named Angela Fremont, who was working in the Department of Cultural Affairs\u2019s Central Park office, got wind that the park\u2019s zoo needed a refrigerator to store medicine for their animals. In an era before Craigslist, she took the zoo\u2019s request to a local radio show. Minutes after her appeal was broadcasted, calls offering working refrigerators flooded the phone line in her office\u2014and she realized this model could be applied and adapted to support other organizations, too. <\/p><p>MFTA was born soon after, as a nonprofit with a mission to provide free materials to creative non-profits in New York City, and bolster the city\u2019s recycling efforts in the process. Funded primarily by the NYC Department of Cultural Affairs, with support from the New York Department of Sanitation, the organization began by canvassing businesses and individuals across the five boroughs for discarded materials. These spoils were collected from donors, then housed and organized in MFTA\u2019s first headquarters at Chelsea Market on the West Side of Manhattan. There, arts professionals and artists working with nonprofits like museums, theaters, exhibition spaces, music venues, and schools, \u201cshopped\u201d for fodder they would use to build their future projects. <\/p><p>Today, MFTA refers to these recipients as their \u201cmember organizations,\u201d which are approved for \u201cshopping\u201d through an online application process. They must be confirmed as either a nonprofit arts or cultural group with at least two years of arts programming; individuals and projects sponsored by nonprofit organizations that also meet the two-year requirement; or New York City, State, or Federal agencies. All NYC Public Schools are pre-registered.<\/p><p>\u201cPeople came and still come to Materials for the Arts for what is often the most important element of their project: their materials,\u201d Belle explains. \u201cAnd they leave with those materials <em>and <\/em>a surplus on their budget, because they didn\u2019t have to pay a thing for them.\u201d<\/p>"
+    },
+    {
+      "type": "image_collection",
+      "layout": "overflow_fillwidth",
+      "images": [
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/IHRD9SV1ejUB57ZsFoEESg%2F20170925_131316.jpg",
+          "caption": "<p>Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 900,
+          "height": 1200
+        },
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/Hlj8a_iPPmZk8yxTySfWLw%2F20170825_160154.jpg",
+          "caption": "<p>Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 900,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "body": "<p>Since its humble beginnings almost 40 years ago, MFTA has grown exponentially\u2014in terms of its physical size <em>and<\/em> its impact on both New York\u2019s creative community and the city\u2019s sanitation operations. Last year alone, the organization provided free materials to 2,218 creative non-profits and public schools and diverted 1.9 million pounds of reusable goods from landfills. This year, they hope to break 2 million. <\/p><p>MFTA\u2019s massive Long Island City premises is located just down the road from <a href=\"https:\/\/www.artsy.net\/moma-ps1\">MoMA PS1<\/a> and <a href=\"https:\/\/www.artsy.net\/sculpturecenter\">SculptureCenter<\/a>. The building houses a 25,000-square-foot hall stacked floor-to-ceiling with materials, and another 10,000 square feet devoted to offices, two classrooms, and a gallery.<\/p><p>The hall itself resembles a hybrid of the home improvement behemoth Home Depot and the traditional art supply go-to Blick. Shopping carts stacked at the entrance make way for a room so long, it appears to go on farther than the eye can see. This is where the artists, designers, teachers, and other professionals affiliated with MFTA\u2019s partner nonprofits begin their hunt. <\/p><p>During my visit to the space, Belle and I begin our tour by walking through the paper section, which is chock full of donated books, note cards, and even several shelves loaded with artwork reproductions\u2014like <a href=\"https:\/\/www.artsy.net\/artist\/kasimir-severinovich-malevich\">Kazimir Malevich<\/a>\u2019s <em>Peasant Woman with Buckets and Child<\/em> (1912) and <a href=\"https:\/\/www.artsy.net\/artist\/morris-louis\">Morris Louis<\/a>\u2019s <em>Delta Ro<\/em> (1960)\u2014donated by <a href=\"https:\/\/www.artsy.net\/pace-prints\">Pace Prints<\/a>. <\/p><p>Next, we pass through a section of old posters, printed on one side with colorful images. \u201cWe like to remind people who come to MFTA that they can also use the backs of the posters as blank paper,\u201d Belle notes. \u201cThat\u2019s what creative reuse is: taking an existing object and turning it into something new.\u201d MFTA recycles these posters for their own use, too. \u201cWhen you get a thank you note or invitation from us, say to our annual gala, you\u2019ll turn it over a see that we\u2019ve reused the paper. It\u2019s another small way we communicate our mission,\u201d he continues. &nbsp;<\/p>"
+    },
+    {
+      "type": "image_collection",
+      "layout": "overflow_fillwidth",
+      "images": [
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/J2VaKjg2QD0yuUsbbguOOg%2F20160630_105026.jpg",
+          "caption": "<p>Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 4032,
+          "height": 2268
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "body": "<p>MFTA staff has scattered similar nods to the creative possibilities of reuse across the warehouse. In front of a section devoted to novelty items\u2014like puzzles, plastic flamingoes, and even one gold trash can printed with the United States Senate logo\u2014we see a DIY solar system model. It was made by one of the school groups that visit MFTA for field trips, from discarded Christmas decorations. Fashioned in one of MFTA\u2019s on-site classrooms, its planets were made from glass ornaments of different sizes that had been wrapped in yarn and coated with glitter. A string of twinkle lights became the stars that surrounded the celestial globes. <\/p><p>These school field trips speak to the organization\u2019s wider commitment to education, spearheaded by longtime director Harriet Taub over the past two decades. (Taub went to art school for ceramics, and also has degree in arts education.) The effort was launched in 1997, when the New York City Department of Education\u2019s Project ARTS agreed to provide a portion of funding to MFTA to allow art teachers access to the facility. <\/p><p>Taub and other members of MFTA\u2019s staff quickly recognized a disconnect, though, between the found materials they provided, and what public school teachers expected to find at the warehouse. \u201cThey kept asking, \u2018Where are the watercolors?\u2019\u201d Taub recounts. \u201cI said, \u2018You have to think outside the box! You have to figure this out!\u2019\u201d she continues with enthusiasm. A year later, in response, she and artist Joy Suarez began to offer workshops to teachers and other arts professionals on how to use nontraditional and found materials in school projects. <\/p><p>Since then, MFTA has added two classrooms to their headquarters, where they work with public school students, teachers of all stripes, and a range of other groups including people with disabilities. One class, cleverly titled \u201cPaper: From Pulp to Fiction,\u201d teaches students to make substrates, utensils, and pigments from scratch: \u201cInk from blueberries, a pen made from a bamboo shoot, a block print from a piece of discarded tile or the bottom of your sneaker,\u201d Belle explains.<\/p><p>MFTA sends trained artists into public schools around New York, too. Guided by John Cloud Kaiser, MFTA director of education, the program arranges in-school workshops that \u201cmodel creative reuse and project-based learning for students and staff,\u201d MFTA\u2019s website describes. These are attended not only by art teachers, but also by educators of other disciplines like social studies, math, and science. <\/p><p>Kaiser, who joins us for part of the tour, notes that a correlation between this program and increased test scores has been recorded in some of the public schools where it\u2019s been implemented. \u201cLast year, one of our pilot schools, P.S. 5 in Brooklyn, had the biggest increase in test scores of any school in New York City,\u201d Kaiser notes. \u201cWe\u2019ve been studying it and we\u2019ve seen the impact MFTA had on that.\u201d<\/p>"
+    },
+    {
+      "type": "image_collection",
+      "layout": "overflow_fillwidth",
+      "images": [
+        {
+          "url": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/J9PGi1dTBBaFLYvJKtm7sg%2F20160630_103427.jpg",
+          "caption": "<p>Courtesy of Materials for the Arts. <\/p>",
+          "type": "image",
+          "width": 1200,
+          "height": 675
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "body": "<p>In 2012, MFTA also introduced an artist residency <em>within<\/em> its warehouse. The day I visit, Brooklyn-based artist Sol\u2019Sax is in the middle of his three-month residency, and working in a dedicated studio at MFTA. The space is bright, bordered on one side by big windows, and filled with materials\u2014instrument cases, surfboards, painting palettes, Martin Luther King, Jr. figures, among them\u2014that Sax mined from MFTA\u2019s warehouse to create sculptures. <\/p><p>\u201cThe commercial world sees so many things as worthless\u2014so many things become trash because they become \u2018unsellable,\u2019\u201d Sax tells me. \u201cAs an artist, we look at those things and we see their value\u2014and we can redeem it through our creativity. Materials for the Arts is an organization that helps redeem the value of so much of what comes out of New York City.\u201d<\/p><p>Across his studio, he\u2019s turned a trio of black instrument cases into a freestanding, sculptural body. Two traditional painter\u2019s palettes have been turned upside down and decorated with cans for eyes; they now resemble African masks. Two discarded surfboards stand to the side, waiting to be altered; Sax plans to transform them into vessels that nod to \u201cAfrican cultural heritage, and the respect that African cultures had for the ocean and the way they thought about the ocean being alive,\u201d he explains.<\/p><p>Come December, Sax will unveil his recent work in a solo show at MFTA\u2019s new gallery. In 2010, Kaiser saw an opportunity to turn the hallway that leads from the elevator to the warehouse into a exhibition space\u2014another example of MFTA embracing its mission of creative reuse. <\/p><p>\u201cThe idea for the gallery was twofold,\u201d Kaiser explains. \u201cOne, to shine a light on artists and educators who are using reused materials in interesting and new ways. And two, to use this space to get people who pass through it excited about making art themselves.\u201d<\/p><p>As we pass through the gallery, I explain to Kaiser, Belle, Sax, and Taub that it worked: I haven\u2019t made art since high school, and I was suddenly itching to create. \u201cThat\u2019s really the whole point of what we do,\u201d says Taub. \u201cTo remind people that there is some artistic bone in everybody\u2019s body.\u201d<\/p>"
+    },
+    {
+      "type": "text",
+      "body": "<p><br><\/p>"
+    }
+  ],
+  "relatedArticlesPanel": [
+    {
+      "slug": "artsy-editorial-creative-job-partially-decide",
+      "thumbnail_title": "Do You Have a Creative Job? That\u2019s (Partially) for You to Decide",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/Hn_G8hR8DLouTj_o3trwOg%2Fstefan-stefancik-257625.jpg",
+      "contributing_authors": [
+        {
+          "name": "Isaac Kaplan"
+        }
+      ]
+    },
+    {
+      "slug": "artsy-editorial-airbnb-alternative-vacation-modernist-homes-designed-famous-architects",
+      "thumbnail_title": "This Airbnb Alternative Lets You Vacation in Modernist Homes Designed by Famous Architects",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/nwWavyVI7zkENqITt4O55A%2Fcustom-Custom_Size___Plansmatter-16+Sawtooth+Cabin.jpg",
+      "contributing_authors": [
+        {
+          "name": "Annie Armstrong"
+        }
+      ]
+    },
+    {
+      "slug": "artsy-editorial-masters-art-students-alike-drawing-way-unlock-creativity",
+      "thumbnail_title": "For Old Masters and Art Students Alike, Drawing Is a Way to Unlock Creativity",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/28_MhFp9lH5O1KKRvM_0DQ%2Fcustom-Custom_Size___ExperimentalFoundationStudies++%283%29.jpg",
+      "contributing_authors": [
+        {
+          "name": "Tess Thackara"
+        }
+      ]
+    }
+  ],
+  "relatedArticlesCanvas": [
+    {
+      "slug": "artsy-editorial-creative-job-partially-decide",
+      "thumbnail_title": "Do You Have a Creative Job? That\u2019s (Partially) for You to Decide",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/Hn_G8hR8DLouTj_o3trwOg%2Fstefan-stefancik-257625.jpg",
+      "contributing_authors": [
+        {
+          "name": "Isaac Kaplan"
+        }
+      ]
+    },
+    {
+      "slug": "artsy-editorial-alia-shawkat-art-helps-recharge-acting",
+      "thumbnail_title": "Alia Shawkat on How Art Helps Her Recharge from Acting",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/WwC0otdgPo5b4AlPu6-FGA%2Fcustom-Custom_Size___092617Artsy_AliaShawkat336+2.jpg",
+      "contributing_authors": [
+        {
+          "name": "Casey Lesser"
+        }
+      ]
+    },
+    {
+      "slug": "artsy-editorial-art-therapy-helping-people",
+      "thumbnail_title": "What Is Art Therapy? And How Is It Helping People?",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/fqOmszZ1sxwl99s2BdvBow%2Fd7hftxdivxxvm.cloudfront-1.jpg",
+      "contributing_authors": [
+        {
+          "name": "Casey Lesser"
+        }
+      ]
+    },
+    {
+      "slug": "artsy-editorial-airbnb-alternative-vacation-modernist-homes-designed-famous-architects",
+      "thumbnail_title": "This Airbnb Alternative Lets You Vacation in Modernist Homes Designed by Famous Architects",
+      "thumbnail_image": "https:\/\/artsy-media-uploads.s3.amazonaws.com\/nwWavyVI7zkENqITt4O55A%2Fcustom-Custom_Size___Plansmatter-16+Sawtooth+Cabin.jpg",
+      "contributing_authors": [
+        {
+          "name": "Annie Armstrong"
+        }
+      ]
+    }
+  ],
+  "display": null
+}
+
+export const StandardArticle1: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
   slug: "new-yorks-next-art-district",

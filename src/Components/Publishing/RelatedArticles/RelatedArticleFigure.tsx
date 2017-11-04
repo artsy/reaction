@@ -4,7 +4,7 @@ import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { articleHref } from "../Constants"
+import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
@@ -37,7 +37,7 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
 
   render() {
     const { article } = this.props
-    const href = articleHref(article.slug)
+    const href = getArticleHref(article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
 
     return (
