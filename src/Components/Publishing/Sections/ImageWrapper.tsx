@@ -14,7 +14,7 @@ interface Props extends React.HTMLProps<HTMLImageElement> {
   index?: number
 }
 
-export class ImageWrapper extends React.Component<Props, any> {
+export class ImageWrapper extends React.PureComponent<Props, any> {
   image = undefined
   mounted = false
 

@@ -259,8 +259,10 @@ const SuperArticlePartnerLogo = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 15px;
+  margin-top: 16px;
   ${pMedia.xs`
     padding-bottom: 10px;
+    margin-top: 11px;
   `}
 `
 

@@ -1,12 +1,14 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import React from "react"
-import renderer from "react-test-renderer"
-import { StandardArticle } from "../../Fixtures/Articles"
-import { Sections } from "../Sections"
+import 'jest-styled-components'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { Sections } from '../Sections'
+import { StandardArticle } from '../../Fixtures/Articles'
+import { clone } from 'lodash'
+import { mount } from 'enzyme'
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-jest.mock("react-lines-ellipsis/lib/html", () => {
+
+jest.mock('react-sizeme', () => jest.fn(c => d => d))
+jest.mock('react-lines-ellipsis/lib/html', () => {
   const React = require('react')
   return () => <div />
 })
@@ -16,13 +18,33 @@ jest.mock('react-dom/server', () => ({
 }))
 
 describe('snapshots', () => {
-  it("renders properly", () => {
+  it('renders properly', () => {
     const sections = renderer.create(<Sections article={StandardArticle} />).toJSON()
     expect(sections).toMatchSnapshot()
   })
 })
 
 describe('units', () => {
+  it('doesnt throw an error on invalid markup', () => {
+    global.console = { error: jest.fn() }
+
+    expect(() => {
+      const article = clone(StandardArticle)
+      article.sections = [{
+        type: 'text',
+        body: '<p>busted'
+      }]
+
+      mount(
+        <Sections isMobile
+          DisplayPanel={() => <div>hi!</div>}
+          article={article}
+        />
+      )
+      expect(global.console.error).toHaveBeenCalled()
+    }).not.toThrowError()
+  })
+
   it('if mobile, sets flag to inject display', () => {
     const element = document.createElement('div')
     element.id = '__mobile_display_inject__'

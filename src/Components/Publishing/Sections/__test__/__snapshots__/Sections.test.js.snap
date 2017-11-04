@@ -843,7 +843,7 @@ exports[`snapshots renders properly 1`] = `
               alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
               className="BlockImage__container c8"
               height={351}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=80"
               width={197}
             />
             <div
@@ -932,7 +932,7 @@ exports[`snapshots renders properly 1`] = `
               alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
               className="BlockImage__container c8"
               height={351}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=80"
               width={197}
             />
             <div
@@ -1025,7 +1025,7 @@ exports[`snapshots renders properly 1`] = `
                 alt="Brass Tax"
                 className="BlockImage__container c8"
                 height={352}
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=80"
                 width={264}
               />
               <div
@@ -1172,7 +1172,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="BlockImage__container c8"
               height={425}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1261,7 +1261,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="BlockImage__container c8"
               height={425}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1350,7 +1350,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
               className="BlockImage__container c8"
               height={426}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1462,7 +1462,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
               className="BlockImage__container c8"
               height="auto"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
               width="100%"
             />
             <div
@@ -1600,7 +1600,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="BlockImage__container c8"
               height={387}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=80"
               width={216}
             />
             <div
@@ -1689,7 +1689,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="BlockImage__container c8"
               height={388}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1778,7 +1778,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
               className="BlockImage__container c8"
               height={388}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={222}
             />
             <div
@@ -1973,7 +1973,7 @@ exports[`snapshots renders properly 1`] = `
               alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
               className="BlockImage__container c8"
               height="auto"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=80"
               width="100%"
             />
             <div

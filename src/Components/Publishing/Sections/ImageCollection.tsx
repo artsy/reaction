@@ -20,7 +20,7 @@ interface ImageCollectionProps {
   }
 }
 
-class ImageCollectionComponent extends React.Component<ImageCollectionProps, null> {
+class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps, null> {
   static defaultProps = {
     size: {
       width: 680

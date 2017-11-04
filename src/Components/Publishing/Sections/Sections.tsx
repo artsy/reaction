@@ -23,10 +23,6 @@ interface SectionsProps {
   isMobile?: boolean
 }
 
-interface StyledSectionsProps {
-  layout: string
-}
-
 /**
  * When isMobile, hide sidebar and inject DisplayAd into the body of the
  * article at a specific paragraph index.
@@ -72,7 +68,7 @@ export class Sections extends React.Component<SectionsProps, any> {
   }
 
   mountDisplayToMarker() {
-    const displayMountPoint = document.getElementById(`#${MOBILE_DISPLAY_INJECT_ID}`)
+    const displayMountPoint = document.getElementById(MOBILE_DISPLAY_INJECT_ID)
 
     if (displayMountPoint) {
       ReactDOM.render(<this.props.DisplayPanel />, displayMountPoint)
@@ -84,7 +80,9 @@ export class Sections extends React.Component<SectionsProps, any> {
     }
   }
 
-  getSection(section, layout) {
+  getSection(section) {
+    const { article } = this.props
+
     const sections = {
       image_collection: (
         <ImageCollection
@@ -112,7 +110,7 @@ export class Sections extends React.Component<SectionsProps, any> {
       text: (
         <Text
           html={section.body}
-          layout={layout}
+          layout={article.layout}
         />
       ),
       default: false,
@@ -124,10 +122,14 @@ export class Sections extends React.Component<SectionsProps, any> {
 
   renderSections() {
     const { article } = this.props
+    const { shouldInjectMobileDisplay } = this.state
     let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
-      const shouldInject = !displayMarkerInjected && this.state.shouldInjectMobileDisplay
+      const shouldInject = shouldInjectMobileDisplay
+        && sectionItem.type === 'text'
+        && !displayMarkerInjected
+
       let section = sectionItem
 
       if (shouldInject) {
@@ -140,7 +142,7 @@ export class Sections extends React.Component<SectionsProps, any> {
         }
       }
 
-      const child = this.getSection(section, article.layout)
+      const child = this.getSection(section)
 
       if (child) {
         return (
@@ -212,7 +214,7 @@ const chooseMargin = layout => {
   }
 }
 
-const Div: StyledFunction<StyledSectionsProps> = styled.div
+const Div: StyledFunction<{ layout: string }> = styled.div
 const StyledSections = Div`
   display: flex;
   flex-direction: column;

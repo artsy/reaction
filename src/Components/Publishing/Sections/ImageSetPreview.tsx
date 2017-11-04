@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React, { Component } from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
@@ -28,7 +28,7 @@ export interface Props {
 
 const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-export class ImageSetPreview extends Component<Props, null> {
+export class ImageSetPreview extends React.PureComponent<Props, null> {
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }

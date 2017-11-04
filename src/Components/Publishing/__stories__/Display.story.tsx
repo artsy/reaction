@@ -3,7 +3,9 @@ import { clone } from 'lodash'
 import React from "react"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
-import { BasicArticle } from '../Fixtures/Articles'
+import { StandardArticle } from '../Fixtures/Articles'
+import { Sections } from "../Sections/Sections"
+
 import {
   Campaign,
   UnitCanvasImage,
@@ -13,7 +15,6 @@ import {
   UnitPanel,
   UnitPanelVideo
 } from "../Fixtures/Components"
-import { Sections } from "../Sections/Sections"
 
 const story = storiesOf("Publishing/Display", module)
   .add("Panel", () => {
@@ -33,8 +34,7 @@ const mobileAdInsertions = [
 
 mobileAdInsertions.forEach(([label, unit]) => {
   story.add(`Panel: ${label} injected into mobile body`, () => {
-    const article = clone(BasicArticle)
-    article.sections = [article.sections[1]]
+    const article = clone(StandardArticle)
 
     const DisplayPanelAd = () =>
       <DisplayPanel isMobile
