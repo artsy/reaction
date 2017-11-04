@@ -1,11 +1,11 @@
-import { get, once } from "lodash"
-import React from "react"
-import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../Assets/Colors"
-import { crop, resize } from "../../../Utils/resizer"
-import { track } from "../../../Utils/track"
-import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { get, once } from 'lodash'
+import React from 'react'
+import styled, { StyledFunction } from 'styled-components'
+import Colors from '../../../Assets/Colors'
+import { crop, resize } from '../../../Utils/resizer'
+import { track } from '../../../Utils/track'
+import { pMedia } from '../../Helpers'
+import { Fonts } from '../Fonts'
 import { VideoControls } from '../Sections/VideoControls'
 
 interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -26,7 +26,7 @@ interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
 
 @track()
 export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
-  private video: HTMLVideoElement
+  public video: HTMLVideoElement
 
   constructor(props) {
     super(props)
@@ -34,6 +34,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     this.openLink = this.openLink.bind(this)
     this.onClickVideo = this.onClickVideo.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
+    this.onMouseLeave = this.onMouseLeave.bind(this)
 
     this.state = {
       isPlaying: false
@@ -41,10 +42,10 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   @track(once(props => ({
-    action: "Impression",
-    entity_type: "display_ad",
+    action: 'Impression',
+    entity_type: 'display_ad',
     campaign_name: props.campaign.name,
-    unit_layout: "panel"
+    unit_layout: 'panel'
   })))
   componentDidMount() {
     if (this.video) {
@@ -68,11 +69,11 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   @track((props, [e]) => ({
-    action: "Click",
-    label: "Display ad clickthrough",
-    entity_type: "display_ad",
+    action: 'Click',
+    label: 'Display ad clickthrough',
+    entity_type: 'display_ad',
     campaign_name: props.campaign.name,
-    unit_layout: "panel"
+    unit_layout: 'panel'
   }))
   openLink(e) {
     e.preventDefault()
@@ -85,11 +86,11 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   @track(props => ({
-    action: "Click",
-    label: "Display ad play video",
-    entity_type: "display_ad",
+    action: 'Click',
+    label: 'Display ad play video',
+    entity_type: 'display_ad',
     campaign_name: props.campaign.name,
-    unit_layout: "panel"
+    unit_layout: 'panel'
   }))
   onClickVideo(e) {
     if (this.isVideoClickArea(e)) {
@@ -98,11 +99,11 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   @track(props => ({
-    action: "MouseEnter",
-    label: "Display ad play video",
-    entity_type: "display_ad",
+    action: 'MouseEnter',
+    label: 'Display ad play video',
+    entity_type: 'display_ad',
     campaign_name: props.campaign.name,
-    unit_layout: "panel"
+    unit_layout: 'panel'
   }))
   onMouseEnter() {
     this.playVideo()
@@ -142,6 +143,7 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
 
   renderVideo = (url) => {
     const { isMobile } = this.props
+
     return (
       <VideoContainer className='VideoContainer'>
         {!this.state.isPlaying &&
@@ -171,11 +173,12 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     const imageUrl = crop(url, { width: 680, height: 284 })
     const hoverImageUrl = resize(unit.logo, { width: 680 })
     const coverUrl = crop(cover, { width: 680, height: 284 })
-    const isVideo = url.includes("mp4")
+    const isVideo = url.includes('mp4')
 
     return (
       <Wrapper onClick={!isMobile && this.openLink}>
         <DisplayPanelContainer
+          className='DisplayPanel__DisplayPanelContainer'
           onClick={isMobile && this.onClickVideo}
           onMouseEnter={!isMobile && isVideo && this.onMouseEnter}
           onMouseLeave={!isMobile && isVideo && this.onMouseLeave}
@@ -239,11 +242,11 @@ const DisplayPanelContainer = Div`
   max-width: 360px;
   box-sizing: border-box;
   ${Image} {
-    background: url(${props => (props.imageUrl ? props.imageUrl : "")}) no-repeat center center;
+    background: url(${props => (props.imageUrl ? props.imageUrl : '')}) no-repeat center center;
     background-size: cover;
   }
   ${VideoCover} {
-    background: url(${props => (props.coverUrl ? props.coverUrl : "")}) no-repeat center center;
+    background: url(${props => (props.coverUrl ? props.coverUrl : '')}) no-repeat center center;
     background-size: cover;
   }
   &:hover {
@@ -255,10 +258,10 @@ const DisplayPanelContainer = Div`
           background-size: contain;
           border: 10px solid black;
         `
-      : ""}
+      : ''}
     }
     ${VideoCover} {
-      ${props => !props.isMobile && "display: none;"}
+      ${props => !props.isMobile && 'display: none;'}
     }
   }
 
@@ -274,14 +277,15 @@ const DisplayPanelContainer = Div`
     margin: auto;
   `}
 `
+DisplayPanelContainer.displayName = 'DisplayPanelContainer'
 
 const Headline = styled.div`
-  ${Fonts.unica("s16", "medium")} line-height: 1.23em;
+  ${Fonts.unica('s16', 'medium')} line-height: 1.23em;
   margin-bottom: 3px;
 `
 
 const Body = styled.div`
-  ${Fonts.garamond("s17")} line-height: 1.53em;
+  ${Fonts.garamond('s17')} line-height: 1.53em;
   margin-bottom: 20px;
   a {
     color: black;
@@ -289,7 +293,7 @@ const Body = styled.div`
 `
 
 const SponsoredBy = styled.div`
-  ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
+  ${Fonts.avantgarde('s11')} color: ${Colors.grayRegular};
 `
 
 const VideoContainer = Image.extend`
@@ -304,3 +308,11 @@ const VideoContainer = Image.extend`
     height: 100%;
   }
 `
+
+// Set names for tests and DOM
+DisplayPanelContainer.displayName = 'DisplayPanelContainer'
+Image.displayName = 'Image'
+VideoContainer.displayName = 'VideoContainer'
+VideoCover.displayName = 'VideoCover'
+Wrapper.displayName = 'Wrapper'
+

@@ -31,7 +31,7 @@ interface StyledSectionsProps {
  * When isMobile, hide sidebar and inject DisplayAd into the body of the
  * article at a specific paragraph index.
  */
-const MOBILE_DISPLAY_PANEL_INJECT_INDEX = 0
+const MOBILE_DISPLAY_INJECT_INDEX = 0
 const MOBILE_DISPLAY_INJECT_ID = '__mobile_display_inject__'
 
 export class Sections extends React.Component<SectionsProps, any> {
@@ -61,7 +61,7 @@ export class Sections extends React.Component<SectionsProps, any> {
       .split(tag)
       .map(p => p + tag)
       .reduce((arr, block, paragraphIndex) => {
-        if (paragraphIndex === MOBILE_DISPLAY_PANEL_INJECT_INDEX) {
+        if (paragraphIndex === MOBILE_DISPLAY_INJECT_INDEX) {
           return arr.concat([block, `<div id="${MOBILE_DISPLAY_INJECT_ID}" />`])
         } else {
           return arr.concat([block])

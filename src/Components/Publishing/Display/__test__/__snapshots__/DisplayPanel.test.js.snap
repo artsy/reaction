@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the display panel with an image 1`] = `
+exports[`DisplayPanel snapshots renders the display panel with an image 1`] = `
 .c0 {
   cursor: pointer;
   text-decoration: none;
@@ -34,7 +34,7 @@ exports[`renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .l35k4k-1-file__Image-iTToDH {
+.c1 .s1ujdxw-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -45,7 +45,7 @@ exports[`renders the display panel with an image 1`] = `
   border: 10px solid black;
 }
 
-.c1:hover .l35k4k-1-file__Image-iTToDH {
+.c1:hover .s1ujdxw-1-file__Image-iTToDH {
   display: none;
 }
 
@@ -111,7 +111,7 @@ exports[`renders the display panel with an image 1`] = `
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="DisplayPanel__DisplayPanelContainer c1"
     onClick={undefined}
     onMouseEnter={false}
     onMouseLeave={false}
@@ -145,7 +145,7 @@ exports[`renders the display panel with an image 1`] = `
 </div>
 `;
 
-exports[`renders the display panel with video 1`] = `
+exports[`DisplayPanel snapshots renders the display panel with video 1`] = `
 .c0 {
   cursor: pointer;
   text-decoration: none;
@@ -173,12 +173,12 @@ exports[`renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.SLjRr .c3 {
+.lgjEUS .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.SLjRr:hover .c3 {
+.lgjEUS:hover .c3 {
   display: none;
 }
 
@@ -196,7 +196,7 @@ exports[`renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-l35k4k-1 {
+.c1 .file__Image-s1ujdxw-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -206,7 +206,7 @@ exports[`renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c1:hover .file__Image-l35k4k-1 {
+.c1:hover .file__Image-s1ujdxw-1 {
   background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
   background-size: contain;
   border: 10px solid black;
@@ -303,7 +303,7 @@ exports[`renders the display panel with video 1`] = `
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="DisplayPanel__DisplayPanelContainer c1"
     onClick={undefined}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
