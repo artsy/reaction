@@ -1,6 +1,6 @@
-import { clone, once } from 'lodash'
+import { clone, compact } from 'lodash'
 import React from "react"
-import ReactDOM from 'react-dom/server'
+import ReactDOM from 'react-dom'
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
@@ -31,21 +31,37 @@ interface StyledSectionsProps {
  * When isMobile, hide sidebar and inject DisplayAd into the body of the
  * article at a specific paragraph index.
  */
-const MOBILE_DISPLAY_PANEL_INJECT_INDEX = 2
+const MOBILE_DISPLAY_INJECT_INDEX = 1
+const MOBILE_DISPLAY_INJECT_ID = '__mobile_display_inject__'
 
 export class Sections extends React.Component<SectionsProps, any> {
 
-  injectDisplayPanelIntoText = once((body) => {
-    const displayPanelMarkup = ReactDOM.renderToString(<this.props.DisplayPanel />)
+  state = {
+    shouldInjectMobileDisplay: false
+  }
 
-    // Inject DisplayAd after a specific paragraph index
+  componentWillMount() {
+    this.setState({
+      shouldInjectMobileDisplay: this.props.isMobile
+    })
+  }
+
+  componentDidMount() {
+    if (this.state.shouldInjectMobileDisplay) {
+      this.mountDisplayToMarker()
+    }
+  }
+
+  /**
+   * Inject DisplayAd after a specific paragraph index
+   */
+  injectDisplayPanelMarker(body) {
     const tag = '</p>'
-    const updatedBody = body
-      .split(tag)
+    const updatedBody = compact(body.split(tag))
       .map(p => p + tag)
       .reduce((arr, block, paragraphIndex) => {
-        if (paragraphIndex === MOBILE_DISPLAY_PANEL_INJECT_INDEX) {
-          return arr.concat([block, displayPanelMarkup])
+        if (paragraphIndex === MOBILE_DISPLAY_INJECT_INDEX) {
+          return arr.concat([block, `<div id="${MOBILE_DISPLAY_INJECT_ID}"></div>`])
         } else {
           return arr.concat([block])
         }
@@ -53,7 +69,20 @@ export class Sections extends React.Component<SectionsProps, any> {
       .join('')
 
     return updatedBody
-  })
+  }
+
+  mountDisplayToMarker() {
+    const displayMountPoint = document.getElementById(`#${MOBILE_DISPLAY_INJECT_ID}`)
+
+    if (displayMountPoint) {
+      ReactDOM.render(<this.props.DisplayPanel />, displayMountPoint)
+    } else {
+      console.error(
+        '(reaction/Sections.tsx) Error mounting Display: DOM node ',
+        'not found', displayMountPoint
+      )
+    }
+  }
 
   getSection(section, layout) {
     const sections = {
@@ -94,20 +123,21 @@ export class Sections extends React.Component<SectionsProps, any> {
   }
 
   renderSections() {
-    const { article, isMobile } = this.props
-    let displayAdInjected = false
+    const { article } = this.props
+    let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
-      const shouldInject = !displayAdInjected && isMobile && sectionItem.type === 'text'
+      const shouldInject = !displayMarkerInjected && this.state.shouldInjectMobileDisplay
       let section = sectionItem
 
       if (shouldInject) {
         try {
-          displayAdInjected = true
           section = clone(sectionItem)
-          section.body = this.injectDisplayPanelIntoText(section.body)
-        // tslint:disable-next-line:no-empty
-        } catch (e) {}
+          section.body = this.injectDisplayPanelMarker(section.body)
+          displayMarkerInjected = true
+        } catch (error) {
+          console.error('(reaction/Sections.jsx) Error injecting Display:', error)
+        }
       }
 
       const child = this.getSection(section, article.layout)
@@ -183,7 +213,6 @@ const chooseMargin = layout => {
 }
 
 const Div: StyledFunction<StyledSectionsProps> = styled.div
-
 const StyledSections = Div`
   display: flex;
   flex-direction: column;

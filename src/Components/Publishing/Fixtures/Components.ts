@@ -181,7 +181,7 @@ export const UnitPanelVideo = {
   body:
   "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
   assets: [
-    { url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4" },
+    { url: 'https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4'}
   ],
   cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
   logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",

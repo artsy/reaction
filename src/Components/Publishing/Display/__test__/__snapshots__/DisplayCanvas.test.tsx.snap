@@ -1357,10 +1357,10 @@ exports[`renders the canvas in standard layout with video 1`] = `
         className="c4"
       >
         <div
-          className="VideoControls__PlayButton c5"
+          className="PlayButton c5"
         >
           <div
-            className="VideoControls__PlayButtonCaret c6"
+            className="PlayButton__PlayButtonCaret c6"
           />
         </div>
       </div>

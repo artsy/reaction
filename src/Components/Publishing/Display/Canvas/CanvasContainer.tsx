@@ -25,6 +25,8 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
     size: { width: 1250 }
   }
 
+  public canvasVideoHandlers: any
+
   constructor(props) {
     super(props)
     this.openLink = this.openLink.bind(this)
@@ -51,14 +53,19 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
   }))
   openLink(e) {
     e.preventDefault()
+
     const videoClasses = [
-      'VideoControls__PlayButton',
-      'VideoControls__PlayButtonCaret',
+      'PlayButton',
+      'PlayButton__PlayButtonCaret',
       'CanvasVideo__video'
     ]
     const isVideoClickArea = videoClasses.some(c => e.target.className.includes(c))
 
     if (!isVideoClickArea) {
+      if (this.canvasVideoHandlers) {
+        this.canvasVideoHandlers.pauseVideo()
+      }
+
       window.open(e.currentTarget.attributes.href.value, '_blank')
     }
   }
@@ -77,6 +84,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
       containerWidth: size.width,
       layout
     }
+
     // Overlay
     if (isOverlay) {
       const backgroundUrl = assets[0].url
@@ -118,6 +126,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
             ? <CanvasVideo
                 src={asset.url}
                 campaign={campaign}
+                onInit={h => this.canvasVideoHandlers = h}
               />
             : <Image
                 src={crop(asset.url, {

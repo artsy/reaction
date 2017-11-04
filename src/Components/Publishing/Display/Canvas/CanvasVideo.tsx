@@ -8,6 +8,7 @@ import { VideoControls } from '../../Sections/VideoControls'
 interface VideoProps {
   campaign: any
   src: any
+  onInit?: any
 }
 
 @track()
@@ -17,7 +18,25 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
   constructor(props) {
     super(props)
     this.onPlayVideo = this.onPlayVideo.bind(this)
-    this.state = { isPlaying: false }
+
+    this.state = {
+      isPlaying: false
+    }
+  }
+
+  componentDidMount() {
+    const { onInit } = this.props
+
+    if (onInit) {
+
+      // Pass handlers back to CanvasContainer so that it can pause video
+      // when Display is clicked.
+      onInit({
+        playVideo: this.playVideo,
+        pauseVideo: this.pauseVideo,
+        toggleVideo: this.toggleVideo
+      })
+    }
   }
 
   @track(once((props) => ({
@@ -28,14 +47,35 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     unit_layout: "canvas_standard"
   })))
   onPlayVideo() {
+    this.toggleVideo()
+  }
+
+  playVideo = () => {
     if (this.video) {
-      if (this.video.paused) {
-        this.video.play()
-      } else {
-        this.video.pause()
-      }
+      this.video.play()
+
+      this.setState({
+        isPlaying: true
+      })
     }
-    this.setState({ isPlaying: !this.video.paused })
+  }
+
+  pauseVideo = () => {
+    if (this.video) {
+      this.video.pause()
+
+      this.setState({
+        isPlaying: false
+      })
+    }
+  }
+
+  toggleVideo = () => {
+    if (this.state.isPlaying) {
+      this.pauseVideo()
+    } else {
+      this.playVideo()
+    }
   }
 
   renderCover = () => {
