@@ -1,5 +1,5 @@
 import { clone, compact } from 'lodash'
-import React from "react"
+import React, { Component } from "react"
 import ReactDOM from 'react-dom'
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
@@ -12,7 +12,7 @@ import { SectionContainer } from "./SectionContainer"
 import { Text } from "./Text"
 import { Video } from "./Video"
 
-interface SectionsProps {
+interface Props {
   DisplayPanel?: any
   article: {
     layout: Layout
@@ -23,6 +23,10 @@ interface SectionsProps {
   isMobile?: boolean
 }
 
+interface State {
+  shouldInjectMobileDisplay: boolean
+}
+
 /**
  * When isMobile, hide sidebar and inject DisplayAd into the body of the
  * article at a specific paragraph index.
@@ -30,7 +34,7 @@ interface SectionsProps {
 const MOBILE_DISPLAY_INJECT_INDEX = 1
 const MOBILE_DISPLAY_INJECT_ID = '__mobile_display_inject__'
 
-export class Sections extends React.Component<SectionsProps, any> {
+export class Sections extends Component<Props, State> {
 
   state = {
     shouldInjectMobileDisplay: false
@@ -45,6 +49,20 @@ export class Sections extends React.Component<SectionsProps, any> {
   componentDidMount() {
     if (this.state.shouldInjectMobileDisplay) {
       this.mountDisplayToMarker()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isMobile } = this.props
+
+    if (prevProps.isMobile !== isMobile) {
+      this.setState({
+        shouldInjectMobileDisplay: isMobile
+      }, () => {
+        if (isMobile) {
+          this.mountDisplayToMarker()
+        }
+      })
     }
   }
 
@@ -81,8 +99,6 @@ export class Sections extends React.Component<SectionsProps, any> {
   }
 
   getSection(section) {
-    const { article } = this.props
-
     const sections = {
       image_collection: (
         <ImageCollection
@@ -92,28 +108,16 @@ export class Sections extends React.Component<SectionsProps, any> {
           gutter={10}
         />
       ),
-      image_set: (
-        <ImageSetPreview
-          section={section}
-        />
-      ),
-      video: (
-        <Video
-          section={section}
-        />
-      ),
-      embed: (
-        <Embed
-          section={section}
-        />
-      ),
-      text: (
-        <Text
-          html={section.body}
-          layout={article.layout}
-        />
-      ),
-      default: false,
+      image_set:
+        <ImageSetPreview section={section} />,
+      video:
+        <Video section={section} />,
+      embed:
+        <Embed section={section} />,
+      text:
+        <Text html={section.body} layout={this.props.article.layout} />,
+      default:
+        false
     }
 
     const sectionComponent = sections[section.type] || sections.default
