@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { articleFullHref } from "../Constants"
+import { getArticleFullHref } from "../Constants"
 import { Author, Date } from "./AuthorDate"
 import { Share } from "./Share"
 
@@ -18,7 +18,7 @@ export const Byline: React.SFC<BylineProps> = props => {
   const { contributing_authors, published_at } = article
   const layout = props.layout || article.layout
   const title = article.social_title || article.thumbnail_title
-  const url = articleFullHref(article.slug)
+  const url = getArticleFullHref(article.slug)
 
   // TODO: Replace `authors` with `contributing_authors` when ready. Also in
   // <BasicHeader />

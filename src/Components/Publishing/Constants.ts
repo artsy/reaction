@@ -1,18 +1,34 @@
 import moment from "moment-timezone"
 
-// TODO: Eventually remove sizeMe
-export const sizeMeRefreshRate = 500
-export const zIndex = { modal: 1070 }
-export const articleHref = slug => `/article/${slug}`
-export const articleFullHref = slug => `https://www.artsy.net/article/${slug}`
-export const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-// TODO: Move / find a better place for the below
+/**
+ * Matches for Email / Instant Articles
+ */
+export const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 /**
- * <ByLine /> helpers
+ * The quality to request from image CDN
  */
+export const GLOBAL_IMAGE_QUALITY = 80
 
+/**
+ * TODO: Eventually remove sizeMe
+ */
+export const SIZE_ME_REFRESH_RATE = 500
+
+/**
+ * Relative path to article
+ */
+export const getArticleHref = slug => `/article/${slug}`
+
+/**
+ * Absolute path to article
+ */
+export const getArticleFullHref = slug => `https://www.artsy.net/article/${slug}`
+
+/**
+ * ByLine helpers
+ * TODO: Move this into some kind of utils folder
+ */
 export const getAuthorByline = authors => {
   const authorCount = Number(authors && authors.length)
 

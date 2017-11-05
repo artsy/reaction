@@ -3,7 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import Events from "../../../Utils/Events"
 import { Article } from "../Article"
-import { articleFullHref } from "../Constants"
+import { getArticleFullHref } from "../Constants"
 import { StandardArticle } from "../Fixtures/Articles"
 
 jest.mock("react-slick", () => {
@@ -18,7 +18,7 @@ it("emits analytics events to an event emitter", done => {
     expect(data.action).toEqual("Article share")
     done()
   })
-  const shareUrl = articleFullHref(StandardArticle.slug)
+  const shareUrl = getArticleFullHref(StandardArticle.slug)
   const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
   article.find(`[href='${fbURL}']`).first().simulate("click")
 })

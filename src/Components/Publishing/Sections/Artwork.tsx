@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
+import { GLOBAL_IMAGE_QUALITY } from '../Constants'
 import { Layout, SectionLayout } from "../Typings"
 import { ArtworkCaption } from "./ArtworkCaption"
 import { ImageWrapper } from "./ImageWrapper"
@@ -14,7 +15,7 @@ interface ArtworkProps {
   height?: string | number
 }
 
-export class Artwork extends React.Component<ArtworkProps, null> {
+export class Artwork extends React.PureComponent<ArtworkProps, null> {
   static defaultProps = {
     linked: true,
     width: "100%",
@@ -23,7 +24,7 @@ export class Artwork extends React.Component<ArtworkProps, null> {
 
   render() {
     const { artwork, linked, height, width, layout } = this.props
-    const src = resize(artwork.image, { width: 1200 })
+    const src = resize(artwork.image, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
 
     const Image = () =>
       <ImageWrapper

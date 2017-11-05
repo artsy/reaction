@@ -1,5 +1,6 @@
 import React from "react"
 import { resize } from "../../../Utils/resizer"
+import { GLOBAL_IMAGE_QUALITY } from '../Constants'
 import { Layout, SectionLayout } from "../Typings"
 import { Caption } from "./Caption"
 import { ImageWrapper } from "./ImageWrapper"
@@ -22,7 +23,7 @@ export const Image: React.SFC<ImageProps> = props => {
     width,
   } = props
 
-  const src = resize(image.url, { width: 1200 })
+  const src = resize(image.url, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
   const alt = image.caption.replace(/<[^>]*>/g, "") /* strip caption html */
 
   return (

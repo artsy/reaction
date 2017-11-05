@@ -6,7 +6,7 @@ import Artists from "../Steps/Artists"
 import CollectorIntent from "../Steps/CollectorIntent"
 import Wizard from "../Wizard"
 
-storiesOf("Onboarding").add("Wizard", () => {
+storiesOf("Onboarding", module).add("Wizard", () => {
   const currentUser = {
     accessToken: "blah",
     id: "my_id",

@@ -12,4 +12,4 @@ function ConnectedPopularArtistSelector() {
   return <Relay.RootContainer Component={Artists} route={new PopularArtistQueryConfig()} />
 }
 
-storiesOf("Onboarding").add("Artist Selector", () => <ConnectedPopularArtistSelector />)
+storiesOf("Onboarding", module).add("Artist Selector", () => <ConnectedPopularArtistSelector />)

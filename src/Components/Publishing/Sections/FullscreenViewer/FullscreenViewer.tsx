@@ -5,7 +5,6 @@ import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
-import { zIndex } from "../../Constants"
 import { Slide } from "./Slide"
 
 interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
@@ -115,7 +114,7 @@ const FullscreenViewerContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   position: fixed;
-  z-index: ${zIndex.modal};
+  z-index: 1070;
   top: 0;
   left: 0;
   background-color: white;

@@ -5,7 +5,7 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
-import { sizeMeRefreshRate } from "../../Constants"
+import { SIZE_ME_REFRESH_RATE } from "../../Constants"
 import { CanvasSlideshow } from "./CanvasSlideshow"
 import { CanvasText } from "./CanvasText"
 import { CanvasVideo } from "./CanvasVideo"
@@ -243,7 +243,7 @@ const Background = Div`
 `
 
 const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
+  refreshRate: SIZE_ME_REFRESH_RATE,
   noPlaceholder: true,
 }
 

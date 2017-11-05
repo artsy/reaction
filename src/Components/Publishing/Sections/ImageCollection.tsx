@@ -4,7 +4,7 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
-import { sizeMeRefreshRate } from "../Constants"
+import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
@@ -20,7 +20,7 @@ interface ImageCollectionProps {
   }
 }
 
-class ImageCollectionComponent extends React.Component<ImageCollectionProps, null> {
+class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps, null> {
   static defaultProps = {
     size: {
       width: 680
@@ -109,7 +109,7 @@ const ImageCollectionContainer = styled.div`
 `
 
 const sizeMeOptions = {
-  refreshRate: sizeMeRefreshRate,
+  refreshRate: SIZE_ME_REFRESH_RATE,
   noPlaceholder: true,
 }
 

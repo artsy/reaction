@@ -196,7 +196,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                     <Sections
                       DisplayPanel={DisplayPanelAd}
                       article={article}
-                      isMobile={isMobile || xs || sm || md}
+                      isMobile={Boolean(isMobile || xs || sm || md)}
                     />
 
                     {/*

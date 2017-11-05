@@ -34,7 +34,7 @@ const Link = styled.a`
   }
 `
 
-storiesOf("Onboarding").add("Collector Intent", () => {
+storiesOf("Onboarding", module).add("Collector Intent", () => {
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: "100px" }}>
