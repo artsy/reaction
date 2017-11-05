@@ -20,6 +20,9 @@ const story = storiesOf("Publishing/Display", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
   })
+  .add("Panel (mobile)", () => {
+    return <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
+  })
   .add("Panel: Video", () => {
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
   })

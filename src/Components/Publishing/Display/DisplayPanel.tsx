@@ -1,5 +1,5 @@
 import { get, once } from "lodash"
-import React from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { crop, resize } from "../../../Utils/resizer"
@@ -8,37 +8,32 @@ import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { VideoControls } from "../Sections/VideoControls"
 
-interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   campaign: any
   isMobile?: boolean
   unit: any
 }
 
-interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
-  coverUrl?: string
-  hoverImageUrl?: string
-  isMobile?: boolean
-  imageUrl?: string
-  onClick: any
-  onMouseEnter: any
-  onMouseLeave: any
+interface State {
+  isPlaying: boolean
+  showCoverImage: boolean
 }
 
 @track()
-export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
+export class DisplayPanel extends Component<Props, State> {
   public video: HTMLVideoElement
+
+  state = {
+    isPlaying: false,
+    showCoverImage: false
+  }
 
   constructor(props) {
     super(props)
-
-    this.openLink = this.openLink.bind(this)
-    this.onClickVideo = this.onClickVideo.bind(this)
-    this.onMouseEnter = this.onMouseEnter.bind(this)
-    this.onMouseLeave = this.onMouseLeave.bind(this)
-
-    this.state = {
-      isPlaying: false
-    }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleVideoClick = this.handleVideoClick.bind(this)
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
   @track(once(props => ({
@@ -55,8 +50,9 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     }
   }
 
-  isVideoClickArea(e) {
-    const videoClasses = [
+  withinMediaArea(event) {
+    const classes = [
+      "DisplayPanel__Image",
       "VideoContainer",
       "VideoContainer__VideoCover",
       "VideoContainer__VideoControls",
@@ -64,27 +60,56 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
       "PlayButton",
       "PlayButton__PlayButtonCaret"
     ]
-    const isVideoClickArea = videoClasses.some(c => e.target.className.includes(c))
-    return isVideoClickArea
+    const withinMediaArea = classes.some(c => event.target.className.includes(c))
+    return withinMediaArea
   }
 
-  @track((props, [e]) => ({
+  /**
+   * Handle clicks to main container
+   * @param event
+   */
+  @track(props => ({
     action: "Click",
     label: "Display ad clickthrough",
     entity_type: "display_ad",
     campaign_name: props.campaign.name,
     unit_layout: "panel"
   }))
-  openLink(e) {
-    e.preventDefault()
-    const url = get(this.props, "unit.link.url", false)
+  handleClick(event) {
+    event.preventDefault()
+    const { isMobile, unit } = this.props
+    const url = get(unit, "link.url", false)
+    const isVideo = this.checkIfVideo()
+    const openUrl = () => window.open(url, "_blank")
 
-    if (url && !this.isVideoClickArea(e)) {
-      this.pauseVideo()
-      window.open(url, "_blank")
+    if (isMobile) {
+      if (isVideo) {
+        if (this.withinMediaArea(event)) {
+          this.toggleVideo()
+        } else {
+          openUrl()
+        }
+        // Image
+      } else {
+        if (this.withinMediaArea(event)) {
+          this.toggleCoverImage()
+        } else {
+          openUrl()
+        }
+      }
+      // Desktop
+    } else {
+      if (isVideo) {
+        this.pauseVideo()
+      }
+      openUrl()
     }
   }
 
+  /**
+   * Handle clicks to Video player
+   * @param event
+   */
   @track(props => ({
     action: "Click",
     label: "Display ad play video",
@@ -92,12 +117,13 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     campaign_name: props.campaign.name,
     unit_layout: "panel"
   }))
-  onClickVideo(e) {
-    if (this.isVideoClickArea(e)) {
-      this.toggleVideo()
-    }
+  handleVideoClick(event) {
+    // noop
   }
 
+  /**
+   * Handle MouseEnter
+   */
   @track(props => ({
     action: "MouseEnter",
     label: "Display ad play video",
@@ -105,12 +131,47 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     campaign_name: props.campaign.name,
     unit_layout: "panel"
   }))
-  onMouseEnter() {
-    this.playVideo()
+  handleMouseEnter() {
+    if (this.props.isMobile) {
+      return false
+    } else {
+      if (this.checkIfVideo()) {
+        this.playVideo()
+      } else {
+        this.toggleCoverImage()
+      }
+    }
   }
 
-  onMouseLeave = () => {
-    this.pauseVideo()
+  /**
+   * Handle MouseLeave
+   */
+  handleMouseLeave() {
+    if (this.props.isMobile) {
+      return false
+    } else {
+      if (this.checkIfVideo()) {
+        this.pauseVideo()
+      } else {
+        this.toggleCoverImage()
+      }
+    }
+  }
+
+  toggleCoverImage() {
+    const showCoverImage = !this.state.showCoverImage
+
+    this.setState({
+      showCoverImage
+    })
+  }
+
+  toggleVideo() {
+    if (this.state.isPlaying) {
+      this.pauseVideo()
+    } else {
+      this.playVideo()
+    }
   }
 
   playVideo = () => {
@@ -133,20 +194,19 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
     }
   }
 
-  toggleVideo = () => {
-    if (this.state.isPlaying) {
-      this.pauseVideo()
-    } else {
-      this.playVideo()
-    }
+  checkIfVideo() {
+    const assetUrl = get(this.props.unit, "assets.0.url", "")
+    const isVideo = assetUrl.includes("mp4")
+    return isVideo
   }
 
   renderVideo = (url) => {
+    const { isPlaying } = this.state
     const { isMobile } = this.props
 
     return (
-      <VideoContainer className="VideoContainer">
-        {!this.state.isPlaying &&
+      <VideoContainer onClick={this.handleVideoClick} className="VideoContainer">
+        {!isPlaying &&
           <VideoCover className="VideoContainer__VideoCover">
             {isMobile &&
               <VideoControls mini
@@ -167,32 +227,36 @@ export class DisplayPanel extends React.Component<DisplayPanelProps, any> {
   }
 
   render() {
+    const { showCoverImage } = this.state
     const { unit, campaign, isMobile } = this.props
     const url = get(unit.assets, "0.url", "")
+    const isVideo = this.checkIfVideo()
     const cover = unit.cover_image_url || ""
     const imageUrl = crop(url, { width: 680, height: 284 })
     const hoverImageUrl = resize(unit.logo, { width: 680 })
     const coverUrl = crop(cover, { width: 680, height: 284 })
-    const isVideo = url.includes("mp4")
 
     return (
-      <Wrapper onClick={!isMobile && this.openLink}>
+      <Wrapper
+        onClick={this.handleClick}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <DisplayPanelContainer
-          className="DisplayPanel__DisplayPanelContainer"
-          onClick={isMobile && this.onClickVideo}
-          onMouseEnter={!isMobile && isVideo && this.onMouseEnter}
-          onMouseLeave={!isMobile && isVideo && this.onMouseLeave}
+          className='DisplayPanel__DisplayPanelContainer'
           imageUrl={imageUrl}
           isMobile={isMobile}
           hoverImageUrl={hoverImageUrl}
-          coverUrl={coverUrl}>
+          coverUrl={coverUrl}
+          showCoverImage={showCoverImage}>
 
           {isVideo
             ? this.renderVideo(url)
-            : <Image />
-          }
+            : <Image
+                className='DisplayPanel__Image'
+              /> }
 
-          <div onClick={isMobile && this.openLink}>
+          <div>
             <Headline>
               {unit.headline}
             </Headline>
@@ -232,8 +296,15 @@ const VideoCover = Image.extend`
   justify-content: center;
 `
 
-const Div: StyledFunction<DivUrlProps> = styled.div
+interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
+  coverUrl?: string
+  hoverImageUrl?: string
+  isMobile?: boolean
+  imageUrl?: string
+  showCoverImage?: boolean
+}
 
+const Div: StyledFunction<DivUrlProps> = styled.div
 const DisplayPanelContainer = Div`
   display: flex;
   flex-direction: column;
@@ -242,24 +313,25 @@ const DisplayPanelContainer = Div`
   max-width: 360px;
   box-sizing: border-box;
   ${Image} {
-    background: url(${props => (props.imageUrl ? props.imageUrl : "")}) no-repeat center center;
+    background: url(${props => (props.imageUrl || "")}) no-repeat center center;
     background-size: cover;
-  }
-  ${VideoCover} {
-    background: url(${props => (props.coverUrl ? props.coverUrl : "")}) no-repeat center center;
-    background-size: cover;
-  }
-  &:hover {
-    ${Image} {
-      ${props =>
-    props.hoverImageUrl
+
+    ${props => props.showCoverImage && props.hoverImageUrl
       ? `
           background: black url(${props.hoverImageUrl}) no-repeat center center;
           background-size: contain;
           border: 10px solid black;
         `
-      : ""}
+      : ""
     }
+  }
+
+  ${VideoCover} {
+    background: url(${props => (props.coverUrl || "")}) no-repeat center center;
+    background-size: cover;
+  }
+
+  .hover {
     ${VideoCover} {
       ${props => !props.isMobile && "display: none;"}
     }
@@ -277,7 +349,6 @@ const DisplayPanelContainer = Div`
     margin: auto;
   `}
 `
-DisplayPanelContainer.displayName = "DisplayPanelContainer"
 
 const Headline = styled.div`
   ${Fonts.unica("s16", "medium")} line-height: 1.23em;

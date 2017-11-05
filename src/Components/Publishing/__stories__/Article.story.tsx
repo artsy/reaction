@@ -76,6 +76,7 @@ ads.forEach(mediaType => {
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
+        isMobile
       />
     )
   })

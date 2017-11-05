@@ -76,6 +76,19 @@ describe('units', () => {
     expect(spy).toHaveBeenCalled()
   })
 
+  describe('image', () => {
+    it('renders an image', () => {
+      const wrapper = getWrapper()
+      expect(wrapper.find('Image').length).toEqual(1)
+    })
+
+    it('renders an image', () => {
+      const wrapper = getWrapper()
+      wrapper.simulate('click')
+      expect(wrapper.find('Image').length).toEqual(1)
+    })
+  })
+
   describe('video', () => {
     it('renders a video cover if not playing', () => {
       const unit = clone(UnitPanel)
