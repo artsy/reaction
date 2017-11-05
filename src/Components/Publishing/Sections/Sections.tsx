@@ -1,4 +1,4 @@
-import { clone, compact } from 'lodash'
+import { clone, compact, once, uniqueId } from 'lodash'
 import React, { Component } from "react"
 import ReactDOM from 'react-dom'
 import styled, { StyledFunction } from "styled-components"
@@ -32,17 +32,32 @@ interface State {
  * article at a specific paragraph index.
  */
 const MOBILE_DISPLAY_INJECT_INDEX = 1
-const MOBILE_DISPLAY_INJECT_ID = '__mobile_display_inject__'
+const MOBILE_DISPLAY_INJECT_ID_PREFIX = '__mobile_display_inject__'
 
 export class Sections extends Component<Props, State> {
+  static defaultProps = {
+    isMobile: false
+  }
+
+  displayInjectId: string
 
   state = {
     shouldInjectMobileDisplay: false
   }
 
   componentWillMount() {
+    const {
+      article: {
+        layout
+      },
+      isMobile
+    } = this.props
+
+    this.injectDisplayPanelMarker = once(this.injectDisplayPanelMarker)
+    const shouldInjectMobileDisplay = isMobile && layout !== 'feature'
+
     this.setState({
-      shouldInjectMobileDisplay: this.props.isMobile
+      shouldInjectMobileDisplay
     })
   }
 
@@ -59,7 +74,7 @@ export class Sections extends Component<Props, State> {
       this.setState({
         shouldInjectMobileDisplay: isMobile
       }, () => {
-        if (isMobile) {
+        if (isMobile && this.state.shouldInjectMobileDisplay) {
           this.mountDisplayToMarker()
         }
       })
@@ -75,7 +90,8 @@ export class Sections extends Component<Props, State> {
       .map(p => p + tag)
       .reduce((arr, block, paragraphIndex) => {
         if (paragraphIndex === MOBILE_DISPLAY_INJECT_INDEX) {
-          return arr.concat([block, `<div id="${MOBILE_DISPLAY_INJECT_ID}"></div>`])
+          this.displayInjectId = uniqueId(MOBILE_DISPLAY_INJECT_ID_PREFIX)
+          return arr.concat([block, `<div id="${this.displayInjectId}"></div>`])
         } else {
           return arr.concat([block])
         }
@@ -86,10 +102,11 @@ export class Sections extends Component<Props, State> {
   }
 
   mountDisplayToMarker() {
-    const displayMountPoint = document.getElementById(MOBILE_DISPLAY_INJECT_ID)
+    const { DisplayPanel, isMobile } = this.props
+    const displayMountPoint = document.getElementById(this.displayInjectId)
 
     if (displayMountPoint) {
-      ReactDOM.render(<this.props.DisplayPanel />, displayMountPoint)
+      ReactDOM.render(<DisplayPanel isMobile={isMobile} />, displayMountPoint)
     } else {
       console.error(
         '(reaction/Sections.tsx) Error mounting Display: DOM node ',
@@ -218,8 +235,8 @@ const chooseMargin = layout => {
   }
 }
 
-const Div: StyledFunction<{ layout: string }> = styled.div
-const StyledSections = Div`
+const div: StyledFunction<{ layout: string }> = styled.div
+const StyledSections = div`
   display: flex;
   flex-direction: column;
   align-items: center;

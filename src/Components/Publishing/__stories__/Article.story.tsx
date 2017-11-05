@@ -66,13 +66,13 @@ const story = storiesOf("Publishing/Articles", module)
   })
 
 
-const ads = ["overlay", "image", "video", "slideshow"]
-ads.forEach(mediaType => {
-  story.add(`Standard with ${mediaType} ad`, () => {
+const displays = ["overlay", "image", "video", "slideshow"]
+displays.forEach(displayType => {
+  story.add(`Standard with ${displayType} ad`, () => {
     return (
       <Article
         article={StandardArticle}
-        display={Display(mediaType)}
+        display={Display(displayType)}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -146,6 +146,7 @@ story.add("Feature", () => {
     return (
       <Article
         article={article}
+        display={Display('image')}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"

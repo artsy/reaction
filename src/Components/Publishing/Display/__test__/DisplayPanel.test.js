@@ -46,6 +46,10 @@ describe('units', () => {
     )
   }
 
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
   describe('#componentDidMount', () => {
     it('tracks interaction', () => {
       getWrapper()
@@ -121,7 +125,7 @@ describe('units', () => {
         })
 
         it('clicks away if outside media area', () => {
-          global.open = jest.fn()
+          const spy = jest.spyOn(global, 'open')
           const wrapper = getWrapper({ isMobile: true, isVideo: true })
           const event = {
             preventDefault: jest.fn(),
@@ -131,13 +135,13 @@ describe('units', () => {
           }
           wrapper.instance().handleClick(event)
           expect(wrapper.state().isPlaying).toEqual(false)
-          expect(global.open).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
         })
       })
 
       describe('Image', () => {
         it('opens a link if user has already clicked once', () => {
-          global.open = jest.fn()
+          const spy = jest.spyOn(global, 'open')
           const wrapper = getWrapper({ isMobile: true })
           const event = {
             preventDefault: jest.fn(),
@@ -146,13 +150,12 @@ describe('units', () => {
             }
           }
           wrapper.instance().handleClick(event)
-          expect(global.open).not.toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           wrapper.instance().handleClick(event)
-          expect(global.open).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
         })
 
         it('toggles cover image on click and toggles back on click away', () => {
-          global.open = jest.fn()
           const wrapper = getWrapper({ isMobile: true })
           const event = {
             preventDefault: jest.fn(),
@@ -167,7 +170,7 @@ describe('units', () => {
         })
 
         it('clicks away if outside media area', () => {
-          global.open = jest.fn()
+          const spy = jest.spyOn(global, 'open')
           const wrapper = getWrapper({ isMobile: true })
           const event = {
             preventDefault: jest.fn(),
@@ -176,14 +179,13 @@ describe('units', () => {
             }
           }
           wrapper.instance().handleClick(event)
-          expect(global.open).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
         })
       })
     })
 
     describe('Desktop', () => {
       it('pauses the video if video', () => {
-        global.open = jest.fn()
         const spy = jest.spyOn(DisplayPanel.prototype, 'pauseVideo')
         const wrapper = getWrapper({ isVideo: true })
         const event = {
@@ -199,7 +201,7 @@ describe('units', () => {
       it('always clicks away', () => {
         const isVideo = [true, false]
         isVideo.forEach(type => {
-          global.open = jest.fn()
+          const spy = jest.spyOn(global, 'open')
           const wrapper = getWrapper({ isVideo: type })
           const event = {
             preventDefault: jest.fn(),
@@ -208,7 +210,7 @@ describe('units', () => {
             }
           }
           wrapper.instance().handleClick(event)
-          expect(global.open).toHaveBeenCalled()
+          expect(spy).toHaveBeenCalled()
         })
       })
     })
