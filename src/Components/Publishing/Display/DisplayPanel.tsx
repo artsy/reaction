@@ -44,14 +44,12 @@ export class DisplayPanel extends Component<Props, State> {
   })))
   componentDidMount() {
     if (this.video) {
-      this.video.onended = () => {
-        this.pauseVideo()
-      }
+      this.video.onended = this.pauseVideo
     }
   }
 
-  withinMediaArea(event) {
-    const classes = [
+  isWithinMediaArea(event) {
+    const valid = [
       "DisplayPanel__Image",
       "VideoContainer",
       "VideoContainer__VideoCover",
@@ -60,7 +58,7 @@ export class DisplayPanel extends Component<Props, State> {
       "PlayButton",
       "PlayButton__PlayButtonCaret"
     ]
-    const withinMediaArea = classes.some(c => event.target.className.includes(c))
+    const withinMediaArea = valid.some(className => event.target.className.includes(className))
     return withinMediaArea
   }
 
@@ -79,19 +77,19 @@ export class DisplayPanel extends Component<Props, State> {
     const { showCoverImage: alreadyClicked } = this.state
     const { isMobile, unit } = this.props
     const url = get(unit, "link.url", false)
-    const isVideo = this.checkIfVideo()
+    const isVideo = this.isVideo()
     const openUrl = () => window.open(url, "_blank")
 
     if (isMobile) {
       if (isVideo) {
-        if (this.withinMediaArea(event)) {
+        if (this.isWithinMediaArea(event)) {
           this.toggleVideo()
         } else {
           openUrl()
         }
         // Image
       } else {
-        if (this.withinMediaArea(event)) {
+        if (this.isWithinMediaArea(event)) {
           if (alreadyClicked) {
             openUrl()
             this.toggleCoverImage()
@@ -140,7 +138,7 @@ export class DisplayPanel extends Component<Props, State> {
     if (this.props.isMobile) {
       return false
     } else {
-      if (this.checkIfVideo()) {
+      if (this.isVideo()) {
         this.playVideo()
       } else {
         this.toggleCoverImage()
@@ -155,7 +153,7 @@ export class DisplayPanel extends Component<Props, State> {
     if (this.props.isMobile) {
       return false
     } else {
-      if (this.checkIfVideo()) {
+      if (this.isVideo()) {
         this.pauseVideo()
       } else {
         this.toggleCoverImage()
@@ -179,7 +177,7 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  pauseVideo = () => {
+  pauseVideo() {
     if (this.video) {
       this.video.pause()
 
@@ -189,7 +187,7 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  playVideo = () => {
+  playVideo() {
     if (this.video) {
       this.video.play()
 
@@ -199,13 +197,13 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  checkIfVideo() {
+  isVideo() {
     const assetUrl = get(this.props.unit, "assets.0.url", "")
     const isVideo = assetUrl.includes("mp4")
     return isVideo
   }
 
-  renderVideo = (url) => {
+  renderVideo(url) {
     const { isPlaying } = this.state
     const { isMobile } = this.props
 
@@ -235,7 +233,7 @@ export class DisplayPanel extends Component<Props, State> {
     const { showCoverImage } = this.state
     const { unit, campaign, isMobile } = this.props
     const url = get(unit.assets, "0.url", "")
-    const isVideo = this.checkIfVideo()
+    const isVideo = this.isVideo()
     const cover = unit.cover_image_url || ""
     const imageUrl = crop(url, { width: 680, height: 284 })
     const hoverImageUrl = resize(unit.logo, { width: 680 })

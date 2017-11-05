@@ -34,19 +34,9 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .s1vgk0vk-1-file__Image-iTToDH {
+.c1 .o9kx22-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
-}
-
-.c1 .hover--over .c2 {
-  background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
-  background-size: contain;
-  border: 10px solid black;
-}
-
-.c1 .hover--over .s1vgk0vk-1-file__Image-iTToDH {
-  display: none;
 }
 
 .c4 {
@@ -109,19 +99,16 @@ exports[`snapshots renders the display panel with an image 1`] = `
 <div
   className="c0"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
-    onClick={undefined}
-    onMouseEnter={false}
-    onMouseLeave={false}
   >
     <div
       className="DisplayPanel__Image c2 c3"
     />
-    <div
-      onClick={undefined}
-    >
+    <div>
       <div
         className="c4"
       >
@@ -173,13 +160,9 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.ipyUAq .c3 {
+.eRrKwU .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
-}
-
-.ipyUAq .hover--over .c3 {
-  display: none;
 }
 
 .c1 {
@@ -196,7 +179,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-s1vgk0vk-1 {
+.c1 .file__Image-o9kx22-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -204,16 +187,6 @@ exports[`snapshots renders the display panel with video 1`] = `
 .c1 .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
-}
-
-.c1 .hover--over .file__Image-s1vgk0vk-1 {
-  background: black url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-vanity-files-production.s3.amazonaws.com%2Fimages%2Fartsy_logo_square_white_transparent.png&width=680&quality=95) no-repeat center center;
-  background-size: contain;
-  border: 10px solid black;
-}
-
-.c1 .hover--over .c3 {
-  display: none;
 }
 
 .c5 {
@@ -301,15 +274,15 @@ exports[`snapshots renders the display panel with video 1`] = `
 <div
   className="c0"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
-    onClick={undefined}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
   >
     <div
       className="VideoContainer c2"
+      onClick={[Function]}
     >
       <div
         className="VideoContainer__VideoCover c3 c4"
@@ -321,9 +294,7 @@ exports[`snapshots renders the display panel with video 1`] = `
         src="https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4"
       />
     </div>
-    <div
-      onClick={undefined}
-    >
+    <div>
       <div
         className="c5"
       >
