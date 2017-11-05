@@ -144,7 +144,7 @@ const defaults = css`
 
 const Container = styled.div`
   text-align: center;
-  margin-top: 40px;
+  margin-top: 70px;
   ${CoverImage}, ${IFrame} {
     width: 100%;
 
