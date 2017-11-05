@@ -1,10 +1,10 @@
 import { get, once } from "lodash"
-import React, { Component } from "react"
+import React, { Component, HTMLProps  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
-import { pMedia } from "../../Helpers"
+import { pMedia as breakpoint } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { VideoControls } from "../Sections/VideoControls"
 
@@ -66,7 +66,6 @@ export class DisplayPanel extends Component<Props, State> {
 
   /**
    * Handle clicks to main container
-   * @param event
    */
   @track(props => ({
     action: "Click",
@@ -77,6 +76,7 @@ export class DisplayPanel extends Component<Props, State> {
   }))
   handleClick(event) {
     event.preventDefault()
+    const { showCoverImage: alreadyClicked } = this.state
     const { isMobile, unit } = this.props
     const url = get(unit, "link.url", false)
     const isVideo = this.checkIfVideo()
@@ -92,7 +92,13 @@ export class DisplayPanel extends Component<Props, State> {
         // Image
       } else {
         if (this.withinMediaArea(event)) {
-          this.toggleCoverImage()
+          if (alreadyClicked) {
+            openUrl()
+            this.toggleCoverImage()
+          } else {
+            this.toggleCoverImage()
+          }
+          // Clicked outside of the media area
         } else {
           openUrl()
         }
@@ -108,7 +114,6 @@ export class DisplayPanel extends Component<Props, State> {
 
   /**
    * Handle clicks to Video player
-   * @param event
    */
   @track(props => ({
     action: "Click",
@@ -122,7 +127,7 @@ export class DisplayPanel extends Component<Props, State> {
   }
 
   /**
-   * Handle MouseEnter
+   * Handle MouseEnter, on desktop
    */
   @track(props => ({
     action: "MouseEnter",
@@ -144,7 +149,7 @@ export class DisplayPanel extends Component<Props, State> {
   }
 
   /**
-   * Handle MouseLeave
+   * Handle MouseLeave, on desktop
    */
   handleMouseLeave() {
     if (this.props.isMobile) {
@@ -174,22 +179,22 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  playVideo = () => {
-    if (this.video) {
-      this.video.play()
-
-      this.setState({
-        isPlaying: true
-      })
-    }
-  }
-
   pauseVideo = () => {
     if (this.video) {
       this.video.pause()
 
       this.setState({
         isPlaying: false
+      })
+    }
+  }
+
+  playVideo = () => {
+    if (this.video) {
+      this.video.play()
+
+      this.setState({
+        isPlaying: true
       })
     }
   }
@@ -275,6 +280,16 @@ export class DisplayPanel extends Component<Props, State> {
   }
 }
 
+interface DivUrlProps extends HTMLProps<HTMLDivElement> {
+  coverUrl?: string
+  hoverImageUrl?: string
+  isMobile?: boolean
+  imageUrl?: string
+  showCoverImage?: boolean
+}
+
+const div: StyledFunction<DivUrlProps> = styled.div
+
 const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
@@ -296,56 +311,43 @@ const VideoCover = Image.extend`
   justify-content: center;
 `
 
-interface DivUrlProps extends React.HTMLProps<HTMLDivElement> {
-  coverUrl?: string
-  hoverImageUrl?: string
-  isMobile?: boolean
-  imageUrl?: string
-  showCoverImage?: boolean
-}
-
-const Div: StyledFunction<DivUrlProps> = styled.div
-const DisplayPanelContainer = Div`
+const DisplayPanelContainer = div`
   display: flex;
   flex-direction: column;
   border: 1px solid ${Colors.grayRegular};
   padding: 20px;
   max-width: 360px;
   box-sizing: border-box;
+
   ${Image} {
-    background: url(${props => (props.imageUrl || "")}) no-repeat center center;
+    background: url(${p => (p.imageUrl || "")}) no-repeat center center;
     background-size: cover;
 
-    ${props => props.showCoverImage && props.hoverImageUrl
-      ? `
-          background: black url(${props.hoverImageUrl}) no-repeat center center;
-          background-size: contain;
-          border: 10px solid black;
-        `
-      : ""
-    }
+    ${p => p.showCoverImage && p.hoverImageUrl && `
+      background: black url(${p.hoverImageUrl}) no-repeat center center;
+      background-size: contain;
+      border: 10px solid black;
+    `}
   }
 
   ${VideoCover} {
-    background: url(${props => (props.coverUrl || "")}) no-repeat center center;
+    background: url(${p => (p.coverUrl || "")}) no-repeat center center;
     background-size: cover;
+
+    ${p => p.showCoverImage && !p.isMobile && `
+      display: none;
+    `}
   }
 
-  .hover {
-    ${VideoCover} {
-      ${props => !props.isMobile && "display: none;"}
-    }
-  }
-
-  ${pMedia.md`
+  ${breakpoint.md`
     margin: auto;
   `}
 
-  ${pMedia.sm`
+  ${breakpoint.sm`
     margin: auto;
   `}
 
-  ${pMedia.xs`
+  ${breakpoint.xs`
     margin: auto;
   `}
 `
