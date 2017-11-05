@@ -6,7 +6,7 @@ import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
 import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
-import { getArticleHref, getAuthorByline, getDate } from "../Constants"
+import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
 
 import {
@@ -115,7 +115,7 @@ export class BasicHeader extends React.Component<Props, State> {
                         </Date>
                         <Share
                           title={title}
-                          url={getArticleHref(slug)}
+                          url={getArticleFullHref(slug)}
                           className='share'
                         />
                       </Col>
