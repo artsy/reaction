@@ -1,6 +1,6 @@
 import React from "react"
 import { Col, Grid, Row } from 'react-styled-flexboxgrid'
-import styled, { css } from 'styled-components'
+import styled, { css, StyledFunction } from 'styled-components'
 import { Responsive } from '../../../Utils/Responsive'
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
@@ -69,7 +69,7 @@ export class BasicHeader extends React.Component<Props, State> {
     return (
       <Responsive initialState={{ isMobile: passedIsMobile }}>
         {({ isMobile }) => (
-          <Container>
+          <Container hasVideo={hasVideo}>
             <Grid fluid>
               {hasVideo &&
                 <Row onClick={this.trackVideoPlay}>
@@ -142,9 +142,16 @@ const defaults = css`
   margin-bottom: 10px;
 `
 
-const Container = styled.div`
+const div: StyledFunction<{ hasVideo: boolean }> = styled.div
+
+const Container = div`
   text-align: center;
   margin-top: 70px;
+
+  ${p => p.hasVideo && `
+    margin-top: -20px;
+  `}
+
   ${CoverImage}, ${IFrame} {
     width: 100%;
 
