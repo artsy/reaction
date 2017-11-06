@@ -76,7 +76,6 @@ displays.forEach(displayType => {
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
-        isMobile
       />
     )
   })

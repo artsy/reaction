@@ -292,6 +292,8 @@ const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
   color: black;
+  max-width: 360px;
+  margin: 0 auto;
 `
 
 const Image = styled.div`
