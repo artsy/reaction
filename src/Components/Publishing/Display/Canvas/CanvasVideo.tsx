@@ -1,4 +1,4 @@
-import { once } from "lodash"
+import { memoize, once } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import track from "../../../../Utils/track"
@@ -9,10 +9,31 @@ interface VideoProps {
   campaign: any
   src: any
   onInit?: any
+  tracking?: any
 }
 
 @track()
 export class CanvasVideo extends React.Component<VideoProps, any> {
+  trackDuration = memoize((percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Display ad video duration",
+      percent_complete: percentComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "canvas_standard"
+    })
+  })
+
+  trackSeconds = memoize((secondsComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video seconds",
+      label: "Display ad video seconds",
+      seconds_complete: secondsComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "canvas_standard"
+    })
+  })
+
   private video: HTMLVideoElement
 
   constructor(props) {
@@ -36,6 +57,28 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
         pauseVideo: this.pauseVideo,
         toggleVideo: this.toggleVideo
       })
+    }
+  }
+
+  componentWillUpdate() {
+    this.video.removeEventListener("timeupdate", this.trackProgress)
+  }
+
+  componentDidUpdate() {
+    this.video.addEventListener("timeupdate", this.trackProgress)
+  }
+
+  trackProgress = () => {
+    const secondsComplete = Math.floor(this.video.currentTime)
+    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
+    // Track 25% duration intervals
+    if (percentCompleteInterval > 0) {
+      this.trackDuration(percentCompleteInterval)
+    }
+    // Track 3 & 10 seconds
+    if (secondsComplete === 3 || secondsComplete === 10) {
+      this.trackSeconds(secondsComplete)
     }
   }
 
