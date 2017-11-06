@@ -293,7 +293,10 @@ const Wrapper = styled.div`
   text-decoration: none;
   color: black;
   max-width: 360px;
-  margin: 0 auto;
+
+  ${breakpoint.sm`
+    margin: 0 auto;
+  `}
 `
 
 const Image = styled.div`

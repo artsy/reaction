@@ -6,7 +6,6 @@ exports[`snapshots renders the display panel with an image 1`] = `
   text-decoration: none;
   color: black;
   max-width: 360px;
-  margin: 0 auto;
 }
 
 .c3 {
@@ -36,7 +35,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .s9uzs5-1-file__Image-iTToDH {
+.c1 .s1n1m0fe-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -78,6 +77,12 @@ exports[`snapshots renders the display panel with an image 1`] = `
   -ms-letter-spacing: 1px;
   letter-spacing: 1px;
   color: #e5e5e5;
+}
+
+@media (max-width:720px) {
+  .c0 {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width:900px) {
@@ -140,7 +145,6 @@ exports[`snapshots renders the display panel with video 1`] = `
   text-decoration: none;
   color: black;
   max-width: 360px;
-  margin: 0 auto;
 }
 
 .c4 {
@@ -164,7 +168,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.eRbOgM .c3 {
+.hqBwRA .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -183,7 +187,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-s9uzs5-1 {
+.c1 .file__Image-s1n1m0fe-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -255,6 +259,12 @@ exports[`snapshots renders the display panel with video 1`] = `
   object-position: 50%;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width:720px) {
+  .c0 {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width:900px) {
