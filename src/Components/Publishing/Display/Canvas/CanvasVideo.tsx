@@ -1,40 +1,25 @@
 import { memoize, once } from "lodash"
-import React from "react"
-import styled from "styled-components"
+import React, { Component } from "react"
+import styled, { StyledFunction } from "styled-components"
 import track from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from '../../Sections/VideoControls'
 
-interface VideoProps {
+interface Props {
   campaign: any
+  coverUrl?: string
   src: any
   onInit?: any
   tracking?: any
 }
 
 @track()
-export class CanvasVideo extends React.Component<VideoProps, any> {
-  trackDuration = memoize((percentComplete) => {
-    this.props.tracking.trackEvent({
-      action: "Video duration",
-      label: "Display ad video duration",
-      percent_complete: percentComplete,
-      campaign_name: this.props.campaign.name,
-      unit_layout: "canvas_standard"
-    })
-  })
+export class CanvasVideo extends Component<Props, any> {
+  public video: HTMLVideoElement
 
-  trackSeconds = memoize((secondsComplete) => {
-    this.props.tracking.trackEvent({
-      action: "Video seconds",
-      label: "Display ad video seconds",
-      seconds_complete: secondsComplete,
-      campaign_name: this.props.campaign.name,
-      unit_layout: "canvas_standard"
-    })
-  })
-
-  private video: HTMLVideoElement
+  static defaultProps = {
+    coverUrl: ''
+  }
 
   constructor(props) {
     super(props)
@@ -72,15 +57,37 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     const secondsComplete = Math.floor(this.video.currentTime)
     const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
+
     // Track 25% duration intervals
     if (percentCompleteInterval > 0) {
       this.trackDuration(percentCompleteInterval)
     }
+
     // Track 3 & 10 seconds
     if (secondsComplete === 3 || secondsComplete === 10) {
       this.trackSeconds(secondsComplete)
     }
   }
+
+  trackDuration = memoize((percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Display ad video duration",
+      percent_complete: percentComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "canvas_standard"
+    })
+  })
+
+  trackSeconds = memoize((secondsComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video seconds",
+      label: "Display ad video seconds",
+      seconds_complete: secondsComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "canvas_standard"
+    })
+  })
 
   @track(once((props) => ({
     action: "Click",
@@ -121,20 +128,15 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
     }
   }
 
-  renderCover = () => {
-    if (!this.state.isPlaying) {
-      return (
-        <Cover>
-          <VideoControls />
-        </Cover>
-      )
-    }
-  }
-
   render() {
+    const { isPlaying } = this.state
+
     return (
       <VideoContainer onClick={this.onPlayVideo}>
-        {this.renderCover()}
+        {!isPlaying &&
+          <Cover coverUrl={this.props.coverUrl}>
+            <VideoControls />
+          </Cover>  }
 
         <video playsInline
           src={this.props.src}
@@ -147,17 +149,20 @@ export class CanvasVideo extends React.Component<VideoProps, any> {
   }
 }
 
+
 const VideoContainer = styled.div`
   width: 65%;
   max-width: 760px;
   height: 100%;
   overflow: hidden;
   position: relative;
+
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   ${pMedia.sm`
     width: 100%;
     height: auto;
@@ -168,7 +173,13 @@ const VideoContainer = styled.div`
   `}
 `
 
-const Cover = styled.div`
+const div: StyledFunction<{
+  coverUrl?: string
+}> = styled.div
+
+const Cover = div`
+  background: url(${p => (p.coverUrl || "")}) no-repeat center center;
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;

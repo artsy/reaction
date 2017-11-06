@@ -75,7 +75,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
 
   render() {
     const { campaign, disclaimer, size, unit } = this.props
-    const { assets, layout, link: { url } } = unit
+    const { assets, cover_image_url, layout, link: { url } } = unit
     const isOverlay = layout === 'overlay'
     const isSlideshow = layout === 'slideshow'
 
@@ -133,6 +133,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
         <CanvasLink {...linkProps}>
           {isVideo
             ? <CanvasVideo
+                coverUrl={cover_image_url}
                 src={asset.url}
                 campaign={campaign}
                 onInit={h => this.canvasVideoHandlers = h}
