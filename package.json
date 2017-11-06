@@ -105,6 +105,7 @@
     "tslint-react": "^2.4.0",
     "typescript": "^2.3.4",
     "typescript-babel-jest": "^1.0.3",
+    "typescript-styled-plugin": "^0.1.2",
     "uglify-js": "^2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.2",
     "webpack": "^3.5.6",

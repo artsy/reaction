@@ -19,13 +19,21 @@ interface CanvasContainerProps {
   unit?: any
 }
 
+interface State {
+  isMounted: boolean
+}
+
 @track()
-export class CanvasContainerComponent extends React.Component<CanvasContainerProps, null> {
+export class CanvasContainerComponent extends React.Component<CanvasContainerProps, State> {
   static defaultProps = {
     size: { width: 1250 }
   }
 
   public canvasVideoHandlers: any
+
+  state = {
+    isMounted: false
+  }
 
   constructor(props) {
     super(props)
@@ -39,7 +47,9 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
     unit_layout: unitLayout(props)
   })))
   componentDidMount() {
-    // noop
+    this.setState({
+      isMounted: true
+    })
   }
 
   // TODO: Ensure that full element can be clicked on video complete
@@ -83,6 +93,12 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
       target: "_blank",
       containerWidth: size.width,
       layout
+    }
+
+    // TODO: For whatever the slideshow leads to a race condition when rendering
+    // app in Force. Defer execution and everything works fine.
+    if (!this.state.isMounted) {
+      return <div />
     }
 
     // Overlay

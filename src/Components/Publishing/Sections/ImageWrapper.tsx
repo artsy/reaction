@@ -86,11 +86,13 @@ const Fullscreen = styled.div`
 
 const StyledImageWrapper = styled.div`
   position: relative;
+
   &:hover {
     ${Fullscreen} {
       opacity: 1;
     }
   }
+
   ${pMedia.sm`
     ${Fullscreen} {
       opacity: 1;

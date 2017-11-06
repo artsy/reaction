@@ -167,6 +167,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const DisplayPanelAd = () =>
       hasPanel &&
       <DisplayPanel
+        isMobile={this.props.isMobile}
         unit={this.props.display.panel}
         campaign={campaign}
       />
@@ -226,7 +227,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                       {/*
                         Display Ad
                       */}
-                      {this.props.display &&
+                      {!isMobile && this.props.display &&
                         <DisplayPanelAd />}
 
                     </Sidebar>
@@ -265,17 +266,17 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
                   {displayOverflows
                     ? <FooterContainerOverflow>
-                      <DisplayCanvas
-                        unit={this.props.display.canvas}
-                        campaign={campaign}
-                      />
-                    </FooterContainerOverflow>
+                        <DisplayCanvas
+                          unit={this.props.display.canvas}
+                          campaign={campaign}
+                        />
+                      </FooterContainerOverflow>
                     : <FooterContainer>
-                      <DisplayCanvas
-                        unit={this.props.display.canvas}
-                        campaign={campaign}
-                      />
-                    </FooterContainer>
+                        <DisplayCanvas
+                          unit={this.props.display.canvas}
+                          campaign={campaign}
+                        />
+                      </FooterContainer>
                   }
                 </div>
               )}
@@ -292,7 +293,10 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
 
     return (
       <ArticleContainer marginTop={marginTop}>
-        {article.layout === "feature" ? this.renderFeatureArticle() : this.renderStandardArticle()}
+        {article.layout === "feature"
+          ? this.renderFeatureArticle()
+          : this.renderStandardArticle()}
+
         <FullscreenViewer
           onClose={this.closeViewer}
           show={this.state.viewerIsOpen}
@@ -329,6 +333,6 @@ const FooterContainer = styled.div`
 const FooterContainerOverflow = styled.div`
   margin-left: 40px;
   ${pMedia.md`
-    margin-left: 0
+    margin-left: 0;
   `}
 `

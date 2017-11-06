@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "rootDir": "src",
-    "jsx": "react",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "outDir": "dist",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "module": "es2015",
+    "moduleResolution": "node",
     "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "outDir": "dist",
+    "plugins": [
+      { "name": "typescript-styled-plugin" }
+    ],
+    "rootDir": "src",
+    "sourceMap": true,
+    "target": "es6"
   },
   "exclude": ["node_modules", "dist", "data", "externals", "danger"]
 }

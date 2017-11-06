@@ -3,7 +3,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { Sections } from '../Sections'
 import { StandardArticle } from '../../Fixtures/Articles'
-import { clone } from 'lodash'
+import { cloneDeep } from 'lodash'
 import { mount } from 'enzyme'
 
 
@@ -26,10 +26,10 @@ describe('snapshots', () => {
 
 describe('units', () => {
   it('doesnt throw an error on invalid markup', () => {
-    global.console = { error: jest.fn() }
+    const spy = jest.spyOn(global.console, 'error')
 
     expect(() => {
-      const article = clone(StandardArticle)
+      const article = cloneDeep(StandardArticle)
       article.sections = [{
         type: 'text',
         body: '<p>busted'
@@ -41,8 +41,34 @@ describe('units', () => {
           article={article}
         />
       )
-      expect(global.console.error).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     }).not.toThrowError()
+  })
+
+  it('does not inject if feature', () => {
+    const article = cloneDeep(StandardArticle)
+    article.layout = 'feature'
+    const spy = jest.spyOn(Sections.prototype, 'mountDisplayToMarker')
+    const wrapper = mount(
+      <Sections isMobile
+        DisplayPanel={() => <div>hi!</div>}
+        article={article}
+      />
+    )
+    expect(wrapper.state().shouldInjectMobileDisplay).toEqual(false)
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('does not inject if desktop', () => {
+    const spy = jest.spyOn(Sections.prototype, 'mountDisplayToMarker')
+    const wrapper = mount(
+      <Sections isMobile={false}
+        DisplayPanel={() => <div>hi!</div>}
+        article={StandardArticle}
+      />
+    )
+    expect(wrapper.state().shouldInjectMobileDisplay).toEqual(false)
+    expect(spy).not.toHaveBeenCalled()
   })
 
   it('if mobile, sets flag to inject display', () => {
@@ -62,18 +88,14 @@ describe('units', () => {
 
   it('injects a display panel marker after the second paragraph', () => {
     const { injectDisplayPanelMarker } = Sections.prototype
-    const body = injectDisplayPanelMarker([
+    const scope = () => { this.displayInjectId = '__to_replace__' }
+    const body = injectDisplayPanelMarker.call(scope, ([
       '<p>hello</p>',
       '<p>how are you</p>',
       '<p>how are you</p>'
-    ].join(''))
+    ].join('')))
 
-    expect(body).toContain([
-      '<p>hello</p>',
-      '<p>how are you</p>',
-      '<div id="__mobile_display_inject__"></div>',
-      '<p>how are you</p>'
-    ].join(''))
+    expect(body).toContain('__mobile_display_inject__')
   })
 })
 
