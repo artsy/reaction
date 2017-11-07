@@ -102,11 +102,11 @@ export class Sections extends Component<Props, State> {
   }
 
   mountDisplayToMarker() {
-    const { DisplayPanel, isMobile } = this.props
+    const { DisplayPanel } = this.props
     const displayMountPoint = document.getElementById(this.displayInjectId)
 
     if (displayMountPoint) {
-      ReactDOM.render(<DisplayPanel isMobile={isMobile} />, displayMountPoint)
+      ReactDOM.render(<DisplayPanel />, displayMountPoint)
     } else {
       console.error(
         '(reaction/Sections.tsx) Error mounting Display: DOM node ',

@@ -1,7 +1,8 @@
-import { get, memoize, once } from "lodash"
+import { get, memoize } from "lodash"
 import React, { Component, HTMLProps  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
+import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
@@ -20,7 +21,9 @@ interface State {
   showCoverImage: boolean
 }
 
-@track()
+@track({ page: "Article" }, {
+  dispatch: data => Events.postEvent(data)
+})
 export class DisplayPanel extends Component<Props, State> {
   public video: HTMLVideoElement
 
@@ -29,40 +32,46 @@ export class DisplayPanel extends Component<Props, State> {
     showCoverImage: false
   }
 
+  static defaultProps = {
+    tracking: {
+      trackEvent: x => x
+    }
+  }
+
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.handleVideoClick = this.handleVideoClick.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
-  @track(once(props => ({
-    action: "Impression",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "panel"
-  })))
   componentDidMount() {
     if (this.video) {
       this.video.onended = this.pauseVideo
     }
+
+    this.props.tracking.trackEvent({
+      action: "Impression",
+      entity_type: "display_ad",
+      campaign_name: this.props.campaign.name,
+      unit_layout: "panel"
+    })
   }
 
   componentWillUpdate() {
     if (this.video) {
-      this.video.removeEventListener("timeupdate", this.trackProgress)
+      this.video.removeEventListener("timeupdate", this.trackProgress.bind(this))
     }
   }
 
   componentDidUpdate() {
     if (this.video) {
-      this.video.addEventListener("timeupdate", this.trackProgress)
+      this.video.addEventListener("timeupdate", this.trackProgress.bind(this))
     }
   }
 
   // TODO: This could be shared with <CanvasVideo />
-  trackProgress = () => {
+  trackProgress() {
     const secondsComplete = Math.floor(this.video.currentTime)
     const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
@@ -112,27 +121,29 @@ export class DisplayPanel extends Component<Props, State> {
     return withinMediaArea
   }
 
-  /**
-   * Handle clicks to main container
-   */
-  @track(props => ({
-    action: "Click",
-    label: "Display ad clickthrough",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "panel"
-  }))
   handleClick(event) {
     event.preventDefault()
     const { showCoverImage: alreadyClicked } = this.state
-    const { isMobile, unit } = this.props
+    const { campaign, isMobile, tracking, unit } = this.props
     const url = get(unit, "link.url", false)
     const isVideo = this.isVideo()
-    const openUrl = () => window.open(url, "_blank")
+
+    const openUrl = () => {
+      tracking.trackEvent({
+        action: "Click",
+        label: "Display ad clickthrough",
+        entity_type: "display_ad",
+        campaign_name: campaign.name,
+        unit_layout: "panel"
+      })
+
+      window.open(url, "_blank")
+    }
 
     if (isMobile) {
       if (isVideo) {
         if (this.isWithinMediaArea(event)) {
+          this.trackVideoClick()
           this.toggleVideo()
         } else {
           openUrl()
@@ -161,35 +172,22 @@ export class DisplayPanel extends Component<Props, State> {
   }
 
   /**
-   * Handle clicks to Video player
-   */
-  @track(props => ({
-    action: "Click",
-    label: "Display ad play video",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "panel"
-  }))
-  handleVideoClick(event) {
-    // noop
-  }
-
-  /**
    * Handle MouseEnter, on desktop
    */
-  @track(props => ({
-    action: "MouseEnter",
-    label: "Display ad play video",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "panel"
-  }))
   handleMouseEnter() {
     if (this.props.isMobile) {
       return false
     } else {
       if (this.isVideo()) {
         this.playVideo()
+
+        this.props.tracking.trackEvent({
+          action: "MouseEnter",
+          label: "Display ad play video",
+          entity_type: "display_ad",
+          campaign_name: this.props.campaign.name,
+          unit_layout: "panel"
+        })
       } else {
         this.toggleCoverImage()
       }
@@ -247,6 +245,19 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
+  /**
+   * Handle clicks to Video player
+   */
+  trackVideoClick() {
+    this.props.tracking.trackEvent({
+      action: "Click",
+      label: "Display ad play video",
+      entity_type: "display_ad",
+      campaign_name: this.props.campaign.name,
+      unit_layout: "panel"
+    })
+  }
+
   isVideo() {
     const assetUrl = get(this.props.unit, "assets.0.url", "")
     const isVideo = assetUrl.includes("mp4")
@@ -258,7 +269,7 @@ export class DisplayPanel extends Component<Props, State> {
     const { isMobile } = this.props
 
     return (
-      <VideoContainer onClick={this.handleVideoClick} className="VideoContainer">
+      <VideoContainer className="VideoContainer">
         {!isPlaying &&
           <VideoCover className="VideoContainer__VideoCover">
             {isMobile &&
