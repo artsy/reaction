@@ -1,4 +1,4 @@
-import { get, once } from "lodash"
+import { get, memoize, once } from "lodash"
 import React, { Component, HTMLProps  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
@@ -12,6 +12,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   campaign: any
   isMobile?: boolean
   unit: any
+  tracking?: any
 }
 
 interface State {
@@ -47,6 +48,55 @@ export class DisplayPanel extends Component<Props, State> {
       this.video.onended = this.pauseVideo
     }
   }
+
+  componentWillUpdate() {
+    if (this.video) {
+      this.video.removeEventListener("timeupdate", this.trackProgress)
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.video) {
+      this.video.addEventListener("timeupdate", this.trackProgress)
+    }
+  }
+
+  // TODO: This could be shared with <CanvasVideo />
+  trackProgress = () => {
+    const secondsComplete = Math.floor(this.video.currentTime)
+    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
+
+    // Track 25% duration intervals
+    if (percentCompleteInterval > 0) {
+      this.trackDuration(percentCompleteInterval)
+    }
+
+    // Track 3 & 10 seconds
+    if (secondsComplete === 3 || secondsComplete === 10) {
+      this.trackSeconds(secondsComplete)
+    }
+  }
+
+  trackDuration = memoize((percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Display ad video duration",
+      percent_complete: percentComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "panel"
+    })
+  })
+
+  trackSeconds = memoize((secondsComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video seconds",
+      label: "Display ad video seconds",
+      seconds_complete: secondsComplete,
+      campaign_name: this.props.campaign.name,
+      unit_layout: "panel"
+    })
+  })
 
   isWithinMediaArea(event) {
     const valid = [
