@@ -129,6 +129,7 @@ export const UnitCanvasVideo = {
     url: "http://artsy.net",
   },
   assets: [{ url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4" }],
+  cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG",
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
   "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",

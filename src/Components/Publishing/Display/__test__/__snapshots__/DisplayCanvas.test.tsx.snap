@@ -1124,6 +1124,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
 }
 
 .c4 {
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG) no-repeat center center;
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;
