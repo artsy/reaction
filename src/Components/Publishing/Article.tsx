@@ -164,17 +164,22 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
     const campaign = omit(display, "panel", "canvas")
     const displayOverflows = display && display.canvas.layout === "slideshow"
 
-    const DisplayPanelAd = () =>
-      hasPanel &&
-      <DisplayPanel
-        isMobile={this.props.isMobile}
-        unit={this.props.display.panel}
-        campaign={campaign}
-      />
-
     return (
       <Responsive initialState={{ isMobile: this.props.isMobile }}>
         {({ isMobile, xs, sm, md }) => {
+          const isMobileAd = Boolean(isMobile || xs || sm || md)
+
+          const DisplayPanelAd = () => {
+            return (
+              hasPanel &&
+              <DisplayPanel
+                isMobile={isMobileAd}
+                unit={this.props.display.panel}
+                campaign={campaign}
+              />
+            )
+          }
+
           return (
             <div>
               <ReadMoreWrapper
@@ -197,7 +202,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                     <Sections
                       DisplayPanel={DisplayPanelAd}
                       article={article}
-                      isMobile={Boolean(isMobile || xs || sm || md)}
+                      isMobile={isMobile}
                     />
 
                     {/*
@@ -227,7 +232,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                       {/*
                         Display Ad
                       */}
-                      {!isMobile && this.props.display &&
+                      {!isMobileAd && this.props.display &&
                         <DisplayPanelAd />}
 
                     </Sidebar>

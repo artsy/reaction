@@ -14,14 +14,26 @@ jest.mock('../../../../Utils/track.ts', () => ({
 describe('snapshots', () => {
   it('renders the display panel with an image', () => {
     const displayPanel = renderer.create(
-      <DisplayPanel unit={UnitPanel} campaign={Campaign} />
+      <DisplayPanel
+        unit={UnitPanel}
+        campaign={Campaign}
+        tracking={{
+          trackEvent: jest.fn()
+        }}
+      />
     ).toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it('renders the display panel with video', () => {
     const displayPanel = renderer.create(
-      <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
+      <DisplayPanel
+        unit={UnitPanelVideo}
+        campaign={Campaign}
+        tracking={{
+          trackEvent: jest.fn()
+        }}
+      />
     ).toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
@@ -41,6 +53,9 @@ describe('units', () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
+        tracking={{
+          trackEvent: jest.fn()
+        }}
         {...rest}
       />
     )
@@ -50,16 +65,108 @@ describe('units', () => {
     jest.restoreAllMocks()
   })
 
-  describe('#componentDidMount', () => {
-    it('tracks interaction', () => {
-      getWrapper()
-      expect(track).toHaveBeenCalled()
+  describe('tracking', () => {
+    const getTracker = () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+
+      return {
+        wrapper,
+        instance,
+        spy
+      }
+    }
+
+    it('tracks one time on mount', () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'Impression',
+        entity_type: 'display_ad',
+        unit_layout: 'panel'
+      }))
     })
 
+    it('tracks video progress', () => {
+      const wrapper = getWrapper({ isVideo: true })
+      const instance = wrapper.instance()
+      const durationSpy = jest.spyOn(instance, 'trackDuration')
+      const secondsSpy = jest.spyOn(instance, 'trackSeconds')
+      instance.video.currentTime = 3
+      instance.trackProgress()
+      expect(durationSpy).toHaveBeenCalled()
+      expect(secondsSpy).toHaveBeenCalled()
+    })
+
+    it('tracks duration', () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      instance.trackDuration(20)
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'Video duration',
+        percent_complete: 20
+      }))
+    })
+
+    it('tracks seconds', () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      instance.trackSeconds(20)
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'Video seconds',
+        seconds_complete: 20
+      }))
+    })
+
+    it('tracks on click', () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      const event = {
+        preventDefault: jest.fn(),
+        target: {
+          className: 'PlayButton'
+        }
+      }
+      instance.handleClick(event)
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'Click',
+        label: 'Display ad clickthrough'
+      }))
+    })
+
+    it('tracks on video click', () => {
+      const wrapper = getWrapper()
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      instance.trackVideoClick()
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'Click',
+        label: 'Display ad play video'
+      }))
+    })
+
+    it('tracks on mouseEnter, if desktop', () => {
+      const wrapper = getWrapper({ isVideo: true })
+      const instance = wrapper.instance()
+      const spy = jest.spyOn(wrapper.props().tracking, 'trackEvent')
+      instance.handleMouseEnter()
+      expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+        action: 'MouseEnter',
+        label: 'Display ad play video'
+      }))
+    })
+  })
+
+  describe('#componentDidMount', () => {
     it('attaches an onEnded handler to video', () => {
       const wrapper = getWrapper({ isVideo: true })
       const instance = wrapper.instance()
-      expect(instance.video.onended).not.toBeUndefined()
+      expect(instance.video.onended).toBeDefined()
     })
   })
 
@@ -348,5 +455,7 @@ describe('units', () => {
     const wrapper = getWrapper()
     expect(wrapper.find('Image').length).toEqual(1)
   })
+
+
 })
 

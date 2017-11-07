@@ -35,7 +35,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .wwfs2u-1-file__Image-iTToDH {
+.c1 .xu5qbr-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -168,7 +168,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.ctoaKm .c3 {
+.foDurm .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -187,7 +187,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-wwfs2u-1 {
+.c1 .file__Image-xu5qbr-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -296,7 +296,6 @@ exports[`snapshots renders the display panel with video 1`] = `
   >
     <div
       className="VideoContainer c2"
-      onClick={[Function]}
     >
       <div
         className="VideoContainer__VideoCover c3 c4"
