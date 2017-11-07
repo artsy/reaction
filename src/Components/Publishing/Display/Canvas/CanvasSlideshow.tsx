@@ -143,14 +143,16 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
     const renderTitleCard = containerWidth < 900
 
     return (
-      <SliderContainer containerWidth={containerWidth}>
-        <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
-          {this.renderSlides()}
-        </Slider>
+      <div>
+        <SliderContainer containerWidth={containerWidth}>
+          <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
+            {this.renderSlides()}
+          </Slider>
+        </SliderContainer>
 
         {renderTitleCard &&
           this.renderTitleCard()}
-      </SliderContainer>
+      </div>
     )
   }
 }
