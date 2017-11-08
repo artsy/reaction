@@ -26,3 +26,11 @@ storiesOf("Publishing/Video", module)
       </div>
     )
   })
+  .add("Video with custom tracking data", () => {
+    const data = { entity_id: "1234", entity_type: "feature" }
+    return (
+      <div style={{ width: "100vw", position: "relative" }}>
+        <Video section={Videos[0]} layout="standard" trackingData={data} />
+      </div>
+    )
+  })

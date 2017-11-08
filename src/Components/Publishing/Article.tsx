@@ -52,9 +52,15 @@ interface ArticleContainerProps {
   marginTop?: string
 }
 
-@track({ page: "Article" }, {
-  dispatch: data => Events.postEvent(data)
-})
+@track((props) => {
+  return {
+    page: "Article",
+    entity_type: "article",
+    entity_id: props.article.id
+  }}, {
+    dispatch: data => Events.postEvent(data)
+  }
+)
 export class Article extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
