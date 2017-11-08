@@ -2,7 +2,9 @@ import React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
+import Events from "../../../Utils/Events"
 import { resize } from "../../../Utils/resizer"
+import track from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { Layout } from "../Typings"
@@ -20,6 +22,8 @@ interface VideoProps {
     cover_image_url?: string
   }
   size?: any
+  tracking?: any
+  trackingData?: any
   layout?: Layout
 }
 
@@ -28,11 +32,23 @@ interface VideoState {
   hidden: boolean
 }
 
+@track({}, {
+  dispatch: data => Events.postEvent(data)
+})
+
+@track((props) => {
+  return props.trackingData ? props.trackingData : {}
+}, {
+  dispatch: data => Events.postEvent(data)
+})
 class VideoComponent extends React.Component<VideoProps, VideoState> {
   static defaultProps = {
     size: {
       width: 500,
     },
+    tracking: {
+      trackEvent: x => x
+    }
   }
 
   constructor(props) {
@@ -60,12 +76,22 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
         hidden: true
       }
     }
-
+    this.playVideo = this.playVideo.bind(this)
+ 
   }
 
-  playVideo = () => {
+  trackVideoClick() {
+    const trackParams = {
+      action: "Click",
+      label: "Play video",
+    }
+    this.props.tracking.trackEvent(trackParams)
+  }
+
+  playVideo() {
     const playerSrc = this.state.src + "&autoplay=1"
     this.setState({ src: playerSrc, hidden: true })
+    this.trackVideoClick()
   }
 
   render() {
