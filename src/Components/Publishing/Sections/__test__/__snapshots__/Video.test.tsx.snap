@@ -112,10 +112,10 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  className="VideoContainer__StyledComponent c0"
+  className="VideoContainer c0"
 >
   <div
-    className="c1"
+    className="VideoCover c1"
     height={281.25}
     hidden={false}
     onClick={[Function]}

@@ -75,9 +75,16 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
     const showCaption = this.props.layout !== 'feature'
 
     return (
-      <VideoContainer layout={this.props.layout} className='VideoContainer__StyledComponent'>
+      <VideoContainer
+        layout={this.props.layout}
+        className='VideoContainer'>
         {cover_image_url &&
-          <CoverImage src={src} height={width * VIDEO_RATIO} onClick={this.playVideo} hidden={this.state.hidden}>
+          <CoverImage
+            className='VideoCover'
+            src={src}
+            height={width * VIDEO_RATIO}
+            onClick={this.playVideo}
+            hidden={this.state.hidden}>
             <VideoControls />
           </CoverImage>
         }
