@@ -32,10 +32,6 @@ interface VideoState {
   hidden: boolean
 }
 
-@track({}, {
-  dispatch: data => Events.postEvent(data)
-})
-
 @track((props) => {
   return props.trackingData ? props.trackingData : {}
 }, {
@@ -81,11 +77,10 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
   }
 
   trackVideoClick() {
-    const trackParams = {
+    this.props.tracking.trackEvent({
       action: "Click",
       label: "Play video",
-    }
-    this.props.tracking.trackEvent(trackParams)
+    })
   }
 
   playVideo() {
