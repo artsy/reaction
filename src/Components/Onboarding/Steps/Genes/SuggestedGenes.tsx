@@ -1,14 +1,12 @@
 import * as React from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
+import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
-export interface Props {
-  genes: any[]
-}
-
-export default class SuggestedGenes extends React.Component<Props, null> {
+class SuggestedGenesContent extends React.Component<RelayProps, null> {
   render() {
-    const items = this.props.genes.map((item, index) => {
+    const items = this.props.suggested_genes.map((item, index) => {
       return <ItemLink href="#" item={item} key={index} />
     })
 
@@ -16,36 +14,50 @@ export default class SuggestedGenes extends React.Component<Props, null> {
   }
 }
 
-// const PopularArtistContentContainer = createFragmentContainer(
-//   PopularArtistsContent,
-//   graphql`
-//     fragment PopularArtistsContent_popular_artists on PopularArtists {
-//       artists {
-//         ...SelectableItemContainer_artists
-//       }
-//     }
-//   `
-// )
+const SuggestedGenesContainer = createFragmentContainer(
+  SuggestedGenesContent,
+  graphql`
+    fragment SuggestedGenesContent_suggested_genes on SuggestedGene @relay(plural: true) {
+      id
+      name
+      _id
+      image_url
+    }
+  `
+)
 
-// export default function PopularArtistContentList() {
-//   return (
-//     <QueryRenderer
-//       environment={(Store as any) as Environment}
-//       query={graphql`
-//         query PopularArtistsQuery {
-//           popular_artists {
-//             ...PopularArtistsContent_popular_artists
-//           }
-//         }
-//       `}
-//       variables={{}}
-//       render={({ error, props }) => {
-//         if (props) {
-//           return <PopularArtistContentContainer popular_artists={props.popular_artists} />
-//         } else {
-//           return null
-//         }
-//       }}
-//     />
-//   )
-// }
+const SuggestedGenesComponent: React.SFC<ContextProps> = ({ relayEnvironment }) => {
+  return (
+    <QueryRenderer
+      environment={relayEnvironment}
+      query={graphql`
+        query SuggestedGenesQuery {
+          suggested_genes {
+            ...SuggestedGenesContent_suggested_genes
+          }
+        }
+      `}
+      variables={{}}
+      render={({ error, props }) => {
+        if (props) {
+          return <SuggestedGenesContainer suggested_genes={props.suggested_genes} />
+        } else {
+          return null
+        }
+      }}
+    />
+  )
+}
+
+export interface RelayProps {
+  suggested_genes: [
+    {
+      id: string | null
+      name: string | null
+      _id: string | null
+      image_url: string | null
+    }
+  ]
+}
+
+export const SuggestedGenes = ContextConsumer(SuggestedGenesComponent)
