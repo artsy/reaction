@@ -44,18 +44,22 @@ export interface State {
 }
 
 interface Props extends React.HTMLProps<HTMLAnchorElement> {
-  item: any
+  item?: any
+  id: string
+  _id: string
+  name: string
+  image_url
 }
 
 export default class ItemLink extends React.Component<Props, State> {
   state = {
     fadeIn: false,
     fadeOut: false,
-    item_id: this.props.item.id,
+    item_id: this.props.id,
   }
 
   followItem() {
-    console.log("follow item!")
+    return null
   }
 
   followItemFailed() {
@@ -72,10 +76,10 @@ export default class ItemLink extends React.Component<Props, State> {
         onClick={this.onClick.bind(this)}
         fadeIn={this.state.fadeIn}
         fadeOut={this.state.fadeOut}
-        item_id={this.props.item.id}
+        item_id={this.props.id}
       >
-        <Col>{<Avatar src={this.props.item.image_url ? this.props.item.image_url : ""} width={50} height={50} />}</Col>
-        <FullWidthCol>{this.props.item.name}</FullWidthCol>
+        <Col>{<Avatar src={this.props.image_url ? this.props.image_url : ""} width={50} height={50} />}</Col>
+        <FullWidthCol>{this.props.name}</FullWidthCol>
         <Col>
           <Icon name="follow-circle" color="black" fontSize="39px" />
         </Col>

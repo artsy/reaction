@@ -7,7 +7,17 @@ import ItemLink from "../../ItemLink"
 class SuggestedGenesContent extends React.Component<RelayProps, null> {
   render() {
     const items = this.props.suggested_genes.map((item, index) => {
-      return <ItemLink href="#" item={item} key={index} />
+      return (
+        <ItemLink
+          href="#"
+          item={item}
+          key={index}
+          id={item.id}
+          _id={item._id}
+          name={item.name}
+          image_url={item.image_url}
+        />
+      )
     })
 
     return <div>{items}</div>
