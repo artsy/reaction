@@ -20,6 +20,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 
 interface State {
   isPlaying: boolean
+  isMuted: boolean
   showCoverImage: boolean
 }
 
@@ -30,6 +31,7 @@ export class DisplayPanel extends Component<Props, State> {
   public video: HTMLVideoElement
 
   state = {
+    isMuted: true,
     isPlaying: false,
     showCoverImage: false
   }
@@ -63,6 +65,7 @@ export class DisplayPanel extends Component<Props, State> {
   componentDidUpdate() {
     if (this.video) {
       this.video.addEventListener("timeupdate", this.trackProgress.bind(this))
+      this.video.muted = this.state.isMuted
     }
   }
 
@@ -260,6 +263,44 @@ export class DisplayPanel extends Component<Props, State> {
     return isVideo
   }
 
+  toggleMuted = (e) => {
+    e.stopPropagation()
+    this.setState({ isMuted: !this.state.isMuted })
+  }
+
+  renderVideoIcon() {
+    const { isPlaying, isMuted } = this.state
+    const { isMobile } = this.props
+
+    if (isMobile) {
+      return null
+    } else if (isPlaying && isMuted) {
+      return (
+        <MutedIcon onClick={this.toggleMuted}>
+          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#FFF">
+              <path
+                d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z"
+              />
+            </g>
+          </svg>
+        </MutedIcon>
+      )
+    } else if (isPlaying && !isMuted) {
+      return (
+        <UnmutedIcon onClick={this.toggleMuted}>
+          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#FFF">
+              <path d="M18 12.864V0l-7.152 7.286H0v13.428h10.848L18 28V12.864z" />
+            </g>
+          </svg>
+        </UnmutedIcon>
+      )
+    } else {
+      return <VideoPlayIcon />
+    }
+  }
+
   renderVideo(url) {
     const { isPlaying } = this.state
     const { isMobile } = this.props
@@ -282,6 +323,7 @@ export class DisplayPanel extends Component<Props, State> {
           controls={false}
           ref={video => (this.video = video)}
         />
+        {this.renderVideoIcon()}
       </VideoContainer>
     )
   }
@@ -334,7 +376,6 @@ export class DisplayPanel extends Component<Props, State> {
     )
   }
 }
-
 interface DivUrlProps extends HTMLProps<HTMLDivElement> {
   coverUrl?: string
   hoverImageUrl?: string
@@ -342,9 +383,7 @@ interface DivUrlProps extends HTMLProps<HTMLDivElement> {
   imageUrl?: string
   showCoverImage?: boolean
 }
-
 const div: StyledFunction<DivUrlProps> = styled.div
-
 const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
@@ -378,35 +417,28 @@ const DisplayPanelContainer = div`
   padding: 20px;
   max-width: 360px;
   box-sizing: border-box;
-
   ${Image} {
     background: url(${p => (p.imageUrl || "")}) no-repeat center center;
     background-size: cover;
-
     ${p => p.showCoverImage && p.hoverImageUrl && `
       background: black url(${p.hoverImageUrl}) no-repeat center center;
       background-size: contain;
       border: 10px solid black;
     `}
   }
-
   ${VideoCover} {
     background: url(${p => (p.coverUrl || "")}) no-repeat center center;
     background-size: cover;
-
     ${p => p.showCoverImage && !p.isMobile && `
       display: none;
     `}
   }
-
   ${breakpoint.md`
     margin: auto;
   `}
-
   ${breakpoint.sm`
     margin: auto;
   `}
-
   ${breakpoint.xs`
     margin: auto;
   `}
@@ -442,10 +474,34 @@ const VideoContainer = Image.extend`
   }
 `
 
+const iconPositioning = side => `
+  position: absolute;
+  bottom: 13px;
+  ${side}: 15px;
+`
+
+const VideoPlayIcon = styled.div`
+  color: white;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 20px solid white;
+  ${iconPositioning("left")};
+`
+
+const MutedIcon = styled.div`
+  ${iconPositioning("right")};
+`
+
+const UnmutedIcon = styled.div`
+  z-index: 3;
+  ${iconPositioning("right")};
+  right: 14px;
+  bottom: 12px;
+`
+
 // Set names for tests and DOM
 DisplayPanelContainer.displayName = "DisplayPanelContainer"
 Image.displayName = "Image"
 VideoContainer.displayName = "VideoContainer"
 VideoCover.displayName = "VideoCover"
 Wrapper.displayName = "Wrapper"
-
