@@ -1,6 +1,8 @@
 import * as React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import styled from "styled-components"
 
+import * as fonts from "../../../../Assets/Fonts"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
@@ -9,6 +11,15 @@ export interface RelayProps {
     match_gene: any[]
   }
 }
+
+const NoResultsContainer = styled.div`
+  text-align: center;
+  font-style: italic;
+  font-family: ${fonts.secondary.fontFamily};
+  font-size: 17px;
+  border-bottom: none;
+  font-weight: lighter;
+`
 
 class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   render() {
@@ -25,6 +36,10 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
         />
       )
     })
+
+    if (items.length < 1) {
+      return <NoResultsContainer>No Results Found</NoResultsContainer>
+    }
 
     return <div>{items}</div>
   }
