@@ -292,6 +292,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c3.title-card {
+  max-width: 1250px;
+  width: 1250px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -300,11 +302,9 @@ exports[`renders the canvas in slideshow layout 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 1250px;
 }
 
 .c4 {
-  display: inline-block;
   width: 380px;
   padding: 0 20px 0 0;
 }
@@ -315,8 +315,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 
 .c12 {
   height: auto;
-  max-width: 780px;
-  max-height: 460px;
+  max-width: 812.5px;
   object-fit: cover;
   object-position: center;
 }
@@ -460,20 +459,15 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1080px) {
-  .c3.title-card {
-    max-width: 1250px;
-  }
-}
-
 @media (max-width:900px) {
   .c3.title-card {
     max-width: 812.5px;
   }
 }
 
-@media (max-width:1080px) {
+@media (max-width:1280px) {
   .c4 {
+    padding: 0 40px;
     width: 437.5px;
   }
 
@@ -484,8 +478,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
 
 @media (max-width:900px) {
   .c4 {
-    width: 100%;
     padding: 0 20px;
+    width: 100%;
   }
 
   .c4 a {
