@@ -9,10 +9,11 @@ import { CanvasContainer } from "./CanvasContainer"
 interface DisplayCanvasProps {
   unit: any
   campaign: any
+  article?: any
 }
 
 export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
-  const { unit, campaign } = props
+  const { unit, campaign, article } = props
   const url = get(unit, 'link.url', '')
 
   const disclaimer = (
@@ -32,6 +33,7 @@ export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
       <CanvasContainer
         unit={unit}
         campaign={campaign}
+        article={article}
         disclaimer={disclaimer}
       />
 

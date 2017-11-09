@@ -182,6 +182,7 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                 isMobile={isMobileAd}
                 unit={this.props.display.panel}
                 campaign={campaign}
+                article={article}
               />
             )
           }
@@ -280,12 +281,14 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                         <DisplayCanvas
                           unit={this.props.display.canvas}
                           campaign={campaign}
+                          article={article}
                         />
                       </FooterContainerOverflow>
                     : <FooterContainer>
                         <DisplayCanvas
                           unit={this.props.display.canvas}
                           campaign={campaign}
+                          article={article}
                         />
                       </FooterContainer>
                   }

@@ -8,9 +8,11 @@ import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { VideoControls } from "../Sections/VideoControls"
+import { trackImpression } from "./track-impression"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   campaign: any
+  article?: any
   isMobile?: boolean
   unit: any
   tracking?: any
@@ -45,17 +47,11 @@ export class DisplayPanel extends Component<Props, State> {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
+  @trackImpression(() => "panel")
   componentDidMount() {
     if (this.video) {
       this.video.onended = this.pauseVideo
     }
-
-    this.props.tracking.trackEvent({
-      action: "Impression",
-      entity_type: "display_ad",
-      campaign_name: this.props.campaign.name,
-      unit_layout: "panel"
-    })
   }
 
   componentWillUpdate() {
