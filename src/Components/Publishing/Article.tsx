@@ -277,13 +277,13 @@ export class Article extends React.Component<ArticleProps, ArticleState> {
                   <LineBreak />
 
                   {displayOverflows
-                    ? <FooterContainerOverflow>
+                    ? <div>
                         <DisplayCanvas
                           unit={this.props.display.canvas}
                           campaign={campaign}
                           article={article}
                         />
-                      </FooterContainerOverflow>
+                      </div>
                     : <FooterContainer>
                         <DisplayCanvas
                           unit={this.props.display.canvas}
@@ -341,12 +341,5 @@ const FooterContainer = styled.div`
   margin: 0 40px;
   ${pMedia.sm`
     margin: 0 20px;
-  `}
-`
-
-const FooterContainerOverflow = styled.div`
-  margin-left: 40px;
-  ${pMedia.md`
-    margin-left: 0;
   `}
 `

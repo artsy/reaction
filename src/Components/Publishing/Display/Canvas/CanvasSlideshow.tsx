@@ -223,6 +223,7 @@ const SliderContainer = responsiveDiv`
     max-height: ${props => "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
     padding: 0 !important;
   }
+
   ${props => pMedia.md`
     max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
   `}
@@ -230,30 +231,28 @@ const SliderContainer = responsiveDiv`
 const Slide = responsiveDiv`
   margin-right: 20px;
   &.title-card {
+    max-width: 1250px;
+    width: ${props => props.containerWidth + "px;"}
     display: flex;
     justify-content: space-between;
-    width: 1250px;
-    ${props => pMedia.lg`
-      max-width: ${props.containerWidth + "px;"}
-    `}
     ${props => pMedia.md`
       max-width: ${maxAssetSize(props.containerWidth).width + "px;"}
-  `}
+    `}
   }
 `
 const Title = responsiveDiv`
-  display: inline-block;
   width: 380px;
   padding: 0 20px 0 0;
-  ${props => pMedia.lg`
+  ${props => pMedia.xl`
+    padding: 0 40px;
     width: ${props.containerWidth * 0.35 + "px;"}
     a {
       max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }
   `}
   ${pMedia.md`
-    width: 100%;
     padding: 0 20px;
+    width: 100%;
     a {
       height: initial;
       max-height: initial;
@@ -269,8 +268,7 @@ const Disclaimer = styled.div`
 `
 const Image = responsiveImage`
   height: auto;
-  max-width: 780px;
-  max-height: 460px;
+  max-width: ${props => maxAssetSize(props.containerWidth).width + "px;"}
   object-fit: cover;
   object-position: center;
   ${props => pMedia.lg`
