@@ -35,7 +35,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .s1osrrjc-1-file__Image-iTToDH {
+.c1 .iu8kft-1-file__Image-iTToDH {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -168,7 +168,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.iJhdQN .c3 {
+.dHLSju .c3 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -187,7 +187,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-s1osrrjc-1 {
+.c1 .file__Image-iu8kft-1 {
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -197,7 +197,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   background-size: cover;
 }
 
-.c5 {
+.c6 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -206,7 +206,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   margin-bottom: 3px;
 }
 
-.c6 {
+.c7 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
@@ -215,11 +215,11 @@ exports[`snapshots renders the display panel with video 1`] = `
   margin-bottom: 20px;
 }
 
-.c6 a {
+.c7 a {
   color: black;
 }
 
-.c7 {
+.c8 {
   font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -259,6 +259,16 @@ exports[`snapshots renders the display panel with video 1`] = `
   object-position: 50%;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  color: white;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 20px solid white;
+  position: absolute;
+  bottom: 13px;
+  left: 15px;
 }
 
 @media (max-width:720px) {
@@ -306,15 +316,18 @@ exports[`snapshots renders the display panel with video 1`] = `
         playsInline={true}
         src="https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4"
       />
+      <div
+        className="c5"
+      />
     </div>
     <div>
       <div
-        className="c5"
+        className="c6"
       >
         Euismod Inceptos Quam
       </div>
       <div
-        className="c6"
+        className="c7"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
@@ -322,7 +335,7 @@ exports[`snapshots renders the display panel with video 1`] = `
         }
       />
       <div
-        className="c7"
+        className="c8"
       >
         Sponsored by Artsy
       </div>

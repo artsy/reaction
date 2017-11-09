@@ -244,6 +244,19 @@ describe('units', () => {
           expect(wrapper.state().isPlaying).toEqual(false)
           expect(spy).toHaveBeenCalled()
         })
+
+        it('toggles muting of video', () => {
+          const wrapper = getWrapper({  isMobile: true, isVideo: true })
+          const event = {
+            stopPropagation: jest.fn()
+          }
+          wrapper.instance().toggleMuted(event)
+          expect(wrapper.state().isMuted).toEqual(false)
+          expect(wrapper.instance().video.muted).toEqual(false)
+          wrapper.instance().toggleMuted(event)
+          expect(wrapper.state().isMuted).toEqual(true)
+          expect(wrapper.instance().video.muted).toEqual(true)
+        })
       })
 
       describe('Image', () => {
