@@ -1,4 +1,3 @@
-import { once } from "lodash"
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
@@ -6,12 +5,14 @@ import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../../Constants"
+import { trackImpression } from "../track-impression"
 import { CanvasSlideshow } from "./CanvasSlideshow"
 import { CanvasText } from "./CanvasText"
 import { CanvasVideo } from "./CanvasVideo"
 
 interface CanvasContainerProps {
   campaign: any
+  article?: any
   disclaimer?: any
   size?: {
     width: number
@@ -40,12 +41,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
     this.openLink = this.openLink.bind(this)
   }
 
-  @track(once((props) => ({
-    action: "Impression",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: unitLayout(props)
-  })))
+  @trackImpression((props) => unitLayout(props))
   componentDidMount() {
     this.setState({
       isMounted: true
