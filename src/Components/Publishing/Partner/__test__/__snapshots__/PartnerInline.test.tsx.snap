@@ -79,9 +79,9 @@ exports[`renders the partner inline 1`] = `
   >
     <g
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       stroke="none"
-      stroke-width="2"
+      strokeWidth="2"
     >
       <g
         fill="#000000"
@@ -109,6 +109,7 @@ exports[`renders the partner inline 1`] = `
   </svg>
   <a
     href="https://artsy.net"
+    onClick={[Function]}
     target="_blank"
   >
     <img

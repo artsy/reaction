@@ -16,7 +16,7 @@ interface Props {
 @track((props) => {
   return props.trackingData ? props.trackingData : {}
 }, {
-    dispatch: data => Events.postEvent(data)
+  dispatch: data => Events.postEvent(data)
 })
 export class PartnerInline extends React.Component<Props, null> {
   static defaultProps = {
@@ -50,7 +50,11 @@ export class PartnerInline extends React.Component<Props, null> {
         </a>
         {logo && <IconPlus margin="0 0 0 10px" />}
         {logo &&
-          <a href={url} target='_blank' onClick={this.onPartnerClick}>
+          <a
+            href={url}
+            target='_blank'
+            onClick={this.onPartnerClick}
+          >
             <img src={logo} />
           </a>
         }

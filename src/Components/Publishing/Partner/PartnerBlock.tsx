@@ -15,7 +15,7 @@ interface Props {
 @track((props) => {
   return props.trackingData ? props.trackingData : {}
 }, {
-    dispatch: data => Events.postEvent(data)
+  dispatch: data => Events.postEvent(data)
 })
 export class PartnerBlock extends React.Component<Props, null> {
   static defaultProps = {
@@ -29,7 +29,6 @@ export class PartnerBlock extends React.Component<Props, null> {
     this.onPartnerClick = this.onPartnerClick.bind(this)
   }
 
-
   onPartnerClick(event) {
     this.props.tracking.trackEvent({
       action: "Click"
@@ -41,7 +40,11 @@ export class PartnerBlock extends React.Component<Props, null> {
     return (
       <PartnerBlockContainer className='PartnerBlock'>
         <Title>Presented In Partnership With</Title>
-        <a href={url} target='_blank' onClick={this.onPartnerClick}>
+        <a
+          href={url}
+          target='_blank'
+          onClick={this.onPartnerClick}
+        >
           <img src={logo} />
         </a>
       </PartnerBlockContainer>

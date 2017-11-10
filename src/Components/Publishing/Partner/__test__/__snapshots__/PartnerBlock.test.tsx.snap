@@ -38,6 +38,7 @@ exports[`renders the partner block 1`] = `
   </div>
   <a
     href="https://artsy.net"
+    onClick={[Function]}
     target="_blank"
   >
     <img
