@@ -11,7 +11,7 @@ export class IconPlus extends Component<any, null> {
         xmlns="http://www.w3.org/2000/svg"
         style={{margin: this.props.margin}}
       >
-        <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="2" fill="none" fillRule="evenodd">
           <g transform="translate(-101.000000, -18.000000)" fill="#000000">
             <g transform="translate(101.000000, 18.000000)">
               <rect x="0" y="7" width="15" height="1" />

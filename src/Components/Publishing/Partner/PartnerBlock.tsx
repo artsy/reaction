@@ -1,24 +1,52 @@
 import React from 'react'
 import styled from 'styled-components'
+import Events from "../../../Utils/Events"
+import track from "../../../Utils/track"
 import { pMedia } from '../../Helpers'
 import { Fonts } from '../Fonts'
 
 interface Props {
   logo: string
   url: string
+  tracking?: any
+  trackingData?: any
 }
 
-export const PartnerBlock: React.SFC<Props> = props => {
-  const { logo, url } = props
+@track((props) => {
+  return props.trackingData ? props.trackingData : {}
+}, {
+    dispatch: data => Events.postEvent(data)
+})
+export class PartnerBlock extends React.Component<Props, null> {
+  static defaultProps = {
+    tracking: {
+      trackEvent: x => x
+    }
+  }
 
-  return (
-    <PartnerBlockContainer className='PartnerBlock'>
-      <Title>Presented In Partnership With</Title>
-      <a href={url} target='_blank'>
-        <img src={logo} />
-      </a>
-    </PartnerBlockContainer>
-  )
+  constructor(props) {
+    super(props)
+    this.onPartnerClick = this.onPartnerClick.bind(this)
+  }
+
+
+  onPartnerClick(event) {
+    this.props.tracking.trackEvent({
+      action: "Click"
+    })
+  }
+
+  render() {
+    const { logo, url } = this.props
+    return (
+      <PartnerBlockContainer className='PartnerBlock'>
+        <Title>Presented In Partnership With</Title>
+        <a href={url} target='_blank' onClick={this.onPartnerClick}>
+          <img src={logo} />
+        </a>
+      </PartnerBlockContainer>
+    )
+  }
 }
 
 const PartnerBlockContainer = styled.div`

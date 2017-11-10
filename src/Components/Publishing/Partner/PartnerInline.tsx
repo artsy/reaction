@@ -24,6 +24,18 @@ export class PartnerInline extends React.Component<Props, null> {
       trackEvent: x => x
     }
   }
+
+  constructor(props) {
+    super(props)
+    this.onPartnerClick = this.onPartnerClick.bind(this)
+  }
+
+  onPartnerClick(event) {
+    this.props.tracking.trackEvent({
+      action: "Click"
+    })
+  }
+
   render() {
     const { logo, url } = this.props 
 
@@ -38,7 +50,7 @@ export class PartnerInline extends React.Component<Props, null> {
         </a>
         {logo && <IconPlus margin="0 0 0 10px" />}
         {logo &&
-          <a href={url} target='_blank'>
+          <a href={url} target='_blank' onClick={this.onPartnerClick}>
             <img src={logo} />
           </a>
         }
