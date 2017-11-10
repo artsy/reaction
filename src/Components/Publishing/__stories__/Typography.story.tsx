@@ -14,6 +14,7 @@ import { IconImageSet } from "../Icon/IconImageSet"
 import { IconLayoutFullscreen } from "../Icon/IconLayoutFullscreen"
 import { IconLayoutSplit } from "../Icon/IconLayoutSplit"
 import { IconLayoutText } from "../Icon/IconLayoutText"
+import { IconPlus } from "../Icon/IconPlus"
 import { IconRemove } from "../Icon/IconRemove"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
@@ -51,6 +52,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconLayoutFullscreen />
           <p>Layout Fullscreen</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconPlus />
+          <p>Plus</p>
         </div>
         <div style={{ width: 50 }}>
           <IconHeroVideo />
