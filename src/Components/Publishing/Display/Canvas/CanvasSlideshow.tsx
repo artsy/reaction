@@ -187,7 +187,6 @@ const RightArrow = props => {
   )
 }
 
-
 const arrowDiv: StyledFunction<NavArrowProps> = styled.div
 const responsiveDiv: StyledFunction<ResponsiveProps> = styled.div
 const responsiveImage: StyledFunction<ResponsiveProps> = styled.img

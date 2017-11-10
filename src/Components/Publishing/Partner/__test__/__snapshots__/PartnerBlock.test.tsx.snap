@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the partner block 1`] = `
+.c0 img {
+  max-width: 220px;
+  padding-top: 20px;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+@media (max-width:720px) {
+  .c0 img {
+    max-width: 195px;
+  }
+}
+
+@media (max-width:720px) {
+  .c1 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="PartnerBlock c0"
+>
+  <div
+    className="c1"
+  >
+    Presented In Partnership With
+  </div>
+  <a
+    href="https://artsy.net"
+    target="_blank"
+  >
+    <img
+      src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+    />
+  </a>
+</div>
+`;
