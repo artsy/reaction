@@ -13,6 +13,18 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
+  .add("Share with custom tracking", () => {
+    const data = { entity_id: "1234", entity_type: "feature" }
+    return (
+      <div>
+        <Share
+          url="http://artsy.net/article/point-pencils"
+          title="The Point of Pencils"
+          trackingData={data}
+        />
+      </div>
+    )
+  })
   .add("Full Byline", () => {
     return (
       <div>
