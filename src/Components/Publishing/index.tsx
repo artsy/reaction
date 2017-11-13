@@ -15,6 +15,8 @@ export { ImageSetPreview } from "./Sections/ImageSetPreview"
 export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
 export { Text } from "./Sections/Text"
 export { Video } from "./Sections/Video"
+export { PartnerInline } from "./Partner/PartnerInline"
+export { PartnerBlock } from "./Partner/PartnerBlock"
 
 // Icon SVGs
 export { IconEditEmbed } from "./Icon/IconEditEmbed"
