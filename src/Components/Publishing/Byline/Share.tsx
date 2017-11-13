@@ -37,8 +37,9 @@ export class Share extends React.Component<Props, null> {
     window.open(e.currentTarget.attributes.href.value, "Share", "width = 600,height = 300")
 
     this.props.tracking.trackEvent({
-      action: "Article share",
-      service: (() => {
+      action: "Click",
+      type: "share",
+      label: (() => {
         const href = e.currentTarget.attributes.href.value
         if (href.match("facebook")) return "facebook"
         if (href.match("twitter")) return "twitter"

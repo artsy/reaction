@@ -15,7 +15,8 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
 it("emits analytics events to an event emitter", done => {
   const article = mount(<Article article={StandardArticle} />)
   Events.onEvent(data => {
-    expect(data.action).toEqual("Article share")
+    expect(data.action).toEqual("Click")
+    expect(data.type).toEqual("share")
     done()
   })
   const shareUrl = getArticleFullHref(StandardArticle.slug)
