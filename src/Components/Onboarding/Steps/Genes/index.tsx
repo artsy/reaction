@@ -33,6 +33,10 @@ export default class Genes extends React.Component<StepProps, State> {
     this.setState({ inputText: updatedInputText })
   }
 
+  clearSearch(e) {
+    this.setState({ inputText: "" })
+  }
+
   render() {
     return (
       <Layout
@@ -44,10 +48,16 @@ export default class Genes extends React.Component<StepProps, State> {
           <Input
             placeholder={"Search artists..."}
             leftView={<Icon name="search" color={colors.graySemibold} />}
+            rightView={
+              this.state.inputText.length ? (
+                <Icon name="close" color={colors.graySemibold} onClick={this.clearSearch.bind(this)} />
+              ) : null
+            }
             block
             onInput={this.searchTextChanged.bind(this)}
             onPaste={this.searchTextChanged.bind(this)}
             onCut={this.searchTextChanged.bind(this)}
+            value={this.state.inputText}
           />
           <div style={{ marginBottom: "35px" }} />
           {<GeneList searchQuery={this.state.inputText} />}

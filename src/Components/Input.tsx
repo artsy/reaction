@@ -9,6 +9,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
+  value?: string
 }
 
 interface InputState {
@@ -16,21 +17,18 @@ interface InputState {
 }
 
 const StyledInput = styled.input`
-  ${borderedInput}
-  ${block(24)}
+  ${borderedInput} ${block(24)};
 `
 
 const BorderlessInput = styled.input`
   border: 0;
-  ${fonts.secondary.style}
-  font-size: 17px;
+  ${fonts.secondary.style} font-size: 17px;
   outline: none;
   flex: 1;
 `
 
 const StyledDiv = styled.div`
-  ${borderedInput}
-  border: 0;
+  ${borderedInput} border: 0;
   padding: 12px;
   margin-right: 0;
   display: flex;
@@ -38,8 +36,7 @@ const StyledDiv = styled.div`
 
   & .border-container {
     z-index: -1;
-    ${border}
-    position: absolute;
+    ${border} position: absolute;
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     top: 0;
@@ -52,6 +49,7 @@ const BorderClassname = "border-container"
 class Input extends React.Component<InputProps, InputState> {
   state = {
     borderClasses: BorderClassname,
+    value: "",
   }
 
   onFocus(e: React.FocusEvent<HTMLInputElement>) {
@@ -75,28 +73,55 @@ class Input extends React.Component<InputProps, InputState> {
   }
 
   render() {
-    if (this.props.rightView) {
+    if (this.props.leftView && this.props.rightView) {
       const newProps: any = { ...this.props }
       delete newProps.className
 
       return (
         <StyledDiv>
           <div className={this.state.borderClasses} />
-          <BorderlessInput {...newProps} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} />
+          {this.props.leftView}
+          <BorderlessInput
+            {...newProps}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+            value={this.props.value}
+          />
+          {this.props.rightView}
+        </StyledDiv>
+      )
+    } else if (this.props.rightView) {
+      const newProps: any = { ...this.props }
+      delete newProps.className
+
+      return (
+        <StyledDiv>
+          <div className={this.state.borderClasses} />
+          <BorderlessInput
+            {...newProps}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+            value={this.props.value}
+          />
           {this.props.rightView}
         </StyledDiv>
       )
     } else if (this.props.leftView) {
-        const newProps: any = { ...this.props }
-        delete newProps.className
+      const newProps: any = { ...this.props }
+      delete newProps.className
 
-        return (
-          <StyledDiv>
-            <div className={this.state.borderClasses}/>
-            {this.props.leftView}
-            <BorderlessInput {...newProps} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)}/>
-          </StyledDiv>
-        )
+      return (
+        <StyledDiv>
+          <div className={this.state.borderClasses} />
+          {this.props.leftView}
+          <BorderlessInput
+            {...newProps}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+            value={this.props.value}
+          />
+        </StyledDiv>
+      )
     }
 
     return <StyledInput {...this.props} />
