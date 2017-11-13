@@ -1,12 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from '../../../Utils/Responsive'
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import Icon from "../../Icon"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
+import { PartnerInline } from "../Partner/PartnerInline"
 import { isValidVideoUrl } from '../Sections/Video'
 import { BasicHeader } from "./BasicHeader"
 
@@ -58,7 +58,7 @@ function renderTextLayoutAsset(url, layout, title, imageChild) {
       return (
         <TextAsset>
           {imageChild}
-          <Video src={url} autoPlay controls={false} loop muted playsInline />
+          <video src={url} autoPlay controls={false} loop muted playsInline width="100%" />
         </TextAsset>
       )
     } else {
@@ -99,6 +99,11 @@ interface FeatureHeaderProps {
   }
 }
 
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
+  height?: string
+  src?: string
+}
+
 @track()
 class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   static defaultProps = {
@@ -133,6 +138,8 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       )
       // Fullscreen, Text, Split
     } else {
+      const { super_article } = article
+
       return (
         <Responsive initialState={{ isMobile: passedIsMobile }}>
           {({ isMobile }) => (
@@ -140,7 +147,12 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
               {renderFeatureAsset(url, type, isMobile, article.title, image)}
               <HeaderTextContainer>
                 {article.is_super_article &&
-                  renderSuperArticleLogos(article.super_article, isMobile, this.onClickPartnerLink)}
+                  <PartnerInline
+                    logo={super_article.partner_fullscreen_header_logo || super_article.partner_logo}
+                    url={super_article.partner_logo_link}
+                    color={"white"}
+                  />
+                }
                 <HeaderText>
                   <Vertical>{vertical}</Vertical>
                   <Title>{title}</Title>
@@ -160,47 +172,13 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   }
 }
 
-function renderSuperArticleLogos(superArticle, isMobile, onClickPartnerLink) {
-  const partnerLogo = superArticle.partner_fullscreen_header_logo || superArticle.partner_logo
-
-  return (
-    <SuperArticleLogos>
-      <a href="/">
-        <Icon
-          name="logotype"
-          fontSize={isMobile ? "30px" : "45px"}
-          color="white"
-        />
-      </a>
-      {partnerLogo &&
-        <SuperArticlePartnerLogo>
-          <SuperArticleLogoDivider>
-            <Icon
-              name="close"
-              fontSize={isMobile ? "15px" : "20px"}
-              color="white" />
-          </SuperArticleLogoDivider>
-          <a
-            href={superArticle.partner_logo_link}
-            target="_blank"
-            onClick={onClickPartnerLink}
-          >
-            <img
-              src={partnerLogo}
-              height={isMobile ? "32px" : "50px"}
-            />
-          </a>
-        </SuperArticlePartnerLogo>
-      }
-    </SuperArticleLogos>
-  )
-}
-
 const Div = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 `
+const DivWithProps: StyledFunction<DivProps> = Div.extend
+
 const Overlay = Div.extend`
   position: absolute;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
@@ -214,6 +192,16 @@ const Vertical = styled.div`
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
+  .PartnerInline {
+    position: absolute;
+    z-index: 1;
+    padding: 45px 45px 50px;
+  }
+  ${pMedia.xs`
+    .PartnerInline {
+      padding: 20px 15px 20px;
+    }
+  `}
 `
 const HeaderText = Div.extend`
   position: relative;
@@ -224,7 +212,7 @@ const HeaderText = Div.extend`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = Div.extend`
+const FeatureImage = DivWithProps`
   position: absolute;
   background-image: url(${props => (props.src ? props.src : "")});
   background-size: cover;
@@ -245,41 +233,10 @@ const FeatureVideoContainer = Div.extend`
   position: absolute;
   overflow: hidden;
 `
-const SuperArticleLogos = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-  padding: 45px 45px 50px;
-  ${pMedia.xs`
-    padding: 20px 15px 20px;
-  `}
-`
-const SuperArticlePartnerLogo = styled.div`
-  display: flex;
-  align-items: center;
-  padding-bottom: 15px;
-  margin-top: 16px;
-  ${pMedia.xs`
-    padding-bottom: 10px;
-    margin-top: 11px;
-  `}
-`
-
-const SuperArticleLogoDivider = styled.div`
-  transform: rotate(45deg);
-  margin: 0 20px;
-  ${pMedia.xs`
-    margin: 0 10px;
-  `}
-`
 const Image = styled.img`
   width: 100%;
   height: auto;
   box-sizing: border-box;
-`
-const Video = styled.video`
-  width: 100%;
 `
 const TextAsset = styled.div`
   width: 100%;
@@ -300,7 +257,7 @@ const SubHeader = styled.div`
 const Title = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 75px;
-  letter-spaceing: -0.035em;
+  letter-spacing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
   `}
@@ -321,7 +278,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `}
 `
-const FeatureHeaderContainer = Div.extend`
+const FeatureHeaderContainer = DivWithProps`
   width: 100%;
   height: ${props => props.height};
   position: relative;

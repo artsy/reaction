@@ -27,13 +27,16 @@ exports[`renders the partner inline 1`] = `
 
 .c0 img {
   max-height: 32px;
-  margin-left: 10px;
   vertical-align: middle;
 }
 
 .c0 .c1 {
   margin: 0;
   vertical-align: middle;
+}
+
+.c0 .IconPlus {
+  margin: 0 20px;
 }
 
 @media (max-width:900px) {
@@ -51,6 +54,10 @@ exports[`renders the partner inline 1`] = `
   .c0 .c1 {
     font-size: 24px;
   }
+
+  .c0 .IconPlus {
+    margin: 0 15px;
+  }
 }
 
 <div
@@ -67,10 +74,10 @@ exports[`renders the partner inline 1`] = `
     </div>
   </a>
   <svg
-    className="c3"
+    className="IconPlus c3"
     style={
       Object {
-        "margin": "0 0 0 10px",
+        "margin": undefined,
       }
     }
     version="1.1"
@@ -84,7 +91,7 @@ exports[`renders the partner inline 1`] = `
       strokeWidth="2"
     >
       <g
-        fill="#000000"
+        fill="black"
         transform="translate(-101.000000, -18.000000)"
       >
         <g

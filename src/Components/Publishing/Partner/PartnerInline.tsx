@@ -7,6 +7,7 @@ import Icon from '../../Icon'
 import { IconPlus } from '../Icon/IconPlus'
 
 interface Props {
+  color?: string
   logo: string
   url: string
   tracking?: any
@@ -37,18 +38,18 @@ export class PartnerInline extends React.Component<Props, null> {
   }
 
   render() {
-    const { logo, url } = this.props 
+    const { color, logo, url } = this.props
 
     return (
       <PartnerInlineContainer className='PartnerInline'>
         <a href='/'>
           <Icon
             name="logotype"
-            color="black"
+            color={color ? color : "black"}
             fontSize="32px"
           />
         </a>
-        {logo && <IconPlus margin="0 0 0 10px" />}
+        {logo && <IconPlus color={color} />}
         {logo &&
           <a
             href={url}
@@ -68,12 +69,14 @@ const PartnerInlineContainer = styled.div`
   align-items: center;
   img {
     max-height: 32px;
-    margin-left 10px;
     vertical-align: middle;
   }
   ${Icon} {
     margin: 0;
     vertical-align: middle;
+  }
+  .IconPlus {
+    margin: 0 20px;
   }
   ${pMedia.sm`
     img {
@@ -81,6 +84,9 @@ const PartnerInlineContainer = styled.div`
     }
     ${Icon} {
       font-size: 24px;
+    }
+    .IconPlus {
+      margin: 0 15px;
     }
   `}
 `
