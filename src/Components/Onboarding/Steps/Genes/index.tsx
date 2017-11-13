@@ -58,6 +58,7 @@ export default class Genes extends React.Component<StepProps, State> {
             onPaste={this.searchTextChanged.bind(this)}
             onCut={this.searchTextChanged.bind(this)}
             value={this.state.inputText}
+            autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
           {<GeneList searchQuery={this.state.inputText} />}
