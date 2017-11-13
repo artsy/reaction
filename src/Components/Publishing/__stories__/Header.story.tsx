@@ -8,6 +8,7 @@ import {
   BasicArticle,
   ClassicArticle,
   FeatureArticle,
+  MissingVerticalStandardArticle,
   StandardArticle,
   SuperArticle
 } from "../Fixtures/Articles"
@@ -35,7 +36,7 @@ storiesOf("Publishing/Headers", module)
           <Header article={StandardArticle} />
         </div>
         <div style={{ width: "100%", height: "400px", position: "relative" }}>
-          <Header article={StandardArticle}>
+          <Header article={MissingVerticalStandardArticle}>
             <div>Child 0: Vertical</div>
             <div>Child 1: Title</div>
           </Header>
