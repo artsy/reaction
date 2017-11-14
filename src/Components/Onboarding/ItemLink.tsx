@@ -48,7 +48,7 @@ interface Props extends React.HTMLProps<HTMLAnchorElement> {
   id: string
   _id: string
   name: string
-  image_url
+  image_url: string
 }
 
 export default class ItemLink extends React.Component<Props, State> {

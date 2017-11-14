@@ -9,7 +9,6 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
-  value?: string
 }
 
 interface InputState {
@@ -17,18 +16,21 @@ interface InputState {
 }
 
 const StyledInput = styled.input`
-  ${borderedInput} ${block(24)};
+  ${borderedInput};
+  ${block(24)};
 `
 
 const BorderlessInput = styled.input`
   border: 0;
-  ${fonts.secondary.style} font-size: 17px;
+  ${fonts.secondary.style};
+  font-size: 17px;
   outline: none;
   flex: 1;
 `
 
 const StyledDiv = styled.div`
-  ${borderedInput} border: 0;
+  ${borderedInput};
+  border: 0;
   padding: 12px;
   margin-right: 0;
   display: flex;
@@ -36,7 +38,8 @@ const StyledDiv = styled.div`
 
   & .border-container {
     z-index: -1;
-    ${border} position: absolute;
+    ${border};
+    position: absolute;
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     top: 0;
@@ -74,8 +77,7 @@ class Input extends React.Component<InputProps, InputState> {
 
   render() {
     if (this.props.leftView && this.props.rightView) {
-      const newProps: any = { ...this.props }
-      delete newProps.className
+      const { className, ref, ...newProps } = this.props
 
       return (
         <StyledDiv>
@@ -91,8 +93,7 @@ class Input extends React.Component<InputProps, InputState> {
         </StyledDiv>
       )
     } else if (this.props.rightView) {
-      const newProps: any = { ...this.props }
-      delete newProps.className
+      const { className, ref, ...newProps } = this.props
 
       return (
         <StyledDiv>
@@ -107,8 +108,7 @@ class Input extends React.Component<InputProps, InputState> {
         </StyledDiv>
       )
     } else if (this.props.leftView) {
-      const newProps: any = { ...this.props }
-      delete newProps.className
+      const { className, ref, ...newProps } = this.props
 
       return (
         <StyledDiv>

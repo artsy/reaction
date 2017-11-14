@@ -11,7 +11,6 @@ export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   color?: string
   fontSize?: string
   style?: any
-  onClick?: any
 }
 
 const Icon: React.SFC<IconProps> = props => (
