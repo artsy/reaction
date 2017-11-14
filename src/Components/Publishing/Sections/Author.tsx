@@ -76,7 +76,6 @@ const Twitter = styled.span`
   margin-left: 20px;
 `
 const TwitterHandle = styled.a`
-  ${Fonts.unica("s16", "medium")}
   color: black;
   text-decoration: none;
   white-space: nowrap;
@@ -84,7 +83,4 @@ const TwitterHandle = styled.a`
     vertical-align: middle;
     margin: 0px;
   }
-  ${pMedia.xs`
-    ${Fonts.unica("s14", "medium")}
-  `}
 `

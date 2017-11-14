@@ -10,8 +10,8 @@ exports[`renders properly 1`] = `
 }
 
 .c2 {
-  min-width: 70px;
-  min-height: 70px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9vcX6FR21rKHatmvJ8K0sg%252FAbigail.jpg&width=200&quality=95) no-repeat center center;
   background-size: cover;
@@ -19,8 +19,8 @@ exports[`renders properly 1`] = `
 }
 
 .c8 {
-  min-width: 70px;
-  min-height: 70px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fmolly_01.jpg&width=200&quality=95) no-repeat center center;
   background-size: cover;
@@ -41,10 +41,10 @@ exports[`renders properly 1`] = `
 
 .c3 {
   display: block;
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
+  font-size: 16px;
+  line-height: 1.1em;
 }
 
 .c3 a {
@@ -56,10 +56,6 @@ exports[`renders properly 1`] = `
 }
 
 .c5 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
   color: black;
   text-decoration: none;
   white-space: nowrap;
@@ -96,18 +92,9 @@ exports[`renders properly 1`] = `
 
 @media (max-width:600px) {
   .c3 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 17px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4em;
   }
 }
