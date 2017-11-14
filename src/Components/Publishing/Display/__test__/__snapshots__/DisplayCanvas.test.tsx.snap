@@ -334,8 +334,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
@@ -724,8 +724,8 @@ exports[`renders the canvas in standard layout with image 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
@@ -1027,8 +1027,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
