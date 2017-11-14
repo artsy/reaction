@@ -46,8 +46,8 @@ interface ProfileImageProps extends React.HTMLProps<HTMLDivElement> {
 const Div: StyledFunction<ProfileImageProps> = styled.div
 
 const ProfileImage = Div`
-  min-width: 70px;
-  min-height: 70px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
@@ -64,19 +64,18 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${Fonts.garamond("s23")}
+  ${Fonts.unica("s16", "medium")}
   a {
     color: black;
   }
   ${pMedia.xs`
-    ${Fonts.garamond("s17")}
+    ${Fonts.unica("s14", "medium")}
   `}
 `
 const Twitter = styled.span`
   margin-left: 20px;
 `
 const TwitterHandle = styled.a`
-  ${Fonts.unica("s14", "medium")}
   color: black;
   text-decoration: none;
   white-space: nowrap;
@@ -84,7 +83,4 @@ const TwitterHandle = styled.a`
     vertical-align: middle;
     margin: 0px;
   }
-  ${pMedia.xs`
-    ${Fonts.unica("s12", "medium")}
-  `}
 `
