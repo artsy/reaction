@@ -16,7 +16,7 @@ describe('resizer', () => {
       const url = crop('https://media.artsy.net/img.jpg', {
         width: 100,
         height: 100,
-        isDisplay: true
+        isDisplayAd: true
       })
       expect(url).toMatch('de5y2r7wr8mpb')
       expect(url).toMatch('&width=100&height=100&quality=95')
@@ -45,7 +45,7 @@ describe('resizer', () => {
     it('uses display url when passed as an option', () => {
       const url = resize('https://media.artsy.net/img.jpg', {
         width: 100,
-        isDisplay: true
+        isDisplayAd: true
       })
       expect(url).toMatch('de5y2r7wr8mpb')
       expect(url).toMatch('&width=100&quality=95')

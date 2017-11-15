@@ -12,9 +12,9 @@ export const crop = (src: string, options: {
   width: number,
   height: number,
   quality?: number,
-  isDisplay?: boolean
+  isDisplayAd?: boolean
 }) => {
-  const { width, height, quality, isDisplay } = options
+  const { width, height, quality, isDisplayAd } = options
 
   if (!width && !height) {
     warn("requires width and height")
@@ -35,7 +35,7 @@ export const crop = (src: string, options: {
     quality: quality || 95,
   }
 
-  const url = isDisplay ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
   return [url, qs.stringify(config)].join("?")
 }
 
@@ -43,9 +43,9 @@ export const resize = (src: string, options: {
   width?: number,
   height?: number,
   quality?: number,
-  isDisplay?: boolean
+  isDisplayAd?: boolean
 }) => {
-  const { width, height, quality, isDisplay } = options
+  const { width, height, quality, isDisplayAd } = options
 
   let resizeTo
   if (width && !height) {
@@ -64,6 +64,6 @@ export const resize = (src: string, options: {
     quality: quality || 95,
   }
 
-  const url = isDisplay ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
   return [url, qs.stringify(config)].join("?")
 }
