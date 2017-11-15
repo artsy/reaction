@@ -1,5 +1,6 @@
 import qs from "qs"
 const GEMINI_CLOUDFRONT_URL = "https://d7hftxdivxxvm.cloudfront.net"
+const GEMINI_DISPLAY_CLOUDFRONT_URL = "https://de5y2r7wr8mpb.cloudfront.net"
 
 const warn = message => {
   if (process.env.NODE_ENV === "development") {
@@ -7,8 +8,13 @@ const warn = message => {
   }
 }
 
-export const crop = (src: string, options: { width: number; height: number; quality?: number }) => {
-  const { width, height, quality } = options
+export const crop = (src: string, options: {
+  width: number,
+  height: number,
+  quality?: number,
+  isDisplayAd?: boolean
+}) => {
+  const { width, height, quality, isDisplayAd } = options
 
   if (!width && !height) {
     warn("requires width and height")
@@ -29,11 +35,17 @@ export const crop = (src: string, options: { width: number; height: number; qual
     quality: quality || 95,
   }
 
-  return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
+  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  return [url, qs.stringify(config)].join("?")
 }
 
-export const resize = (src: string, options: { width?: number; height?: number; quality?: number }) => {
-  const { width, height, quality } = options
+export const resize = (src: string, options: {
+  width?: number,
+  height?: number,
+  quality?: number,
+  isDisplayAd?: boolean
+}) => {
+  const { width, height, quality, isDisplayAd } = options
 
   let resizeTo
   if (width && !height) {
@@ -52,5 +64,6 @@ export const resize = (src: string, options: { width?: number; height?: number; 
     quality: quality || 95,
   }
 
-  return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
+  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  return [url, qs.stringify(config)].join("?")
 }

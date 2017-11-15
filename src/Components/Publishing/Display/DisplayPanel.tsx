@@ -334,9 +334,9 @@ export class DisplayPanel extends Component<Props, State> {
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const cover = unit.cover_image_url || ""
-    const imageUrl = crop(url, { width: 680, height: 284 })
-    const hoverImageUrl = resize(unit.logo, { width: 680 })
-    const coverUrl = crop(cover, { width: 680, height: 284 })
+    const imageUrl = crop(url, { width: 680, height: 284, isDisplayAd: true })
+    const hoverImageUrl = resize(unit.logo, { width: 680, isDisplayAd: true })
+    const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
 
     return (
       <Wrapper

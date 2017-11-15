@@ -78,7 +78,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
     return unit.assets.map((image, i) => {
       const renderTitleCard = i === 0 && containerWidth >= 900
-      const imageSrc = crop(image.url, { width: 780, height: 460 })
+      const imageSrc = crop(image.url, { width: 780, height: 460, isDisplayAd: true })
       const caption = image.caption || ''
 
       return (
