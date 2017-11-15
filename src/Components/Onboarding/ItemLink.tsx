@@ -78,7 +78,15 @@ export default class ItemLink extends React.Component<Props, State> {
         fadeOut={this.state.fadeOut}
         item_id={this.props.id}
       >
-        <Col>{<Avatar src={this.props.image_url ? this.props.image_url : ""} width={50} height={50} />}</Col>
+        <Col>
+          {
+            <Avatar
+              src={this.props.image_url ? this.props.image_url : "https://www.artsy.net/images/icon-70.png"}
+              width={50}
+              height={50}
+            />
+          }
+        </Col>
         <FullWidthCol>{this.props.name}</FullWidthCol>
         <Col>
           <Icon name="follow-circle" color="black" fontSize="39px" />
