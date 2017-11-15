@@ -137,7 +137,8 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
             : <Image
                 src={crop(asset.url, {
                   width: 1200,
-                  height: 760
+                  height: 760,
+                  isDisplay: true
                 })}
               />}
 
