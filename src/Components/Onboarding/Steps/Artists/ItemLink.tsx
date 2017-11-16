@@ -102,7 +102,17 @@ class ItemLink extends React.Component<Props, State> {
         artist_id={this.props.artist.id}
       >
         <Col>
-          {<Avatar src={this.props.artist.image ? this.props.artist.image.cropped.url : ""} width={50} height={50} />}
+          {
+            <Avatar
+              src={
+                this.props.artist.image
+                  ? this.props.artist.image.cropped.url
+                  : "https://www.artsy.net/images/icon-70.png"
+              }
+              width={50}
+              height={50}
+            />
+          }
         </Col>
         <FullWidthCol>{this.props.artist.name}</FullWidthCol>
         <Col>

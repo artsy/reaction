@@ -102,18 +102,16 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   render() {
-    const options = this.options.map((text, index) =>
+    const options = this.options.map((text, index) => (
       <SelectableLink key={index} text={text} onSelect={this.onOptionSelected.bind(this, index)} />
-    )
+    ))
     return (
       <Layout
         title="Get started on Artsy, what are you most interested in doing?"
         subtitle="Select all that apply"
         onNextButtonPressed={this.state.selectedCount > 0 && this.submit.bind(this)}
       >
-        <OptionsContainer>
-          {options}
-        </OptionsContainer>
+        <OptionsContainer>{options}</OptionsContainer>
       </Layout>
     )
   }

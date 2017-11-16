@@ -3097,6 +3097,7 @@ exports[`feature renders superArticle full header properly 1`] = `
       >
         <div
           className="c6"
+          onClick={undefined}
           style={undefined}
         >
           
@@ -3107,6 +3108,7 @@ exports[`feature renders superArticle full header properly 1`] = `
       >
         <div
           className="c8"
+          onClick={undefined}
           style={undefined}
         >
           
