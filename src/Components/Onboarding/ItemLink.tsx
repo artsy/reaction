@@ -1,7 +1,6 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 
-import { fadeIn, fadeOut } from "../../Assets/Animations"
 import * as fonts from "../../Assets/Fonts"
 
 import Icon from "../Icon"
@@ -18,8 +17,6 @@ const Link = anchor`
   &:hover {
     background-color: #f8f8f8;
   }
-  ${props => (props.fadeIn ? fadeIn : null)}
-  ${props => (props.fadeOut ? fadeOut : null)}
 `
 
 const Avatar = styled.img`
@@ -37,12 +34,6 @@ const Col = styled.div`
   align-items: center;
 `
 
-export interface State {
-  fadeIn: boolean
-  fadeOut: boolean
-  item_id: string
-}
-
 interface Props extends React.HTMLProps<HTMLAnchorElement> {
   item?: any
   id: string
@@ -51,13 +42,7 @@ interface Props extends React.HTMLProps<HTMLAnchorElement> {
   image_url: string
 }
 
-export default class ItemLink extends React.Component<Props, State> {
-  state = {
-    fadeIn: false,
-    fadeOut: false,
-    item_id: this.props.id,
-  }
-
+export default class ItemLink extends React.Component<Props, null> {
   followItem() {
     return null
   }
@@ -72,12 +57,7 @@ export default class ItemLink extends React.Component<Props, State> {
 
   render() {
     return (
-      <Link
-        onClick={this.onClick.bind(this)}
-        fadeIn={this.state.fadeIn}
-        fadeOut={this.state.fadeOut}
-        item_id={this.props.id}
-      >
+      <Link onClick={this.onClick.bind(this)}>
         <Col>
           {
             <Avatar
