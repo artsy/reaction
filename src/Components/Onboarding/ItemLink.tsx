@@ -5,7 +5,7 @@ import * as fonts from "../../Assets/Fonts"
 
 import Icon from "../Icon"
 
-const anchor: StyledFunction<State & React.HTMLProps<HTMLInputElement>> = styled.a
+const anchor: StyledFunction<React.HTMLProps<HTMLInputElement>> = styled.a
 const Link = anchor`
   display: flex;
   font-size: 14px;
