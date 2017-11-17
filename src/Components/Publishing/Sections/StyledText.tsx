@@ -5,6 +5,7 @@ import { Fonts } from "../Fonts"
 import { Layout } from "../Typings"
 
 interface StyledTextProps {
+  isContentStart: boolean
   layout: Layout
   postscript?: Boolean
 }
@@ -111,13 +112,16 @@ export const StyledText = div`
     margin: 0;
     word-break: break-word;
   }
-  .content-start {
-    ${Fonts.unica("s67", "medium")}
-    float: left;
-    line-height: .5em;
-    margin-right: 10px;
-    margin-top: .298em;
-    text-transform: uppercase;
+  p:first-child:first-letter {
+    ${props => props.isContentStart && `
+      ${Fonts.unica("s67", "medium")}
+      float: left;
+      float: left;
+      line-height: .5em;
+      margin-right: 10px;
+      margin-top: .298em;
+      text-transform: uppercase;
+  `}
   }
   .content-end {
     display: inline-block;
