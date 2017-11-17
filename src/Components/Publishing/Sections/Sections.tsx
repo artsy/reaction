@@ -115,7 +115,25 @@ export class Sections extends Component<Props, State> {
     }
   }
 
-  getSection(section) {
+  getContentStartIndex = () => {
+    const {
+      article: {
+        layout,
+        sections
+      }
+    } = this.props
+
+    if (layout === 'feature') {
+      const firstText = sections.findIndex(
+        (section) => {
+          return section.type === 'text'
+        }
+      )
+      return firstText
+    }
+  }
+
+  getSection(section, index) {
     const sections = {
       image_collection: (
         <ImageCollection
@@ -132,7 +150,11 @@ export class Sections extends Component<Props, State> {
       embed:
         <Embed section={section} />,
       text:
-        <Text html={section.body} layout={this.props.article.layout} />,
+        <Text
+          html={section.body}
+          layout={this.props.article.layout}
+          isContentStart={index === this.getContentStartIndex()}
+        />,
       default:
         false
     }
@@ -163,7 +185,7 @@ export class Sections extends Component<Props, State> {
         }
       }
 
-      const child = this.getSection(section)
+      const child = this.getSection(section, index)
 
       if (child) {
         return (

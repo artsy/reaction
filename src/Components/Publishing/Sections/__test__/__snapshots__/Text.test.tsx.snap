@@ -136,18 +136,6 @@ exports[`renders classic text properly 1`] = `
   word-break: break-word;
 }
 
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
-}
-
 .c0 .content-end {
   display: inline-block;
   content: "";
@@ -394,18 +382,6 @@ exports[`renders feature text properly 1`] = `
   word-break: break-word;
 }
 
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
-}
-
 .c0 .content-end {
   display: inline-block;
   content: "";
@@ -649,18 +625,6 @@ exports[`renders standard text properly 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
-}
-
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
 }
 
 .c0 .content-end {
