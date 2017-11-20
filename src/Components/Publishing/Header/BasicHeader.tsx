@@ -217,10 +217,8 @@ const Title = styled.div`
   ${Fonts.unica("s80", "regular")}
   line-height: 1.1em;
   letter-spacing: -0.035em;
-  margin-bottom: 27px;
   max-width: 1250px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 27px auto;
   ${breakpoint.md`
     font-size: 60px;
   `}
