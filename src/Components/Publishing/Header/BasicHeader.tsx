@@ -218,7 +218,9 @@ const Title = styled.div`
   line-height: 1.1em;
   letter-spacing: -0.035em;
   margin-bottom: 27px;
-
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
   ${breakpoint.md`
     font-size: 60px;
   `}
