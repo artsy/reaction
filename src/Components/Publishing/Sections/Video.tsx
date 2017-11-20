@@ -213,6 +213,7 @@ export const CoverImage = Div`
   position: absolute;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
+  cursor: pointer;
 `
 
 const sizeMeOptions = {

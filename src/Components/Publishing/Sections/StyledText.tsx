@@ -113,9 +113,8 @@ export const StyledText = div`
     word-break: break-word;
   }
   p:first-child:first-letter {
+    ${props => props.isContentStart && Fonts.unica("s67", "medium")}
     ${props => props.isContentStart && `
-      ${Fonts.unica("s67", "medium")}
-      float: left;
       float: left;
       line-height: .5em;
       margin-right: 10px;
