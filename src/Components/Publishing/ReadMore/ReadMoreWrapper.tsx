@@ -77,7 +77,7 @@ export class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadM
   }
 
   getOverflow = () => {
-    return this.props.isTruncated ? "hidden" : "unset"
+    return this.props.isTruncated ? "hidden" : "auto"
   }
 
   render() {
