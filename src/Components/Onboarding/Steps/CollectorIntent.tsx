@@ -33,6 +33,15 @@ class CollectorIntent extends React.Component<Props, State> {
     "read art market news",
   ]
 
+  intentEnum = {
+    "buy art & design": "BUY_ART_AND_DESIGN",
+    "sell art & design": "SELL_ART_AND_DESIGN",
+    "research art prices": "RESEARCH_ART_PRICES",
+    "learn about art": "LEARN_ABOUT_ART",
+    "find out about new exhibitions": "FIND_ART_EXHIBITS",
+    "read art market news": "READ_ART_MARKET_NEWS",
+  }
+
   constructor(props) {
     super(props)
 
@@ -58,8 +67,12 @@ class CollectorIntent extends React.Component<Props, State> {
 
   submit() {
     const keys = Object.keys(this.state.selectedOptions)
-    const intents = keys.filter(key => {
+    const intentOptions = keys.filter(key => {
       return this.state.selectedOptions[key]
+    })
+
+    const intents = intentOptions.map(intent => {
+      return this.intentEnum[intent]
     })
 
     commitMutation(this.props.relayEnvironment, {
@@ -72,7 +85,7 @@ class CollectorIntent extends React.Component<Props, State> {
       `,
       variables: {
         input: {
-          intents: { intents },
+          intents,
         },
       },
     })
