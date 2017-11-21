@@ -1,4 +1,5 @@
 import * as React from "react"
+import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { ContextConsumer, ContextProps } from "../../Artsy"
@@ -24,13 +25,22 @@ interface State {
 
 class CollectorIntent extends React.Component<Props, State> {
   options = [
-    "Buy Art & Design",
-    "Sell Art & Design",
-    "Research Art Prices",
-    "Learn About Art",
-    "Find Out About New Exhibitions",
-    "Read Art Market News",
+    "buy art & design",
+    "sell art & design",
+    "research art prices",
+    "learn about art",
+    "find out about new exhibitions",
+    "read art market news",
   ]
+
+  intentEnum = {
+    "buy art & design": "BUY_ART_AND_DESIGN",
+    "sell art & design": "SELL_ART_AND_DESIGN",
+    "research art prices": "RESEARCH_ART_PRICES",
+    "learn about art": "LEARN_ABOUT_ART",
+    "find out about new exhibitions": "FIND_ART_EXHIBITS",
+    "read art market news": "READ_ART_MARKET_NEWS",
+  }
 
   constructor(props) {
     super(props)
@@ -56,49 +66,29 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   submit() {
-    // const keys = Object.keys(this.state.selectedOptions)
-    // const intents = keys.filter(key => {
-    //   return this.state.selectedOptions[key]
-    // })
-    // console.log("intents:", intents)
-    // const options: RequestInit = {
-    //   method: "PUT",
-    //   credentials: "same-origin",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     "X-Requested-With": "XMLHttpRequest",
-    //     "X-Access-Token": this.props.currentUser.accessToken,
-    //   },
-    //   body: JSON.stringify({
-    //     intents: JSON.stringify(intents),
-    //   }),
-    // }
-    // This should eventually be the collector id that is available on the props.
-    // I'm thinking the endpoint should also move into some sort of sd object.
-    // fetch(`https://api.artsy.net/api/v1/collector_profile/${this.props.currentUser.id}`, options)
-    //   .then(res => {
-    //     if (res.status >= 500) {
-    //       throw new Error(`Failed with status ${res.status}`)
-    //     } else if (res.status === 200) {
-    //       window.analytics.track("Completed collector intent question")
-    //       this.props.onNextButtonPressed()
-    //     } else {
-    //       // I'm also thinking the we should also handle the error differently, but
-    //       // I'm not super clear what the error behavior should be yet.
-    //       this.setState({
-    //         error: "Invalid email or password",
-    //       })
-    //     }
-    //   })
-    //   .catch(err => {
-    //     if (process.env.NODE_ENV !== "test") {
-    //       console.error(err)
-    //     }
-    //     this.setState({
-    //       error: "Internal Error. Please contact support@artsy.net",
-    //     })
-    //   })
+    const keys = Object.keys(this.state.selectedOptions)
+    const intentOptions = keys.filter(key => {
+      return this.state.selectedOptions[key]
+    })
+
+    const intents = intentOptions.map(intent => {
+      return this.intentEnum[intent]
+    })
+
+    commitMutation(this.props.relayEnvironment, {
+      mutation: graphql`
+        mutation CollectorIntentUpdateCollectorProfileMutation($input: UpdateCollectorProfileInput!) {
+          updateCollectorProfile(input: $input) {
+            intents
+          }
+        }
+      `,
+      variables: {
+        input: {
+          intents,
+        },
+      },
+    })
   }
 
   render() {
