@@ -16,7 +16,7 @@ const OptionsContainer = styled.div`
 `
 
 interface State {
-  selection: number
+  selection: number | null
 }
 
 class Budget extends React.Component<StepProps & ContextProps, State> {
@@ -30,12 +30,8 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
     "NO BUDGET IN MIND": 1000000000000,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      selection: null,
-    }
+  state = {
+    selection: null,
   }
 
   onOptionSelected = (index: number) => {
