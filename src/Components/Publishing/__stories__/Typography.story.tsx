@@ -1,6 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
+import { IconArtist } from "../Icon/IconArtist"
+import { IconBlockquote } from "../Icon/IconBlockquote"
+import { IconClearFormatting } from "../Icon/IconClearFormatting"
 import { IconEditEmbed } from "../Icon/IconEditEmbed"
 import { IconEditImages } from "../Icon/IconEditImages"
 import { IconEditSection } from "../Icon/IconEditSection"
@@ -14,11 +17,14 @@ import { IconImageSet } from "../Icon/IconImageSet"
 import { IconLayoutFullscreen } from "../Icon/IconLayoutFullscreen"
 import { IconLayoutSplit } from "../Icon/IconLayoutSplit"
 import { IconLayoutText } from "../Icon/IconLayoutText"
+import { IconLink } from "../Icon/IconLink"
+import { IconOrderedList } from "../Icon/IconOrderedList"
 import { IconPlus } from "../Icon/IconPlus"
 import { IconRemove } from "../Icon/IconRemove"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
+import { IconUnorderedList } from "../Icon/IconUnorderedList"
 import { Typography } from "./TypographyExamples"
 
 storiesOf("Publishing/Typography", module)
@@ -100,6 +106,30 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconSocialFacebook />
           <p>Facebook</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconArtist />
+          <p>Artist</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconBlockquote />
+          <p>Blockquote</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconClearFormatting />
+          <p>Clear Formatting</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconLink />
+          <p>Link</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconOrderedList />
+          <p>Ordered List</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconUnorderedList />
+          <p>Unordered List</p>
         </div>
       </div>
     )
