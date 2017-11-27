@@ -4,6 +4,7 @@ import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Byline } from '../Byline/Byline'
 import { Fonts } from "../Fonts"
+import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
 interface Props {
   article?: any,
@@ -42,7 +43,7 @@ export class ArticleCard extends Component<Props, null> {
         <ImageContainer>
           <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
           {video &&
-            <VideoPlay />
+            <VideoPlay><IconPlayCaret color={color} /></VideoPlay>
           }
         </ImageContainer>
 
@@ -133,12 +134,8 @@ const VideoPlay = Div`
   position: absolute;
   left: 20px; 
   bottom: 20px;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 40px solid ${props => props.color};
+  width: 40px;
   ${props => pMedia.md`
-    border-top: 22px solid transparent;
-    border-bottom: 22px solid transparent;
-    border-left: 30px solid ${props.color};
+    width: 30px;
   `}
 `
