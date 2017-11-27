@@ -32,7 +32,7 @@ exports[`Byline renders a byline 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 .c3 {
@@ -70,6 +70,7 @@ exports[`Byline renders a byline 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: black;
 }
 
 @media (max-width:720px) {
@@ -114,10 +115,12 @@ exports[`Byline renders a byline 1`] = `
 }
 
 <div
-  className="c0"
+  className="Byline c0"
+  color="black"
 >
   <div
     className="author c1"
+    color="black"
   >
     By 
     Casey Lesser

@@ -6,9 +6,9 @@ import { Byline } from '../Byline/Byline'
 import { Fonts } from "../Fonts"
 
 interface Props {
-  article: any,
+  article?: any,
   color?: string, 
-  series: any
+  series?: any
 }
 
 export class ArticleCard extends Component<Props, null> {

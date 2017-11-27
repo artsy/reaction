@@ -32,7 +32,7 @@ exports[`feature renders feature full header properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #fff;
+  background-color: white;
 }
 
 .c17 {
@@ -70,6 +70,7 @@ exports[`feature renders feature full header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: white;
 }
 
 .c3 {
@@ -428,10 +429,12 @@ exports[`feature renders feature full header properly 1`] = `
           </div>
         </div>
         <div
-          className="c14"
+          className="Byline c14"
+          color="white"
         >
           <div
             className="author c15"
+            color="white"
           >
             By 
             Casey Lesser
@@ -561,7 +564,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #fff;
+  background-color: white;
 }
 
 .c15 {
@@ -599,6 +602,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: white;
 }
 
 .c3 {
@@ -928,10 +932,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
         className="c10 c11"
       >
         <div
-          className="c12"
+          className="Byline c12"
+          color="white"
         >
           <div
             className="author c13"
+            color="white"
           >
             By 
             Casey Lesser
@@ -1061,7 +1067,7 @@ exports[`feature renders feature header with children properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #fff;
+  background-color: white;
 }
 
 .c17 {
@@ -1099,6 +1105,7 @@ exports[`feature renders feature header with children properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: white;
 }
 
 .c3 {
@@ -1465,10 +1472,12 @@ exports[`feature renders feature header with children properly 1`] = `
           </div>
         </div>
         <div
-          className="c14"
+          className="Byline c14"
+          color="white"
         >
           <div
             className="author c15"
+            color="white"
           >
             By 
             Casey Lesser
@@ -1598,7 +1607,7 @@ exports[`feature renders feature split header properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 .c16 {
@@ -1636,6 +1645,7 @@ exports[`feature renders feature split header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: black;
 }
 
 .c6 {
@@ -1981,10 +1991,12 @@ exports[`feature renders feature split header properly 1`] = `
           </div>
         </div>
         <div
-          className="c13"
+          className="Byline c13"
+          color="black"
         >
           <div
             className="author c14"
+            color="black"
           >
             By 
             Casey Lesser
@@ -2114,7 +2126,7 @@ exports[`feature renders feature text header properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 .c14 {
@@ -2152,6 +2164,7 @@ exports[`feature renders feature text header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: black;
 }
 
 .c4 {
@@ -2491,10 +2504,12 @@ exports[`feature renders feature text header properly 1`] = `
           </div>
         </div>
         <div
-          className="c11"
+          className="Byline c11"
+          color="black"
         >
           <div
             className="author c12"
+            color="black"
           >
             By 
             Casey Lesser
@@ -2633,7 +2648,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #fff;
+  background-color: white;
 }
 
 .c21 {
@@ -2671,6 +2686,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: white;
 }
 
 .c7 {
@@ -3152,10 +3168,12 @@ exports[`feature renders superArticle full header properly 1`] = `
           </div>
         </div>
         <div
-          className="c18"
+          className="Byline c18"
+          color="white"
         >
           <div
             className="author c19"
+            color="white"
           >
             By 
             Casey Lesser

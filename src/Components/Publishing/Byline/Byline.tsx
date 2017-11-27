@@ -11,7 +11,6 @@ interface BylineProps {
 }
 
 interface BylineContainerProps {
-  layout: string
   color: string
 }
 
@@ -26,7 +25,7 @@ export const Byline: React.SFC<BylineProps> = props => {
   // TODO: Replace `authors` with `contributing_authors` when ready. Also in
   // <BasicHeader />
   return (
-    <BylineContainer className="Byline" layout={layout} color={textColor}>
+    <BylineContainer className="Byline" color={textColor}>
       <Author
         authors={contributing_authors}
         color={textColor}
@@ -53,7 +52,8 @@ Byline.defaultProps = {
   color: 'black'
 }
 
-const Div: StyledFunction<BylineContainerProps> = styled.div
+const Div: StyledFunction<BylineContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
 const BylineContainer = Div`
   display: flex;
   flex-wrap: wrap;
