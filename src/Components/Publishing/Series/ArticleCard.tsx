@@ -1,6 +1,7 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
+import { pMedia } from "../../Helpers"
 import { Byline } from '../Byline/Byline'
 import { Fonts } from "../Fonts"
 
@@ -64,6 +65,10 @@ const ArticleCardContainer = A`
   text-decoration: none;
   padding: 30px;
   display: flex;
+  ${props => pMedia.md`
+    flex-direction: column-reverse;
+    padding: 20px;
+  `}
 `
 
 const TextContainer = styled.div`
@@ -75,11 +80,18 @@ const TextContainer = styled.div`
   .author, .date {
     ${Fonts.unica("s16", "medium")}
   }
+  ${props => pMedia.md`
+    width: 100%;
+    margin-bottom: 0;
+  `}
 `
 
 const Title = styled.div`
   ${Fonts.unica("s45")}
   margin-bottom: 30px;
+  ${props => pMedia.md`
+    ${Fonts.unica("s32")}
+  `}
 `
 
 const Header = styled.div`
@@ -92,6 +104,10 @@ const Header = styled.div`
 `
 const Description = styled.div`
   ${Fonts.garamond("s23")}
+  ${props => pMedia.md`
+    ${Fonts.garamond("s19")}
+    margin-bottom: 20px;
+  `}
 `
 
 const ImageContainer = styled.div`
@@ -99,6 +115,11 @@ const ImageContainer = styled.div`
   width: 50%;
   height: 100%;
   margin-left: 30px;
+  ${props => pMedia.md`
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  `}
 `
 
 const Image = styled.img`
@@ -109,10 +130,15 @@ const Image = styled.img`
 `
 
 const VideoPlay = Div`
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid ${props => props.color};
   position: absolute;
   left: 20px; 
   bottom: 20px;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 40px solid ${props => props.color};
+  ${props => pMedia.md`
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 30px solid ${props.color};
+  `}
 `
