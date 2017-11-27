@@ -1,0 +1,118 @@
+import React, { Component  } from "react"
+import styled, { StyledFunction } from "styled-components"
+import { crop } from "../../../Utils/resizer"
+import { Byline } from '../Byline/Byline'
+import { Fonts } from "../Fonts"
+
+interface Props {
+  article: any,
+  color?: string, 
+  series: any
+}
+
+export class ArticleCard extends Component<Props, null> {
+  public static defaultProps: Partial<Props>
+
+  render () {
+    const { article, color, series } = this.props
+    const { video } = article
+
+    return (
+      <ArticleCardContainer href={article.slug} color={color} className="ArticleCard">
+
+        <TextContainer>
+          <div>
+            <Header>
+              <div>{series.title}</div>
+              {video &&
+                <div>{video.length}</div>
+              }
+            </Header>
+            <Title>{article.title}</Title>
+            <Description>{article.description}</Description>
+          </div>
+          <Byline
+            article={article}
+            color={color}
+            layout='condensed'
+          />
+        </TextContainer>
+
+        <ImageContainer>
+          <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
+          {video &&
+            <VideoPlay />
+          }
+        </ImageContainer>
+
+      </ArticleCardContainer>
+    )
+  }
+}
+
+ArticleCard.defaultProps = {
+  color: 'black'
+}
+
+const A: StyledFunction<Props & React.HTMLProps<HTMLLinkElement>> = styled.a
+const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
+
+const ArticleCardContainer = A`
+  display: block;
+  border: 1px solid;
+  color: ${props => props.color};
+  text-decoration: none;
+  padding: 30px;
+  display: flex;
+`
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+  .author, .date {
+    ${Fonts.unica("s16", "medium")}
+  }
+`
+
+const Title = styled.div`
+  ${Fonts.unica("s45")}
+  margin-bottom: 30px;
+`
+
+const Header = styled.div`
+  ${Fonts.unica("s16", "medium")}
+  display: flex;
+  margin-bottom: 10px;
+  div {
+    margin-right: 20px;
+  }
+`
+const Description = styled.div`
+  ${Fonts.garamond("s23")}
+`
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+`
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+`
+
+const VideoPlay = Div`
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid ${props => props.color};
+  position: absolute;
+  left: 20px; 
+  bottom: 20px;
+`

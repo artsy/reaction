@@ -1,16 +1,26 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { VideoCard } from '../Series/VideoCard'
+import { ArticleCard } from '../Series/ArticleCard'
 
 import {
   SeriesArticle,
+  StandardArticle,
   VideoArticle
 } from "../Fixtures/Articles"
 
-storiesOf("Series", module).add("Video Card", () => {
+storiesOf("Publishing/Series", module).add("Article Card", () => {
   return (
     <div>
-      <VideoCard
+      <ArticleCard
+        article={StandardArticle}
+        series={SeriesArticle}
+      />
+    </div>
+  )
+}).add("Article Card: Video", () => {
+  return (
+    <div>
+      <ArticleCard
         article={VideoArticle}
         series={SeriesArticle}
       />
