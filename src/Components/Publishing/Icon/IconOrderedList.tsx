@@ -7,7 +7,7 @@ export class IconOrderedList extends Component<any, null> {
 
   render() {
     return (
-      <svg x="0px" y="0px" viewBox="-297 389.3 15.7 15.7" enable-background="new -297 389.3 15.7 15.7" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg className='IconOrderedList' x="0px" y="0px" viewBox="-297 389.3 15.7 15.7" enable-background="new -297 389.3 15.7 15.7" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g>
           <path d="M-295.7,393.8l0-0.7v-2.9l-1.1,0.5v-0.8l1.4-0.6h0.6v3.8l0,0.7H-295.7z" />
         </g>

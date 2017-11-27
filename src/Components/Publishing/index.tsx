@@ -19,6 +19,9 @@ export { PartnerInline } from "./Partner/PartnerInline"
 export { PartnerBlock } from "./Partner/PartnerBlock"
 
 // Icon SVGs
+export { IconArtist } from "./Icon/IconArtist"
+export { IconBlockquote } from "./Icon/IconBlockquote"
+export { IconClearFormatting } from "./Icon/IconClearFormatting"
 export { IconEditEmbed } from "./Icon/IconEditEmbed"
 export { IconEditImages } from "./Icon/IconEditImages"
 export { IconEditSection } from "./Icon/IconEditSection"
@@ -32,7 +35,11 @@ export { IconLayoutFullscreen } from "./Icon/IconLayoutFullscreen"
 export { IconLayoutSplit } from "./Icon/IconLayoutSplit"
 export { IconLayoutText } from "./Icon/IconLayoutText"
 export { IconLayoutBasic } from "./Icon/IconLayoutBasic"
+export { IconLink } from "./Icon/IconLink"
+export { IconOrderedList } from "./Icon/IconOrderedList"
+export { IconPlayCaret } from "./Icon/IconPlayCaret"
 export { IconRemove } from "./Icon/IconRemove"
+export { IconUnorderedList } from "./Icon/IconUnorderedList"
 
 // Test Fixtures
 import {

@@ -19,6 +19,7 @@ import { IconLayoutSplit } from "../Icon/IconLayoutSplit"
 import { IconLayoutText } from "../Icon/IconLayoutText"
 import { IconLink } from "../Icon/IconLink"
 import { IconOrderedList } from "../Icon/IconOrderedList"
+import { IconPlayCaret } from "../Icon/IconPlayCaret"
 import { IconPlus } from "../Icon/IconPlus"
 import { IconRemove } from "../Icon/IconRemove"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
@@ -58,6 +59,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconLayoutFullscreen />
           <p>Layout Fullscreen</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconPlayCaret />
+          <p>Play Caret</p>
         </div>
         <div style={{ width: 50 }}>
           <IconPlus />
