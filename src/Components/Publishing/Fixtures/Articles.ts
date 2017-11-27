@@ -666,3 +666,33 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
 export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
+
+export const SeriesArticle = {
+  layout: "series",
+  published: true,
+  title: "The Future of Art",
+}
+
+export const VideoArticle = {
+  layout: "video",
+  published: true,
+  title: "Trevor Paglan",
+  id: "594a7e2254c37f00177c0ea9",
+  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/gejssmXDiO3G1pE73phZ3Q%2FArtboard+2%402xef-100.jpg",
+  published_at: "2017-06-29T15:00:00.000Z",
+  slug: "artsy-editorial-path-winning-art-prize",
+  description:
+  "Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.",
+  authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+      bio: "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
+      twitter_handle: "caseylesser",
+    },
+  ],
+  video: {
+    url: '',
+    length: '03:12',
+  },
+}
