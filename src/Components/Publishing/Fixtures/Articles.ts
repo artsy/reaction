@@ -676,8 +676,8 @@ export const SeriesArticle = extend({}, StandardArticle, {
 
 export const VideoArticle = extend({}, StandardArticle, {
   layout: "video",
-  video: {
+  media: {
     url: '',
-    length: '03:12',
+    duration: '03:12',
   },
 })

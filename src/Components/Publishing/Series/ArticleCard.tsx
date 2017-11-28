@@ -17,7 +17,7 @@ export class ArticleCard extends Component<Props, null> {
 
   render () {
     const { article, color, series } = this.props
-    const { video } = article
+    const { media } = article
 
     return (
       <ArticleCardContainer href={article.slug} color={color} className="ArticleCard">
@@ -26,8 +26,8 @@ export class ArticleCard extends Component<Props, null> {
           <div>
             <Header>
               <div>{series.title}</div>
-              {video &&
-                <div>{video.length}</div>
+              {media &&
+                <div>{media.duration}</div>
               }
             </Header>
             <Title>{article.title}</Title>
@@ -42,7 +42,7 @@ export class ArticleCard extends Component<Props, null> {
 
         <ImageContainer>
           <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
-          {video &&
+          {media &&
             <VideoPlay><IconPlayCaret color={color} /></VideoPlay>
           }
         </ImageContainer>
