@@ -1,10 +1,10 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
-import { Byline } from '../Byline/Byline'
-import { Fonts } from "../Fonts"
-import { IconPlayCaret } from '../Icon/IconPlayCaret'
+import { crop } from "../../../../Utils/resizer"
+import { pMedia } from "../../../Helpers"
+import { Byline } from '../../Byline/Byline'
+import { Fonts } from "../../Fonts"
+import { IconPlayCaret } from '../../Icon/IconPlayCaret'
 
 interface Props {
   article?: any,

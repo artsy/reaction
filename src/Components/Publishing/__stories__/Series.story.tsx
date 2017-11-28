@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { ArticleCard } from '../Series/ArticleCard'
-import { SeriesAbout } from '../Series/SeriesAbout'
-import { SeriesTitle } from '../Series/SeriesTitle'
+import { ArticleCard } from '../Series/Components/ArticleCard'
+import { SeriesAbout } from '../Series/Components/SeriesAbout'
+import { SeriesTitle } from '../Series/Components/SeriesTitle'
 
 import {
   SeriesArticle,

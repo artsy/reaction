@@ -1,9 +1,9 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
-import { PartnerBlock } from '../Partner/PartnerBlock'
-import { Text } from '../Sections/Text'
+import { pMedia } from "../../../Helpers"
+import { Fonts } from "../../Fonts"
+import { PartnerBlock } from '../../Partner/PartnerBlock'
+import { Text } from '../../Sections/Text'
 
 interface Props {
   color?: string,

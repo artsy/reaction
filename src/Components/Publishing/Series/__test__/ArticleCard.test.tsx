@@ -2,7 +2,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
-import { ArticleCard } from "../ArticleCard"
+import { ArticleCard } from "../Components/ArticleCard"
 
 it("renders an article properly", () => {
   const articleCard = renderer.create(<ArticleCard article={StandardArticle} series={SeriesArticle} />).toJSON()
