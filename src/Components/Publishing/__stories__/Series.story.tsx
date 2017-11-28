@@ -3,6 +3,7 @@ import React from "react"
 import { ArticleCard } from '../Series/Components/ArticleCard'
 import { SeriesAbout } from '../Series/Components/SeriesAbout'
 import { SeriesTitle } from '../Series/Components/SeriesTitle'
+import { Series } from '../Series/Series'
 
 import {
   SeriesArticle,
@@ -11,7 +12,19 @@ import {
   VideoArticle
 } from "../Fixtures/Articles"
 
-storiesOf("Publishing/Series", module).add("Article Card", () => {
+storiesOf("Publishing/Series", module).add("Series", () => {
+  return (
+    <div>
+      <Series series={SeriesArticle} />
+    </div>
+  )
+}).add("Series: Sponsored", () => {
+  return (
+    <div>
+      <Series series={SeriesArticleSponsored} />
+    </div>
+  )
+}).add("Article Card", () => {
   return (
     <div>
       <ArticleCard

@@ -13,11 +13,11 @@ export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { series } = this.props
+    const { color, series } = this.props
     const { sponsor } = series
 
     return (
-      <SeriesTitleContainer className='SeriesTitle'>
+      <SeriesTitleContainer className='SeriesTitle' color={color}>
 
         <Title>{series.title}</Title>
 

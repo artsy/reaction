@@ -669,10 +669,22 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
 
+export const VideoArticle = extend({}, StandardArticle, {
+  layout: "video",
+  media: {
+    url: '',
+    duration: '03:12',
+  },
+})
+
 export const SeriesArticle = extend({}, StandardArticle, {
   layout: "series",
   title: "The Future of Art",
-  about: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>"
+  about: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+  related_articles: [
+    VideoArticle,
+    FeatureArticle
+  ]
 })
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, {
@@ -682,10 +694,4 @@ export const SeriesArticleSponsored = extend({}, SeriesArticle, {
   }
 })
 
-export const VideoArticle = extend({}, StandardArticle, {
-  layout: "video",
-  media: {
-    url: '',
-    duration: '03:12',
-  },
-})
+
