@@ -6,13 +6,14 @@ import { Fonts } from "../Fonts"
 
 interface AuthorDateProps {
   authors?: any
+  color?: string
   date?: string
   layout: string
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {
   return (
-    <StyledAuthor className="author" layout={props.layout}>
+    <StyledAuthor className="author" layout={props.layout} color={props.color}>
       By {getAuthorByline(props.authors)}
     </StyledAuthor>
   )
@@ -24,6 +25,10 @@ export const Date: React.SFC<AuthorDateProps> = props => {
       {getDate(props.date, props.layout)}
     </Text>
   )
+}
+
+Author.defaultProps = {
+  color: 'black'
 }
 
 const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> = styled.div
@@ -58,7 +63,7 @@ const StyledAuthor = Text.extend`
     min-height: 10px;
     border-radius: 50%;
     margin: 6px 10px 1px 0;
-    background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
+    background-color: ${props => props.color};
   }
   ${props => adjustForCondensed(props.layout)}
   ${pMedia.sm`

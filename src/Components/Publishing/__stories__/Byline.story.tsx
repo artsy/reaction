@@ -49,3 +49,10 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
+  .add("Byline with custom color", () => {
+    return (
+      <div>
+        <Byline article={StandardArticle} color='blue' />
+      </div>
+    )
+  })

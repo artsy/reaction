@@ -7,25 +7,28 @@ import { Share } from "./Share"
 interface BylineProps {
   article: any
   layout?: string
+  color?: string
 }
 
 interface BylineContainerProps {
-  layout: string
+  color: string
 }
 
 export const Byline: React.SFC<BylineProps> = props => {
-  const { article } = props
+  const { article, color } = props
   const { contributing_authors, published_at } = article
   const layout = props.layout || article.layout
   const title = article.social_title || article.thumbnail_title
   const url = getArticleFullHref(article.slug)
+  const textColor = layout === "fullscreen" ? "white" : color
 
   // TODO: Replace `authors` with `contributing_authors` when ready. Also in
   // <BasicHeader />
   return (
-    <BylineContainer layout={layout}>
+    <BylineContainer className="Byline" color={textColor}>
       <Author
         authors={contributing_authors}
+        color={textColor}
         layout={layout}
       />
 
@@ -38,17 +41,23 @@ export const Byline: React.SFC<BylineProps> = props => {
         <Share
           url={url}
           title={title}
-          color={layout === "fullscreen" ? "white" : "black"}
+          color={textColor}
         />
       }
     </BylineContainer>
   )
 }
 
-const Div: StyledFunction<BylineContainerProps> = styled.div
+Byline.defaultProps = {
+  color: 'black'
+}
+
+const Div: StyledFunction<BylineContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+
 const BylineContainer = Div`
   display: flex;
   flex-wrap: wrap;
   display: flex;
   align-items: flex-end;
+  color: ${props => props.color};
 `

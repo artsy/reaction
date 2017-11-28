@@ -143,11 +143,13 @@ export const StandardArticle: ArticleData = {
   ],
   published_at: "2017-05-19T13:09:18.567Z",
   thumbnail_title: "New York's Next Art District",
+  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
   layout: "standard",
   vertical: {
     name: "Art Market",
     id: "12345",
   },
+  description: 'Land exhibitions, make influential contacts, and gain valuable feedback about your work.',
   sections: [
     {
       type: "text",
@@ -665,4 +667,17 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
 
 export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
+})
+
+export const SeriesArticle = extend({}, StandardArticle, {
+  layout: "series",
+  title: "The Future of Art",
+})
+
+export const VideoArticle = extend({}, StandardArticle, {
+  layout: "video",
+  video: {
+    url: '',
+    length: '03:12',
+  },
 })

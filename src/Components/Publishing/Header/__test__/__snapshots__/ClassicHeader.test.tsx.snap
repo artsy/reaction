@@ -307,7 +307,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 .c7 {
@@ -345,6 +345,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: black;
 }
 
 .c0 {
@@ -471,10 +472,12 @@ exports[`Classic Header renders classic header with children properly 1`] = `
       </div>
     </div>
     <div
-      className="c4"
+      className="Byline c4"
+      color="black"
     >
       <div
         className="author c5"
+        color="black"
       >
         By 
         Casey Lesser

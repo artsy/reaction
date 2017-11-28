@@ -20,7 +20,7 @@ exports[`Author/Date renders a single author 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 @media (max-width:720px) {
@@ -46,6 +46,7 @@ exports[`Author/Date renders a single author 1`] = `
 
 <div
   className="author c0"
+  color="black"
 >
   By 
   Molly Gottschalk
@@ -72,7 +73,7 @@ exports[`Author/Date renders multiple authors 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 @media (max-width:720px) {
@@ -98,6 +99,7 @@ exports[`Author/Date renders multiple authors 1`] = `
 
 <div
   className="author c0"
+  color="black"
 >
   By 
   Molly Gottschalk and Kana Abe
