@@ -44,7 +44,7 @@ export class PartnerInline extends React.Component<Props, null> {
       <PartnerInlineContainer className='PartnerInline'>
         <a href='/'>
           <Icon
-            name="logotype"
+            name="logo"
             color={color ? color : "black"}
             fontSize="32px"
           />

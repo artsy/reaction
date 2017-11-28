@@ -1,7 +1,7 @@
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { FeatureArticle } from "../../Fixtures/Articles"
+import { FeatureArticle, SponsoredArticle } from "../../Fixtures/Articles"
 import { Nav } from "../Nav"
 
 describe("Nav", () => {
@@ -14,7 +14,7 @@ describe("Nav", () => {
     expect(nav).toMatchSnapshot()
   })
   it("renders a sponsored nav", () => {
-    const nav = renderer.create(<Nav article={FeatureArticle} sponsored/>)
+    const nav = renderer.create(<Nav article={SponsoredArticle} />)
     expect(nav).toMatchSnapshot()
   })
 })

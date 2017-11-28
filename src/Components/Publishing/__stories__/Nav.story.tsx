@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { FeatureArticle } from "../Fixtures/Articles"
+import { FeatureArticle, SponsoredArticle } from "../Fixtures/Articles"
 import { Nav } from "../Nav/Nav"
 
 storiesOf("Publishing/Nav", module).add("Regular", () => {
@@ -10,7 +10,7 @@ storiesOf("Publishing/Nav", module).add("Regular", () => {
       <Nav article={FeatureArticle} />
       <br />
       Sponsored:
-      <Nav article={FeatureArticle} sponsored />
+      <Nav article={SponsoredArticle} />
     </div>
   )
 })
@@ -24,7 +24,7 @@ storiesOf("Publishing/Nav", module).add("Regular", () => {
     <Nav article={FeatureArticle} transparent />
       <br />
       Sponsored:
-    <Nav article={FeatureArticle} sponsored transparent/>
+    <Nav article={SponsoredArticle} transparent/>
     </div>
   )
 })

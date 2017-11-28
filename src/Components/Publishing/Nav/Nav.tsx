@@ -8,7 +8,6 @@ import { PartnerInline } from "../Partner/PartnerInline"
 
 interface Props {
   article: any
-  sponsored?: boolean
   transparent?: boolean
 }
 
@@ -18,16 +17,16 @@ interface DivProps {
 
 export const Nav: React.SFC<Props> = props => {
   const {
-    sponsored,
+    article,
     transparent
   } = props
   return (
     <NavContainer transparent={transparent}>
-      <div>
-        {sponsored ?
+      <Logos>
+        {article.sponsored ?
           <PartnerInline
             url="/"
-            logo="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+            logo={article.sponsor.white_logo}
             color="white"
           />
           :
@@ -39,7 +38,7 @@ export const Nav: React.SFC<Props> = props => {
             />
           </a>
         }
-      </div>
+      </Logos>
       <Title>Artsy Editorial</Title>
       <div>
         <Login>Login</Login>
@@ -50,7 +49,6 @@ export const Nav: React.SFC<Props> = props => {
 }
 
 Nav.defaultProps = {
-  sponsored: false,
   transparent: false
 }
 
@@ -79,4 +77,10 @@ const Signup = StyledButton.extend`
   width: 80px;
   background-color: white;
   border-radius: 2px;  
+`
+const Logos = styled.div`
+  padding: 10px;
+  ${Icon} {
+    margin: 0;
+  }
 `
