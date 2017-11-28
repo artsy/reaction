@@ -14,12 +14,12 @@ export class SeriesTitle extends Component<Props, null> {
 
   render () {
     const { color, series } = this.props
-    const { sponsor } = series
+    const { sponsor, title } = series
 
     return (
       <SeriesTitleContainer className='SeriesTitle' color={color}>
 
-        <Title>{series.title}</Title>
+        <Title>{title}</Title>
 
         {sponsor &&
           <PartnerBlock

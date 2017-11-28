@@ -141,6 +141,13 @@ exports[`renders a video article properly 1`] = `
   object-position: center;
 }
 
+.c10 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 40px;
+}
+
 @media (max-width:720px) {
   .c7 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -219,6 +226,12 @@ exports[`renders a video article properly 1`] = `
   }
 }
 
+@media (max-width:900px) {
+  .c10 {
+    width: 30px;
+  }
+}
+
 <a
   className="ArticleCard c0"
   color="black"
@@ -232,7 +245,10 @@ exports[`renders a video article properly 1`] = `
         className="c2"
       >
         <div>
-          New York's Next Art District
+          The Future of Art
+        </div>
+        <div>
+          03:12
         </div>
       </div>
       <div
@@ -271,6 +287,30 @@ exports[`renders a video article properly 1`] = `
       className="c9"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
     />
+    <div
+      className="c10"
+    >
+      <svg
+        className="IconPlayCaret"
+        version="1.1"
+        viewBox="0 0 40 56"
+        x="0px"
+        xmlns="http://www.w3.org/2000/svg"
+        y="0px"
+      >
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="1"
+        >
+          <polygon
+            fill="black"
+            points="0 0 0 56 39.3600006 28"
+          />
+        </g>
+      </svg>
+    </div>
   </div>
 </a>
 `;

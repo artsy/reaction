@@ -92,4 +92,3 @@ const SeriesContent = styled.div`
     }
   `}
 `
-
