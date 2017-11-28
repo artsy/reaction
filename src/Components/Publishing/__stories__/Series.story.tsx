@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { ArticleCard } from '../Series/ArticleCard'
 import { SeriesAbout } from '../Series/SeriesAbout'
+import { SeriesTitle } from '../Series/SeriesTitle'
 
 import {
   SeriesArticle,
@@ -26,6 +27,18 @@ storiesOf("Publishing/Series", module).add("Article Card", () => {
         article={VideoArticle}
         series={SeriesArticle}
       />
+    </div>
+  )
+}).add("Series Title", () => {
+  return (
+    <div>
+      <SeriesTitle series={SeriesArticle} />
+    </div>
+  )
+}).add("Series Title: Sponsored", () => {
+  return (
+    <div>
+      <SeriesTitle series={SeriesArticleSponsored} />
     </div>
   )
 }).add("Series About", () => {
