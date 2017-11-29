@@ -12,6 +12,7 @@ exports[`renders the partner inline 1`] = `
 .c3 {
   width: 15px;
   height: 15px;
+  margin: 0 20px;
 }
 
 .c0 {
@@ -36,14 +37,11 @@ exports[`renders the partner inline 1`] = `
   vertical-align: middle;
 }
 
-.c0 .IconPlus {
-  margin: 0 20px;
-}
-
 @media (max-width:900px) {
   .c3 {
     width: 13px;
     height: 13px;
+    margin: 0 10px;
   }
 }
 
@@ -54,10 +52,6 @@ exports[`renders the partner inline 1`] = `
 
   .c0 .c1 {
     font-size: 24px;
-  }
-
-  .c0 .IconPlus {
-    margin: 0 15px;
   }
 }
 
@@ -76,11 +70,6 @@ exports[`renders the partner inline 1`] = `
   </a>
   <svg
     className="IconPlus c3"
-    style={
-      Object {
-        "margin": undefined,
-      }
-    }
     version="1.1"
     viewBox="0 0 15 15"
     xmlns="http://www.w3.org/2000/svg"

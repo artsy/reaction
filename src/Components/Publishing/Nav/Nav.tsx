@@ -53,4 +53,7 @@ const NavContainer = Div`
 `
 const Title = styled.div`
   ${Fonts.garamond("s17")}
+  position: absolute;
+  width: 100%;
+  text-align: center;
 `

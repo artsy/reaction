@@ -60,7 +60,9 @@ export class PartnerInline extends React.Component<Props, null> {
             fontSize="32px"
           />
         </a>
-        {logo && <IconPlus color={color} />}
+        {logo &&
+          <IconPlus color={color} />
+        }
         {logo &&
           <a
             href={url}
@@ -88,18 +90,12 @@ const PartnerInlineContainer = Div`
     margin: 0;
     vertical-align: middle;
   }
-  .IconPlus {
-    margin: 0 20px;
-  }
   ${pMedia.sm`
     img {
       max-height: 24px;
     }
     ${Icon} {
       font-size: 24px;
-    }
-    .IconPlus {
-      margin: 0 15px;
     }
   `}
 `

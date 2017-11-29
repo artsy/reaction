@@ -31,10 +31,6 @@ exports[`Nav renders a Nav 1`] = `
   vertical-align: middle;
 }
 
-.c1 .IconPlus {
-  margin: 0 20px;
-}
-
 .c9 {
   background: #e5e5e5;
   color: black;
@@ -194,6 +190,9 @@ exports[`Nav renders a Nav 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width:720px) {
@@ -203,10 +202,6 @@ exports[`Nav renders a Nav 1`] = `
 
   .c1 .c2 {
     font-size: 24px;
-  }
-
-  .c1 .IconPlus {
-    margin: 0 15px;
   }
 }
 
@@ -320,6 +315,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 .c4 {
   width: 15px;
   height: 15px;
+  margin: 0 20px;
 }
 
 .c1 {
@@ -342,10 +338,6 @@ exports[`Nav renders a sponsored nav 1`] = `
 .c1 .c2 {
   margin: 0;
   vertical-align: middle;
-}
-
-.c1 .IconPlus {
-  margin: 0 20px;
 }
 
 .c10 {
@@ -507,12 +499,16 @@ exports[`Nav renders a sponsored nav 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width:900px) {
   .c4 {
     width: 13px;
     height: 13px;
+    margin: 0 10px;
   }
 }
 
@@ -523,10 +519,6 @@ exports[`Nav renders a sponsored nav 1`] = `
 
   .c1 .c2 {
     font-size: 24px;
-  }
-
-  .c1 .IconPlus {
-    margin: 0 15px;
   }
 }
 
@@ -562,11 +554,6 @@ exports[`Nav renders a sponsored nav 1`] = `
     </a>
     <svg
       className="IconPlus c4"
-      style={
-        Object {
-          "margin": undefined,
-        }
-      }
       version="1.1"
       viewBox="0 0 15 15"
       xmlns="http://www.w3.org/2000/svg"
@@ -707,10 +694,6 @@ exports[`Nav renders a transparent nav 1`] = `
 .c1 .c2 {
   margin: 0;
   vertical-align: middle;
-}
-
-.c1 .IconPlus {
-  margin: 0 20px;
 }
 
 .c9 {
@@ -872,6 +855,9 @@ exports[`Nav renders a transparent nav 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width:720px) {
@@ -881,10 +867,6 @@ exports[`Nav renders a transparent nav 1`] = `
 
   .c1 .c2 {
     font-size: 24px;
-  }
-
-  .c1 .IconPlus {
-    margin: 0 15px;
   }
 }
 

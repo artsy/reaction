@@ -2700,6 +2700,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 .c8 {
   width: 15px;
   height: 15px;
+  margin: 0 20px;
 }
 
 .c5 {
@@ -2722,10 +2723,6 @@ exports[`feature renders superArticle full header properly 1`] = `
 .c5 .c6 {
   margin: 0;
   vertical-align: middle;
-}
-
-.c5 .IconPlus {
-  margin: 0 20px;
 }
 
 .c3 {
@@ -2946,6 +2943,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   .c8 {
     width: 13px;
     height: 13px;
+    margin: 0 10px;
   }
 }
 
@@ -2956,10 +2954,6 @@ exports[`feature renders superArticle full header properly 1`] = `
 
   .c5 .c6 {
     font-size: 24px;
-  }
-
-  .c5 .IconPlus {
-    margin: 0 15px;
   }
 }
 
@@ -3094,11 +3088,6 @@ exports[`feature renders superArticle full header properly 1`] = `
       </a>
       <svg
         className="IconPlus c8"
-        style={
-          Object {
-            "margin": undefined,
-          }
-        }
         version="1.1"
         viewBox="0 0 15 15"
         xmlns="http://www.w3.org/2000/svg"

@@ -4,11 +4,10 @@ import { pMedia } from "../../Helpers"
 
 interface Props {
   color?: string
-  margin?: string
 }
 
 export const IconPlus: React.SFC<Props> = props => {
-  const { color, margin } = props
+  const { color } = props
 
   return (
     <StyledSvg
@@ -16,7 +15,6 @@ export const IconPlus: React.SFC<Props> = props => {
       viewBox="0 0 15 15"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      style={{margin}}
     >
       <g stroke="none" strokeWidth="2" fill="none" fillRule="evenodd">
         <g transform="translate(-101.000000, -18.000000)" fill={color ? color : "black"}>
@@ -33,8 +31,10 @@ export const IconPlus: React.SFC<Props> = props => {
 const StyledSvg = styled.svg`
   width: 15px;
   height: 15px;
+  margin: 0 20px;
   ${pMedia.md`
     width: 13px;
     height: 13px;
+    margin: 0 10px;
   `}
 `
