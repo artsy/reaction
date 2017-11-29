@@ -594,7 +594,6 @@ export const FeatureArticle: ArticleData = {
 }
 
 export const SponsoredArticle = extend({}, FeatureArticle, {
-  sponsored: true,
   sponsor: {
     white_logo: "https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
   }

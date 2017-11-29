@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { StyledFunction } from 'styled-components'
 import Events from "../../../Utils/Events"
 import track from "../../../Utils/track"
 import { pMedia } from '../../Helpers'
@@ -12,6 +12,11 @@ interface Props {
   url: string
   tracking?: any
   trackingData?: any
+  margin?: string
+}
+
+interface DivProps {
+  margin: string
 }
 
 @track((props) => {
@@ -23,7 +28,8 @@ export class PartnerInline extends React.Component<Props, null> {
   static defaultProps = {
     tracking: {
       trackEvent: x => x
-    }
+    },
+    margin: "0px"
   }
 
   constructor(props) {
@@ -38,10 +44,15 @@ export class PartnerInline extends React.Component<Props, null> {
   }
 
   render() {
-    const { color, logo, url } = this.props
+    const {
+      color,
+      logo,
+      url,
+      margin
+    } = this.props
 
     return (
-      <PartnerInlineContainer className='PartnerInline'>
+      <PartnerInlineContainer margin={margin} className='PartnerInline'>
         <a href='/'>
           <Icon
             name="logo"
@@ -64,9 +75,11 @@ export class PartnerInline extends React.Component<Props, null> {
   }
 }
 
-const PartnerInlineContainer = styled.div`
+const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const PartnerInlineContainer = Div`
   display: flex;
   align-items: center;
+  margin: ${props => props.margin};
   img {
     max-height: 32px;
     vertical-align: middle;

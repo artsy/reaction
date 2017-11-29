@@ -1,16 +1,16 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { FeatureArticle, SponsoredArticle } from "../Fixtures/Articles"
+import { SponsoredArticle } from "../Fixtures/Articles"
 import { Nav } from "../Nav/Nav"
 
 storiesOf("Publishing/Nav", module).add("Regular", () => {
   return (
     <div>
       Regular:
-      <Nav article={FeatureArticle} />
+      <Nav />
       <br />
       Sponsored:
-      <Nav article={SponsoredArticle} />
+      <Nav sponsor={SponsoredArticle.sponsor} />
     </div>
   )
 })
@@ -21,10 +21,10 @@ storiesOf("Publishing/Nav", module).add("Regular", () => {
       color: "white"
     }}>
       Regular:
-    <Nav article={FeatureArticle} transparent />
+    <Nav transparent />
       <br />
       Sponsored:
-    <Nav article={SponsoredArticle} transparent/>
+    <Nav sponsor={SponsoredArticle.sponsor} transparent/>
     </div>
   )
 })

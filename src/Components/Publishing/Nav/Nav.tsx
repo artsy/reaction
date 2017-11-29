@@ -1,14 +1,13 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import StyledButton from "../../Buttons/Default"
-import InvertedButton from "../../Buttons/Inverted"
-import Icon from "../../Icon"
 import { Fonts } from "../Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
+import { AccountButtons } from "./AccountButtons"
 
 interface Props {
-  article: any
   transparent?: boolean
+  sponsor?: any
+  title?: string
 }
 
 interface DivProps {
@@ -17,39 +16,29 @@ interface DivProps {
 
 export const Nav: React.SFC<Props> = props => {
   const {
-    article,
-    transparent
+    sponsor,
+    transparent,
+    title
   } = props
   return (
     <NavContainer transparent={transparent}>
-      <Logos>
-        {article.sponsored ?
-          <PartnerInline
-            url="/"
-            logo={article.sponsor.white_logo}
-            color="white"
-          />
-          :
-          <a href='/'>
-            <Icon
-              name="logo"
-              color="white"
-              fontSize="32px"
-            />
-          </a>
-        }
-      </Logos>
-      <Title>Artsy Editorial</Title>
-      <div>
-        <Login>Login</Login>
-        <Signup>Signup</Signup>
-      </div>
+      <PartnerInline
+        url={sponsor && sponsor.url}
+        logo={sponsor && sponsor.white_logo}
+        color="white"
+        margin="0 10px"
+      />
+      <Title>
+        {title}
+      </Title>
+      <AccountButtons />
     </NavContainer>
   )
 }
 
 Nav.defaultProps = {
-  transparent: false
+  transparent: false,
+  title: "Artsy Editorial"
 }
 
 const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
@@ -64,23 +53,4 @@ const NavContainer = Div`
 `
 const Title = styled.div`
   ${Fonts.garamond("s17")}
-`
-const Login = InvertedButton.extend`
-  ${Fonts.avantgarde("s11")}
-  height: 30px;
-  width: 80px;
-  border-radius: 2px;
-`
-const Signup = StyledButton.extend`
-  ${Fonts.avantgarde("s11")}
-  height: 30px;
-  width: 80px;
-  background-color: white;
-  border-radius: 2px;  
-`
-const Logos = styled.div`
-  padding: 10px;
-  ${Icon} {
-    margin: 0;
-  }
 `
