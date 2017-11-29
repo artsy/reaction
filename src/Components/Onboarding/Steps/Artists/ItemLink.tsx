@@ -1,6 +1,6 @@
 import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { SelectorStoreUpdater } from "relay-runtime"
+import { ConnectionHandler, RecordSourceSelectorProxy } from "relay-runtime"
 import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../../../Assets/Animations"
@@ -49,6 +49,11 @@ interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
   relay?: RelayProp
 }
 
+interface ArtistFollowProps {
+  id: string | null
+  __id: string
+}
+
 class ItemLink extends React.Component<Props, State> {
   state = {
     fadeIn: false,
@@ -56,19 +61,35 @@ class ItemLink extends React.Component<Props, State> {
     artist_id: this.props.artist.id,
   }
 
-  followArtist() {
-    const storeUpdater: SelectorStoreUpdater = (store, suggestedArtistData) => {
-      // Replace now followed artist in list with newly suggested artist
+  followArtist(artist: ArtistFollowProps) {
+    const storeUpdater = (store: RecordSourceSelectorProxy) => {
+      const mutationPayload = store.getRootField("followArtist")
+      const origArtist = mutationPayload.getLinkedRecord("artistEdge")
+
+      // Useful to import this directly for debugging
+      const localConnHandler = ConnectionHandler
+
+      // Somehow update the artist with the suggestion...
+      const selectedArtist = store.get(artist.__id)
+      const connection = localConnHandler.getConnection(origArtist, "ItemLink_suggested")
     }
 
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
         mutation ItemLinkFollowArtistMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
-            artist {
-              # Get related artist (not this field that’s currently used!)
-              artists(size: 1) {
-                name
+            artistEdge {
+              node {
+                __id
+                related {
+                  suggested(first: 1) @connection(key: "ItemLink_suggested", filters: []) {
+                    edges {
+                      node {
+                        ...ItemLink_artist
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -81,7 +102,7 @@ class ItemLink extends React.Component<Props, State> {
         },
       },
       updater: storeUpdater,
-      optimisticUpdater: storeUpdater,
+      // optimisticUpdater: storeUpdater,
     })
   }
 
@@ -90,7 +111,7 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   onClick() {
-    this.followArtist()
+    this.followArtist(this.props.artist)
   }
 
   render() {
@@ -128,6 +149,7 @@ export default createFragmentContainer(
   graphql`
     fragment ItemLink_artist on Artist {
       id
+      __id
       name
       image {
         cropped(width: 100, height: 100) {
@@ -141,6 +163,7 @@ export default createFragmentContainer(
 export interface RelayProps {
   artist: {
     id: string | null
+    __id: string
     name: string | null
     image: {
       cropped: {
