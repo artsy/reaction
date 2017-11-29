@@ -15,7 +15,7 @@ export class SeriesAbout extends Component<Props, null> {
 
   render () {
     const { color, article } = this.props
-    const { series, sponsor } = article
+    const { series_description, sponsor } = article
 
     return (
       <SeriesAboutContainer className='SeriesAbout' color={color}>
@@ -35,7 +35,7 @@ export class SeriesAbout extends Component<Props, null> {
         </Col>
 
         <Col>
-          <Text layout='standard' html={series.description} />
+          <Text layout='standard' html={series_description} />
           {sponsor &&
             <PartnerBlock
               logo={sponsor.partner_logo}

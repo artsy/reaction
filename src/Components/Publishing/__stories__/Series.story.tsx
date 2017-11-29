@@ -9,7 +9,8 @@ import {
   SeriesArticle,
   SeriesArticleSponsored,
   StandardArticle,
-  VideoArticle
+  VideoArticle,
+  VideoArticleUnpublished
 } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Series", module).add("Series", () => {
@@ -33,7 +34,16 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       />
     </div>
   )
-}).add("Article Card: Video", () => {
+}).add("Article Card: Media", () => {
+  return (
+    <div>
+      <ArticleCard
+        article={VideoArticleUnpublished}
+        series={SeriesArticle}
+      />
+    </div>
+  )
+}).add("Article Card: Media Unpublished", () => {
   return (
     <div>
       <ArticleCard

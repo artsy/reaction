@@ -4,7 +4,7 @@ import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Date } from '../Byline/AuthorDate'
 import { Byline } from '../Byline/Byline'
-import { dateIsFuture, getMediaDate } from "../Constants"
+import { getMediaDate } from "../Constants"
 import { Fonts } from "../Fonts"
 import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
@@ -17,38 +17,70 @@ interface Props {
 export class ArticleCard extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
+  isUnpublishedMedia () {
+    const { media } = this.props.article
+    return media && !media.published
+  }
+
   renderMediaDate () {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
   
-    if (dateIsFuture(article.media.release_date)) {
+    if (this.isUnpublishedMedia()) {
       return (
-          <ComingSoon>
-            <span>Coming Soon</span>
+          <MediaDate>
+            <span>Available </span>
             <Date layout='condensed' date={mediaDate} />
-          </ComingSoon>
+          </MediaDate>
       )
     } else {
       return <Date layout='condensed' date={mediaDate} />
     }
   }
 
+  renderMediaCoverInfo () {
+    const { article, color } = this.props
+
+    if (this.isUnpublishedMedia()) {
+      return <MediaComingSoon>Coming Soon</MediaComingSoon>
+    } else {
+      return (
+        <MediaPlay>
+          <IconPlayCaret color={color} />
+          {article.media.duration}
+        </MediaPlay>
+      )
+    }
+  }
+
+  openLink = (e) => {
+    e.preventDefault()
+
+    if (!this.isUnpublishedMedia()) {
+      window.open(e.currentTarget.attributes.href.value)
+    }
+  }
+
   render () {
     const { article, color, series } = this.props
     const { media } = article
+    const isUnpublishedMedia = this.isUnpublishedMedia()
 
     return (
-      <ArticleCardContainer href={article.slug} color={color} className="ArticleCard">
+      <ArticleCardContainer
+        href={isUnpublishedMedia ? '' : article.slug}
+        color={color}
+        className="ArticleCard"
+        published={!isUnpublishedMedia}
+        onClick={this.openLink}
+      >
 
         <TextContainer>
           <div>
             <Header>
               <div>{series.title}</div>
-              {media &&
-                <div>{media.duration}</div>
-              }
             </Header>
-            <Title>{article.title}</Title>
+            <Title>{article.thumbnail_title}</Title>
             <Description>{article.description}</Description>
           </div>
           {media
@@ -64,10 +96,11 @@ export class ArticleCard extends Component<Props, null> {
         </TextContainer>
 
         <ImageContainer>
-          <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
-          {media &&
-            <VideoPlay><IconPlayCaret color={color} /></VideoPlay>
-          }
+          <Image
+            src={crop(article.thumbnail_image, { width: 680, height: 450 })}
+            style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
+          />
+          {media && this.renderMediaCoverInfo()}
         </ImageContainer>
 
       </ArticleCardContainer>
@@ -79,13 +112,17 @@ ArticleCard.defaultProps = {
   color: 'black'
 }
 
-const A: StyledFunction<Props & React.HTMLProps<HTMLLinkElement>> = styled.a
-const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
+interface LinkProps {
+  published: boolean
+}
+
+const A: StyledFunction<Props & LinkProps & React.HTMLProps<HTMLLinkElement>> = styled.a
 
 export const ArticleCardContainer = A`
   display: block;
   border: 1px solid;
   color: ${props => props.color};
+  cursor: ${props => props.published ? "pointer" : "default"};
   text-decoration: none;
   padding: 30px;
   display: flex;
@@ -120,11 +157,7 @@ const Title = styled.div`
 
 const Header = styled.div`
   ${Fonts.unica("s16", "medium")}
-  display: flex;
   margin-bottom: 10px;
-  div {
-    margin-right: 20px;
-  }
 `
 
 const Description = styled.div`
@@ -135,12 +168,12 @@ const Description = styled.div`
   `}
 `
 
-const ComingSoon = styled.div`
+const MediaDate = styled.div`
   ${Fonts.unica("s16", "medium")}
   display: flex;
   align-items: flex-end;
   span {
-    margin-right: 30px;
+    margin-right: 5px;
   }
 `
 
@@ -163,12 +196,31 @@ const Image = styled.img`
   object-position: center;
 `
 
-const VideoPlay = Div`
+const Media = styled.div`
   position: absolute;
-  left: 20px; 
+  left: 20px;
   bottom: 20px;
-  width: 40px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`
+
+const MediaPlay = Media.extend`
+  ${Fonts.unica("s16", "medium")}
+  svg {
+    width: 40px;
+  }
   ${props => pMedia.md`
-    width: 30px;
+    svg {
+      width: 30px;
+    }
+  `}
+`
+
+const MediaComingSoon = Media.extend`
+  ${Fonts.unica("s45")}
+  ${props => pMedia.md`
+    ${Fonts.unica("s32")}
   `}
 `

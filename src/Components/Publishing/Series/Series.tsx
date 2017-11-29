@@ -15,9 +15,9 @@ export class Series extends Component<Props, null> {
 
   render () {
     const { color, article } = this.props
-    const { series } = article
+    const { related_articles } = article
 
-    const articles = series.related_articles || []
+    const articles = related_articles || []
 
     return (
       <SeriesContainer className='SeriesTitle' color={color}>

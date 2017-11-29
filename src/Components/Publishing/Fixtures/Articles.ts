@@ -672,29 +672,38 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
 export const VideoArticle = {
   layout: "video",
   id: "597b9f652d35b80017a2a6a7",
-  title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
-  slug: "joanne-artman-gallery-poetry-naturerefinement-form",
+  title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  thumbnail_title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
   thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
+  slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   published_at: "2017-07-28T20:38:05.709Z",
   description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
   media: {
-    url: '',
-    duration: '03:12',
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    duration: "03:12",
+    release_date: "2017-08-28T20:38:05.709Z",
+    published: true
+  }
+}
+
+export const VideoArticleUnpublished = extend({}, VideoArticle, {
+  media: {
+    url: "",
+    duration: "03:12",
     release_date: "2018-08-28T20:38:05.709Z",
     published: false
   }
-}
+})
 
 export const SeriesArticle = {
   layout: "series",
   title: "The Future of Art",
-  series: {
-    description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-    related_articles: [
-      VideoArticle,
-      FeatureArticle
-    ]
-  }
+  series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+  related_articles: [
+    VideoArticle,
+    VideoArticleUnpublished,
+    FeatureArticle
+  ]
 }
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, {

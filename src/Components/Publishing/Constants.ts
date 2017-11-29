@@ -71,8 +71,3 @@ export const getMediaDate = (article) => {
     return published_at || scheduled_publish_at
   }
 }
-
-export const dateIsFuture = (date) => {
-  const now = moment()
-  return moment(date) > now
-}
