@@ -149,13 +149,6 @@ export const StyledText = div`
       text-transform: none;
     }
   }
-  ${props => pMedia.md`
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  `}
-  ${props => pMedia.sm`
-    max-width: 100%;
-  `}
   ${props => pMedia.xs`
     p, ul, ol {
       ${Fonts.garamond("s19")}

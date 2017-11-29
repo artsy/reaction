@@ -6,9 +6,10 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .PartnerBlock img {
+.c0 .file__PartnerBlockContainer-s8dqalt-0 img {
   max-width: 170px;
   padding-top: 5px;
+  padding-bottom: 40px;
 }
 
 .c1 {
@@ -20,8 +21,9 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .PartnerBlock img {
+  .c0 .file__PartnerBlockContainer-s8dqalt-0 img {
     max-width: 200px;
+    padding-bottom: 0;
   }
 }
 
@@ -48,12 +50,12 @@ exports[`renders a series title properly 1`] = `
 `;
 
 exports[`renders a sponsored series title properly 1`] = `
-.c2 img {
+.c3 img {
   max-width: 220px;
   padding-top: 20px;
 }
 
-.c3 {
+.c4 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -65,9 +67,10 @@ exports[`renders a sponsored series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .PartnerBlock img {
+.c0 .c2 img {
   max-width: 170px;
   padding-top: 5px;
+  padding-bottom: 40px;
 }
 
 .c1 {
@@ -79,13 +82,13 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c2 img {
+  .c3 img {
     max-width: 195px;
   }
 }
 
 @media (max-width:720px) {
-  .c3 {
+  .c4 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -94,8 +97,9 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .PartnerBlock img {
+  .c0 .c2 img {
     max-width: 200px;
+    padding-bottom: 0;
   }
 }
 
@@ -119,10 +123,10 @@ exports[`renders a sponsored series title properly 1`] = `
     The Future of Art
   </div>
   <div
-    className="PartnerBlock c2"
+    className="PartnerBlock c2 c3"
   >
     <div
-      className="c3"
+      className="c4"
     >
       Presented In Partnership With
     </div>

@@ -193,6 +193,7 @@ export class Sections extends Component<Props, State> {
             key={index}
             layout={section.layout}
             articleLayout={article.layout}
+            type={section.type}
           >
             {child}
           </SectionContainer>
@@ -212,7 +213,7 @@ export class Sections extends Component<Props, State> {
 
     if (authors) {
       return (
-        <SectionContainer>
+        <SectionContainer type='author'>
           <Authors authors={authors} />
         </SectionContainer>
       )
@@ -225,7 +226,7 @@ export class Sections extends Component<Props, State> {
 
     if (postscript) {
       return (
-        <SectionContainer>
+        <SectionContainer type='text'>
           <Text
             html={postscript}
             layout={layout}

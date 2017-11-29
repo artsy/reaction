@@ -640,7 +640,7 @@ exports[`snapshots renders properly 1`] = `
 @media (max-width:900px) {
   .c4 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
   }
 }
@@ -654,21 +654,8 @@ exports[`snapshots renders properly 1`] = `
 @media (max-width:900px) {
   .c24 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c2 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    max-width: 100%;
   }
 }
 
@@ -753,6 +740,7 @@ exports[`snapshots renders properly 1`] = `
 >
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -768,6 +756,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -783,6 +772,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c3"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -798,6 +788,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -813,6 +804,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1127,6 +1119,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1142,6 +1135,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1417,6 +1411,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1432,6 +1427,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1529,6 +1525,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1544,6 +1541,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="embed"
   >
     <iframe
       className="c21"
@@ -1555,6 +1553,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1570,6 +1569,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1845,6 +1845,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1860,6 +1861,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c24"
+    type="image_set"
   >
     <div
       style={
@@ -1928,6 +1930,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1943,6 +1946,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c24"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -2040,6 +2044,7 @@ exports[`snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"

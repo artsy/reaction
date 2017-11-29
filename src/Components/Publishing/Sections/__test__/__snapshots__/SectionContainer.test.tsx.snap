@@ -181,21 +181,8 @@ exports[`renders column_width properly 1`] = `
 @media (max-width:900px) {
   .c0 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    max-width: 100%;
   }
 }
 
@@ -259,6 +246,7 @@ exports[`renders column_width properly 1`] = `
 
 <div
   className="c0"
+  type="text"
 >
   <div
     className="article__text-section c1"
@@ -455,21 +443,8 @@ exports[`renders fillwidth properly 1`] = `
 @media (max-width:900px) {
   .c0 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    max-width: 100%;
   }
 }
 
@@ -533,6 +508,7 @@ exports[`renders fillwidth properly 1`] = `
 
 <div
   className="c0"
+  type="text"
 >
   <div
     className="article__text-section c1"
@@ -729,21 +705,8 @@ exports[`renders overflow_fillwidth properly 1`] = `
 @media (max-width:900px) {
   .c0 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    max-width: 100%;
   }
 }
 
@@ -807,6 +770,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 <div
   className="c0"
+  type="text"
 >
   <div
     className="article__text-section c1"

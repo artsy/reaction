@@ -1,820 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series properly 1`] = `
-.c11 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c11.date {
-  white-space: nowrap;
-}
-
-.c10 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c10.date {
-  white-space: nowrap;
-}
-
-.c10:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: white;
-}
-
-.c10:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  color: white;
-}
-
-.c4 {
-  display: block;
-  border: 1px solid;
-  color: white;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c5 .author,
-.c5 .date {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c7 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.c6 div {
-  margin-right: 20px;
-}
-
-.c8 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-}
-
-.c12 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c13 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.c14 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  width: 40px;
-}
-
-.c17 {
-  position: relative;
-  width: 100%;
-}
-
-.c17 a {
-  color: black;
-  text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
-  background-size: 1.25px 4px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
-
-.c17 a:hover {
-  color: #999;
-}
-
-.c17 p,
-.c17 ul,
-.c17 ol {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0;
-  font-style: inherit;
-}
-
-.c17 p:first-child {
-  padding-top: 0;
-}
-
-.c17 p:last-child {
-  padding-bottom: 0;
-}
-
-.c17 ul,
-.c17 ol {
-  padding-left: 1em;
-}
-
-.c17 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
-
-.c17 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  font-weight: normal;
-  padding-top: 107px;
-  padding-bottom: 46px;
-  margin: 0;
-  position: relative;
-  text-align: center;
-}
-
-.c17 h1:before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  background: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 69px;
-  right: calc(50% - 7.5px);
-}
-
-.c17 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-  font-weight: normal;
-  margin: 0;
-}
-
-.c17 h2 a {
-  background-size: 1.25px 1px;
-}
-
-.c17 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  font-weight: normal;
-  padding-top: 23px;
-  margin: 0;
-}
-
-.c17 h3 strong {
-  font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-}
-
-.c17 h3 a {
-  background-size: 1.25px 1px;
-}
-
-.c17 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  text-align: left;
-  font-weight: normal;
-  padding-top: 46px;
-  padding-bottom: 46px;
-  margin: 0;
-  word-break: break-word;
-}
-
-.c17 .content-end {
-  display: inline-block;
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  margin-left: 12px;
-}
-
-.c17 .artist-follow {
-  vertical-align: middle;
-  margin-left: 10px;
-  cursor: pointer;
-  background: none transparent;
-}
-
-.c17 .artist-follow:before {
-  font-family: "artsy-icons";
-  content: "";
-  vertical-align: -8.5px;
-  line-height: 32px;
-  font-size: 32px;
-}
-
-.c17 .artist-follow:after {
-  content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
-  line-height: 1.1em;
-  text-transform: none;
-}
-
-.c15 {
-  color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c15 .col {
-  padding: 0;
-}
-
-.c15 .col--first {
-  width: 30%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c15 .col--first .PartnerBlock {
-  display: block;
-}
-
-.c15 .col--last {
-  width: 60%;
-}
-
-.c15 .col--last .PartnerBlock {
-  display: none;
-}
-
-.c15 .article__text-section {
-  min-width: 100%;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
-.c2 {
-  color: white;
-  text-align: center;
-}
-
-.c2 .PartnerBlock img {
-  max-width: 170px;
-  padding-top: 5px;
-}
-
-.c3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
-.c0 {
-  color: white;
-  background-color: black;
-  padding: 150px 20px;
-}
-
-.c1 {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.c1 .SeriesTitle {
-  margin-bottom: 60px;
-}
-
-.c1 .SeriesTitle .PartnerBlock {
-  padding-bottom: 40px;
-}
-
-.c1 .ArticleCard {
-  margin-bottom: 60px;
-}
-
-.c1 .SeriesAbout {
-  padding-top: 60px;
-}
-
-@media (max-width:720px) {
-  .c11 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c10 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c10:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:900px) {
-  .c4 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c5 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c7 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c8 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c12 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c14 {
-    width: 30px;
-  }
-}
-
-@media (max-width:900px) {
-  .c17 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c17 {
-    max-width: 100%;
-  }
-}
-
-@media (max-width:600px) {
-  .c17 p,
-  .c17 ul,
-  .c17 ol {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c17 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c17 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c17 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c17 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c17 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c17 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c17 .content-start {
-    font-size: 55px;
-  }
-}
-
-@media (max-width:900px) {
-  .c15 {
-    display: block;
-  }
-
-  .c15 .col {
-    width: 100%;
-  }
-
-  .c15 .col--first .PartnerBlock {
-    display: none;
-  }
-
-  .c15 .col--last .PartnerBlock {
-    display: block;
-    margin-top: 60px;
-  }
-}
-
-@media (max-width:900px) {
-  .c16 {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c2 .PartnerBlock img {
-    max-width: 200px;
-  }
-}
-
-@media (max-width:900px) {
-  .c3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 .SeriesTitle .PartnerBlock {
-    padding-bottom: 0;
-  }
-
-  .c1 .ArticleCard {
-    margin-bottom: 40px;
-  }
-
-  .c1 .SeriesAbout {
-    padding-top: 40px;
-  }
-}
-
-<div
-  className="SeriesTitle c0"
-  color="white"
->
-  <div
-    className="c1"
-  >
-    <div
-      className="SeriesTitle c2"
-      color="white"
-    >
-      <div
-        className="c3"
-      >
-        The Future of Art
-      </div>
-    </div>
-    <a
-      className="ArticleCard c4"
-      color="white"
-      href="new-yorks-next-art-district"
-    >
-      <div
-        className="c5"
-      >
-        <div>
-          <div
-            className="c6"
-          >
-            <div>
-              The Future of Art
-            </div>
-            <div>
-              03:12
-            </div>
-          </div>
-          <div
-            className="c7"
-          >
-            New York's Next Art District
-          </div>
-          <div
-            className="c8"
-          >
-            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c9"
-          color="white"
-        >
-          <div
-            className="author c10"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c11"
-          >
-            May 19, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c14"
-        >
-          <svg
-            className="IconPlayCaret"
-            version="1.1"
-            viewBox="0 0 40 56"
-            x="0px"
-            xmlns="http://www.w3.org/2000/svg"
-            y="0px"
-          >
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              strokeWidth="1"
-            >
-              <polygon
-                fill="white"
-                points="0 0 0 56 39.3600006 28"
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c4"
-      color="white"
-      href="artsy-editorial-path-winning-art-prize"
-    >
-      <div
-        className="c5"
-      >
-        <div>
-          <div
-            className="c6"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c7"
-          >
-            What’s the Path to Winning an Art Prize?
-          </div>
-          <div
-            className="c8"
-          >
-            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c9"
-          color="white"
-        >
-          <div
-            className="author c10"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c11"
-          >
-            Jun 29, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
-        />
-      </div>
-    </a>
-    <div
-      className="SeriesAbout c15"
-      color="white"
-    >
-      <div
-        className="col col--first"
-      >
-        <div
-          className="c16"
-        >
-          About the Series
-        </div>
-      </div>
-      <div
-        className="col col--last"
-      >
-        <div
-          className="article__text-section c17"
-        >
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`renders a sponsored series properly 1`] = `
-.c13 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c13.date {
-  white-space: nowrap;
-}
-
 .c12 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -827,7 +13,19 @@ exports[`renders a sponsored series properly 1`] = `
   white-space: nowrap;
 }
 
-.c12:before {
+.c17 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c17.date {
+  white-space: nowrap;
+}
+
+.c17:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -837,13 +35,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c12:before {
+.c17:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c11 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -929,45 +127,52 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c14 {
+.c11 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c11 span {
+  margin-right: 30px;
+}
+
+.c13 {
   position: relative;
   width: 50%;
   height: 100%;
   margin-left: 30px;
 }
 
-.c15 {
+.c14 {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.c16 {
+.c15 {
   position: absolute;
   left: 20px;
   bottom: 20px;
   width: 40px;
 }
 
-.c4 img {
-  max-width: 220px;
-  padding-top: 20px;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c19 {
+.c23 {
   position: relative;
   width: 100%;
 }
 
-.c19 a {
+.c23 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -977,13 +182,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c19 a:hover {
+.c23 a:hover {
   color: #999;
 }
 
-.c19 p,
-.c19 ul,
-.c19 ol {
+.c23 p,
+.c23 ul,
+.c23 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -994,20 +199,20 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c19 p:first-child {
+.c23 p:first-child {
   padding-top: 0;
 }
 
-.c19 p:last-child {
+.c23 p:last-child {
   padding-bottom: 0;
 }
 
-.c19 ul,
-.c19 ol {
+.c23 ul,
+.c23 ol {
   padding-left: 1em;
 }
 
-.c19 li {
+.c23 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1016,7 +221,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c19 h1 {
+.c23 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1029,7 +234,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c19 h1:before {
+.c23 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1040,7 +245,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c19 h2 {
+.c23 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1049,11 +254,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c19 h2 a {
+.c23 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c19 h3 {
+.c23 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1063,7 +268,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c19 h3 strong {
+.c23 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1071,11 +276,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c19 h3 a {
+.c23 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c19 blockquote {
+.c23 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1088,7 +293,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c19 .content-end {
+.c23 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1098,14 +303,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: 12px;
 }
 
-.c19 .artist-follow {
+.c23 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c19 .artist-follow:before {
+.c23 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1113,7 +318,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c19 .artist-follow:after {
+.c23 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1122,7 +327,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c17 {
+.c19 {
   color: white;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1134,11 +339,7 @@ exports[`renders a sponsored series properly 1`] = `
   justify-content: space-between;
 }
 
-.c17 .col {
-  padding: 0;
-}
-
-.c17 .col--first {
+.c20 {
   width: 30%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1153,40 +354,33 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c17 .col--first .PartnerBlock {
-  display: block;
-}
-
-.c17 .col--last {
+.c22 {
   width: 60%;
 }
 
-.c17 .col--last .PartnerBlock {
+.c22 .file__PartnerBlockContainer-s8dqalt-0 {
   display: none;
 }
 
-.c17 .article__text-section {
-  min-width: 100%;
-}
-
-.c18 {
+.c21 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
-.c2 {
+.c3 {
   color: white;
   text-align: center;
 }
 
-.c2 .PartnerBlock img {
+.c3 .file__PartnerBlockContainer-s8dqalt-0 img {
   max-width: 170px;
   padding-top: 5px;
+  padding-bottom: 40px;
 }
 
-.c3 {
+.c4 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1205,34 +399,16 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0 auto;
 }
 
-.c1 .SeriesTitle {
+.c1 .c2 {
   margin-bottom: 60px;
 }
 
-.c1 .SeriesTitle .PartnerBlock {
-  padding-bottom: 40px;
-}
-
-.c1 .ArticleCard {
+.c1 .c5 {
   margin-bottom: 60px;
 }
 
-.c1 .SeriesAbout {
+.c1 .c18 {
   padding-top: 60px;
-}
-
-@media (max-width:720px) {
-  .c13 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:720px) {
@@ -1250,7 +426,21 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c12:before {
+  .c17 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c17:before {
     min-width: 8px;
     min-height: 8px;
   }
@@ -1292,7 +482,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c14 {
+  .c13 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1300,71 +490,43 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c16 {
+  .c15 {
     width: 30px;
   }
 }
 
-@media (max-width:720px) {
-  .c4 img {
-    max-width: 195px;
-  }
-}
-
-@media (max-width:720px) {
-  .c5 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:900px) {
-  .c19 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c19 {
-    max-width: 100%;
-  }
-}
-
 @media (max-width:600px) {
-  .c19 p,
-  .c19 ul,
-  .c19 ol {
+  .c23 p,
+  .c23 ul,
+  .c23 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c19 li {
+  .c23 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c19 h1 {
+  .c23 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c19 h2 {
+  .c23 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c19 h3 {
+  .c23 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1372,58 +534,68 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c19 h3 strong {
+  .c23 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c19 blockquote {
+  .c23 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c19 .content-start {
+  .c23 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:900px) {
-  .c17 {
+  .c19 {
     display: block;
-  }
-
-  .c17 .col {
-    width: 100%;
-  }
-
-  .c17 .col--first .PartnerBlock {
-    display: none;
-  }
-
-  .c17 .col--last .PartnerBlock {
-    display: block;
-    margin-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c18 {
+  .c20 {
+    width: 100%;
+  }
+
+  .c20 .file__PartnerBlockContainer-s8dqalt-0 {
+    margin-top: 60px;
+    display: none;
+  }
+}
+
+@media (max-width:900px) {
+  .c22 {
+    width: 100%;
+  }
+
+  .c22 .file__PartnerBlockContainer-s8dqalt-0 {
+    margin-top: 60px;
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c21 {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width:900px) {
-  .c2 .PartnerBlock img {
+  .c3 .file__PartnerBlockContainer-s8dqalt-0 img {
     max-width: 200px;
+    padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c3 {
+  .c4 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1433,16 +605,12 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c1 .SeriesTitle .PartnerBlock {
-    padding-bottom: 0;
-  }
-
-  .c1 .ArticleCard {
+  .c1 .c5 {
     margin-bottom: 40px;
   }
 
-  .c1 .SeriesAbout {
-    padding-top: 40px;
+  .c1 .c18 {
+    padding-top: 60px;
   }
 }
 
@@ -1454,37 +622,19 @@ exports[`renders a sponsored series properly 1`] = `
     className="c1"
   >
     <div
-      className="SeriesTitle c2"
+      className="SeriesTitle c2 c3"
       color="white"
     >
       <div
-        className="c3"
+        className="c4"
       >
         The Future of Art
       </div>
-      <div
-        className="PartnerBlock c4"
-      >
-        <div
-          className="c5"
-        >
-          Presented In Partnership With
-        </div>
-        <a
-          href="http://artsy.net"
-          onClick={[Function]}
-          target="_blank"
-        >
-          <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
-          />
-        </a>
-      </div>
     </div>
     <a
-      className="ArticleCard c6"
+      className="ArticleCard c5 c6"
       color="white"
-      href="new-yorks-next-art-district"
+      href="joanne-artman-gallery-poetry-naturerefinement-form"
     >
       <div
         className="c7"
@@ -1503,41 +653,36 @@ exports[`renders a sponsored series properly 1`] = `
           <div
             className="c9"
           >
-            New York's Next Art District
+            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
           </div>
           <div
             className="c10"
           >
-            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
           </div>
         </div>
         <div
-          className="Byline c11"
-          color="white"
+          className="c11"
         >
+          <span>
+            Coming Soon
+          </span>
           <div
-            className="author c12"
-            color="white"
+            className="date c12"
           >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c13"
-          >
-            May 19, 2017
+            Aug 28, 2018
           </div>
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <img
-          className="c15"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+          className="c14"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
         />
         <div
-          className="c16"
+          className="c15"
         >
           <svg
             className="IconPlayCaret"
@@ -1563,7 +708,7 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </a>
     <a
-      className="ArticleCard c6"
+      className="ArticleCard c5 c6"
       color="white"
       href="artsy-editorial-path-winning-art-prize"
     >
@@ -1590,49 +735,888 @@ exports[`renders a sponsored series properly 1`] = `
           </div>
         </div>
         <div
-          className="Byline c11"
+          className="Byline c16"
           color="white"
         >
           <div
-            className="author c12"
+            className="author c17"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c13"
+            className="date c12"
           >
             Jun 29, 2017
           </div>
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <img
-          className="c15"
+          className="c14"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
         />
       </div>
     </a>
     <div
-      className="SeriesAbout c17"
+      className="SeriesAbout c18 c19"
       color="white"
     >
       <div
-        className="col col--first"
+        className="c20"
       >
         <div
+          className="c21"
+        >
+          About the Series
+        </div>
+      </div>
+      <div
+        className="c22"
+      >
+        <div
+          className="article__text-section c23"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a sponsored series properly 1`] = `
+.c15 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c15.date {
+  white-space: nowrap;
+}
+
+.c20 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c20.date {
+  white-space: nowrap;
+}
+
+.c20:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: white;
+}
+
+.c20:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.c9 {
+  display: block;
+  border: 1px solid;
+  color: white;
+  text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.c10 .author,
+.c10 .date {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c12 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+.c11 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.c11 div {
+  margin-right: 20px;
+}
+
+.c13 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c14 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c14 span {
+  margin-right: 30px;
+}
+
+.c16 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+}
+
+.c17 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.c18 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 40px;
+}
+
+.c6 img {
+  max-width: 220px;
+  padding-top: 20px;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c26 {
+  position: relative;
+  width: 100%;
+}
+
+.c26 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c26 a:hover {
+  color: #999;
+}
+
+.c26 p,
+.c26 ul,
+.c26 ol {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c26 p:first-child {
+  padding-top: 0;
+}
+
+.c26 p:last-child {
+  padding-bottom: 0;
+}
+
+.c26 ul,
+.c26 ol {
+  padding-left: 1em;
+}
+
+.c26 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c26 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c26 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c26 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c26 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c26 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c26 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c26 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c26 blockquote {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.c26 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c26 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c26 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c26 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c22 {
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c23 {
+  width: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c25 {
+  width: 60%;
+}
+
+.c25 .c5 {
+  display: none;
+}
+
+.c24 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
+.c3 {
+  color: white;
+  text-align: center;
+}
+
+.c3 .c5 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+.c0 {
+  color: white;
+  background-color: black;
+  padding: 150px 20px;
+}
+
+.c1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.c1 .c2 {
+  margin-bottom: 60px;
+}
+
+.c1 .c8 {
+  margin-bottom: 60px;
+}
+
+.c1 .c21 {
+  padding-top: 60px;
+}
+
+@media (max-width:720px) {
+  .c15 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c20 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c20:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c9 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c10 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c12 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c13 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c16 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c18 {
+    width: 30px;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 img {
+    max-width: 195px;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c26 p,
+  .c26 ul,
+  .c26 ol {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c26 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c26 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c26 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c26 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c26 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c26 blockquote {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c26 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:900px) {
+  .c22 {
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c23 {
+    width: 100%;
+  }
+
+  .c23 .c5 {
+    margin-top: 60px;
+    display: none;
+  }
+}
+
+@media (max-width:900px) {
+  .c25 {
+    width: 100%;
+  }
+
+  .c25 .c5 {
+    margin-top: 60px;
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c24 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c3 .c5 img {
+    max-width: 200px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c4 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 .c8 {
+    margin-bottom: 40px;
+  }
+
+  .c1 .c21 {
+    padding-top: 60px;
+  }
+}
+
+<div
+  className="SeriesTitle c0"
+  color="white"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="SeriesTitle c2 c3"
+      color="white"
+    >
+      <div
+        className="c4"
+      >
+        The Future of Art
+      </div>
+      <div
+        className="PartnerBlock c5 c6"
+      >
+        <div
+          className="c7"
+        >
+          Presented In Partnership With
+        </div>
+        <a
+          href="http://artsy.net"
+          onClick={[Function]}
+          target="_blank"
+        >
+          <img
+            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          />
+        </a>
+      </div>
+    </div>
+    <a
+      className="ArticleCard c8 c9"
+      color="white"
+      href="joanne-artman-gallery-poetry-naturerefinement-form"
+    >
+      <div
+        className="c10"
+      >
+        <div>
+          <div
+            className="c11"
+          >
+            <div>
+              The Future of Art
+            </div>
+            <div>
+              03:12
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+          </div>
+          <div
+            className="c13"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+        <div
+          className="c14"
+        >
+          <span>
+            Coming Soon
+          </span>
+          <div
+            className="date c15"
+          >
+            Aug 28, 2018
+          </div>
+        </div>
+      </div>
+      <div
+        className="c16"
+      >
+        <img
+          className="c17"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+        />
+        <div
           className="c18"
+        >
+          <svg
+            className="IconPlayCaret"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </a>
+    <a
+      className="ArticleCard c8 c9"
+      color="white"
+      href="artsy-editorial-path-winning-art-prize"
+    >
+      <div
+        className="c10"
+      >
+        <div>
+          <div
+            className="c11"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c12"
+          >
+            What’s the Path to Winning an Art Prize?
+          </div>
+          <div
+            className="c13"
+          >
+            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
+          </div>
+        </div>
+        <div
+          className="Byline c19"
+          color="white"
+        >
+          <div
+            className="author c20"
+            color="white"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c15"
+          >
+            Jun 29, 2017
+          </div>
+        </div>
+      </div>
+      <div
+        className="c16"
+      >
+        <img
+          className="c17"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
+        />
+      </div>
+    </a>
+    <div
+      className="SeriesAbout c21 c22"
+      color="white"
+    >
+      <div
+        className="c23"
+      >
+        <div
+          className="c24"
         >
           About the Series
         </div>
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c5 c6"
         >
           <div
-            className="c5"
+            className="c7"
           >
             Presented In Partnership With
           </div>
@@ -1648,10 +1632,10 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="col col--last"
+        className="c25"
       >
         <div
-          className="article__text-section c19"
+          className="article__text-section c26"
         >
           <div
             dangerouslySetInnerHTML={
@@ -1662,10 +1646,10 @@ exports[`renders a sponsored series properly 1`] = `
           />
         </div>
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c5 c6"
         >
           <div
-            className="c5"
+            className="c7"
           >
             Presented In Partnership With
           </div>

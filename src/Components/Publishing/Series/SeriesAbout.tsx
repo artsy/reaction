@@ -58,7 +58,7 @@ SeriesAbout.defaultProps = {
 }
 
 interface ColProps {
-  first: boolean
+  first?: boolean
 }
 
 const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled.div
@@ -68,9 +68,6 @@ export const SeriesAboutContainer = Div`
   display: flex;
   justify-content: space-between;
 
-  .article__text-section {
-    min-width: 100%;
-  }
   ${props => pMedia.md`
     display: block;
   `}
@@ -79,9 +76,9 @@ export const SeriesAboutContainer = Div`
 const Col = Div`
   width: ${props => props.first ? '30' : '60'}%;
   ${props => props.first && `
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
   `}
 
   ${PartnerBlockContainer} {

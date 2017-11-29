@@ -51,7 +51,7 @@ export class ArticleCard extends Component<Props, null> {
             <Title>{article.title}</Title>
             <Description>{article.description}</Description>
           </div>
-          {article.layout === 'video'
+          {media
             ?
               this.renderMediaDate()
             :
