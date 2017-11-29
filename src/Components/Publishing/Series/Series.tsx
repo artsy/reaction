@@ -1,20 +1,22 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { ArticleCard } from './Components/ArticleCard'
-import { SeriesAbout } from './Components/SeriesAbout'
-import { SeriesTitle } from './Components/SeriesTitle'
+import { ArticleCard, ArticleCardContainer } from './ArticleCard'
+import { SeriesAbout, SeriesAboutContainer } from './SeriesAbout'
+import { SeriesTitle, SeriesTitleContainer } from './SeriesTitle'
 
 interface Props {
   color?: string,
-  series?: any
+  article?: any
 }
 
 export class Series extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { color, series } = this.props
+    const { color, article } = this.props
+    const { series } = article
+
     const articles = series.related_articles || []
 
     return (
@@ -22,21 +24,21 @@ export class Series extends Component<Props, null> {
         <SeriesContent>
 
           <SeriesTitle
-            series={series}
+            article={article}
             color={color}
           />
           
-          {articles.map((article, i) =>
+          {articles.map((relatedArticle, i) =>
             <ArticleCard
               key={i}
-              article={article}
-              series={series}
+              article={relatedArticle}
+              series={article}
               color={color}
             />
           )}
           
           <SeriesAbout
-            series={series}
+            article={article}
             color={color}
           />
 
@@ -61,34 +63,25 @@ const SeriesContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 
-  .SeriesTitle {
-    margin-bottom: 60px;
-    .PartnerBlock {
-      padding-bottom: 40px;
-    }
-  }
-
-  .ArticleCard {
+  ${SeriesTitleContainer} {
     margin-bottom: 60px;
   }
 
-  .SeriesAbout {
+  ${ArticleCardContainer} {
+    margin-bottom: 60px;
+  }
+
+  ${SeriesAboutContainer} {
     padding-top: 60px;
   }
 
   ${props => pMedia.md`
-    .SeriesTitle {
-      .PartnerBlock {
-        padding-bottom: 0;
-      }
-    }
-
-    .ArticleCard {
+    ${ArticleCardContainer} {
       margin-bottom: 40px;
     }
 
-    .SeriesAbout {
-      padding-top: 40px;
+    ${SeriesAboutContainer} {
+      padding-top: 60px;
     }
   `}
 `

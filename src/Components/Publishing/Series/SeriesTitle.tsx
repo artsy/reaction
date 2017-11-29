@@ -1,20 +1,20 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../../Helpers"
-import { Fonts } from "../../Fonts"
-import { PartnerBlock } from '../../Partner/PartnerBlock'
+import { pMedia } from "../../Helpers"
+import { Fonts } from "../Fonts"
+import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 
 interface Props {
   color?: string,
-  series?: any
+  article?: any
 }
 
 export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { color, series } = this.props
-    const { sponsor, title } = series
+    const { color, article } = this.props
+    const { sponsor, title } = article
 
     return (
       <SeriesTitleContainer className='SeriesTitle' color={color}>
@@ -43,18 +43,20 @@ SeriesTitle.defaultProps = {
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
 
-const SeriesTitleContainer = Div`
+export const SeriesTitleContainer = Div`
   color: ${props => props.color};
   text-align: center;
 
-  .PartnerBlock img {
+  ${PartnerBlockContainer} img {
     max-width: 170px;
     padding-top: 5px;
+    padding-bottom: 40px;
   }
 
   ${props => pMedia.md`
-    .PartnerBlock img {
+    ${PartnerBlockContainer} img {
       max-width: 200px;
+      padding-bottom: 0;
     }
   `}
 `

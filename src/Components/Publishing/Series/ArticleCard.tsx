@@ -1,10 +1,12 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { crop } from "../../../../Utils/resizer"
-import { pMedia } from "../../../Helpers"
-import { Byline } from '../../Byline/Byline'
-import { Fonts } from "../../Fonts"
-import { IconPlayCaret } from '../../Icon/IconPlayCaret'
+import { crop } from "../../../Utils/resizer"
+import { pMedia } from "../../Helpers"
+import { Date } from '../Byline/AuthorDate'
+import { Byline } from '../Byline/Byline'
+import { dateIsFuture, getMediaDate } from "../Constants"
+import { Fonts } from "../Fonts"
+import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
 interface Props {
   article?: any,
@@ -14,6 +16,22 @@ interface Props {
 
 export class ArticleCard extends Component<Props, null> {
   public static defaultProps: Partial<Props>
+
+  renderMediaDate () {
+    const { article } = this.props
+    const mediaDate = getMediaDate(article)
+  
+    if (dateIsFuture(article.media.release_date)) {
+      return (
+          <ComingSoon>
+            <span>Coming Soon</span>
+            <Date layout='condensed' date={mediaDate} />
+          </ComingSoon>
+      )
+    } else {
+      return <Date layout='condensed' date={mediaDate} />
+    }
+  }
 
   render () {
     const { article, color, series } = this.props
@@ -33,11 +51,16 @@ export class ArticleCard extends Component<Props, null> {
             <Title>{article.title}</Title>
             <Description>{article.description}</Description>
           </div>
-          <Byline
-            article={article}
-            color={color}
-            layout='condensed'
-          />
+          {article.layout === 'video'
+            ?
+              this.renderMediaDate()
+            :
+              <Byline
+                article={article}
+                color={color}
+                layout='condensed'
+              />
+          }
         </TextContainer>
 
         <ImageContainer>
@@ -59,7 +82,7 @@ ArticleCard.defaultProps = {
 const A: StyledFunction<Props & React.HTMLProps<HTMLLinkElement>> = styled.a
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
 
-const ArticleCardContainer = A`
+export const ArticleCardContainer = A`
   display: block;
   border: 1px solid;
   color: ${props => props.color};
@@ -103,12 +126,22 @@ const Header = styled.div`
     margin-right: 20px;
   }
 `
+
 const Description = styled.div`
   ${Fonts.garamond("s23")}
   ${props => pMedia.md`
     ${Fonts.garamond("s19")}
     margin-bottom: 20px;
   `}
+`
+
+const ComingSoon = styled.div`
+  ${Fonts.unica("s16", "medium")}
+  display: flex;
+  align-items: flex-end;
+  span {
+    margin-right: 30px;
+  }
 `
 
 const ImageContainer = styled.div`

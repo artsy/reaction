@@ -47,7 +47,7 @@ export const ClassicArticle: ArticleData = {
   scheduled_publish_at: null,
   thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   published_at: "2017-07-28T20:38:05.709Z",
-  description: " The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
+  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
   sections: [
     {
       type: "text",
@@ -669,23 +669,33 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
 
-export const VideoArticle = extend({}, StandardArticle, {
+export const VideoArticle = {
   layout: "video",
+  id: "597b9f652d35b80017a2a6a7",
+  title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
+  slug: "joanne-artman-gallery-poetry-naturerefinement-form",
+  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
+  published_at: "2017-07-28T20:38:05.709Z",
+  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
   media: {
     url: '',
     duration: '03:12',
-  },
-})
+    release_date: "2018-08-28T20:38:05.709Z",
+    published: false
+  }
+}
 
-export const SeriesArticle = extend({}, StandardArticle, {
+export const SeriesArticle = {
   layout: "series",
   title: "The Future of Art",
-  about: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-  related_articles: [
-    VideoArticle,
-    FeatureArticle
-  ]
-})
+  series: {
+    description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+    related_articles: [
+      VideoArticle,
+      FeatureArticle
+    ]
+  }
+}
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, {
  sponsor: {

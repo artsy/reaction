@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { ArticleCard } from '../Series/Components/ArticleCard'
-import { SeriesAbout } from '../Series/Components/SeriesAbout'
-import { SeriesTitle } from '../Series/Components/SeriesTitle'
+import { ArticleCard } from '../Series/ArticleCard'
 import { Series } from '../Series/Series'
+import { SeriesAbout } from '../Series/SeriesAbout'
+import { SeriesTitle } from '../Series/SeriesTitle'
 
 import {
   SeriesArticle,
@@ -15,13 +15,13 @@ import {
 storiesOf("Publishing/Series", module).add("Series", () => {
   return (
     <div>
-      <Series series={SeriesArticle} />
+      <Series article={SeriesArticle} />
     </div>
   )
 }).add("Series: Sponsored", () => {
   return (
     <div>
-      <Series series={SeriesArticleSponsored} />
+      <Series article={SeriesArticleSponsored} />
     </div>
   )
 }).add("Article Card", () => {
@@ -45,25 +45,25 @@ storiesOf("Publishing/Series", module).add("Series", () => {
 }).add("Series Title", () => {
   return (
     <div>
-      <SeriesTitle series={SeriesArticle} />
+      <SeriesTitle article={SeriesArticle} />
     </div>
   )
 }).add("Series Title: Sponsored", () => {
   return (
     <div>
-      <SeriesTitle series={SeriesArticleSponsored} />
+      <SeriesTitle article={SeriesArticleSponsored} />
     </div>
   )
 }).add("Series About", () => {
   return (
     <div>
-      <SeriesAbout series={SeriesArticle} />
+      <SeriesAbout article={SeriesArticle} />
     </div>
   )
 }).add("Series About: Sponsored", () => {
   return (
     <div>
-      <SeriesAbout series={SeriesArticleSponsored} />
+      <SeriesAbout article={SeriesArticleSponsored} />
     </div>
   )
 })
