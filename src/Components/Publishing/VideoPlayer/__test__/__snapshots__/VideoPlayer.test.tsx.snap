@@ -28,7 +28,7 @@ exports[`renders properly 1`] = `
   padding: 20px;
   margin: 20px;
   opacity: 0;
-  width: 100%;
+  width: calc(100% - 40px);
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
 }
@@ -37,11 +37,11 @@ exports[`renders properly 1`] = `
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: black;
 }
 
 .c0 video {
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
@@ -59,7 +59,14 @@ exports[`renders properly 1`] = `
 }
 
 .c3 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  cursor: pointer;
 }
 
 <div
@@ -106,6 +113,12 @@ exports[`renders properly 1`] = `
             />
           </g>
         </svg>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+        FS
       </span>
     </div>
   </div>

@@ -1,15 +1,18 @@
-import { get, memoize } from "lodash"
-import React, { Component, HTMLProps  } from "react"
-import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../Assets/Colors"
-import Events from "../../../Utils/Events"
-import { crop, resize } from "../../../Utils/resizer"
-import { pMedia as breakpoint } from "../../Helpers"
+import React, { Component } from "react"
+import styled from "styled-components"
 import { Fonts } from "../Fonts"
 import { IconVideoMute } from "../Icon/IconVideoMute"
 import { IconVideoPause } from "../Icon/IconVideoPause"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
+import {
+  addFSEventListener,
+  exitFullscreen,
+  fullscreenEnabled,
+  isFullscreen,
+  removeFSEventListener,
+  requestFullscreen
+} from "./Fullscreen"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
@@ -23,10 +26,23 @@ interface State {
 
 export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
+  public videoPlayer: HTMLDivElement
 
   state = {
     isMuted: false,
     isPlaying: false
+  }
+
+  componentDidMount = () => {
+    if (fullscreenEnabled()){
+      addFSEventListener(this.video)
+    }
+  }
+
+  componentWillUnmount = () => {
+    if (fullscreenEnabled()) {
+      removeFSEventListener(this.video)
+    }
   }
 
   togglePlayButton = () => {
@@ -47,11 +63,23 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
+  toggleFullscreen = () => {
+    if (fullscreenEnabled()) {
+      if (isFullscreen()) {
+        exitFullscreen()
+      } else {
+        requestFullscreen(this.videoPlayer)
+      }
+    }
+  }
+
   render() {
     const { url, title } = this.props
 
     return (
-      <VideoContainer>
+      <VideoContainer
+        ref={container => (this.videoPlayer = container)}
+      >
         <video playsInline
           src={url}
           ref={video => (this.video = video)}
@@ -82,9 +110,9 @@ export class VideoPlayer extends Component<Props, State> {
               <IconVideoMute />
             }
           </span>
-          <span onClick={this.toggleFullscreen}>
+          <Fullscreen onClick={this.toggleFullscreen}>
             FS
-          </span>
+          </Fullscreen>
           </ControlBlock>
         </VideoControls>
       </VideoContainer>
@@ -130,4 +158,7 @@ const Title = styled.div`
 `
 const ControlBlock = styled.div`
   display: flex;
+`
+const Fullscreen = styled.span`
+  cursor: pointer;
 `
