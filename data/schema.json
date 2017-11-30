@@ -39342,6 +39342,26 @@
               "defaultValue": null
             },
             {
+              "name": "price_range_min",
+              "description": "The minimum price collector has selected",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "price_range_max",
+              "description": "The maximum price collector has selected",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "clientMutationId",
               "description": null,
               "type": {
