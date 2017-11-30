@@ -26,6 +26,10 @@ exports[`Nav renders a Nav 1`] = `
   vertical-align: middle;
 }
 
+.c1 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
 .c1 .c2 {
   margin: 0;
   vertical-align: middle;
@@ -214,6 +218,10 @@ exports[`Nav renders a Nav 1`] = `
   .c1 .c2 {
     font-size: 24px;
   }
+
+  .c1 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
 }
 
 @media (max-width:720px) {
@@ -335,10 +343,9 @@ exports[`Nav renders a sponsored nav 1`] = `
   display: inline-block;
 }
 
-.c4 {
+.c5 {
   width: 15px;
   height: 15px;
-  margin: 0 20px;
 }
 
 .c1 {
@@ -358,12 +365,16 @@ exports[`Nav renders a sponsored nav 1`] = `
   vertical-align: middle;
 }
 
+.c1 .c4 {
+  margin: 0 20px;
+}
+
 .c1 .c2 {
   margin: 0;
   vertical-align: middle;
 }
 
-.c10 {
+.c11 {
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -400,12 +411,12 @@ exports[`Nav renders a sponsored nav 1`] = `
   letter-spacing: 1px;
 }
 
-.c10:hover:not(:disabled) {
+.c11:hover:not(:disabled) {
   cursor: pointer;
   background: #cccccc;
 }
 
-.c9 {
+.c10 {
   background: black;
   color: white;
   font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
@@ -427,11 +438,11 @@ exports[`Nav renders a sponsored nav 1`] = `
   margin: 8px;
 }
 
-.c9:hover:not(:disabled) {
+.c10:hover:not(:disabled) {
   background: #6e1fff;
 }
 
-.c12 {
+.c13 {
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -486,22 +497,22 @@ exports[`Nav renders a sponsored nav 1`] = `
   margin: 8px;
 }
 
-.c12:hover:not(:disabled) {
+.c13:hover:not(:disabled) {
   cursor: pointer;
   background: #cccccc;
 }
 
-.c7 {
+.c8 {
   text-decoration: none;
 }
 
-.c14 {
+.c15 {
   display: none;
   margin-right: 5px;
   max-width: 32px;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -528,7 +539,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   color: white;
 }
 
-.c5 {
+.c6 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
@@ -539,10 +550,9 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c5 {
     width: 13px;
     height: 13px;
-    margin: 0 10px;
   }
 }
 
@@ -554,15 +564,19 @@ exports[`Nav renders a sponsored nav 1`] = `
   .c1 .c2 {
     font-size: 24px;
   }
+
+  .c1 .c4 {
+    margin: 0 10px;
+  }
 }
 
 @media (max-width:720px) {
-  .c6 .c8,
-  .c6 .c11 {
+  .c7 .c9,
+  .c7 .c12 {
     display: none;
   }
 
-  .c6 .c13 {
+  .c7 .c14 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -575,7 +589,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c6 {
     position: relative;
   }
 }
@@ -598,7 +612,7 @@ exports[`Nav renders a sponsored nav 1`] = `
       </div>
     </a>
     <svg
-      className="IconPlus c4"
+      className="c4 c5"
       version="1.1"
       viewBox="0 0 15 15"
       xmlns="http://www.w3.org/2000/svg"
@@ -644,19 +658,19 @@ exports[`Nav renders a sponsored nav 1`] = `
     </a>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     Artsy Editorial
   </div>
   <div
-    className="c6"
+    className="c7"
   >
     <a
-      className="mlh-login c7"
+      className="mlh-login c8"
       href="/log_in"
     >
       <button
-        className="c8 c9 c10"
+        className="c9 c10 c11"
       >
         <span>
           Login
@@ -664,11 +678,11 @@ exports[`Nav renders a sponsored nav 1`] = `
       </button>
     </a>
     <a
-      className="mlh-signup c7"
+      className="mlh-signup c8"
       href="/sign_up"
     >
       <button
-        className="c11 c12"
+        className="c12 c13"
       >
         <span>
           Signup
@@ -676,7 +690,7 @@ exports[`Nav renders a sponsored nav 1`] = `
       </button>
     </a>
     <div
-      className="c13 c14"
+      className="c14 c15"
     >
       <svg
         enableBackground="new 0 0 32 32"
@@ -735,6 +749,10 @@ exports[`Nav renders a transparent nav 1`] = `
 .c1 img {
   max-height: 32px;
   vertical-align: middle;
+}
+
+.c1 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
 }
 
 .c1 .c2 {
@@ -924,6 +942,10 @@ exports[`Nav renders a transparent nav 1`] = `
 
   .c1 .c2 {
     font-size: 24px;
+  }
+
+  .c1 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
   }
 }
 

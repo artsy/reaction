@@ -86,6 +86,9 @@ const PartnerInlineContainer = Div`
     max-height: 32px;
     vertical-align: middle;
   }
+  ${IconPlus} {
+    margin: 0 20px;
+  }
   ${Icon} {
     margin: 0;
     vertical-align: middle;
@@ -96,6 +99,9 @@ const PartnerInlineContainer = Div`
     }
     ${Icon} {
       font-size: 24px;
+    }
+    ${IconPlus} {
+      margin: 0 10px;
     }
   `}
 `

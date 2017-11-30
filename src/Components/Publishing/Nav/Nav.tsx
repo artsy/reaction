@@ -25,7 +25,7 @@ export const Nav: React.SFC<Props> = props => {
     <NavContainer transparent={transparent}>
       <PartnerInline
         url={sponsor && sponsor.url}
-        logo={sponsor && sponsor.white_logo}
+        logo={sponsor && sponsor.partner_light_logo}
         color="white"
         margin="0 10px"
       />
