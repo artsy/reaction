@@ -21,7 +21,7 @@ export const Typography = () => {
       <AvantGardeS13>Avant Garde s13: 13px / 1.65em</AvantGardeS13>
       <AvantGardeS11>Avant Garde s11: 11px / 1.65em</AvantGardeS11>
       <hr />
-      <UnicaS130>Unica s130: 130px / 1.1em</UnicaS130>
+      <UnicaS120>Unica s120: 120px / 1.1em</UnicaS120>
       <UnicaS100>Unica s100: 100px / 1.1em</UnicaS100>
       <UnicaS80>Unica s80: 80px / 1.1em</UnicaS80>
       <UnicaS67>Unica s67: 67px / 1em</UnicaS67>
@@ -140,7 +140,7 @@ const UnicaS100 = styled.div`
   ${Fonts.unica("s100")}
   margin-bottom: 20px;
 `
-const UnicaS130 = styled.div`
-  ${Fonts.unica("s130")}
+const UnicaS120 = styled.div`
+  ${Fonts.unica("s120")}
   margin-bottom: 20px;
 `

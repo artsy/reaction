@@ -170,19 +170,6 @@ exports[`renders classic text properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
-}
-
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -416,19 +403,6 @@ exports[`renders feature text properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
-}
-
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -659,19 +633,6 @@ exports[`renders standard text properly 1`] = `
   font-size: 17px;
   line-height: 1.1em;
   text-transform: none;
-}
-
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
 }
 
 @media (max-width:600px) {

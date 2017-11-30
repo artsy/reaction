@@ -60,3 +60,14 @@ export const getDate = (date, layout = '') => {
     ? moment(date).tz("America/New_York").format("MMM D, YYYY")
     : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
 }
+
+export const getMediaDate = (article) => {
+  const { published_at, scheduled_publish_at, media } = article
+  const { release_date } = media
+
+  if (release_date) {
+    return release_date
+  } else {
+    return published_at || scheduled_publish_at
+  }
+}

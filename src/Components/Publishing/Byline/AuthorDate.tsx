@@ -8,7 +8,7 @@ interface AuthorDateProps {
   authors?: any
   color?: string
   date?: string
-  layout: string
+  layout?: string
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {

@@ -52,7 +52,7 @@ export class PartnerBlock extends React.Component<Props, null> {
   }
 }
 
-const PartnerBlockContainer = styled.div`
+export const PartnerBlockContainer = styled.div`
   img {
     max-width: 220px;
     padding-top: 20px;

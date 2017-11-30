@@ -8,7 +8,7 @@ export class IconArtist extends Component<any, null> {
   render() {
     return (
       <svg className='IconArtist' x="0px" y="0px" viewBox="0 0 14 18" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g transform="translate(-1066.000000, -884.000000)" fill={this.props.color}>
             <g transform="translate(1066.000000, 884.000000)">
               <g transform="translate(0.000000, 9.000000)" stroke={this.props.color}>
