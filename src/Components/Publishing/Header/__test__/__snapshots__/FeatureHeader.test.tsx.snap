@@ -3081,6 +3081,7 @@ exports[`feature renders superArticle full header properly 1`] = `
       >
         <div
           className="c6 c7"
+          onClick={undefined}
           style={undefined}
         >
           

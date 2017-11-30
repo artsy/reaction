@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccountButtons renders AccountButtons 1`] = `
+exports[`SubNav renders SubNav 1`] = `
 .c4 {
   background: #e5e5e5;
   color: black;
@@ -62,6 +62,7 @@ exports[`AccountButtons renders AccountButtons 1`] = `
   height: 30px;
   width: 80px;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c3:hover:not(:disabled) {
@@ -120,6 +121,7 @@ exports[`AccountButtons renders AccountButtons 1`] = `
   width: 80px;
   background-color: white;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c6:hover:not(:disabled) {
@@ -132,8 +134,17 @@ exports[`AccountButtons renders AccountButtons 1`] = `
 }
 
 .c8 {
-  margin-right: 5px;
   display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 @media (max-width:720px) {
@@ -147,6 +158,10 @@ exports[`AccountButtons renders AccountButtons 1`] = `
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
@@ -181,8 +196,9 @@ exports[`AccountButtons renders AccountButtons 1`] = `
     className="c7 c8"
   >
     <svg
-      enable-background="new 0 0 32 32"
+      enableBackground="new 0 0 32 32"
       fill="white"
+      onClick={[Function]}
       version="1.1"
       viewBox="0 0 32 32"
       width="32px"

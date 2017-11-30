@@ -92,6 +92,7 @@ exports[`Nav renders a Nav 1`] = `
   height: 30px;
   width: 80px;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c8:hover:not(:disabled) {
@@ -150,6 +151,7 @@ exports[`Nav renders a Nav 1`] = `
   width: 80px;
   background-color: white;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c11:hover:not(:disabled) {
@@ -162,8 +164,17 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c13 {
-  margin-right: 5px;
   display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 .c0 {
@@ -216,6 +227,16 @@ exports[`Nav renders a Nav 1`] = `
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    position: relative;
   }
 }
 
@@ -230,6 +251,7 @@ exports[`Nav renders a Nav 1`] = `
     >
       <div
         className="c2 c3"
+        onClick={undefined}
         style={undefined}
       >
         
@@ -272,8 +294,9 @@ exports[`Nav renders a Nav 1`] = `
       className="c12 c13"
     >
       <svg
-        enable-background="new 0 0 32 32"
+        enableBackground="new 0 0 32 32"
         fill="white"
+        onClick={[Function]}
         version="1.1"
         viewBox="0 0 32 32"
         width="32px"
@@ -401,6 +424,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   height: 30px;
   width: 80px;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c9:hover:not(:disabled) {
@@ -459,6 +483,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   width: 80px;
   background-color: white;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c12:hover:not(:disabled) {
@@ -471,8 +496,17 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c14 {
-  margin-right: 5px;
   display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 .c0 {
@@ -533,6 +567,16 @@ exports[`Nav renders a sponsored nav 1`] = `
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    position: relative;
   }
 }
 
@@ -547,6 +591,7 @@ exports[`Nav renders a sponsored nav 1`] = `
     >
       <div
         className="c2 c3"
+        onClick={undefined}
         style={undefined}
       >
         
@@ -634,8 +679,9 @@ exports[`Nav renders a sponsored nav 1`] = `
       className="c13 c14"
     >
       <svg
-        enable-background="new 0 0 32 32"
+        enableBackground="new 0 0 32 32"
         fill="white"
+        onClick={[Function]}
         version="1.1"
         viewBox="0 0 32 32"
         width="32px"
@@ -757,6 +803,7 @@ exports[`Nav renders a transparent nav 1`] = `
   height: 30px;
   width: 80px;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c8:hover:not(:disabled) {
@@ -815,6 +862,7 @@ exports[`Nav renders a transparent nav 1`] = `
   width: 80px;
   background-color: white;
   border-radius: 2px;
+  margin: 8px;
 }
 
 .c11:hover:not(:disabled) {
@@ -827,8 +875,17 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c13 {
-  margin-right: 5px;
   display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 .c0 {
@@ -881,6 +938,16 @@ exports[`Nav renders a transparent nav 1`] = `
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    position: relative;
   }
 }
 
@@ -895,6 +962,7 @@ exports[`Nav renders a transparent nav 1`] = `
     >
       <div
         className="c2 c3"
+        onClick={undefined}
         style={undefined}
       >
         
@@ -937,8 +1005,9 @@ exports[`Nav renders a transparent nav 1`] = `
       className="c12 c13"
     >
       <svg
-        enable-background="new 0 0 32 32"
+        enableBackground="new 0 0 32 32"
         fill="white"
+        onClick={[Function]}
         version="1.1"
         viewBox="0 0 32 32"
         width="32px"

@@ -12,7 +12,8 @@ exports[`inquiries renders the inquiries listing 1`] = `
       href="/"
     >
       <div
-        className="file-s1c6rdye-0 kdeDrI"
+        className="file-sqasly-0 hFgJIB"
+        onClick={undefined}
         style={undefined}
       >
         
@@ -77,7 +78,8 @@ exports[`inquiries renders the inquiries listing 1`] = `
                       selected={false}
                     >
                       <div
-                        className="file-s1c6rdye-0 bJkEYa"
+                        className="file-sqasly-0 kQJrTr"
+                        onClick={undefined}
                         style={undefined}
                       >
                         

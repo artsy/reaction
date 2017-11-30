@@ -11,10 +11,15 @@ export interface IconProps extends React.HTMLProps<HTMLDivElement> {
   color?: string
   fontSize?: string
   style?: any
+  onClick?: () => void
 }
 
 const Icon: React.SFC<IconProps> = props => (
-  <div className={props.className} style={props.style}>
+  <div
+    className={props.className}
+    style={props.style}
+    onClick={props.onClick}
+  >
     {icons[props.name]}
   </div>
 )

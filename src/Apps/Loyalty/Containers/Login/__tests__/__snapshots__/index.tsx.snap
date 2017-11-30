@@ -5,7 +5,8 @@ exports[`login renders the snapshot 1`] = `
   className="file__LoginContainer-on3ly7-0 itmAoK"
 >
   <div
-    className="file-s1c6rdye-0 cIZoIU"
+    className="file-sqasly-0 iZNHvF"
+    onClick={undefined}
     style={undefined}
   >
     
@@ -74,7 +75,8 @@ exports[`login renders the snapshot 1`] = `
       href="/facebook"
     >
       <div
-        className="file-s1c6rdye-0 bJkEYa"
+        className="file-sqasly-0 kQJrTr"
+        onClick={undefined}
         style={undefined}
       >
         
@@ -88,7 +90,8 @@ exports[`login renders the snapshot 1`] = `
       href="/twitter"
     >
       <div
-        className="file-s1c6rdye-0 bJkEYa"
+        className="file-sqasly-0 kQJrTr"
+        onClick={undefined}
         style={undefined}
       >
         

@@ -1,8 +1,9 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
+import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
-import { AccountButtons } from "./AccountButtons"
+import { SubNav } from "./SubNav"
 
 interface Props {
   transparent?: boolean
@@ -31,7 +32,7 @@ export const Nav: React.SFC<Props> = props => {
       <Title>
         {title}
       </Title>
-      <AccountButtons />
+      <SubNav />
     </NavContainer>
   )
 }
@@ -56,4 +57,7 @@ const Title = styled.div`
   position: absolute;
   width: 100%;
   text-align: center;
+  ${pMedia.sm`
+    position: relative;
+  `}
 `
