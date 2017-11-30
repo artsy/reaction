@@ -4,7 +4,6 @@ import { secondary } from "../../Assets/Fonts"
 import StyledTextLink from "../TextLink"
 
 interface Props {
-  isOpen?: boolean
   navHeight?: string
 }
 
@@ -24,7 +23,6 @@ export const MobileMenu: React.SFC<Props> = props => {
 }
 
 MobileMenu.defaultProps = {
-  isOpen: false,
   navHeight: "0px"
 }
 
@@ -40,19 +38,6 @@ const MobileMenuContainer = Div`
   left: 0;
   padding: 20px;
   margin-top: ${props => props.navHeight};
-  ${props => props.isOpen ?
-    `
-      transform: translate3d(0, -100%, 0);
-      transition: transform 0.2s ease;
-    `
-    :
-    `
-      transform: translate3d(0, 0, 0);
-      transition: transform 0.2s ease;
-    `
-  }
-  // transform: ${props => props.isOpen ? "translate3d(0, -100%, 0)" : "translate3d(0, 0, 0)"};
-  // transition: transform 0.2s ease;
   ${StyledTextLink} {
     display: inline-block;
     width: 50%;
