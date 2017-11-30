@@ -34,8 +34,27 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     }
   }
 
+  renderAuctionHighlight() {
+    if (!this.props.artist.auctionResults || this.props.artist.auctionResults.edges.length < 1) {
+      return null
+    }
+    const topAuctionResult = this.props.artist.auctionResults.edges[0].node
+
+    return (
+      <div>
+        Top auction result is {topAuctionResult.price_realized} at {topAuctionResult.organization}
+      </div>
+    )
+  }
+
   render() {
-    return this.renderGalleryRepresentation()
+    return (
+      <div>
+        {this.renderGalleryRepresentation()}
+        <br />
+        {this.renderAuctionHighlight()}
+      </div>
+    )
   }
 }
 
@@ -55,6 +74,14 @@ export default createFragmentContainer(
           }
         }
       }
+      auctionResults(first: 1, sort: PRICE_AND_DATE_DESC) {
+        edges {
+          node {
+            organization
+            price_realized(symbol: "$")
+          }
+        }
+      }
     }
   `
 )
@@ -70,6 +97,14 @@ interface RelayProps {
             id: string
             name: string | null
           }> | null
+        } | null
+      }> | null
+    } | null
+    auctionResults: {
+      edges: Array<{
+        node: {
+          organization: string | null
+          price_realized: string | null
         } | null
       }> | null
     } | null

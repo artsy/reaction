@@ -33,3 +33,12 @@ storiesOf("Components/Artist/MarketInsights", module)
   .add("Damon Zucconi", () => {
     return <ArtistExample artistID="damon-zucconi" />
   })
+  .add("Huma Bhabha", () => {
+    return <ArtistExample artistID="huma-bhabha" />
+  })
+  .add("Robert Longo", () => {
+    return <ArtistExample artistID="robert-longo" />
+  })
+  .add("Carla Accardi", () => {
+    return <ArtistExample artistID="carla-accardi" />
+  })
