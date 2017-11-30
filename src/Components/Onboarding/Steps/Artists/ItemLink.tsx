@@ -1,6 +1,6 @@
 import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { ConnectionHandler, RecordSourceSelectorProxy } from "relay-runtime"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../../../Assets/Animations"
@@ -62,31 +62,30 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   followArtist(artist: ArtistFollowProps) {
-    const storeUpdater = (store: RecordSourceSelectorProxy) => {
-      const mutationPayload = store.getRootField("followArtist")
-      const origArtist = mutationPayload.getLinkedRecord("artistEdge")
+    const storeUpdater = (store: RecordSourceSelectorProxy, data: SelectorData) => {
+      // Search the store for a record for the newly suggested artist, based on its ID we get from the response `data`.
+      const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
 
-      // Useful to import this directly for debugging
-      const localConnHandler = ConnectionHandler
+      // Replace `artist` with the `suggestedArtist` in the list of `artists` on the `popular_artists` root field.
+      const popularArtistsRootField = store.get("client:root:popular_artists")
+      const popularArtists = popularArtistsRootField.getLinkedRecords("artists")
+      const updatedPopularArtists = popularArtists.map(popularArtist =>
+        popularArtist.getDataID() === artist.__id ? suggestedArtist : popularArtist)
 
-      // Somehow update the artist with the suggestion...
-      const selectedArtist = store.get(artist.__id)
-      const connection = localConnHandler.getConnection(origArtist, "ItemLink_suggested")
+      popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
     }
 
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
         mutation ItemLinkFollowArtistMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
-            artistEdge {
-              node {
-                __id
-                related {
-                  suggested(first: 1) @connection(key: "ItemLink_suggested", filters: []) {
-                    edges {
-                      node {
-                        ...ItemLink_artist
-                      }
+            artist {
+              __id
+              related {
+                suggested(first: 1) {
+                  edges {
+                    node {
+                      ...ItemLink_artist
                     }
                   }
                 }
