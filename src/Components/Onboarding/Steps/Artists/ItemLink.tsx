@@ -1,6 +1,6 @@
 import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { RecordSourceSelectorProxy } from "relay-runtime"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled, { StyledFunction } from "styled-components"
 
 import { fadeIn, fadeOut } from "../../../../Assets/Animations"
@@ -62,15 +62,16 @@ class ItemLink extends React.Component<Props, State> {
   }
 
   followArtist(artist: ArtistFollowProps) {
-    const storeUpdater = (store: RecordSourceSelectorProxy, data: any) => {
+    const storeUpdater = (store: RecordSourceSelectorProxy, data: SelectorData) => {
       // Search the store for a record for the newly suggested artist, based on its ID we get from the response `data`.
-      const suggestedArtist = store.get(data.followArtist.artistEdge.node.related.suggested.edges[0].node.__id)
+      const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
+
       // Replace `artist` with the `suggestedArtist` in the list of `artists` on the `popular_artists` root field.
       const popularArtistsRootField = store.get("client:root:popular_artists")
       const popularArtists = popularArtistsRootField.getLinkedRecords("artists")
-      const updatedPopularArtists = popularArtists.map(popularArtist => {
-        return popularArtist.getDataID() === artist.__id ? suggestedArtist : popularArtist
-      })
+      const updatedPopularArtists = popularArtists.map(popularArtist =>
+        popularArtist.getDataID() === artist.__id ? suggestedArtist : popularArtist)
+
       popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
     }
 
@@ -78,15 +79,13 @@ class ItemLink extends React.Component<Props, State> {
       mutation: graphql`
         mutation ItemLinkFollowArtistMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
-            artistEdge {
-              node {
-                __id
-                related {
-                  suggested(first: 1) {
-                    edges {
-                      node {
-                        ...ItemLink_artist
-                      }
+            artist {
+              __id
+              related {
+                suggested(first: 1) {
+                  edges {
+                    node {
+                      ...ItemLink_artist
                     }
                   }
                 }
