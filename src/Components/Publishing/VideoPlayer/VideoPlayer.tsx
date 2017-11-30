@@ -1,10 +1,5 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Fonts } from "../Fonts"
-import { IconVideoMute } from "../Icon/IconVideoMute"
-import { IconVideoPause } from "../Icon/IconVideoPause"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
-import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
 import {
   addFSEventListener,
   exitFullscreen,
@@ -13,15 +8,18 @@ import {
   removeFSEventListener,
   requestFullscreen
 } from "./Fullscreen"
+import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
   title?: string
+  duration?: number
 }
 
 interface State {
   isMuted: boolean,
-  isPlaying: boolean
+  isPlaying: boolean,
+  timeRemaining: number
 }
 
 export class VideoPlayer extends Component<Props, State> {
@@ -30,22 +28,34 @@ export class VideoPlayer extends Component<Props, State> {
 
   state = {
     isMuted: false,
-    isPlaying: false
+    isPlaying: false,
+    timeRemaining: this.props.duration
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     if (fullscreenEnabled()){
       addFSEventListener(this.video)
     }
+    this.video.addEventListener("timeupdate", this.updateTime)
   }
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     if (fullscreenEnabled()) {
       removeFSEventListener(this.video)
     }
+    this.video.removeEventListener("timeupdate", this.updateTime)
   }
 
-  togglePlayButton = () => {
+  updateTime = (e) => {
+    console.log(this.props.duration)
+    console.log('herererere')
+    console.log(e.currentTime)
+    this.setState({
+      timeRemaining: this.props.duration - e.currentTime
+    })
+  }
+
+  togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
     } else {
@@ -57,7 +67,7 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
-  toggleMuteButton = (e) => {
+  toggleMute = () => {
     this.setState({
       isMuted: !this.state.isMuted
     })
@@ -74,7 +84,11 @@ export class VideoPlayer extends Component<Props, State> {
   }
 
   render() {
-    const { url, title } = this.props
+    const {
+      duration,
+      url,
+      title
+    } = this.props
 
     return (
       <VideoContainer
@@ -85,57 +99,21 @@ export class VideoPlayer extends Component<Props, State> {
           ref={video => (this.video = video)}
           muted={this.state.isMuted}
         />
-        <VideoControls>
-          <ControlBlock>
-            <span onClick={this.togglePlayButton}>
-              {
-                this.state.isPlaying
-                ?
-                <IconVideoPause />
-                :
-                <IconVideoPlay />
-              }
-            </span>
-            <Title>
-              {title}
-            </Title>
-          </ControlBlock>
-          <ControlBlock>
-          <span onClick={this.toggleMuteButton}>
-            {
-              this.state.isMuted
-              ?
-              <IconVideoUnmute />
-              :
-              <IconVideoMute />
-            }
-          </span>
-          <Fullscreen onClick={this.toggleFullscreen}>
-            FS
-          </Fullscreen>
-          </ControlBlock>
-        </VideoControls>
+        <VideoControls
+          title={title}
+          duration={duration}
+          timeRemaining={this.state.timeRemaining}
+          toggleFullscreen={this.toggleFullscreen}
+          toggleMute={this.toggleMute}
+          togglePlay={this.togglePlay}
+          isMuted={this.state.isMuted}
+          isPlaying={this.state.isPlaying}
+        />
       </VideoContainer>
     )
   }
 }
 
-const VideoControls = styled.div`
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  max-width: 1200px;
-  border: 1px solid white;
-  border-radius: 2px;
-  position: absolute;
-  bottom: 0px;
-  padding: 20px;
-  margin: 20px;
-  opacity: 0;
-  width: calc(100% - 40px);
-  transition: opacity 0.25s ease;
-`
 const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -146,19 +124,13 @@ const VideoContainer = styled.div`
     width: 100%;
     height: 100%;
   }
-  &:hover {
-    ${VideoControls} {
-      opacity: 1;
-    }
+  ${VideoControlsContainer} {
+    opacity: 1;
   }
-`
-const Title = styled.div`
-  ${Fonts.garamond("s23")}
-  margin-left: 20px;
-`
-const ControlBlock = styled.div`
-  display: flex;
-`
-const Fullscreen = styled.span`
-  cursor: pointer;
+  &:hover {
+    // TODO UNTOGGLE ME
+    // ${VideoControlsContainer} {
+    //   opacity: 1;
+    // }
+  }
 `

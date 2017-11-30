@@ -11,6 +11,14 @@ declare global {
      */
     analytics: SegmentAnalytics.AnalyticsJS
   }
+  interface Document {
+    mozFullScreenElement: any
+    mozFullScreenEnabled: any
+    msFullscreenElement: any
+    msFullscreenEnabled: any
+    mozCancelFullScreen: () => void
+    msExitFullscreen: () => void
+  }
 }
 
 declare module "express" {

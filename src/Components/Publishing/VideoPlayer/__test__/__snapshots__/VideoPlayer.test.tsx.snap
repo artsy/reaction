@@ -33,23 +33,6 @@ exports[`renders properly 1`] = `
   transition: opacity 0.25s ease;
 }
 
-.c0 {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: black;
-}
-
-.c0 video {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-.c0:hover .c1 {
-  opacity: 1;
-}
-
 .c5 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -67,6 +50,23 @@ exports[`renders properly 1`] = `
 
 .c6 {
   cursor: pointer;
+}
+
+.c0 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: black;
+}
+
+.c0 video {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.c0:hover .c1 {
+  opacity: 1;
 }
 
 <div
