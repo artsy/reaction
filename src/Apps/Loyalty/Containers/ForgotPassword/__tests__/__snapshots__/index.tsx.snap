@@ -5,7 +5,8 @@ exports[`<ForgotPassword /> renders the snapshot 1`] = `
   className="file__Container-s14nnnzj-0 fJomXk"
 >
   <div
-    className="file-s1c6rdye-0 cIZoIU"
+    className="file-sqasly-0 iZNHvF"
+    onClick={undefined}
     style={undefined}
   >
     

@@ -12,7 +12,8 @@ exports[`3-way Handshake Thank You renders the snapshot 1`] = `
       href={undefined}
     >
       <div
-        className="file-s1c6rdye-0 kdeDrI"
+        className="file-sqasly-0 hFgJIB"
+        onClick={undefined}
         style={undefined}
       >
         

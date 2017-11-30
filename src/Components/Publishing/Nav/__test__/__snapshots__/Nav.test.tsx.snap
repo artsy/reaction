@@ -1,0 +1,1060 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav renders a Nav 1`] = `
+.c3 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c1 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c1 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c1 .c2 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c9 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c9:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c8 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c8:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c11 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c11:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c6 {
+  text-decoration: none;
+}
+
+.c13 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.c4 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width:720px) {
+  .c1 img {
+    max-height: 24px;
+  }
+
+  .c1 .c2 {
+    font-size: 24px;
+  }
+
+  .c1 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 .c7,
+  .c5 .c10 {
+    display: none;
+  }
+
+  .c5 .c12 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    position: relative;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="PartnerInline c1"
+  >
+    <a
+      href="/"
+    >
+      <div
+        className="c2 c3"
+        onClick={undefined}
+        style={undefined}
+      >
+        
+      </div>
+    </a>
+  </div>
+  <div
+    className="c4"
+  >
+    Artsy Editorial
+  </div>
+  <div
+    className="c5"
+  >
+    <a
+      className="mlh-login c6"
+      href="/log_in"
+    >
+      <button
+        className="c7 c8 c9"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+    </a>
+    <a
+      className="mlh-signup c6"
+      href="/sign_up"
+    >
+      <button
+        className="c10 c11"
+      >
+        <span>
+          Signup
+        </span>
+      </button>
+    </a>
+    <div
+      className="c12 c13"
+    >
+      <svg
+        enableBackground="new 0 0 32 32"
+        fill="white"
+        onClick={[Function]}
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="32px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="22"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="15"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="8"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Nav renders a sponsored nav 1`] = `
+.c3 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c5 {
+  width: 15px;
+  height: 15px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c1 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c1 .c4 {
+  margin: 0 20px;
+}
+
+.c1 .c2 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c11 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c11:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c10 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c10:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c13 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c13:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c8 {
+  text-decoration: none;
+}
+
+.c15 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width:900px) {
+  .c5 {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media (max-width:720px) {
+  .c1 img {
+    max-height: 24px;
+  }
+
+  .c1 .c2 {
+    font-size: 24px;
+  }
+
+  .c1 .c4 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 .c9,
+  .c7 .c12 {
+    display: none;
+  }
+
+  .c7 .c14 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    position: relative;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="PartnerInline c1"
+  >
+    <a
+      href="/"
+    >
+      <div
+        className="c2 c3"
+        onClick={undefined}
+        style={undefined}
+      >
+        
+      </div>
+    </a>
+    <svg
+      className="c4 c5"
+      version="1.1"
+      viewBox="0 0 15 15"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fillRule="evenodd"
+        stroke="none"
+        strokeWidth="2"
+      >
+        <g
+          fill="white"
+          transform="translate(-101.000000, -18.000000)"
+        >
+          <g
+            transform="translate(101.000000, 18.000000)"
+          >
+            <rect
+              height="1"
+              width="15"
+              x="0"
+              y="7"
+            />
+            <rect
+              height="1"
+              transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) "
+              width="15"
+              x="0"
+              y="7"
+            />
+          </g>
+        </g>
+      </g>
+    </svg>
+    <a
+      href={undefined}
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
+      />
+    </a>
+  </div>
+  <div
+    className="c6"
+  >
+    Artsy Editorial
+  </div>
+  <div
+    className="c7"
+  >
+    <a
+      className="mlh-login c8"
+      href="/log_in"
+    >
+      <button
+        className="c9 c10 c11"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+    </a>
+    <a
+      className="mlh-signup c8"
+      href="/sign_up"
+    >
+      <button
+        className="c12 c13"
+      >
+        <span>
+          Signup
+        </span>
+      </button>
+    </a>
+    <div
+      className="c14 c15"
+    >
+      <svg
+        enableBackground="new 0 0 32 32"
+        fill="white"
+        onClick={[Function]}
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="32px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="22"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="15"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="8"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Nav renders a transparent nav 1`] = `
+.c3 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c1 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c1 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c1 .c2 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c9 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c9:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c8 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c8:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c11 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c11:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c6 {
+  text-decoration: none;
+}
+
+.c13 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+}
+
+.c4 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width:720px) {
+  .c1 img {
+    max-height: 24px;
+  }
+
+  .c1 .c2 {
+    font-size: 24px;
+  }
+
+  .c1 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 .c7,
+  .c5 .c10 {
+    display: none;
+  }
+
+  .c5 .c12 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    position: relative;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="PartnerInline c1"
+  >
+    <a
+      href="/"
+    >
+      <div
+        className="c2 c3"
+        onClick={undefined}
+        style={undefined}
+      >
+        
+      </div>
+    </a>
+  </div>
+  <div
+    className="c4"
+  >
+    Artsy Editorial
+  </div>
+  <div
+    className="c5"
+  >
+    <a
+      className="mlh-login c6"
+      href="/log_in"
+    >
+      <button
+        className="c7 c8 c9"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+    </a>
+    <a
+      className="mlh-signup c6"
+      href="/sign_up"
+    >
+      <button
+        className="c10 c11"
+      >
+        <span>
+          Signup
+        </span>
+      </button>
+    </a>
+    <div
+      className="c12 c13"
+    >
+      <svg
+        enableBackground="new 0 0 32 32"
+        fill="white"
+        onClick={[Function]}
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="32px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="22"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="15"
+        />
+        <rect
+          height="2"
+          width="20"
+          x="6"
+          y="8"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
