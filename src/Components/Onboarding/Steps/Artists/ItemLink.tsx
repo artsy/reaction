@@ -1,15 +1,13 @@
 import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 
-import { fadeIn, fadeOut } from "../../../../Assets/Animations"
 import * as fonts from "../../../../Assets/Fonts"
 
 import Icon from "../../../Icon"
 
-const anchor: StyledFunction<State & React.HTMLProps<HTMLInputElement>> = styled.a
-const Link = anchor`
+const Link = styled.a`
   display: flex;
   font-size: 14px;
   color: black;
@@ -20,8 +18,6 @@ const Link = anchor`
   &:hover {
     background-color: #f8f8f8;
   }
-  ${props => (props.fadeIn ? fadeIn : null)}
-  ${props => (props.fadeOut ? fadeOut : null)}
 `
 
 const Avatar = styled.img`
@@ -39,12 +35,6 @@ const Col = styled.div`
   align-items: center;
 `
 
-export interface State {
-  fadeIn: boolean
-  fadeOut: boolean
-  artist_id: string
-}
-
 interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
   relay?: RelayProp
 }
@@ -54,13 +44,7 @@ interface ArtistFollowProps {
   __id: string
 }
 
-class ItemLink extends React.Component<Props, State> {
-  state = {
-    fadeIn: false,
-    fadeOut: false,
-    artist_id: this.props.artist.id,
-  }
-
+class ItemLink extends React.Component<Props, null> {
   followArtist(artist: ArtistFollowProps) {
     const storeUpdater = (store: RecordSourceSelectorProxy, data: SelectorData) => {
       // Search the store for a record for the newly suggested artist, based on its ID we get from the response `data`.
@@ -115,12 +99,7 @@ class ItemLink extends React.Component<Props, State> {
 
   render() {
     return (
-      <Link
-        onClick={this.onClick.bind(this)}
-        fadeIn={this.state.fadeIn}
-        fadeOut={this.state.fadeOut}
-        artist_id={this.props.artist.id}
-      >
+      <Link onClick={this.onClick.bind(this)}>
         <Col>
           {
             <Avatar
