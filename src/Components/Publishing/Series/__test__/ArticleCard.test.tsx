@@ -5,6 +5,7 @@ import renderer from "react-test-renderer"
 import { getDate } from '../../Constants'
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 import { ArticleCard } from "../ArticleCard"
 
 describe("ArticleCard", () => {
@@ -46,7 +47,7 @@ describe("ArticleCard", () => {
     videoArticle.media.published = true
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
 
-    expect(component.find('.IconPlayCaret').length).toBe(1)
+    expect(component.find(IconVideoPlay).length).toBe(1)
     expect(component.text()).toMatch('03:12')
   })
 
@@ -54,7 +55,7 @@ describe("ArticleCard", () => {
     videoArticle.media.published = false
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
 
-    expect(component.find('.IconPlayCaret').length).toBe(0)
+    expect(component.find(IconVideoPlay).length).toBe(0)
     expect(component.text()).not.toMatch('03:12')
     expect(component.text()).toMatch('Coming Soon')
     expect(component.text()).toMatch('Available ')

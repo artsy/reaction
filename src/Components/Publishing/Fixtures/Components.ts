@@ -354,7 +354,7 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
 export const Media = [
   {
     title: "Trevor Paglan",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url: "http://files.artsy.net/videos/scenic_mono_3.mp4",
     duration: 560948,
     release_date: "2017-08-28T20:38:05.709Z",
     published: true

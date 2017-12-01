@@ -21,13 +21,13 @@ import { IconLayoutSplit } from "../Icon/IconLayoutSplit"
 import { IconLayoutText } from "../Icon/IconLayoutText"
 import { IconLink } from "../Icon/IconLink"
 import { IconOrderedList } from "../Icon/IconOrderedList"
-import { IconPlayCaret } from "../Icon/IconPlayCaret"
 import { IconPlus } from "../Icon/IconPlus"
 import { IconRemove } from "../Icon/IconRemove"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
 import { IconUnorderedList } from "../Icon/IconUnorderedList"
+import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { Typography } from "./TypographyExamples"
 
 storiesOf("Publishing/Typography", module)
@@ -69,10 +69,6 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconLayoutFullscreen />
           <p>Layout Fullscreen</p>
-        </div>
-        <div style={{ width: 50 }}>
-          <IconPlayCaret />
-          <p>Play Caret</p>
         </div>
         <div style={{ width: 50 }}>
           <IconPlus />
@@ -145,6 +141,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconUnorderedList />
           <p>Unordered List</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconVideoPlay />
+          <p>Video Play</p>
         </div>
       </div>
     )

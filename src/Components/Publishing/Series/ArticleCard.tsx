@@ -6,7 +6,7 @@ import { Date } from '../Byline/AuthorDate'
 import { Byline } from '../Byline/Byline'
 import { getMediaDate } from "../Constants"
 import { Fonts } from "../Fonts"
-import { IconPlayCaret } from '../Icon/IconPlayCaret'
+import { IconVideoPlay } from '../Icon/IconVideoPlay'
 
 interface Props {
   article?: any
@@ -49,7 +49,7 @@ export class ArticleCard extends Component<Props, null> {
     } else {
       return (
         <MediaPlay>
-          <IconPlayCaret color={color} />
+          <IconVideoPlay color={color} />
           {article.media.duration}
         </MediaPlay>
       )

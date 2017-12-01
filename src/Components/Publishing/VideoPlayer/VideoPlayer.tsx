@@ -13,13 +13,13 @@ import { VideoControls, VideoControlsContainer } from "./VideoControls"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
   title?: string
-  duration?: number
 }
 
 interface State {
   isMuted: boolean,
   isPlaying: boolean,
-  timeRemaining: number
+  currentTime: number,
+  duration: number
 }
 
 export class VideoPlayer extends Component<Props, State> {
@@ -29,7 +29,8 @@ export class VideoPlayer extends Component<Props, State> {
   state = {
     isMuted: false,
     isPlaying: false,
-    timeRemaining: this.props.duration
+    currentTime: 0,
+    duration: 0
   }
 
   componentDidMount() {
@@ -37,6 +38,7 @@ export class VideoPlayer extends Component<Props, State> {
       addFSEventListener(this.video)
     }
     this.video.addEventListener("timeupdate", this.updateTime)
+    this.video.addEventListener("loadedmetadata", this.setDuration)
   }
 
   componentWillUnmount() {
@@ -46,12 +48,15 @@ export class VideoPlayer extends Component<Props, State> {
     this.video.removeEventListener("timeupdate", this.updateTime)
   }
 
-  updateTime = (e) => {
-    console.log(this.props.duration)
-    console.log('herererere')
-    console.log(e.currentTime)
+  setDuration = (e) => {
     this.setState({
-      timeRemaining: this.props.duration - e.currentTime
+      duration: e.target.duration
+    })
+  }
+
+  updateTime = (e) => {
+    this.setState({
+      currentTime: e.target.currentTime
     })
   }
 
@@ -85,7 +90,6 @@ export class VideoPlayer extends Component<Props, State> {
 
   render() {
     const {
-      duration,
       url,
       title
     } = this.props
@@ -101,8 +105,8 @@ export class VideoPlayer extends Component<Props, State> {
         />
         <VideoControls
           title={title}
-          duration={duration}
-          timeRemaining={this.state.timeRemaining}
+          duration={this.state.duration}
+          currentTime={this.state.currentTime}
           toggleFullscreen={this.toggleFullscreen}
           toggleMute={this.toggleMute}
           togglePlay={this.togglePlay}
