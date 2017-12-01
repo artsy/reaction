@@ -209,11 +209,12 @@ export class DisplayPanel extends Component<Props, State> {
   }
 
   toggleCoverImage() {
-    const showCoverImage = !this.state.showCoverImage
-
-    this.setState({
-      showCoverImage
-    })
+    if (this.props.unit.logo) {
+      const showCoverImage = !this.state.showCoverImage
+      this.setState({
+        showCoverImage
+      })
+    }
   }
 
   toggleVideo() {

@@ -369,6 +369,15 @@ describe('units', () => {
       wrapper.instance().handleMouseEnter()
       expect(spy).toHaveBeenCalled()
     })
+
+    it('does not change state if image has no logo', () => {
+      const spy = jest.spyOn(DisplayPanel.prototype, 'toggleCoverImage')
+      const wrapper = getWrapper({
+        unit: { logo: "" }
+      })
+      wrapper.instance().handleMouseEnter()
+      expect(wrapper.state("showCoverImage")).toBe(false)
+    })
   })
 
   describe('#handleMouseLeave', () => {
