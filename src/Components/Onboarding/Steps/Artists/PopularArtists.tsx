@@ -1,6 +1,7 @@
 import * as React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import SelectableItemContainer from "./SelectableItemContainer"
 
@@ -11,8 +12,21 @@ export interface RelayProps {
 }
 
 class PopularArtistsContent extends React.Component<RelayProps, null> {
+  onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
+    const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
+
+    const popularArtistsRootField = store.get("client:root:popular_artists")
+    const popularArtists = popularArtistsRootField.getLinkedRecords("artists")
+    const updatedPopularArtists = popularArtists.map(popularArtist =>
+      popularArtist.getDataID() === artistId ? suggestedArtist : popularArtist)
+
+    popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
+  }
+
   render() {
-    return <SelectableItemContainer artists={this.props.popular_artists.artists} />
+    return <SelectableItemContainer
+              artists={this.props.popular_artists.artists}
+              onArtistFollowed={this.onArtistFollowed.bind(this)} />
   }
 }
 
