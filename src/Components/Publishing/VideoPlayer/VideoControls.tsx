@@ -2,11 +2,10 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { Fonts } from "../Fonts"
 import { IconVideoFullscreen } from "../Icon/IconVideoFullscreen"
-import { IconVideoMute } from "../Icon/IconVideoMute"
-import { IconVideoPause } from "../Icon/IconVideoPause"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
-import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
+import { MuteUnmute, MuteUnmuteContainer } from "./MuteUnmute"
+import { PlayPause } from "./PlayPause"
 import { Scrubber } from "./Scrubber"
+import { Timestamp } from "./Timestamp"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   isMuted: boolean
@@ -17,71 +16,66 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   toggleFullscreen: () => void
   toggleMute: () => void
   togglePlay: () => void
+  pause: () => void
+  play: () => void
+  seekTo: () => void
 }
 
 export class VideoControls extends Component<Props, null> {
-  formatTime = (time) => {
-    let minutes = Math.floor(time / 60) % 60
-    let seconds = Math.floor(time % 60)
-    minutes = minutes <= 0 ? 0 : minutes
-    seconds = seconds <= 0 ? 0 : seconds
-
-    const minutesStr = minutes < 10 ? "0" + minutes : minutes
-    const secondsStr = seconds < 10 ? "0" + seconds : seconds
-    return minutesStr + ":" + secondsStr
-  }
-
   render() {
     const {
-      duration,
       isMuted,
       isPlaying,
       title,
+      duration,
       currentTime,
       toggleFullscreen,
       toggleMute,
-      togglePlay
+      togglePlay,
+      pause,
+      play,
+      seekTo
     } = this.props
 
     return (
       <VideoControlsContainer>
         <TopControls>
-          <ControlBlock>
-            <span onClick={togglePlay}>
-              {isPlaying ?
-                <IconVideoPause color="white" />
-                :
-                <IconVideoPlay color="white" />
-              }
-            </span>
+          <Block>
+            <PlayPause
+              togglePlay={togglePlay}
+              isPlaying={isPlaying}
+            />
             <Title>
               {title}
             </Title>
-          </ControlBlock>
-          <ControlBlock>
-            <TimeStamp>
-              {this.formatTime(currentTime)} / {this.formatTime(duration)}
-            </TimeStamp>
-            <span onClick={toggleMute}>
-              {isMuted ?
-                <IconVideoUnmute />
-                :
-                <IconVideoMute />
-              }
-            </span>
+          </Block>
+          <Block>
+            <Timestamp
+              currentTime={currentTime}
+              duration={duration}
+            />
+            <MuteUnmute
+              toggleMute={toggleMute}
+              isMuted={isMuted}
+            />
             <IconVideoFullscreen
               onClick={toggleFullscreen}
             />
-          </ControlBlock>
+          </Block>
         </TopControls>
         <Scrubber
           duration={duration}
           currentTime={currentTime}
+          pause={pause}
+          play={play}
+          seekTo={seekTo}
+          isPlaying={isPlaying}
         />
       </VideoControlsContainer>
     )
   }
 }
+
 const TopControls = styled.div`
   display: flex;
   justify-content: space-between;
@@ -103,14 +97,17 @@ export const VideoControlsContainer = styled.div`
   opacity: 0;
   width: calc(100% - 40px);
   transition: opacity 0.25s ease;
+  ${Timestamp} {
+    margin-right: 30px;
+  }
+  ${MuteUnmuteContainer} {
+    margin-right: 20px;
+  }
 `
 const Title = styled.div`
   ${Fonts.garamond("s23")}
   margin-left: 20px;
 `
-const ControlBlock = styled.div`
+const Block = styled.div`
   display: flex;
-`
-const TimeStamp = styled.div`
-  ${Fonts.garamond("s23")}
 `

@@ -8,6 +8,7 @@ export class IconVideoFullscreen extends Component<any, null> {
         width="28"
         height="28"
         viewBox="0 0 28 28"
+        onClick={this.props.onClick}
       >
         <g fill="none" fillRule="evenodd" transform="translate(-1151 -22)">
           <rect width="1200" height="92" fill="#000" fillOpacity=".2" stroke="#FFF" rx="4" />

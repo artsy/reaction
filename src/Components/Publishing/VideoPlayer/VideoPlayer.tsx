@@ -26,11 +26,14 @@ export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
 
-  state = {
-    isMuted: false,
-    isPlaying: false,
-    currentTime: 0,
-    duration: 0
+  constructor(props) {
+    super(props)
+    this.state = {
+      isMuted: false,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0
+    }
   }
 
   componentDidMount() {
@@ -88,6 +91,27 @@ export class VideoPlayer extends Component<Props, State> {
     }
   }
 
+  seekTo = (value) => {
+    this.video.currentTime = value
+    this.setState({
+      currentTime: value
+    })
+  }
+
+  pause = () => {
+    this.video.pause()
+    this.setState({
+      isPlaying: false
+    })
+  }
+ 
+  play = () => {
+    this.video.play()
+    this.setState({
+      isPlaying: true
+    })
+  }
+
   render() {
     const {
       url,
@@ -96,7 +120,7 @@ export class VideoPlayer extends Component<Props, State> {
 
     return (
       <VideoContainer
-        ref={container => (this.videoPlayer = container)}
+        innerRef={container => (this.videoPlayer = container)}
       >
         <video playsInline
           src={url}
@@ -110,6 +134,9 @@ export class VideoPlayer extends Component<Props, State> {
           toggleFullscreen={this.toggleFullscreen}
           toggleMute={this.toggleMute}
           togglePlay={this.togglePlay}
+          pause={this.pause}
+          play={this.play}
+          seekTo={this.seekTo}
           isMuted={this.state.isMuted}
           isPlaying={this.state.isPlaying}
         />
@@ -132,9 +159,8 @@ const VideoContainer = styled.div`
     opacity: 1;
   }
   &:hover {
-    // TODO UNTOGGLE ME
-    // ${VideoControlsContainer} {
-    //   opacity: 1;
-    // }
+    ${VideoControlsContainer} {
+      opacity: 1;
+    }
   }
 `
