@@ -7,7 +7,7 @@ import {
   isFullscreen,
   removeFSEventListener,
   requestFullscreen
-} from "./Fullscreen"
+} from "./FullscreenHelpers"
 import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {

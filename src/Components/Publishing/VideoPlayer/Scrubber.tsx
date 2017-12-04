@@ -13,7 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 
 interface State {
   isScrubbing: boolean
-  isPlayingonMouseDown: boolean
+  isPlayingOnMouseDown: boolean
 }
 
 export class Scrubber extends Component<Props, State> {
@@ -21,7 +21,7 @@ export class Scrubber extends Component<Props, State> {
     super(props)
     this.state = {
       isScrubbing: false,
-      isPlayingonMouseDown: false
+      isPlayingOnMouseDown: false
     }
   }
 
@@ -34,7 +34,7 @@ export class Scrubber extends Component<Props, State> {
 
   handleMouseDown = () => {
     this.setState({
-      isPlayingonMouseDown: this.props.isPlaying
+      isPlayingOnMouseDown: this.props.isPlaying
     })
     this.props.pause()
   }
@@ -43,9 +43,10 @@ export class Scrubber extends Component<Props, State> {
     if (!this.state.isScrubbing) {
       this.props.seekTo(e.target.value)
     }
-    if (this.state.isPlayingonMouseDown) {
+    if (this.state.isPlayingOnMouseDown) {
       this.props.play()
     }
+    this.setState({ isScrubbing: false })
   }
 
   handleChange = (e) => {
