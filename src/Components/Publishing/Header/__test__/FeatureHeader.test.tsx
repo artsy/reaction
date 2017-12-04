@@ -1,3 +1,4 @@
+import { mount } from 'enzyme'
 import "jest-styled-components"
 import _ from "lodash"
 import React from "react"
@@ -47,6 +48,11 @@ describe("feature", () => {
     const article = _.extend({}, FeatureArticle, { hero_section: decklessHero })
     const header = renderer.create(<Header article={article} />).toJSON()
     expect(header).toMatchSnapshot()
+  })
+
+  it("renders a date passed as prop", () => {
+    const header = mount(<Header article={FeatureArticle} date={"2017-05-19T13:09:18.567Z"} />)
+    expect(header.html()).toContain("May 19, 2017 9:09 am")
   })
 
   it("renders superArticle full header properly", () => {

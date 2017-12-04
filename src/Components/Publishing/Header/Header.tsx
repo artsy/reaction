@@ -5,6 +5,7 @@ import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
   article: any
+  date?: string
   isMobile?: boolean
   height?: string
 }
@@ -42,7 +43,7 @@ const getDeck = (article, children) => {
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
-  const { article, children, height, isMobile } = props
+  const { article, children, date, height, isMobile } = props
   const title = getTitle(article, children)
 
   // Classic Article
@@ -52,6 +53,7 @@ export const Header: React.SFC<HeaderProps> = props => {
       <ClassicHeader
         isMobile={isMobile}
         article={article}
+        date={date && date}
         title={title}
         leadParagraph={leadParagraph}
       />
@@ -68,6 +70,7 @@ export const Header: React.SFC<HeaderProps> = props => {
           article={article}
           title={title}
           vertical={vertical}
+          date={date && date}
           deck={deck}
           image={image}
           height={height}
@@ -79,6 +82,7 @@ export const Header: React.SFC<HeaderProps> = props => {
       return (
         <StandardHeader
           article={article}
+          date={date && date}
           vertical={vertical}
           title={title}
         />
