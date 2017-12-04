@@ -20,6 +20,7 @@ import {
 interface Props {
   article: any
   isMobile?: any
+  date?: string
   leadParagraph?: any
   layout?: any
   title: any
@@ -58,6 +59,7 @@ export class BasicHeader extends React.Component<Props, State> {
         published_at,
         slug,
       },
+      date,
       isMobile: passedIsMobile,
       title,
       vertical
@@ -69,7 +71,7 @@ export class BasicHeader extends React.Component<Props, State> {
     return (
       <Responsive initialState={{ isMobile: passedIsMobile }}>
         {({ isMobile }) => (
-          <Container hasVideo={hasVideo}>
+          <Container hasVideo={hasVideo} data-type='basic'>
             <Grid fluid>
               {hasVideo &&
                 <Row onClick={this.trackVideoPlay}>
@@ -111,7 +113,7 @@ export class BasicHeader extends React.Component<Props, State> {
                           By {getAuthorByline(contributing_authors)}
                         </Author>
                         <Date>
-                          {getDate(published_at, isMobile ? 'condensed' : 'basic')}
+                          {getDate(date ? date : published_at, isMobile ? 'condensed' : 'basic')}
                         </Date>
                         <Share
                           title={title}

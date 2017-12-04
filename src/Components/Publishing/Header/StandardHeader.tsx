@@ -6,18 +6,19 @@ import { Fonts } from "../Fonts"
 
 interface StandardHeaderProps {
   article?: any
+  date?: string
   title: any
   vertical?: any
 }
 
 export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
-  const { article, title, vertical } = props
+  const { article, date, title, vertical } = props
   return (
     <StandardHeaderParent>
       <StandardHeaderContainer>
         <Vertical>{vertical}</Vertical>
         <Title>{title}</Title>
-        <Byline article={article} layout="standard" />
+        <Byline article={article} layout="standard" date={date && date}/>
       </StandardHeaderContainer>
     </StandardHeaderParent>
   )

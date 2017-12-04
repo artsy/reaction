@@ -88,6 +88,7 @@ const renderDeck = deck => {
 
 interface FeatureHeaderProps {
   article?: any
+  date?: string
   vertical?: any
   title: any
   deck?: any
@@ -122,7 +123,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   }
 
   render() {
-    const { article, vertical, title, deck, image, height, isMobile: passedIsMobile } = this.props
+    const { article, date, vertical, title, deck, image, height, isMobile: passedIsMobile } = this.props
     const hero = article.hero_section
     const url = hero && hero.url || ""
     const type = hero && hero.type || "text"
@@ -134,6 +135,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
           vertical={vertical}
           title={title}
           isMobile={passedIsMobile}
+          date={date && date}
         />
       )
       // Fullscreen, Text, Split
@@ -159,7 +161,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                   {renderMobileSplitAsset(url, type, isMobile, article.title, image)}
                   <SubHeader>
                     {renderDeck(deck)}
-                    <Byline article={article} layout={type} />
+                    <Byline article={article} layout={type} date={date && date} />
                   </SubHeader>
                 </HeaderText>
                 {renderTextLayoutAsset(url, type, article.title, image)}

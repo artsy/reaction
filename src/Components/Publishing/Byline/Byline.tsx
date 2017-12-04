@@ -6,6 +6,7 @@ import { Share } from "./Share"
 
 interface BylineProps {
   article: any
+  date?: string
   layout?: string
   color?: string
 }
@@ -15,7 +16,7 @@ interface BylineContainerProps {
 }
 
 export const Byline: React.SFC<BylineProps> = props => {
-  const { article, color } = props
+  const { article, color, date } = props
   const { contributing_authors, published_at } = article
   const layout = props.layout || article.layout
   const title = article.social_title || article.thumbnail_title
@@ -33,7 +34,7 @@ export const Byline: React.SFC<BylineProps> = props => {
       />
 
       <Date
-        date={published_at}
+        date={date ? date : published_at}
         layout={layout}
       />
 
