@@ -4,6 +4,7 @@ import React from "react"
 import { IconArtist } from "../Icon/IconArtist"
 import { IconBlockquote } from "../Icon/IconBlockquote"
 import { IconClearFormatting } from "../Icon/IconClearFormatting"
+import { IconDrag } from "../Icon/IconDrag"
 import { IconEditEmbed } from "../Icon/IconEditEmbed"
 import { IconEditImages } from "../Icon/IconEditImages"
 import { IconEditSection } from "../Icon/IconEditSection"
@@ -47,6 +48,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconExpand />
           <p>Expand</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconDrag />
+          <p>Drag</p>
         </div>
         <div style={{ width: 50 }}>
           <IconLayoutSplit />
