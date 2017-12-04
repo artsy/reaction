@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { clone } from 'lodash'
+import { clone, extend } from 'lodash'
 import React from "react"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
@@ -22,6 +22,12 @@ const story = storiesOf("Publishing/Display", module)
   })
   .add("Panel (mobile)", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
+  })
+  .add("Panel without logo", () => {
+    const unit = extend({}, UnitPanel, {
+      logo: ""
+    })
+    return <DisplayPanel unit={unit} campaign={Campaign} />
   })
   .add("Panel: Video", () => {
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />

@@ -593,6 +593,12 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
+export const SponsoredArticle = extend({}, FeatureArticle, {
+  sponsor: {
+    partner_light_logo: "https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
+  }
+})
+
 export const SuperArticle = extend({}, FeatureArticle, {
   is_super_article: true,
   super_article: {

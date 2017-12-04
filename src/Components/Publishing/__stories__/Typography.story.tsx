@@ -11,6 +11,7 @@ import { IconEditSection } from "../Icon/IconEditSection"
 import { IconEditText } from "../Icon/IconEditText"
 import { IconEditVideo } from "../Icon/IconEditVideo"
 import { IconExpand } from "../Icon/IconExpand"
+import { IconHamburger } from "../Icon/IconHamburger"
 import { IconHeroImage } from "../Icon/IconHeroImage"
 import { IconHeroVideo } from "../Icon/IconHeroVideo"
 import { IconImageFullscreen } from "../Icon/IconImageFullscreen"
@@ -52,6 +53,10 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconDrag />
           <p>Drag</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconHamburger />
+          <p>Hamburger</p>
         </div>
         <div style={{ width: 50 }}>
           <IconLayoutSplit />

@@ -463,6 +463,7 @@ exports[`renders properly 1`] = `
   >
     <div
       className="c16"
+      onClick={undefined}
       style={undefined}
     >
       
