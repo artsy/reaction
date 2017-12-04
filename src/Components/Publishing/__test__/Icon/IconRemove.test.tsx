@@ -8,6 +8,6 @@ it("renders properly", () => {
 })
 
 it("renders with fill props", () => {
-  const icon = renderer.create(<IconRemove fill="red" />).toJSON()
+  const icon = renderer.create(<IconRemove background="red" />).toJSON()
   expect(icon).toMatchSnapshot()
 })
