@@ -11,6 +11,11 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   seekTo: (v) => void
 }
 
+interface InputProps extends React.HTMLProps<HTMLInputElement> {
+  duration: number
+  currentTime: number
+}
+
 interface State {
   isScrubbing: boolean
   isPlayingOnMouseDown: boolean
@@ -76,7 +81,7 @@ export class Scrubber extends Component<Props, State> {
   }
 }
 
-const Input: StyledFunction<Props & React.HTMLProps<HTMLInputElement>> = styled.input
+const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
 
 const ScrubberInput = Input`
   width: 100%;

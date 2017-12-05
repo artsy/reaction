@@ -18,7 +18,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   togglePlay: () => void
   pause: () => void
   play: () => void
-  seekTo: () => void
+  seekTo: (v) => void
 }
 
 export class VideoControls extends Component<Props, null> {

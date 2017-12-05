@@ -10,23 +10,6 @@ describe("VideoPlayer", () => {
     FullscreenHelpers.addFSEventListener = jest.fn()
     FullscreenHelpers.requestFullscreen = jest.fn()
     FullscreenHelpers.exitFullscreen = jest.fn()
-    // event = new Event("fullscreenchange")
-    // Object.defineProperty(document, 'fullscreenElement', {
-    //   configurable: true,
-    //   enumerable: true,
-    //   value: true,
-    //   writable: true
-    // })
-    // Object.defineProperty(document, 'fullscreenEnabled', {
-    //   configurable: true,
-    //   enumerable: true,
-    //   value: true,
-    //   writable: true
-    // })
-    // document.exitFullscreen = null
-    // document.webkitExitFullscreen = null
-    // document.mozCancelFullScreen = null
-    // document.msExitFullscreen = null
     document.fullscreenEnabled = true
   })
 
