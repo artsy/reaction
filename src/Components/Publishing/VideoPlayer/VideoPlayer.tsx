@@ -129,24 +129,35 @@ export class VideoPlayer extends Component<Props, State> {
           ref={video => (this.video = video)}
           muted={this.state.isMuted}
         />
-        <VideoControls
-          title={title}
-          duration={this.state.duration}
-          currentTime={this.state.currentTime}
-          toggleFullscreen={this.toggleFullscreen}
-          toggleMute={this.toggleMute}
-          togglePlay={this.togglePlay}
-          pause={this.pause}
-          play={this.play}
-          seekTo={this.seekTo}
-          isMuted={this.state.isMuted}
-          isPlaying={this.state.isPlaying}
-        />
+        <VideoControlsParent>
+          <VideoControls
+            title={title}
+            duration={this.state.duration}
+            currentTime={this.state.currentTime}
+            toggleFullscreen={this.toggleFullscreen}
+            toggleMute={this.toggleMute}
+            togglePlay={this.togglePlay}
+            pause={this.pause}
+            play={this.play}
+            seekTo={this.seekTo}
+            isMuted={this.state.isMuted}
+            isPlaying={this.state.isPlaying}
+          />
+        </VideoControlsParent>
       </VideoContainer>
     )
   }
 }
 
+const VideoControlsParent = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+`
 const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -158,7 +169,7 @@ const VideoContainer = styled.div`
     height: 100%;
   }
   ${VideoControlsContainer} {
-    opacity: 1;
+    opacity: 0;
   }
   &:hover {
     ${VideoControlsContainer} {

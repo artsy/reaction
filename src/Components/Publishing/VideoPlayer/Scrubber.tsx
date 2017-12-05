@@ -86,9 +86,9 @@ const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = st
 const ScrubberInput = Input`
   width: 100%;
   background-size: ${props => (props.currentTime * 100) / props.duration }% 100%;
-  height: 18px;
-  margin: 15px 0;
-  appearance: none;
+  // height: 18px;
+  // margin: 15px 0;
+  // appearance: none;
   // background-color: black;
 
   // &:focus {

@@ -87,15 +87,11 @@ export const VideoControlsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  max-width: 1200px;
   border: 1px solid white;
   border-radius: 2px;
-  position: absolute;
-  bottom: 0px;
   padding: 20px;
   margin: 20px;
   opacity: 0;
-  width: calc(100% - 40px);
   transition: opacity 0.25s ease;
   ${Timestamp} {
     margin-right: 30px;

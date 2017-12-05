@@ -18,11 +18,6 @@ exports[`VideoControls renders properly 1`] = `
 .c10 {
   width: 100%;
   background-size: 0% 100%;
-  height: 18px;
-  margin: 15px 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .c7 {
@@ -58,15 +53,11 @@ exports[`VideoControls renders properly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  max-width: 1200px;
   border: 1px solid white;
   border-radius: 2px;
-  position: absolute;
-  bottom: 0px;
   padding: 20px;
   margin: 20px;
   opacity: 0;
-  width: calc(100% - 40px);
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
 }

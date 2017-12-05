@@ -4,11 +4,6 @@ exports[`Scrubber matches the snapshot 1`] = `
 .c0 {
   width: 100%;
   background-size: 0% 100%;
-  height: 18px;
-  margin: 15px 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 <input
