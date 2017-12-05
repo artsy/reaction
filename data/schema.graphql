@@ -105,6 +105,7 @@ type Artist implements Node {
   birthday: String
   blurb(format: Format): String
   carousel: ArtistCarousel
+  collections: [String]
   contemporary(
     # The number of Artists to return
     size: Int
@@ -304,6 +305,7 @@ type ArtistItem implements Node {
   birthday: String
   blurb(format: Format): String
   carousel: ArtistCarousel
+  collections: [String]
   contemporary(
     # The number of Artists to return
     size: Int
@@ -436,6 +438,7 @@ type ArtistSearchEntity implements Node {
   birthday: String
   blurb(format: Format): String
   carousel: ArtistCarousel
+  collections: [String]
   contemporary(
     # The number of Artists to return
     size: Int

@@ -47,12 +47,27 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     )
   }
 
+  renderPermanentCollection() {
+    const { collections } = this.props.artist
+    if (collections && collections.length > 0) {
+      return (
+        <div>
+          Collected by major museums
+          <br />
+          {collections.join(", ")}
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
         {this.renderGalleryRepresentation()}
         <br />
         {this.renderAuctionHighlight()}
+        <br />
+        {this.renderPermanentCollection()}
       </div>
     )
   }
@@ -63,6 +78,7 @@ export default createFragmentContainer(
   graphql.experimental`
     fragment MarketInsights_artist on Artist {
       _id
+      collections
       highlights {
         partners(first: 1, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
           edges {
@@ -91,6 +107,7 @@ export default createFragmentContainer(
 interface RelayProps {
   artist: {
     _id: string
+    collections: string[] | null
     highlights: {
       partners: {
         edges: Array<{
