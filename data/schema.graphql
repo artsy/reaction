@@ -143,6 +143,7 @@ type Artist implements Node {
   meta: ArtistMeta
   nationality: String
   name: String
+  partners(represented_by: Boolean, partner_category: [String], after: String, first: Int, before: String, last: Int): PartnerArtistConnectionConnection
   partner_artists(
     # The number of PartnerArtists to return
     size: Int
@@ -260,7 +261,7 @@ type ArtistEdge {
 }
 
 type ArtistHighlights {
-  partner_artists(represented_by: Boolean, partner_category: [String]): [PartnerArtist]
+  partners(represented_by: Boolean, partner_category: [String], after: String, first: Int, before: String, last: Int): PartnerArtistConnectionConnection
 }
 
 type ArtistItem implements Node {
@@ -341,6 +342,7 @@ type ArtistItem implements Node {
   meta: ArtistMeta
   nationality: String
   name: String
+  partners(represented_by: Boolean, partner_category: [String], after: String, first: Int, before: String, last: Int): PartnerArtistConnectionConnection
   partner_artists(
     # The number of PartnerArtists to return
     size: Int
@@ -472,6 +474,7 @@ type ArtistSearchEntity implements Node {
   meta: ArtistMeta
   nationality: String
   name: String
+  partners(represented_by: Boolean, partner_category: [String], after: String, first: Int, before: String, last: Int): PartnerArtistConnectionConnection
   partner_artists(
     # The number of PartnerArtists to return
     size: Int
@@ -749,6 +752,9 @@ type ArtworkContextAuction implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # Returns a live auctions url if the sale is open and start time is after now
+  live_url_if_open: String
   profile: Profile
   registration_ends_at(
     convert_to_utc: Boolean
@@ -981,6 +987,9 @@ type ArtworkContextSale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # Returns a live auctions url if the sale is open and start time is after now
+  live_url_if_open: String
   profile: Profile
   registration_ends_at(
     convert_to_utc: Boolean
@@ -1780,6 +1789,10 @@ type ConsignmentSubmissionEdge {
 
   # A cursor for use in pagination
   cursor: String!
+}
+
+type Convection {
+  geminiTemplateKey: String!
 }
 
 # A conversation.
@@ -3116,6 +3129,9 @@ type HomePageModuleContextSale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # Returns a live auctions url if the sale is open and start time is after now
+  live_url_if_open: String
   profile: Profile
   registration_ends_at(
     convert_to_utc: Boolean
@@ -3627,6 +3643,38 @@ type Partner implements Node {
 }
 
 type PartnerArtist {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+  artist: Artist
+  biography: String
+  counts: PartnerArtistCounts
+  is_display_on_partner_profile: Boolean
+  is_represented_by: Boolean
+  is_use_default_biography: Boolean
+  partner: Partner
+  sortable_id: String
+}
+
+# A connection to a list of items.
+type PartnerArtistConnectionConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [PartnerArtistConnectionEdge]
+}
+
+# An edge in a connection.
+type PartnerArtistConnectionEdge {
+  # The item at the end of the edge
+  node: Partner
+
+  # A cursor for use in pagination
+  cursor: String!
+
   # A globally unique ID.
   __id: ID!
 
@@ -4363,6 +4411,9 @@ type Query {
     term: String!
   ): Search
 
+  # The schema for difference microservice settings
+  services: Services
+
   # A Show
   show(
     # The slug or ID of the Show
@@ -4547,6 +4598,9 @@ type Sale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # Returns a live auctions url if the sale is open and start time is after now
+  live_url_if_open: String
   profile: Profile
   registration_ends_at(
     convert_to_utc: Boolean
@@ -4890,6 +4944,10 @@ type SendConversationMessageMutationPayload {
   conversation: Conversation
   messageEdge: MessageEdge
   clientMutationId: String
+}
+
+type Services {
+  convection: Convection!
 }
 
 type Show implements Node {
@@ -5598,6 +5656,9 @@ type Viewer {
     # Your search term
     term: String!
   ): Search
+
+  # The schema for difference microservice settings
+  services: Services
 
   # A Show
   show(

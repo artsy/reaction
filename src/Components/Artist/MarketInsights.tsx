@@ -12,10 +12,10 @@ const Categories = {
 export class MarketInsights extends React.Component<MarketInsightsProps, null> {
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
-    const { partner_artists } = highlights
-    if (partner_artists && partner_artists.length > 0) {
-      const partnerArtist = partner_artists[0]
-      const { categories } = partnerArtist.partner
+    const { partners } = highlights
+    if (partners && partners.edges && partners.edges.length > 0) {
+      const partner = partners.edges[0].node
+      const { categories } = partner
       let category
       Object.keys(Categories).forEach(key => {
         categories.forEach(partnerCategory => {
@@ -26,7 +26,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
       })
       return (
         <div>
-          Represented by {this.props.artist.highlights.partner_artists[0].partner.name}
+          Represented by {partner.name}
           <br />
           This is a {category} type of partner.
         </div>
@@ -64,12 +64,14 @@ export default createFragmentContainer(
     fragment MarketInsights_artist on Artist {
       _id
       highlights {
-        partner_artists(represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
-          partner {
-            name
-            categories {
-              id
+        partners(first: 1, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
+          edges {
+            node {
               name
+              categories {
+                id
+                name
+              }
             }
           }
         }
@@ -90,15 +92,17 @@ interface RelayProps {
   artist: {
     _id: string
     highlights: {
-      partner_artists: Array<{
-        partner: {
-          name: string | null
-          categories: Array<{
-            id: string
+      partners: {
+        edges: Array<{
+          node: {
             name: string | null
-          }> | null
-        } | null
-      }> | null
+            categories: Array<{
+              id: string
+              name: string | null
+            }> | null
+          } | null
+        }> | null
+      } | null
     } | null
     auctionResults: {
       edges: Array<{
