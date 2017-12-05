@@ -64,7 +64,7 @@ export class Scrubber extends Component<Props, State> {
       <ScrubberInput
         type="range"
         step="any"
-        max={duration.toFixed(4)}
+        max={duration && duration.toFixed(4)}
         value={currentTime}
         duration={duration}
         currentTime={currentTime}

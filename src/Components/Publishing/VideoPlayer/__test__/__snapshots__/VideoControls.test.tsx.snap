@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`VideoControls renders properly 1`] = `
 .c9 {
   height: 28px;
 }

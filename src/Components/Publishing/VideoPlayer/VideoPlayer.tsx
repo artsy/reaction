@@ -37,11 +37,13 @@ export class VideoPlayer extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (fullscreenEnabled()){
-      addFSEventListener(this.video)
+    if (this.video) {
+      if (fullscreenEnabled()){
+        addFSEventListener(this.video)
+      }
+      this.video.addEventListener("timeupdate", this.updateTime)
+      this.video.addEventListener("loadedmetadata", this.setDuration)
     }
-    this.video.addEventListener("timeupdate", this.updateTime)
-    this.video.addEventListener("loadedmetadata", this.setDuration)
   }
 
   componentWillUnmount() {
@@ -104,7 +106,7 @@ export class VideoPlayer extends Component<Props, State> {
       isPlaying: false
     })
   }
- 
+
   play = () => {
     this.video.play()
     this.setState({

@@ -9,6 +9,7 @@ import {
 
 describe("Fullscreen helper methods", () => {
   let event
+
   beforeEach(() => {
     event = new Event("fullscreenchange")
     Object.defineProperty(document, 'fullscreenElement', {
