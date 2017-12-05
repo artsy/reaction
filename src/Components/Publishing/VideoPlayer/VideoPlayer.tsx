@@ -169,7 +169,7 @@ const VideoContainer = styled.div`
     height: 100%;
   }
   ${VideoControlsContainer} {
-    opacity: 0;
+    opacity: 1;
   }
   &:hover {
     ${VideoControlsContainer} {
