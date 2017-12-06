@@ -26,6 +26,16 @@ export const getArticleHref = slug => `/article/${slug}`
 export const getArticleFullHref = slug => `https://www.artsy.net/article/${slug}`
 
 /**
+ * Relative path to editorial entity
+ */
+export const getEditorialHref = (type, slug) => `/${type}/${slug}`
+
+/**
+ * Absolute path to editorial entity
+ */
+export const getFullEditorialHref = (type, slug) => `https://www.artsy.net/${type}/${slug}`
+
+/**
  * ByLine helpers
  * TODO: Move this into some kind of utils folder
  */
