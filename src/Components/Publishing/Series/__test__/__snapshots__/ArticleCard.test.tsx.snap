@@ -275,6 +275,11 @@ exports[`ArticleCard renders an article properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with children properly 1`] = `
+.c9 {
+  width: 32px;
+  height: 32px;
+}
+
 .c5 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -511,7 +516,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       className="c8"
     >
       <svg
-        className="IconPlayCaret"
+        className="c9"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
@@ -530,7 +535,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           />
         </g>
       </svg>
-      03:12
+      16:40
     </div>
   </div>
 </a>
