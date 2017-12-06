@@ -49,6 +49,57 @@ exports[`renders a series title properly 1`] = `
 </div>
 `;
 
+exports[`renders a series with children properly 1`] = `
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+@media (max-width:900px) {
+  .c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+    max-width: 200px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="SeriesTitle c0"
+  color="black"
+>
+  <div
+    className="c1"
+  >
+    <div>
+      Child 0: Title
+    </div>
+  </div>
+</div>
+`;
+
 exports[`renders a sponsored series title properly 1`] = `
 .c3 img {
   max-width: 220px;

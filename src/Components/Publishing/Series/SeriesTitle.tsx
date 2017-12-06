@@ -5,7 +5,7 @@ import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 
 interface Props {
-  article: any
+  article?: any
   children?: any
   color?: string
 }
