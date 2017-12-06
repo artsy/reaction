@@ -94,7 +94,8 @@ exports[`renders a series with children properly 1`] = `
     className="c1"
   >
     <div>
-      Child 0: Title
+      Child 
+      title
     </div>
   </div>
 </div>

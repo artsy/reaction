@@ -472,14 +472,16 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         className="c3"
       >
         <div>
-          Child 0: Title
+          Child 
+          title
         </div>
       </div>
       <div
         className="c4"
       >
         <div>
-          Child 1: Description
+          Child 
+          description
         </div>
       </div>
     </div>
@@ -493,7 +495,8 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     className="c6"
   >
     <div>
-      Child 2: Image
+      Child 
+      image
     </div>
     <img
       className="c7"

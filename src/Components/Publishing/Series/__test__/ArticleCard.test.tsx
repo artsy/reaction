@@ -4,6 +4,7 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { getDate } from '../../Constants'
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
+import { EditableChild } from "../../Fixtures/Helpers"
 import { ArticleCard } from "../ArticleCard"
 
 describe("ArticleCard", () => {
@@ -14,7 +15,7 @@ describe("ArticleCard", () => {
     videoArticle = VideoArticle
     standardArticle = StandardArticle
   })
-  
+
   it("renders an article properly", () => {
     const component = renderer.create(<ArticleCard article={standardArticle} series={SeriesArticle} />).toJSON()
 
@@ -29,11 +30,13 @@ describe("ArticleCard", () => {
 
   it("renders an article with children properly", () => {
     const component = renderer.create(
-      <ArticleCard article={videoArticle} series={SeriesArticle}>
-        <div>Child 0: Title</div>
-        <div>Child 1: Description</div>
-        <div>Child 2: Image</div>
-      </ArticleCard>
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
     ).toJSON()
 
     expect(component).toMatchSnapshot()
@@ -80,17 +83,18 @@ describe("ArticleCard", () => {
     expect(renderedDate).toBe(formattedDate)
   })
 
-  it("Renders children if present", () => {
-    delete videoArticle.media.release_date
+  it("Renders editable fields if present", () => {
     const component = mount(
-      <ArticleCard article={videoArticle} series={SeriesArticle}>
-        <div>Child 0: Title</div>
-        <div>Child 1: Description</div>
-        <div>Child 2: Image</div>
-      </ArticleCard>
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
     )
-    expect(component.text()).toMatch("Child 0")
-    expect(component.text()).toMatch("Child 1")
-    expect(component.text()).toMatch("Child 2")
+    expect(component.text()).toMatch("Child description")
+    expect(component.text()).toMatch("Child image")
+    expect(component.text()).toMatch("Child title")
   })
 })

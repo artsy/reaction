@@ -12,6 +12,7 @@ import {
   VideoArticle,
   VideoArticleUnpublished
 } from "../Fixtures/Articles"
+import { EditableChild } from '../Fixtures/Helpers'
 
 storiesOf("Publishing/Series", module).add("Series", () => {
   return (
@@ -58,11 +59,10 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       <ArticleCard
         article={StandardArticle}
         series={SeriesArticle}
-      >
-        <div>Child 0: Title</div>
-        <div>Child 1: Description</div>
-        <div>Child 2: Image</div>
-      </ArticleCard>
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
     </div>
   )
 }).add("Series Title", () => {
@@ -80,9 +80,10 @@ storiesOf("Publishing/Series", module).add("Series", () => {
 }).add("Series Title with Children", () => {
   return (
     <div>
-      <SeriesTitle article={SeriesArticle}>
-        <div>Child 0: Title</div>
-      </SeriesTitle>
+      <SeriesTitle
+        article={SeriesArticle}
+        editTitle={EditableChild('title')}
+      />
     </div>
   )
 }).add("Series About", () => {
@@ -100,9 +101,10 @@ storiesOf("Publishing/Series", module).add("Series", () => {
 }).add("Series About with children", () => {
   return (
     <div>
-      <SeriesAbout article={SeriesArticle}>
-        <div>Child 0: description</div>
-      </SeriesAbout>
+      <SeriesAbout
+        article={SeriesArticle}
+        editDescription={EditableChild('description')}
+      />
     </div>
   )
 })

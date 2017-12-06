@@ -6,17 +6,16 @@ import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 
 interface Props {
   article?: any
-  children?: any
   color?: string
+  editTitle?: any
 }
 
 export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { article, children, color } = this.props
+    const { article, color, editTitle } = this.props
     const { sponsor, title } = article
-    const editTitle = children
 
     return (
       <SeriesTitleContainer className='SeriesTitle' color={color}>

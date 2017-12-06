@@ -1,4 +1,4 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
@@ -9,9 +9,11 @@ import { Fonts } from "../Fonts"
 import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
 interface Props {
-  article?: any,
-  children?: any,
-  color?: string, 
+  article?: any
+  color?: string
+  editDescription?: any
+  editTitle?: any
+  editImage?: any
   series?: any
 }
 
@@ -63,13 +65,16 @@ export class ArticleCard extends Component<Props, null> {
   }
 
   render () {
-    const { article, children, color, series } = this.props
+    const {
+      article,
+      color,
+      editDescription,
+      editImage,
+      editTitle,
+      series
+    } = this.props
     const { media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
-
-    const editTitle = children && children[0]
-    const editDescription = children && children[1]
-    const editImage = children && children[2]
 
     return (
       <ArticleCardContainer

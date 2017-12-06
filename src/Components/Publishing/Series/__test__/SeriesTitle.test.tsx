@@ -3,6 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { SeriesArticle, SeriesArticleSponsored } from "../../Fixtures/Articles"
+import { EditableChild } from '../../Fixtures/Helpers'
 import { SeriesTitle } from "../SeriesTitle"
 
 it("renders a series title properly", () => {
@@ -17,9 +18,10 @@ it("renders a sponsored series title properly", () => {
 
 it("renders a series with children properly", () => {
   const component = renderer.create(
-    <SeriesTitle article={SeriesArticle}>
-      <div>Child 0: Title</div>
-    </SeriesTitle>
+    <SeriesTitle
+      article={SeriesArticle}
+      editTitle={EditableChild('title')}
+    />
   ).toJSON()
   expect(component).toMatchSnapshot()
 })
@@ -36,9 +38,10 @@ it("Does not render partner block for an unsponsored series", () => {
 
 it("Renders children if present", () => {
   const component = mount(
-    <SeriesTitle article={SeriesArticle}>
-      <div>Child 0: Title</div>
-    </SeriesTitle>
+    <SeriesTitle
+      article={SeriesArticle}
+      editTitle={EditableChild('title')}
+    />
   )
-  expect(component.text()).toMatch('Child 0: Title')
+  expect(component.text()).toMatch('Child title')
 })

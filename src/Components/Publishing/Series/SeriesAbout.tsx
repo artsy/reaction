@@ -7,17 +7,16 @@ import { Text } from '../Sections/Text'
 
 interface Props {
   article?: any
-  children?: any
   color?: string
+  editDescription?: any
 }
 
 export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { article, children, color } = this.props
+    const { article, color, editDescription } = this.props
     const { series_description, sponsor } = article
-    const editDescription = children
 
     return (
       <SeriesAboutContainer className='SeriesAbout' color={color}>

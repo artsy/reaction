@@ -1030,7 +1030,8 @@ exports[`renders series about with children properly 1`] = `
       className="article__text-section c4"
     >
       <div>
-        Child 0: description
+        Child 
+        description
       </div>
     </div>
   </div>
