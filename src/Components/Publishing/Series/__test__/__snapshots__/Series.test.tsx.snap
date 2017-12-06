@@ -772,7 +772,7 @@ exports[`renders a series properly 1`] = `
               />
             </g>
           </svg>
-          03:12
+          16:40
         </div>
       </div>
     </a>
@@ -1746,7 +1746,7 @@ exports[`renders a sponsored series properly 1`] = `
               />
             </g>
           </svg>
-          03:12
+          16:40
         </div>
       </div>
     </a>

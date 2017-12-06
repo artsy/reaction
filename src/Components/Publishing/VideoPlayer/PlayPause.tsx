@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import { IconVideoPause } from "../Icon/IconVideoPause"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
@@ -8,11 +8,7 @@ interface Props extends React.HTMLProps<HTMLSpanElement> {
   togglePlay: () => void
 }
 
-export class PlayPause extends Component<Props, null> {
-  shouldComponentUpdate(nextProps) {
-    return this.props.isPlaying !== nextProps.isPlaying
-  }
-
+export class PlayPause extends React.PureComponent<Props, null> {
   render() {
     const {
       isPlaying,

@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-// import { Fonts } from "../Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   duration: number
@@ -22,12 +21,9 @@ interface State {
 }
 
 export class Scrubber extends Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isScrubbing: false,
-      isPlayingOnMouseDown: false
-    }
+  state = {
+    isScrubbing: false,
+    isPlayingOnMouseDown: false
   }
 
   shouldComponentUpdate(nextProps) {

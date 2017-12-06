@@ -4,7 +4,10 @@ import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Date } from '../Byline/AuthorDate'
 import { Byline } from '../Byline/Byline'
-import { getMediaDate } from "../Constants"
+import {
+  formatTime,
+  getMediaDate
+} from "../Constants"
 import { Fonts } from "../Fonts"
 import { IconVideoPlay } from '../Icon/IconVideoPlay'
 
@@ -28,7 +31,7 @@ export class ArticleCard extends Component<Props, null> {
   renderMediaDate () {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
-  
+
     if (this.isUnpublishedMedia()) {
       return (
           <MediaDate>
@@ -50,7 +53,7 @@ export class ArticleCard extends Component<Props, null> {
       return (
         <MediaPlay>
           <IconVideoPlay color={color} />
-          {article.media.duration}
+          {formatTime(article.media.duration)}
         </MediaPlay>
       )
     }

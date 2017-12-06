@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import { IconVideoMute } from "../Icon/IconVideoMute"
 import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
@@ -8,11 +8,7 @@ interface Props extends React.HTMLProps<HTMLSpanElement> {
   toggleMute: () => void
 }
 
-export class MuteUnmute extends Component<Props, null> {
-  shouldComponentUpdate(nextProps) {
-    return this.props.isMuted !== nextProps.isMuted
-  }
-
+export class MuteUnmute extends React.PureComponent<Props, null> {
   render() {
     const {
       isMuted,
@@ -22,9 +18,9 @@ export class MuteUnmute extends Component<Props, null> {
     return (
       <MuteUnmuteContainer onClick={toggleMute}>
         {isMuted ?
-          <IconVideoMute />
+          <IconVideoMute color="white"/>
           :
-          <IconVideoUnmute />
+          <IconVideoUnmute color="white"/>
         }
       </MuteUnmuteContainer>
     )

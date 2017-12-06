@@ -12,18 +12,8 @@ describe("Fullscreen helper methods", () => {
 
   beforeEach(() => {
     event = new Event("fullscreenchange")
-    Object.defineProperty(document, 'fullscreenElement', {
-      configurable: true,
-      enumerable: true,
-      value: true,
-      writable: true
-    })
-    Object.defineProperty(document, 'fullscreenEnabled', {
-      configurable: true,
-      enumerable: true,
-      value: true,
-      writable: true
-    })
+    document.fullscreenEnabled = true
+    document.fullscreenElement = true
     document.exitFullscreen = null
     document.webkitExitFullscreen = null
     document.mozCancelFullScreen = null

@@ -185,7 +185,7 @@ exports[`VideoPlayer matches the snapshot 1`] = `
 }
 
 .c0 .c2 {
-  opacity: 1;
+  opacity: 0;
 }
 
 .c0:hover .c2 {
@@ -258,12 +258,12 @@ exports[`VideoPlayer matches the snapshot 1`] = `
             onClick={[Function]}
           >
             <svg
-              height="30"
-              width="30"
+              height="32px"
+              width="32px"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g
-                fill="#FFF"
+                fill="white"
               >
                 <path
                   d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z"
@@ -272,10 +272,10 @@ exports[`VideoPlayer matches the snapshot 1`] = `
             </svg>
           </div>
           <svg
-            height="28"
+            height="32px"
             onClick={[Function]}
             viewBox="0 0 28 28"
-            width="28"
+            width="32px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g
@@ -288,7 +288,7 @@ exports[`VideoPlayer matches the snapshot 1`] = `
                 fillOpacity=".2"
                 height="92"
                 rx="4"
-                stroke="#FFF"
+                stroke="white"
                 width="1200"
               />
               <path

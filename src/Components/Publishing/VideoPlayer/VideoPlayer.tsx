@@ -26,14 +26,11 @@ export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMuted: false,
-      isPlaying: false,
-      currentTime: 0,
-      duration: 0
-    }
+  state = {
+    isMuted: false,
+    isPlaying: false,
+    currentTime: 0,
+    duration: 0
   }
 
   componentDidMount() {
@@ -169,7 +166,7 @@ const VideoContainer = styled.div`
     height: 100%;
   }
   ${VideoControlsContainer} {
-    opacity: 1;
+    opacity: 0;
   }
   &:hover {
     ${VideoControlsContainer} {

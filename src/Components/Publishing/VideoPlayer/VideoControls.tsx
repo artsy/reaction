@@ -60,6 +60,7 @@ export class VideoControls extends Component<Props, null> {
             />
             <IconVideoFullscreen
               onClick={toggleFullscreen}
+              color="white"
             />
           </Block>
         </TopControls>

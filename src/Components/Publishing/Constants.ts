@@ -71,3 +71,14 @@ export const getMediaDate = (article) => {
     return published_at || scheduled_publish_at
   }
 }
+
+export const formatTime = (time) => {
+  let minutes = Math.floor(time / 60) % 60
+  let seconds = Math.floor(time % 60)
+  minutes = minutes <= 0 ? 0 : minutes
+  seconds = seconds <= 0 ? 0 : seconds
+
+  const minutesStr = minutes < 10 ? "0" + minutes : minutes
+  const secondsStr = seconds < 10 ? "0" + seconds : seconds
+  return minutesStr + ":" + secondsStr
+}

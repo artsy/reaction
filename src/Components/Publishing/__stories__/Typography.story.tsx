@@ -27,7 +27,11 @@ import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
 import { IconUnorderedList } from "../Icon/IconUnorderedList"
+import { IconVideoFullscreen } from "../Icon/IconVideoFullscreen"
+import { IconVideoMute } from "../Icon/IconVideoMute"
+import { IconVideoPause } from "../Icon/IconVideoPause"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
 import { Typography } from "./TypographyExamples"
 
 storiesOf("Publishing/Typography", module)
@@ -143,8 +147,24 @@ storiesOf("Publishing/Typography", module)
           <p>Unordered List</p>
         </div>
         <div style={{ width: 50 }}>
+          <IconVideoFullscreen />
+          <p>Video Fullscreen</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconVideoMute />
+          <p>Video Mute</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconVideoPause />
+          <p>Video Pause</p>
+        </div>
+        <div style={{ width: 50 }}>
           <IconVideoPlay />
           <p>Video Play</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconVideoUnmute />
+          <p>Video Unmute</p>
         </div>
       </div>
     )
