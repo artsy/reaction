@@ -3,18 +3,14 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { RelatedArticleFigure } from "./RelatedArticleFigure"
+import { RelatedArticleFigure, RelatedArticleFigureData } from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   vertical: {
     name: string
     id?: string
   }
-  articles: Array<{
-    thumbnail_title: string
-    thumbnail_image: string
-    slug: string
-  }>
+  articles: RelatedArticleFigureData[]
   isMobile?: boolean
 }
 

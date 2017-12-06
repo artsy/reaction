@@ -7,14 +7,14 @@ import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
 
+export interface RelatedArticleFigureData {
+  thumbnail_title: string
+  thumbnail_image: string
+  slug: string
+}
+
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
-  article: {
-    thumbnail_title: string
-    thumbnail_image: string
-    slug: string
-    authors: any
-    published_at: string
-  }
+  article: RelatedArticleFigureData
 }
 
 @track()
