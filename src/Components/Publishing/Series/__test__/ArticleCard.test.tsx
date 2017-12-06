@@ -4,6 +4,7 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { getDate } from '../../Constants'
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
+import { EditableChild } from "../../Fixtures/Helpers"
 import { ArticleCard } from "../ArticleCard"
 
 describe("ArticleCard", () => {
@@ -14,7 +15,7 @@ describe("ArticleCard", () => {
     videoArticle = VideoArticle
     standardArticle = StandardArticle
   })
-  
+
   it("renders an article properly", () => {
     const component = renderer.create(<ArticleCard article={standardArticle} series={SeriesArticle} />).toJSON()
 
@@ -23,6 +24,20 @@ describe("ArticleCard", () => {
 
   it("renders an article with unpublished media properly", () => {
     const component = renderer.create(<ArticleCard article={videoArticle} series={SeriesArticle} />).toJSON()
+
+    expect(component).toMatchSnapshot()
+  })
+
+  it("renders an article with children properly", () => {
+    const component = renderer.create(
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
+    ).toJSON()
 
     expect(component).toMatchSnapshot()
   })
@@ -66,5 +81,20 @@ describe("ArticleCard", () => {
     const formattedDate = getDate(videoArticle.published_at, 'condensed')
 
     expect(renderedDate).toBe(formattedDate)
+  })
+
+  it("Renders editable fields if present", () => {
+    const component = mount(
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
+    )
+    expect(component.text()).toMatch("Child description")
+    expect(component.text()).toMatch("Child image")
+    expect(component.text()).toMatch("Child title")
   })
 })

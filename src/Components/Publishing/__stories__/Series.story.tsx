@@ -12,6 +12,7 @@ import {
   VideoArticle,
   VideoArticleUnpublished
 } from "../Fixtures/Articles"
+import { EditableChild } from '../Fixtures/Helpers'
 
 storiesOf("Publishing/Series", module).add("Series", () => {
   return (
@@ -52,6 +53,18 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       />
     </div>
   )
+}).add("Article Card with children", () => {
+  return (
+    <div>
+      <ArticleCard
+        article={StandardArticle}
+        series={SeriesArticle}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
+    </div>
+  )
 }).add("Series Title", () => {
   return (
     <div>
@@ -62,6 +75,15 @@ storiesOf("Publishing/Series", module).add("Series", () => {
   return (
     <div>
       <SeriesTitle article={SeriesArticleSponsored} />
+    </div>
+  )
+}).add("Series Title with Children", () => {
+  return (
+    <div>
+      <SeriesTitle
+        article={SeriesArticle}
+        editTitle={EditableChild('title')}
+      />
     </div>
   )
 }).add("Series About", () => {
@@ -76,4 +98,14 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       <SeriesAbout article={SeriesArticleSponsored} />
     </div>
   )
+}).add("Series About with children", () => {
+  return (
+    <div>
+      <SeriesAbout
+        article={SeriesArticle}
+        editDescription={EditableChild('description')}
+      />
+    </div>
+  )
 })
+

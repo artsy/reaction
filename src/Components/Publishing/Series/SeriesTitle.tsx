@@ -5,21 +5,24 @@ import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 
 interface Props {
-  color?: string,
   article?: any
+  color?: string
+  editTitle?: any
 }
 
 export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { color, article } = this.props
+    const { article, color, editTitle } = this.props
     const { sponsor, title } = article
 
     return (
       <SeriesTitleContainer className='SeriesTitle' color={color}>
 
-        <Title>{title}</Title>
+        <Title>
+          {editTitle ? editTitle : title}
+        </Title>
 
         {sponsor &&
           <PartnerBlock

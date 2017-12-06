@@ -1,4 +1,4 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
@@ -9,8 +9,11 @@ import { Fonts } from "../Fonts"
 import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
 interface Props {
-  article?: any,
-  color?: string, 
+  article?: any
+  color?: string
+  editDescription?: any
+  editTitle?: any
+  editImage?: any
   series?: any
 }
 
@@ -62,7 +65,14 @@ export class ArticleCard extends Component<Props, null> {
   }
 
   render () {
-    const { article, color, series } = this.props
+    const {
+      article,
+      color,
+      editDescription,
+      editImage,
+      editTitle,
+      series
+    } = this.props
     const { media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
@@ -80,8 +90,18 @@ export class ArticleCard extends Component<Props, null> {
             <Header>
               <div>{series.title}</div>
             </Header>
-            <Title>{article.thumbnail_title}</Title>
-            <Description>{article.description}</Description>
+            <Title>
+              {editTitle
+                ? editTitle
+                : article.thumbnail_title
+              }
+            </Title>
+            <Description>
+              {editDescription
+                ? editDescription
+                : article.description
+              }
+            </Description>
           </div>
           {media
             ?
@@ -96,6 +116,7 @@ export class ArticleCard extends Component<Props, null> {
         </TextContainer>
 
         <ImageContainer>
+          {editImage}
           <Image
             src={crop(article.thumbnail_image, { width: 680, height: 450 })}
             style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
