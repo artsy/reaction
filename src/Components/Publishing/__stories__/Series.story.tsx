@@ -52,6 +52,19 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       />
     </div>
   )
+}).add("Article Card with children", () => {
+  return (
+    <div>
+      <ArticleCard
+        article={StandardArticle}
+        series={SeriesArticle}
+      >
+        <div>Child 0: Title</div>
+        <div>Child 1: Description</div>
+        <div>Child 2: Image</div>
+      </ArticleCard>
+    </div>
+  )
 }).add("Series Title", () => {
   return (
     <div>

@@ -27,6 +27,18 @@ describe("ArticleCard", () => {
     expect(component).toMatchSnapshot()
   })
 
+  it("renders an article with children properly", () => {
+    const component = renderer.create(
+      <ArticleCard article={videoArticle} series={SeriesArticle}>
+        <div>Child 0: Title</div>
+        <div>Child 1: Description</div>
+        <div>Child 2: Image</div>
+      </ArticleCard>
+    ).toJSON()
+
+    expect(component).toMatchSnapshot()
+  })
+
   it("Renders media duration and play icon if article has media and is published", () => {
     videoArticle.media.published = true
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
@@ -66,5 +78,19 @@ describe("ArticleCard", () => {
     const formattedDate = getDate(videoArticle.published_at, 'condensed')
 
     expect(renderedDate).toBe(formattedDate)
+  })
+
+  it("Renders children if present", () => {
+    delete videoArticle.media.release_date
+    const component = mount(
+      <ArticleCard article={videoArticle} series={SeriesArticle}>
+        <div>Child 0: Title</div>
+        <div>Child 1: Description</div>
+        <div>Child 2: Image</div>
+      </ArticleCard>
+    )
+    expect(component.text()).toMatch("Child 0")
+    expect(component.text()).toMatch("Child 1")
+    expect(component.text()).toMatch("Child 2")
   })
 })

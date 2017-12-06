@@ -10,6 +10,7 @@ import { IconPlayCaret } from '../Icon/IconPlayCaret'
 
 interface Props {
   article?: any,
+  children?: any,
   color?: string, 
   series?: any
 }
@@ -62,9 +63,13 @@ export class ArticleCard extends Component<Props, null> {
   }
 
   render () {
-    const { article, color, series } = this.props
+    const { article, children, color, series } = this.props
     const { media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
+
+    const editTitle = children && children[0]
+    const editDescription = children && children[1]
+    const editImage = children && children[2]
 
     return (
       <ArticleCardContainer
@@ -80,8 +85,18 @@ export class ArticleCard extends Component<Props, null> {
             <Header>
               <div>{series.title}</div>
             </Header>
-            <Title>{article.thumbnail_title}</Title>
-            <Description>{article.description}</Description>
+            <Title>
+              {editTitle
+                ? editTitle
+                : article.thumbnail_title
+              }
+            </Title>
+            <Description>
+              {editDescription
+                ? editDescription
+                : article.description
+              }
+            </Description>
           </div>
           {media
             ?
@@ -96,6 +111,7 @@ export class ArticleCard extends Component<Props, null> {
         </TextContainer>
 
         <ImageContainer>
+          {editImage}
           <Image
             src={crop(article.thumbnail_image, { width: 680, height: 450 })}
             style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
