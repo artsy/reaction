@@ -7,6 +7,7 @@ import { Text } from '../Sections/Text'
 
 interface Props {
   article?: any
+  children?: any
   color?: string
 }
 
@@ -14,8 +15,9 @@ export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { color, article } = this.props
+    const { article, children, color } = this.props
     const { series_description, sponsor } = article
+    const editDescription = children
 
     return (
       <SeriesAboutContainer className='SeriesAbout' color={color}>
@@ -35,7 +37,10 @@ export class SeriesAbout extends Component<Props, null> {
         </Col>
 
         <Col>
-          <Text layout='standard' html={series_description} />
+          {editDescription
+            ? <Text layout='standard'>{editDescription}</Text>
+            : <Text layout='standard' html={series_description} />
+          }
           {sponsor &&
             <PartnerBlock
               logo={sponsor.partner_logo}
