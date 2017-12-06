@@ -15,7 +15,7 @@ const OptionsContainer = styled.div`
     border-bottom: 1px solid #e5e5e5;
   }
   ${media.sm`
-    width: 335px;
+    width: 100%;
     margin-bottom: 20px;
   `};
 `
