@@ -10,9 +10,12 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "outDir": "dist",
+    "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "outDir": "dist",
+    "plugins": [
+      { "name": "typescript-styled-plugin" }
+    ]
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "data", "externals", "danger"]

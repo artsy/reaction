@@ -1,6 +1,6 @@
 import "jest-styled-components"
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 import { Typography } from "../__stories__/TypographyExamples"
 
 it("renders properly", () => {

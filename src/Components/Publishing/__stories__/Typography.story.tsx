@@ -1,12 +1,17 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import React from "react"
 
+import { IconArtist } from "../Icon/IconArtist"
+import { IconBlockquote } from "../Icon/IconBlockquote"
+import { IconClearFormatting } from "../Icon/IconClearFormatting"
+import { IconDrag } from "../Icon/IconDrag"
 import { IconEditEmbed } from "../Icon/IconEditEmbed"
 import { IconEditImages } from "../Icon/IconEditImages"
 import { IconEditSection } from "../Icon/IconEditSection"
 import { IconEditText } from "../Icon/IconEditText"
 import { IconEditVideo } from "../Icon/IconEditVideo"
 import { IconExpand } from "../Icon/IconExpand"
+import { IconHamburger } from "../Icon/IconHamburger"
 import { IconHeroImage } from "../Icon/IconHeroImage"
 import { IconHeroVideo } from "../Icon/IconHeroVideo"
 import { IconImageFullscreen } from "../Icon/IconImageFullscreen"
@@ -14,10 +19,15 @@ import { IconImageSet } from "../Icon/IconImageSet"
 import { IconLayoutFullscreen } from "../Icon/IconLayoutFullscreen"
 import { IconLayoutSplit } from "../Icon/IconLayoutSplit"
 import { IconLayoutText } from "../Icon/IconLayoutText"
+import { IconLink } from "../Icon/IconLink"
+import { IconOrderedList } from "../Icon/IconOrderedList"
+import { IconPlayCaret } from "../Icon/IconPlayCaret"
+import { IconPlus } from "../Icon/IconPlus"
 import { IconRemove } from "../Icon/IconRemove"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
+import { IconUnorderedList } from "../Icon/IconUnorderedList"
 import { Typography } from "./TypographyExamples"
 
 storiesOf("Publishing/Typography", module)
@@ -41,6 +51,14 @@ storiesOf("Publishing/Typography", module)
           <p>Expand</p>
         </div>
         <div style={{ width: 50 }}>
+          <IconDrag />
+          <p>Drag</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconHamburger />
+          <p>Hamburger</p>
+        </div>
+        <div style={{ width: 50 }}>
           <IconLayoutSplit />
           <p>Layout Split</p>
         </div>
@@ -51,6 +69,14 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconLayoutFullscreen />
           <p>Layout Fullscreen</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconPlayCaret />
+          <p>Play Caret</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconPlus />
+          <p>Plus</p>
         </div>
         <div style={{ width: 50 }}>
           <IconHeroVideo />
@@ -95,6 +121,30 @@ storiesOf("Publishing/Typography", module)
         <div style={{ width: 50 }}>
           <IconSocialFacebook />
           <p>Facebook</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconArtist />
+          <p>Artist</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconBlockquote />
+          <p>Blockquote</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconClearFormatting />
+          <p>Clear Formatting</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconLink />
+          <p>Link</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconOrderedList />
+          <p>Ordered List</p>
+        </div>
+        <div style={{ width: 50 }}>
+          <IconUnorderedList />
+          <p>Unordered List</p>
         </div>
       </div>
     )

@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.9.10",
+  "version": "0.13.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -14,13 +14,11 @@
   "scripts": {
     "start": "yarn storybook",
     "test": "node verify-node-version.js && jest",
-    "storybook":
-      "node verify-node-version.js && concurrently --kill-others 'yarn relay --watch' 'env GRAPHQL_NO_NAME_WARNING=true start-storybook -p 9001'",
+    "test:watch": "jest --watch --runInBand",
+    "storybook": "node verify-node-version.js && concurrently --kill-others 'yarn relay --watch' 'env GRAPHQL_NO_NAME_WARNING=true start-storybook -p 9001'",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
-    "sync-schema":
-      "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
-    "sync-colors":
-      "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
+    "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
+    "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty",
     "relay":
@@ -76,7 +74,7 @@
     "chokidar": "^1.6.1",
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "graphql-config-parser": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -85,8 +83,8 @@
     "gulp-tsc": "^1.3.0",
     "gulp-typescript": "^3.1.6",
     "husky": "^0.13.4",
-    "jest": "^20.0.4",
-    "jest-styled-components": "^4.4.1",
+    "jest": "^21.1.1",
+    "jest-styled-components": "^4.9.0",
     "lint-staged": "^4.0.0",
     "longjohn": "^0.2.12",
     "morgan": "^1.8.1",
@@ -95,9 +93,9 @@
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^1.3.1",
-    "react-test-renderer": "^15.4.2",
+    "react-test-renderer": "^15.6.1",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/relay-compiler-1.3.0-artsy.1.tgz",
-    "styled-components": "^2.0.1",
+    "styled-components": "^2.2.3",
     "ts-babel-node": "alloy/ts-babel-node#artsy",
     "ts-node": "^3.0.2",
     "tslint": "^4.5.0",
@@ -105,6 +103,7 @@
     "tslint-react": "^2.4.0",
     "typescript": "^2.3.4",
     "typescript-babel-jest": "^1.0.3",
+    "typescript-styled-plugin": "^0.1.2",
     "uglify-js": "^2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.2",
     "webpack": "^3.5.6",
@@ -132,7 +131,7 @@
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "react": "^15.5.4",
-    "react-lines-ellipsis": "damassi/react-lines-ellipsis",
+    "react-lines-ellipsis": "^0.8.0",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/react-relay-1.3.0-artsy.1.tgz",
     "react-responsive-decorator": "^0.0.1",
@@ -153,10 +152,21 @@
     "transform": {
       ".(ts|tsx)": "typescript-babel-jest"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": ["<rootDir>/dist/"],
-    "moduleFileExtensions": ["ts", "tsx", "js"],
-    "setupFiles": ["./src/setup_jest.js"]
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/*"
+    ],
+    "setupFiles": [
+      "./src/setup_jest.js"
+    ]
   },
   "lint-staged": {
     "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"],

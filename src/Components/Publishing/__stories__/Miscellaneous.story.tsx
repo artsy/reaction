@@ -1,6 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
-import { EmailSignup } from "../EmailSignup"
+import React from "react"
 import { Authors, Embeds } from "../Fixtures/Components"
 import { Authors as AuthorInfo } from "../Sections/Authors"
 import { Embed } from "../Sections/Embed"
@@ -19,7 +18,4 @@ storiesOf("Publishing/Miscellaneous", module)
         <AuthorInfo authors={Authors} />
       </div>
     )
-  })
-  .add("Email Signup", () => {
-    return <EmailSignup signupUrl="#" />
   })

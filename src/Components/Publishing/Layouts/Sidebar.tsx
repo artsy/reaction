@@ -9,9 +9,12 @@ export const Sidebar: React.SFC<React.HTMLProps<HTMLDivElement>> = props => {
 const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: -63px 0 0 60px;
-  min-width: 300px;
-  ${pMedia.md`
+  margin: -58px 0 0 60px;
+  min-width: 280px;
+  ${pMedia.xl`
+    margin-left: 40px;
+  `}
+  ${pMedia.lg`
     display: none;
   `}
 `

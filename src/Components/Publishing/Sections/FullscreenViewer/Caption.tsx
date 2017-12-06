@@ -1,5 +1,5 @@
-import * as PropTypes from "prop-types"
-import * as React from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
@@ -121,7 +121,8 @@ const CaptionContainer = styled.div`
   ${pMedia.sm`
     position: absolute;
     bottom: 0;
-    width: calc(100% - 40px);
+    width: 100%;
+    max-width: 100vh;
     padding: 20px;
   `}
 `

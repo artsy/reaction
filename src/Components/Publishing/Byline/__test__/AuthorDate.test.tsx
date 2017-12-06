@@ -1,7 +1,7 @@
 import { shallow } from "enzyme"
 import "jest-styled-components"
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 import { Author, Date } from "../AuthorDate"
 
 describe("Author/Date", () => {

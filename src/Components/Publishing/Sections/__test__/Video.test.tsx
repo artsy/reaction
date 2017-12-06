@@ -1,6 +1,6 @@
 import "jest-styled-components"
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 import { Videos } from "../../Fixtures/Components"
 import { Video } from "../Video"
 

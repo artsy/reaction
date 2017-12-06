@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
-import * as PropTypes from "prop-types"
-import * as React from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import { Artwork } from "../Sections/Artwork"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { Image } from "../Sections/Image"

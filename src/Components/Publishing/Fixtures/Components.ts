@@ -77,6 +77,11 @@ export const Authors = [
     bio: "[Halley Johnson](https://artsy.net/molly) is an Writer Guru at Artsy. She enjoys speaking Georgian.",
     twitter_handle: "halleyjohnson",
   },
+  {
+    name: "Kana Abe",
+    bio: "",
+    twitter_handle: "",
+  },
 ]
 
 export const Campaign = {
@@ -124,6 +129,7 @@ export const UnitCanvasVideo = {
     url: "http://artsy.net",
   },
   assets: [{ url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4" }],
+  cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG",
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
   "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
@@ -164,6 +170,21 @@ export const UnitPanel = {
   assets: [
     { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
   ],
+  logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
+  link: {
+    text: "",
+    url: "http://artsy.net",
+  },
+}
+
+export const UnitPanelVideo = {
+  headline: "Euismod Inceptos Quam",
+  body:
+  "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+  assets: [
+    { url: 'https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4'}
+  ],
+  cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
   logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
   link: {
     text: "",
@@ -227,6 +248,11 @@ export const HeroSections = [
   {
     type: "text",
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+  },
+  {
+    type: "basic",
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
 ]
 
@@ -350,20 +376,26 @@ export const RelatedCanvas = [
     thumbnail_image:
     "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     slug: "artsy-editorial-15-top-art-schools-united-states",
-    contributing_authors: [{ name: "Anna Louis-Sussman" }, { name: "Kana Abe" }],
+    authors: [{ name: "Anna Louis-Sussman" }, { name: "Kana Abe" }],
+    // Deprecated
+    contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {
     thumbnail_title: "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
     slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
-    contributing_authors: [{ name: "Halley Johnson" }],
+    authors: [{ name: "Halley Johnson" }],
+    // Deprecated
+    contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {
     thumbnail_title: "French Art History in a Nutshell",
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
+    authors: [{ name: "Casey Lesser" }],
+    // Deprecated
     contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
@@ -371,7 +403,7 @@ export const RelatedCanvas = [
     thumbnail_title: "Miami Artists and Museums Brace for Hurricane Irma",
     thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/jAu4NaKnr_m53OnnMaDe_w%2Fmag.jpg",
     slug: "artsy-editorial-miami-artists-museums-brace-hurricane-irma",
-    contributing_authors: [{ name: "Owen Dodd" }],
+    authors: [{ name: "Owen Dodd" }],
     published_at: "2017-05-19T13:09:18.567Z",
   },
 ]

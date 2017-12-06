@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
@@ -17,13 +17,23 @@ export const Author: React.SFC<AuthorProps> = props => {
     <AuthorContainer>
       {profileImage}
       <AuthorInfo>
-        <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
-        <Twitter>
-          <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
-            <Icon name="twitter" color="black" />
-            {`@${author.twitter_handle}`}
-          </TwitterHandle>
-        </Twitter>
+        {
+          author.bio && author.bio.length ?
+            <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
+            :
+            <div>{author.name}</div>
+        }
+        {
+          author.twitter_handle && author.twitter_handle.length ?
+            <Twitter>
+              <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
+                <Icon name="twitter" color="black" />
+                {`@${author.twitter_handle}`}
+              </TwitterHandle>
+            </Twitter>
+            :
+            false
+        }
       </AuthorInfo>
     </AuthorContainer>
   )
@@ -36,8 +46,8 @@ interface ProfileImageProps extends React.HTMLProps<HTMLDivElement> {
 const Div: StyledFunction<ProfileImageProps> = styled.div
 
 const ProfileImage = Div`
-  min-width: 70px;
-  min-height: 70px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
@@ -54,19 +64,18 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${Fonts.garamond("s23")}
+  ${Fonts.unica("s16", "medium")}
   a {
     color: black;
   }
   ${pMedia.xs`
-    ${Fonts.garamond("s17")}
+    ${Fonts.unica("s14", "medium")}
   `}
 `
 const Twitter = styled.span`
   margin-left: 20px;
 `
 const TwitterHandle = styled.a`
-  ${Fonts.unica("s14", "medium")}
   color: black;
   text-decoration: none;
   white-space: nowrap;
@@ -74,7 +83,4 @@ const TwitterHandle = styled.a`
     vertical-align: middle;
     margin: 0px;
   }
-  ${pMedia.xs`
-    ${Fonts.unica("s12", "medium")}
-  `}
 `

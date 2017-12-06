@@ -1,3 +1,4 @@
+import { get } from 'lodash'
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
@@ -8,18 +9,34 @@ import { CanvasContainer } from "./CanvasContainer"
 interface DisplayCanvasProps {
   unit: any
   campaign: any
+  article?: any
 }
 
 export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
-  const { unit, campaign } = props
-  const disclaimer = <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
+  const { unit, campaign, article } = props
+  const url = get(unit, 'link.url', '')
+
+  const disclaimer = (
+    <Disclaimer layout={unit.layout}>
+      {unit.disclaimer}
+    </Disclaimer>
+  )
 
   return (
     <DisplayContainer layout={unit.layout}>
-      <a href={unit.link.url} target="_blank">
-        <AdvertisementBy>{`Advertisement by ${campaign.name}`}</AdvertisementBy>
+      <a href={url} target="_blank">
+        <AdvertisementBy>
+          {`Advertisement by ${campaign.name}`}
+        </AdvertisementBy>
       </a>
-      <CanvasContainer unit={unit} campaign={campaign} disclaimer={disclaimer} />
+
+      <CanvasContainer
+        unit={unit}
+        campaign={campaign}
+        article={article}
+        disclaimer={disclaimer}
+      />
+
       {unit.layout === "overlay" && disclaimer}
     </DisplayContainer>
   )
@@ -43,8 +60,8 @@ const DisplayContainer = Div`
     text-decoration: none;
   }
   ${props => pMedia.sm`
-    ${props.layout !== "slideshow" && "padding: 0 20px;"}
     margin-bottom: 0;
+    min-height: 400px;
   `}
 `
 const AdvertisementBy = styled.div`

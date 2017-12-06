@@ -5,6 +5,7 @@ import { Fonts } from "../Fonts"
 import { Layout } from "../Typings"
 
 interface StyledTextProps {
+  isContentStart: boolean
   layout: Layout
   postscript?: Boolean
 }
@@ -14,12 +15,10 @@ const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> = s
 function getBlockquoteSize(layout, size) {
   let font
   const desktop = size === "lg"
-  if (layout === "classic") {
+  if (layout === "feature") {
+    font = desktop ? Fonts.unica("s40") : Fonts.unica("s34")
+  } else {
     font = desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
-  } else if (layout === "feature") {
-    font = desktop ? Fonts.unica("s65") : Fonts.unica("s40")
-  } else if (layout === "standard") {
-    font = desktop ? Fonts.garamond("s50") : Fonts.garamond("s40")
   }
   return font
 }
@@ -27,6 +26,7 @@ function getBlockquoteSize(layout, size) {
 export const StyledText = div`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : "")};
+  width: 100%;
   a {
     color: black;
     text-decoration: none;
@@ -99,6 +99,9 @@ export const StyledText = div`
     em {
       font-style: ${props => (props.layout === "classic" ? "normal" : "")};
     }
+    a {
+      background-size: 1.25px 1px;
+    }
   }
   blockquote {
     ${props => getBlockquoteSize(props.layout, "lg")}
@@ -107,14 +110,17 @@ export const StyledText = div`
     padding-top: 46px;
     padding-bottom: 46px;
     margin: 0;
+    word-break: break-word;
   }
-  .content-start {
-    ${Fonts.unica("s67", "medium")}
-    float: left;
-    line-height: .5em;
-    margin-right: 10px;
-    margin-top: .298em;
-    text-transform: uppercase;
+  p:first-child:first-letter {
+    ${props => props.isContentStart && Fonts.unica("s67", "medium")}
+    ${props => props.isContentStart && `
+      float: left;
+      line-height: .5em;
+      margin-right: 10px;
+      margin-top: .298em;
+      text-transform: uppercase;
+  `}
   }
   .content-end {
     display: inline-block;
@@ -143,13 +149,6 @@ export const StyledText = div`
       text-transform: none;
     }
   }
-  ${props => pMedia.md`
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  `}
-  ${props => pMedia.sm`
-    max-width: 100%;
-  `}
   ${props => pMedia.xs`
     p, ul, ol {
       ${Fonts.garamond("s19")}

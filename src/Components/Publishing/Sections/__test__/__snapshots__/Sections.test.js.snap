@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`snapshots renders properly 1`] = `
 .c21 {
   width: 100%;
   height: 1000px;
@@ -70,6 +70,16 @@ exports[`renders properly 1`] = `
 }
 
 .c7:hover .c9 {
+  opacity: 1;
+}
+
+.c7 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c7 .image-loaded {
   opacity: 1;
 }
 
@@ -305,6 +315,7 @@ exports[`renders properly 1`] = `
 
 .c2 {
   position: relative;
+  width: 100%;
 }
 
 .c2 a {
@@ -411,28 +422,21 @@ exports[`renders properly 1`] = `
   line-height: 1.5em;
 }
 
+.c2 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c2 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.1em;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
-}
-
-.c2 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
+  word-break: break-word;
 }
 
 .c2 .content-end {
@@ -599,7 +603,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c1 {
     width: 680px;
   }
@@ -613,7 +617,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c3 {
     width: 680px;
   }
@@ -627,7 +631,7 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c4 {
     width: 680px;
   }
@@ -636,12 +640,12 @@ exports[`renders properly 1`] = `
 @media (max-width:900px) {
   .c4 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c24 {
     width: 680px;
   }
@@ -650,21 +654,8 @@ exports[`renders properly 1`] = `
 @media (max-width:900px) {
   .c24 {
     width: 100%;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 40px 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c2 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    max-width: 100%;
   }
 }
 
@@ -717,7 +708,7 @@ exports[`renders properly 1`] = `
   .c2 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
@@ -726,14 +717,19 @@ exports[`renders properly 1`] = `
   }
 }
 
-@media (max-width:1250px) {
+@media (max-width:1280px) {
   .c0 {
     max-width: 680px;
-    margin: auto;
   }
 }
 
 @media (max-width:900px) {
+  .c0 {
+    max-width: 780px;
+  }
+}
+
+@media (max-width:600px) {
   .c0 {
     max-width: 780px;
   }
@@ -744,6 +740,7 @@ exports[`renders properly 1`] = `
 >
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -759,6 +756,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -774,6 +772,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c3"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -789,6 +788,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -804,6 +804,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -820,9 +821,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height={351}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=80"
               width={197}
             />
             <div
@@ -909,9 +910,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height={351}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=80"
               width={197}
             />
             <div
@@ -1002,9 +1003,9 @@ exports[`renders properly 1`] = `
             >
               <img
                 alt="Brass Tax"
-                className="display-artwork__image c8"
+                className="BlockImage__container c8"
                 height={352}
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=80"
                 width={264}
               />
               <div
@@ -1069,7 +1070,47 @@ exports[`renders properly 1`] = `
             <div
               className="c17"
             >
-              <div />
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": <span>
+                      <span
+                        className="artist-name"
+                      >
+                        <span
+                          className="name"
+                        >
+                          <file__StyledTextLink
+                            color="#999"
+                            href="/artist/matt-devine"
+                            underline={false}
+                          >
+                            Matt Devine
+                          </file__StyledTextLink>
+                        </span>
+                      </span>
+                      <span
+                        className="title"
+                      >
+                        <file__StyledTextLink
+                          color="#999"
+                          href="/artwork/matt-devine-brass-tax"
+                          underline={false}
+                        >
+                          Brass Tax
+                        </file__StyledTextLink>
+                      </span>
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/partner/joanne-artman-gallery"
+                        underline={false}
+                      >
+                        Joanne Artman Gallery
+                      </file__StyledTextLink>
+                    </span>,
+                  }
+                }
+              />
             </div>
           </div>
         </div>
@@ -1078,6 +1119,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1093,6 +1135,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1109,9 +1152,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={425}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1198,9 +1241,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={425}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1287,9 +1330,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="c8"
+              className="BlockImage__container c8"
               height={426}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1368,6 +1411,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1383,6 +1427,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1399,9 +1444,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
-              className="c8"
+              className="BlockImage__container c8"
               height="auto"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
               width="100%"
             />
             <div
@@ -1480,6 +1525,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1495,6 +1541,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="embed"
   >
     <iframe
       className="c21"
@@ -1506,6 +1553,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1521,6 +1569,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c4"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1537,9 +1586,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={387}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=80"
               width={216}
             />
             <div
@@ -1626,9 +1675,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={388}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={219}
             />
             <div
@@ -1715,9 +1764,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="c8"
+              className="BlockImage__container c8"
               height={388}
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={222}
             />
             <div
@@ -1796,6 +1845,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1811,6 +1861,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c24"
+    type="image_set"
   >
     <div
       style={
@@ -1879,6 +1930,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1894,6 +1946,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c24"
+    type="image_collection"
   >
     <div
       className="c5"
@@ -1910,9 +1963,9 @@ exports[`renders properly 1`] = `
           >
             <img
               alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
-              className="c8"
+              className="BlockImage__container c8"
               height="auto"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=95"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=80"
               width="100%"
             />
             <div
@@ -1991,6 +2044,7 @@ exports[`renders properly 1`] = `
   </div>
   <div
     className="c1"
+    type="text"
   >
     <div
       className="article__text-section c2"

@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import { extend } from "lodash"
-import * as React from "react"
+import React from "react"
 import { Byline } from "../Byline/Byline"
 import { Share } from "../Byline/Share"
 import { StandardArticle } from "../Fixtures/Articles"
@@ -13,6 +13,18 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
+  .add("Share with custom tracking", () => {
+    const data = { entity_id: "1234", entity_type: "feature" }
+    return (
+      <div>
+        <Share
+          url="http://artsy.net/article/point-pencils"
+          title="The Point of Pencils"
+          trackingData={data}
+        />
+      </div>
+    )
+  })
   .add("Full Byline", () => {
     return (
       <div>
@@ -22,7 +34,7 @@ storiesOf("Publishing/Byline", module)
   })
   .add("Many Authors Byline", () => {
     const article = extend({}, StandardArticle, {
-      contributing_authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
+      authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
     })
     return (
       <div>
@@ -34,6 +46,13 @@ storiesOf("Publishing/Byline", module)
     return (
       <div>
         <Byline article={StandardArticle} layout="condensed" />
+      </div>
+    )
+  })
+  .add("Byline with custom color", () => {
+    return (
+      <div>
+        <Byline article={StandardArticle} color='blue' />
       </div>
     )
   })

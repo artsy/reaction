@@ -1,7 +1,11 @@
-import * as PropTypes from "prop-types"
-import * as React from "react"
+import PropTypes from "prop-types"
+import React from "react"
 import { Environment } from "relay-runtime"
 import { createEnvironment } from "../Relay/createEnvironment"
+
+// TODO: Once this PR for `rest` https://github.com/Microsoft/TypeScript/pull/13470 lands
+// we’ll be able to not make this optional and simply remove it from the props that a
+// component wrapped with the `ContextConsumer` HOC accepts.
 
 /**
  * The Artsy specific props injected by the higher-order component produced by `ContextConsumer`.
@@ -9,8 +13,6 @@ import { createEnvironment } from "../Relay/createEnvironment"
  * @see {@link ContextProvider}
  * @see {@link ContextConsumer}
  *
- * @todo Once this PR for `rest` https://github.com/Microsoft/TypeScript/pull/13470 lands we’ll be able to not make this
- *       optional and simply remove it from the props that a component wrapped with the `ContextConsumer` HOC accepts.
  */
 export interface ContextProps {
   /**

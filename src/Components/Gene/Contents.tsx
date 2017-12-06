@@ -1,6 +1,5 @@
-import * as React from "react"
-import { ConnectionData } from "react-relay"
-import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
+import React from "react"
+import { ConnectionData, createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
 import styled from "styled-components"
 
 import { addUrlProps, UrlQueryParamTypes } from "react-url-query"

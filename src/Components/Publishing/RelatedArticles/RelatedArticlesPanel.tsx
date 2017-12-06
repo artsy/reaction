@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
-import { articleHref } from "../Constants"
+import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
@@ -24,7 +24,7 @@ export const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props 
 
       <Collection>
         {articles.map((article, i) => {
-          const href = articleHref(article.slug)
+          const href = getArticleHref(article.slug)
           const articleImageSrc = crop(article.thumbnail_image, {
             width: 160,
             height: 110
@@ -67,7 +67,10 @@ const ArticleLink = styled.a`
   text-decoration: none;
   display: flex;
   justify-content: left;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const ArticleImage = styled.img`

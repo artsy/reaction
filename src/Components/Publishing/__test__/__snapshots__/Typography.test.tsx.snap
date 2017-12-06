@@ -222,7 +222,7 @@ exports[`renders properly 1`] = `
 .c13 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 130px;
+  font-size: 120px;
   line-height: 1.1em;
   margin-bottom: 20px;
 }
@@ -299,7 +299,7 @@ exports[`renders properly 1`] = `
   <div
     className="c13"
   >
-    Unica s130: 130px / 1.1em
+    Unica s120: 120px / 1.1em
   </div>
   <div
     className="c14"

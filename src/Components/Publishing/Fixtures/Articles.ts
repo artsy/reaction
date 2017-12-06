@@ -47,7 +47,7 @@ export const ClassicArticle: ArticleData = {
   scheduled_publish_at: null,
   thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   published_at: "2017-07-28T20:38:05.709Z",
-  description: " The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
+  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
   sections: [
     {
       type: "text",
@@ -135,14 +135,21 @@ export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
   slug: "new-yorks-next-art-district",
-  contributing_authors: [],
+  contributing_authors: [ // deprecated
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
   published_at: "2017-05-19T13:09:18.567Z",
   thumbnail_title: "New York's Next Art District",
+  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
   layout: "standard",
   vertical: {
     name: "Art Market",
     id: "12345",
   },
+  description: 'Land exhibitions, make influential contacts, and gain valuable feedback about your work.',
   sections: [
     {
       type: "text",
@@ -374,6 +381,48 @@ export const StandardArticle: ArticleData = {
   ],
 }
 
+export const BasicArticle: ArticleData = {
+  ...StandardArticle,
+  layout: 'feature',
+  lead_paragraph: "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+  title: '9 Famous Artists’ Studios You Can Visit, from Jackson Pollock to Barbara Hepworth',
+  sections: [
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          type: "image",
+          width: 1200,
+          height: 750,
+          caption: "<p>Illustration by Tomi Um for Artsy.</p>",
+        },
+      ],
+    },
+    ...StandardArticle.sections
+  ],
+  contributing_authors: [ // deprecated
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
+  authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+    },
+  ],
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    url: "https://vimeo.com/238843720",
+    deck: "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+  },
+}
+
 export const FeatureArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
   keywords: ["Inspiration", "Casey Lesser"],
@@ -393,7 +442,7 @@ export const FeatureArticle: ArticleData = {
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
     deck: "Lorem Ipsum",
   },
-  contributing_authors: [
+  contributing_authors: [ // deprecated
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
@@ -544,6 +593,12 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
+export const SponsoredArticle = extend({}, FeatureArticle, {
+  sponsor: {
+    partner_light_logo: "https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
+  }
+})
+
 export const SuperArticle = extend({}, FeatureArticle, {
   is_super_article: true,
   super_article: {
@@ -619,3 +674,49 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
 export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
+
+export const VideoArticle = {
+  layout: "video",
+  id: "597b9f652d35b80017a2a6a7",
+  title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  thumbnail_title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
+  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
+  slug: "joanne-artman-gallery-poetry-naturerefinement-form",
+  published_at: "2017-07-28T20:38:05.709Z",
+  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
+  media: {
+    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    duration: "03:12",
+    release_date: "2017-08-28T20:38:05.709Z",
+    published: true
+  }
+}
+
+export const VideoArticleUnpublished = extend({}, VideoArticle, {
+  media: {
+    url: "",
+    duration: "03:12",
+    release_date: "2018-08-28T20:38:05.709Z",
+    published: false
+  }
+})
+
+export const SeriesArticle = {
+  layout: "series",
+  title: "The Future of Art",
+  series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+  related_articles: [
+    VideoArticle,
+    VideoArticleUnpublished,
+    FeatureArticle
+  ]
+}
+
+export const SeriesArticleSponsored = extend({}, SeriesArticle, {
+ sponsor: {
+    partner_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_logo_link: 'http://artsy.net'
+  }
+})
+
+

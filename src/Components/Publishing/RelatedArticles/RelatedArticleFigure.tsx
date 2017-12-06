@@ -4,7 +4,7 @@ import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { articleHref } from "../Constants"
+import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
@@ -12,7 +12,7 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
     thumbnail_title: string
     thumbnail_image: string
     slug: string
-    contributing_authors: any
+    authors: any
     published_at: string
   }
 }
@@ -31,12 +31,13 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     impression_type: "related_articles_canvas",
     context_type: "article_fixed",
   }))
-  // tslint:disable-next-line:no-empty
-  onClick(e) { }
+  onClick(e) {
+    // noop
+  }
 
   render() {
     const { article } = this.props
-    const href = articleHref(article.slug)
+    const href = getArticleHref(article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
 
     return (
@@ -67,16 +68,19 @@ const ImageTitle = styled.div`
   text-decoration: none;
   min-height: 270px;
   ${pMedia.sm`
-    height: 235px;
+    min-height: 235px;
   `};
 `
 
 const ArticleFigure = styled.a`
   display: flex;
   flex-direction: column;
-  max-width: 278px;
+  width: 278px;
   text-decoration: none;
   color: black;
+  ${pMedia.sm`
+    width: 225px;
+  `};
 `
 
 const ArticleTitle = styled.div`
@@ -92,6 +96,7 @@ const BlockImage = styled.img`
   margin-bottom: 10px;
   object-fit: cover;
   ${pMedia.sm`
+    width: 225px;
     height: 150px;
   `};
 `

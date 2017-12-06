@@ -1,5 +1,5 @@
 import numeral from "numeral"
-import * as React from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import Icon from "../Icon"
@@ -142,10 +142,10 @@ const Nav = styled.div`
 `
 
 const SuperLabel = styled.div`
-  position: absolute
-  font-size: 9px
+  position: absolute;
+  font-size: 9px;
   margin-top: -15px;
-  color: black
+  color: black;
 `
 
 const NavItem = styled.div`

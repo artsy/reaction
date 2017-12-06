@@ -1,19 +1,27 @@
 import React from "react"
 import styled from "styled-components"
-import { track } from "../../../Utils/track"
+import Events from "../../../Utils/Events"
+import track from "../../../Utils/track"
+import { pMedia } from "../../Helpers"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
 
-interface ShareProps extends React.HTMLProps<HTMLDivElement> {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string
   title: string
   articleId?: string
   color?: string
+  tracking?: any
+  trackingData?: any
 }
 
-@track()
-export class Share extends React.Component<ShareProps, null> {
+@track((props) => {
+  return props.trackingData ? props.trackingData : {}
+}, {
+  dispatch: data => Events.postEvent(data)
+})
+export class Share extends React.Component<Props, null> {
   static defaultProps = {
     color: "black",
   }
@@ -24,20 +32,20 @@ export class Share extends React.Component<ShareProps, null> {
     this.trackShare = this.trackShare.bind(this)
   }
 
-  @track((props, [e]) => ({
-    action: "Article share",
-    article_id: props.articleId,
-    context_type: "article_fixed",
-    service: (() => {
-      const href = e.currentTarget.attributes.href.value
-      if (href.match("facebook")) return "facebook"
-      if (href.match("twitter")) return "twitter"
-      if (href.match("mailto")) return "email"
-    })(),
-  }))
   trackShare(e) {
     e.preventDefault()
     window.open(e.currentTarget.attributes.href.value, "Share", "width = 600,height = 300")
+
+    this.props.tracking.trackEvent({
+      action: "Click",
+      type: "share",
+      label: (() => {
+        const href = e.currentTarget.attributes.href.value
+        if (href.match("facebook")) return "facebook"
+        if (href.match("twitter")) return "twitter"
+        if (href.match("mailto")) return "email"
+      })()
+    })
   }
 
   getHref(type) {
@@ -52,33 +60,38 @@ export class Share extends React.Component<ShareProps, null> {
   }
 
   render() {
+    const { color } = this.props
     return (
       <ShareContainer>
         <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
-          <IconSocialFacebook color={this.props.color} />
+          <IconSocialFacebook color={color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
-          <IconSocialTwitter color={this.props.color} />
+          <IconSocialTwitter color={color} />
         </IconWrapper>
         <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
-          <IconSocialEmail color={this.props.color} />
+          <IconSocialEmail color={color} />
         </IconWrapper>
       </ShareContainer>
     )
   }
 }
 
-const ShareContainer = styled.div`
-  display: flex;
-  margin: 5px 0 4px;
+export const ShareContainer = styled.div`
+  white-space: nowrap;
+  line-height: 1em;
+  ${pMedia.xs`
+    margin-top: 15px;
+  `}
 `
 const IconWrapper = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
   text-decoration: none;
-  margin-right: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
   &:hover {
     opacity: 0.6;
+  }
+  &:first-child {
+    padding-left: 0;
   }
 `

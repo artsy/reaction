@@ -1,18 +1,19 @@
-import moment from "moment-timezone"
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
+import { getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface AuthorDateProps {
   authors?: any
+  color?: string
   date?: string
-  layout: string
+  layout?: string
 }
 
 export const Author: React.SFC<AuthorDateProps> = props => {
   return (
-    <StyledAuthor className="author" layout={props.layout}>
+    <StyledAuthor className="author" layout={props.layout} color={props.color}>
       By {getAuthorByline(props.authors)}
     </StyledAuthor>
   )
@@ -26,34 +27,8 @@ export const Date: React.SFC<AuthorDateProps> = props => {
   )
 }
 
-const getAuthorByline = authors => {
-  if (authors && authors.length > 0) {
-    if (authors.length > 1) {
-      const str = authors.reduce((prev, curr, i) => {
-        let delim
-        const len = authors.length
-        if (i === len - 1) {
-          delim = " and "
-        } else if (i === 0) {
-          delim = ""
-        } else {
-          delim = ", "
-        }
-        return prev + delim + curr.name
-      }, "")
-      return str
-    } else {
-      return authors[0].name
-    }
-  } else {
-    return "Artsy Editorial"
-  }
-}
-
-const getDate = (date, layout) => {
-  return layout === "condensed"
-    ? moment(date).tz("America/New_York").format("MMM D, YYYY")
-    : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+Author.defaultProps = {
+  color: 'black'
 }
 
 const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> = styled.div
@@ -76,7 +51,7 @@ const adjustForCondensed = layout => {
   &:before {
     min-width: 8px;
     min-height: 8px;
-    margin: 0 5px 1px;
+    margin: 0 5px 1px 0;
   }`
     : ""
 }
@@ -88,7 +63,7 @@ const StyledAuthor = Text.extend`
     min-height: 10px;
     border-radius: 50%;
     margin: 6px 10px 1px 0;
-    background-color: ${props => (props.layout === "fullscreen" ? "#fff" : "#000")};
+    background-color: ${props => props.color};
   }
   ${props => adjustForCondensed(props.layout)}
   ${pMedia.sm`

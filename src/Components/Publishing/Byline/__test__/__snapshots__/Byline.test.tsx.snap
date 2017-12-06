@@ -32,36 +32,26 @@ exports[`Byline renders a byline 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: #000;
+  background-color: black;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5px 0 4px;
+  white-space: nowrap;
+  line-height: 1em;
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
   text-decoration: none;
-  margin-right: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .c4:hover {
   opacity: 0.6;
+}
+
+.c4:first-child {
+  padding-left: 0;
 }
 
 .c0 {
@@ -80,6 +70,7 @@ exports[`Byline renders a byline 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  color: black;
 }
 
 @media (max-width:720px) {
@@ -117,14 +108,22 @@ exports[`Byline renders a byline 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c3 {
+    margin-top: 15px;
+  }
+}
+
 <div
-  className="c0"
+  className="Byline c0"
+  color="black"
 >
   <div
     className="author c1"
+    color="black"
   >
     By 
-    Artsy Editorial
+    Casey Lesser
   </div>
   <div
     className="date c2"

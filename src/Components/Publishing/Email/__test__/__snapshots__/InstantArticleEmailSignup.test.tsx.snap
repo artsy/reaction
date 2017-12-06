@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmailSignup renders an email signup 1`] = `
-.c5 {
+.c6 {
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -38,12 +38,12 @@ exports[`EmailSignup renders an email signup 1`] = `
   letter-spacing: 1px;
 }
 
-.c5:hover:not(:disabled) {
+.c6:hover:not(:disabled) {
   cursor: pointer;
   background: #cccccc;
 }
 
-.c3 {
+.c4 {
   padding: 10px;
   box-shadow: none;
   font-size: 17px;
@@ -61,13 +61,13 @@ exports[`EmailSignup renders an email signup 1`] = `
   color: black;
 }
 
-.c3:focus,
-.c3.focused {
+.c4:focus,
+.c4.focused {
   border-color: #6e1fff;
   outline: 0;
 }
 
-.c3:disabled {
+.c4:disabled {
   border: 2px dotted #e5e5e5;
 }
 
@@ -79,20 +79,39 @@ exports[`EmailSignup renders an email signup 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 350px;
-  width: 100%;
-  margin-bottom: 40px;
+  max-width: 500px;
+  padding: 30px 0px;
+  margin: 0px 20px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  margin-bottom: 30px;
 }
 
 .c1 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
-.c4 {
+.c5 {
   background: black;
   color: white;
   border-radius: 2px;
@@ -114,11 +133,11 @@ exports[`EmailSignup renders an email signup 1`] = `
   letter-spacing: 1px;
 }
 
-.c4:hover:not(:disabled) {
+.c5:hover:not(:disabled) {
   background: #6e1fff;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -131,13 +150,18 @@ exports[`EmailSignup renders an email signup 1`] = `
   <div
     className="c1"
   >
-    Stay up to date with Artsy Editorial
+    The Daily Editorial Newsletter
   </div>
   <div
     className="c2"
   >
+    The latest art-world news and stories in your inbox
+  </div>
+  <div
+    className="c3"
+  >
     <input
-      className="c3"
+      className="c4"
       onChange={[Function]}
       placeholder="Enter Your Email..."
       readOnly={false}
@@ -145,7 +169,7 @@ exports[`EmailSignup renders an email signup 1`] = `
       value=""
     />
     <button
-      className="c4 c5"
+      className="c5 c6"
       disabled={false}
       onClick={[Function]}
     >
