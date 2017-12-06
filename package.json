@@ -52,6 +52,7 @@
     "@types/enzyme": "^2.7.9",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^20.0.7",
+    "@types/lodash": "^4.14.88",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.7",
     "@types/react-dom": "^15.5.0",
