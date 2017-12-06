@@ -1,4 +1,7 @@
-import { getMediaDate } from '../Constants'
+import {
+  formatTime,
+  getMediaDate
+} from '../Constants'
 import { VideoArticle } from "../Fixtures/Articles"
 
 describe("getMediaDate", () => {
@@ -17,5 +20,21 @@ describe("getMediaDate", () => {
     delete article.media.release_date
     const date = getMediaDate(article)
     expect(date).toBe(article.published_at)
+  })
+})
+
+describe("#formatTime", () => {
+  it("#formatTime - formats single digit seconds and minutes", () => {
+    expect(formatTime(0)).toMatch("00:00")
+  })
+
+  it("#formatTime - formats double digit seconds and minutes", () => {
+    expect(formatTime(5601)).toMatch("33:21")
+    expect(formatTime(1000)).toMatch("16:40")
+  })
+
+  it("#formatTime - formats single digit seconds and minutes", () => {
+    expect(formatTime(301)).toMatch("05:01")
+    expect(formatTime(242)).toMatch("04:02")
   })
 })
