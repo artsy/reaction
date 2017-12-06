@@ -15,6 +15,15 @@ it("renders a sponsored series title properly", () => {
   expect(component).toMatchSnapshot()
 })
 
+it("renders a series with children properly", () => {
+  const component = renderer.create(
+    <SeriesTitle article={SeriesArticle}>
+      <div>Child 0: Title</div>
+    </SeriesTitle>
+  ).toJSON()
+  expect(component).toMatchSnapshot()
+})
+
 it("Renders partner block for a sponsored series", () => {
   const component = mount(<SeriesTitle article={SeriesArticleSponsored} />)
   expect(component.find('.PartnerBlock').length).toBe(1)
@@ -23,4 +32,13 @@ it("Renders partner block for a sponsored series", () => {
 it("Does not render partner block for an unsponsored series", () => {
   const component = mount(<SeriesTitle article={SeriesArticle} />)
   expect(component.find('.PartnerBlock').length).toBe(0)
+})
+
+it("Renders children if present", () => {
+  const component = mount(
+    <SeriesTitle article={SeriesArticle}>
+      <div>Child 0: Title</div>
+    </SeriesTitle>
+  )
+  expect(component.text()).toMatch('Child 0: Title')
 })

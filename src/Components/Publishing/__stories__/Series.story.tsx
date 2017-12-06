@@ -77,6 +77,14 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       <SeriesTitle article={SeriesArticleSponsored} />
     </div>
   )
+}).add("Series Title with Children", () => {
+  return (
+    <div>
+      <SeriesTitle article={SeriesArticle}>
+        <div>Child 0: Title</div>
+      </SeriesTitle>
+    </div>
+  )
 }).add("Series About", () => {
   return (
     <div>
