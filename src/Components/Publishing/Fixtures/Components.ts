@@ -351,13 +351,21 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
+export const Credits = [
+  {
+    directors: [ "Marina Cashdan" ],
+    featuring: [ "Trevor Paglan" ]
+  }
+]
+
 export const Media = [
   {
     title: "Trevor Paglan",
     url: "http://files.artsy.net/videos/scenic_mono_3.mp4",
-    duration: 560948,
+    duration: 10948,
     release_date: "2017-08-28T20:38:05.709Z",
     published: true,
+    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>"
   }
 ]

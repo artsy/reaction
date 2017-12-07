@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Col, Grid, Row } from 'react-styled-flexboxgrid'
+import { Row } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
 import { getEditorialHref } from "../Constants"
 import { Fonts } from "../Fonts"
@@ -15,7 +15,23 @@ interface Props {
   relatedArticles?: any
 }
 
-export class VideoLayout extends Component<Props, null> {
+interface State {
+  play: boolean
+}
+
+export class VideoLayout extends Component<Props, State> {
+  state = {
+    play: false
+  }
+
+  playVideo = () => {
+    this.setState({ play: true })
+  }
+
+  setPaused = () => {
+    this.setState({ play: false })
+  }
+
   render() {
     const {
       article,
@@ -34,60 +50,58 @@ export class VideoLayout extends Component<Props, null> {
           <VideoPlayer
             url={media.url}
             title={media.title}
+            forcePlay={this.state.play}
+            notifyIsPaused={this.setPaused}
           />
         </VideoPlayerContainer>
-        <Grid>
-          <Col>
-            <VideoAbout
-              media={article.media}
-            />
-            {relatedArticles &&
-              <Row>
-                <RelatedArticlesTitle>
-                  {"More in "}
-                  {seriesArticle ?
-                    <Link
-                      href={getEditorialHref('series', seriesArticle.slug)}
-                      color="white"
-                    >
-                      {seriesArticle.title}
-                  </Link>
-                    :
-                    <span>{article.vertical.name}</span>
-                  }
-                </RelatedArticlesTitle>
-              </Row>
-            }
-            {relatedArticles &&
-              relatedArticles.map((relatedArticle) => {
-                return (
-                  <Row>
-                    <ArticleCard
-                      article={relatedArticle}
-                      color="white"
-                      series={seriesArticle}
-                      // NOT SURE ABOUT NAMING ABOVE
-                    />
-                  </Row>
-                )
-              })
-            }
-            <Row>
-              {seriesArticle &&
-                <SeriesAbout
-                  article={seriesArticle}
+        <VideoAbout
+          article={article}
+        />
+        {relatedArticles &&
+          <Row>
+            <RelatedArticlesTitle>
+              {"More in "}
+              {seriesArticle ?
+                <Link
+                  href={getEditorialHref('series', seriesArticle.slug)}
                   color="white"
-                />
+                >
+                  {seriesArticle.title}
+                </Link>
+                :
+                <span>{article.vertical.name}</span>
               }
-            </Row>
-          </Col>
-        </Grid>
+            </RelatedArticlesTitle>
+          </Row>
+        }
+        {relatedArticles &&
+          relatedArticles.map((relatedArticle) => {
+            return (
+              <Row>
+                <ArticleCard
+                  article={relatedArticle}
+                  color="white"
+                  series={seriesArticle}
+                  // NOT SURE ABOUT NAMING ABOVE
+                />
+              </Row>
+            )
+          })
+        }
+        <Row>
+          {seriesArticle &&
+            <SeriesAbout
+              article={seriesArticle}
+              color="white"
+            />
+          }
+        </Row>
       </VideoLayoutContainer>
     )
   }
 }
 
-const VideoLayoutContainer = styled.div`
+const VideoLayoutContainer = styled(Row)`
   background: black;
   color: white;
   margin: auto;

@@ -12,7 +12,9 @@ import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
-  title?: string
+  title?: string,
+  notifyIsPaused?: () => void,
+  forcePlay?: boolean
 }
 
 interface State {
@@ -28,7 +30,7 @@ export class VideoPlayer extends Component<Props, State> {
 
   state = {
     isMuted: false,
-    isPlaying: false,
+    isPlaying: this.props.forcePlay,
     currentTime: 0,
     duration: 0
   }
@@ -65,6 +67,7 @@ export class VideoPlayer extends Component<Props, State> {
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
+      this.props.notifyIsPaused()
     } else {
       this.video.play()
     }
