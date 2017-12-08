@@ -28,6 +28,16 @@ export class ArticleCard extends Component<Props, null> {
     return media && !media.published
   }
 
+  isEditing = () => {
+    const {
+      editDescription,
+      editImage,
+      editTitle
+    } = this.props
+
+    return editDescription || editImage || editTitle
+  }
+
   renderMediaDate () {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
@@ -62,7 +72,7 @@ export class ArticleCard extends Component<Props, null> {
   openLink = (e) => {
     e.preventDefault()
 
-    if (!this.isUnpublishedMedia()) {
+    if (!this.isUnpublishedMedia() && !this.isEditing()) {
       window.open(e.currentTarget.attributes.href.value)
     }
   }
@@ -91,7 +101,7 @@ export class ArticleCard extends Component<Props, null> {
         <TextContainer>
           <div>
             <Header>
-              <div>{series.title}</div>
+              <div>{series && series.title}</div>
             </Header>
             <Title>
               {editTitle
@@ -119,11 +129,13 @@ export class ArticleCard extends Component<Props, null> {
         </TextContainer>
 
         <ImageContainer>
-          {editImage}
-          <Image
-            src={crop(article.thumbnail_image, { width: 680, height: 450 })}
-            style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
-          />
+          {editImage
+            ? editImage
+            : <Image
+                src={crop(article.thumbnail_image, { width: 680, height: 450 })}
+                style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
+              />
+          }
           {media && this.renderMediaCoverInfo()}
         </ImageContainer>
 
