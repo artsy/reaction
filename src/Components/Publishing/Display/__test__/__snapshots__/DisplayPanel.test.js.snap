@@ -168,7 +168,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.kddpDu .c3 {
+.hlCbun .c3 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
