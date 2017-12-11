@@ -34,6 +34,7 @@ describe("ArticleCard", () => {
       <ArticleCard
         article={videoArticle}
         series={SeriesArticle}
+        editDate={EditableChild('date')}
         editDescription={EditableChild('description')}
         editImage={EditableChild('image')}
         editTitle={EditableChild('title')}
@@ -89,11 +90,13 @@ describe("ArticleCard", () => {
       <ArticleCard
         article={videoArticle}
         series={SeriesArticle}
+        editDate={EditableChild('date')}
         editDescription={EditableChild('description')}
         editImage={EditableChild('image')}
         editTitle={EditableChild('title')}
       />
     )
+    expect(component.text()).toMatch("Child date")
     expect(component.text()).toMatch("Child description")
     expect(component.text()).toMatch("Child image")
     expect(component.text()).toMatch("Child title")

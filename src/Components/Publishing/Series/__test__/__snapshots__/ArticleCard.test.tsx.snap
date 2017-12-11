@@ -275,21 +275,9 @@ exports[`ArticleCard renders an article properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with children properly 1`] = `
-.c9 {
+.c8 {
   width: 32px;
   height: 32px;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c5.date {
-  white-space: nowrap;
 }
 
 .c0 {
@@ -352,6 +340,25 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   line-height: 1.5em;
 }
 
+.c5 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c5 span {
+  margin-right: 5px;
+}
+
 .c6 {
   position: relative;
   width: 50%;
@@ -360,13 +367,6 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 .c7 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.c8 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -389,22 +389,8 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   line-height: 1.1em;
 }
 
-.c8 svg {
+.c7 svg {
   width: 40px;
-}
-
-@media (max-width:720px) {
-  .c5 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:900px) {
@@ -451,7 +437,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c8 svg {
+  .c7 svg {
     width: 30px;
   }
 }
@@ -491,9 +477,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       </div>
     </div>
     <div
-      className="date c5"
+      className="c5"
     >
-      Aug 28, 2017
+      <div>
+        Child 
+        date
+      </div>
     </div>
   </div>
   <div
@@ -503,20 +492,11 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       Child 
       image
     </div>
-    <img
-      className="c7"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    />
     <div
-      className="c8"
+      className="c7"
     >
       <svg
-        className="c9"
+        className="c8"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"

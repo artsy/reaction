@@ -59,6 +59,7 @@ storiesOf("Publishing/Series", module).add("Series", () => {
       <ArticleCard
         article={StandardArticle}
         series={SeriesArticle}
+        editDate={EditableChild('date')}
         editDescription={EditableChild('description')}
         editImage={EditableChild('image')}
         editTitle={EditableChild('title')}

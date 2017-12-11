@@ -14,6 +14,7 @@ import { IconVideoPlay } from '../Icon/IconVideoPlay'
 interface Props {
   article?: any
   color?: string
+  editDate?: any
   editDescription?: any
   editTitle?: any
   editImage?: any
@@ -30,15 +31,37 @@ export class ArticleCard extends Component<Props, null> {
 
   isEditing = () => {
     const {
+      editDate,
       editDescription,
       editImage,
       editTitle
     } = this.props
 
-    return editDescription || editImage || editTitle
+    return editDate || editDescription || editImage || editTitle
   }
 
-  renderMediaDate () {
+  renderDate = () => {
+    const { article, color, editDate } = this.props
+    const { media } = article
+
+    if (editDate) {
+      return (
+        <MediaDate>{editDate}</MediaDate>
+      )
+    } else if (media) {
+      return this.renderMediaDate()
+    } else {
+      return (
+        <Byline
+          article={article}
+          color={color}
+          layout='condensed'
+        />
+      )
+    }
+  }
+
+  renderMediaDate = () => {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
 
@@ -54,7 +77,7 @@ export class ArticleCard extends Component<Props, null> {
     }
   }
 
-  renderMediaCoverInfo () {
+  renderMediaCoverInfo = () => {
     const { article, color } = this.props
 
     if (this.isUnpublishedMedia()) {
@@ -116,16 +139,7 @@ export class ArticleCard extends Component<Props, null> {
               }
             </Description>
           </div>
-          {media
-            ?
-              this.renderMediaDate()
-            :
-              <Byline
-                article={article}
-                color={color}
-                layout='condensed'
-              />
-          }
+          {this.renderDate()}
         </TextContainer>
 
         <ImageContainer>
