@@ -35,6 +35,7 @@ interface State {
   price_range: string
   medium: string
   loading: boolean
+  showArtists: boolean
 }
 
 const urlPropsQueryConfig = {
@@ -53,6 +54,7 @@ export class GeneContents extends React.Component<Props, State> {
       price_range: props.price_range || "*",
       medium: props.medium || "*",
       loading: false,
+      showArtists: true,
     }
   }
 
@@ -166,7 +168,7 @@ export class GeneContents extends React.Component<Props, State> {
   render() {
     const { filtered_artworks, mode } = this.props.gene
 
-    const { showArtists } = this.context.relay.variables
+    const { showArtists } = this.state
     const shouldShowArtists = showArtists && !this.anyArtworkFilters()
 
     const dropdowns = filtered_artworks.aggregations.map(aggregation => {
@@ -175,7 +177,7 @@ export class GeneContents extends React.Component<Props, State> {
           aggregation={aggregation}
           key={aggregation.slice}
           selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
-          onSelect={(count, slice) => this.onSelect(count, slice)}
+          onSelected={(count, slice) => this.onSelect(count, slice)}
         />
       )
     })
@@ -316,7 +318,7 @@ export default createPaginationContainer(
         ... on Gene @include(if: $showArtists) {
           ...Artists_gene
         }
-        filtered_artworks(
+        old_filtered_artworks: filtered_artworks(
           aggregations: $aggregations
           size: $count
           for_sale: $for_sale

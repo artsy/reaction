@@ -32,10 +32,10 @@
     "compile": "env GRAPHQL_NO_NAME_WARNING=true gulp compile",
     "prepublishOnly": "rm -rf dist && npm run compile",
     "precommit": "lint-staged",
-    "prepush": "npm run type-check",
+    "prepush": "yarn run type-check",
     "prettier": "prettier",
-    "prettier-write": "npm run prettier --write",
-    "prettier-project": "npm run prettier-write -- 'src/**/*.{ts,tsx}'"
+    "prettier-write": "yarn run prettier --write",
+    "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'"
   },
   "prettier": {
     "printWidth": 120,

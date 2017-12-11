@@ -5,6 +5,9 @@ import { graphql } from "react-relay"
 import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import Gene from "../Gene"
 import ArtistRow from "../Gene/ArtistRow"
+import { NewContents } from "../Gene/NewContents"
+
+import { ContextProvider } from "../Artsy"
 
 function GeneExample(props: { geneID: string }) {
   return (
@@ -16,7 +19,7 @@ function GeneExample(props: { geneID: string }) {
           }
         }
       `}
-      variables={{ artistID: props.geneID }}
+      variables={{ geneID: props.geneID }}
       render={readyState => readyState.props && <Gene {...readyState.props as any} />}
     />
   )
@@ -80,6 +83,17 @@ storiesOf("Components/Pages/Gene", module)
     return (
       <div>
         <GeneExample geneID="old-master-influenced-fantasy" />
+      </div>
+    )
+  })
+
+  storiesOf("Components/Pages/Gene/NewContents", module)
+  .add("Integration - Minimalism", () => {
+    return (
+      <div>
+        < ContextProvider currentUser={{id: "matt-z", name: "Matt", accessToken: "REPLACE_ME"}}>
+          <NewContents geneID="minimalism" mode="artists" />
+        </ContextProvider>
       </div>
     )
   })
