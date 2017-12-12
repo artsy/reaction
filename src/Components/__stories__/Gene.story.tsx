@@ -91,7 +91,7 @@ storiesOf("Components/Pages/Gene", module)
   .add("Integration - Minimalism", () => {
     return (
       <div>
-        < ContextProvider currentUser={{id: "matt-z", name: "Matt", accessToken: "REPLACE_ME"}}>
+        < ContextProvider currentUser={{id: "matt-z", name: "Matt", accessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OGVkNjIxZjljMThkYjU1YmM2YjJkZGUiLCJzYWx0X2hhc2giOiI2ZTVkMWVhYzJmMWQzNDhmZmZmOGJmMDAyOGQ1OTViOCIsInJvbGVzIjoidXNlciIsInBhcnRuZXJfaWRzIjpbXSwiZXhwIjoxNTE3NzYwMjA0LCJpYXQiOjE1MTI1NzYyMDQsImF1ZCI6IjRlMzZlZmE0ZGI0ZTMyMDAwMTAwMDM1OSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1YTI4MTRjYzhiM2I4MTQ1ZjI2YTliNzUifQ.ksCRUaQRvGNRW2VnOSAAT32r9PM9s04axn7SqI-_Kno"}}>
           <NewContents geneID="minimalism" mode="artists" />
         </ContextProvider>
       </div>

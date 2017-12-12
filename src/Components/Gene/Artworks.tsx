@@ -29,7 +29,7 @@ interface Props extends RelayProps, Filters {
   onDropdownSelected: (slice: string, value: string) => void
 }
 
-interface State {
+interface State extends Filters {
   loading: boolean
 }
 
@@ -56,8 +56,11 @@ const SpinnerContainer = styled.div`
 `
 
 export class Artworks extends React.Component<Props, State> {
-  state = {
-    loading: false,
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      loading: false,
+    }
   }
 
   renderDropdown() {
@@ -66,7 +69,7 @@ export class Artworks extends React.Component<Props, State> {
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
-          selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
+          selected={aggregation.slice && this.props[aggregation.slice.toLowerCase()]}
           onSelected={this.props.onDropdownSelected}
         />
       )
@@ -92,7 +95,7 @@ export class Artworks extends React.Component<Props, State> {
               price_range={this.props.price_range}
               dimension_range={this.props.dimension_range}
               for_sale={this.props.for_sale}
-              facet={this.props.gene}
+              facet={this.props.gene.filtered_artworks.facet}
               aggregations={this.props.gene.filtered_artworks.aggregations}
             />
             <TotalCount filter_artworks={this.props.gene.filtered_artworks} />
@@ -148,8 +151,13 @@ export default createPaginationContainer(
           sort: $sort
         ) {
           ...TotalCount_filter_artworks
+          
           aggregations {
             slice
+            counts {
+              name
+              id
+            }
             ...Dropdown_aggregation
           }
           artworks: artworks_connection(first: $count, after: $cursor) @connection(key: "Artworks_artworks") {
@@ -163,6 +171,9 @@ export default createPaginationContainer(
               }
             }
             ...ArtworkGrid_artworks
+          }
+          facet {
+            ...Headline_facet
           }
         }
       }
@@ -227,10 +238,15 @@ interface RelayProps {
     filtered_artworks: {
       aggregations: Array<{
         slice: string
+        counts: {
+          name: string | null
+          id: string | null
+        }
       }>
       artworks: {
         edges: Array<{}>
       }
+      facet: any
     }
   }
 }

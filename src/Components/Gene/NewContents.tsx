@@ -67,6 +67,7 @@ class GeneNewContents extends React.Component<Props, State> {
 
   renderArtworks() {
     const { geneID, relayEnvironment } = this.props
+    const { for_sale, medium, price_range, dimension_range } = this.state
     return (
       <QueryRenderer
         environment={relayEnvironment}
@@ -82,7 +83,7 @@ class GeneNewContents extends React.Component<Props, State> {
         variables={{ geneID, ...this.state }}
         render={({ props }) => {
           if (props) {
-            return <Artworks gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
+            return <Artworks for_sale={for_sale} medium={medium} price_range={price_range} dimension_range={dimension_range} gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
           } else {
             return null
           }
