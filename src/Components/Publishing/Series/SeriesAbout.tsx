@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
+import { Col, Row } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
@@ -15,14 +15,13 @@ interface Props {
 export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  render () {
+  render() {
     const { article, color, editDescription } = this.props
     const { series_description, sponsor } = article
 
     return (
       <SeriesAboutContainer color={color}>
-
-        <StyledCol sm={12} md={4}>
+        <StyledCol xs={12} sm={4}>
           <Title>About the Series</Title>
           {sponsor &&
             <PartnerBlock
@@ -35,8 +34,7 @@ export class SeriesAbout extends Component<Props, null> {
             />
           }
         </StyledCol>
-
-        <StyledCol sm={12} md={8}>
+        <StyledCol xs={12} sm={8}>
           {editDescription
             ? <Text layout='standard'>{editDescription}</Text>
             : <Text layout='standard' html={series_description} />
@@ -65,20 +63,13 @@ interface ColProps {
   first?: boolean
 }
 
-const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled(Row)
 
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
-  display: flex;
-  justify-content: space-between;
   max-width: 1200px;
-  margin: auto;
-
-  ${props => media.sm`
-    display: block;
-  `}
 `
-const StyledCol = styled(Col)`
+const StyledCol = styled(Col) `
 
   ${PartnerBlockContainer} {
     display: none;
@@ -91,10 +82,6 @@ const StyledCol = styled(Col)`
     ${PartnerBlockContainer} {
       display: block;
     }
-  }
-
-  &:nth-of-type(2) {
-    flex: auto;
   }
 
   ${props => media.sm`
