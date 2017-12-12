@@ -3,6 +3,7 @@ import { extend } from "lodash"
 import React from "react"
 import { Byline } from "../Byline/Byline"
 import { Share } from "../Byline/Share"
+import { ShareDate } from "../Byline/ShareDate"
 import { StandardArticle } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Byline", module)
@@ -21,6 +22,17 @@ storiesOf("Publishing/Byline", module)
           url="http://artsy.net/article/point-pencils"
           title="The Point of Pencils"
           trackingData={data}
+        />
+      </div>
+    )
+  })
+  .add("Share with label", () => {
+    return (
+      <div>
+        <Share
+          url="http://artsy.net/article/point-pencils"
+          title="The Point of Pencils"
+          hasLabel
         />
       </div>
     )
@@ -53,6 +65,13 @@ storiesOf("Publishing/Byline", module)
     return (
       <div>
         <Byline article={StandardArticle} color='blue' />
+      </div>
+    )
+  })
+  .add("Share Date", () => {
+    return (
+      <div>
+        <ShareDate article={StandardArticle} />
       </div>
     )
   })

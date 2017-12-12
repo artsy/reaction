@@ -8,10 +8,26 @@ import {
   VideoArticleSponsored
 } from "../Fixtures/Articles"
 import { Media } from "../Fixtures/Components"
+import { VideoAbout } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
 import { VideoLayout } from "../Video/VideoLayout"
 
 storiesOf("Publishing/Video", module)
+  .add("Video Cover", () => {
+    return (
+      <VideoCover
+        media={Media[0]}
+        description={VideoArticle.description}
+      />
+    )
+  })
+  .add("Video About", () => {
+    return (
+      <VideoAbout
+        article={VideoArticle}
+      />
+    )
+  })
   .add("Video Article", () => {
     return (
       <VideoLayout article={VideoArticle} />
@@ -42,11 +58,4 @@ storiesOf("Publishing/Video", module)
       />
     )
   })
-  .add("Video Cover", () => {
-    return (
-      <VideoCover
-        media={Media[0]}
-        description={VideoArticle.description}
-      />
-    )
-  })
+

@@ -72,6 +72,7 @@ export class VideoLayout extends Component<Props, State> {
         </VideoPlayerContainer>
         <VideoAbout
           article={article}
+          color="white"
         />
         {relatedArticles &&
           <MaxRow>

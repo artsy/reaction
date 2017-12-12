@@ -2,16 +2,21 @@ import React, { Component } from "react"
 import { Col, Row } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
+import { ShareDate } from "../Byline/ShareDate"
 import { Fonts } from "../Fonts"
 import { Text } from '../Sections/Text'
 
 interface Props {
   article: any
+  color?: string
 }
 
 export class VideoAbout extends Component<Props, null> {
+  static defaultProps = {
+    color: "black"
+  }
   render() {
-    const { article } = this.props
+    const { article, color } = this.props
     const { media } = article
     return (
       <VideoAboutRow>
@@ -25,6 +30,10 @@ export class VideoAbout extends Component<Props, null> {
             Credits
           </Title>
           <Text layout="standard" html={media.credits} />
+          <ShareDate
+            color={color}
+            article={article}
+          />
         </Col>
 
         <Col xs={12} sm={8} md={8} lg={8}>
