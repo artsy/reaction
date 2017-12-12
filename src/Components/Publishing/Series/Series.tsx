@@ -27,7 +27,7 @@ export class Series extends Component<Props, null> {
             article={article}
             color={color}
           />
-          
+
           {articles.map((relatedArticle, i) =>
             <ArticleCard
               key={i}
@@ -36,7 +36,7 @@ export class Series extends Component<Props, null> {
               color={color}
             />
           )}
-          
+
           <SeriesAbout
             article={article}
             color={color}
