@@ -1,9 +1,11 @@
 import React, { Component } from "react"
 import { Col, Row } from 'react-styled-flexboxgrid'
 import styled, { StyledFunction } from "styled-components"
-import { formatTime } from "../Constants"
+import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { VideoInfoBlock } from "./VideoInfoBlock"
+import { MaxRow } from "./VideoLayout"
 
 interface Props {
   media?: any
@@ -35,35 +37,22 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverAsset src={media.cover_image_url} />
         <VideoCoverOverlay />
         <VideoCoverInfo>
-          <Col xs={1} onClick={playVideo}>
-            <IconVideoPlay color="white" />
-          </Col>
-          <Col xs={3}>
-            <InfoBlock>
-              <Row>
-                {seriesTitle &&
-                  <SeriesTitle>
-                    {seriesTitle}
-                  </SeriesTitle>
-                }
-                <MediaDuration>
-                  {formatTime(media.duration)}
-                </MediaDuration>
-              </Row>
-              <Row>
-                <MediaTitle>
-                  {media.title}
-                </MediaTitle>
-              </Row>
-            </InfoBlock>
-          </Col>
-          <Col
-            xs={8}
-          >
-            <MediaDescription>
-              {description}
-            </MediaDescription>
-          </Col>
+          <VideoCoverInfoRow>
+            <Col xs={2} sm={1} onClick={playVideo}>
+              <IconVideoPlay color="white" />
+            </Col>
+            <Col xs={10} sm={3}>
+              <VideoInfoBlock
+                media={media}
+                seriesTitle={seriesTitle}
+              />
+            </Col>
+            <Col xs={12} sm={8}>
+              <MediaDescription>
+                {description}
+              </MediaDescription>
+            </Col>
+          </VideoCoverInfoRow>
         </VideoCoverInfo>
       </VideoCoverContainer>
     )
@@ -72,57 +61,51 @@ export class VideoCover extends Component<Props, null> {
 
 const Div: StyledFunction<CoverAssetProps> = styled.div
 export const VideoCoverAsset = Div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
   background-color: black;
 `
 const VideoCoverOverlay = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
   opacity: 0.75;
   background-color: black;
-  top: 0;
 `
-const CoverDiv: StyledFunction<CoverProps> = styled.div
-export const VideoCoverContainer = CoverDiv`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  opacity: ${props => props.hideCover ? '0' : '1'};
-  visibility: ${props => props.hideCover ? 'hidden' : 'visible'};
-  position: relative;
-  transition: all 0.5s ease;
+const VideoCoverInfoRow = styled(MaxRow)`
+  align-items: flex-end;
 `
 const VideoCoverInfo = styled.div`
   display: flex;
   align-items: flex-end;
+  box-sizing: border-box;
+  padding-bottom: 60px;
   z-index: 1;
-  max-width: 1200px;
-  color: white;
-  margin: auto auto 60px auto;
   ${IconVideoPlay} {
     height: 60px;
     width: 44px;
-    margin-right: 30px;
+    margin-right: 15px;
   }
+  ${media.sm`
+    padding-bottom: 40px;
+  `}
 `
-const InfoBlock = styled.div`
-  display: block;
-`
-const SeriesTitle = styled.span`
-  ${Fonts.unica("s16")}
-  margin-right: 35px;
-`
-const MediaTitle = styled.span`
-  ${Fonts.unica("s45")}
-`
-const MediaDuration = styled.span`
-  ${Fonts.unica("s16")}
+const CoverDiv: StyledFunction<CoverProps> = styled.div
+export const VideoCoverContainer = CoverDiv`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  opacity: ${props => props.hideCover ? '0' : '1'};
+  visibility: ${props => props.hideCover ? 'hidden' : 'visible'};
+  transition: opacity 0.5s ease visibility 0.5s ease;
+  ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 `
 const MediaDescription = styled.div`
   ${Fonts.garamond("s23")}
+  ${media.sm`
+    ${Fonts.garamond("s19")}
+    margin-top: 30px;
+  `}
 `

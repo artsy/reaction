@@ -1,13 +1,15 @@
+import { debounce } from "lodash"
 import React, { Component } from "react"
-import { Row } from 'react-styled-flexboxgrid'
+import { Col, Row } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
+import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Fonts } from "../Fonts"
 import { Nav } from "../Nav/Nav"
 import { ArticleCard, ArticleCardContainer } from "../Series/ArticleCard"
 import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
-import { VideoPlayer } from "../VideoPlayer/VideoPlayer"
-import { VideoAbout } from "./VideoAbout"
+import { VideoContainer, VideoPlayer } from "../VideoPlayer/VideoPlayer"
+import { VideoAbout, VideoAboutContainer } from "./VideoAbout"
 import { VideoCover, VideoCoverContainer } from "./VideoCover"
 
 interface Props {
@@ -18,26 +20,26 @@ interface Props {
 
 interface State {
   forcePlay: boolean
-  isPlaying: boolean
+  hideCover: boolean
 }
 
 export class VideoLayout extends Component<Props, State> {
   state = {
     forcePlay: false,
-    isPlaying: false
+    hideCover: false,
   }
 
   playVideo = () => {
     this.setState({
       forcePlay: true,
-      isPlaying: true
+      hideCover: true
     })
   }
 
-  pauseVideo = () => {
+  onPauseVideo = () => {
     this.setState({
       forcePlay: false,
-      isPlaying: false
+      hideCover: false
     })
   }
 
@@ -56,24 +58,26 @@ export class VideoLayout extends Component<Props, State> {
           sponsor={article.sponsor}
         />
         <VideoPlayerContainer>
+          <VideoPlayer
+            url={media.url}
+            title={media.title}
+            forcePlay={this.state.forcePlay}
+            notifyIsPaused={this.onPauseVideo}
+          />
           <VideoCover
             media={media}
             seriesTitle={seriesArticle && seriesArticle.title}
             description={article.description}
             playVideo={this.playVideo}
-            hideCover={this.state.isPlaying}
-          />
-          <VideoPlayer
-            url={media.url}
-            title={media.title}
-            forcePlay={this.state.forcePlay}
-            notifyIsPaused={this.pauseVideo}
+            hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
-        <VideoAbout
-          article={article}
-          color="white"
-        />
+        <MaxRow>
+          <VideoAbout
+            article={article}
+            color="white"
+          />
+        </MaxRow>
         {relatedArticles &&
           <MaxRow>
             <RelatedArticlesTitle>
@@ -95,12 +99,13 @@ export class VideoLayout extends Component<Props, State> {
           relatedArticles.map((relatedArticle) => {
             return (
               <MaxRow>
-                <ArticleCard
-                  article={relatedArticle}
-                  color="white"
-                  series={seriesArticle}
-                  // NOT SURE ABOUT NAMING ABOVE
-                />
+                <Col xs={12}>
+                  <ArticleCard
+                    article={relatedArticle}
+                    color="white"
+                    series={seriesArticle}
+                  />
+                </Col>
               </MaxRow>
             )
           })
@@ -118,7 +123,10 @@ export class VideoLayout extends Component<Props, State> {
   }
 }
 
-const VideoLayoutContainer = styled(Row)`
+const RelatedArticlesTitle = styled(Col) `
+  ${Fonts.unica("s32")}
+`
+const VideoLayoutContainer = styled.div`
   background: black;
   color: white;
   margin: auto;
@@ -129,30 +137,38 @@ const VideoLayoutContainer = styled(Row)`
   ${ArticleCardContainer} {
     margin-bottom: 60px;
   }
-  ${VideoCoverContainer} {
-    z-index: 9;
-    position: absolute;
+  ${RelatedArticlesTitle} {
+    margin-bottom: 40px;
   }
-  ${SeriesAboutContainer} {
-    margin-bottom: 100px;
+  ${SeriesAboutContainer}, ${VideoAboutContainer} {
+    margin: 60px 0 100px 0;
   }
+
+  ${media.sm`
+    ${ArticleCardContainer} {
+      margin-bottom: 30px;
+    }
+    ${SeriesAboutContainer}, ${VideoAboutContainer} {
+      margin: 40px 0 100px 0;
+    }
+  `}
 `
 const VideoPlayerContainer = styled.div`
-  width: 100%;
-  height: 100vh;
   position: relative;
-  top: 0;
+  width: 100vw;
+  height: 100vh;
+  ${VideoContainer} {
+    position: absolute;
+    top: 0;
+  }
 `
-const RelatedArticlesTitle = styled.div`
-  ${Fonts.unica("s32")}
-  margin-bottom: 40px;
-`
+
 const Link = styled.a`
   text-decoration: none;
   color: white;
 `
-const MaxRow = styled(Row)`
-  width: 100%;
+export const MaxRow = styled(Row)`
   max-width: 1200px;
-  margin: auto;
+  margin: 0px auto;
+  padding: 0px 12px;
 `

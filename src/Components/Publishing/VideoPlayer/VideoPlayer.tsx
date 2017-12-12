@@ -173,7 +173,7 @@ const VideoControlsParent = styled.div`
   max-width: 1200px;
   width: 100%;
 `
-const VideoContainer = styled.div`
+export const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;

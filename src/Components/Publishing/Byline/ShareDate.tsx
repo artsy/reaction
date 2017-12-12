@@ -1,25 +1,20 @@
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
+import styled from "styled-components"
+import { media } from "../../Helpers"
 import { getArticleFullHref, getDate } from "../Constants"
-import { Fonts } from "../Fonts"
 import { Date } from "./AuthorDate"
-import { Share } from "./Share"
+import { Share, ShareContainer } from "./Share"
 
-interface ShareDateProps {
-  article: any
+interface ShareDateProps extends React.HTMLProps<HTMLDivElement> {
+  article?: any
   color?: string
 }
 
-interface ColorProps {
-  color?: string
-}
-
-export const ShareDate: React.SFC<ShareDateProps> = props => {
+const ShareDateComponent: React.SFC<ShareDateProps> = props => {
   const { article, color } = props
   const title = article.social_title || article.thumbnail_title
   return (
-    <ShareDateContainer color={color}>
+    <div className={props.className}>
       <Date
         date={getDate(article.published_at)}
       />
@@ -29,16 +24,19 @@ export const ShareDate: React.SFC<ShareDateProps> = props => {
         color={color}
         hasLabel
       />
-    </ShareDateContainer>
+    </div>
   )
 }
 
-ShareDate.defaultProps = {
+ShareDateComponent.defaultProps = {
   color: 'black'
 }
 
-const div: StyledFunction<ColorProps> = styled.div
-
-const ShareDateContainer = div`
+export const ShareDate = styled(ShareDateComponent)`
   color: ${props => props.color || 'black'};
+  ${media.sm`
+    ${ShareContainer} {
+      margin-top: 0px;
+    }
+  `}
 `

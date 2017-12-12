@@ -20,16 +20,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   margin-left: -0.5rem;
 }
 
-.c4 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c7 {
+.c10 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -47,44 +38,67 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c6 {
+.c17 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c12 {
   width: 32px;
   height: 32px;
 }
 
-.c1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.c14 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-right: 35px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c8 {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 12px;
+}
+
+.c2 {
   background: url(https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
 }
 
-.c2 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.c4 {
   opacity: 0.75;
   background-color: black;
-  top: 0;
 }
 
-.c0 {
-  width: 100vw;
-  height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-  position: relative;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+.c7 {
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
-.c3 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -93,45 +107,37 @@ exports[`Video Cover matches the snapshot 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
+  padding-bottom: 60px;
   z-index: 1;
-  max-width: 1200px;
-  color: white;
-  margin: auto auto 60px auto;
 }
 
-.c3 .c5 {
+.c6 .c11 {
   height: 60px;
   width: 44px;
-  margin-right: 30px;
+  margin-right: 15px;
 }
 
-.c8 {
-  display: block;
+.c0 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.5s ease visibility 0.5s ease;
+  transition: opacity 0.5s ease visibility 0.5s ease;
 }
 
-.c10 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-right: 35px;
+.c0 .c1,
+.c0 .c3,
+.c0 .c5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c12 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-}
-
-.c11 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c14 {
+.c18 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -139,7 +145,17 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c4 {
+  .c10 {
+    -webkit-flex-basis: 16.666666666666668%;
+    -ms-flex-basis: 16.666666666666668%;
+    flex-basis: 16.666666666666668%;
+    max-width: 16.666666666666668%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c10 {
     -webkit-flex-basis: 8.333333333333334%;
     -ms-flex-basis: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
@@ -149,7 +165,17 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c7 {
+  .c13 {
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-basis: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c13 {
     -webkit-flex-basis: 25%;
     -ms-flex-basis: 25%;
     flex-basis: 25%;
@@ -159,7 +185,17 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c13 {
+  .c17 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c17 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -168,82 +204,100 @@ exports[`Video Cover matches the snapshot 1`] = `
   }
 }
 
+@media (max-width:48em) {
+  .c6 {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width:48em) {
+  .c18 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-top: 30px;
+  }
+}
+
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 c2"
     src="https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg"
   />
   <div
-    className="c2"
+    className="c3 c4"
   />
   <div
-    className="c3"
+    className="c5 c6"
   >
     <div
-      className="c4"
-      onClick={undefined}
-    >
-      <svg
-        className="c5 c6"
-        version="1.1"
-        viewBox="0 0 40 56"
-        x="0px"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0px"
-      >
-        <g
-          fill="none"
-          fillRule="evenodd"
-          stroke="none"
-          strokeWidth="1"
-        >
-          <polygon
-            fill="white"
-            points="0 0 0 56 39.3600006 28"
-          />
-        </g>
-      </svg>
-    </div>
-    <div
-      className="c7"
+      className="c7 c8 c9"
     >
       <div
-        className="c8"
+        className="c10"
+        onClick={undefined}
       >
-        <div
-          className="c9"
+        <svg
+          className="c11 c12"
+          version="1.1"
+          viewBox="0 0 40 56"
+          x="0px"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0px"
         >
-          <span
-            className="c10"
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
           >
-            Future of Art
-          </span>
-          <span
-            className="c11"
+            <polygon
+              fill="white"
+              points="0 0 0 56 39.3600006 28"
+            />
+          </g>
+        </svg>
+      </div>
+      <div
+        className="c13"
+      >
+        <div>
+          <div
+            className="c9"
           >
-            02:28
-          </span>
-        </div>
-        <div
-          className="c9"
-        >
-          <span
-            className="c12"
+            <span
+              className="c14"
+            >
+              Future of Art
+            </span>
+            <span
+              className="c15"
+            >
+              02:28
+            </span>
+          </div>
+          <div
+            className="c9"
           >
-            Trevor Paglan
-          </span>
+            <span
+              className="c16"
+            >
+              Trevor Paglan
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="c13"
-    >
       <div
-        className="c14"
+        className="c17"
       >
-        Lorem Ipsum Description
+        <div
+          className="c18"
+        >
+          Lorem Ipsum Description
+        </div>
       </div>
     </div>
   </div>
