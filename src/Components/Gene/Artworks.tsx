@@ -3,6 +3,8 @@ import { ConnectionData } from "react-relay"
 import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
 import styled from "styled-components"
 
+import { ButtonState } from "../Buttons/Default"
+import Button from "../Buttons/Ghost"
 import Spinner from "../Spinner"
 
 import Dropdown from "../ArtworkFilter/Dropdown"
@@ -29,6 +31,7 @@ interface Props extends RelayProps, Filters {
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
   onForSaleToggleSelected: () => void
+  onArtistModeToggleSelected: () => void
   sort?: string
 }
 
@@ -58,6 +61,14 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
+const ArtistFilterButtons = styled.div`
+  margin-right: 10px;
+  button {
+    height: 52px;
+    padding: 16px;
+  }
+`
+
 export class Artworks extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -77,6 +88,23 @@ export class Artworks extends React.Component<Props, State> {
         />
       )
     })
+  }
+
+  
+
+  renderArtistsModeToggle() {
+    return (
+      <ArtistFilterButtons>
+        <span>By Artists:</span>
+        <Button
+          onClick={this.props.onArtistModeToggleSelected}
+          state={ButtonState.Default}
+        >
+          All Artists
+        </Button>
+        <span>By Work:</span>
+      </ArtistFilterButtons>
+    )
   }
 
   renderForSaleToggle() {
@@ -121,6 +149,7 @@ export class Artworks extends React.Component<Props, State> {
     return (
       <div>
         <FilterBar>
+          {this.renderArtistsModeToggle()}
           {this.renderForSaleToggle()}
           {this.renderDropdown()}
         </FilterBar>

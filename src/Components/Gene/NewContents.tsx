@@ -47,11 +47,11 @@ class GeneNewContents extends React.Component<Props, State> {
   onForSaleToggleSelect() {
     if (this.state.for_sale) {
       this.setState({
-        for_sale: null
+        for_sale: null,
       })
     } else {
       this.setState({
-        for_sale: true
+        for_sale: true,
       })
     }
   }
@@ -59,7 +59,13 @@ class GeneNewContents extends React.Component<Props, State> {
   onSortSelect(sortEl) {
     this.setState({
       sort: sortEl.val,
-      mode: "artworks", 
+      mode: "artworks",
+    })
+  }
+
+  onArtistModeSelect() {
+    this.setState({
+      mode: "artists",
     })
   }
 
@@ -94,20 +100,43 @@ class GeneNewContents extends React.Component<Props, State> {
       <QueryRenderer
         environment={relayEnvironment}
         query={graphql.experimental`
-          query NewContentsArtworksQuery($geneID: String!, $medium: String
-          $price_range: String
-          $sort: String
-          $for_sale: Boolean
-          $dimension_range: String) {
+          query NewContentsArtworksQuery(
+            $geneID: String!
+            $medium: String
+            $price_range: String
+            $sort: String
+            $for_sale: Boolean
+            $dimension_range: String
+          ) {
             gene(id: $geneID) {
-              ...Artworks_gene @arguments(for_sale: $for_sale, medium: $medium, price_range: $price_range, dimension_range: $dimension_range, sort: $sort)
+              ...Artworks_gene
+                @arguments(
+                  for_sale: $for_sale
+                  medium: $medium
+                  price_range: $price_range
+                  dimension_range: $dimension_range
+                  sort: $sort
+                )
             }
           }
         `}
         variables={{ geneID, ...this.state }}
         render={({ props }) => {
           if (props) {
-            return <Artworks onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)} onSortSelected={this.onSortSelect.bind(this)} sort={sort} for_sale={for_sale} medium={medium} price_range={price_range} dimension_range={dimension_range} gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
+            return (
+              <Artworks
+                onArtistModeToggleSelected={this.onArtistModeSelect.bind(this)}
+                onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
+                onSortSelected={this.onSortSelect.bind(this)}
+                sort={sort}
+                for_sale={for_sale}
+                medium={medium}
+                price_range={price_range}
+                dimension_range={dimension_range}
+                gene={props.gene}
+                onDropdownSelected={this.onDropdownSelect.bind(this)}
+              />
+            )
           } else {
             return null
           }
