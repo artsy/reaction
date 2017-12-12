@@ -59,7 +59,7 @@ const SeriesContainer = Div`
   background-color: black;
   padding: 150px 20px;
 `
-const SeriesContent = styled.div`
+export const SeriesContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 

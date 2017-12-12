@@ -4,6 +4,8 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { getDate } from '../../Constants'
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
+import { EditableChild } from "../../Fixtures/Helpers"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 import { ArticleCard } from "../ArticleCard"
 
 describe("ArticleCard", () => {
@@ -14,7 +16,7 @@ describe("ArticleCard", () => {
     videoArticle = VideoArticle
     standardArticle = StandardArticle
   })
-  
+
   it("renders an article properly", () => {
     const component = renderer.create(<ArticleCard article={standardArticle} series={SeriesArticle} />).toJSON()
 
@@ -27,19 +29,34 @@ describe("ArticleCard", () => {
     expect(component).toMatchSnapshot()
   })
 
+  it("renders an article with children properly", () => {
+    const component = renderer.create(
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDate={EditableChild('date')}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
+    ).toJSON()
+
+    expect(component).toMatchSnapshot()
+  })
+
   it("Renders media duration and play icon if article has media and is published", () => {
     videoArticle.media.published = true
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
 
-    expect(component.find('.IconPlayCaret').length).toBe(1)
-    expect(component.text()).toMatch('03:12')
+    expect(component.find(IconVideoPlay).length).toBe(1)
+    expect(component.text()).toMatch('16:40')
   })
 
   it("Renders coming soon and available date if article has media and is unpublished", () => {
     videoArticle.media.published = false
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
 
-    expect(component.find('.IconPlayCaret').length).toBe(0)
+    expect(component.find(IconVideoPlay).length).toBe(0)
     expect(component.text()).not.toMatch('03:12')
     expect(component.text()).toMatch('Coming Soon')
     expect(component.text()).toMatch('Available ')
@@ -66,5 +83,22 @@ describe("ArticleCard", () => {
     const formattedDate = getDate(videoArticle.published_at, 'condensed')
 
     expect(renderedDate).toBe(formattedDate)
+  })
+
+  it("Renders editable fields if present", () => {
+    const component = mount(
+      <ArticleCard
+        article={videoArticle}
+        series={SeriesArticle}
+        editDate={EditableChild('date')}
+        editDescription={EditableChild('description')}
+        editImage={EditableChild('image')}
+        editTitle={EditableChild('title')}
+      />
+    )
+    expect(component.text()).toMatch("Child date")
+    expect(component.text()).toMatch("Child description")
+    expect(component.text()).toMatch("Child image")
+    expect(component.text()).toMatch("Child title")
   })
 })

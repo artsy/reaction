@@ -1,16 +1,23 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Date } from '../Byline/AuthorDate'
 import { Byline } from '../Byline/Byline'
-import { getMediaDate } from "../Constants"
+import {
+  formatTime,
+  getMediaDate
+} from "../Constants"
 import { Fonts } from "../Fonts"
-import { IconPlayCaret } from '../Icon/IconPlayCaret'
+import { IconVideoPlay } from '../Icon/IconVideoPlay'
 
 interface Props {
-  article?: any,
-  color?: string, 
+  article?: any
+  color?: string
+  editDate?: any
+  editDescription?: any
+  editTitle?: any
+  editImage?: any
   series?: any
 }
 
@@ -22,10 +29,42 @@ export class ArticleCard extends Component<Props, null> {
     return media && !media.published
   }
 
-  renderMediaDate () {
+  isEditing = () => {
+    const {
+      editDate,
+      editDescription,
+      editImage,
+      editTitle
+    } = this.props
+
+    return editDate || editDescription || editImage || editTitle
+  }
+
+  renderDate = () => {
+    const { article, color, editDate } = this.props
+    const { media } = article
+
+    if (editDate) {
+      return (
+        <MediaDate>{editDate}</MediaDate>
+      )
+    } else if (media) {
+      return this.renderMediaDate()
+    } else {
+      return (
+        <Byline
+          article={article}
+          color={color}
+          layout='condensed'
+        />
+      )
+    }
+  }
+
+  renderMediaDate = () => {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
-  
+
     if (this.isUnpublishedMedia()) {
       return (
           <MediaDate>
@@ -38,7 +77,7 @@ export class ArticleCard extends Component<Props, null> {
     }
   }
 
-  renderMediaCoverInfo () {
+  renderMediaCoverInfo = () => {
     const { article, color } = this.props
 
     if (this.isUnpublishedMedia()) {
@@ -46,8 +85,8 @@ export class ArticleCard extends Component<Props, null> {
     } else {
       return (
         <MediaPlay>
-          <IconPlayCaret color={color} />
-          {article.media.duration}
+          <IconVideoPlay color={color} />
+          {formatTime(article.media.duration)}
         </MediaPlay>
       )
     }
@@ -56,13 +95,20 @@ export class ArticleCard extends Component<Props, null> {
   openLink = (e) => {
     e.preventDefault()
 
-    if (!this.isUnpublishedMedia()) {
+    if (!this.isUnpublishedMedia() && !this.isEditing()) {
       window.open(e.currentTarget.attributes.href.value)
     }
   }
 
   render () {
-    const { article, color, series } = this.props
+    const {
+      article,
+      color,
+      editDescription,
+      editImage,
+      editTitle,
+      series
+    } = this.props
     const { media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
@@ -78,28 +124,32 @@ export class ArticleCard extends Component<Props, null> {
         <TextContainer>
           <div>
             <Header>
-              <div>{series.title}</div>
+              <div>{series && series.title}</div>
             </Header>
-            <Title>{article.thumbnail_title}</Title>
-            <Description>{article.description}</Description>
+            <Title>
+              {editTitle
+                ? editTitle
+                : article.thumbnail_title
+              }
+            </Title>
+            <Description>
+              {editDescription
+                ? editDescription
+                : article.description
+              }
+            </Description>
           </div>
-          {media
-            ?
-              this.renderMediaDate()
-            :
-              <Byline
-                article={article}
-                color={color}
-                layout='condensed'
-              />
-          }
+          {this.renderDate()}
         </TextContainer>
 
         <ImageContainer>
-          <Image
-            src={crop(article.thumbnail_image, { width: 680, height: 450 })}
-            style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
-          />
+          {editImage
+            ? editImage
+            : <Image
+                src={crop(article.thumbnail_image, { width: 680, height: 450 })}
+                style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
+              />
+          }
           {media && this.renderMediaCoverInfo()}
         </ImageContainer>
 
