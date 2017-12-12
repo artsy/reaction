@@ -25,7 +25,7 @@ export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   // https://zellwk.com/blog/media-query-units/
   const emSize = sizes[label]
   accumulator[label] = (strings, ...args) => css`
-    @media (max-width: ${emSize}px) {
+    @media (max-width: ${emSize}em) {
       ${css(strings, ...args)}
     }
   `

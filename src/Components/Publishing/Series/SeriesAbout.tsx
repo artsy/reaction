@@ -1,6 +1,7 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
+import { Col, Row } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
+import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 import { Text } from '../Sections/Text'
@@ -14,14 +15,13 @@ interface Props {
 export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  render () {
+  render() {
     const { article, color, editDescription } = this.props
     const { series_description, sponsor } = article
 
     return (
-      <SeriesAboutContainer className='SeriesAbout' color={color}>
-
-        <Col first>
+      <SeriesAboutContainer color={color}>
+        <StyledCol xs={12} sm={4}>
           <Title>About the Series</Title>
           {sponsor &&
             <PartnerBlock
@@ -33,9 +33,8 @@ export class SeriesAbout extends Component<Props, null> {
               }}
             />
           }
-        </Col>
-
-        <Col>
+        </StyledCol>
+        <StyledCol xs={12} sm={8}>
           {editDescription
             ? <Text layout='standard'>{editDescription}</Text>
             : <Text layout='standard' html={series_description} />
@@ -50,8 +49,7 @@ export class SeriesAbout extends Component<Props, null> {
               }}
             />
           }
-        </Col>
-
+        </StyledCol>
       </SeriesAboutContainer>
     )
   }
@@ -65,43 +63,44 @@ interface ColProps {
   first?: boolean
 }
 
-const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled(Row)
 
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
-  display: flex;
-  justify-content: space-between;
-
-  ${props => pMedia.md`
-    display: block;
-  `}
+  max-width: 1200px;
 `
+const StyledCol = styled(Col) `
 
-const Col = Div`
-  width: ${props => props.first ? '30' : '60'}%;
-  ${props => props.first && `
+  ${PartnerBlockContainer} {
+    display: none;
+  }
+
+  &:first-of-type {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-  `}
-
-  ${PartnerBlockContainer} {
-    ${props => !props.first && "display: none;"}
+    ${PartnerBlockContainer} {
+      display: block;
+    }
   }
 
-  ${props => pMedia.md`
-    width: 100%;
+  ${props => media.sm`
+    &:first-of-type {
+      ${PartnerBlockContainer} {
+        display: none;
+      }
+    }
 
     ${PartnerBlockContainer} {
       margin-top: 60px;
-      display: ${props.first ? "none" : "block"};
+      display: block;
     }
   `}
 `
 
 const Title = styled.div`
   ${Fonts.unica("s32", "medium")}
-  ${props => pMedia.md`
+  ${props => media.sm`
     margin-bottom: 20px;
   `}
 `
