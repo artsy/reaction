@@ -28,6 +28,7 @@ interface Props extends RelayProps, Filters {
   relay?: RelayPaginationProp
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
+  onForSaleToggleSelected: () => void
   sort?: string
 }
 
@@ -79,7 +80,7 @@ export class Artworks extends React.Component<Props, State> {
   }
 
   renderForSaleToggle() {
-    return <ForSaleCheckbox checked={this.props.for_sale} onClick={() => null} />
+    return <ForSaleCheckbox checked={this.props.for_sale} onChange={this.props.onForSaleToggleSelected} />
   }
 
   renderArtworks() {
