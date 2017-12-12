@@ -16,10 +16,12 @@ interface Props extends ContextProps {
   mode: "artists" | "artworks"
   filters?: Filters
   geneID: string
+  sort?: string
 }
 
 interface State extends Filters {
   mode: "artists" | "artworks"
+  sort?: string
 }
 
 class GeneNewContents extends React.Component<Props, State> {
@@ -31,6 +33,7 @@ class GeneNewContents extends React.Component<Props, State> {
       price_range: "*",
       dimension_range: "*",
       mode: props.mode,
+      sort: "-partner_updated_at",
     }
   }
 
@@ -38,6 +41,13 @@ class GeneNewContents extends React.Component<Props, State> {
     this.setState({
       [slice.toLowerCase() as any]: value,
       mode: "artworks",
+    })
+  }
+
+  onSortSelect(sortEl) {
+    this.setState({
+      sort: sortEl.val,
+      mode: "artworks", 
     })
   }
 
@@ -67,23 +77,24 @@ class GeneNewContents extends React.Component<Props, State> {
 
   renderArtworks() {
     const { geneID, relayEnvironment } = this.props
-    const { for_sale, medium, price_range, dimension_range } = this.state
+    const { for_sale, medium, price_range, dimension_range, sort } = this.state
     return (
       <QueryRenderer
         environment={relayEnvironment}
         query={graphql.experimental`
           query NewContentsArtworksQuery($geneID: String!, $medium: String
           $price_range: String
+          $sort: String
           $dimension_range: String) {
             gene(id: $geneID) {
-              ...Artworks_gene @arguments(medium: $medium, price_range: $price_range, dimension_range: $dimension_range)
+              ...Artworks_gene @arguments(medium: $medium, price_range: $price_range, dimension_range: $dimension_range, sort: $sort)
             }
           }
         `}
         variables={{ geneID, ...this.state }}
         render={({ props }) => {
           if (props) {
-            return <Artworks for_sale={for_sale} medium={medium} price_range={price_range} dimension_range={dimension_range} gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
+            return <Artworks onSortSelected={this.onSortSelect.bind(this)} sort={sort} for_sale={for_sale} medium={medium} price_range={price_range} dimension_range={dimension_range} gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
           } else {
             return null
           }

@@ -27,6 +27,8 @@ interface Filters {
 interface Props extends RelayProps, Filters {
   relay?: RelayPaginationProp
   onDropdownSelected: (slice: string, value: string) => void
+  onSortSelected: (sort: string) => void
+  sort?: string
 }
 
 interface State extends Filters {
@@ -86,6 +88,7 @@ export class Artworks extends React.Component<Props, State> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
+    const selectedSort = pulldownOptions.find((sort) => sort.val === this.props.sort)
     return (
       <div>
         <SubFilterBar>
@@ -100,7 +103,7 @@ export class Artworks extends React.Component<Props, State> {
             />
             <TotalCount filter_artworks={this.props.gene.filtered_artworks} />
           </div>
-          <BorderedPulldown defaultValue="Recently Updated" options={pulldownOptions} onChange={option => null} />
+          <BorderedPulldown defaultValue="Recently Updated" selectedName={selectedSort && selectedSort.name} options={pulldownOptions} onChange={this.props.onSortSelected} />
         </SubFilterBar>
         <ArtworkGrid
           artworks={this.props.gene.filtered_artworks.artworks as any}
