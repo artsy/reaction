@@ -44,14 +44,9 @@ storiesOf("Publishing/Video", module)
   })
   .add("Video Cover", () => {
     return (
-      <div style={{
-        width: "100vw",
-        height: "100vh"
-      }}>
-        <VideoCover
-          media={Media[0]}
-          description={VideoArticle.description}
-        />
-      </div>
+      <VideoCover
+        media={Media[0]}
+        description={VideoArticle.description}
+      />
     )
   })

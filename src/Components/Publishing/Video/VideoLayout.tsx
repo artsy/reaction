@@ -5,31 +5,40 @@ import { getEditorialHref } from "../Constants"
 import { Fonts } from "../Fonts"
 import { Nav } from "../Nav/Nav"
 import { ArticleCard, ArticleCardContainer } from "../Series/ArticleCard"
-import { SeriesAbout } from "../Series/SeriesAbout"
+import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
 import { VideoPlayer } from "../VideoPlayer/VideoPlayer"
 import { VideoAbout } from "./VideoAbout"
+import { VideoCover, VideoCoverContainer } from "./VideoCover"
 
 interface Props {
-  article?: any
+  article: any
   seriesArticle?: any
   relatedArticles?: any
 }
 
 interface State {
-  play: boolean
+  forcePlay: boolean
+  isPlaying: boolean
 }
 
 export class VideoLayout extends Component<Props, State> {
   state = {
-    play: false
+    forcePlay: false,
+    isPlaying: false
   }
 
   playVideo = () => {
-    this.setState({ play: true })
+    this.setState({
+      forcePlay: true,
+      isPlaying: true
+    })
   }
 
-  setPaused = () => {
-    this.setState({ play: false })
+  pauseVideo = () => {
+    this.setState({
+      forcePlay: false,
+      isPlaying: false
+    })
   }
 
   render() {
@@ -47,18 +56,25 @@ export class VideoLayout extends Component<Props, State> {
           sponsor={article.sponsor}
         />
         <VideoPlayerContainer>
+          <VideoCover
+            media={media}
+            seriesTitle={seriesArticle && seriesArticle.title}
+            description={article.description}
+            playVideo={this.playVideo}
+            hideCover={this.state.isPlaying}
+          />
           <VideoPlayer
             url={media.url}
             title={media.title}
-            forcePlay={this.state.play}
-            notifyIsPaused={this.setPaused}
+            forcePlay={this.state.forcePlay}
+            notifyIsPaused={this.pauseVideo}
           />
         </VideoPlayerContainer>
         <VideoAbout
           article={article}
         />
         {relatedArticles &&
-          <Row>
+          <MaxRow>
             <RelatedArticlesTitle>
               {"More in "}
               {seriesArticle ?
@@ -72,30 +88,30 @@ export class VideoLayout extends Component<Props, State> {
                 <span>{article.vertical.name}</span>
               }
             </RelatedArticlesTitle>
-          </Row>
+          </MaxRow>
         }
         {relatedArticles &&
           relatedArticles.map((relatedArticle) => {
             return (
-              <Row>
+              <MaxRow>
                 <ArticleCard
                   article={relatedArticle}
                   color="white"
                   series={seriesArticle}
                   // NOT SURE ABOUT NAMING ABOVE
                 />
-              </Row>
+              </MaxRow>
             )
           })
         }
-        <Row>
+        <MaxRow>
           {seriesArticle &&
             <SeriesAbout
               article={seriesArticle}
               color="white"
             />
           }
-        </Row>
+        </MaxRow>
       </VideoLayoutContainer>
     )
   }
@@ -112,10 +128,19 @@ const VideoLayoutContainer = styled(Row)`
   ${ArticleCardContainer} {
     margin-bottom: 60px;
   }
+  ${VideoCoverContainer} {
+    z-index: 9;
+    position: absolute;
+  }
+  ${SeriesAboutContainer} {
+    margin-bottom: 100px;
+  }
 `
 const VideoPlayerContainer = styled.div`
   width: 100%;
   height: 100vh;
+  position: relative;
+  top: 0;
 `
 const RelatedArticlesTitle = styled.div`
   ${Fonts.unica("s32")}
@@ -124,4 +149,9 @@ const RelatedArticlesTitle = styled.div`
 const Link = styled.a`
   text-decoration: none;
   color: white;
+`
+const MaxRow = styled(Row)`
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 `

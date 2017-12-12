@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video About matches the snapshot 1`] = `
+.c0 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c1 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c4 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c3 {
+  position: relative;
+  width: 100%;
+}
+
+.c3 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c3 a:hover {
+  color: #999;
+}
+
+.c3 p,
+.c3 ul,
+.c3 ol {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c3 p:first-child {
+  padding-top: 0;
+}
+
+.c3 p:last-child {
+  padding-bottom: 0;
+}
+
+.c3 ul,
+.c3 ol {
+  padding-left: 1em;
+}
+
+.c3 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c3 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c3 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c3 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c3 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c3 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c3 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c3 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c3 blockquote {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.c3 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c3 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c3 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c3 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c2 {
+  margin-bottom: 15px;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+}
+
+@media only screen and (min-width:0em) {
+  .c1 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:75em) {
+  .c1 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:64em) {
+  .c1 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c1 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c4 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:75em) {
+  .c4 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:64em) {
+  .c4 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c4 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media (max-width:600px) {
+  .c3 p,
+  .c3 ul,
+  .c3 ol {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c3 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c3 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c3 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c3 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c3 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c3 blockquote {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c3 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:900px) {
+  .c2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Credits
+    </div>
+    <div
+      className="article__text-section c3"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="c4"
+  >
+    <div
+      className="c2"
+    >
+      About the Film
+    </div>
+    <div
+      className="article__text-section c3"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

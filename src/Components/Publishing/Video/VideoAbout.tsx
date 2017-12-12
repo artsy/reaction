@@ -10,72 +10,42 @@ interface Props {
 }
 
 export class VideoAbout extends Component<Props, null> {
-
-  renderCreditRole = (role, people, pluralize = true) => {
-    return (
-      <CreditRoleRow>
-        <CreditTitle>
-          {`${role}${people.length > 1 && pluralize ? "s" : ""}`}
-        </CreditTitle>
-        {people.map((person) => {
-          return (
-            <CreditName>
-              {person}
-            </CreditName>
-          )
-        })}
-      </CreditRoleRow>
-    )
-  }
-
   render() {
     const { article } = this.props
-    const { credits, media } = article
+    const { media } = article
     return (
-      <Row>
+      <VideoAboutRow>
         <Col
           xs={12}
-          sm={12}
-          md={4}
-          lg={4}
-          first="sm"
-          last="md"
+          sm={4}
+          first="xs"
+          last="sm"
         >
           <Title>
             Credits
           </Title>
-          {credits.directors &&
-            this.renderCreditRole("Director", credits.directors)
-          }
-          {credits.featuring &&
-            this.renderCreditRole("Featuring", credits.featuring, false)
-          }
+          <Text layout="standard" html={media.credits} />
         </Col>
 
-        <Col xs={12} sm={12} md={6} lg={6}>
+        <Col xs={12} sm={8} md={8} lg={8}>
           <Title>
             About the Film
           </Title>
           <Text layout="standard" html={media.description} />
         </Col>
-
-      </Row>
+      </VideoAboutRow>
     )
   }
 }
 
 const Title = styled.div`
+  margin-bottom: 15px;
   ${Fonts.unica("s34")}
   ${pMedia.md`
     ${Fonts.unica("s32")}
   `}
 `
-const CreditTitle = styled.div`
-  ${Fonts.unica("s16")}
-`
-const CreditName = styled.div`
-  ${Fonts.garamond("s14")}
-`
-const CreditRoleRow = styled(Row)`
-  margin-bottom: 20px;
+const VideoAboutRow = styled(Row)`
+  max-width: 1200px;
+  margin: 60px auto;
 `

@@ -52,6 +52,12 @@ export class VideoPlayer extends Component<Props, State> {
     this.video.removeEventListener("timeupdate", this.updateTime)
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.forcePlay){
+      this.forcePlay()
+    }
+  }
+
   setDuration = (e) => {
     this.setState({
       duration: e.target.duration
@@ -67,7 +73,9 @@ export class VideoPlayer extends Component<Props, State> {
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
-      this.props.notifyIsPaused()
+      if (this.props.notifyIsPaused) {
+        this.props.notifyIsPaused()
+      }
     } else {
       this.video.play()
     }
@@ -80,6 +88,13 @@ export class VideoPlayer extends Component<Props, State> {
   toggleMute = () => {
     this.setState({
       isMuted: !this.state.isMuted
+    })
+  }
+
+  forcePlay = () => {
+    this.video.play()
+    this.setState({
+      isPlaying: true
     })
   }
 

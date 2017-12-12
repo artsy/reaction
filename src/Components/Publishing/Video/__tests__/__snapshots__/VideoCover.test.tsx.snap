@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video Cover matches the snapshot 1`] = `
+.c9 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c4 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c7 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c13 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c6 {
+  width: 32px;
+  height: 32px;
+}
+
+.c1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg) no-repeat center center;
+  background-size: cover;
+  background-color: black;
+}
+
+.c2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  background-color: black;
+  top: 0;
+}
+
+.c0 {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  z-index: 1;
+  max-width: 1200px;
+  color: white;
+  margin: auto auto 60px auto;
+}
+
+.c3 .c5 {
+  height: 60px;
+  width: 44px;
+  margin-right: 30px;
+}
+
+.c8 {
+  display: block;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-right: 35px;
+}
+
+.c12 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c14 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+@media only screen and (min-width:0em) {
+  .c4 {
+    -webkit-flex-basis: 8.333333333333334%;
+    -ms-flex-basis: 8.333333333333334%;
+    flex-basis: 8.333333333333334%;
+    max-width: 8.333333333333334%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c7 {
+    -webkit-flex-basis: 25%;
+    -ms-flex-basis: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c13 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+    src="https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg"
+  />
+  <div
+    className="c2"
+  />
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
+      onClick={undefined}
+    >
+      <svg
+        className="c5 c6"
+        version="1.1"
+        viewBox="0 0 40 56"
+        x="0px"
+        xmlns="http://www.w3.org/2000/svg"
+        y="0px"
+      >
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="1"
+        >
+          <polygon
+            fill="white"
+            points="0 0 0 56 39.3600006 28"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          <span
+            className="c10"
+          >
+            Future of Art
+          </span>
+          <span
+            className="c11"
+          >
+            02:28
+          </span>
+        </div>
+        <div
+          className="c9"
+        >
+          <span
+            className="c12"
+          >
+            Trevor Paglan
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c13"
+    >
+      <div
+        className="c14"
+      >
+        Lorem Ipsum Description
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,1859 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video Layout matches the snapshot 1`] = `
+.c7 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c5 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c5 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c5 .c6 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c13 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c13:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c12 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c12:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c15 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c15:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c10 {
+  text-decoration: none;
+}
+
+.c17 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c4 {
+  background-color: transparent;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  color: white;
+  z-index: 10;
+}
+
+.c8 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.c49 {
+  position: relative;
+  width: 100%;
+}
+
+.c49 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c49 a:hover {
+  color: #999;
+}
+
+.c49 p,
+.c49 ul,
+.c49 ol {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c49 p:first-child {
+  padding-top: 0;
+}
+
+.c49 p:last-child {
+  padding-bottom: 0;
+}
+
+.c49 ul,
+.c49 ol {
+  padding-left: 1em;
+}
+
+.c49 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c49 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c49 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c49 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c49 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c49 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c49 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c49 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c49 blockquote {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.c49 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c49 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c49 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c49 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c65 {
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c66 {
+  width: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c68 {
+  width: 60%;
+}
+
+.c68 .file__PartnerBlockContainer-s8dqalt-0 {
+  display: none;
+}
+
+.c67 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
+.c45 {
+  height: 28px;
+}
+
+.c26 {
+  width: 32px;
+  height: 32px;
+}
+
+.c40 {
+  height: 28px;
+  width: 28px;
+}
+
+.c46 {
+  width: 100%;
+  background-size: NaN% 100%;
+  height: 18px;
+  margin-top: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.c46::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c46::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.c46::-webkit-slider-runnable-track {
+  height: 2px;
+  cursor: pointer;
+  -webkit-animate: 0.2s;
+  animate: 0.2s;
+  background-color: white;
+  border: 0px;
+}
+
+.c46::-moz-range-track {
+  height: 2px;
+  cursor: pointer;
+  -webkit-animate: 0.2s;
+  animate: 0.2s;
+  background-color: white;
+  border: 0px;
+}
+
+.c46::-webkit-slider-thumb {
+  color: white;
+  box-shadow: 0px 0px 0px white;
+  border: 0px solid #E3E3E3;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: white;
+  cursor: pointer;
+  margin-top: -5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c46::-moz-range-thumb {
+  color: white;
+  box-shadow: 0px 0px 0px white;
+  border: 0px solid #E3E3E3;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: white;
+  cursor: pointer;
+  margin-top: -5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c46:focus::-webkit-slider-runnable-track {
+  background: white;
+}
+
+.c46:focus {
+  outline: none;
+}
+
+.c43 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c38 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c37 {
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 20px;
+  margin: 20px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.c37 .c42 {
+  margin-right: 30px;
+}
+
+.c37 .c44 {
+  margin-right: 20px;
+}
+
+.c41 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  margin-left: 20px;
+}
+
+.c39 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c35 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.c34 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: black;
+}
+
+.c34 video {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.c34 .c36 {
+  opacity: 0;
+}
+
+.c34:hover .c36 {
+  opacity: 1;
+}
+
+.c1 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c24 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c27 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c32 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c47 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c50 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c48 {
+  margin-bottom: 15px;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+}
+
+.c59 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c59.date {
+  white-space: nowrap;
+}
+
+.c64 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c64.date {
+  white-space: nowrap;
+}
+
+.c64:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: white;
+}
+
+.c64:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c63 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.c54 {
+  display: block;
+  border: 1px solid;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c55 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.c55 .author,
+.c55 .date {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c57 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+.c56 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c58 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c60 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+}
+
+.c61 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.c62 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c62 svg {
+  width: 40px;
+}
+
+.c21 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
+  background-size: cover;
+  background-color: black;
+}
+
+.c22 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  background-color: black;
+  top: 0;
+}
+
+.c20 {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  z-index: 1;
+  max-width: 1200px;
+  color: white;
+  margin: auto auto 60px auto;
+}
+
+.c23 .c25 {
+  height: 60px;
+  width: 44px;
+  margin-right: 30px;
+}
+
+.c28 {
+  display: block;
+}
+
+.c29 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-right: 35px;
+}
+
+.c31 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+}
+
+.c30 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c33 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c0 {
+  background: black;
+  color: white;
+  margin: auto;
+}
+
+.c0 .c2 {
+  position: absolute;
+  top: 0;
+}
+
+.c0 .c53 {
+  margin-bottom: 60px;
+}
+
+.c0 .c19 {
+  z-index: 9;
+  position: absolute;
+}
+
+.c18 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  top: 0;
+}
+
+.c51 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  margin-bottom: 40px;
+}
+
+.c52 {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width:720px) {
+  .c5 img {
+    max-height: 24px;
+  }
+
+  .c5 .c6 {
+    font-size: 24px;
+  }
+
+  .c5 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 .c11,
+  .c9 .c14 {
+    display: none;
+  }
+
+  .c9 .c16 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    position: relative;
+  }
+}
+
+@media (max-width:600px) {
+  .c49 p,
+  .c49 ul,
+  .c49 ol {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c49 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c49 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c49 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c49 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c49 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c49 blockquote {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c49 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:900px) {
+  .c65 {
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c66 {
+    width: 100%;
+  }
+
+  .c66 .file__PartnerBlockContainer-s8dqalt-0 {
+    margin-top: 60px;
+    display: none;
+  }
+}
+
+@media (max-width:900px) {
+  .c68 {
+    width: 100%;
+  }
+
+  .c68 .file__PartnerBlockContainer-s8dqalt-0 {
+    margin-top: 60px;
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c67 {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c24 {
+    -webkit-flex-basis: 8.333333333333334%;
+    -ms-flex-basis: 8.333333333333334%;
+    flex-basis: 8.333333333333334%;
+    max-width: 8.333333333333334%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c27 {
+    -webkit-flex-basis: 25%;
+    -ms-flex-basis: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c32 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c47 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:75em) {
+  .c47 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:64em) {
+  .c47 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c47 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c50 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:75em) {
+  .c50 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:64em) {
+  .c50 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c50 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media (max-width:900px) {
+  .c48 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:720px) {
+  .c59 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c64 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c64:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c54 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c55 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c57 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c58 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c60 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c62 svg {
+    width: 30px;
+  }
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  >
+    <div
+      className="PartnerInline c5"
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="c6 c7"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+    </div>
+    <div
+      className="c8"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c9"
+    >
+      <a
+        className="mlh-login c10"
+        href="/log_in"
+      >
+        <button
+          className="c11 c12 c13"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c10"
+        href="/sign_up"
+      >
+        <button
+          className="c14 c15"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c16 c17"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c18"
+  >
+    <div
+      className="c19 c20"
+    >
+      <div
+        className="c21"
+        src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
+      />
+      <div
+        className="c22"
+      />
+      <div
+        className="c23"
+      >
+        <div
+          className="c24"
+          onClick={[Function]}
+        >
+          <svg
+            className="c25 c26"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+        </div>
+        <div
+          className="c27"
+        >
+          <div
+            className="c28"
+          >
+            <div
+              className="c1"
+            >
+              <span
+                className="c29"
+              >
+                The Future of Art
+              </span>
+              <span
+                className="c30"
+              >
+                16:40
+              </span>
+            </div>
+            <div
+              className="c1"
+            >
+              <span
+                className="c31"
+              >
+                Trevor Paglan
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c32"
+        >
+          <div
+            className="c33"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c34"
+    >
+      <video
+        muted={false}
+        playsInline={true}
+        src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
+      />
+      <div
+        className="c35"
+      >
+        <div
+          className="c36 c37"
+        >
+          <div
+            className="c38"
+          >
+            <div
+              className="c39"
+            >
+              <div
+                className="c40"
+                onClick={[Function]}
+              >
+                <svg
+                  className="c25 c26"
+                  version="1.1"
+                  viewBox="0 0 40 56"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <polygon
+                      fill="white"
+                      points="0 0 0 56 39.3600006 28"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div
+                className="c41"
+              >
+                Trevor Paglan
+              </div>
+            </div>
+            <div
+              className="c39"
+            >
+              <div
+                className="c42 c43"
+              >
+                00:00
+                 / 
+                00:00
+              </div>
+              <div
+                className="c44 c45"
+                onClick={[Function]}
+              >
+                <svg
+                  height="32px"
+                  width="32px"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill="white"
+                  >
+                    <path
+                      d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <svg
+                height="32px"
+                onClick={[Function]}
+                viewBox="0 0 28 28"
+                width="32px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  transform="translate(-1151 -22)"
+                >
+                  <rect
+                    fill="#000"
+                    fillOpacity=".2"
+                    height="92"
+                    rx="4"
+                    stroke="white"
+                    width="1200"
+                  />
+                  <path
+                    d="M1150 21h30v30h-30z"
+                  />
+                  <g
+                    fill="#FFF"
+                  >
+                    <path
+                      d="M1151 40h2v10h-2z"
+                    />
+                    <path
+                      d="M1161 48v2h-10v-2zM1161 22v2h-10v-2z"
+                    />
+                    <path
+                      d="M1153 32h-2V22h2z"
+                    />
+                    <g>
+                      <path
+                        d="M1179 32h-2V22h2z"
+                      />
+                      <path
+                        d="M1169 24v-2h10v2z"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M1169 50v-2h10v2z"
+                      />
+                      <path
+                        d="M1177 40h2v10h-2z"
+                      />
+                    </g>
+                  </g>
+                  <path
+                    d="M1157 28h16v16h-16z"
+                    fill="#FFF"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <input
+            className="c46"
+            max={0}
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            step="any"
+            type="range"
+            value={0}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c47"
+    >
+      <div
+        className="c48"
+      >
+        Credits
+      </div>
+      <div
+        className="article__text-section c49"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c50"
+    >
+      <div
+        className="c48"
+      >
+        About the Film
+      </div>
+      <div
+        className="article__text-section c49"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c51"
+    >
+      More in 
+      <a
+        className="c52"
+        color="white"
+        href="/series/undefined"
+      >
+        The Future of Art
+      </a>
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <a
+      className="ArticleCard c53 c54"
+      color="white"
+      href="joanne-artman-gallery-poetry-naturerefinement-form"
+      onClick={[Function]}
+    >
+      <div
+        className="c55"
+      >
+        <div>
+          <div
+            className="c56"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c57"
+          >
+            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+          </div>
+          <div
+            className="c58"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+        <div
+          className="date c59"
+        >
+          Aug 28, 2017
+        </div>
+      </div>
+      <div
+        className="c60"
+      >
+        <img
+          className="c61"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        />
+        <div
+          className="c62"
+        >
+          <svg
+            className="c25 c26"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+          16:40
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+  >
+    <a
+      className="ArticleCard c53 c54"
+      color="white"
+      href="new-yorks-next-art-district"
+      onClick={[Function]}
+    >
+      <div
+        className="c55"
+      >
+        <div>
+          <div
+            className="c56"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c57"
+          >
+            New York's Next Art District
+          </div>
+          <div
+            className="c58"
+          >
+            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+          </div>
+        </div>
+        <div
+          className="Byline c63"
+          color="white"
+        >
+          <div
+            className="author c64"
+            color="white"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c59"
+          >
+            May 19, 2017
+          </div>
+        </div>
+      </div>
+      <div
+        className="c60"
+      >
+        <img
+          className="c61"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        />
+      </div>
+    </a>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="SeriesAbout c65"
+      color="white"
+    >
+      <div
+        className="c66"
+      >
+        <div
+          className="c67"
+        >
+          About the Series
+        </div>
+      </div>
+      <div
+        className="c68"
+      >
+        <div
+          className="article__text-section c49"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
