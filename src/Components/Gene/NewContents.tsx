@@ -36,7 +36,7 @@ class GeneNewContents extends React.Component<Props, State> {
 
   onDropdownSelect(slice: string, value: string) {
     this.setState({
-      [slice.toLowerCase()]: value,
+      [slice.toLowerCase() as any]: value,
       mode: "artworks",
     })
   }
