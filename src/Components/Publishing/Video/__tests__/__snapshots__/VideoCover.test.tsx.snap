@@ -125,8 +125,8 @@ exports[`Video Cover matches the snapshot 1`] = `
   color: white;
   opacity: 1;
   visibility: visible;
-  -webkit-transition: opacity 0.5s ease visibility 0.5s ease;
-  transition: opacity 0.5s ease visibility 0.5s ease;
+  -webkit-transition: opacity 0.25s ease,visibility 0.25s ease;
+  transition: opacity 0.25s ease,visibility 0.25s ease;
 }
 
 .c0 .c1,

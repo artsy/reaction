@@ -75,24 +75,29 @@ export const VideoAboutContainer = styled.div`
     flex: 1;
   }
 
-  ${Col}:nth-of-type(1) {
+  ${Col}:nth-of-type(2) {
     ${ShareDate} {
-      display: none
+      display: none;
     }
   }
 
   ${media.sm`
     flex-direction: column-reverse;
-    ${ShareDate} {
-      margin-top: 40px;
-      align-self: flex-start;
-    }
+
     ${Col}:first-of-type {
-      margin-top: 40px;
+      margin-top: 80px;
       display: flex;
       flex-direction: column;
       ${ShareDate} {
         display: none;
+      }
+    }
+
+    ${Col}:nth-of-type(2) {
+      ${ShareDate} {
+        display: block;
+        margin-top: 40px;
+        align-self: flex-start;
       }
     }
   `}

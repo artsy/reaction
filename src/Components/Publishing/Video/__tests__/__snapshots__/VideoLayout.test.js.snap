@@ -909,7 +909,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex: 1;
 }
 
-.c53 .c44:nth-of-type(1) .c57 {
+.c53 .c44:nth-of-type(2) .c57 {
   display: none;
 }
 
@@ -986,8 +986,8 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
   opacity: 1;
   visibility: visible;
-  -webkit-transition: opacity 0.5s ease visibility 0.5s ease;
-  transition: opacity 0.5s ease visibility 0.5s ease;
+  -webkit-transition: opacity 0.25s ease,visibility 0.25s ease;
+  transition: opacity 0.25s ease,visibility 0.25s ease;
 }
 
 .c34 .c35,
@@ -1381,15 +1381,8 @@ exports[`Video Layout matches the snapshot 1`] = `
     flex-direction: column-reverse;
   }
 
-  .c53 .c57 {
-    margin-top: 40px;
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
-  }
-
   .c53 .c44:first-of-type {
-    margin-top: 40px;
+    margin-top: 80px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1401,6 +1394,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 
   .c53 .c44:first-of-type .c57 {
     display: none;
+  }
+
+  .c53 .c44:nth-of-type(2) .c57 {
+    display: block;
+    margin-top: 40px;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
   }
 }
 
@@ -1800,7 +1801,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </span>
             <a
               className="c63"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
             >
@@ -1826,7 +1827,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </a>
             <a
               className="c63"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -1852,7 +1853,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </a>
             <a
               className="c63"
-              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
+              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
             >
               <svg
@@ -1916,7 +1917,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </span>
             <a
               className="c63"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
             >
@@ -1942,7 +1943,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </a>
             <a
               className="c63"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
             >
@@ -1968,7 +1969,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </a>
             <a
               className="c63"
-              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
+              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
             >
               <svg

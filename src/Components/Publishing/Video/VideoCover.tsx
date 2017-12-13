@@ -8,7 +8,7 @@ import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
 interface Props {
-  media?: any
+  media: any
   seriesTitle?: string
   description?: string
   playVideo?: () => void
@@ -39,7 +39,11 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverOverlay />
         <VideoCoverInfo>
           <VideoCoverInfoRow>
-            <Col xs={2} sm={1} onClick={playVideo}>
+            <Col
+              xs={2}
+              sm={1}
+              onClick={playVideo}
+            >
               <IconVideoPlay color="white" />
             </Col>
             <Col xs={10} sm={3}>
@@ -100,7 +104,7 @@ export const VideoCoverContainer = CoverDiv`
   color: white;
   opacity: ${props => props.hideCover ? '0' : '1'};
   visibility: ${props => props.hideCover ? 'hidden' : 'visible'};
-  transition: opacity 0.5s ease visibility 0.5s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
   ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
     position: absolute;
     width: 100%;

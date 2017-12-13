@@ -256,7 +256,7 @@ exports[`Video About matches the snapshot 1`] = `
   flex: 1;
 }
 
-.c0 .c1:nth-of-type(1) .c5 {
+.c0 .c1:nth-of-type(2) .c5 {
   display: none;
 }
 
@@ -400,15 +400,8 @@ exports[`Video About matches the snapshot 1`] = `
     flex-direction: column-reverse;
   }
 
-  .c0 .c5 {
-    margin-top: 40px;
-    -webkit-align-self: flex-start;
-    -ms-flex-item-align: start;
-    align-self: flex-start;
-  }
-
   .c0 .c1:first-of-type {
-    margin-top: 40px;
+    margin-top: 80px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -420,6 +413,14 @@ exports[`Video About matches the snapshot 1`] = `
 
   .c0 .c1:first-of-type .c5 {
     display: none;
+  }
+
+  .c0 .c1:nth-of-type(2) .c5 {
+    display: block;
+    margin-top: 40px;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
   }
 }
 
@@ -464,7 +465,7 @@ exports[`Video About matches the snapshot 1`] = `
         </span>
         <a
           className="c11"
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
           target="_blank"
         >
@@ -490,7 +491,7 @@ exports[`Video About matches the snapshot 1`] = `
         </a>
         <a
           className="c11"
-          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
           onClick={[Function]}
           target="_blank"
         >
@@ -516,7 +517,7 @@ exports[`Video About matches the snapshot 1`] = `
         </a>
         <a
           className="c11"
-          href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
+          href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <svg
@@ -580,7 +581,7 @@ exports[`Video About matches the snapshot 1`] = `
         </span>
         <a
           className="c11"
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
           target="_blank"
         >
@@ -606,7 +607,7 @@ exports[`Video About matches the snapshot 1`] = `
         </a>
         <a
           className="c11"
-          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
           onClick={[Function]}
           target="_blank"
         >
@@ -632,7 +633,7 @@ exports[`Video About matches the snapshot 1`] = `
         </a>
         <a
           className="c11"
-          href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
+          href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <svg

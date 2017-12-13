@@ -351,13 +351,6 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
-export const Credits = [
-  {
-    directors: [ "Marina Cashdan" ],
-    featuring: [ "Trevor Paglan" ]
-  }
-]
-
 export const Media = [
   {
     title: "Trevor Paglan",

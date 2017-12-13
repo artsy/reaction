@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { media } from "../../Helpers"
-import { getArticleFullHref, getDate } from "../Constants"
+import { getDate, getFullEditorialHref } from "../Constants"
 import { Date } from "./AuthorDate"
 import { Share, ShareContainer } from "./Share"
 
 interface ShareDateProps extends React.HTMLProps<HTMLDivElement> {
-  article?: any
+  article: any
   color?: string
 }
 
@@ -19,7 +19,7 @@ const ShareDateComponent: React.SFC<ShareDateProps> = props => {
         date={getDate(article.published_at)}
       />
       <Share
-        url={getArticleFullHref(article.slug)}
+        url={getFullEditorialHref(article.layout, article.slug)}
         title={title}
         color={color}
         hasLabel
