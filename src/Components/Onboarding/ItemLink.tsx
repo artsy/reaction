@@ -5,7 +5,7 @@ import * as fonts from "../../Assets/Fonts"
 
 import Icon from "../Icon"
 
-const anchor: StyledFunction<React.HTMLProps<HTMLInputElement>> = styled.a
+const anchor: StyledFunction<React.HTMLProps<HTMLAnchorElement>> = styled.a
 const Link = anchor`
   display: flex;
   font-size: 14px;
@@ -37,27 +37,16 @@ const Col = styled.div`
 interface Props extends React.HTMLProps<HTMLAnchorElement> {
   item?: any
   id: string
-  _id: string
+  _id?: string
+  __id?: string
   name: string
   image_url: string
 }
 
 export default class ItemLink extends React.Component<Props, null> {
-  followItem() {
-    return null
-  }
-
-  followItemFailed() {
-    null
-  }
-
-  onClick() {
-    this.followItem()
-  }
-
   render() {
     return (
-      <Link onClick={this.onClick.bind(this)}>
+      <Link onClick={this.props.onClick}>
         <Col>
           {
             <Avatar

@@ -33,6 +33,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
           _id={item._id}
           name={item.name}
           image_url={item.image.cropped.url}
+          onClick={() => null}
         />
       )
     })
