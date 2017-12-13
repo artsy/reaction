@@ -1,11 +1,11 @@
 import React, { Component } from "react"
-import { Col, Row } from 'react-styled-flexboxgrid'
+import { Col } from 'react-styled-flexboxgrid'
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
-import { MaxRow } from "./VideoLayout"
 
 interface Props {
   media?: any
@@ -32,6 +32,7 @@ export class VideoCover extends Component<Props, null> {
       playVideo,
       hideCover
     } = this.props
+
     return (
       <VideoCoverContainer hideCover={hideCover}>
         <VideoCoverAsset src={media.cover_image_url} />
@@ -65,13 +66,16 @@ export const VideoCoverAsset = Div`
   background-size: cover;
   background-color: black;
 `
+
 const VideoCoverOverlay = styled.div`
   opacity: 0.75;
   background-color: black;
 `
+
 const VideoCoverInfoRow = styled(MaxRow)`
   align-items: flex-end;
 `
+
 const VideoCoverInfo = styled.div`
   display: flex;
   align-items: flex-end;
@@ -87,6 +91,7 @@ const VideoCoverInfo = styled.div`
     padding-bottom: 40px;
   `}
 `
+
 const CoverDiv: StyledFunction<CoverProps> = styled.div
 export const VideoCoverContainer = CoverDiv`
   position: relative;
@@ -102,6 +107,7 @@ export const VideoCoverContainer = CoverDiv`
     height: 100%;
   }
 `
+
 const MediaDescription = styled.div`
   ${Fonts.garamond("s23")}
   ${media.sm`

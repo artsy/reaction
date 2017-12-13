@@ -7,11 +7,14 @@ import {
   StandardArticle,
   VideoArticle
 } from "../../Fixtures/Articles"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 import { Nav } from "../../Nav/Nav"
+import { ArticleCard } from "../../Series/ArticleCard"
 import { SeriesAbout } from "../../Series/SeriesAbout"
 import { VideoPlayer } from "../../VideoPlayer/VideoPlayer"
 import { VideoAbout } from "../VideoAbout"
 import { VideoLayout } from "../VideoLayout"
+
 describe("Video Layout", () => {
   const getWrapper = (props: any = {}) => {
     return mount(
@@ -47,21 +50,32 @@ describe("Video Layout", () => {
   it("renders the about section", () => {
     const component = getWrapper()
     expect(component.find(VideoAbout).length).toBe(1)
-    expect(component.find(VideoAbout).text()).toMatch("The elegant spiral of the Nautilus shell")
+    expect(component.find(VideoAbout).text()).toMatch("Integer posuere erat a ante venenatis dapibus posuere velit aliquet.")
   })
 
-  // it("renders related articles", () => {
-  //   const component = getWrapper({
-  //     relatedArticles: [VideoArticle, StandardArticle]
-  //   })
-
-  //   // expect(component.find(RelatedArticles))
-  // })
+  it("renders related articles", () => {
+    const component = getWrapper({
+      relatedArticles: [VideoArticle, StandardArticle]
+    })
+    expect(component.find(ArticleCard).length).toBe(2)
+  })
 
   it("renders the the series footer", () => {
     const component = getWrapper({
       seriesArticle: SeriesArticle
     })
     expect(component.find(SeriesAbout).length).toBe(1)
+  })
+
+  it("sets isPlaying to false when paused", () => {
+    const component = getWrapper()
+    component.instance().onPauseVideo()
+    expect(component.state().isPlaying).toBe(false)
+  })
+
+  it("sets isPlaying to true when clicking play from cover", () => {
+    const component = getWrapper()
+    component.find(IconVideoPlay).at(1).parent().simulate("click")
+    expect(component.state().isPlaying).toBe(true)
   })
 })

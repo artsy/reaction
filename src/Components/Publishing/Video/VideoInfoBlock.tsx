@@ -15,6 +15,7 @@ export class VideoInfoBlock extends Component<Props, null> {
       media,
       seriesTitle,
     } = this.props
+
     return (
       <div>
         <Row>
@@ -41,9 +42,11 @@ const SeriesTitle = styled.span`
   ${Fonts.unica("s16")}
   margin-right: 35px;
 `
+
 const MediaTitle = styled.span`
   ${Fonts.unica("s45")}
 `
+
 const MediaDuration = styled.span`
   ${Fonts.unica("s16")}
 `

@@ -13,7 +13,7 @@ exports[`renders ShareDate properly 1`] = `
   white-space: nowrap;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,21 +26,21 @@ exports[`renders ShareDate properly 1`] = `
   line-height: 1em;
 }
 
-.c4 {
+.c5 {
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 0.6;
 }
 
-.c4:first-child {
+.c5:first-child {
   padding-left: 0;
 }
 
-.c3 {
+.c4 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -67,8 +67,14 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c2 {
+  .c3 {
     margin-top: 15px;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 .c2 {
+    margin-top: 0px;
   }
 }
 
@@ -81,15 +87,15 @@ exports[`renders ShareDate properly 1`] = `
     May 19, 2017 9:09 am
   </div>
   <div
-    className="c2"
+    className="c2 c3"
   >
     <span
-      className="c3"
+      className="c4"
     >
       Share
     </span>
     <a
-      className="c4"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -115,7 +121,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -141,7 +147,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
     >

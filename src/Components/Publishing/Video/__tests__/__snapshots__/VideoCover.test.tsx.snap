@@ -52,6 +52,12 @@ exports[`Video Cover matches the snapshot 1`] = `
   height: 32px;
 }
 
+.c8 {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 12px;
+}
+
 .c14 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -72,12 +78,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-}
-
-.c8 {
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
 }
 
 .c2 {

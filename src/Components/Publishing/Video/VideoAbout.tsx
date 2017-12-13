@@ -64,6 +64,7 @@ const Title = Div`
     ${Fonts.unica("s32")}
   `}
 `
+
 export const VideoAboutContainer = styled.div`
   display: flex;
   ${ShareDate} {

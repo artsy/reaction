@@ -1,6 +1,5 @@
-import { debounce } from "lodash"
 import React, { Component } from "react"
-import { Col, Row } from 'react-styled-flexboxgrid'
+import { Col } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
@@ -9,8 +8,9 @@ import { Nav } from "../Nav/Nav"
 import { ArticleCard, ArticleCardContainer } from "../Series/ArticleCard"
 import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
 import { VideoContainer, VideoPlayer } from "../VideoPlayer/VideoPlayer"
+import { MaxRow } from "./Shared"
 import { VideoAbout, VideoAboutContainer } from "./VideoAbout"
-import { VideoCover, VideoCoverContainer } from "./VideoCover"
+import { VideoCover } from "./VideoCover"
 
 interface Props {
   article: any
@@ -19,27 +19,23 @@ interface Props {
 }
 
 interface State {
-  forcePlay: boolean
-  hideCover: boolean
+  isPlaying: boolean
 }
 
 export class VideoLayout extends Component<Props, State> {
   state = {
-    forcePlay: false,
-    hideCover: false,
+    isPlaying: false
   }
 
   playVideo = () => {
     this.setState({
-      forcePlay: true,
-      hideCover: true
+      isPlaying: true
     })
   }
 
   onPauseVideo = () => {
     this.setState({
-      forcePlay: false,
-      hideCover: false
+      isPlaying: false
     })
   }
 
@@ -61,7 +57,7 @@ export class VideoLayout extends Component<Props, State> {
           <VideoPlayer
             url={media.url}
             title={media.title}
-            forcePlay={this.state.forcePlay}
+            forcePlay={this.state.isPlaying}
             notifyIsPaused={this.onPauseVideo}
           />
           <VideoCover
@@ -69,7 +65,7 @@ export class VideoLayout extends Component<Props, State> {
             seriesTitle={seriesArticle && seriesArticle.title}
             description={article.description}
             playVideo={this.playVideo}
-            hideCover={this.state.hideCover}
+            hideCover={this.state.isPlaying}
           />
         </VideoPlayerContainer>
         <MaxRow>
@@ -83,22 +79,19 @@ export class VideoLayout extends Component<Props, State> {
             <RelatedArticlesTitle>
               {"More in "}
               {seriesArticle ?
-                <Link
-                  href={getEditorialHref('series', seriesArticle.slug)}
-                  color="white"
-                >
+                <Link href={getEditorialHref('series', seriesArticle.slug)}>
                   {seriesArticle.title}
                 </Link>
                 :
-                <span>{article.vertical.name}</span>
+                <span>{article.vertical && article.verical.name}</span>
               }
             </RelatedArticlesTitle>
           </MaxRow>
         }
         {relatedArticles &&
-          relatedArticles.map((relatedArticle) => {
+          relatedArticles.map((relatedArticle, i) => {
             return (
-              <MaxRow>
+              <MaxRow key={i}>
                 <Col xs={12}>
                   <ArticleCard
                     article={relatedArticle}
@@ -126,20 +119,25 @@ export class VideoLayout extends Component<Props, State> {
 const RelatedArticlesTitle = styled(Col) `
   ${Fonts.unica("s32")}
 `
+
 const VideoLayoutContainer = styled.div`
   background: black;
   color: white;
   margin: auto;
+
   ${Nav} {
     position: absolute;
     top: 0;
   }
+
   ${ArticleCardContainer} {
     margin-bottom: 60px;
   }
+
   ${RelatedArticlesTitle} {
     margin-bottom: 40px;
   }
+
   ${SeriesAboutContainer}, ${VideoAboutContainer} {
     margin: 60px 0 100px 0;
   }
@@ -153,10 +151,12 @@ const VideoLayoutContainer = styled.div`
     }
   `}
 `
+
 const VideoPlayerContainer = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+
   ${VideoContainer} {
     position: absolute;
     top: 0;
@@ -166,9 +166,4 @@ const VideoPlayerContainer = styled.div`
 const Link = styled.a`
   text-decoration: none;
   color: white;
-`
-export const MaxRow = styled(Row)`
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
 `

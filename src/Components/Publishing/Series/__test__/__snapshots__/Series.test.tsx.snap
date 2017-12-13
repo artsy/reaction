@@ -221,16 +221,26 @@ exports[`renders a series properly 1`] = `
   line-height: 1.2em;
 }
 
-.c24 {
+.c23 {
   box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 
-.c26 {
+.c25 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -240,11 +250,20 @@ exports[`renders a series properly 1`] = `
 }
 
 .c27 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c28 {
   position: relative;
   width: 100%;
 }
 
-.c27 a {
+.c28 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -254,13 +273,13 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c27 a:hover {
+.c28 a:hover {
   color: #999;
 }
 
-.c27 p,
-.c27 ul,
-.c27 ol {
+.c28 p,
+.c28 ul,
+.c28 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -271,20 +290,20 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c27 p:first-child {
+.c28 p:first-child {
   padding-top: 0;
 }
 
-.c27 p:last-child {
+.c28 p:last-child {
   padding-bottom: 0;
 }
 
-.c27 ul,
-.c27 ol {
+.c28 ul,
+.c28 ol {
   padding-left: 1em;
 }
 
-.c27 li {
+.c28 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -293,7 +312,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c27 h1 {
+.c28 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -306,7 +325,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c27 h1:before {
+.c28 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -317,7 +336,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c27 h2 {
+.c28 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -326,11 +345,11 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c27 h2 a {
+.c28 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c27 h3 {
+.c28 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -340,7 +359,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c27 h3 strong {
+.c28 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -348,11 +367,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c27 h3 a {
+.c28 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c27 blockquote {
+.c28 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -365,7 +384,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c27 .content-end {
+.c28 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -375,14 +394,14 @@ exports[`renders a series properly 1`] = `
   margin-left: 12px;
 }
 
-.c27 .artist-follow {
+.c28 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c27 .artist-follow:before {
+.c28 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -390,7 +409,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c27 .artist-follow:after {
+.c28 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -402,17 +421,13 @@ exports[`renders a series properly 1`] = `
 .c22 {
   color: white;
   max-width: 1200px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c23 .file__PartnerBlockContainer-s8dqalt-0 {
+.c24 .file__PartnerBlockContainer-s8dqalt-0 {
   display: none;
 }
 
-.c23:first-of-type {
+.c24:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -426,11 +441,11 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c23:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
+.c24:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
   display: block;
 }
 
-.c25 {
+.c26 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -582,7 +597,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c24 {
+  .c25 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -592,7 +607,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c24 {
+  .c25 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-basis: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -602,7 +617,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c26 {
+  .c27 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -612,7 +627,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c26 {
+  .c27 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -622,37 +637,37 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c27 p,
-  .c27 ul,
-  .c27 ol {
+  .c28 p,
+  .c28 ul,
+  .c28 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c27 li {
+  .c28 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c27 h1 {
+  .c28 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c27 h2 {
+  .c28 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c27 h3 {
+  .c28 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -660,38 +675,38 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c27 h3 strong {
+  .c28 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c27 blockquote {
+  .c28 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c27 .content-start {
+  .c28 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c23:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
+  .c24:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
     display: none;
   }
 
-  .c23 .file__PartnerBlockContainer-s8dqalt-0 {
+  .c24 .file__PartnerBlockContainer-s8dqalt-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c25 {
+  .c26 {
     margin-bottom: 20px;
   }
 }
@@ -934,23 +949,23 @@ exports[`renders a series properly 1`] = `
       </div>
     </a>
     <div
-      className="c21 c22"
+      className="c21 c22 c23"
       color="white"
     >
       <div
-        className="c23 c24"
+        className="c24 c25"
       >
         <div
-          className="c25"
+          className="c26"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c23 c26"
+        className="c24 c27"
       >
         <div
-          className="article__text-section c27"
+          className="article__text-section c28"
         >
           <div
             dangerouslySetInnerHTML={
@@ -1187,7 +1202,26 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.2em;
 }
 
-.c27 {
+.c26 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c28 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1196,7 +1230,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c29 {
+.c30 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1217,12 +1251,12 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c30 {
+.c31 {
   position: relative;
   width: 100%;
 }
 
-.c30 a {
+.c31 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -1232,13 +1266,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c30 a:hover {
+.c31 a:hover {
   color: #999;
 }
 
-.c30 p,
-.c30 ul,
-.c30 ol {
+.c31 p,
+.c31 ul,
+.c31 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1249,20 +1283,20 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c30 p:first-child {
+.c31 p:first-child {
   padding-top: 0;
 }
 
-.c30 p:last-child {
+.c31 p:last-child {
   padding-bottom: 0;
 }
 
-.c30 ul,
-.c30 ol {
+.c31 ul,
+.c31 ol {
   padding-left: 1em;
 }
 
-.c30 li {
+.c31 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1271,7 +1305,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c30 h1 {
+.c31 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1284,7 +1318,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c30 h1:before {
+.c31 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1295,7 +1329,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c30 h2 {
+.c31 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1304,11 +1338,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c30 h2 a {
+.c31 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c30 h3 {
+.c31 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1318,7 +1352,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c30 h3 strong {
+.c31 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1326,11 +1360,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c30 h3 a {
+.c31 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c30 blockquote {
+.c31 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1343,7 +1377,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c30 .content-end {
+.c31 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1353,14 +1387,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: 12px;
 }
 
-.c30 .artist-follow {
+.c31 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c30 .artist-follow:before {
+.c31 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1368,7 +1402,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c30 .artist-follow:after {
+.c31 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1380,17 +1414,13 @@ exports[`renders a sponsored series properly 1`] = `
 .c25 {
   color: white;
   max-width: 1200px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c26 .c5 {
+.c27 .c5 {
   display: none;
 }
 
-.c26:first-of-type {
+.c27:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1404,11 +1434,11 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c26:first-of-type .c5 {
+.c27:first-of-type .c5 {
   display: block;
 }
 
-.c28 {
+.c29 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1560,7 +1590,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c27 {
+  .c28 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1570,7 +1600,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c27 {
+  .c28 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-basis: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -1580,7 +1610,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c29 {
+  .c30 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1590,7 +1620,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c29 {
+  .c30 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1615,37 +1645,37 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c30 p,
-  .c30 ul,
-  .c30 ol {
+  .c31 p,
+  .c31 ul,
+  .c31 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c30 li {
+  .c31 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c30 h1 {
+  .c31 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c30 h2 {
+  .c31 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c30 h3 {
+  .c31 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1653,38 +1683,38 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c30 h3 strong {
+  .c31 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c30 blockquote {
+  .c31 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c30 .content-start {
+  .c31 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c26:first-of-type .c5 {
+  .c27:first-of-type .c5 {
     display: none;
   }
 
-  .c26 .c5 {
+  .c27 .c5 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c28 {
+  .c29 {
     margin-bottom: 20px;
   }
 }
@@ -1945,14 +1975,14 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </a>
     <div
-      className="c24 c25"
+      className="c24 c25 c26"
       color="white"
     >
       <div
-        className="c26 c27"
+        className="c27 c28"
       >
         <div
-          className="c28"
+          className="c29"
         >
           About the Series
         </div>
@@ -1976,10 +2006,10 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c26 c29"
+        className="c27 c30"
       >
         <div
-          className="article__text-section c30"
+          className="article__text-section c31"
         >
           <div
             dangerouslySetInnerHTML={

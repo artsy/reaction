@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
+import { Col, Row } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
@@ -63,14 +63,12 @@ interface ColProps {
   first?: boolean
 }
 
-const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled(Row)
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
   max-width: 1200px;
-  display: flex;
 `
 const StyledCol = styled(Col) `
-  flex: 1;
   ${PartnerBlockContainer} {
     display: none;
   }
