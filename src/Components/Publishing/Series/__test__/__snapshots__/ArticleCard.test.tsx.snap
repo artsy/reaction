@@ -515,7 +515,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           />
         </g>
       </svg>
-      16:40
+      02:28
     </div>
   </div>
 </a>
@@ -772,7 +772,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
           />
         </g>
       </svg>
-      16:40
+      02:28
     </div>
   </div>
 </a>

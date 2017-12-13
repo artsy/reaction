@@ -1730,7 +1730,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 <span
                   className="c48"
                 >
-                  16:40
+                  02:28
                 </span>
               </div>
               <div
@@ -2087,7 +2087,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 />
               </g>
             </svg>
-            16:40
+            02:28
           </div>
         </div>
       </a>

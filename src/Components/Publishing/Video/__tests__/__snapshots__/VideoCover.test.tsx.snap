@@ -81,7 +81,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c2 {
-  background: url(https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg) no-repeat center center;
+  background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
 }
@@ -225,7 +225,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 >
   <div
     className="c1 c2"
-    src="https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg"
+    src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
   />
   <div
     className="c3 c4"

@@ -103,14 +103,14 @@ export class VideoLayout extends Component<Props, State> {
             )
           })
         }
-        <MaxRow>
-          {seriesArticle &&
+        {seriesArticle &&
+          <MaxRow>
             <SeriesAbout
               article={seriesArticle}
               color="white"
             />
-          }
-        </MaxRow>
+          </MaxRow>
+        }
       </VideoLayoutContainer>
     )
   }

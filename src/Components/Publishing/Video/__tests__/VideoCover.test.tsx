@@ -25,7 +25,7 @@ describe("Video Cover", () => {
         description="Lorem Ipsum Description"
       />
     )
-    expect(component.find(VideoCoverAsset).props().src).toEqual("https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg")
+    expect(component.find(VideoCoverAsset).props().src).toEqual("https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg")
   })
 
   it("renders video info", () => {

@@ -49,7 +49,7 @@ describe("ArticleCard", () => {
     const component = mount(<ArticleCard article={videoArticle} series={SeriesArticle} />)
 
     expect(component.find(IconVideoPlay).length).toBe(1)
-    expect(component.text()).toMatch('16:40')
+    expect(component.text()).toMatch('02:28')
   })
 
   it("Renders coming soon and available date if article has media and is unpublished", () => {
