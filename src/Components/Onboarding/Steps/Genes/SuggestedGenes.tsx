@@ -27,11 +27,13 @@ class SuggestedGenesContent extends React.Component<RelayProps, null> {
 const SuggestedGenesContainer = createFragmentContainer(
   SuggestedGenesContent,
   graphql`
-    fragment SuggestedGenesContent_suggested_genes on SuggestedGene @relay(plural: true) {
+    fragment SuggestedGenesContent_suggested_genes on Gene @relay(plural: true) {
       id
       name
       _id
-      image_url
+      image {
+        url
+      }
     }
   `
 )

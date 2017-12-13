@@ -1,11 +1,9 @@
 import * as React from "react"
-import { ConnectionData } from "react-relay"
-import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
+import { createFragmentContainer, graphql, RelayPaginationProp } from "react-relay"
 import styled from "styled-components"
 
 import { ButtonState } from "../Buttons/Default"
 import Button from "../Buttons/Ghost"
-import Spinner from "../Spinner"
 
 import Dropdown from "../ArtworkFilter/Dropdown"
 import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
@@ -15,9 +13,7 @@ import TotalCount from "../ArtworkFilter/TotalCount"
 
 import BorderedPulldown from "../BorderedPulldown"
 
-import ArtworkGrid from "../ArtworkGrid"
-
-const PageSize = 10
+import ArtworksContent from "./ArtworksContent"
 
 interface Filters {
   for_sale?: boolean
@@ -55,12 +51,6 @@ const SubFilterBar = styled.div`
   align-items: center;
 `
 
-const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
-
 const ArtistFilterButtons = styled.div`
   margin-right: 10px;
   button {
@@ -78,6 +68,7 @@ export class Artworks extends React.Component<Props, State> {
   }
 
   renderDropdown() {
+    debugger
     return this.props.gene.filtered_artworks.aggregations.map(aggregation => {
       return (
         <Dropdown
@@ -89,8 +80,6 @@ export class Artworks extends React.Component<Props, State> {
       )
     })
   }
-
-  
 
   renderArtistsModeToggle() {
     return (
@@ -110,6 +99,8 @@ export class Artworks extends React.Component<Props, State> {
   renderForSaleToggle() {
     return <ForSaleCheckbox checked={this.props.for_sale} onChange={this.props.onForSaleToggleSelected} />
   }
+
+ 
 
   renderArtworks() {
     const pulldownOptions = [
@@ -134,13 +125,7 @@ export class Artworks extends React.Component<Props, State> {
           </div>
           <BorderedPulldown defaultValue="Recently Updated" selectedName={selectedSort && selectedSort.name} options={pulldownOptions} onChange={this.props.onSortSelected} />
         </SubFilterBar>
-        <ArtworkGrid
-          artworks={this.props.gene.filtered_artworks.artworks as any}
-          columnCount={4}
-          itemMargin={40}
-          onLoadMore={() => null}
-        />
-        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
+        <ArtworksContent filtered_artworks={this.props.gene.filtered_artworks as any} />
       </div>
     )
   }
@@ -159,15 +144,12 @@ export class Artworks extends React.Component<Props, State> {
   }
 }
 
-export default createPaginationContainer(
+export default createFragmentContainer(
   Artworks,
   {
     gene: graphql.experimental`
       fragment Artworks_gene on Gene
         @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String", defaultValue: "" }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
           for_sale: { type: "Boolean" }
           medium: { type: "String", defaultValue: "*" }
           aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
@@ -176,15 +158,14 @@ export default createPaginationContainer(
         ) {
         filtered_artworks(
           aggregations: $aggregations
-          size: $count
           for_sale: $for_sale
           medium: $medium
           price_range: $price_range
           dimension_range: $dimension_range
-          sort: $sort
+          size: 0
         ) {
           ...TotalCount_filter_artworks
-          
+          ...ArtworksContent_filtered_artworks
           aggregations {
             slice
             counts {
@@ -193,18 +174,7 @@ export default createPaginationContainer(
             }
             ...Dropdown_aggregation
           }
-          artworks: artworks_connection(first: $count, after: $cursor) @connection(key: "Artworks_artworks") {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-            edges {
-              node {
-                __id
-              }
-            }
-            ...ArtworkGrid_artworks
-          }
+          
           facet {
             ...Headline_facet
           }
@@ -212,57 +182,6 @@ export default createPaginationContainer(
       }
     `,
   },
-  {
-    direction: "forward",
-    getConnectionFromProps(props) {
-      return props.gene.filtered_artworks.artworks as ConnectionData
-    },
-    getFragmentVariables(prevVars, totalCount) {
-      return {
-        ...prevVars,
-        count: totalCount,
-      }
-    },
-    getVariables(props, { count, cursor }, fragmentVariables) {
-      return {
-        // in most cases, for variables other than connection filters like
-        // `first`, `after`, etc. you may want to use the previous values.
-        ...fragmentVariables,
-        count,
-        cursor,
-        geneNodeID: props.gene.__id,
-      }
-    },
-    query: graphql.experimental`
-      query ArtworksQuery(
-        $geneNodeID: ID!
-        $count: Int!
-        $cursor: String
-        $showArtists: Boolean
-        $sort: String
-        $for_sale: Boolean
-        $medium: String
-        $aggregations: [ArtworkAggregation]
-        $price_range: String
-        $dimension_range: String
-      ) {
-        node(__id: $geneNodeID) {
-          ...Artworks_gene
-            @arguments(
-              count: $count
-              cursor: $cursor
-              showArtists: $showArtists
-              sort: $sort
-              for_sale: $for_sale
-              medium: $medium
-              aggregations: $aggregations
-              price_range: $price_range
-              dimension_range: $dimension_range
-            )
-        }
-      }
-    `,
-  }
 )
 
 interface RelayProps {
@@ -276,9 +195,6 @@ interface RelayProps {
           id: string | null
         }
       }>
-      artworks: {
-        edges: Array<{}>
-      }
       facet: any
     }
   }

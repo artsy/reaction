@@ -2247,10 +2247,13 @@ type FeaturedLinkItem {
   title: String
 }
 
-type FilterArtworks {
+type FilterArtworks implements Node {
+  # The ID of the object.
+  __id: ID!
+
   # Returns aggregation counts for the given filter query.
   aggregations: [ArtworksAggregationResults]
-  artworks_connection(after: String, first: Int, before: String, last: Int): ArtworkConnection @deprecated(reason: "Favour artwork connections that take filter arguments.")
+  artworks_connection(sort: String, after: String, first: Int, before: String, last: Int): ArtworkConnection @deprecated(reason: "Favour artwork connections that take filter arguments.")
   counts: FilterArtworksCounts
   followed_artists_total: Int @deprecated(reason: "Favor `favor counts.followed_artists`")
 
@@ -2526,6 +2529,16 @@ type Gene implements Node {
   is_published: Boolean
   mode: String
   name: String
+
+  # A list of genes similar to the specified gene
+  similar(
+    # Array of gene ids (not slugs) to exclude, may result in all genes being excluded.
+    exclude_gene_ids: [String]
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): GeneConnection
   trending_artists(sample: Int): [Artist]
 }
 
@@ -2546,6 +2559,24 @@ type GeneArtworksConnection {
 type GeneArtworksEdge {
   # The item at the end of the edge
   node: Artwork
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A connection to a list of items.
+type GeneConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [GeneEdge]
+}
+
+# An edge in a connection.
+type GeneEdge {
+  # The item at the end of the edge
+  node: Gene
 
   # A cursor for use in pagination
   cursor: String!
@@ -2660,6 +2691,16 @@ type GeneItem implements Node {
   is_published: Boolean
   mode: String
   name: String
+
+  # A list of genes similar to the specified gene
+  similar(
+    # Array of gene ids (not slugs) to exclude, may result in all genes being excluded.
+    exclude_gene_ids: [String]
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): GeneConnection
   trending_artists(sample: Int): [Artist]
 }
 
@@ -3107,6 +3148,16 @@ type HomePageModuleContextGene implements Node {
   is_published: Boolean
   mode: String
   name: String
+
+  # A list of genes similar to the specified gene
+  similar(
+    # Array of gene ids (not slugs) to exclude, may result in all genes being excluded.
+    exclude_gene_ids: [String]
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): GeneConnection
   trending_artists(sample: Int): [Artist]
 }
 
@@ -4302,7 +4353,7 @@ type Query {
   ): Gene
 
   # List of curated genes with custom images
-  suggested_genes: [SuggestedGene]
+  suggested_genes: [Gene]
 
   # A list of Gene Families
   gene_families(after: String, first: Int, before: String, last: Int): GeneFamilyConnection
@@ -5192,13 +5243,6 @@ enum SubmissionStateAggregation {
   REJECTED
 }
 
-type SuggestedGene {
-  id: String
-  image_url: String
-  _id: String
-  name: String
-}
-
 type Tag {
   # A globally unique ID.
   __id: ID!
@@ -5548,7 +5592,7 @@ type Viewer {
   ): Gene
 
   # List of curated genes with custom images
-  suggested_genes: [SuggestedGene]
+  suggested_genes: [Gene]
 
   # A list of Gene Families
   gene_families(after: String, first: Int, before: String, last: Int): GeneFamilyConnection

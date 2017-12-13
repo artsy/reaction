@@ -115,7 +115,6 @@ class GeneNewContents extends React.Component<Props, State> {
                   medium: $medium
                   price_range: $price_range
                   dimension_range: $dimension_range
-                  sort: $sort
                 )
             }
           }

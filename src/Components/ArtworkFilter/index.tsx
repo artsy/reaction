@@ -186,12 +186,12 @@ export default createPaginationContainer(
           ...TotalCount_filter_artworks
           artworks: artworks_connection(first: $count, after: $cursor)
             @connection(key: "ArtworkFilter_filter_artworks") {
-            ...ArtworkGrid_artworks
             pageInfo {
               hasNextPage
               endCursor
             }
             edges {
+            ...ArtworkGrid_artworks
               node {
                 __id
               }

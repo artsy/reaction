@@ -22,7 +22,7 @@
     "test:watch": "jest --watch --runInBand",
     "storybook": "node verify-node-version.js && concurrently --kill-others 'yarn relay --watch' 'env GRAPHQL_NO_NAME_WARNING=true start-storybook -p 9001'",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
-    "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
+    "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/pagination_fuckery && yarn install && npm run dump-schema -- ../../data",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "type-check": "tsc --noEmit --pretty",

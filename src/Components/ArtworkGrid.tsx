@@ -51,7 +51,7 @@ export class ArtworkGrid extends React.Component<Props, State> {
   sectionedArtworks() {
     const sectionedArtworks: ArtworkRelayProps[][] = []
     const sectionRatioSums = []
-    const artworks = this.props.artworks ? this.props.artworks.edges : []
+    const artworks = this.props.artworks ? this.props.artworks : []
 
     for (let i = 0; i < this.props.columnCount; i++) {
       sectionedArtworks.push([])
@@ -144,16 +144,16 @@ const StyledGrid = styled(ArtworkGrid) `
 export default createFragmentContainer(
   StyledGrid,
   graphql`
-    fragment ArtworkGrid_artworks on ArtworkConnection {
-      edges {
-        node {
-          __id
-          image {
-            aspect_ratio
-          }
-          ...GridItem_artwork
+    fragment ArtworkGrid_artworks on ArtworkEdge @relay(plural: true) {
+     
+      node {
+        __id
+        image {
+          aspect_ratio
         }
+        ...GridItem_artwork
       }
+     
     }
   `
 )

@@ -338,11 +338,12 @@ export default createPaginationContainer(
               endCursor
             }
             edges {
+              ...ArtworkGrid_artworks
               node {
                 __id
               }
             }
-            ...ArtworkGrid_artworks
+            
           }
         }
       }
