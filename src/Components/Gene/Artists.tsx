@@ -7,10 +7,16 @@ import * as fonts from "../../Assets/Fonts"
 import Spinner from "../Spinner"
 import ArtistRow from "./ArtistRow"
 
+import Dropdown from "../ArtworkFilter/Dropdown"
+
+import { ButtonState } from "../Buttons/Default"
+import Button from "../Buttons/Ghost"
+
 const PageSize = 10
 
 interface Props extends RelayProps {
   relay?: RelayPaginationProp
+  onDropdownSelected: (slice: string, value: string) => void
 }
 
 interface State {
@@ -44,6 +50,23 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
+const ArtistFilterButtons = styled.div`
+  margin-right: 10px;
+  button {
+    height: 52px;
+    padding: 16px;
+  }
+`
+
+const FilterBar = styled.div`
+  vertical-align: middle;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+  }
+`
+
 export class Artists extends React.Component<Props, State> {
   state = {
     loading: false,
@@ -60,6 +83,36 @@ export class Artists extends React.Component<Props, State> {
     }
   }
 
+  renderArtistFilter() {
+    return (
+      <ArtistFilterButtons>
+        <span>By Artists:</span>
+        <Button
+          onClick={() => {
+            return null
+          }}
+          state={ButtonState.Success}
+        >
+          All Artists
+        </Button>
+        <span>By Work:</span>
+      </ArtistFilterButtons>
+    )
+  }
+
+  renderArtistDropdown() {
+    return this.props.gene.filter_aggregations.aggregations.map(aggregation => {
+      return (
+        <Dropdown
+          aggregation={aggregation}
+          key={aggregation.slice}
+          selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
+          onSelected={this.props.onDropdownSelected}
+        />
+      )
+    })
+  }
+
   render() {
     const artists = this.props.gene.artists
 
@@ -74,11 +127,17 @@ export class Artists extends React.Component<Props, State> {
     )
 
     return (
-      <ArtistRowsContainer>
-        {artistRows}
-        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
-        {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
-      </ArtistRowsContainer>
+      <div>
+        <FilterBar>
+          {this.renderArtistFilter()}
+          {this.renderArtistDropdown()}
+        </FilterBar>
+        <ArtistRowsContainer>
+          {artistRows}
+          <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
+          {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
+        </ArtistRowsContainer>
+      </div>
     )
   }
 }
@@ -88,7 +147,11 @@ export default createPaginationContainer(
   {
     gene: graphql.experimental`
       fragment Artists_gene on Gene
-        @argumentDefinitions(count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
+        @argumentDefinitions(
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+        ) {
         __id
         artists: artists_connection(first: $count, after: $cursor) @connection(key: "Artists_artists") {
           pageInfo {
@@ -99,6 +162,13 @@ export default createPaginationContainer(
               __id
               ...ArtistRow_artist
             }
+          }
+        }
+        filter_aggregations: filtered_artworks(aggregations: $aggregations, size: 0) {
+          ...TotalCount_filter_artworks
+          aggregations {
+            slice
+            ...Dropdown_aggregation
           }
         }
       }
@@ -122,12 +192,13 @@ export default createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
+        geneNodeID: props.gene.__id,
       }
     },
     query: graphql.experimental`
-      query ArtistsQuery($geneNodeID: ID!, $count: Int!, $cursor: String) {
+      query ArtistsQuery($geneNodeID: ID!, $count: Int!, $cursor: String, $aggregations: [ArtworkAggregation]) {
         node(__id: $geneNodeID) {
-          ...Artists_gene @arguments(count: $count, cursor: $cursor)
+          ...Artists_gene @arguments(count: $count, cursor: $cursor, aggregations: $aggregations)
         }
       }
     `,
@@ -145,6 +216,11 @@ interface RelayProps {
         node: {
           __id: string
         }
+      }>
+    }
+    filter_aggregations: {
+      aggregations: Array<{
+        slice: string
       }>
     }
   }

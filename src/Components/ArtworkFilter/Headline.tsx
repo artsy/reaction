@@ -33,7 +33,6 @@ export class Headline extends React.Component<Props, null> {
 
   medium() {
     const { medium, facet } = this.props
-
     if (medium && medium !== "*") {
       return this.getCountName("medium", medium)
     }
@@ -85,6 +84,9 @@ export default createFragmentContainer(
   graphql`
     fragment Headline_facet on ArtworkFilterFacet {
       ... on ArtworkFilterTag {
+        name
+      }
+      ... on ArtworkFilterGene {
         name
       }
     }

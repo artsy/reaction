@@ -14,9 +14,11 @@ Events.onEvent(data => {
   console.log("Tracked event", data)
 })
 
-setOptions({
-  name: "Reaction",
-  url: "http://artsy.github.io/reaction",
-  showDownPanel: false,
-  sortStoriesByKind: true,
-})
+
+// TODO: Fix the below
+// setOptions({
+//   name: "Reaction",
+//   url: "http://artsy.github.io/reaction",
+//   showDownPanel: false,
+//   sortStoriesByKind: true,
+// })
