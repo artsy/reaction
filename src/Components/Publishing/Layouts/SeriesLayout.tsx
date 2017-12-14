@@ -9,15 +9,15 @@ import { ArticleData } from "../Typings"
 interface Props {
   article?: ArticleData
   color?: string
+  relatedArticles?: any
 }
 
 export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
-    const { color, article } = this.props
-    const { related_articles, sponsor } = article
-    const articles = related_articles || []
+    const { article, color, relatedArticles } = this.props
+    const { sponsor } = article
 
     return (
       <SeriesContainer
@@ -31,14 +31,16 @@ export class SeriesLayout extends Component<Props, null> {
             color={color}
           />
 
-          {articles.map((relatedArticle, i) =>
-            <ArticleCard
-              key={i}
-              article={relatedArticle}
-              series={article}
-              color={color}
-            />
-          )}
+          {relatedArticles &&
+            relatedArticles.map((relatedArticle, i) =>
+              <ArticleCard
+                key={i}
+                article={relatedArticle}
+                series={article}
+                color={color}
+              />
+            )
+          }
 
           <SeriesAbout
             article={article}
