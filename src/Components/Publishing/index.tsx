@@ -39,7 +39,7 @@ export { IconLayoutText } from "./Icon/IconLayoutText"
 export { IconLayoutBasic } from "./Icon/IconLayoutBasic"
 export { IconLink } from "./Icon/IconLink"
 export { IconOrderedList } from "./Icon/IconOrderedList"
-export { IconPlayCaret } from "./Icon/IconPlayCaret"
+export { IconVideoPlay } from "./Icon/IconVideoPlay"
 export { IconRemove } from "./Icon/IconRemove"
 export { IconUnorderedList } from "./Icon/IconUnorderedList"
 

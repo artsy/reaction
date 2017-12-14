@@ -1,10 +1,74 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
-class SuggestedGenesContent extends React.Component<RelayProps, null> {
+export interface RelayProps {
+  suggested_genes: [
+    {
+      id: string | null
+      _id: string | null
+      name: string | null
+      image: {
+        cropped: {
+          url: string | null
+        }
+      } | null
+    }
+  ]
+}
+
+interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
+  relay?: RelayProp
+}
+
+class SuggestedGenesContent extends React.Component<Props, null> {
+  followedGene(geneId: string) {
+    const onGeneFollowed = (store: RecordSourceSelectorProxy, data: SelectorData): void => {
+      const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+
+      const suggestedGenesRootField = store.get("client:root")
+      const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
+      const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
+
+      suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
+    }
+
+    commitMutation(this.props.relay.environment, {
+      mutation: graphql`
+        mutation SuggestedGenesFollowGeneMutation($input: FollowGeneInput!) {
+          followGene(input: $input) {
+            gene {
+              similar(first: 1) {
+                edges {
+                  node {
+                    id
+                    _id
+                    __id
+                    name
+                    image {
+                      cropped(width: 100, height: 100) {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          gene_id: geneId
+        },
+      },
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => onGeneFollowed(store, data)
+    })
+  }
+
   render() {
     const items = this.props.suggested_genes.map((item, index) => {
       return (
@@ -15,7 +79,8 @@ class SuggestedGenesContent extends React.Component<RelayProps, null> {
           id={item.id}
           _id={item._id}
           name={item.name}
-          image_url={item.image_url}
+          image_url={item.image.cropped.url}
+          onClick={() => this.followedGene(item.id)}
         />
       )
     })
@@ -29,10 +94,12 @@ const SuggestedGenesContainer = createFragmentContainer(
   graphql`
     fragment SuggestedGenesContent_suggested_genes on Gene @relay(plural: true) {
       id
-      name
       _id
+      name
       image {
-        url
+        cropped(width: 100, height: 100) {
+          url
+        }
       }
     }
   `
@@ -59,17 +126,6 @@ const SuggestedGenesComponent: React.SFC<ContextProps> = ({ relayEnvironment }) 
       }}
     />
   )
-}
-
-export interface RelayProps {
-  suggested_genes: [
-    {
-      id: string | null
-      name: string | null
-      _id: string | null
-      image_url: string | null
-    }
-  ]
 }
 
 export const SuggestedGenes = ContextConsumer(SuggestedGenesComponent)

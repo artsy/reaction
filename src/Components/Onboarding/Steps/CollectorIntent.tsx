@@ -3,6 +3,7 @@ import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { ContextConsumer, ContextProps } from "../../Artsy"
+import { media } from "../../Helpers"
 import SelectableLink from "../SelectableLink"
 import { StepProps } from "../Types"
 import { Layout } from "./Layout"
@@ -13,6 +14,10 @@ const OptionsContainer = styled.div`
   &:last-child {
     border-bottom: 1px solid #e5e5e5;
   }
+  ${media.sm`
+    width: 100%;
+    margin-bottom: 20px;
+  `};
 `
 
 type Props = StepProps & ContextProps

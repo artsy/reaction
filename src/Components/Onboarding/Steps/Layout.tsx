@@ -2,7 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 import Button from "../../Buttons/Ghost"
-import Title from "../../Title"
+import { media } from "../../Helpers"
+import StyledTitle from "../../Title"
 
 interface Props {
   title: string
@@ -14,21 +15,35 @@ const Container = styled.div`
   max-width: 930px;
   margin-left: auto;
   margin-right: auto;
+  ${media.sm`
+    margin: 20px;
+  `};
 `
 
-const MainTitle = styled(Title)`
+const MainTitle = styled(StyledTitle)`
   text-align: center;
+  ${media.sm`
+    text-align: left;
+  `};
 `
-const Subtitle = styled(Title)`
+const Subtitle = styled(StyledTitle)`
   color: #999;
   margin-bottom: 100px;
   text-align: center;
+  ${media.sm`
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 20px
+  `};
 `
 
 const ButtonContainer = styled(Button)`
   margin: 0 auto 50px;
   display: block;
   width: 250px;
+  ${media.sm`
+    width: 100%;
+  `};
 `
 
 export class Layout extends React.Component<Props, null> {

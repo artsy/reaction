@@ -686,7 +686,7 @@ export const VideoArticle = {
   description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
   media: {
     url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
-    duration: "03:12",
+    duration: 1000,
     release_date: "2017-08-28T20:38:05.709Z",
     published: true
   }
@@ -695,7 +695,7 @@ export const VideoArticle = {
 export const VideoArticleUnpublished = extend({}, VideoArticle, {
   media: {
     url: "",
-    duration: "03:12",
+    duration: 4000,
     release_date: "2018-08-28T20:38:05.709Z",
     published: false
   }

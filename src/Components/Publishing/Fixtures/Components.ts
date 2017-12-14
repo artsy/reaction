@@ -351,6 +351,16 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
+export const Media = [
+  {
+    title: "Trevor Paglan",
+    url: "http://files.artsy.net/videos/scenic_mono_3.mp4",
+    duration: 560948,
+    release_date: "2017-08-28T20:38:05.709Z",
+    published: true
+  }
+]
+
 export const RelatedPanel = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
