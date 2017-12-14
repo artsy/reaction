@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { media } from "../../Helpers"
-import { getDate, getFullEditorialHref } from "../Constants"
+import { getFullEditorialHref } from "../Constants"
 import { Date } from "./AuthorDate"
 import { Share, ShareContainer } from "./Share"
 
@@ -16,7 +16,7 @@ const ShareDateComponent: React.SFC<ShareDateProps> = props => {
   return (
     <div className={props.className}>
       <Date
-        date={getDate(article.published_at)}
+        date={article.published_at}
       />
       <Share
         url={getFullEditorialHref(article.layout, article.slug)}
