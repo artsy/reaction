@@ -11,14 +11,22 @@ interface Filters {
   medium: string
 }
 
+type Sort = "year" | "-year" | "-partner_updated_at"
+
+interface StateChangePayload {
+  filters: Filters
+  sort: Sort
+}
+
 interface Props extends ContextProps {
   filters?: Filters
   tagID: string
-  sort?: string
+  sort?: Sort
+  onStateChange: (payload: StateChangePayload) => void
 }
 
 interface State extends Filters {
-  sort?: string
+  sort?: Sort
 }
 
 class TagContents extends React.Component<Props, State> {
@@ -33,28 +41,34 @@ class TagContents extends React.Component<Props, State> {
     }
   }
 
+  handleStateChange = () => {
+    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    const filters = {
+      for_sale,
+      medium,
+      price_range,
+      dimension_range,
+    }
+    this.props.onStateChange({ filters, sort })
+  }
+
   onDropdownSelect(slice: string, value: string) {
     this.setState({
       [slice.toLowerCase() as any]: value,
-    })
+    }, this.handleStateChange)
   }
 
   onForSaleToggleSelect() {
-    if (this.state.for_sale) {
-      this.setState({
-        for_sale: null,
-      })
-    } else {
-      this.setState({
-        for_sale: true,
-      })
-    }
+    const forSale = this.state.for_sale ? null : true
+    this.setState({
+      for_sale: forSale,
+    }, this.handleStateChange)
   }
 
   onSortSelect(sortEl) {
     this.setState({
       sort: sortEl.val,
-    })
+    }, this.handleStateChange)
   }
 
   render() {
