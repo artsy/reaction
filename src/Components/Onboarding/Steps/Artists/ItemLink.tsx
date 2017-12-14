@@ -37,28 +37,18 @@ const Col = styled.div`
 
 interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
   relay?: RelayProp
+  // TODO: Promote this interface to e.g. onItemFollowed() when adding support for following Artist/Gene.
+  onArtistFollowed(artist: string, store: RecordSourceSelectorProxy, data: SelectorData): void
 }
 
-interface ArtistFollowProps {
+// TODO: Promote this interface to e.g. Item as a more generalized interface for ItemLink.
+interface Artist {
   id: string | null
   __id: string
 }
 
 class ItemLink extends React.Component<Props, null> {
-  followArtist(artist: ArtistFollowProps) {
-    const storeUpdater = (store: RecordSourceSelectorProxy, data: SelectorData) => {
-      // Search the store for a record for the newly suggested artist, based on its ID we get from the response `data`.
-      const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
-
-      // Replace `artist` with the `suggestedArtist` in the list of `artists` on the `popular_artists` root field.
-      const popularArtistsRootField = store.get("client:root:popular_artists")
-      const popularArtists = popularArtistsRootField.getLinkedRecords("artists")
-      const updatedPopularArtists = popularArtists.map(popularArtist =>
-        popularArtist.getDataID() === artist.__id ? suggestedArtist : popularArtist)
-
-      popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
-    }
-
+  followArtist(artist: Artist) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
         mutation ItemLinkFollowArtistMutation($input: FollowArtistInput!) {
@@ -84,8 +74,8 @@ class ItemLink extends React.Component<Props, null> {
           unfollow: false,
         },
       },
-      updater: storeUpdater,
-      // optimisticUpdater: storeUpdater,
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
+        this.props.onArtistFollowed(artist.__id, store, data),
     })
   }
 
