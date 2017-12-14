@@ -25,6 +25,13 @@ const NoResultsContainer = styled.div`
 `
 
 class GeneSearchResultsContent extends React.Component<RelayProps, null> {
+  private excludedGeneIds: Set<string>
+
+  constructor(props: RelayProps, context: any) {
+    super(props, context)
+    this.excludedGeneIds = new Set(this.props.viewer.match_gene.map(item => item._id))
+  }
+
   onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
     const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
 
@@ -35,16 +42,19 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
     suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
   }
 
-  followedGene(geneId: string) {
+  followedGene(gene: any) {
+    this.excludedGeneIds.add(gene._id)
+
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation GeneSearchResultsFollowGeneMutation($input: FollowGeneInput!) {
+        mutation GeneSearchResultsFollowGeneMutation($input: FollowGeneInput!, $excludedGeneIds: [String]!) {
           followGene(input: $input) {
             gene {
-              similar(first: 1) {
+              similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
                 edges {
                   node {
                     id
+                    _id
                     __id
                     name
                     image {
@@ -61,10 +71,11 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
       `,
       variables: {
         input: {
-          gene_id: geneId
+          gene_id: gene.id,
         },
+        excludedGeneIds: Array.from(this.excludedGeneIds),
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(geneId, store, data)
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data)
     })
   }
 
@@ -78,7 +89,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
           id={item.id}
           name={item.name}
           image_url={item.image.cropped.url}
-          onClick={() => this.followedGene(item.id)}
+          onClick={() => this.followedGene(item)}
         />
       )
     })
