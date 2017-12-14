@@ -1,7 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { ArticleCard } from '../Series/ArticleCard'
-import { Series } from '../Series/Series'
 import { SeriesAbout } from '../Series/SeriesAbout'
 import { SeriesTitle } from '../Series/SeriesTitle'
 
@@ -14,19 +13,7 @@ import {
 } from "../Fixtures/Articles"
 import { EditableChild } from '../Fixtures/Helpers'
 
-storiesOf("Publishing/Series", module).add("Series", () => {
-  return (
-    <div>
-      <Series article={SeriesArticle} />
-    </div>
-  )
-}).add("Series: Sponsored", () => {
-  return (
-    <div>
-      <Series article={SeriesArticleSponsored} />
-    </div>
-  )
-}).add("Article Card", () => {
+storiesOf("Publishing/Series", module).add("Article Card", () => {
   return (
     <div>
       <ArticleCard
