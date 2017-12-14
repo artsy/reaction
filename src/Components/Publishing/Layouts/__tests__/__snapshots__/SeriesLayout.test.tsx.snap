@@ -1495,15 +1495,15 @@ exports[`renders a sponsored series properly 1`] = `
   padding: 150px 20px;
 }
 
-.byIHxY .c2 {
+.dxagPH .c2 {
   margin-bottom: 90px;
 }
 
-.byIHxY .c8 {
+.dxagPH .c8 {
   margin-bottom: 60px;
 }
 
-.byIHxY .c25 {
+.dxagPH .c25 {
   padding-top: 60px;
 }
 
@@ -1774,11 +1774,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .byIHxY .c8 {
+  .dxagPH .c8 {
     margin-bottom: 40px;
   }
 
-  .byIHxY .c25 {
+  .dxagPH .c25 {
     padding-top: 60px;
   }
 }
