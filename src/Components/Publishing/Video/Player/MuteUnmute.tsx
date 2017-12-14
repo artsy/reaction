@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { IconVideoMute } from "../Icon/IconVideoMute"
-import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
+import { IconVideoMute } from "../../Icon/IconVideoMute"
+import { IconVideoUnmute } from "../../Icon/IconVideoUnmute"
 
 interface Props extends React.HTMLProps<HTMLSpanElement> {
   isMuted: boolean

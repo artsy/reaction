@@ -243,7 +243,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   white-space: nowrap;
 }
 
-.c80 {
+.c81 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -251,11 +251,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c80.date {
+.c81.date {
   white-space: nowrap;
 }
 
-.c80:before {
+.c81:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -265,7 +265,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-color: white;
 }
 
-.c80:before {
+.c81:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
@@ -306,7 +306,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 10px 10px 0px;
 }
 
-.c79 {
+.c80 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -325,9 +325,19 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
+.c78 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+
 .c70 {
   display: block;
   border: 1px solid;
+  border-radius: 2px;
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -336,6 +346,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c70 .c77 {
+  opacity: 1;
+}
+
+.c70:hover .c77 {
+  opacity: .7;
 }
 
 .c71 {
@@ -392,14 +410,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: 30px;
 }
 
-.c77 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.c78 {
+.c79 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -422,7 +433,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.1em;
 }
 
-.c78 svg {
+.c79 svg {
   width: 40px;
 }
 
@@ -659,16 +670,16 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c82 {
+.c83 {
   color: white;
   max-width: 1200px;
 }
 
-.c83 .file__PartnerBlockContainer-s8dqalt-0 {
+.c84 .file__PartnerBlockContainer-m6gc27-0 {
   display: none;
 }
 
-.c83:first-of-type {
+.c84:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -682,12 +693,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c83:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
+.c84:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
   display: block;
 }
 
-.c84 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+.c85 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -1031,7 +1042,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 40px;
 }
 
-.c0 .c81,
+.c0 .c82,
 .c0 .c52 {
   margin: 60px 0 100px 0;
 }
@@ -1119,7 +1130,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c80 {
+  .c81 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1133,7 +1144,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c80:before {
+  .c81:before {
     min-width: 8px;
     min-height: 8px;
   }
@@ -1189,7 +1200,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c78 svg {
+  .c79 svg {
     width: 30px;
   }
 }
@@ -1343,18 +1354,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c83:first-of-type .file__PartnerBlockContainer-s8dqalt-0 {
+  .c84:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
     display: none;
   }
 
-  .c83 .file__PartnerBlockContainer-s8dqalt-0 {
+  .c84 .file__PartnerBlockContainer-m6gc27-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c84 {
+  .c85 {
     margin-bottom: 20px;
   }
 }
@@ -1426,7 +1437,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0 .c81,
+  .c0 .c82,
   .c0 .c52 {
     margin: 40px 0 100px 0;
   }
@@ -2056,16 +2067,11 @@ exports[`Video Layout matches the snapshot 1`] = `
           className="c76"
         >
           <img
-            className="c77"
+            className="c77 c78"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
           />
           <div
-            className="c78"
+            className="c79"
           >
             <svg
               className="c26 c27"
@@ -2128,11 +2134,11 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="Byline c79"
+            className="Byline c80"
             color="white"
           >
             <div
-              className="author c80"
+              className="author c81"
               color="white"
             >
               By 
@@ -2149,13 +2155,8 @@ exports[`Video Layout matches the snapshot 1`] = `
           className="c76"
         >
           <img
-            className="c77"
+            className="c77 c78"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
           />
         </div>
       </a>
@@ -2165,20 +2166,20 @@ exports[`Video Layout matches the snapshot 1`] = `
     className="c42 c43"
   >
     <div
-      className="c81 c82 c43"
+      className="c82 c83 c43"
       color="white"
     >
       <div
-        className="c83 c44 c54"
+        className="c84 c44 c54"
       >
         <div
-          className="c84"
+          className="c85"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c83 c44 c50"
+        className="c84 c44 c50"
       >
         <div
           className="article__text-section c56"

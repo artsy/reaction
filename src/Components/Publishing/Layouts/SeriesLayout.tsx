@@ -1,26 +1,29 @@
 import React, { Component  } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { ArticleCard, ArticleCardContainer } from './ArticleCard'
-import { SeriesAbout, SeriesAboutContainer } from './SeriesAbout'
-import { SeriesTitle, SeriesTitleContainer } from './SeriesTitle'
+import { ArticleCard, ArticleCardContainer } from '../Series/ArticleCard'
+import { SeriesAbout, SeriesAboutContainer } from '../Series/SeriesAbout'
+import { SeriesTitle, SeriesTitleContainer } from '../Series/SeriesTitle'
+import { ArticleData } from "../Typings"
 
 interface Props {
-  color?: string,
-  article?: any
+  article?: ArticleData
+  color?: string
 }
 
-export class Series extends Component<Props, null> {
+export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render () {
     const { color, article } = this.props
     const { related_articles, sponsor } = article
-
     const articles = related_articles || []
 
     return (
-      <SeriesContainer className='Series' color={color}>
+      <SeriesContainer
+        className='Series'
+        color={color}
+      >
         <SeriesContent sponsor={sponsor}>
 
           <SeriesTitle
@@ -48,7 +51,7 @@ export class Series extends Component<Props, null> {
   }
 }
 
-Series.defaultProps = {
+SeriesLayout.defaultProps = {
   color: 'white'
 }
 
@@ -58,7 +61,7 @@ interface ContainerProps {
 
 const Div: StyledFunction<Props & ContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
-const SeriesContainer = Div`
+export const SeriesContainer = Div`
   color: ${props => props.color};
   background-color: black;
   padding: 150px 20px;

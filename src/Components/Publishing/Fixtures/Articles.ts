@@ -676,7 +676,7 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
 
-export const VideoArticle = {
+export const VideoArticle: ArticleData = {
   layout: "video",
   id: "597b9f652d35b80017a2a6a7",
   title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
@@ -707,7 +707,7 @@ export const VideoArticleSponsored = extend({}, VideoArticle, {
   }
 })
 
-export const SeriesArticle = {
+export const SeriesArticle: ArticleData = {
   layout: "series",
   title: "The Future of Art",
   series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { formatTime } from "../Constants"
-import { Fonts } from "../Fonts"
+import { formatTime } from "../../Constants"
+import { Fonts } from "../../Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   duration: number

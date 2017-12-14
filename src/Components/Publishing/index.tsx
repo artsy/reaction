@@ -12,9 +12,10 @@ export { ImageCollection } from "./Sections/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
 export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
 export { Nav } from "./Nav/Nav"
-export { Series } from "./Series/Series"
+export { SeriesLayout } from "./Layouts/SeriesLayout"
 export { Text } from "./Sections/Text"
 export { Video } from "./Sections/Video"
+export { VideoLayout } from "./Layouts/VideoLayout"
 export { PartnerInline } from "./Partner/PartnerInline"
 export { PartnerBlock } from "./Partner/PartnerBlock"
 export { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
@@ -50,8 +51,12 @@ import {
   ClassicArticle,
   FeatureArticle,
   ImageHeavyStandardArticle,
+  SeriesArticle,
+  SeriesArticleSponsored,
   ShortStandardArticle,
   StandardArticle,
+  VideoArticle,
+  VideoArticleSponsored
 } from "./Fixtures/Articles"
 
 // FIXME: Refactor out SizeMe; see https://github.com/ctrlplusb/react-sizeme#server-side-rendering
@@ -62,8 +67,12 @@ export const Fixtures = {
   ClassicArticle,
   FeatureArticle,
   ImageHeavyStandardArticle,
+  SeriesArticle,
+  SeriesArticleSponsored,
   ShortStandardArticle,
   StandardArticle,
+  VideoArticle,
+  VideoArticleSponsored
 }
 
 
