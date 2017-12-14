@@ -2,8 +2,7 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { ContextConsumer, ContextProps } from "../Artsy"
-import Artists from "./Artists"
-import GeneArtworks from "./GeneArtworks"
+import TagArtworks from "./TagArtworks"
 
 interface Filters {
   for_sale: boolean
@@ -13,18 +12,16 @@ interface Filters {
 }
 
 interface Props extends ContextProps {
-  mode: "artists" | "artworks"
   filters?: Filters
-  geneID: string
+  tagID: string
   sort?: string
 }
 
 interface State extends Filters {
-  mode: "artists" | "artworks"
   sort?: string
 }
 
-class GeneContents extends React.Component<Props, State> {
+class TagContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
@@ -32,7 +29,6 @@ class GeneContents extends React.Component<Props, State> {
       medium: "*",
       price_range: "*",
       dimension_range: "*",
-      mode: props.mode,
       sort: "-partner_updated_at",
     }
   }
@@ -40,7 +36,6 @@ class GeneContents extends React.Component<Props, State> {
   onDropdownSelect(slice: string, value: string) {
     this.setState({
       [slice.toLowerCase() as any]: value,
-      mode: "artworks",
     })
   }
 
@@ -59,57 +54,26 @@ class GeneContents extends React.Component<Props, State> {
   onSortSelect(sortEl) {
     this.setState({
       sort: sortEl.val,
-      mode: "artworks",
     })
   }
 
-  onArtistModeSelect() {
-    this.setState({
-      mode: "artists",
-    })
-  }
-
-  renderArtists() {
-    const { geneID, relayEnvironment } = this.props
-    return (
-      <QueryRenderer
-        environment={relayEnvironment}
-        query={graphql`
-          query GeneContentsArtistsQuery($geneID: String!) {
-            gene(id: $geneID) {
-              ...Artists_gene
-            }
-          }
-        `}
-        variables={{ geneID }}
-        render={({ props }) => {
-          if (props) {
-            return <Artists gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
-          } else {
-            return null
-          }
-        }}
-      />
-    )
-  }
-
-  renderArtworks() {
-    const { geneID, relayEnvironment } = this.props
+  render() {
+    const { tagID, relayEnvironment } = this.props
     const { for_sale, medium, price_range, dimension_range, sort } = this.state
     return (
       <QueryRenderer
         environment={relayEnvironment}
         query={graphql.experimental`
-          query GeneContentsArtworksQuery(
-            $geneID: String!
+          query TagContentsArtworksQuery(
+            $tagID: String!
             $medium: String
             $price_range: String
             $sort: String
             $for_sale: Boolean
             $dimension_range: String
           ) {
-            gene(id: $geneID) {
-              ...GeneArtworks_gene
+            tag(id: $tagID) {
+              ...TagArtworks_tag
                 @arguments(
                   for_sale: $for_sale
                   medium: $medium
@@ -119,12 +83,11 @@ class GeneContents extends React.Component<Props, State> {
             }
           }
         `}
-        variables={{ geneID, ...this.state }}
+        variables={{ tagID, ...this.state }}
         render={({ props }) => {
           if (props) {
             return (
-              <GeneArtworks
-                onArtistModeToggleSelected={this.onArtistModeSelect.bind(this)}
+              <TagArtworks
                 onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
                 onSortSelected={this.onSortSelect.bind(this)}
                 sort={sort}
@@ -132,7 +95,7 @@ class GeneContents extends React.Component<Props, State> {
                 medium={medium}
                 price_range={price_range}
                 dimension_range={dimension_range}
-                gene={props.gene}
+                tag={props.tag}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
               />
             )
@@ -143,15 +106,6 @@ class GeneContents extends React.Component<Props, State> {
       />
     )
   }
-
-  render() {
-    const { filters } = this.props
-    const { mode } = this.state
-    if (mode === "artists" && !filters) {
-      return this.renderArtists()
-    }
-    return this.renderArtworks()
-  }
 }
 
-export const Contents = ContextConsumer(GeneContents)
+export const Contents = ContextConsumer(TagContents)

@@ -16,7 +16,7 @@ const SpinnerContainer = styled.div`
 
 const PageSize = 10
 
-export class ArtworksContent extends React.Component<Props, null> {
+export class GeneArtworksContent extends React.Component<Props, null> {
   loadMoreArtworks() {
     const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
     if (hasMore && !this.props.relay.isLoading()) {
@@ -44,16 +44,16 @@ export class ArtworksContent extends React.Component<Props, null> {
 }
 
 export default createPaginationContainer(
-  ArtworksContent,
+  GeneArtworksContent,
   {
     filtered_artworks: graphql.experimental`
-      fragment ArtworksContent_filtered_artworks on FilterArtworks
+      fragment GeneArtworksContent_filtered_artworks on FilterArtworks
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
         __id
-        artworks: artworks_connection(first: $count, after: $cursor, sort: $sort) @connection(key: "ArtworksContent_filtered_artworks") {
+        artworks: artworks_connection(first: $count, after: $cursor, sort: $sort) @connection(key: "GeneArtworksContent_filtered_artworks") {
           pageInfo {
             hasNextPage
             endCursor
@@ -90,14 +90,14 @@ export default createPaginationContainer(
       }
     },
     query: graphql.experimental`
-      query ArtworksContentQuery(
+      query GeneArtworksContentQuery(
         $filteredArtworksNodeID: ID!
         $count: Int!
         $cursor: String
         $sort: String
       ) {
         node(__id: $filteredArtworksNodeID) {
-          ...ArtworksContent_filtered_artworks @arguments(
+          ...GeneArtworksContent_filtered_artworks @arguments(
             count: $count,
             cursor: $cursor,
           )

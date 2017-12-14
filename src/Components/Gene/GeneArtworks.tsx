@@ -13,7 +13,7 @@ import TotalCount from "../ArtworkFilter/TotalCount"
 
 import BorderedPulldown from "../BorderedPulldown"
 
-import ArtworksContent from "./ArtworksContent"
+import GeneArtworksContent from "./GeneArtworksContent"
 
 interface Filters {
   for_sale?: boolean
@@ -59,7 +59,7 @@ const ArtistFilterButtons = styled.div`
   }
 `
 
-export class Artworks extends React.Component<Props, State> {
+export class GeneArtworks extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
@@ -124,7 +124,7 @@ export class Artworks extends React.Component<Props, State> {
           </div>
           <BorderedPulldown defaultValue="Recently Updated" selectedName={selectedSort && selectedSort.name} options={pulldownOptions} onChange={this.props.onSortSelected} />
         </SubFilterBar>
-        <ArtworksContent filtered_artworks={this.props.gene.filtered_artworks as any} />
+        <GeneArtworksContent filtered_artworks={this.props.gene.filtered_artworks as any} />
       </div>
     )
   }
@@ -144,10 +144,10 @@ export class Artworks extends React.Component<Props, State> {
 }
 
 export default createFragmentContainer(
-  Artworks,
+  GeneArtworks,
   {
     gene: graphql.experimental`
-      fragment Artworks_gene on Gene
+      fragment GeneArtworks_gene on Gene
         @argumentDefinitions(
           for_sale: { type: "Boolean" }
           medium: { type: "String", defaultValue: "*" }
@@ -164,7 +164,7 @@ export default createFragmentContainer(
           size: 0
         ) {
           ...TotalCount_filter_artworks
-          ...ArtworksContent_filtered_artworks
+          ...GeneArtworksContent_filtered_artworks
           aggregations {
             slice
             counts {
