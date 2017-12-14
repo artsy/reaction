@@ -51,20 +51,20 @@ const SpinnerContainer = styled.div`
 `
 
 const ArtistFilterButtons = styled.div`
-margin-right: 10px;
-button {
-  height: 52px;
-  padding: 16px;
-}
+  margin-right: 10px;
+  button {
+    height: 52px;
+    padding: 16px;
+  }
 `
 
 const FilterBar = styled.div`
-vertical-align: middle;
-text-align: center;
+  vertical-align: middle;
+  text-align: center;
 
-> div {
-  display: inline-block;
-}
+  > div {
+    display: inline-block;
+  }
 `
 
 export class Artists extends React.Component<Props, State> {
@@ -113,7 +113,6 @@ export class Artists extends React.Component<Props, State> {
     })
   }
 
-
   render() {
     const artists = this.props.gene.artists
 
@@ -129,15 +128,16 @@ export class Artists extends React.Component<Props, State> {
 
     return (
       <div>
-      <FilterBar>
-      {this.renderArtistFilter()}
-      {this.renderArtistDropdown()}
-    </FilterBar>
-      <ArtistRowsContainer>
-        {artistRows}
-        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
-        {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
-      </ArtistRowsContainer></div>
+        <FilterBar>
+          {this.renderArtistFilter()}
+          {this.renderArtistDropdown()}
+        </FilterBar>
+        <ArtistRowsContainer>
+          {artistRows}
+          <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
+          {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
+        </ArtistRowsContainer>
+      </div>
     )
   }
 }
@@ -147,7 +147,11 @@ export default createPaginationContainer(
   {
     gene: graphql.experimental`
       fragment Artists_gene on Gene
-        @argumentDefinitions(aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }, count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
+        @argumentDefinitions(
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+        ) {
         __id
         artists: artists_connection(first: $count, after: $cursor) @connection(key: "Artists_artists") {
           pageInfo {

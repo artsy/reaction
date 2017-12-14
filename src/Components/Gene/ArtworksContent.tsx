@@ -20,8 +20,10 @@ export class ArtworksContent extends React.Component<Props, null> {
   loadMoreArtworks() {
     const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
     if (hasMore && !this.props.relay.isLoading()) {
-      this.props.relay.loadMore(PageSize, (e) => {
-        console.log(e)
+      this.props.relay.loadMore(PageSize, error => {
+        if (error) {
+          console.error(error)
+        }
       })
     }
   }
@@ -30,7 +32,7 @@ export class ArtworksContent extends React.Component<Props, null> {
     return (
       <div>
         <ArtworkGrid
-          artworks={this.props.filtered_artworks.artworks.edges as any}
+          artworks={this.props.filtered_artworks.artworks as any}
           columnCount={4}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
@@ -56,8 +58,8 @@ export default createPaginationContainer(
             hasNextPage
             endCursor
           }
+          ...ArtworkGrid_artworks
           edges {
-            ...ArtworkGrid_artworks
             node {
               __id
             }

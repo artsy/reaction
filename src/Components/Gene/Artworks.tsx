@@ -68,7 +68,6 @@ export class Artworks extends React.Component<Props, State> {
   }
 
   renderDropdown() {
-    debugger
     return this.props.gene.filtered_artworks.aggregations.map(aggregation => {
       return (
         <Dropdown

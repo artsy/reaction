@@ -90,7 +90,7 @@ class ArtworkFilter extends React.Component<Props, State> {
       <Dropdown
         aggregation={aggregation}
         key={aggregation.slice}
-        onSelect={(count, slice) => this.onSelect(count, slice)}
+        onSelected={(count, slice) => this.onSelect(count, slice)}
       />
     ))
     const pulldownOptions = [
@@ -191,11 +191,12 @@ export default createPaginationContainer(
               endCursor
             }
             edges {
-            ...ArtworkGrid_artworks
+            
               node {
                 __id
               }
             }
+            ...ArtworkGrid_artworks
           }
           facet {
             ...Headline_facet

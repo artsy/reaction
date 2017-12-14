@@ -13,9 +13,7 @@ function GridExample(props: { artistID: string; currentUser: User }) {
         query ArtworkGridQuery($artistID: String!) {
           artist(id: $artistID) {
             artworks: artworks_connection(first: 10) {
-              edges {
-                ...ArtworkGrid_artworks
-              }
+              ...ArtworkGrid_artworks
             }
           }
         }
