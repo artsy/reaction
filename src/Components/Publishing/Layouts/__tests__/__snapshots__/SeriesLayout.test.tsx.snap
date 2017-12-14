@@ -13,7 +13,7 @@ exports[`renders a series properly 1`] = `
   white-space: nowrap;
 }
 
-.c20 {
+.c21 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -21,11 +21,11 @@ exports[`renders a series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c20.date {
+.c21.date {
   white-space: nowrap;
 }
 
-.c20:before {
+.c21:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -35,13 +35,13 @@ exports[`renders a series properly 1`] = `
   background-color: white;
 }
 
-.c20:before {
+.c21:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,14 +60,24 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c15 {
+.c16 {
   width: 32px;
   height: 32px;
+}
+
+.c14 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
 }
 
 .c6 {
   display: block;
   border: 1px solid;
+  border-radius: 2px;
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -78,9 +88,18 @@ exports[`renders a series properly 1`] = `
   display: flex;
 }
 
-.c16 {
+.c6 .c13 {
+  opacity: 1;
+}
+
+.c6:hover .c13 {
+  opacity: .7;
+}
+
+.c17 {
   display: block;
   border: 1px solid;
+  border-radius: 2px;
   color: white;
   cursor: default;
   text-decoration: none;
@@ -89,6 +108,14 @@ exports[`renders a series properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c17 .c13 {
+  opacity: 0.7;
+}
+
+.c17:hover .c13 {
+  opacity: .7;
 }
 
 .c7 {
@@ -138,7 +165,7 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c17 {
+.c18 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -153,7 +180,7 @@ exports[`renders a series properly 1`] = `
   align-items: flex-end;
 }
 
-.c17 span {
+.c18 span {
   margin-right: 5px;
 }
 
@@ -162,945 +189,9 @@ exports[`renders a series properly 1`] = `
   width: 50%;
   height: 100%;
   margin-left: 30px;
-}
-
-.c13 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.c14 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c14 svg {
-  width: 40px;
-}
-
-.c18 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-}
-
-.c26 {
-  position: relative;
-  width: 100%;
-}
-
-.c26 a {
-  color: black;
-  text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
-  background-size: 1.25px 4px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
-
-.c26 a:hover {
-  color: #999;
-}
-
-.c26 p,
-.c26 ul,
-.c26 ol {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0;
-  font-style: inherit;
-}
-
-.c26 p:first-child {
-  padding-top: 0;
-}
-
-.c26 p:last-child {
-  padding-bottom: 0;
-}
-
-.c26 ul,
-.c26 ol {
-  padding-left: 1em;
-}
-
-.c26 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
-
-.c26 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  font-weight: normal;
-  padding-top: 107px;
-  padding-bottom: 46px;
-  margin: 0;
-  position: relative;
-  text-align: center;
-}
-
-.c26 h1:before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  background: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 69px;
-  right: calc(50% - 7.5px);
-}
-
-.c26 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-  font-weight: normal;
-  margin: 0;
-}
-
-.c26 h2 a {
-  background-size: 1.25px 1px;
-}
-
-.c26 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  font-weight: normal;
-  padding-top: 23px;
-  margin: 0;
-}
-
-.c26 h3 strong {
-  font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-}
-
-.c26 h3 a {
-  background-size: 1.25px 1px;
-}
-
-.c26 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  text-align: left;
-  font-weight: normal;
-  padding-top: 46px;
-  padding-bottom: 46px;
-  margin: 0;
-  word-break: break-word;
-}
-
-.c26 .content-end {
-  display: inline-block;
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  margin-left: 12px;
-}
-
-.c26 .artist-follow {
-  vertical-align: middle;
-  margin-left: 10px;
-  cursor: pointer;
-  background: none transparent;
-}
-
-.c26 .artist-follow:before {
-  font-family: "artsy-icons";
-  content: "";
-  vertical-align: -8.5px;
-  line-height: 32px;
-  font-size: 32px;
-}
-
-.c26 .artist-follow:after {
-  content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
-  line-height: 1.1em;
-  text-transform: none;
-}
-
-.c22 {
-  color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c23 {
-  width: 30%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c25 {
-  width: 60%;
-}
-
-.c25 .file__PartnerBlockContainer-s8dqalt-0 {
-  display: none;
-}
-
-.c24 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
-.c3 {
-  color: white;
-  text-align: center;
-}
-
-.c3 .file__PartnerBlockContainer-s8dqalt-0 img {
-  max-width: 170px;
-  padding-top: 5px;
-  padding-bottom: 40px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
-.c0 {
-  color: white;
-  background-color: black;
-  padding: 150px 20px;
-}
-
-.c1 {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.c1 .c2 {
-  margin-bottom: 60px;
-}
-
-.c1 .c5 {
-  margin-bottom: 60px;
-}
-
-.c1 .c21 {
-  padding-top: 60px;
-}
-
-@media (max-width:720px) {
-  .c11 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c20 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c20:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:900px) {
-  .c6 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c16 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c7 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c9 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c10 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c12 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c14 svg {
-    width: 30px;
-  }
-}
-
-@media (max-width:900px) {
-  .c18 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:600px) {
-  .c26 p,
-  .c26 ul,
-  .c26 ol {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c26 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c26 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c26 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c26 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c26 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c26 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c26 .content-start {
-    font-size: 55px;
-  }
-}
-
-@media (max-width:900px) {
-  .c22 {
-    display: block;
-  }
-}
-
-@media (max-width:900px) {
-  .c23 {
-    width: 100%;
-  }
-
-  .c23 .file__PartnerBlockContainer-s8dqalt-0 {
-    margin-top: 60px;
-    display: none;
-  }
-}
-
-@media (max-width:900px) {
-  .c25 {
-    width: 100%;
-  }
-
-  .c25 .file__PartnerBlockContainer-s8dqalt-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:900px) {
-  .c24 {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c3 .file__PartnerBlockContainer-s8dqalt-0 img {
-    max-width: 200px;
-    padding-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c4 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 .c5 {
-    margin-bottom: 40px;
-  }
-
-  .c1 .c21 {
-    padding-top: 60px;
-  }
-}
-
-<div
-  className="SeriesTitle c0"
-  color="white"
->
-  <div
-    className="c1"
-  >
-    <div
-      className="SeriesTitle c2 c3"
-      color="white"
-    >
-      <div
-        className="c4"
-      >
-        The Future of Art
-      </div>
-    </div>
-    <a
-      className="ArticleCard c5 c6"
-      color="white"
-      href="joanne-artman-gallery-poetry-naturerefinement-form"
-      onClick={[Function]}
-    >
-      <div
-        className="c7"
-      >
-        <div>
-          <div
-            className="c8"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c9"
-          >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
-          </div>
-          <div
-            className="c10"
-          >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-          </div>
-        </div>
-        <div
-          className="date c11"
-        >
-          Aug 28, 2017
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        />
-        <div
-          className="c14"
-        >
-          <svg
-            className="c15"
-            version="1.1"
-            viewBox="0 0 40 56"
-            x="0px"
-            xmlns="http://www.w3.org/2000/svg"
-            y="0px"
-          >
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              strokeWidth="1"
-            >
-              <polygon
-                fill="white"
-                points="0 0 0 56 39.3600006 28"
-              />
-            </g>
-          </svg>
-          16:40
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c5 c16"
-      color="white"
-      href=""
-      onClick={[Function]}
-    >
-      <div
-        className="c7"
-      >
-        <div>
-          <div
-            className="c8"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c9"
-          >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
-          </div>
-          <div
-            className="c10"
-          >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-          </div>
-        </div>
-        <div
-          className="c17"
-        >
-          <span>
-            Available 
-          </span>
-          <div
-            className="date c11"
-          >
-            Aug 28, 2018
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 0.7,
-            }
-          }
-        />
-        <div
-          className="c18"
-        >
-          Coming Soon
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c5 c6"
-      color="white"
-      href="artsy-editorial-path-winning-art-prize"
-      onClick={[Function]}
-    >
-      <div
-        className="c7"
-      >
-        <div>
-          <div
-            className="c8"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c9"
-          >
-            What’s the Path to Winning an Art Prize?
-          </div>
-          <div
-            className="c10"
-          >
-            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c19"
-          color="white"
-        >
-          <div
-            className="author c20"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c11"
-          >
-            Jun 29, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        />
-      </div>
-    </a>
-    <div
-      className="SeriesAbout c21 c22"
-      color="white"
-    >
-      <div
-        className="c23"
-      >
-        <div
-          className="c24"
-        >
-          About the Series
-        </div>
-      </div>
-      <div
-        className="c25"
-      >
-        <div
-          className="article__text-section c26"
-        >
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`renders a sponsored series properly 1`] = `
-.c14 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c14.date {
-  white-space: nowrap;
-}
-
-.c23 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c23.date {
-  white-space: nowrap;
-}
-
-.c23:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: white;
-}
-
-.c23:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c22 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  color: white;
-}
-
-.c18 {
-  width: 32px;
-  height: 32px;
-}
-
-.c9 {
-  display: block;
-  border: 1px solid;
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c19 {
-  display: block;
-  border: 1px solid;
-  color: white;
-  cursor: default;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c10 .author,
-.c10 .date {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c12 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c11 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-.c13 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-}
-
-.c20 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
-.c20 span {
-  margin-right: 5px;
 }
 
 .c15 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c16 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.c17 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1123,11 +214,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c17 svg {
+.c15 svg {
   width: 40px;
 }
 
-.c21 {
+.c19 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1150,16 +241,41 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.2em;
 }
 
-.c6 img {
-  max-width: 220px;
-  padding-top: 20px;
+.c24 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 
-.c7 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c26 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c28 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .c29 {
@@ -1322,20 +438,16 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c25 {
+.c23 {
   color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  max-width: 1200px;
 }
 
-.c26 {
-  width: 30%;
+.c25 .file__PartnerBlockContainer-m6gc27-0 {
+  display: none;
+}
+
+.c25:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1349,16 +461,12 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c28 {
-  width: 60%;
-}
-
-.c28 .c5 {
-  display: none;
+.c25:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+  display: block;
 }
 
 .c27 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -1369,7 +477,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c3 .c5 img {
+.c3 .file__PartnerBlockContainer-m6gc27-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -1395,19 +503,19 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c1 .c2 {
+  margin-bottom: 90px;
+}
+
+.c1 .c5 {
   margin-bottom: 60px;
 }
 
-.c1 .c8 {
-  margin-bottom: 60px;
-}
-
-.c1 .c24 {
+.c1 .c22 {
   padding-top: 60px;
 }
 
 @media (max-width:720px) {
-  .c14 {
+  .c11 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1421,7 +529,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23 {
+  .c21 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1435,14 +543,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23:before {
+  .c21:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:900px) {
-  .c9 {
+  .c6 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1451,7 +559,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c19 {
+  .c17 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1460,14 +568,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c7 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c12 {
+  .c9 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1476,7 +584,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 {
+  .c10 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1486,7 +594,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c15 {
+  .c12 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1494,13 +602,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c17 svg {
+  .c15 svg {
     width: 30px;
   }
 }
 
 @media (max-width:900px) {
-  .c21 {
+  .c19 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1508,18 +616,43 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c6 img {
-    max-width: 195px;
+@media only screen and (min-width:0em) {
+  .c26 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
   }
 }
 
-@media (max-width:720px) {
-  .c7 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+@media only screen and (min-width:48em) {
+  .c26 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c28 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c28 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
   }
 }
 
@@ -1581,26 +714,1034 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
-  .c25 {
+@media (max-width:48em) {
+  .c25:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+    display: none;
+  }
+
+  .c25 .file__PartnerBlockContainer-m6gc27-0 {
+    margin-top: 60px;
     display: block;
   }
 }
 
-@media (max-width:900px) {
-  .c26 {
-    width: 100%;
-  }
-
-  .c26 .c5 {
-    margin-top: 60px;
-    display: none;
+@media (max-width:48em) {
+  .c27 {
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width:900px) {
-  .c28 {
+  .c3 .file__PartnerBlockContainer-m6gc27-0 img {
+    max-width: 200px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c4 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 .c5 {
+    margin-bottom: 40px;
+  }
+
+  .c1 .c22 {
+    padding-top: 60px;
+  }
+}
+
+<div
+  className="Series c0"
+  color="white"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="SeriesTitle c2 c3"
+      color="white"
+    >
+      <div
+        className="c4"
+      >
+        The Future of Art
+      </div>
+    </div>
+    <a
+      className="ArticleCard c5 c6"
+      color="white"
+      href="joanne-artman-gallery-poetry-naturerefinement-form"
+      onClick={[Function]}
+    >
+      <div
+        className="c7"
+      >
+        <div>
+          <div
+            className="c8"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c9"
+          >
+            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+          </div>
+          <div
+            className="c10"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+        <div
+          className="date c11"
+        >
+          Aug 28, 2017
+        </div>
+      </div>
+      <div
+        className="c12"
+      >
+        <img
+          className="c13 c14"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+        />
+        <div
+          className="c15"
+        >
+          <svg
+            className="c16"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+          02:28
+        </div>
+      </div>
+    </a>
+    <a
+      className="ArticleCard c5 c17"
+      color="white"
+      href=""
+      onClick={[Function]}
+    >
+      <div
+        className="c7"
+      >
+        <div>
+          <div
+            className="c8"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c9"
+          >
+            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+          </div>
+          <div
+            className="c10"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+        <div
+          className="c18"
+        >
+          <span>
+            Available 
+          </span>
+          <div
+            className="date c11"
+          >
+            Aug 28, 2018
+          </div>
+        </div>
+      </div>
+      <div
+        className="c12"
+      >
+        <img
+          className="c13 c14"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+        />
+        <div
+          className="c19"
+        >
+          Coming Soon
+        </div>
+      </div>
+    </a>
+    <a
+      className="ArticleCard c5 c6"
+      color="white"
+      href="artsy-editorial-path-winning-art-prize"
+      onClick={[Function]}
+    >
+      <div
+        className="c7"
+      >
+        <div>
+          <div
+            className="c8"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c9"
+          >
+            What’s the Path to Winning an Art Prize?
+          </div>
+          <div
+            className="c10"
+          >
+            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
+          </div>
+        </div>
+        <div
+          className="Byline c20"
+          color="white"
+        >
+          <div
+            className="author c21"
+            color="white"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c11"
+          >
+            Jun 29, 2017
+          </div>
+        </div>
+      </div>
+      <div
+        className="c12"
+      >
+        <img
+          className="c13 c14"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
+        />
+      </div>
+    </a>
+    <div
+      className="c22 c23 c24"
+      color="white"
+    >
+      <div
+        className="c25 c26"
+      >
+        <div
+          className="c27"
+        >
+          About the Series
+        </div>
+      </div>
+      <div
+        className="c25 c28"
+      >
+        <div
+          className="article__text-section c29"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a sponsored series properly 1`] = `
+.c14 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c14.date {
+  white-space: nowrap;
+}
+
+.c24 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c24.date {
+  white-space: nowrap;
+}
+
+.c24:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: white;
+}
+
+.c24:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.c19 {
+  width: 32px;
+  height: 32px;
+}
+
+.c17 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+
+.c9 {
+  display: block;
+  border: 1px solid;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 .c16 {
+  opacity: 1;
+}
+
+.c9:hover .c16 {
+  opacity: .7;
+}
+
+.c20 {
+  display: block;
+  border: 1px solid;
+  border-radius: 2px;
+  color: white;
+  cursor: default;
+  text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c20 .c16 {
+  opacity: 0.7;
+}
+
+.c20:hover .c16 {
+  opacity: .7;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.c10 .author,
+.c10 .date {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c12 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+.c11 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c13 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c21 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c21 span {
+  margin-right: 5px;
+}
+
+.c15 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+}
+
+.c18 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c18 svg {
+  width: 40px;
+}
+
+.c22 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+}
+
+.c27 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c29 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c31 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c6 img {
+  max-width: 220px;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c32 {
+  position: relative;
+  width: 100%;
+}
+
+.c32 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c32 a:hover {
+  color: #999;
+}
+
+.c32 p,
+.c32 ul,
+.c32 ol {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c32 p:first-child {
+  padding-top: 0;
+}
+
+.c32 p:last-child {
+  padding-bottom: 0;
+}
+
+.c32 ul,
+.c32 ol {
+  padding-left: 1em;
+}
+
+.c32 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c32 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c32 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c32 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c32 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c32 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c32 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c32 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c32 blockquote {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.c32 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c32 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c32 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c32 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c26 {
+  color: white;
+  max-width: 1200px;
+}
+
+.c28 .c5 {
+  display: none;
+}
+
+.c28:first-of-type {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c28:first-of-type .c5 {
+  display: block;
+}
+
+.c30 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
+.c3 {
+  color: white;
+  text-align: center;
+}
+
+.c3 .c5 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+.c0 {
+  color: white;
+  background-color: black;
+  padding: 150px 20px;
+}
+
+.byIHxY .c2 {
+  margin-bottom: 90px;
+}
+
+.byIHxY .c8 {
+  margin-bottom: 60px;
+}
+
+.byIHxY .c25 {
+  padding-top: 60px;
+}
+
+.c1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.c1 .c2 {
+  margin-bottom: 60px;
+}
+
+.c1 .c8 {
+  margin-bottom: 60px;
+}
+
+.c1 .c25 {
+  padding-top: 60px;
+}
+
+@media (max-width:720px) {
+  .c14 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c24 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c24:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c9 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c20 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c10 {
     width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c12 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c13 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c15 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c18 svg {
+    width: 30px;
+  }
+}
+
+@media (max-width:900px) {
+  .c22 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c29 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c29 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c31 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c31 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 img {
+    max-width: 195px;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c32 p,
+  .c32 ul,
+  .c32 ol {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c32 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c32 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c32 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c32 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c32 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c32 blockquote {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c32 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:48em) {
+  .c28:first-of-type .c5 {
+    display: none;
   }
 
   .c28 .c5 {
@@ -1609,8 +1750,8 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
-  .c27 {
+@media (max-width:48em) {
+  .c30 {
     margin-bottom: 20px;
   }
 }
@@ -1633,17 +1774,27 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
+  .byIHxY .c8 {
+    margin-bottom: 40px;
+  }
+
+  .byIHxY .c25 {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width:900px) {
   .c1 .c8 {
     margin-bottom: 40px;
   }
 
-  .c1 .c24 {
+  .c1 .c25 {
     padding-top: 60px;
   }
 }
 
 <div
-  className="SeriesTitle c0"
+  className="Series c0"
   color="white"
 >
   <div
@@ -1664,7 +1815,7 @@ exports[`renders a sponsored series properly 1`] = `
         <div
           className="c7"
         >
-          Presented In Partnership With
+          Presented in Partnership with
         </div>
         <a
           href="http://artsy.net"
@@ -1715,19 +1866,14 @@ exports[`renders a sponsored series properly 1`] = `
         className="c15"
       >
         <img
-          className="c16"
+          className="c16 c17"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
         />
         <div
-          className="c17"
+          className="c18"
         >
           <svg
-            className="c18"
+            className="c19"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -1746,12 +1892,12 @@ exports[`renders a sponsored series properly 1`] = `
               />
             </g>
           </svg>
-          16:40
+          02:28
         </div>
       </div>
     </a>
     <a
-      className="ArticleCard c8 c19"
+      className="ArticleCard c8 c20"
       color="white"
       href=""
       onClick={[Function]}
@@ -1779,7 +1925,7 @@ exports[`renders a sponsored series properly 1`] = `
           </div>
         </div>
         <div
-          className="c20"
+          className="c21"
         >
           <span>
             Available 
@@ -1795,16 +1941,11 @@ exports[`renders a sponsored series properly 1`] = `
         className="c15"
       >
         <img
-          className="c16"
+          className="c16 c17"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 0.7,
-            }
-          }
         />
         <div
-          className="c21"
+          className="c22"
         >
           Coming Soon
         </div>
@@ -1839,11 +1980,11 @@ exports[`renders a sponsored series properly 1`] = `
           </div>
         </div>
         <div
-          className="Byline c22"
+          className="Byline c23"
           color="white"
         >
           <div
-            className="author c23"
+            className="author c24"
             color="white"
           >
             By 
@@ -1860,25 +2001,20 @@ exports[`renders a sponsored series properly 1`] = `
         className="c15"
       >
         <img
-          className="c16"
+          className="c16 c17"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
         />
       </div>
     </a>
     <div
-      className="SeriesAbout c24 c25"
+      className="c25 c26 c27"
       color="white"
     >
       <div
-        className="c26"
+        className="c28 c29"
       >
         <div
-          className="c27"
+          className="c30"
         >
           About the Series
         </div>
@@ -1888,7 +2024,7 @@ exports[`renders a sponsored series properly 1`] = `
           <div
             className="c7"
           >
-            Presented In Partnership With
+            Presented in Partnership with
           </div>
           <a
             href="http://artsy.net"
@@ -1902,10 +2038,10 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c28"
+        className="c28 c31"
       >
         <div
-          className="article__text-section c29"
+          className="article__text-section c32"
         >
           <div
             dangerouslySetInnerHTML={
@@ -1921,7 +2057,7 @@ exports[`renders a sponsored series properly 1`] = `
           <div
             className="c7"
           >
-            Presented In Partnership With
+            Presented in Partnership with
           </div>
           <a
             href="http://artsy.net"

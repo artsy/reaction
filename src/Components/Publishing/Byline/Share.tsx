@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import track from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
+import { Fonts } from "../Fonts"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
@@ -14,6 +15,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   color?: string
   tracking?: any
   trackingData?: any
+  hasLabel?: boolean
 }
 
 @track((props) => {
@@ -24,6 +26,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 export class Share extends React.Component<Props, null> {
   static defaultProps = {
     color: "black",
+    hasLabel: false
   }
 
   constructor(props) {
@@ -60,16 +63,35 @@ export class Share extends React.Component<Props, null> {
   }
 
   render() {
-    const { color } = this.props
+    const {
+      color,
+      hasLabel
+    } = this.props
     return (
       <ShareContainer>
-        <IconWrapper href={this.getHref("facebook")} target="_blank" onClick={this.trackShare}>
+        {hasLabel &&
+          <ShareLabel>
+            Share
+          </ShareLabel>
+        }
+        <IconWrapper
+          href={this.getHref("facebook")}
+          target="_blank"
+          onClick={this.trackShare}
+        >
           <IconSocialFacebook color={color} />
         </IconWrapper>
-        <IconWrapper href={this.getHref("twitter")} target="_blank" onClick={this.trackShare}>
+        <IconWrapper
+          href={this.getHref("twitter")}
+          target="_blank"
+          onClick={this.trackShare}
+        >
           <IconSocialTwitter color={color} />
         </IconWrapper>
-        <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
+        <IconWrapper
+          href={this.getHref("email")}
+          onClick={this.trackShare}
+        >
           <IconSocialEmail color={color} />
         </IconWrapper>
       </ShareContainer>
@@ -78,6 +100,8 @@ export class Share extends React.Component<Props, null> {
 }
 
 export const ShareContainer = styled.div`
+  display: flex;
+  align-items: center;
   white-space: nowrap;
   line-height: 1em;
   ${pMedia.xs`
@@ -94,4 +118,8 @@ const IconWrapper = styled.a`
   &:first-child {
     padding-left: 0;
   }
+`
+const ShareLabel = styled.span`
+  ${Fonts.unica("s16", "medium")}
+  margin: 10px 10px 10px 0px;
 `

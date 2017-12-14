@@ -1,36 +1,33 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-
-import { Videos } from "../Fixtures/Components"
-import { Video } from "../Sections/Video"
+import {
+  VideoArticle,
+} from "../Fixtures/Articles"
+import { Media } from "../Fixtures/Components"
+import { VideoPlayer } from "../Video/Player/VideoPlayer"
+import { VideoAbout } from "../Video/VideoAbout"
+import { VideoCover } from "../Video/VideoCover"
 
 storiesOf("Publishing/Video", module)
-  .add("Youtube Video", () => {
+  .add("Video Player", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[0]} layout="standard" />
+      <div style={{ width: "100vw", height: "100vh" }}>
+        <VideoPlayer {...Media[0]} />
       </div>
     )
   })
-  .add("Vimeo Video", () => {
+  .add("Video Cover", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[1]} layout="standard" />
-      </div>
+      <VideoCover
+        media={Media[0]}
+        description={VideoArticle.description}
+      />
     )
   })
-  .add("Coverless Video", () => {
+  .add("Video About", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[2]} layout="classic" />
-      </div>
-    )
-  })
-  .add("Video with custom tracking data", () => {
-    const data = { entity_id: "1234", entity_type: "feature" }
-    return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[0]} layout="standard" trackingData={data} />
-      </div>
+      <VideoAbout
+        article={VideoArticle}
+      />
     )
   })

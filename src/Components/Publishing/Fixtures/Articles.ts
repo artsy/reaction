@@ -1,5 +1,6 @@
 import { extend } from "lodash"
 import { ArticleData } from "../Typings"
+import { Media } from "./Components"
 
 export const ClassicArticle: ArticleData = {
   _id: "597b9f652d35b80017a2a6a7",
@@ -675,7 +676,7 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
 })
 
-export const VideoArticle = {
+export const VideoArticle: ArticleData = {
   layout: "video",
   id: "597b9f652d35b80017a2a6a7",
   title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
@@ -684,24 +685,29 @@ export const VideoArticle = {
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   published_at: "2017-07-28T20:38:05.709Z",
   description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
-  media: {
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
-    duration: 1000,
-    release_date: "2017-08-28T20:38:05.709Z",
-    published: true
-  }
+  media: Media[0]
 }
 
 export const VideoArticleUnpublished = extend({}, VideoArticle, {
   media: {
+    title: "Trevor Paglan",
     url: "",
     duration: 4000,
     release_date: "2018-08-28T20:38:05.709Z",
-    published: false
+    published: false,
+    description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+    credits: "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>"
   }
 })
 
-export const SeriesArticle = {
+export const VideoArticleSponsored = extend({}, VideoArticle, {
+  sponsor: {
+    partner_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_logo_link: 'http://artsy.net'
+  }
+})
+
+export const SeriesArticle: ArticleData = {
   layout: "series",
   title: "The Future of Art",
   series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
@@ -718,5 +724,3 @@ export const SeriesArticleSponsored = extend({}, SeriesArticle, {
     partner_logo_link: 'http://artsy.net'
   }
 })
-
-

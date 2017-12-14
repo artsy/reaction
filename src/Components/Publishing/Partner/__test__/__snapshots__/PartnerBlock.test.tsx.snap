@@ -3,7 +3,6 @@
 exports[`renders the partner block 1`] = `
 .c0 img {
   max-width: 220px;
-  padding-top: 20px;
 }
 
 .c1 {
@@ -11,6 +10,7 @@ exports[`renders the partner block 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+  margin-bottom: 20px;
 }
 
 @media (max-width:720px) {
@@ -34,7 +34,7 @@ exports[`renders the partner block 1`] = `
   <div
     className="c1"
   >
-    Presented In Partnership With
+    Presented in Partnership with
   </div>
   <a
     href="https://artsy.net"

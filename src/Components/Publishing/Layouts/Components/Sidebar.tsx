@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
+import { pMedia } from "../../../Helpers"
 
 export const Sidebar: React.SFC<React.HTMLProps<HTMLDivElement>> = props => {
   return <SidebarContainer>{props.children}</SidebarContainer>
