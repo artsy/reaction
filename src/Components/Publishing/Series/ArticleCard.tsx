@@ -145,10 +145,7 @@ export class ArticleCard extends Component<Props, null> {
         <ImageContainer>
           {editImage
             ? editImage
-            : <Image
-                src={crop(article.thumbnail_image, { width: 680, height: 450 })}
-                style={{opacity: isUnpublishedMedia ? 0.7 : 1}}
-              />
+            : <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
           }
           {media && this.renderMediaCoverInfo()}
         </ImageContainer>
@@ -168,14 +165,32 @@ interface LinkProps {
 
 const A: StyledFunction<Props & LinkProps & React.HTMLProps<HTMLLinkElement>> = styled.a
 
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.15s;
+`
+
 export const ArticleCardContainer = A`
   display: block;
   border: 1px solid;
+  border-radius: 2px;
   color: ${props => props.color};
   cursor: ${props => props.published ? "pointer" : "default"};
   text-decoration: none;
   padding: 30px;
   display: flex;
+  ${Image} {
+    opacity: ${props => props.published ? "1" : "0.7"};
+  }
+  &:hover {
+    ${Image} {
+      opacity: .7;
+    }
+  }
   ${props => pMedia.md`
     flex-direction: column-reverse;
     padding: 20px;
@@ -237,13 +252,6 @@ const ImageContainer = styled.div`
     margin-left: 0;
     margin-bottom: 10px;
   `}
-`
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 `
 
 const Media = styled.div`

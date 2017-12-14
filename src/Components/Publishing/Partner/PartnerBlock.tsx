@@ -39,7 +39,7 @@ export class PartnerBlock extends React.Component<Props, null> {
     const { logo, url } = this.props
     return (
       <PartnerBlockContainer className='PartnerBlock'>
-        <Title>Presented In Partnership With</Title>
+        <Title>Presented in Partnership with</Title>
         <a
           href={url}
           target='_blank'
@@ -55,7 +55,6 @@ export class PartnerBlock extends React.Component<Props, null> {
 export const PartnerBlockContainer = styled.div`
   img {
     max-width: 220px;
-    padding-top: 20px;
   }
   ${pMedia.sm`
     img {
@@ -65,6 +64,7 @@ export const PartnerBlockContainer = styled.div`
 `
 const Title = styled.div`
   ${Fonts.unica('s16', 'medium')}
+  margin-bottom: 20px;
   ${pMedia.sm`
     ${Fonts.unica('s14', 'medium')}
   `}
