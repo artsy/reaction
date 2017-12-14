@@ -1,12 +1,15 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
 import styled from "styled-components"
 
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import * as fonts from "../../../../Assets/Fonts"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
 export interface RelayProps {
+  relay?: RelayProp
+  term: string
   viewer: {
     match_gene: any[]
   }
@@ -22,6 +25,49 @@ const NoResultsContainer = styled.div`
 `
 
 class GeneSearchResultsContent extends React.Component<RelayProps, null> {
+  onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
+    const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+
+    const suggestedGenesRootField = store.get("client:root:viewer")
+    const suggestedGenes = suggestedGenesRootField.getLinkedRecords("match_gene", { term: this.props.term })
+    const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
+
+    suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
+  }
+
+  followedGene(geneId: string) {
+    commitMutation(this.props.relay.environment, {
+      mutation: graphql`
+        mutation GeneSearchResultsFollowGeneMutation($input: FollowGeneInput!) {
+          followGene(input: $input) {
+            gene {
+              similar(first: 1) {
+                edges {
+                  node {
+                    id
+                    __id
+                    name
+                    image {
+                      cropped(width: 100, height: 100) {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          gene_id: geneId
+        },
+      },
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(geneId, store, data)
+    })
+  }
+
   render() {
     const items = this.props.viewer.match_gene.map((item, index) => {
       return (
@@ -30,10 +76,9 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
           item={item}
           key={index}
           id={item.id}
-          _id={item._id}
           name={item.name}
           image_url={item.image.cropped.url}
-          onClick={() => null}
+          onClick={() => this.followedGene(item.id)}
         />
       )
     })
@@ -82,7 +127,7 @@ const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, rel
       variables={{ term }}
       render={({ error, props }) => {
         if (props) {
-          return <GeneSearchResultsContentContainer viewer={props.viewer} />
+          return <GeneSearchResultsContentContainer viewer={props.viewer} term={term} />
         } else {
           return null
         }
