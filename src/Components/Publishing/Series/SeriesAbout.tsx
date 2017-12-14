@@ -64,13 +64,11 @@ interface ColProps {
 }
 
 const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled(Row)
-
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
   max-width: 1200px;
 `
 const StyledCol = styled(Col) `
-
   ${PartnerBlockContainer} {
     display: none;
   }

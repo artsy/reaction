@@ -5,7 +5,7 @@ import { Fonts } from "../Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
 import { SubNav } from "./SubNav"
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLDivElement>{
   transparent?: boolean
   sponsor?: any
   title?: string
@@ -15,14 +15,17 @@ interface DivProps {
   transparent: boolean
 }
 
-export const Nav: React.SFC<Props> = props => {
+const NavComponent: React.SFC<Props> = props => {
   const {
     sponsor,
     transparent,
     title
   } = props
   return (
-    <NavContainer transparent={transparent}>
+    <NavContainer
+      transparent={transparent}
+      className={props.className}
+    >
       <PartnerInline
         url={sponsor && sponsor.url}
         logo={sponsor && sponsor.partner_light_logo}
@@ -37,20 +40,23 @@ export const Nav: React.SFC<Props> = props => {
   )
 }
 
-Nav.defaultProps = {
+NavComponent.defaultProps = {
   transparent: false,
   title: "Artsy Editorial"
 }
 
 const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
 const NavContainer = Div`
+  background-color: ${props => props.transparent ? "transparent" : "black"};
+`
+export const Nav = styled(NavComponent)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 46px;
   width: 100%;
-  background-color: ${props => props.transparent ? "transparent" : "black"};
   color: white;
+  z-index: 10
 `
 const Title = styled.div`
   ${Fonts.garamond("s17")}

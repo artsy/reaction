@@ -12,7 +12,9 @@ import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
-  title?: string
+  title?: string,
+  notifyIsPaused?: () => void,
+  forcePlay?: boolean
 }
 
 interface State {
@@ -28,7 +30,7 @@ export class VideoPlayer extends Component<Props, State> {
 
   state = {
     isMuted: false,
-    isPlaying: false,
+    isPlaying: this.props.forcePlay,
     currentTime: 0,
     duration: 0
   }
@@ -50,6 +52,12 @@ export class VideoPlayer extends Component<Props, State> {
     this.video.removeEventListener("timeupdate", this.updateTime)
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.forcePlay){
+      this.forcePlay()
+    }
+  }
+
   setDuration = (e) => {
     this.setState({
       duration: e.target.duration
@@ -65,6 +73,9 @@ export class VideoPlayer extends Component<Props, State> {
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
+      if (this.props.notifyIsPaused) {
+        this.props.notifyIsPaused()
+      }
     } else {
       this.video.play()
     }
@@ -77,6 +88,13 @@ export class VideoPlayer extends Component<Props, State> {
   toggleMute = () => {
     this.setState({
       isMuted: !this.state.isMuted
+    })
+  }
+
+  forcePlay = () => {
+    this.video.play()
+    this.setState({
+      isPlaying: true
     })
   }
 
@@ -155,7 +173,7 @@ const VideoControlsParent = styled.div`
   max-width: 1200px;
   width: 100%;
 `
-const VideoContainer = styled.div`
+export const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;

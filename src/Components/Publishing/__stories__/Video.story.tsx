@@ -1,36 +1,61 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-
-import { Videos } from "../Fixtures/Components"
-import { Video } from "../Sections/Video"
+import {
+  SeriesArticle,
+  SeriesArticleSponsored,
+  StandardArticle,
+  VideoArticle,
+  VideoArticleSponsored
+} from "../Fixtures/Articles"
+import { Media } from "../Fixtures/Components"
+import { VideoAbout } from "../Video/VideoAbout"
+import { VideoCover } from "../Video/VideoCover"
+import { VideoLayout } from "../Video/VideoLayout"
 
 storiesOf("Publishing/Video", module)
-  .add("Youtube Video", () => {
+  .add("Video Cover", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[0]} layout="standard" />
-      </div>
+      <VideoCover
+        media={Media[0]}
+        description={VideoArticle.description}
+      />
     )
   })
-  .add("Vimeo Video", () => {
+  .add("Video About", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[1]} layout="standard" />
-      </div>
+      <VideoAbout
+        article={VideoArticle}
+      />
     )
   })
-  .add("Coverless Video", () => {
+  .add("Video Article", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[2]} layout="classic" />
-      </div>
+      <VideoLayout article={VideoArticle} />
     )
   })
-  .add("Video with custom tracking data", () => {
-    const data = { entity_id: "1234", entity_type: "feature" }
+  .add("Video Article - Series", () => {
     return (
-      <div style={{ width: "100vw", position: "relative" }}>
-        <Video section={Videos[0]} layout="standard" trackingData={data} />
-      </div>
+      <VideoLayout
+        article={VideoArticle}
+        seriesArticle={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
     )
   })
+  .add("Video Article - Sponsored", () => {
+    return (
+      <VideoLayout
+      article={VideoArticleSponsored}
+      />
+    )
+  })
+  .add("Video Article - Series + Sponsored", () => {
+    return (
+      <VideoLayout
+        article={VideoArticleSponsored}
+        seriesArticle={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle, VideoArticle]}
+      />
+    )
+  })
+
