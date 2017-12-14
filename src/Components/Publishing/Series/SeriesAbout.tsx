@@ -99,7 +99,7 @@ const StyledCol = styled(Col) `
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s32", "medium")}
+  ${Fonts.unica("s32")}
   ${props => media.sm`
     margin-bottom: 20px;
   `}

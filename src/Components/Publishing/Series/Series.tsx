@@ -15,13 +15,13 @@ export class Series extends Component<Props, null> {
 
   render () {
     const { color, article } = this.props
-    const { related_articles } = article
+    const { related_articles, sponsor } = article
 
     const articles = related_articles || []
 
     return (
-      <SeriesContainer className='SeriesTitle' color={color}>
-        <SeriesContent>
+      <SeriesContainer className='Series' color={color}>
+        <SeriesContent sponsor={sponsor}>
 
           <SeriesTitle
             article={article}
@@ -52,19 +52,23 @@ Series.defaultProps = {
   color: 'white'
 }
 
-const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
+interface ContainerProps {
+  sponsor?: any
+}
+
+const Div: StyledFunction<Props & ContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const SeriesContainer = Div`
   color: ${props => props.color};
   background-color: black;
   padding: 150px 20px;
 `
-export const SeriesContent = styled.div`
+export const SeriesContent = Div`
   max-width: 1200px;
   margin: 0 auto;
 
   ${SeriesTitleContainer} {
-    margin-bottom: 60px;
+    margin-bottom: ${props => props.sponsor ? '60px' : '90px'};
   }
 
   ${ArticleCardContainer} {

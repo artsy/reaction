@@ -6,7 +6,7 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+.c0 .file__PartnerBlockContainer-m6gc27-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -21,7 +21,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+  .c0 .file__PartnerBlockContainer-m6gc27-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }
@@ -55,7 +55,7 @@ exports[`renders a series with children properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+.c0 .file__PartnerBlockContainer-m6gc27-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -70,7 +70,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s8dqalt-0 img {
+  .c0 .file__PartnerBlockContainer-m6gc27-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }
@@ -104,7 +104,6 @@ exports[`renders a series with children properly 1`] = `
 exports[`renders a sponsored series title properly 1`] = `
 .c3 img {
   max-width: 220px;
-  padding-top: 20px;
 }
 
 .c4 {
@@ -112,6 +111,7 @@ exports[`renders a sponsored series title properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+  margin-bottom: 20px;
 }
 
 .c0 {
@@ -180,7 +180,7 @@ exports[`renders a sponsored series title properly 1`] = `
     <div
       className="c4"
     >
-      Presented In Partnership With
+      Presented in Partnership with
     </div>
     <a
       href="http://artsy.net"

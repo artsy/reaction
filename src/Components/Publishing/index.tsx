@@ -1,22 +1,24 @@
 // Components
 export { Article } from "./Article"
-export { Header } from "./Header/Header"
-export { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
-export { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
 export { Artwork } from "./Sections/Artwork"
 export { Authors } from "./Sections/Authors"
 export { Caption } from "./Sections/Caption"
 export { Embed } from "./Sections/Embed"
-export { InstantArticleEmailSignup } from './Email/InstantArticleEmailSignup'
 export { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
+export { Header } from "./Header/Header"
+export { InstantArticleEmailSignup } from './Email/InstantArticleEmailSignup'
 export { Image } from "./Sections/Image"
 export { ImageCollection } from "./Sections/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
 export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
+export { Nav } from "./Nav/Nav"
+export { Series } from "./Series/Series"
 export { Text } from "./Sections/Text"
 export { Video } from "./Sections/Video"
 export { PartnerInline } from "./Partner/PartnerInline"
 export { PartnerBlock } from "./Partner/PartnerBlock"
+export { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
+export { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
 
 // Icon SVGs
 export { IconArtist } from "./Icon/IconArtist"
