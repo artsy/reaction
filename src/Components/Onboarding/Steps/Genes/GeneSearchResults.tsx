@@ -34,6 +34,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
   onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
     const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+    this.excludedGeneIds.add(suggestedGene.getValue("_id"))
 
     const suggestedGenesRootField = store.get("client:root:viewer")
     const suggestedGenes = suggestedGenesRootField.getLinkedRecords("match_gene", { term: this.props.term })
