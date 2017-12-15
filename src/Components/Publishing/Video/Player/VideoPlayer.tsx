@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
+import { track } from "../../../../Utils/track"
 import {
   addFSEventListener,
   exitFullscreen,
@@ -15,6 +16,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   title?: string,
   notifyIsPaused?: () => void,
   forcePlay?: boolean
+  tracking?: any
 }
 
 interface State {
@@ -24,6 +26,7 @@ interface State {
   duration: number
 }
 
+@track()
 export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
@@ -126,6 +129,24 @@ export class VideoPlayer extends Component<Props, State> {
     this.video.play()
     this.setState({
       isPlaying: true
+    })
+  }
+
+  trackDuration = (percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Display ad video duration",
+      percent_complete: percentComplete,
+      unit_layout: "canvas_standard"
+    })
+  }
+
+  trackSeconds = (secondsComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video seconds",
+      label: "Display ad video seconds",
+      seconds_complete: secondsComplete,
+      unit_layout: "canvas_standard"
     })
   }
 
