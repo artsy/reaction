@@ -1,3 +1,4 @@
+import { memoize } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { track } from "../../../../Utils/track"
@@ -38,6 +39,11 @@ export class VideoPlayer extends Component<Props, State> {
     duration: 0
   }
 
+  constructor(props) {
+    super(props)
+    this.toggleFullscreen = this.toggleFullscreen.bind(this)
+  }
+
   componentDidMount() {
     if (this.video) {
       if (fullscreenEnabled()){
@@ -68,6 +74,7 @@ export class VideoPlayer extends Component<Props, State> {
   }
 
   updateTime = (e) => {
+    this.trackProgress()
     this.setState({
       currentTime: e.target.currentTime
     })
@@ -101,7 +108,10 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
-  toggleFullscreen = () => {
+  @track({
+    action: "Clicked fullscreen"
+  })
+  toggleFullscreen() {
     if (fullscreenEnabled()) {
       if (isFullscreen()) {
         exitFullscreen()
@@ -132,23 +142,37 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
-  trackDuration = (percentComplete) => {
-    this.props.tracking.trackEvent({
-      action: "Video duration",
-      label: "Display ad video duration",
-      percent_complete: percentComplete,
-      unit_layout: "canvas_standard"
-    })
+  trackProgress = () => {
+    const secondsComplete = Math.floor(this.video.currentTime)
+    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
+
+    // Track 25% duration intervals
+    if (percentCompleteInterval > 0) {
+      this.trackDuration(percentCompleteInterval)
+    }
+
+    // Track 3 & 10 seconds
+    if (secondsComplete === 3 || secondsComplete === 10) {
+      this.trackSeconds(secondsComplete)
+    }
   }
 
-  trackSeconds = (secondsComplete) => {
+  trackDuration = memoize((percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Video duration",
+      percent_complete: percentComplete,
+    })
+  })
+
+  trackSeconds = memoize((secondsComplete) => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
-      label: "Display ad video seconds",
+      label: "Video seconds",
       seconds_complete: secondsComplete,
-      unit_layout: "canvas_standard"
     })
-  }
+  })
 
   render() {
     const {

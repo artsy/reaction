@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Col } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
+import Events from "../../../Utils/Events"
+import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Fonts } from "../Fonts"
@@ -23,6 +25,16 @@ interface State {
   isPlaying: boolean
 }
 
+@track((props) => {
+  return {
+    page: "Video",
+    entity_type: "article",
+    entity_id: props.article.id
+  }
+}, {
+    dispatch: data => Events.postEvent(data)
+  }
+)
 export class VideoLayout extends Component<Props, State> {
   state = {
     isPlaying: false
