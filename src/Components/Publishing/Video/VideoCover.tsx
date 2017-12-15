@@ -8,11 +8,13 @@ import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
 interface Props {
-  media: any
-  seriesTitle?: string
-  description?: string
-  playVideo?: () => void
+  article: any
+  editDescription?: any
+  editTitle?: any
   hideCover?: boolean
+  media: any
+  playVideo?: () => void
+  seriesTitle?: string
 }
 
 interface CoverProps {
@@ -26,11 +28,13 @@ interface CoverAssetProps {
 export class VideoCover extends Component<Props, null> {
   render() {
     const {
-      description,
+      article,
+      editDescription,
+      editTitle,
+      hideCover,
       media,
-      seriesTitle,
       playVideo,
-      hideCover
+      seriesTitle
     } = this.props
 
     return (
@@ -46,15 +50,17 @@ export class VideoCover extends Component<Props, null> {
             >
               <IconVideoPlay color="white" />
             </Col>
-            <Col xs={10} sm={3}>
+            <Col xs={8} sm={6}>
               <VideoInfoBlock
                 media={media}
-                seriesTitle={seriesTitle}
+                tag={seriesTitle || (article.vertical && article.vertical.name)}
+                title={article.title}
+                editTitle={editTitle}
               />
             </Col>
-            <Col xs={12} sm={8}>
+            <Col xs={12} sm={7}>
               <MediaDescription>
-                {description}
+                {editDescription || article.description}
               </MediaDescription>
             </Col>
           </VideoCoverInfoRow>
@@ -77,6 +83,7 @@ const VideoCoverOverlay = styled.div`
 `
 
 const VideoCoverInfoRow = styled(MaxRow)`
+  width: 100%;
   align-items: flex-end;
 `
 
@@ -113,9 +120,9 @@ export const VideoCoverContainer = CoverDiv`
 `
 
 const MediaDescription = styled.div`
+  margin-top: 30px;
   ${Fonts.garamond("s23")}
   ${media.sm`
     ${Fonts.garamond("s19")}
-    margin-top: 30px;
   `}
 `

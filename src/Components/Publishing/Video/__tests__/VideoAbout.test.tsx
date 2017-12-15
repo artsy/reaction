@@ -3,6 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { VideoArticle } from "../../Fixtures/Articles"
+import { EditableChild } from "../../Fixtures/Helpers"
 import { VideoAbout } from "../VideoAbout"
 
 describe("Video About", () => {
@@ -10,6 +11,17 @@ describe("Video About", () => {
     const videoAbout = renderer.create(
       <VideoAbout
         article={VideoArticle}
+      />
+    ).toJSON()
+    expect(videoAbout).toMatchSnapshot()
+  })
+
+  it("matches the snapshot with editable props", () => {
+    const videoAbout = renderer.create(
+      <VideoAbout
+        article={VideoArticle}
+        editDescription={EditableChild('media.description')}
+        editCredits={EditableChild('media.credit')}
       />
     ).toJSON()
     expect(videoAbout).toMatchSnapshot()
@@ -32,5 +44,17 @@ describe("Video About", () => {
       />
     )
     expect(component.text()).toMatch("Lorem ipsum dolor")
+  })
+
+  it("renders editable fields", () => {
+    const component = mount(
+      <VideoAbout
+        article={VideoArticle}
+        editDescription={EditableChild('media.description')}
+        editCredits={EditableChild('media.credit')}
+      />
+    )
+    expect(component.text()).toMatch("Child media.description")
+    expect(component.text()).toMatch("Child media.credit")
   })
 })

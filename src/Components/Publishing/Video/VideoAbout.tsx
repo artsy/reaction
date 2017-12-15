@@ -9,6 +9,8 @@ import { Text } from '../Sections/Text'
 interface Props {
   article: any
   color?: string
+  editDescription?: any
+  editCredits?: any
 }
 
 interface TitleProps {
@@ -21,18 +23,24 @@ export class VideoAbout extends Component<Props, null> {
   }
 
   render() {
-    const { article, color } = this.props
+    const {
+      article,
+      color,
+      editCredits,
+      editDescription
+    } = this.props
     const { media } = article
+
     return (
       <VideoAboutContainer>
         <Col xs={12} sm={4}>
           <Title color={color}>
             Credits
           </Title>
-          <Text
-            layout="standard"
-            html={media.credits}
-          />
+          {editCredits
+            ? <Text layout="standard">{editCredits}</Text>
+            : <Text layout="standard" html={media.credits} />
+          }
           <ShareDate
             color={color}
             article={article}
@@ -43,7 +51,10 @@ export class VideoAbout extends Component<Props, null> {
           <Title color={color}>
             About the Film
           </Title>
-          <Text layout="standard" html={media.description} />
+          {editDescription
+            ? <Text layout='standard'>{editDescription}</Text>
+            : <Text layout="standard" html={media.description} />
+          }
           <ShareDate
             color={color}
             article={article}

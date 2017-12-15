@@ -3,6 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Media } from "../../Fixtures/Components"
+import { EditableChild } from "../../Fixtures/Helpers"
 import { VideoInfoBlock } from "../VideoInfoBlock"
 
 describe("Video Info Block", () => {
@@ -10,7 +11,20 @@ describe("Video Info Block", () => {
     const videoInfo = renderer.create(
       <VideoInfoBlock
         media={Media[0]}
-        seriesTitle="The Future of Art"
+        tag="The Future of Art"
+        title="Trevor Paglan"
+      />
+    ).toJSON()
+    expect(videoInfo).toMatchSnapshot()
+  })
+
+  it("matches the snapshot with edit props", () => {
+    const videoInfo = renderer.create(
+      <VideoInfoBlock
+        tag="The Future of Art"
+        media={Media[0]}
+        title="Trevor Paglan"
+        editTitle={EditableChild('title')}
       />
     ).toJSON()
     expect(videoInfo).toMatchSnapshot()
@@ -19,12 +33,25 @@ describe("Video Info Block", () => {
   it("renders titles and duration", () => {
     const component = mount(
       <VideoInfoBlock
+        tag="The Future of Art"
         media={Media[0]}
-        seriesTitle="The Future of Art"
+        title="Trevor Paglan"
       />
     )
     expect(component.text()).toMatch("The Future of Art")
     expect(component.text()).toMatch("Trevor Paglan")
     expect(component.text()).toMatch("02:28")
+  })
+
+  it("renders editable title", () => {
+    const component = mount(
+      <VideoInfoBlock
+        tag="The Future of Art"
+        media={Media[0]}
+        title="Trevor Paglan"
+        editTitle={EditableChild('title')}
+      />
+    )
+    expect(component.text()).toMatch("Child title")
   })
 })

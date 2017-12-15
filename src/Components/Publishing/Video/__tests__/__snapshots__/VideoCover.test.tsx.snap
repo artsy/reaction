@@ -92,6 +92,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c7 {
+  width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -138,6 +139,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c18 {
+  margin-top: 30px;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -166,20 +168,20 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 @media only screen and (min-width:0em) {
   .c13 {
-    -webkit-flex-basis: 83.33333333333334%;
-    -ms-flex-basis: 83.33333333333334%;
-    flex-basis: 83.33333333333334%;
-    max-width: 83.33333333333334%;
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
     display: block;
   }
 }
 
 @media only screen and (min-width:48em) {
   .c13 {
-    -webkit-flex-basis: 25%;
-    -ms-flex-basis: 25%;
-    flex-basis: 25%;
-    max-width: 25%;
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
     display: block;
   }
 }
@@ -196,10 +198,10 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 @media only screen and (min-width:48em) {
   .c17 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 58.333333333333336%;
+    -ms-flex-basis: 58.333333333333336%;
+    flex-basis: 58.333333333333336%;
+    max-width: 58.333333333333336%;
     display: block;
   }
 }
@@ -216,7 +218,6 @@ exports[`Video Cover matches the snapshot 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    margin-top: 30px;
   }
 }
 
@@ -296,7 +297,318 @@ exports[`Video Cover matches the snapshot 1`] = `
         <div
           className="c18"
         >
-          Lorem Ipsum Description
+          The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Video Cover matches the snapshot with edit props 1`] = `
+.c9 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c10 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c13 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c17 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c12 {
+  width: 32px;
+  height: 32px;
+}
+
+.c8 {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 12px;
+}
+
+.c14 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-right: 35px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c2 {
+  background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
+  background-size: cover;
+  background-color: black;
+}
+
+.c4 {
+  opacity: 0.75;
+  background-color: black;
+}
+
+.c7 {
+  width: 100%;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+  z-index: 1;
+}
+
+.c6 .c11 {
+  height: 60px;
+  width: 44px;
+  margin-right: 15px;
+}
+
+.c0 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.25s ease,visibility 0.25s ease;
+  transition: opacity 0.25s ease,visibility 0.25s ease;
+}
+
+.c0 .c1,
+.c0 .c3,
+.c0 .c5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.c18 {
+  margin-top: 30px;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+@media only screen and (min-width:0em) {
+  .c10 {
+    -webkit-flex-basis: 16.666666666666668%;
+    -ms-flex-basis: 16.666666666666668%;
+    flex-basis: 16.666666666666668%;
+    max-width: 16.666666666666668%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c10 {
+    -webkit-flex-basis: 8.333333333333334%;
+    -ms-flex-basis: 8.333333333333334%;
+    flex-basis: 8.333333333333334%;
+    max-width: 8.333333333333334%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c13 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c13 {
+    -webkit-flex-basis: 50%;
+    -ms-flex-basis: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c17 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c17 {
+    -webkit-flex-basis: 58.333333333333336%;
+    -ms-flex-basis: 58.333333333333336%;
+    flex-basis: 58.333333333333336%;
+    max-width: 58.333333333333336%;
+    display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c6 {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width:48em) {
+  .c18 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
+  />
+  <div
+    className="c3 c4"
+  />
+  <div
+    className="c5 c6"
+  >
+    <div
+      className="c7 c8 c9"
+    >
+      <div
+        className="c10"
+        onClick={undefined}
+      >
+        <svg
+          className="c11 c12"
+          version="1.1"
+          viewBox="0 0 40 56"
+          x="0px"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0px"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="1"
+          >
+            <polygon
+              fill="white"
+              points="0 0 0 56 39.3600006 28"
+            />
+          </g>
+        </svg>
+      </div>
+      <div
+        className="c13"
+      >
+        <div>
+          <div
+            className="c9"
+          >
+            <span
+              className="c14"
+            >
+              Future of Art
+            </span>
+            <span
+              className="c15"
+            >
+              02:28
+            </span>
+          </div>
+          <div
+            className="c9"
+          >
+            <span
+              className="c16"
+            >
+              <div>
+                Child 
+                title
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c17"
+      >
+        <div
+          className="c18"
+        >
+          <div>
+            Child 
+            description
+          </div>
         </div>
       </div>
     </div>

@@ -5,24 +5,28 @@ import { formatTime } from "../Constants"
 import { Fonts } from "../Fonts"
 
 interface Props {
+  editTitle?: any
   media?: any
-  seriesTitle?: string
+  tag?: string
+  title?: string
 }
 
 export class VideoInfoBlock extends Component<Props, null> {
   render() {
     const {
+      editTitle,
       media,
-      seriesTitle,
+      tag,
+      title
     } = this.props
 
     return (
       <div>
         <Row>
-          {seriesTitle &&
-            <SeriesTitle>
-              {seriesTitle}
-            </SeriesTitle>
+          {tag &&
+            <TagTitle>
+              {tag}
+            </TagTitle>
           }
           <MediaDuration>
             {formatTime(media.duration)}
@@ -30,7 +34,7 @@ export class VideoInfoBlock extends Component<Props, null> {
         </Row>
         <Row>
           <MediaTitle>
-            {media.title}
+            {editTitle || title}
           </MediaTitle>
         </Row>
       </div>
@@ -38,7 +42,7 @@ export class VideoInfoBlock extends Component<Props, null> {
   }
 }
 
-const SeriesTitle = styled.span`
+const TagTitle = styled.span`
   ${Fonts.unica("s16")}
   margin-right: 35px;
 `

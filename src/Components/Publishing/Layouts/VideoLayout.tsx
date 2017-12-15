@@ -62,9 +62,9 @@ export class VideoLayout extends Component<Props, State> {
             notifyIsPaused={this.onPauseVideo}
           />
           <VideoCover
+            article={article}
             media={media}
             seriesTitle={seriesArticle && seriesArticle.title}
-            description={article.description}
             playVideo={this.playVideo}
             hideCover={this.state.isPlaying}
           />
@@ -84,7 +84,7 @@ export class VideoLayout extends Component<Props, State> {
                   {seriesArticle.title}
                 </Link>
                 :
-                <span>{article.vertical && article.verical.name}</span>
+                <span>{article.vertical && article.vertical.name}</span>
               }
             </RelatedArticlesTitle>
           </MaxRow>
