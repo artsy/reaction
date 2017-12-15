@@ -243,7 +243,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   white-space: nowrap;
 }
 
-.c81 {
+.c82 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -251,11 +251,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c81.date {
+.c82.date {
   white-space: nowrap;
 }
 
-.c81:before {
+.c82:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -265,7 +265,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-color: white;
 }
 
-.c81:before {
+.c82:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
@@ -306,7 +306,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 10px 10px 0px;
 }
 
-.c80 {
+.c81 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -325,13 +325,21 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c78 {
+.c79 {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   -webkit-transition: opacity 0.15s;
   transition: opacity 0.15s;
+  display: block;
+}
+
+.c77 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
 }
 
 .c70 {
@@ -348,12 +356,16 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: flex;
 }
 
-.c70 .c77 {
+.c70 .c78 {
   opacity: 1;
 }
 
-.c70:hover .c77 {
+.c70:hover .c78 {
   opacity: .7;
+}
+
+.c70 .c76 {
+  background: black;
 }
 
 .c71 {
@@ -403,14 +415,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c76 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c79 {
+.c80 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -433,7 +438,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.1em;
 }
 
-.c79 svg {
+.c80 svg {
   width: 40px;
 }
 
@@ -670,16 +675,16 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c83 {
+.c84 {
   color: white;
   max-width: 1200px;
 }
 
-.c84 .file__PartnerBlockContainer-m6gc27-0 {
+.c85 .file__PartnerBlockContainer-m6gc27-0 {
   display: none;
 }
 
-.c84:first-of-type {
+.c85:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -693,11 +698,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c84:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+.c85:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
   display: block;
 }
 
-.c85 {
+.c86 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1042,7 +1047,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 40px;
 }
 
-.c0 .c82,
+.c0 .c83,
 .c0 .c52 {
   margin: 60px 0 100px 0;
 }
@@ -1130,7 +1135,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c81 {
+  .c82 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1144,7 +1149,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c81:before {
+  .c82:before {
     min-width: 8px;
     min-height: 8px;
   }
@@ -1153,6 +1158,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media (max-width:600px) {
   .c61 {
     margin-top: 15px;
+  }
+}
+
+@media (max-width:900px) {
+  .c77 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
@@ -1192,15 +1205,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c76 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c79 svg {
+  .c80 svg {
     width: 30px;
   }
 }
@@ -1354,18 +1359,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c84:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+  .c85:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
     display: none;
   }
 
-  .c84 .file__PartnerBlockContainer-m6gc27-0 {
+  .c85 .file__PartnerBlockContainer-m6gc27-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c85 {
+  .c86 {
     margin-bottom: 20px;
   }
 }
@@ -1437,7 +1442,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0 .c82,
+  .c0 .c83,
   .c0 .c52 {
     margin: 40px 0 100px 0;
   }
@@ -2064,14 +2069,14 @@ exports[`Video Layout matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c76"
+          className="c76 c77"
         >
           <img
-            className="c77 c78"
+            className="c78 c79"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
           />
           <div
-            className="c79"
+            className="c80"
           >
             <svg
               className="c26 c27"
@@ -2134,11 +2139,11 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="Byline c80"
+            className="Byline c81"
             color="white"
           >
             <div
-              className="author c81"
+              className="author c82"
               color="white"
             >
               By 
@@ -2152,10 +2157,10 @@ exports[`Video Layout matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c76"
+          className="c76 c77"
         >
           <img
-            className="c77 c78"
+            className="c78 c79"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
           />
         </div>
@@ -2166,20 +2171,20 @@ exports[`Video Layout matches the snapshot 1`] = `
     className="c42 c43"
   >
     <div
-      className="c82 c83 c43"
+      className="c83 c84 c43"
       color="white"
     >
       <div
-        className="c84 c44 c54"
+        className="c85 c44 c54"
       >
         <div
-          className="c85"
+          className="c86"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c84 c44 c50"
+        className="c85 c44 c50"
       >
         <div
           className="article__text-section c56"
