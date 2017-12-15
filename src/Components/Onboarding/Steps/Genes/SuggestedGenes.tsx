@@ -29,21 +29,19 @@ class SuggestedGenesContent extends React.Component<Props, null> {
     this.excludedGeneIds = new Set(this.props.suggested_genes.map(item => item._id))
   }
 
-  followedGene(followedGene: Gene) {
-    this.excludedGeneIds.add(followedGene._id)
+  onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
+    const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+    this.excludedGeneIds.add(suggestedGene.getValue("_id"))
 
-    const onGeneFollowed = (store: RecordSourceSelectorProxy, data: SelectorData): void => {
-      const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
-      this.excludedGeneIds.add(suggestedGene.getValue("_id"))
+    const suggestedGenesRootField = store.get("client:root")
+    const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
+    const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
 
-      const suggestedGenesRootField = store.get("client:root")
-      const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
-      const updatedSuggestedGenes = suggestedGenes.map(
-        gene => (gene.getValue("id") === followedGene.id ? suggestedGene : gene)
-      )
+    suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
+  }
 
-      suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
-    }
+  followedGene(gene: Gene) {
+    this.excludedGeneIds.add(gene._id)
 
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
@@ -71,11 +69,11 @@ class SuggestedGenesContent extends React.Component<Props, null> {
       `,
       variables: {
         input: {
-          gene_id: followedGene.id,
+          gene_id: gene.id,
         },
         excludedGeneIds: Array.from(this.excludedGeneIds),
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => onGeneFollowed(store, data),
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data),
     })
   }
 
