@@ -12421,6 +12421,18 @@
               "deprecationReason": null
             },
             {
+              "name": "display_timely_at",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "eligible_sale_artworks_count",
               "description": null,
               "args": [],
@@ -14973,6 +14985,18 @@
               "deprecationReason": null
             },
             {
+              "name": "display_timely_at",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "eligible_sale_artworks_count",
               "description": null,
               "args": [],
@@ -16819,6 +16843,18 @@
             },
             {
               "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "display_timely_at",
               "description": null,
               "args": [],
               "type": {
@@ -24366,6 +24402,18 @@
             },
             {
               "name": "description",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "display_timely_at",
               "description": null,
               "args": [],
               "type": {

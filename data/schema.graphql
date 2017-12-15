@@ -716,6 +716,7 @@ type ArtworkContextAuction implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -951,6 +952,7 @@ type ArtworkContextSale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -3259,6 +3261,7 @@ type HomePageModuleContextSale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -4729,6 +4732,7 @@ type Sale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
