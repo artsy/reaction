@@ -16,15 +16,22 @@ storiesOf("Publishing/Nav", module).add("Regular", () => {
 })
 .add("Transparent", () => {
   return (
-    <div style={{
-      background: "url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg)",
-      color: "white"
-    }}>
+    <div>
       Regular:
-    <Nav transparent />
-      <br />
+      <div style={backgroundStyle}>
+        <Nav transparent />
+      </div>
       Sponsored:
-    <Nav sponsor={SponsoredArticle.sponsor} transparent/>
+      <div style={backgroundStyle}>
+        <Nav sponsor={SponsoredArticle.sponsor} transparent />
+      </div>
     </div>
   )
 })
+
+const backgroundStyle = {
+  background: "url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg)",
+  color: "white",
+  position: "relative",
+  height: "50px"
+}

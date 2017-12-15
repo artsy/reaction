@@ -183,6 +183,8 @@ exports[`renders a series properly 1`] = `
 
 .c2 {
   background-color: transparent;
+  position: absolute;
+  top: 0;
 }
 
 .c1 {
@@ -201,6 +203,10 @@ exports[`renders a series properly 1`] = `
   height: 46px;
   width: 100%;
   color: white;
+  z-index: 10;
+}
+
+.c1 a {
   z-index: 10;
 }
 
@@ -938,89 +944,98 @@ exports[`renders a series properly 1`] = `
   className="Series c0"
   color="white"
 >
-  <div
-    className="c1 c2"
-  >
+  <div>
     <div
-      className="PartnerInline c3"
+      className="c1 c2"
     >
-      <a
-        href="/"
-      >
-        <div
-          className="c4 c5"
-          onClick={undefined}
-          style={undefined}
-        >
-          
-        </div>
-      </a>
-    </div>
-    <div
-      className="c6"
-    >
-      Artsy Editorial
-    </div>
-    <div
-      className="c7"
-    >
-      <a
-        className="mlh-login c8"
-        href="/log_in"
-      >
-        <button
-          className="c9 c10 c11"
-        >
-          <span>
-            Login
-          </span>
-        </button>
-      </a>
-      <a
-        className="mlh-signup c8"
-        href="/sign_up"
-      >
-        <button
-          className="c12 c13"
-        >
-          <span>
-            Signup
-          </span>
-        </button>
-      </a>
       <div
-        className="c14 c15"
+        className="PartnerInline c3"
       >
-        <svg
-          enableBackground="new 0 0 32 32"
-          fill="white"
-          onClick={[Function]}
-          version="1.1"
-          viewBox="0 0 32 32"
-          width="32px"
-          xmlns="http://www.w3.org/2000/svg"
+        <a
+          href="/"
         >
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="22"
-          />
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="15"
-          />
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="8"
-          />
-        </svg>
+          <div
+            className="c4 c5"
+            onClick={undefined}
+            style={undefined}
+          >
+            
+          </div>
+        </a>
+      </div>
+      <div
+        className="c6"
+      >
+        Artsy Editorial
+      </div>
+      <div
+        className="c7"
+      >
+        <a
+          className="mlh-login c8"
+          href="/log_in"
+        >
+          <button
+            className="c9 c10 c11"
+          >
+            <span>
+              Login
+            </span>
+          </button>
+        </a>
+        <a
+          className="mlh-signup c8"
+          href="/sign_up"
+        >
+          <button
+            className="c12 c13"
+          >
+            <span>
+              Signup
+            </span>
+          </button>
+        </a>
+        <div
+          className="c14 c15"
+        >
+          <svg
+            enableBackground="new 0 0 32 32"
+            fill="white"
+            onClick={[Function]}
+            version="1.1"
+            viewBox="0 0 32 32"
+            width="32px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="22"
+            />
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="15"
+            />
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="8"
+            />
+          </svg>
+        </div>
       </div>
     </div>
+    <span
+      style={
+        Object {
+          "fontSize": 0,
+        }
+      }
+    />
   </div>
   <div
     className="c16 c17"
@@ -1374,6 +1389,8 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c2 {
   background-color: transparent;
+  position: absolute;
+  top: 0;
 }
 
 .c1 {
@@ -1392,6 +1409,10 @@ exports[`renders a sponsored series properly 1`] = `
   height: 46px;
   width: 100%;
   color: white;
+  z-index: 10;
+}
+
+.c1 a {
   z-index: 10;
 }
 
@@ -2178,89 +2199,98 @@ exports[`renders a sponsored series properly 1`] = `
   className="Series c0"
   color="white"
 >
-  <div
-    className="c1 c2"
-  >
+  <div>
     <div
-      className="PartnerInline c3"
+      className="c1 c2"
     >
-      <a
-        href="/"
-      >
-        <div
-          className="c4 c5"
-          onClick={undefined}
-          style={undefined}
-        >
-          
-        </div>
-      </a>
-    </div>
-    <div
-      className="c6"
-    >
-      Artsy Editorial
-    </div>
-    <div
-      className="c7"
-    >
-      <a
-        className="mlh-login c8"
-        href="/log_in"
-      >
-        <button
-          className="c9 c10 c11"
-        >
-          <span>
-            Login
-          </span>
-        </button>
-      </a>
-      <a
-        className="mlh-signup c8"
-        href="/sign_up"
-      >
-        <button
-          className="c12 c13"
-        >
-          <span>
-            Signup
-          </span>
-        </button>
-      </a>
       <div
-        className="c14 c15"
+        className="PartnerInline c3"
       >
-        <svg
-          enableBackground="new 0 0 32 32"
-          fill="white"
-          onClick={[Function]}
-          version="1.1"
-          viewBox="0 0 32 32"
-          width="32px"
-          xmlns="http://www.w3.org/2000/svg"
+        <a
+          href="/"
         >
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="22"
-          />
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="15"
-          />
-          <rect
-            height="2"
-            width="20"
-            x="6"
-            y="8"
-          />
-        </svg>
+          <div
+            className="c4 c5"
+            onClick={undefined}
+            style={undefined}
+          >
+            
+          </div>
+        </a>
+      </div>
+      <div
+        className="c6"
+      >
+        Artsy Editorial
+      </div>
+      <div
+        className="c7"
+      >
+        <a
+          className="mlh-login c8"
+          href="/log_in"
+        >
+          <button
+            className="c9 c10 c11"
+          >
+            <span>
+              Login
+            </span>
+          </button>
+        </a>
+        <a
+          className="mlh-signup c8"
+          href="/sign_up"
+        >
+          <button
+            className="c12 c13"
+          >
+            <span>
+              Signup
+            </span>
+          </button>
+        </a>
+        <div
+          className="c14 c15"
+        >
+          <svg
+            enableBackground="new 0 0 32 32"
+            fill="white"
+            onClick={[Function]}
+            version="1.1"
+            viewBox="0 0 32 32"
+            width="32px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="22"
+            />
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="15"
+            />
+            <rect
+              height="2"
+              width="20"
+              x="6"
+              y="8"
+            />
+          </svg>
+        </div>
       </div>
     </div>
+    <span
+      style={
+        Object {
+          "fontSize": 0,
+        }
+      }
+    />
   </div>
   <div
     className="c16 c17"

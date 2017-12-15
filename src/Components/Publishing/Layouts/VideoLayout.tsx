@@ -53,6 +53,7 @@ export class VideoLayout extends Component<Props, State> {
         <Nav
           transparent
           sponsor={article.sponsor}
+          canFix={false}
         />
         <VideoPlayerContainer>
           <VideoPlayer
