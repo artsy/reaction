@@ -53,7 +53,7 @@ export class VideoCover extends Component<Props, null> {
             <Col xs={8} sm={6}>
               <VideoInfoBlock
                 media={media}
-                tag={seriesTitle || (article.vertical && article.vertical.name)}
+                subTitle={seriesTitle || (article.vertical && article.vertical.name)}
                 title={article.title}
                 editTitle={editTitle}
               />

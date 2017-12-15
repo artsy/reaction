@@ -11,7 +11,7 @@ describe("Video Info Block", () => {
     const videoInfo = renderer.create(
       <VideoInfoBlock
         media={Media[0]}
-        tag="The Future of Art"
+        subTitle="The Future of Art"
         title="Trevor Paglan"
       />
     ).toJSON()
@@ -21,7 +21,7 @@ describe("Video Info Block", () => {
   it("matches the snapshot with edit props", () => {
     const videoInfo = renderer.create(
       <VideoInfoBlock
-        tag="The Future of Art"
+        subTitle="The Future of Art"
         media={Media[0]}
         title="Trevor Paglan"
         editTitle={EditableChild('title')}
@@ -33,7 +33,7 @@ describe("Video Info Block", () => {
   it("renders titles and duration", () => {
     const component = mount(
       <VideoInfoBlock
-        tag="The Future of Art"
+        subTitle="The Future of Art"
         media={Media[0]}
         title="Trevor Paglan"
       />
@@ -46,7 +46,7 @@ describe("Video Info Block", () => {
   it("renders editable title", () => {
     const component = mount(
       <VideoInfoBlock
-        tag="The Future of Art"
+        subTitle="The Future of Art"
         media={Media[0]}
         title="Trevor Paglan"
         editTitle={EditableChild('title')}
