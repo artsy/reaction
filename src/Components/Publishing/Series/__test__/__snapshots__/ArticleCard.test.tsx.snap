@@ -60,13 +60,21 @@ exports[`ArticleCard renders an article properly 1`] = `
   color: black;
 }
 
-.c10 {
+.c11 {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   -webkit-transition: opacity 0.15s;
   transition: opacity 0.15s;
+  display: block;
+}
+
+.c9 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
 }
 
 .c0 {
@@ -83,12 +91,16 @@ exports[`ArticleCard renders an article properly 1`] = `
   display: flex;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   opacity: 1;
 }
 
-.c0:hover .c9 {
+.c0:hover .c10 {
   opacity: .7;
+}
+
+.c0 .c8 {
+  background: white;
 }
 
 .c1 {
@@ -138,13 +150,6 @@ exports[`ArticleCard renders an article properly 1`] = `
   line-height: 1.5em;
 }
 
-.c8 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
 @media (max-width:720px) {
   .c7 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -181,6 +186,14 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 @media (max-width:900px) {
+  .c9 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
   .c0 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
@@ -212,14 +225,6 @@ exports[`ArticleCard renders an article properly 1`] = `
     font-size: 19px;
     line-height: 1.5em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c8 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
   }
 }
 
@@ -270,10 +275,10 @@ exports[`ArticleCard renders an article properly 1`] = `
     </div>
   </div>
   <div
-    className="c8"
+    className="c8 c9"
   >
     <img
-      className="c9 c10"
+      className="c10 c11"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
     />
   </div>
@@ -281,9 +286,16 @@ exports[`ArticleCard renders an article properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with children properly 1`] = `
-.c8 {
+.c9 {
   width: 32px;
   height: 32px;
+}
+
+.c7 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
 }
 
 .c0 {
@@ -300,12 +312,16 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   display: flex;
 }
 
-.c0 .file__Image-s36dvv5-0 {
+.c0 .file__Image-s107dzpm-0 {
   opacity: 1;
 }
 
-.c0:hover .file__Image-s36dvv5-0 {
+.c0:hover .file__Image-s107dzpm-0 {
   opacity: .7;
+}
+
+.c0 .c6 {
+  background: white;
 }
 
 .c1 {
@@ -374,14 +390,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   margin-right: 5px;
 }
 
-.c6 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c7 {
+.c8 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -404,8 +413,16 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   line-height: 1.1em;
 }
 
-.c7 svg {
+.c8 svg {
   width: 40px;
+}
+
+@media (max-width:900px) {
+  .c7 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width:900px) {
@@ -444,15 +461,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c6 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c7 svg {
+  .c8 svg {
     width: 30px;
   }
 }
@@ -501,17 +510,17 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     </div>
   </div>
   <div
-    className="c6"
+    className="c6 c7"
   >
     <div>
       Child 
       image
     </div>
     <div
-      className="c7"
+      className="c8"
     >
       <svg
-        className="c8"
+        className="c9"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
@@ -537,7 +546,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with unpublished media properly 1`] = `
-.c10 {
+.c11 {
   width: 32px;
   height: 32px;
 }
@@ -554,13 +563,21 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   white-space: nowrap;
 }
 
-.c8 {
+.c9 {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   -webkit-transition: opacity 0.15s;
   transition: opacity 0.15s;
+  display: block;
+}
+
+.c7 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
 }
 
 .c0 {
@@ -577,12 +594,16 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   display: flex;
 }
 
-.c0 .c7 {
+.c0 .c8 {
   opacity: 1;
 }
 
-.c0:hover .c7 {
+.c0:hover .c8 {
   opacity: .7;
+}
+
+.c0 .c6 {
+  background: white;
 }
 
 .c1 {
@@ -632,14 +653,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   line-height: 1.5em;
 }
 
-.c6 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c9 {
+.c10 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -662,7 +676,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   line-height: 1.1em;
 }
 
-.c9 svg {
+.c10 svg {
   width: 40px;
 }
 
@@ -677,6 +691,14 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     font-size: 14px;
     line-height: 1.4em;
     margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c7 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
@@ -716,15 +738,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c6 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c9 svg {
+  .c10 svg {
     width: 30px;
   }
 }
@@ -764,17 +778,17 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     </div>
   </div>
   <div
-    className="c6"
+    className="c6 c7"
   >
     <img
-      className="c7 c8"
+      className="c8 c9"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
     />
     <div
-      className="c9"
+      className="c10"
     >
       <svg
-        className="c10"
+        className="c11"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
