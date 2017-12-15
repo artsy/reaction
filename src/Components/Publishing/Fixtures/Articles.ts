@@ -680,12 +680,15 @@ export const VideoArticle: ArticleData = {
   layout: "video",
   id: "597b9f652d35b80017a2a6a7",
   _id: "597b9f652d35b80017a2a6a7",
-  title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  title: "Trevor Paglan",
   thumbnail_title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
   thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   published_at: "2017-07-28T20:38:05.709Z",
   description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
+  vertical: {
+    name: "Art Market"
+  },
   media: Media[0]
 }
 
