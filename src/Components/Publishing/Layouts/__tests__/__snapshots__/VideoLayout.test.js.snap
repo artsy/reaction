@@ -211,6 +211,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   z-index: 10;
 }
 
+.c2 a {
+  z-index: 10;
+}
+
 .c7 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;

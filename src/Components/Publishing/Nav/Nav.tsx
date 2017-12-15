@@ -9,8 +9,8 @@ import { SubNav } from "./SubNav"
 interface Props extends React.HTMLProps<HTMLDivElement>{
   canFix?: boolean
   sponsor?: any
-  transparent?: boolean
   title?: string
+  transparent?: boolean
 }
 
 interface State {
@@ -25,8 +25,8 @@ interface DivProps {
 export class NavComponent extends React.Component<Props, State> {
   static defaultProps = {
     canFix: true,
-    transparent: false,
-    title: "Artsy Editorial"
+    title: "Artsy Editorial",
+    transparent: false
   }
 
   state = {

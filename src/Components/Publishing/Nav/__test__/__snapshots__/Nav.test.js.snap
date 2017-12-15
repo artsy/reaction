@@ -204,6 +204,10 @@ exports[`Nav renders a Nav 1`] = `
   z-index: 10;
 }
 
+.c0 a {
+  z-index: 10;
+}
+
 .c5 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -553,6 +557,10 @@ exports[`Nav renders a sponsored nav 1`] = `
   height: 46px;
   width: 100%;
   color: white;
+  z-index: 10;
+}
+
+.c0 a {
   z-index: 10;
 }
 
@@ -954,6 +962,10 @@ exports[`Nav renders a transparent nav 1`] = `
   height: 46px;
   width: 100%;
   color: white;
+  z-index: 10;
+}
+
+.c0 a {
   z-index: 10;
 }
 
