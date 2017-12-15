@@ -7,14 +7,15 @@ import { Fonts } from "../Fonts"
 import { Nav } from "../Nav/Nav"
 import { ArticleCard, ArticleCardContainer } from "../Series/ArticleCard"
 import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
-import { VideoContainer, VideoPlayer } from "../VideoPlayer/VideoPlayer"
-import { MaxRow } from "./Shared"
-import { VideoAbout, VideoAboutContainer } from "./VideoAbout"
-import { VideoCover } from "./VideoCover"
+import { ArticleData } from "../Typings"
+import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
+import { MaxRow } from "../Video/Shared"
+import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
+import { VideoCover } from "../Video/VideoCover"
 
 interface Props {
-  article: any
-  seriesArticle?: any
+  article: ArticleData
+  seriesArticle?: ArticleData
   relatedArticles?: any
 }
 

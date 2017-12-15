@@ -7720,9 +7720,9 @@ react-url-query@^1.1.4:
     prop-types "^15.5.9"
     query-string "^4.2.3"
 
-react-waypoint@^7.3.2:
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/react-waypoint/-/react-waypoint-7.3.2.tgz#11ec5cfa0b5acb1cc95f7f8fb82e194170d95ecf"
+react-waypoint@^7.3.3:
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/react-waypoint/-/react-waypoint-7.3.3.tgz#49ad8e69cca4ae80f2f19608e5d6cf05d75c607e"
   dependencies:
     consolidated-events "^1.1.0"
     prop-types "^15.0.0"

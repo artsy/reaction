@@ -11,8 +11,8 @@ import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 import { Nav } from "../../Nav/Nav"
 import { ArticleCard } from "../../Series/ArticleCard"
 import { SeriesAbout } from "../../Series/SeriesAbout"
-import { VideoPlayer } from "../../VideoPlayer/VideoPlayer"
-import { VideoAbout } from "../VideoAbout"
+import { VideoPlayer } from "../../Video/Player/VideoPlayer"
+import { VideoAbout } from "../../Video/VideoAbout"
 import { VideoLayout } from "../VideoLayout"
 
 describe("Video Layout", () => {

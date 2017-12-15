@@ -10,8 +10,12 @@ import {
   FeatureArticle,
   ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
+  SeriesArticle,
+  SeriesArticleSponsored,
   StandardArticle,
-  SuperArticle
+  SuperArticle,
+  VideoArticle,
+  VideoArticleSponsored
 } from "../Fixtures/Articles"
 
 import {
@@ -157,4 +161,49 @@ story.add("Feature", () => {
     const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} />
   })
-
+  .add("Series", () => {
+    return (
+      <Article
+        article={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Series - Sponsored", () => {
+    return (
+      <Article
+        article={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Video Article", () => {
+    return (
+      <Article article={VideoArticle} />
+    )
+  })
+  .add("Video Article - Series", () => {
+    return (
+      <Article
+        article={VideoArticle}
+        seriesArticle={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Video Article - Sponsored", () => {
+    return (
+      <Article
+        article={VideoArticleSponsored}
+      />
+    )
+  })
+  .add("Video Article - Series + Sponsored", () => {
+    return (
+      <Article
+        article={VideoArticleSponsored}
+        seriesArticle={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle, VideoArticle]}
+      />
+    )
+  })

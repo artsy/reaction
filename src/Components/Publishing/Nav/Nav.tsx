@@ -102,7 +102,10 @@ export const Nav = styled(NavComponent)`
   height: 46px;
   width: 100%;
   color: white;
-  z-index: 10
+  z-index: 10;
+  a {
+    z-index: 10;
+  }
 `
 const Title = styled.div`
   ${Fonts.garamond("s17")}

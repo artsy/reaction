@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { IconVideoPause } from "../Icon/IconVideoPause"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { IconVideoPause } from "../../Icon/IconVideoPause"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 
 interface Props extends React.HTMLProps<HTMLSpanElement> {
   isPlaying: boolean

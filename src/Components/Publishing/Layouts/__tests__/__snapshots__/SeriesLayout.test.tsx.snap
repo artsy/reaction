@@ -1,7 +1,220 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series properly 1`] = `
+.c5 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c3 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c3 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c3 .c4 {
+  margin: 0;
+  vertical-align: middle;
+}
+
 .c11 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c11:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c10 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c10:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c13 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c13:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c8 {
+  text-decoration: none;
+}
+
+.c15 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c2 {
+  background-color: transparent;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  color: white;
+  z-index: 10;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.c27 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -9,11 +222,11 @@ exports[`renders a series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c11.date {
+.c27.date {
   white-space: nowrap;
 }
 
-.c21 {
+.c34 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -21,11 +234,11 @@ exports[`renders a series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c21.date {
+.c34.date {
   white-space: nowrap;
 }
 
-.c21:before {
+.c34:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -35,13 +248,13 @@ exports[`renders a series properly 1`] = `
   background-color: white;
 }
 
-.c21:before {
+.c34:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c20 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,12 +273,12 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c16 {
+.c32 {
   width: 32px;
   height: 32px;
 }
 
-.c14 {
+.c30 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -74,7 +287,7 @@ exports[`renders a series properly 1`] = `
   transition: opacity 0.15s;
 }
 
-.c6 {
+.c22 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -88,37 +301,15 @@ exports[`renders a series properly 1`] = `
   display: flex;
 }
 
-.c6 .c13 {
+.c22 .c29 {
   opacity: 1;
 }
 
-.c6:hover .c13 {
+.c22:hover .c29 {
   opacity: .7;
 }
 
-.c17 {
-  display: block;
-  border: 1px solid;
-  border-radius: 2px;
-  color: white;
-  cursor: default;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c17 .c13 {
-  opacity: 0.7;
-}
-
-.c17:hover .c13 {
-  opacity: .7;
-}
-
-.c7 {
+.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -134,15 +325,15 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c7 .author,
-.c7 .date {
+.c23 .author,
+.c23 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c9 {
+.c25 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -150,7 +341,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c8 {
+.c24 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -158,40 +349,21 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c10 {
+.c26 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c18 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
-.c18 span {
-  margin-right: 5px;
-}
-
-.c12 {
+.c28 {
   position: relative;
   width: 50%;
   height: 100%;
   margin-left: 30px;
 }
 
-.c15 {
+.c31 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -214,34 +386,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c15 svg {
+.c31 svg {
   width: 40px;
 }
 
-.c19 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-}
-
-.c24 {
+.c37 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -260,7 +409,7 @@ exports[`renders a series properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c26 {
+.c39 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -269,7 +418,7 @@ exports[`renders a series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c28 {
+.c41 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -278,12 +427,12 @@ exports[`renders a series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c29 {
+.c42 {
   position: relative;
   width: 100%;
 }
 
-.c29 a {
+.c42 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -293,13 +442,13 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c29 a:hover {
+.c42 a:hover {
   color: #999;
 }
 
-.c29 p,
-.c29 ul,
-.c29 ol {
+.c42 p,
+.c42 ul,
+.c42 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -310,20 +459,20 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c29 p:first-child {
+.c42 p:first-child {
   padding-top: 0;
 }
 
-.c29 p:last-child {
+.c42 p:last-child {
   padding-bottom: 0;
 }
 
-.c29 ul,
-.c29 ol {
+.c42 ul,
+.c42 ol {
   padding-left: 1em;
 }
 
-.c29 li {
+.c42 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -332,7 +481,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c29 h1 {
+.c42 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -345,7 +494,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c29 h1:before {
+.c42 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -356,7 +505,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c29 h2 {
+.c42 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -365,11 +514,11 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c29 h2 a {
+.c42 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c29 h3 {
+.c42 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -379,7 +528,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c29 h3 strong {
+.c42 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -387,11 +536,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c29 h3 a {
+.c42 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c29 blockquote {
+.c42 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -404,7 +553,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c29 .content-end {
+.c42 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -414,14 +563,14 @@ exports[`renders a series properly 1`] = `
   margin-left: 12px;
 }
 
-.c29 .artist-follow {
+.c42 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c29 .artist-follow:before {
+.c42 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -429,7 +578,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c29 .artist-follow:after {
+.c42 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -438,16 +587,16 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c23 {
+.c36 {
   color: white;
   max-width: 1200px;
 }
 
-.c25 .file__PartnerBlockContainer-m6gc27-0 {
+.c38 .file__PartnerBlockContainer-m6gc27-0 {
   display: none;
 }
 
-.c25:first-of-type {
+.c38:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -461,29 +610,29 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c25:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+.c38:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
   display: block;
 }
 
-.c27 {
+.c40 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
-.c3 {
+.c19 {
   color: white;
   text-align: center;
 }
 
-.c3 .file__PartnerBlockContainer-m6gc27-0 img {
+.c19 .file__PartnerBlockContainer-m6gc27-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c4 {
+.c20 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -491,31 +640,76 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c0 {
-  color: white;
-  background-color: black;
-  padding: 150px 20px;
-}
-
-.c1 {
+.c17 {
   max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
-.c1 .c2 {
+.c17 .c18 {
   margin-bottom: 90px;
 }
 
-.c1 .c5 {
+.c17 .c21 {
   margin-bottom: 60px;
 }
 
-.c1 .c22 {
+.c17 .c35 {
   padding-top: 60px;
 }
 
+.c0 {
+  color: white;
+  background-color: black;
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg);
+  background-size: cover;
+  background-position: 50%;
+}
+
+.c0 .c16 {
+  padding: 90px 20px 150px;
+}
+
 @media (max-width:720px) {
-  .c11 {
+  .c3 img {
+    max-height: 24px;
+  }
+
+  .c3 .c4 {
+    font-size: 24px;
+  }
+
+  .c3 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 .c9,
+  .c7 .c12 {
+    display: none;
+  }
+
+  .c7 .c14 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    position: relative;
+  }
+}
+
+@media (max-width:720px) {
+  .c27 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -529,7 +723,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c21 {
+  .c34 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -543,14 +737,14 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c21:before {
+  .c34:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:900px) {
-  .c6 {
+  .c22 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -559,23 +753,14 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c17 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c7 {
+  .c23 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c9 {
+  .c25 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -584,7 +769,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c26 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -594,7 +779,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c12 {
+  .c28 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -602,22 +787,13 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c15 svg {
+  .c31 svg {
     width: 30px;
   }
 }
 
-@media (max-width:900px) {
-  .c19 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
 @media only screen and (min-width:0em) {
-  .c26 {
+  .c39 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -627,7 +803,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c26 {
+  .c39 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-basis: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -637,7 +813,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c28 {
+  .c41 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -647,7 +823,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c28 {
+  .c41 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -657,37 +833,37 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c29 p,
-  .c29 ul,
-  .c29 ol {
+  .c42 p,
+  .c42 ul,
+  .c42 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c29 li {
+  .c42 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c29 h1 {
+  .c42 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c29 h2 {
+  .c42 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c29 h3 {
+  .c42 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -695,51 +871,51 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c29 h3 strong {
+  .c42 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c29 blockquote {
+  .c42 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c29 .content-start {
+  .c42 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c25:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
+  .c38:first-of-type .file__PartnerBlockContainer-m6gc27-0 {
     display: none;
   }
 
-  .c25 .file__PartnerBlockContainer-m6gc27-0 {
+  .c38 .file__PartnerBlockContainer-m6gc27-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c27 {
+  .c40 {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width:900px) {
-  .c3 .file__PartnerBlockContainer-m6gc27-0 img {
+  .c19 .file__PartnerBlockContainer-m6gc27-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c20 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -749,11 +925,11 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c1 .c5 {
+  .c17 .c21 {
     margin-bottom: 40px;
   }
 
-  .c1 .c22 {
+  .c17 .c35 {
     padding-top: 60px;
   }
 }
@@ -763,64 +939,148 @@ exports[`renders a series properly 1`] = `
   color="white"
 >
   <div
-    className="c1"
+    className="c1 c2"
   >
     <div
-      className="SeriesTitle c2 c3"
+      className="PartnerInline c3"
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="c4 c5"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+    </div>
+    <div
+      className="c6"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c7"
+    >
+      <a
+        className="mlh-login c8"
+        href="/log_in"
+      >
+        <button
+          className="c9 c10 c11"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c8"
+        href="/sign_up"
+      >
+        <button
+          className="c12 c13"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c14 c15"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c16 c17"
+  >
+    <div
+      className="SeriesTitle c18 c19"
       color="white"
     >
       <div
-        className="c4"
+        className="c20"
       >
         The Future of Art
       </div>
     </div>
     <a
-      className="ArticleCard c5 c6"
+      className="ArticleCard c21 c22"
       color="white"
       href="joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
     >
       <div
-        className="c7"
+        className="c23"
       >
         <div>
           <div
-            className="c8"
+            className="c24"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c9"
+            className="c25"
           >
             New Study Shows the Gender Pay Gap for Artists Is Not So Simple
           </div>
           <div
-            className="c10"
+            className="c26"
           >
             The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
           </div>
         </div>
         <div
-          className="date c11"
+          className="date c27"
         >
           Aug 28, 2017
         </div>
       </div>
       <div
-        className="c12"
+        className="c28"
       >
         <img
-          className="c13 c14"
+          className="c29 c30"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
         />
         <div
-          className="c15"
+          className="c31"
         >
           <svg
-            className="c16"
+            className="c32"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -844,133 +1104,78 @@ exports[`renders a series properly 1`] = `
       </div>
     </a>
     <a
-      className="ArticleCard c5 c17"
+      className="ArticleCard c21 c22"
       color="white"
-      href=""
+      href="new-yorks-next-art-district"
       onClick={[Function]}
     >
       <div
-        className="c7"
+        className="c23"
       >
         <div>
           <div
-            className="c8"
+            className="c24"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c9"
+            className="c25"
           >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+            New York's Next Art District
           </div>
           <div
-            className="c10"
+            className="c26"
           >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
           </div>
         </div>
         <div
-          className="c18"
-        >
-          <span>
-            Available 
-          </span>
-          <div
-            className="date c11"
-          >
-            Aug 28, 2018
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-      >
-        <img
-          className="c13 c14"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c19"
-        >
-          Coming Soon
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c5 c6"
-      color="white"
-      href="artsy-editorial-path-winning-art-prize"
-      onClick={[Function]}
-    >
-      <div
-        className="c7"
-      >
-        <div>
-          <div
-            className="c8"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c9"
-          >
-            What’s the Path to Winning an Art Prize?
-          </div>
-          <div
-            className="c10"
-          >
-            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c20"
+          className="Byline c33"
           color="white"
         >
           <div
-            className="author c21"
+            className="author c34"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c11"
+            className="date c27"
           >
-            Jun 29, 2017
+            May 19, 2017
           </div>
         </div>
       </div>
       <div
-        className="c12"
+        className="c28"
       >
         <img
-          className="c13 c14"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
+          className="c29 c30"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
         />
       </div>
     </a>
     <div
-      className="c22 c23 c24"
+      className="c35 c36 c37"
       color="white"
     >
       <div
-        className="c25 c26"
+        className="c38 c39"
       >
         <div
-          className="c27"
+          className="c40"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c25 c28"
+        className="c38 c41"
       >
         <div
-          className="article__text-section c29"
+          className="article__text-section c42"
         >
           <div
             dangerouslySetInnerHTML={
@@ -987,7 +1192,220 @@ exports[`renders a series properly 1`] = `
 `;
 
 exports[`renders a sponsored series properly 1`] = `
-.c14 {
+.c5 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c3 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c3 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c3 .c4 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c11 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c11:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c10 {
+  background: black;
+  color: white;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c10:hover:not(:disabled) {
+  background: #6e1fff;
+}
+
+.c13 {
+  background: #e5e5e5;
+  color: black;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  border-radius: 2px;
+  margin: 8px;
+}
+
+.c13:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c8 {
+  text-decoration: none;
+}
+
+.c15 {
+  display: none;
+  margin-right: 5px;
+  max-width: 32px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c2 {
+  background-color: transparent;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  color: white;
+  z-index: 10;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.c30 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -995,11 +1413,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c14.date {
+.c30.date {
   white-space: nowrap;
 }
 
-.c24 {
+.c37 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1007,11 +1425,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c24.date {
+.c37.date {
   white-space: nowrap;
 }
 
-.c24:before {
+.c37:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -1021,13 +1439,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c24:before {
+.c37:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c23 {
+.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1046,12 +1464,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c19 {
+.c35 {
   width: 32px;
   height: 32px;
 }
 
-.c17 {
+.c33 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1060,7 +1478,7 @@ exports[`renders a sponsored series properly 1`] = `
   transition: opacity 0.15s;
 }
 
-.c9 {
+.c25 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -1074,37 +1492,15 @@ exports[`renders a sponsored series properly 1`] = `
   display: flex;
 }
 
-.c9 .c16 {
+.c25 .c32 {
   opacity: 1;
 }
 
-.c9:hover .c16 {
+.c25:hover .c32 {
   opacity: .7;
 }
 
-.c20 {
-  display: block;
-  border: 1px solid;
-  border-radius: 2px;
-  color: white;
-  cursor: default;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c20 .c16 {
-  opacity: 0.7;
-}
-
-.c20:hover .c16 {
-  opacity: .7;
-}
-
-.c10 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1120,15 +1516,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c10 .author,
-.c10 .date {
+.c26 .author,
+.c26 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c12 {
+.c28 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -1136,7 +1532,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c11 {
+.c27 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1144,40 +1540,21 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c13 {
+.c29 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c21 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
-.c21 span {
-  margin-right: 5px;
-}
-
-.c15 {
+.c31 {
   position: relative;
   width: 50%;
   height: 100%;
   margin-left: 30px;
 }
 
-.c18 {
+.c34 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1200,34 +1577,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c18 svg {
+.c34 svg {
   width: 40px;
 }
 
-.c22 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-}
-
-.c27 {
+.c40 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1246,7 +1600,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c29 {
+.c42 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1255,7 +1609,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c31 {
+.c44 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1264,11 +1618,11 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c6 img {
+.c22 img {
   max-width: 220px;
 }
 
-.c7 {
+.c23 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1276,12 +1630,12 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c32 {
+.c45 {
   position: relative;
   width: 100%;
 }
 
-.c32 a {
+.c45 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -1291,13 +1645,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c32 a:hover {
+.c45 a:hover {
   color: #999;
 }
 
-.c32 p,
-.c32 ul,
-.c32 ol {
+.c45 p,
+.c45 ul,
+.c45 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1308,20 +1662,20 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c32 p:first-child {
+.c45 p:first-child {
   padding-top: 0;
 }
 
-.c32 p:last-child {
+.c45 p:last-child {
   padding-bottom: 0;
 }
 
-.c32 ul,
-.c32 ol {
+.c45 ul,
+.c45 ol {
   padding-left: 1em;
 }
 
-.c32 li {
+.c45 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1330,7 +1684,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c32 h1 {
+.c45 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1343,7 +1697,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c32 h1:before {
+.c45 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1354,7 +1708,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c32 h2 {
+.c45 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1363,11 +1717,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c32 h2 a {
+.c45 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c32 h3 {
+.c45 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1377,7 +1731,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c32 h3 strong {
+.c45 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1385,11 +1739,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c32 h3 a {
+.c45 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c32 blockquote {
+.c45 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1402,7 +1756,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c32 .content-end {
+.c45 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1412,14 +1766,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: 12px;
 }
 
-.c32 .artist-follow {
+.c45 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c32 .artist-follow:before {
+.c45 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1427,7 +1781,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c32 .artist-follow:after {
+.c45 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1436,16 +1790,16 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c26 {
+.c39 {
   color: white;
   max-width: 1200px;
 }
 
-.c28 .c5 {
+.c41 .c21 {
   display: none;
 }
 
-.c28:first-of-type {
+.c41:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1459,29 +1813,29 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c28:first-of-type .c5 {
+.c41:first-of-type .c21 {
   display: block;
 }
 
-.c30 {
+.c43 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
-.c3 {
+.c19 {
   color: white;
   text-align: center;
 }
 
-.c3 .c5 img {
+.c19 .c21 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c4 {
+.c20 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1489,43 +1843,88 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c0 {
-  color: white;
-  background-color: black;
-  padding: 150px 20px;
-}
-
-.byIHxY .c2 {
+.dNoOGw .c18 {
   margin-bottom: 90px;
 }
 
-.byIHxY .c8 {
+.dNoOGw .c24 {
   margin-bottom: 60px;
 }
 
-.byIHxY .c25 {
+.dNoOGw .c38 {
   padding-top: 60px;
 }
 
-.c1 {
+.c17 {
   max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
-.c1 .c2 {
+.c17 .c18 {
   margin-bottom: 60px;
 }
 
-.c1 .c8 {
+.c17 .c24 {
   margin-bottom: 60px;
 }
 
-.c1 .c25 {
+.c17 .c38 {
   padding-top: 60px;
 }
 
+.c0 {
+  color: white;
+  background-color: black;
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg);
+  background-size: cover;
+  background-position: 50%;
+}
+
+.c0 .c16 {
+  padding: 90px 20px 150px;
+}
+
 @media (max-width:720px) {
-  .c14 {
+  .c3 img {
+    max-height: 24px;
+  }
+
+  .c3 .c4 {
+    font-size: 24px;
+  }
+
+  .c3 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 .c9,
+  .c7 .c12 {
+    display: none;
+  }
+
+  .c7 .c14 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    position: relative;
+  }
+}
+
+@media (max-width:720px) {
+  .c30 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1539,7 +1938,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c24 {
+  .c37 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1553,14 +1952,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c24:before {
+  .c37:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:900px) {
-  .c9 {
+  .c25 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1569,23 +1968,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c20 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c10 {
+  .c26 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c12 {
+  .c28 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1594,7 +1984,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 {
+  .c29 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1604,7 +1994,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c15 {
+  .c31 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1612,22 +2002,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c18 svg {
+  .c34 svg {
     width: 30px;
   }
 }
 
-@media (max-width:900px) {
-  .c22 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
 @media only screen and (min-width:0em) {
-  .c29 {
+  .c42 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1637,7 +2018,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c29 {
+  .c42 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-basis: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -1647,7 +2028,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c31 {
+  .c44 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1657,7 +2038,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c31 {
+  .c44 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1667,13 +2048,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c6 img {
+  .c22 img {
     max-width: 195px;
   }
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c23 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1682,37 +2063,37 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c32 p,
-  .c32 ul,
-  .c32 ol {
+  .c45 p,
+  .c45 ul,
+  .c45 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c32 li {
+  .c45 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c32 h1 {
+  .c45 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c32 h2 {
+  .c45 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c32 h3 {
+  .c45 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1720,51 +2101,51 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c32 h3 strong {
+  .c45 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c32 blockquote {
+  .c45 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c32 .content-start {
+  .c45 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c28:first-of-type .c5 {
+  .c41:first-of-type .c21 {
     display: none;
   }
 
-  .c28 .c5 {
+  .c41 .c21 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c30 {
+  .c43 {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width:900px) {
-  .c3 .c5 img {
+  .c19 .c21 img {
     max-width: 200px;
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c20 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1774,21 +2155,21 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .byIHxY .c8 {
+  .dNoOGw .c24 {
     margin-bottom: 40px;
   }
 
-  .byIHxY .c25 {
+  .dNoOGw .c38 {
     padding-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c1 .c8 {
+  .c17 .c24 {
     margin-bottom: 40px;
   }
 
-  .c1 .c25 {
+  .c17 .c38 {
     padding-top: 60px;
   }
 }
@@ -1798,22 +2179,106 @@ exports[`renders a sponsored series properly 1`] = `
   color="white"
 >
   <div
-    className="c1"
+    className="c1 c2"
   >
     <div
-      className="SeriesTitle c2 c3"
+      className="PartnerInline c3"
+    >
+      <a
+        href="/"
+      >
+        <div
+          className="c4 c5"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+    </div>
+    <div
+      className="c6"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c7"
+    >
+      <a
+        className="mlh-login c8"
+        href="/log_in"
+      >
+        <button
+          className="c9 c10 c11"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c8"
+        href="/sign_up"
+      >
+        <button
+          className="c12 c13"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c14 c15"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c16 c17"
+  >
+    <div
+      className="SeriesTitle c18 c19"
       color="white"
     >
       <div
-        className="c4"
+        className="c20"
       >
         The Future of Art
       </div>
       <div
-        className="PartnerBlock c5 c6"
+        className="PartnerBlock c21 c22"
       >
         <div
-          className="c7"
+          className="c23"
         >
           Presented in Partnership with
         </div>
@@ -1829,51 +2294,51 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <a
-      className="ArticleCard c8 c9"
+      className="ArticleCard c24 c25"
       color="white"
       href="joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
     >
       <div
-        className="c10"
+        className="c26"
       >
         <div>
           <div
-            className="c11"
+            className="c27"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c12"
+            className="c28"
           >
             New Study Shows the Gender Pay Gap for Artists Is Not So Simple
           </div>
           <div
-            className="c13"
+            className="c29"
           >
             The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
           </div>
         </div>
         <div
-          className="date c14"
+          className="date c30"
         >
           Aug 28, 2017
         </div>
       </div>
       <div
-        className="c15"
+        className="c31"
       >
         <img
-          className="c16 c17"
+          className="c32 c33"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
         />
         <div
-          className="c18"
+          className="c34"
         >
           <svg
-            className="c19"
+            className="c35"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -1897,132 +2362,77 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </a>
     <a
-      className="ArticleCard c8 c20"
+      className="ArticleCard c24 c25"
       color="white"
-      href=""
+      href="new-yorks-next-art-district"
       onClick={[Function]}
     >
       <div
-        className="c10"
+        className="c26"
       >
         <div>
           <div
-            className="c11"
+            className="c27"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c12"
+            className="c28"
           >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+            New York's Next Art District
           </div>
           <div
-            className="c13"
+            className="c29"
           >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
           </div>
         </div>
         <div
-          className="c21"
-        >
-          <span>
-            Available 
-          </span>
-          <div
-            className="date c14"
-          >
-            Aug 28, 2018
-          </div>
-        </div>
-      </div>
-      <div
-        className="c15"
-      >
-        <img
-          className="c16 c17"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c22"
-        >
-          Coming Soon
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c8 c9"
-      color="white"
-      href="artsy-editorial-path-winning-art-prize"
-      onClick={[Function]}
-    >
-      <div
-        className="c10"
-      >
-        <div>
-          <div
-            className="c11"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c12"
-          >
-            What’s the Path to Winning an Art Prize?
-          </div>
-          <div
-            className="c13"
-          >
-            Applying for art prizes can be daunting, but doing so is a pathway to exhibitions, influential contacts, and a way to gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c23"
+          className="Byline c36"
           color="white"
         >
           <div
-            className="author c24"
+            className="author c37"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c14"
+            className="date c30"
           >
-            Jun 29, 2017
+            May 19, 2017
           </div>
         </div>
       </div>
       <div
-        className="c15"
+        className="c31"
       >
         <img
-          className="c16 c17"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgejssmXDiO3G1pE73phZ3Q%252FArtboard%2B2%25402xef-100.jpg&width=680&height=450&quality=95"
+          className="c32 c33"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
         />
       </div>
     </a>
     <div
-      className="c25 c26 c27"
+      className="c38 c39 c40"
       color="white"
     >
       <div
-        className="c28 c29"
+        className="c41 c42"
       >
         <div
-          className="c30"
+          className="c43"
         >
           About the Series
         </div>
         <div
-          className="PartnerBlock c5 c6"
+          className="PartnerBlock c21 c22"
         >
           <div
-            className="c7"
+            className="c23"
           >
             Presented in Partnership with
           </div>
@@ -2038,10 +2448,10 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c28 c31"
+        className="c41 c44"
       >
         <div
-          className="article__text-section c32"
+          className="article__text-section c45"
         >
           <div
             dangerouslySetInnerHTML={
@@ -2052,10 +2462,10 @@ exports[`renders a sponsored series properly 1`] = `
           />
         </div>
         <div
-          className="PartnerBlock c5 c6"
+          className="PartnerBlock c21 c22"
         >
           <div
-            className="c7"
+            className="c23"
           >
             Presented in Partnership with
           </div>
