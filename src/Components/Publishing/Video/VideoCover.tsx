@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Col } from 'react-styled-flexboxgrid'
 import styled, { StyledFunction } from "styled-components"
+import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
@@ -13,8 +14,10 @@ interface Props {
   editTitle?: any
   hideCover?: boolean
   media: any
-  playVideo?: () => void
   seriesTitle?: string
+  description?: string
+  playVideo: () => void
+  tracking?: any
 }
 
 interface CoverProps {
@@ -25,7 +28,18 @@ interface CoverAssetProps {
   src?: string
 }
 
+@track()
 export class VideoCover extends Component<Props, null> {
+  onPlayClick = () => {
+    const { tracking, playVideo } = this.props
+
+    tracking.trackEvent({
+      action: "Click",
+      label: "Play video",
+    })
+    playVideo()
+  }
+
   render() {
     const {
       article,
@@ -33,7 +47,6 @@ export class VideoCover extends Component<Props, null> {
       editTitle,
       hideCover,
       media,
-      playVideo,
       seriesTitle
     } = this.props
 
@@ -46,7 +59,7 @@ export class VideoCover extends Component<Props, null> {
             <Col
               xs={2}
               sm={1}
-              onClick={playVideo}
+              onClick={this.onPlayClick}
             >
               <IconVideoPlay color="white" />
             </Col>

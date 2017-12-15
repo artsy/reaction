@@ -23,6 +23,7 @@ interface Props {
 
 interface State {
   isPlaying: boolean
+  hideCover: boolean
 }
 
 @track((props) => {
@@ -37,19 +38,37 @@ interface State {
 )
 export class VideoLayout extends Component<Props, State> {
   state = {
-    isPlaying: false
+    isPlaying: false,
+    hideCover: false
   }
 
   playVideo = () => {
     this.setState({
-      isPlaying: true
+      isPlaying: true,
+      hideCover: true
     })
   }
 
-  onPauseVideo = () => {
-    this.setState({
-      isPlaying: false
-    })
+  onPlayToggle = (isPlaying) => {
+    if (!isPlaying) {
+      this.setState({
+        isPlaying
+      })
+      setTimeout(this.setHideCover.bind(this), 30000)
+    } else {
+      this.setState({
+        isPlaying,
+        hideCover: true
+      })
+    }
+  }
+
+  setHideCover = () => {
+    if (!this.state.isPlaying) {
+      this.setState({
+        hideCover: false
+      })
+    }
   }
 
   render() {
@@ -72,14 +91,14 @@ export class VideoLayout extends Component<Props, State> {
             url={media.url}
             title={media.title}
             forcePlay={this.state.isPlaying}
-            notifyIsPaused={this.onPauseVideo}
+            notifyPlayToggle={this.onPlayToggle}
           />
           <VideoCover
             article={article}
             media={media}
             seriesTitle={seriesArticle && seriesArticle.title}
             playVideo={this.playVideo}
-            hideCover={this.state.isPlaying}
+            hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
         <MaxRow>

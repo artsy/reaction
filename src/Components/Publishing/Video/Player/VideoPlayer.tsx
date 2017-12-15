@@ -15,7 +15,7 @@ import { VideoControls, VideoControlsContainer } from "./VideoControls"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
   title?: string,
-  notifyIsPaused?: () => void,
+  notifyPlayToggle?: (e) => void,
   forcePlay?: boolean
   tracking?: any
 }
@@ -83,11 +83,12 @@ export class VideoPlayer extends Component<Props, State> {
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
-      if (this.props.notifyIsPaused) {
-        this.props.notifyIsPaused()
-      }
     } else {
       this.video.play()
+    }
+
+    if (this.props.notifyPlayToggle) {
+      this.props.notifyPlayToggle(!this.state.isPlaying)
     }
 
     this.setState({
@@ -108,8 +109,11 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
-  @track({
-    action: "Clicked fullscreen"
+  @track((props) => {
+    return {
+      action: "Click",
+      label: "Fullscreen video"
+    }
   })
   toggleFullscreen() {
     if (fullscreenEnabled()) {
