@@ -7,11 +7,22 @@ import * as fonts from "../../../../Assets/Fonts"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
+interface Gene {
+  id: string | null
+  _id: string | null
+  name: string | null
+  image: {
+    cropped: {
+      url: string | null
+    }
+  } | null
+}
+
 export interface RelayProps {
   relay?: RelayProp
   term: string
   viewer: {
-    match_gene: any[]
+    match_gene: Gene[]
   }
 }
 
@@ -43,7 +54,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
     suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
   }
 
-  followedGene(gene: any) {
+  followedGene(gene: Gene) {
     this.excludedGeneIds.add(gene._id)
 
     commitMutation(this.props.relay.environment, {
@@ -76,7 +87,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
         },
         excludedGeneIds: Array.from(this.excludedGeneIds),
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data)
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data),
     })
   }
 

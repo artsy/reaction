@@ -5,34 +5,31 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
-export interface RelayProps {
-  suggested_genes: [
-    {
-      id: string | null
-      _id: string | null
-      name: string | null
-      image: {
-        cropped: {
-          url: string | null
-        }
-      } | null
+interface Gene {
+  id: string | null
+  _id: string | null
+  name: string | null
+  image: {
+    cropped: {
+      url: string | null
     }
-  ]
+  } | null
 }
 
-interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
+interface Props extends React.HTMLProps<HTMLAnchorElement> {
   relay?: RelayProp
+  suggested_genes: Gene[]
 }
 
 class SuggestedGenesContent extends React.Component<Props, null> {
   private excludedGeneIds: Set<string>
 
-  constructor(props: RelayProps, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context)
     this.excludedGeneIds = new Set(this.props.suggested_genes.map(item => item._id))
   }
 
-  followedGene(followedGene: any) {
+  followedGene(followedGene: Gene) {
     this.excludedGeneIds.add(followedGene._id)
 
     const onGeneFollowed = (store: RecordSourceSelectorProxy, data: SelectorData): void => {
@@ -41,7 +38,9 @@ class SuggestedGenesContent extends React.Component<Props, null> {
 
       const suggestedGenesRootField = store.get("client:root")
       const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
-      const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === followedGene.id ? suggestedGene : gene))
+      const updatedSuggestedGenes = suggestedGenes.map(
+        gene => (gene.getValue("id") === followedGene.id ? suggestedGene : gene)
+      )
 
       suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
     }
