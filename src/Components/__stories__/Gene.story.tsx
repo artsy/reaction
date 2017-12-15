@@ -8,7 +8,7 @@ storiesOf("Components/Pages/Gene/Contents", module)
   .add("Artists Mode - Minimalism", () => {
     return (
       <div>
-        < ContextProvider currentUser={{id: "", name: "", accessToken: ""}}>
+        < ContextProvider>
           <Contents geneID="minimalism" mode="artists" onStateChange={console.log} />
         </ContextProvider>
       </div>
@@ -18,7 +18,7 @@ storiesOf("Components/Pages/Gene/Contents", module)
   .add("Artworks Mode - Animals", () => {
     return (
       <div>
-        < ContextProvider currentUser={{id: "", name: "", accessToken: ""}}>
+        < ContextProvider>
           <Contents geneID="animals" mode="artworks"  onStateChange={console.log} />
         </ContextProvider>
       </div>
