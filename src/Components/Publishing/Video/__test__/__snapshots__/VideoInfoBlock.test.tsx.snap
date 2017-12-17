@@ -29,6 +29,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
 }
 
 .c3 {
+  position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -98,6 +99,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
 }
 
 .c3 {
+  position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;

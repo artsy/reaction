@@ -959,6 +959,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c49 {
+  position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -1031,6 +1032,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c51 {
+  position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;

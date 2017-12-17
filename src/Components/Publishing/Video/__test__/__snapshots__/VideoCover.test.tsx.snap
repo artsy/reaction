@@ -67,6 +67,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c16 {
+  position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -139,6 +140,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c18 {
+  position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -372,6 +374,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c16 {
+  position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -444,6 +447,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c18 {
+  position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
