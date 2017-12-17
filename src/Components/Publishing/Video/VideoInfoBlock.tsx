@@ -29,7 +29,7 @@ export class VideoInfoBlock extends Component<Props, null> {
             </SubTitle>
           }
           <MediaDuration>
-            {formatTime(media.duration)}
+            {formatTime(media.duration || 0)}
           </MediaDuration>
         </Row>
         <Row>
@@ -48,6 +48,7 @@ const SubTitle = styled.span`
 `
 
 const MediaTitle = styled.span`
+  position: relative;
   ${Fonts.unica("s45")}
 `
 
