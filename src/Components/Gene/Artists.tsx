@@ -164,7 +164,7 @@ export default createPaginationContainer(
             }
           }
         }
-        filter_aggregations: filtered_artworks(aggregations: $aggregations, size: 0) {
+        filter_aggregations: filtered_artworks(aggregations: $aggregations, size: 0, include_medium_filter_in_aggregation: true) {
           ...TotalCount_filter_artworks
           aggregations {
             slice

@@ -84,10 +84,7 @@ export class GeneArtworks extends React.Component<Props, State> {
     return (
       <ArtistFilterButtons>
         <span>By Artists:</span>
-        <Button
-          onClick={this.props.onArtistModeToggleSelected}
-          state={ButtonState.Default}
-        >
+        <Button onClick={this.props.onArtistModeToggleSelected} state={ButtonState.Default}>
           All Artists
         </Button>
         <span>By Work:</span>
@@ -99,15 +96,13 @@ export class GeneArtworks extends React.Component<Props, State> {
     return <ForSaleCheckbox checked={this.props.for_sale} onChange={this.props.onForSaleToggleSelected} />
   }
 
- 
-
   renderArtworks() {
     const pulldownOptions = [
       { val: "-partner_updated_at", name: "Recently Updated" },
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
-    const selectedSort = pulldownOptions.find((sort) => sort.val === this.props.sort)
+    const selectedSort = pulldownOptions.find(sort => sort.val === this.props.sort)
     return (
       <div>
         <SubFilterBar>
@@ -122,7 +117,12 @@ export class GeneArtworks extends React.Component<Props, State> {
             />
             <TotalCount filter_artworks={this.props.gene.filtered_artworks} />
           </div>
-          <BorderedPulldown defaultValue="Recently Updated" selectedName={selectedSort && selectedSort.name} options={pulldownOptions} onChange={this.props.onSortSelected} />
+          <BorderedPulldown
+            defaultValue="Recently Updated"
+            selectedName={selectedSort && selectedSort.name}
+            options={pulldownOptions}
+            onChange={this.props.onSortSelected}
+          />
         </SubFilterBar>
         <GeneArtworksContent filtered_artworks={this.props.gene.filtered_artworks as any} />
       </div>
@@ -143,45 +143,42 @@ export class GeneArtworks extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(
-  GeneArtworks,
-  {
-    gene: graphql.experimental`
-      fragment GeneArtworks_gene on Gene
-        @argumentDefinitions(
-          for_sale: { type: "Boolean" }
-          medium: { type: "String", defaultValue: "*" }
-          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
-          price_range: { type: "String", defaultValue: "*" }
-          dimension_range: { type: "String", defaultValue: "*" }
-        ) {
-        filtered_artworks(
-          aggregations: $aggregations
-          for_sale: $for_sale
-          medium: $medium
-          price_range: $price_range
-          dimension_range: $dimension_range
-          size: 0
-        ) {
-          ...TotalCount_filter_artworks
-          ...GeneArtworksContent_filtered_artworks
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-            ...Dropdown_aggregation
+export default createFragmentContainer(GeneArtworks, {
+  gene: graphql.experimental`
+    fragment GeneArtworks_gene on Gene
+      @argumentDefinitions(
+        for_sale: { type: "Boolean" }
+        medium: { type: "String", defaultValue: "*" }
+        aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+        price_range: { type: "String", defaultValue: "*" }
+        dimension_range: { type: "String", defaultValue: "*" }
+      ) {
+      filtered_artworks(
+        aggregations: $aggregations
+        for_sale: $for_sale
+        medium: $medium
+        price_range: $price_range
+        dimension_range: $dimension_range
+        size: 0
+        include_medium_filter_in_aggregation: true
+      ) {
+        ...TotalCount_filter_artworks
+        ...GeneArtworksContent_filtered_artworks
+        aggregations {
+          slice
+          counts {
+            name
+            id
           }
-          
-          facet {
-            ...Headline_facet
-          }
+          ...Dropdown_aggregation
+        }
+        facet {
+          ...Headline_facet
         }
       }
-    `,
-  },
-)
+    }
+  `,
+})
 
 interface RelayProps {
   gene: {

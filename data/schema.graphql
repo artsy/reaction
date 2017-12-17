@@ -716,6 +716,7 @@ type ArtworkContextAuction implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -951,6 +952,7 @@ type ArtworkContextSale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -1054,6 +1056,7 @@ type ArtworkFilterGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1103,6 +1106,7 @@ type ArtworkFilterTag implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2529,6 +2533,7 @@ type Gene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2567,6 +2572,7 @@ type Gene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2691,6 +2697,7 @@ type GeneItem implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2729,6 +2736,7 @@ type GeneItem implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3148,6 +3156,7 @@ type HomePageModuleContextGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3186,6 +3195,7 @@ type HomePageModuleContextGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3259,6 +3269,7 @@ type HomePageModuleContextSale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -4387,6 +4398,7 @@ type Query {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -4729,6 +4741,7 @@ type Sale implements Node {
   cover_image: Image
   currency: String
   description: String
+  display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
     convert_to_utc: Boolean
@@ -5333,6 +5346,7 @@ type Tag implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5658,6 +5672,7 @@ type Viewer {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
