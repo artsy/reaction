@@ -48,6 +48,7 @@ const SubTitle = styled.span`
 `
 
 const MediaTitle = styled.span`
+  position: relative;
   ${Fonts.unica("s45")}
 `
 
