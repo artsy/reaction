@@ -29,7 +29,7 @@ export class VideoInfoBlock extends Component<Props, null> {
             </SubTitle>
           }
           <MediaDuration>
-            {formatTime(media.duration || 0)}
+            {formatTime(media.duration)}
           </MediaDuration>
         </Row>
         <Row>
