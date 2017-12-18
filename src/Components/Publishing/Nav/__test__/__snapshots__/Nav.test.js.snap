@@ -204,6 +204,10 @@ exports[`Nav renders a Nav 1`] = `
   z-index: 10;
 }
 
+.c0 a {
+  z-index: 10;
+}
+
 .c5 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -252,89 +256,98 @@ exports[`Nav renders a Nav 1`] = `
   }
 }
 
-<div
-  className="c0 c1"
->
+<div>
   <div
-    className="PartnerInline c2"
+    className="c0 c1"
   >
-    <a
-      href="/"
-    >
-      <div
-        className="c3 c4"
-        onClick={undefined}
-        style={undefined}
-      >
-        
-      </div>
-    </a>
-  </div>
-  <div
-    className="c5"
-  >
-    Artsy Editorial
-  </div>
-  <div
-    className="c6"
-  >
-    <a
-      className="mlh-login c7"
-      href="/log_in"
-    >
-      <button
-        className="c8 c9 c10"
-      >
-        <span>
-          Login
-        </span>
-      </button>
-    </a>
-    <a
-      className="mlh-signup c7"
-      href="/sign_up"
-    >
-      <button
-        className="c11 c12"
-      >
-        <span>
-          Signup
-        </span>
-      </button>
-    </a>
     <div
-      className="c13 c14"
+      className="PartnerInline c2"
     >
-      <svg
-        enableBackground="new 0 0 32 32"
-        fill="white"
-        onClick={[Function]}
-        version="1.1"
-        viewBox="0 0 32 32"
-        width="32px"
-        xmlns="http://www.w3.org/2000/svg"
+      <a
+        href="/"
       >
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="22"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="15"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="8"
-        />
-      </svg>
+        <div
+          className="c3 c4"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+    </div>
+    <div
+      className="c5"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c6"
+    >
+      <a
+        className="mlh-login c7"
+        href="/log_in"
+      >
+        <button
+          className="c8 c9 c10"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c7"
+        href="/sign_up"
+      >
+        <button
+          className="c11 c12"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c13 c14"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
     </div>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -547,6 +560,10 @@ exports[`Nav renders a sponsored nav 1`] = `
   z-index: 10;
 }
 
+.c0 a {
+  z-index: 10;
+}
+
 .c7 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -602,134 +619,143 @@ exports[`Nav renders a sponsored nav 1`] = `
   }
 }
 
-<div
-  className="c0 c1"
->
+<div>
   <div
-    className="PartnerInline c2"
+    className="c0 c1"
   >
-    <a
-      href="/"
-    >
-      <div
-        className="c3 c4"
-        onClick={undefined}
-        style={undefined}
-      >
-        
-      </div>
-    </a>
-    <svg
-      className="c5 c6"
-      version="1.1"
-      viewBox="0 0 15 15"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g
-        fill="none"
-        fillRule="evenodd"
-        stroke="none"
-        strokeWidth="2"
-      >
-        <g
-          fill="white"
-          transform="translate(-101.000000, -18.000000)"
-        >
-          <g
-            transform="translate(101.000000, 18.000000)"
-          >
-            <rect
-              height="1"
-              width="15"
-              x="0"
-              y="7"
-            />
-            <rect
-              height="1"
-              transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) "
-              width="15"
-              x="0"
-              y="7"
-            />
-          </g>
-        </g>
-      </g>
-    </svg>
-    <a
-      href={undefined}
-      onClick={[Function]}
-      target="_blank"
-    >
-      <img
-        src="https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
-      />
-    </a>
-  </div>
-  <div
-    className="c7"
-  >
-    Artsy Editorial
-  </div>
-  <div
-    className="c8"
-  >
-    <a
-      className="mlh-login c9"
-      href="/log_in"
-    >
-      <button
-        className="c10 c11 c12"
-      >
-        <span>
-          Login
-        </span>
-      </button>
-    </a>
-    <a
-      className="mlh-signup c9"
-      href="/sign_up"
-    >
-      <button
-        className="c13 c14"
-      >
-        <span>
-          Signup
-        </span>
-      </button>
-    </a>
     <div
-      className="c15 c16"
+      className="PartnerInline c2"
     >
+      <a
+        href="/"
+      >
+        <div
+          className="c3 c4"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
       <svg
-        enableBackground="new 0 0 32 32"
-        fill="white"
-        onClick={[Function]}
+        className="c5 c6"
         version="1.1"
-        viewBox="0 0 32 32"
-        width="32px"
+        viewBox="0 0 15 15"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="22"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="15"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="8"
-        />
+        <g
+          fill="none"
+          fillRule="evenodd"
+          stroke="none"
+          strokeWidth="2"
+        >
+          <g
+            fill="white"
+            transform="translate(-101.000000, -18.000000)"
+          >
+            <g
+              transform="translate(101.000000, 18.000000)"
+            >
+              <rect
+                height="1"
+                width="15"
+                x="0"
+                y="7"
+              />
+              <rect
+                height="1"
+                transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) "
+                width="15"
+                x="0"
+                y="7"
+              />
+            </g>
+          </g>
+        </g>
       </svg>
+      <a
+        href={undefined}
+        onClick={[Function]}
+        target="_blank"
+      >
+        <img
+          src="https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
+        />
+      </a>
+    </div>
+    <div
+      className="c7"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c8"
+    >
+      <a
+        className="mlh-login c9"
+        href="/log_in"
+      >
+        <button
+          className="c10 c11 c12"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c9"
+        href="/sign_up"
+      >
+        <button
+          className="c13 c14"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c15 c16"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
     </div>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -916,6 +942,8 @@ exports[`Nav renders a transparent nav 1`] = `
 
 .c1 {
   background-color: transparent;
+  position: absolute;
+  top: 0;
 }
 
 .c0 {
@@ -934,6 +962,10 @@ exports[`Nav renders a transparent nav 1`] = `
   height: 46px;
   width: 100%;
   color: white;
+  z-index: 10;
+}
+
+.c0 a {
   z-index: 10;
 }
 
@@ -985,88 +1017,97 @@ exports[`Nav renders a transparent nav 1`] = `
   }
 }
 
-<div
-  className="c0 c1"
->
+<div>
   <div
-    className="PartnerInline c2"
+    className="c0 c1"
   >
-    <a
-      href="/"
-    >
-      <div
-        className="c3 c4"
-        onClick={undefined}
-        style={undefined}
-      >
-        
-      </div>
-    </a>
-  </div>
-  <div
-    className="c5"
-  >
-    Artsy Editorial
-  </div>
-  <div
-    className="c6"
-  >
-    <a
-      className="mlh-login c7"
-      href="/log_in"
-    >
-      <button
-        className="c8 c9 c10"
-      >
-        <span>
-          Login
-        </span>
-      </button>
-    </a>
-    <a
-      className="mlh-signup c7"
-      href="/sign_up"
-    >
-      <button
-        className="c11 c12"
-      >
-        <span>
-          Signup
-        </span>
-      </button>
-    </a>
     <div
-      className="c13 c14"
+      className="PartnerInline c2"
     >
-      <svg
-        enableBackground="new 0 0 32 32"
-        fill="white"
-        onClick={[Function]}
-        version="1.1"
-        viewBox="0 0 32 32"
-        width="32px"
-        xmlns="http://www.w3.org/2000/svg"
+      <a
+        href="/"
       >
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="22"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="15"
-        />
-        <rect
-          height="2"
-          width="20"
-          x="6"
-          y="8"
-        />
-      </svg>
+        <div
+          className="c3 c4"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+      </a>
+    </div>
+    <div
+      className="c5"
+    >
+      Artsy Editorial
+    </div>
+    <div
+      className="c6"
+    >
+      <a
+        className="mlh-login c7"
+        href="/log_in"
+      >
+        <button
+          className="c8 c9 c10"
+        >
+          <span>
+            Login
+          </span>
+        </button>
+      </a>
+      <a
+        className="mlh-signup c7"
+        href="/sign_up"
+      >
+        <button
+          className="c11 c12"
+        >
+          <span>
+            Signup
+          </span>
+        </button>
+      </a>
+      <div
+        className="c13 c14"
+      >
+        <svg
+          enableBackground="new 0 0 32 32"
+          fill="white"
+          onClick={[Function]}
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="32px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="22"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="15"
+          />
+          <rect
+            height="2"
+            width="20"
+            x="6"
+            y="8"
+          />
+        </svg>
+      </div>
     </div>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
 </div>
 `;

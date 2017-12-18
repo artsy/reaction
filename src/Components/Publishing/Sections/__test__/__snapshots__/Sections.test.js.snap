@@ -490,9 +490,10 @@ exports[`snapshots renders properly 1`] = `
   max-width: 780px;
 }
 
-@media (max-width:600px) {
+@media (max-width:720px) {
   .c21 {
     height: 1300px;
+    width: 100vw;
   }
 }
 

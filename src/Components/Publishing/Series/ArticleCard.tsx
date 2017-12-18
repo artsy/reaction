@@ -14,6 +14,7 @@ import { IconVideoPlay } from '../Icon/IconVideoPlay'
 interface Props {
   article?: any
   color?: string
+  editing?: boolean
   editDate?: any
   editDescription?: any
   editTitle?: any
@@ -34,10 +35,11 @@ export class ArticleCard extends Component<Props, null> {
       editDate,
       editDescription,
       editImage,
-      editTitle
+      editTitle,
+      editing
     } = this.props
 
-    return editDate || editDescription || editImage || editTitle
+    return editing || editDate || editDescription || editImage || editTitle
   }
 
   renderDate = () => {
@@ -172,6 +174,19 @@ const Image = styled.img`
   object-fit: cover;
   object-position: center;
   transition: opacity 0.15s;
+  display: block;
+`
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+  ${props => pMedia.md`
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  `}
 `
 
 export const ArticleCardContainer = A`
@@ -190,6 +205,9 @@ export const ArticleCardContainer = A`
     ${Image} {
       opacity: .7;
     }
+  }
+  ${ImageContainer} {
+    background: ${props => props.color === "white" ? "black" : "white"}
   }
   ${props => pMedia.md`
     flex-direction: column-reverse;
@@ -240,18 +258,6 @@ const MediaDate = styled.div`
   span {
     margin-right: 5px;
   }
-`
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-  ${props => pMedia.md`
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  `}
 `
 
 const Media = styled.div`

@@ -679,12 +679,16 @@ export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
 export const VideoArticle: ArticleData = {
   layout: "video",
   id: "597b9f652d35b80017a2a6a7",
-  title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  _id: "597b9f652d35b80017a2a6a7",
+  title: "Trevor Paglan",
   thumbnail_title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
   thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   published_at: "2017-07-28T20:38:05.709Z",
   description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
+  vertical: {
+    name: "Art Market"
+  },
   media: Media[0]
 }
 
@@ -708,13 +712,17 @@ export const VideoArticleSponsored = extend({}, VideoArticle, {
 })
 
 export const SeriesArticle: ArticleData = {
+  _id: "594a7e2254c37f00177c0ea9",
+  id: "594a7e2254c37f00177c0ea9",
   layout: "series",
   title: "The Future of Art",
+  hero_section: {
+    url: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg"
+  },
   series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
   related_articles: [
-    VideoArticle,
-    VideoArticleUnpublished,
-    FeatureArticle
+    "594a7e2254c37f00177c0ea9",
+    "597b9f652d35b80017a2a6a7"
   ]
 }
 

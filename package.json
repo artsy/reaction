@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.13.3",
+  "version": "0.15.2",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -120,6 +120,7 @@
     "react-tracking": "^4.2.1",
     "react-url-query": "^1.1.4",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/relay-runtime-artsy.1.tgz",
+    "react-waypoint": "^7.3.3",
     "sharify": "^0.1.6",
     "superagent": "^3.6.3"
   },

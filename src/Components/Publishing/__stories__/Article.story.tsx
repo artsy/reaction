@@ -163,12 +163,18 @@ story.add("Feature", () => {
   })
   .add("Series", () => {
     return (
-      <Article article={SeriesArticle} />
+      <Article
+        article={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
     )
   })
   .add("Series - Sponsored", () => {
     return (
-      <Article article={SeriesArticleSponsored} />
+      <Article
+        article={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
     )
   })
   .add("Video Article", () => {

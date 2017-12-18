@@ -6,9 +6,10 @@ exports[`renders properly 1`] = `
   height: 1000px;
 }
 
-@media (max-width:600px) {
+@media (max-width:720px) {
   .c0 {
     height: 1300px;
+    width: 100vw;
   }
 }
 

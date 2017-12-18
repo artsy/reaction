@@ -353,7 +353,6 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
 
 export const Media = [
   {
-    title: "Trevor Paglan",
     url: "https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4",
     duration: 10948,
     release_date: "2017-08-28T20:38:05.709Z",
