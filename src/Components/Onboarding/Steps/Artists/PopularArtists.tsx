@@ -36,7 +36,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
             artist {
               __id
               related {
-                suggested(first: 1) {
+                suggested(first: 1, exclude_followed_artists: true) {
                   edges {
                     node {
                       id

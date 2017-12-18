@@ -7,7 +7,7 @@ import ItemLink from "../../ItemLink"
 
 export interface RelayProps {
   term: string
-  viewer: {
+  viewer?: {
     match_artist: any[]
   }
 }
@@ -37,7 +37,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
             artist {
               __id
               related {
-                suggested(first: 1) {
+                suggested(first: 1, exclude_followed_artists: true) {
                   edges {
                     node {
                       id
