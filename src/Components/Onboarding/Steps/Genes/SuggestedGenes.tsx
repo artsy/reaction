@@ -5,43 +5,50 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
-export interface RelayProps {
-  suggested_genes: [
-    {
-      id: string | null
-      _id: string | null
-      name: string | null
-      image: {
-        cropped: {
-          url: string | null
-        }
-      } | null
+interface Gene {
+  id: string | null
+  _id: string | null
+  name: string | null
+  image: {
+    cropped: {
+      url: string | null
     }
-  ]
+  } | null
 }
 
-interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
+interface Props extends React.HTMLProps<HTMLAnchorElement> {
   relay?: RelayProp
+  suggested_genes: Gene[]
 }
 
 class SuggestedGenesContent extends React.Component<Props, null> {
-  followedGene(geneId: string) {
-    const onGeneFollowed = (store: RecordSourceSelectorProxy, data: SelectorData): void => {
-      const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+  private excludedGeneIds: Set<string>
 
-      const suggestedGenesRootField = store.get("client:root")
-      const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
-      const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
+  constructor(props: Props, context: any) {
+    super(props, context)
+    this.excludedGeneIds = new Set(this.props.suggested_genes.map(item => item._id))
+  }
 
-      suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
-    }
+  onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
+    const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+    this.excludedGeneIds.add(suggestedGene.getValue("_id"))
+
+    const suggestedGenesRootField = store.get("client:root")
+    const suggestedGenes = suggestedGenesRootField.getLinkedRecords("suggested_genes")
+    const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
+
+    suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
+  }
+
+  followedGene(gene: Gene) {
+    this.excludedGeneIds.add(gene._id)
 
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation SuggestedGenesFollowGeneMutation($input: FollowGeneInput!) {
+        mutation SuggestedGenesFollowGeneMutation($input: FollowGeneInput!, $excludedGeneIds: [String]!) {
           followGene(input: $input) {
             gene {
-              similar(first: 1) {
+              similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
                 edges {
                   node {
                     id
@@ -62,10 +69,11 @@ class SuggestedGenesContent extends React.Component<Props, null> {
       `,
       variables: {
         input: {
-          gene_id: geneId
+          gene_id: gene.id,
         },
+        excludedGeneIds: Array.from(this.excludedGeneIds),
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => onGeneFollowed(store, data)
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data),
     })
   }
 
@@ -80,7 +88,7 @@ class SuggestedGenesContent extends React.Component<Props, null> {
           _id={item._id}
           name={item.name}
           image_url={item.image.cropped.url}
-          onClick={() => this.followedGene(item.id)}
+          onClick={() => this.followedGene(item)}
         />
       )
     })
