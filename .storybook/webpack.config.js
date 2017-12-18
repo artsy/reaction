@@ -4,11 +4,10 @@ const path = require("path")
 const sharify = require("./sharify")
 
 const webpack = require("webpack")
-const webpackMerge = require("webpack-merge")
+const merge = require("webpack-merge")
+const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/webpack.config.js")
 
-const {
-  CheckerPlugin
-} = require("awesome-typescript-loader")
+const { CheckerPlugin } = require("awesome-typescript-loader")
 
 /**
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
@@ -16,44 +15,64 @@ const {
  */
 const {
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
-  METAPHYSICS_ENDPOINT
+  METAPHYSICS_ENDPOINT,
+  USER_ID,
+  USER_ACCESS_TOKEN,
 } = env.config().parsed
 
 const sharifyPath = sharify({
-  METAPHYSICS_ENDPOINT
+  METAPHYSICS_ENDPOINT,
 })
 
-let plugins = [new CheckerPlugin()]
+const plugins = [new CheckerPlugin()]
+if (USER_ID && USER_ACCESS_TOKEN) {
+  plugins.push(new webpack.DefinePlugin ({
+    "process.env.USER_ID": JSON.stringify(USER_ID),
+    "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
+  }))
+} else {
+  console.warn("\x1b[31m[!] Specify USER_ID and USER_ACCESS_TOKEN environment variables to use authenticated features.\x1b[0m")
+}
 
 // A mix of  the base from Emission's webpack setup, and the simple config for
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
-module.exports = {
-  devtool: WEBPACK_DEVTOOL,
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
-    alias: {
-      sharify: sharifyPath.replace(/\.js$/, ""),
+module.exports = (baseConfig, env) => {
+  const config = genDefaultConfig(baseConfig, env)
+  // The progress plugin does not play nice with `concurrently`, so remove it.
+  config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== "ProgressPlugin")
+
+  const merged = merge(config, {
+    devtool: WEBPACK_DEVTOOL,
+    devServer: {
+      stats: "errors-only",
     },
-  },
-  module: {
-    rules: [{
-      test: /\.json$/,
-      loader: "json-loader"
+    resolve: {
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      alias: {
+        sharify: sharifyPath.replace(/\.js$/, ""),
+      },
     },
-    {
-      exclude: [/node_modules/, /__tests__/],
-      use: [{
-        loader: "awesome-typescript-loader",
-        options: {
-          useBabel: true,
-          useCache: true,
-          useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+    module: {
+      rules: [
+        {
+          exclude: [/node_modules/, /__tests__/],
+          use: [
+            {
+              loader: "awesome-typescript-loader",
+              options: {
+                transpileOnly: true, // FIXME: This is only for the duration of fixing all build issues during Relay migration.
+                useBabel: true,
+                useCache: true,
+                useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+              },
+            },
+          ],
+          test: /\.tsx?$/,
         },
-      },],
-      test: /\.tsx?$/,
+      ],
     },
-    ],
-  },
-  plugins: plugins,
+    plugins: plugins,
+  })
+  return merged
 }

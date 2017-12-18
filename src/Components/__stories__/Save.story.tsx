@@ -1,32 +1,30 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import Relay from "react-relay"
+import { graphql } from "react-relay"
 
-import Artwork from "../Artwork/GridItem"
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
+import GridItem from "../Artwork/GridItem"
 
-import * as Artsy from "../../Components/Artsy"
-import { artsyNetworkLayer } from "../../Relay/config"
-import ArtworkQueryConfig from "../../Relay/Queries/Artwork"
-
-function ArtworkExample(props: { artworkID: string; user: User }) {
-  // TODO This is going to change with the stubbed local MP schema anyways.
-  // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
+function ArtworkExample(props: { artworkID: string }) {
   return (
-    <Artsy.ContextProvider currentUser={props.user}>
-      <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
-    </Artsy.ContextProvider>
+    <RootQueryRenderer
+      query={graphql`
+        query SaveArtworkQuery($artworkID: String!) {
+          artwork(id: $artworkID) {
+            ...GridItem_artwork
+          }
+        }
+      `}
+      variables={{ artworkID: props.artworkID }}
+      render={readyState => readyState.props && <GridItem {...readyState.props as any} />}
+    />
   )
 }
 
 storiesOf("Components/Save Button", module).add("Save Button", () => {
-  const user = {
-    id: "some-id",
-    accessToken: "some-token",
-  } as User
   return (
     <div style={{ width: "200px" }}>
-      <ArtworkExample artworkID="damon-zucconi-tetradic-edit-1" user={user} />
+      <ArtworkExample artworkID="damon-zucconi-tetradic-edit-1" />
     </div>
   )
 })

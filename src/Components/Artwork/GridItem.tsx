@@ -1,9 +1,10 @@
 import React from "react"
-import Relay from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+
 import colors from "../../Assets/Colors"
-import ArtworkMetadata from "./Metadata"
-import SaveButton from "./Save"
+import Metadata from "./Metadata"
+import Save from "./Save"
 
 const Image = styled.img`
   width: 100%;
@@ -31,13 +32,13 @@ export class ArtworkGridItem extends React.Component<Props, null> {
           <a href={artwork.href}>
             <Image src={artwork.image.url} />
           </a>
-          <SaveButton
+          <Save
             className="artwork-save"
-            artwork={artwork}
+            artwork={artwork as any}
             style={{ position: "absolute", right: "10px", bottom: "10px" }}
           />
         </Placeholder>
-        <ArtworkMetadata artwork={artwork} />
+        <Metadata artwork={artwork} />
       </div>
     )
   }
@@ -52,22 +53,21 @@ const StyledArtworkGridItem = styled(ArtworkGridItem)`
   }
 `
 
-export default Relay.createContainer(StyledArtworkGridItem, {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        image {
-          placeholder
-          url(version: "large")
-          aspect_ratio
-        }
-        href
-        ${ArtworkMetadata.getFragment("artwork")}
-        ${SaveButton.getFragment("artwork")}
+export default createFragmentContainer(
+  StyledArtworkGridItem,
+  graphql`
+    fragment GridItem_artwork on Artwork {
+      image {
+        placeholder
+        url(version: "large")
+        aspect_ratio
       }
-    `,
-  },
-})
+      href
+      ...Metadata_artwork
+      ...Save_artwork
+    }
+  `
+)
 
 interface RelayProps {
   artwork: {

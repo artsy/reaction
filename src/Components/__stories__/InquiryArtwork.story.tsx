@@ -1,25 +1,34 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import Relay from "react-relay"
+import { graphql } from "react-relay"
 
-import Artwork from "../InquiryArtwork"
-
-import { artsyNetworkLayer } from "../../Relay/config"
-import ArtworkQueryConfig from "../../Relay/Queries/Artwork"
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
+import InquiryArtwork from "../InquiryArtwork"
 
 function ArtworkExample(props: { artworkID: string }) {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return <Relay.RootContainer Component={Artwork} route={new ArtworkQueryConfig({ artworkID: props.artworkID })} />
+  return (
+    <RootQueryRenderer
+      query={graphql`
+        query InquiryArtworkQuery($artworkID: String!) {
+          artwork(id: $artworkID) {
+            ...InquiryArtwork_artwork
+          }
+        }
+      `}
+      variables={{ artworkID: props.artworkID }}
+      render={readyState => readyState.props && <InquiryArtwork {...readyState.props as any} />}
+    />
+  )
 }
 
 storiesOf("Components/Inquiry Artwork", module)
   .add("A square artwork", () => <ArtworkExample artworkID="christopher-burkett-coastal-storm-oregon" />)
-  .add("A landscape artwork", () => <ArtworkExample artworkID="takashi-murakami-tan-tan-bo" />)
+  .add("A landscape artwork", () => <ArtworkExample artworkID="andrew-moore-puente-de-bacunayagua-via-blanca" />)
   .add("A landscape artwork (extra wide)", () => <ArtworkExample artworkID="brian-kosoff-bay-of-islands" />)
-  .add("A portrait artwork", () =>
+  .add("A portrait artwork", () => (
     <ArtworkExample artworkID="damien-hirst-methylamine-13c-19?auction_id=heather-james-fine-art-curators-choice" />
-  )
+  ))
   .add("A portrait artwork (extra tall)", () => <ArtworkExample artworkID="snik-untitled-vertical" />)
-  .add("Artwork with two artists", () =>
+  .add("Artwork with two artists", () => (
     <ArtworkExample artworkID="/william-kentridge-self-portrait-as-a-coffee-pot-iii" />
-  )
+  ))

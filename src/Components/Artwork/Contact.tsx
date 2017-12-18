@@ -1,10 +1,10 @@
 import React from "react"
-import Relay from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import TextLink from "../TextLink"
 
-export interface ContactProps extends RelayProps, React.HTMLProps<ArtworkContact> {}
+export interface ContactProps extends RelayProps, React.HTMLProps<Contact> {}
 
-export class ArtworkContact extends React.Component<ContactProps, null> {
+export class Contact extends React.Component<ContactProps, null> {
   contactLine() {
     const { artwork } = this.props
     if (artwork.sale && artwork.sale.is_auction) {
@@ -17,13 +17,21 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
   auctionLine() {
     const { artwork } = this.props
     if (artwork.sale.is_live_open) {
-      return <TextLink href={artwork.href} underline>Enter Live Auction</TextLink>
+      return (
+        <TextLink href={artwork.href} underline>
+          Enter Live Auction
+        </TextLink>
+      )
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
       const bids = sa.counts.bidder_positions
       if (bids > 0) {
         const s = bids > 1 ? "s" : ""
-        return <span>{sa.highest_bid.display} ({bids} bid{s})</span>
+        return (
+          <span>
+            {sa.highest_bid.display} ({bids} bid{s})
+          </span>
+        )
       } else {
         return <span>{sa.opening_bid.display}</span>
       }
@@ -47,37 +55,36 @@ export class ArtworkContact extends React.Component<ContactProps, null> {
   }
 }
 
-export default Relay.createContainer(ArtworkContact, {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        _id
-        href
-        is_inquireable
-        sale {
-          is_auction
-          is_live_open
-          is_open
-          is_closed
+export default createFragmentContainer(
+  Contact,
+  graphql`
+    fragment Contact_artwork on Artwork {
+      _id
+      href
+      is_inquireable
+      sale {
+        is_auction
+        is_live_open
+        is_open
+        is_closed
+      }
+      partner(shallow: true) {
+        type
+      }
+      sale_artwork {
+        highest_bid {
+          display
         }
-        partner(shallow: true) {
-          type
+        opening_bid {
+          display
         }
-        sale_artwork {
-          highest_bid {
-            display
-          }
-          opening_bid {
-            display
-          }
-          counts {
-            bidder_positions
-          }
+        counts {
+          bidder_positions
         }
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface RelayProps {
   artwork: {

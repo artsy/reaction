@@ -1,14 +1,12 @@
 import React from "react"
-import Relay from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import Fillwidth from "../Artwork/Fillwidth"
-import FollowButton from "../Follow"
+import Follow from "../Follow"
 import Text from "../Text"
 
-interface Props extends RelayProps, React.HTMLProps<ArtistRow> {
-  artist: any
-}
+interface Props extends RelayProps, React.HTMLProps<ArtistRow> {}
 
 export class ArtistRow extends React.Component<Props, null> {
   render() {
@@ -19,9 +17,9 @@ export class ArtistRow extends React.Component<Props, null> {
           <Text textSize="small" textStyle="primary">
             {artist.name}
           </Text>
-          <FollowButton type="artist" artist={artist} />
+          <Follow artist={artist as any} />
         </Header>
-        <Fillwidth artworks={artist.artworks as any} />
+        <Fillwidth artworks={artist.artworks} />
       </Container>
     )
   }
@@ -36,25 +34,22 @@ const Container = styled.div`
   margin-bottom: 60px;
 `
 
-export default Relay.createContainer(ArtistRow, {
-  fragments: {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        name
-        ${FollowButton.getFragment("artist")}
-        artworks: artworks_connection(first: 6) {
-          ${Fillwidth.getFragment("artworks")}
-        }
+export default createFragmentContainer(
+  ArtistRow,
+  graphql`
+    fragment ArtistRow_artist on Artist {
+      name
+      ...Follow_artist
+      artworks: artworks_connection(first: 6) {
+        ...Fillwidth_artworks
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface RelayProps {
-  artist:
-    | {
-        name: string | null
-        artworks: any
-      }
-    | any
+  artist: {
+    name: string | null
+    artworks: any
+  }
 }

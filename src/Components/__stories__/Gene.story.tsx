@@ -1,79 +1,46 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import Relay from "react-relay"
+import { Contents } from "../Gene"
 
-import GeneContent from "../Gene"
-import ArtistRow from "../Gene/ArtistRow"
+import { ContextProvider } from "../Artsy"
 
-import * as Artsy from "../../Components/Artsy"
-import { artsyNetworkLayer } from "../../Relay/config"
-import ArtistQueryConfig from "../../Relay/Queries/Artist"
-import GeneQueryConfig from "../../Relay/Queries/Gene"
-
-function GeneExample(props: { geneID: string }) {
-  // TODO This is going to change with the stubbed local MP schema anyways.
-  // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return (
-    <Artsy.ContextProvider>
-      <Relay.RootContainer Component={GeneContent} route={new GeneQueryConfig({ geneID: props.geneID })} />
-    </Artsy.ContextProvider>
-  )
-}
-
-function ArtistExample(props: { artistID: string }) {
-  // TODO This is going to change with the stubbed local MP schema anyways.
-  // Relay.injectNetworkLayer(artsyNetworkLayer(props.user))
-  Relay.injectNetworkLayer(artsyNetworkLayer())
-  return (
-    <Artsy.ContextProvider>
-      <Relay.RootContainer Component={ArtistRow} route={new ArtistQueryConfig({ artistID: props.artistID })} />
-    </Artsy.ContextProvider>
-  )
-}
-
-storiesOf("Components/Rows/Gene", module)
-  .add("Gene Row - Artist: Stephen Willats", () => {
+storiesOf("Components/Pages/Gene/Contents", module)
+  .add("Artists Mode - Minimalism", () => {
     return (
       <div>
-        <ArtistExample artistID="stephen-willats" />
+        <ContextProvider>
+          <Contents filters={{}} geneID="minimalism" mode="artists" onStateChange={console.log} />
+        </ContextProvider>
       </div>
     )
   })
-  .add("Gene Row - Artist: Banksy", () => {
+  .add("Artworks Mode - Animals", () => {
     return (
       <div>
-        <ArtistExample artistID="banksy" />
+        <ContextProvider>
+          <Contents
+            sort="-year"
+            filters={{ for_sale: true }}
+            geneID="animals"
+            mode="artworks"
+            onStateChange={console.log}
+          />
+        </ContextProvider>
       </div>
     )
   })
-  .add("Gene Row - Artist: Glenn Brown", () => {
+  .add("Artworks Mode w/ Pagination Issue - Russia", () => {
     return (
       <div>
-        <ArtistExample artistID="glenn-brown" />
-      </div>
-    )
-  })
-
-storiesOf("Components/Pages/Gene", module)
-  .add("Integration - Minimalism", () => {
-    return (
-      <div>
-        <GeneExample geneID="minimalism" />
-      </div>
-    )
-  })
-  .add("Integration - The Fantastic", () => {
-    return (
-      <div>
-        <GeneExample geneID="the-fantastic" />
-      </div>
-    )
-  })
-  .add("Integration - Old Master Influenced Fantasy", () => {
-    return (
-      <div>
-        <GeneExample geneID="old-master-influenced-fantasy" />
+        <ContextProvider>
+          <Contents
+            sort="-year"
+            filters={{ for_sale: true }}
+            geneID="russia"
+            mode="artworks"
+            onStateChange={console.log}
+          />
+        </ContextProvider>
       </div>
     )
   })

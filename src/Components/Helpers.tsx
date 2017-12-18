@@ -26,7 +26,7 @@ export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   const emSize = sizes[label]
   accumulator[label] = (strings, ...args) => css`
     @media (max-width: ${emSize}em) {
-      ${css(strings, ...args)}
+      ${css(strings, ...args)};
     }
   `
   return accumulator
@@ -40,7 +40,7 @@ export const pMedia: PublishingMedia = Object.keys(psizes).reduce((accumulator, 
   const pxSize = psizes[label]
   accumulator[label] = (strings, ...args) => css`
     @media (max-width: ${pxSize}px) {
-      ${css(strings, ...args)}
+      ${css(strings, ...args)};
     }
   `
   return accumulator

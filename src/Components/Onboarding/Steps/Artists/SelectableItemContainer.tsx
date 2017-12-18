@@ -1,56 +1,27 @@
 import React from "react"
-import Relay from "react-relay"
-import styled from "styled-components"
-
-import colors from "../../../../Assets/Colors"
-import Icon from "../../../Icon"
-import Input from "../../../Input"
+import { createFragmentContainer, graphql } from "react-relay"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import ItemLink from "./ItemLink"
 
-const OnboardingSearchBox = styled.div`
-  width: 450px;
-  margin: 0 auto 100px;
-  border-bottom: 1px solid #e5e5e5;
-`
-
 interface Props {
-  placeholder: string
   artists: any[]
+  onArtistFollowed(artist: string, store: RecordSourceSelectorProxy, data: SelectorData): void
 }
 
 class SelectableItemContainer extends React.Component<Props, null> {
-  searchTextChanged(e) {
-    return null
-  }
-
   render() {
-    const items = this.props.artists.map((artist, index) => <ItemLink href="#" artist={artist} key={index} />)
+    const items = this.props.artists && this.props.artists.map((artist, index) =>
+      <ItemLink href="#" artist={artist} key={index} onArtistFollowed={this.props.onArtistFollowed} />)
 
-    return (
-      <OnboardingSearchBox>
-        <div style={{ marginBottom: "35px" }}>
-          <Input
-            placeholder={this.props.placeholder}
-            leftView={<Icon name="search" color={colors.graySemibold} />}
-            block
-            onInput={this.searchTextChanged.bind(this)}
-            onPaste={this.searchTextChanged.bind(this)}
-            onCut={this.searchTextChanged.bind(this)}
-          />
-        </div>
-
-        {items}
-      </OnboardingSearchBox>
-    )
+    return <div>{items}</div>
   }
 }
 
-export default Relay.createContainer(SelectableItemContainer, {
-  fragments: {
-    artists: () => Relay.QL`
-      fragment on Artist @relay(plural: true) {
-        ${ItemLink.getFragment("artist")}
-      }
-    `,
-  },
-})
+export default createFragmentContainer(
+  SelectableItemContainer,
+  graphql`
+    fragment SelectableItemContainer_artists on Artist @relay(plural: true) {
+      ...ItemLink_artist
+    }
+  `
+)

@@ -1,52 +1,30 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import Relay from "react-relay"
+import { graphql } from "react-relay"
 
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import Fillwidth from "../Artwork/Fillwidth"
 
-import { artsyNetworkLayer } from "../../Relay/config"
-import ArtistQueryConfig from "../../Relay/Queries/Artist"
-import * as Artsy from "../Artsy"
-
-export class FillwidthArtistArtworks extends React.Component<RelayProps, null> {
-  render() {
-    return <Fillwidth artworks={this.props.artist.artworks as any} />
-  }
-}
-
-const FillwidthContainer = Relay.createContainer(FillwidthArtistArtworks, {
-  fragments: {
-    artist: () => Relay.QL`
-      fragment on Artist {
-        artworks: artworks_connection(first: 6) {
-          ${Fillwidth.getFragment("artworks")}
-        }
-      }
-    `,
-  },
-})
-
-interface RelayProps {
-  artist: {
-    artworks: Array<any | null> | null
-  }
-}
-
 function FillwidthExample(props: { artistID: string }) {
-  Relay.injectNetworkLayer(artsyNetworkLayer())
   return (
-    <Relay.RootContainer Component={FillwidthContainer} route={new ArtistQueryConfig({ artistID: props.artistID })} />
+    <RootQueryRenderer
+      query={graphql`
+        query FillwidthQuery($artistID: String!) {
+          artist(id: $artistID) {
+            artworks: artworks_connection(first: 6) {
+              ...Fillwidth_artworks
+            }
+          }
+        }
+      `}
+      variables={{ artistID: props.artistID }}
+      render={readyState => {
+        return readyState.props && <Fillwidth {...readyState.props.artist as any} />
+      }}
+    />
   )
 }
 
 storiesOf("Components/Artworks/Fillwidth", module).add("A typical fillwidth", () => {
-  const user = {
-    id: "some-id",
-    accessToken: "some-token",
-  } as User
-  return (
-    <Artsy.ContextProvider currentUser={user}>
-      <FillwidthExample artistID="stephen-willats" />
-    </Artsy.ContextProvider>
-  )
+  return <FillwidthExample artistID="stephen-willats" />
 })

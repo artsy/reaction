@@ -10,6 +10,7 @@
     "member-ordering": false,
     "no-unused-expression": false,
     "no-var-requires": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "no-namespace": [true, "allow-declarations"]
   }
 }

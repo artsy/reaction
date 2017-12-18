@@ -10,6 +10,7 @@ interface Props extends React.HTMLProps<BorderedPulldown> {
   options: any
   defaultValue: string
   onChange?: any
+  selectedName?: string
 }
 
 interface State {
@@ -38,7 +39,7 @@ export class BorderedPulldown extends React.Component<Props, State> {
   }
 
   render() {
-    const { options, defaultValue } = this.props
+    const { options, defaultValue, selectedName } = this.props
 
     const optionEls = options.map(option => {
       return (
@@ -48,7 +49,7 @@ export class BorderedPulldown extends React.Component<Props, State> {
       )
     })
 
-    const displayValue = (this.state.selected && this.state.selected.name) || defaultValue
+    const displayValue = (this.state.selected && this.state.selected.name) || selectedName || defaultValue
     let pulldownStyles = {}
 
     if (this.state.isHovered) {

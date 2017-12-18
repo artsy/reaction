@@ -1,10 +1,11 @@
 import React from "react"
-import Relay from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
+
 import fillwidthDimensions from "../../Utils/fillwidth"
-import Artwork from "./FillwidthItem"
+import FillwidthItem from "./FillwidthItem"
 
 import { find } from "lodash"
 
@@ -29,7 +30,7 @@ export class Fillwidth extends React.Component<Props, null> {
     const { gutter } = this.props
     const artworkSize = find(dimensions, ["__id", artwork.__id])
     return (
-      <Artwork
+      <FillwidthItem
         artwork={artwork as any}
         key={"artwork--" + artwork.__id}
         targetHeight={artworkSize.height}
@@ -65,15 +66,6 @@ StyledFillwidth.defaultProps = {
   gutter: 10,
 }
 
-const ArtworkFragment = Relay.QL`
-  fragment on Artwork {
-    __id
-    image {
-      aspect_ratio
-    }
-    ${Artwork.getFragment("artwork")}
-  }
-`
 const sizeMeOptions = {
   monitorHeight: false,
   refreshRate: 64,
@@ -82,16 +74,19 @@ const sizeMeOptions = {
 
 const FillwidthDimensions = sizeMe(sizeMeOptions)(StyledFillwidth) as React.StatelessComponent<Props>
 
-export default Relay.createContainer(FillwidthDimensions, {
-  fragments: {
-    artworks: () => Relay.QL`
-      fragment on ArtworkConnection {
-        edges {
-          node {
-            ${ArtworkFragment}
+export default createFragmentContainer(
+  FillwidthDimensions,
+  graphql`
+    fragment Fillwidth_artworks on ArtworkConnection {
+      edges {
+        node {
+          __id
+          image {
+            aspect_ratio
           }
+          ...FillwidthItem_artwork
         }
       }
-    `,
-  },
-})
+    }
+  `
+)

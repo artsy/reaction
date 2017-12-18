@@ -1,5 +1,4 @@
 import Artwork from "./Artwork"
-import ArtworkFilter from "./ArtworkFilter"
 import ArtworkGrid from "./ArtworkGrid"
 import BorderedPulldown from "./BorderedPulldown"
 import Buttons from "./Buttons"
@@ -15,13 +14,6 @@ import TextArea from "./TextArea"
 import TextLink from "./TextLink"
 import Title from "./Title"
 
-import React from "react"
-import ReactDOM from "react-dom"
-import Relay from "react-relay"
-
-import { artsyNetworkLayer } from "../Relay/config"
-import * as Artsy from "./Artsy"
-
 interface InitOptions {
   user: User
   component: any
@@ -29,21 +21,19 @@ interface InitOptions {
   queryConfig: any
 }
 
+// TODO: Fix Force integration post Relay Modern migration
 export function init(options: InitOptions) {
-  Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
-
-  const rootRoute = (
-    <Artsy.ContextProvider currentUser={options.user}>
-      <Relay.RootContainer Component={options.component} route={options.queryConfig} />
-    </Artsy.ContextProvider>
-  )
-
-  ReactDOM.render(rootRoute, document.getElementById(options.domID))
+  // Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
+  // const rootRoute = (
+  //   <Artsy.ContextProvider currentUser={options.user}>
+  //     <Relay.RootContainer Component={options.component} route={options.queryConfig} />
+  //   </Artsy.ContextProvider>
+  // )
+  // ReactDOM.render(rootRoute, document.getElementById(options.domID))
 }
 
 export default {
   Artwork,
-  ArtworkFilter,
   Buttons,
   Modal,
   ArtworkGrid,

@@ -1,6 +1,6 @@
 import numeral from "numeral"
 import React from "react"
-import Relay from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 
 import Icon from "../Icon"
 
@@ -13,7 +13,7 @@ import { find } from "lodash"
 
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
-  onSelect?: any
+  onSelected?: (slice: string, value: string) => void
   selected?: any
 }
 
@@ -41,12 +41,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
   }
 
-  onSelect(count, slice) {
+  onSelect(slice: string, value: string) {
     this.setState({
-      selected: count.id,
+      selected: value,
       isHovered: false,
     })
-    this.props.onSelect(count, slice)
+    this.props.onSelected(slice, value)
   }
 
   getSelectedName(id) {
@@ -61,7 +61,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     let navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
+        <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
           <span>{count.name}</span>
           <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
@@ -69,7 +69,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
 
     navItems.unshift(
-      <NavItem key="all" onClick={() => this.onSelect({ value: "*" }, slice)}>
+      <NavItem key="all" onClick={() => this.onSelect(slice, "*")}>
         <span>All {labels.plural}</span>
       </NavItem>
     )
@@ -109,9 +109,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
             style={{ position: "absolute", right: 15, lineHeight: "inherit" }}
           />
         </Button>
-        <Nav style={navStyle}>
-          {navItems}
-        </Nav>
+        <Nav style={navStyle}>{navItems}</Nav>
       </div>
     )
   }
@@ -130,7 +128,7 @@ const Button = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${primary.style}
+  ${primary.style};
 `
 
 const Nav = styled.div`
@@ -144,15 +142,14 @@ const Nav = styled.div`
 `
 
 const SuperLabel = styled.div`
-  position: absolute
-  font-size: 9px
+  position: absolute;
+  font-size: 9px;
   margin-top: -15px;
-  color: black
+  color: black;
 `
 
 const NavItem = styled.div`
-  ${secondary.style}
-  text-align: left;
+  ${secondary.style} text-align: left;
   color: white;
   display: block;
   border-bottom: 1px solid #333;
@@ -163,7 +160,7 @@ const NavItem = styled.div`
   }
 `
 const NavItemCount = styled.span`
-  color: ${colors.graySemibold}
+  color: ${colors.graySemibold};
 `
 
 const StyledDropdown = styled(Dropdown)`
@@ -173,20 +170,19 @@ const StyledDropdown = styled(Dropdown)`
   margin-left: -1px;
 `
 
-export default Relay.createContainer(StyledDropdown, {
-  fragments: {
-    aggregation: () => Relay.QL`
-      fragment on ArtworksAggregationResults {
-        slice
-        counts {
-          name
-          id
-          count
-        }
+export default createFragmentContainer(
+  StyledDropdown,
+  graphql`
+    fragment Dropdown_aggregation on ArtworksAggregationResults {
+      slice
+      counts {
+        name
+        id
+        count
       }
-    `,
-  },
-})
+    }
+  `
+)
 
 interface RelayProps {
   aggregation: {

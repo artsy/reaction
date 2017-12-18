@@ -1,0 +1,135 @@
+import React from "react"
+import { graphql, QueryRenderer } from "react-relay"
+
+import { ContextConsumer, ContextProps } from "../Artsy"
+import TagArtworks from "./TagArtworks"
+
+interface Filters {
+  for_sale: boolean
+  dimension_range: string
+  price_range: string
+  medium: string
+}
+
+type Sort = "year" | "-year" | "-partner_updated_at"
+
+interface StateChangePayload {
+  filters: Filters
+  sort: Sort
+}
+
+interface Props extends ContextProps {
+  filters?: Partial<Filters>
+  tagID: string
+  sort?: Sort
+  onStateChange: (payload: StateChangePayload) => void
+}
+
+interface State extends Filters {
+  sort?: Sort
+}
+
+class TagContents extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    const { for_sale, price_range, dimension_range, medium } = this.props.filters
+    this.state = {
+      for_sale: for_sale || null,
+      medium: medium || "*",
+      price_range: price_range || "*",
+      dimension_range: dimension_range || "*",
+      sort: this.props.sort || "-partner_updated_at",
+    }
+  }
+
+  handleStateChange = () => {
+    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    const filters = {
+      for_sale,
+      medium,
+      price_range,
+      dimension_range,
+    }
+    this.props.onStateChange({ filters, sort })
+  }
+
+  onDropdownSelect(slice: string, value: string) {
+    this.setState(
+      {
+        [slice.toLowerCase() as any]: value,
+      },
+      this.handleStateChange
+    )
+  }
+
+  onForSaleToggleSelect() {
+    const forSale = this.state.for_sale ? null : true
+    this.setState(
+      {
+        for_sale: forSale,
+      },
+      this.handleStateChange
+    )
+  }
+
+  onSortSelect(sortEl) {
+    this.setState(
+      {
+        sort: sortEl.val,
+      },
+      this.handleStateChange
+    )
+  }
+
+  render() {
+    const { tagID, relayEnvironment } = this.props
+    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    return (
+      <QueryRenderer
+        environment={relayEnvironment}
+        query={graphql.experimental`
+          query TagContentsArtworksQuery(
+            $tagID: String!
+            $medium: String
+            $price_range: String
+            $sort: String
+            $for_sale: Boolean
+            $dimension_range: String
+          ) {
+            tag(id: $tagID) {
+              ...TagArtworks_tag
+                @arguments(
+                  for_sale: $for_sale
+                  medium: $medium
+                  price_range: $price_range
+                  dimension_range: $dimension_range
+                )
+            }
+          }
+        `}
+        variables={{ tagID, ...this.state }}
+        render={({ props }) => {
+          if (props) {
+            return (
+              <TagArtworks
+                onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
+                onSortSelected={this.onSortSelect.bind(this)}
+                sort={sort}
+                for_sale={for_sale}
+                medium={medium}
+                price_range={price_range}
+                dimension_range={dimension_range}
+                tag={props.tag}
+                onDropdownSelected={this.onDropdownSelect.bind(this)}
+              />
+            )
+          } else {
+            return null
+          }
+        }}
+      />
+    )
+  }
+}
+
+export const Contents = ContextConsumer(TagContents)

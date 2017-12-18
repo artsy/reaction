@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import { clone } from 'lodash'
+import { extend } from "lodash"
 import React from "react"
 import styled from 'styled-components'
-import _ from "underscore"
 import { Article } from "../Article"
 
 import {
@@ -158,7 +158,7 @@ story.add("Feature", () => {
     )
   })
   .add("Super Article", () => {
-    const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
+    const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} />
   })
   .add("Series", () => {

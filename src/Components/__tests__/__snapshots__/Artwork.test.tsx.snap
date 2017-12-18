@@ -34,7 +34,7 @@ exports[`Artwork renders correctly 1`] = `
 }
 
 .c1:before {
-  content: '';
+  content: "";
   display: block;
   padding-bottom: 100%;
 }
@@ -126,7 +126,11 @@ exports[`Artwork renders correctly 1`] = `
           Gallery 1261
         </a>
       </div>
+      <div>
+        $875
+      </div>
     </div>
+    <div />
   </div>
 </div>
 `;

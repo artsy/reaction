@@ -1,5 +1,5 @@
 import React from "react"
-import Relay from "react-relay"
+import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
 
 import Icon from "../Icon"
 
@@ -11,16 +11,40 @@ import * as Artsy from "../../Components/Artsy"
 const SIZE = 40
 
 export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.ContextProps {
-  artwork: any
   style?: any
-  relay?: any
+  relay?: RelayProp
 }
 
 export class SaveButton extends React.Component<Props, null> {
   handleSave() {
     const { currentUser, artwork, relay } = this.props
     if (currentUser && currentUser.id) {
-      relay.commitUpdate(new SaveArtworkMutation({ artwork }))
+      commitMutation(relay.environment, {
+        mutation: graphql`
+          mutation SaveArtworkMutation($input: SaveArtworkInput!) {
+            saveArtwork(input: $input) {
+              artwork {
+                is_saved
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            artwork_id: artwork.id,
+            remove: this.props.artwork.is_saved,
+          },
+        },
+        // TODO: Relay Modern: This is not working yet
+        optimisticResponse: {
+          saveArtwork: {
+            artwork: {
+              __id: artwork.__id,
+              is_saved: !this.props.artwork.is_saved,
+            },
+          },
+        },
+      })
     } else {
       window.location.href = "/login"
     }
@@ -41,12 +65,6 @@ export class SaveButton extends React.Component<Props, null> {
   }
 }
 
-interface RelayProps {
-  artwork: {
-    is_saved: boolean | null
-  }
-}
-
 export const StyledSaveButton = styled(SaveButton)`
   width: ${SIZE}px;
   height: ${SIZE}px;
@@ -54,85 +72,36 @@ export const StyledSaveButton = styled(SaveButton)`
   cursor: pointer;
   color: white;
   background-color: ${colors.gray};
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   font-size: 16px;
   line-height: ${SIZE}px;
   &:hover {
     background-color: black;
   }
-  &[data-saved='true'] {
+  &[data-saved="true"] {
     background-color: ${colors.purpleRegular};
     &:hover {
       background-color: ${colors.redBold};
     }
   }
 `
-class SaveArtworkMutation extends Relay.Mutation<Props, null> {
-  static fragments = {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        __id
-        id
-        is_saved
-      }
-    `,
-  }
 
-  getMutation() {
-    return Relay.QL`mutation{saveArtwork}`
-  }
-
-  getVariables() {
-    return {
-      artwork_id: this.props.artwork.id,
-      remove: this.props.artwork.is_saved ? true : false,
+export default createFragmentContainer(
+  Artsy.ContextConsumer(StyledSaveButton),
+  graphql`
+    fragment Save_artwork on Artwork {
+      __id
+      id
+      is_saved
     }
-  }
+  `
+)
 
-  getOptimisticResponse() {
-    return {
-      artwork: {
-        __id: this.props.artwork.__id,
-        is_saved: this.props.artwork.is_saved ? false : true,
-      },
-    }
-  }
-
-  // __id needs to be explictly added here because of our Relay fork
-  // If __id is not here, Relay will try to use `id` to match up value
-  // that is returned with its cached version (instead of using `__id`)
-  getFatQuery() {
-    return Relay.QL`
-      fragment on SaveArtworkPayload {
-        artwork {
-          __id
-          is_saved
-        }
-      }
-    `
-  }
-
-  getConfigs() {
-    return [
-      {
-        type: "FIELDS_CHANGE",
-        fieldIDs: {
-          artwork: this.props.artwork.__id,
-        },
-      },
-    ]
+interface RelayProps {
+  artwork: {
+    __id: string
+    id: string
+    is_saved: boolean | null
   }
 }
-
-export default Relay.createContainer(Artsy.ContextConsumer(StyledSaveButton), {
-  fragments: {
-    artwork: () => Relay.QL`
-      fragment on Artwork {
-        __id
-        is_saved
-        ${SaveArtworkMutation.getFragment("artwork")}
-      }
-    `,
-  },
-})
