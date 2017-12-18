@@ -124,7 +124,7 @@ export class GeneArtworks extends React.Component<Props, State> {
             onChange={this.props.onSortSelected}
           />
         </SubFilterBar>
-        <GeneArtworksContent filtered_artworks={this.props.gene.filtered_artworks as any} />
+        <GeneArtworksContent geneID={this.props.gene.id} filtered_artworks={this.props.gene.filtered_artworks as any} />
       </div>
     )
   }
@@ -153,6 +153,7 @@ export default createFragmentContainer(GeneArtworks, {
         price_range: { type: "String", defaultValue: "*" }
         dimension_range: { type: "String", defaultValue: "*" }
       ) {
+      id
       filtered_artworks(
         aggregations: $aggregations
         for_sale: $for_sale
@@ -182,7 +183,7 @@ export default createFragmentContainer(GeneArtworks, {
 
 interface RelayProps {
   gene: {
-    __id: string
+    id: string
     filtered_artworks: {
       aggregations: Array<{
         slice: string

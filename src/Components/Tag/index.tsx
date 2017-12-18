@@ -5,10 +5,10 @@ import { ContextConsumer, ContextProps } from "../Artsy"
 import TagArtworks from "./TagArtworks"
 
 interface Filters {
-  for_sale: boolean
-  dimension_range: string
-  price_range: string
-  medium: string
+  for_sale?: boolean
+  dimension_range?: string
+  price_range?: string
+  medium?: string
 }
 
 type Sort = "year" | "-year" | "-partner_updated_at"
@@ -32,12 +32,13 @@ interface State extends Filters {
 class TagContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
+    const { for_sale, price_range, dimension_range, medium } = this.props.filters
     this.state = {
-      for_sale: null,
-      medium: "*",
-      price_range: "*",
-      dimension_range: "*",
-      sort: "-partner_updated_at",
+      for_sale: for_sale || null,
+      medium: medium || "*",
+      price_range: price_range || "*",
+      dimension_range: dimension_range || "*",
+      sort: this.props.sort || "-partner_updated_at",
     }
   }
 
@@ -53,22 +54,31 @@ class TagContents extends React.Component<Props, State> {
   }
 
   onDropdownSelect(slice: string, value: string) {
-    this.setState({
-      [slice.toLowerCase() as any]: value,
-    }, this.handleStateChange)
+    this.setState(
+      {
+        [slice.toLowerCase() as any]: value,
+      },
+      this.handleStateChange
+    )
   }
 
   onForSaleToggleSelect() {
     const forSale = this.state.for_sale ? null : true
-    this.setState({
-      for_sale: forSale,
-    }, this.handleStateChange)
+    this.setState(
+      {
+        for_sale: forSale,
+      },
+      this.handleStateChange
+    )
   }
 
   onSortSelect(sortEl) {
-    this.setState({
-      sort: sortEl.val,
-    }, this.handleStateChange)
+    this.setState(
+      {
+        sort: sortEl.val,
+      },
+      this.handleStateChange
+    )
   }
 
   render() {

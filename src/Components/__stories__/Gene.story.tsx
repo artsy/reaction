@@ -9,7 +9,7 @@ storiesOf("Components/Pages/Gene/Contents", module)
     return (
       <div>
         <ContextProvider>
-          <Contents geneID="minimalism" mode="artists" onStateChange={console.log} />
+          <Contents filters={{}} geneID="minimalism" mode="artists" onStateChange={console.log} />
         </ContextProvider>
       </div>
     )
@@ -22,6 +22,21 @@ storiesOf("Components/Pages/Gene/Contents", module)
             sort="-year"
             filters={{ for_sale: true }}
             geneID="animals"
+            mode="artworks"
+            onStateChange={console.log}
+          />
+        </ContextProvider>
+      </div>
+    )
+  })
+  .add("Artworks Mode w/ Pagination Issue - Russia", () => {
+    return (
+      <div>
+        <ContextProvider>
+          <Contents
+            sort="-year"
+            filters={{ for_sale: true }}
+            geneID="russia"
             mode="artworks"
             onStateChange={console.log}
           />
