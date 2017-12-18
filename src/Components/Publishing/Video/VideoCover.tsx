@@ -16,7 +16,7 @@ interface Props {
   media: any
   seriesTitle?: string
   description?: string
-  playVideo: () => void
+  playVideo?: () => void
   tracking?: any
 }
 
