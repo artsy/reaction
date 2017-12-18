@@ -1056,6 +1056,7 @@ type ArtworkFilterGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1105,6 +1106,7 @@ type ArtworkFilterTag implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2531,6 +2533,7 @@ type Gene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2569,6 +2572,7 @@ type Gene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2693,6 +2697,7 @@ type GeneItem implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2731,6 +2736,7 @@ type GeneItem implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3150,6 +3156,7 @@ type HomePageModuleContextGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3188,6 +3195,7 @@ type HomePageModuleContextGene implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -4390,6 +4398,7 @@ type Query {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5337,6 +5346,7 @@ type Tag implements Node {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5662,6 +5672,7 @@ type Viewer {
     dimension_range: String
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]

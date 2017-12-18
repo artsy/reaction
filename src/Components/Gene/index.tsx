@@ -24,7 +24,7 @@ interface StateChangePayload {
 
 interface Props extends ContextProps {
   mode: Mode
-  filters?: Filters
+  filters?: Partial<Filters>
   geneID: string
   sort?: Sort
   onStateChange: (payload: StateChangePayload) => void
@@ -38,13 +38,14 @@ interface State extends Filters {
 class GeneContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
+    const { for_sale, price_range, dimension_range, medium } = this.props.filters
     this.state = {
-      for_sale: null,
-      medium: "*",
-      price_range: "*",
-      dimension_range: "*",
+      for_sale: for_sale || null,
+      medium: medium || "*",
+      price_range: price_range || "*",
+      dimension_range: dimension_range || "*",
       mode: props.mode,
-      sort: "-partner_updated_at",
+      sort: props.sort || "-partner_updated_at",
     }
   }
 
@@ -60,30 +61,42 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   onDropdownSelect(slice: string, value: string) {
-    this.setState({
-      [slice.toLowerCase() as any]: value,
-      mode: "artworks",
-    }, this.handleStateChange)
+    this.setState(
+      {
+        [slice.toLowerCase() as any]: value,
+        mode: "artworks",
+      },
+      this.handleStateChange
+    )
   }
 
   onForSaleToggleSelect() {
     const forSale = this.state.for_sale ? null : true
-    this.setState({
-      for_sale: forSale,
-    }, this.handleStateChange)
+    this.setState(
+      {
+        for_sale: forSale,
+      },
+      this.handleStateChange
+    )
   }
 
   onSortSelect(sortEl) {
-    this.setState({
-      sort: sortEl.val,
-      mode: "artworks",
-    }, this.handleStateChange)
+    this.setState(
+      {
+        sort: sortEl.val,
+        mode: "artworks",
+      },
+      this.handleStateChange
+    )
   }
 
   onArtistModeSelect() {
-    this.setState({
-      mode: "artists",
-    }, this.handleStateChange)
+    this.setState(
+      {
+        mode: "artists",
+      },
+      this.handleStateChange
+    )
   }
 
   renderArtists() {
@@ -162,9 +175,8 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   render() {
-    const { filters } = this.props
     const { mode } = this.state
-    if (mode === "artists" && !filters) {
+    if (mode === "artists") {
       return this.renderArtists()
     }
     return this.renderArtworks()

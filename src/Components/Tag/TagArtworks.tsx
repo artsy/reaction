@@ -78,7 +78,7 @@ export class TagArtworks extends React.Component<Props, State> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
-    const selectedSort = pulldownOptions.find((sort) => sort.val === this.props.sort)
+    const selectedSort = pulldownOptions.find(sort => sort.val === this.props.sort)
     return (
       <div>
         <SubFilterBar>
@@ -93,9 +93,14 @@ export class TagArtworks extends React.Component<Props, State> {
             />
             <TotalCount filter_artworks={this.props.tag.filtered_artworks} />
           </div>
-          <BorderedPulldown defaultValue="Recently Updated" selectedName={selectedSort && selectedSort.name} options={pulldownOptions} onChange={this.props.onSortSelected} />
+          <BorderedPulldown
+            defaultValue="Recently Updated"
+            selectedName={selectedSort && selectedSort.name}
+            options={pulldownOptions}
+            onChange={this.props.onSortSelected}
+          />
         </SubFilterBar>
-        <TagArtworksContent filtered_artworks={this.props.tag.filtered_artworks as any} />
+        <TagArtworksContent tagID={this.props.tag.id} filtered_artworks={this.props.tag.filtered_artworks as any} />
       </div>
     )
   }
@@ -113,48 +118,46 @@ export class TagArtworks extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(
-  TagArtworks,
-  {
-    tag: graphql.experimental`
-      fragment TagArtworks_tag on Tag
-        @argumentDefinitions(
-          for_sale: { type: "Boolean" }
-          medium: { type: "String", defaultValue: "*" }
-          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
-          price_range: { type: "String", defaultValue: "*" }
-          dimension_range: { type: "String", defaultValue: "*" }
-        ) {
-        filtered_artworks(
-          aggregations: $aggregations
-          for_sale: $for_sale
-          medium: $medium
-          price_range: $price_range
-          dimension_range: $dimension_range
-          size: 0
-        ) {
-          ...TotalCount_filter_artworks
-          ...TagArtworksContent_filtered_artworks
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-            ...Dropdown_aggregation
+export default createFragmentContainer(TagArtworks, {
+  tag: graphql.experimental`
+    fragment TagArtworks_tag on Tag
+      @argumentDefinitions(
+        for_sale: { type: "Boolean" }
+        medium: { type: "String", defaultValue: "*" }
+        aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+        price_range: { type: "String", defaultValue: "*" }
+        dimension_range: { type: "String", defaultValue: "*" }
+      ) {
+      id
+      filtered_artworks(
+        aggregations: $aggregations
+        for_sale: $for_sale
+        medium: $medium
+        price_range: $price_range
+        dimension_range: $dimension_range
+        size: 0
+      ) {
+        ...TotalCount_filter_artworks
+        ...TagArtworksContent_filtered_artworks
+        aggregations {
+          slice
+          counts {
+            name
+            id
           }
-          facet {
-            ...Headline_facet
-          }
+          ...Dropdown_aggregation
+        }
+        facet {
+          ...Headline_facet
         }
       }
-    `,
-  },
-)
+    }
+  `,
+})
 
 interface RelayProps {
   tag: {
-    __id: string
+    id: string
     filtered_artworks: {
       aggregations: Array<{
         slice: string

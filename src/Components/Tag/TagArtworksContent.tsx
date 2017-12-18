@@ -1,11 +1,12 @@
 import * as React from "react"
-import {ConnectionData, createPaginationContainer,graphql, RelayPaginationProp} from "react-relay"
+import { ConnectionData, createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
 import styled from "styled-components"
 import ArtworkGrid from "../ArtworkGrid"
 import Spinner from "../Spinner"
 
 interface Props extends RelayProps {
   relay?: RelayPaginationProp
+  tagID: string
 }
 
 const SpinnerContainer = styled.div`
@@ -17,12 +18,21 @@ const SpinnerContainer = styled.div`
 const PageSize = 10
 
 export class TagArtworksContent extends React.Component<Props, null> {
+  private finishedPaginatingWithError = false
+
   loadMoreArtworks() {
     const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
-    if (hasMore && !this.props.relay.isLoading()) {
+    const origLength = this.props.filtered_artworks.artworks.edges.length
+    if (hasMore && !this.props.relay.isLoading() && !this.finishedPaginatingWithError) {
       this.props.relay.loadMore(PageSize, error => {
         if (error) {
           console.error(error)
+        }
+        const newLength = this.props.filtered_artworks.artworks.edges.length
+        const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+        if (newLength - origLength < PageSize && newHasMore) {
+          console.error(`Total count inconsistent with actual records returned for tag: ${this.props.tagID}`)
+          this.finishedPaginatingWithError = true
         }
       })
     }
@@ -48,12 +58,10 @@ export default createPaginationContainer(
   {
     filtered_artworks: graphql.experimental`
       fragment TagArtworksContent_filtered_artworks on FilterArtworks
-        @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String", defaultValue: "" }
-        ) {
+        @argumentDefinitions(count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
         __id
-        artworks: artworks_connection(first: $count, after: $cursor, sort: $sort) @connection(key: "TagArtworksContent_filtered_artworks") {
+        artworks: artworks_connection(first: $count, after: $cursor, sort: $sort)
+          @connection(key: "TagArtworksContent_filtered_artworks") {
           pageInfo {
             hasNextPage
             endCursor
@@ -90,17 +98,9 @@ export default createPaginationContainer(
       }
     },
     query: graphql.experimental`
-      query TagArtworksContentQuery(
-        $filteredArtworksNodeID: ID!
-        $count: Int!
-        $cursor: String
-        $sort: String
-      ) {
+      query TagArtworksContentQuery($filteredArtworksNodeID: ID!, $count: Int!, $cursor: String, $sort: String) {
         node(__id: $filteredArtworksNodeID) {
-          ...TagArtworksContent_filtered_artworks @arguments(
-            count: $count,
-            cursor: $cursor,
-          )
+          ...TagArtworksContent_filtered_artworks @arguments(count: $count, cursor: $cursor)
         }
       }
     `,

@@ -4,13 +4,12 @@ import { Contents } from "../Tag"
 
 import { ContextProvider } from "../Artsy"
 
-storiesOf("Components/Pages/Tag/Contents", module)
-  .add("Butt", () => {
-    return (
-      <div>
-        <ContextProvider>
-          <Contents tagID="butt" onStateChange={console.log} />
-        </ContextProvider>
-      </div>
-    )
-  })
+storiesOf("Components/Pages/Tag/Contents", module).add("Butt", () => {
+  return (
+    <div>
+      <ContextProvider>
+        <Contents tagID="butt" sort="-year" filters={{ for_sale: true }} onStateChange={console.log} />
+      </ContextProvider>
+    </div>
+  )
+})

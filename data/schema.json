@@ -725,6 +725,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -20029,6 +20039,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -20462,6 +20482,16 @@
                 },
                 {
                   "name": "include_artworks_by_followed_artists",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "include_medium_filter_in_aggregation",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -21128,6 +21158,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -21488,6 +21528,16 @@
                 },
                 {
                   "name": "include_artworks_by_followed_artists",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "include_medium_filter_in_aggregation",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -23420,6 +23470,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -23780,6 +23840,16 @@
                 },
                 {
                   "name": "include_artworks_by_followed_artists",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "include_medium_filter_in_aggregation",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -33935,6 +34005,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -34295,6 +34375,16 @@
                 },
                 {
                   "name": "include_artworks_by_followed_artists",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "include_medium_filter_in_aggregation",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -38908,6 +38998,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -39932,6 +40032,16 @@
                 },
                 {
                   "name": "include_artworks_by_followed_artists",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "include_medium_filter_in_aggregation",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
