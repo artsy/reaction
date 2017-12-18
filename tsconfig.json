@@ -7,15 +7,13 @@
     "sourceMap": true,
     "rootDir": "src",
     "jsx": "react",
-    "allowJs": false,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "outDir": "dist",
-    "plugins": [
-      { "name": "typescript-styled-plugin" }
-    ]
+    "plugins": [{ "name": "typescript-styled-plugin" }]
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "data", "externals", "danger"]

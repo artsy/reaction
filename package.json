@@ -85,7 +85,6 @@
     "jest": "^21.1.1",
     "jest-styled-components": "^4.9.0",
     "lint-staged": "^4.0.0",
-    "merge-stream": "^1.0.1",
     "prettier": "^1.7.4",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
@@ -119,8 +118,8 @@
     "react-styled-flexboxgrid": "^2.0.0",
     "react-tracking": "^4.2.1",
     "react-url-query": "^1.1.4",
-    "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/relay-runtime-artsy.1.tgz",
     "react-waypoint": "^7.3.3",
+    "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/relay-runtime-artsy.1.tgz",
     "sharify": "^0.1.6",
     "superagent": "^3.6.3"
   },
