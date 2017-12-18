@@ -4,6 +4,7 @@ const gulp = require("gulp")
 const path = require("path")
 const sourcemaps = require("gulp-sourcemaps")
 const tsc = require("gulp-typescript")
+const mergeStream = require("merge-stream")
 
 const srcDir = "./src"
 const outDir = "./dist"
@@ -20,7 +21,7 @@ gulp.task("compile", () => {
     .pipe(sourcemaps.init())
     .pipe(tsProject())
 
-  return tsResult.js
+  const tsStream = tsResult.js
     .pipe(babel())
     .pipe(
       sourcemaps.write(".", {
@@ -34,6 +35,13 @@ gulp.task("compile", () => {
       })
     )
     .pipe(gulp.dest(outDir))
+
+  const graphqlJsStream = gulp
+    .src(`${srcDir}/**/*.graphql.js`)
+    .pipe(babel())
+    .pipe(gulp.dest(outDir))
+
+  return mergeStream(tsStream, graphqlJsStream)
 })
 
 gulp.task("default", ["clean", "compile"])
