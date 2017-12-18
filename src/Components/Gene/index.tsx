@@ -6,10 +6,10 @@ import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 
 interface Filters {
-  for_sale?: boolean
-  dimension_range?: string
-  price_range?: string
-  medium?: string
+  for_sale: boolean
+  dimension_range: string
+  price_range: string
+  medium: string
 }
 
 type Sort = "year" | "-year" | "-partner_updated_at"
@@ -24,7 +24,7 @@ interface StateChangePayload {
 
 interface Props extends ContextProps {
   mode: Mode
-  filters?: Filters
+  filters?: Partial<Filters>
   geneID: string
   sort?: Sort
   onStateChange: (payload: StateChangePayload) => void

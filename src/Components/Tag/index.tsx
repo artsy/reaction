@@ -5,10 +5,10 @@ import { ContextConsumer, ContextProps } from "../Artsy"
 import TagArtworks from "./TagArtworks"
 
 interface Filters {
-  for_sale?: boolean
-  dimension_range?: string
-  price_range?: string
-  medium?: string
+  for_sale: boolean
+  dimension_range: string
+  price_range: string
+  medium: string
 }
 
 type Sort = "year" | "-year" | "-partner_updated_at"
@@ -19,7 +19,7 @@ interface StateChangePayload {
 }
 
 interface Props extends ContextProps {
-  filters?: Filters
+  filters?: Partial<Filters>
   tagID: string
   sort?: Sort
   onStateChange: (payload: StateChangePayload) => void

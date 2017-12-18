@@ -31,7 +31,7 @@ export class TagArtworksContent extends React.Component<Props, null> {
         const newLength = this.props.filtered_artworks.artworks.edges.length
         const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
         if (newLength - origLength < PageSize && newHasMore) {
-          console.error(`Stopping tag artwork pagination early for tag with id: ${this.props.tagID}`)
+          console.error(`Total count inconsistent with actual records returned for tag: ${this.props.tagID}`)
           this.finishedPaginatingWithError = true
         }
       })

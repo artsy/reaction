@@ -31,7 +31,7 @@ export class GeneArtworksContent extends React.Component<Props, null> {
         const newLength = this.props.filtered_artworks.artworks.edges.length
         const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
         if (newLength - origLength < PageSize && newHasMore) {
-          console.error(`Stopping gene artwork pagination early for gene with id: ${this.props.geneID}`)
+          console.error(`Total count inconsistent with actual records returned for gene: ${this.props.geneID}`)
           this.finishedPaginatingWithError = true
         }
       })
