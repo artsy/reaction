@@ -7,7 +7,7 @@
     "sourceMap": true,
     "rootDir": "src",
     "jsx": "react",
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "experimentalDecorators": true,
