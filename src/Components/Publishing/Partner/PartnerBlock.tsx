@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Events from "../../../Utils/Events"
-import track from "../../../Utils/track"
+import { track } from "../../../Utils/track"
 import { pMedia } from '../../Helpers'
 import { Fonts } from '../Fonts'
 

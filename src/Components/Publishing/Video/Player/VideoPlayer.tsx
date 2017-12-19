@@ -1,5 +1,7 @@
+import { memoize } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
+import { track } from "../../../../Utils/track"
 import {
   addFSEventListener,
   exitFullscreen,
@@ -13,8 +15,9 @@ import { VideoControls, VideoControlsContainer } from "./VideoControls"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   url: string,
   title?: string,
-  notifyIsPaused?: () => void,
+  notifyPlayToggle?: (e) => void,
   forcePlay?: boolean
+  tracking?: any
 }
 
 interface State {
@@ -24,6 +27,7 @@ interface State {
   duration: number
 }
 
+@track()
 export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
@@ -33,6 +37,11 @@ export class VideoPlayer extends Component<Props, State> {
     isPlaying: this.props.forcePlay,
     currentTime: 0,
     duration: 0
+  }
+
+  constructor(props) {
+    super(props)
+    this.toggleFullscreen = this.toggleFullscreen.bind(this)
   }
 
   componentDidMount() {
@@ -65,6 +74,7 @@ export class VideoPlayer extends Component<Props, State> {
   }
 
   updateTime = (e) => {
+    this.trackProgress()
     this.setState({
       currentTime: e.target.currentTime
     })
@@ -73,11 +83,12 @@ export class VideoPlayer extends Component<Props, State> {
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.video.pause()
-      if (this.props.notifyIsPaused) {
-        this.props.notifyIsPaused()
-      }
     } else {
       this.video.play()
+    }
+
+    if (this.props.notifyPlayToggle) {
+      this.props.notifyPlayToggle(!this.state.isPlaying)
     }
 
     this.setState({
@@ -98,7 +109,13 @@ export class VideoPlayer extends Component<Props, State> {
     })
   }
 
-  toggleFullscreen = () => {
+  @track((props) => {
+    return {
+      action: "Click",
+      label: "Fullscreen video"
+    }
+  })
+  toggleFullscreen() {
     if (fullscreenEnabled()) {
       if (isFullscreen()) {
         exitFullscreen()
@@ -128,6 +145,38 @@ export class VideoPlayer extends Component<Props, State> {
       isPlaying: true
     })
   }
+
+  trackProgress = () => {
+    const secondsComplete = Math.floor(this.video.currentTime)
+    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
+
+    // Track 25% duration intervals
+    if (percentCompleteInterval > 0) {
+      this.trackDuration(percentCompleteInterval)
+    }
+
+    // Track 3 & 10 seconds
+    if (secondsComplete === 3 || secondsComplete === 10) {
+      this.trackSeconds(secondsComplete)
+    }
+  }
+
+  trackDuration = memoize((percentComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video duration",
+      label: "Video duration",
+      percent_complete: percentComplete,
+    })
+  })
+
+  trackSeconds = memoize((secondsComplete) => {
+    this.props.tracking.trackEvent({
+      action: "Video seconds",
+      label: "Video seconds",
+      seconds_complete: secondsComplete,
+    })
+  })
 
   render() {
     const {

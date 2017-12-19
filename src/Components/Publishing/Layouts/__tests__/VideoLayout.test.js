@@ -15,6 +15,10 @@ import { VideoPlayer } from "../../Video/Player/VideoPlayer"
 import { VideoAbout } from "../../Video/VideoAbout"
 import { VideoLayout } from "../VideoLayout"
 
+jest.mock('../../../../Utils/track.ts', () => ({
+  track: jest.fn()
+}))
+
 describe("Video Layout", () => {
   const getWrapper = (props: any = {}) => {
     return mount(
@@ -69,13 +73,7 @@ describe("Video Layout", () => {
 
   it("sets isPlaying to false when paused", () => {
     const component = getWrapper()
-    component.instance().onPauseVideo()
+    component.instance().onPlayToggle(false)
     expect(component.state().isPlaying).toBe(false)
-  })
-
-  it("sets isPlaying to true when clicking play from cover", () => {
-    const component = getWrapper()
-    component.find(IconVideoPlay).at(1).parent().simulate("click")
-    expect(component.state().isPlaying).toBe(true)
   })
 })

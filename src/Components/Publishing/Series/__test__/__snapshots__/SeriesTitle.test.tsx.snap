@@ -6,7 +6,7 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-m6gc27-0 img {
+.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -21,7 +21,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-m6gc27-0 img {
+  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }
@@ -55,7 +55,7 @@ exports[`renders a series with children properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-m6gc27-0 img {
+.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -70,7 +70,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-m6gc27-0 img {
+  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }

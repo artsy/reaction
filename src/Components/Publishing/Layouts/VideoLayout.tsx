@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Col } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
+import Events from "../../../Utils/Events"
+import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Fonts } from "../Fonts"
@@ -21,23 +23,52 @@ interface Props {
 
 interface State {
   isPlaying: boolean
+  hideCover: boolean
 }
 
+@track((props) => {
+  return {
+    page: "Article",
+    entity_type: "article",
+    entity_id: props.article.id
+  }
+}, {
+    dispatch: data => Events.postEvent(data)
+  }
+)
 export class VideoLayout extends Component<Props, State> {
   state = {
-    isPlaying: false
+    isPlaying: false,
+    hideCover: false
   }
 
   playVideo = () => {
     this.setState({
-      isPlaying: true
+      isPlaying: true,
+      hideCover: true
     })
   }
 
-  onPauseVideo = () => {
-    this.setState({
-      isPlaying: false
-    })
+  onPlayToggle = (isPlaying) => {
+    if (!isPlaying) {
+      this.setState({
+        isPlaying
+      })
+      setTimeout(this.setHideCover.bind(this), 30000)
+    } else {
+      this.setState({
+        isPlaying,
+        hideCover: true
+      })
+    }
+  }
+
+  setHideCover = () => {
+    if (!this.state.isPlaying) {
+      this.setState({
+        hideCover: false
+      })
+    }
   }
 
   render() {
@@ -48,7 +79,7 @@ export class VideoLayout extends Component<Props, State> {
     } = this.props
     const { media } = article
 
-    return(
+    return (
       <VideoLayoutContainer>
         <Nav
           transparent
@@ -60,14 +91,14 @@ export class VideoLayout extends Component<Props, State> {
             url={media.url}
             title={media.title}
             forcePlay={this.state.isPlaying}
-            notifyIsPaused={this.onPauseVideo}
+            notifyPlayToggle={this.onPlayToggle}
           />
           <VideoCover
             article={article}
             media={media}
             seriesTitle={seriesArticle && seriesArticle.title}
             playVideo={this.playVideo}
-            hideCover={this.state.isPlaying}
+            hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
         <MaxRow>
