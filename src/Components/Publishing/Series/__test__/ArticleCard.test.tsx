@@ -6,7 +6,11 @@ import { getDate } from '../../Constants'
 import { SeriesArticle, StandardArticle, VideoArticle } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
 import { IconVideoPlay } from "../../Icon/IconVideoPlay"
-import { ArticleCard } from "../ArticleCard"
+import { ArticleCard, ArticleCardContainer } from "../ArticleCard"
+
+jest.mock('../../../../Utils/track.ts', () => ({
+  track: jest.fn()
+}))
 
 describe("ArticleCard", () => {
   let standardArticle
@@ -100,5 +104,25 @@ describe("ArticleCard", () => {
     expect(component.text()).toMatch("Child description")
     expect(component.text()).toMatch("Child image")
     expect(component.text()).toMatch("Child title")
+  })
+
+  describe("Analytics", () => {
+    it("tracks article card click", () => {
+      const trackEvent = jest.fn()
+      const component = mount(
+        <ArticleCard
+          article={videoArticle}
+          series={SeriesArticle}
+          tracking={{
+            trackEvent
+          }}
+        />
+      )
+      component.find(ArticleCardContainer).first().simulate("click")
+      expect(trackEvent).toBeCalledWith({
+        action: "Click",
+        label: "Related article card"
+      })
+    })
   })
 })

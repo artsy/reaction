@@ -11,10 +11,15 @@ jest.mock('../../../../../Utils/track.ts', () => ({
 }))
 
 describe("VideoPlayer", () => {
+  const trackEvent = jest.fn()
+
   const getWrapper = (props) => {
     return mount(
       <VideoPlayer
         url="http://files.artsy.net/videos/placeholder.mp4"
+        tracking={{
+          trackEvent
+        }}
       />
     )
   }
@@ -122,11 +127,37 @@ describe("VideoPlayer", () => {
     })
   })
 
-  describe("Video Player Analytics", () => {
+  describe("Analytics", () => {
     it("tracks fullscreen button", () => {
       const videoPlayer = getWrapper()
       videoPlayer.instance().toggleFullscreen()
-      console.log(track.mock.calls)
+      expect(track).toBeCalled()
+    })
+
+    it("tracks duration", () => {
+      const videoPlayer = getWrapper()
+      Object.defineProperty(videoPlayer.instance().video, 'duration', {
+        writable: true
+      })
+      videoPlayer.instance().video.currentTime = 3
+      videoPlayer.instance().video.duration = 10
+      videoPlayer.instance().trackProgress()
+      expect(trackEvent).toBeCalledWith({
+        action: "Video duration",
+        label: "Video duration",
+        percent_complete: 25
+      })
+    })
+
+    it("tracks seconds passed", () => {
+      const videoPlayer = getWrapper()
+      videoPlayer.instance().video.currentTime = 3
+      videoPlayer.instance().trackProgress()
+      expect(trackEvent).toBeCalledWith({
+        action: "Video seconds",
+        label: "Video seconds",
+        seconds_complete: 3
+      })
     })
   })
 })

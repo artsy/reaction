@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Date } from '../Byline/AuthorDate'
 import { Byline } from '../Byline/Byline'
@@ -9,7 +10,7 @@ import {
   getMediaDate
 } from "../Constants"
 import { Fonts } from "../Fonts"
-import { IconVideoPlay } from '../Icon/IconVideoPlay'
+import { IconVideoPlay } from "../Icon/IconVideoPlay"
 
 interface Props {
   article?: any
@@ -20,12 +21,14 @@ interface Props {
   editTitle?: any
   editImage?: any
   series?: any
+  tracking?: any
 }
 
+@track()
 export class ArticleCard extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  isUnpublishedMedia () {
+  isUnpublishedMedia() {
     const { media } = this.props.article
     return media && !media.published
   }
@@ -69,10 +72,10 @@ export class ArticleCard extends Component<Props, null> {
 
     if (this.isUnpublishedMedia()) {
       return (
-          <MediaDate>
-            <span>Available </span>
-            <Date layout='condensed' date={mediaDate} />
-          </MediaDate>
+        <MediaDate>
+          <span>Available </span>
+          <Date layout='condensed' date={mediaDate} />
+        </MediaDate>
       )
     } else {
       return <Date layout='condensed' date={mediaDate} />
@@ -100,9 +103,14 @@ export class ArticleCard extends Component<Props, null> {
     if (!this.isUnpublishedMedia() && !this.isEditing()) {
       window.open(e.currentTarget.attributes.href.value)
     }
+
+    this.props.tracking.trackEvent({
+      action: "Click",
+      label: "Related article card"
+    })
   }
 
-  render () {
+  render() {
     const {
       article,
       color,

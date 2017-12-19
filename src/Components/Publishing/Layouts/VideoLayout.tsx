@@ -28,7 +28,7 @@ interface State {
 
 @track((props) => {
   return {
-    page: "Video",
+    page: "Article",
     entity_type: "article",
     entity_id: props.article.id
   }
@@ -79,7 +79,7 @@ export class VideoLayout extends Component<Props, State> {
     } = this.props
     const { media } = article
 
-    return(
+    return (
       <VideoLayoutContainer>
         <Nav
           transparent
