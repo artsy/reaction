@@ -52,8 +52,8 @@ export class VideoAbout extends Component<Props, null> {
             About the Film
           </Title>
           {editDescription
-            ? <Text layout='standard'>{editDescription}</Text>
-            : <Text layout="standard" html={media.description} />
+            ? <Text color={color} layout='standard'>{editDescription}</Text>
+            : <Text color={color} layout="standard" html={media.description} />
           }
           <ShareDate
             color={color}

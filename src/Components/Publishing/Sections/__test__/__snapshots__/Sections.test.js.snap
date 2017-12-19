@@ -330,6 +330,7 @@ exports[`snapshots renders properly 1`] = `
 
 .c2 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c2 p,
@@ -745,6 +746,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -761,6 +763,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -777,6 +780,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -793,6 +797,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1124,6 +1129,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1416,6 +1422,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1530,6 +1537,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1558,6 +1566,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1850,6 +1859,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -1935,6 +1945,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -2049,6 +2060,7 @@ exports[`snapshots renders properly 1`] = `
   >
     <div
       className="article__text-section c2"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
