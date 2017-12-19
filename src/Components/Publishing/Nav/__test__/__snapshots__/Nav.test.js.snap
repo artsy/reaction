@@ -290,7 +290,7 @@ exports[`Nav renders a sponsored nav 1`] = `
         </g>
       </svg>
       <a
-        href={undefined}
+        href="http://artsy.net"
         onClick={[Function]}
         target="_blank"
       >

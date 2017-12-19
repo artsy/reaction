@@ -60,7 +60,7 @@ export const SeriesTitleContainer = Div`
 
   ${props => pMedia.md`
     ${PartnerBlockContainer} img {
-      max-width: 200px;
+      max-width: 240px;
       padding-bottom: 0;
     }
   `}
