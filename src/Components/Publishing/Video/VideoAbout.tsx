@@ -86,6 +86,12 @@ export const VideoAboutContainer = styled.div`
     flex: 1;
   }
 
+  ${Col}:first-of-type {
+    p {
+      padding: 0px;
+    }
+  }
+
   ${Col}:nth-of-type(2) {
     ${ShareDate} {
       display: none;
