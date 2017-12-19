@@ -15,7 +15,7 @@ const Icon: React.SFC<Props> = props => (
     height="32px"
   >
     <g fill="none" fillRule="evenodd" transform="translate(-1151 -22)">
-      <rect width="1200" height="92" fill="#000" fillOpacity=".2" stroke={props.color} rx="4" />
+      <rect width="1200" height="92" stroke={props.color} rx="4" />
       <path d="M1150 21h30v30h-30z" />
       <g fill="#FFF">
         <path d="M1151 40h2v10h-2z" />

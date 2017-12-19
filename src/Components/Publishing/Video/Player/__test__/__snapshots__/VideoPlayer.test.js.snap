@@ -284,8 +284,6 @@ exports[`VideoPlayer matches the snapshot 1`] = `
               transform="translate(-1151 -22)"
             >
               <rect
-                fill="#000"
-                fillOpacity=".2"
                 height="92"
                 rx="4"
                 stroke="white"
