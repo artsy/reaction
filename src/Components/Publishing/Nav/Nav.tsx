@@ -59,7 +59,7 @@ export class NavComponent extends React.Component<Props, State> {
           isFixed={canFix && isFixed}
         >
           <PartnerInline
-            url={sponsor && sponsor.url}
+            url={sponsor && sponsor.partner_logo_link}
             logo={sponsor && sponsor.partner_condensed_logo}
             color="white"
             margin="0 10px"

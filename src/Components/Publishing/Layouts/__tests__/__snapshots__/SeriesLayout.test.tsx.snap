@@ -789,7 +789,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:900px) {
   .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
+    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -1871,7 +1871,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c15 .c17 img {
-    max-width: 200px;
+    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -1965,7 +1965,7 @@ exports[`renders a sponsored series properly 1`] = `
           </g>
         </svg>
         <a
-          href={undefined}
+          href="http://artsy.net"
           onClick={[Function]}
           target="_blank"
         >

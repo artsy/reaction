@@ -22,8 +22,8 @@ interface DivProps {
 @track((props) => {
   return props.trackingData ? props.trackingData : {}
 }, {
-  dispatch: data => Events.postEvent(data)
-})
+    dispatch: data => Events.postEvent(data)
+  })
 export class PartnerInline extends React.Component<Props, null> {
   static defaultProps = {
     tracking: {
@@ -32,14 +32,11 @@ export class PartnerInline extends React.Component<Props, null> {
     margin: "0px"
   }
 
-  constructor(props) {
-    super(props)
-    this.onPartnerClick = this.onPartnerClick.bind(this)
-  }
-
-  onPartnerClick(event) {
+  onPartnerClick = (event) => {
     this.props.tracking.trackEvent({
-      action: "Click"
+      action: "Click",
+      type: "external_link",
+      destination_path: event.currentTarget.href
     })
   }
 

@@ -24,7 +24,7 @@ exports[`renders a series title properly 1`] = `
 
 @media (max-width:900px) {
   .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
+    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -75,7 +75,7 @@ exports[`renders a series with children properly 1`] = `
 
 @media (max-width:900px) {
   .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
+    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -156,7 +156,7 @@ exports[`renders a sponsored series title properly 1`] = `
 
 @media (max-width:900px) {
   .c0 .c2 img {
-    max-width: 200px;
+    max-width: 240px;
     padding-bottom: 0;
   }
 }
