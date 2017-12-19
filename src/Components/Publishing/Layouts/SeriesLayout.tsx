@@ -3,6 +3,7 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Nav } from "../Nav/Nav"
 import { ArticleCard, ArticleCardContainer } from '../Series/ArticleCard'
+import { FixedBackground } from '../Series/FixedBackground'
 import { SeriesAbout, SeriesAboutContainer } from '../Series/SeriesAbout'
 import { SeriesTitle, SeriesTitleContainer } from '../Series/SeriesTitle'
 import { ArticleData } from "../Typings"
@@ -27,12 +28,17 @@ export class SeriesLayout extends Component<Props, null> {
         className='Series'
         color={color}
         backgroundColor={backgroundColor}
-        backgroundUrl={backgroundUrl}
       >
         <Nav
           transparent
           sponsor={sponsor}
         />
+
+        <FixedBackground
+          backgroundColor={backgroundColor}
+          backgroundUrl={backgroundUrl}
+        />
+
         <SeriesContent sponsor={sponsor}>
 
           <SeriesTitle
@@ -103,10 +109,6 @@ export const SeriesContent = Div`
 `
 export const SeriesContainer = Div`
   color: ${props => props.color};
-  background-color: ${props => props.backgroundColor};
-  background-image: ${props => `url(${props.backgroundUrl})`};
-  background-size: cover;
-  background-position: 50%;
 
   ${SeriesContent} {
     padding: 90px 20px 150px;
