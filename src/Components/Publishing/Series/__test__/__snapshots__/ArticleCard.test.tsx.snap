@@ -312,11 +312,11 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   display: flex;
 }
 
-.c0 .file__Image-s107dzpm-0 {
+.c0 .file__Image-s15g7hw5-0 {
   opacity: 1;
 }
 
-.c0:hover .file__Image-s107dzpm-0 {
+.c0:hover .file__Image-s15g7hw5-0 {
   opacity: .7;
 }
 
@@ -763,7 +763,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       <div
         className="c3"
       >
-        New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+        Trevor Paglan
       </div>
       <div
         className="c4"

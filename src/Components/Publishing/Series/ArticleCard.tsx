@@ -131,7 +131,7 @@ export class ArticleCard extends Component<Props, null> {
             <Title>
               {editTitle
                 ? editTitle
-                : article.thumbnail_title
+                : article.title
               }
             </Title>
             <Description>
