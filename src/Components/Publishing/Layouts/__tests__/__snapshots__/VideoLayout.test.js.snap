@@ -794,6 +794,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex: 1;
 }
 
+.c44 .c35:first-of-type p {
+  padding: 0px;
+}
+
 .c44 .c35:nth-of-type(2) .c48 {
   display: none;
 }
