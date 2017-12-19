@@ -29,7 +29,7 @@ describe("Mute/Unmute Button", () => {
     expect(toggleMute).toBeCalled()
   })
 
-  it("shows a mute icon if it is not muted", () => {
+  it("shows an unmute icon if it is not muted", () => {
     const toggleMute = jest.fn()
     const component = mount(
       <MuteUnmute
@@ -37,10 +37,10 @@ describe("Mute/Unmute Button", () => {
         toggleMute={toggleMute}
       />
     )
-    expect(component.find(IconVideoUnmute).length).toEqual(1)
+    expect(component.find(IconVideoMute).length).toEqual(1)
   })
 
-  it("shows a unmute icon if it is muted", () => {
+  it("shows a mute icon if it is muted", () => {
     const toggleMute = jest.fn()
     const component = mount(
       <MuteUnmute
@@ -48,6 +48,6 @@ describe("Mute/Unmute Button", () => {
         toggleMute={toggleMute}
       />
     )
-    expect(component.find(IconVideoMute).length).toEqual(1)
+    expect(component.find(IconVideoUnmute).length).toEqual(1)
   })
 })

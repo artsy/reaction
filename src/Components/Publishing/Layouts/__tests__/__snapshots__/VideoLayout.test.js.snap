@@ -60,7 +60,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -78,6 +78,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 .c50 {
@@ -1650,15 +1651,15 @@ exports[`Video Layout matches the snapshot 1`] = `
                 onClick={[Function]}
               >
                 <svg
-                  height="32px"
-                  width="32px"
+                  height="30px"
+                  width="30px"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g
                     fill="white"
                   >
                     <path
-                      d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z"
+                      d="M19.1285714,15.3428571 L19.1285714,28.7571429 L11.8285714,21.4714286 L0.757142857,21.4714286 L0.757142857,8.04285714 L11.8285714,8.04285714 L19.1285714,0.757142857 L19.1285714,15.3428571 Z"
                     />
                   </g>
                 </svg>

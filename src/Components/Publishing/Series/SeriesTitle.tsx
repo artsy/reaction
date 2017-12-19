@@ -54,6 +54,8 @@ export const SeriesTitleContainer = Div`
     max-width: 170px;
     padding-top: 5px;
     padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   ${props => pMedia.md`

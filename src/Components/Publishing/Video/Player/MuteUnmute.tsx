@@ -18,9 +18,9 @@ export class MuteUnmute extends React.PureComponent<Props, null> {
     return (
       <MuteUnmuteContainer onClick={toggleMute}>
         {isMuted ?
-          <IconVideoMute color="white"/>
+          <IconVideoUnmute color="white" />
           :
-          <IconVideoUnmute color="white"/>
+          <IconVideoMute color="white" />
         }
       </MuteUnmuteContainer>
     )

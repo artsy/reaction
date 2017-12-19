@@ -53,7 +53,7 @@ exports[`Nav renders a Nav 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -71,6 +71,7 @@ exports[`Nav renders a Nav 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 @media (max-width:720px) {
@@ -186,7 +187,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -204,6 +205,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 @media (max-width:900px) {
@@ -368,7 +370,7 @@ exports[`Nav renders a transparent nav 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -386,6 +388,7 @@ exports[`Nav renders a transparent nav 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 @media (max-width:720px) {
