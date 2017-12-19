@@ -1,4 +1,4 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
@@ -13,7 +13,7 @@ interface Props {
 export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  render () {
+  render() {
     const { article, color, editTitle } = this.props
     const { sponsor, title } = article
 
@@ -54,6 +54,8 @@ export const SeriesTitleContainer = Div`
     max-width: 170px;
     padding-top: 5px;
     padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   ${props => pMedia.md`
