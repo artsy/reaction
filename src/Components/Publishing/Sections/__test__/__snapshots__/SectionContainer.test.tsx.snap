@@ -29,6 +29,7 @@ exports[`renders column_width properly 1`] = `
 
 .c1 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c1 p,
@@ -250,6 +251,7 @@ exports[`renders column_width properly 1`] = `
 >
   <div
     className="article__text-section c1"
+    color="black"
   >
     <div
       dangerouslySetInnerHTML={
@@ -291,6 +293,7 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c1 p,
@@ -512,6 +515,7 @@ exports[`renders fillwidth properly 1`] = `
 >
   <div
     className="article__text-section c1"
+    color="black"
   >
     <div
       dangerouslySetInnerHTML={
@@ -553,6 +557,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c1 p,
@@ -774,6 +779,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 >
   <div
     className="article__text-section c1"
+    color="black"
   >
     <div
       dangerouslySetInnerHTML={

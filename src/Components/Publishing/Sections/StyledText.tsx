@@ -5,6 +5,7 @@ import { Fonts } from "../Fonts"
 import { Layout } from "../Typings"
 
 interface StyledTextProps {
+  color?: string
   isContentStart: boolean
   layout: Layout
   postscript?: Boolean
@@ -28,15 +29,16 @@ export const StyledText = div`
   padding-bottom: ${props => (props.postscript ? "2em" : "")};
   width: 100%;
   a {
-    color: black;
+    color: ${props => props.color};
     text-decoration: none;
     position: relative;
-    background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+    background-image: linear-gradient(to bottom,transparent 0, ${props => props.color === "black" ? "#333" : props.color} 1px,transparent 0);
     background-size: 1.25px 4px;
     background-repeat: repeat-x;
     background-position: bottom;
     &:hover {
-      color: #999;
+      color: ${props => props.color === "black" ? "#999" : props.color};
+      opacity:  ${props => props.color === "black" ? "1" : ".65"};
     }
   }
   p, ul, ol {
@@ -113,9 +115,7 @@ export const StyledText = div`
     word-break: break-word;
   }
   p:first-child:first-letter {
-    ${props => props.isContentStart && props.layout === "feature" &&
-      Fonts.unica("s67", "medium")
-    }
+    ${props => props.isContentStart && props.layout === "feature" && Fonts.unica("s67", "medium")}
     ${props => props.isContentStart && props.layout === "feature" && `
       float: left;
       line-height: .5em;
@@ -179,3 +179,7 @@ export const StyledText = div`
     }
   `}
 `
+
+StyledText.defaultProps = {
+  color: 'black'
+}

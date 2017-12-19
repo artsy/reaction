@@ -87,6 +87,7 @@ exports[`Video About matches the snapshot 1`] = `
 
 .c4 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c4 p,
@@ -442,6 +443,7 @@ exports[`Video About matches the snapshot 1`] = `
     </div>
     <div
       className="article__text-section c4"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
@@ -558,11 +560,12 @@ exports[`Video About matches the snapshot 1`] = `
     </div>
     <div
       className="article__text-section c4"
+      color="black"
     >
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+            "__html": "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
           }
         }
       />
@@ -753,6 +756,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 
 .c4 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c4 p,
@@ -1108,6 +1112,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     </div>
     <div
       className="article__text-section c4"
+      color="black"
     >
       <div>
         Child 
@@ -1221,6 +1226,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     </div>
     <div
       className="article__text-section c4"
+      color="black"
     >
       <div>
         Child 

@@ -3,8 +3,8 @@ import { Col, Row } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
-import { Text } from '../Sections/Text'
+import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
+import { Text } from "../Sections/Text"
 
 interface Props {
   article?: any
@@ -36,8 +36,8 @@ export class SeriesAbout extends Component<Props, null> {
         </StyledCol>
         <StyledCol xs={12} sm={8}>
           {editDescription
-            ? <Text layout='standard'>{editDescription}</Text>
-            : <Text layout='standard' html={series_description} />
+            ? <Text layout='standard' color={color}>{editDescription}</Text>
+            : <Text layout='standard' color={color} html={series_description} />
           }
           {sponsor &&
             <PartnerBlock
