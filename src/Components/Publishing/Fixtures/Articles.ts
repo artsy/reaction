@@ -596,7 +596,8 @@ export const FeatureArticle: ArticleData = {
 
 export const SponsoredArticle = extend({}, FeatureArticle, {
   sponsor: {
-    partner_light_logo: "https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png"
+    partner_light_logo: "https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png",
+    partner_logo_link: "https://artsy.net"
   }
 })
 
@@ -706,7 +707,7 @@ export const VideoArticleUnpublished = extend({}, VideoArticle, {
 
 export const VideoArticleSponsored = extend({}, VideoArticle, {
   sponsor: {
-    partner_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
     partner_logo_link: 'http://artsy.net'
   }
 })
@@ -728,7 +729,7 @@ export const SeriesArticle: ArticleData = {
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, {
   sponsor: {
-    partner_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
     partner_logo_link: 'http://artsy.net'
   }
 })

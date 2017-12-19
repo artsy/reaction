@@ -1,4 +1,4 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
@@ -13,7 +13,7 @@ interface Props {
 export class SeriesTitle extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  render () {
+  render() {
     const { article, color, editTitle } = this.props
     const { sponsor, title } = article
 
@@ -26,7 +26,7 @@ export class SeriesTitle extends Component<Props, null> {
 
         {sponsor &&
           <PartnerBlock
-            logo={sponsor.partner_logo}
+            logo={sponsor.partner_light_logo}
             url={sponsor.partner_logo_link}
             trackingData={{
               type: 'external link',
