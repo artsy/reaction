@@ -1,12 +1,16 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
-import SelectableItemContainer from "./SelectableItemContainer"
+import ItemLink from "../../ItemLink"
 
-export interface RelayProps {
+export interface Props {
   term: string
+}
+
+interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+  relay?: RelayProp
   viewer: {
     match_artist: any[]
   }
@@ -18,16 +22,65 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
     const popularArtistsRootField = store.get("client:root:viewer")
     const popularArtists = popularArtistsRootField.getLinkedRecords("match_artist", { term: this.props.term })
-    const updatedPopularArtists = popularArtists.map(popularArtist =>
-      popularArtist.getDataID() === artistId ? suggestedArtist : popularArtist)
+    const updatedPopularArtists = popularArtists.map(
+      popularArtist => (popularArtist.getDataID() === artistId ? suggestedArtist : popularArtist)
+    )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "match_artist", { term: this.props.term })
   }
 
+  onFollowedArtist(artist: any) {
+    commitMutation(this.props.relay.environment, {
+      mutation: graphql`
+        mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!) {
+          followArtist(input: $input) {
+            artist {
+              __id
+              related {
+                suggested(first: 1, exclude_followed_artists: true) {
+                  edges {
+                    node {
+                      id
+                      __id
+                      name
+                      image {
+                        cropped(width: 100, height: 100) {
+                          url
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          artist_id: artist.id,
+          unfollow: false,
+        },
+      },
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
+        this.onArtistFollowed(artist.__id, store, data),
+    })
+  }
+
   render() {
-    return <SelectableItemContainer
-              artists={this.props.viewer.match_artist}
-              onArtistFollowed={this.onArtistFollowed.bind(this)} />
+    const artistItems = this.props.viewer.match_artist.map((artist, index) => (
+      <ItemLink
+        href="#"
+        item={artist}
+        key={index}
+        id={artist.id}
+        name={artist.name}
+        image_url={artist.image && artist.image.cropped.url}
+        onClick={() => this.onFollowedArtist(artist)}
+      />
+    ))
+
+    return <div>{artistItems}</div>
   }
 }
 
@@ -36,15 +89,18 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   graphql`
     fragment ArtistSearchResultsContent_viewer on Viewer {
       match_artist(term: $term) {
-        ...SelectableItemContainer_artists
+        id
+        __id
+        name
+        image {
+          cropped(width: 100, height: 100) {
+            url
+          }
+        }
       }
     }
   `
 )
-
-interface Props {
-  term: string
-}
 
 const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
   return (
