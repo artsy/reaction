@@ -91,8 +91,7 @@ export const VideoCoverAsset = Div`
 `
 
 const VideoCoverOverlay = styled.div`
-  opacity: 0.75;
-  background-color: black;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
 `
 
 const VideoCoverInfoRow = styled(MaxRow) `

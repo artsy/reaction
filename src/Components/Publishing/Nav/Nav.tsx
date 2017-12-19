@@ -4,9 +4,8 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
-import { SubNav } from "./SubNav"
 
-interface Props extends React.HTMLProps<HTMLDivElement>{
+interface Props extends React.HTMLProps<HTMLDivElement> {
   canFix?: boolean
   sponsor?: any
   title?: string
@@ -42,7 +41,7 @@ export class NavComponent extends React.Component<Props, State> {
     }
   }
 
-  render () {
+  render() {
     const {
       sponsor,
       className,
@@ -68,7 +67,6 @@ export class NavComponent extends React.Component<Props, State> {
           <Title>
             {title}
           </Title>
-          <SubNav />
         </NavContainer>
         <Waypoint
           onEnter={() => this.setPosition(false)}
@@ -83,6 +81,7 @@ const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.d
 
 const NavContainer = Div`
   background-color: ${props => props.transparent ? "transparent" : "black"};
+  border-bottom: 1px solid white;
   ${props => props.transparent && !props.isFixed && `
     position: absolute;
     top: 0;
@@ -92,10 +91,9 @@ const NavContainer = Div`
     top: 0;
     left: 0;
     right: 0;
-    border-bottom: 1px solid white;
   `}
 `
-export const Nav = styled(NavComponent)`
+export const Nav = styled(NavComponent) `
   display: flex;
   justify-content: space-between;
   align-items: center;

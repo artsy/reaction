@@ -1,4 +1,4 @@
-import React, { Component  } from "react"
+import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Nav } from "../Nav/Nav"
@@ -17,7 +17,7 @@ interface Props {
 export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
-  render () {
+  render() {
     const { article, backgroundColor, color, relatedArticles } = this.props
     const { hero_section, sponsor } = article
     const backgroundUrl = hero_section && hero_section.url ? hero_section.url : ''

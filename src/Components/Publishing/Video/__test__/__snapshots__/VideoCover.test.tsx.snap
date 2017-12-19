@@ -88,8 +88,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c4 {
-  opacity: 0.75;
-  background-color: black;
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
 }
 
 .c7 {
@@ -396,8 +395,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c4 {
-  opacity: 0.75;
-  background-color: black;
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
 }
 
 .c7 {
