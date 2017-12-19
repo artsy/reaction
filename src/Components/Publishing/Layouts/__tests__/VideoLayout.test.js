@@ -14,7 +14,6 @@ import { SeriesAbout } from "../../Series/SeriesAbout"
 import { VideoPlayer } from "../../Video/Player/VideoPlayer"
 import { VideoAbout } from "../../Video/VideoAbout"
 import { VideoLayout } from "../VideoLayout"
-import track, { track as trackWithoutProps } from '../../../../Utils/track'
 
 jest.mock('../../../../Utils/track.ts', () => ({
   track: jest.fn()
