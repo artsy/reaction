@@ -69,7 +69,7 @@ export const Authors = [
     image_url: "http://files.artsy.net/images/molly_01.jpg",
     name: "Molly Gottschalk",
     bio:
-    "[Molly Gottschalk](https://artsy.net/molly) is a Features Producer at Artsy. She is a photographer and lover of cats.",
+      "[Molly Gottschalk](https://artsy.net/molly) is a Features Producer at Artsy. She is a photographer and lover of cats.",
     twitter_handle: "mollygottschalk",
   },
   {
@@ -101,7 +101,7 @@ export const UnitCanvasOverlay = {
   ],
   logo: "http://files.artsy.net/images/artsy_logo_full_whiteweb_transparent.png",
   disclaimer:
-  "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
 export const UnitCanvasImage = {
@@ -117,7 +117,7 @@ export const UnitCanvasImage = {
   ],
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
-  "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
 export const UnitCanvasVideo = {
@@ -132,7 +132,7 @@ export const UnitCanvasVideo = {
   cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG",
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
-  "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
 export const UnitCanvasSlideshow = {
@@ -155,18 +155,18 @@ export const UnitCanvasSlideshow = {
     },
     {
       url:
-      "https://artsy-media-uploads.s3.amazonaws.com/tjVXiaCPt3Tv1EYS3JqX5g%2FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg",
+        "https://artsy-media-uploads.s3.amazonaws.com/tjVXiaCPt3Tv1EYS3JqX5g%2FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg",
     },
   ],
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
-  "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+    "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
 export const UnitPanel = {
   headline: "Euismod Inceptos Quam",
   body:
-  "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+    "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
   assets: [
     { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
   ],
@@ -180,9 +180,9 @@ export const UnitPanel = {
 export const UnitPanelVideo = {
   headline: "Euismod Inceptos Quam",
   body:
-  "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
+    "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
   assets: [
-    { url: 'https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4'}
+    { url: 'https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4' }
   ],
   cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
   logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
@@ -306,7 +306,7 @@ export const ImagesNarrow = [
     width: 254,
     height: 1200,
     caption:
-    "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
+      "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
   },
   {
     url: "https://artsy-media-uploads.s3.amazonaws.com/z2c9GQ8P69QjfW6SPXRK1Q%2Fskyscraper+copy.jpg",
@@ -314,16 +314,16 @@ export const ImagesNarrow = [
     width: 268,
     height: 1200,
     caption:
-    "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
+      "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
   },
   {
     url:
-    "https://artsy-media-uploads.s3.amazonaws.com/3AW6ZGyyGscbswkyTqUQAw%2FScreen+Shot+2017-09-22+at+5.17.50+PM.png",
+      "https://artsy-media-uploads.s3.amazonaws.com/3AW6ZGyyGscbswkyTqUQAw%2FScreen+Shot+2017-09-22+at+5.17.50+PM.png",
     type: "image",
     width: 598,
     height: 596,
     caption:
-    "<p>Installation view of Louise Bourgeois, <em>Portrait of Jean-Louis</em>, 1947-49, at the Museum of Modern Art, New York. Photo by @radicchioradicchio, via Instagram.</p>",
+      "<p>Installation view of Louise Bourgeois, <em>Portrait of Jean-Louis</em>, 1947-49, at the Museum of Modern Art, New York. Photo by @radicchioradicchio, via Instagram.</p>",
   },
 ]
 
@@ -359,7 +359,7 @@ export const Media = [
     published: true,
     cover_image_url: "https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg",
     description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-    credits: "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>"
+    credits: "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>"
   }
 ]
 
@@ -367,7 +367,7 @@ export const RelatedPanel = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
     thumbnail_image:
-    "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
+      "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     slug: "artsy-editorial-15-top-art-schools-united-states",
   },
   {
@@ -386,7 +386,7 @@ export const RelatedCanvas = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
     thumbnail_image:
-    "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
+      "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     slug: "artsy-editorial-15-top-art-schools-united-states",
     authors: [{ name: "Anna Louis-Sussman" }, { name: "Kana Abe" }],
     // Deprecated
@@ -429,7 +429,7 @@ export const Videos = [
   {
     url: "https://vimeo.com/191988155",
     caption:
-    "<p>2016 was a memorable year for the world, and art along with it. Powered by data culled from Artsy as well as UBS’s Planet Art app, “The Year in Art 2016” will explore how the creative community responded to the cultural shifts and tribulations this year has seen—from the destruction of Palmyra to the proliferation of Virtual Reality to the U.S. election.</p>",
+      "<p>2016 was a memorable year for the world, and art along with it. Powered by data culled from Artsy as well as UBS’s Planet Art app, “The Year in Art 2016” will explore how the creative community responded to the cultural shifts and tribulations this year has seen—from the destruction of Palmyra to the proliferation of Virtual Reality to the U.S. election.</p>",
     cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
   },
   {

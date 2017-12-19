@@ -256,6 +256,10 @@ exports[`Video About matches the snapshot 1`] = `
   flex: 1;
 }
 
+.c0 .c1:first-of-type p {
+  padding: 0px;
+}
+
 .c0 .c1:nth-of-type(2) .c5 {
   display: none;
 }
@@ -442,7 +446,7 @@ exports[`Video About matches the snapshot 1`] = `
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>",
+            "__html": "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>",
           }
         }
       />
@@ -916,6 +920,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.c0 .c1:first-of-type p {
+  padding: 0px;
 }
 
 .c0 .c1:nth-of-type(2) .c5 {
