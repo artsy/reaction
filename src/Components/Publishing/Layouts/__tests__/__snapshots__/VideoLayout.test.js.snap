@@ -1010,6 +1010,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   height: 60px;
   width: 44px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .c34 {

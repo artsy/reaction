@@ -82,7 +82,7 @@ const VideoCoverOverlay = styled.div`
   background-color: black;
 `
 
-const VideoCoverInfoRow = styled(MaxRow)`
+const VideoCoverInfoRow = styled(MaxRow) `
   width: 100%;
   align-items: flex-end;
 `
@@ -97,6 +97,7 @@ const VideoCoverInfo = styled.div`
     height: 60px;
     width: 44px;
     margin-right: 15px;
+    cursor: pointer;
   }
   ${media.sm`
     padding-bottom: 40px;
