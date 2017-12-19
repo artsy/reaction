@@ -1075,7 +1075,7 @@ exports[`renders a series properly 1`] = `
           <div
             className="c25"
           >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+            Trevor Paglan
           </div>
           <div
             className="c26"
@@ -2353,7 +2353,7 @@ exports[`renders a sponsored series properly 1`] = `
           <div
             className="c28"
           >
-            New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+            Trevor Paglan
           </div>
           <div
             className="c29"
