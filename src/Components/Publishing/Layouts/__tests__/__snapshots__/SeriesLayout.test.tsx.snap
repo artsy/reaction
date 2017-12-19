@@ -75,994 +75,6 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c18 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c18.date {
-  white-space: nowrap;
-}
-
-.c26 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c26.date {
-  white-space: nowrap;
-}
-
-.c26:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: white;
-}
-
-.c26:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  color: white;
-}
-
-.c24 {
-  width: 32px;
-  height: 32px;
-}
-
-.c22 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  -webkit-transition: opacity 0.15s;
-  transition: opacity 0.15s;
-  display: block;
-}
-
-.c20 {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  margin-left: 30px;
-}
-
-.c13 {
-  display: block;
-  border: 1px solid;
-  border-radius: 2px;
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c13 .c21 {
-  opacity: 1;
-}
-
-.c13:hover .c21 {
-  opacity: .7;
-}
-
-.c13 .c19 {
-  background: black;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c14 .author,
-.c14 .date {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c16 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c15 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-.c17 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-}
-
-.c23 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c23 svg {
-  width: 40px;
-}
-
-.c29 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c31 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c33 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c34 {
-  position: relative;
-  width: 100%;
-}
-
-.c34 a {
-  color: black;
-  text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
-  background-size: 1.25px 4px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
-
-.c34 a:hover {
-  color: #999;
-}
-
-.c34 p,
-.c34 ul,
-.c34 ol {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0;
-  font-style: inherit;
-}
-
-.c34 p:first-child {
-  padding-top: 0;
-}
-
-.c34 p:last-child {
-  padding-bottom: 0;
-}
-
-.c34 ul,
-.c34 ol {
-  padding-left: 1em;
-}
-
-.c34 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
-
-.c34 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  font-weight: normal;
-  padding-top: 107px;
-  padding-bottom: 46px;
-  margin: 0;
-  position: relative;
-  text-align: center;
-}
-
-.c34 h1:before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  background: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 69px;
-  right: calc(50% - 7.5px);
-}
-
-.c34 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-  font-weight: normal;
-  margin: 0;
-}
-
-.c34 h2 a {
-  background-size: 1.25px 1px;
-}
-
-.c34 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  font-weight: normal;
-  padding-top: 23px;
-  margin: 0;
-}
-
-.c34 h3 strong {
-  font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-}
-
-.c34 h3 a {
-  background-size: 1.25px 1px;
-}
-
-.c34 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 40px;
-  line-height: 1.1em;
-  text-align: left;
-  font-weight: normal;
-  padding-top: 46px;
-  padding-bottom: 46px;
-  margin: 0;
-  word-break: break-word;
-}
-
-.c34 .content-end {
-  display: inline-block;
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  margin-left: 12px;
-}
-
-.c34 .artist-follow {
-  vertical-align: middle;
-  margin-left: 10px;
-  cursor: pointer;
-  background: none transparent;
-}
-
-.c34 .artist-follow:before {
-  font-family: "artsy-icons";
-  content: "";
-  vertical-align: -8.5px;
-  line-height: 32px;
-  font-size: 32px;
-}
-
-.c34 .artist-follow:after {
-  content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
-  line-height: 1.1em;
-  text-transform: none;
-}
-
-.c28 {
-  color: white;
-  max-width: 1200px;
-}
-
-.c30 .file__PartnerBlockContainer-s1ud23oi-0 {
-  display: none;
-}
-
-.c30:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c30:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
-  display: block;
-}
-
-.c32 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
-.c10 {
-  color: white;
-  text-align: center;
-}
-
-.c10 .file__PartnerBlockContainer-s1ud23oi-0 img {
-  max-width: 170px;
-  padding-top: 5px;
-  padding-bottom: 40px;
-}
-
-.c11 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
-.c8 {
-  max-width: 1200px;
-  min-height: 100vh;
-  margin: 0 auto;
-}
-
-.c8 .c9 {
-  margin-bottom: 90px;
-}
-
-.c8 .c12 {
-  margin-bottom: 60px;
-}
-
-.c8 .c27 {
-  padding-top: 60px;
-}
-
-.c0 {
-  color: white;
-  background-color: black;
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
-  background-size: cover;
-  background-position: 50%;
-}
-
-.c0 .c7 {
-  padding: 90px 20px 150px;
-}
-
-@media (max-width:720px) {
-  .c3 img {
-    max-height: 24px;
-  }
-
-  .c3 .c4 {
-    font-size: 24px;
-  }
-
-  .c3 .file__IconPlus-s100ic91-0 {
-    margin: 0 10px;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 {
-    position: relative;
-  }
-}
-
-@media (max-width:720px) {
-  .c18 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c26 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c26:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:900px) {
-  .c20 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c13 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c14 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c16 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c17 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c23 svg {
-    width: 30px;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c31 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c31 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c33 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c33 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
-  }
-}
-
-@media (max-width:600px) {
-  .c34 p,
-  .c34 ul,
-  .c34 ol {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c34 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c34 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c34 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c34 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c34 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c34 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c34 .content-start {
-    font-size: 55px;
-  }
-}
-
-@media (max-width:48em) {
-  .c30:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
-    display: none;
-  }
-
-  .c30 .file__PartnerBlockContainer-s1ud23oi-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c32 {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c10 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
-    padding-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c11 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c8 .c12 {
-    margin-bottom: 40px;
-  }
-
-  .c8 .c27 {
-    padding-top: 60px;
-  }
-}
-
-<div
-  className="Series c0"
-  color="white"
->
-  <div>
-    <div
-      className="c1 c2"
-    >
-      <div
-        className="PartnerInline c3"
-      >
-        <a
-          href="/"
-        >
-          <div
-            className="c4 c5"
-            onClick={undefined}
-            style={undefined}
-          >
-            
-          </div>
-        </a>
-      </div>
-      <div
-        className="c6"
-      >
-        Artsy Editorial
-      </div>
-    </div>
-    <span
-      style={
-        Object {
-          "fontSize": 0,
-        }
-      }
-    />
-  </div>
-  <div
-    className="c7 c8"
-  >
-    <div
-      className="SeriesTitle c9 c10"
-      color="white"
-    >
-      <div
-        className="c11"
-      >
-        The Future of Art
-      </div>
-    </div>
-    <a
-      className="ArticleCard c12 c13"
-      color="white"
-      href="joanne-artman-gallery-poetry-naturerefinement-form"
-      onClick={[Function]}
-    >
-      <div
-        className="c14"
-      >
-        <div>
-          <div
-            className="c15"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c16"
-          >
-            Trevor Paglan
-          </div>
-          <div
-            className="c17"
-          >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-          </div>
-        </div>
-        <div
-          className="date c18"
-        >
-          Aug 28, 2017
-        </div>
-      </div>
-      <div
-        className="c19 c20"
-      >
-        <img
-          className="c21 c22"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c23"
-        >
-          <svg
-            className="c24"
-            version="1.1"
-            viewBox="0 0 40 56"
-            x="0px"
-            xmlns="http://www.w3.org/2000/svg"
-            y="0px"
-          >
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              strokeWidth="1"
-            >
-              <polygon
-                fill="white"
-                points="0 0 0 56 39.3600006 28"
-              />
-            </g>
-          </svg>
-          02:28
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c12 c13"
-      color="white"
-      href="new-yorks-next-art-district"
-      onClick={[Function]}
-    >
-      <div
-        className="c14"
-      >
-        <div>
-          <div
-            className="c15"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c16"
-          >
-            New York's Next Art District
-          </div>
-          <div
-            className="c17"
-          >
-            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c25"
-          color="white"
-        >
-          <div
-            className="author c26"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c18"
-          >
-            May 19, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c19 c20"
-      >
-        <img
-          className="c21 c22"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-        />
-      </div>
-    </a>
-    <div
-      className="c27 c28 c29"
-      color="white"
-    >
-      <div
-        className="c30 c31"
-      >
-        <div
-          className="c32"
-        >
-          About the Series
-        </div>
-      </div>
-      <div
-        className="c30 c33"
-      >
-        <div
-          className="article__text-section c34"
-        >
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`renders a sponsored series properly 1`] = `
-.c5 {
-  font-family: artsy-icons;
-  color: white;
-  font-size: 32px;
-  margin: 0 5px;
-  display: inline-block;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 0 10px;
-}
-
-.c3 img {
-  max-height: 32px;
-  vertical-align: middle;
-}
-
-.c3 .file__IconPlus-s100ic91-0 {
-  margin: 0 20px;
-}
-
-.c3 .c4 {
-  margin: 0;
-  vertical-align: middle;
-}
-
-.c2 {
-  background-color: transparent;
-  border-bottom: 1px solid white;
-  position: absolute;
-  top: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 46px;
-  width: 100%;
-  color: white;
-  z-index: 10;
-}
-
-.c1 a {
-  z-index: 10;
-}
-
-.c6 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
-  line-height: 1.1em;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-}
-
 .c21 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1244,6 +256,38 @@ exports[`renders a sponsored series properly 1`] = `
   width: 40px;
 }
 
+.c7 {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c8 {
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
+  background-size: cover;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+
+.c9 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 .c32 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -1279,18 +323,6 @@ exports[`renders a sponsored series properly 1`] = `
   flex: 0 0 auto;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-}
-
-.c13 img {
-  max-width: 220px;
-}
-
-.c14 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 20px;
 }
 
 .c37 {
@@ -1458,7 +490,7 @@ exports[`renders a sponsored series properly 1`] = `
   max-width: 1200px;
 }
 
-.c33 .c12 {
+.c33 .file__PartnerBlockContainer-s1ud23oi-0 {
   display: none;
 }
 
@@ -1476,7 +508,7 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c33:first-of-type .c12 {
+.c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
   display: block;
 }
 
@@ -1487,18 +519,18 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c10 {
+.c13 {
   color: white;
   text-align: center;
 }
 
-.c10 .c12 img {
+.c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c11 {
+.c14 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1506,45 +538,29 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fBFiQT .c9 {
-  margin-bottom: 90px;
-}
-
-.fBFiQT .c15 {
-  margin-bottom: 60px;
-}
-
-.fBFiQT .c30 {
-  padding-top: 60px;
-}
-
-.c8 {
+.c11 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c8 .c9 {
+.c11 .c12 {
+  margin-bottom: 90px;
+}
+
+.c11 .c15 {
   margin-bottom: 60px;
 }
 
-.c8 .c15 {
-  margin-bottom: 60px;
-}
-
-.c8 .c30 {
+.c11 .c30 {
   padding-top: 60px;
 }
 
 .c0 {
   color: white;
-  background-color: black;
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
-  background-size: cover;
-  background-position: 50%;
 }
 
-.c0 .c7 {
+.c0 .c10 {
   padding: 90px 20px 150px;
 }
 
@@ -1692,21 +708,6 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c13 img {
-    max-width: 195px;
-  }
-}
-
-@media (max-width:720px) {
-  .c14 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 @media (max-width:600px) {
   .c37 p,
   .c37 ul,
@@ -1766,11 +767,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c33:first-of-type .c12 {
+  .c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
     display: none;
   }
 
-  .c33 .c12 {
+  .c33 .file__PartnerBlockContainer-s1ud23oi-0 {
     margin-top: 60px;
     display: block;
   }
@@ -1783,14 +784,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 .c12 img {
+  .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
     max-width: 200px;
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c11 {
+  .c14 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1800,21 +801,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fBFiQT .c15 {
+  .c11 .c15 {
     margin-bottom: 40px;
   }
 
-  .fBFiQT .c30 {
-    padding-top: 60px;
-  }
-}
-
-@media (max-width:900px) {
-  .c8 .c15 {
-    margin-bottom: 40px;
-  }
-
-  .c8 .c30 {
+  .c11 .c30 {
     padding-top: 60px;
   }
 }
@@ -1857,34 +848,26 @@ exports[`renders a sponsored series properly 1`] = `
     />
   </div>
   <div
-    className="c7 c8"
+    className="c7"
   >
     <div
-      className="SeriesTitle c9 c10"
+      className="c8"
+    />
+    <div
+      className="c9"
+    />
+  </div>
+  <div
+    className="c10 c11"
+  >
+    <div
+      className="SeriesTitle c12 c13"
       color="white"
     >
       <div
-        className="c11"
+        className="c14"
       >
         The Future of Art
-      </div>
-      <div
-        className="PartnerBlock c12 c13"
-      >
-        <div
-          className="c14"
-        >
-          Presented in Partnership with
-        </div>
-        <a
-          href="http://artsy.net"
-          onClick={[Function]}
-          target="_blank"
-        >
-          <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
-          />
-        </a>
       </div>
     </div>
     <a
@@ -2022,24 +1005,6 @@ exports[`renders a sponsored series properly 1`] = `
         >
           About the Series
         </div>
-        <div
-          className="PartnerBlock c12 c13"
-        >
-          <div
-            className="c14"
-          >
-            Presented in Partnership with
-          </div>
-          <a
-            href="http://artsy.net"
-            onClick={[Function]}
-            target="_blank"
-          >
-            <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
-            />
-          </a>
-        </div>
       </div>
       <div
         className="c33 c36"
@@ -2055,11 +1020,1122 @@ exports[`renders a sponsored series properly 1`] = `
             }
           />
         </div>
-        <div
-          className="PartnerBlock c12 c13"
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a sponsored series properly 1`] = `
+.c5 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.c3 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c3 .file__IconPlus-s100ic91-0 {
+  margin: 0 20px;
+}
+
+.c3 .c4 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c2 {
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  position: absolute;
+  top: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 46px;
+  width: 100%;
+  color: white;
+  z-index: 10;
+}
+
+.c1 a {
+  z-index: 10;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.c24 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c24.date {
+  white-space: nowrap;
+}
+
+.c32 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c32.date {
+  white-space: nowrap;
+}
+
+.c32:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: white;
+}
+
+.c32:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.c30 {
+  width: 32px;
+  height: 32px;
+}
+
+.c28 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+  display: block;
+}
+
+.c26 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin-left: 30px;
+}
+
+.c19 {
+  display: block;
+  border: 1px solid;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c19 .c27 {
+  opacity: 1;
+}
+
+.c19:hover .c27 {
+  opacity: .7;
+}
+
+.c19 .c25 {
+  background: black;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.c20 .author,
+.c20 .date {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c22 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+.c21 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.c23 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+}
+
+.c29 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c29 svg {
+  width: 40px;
+}
+
+.c7 {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c8 {
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
+  background-size: cover;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+
+.c9 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c35 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c37 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c39 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c16 img {
+  max-width: 220px;
+}
+
+.c17 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c40 {
+  position: relative;
+  width: 100%;
+}
+
+.c40 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c40 a:hover {
+  color: #999;
+}
+
+.c40 p,
+.c40 ul,
+.c40 ol {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c40 p:first-child {
+  padding-top: 0;
+}
+
+.c40 p:last-child {
+  padding-bottom: 0;
+}
+
+.c40 ul,
+.c40 ol {
+  padding-left: 1em;
+}
+
+.c40 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c40 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c40 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c40 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c40 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c40 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c40 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c40 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c40 blockquote {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.c40 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c40 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c40 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c40 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c34 {
+  color: white;
+  max-width: 1200px;
+}
+
+.c36 .c15 {
+  display: none;
+}
+
+.c36:first-of-type {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c36:first-of-type .c15 {
+  display: block;
+}
+
+.c38 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
+.c13 {
+  color: white;
+  text-align: center;
+}
+
+.c13 .c15 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c14 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+.fenFCZ .c12 {
+  margin-bottom: 90px;
+}
+
+.fenFCZ .c18 {
+  margin-bottom: 60px;
+}
+
+.fenFCZ .c33 {
+  padding-top: 60px;
+}
+
+.c11 {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.c11 .c12 {
+  margin-bottom: 60px;
+}
+
+.c11 .c18 {
+  margin-bottom: 60px;
+}
+
+.c11 .c33 {
+  padding-top: 60px;
+}
+
+.c0 {
+  color: white;
+}
+
+.c0 .c10 {
+  padding: 90px 20px 150px;
+}
+
+@media (max-width:720px) {
+  .c3 img {
+    max-height: 24px;
+  }
+
+  .c3 .c4 {
+    font-size: 24px;
+  }
+
+  .c3 .file__IconPlus-s100ic91-0 {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    position: relative;
+  }
+}
+
+@media (max-width:720px) {
+  .c24 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c32 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c32:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c26 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c19 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c20 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c22 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c23 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c29 svg {
+    width: 30px;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c37 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c37 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-basis: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c39 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-basis: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c39 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-basis: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
+  }
+}
+
+@media (max-width:720px) {
+  .c16 img {
+    max-width: 195px;
+  }
+}
+
+@media (max-width:720px) {
+  .c17 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c40 p,
+  .c40 ul,
+  .c40 ol {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c40 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c40 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c40 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c40 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c40 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c40 blockquote {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c40 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:48em) {
+  .c36:first-of-type .c15 {
+    display: none;
+  }
+
+  .c36 .c15 {
+    margin-top: 60px;
+    display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c38 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c13 .c15 img {
+    max-width: 200px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c14 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .fenFCZ .c18 {
+    margin-bottom: 40px;
+  }
+
+  .fenFCZ .c33 {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width:900px) {
+  .c11 .c18 {
+    margin-bottom: 40px;
+  }
+
+  .c11 .c33 {
+    padding-top: 60px;
+  }
+}
+
+<div
+  className="Series c0"
+  color="white"
+>
+  <div>
+    <div
+      className="c1 c2"
+    >
+      <div
+        className="PartnerInline c3"
+      >
+        <a
+          href="/"
         >
           <div
-            className="c14"
+            className="c4 c5"
+            onClick={undefined}
+            style={undefined}
+          >
+            
+          </div>
+        </a>
+      </div>
+      <div
+        className="c6"
+      >
+        Artsy Editorial
+      </div>
+    </div>
+    <span
+      style={
+        Object {
+          "fontSize": 0,
+        }
+      }
+    />
+  </div>
+  <div
+    className="c7"
+  >
+    <div
+      className="c8"
+    />
+    <div
+      className="c9"
+    />
+  </div>
+  <div
+    className="c10 c11"
+  >
+    <div
+      className="SeriesTitle c12 c13"
+      color="white"
+    >
+      <div
+        className="c14"
+      >
+        The Future of Art
+      </div>
+      <div
+        className="PartnerBlock c15 c16"
+      >
+        <div
+          className="c17"
+        >
+          Presented in Partnership with
+        </div>
+        <a
+          href="http://artsy.net"
+          onClick={[Function]}
+          target="_blank"
+        >
+          <img
+            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          />
+        </a>
+      </div>
+    </div>
+    <a
+      className="ArticleCard c18 c19"
+      color="white"
+      href="joanne-artman-gallery-poetry-naturerefinement-form"
+      onClick={[Function]}
+    >
+      <div
+        className="c20"
+      >
+        <div>
+          <div
+            className="c21"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c22"
+          >
+            Trevor Paglan
+          </div>
+          <div
+            className="c23"
+          >
+            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+          </div>
+        </div>
+        <div
+          className="date c24"
+        >
+          Aug 28, 2017
+        </div>
+      </div>
+      <div
+        className="c25 c26"
+      >
+        <img
+          className="c27 c28"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+        />
+        <div
+          className="c29"
+        >
+          <svg
+            className="c30"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+          02:28
+        </div>
+      </div>
+    </a>
+    <a
+      className="ArticleCard c18 c19"
+      color="white"
+      href="new-yorks-next-art-district"
+      onClick={[Function]}
+    >
+      <div
+        className="c20"
+      >
+        <div>
+          <div
+            className="c21"
+          >
+            <div>
+              The Future of Art
+            </div>
+          </div>
+          <div
+            className="c22"
+          >
+            New York's Next Art District
+          </div>
+          <div
+            className="c23"
+          >
+            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+          </div>
+        </div>
+        <div
+          className="Byline c31"
+          color="white"
+        >
+          <div
+            className="author c32"
+            color="white"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c24"
+          >
+            May 19, 2017
+          </div>
+        </div>
+      </div>
+      <div
+        className="c25 c26"
+      >
+        <img
+          className="c27 c28"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+        />
+      </div>
+    </a>
+    <div
+      className="c33 c34 c35"
+      color="white"
+    >
+      <div
+        className="c36 c37"
+      >
+        <div
+          className="c38"
+        >
+          About the Series
+        </div>
+        <div
+          className="PartnerBlock c15 c16"
+        >
+          <div
+            className="c17"
+          >
+            Presented in Partnership with
+          </div>
+          <a
+            href="http://artsy.net"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <img
+              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+            />
+          </a>
+        </div>
+      </div>
+      <div
+        className="c36 c39"
+      >
+        <div
+          className="article__text-section c40"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              }
+            }
+          />
+        </div>
+        <div
+          className="PartnerBlock c15 c16"
+        >
+          <div
+            className="c17"
           >
             Presented in Partnership with
           </div>
