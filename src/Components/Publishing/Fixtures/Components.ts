@@ -420,6 +420,14 @@ export const RelatedCanvas = [
   },
 ]
 
+export const Sponsor = {
+  sponsor: {
+    partner_condensed_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_logo_link: 'http://artsy.net'
+  }
+}
+
 export const Videos = [
   {
     url: "https://www.youtube.com/watch?v=PXi7Kjlsz9A",
