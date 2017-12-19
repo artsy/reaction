@@ -97,7 +97,7 @@ export const Nav = styled(NavComponent) `
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -110,6 +110,7 @@ const Title = styled.div`
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
   ${pMedia.sm`
     position: relative;
   `}
