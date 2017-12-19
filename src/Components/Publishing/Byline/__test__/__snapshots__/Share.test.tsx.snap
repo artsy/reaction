@@ -1,33 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a saved caption properly 1`] = `
+exports[`renders Share properly 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 5px 0 4px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
   text-decoration: none;
-  margin-right: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .c1:hover {
   opacity: 0.6;
+}
+
+.c1:first-child {
+  padding-left: 0;
+}
+
+@media (max-width:600px) {
+  .c0 {
+    margin-top: 15px;
+  }
 }
 
 <div

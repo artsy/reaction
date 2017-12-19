@@ -1,5 +1,6 @@
-import * as React from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
 

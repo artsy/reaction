@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 
@@ -8,7 +8,15 @@ interface EmbedProps {
 
 export const Embed: React.SFC<EmbedProps> = props => {
   const { url, height, mobile_height } = props.section
-  return <IFrame src={url} scrolling="no" frameBorder="0" height={height} mobileHeight={mobile_height} />
+  return (
+    <IFrame
+      src={url}
+      scrolling="no"
+      frameBorder="0"
+      height={height}
+      mobileHeight={mobile_height}
+    />
+  )
 }
 
 interface FrameProps extends React.HTMLProps<HTMLIFrameElement> {
@@ -21,7 +29,8 @@ const iframe: StyledFunction<FrameProps> = styled.iframe
 const IFrame = iframe`
   width: 100%;
   height: ${props => props.height + "px"};
-  ${props => pMedia.xs`
+  ${props => pMedia.sm`
     height: ${props.mobileHeight}px;
+    width: 100vw;
   `}
 `

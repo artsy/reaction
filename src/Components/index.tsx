@@ -1,5 +1,4 @@
 import Artwork from "./Artwork"
-import ArtworkFilter from "./ArtworkFilter"
 import ArtworkGrid from "./ArtworkGrid"
 import BorderedPulldown from "./BorderedPulldown"
 import Buttons from "./Buttons"
@@ -35,7 +34,6 @@ export function init(options: InitOptions) {
 
 export default {
   Artwork,
-  ArtworkFilter,
   Buttons,
   Modal,
   ArtworkGrid,

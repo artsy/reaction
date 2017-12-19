@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2015",
+    "lib": ["dom", "es2015", "es2016", "es2017"],
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -9,9 +10,10 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "outDir": "dist",
+    "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "outDir": "dist",
+    "plugins": [{ "name": "typescript-styled-plugin" }]
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "data", "externals", "danger"]

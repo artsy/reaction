@@ -33,7 +33,11 @@ exports[`renders the related articles panel 1`] = `
   -webkit-justify-content: left;
   -ms-flex-pack: left;
   justify-content: left;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.c3:last-child {
+  margin-bottom: 0;
 }
 
 .c4 {

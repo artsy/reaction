@@ -1,7 +1,8 @@
-import * as React from "react"
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 
 import * as fonts from "../../Assets/Fonts"
+import { media } from "../Helpers"
 import Icon from "../Icon"
 
 interface SelectableLinkProps {
@@ -47,6 +48,9 @@ const Link = styled.a`
     display: inline-flex;
     justify-content: center;
   }
+  ${media.sm`
+    padding: 15px 0 15px 15px;
+  `};
 `
 
 class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {

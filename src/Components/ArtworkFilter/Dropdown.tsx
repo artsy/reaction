@@ -1,5 +1,5 @@
 import numeral from "numeral"
-import * as React from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import Icon from "../Icon"
@@ -13,7 +13,7 @@ import { find } from "lodash"
 
 interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
   aggregation: any
-  onSelect?: any
+  onSelected?: (slice: string, value: string) => void
   selected?: any
 }
 
@@ -41,12 +41,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
   }
 
-  onSelect(count, slice) {
+  onSelect(slice: string, value: string) {
     this.setState({
-      selected: count.id,
+      selected: value,
       isHovered: false,
     })
-    this.props.onSelect(count, slice)
+    this.props.onSelected(slice, value)
   }
 
   getSelectedName(id) {
@@ -61,7 +61,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     let navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => this.onSelect(count, slice)}>
+        <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
           <span>{count.name}</span>
           <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
         </NavItem>
@@ -69,7 +69,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     })
 
     navItems.unshift(
-      <NavItem key="all" onClick={() => this.onSelect({ value: "*" }, slice)}>
+      <NavItem key="all" onClick={() => this.onSelect(slice, "*")}>
         <span>All {labels.plural}</span>
       </NavItem>
     )
@@ -142,10 +142,10 @@ const Nav = styled.div`
 `
 
 const SuperLabel = styled.div`
-  position: absolute
-  font-size: 9px
+  position: absolute;
+  font-size: 9px;
   margin-top: -15px;
-  color: black
+  color: black;
 `
 
 const NavItem = styled.div`

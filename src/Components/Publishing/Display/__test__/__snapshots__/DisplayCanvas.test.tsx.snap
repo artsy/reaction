@@ -214,8 +214,8 @@ exports[`renders the canvas in overlay layout 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -292,6 +292,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
 }
 
 .c3.title-card {
+  max-width: 1250px;
+  width: 1250px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -300,11 +302,9 @@ exports[`renders the canvas in slideshow layout 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 1250px;
 }
 
 .c4 {
-  display: inline-block;
   width: 380px;
   padding: 0 20px 0 0;
 }
@@ -315,8 +315,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 
 .c12 {
   height: auto;
-  max-width: 780px;
-  max-height: 460px;
+  max-width: 812.5px;
   object-fit: cover;
   object-position: center;
 }
@@ -335,8 +334,8 @@ exports[`renders the canvas in slideshow layout 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
@@ -454,9 +453,9 @@ exports[`renders the canvas in slideshow layout 1`] = `
   margin: 15px 0 0 0;
 }
 
-@media (max-width:1150px) {
-  .c3.title-card {
-    max-width: 1250px;
+@media (max-width:900px) {
+  .c2 {
+    max-height: 479.375px;
   }
 }
 
@@ -466,10 +465,10 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1280px) {
   .c4 {
+    padding: 0 40px;
     width: 437.5px;
-    padding: 0 20px;
   }
 
   .c4 a {
@@ -479,6 +478,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 
 @media (max-width:900px) {
   .c4 {
+    padding: 0 20px;
     width: 100%;
   }
 
@@ -495,7 +495,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c12 {
     max-height: 479.375px;
   }
@@ -522,7 +522,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c8 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -545,7 +545,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c9 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -564,7 +564,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c5 {
     max-height: 479.375px;
   }
@@ -588,6 +588,7 @@ exports[`renders the canvas in slideshow layout 1`] = `
 @media (max-width:720px) {
   .c0 {
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -610,104 +611,106 @@ exports[`renders the canvas in slideshow layout 1`] = `
       Advertisement by Artsy
     </div>
   </a>
-  <div
-    className="c2"
-  >
-    <div>
-      <div
-        className="title-card c3"
-      >
+  <div>
+    <div
+      className="c2"
+    >
+      <div>
         <div
-          className="c4"
+          className="title-card c3"
         >
-          <a
-            className="c5"
-            href="http://artsy.net"
-            onClick={[Function]}
-            target="_blank"
+          <div
+            className="c4"
           >
-            <div
-              className="c6"
+            <a
+              className="c5"
+              href="http://artsy.net"
+              onClick={[Function]}
+              target="_blank"
             >
-              <div>
-                <img
-                  className="c7"
-                  src="http://files.artsy.net/images/artsy-logo-wide-black.png"
-                />
-                <div
-                  className="c8"
-                >
-                  Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.
-                </div>
-                <div
-                  className="c9"
-                >
-                  Link Example
+              <div
+                className="c6"
+              >
+                <div>
+                  <img
+                    className="c7"
+                    src="http://files.artsy.net/images/artsy-logo-wide-black.png"
+                  />
+                  <div
+                    className="c8"
+                  >
+                    Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.
+                  </div>
+                  <div
+                    className="c9"
+                  >
+                    Link Example
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          <div
-            className="c10"
-          >
+            </a>
             <div
-              className="c11"
+              className="c10"
             >
-              Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+              <div
+                className="c11"
+              >
+                Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              alt="Nullam id dolor ultricies vehicula."
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=780&height=460&quality=95"
+            />
+            <div
+              className="c13"
+            >
+              Nullam id dolor ultricies vehicula.
             </div>
           </div>
         </div>
-        <div>
-          <img
-            alt="Nullam id dolor ultricies vehicula."
-            className="c12"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=780&height=460&quality=95"
-          />
-          <div
-            className="c13"
-          >
-            Nullam id dolor ultricies vehicula.
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt=""
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=780&height=460&quality=95"
+            />
+            
           </div>
         </div>
-      </div>
-      <div
-        className="c3"
-      >
-        <div>
-          <img
-            alt=""
-            className="c12"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=780&height=460&quality=95"
-          />
-          
-        </div>
-      </div>
-      <div
-        className="c3"
-      >
-        <div>
-          <img
-            alt="Cras justo odio, dapibus ac facilisis in, egestas eget quam."
-            className="c12"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=780&height=460&quality=95"
-          />
-          <div
-            className="c13"
-          >
-            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt="Cras justo odio, dapibus ac facilisis in, egestas eget quam."
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=780&height=460&quality=95"
+            />
+            <div
+              className="c13"
+            >
+              Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c3"
-      >
-        <div>
-          <img
-            alt=""
-            className="c12"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FtjVXiaCPt3Tv1EYS3JqX5g%252FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg&width=780&height=460&quality=95"
-          />
-          
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt=""
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FtjVXiaCPt3Tv1EYS3JqX5g%252FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg&width=780&height=460&quality=95"
+            />
+            
+          </div>
         </div>
       </div>
     </div>
@@ -721,8 +724,8 @@ exports[`renders the canvas in standard layout with image 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
@@ -868,7 +871,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c7 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -891,7 +894,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c8 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -920,11 +923,9 @@ exports[`renders the canvas in standard layout with image 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
-    padding: 0 20px;
-    width: calc(100% - 40px);
   }
 }
 
@@ -953,8 +954,8 @@ exports[`renders the canvas in standard layout with image 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -985,7 +986,7 @@ exports[`renders the canvas in standard layout with image 1`] = `
   >
     <img
       className="c3"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&height=760&quality=95"
+      src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&height=760&quality=95"
     />
     <div
       className="c4"
@@ -1026,8 +1027,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: 185px;
-  max-height: 65px;
+  max-width: 250px;
+  max-height: 90px;
   margin: 20px 0 50px 0;
 }
 
@@ -1075,40 +1076,6 @@ exports[`renders the canvas in standard layout with video 1`] = `
   opacity: .6;
 }
 
-.c3 {
-  width: 65%;
-  max-width: 760px;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.c3 video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.c4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .c6 {
   color: black;
   border-top: 20px solid transparent;
@@ -1136,6 +1103,42 @@ exports[`renders the canvas in standard layout with video 1`] = `
   cursor: pointer;
   border: 0;
   outline: 0;
+}
+
+.c3 {
+  width: 65%;
+  max-width: 760px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.c3 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c4 {
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG) no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c2 {
@@ -1229,7 +1232,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c10 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -1252,7 +1255,7 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c11 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -1283,11 +1286,9 @@ exports[`renders the canvas in standard layout with video 1`] = `
   }
 }
 
-@media (max-width:1150px) {
+@media (max-width:1080px) {
   .c2 {
     max-height: 479.375px;
-    padding: 0 20px;
-    width: calc(100% - 40px);
   }
 }
 
@@ -1316,8 +1317,8 @@ exports[`renders the canvas in standard layout with video 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    padding: 0 20px;
     margin-bottom: 0;
+    min-height: 400px;
   }
 }
 
@@ -1354,14 +1355,15 @@ exports[`renders the canvas in standard layout with video 1`] = `
         className="c4"
       >
         <div
-          className="c5"
+          className="PlayButton c5"
         >
           <div
-            className="c6"
+            className="PlayButton__PlayButtonCaret c6"
           />
         </div>
       </div>
       <video
+        className="CanvasVideo__video"
         controls={false}
         playsInline={true}
         src="https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"

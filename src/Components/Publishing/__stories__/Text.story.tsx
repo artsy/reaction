@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import React from "react"
 import { SectionText } from "../Fixtures/Components"
 import { Text } from "../Sections/Text"
 

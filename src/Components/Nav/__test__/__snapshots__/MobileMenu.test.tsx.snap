@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a mobile menu properly 1`] = `
+.c2 {
+  color: white;
+  text-decoration: none;
+}
+
+.c0 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  background-color: black;
+  left: 0;
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.c0 .c1 {
+  display: inline-block;
+  width: 50%;
+  line-height: 2;
+}
+
+<div
+  className="c0"
+>
+  <a
+    className="c1 c2"
+    href="/"
+  >
+    Home
+  </a>
+  <a
+    className="c1 c2"
+    href="/institutions"
+  >
+    Museums
+  </a>
+  <a
+    className="c1 c2"
+    href="/artists"
+  >
+    Artists
+  </a>
+  <a
+    className="c1 c2"
+    href="/articles"
+  >
+    Articles
+  </a>
+  <a
+    className="c1 c2"
+    href="/shows"
+  >
+    Show Guide
+  </a>
+  <a
+    className="c1 c2"
+    href="/art-fairs"
+  >
+    Art Fairs
+  </a>
+  <a
+    className="c1 c2"
+    href="/galleries"
+  >
+    Galleries
+  </a>
+  <a
+    className="c1 c2"
+    href="/auctions"
+  >
+    Auctions
+  </a>
+</div>
+`;

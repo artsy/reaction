@@ -1,16 +1,16 @@
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
 jest.mock("../../Relay/createEnvironment", () => ({
-  createEnvironment: (user: User) => ({ description: `A mocked env for ${user.name}` }),
+  createEnvironment: (user: User) => ({ description: `A mocked env for ${user.id}` }),
 }))
 
 import * as Artsy from "../Artsy"
 
 const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
-  let text = props.currentUser.name
+  let text = props.currentUser.id
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
   }
@@ -29,7 +29,6 @@ describe("Artsy context", () => {
   const currentUser: User = {
     id: "andy-warhol",
     accessToken: "secret",
-    name: "Andy Warhol",
   }
 
   it("exposes the currently signed-in user", () => {
@@ -40,7 +39,7 @@ describe("Artsy context", () => {
         </Artsy.ContextProvider>
       )
       .toJSON()
-    expect(div.children[0]).toEqual("Andy Warhol")
+    expect(div.children[0]).toEqual("andy-warhol")
   })
 
   it("creates and exposes a Relay environment", () => {
@@ -51,7 +50,7 @@ describe("Artsy context", () => {
         </Artsy.ContextProvider>
       )
       .toJSON()
-    expect(div.children[0]).toEqual("A mocked env for Andy Warhol")
+    expect(div.children[0]).toEqual("A mocked env for andy-warhol")
   })
 
   it("exposes a passed in Relay environment", () => {
@@ -74,7 +73,7 @@ describe("Artsy context", () => {
         </Artsy.ContextProvider>
       )
       .toJSON()
-    expect(div.children[0]).toEqual("Andy Warhol & friends")
+    expect(div.children[0]).toEqual("andy-warhol & friends")
   })
 
   it("throws an error when not embedded in a context provider", () => {

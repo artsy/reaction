@@ -68,6 +68,16 @@ exports[`renders a single image properly 1`] = `
   opacity: 1;
 }
 
+.c3 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c3 .image-loaded {
+  opacity: 1;
+}
+
 .c4 {
   display: block;
 }
@@ -138,9 +148,9 @@ exports[`renders a single image properly 1`] = `
         >
           <img
             alt="Nude on the Beach"
-            className="display-artwork__image c4"
+            className="BlockImage__container c4"
             height="auto"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width="100%"
           />
           <div
@@ -205,7 +215,52 @@ exports[`renders a single image properly 1`] = `
         <div
           className="c9"
         >
-          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": <span>
+                  <span
+                    className="artist-name"
+                  >
+                    <span
+                      className="name"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artist/fernando-botero"
+                        underline={false}
+                      >
+                        Fernando Botero
+                      </file__StyledTextLink>
+                    </span>
+                  </span>
+                  <span
+                    className="title"
+                  >
+                    <file__StyledTextLink
+                      color="#999"
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                      underline={false}
+                    >
+                      Nude on the Beach
+                    </file__StyledTextLink>
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                  <file__StyledTextLink
+                    color="#999"
+                    href="/partner/gary-nader"
+                    underline={false}
+                  >
+                    Gary Nader
+                  </file__StyledTextLink>
+                </span>,
+              }
+            }
+          />
         </div>
       </div>
     </div>
@@ -278,6 +333,16 @@ exports[`renders properly 1`] = `
 }
 
 .c3:hover .c5 {
+  opacity: 1;
+}
+
+.c3 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1.0s;
+  transition: opacity 1.0s;
+}
+
+.c3 .image-loaded {
   opacity: 1;
 }
 
@@ -424,9 +489,9 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Nude on the Beach"
-            className="display-artwork__image c4"
+            className="BlockImage__container c4"
             height={224}
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width={312}
           />
           <div
@@ -491,7 +556,52 @@ exports[`renders properly 1`] = `
         <div
           className="c9"
         >
-          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": <span>
+                  <span
+                    className="artist-name"
+                  >
+                    <span
+                      className="name"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artist/fernando-botero"
+                        underline={false}
+                      >
+                        Fernando Botero
+                      </file__StyledTextLink>
+                    </span>
+                  </span>
+                  <span
+                    className="title"
+                  >
+                    <file__StyledTextLink
+                      color="#999"
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                      underline={false}
+                    >
+                      Nude on the Beach
+                    </file__StyledTextLink>
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                  <file__StyledTextLink
+                    color="#999"
+                    href="/partner/gary-nader"
+                    underline={false}
+                  >
+                    Gary Nader
+                  </file__StyledTextLink>
+                </span>,
+              }
+            }
+          />
         </div>
       </div>
     </div>
@@ -508,9 +618,9 @@ exports[`renders properly 1`] = `
       >
         <img
           alt="Photo by Adam Kuehl for Artsy."
-          className="c4"
+          className="BlockImage__container c4"
           height={224}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80"
           width={168}
         />
         <div
@@ -597,9 +707,9 @@ exports[`renders properly 1`] = `
       >
         <img
           alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-          className="c4"
+          className="BlockImage__container c4"
           height={224}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
           width={178}
         />
         <div

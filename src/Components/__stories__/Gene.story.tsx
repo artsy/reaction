@@ -1,85 +1,46 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
-import { graphql } from "react-relay"
+import React from "react"
+import { Contents } from "../Gene"
 
-import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
-import Gene from "../Gene"
-import ArtistRow from "../Gene/ArtistRow"
+import { ContextProvider } from "../Artsy"
 
-function GeneExample(props: { geneID: string }) {
-  return (
-    <RootQueryRenderer
-      query={graphql`
-        query GeneQuery($geneID: String!) {
-          gene(id: $geneID) {
-            ...Gene_gene
-          }
-        }
-      `}
-      variables={{ artistID: props.geneID }}
-      render={readyState => readyState.props && <Gene {...readyState.props as any} />}
-    />
-  )
-}
-
-function ArtistExample(props: { artistID: string }) {
-  return (
-    <RootQueryRenderer
-      query={graphql`
-        query GeneArtistRowQuery($artistID: String!) {
-          artist(id: $artistID) {
-            ...ArtistRow_artist
-          }
-        }
-      `}
-      variables={{ artistID: props.artistID }}
-      render={readyState => readyState.props && <ArtistRow {...readyState.props as any} />}
-    />
-  )
-}
-
-storiesOf("Components/Rows/Gene", module)
-  .add("Gene Row - Artist: Stephen Willats", () => {
+storiesOf("Components/Pages/Gene/Contents", module)
+  .add("Artists Mode - Minimalism", () => {
     return (
       <div>
-        <ArtistExample artistID="stephen-willats" />
+        <ContextProvider>
+          <Contents filters={{}} geneID="minimalism" mode="artists" onStateChange={console.log} />
+        </ContextProvider>
       </div>
     )
   })
-  .add("Gene Row - Artist: Banksy", () => {
+  .add("Artworks Mode - Animals", () => {
     return (
       <div>
-        <ArtistExample artistID="banksy" />
+        <ContextProvider>
+          <Contents
+            sort="-year"
+            filters={{ for_sale: true }}
+            geneID="animals"
+            mode="artworks"
+            onStateChange={console.log}
+          />
+        </ContextProvider>
       </div>
     )
   })
-  .add("Gene Row - Artist: Glenn Brown", () => {
+  .add("Artworks Mode w/ Pagination Issue - Russia", () => {
     return (
       <div>
-        <ArtistExample artistID="glenn-brown" />
-      </div>
-    )
-  })
-
-storiesOf("Components/Pages/Gene", module)
-  .add("Integration - Minimalism", () => {
-    return (
-      <div>
-        <GeneExample geneID="minimalism" />
-      </div>
-    )
-  })
-  .add("Integration - The Fantastic", () => {
-    return (
-      <div>
-        <GeneExample geneID="the-fantastic" />
-      </div>
-    )
-  })
-  .add("Integration - Old Master Influenced Fantasy", () => {
-    return (
-      <div>
-        <GeneExample geneID="old-master-influenced-fantasy" />
+        <ContextProvider>
+          <Contents
+            sort="-year"
+            filters={{ for_sale: true }}
+            geneID="russia"
+            mode="artworks"
+            onStateChange={console.log}
+          />
+        </ContextProvider>
       </div>
     )
   })

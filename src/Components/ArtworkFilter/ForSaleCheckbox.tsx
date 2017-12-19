@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import Checkbox from "../Checkbox"
 
@@ -7,7 +7,7 @@ import colors from "../../Assets/Colors"
 import { primary } from "../../Assets/Fonts"
 
 interface Props extends React.HTMLProps<ForSaleCheckbox> {
-  onClick?: any
+  onChange?: any
 }
 
 interface State {
@@ -23,15 +23,15 @@ export class ForSaleCheckbox extends React.Component<Props, State> {
     this.setState({
       isChecked: !this.state.isChecked,
     })
-    this.props.onClick()
+    this.props.onChange()
   }
 
   render() {
     const { isChecked } = this.state
-
+    const { checked } = this.props
     return (
       <div className={this.props.className} onClick={() => this.onClick()}>
-        <StyledCheckbox checked={isChecked} />
+        <StyledCheckbox checked={isChecked || checked} />
         <label>Only for Sale</label>
       </div>
     )

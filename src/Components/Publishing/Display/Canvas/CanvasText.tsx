@@ -38,8 +38,8 @@ const Logo = Img`
   height: 100%;
   object-fit: contain;
   object-position: left;
-  max-width: ${props => (props.layout === "overlay" ? "300px;" : "185px;")}
-  max-height: ${props => (props.layout === "overlay" ? "100px;" : "65px;")}
+  max-width: ${props => (props.layout === "overlay" ? "300px;" : "250px;")}
+  max-height: ${props => (props.layout === "overlay" ? "100px;" : "90px;")}
   margin: ${props => (props.layout === "overlay" ? "60px auto;" : "20px 0 50px 0;")}
   ${props => pMedia.md`
     width: auto;

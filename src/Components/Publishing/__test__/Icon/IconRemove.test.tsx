@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 import { IconRemove } from "../../Icon/IconRemove"
 
 it("renders properly", () => {
@@ -8,6 +8,6 @@ it("renders properly", () => {
 })
 
 it("renders with fill props", () => {
-  const icon = renderer.create(<IconRemove fill="red" />).toJSON()
+  const icon = renderer.create(<IconRemove background="red" />).toJSON()
   expect(icon).toMatchSnapshot()
 })

@@ -6,7 +6,7 @@
  * and two specialised components that use composition to achieve the desired functionality.
  */
 
-import * as React from "react"
+import React from "react"
 import { commitMutation, createFragmentContainer, graphql } from "react-relay"
 
 import Icon from "./Icon"

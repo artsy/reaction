@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
@@ -28,7 +28,8 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null>
 }
 
 export const StyledMetadata = styled(ArtworkMetadata)`
-  ${fonts.secondary.style} color: ${colors.graySemibold};
+  ${fonts.secondary.style};
+  color: ${colors.graySemibold};
   margin-top: 12px;
   font-size: 15px;
   text-align: left;

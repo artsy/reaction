@@ -1,71 +1,76 @@
-import * as _ from "lodash"
+import _ from "lodash"
 import React from "react"
-import styled from "styled-components"
-import Colors from "../../../Assets/Colors"
+import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { RelatedArticleFigure } from "./RelatedArticleFigure"
+import { RelatedArticleFigure, RelatedArticleFigureData } from "./RelatedArticleFigure"
 
 interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   vertical: {
     name: string
     id?: string
   }
-  articles: Array<{
-    thumbnail_title: string
-    thumbnail_image: string
-    slug: string
-  }>
+  articles: RelatedArticleFigureData[]
+  isMobile?: boolean
+}
+
+interface ScrollingContainerProps {
+  isMobile?: boolean
 }
 
 export const RelatedArticlesCanvas: React.SFC<RelatedArticlesCanvasProps> = props => {
-  const { articles, vertical } = props
+  const { articles, isMobile, vertical } = props
 
   if (!vertical) {
     return <div />
   } else {
     return (
-      <div>
-        <LineBreak />
-        <RelatedArticlesContainer>
-          <Title>
-            Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
-          </Title>
-          <ArticlesWrapper>
-            {_.map(articles, (article, i) => {
-              return (
-                <RelatedArticleFigure
-                  article={article}
-                  key={`related-article-figure-${i}`}
-                />
-              )
-            })}
-          </ArticlesWrapper>
-        </RelatedArticlesContainer>
-      </div>
+      <RelatedArticlesContainer>
+        <Title>
+          Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
+        </Title>
+        <ArticlesWrapper isMobile={isMobile}>
+          {_.map(articles, (article, i) => {
+            return (
+              <RelatedArticleFigure
+                article={article}
+                key={`related-article-figure-${i}`}
+              />
+            )
+          })}
+        </ArticlesWrapper>
+      </RelatedArticlesContainer>
     )
   }
 }
+
+const ScrollingContainer: StyledFunction<ScrollingContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;
-  margin: 30px auto 60px auto;
+  margin: 30px auto 30px auto;
   ${pMedia.xl`
-    margin: 30px 20px 60px 20px;
+    margin: 30px 0 30px 0;
   `}
 `
 const Title = styled.div`
   ${Fonts.unica("s32")}
   margin-bottom: 30px;
+  ${pMedia.xl`
+    margin: 0 20px 30px 40px;
+  `}
+  ${pMedia.sm`
+    margin-left: 20px;
+  `}
 `
 const VerticalSpan = styled.span`
   ${pMedia.sm`
     display: block;
   `}
 `
-const ArticlesWrapper = styled.div`
+const ArticlesWrapper = ScrollingContainer`
   display: flex;
   justify-content: space-between;
   overflow-x: scroll;
@@ -77,9 +82,20 @@ const ArticlesWrapper = styled.div`
     &:last-child {
       margin-right: 0;
     }
+    ${pMedia.xl`
+      margin: 0 10px;
+      &:first-child {
+        margin-left: 40px;
+      }
+      &:last-child {
+        border-right: 20px solid white;
+      }
+    `}
+    ${pMedia.sm`
+      &:first-child {
+        margin-left: 20px;
+      }
+    `}
   }
-`
-const LineBreak = styled.div`
-  border-top: 1px solid ${Colors.grayRegular};
-  width: 100%;
+  ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"}
 `

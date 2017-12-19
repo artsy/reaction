@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
 
 import Icon from "../Icon"

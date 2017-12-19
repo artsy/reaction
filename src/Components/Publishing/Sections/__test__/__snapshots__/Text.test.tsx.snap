@@ -3,6 +3,7 @@
 exports[`renders classic text properly 1`] = `
 .c0 {
   position: relative;
+  width: 100%;
 }
 
 .c0 a {
@@ -17,6 +18,7 @@ exports[`renders classic text properly 1`] = `
 
 .c0 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c0 p,
@@ -118,6 +120,10 @@ exports[`renders classic text properly 1`] = `
   font-style: normal;
 }
 
+.c0 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c0 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -128,18 +134,7 @@ exports[`renders classic text properly 1`] = `
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
-}
-
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
+  word-break: break-word;
 }
 
 .c0 .content-end {
@@ -174,19 +169,6 @@ exports[`renders classic text properly 1`] = `
   font-size: 17px;
   line-height: 1.1em;
   text-transform: none;
-}
-
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
 }
 
 @media (max-width:600px) {
@@ -250,6 +232,7 @@ exports[`renders classic text properly 1`] = `
 
 <div
   className="article__text-section c0"
+  color="black"
 >
   <div
     dangerouslySetInnerHTML={
@@ -264,6 +247,7 @@ exports[`renders classic text properly 1`] = `
 exports[`renders feature text properly 1`] = `
 .c0 {
   position: relative;
+  width: 100%;
 }
 
 .c0 a {
@@ -278,6 +262,7 @@ exports[`renders feature text properly 1`] = `
 
 .c0 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c0 p,
@@ -370,28 +355,21 @@ exports[`renders feature text properly 1`] = `
   line-height: 1.5em;
 }
 
+.c0 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c0 blockquote {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 65px;
-  line-height: 1em;
+  font-size: 40px;
+  line-height: 1.1em;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
-}
-
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
+  word-break: break-word;
 }
 
 .c0 .content-end {
@@ -426,19 +404,6 @@ exports[`renders feature text properly 1`] = `
   font-size: 17px;
   line-height: 1.1em;
   text-transform: none;
-}
-
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
 }
 
 @media (max-width:600px) {
@@ -490,7 +455,7 @@ exports[`renders feature text properly 1`] = `
   .c0 blockquote {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
@@ -501,6 +466,7 @@ exports[`renders feature text properly 1`] = `
 
 <div
   className="article__text-section c0"
+  color="black"
 >
   <div
     dangerouslySetInnerHTML={
@@ -515,6 +481,7 @@ exports[`renders feature text properly 1`] = `
 exports[`renders standard text properly 1`] = `
 .c0 {
   position: relative;
+  width: 100%;
 }
 
 .c0 a {
@@ -529,6 +496,7 @@ exports[`renders standard text properly 1`] = `
 
 .c0 a:hover {
   color: #999;
+  opacity: 1;
 }
 
 .c0 p,
@@ -621,28 +589,21 @@ exports[`renders standard text properly 1`] = `
   line-height: 1.5em;
 }
 
+.c0 h3 a {
+  background-size: 1.25px 1px;
+}
+
 .c0 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.1em;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
-}
-
-.c0 .content-start {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 67px;
-  line-height: 1em;
-  float: left;
-  line-height: .5em;
-  margin-right: 10px;
-  margin-top: .298em;
-  text-transform: uppercase;
+  word-break: break-word;
 }
 
 .c0 .content-end {
@@ -677,19 +638,6 @@ exports[`renders standard text properly 1`] = `
   font-size: 17px;
   line-height: 1.1em;
   text-transform: none;
-}
-
-@media (max-width:900px) {
-  .c0 {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    max-width: 100%;
-  }
 }
 
 @media (max-width:600px) {
@@ -741,7 +689,7 @@ exports[`renders standard text properly 1`] = `
   .c0 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.1em;
   }
 
@@ -752,6 +700,7 @@ exports[`renders standard text properly 1`] = `
 
 <div
   className="article__text-section c0"
+  color="black"
 >
   <div
     dangerouslySetInnerHTML={

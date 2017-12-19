@@ -4,7 +4,7 @@ import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { crop } from "../../../../Utils/resizer"
-import track from "../../../../Utils/track"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import { Fonts } from "../../Fonts"
@@ -47,8 +47,11 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
   }
 
   @track(props => ({
-    action: "Display Navigate Slideshow",
+    action: "Click",
+    label: "Display ad carousel arrow",
+    entity_type: "display_ad",
     campaign_name: props.campaign.name,
+    unit_layout: "canvas_slideshow"
   }))
   onChangeSlide(slide) {
     this.slider.slickGoTo(slide)
@@ -75,7 +78,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
     return unit.assets.map((image, i) => {
       const renderTitleCard = i === 0 && containerWidth >= 900
-      const imageSrc = crop(image.url, { width: 780, height: 460 })
+      const imageSrc = crop(image.url, { width: 780, height: 460, isDisplayAd: true })
       const caption = image.caption || ''
 
       return (
@@ -112,13 +115,13 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
       nextArrow: (
         <RightArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
         />
       ),
       prevArrow: (
         <LeftArrow
           containerWidth={containerWidth}
-          onChangeSlide={slide => this.onChangeSlide(slide)}
+          onChangeSlide={this.onChangeSlide}
           isOnTitle={this.state.isOnTitle}
         />
       ),
@@ -140,14 +143,16 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
     const renderTitleCard = containerWidth < 900
 
     return (
-      <SliderContainer containerWidth={containerWidth}>
-        <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
-          {this.renderSlides()}
-        </Slider>
+      <div>
+        <SliderContainer containerWidth={containerWidth}>
+          <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
+            {this.renderSlides()}
+          </Slider>
+        </SliderContainer>
 
         {renderTitleCard &&
           this.renderTitleCard()}
-      </SliderContainer>
+      </div>
     )
   }
 }
@@ -181,7 +186,6 @@ const RightArrow = props => {
     </NavArrow>
   )
 }
-
 
 const arrowDiv: StyledFunction<NavArrowProps> = styled.div
 const responsiveDiv: StyledFunction<ResponsiveProps> = styled.div
@@ -218,33 +222,35 @@ const SliderContainer = responsiveDiv`
     max-height: ${props => "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
     padding: 0 !important;
   }
+
+  ${props => pMedia.md`
+    max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
+  `}
 `
 const Slide = responsiveDiv`
   margin-right: 20px;
   &.title-card {
+    max-width: 1250px;
+    width: ${props => props.containerWidth + "px;"}
     display: flex;
     justify-content: space-between;
-    width: 1250px;
-    ${props => pMedia.lg`
-      max-width: ${props.containerWidth + "px;"}
-    `}
     ${props => pMedia.md`
       max-width: ${maxAssetSize(props.containerWidth).width + "px;"}
-  `}
+    `}
   }
 `
 const Title = responsiveDiv`
-  display: inline-block;
   width: 380px;
   padding: 0 20px 0 0;
-  ${props => pMedia.lg`
+  ${props => pMedia.xl`
+    padding: 0 40px;
     width: ${props.containerWidth * 0.35 + "px;"}
-    padding: 0 20px;
     a {
       max-height: ${maxAssetSize(props.containerWidth).height + "px;"}
     }
   `}
   ${pMedia.md`
+    padding: 0 20px;
     width: 100%;
     a {
       height: initial;
@@ -261,8 +267,7 @@ const Disclaimer = styled.div`
 `
 const Image = responsiveImage`
   height: auto;
-  max-width: 780px;
-  max-height: 460px;
+  max-width: ${props => maxAssetSize(props.containerWidth).width + "px;"}
   object-fit: cover;
   object-position: center;
   ${props => pMedia.lg`

@@ -1,7 +1,6 @@
-import * as _ from "lodash"
-import * as React from "react"
+import _ from "lodash"
+import React from "react"
 import ReactDOM from 'react-dom/server'
-import HTMLEllipsis from 'react-lines-ellipsis/lib/html'
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
@@ -62,7 +61,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     const createTextLink = linked && slug
 
     if (createTextLink) {
-      const href = `/artwork/${slug}`
+      const href = `/artist/${slug}`
 
       return (
         <span key={`artist-${i}`} className="name">
@@ -219,6 +218,19 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
 const Truncator: React.SFC<any> = ({ children }) => {
   const html = ReactDOM.renderToStaticMarkup(<span>{children}</span>)
+
+  // FIXME: Make safe for tests
+  let HTMLEllipsis
+
+  if (process.env.NODE_ENV !== 'test') {
+    HTMLEllipsis = require('react-lines-ellipsis/lib/html')
+  } else {
+    HTMLEllipsis = ({ unsafeHTML }) => (
+      <div dangerouslySetInnerHTML={{
+        __html: unsafeHTML
+      }} />
+    )
+  }
 
   return (
     <TruncatedLine>

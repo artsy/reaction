@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
+import React from "react"
+import ReactDOM from "react-dom"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
@@ -135,7 +135,7 @@ ArtworkGrid.defaultProps = {
   itemMargin: 20,
 }
 
-const StyledGrid = styled(ArtworkGrid)`
+const StyledGrid = styled(ArtworkGrid) `
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

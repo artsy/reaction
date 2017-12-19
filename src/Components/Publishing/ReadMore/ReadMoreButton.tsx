@@ -1,14 +1,31 @@
 import React from "react"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
+import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
-export const ReadMore: React.SFC<any> = props => {
-  return (
-    <ReadMoreContainer onClick={props.onClick}>
-      <ReadMoreButton>Read More</ReadMoreButton>
-    </ReadMoreContainer>
-  )
+@track()
+export class ReadMore extends React.Component<any, any> {
+  constructor() {
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+
+  @track({ action: "Clicked read more" })
+  onClick() {
+    this.props.onClick(...arguments)
+  }
+
+  render() {
+    return (
+      <StandardLayoutParent>
+        <ReadMoreContainer onClick={this.onClick}>
+          <ReadMoreButton>Read More</ReadMoreButton>
+        </ReadMoreContainer>
+      </StandardLayoutParent>
+    )
+  }
 }
 
 const ReadMoreButton = styled.div`
@@ -22,6 +39,7 @@ const ReadMoreButton = styled.div`
   border: 1px solid black;
   border-radius: 2px;
   ${Fonts.unica("s14", "medium")}
+  padding-top: 1px;
   &:hover {
     cursor: pointer;
     background-color: white;
@@ -39,7 +57,12 @@ const ReadMoreContainer = styled.div`
   padding: 20px 0;
   max-width: 1150px;
   margin: auto;
+  margin-bottom: 80px;
   ${pMedia.xl`
+    padding: 20px;
+    padding-left: 0px;
+  `}
+  ${pMedia.sm`
     padding: 20px;
   `}
 `

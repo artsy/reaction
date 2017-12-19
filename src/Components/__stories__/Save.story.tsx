@@ -1,14 +1,13 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import React from "react"
 import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import GridItem from "../Artwork/GridItem"
 
-function ArtworkExample(props: { artworkID: string; user: User }) {
+function ArtworkExample(props: { artworkID: string }) {
   return (
     <RootQueryRenderer
-      currentUser={props.user}
       query={graphql`
         query SaveArtworkQuery($artworkID: String!) {
           artwork(id: $artworkID) {
@@ -23,13 +22,9 @@ function ArtworkExample(props: { artworkID: string; user: User }) {
 }
 
 storiesOf("Components/Save Button", module).add("Save Button", () => {
-  const user = {
-    id: "some-id",
-    accessToken: "some-token",
-  } as User
   return (
     <div style={{ width: "200px" }}>
-      <ArtworkExample artworkID="damon-zucconi-tetradic-edit-1" user={user} />
+      <ArtworkExample artworkID="damon-zucconi-tetradic-edit-1" />
     </div>
   )
 })

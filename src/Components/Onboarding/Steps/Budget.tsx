@@ -1,70 +1,91 @@
-import * as React from "react"
+import React from "react"
+import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import { ContextConsumer, ContextProps } from "../../Artsy"
+import { media } from "../../Helpers"
 import SelectableToggle from "../SelectableToggle"
 import { StepProps } from "../Types"
 import { Layout } from "./Layout"
 
 const OptionsContainer = styled.div`
-width: 450px;
-margin: 0 auto 100px;
-&:last-child {
-  border-bottom: 1px solid #e5e5e5;
-}
+  width: 450px;
+  margin: 0 auto 100px;
+  &:last-child {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  ${media.sm`
+    width: 100%;
+    margin-bottom: 20px;
+  `};
 `
 
 interface State {
-  selection: string
+  selection: number | null
 }
 
-export default class Budget extends React.Component<StepProps, State> {
-  options = [
-    "UNDER $500",
-    "UNDER $2,500",
-    "UNDER $5,000",
-    "UNDER $10,000",
-    "UNDER $25,000",
-    "UNDER $50,000",
-    "NO BUDGET IN MIND",
-  ]
+class Budget extends React.Component<StepProps & ContextProps, State> {
+  options = {
+    "UNDER $500": 500,
+    "UNDER $2,500": 2500,
+    "UNDER $5,000": 5000,
+    "UNDER $10,000": 10000,
+    "UNDER $25,000": 25000,
+    "UNDER $50,000": 50000,
+    "NO BUDGET IN MIND": 1000000000000,
+  }
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      selection: "",
-    }
+  state = {
+    selection: null,
   }
 
   onOptionSelected = (index: number) => {
-    let selection = { selection: this.options[index] }
+    let selection = { selection: Object.values(this.options)[index] }
     this.setState(selection)
   }
 
   submit() {
-    null // coming soooon
+    const priceRangeMax = this.state.selection
+
+    commitMutation(this.props.relayEnvironment, {
+      mutation: graphql`
+        mutation BudgetUpdateMyUserProfileMutation($input: UpdateMyProfileInput!) {
+          updateMyUserProfile(input: $input) {
+            user {
+              name
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          price_range_min: -1,
+          price_range_max: priceRangeMax,
+        },
+      },
+    })
   }
 
   render() {
-    const options = this.options.map((text, index) =>
+    const options = Object.keys(this.options).map((text, index) => (
       <SelectableToggle
         key={index}
         text={text}
         onSelect={this.onOptionSelected.bind(this, index)}
-        selected={this.state.selection === text}
+        selected={this.state.selection === this.options[text]}
       />
-    )
+    ))
 
     return (
       <Layout
         title="What's your budget?"
         subtitle="Select one"
-        onNextButtonPressed={this.state.selection !== "" && this.submit.bind(this)}
+        onNextButtonPressed={this.state.selection && this.submit.bind(this)}
       >
-        <OptionsContainer>
-          {options}
-        </OptionsContainer>
+        <OptionsContainer>{options}</OptionsContainer>
       </Layout>
     )
   }
 }
+
+export default ContextConsumer(Budget)

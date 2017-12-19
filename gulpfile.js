@@ -4,8 +4,7 @@ const gulp = require("gulp")
 const path = require("path")
 const sourcemaps = require("gulp-sourcemaps")
 const tsc = require("gulp-typescript")
-const webpack = require("webpack")
-const webpackStream = require("webpack-stream")
+const mergeStream = require("merge-stream")
 
 const srcDir = "./src"
 const outDir = "./dist"
@@ -14,7 +13,7 @@ gulp.task("clean", function() {
   return gulp.src(outDir, { read: false }).pipe(clean())
 })
 
-gulp.task("compile-server", () => {
+gulp.task("compile", () => {
   const tsProject = tsc.createProject("tsconfig.json")
 
   const tsResult = gulp
@@ -22,7 +21,7 @@ gulp.task("compile-server", () => {
     .pipe(sourcemaps.init())
     .pipe(tsProject())
 
-  return tsResult.js
+  const tsStream = tsResult.js
     .pipe(babel())
     .pipe(
       sourcemaps.write(".", {
@@ -36,25 +35,13 @@ gulp.task("compile-server", () => {
       })
     )
     .pipe(gulp.dest(outDir))
+
+  const graphqlJsStream = gulp
+    .src(`${srcDir}/**/*.graphql.js`)
+    .pipe(babel())
+    .pipe(gulp.dest(outDir))
+
+  return mergeStream(tsStream, graphqlJsStream)
 })
 
-gulp.task("compile-client", ["clean"], function() {
-  if (!process.env.NODE_ENV) {
-    process.env.NODE_ENV = "production"
-  }
-  const config = require("./webpack")
-
-  let entries = []
-  Object.keys(config.entry).forEach(entryName => {
-    entries = entries.concat(config.entry[entryName])
-  })
-
-  return gulp
-    .src(entries)
-    .pipe(webpackStream(config, webpack))
-    .pipe(gulp.dest(config.output.path))
-})
-
-gulp.task("compile", ["clean", "compile-server", "compile-client"])
-
-gulp.task("default", ["compile"])
+gulp.task("default", ["clean", "compile"])

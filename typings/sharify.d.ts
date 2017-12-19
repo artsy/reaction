@@ -16,7 +16,6 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly METAPHYSICS_ENDPOINT: string
-      readonly SEGMENT_WRITE_KEY: string
     }
 
     export interface ResponseLocalData extends GlobalData {

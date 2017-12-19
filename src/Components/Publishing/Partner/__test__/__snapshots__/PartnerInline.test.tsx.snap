@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the partner inline 1`] = `
+.c2 {
+  font-family: artsy-icons;
+  color: black;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.c4 {
+  width: 15px;
+  height: 15px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0px;
+}
+
+.c0 img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+.c0 .c3 {
+  margin: 0 20px;
+}
+
+.c0 .c1 {
+  margin: 0;
+  vertical-align: middle;
+}
+
+@media (max-width:900px) {
+  .c4 {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media (max-width:720px) {
+  .c0 img {
+    max-height: 24px;
+  }
+
+  .c0 .c1 {
+    font-size: 24px;
+  }
+
+  .c0 .c3 {
+    margin: 0 10px;
+  }
+}
+
+<div
+  className="PartnerInline c0"
+>
+  <a
+    href="/"
+  >
+    <div
+      className="c1 c2"
+      onClick={undefined}
+      style={undefined}
+    >
+      
+    </div>
+  </a>
+  <svg
+    className="c3 c4"
+    version="1.1"
+    viewBox="0 0 15 15"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g
+      fill="none"
+      fillRule="evenodd"
+      stroke="none"
+      strokeWidth="2"
+    >
+      <g
+        fill="black"
+        transform="translate(-101.000000, -18.000000)"
+      >
+        <g
+          transform="translate(101.000000, 18.000000)"
+        >
+          <rect
+            height="1"
+            width="15"
+            x="0"
+            y="7"
+          />
+          <rect
+            height="1"
+            transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) "
+            width="15"
+            x="0"
+            y="7"
+          />
+        </g>
+      </g>
+    </g>
+  </svg>
+  <a
+    href="https://artsy.net"
+    onClick={[Function]}
+    target="_blank"
+  >
+    <img
+      src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+    />
+  </a>
+</div>
+`;

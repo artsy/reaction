@@ -1,7 +1,7 @@
-import { shallow } from "enzyme"
+import { mount } from "enzyme"
 import "jest-styled-components"
-import * as React from "react"
-import * as renderer from "react-test-renderer"
+import React from "react"
+import renderer from "react-test-renderer"
 import { Images } from "../../../Fixtures/Components"
 import { FullscreenViewer } from "../FullscreenViewer"
 
@@ -17,7 +17,7 @@ it("renders properly", () => {
 
 it("closes the viewer on ESC keydown", () => {
   const onClose = jest.fn()
-  const viewer = shallow(<FullscreenViewer images={Images} show onClose={onClose} />)
+  const viewer = mount(<FullscreenViewer images={Images} show onClose={onClose} />)
   viewer.simulate("keyDown", { keyCode: 27 })
   expect(onClose).toBeCalled()
 })

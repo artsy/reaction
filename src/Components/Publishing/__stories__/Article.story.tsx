@@ -1,15 +1,29 @@
 import { storiesOf } from "@storybook/react"
-import * as React from "react"
-import _ from "underscore"
+import { clone } from 'lodash'
+import { extend } from "lodash"
+import React from "react"
+import styled from 'styled-components'
 import { Article } from "../Article"
+
 import {
+  BasicArticle,
   FeatureArticle,
+  ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
-  ShortStandardArticle,
+  SeriesArticle,
+  SeriesArticleSponsored,
   StandardArticle,
   SuperArticle,
+  VideoArticle,
+  VideoArticleSponsored
 } from "../Fixtures/Articles"
-import { Display, HeroSections, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+
+import {
+  Display,
+  HeroSections,
+  RelatedCanvas,
+  RelatedPanel
+} from "../Fixtures/Components"
 
 const story = storiesOf("Publishing/Articles", module)
   .add("Standard", () => {
@@ -35,7 +49,7 @@ const story = storiesOf("Publishing/Articles", module)
   .add("Standard with top margin", () => {
     return (
       <Article
-        article={ShortStandardArticle}
+        article={ImageHeavyStandardArticle}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -43,14 +57,26 @@ const story = storiesOf("Publishing/Articles", module)
       />
     )
   })
+  .add("Standard truncated", () => {
+    return (
+      <Article
+        article={ImageHeavyStandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        isTruncated
+      />
+    )
+  })
 
-const ads = ["overlay", "image", "video", "slideshow"]
-ads.forEach(mediaType => {
-  story.add(`Standard with ${mediaType} ad`, () => {
+
+const displays = ["overlay", "image", "video", "slideshow"]
+displays.forEach(displayType => {
+  story.add(`Standard with ${displayType} ad`, () => {
     return (
       <Article
         article={StandardArticle}
-        display={Display(mediaType)}
+        display={Display(displayType)}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -59,11 +85,125 @@ ads.forEach(mediaType => {
   })
 })
 
-story.add("Feature", () => {
-  return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
+story.add(`Multiple standard articles`, () => {
+  const article = {
+    ...StandardArticle,
+    sections: [
+      {
+        type: "text",
+        body:
+        "<p>What would Antoine Court?</p>",
+      }
+    ]
+  }
+  return (
+    <div>
+      <Article
+        article={article}
+        display={Display('slideshow')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+      <Break />
+      <Article
+        article={article}
+        display={Display('video')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+      <Break />
+      <Article
+        article={article}
+        display={Display('image')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+      />
+    </div>
+  )
 })
 
-story.add("Super Article", () => {
-  const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
-  return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} marginTop="0px" />
+const Break = styled.div`
+  border-top: 1px solid #ccc;
+  width: 100%;
+  margin-top: 80px;
+`
+
+story.add("Feature", () => {
+  return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} />
 })
+  .add("Basic Feature", () => {
+    const article = clone({
+      ...BasicArticle,
+      sections: [
+        {
+          type: "text",
+          body:
+          "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles.</p>"
+        }
+      ]
+    })
+
+    return (
+      <Article
+        article={article}
+        display={Display('image')}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        isTruncated
+      />
+    )
+  })
+  .add("Super Article", () => {
+    const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
+    return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} />
+  })
+  .add("Series", () => {
+    return (
+      <Article
+        article={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Series - Sponsored", () => {
+    return (
+      <Article
+        article={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Video Article", () => {
+    return (
+      <Article article={VideoArticle} />
+    )
+  })
+  .add("Video Article - Series", () => {
+    return (
+      <Article
+        article={VideoArticle}
+        seriesArticle={SeriesArticle}
+        relatedArticles={[StandardArticle,VideoArticle]}
+      />
+    )
+  })
+  .add("Video Article - Sponsored", () => {
+    return (
+      <Article
+        article={VideoArticleSponsored}
+      />
+    )
+  })
+  .add("Video Article - Series + Sponsored", () => {
+    return (
+      <Article
+        article={VideoArticleSponsored}
+        seriesArticle={SeriesArticleSponsored}
+        relatedArticles={[StandardArticle, VideoArticle]}
+      />
+    )
+  })

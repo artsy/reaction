@@ -1,11 +1,17 @@
-import { shallow } from "enzyme"
+import { mount } from "enzyme"
 import "jest-styled-components"
-import * as React from "react"
+import React from "react"
 import { Article } from "../Article"
-import { FeatureArticle, StandardArticle } from "../Fixtures/Articles"
-import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
+import {
+  FeatureArticle,
+  SeriesArticle,
+  StandardArticle,
+  VideoArticle
+} from "../Fixtures/Articles"
+
+import { ArticleLayout } from '../Layouts/ArticleLayout'
+import { SeriesLayout } from '../Layouts/SeriesLayout'
+import { VideoLayout } from '../Layouts/VideoLayout'
 
 jest.mock("react-slick", () => {
   const React = require("react")
@@ -14,35 +20,30 @@ jest.mock("react-slick", () => {
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-tracking", () => jest.fn(c => d => d))
 
-it("indexes and titles images", () => {
-  const article = shallow(<Article article={StandardArticle} />)
-  expect(article.state("article").sections[4].images[0].setTitle).toBe("A World Without Capitalism")
-  expect(article.state("article").sections[4].images[0].index).toBe(0)
-  expect(article.state("article").sections[4].images[1].index).toBe(1)
-  expect(article.state("article").sections[6].images[0].index).toBe(3)
-  expect(article.state("article").sections[6].images[1].index).toBe(4)
+it("renders standard articles in default layout", () => {
+  const article = mount(
+    <Article article={StandardArticle} />
+  )
+  expect(article.find(ArticleLayout).length).toBe(1)
 })
 
-it("renders related articles in standard layout", () => {
-  const article = shallow(
-    <Article
-      article={StandardArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
+it("renders feature articles in default layout", () => {
+  const article = mount(
+    <Article article={FeatureArticle} />
   )
-  expect(article.find(RelatedArticlesPanel).length).toBe(1)
-  expect(article.find(RelatedArticlesCanvas).length).toBe(1)
+  expect(article.find(ArticleLayout).length).toBe(1)
 })
 
-it("renders RelatedArticlesCanvas in feature layout", () => {
-  const article = shallow(
-    <Article
-      article={FeatureArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
+it("renders series articles in series layout", () => {
+  const article = mount(
+    <Article article={SeriesArticle} />
   )
-  expect(article.find(RelatedArticlesPanel).length).toBe(0)
-  expect(article.find(RelatedArticlesCanvas).length).toBe(1)
+  expect(article.find(SeriesLayout).length).toBe(1)
+})
+
+it("renders series articles in series layout", () => {
+  const article = mount(
+    <Article article={VideoArticle} />
+  )
+  expect(article.find(VideoLayout).length).toBe(1)
 })

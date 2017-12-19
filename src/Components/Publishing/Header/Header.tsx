@@ -1,10 +1,11 @@
-import * as React from "react"
+import React from "react"
 import { ClassicHeader } from "./ClassicHeader"
 import { FeatureHeader } from "./FeatureHeader"
 import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
   article: any
+  date?: string
   isMobile?: boolean
   height?: string
 }
@@ -42,19 +43,22 @@ const getDeck = (article, children) => {
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
-  const { article, children, height, isMobile } = props
+  const { article, children, date, height, isMobile } = props
   const title = getTitle(article, children)
 
+  // Classic Article
   if (article.layout === "classic") {
     const leadParagraph = getLeadParagraph(article, children)
     return (
       <ClassicHeader
         isMobile={isMobile}
         article={article}
+        date={date && date}
         title={title}
         leadParagraph={leadParagraph}
       />
     )
+    // Feature
   } else {
     const deck = getDeck(article, children)
     const vertical = getVertical(article, children)
@@ -66,14 +70,23 @@ export const Header: React.SFC<HeaderProps> = props => {
           article={article}
           title={title}
           vertical={vertical}
+          date={date && date}
           deck={deck}
           image={image}
           height={height}
           isMobile={isMobile}
         />
       )
+      // Standard
     } else {
-      return <StandardHeader article={article} vertical={vertical} title={title} />
+      return (
+        <StandardHeader
+          article={article}
+          date={date && date}
+          vertical={vertical}
+          title={title}
+        />
+      )
     }
   }
 }

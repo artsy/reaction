@@ -3,12 +3,14 @@
   "rules": {
     "curly": false,
     "interface-name": [true, "never-prefix"],
-    "object-literal-sort-keys": false,
-    "member-access": [false],
-    "no-unused-expression": false,
-    "max-classes-per-file": [false],
-    "jsx-no-lambda": false,
     "jsx-boolean-value": [true, "never"],
-    "no-var-requires": false
+    "jsx-no-lambda": false,
+    "max-classes-per-file": [false],
+    "member-access": [false],
+    "member-ordering": false,
+    "no-unused-expression": false,
+    "no-var-requires": false,
+    "object-literal-sort-keys": false,
+    "no-namespace": [true, "allow-declarations"]
   }
 }
