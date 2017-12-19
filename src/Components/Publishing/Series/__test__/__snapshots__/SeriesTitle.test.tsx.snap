@@ -10,6 +10,8 @@ exports[`renders a series title properly 1`] = `
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c1 {
@@ -59,6 +61,8 @@ exports[`renders a series with children properly 1`] = `
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c1 {
@@ -123,6 +127,8 @@ exports[`renders a sponsored series title properly 1`] = `
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c1 {

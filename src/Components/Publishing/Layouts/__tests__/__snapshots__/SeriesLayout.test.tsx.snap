@@ -55,7 +55,7 @@ exports[`renders a series properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -73,6 +73,7 @@ exports[`renders a series properly 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 .c21 {
@@ -529,6 +530,8 @@ exports[`renders a series properly 1`] = `
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c14 {
@@ -1083,7 +1086,7 @@ exports[`renders a sponsored series properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   width: 100%;
   color: white;
   z-index: 10;
@@ -1101,6 +1104,7 @@ exports[`renders a sponsored series properly 1`] = `
   position: absolute;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 }
 
 .c24 {
@@ -1569,6 +1573,8 @@ exports[`renders a sponsored series properly 1`] = `
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c14 {
