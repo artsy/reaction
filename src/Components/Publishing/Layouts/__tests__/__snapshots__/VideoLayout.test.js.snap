@@ -42,6 +42,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c3 {
   background-color: transparent;
+  border-bottom: 1px solid white;
   position: absolute;
   top: 0;
 }
@@ -549,7 +550,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   max-width: 1200px;
 }
 
-.c86 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c77 .file__PartnerBlockContainer-s1ud23oi-0 {
   display: none;
 }
 
@@ -567,7 +568,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c86:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c77:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
   display: block;
 }
 
@@ -1238,11 +1239,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c86:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c77:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
     display: none;
   }
 
-  .c86 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c77 .file__PartnerBlockContainer-s1ud23oi-0 {
     margin-top: 60px;
     display: block;
   }

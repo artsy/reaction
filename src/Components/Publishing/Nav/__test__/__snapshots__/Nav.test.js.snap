@@ -37,6 +37,7 @@ exports[`Nav renders a Nav 1`] = `
 
 .c1 {
   background-color: black;
+  border-bottom: 1px solid white;
 }
 
 .c0 {
@@ -169,6 +170,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 
 .c1 {
   background-color: black;
+  border-bottom: 1px solid white;
 }
 
 .c0 {
@@ -348,6 +350,7 @@ exports[`Nav renders a transparent nav 1`] = `
 
 .c1 {
   background-color: transparent;
+  border-bottom: 1px solid white;
   position: absolute;
   top: 0;
 }
