@@ -5,18 +5,18 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
 
-export interface RelayProps {
+export interface Props {
   term: string
+}
+
+interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+  relay?: RelayProp
   viewer: {
     match_artist: any[]
   }
 }
 
-interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
-  relay?: RelayProp
-}
-
-class ArtistSearchResultsContent extends React.Component<Props, null> {
+class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
     const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
 
@@ -37,7 +37,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
             artist {
               __id
               related {
-                suggested(first: 1) {
+                suggested(first: 1, exclude_followed_artists: true) {
                   edges {
                     node {
                       id
@@ -101,10 +101,6 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
     }
   `
 )
-
-interface Props {
-  term: string
-}
 
 const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
   return (
