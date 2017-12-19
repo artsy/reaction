@@ -25,7 +25,7 @@ export class SeriesAbout extends Component<Props, null> {
           <Title>About the Series</Title>
           {sponsor &&
             <PartnerBlock
-              logo={sponsor.partner_logo}
+              logo={sponsor.partner_light_logo}
               url={sponsor.partner_logo_link}
               trackingData={{
                 type: 'external link',
@@ -41,7 +41,7 @@ export class SeriesAbout extends Component<Props, null> {
           }
           {sponsor &&
             <PartnerBlock
-              logo={sponsor.partner_logo}
+              logo={sponsor.partner_light_logo}
               url={sponsor.partner_logo_link}
               trackingData={{
                 type: 'external link',

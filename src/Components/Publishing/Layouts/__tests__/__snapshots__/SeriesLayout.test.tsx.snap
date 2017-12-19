@@ -1037,6 +1037,11 @@ exports[`renders a sponsored series properly 1`] = `
   display: inline-block;
 }
 
+.c7 {
+  width: 15px;
+  height: 15px;
+}
+
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1054,7 +1059,7 @@ exports[`renders a sponsored series properly 1`] = `
   vertical-align: middle;
 }
 
-.c3 .file__IconPlus-s100ic91-0 {
+.c3 .c6 {
   margin: 0 20px;
 }
 
@@ -1093,7 +1098,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: 10;
 }
 
-.c6 {
+.c8 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
@@ -1103,7 +1108,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c24 {
+.c26 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1111,11 +1116,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c24.date {
+.c26.date {
   white-space: nowrap;
 }
 
-.c32 {
+.c34 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1123,11 +1128,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c32.date {
+.c34.date {
   white-space: nowrap;
 }
 
-.c32:before {
+.c34:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -1137,13 +1142,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c32:before {
+.c34:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c31 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1162,12 +1167,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c30 {
+.c32 {
   width: 32px;
   height: 32px;
 }
 
-.c28 {
+.c30 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1177,14 +1182,14 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c26 {
+.c28 {
   position: relative;
   width: 50%;
   height: 100%;
   margin-left: 30px;
 }
 
-.c19 {
+.c21 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -1198,19 +1203,19 @@ exports[`renders a sponsored series properly 1`] = `
   display: flex;
 }
 
-.c19 .c27 {
+.c21 .c29 {
   opacity: 1;
 }
 
-.c19:hover .c27 {
+.c21:hover .c29 {
   opacity: .7;
 }
 
-.c19 .c25 {
+.c21 .c27 {
   background: black;
 }
 
-.c20 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1226,15 +1231,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c20 .author,
-.c20 .date {
+.c22 .author,
+.c22 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c22 {
+.c24 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -1242,7 +1247,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c21 {
+.c23 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1250,14 +1255,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c23 {
+.c25 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c29 {
+.c31 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1280,11 +1285,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c29 svg {
+.c31 svg {
   width: 40px;
 }
 
-.c7 {
+.c9 {
   background-color: black;
   position: fixed;
   top: 0;
@@ -1294,7 +1299,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c8 {
+.c10 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -1306,7 +1311,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -2;
 }
 
-.c9 {
+.c11 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -1316,7 +1321,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c35 {
+.c37 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1335,15 +1340,6 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c37 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
 .c39 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
@@ -1353,11 +1349,20 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c16 img {
+.c41 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c18 img {
   max-width: 220px;
 }
 
-.c17 {
+.c19 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1365,12 +1370,12 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c40 {
+.c42 {
   position: relative;
   width: 100%;
 }
 
-.c40 a {
+.c42 a {
   color: white;
   text-decoration: none;
   position: relative;
@@ -1380,14 +1385,14 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c40 a:hover {
+.c42 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c40 p,
-.c40 ul,
-.c40 ol {
+.c42 p,
+.c42 ul,
+.c42 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1398,20 +1403,20 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c40 p:first-child {
+.c42 p:first-child {
   padding-top: 0;
 }
 
-.c40 p:last-child {
+.c42 p:last-child {
   padding-bottom: 0;
 }
 
-.c40 ul,
-.c40 ol {
+.c42 ul,
+.c42 ol {
   padding-left: 1em;
 }
 
-.c40 li {
+.c42 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1420,7 +1425,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c40 h1 {
+.c42 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1433,7 +1438,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c40 h1:before {
+.c42 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1444,7 +1449,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c40 h2 {
+.c42 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1453,11 +1458,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c40 h2 a {
+.c42 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c40 h3 {
+.c42 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1467,7 +1472,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c40 h3 strong {
+.c42 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1475,11 +1480,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c40 h3 a {
+.c42 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c40 blockquote {
+.c42 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1492,7 +1497,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c40 .content-end {
+.c42 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1502,14 +1507,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: 12px;
 }
 
-.c40 .artist-follow {
+.c42 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c40 .artist-follow:before {
+.c42 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1517,7 +1522,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c40 .artist-follow:after {
+.c42 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1526,16 +1531,16 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c34 {
+.c36 {
   color: white;
   max-width: 1200px;
 }
 
-.c36 .c15 {
+.c38 .c17 {
   display: none;
 }
 
-.c36:first-of-type {
+.c38:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1549,29 +1554,29 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c36:first-of-type .c15 {
+.c38:first-of-type .c17 {
   display: block;
 }
 
-.c38 {
+.c40 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
-.c13 {
+.c15 {
   color: white;
   text-align: center;
 }
 
-.c13 .c15 img {
+.c15 .c17 img {
   max-width: 170px;
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c14 {
+.c16 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1579,33 +1584,33 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fenFCZ .c12 {
+.fenFCZ .c14 {
   margin-bottom: 90px;
 }
 
-.fenFCZ .c18 {
+.fenFCZ .c20 {
   margin-bottom: 60px;
 }
 
-.fenFCZ .c33 {
+.fenFCZ .c35 {
   padding-top: 60px;
 }
 
-.c11 {
+.c13 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c11 .c12 {
+.c13 .c14 {
   margin-bottom: 60px;
 }
 
-.c11 .c18 {
+.c13 .c20 {
   margin-bottom: 60px;
 }
 
-.c11 .c33 {
+.c13 .c35 {
   padding-top: 60px;
 }
 
@@ -1613,8 +1618,15 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c0 .c10 {
+.c0 .c12 {
   padding: 90px 20px 150px;
+}
+
+@media (max-width:900px) {
+  .c7 {
+    width: 13px;
+    height: 13px;
+  }
 }
 
 @media (max-width:720px) {
@@ -1626,19 +1638,19 @@ exports[`renders a sponsored series properly 1`] = `
     font-size: 24px;
   }
 
-  .c3 .file__IconPlus-s100ic91-0 {
+  .c3 .c6 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:720px) {
-  .c6 {
+  .c8 {
     position: relative;
   }
 }
 
 @media (max-width:720px) {
-  .c24 {
+  .c26 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1652,7 +1664,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c32 {
+  .c34 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1666,14 +1678,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c32:before {
+  .c34:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:900px) {
-  .c26 {
+  .c28 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1681,7 +1693,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c19 {
+  .c21 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1690,14 +1702,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c20 {
+  .c22 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c22 {
+  .c24 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1706,7 +1718,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c23 {
+  .c25 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1716,13 +1728,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c29 svg {
+  .c31 svg {
     width: 30px;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c37 {
+  .c39 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1732,7 +1744,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c37 {
+  .c39 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-basis: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -1742,7 +1754,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c39 {
+  .c41 {
     -webkit-flex-basis: 100%;
     -ms-flex-basis: 100%;
     flex-basis: 100%;
@@ -1752,7 +1764,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c39 {
+  .c41 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-basis: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1762,13 +1774,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c16 img {
+  .c18 img {
     max-width: 195px;
   }
 }
 
 @media (max-width:720px) {
-  .c17 {
+  .c19 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1777,37 +1789,37 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c40 p,
-  .c40 ul,
-  .c40 ol {
+  .c42 p,
+  .c42 ul,
+  .c42 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c40 li {
+  .c42 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c40 h1 {
+  .c42 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c40 h2 {
+  .c42 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c40 h3 {
+  .c42 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1815,51 +1827,51 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c40 h3 strong {
+  .c42 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c40 blockquote {
+  .c42 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c40 .content-start {
+  .c42 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c36:first-of-type .c15 {
+  .c38:first-of-type .c17 {
     display: none;
   }
 
-  .c36 .c15 {
+  .c38 .c17 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c38 {
+  .c40 {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width:900px) {
-  .c13 .c15 img {
+  .c15 .c17 img {
     max-width: 200px;
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c14 {
+  .c16 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1869,21 +1881,21 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fenFCZ .c18 {
+  .fenFCZ .c20 {
     margin-bottom: 40px;
   }
 
-  .fenFCZ .c33 {
+  .fenFCZ .c35 {
     padding-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c11 .c18 {
+  .c13 .c20 {
     margin-bottom: 40px;
   }
 
-  .c11 .c33 {
+  .c13 .c35 {
     padding-top: 60px;
   }
 }
@@ -1910,9 +1922,54 @@ exports[`renders a sponsored series properly 1`] = `
             
           </div>
         </a>
+        <svg
+          className="c6 c7"
+          version="1.1"
+          viewBox="0 0 15 15"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+            stroke="none"
+            strokeWidth="2"
+          >
+            <g
+              fill="white"
+              transform="translate(-101.000000, -18.000000)"
+            >
+              <g
+                transform="translate(101.000000, 18.000000)"
+              >
+                <rect
+                  height="1"
+                  width="15"
+                  x="0"
+                  y="7"
+                />
+                <rect
+                  height="1"
+                  transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) "
+                  width="15"
+                  x="0"
+                  y="7"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+        <a
+          href={undefined}
+          onClick={[Function]}
+          target="_blank"
+        >
+          <img
+            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          />
+        </a>
       </div>
       <div
-        className="c6"
+        className="c8"
       >
         Artsy Editorial
       </div>
@@ -1926,32 +1983,32 @@ exports[`renders a sponsored series properly 1`] = `
     />
   </div>
   <div
-    className="c7"
+    className="c9"
   >
     <div
-      className="c8"
+      className="c10"
     />
     <div
-      className="c9"
+      className="c11"
     />
   </div>
   <div
-    className="c10 c11"
+    className="c12 c13"
   >
     <div
-      className="SeriesTitle c12 c13"
+      className="SeriesTitle c14 c15"
       color="white"
     >
       <div
-        className="c14"
+        className="c16"
       >
         The Future of Art
       </div>
       <div
-        className="PartnerBlock c15 c16"
+        className="PartnerBlock c17 c18"
       >
         <div
-          className="c17"
+          className="c19"
         >
           Presented in Partnership with
         </div>
@@ -1967,51 +2024,51 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <a
-      className="ArticleCard c18 c19"
+      className="ArticleCard c20 c21"
       color="white"
       href="joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
     >
       <div
-        className="c20"
+        className="c22"
       >
         <div>
           <div
-            className="c21"
+            className="c23"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c22"
+            className="c24"
           >
             Trevor Paglan
           </div>
           <div
-            className="c23"
+            className="c25"
           >
             The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
           </div>
         </div>
         <div
-          className="date c24"
+          className="date c26"
         >
           Aug 28, 2017
         </div>
       </div>
       <div
-        className="c25 c26"
+        className="c27 c28"
       >
         <img
-          className="c27 c28"
+          className="c29 c30"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
         />
         <div
-          className="c29"
+          className="c31"
         >
           <svg
-            className="c30"
+            className="c32"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -2035,77 +2092,77 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </a>
     <a
-      className="ArticleCard c18 c19"
+      className="ArticleCard c20 c21"
       color="white"
       href="new-yorks-next-art-district"
       onClick={[Function]}
     >
       <div
-        className="c20"
+        className="c22"
       >
         <div>
           <div
-            className="c21"
+            className="c23"
           >
             <div>
               The Future of Art
             </div>
           </div>
           <div
-            className="c22"
+            className="c24"
           >
             New York's Next Art District
           </div>
           <div
-            className="c23"
+            className="c25"
           >
             Land exhibitions, make influential contacts, and gain valuable feedback about your work.
           </div>
         </div>
         <div
-          className="Byline c31"
+          className="Byline c33"
           color="white"
         >
           <div
-            className="author c32"
+            className="author c34"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c24"
+            className="date c26"
           >
             May 19, 2017
           </div>
         </div>
       </div>
       <div
-        className="c25 c26"
+        className="c27 c28"
       >
         <img
-          className="c27 c28"
+          className="c29 c30"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
         />
       </div>
     </a>
     <div
-      className="c33 c34 c35"
+      className="c35 c36 c37"
       color="white"
     >
       <div
-        className="c36 c37"
+        className="c38 c39"
       >
         <div
-          className="c38"
+          className="c40"
         >
           About the Series
         </div>
         <div
-          className="PartnerBlock c15 c16"
+          className="PartnerBlock c17 c18"
         >
           <div
-            className="c17"
+            className="c19"
           >
             Presented in Partnership with
           </div>
@@ -2121,10 +2178,10 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c36 c39"
+        className="c38 c41"
       >
         <div
-          className="article__text-section c40"
+          className="article__text-section c42"
           color="white"
         >
           <div
@@ -2136,10 +2193,10 @@ exports[`renders a sponsored series properly 1`] = `
           />
         </div>
         <div
-          className="PartnerBlock c15 c16"
+          className="PartnerBlock c17 c18"
         >
           <div
-            className="c17"
+            className="c19"
           >
             Presented in Partnership with
           </div>

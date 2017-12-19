@@ -11,7 +11,7 @@ describe("Nav", () => {
     expect(nav).toMatchSnapshot()
   })
   it("renders a transparent nav", () => {
-    const nav = renderer.create(<Nav transparent/>)
+    const nav = renderer.create(<Nav transparent />)
     expect(nav).toMatchSnapshot()
   })
   it("renders a sponsored nav", () => {
@@ -20,7 +20,7 @@ describe("Nav", () => {
   })
   it("includes a partner logo in a sponsored nav", () => {
     const nav = mount(<Nav sponsor={SponsoredArticle.sponsor} />)
-    expect(nav.html()).toMatch("https://artsy-media-uploads.s3.amazonaws.com/F4RVgsSXv3q9Nrt59P8gbA%2Ffullscreen.png")
+    expect(nav.html()).toMatch("https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png")
   })
   it("renders a custom title", () => {
     const nav = mount(<Nav title="Custom Title" />)

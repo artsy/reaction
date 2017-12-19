@@ -60,7 +60,7 @@ export class NavComponent extends React.Component<Props, State> {
         >
           <PartnerInline
             url={sponsor && sponsor.url}
-            logo={sponsor && sponsor.partner_light_logo}
+            logo={sponsor && sponsor.partner_condensed_logo}
             color="white"
             margin="0 10px"
           />

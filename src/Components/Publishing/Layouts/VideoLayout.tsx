@@ -78,12 +78,13 @@ export class VideoLayout extends Component<Props, State> {
       relatedArticles
     } = this.props
     const { media } = article
+    const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
 
     return (
       <VideoLayoutContainer>
         <Nav
           transparent
-          sponsor={article.sponsor}
+          sponsor={sponsor}
           canFix={false}
         />
         <VideoPlayerContainer>
