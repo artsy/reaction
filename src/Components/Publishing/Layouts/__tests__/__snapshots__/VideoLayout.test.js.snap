@@ -713,7 +713,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   max-width: 1200px;
 }
 
-.c80 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c80 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
@@ -731,7 +731,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c80:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c80:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
 }
 
@@ -1473,11 +1473,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c80:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c80:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c80 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c80 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }
