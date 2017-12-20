@@ -6,7 +6,7 @@ import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
-import { ImageCollection } from "./ImageCollection"
+import { ImageCollection } from "./ImageCollection/ImageCollection"
 import { ImageSetPreview } from "./ImageSetPreview"
 import { SectionContainer } from "./SectionContainer"
 import { Text } from "./Text"
@@ -119,7 +119,7 @@ export class Sections extends Component<Props, State> {
     const {
       article: {
         layout,
-        sections
+      sections
       }
     } = this.props
 

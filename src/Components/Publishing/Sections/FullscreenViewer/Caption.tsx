@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
 import { Fonts } from "../../Fonts"
-import { ArtworkCaption } from "../ArtworkCaption"
+import { ArtworkCaption } from "../ImageCollection/ArtworkCaption"
 
 interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
   section?: any

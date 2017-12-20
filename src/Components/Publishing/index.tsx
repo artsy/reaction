@@ -1,14 +1,14 @@
 // Components
 export { Article } from "./Article"
-export { Artwork } from "./Sections/Artwork"
+export { Artwork } from "./Sections/ImageCollection/Artwork"
 export { Authors } from "./Sections/Authors"
 export { Caption } from "./Sections/Caption"
 export { Embed } from "./Sections/Embed"
 export { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
 export { Header } from "./Header/Header"
 export { InstantArticleEmailSignup } from './Email/InstantArticleEmailSignup'
-export { Image } from "./Sections/Image"
-export { ImageCollection } from "./Sections/ImageCollection"
+export { Image } from "./Sections/ImageCollection/Image"
+export { ImageCollection } from "./Sections/ImageCollection/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
 export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
 export { Nav } from "./Nav/Nav"

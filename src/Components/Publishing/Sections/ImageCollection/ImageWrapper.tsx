@@ -1,8 +1,8 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
-import { Layout } from "../Typings"
+import { pMedia } from "../../../Helpers"
+import { Layout } from "../../Typings"
 import { ViewFullscreen } from "./ViewFullscreen"
 
 interface Props extends React.HTMLProps<HTMLImageElement> {
