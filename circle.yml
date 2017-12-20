@@ -10,6 +10,8 @@ general:
 checkout:
   post:
     - nvm install && nvm alias default $(cat .nvmrc)
+    - npm install yarn@1.3.2
+    - ./node_modules/.bin/yarn
 
 dependencies:
   pre:

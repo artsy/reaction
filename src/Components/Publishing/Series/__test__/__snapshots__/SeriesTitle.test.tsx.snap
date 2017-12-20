@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a series title properly 1`] = `
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+@media (max-width:900px) {
+  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
+    max-width: 240px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="SeriesTitle c0"
+  color="black"
+>
+  <div
+    className="c1"
+  >
+    The Future of Art
+  </div>
+</div>
+`;
+
+exports[`renders a series with children properly 1`] = `
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+@media (max-width:900px) {
+  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
+    max-width: 240px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="SeriesTitle c0"
+  color="black"
+>
+  <div
+    className="c1"
+  >
+    <div>
+      Child 
+      title
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a sponsored series title properly 1`] = `
+.c3 img {
+  max-width: 220px;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 20px;
+}
+
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .c2 img {
+  max-width: 170px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+@media (max-width:720px) {
+  .c3 img {
+    max-width: 195px;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:900px) {
+  .c0 .c2 img {
+    max-width: 240px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="SeriesTitle c0"
+  color="black"
+>
+  <div
+    className="c1"
+  >
+    The Future of Art
+  </div>
+  <div
+    className="PartnerBlock c2 c3"
+  >
+    <div
+      className="c4"
+    >
+      Presented in Partnership with
+    </div>
+    <a
+      href="http://artsy.net"
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+      />
+    </a>
+  </div>
+</div>
+`;
