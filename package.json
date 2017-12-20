@@ -81,6 +81,7 @@
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "graphql-config-parser": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -115,7 +116,6 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "enzyme-adapter-react-16": "^1.0.1",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
@@ -149,7 +149,7 @@
     "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/externals/"],
     "moduleFileExtensions": ["ts", "tsx", "js"],
     "modulePathIgnorePatterns": ["<rootDir>/dist/*"],
-    "setupFiles": ["raf/polyfill", "./src/setup_jest.js"]
+    "setupFiles": ["raf/polyfill", "./src/setup_jest.ts"]
   },
   "lint-staged": {
     "*.@(ts|tsx)": ["tslint --fix", "npm run prettier-write --", "git add"],

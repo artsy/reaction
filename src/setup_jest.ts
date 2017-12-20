@@ -7,6 +7,7 @@ window.matchMedia =
   window.matchMedia ||
   (() => {
     return {
+      media: "",
       matches: false,
       addListener: () => {},
       removeListener: () => {},
