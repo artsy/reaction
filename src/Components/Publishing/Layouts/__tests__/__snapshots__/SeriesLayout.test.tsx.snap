@@ -589,7 +589,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -1664,7 +1664,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c8 {
-    position: relative;
+    display: none;
   }
 }
 

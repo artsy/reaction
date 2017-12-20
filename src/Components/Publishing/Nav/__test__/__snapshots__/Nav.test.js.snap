@@ -95,7 +95,7 @@ exports[`Nav renders a Nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -245,7 +245,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -430,7 +430,7 @@ exports[`Nav renders a transparent nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 
