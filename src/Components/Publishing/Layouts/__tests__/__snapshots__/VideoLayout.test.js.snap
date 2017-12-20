@@ -81,6 +81,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-weight: 600;
 }
 
+.c7 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c50 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -980,6 +985,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-right: 35px;
 }
 
+.c38 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c40 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -1107,6 +1117,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c60 {
   text-decoration: none;
   color: white;
+  border-bottom: 2px solid;
 }
 
 @media (max-width:720px) {
@@ -1255,10 +1266,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media only screen and (min-width:0em) {
   .c37 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-basis: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
     display: block;
   }
 }
@@ -1548,6 +1559,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
+@media (max-width:48em) {
+  .c60 {
+    display: block;
+  }
+}
+
 <div
   className="c0"
 >
@@ -1573,7 +1590,11 @@ exports[`Video Layout matches the snapshot 1`] = `
       <div
         className="c7"
       >
-        Artsy Editorial
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
       </div>
     </div>
     <span
@@ -1786,7 +1807,11 @@ exports[`Video Layout matches the snapshot 1`] = `
                 <span
                   className="c38"
                 >
-                  The Future of Art
+                  <a
+                    href="/series/undefined"
+                  >
+                    The Future of Art
+                  </a>
                 </span>
                 <span
                   className="c39"

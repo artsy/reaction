@@ -76,6 +76,11 @@ exports[`renders a series properly 1`] = `
   font-weight: 600;
 }
 
+.c6 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c21 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -840,7 +845,11 @@ exports[`renders a series properly 1`] = `
       <div
         className="c6"
       >
-        Artsy Editorial
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
       </div>
     </div>
     <span
@@ -1110,6 +1119,11 @@ exports[`renders a sponsored series properly 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+}
+
+.c8 a {
+  color: white;
+  text-decoration: none;
 }
 
 .c26 {
@@ -1977,7 +1991,11 @@ exports[`renders a sponsored series properly 1`] = `
       <div
         className="c8"
       >
-        Artsy Editorial
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
       </div>
     </div>
     <span

@@ -74,6 +74,11 @@ exports[`Nav renders a Nav 1`] = `
   font-weight: 600;
 }
 
+.c5 a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (max-width:720px) {
   .c2 img {
     max-height: 24px;
@@ -116,7 +121,11 @@ exports[`Nav renders a Nav 1`] = `
     <div
       className="c5"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span
@@ -206,6 +215,11 @@ exports[`Nav renders a sponsored nav 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+}
+
+.c7 a {
+  color: white;
+  text-decoration: none;
 }
 
 @media (max-width:900px) {
@@ -302,7 +316,11 @@ exports[`Nav renders a sponsored nav 1`] = `
     <div
       className="c7"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span
@@ -391,6 +409,11 @@ exports[`Nav renders a transparent nav 1`] = `
   font-weight: 600;
 }
 
+.c5 a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (max-width:720px) {
   .c2 img {
     max-height: 24px;
@@ -433,7 +456,11 @@ exports[`Nav renders a transparent nav 1`] = `
     <div
       className="c5"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span
