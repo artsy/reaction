@@ -24,6 +24,7 @@ exports[`Nav renders a Nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {
@@ -167,6 +168,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .c5 {
@@ -357,6 +359,7 @@ exports[`Nav renders a transparent nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {

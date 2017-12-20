@@ -29,6 +29,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c4 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c4 .file__IconPlus-s100ic91-0 {
@@ -733,6 +734,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c80:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c81 {

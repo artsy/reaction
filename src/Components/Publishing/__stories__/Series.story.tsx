@@ -26,7 +26,7 @@ storiesOf("Publishing/Series", module).add("Article Card", () => {
   return (
     <div>
       <ArticleCard
-        article={VideoArticleUnpublished}
+        article={VideoArticle}
         series={SeriesArticle}
       />
     </div>
@@ -35,7 +35,7 @@ storiesOf("Publishing/Series", module).add("Article Card", () => {
   return (
     <div>
       <ArticleCard
-        article={VideoArticle}
+        article={VideoArticleUnpublished}
         series={SeriesArticle}
       />
     </div>

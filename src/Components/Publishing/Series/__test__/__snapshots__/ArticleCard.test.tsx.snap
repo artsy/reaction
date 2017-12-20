@@ -312,11 +312,11 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   display: flex;
 }
 
-.c0 .file__Image-s1d2f2vs-0 {
+.c0 .file__Image-imvfnf-0 {
   opacity: 1;
 }
 
-.c0:hover .file__Image-s1d2f2vs-0 {
+.c0:hover .file__Image-imvfnf-0 {
   opacity: .7;
 }
 

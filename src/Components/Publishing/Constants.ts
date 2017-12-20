@@ -66,9 +66,11 @@ export const getAuthorByline = authors => {
 }
 
 export const getDate = (date, layout = '') => {
-  return layout === "condensed"
-    ? moment(date).tz("America/New_York").format("MMM D, YYYY")
-    : moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+  switch (layout) {
+    case "monthYear": return moment(date).tz("America/New_York").format("MMMM YYYY")
+    case "condensed": return moment(date).tz("America/New_York").format("MMM D, YYYY")
+    default: return moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+  }
 }
 
 export const getMediaDate = (article) => {

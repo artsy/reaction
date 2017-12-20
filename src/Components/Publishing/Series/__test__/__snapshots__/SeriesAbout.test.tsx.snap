@@ -224,6 +224,7 @@ exports[`renders a series about properly 1`] = `
 
 .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -617,6 +618,7 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c2:first-of-type .c5 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -782,7 +784,7 @@ exports[`renders a sponsored series about properly 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png"
         />
       </a>
     </div>
@@ -816,7 +818,7 @@ exports[`renders a sponsored series about properly 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png"
         />
       </a>
     </div>
@@ -1048,6 +1050,7 @@ exports[`renders series about with children properly 1`] = `
 
 .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {

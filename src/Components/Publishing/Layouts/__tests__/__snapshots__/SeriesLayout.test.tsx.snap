@@ -24,6 +24,7 @@ exports[`renders a series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .file__IconPlus-s100ic91-0 {
@@ -517,6 +518,7 @@ exports[`renders a series properly 1`] = `
 
 .c33:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c35 {
@@ -1068,6 +1070,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .c6 {
@@ -1574,6 +1577,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c38:first-of-type .c17 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c40 {

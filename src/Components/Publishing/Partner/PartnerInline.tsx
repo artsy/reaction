@@ -82,6 +82,7 @@ const PartnerInlineContainer = Div`
   img {
     max-height: 32px;
     vertical-align: middle;
+    -ms-interpolation-mode: bicubic;
   }
   ${IconPlus} {
     margin: 0 20px;

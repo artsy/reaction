@@ -2765,6 +2765,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 .c5 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c5 .c8 {

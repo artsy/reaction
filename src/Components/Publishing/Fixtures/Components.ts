@@ -424,7 +424,7 @@ export const Sponsor = {
   sponsor: {
     partner_condensed_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
     partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
-    partner_dark_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
+    partner_dark_logo: 'https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png',
     partner_logo_link: 'http://artsy.net'
   }
 }
