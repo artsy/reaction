@@ -422,8 +422,9 @@ export const RelatedCanvas = [
 
 export const Sponsor = {
   sponsor: {
-    partner_condensed_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
-    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png',
+    partner_condensed_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
+    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
+    partner_dark_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
     partner_logo_link: 'http://artsy.net'
   }
 }
