@@ -1067,6 +1067,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
+  width: 100%;
 }
 
 .c0 {

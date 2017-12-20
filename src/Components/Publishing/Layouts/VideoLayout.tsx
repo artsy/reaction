@@ -152,6 +152,7 @@ export class VideoLayout extends Component<Props, State> {
 
 const RelatedArticlesTitle = styled(Col) `
   ${Fonts.unica("s32")}
+  width: 100%;
 `
 
 const VideoLayoutContainer = styled.div`

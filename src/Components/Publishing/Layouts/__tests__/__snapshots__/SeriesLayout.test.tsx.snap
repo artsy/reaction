@@ -527,7 +527,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
-  max-width: 170px;
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -789,7 +789,6 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:900px) {
   .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -1575,7 +1574,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c15 .c17 img {
-  max-width: 170px;
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -1871,7 +1870,6 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c15 .c17 img {
-    max-width: 240px;
     padding-bottom: 0;
   }
 }
