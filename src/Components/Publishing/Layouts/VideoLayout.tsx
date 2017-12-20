@@ -79,7 +79,7 @@ export class VideoLayout extends Component<Props, State> {
     } = this.props
     const { media } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
-
+    const seriesLink = seriesArticle && getEditorialHref('series', seriesArticle.slug)
     return (
       <VideoLayoutContainer>
         <Nav
@@ -98,6 +98,7 @@ export class VideoLayout extends Component<Props, State> {
             article={article}
             media={media}
             seriesTitle={seriesArticle && seriesArticle.title}
+            seriesLink={seriesLink}
             playVideo={this.playVideo}
             hideCover={this.state.hideCover}
           />
@@ -113,7 +114,7 @@ export class VideoLayout extends Component<Props, State> {
             <RelatedArticlesTitle>
               {"More in "}
               {seriesArticle ?
-                <Link href={getEditorialHref('series', seriesArticle.slug)}>
+                <Link href={seriesLink}>
                   {seriesArticle.title}
                 </Link>
                 :
@@ -201,4 +202,9 @@ const VideoPlayerContainer = styled.div`
 const Link = styled.a`
   text-decoration: none;
   color: white;
+  border-bottom: 2px solid;
+
+  ${media.sm`
+    display: block;
+  `}
 `

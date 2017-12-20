@@ -10,13 +10,14 @@ import { VideoInfoBlock } from "./VideoInfoBlock"
 
 interface Props {
   article: any
+  description?: string
   editDescription?: any
   editTitle?: any
   hideCover?: boolean
   media: any
-  seriesTitle?: string
-  description?: string
   playVideo?: () => void
+  seriesLink?: string
+  seriesTitle?: string
   tracking?: any
 }
 
@@ -47,6 +48,7 @@ export class VideoCover extends Component<Props, null> {
       editTitle,
       hideCover,
       media,
+      seriesLink,
       seriesTitle
     } = this.props
 
@@ -63,10 +65,11 @@ export class VideoCover extends Component<Props, null> {
             >
               <IconVideoPlay color="white" />
             </Col>
-            <Col xs={8} sm={6}>
+            <Col xs={10} sm={6}>
               <VideoInfoBlock
                 media={media}
                 subTitle={seriesTitle || (article.vertical && article.vertical.name)}
+                subTitleLink={seriesLink}
                 title={article.title}
                 editTitle={editTitle}
               />

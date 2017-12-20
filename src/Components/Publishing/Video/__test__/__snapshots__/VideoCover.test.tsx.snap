@@ -66,6 +66,11 @@ exports[`Video Cover matches the snapshot 1`] = `
   margin-right: 35px;
 }
 
+.c14 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c16 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -170,10 +175,10 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 @media only screen and (min-width:0em) {
   .c13 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-basis: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
     display: block;
   }
 }
@@ -373,6 +378,11 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   margin-right: 35px;
 }
 
+.c14 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c16 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -477,10 +487,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 
 @media only screen and (min-width:0em) {
   .c13 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-basis: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
     display: block;
   }
 }
