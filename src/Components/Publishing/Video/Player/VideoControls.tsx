@@ -100,6 +100,9 @@ export const VideoControlsContainer = styled.div`
   ${MuteUnmuteContainer} {
     margin-right: 20px;
   }
+  ${IconVideoFullscreen} {
+    cursor: pointer;
+  }
 `
 const Title = styled.div`
   ${Fonts.garamond("s23")}

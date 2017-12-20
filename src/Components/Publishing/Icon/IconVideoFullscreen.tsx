@@ -13,6 +13,7 @@ const Icon: React.SFC<Props> = props => (
     onClick={props.onClick}
     width="32px"
     height="32px"
+    className={props.className}
   >
     <g fill="none" fillRule="evenodd" transform="translate(-1151 -22)">
       <rect width="1200" height="92" stroke={props.color} rx="4" />

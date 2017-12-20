@@ -3,6 +3,7 @@
 exports[`Mute/Unmute Button matches the snapshot 1`] = `
 .c0 {
   height: 28px;
+  cursor: pointer;
 }
 
 <div
