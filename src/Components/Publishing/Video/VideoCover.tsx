@@ -63,7 +63,7 @@ export class VideoCover extends Component<Props, null> {
             >
               <IconVideoPlay color="white" />
             </Col>
-            <Col xs={8} sm={6}>
+            <Col xs={10} sm={6}>
               <VideoInfoBlock
                 media={media}
                 subTitle={seriesTitle || (article.vertical && article.vertical.name)}

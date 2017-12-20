@@ -200,4 +200,9 @@ const VideoPlayerContainer = styled.div`
 const Link = styled.a`
   text-decoration: none;
   color: white;
+  border-bottom: 2px solid;
+
+  ${media.sm`
+    display: block;
+  `}
 `
