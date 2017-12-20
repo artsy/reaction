@@ -1236,7 +1236,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c36 {
     -webkit-flex-basis: 16.666666666666668%;
-    -ms-flex-basis: 16.666666666666668%;
+    -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
     max-width: 16.666666666666668%;
     display: block;
@@ -1246,7 +1246,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c36 {
     -webkit-flex-basis: 8.333333333333334%;
-    -ms-flex-basis: 8.333333333333334%;
+    -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
     max-width: 8.333333333333334%;
     display: block;
@@ -1256,7 +1256,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c37 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1266,7 +1266,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c37 {
     -webkit-flex-basis: 50%;
-    -ms-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
     max-width: 50%;
     display: block;
@@ -1276,7 +1276,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c41 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1286,7 +1286,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c41 {
     -webkit-flex-basis: 58.333333333333336%;
-    -ms-flex-basis: 58.333333333333336%;
+    -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
     max-width: 58.333333333333336%;
     display: block;
@@ -1296,7 +1296,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c45 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1306,7 +1306,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c45 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -1316,7 +1316,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c55 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1326,7 +1326,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c55 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1336,7 +1336,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c61 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
