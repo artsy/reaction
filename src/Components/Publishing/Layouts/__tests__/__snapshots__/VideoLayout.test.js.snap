@@ -205,7 +205,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c70 {
   position: relative;
   width: 50%;
-  height: 100%;
+  height: inherit;
   margin-left: 30px;
 }
 
