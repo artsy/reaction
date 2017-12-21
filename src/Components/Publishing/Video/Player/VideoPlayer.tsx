@@ -58,13 +58,14 @@ export class VideoPlayer extends Component<Props, State> {
       if (fullscreenEnabled()) {
         addFSEventListener(this.video)
       }
+
       this.video.addEventListener("timeupdate", this.updateTime)
       this.video.addEventListener("loadedmetadata", this.setDuration)
 
+      document.addEventListener("mousemove", this.resetTimer)
+      document.addEventListener("keypress", this.resetTimer)
+      document.addEventListener("touchstart", this.resetTimer)
       this.timer = setInterval(this.incrementTimer, 1000)
-      document.onmousemove = this.resetTimer
-      document.onkeypress = this.resetTimer
-      document.ontouchstart = this.resetTimer
     }
   }
 
@@ -72,7 +73,12 @@ export class VideoPlayer extends Component<Props, State> {
     if (fullscreenEnabled()) {
       removeFSEventListener(this.video)
     }
+
     this.video.removeEventListener("timeupdate", this.updateTime)
+
+    document.removeEventListener("mousemove", this.resetTimer)
+    document.removeEventListener("keypress", this.resetTimer)
+    document.removeEventListener("touchstart", this.resetTimer)
     clearInterval(this.timer)
   }
 
