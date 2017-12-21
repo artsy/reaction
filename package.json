@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.16.13",
+  "version": "0.16.14",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -44,6 +44,10 @@
     "singleQuote": false,
     "trailingComma": "es5",
     "bracketSpacing": true
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.3.2",
@@ -109,7 +113,6 @@
     "numeral": "^2.0.4",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
-    "react": "^15.5.4",
     "react-lines-ellipsis": "^0.8.0",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/react-relay-1.3.0-artsy.1.tgz",
