@@ -4,13 +4,13 @@ import renderer from "react-test-renderer"
 import "jest-styled-components"
 
 jest.mock("../../Relay/createEnvironment", () => ({
-  createEnvironment: (user: User) => ({ description: `A mocked env for ${user.id}` }),
+  createEnvironment: (user: User) => ({ description: `A mocked env for ${user ? user.id : "no-current-user"}` }),
 }))
 
 import * as Artsy from "../Artsy"
 
 const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
-  let text = props.currentUser.id
+  let text = props.currentUser ? props.currentUser.id : "no-current-user"
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
   }
@@ -31,15 +31,53 @@ describe("Artsy context", () => {
     accessToken: "secret",
   }
 
-  it("exposes the currently signed-in user", () => {
-    const div = renderer
-      .create(
-        <Artsy.ContextProvider currentUser={currentUser}>
-          <WithCurrentUser />
-        </Artsy.ContextProvider>
-      )
-      .toJSON()
-    expect(div.children[0]).toEqual("andy-warhol")
+  describe("concerning the current user", () => {
+    let originalEnv = null
+
+    beforeAll(() => {
+      originalEnv = process.env
+      process.env = Object.assign({}, originalEnv, {
+        USER_ID: "user-id-from-env",
+        USER_ACCESS_TOKEN: "user-access-token-from-env",
+      })
+    })
+
+    afterAll(() => {
+      process.env = originalEnv
+    })
+
+    it("exposes the currently signed-in user", () => {
+      const div = renderer
+        .create(
+          <Artsy.ContextProvider currentUser={currentUser}>
+            <WithCurrentUser />
+          </Artsy.ContextProvider>
+        )
+        .toJSON()
+      expect(div.children[0]).toEqual("andy-warhol")
+    })
+
+    it("defaults to environment variables if available", () => {
+      const div = renderer
+        .create(
+          <Artsy.ContextProvider>
+            <WithCurrentUser />
+          </Artsy.ContextProvider>
+        )
+        .toJSON()
+      expect(div.children[0]).toEqual("user-id-from-env")
+    })
+
+    it("does not default to environment variables when explicitly passing null", () => {
+      const div = renderer
+        .create(
+          <Artsy.ContextProvider currentUser={null}>
+            <WithCurrentUser />
+          </Artsy.ContextProvider>
+        )
+        .toJSON()
+      expect(div.children[0]).toEqual("no-current-user")
+    })
   })
 
   it("creates and exposes a Relay environment", () => {

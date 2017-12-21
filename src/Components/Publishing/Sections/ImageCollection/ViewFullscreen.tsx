@@ -15,7 +15,7 @@ export class ViewFullscreen extends React.Component<ViewFullscreenProps, null> {
   }
 
   constructor(props) {
-    super()
+    super(props)
     this.onClick = this.onClick.bind(this)
   }
 

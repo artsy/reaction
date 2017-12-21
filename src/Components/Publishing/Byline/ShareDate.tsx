@@ -32,7 +32,7 @@ ShareDateComponent.defaultProps = {
   color: 'black'
 }
 
-export const ShareDate = styled(ShareDateComponent)`
+export const ShareDate = styled(ShareDateComponent) `
   color: ${props => props.color || 'black'};
   ${media.sm`
     ${ShareContainer} {

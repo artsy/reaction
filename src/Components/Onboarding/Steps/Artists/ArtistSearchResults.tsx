@@ -17,8 +17,16 @@ interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
 }
 
 class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
+  private excludedArtistIds: Set<string>
+
+  constructor(props: RelayProps, context: any) {
+    super(props, context)
+    this.excludedArtistIds = new Set(this.props.viewer.match_artist.map(item => item._id))
+  }
+
   onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
     const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
+    this.excludedArtistIds.add(suggestedArtist.getValue("_id"))
 
     const popularArtistsRootField = store.get("client:root:viewer")
     const popularArtists = popularArtistsRootField.getLinkedRecords("match_artist", { term: this.props.term })
@@ -32,15 +40,16 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   onFollowedArtist(artist: any) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!) {
+        mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
           followArtist(input: $input) {
             artist {
               __id
               related {
-                suggested(first: 1, exclude_followed_artists: true) {
+                suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
                   edges {
                     node {
                       id
+                      _id
                       __id
                       name
                       image {
@@ -61,6 +70,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
           artist_id: artist.id,
           unfollow: false,
         },
+        excludedArtistIds: Array.from(this.excludedArtistIds),
       },
       updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
         this.onArtistFollowed(artist.__id, store, data),
@@ -90,6 +100,7 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
     fragment ArtistSearchResultsContent_viewer on Viewer {
       match_artist(term: $term) {
         id
+        _id
         __id
         name
         image {

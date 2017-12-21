@@ -118,6 +118,6 @@ const Title = styled.div`
     text-decoration: none;
   }
   ${pMedia.sm`
-    position: relative;
+    display: none;
   `}
 `

@@ -16,8 +16,16 @@ interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
 }
 
 class PopularArtistsContent extends React.Component<Props, any> {
+  private excludedArtistIds: Set<string>
+
+  constructor(props: RelayProps, context: any) {
+    super(props, context)
+    this.excludedArtistIds = new Set(this.props.popular_artists.artists.map(item => item._id))
+  }
+
   onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
     const suggestedArtist = store.get(data.followArtist.artist.related.suggested.edges[0].node.__id)
+    this.excludedArtistIds.add(suggestedArtist.getValue("_id"))
 
     const popularArtistsRootField = store
       .get("client:root")
@@ -33,15 +41,16 @@ class PopularArtistsContent extends React.Component<Props, any> {
   onFollowedArtist(artist: any) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation PopularArtistsFollowArtistMutation($input: FollowArtistInput!) {
+        mutation PopularArtistsFollowArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
           followArtist(input: $input) {
             artist {
               __id
               related {
-                suggested(first: 1, exclude_followed_artists: true) {
+                suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
                   edges {
                     node {
                       id
+                      _id
                       __id
                       name
                       image {
@@ -62,6 +71,7 @@ class PopularArtistsContent extends React.Component<Props, any> {
           artist_id: artist.id,
           unfollow: false,
         },
+        excludedArtistIds: Array.from(this.excludedArtistIds),
       },
       updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
         this.onArtistFollowed(artist.__id, store, data),
@@ -91,6 +101,7 @@ const PopularArtistContentContainer = createFragmentContainer(
     fragment PopularArtistsContent_popular_artists on PopularArtists {
       artists {
         id
+        _id
         __id
         name
         image {

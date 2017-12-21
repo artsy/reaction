@@ -24,6 +24,7 @@ exports[`Nav renders a Nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {
@@ -95,7 +96,7 @@ exports[`Nav renders a Nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -167,6 +168,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .c5 {
@@ -245,7 +247,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -309,7 +311,7 @@ exports[`Nav renders a sponsored nav 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
         />
       </a>
     </div>
@@ -357,6 +359,7 @@ exports[`Nav renders a transparent nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {
@@ -430,7 +433,7 @@ exports[`Nav renders a transparent nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 

@@ -29,6 +29,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c4 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c4 .file__IconPlus-s100ic91-0 {
@@ -86,7 +87,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-decoration: none;
 }
 
-.c50 {
+.c52 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -94,11 +95,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c50.date {
+.c52.date {
   white-space: nowrap;
 }
 
-.c68 {
+.c70 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -106,11 +107,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c68.date {
+.c70.date {
   white-space: nowrap;
 }
 
-.c75 {
+.c77 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -118,11 +119,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c75.date {
+.c77.date {
   white-space: nowrap;
 }
 
-.c75:before {
+.c77:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -132,13 +133,13 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-color: white;
 }
 
-.c75:before {
+.c77:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c52 {
+.c54 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -151,21 +152,21 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1em;
 }
 
-.c54 {
+.c56 {
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c54:hover {
+.c56:hover {
   opacity: 0.6;
 }
 
-.c54:first-child {
+.c56:first-child {
   padding-left: 0;
 }
 
-.c53 {
+.c55 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -173,7 +174,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 10px 10px 0px;
 }
 
-.c74 {
+.c76 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -192,7 +193,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c72 {
+.c74 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -202,14 +203,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: block;
 }
 
-.c70 {
+.c72 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c63 {
+.c65 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -223,19 +224,19 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: flex;
 }
 
-.c63 .c71 {
+.c65 .c73 {
   opacity: 1;
 }
 
-.c63:hover .c71 {
+.c65:hover .c73 {
   opacity: .7;
 }
 
-.c63 .c69 {
+.c65 .c71 {
   background: black;
 }
 
-.c64 {
+.c66 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -251,15 +252,15 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 5px;
 }
 
-.c64 .author,
-.c64 .date {
+.c66 .author,
+.c66 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c66 {
+.c68 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -267,7 +268,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 30px;
 }
 
-.c65 {
+.c67 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -275,14 +276,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 10px;
 }
 
-.c67 {
+.c69 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c73 {
+.c75 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -305,11 +306,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.1em;
 }
 
-.c73 svg {
+.c75 svg {
   width: 40px;
 }
 
-.c34 {
+.c36 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -328,7 +329,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: -0.5rem;
 }
 
-.c36 {
+.c38 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -337,7 +338,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c37 {
+.c39 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -346,7 +347,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c41 {
+.c43 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -355,7 +356,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c45 {
+.c47 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -364,16 +365,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c55 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c59 {
+.c57 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -391,12 +383,21 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c47 {
+.c63 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c49 {
   position: relative;
   width: 100%;
 }
 
-.c47 a {
+.c49 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -406,14 +407,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-position: bottom;
 }
 
-.c47 a:hover {
+.c49 a:hover {
   color: #999;
   opacity: 1;
 }
 
-.c47 p,
-.c47 ul,
-.c47 ol {
+.c49 p,
+.c49 ul,
+.c49 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -424,20 +425,20 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-style: inherit;
 }
 
-.c47 p:first-child {
+.c49 p:first-child {
   padding-top: 0;
 }
 
-.c47 p:last-child {
+.c49 p:last-child {
   padding-bottom: 0;
 }
 
-.c47 ul,
-.c47 ol {
+.c49 ul,
+.c49 ol {
   padding-left: 1em;
 }
 
-.c47 li {
+.c49 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -446,7 +447,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-bottom: .5em;
 }
 
-.c47 h1 {
+.c49 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -459,7 +460,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c47 h1:before {
+.c49 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -470,7 +471,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c47 h2 {
+.c49 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -479,11 +480,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c47 h2 a {
+.c49 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c47 h3 {
+.c49 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -493,7 +494,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c47 h3 strong {
+.c49 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -501,11 +502,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c47 h3 a {
+.c49 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c47 blockquote {
+.c49 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -518,7 +519,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   word-break: break-word;
 }
 
-.c47 .content-end {
+.c49 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -528,14 +529,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: 12px;
 }
 
-.c47 .artist-follow {
+.c49 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c47 .artist-follow:before {
+.c49 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -543,7 +544,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c47 .artist-follow:after {
+.c49 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -552,12 +553,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c56 {
+.c58 {
   position: relative;
   width: 100%;
 }
 
-.c56 a {
+.c58 a {
   color: white;
   text-decoration: none;
   position: relative;
@@ -567,14 +568,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-position: bottom;
 }
 
-.c56 a:hover {
+.c58 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c56 p,
-.c56 ul,
-.c56 ol {
+.c58 p,
+.c58 ul,
+.c58 ol {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -585,20 +586,20 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-style: inherit;
 }
 
-.c56 p:first-child {
+.c58 p:first-child {
   padding-top: 0;
 }
 
-.c56 p:last-child {
+.c58 p:last-child {
   padding-bottom: 0;
 }
 
-.c56 ul,
-.c56 ol {
+.c58 ul,
+.c58 ol {
   padding-left: 1em;
 }
 
-.c56 li {
+.c58 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -607,7 +608,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-bottom: .5em;
 }
 
-.c56 h1 {
+.c58 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -620,7 +621,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c56 h1:before {
+.c58 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -631,7 +632,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c56 h2 {
+.c58 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -640,11 +641,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c56 h2 a {
+.c58 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c56 h3 {
+.c58 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -654,7 +655,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c56 h3 strong {
+.c58 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -662,11 +663,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c56 h3 a {
+.c58 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c56 blockquote {
+.c58 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -679,7 +680,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   word-break: break-word;
 }
 
-.c56 .content-end {
+.c58 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -689,14 +690,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: 12px;
 }
 
-.c56 .artist-follow {
+.c58 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c56 .artist-follow:before {
+.c58 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -704,7 +705,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c56 .artist-follow:after {
+.c58 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -713,16 +714,16 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c77 {
+.c79 {
   color: white;
   max-width: 1200px;
 }
 
-.c78 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c80 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
-.c78:first-of-type {
+.c80:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -736,27 +737,35 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c78:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c80:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
-.c79 {
+.c81 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
+.c25 {
+  width: 28px;
+  height: 28px;
+}
+
 .c23 {
   height: 28px;
+  cursor: pointer;
 }
 
 .c16 {
   height: 28px;
   width: 28px;
+  cursor: pointer;
 }
 
-.c24 {
+.c26 {
   width: 100%;
   background-size: NaN% 100%;
   height: 18px;
@@ -767,13 +776,13 @@ exports[`Video Layout matches the snapshot 1`] = `
   background: transparent;
 }
 
-.c24::-webkit-slider-thumb {
+.c26::-webkit-slider-thumb {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c24::-ms-track {
+.c26::-ms-track {
   width: 100%;
   cursor: pointer;
   background: transparent;
@@ -781,7 +790,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: transparent;
 }
 
-.c24::-webkit-slider-runnable-track {
+.c26::-webkit-slider-runnable-track {
   height: 2px;
   cursor: pointer;
   -webkit-animate: 0.2s;
@@ -790,7 +799,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   border: 0px;
 }
 
-.c24::-moz-range-track {
+.c26::-moz-range-track {
   height: 2px;
   cursor: pointer;
   -webkit-animate: 0.2s;
@@ -799,7 +808,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   border: 0px;
 }
 
-.c24::-webkit-slider-thumb {
+.c26::-webkit-slider-thumb {
   color: white;
   box-shadow: 0px 0px 0px white;
   border: 0px solid #E3E3E3;
@@ -814,7 +823,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   appearance: none;
 }
 
-.c24::-moz-range-thumb {
+.c26::-moz-range-thumb {
   color: white;
   box-shadow: 0px 0px 0px white;
   border: 0px solid #E3E3E3;
@@ -829,11 +838,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   appearance: none;
 }
 
-.c24:focus::-webkit-slider-runnable-track {
+.c26:focus::-webkit-slider-runnable-track {
   background: white;
 }
 
-.c24:focus {
+.c26:focus {
   outline: none;
 }
 
@@ -887,6 +896,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-right: 20px;
 }
 
+.c13 .c24 {
+  cursor: pointer;
+}
+
 .c19 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -926,18 +939,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c10 .c12 {
-  opacity: 0;
-}
-
-.c10:hover .c12 {
   opacity: 1;
 }
 
-.c49 {
+.c51 {
   color: white;
 }
 
-.c46 {
+.c48 {
   color: white;
   margin-bottom: 15px;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -946,38 +955,38 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.1em;
 }
 
-.c44 {
+.c46 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c44 .c48 {
+.c46 .c50 {
   margin-top: 40px;
 }
 
-.c44 .c35 {
+.c46 .c37 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c44 .c35:first-of-type p {
+.c46 .c37:first-of-type p {
   padding: 0px;
 }
 
-.c44 .c35:nth-of-type(2) .c48 {
+.c46 .c37:nth-of-type(2) .c50 {
   display: none;
 }
 
-.c33 {
+.c35 {
   max-width: 1200px;
   margin: 0px auto;
   padding: 0px 12px;
 }
 
-.c38 {
+.c40 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -985,12 +994,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-right: 35px;
 }
 
-.c38 a {
+.c40 a {
   color: white;
   text-decoration: none;
 }
 
-.c40 {
+.c42 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -998,24 +1007,24 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.2em;
 }
 
-.c39 {
+.c41 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c27 {
+.c29 {
   background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
 }
 
-.c29 {
+.c31 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
 }
 
-.c32 {
+.c34 {
   width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
@@ -1023,7 +1032,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   align-items: flex-end;
 }
 
-.c31 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1037,14 +1046,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   z-index: 1;
 }
 
-.c31 .c17 {
+.c33 .c17 {
   height: 60px;
   width: 44px;
   margin-right: 15px;
   cursor: pointer;
 }
 
-.c25 {
+.c27 {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -1055,15 +1064,15 @@ exports[`Video Layout matches the snapshot 1`] = `
   transition: opacity 0.25s ease,visibility 0.25s ease;
 }
 
-.c25 .c26,
-.c25 .c28,
-.c25 .c30 {
+.c27 .c28,
+.c27 .c30,
+.c27 .c32 {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.c42 {
+.c44 {
   position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
@@ -1072,7 +1081,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c58 {
+.c60 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1091,16 +1100,16 @@ exports[`Video Layout matches the snapshot 1`] = `
   top: 0;
 }
 
-.c0 .c62 {
+.c0 .c64 {
   margin-bottom: 60px;
 }
 
-.c0 .c57 {
+.c0 .c59 {
   margin-bottom: 40px;
 }
 
-.c0 .c76,
-.c0 .c43 {
+.c0 .c78,
+.c0 .c45 {
   margin: 60px 0 100px 0;
 }
 
@@ -1115,7 +1124,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   top: 0;
 }
 
-.c60 {
+.c62 {
   text-decoration: none;
   color: white;
   border-bottom: 2px solid;
@@ -1137,12 +1146,12 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    position: relative;
+    display: none;
   }
 }
 
 @media (max-width:720px) {
-  .c50 {
+  .c52 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1156,7 +1165,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c68 {
+  .c70 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1170,7 +1179,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c75 {
+  .c77 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1184,20 +1193,20 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c75:before {
+  .c77:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:600px) {
-  .c52 {
+  .c54 {
     margin-top: 15px;
   }
 }
 
 @media (max-width:900px) {
-  .c70 {
+  .c72 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1205,7 +1214,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c63 {
+  .c65 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1214,14 +1223,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c64 {
+  .c66 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c66 {
+  .c68 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1230,7 +1239,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c67 {
+  .c69 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1240,15 +1249,15 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c73 svg {
+  .c75 svg {
     width: 30px;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c36 {
+  .c38 {
     -webkit-flex-basis: 16.666666666666668%;
-    -ms-flex-basis: 16.666666666666668%;
+    -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
     max-width: 16.666666666666668%;
     display: block;
@@ -1256,9 +1265,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c36 {
+  .c38 {
     -webkit-flex-basis: 8.333333333333334%;
-    -ms-flex-basis: 8.333333333333334%;
+    -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
     max-width: 8.333333333333334%;
     display: block;
@@ -1266,9 +1275,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c37 {
+  .c39 {
     -webkit-flex-basis: 83.33333333333334%;
-    -ms-flex-basis: 83.33333333333334%;
+    -ms-flex-preferred-size: 83.33333333333334%;
     flex-basis: 83.33333333333334%;
     max-width: 83.33333333333334%;
     display: block;
@@ -1276,9 +1285,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c37 {
+  .c39 {
     -webkit-flex-basis: 50%;
-    -ms-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
     max-width: 50%;
     display: block;
@@ -1286,9 +1295,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c41 {
+  .c43 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1296,9 +1305,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c41 {
+  .c43 {
     -webkit-flex-basis: 58.333333333333336%;
-    -ms-flex-basis: 58.333333333333336%;
+    -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
     max-width: 58.333333333333336%;
     display: block;
@@ -1306,9 +1315,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c45 {
+  .c47 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1316,9 +1325,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c45 {
+  .c47 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -1326,9 +1335,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c55 {
+  .c57 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1336,9 +1345,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c55 {
+  .c57 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1346,9 +1355,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c61 {
+  .c63 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1356,37 +1365,37 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:600px) {
-  .c47 p,
-  .c47 ul,
-  .c47 ol {
+  .c49 p,
+  .c49 ul,
+  .c49 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c47 li {
+  .c49 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c47 h1 {
+  .c49 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c47 h2 {
+  .c49 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c47 h3 {
+  .c49 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1394,57 +1403,57 @@ exports[`Video Layout matches the snapshot 1`] = `
     line-height: 1.5em;
   }
 
-  .c47 h3 strong {
+  .c49 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c47 blockquote {
+  .c49 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c47 .content-start {
+  .c49 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:600px) {
-  .c56 p,
-  .c56 ul,
-  .c56 ol {
+  .c58 p,
+  .c58 ul,
+  .c58 ol {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c56 li {
+  .c58 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c56 h1 {
+  .c58 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c56 h2 {
+  .c58 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c56 h3 {
+  .c58 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1452,50 +1461,50 @@ exports[`Video Layout matches the snapshot 1`] = `
     line-height: 1.5em;
   }
 
-  .c56 h3 strong {
+  .c58 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c56 blockquote {
+  .c58 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c56 .content-start {
+  .c58 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c78:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c80:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c78 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c80 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c79 {
+  .c81 {
     margin-bottom: 20px;
   }
 }
 
 @media (max-width:48em) {
-  .c49 .c51 {
+  .c51 .c53 {
     margin-top: 0px;
   }
 }
 
 @media (max-width:48em) {
-  .c46 {
+  .c48 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1504,13 +1513,13 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c44 {
+  .c46 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
 
-  .c44 .c35:first-of-type {
+  .c46 .c37:first-of-type {
     margin-top: 80px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1521,11 +1530,11 @@ exports[`Video Layout matches the snapshot 1`] = `
     flex-direction: column;
   }
 
-  .c44 .c35:first-of-type .c48 {
+  .c46 .c37:first-of-type .c50 {
     display: none;
   }
 
-  .c44 .c35:nth-of-type(2) .c48 {
+  .c46 .c37:nth-of-type(2) .c50 {
     display: block;
     margin-top: 40px;
     -webkit-align-self: flex-start;
@@ -1535,13 +1544,13 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c31 {
+  .c33 {
     padding-bottom: 40px;
   }
 }
 
 @media (max-width:48em) {
-  .c42 {
+  .c44 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1550,18 +1559,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c0 .c62 {
+  .c0 .c64 {
     margin-bottom: 30px;
   }
 
-  .c0 .c76,
-  .c0 .c43 {
+  .c0 .c78,
+  .c0 .c45 {
     margin: 40px 0 100px 0;
   }
 }
 
 @media (max-width:48em) {
-  .c60 {
+  .c62 {
     display: block;
   }
 }
@@ -1687,6 +1696,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </svg>
               </div>
               <svg
+                className="c24 c25"
                 height="32px"
                 onClick={[Function]}
                 viewBox="0 0 28 28"
@@ -1745,7 +1755,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <input
-            className="c24"
+            className="c26"
             max={0}
             onChange={[Function]}
             onMouseDown={[Function]}
@@ -1758,23 +1768,23 @@ exports[`Video Layout matches the snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c25"
+      className="c27"
     >
       <div
-        className="c26 c27"
+        className="c28 c29"
         src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
       />
       <div
-        className="c28 c29"
+        className="c30 c31"
       />
       <div
-        className="c30 c31"
+        className="c32 c33"
       >
         <div
-          className="c32 c33 c34"
+          className="c34 c35 c36"
         >
           <div
-            className="c35 c36"
+            className="c37 c38"
             onClick={[Function]}
           >
             <svg
@@ -1799,14 +1809,14 @@ exports[`Video Layout matches the snapshot 1`] = `
             </svg>
           </div>
           <div
-            className="c35 c37"
+            className="c37 c39"
           >
             <div>
               <div
-                className="c34"
+                className="c36"
               >
                 <span
-                  className="c38"
+                  className="c40"
                 >
                   <a
                     href="/series/undefined"
@@ -1815,16 +1825,16 @@ exports[`Video Layout matches the snapshot 1`] = `
                   </a>
                 </span>
                 <span
-                  className="c39"
+                  className="c41"
                 >
                   02:28
                 </span>
               </div>
               <div
-                className="c34"
+                className="c36"
               >
                 <span
-                  className="c40"
+                  className="c42"
                 >
                   Trevor Paglan
                 </span>
@@ -1832,10 +1842,10 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="c35 c41"
+            className="c37 c43"
           >
             <div
-              className="c42"
+              className="c44"
             >
               The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
             </div>
@@ -1845,22 +1855,22 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c33 c34"
+    className="c35 c36"
   >
     <div
-      className="c43 c44"
+      className="c45 c46"
     >
       <div
-        className="c35 c45"
+        className="c37 c47"
       >
         <div
-          className="c46"
+          className="c48"
           color="white"
         >
           Credits
         </div>
         <div
-          className="article__text-section c47"
+          className="article__text-section c49"
           color="black"
         >
           <div
@@ -1872,23 +1882,23 @@ exports[`Video Layout matches the snapshot 1`] = `
           />
         </div>
         <div
-          className="c48 c49"
+          className="c50 c51"
         >
           <div
-            className="date c50"
+            className="date c52"
           >
             Jul 28, 2017 4:38 pm
           </div>
           <div
-            className="c51 c52"
+            className="c53 c54"
           >
             <span
-              className="c53"
+              className="c55"
             >
               Share
             </span>
             <a
-              className="c54"
+              className="c56"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -1914,7 +1924,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c54"
+              className="c56"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1940,7 +1950,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c54"
+              className="c56"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
             >
@@ -1968,16 +1978,16 @@ exports[`Video Layout matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        className="c35 c55"
+        className="c37 c57"
       >
         <div
-          className="c46"
+          className="c48"
           color="white"
         >
           About the Film
         </div>
         <div
-          className="article__text-section c56"
+          className="article__text-section c58"
           color="white"
         >
           <div
@@ -1989,23 +1999,23 @@ exports[`Video Layout matches the snapshot 1`] = `
           />
         </div>
         <div
-          className="c48 c49"
+          className="c50 c51"
         >
           <div
-            className="date c50"
+            className="date c52"
           >
             Jul 28, 2017 4:38 pm
           </div>
           <div
-            className="c51 c52"
+            className="c53 c54"
           >
             <span
-              className="c53"
+              className="c55"
             >
               Share
             </span>
             <a
-              className="c54"
+              className="c56"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -2031,7 +2041,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c54"
+              className="c56"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -2057,7 +2067,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c54"
+              className="c56"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
             >
@@ -2087,14 +2097,14 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c33 c34"
+    className="c35 c36"
   >
     <div
-      className="c57 c58 c35 c59"
+      className="c59 c60 c37 c61"
     >
       More in 
       <a
-        className="c60"
+        className="c62"
         href="/series/undefined"
       >
         The Future of Art
@@ -2102,54 +2112,54 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c33 c34"
+    className="c35 c36"
   >
     <div
-      className="c35 c61"
+      className="c37 c63"
     >
       <a
-        className="ArticleCard c62 c63"
+        className="ArticleCard c64 c65"
         color="white"
         href="joanne-artman-gallery-poetry-naturerefinement-form"
         onClick={[Function]}
       >
         <div
-          className="c64"
+          className="c66"
         >
           <div>
             <div
-              className="c65"
+              className="c67"
             >
               <div>
                 The Future of Art
               </div>
             </div>
             <div
-              className="c66"
+              className="c68"
             >
               Trevor Paglan
             </div>
             <div
-              className="c67"
+              className="c69"
             >
               The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
             </div>
           </div>
           <div
-            className="date c68"
+            className="date c70"
           >
             Aug 28, 2017
           </div>
         </div>
         <div
-          className="c69 c70"
+          className="c71 c72"
         >
           <img
-            className="c71 c72"
+            className="c73 c74"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
           />
           <div
-            className="c73"
+            className="c75"
           >
             <svg
               className="c17 c18"
@@ -2178,62 +2188,62 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c33 c34"
+    className="c35 c36"
   >
     <div
-      className="c35 c61"
+      className="c37 c63"
     >
       <a
-        className="ArticleCard c62 c63"
+        className="ArticleCard c64 c65"
         color="white"
         href="new-yorks-next-art-district"
         onClick={[Function]}
       >
         <div
-          className="c64"
+          className="c66"
         >
           <div>
             <div
-              className="c65"
+              className="c67"
             >
               <div>
                 The Future of Art
               </div>
             </div>
             <div
-              className="c66"
+              className="c68"
             >
               New York's Next Art District
             </div>
             <div
-              className="c67"
+              className="c69"
             >
               Land exhibitions, make influential contacts, and gain valuable feedback about your work.
             </div>
           </div>
           <div
-            className="Byline c74"
+            className="Byline c76"
             color="white"
           >
             <div
-              className="author c75"
+              className="author c77"
               color="white"
             >
               By 
               Casey Lesser
             </div>
             <div
-              className="date c68"
+              className="date c70"
             >
               May 19, 2017
             </div>
           </div>
         </div>
         <div
-          className="c69 c70"
+          className="c71 c72"
         >
           <img
-            className="c71 c72"
+            className="c73 c74"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
           />
         </div>
@@ -2241,26 +2251,26 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c33 c34"
+    className="c35 c36"
   >
     <div
-      className="c76 c77 c34"
+      className="c78 c79 c36"
       color="white"
     >
       <div
-        className="c78 c35 c45"
+        className="c80 c37 c47"
       >
         <div
-          className="c79"
+          className="c81"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c78 c35 c55"
+        className="c80 c37 c57"
       >
         <div
-          className="article__text-section c56"
+          className="article__text-section c58"
           color="white"
         >
           <div

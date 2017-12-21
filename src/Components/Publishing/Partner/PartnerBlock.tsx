@@ -15,8 +15,8 @@ interface Props {
 @track((props) => {
   return props.trackingData ? props.trackingData : {}
 }, {
-  dispatch: data => Events.postEvent(data)
-})
+    dispatch: data => Events.postEvent(data)
+  })
 export class PartnerBlock extends React.Component<Props, null> {
   static defaultProps = {
     tracking: {
@@ -55,6 +55,7 @@ export class PartnerBlock extends React.Component<Props, null> {
 export const PartnerBlockContainer = styled.div`
   img {
     max-width: 220px;
+    -ms-interpolation-mode: bicubic;
   }
   ${pMedia.sm`
     img {

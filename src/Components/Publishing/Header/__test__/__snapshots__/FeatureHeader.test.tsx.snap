@@ -206,8 +206,9 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 .c0[data-type="split"] .c8 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -736,8 +737,9 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 }
 
 .c0[data-type="split"] .c8 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -1257,8 +1259,9 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 .c0[data-type="split"] .c8 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -1797,8 +1800,9 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 .c0[data-type="split"] .c7 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -2323,8 +2327,9 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 .c0[data-type="split"] .c5 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -2765,6 +2770,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 .c5 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c5 .c8 {
@@ -2901,8 +2907,9 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 .c0[data-type="split"] .c13 {
+  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 

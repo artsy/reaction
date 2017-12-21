@@ -32,6 +32,7 @@ export class SeriesLayout extends Component<Props, null> {
         <Nav
           transparent
           sponsor={sponsor}
+          canFix={false}
         />
 
         <FixedBackground

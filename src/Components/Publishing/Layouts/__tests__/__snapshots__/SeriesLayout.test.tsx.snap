@@ -24,6 +24,7 @@ exports[`renders a series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .file__IconPlus-s100ic91-0 {
@@ -497,7 +498,7 @@ exports[`renders a series properly 1`] = `
   max-width: 1200px;
 }
 
-.c33 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c33 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
@@ -515,8 +516,9 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c33:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c35 {
@@ -531,7 +533,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
+.c13 .file__PartnerBlockContainer-s1joucmt-0 img {
   max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -589,7 +591,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -680,7 +682,7 @@ exports[`renders a series properly 1`] = `
 @media only screen and (min-width:0em) {
   .c34 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -690,7 +692,7 @@ exports[`renders a series properly 1`] = `
 @media only screen and (min-width:48em) {
   .c34 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -700,7 +702,7 @@ exports[`renders a series properly 1`] = `
 @media only screen and (min-width:0em) {
   .c36 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -710,7 +712,7 @@ exports[`renders a series properly 1`] = `
 @media only screen and (min-width:48em) {
   .c36 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -776,11 +778,11 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c33:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c33 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c33 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }
@@ -793,7 +795,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
+  .c13 .file__PartnerBlockContainer-s1joucmt-0 img {
     padding-bottom: 0;
   }
 }
@@ -1068,6 +1070,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .c6 {
@@ -1377,6 +1380,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c18 img {
   max-width: 220px;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c19 {
@@ -1573,6 +1577,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c38:first-of-type .c17 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c40 {
@@ -1664,7 +1669,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c8 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -1755,7 +1760,7 @@ exports[`renders a sponsored series properly 1`] = `
 @media only screen and (min-width:0em) {
   .c39 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1765,7 +1770,7 @@ exports[`renders a sponsored series properly 1`] = `
 @media only screen and (min-width:48em) {
   .c39 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -1775,7 +1780,7 @@ exports[`renders a sponsored series properly 1`] = `
 @media only screen and (min-width:0em) {
   .c41 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1785,7 +1790,7 @@ exports[`renders a sponsored series properly 1`] = `
 @media only screen and (min-width:48em) {
   .c41 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1982,7 +1987,7 @@ exports[`renders a sponsored series properly 1`] = `
           target="_blank"
         >
           <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+            src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
           />
         </a>
       </div>
@@ -2040,7 +2045,7 @@ exports[`renders a sponsored series properly 1`] = `
           target="_blank"
         >
           <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+            src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
           />
         </a>
       </div>
@@ -2194,7 +2199,7 @@ exports[`renders a sponsored series properly 1`] = `
             target="_blank"
           >
             <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+              src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
             />
           </a>
         </div>
@@ -2228,7 +2233,7 @@ exports[`renders a sponsored series properly 1`] = `
             target="_blank"
           >
             <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+              src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
             />
           </a>
         </div>

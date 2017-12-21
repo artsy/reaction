@@ -21,8 +21,9 @@ it("toggles the caption on mobile to hide", () => {
     childContextTypes: context,
     context,
   })
-  expect(caption.find(".fullscreen-viewer__caption-toggle").text()).toBe("Hide")
-  caption.find(".fullscreen-viewer__caption-toggle").simulate("click")
+  const node = caption.find(".fullscreen-viewer__caption-toggle").at(0)
+  expect(node.text()).toBe("Hide")
+  node.simulate("click")
   expect(context.onToggleCaption.mock.calls.length).toBeGreaterThan(0)
 })
 
@@ -32,7 +33,8 @@ it("toggles the caption on mobile to view", () => {
     childContextTypes: context,
     context,
   })
-  expect(caption.find(".fullscreen-viewer__caption-toggle").text()).toBe("View Caption")
-  caption.find(".fullscreen-viewer__caption-toggle").simulate("click")
+  const node = caption.find(".fullscreen-viewer__caption-toggle").at(0)
+  expect(node.text()).toBe("View Caption")
+  node.simulate("click")
   expect(context.onToggleCaption.mock.calls.length).toBeGreaterThan(0)
 })
