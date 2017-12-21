@@ -20,7 +20,7 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
 @track()
 export class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, null> {
   constructor(props) {
-    super()
+    super(props)
     this.onClick = this.onClick.bind(this)
   }
 
@@ -43,19 +43,11 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     return (
       <ArticleFigure href={href} onClick={this.onClick}>
         <ImageTitle>
-          <BlockImage
-            src={imageSrc}
-            alt={article.thumbnail_title}
-          />
-          <ArticleTitle>
-            {article.thumbnail_title}
-          </ArticleTitle>
+          <BlockImage src={imageSrc} alt={article.thumbnail_title} />
+          <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
         </ImageTitle>
 
-        <Byline
-          article={article}
-          layout="condensed"
-        />
+        <Byline article={article} layout="condensed" />
       </ArticleFigure>
     )
   }

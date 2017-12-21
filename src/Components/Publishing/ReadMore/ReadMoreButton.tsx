@@ -7,8 +7,8 @@ import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 @track()
 export class ReadMore extends React.Component<any, any> {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.onClick = this.onClick.bind(this)
   }
 
@@ -38,8 +38,7 @@ const ReadMoreButton = styled.div`
   background-color: black;
   border: 1px solid black;
   border-radius: 2px;
-  ${Fonts.unica("s14", "medium")}
-  padding-top: 1px;
+  ${Fonts.unica("s14", "medium")} padding-top: 1px;
   &:hover {
     cursor: pointer;
     background-color: white;
@@ -47,7 +46,7 @@ const ReadMoreButton = styled.div`
   }
   ${pMedia.md`
     width: 100%;
-  `}
+  `};
 `
 const ReadMoreContainer = styled.div`
   display: flex;
@@ -61,8 +60,7 @@ const ReadMoreContainer = styled.div`
   ${pMedia.xl`
     padding: 20px;
     padding-left: 0px;
-  `}
-  ${pMedia.sm`
+  `} ${pMedia.sm`
     padding: 20px;
-  `}
+  `};
 `

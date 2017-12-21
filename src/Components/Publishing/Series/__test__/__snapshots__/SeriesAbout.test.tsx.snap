@@ -237,7 +237,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -247,7 +247,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -257,7 +257,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c5 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -267,7 +267,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c5 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -631,7 +631,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -641,7 +641,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -651,7 +651,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c8 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -661,7 +661,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c8 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1063,7 +1063,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1073,7 +1073,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -1083,7 +1083,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:0em) {
   .c5 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1093,7 +1093,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:48em) {
   .c5 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
