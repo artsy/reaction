@@ -9,7 +9,7 @@ window.matchMedia =
     return {
       media: "",
       matches: false,
-      addListener: () => {},
-      removeListener: () => {},
+      addListener: () => null,
+      removeListener: () => null,
     }
   })
