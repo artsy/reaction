@@ -7,6 +7,7 @@ import { Fonts } from "../Fonts"
 interface Props {
   editTitle?: any
   media?: any
+  subTitleLink?: string
   subTitle?: string
   title?: string
 }
@@ -17,6 +18,7 @@ export class VideoInfoBlock extends Component<Props, null> {
       editTitle,
       media,
       subTitle,
+      subTitleLink,
       title
     } = this.props
 
@@ -25,7 +27,10 @@ export class VideoInfoBlock extends Component<Props, null> {
         <Row>
           {subTitle &&
             <SubTitle>
-              {subTitle}
+              {subTitleLink
+                ? <a href={subTitleLink}>{subTitle}</a>
+                : subTitle
+              }
             </SubTitle>
           }
           <MediaDuration>
@@ -45,6 +50,11 @@ export class VideoInfoBlock extends Component<Props, null> {
 const SubTitle = styled.span`
   ${Fonts.unica("s16")}
   margin-right: 35px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 `
 
 const MediaTitle = styled.span`

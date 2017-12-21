@@ -29,6 +29,7 @@ exports[`renders the partner inline 1`] = `
 .c0 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c0 .c3 {

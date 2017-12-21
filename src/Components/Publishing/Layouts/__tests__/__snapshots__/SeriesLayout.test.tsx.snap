@@ -24,6 +24,7 @@ exports[`renders a series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .file__IconPlus-s100ic91-0 {
@@ -74,6 +75,11 @@ exports[`renders a series properly 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+}
+
+.c6 a {
+  color: white;
+  text-decoration: none;
 }
 
 .c21 {
@@ -153,7 +159,7 @@ exports[`renders a series properly 1`] = `
 .c23 {
   position: relative;
   width: 50%;
-  height: 100%;
+  height: inherit;
   margin-left: 30px;
 }
 
@@ -492,7 +498,7 @@ exports[`renders a series properly 1`] = `
   max-width: 1200px;
 }
 
-.c33 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c33 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
@@ -510,8 +516,9 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c33:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c35 {
@@ -526,8 +533,8 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
-  max-width: 170px;
+.c13 .file__PartnerBlockContainer-s1joucmt-0 img {
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -584,7 +591,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -771,11 +778,11 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c33:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c33:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c33 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c33 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }
@@ -788,8 +795,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 240px;
+  .c13 .file__PartnerBlockContainer-s1joucmt-0 img {
     padding-bottom: 0;
   }
 }
@@ -840,7 +846,11 @@ exports[`renders a series properly 1`] = `
       <div
         className="c6"
       >
-        Artsy Editorial
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
       </div>
     </div>
     <span
@@ -1060,6 +1070,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c3 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c3 .c6 {
@@ -1110,6 +1121,11 @@ exports[`renders a sponsored series properly 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+}
+
+.c8 a {
+  color: white;
+  text-decoration: none;
 }
 
 .c26 {
@@ -1189,7 +1205,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c28 {
   position: relative;
   width: 50%;
-  height: 100%;
+  height: inherit;
   margin-left: 30px;
 }
 
@@ -1364,6 +1380,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c18 img {
   max-width: 220px;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c19 {
@@ -1560,6 +1577,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c38:first-of-type .c17 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c40 {
@@ -1575,7 +1593,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c15 .c17 img {
-  max-width: 170px;
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -1651,7 +1669,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c8 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -1871,7 +1889,6 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c15 .c17 img {
-    max-width: 240px;
     padding-bottom: 0;
   }
 }
@@ -1970,14 +1987,18 @@ exports[`renders a sponsored series properly 1`] = `
           target="_blank"
         >
           <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+            src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
           />
         </a>
       </div>
       <div
         className="c8"
       >
-        Artsy Editorial
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
       </div>
     </div>
     <span
@@ -2024,7 +2045,7 @@ exports[`renders a sponsored series properly 1`] = `
           target="_blank"
         >
           <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+            src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
           />
         </a>
       </div>
@@ -2178,7 +2199,7 @@ exports[`renders a sponsored series properly 1`] = `
             target="_blank"
           >
             <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+              src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
             />
           </a>
         </div>
@@ -2212,7 +2233,7 @@ exports[`renders a sponsored series properly 1`] = `
             target="_blank"
           >
             <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+              src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
             />
           </a>
         </div>

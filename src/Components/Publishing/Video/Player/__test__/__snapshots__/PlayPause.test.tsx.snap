@@ -9,6 +9,7 @@ exports[`Play/Pause Button matches the snapshot 1`] = `
 .c0 {
   height: 28px;
   width: 28px;
+  cursor: pointer;
 }
 
 <div

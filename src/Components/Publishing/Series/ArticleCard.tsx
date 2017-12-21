@@ -74,7 +74,7 @@ export class ArticleCard extends Component<Props, null> {
       return (
         <MediaDate>
           <span>Available </span>
-          <Date layout='condensed' date={mediaDate} />
+          <Date layout="monthYear" date={mediaDate} />
         </MediaDate>
       )
     } else {
@@ -188,7 +188,7 @@ const Image = styled.img`
 const ImageContainer = styled.div`
   position: relative;
   width: 50%;
-  height: 100%;
+  height: inherit;
   margin-left: 30px;
   ${props => pMedia.md`
     width: 100%;

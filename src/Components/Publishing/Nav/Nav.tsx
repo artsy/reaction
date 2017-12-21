@@ -24,7 +24,6 @@ interface DivProps {
 export class NavComponent extends React.Component<Props, State> {
   static defaultProps = {
     canFix: true,
-    title: "Artsy Editorial",
     transparent: false
   }
 
@@ -65,7 +64,10 @@ export class NavComponent extends React.Component<Props, State> {
             margin="0 10px"
           />
           <Title>
-            {title}
+            {title
+              ? title
+              : <a href="/magazine">Artsy Editorial</a>
+            }
           </Title>
         </NavContainer>
         <Waypoint
@@ -111,7 +113,11 @@ const Title = styled.div`
   width: 100%;
   text-align: center;
   font-weight: 600;
+  a {
+    color: white;
+    text-decoration: none;
+  }
   ${pMedia.sm`
-    position: relative;
+    display: none;
   `}
 `

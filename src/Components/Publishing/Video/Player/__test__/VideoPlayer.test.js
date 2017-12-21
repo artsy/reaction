@@ -10,6 +10,8 @@ jest.mock('../../../../../Utils/track.ts', () => ({
   track: jest.fn()
 }))
 
+jest.useFakeTimers()
+
 describe("VideoPlayer", () => {
   const trackEvent = jest.fn()
 
@@ -124,6 +126,39 @@ describe("VideoPlayer", () => {
       videoPlayer.instance().play()
       expect(videoPlayer.state("isPlaying")).toBe(true)
       expect(videoPlayer.instance().video.play).toBeCalled()
+    })
+
+    it("fades out controls after 3 seconds of idle time", () => {
+      const videoPlayer = getWrapper()
+      jest.runTimersToTime(4000)
+      expect(videoPlayer.state("showControls")).toBe(false)
+    })
+
+    it("controls stay visible under 3 seconds of idle time", () => {
+      const videoPlayer = getWrapper()
+      jest.runTimersToTime(2000)
+      expect(videoPlayer.state("showControls")).toBe(true)
+    })
+
+    it("fades in controls on mousemove", () => {
+      const videoPlayer = getWrapper()
+      videoPlayer.simulate("mousemove")
+      expect(videoPlayer.state("showControls")).toBe(true)
+      expect(videoPlayer.state("idleTime")).toBe(0)
+    })
+
+    it("fades in controls on keypress", () => {
+      const videoPlayer = getWrapper()
+      videoPlayer.simulate("keypress")
+      expect(videoPlayer.state("showControls")).toBe(true)
+      expect(videoPlayer.state("idleTime")).toBe(0)
+    })
+
+    it("fades in controls on touchstart", () => {
+      const videoPlayer = getWrapper()
+      videoPlayer.simulate("touchstart")
+      expect(videoPlayer.state("showControls")).toBe(true)
+      expect(videoPlayer.state("idleTime")).toBe(0)
     })
   })
 
