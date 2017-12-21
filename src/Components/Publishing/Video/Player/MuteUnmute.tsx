@@ -29,4 +29,5 @@ export class MuteUnmute extends React.PureComponent<Props, null> {
 
 export const MuteUnmuteContainer = styled.div`
   height: 28px;
+  cursor: pointer;
 `

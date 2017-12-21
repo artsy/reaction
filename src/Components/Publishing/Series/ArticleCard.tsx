@@ -74,7 +74,7 @@ export class ArticleCard extends Component<Props, null> {
       return (
         <MediaDate>
           <span>Available </span>
-          <Date layout='condensed' date={mediaDate} />
+          <Date layout="monthYear" date={mediaDate} />
         </MediaDate>
       )
     } else {
