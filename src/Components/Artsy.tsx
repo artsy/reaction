@@ -18,10 +18,10 @@ export interface ContextProps {
   /**
    * The currently signed-in user.
    *
-   * Unless the `NODE_ENV` environment variable is set to `production`, this will default to use the
-   * `USER_ID` and `USER_ACCESS_TOKEN` environment variables.
+   * Unless explicitely set to `null`, this will default to use the `USER_ID` and `USER_ACCESS_TOKEN` environment
+   * variables if available.
    */
-  currentUser?: User
+  currentUser?: User | null
 
   /**
    * A configured environment object that can be used for any Relay operations  that need an environment object.
@@ -54,7 +54,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
   implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
-  private currentUser: User
+  private currentUser: User | null
   private relayEnvironment: Environment
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
@@ -65,7 +65,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
 
     if (props.currentUser) {
       this.currentUser = props.currentUser
-    } else if (process.env.NODE_ENV !== "production") {
+    } else if (props.currentUser === undefined) {
       const id = process.env.USER_ID
       const accessToken = process.env.USER_ACCESS_TOKEN
       if (id && accessToken) {
