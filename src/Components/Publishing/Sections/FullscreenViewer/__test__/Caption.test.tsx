@@ -21,6 +21,7 @@ it("toggles the caption on mobile to hide", () => {
     childContextTypes: context,
     context,
   })
+  console.log(caption.find(".fullscreen-viewer__caption-toggle"))
   expect(caption.find(".fullscreen-viewer__caption-toggle").text()).toBe("Hide")
   caption.find(".fullscreen-viewer__caption-toggle").simulate("click")
   expect(context.onToggleCaption.mock.calls.length).toBeGreaterThan(0)
