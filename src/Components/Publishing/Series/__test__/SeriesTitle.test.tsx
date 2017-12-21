@@ -4,6 +4,7 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { SeriesArticle, SeriesArticleSponsored } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
+import { PartnerBlock } from "../../Partner/PartnerBlock"
 import { SeriesTitle } from "../SeriesTitle"
 
 it("renders a series title properly", () => {
@@ -23,13 +24,12 @@ it("renders a series with children properly", () => {
 
 it("Renders partner block for a sponsored series", () => {
   const component = mount(<SeriesTitle article={SeriesArticleSponsored} />)
-  console.log(component.find(".PartnerBlock"))
-  expect(component.find(".PartnerBlock").length).toBe(1)
+  expect(component.find(PartnerBlock).length).toBe(1)
 })
 
 it("Does not render partner block for an unsponsored series", () => {
   const component = mount(<SeriesTitle article={SeriesArticle} />)
-  expect(component.find(".PartnerBlock").length).toBe(0)
+  expect(component.find(PartnerBlock).length).toBe(0)
 })
 
 it("Renders children if present", () => {

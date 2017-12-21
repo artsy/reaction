@@ -3,10 +3,10 @@ import "jest-styled-components"
 import { mount } from "enzyme"
 import React from "react"
 
-import Events from "../../../Utils/events"
+import Events from "../../../Utils/Events"
 import { Article } from "../Article"
 import { getArticleFullHref } from "../Constants"
-import { StandardArticle } from "../fixtures/Articles"
+import { StandardArticle } from "../Fixtures/Articles"
 
 jest.mock("react-slick", () => {
   const React = require("react")
