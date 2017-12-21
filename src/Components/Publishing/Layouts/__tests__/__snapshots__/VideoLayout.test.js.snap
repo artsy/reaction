@@ -934,10 +934,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c10 .c12 {
-  opacity: 0;
-}
-
-.c10:hover .c12 {
   opacity: 1;
 }
 

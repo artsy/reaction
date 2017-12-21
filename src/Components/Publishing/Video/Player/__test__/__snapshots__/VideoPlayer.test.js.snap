@@ -196,10 +196,6 @@ exports[`VideoPlayer matches the snapshot 1`] = `
 }
 
 .c0 .c2 {
-  opacity: 0;
-}
-
-.c0:hover .c2 {
   opacity: 1;
 }
 

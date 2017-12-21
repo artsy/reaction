@@ -1,6 +1,6 @@
 import { memoize } from "lodash"
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../../Utils/track"
 import {
   addFSEventListener,
@@ -25,18 +25,27 @@ interface State {
   isPlaying: boolean,
   currentTime: number,
   duration: number
+  idleTime: number,
+  showControls: boolean
+}
+
+interface DivProps {
+  showControls: boolean
 }
 
 @track()
 export class VideoPlayer extends Component<Props, State> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
+  public timer
 
   state = {
     isMuted: false,
     isPlaying: this.props.forcePlay,
     currentTime: 0,
-    duration: 0
+    duration: 0,
+    idleTime: 0,
+    showControls: true
   }
 
   constructor(props) {
@@ -46,11 +55,16 @@ export class VideoPlayer extends Component<Props, State> {
 
   componentDidMount() {
     if (this.video) {
-      if (fullscreenEnabled()){
+      if (fullscreenEnabled()) {
         addFSEventListener(this.video)
       }
       this.video.addEventListener("timeupdate", this.updateTime)
       this.video.addEventListener("loadedmetadata", this.setDuration)
+
+      this.timer = setInterval(this.incrementTimer, 1000)
+      document.onmousemove = this.resetTimer
+      document.onkeypress = this.resetTimer
+      document.ontouchstart = this.resetTimer
     }
   }
 
@@ -59,12 +73,29 @@ export class VideoPlayer extends Component<Props, State> {
       removeFSEventListener(this.video)
     }
     this.video.removeEventListener("timeupdate", this.updateTime)
+    clearInterval(this.timer)
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.forcePlay){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.forcePlay) {
       this.forcePlay()
     }
+  }
+
+  resetTimer = () => {
+    this.setState({
+      showControls: true,
+      idleTime: 0
+    })
+  }
+
+  incrementTimer = () => {
+    const newIdleTime = this.state.idleTime + 1
+
+    this.setState({
+      idleTime: newIdleTime,
+      showControls: newIdleTime > 3 ? false : true
+    })
   }
 
   setDuration = (e) => {
@@ -187,6 +218,7 @@ export class VideoPlayer extends Component<Props, State> {
     return (
       <VideoContainer
         innerRef={container => (this.videoPlayer = container)}
+        showControls={this.state.showControls}
       >
         <video playsInline
           src={url}
@@ -222,7 +254,9 @@ const VideoControlsParent = styled.div`
   max-width: 1200px;
   width: 100%;
 `
-export const VideoContainer = styled.div`
+
+const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
+export const VideoContainer = Div`
   width: 100%;
   height: 100%;
   position: relative;
@@ -233,11 +267,6 @@ export const VideoContainer = styled.div`
     height: 100%;
   }
   ${VideoControlsContainer} {
-    opacity: 0;
-  }
-  &:hover {
-    ${VideoControlsContainer} {
-      opacity: 1;
-    }
+    opacity: ${props => props.showControls ? '1' : '0'};
   }
 `
