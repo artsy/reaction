@@ -9,6 +9,8 @@ const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/w
 
 const { CheckerPlugin } = require("awesome-typescript-loader")
 
+env.load()
+
 /**
  * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
  * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
@@ -18,7 +20,7 @@ const {
   METAPHYSICS_ENDPOINT,
   USER_ID,
   USER_ACCESS_TOKEN,
-} = env.config().parsed
+} = process.env
 
 const sharifyPath = sharify({
   METAPHYSICS_ENDPOINT,
@@ -26,12 +28,16 @@ const sharifyPath = sharify({
 
 const plugins = [new CheckerPlugin()]
 if (USER_ID && USER_ACCESS_TOKEN) {
-  plugins.push(new webpack.DefinePlugin ({
-    "process.env.USER_ID": JSON.stringify(USER_ID),
-    "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
-  }))
+  plugins.push(
+    new webpack.DefinePlugin({
+      "process.env.USER_ID": JSON.stringify(USER_ID),
+      "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
+    })
+  )
 } else {
-  console.warn("\x1b[31m[!] Specify USER_ID and USER_ACCESS_TOKEN environment variables to use authenticated features.\x1b[0m")
+  console.warn(
+    "\x1b[31m[!] Specify USER_ID and USER_ACCESS_TOKEN environment variables to use authenticated features.\x1b[0m"
+  )
 }
 
 // A mix of  the base from Emission's webpack setup, and the simple config for
