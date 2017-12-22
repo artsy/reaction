@@ -1082,7 +1082,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c27 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;

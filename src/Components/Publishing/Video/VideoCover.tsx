@@ -121,7 +121,9 @@ const VideoCoverInfo = styled.div`
 
 const CoverDiv: StyledFunction<CoverProps> = styled.div
 export const VideoCoverContainer = CoverDiv`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;

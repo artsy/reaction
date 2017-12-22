@@ -126,7 +126,9 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c0 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;
@@ -438,7 +440,9 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c0 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;
