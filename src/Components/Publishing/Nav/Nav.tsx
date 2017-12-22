@@ -96,6 +96,7 @@ const NavContainer = Div`
   `}
 `
 export const Nav = styled(NavComponent) `
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

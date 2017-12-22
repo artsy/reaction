@@ -68,6 +68,7 @@ const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = 
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
   max-width: 1200px;
+  width: 100%;
 `
 const StyledCol = styled(Col) `
   ${PartnerBlockContainer} {
