@@ -24,14 +24,14 @@ interface DivProps {
 export class NavComponent extends React.Component<Props, State> {
   static defaultProps = {
     canFix: true,
-    transparent: false,
+    transparent: false
   }
 
   state = {
-    isFixed: false,
+    isFixed: false
   }
 
-  setPosition = isFixed => {
+  setPosition = (isFixed) => {
     const { canFix } = this.props
     const currentPosition = this.state.isFixed
 
@@ -41,21 +41,39 @@ export class NavComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { sponsor, className, canFix, transparent, title } = this.props
+    const {
+      sponsor,
+      className,
+      canFix,
+      transparent,
+      title
+    } = this.props
     const { isFixed } = this.state
 
     return (
       <div>
-        <NavContainer transparent={!isFixed && transparent} className={className} isFixed={canFix && isFixed}>
+        <NavContainer
+          transparent={!isFixed && transparent}
+          className={className}
+          isFixed={canFix && isFixed}
+        >
           <PartnerInline
             url={sponsor && sponsor.partner_logo_link}
             logo={sponsor && sponsor.partner_condensed_logo}
             color="white"
             margin="0 10px"
           />
-          <Title>{title ? title : <a href="/magazine">Artsy Editorial</a>}</Title>
+          <Title>
+            {title
+              ? title
+              : <a href="/magazine">Artsy Editorial</a>
+            }
+          </Title>
         </NavContainer>
-        <Waypoint onEnter={() => this.setPosition(false)} onLeave={() => this.setPosition(true)} />
+        <Waypoint
+          onEnter={() => this.setPosition(false)}
+          onLeave={() => this.setPosition(true)}
+        />
       </div>
     )
   }
@@ -64,26 +82,20 @@ export class NavComponent extends React.Component<Props, State> {
 const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const NavContainer = Div`
-  background-color: ${props => (props.transparent ? "transparent" : "black")};
+  background-color: ${props => props.transparent ? "transparent" : "black"};
   border-bottom: 1px solid white;
-  ${props =>
-    props.transparent &&
-    !props.isFixed &&
-    `
+  ${props => props.transparent && !props.isFixed && `
     position: absolute;
     top: 0;
   `}
-  ${props =>
-    props.isFixed &&
-    `
+  ${props => props.isFixed && `
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
   `}
 `
-export const Nav = styled(NavComponent)`
-  position: relative;
+export const Nav = styled(NavComponent) `
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,7 +108,7 @@ export const Nav = styled(NavComponent)`
   }
 `
 const Title = styled.div`
-  ${Fonts.garamond("s17")};
+  ${Fonts.garamond("s17")}
   position: absolute;
   width: 100%;
   text-align: center;
@@ -107,5 +119,5 @@ const Title = styled.div`
   }
   ${pMedia.sm`
     display: none;
-  `};
+  `}
 `

@@ -42,7 +42,6 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c0 {
-  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -187,7 +186,6 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c0 {
-  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -381,7 +379,6 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c0 {
-  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
