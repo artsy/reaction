@@ -2416,6 +2416,15 @@ input FollowArtistInput {
 
 type FollowArtistPayload {
   artist: Artist
+
+  # Popular artists
+  popular_artists(
+    # If true, will exclude followed artists for the user
+    exclude_followed_artists: Boolean
+
+    # Number of results to return
+    size: Int
+  ): PopularArtists
   clientMutationId: String
 }
 
@@ -3603,6 +3612,9 @@ type Me implements Node {
     # Exclude artists the user already follows
     exclude_followed_artists: Boolean
 
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
+
     # Pagination, need I say more?
     page: Int
 
@@ -4649,6 +4661,9 @@ type RelatedArtists {
 
     # Exclude artists the user already follows
     exclude_followed_artists: Boolean
+
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
 
     # Pagination, need I say more?
     page: Int
