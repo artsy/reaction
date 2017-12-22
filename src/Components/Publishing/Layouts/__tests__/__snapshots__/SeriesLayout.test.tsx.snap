@@ -44,6 +44,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -496,6 +497,7 @@ exports[`renders a series properly 1`] = `
 .c31 {
   color: white;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c33 .file__PartnerBlockContainer-s1joucmt-0 {
@@ -1090,6 +1092,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1555,6 +1558,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c36 {
   color: white;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c38 .c17 {

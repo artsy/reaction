@@ -23,24 +23,21 @@ interface State {
 export class Scrubber extends Component<Props, State> {
   state = {
     isScrubbing: false,
-    isPlayingOnMouseDown: false
+    isPlayingOnMouseDown: false,
   }
 
   shouldComponentUpdate(nextProps) {
-    return (
-      this.props.currentTime !== nextProps.currentTime ||
-      this.props.duration !== nextProps.duration
-    )
+    return this.props.currentTime !== nextProps.currentTime || this.props.duration !== nextProps.duration
   }
 
   handleMouseDown = () => {
     this.setState({
-      isPlayingOnMouseDown: this.props.isPlaying
+      isPlayingOnMouseDown: this.props.isPlaying,
     })
     this.props.pause()
   }
 
-  handleMouseUp = (e) => {
+  handleMouseUp = e => {
     if (!this.state.isScrubbing) {
       this.props.seekTo(e.target.value)
     }
@@ -50,16 +47,13 @@ export class Scrubber extends Component<Props, State> {
     this.setState({ isScrubbing: false })
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ isScrubbing: true })
     this.props.seekTo(e.target.value)
   }
 
   render() {
-    const {
-      duration,
-      currentTime
-    } = this.props
+    const { duration, currentTime } = this.props
 
     return (
       <ScrubberInput
@@ -81,7 +75,7 @@ const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = st
 
 const ScrubberInput = Input`
   width: 100%;
-  background-size: ${props => (props.currentTime * 100) / props.duration }% 100%;
+  background-size: ${props => props.currentTime * 100 / props.duration}% 100%;
   height: 18px;
   margin-top: 15px;
   appearance: none;
@@ -93,9 +87,10 @@ const ScrubberInput = Input`
 
   ::-ms-track {
     width: 100%;
+    height: 2px;
     cursor: pointer;
     background: transparent;
-    border-color: transparent;
+    border: 0px;
     color: transparent;
   }
 
@@ -117,8 +112,7 @@ const ScrubberInput = Input`
 
   ::-webkit-slider-thumb {
     color: white;
-    box-shadow: 0px 0px 0px white;
-    border: 0px solid #E3E3E3;
+    border: 0px;
     height: 12px;
     width: 12px;
     border-radius: 50px;
@@ -131,7 +125,29 @@ const ScrubberInput = Input`
   ::-moz-range-thumb {
     color: white;
     box-shadow: 0px 0px 0px white;
-    border: 0px solid #E3E3E3;
+    border: 0px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    background: white;
+    cursor: pointer;
+    margin-top: -5px;
+    appearance: none;
+  }
+
+  ::-ms-fill-lower {
+    background: white;
+    border: 0px;
+  }
+  ::-ms-fill-upper {
+    background: white;
+    border: 0px;
+  }
+
+  ::-ms-thumb {
+    color: white;
+    box-shadow: 0px 0px 0px white;
+    border: 0px;
     height: 12px;
     width: 12px;
     border-radius: 50px;
