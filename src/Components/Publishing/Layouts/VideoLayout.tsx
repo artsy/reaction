@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
+import { Col } from 'react-styled-flexboxgrid'
 import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
@@ -26,41 +26,39 @@ interface State {
   hideCover: boolean
 }
 
-@track(
-  props => {
-    return {
-      page: "Article",
-      entity_type: "article",
-      entity_id: props.article.id,
-    }
-  },
-  {
-    dispatch: data => Events.postEvent(data),
+@track((props) => {
+  return {
+    page: "Article",
+    entity_type: "article",
+    entity_id: props.article.id
+  }
+}, {
+    dispatch: data => Events.postEvent(data)
   }
 )
 export class VideoLayout extends Component<Props, State> {
   state = {
     isPlaying: false,
-    hideCover: false,
+    hideCover: false
   }
 
   playVideo = () => {
     this.setState({
       isPlaying: true,
-      hideCover: true,
+      hideCover: true
     })
   }
 
-  onPlayToggle = isPlaying => {
+  onPlayToggle = (isPlaying) => {
     if (!isPlaying) {
       this.setState({
-        isPlaying,
+        isPlaying
       })
       setTimeout(this.setHideCover.bind(this), 30000)
     } else {
       this.setState({
         isPlaying,
-        hideCover: true,
+        hideCover: true
       })
     }
   }
@@ -68,19 +66,27 @@ export class VideoLayout extends Component<Props, State> {
   setHideCover = () => {
     if (!this.state.isPlaying) {
       this.setState({
-        hideCover: false,
+        hideCover: false
       })
     }
   }
 
   render() {
-    const { article, seriesArticle, relatedArticles } = this.props
+    const {
+      article,
+      seriesArticle,
+      relatedArticles
+    } = this.props
     const { media } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
-    const seriesLink = seriesArticle && getEditorialHref("series", seriesArticle.slug)
+    const seriesLink = seriesArticle && getEditorialHref('series', seriesArticle.slug)
     return (
       <VideoLayoutContainer>
-        <Nav transparent sponsor={sponsor} canFix={false} />
+        <Nav
+          transparent
+          sponsor={sponsor}
+          canFix={false}
+        />
         <VideoPlayerContainer>
           <VideoPlayer
             url={media.url}
@@ -98,42 +104,56 @@ export class VideoLayout extends Component<Props, State> {
           />
         </VideoPlayerContainer>
         <MaxRow>
-          <VideoAbout article={article} color="white" />
+          <VideoAbout
+            article={article}
+            color="white"
+          />
         </MaxRow>
-        {relatedArticles && (
+        {relatedArticles &&
           <MaxRow>
             <RelatedArticlesTitle>
               {"More in "}
-              {seriesArticle ? (
-                <Link href={seriesLink}>{seriesArticle.title}</Link>
-              ) : (
+              {seriesArticle ?
+                <Link href={seriesLink}>
+                  {seriesArticle.title}
+                </Link>
+                :
                 <span>{article.vertical && article.vertical.name}</span>
-              )}
+              }
             </RelatedArticlesTitle>
           </MaxRow>
-        )}
+        }
         {relatedArticles &&
           relatedArticles.map((relatedArticle, i) => {
             return (
               <MaxRow key={i}>
                 <Col xs={12}>
-                  <ArticleCard article={relatedArticle} color="white" series={seriesArticle} />
+                  <ArticleCard
+                    article={relatedArticle}
+                    color="white"
+                    series={seriesArticle}
+                  />
                 </Col>
               </MaxRow>
             )
-          })}
-        {seriesArticle && (
+          })
+        }
+        {seriesArticle &&
           <MaxRow>
-            <SeriesAbout article={seriesArticle} color="white" />
+            <SeriesAbout
+              article={seriesArticle}
+              color="white"
+            />
           </MaxRow>
-        )}
+        }
       </VideoLayoutContainer>
     )
   }
 }
 
-const RelatedArticlesTitle = styled(Col)`
-  ${Fonts.unica("s32")} width: 100%;
+const RelatedArticlesTitle = styled(Col) `
+  ${Fonts.unica("s32")}
+  width: 100%;
 `
 
 const VideoLayoutContainer = styled.div`
@@ -165,7 +185,7 @@ const VideoLayoutContainer = styled.div`
     ${SeriesAboutContainer}, ${VideoAboutContainer} {
       margin: 40px 0 100px 0;
     }
-  `};
+  `}
 `
 
 const VideoPlayerContainer = styled.div`
@@ -186,5 +206,5 @@ const Link = styled.a`
 
   ${media.sm`
     display: block;
-  `};
+  `}
 `

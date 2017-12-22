@@ -20,10 +20,9 @@ exports[`Scrubber matches the snapshot 1`] = `
 
 .c0::-ms-track {
   width: 100%;
-  height: 2px;
   cursor: pointer;
   background: transparent;
-  border: 0px;
+  border-color: transparent;
   color: transparent;
 }
 
@@ -47,7 +46,8 @@ exports[`Scrubber matches the snapshot 1`] = `
 
 .c0::-webkit-slider-thumb {
   color: white;
-  border: 0px;
+  box-shadow: 0px 0px 0px white;
+  border: 0px solid #E3E3E3;
   height: 12px;
   width: 12px;
   border-radius: 50px;
@@ -62,32 +62,7 @@ exports[`Scrubber matches the snapshot 1`] = `
 .c0::-moz-range-thumb {
   color: white;
   box-shadow: 0px 0px 0px white;
-  border: 0px;
-  height: 12px;
-  width: 12px;
-  border-radius: 50px;
-  background: white;
-  cursor: pointer;
-  margin-top: -5px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c0::-ms-fill-lower {
-  background: white;
-  border: 0px;
-}
-
-.c0::-ms-fill-upper {
-  background: white;
-  border: 0px;
-}
-
-.c0::-ms-thumb {
-  color: white;
-  box-shadow: 0px 0px 0px white;
-  border: 0px;
+  border: 0px solid #E3E3E3;
   height: 12px;
   width: 12px;
   border-radius: 50px;

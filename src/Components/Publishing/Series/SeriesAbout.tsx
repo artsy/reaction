@@ -24,35 +24,32 @@ export class SeriesAbout extends Component<Props, null> {
       <SeriesAboutContainer color={color}>
         <StyledCol xs={12} sm={4}>
           <Title>About the Series</Title>
-          {sponsor && (
+          {sponsor &&
             <PartnerBlock
               logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
-                type: "external link",
-                destination_path: sponsor.partner_logo_link,
+                type: 'external link',
+                destination_path: sponsor.partner_logo_link
               }}
             />
-          )}
+          }
         </StyledCol>
         <StyledCol xs={12} sm={8}>
-          {editDescription ? (
-            <Text layout="standard" color={color}>
-              {editDescription}
-            </Text>
-          ) : (
-            <Text layout="standard" color={color} html={series_description} />
-          )}
-          {sponsor && (
+          {editDescription
+            ? <Text layout='standard' color={color}>{editDescription}</Text>
+            : <Text layout='standard' color={color} html={series_description} />
+          }
+          {sponsor &&
             <PartnerBlock
               logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
-                type: "external link",
-                destination_path: sponsor.partner_logo_link,
+                type: 'external link',
+                destination_path: sponsor.partner_logo_link
               }}
             />
-          )}
+          }
         </StyledCol>
       </SeriesAboutContainer>
     )
@@ -60,7 +57,7 @@ export class SeriesAbout extends Component<Props, null> {
 }
 
 SeriesAbout.defaultProps = {
-  color: "black",
+  color: 'black'
 }
 
 interface ColProps {
@@ -71,9 +68,8 @@ const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = 
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
   max-width: 1200px;
-  width: 100%;
 `
-const StyledCol = styled(Col)`
+const StyledCol = styled(Col) `
   ${PartnerBlockContainer} {
     display: none;
   }
@@ -99,11 +95,12 @@ const StyledCol = styled(Col)`
       margin-top: 60px;
       display: block;
     }
-  `};
+  `}
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s32")} ${props => media.sm`
+  ${Fonts.unica("s32")}
+  ${props => media.sm`
     margin-bottom: 20px;
-  `};
+  `}
 `
