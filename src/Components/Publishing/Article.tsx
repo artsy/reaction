@@ -30,7 +30,8 @@ export interface ArticleProps {
     page: "Article",
     entity_type: "article",
     entity_id: props.article.id
-  }}, {
+  }
+}, {
     dispatch: data => Events.postEvent(data)
   }
 )
