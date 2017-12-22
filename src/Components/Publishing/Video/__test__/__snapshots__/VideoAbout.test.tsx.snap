@@ -245,6 +245,7 @@ exports[`Video About matches the snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
 .c0 .c5 {
@@ -914,6 +915,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
 .c0 .c5 {

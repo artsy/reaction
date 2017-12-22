@@ -202,6 +202,7 @@ exports[`renders a series about properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c2 .file__PartnerBlockContainer-s1joucmt-0 {
@@ -596,6 +597,7 @@ exports[`renders a sponsored series about properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c2 .c5 {
@@ -1028,6 +1030,7 @@ exports[`renders series about with children properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c2 .file__PartnerBlockContainer-s1joucmt-0 {
