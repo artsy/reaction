@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import { Col } from 'react-styled-flexboxgrid'
+import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
 import { Fonts } from "../Fonts"
-import { Text } from '../Sections/Text'
+import { Text } from "../Sections/Text"
 
 interface Props {
   article: any
@@ -19,46 +19,31 @@ interface TitleProps {
 
 export class VideoAbout extends Component<Props, null> {
   static defaultProps = {
-    color: "black"
+    color: "black",
   }
 
   render() {
-    const {
-      article,
-      color,
-      editCredits,
-      editDescription
-    } = this.props
+    const { article, color, editCredits, editDescription } = this.props
     const { media } = article
 
     return (
       <VideoAboutContainer>
         <Col xs={12} sm={4}>
-          <Title color={color}>
-            Credits
-          </Title>
-          {editCredits
-            ? <Text layout="standard">{editCredits}</Text>
-            : <Text layout="standard" html={media.credits} />
-          }
-          <ShareDate
-            color={color}
-            article={article}
-          />
+          <Title color={color}>Credits</Title>
+          {editCredits ? <Text layout="standard">{editCredits}</Text> : <Text layout="standard" html={media.credits} />}
+          <ShareDate color={color} article={article} />
         </Col>
 
         <Col xs={12} sm={8}>
-          <Title color={color}>
-            About the Film
-          </Title>
-          {editDescription
-            ? <Text color={color} layout='standard'>{editDescription}</Text>
-            : <Text color={color} layout="standard" html={media.description} />
-          }
-          <ShareDate
-            color={color}
-            article={article}
-          />
+          <Title color={color}>About the Film</Title>
+          {editDescription ? (
+            <Text color={color} layout="standard">
+              {editDescription}
+            </Text>
+          ) : (
+            <Text color={color} layout="standard" html={media.description} />
+          )}
+          <ShareDate color={color} article={article} />
         </Col>
       </VideoAboutContainer>
     )
@@ -78,6 +63,7 @@ const Title = Div`
 
 export const VideoAboutContainer = styled.div`
   display: flex;
+
   ${ShareDate} {
     margin-top: 40px;
   }
@@ -92,7 +78,7 @@ export const VideoAboutContainer = styled.div`
     }
   }
 
-  ${Col}:nth-of-type(2) {
+  ${Col}:nth-of-type (2) {
     ${ShareDate} {
       display: none;
     }
@@ -117,5 +103,5 @@ export const VideoAboutContainer = styled.div`
         align-self: flex-start;
       }
     }
-  `}
+  `};
 `
