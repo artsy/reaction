@@ -11961,6 +11961,20 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "page",
                   "description": "Pagination, need I say more?",
                   "type": {
@@ -26538,6 +26552,20 @@
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null
                 },
@@ -42056,6 +42084,39 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Artist",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "popular_artists",
+              "description": "Popular artists",
+              "args": [
+                {
+                  "name": "exclude_followed_artists",
+                  "description": "If true, will exclude followed artists for the user",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "size",
+                  "description": "Number of results to return",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "PopularArtists",
                 "ofType": null
               },
               "isDeprecated": false,
