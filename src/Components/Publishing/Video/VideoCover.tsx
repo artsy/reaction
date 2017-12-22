@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Col } from 'react-styled-flexboxgrid'
+import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
@@ -42,15 +42,7 @@ export class VideoCover extends Component<Props, null> {
   }
 
   render() {
-    const {
-      article,
-      editDescription,
-      editTitle,
-      hideCover,
-      media,
-      seriesLink,
-      seriesTitle
-    } = this.props
+    const { article, editDescription, editTitle, hideCover, media, seriesLink, seriesTitle } = this.props
 
     return (
       <VideoCoverContainer hideCover={hideCover}>
@@ -58,11 +50,7 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverOverlay />
         <VideoCoverInfo>
           <VideoCoverInfoRow>
-            <Col
-              xs={2}
-              sm={1}
-              onClick={this.onPlayClick}
-            >
+            <Col xs={2} sm={1} onClick={this.onPlayClick}>
               <IconVideoPlay color="white" />
             </Col>
             <Col xs={10} sm={6}>
@@ -75,9 +63,7 @@ export class VideoCover extends Component<Props, null> {
               />
             </Col>
             <Col xs={12} sm={7}>
-              <MediaDescription>
-                {editDescription || article.description}
-              </MediaDescription>
+              <MediaDescription>{editDescription || article.description}</MediaDescription>
             </Col>
           </VideoCoverInfoRow>
         </VideoCoverInfo>
@@ -94,10 +80,10 @@ export const VideoCoverAsset = Div`
 `
 
 const VideoCoverOverlay = styled.div`
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
 `
 
-const VideoCoverInfoRow = styled(MaxRow) `
+const VideoCoverInfoRow = styled(MaxRow)`
   width: 100%;
   align-items: flex-end;
 `
@@ -116,7 +102,7 @@ const VideoCoverInfo = styled.div`
   }
   ${media.sm`
     padding-bottom: 40px;
-  `}
+  `};
 `
 
 const CoverDiv: StyledFunction<CoverProps> = styled.div
@@ -125,11 +111,12 @@ export const VideoCoverContainer = CoverDiv`
   width: 100vw;
   height: 100vh;
   color: white;
-  opacity: ${props => props.hideCover ? '0' : '1'};
-  visibility: ${props => props.hideCover ? 'hidden' : 'visible'};
+  opacity: ${props => (props.hideCover ? "0" : "1")};
+  visibility: ${props => (props.hideCover ? "hidden" : "visible")};
   transition: opacity 0.25s ease, visibility 0.25s ease;
   ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
   }
@@ -138,8 +125,8 @@ export const VideoCoverContainer = CoverDiv`
 const MediaDescription = styled.div`
   position: relative;
   margin-top: 30px;
-  ${Fonts.garamond("s23")}
+  ${Fonts.garamond("s23")};
   ${media.sm`
     ${Fonts.garamond("s19")}
-  `}
+  `};
 `
