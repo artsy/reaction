@@ -144,7 +144,7 @@ export class GeneArtworks extends React.Component<Props, State> {
 }
 
 export default createFragmentContainer(GeneArtworks, {
-  gene: graphql.experimental`
+  gene: graphql`
     fragment GeneArtworks_gene on Gene
       @argumentDefinitions(
         for_sale: { type: "Boolean" }

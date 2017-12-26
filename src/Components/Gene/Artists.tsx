@@ -145,7 +145,7 @@ export class Artists extends React.Component<Props, State> {
 export default createPaginationContainer(
   Artists,
   {
-    gene: graphql.experimental`
+    gene: graphql`
       fragment Artists_gene on Gene
         @argumentDefinitions(
           aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
@@ -195,7 +195,7 @@ export default createPaginationContainer(
         geneNodeID: props.gene.__id,
       }
     },
-    query: graphql.experimental`
+    query: graphql`
       query ArtistsQuery($geneNodeID: ID!, $count: Int!, $cursor: String, $aggregations: [ArtworkAggregation]) {
         node(__id: $geneNodeID) {
           ...Artists_gene @arguments(count: $count, cursor: $cursor, aggregations: $aggregations)

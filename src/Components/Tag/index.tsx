@@ -87,7 +87,7 @@ class TagContents extends React.Component<Props, State> {
     return (
       <QueryRenderer
         environment={relayEnvironment}
-        query={graphql.experimental`
+        query={graphql`
           query TagContentsArtworksQuery(
             $tagID: String!
             $medium: String

@@ -129,7 +129,7 @@ class GeneContents extends React.Component<Props, State> {
     return (
       <QueryRenderer
         environment={relayEnvironment}
-        query={graphql.experimental`
+        query={graphql`
           query GeneContentsArtworksQuery(
             $geneID: String!
             $medium: String
