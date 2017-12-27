@@ -4,21 +4,22 @@ import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayP
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
+import { FollowProps } from "../../Types"
 
 export interface RelayProps {
+  relay?: RelayProp
   popular_artists: {
     artists?: any[]
   }
 }
 
-interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps {
-  relay?: RelayProp
-}
+interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps, FollowProps {}
 
-class PopularArtistsContent extends React.Component<Props, any> {
+class PopularArtistsContent extends React.Component<Props, null> {
   private excludedArtistIds: Set<string>
+  followCount: number = 0
 
-  constructor(props: RelayProps, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(this.props.popular_artists.artists.map(item => item._id))
   }
@@ -38,6 +39,10 @@ class PopularArtistsContent extends React.Component<Props, any> {
       .map(artist => (artist.getDataID() === artistId ? artistToSuggest : artist))
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
+
+    this.followCount = this.followCount + 1
+
+    this.props.updateFollowCount(this.followCount)
   }
 
   onFollowedArtist(artist: any) {
@@ -129,7 +134,7 @@ const PopularArtistContentContainer = createFragmentContainer(
   `
 )
 
-const PopularArtistsComponent: React.SFC<ContextProps> = ({ relayEnvironment }) => {
+const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({ relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -143,7 +148,12 @@ const PopularArtistsComponent: React.SFC<ContextProps> = ({ relayEnvironment }) 
       variables={{}}
       render={({ error, props }) => {
         if (props) {
-          return <PopularArtistContentContainer popular_artists={props.popular_artists} />
+          return (
+            <PopularArtistContentContainer
+              popular_artists={props.popular_artists}
+              updateFollowCount={updateFollowCount}
+            />
+          )
         } else {
           return null
         }

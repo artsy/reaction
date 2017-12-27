@@ -4,3 +4,7 @@
 export interface StepProps {
   onNextButtonPressed: () => void
 }
+
+export interface FollowProps {
+  updateFollowCount: (count: number) => void
+}
