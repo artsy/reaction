@@ -42,12 +42,16 @@ export default class Genes extends React.Component<StepProps, State> {
     this.setState({ inputText: "" })
   }
 
+  clickedNext() {
+    this.props.onNextButtonPressed()
+  }
+
   render() {
     return (
       <Layout
         title="Follow art categories that interest you most"
         subtitle="Follow one or more"
-        onNextButtonPressed={null}
+        onNextButtonPressed={this.clickedNext.bind(this)}
       >
         <OnboardingSearchBox>
           <Input

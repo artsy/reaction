@@ -42,11 +42,7 @@ class Wizard extends React.Component<Props, State> {
 
   render() {
     const step = this.getCurrentStep()
-    return (
-      <div>
-        {step}
-      </div>
-    )
+    return <div>{step}</div>
   }
 }
 
