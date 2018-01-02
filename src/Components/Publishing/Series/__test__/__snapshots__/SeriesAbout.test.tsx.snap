@@ -202,9 +202,10 @@ exports[`renders a series about properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c2 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
@@ -222,8 +223,9 @@ exports[`renders a series about properly 1`] = `
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -236,7 +238,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -246,7 +248,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -256,7 +258,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c5 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -266,7 +268,7 @@ exports[`renders a series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c5 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -332,11 +334,11 @@ exports[`renders a series about properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c2 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }
@@ -420,6 +422,7 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c6 img {
   max-width: 220px;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c7 {
@@ -594,6 +597,7 @@ exports[`renders a sponsored series about properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
 .c2 .c5 {
@@ -616,6 +620,7 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c2:first-of-type .c5 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -628,7 +633,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -638,7 +643,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -648,7 +653,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:0em) {
   .c8 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -658,7 +663,7 @@ exports[`renders a sponsored series about properly 1`] = `
 @media only screen and (min-width:48em) {
   .c8 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -781,7 +786,7 @@ exports[`renders a sponsored series about properly 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png"
         />
       </a>
     </div>
@@ -815,7 +820,7 @@ exports[`renders a sponsored series about properly 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png"
         />
       </a>
     </div>
@@ -1025,9 +1030,10 @@ exports[`renders series about with children properly 1`] = `
 .c0 {
   color: black;
   max-width: 1200px;
+  width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-s1ud23oi-0 {
+.c2 .file__PartnerBlockContainer-s1joucmt-0 {
   display: none;
 }
 
@@ -1045,8 +1051,9 @@ exports[`renders series about with children properly 1`] = `
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+.c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
   display: block;
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -1059,7 +1066,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1069,7 +1076,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:48em) {
   .c3 {
     -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
     max-width: 33.333333333333336%;
     display: block;
@@ -1079,7 +1086,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:0em) {
   .c5 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -1089,7 +1096,7 @@ exports[`renders series about with children properly 1`] = `
 @media only screen and (min-width:48em) {
   .c5 {
     -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
@@ -1155,11 +1162,11 @@ exports[`renders series about with children properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-s1ud23oi-0 {
+  .c2 .file__PartnerBlockContainer-s1joucmt-0 {
     margin-top: 60px;
     display: block;
   }

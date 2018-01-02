@@ -24,7 +24,6 @@ interface DivProps {
 export class NavComponent extends React.Component<Props, State> {
   static defaultProps = {
     canFix: true,
-    title: "Artsy Editorial",
     transparent: false
   }
 
@@ -59,13 +58,16 @@ export class NavComponent extends React.Component<Props, State> {
           isFixed={canFix && isFixed}
         >
           <PartnerInline
-            url={sponsor && sponsor.url}
+            url={sponsor && sponsor.partner_logo_link}
             logo={sponsor && sponsor.partner_condensed_logo}
             color="white"
             margin="0 10px"
           />
           <Title>
-            {title}
+            {title
+              ? title
+              : <a href="/magazine">Artsy Editorial</a>
+            }
           </Title>
         </NavContainer>
         <Waypoint
@@ -94,6 +96,7 @@ const NavContainer = Div`
   `}
 `
 export const Nav = styled(NavComponent) `
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,7 +114,11 @@ const Title = styled.div`
   width: 100%;
   text-align: center;
   font-weight: 600;
+  a {
+    color: white;
+    text-decoration: none;
+  }
   ${pMedia.sm`
-    position: relative;
+    display: none;
   `}
 `

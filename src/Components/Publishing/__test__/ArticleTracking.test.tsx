@@ -1,6 +1,8 @@
-import { mount } from "enzyme"
 import "jest-styled-components"
+
+import { mount } from "enzyme"
 import React from "react"
+
 import Events from "../../../Utils/Events"
 import { Article } from "../Article"
 import { getArticleFullHref } from "../Constants"
@@ -21,5 +23,8 @@ it("emits analytics events to an event emitter", done => {
   })
   const shareUrl = getArticleFullHref(StandardArticle.slug)
   const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
-  article.find(`[href='${fbURL}']`).first().simulate("click")
+  article
+    .find(`[href='${fbURL}']`)
+    .first()
+    .simulate("click")
 })

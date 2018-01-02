@@ -66,6 +66,11 @@ exports[`Video Cover matches the snapshot 1`] = `
   margin-right: 35px;
 }
 
+.c14 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c16 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -121,7 +126,9 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c0 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;
@@ -151,7 +158,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c10 {
     -webkit-flex-basis: 16.666666666666668%;
-    -ms-flex-basis: 16.666666666666668%;
+    -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
     max-width: 16.666666666666668%;
     display: block;
@@ -161,7 +168,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c10 {
     -webkit-flex-basis: 8.333333333333334%;
-    -ms-flex-basis: 8.333333333333334%;
+    -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
     max-width: 8.333333333333334%;
     display: block;
@@ -170,10 +177,10 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 @media only screen and (min-width:0em) {
   .c13 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-preferred-size: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
     display: block;
   }
 }
@@ -181,7 +188,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c13 {
     -webkit-flex-basis: 50%;
-    -ms-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
     max-width: 50%;
     display: block;
@@ -191,7 +198,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 @media only screen and (min-width:0em) {
   .c17 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -201,7 +208,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c17 {
     -webkit-flex-basis: 58.333333333333336%;
-    -ms-flex-basis: 58.333333333333336%;
+    -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
     max-width: 58.333333333333336%;
     display: block;
@@ -373,6 +380,11 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   margin-right: 35px;
 }
 
+.c14 a {
+  color: white;
+  text-decoration: none;
+}
+
 .c16 {
   position: relative;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -428,7 +440,9 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c0 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   color: white;
@@ -458,7 +472,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 @media only screen and (min-width:0em) {
   .c10 {
     -webkit-flex-basis: 16.666666666666668%;
-    -ms-flex-basis: 16.666666666666668%;
+    -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
     max-width: 16.666666666666668%;
     display: block;
@@ -468,7 +482,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 @media only screen and (min-width:48em) {
   .c10 {
     -webkit-flex-basis: 8.333333333333334%;
-    -ms-flex-basis: 8.333333333333334%;
+    -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
     max-width: 8.333333333333334%;
     display: block;
@@ -477,10 +491,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 
 @media only screen and (min-width:0em) {
   .c13 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-basis: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
+    -webkit-flex-basis: 83.33333333333334%;
+    -ms-flex-preferred-size: 83.33333333333334%;
+    flex-basis: 83.33333333333334%;
+    max-width: 83.33333333333334%;
     display: block;
   }
 }
@@ -488,7 +502,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 @media only screen and (min-width:48em) {
   .c13 {
     -webkit-flex-basis: 50%;
-    -ms-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
     max-width: 50%;
     display: block;
@@ -498,7 +512,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 @media only screen and (min-width:0em) {
   .c17 {
     -webkit-flex-basis: 100%;
-    -ms-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     max-width: 100%;
     display: block;
@@ -508,7 +522,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 @media only screen and (min-width:48em) {
   .c17 {
     -webkit-flex-basis: 58.333333333333336%;
-    -ms-flex-basis: 58.333333333333336%;
+    -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
     max-width: 58.333333333333336%;
     display: block;

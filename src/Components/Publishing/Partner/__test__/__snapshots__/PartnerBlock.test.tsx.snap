@@ -3,6 +3,7 @@
 exports[`renders the partner block 1`] = `
 .c0 img {
   max-width: 220px;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c1 {

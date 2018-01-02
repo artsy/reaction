@@ -30,4 +30,5 @@ export class PlayPause extends React.PureComponent<Props, null> {
 const PlayPauseContainer = styled.div`
   height: 28px;
   width: 28px;
+  cursor: pointer;
 `

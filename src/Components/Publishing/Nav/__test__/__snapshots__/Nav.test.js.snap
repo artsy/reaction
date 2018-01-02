@@ -24,6 +24,7 @@ exports[`Nav renders a Nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {
@@ -41,6 +42,7 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,6 +76,11 @@ exports[`Nav renders a Nav 1`] = `
   font-weight: 600;
 }
 
+.c5 a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (max-width:720px) {
   .c2 img {
     max-height: 24px;
@@ -90,7 +97,7 @@ exports[`Nav renders a Nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -116,7 +123,11 @@ exports[`Nav renders a Nav 1`] = `
     <div
       className="c5"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span
@@ -158,6 +169,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .c5 {
@@ -175,6 +187,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -208,6 +221,11 @@ exports[`Nav renders a sponsored nav 1`] = `
   font-weight: 600;
 }
 
+.c7 a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (max-width:900px) {
   .c6 {
     width: 13px;
@@ -231,7 +249,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -290,19 +308,23 @@ exports[`Nav renders a sponsored nav 1`] = `
         </g>
       </svg>
       <a
-        href={undefined}
+        href="http://artsy.net"
         onClick={[Function]}
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
         />
       </a>
     </div>
     <div
       className="c7"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span
@@ -339,6 +361,7 @@ exports[`Nav renders a transparent nav 1`] = `
 .c2 img {
   max-height: 32px;
   vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c2 .file__IconPlus-s100ic91-0 {
@@ -358,6 +381,7 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c0 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -391,6 +415,11 @@ exports[`Nav renders a transparent nav 1`] = `
   font-weight: 600;
 }
 
+.c5 a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (max-width:720px) {
   .c2 img {
     max-height: 24px;
@@ -407,7 +436,7 @@ exports[`Nav renders a transparent nav 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    position: relative;
+    display: none;
   }
 }
 
@@ -433,7 +462,11 @@ exports[`Nav renders a transparent nav 1`] = `
     <div
       className="c5"
     >
-      Artsy Editorial
+      <a
+        href="/magazine"
+      >
+        Artsy Editorial
+      </a>
     </div>
   </div>
   <span

@@ -6,8 +6,8 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-  max-width: 170px;
+.c0 .file__PartnerBlockContainer-s1joucmt-0 img {
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -23,8 +23,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
+  .c0 .file__PartnerBlockContainer-s1joucmt-0 img {
     padding-bottom: 0;
   }
 }
@@ -57,8 +56,8 @@ exports[`renders a series with children properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-  max-width: 170px;
+.c0 .file__PartnerBlockContainer-s1joucmt-0 img {
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -74,8 +73,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s1ud23oi-0 img {
-    max-width: 200px;
+  .c0 .file__PartnerBlockContainer-s1joucmt-0 img {
     padding-bottom: 0;
   }
 }
@@ -108,6 +106,7 @@ exports[`renders a series with children properly 1`] = `
 exports[`renders a sponsored series title properly 1`] = `
 .c3 img {
   max-width: 220px;
+  -ms-interpolation-mode: bicubic;
 }
 
 .c4 {
@@ -124,7 +123,7 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 .c0 .c2 img {
-  max-width: 170px;
+  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -156,7 +155,6 @@ exports[`renders a sponsored series title properly 1`] = `
 
 @media (max-width:900px) {
   .c0 .c2 img {
-    max-width: 200px;
     padding-bottom: 0;
   }
 }
@@ -194,7 +192,7 @@ exports[`renders a sponsored series title properly 1`] = `
       target="_blank"
     >
       <img
-        src="https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png"
+        src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
       />
     </a>
   </div>

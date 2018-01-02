@@ -81,24 +81,22 @@ const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = st
 
 const ScrubberInput = Input`
   width: 100%;
-  background-size: ${props => (props.currentTime * 100) / props.duration }% 100%;
+  background-size: ${props => props.currentTime * 100 / props.duration}% 100%;
   height: 18px;
   margin-top: 15px;
   appearance: none;
   background: transparent;
-
   ::-webkit-slider-thumb {
     appearance: none;
   }
-
   ::-ms-track {
     width: 100%;
+    height: 2px;
     cursor: pointer;
     background: transparent;
-    border-color: transparent;
+    border: 0px;
     color: transparent;
   }
-
   ::-webkit-slider-runnable-track {
     height: 2px;
     cursor: pointer;
@@ -106,7 +104,6 @@ const ScrubberInput = Input`
     background-color: white;
     border: 0px;
   }
-
   ::-moz-range-track {
     height: 2px;
     cursor: pointer;
@@ -114,11 +111,9 @@ const ScrubberInput = Input`
     background-color: white;
     border: 0px;
   }
-
   ::-webkit-slider-thumb {
     color: white;
-    box-shadow: 0px 0px 0px white;
-    border: 0px solid #E3E3E3;
+    border: 0px;
     height: 12px;
     width: 12px;
     border-radius: 50px;
@@ -127,11 +122,10 @@ const ScrubberInput = Input`
     margin-top: -5px;
     appearance: none;
   }
-
   ::-moz-range-thumb {
     color: white;
     box-shadow: 0px 0px 0px white;
-    border: 0px solid #E3E3E3;
+    border: 0px;
     height: 12px;
     width: 12px;
     border-radius: 50px;
@@ -140,11 +134,29 @@ const ScrubberInput = Input`
     margin-top: -5px;
     appearance: none;
   }
-
+  ::-ms-fill-lower {
+    background: white;
+    border: 0px;
+  }
+  ::-ms-fill-upper {
+    background: white;
+    border: 0px;
+  }
+  ::-ms-thumb {
+    color: white;
+    box-shadow: 0px 0px 0px white;
+    border: 0px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    background: white;
+    cursor: pointer;
+    margin-top: -5px;
+    appearance: none;
+  }
   &:focus::-webkit-slider-runnable-track {
     background: white;
   }
-
   &:focus {
     outline: none;
   }

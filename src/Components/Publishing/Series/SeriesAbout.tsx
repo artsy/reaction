@@ -18,6 +18,7 @@ export class SeriesAbout extends Component<Props, null> {
   render() {
     const { article, color, editDescription } = this.props
     const { series_description, sponsor } = article
+    const sponsorLogo = sponsor && (color === "black" ? sponsor.partner_dark_logo : sponsor.partner_light_logo)
 
     return (
       <SeriesAboutContainer color={color}>
@@ -25,7 +26,7 @@ export class SeriesAbout extends Component<Props, null> {
           <Title>About the Series</Title>
           {sponsor &&
             <PartnerBlock
-              logo={sponsor.partner_light_logo}
+              logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
                 type: 'external link',
@@ -41,7 +42,7 @@ export class SeriesAbout extends Component<Props, null> {
           }
           {sponsor &&
             <PartnerBlock
-              logo={sponsor.partner_light_logo}
+              logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
                 type: 'external link',
@@ -67,6 +68,7 @@ const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = 
 export const SeriesAboutContainer = Div`
   color: ${props => props.color};
   max-width: 1200px;
+  width: 100%;
 `
 const StyledCol = styled(Col) `
   ${PartnerBlockContainer} {
@@ -79,6 +81,7 @@ const StyledCol = styled(Col) `
     flex-direction: column;
     ${PartnerBlockContainer} {
       display: block;
+      margin-bottom: 10px;
     }
   }
 

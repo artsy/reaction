@@ -78,6 +78,8 @@ const Title = Div`
 
 export const VideoAboutContainer = styled.div`
   display: flex;
+  width: 100%;
+
   ${ShareDate} {
     margin-top: 40px;
   }

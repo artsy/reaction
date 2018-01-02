@@ -1,5 +1,5 @@
 import { get, memoize } from "lodash"
-import React, { Component, HTMLProps  } from "react"
+import React, { Component, HTMLProps } from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
@@ -24,22 +24,25 @@ interface State {
   showCoverImage: boolean
 }
 
-@track({ page: "Article" }, {
-  dispatch: data => Events.postEvent(data)
-})
+@track(
+  { page: "Article" },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class DisplayPanel extends Component<Props, State> {
   public video: HTMLVideoElement
 
   state = {
     isMuted: true,
     isPlaying: false,
-    showCoverImage: false
+    showCoverImage: false,
   }
 
   static defaultProps = {
     tracking: {
-      trackEvent: x => x
-    }
+      trackEvent: x => x,
+    },
   }
 
   constructor(props) {
@@ -86,23 +89,23 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  trackDuration = memoize((percentComplete) => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
       percent_complete: percentComplete,
       campaign_name: this.props.campaign.name,
-      unit_layout: "panel"
+      unit_layout: "panel",
     })
   })
 
-  trackSeconds = memoize((secondsComplete) => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",
       seconds_complete: secondsComplete,
       campaign_name: this.props.campaign.name,
-      unit_layout: "panel"
+      unit_layout: "panel",
     })
   })
 
@@ -114,7 +117,7 @@ export class DisplayPanel extends Component<Props, State> {
       "VideoContainer__VideoControls",
       "VideoContainer__video",
       "PlayButton",
-      "PlayButton__PlayButtonCaret"
+      "PlayButton__PlayButtonCaret",
     ]
     const withinMediaArea = valid.some(className => event.target.className.includes(className))
     return withinMediaArea
@@ -133,7 +136,7 @@ export class DisplayPanel extends Component<Props, State> {
         label: "Display ad clickthrough",
         entity_type: "display_ad",
         campaign_name: campaign.name,
-        unit_layout: "panel"
+        unit_layout: "panel",
       })
 
       window.open(url, "_blank")
@@ -185,7 +188,7 @@ export class DisplayPanel extends Component<Props, State> {
           label: "Display ad play video",
           entity_type: "display_ad",
           campaign_name: this.props.campaign.name,
-          unit_layout: "panel"
+          unit_layout: "panel",
         })
       } else {
         this.toggleCoverImage()
@@ -212,7 +215,7 @@ export class DisplayPanel extends Component<Props, State> {
     if (this.props.unit.logo) {
       const showCoverImage = !this.state.showCoverImage
       this.setState({
-        showCoverImage
+        showCoverImage,
       })
     }
   }
@@ -230,7 +233,7 @@ export class DisplayPanel extends Component<Props, State> {
       this.video.pause()
 
       this.setState({
-        isPlaying: false
+        isPlaying: false,
       })
     }
   }
@@ -240,7 +243,7 @@ export class DisplayPanel extends Component<Props, State> {
       this.video.play()
 
       this.setState({
-        isPlaying: true
+        isPlaying: true,
       })
     }
   }
@@ -254,7 +257,7 @@ export class DisplayPanel extends Component<Props, State> {
       label: "Display ad play video",
       entity_type: "display_ad",
       campaign_name: this.props.campaign.name,
-      unit_layout: "panel"
+      unit_layout: "panel",
     })
   }
 
@@ -264,7 +267,7 @@ export class DisplayPanel extends Component<Props, State> {
     return isVideo
   }
 
-  toggleMuted = (e) => {
+  toggleMuted = e => {
     e.stopPropagation()
     this.setState({ isMuted: !this.state.isMuted })
   }
@@ -280,9 +283,7 @@ export class DisplayPanel extends Component<Props, State> {
         <MutedIcon onClick={this.toggleMuted}>
           <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
             <g fill="#FFF">
-              <path
-                d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z"
-              />
+              <path d="M29.514 28L19.13 17.614 9.557 8.043 1.514 0 0 1.514l6.529 6.529H.757V21.47H11.83l7.3 7.286v-8.114L28 29.514zM19.129.757l-7.3 7.286 7.3 7.3z" />
             </g>
           </svg>
         </MutedIcon>
@@ -308,17 +309,14 @@ export class DisplayPanel extends Component<Props, State> {
 
     return (
       <VideoContainer className="VideoContainer">
-        {!isPlaying &&
+        {!isPlaying && (
           <VideoCover className="VideoContainer__VideoCover">
-            {isMobile &&
-              <VideoControls mini
-                className="VideoContainer__VideoControls"
-              />
-            }
+            {isMobile && <VideoControls mini className="VideoContainer__VideoControls" />}
           </VideoCover>
-        }
+        )}
 
-        <video playsInline
+        <video
+          playsInline
           src={url}
           className="VideoContainer__video"
           controls={false}
@@ -340,37 +338,27 @@ export class DisplayPanel extends Component<Props, State> {
     const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
 
     return (
-      <Wrapper
-        onClick={this.handleClick}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
+      <Wrapper onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         <DisplayPanelContainer
-          className='DisplayPanel__DisplayPanelContainer'
+          className="DisplayPanel__DisplayPanelContainer"
           imageUrl={imageUrl}
           isMobile={isMobile}
           hoverImageUrl={hoverImageUrl}
           coverUrl={coverUrl}
-          showCoverImage={showCoverImage}>
-
-          {isVideo
-            ? this.renderVideo(url)
-            : <Image
-                className='DisplayPanel__Image'
-              /> }
+          showCoverImage={showCoverImage}
+        >
+          {isVideo ? this.renderVideo(url) : <Image className="DisplayPanel__Image" />}
 
           <div>
-            <Headline>
-              {unit.headline}
-            </Headline>
+            <Headline>{unit.headline}</Headline>
 
-            <Body dangerouslySetInnerHTML={{
-              __html: unit.body
-            }} />
+            <Body
+              dangerouslySetInnerHTML={{
+                __html: unit.body,
+              }}
+            />
 
-            <SponsoredBy>
-              {`Sponsored by ${campaign.name}`}
-            </SponsoredBy>
+            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
           </div>
         </DisplayPanelContainer>
       </Wrapper>
@@ -393,7 +381,7 @@ const Wrapper = styled.div`
 
   ${breakpoint.sm`
     margin: 0 auto;
-  `}
+  `};
 `
 
 const Image = styled.div`
@@ -419,18 +407,24 @@ const DisplayPanelContainer = div`
   max-width: 360px;
   box-sizing: border-box;
   ${Image} {
-    background: url(${p => (p.imageUrl || "")}) no-repeat center center;
+    background: url(${p => p.imageUrl || ""}) no-repeat center center;
     background-size: cover;
-    ${p => p.showCoverImage && p.hoverImageUrl && `
+    ${p =>
+      p.showCoverImage &&
+      p.hoverImageUrl &&
+      `
       background: black url(${p.hoverImageUrl}) no-repeat center center;
       background-size: contain;
       border: 10px solid black;
     `}
   }
   ${VideoCover} {
-    background: url(${p => (p.coverUrl || "")}) no-repeat center center;
+    background: url(${p => p.coverUrl || ""}) no-repeat center center;
     background-size: cover;
-    ${p => p.showCoverImage && !p.isMobile && `
+    ${p =>
+      p.showCoverImage &&
+      !p.isMobile &&
+      `
       display: none;
     `}
   }

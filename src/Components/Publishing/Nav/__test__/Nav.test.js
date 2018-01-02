@@ -20,7 +20,7 @@ describe("Nav", () => {
   })
   it("includes a partner logo in a sponsored nav", () => {
     const nav = mount(<Nav sponsor={SponsoredArticle.sponsor} />)
-    expect(nav.html()).toMatch("https://artsy-media-uploads.s3.amazonaws.com/eZqsrnodcIlyyJzmRqLm4A%2FBombay_Sapphire_logo.png")
+    expect(nav.html()).toMatch("https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png")
   })
   it("renders a custom title", () => {
     const nav = mount(<Nav title="Custom Title" />)

@@ -51,7 +51,7 @@ export const SeriesTitleContainer = Div`
   text-align: center;
 
   ${PartnerBlockContainer} img {
-    max-width: 170px;
+    max-width: 240px;
     padding-top: 5px;
     padding-bottom: 40px;
     margin-left: auto;
@@ -60,7 +60,6 @@ export const SeriesTitleContainer = Div`
 
   ${props => pMedia.md`
     ${PartnerBlockContainer} img {
-      max-width: 200px;
       padding-bottom: 0;
     }
   `}
