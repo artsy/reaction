@@ -1,5 +1,23 @@
+import { groupBy, map } from "lodash"
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
+
+import colors from "../../Assets/Colors"
+import * as fonts from "../../Assets/Fonts"
+import TextLink from "../TextLink"
+
+const MarketInsightsContainer = styled.div`
+  font-family: ${fonts.secondary.fontFamily};
+`
+
+const SubHeadline = styled.div`
+  font-size: 14px;
+`
+
+const FeedbackContainer = styled.div`
+  color: ${colors.graySemibold};
+`
 
 export interface MarketInsightsProps extends RelayProps, React.HTMLProps<MarketInsights> {}
 
@@ -10,25 +28,51 @@ const Categories = {
 }
 
 export class MarketInsights extends React.Component<MarketInsightsProps, null> {
+  renderGalleryCategory(category, partnerList) {
+    let introSentence
+    if (partnerList.length > 1) {
+      introSentence = "Represented by " + category.toLowerCase() + " galleries"
+    } else {
+      introSentence = "Represented by a " + category.toLowerCase() + " gallery"
+    }
+
+    const galleryList = map(partnerList, ({ node: partner }) => partner.name).join(", ")
+
+    return (
+      <div>
+        {introSentence}
+        <SubHeadline>{galleryList}</SubHeadline>
+      </div>
+    )
+  }
+
+  // We group all partners that represent an artist by their relevant one, from Categories above.
+  // These are mutually exclusive among a partner.
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
     const { partners } = highlights
     if (partners && partners.edges && partners.edges.length > 0) {
-      const partner = partners.edges[0].node
-      const { categories } = partner
-      let category
-      Object.keys(Categories).forEach(key => {
-        categories.forEach(partnerCategory => {
-          if (partnerCategory.id === key) {
-            category = Categories[key]
-          }
+      const groupedByCategory = groupBy(partners.edges, ({ node: partner }) => {
+        let category
+        Object.keys(Categories).forEach(key => {
+          partner.categories.forEach(partnerCategory => {
+            if (partnerCategory.id === key) {
+              category = key
+            }
+          })
         })
+        return category
       })
+
       return (
         <div>
-          Represented by {partner.name}
-          <br />
-          This is a {category} type of partner.
+          {Object.keys(groupedByCategory).map(categorySlug => {
+            return (
+              <div key={categorySlug}>
+                {this.renderGalleryCategory(Categories[categorySlug], groupedByCategory[categorySlug])}
+              </div>
+            )
+          })}
         </div>
       )
     }
@@ -42,7 +86,10 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
 
     return (
       <div>
-        Top auction result is {topAuctionResult.price_realized} at {topAuctionResult.organization}
+        {topAuctionResult.prices.display} auction record
+        <SubHeadline>
+          {topAuctionResult.organization} {topAuctionResult.date}
+        </SubHeadline>
       </div>
     )
   }
@@ -53,22 +100,34 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
       return (
         <div>
           Collected by major museums
-          <br />
-          {collections.join(", ")}
+          <SubHeadline>{collections.join(", ")}</SubHeadline>
         </div>
       )
     }
   }
 
+  renderFeedbackLine() {
+    return (
+      <FeedbackContainer>
+        This is a new feature.&nbsp;
+        <TextLink underline href="mailto:support@artsymail.com">
+          Tell us what you think.
+        </TextLink>
+      </FeedbackContainer>
+    )
+  }
+
   render() {
     return (
-      <div>
+      <MarketInsightsContainer>
         {this.renderGalleryRepresentation()}
         <br />
         {this.renderAuctionHighlight()}
         <br />
         {this.renderPermanentCollection()}
-      </div>
+        <br />
+        {this.renderFeedbackLine()}
+      </MarketInsightsContainer>
     )
   }
 }
@@ -76,11 +135,14 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
 export default createFragmentContainer(
   MarketInsights,
   graphql.experimental`
-    fragment MarketInsights_artist on Artist {
+    fragment MarketInsights_artist on Artist
+      @argumentDefinitions(
+        partner_category: { type: "[String]", defaultValue: ["blue-chip", "top-established", "top-emerging"] }
+      ) {
       _id
       collections
       highlights {
-        partners(first: 1, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
+        partners(first: 10, represented_by: true, partner_category: $partner_category) {
           edges {
             node {
               name
@@ -96,7 +158,10 @@ export default createFragmentContainer(
         edges {
           node {
             organization
-            price_realized(symbol: "$")
+            prices {
+              display
+            }
+            date(format: "YYYY")
           }
         }
       }
@@ -125,7 +190,10 @@ interface RelayProps {
       edges: Array<{
         node: {
           organization: string | null
-          price_realized: string | null
+          prices: {
+            display: string | null
+          }
+          date: string | null
         } | null
       }> | null
     } | null
