@@ -1130,6 +1130,7 @@ type ArtworkFilterTag implements Node {
   ): FilterArtworks
 }
 
+# An inquiry on an Artwork
 type ArtworkInquiry {
   artwork: Artwork!
   id: ID
@@ -1509,39 +1510,7 @@ type AuctionResult implements Node {
   description: String
   external_url: String
   images: AuctionLotImages
-
-  # A formatted price with various currency formatting options.
-  low_estimate(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
-
-  # A formatted price with various currency formatting options.
-  high_estimate(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
-
-  # A formatted price with various currency formatting options.
-  price_realized(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
+  price_realized: AuctionResultPriceRealized
 }
 
 # A connection to a list of items.
@@ -1560,6 +1529,12 @@ type AuctionResultEdge {
 
   # A cursor for use in pagination
   cursor: String!
+}
+
+type AuctionResultPriceRealized {
+  cents: Int
+  cents_usd: Int
+  display: String
 }
 
 enum AuctionResultSorts {
@@ -1678,16 +1653,6 @@ type BidIncrement {
   amount: Int
   from: Int
   to: Int
-}
-
-enum BuyerOutcomeTypes {
-  PURCHASED
-  STILL_CONSIDERING
-  HIGH_PRICE
-  LOST_INTEREST
-  WORK_UNAVAILABLE
-  OTHER
-  BLANK
 }
 
 type BuyersPremium {
@@ -1915,6 +1880,7 @@ type Conversation implements Node {
     timezone: String
   ): String
   purchase_request: Boolean
+  from_last_viewed_message_id: String
   initial_message: String!
 
   # This is a snippet of text from the last message.
@@ -1934,7 +1900,7 @@ type Conversation implements Node {
   is_last_message_to_user: Boolean
 
   # Timestamp if the user opened the last message, null in all other cases
-  last_message_open: String
+  last_message_open: String @deprecated(reason: "Prefer to use `unread`")
 
   # Delivery id if the user is a recipient of the last message, null otherwise.
   last_message_delivery_id: String
@@ -1947,6 +1913,9 @@ type Conversation implements Node {
 
   # A connection for all messages in a single conversation
   messages(sort: sort, after: String, first: Int, before: String, last: Int): MessageConnection
+
+  # True if there is an unread message by the user.
+  unread: Boolean
 }
 
 # A connection to a list of items.
@@ -1956,6 +1925,7 @@ type ConversationConnection {
 
   # A list of edges.
   edges: [ConversationEdge]
+  totalUnreadCount: Int
 }
 
 # An edge in a connection.
@@ -3476,20 +3446,6 @@ type LotStanding {
   sale_artwork: SaleArtwork
 }
 
-input MarkReadMessageMutationInput {
-  # The id of the conversation to be updated
-  conversationId: String!
-
-  # The delivery object that is marked as read
-  deliveryId: String!
-  clientMutationId: String
-}
-
-type MarkReadMessageMutationPayload {
-  delivery: Delivery
-  clientMutationId: String
-}
-
 type Me implements Node {
   # A globally unique ID.
   __id: ID!
@@ -3692,14 +3648,13 @@ type Mutation {
   # Update the current logged in user.
   updateMyUserProfile(input: UpdateMyProfileInput!): UpdateMyProfilePayload
 
-  # Updating buyer outcome of a conversation.
+  # Update a conversation.
   updateConversation(input: UpdateConversationMutationInput!): UpdateConversationMutationPayload
 
   # Appending a message to a conversation thread
   sendConversationMessage(input: SendConversationMessageMutationInput!): SendConversationMessageMutationPayload
 
-  # Marking a message as read
-  markReadMessage(input: MarkReadMessageMutationInput!): MarkReadMessageMutationPayload
+  # Save (or remove) an artwork to (from) a users default collection.
   saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
 
   # Attach an gemini asset to a consignment submission
@@ -5460,13 +5415,16 @@ type UpdateCollectorProfilePayload {
 }
 
 input UpdateConversationMutationInput {
-  buyer_outcome: BuyerOutcomeTypes!
-  ids: [String]
+  # The id of the conversation to be updated.
+  conversationId: String!
+
+  # The message id to mark as read.
+  fromLastViewedMessageId: String!
   clientMutationId: String
 }
 
 type UpdateConversationMutationPayload {
-  conversations: [Conversation]
+  conversation: Conversation
   clientMutationId: String
 }
 
