@@ -6,6 +6,7 @@ import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
 import TextLink from "../TextLink"
+import Tooltip from "../Tooltip"
 
 const MarketInsightsContainer = styled.div`
   font-family: ${fonts.secondary.fontFamily};
@@ -27,9 +28,17 @@ const Categories = {
   "top-emerging": "Top Emerging",
 }
 
+const CategoryTooltipContent = {
+  "blue-chip": "Blue chip galleries have multiple locations internationally and participate in major art fairs.",
+  "top-established": "Top established galleries have been industry leaders in their region or specialty for decades.",
+  "top-emerging": "Top emerging dealers participate in curated, up-and-coming art fairs.",
+}
+
 export class MarketInsights extends React.Component<MarketInsightsProps, null> {
-  renderGalleryCategory(category, partnerList) {
+  renderGalleryCategory(categorySlug, partnerList) {
     let introSentence
+    const category = Categories[categorySlug]
+    const categoryTooltipContent = CategoryTooltipContent[categorySlug]
     if (partnerList.length > 1) {
       introSentence = "Represented by " + category.toLowerCase() + " galleries"
     } else {
@@ -41,6 +50,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     return (
       <div>
         {introSentence}
+        <Tooltip message={categoryTooltipContent} />
         <SubHeadline>{galleryList}</SubHeadline>
       </div>
     )
@@ -68,9 +78,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         <div>
           {Object.keys(groupedByCategory).map(categorySlug => {
             return (
-              <div key={categorySlug}>
-                {this.renderGalleryCategory(Categories[categorySlug], groupedByCategory[categorySlug])}
-              </div>
+              <div key={categorySlug}>{this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}</div>
             )
           })}
         </div>
