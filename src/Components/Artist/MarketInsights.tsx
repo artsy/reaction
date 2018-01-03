@@ -86,7 +86,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
 
     return (
       <div>
-        {topAuctionResult.prices.display} auction record
+        {topAuctionResult.price_realized.display} auction record
         <SubHeadline>
           {topAuctionResult.organization} {topAuctionResult.date}
         </SubHeadline>
@@ -158,7 +158,7 @@ export default createFragmentContainer(
         edges {
           node {
             organization
-            prices {
+            price_realized {
               display
             }
             date(format: "YYYY")
@@ -190,7 +190,7 @@ interface RelayProps {
       edges: Array<{
         node: {
           organization: string | null
-          prices: {
+          price_realized: {
             display: string | null
           }
           date: string | null

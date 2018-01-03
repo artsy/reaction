@@ -1510,40 +1510,7 @@ type AuctionResult implements Node {
   description: String
   external_url: String
   images: AuctionLotImages
-
-  # A formatted price with various currency formatting options.
-  low_estimate(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
-
-  # A formatted price with various currency formatting options.
-  high_estimate(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
-
-  # A formatted price with various currency formatting options.
-  price_realized(
-    decimal: String = "."
-
-    # Allows control of symbol position (%v = value, %s = symbol)
-    format: String = "%s%v"
-    precision: Int = 0
-    symbol: String
-    thousand: String = ","
-  ): String
-  prices: AuctionResultPrices
+  price_realized: AuctionResultPriceRealized
 }
 
 # A connection to a list of items.
@@ -1564,7 +1531,9 @@ type AuctionResultEdge {
   cursor: String!
 }
 
-type AuctionResultPrices {
+type AuctionResultPriceRealized {
+  cents: Int
+  cents_usd: Int
   display: String
 }
 
