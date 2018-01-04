@@ -366,12 +366,18 @@ exports[`renders a react child as caption properly 1`] = `
     <div
       className="c6"
     >
-      <div>
-        <p>
-          A React child as caption.
-        </p>
-      </div>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+          }
+        }
+      />
     </div>
+  </div>
+  <div>
+    Child 
+    A React child.
   </div>
 </div>
 `;

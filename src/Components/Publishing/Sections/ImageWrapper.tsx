@@ -8,6 +8,7 @@ import { ViewFullscreen } from "./ViewFullscreen"
 interface Props extends React.HTMLProps<HTMLImageElement> {
   src: string
   layout?: Layout
+  linked?: boolean
   width?: string | number
   height?: string | number
   alt?: string
@@ -54,7 +55,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
   }
 
   render() {
-    const { layout, index, ...blockImageProps }: any = this.props
+    const { layout, linked, index, ...blockImageProps }: any = this.props
     let className = 'BlockImage__container'
 
     if (this.state.isLoaded) {
@@ -69,7 +70,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
           {...blockImageProps}
         />
 
-        {layout !== 'classic' &&
+        {layout !== 'classic' && linked &&
           <Fullscreen>
             <ViewFullscreen index={index} />
           </Fullscreen>

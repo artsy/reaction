@@ -23,12 +23,13 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
   }
 
   render() {
-    const { artwork, linked, height, width, layout } = this.props
+    const { artwork, children, linked, height, width, layout } = this.props
     const src = resize(artwork.image, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
 
     const Image = () =>
       <ImageWrapper
         layout={layout}
+        linked={linked}
         src={src}
         width={width}
         height={height}
@@ -40,14 +41,15 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
       <div className="display-artwork">
         {linked
           ? <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
-              <Image />
-            </ArtworkImageLink>
+            <Image />
+          </ArtworkImageLink>
           : <Image />
         }
 
         <ArtworkCaption
           {...this.props}
         />
+        {children}
       </div>
     )
   }
