@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { resize } from "../../../Utils/resizer"
-import { GLOBAL_IMAGE_QUALITY } from '../Constants'
-import { Layout, SectionLayout } from "../Typings"
+import { resize } from "../../../../Utils/resizer"
+import { GLOBAL_IMAGE_QUALITY } from '../../Constants'
+import { Layout, SectionLayout } from "../../Typings"
 import { ArtworkCaption } from "./ArtworkCaption"
 import { ImageWrapper } from "./ImageWrapper"
 
@@ -40,8 +40,8 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
       <div className="display-artwork">
         {linked
           ? <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
-              <Image />
-            </ArtworkImageLink>
+            <Image />
+          </ArtworkImageLink>
           : <Image />
         }
 

@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
 import PropTypes from "prop-types"
 import React from "react"
-import { Artwork } from "../Sections/Artwork"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
-import { Image } from "../Sections/Image"
-import { ImageCollection } from "../Sections/ImageCollection"
+import { Artwork } from "../Sections/ImageCollection/Artwork"
+import { Image } from "../Sections/ImageCollection/Image"
+import { ImageCollection } from "../Sections/ImageCollection/ImageCollection"
 
 import { Artworks, Images, ImagesNarrow } from "../Fixtures/Components"
 

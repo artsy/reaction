@@ -2,10 +2,10 @@ import _ from "lodash"
 import React from "react"
 import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
-import TextLink from "../../TextLink"
-import { Fonts } from "../Fonts"
-import { Layout, SectionLayout } from "../Typings"
+import { pMedia } from "../../../Helpers"
+import TextLink from "../../../TextLink"
+import { Fonts } from "../../Fonts"
+import { Layout, SectionLayout } from "../../Typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
