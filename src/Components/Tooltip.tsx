@@ -1,13 +1,13 @@
-import React from "react"
-
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import colors from "../Assets/Colors"
 
 interface Props extends React.HTMLProps<HTMLSpanElement> {
   message: string
 }
 
-const TooltipContainer = styled.span`
+const Span: StyledFunction<Props & React.HTMLProps<HTMLSpanElement>> = styled.span
+
+export const Tooltip = Span`
   display: inline-block;
   position: relative;
   cursor: help;
@@ -64,20 +64,6 @@ const TooltipContainer = styled.span`
     line-height: 1.3;
     transform: translateZ(0);
     border: 1px solid ${colors.grayDark};
-    content: ${(props: Props) => `"` + props.message + `"`};
+    content: ${props => `"` + props.message + `"`};
   }
 `
-
-export class Tooltip extends React.Component<Props, null> {
-  static defaultProps = {
-    message: "",
-  }
-
-  render() {
-    const { message } = this.props
-
-    return <TooltipContainer message={message} />
-  }
-}
-
-export default Tooltip

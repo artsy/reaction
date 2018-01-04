@@ -2301,6 +2301,20 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "size",
                   "description": "Number of results to return",
                   "type": {
@@ -7061,7 +7075,18 @@
             {
               "name": "display",
               "description": null,
-              "args": [],
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Passes in to numeral, such as `'0.00'`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"\""
+                }
+              ],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -41551,6 +41576,20 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "size",
                   "description": "Number of results to return",
                   "type": {
@@ -41979,6 +42018,20 @@
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null
                 },

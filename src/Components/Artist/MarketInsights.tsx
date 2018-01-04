@@ -6,7 +6,7 @@ import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
 import TextLink from "../TextLink"
-import Tooltip from "../Tooltip"
+import { Tooltip } from "../Tooltip"
 
 const MarketInsightsContainer = styled.div`
   font-family: ${fonts.secondary.fontFamily};
@@ -18,6 +18,7 @@ const SubHeadline = styled.div`
 
 const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
+  font-size: 12px;
 `
 
 export interface MarketInsightsProps extends RelayProps, React.HTMLProps<MarketInsights> {}
@@ -56,8 +57,8 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     )
   }
 
-  // We group all partners that represent an artist by their relevant one, from Categories above.
-  // These are mutually exclusive among a partner.
+  // We group all partners that represent an artist by their relevant category, from the list above.
+  // Assumption: these are mutually exclusive categories among a partner.
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
     const { partners } = highlights
@@ -78,7 +79,12 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         <div>
           {Object.keys(groupedByCategory).map(categorySlug => {
             return (
-              <div key={categorySlug}>{this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}</div>
+              <div>
+                <div key={categorySlug}>
+                  {this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}
+                </div>
+                <br />
+              </div>
             )
           })}
         </div>
@@ -94,10 +100,13 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
 
     return (
       <div>
-        {topAuctionResult.price_realized.display} auction record
-        <SubHeadline>
-          {topAuctionResult.organization} {topAuctionResult.date}
-        </SubHeadline>
+        <div>
+          {topAuctionResult.price_realized.display} auction record
+          <SubHeadline>
+            {topAuctionResult.organization} {topAuctionResult.date}
+          </SubHeadline>
+        </div>
+        <br />
       </div>
     )
   }
@@ -107,8 +116,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     if (collections && collections.length > 0) {
       return (
         <div>
-          Collected by major museums
-          <SubHeadline>{collections.join(", ")}</SubHeadline>
+          <div>
+            Collected by major museums
+            <SubHeadline>{collections.join(", ")}</SubHeadline>
+          </div>
+          <br />
         </div>
       )
     }
@@ -118,7 +130,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     return (
       <FeedbackContainer>
         This is a new feature.&nbsp;
-        <TextLink underline href="mailto:support@artsymail.com">
+        <TextLink color={colors.graySemibold} underline href="mailto:support@artsymail.com">
           Tell us what you think.
         </TextLink>
       </FeedbackContainer>
@@ -128,12 +140,9 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
   render() {
     return (
       <MarketInsightsContainer>
-        {this.renderGalleryRepresentation()}
-        <br />
         {this.renderAuctionHighlight()}
-        <br />
+        {this.renderGalleryRepresentation()}
         {this.renderPermanentCollection()}
-        <br />
         {this.renderFeedbackLine()}
       </MarketInsightsContainer>
     )
@@ -167,7 +176,7 @@ export default createFragmentContainer(
           node {
             organization
             price_realized {
-              display
+              display(format: "0a")
             }
             date(format: "YYYY")
           }
