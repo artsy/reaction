@@ -43,7 +43,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
       mutation: graphql`
         mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
           followArtist(input: $input) {
-            popular_artists(size: 1, exclude_followed_artists: true) {
+            popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
               artists {
                 id
                 __id
