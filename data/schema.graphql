@@ -1534,7 +1534,10 @@ type AuctionResultEdge {
 type AuctionResultPriceRealized {
   cents: Int
   cents_usd: Int
-  display: String
+  display(
+    # Passes in to numeral, such as `'0.00'`
+    format: String = ""
+  ): String
 }
 
 enum AuctionResultSorts {
@@ -2391,6 +2394,9 @@ type FollowArtistPayload {
   popular_artists(
     # If true, will exclude followed artists for the user
     exclude_followed_artists: Boolean
+
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
 
     # Number of results to return
     size: Int
@@ -4594,6 +4600,9 @@ type Query {
     # If true, will exclude followed artists for the user
     exclude_followed_artists: Boolean
 
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
+
     # Number of results to return
     size: Int
   ): PopularArtists
@@ -5873,6 +5882,9 @@ type Viewer {
   popular_artists(
     # If true, will exclude followed artists for the user
     exclude_followed_artists: Boolean
+
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
 
     # Number of results to return
     size: Int

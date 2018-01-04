@@ -2301,6 +2301,20 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "size",
                   "description": "Number of results to return",
                   "type": {
@@ -7061,7 +7075,18 @@
             {
               "name": "display",
               "description": null,
-              "args": [],
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Passes in to numeral, such as `'0.00'`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"\""
+                }
+              ],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -30010,6 +30035,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "totalUnreadCount",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -41539,6 +41576,20 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "size",
                   "description": "Number of results to return",
                   "type": {
@@ -41678,7 +41729,7 @@
             },
             {
               "name": "updateConversation",
-              "description": "Updating buyer outcome of a conversation.",
+              "description": "Update a conversation.",
               "args": [
                 {
                   "name": "input",
@@ -41731,35 +41782,8 @@
               "deprecationReason": null
             },
             {
-              "name": "markReadMessage",
-              "description": "Marking a message as read",
-              "args": [
-                {
-                  "name": "input",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "MarkReadMessageMutationInput",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "MarkReadMessageMutationPayload",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "saveArtwork",
-              "description": null,
+              "description": "Save (or remove) an artwork to (from) a users default collection.",
               "args": [
                 {
                   "name": "input",
@@ -41994,6 +42018,20 @@
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "exclude_artist_ids",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": null
                 },
@@ -42822,24 +42860,24 @@
           "fields": null,
           "inputFields": [
             {
-              "name": "buyer_outcome",
-              "description": null,
+              "name": "conversationId",
+              "description": "The id of the conversation to be updated.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "ENUM",
-                  "name": "BuyerOutcomeTypes",
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
               "defaultValue": null
             },
             {
-              "name": "ids",
-              "description": null,
+              "name": "fromLastViewedMessageId",
+              "description": "The message id to mark as read.",
               "type": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
@@ -42865,75 +42903,18 @@
           "possibleTypes": null
         },
         {
-          "kind": "ENUM",
-          "name": "BuyerOutcomeTypes",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "PURCHASED",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "STILL_CONSIDERING",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "HIGH_PRICE",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "LOST_INTEREST",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "WORK_UNAVAILABLE",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "OTHER",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "BLANK",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
           "kind": "OBJECT",
           "name": "UpdateConversationMutationPayload",
           "description": null,
           "fields": [
             {
-              "name": "conversations",
+              "name": "conversation",
               "description": null,
               "args": [],
               "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Conversation",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "Conversation",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -43057,90 +43038,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "MessageEdge",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "clientMutationId",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "MarkReadMessageMutationInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "conversationId",
-              "description": "The id of the conversation to be updated",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "deliveryId",
-              "description": "The delivery object that is marked as read",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "clientMutationId",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "MarkReadMessageMutationPayload",
-          "description": null,
-          "fields": [
-            {
-              "name": "delivery",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Delivery",
                 "ofType": null
               },
               "isDeprecated": false,
