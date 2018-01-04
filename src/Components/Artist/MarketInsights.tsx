@@ -4,20 +4,25 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import colors from "../../Assets/Colors"
-import * as fonts from "../../Assets/Fonts"
+import { Fonts } from "../Publishing/Fonts"
 import TextLink from "../TextLink"
 import { Tooltip } from "../Tooltip"
 
 const MarketInsightsContainer = styled.div`
-  font-family: ${fonts.secondary.fontFamily};
+  ${Fonts.unica("s16", "medium")};
 `
 
 const SubHeadline = styled.div`
-  font-size: 14px;
+  font-size: 12px;
 `
 
 const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
+  ${Fonts.unica("s12", "regular")};
+`
+
+const TooltipContainer = styled.div`
+  display: inline-block;
   font-size: 12px;
 `
 
@@ -50,8 +55,10 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
 
     return (
       <div>
-        {introSentence}
-        <Tooltip message={categoryTooltipContent} />
+        {introSentence}&nbsp;
+        <TooltipContainer>
+          <Tooltip message={categoryTooltipContent} />
+        </TooltipContainer>
         <SubHeadline>{galleryList}</SubHeadline>
       </div>
     )
@@ -128,7 +135,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     return (
       <FeedbackContainer>
         This is a new feature.&nbsp;
-        <TextLink color={colors.graySemibold} underline href="mailto:support@artsymail.com">
+        <TextLink
+          color={colors.graySemibold}
+          underline
+          href="mailto:productfeedback@artsy.net?subject=Feedback+on+About+the+Artist+Information"
+        >
           Tell us what you think.
         </TextLink>
       </FeedbackContainer>
