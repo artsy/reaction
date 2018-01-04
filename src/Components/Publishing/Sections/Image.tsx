@@ -6,8 +6,10 @@ import { Caption } from "./Caption"
 import { ImageWrapper } from "./ImageWrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
+  editCaption?: any
   image?: any
   layout?: Layout
+  linked?: boolean
   sectionLayout?: SectionLayout
   width?: number | string
   height?: number | string
@@ -16,19 +18,22 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
 export const Image: React.SFC<ImageProps> = props => {
   const {
     children,
+    editCaption,
     height,
     image,
     layout,
+    linked,
     sectionLayout,
     width,
   } = props
-
+  const caption = image.caption || ''
   const src = resize(image.url, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
-  const alt = image.caption.replace(/<[^>]*>/g, "") /* strip caption html */
+  const alt = caption.replace(/<[^>]*>/g, "") /* strip caption html */
 
   return (
     <div className="article-image">
       <ImageWrapper
+        linked={linked}
         layout={layout}
         src={src}
         width={width}
@@ -38,12 +43,13 @@ export const Image: React.SFC<ImageProps> = props => {
       />
 
       <Caption
-        caption={image.caption}
+        caption={caption}
         layout={layout}
         sectionLayout={sectionLayout}
       >
-        {children}
+        {editCaption && editCaption()}
       </Caption>
+      {children}
     </div>
   )
 }
@@ -51,4 +57,5 @@ export const Image: React.SFC<ImageProps> = props => {
 Image.defaultProps = {
   width: "100%",
   height: "auto",
+  linked: true,
 }
