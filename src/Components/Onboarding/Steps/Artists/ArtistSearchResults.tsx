@@ -25,9 +25,9 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
-    const suggestedArtistNode = data.followArtist.artist.related.suggested.edges[0]
+    const suggestedArtistEdge = data.followArtist.artist.related.suggested.edges[0]
     const popularArtist = data.followArtist.popular_artists.artists[0]
-    const artistToSuggest = store.get(((suggestedArtistNode && suggestedArtistNode.node) || popularArtist).__id)
+    const artistToSuggest = store.get(((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id)
     this.excludedArtistIds.add(artistToSuggest.getValue("_id"))
 
     const popularArtistsRootField = store.get("client:root:viewer")
@@ -43,7 +43,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
       mutation: graphql`
         mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
           followArtist(input: $input) {
-            popular_artists(size: 1, exclude_followed_artists: true) {
+            popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
               artists {
                 id
                 __id
