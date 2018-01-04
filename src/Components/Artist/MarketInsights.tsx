@@ -79,10 +79,8 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         <div>
           {Object.keys(groupedByCategory).map(categorySlug => {
             return (
-              <div>
-                <div key={categorySlug}>
-                  {this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}
-                </div>
+              <div key={categorySlug}>
+                <div>{this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}</div>
                 <br />
               </div>
             )
