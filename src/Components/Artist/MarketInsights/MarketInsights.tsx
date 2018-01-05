@@ -64,6 +64,28 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     )
   }
 
+  hasSections() {
+    const { highlights, auctionResults, collections } = this.props.artist
+    const { partners } = highlights
+
+    // Is there a gallery representation section?
+    if (partners && partners.edges && partners.edges.length > 0) {
+      return true
+    }
+
+    // Is there an auction highlights section?
+    if (auctionResults && auctionResults.edges && auctionResults.edges.length > 0) {
+      return true
+    }
+
+    // Is there a permanent collections section?
+    if (collections && collections.length > 0) {
+      return true
+    }
+
+    return false
+  }
+
   // We group all partners that represent an artist by their relevant category, from the list above.
   // Assumption: these are mutually exclusive categories among a partner.
   renderGalleryRepresentation() {
@@ -152,7 +174,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         {this.renderAuctionHighlight()}
         {this.renderGalleryRepresentation()}
         {this.renderPermanentCollection()}
-        {this.renderFeedbackLine()}
+        {this.hasSections() ? this.renderFeedbackLine() : null}
       </MarketInsightsContainer>
     )
   }
