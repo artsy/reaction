@@ -1,7 +1,7 @@
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import MarketInsights from "../Artist/MarketInsights"
+import MarketInsights from "../Artist/MarketInsights/MarketInsights"
 
 describe("MarketInsights", () => {
   it("renders correctly", () => {
@@ -74,7 +74,7 @@ describe("MarketInsights", () => {
             node: {
               organization: "Christie's",
               price_realized: { display: "$63m" },
-              date: "1987",
+              sale_date: "2017",
               __id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
             },
           },

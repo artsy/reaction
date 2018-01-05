@@ -3,10 +3,10 @@ import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
-import colors from "../../Assets/Colors"
-import { Fonts } from "../Publishing/Fonts"
-import TextLink from "../TextLink"
-import { Tooltip } from "../Tooltip"
+import colors from "../../../Assets/Colors"
+import { Fonts } from "../../Publishing/Fonts"
+import TextLink from "../../TextLink"
+import { Tooltip } from "../../Tooltip"
 
 const MarketInsightsContainer = styled.div`
   ${Fonts.unica("s16", "medium")};
@@ -108,7 +108,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         <div>
           {topAuctionResult.price_realized.display} auction record
           <SubHeadline>
-            {topAuctionResult.organization} {topAuctionResult.date}
+            {topAuctionResult.organization} {topAuctionResult.sale_date}
           </SubHeadline>
         </div>
         <br />
@@ -187,7 +187,7 @@ export default createFragmentContainer(
             price_realized {
               display(format: "0a")
             }
-            date(format: "YYYY")
+            sale_date(format: "YYYY")
           }
         }
       }
@@ -219,7 +219,7 @@ interface RelayProps {
           price_realized: {
             display: string | null
           }
-          date: string | null
+          sale_date: string | null
         } | null
       }> | null
     } | null
