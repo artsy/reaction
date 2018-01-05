@@ -5262,6 +5262,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "recordsTrusted",
+                  "description": "When true, will only return records for whitelisted artists.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                },
+                {
                   "name": "after",
                   "description": null,
                   "type": {
@@ -31443,6 +31453,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "recordsTrusted",
+                  "description": "When true, will only return records for whitelisted artists.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                },
+                {
                   "name": "after",
                   "description": null,
                   "type": {
@@ -35607,6 +35627,16 @@
                     "ofType": null
                   },
                   "defaultValue": null
+                },
+                {
+                  "name": "recordsTrusted",
+                  "description": "When true, will only return records for whitelisted artists.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
                 },
                 {
                   "name": "after",

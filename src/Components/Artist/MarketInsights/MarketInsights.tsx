@@ -202,7 +202,7 @@ export default createFragmentContainer(
           }
         }
       }
-      auctionResults(first: 1, sort: PRICE_AND_DATE_DESC) {
+      auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
         edges {
           node {
             organization
