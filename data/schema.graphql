@@ -92,7 +92,16 @@ type Artist implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
-  auctionResults(sort: AuctionResultSorts, after: String, first: Int, before: String, last: Int): AuctionResultConnection
+  auctionResults(
+    sort: AuctionResultSorts
+
+    # When true, will only return records for whitelisted artists.
+    recordsTrusted: Boolean = false
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): AuctionResultConnection
   bio: String
 
   # The Artist biography article written by Artsy
@@ -292,7 +301,16 @@ type ArtistItem implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
-  auctionResults(sort: AuctionResultSorts, after: String, first: Int, before: String, last: Int): AuctionResultConnection
+  auctionResults(
+    sort: AuctionResultSorts
+
+    # When true, will only return records for whitelisted artists.
+    recordsTrusted: Boolean = false
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): AuctionResultConnection
   bio: String
 
   # The Artist biography article written by Artsy
@@ -425,7 +443,16 @@ type ArtistSearchEntity implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(sort: ArtworkSorts, filter: [ArtistArtworksFilters], published: Boolean = true, after: String, first: Int, before: String, last: Int): ArtworkConnection
-  auctionResults(sort: AuctionResultSorts, after: String, first: Int, before: String, last: Int): AuctionResultConnection
+  auctionResults(
+    sort: AuctionResultSorts
+
+    # When true, will only return records for whitelisted artists.
+    recordsTrusted: Boolean = false
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): AuctionResultConnection
   bio: String
 
   # The Artist biography article written by Artsy
