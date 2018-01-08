@@ -37,13 +37,11 @@ export const Tooltip = Span`
   }
   &:hover {
     &:before {
-      z-index: 4;
+      visibility: hidden;
     }
     &:after {
       opacity: 1;
       z-index: 3;
-      transition: opacity 0.125s;
-      transition-delay: 0.0625s;
       visibility: visible;
     }
   }
@@ -57,13 +55,14 @@ export const Tooltip = Span`
     z-index: 1;
     margin: -10px 0 0 -10px;
     width: 300px;
-    color: ${colors.grayMedium};
+    color: ${colors.graySemibold};
     background-color: white;
-    padding: 30px;
+    padding: 15px 15px 25px 15px;
     opacity: 0;
+    margin: 0;
     line-height: 1.3;
     transform: translateZ(0);
-    border: 1px solid ${colors.grayDark};
+    border: 1px solid ${colors.grayRegular};
     content: ${props => `"` + props.message + `"`};
   }
 `
