@@ -5,7 +5,6 @@ import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../../Constants"
-import { trackImpression } from "../track-impression"
 import { CanvasSlideshow } from "./CanvasSlideshow"
 import { CanvasText } from "./CanvasText"
 import { CanvasVideo } from "./CanvasVideo"
@@ -41,7 +40,6 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
     this.openLink = this.openLink.bind(this)
   }
 
-  @trackImpression((props) => unitLayout(props))
   componentDidMount() {
     this.setState({
       isMounted: true
@@ -129,18 +127,18 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
         <CanvasLink {...linkProps}>
           {isVideo
             ? <CanvasVideo
-                coverUrl={cover_image_url}
-                src={asset.url}
-                campaign={campaign}
-                onInit={h => this.canvasVideoHandlers = h}
-              />
+              coverUrl={cover_image_url}
+              src={asset.url}
+              campaign={campaign}
+              onInit={h => this.canvasVideoHandlers = h}
+            />
             : <Image
-                src={crop(asset.url, {
-                  width: 1200,
-                  height: 760,
-                  isDisplayAd: true
-                })}
-              />}
+              src={crop(asset.url, {
+                width: 1200,
+                height: 760,
+                isDisplayAd: true
+              })}
+            />}
 
           <StandardContainer>
             <CanvasText
@@ -168,7 +166,7 @@ interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
 const Div: StyledFunction<DivProps> = styled.div
 const responsiveLink: StyledFunction<ResponsiveProps> = styled.a
 
-const unitLayout = (props) => {
+export const unitLayout = (props) => {
   switch (props.unit.layout) {
     case "overlay": return "canvas_overlay"
     case "slideshow": return "canvas_slideshow"

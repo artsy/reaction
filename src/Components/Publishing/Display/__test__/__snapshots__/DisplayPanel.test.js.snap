@@ -35,7 +35,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .s1qpl4no-1-file__Image-iTToDH {
+.c1 .s18stmt1-1-file__Image-iTToDH {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -109,6 +109,13 @@ exports[`snapshots renders the display panel with an image 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
   >
@@ -168,7 +175,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.fiUFIk .c3 {
+.iDDZbh .c3 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -187,7 +194,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .file__Image-s1qpl4no-1 {
+.c1 .file__Image-s18stmt1-1 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -301,6 +308,13 @@ exports[`snapshots renders the display panel with video 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
   >

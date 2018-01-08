@@ -1,5 +1,6 @@
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
+import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
@@ -8,7 +9,7 @@ import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { VideoControls } from "../Sections/VideoControls"
-import { trackImpression } from "./track-impression"
+import { trackImpression } from "./track-once"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   campaign: any
@@ -50,9 +51,9 @@ export class DisplayPanel extends Component<Props, State> {
     this.handleClick = this.handleClick.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.trackImpression = this.trackImpression.bind(this)
   }
 
-  @trackImpression(() => "panel")
   componentDidMount() {
     if (this.video) {
       this.video.onended = this.pauseVideo
@@ -70,6 +71,11 @@ export class DisplayPanel extends Component<Props, State> {
       this.video.addEventListener("timeupdate", this.trackProgress.bind(this))
       this.video.muted = this.state.isMuted
     }
+  }
+
+  @trackImpression(() => "panel")
+  trackImpression() {
+    // noop
   }
 
   // TODO: This could be shared with <CanvasVideo />
@@ -339,6 +345,7 @@ export class DisplayPanel extends Component<Props, State> {
 
     return (
       <Wrapper onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        <Waypoint onEnter={this.trackImpression} />
         <DisplayPanelContainer
           className="DisplayPanel__DisplayPanelContainer"
           imageUrl={imageUrl}
@@ -410,9 +417,9 @@ const DisplayPanelContainer = div`
     background: url(${p => p.imageUrl || ""}) no-repeat center center;
     background-size: cover;
     ${p =>
-      p.showCoverImage &&
-      p.hoverImageUrl &&
-      `
+    p.showCoverImage &&
+    p.hoverImageUrl &&
+    `
       background: black url(${p.hoverImageUrl}) no-repeat center center;
       background-size: contain;
       border: 10px solid black;
@@ -422,9 +429,9 @@ const DisplayPanelContainer = div`
     background: url(${p => p.coverUrl || ""}) no-repeat center center;
     background-size: cover;
     ${p =>
-      p.showCoverImage &&
-      !p.isMobile &&
-      `
+    p.showCoverImage &&
+    !p.isMobile &&
+    `
       display: none;
     `}
   }
