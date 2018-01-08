@@ -9,7 +9,7 @@ import TextLink from "../../TextLink"
 import { Tooltip } from "../../Tooltip"
 
 const MarketInsightsContainer = styled.div`
-  ${Fonts.unica("s16", "medium")};
+  ${Fonts.unica("s18", "medium")};
 `
 
 const SubHeadline = styled.div`
@@ -18,7 +18,7 @@ const SubHeadline = styled.div`
 
 const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
-  ${Fonts.unica("s12", "regular")};
+  ${Fonts.unica("s10", "regular")};
 `
 
 const TooltipContainer = styled.div`
