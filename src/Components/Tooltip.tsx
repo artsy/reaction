@@ -1,13 +1,14 @@
+import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import colors from "../Assets/Colors"
 
-interface Props extends React.HTMLProps<HTMLSpanElement> {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   message: string
 }
 
-const Span: StyledFunction<Props & React.HTMLProps<HTMLSpanElement>> = styled.span
+const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
 
-export const Tooltip = Span`
+const TooltipContainer = Div`
   display: inline-block;
   position: relative;
   cursor: help;
@@ -21,7 +22,7 @@ export const Tooltip = Span`
     top: 0;
     left: 0;
     position: absolute;
-    content: "?";
+    content: "";
     z-index: 2;
     width: 14px;
     height: 14px;
@@ -33,7 +34,6 @@ export const Tooltip = Span`
     font-size: 12px;
     font-weight: bold;
     color: white;
-    background-color: ${colors.grayDark};
   }
   &:hover {
     &:before {
@@ -66,3 +66,13 @@ export const Tooltip = Span`
     content: ${props => `"` + props.message + `"`};
   }
 `
+
+export class Tooltip extends React.Component<Props, null> {
+  render() {
+    return (
+      <TooltipContainer message={this.props.message} className={this.props.className}>
+        {this.props.children}
+      </TooltipContainer>
+    )
+  }
+}
