@@ -8,6 +8,8 @@ import { Fonts } from "../../Publishing/Fonts"
 import TextLink from "../../TextLink"
 import { Tooltip } from "../../Tooltip"
 
+import { Help } from "../../../Assets/Icons/Help"
+
 const MarketInsightsContainer = styled.div`
   ${Fonts.unica("s18", "medium")};
 `
@@ -57,7 +59,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
       <div>
         {introSentence}&nbsp;
         <TooltipContainer>
-          <Tooltip message={categoryTooltipContent} />
+          <Tooltip message={categoryTooltipContent}>
+            <span style={{ verticalAlign: "text-top" }}>
+              <Help />
+            </span>
+          </Tooltip>
         </TooltipContainer>
         <SubHeadline>{galleryList}</SubHeadline>
       </div>
