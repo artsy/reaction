@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Fillwidth from "../Artwork/Fillwidth"
 import Follow from "../Follow"
 import Text from "../Text"
+import TextLink from "../TextLink"
 
 interface Props extends RelayProps, React.HTMLProps<ArtistRow> {}
 
@@ -14,9 +15,11 @@ export class ArtistRow extends React.Component<Props, null> {
     return (
       <Container>
         <Header>
-          <Text textSize="small" textStyle="primary">
-            {artist.name}
-          </Text>
+          <TextLink href={artist.href}>
+            <Text textSize="small" textStyle="primary">
+              {artist.name}
+            </Text>
+          </TextLink>
           <Follow artist={artist as any} />
         </Header>
         <Fillwidth artworks={artist.artworks} />
@@ -39,6 +42,7 @@ export default createFragmentContainer(
   graphql`
     fragment ArtistRow_artist on Artist {
       name
+      href
       ...Follow_artist
       artworks: artworks_connection(first: 6) {
         ...Fillwidth_artworks
@@ -50,6 +54,7 @@ export default createFragmentContainer(
 interface RelayProps {
   artist: {
     name: string | null
+    href: string | null
     artworks: any
   }
 }
