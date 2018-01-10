@@ -15,13 +15,13 @@ describe("snapshots", () => {
   it("renders the display panel with an image", () => {
     const displayPanel = renderer
       .create(
-        <DisplayPanel
-          unit={UnitPanel}
-          campaign={Campaign}
-          tracking={{
-            trackEvent: jest.fn(),
-          }}
-        />
+      <DisplayPanel
+        unit={UnitPanel}
+        campaign={Campaign}
+        tracking={{
+          trackEvent: jest.fn(),
+        }}
+      />
       )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
@@ -30,13 +30,13 @@ describe("snapshots", () => {
   it("renders the display panel with video", () => {
     const displayPanel = renderer
       .create(
-        <DisplayPanel
-          unit={UnitPanelVideo}
-          campaign={Campaign}
-          tracking={{
-            trackEvent: jest.fn(),
-          }}
-        />
+      <DisplayPanel
+        unit={UnitPanelVideo}
+        campaign={Campaign}
+        tracking={{
+          trackEvent: jest.fn(),
+        }}
+      />
       )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
@@ -82,20 +82,18 @@ describe("units", () => {
       }
     }
 
-    // TODO: this never gets called because it gets fired before the test runs
-    // it("tracks one time on mount", () => {
-    //   const wrapper = getWrapper()
-    //   const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
-    //   const instance = wrapper.instance()
+    it("tracks impressions", () => {
+      const { wrapper, instance, spy } = getTracker()
+      instance.trackImpression()
 
-    //   expect(spy).toHaveBeenCalledWith(
-    //     expect.objectContaining({
-    //       action: "Impression",
-    //       entity_type: "display_ad",
-    //       unit_layout: "panel",
-    //     })
-    //   )
-    // })
+      expect(spy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          action: "Impression",
+          entity_type: "display_ad",
+          unit_layout: "panel",
+        })
+      )
+    })
 
     it("tracks video progress", () => {
       const wrapper = getWrapper({ isVideo: true })
@@ -109,9 +107,7 @@ describe("units", () => {
     })
 
     it("tracks duration", () => {
-      const wrapper = getWrapper()
-      const instance = wrapper.instance()
-      const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
+      const { wrapper, instance, spy } = getTracker()
       instance.trackDuration(20)
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -122,9 +118,7 @@ describe("units", () => {
     })
 
     it("tracks seconds", () => {
-      const wrapper = getWrapper()
-      const instance = wrapper.instance()
-      const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
+      const { wrapper, instance, spy } = getTracker()
       instance.trackSeconds(20)
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -135,9 +129,7 @@ describe("units", () => {
     })
 
     it("tracks on click", () => {
-      const wrapper = getWrapper()
-      const instance = wrapper.instance()
-      const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
+      const { wrapper, instance, spy } = getTracker()
       const event = {
         preventDefault: jest.fn(),
         target: {
@@ -154,9 +146,7 @@ describe("units", () => {
     })
 
     it("tracks on video click", () => {
-      const wrapper = getWrapper()
-      const instance = wrapper.instance()
-      const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
+      const { wrapper, instance, spy } = getTracker()
       instance.trackVideoClick()
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
