@@ -31,10 +31,6 @@ interface Props extends RelayProps, Filters {
   sort?: string
 }
 
-interface State extends Filters {
-  loading: boolean
-}
-
 const FilterBar = styled.div`
   vertical-align: middle;
   text-align: center;
@@ -59,14 +55,7 @@ const ArtistFilterButtons = styled.div`
   }
 `
 
-export class GeneArtworks extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      loading: false,
-    }
-  }
-
+export class GeneArtworks extends React.Component<Props, null> {
   renderDropdown() {
     return this.props.gene.filtered_artworks.aggregations.map(aggregation => {
       return (

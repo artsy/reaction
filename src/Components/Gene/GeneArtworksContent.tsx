@@ -9,6 +9,10 @@ interface Props extends RelayProps {
   geneID: string
 }
 
+interface State {
+  loading: boolean
+}
+
 const SpinnerContainer = styled.div`
   width: 100%;
   height: 100px;
@@ -17,23 +21,30 @@ const SpinnerContainer = styled.div`
 
 const PageSize = 10
 
-export class GeneArtworksContent extends React.Component<Props, null> {
+export class GeneArtworksContent extends React.Component<Props, State> {
   private finishedPaginatingWithError = false
+
+  state = {
+    loading: false,
+  }
 
   loadMoreArtworks() {
     const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
     const origLength = this.props.filtered_artworks.artworks.edges.length
-    if (hasMore && !this.props.relay.isLoading() && !this.finishedPaginatingWithError) {
-      this.props.relay.loadMore(PageSize, error => {
-        if (error) {
-          console.error(error)
-        }
-        const newLength = this.props.filtered_artworks.artworks.edges.length
-        const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
-        if (newLength - origLength < PageSize && newHasMore) {
-          console.error(`Total count inconsistent with actual records returned for gene: ${this.props.geneID}`)
-          this.finishedPaginatingWithError = true
-        }
+    if (hasMore && !this.state.loading && !this.finishedPaginatingWithError) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.loadMore(PageSize, error => {
+          if (error) {
+            console.error(error)
+          }
+          const newLength = this.props.filtered_artworks.artworks.edges.length
+          const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+          if (newLength - origLength < PageSize && newHasMore) {
+            console.error(`Total count inconsistent with actual records returned for gene: ${this.props.geneID}`)
+            this.finishedPaginatingWithError = true
+          }
+          this.setState({ loading: false })
+        })
       })
     }
   }
@@ -47,7 +58,7 @@ export class GeneArtworksContent extends React.Component<Props, null> {
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
         />
-        <SpinnerContainer>{this.props.relay.isLoading() ? <Spinner /> : ""}</SpinnerContainer>
+        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
       </div>
     )
   }

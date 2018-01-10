@@ -27,10 +27,6 @@ interface Props extends RelayProps, Filters {
   sort?: string
 }
 
-interface State extends Filters {
-  loading: boolean
-}
-
 const FilterBar = styled.div`
   vertical-align: middle;
   text-align: center;
@@ -47,14 +43,7 @@ const SubFilterBar = styled.div`
   align-items: center;
 `
 
-export class TagArtworks extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      loading: false,
-    }
-  }
-
+export class TagArtworks extends React.Component<Props, null> {
   renderDropdown() {
     return this.props.tag.filtered_artworks.aggregations.map(aggregation => {
       return (
