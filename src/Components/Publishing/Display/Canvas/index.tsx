@@ -1,10 +1,13 @@
 import { get } from 'lodash'
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { Fonts } from "../../Fonts"
-import { CanvasContainer } from "./CanvasContainer"
+import { trackImpression, trackViewability } from "../track-once"
+import { CanvasContainer, unitLayout } from "./CanvasContainer"
 
 interface DisplayCanvasProps {
   unit: any
@@ -12,38 +15,61 @@ interface DisplayCanvasProps {
   article?: any
 }
 
-export const DisplayCanvas: React.SFC<DisplayCanvasProps> = props => {
-  const { unit, campaign, article } = props
-  const url = get(unit, 'link.url', '')
-
-  const disclaimer = (
-    <Disclaimer layout={unit.layout}>
-      {unit.disclaimer}
-    </Disclaimer>
-  )
-
-  return (
-    <DisplayContainer layout={unit.layout}>
-      <a href={url} target="_blank">
-        <AdvertisementBy>
-          {`Advertisement by ${campaign.name}`}
-        </AdvertisementBy>
-      </a>
-
-      <CanvasContainer
-        unit={unit}
-        campaign={campaign}
-        article={article}
-        disclaimer={disclaimer}
-      />
-
-      {unit.layout === "overlay" && disclaimer}
-    </DisplayContainer>
-  )
-}
-
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
   layout: string
+}
+
+@track()
+export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
+  constructor(props) {
+    super(props)
+    this.trackViewability = this.trackViewability.bind(this)
+    this.trackImpression = this.trackImpression.bind(this)
+  }
+
+  @trackImpression((props) => unitLayout(props))
+  trackImpression() {
+    // noop
+  }
+
+  @trackViewability((props) => unitLayout(props))
+  trackViewability() {
+    // noop
+  }
+
+  render() {
+    const { unit, campaign, article } = this.props
+    const url = get(unit, 'link.url', '')
+
+    const disclaimer = (
+      <Disclaimer layout={unit.layout}>
+        {unit.disclaimer}
+      </Disclaimer>
+    )
+
+    return (
+      <DisplayContainer layout={unit.layout}>
+        <Waypoint onEnter={this.trackImpression} />
+        <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
+
+        <a href={url} target="_blank">
+          <AdvertisementBy>
+            {`Advertisement by ${campaign.name}`}
+          </AdvertisementBy>
+        </a>
+
+        <CanvasContainer
+          unit={unit}
+          campaign={campaign}
+          article={article}
+          disclaimer={disclaimer}
+        />
+
+        {unit.layout === "overlay" && disclaimer}
+      </DisplayContainer>
+    )
+  }
+
 }
 
 const Div: StyledFunction<DivProps> = styled.div

@@ -1,7 +1,7 @@
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import track from "../../../../Utils/track"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from '../../Sections/VideoControls'
 
@@ -136,7 +136,7 @@ export class CanvasVideo extends Component<Props, any> {
         {!isPlaying &&
           <Cover coverUrl={this.props.coverUrl}>
             <VideoControls />
-          </Cover>  }
+          </Cover>}
 
         <video playsInline
           src={this.props.src}
