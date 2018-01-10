@@ -7,7 +7,6 @@ import { CanvasSlideshow } from "../Canvas/CanvasSlideshow"
 import { CanvasText } from "../Canvas/CanvasText"
 import { CanvasVideo } from "../Canvas/CanvasVideo"
 import { track } from "../../../../Utils/track"
-// import { trackImpression, trackViewability } from "../track-once"
 
 import {
   Campaign,
@@ -27,11 +26,6 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("../../../../Utils/track.ts", () => ({
   track: jest.fn()
 }))
-
-// jest.mock("../track-once", () => ({
-//   trackImpression: jest.fn(),
-//   trackViewability: jest.fn()
-// }))
 
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {
