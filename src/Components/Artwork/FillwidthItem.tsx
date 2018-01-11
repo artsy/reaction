@@ -18,7 +18,7 @@ const ImageLink = styled.a`
 
 const Placeholder = styled.div`
   position: relative;
-  width 100%;
+  width: 100%;
 `
 
 interface Props extends RelayProps, React.HTMLProps<FillwidthItem> {
