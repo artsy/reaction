@@ -104,6 +104,14 @@ storiesOf("Publishing/Headers", module)
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
           <Header article={article2} />
         </div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header article={article2}>
+            <div>Child 0: Vertical</div>
+            <div>Child 1: Title</div>
+            <div>Child 2: Deck</div>
+            <div>Child 3: Image</div>
+          </Header>
+        </div>
       </div>
     )
   })
@@ -118,6 +126,14 @@ storiesOf("Publishing/Headers", module)
         </div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
           <Header article={article2} />
+        </div>
+        <div style={{ width: "100%", position: "relative" }}>
+          <Header article={article2}>
+            <div>Child 0: Vertical</div>
+            <div>Child 1: Title</div>
+            <div>Child 2: Deck</div>
+            <div>Child 3: Image</div>
+          </Header>
         </div>
       </div>
     )

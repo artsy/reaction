@@ -7,7 +7,6 @@ import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
-import { isValidVideoUrl } from '../Sections/Video'
 import { BasicHeader } from "./BasicHeader"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {
@@ -34,7 +33,7 @@ function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
 }
 
 function renderAsset(url, title, imageChild) {
-  if (isValidVideoUrl(url)) {
+  if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
         {imageChild}
