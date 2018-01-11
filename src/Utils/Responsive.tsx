@@ -2,9 +2,14 @@ import { each } from 'lodash'
 import React from 'react'
 import theme from '../Assets/Theme'
 
-// TODO: IProps
 // TODO: Docs
 // TODO: Tests
+
+interface Props {
+  children?: any
+  media: any
+  mobileBreakpoint: any
+}
 
 interface State {
   isMobile: boolean
@@ -12,7 +17,7 @@ interface State {
 
 const MOBILE_BREAKPOINT = 600
 
-class ResponsiveWrapper extends React.Component<any, State> {
+class ResponsiveWrapper extends React.Component<Props, State> {
 
   static defaultProps = {
     initialState: {
