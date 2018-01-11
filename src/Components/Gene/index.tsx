@@ -83,6 +83,7 @@ class GeneContents extends React.Component<Props, State> {
     this.setState(
       {
         for_sale: forSale,
+        mode: "artworks",
       },
       this.handleStateChange
     )
@@ -122,7 +123,13 @@ class GeneContents extends React.Component<Props, State> {
         variables={{ geneID }}
         render={({ props }) => {
           if (props) {
-            return <Artists gene={props.gene} onDropdownSelected={this.onDropdownSelect.bind(this)} />
+            return (
+              <Artists
+                onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
+                gene={props.gene}
+                onDropdownSelected={this.onDropdownSelect.bind(this)}
+              />
+            )
           } else {
             return null
           }
