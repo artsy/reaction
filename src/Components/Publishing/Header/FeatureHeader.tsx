@@ -34,7 +34,7 @@ function renderMobileSplitAsset(url, layout, isMobile, title, imageChild) {
 }
 
 function renderAsset(url, title, imageChild) {
-  if (isValidVideoUrl(url)) {
+  if (isVideo(url)) {
     return (
       <FeatureVideoContainer>
         {imageChild}
