@@ -8,6 +8,7 @@ import Spinner from "../Spinner"
 import ArtistRow from "./ArtistRow"
 
 import Dropdown from "../ArtworkFilter/Dropdown"
+import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
 
 import { ButtonState } from "../Buttons/Default"
 import Button from "../Buttons/Ghost"
@@ -17,6 +18,7 @@ const PageSize = 10
 interface Props extends RelayProps {
   relay?: RelayPaginationProp
   onDropdownSelected: (slice: string, value: string) => void
+  onForSaleToggleSelected: () => void
 }
 
 interface State {
@@ -83,6 +85,10 @@ export class Artists extends React.Component<Props, State> {
     }
   }
 
+  renderForSaleToggle() {
+    return <ForSaleCheckbox checked={false} onChange={this.props.onForSaleToggleSelected} />
+  }
+
   renderArtistFilter() {
     return (
       <ArtistFilterButtons>
@@ -130,6 +136,7 @@ export class Artists extends React.Component<Props, State> {
       <div>
         <FilterBar>
           {this.renderArtistFilter()}
+          {this.renderForSaleToggle()}
           {this.renderArtistDropdown()}
         </FilterBar>
         <ArtistRowsContainer>
@@ -164,7 +171,11 @@ export default createPaginationContainer(
             }
           }
         }
-        filter_aggregations: filtered_artworks(aggregations: $aggregations, size: 0, include_medium_filter_in_aggregation: true) {
+        filter_aggregations: filtered_artworks(
+          aggregations: $aggregations
+          size: 0
+          include_medium_filter_in_aggregation: true
+        ) {
           ...TotalCount_filter_artworks
           aggregations {
             slice
