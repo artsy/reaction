@@ -196,7 +196,12 @@ export default createFragmentContainer(
       _id
       collections
       highlights {
-        partners(first: 10, represented_by: true, partner_category: $partner_category) {
+        partners(
+          first: 10
+          display_on_partner_profile: true
+          represented_by: true
+          partner_category: $partner_category
+        ) {
           edges {
             node {
               name

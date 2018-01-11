@@ -271,7 +271,7 @@ type ArtistEdge {
 }
 
 type ArtistHighlights {
-  partners(represented_by: Boolean, partner_category: [String], after: String, first: Int, before: String, last: Int): PartnerArtistConnection
+  partners(represented_by: Boolean, partner_category: [String], display_on_partner_profile: Boolean, after: String, first: Int, before: String, last: Int): PartnerArtistConnection
 }
 
 type ArtistItem implements Node {
@@ -787,6 +787,7 @@ type ArtworkContextAuction implements Node {
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
   profile: Profile
+  promoted_sale: Sale
   registration_ends_at(
     convert_to_utc: Boolean
     format: String
@@ -1023,6 +1024,7 @@ type ArtworkContextSale implements Node {
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
   profile: Profile
+  promoted_sale: Sale
   registration_ends_at(
     convert_to_utc: Boolean
     format: String
@@ -3325,6 +3327,7 @@ type HomePageModuleContextSale implements Node {
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
   profile: Profile
+  promoted_sale: Sale
   registration_ends_at(
     convert_to_utc: Boolean
     format: String
@@ -4791,6 +4794,7 @@ type Sale implements Node {
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
   profile: Profile
+  promoted_sale: Sale
   registration_ends_at(
     convert_to_utc: Boolean
     format: String
