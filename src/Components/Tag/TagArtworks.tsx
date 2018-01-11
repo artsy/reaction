@@ -71,7 +71,7 @@ export class TagArtworks extends React.Component<Props, null> {
     return (
       <div>
         <SubFilterBar>
-          <div>
+          <div style={{ lineHeight: "1.8em" }}>
             <Headline
               medium={this.props.medium}
               price_range={this.props.price_range}
