@@ -166,7 +166,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         <TextLink
           color={colors.graySemibold}
           underline
-          href="mailto:productfeedback@artsy.net?subject=Feedback+on+About+the+Artist+Information"
+          href="mailto:productfeedback@artsy.net?subject=Feedback+on+%22About+the+Artist%22+information"
         >
           Tell us what you think.
         </TextLink>
@@ -196,7 +196,12 @@ export default createFragmentContainer(
       _id
       collections
       highlights {
-        partners(first: 10, represented_by: true, partner_category: $partner_category) {
+        partners(
+          first: 10
+          display_on_partner_profile: true
+          represented_by: true
+          partner_category: $partner_category
+        ) {
           edges {
             node {
               name
