@@ -108,7 +108,7 @@ export class TagArtworks extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(TagArtworks, {
-  tag: graphql.experimental`
+  tag: graphql`
     fragment TagArtworks_tag on Tag
       @argumentDefinitions(
         for_sale: { type: "Boolean" }

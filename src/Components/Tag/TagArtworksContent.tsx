@@ -67,7 +67,7 @@ export class TagArtworksContent extends React.Component<Props, State> {
 export default createPaginationContainer(
   TagArtworksContent,
   {
-    filtered_artworks: graphql.experimental`
+    filtered_artworks: graphql`
       fragment TagArtworksContent_filtered_artworks on FilterArtworks
         @argumentDefinitions(count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
         __id
@@ -108,7 +108,7 @@ export default createPaginationContainer(
         filteredArtworksNodeID: props.filtered_artworks.__id,
       }
     },
-    query: graphql.experimental`
+    query: graphql`
       query TagArtworksContentQuery($filteredArtworksNodeID: ID!, $count: Int!, $cursor: String, $sort: String) {
         node(__id: $filteredArtworksNodeID) {
           ...TagArtworksContent_filtered_artworks @arguments(count: $count, cursor: $cursor)
