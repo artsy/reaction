@@ -2,8 +2,9 @@ import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 
+import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
-import ItemLink from "../../ItemLink"
+import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
 interface Gene {
@@ -86,20 +87,21 @@ class SuggestedGenesContent extends React.Component<Props, null> {
   }
 
   render() {
-    const items = this.props.suggested_genes.map((item, index) => {
-      return (
-        <ItemLink
-          href="#"
-          item={item}
-          key={index}
-          id={item.id}
-          _id={item._id}
-          name={item.name}
-          image_url={item.image.cropped.url}
-          onClick={() => this.followedGene(item)}
-        />
-      )
-    })
+    const items = this.props.suggested_genes.map((item, index) => (
+      <LinkContainer>
+        <ReplaceTransition key={index} transitionEnterTimeout={1000} transitionLeaveTimeout={400}>
+          <ItemLink
+            href="#"
+            item={item}
+            key={item.id}
+            id={item.id}
+            _id={item._id}
+            name={item.name}
+            image_url={item.image.cropped.url}
+            onClick={() => this.followedGene(item)} />
+        </ReplaceTransition>
+      </LinkContainer>
+    ))
 
     return <div>{items}</div>
   }

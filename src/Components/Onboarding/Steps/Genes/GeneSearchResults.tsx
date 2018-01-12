@@ -4,8 +4,9 @@ import styled from "styled-components"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import * as fonts from "../../../../Assets/Fonts"
+import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
-import ItemLink from "../../ItemLink"
+import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
 interface Gene {
@@ -101,19 +102,20 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   render() {
-    const items = this.props.viewer.match_gene.map((item, index) => {
-      return (
-        <ItemLink
-          href="#"
-          item={item}
-          key={index}
-          id={item.id}
-          name={item.name}
-          image_url={item.image.cropped.url}
-          onClick={() => this.followedGene(item)}
-        />
-      )
-    })
+    const items = this.props.viewer.match_gene.map((item, index) => (
+      <LinkContainer>
+        <ReplaceTransition key={index} transitionEnterTimeout={1000} transitionLeaveTimeout={400}>
+          <ItemLink
+            href="#"
+            item={item}
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image_url={item.image.cropped.url}
+            onClick={() => this.followedGene(item)} />
+        </ReplaceTransition>
+      </LinkContainer>
+    ))
 
     if (items.length < 1) {
       return <NoResultsContainer>No Results Found</NoResultsContainer>
