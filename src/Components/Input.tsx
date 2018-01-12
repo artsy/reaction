@@ -124,7 +124,7 @@ class Input extends React.Component<InputProps, InputState> {
       )
     }
 
-    return <StyledInput {...this.props} />
+    return <StyledInput {...this.props as any} />
   }
 }
 
