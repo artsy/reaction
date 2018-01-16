@@ -60,7 +60,8 @@ exports[`renders a series about properly 1`] = `
 
 .c6 p,
 .c6 ul,
-.c6 ol {
+.c6 ol,
+.c6 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -71,11 +72,13 @@ exports[`renders a series about properly 1`] = `
   font-style: inherit;
 }
 
-.c6 p:first-child {
+.c6 p:first-child,
+.c6 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c6 p:last-child {
+.c6 p:last-child,
+.c6 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -278,7 +281,8 @@ exports[`renders a series about properly 1`] = `
 @media (max-width:600px) {
   .c6 p,
   .c6 ul,
-  .c6 ol {
+  .c6 ol,
+  .c6 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -455,7 +459,8 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c9 p,
 .c9 ul,
-.c9 ol {
+.c9 ol,
+.c9 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -466,11 +471,13 @@ exports[`renders a sponsored series about properly 1`] = `
   font-style: inherit;
 }
 
-.c9 p:first-child {
+.c9 p:first-child,
+.c9 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c9 p:last-child {
+.c9 p:last-child,
+.c9 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -688,7 +695,8 @@ exports[`renders a sponsored series about properly 1`] = `
 @media (max-width:600px) {
   .c9 p,
   .c9 ul,
-  .c9 ol {
+  .c9 ol,
+  .c9 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -888,7 +896,8 @@ exports[`renders series about with children properly 1`] = `
 
 .c6 p,
 .c6 ul,
-.c6 ol {
+.c6 ol,
+.c6 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -899,11 +908,13 @@ exports[`renders series about with children properly 1`] = `
   font-style: inherit;
 }
 
-.c6 p:first-child {
+.c6 p:first-child,
+.c6 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c6 p:last-child {
+.c6 p:last-child,
+.c6 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -1106,7 +1117,8 @@ exports[`renders series about with children properly 1`] = `
 @media (max-width:600px) {
   .c6 p,
   .c6 ul,
-  .c6 ol {
+  .c6 ol,
+  .c6 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
