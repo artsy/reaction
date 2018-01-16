@@ -111,7 +111,8 @@ exports[`snapshots renders properly 1`] = `
 
 .c13 > p,
 .c13 p,
-.c13 .public-DraftEditorPlaceholder-root {
+.c13 .public-DraftEditorPlaceholder-root,
+.c13 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;

@@ -21,7 +21,8 @@ exports[`renders a long caption properly 1`] = `
 
 .c6 > p,
 .c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c6 .public-DraftEditorPlaceholder-root,
+.c6 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -210,7 +211,8 @@ exports[`renders a react child as caption properly 1`] = `
 
 .c6 > p,
 .c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c6 .public-DraftEditorPlaceholder-root,
+.c6 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -403,7 +405,8 @@ exports[`renders properly 1`] = `
 
 .c6 > p,
 .c6 p,
-.c6 .public-DraftEditorPlaceholder-root {
+.c6 .public-DraftEditorPlaceholder-root,
+.c6 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
