@@ -41,17 +41,20 @@ export const StyledText = div`
       opacity:  ${props => props.color === "black" ? "1" : ".65"};
     }
   }
-  p, ul, ol {
+  p, ul, ol,
+  .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
     padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     margin: 0;
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
-  p:first-child {
+  p:first-child,
+  .public-DraftStyleDefault-block:first-child {
     padding-top: 0;
   }
-  p:last-child {
+  p:last-child,
+  .public-DraftStyleDefault-block:last-child {
     padding-bottom: 0;
   }
   ul, ol {
@@ -114,7 +117,8 @@ export const StyledText = div`
     margin: 0;
     word-break: break-word;
   }
-  p:first-child:first-letter {
+  p:first-child:first-letter,
+  .public-DraftStyleDefault-block:first-child:first-letter {
     ${props => props.isContentStart && props.layout === "feature" && Fonts.unica("s67", "medium")}
     ${props => props.isContentStart && props.layout === "feature" && `
       float: left;
@@ -152,7 +156,8 @@ export const StyledText = div`
     }
   }
   ${props => pMedia.xs`
-    p, ul, ol {
+    p, ul, ol,
+    .public-DraftStyleDefault-block {
       ${Fonts.garamond("s19")}
     }
     li {
