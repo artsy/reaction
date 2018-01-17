@@ -21,15 +21,15 @@ interface StyledArtworkCaptionProps {
 }
 
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
-  joinParts(children) {
+  joinParts(children, delimiter = ', ') {
     const joined = _.compact(children)
       .reduce((prev, curr) => {
         return [
           prev,
+          delimiter,
           curr
         ]
       })
-
     return joined
   }
 
@@ -157,6 +157,32 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     }
   }
 
+  renderCredit() {
+    const {
+      artwork: {
+        credit
+      },
+    } = this.props
+
+    if (credit && credit.length) {
+      return (
+        <span key={3} className="credit">
+          {credit}
+        </span>
+      )
+    }
+  }
+
+  renderPartnerCredit = () => {
+    const children = [
+      this.renderPartner(),
+      this.renderCredit()
+    ]
+
+    const joined = this.joinParts(children, ". ")
+    return joined
+  }
+
   renderTitleDatePartner() {
     const children = [
       this.renderTitle(),
@@ -175,12 +201,19 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (isFullscreenCaption) {
       return (
         <StyledFullscreenCaption layout={layout}>
-          <Line className="artist-name">
-            {this.renderArtists()}
-          </Line>
           <Line>
-            {this.renderTitleDatePartner()}
+            <ArtistName>
+              {this.renderArtists()}
+            </ArtistName>
           </Line>
+          <div>
+            <Line>
+              {this.renderTitleDate()}
+            </Line>
+            <Line>
+              {this.renderPartnerCredit()}
+            </Line>
+          </div>
         </StyledFullscreenCaption>
       )
 
@@ -189,27 +222,34 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       return (
         <StyledClassicCaption layout={layout} className="display-artwork__caption">
           <Truncator>
-            <strong>
+            <ArtistName>
               {this.renderArtists()}
-            </strong>
+            </ArtistName>
 
             {this.renderTitleDate()}
+            {". "}
             {this.renderPartner()}
           </Truncator>
         </StyledClassicCaption>
       )
 
-      // Other
+      // Default (Standard + Feature)
     } else {
       return (
         <StyledArtworkCaption layout={layout} sectionLayout={sectionLayout} className="display-artwork__caption">
-          <Truncator>
-            <span className="artist-name">
-              {this.renderArtists()}
-            </span>
+          <ArtistName>
+            {this.renderArtists()}
+          </ArtistName>
 
-            {this.renderTitleDatePartner()}
-          </Truncator>
+          <div>
+            <Truncator>
+              {this.renderTitleDate()}
+            </Truncator>
+
+            <Truncator>
+              {this.renderPartnerCredit()}
+            </Truncator>
+          </div>
         </StyledArtworkCaption>
       )
     }
@@ -233,16 +273,25 @@ const Truncator: React.SFC<any> = ({ children }) => {
   }
 
   return (
-    <TruncatedLine>
-      <HTMLEllipsis
-        unsafeHTML={html}
-        trimRight={false}
-        maxLine='2'
-        ellipsis='...'
-      />
-    </TruncatedLine>
+    <HTMLEllipsis
+      unsafeHTML={html}
+      trimRight={false}
+      maxLine='2'
+      ellipsis='...'
+    />
   )
 }
+
+const ArtistName = styled.span`
+  margin-right: 30px;
+  white-space: nowrap;
+
+  ${pMedia.xs`
+    .artist-name {
+      margin-right: 30px;
+    }
+  `}
+`
 
 const div: StyledFunction<StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>> = styled.div
 
@@ -250,11 +299,16 @@ const StyledArtworkCaption = div`
   padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
   margin-top: 10px;
   display: flex;
+  color: #999;
 
   ${Fonts.unica("s14")}
   .title {
     ${Fonts.unica("s14", "italic")}
   }
+
+  // .artist-name {
+  //   margin-right: 30px;
+  // }
 
   ${pMedia.xs`
     padding: 0 10px;
@@ -264,7 +318,20 @@ const StyledArtworkCaption = div`
 const StyledClassicCaption = div`
   margin-top: 10px;
   display: block;
+  color: #999;
   ${Fonts.garamond("s15")}
+
+  ${ArtistName} {
+    margin-right: 0;
+    font-weight: bold;
+    &:after {
+      content: ', '
+    }
+  }
+
+  // .artist-name:after {
+  //   content: ', '
+  // }
 
   .title {
     font-style: italic;
@@ -272,21 +339,21 @@ const StyledClassicCaption = div`
 `
 
 const StyledFullscreenCaption = div`
-  display: flex;
-  flex-direction: row;
   ${Fonts.unica("s16", "medium")}
+  display: flex;
+  color: black;
 
   .title {
     ${Fonts.unica("s16", "mediumItalic")}
   }
 
-  .title:after {
-    content: ', ';
-  }
+  // .title:after {
+  //   content: ', ';
+  // }
 
-  .date:after {
-    content: ', ';
-  }
+  // .date:after {
+  //   content: ', ';
+  // }
 
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
@@ -298,26 +365,26 @@ const StyledFullscreenCaption = div`
   `}
 `
 
-const TruncatedLine = styled.div`
-  color: #999;
+// const TruncatedLine = styled.div`
+//   color: #999;
 
-  .name:after {
-    content: ', ';
-  }
+//   // .name:after {
+//   //   content: ', ';
+//   // }
 
-  .title:after {
-    content: ', ';
-  }
+//   // .title:after {
+//   //   content: ', ';
+//   // }
 
-  .date:after {
-    content: ', ';
-  }
-`
+//   // .date:after {
+//   //   content: ', ';
+//   // }
+// `
 
 const Line = styled.div`
-  &.artist-name {
-    margin-right: 20px;
-  }
+  // &.artist-name {
+  //   margin-right: 20px;
+  // }
 
   ${pMedia.sm`
     &.artist-name {
@@ -325,7 +392,7 @@ const Line = styled.div`
     }
   `}
 
-  ${TextLink} {
-    color: black;
-  }
+  // ${TextLink} {
+  //   color: black;
+  // }
 `

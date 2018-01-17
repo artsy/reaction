@@ -197,7 +197,7 @@ export const StandardArticle: ArticleData = {
           type: "artwork",
           id: "596aa2851a1e864d5eea6681",
           slug: "matt-devine-brass-tax",
-          date: "",
+          date: "2000",
           title: "Brass Tax",
           image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
           partner: {
@@ -216,6 +216,7 @@ export const StandardArticle: ArticleData = {
           },
           width: 1500,
           height: 2000,
+          credit: "Courtesy of The Metropolitan Museum of Art"
         },
       ],
     },

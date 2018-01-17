@@ -16,6 +16,7 @@ export const Artworks = [
     },
     width: 1152,
     height: 826,
+    credit: "Courtesy of Gary Nader"
   },
   {
     type: "artwork",
@@ -40,6 +41,7 @@ export const Artworks = [
     ],
     width: 1152,
     height: 826,
+    credit: "Courtesy of Gary Nader"
   },
   {
     type: "artwork",
@@ -54,7 +56,32 @@ export const Artworks = [
       name: "Fernando Botero",
     },
     width: 1152,
-    height: 826,
+    height: 826
+  },
+  {
+    type: "artwork",
+    id: "596aa2851a1e864d5eea6681",
+    slug: "matt-devine-brass-tax",
+    date: "2000",
+    title: "Fifty Abstract Pictures Which As Seen From Two Yards Change Into Three Lenins Masquerading As Chinese And As Seen From Six Yards Appear As The Head Of A Royal Bengal Tiger",
+    image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+    partner: {
+      name: "Joanne Artman Gallery and Gagosian Gallery",
+      slug: "joanne-artman-gallery",
+    },
+    artists: [
+      {
+        name: "Matt Devine",
+        slug: "matt-devine",
+      },
+    ],
+    artist: {
+      name: "Matt Devine",
+      slug: "matt-devine",
+    },
+    width: 1500,
+    height: 2000,
+    credit: "Courtesy of The Metropolitan Museum of Art, Gagosian Gallery, and the artist."
   },
 ]
 
@@ -280,6 +307,7 @@ export const Images = [
     },
     width: 1152,
     height: 826,
+    credit: "Courtesy of Gary Nader"
   },
   {
     url: "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",

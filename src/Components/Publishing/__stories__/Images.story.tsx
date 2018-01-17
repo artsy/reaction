@@ -76,6 +76,11 @@ storiesOf("Publishing/Images", module)
           <Artwork artwork={Artworks[2]} />
         </div>
         <hr />
+        <p>Long info: </p>
+        <div style={{ width: 800 }}>
+          <Artwork artwork={Artworks[3]} />
+        </div>
+        <hr />
         <p>Small: </p>
         <div style={{ width: 400 }}>
           <Artwork artwork={Artworks[1]} />
