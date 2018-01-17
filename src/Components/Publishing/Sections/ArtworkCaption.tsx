@@ -2,6 +2,7 @@ import _ from "lodash"
 import React from "react"
 import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"
+import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
 import { Fonts } from "../Fonts"
@@ -288,7 +289,7 @@ const StyledArtworkCaption = div`
   padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
   margin-top: 10px;
   display: flex;
-  color: #999;
+  color: ${Colors.grayDark};
 
   ${Fonts.unica("s14")}
   .title {
@@ -303,7 +304,7 @@ const StyledArtworkCaption = div`
 const StyledClassicCaption = div`
   margin-top: 10px;
   display: block;
-  color: #999;
+  color: ${Colors.grayDark};
   ${Fonts.garamond("s15")}
 
   ${ArtistName} {
