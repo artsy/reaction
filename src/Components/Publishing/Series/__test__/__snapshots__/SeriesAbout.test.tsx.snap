@@ -73,12 +73,12 @@ exports[`renders a series about properly 1`] = `
 }
 
 .c6 p:first-child,
-.c6 .public-DraftStyleDefault-block:first-child {
+.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c6 p:last-child,
-.c6 .public-DraftStyleDefault-block:last-child {
+.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -472,12 +472,12 @@ exports[`renders a sponsored series about properly 1`] = `
 }
 
 .c9 p:first-child,
-.c9 .public-DraftStyleDefault-block:first-child {
+.c9 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c9 p:last-child,
-.c9 .public-DraftStyleDefault-block:last-child {
+.c9 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -909,12 +909,12 @@ exports[`renders series about with children properly 1`] = `
 }
 
 .c6 p:first-child,
-.c6 .public-DraftStyleDefault-block:first-child {
+.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c6 p:last-child,
-.c6 .public-DraftStyleDefault-block:last-child {
+.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 

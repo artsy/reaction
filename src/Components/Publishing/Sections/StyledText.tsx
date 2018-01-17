@@ -50,11 +50,11 @@ export const StyledText = div`
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
   p:first-child,
-  .public-DraftStyleDefault-block:first-child {
+  div[data-block=true]:first-child .public-DraftStyleDefault-block {
     padding-top: 0;
   }
   p:last-child,
-  .public-DraftStyleDefault-block:last-child {
+  div[data-block=true]:last-child .public-DraftStyleDefault-block {
     padding-bottom: 0;
   }
   ul, ol {
@@ -118,7 +118,7 @@ export const StyledText = div`
     word-break: break-word;
   }
   p:first-child:first-letter,
-  .public-DraftStyleDefault-block:first-child:first-letter {
+  div[data-block=true]:first-child .public-DraftStyleDefault-block:first-letter {
     ${props => props.isContentStart && props.layout === "feature" && Fonts.unica("s67", "medium")}
     ${props => props.isContentStart && props.layout === "feature" && `
       float: left;

@@ -36,12 +36,12 @@ exports[`renders classic text properly 1`] = `
 }
 
 .c0 p:first-child,
-.c0 .public-DraftStyleDefault-block:first-child {
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
-.c0 .public-DraftStyleDefault-block:last-child {
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -284,12 +284,12 @@ exports[`renders feature text properly 1`] = `
 }
 
 .c0 p:first-child,
-.c0 .public-DraftStyleDefault-block:first-child {
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
-.c0 .public-DraftStyleDefault-block:last-child {
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -522,12 +522,12 @@ exports[`renders standard text properly 1`] = `
 }
 
 .c0 p:first-child,
-.c0 .public-DraftStyleDefault-block:first-child {
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
-.c0 .public-DraftStyleDefault-block:last-child {
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 

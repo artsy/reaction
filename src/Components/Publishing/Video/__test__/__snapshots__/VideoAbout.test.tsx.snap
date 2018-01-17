@@ -105,12 +105,12 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c4 p:first-child,
-.c4 .public-DraftStyleDefault-block:first-child {
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c4 p:last-child,
-.c4 .public-DraftStyleDefault-block:last-child {
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -779,12 +779,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c4 p:first-child,
-.c4 .public-DraftStyleDefault-block:first-child {
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c4 p:last-child,
-.c4 .public-DraftStyleDefault-block:last-child {
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
