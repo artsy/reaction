@@ -11,7 +11,7 @@ interface Props extends FollowProps {
 export default class ArtistList extends React.Component<Props, null> {
   render() {
     if (this.props.searchQuery.length > 0) {
-      return <ArtistSearchResults term={this.props.searchQuery} />
+      return <ArtistSearchResults term={this.props.searchQuery} updateFollowCount={this.props.updateFollowCount} />
     }
     return <PopularArtists updateFollowCount={this.props.updateFollowCount} />
   }
