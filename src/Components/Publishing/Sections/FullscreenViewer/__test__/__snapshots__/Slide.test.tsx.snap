@@ -6,18 +6,21 @@ exports[`renders properly 1`] = `
   text-decoration: none;
 }
 
+.c9 {
+  margin-right: 30px;
+  white-space: nowrap;
+}
+
 .c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
 }
 
 .c7 .title {
@@ -25,22 +28,6 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-}
-
-.c7 .title:after {
-  content: ', ';
-}
-
-.c7 .date:after {
-  content: ', ';
-}
-
-.c8.artist-name {
-  margin-right: 20px;
-}
-
-.c8 .c9 {
-  color: black;
 }
 
 .c5 {
@@ -124,6 +111,12 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
+}
+
+@media (max-width:600px) {
+  .c9 .artist-name {
+    margin-right: 30px;
+  }
 }
 
 @media (max-width:720px) {
@@ -250,43 +243,60 @@ exports[`renders properly 1`] = `
             className="c7"
           >
             <div
-              className="artist-name c8"
-            >
-              <span
-                className="name"
-              >
-                <a
-                  className="c9 c10"
-                  href="/artist/fernando-botero"
-                >
-                  Fernando Botero
-                </a>
-              </span>
-            </div>
-            <div
               className="c8"
             >
               <span
-                className="title"
+                className="c9"
+              >
+                <span
+                  className="name"
+                >
+                  <a
+                    className="c10"
+                    href="/artist/fernando-botero"
+                  >
+                    Fernando Botero
+                  </a>
+                </span>
+              </span>
+            </div>
+            <div>
+              <div
+                className="c8"
+              >
+                <span
+                  className="title"
+                >
+                  <a
+                    className="c10"
+                    href="/artwork/fernando-botero-nude-on-the-beach"
+                  >
+                    Nude on the Beach
+                  </a>
+                </span>
+                , 
+                <span
+                  className="date"
+                >
+                  2000
+                </span>
+              </div>
+              <div
+                className="c8"
               >
                 <a
-                  className="c9 c10"
-                  href="/artwork/fernando-botero-nude-on-the-beach"
+                  className="c10"
+                  href="/partner/gary-nader"
                 >
-                  Nude on the Beach
+                  Gary Nader
                 </a>
-              </span>
-              <span
-                className="date"
-              >
-                2000
-              </span>
-              <a
-                className="c9 c10"
-                href="/partner/gary-nader"
-              >
-                Gary Nader
-              </a>
+                . 
+                <span
+                  className="credit"
+                >
+                  Courtesy of Gary Nader
+                </span>
+              </div>
             </div>
           </div>
         </div>
