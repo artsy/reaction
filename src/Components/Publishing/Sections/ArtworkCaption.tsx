@@ -1,12 +1,12 @@
 import _ from "lodash"
 import React from "react"
-import ReactDOM from 'react-dom/server'
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
 import { Fonts } from "../Fonts"
 import { Layout, SectionLayout } from "../Typings"
+import { Truncator } from "./Truncator"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
@@ -244,32 +244,6 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       )
     }
   }
-}
-
-const Truncator: React.SFC<any> = ({ children }) => {
-  const html = ReactDOM.renderToStaticMarkup(<span>{children}</span>)
-
-  // FIXME: Make safe for tests
-  let HTMLEllipsis
-
-  if (process.env.NODE_ENV !== 'test') {
-    HTMLEllipsis = require('react-lines-ellipsis/lib/html')
-  } else {
-    HTMLEllipsis = ({ unsafeHTML }) => (
-      <div dangerouslySetInnerHTML={{
-        __html: unsafeHTML
-      }} />
-    )
-  }
-
-  return (
-    <HTMLEllipsis
-      unsafeHTML={html}
-      trimRight={false}
-      maxLine='2'
-      ellipsis='...'
-    />
-  )
 }
 
 const ArtistName = styled.span`
