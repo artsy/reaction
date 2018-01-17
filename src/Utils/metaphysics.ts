@@ -1,3 +1,4 @@
+import "isomorphic-fetch"
 import * as sharify from "sharify"
 import { NetworkError } from "./errors"
 

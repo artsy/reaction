@@ -12,5 +12,9 @@
   },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "tslint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib"
 }
