@@ -355,7 +355,8 @@ exports[`renders a series properly 1`] = `
 
 .c37 p,
 .c37 ul,
-.c37 ol {
+.c37 ol,
+.c37 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -366,11 +367,13 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c37 p:first-child {
+.c37 p:first-child,
+.c37 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c37 p:last-child {
+.c37 p:last-child,
+.c37 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -724,7 +727,8 @@ exports[`renders a series properly 1`] = `
 @media (max-width:600px) {
   .c37 p,
   .c37 ul,
-  .c37 ol {
+  .c37 ol,
+  .c37 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1416,7 +1420,8 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c42 p,
 .c42 ul,
-.c42 ol {
+.c42 ol,
+.c42 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1427,11 +1432,13 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c42 p:first-child {
+.c42 p:first-child,
+.c42 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c42 p:last-child {
+.c42 p:last-child,
+.c42 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -1819,7 +1826,8 @@ exports[`renders a sponsored series properly 1`] = `
 @media (max-width:600px) {
   .c42 p,
   .c42 ul,
-  .c42 ol {
+  .c42 ol,
+  .c42 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

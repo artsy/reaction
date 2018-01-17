@@ -34,7 +34,8 @@ exports[`renders column_width properly 1`] = `
 
 .c1 p,
 .c1 ul,
-.c1 ol {
+.c1 ol,
+.c1 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -45,11 +46,13 @@ exports[`renders column_width properly 1`] = `
   font-style: inherit;
 }
 
-.c1 p:first-child {
+.c1 p:first-child,
+.c1 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c1 p:last-child {
+.c1 p:last-child,
+.c1 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -190,7 +193,8 @@ exports[`renders column_width properly 1`] = `
 @media (max-width:600px) {
   .c1 p,
   .c1 ul,
-  .c1 ol {
+  .c1 ol,
+  .c1 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -298,7 +302,8 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 p,
 .c1 ul,
-.c1 ol {
+.c1 ol,
+.c1 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -309,11 +314,13 @@ exports[`renders fillwidth properly 1`] = `
   font-style: inherit;
 }
 
-.c1 p:first-child {
+.c1 p:first-child,
+.c1 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c1 p:last-child {
+.c1 p:last-child,
+.c1 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -454,7 +461,8 @@ exports[`renders fillwidth properly 1`] = `
 @media (max-width:600px) {
   .c1 p,
   .c1 ul,
-  .c1 ol {
+  .c1 ol,
+  .c1 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -562,7 +570,8 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 p,
 .c1 ul,
-.c1 ol {
+.c1 ol,
+.c1 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -573,11 +582,13 @@ exports[`renders overflow_fillwidth properly 1`] = `
   font-style: inherit;
 }
 
-.c1 p:first-child {
+.c1 p:first-child,
+.c1 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c1 p:last-child {
+.c1 p:last-child,
+.c1 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -718,7 +729,8 @@ exports[`renders overflow_fillwidth properly 1`] = `
 @media (max-width:600px) {
   .c1 p,
   .c1 ul,
-  .c1 ol {
+  .c1 ol,
+  .c1 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

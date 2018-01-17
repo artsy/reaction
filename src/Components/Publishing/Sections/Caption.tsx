@@ -51,7 +51,9 @@ const Figcaption = div`
   width: 100%;
   word-break: break-word;
 
-  & > p, p, .public-DraftEditorPlaceholder-root {
+  & > p, p,
+  .public-DraftEditorPlaceholder-root,
+  .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;

@@ -111,7 +111,8 @@ exports[`snapshots renders properly 1`] = `
 
 .c13 > p,
 .c13 p,
-.c13 .public-DraftEditorPlaceholder-root {
+.c13 .public-DraftEditorPlaceholder-root,
+.c13 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -335,7 +336,8 @@ exports[`snapshots renders properly 1`] = `
 
 .c2 p,
 .c2 ul,
-.c2 ol {
+.c2 ol,
+.c2 .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -346,11 +348,13 @@ exports[`snapshots renders properly 1`] = `
   font-style: inherit;
 }
 
-.c2 p:first-child {
+.c2 p:first-child,
+.c2 .public-DraftStyleDefault-block:first-child {
   padding-top: 0;
 }
 
-.c2 p:last-child {
+.c2 p:last-child,
+.c2 .public-DraftStyleDefault-block:last-child {
   padding-bottom: 0;
 }
 
@@ -664,7 +668,8 @@ exports[`snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c2 p,
   .c2 ul,
-  .c2 ol {
+  .c2 ol,
+  .c2 .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
