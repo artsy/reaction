@@ -368,12 +368,12 @@ exports[`renders a series properly 1`] = `
 }
 
 .c37 p:first-child,
-.c37 .public-DraftStyleDefault-block:first-child {
+.c37 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c37 p:last-child,
-.c37 .public-DraftStyleDefault-block:last-child {
+.c37 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -1433,12 +1433,12 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c42 p:first-child,
-.c42 .public-DraftStyleDefault-block:first-child {
+.c42 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c42 p:last-child,
-.c42 .public-DraftStyleDefault-block:last-child {
+.c42 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 

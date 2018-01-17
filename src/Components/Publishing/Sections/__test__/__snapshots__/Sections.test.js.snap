@@ -349,12 +349,12 @@ exports[`snapshots renders properly 1`] = `
 }
 
 .c2 p:first-child,
-.c2 .public-DraftStyleDefault-block:first-child {
+.c2 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c2 p:last-child,
-.c2 .public-DraftStyleDefault-block:last-child {
+.c2 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 

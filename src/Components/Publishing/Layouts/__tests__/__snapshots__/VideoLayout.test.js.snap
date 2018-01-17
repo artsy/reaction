@@ -428,12 +428,12 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c49 p:first-child,
-.c49 .public-DraftStyleDefault-block:first-child {
+.c49 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c49 p:last-child,
-.c49 .public-DraftStyleDefault-block:last-child {
+.c49 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -592,12 +592,12 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c58 p:first-child,
-.c58 .public-DraftStyleDefault-block:first-child {
+.c58 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c58 p:last-child,
-.c58 .public-DraftStyleDefault-block:last-child {
+.c58 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 

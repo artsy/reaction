@@ -47,12 +47,12 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 p:first-child,
-.c1 .public-DraftStyleDefault-block:first-child {
+.c1 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c1 p:last-child,
-.c1 .public-DraftStyleDefault-block:last-child {
+.c1 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -315,12 +315,12 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 p:first-child,
-.c1 .public-DraftStyleDefault-block:first-child {
+.c1 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c1 p:last-child,
-.c1 .public-DraftStyleDefault-block:last-child {
+.c1 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
@@ -583,12 +583,12 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 p:first-child,
-.c1 .public-DraftStyleDefault-block:first-child {
+.c1 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c1 p:last-child,
-.c1 .public-DraftStyleDefault-block:last-child {
+.c1 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
