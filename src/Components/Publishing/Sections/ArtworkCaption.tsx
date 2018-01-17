@@ -183,17 +183,6 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     return joined
   }
 
-  renderTitleDatePartner() {
-    const children = [
-      this.renderTitle(),
-      this.renderDate(),
-      this.renderPartner()
-    ]
-
-    const joined = this.joinParts(children)
-    return joined
-  }
-
   render() {
     const { layout, isFullscreenCaption, sectionLayout } = this.props
 
@@ -306,10 +295,6 @@ const StyledArtworkCaption = div`
     ${Fonts.unica("s14", "italic")}
   }
 
-  // .artist-name {
-  //   margin-right: 30px;
-  // }
-
   ${pMedia.xs`
     padding: 0 10px;
   `}
@@ -329,10 +314,6 @@ const StyledClassicCaption = div`
     }
   }
 
-  // .artist-name:after {
-  //   content: ', '
-  // }
-
   .title {
     font-style: italic;
   }
@@ -347,14 +328,6 @@ const StyledFullscreenCaption = div`
     ${Fonts.unica("s16", "mediumItalic")}
   }
 
-  // .title:after {
-  //   content: ', ';
-  // }
-
-  // .date:after {
-  //   content: ', ';
-  // }
-
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
     flex-direction: column;
@@ -365,34 +338,10 @@ const StyledFullscreenCaption = div`
   `}
 `
 
-// const TruncatedLine = styled.div`
-//   color: #999;
-
-//   // .name:after {
-//   //   content: ', ';
-//   // }
-
-//   // .title:after {
-//   //   content: ', ';
-//   // }
-
-//   // .date:after {
-//   //   content: ', ';
-//   // }
-// `
-
 const Line = styled.div`
-  // &.artist-name {
-  //   margin-right: 20px;
-  // }
-
   ${pMedia.sm`
     &.artist-name {
       margin-bottom: 5px;
     }
   `}
-
-  // ${TextLink} {
-  //   color: black;
-  // }
 `

@@ -5,7 +5,7 @@ export const Artworks = [
     type: "artwork",
     id: "589a6291275b2410d1beb6a5",
     slug: "fernando-botero-nude-on-the-beach",
-    date: "2000",
+    date: "",
     title: "Nude on the Beach",
     image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
     partner: {
