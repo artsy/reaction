@@ -22,16 +22,18 @@ const OnboardingSearchBox = styled.div`
 
 interface State {
   inputText: string
+  followCount: number
 }
 
 export default class Genes extends React.Component<StepProps, State> {
   state = {
     inputText: "",
+    followCount: 0,
   }
 
-  // onInputChange = e => {
-  //   this.props.onStateChange({ nextButtonEnabled: true })
-  // }
+  updateFollowCount(count: number) {
+    this.setState({ followCount: count })
+  }
 
   searchTextChanged(e) {
     const updatedInputText = e.target.value
@@ -51,7 +53,7 @@ export default class Genes extends React.Component<StepProps, State> {
       <Layout
         title="Follow art categories that interest you most"
         subtitle="Follow one or more"
-        onNextButtonPressed={this.clickedNext.bind(this)}
+        onNextButtonPressed={this.state.followCount > 0 ? this.clickedNext.bind(this) : null}
       >
         <OnboardingSearchBox>
           <Input
@@ -70,7 +72,7 @@ export default class Genes extends React.Component<StepProps, State> {
             autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
-          {<GeneList searchQuery={this.state.inputText} />}
+          {<GeneList searchQuery={this.state.inputText} updateFollowCount={this.updateFollowCount.bind(this)} />}
         </OnboardingSearchBox>
       </Layout>
     )
