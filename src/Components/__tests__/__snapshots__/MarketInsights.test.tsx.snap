@@ -312,7 +312,7 @@ exports[`MarketInsights renders correctly 1`] = `
     This is a new feature. 
     <a
       className="c6"
-      href="mailto:productfeedback@artsy.net?subject=Feedback+on+%22About+the+Artist%22+information"
+      href="mailto:productfeedback@artsy.net?subject=Feedback on \\"About the Artist\\" information"
     >
       Tell us what you think.
     </a>
