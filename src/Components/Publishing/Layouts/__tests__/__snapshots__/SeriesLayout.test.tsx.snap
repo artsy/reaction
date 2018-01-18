@@ -356,7 +356,7 @@ exports[`renders a series properly 1`] = `
 .c37 p,
 .c37 ul,
 .c37 ol,
-.c37 .public-DraftStyleDefault-block {
+.c37 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -728,7 +728,7 @@ exports[`renders a series properly 1`] = `
   .c37 p,
   .c37 ul,
   .c37 ol,
-  .c37 .public-DraftStyleDefault-block {
+  .c37 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1421,7 +1421,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c42 p,
 .c42 ul,
 .c42 ol,
-.c42 .public-DraftStyleDefault-block {
+.c42 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1827,7 +1827,7 @@ exports[`renders a sponsored series properly 1`] = `
   .c42 p,
   .c42 ul,
   .c42 ol,
-  .c42 .public-DraftStyleDefault-block {
+  .c42 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

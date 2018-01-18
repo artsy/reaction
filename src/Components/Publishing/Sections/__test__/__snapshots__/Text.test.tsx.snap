@@ -24,7 +24,7 @@ exports[`renders classic text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
-.c0 .public-DraftStyleDefault-block {
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -178,7 +178,7 @@ exports[`renders classic text properly 1`] = `
   .c0 p,
   .c0 ul,
   .c0 ol,
-  .c0 .public-DraftStyleDefault-block {
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -272,7 +272,7 @@ exports[`renders feature text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
-.c0 .public-DraftStyleDefault-block {
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -417,7 +417,7 @@ exports[`renders feature text properly 1`] = `
   .c0 p,
   .c0 ul,
   .c0 ol,
-  .c0 .public-DraftStyleDefault-block {
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -510,7 +510,7 @@ exports[`renders standard text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
-.c0 .public-DraftStyleDefault-block {
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -655,7 +655,7 @@ exports[`renders standard text properly 1`] = `
   .c0 p,
   .c0 ul,
   .c0 ol,
-  .c0 .public-DraftStyleDefault-block {
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
