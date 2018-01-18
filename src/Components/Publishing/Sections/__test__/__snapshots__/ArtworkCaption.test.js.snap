@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
+.c0 {
+  margin-top: 10px;
+  display: block;
+  color: #999999;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.25em;
+}
+
+.c0 .file__ArtistName-s167n58y-0 {
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.c0 .file__ArtistName-s167n58y-0:after {
+  content: ', ';
+}
+
+.c0 .title {
+  font-style: italic;
+}
+
+<div
+  className="display-artwork__caption c0"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<span><span class=\\"file__ArtistName-s167n58y-0 blbyxn\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>. Gary Nader</span>",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
+.c2 {
+  margin-right: 30px;
+  white-space: nowrap;
+}
+
+.c0 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
+}
+
+.c0 .title {
+  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+@media (max-width:600px) {
+  .c2 .artist-name {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width:720px) {
+  .c0 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .c0 .title {
+    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c1.artist-name {
+    margin-bottom: 5px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <span
+      className="c2"
+    >
+      <span
+        className="name"
+      >
+        Fernando Botero
+      </span>
+    </span>
+  </div>
+  <div>
+    <div
+      className="c1"
+    >
+      <span
+        className="title"
+      >
+        Nude on the Beach
+      </span>
+    </div>
+    <div
+      className="c1"
+    >
+      Gary Nader
+      . 
+      <span
+        className="credit"
+      >
+        Courtesy of Gary Nader
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
+.c2 {
+  margin-right: 30px;
+  white-space: nowrap;
+}
+
+.c0 {
+  padding: 0;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #999999;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c0 .title {
+  font-family: Unica77LLWebItalic , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.hxmrGw .c1 {
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.hxmrGw .c1:after {
+  content: ', ';
+}
+
+@media (max-width:600px) {
+  .c2 .artist-name {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width:600px) {
+  .c0 {
+    padding: 0 10px;
+  }
+}
+
+<div
+  className="display-artwork__caption c0"
+>
+  <span
+    className="c1 c2"
+  >
+    <span
+      className="name"
+    >
+      Fernando Botero
+    </span>
+  </span>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<span><span class=\\"title\\">Nude on the Beach</span></span>",
+        }
+      }
+    />
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<span>Gary Nader. <span class=\\"credit\\">Courtesy of Gary Nader</span></span>",
+        }
+      }
+    />
+  </div>
+</div>
+`;

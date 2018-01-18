@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c8 {
+  color: #999;
+  text-decoration: none;
+}
+
+.c7 {
+  margin-right: 30px;
+  white-space: nowrap;
+}
+
 .c6 {
   padding: 0;
   margin-top: 10px;
@@ -8,6 +18,7 @@ exports[`renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  color: #999999;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -19,22 +30,6 @@ exports[`renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
-}
-
-.c7 {
-  color: #999;
-}
-
-.c7 .name:after {
-  content: ', ';
-}
-
-.c7 .title:after {
-  content: ', ';
-}
-
-.c7 .date:after {
-  content: ', ';
 }
 
 .c5 {
@@ -84,6 +79,12 @@ exports[`renders properly 1`] = `
 
 .c0 {
   text-decoration: none;
+}
+
+@media (max-width:600px) {
+  .c7 .artist-name {
+    margin-right: 30px;
+  }
 }
 
 @media (max-width:600px) {
@@ -174,28 +175,25 @@ exports[`renders properly 1`] = `
   <div
     className="display-artwork__caption c6"
   >
-    <div
+    <span
       className="c7"
     >
+      <span
+        className="name"
+      >
+        <a
+          className="c8"
+          href="/artist/fernando-botero"
+        >
+          Fernando Botero
+        </a>
+      </span>
+    </span>
+    <div>
       <div
         dangerouslySetInnerHTML={
           Object {
             "__html": <span>
-              <span
-                className="artist-name"
-              >
-                <span
-                  className="name"
-                >
-                  <file__StyledTextLink
-                    color="#999"
-                    href="/artist/fernando-botero"
-                    underline={false}
-                  >
-                    Fernando Botero
-                  </file__StyledTextLink>
-                </span>
-              </span>
               <span
                 className="title"
               >
@@ -207,11 +205,20 @@ exports[`renders properly 1`] = `
                   Nude on the Beach
                 </file__StyledTextLink>
               </span>
+              , 
               <span
                 className="date"
               >
                 2000
               </span>
+            </span>,
+          }
+        }
+      />
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": <span>
               <file__StyledTextLink
                 color="#999"
                 href="/partner/gary-nader"
@@ -219,6 +226,12 @@ exports[`renders properly 1`] = `
               >
                 Gary Nader
               </file__StyledTextLink>
+              . 
+              <span
+                className="credit"
+              >
+                Courtesy of Gary Nader
+              </span>
             </span>,
           }
         }
