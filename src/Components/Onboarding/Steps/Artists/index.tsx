@@ -36,7 +36,9 @@ export default class Artists extends React.Component<StepProps, State> {
   }
 
   submit() {
-    this.props.onNextButtonPressed()
+    const increaseBy = this.state.followCount >= 4 ? 2 : 1
+
+    this.props.onNextButtonPressed(increaseBy)
   }
 
   searchTextChanged(e) {

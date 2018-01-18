@@ -31,12 +31,12 @@ class Wizard extends React.Component<Props, State> {
     return <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
   }
 
-  onNextButtonPressed() {
+  onNextButtonPressed(increaseBy) {
     if (this.props.stepComponents.length <= this.state.currentStep) {
       return
     }
 
-    const stepIndex = this.state.currentStep + 1
+    const stepIndex = this.state.currentStep + increaseBy
     this.setState({ currentStep: stepIndex })
   }
 
