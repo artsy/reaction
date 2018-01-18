@@ -61,7 +61,7 @@ exports[`renders a series about properly 1`] = `
 .c6 p,
 .c6 ul,
 .c6 ol,
-.c6 .public-DraftStyleDefault-block {
+.c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -282,7 +282,7 @@ exports[`renders a series about properly 1`] = `
   .c6 p,
   .c6 ul,
   .c6 ol,
-  .c6 .public-DraftStyleDefault-block {
+  .c6 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -460,7 +460,7 @@ exports[`renders a sponsored series about properly 1`] = `
 .c9 p,
 .c9 ul,
 .c9 ol,
-.c9 .public-DraftStyleDefault-block {
+.c9 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -696,7 +696,7 @@ exports[`renders a sponsored series about properly 1`] = `
   .c9 p,
   .c9 ul,
   .c9 ol,
-  .c9 .public-DraftStyleDefault-block {
+  .c9 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -897,7 +897,7 @@ exports[`renders series about with children properly 1`] = `
 .c6 p,
 .c6 ul,
 .c6 ol,
-.c6 .public-DraftStyleDefault-block {
+.c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1118,7 +1118,7 @@ exports[`renders series about with children properly 1`] = `
   .c6 p,
   .c6 ul,
   .c6 ol,
-  .c6 .public-DraftStyleDefault-block {
+  .c6 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

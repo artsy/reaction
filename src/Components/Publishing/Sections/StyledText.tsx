@@ -42,7 +42,7 @@ export const StyledText = div`
     }
   }
   p, ul, ol,
-  .public-DraftStyleDefault-block {
+  div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
     padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
@@ -157,7 +157,7 @@ export const StyledText = div`
   }
   ${props => pMedia.xs`
     p, ul, ol,
-    .public-DraftStyleDefault-block {
+    div[data-block=true] .public-DraftStyleDefault-block {
       ${Fonts.garamond("s19")}
     }
     li {

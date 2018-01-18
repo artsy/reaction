@@ -416,7 +416,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c49 p,
 .c49 ul,
 .c49 ol,
-.c49 .public-DraftStyleDefault-block {
+.c49 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -580,7 +580,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c58 p,
 .c58 ul,
 .c58 ol,
-.c58 .public-DraftStyleDefault-block {
+.c58 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1404,7 +1404,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   .c49 p,
   .c49 ul,
   .c49 ol,
-  .c49 .public-DraftStyleDefault-block {
+  .c49 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1463,7 +1463,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   .c58 p,
   .c58 ul,
   .c58 ol,
-  .c58 .public-DraftStyleDefault-block {
+  .c58 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

@@ -93,7 +93,7 @@ exports[`Video About matches the snapshot 1`] = `
 .c4 p,
 .c4 ul,
 .c4 ol,
-.c4 .public-DraftStyleDefault-block {
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -339,7 +339,7 @@ exports[`Video About matches the snapshot 1`] = `
   .c4 p,
   .c4 ul,
   .c4 ol,
-  .c4 .public-DraftStyleDefault-block {
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -767,7 +767,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c4 p,
 .c4 ul,
 .c4 ol,
-.c4 .public-DraftStyleDefault-block {
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1013,7 +1013,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   .c4 p,
   .c4 ul,
   .c4 ol,
-  .c4 .public-DraftStyleDefault-block {
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;

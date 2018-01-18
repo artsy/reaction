@@ -332,7 +332,7 @@ exports[`snapshots renders properly 1`] = `
 .c2 p,
 .c2 ul,
 .c2 ol,
-.c2 .public-DraftStyleDefault-block {
+.c2 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -670,7 +670,7 @@ exports[`snapshots renders properly 1`] = `
   .c2 p,
   .c2 ul,
   .c2 ol,
-  .c2 .public-DraftStyleDefault-block {
+  .c2 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
