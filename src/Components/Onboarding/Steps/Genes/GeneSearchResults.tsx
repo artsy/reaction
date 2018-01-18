@@ -6,6 +6,7 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import * as fonts from "../../../../Assets/Fonts"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
+import { FollowProps } from "../../Types"
 
 interface Gene {
   id: string | null
@@ -18,9 +19,12 @@ interface Gene {
   } | null
 }
 
-export interface RelayProps {
-  relay?: RelayProp
+interface Props extends FollowProps {
   term: string
+}
+
+interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+  relay?: RelayProp
   viewer: {
     match_gene: Gene[]
   }
@@ -37,6 +41,7 @@ const NoResultsContainer = styled.div`
 
 class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   private excludedGeneIds: Set<string>
+  followCount: number = 0
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
@@ -52,6 +57,10 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
     const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
 
     suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
+
+    this.followCount = this.followCount + 1
+
+    this.props.updateFollowCount(this.followCount)
   }
 
   followedGene(gene: Gene) {
@@ -132,11 +141,7 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-interface Props {
-  term: string
-}
-
-const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
+const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -150,7 +155,13 @@ const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, rel
       variables={{ term }}
       render={({ error, props }) => {
         if (props) {
-          return <GeneSearchResultsContentContainer viewer={props.viewer} term={term} />
+          return (
+            <GeneSearchResultsContentContainer
+              viewer={props.viewer}
+              term={term}
+              updateFollowCount={updateFollowCount}
+            />
+          )
         } else {
           return null
         }

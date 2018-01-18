@@ -11,7 +11,7 @@ export interface Props extends FollowProps {
 export default class GeneList extends React.Component<Props, any> {
   render() {
     if (this.props.searchQuery.length > 0) {
-      return <GeneSearchResults term={this.props.searchQuery} />
+      return <GeneSearchResults term={this.props.searchQuery} updateFollowCount={this.props.updateFollowCount} />
     }
     return <SuggestedGenes updateFollowCount={this.props.updateFollowCount} />
   }
