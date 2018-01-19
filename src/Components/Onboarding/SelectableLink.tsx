@@ -38,11 +38,12 @@ const Link = styled.a`
   font-size: 14px;
   color: black;
   text-decoration: none;
-  ${fonts.primary.style}
+  ${fonts.primary.style};
   padding: 30px 0 30px 15px;
   border-top: 1px solid ${Colors.grayRegular};
   &:hover {
     background-color: ${Colors.gray};
+    cursor: pointer;
   }
   &:hover ${IconContainer} {
     display: inline-flex;
@@ -77,7 +78,12 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
           {this.props.text}
 
           <IconContainer isSelected={this.state.selected}>
-            <Icon name="follow-circle.is-following" color="white" fontSize="39px" style={{ alignSelf: "center" }} />
+            <Icon
+              name="follow-circle.is-following"
+              color="white"
+              fontSize="39px"
+              style={{ alignSelf: "center" }}
+            />
           </IconContainer>
         </Link>
       </div>
