@@ -95,6 +95,8 @@ class CollectorIntent extends React.Component<Props, State> {
         },
       },
     })
+
+    this.props.onNextButtonPressed()
   }
 
   render() {
@@ -105,7 +107,7 @@ class CollectorIntent extends React.Component<Props, State> {
       <Layout
         title="Get started on Artsy, what are you most interested in doing?"
         subtitle="Select all that apply"
-        onNextButtonPressed={this.state.selectedCount > 0 && this.submit.bind(this)}
+        onNextButtonPressed={this.state.selectedCount > 0 ? this.submit.bind(this) : null}
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>

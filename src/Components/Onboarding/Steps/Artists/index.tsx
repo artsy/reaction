@@ -22,11 +22,25 @@ const OnboardingSearchBox = styled.div`
 
 interface State {
   inputText: string
+  followCount: number
 }
 
 export default class Artists extends React.Component<StepProps, State> {
   state = {
     inputText: "",
+    followCount: 0,
+  }
+
+  updateFollowCount(count: number) {
+    const updatedFollowCount = this.state.followCount + count
+
+    this.setState({ followCount: updatedFollowCount })
+  }
+
+  submit() {
+    const increaseBy = this.state.followCount >= 4 ? 2 : 1
+
+    this.props.onNextButtonPressed(increaseBy)
   }
 
   searchTextChanged(e) {
@@ -39,7 +53,9 @@ export default class Artists extends React.Component<StepProps, State> {
       <Layout
         title="Follow a few artists that interest you most"
         subtitle="Follow one or more"
-        onNextButtonPressed={null}
+        onNextButtonPressed={
+          this.state.followCount > 0 ? this.submit.bind(this) : null
+        }
       >
         <OnboardingSearchBox>
           <Input
@@ -51,7 +67,10 @@ export default class Artists extends React.Component<StepProps, State> {
             onCut={this.searchTextChanged.bind(this)}
           />
           <div style={{ marginBottom: "35px" }} />
-          <ArtistList searchQuery={this.state.inputText} />
+          <ArtistList
+            searchQuery={this.state.inputText}
+            updateFollowCount={this.updateFollowCount.bind(this)}
+          />
         </OnboardingSearchBox>
       </Layout>
     )

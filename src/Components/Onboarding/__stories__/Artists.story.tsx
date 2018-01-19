@@ -7,7 +7,7 @@ import Artists from "../Steps/Artists"
 storiesOf("Onboarding", module).add("Artist Selector", () => {
   return (
     <ContextProvider>
-      <Artists onNextButtonPressed={null} />
+      <Artists onNextButtonPressed={() => null} />
     </ContextProvider>
   )
 })

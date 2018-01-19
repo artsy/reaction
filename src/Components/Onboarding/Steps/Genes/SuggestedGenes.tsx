@@ -4,6 +4,7 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
+import { FollowProps } from "../../Types"
 
 interface Gene {
   id: string | null
@@ -16,13 +17,16 @@ interface Gene {
   } | null
 }
 
-interface Props extends React.HTMLProps<HTMLAnchorElement> {
+interface RelayProps {
   relay?: RelayProp
   suggested_genes: Gene[]
 }
 
+interface Props extends React.HTMLProps<HTMLAnchorElement>, RelayProps, FollowProps {}
+
 class SuggestedGenesContent extends React.Component<Props, null> {
   private excludedGeneIds: Set<string>
+  followCount: number = 0
 
   constructor(props: Props, context: any) {
     super(props, context)
@@ -38,6 +42,10 @@ class SuggestedGenesContent extends React.Component<Props, null> {
     const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
 
     suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "suggested_genes")
+
+    this.followCount += 1
+
+    this.props.updateFollowCount(this.followCount)
   }
 
   followedGene(gene: Gene) {
@@ -113,7 +121,7 @@ const SuggestedGenesContainer = createFragmentContainer(
   `
 )
 
-const SuggestedGenesComponent: React.SFC<ContextProps> = ({ relayEnvironment }) => {
+const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({ relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -127,7 +135,9 @@ const SuggestedGenesComponent: React.SFC<ContextProps> = ({ relayEnvironment }) 
       variables={{}}
       render={({ error, props }) => {
         if (props) {
-          return <SuggestedGenesContainer suggested_genes={props.suggested_genes} />
+          return (
+            <SuggestedGenesContainer suggested_genes={props.suggested_genes} updateFollowCount={updateFollowCount} />
+          )
         } else {
           return null
         }

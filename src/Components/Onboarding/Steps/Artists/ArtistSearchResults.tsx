@@ -4,8 +4,9 @@ import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayP
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink from "../../ItemLink"
+import { FollowProps } from "../../Types"
 
-export interface Props {
+export interface Props extends FollowProps {
   term: string
 }
 
@@ -18,6 +19,7 @@ interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
 
 class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   private excludedArtistIds: Set<string>
+  followCount: number = 0
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
@@ -37,6 +39,10 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
     )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "match_artist", { term: this.props.term })
+
+    this.followCount += 1
+
+    this.props.updateFollowCount(this.followCount)
   }
 
   onFollowedArtist(artist: any) {
@@ -127,7 +133,11 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
+const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
+  term,
+  relayEnvironment,
+  updateFollowCount,
+}) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -141,7 +151,13 @@ const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, r
       variables={{ term }}
       render={({ error, props }) => {
         if (props) {
-          return <ArtistSearchResultsContentContainer viewer={props.viewer} term={term} />
+          return (
+            <ArtistSearchResultsContentContainer
+              viewer={props.viewer}
+              term={term}
+              updateFollowCount={updateFollowCount}
+            />
+          )
         } else {
           return null
         }
