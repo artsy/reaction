@@ -27,9 +27,9 @@ export interface RelayProps {
 }
 
 const NoResultsContainer = styled.div`
+  ${fonts.secondary.style}
   text-align: center;
   font-style: italic;
-  font-family: ${fonts.secondary.fontFamily};
   font-size: 17px;
   border-bottom: none;
   font-weight: lighter;

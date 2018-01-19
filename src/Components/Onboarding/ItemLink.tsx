@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled, { StyledFunction } from "styled-components"
 
+import Colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
-
 import Icon from "../Icon"
 
 const anchor: StyledFunction<React.HTMLProps<HTMLAnchorElement>> = styled.a
@@ -11,11 +11,10 @@ const Link = anchor`
   font-size: 14px;
   color: black;
   text-decoration: none;
-  text-transform: uppercase;
-  font-family: ${fonts.primary.fontFamily};
-  border-top: 1px solid #e5e5e5;
+  ${fonts.primary.style}
+  border-top: 1px solid ${Colors.grayRegular};
   &:hover {
-    background-color: #f8f8f8;
+    background-color: ${Colors.gray};
   }
 `
 

@@ -2,6 +2,7 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import Colors from "../../../Assets/Colors"
 import { ContextConsumer, ContextProps } from "../../Artsy"
 import { media } from "../../Helpers"
 import SelectableLink from "../SelectableLink"
@@ -12,7 +13,7 @@ const OptionsContainer = styled.div`
   width: 450px;
   margin: 0 auto 100px;
   &:last-child {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid ${Colors.grayRegular};
   }
   ${media.sm`
     width: 100%;

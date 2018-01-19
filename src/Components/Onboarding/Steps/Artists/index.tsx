@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import colors from "../../../../Assets/Colors"
+import Colors from "../../../../Assets/Colors"
 import Icon from "../../../Icon"
 import Input from "../../../Input"
 
@@ -13,7 +13,7 @@ import ArtistList from "./ArtistList"
 const OnboardingSearchBox = styled.div`
   width: 450px;
   margin: 0 auto 100px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid ${Colors.grayRegular};
   ${media.sm`
     width: 100%;
     margin-bottom: 20px;
@@ -28,10 +28,6 @@ export default class Artists extends React.Component<StepProps, State> {
   state = {
     inputText: "",
   }
-
-  // onInputChange = e => {
-  //   this.props.onStateChange({ nextButtonEnabled: true })
-  // }
 
   searchTextChanged(e) {
     const updatedInputText = e.target.value
@@ -48,7 +44,7 @@ export default class Artists extends React.Component<StepProps, State> {
         <OnboardingSearchBox>
           <Input
             placeholder={"Search artists..."}
-            leftView={<Icon name="search" color={colors.graySemibold} />}
+            leftView={<Icon name="search" color={Colors.graySemibold} />}
             block
             onInput={this.searchTextChanged.bind(this)}
             onPaste={this.searchTextChanged.bind(this)}
