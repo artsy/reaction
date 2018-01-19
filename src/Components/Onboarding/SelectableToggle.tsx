@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 
+import Colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
 import CircleIcon from "../CircleIcon"
 
@@ -15,7 +16,7 @@ interface IconContainerProps extends React.HTMLProps<HTMLDivElement> {
   isSelected: boolean
 }
 
-const IconContainer = (styled.div as StyledFunction<IconContainerProps>)`
+const IconContainer = (styled.div as StyledFunction<IconContainerProps>) `
   float: right;
   margin-right: 15px;
   justify-content: center;
@@ -27,12 +28,11 @@ const Link = styled.a`
   font-size: 14px;
   color: black;
   text-decoration: none;
-  text-transform: uppercase;
-  font-family: ${fonts.primary.fontFamily};
+  ${fonts.primary.style}
   padding: 30px 0 30px 15px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid ${Colors.grayRegular};
   &:hover {
-    background-color: #f8f8f8;
+    background-color: ${Colors.gray};
   }
   &:hover ${IconContainer} {
     display: inline-flex;

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
+import Colors from "../../../Assets/Colors"
 import Button from "../../Buttons/Ghost"
 import { media } from "../../Helpers"
 import StyledTitle from "../../Title"
@@ -20,14 +21,14 @@ const Container = styled.div`
   `};
 `
 
-const MainTitle = styled(StyledTitle)`
+const MainTitle = styled(StyledTitle) `
   text-align: center;
   ${media.sm`
     text-align: left;
   `};
 `
-const Subtitle = styled(StyledTitle)`
-  color: #999;
+const Subtitle = styled(StyledTitle) `
+  color: ${Colors.grayDark};
   margin-bottom: 100px;
   text-align: center;
   ${media.sm`
@@ -37,7 +38,7 @@ const Subtitle = styled(StyledTitle)`
   `};
 `
 
-const ButtonContainer = styled(Button)`
+const ButtonContainer = styled(Button) `
   margin: 0 auto 50px;
   display: block;
   width: 250px;

@@ -32,8 +32,9 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
     const popularArtistsRootField = store.get("client:root:viewer")
     const popularArtists = popularArtistsRootField.getLinkedRecords("match_artist", { term: this.props.term })
-    const updatedPopularArtists = popularArtists
-      .map(artist => (artist.getDataID() === artistId ? artistToSuggest : artist))
+    const updatedPopularArtists = popularArtists.map(
+      artist => (artist.getDataID() === artistId ? artistToSuggest : artist)
+    )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "match_artist", { term: this.props.term })
   }
@@ -55,7 +56,6 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
                 }
               }
             }
-
             artist {
               __id
               related {

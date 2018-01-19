@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import colors from "../../../../Assets/Colors"
+import Colors from "../../../../Assets/Colors"
 import Icon from "../../../Icon"
 import Input from "../../../Input"
 
@@ -13,7 +13,7 @@ import GeneList from "./GeneList"
 const OnboardingSearchBox = styled.div`
   width: 450px;
   margin: 0 auto 100px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid ${Colors.grayRegular};
   ${media.sm`
     width: 100%;
     margin-bottom: 20px;
@@ -52,10 +52,10 @@ export default class Genes extends React.Component<StepProps, State> {
         <OnboardingSearchBox>
           <Input
             placeholder={"Search artists..."}
-            leftView={<Icon name="search" color={colors.graySemibold} />}
+            leftView={<Icon name="search" color={Colors.graySemibold} />}
             rightView={
               this.state.inputText.length ? (
-                <Icon name="close" color={colors.graySemibold} onClick={this.clearSearch.bind(this)} />
+                <Icon name="close" color={Colors.graySemibold} onClick={this.clearSearch.bind(this)} />
               ) : null
             }
             block
