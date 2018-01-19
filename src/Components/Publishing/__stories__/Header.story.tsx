@@ -10,7 +10,7 @@ import {
   FeatureArticle,
   MissingVerticalStandardArticle,
   StandardArticle,
-  SuperArticle
+  SuperArticle,
 } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Headers", module)
@@ -51,28 +51,30 @@ storiesOf("Publishing/Headers", module)
     return (
       <div>
         <div style={{ width: "100%", position: "relative" }}>
-          <Header
-            article={BasicArticle} />
+          <Header article={BasicArticle} />
         </div>
       </div>
     )
   })
   .add("Feature Header - Basic, with Embed", () => {
     const article = _.clone(BasicArticle)
-    article.hero_section.url = 'https://vimeo.com/238843720'
+    article.hero_section.url = "https://vimeo.com/238843720"
 
     return (
       <div>
         <div style={{ width: "100%", position: "relative" }}>
-          <Header
-            article={BasicArticle} />
+          <Header article={BasicArticle} />
         </div>
       </div>
     )
   })
   .add("Feature Header - Text", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[0] })
-    const article2 = _.extend({}, FeatureArticle, { hero_section: HeroSections[5] })
+    const article = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[0],
+    })
+    const article2 = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[5],
+    })
     return (
       <div>
         <div style={{ width: "100%", position: "relative" }}>
@@ -93,12 +95,18 @@ storiesOf("Publishing/Headers", module)
     )
   })
   .add("Feature Header - Split", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[1] })
-    const article2 = _.extend({}, FeatureArticle, { hero_section: HeroSections[3] })
+    const article = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[1],
+    })
+    const article2 = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[3],
+    })
     return (
       <div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-          <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+          <div
+            style={{ width: "100%", height: "50px", backgroundColor: "black" }}
+          />
           <Header article={article} height="calc(100vh - 50px)" />
         </div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
@@ -116,12 +124,18 @@ storiesOf("Publishing/Headers", module)
     )
   })
   .add("Feature Header - Full", () => {
-    const article = _.extend({}, FeatureArticle, { hero_section: HeroSections[2] })
-    const article2 = _.extend({}, FeatureArticle, { hero_section: HeroSections[4] })
+    const article = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[2],
+    })
+    const article2 = _.extend({}, FeatureArticle, {
+      hero_section: HeroSections[4],
+    })
     return (
       <div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-          <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+          <div
+            style={{ width: "100%", height: "50px", backgroundColor: "black" }}
+          />
           <Header article={article} height="calc(100vh - 50px)" />
         </div>
         <div style={{ width: "100%", height: "100vh", position: "relative" }}>
@@ -139,11 +153,15 @@ storiesOf("Publishing/Headers", module)
     )
   })
   .add("Feature Header - SuperArticle", () => {
-    const article = _.extend({}, SuperArticle, { hero_section: HeroSections[2] })
+    const article = _.extend({}, SuperArticle, {
+      hero_section: HeroSections[2],
+    })
 
     return (
       <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <div style={{ width: "100%", height: "50px", backgroundColor: "black" }} />
+        <div
+          style={{ width: "100%", height: "50px", backgroundColor: "black" }}
+        />
         <Header article={article} height="calc(100vh - 50px)" />
       </div>
     )

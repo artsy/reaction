@@ -1,5 +1,11 @@
 import * as React from "react"
-import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  QueryRenderer,
+  RelayProp,
+} from "react-relay"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
@@ -21,29 +27,53 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
-    this.excludedArtistIds = new Set(this.props.viewer.match_artist.map(item => item._id))
+    this.excludedArtistIds = new Set(
+      this.props.viewer.match_artist.map(item => item._id)
+    )
   }
 
-  onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
-    const suggestedArtistEdge = data.followArtist.artist.related.suggested.edges[0]
+  onArtistFollowed(
+    artistId: string,
+    store: RecordSourceSelectorProxy,
+    data: SelectorData
+  ): void {
+    const suggestedArtistEdge =
+      data.followArtist.artist.related.suggested.edges[0]
     const popularArtist = data.followArtist.popular_artists.artists[0]
-    const artistToSuggest = store.get(((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id)
+    const artistToSuggest = store.get(
+      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id
+    )
     this.excludedArtistIds.add(artistToSuggest.getValue("_id"))
 
     const popularArtistsRootField = store.get("client:root:viewer")
-    const popularArtists = popularArtistsRootField.getLinkedRecords("match_artist", { term: this.props.term })
-    const updatedPopularArtists = popularArtists
-      .map(artist => (artist.getDataID() === artistId ? artistToSuggest : artist))
+    const popularArtists = popularArtistsRootField.getLinkedRecords(
+      "match_artist",
+      { term: this.props.term }
+    )
+    const updatedPopularArtists = popularArtists.map(
+      artist => (artist.getDataID() === artistId ? artistToSuggest : artist)
+    )
 
-    popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "match_artist", { term: this.props.term })
+    popularArtistsRootField.setLinkedRecords(
+      updatedPopularArtists,
+      "match_artist",
+      { term: this.props.term }
+    )
   }
 
   onFollowedArtist(artist: any) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation ArtistSearchResultsArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
+        mutation ArtistSearchResultsArtistMutation(
+          $input: FollowArtistInput!
+          $excludedArtistIds: [String]!
+        ) {
           followArtist(input: $input) {
-            popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
+            popular_artists(
+              size: 1
+              exclude_followed_artists: true
+              exclude_artist_ids: $excludedArtistIds
+            ) {
               artists {
                 id
                 __id
@@ -55,11 +85,14 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
                 }
               }
             }
-
             artist {
               __id
               related {
-                suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
+                suggested(
+                  first: 1
+                  exclude_followed_artists: true
+                  exclude_artist_ids: $excludedArtistIds
+                ) {
                   edges {
                     node {
                       id
@@ -127,7 +160,10 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
+const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
+  term,
+  relayEnvironment,
+}) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -141,7 +177,12 @@ const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, r
       variables={{ term }}
       render={({ error, props }) => {
         if (props) {
-          return <ArtistSearchResultsContentContainer viewer={props.viewer} term={term} />
+          return (
+            <ArtistSearchResultsContentContainer
+              viewer={props.viewer}
+              term={term}
+            />
+          )
         } else {
           return null
         }

@@ -1,5 +1,5 @@
 import React from "react"
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
@@ -24,7 +24,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
   }
 
   componentDidMount() {
-    const img = new Image();
+    const img = new Image()
 
     /**
      * TODO: Clean this up
@@ -32,10 +32,10 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
      */
     try {
       const imgTag = ReactDOM.findDOMNode(this.image)
-      const imgSrc = imgTag.getAttribute('src')
+      const imgSrc = imgTag.getAttribute("src")
       img.src = imgSrc
     } catch (error) {
-      img.src = ''
+      img.src = ""
     } finally {
       img.onload = this.onImageLoad
       this.mounted = true
@@ -49,32 +49,33 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
   onImageLoad = () => {
     if (this.mounted) {
       this.setState({
-        isLoaded: true
+        isLoaded: true,
       })
     }
   }
 
   render() {
     const { layout, linked, index, ...blockImageProps }: any = this.props
-    let className = 'BlockImage__container'
+    let className = "BlockImage__container"
 
     if (this.state.isLoaded) {
-      className = className + ' image-loaded'
+      className = className + " image-loaded"
     }
 
     return (
       <StyledImageWrapper>
         <BlockImage
           className={className}
-          ref={ref => this.image = ref}
+          ref={ref => (this.image = ref)}
           {...blockImageProps}
         />
 
-        {layout !== 'classic' && linked &&
-          <Fullscreen>
-            <ViewFullscreen index={index} />
-          </Fullscreen>
-        }
+        {layout !== "classic" &&
+          linked && (
+            <Fullscreen>
+              <ViewFullscreen index={index} />
+            </Fullscreen>
+          )}
       </StyledImageWrapper>
     )
   }
@@ -98,11 +99,9 @@ const StyledImageWrapper = styled.div`
     ${Fullscreen} {
       opacity: 1;
     }
-  `}
-
-  .BlockImage__container {
+  `} .BlockImage__container {
     opacity: 0;
-    transition: opacity 1.0s;
+    transition: opacity 1s;
   }
 
   .image-loaded {

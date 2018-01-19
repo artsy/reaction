@@ -61,11 +61,17 @@ export class Details extends React.Component<Props, null> {
 
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
-      return <TruncatedLine>{this.props.artwork.collecting_institution}</TruncatedLine>
+      return (
+        <TruncatedLine>
+          {this.props.artwork.collecting_institution}
+        </TruncatedLine>
+      )
     } else if (this.props.artwork.partner) {
       return (
         <TruncatedLine>
-          <TextLink href={this.props.artwork.partner.href}>{this.props.artwork.partner.name}</TextLink>
+          <TextLink href={this.props.artwork.partner.href}>
+            {this.props.artwork.partner.name}
+          </TextLink>
         </TruncatedLine>
       )
     }
@@ -73,7 +79,8 @@ export class Details extends React.Component<Props, null> {
 
   saleLine() {
     const artwork = this.props.artwork
-    const hasSaleMessage = artwork.sale_message && artwork.sale_message !== "Contact For Price"
+    const hasSaleMessage =
+      artwork.sale_message && artwork.sale_message !== "Contact For Price"
     const notInAuction = !(artwork.sale && artwork.sale.is_auction)
     if (hasSaleMessage && notInAuction) {
       return <div>{artwork.sale_message}</div>

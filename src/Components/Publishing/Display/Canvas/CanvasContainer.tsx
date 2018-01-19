@@ -24,15 +24,18 @@ interface State {
 }
 
 @track()
-export class CanvasContainerComponent extends React.Component<CanvasContainerProps, State> {
+export class CanvasContainerComponent extends React.Component<
+  CanvasContainerProps,
+  State
+> {
   static defaultProps = {
-    size: { width: 1250 }
+    size: { width: 1250 },
   }
 
   public canvasVideoHandlers: any
 
   state = {
-    isMounted: false
+    isMounted: false,
   }
 
   constructor(props) {
@@ -42,19 +45,22 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
 
   componentDidMount() {
     this.setState({
-      isMounted: true
+      isMounted: true,
     })
   }
 
   // TODO: Ensure that full element can be clicked on video complete
   // Prevent links from blocking video playback.
-  @track((props, [e]) => !isVideoClickArea(e) && {
-    action: "Click",
-    label: "Display ad clickthrough",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: unitLayout(props)
-  })
+  @track(
+    (props, [e]) =>
+      !isVideoClickArea(e) && {
+        action: "Click",
+        label: "Display ad clickthrough",
+        entity_type: "display_ad",
+        campaign_name: props.campaign.name,
+        unit_layout: unitLayout(props),
+      }
+  )
   openLink(e) {
     e.preventDefault()
 
@@ -63,15 +69,15 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
         this.canvasVideoHandlers.pauseVideo()
       }
 
-      window.open(e.currentTarget.attributes.href.value, '_blank')
+      window.open(e.currentTarget.attributes.href.value, "_blank")
     }
   }
 
   render() {
     const { campaign, disclaimer, size, unit } = this.props
     const { assets, cover_image_url, layout, link: { url } } = unit
-    const isOverlay = layout === 'overlay'
-    const isSlideshow = layout === 'slideshow'
+    const isOverlay = layout === "overlay"
+    const isSlideshow = layout === "slideshow"
 
     // Props for Link units
     const linkProps = {
@@ -79,7 +85,7 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
       href: url,
       target: "_blank",
       containerWidth: size.width,
-      layout
+      layout,
     }
 
     // TODO: For whatever the slideshow leads to a race condition when rendering
@@ -94,26 +100,24 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
 
       return (
         <CanvasLink {...linkProps}>
-          <Background
-            backgroundUrl={backgroundUrl}
-          />
-          <CanvasText
-            unit={unit}
-          />
+          <Background backgroundUrl={backgroundUrl} />
+          <CanvasText unit={unit} />
         </CanvasLink>
       )
 
       // Slideshow
     } else if (isSlideshow) {
-      const slideshowProps = { unit, campaign, disclaimer, containerWidth: size.width }
+      const slideshowProps = {
+        unit,
+        campaign,
+        disclaimer,
+        containerWidth: size.width,
+      }
 
       return (
         <CanvasSlideshow {...slideshowProps}>
           <CanvasLink {...linkProps}>
-            <CanvasText
-              unit={unit}
-              disclaimer={disclaimer}
-            />
+            <CanvasText unit={unit} disclaimer={disclaimer} />
           </CanvasLink>
         </CanvasSlideshow>
       )
@@ -125,26 +129,25 @@ export class CanvasContainerComponent extends React.Component<CanvasContainerPro
 
       return (
         <CanvasLink {...linkProps}>
-          {isVideo
-            ? <CanvasVideo
+          {isVideo ? (
+            <CanvasVideo
               coverUrl={cover_image_url}
               src={asset.url}
               campaign={campaign}
-              onInit={h => this.canvasVideoHandlers = h}
+              onInit={h => (this.canvasVideoHandlers = h)}
             />
-            : <Image
+          ) : (
+            <Image
               src={crop(asset.url, {
                 width: 1200,
                 height: 760,
-                isDisplayAd: true
+                isDisplayAd: true,
               })}
-            />}
+            />
+          )}
 
           <StandardContainer>
-            <CanvasText
-              unit={unit}
-              disclaimer={disclaimer}
-            />
+            <CanvasText unit={unit} disclaimer={disclaimer} />
           </StandardContainer>
         </CanvasLink>
       )
@@ -166,19 +169,22 @@ interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
 const Div: StyledFunction<DivProps> = styled.div
 const responsiveLink: StyledFunction<ResponsiveProps> = styled.a
 
-export const unitLayout = (props) => {
+export const unitLayout = props => {
   switch (props.unit.layout) {
-    case "overlay": return "canvas_overlay"
-    case "slideshow": return "canvas_slideshow"
-    default: return "canvas_standard"
+    case "overlay":
+      return "canvas_overlay"
+    case "slideshow":
+      return "canvas_slideshow"
+    default:
+      return "canvas_standard"
   }
 }
 
-const isVideoClickArea = (e) => {
+const isVideoClickArea = e => {
   const videoClasses = [
-    'PlayButton',
-    'PlayButton__PlayButtonCaret',
-    'CanvasVideo__video'
+    "PlayButton",
+    "PlayButton__PlayButtonCaret",
+    "CanvasVideo__video",
   ]
   return videoClasses.some(c => e.target.className.includes(c))
 }
@@ -200,7 +206,7 @@ const Image = styled.img`
     height: auto;
     max-height: initial;
     object-fit: contain;
-  `}
+  `};
 `
 const CanvasLink = responsiveLink`
   width: 100%;
@@ -211,9 +217,11 @@ const CanvasLink = responsiveLink`
   position: relative;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: ${props => (props.layout === "standard" ? "space-between;" : "center;")}
+  justify-content: ${props =>
+    props.layout === "standard" ? "space-between;" : "center;"}
   ${props => pMedia.lg`
-    ${props.layout !== "overlay" && "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
+    ${props.layout !== "overlay" &&
+      "max-height: " + maxAssetSize(props.containerWidth).height + "px;"}
   `}
   ${pMedia.sm`
     padding: 0;
@@ -231,7 +239,7 @@ const StandardContainer = styled.div`
     max-width: 100%;
     width: 100%;
     height: auto;
-  `}
+  `};
 `
 const Background = Div`
   background: black;
@@ -243,7 +251,8 @@ const Background = Div`
   z-index: -1;
   &:before {
     content: '';
-    background-image: url(${props => props.backgroundUrl && props.backgroundUrl});
+    background-image: url(${props =>
+      props.backgroundUrl && props.backgroundUrl});
     position: absolute;
     left: 0;
     right: 0;

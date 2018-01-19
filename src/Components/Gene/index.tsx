@@ -38,7 +38,12 @@ interface State extends Filters {
 class GeneContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const { for_sale, price_range, dimension_range, medium } = this.props.filters
+    const {
+      for_sale,
+      price_range,
+      dimension_range,
+      medium,
+    } = this.props.filters
     this.state = {
       for_sale: for_sale || null,
       medium: medium || "*",
@@ -50,7 +55,14 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   handleStateChange = () => {
-    const { for_sale, medium, price_range, dimension_range, sort, mode } = this.state
+    const {
+      for_sale,
+      medium,
+      price_range,
+      dimension_range,
+      sort,
+      mode,
+    } = this.state
     const filters = {
       for_sale,
       medium,

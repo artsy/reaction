@@ -1,10 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import {
-  VideoArticle,
-} from "../Fixtures/Articles"
+import { VideoArticle } from "../Fixtures/Articles"
 import { Media } from "../Fixtures/Components"
-import { EditableChild } from '../Fixtures/Helpers'
+import { EditableChild } from "../Fixtures/Helpers"
 import { VideoPlayer } from "../Video/Player/VideoPlayer"
 import { VideoAbout } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
@@ -18,12 +16,7 @@ storiesOf("Publishing/Video", module)
     )
   })
   .add("Video Cover", () => {
-    return (
-      <VideoCover
-        article={VideoArticle}
-        media={Media[0]}
-      />
-    )
+    return <VideoCover article={VideoArticle} media={Media[0]} />
   })
   .add("Video Cover in Series", () => {
     return (
@@ -40,24 +33,20 @@ storiesOf("Publishing/Video", module)
         article={VideoArticle}
         media={Media[0]}
         seriesTitle="The Future of Art"
-        editDescription={EditableChild('description')}
-        editTitle={EditableChild('media.title')}
+        editDescription={EditableChild("description")}
+        editTitle={EditableChild("media.title")}
       />
     )
   })
   .add("Video About", () => {
-    return (
-      <VideoAbout
-        article={VideoArticle}
-      />
-    )
+    return <VideoAbout article={VideoArticle} />
   })
   .add("Video About with edit props", () => {
     return (
       <VideoAbout
         article={VideoArticle}
-        editDescription={EditableChild('media.description')}
-        editCredits={EditableChild('media.credits')}
+        editDescription={EditableChild("media.description")}
+        editCredits={EditableChild("media.credits")}
       />
     )
   })

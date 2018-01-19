@@ -39,7 +39,7 @@ export class ForSaleCheckbox extends React.Component<Props, State> {
 }
 
 const StyledCheckbox = styled(Checkbox)`
-  margin-right: 15px
+  margin-right: 15px;
 `
 
 const StyledForSaleCheckbox = styled(ForSaleCheckbox)`
@@ -53,7 +53,7 @@ const StyledForSaleCheckbox = styled(ForSaleCheckbox)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${primary.style}
+  ${primary.style};
 `
 
 export default StyledForSaleCheckbox

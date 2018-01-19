@@ -28,7 +28,9 @@ class Wizard extends React.Component<Props, State> {
     }
 
     const CurrentStep = this.props.stepComponents[currentStep]
-    return <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
+    return (
+      <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
+    )
   }
 
   onNextButtonPressed() {
@@ -42,11 +44,7 @@ class Wizard extends React.Component<Props, State> {
 
   render() {
     const step = this.getCurrentStep()
-    return (
-      <div>
-        {step}
-      </div>
-    )
+    return <div>{step}</div>
   }
 }
 

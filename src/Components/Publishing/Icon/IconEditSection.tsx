@@ -12,7 +12,14 @@ export class IconEditSection extends Component<any, null> {
         enableBackground="0 0 1000 1000"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect x="158" y="304" fill="#FFF" strokeMiterlimit="10" width="436" height="399" />
+        <rect
+          x="158"
+          y="304"
+          fill="#FFF"
+          strokeMiterlimit="10"
+          width="436"
+          height="399"
+        />
         {this.props.isClosing ? (
           <path
             fill={this.props.fill ? this.props.fill : "#000"}

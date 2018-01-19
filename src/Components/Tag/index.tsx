@@ -32,7 +32,12 @@ interface State extends Filters {
 class TagContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const { for_sale, price_range, dimension_range, medium } = this.props.filters
+    const {
+      for_sale,
+      price_range,
+      dimension_range,
+      medium,
+    } = this.props.filters
     this.state = {
       for_sale: for_sale || null,
       medium: medium || "*",

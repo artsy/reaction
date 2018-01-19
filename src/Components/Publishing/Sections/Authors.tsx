@@ -8,7 +8,11 @@ interface AuthorsProps {
 
 export const Authors: React.SFC<AuthorsProps> = props => {
   const { authors } = props
-  return <AuthorsContainer>{authors.map((author, i) => <Author author={author} key={i} />)}</AuthorsContainer>
+  return (
+    <AuthorsContainer>
+      {authors.map((author, i) => <Author author={author} key={i} />)}
+    </AuthorsContainer>
+  )
 }
 const AuthorsContainer = styled.div`
   display: flex;

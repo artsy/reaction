@@ -54,7 +54,10 @@ export class Layout extends React.Component<Props, null> {
         <MainTitle titleSize="xlarge">{this.props.title} </MainTitle>
         <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
         <div>{this.props.children}</div>
-        <ButtonContainer disabled={disabled} onClick={this.props.onNextButtonPressed}>
+        <ButtonContainer
+          disabled={disabled}
+          onClick={this.props.onNextButtonPressed}
+        >
           Next
         </ButtonContainer>
       </Container>

@@ -6,7 +6,7 @@ export { Caption } from "./Sections/Caption"
 export { Embed } from "./Sections/Embed"
 export { FullscreenViewer } from "./Sections/FullscreenViewer/FullscreenViewer"
 export { Header } from "./Header/Header"
-export { InstantArticleEmailSignup } from './Email/InstantArticleEmailSignup'
+export { InstantArticleEmailSignup } from "./Email/InstantArticleEmailSignup"
 export { Image } from "./Sections/Image"
 export { ImageCollection } from "./Sections/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
@@ -58,7 +58,7 @@ import {
   ShortStandardArticle,
   StandardArticle,
   VideoArticle,
-  VideoArticleSponsored
+  VideoArticleSponsored,
 } from "./Fixtures/Articles"
 
 // FIXME: Refactor out SizeMe; see https://github.com/ctrlplusb/react-sizeme#server-side-rendering
@@ -74,9 +74,8 @@ export const Fixtures = {
   ShortStandardArticle,
   StandardArticle,
   VideoArticle,
-  VideoArticleSponsored
+  VideoArticleSponsored,
 }
-
 
 // Constants
 import * as AllConstants from "./Constants"

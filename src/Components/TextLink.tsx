@@ -3,7 +3,9 @@ import styled from "styled-components"
 import colors from "../Assets/Colors"
 import "../Assets/Fonts"
 
-export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
+export interface LinkProps
+  extends React.Props<TextLink>,
+    React.HTMLAttributes<TextLink> {
   href?: string
   underline?: boolean
   color?: string

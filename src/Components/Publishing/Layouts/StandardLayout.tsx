@@ -5,7 +5,7 @@ export const StandardLayoutParent = styled.div`
   margin: 0 40px 100px 40px;
   ${pMedia.sm`
     margin: 0 0 100px 0;
-  `}
+  `};
 `
 
 export const StandardLayout = styled.div`

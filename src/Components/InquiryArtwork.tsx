@@ -48,7 +48,9 @@ const Overlay: React.SFC<OverlayProps> = props => (
 )
 
 export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
-  return <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
+  return (
+    <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
+  )
 }
 
 export default createFragmentContainer(

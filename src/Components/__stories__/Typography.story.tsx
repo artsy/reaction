@@ -7,7 +7,7 @@ import TextLink from "../TextLink"
 import Title from "../Title"
 
 storiesOf("Typography", module)
-  .add("Headings", () =>
+  .add("Headings", () => (
     <div>
       <Title titleSize="xxlarge">XXLarge Title: 72px</Title>
       <Title titleSize="xlarge">XLarge Title: 50px</Title>
@@ -15,12 +15,10 @@ storiesOf("Typography", module)
       <Title titleSize="medium">Medium Title: 30px</Title>
       <Title titleSize="small">Small Title: 25px</Title>
     </div>
-  )
-  .add("Text", () =>
+  ))
+  .add("Text", () => (
     <div>
-      <Title>
-        Plain Text
-      </Title>
+      <Title>Plain Text</Title>
 
       <Text textSize="xlarge">
         Xlarge text: Thank you for your interest in the program.
@@ -28,24 +26,14 @@ storiesOf("Typography", module)
       <Text textSize="large">
         Large text: Thank you for your interest in the program.
       </Text>
-      <Text>
-        Small text: Thank you for your interest in the program.
-      </Text>
+      <Text>Small text: Thank you for your interest in the program.</Text>
 
-      <Title>
-        Fonts
-      </Title>
+      <Title>Fonts</Title>
 
-      <Text textStyle="primary">
-        ITC Avant Garde Gothic W04
-      </Text>
-      <Text textStyle="secondary">
-        Adobe Garamond W08
-      </Text>
+      <Text textStyle="primary">ITC Avant Garde Gothic W04</Text>
+      <Text textStyle="secondary">Adobe Garamond W08</Text>
 
-      <Title>
-        Alignment
-      </Title>
+      <Title>Alignment</Title>
 
       <Text>
         Thank you for your interest in the program.<br />
@@ -60,17 +48,13 @@ storiesOf("Typography", module)
         Have questions? Get in touch
       </Text>
 
-      <Title>
-        Text Color
-      </Title>
+      <Title>Text Color</Title>
 
-      <Title color={colors.graySemibold}>
-        Contact Us
-      </Title>
+      <Title color={colors.graySemibold}>Contact Us</Title>
 
       <Text align="center" color={colors.graySemibold}>
         Have questions? Get in touch:&nbsp;
         <TextLink href="#">youremail@example.com</TextLink>
       </Text>
     </div>
-  )
+  ))

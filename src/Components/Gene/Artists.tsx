@@ -1,6 +1,10 @@
 import * as React from "react"
 import { ConnectionData } from "react-relay"
-import { createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
+import {
+  createPaginationContainer,
+  graphql,
+  RelayPaginationProp,
+} from "react-relay"
 import styled from "styled-components"
 
 import * as fonts from "../../Assets/Fonts"
@@ -86,7 +90,12 @@ export class Artists extends React.Component<Props, State> {
   }
 
   renderForSaleToggle() {
-    return <ForSaleCheckbox checked={false} onChange={this.props.onForSaleToggleSelected} />
+    return (
+      <ForSaleCheckbox
+        checked={false}
+        onChange={this.props.onForSaleToggleSelected}
+      />
+    )
   }
 
   renderArtistFilter() {
@@ -112,7 +121,9 @@ export class Artists extends React.Component<Props, State> {
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
-          selected={aggregation.slice && this.state[aggregation.slice.toLowerCase()]}
+          selected={
+            aggregation.slice && this.state[aggregation.slice.toLowerCase()]
+          }
           onSelected={this.props.onDropdownSelected}
         />
       )
@@ -128,7 +139,9 @@ export class Artists extends React.Component<Props, State> {
 
     const loadMoreButton = (
       <LoadMoreContainer>
-        <LoadMoreButton onClick={() => this.loadMoreArtists()}>Load More</LoadMoreButton>
+        <LoadMoreButton onClick={() => this.loadMoreArtists()}>
+          Load More
+        </LoadMoreButton>
       </LoadMoreContainer>
     )
 
@@ -141,8 +154,13 @@ export class Artists extends React.Component<Props, State> {
         </FilterBar>
         <ArtistRowsContainer>
           {artistRows}
-          <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
-          {artists && artists.pageInfo.hasNextPage && !this.state.loading && loadMoreButton}
+          <SpinnerContainer>
+            {this.state.loading ? <Spinner /> : ""}
+          </SpinnerContainer>
+          {artists &&
+            artists.pageInfo.hasNextPage &&
+            !this.state.loading &&
+            loadMoreButton}
         </ArtistRowsContainer>
       </div>
     )
@@ -155,12 +173,16 @@ export default createPaginationContainer(
     gene: graphql.experimental`
       fragment Artists_gene on Gene
         @argumentDefinitions(
-          aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
+          }
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
         __id
-        artists: artists_connection(first: $count, after: $cursor) @connection(key: "Artists_artists") {
+        artists: artists_connection(first: $count, after: $cursor)
+          @connection(key: "Artists_artists") {
           pageInfo {
             hasNextPage
           }
@@ -207,9 +229,19 @@ export default createPaginationContainer(
       }
     },
     query: graphql.experimental`
-      query ArtistsQuery($geneNodeID: ID!, $count: Int!, $cursor: String, $aggregations: [ArtworkAggregation]) {
+      query ArtistsQuery(
+        $geneNodeID: ID!
+        $count: Int!
+        $cursor: String
+        $aggregations: [ArtworkAggregation]
+      ) {
         node(__id: $geneNodeID) {
-          ...Artists_gene @arguments(count: $count, cursor: $cursor, aggregations: $aggregations)
+          ...Artists_gene
+            @arguments(
+              count: $count
+              cursor: $cursor
+              aggregations: $aggregations
+            )
         }
       }
     `,

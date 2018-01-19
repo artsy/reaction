@@ -28,7 +28,9 @@ const TooltipContainer = styled.div`
   font-size: 12px;
 `
 
-export interface MarketInsightsProps extends RelayProps, React.HTMLProps<MarketInsights> {}
+export interface MarketInsightsProps
+  extends RelayProps,
+    React.HTMLProps<MarketInsights> {}
 
 const Categories = {
   "blue-chip": "Blue Chip",
@@ -37,9 +39,12 @@ const Categories = {
 }
 
 const CategoryTooltipContent = {
-  "blue-chip": "Blue chip galleries have multiple locations internationally and participate in major art fairs.",
-  "top-established": "Top established galleries have been industry leaders in their region or specialty for decades.",
-  "top-emerging": "Top emerging dealers participate in curated, up-and-coming art fairs.",
+  "blue-chip":
+    "Blue chip galleries have multiple locations internationally and participate in major art fairs.",
+  "top-established":
+    "Top established galleries have been industry leaders in their region or specialty for decades.",
+  "top-emerging":
+    "Top emerging dealers participate in curated, up-and-coming art fairs.",
 }
 
 export class MarketInsights extends React.Component<MarketInsightsProps, null> {
@@ -53,7 +58,10 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
       introSentence = "Represented by a " + category.toLowerCase() + " gallery"
     }
 
-    const galleryList = map(partnerList, ({ node: partner }) => partner.name).join(", ")
+    const galleryList = map(
+      partnerList,
+      ({ node: partner }) => partner.name
+    ).join(", ")
 
     return (
       <div>
@@ -80,7 +88,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
     }
 
     // Is there an auction highlights section?
-    if (auctionResults && auctionResults.edges && auctionResults.edges.length > 0) {
+    if (
+      auctionResults &&
+      auctionResults.edges &&
+      auctionResults.edges.length > 0
+    ) {
       return true
     }
 
@@ -115,7 +127,12 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
           {Object.keys(groupedByCategory).map(categorySlug => {
             return (
               <div key={categorySlug}>
-                <div>{this.renderGalleryCategory(categorySlug, groupedByCategory[categorySlug])}</div>
+                <div>
+                  {this.renderGalleryCategory(
+                    categorySlug,
+                    groupedByCategory[categorySlug]
+                  )}
+                </div>
                 <br />
               </div>
             )
@@ -126,7 +143,10 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
   }
 
   renderAuctionHighlight() {
-    if (!this.props.artist.auctionResults || this.props.artist.auctionResults.edges.length < 1) {
+    if (
+      !this.props.artist.auctionResults ||
+      this.props.artist.auctionResults.edges.length < 1
+    ) {
       return null
     }
     const topAuctionResult = this.props.artist.auctionResults.edges[0].node
@@ -191,7 +211,10 @@ export default createFragmentContainer(
   graphql.experimental`
     fragment MarketInsights_artist on Artist
       @argumentDefinitions(
-        partner_category: { type: "[String]", defaultValue: ["blue-chip", "top-established", "top-emerging"] }
+        partner_category: {
+          type: "[String]"
+          defaultValue: ["blue-chip", "top-established", "top-emerging"]
+        }
       ) {
       _id
       collections
@@ -213,7 +236,11 @@ export default createFragmentContainer(
           }
         }
       }
-      auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
+      auctionResults(
+        recordsTrusted: true
+        first: 1
+        sort: PRICE_AND_DATE_DESC
+      ) {
         edges {
           node {
             organization

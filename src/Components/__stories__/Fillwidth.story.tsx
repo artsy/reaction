@@ -19,12 +19,17 @@ function FillwidthExample(props: { artistID: string }) {
       `}
       variables={{ artistID: props.artistID }}
       render={readyState => {
-        return readyState.props && <Fillwidth {...readyState.props.artist as any} />
+        return (
+          readyState.props && <Fillwidth {...readyState.props.artist as any} />
+        )
       }}
     />
   )
 }
 
-storiesOf("Components/Artworks/Fillwidth", module).add("A typical fillwidth", () => {
-  return <FillwidthExample artistID="stephen-willats" />
-})
+storiesOf("Components/Artworks/Fillwidth", module).add(
+  "A typical fillwidth",
+  () => {
+    return <FillwidthExample artistID="stephen-willats" />
+  }
+)

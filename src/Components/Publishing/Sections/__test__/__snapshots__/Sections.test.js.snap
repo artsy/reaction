@@ -70,8 +70,8 @@ exports[`snapshots renders properly 1`] = `
 
 .c7 .BlockImage__container {
   opacity: 0;
-  -webkit-transition: opacity 1.0s;
-  transition: opacity 1.0s;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 .c7 .image-loaded {

@@ -31,7 +31,8 @@ storiesOf("Publishing/Nav", module)
   })
 
 const backgroundStyle: React.CSSProperties = {
-  background: "url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg)",
+  background:
+    "url(https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg)",
   color: "white",
   position: "relative",
   height: "50px",

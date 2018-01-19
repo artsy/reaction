@@ -24,7 +24,10 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState> {
+export class EmailPanel extends React.Component<
+  EmailPanelProps,
+  EmailPanelState
+> {
   constructor(props) {
     super(props)
     this.state = {
@@ -39,13 +42,17 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
   onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(EMAIL_REGEX)) {
-      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
-        if (err) {
-          this.flashMessage("Error. Please try again", true, false)
-        } else {
-          this.flashMessage("Thank you!", false, true)
-        }
-      })
+      request
+        .post(this.props.signupUrl)
+        .send({ email: this.state.value })
+        .set("accept", "json")
+        .end((err, res) => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true, false)
+          } else {
+            this.flashMessage("Thank you!", false, true)
+          }
+        })
     } else {
       this.flashMessage("Invalid Email... Please try again", true, false)
     }
@@ -89,7 +96,8 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
   }
 }
 
-const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
+const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> =
+  styled.input
 const Input = input`
   ${borderedInput}
   width: 100%;
@@ -104,15 +112,14 @@ const EmailPanelContainer = styled.div`
   width: 100%;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")}
+  ${Fonts.avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;

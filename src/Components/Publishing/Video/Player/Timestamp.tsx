@@ -9,21 +9,15 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 }
 
 const TimestampComponent: React.SFC<Props> = props => {
-  const {
-    className,
-    currentTime,
-    duration
-  } = props
+  const { className, currentTime, duration } = props
 
   return (
-    <div
-      className={className}
-    >
+    <div className={className}>
       {formatTime(currentTime)} / {formatTime(duration)}
     </div>
   )
 }
 
 export const Timestamp = styled(TimestampComponent)`
-  ${Fonts.garamond("s23")}
+  ${Fonts.garamond("s23")};
 `

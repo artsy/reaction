@@ -19,12 +19,19 @@ function GridExample(props: { artistID: string }) {
       `}
       variables={{ artistID: props.artistID }}
       render={readyState => {
-        return readyState.props && <ArtworkGrid {...readyState.props.artist as any} />
+        return (
+          readyState.props && (
+            <ArtworkGrid {...readyState.props.artist as any} />
+          )
+        )
       }}
     />
   )
 }
 
-storiesOf("Components/Artworks/ArtworkGrid", module).add("A typical grid", () => {
-  return <GridExample artistID="banksy" />
-})
+storiesOf("Components/Artworks/ArtworkGrid", module).add(
+  "A typical grid",
+  () => {
+    return <GridExample artistID="banksy" />
+  }
+)

@@ -18,9 +18,8 @@ const StyledLink = styled.a`
   letter-spacing: 0.8;
 `
 
-const NavItem: React.SFC<NavLinkProps> = props =>
-  <StyledLink href={props.href}>
-    {props.children}
-  </StyledLink>
+const NavItem: React.SFC<NavLinkProps> = props => (
+  <StyledLink href={props.href}>{props.children}</StyledLink>
+)
 
 export default NavItem

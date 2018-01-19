@@ -62,7 +62,10 @@ export class DisplayPanel extends Component<Props, State> {
 
   componentWillUpdate() {
     if (this.video) {
-      this.video.removeEventListener("timeupdate", this.trackProgress.bind(this))
+      this.video.removeEventListener(
+        "timeupdate",
+        this.trackProgress.bind(this)
+      )
     }
   }
 
@@ -81,7 +84,9 @@ export class DisplayPanel extends Component<Props, State> {
   // TODO: This could be shared with <CanvasVideo />
   trackProgress() {
     const secondsComplete = Math.floor(this.video.currentTime)
-    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentComplete = Math.floor(
+      this.video.currentTime / this.video.duration * 100
+    )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 
     // Track 25% duration intervals
@@ -125,7 +130,9 @@ export class DisplayPanel extends Component<Props, State> {
       "PlayButton",
       "PlayButton__PlayButtonCaret",
     ]
-    const withinMediaArea = valid.some(className => event.target.className.includes(className))
+    const withinMediaArea = valid.some(className =>
+      event.target.className.includes(className)
+    )
     return withinMediaArea
   }
 
@@ -317,7 +324,9 @@ export class DisplayPanel extends Component<Props, State> {
       <VideoContainer className="VideoContainer">
         {!isPlaying && (
           <VideoCover className="VideoContainer__VideoCover">
-            {isMobile && <VideoControls mini className="VideoContainer__VideoControls" />}
+            {isMobile && (
+              <VideoControls mini className="VideoContainer__VideoControls" />
+            )}
           </VideoCover>
         )}
 
@@ -344,7 +353,11 @@ export class DisplayPanel extends Component<Props, State> {
     const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
 
     return (
-      <Wrapper onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <Wrapper
+        onClick={this.handleClick}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <Waypoint onEnter={this.trackImpression} />
         <DisplayPanelContainer
           className="DisplayPanel__DisplayPanelContainer"
@@ -354,7 +367,11 @@ export class DisplayPanel extends Component<Props, State> {
           coverUrl={coverUrl}
           showCoverImage={showCoverImage}
         >
-          {isVideo ? this.renderVideo(url) : <Image className="DisplayPanel__Image" />}
+          {isVideo ? (
+            this.renderVideo(url)
+          ) : (
+            <Image className="DisplayPanel__Image" />
+          )}
 
           <div>
             <Headline>{unit.headline}</Headline>
@@ -417,9 +434,9 @@ const DisplayPanelContainer = div`
     background: url(${p => p.imageUrl || ""}) no-repeat center center;
     background-size: cover;
     ${p =>
-    p.showCoverImage &&
-    p.hoverImageUrl &&
-    `
+      p.showCoverImage &&
+      p.hoverImageUrl &&
+      `
       background: black url(${p.hoverImageUrl}) no-repeat center center;
       background-size: contain;
       border: 10px solid black;
@@ -429,9 +446,9 @@ const DisplayPanelContainer = div`
     background: url(${p => p.coverUrl || ""}) no-repeat center center;
     background-size: cover;
     ${p =>
-    p.showCoverImage &&
-    !p.isMobile &&
-    `
+      p.showCoverImage &&
+      !p.isMobile &&
+      `
       display: none;
     `}
   }

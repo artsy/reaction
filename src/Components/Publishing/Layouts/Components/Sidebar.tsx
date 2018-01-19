@@ -13,8 +13,7 @@ const SidebarContainer = styled.div`
   min-width: 280px;
   ${pMedia.xl`
     margin-left: 40px;
-  `}
-  ${pMedia.lg`
+  `} ${pMedia.lg`
     display: none;
-  `}
+  `};
 `

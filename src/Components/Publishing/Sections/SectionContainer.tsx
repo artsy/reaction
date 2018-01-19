@@ -28,7 +28,7 @@ const chooseWidth = (layout, articleLayout, media = null) => {
   return "680px"
 }
 
-const chooseMobilePadding = (type) => {
+const chooseMobilePadding = type => {
   switch (type) {
     case "author":
     case "blockquote":

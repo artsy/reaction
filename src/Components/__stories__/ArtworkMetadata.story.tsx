@@ -16,11 +16,16 @@ function ArtworkExample(props: { artworkID: string }) {
         }
       `}
       variables={{ artworkID: props.artworkID }}
-      render={readyState => readyState.props && <Metadata {...readyState.props as any} />}
+      render={readyState =>
+        readyState.props && <Metadata {...readyState.props as any} />}
     />
   )
 }
 
 storiesOf("Components/Artwork/Metadata", module)
-  .add("A not-for-sale artwork", () => <ArtworkExample artworkID="andy-warhol-skull" />)
-  .add("A for-sale artwork with exact price", () => <ArtworkExample artworkID="stephen-berkman-a-history-of-dread" />)
+  .add("A not-for-sale artwork", () => (
+    <ArtworkExample artworkID="andy-warhol-skull" />
+  ))
+  .add("A for-sale artwork with exact price", () => (
+    <ArtworkExample artworkID="stephen-berkman-a-history-of-dread" />
+  ))

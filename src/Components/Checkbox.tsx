@@ -17,7 +17,11 @@ export class Checkbox extends React.Component<Props, null> {
 
     return (
       <div className={this.props.className}>
-        <CheckboxInput onChange={() => null} type="checkbox" checked={checked} />
+        <CheckboxInput
+          onChange={() => null}
+          type="checkbox"
+          checked={checked}
+        />
         <Label />
       </div>
     )

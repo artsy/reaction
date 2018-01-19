@@ -1,7 +1,11 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Article } from "../Article"
-import { ImageHeavyStandardArticle, ShortStandardArticle, StandardArticle } from "../Fixtures/Articles"
+import {
+  ImageHeavyStandardArticle,
+  ShortStandardArticle,
+  StandardArticle,
+} from "../Fixtures/Articles"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
 storiesOf("Publishing/Read More", module).add("Text Article", () => {

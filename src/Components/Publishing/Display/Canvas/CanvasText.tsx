@@ -16,7 +16,8 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
 
 export const CanvasText: React.SFC<CanvasTextProps> = props => {
   const { disclaimer, unit } = props
-  const isSlideshowWithCaption = unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
+  const isSlideshowWithCaption =
+    unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
   const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
   return (
     <CanvasInner layout={unit.layout} isSlideshowWithCaption>
@@ -40,12 +41,13 @@ const Logo = Img`
   object-position: left;
   max-width: ${props => (props.layout === "overlay" ? "300px;" : "250px;")}
   max-height: ${props => (props.layout === "overlay" ? "100px;" : "90px;")}
-  margin: ${props => (props.layout === "overlay" ? "60px auto;" : "20px 0 50px 0;")}
+  margin: ${props =>
+    props.layout === "overlay" ? "60px auto;" : "20px 0 50px 0;"}
   ${props => pMedia.md`
     width: auto;
     margin: 20px 0;
     ${props.layout === "overlay" &&
-    `max-width: calc(100% - 60px);
+      `max-width: calc(100% - 60px);
        margin: 15px auto;
     `}
   `}
@@ -55,7 +57,9 @@ const CanvasInner = Div`
   display: flex;
   flex-direction: column;
   justify-content: ${props =>
-    props.layout === "overlay" || props.isSlideshowWithCaption ? "space-around;" : "space-between;"}
+    props.layout === "overlay" || props.isSlideshowWithCaption
+      ? "space-around;"
+      : "space-between;"}
   ${props =>
     props.layout === "overlay" &&
     `text-align: center;
@@ -71,7 +75,8 @@ const CanvasInner = Div`
   `}
 `
 const Headline = Div`
-  ${props => (props.layout === "overlay" ? Fonts.garamond("s23") : Fonts.garamond("s40"))}
+  ${props =>
+    props.layout === "overlay" ? Fonts.garamond("s23") : Fonts.garamond("s40")}
   line-height: ${props => (props.layout === "overlay" ? "1.35em;" : "1.1em;")} 
   margin-bottom: 25px;
   ${props => pMedia.lg`

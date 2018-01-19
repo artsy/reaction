@@ -11,7 +11,10 @@ interface ReadMoreWrapperState {
   truncationHeight: number | string
 }
 
-export class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadMoreWrapperState> {
+export class ReadMoreWrapper extends React.Component<
+  ReadMoreWrapperProps,
+  ReadMoreWrapperState
+> {
   state = {
     truncationHeight: "100%",
   }
@@ -38,27 +41,32 @@ export class ReadMoreWrapper extends React.Component<ReadMoreWrapperProps, ReadM
       const thisNode = ReactDOM.findDOMNode(this)
 
       // Iterate over text sections
-      find(thisNode.getElementsByClassName("article__text-section"), section => {
-        let sectionCharCount = 0
+      find(
+        thisNode.getElementsByClassName("article__text-section"),
+        section => {
+          let sectionCharCount = 0
 
-        // Iterate over paragraph tags
-        const foundTag = find(section.getElementsByTagName("p"), tag => {
-          const textContent = tag.textContent
-          const textLength = textContent.length
+          // Iterate over paragraph tags
+          const foundTag = find(section.getElementsByTagName("p"), tag => {
+            const textContent = tag.textContent
+            const textLength = textContent.length
 
-          // Update counts
-          sectionCharCount = sectionCharCount + textLength
-          charCount = charCount + textLength
+            // Update counts
+            sectionCharCount = sectionCharCount + textLength
+            charCount = charCount + textLength
 
-          // Check if we've exceeded limits
-          if (textContent && sectionCharCount > 150 && charCount > 2000) {
-            height = tag.getBoundingClientRect().bottom - thisNode.getBoundingClientRect().top
-            return true
-          }
-          return false
-        })
-        return foundTag ? true : false
-      })
+            // Check if we've exceeded limits
+            if (textContent && sectionCharCount > 150 && charCount > 2000) {
+              height =
+                tag.getBoundingClientRect().bottom -
+                thisNode.getBoundingClientRect().top
+              return true
+            }
+            return false
+          })
+          return foundTag ? true : false
+        }
+      )
 
       // Return found height or remove truncation if article is too short
       if (height) {

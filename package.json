@@ -41,13 +41,7 @@
     "type-check": "tsc --noEmit --pretty",
     "watch": "gulp watch"
   },
-  "prettier": {
-    "printWidth": 120,
-    "semi": false,
-    "singleQuote": false,
-    "trailingComma": "es5",
-    "bracketSpacing": true
-  },
+
   "devDependencies": {
     "@playlyfe/gql": "^2.3.2",
     "@storybook/addon-options": "^3.2.1",
@@ -131,6 +125,12 @@
   },
   "graphql": {
     "file": "data/schema.json"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true
   },
   "jest": {
     "transform": {
