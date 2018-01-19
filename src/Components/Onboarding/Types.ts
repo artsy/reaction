@@ -2,7 +2,7 @@
  * The props interface that the step needs to implement for the wizard.
  */
 export interface StepProps {
-  onNextButtonPressed: (increaseBy) => void
+  onNextButtonPressed: (increaseBy?) => void
 }
 
 export interface FollowProps {

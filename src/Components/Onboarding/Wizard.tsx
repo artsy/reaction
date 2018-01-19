@@ -31,7 +31,7 @@ class Wizard extends React.Component<Props, State> {
     return <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
   }
 
-  onNextButtonPressed(increaseBy) {
+  onNextButtonPressed(increaseBy = 1) {
     if (this.props.stepComponents.length <= this.state.currentStep) {
       return
     }

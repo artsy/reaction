@@ -96,7 +96,7 @@ class CollectorIntent extends React.Component<Props, State> {
       },
     })
 
-    this.props.onNextButtonPressed(1)
+    this.props.onNextButtonPressed()
   }
 
   render() {

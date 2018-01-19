@@ -45,7 +45,7 @@ export default class Genes extends React.Component<StepProps, State> {
   }
 
   clickedNext() {
-    this.props.onNextButtonPressed(1)
+    this.props.onNextButtonPressed()
   }
 
   render() {
