@@ -50,7 +50,11 @@ export default class ItemLink extends React.Component<Props, null> {
         <Col>
           {
             <Avatar
-              src={this.props.image_url ? this.props.image_url : "https://www.artsy.net/images/icon-70.png"}
+              src={
+                this.props.image_url
+                  ? this.props.image_url
+                  : "https://www.artsy.net/images/icon-70.png"
+              }
               width={50}
               height={50}
             />

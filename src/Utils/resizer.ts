@@ -8,12 +8,15 @@ const warn = message => {
   }
 }
 
-export const crop = (src: string, options: {
-  width: number,
-  height: number,
-  quality?: number,
-  isDisplayAd?: boolean
-}) => {
+export const crop = (
+  src: string,
+  options: {
+    width: number
+    height: number
+    quality?: number
+    isDisplayAd?: boolean
+  }
+) => {
   const { width, height, quality, isDisplayAd } = options
 
   if (!width && !height) {
@@ -35,16 +38,21 @@ export const crop = (src: string, options: {
     quality: quality || 95,
   }
 
-  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  const url = isDisplayAd
+    ? GEMINI_DISPLAY_CLOUDFRONT_URL
+    : GEMINI_CLOUDFRONT_URL
   return [url, qs.stringify(config)].join("?")
 }
 
-export const resize = (src: string, options: {
-  width?: number,
-  height?: number,
-  quality?: number,
-  isDisplayAd?: boolean
-}) => {
+export const resize = (
+  src: string,
+  options: {
+    width?: number
+    height?: number
+    quality?: number
+    isDisplayAd?: boolean
+  }
+) => {
   const { width, height, quality, isDisplayAd } = options
 
   let resizeTo
@@ -64,6 +72,8 @@ export const resize = (src: string, options: {
     quality: quality || 95,
   }
 
-  const url = isDisplayAd ? GEMINI_DISPLAY_CLOUDFRONT_URL : GEMINI_CLOUDFRONT_URL
+  const url = isDisplayAd
+    ? GEMINI_DISPLAY_CLOUDFRONT_URL
+    : GEMINI_CLOUDFRONT_URL
   return [url, qs.stringify(config)].join("?")
 }

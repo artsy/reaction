@@ -31,7 +31,11 @@ class ModalDemo extends React.Component<any, any> {
     return (
       <div>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <Modal style={ModalStyle} show={this.state.isModalOpen} onClose={this.closeModal}>
+        <Modal
+          style={ModalStyle}
+          show={this.state.isModalOpen}
+          onClose={this.closeModal}
+        >
           <ModalHeader>
             <Title>This is a modal title</Title>
           </ModalHeader>

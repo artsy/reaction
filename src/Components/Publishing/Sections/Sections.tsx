@@ -1,6 +1,6 @@
-import { clone, compact, once, uniqueId } from 'lodash'
+import { clone, compact, once, uniqueId } from "lodash"
 import React, { Component } from "react"
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
@@ -32,32 +32,27 @@ interface State {
  * article at a specific paragraph index.
  */
 const MOBILE_DISPLAY_INJECT_INDEX = 1
-const MOBILE_DISPLAY_INJECT_ID_PREFIX = '__mobile_display_inject__'
+const MOBILE_DISPLAY_INJECT_ID_PREFIX = "__mobile_display_inject__"
 
 export class Sections extends Component<Props, State> {
   static defaultProps = {
-    isMobile: false
+    isMobile: false,
   }
 
   displayInjectId: string
 
   state = {
-    shouldInjectMobileDisplay: false
+    shouldInjectMobileDisplay: false,
   }
 
   componentWillMount() {
-    const {
-      article: {
-        layout
-      },
-      isMobile
-    } = this.props
+    const { article: { layout }, isMobile } = this.props
 
     this.injectDisplayPanelMarker = once(this.injectDisplayPanelMarker)
-    const shouldInjectMobileDisplay = isMobile && layout !== 'feature'
+    const shouldInjectMobileDisplay = isMobile && layout !== "feature"
 
     this.setState({
-      shouldInjectMobileDisplay
+      shouldInjectMobileDisplay,
     })
   }
 
@@ -71,13 +66,16 @@ export class Sections extends Component<Props, State> {
     const { isMobile } = this.props
 
     if (prevProps.isMobile !== isMobile) {
-      this.setState({
-        shouldInjectMobileDisplay: isMobile
-      }, () => {
-        if (isMobile && this.state.shouldInjectMobileDisplay) {
-          this.mountDisplayToMarker()
+      this.setState(
+        {
+          shouldInjectMobileDisplay: isMobile,
+        },
+        () => {
+          if (isMobile && this.state.shouldInjectMobileDisplay) {
+            this.mountDisplayToMarker()
+          }
         }
-      })
+      )
     }
   }
 
@@ -85,7 +83,7 @@ export class Sections extends Component<Props, State> {
    * Inject DisplayAd after a specific paragraph index
    */
   injectDisplayPanelMarker(body) {
-    const tag = '</p>'
+    const tag = "</p>"
     const updatedBody = compact(body.split(tag))
       .map(p => p + tag)
       .reduce((arr, block, paragraphIndex) => {
@@ -96,7 +94,7 @@ export class Sections extends Component<Props, State> {
           return arr.concat([block])
         }
       }, [])
-      .join('')
+      .join("")
 
     return updatedBody
   }
@@ -109,26 +107,20 @@ export class Sections extends Component<Props, State> {
       ReactDOM.render(<DisplayPanel />, displayMountPoint)
     } else {
       console.error(
-        '(reaction/Sections.tsx) Error mounting Display: DOM node ',
-        'not found', displayMountPoint
+        "(reaction/Sections.tsx) Error mounting Display: DOM node ",
+        "not found",
+        displayMountPoint
       )
     }
   }
 
   getContentStartIndex = () => {
-    const {
-      article: {
-        layout,
-        sections
-      }
-    } = this.props
+    const { article: { layout, sections } } = this.props
 
-    if (layout === 'feature') {
-      const firstText = sections.findIndex(
-        (section) => {
-          return section.type === 'text'
-        }
-      )
+    if (layout === "feature") {
+      const firstText = sections.findIndex(section => {
+        return section.type === "text"
+      })
       return firstText
     }
   }
@@ -143,20 +135,17 @@ export class Sections extends Component<Props, State> {
           gutter={10}
         />
       ),
-      image_set:
-        <ImageSetPreview section={section} />,
-      video:
-        <Video section={section} />,
-      embed:
-        <Embed section={section} />,
-      text:
+      image_set: <ImageSetPreview section={section} />,
+      video: <Video section={section} />,
+      embed: <Embed section={section} />,
+      text: (
         <Text
           html={section.body}
           layout={this.props.article.layout}
           isContentStart={index === this.getContentStartIndex()}
-        />,
-      default:
-        false
+        />
+      ),
+      default: false,
     }
 
     const sectionComponent = sections[section.type] || sections.default
@@ -169,9 +158,10 @@ export class Sections extends Component<Props, State> {
     let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
-      const shouldInject = shouldInjectMobileDisplay
-        && sectionItem.type === 'text'
-        && !displayMarkerInjected
+      const shouldInject =
+        shouldInjectMobileDisplay &&
+        sectionItem.type === "text" &&
+        !displayMarkerInjected
 
       let section = sectionItem
 
@@ -181,7 +171,10 @@ export class Sections extends Component<Props, State> {
           section.body = this.injectDisplayPanelMarker(section.body)
           displayMarkerInjected = true
         } catch (error) {
-          console.error('(reaction/Sections.jsx) Error injecting Display:', error)
+          console.error(
+            "(reaction/Sections.jsx) Error injecting Display:",
+            error
+          )
         }
       }
 
@@ -205,15 +198,11 @@ export class Sections extends Component<Props, State> {
   }
 
   renderAuthors() {
-    const {
-      article: {
-        authors
-      }
-    } = this.props
+    const { article: { authors } } = this.props
 
     if (authors) {
       return (
-        <SectionContainer type='author'>
+        <SectionContainer type="author">
           <Authors authors={authors} />
         </SectionContainer>
       )
@@ -226,7 +215,7 @@ export class Sections extends Component<Props, State> {
 
     if (postscript) {
       return (
-        <SectionContainer type='text'>
+        <SectionContainer type="text">
           <Text
             html={postscript}
             layout={layout}
@@ -269,7 +258,7 @@ const StyledSections = div`
 
   ${props => pMedia.xl`
     max-width: ${props.layout === "standard" ? "680px" : "auto"};
-    ${props.layout === 'feature' ? "margin: 80px auto 0 auto" : ""}
+    ${props.layout === "feature" ? "margin: 80px auto 0 auto" : ""}
   `}
 
   ${props => pMedia.md`
@@ -277,6 +266,6 @@ const StyledSections = div`
   `}
   ${props => pMedia.xs`
     max-width: ${props.layout === "standard" ? "780px" : "auto"};
-    ${props.layout === 'feature' ? "margin: 30px auto 0 auto" : ""}
+    ${props.layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `

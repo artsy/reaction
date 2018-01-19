@@ -101,17 +101,25 @@ export class ArtworkGrid extends React.Component<Props, State> {
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        artworkComponents.push(<GridItem artwork={artwork as any} key={"artwork-" + j + "-" + artwork.__id} />)
+        artworkComponents.push(
+          <GridItem
+            artwork={artwork as any}
+            key={"artwork-" + j + "-" + artwork.__id}
+          />
+        )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
         if (j < sectionedArtworks[i].length - 1) {
-          artworkComponents.push(<div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />)
+          artworkComponents.push(
+            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />
+          )
         }
       }
 
       const sectionSpecificStyle = {
         flex: 1,
         minWidth: 0,
-        marginRight: i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
+        marginRight:
+          i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
       sections.push(
@@ -135,7 +143,7 @@ ArtworkGrid.defaultProps = {
   itemMargin: 20,
 }
 
-const StyledGrid = styled(ArtworkGrid) `
+const StyledGrid = styled(ArtworkGrid)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

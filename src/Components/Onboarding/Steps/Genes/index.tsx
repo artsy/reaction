@@ -55,7 +55,11 @@ export default class Genes extends React.Component<StepProps, State> {
             leftView={<Icon name="search" color={colors.graySemibold} />}
             rightView={
               this.state.inputText.length ? (
-                <Icon name="close" color={colors.graySemibold} onClick={this.clearSearch.bind(this)} />
+                <Icon
+                  name="close"
+                  color={colors.graySemibold}
+                  onClick={this.clearSearch.bind(this)}
+                />
               ) : null
             }
             block

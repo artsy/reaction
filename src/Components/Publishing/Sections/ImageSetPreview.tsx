@@ -26,7 +26,8 @@ export interface Props {
   }
 }
 
-const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const div: StyledFunction<DivLayoutProps & React.HTMLProps<HTMLDivElement>> =
+  styled.div
 
 export class ImageSetPreview extends React.PureComponent<Props, null> {
   static contextTypes = {
@@ -47,7 +48,7 @@ export class ImageSetPreview extends React.PureComponent<Props, null> {
       src,
       height,
       width,
-      alt: this.props.section.title || "Open Slideshow"
+      alt: this.props.section.title || "Open Slideshow",
     }
 
     return <img {...imageProps} />
@@ -106,7 +107,9 @@ export class ImageSetPreview extends React.PureComponent<Props, null> {
 
   subTitleCount() {
     if (this.props.section.title) {
-      return <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+      return (
+        <SubTitleCount>{this.props.section.images.length} Images</SubTitleCount>
+      )
     }
   }
 
@@ -139,7 +142,7 @@ const IconContainer = styled.div`
   }
   ${pMedia.xs`
     display: none;
-  `}
+  `};
 `
 
 const FullWrapper = styled.div`
@@ -188,27 +191,25 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  margin-bottom: 8px;
+  ${Fonts.unica("s19", "medium")} margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
     ${Fonts.unica("s16", "medium")}
-  `}
+  `};
 `
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${Fonts.unica("s14", "medium")}
-  ${pMedia.xs`
+  ${Fonts.unica("s14", "medium")} ${pMedia.xs`
     ${Fonts.unica("s12", "medium")}
-  `}
+  `};
 `
 const SubTitleCount = styled.div`
   ${Fonts.unica("s14")} margin-left: 20px;
   ${pMedia.xs`
     ${Fonts.unica("s12")}
-  `}
+  `};
 `
 
 // import PropTypes from "prop-types"

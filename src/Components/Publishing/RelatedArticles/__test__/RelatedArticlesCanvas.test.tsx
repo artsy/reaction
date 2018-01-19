@@ -6,7 +6,12 @@ import { RelatedArticlesCanvas } from "../RelatedArticlesCanvas"
 
 it("renders the related articles canvas", () => {
   const related = renderer
-    .create(<RelatedArticlesCanvas vertical={{ name: "Art Market" }} articles={RelatedCanvas} />)
+    .create(
+      <RelatedArticlesCanvas
+        vertical={{ name: "Art Market" }}
+        articles={RelatedCanvas}
+      />
+    )
     .toJSON()
   expect(related).toMatchSnapshot()
 })

@@ -27,7 +27,7 @@ exports[`Nav renders a Nav 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c2 .file__IconPlus-s100ic91-0 {
+.c2 .file__IconPlus-fysarw-0 {
   margin: 0 20px;
 }
 
@@ -90,7 +90,7 @@ exports[`Nav renders a Nav 1`] = `
     font-size: 24px;
   }
 
-  .c2 .file__IconPlus-s100ic91-0 {
+  .c2 .file__IconPlus-fysarw-0 {
     margin: 0 10px;
   }
 }
@@ -364,7 +364,7 @@ exports[`Nav renders a transparent nav 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c2 .file__IconPlus-s100ic91-0 {
+.c2 .file__IconPlus-fysarw-0 {
   margin: 0 20px;
 }
 
@@ -429,7 +429,7 @@ exports[`Nav renders a transparent nav 1`] = `
     font-size: 24px;
   }
 
-  .c2 .file__IconPlus-s100ic91-0 {
+  .c2 .file__IconPlus-fysarw-0 {
     margin: 0 10px;
   }
 }

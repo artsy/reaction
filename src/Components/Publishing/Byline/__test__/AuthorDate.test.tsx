@@ -7,7 +7,9 @@ import { Author, Date } from "../AuthorDate"
 describe("Author/Date", () => {
   it("renders a single author", () => {
     const authors = [{ name: "Molly Gottschalk" }]
-    const author = renderer.create(<Author authors={authors} layout={"split"} />)
+    const author = renderer.create(
+      <Author authors={authors} layout={"split"} />
+    )
     expect(author).toMatchSnapshot()
     const shallowAuthor = shallow(<Author authors={authors} layout={"split"} />)
     expect(shallowAuthor.html()).toContain("Molly Gottschalk")
@@ -15,7 +17,9 @@ describe("Author/Date", () => {
 
   it("renders multiple authors", () => {
     const authors = [{ name: "Molly Gottschalk" }, { name: "Kana Abe" }]
-    const author = renderer.create(<Author authors={authors} layout={"split"} />)
+    const author = renderer.create(
+      <Author authors={authors} layout={"split"} />
+    )
     expect(author).toMatchSnapshot()
     const shallowAuthor = shallow(<Author authors={authors} layout={"split"} />)
     expect(shallowAuthor.html()).toContain("Molly Gottschalk")
@@ -23,9 +27,13 @@ describe("Author/Date", () => {
   })
 
   it("renders the date", () => {
-    const date = renderer.create(<Date date="2017-05-19T13:09:18.567Z" layout="split" />)
+    const date = renderer.create(
+      <Date date="2017-05-19T13:09:18.567Z" layout="split" />
+    )
     expect(date).toMatchSnapshot()
-    const shallowDate = shallow(<Date date="2017-05-19T13:09:18.567Z" layout="split" />)
+    const shallowDate = shallow(
+      <Date date="2017-05-19T13:09:18.567Z" layout="split" />
+    )
     expect(shallowDate.html()).toContain("May 19, 2017 9:09 am")
   })
 })

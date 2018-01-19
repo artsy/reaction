@@ -4,12 +4,16 @@ import renderer from "react-test-renderer"
 import "jest-styled-components"
 
 jest.mock("../../Relay/createEnvironment", () => ({
-  createEnvironment: (user: User) => ({ description: `A mocked env for ${user ? user.id : "no-current-user"}` }),
+  createEnvironment: (user: User) => ({
+    description: `A mocked env for ${user ? user.id : "no-current-user"}`,
+  }),
 }))
 
 import * as Artsy from "../Artsy"
 
-const ShowCurrentUser: React.SFC<Artsy.ContextProps & { additionalProp?: string }> = props => {
+const ShowCurrentUser: React.SFC<
+  Artsy.ContextProps & { additionalProp?: string }
+> = props => {
   let text = props.currentUser ? props.currentUser.id : "no-current-user"
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
@@ -95,7 +99,10 @@ describe("Artsy context", () => {
     const mockedEnv: any = { description: "A passed in mocked env" }
     const div = renderer
       .create(
-        <Artsy.ContextProvider currentUser={currentUser} relayEnvironment={mockedEnv}>
+        <Artsy.ContextProvider
+          currentUser={currentUser}
+          relayEnvironment={mockedEnv}
+        >
           <WithRelayEnvironment />
         </Artsy.ContextProvider>
       )

@@ -19,7 +19,8 @@ const IconContainer = (styled.div as StyledFunction<IconContainerProps>)`
   float: right;
   margin-right: 15px;
   justify-content: center;
-  display: ${(props: IconContainerProps) => (props.isSelected ? "inline-flex" : "none")};
+  display: ${(props: IconContainerProps) =>
+    props.isSelected ? "inline-flex" : "none"};
 `
 
 const Link = styled.a`
@@ -59,7 +60,12 @@ class SelectableToggle extends React.Component<SelectableToggleProps, null> {
           {this.props.text}
 
           <IconContainer isSelected={this.props.selected}>
-            <CircleIcon name="check" color="black" fontSize="18px" ratio={0.4} />
+            <CircleIcon
+              name="check"
+              color="black"
+              fontSize="18px"
+              ratio={0.4}
+            />
           </IconContainer>
         </Link>
       </div>

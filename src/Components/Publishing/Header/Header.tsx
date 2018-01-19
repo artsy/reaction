@@ -29,9 +29,11 @@ const getVertical = (article, children) => {
 }
 
 const getLeadParagraph = (article, children) => {
-  const leadParagraph = article.lead_paragraph
-    ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-    : false
+  const leadParagraph = article.lead_paragraph ? (
+    <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+  ) : (
+    false
+  )
   return children ? children[1] : leadParagraph
 }
 
@@ -92,5 +94,5 @@ export const Header: React.SFC<HeaderProps> = props => {
 }
 
 Header.defaultProps = {
-  isMobile: false
+  isMobile: false,
 }

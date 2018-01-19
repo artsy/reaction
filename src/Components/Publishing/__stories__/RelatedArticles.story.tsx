@@ -14,7 +14,7 @@ storiesOf("Publishing/Related Articles", module)
         articles={RelatedCanvas}
         vertical={{
           name: "Market Analysis",
-          id: "123"
+          id: "123",
         }}
       />
     )

@@ -40,7 +40,11 @@ class ImageCollectionDemo extends React.Component<any, any> {
           <ImageCollection images={Images} targetHeight={400} gutter={10} />
         </div>
         <div style={{ width: 780 }}>
-          <ImageCollection images={ImagesNarrow} targetHeight={400} gutter={10} />
+          <ImageCollection
+            images={ImagesNarrow}
+            targetHeight={400}
+            gutter={10}
+          />
         </div>
         <FullscreenViewer
           onClose={this.closeViewer}

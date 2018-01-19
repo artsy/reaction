@@ -16,7 +16,9 @@ jest.mock("react-tracking", () => jest.fn(c => d => d))
 
 it("indexes and titles images", () => {
   const article = mount(<ArticleLayout article={StandardArticle} />)
-  expect(article.state("article").sections[4].images[0].setTitle).toBe("A World Without Capitalism")
+  expect(article.state("article").sections[4].images[0].setTitle).toBe(
+    "A World Without Capitalism"
+  )
   expect(article.state("article").sections[4].images[0].index).toBe(0)
   expect(article.state("article").sections[4].images[1].index).toBe(1)
   expect(article.state("article").sections[6].images[0].index).toBe(3)

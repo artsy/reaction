@@ -77,7 +77,12 @@ class SelectableLink extends React.Component<SelectableLinkProps, LinkState> {
           {this.props.text}
 
           <IconContainer isSelected={this.state.selected}>
-            <Icon name="follow-circle.is-following" color="white" fontSize="39px" style={{ alignSelf: "center" }} />
+            <Icon
+              name="follow-circle.is-following"
+              color="white"
+              fontSize="39px"
+              style={{ alignSelf: "center" }}
+            />
           </IconContainer>
         </Link>
       </div>

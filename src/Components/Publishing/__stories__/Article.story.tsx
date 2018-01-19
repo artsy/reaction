@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
-import { clone } from 'lodash'
+import { clone } from "lodash"
 import { extend } from "lodash"
 import React from "react"
-import styled from 'styled-components'
+import styled from "styled-components"
 import { Article } from "../Article"
 
 import {
@@ -15,14 +15,14 @@ import {
   StandardArticle,
   SuperArticle,
   VideoArticle,
-  VideoArticleSponsored
+  VideoArticleSponsored,
 } from "../Fixtures/Articles"
 
 import {
   Display,
   HeroSections,
   RelatedCanvas,
-  RelatedPanel
+  RelatedPanel,
 } from "../Fixtures/Components"
 
 const story = storiesOf("Publishing/Articles", module)
@@ -69,7 +69,6 @@ const story = storiesOf("Publishing/Articles", module)
     )
   })
 
-
 const displays = ["overlay", "image", "video", "slideshow"]
 displays.forEach(displayType => {
   story.add(`Standard with ${displayType} ad`, () => {
@@ -91,16 +90,15 @@ story.add(`Multiple standard articles`, () => {
     sections: [
       {
         type: "text",
-        body:
-        "<p>What would Antoine Court?</p>",
-      }
-    ]
+        body: "<p>What would Antoine Court?</p>",
+      },
+    ],
   }
   return (
     <div>
       <Article
         article={article}
-        display={Display('slideshow')}
+        display={Display("slideshow")}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -108,7 +106,7 @@ story.add(`Multiple standard articles`, () => {
       <Break />
       <Article
         article={article}
-        display={Display('video')}
+        display={Display("video")}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -116,7 +114,7 @@ story.add(`Multiple standard articles`, () => {
       <Break />
       <Article
         article={article}
-        display={Display('image')}
+        display={Display("image")}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -131,9 +129,15 @@ const Break = styled.div`
   margin-top: 80px;
 `
 
-story.add("Feature", () => {
-  return <Article article={FeatureArticle} relatedArticlesForCanvas={RelatedCanvas} />
-})
+story
+  .add("Feature", () => {
+    return (
+      <Article
+        article={FeatureArticle}
+        relatedArticlesForCanvas={RelatedCanvas}
+      />
+    )
+  })
   .add("Basic Feature", () => {
     const article = clone({
       ...BasicArticle,
@@ -141,15 +145,15 @@ story.add("Feature", () => {
         {
           type: "text",
           body:
-          "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles.</p>"
-        }
-      ]
+            "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles.</p>",
+        },
+      ],
     })
 
     return (
       <Article
         article={article}
-        display={Display('image')}
+        display={Display("image")}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
@@ -159,13 +163,19 @@ story.add("Feature", () => {
   })
   .add("Super Article", () => {
     const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
-    return <Article article={article} isSuper relatedArticlesForCanvas={RelatedCanvas} />
+    return (
+      <Article
+        article={article}
+        isSuper
+        relatedArticlesForCanvas={RelatedCanvas}
+      />
+    )
   })
   .add("Series", () => {
     return (
       <Article
         article={SeriesArticle}
-        relatedArticles={[StandardArticle,VideoArticle]}
+        relatedArticles={[StandardArticle, VideoArticle]}
       />
     )
   })
@@ -173,30 +183,24 @@ story.add("Feature", () => {
     return (
       <Article
         article={SeriesArticleSponsored}
-        relatedArticles={[StandardArticle,VideoArticle]}
+        relatedArticles={[StandardArticle, VideoArticle]}
       />
     )
   })
   .add("Video Article", () => {
-    return (
-      <Article article={VideoArticle} />
-    )
+    return <Article article={VideoArticle} />
   })
   .add("Video Article - Series", () => {
     return (
       <Article
         article={VideoArticle}
         seriesArticle={SeriesArticle}
-        relatedArticles={[StandardArticle,VideoArticle]}
+        relatedArticles={[StandardArticle, VideoArticle]}
       />
     )
   })
   .add("Video Article - Sponsored", () => {
-    return (
-      <Article
-        article={VideoArticleSponsored}
-      />
-    )
+    return <Article article={VideoArticleSponsored} />
   })
   .add("Video Article - Series + Sponsored", () => {
     return (

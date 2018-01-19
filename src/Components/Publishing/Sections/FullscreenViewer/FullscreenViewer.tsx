@@ -18,7 +18,10 @@ interface FullscreenViewerState {
   isCaptionOpen: boolean
 }
 
-export class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
+export class FullscreenViewer extends React.Component<
+  FullscreenViewerProps,
+  FullscreenViewerState
+> {
   static childContextTypes = {
     onToggleCaption: PropTypes.func,
   }
@@ -59,7 +62,13 @@ export class FullscreenViewer extends React.Component<FullscreenViewerProps, Ful
     const images = this.props.images
     return map(images, (section, i) => {
       return (
-        <Slide isCaptionOpen={this.state.isCaptionOpen} section={section} index={i + 1} total={images.length} key={i} />
+        <Slide
+          isCaptionOpen={this.state.isCaptionOpen}
+          section={section}
+          index={i + 1}
+          total={images.length}
+          key={i}
+        />
       )
     })
   }

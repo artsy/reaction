@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { GLOBAL_IMAGE_QUALITY } from '../Constants'
+import { GLOBAL_IMAGE_QUALITY } from "../Constants"
 import { Layout, SectionLayout } from "../Typings"
 import { ArtworkCaption } from "./ArtworkCaption"
 import { ImageWrapper } from "./ImageWrapper"
@@ -19,14 +19,17 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
   static defaultProps = {
     linked: true,
     width: "100%",
-    height: "auto"
+    height: "auto",
   }
 
   render() {
     const { artwork, children, linked, height, width, layout } = this.props
-    const src = resize(artwork.image, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
+    const src = resize(artwork.image, {
+      width: 1200,
+      quality: GLOBAL_IMAGE_QUALITY,
+    })
 
-    const Image = () =>
+    const Image = () => (
       <ImageWrapper
         layout={layout}
         linked={linked}
@@ -36,19 +39,19 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
         alt={artwork.title}
         index={artwork.index}
       />
+    )
 
     return (
       <div className="display-artwork">
-        {linked
-          ? <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
+        {linked ? (
+          <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
             <Image />
           </ArtworkImageLink>
-          : <Image />
-        }
+        ) : (
+          <Image />
+        )}
 
-        <ArtworkCaption
-          {...this.props}
-        />
+        <ArtworkCaption {...this.props} />
         {children}
       </div>
     )

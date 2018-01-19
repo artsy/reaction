@@ -51,7 +51,9 @@ export class Fillwidth extends React.Component<Props, null> {
     )
     return (
       <div className={this.props.className}>
-        {artworks.map((artwork, i) => this.renderArtwork(artwork.node, dimensions, i))}
+        {artworks.map((artwork, i) =>
+          this.renderArtwork(artwork.node, dimensions, i)
+        )}
       </div>
     )
   }
@@ -72,7 +74,9 @@ const sizeMeOptions = {
   refreshMode: "debounce",
 }
 
-const FillwidthDimensions = sizeMe(sizeMeOptions)(StyledFillwidth) as React.StatelessComponent<Props>
+const FillwidthDimensions = sizeMe(sizeMeOptions)(
+  StyledFillwidth
+) as React.StatelessComponent<Props>
 
 export default createFragmentContainer(
   FillwidthDimensions,

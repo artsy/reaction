@@ -82,7 +82,9 @@ class CollectorIntent extends React.Component<Props, State> {
 
     commitMutation(this.props.relayEnvironment, {
       mutation: graphql`
-        mutation CollectorIntentUpdateCollectorProfileMutation($input: UpdateCollectorProfileInput!) {
+        mutation CollectorIntentUpdateCollectorProfileMutation(
+          $input: UpdateCollectorProfileInput!
+        ) {
           updateCollectorProfile(input: $input) {
             intents
           }
@@ -98,13 +100,19 @@ class CollectorIntent extends React.Component<Props, State> {
 
   render() {
     const options = this.options.map((text, index) => (
-      <SelectableLink key={index} text={text} onSelect={this.onOptionSelected.bind(this, index)} />
+      <SelectableLink
+        key={index}
+        text={text}
+        onSelect={this.onOptionSelected.bind(this, index)}
+      />
     ))
     return (
       <Layout
         title="Get started on Artsy, what are you most interested in doing?"
         subtitle="Select all that apply"
-        onNextButtonPressed={this.state.selectedCount > 0 && this.submit.bind(this)}
+        onNextButtonPressed={
+          this.state.selectedCount > 0 && this.submit.bind(this)
+        }
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>

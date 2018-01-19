@@ -38,7 +38,9 @@ storiesOf("Onboarding", module).add("Collector Intent", () => {
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: "100px" }}>
-        <Title titleSize="xlarge">Get started on Artsy, what are you most interested in doing?</Title>
+        <Title titleSize="xlarge">
+          Get started on Artsy, what are you most interested in doing?
+        </Title>
         <Title titleSize="xlarge" style={{ color: "#999999" }}>
           Select all that apply
         </Title>
@@ -74,7 +76,10 @@ storiesOf("Onboarding", module).add("Collector Intent", () => {
             <Icon name="check" color="white" fontSize="8px" />
           </IconContainer>
         </Link>
-        <Link href="#" style={{ borderBottom: "1px solid #e5e5e5", marginBottom: "100px" }}>
+        <Link
+          href="#"
+          style={{ borderBottom: "1px solid #e5e5e5", marginBottom: "100px" }}
+        >
           Read Art Market News
           <IconContainer className="collector-intent-checked">
             <Icon name="check" color="white" fontSize="8px" />

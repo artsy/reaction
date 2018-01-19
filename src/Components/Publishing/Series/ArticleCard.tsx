@@ -3,12 +3,9 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { Date } from '../Byline/AuthorDate'
-import { Byline } from '../Byline/Byline'
-import {
-  formatTime,
-  getMediaDate
-} from "../Constants"
+import { Date } from "../Byline/AuthorDate"
+import { Byline } from "../Byline/Byline"
+import { formatTime, getMediaDate } from "../Constants"
 import { Fonts } from "../Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
 
@@ -39,7 +36,7 @@ export class ArticleCard extends Component<Props, null> {
       editDescription,
       editImage,
       editTitle,
-      editing
+      editing,
     } = this.props
 
     return editing || editDate || editDescription || editImage || editTitle
@@ -50,19 +47,11 @@ export class ArticleCard extends Component<Props, null> {
     const { media } = article
 
     if (editDate) {
-      return (
-        <MediaDate>{editDate}</MediaDate>
-      )
+      return <MediaDate>{editDate}</MediaDate>
     } else if (media) {
       return this.renderMediaDate()
     } else {
-      return (
-        <Byline
-          article={article}
-          color={color}
-          layout='condensed'
-        />
-      )
+      return <Byline article={article} color={color} layout="condensed" />
     }
   }
 
@@ -78,7 +67,7 @@ export class ArticleCard extends Component<Props, null> {
         </MediaDate>
       )
     } else {
-      return <Date layout='condensed' date={mediaDate} />
+      return <Date layout="condensed" date={mediaDate} />
     }
   }
 
@@ -97,7 +86,7 @@ export class ArticleCard extends Component<Props, null> {
     }
   }
 
-  openLink = (e) => {
+  openLink = e => {
     e.preventDefault()
 
     if (!this.isUnpublishedMedia() && !this.isEditing()) {
@@ -106,7 +95,7 @@ export class ArticleCard extends Component<Props, null> {
 
     this.props.tracking.trackEvent({
       action: "Click",
-      label: "Related article card"
+      label: "Related article card",
     })
   }
 
@@ -117,64 +106,57 @@ export class ArticleCard extends Component<Props, null> {
       editDescription,
       editImage,
       editTitle,
-      series
+      series,
     } = this.props
     const { media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
     return (
       <ArticleCardContainer
-        href={isUnpublishedMedia ? '' : article.slug}
+        href={isUnpublishedMedia ? "" : article.slug}
         color={color}
         className="ArticleCard"
         published={!isUnpublishedMedia}
         onClick={this.openLink}
       >
-
         <TextContainer>
           <div>
             <Header>
               <div>{series && series.title}</div>
             </Header>
-            <Title>
-              {editTitle
-                ? editTitle
-                : article.title
-              }
-            </Title>
+            <Title>{editTitle ? editTitle : article.title}</Title>
             <Description>
-              {editDescription
-                ? editDescription
-                : article.description
-              }
+              {editDescription ? editDescription : article.description}
             </Description>
           </div>
           {this.renderDate()}
         </TextContainer>
 
         <ImageContainer>
-          {editImage
-            ? editImage
-            : <Image src={crop(article.thumbnail_image, { width: 680, height: 450 })} />
-          }
+          {editImage ? (
+            editImage
+          ) : (
+            <Image
+              src={crop(article.thumbnail_image, { width: 680, height: 450 })}
+            />
+          )}
           {media && this.renderMediaCoverInfo()}
         </ImageContainer>
-
       </ArticleCardContainer>
     )
   }
 }
 
 ArticleCard.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
 interface LinkProps {
   published: boolean
 }
 
-const A: StyledFunction<Props & LinkProps & React.HTMLProps<HTMLLinkElement>> = styled.a
-
+const A: StyledFunction<Props & LinkProps & React.HTMLProps<HTMLLinkElement>> =
+  styled.a
 
 const Image = styled.img`
   width: 100%;
@@ -194,7 +176,7 @@ const ImageContainer = styled.div`
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
-  `}
+  `};
 `
 
 export const ArticleCardContainer = A`
@@ -202,12 +184,12 @@ export const ArticleCardContainer = A`
   border: 1px solid;
   border-radius: 2px;
   color: ${props => props.color};
-  cursor: ${props => props.published ? "pointer" : "default"};
+  cursor: ${props => (props.published ? "pointer" : "default")};
   text-decoration: none;
   padding: 30px;
   display: flex;
   ${Image} {
-    opacity: ${props => props.published ? "1" : "0.7"};
+    opacity: ${props => (props.published ? "1" : "0.7")};
   }
   &:hover {
     ${Image} {
@@ -215,7 +197,7 @@ export const ArticleCardContainer = A`
     }
   }
   ${ImageContainer} {
-    background: ${props => props.color === "white" ? "black" : "white"}
+    background: ${props => (props.color === "white" ? "black" : "white")}
   }
   ${props => pMedia.md`
     flex-direction: column-reverse;
@@ -229,39 +211,36 @@ const TextContainer = styled.div`
   justify-content: space-between;
   width: 50%;
   margin-bottom: 5px;
-  .author, .date {
-    ${Fonts.unica("s16", "medium")}
+  .author,
+  .date {
+    ${Fonts.unica("s16", "medium")};
   }
   ${props => pMedia.md`
     width: 100%;
     margin-bottom: 0;
-  `}
+  `};
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s45")}
-  margin-bottom: 30px;
+  ${Fonts.unica("s45")} margin-bottom: 30px;
   ${props => pMedia.md`
     ${Fonts.unica("s32")}
-  `}
+  `};
 `
 
 const Header = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
 
 const Description = styled.div`
-  ${Fonts.garamond("s23")}
-  ${props => pMedia.md`
+  ${Fonts.garamond("s23")} ${props => pMedia.md`
     ${Fonts.garamond("s19")}
     margin-bottom: 20px;
-  `}
+  `};
 `
 
 const MediaDate = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  display: flex;
+  ${Fonts.unica("s16", "medium")} display: flex;
   align-items: flex-end;
   span {
     margin-right: 5px;
@@ -279,20 +258,18 @@ const Media = styled.div`
 `
 
 const MediaPlay = Media.extend`
-  ${Fonts.unica("s16", "medium")}
-  svg {
+  ${Fonts.unica("s16", "medium")} svg {
     width: 40px;
   }
   ${props => pMedia.md`
     svg {
       width: 30px;
     }
-  `}
+  `};
 `
 
 const MediaComingSoon = Media.extend`
-  ${Fonts.unica("s45")}
-  ${props => pMedia.md`
+  ${Fonts.unica("s45")} ${props => pMedia.md`
     ${Fonts.unica("s32")}
-  `}
+  `};
 `

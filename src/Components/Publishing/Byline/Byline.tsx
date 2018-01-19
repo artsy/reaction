@@ -33,27 +33,23 @@ export const Byline: React.SFC<BylineProps> = props => {
         layout={layout}
       />
 
-      <Date
-        date={date ? date : published_at}
-        layout={layout}
-      />
+      <Date date={date ? date : published_at} layout={layout} />
 
-      {layout !== "condensed" &&
-        <Share
-          url={url}
-          title={title}
-          color={textColor}
-        />
-      }
+      {layout !== "condensed" && (
+        <Share url={url} title={title} color={textColor} />
+      )}
     </BylineContainer>
   )
 }
 
 Byline.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
-const Div: StyledFunction<BylineContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<
+  BylineContainerProps & React.HTMLProps<HTMLDivElement>
+> =
+  styled.div
 
 const BylineContainer = Div`
   display: flex;

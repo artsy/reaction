@@ -10,7 +10,11 @@ interface Props {
 export const Arrow: SFC<Props> = ({ direction, onClick }) => {
   return (
     <SliderArrow direction={direction} onClick={onClick}>
-      <Icon name={`chevron-${direction}` as any} color="black" fontSize="24px" />
+      <Icon
+        name={`chevron-${direction}` as any}
+        color="black"
+        fontSize="24px"
+      />
     </SliderArrow>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { Responsive } from '../../../Utils/Responsive'
+import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
@@ -37,7 +37,14 @@ function renderAsset(url, title, imageChild) {
     return (
       <FeatureVideoContainer>
         {imageChild}
-        <FeatureVideo src={url} autoPlay controls={false} loop muted playsInline />
+        <FeatureVideo
+          src={url}
+          autoPlay
+          controls={false}
+          loop
+          muted
+          playsInline
+        />
       </FeatureVideoContainer>
     )
   } else {
@@ -57,7 +64,15 @@ function renderTextLayoutAsset(url, layout, title, imageChild) {
       return (
         <TextAsset>
           {imageChild}
-          <video src={url} autoPlay controls={false} loop muted playsInline width="100%" />
+          <video
+            src={url}
+            autoPlay
+            controls={false}
+            loop
+            muted
+            playsInline
+            width="100%"
+          />
         </TextAsset>
       )
     } else {
@@ -107,7 +122,7 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
 @track()
 class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   static defaultProps = {
-    height: "calc(100vh - 50px)"
+    height: "calc(100vh - 50px)",
   }
 
   @track(props => ({
@@ -115,19 +130,28 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
     label: "Clicked primary partner logo",
     impression_type: "sa_primary_logo",
     destination_path: props.article.super_article.partner_logo_link,
-    context_type: "article_fixed"
+    context_type: "article_fixed",
   }))
   onClickPartnerLink() {
     // noop
   }
 
   render() {
-    const { article, date, vertical, title, deck, image, height, isMobile: passedIsMobile } = this.props
+    const {
+      article,
+      date,
+      vertical,
+      title,
+      deck,
+      image,
+      height,
+      isMobile: passedIsMobile,
+    } = this.props
     const hero = article.hero_section
-    const url = hero && hero.url || ""
-    const type = hero && hero.type || "text"
+    const url = (hero && hero.url) || ""
+    const type = (hero && hero.type) || "text"
 
-    if (type === 'basic') {
+    if (type === "basic") {
       return (
         <BasicHeader
           article={article}
@@ -147,20 +171,33 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
             <FeatureHeaderContainer data-type={type} height={height}>
               {renderFeatureAsset(url, type, isMobile, article.title, image)}
               <HeaderTextContainer>
-                {article.is_super_article &&
+                {article.is_super_article && (
                   <PartnerInline
-                    logo={super_article.partner_fullscreen_header_logo || super_article.partner_logo}
+                    logo={
+                      super_article.partner_fullscreen_header_logo ||
+                      super_article.partner_logo
+                    }
                     url={super_article.partner_logo_link}
                     color={"white"}
                   />
-                }
+                )}
                 <HeaderText>
                   <Vertical>{vertical}</Vertical>
                   <Title>{title}</Title>
-                  {renderMobileSplitAsset(url, type, isMobile, article.title, image)}
+                  {renderMobileSplitAsset(
+                    url,
+                    type,
+                    isMobile,
+                    article.title,
+                    image
+                  )}
                   <SubHeader>
                     {renderDeck(deck)}
-                    <Byline article={article} layout={type} date={date && date} />
+                    <Byline
+                      article={article}
+                      layout={type}
+                      date={date && date}
+                    />
                   </SubHeader>
                 </HeaderText>
                 {renderTextLayoutAsset(url, type, article.title, image)}
@@ -182,14 +219,17 @@ const DivWithProps: StyledFunction<DivProps> = Div.extend
 
 const Overlay = Div.extend`
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
-  `}
+  `};
 `
 const HeaderTextContainer = Div.extend`
   margin: auto;
@@ -202,7 +242,7 @@ const HeaderTextContainer = Div.extend`
     .PartnerInline {
       padding: 20px 15px 20px;
     }
-  `}
+  `};
 `
 const HeaderText = Div.extend`
   position: relative;
@@ -245,39 +285,34 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${Fonts.unica("s19", "medium")}
-  display: flex;
+  ${Fonts.unica("s19", "medium")} display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
   ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
-  `}
+  `};
 `
 const Title = styled.div`
-  ${Fonts.unica("s100")}
-  margin-bottom: 75px;
+  ${Fonts.unica("s100")} margin-bottom: 75px;
   letter-spacing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
-  `}
-  ${pMedia.md`
+  `} ${pMedia.md`
     ${Fonts.unica("s65")}
-  `}
-  ${pMedia.xs`
+  `} ${pMedia.xs`
     ${Fonts.unica("s45")}
-  `}
+  `};
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")}
-  line-height: 1.4em;
+  ${Fonts.unica("s16", "medium")} line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
-  `}
+  `};
 `
 const FeatureHeaderContainer = DivWithProps`
   width: 100%;

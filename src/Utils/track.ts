@@ -59,7 +59,10 @@ export namespace TrackingInfo {
  *      }
  *
  */
-export function trackWithProps<P, T extends TrackingInfo.Global = TrackingInfo.Global>(): Track<T, P> {
+export function trackWithProps<
+  P,
+  T extends TrackingInfo.Global = TrackingInfo.Global
+>(): Track<T, P> {
   return _track
 }
 
@@ -95,7 +98,9 @@ export function trackWithProps<P, T extends TrackingInfo.Global = TrackingInfo.G
  *        }
  *      }
  */
-export function trackWithoutProps<T extends TrackingInfo.Global = TrackingInfo.Global>(): Track<T, any> {
+export function trackWithoutProps<
+  T extends TrackingInfo.Global = TrackingInfo.Global
+>(): Track<T, any> {
   return _track
 }
 

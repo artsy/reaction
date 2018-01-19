@@ -10,7 +10,10 @@ storiesOf("Publishing/Byline", module)
   .add("Share", () => {
     return (
       <div>
-        <Share url="http://artsy.net/article/point-pencils" title="The Point of Pencils" />
+        <Share
+          url="http://artsy.net/article/point-pencils"
+          title="The Point of Pencils"
+        />
       </div>
     )
   })
@@ -46,7 +49,11 @@ storiesOf("Publishing/Byline", module)
   })
   .add("Many Authors Byline", () => {
     const article = extend({}, StandardArticle, {
-      authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
+      authors: [
+        { name: "Kana Abe" },
+        { name: "Anna Louis-Sussman" },
+        { name: "Halley Johnson" },
+      ],
     })
     return (
       <div>
@@ -64,7 +71,7 @@ storiesOf("Publishing/Byline", module)
   .add("Byline with custom color", () => {
     return (
       <div>
-        <Byline article={StandardArticle} color='blue' />
+        <Byline article={StandardArticle} color="blue" />
       </div>
     )
   })

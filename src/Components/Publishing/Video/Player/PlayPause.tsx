@@ -10,18 +10,15 @@ interface Props extends React.HTMLProps<HTMLSpanElement> {
 
 export class PlayPause extends React.PureComponent<Props, null> {
   render() {
-    const {
-      isPlaying,
-      togglePlay
-    } = this.props
+    const { isPlaying, togglePlay } = this.props
 
     return (
       <PlayPauseContainer onClick={togglePlay}>
-        {isPlaying ?
+        {isPlaying ? (
           <IconVideoPause color="white" />
-          :
+        ) : (
           <IconVideoPlay color="white" />
-        }
+        )}
       </PlayPauseContainer>
     )
   }

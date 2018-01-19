@@ -21,10 +21,10 @@ const Icon: React.SFC<Props> = props => (
 )
 
 Icon.defaultProps = {
-  color: "black"
+  color: "black",
 }
 
-export const IconVideoPlay = styled(Icon) `
+export const IconVideoPlay = styled(Icon)`
   width: 32px;
   height: 32px;
 `

@@ -265,7 +265,7 @@ exports[`Video About matches the snapshot 1`] = `
   padding: 0px;
 }
 
-.c0 .c1:nth-of-type(2) .c5 {
+.c0 .c1:nth-of-type (2) .c5 {
   display: none;
 }
 
@@ -939,7 +939,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding: 0px;
 }
 
-.c0 .c1:nth-of-type(2) .c5 {
+.c0 .c1:nth-of-type (2) .c5 {
   display: none;
 }
 

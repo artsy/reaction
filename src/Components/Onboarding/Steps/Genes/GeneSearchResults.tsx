@@ -1,5 +1,11 @@
 import * as React from "react"
-import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  QueryRenderer,
+  RelayProp,
+} from "react-relay"
 import styled from "styled-components"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
@@ -40,18 +46,35 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
-    this.excludedGeneIds = new Set(this.props.viewer.match_gene.map(item => item._id))
+    this.excludedGeneIds = new Set(
+      this.props.viewer.match_gene.map(item => item._id)
+    )
   }
 
-  onGeneFollowed(geneId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
-    const suggestedGene = store.get(data.followGene.gene.similar.edges[0].node.__id)
+  onGeneFollowed(
+    geneId: string,
+    store: RecordSourceSelectorProxy,
+    data: SelectorData
+  ): void {
+    const suggestedGene = store.get(
+      data.followGene.gene.similar.edges[0].node.__id
+    )
     this.excludedGeneIds.add(suggestedGene.getValue("_id"))
 
     const suggestedGenesRootField = store.get("client:root:viewer")
-    const suggestedGenes = suggestedGenesRootField.getLinkedRecords("match_gene", { term: this.props.term })
-    const updatedSuggestedGenes = suggestedGenes.map(gene => (gene.getValue("id") === geneId ? suggestedGene : gene))
+    const suggestedGenes = suggestedGenesRootField.getLinkedRecords(
+      "match_gene",
+      { term: this.props.term }
+    )
+    const updatedSuggestedGenes = suggestedGenes.map(
+      gene => (gene.getValue("id") === geneId ? suggestedGene : gene)
+    )
 
-    suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
+    suggestedGenesRootField.setLinkedRecords(
+      updatedSuggestedGenes,
+      "match_gene",
+      { term: this.props.term }
+    )
   }
 
   followedGene(gene: Gene) {
@@ -59,7 +82,10 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation GeneSearchResultsFollowGeneMutation($input: FollowGeneInput!, $excludedGeneIds: [String]!) {
+        mutation GeneSearchResultsFollowGeneMutation(
+          $input: FollowGeneInput!
+          $excludedGeneIds: [String]!
+        ) {
           followGene(input: $input) {
             gene {
               similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
@@ -87,7 +113,8 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
         },
         excludedGeneIds: Array.from(this.excludedGeneIds),
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => this.onGeneFollowed(gene.id, store, data),
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
+        this.onGeneFollowed(gene.id, store, data),
     })
   }
 
@@ -136,7 +163,10 @@ interface Props {
   term: string
 }
 
-const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, relayEnvironment }) => {
+const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({
+  term,
+  relayEnvironment,
+}) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -150,7 +180,12 @@ const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({ term, rel
       variables={{ term }}
       render={({ error, props }) => {
         if (props) {
-          return <GeneSearchResultsContentContainer viewer={props.viewer} term={term} />
+          return (
+            <GeneSearchResultsContentContainer
+              viewer={props.viewer}
+              term={term}
+            />
+          )
         } else {
           return null
         }

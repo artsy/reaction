@@ -1,5 +1,9 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, RelayPaginationProp } from "react-relay"
+import {
+  createFragmentContainer,
+  graphql,
+  RelayPaginationProp,
+} from "react-relay"
 import styled from "styled-components"
 
 import Dropdown from "../ArtworkFilter/Dropdown"
@@ -50,7 +54,9 @@ export class TagArtworks extends React.Component<Props, null> {
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
-          selected={aggregation.slice && this.props[aggregation.slice.toLowerCase()]}
+          selected={
+            aggregation.slice && this.props[aggregation.slice.toLowerCase()]
+          }
           onSelected={this.props.onDropdownSelected}
         />
       )
@@ -58,7 +64,12 @@ export class TagArtworks extends React.Component<Props, null> {
   }
 
   renderForSaleToggle() {
-    return <ForSaleCheckbox checked={this.props.for_sale} onChange={this.props.onForSaleToggleSelected} />
+    return (
+      <ForSaleCheckbox
+        checked={this.props.for_sale}
+        onChange={this.props.onForSaleToggleSelected}
+      />
+    )
   }
 
   renderArtworks() {
@@ -67,7 +78,9 @@ export class TagArtworks extends React.Component<Props, null> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
-    const selectedSort = pulldownOptions.find(sort => sort.val === this.props.sort)
+    const selectedSort = pulldownOptions.find(
+      sort => sort.val === this.props.sort
+    )
     return (
       <div>
         <SubFilterBar>
@@ -89,7 +102,10 @@ export class TagArtworks extends React.Component<Props, null> {
             onChange={this.props.onSortSelected}
           />
         </SubFilterBar>
-        <TagArtworksContent tagID={this.props.tag.id} filtered_artworks={this.props.tag.filtered_artworks as any} />
+        <TagArtworksContent
+          tagID={this.props.tag.id}
+          filtered_artworks={this.props.tag.filtered_artworks as any}
+        />
       </div>
     )
   }
@@ -113,7 +129,10 @@ export default createFragmentContainer(TagArtworks, {
       @argumentDefinitions(
         for_sale: { type: "Boolean" }
         medium: { type: "String", defaultValue: "*" }
-        aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
+        }
         price_range: { type: "String", defaultValue: "*" }
         dimension_range: { type: "String", defaultValue: "*" }
       ) {

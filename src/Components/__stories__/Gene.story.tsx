@@ -9,7 +9,12 @@ storiesOf("Components/Pages/Gene/Contents", module)
     return (
       <div>
         <ContextProvider>
-          <Contents filters={{}} geneID="minimalism" mode="artists" onStateChange={console.log} />
+          <Contents
+            filters={{}}
+            geneID="minimalism"
+            mode="artists"
+            onStateChange={console.log}
+          />
         </ContextProvider>
       </div>
     )

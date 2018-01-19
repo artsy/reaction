@@ -15,16 +15,19 @@ const Icon: React.SFC<Props> = props => (
     <g fill="none" fillRule="evenodd" transform="translate(-19 -22)">
       <rect width="1200" height="92" stroke="#FFF" rx="4" />
       <path d="M17 21h30v30H17z" />
-      <path fill={props.color} d="M19.857 22.429h8.571v27.143h-8.571zM35.571 22.429h8.571v27.143h-8.571z" />
+      <path
+        fill={props.color}
+        d="M19.857 22.429h8.571v27.143h-8.571zM35.571 22.429h8.571v27.143h-8.571z"
+      />
     </g>
-  </svg >
+  </svg>
 )
 
 Icon.defaultProps = {
-  color: "black"
+  color: "black",
 }
 
-export const IconVideoPause = styled(Icon) `
+export const IconVideoPause = styled(Icon)`
   width: 32px;
   height: 32px;
 `

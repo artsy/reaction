@@ -20,22 +20,18 @@ interface ImageCollectionProps {
   }
 }
 
-class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps, null> {
+class ImageCollectionComponent extends React.PureComponent<
+  ImageCollectionProps,
+  null
+> {
   static defaultProps = {
     size: {
-      width: 680
-    }
+      width: 680,
+    },
   }
 
   renderImages(dimensions) {
-    const {
-      gutter,
-      images,
-      sectionLayout,
-      size: {
-        width
-      }
-    } = this.props
+    const { gutter, images, sectionLayout, size: { width } } = this.props
 
     const renderedImages = images.map((image, i) => {
       const url = image.url || image.image
@@ -73,11 +69,7 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
       const margin = i === dimensions.length - 1 ? 0 : gutter
 
       return (
-        <ImageCollectionItem
-          key={i}
-          margin={margin}
-          width={imageSize.width}
-        >
+        <ImageCollectionItem key={i} margin={margin} width={imageSize.width}>
           {renderedImage}
         </ImageCollectionItem>
       )
@@ -87,14 +79,15 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
 
   render() {
     const { gutter, images, size, targetHeight } = this.props
-    const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
+    const dimensions = fillwidthDimensions(
+      images,
+      size.width,
+      gutter,
+      targetHeight
+    )
     const renderedImages = this.renderImages(dimensions)
 
-    return (
-      <ImageCollectionContainer>
-        {renderedImages}
-      </ImageCollectionContainer>
-    )
+    return <ImageCollectionContainer>{renderedImages}</ImageCollectionContainer>
   }
 }
 

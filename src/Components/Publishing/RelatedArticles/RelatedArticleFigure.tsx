@@ -18,7 +18,10 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-export class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, null> {
+export class RelatedArticleFigure extends React.Component<
+  RelatedArticleFigureProps,
+  null
+> {
   constructor(props) {
     super(props)
     this.onClick = this.onClick.bind(this)

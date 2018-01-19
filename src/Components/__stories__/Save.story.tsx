@@ -16,7 +16,8 @@ function ArtworkExample(props: { artworkID: string }) {
         }
       `}
       variables={{ artworkID: props.artworkID }}
-      render={readyState => readyState.props && <GridItem {...readyState.props as any} />}
+      render={readyState =>
+        readyState.props && <GridItem {...readyState.props as any} />}
     />
   )
 }

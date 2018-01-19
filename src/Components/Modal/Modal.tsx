@@ -11,7 +11,7 @@ const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  zIndex: 9999;
+  zindex: 9999;
   background: #fff;
   width: 420px;
 `
@@ -22,7 +22,7 @@ const Overlay = styled.div`
   height: 100%;
   top: 0px;
   left: 0px;
-  zIndex: 9998;
+  zindex: 9998;
   background: rgba(0, 0, 0, 0.3);
 `
 
@@ -51,9 +51,7 @@ class Modal extends React.Component<ModalProps, any> {
     }
     return (
       <div>
-        <ModalContainer {...newProps}>
-          {this.props.children}
-        </ModalContainer>
+        <ModalContainer {...newProps}>{this.props.children}</ModalContainer>
         <Overlay onClick={this.close} />
       </div>
     )

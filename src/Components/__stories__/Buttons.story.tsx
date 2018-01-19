@@ -17,11 +17,15 @@ storiesOf("Components/Buttons", module)
         </div>
         <div>
           <Button state={ButtonState.Success}>Button</Button>
-          <Button state={ButtonState.Success} disabled>Button</Button>
+          <Button state={ButtonState.Success} disabled>
+            Button
+          </Button>
         </div>
         <div>
           <Button state={ButtonState.Failure}>Button</Button>
-          <Button state={ButtonState.Failure} disabled>Button</Button>
+          <Button state={ButtonState.Failure} disabled>
+            Button
+          </Button>
         </div>
       </div>
     )

@@ -1,5 +1,11 @@
 import * as React from "react"
-import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  QueryRenderer,
+  RelayProp,
+} from "react-relay"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
@@ -20,13 +26,22 @@ class PopularArtistsContent extends React.Component<Props, any> {
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
-    this.excludedArtistIds = new Set(this.props.popular_artists.artists.map(item => item._id))
+    this.excludedArtistIds = new Set(
+      this.props.popular_artists.artists.map(item => item._id)
+    )
   }
 
-  onArtistFollowed(artistId: string, store: RecordSourceSelectorProxy, data: SelectorData): void {
-    const suggestedArtistEdge = data.followArtist.artist.related.suggested.edges[0]
+  onArtistFollowed(
+    artistId: string,
+    store: RecordSourceSelectorProxy,
+    data: SelectorData
+  ): void {
+    const suggestedArtistEdge =
+      data.followArtist.artist.related.suggested.edges[0]
     const popularArtist = data.followArtist.popular_artists.artists[0]
-    const artistToSuggest = store.get(((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id)
+    const artistToSuggest = store.get(
+      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id
+    )
     this.excludedArtistIds.add(artistToSuggest.getValue("_id"))
 
     const popularArtistsRootField = store
@@ -35,7 +50,9 @@ class PopularArtistsContent extends React.Component<Props, any> {
 
     const updatedPopularArtists = popularArtistsRootField
       .getLinkedRecords("artists")
-      .map(artist => (artist.getDataID() === artistId ? artistToSuggest : artist))
+      .map(
+        artist => (artist.getDataID() === artistId ? artistToSuggest : artist)
+      )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
   }
@@ -43,9 +60,16 @@ class PopularArtistsContent extends React.Component<Props, any> {
   onFollowedArtist(artist: any) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
-        mutation PopularArtistsFollowArtistMutation($input: FollowArtistInput!, $excludedArtistIds: [String]!) {
+        mutation PopularArtistsFollowArtistMutation(
+          $input: FollowArtistInput!
+          $excludedArtistIds: [String]!
+        ) {
           followArtist(input: $input) {
-            popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
+            popular_artists(
+              size: 1
+              exclude_followed_artists: true
+              exclude_artist_ids: $excludedArtistIds
+            ) {
               artists {
                 id
                 __id
@@ -57,11 +81,14 @@ class PopularArtistsContent extends React.Component<Props, any> {
                 }
               }
             }
-
             artist {
               __id
               related {
-                suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
+                suggested(
+                  first: 1
+                  exclude_followed_artists: true
+                  exclude_artist_ids: $excludedArtistIds
+                ) {
                   edges {
                     node {
                       id
@@ -94,17 +121,19 @@ class PopularArtistsContent extends React.Component<Props, any> {
   }
 
   render() {
-    const artistItems = this.props.popular_artists.artists.map((artist, index) => (
-      <ItemLink
-        href="#"
-        item={artist}
-        key={index}
-        id={artist.id}
-        name={artist.name}
-        image_url={artist.image && artist.image.cropped.url}
-        onClick={() => this.onFollowedArtist(artist)}
-      />
-    ))
+    const artistItems = this.props.popular_artists.artists.map(
+      (artist, index) => (
+        <ItemLink
+          href="#"
+          item={artist}
+          key={index}
+          id={artist.id}
+          name={artist.name}
+          image_url={artist.image && artist.image.cropped.url}
+          onClick={() => this.onFollowedArtist(artist)}
+        />
+      )
+    )
 
     return <div>{artistItems}</div>
   }
@@ -129,7 +158,9 @@ const PopularArtistContentContainer = createFragmentContainer(
   `
 )
 
-const PopularArtistsComponent: React.SFC<ContextProps> = ({ relayEnvironment }) => {
+const PopularArtistsComponent: React.SFC<ContextProps> = ({
+  relayEnvironment,
+}) => {
   return (
     <QueryRenderer
       environment={relayEnvironment}
@@ -143,7 +174,11 @@ const PopularArtistsComponent: React.SFC<ContextProps> = ({ relayEnvironment }) 
       variables={{}}
       render={({ error, props }) => {
         if (props) {
-          return <PopularArtistContentContainer popular_artists={props.popular_artists} />
+          return (
+            <PopularArtistContentContainer
+              popular_artists={props.popular_artists}
+            />
+          )
         } else {
           return null
         }

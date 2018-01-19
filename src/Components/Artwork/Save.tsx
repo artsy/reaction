@@ -1,5 +1,10 @@
 import React from "react"
-import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 
 import Icon from "../Icon"
 
@@ -10,7 +15,10 @@ import * as Artsy from "../../Components/Artsy"
 
 const SIZE = 40
 
-export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.ContextProps {
+export interface Props
+  extends RelayProps,
+    React.HTMLProps<SaveButton>,
+    Artsy.ContextProps {
   style?: any
   relay?: RelayProp
 }
@@ -59,7 +67,12 @@ export class SaveButton extends React.Component<Props, null> {
         onClick={() => this.handleSave()}
         data-saved={artwork.is_saved}
       >
-        <Icon name="heart" height={SIZE} color="white" style={{ verticalAlign: "middle" }} />
+        <Icon
+          name="heart"
+          height={SIZE}
+          color="white"
+          style={{ verticalAlign: "middle" }}
+        />
       </div>
     )
   }

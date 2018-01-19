@@ -1,5 +1,5 @@
 import React from "react"
-import ReactDOM from 'react-dom/server'
+import ReactDOM from "react-dom/server"
 
 export const Truncator: React.SFC<any> = ({ children }) => {
   const html = ReactDOM.renderToStaticMarkup(<span>{children}</span>)
@@ -7,13 +7,15 @@ export const Truncator: React.SFC<any> = ({ children }) => {
   // FIXME: Make safe for tests
   let HTMLEllipsis
 
-  if (process.env.NODE_ENV !== 'test') {
-    HTMLEllipsis = require('react-lines-ellipsis/lib/html')
+  if (process.env.NODE_ENV !== "test") {
+    HTMLEllipsis = require("react-lines-ellipsis/lib/html")
   } else {
     HTMLEllipsis = ({ unsafeHTML }) => (
-      <div dangerouslySetInnerHTML={{
-        __html: unsafeHTML
-      }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: unsafeHTML,
+        }}
+      />
     )
   }
 
@@ -21,8 +23,8 @@ export const Truncator: React.SFC<any> = ({ children }) => {
     <HTMLEllipsis
       unsafeHTML={html}
       trimRight={false}
-      maxLine='2'
-      ellipsis='...'
+      maxLine="2"
+      ellipsis="..."
     />
   )
 }

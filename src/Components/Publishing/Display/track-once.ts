@@ -21,12 +21,13 @@ const trackOnce = (unitLayout, action) => {
   return (target, name, descriptor) => {
     const decoratedFn = descriptor.value
     // tslint:disable-next-line:only-arrow-functions
-    descriptor.value = function () {
+    descriptor.value = function() {
       const key = [
         this.props.campaign.name,
         unitLayout(this.props),
         action,
-        (this.props.article && this.props.article.id) || this._reactInternalInstance._debugID,
+        (this.props.article && this.props.article.id) ||
+          this._reactInternalInstance._debugID,
       ].join(":")
       if (alreadyFired[key]) return decoratedFn.apply(this, arguments)
       this.props.tracking &&

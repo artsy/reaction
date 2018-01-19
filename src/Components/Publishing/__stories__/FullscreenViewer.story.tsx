@@ -22,7 +22,11 @@ class FullscreenViewerDemo extends React.Component<any, any> {
     return (
       <div>
         <Button onClick={this.openViewer}>Open Fullscreen Viewer</Button>
-        <FullscreenViewer onClose={this.closeViewer} show={this.state.viewerIsOpen} images={Images} />
+        <FullscreenViewer
+          onClose={this.closeViewer}
+          show={this.state.viewerIsOpen}
+          images={Images}
+        />
       </div>
     )
   }
