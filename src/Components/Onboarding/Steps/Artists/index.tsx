@@ -32,7 +32,9 @@ export default class Artists extends React.Component<StepProps, State> {
   }
 
   updateFollowCount(count: number) {
-    this.setState({ followCount: count })
+    const updatedFollowCount = this.state.followCount + count
+
+    this.setState({ followCount: updatedFollowCount })
   }
 
   submit() {
