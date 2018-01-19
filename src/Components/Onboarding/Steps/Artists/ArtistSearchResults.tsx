@@ -40,7 +40,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "match_artist", { term: this.props.term })
 
-    this.followCount = this.followCount + 1
+    this.followCount += 1
 
     this.props.updateFollowCount(this.followCount)
   }

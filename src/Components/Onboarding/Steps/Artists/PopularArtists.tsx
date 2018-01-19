@@ -40,7 +40,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
 
-    this.followCount = this.followCount + 1
+    this.followCount += 1
 
     this.props.updateFollowCount(this.followCount)
   }

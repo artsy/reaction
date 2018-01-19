@@ -58,7 +58,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
     suggestedGenesRootField.setLinkedRecords(updatedSuggestedGenes, "match_gene", { term: this.props.term })
 
-    this.followCount = this.followCount + 1
+    this.followCount += 1
 
     this.props.updateFollowCount(this.followCount)
   }
