@@ -55,7 +55,10 @@ export default class Genes extends React.Component<StepProps, State> {
   }
 
   clearSearch(e) {
-    this.setState({ inputText: "" })
+    this.setState({
+      inputText: "",
+      inputTextQuery: "",
+    })
   }
 
   clickedNext() {
@@ -67,7 +70,9 @@ export default class Genes extends React.Component<StepProps, State> {
       <Layout
         title="Follow art categories that interest you most"
         subtitle="Follow one or more"
-        onNextButtonPressed={this.state.followCount > 0 ? this.clickedNext.bind(this) : null}
+        onNextButtonPressed={
+          this.state.followCount > 0 ? this.clickedNext.bind(this) : null
+        }
       >
         <OnboardingSearchBox>
           <Input
@@ -75,7 +80,11 @@ export default class Genes extends React.Component<StepProps, State> {
             leftView={<Icon name="search" color={Colors.graySemibold} />}
             rightView={
               this.state.inputText.length ? (
-                <Icon name="close" color={Colors.graySemibold} onClick={this.clearSearch.bind(this)} />
+                <Icon
+                  name="close"
+                  color={Colors.graySemibold}
+                  onClick={this.clearSearch.bind(this)}
+                />
               ) : null
             }
             block
@@ -86,11 +95,12 @@ export default class Genes extends React.Component<StepProps, State> {
             autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
-<<<<<<< HEAD
-          {<GeneList searchQuery={this.state.inputText} updateFollowCount={this.updateFollowCount.bind(this)} />}
-=======
-          {<GeneList searchQuery={this.state.inputTextQuery} />}
->>>>>>> a487c894... Adds throttled Gene search
+          {
+            <GeneList
+              searchQuery={this.state.inputTextQuery}
+              updateFollowCount={this.updateFollowCount.bind(this)}
+            />
+          }
         </OnboardingSearchBox>
       </Layout>
     )
