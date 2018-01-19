@@ -1,3 +1,4 @@
+import { throttle } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -23,11 +24,13 @@ const OnboardingSearchBox = styled.div`
 interface State {
   inputText: string
   followCount: number
+  inputTextQuery: string
 }
 
 export default class Genes extends React.Component<StepProps, State> {
   state = {
     inputText: "",
+    inputTextQuery: "",
     followCount: 0,
   }
 
@@ -35,9 +38,20 @@ export default class Genes extends React.Component<StepProps, State> {
     this.setState({ followCount: count })
   }
 
-  searchTextChanged(e) {
+  componentDidMount() {
+    this.throttledTextChange = throttle(this.throttledTextChange, 500, {
+      leading: true,
+    })
+  }
+
+  searchTextChanged = e => {
     const updatedInputText = e.target.value
     this.setState({ inputText: updatedInputText })
+    this.throttledTextChange(updatedInputText)
+  }
+
+  throttledTextChange = inputText => {
+    this.setState({ inputTextQuery: inputText })
   }
 
   clearSearch(e) {
@@ -65,14 +79,18 @@ export default class Genes extends React.Component<StepProps, State> {
               ) : null
             }
             block
-            onInput={this.searchTextChanged.bind(this)}
-            onPaste={this.searchTextChanged.bind(this)}
-            onCut={this.searchTextChanged.bind(this)}
+            onInput={this.searchTextChanged}
+            onPaste={this.searchTextChanged}
+            onCut={this.searchTextChanged}
             value={this.state.inputText}
             autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
+<<<<<<< HEAD
           {<GeneList searchQuery={this.state.inputText} updateFollowCount={this.updateFollowCount.bind(this)} />}
+=======
+          {<GeneList searchQuery={this.state.inputTextQuery} />}
+>>>>>>> a487c894... Adds throttled Gene search
         </OnboardingSearchBox>
       </Layout>
     )
