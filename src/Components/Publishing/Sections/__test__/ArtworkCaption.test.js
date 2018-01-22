@@ -8,44 +8,39 @@ import { ArtworkCaption } from "../ArtworkCaption"
 
 describe("ArtworkCaption", () => {
   const getWrapper = (props = {}) => {
-    return mount(
-      <ArtworkCaption artwork={props.artwork || Artworks[0]} />
-    )
+    return mount(<ArtworkCaption artwork={props.artwork || Artworks[0]} />)
   }
 
   describe("snapshot", () => {
     it("renders a fullscreen caption properly", () => {
-      const caption = renderer.create(
-        <ArtworkCaption
-          artwork={Artworks[0]}
-          isFullscreenCaption
-        />
-      ).toJSON()
+      const caption = renderer
+        .create(<ArtworkCaption artwork={Artworks[0]} isFullscreenCaption />)
+        .toJSON()
       expect(caption).toMatchSnapshot()
     })
 
     it("renders a classic caption properly", () => {
-      const caption = renderer.create(
-        <ArtworkCaption
-          artwork={Artworks[0]}
-          layout="classic"
-        />
-      ).toJSON()
+      const caption = renderer
+        .create(<ArtworkCaption artwork={Artworks[0]} layout="classic" />)
+        .toJSON()
       expect(caption).toMatchSnapshot()
     })
 
     it("renders a standard caption properly", () => {
-      const caption = renderer.create(
-        <ArtworkCaption
-          artwork={Artworks[0]}
-          layout="standard"
-        />
-      ).toJSON()
+      const caption = renderer
+        .create(<ArtworkCaption artwork={Artworks[0]} layout="standard" />)
+        .toJSON()
       expect(caption).toMatchSnapshot()
     })
   })
 
   describe("#joinParts", () => {
+    it("joins zero items", () => {
+      const component = getWrapper()
+      const joined = component.instance().joinParts(["Title"])
+      expect(joined.toString()).toEqual("Title")
+    })
+
     it("joins one item", () => {
       const component = getWrapper()
       const joined = component.instance().joinParts(["Title"])
@@ -60,6 +55,18 @@ describe("ArtworkCaption", () => {
   })
 
   describe("render methods", () => {
+    it("can render with missing information", () => {
+      const component = getWrapper({
+        artwork: {
+          title: "",
+          date: "",
+          artists: [],
+          partner: {},
+        },
+      })
+      console.log(component.html())
+    })
+
     it("renders a single artist", () => {
       const component = getWrapper()
       expect(component.html()).toMatch("Fernando Botero")
@@ -68,27 +75,30 @@ describe("ArtworkCaption", () => {
     it("renders artists", () => {
       const component = getWrapper({
         artwork: _.extend({}, Artworks[0], {
-          artists: [
-            { name: "Andy Warhol" },
-            { name: "Botero" }
-          ]
-        })
+          artists: [{ name: "Andy Warhol" }, { name: "Botero" }],
+        }),
       })
-      expect(component.html()).toMatch("<span class=\"name\">Andy Warhol</span>, <span class=\"name\">Botero</span></span>")
+      expect(component.html()).toMatch(
+        '<span class="name">Andy Warhol</span>, <span class="name">Botero</span></span>'
+      )
     })
 
     it("renders title + date", () => {
       const component = getWrapper({
         artwork: _.extend({}, Artworks[0], {
-          date: "2000"
-        })
+          date: "2000",
+        }),
       })
-      expect(component.html()).toMatch("<span class=\"title\">Nude on the Beach</span>, <span class=\"date\">2000</span></span>")
+      expect(component.html()).toMatch(
+        '<span class="title">Nude on the Beach</span>, <span class="date">2000</span></span>'
+      )
     })
 
     it("renders partner + credit", () => {
       const component = getWrapper()
-      expect(component.html()).toMatch("<span>Gary Nader. <span class=\"credit\">Courtesy of Gary Nader</span></span>")
+      expect(component.html()).toMatch(
+        '<span>Gary Nader. <span class="credit">Courtesy of Gary Nader</span></span>'
+      )
     })
   })
 })

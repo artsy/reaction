@@ -7,7 +7,8 @@ export const Artworks = [
     slug: "fernando-botero-nude-on-the-beach",
     date: "",
     title: "Nude on the Beach",
-    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    image:
+      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
     partner: {
       name: "Gary Nader",
     },
@@ -16,7 +17,7 @@ export const Artworks = [
     },
     width: 1152,
     height: 826,
-    credit: "Courtesy of Gary Nader"
+    credit: "Courtesy of Gary Nader",
   },
   {
     type: "artwork",
@@ -24,7 +25,8 @@ export const Artworks = [
     slug: "fernando-botero-nude-on-the-beach",
     date: "2000",
     title: "Nude on the Beach",
-    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    image:
+      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
     partner: {
       name: "Gary Nader",
       slug: "gary-nader",
@@ -41,14 +43,15 @@ export const Artworks = [
     ],
     width: 1152,
     height: 826,
-    credit: "Courtesy of Gary Nader"
+    credit: "Courtesy of Gary Nader",
   },
   {
     type: "artwork",
     id: "589a6291275b2410d1beb6a5",
     slug: "fernando-botero-nude-on-the-beach",
-    title: "Nude on the Beach",
-    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    title: "",
+    image:
+      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
     partner: {
       name: "Gary Nader",
     },
@@ -56,15 +59,17 @@ export const Artworks = [
       name: "Fernando Botero",
     },
     width: 1152,
-    height: 826
+    height: 826,
   },
   {
     type: "artwork",
     id: "596aa2851a1e864d5eea6681",
     slug: "matt-devine-brass-tax",
     date: "2000",
-    title: "Fifty Abstract Pictures Which As Seen From Two Yards Change Into Three Lenins Masquerading As Chinese And As Seen From Six Yards Appear As The Head Of A Royal Bengal Tiger",
-    image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+    title:
+      "Fifty Abstract Pictures Which As Seen From Two Yards Change Into Three Lenins Masquerading As Chinese And As Seen From Six Yards Appear As The Head Of A Royal Bengal Tiger",
+    image:
+      "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
     partner: {
       name: "Joanne Artman Gallery and Gagosian Gallery",
       slug: "joanne-artman-gallery",
@@ -81,15 +86,18 @@ export const Artworks = [
     },
     width: 1500,
     height: 2000,
-    credit: "Courtesy of The Metropolitan Museum of Art, Gagosian Gallery, and the artist."
+    credit:
+      "Courtesy of The Metropolitan Museum of Art, Gagosian Gallery, and the artist.",
   },
 ]
 
 export const Authors = [
   {
-    image_url: "https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/9vcX6FR21rKHatmvJ8K0sg%2FAbigail.jpg",
     name: "Abigail Cain",
-    bio: "[Abigail Cain](https://artsy.net/abigail) is an Art Market Editor at Artsy",
+    bio:
+      "[Abigail Cain](https://artsy.net/abigail) is an Art Market Editor at Artsy",
     twitter_handle: "abigailcain",
   },
   {
@@ -101,7 +109,8 @@ export const Authors = [
   },
   {
     name: "Halley Johnson",
-    bio: "[Halley Johnson](https://artsy.net/molly) is an Writer Guru at Artsy. She enjoys speaking Georgian.",
+    bio:
+      "[Halley Johnson](https://artsy.net/molly) is an Writer Guru at Artsy. She enjoys speaking Georgian.",
     twitter_handle: "halleyjohnson",
   },
   {
@@ -117,16 +126,21 @@ export const Campaign = {
 
 export const UnitCanvasOverlay = {
   layout: "overlay",
-  headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
+  headline:
+    "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
   link: {
     text: "Link Example",
     url: "http://artsy.net",
   },
   assets: [
-    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+    },
   ],
-  logo: "http://files.artsy.net/images/artsy_logo_full_whiteweb_transparent.png",
+  logo:
+    "http://files.artsy.net/images/artsy_logo_full_whiteweb_transparent.png",
   disclaimer:
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
@@ -140,7 +154,10 @@ export const UnitCanvasImage = {
     url: "http://artsy.net",
   },
   assets: [
-    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+    },
   ],
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
@@ -155,8 +172,14 @@ export const UnitCanvasVideo = {
     text: "Link Example",
     url: "http://artsy.net",
   },
-  assets: [{ url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4" }],
-  cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG",
+  assets: [
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    },
+  ],
+  cover_image_url:
+    "https://artsy-media-uploads.s3.amazonaws.com/XkEYc3dH8HiRVKCIogWfUw%2FBombay+Display+Thumbnail.PNG",
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
@@ -164,7 +187,8 @@ export const UnitCanvasVideo = {
 
 export const UnitCanvasSlideshow = {
   layout: "slideshow",
-  headline: "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
+  headline:
+    "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
   body: "",
   link: {
     text: "Link Example",
@@ -172,12 +196,17 @@ export const UnitCanvasSlideshow = {
   },
   assets: [
     {
-      url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
       caption: "Nullam id dolor ultricies vehicula.",
     },
-    { url: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg" },
     {
-      url: "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",
+      url:
+        "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",
       caption: "Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
     },
     {
@@ -195,9 +224,13 @@ export const UnitPanel = {
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
   assets: [
-    { url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg" },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+    },
   ],
-  logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
+  logo:
+    "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
   link: {
     text: "",
     url: "http://artsy.net",
@@ -209,10 +242,15 @@ export const UnitPanelVideo = {
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
   assets: [
-    { url: 'https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4' }
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4",
+    },
   ],
-  cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
-  logo: "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
+  cover_image_url:
+    "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+  logo:
+    "https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo_square_white_transparent.png",
   link: {
     text: "",
     url: "http://artsy.net",
@@ -242,7 +280,8 @@ export const Embeds = [
   {
     mobile_height: 1300,
     height: 1000,
-    url: "https://artsy-vanity-files-production.s3.amazonaws.com/documents/1parrasch.html",
+    url:
+      "https://artsy-vanity-files-production.s3.amazonaws.com/documents/1parrasch.html",
     layout: "overflow",
     type: "embed",
   },
@@ -251,35 +290,46 @@ export const Embeds = [
 export const HeroSections = [
   {
     type: "text",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
-    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg",
+    deck:
+      "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
     type: "split",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
-    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    deck:
+      "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
     type: "fullscreen",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
-    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ZR0wtJhg5Nez7Vm8uCP8Nw%2FDSC_0720-Edit-2.jpg",
+    deck:
+      "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
   {
     type: "split",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
   },
   {
     type: "fullscreen",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
   },
   {
     type: "text",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
   },
   {
     type: "basic",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
-    deck: "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    deck:
+      "Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.",
   },
 ]
 
@@ -290,7 +340,8 @@ export const Images = [
     slug: "fernando-botero-nude-on-the-beach",
     date: "2000",
     title: "Nude on the Beach",
-    image: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+    image:
+      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
     partner: {
       name: "Gary Nader",
       slug: "gary-nader",
@@ -307,10 +358,11 @@ export const Images = [
     },
     width: 1152,
     height: 826,
-    credit: "Courtesy of Gary Nader"
+    credit: "Courtesy of Gary Nader",
   },
   {
-    url: "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/co8j2xq40ROMyBrJQm_4eQ%2FDafenOilPaintingVillage_AK03.jpg",
     type: "image",
     width: 900,
     height: 1200,
@@ -318,18 +370,21 @@ export const Images = [
     setTitle: "New York City",
   },
   {
-    url: "https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg",
+    url:
+      "https://d32dm0rphc51dk.cloudfront.net/CpHY-DRr7KW0HGXLslCXHw/larger.jpg",
     type: "image",
     width: 816,
     height: 1024,
-    caption: "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+    caption:
+      "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
     setTitle: "New York City",
   },
 ]
 
 export const ImagesNarrow = [
   {
-    url: "https://artsy-media-uploads.s3.amazonaws.com/fUb8nBvTw5TZ3ZbU6WYbQQ%2Fsequence4c+copy.jpg",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/fUb8nBvTw5TZ3ZbU6WYbQQ%2Fsequence4c+copy.jpg",
     type: "image",
     width: 254,
     height: 1200,
@@ -337,7 +392,8 @@ export const ImagesNarrow = [
       "<p>Louise Bourgeois, <em>The Sky’s the Limit</em>, 1989–2003. The Museum of Modern Art, New York. © 2017 The Easton Foundation/Licensed by VAGA, NY. Courtesy of the Museum of Modern Art.</p>",
   },
   {
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z2c9GQ8P69QjfW6SPXRK1Q%2Fskyscraper+copy.jpg",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z2c9GQ8P69QjfW6SPXRK1Q%2Fskyscraper+copy.jpg",
     type: "image",
     width: 268,
     height: 1200,
@@ -381,14 +437,18 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
 
 export const Media = [
   {
-    url: "https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4",
+    url:
+      "https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4",
     duration: 10948,
     release_date: "2017-08-28T20:38:05.709Z",
     published: true,
-    cover_image_url: "https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg",
-    description: "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-    credits: "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>"
-  }
+    cover_image_url:
+      "https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg",
+    description:
+      "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+    credits:
+      "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>",
+  },
 ]
 
 export const RelatedPanel = [
@@ -399,13 +459,17 @@ export const RelatedPanel = [
     slug: "artsy-editorial-15-top-art-schools-united-states",
   },
   {
-    thumbnail_title: "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
-    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
-    slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
+    thumbnail_title:
+      "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
+    slug:
+      "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
   },
   {
     thumbnail_title: "French Art History in a Nutshell",
-    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
   },
 ]
@@ -422,9 +486,12 @@ export const RelatedCanvas = [
     published_at: "2017-05-19T13:09:18.567Z",
   },
   {
-    thumbnail_title: "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
-    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
-    slug: "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
+    thumbnail_title:
+      "Four Years after Walter De Maria’s Death, His Final Work Is Complete",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/6IqxBTQCkExip2auQ7ZWCA%2FDEMAR-2011.0006-B.jpg",
+    slug:
+      "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
     authors: [{ name: "Halley Johnson" }],
     // Deprecated
     contributing_authors: [{ name: "Casey Lesser" }],
@@ -432,7 +499,8 @@ export const RelatedCanvas = [
   },
   {
     thumbnail_title: "French Art History in a Nutshell",
-    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
     authors: [{ name: "Casey Lesser" }],
     // Deprecated
@@ -441,7 +509,8 @@ export const RelatedCanvas = [
   },
   {
     thumbnail_title: "Miami Artists and Museums Brace for Hurricane Irma",
-    thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/jAu4NaKnr_m53OnnMaDe_w%2Fmag.jpg",
+    thumbnail_image:
+      "https://artsy-media-uploads.s3.amazonaws.com/jAu4NaKnr_m53OnnMaDe_w%2Fmag.jpg",
     slug: "artsy-editorial-miami-artists-museums-brace-hurricane-irma",
     authors: [{ name: "Owen Dodd" }],
     published_at: "2017-05-19T13:09:18.567Z",
@@ -450,24 +519,29 @@ export const RelatedCanvas = [
 
 export const Sponsor = {
   sponsor: {
-    partner_condensed_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
-    partner_light_logo: 'https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png',
-    partner_dark_logo: 'https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png',
-    partner_logo_link: 'http://artsy.net'
-  }
+    partner_condensed_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png",
+    partner_light_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png",
+    partner_dark_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png",
+    partner_logo_link: "http://artsy.net",
+  },
 }
 
 export const Videos = [
   {
     url: "https://www.youtube.com/watch?v=PXi7Kjlsz9A",
     caption: "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
-    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg",
+    cover_image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/IB6epb5L_l0rm9btaDsY7Q%2F14183_MDP_Evening_240.jpg",
   },
   {
     url: "https://vimeo.com/191988155",
     caption:
       "<p>2016 was a memorable year for the world, and art along with it. Powered by data culled from Artsy as well as UBS’s Planet Art app, “The Year in Art 2016” will explore how the creative community responded to the cultural shifts and tribulations this year has seen—from the destruction of Palmyra to the proliferation of Virtual Reality to the U.S. election.</p>",
-    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+    cover_image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
   },
   {
     url: "https://vimeo.com/191988155",
