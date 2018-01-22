@@ -14,6 +14,7 @@ const Link = styled.a`
   ${fonts.primary.style};
   &:hover {
     background-color: ${Colors.gray};
+    cursor: pointer;
   }
 `
 
