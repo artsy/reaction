@@ -1,3 +1,4 @@
+import { throttle } from "lodash"
 import React from "react"
 import styled from "styled-components"
 
@@ -23,11 +24,13 @@ const OnboardingSearchBox = styled.div`
 interface State {
   inputText: string
   followCount: number
+  inputTextQuery: string
 }
 
 export default class Artists extends React.Component<StepProps, State> {
   state = {
     inputText: "",
+    inputTextQuery: "",
     followCount: 0,
   }
 
@@ -39,13 +42,30 @@ export default class Artists extends React.Component<StepProps, State> {
 
   submit() {
     const increaseBy = this.state.followCount >= 4 ? 2 : 1
-
     this.props.onNextButtonPressed(increaseBy)
   }
 
-  searchTextChanged(e) {
+  componentDidMount() {
+    this.throttledTextChange = throttle(this.throttledTextChange, 500, {
+      leading: true,
+    })
+  }
+
+  searchTextChanged = e => {
     const updatedInputText = e.target.value
     this.setState({ inputText: updatedInputText })
+    this.throttledTextChange(updatedInputText)
+  }
+
+  throttledTextChange = inputText => {
+    this.setState({ inputTextQuery: inputText })
+  }
+
+  clearSearch(e) {
+    this.setState({
+      inputText: "",
+      inputTextQuery: "",
+    })
   }
 
   render() {
@@ -68,7 +88,7 @@ export default class Artists extends React.Component<StepProps, State> {
           />
           <div style={{ marginBottom: "35px" }} />
           <ArtistList
-            searchQuery={this.state.inputText}
+            searchQuery={this.state.inputTextQuery}
             updateFollowCount={this.updateFollowCount.bind(this)}
           />
         </OnboardingSearchBox>

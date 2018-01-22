@@ -1,3 +1,4 @@
+import { throttle } from "lodash"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -23,11 +24,13 @@ const OnboardingSearchBox = styled.div`
 interface State {
   inputText: string
   followCount: number
+  inputTextQuery: string
 }
 
 export default class Genes extends React.Component<StepProps, State> {
   state = {
     inputText: "",
+    inputTextQuery: "",
     followCount: 0,
   }
 
@@ -35,13 +38,27 @@ export default class Genes extends React.Component<StepProps, State> {
     this.setState({ followCount: count })
   }
 
-  searchTextChanged(e) {
+  componentDidMount() {
+    this.throttledTextChange = throttle(this.throttledTextChange, 500, {
+      leading: true,
+    })
+  }
+
+  searchTextChanged = e => {
     const updatedInputText = e.target.value
     this.setState({ inputText: updatedInputText })
+    this.throttledTextChange(updatedInputText)
+  }
+
+  throttledTextChange = inputText => {
+    this.setState({ inputTextQuery: inputText })
   }
 
   clearSearch(e) {
-    this.setState({ inputText: "" })
+    this.setState({
+      inputText: "",
+      inputTextQuery: "",
+    })
   }
 
   clickedNext() {
@@ -53,7 +70,9 @@ export default class Genes extends React.Component<StepProps, State> {
       <Layout
         title="Follow art categories that interest you most"
         subtitle="Follow one or more"
-        onNextButtonPressed={this.state.followCount > 0 ? this.clickedNext.bind(this) : null}
+        onNextButtonPressed={
+          this.state.followCount > 0 ? this.clickedNext.bind(this) : null
+        }
       >
         <OnboardingSearchBox>
           <Input
@@ -61,18 +80,27 @@ export default class Genes extends React.Component<StepProps, State> {
             leftView={<Icon name="search" color={Colors.graySemibold} />}
             rightView={
               this.state.inputText.length ? (
-                <Icon name="close" color={Colors.graySemibold} onClick={this.clearSearch.bind(this)} />
+                <Icon
+                  name="close"
+                  color={Colors.graySemibold}
+                  onClick={this.clearSearch.bind(this)}
+                />
               ) : null
             }
             block
-            onInput={this.searchTextChanged.bind(this)}
-            onPaste={this.searchTextChanged.bind(this)}
-            onCut={this.searchTextChanged.bind(this)}
+            onInput={this.searchTextChanged}
+            onPaste={this.searchTextChanged}
+            onCut={this.searchTextChanged}
             value={this.state.inputText}
             autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
-          {<GeneList searchQuery={this.state.inputText} updateFollowCount={this.updateFollowCount.bind(this)} />}
+          {
+            <GeneList
+              searchQuery={this.state.inputTextQuery}
+              updateFollowCount={this.updateFollowCount.bind(this)}
+            />
+          }
         </OnboardingSearchBox>
       </Layout>
     )
