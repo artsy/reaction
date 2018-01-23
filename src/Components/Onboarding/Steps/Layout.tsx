@@ -23,6 +23,7 @@ const Container = styled.div`
 
 const MainTitle = styled(StyledTitle) `
   text-align: center;
+  line-height: normal;
   ${media.sm`
     text-align: left;
   `};
