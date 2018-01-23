@@ -1,20 +1,20 @@
 import * as React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 
 import Colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
+import CircleIcon from "../CircleIcon";
 import Icon from "../Icon"
 
-const anchor: StyledFunction<React.HTMLProps<HTMLAnchorElement>> = styled.a
-const Link = anchor`
+const Link = styled.a`
   display: flex;
   font-size: 14px;
   color: black;
   text-decoration: none;
-  ${fonts.primary.style}
-  border-top: 1px solid ${Colors.grayRegular};
+  ${fonts.primary.style};
   &:hover {
     background-color: ${Colors.gray};
+    cursor: pointer;
   }
 `
 
@@ -33,6 +33,17 @@ const Col = styled.div`
   align-items: center;
 `
 
+const CircleIconContainer = styled.div`
+  width: 50px;
+  text-align: center;
+`
+
+export const LinkContainer = styled.div`
+  border-top: 1px solid ${Colors.grayRegular};
+  border-bottom: 1px solid ${Colors.grayRegular};
+  margin-top: -1px;
+`
+
 interface Props extends React.HTMLProps<HTMLAnchorElement> {
   item?: any
   id: string
@@ -42,10 +53,27 @@ interface Props extends React.HTMLProps<HTMLAnchorElement> {
   image_url: string
 }
 
-export default class ItemLink extends React.Component<Props, null> {
+interface State {
+  selected: boolean
+}
+
+export default class ItemLink extends React.Component<Props, State> {
+  constructor(props, state) {
+    super(props, state)
+
+    this.state = {
+      selected: false,
+    }
+  }
+
+  onClick(e) {
+    this.props.onClick(e)
+    this.setState({ selected: true })
+  }
+
   render() {
     return (
-      <Link onClick={this.props.onClick}>
+      <Link onClick={this.onClick.bind(this)}>
         <Col>
           {
             <Avatar
@@ -57,7 +85,13 @@ export default class ItemLink extends React.Component<Props, null> {
         </Col>
         <FullWidthCol>{this.props.name}</FullWidthCol>
         <Col>
-          <Icon name="follow-circle" color="black" fontSize="39px" />
+          {
+            this.state.selected ?
+              <Icon name="follow-circle.is-following" color="black" fontSize="39px" /> :
+              <CircleIconContainer>
+                <CircleIcon name="close" color="black" fontSize="21px" style={{ transform: 'rotate(45deg)' }} />
+              </CircleIconContainer>
+          }
         </Col>
       </Link>
     )

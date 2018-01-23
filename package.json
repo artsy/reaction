@@ -108,6 +108,7 @@
     "numeral": "^2.0.4",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
+    "react-css-transition-replace": "^3.0.2",
     "react-lines-ellipsis": "^0.8.0",
     "react-markdown": "^2.5.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.3.0-artsy/react-relay-1.3.0-artsy.1.tgz",

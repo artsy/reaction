@@ -2,8 +2,9 @@ import * as React from "react"
 import { commitMutation, createFragmentContainer, graphql, QueryRenderer, RelayProp } from "react-relay"
 
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
-import ItemLink from "../../ItemLink"
+import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
 export interface Props extends FollowProps {
@@ -99,15 +100,18 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
   render() {
     const artistItems = this.props.viewer.match_artist.map((artist, index) => (
-      <ItemLink
-        href="#"
-        item={artist}
-        key={index}
-        id={artist.id}
-        name={artist.name}
-        image_url={artist.image && artist.image.cropped.url}
-        onClick={() => this.onFollowedArtist(artist)}
-      />
+      <LinkContainer>
+        <ReplaceTransition key={index} transitionEnterTimeout={1000} transitionLeaveTimeout={400}>
+          <ItemLink
+            href="#"
+            item={artist}
+            key={artist.id}
+            id={artist.id}
+            name={artist.name}
+            image_url={artist.image && artist.image.cropped.url}
+            onClick={() => this.onFollowedArtist(artist)} />
+        </ReplaceTransition>
+      </LinkContainer>
     ))
 
     return <div>{artistItems}</div>

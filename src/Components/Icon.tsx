@@ -30,4 +30,5 @@ export default styled(Icon)`
   font-size: ${props => props.fontSize || "24px"};
   margin: 0 5px;
   display: inline-block;
+  letter-spacing: 0px;
 `
