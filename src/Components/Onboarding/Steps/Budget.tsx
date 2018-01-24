@@ -50,7 +50,9 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
 
     commitMutation(this.props.relayEnvironment, {
       mutation: graphql`
-        mutation BudgetUpdateMyUserProfileMutation($input: UpdateMyProfileInput!) {
+        mutation BudgetUpdateMyUserProfileMutation(
+          $input: UpdateMyProfileInput!
+        ) {
           updateMyUserProfile(input: $input) {
             user {
               name
@@ -65,6 +67,10 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
         },
       },
     })
+
+    if (this.props.redirectTo) {
+      window.location.href = this.props.redirectTo
+    }
   }
 
   render() {

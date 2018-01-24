@@ -12,7 +12,10 @@ storiesOf("Onboarding", module).add("Wizard", () => {
   return (
     <div>
       <ContextProvider>
-        <Wizard stepComponents={[CollectorIntent, Artists, Genes, Budget]} />
+        <Wizard
+          stepComponents={[CollectorIntent, Artists, Genes, Budget]}
+          redirectTo={"/"}
+        />
       </ContextProvider>
     </div>
   )

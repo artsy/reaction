@@ -4,6 +4,7 @@ import { StepProps } from "./Types"
 
 interface Props {
   stepComponents: Array<React.ComponentClass<StepProps>>
+  redirectTo?: string
 }
 
 interface State {
@@ -28,7 +29,12 @@ class Wizard extends React.Component<Props, State> {
     }
 
     const CurrentStep = this.props.stepComponents[currentStep]
-    return <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
+    return (
+      <CurrentStep
+        onNextButtonPressed={this.onNextButtonPressed.bind(this)}
+        redirectTo={this.props.redirectTo}
+      />
+    )
   }
 
   onNextButtonPressed(increaseBy = 1) {

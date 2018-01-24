@@ -3,6 +3,7 @@
  */
 export interface StepProps {
   onNextButtonPressed: (increaseBy?) => void
+  redirectTo?: string
 }
 
 export interface FollowProps {

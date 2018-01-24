@@ -21,17 +21,18 @@ const Container = styled.div`
   `};
 `
 
-const MainTitle = styled(StyledTitle) `
+const MainTitle = styled(StyledTitle)`
   text-align: center;
   line-height: normal;
   ${media.sm`
     text-align: left;
   `};
 `
-const Subtitle = styled(StyledTitle) `
+const Subtitle = styled(StyledTitle)`
   color: ${Colors.grayDark};
   margin-bottom: 100px;
   text-align: center;
+  line-height: normal;
   ${media.sm`
     text-align: left;
     margin-bottom: 15px;
@@ -39,7 +40,7 @@ const Subtitle = styled(StyledTitle) `
   `};
 `
 
-const ButtonContainer = styled(Button) `
+const ButtonContainer = styled(Button)`
   margin: 0 auto 50px;
   display: block;
   width: 250px;
@@ -56,7 +57,10 @@ export class Layout extends React.Component<Props, null> {
         <MainTitle titleSize="xlarge">{this.props.title} </MainTitle>
         <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
         <div>{this.props.children}</div>
-        <ButtonContainer disabled={disabled} onClick={this.props.onNextButtonPressed}>
+        <ButtonContainer
+          disabled={disabled}
+          onClick={this.props.onNextButtonPressed}
+        >
           Next
         </ButtonContainer>
       </Container>
