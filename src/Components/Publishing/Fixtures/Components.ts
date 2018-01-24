@@ -1,94 +1,98 @@
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 
-export const Artworks = [
-  {
-    type: "artwork",
-    id: "589a6291275b2410d1beb6a5",
-    slug: "fernando-botero-nude-on-the-beach",
-    date: "",
-    title: "Nude on the Beach",
-    image:
-      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
-    partner: {
-      name: "Gary Nader",
-    },
-    artist: {
+export const ArtworkMissingInfo = {
+  type: "artwork",
+  id: "589a6291275b2410d1beb6a5",
+  slug: "fernando-botero-nude-on-the-beach",
+  title: "",
+  image:
+    "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+  partner: {},
+  artists: [],
+  width: 1152,
+  height: 826,
+}
+
+export const ArtworkMultipleArtists = {
+  type: "artwork",
+  id: "589a6291275b2410d1beb6a5",
+  slug: "fernando-botero-nude-on-the-beach",
+  date: "2000",
+  title: "Nude on the Beach",
+  image:
+    "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+  partner: {
+    name: "Gary Nader",
+    slug: "gary-nader",
+  },
+  artists: [
+    {
       name: "Fernando Botero",
+      slug: "fernando-botero",
     },
-    width: 1152,
-    height: 826,
-    credit: "Courtesy of Gary Nader",
+    {
+      name: "Frida Kahlo",
+      slug: "frida-kahlo",
+    },
+  ],
+  width: 1152,
+  height: 826,
+  credit: "Courtesy of Gary Nader",
+}
+
+export const ArtworkLongInfo = {
+  type: "artwork",
+  id: "596aa2851a1e864d5eea6681",
+  slug: "matt-devine-brass-tax",
+  date: "2000",
+  title:
+    "Fifty Abstract Pictures Which As Seen From Two Yards Change Into Three Lenins Masquerading As Chinese And As Seen From Six Yards Appear As The Head Of A Royal Bengal Tiger",
+  image:
+    "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+  partner: {
+    name: "Joanne Artman Gallery and Gagosian Gallery",
+    slug: "joanne-artman-gallery",
   },
-  {
-    type: "artwork",
-    id: "589a6291275b2410d1beb6a5",
-    slug: "fernando-botero-nude-on-the-beach",
-    date: "2000",
-    title: "Nude on the Beach",
-    image:
-      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
-    partner: {
-      name: "Gary Nader",
-      slug: "gary-nader",
-    },
-    artists: [
-      {
-        name: "Fernando Botero",
-        slug: "fernando-botero",
-      },
-      {
-        name: "Frida Kahlo",
-        slug: "frida-kahlo",
-      },
-    ],
-    width: 1152,
-    height: 826,
-    credit: "Courtesy of Gary Nader",
-  },
-  {
-    type: "artwork",
-    id: "589a6291275b2410d1beb6a5",
-    slug: "fernando-botero-nude-on-the-beach",
-    title: "",
-    image:
-      "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
-    partner: {
-      name: "Gary Nader",
-    },
-    artist: {
-      name: "Fernando Botero",
-    },
-    width: 1152,
-    height: 826,
-  },
-  {
-    type: "artwork",
-    id: "596aa2851a1e864d5eea6681",
-    slug: "matt-devine-brass-tax",
-    date: "2000",
-    title:
-      "Fifty Abstract Pictures Which As Seen From Two Yards Change Into Three Lenins Masquerading As Chinese And As Seen From Six Yards Appear As The Head Of A Royal Bengal Tiger",
-    image:
-      "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
-    partner: {
-      name: "Joanne Artman Gallery and Gagosian Gallery",
-      slug: "joanne-artman-gallery",
-    },
-    artists: [
-      {
-        name: "Matt Devine",
-        slug: "matt-devine",
-      },
-    ],
-    artist: {
+  artists: [
+    {
       name: "Matt Devine",
       slug: "matt-devine",
     },
-    width: 1500,
-    height: 2000,
-    credit:
-      "Courtesy of The Metropolitan Museum of Art, Gagosian Gallery, and the artist.",
+  ],
+  artist: {
+    name: "Matt Devine",
+    slug: "matt-devine",
   },
+  width: 1500,
+  height: 2000,
+  credit:
+    "Courtesy of The Metropolitan Museum of Art, Gagosian Gallery, and the artist.",
+}
+
+export const ArtworkRegular = {
+  type: "artwork",
+  id: "589a6291275b2410d1beb6a5",
+  slug: "fernando-botero-nude-on-the-beach",
+  date: "2000",
+  title: "Nude on the Beach",
+  image:
+    "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+  partner: {
+    name: "Gary Nader",
+  },
+  artist: {
+    name: "Fernando Botero",
+  },
+  width: 1152,
+  height: 826,
+  credit: "Courtesy of Gary Nader",
+}
+
+export const Artworks = [
+  ArtworkRegular,
+  ArtworkMultipleArtists,
+  ArtworkMissingInfo,
+  ArtworkLongInfo,
 ]
 
 export const Authors = [

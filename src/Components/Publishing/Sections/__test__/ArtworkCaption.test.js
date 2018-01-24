@@ -3,32 +3,36 @@ import _ from "lodash"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Artworks } from "../../Fixtures/Components"
+import {
+  ArtworkRegular,
+  ArtworkMissingInfo,
+  ArtworkMultipleArtists,
+} from "../../Fixtures/Components"
 import { ArtworkCaption } from "../ArtworkCaption"
 
 describe("ArtworkCaption", () => {
   const getWrapper = (props = {}) => {
-    return mount(<ArtworkCaption artwork={props.artwork || Artworks[0]} />)
+    return mount(<ArtworkCaption artwork={props.artwork || ArtworkRegular} />)
   }
 
   describe("snapshot", () => {
     it("renders a fullscreen caption properly", () => {
       const caption = renderer
-        .create(<ArtworkCaption artwork={Artworks[0]} isFullscreenCaption />)
+        .create(<ArtworkCaption artwork={ArtworkRegular} isFullscreenCaption />)
         .toJSON()
       expect(caption).toMatchSnapshot()
     })
 
     it("renders a classic caption properly", () => {
       const caption = renderer
-        .create(<ArtworkCaption artwork={Artworks[0]} layout="classic" />)
+        .create(<ArtworkCaption artwork={ArtworkRegular} layout="classic" />)
         .toJSON()
       expect(caption).toMatchSnapshot()
     })
 
     it("renders a standard caption properly", () => {
       const caption = renderer
-        .create(<ArtworkCaption artwork={Artworks[0]} layout="standard" />)
+        .create(<ArtworkCaption artwork={ArtworkRegular} layout="standard" />)
         .toJSON()
       expect(caption).toMatchSnapshot()
     })
@@ -37,8 +41,8 @@ describe("ArtworkCaption", () => {
   describe("#joinParts", () => {
     it("joins zero items", () => {
       const component = getWrapper()
-      const joined = component.instance().joinParts(["Title"])
-      expect(joined.toString()).toEqual("Title")
+      const joined = component.instance().joinParts([])
+      expect(joined.toString()).toEqual("")
     })
 
     it("joins one item", () => {
@@ -52,19 +56,25 @@ describe("ArtworkCaption", () => {
       const joined = component.instance().joinParts(["Title", "Date"])
       expect(joined.join("")).toEqual("Title, Date")
     })
+
+    it("joins three items into a nested array", () => {
+      const component = getWrapper()
+      const joined = component
+        .instance()
+        .joinParts(["Title", "Date", "Partner"])
+      expect(joined.length).toEqual(3)
+      expect(joined[0][0]).toEqual("Title")
+      expect(joined[0][2]).toEqual("Date")
+      expect(joined[2]).toEqual("Partner")
+    })
   })
 
   describe("render methods", () => {
     it("can render with missing information", () => {
       const component = getWrapper({
-        artwork: {
-          title: "",
-          date: "",
-          artists: [],
-          partner: {},
-        },
+        artwork: ArtworkMissingInfo,
       })
-      console.log(component.html())
+      expect(component.text().length).toBe(0)
     })
 
     it("renders a single artist", () => {
@@ -74,7 +84,7 @@ describe("ArtworkCaption", () => {
 
     it("renders artists", () => {
       const component = getWrapper({
-        artwork: _.extend({}, Artworks[0], {
+        artwork: _.extend({}, ArtworkMultipleArtists, {
           artists: [{ name: "Andy Warhol" }, { name: "Botero" }],
         }),
       })
@@ -85,9 +95,7 @@ describe("ArtworkCaption", () => {
 
     it("renders title + date", () => {
       const component = getWrapper({
-        artwork: _.extend({}, Artworks[0], {
-          date: "2000",
-        }),
+        artwork: ArtworkRegular,
       })
       expect(component.html()).toMatch(
         '<span class="title">Nude on the Beach</span>, <span class="date">2000</span></span>'

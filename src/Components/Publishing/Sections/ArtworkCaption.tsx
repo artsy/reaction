@@ -23,13 +23,16 @@ interface StyledArtworkCaptionProps {
 
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinParts(children, delimiter = ", ") {
-    const joined = _.compact(children).reduce((prev, curr) => {
-      console.log(prev)
-      console.log(curr)
-      return [prev, delimiter, curr]
-    })
-    // console.log(joined)
-    return joined
+    const compacted = _.compact(children)
+
+    if (compacted.length) {
+      const reduced = compacted.reduce((prev, curr) => {
+        return [prev, delimiter, curr]
+      })
+      return reduced
+    } else {
+      return []
+    }
   }
 
   renderArtists() {
@@ -74,7 +77,6 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   renderTitleDate() {
     const children = [this.renderTitle(), this.renderDate()]
-    console.log(children)
 
     const titleDate = this.joinParts(children)
     return titleDate
