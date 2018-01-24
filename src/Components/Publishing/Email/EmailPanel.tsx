@@ -2,6 +2,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import request from "superagent"
 import Colors from "../../../Assets/Colors"
+import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
@@ -26,7 +27,12 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-@track()
+@track(
+  { page: "Article" },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class EmailPanel extends React.Component<
   EmailPanelProps,
   EmailPanelState
@@ -57,8 +63,8 @@ export class EmailPanel extends React.Component<
           } else {
             this.flashMessage("Thank you!", false, true)
             this.props.tracking.trackEvent({
-              action: "Click",
-              label: "Editorial signup",
+              action: "Sign up for editorial email",
+              context_type: "article_fixed",
             })
           }
         })
