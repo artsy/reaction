@@ -37,20 +37,15 @@ export class EmailPanel extends React.Component<
   EmailPanelProps,
   EmailPanelState
 > {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: "",
-      error: false,
-      submitted: false,
-      disabled: false,
-      message: "",
-    }
-
-    this.onClick = this.onClick.bind(this)
+  state = {
+    value: "",
+    error: false,
+    submitted: false,
+    disabled: false,
+    message: "",
   }
 
-  onClick() {
+  onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(EMAIL_REGEX)) {
       request
@@ -127,7 +122,8 @@ const EmailPanelContainer = styled.div`
   width: 100%;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")};
+  margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;
