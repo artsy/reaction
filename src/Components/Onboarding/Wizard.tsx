@@ -4,6 +4,7 @@ import { StepProps } from "./Types"
 
 interface Props {
   stepComponents: Array<React.ComponentClass<StepProps>>
+  redirectTo?: string
 }
 
 interface State {
@@ -12,6 +13,10 @@ interface State {
 }
 
 class Wizard extends React.Component<Props, State> {
+  static defaultProps = {
+    redirectTo: "/",
+  }
+
   constructor(props, state) {
     super(props, state)
 
@@ -23,16 +28,20 @@ class Wizard extends React.Component<Props, State> {
 
   getCurrentStep(): JSX.Element | null {
     const currentStep = this.state.currentStep
+
     if (currentStep > this.props.stepComponents.length - 1) {
       return null
     }
 
     const CurrentStep = this.props.stepComponents[currentStep]
-    return <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
+    return (
+      <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
+    )
   }
 
   onNextButtonPressed(increaseBy = 1) {
-    if (this.props.stepComponents.length <= this.state.currentStep) {
+    if (this.state.currentStep >= this.props.stepComponents.length - 1) {
+      window.location.href = this.props.redirectTo
       return
     }
 

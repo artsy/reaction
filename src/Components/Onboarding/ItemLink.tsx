@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
-import CircleIcon from "../CircleIcon";
+import CircleIcon from "../CircleIcon"
 import Icon from "../Icon"
 
 const Link = styled.a`
@@ -19,7 +19,7 @@ const Link = styled.a`
 `
 
 const Avatar = styled.img`
-  padding: 10px 15px 10px 10px;
+  margin: 10px 15px 10px 10px;
 `
 
 const FullWidthCol = styled.div`
@@ -77,7 +77,11 @@ export default class ItemLink extends React.Component<Props, State> {
         <Col>
           {
             <Avatar
-              src={this.props.image_url ? this.props.image_url : "https://www.artsy.net/images/icon-70.png"}
+              src={
+                this.props.image_url
+                  ? this.props.image_url
+                  : "https://www.artsy.net/images/icon-70.png"
+              }
               width={50}
               height={50}
             />
@@ -85,13 +89,22 @@ export default class ItemLink extends React.Component<Props, State> {
         </Col>
         <FullWidthCol>{this.props.name}</FullWidthCol>
         <Col>
-          {
-            this.state.selected ?
-              <Icon name="follow-circle.is-following" color="black" fontSize="39px" /> :
-              <CircleIconContainer>
-                <CircleIcon name="close" color="black" fontSize="21px" style={{ transform: 'rotate(45deg)' }} />
-              </CircleIconContainer>
-          }
+          {this.state.selected ? (
+            <Icon
+              name="follow-circle.is-following"
+              color="black"
+              fontSize="39px"
+            />
+          ) : (
+            <CircleIconContainer>
+              <CircleIcon
+                name="close"
+                color="black"
+                fontSize="21px"
+                style={{ transform: "rotate(45deg)" }}
+              />
+            </CircleIconContainer>
+          )}
         </Col>
       </Link>
     )
