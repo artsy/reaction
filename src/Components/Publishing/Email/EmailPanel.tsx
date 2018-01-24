@@ -2,6 +2,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import request from "superagent"
 import Colors from "../../../Assets/Colors"
+import { track } from "../../../Utils/track"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
@@ -9,6 +10,7 @@ import { Fonts } from "../Fonts"
 
 interface EmailPanelProps {
   signupUrl: string
+  tracking?: any
 }
 
 interface EmailPanelState {
@@ -24,7 +26,11 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState> {
+@track()
+export class EmailPanel extends React.Component<
+  EmailPanelProps,
+  EmailPanelState
+> {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,18 +40,28 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
       disabled: false,
       message: "",
     }
+
+    this.onClick = this.onClick.bind(this)
   }
 
-  onClick = () => {
+  onClick() {
     this.setState({ disabled: true })
     if (this.state.value.match(EMAIL_REGEX)) {
-      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
-        if (err) {
-          this.flashMessage("Error. Please try again", true, false)
-        } else {
-          this.flashMessage("Thank you!", false, true)
-        }
-      })
+      request
+        .post(this.props.signupUrl)
+        .send({ email: this.state.value })
+        .set("accept", "json")
+        .end((err, res) => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true, false)
+          } else {
+            this.flashMessage("Thank you!", false, true)
+            this.props.tracking.trackEvent({
+              action: "Click",
+              label: "Editorial signup",
+            })
+          }
+        })
     } else {
       this.flashMessage("Invalid Email... Please try again", true, false)
     }
@@ -89,7 +105,8 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
   }
 }
 
-const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
+const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> =
+  styled.input
 const Input = input`
   ${borderedInput}
   width: 100%;
@@ -104,15 +121,14 @@ const EmailPanelContainer = styled.div`
   width: 100%;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")}
-  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")}
+  ${Fonts.avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;
