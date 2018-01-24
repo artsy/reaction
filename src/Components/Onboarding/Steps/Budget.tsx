@@ -68,9 +68,7 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
       },
     })
 
-    if (this.props.redirectTo) {
-      window.location.href = this.props.redirectTo
-    }
+    this.props.onNextButtonPressed()
   }
 
   render() {
