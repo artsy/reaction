@@ -1916,7 +1916,7 @@ type Conversation implements Node {
   initial_message: String!
 
   # This is a snippet of text from the last message.
-  last_message: String!
+  last_message: String
   last_message_at(
     convert_to_utc: Boolean
     format: String
