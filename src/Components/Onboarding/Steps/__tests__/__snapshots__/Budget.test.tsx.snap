@@ -1,0 +1,466 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Budget snapshot renders the budget step 1`] = `
+.c9 {
+  font-family: artsy-icons;
+  color: white;
+  font-size: 7.2px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+}
+
+.c8 {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-item: center;
+  -webkit-box-align-item: center;
+  -ms-flex-align-item: center;
+  align-item: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 {
+  float: right;
+  margin-right: 15px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: none;
+}
+
+.c5 {
+  display: block;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  padding: 30px 0 30px 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.c5:hover {
+  background-color: #f8f8f8;
+}
+
+.c5:hover .c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c12 {
+  background: #e5e5e5;
+  color: rgba(0,0,0,0.5);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c12:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c11 {
+  background: white;
+  color: rgba(0,0,0,0.5);
+  border: 1px solid #e5e5e5;
+}
+
+.c11:hover:not(:disabled) {
+  background: white;
+  color: #6e1fff;
+}
+
+.c2 {
+  font-size: 50px;
+  color: inherit;
+  margin: 20px 0;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+}
+
+.c0 {
+  max-width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c1 {
+  text-align: center;
+  line-height: normal;
+}
+
+.c3 {
+  color: #999999;
+  margin-bottom: 100px;
+  text-align: center;
+  line-height: normal;
+}
+
+.c10 {
+  margin: 0 auto 50px;
+  display: block;
+  width: 250px;
+}
+
+.c4 {
+  width: 450px;
+  margin: 0 auto 100px;
+}
+
+.c4:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+@media (max-width:48em) {
+  .c2 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 {
+    margin: 20px;
+  }
+}
+
+@media (max-width:48em) {
+  .c1 {
+    text-align: left;
+  }
+}
+
+@media (max-width:48em) {
+  .c3 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width:48em) {
+  .c10 {
+    width: 100%;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    color="inherit"
+  >
+    What's your budget?
+     
+  </div>
+  <div
+    className="c3 c2"
+    color="inherit"
+  >
+    Select one
+  </div>
+  <div>
+    <div
+      className="c4"
+    >
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $500
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $2,500
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $5,000
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $10,000
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $25,000
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          UNDER $50,000
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          className="c5"
+          href={undefined}
+          onClick={[Function]}
+        >
+          NO BUDGET IN MIND
+          <div
+            className="c6 c7"
+          >
+            <div
+              className="c8"
+              color="black"
+              fontSize="18px"
+              name="check"
+            >
+              <div
+                className="c9"
+                onClick={undefined}
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "margin": 0,
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button
+    className="c10 c11 c12"
+    disabled={true}
+    onClick={null}
+  >
+    <span>
+      Next
+    </span>
+  </button>
+</div>
+`;
