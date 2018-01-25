@@ -44,6 +44,9 @@ exports[`EmailSignup renders an email signup 1`] = `
 }
 
 .c3 {
+  width: 100%;
+  border-width: 1px;
+  color: black;
   padding: 10px;
   box-shadow: none;
   font-size: 17px;
@@ -56,9 +59,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   border: 2px solid #e5e5e5;
   -webkit-transition: border-color .25s;
   transition: border-color .25s;
-  width: 100%;
-  border-width: 1px;
-  color: black;
 }
 
 .c3:focus,

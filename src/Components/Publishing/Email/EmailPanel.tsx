@@ -1,7 +1,9 @@
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import request from "superagent"
 import Colors from "../../../Assets/Colors"
+import Events from "../../../Utils/Events"
+import { track } from "../../../Utils/track"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
@@ -9,6 +11,7 @@ import { Fonts } from "../Fonts"
 
 interface EmailPanelProps {
   signupUrl: string
+  tracking?: any
 }
 
 interface EmailPanelState {
@@ -19,33 +22,47 @@ interface EmailPanelState {
   message: string
 }
 
-interface InputProps {
+interface InputProps extends React.HTMLProps<HTMLInputElement> {
   isError: boolean
   isReadOnly: boolean
 }
 
-export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: "",
-      error: false,
-      submitted: false,
-      disabled: false,
-      message: "",
-    }
+@track(
+  { page: "Article" },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
+export class EmailPanel extends React.Component<
+  EmailPanelProps,
+  EmailPanelState
+> {
+  state = {
+    value: "",
+    error: false,
+    submitted: false,
+    disabled: false,
+    message: "",
   }
 
   onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(EMAIL_REGEX)) {
-      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
-        if (err) {
-          this.flashMessage("Error. Please try again", true, false)
-        } else {
-          this.flashMessage("Thank you!", false, true)
-        }
-      })
+      request
+        .post(this.props.signupUrl)
+        .send({ email: this.state.value })
+        .set("accept", "json")
+        .end((err, res) => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true, false)
+          } else {
+            this.flashMessage("Thank you!", false, true)
+            this.props.tracking.trackEvent({
+              action: "Sign up for editorial email",
+              context_type: "article_fixed",
+            })
+          }
+        })
     } else {
       this.flashMessage("Invalid Email... Please try again", true, false)
     }
@@ -89,13 +106,12 @@ export class EmailPanel extends React.Component<EmailPanelProps, EmailPanelState
   }
 }
 
-const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
-const Input = input`
-  ${borderedInput}
+const Input = styled.input`
   width: 100%;
   border-width: 1px;
-  color: ${props => (props.isError ? Colors.redMedium : "black")};
-  ${props => (props.isReadOnly ? Fonts.unica("s16") : "")}
+  color: ${(props: InputProps) => (props.isError ? Colors.redMedium : "black")};
+  ${(props: InputProps) => (props.isReadOnly ? Fonts.unica("s16") : "")};
+  ${borderedInput};
 `
 const EmailPanelContainer = styled.div`
   display: flex;
@@ -104,7 +120,7 @@ const EmailPanelContainer = styled.div`
   width: 100%;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")}
+  ${Fonts.unica("s16", "medium")};
   margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
@@ -112,7 +128,7 @@ const StyledButton = InvertedButton.extend`
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")}
+  ${Fonts.avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;
