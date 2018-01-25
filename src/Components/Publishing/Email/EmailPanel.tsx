@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import request from "superagent"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
@@ -22,7 +22,7 @@ interface EmailPanelState {
   message: string
 }
 
-interface InputProps {
+interface InputProps extends React.HTMLProps<HTMLInputElement> {
   isError: boolean
   isReadOnly: boolean
 }
@@ -106,14 +106,12 @@ export class EmailPanel extends React.Component<
   }
 }
 
-const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> =
-  styled.input
-const Input = input`
-  ${borderedInput}
+const Input = styled.input`
   width: 100%;
   border-width: 1px;
-  color: ${props => (props.isError ? Colors.redMedium : "black")};
-  ${props => (props.isReadOnly ? Fonts.unica("s16") : "")}
+  color: ${(props: InputProps) => (props.isError ? Colors.redMedium : "black")};
+  ${(props: InputProps) => (props.isReadOnly ? Fonts.unica("s16") : "")};
+  ${borderedInput};
 `
 const EmailPanelContainer = styled.div`
   display: flex;
