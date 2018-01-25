@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Artists snapshot renders the artist step 1`] = `
+.c6 {
+  font-family: artsy-icons;
+  color: #666666;
+  font-size: 24px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+}
+
+.c7 {
+  border: 0;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  outline: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 {
+  padding: 10px;
+  box-shadow: none;
+  font-size: 17px;
+  -webkit-transition: border-color .25s;
+  transition: border-color .25s;
+  margin-right: 10px;
+  resize: none;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  border: 2px solid #e5e5e5;
+  -webkit-transition: border-color .25s;
+  transition: border-color .25s;
+  border: 0;
+  padding: 12px;
+  margin-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.c5:focus,
+.c5.focused {
+  border-color: #6e1fff;
+  outline: 0;
+}
+
+.c5:disabled {
+  border: 2px dotted #e5e5e5;
+}
+
+.c5 .border-container {
+  z-index: -1;
+  border: 2px solid #e5e5e5;
+  -webkit-transition: border-color .25s;
+  transition: border-color .25s;
+  position: absolute;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  top: 0;
+  left: 0;
+}
+
+.c5 .border-container:focus,
+.c5 .border-container.focused {
+  border-color: #6e1fff;
+  outline: 0;
+}
+
+.c5 .border-container:disabled {
+  border: 2px dotted #e5e5e5;
+}
+
+.c10 {
+  background: #e5e5e5;
+  color: rgba(0,0,0,0.5);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 13px;
+  line-height: 1;
+  outline: 0;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  margin: 10px;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c10:hover:not(:disabled) {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+.c9 {
+  background: white;
+  color: rgba(0,0,0,0.5);
+  border: 1px solid #e5e5e5;
+}
+
+.c9:hover:not(:disabled) {
+  background: white;
+  color: #6e1fff;
+}
+
+.c2 {
+  font-size: 50px;
+  color: inherit;
+  margin: 20px 0;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+}
+
+.c0 {
+  max-width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c1 {
+  text-align: center;
+  line-height: normal;
+}
+
+.c3 {
+  color: #999999;
+  margin-bottom: 100px;
+  text-align: center;
+  line-height: normal;
+}
+
+.c8 {
+  margin: 0 auto 50px;
+  display: block;
+  width: 250px;
+}
+
+.c4 {
+  width: 450px;
+  margin: 0 auto 100px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+@media (max-width:48em) {
+  .c2 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 {
+    margin: 20px;
+  }
+}
+
+@media (max-width:48em) {
+  .c1 {
+    text-align: left;
+  }
+}
+
+@media (max-width:48em) {
+  .c3 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width:48em) {
+  .c8 {
+    width: 100%;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    color="inherit"
+  >
+    Follow a few artists that interest you most
+     
+  </div>
+  <div
+    className="c3 c2"
+    color="inherit"
+  >
+    Follow one or more
+  </div>
+  <div>
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div
+          className="border-container"
+        />
+        <div
+          className="c6"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+        <input
+          className="c7"
+          onBlur={[Function]}
+          onCut={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onPaste={[Function]}
+          placeholder="Search artists..."
+          value={undefined}
+        />
+      </div>
+      <div
+        style={
+          Object {
+            "marginBottom": "35px",
+          }
+        }
+      />
+    </div>
+  </div>
+  <button
+    className="c8 c9 c10"
+    disabled={true}
+    onClick={null}
+  >
+    <span>
+      Next
+    </span>
+  </button>
+</div>
+`;
