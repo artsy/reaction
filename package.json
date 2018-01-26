@@ -44,6 +44,7 @@
   "devDependencies": {
     "@playlyfe/gql": "^2.3.2",
     "@storybook/addon-options": "^3.2.1",
+    "@storybook/addon-storyshots": "^3.3.10",
     "@storybook/react": "^3.2.12",
     "@storybook/storybook-deployer": "^2.0.0",
     "@types/enzyme": "^3.1.0",
