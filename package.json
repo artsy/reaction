@@ -145,7 +145,8 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "json"
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/*"

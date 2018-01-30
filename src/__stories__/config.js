@@ -1,7 +1,5 @@
-const {
-  configure
-} = require("@storybook/react")
-const Events = require("../Utils/Events").default
+const { configure } = require("@storybook/react")
+const Events = require("../src/Utils/Events").default
 const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
@@ -13,7 +11,6 @@ configure(loadStories, module)
 Events.onEvent(data => {
   console.log("Tracked event", data)
 })
-
 
 // TODO: Fix the below
 // setOptions({

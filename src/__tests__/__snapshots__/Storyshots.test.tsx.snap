@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Onboarding Gene Follow 1`] = `
+<div
+  className="file__Container-ho6qmu-0 cfXjzn"
+>
+  <div
+    className="file__MainTitle-ho6qmu-1 gsUDmm file__StyledTitle-s1hq9j8q-0 hMcaEt"
+    color="inherit"
+  >
+    Follow art categories that interest you most
+     
+  </div>
+  <div
+    className="file__Subtitle-ho6qmu-2 lkSUJw file__StyledTitle-s1hq9j8q-0 hMcaEt"
+    color="inherit"
+  >
+    Follow one or more
+  </div>
+  <div>
+    <div
+      className="file__OnboardingSearchBox-s13lt6s5-0 jRoskD"
+    >
+      <div
+        className="file__StyledDiv-s16xgrvd-2 juvANp"
+      >
+        <div
+          className="border-container"
+        />
+        <div
+          className="file-s11ng282-0 liYwxg"
+          onClick={undefined}
+          style={undefined}
+        >
+          
+        </div>
+        <input
+          autoFocus={true}
+          className="file__BorderlessInput-s16xgrvd-1 kMiAzl"
+          onBlur={[Function]}
+          onCut={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onPaste={[Function]}
+          placeholder="Search artists..."
+          value=""
+        />
+      </div>
+      <div
+        style={
+          Object {
+            "marginBottom": "35px",
+          }
+        }
+      />
+    </div>
+  </div>
+  <button
+    className="file__ButtonContainer-ho6qmu-3 bfbQOc file__GhostButton-s1pmsbou-0 foTNNB file__StyledButton-s369tly-0 kOZjir"
+    disabled={true}
+    onClick={null}
+  >
+    <span>
+      Next
+    </span>
+  </button>
+</div>
+`;

@@ -1,4 +1,4 @@
-import "isomorphic-fetch"
+import fetch from "isomorphic-fetch"
 import * as sharify from "sharify"
 import { NetworkError } from "./errors"
 
@@ -7,7 +7,8 @@ export function metaphysics<T>(
   user?: User,
   checkStatus: boolean = true
 ): Promise<T> {
-  return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
+  console.log(sharify)
+  return fetch("https://metaphysics-staging.artsy.net", {
     method: "POST",
     headers: !!user
       ? {
@@ -19,6 +20,7 @@ export function metaphysics<T>(
     body: JSON.stringify(payload),
   })
     .then(response => {
+      console.log(response)
       if (!checkStatus || (response.status >= 200 && response.status < 300)) {
         return response
       } else {
@@ -27,7 +29,10 @@ export function metaphysics<T>(
         throw error
       }
     })
-    .then<T>(response => response.json())
+    .then<T>(response => {
+      response.json().then(console.log)
+      return response.json()
+    })
 }
 
 export default function query<T>(query: string): Promise<T> {
