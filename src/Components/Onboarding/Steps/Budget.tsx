@@ -86,6 +86,7 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
         title="What's your budget?"
         subtitle="Select one"
         onNextButtonPressed={this.state.selection && this.submit.bind(this)}
+        isLastStep
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>

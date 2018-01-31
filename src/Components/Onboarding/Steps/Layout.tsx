@@ -10,6 +10,7 @@ interface Props {
   title: string
   subtitle: string
   onNextButtonPressed?: () => void
+  isLastStep?: boolean | null
 }
 
 const Container = styled.div`
@@ -52,6 +53,7 @@ const ButtonContainer = styled(Button)`
 export class Layout extends React.Component<Props, null> {
   render() {
     const disabled = !this.props.onNextButtonPressed
+    const buttonText = this.props.isLastStep ? "finished" : "next"
     return (
       <Container>
         <MainTitle>{this.props.title} </MainTitle>
@@ -61,7 +63,7 @@ export class Layout extends React.Component<Props, null> {
           disabled={disabled}
           onClick={this.props.onNextButtonPressed}
         >
-          Next
+          {buttonText}
         </ButtonContainer>
       </Container>
     )
