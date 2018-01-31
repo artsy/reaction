@@ -1,4 +1,4 @@
-import "isomorphic-fetch"
+import fetch from "isomorphic-fetch"
 import * as sharify from "sharify"
 import { NetworkError } from "./errors"
 
@@ -7,7 +7,7 @@ export function metaphysics<T>(
   user?: User,
   checkStatus: boolean = true
 ): Promise<T> {
-  return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
+  return fetch("https://metaphysics-staging.artsy.net", {
     method: "POST",
     headers: !!user
       ? {

@@ -44,6 +44,7 @@
   "devDependencies": {
     "@playlyfe/gql": "^2.3.2",
     "@storybook/addon-options": "^3.2.1",
+    "@storybook/addon-storyshots": "^3.3.10",
     "@storybook/react": "^3.2.12",
     "@storybook/storybook-deployer": "^2.0.0",
     "@types/enzyme": "^3.1.0",
@@ -69,8 +70,9 @@
     "babel-types": "^6.2.0",
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
-    "enzyme": "^3.1.0",
+    "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.0.1",
+    "enzyme-to-json": "^3.3.1",
     "graphql-config-parser": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -81,7 +83,7 @@
     "gulp-typescript": "^3.1.6",
     "gulp-watch": "^4.3.11",
     "husky": "^0.13.4",
-    "jest": "^21.1.1",
+    "jest": "<22",
     "jest-styled-components": "^4.9.0",
     "lint-staged": "^4.0.0",
     "prettier": "^1.7.4",
@@ -144,7 +146,8 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "json"
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/*"
@@ -152,7 +155,8 @@
     "setupFiles": [
       "raf/polyfill",
       "./src/setup_jest.ts"
-    ]
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
