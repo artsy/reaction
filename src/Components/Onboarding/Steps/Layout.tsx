@@ -54,8 +54,8 @@ export class Layout extends React.Component<Props, null> {
     const disabled = !this.props.onNextButtonPressed
     return (
       <Container>
-        <MainTitle titleSize="xlarge">{this.props.title} </MainTitle>
-        <Subtitle titleSize="xlarge">{this.props.subtitle}</Subtitle>
+        <MainTitle>{this.props.title} </MainTitle>
+        <Subtitle>{this.props.subtitle}</Subtitle>
         <div>{this.props.children}</div>
         <ButtonContainer
           disabled={disabled}
