@@ -31,7 +31,7 @@ const MainTitle = styled(StyledTitle)`
 `
 const Subtitle = styled(StyledTitle)`
   color: ${Colors.grayDark};
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   text-align: center;
   line-height: normal;
   ${media.sm`
