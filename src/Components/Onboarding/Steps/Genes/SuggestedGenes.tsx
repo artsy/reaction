@@ -115,17 +115,15 @@ class SuggestedGenesContent extends React.Component<Props, null> {
   }
 
   render() {
-    const items = this.props.suggested_genes.map((item, index) => (
-      <LinkContainer>
+    const items = this.props.suggested_genes.map(item => (
+      <LinkContainer key={item._id}>
         <ReplaceTransition
-          key={index}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={400}
         >
           <ItemLink
             href="#"
             item={item}
-            key={item.id}
             id={item.id}
             _id={item._id}
             name={item.name}
@@ -173,9 +171,6 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
       `}
       variables={{}}
       render={({ error, props }) => {
-        console.log("SuggestedGenes")
-        console.log(error)
-        console.log(props)
         if (props) {
           return (
             <SuggestedGenesContainer
@@ -183,6 +178,10 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
               updateFollowCount={updateFollowCount}
             />
           )
+        } else if (error) {
+          // TODO: Properly handle error
+          console.error(error)
+          return null
         } else {
           return null
         }
