@@ -81,7 +81,7 @@ initStoryshots({
       /**
        * Finally make the actual snapshot.
        */
-      expect(tree).toMatchSnapshot()
+      expect(tree.debug()).toMatchSnapshot()
     })
   },
 })
