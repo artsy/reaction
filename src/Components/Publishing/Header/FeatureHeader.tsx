@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
@@ -215,8 +215,6 @@ const Div = styled.div`
   height: 100%;
   box-sizing: border-box;
 `
-const DivWithProps: StyledFunction<DivProps> = Div.extend
-
 const Overlay = Div.extend`
   position: absolute;
   background-image: linear-gradient(
@@ -226,12 +224,13 @@ const Overlay = Div.extend`
   );
 `
 const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")};
   ${pMedia.sm`
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const HeaderTextContainer = Div.extend`
+const HeaderTextContainer = styled(Div)`
   margin: auto;
   .PartnerInline {
     position: absolute;
@@ -253,9 +252,9 @@ const HeaderText = Div.extend`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = DivWithProps`
+const FeatureImage = Div.extend`
   position: absolute;
-  background-image: url(${props => (props.src ? props.src : "")});
+  background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -285,7 +284,8 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${Fonts.unica("s19", "medium")} display: flex;
+  ${Fonts.unica("s19", "medium")};
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
@@ -295,7 +295,8 @@ const SubHeader = styled.div`
   `};
 `
 const Title = styled.div`
-  ${Fonts.unica("s100")} margin-bottom: 75px;
+  ${Fonts.unica("s100")};
+  margin-bottom: 75px;
   letter-spacing: -0.035em;
   ${pMedia.xl`
     ${Fonts.unica("s80")}
@@ -308,15 +309,16 @@ const Title = styled.div`
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")} line-height: 1.4em;
+  ${Fonts.unica("s16", "medium")};
+  line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const FeatureHeaderContainer = DivWithProps`
+const FeatureHeaderContainer = Div.extend`
   width: 100%;
-  height: ${props => props.height};
+  height: ${(props: DivProps) => props.height};
   position: relative;
   &[data-type="text"] {
     height: auto;
@@ -371,7 +373,7 @@ const FeatureHeaderContainer = DivWithProps`
       ${FeatureVideo} {
         width: 100%;
       }
-    `}
+    `};
   }
   &[data-type="fullscreen"] {
     ${HeaderText} {
@@ -385,7 +387,7 @@ const FeatureHeaderContainer = DivWithProps`
       ${HeaderText} {
         padding: 20px;
       }
-    `}
+    `};
   }
 `
 
