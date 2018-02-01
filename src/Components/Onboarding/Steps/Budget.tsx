@@ -26,6 +26,8 @@ interface State {
 }
 
 class Budget extends React.Component<StepProps & ContextProps, State> {
+  static slug = "budget"
+
   options = {
     "UNDER $500": 500,
     "UNDER $2,500": 2500,

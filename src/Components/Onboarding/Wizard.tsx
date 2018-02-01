@@ -1,9 +1,10 @@
 import React from "react"
 
-import { StepProps } from "./Types"
+// import { StepProps } from "./Types"
+// Array<React.ComponentClass<StepProps>>
 
 interface Props {
-  stepComponents: Array<React.ComponentClass<StepProps>>
+  stepComponents: any[]
   redirectTo?: string
 }
 
@@ -17,13 +18,9 @@ class Wizard extends React.Component<Props, State> {
     redirectTo: "/",
   }
 
-  constructor(props, state) {
-    super(props, state)
-
-    this.state = {
-      currentStep: 0,
-      nextButtonEnabled: false,
-    }
+  state = {
+    currentStep: 0,
+    nextButtonEnabled: false,
   }
 
   getCurrentStep(): JSX.Element | null {
@@ -34,19 +31,21 @@ class Wizard extends React.Component<Props, State> {
     }
 
     const CurrentStep = this.props.stepComponents[currentStep]
-    return (
-      <CurrentStep onNextButtonPressed={this.onNextButtonPressed.bind(this)} />
-    )
+    return <CurrentStep onNextButtonPressed={this.onNextButtonPressed} />
   }
 
-  onNextButtonPressed(increaseBy = 1) {
-    if (this.state.currentStep >= this.props.stepComponents.length - 1) {
-      window.location.href = this.props.redirectTo
-      return
-    }
+  onNextButtonPressed = (increaseBy = 1) => {
+    const { currentStep } = this.state
+    const { stepComponents, redirectTo } = this.props
 
-    const stepIndex = this.state.currentStep + increaseBy
-    this.setState({ currentStep: stepIndex })
+    if (currentStep >= stepComponents.length - 1) {
+      window.location.href = redirectTo
+    } else {
+      const stepIndex = currentStep + increaseBy
+      const nextComponent = stepComponents[stepIndex]
+      window.history.pushState({}, "", `/personalize/${nextComponent.slug}`)
+      this.setState({ currentStep: stepIndex })
+    }
   }
 
   render() {

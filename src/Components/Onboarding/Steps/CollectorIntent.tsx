@@ -30,6 +30,8 @@ interface State {
 }
 
 class CollectorIntent extends React.Component<Props, State> {
+  static slug = "interests"
+
   options = [
     "buy art & design",
     "sell art & design",
