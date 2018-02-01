@@ -47,7 +47,7 @@ export { IconOrderedList } from "./Icon/IconOrderedList"
 export { IconVideoPlay } from "./Icon/IconVideoPlay"
 export { IconRemove } from "./Icon/IconRemove"
 export { IconUnorderedList } from "./Icon/IconUnorderedList"
-export { IconLock } from "./icon/IconLock"
+export { IconLock } from "./Icon/IconLock"
 
 // Test Fixtures
 import {
