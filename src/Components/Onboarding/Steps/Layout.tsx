@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import Colors from "../../../Assets/Colors"
-import Button from "../../Buttons/Ghost"
+import InvertedButton from "../../Buttons/Inverted"
 import { media } from "../../Helpers"
 import StyledTitle from "../../Title"
 
@@ -60,10 +60,17 @@ const StickyButtonContainer = styled.div`
   justify-content: center;
 `
 
-const NextButton = styled(Button)`
+const NextButton = styled(InvertedButton)`
   margin: 50px 0px;
   display: block;
   width: 250px;
+
+  &:disabled {
+    background: white;
+    border: 1px solid ${Colors.grayRegular};
+    color: ${Colors.grayMedium};
+  }
+
   ${media.sm`
     width: 100%;
     margin: 25px 0px;
