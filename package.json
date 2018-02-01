@@ -32,7 +32,7 @@
     "prettier-write": "yarn run prettier --write",
     "relay": "env GRAPHQL_NO_NAME_WARNING=true relay-compiler --src ./src --schema data/schema.graphql --extensions ts tsx",
     "start": "yarn storybook",
-    "storybook": "node verify-node-version.js && concurrently --kill-others 'yarn relay --watch' 'env GRAPHQL_NO_NAME_WARNING=true start-storybook -p 9001'",
+    "storybook": "node verify-node-version.js && concurrently --allow-restart --restart-tries=10 'yarn relay --watch' 'env GRAPHQL_NO_NAME_WARNING=true start-storybook -p 9001'",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && yarn install && npm run dump-schema -- ../../data",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema -- ../reaction/data",
