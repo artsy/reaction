@@ -187,7 +187,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c16:hover .c24 {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .c16 .c22 {
@@ -1243,7 +1243,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c21:hover .c29 {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .c21 .c27 {
@@ -1627,15 +1627,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fenFCZ .c14 {
+.hMcdwC .c14 {
   margin-bottom: 90px;
 }
 
-.fenFCZ .c20 {
+.hMcdwC .c20 {
   margin-bottom: 60px;
 }
 
-.fenFCZ .c35 {
+.hMcdwC .c35 {
   padding-top: 60px;
 }
 
@@ -1924,11 +1924,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fenFCZ .c20 {
+  .hMcdwC .c20 {
     margin-bottom: 40px;
   }
 
-  .fenFCZ .c35 {
+  .hMcdwC .c35 {
     padding-top: 60px;
   }
 }

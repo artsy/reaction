@@ -1,6 +1,6 @@
 import _ from "lodash"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
@@ -16,7 +16,7 @@ interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   isFullscreenCaption?: boolean
 }
 
-interface StyledArtworkCaptionProps {
+interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   layout?: Layout
   sectionLayout?: SectionLayout
 }
@@ -163,7 +163,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     // Fullscreen
     if (isFullscreenCaption) {
       return (
-        <StyledFullscreenCaption layout={layout}>
+        <StyledFullscreenCaption>
           <Line>
             <ArtistName>{this.renderArtists()}</ArtistName>
           </Line>
@@ -177,10 +177,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       // Classic Layout
     } else if (layout === "classic") {
       return (
-        <StyledClassicCaption
-          layout={layout}
-          className="display-artwork__caption"
-        >
+        <StyledClassicCaption className="display-artwork__caption">
           <Truncator>
             <ArtistName>{this.renderArtists()}</ArtistName>
 
@@ -223,13 +220,9 @@ const ArtistName = styled.span`
   `};
 `
 
-const div: StyledFunction<
-  StyledArtworkCaptionProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
-
-const StyledArtworkCaption = div`
-  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
+const StyledArtworkCaption = styled.div`
+  padding: ${(props: StyledArtworkCaptionProps) =>
+    props.sectionLayout === "fillwidth" ? "0 10px;" : "0;"}
   margin-top: 10px;
   display: flex;
   color: ${Colors.grayDark};
@@ -244,17 +237,16 @@ const StyledArtworkCaption = div`
   `}
 `
 
-const StyledClassicCaption = div`
+const StyledClassicCaption = styled.div`
   margin-top: 10px;
   display: block;
   color: ${Colors.grayDark};
-  ${Fonts.garamond("s15")}
-
+  ${Fonts.garamond("s15")};
   ${ArtistName} {
     margin-right: 0;
     font-weight: bold;
     &:after {
-      content: ', '
+      content: ", ";
     }
   }
 
@@ -263,13 +255,12 @@ const StyledClassicCaption = div`
   }
 `
 
-const StyledFullscreenCaption = div`
-  ${Fonts.unica("s16", "medium")}
-  display: flex;
+const StyledFullscreenCaption = styled.div`
+  ${Fonts.unica("s16", "medium")} display: flex;
   color: black;
 
   .title {
-    ${Fonts.unica("s16", "mediumItalic")}
+    ${Fonts.unica("s16", "mediumItalic")};
   }
 
   ${pMedia.sm`
@@ -279,7 +270,7 @@ const StyledFullscreenCaption = div`
     .title {
       ${Fonts.unica("s14", "mediumItalic")}
     }
-  `}
+  `};
 `
 
 const Line = styled.div`

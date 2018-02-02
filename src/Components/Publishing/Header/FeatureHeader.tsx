@@ -215,7 +215,7 @@ const Div = styled.div`
   height: 100%;
   box-sizing: border-box;
 `
-const Overlay = Div.extend`
+const Overlay = styled(Div)`
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -243,7 +243,7 @@ const HeaderTextContainer = styled(Div)`
     }
   `};
 `
-const HeaderText = Div.extend`
+const HeaderText = styled(Div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -252,7 +252,7 @@ const HeaderText = Div.extend`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = Div.extend`
+const FeatureImage = styled(Div)`
   position: absolute;
   background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
   background-size: cover;
@@ -266,7 +266,7 @@ const FeatureVideo = styled.video`
   height: 100%;
   object-fit: cover;
 `
-const FeatureVideoContainer = Div.extend`
+const FeatureVideoContainer = styled(Div)`
   width: 100%;
   height: 100%;
   right: 0;
@@ -316,7 +316,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const FeatureHeaderContainer = Div.extend`
+const FeatureHeaderContainer = styled(Div)`
   width: 100%;
   height: ${(props: DivProps) => props.height};
   position: relative;

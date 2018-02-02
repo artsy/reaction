@@ -1,7 +1,7 @@
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
 import Waypoint from "react-waypoint"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
@@ -23,6 +23,14 @@ interface State {
   isPlaying: boolean
   isMuted: boolean
   showCoverImage: boolean
+}
+
+interface DivUrlProps extends HTMLProps<HTMLDivElement> {
+  coverUrl?: string
+  hoverImageUrl?: string
+  isMobile?: boolean
+  imageUrl?: string
+  showCoverImage?: boolean
 }
 
 @track(
@@ -62,7 +70,10 @@ export class DisplayPanel extends Component<Props, State> {
 
   componentWillUpdate() {
     if (this.video) {
-      this.video.removeEventListener("timeupdate", this.trackProgress.bind(this))
+      this.video.removeEventListener(
+        "timeupdate",
+        this.trackProgress.bind(this)
+      )
     }
   }
 
@@ -81,7 +92,9 @@ export class DisplayPanel extends Component<Props, State> {
   // TODO: This could be shared with <CanvasVideo />
   trackProgress() {
     const secondsComplete = Math.floor(this.video.currentTime)
-    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentComplete = Math.floor(
+      this.video.currentTime / this.video.duration * 100
+    )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 
     // Track 25% duration intervals
@@ -125,7 +138,9 @@ export class DisplayPanel extends Component<Props, State> {
       "PlayButton",
       "PlayButton__PlayButtonCaret",
     ]
-    const withinMediaArea = valid.some(className => event.target.className.includes(className))
+    const withinMediaArea = valid.some(className =>
+      event.target.className.includes(className)
+    )
     return withinMediaArea
   }
 
@@ -317,7 +332,9 @@ export class DisplayPanel extends Component<Props, State> {
       <VideoContainer className="VideoContainer">
         {!isPlaying && (
           <VideoCover className="VideoContainer__VideoCover">
-            {isMobile && <VideoControls mini className="VideoContainer__VideoControls" />}
+            {isMobile && (
+              <VideoControls mini className="VideoContainer__VideoControls" />
+            )}
           </VideoCover>
         )}
 
@@ -344,7 +361,11 @@ export class DisplayPanel extends Component<Props, State> {
     const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
 
     return (
-      <Wrapper onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <Wrapper
+        onClick={this.handleClick}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <Waypoint onEnter={this.trackImpression} />
         <DisplayPanelContainer
           className="DisplayPanel__DisplayPanelContainer"
@@ -354,7 +375,11 @@ export class DisplayPanel extends Component<Props, State> {
           coverUrl={coverUrl}
           showCoverImage={showCoverImage}
         >
-          {isVideo ? this.renderVideo(url) : <Image className="DisplayPanel__Image" />}
+          {isVideo ? (
+            this.renderVideo(url)
+          ) : (
+            <Image className="DisplayPanel__Image" />
+          )}
 
           <div>
             <Headline>{unit.headline}</Headline>
@@ -372,14 +397,7 @@ export class DisplayPanel extends Component<Props, State> {
     )
   }
 }
-interface DivUrlProps extends HTMLProps<HTMLDivElement> {
-  coverUrl?: string
-  hoverImageUrl?: string
-  isMobile?: boolean
-  imageUrl?: string
-  showCoverImage?: boolean
-}
-const div: StyledFunction<DivUrlProps> = styled.div
+
 const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: none;
@@ -399,60 +417,76 @@ const Image = styled.div`
   box-sizing: border-box;
 `
 
-const VideoCover = Image.extend`
+const VideoCover = styled.div`
+  margin-bottom: 15px;
+  width: 100%;
+  height: 142px;
+  background-color: black;
+  box-sizing: border-box;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-const DisplayPanelContainer = div`
+const DisplayPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid ${Colors.grayRegular};
   padding: 20px;
   max-width: 360px;
   box-sizing: border-box;
+
   ${Image} {
-    background: url(${p => p.imageUrl || ""}) no-repeat center center;
+    background: url(${(p: DivUrlProps) => p.imageUrl || ""}) no-repeat center
+      center;
     background-size: cover;
-    ${p =>
+  }
+
+  ${VideoCover} {
+    background: url(${(p: DivUrlProps) => p.coverUrl || ""}) no-repeat center
+      center;
+    background-size: cover;
+  }
+
+  ${(p: DivUrlProps) =>
     p.showCoverImage &&
     p.hoverImageUrl &&
     `
-      background: black url(${p.hoverImageUrl}) no-repeat center center;
-      background-size: contain;
-      border: 10px solid black;
-    `}
-  }
-  ${VideoCover} {
-    background: url(${p => p.coverUrl || ""}) no-repeat center center;
-    background-size: cover;
-    ${p =>
+      ${Image} {
+        background: black url(${p.hoverImageUrl}) no-repeat center center;
+        background-size: contain;
+        border: 10px solid black;
+      }
+    `};
+
+  ${(p: DivUrlProps) =>
     p.showCoverImage &&
     !p.isMobile &&
     `
-      display: none;
-    `}
-  }
+      ${VideoCover} {
+        display: none;
+      }
+  `};
+
   ${breakpoint.md`
     margin: auto;
-  `}
-  ${breakpoint.sm`
+  `} ${breakpoint.sm`
     margin: auto;
-  `}
-  ${breakpoint.xs`
+  `} ${breakpoint.xs`
     margin: auto;
-  `}
+  `};
 `
 
 const Headline = styled.div`
-  ${Fonts.unica("s16", "medium")} line-height: 1.23em;
+  ${Fonts.unica("s16", "medium")};
+  line-height: 1.23em;
   margin-bottom: 3px;
 `
 
 const Body = styled.div`
-  ${Fonts.garamond("s17")} line-height: 1.53em;
+  ${Fonts.garamond("s17")};
+  line-height: 1.53em;
   margin-bottom: 20px;
   a {
     color: black;
@@ -460,10 +494,11 @@ const Body = styled.div`
 `
 
 const SponsoredBy = styled.div`
-  ${Fonts.avantgarde("s11")} color: ${Colors.grayRegular};
+  ${Fonts.avantgarde("s11")};
+  color: ${Colors.grayRegular};
 `
 
-const VideoContainer = Image.extend`
+const VideoContainer = styled(Image)`
   position: relative;
   overflow: hidden;
   display: flex;
