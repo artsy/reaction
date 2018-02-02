@@ -1,10 +1,8 @@
 import React from "react"
-
-// import { StepProps } from "./Types"
-// Array<React.ComponentClass<StepProps>>
+import { StepComponent } from "./Types"
 
 interface Props {
-  stepComponents: any[]
+  stepComponents: StepComponent[]
   redirectTo?: string
 }
 
