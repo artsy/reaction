@@ -76,7 +76,7 @@ export default class Genes extends React.Component<StepProps, State> {
       >
         <OnboardingSearchBox>
           <Input
-            placeholder={"Search artists..."}
+            placeholder={"Search categories..."}
             leftView={<Icon name="search" color={Colors.graySemibold} />}
             rightView={
               this.state.inputText.length ? (
