@@ -31,12 +31,12 @@ exports[`snapshots renders the display panel with an image 1`] = `
 }
 
 .c1 .c2 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
-.c1 .file__VideoCover-icj40k-2 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
+.c1 .file__VideoCover-s1xznfj6-2 {
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
@@ -163,6 +163,11 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c6 {
+  margin-bottom: 15px;
+  width: 100%;
+  height: 142px;
+  background-color: black;
+  box-sizing: border-box;
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -178,13 +183,13 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.kHwkQC .c3 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
+.jvmyca .c3 {
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
-.kHwkQC .c5 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
+.jvmyca .c5 {
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
@@ -203,12 +208,12 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c1 .c3 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
 .c1 .c5 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat centercenter;
   background-size: cover;
 }
 
@@ -325,7 +330,7 @@ exports[`snapshots renders the display panel with video 1`] = `
       className="VideoContainer c2 c3 c4"
     >
       <div
-        className="VideoContainer__VideoCover c5 c6 c3 c4"
+        className="VideoContainer__VideoCover c5 c6"
       />
       <video
         className="VideoContainer__video"

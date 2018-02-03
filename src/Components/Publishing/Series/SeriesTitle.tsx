@@ -58,7 +58,7 @@ export const SeriesTitleContainer = Div`
     margin-right: auto;
   }
 
-  ${props => pMedia.md`
+  ${pMedia.md`
     ${PartnerBlockContainer} img {
       padding-bottom: 0;
     }
@@ -69,7 +69,7 @@ const Title = styled.div`
   ${Fonts.unica("s120")}
   margin-bottom: 30px;
 
-  ${props => pMedia.md`
+  ${pMedia.md`
     ${Fonts.unica("s65")}
     margin-bottom: 20px;
   `}

@@ -98,7 +98,7 @@ export const SeriesContent = Div`
     padding-top: 60px;
   }
 
-  ${props => pMedia.md`
+  ${pMedia.md`
     ${ArticleCardContainer} {
       margin-bottom: 40px;
     }
