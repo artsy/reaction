@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   article?: any
   color?: string
   editTitle?: any
@@ -44,10 +44,8 @@ SeriesTitle.defaultProps = {
   color: 'black'
 }
 
-const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
-
-export const SeriesTitleContainer = Div`
-  color: ${props => props.color};
+export const SeriesTitleContainer = styled.div`
+  color: ${(props: Props) => props.color};
   text-align: center;
 
   ${PartnerBlockContainer} img {

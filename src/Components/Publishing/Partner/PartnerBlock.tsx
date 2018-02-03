@@ -55,7 +55,6 @@ export class PartnerBlock extends React.Component<Props, null> {
 export const PartnerBlockContainer = styled.div`
   img {
     max-width: 220px;
-    -ms-interpolation-mode: bicubic;
   }
   ${pMedia.sm`
     img {
@@ -64,8 +63,9 @@ export const PartnerBlockContainer = styled.div`
   `}
 `
 const Title = styled.div`
-  ${Fonts.unica('s16', 'medium')}
+  ${Fonts.unica('s16', 'medium')};
   margin-bottom: 20px;
+
   ${pMedia.sm`
     ${Fonts.unica('s14', 'medium')}
   `}

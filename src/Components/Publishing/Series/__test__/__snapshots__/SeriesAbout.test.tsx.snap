@@ -38,6 +38,13 @@ exports[`renders a series about properly 1`] = `
   padding-left: 0.5rem;
 }
 
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
 .c6 {
   position: relative;
   width: 100%;
@@ -208,7 +215,7 @@ exports[`renders a series about properly 1`] = `
   width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-s1joucmt-0 {
+.c2 .file__PartnerBlockContainer-icj40k-0 {
   display: none;
 }
 
@@ -226,16 +233,9 @@ exports[`renders a series about properly 1`] = `
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
+.c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
   display: block;
   margin-bottom: 10px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
 }
 
 @media only screen and (min-width:0em) {
@@ -275,6 +275,12 @@ exports[`renders a series about properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
   }
 }
 
@@ -338,19 +344,13 @@ exports[`renders a series about properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-s1joucmt-0 {
+  .c2 .file__PartnerBlockContainer-icj40k-0 {
     margin-top: 60px;
     display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 
@@ -426,7 +426,13 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c6 img {
   max-width: 220px;
-  -ms-interpolation-mode: bicubic;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
 }
 
 .c7 {
@@ -630,13 +636,6 @@ exports[`renders a sponsored series about properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
@@ -680,6 +679,12 @@ exports[`renders a sponsored series about properly 1`] = `
 @media (max-width:720px) {
   .c6 img {
     max-width: 195px;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
   }
 }
 
@@ -759,12 +764,6 @@ exports[`renders a sponsored series about properly 1`] = `
   .c2 .c5 {
     margin-top: 60px;
     display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 
@@ -872,6 +871,13 @@ exports[`renders series about with children properly 1`] = `
   flex: 0 0 auto;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
 }
 
 .c6 {
@@ -1044,7 +1050,7 @@ exports[`renders series about with children properly 1`] = `
   width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-s1joucmt-0 {
+.c2 .file__PartnerBlockContainer-icj40k-0 {
   display: none;
 }
 
@@ -1062,16 +1068,9 @@ exports[`renders series about with children properly 1`] = `
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
+.c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
   display: block;
   margin-bottom: 10px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
 }
 
 @media only screen and (min-width:0em) {
@@ -1111,6 +1110,12 @@ exports[`renders series about with children properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
   }
 }
 
@@ -1174,19 +1179,13 @@ exports[`renders series about with children properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-s1joucmt-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-s1joucmt-0 {
+  .c2 .file__PartnerBlockContainer-icj40k-0 {
     margin-top: 60px;
     display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 

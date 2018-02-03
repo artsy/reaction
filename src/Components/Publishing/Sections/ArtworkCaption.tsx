@@ -242,6 +242,7 @@ const StyledClassicCaption = styled.div`
   display: block;
   color: ${Colors.grayDark};
   ${Fonts.garamond("s15")};
+
   ${ArtistName} {
     margin-right: 0;
     font-weight: bold;
@@ -256,7 +257,8 @@ const StyledClassicCaption = styled.div`
 `
 
 const StyledFullscreenCaption = styled.div`
-  ${Fonts.unica("s16", "medium")} display: flex;
+  ${Fonts.unica("s16", "medium")};
+  display: flex;
   color: black;
 
   .title {

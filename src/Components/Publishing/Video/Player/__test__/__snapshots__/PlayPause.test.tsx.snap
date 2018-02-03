@@ -14,7 +14,7 @@ exports[`Play/Pause Button matches the snapshot 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <svg
     className="c1"

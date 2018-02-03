@@ -215,7 +215,7 @@ const Div = styled.div`
   height: 100%;
   box-sizing: border-box;
 `
-const Overlay = styled(Div)`
+const Overlay = styled(Div) `
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -230,7 +230,7 @@ const Vertical = styled.div`
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const HeaderTextContainer = styled(Div)`
+const HeaderTextContainer = styled(Div) `
   margin: auto;
   .PartnerInline {
     position: absolute;
@@ -243,7 +243,7 @@ const HeaderTextContainer = styled(Div)`
     }
   `};
 `
-const HeaderText = styled(Div)`
+const HeaderText = styled(Div) `
   position: relative;
   display: flex;
   flex-direction: column;
@@ -252,7 +252,7 @@ const HeaderText = styled(Div)`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = styled(Div)`
+const FeatureImage = styled(Div) `
   position: absolute;
   background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
   background-size: cover;
@@ -266,7 +266,7 @@ const FeatureVideo = styled.video`
   height: 100%;
   object-fit: cover;
 `
-const FeatureVideoContainer = styled(Div)`
+const FeatureVideoContainer = styled(Div) `
   width: 100%;
   height: 100%;
   right: 0;
@@ -316,7 +316,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const FeatureHeaderContainer = styled(Div)`
+const FeatureHeaderContainer = styled(Div) `
   width: 100%;
   height: ${(props: DivProps) => props.height};
   position: relative;
@@ -334,12 +334,12 @@ const FeatureHeaderContainer = styled(Div)`
       width: 50%;
     }
     ${FeatureImage} {
-      width: 50%;
       border: 20px solid white;
+      width: 50%;
     }
     ${FeatureVideoContainer} {
-      width: 50%;
       border: 20px solid white;
+      width: 50%;
     }
     ${FeatureVideo} {
       width: 50vw;
