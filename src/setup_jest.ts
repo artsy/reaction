@@ -13,3 +13,8 @@ window.matchMedia =
       removeListener: () => null,
     }
   })
+
+HTMLMediaElement.prototype.pause = jest.fn()
+HTMLMediaElement.prototype.play = jest.fn()
+
+window.open = jest.fn()

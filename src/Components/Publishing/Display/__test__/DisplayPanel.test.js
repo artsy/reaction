@@ -65,6 +65,10 @@ describe("units", () => {
     )
   }
 
+  beforeEach(() => {
+    global.open = jest.fn()
+  })
+
   afterEach(() => {
     jest.restoreAllMocks()
   })
