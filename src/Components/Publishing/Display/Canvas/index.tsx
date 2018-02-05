@@ -85,7 +85,7 @@ const DisplayContainer = Div`
   a {
     text-decoration: none;
   }
-  ${props => pMedia.sm`
+  ${pMedia.sm`
     margin-bottom: 0;
     min-height: 400px;
   `}

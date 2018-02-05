@@ -18,7 +18,11 @@ export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
     <ClassicHeaderContainer>
       <Title>{title}</Title>
       {leadParagraph}
-      <AuthorDateClassic authors={article.contributing_authors} author={article.author} date={date ? date : article.published_at} />
+      <AuthorDateClassic
+        authors={article.contributing_authors}
+        author={article.author}
+        date={date ? date : article.published_at}
+      />
     </ClassicHeaderContainer>
   )
 }
@@ -32,7 +36,7 @@ const ClassicHeaderContainer = styled.div`
   box-sizing: border-box;
   text-align: center;
   p, > p {
-    ${Fonts.garamond("s19")}
+    ${Fonts.garamond("s19")};
     line-height: 1.35em;
     text-align: left;
     max-width: 580px;
@@ -40,20 +44,22 @@ const ClassicHeaderContainer = styled.div`
     margin: 0 auto;
     padding-bottom: 30px;
   }
+
   ${pMedia.xl`
     padding: 0 20px;
   `}
   ${pMedia.xs`
     text-align: left;
     p, > p {
-      ${Fonts.garamond("s17")}
+      ${Fonts.garamond("s17")};
       line-height: 1.35em;
     }
   `}
 `
 const Title = styled.div`
-  ${Fonts.garamond("s37")}
+  ${Fonts.garamond("s37")};
   margin-bottom: 30px;
+
   ${pMedia.xs`
     ${Fonts.garamond("s34")}
   `}

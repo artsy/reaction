@@ -208,7 +208,7 @@ exports[`VideoControls renders properly 1`] = `
     >
       <div
         className="c3"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <svg
           className="c4"
@@ -249,7 +249,7 @@ exports[`VideoControls renders properly 1`] = `
       </div>
       <div
         className="c8 c9"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <svg
           height="30px"
@@ -268,7 +268,7 @@ exports[`VideoControls renders properly 1`] = `
       <svg
         className="c10 c11"
         height="32px"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         viewBox="0 0 28 28"
         width="32px"
         xmlns="http://www.w3.org/2000/svg"

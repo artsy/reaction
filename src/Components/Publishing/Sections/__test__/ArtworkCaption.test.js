@@ -1,6 +1,6 @@
+import "jest-styled-components"
 import { mount } from "enzyme"
 import _ from "lodash"
-import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import {

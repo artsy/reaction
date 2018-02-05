@@ -96,7 +96,7 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 .c0:hover .c10 {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .c0 .c8 {
@@ -312,12 +312,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   display: flex;
 }
 
-.c0 .file__Image-s1j734vj-0 {
+.c0 .file__Image-icj40k-0 {
   opacity: 1;
 }
 
-.c0:hover .file__Image-s1j734vj-0 {
-  opacity: .7;
+.c0:hover .file__Image-icj40k-0 {
+  opacity: 0.7;
 }
 
 .c0 .c6 {
@@ -599,7 +599,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 .c0:hover .c8 {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .c0 .c6 {

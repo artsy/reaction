@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import styled from 'styled-components'
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { pMedia } from '../../Helpers'
@@ -15,7 +15,7 @@ interface Props {
   margin?: string
 }
 
-interface DivProps {
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
   margin: string
 }
 
@@ -74,11 +74,10 @@ export class PartnerInline extends React.Component<Props, null> {
   }
 }
 
-const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
-const PartnerInlineContainer = Div`
+const PartnerInlineContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: ${props => props.margin};
+  margin: ${(props: DivProps) => props.margin};
   img {
     max-height: 32px;
     vertical-align: middle;

@@ -8,7 +8,7 @@ exports[`Mute/Unmute Button matches the snapshot 1`] = `
 
 <div
   className="c0"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <svg
     height="30px"

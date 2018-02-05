@@ -206,7 +206,7 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  onClose={[Function]}
+  onClose={[MockFunction]}
   show={true}
 >
   <div

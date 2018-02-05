@@ -1,19 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series title properly 1`] = `
-.c0 {
-  color: black;
-  text-align: center;
-}
-
-.c0 .file__PartnerBlockContainer-s1joucmt-0 img {
-  max-width: 240px;
-  padding-top: 5px;
-  padding-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .c1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -22,10 +9,17 @@ exports[`renders a series title properly 1`] = `
   margin-bottom: 30px;
 }
 
-@media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s1joucmt-0 img {
-    padding-bottom: 0;
-  }
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__PartnerBlockContainer-icj40k-0 img {
+  max-width: 240px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width:900px) {
@@ -35,6 +29,12 @@ exports[`renders a series title properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c0 .file__PartnerBlockContainer-icj40k-0 img {
+    padding-bottom: 0;
   }
 }
 
@@ -51,19 +51,6 @@ exports[`renders a series title properly 1`] = `
 `;
 
 exports[`renders a series with children properly 1`] = `
-.c0 {
-  color: black;
-  text-align: center;
-}
-
-.c0 .file__PartnerBlockContainer-s1joucmt-0 img {
-  max-width: 240px;
-  padding-top: 5px;
-  padding-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .c1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -72,10 +59,17 @@ exports[`renders a series with children properly 1`] = `
   margin-bottom: 30px;
 }
 
-@media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-s1joucmt-0 img {
-    padding-bottom: 0;
-  }
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__PartnerBlockContainer-icj40k-0 img {
+  max-width: 240px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width:900px) {
@@ -85,6 +79,12 @@ exports[`renders a series with children properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c0 .file__PartnerBlockContainer-icj40k-0 img {
+    padding-bottom: 0;
   }
 }
 
@@ -106,7 +106,14 @@ exports[`renders a series with children properly 1`] = `
 exports[`renders a sponsored series title properly 1`] = `
 .c3 img {
   max-width: 220px;
-  -ms-interpolation-mode: bicubic;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
 }
 
 .c4 {
@@ -130,17 +137,19 @@ exports[`renders a sponsored series title properly 1`] = `
   margin-right: auto;
 }
 
-.c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
 @media (max-width:720px) {
   .c3 img {
     max-width: 195px;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+    margin-bottom: 20px;
   }
 }
 
@@ -156,16 +165,6 @@ exports[`renders a sponsored series title properly 1`] = `
 @media (max-width:900px) {
   .c0 .c2 img {
     padding-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
   }
 }
 

@@ -13,12 +13,14 @@ export const ClassicArticle: ArticleData = {
   },
   layout: "classic",
   hero_section: null,
-  thumbnail_title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  thumbnail_title:
+    "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
   email_metadata: {
     image_url:
       "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
     author: "Joanne Artman Gallery",
-    headline: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+    headline:
+      "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
   },
   send_body: false,
   tier: 2,
@@ -41,14 +43,18 @@ export const ClassicArticle: ArticleData = {
   weekly_email: false,
   keywords: ["Joanne Artman Gallery"],
   updated_at: "2017-07-28T20:38:05.709Z",
-  title: "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
-  lead_paragraph: "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+  title:
+    "New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple",
+  lead_paragraph:
+    "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
   id: "597b9f652d35b80017a2a6a7",
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   scheduled_publish_at: null,
-  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   published_at: "2017-07-28T20:38:05.709Z",
-  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
+  description:
+    "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist on ev...",
   sections: [
     {
       type: "text",
@@ -65,7 +71,8 @@ export const ClassicArticle: ArticleData = {
           slug: "matt-devine-brass-tax",
           date: "",
           title: "Brass Tax",
-          image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
           partner: {
             name: "Joanne Artman Gallery",
             slug: "joanne-artman-gallery",
@@ -100,7 +107,8 @@ export const ClassicArticle: ArticleData = {
           slug: "matt-devine-untitled-suspended",
           date: "",
           title: "Untitled Suspended",
-          image: "https://d32dm0rphc51dk.cloudfront.net/jDXiwSBgNP2eml1YkMIitg/larger.jpg",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/jDXiwSBgNP2eml1YkMIitg/larger.jpg",
           partner: {
             name: "Joanne Artman Gallery",
             slug: "joanne-artman-gallery",
@@ -136,7 +144,8 @@ export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
   slug: "new-yorks-next-art-district",
-  contributing_authors: [ // deprecated
+  contributing_authors: [
+    // deprecated
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
@@ -144,13 +153,15 @@ export const StandardArticle: ArticleData = {
   ],
   published_at: "2017-05-19T13:09:18.567Z",
   thumbnail_title: "New York's Next Art District",
-  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
   layout: "standard",
   vertical: {
     name: "Art Market",
     id: "12345",
   },
-  description: 'Land exhibitions, make influential contacts, and gain valuable feedback about your work.',
+  description:
+    "Land exhibitions, make influential contacts, and gain valuable feedback about your work.",
   sections: [
     {
       type: "text",
@@ -178,7 +189,8 @@ export const StandardArticle: ArticleData = {
       title: "A World Without Capitalism",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png",
           type: "image",
           width: 600,
           height: 1067,
@@ -186,7 +198,8 @@ export const StandardArticle: ArticleData = {
             "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
         },
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png",
           type: "image",
           width: 600,
           height: 1067,
@@ -199,7 +212,8 @@ export const StandardArticle: ArticleData = {
           slug: "matt-devine-brass-tax",
           date: "2000",
           title: "Brass Tax",
-          image: "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
           partner: {
             name: "Joanne Artman Gallery",
             slug: "joanne-artman-gallery",
@@ -216,7 +230,7 @@ export const StandardArticle: ArticleData = {
           },
           width: 1500,
           height: 2000,
-          credit: "Courtesy of The Metropolitan Museum of Art"
+          credit: "Courtesy of The Metropolitan Museum of Art",
         },
       ],
     },
@@ -235,7 +249,8 @@ export const StandardArticle: ArticleData = {
           type: "image",
           width: 320,
           height: 620,
-          caption: "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+          caption:
+            "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
         },
         {
           url:
@@ -252,7 +267,8 @@ export const StandardArticle: ArticleData = {
           type: "image",
           width: 320,
           height: 620,
-          caption: "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
+          caption:
+            "<p>Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. </p>",
         },
       ],
     },
@@ -266,7 +282,8 @@ export const StandardArticle: ArticleData = {
       layout: "overflow_fillwidth",
       images: [
         {
-          url: "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+          url:
+            "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
           type: "image",
           width: 1152,
           height: 826,
@@ -302,7 +319,8 @@ export const StandardArticle: ArticleData = {
           type: "image",
           width: 405,
           height: 723,
-          caption: "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+          caption:
+            "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
         },
         {
           url:
@@ -310,7 +328,8 @@ export const StandardArticle: ArticleData = {
           type: "image",
           width: 407,
           height: 719,
-          caption: "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+          caption:
+            "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
         },
         {
           url:
@@ -318,7 +337,8 @@ export const StandardArticle: ArticleData = {
           type: "image",
           width: 413,
           height: 721,
-          caption: "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
+          caption:
+            "<p>Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. </p>",
         },
       ],
     },
@@ -349,7 +369,8 @@ export const StandardArticle: ArticleData = {
           caption: "<p>King Khan, card from the Black Power Tarot. </p>",
         },
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/T9g-NNJcmy8ej6qV6UQ-fA%2F07272017133839-0001.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/T9g-NNJcmy8ej6qV6UQ-fA%2F07272017133839-0001.jpg",
           type: "image",
           width: 392,
           height: 718,
@@ -367,11 +388,13 @@ export const StandardArticle: ArticleData = {
       layout: "column_width",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/Gk95i1tUaDJKeqQ-jcq6Cw%2FIMG_2142.jpg",
           type: "image",
           width: 5184,
           height: 3456,
-          caption: "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
+          caption:
+            "<p>Designed by Kati Forner for The Dreslyn, courtesy of the artist. </p>",
         },
       ],
     },
@@ -385,16 +408,19 @@ export const StandardArticle: ArticleData = {
 
 export const BasicArticle: ArticleData = {
   ...StandardArticle,
-  layout: 'feature',
-  lead_paragraph: "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
-  title: '9 Famous Artists’ Studios You Can Visit, from Jackson Pollock to Barbara Hepworth',
+  layout: "feature",
+  lead_paragraph:
+    "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+  title:
+    "9 Famous Artists’ Studios You Can Visit, from Jackson Pollock to Barbara Hepworth",
   sections: [
     {
       type: "image_collection",
       layout: "overflow_fillwidth",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -402,9 +428,10 @@ export const BasicArticle: ArticleData = {
         },
       ],
     },
-    ...StandardArticle.sections
+    ...StandardArticle.sections,
   ],
-  contributing_authors: [ // deprecated
+  contributing_authors: [
+    // deprecated
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
@@ -420,8 +447,10 @@ export const BasicArticle: ArticleData = {
     type: "basic",
     title: "What’s the Path to Winning an Art Prize?",
     url: "https://vimeo.com/238843720",
-    deck: "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
-    cover_image_url: "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+    deck:
+      "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+    cover_image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
   },
 }
 
@@ -441,10 +470,12 @@ export const FeatureArticle: ArticleData = {
   hero_section: {
     type: "fullscreen",
     title: "What’s the Path to Winning an Art Prize?",
-    url: "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4",
     deck: "Lorem Ipsum",
   },
-  contributing_authors: [ // deprecated
+  contributing_authors: [
+    // deprecated
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
@@ -454,7 +485,8 @@ export const FeatureArticle: ArticleData = {
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
-      bio: "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
+      bio:
+        "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
       twitter_handle: "caseylesser",
     },
   ],
@@ -492,7 +524,8 @@ export const FeatureArticle: ArticleData = {
           slug: "matt-devine-untitled-suspended",
           date: "",
           title: "Untitled Suspended",
-          image: "https://d32dm0rphc51dk.cloudfront.net/jDXiwSBgNP2eml1YkMIitg/larger.jpg",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/jDXiwSBgNP2eml1YkMIitg/larger.jpg",
           partner: {
             name: "Joanne Artman Gallery",
             slug: "joanne-artman-gallery",
@@ -522,7 +555,8 @@ export const FeatureArticle: ArticleData = {
       layout: "overflow_fillwidth",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -554,7 +588,8 @@ export const FeatureArticle: ArticleData = {
       layout: "fillwidth",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/MGjCex4gkN4ofE_qOj_DPQ%2Farticle+asset+2-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/MGjCex4gkN4ofE_qOj_DPQ%2Farticle+asset+2-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -572,7 +607,8 @@ export const FeatureArticle: ArticleData = {
       layout: "mini",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/MGjCex4gkN4ofE_qOj_DPQ%2Farticle+asset+2-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/MGjCex4gkN4ofE_qOj_DPQ%2Farticle+asset+2-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -586,11 +622,14 @@ export const FeatureArticle: ArticleData = {
         "<p><br></p><h2>Make the Most of Winning</h2><p>Depending on the prize, artists may be awarded a stipend to create new work for a show or unrestricted funds to further their careers. In both cases, artists report that these funds have gone towards keeping their art practices up and running, be it through realizing new works and shows or for subsidizing rent, bills, and the costs of production and supplies. &nbsp;</p><p>For example, the Meurice Prize, which supports artists under the age of 45 who show with French galleries, awards €20,000, which is split between the artist and their gallery. This year, the BOMBAY SAPPHIRE® Artisan Series (which is only open to entrants from North America) awards a grand prize winner a stipend of $10,000 to create a public artwork. </p><p>In some cases, like Lee’s, a sizable prize could help an artist move into a bigger studio, relocate to another city, or participate in a residency. “Before, I never even thought about moving out of New York,” she says. “The Pollock-Krasner grant gave me the freedom to possibly move cross-country to explore this residency. I feel like it’s completely changed my life, and now I’m not sure when I’m coming back.”</p><p><br></p><h2>It’s More Than Just Money </h2><p>Baras notes that even if she hadn’t won the Artadia Award it would’ve been a rewarding experience due to the panel of jurors she encountered. “Whether you win or not, whoever’s on the panel remembers your work,” she says. “It’s beneficial regardless to put yourself out there because you really never know who might notice.” &nbsp; </p><p>Other prizes similarly award artists with the opportunity to exhibit their work to a new audience. The Daiwa Foundation Art Prize, awarded each year to a British artist, serves to give that artist a solo gallery exhibition in Japan. And the Luxembourg Art Prize gives finalists the opportunity to show their work in a group exhibition in Luxembourg; the winner is awarded €25,000 to produce new work for a solo presentation at Galerie Hervé Lancelin for an exhibition the following year. </p><p>For Belka and Mays, who both won the chance to show their work at the Scope Art Fair in New York through the BOMBAY SAPPHIRE® Artisan Series, winning led to important exposure and networking opportunities. “Overall, the most positive outcome was being able to put myself in arenas I’d never been in before,” Mays says of her experience. She saw it as a “jump start” for her career; she’s been busy making and showing her work steadily since her Scope debut.</p><p>“I made a point of greeting and speaking to everyone that came to the space,” Mays adds. Both artists recommend being prepared with business cards and following up with the contacts you make via email. Belka notes that he made an important collector contact that he maintains today. “Come prepared to talk about your work, have cards, spread your name, and get yourself out there,” says Belka.</p><p>Mays was also inspired by the feedback she received from viewers of her work. “Many times we overlook the value of feedback from people, the ideas that can come out of conversation with people,” she says. </p><p><br></p><h2>Building Confidence </h2><p>Most artists agree that one of the most impactful parts of winning a prize is the vote of confidence that it provides. Formal recognition can be a sign of assurance that they were right to pursue a career as an artist, and can inspire them to get back in the studio. &nbsp;</p><p>“It’s a nice confirmation to know that you can communicate to people you don’t even know, and just continue along the path of making your work,” Baras muses. “I see it as a kind of hug. Generally, you’re sort of hugging yourself as an artist—but once in awhile, you get an acknowledgment from the outside world.”<span class='content-end'></span></p>",
     },
   ],
-  postscript: "<p>Header animation: Illustration by Tomi Um for Artsy. Animation by Ale Pixel Studio.</p>",
+  postscript:
+    "<p>Header animation: Illustration by Tomi Um for Artsy. Animation by Ale Pixel Studio.</p>",
   id: "594a7e2254c37f00177c0ea9",
   scheduled_publish_at: null,
-  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/gejssmXDiO3G1pE73phZ3Q%2FArtboard+2%402xef-100.jpg",
-  social_image: "https://artsy-media-uploads.s3.amazonaws.com/wU7ase6M0zWv6MLcC8-L5A%2Fd7hftxdivxxvm.cloudfront.jpg",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/gejssmXDiO3G1pE73phZ3Q%2FArtboard+2%402xef-100.jpg",
+  social_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/wU7ase6M0zWv6MLcC8-L5A%2Fd7hftxdivxxvm.cloudfront.jpg",
   published_at: "2017-06-29T15:00:00.000Z",
   slug: "artsy-editorial-path-winning-art-prize",
 }
@@ -600,17 +639,28 @@ export const SponsoredArticle = extend({}, FeatureArticle, Sponsor)
 export const SuperArticle = extend({}, FeatureArticle, {
   is_super_article: true,
   super_article: {
-    footer_blurb: "This feature is created in collaboration with UBS with data sourced from UBS’s art news app Planet Art. Planet Art provides a distilled look at contemporary news, reviews and information from the art world.",
-    partner_fullscreen_header_logo: "https://artsy-media-uploads.s3.amazonaws.com/qp6GUcn5RkvscdYEBmqFXw%2FUBS_White.png",
-    partner_link: "https://itunes.apple.com/us/app/planet-art-your-source-for/id937737095?mt=8",
+    footer_blurb:
+      "This feature is created in collaboration with UBS with data sourced from UBS’s art news app Planet Art. Planet Art provides a distilled look at contemporary news, reviews and information from the art world.",
+    partner_fullscreen_header_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/qp6GUcn5RkvscdYEBmqFXw%2FUBS_White.png",
+    partner_link:
+      "https://itunes.apple.com/us/app/planet-art-your-source-for/id937737095?mt=8",
     partner_link_title: "Download the Planet Art app",
-    partner_logo: "https://artsy-media-uploads.s3.amazonaws.com/PUn-n_Zn0VHfyDKofWeLeQ%2FUBS_Black.png",
+    partner_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/PUn-n_Zn0VHfyDKofWeLeQ%2FUBS_Black.png",
     partner_logo_link: "https://www.ubs.com/microsites/planet-art/home.html",
-    related_articles: ["5846e12cc137140011634710", "5846e1fdc137140011634711", "58459e56104093001189a7d1", "584b0ee3e751080011bc1ad5"],
-    secondary_logo_link: "https://www.ubs.com/global/en/about_ubs/contemporary-art.html",
+    related_articles: [
+      "5846e12cc137140011634710",
+      "5846e1fdc137140011634711",
+      "58459e56104093001189a7d1",
+      "584b0ee3e751080011bc1ad5",
+    ],
+    secondary_logo_link:
+      "https://www.ubs.com/global/en/about_ubs/contemporary-art.html",
     secondary_logo_text: "PRESENTED IN PARTNERSHIP WITH",
-    secondary_partner_logo: "https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
-  }
+    secondary_partner_logo:
+      "https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png",
+  },
 })
 
 export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
@@ -620,7 +670,8 @@ export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
       layout: "overflow_fillwidth",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -638,7 +689,8 @@ export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
       layout: "overflow_fillwidth",
       images: [
         {
-          url: "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/7lsxxsw0qPAuKl37jEYitw%2Farticle+asset+1-hig+res+copy.jpg",
           type: "image",
           width: 1200,
           height: 750,
@@ -678,15 +730,18 @@ export const VideoArticle: ArticleData = {
   id: "597b9f652d35b80017a2a6a7",
   _id: "597b9f652d35b80017a2a6a7",
   title: "Trevor Paglan",
-  thumbnail_title: "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
-  thumbnail_image: "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
+  thumbnail_title:
+    "New Study Shows the Gender Pay Gap for Artists Is Not So Simple",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/wHFgQlrTrHav5O6bQRJ0dg%2FUntitled+Suspended_30x67x33+%282%29_sm+cropped.jpg",
   slug: "joanne-artman-gallery-poetry-naturerefinement-form",
   published_at: "2017-07-28T20:38:05.709Z",
-  description: "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
+  description:
+    "The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.",
   vertical: {
-    name: "Art Market"
+    name: "Art Market",
   },
-  media: Media[0]
+  media: Media[0],
 }
 
 export const VideoArticleUnpublished = extend({}, VideoArticle, {
@@ -696,9 +751,11 @@ export const VideoArticleUnpublished = extend({}, VideoArticle, {
     duration: 4000,
     release_date: "2018-08-28T20:38:05.709Z",
     published: false,
-    description: "<p>Integer posuere erat a <a href='http://artsy.net'>ante venenatis dapibus posuere</a> velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-    credits: "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>"
-  }
+    description:
+      "<p>Integer posuere erat a <a href='http://artsy.net'>ante venenatis dapibus posuere</a> velit aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+    credits:
+      "<p><b>Director</b></br>Marina Cashdan<br><b>Featuring</b></br>Trevor Paglan</p>",
+  },
 })
 
 export const VideoArticleSponsored = extend({}, VideoArticle, Sponsor)
@@ -709,13 +766,12 @@ export const SeriesArticle: ArticleData = {
   layout: "series",
   title: "The Future of Art",
   hero_section: {
-    url: "https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg"
+    url:
+      "https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg",
   },
-  series_description: "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-  related_articles: [
-    "594a7e2254c37f00177c0ea9",
-    "597b9f652d35b80017a2a6a7"
-  ]
+  series_description:
+    "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+  related_articles: ["594a7e2254c37f00177c0ea9", "597b9f652d35b80017a2a6a7"],
 }
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, Sponsor)

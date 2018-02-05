@@ -356,6 +356,14 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   color: black;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 50px;
+  line-height: 1.1em;
+  margin-bottom: 50px;
+}
+
 .c0 {
   margin: 0 40px;
 }
@@ -372,14 +380,6 @@ exports[`Classic Header renders classic header with children properly 1`] = `
   width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 50px;
-  line-height: 1.1em;
-  margin-bottom: 50px;
 }
 
 .c2 {
@@ -432,6 +432,15 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 }
 
 @media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:720px) {
   .c0 {
     margin: 0 20px;
   }
@@ -440,15 +449,6 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 @media (max-width:720px) {
   .c1 {
     margin: 30px auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
   }
 }
 
