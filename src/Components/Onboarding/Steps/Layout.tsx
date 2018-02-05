@@ -73,7 +73,7 @@ const NextButton = styled(InvertedButton)`
 
   ${media.sm`
     width: 100%;
-    margin: 25px 0px;
+    margin: 25px 0 0;
   `};
 `
 
