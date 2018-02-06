@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { ContextConsumer, ContextProps } from "../../Artsy"
 import { media } from "../../Helpers"
-import SelectableLink from "../SelectableLink"
+import SelectableToggle from "../SelectableToggle"
 import { StepProps } from "../Types"
 import { Layout } from "./Layout"
 
@@ -32,15 +32,6 @@ interface State {
 class CollectorIntent extends React.Component<Props, State> {
   static slug = "interests"
 
-  options = [
-    "buy art & design",
-    "sell art & design",
-    "research art prices",
-    "learn about art",
-    "find out about new exhibitions",
-    "read art market news",
-  ]
-
   intentEnum = {
     "buy art & design": "BUY_ART_AND_DESIGN",
     "sell art & design": "SELL_ART_AND_DESIGN",
@@ -59,29 +50,18 @@ class CollectorIntent extends React.Component<Props, State> {
     }
   }
 
-  onOptionSelected = (index, selected) => {
-    const option = this.options[index]
+  onOptionSelected = (index) => {
+    const selectedOptions = Object.assign({}, this.state.selectedOptions)
+    selectedOptions[index] = !selectedOptions[index]
 
-    let selectedOptions = this.state.selectedOptions
-    selectedOptions[option] = selected
-
-    let count = 0
-    for (let key in selectedOptions) {
-      if (selectedOptions[key]) count++
-    }
-
-    this.setState({ selectedOptions, selectedCount: count })
+    this.setState({
+      selectedOptions,
+      selectedCount: Object.values(selectedOptions).filter(isSelected => isSelected).length
+    })
   }
 
   submit() {
-    const keys = Object.keys(this.state.selectedOptions)
-    const intentOptions = keys.filter(key => {
-      return this.state.selectedOptions[key]
-    })
-
-    const intents = intentOptions.map(intent => {
-      return this.intentEnum[intent]
-    })
+    const intents = Object.values(this.intentEnum).filter((_, index) => this.state.selectedOptions[index])
 
     commitMutation(this.props.relayEnvironment, {
       mutation: graphql`
@@ -104,13 +84,15 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   render() {
-    const options = this.options.map((text, index) => (
-      <SelectableLink
+    const options = Object.keys(this.intentEnum).map((text, index) => (
+      <SelectableToggle
         key={index}
         text={text}
         onSelect={this.onOptionSelected.bind(this, index)}
+        selected={this.state.selectedOptions[index]}
       />
     ))
+
     return (
       <Layout
         title="Get started on Artsy, what are you most interested in doing?"
