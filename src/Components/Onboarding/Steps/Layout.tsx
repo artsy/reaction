@@ -43,6 +43,10 @@ const Subtitle = styled(StyledTitle)`
   `};
 `
 
+const ItemContainer = styled.div`
+  padding-bottom: 50px;
+`
+
 /* MS IE11 and Edge don't support for the sticky position property */
 const FixedButttonContainer = styled.div`
   width: 100%;
@@ -57,7 +61,7 @@ const FixedButttonContainer = styled.div`
 const StickyButtonContainer = styled.div`
   position: sticky;
   bottom: 0px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white, white);
+  background: linear-gradient(rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 17%, white 35%, white);
   display: flex;
   justify-content: center;
 `
@@ -87,7 +91,10 @@ export class Layout extends React.Component<Props, null> {
       <Container>
         <MainTitle>{this.props.title} </MainTitle>
         <Subtitle>{this.props.subtitle}</Subtitle>
-        <div>{this.props.children}</div>
+        <ItemContainer>
+          {this.props.children}
+        </ItemContainer>
+
         <FixedButttonContainer>
           <StickyButtonContainer>
             <NextButton
