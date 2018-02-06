@@ -4,6 +4,7 @@ import { StepComponent } from "./Types"
 interface Props {
   stepComponents: StepComponent[]
   redirectTo?: string
+  forceStep?: string
 }
 
 interface State {
@@ -14,11 +15,36 @@ interface State {
 class Wizard extends React.Component<Props, State> {
   static defaultProps = {
     redirectTo: "/",
+    forceStep: "",
   }
 
-  state = {
-    currentStep: 0,
-    nextButtonEnabled: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      currentStep: this.getForceStep(),
+      nextButtonEnabled: false,
+    }
+  }
+
+  getForceStep = () => {
+    const { forceStep } = this.props
+    const stepSlugs = this.props.stepComponents.map(step => step.slug)
+    if (forceStep && stepSlugs.includes(forceStep)) {
+      return stepSlugs.indexOf(forceStep)
+    } else {
+      return 0
+    }
+  }
+
+  componentDidMount() {
+    const { stepComponents } = this.props
+    const { currentStep } = this.state
+    window.history.pushState(
+      {},
+      "",
+      `/personalize/${stepComponents[currentStep].slug}`
+    )
   }
 
   getCurrentStep(): JSX.Element | null {
