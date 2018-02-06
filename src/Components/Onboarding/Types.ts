@@ -12,3 +12,5 @@ export interface StepComponent extends React.ComponentClass<StepProps> {
 export interface FollowProps {
   updateFollowCount: (count: number) => void
 }
+
+export type StepSlugs = "artists" | "budget" | "categories" | "interests" | null

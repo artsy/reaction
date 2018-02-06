@@ -1,10 +1,10 @@
 import React from "react"
-import { StepComponent } from "./Types"
+import { StepComponent, StepSlugs } from "./Types"
 
 interface Props {
   stepComponents: StepComponent[]
   redirectTo?: string
-  forceStep?: string
+  forceStep?: StepSlugs
 }
 
 interface State {
