@@ -32,7 +32,7 @@ interface State {
 class CollectorIntent extends React.Component<Props, State> {
   static slug = "interests"
 
-  intentEnum = {
+  static intentEnum = {
     "buy art & design": "BUY_ART_AND_DESIGN",
     "sell art & design": "SELL_ART_AND_DESIGN",
     "research art prices": "RESEARCH_ART_PRICES",
@@ -61,7 +61,7 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   submit() {
-    const intents = Object.values(this.intentEnum).filter((_, index) => this.state.selectedOptions[index])
+    const intents = Object.values(CollectorIntent.intentEnum).filter((_, index) => this.state.selectedOptions[index])
 
     commitMutation(this.props.relayEnvironment, {
       mutation: graphql`
@@ -84,7 +84,7 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   render() {
-    const options = Object.keys(this.intentEnum).map((text, index) => (
+    const options = Object.keys(CollectorIntent.intentEnum).map((text, index) => (
       <SelectableToggle
         key={index}
         text={text}
