@@ -87,6 +87,7 @@ export default class Artists extends React.Component<StepProps, State> {
             onInput={this.searchTextChanged.bind(this)}
             onPaste={this.searchTextChanged.bind(this)}
             onCut={this.searchTextChanged.bind(this)}
+            autoFocus
           />
           <div style={{ marginBottom: "35px" }} />
           <ArtistList
