@@ -25,12 +25,14 @@ const Container = styled.div`
 const MainTitle = styled(StyledTitle)`
   text-align: center;
   line-height: normal;
+  margin-bottom: 6px;
   ${media.sm`
     text-align: left;
   `};
 `
 const Subtitle = styled(StyledTitle)`
   color: ${Colors.grayDark};
+  margin-top: 6px;
   margin-bottom: 30px;
   text-align: center;
   line-height: normal;
