@@ -15,7 +15,7 @@ interface State {
 class Wizard extends React.Component<Props, State> {
   static defaultProps = {
     redirectTo: "/",
-    forceStep: "",
+    forceStep: null,
   }
 
   constructor(props) {
