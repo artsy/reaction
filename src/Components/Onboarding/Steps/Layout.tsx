@@ -25,12 +25,14 @@ const Container = styled.div`
 const MainTitle = styled(StyledTitle)`
   text-align: center;
   line-height: normal;
+  margin-bottom: 6px;
   ${media.sm`
     text-align: left;
   `};
 `
 const Subtitle = styled(StyledTitle)`
   color: ${Colors.grayDark};
+  margin-top: 6px;
   margin-bottom: 30px;
   text-align: center;
   line-height: normal;
@@ -39,6 +41,10 @@ const Subtitle = styled(StyledTitle)`
     margin-bottom: 15px;
     font-size: 20px
   `};
+`
+
+const ItemContainer = styled.div`
+  padding-bottom: 50px;
 `
 
 /* MS IE11 and Edge don't support for the sticky position property */
@@ -55,7 +61,7 @@ const FixedButttonContainer = styled.div`
 const StickyButtonContainer = styled.div`
   position: sticky;
   bottom: 0px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white, white);
+  background: linear-gradient(rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 17%, white 35%, white);
   display: flex;
   justify-content: center;
 `
@@ -85,7 +91,10 @@ export class Layout extends React.Component<Props, null> {
       <Container>
         <MainTitle>{this.props.title} </MainTitle>
         <Subtitle>{this.props.subtitle}</Subtitle>
-        <div>{this.props.children}</div>
+        <ItemContainer>
+          {this.props.children}
+        </ItemContainer>
+
         <FixedButttonContainer>
           <StickyButtonContainer>
             <NextButton
