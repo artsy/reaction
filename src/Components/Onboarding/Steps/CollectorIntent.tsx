@@ -29,8 +29,8 @@ interface State {
   error?: string
 }
 
-class CollectorIntent extends React.Component<Props, State> {
-  static slug = "interests"
+export class CollectorIntentComponent extends React.Component<Props, State> {
+  static slug: "interests" = "interests"
 
   static intentEnum = {
     "buy art & design": "BUY_ART_AND_DESIGN",
@@ -50,18 +50,22 @@ class CollectorIntent extends React.Component<Props, State> {
     }
   }
 
-  onOptionSelected = (index) => {
+  onOptionSelected = index => {
     const selectedOptions = Object.assign({}, this.state.selectedOptions)
     selectedOptions[index] = !selectedOptions[index]
 
     this.setState({
       selectedOptions,
-      selectedCount: Object.values(selectedOptions).filter(isSelected => isSelected).length
+      selectedCount: Object.values(selectedOptions).filter(
+        isSelected => isSelected
+      ).length,
     })
   }
 
   submit() {
-    const intents = Object.values(CollectorIntent.intentEnum).filter((_, index) => this.state.selectedOptions[index])
+    const intents = Object.values(CollectorIntentComponent.intentEnum).filter(
+      (_, index) => this.state.selectedOptions[index]
+    )
 
     commitMutation(this.props.relayEnvironment, {
       mutation: graphql`
@@ -84,7 +88,9 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 
   render() {
-    const options = Object.keys(CollectorIntent.intentEnum).map((text, index) => (
+    const options = Object.keys(
+      CollectorIntentComponent.intentEnum
+    ).map((text, index) => (
       <SelectableToggle
         key={index}
         text={text}
@@ -107,4 +113,4 @@ class CollectorIntent extends React.Component<Props, State> {
   }
 }
 
-export default ContextConsumer(CollectorIntent)
+export default ContextConsumer(CollectorIntentComponent)

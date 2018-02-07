@@ -8,15 +8,29 @@ import CollectorIntent from "../Steps/CollectorIntent"
 import Genes from "../Steps/Genes"
 import Wizard from "../Wizard"
 
-storiesOf("Onboarding", module).add("Wizard", () => {
-  return (
-    <div>
-      <ContextProvider>
-        <Wizard
-          stepComponents={[CollectorIntent, Artists, Genes, Budget]}
-          redirectTo={"/"}
-        />
-      </ContextProvider>
-    </div>
-  )
-})
+storiesOf("Onboarding", module)
+  .add("Wizard", () => {
+    return (
+      <div>
+        <ContextProvider>
+          <Wizard
+            stepComponents={[CollectorIntent, Artists, Genes, Budget]}
+            redirectTo={"/"}
+          />
+        </ContextProvider>
+      </div>
+    )
+  })
+  .add("Wizard - Force Step", () => {
+    return (
+      <div>
+        <ContextProvider>
+          <Wizard
+            stepComponents={[CollectorIntent, Artists, Genes, Budget]}
+            redirectTo="/"
+            forceStep="artists"
+          />
+        </ContextProvider>
+      </div>
+    )
+  })

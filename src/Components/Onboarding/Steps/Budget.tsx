@@ -25,8 +25,11 @@ interface State {
   selection: number | null
 }
 
-class Budget extends React.Component<StepProps & ContextProps, State> {
-  static slug = "budget"
+export class BudgetComponent extends React.Component<
+  StepProps & ContextProps,
+  State
+> {
+  static slug: "budget" = "budget"
 
   options = {
     "UNDER $500": 500,
@@ -96,4 +99,4 @@ class Budget extends React.Component<StepProps & ContextProps, State> {
   }
 }
 
-export default ContextConsumer(Budget)
+export default ContextConsumer(BudgetComponent)
