@@ -113,4 +113,8 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
   }
 }
 
-export default ContextConsumer(CollectorIntentComponent)
+const CollectorIntent = ContextConsumer(CollectorIntentComponent)
+// tslint:disable:no-string-literal
+CollectorIntent["slug"] = CollectorIntentComponent.slug
+
+export default CollectorIntent

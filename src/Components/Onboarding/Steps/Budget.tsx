@@ -99,4 +99,8 @@ export class BudgetComponent extends React.Component<
   }
 }
 
-export default ContextConsumer(BudgetComponent)
+const Budget = ContextConsumer(BudgetComponent)
+// tslint:disable:no-string-literal
+Budget["slug"] = BudgetComponent.slug
+
+export default Budget
