@@ -50,7 +50,17 @@ storiesOf("Components/Buttons", module)
     return <Button block>Block Button</Button>
   })
   .add("Facebook Button", () => {
-    return <FacebookButton />
+    return (
+      <div>
+        <FacebookButton />
+
+        <br />
+
+        <FacebookButton>
+          Continue with Facebook
+        </FacebookButton>
+      </div>
+    )
   })
   .add("Twitter Button", () => {
     return <TwitterButton />

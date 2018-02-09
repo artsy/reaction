@@ -5,7 +5,7 @@ import Button, { ButtonProps } from "./Default"
 
 const FacebookButton = (props: ButtonProps) => {
   const icon = <Icon name="facebook" color="white" />
-  return <Button {...props} icon={icon}>Log in with Facebook</Button>
+  return <Button {...props} icon={icon}>{props.children || 'Log in with Facebook'}</Button>
 }
 
 export default styled(FacebookButton)`
