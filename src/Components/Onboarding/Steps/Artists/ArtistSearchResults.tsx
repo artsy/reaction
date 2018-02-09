@@ -15,6 +15,7 @@ import { FollowProps } from "../../Types"
 
 export interface Props extends FollowProps {
   term: string
+  tracking?: any
 }
 
 interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
@@ -67,6 +68,13 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
     this.followCount += 1
 
     this.props.updateFollowCount(this.followCount)
+
+    this.props.tracking.trackEvent({
+      action: "Followed Artist",
+      entity_id: artistId,
+      entity_slug: artistId,
+      context_module: "onboarding search",
+    })
   }
 
   onFollowedArtist(artist: any) {

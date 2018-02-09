@@ -1,4 +1,6 @@
 import React from "react"
+import Events from "../../Utils/Events"
+import { track } from "../../Utils/track"
 import { ProgressIndicator } from "./ProgressIndicator"
 import { StepComponent, StepSlugs } from "./Types"
 
@@ -14,6 +16,12 @@ interface State {
   percentComplete: number
 }
 
+@track(
+  { page: "Onboarding" },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 class Wizard extends React.Component<Props, State> {
   static defaultProps = {
     redirectTo: "/",
