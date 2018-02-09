@@ -1,4 +1,5 @@
 import React from "react"
+import { ProgressIndicator } from "./ProgressIndicator"
 import { StepComponent, StepSlugs } from "./Types"
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 interface State {
   currentStep: number
   nextButtonEnabled: boolean
+  percentComplete: number
 }
 
 class Wizard extends React.Component<Props, State> {
@@ -24,6 +26,7 @@ class Wizard extends React.Component<Props, State> {
     this.state = {
       currentStep: this.getForceStep(),
       nextButtonEnabled: false,
+      percentComplete: 0,
     }
   }
 
@@ -68,13 +71,21 @@ class Wizard extends React.Component<Props, State> {
       const stepIndex = currentStep + increaseBy
       const nextComponent = stepComponents[stepIndex]
       window.history.pushState({}, "", `/personalize/${nextComponent.slug}`)
-      this.setState({ currentStep: stepIndex })
+      this.setState({
+        currentStep: stepIndex,
+        percentComplete: stepIndex / stepComponents.length,
+      })
     }
   }
 
   render() {
     const step = this.getCurrentStep()
-    return <div>{step}</div>
+    return (
+      <div>
+        <ProgressIndicator percentComplete={this.state.percentComplete} />
+        {step}
+      </div>
+    )
   }
 }
 
