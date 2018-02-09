@@ -71,7 +71,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
       action: "Followed Artist",
       entity_id: artistId,
       entity_slug: artistId,
-      context_module: "onboarding search",
+      context_module: "onboarding recommended",
     })
   }
 
