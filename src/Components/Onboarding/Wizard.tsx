@@ -66,7 +66,12 @@ class Wizard extends React.Component<Props, State> {
     const { stepComponents, redirectTo } = this.props
 
     if (currentStep >= stepComponents.length - 1) {
-      window.location.href = redirectTo
+      this.setState({
+        percentComplete: 1,
+      })
+      setTimeout(() => {
+        window.location.href = redirectTo
+      }, 500)
     } else {
       const stepIndex = currentStep + increaseBy
       const nextComponent = stepComponents[stepIndex]
