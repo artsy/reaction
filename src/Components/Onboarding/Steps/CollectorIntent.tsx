@@ -101,7 +101,7 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
 
     return (
       <Layout
-        title="Get started on Artsy, what are you most interested in doing?"
+        title="How would you like to use Artsy?"
         subtitle="Select all that apply"
         onNextButtonPressed={
           this.state.selectedCount > 0 ? this.submit.bind(this) : null

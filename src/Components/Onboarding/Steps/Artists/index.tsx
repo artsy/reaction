@@ -73,7 +73,7 @@ export default class Artists extends React.Component<StepProps, State> {
   render() {
     return (
       <Layout
-        title="Follow a few artists that interest you most"
+        title="Who are your favorite artists?"
         subtitle="Follow one or more"
         onNextButtonPressed={
           this.state.followCount > 0 ? this.submit.bind(this) : null

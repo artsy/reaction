@@ -66,7 +66,7 @@ export default class Genes extends React.Component<StepProps, State> {
   render() {
     return (
       <Layout
-        title="Follow art categories that interest you most"
+        title="What categories most interest you?"
         subtitle="Follow one or more"
         onNextButtonPressed={
           this.state.followCount > 0 ? this.clickedNext.bind(this) : null
