@@ -88,7 +88,7 @@ export class BudgetComponent extends React.Component<
 
     return (
       <Layout
-        title="What's your budget?"
+        title="What’s your maximum artwork budget?"
         subtitle="Select one"
         onNextButtonPressed={this.state.selection && this.submit.bind(this)}
         isLastStep

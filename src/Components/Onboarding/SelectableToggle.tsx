@@ -43,6 +43,14 @@ const Col = styled.div`
   align-items: center;
 `
 
+const EmptyCircle = styled.div`
+  width: 26px;
+  height: 26px;
+  border: 1px solid ${Colors.grayRegular};
+  border-radius: 50%;
+  background-color: transparent;
+`
+
 class SelectableToggle extends React.Component<SelectableToggleProps, null> {
   constructor(props) {
     super(props)
@@ -59,12 +67,14 @@ class SelectableToggle extends React.Component<SelectableToggleProps, null> {
     return (
       <div>
         <Link href={this.props.href} onClick={() => this.onSelect()}>
-          <FullWidthCol>
-            {this.props.text}
-          </FullWidthCol>
+          <FullWidthCol>{this.props.text}</FullWidthCol>
 
           <Col>
-            {this.props.selected ? <CircleBlackCheckIcon width='26' height='26' /> : null}
+            {this.props.selected ? (
+              <CircleBlackCheckIcon width="26" height="26" />
+            ) : (
+              <EmptyCircle />
+            )}
           </Col>
         </Link>
       </div>

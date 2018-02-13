@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Colors from "../../Assets/Colors"
 
 interface Props {
   percentComplete: number
@@ -24,17 +25,7 @@ export class ProgressIndicator extends React.Component<Props, null> {
 const ProgressIndicatorContainer = styled.div`
   width: 100%;
   height: 6px;
-  background-image: linear-gradient(
-    45deg,
-    gray 25%,
-    transparent 25%,
-    transparent 50%,
-    gray 50%,
-    gray 75%,
-    transparent 75%,
-    transparent
-  );
-  background-size: 4px 4px;
+  background-color: ${Colors.grayRegular};
 `
 
 const CompletionBar = styled.div`
