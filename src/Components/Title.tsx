@@ -30,7 +30,8 @@ const StyledTitle = styled(Title)`
   font-size: ${props => titleSizes[props.titleSize]};
   color: ${props => props.color};
   margin: 20px 0;
-  ${fonts.secondary.style} ${media.sm`
+  ${fonts.secondary.style};
+  ${media.sm`
     font-size: ${titleSizes.small};
   `};
 `
