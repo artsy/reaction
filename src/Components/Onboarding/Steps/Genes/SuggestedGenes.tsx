@@ -7,6 +7,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import Events from "../../../../Utils/Events"
 import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
@@ -36,7 +37,7 @@ interface Props
   tracking?: any
 }
 
-@track()
+@track({}, { dispatch: data => Events.postEvent(data) })
 class SuggestedGenesContent extends React.Component<Props, null> {
   private excludedGeneIds: Set<string>
   followCount: number = 0

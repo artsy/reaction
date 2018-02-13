@@ -17,12 +17,7 @@ interface State {
   percentComplete: number
 }
 
-@track(
-  { page: "Onboarding" },
-  {
-    dispatch: data => Events.postEvent(data),
-  }
-)
+@track({}, { dispatch: data => Events.postEvent(data) })
 class Wizard extends React.Component<Props, State> {
   static defaultProps = {
     redirectTo: "/",

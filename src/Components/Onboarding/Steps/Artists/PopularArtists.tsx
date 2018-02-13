@@ -7,6 +7,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import Events from "../../../../Utils/Events"
 import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
@@ -26,7 +27,7 @@ interface Props
     RelayProps,
     FollowProps {}
 
-@track()
+@track({}, { dispatch: data => Events.postEvent(data) })
 class PopularArtistsContent extends React.Component<Props, null> {
   private excludedArtistIds: Set<string>
   followCount: number = 0

@@ -9,6 +9,7 @@ import {
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import * as fonts from "../../../../Assets/Fonts"
+import Events from "../../../../Utils/Events"
 import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
@@ -46,7 +47,7 @@ const NoResultsContainer = styled.div`
   font-weight: lighter;
 `
 
-@track()
+@track({}, { dispatch: data => Events.postEvent(data) })
 class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   private excludedGeneIds: Set<string>
   followCount: number = 0
