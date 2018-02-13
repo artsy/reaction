@@ -7,10 +7,11 @@
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
   "files": [
-    "dist",
     "assets",
     "data",
-    "docs"
+    "dist",
+    "docs",
+    "src"
   ],
   "engines": {
     "node": "8.x.x",
