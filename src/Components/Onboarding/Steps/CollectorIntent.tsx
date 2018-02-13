@@ -25,7 +25,6 @@ type Props = StepProps & ContextProps
 
 interface State {
   selectedOptions: { [option: string]: boolean }
-  selectedCount: number
   error?: string
 }
 
@@ -46,7 +45,6 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
 
     this.state = {
       selectedOptions: {},
-      selectedCount: 0,
     }
   }
 
@@ -56,9 +54,6 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
 
     this.setState({
       selectedOptions,
-      selectedCount: Object.values(selectedOptions).filter(
-        isSelected => isSelected
-      ).length,
     })
   }
 
@@ -103,9 +98,7 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
       <Layout
         title="How would you like to use Artsy?"
         subtitle="Select all that apply"
-        onNextButtonPressed={
-          this.state.selectedCount > 0 ? this.submit.bind(this) : null
-        }
+        onNextButtonPressed={this.submit.bind(this)}
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>
