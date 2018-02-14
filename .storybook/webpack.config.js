@@ -3,11 +3,12 @@ const fs = require("fs")
 const path = require("path")
 const sharify = require("./sharify")
 
+const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin")
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+
 const webpack = require("webpack")
 const merge = require("webpack-merge")
 const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/webpack.config.js")
-
-const { CheckerPlugin } = require("awesome-typescript-loader")
 
 env.load()
 
@@ -26,7 +27,20 @@ const sharifyPath = sharify({
   METAPHYSICS_ENDPOINT,
 })
 
-const plugins = [new CheckerPlugin()]
+const plugins = [
+  new ForkTsCheckerWebpackPlugin({
+    formatter: "codeframe",
+    formatterOptions: "highlightCode",
+    tslint: false,
+    checkSyntacticErrors: true,
+    watch: ["./src"],
+  }),
+  new ForkTsCheckerNotifierWebpackPlugin({
+    excludeWarnings: true,
+    skipFirstNotification: true,
+  }),
+]
+
 if (USER_ID && USER_ACCESS_TOKEN) {
   plugins.push(
     new webpack.DefinePlugin({
@@ -45,8 +59,11 @@ if (USER_ID && USER_ACCESS_TOKEN) {
 
 module.exports = (baseConfig, env) => {
   const config = genDefaultConfig(baseConfig, env)
+
   // The progress plugin does not play nice with `concurrently`, so remove it.
-  config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== "ProgressPlugin")
+  config.plugins = config.plugins.filter(({ constructor }) => {
+    return constructor.name !== "ProgressPlugin"
+  })
 
   const merged = merge(config, {
     devtool: WEBPACK_DEVTOOL,
@@ -62,19 +79,23 @@ module.exports = (baseConfig, env) => {
     module: {
       rules: [
         {
+          test: /\.tsx?$/,
           exclude: [/node_modules/, /__tests__/],
           use: [
+            { loader: "cache-loader" },
             {
-              loader: "awesome-typescript-loader",
+              loader: "babel-loader",
               options: {
-                transpileOnly: true, // FIXME: This is only for the duration of fixing all build issues during Relay migration.
-                useBabel: true,
-                useCache: true,
-                useTranspileModule: true, // Supposedly faster, won’t work if/when we emit TS declaration files.
+                cacheDirectory: true,
+              },
+            },
+            {
+              loader: "ts-loader",
+              options: {
+                happyPackMode: true,
               },
             },
           ],
-          test: /\.tsx?$/,
         },
       ],
     },

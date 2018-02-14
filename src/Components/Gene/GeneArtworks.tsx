@@ -1,5 +1,9 @@
 import * as React from "react"
-import { createFragmentContainer, graphql, RelayPaginationProp } from "react-relay"
+import {
+  createFragmentContainer,
+  graphql,
+  RelayPaginationProp,
+} from "react-relay"
 import styled from "styled-components"
 
 import { ButtonState } from "../Buttons/Default"
@@ -62,7 +66,9 @@ export class GeneArtworks extends React.Component<Props, null> {
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
-          selected={aggregation.slice && this.props[aggregation.slice.toLowerCase()]}
+          selected={
+            aggregation.slice && this.props[aggregation.slice.toLowerCase()]
+          }
           onSelected={this.props.onDropdownSelected}
         />
       )
@@ -73,7 +79,10 @@ export class GeneArtworks extends React.Component<Props, null> {
     return (
       <ArtistFilterButtons>
         <span>By Artists:</span>
-        <Button onClick={this.props.onArtistModeToggleSelected} state={ButtonState.Default}>
+        <Button
+          onClick={this.props.onArtistModeToggleSelected}
+          state={ButtonState.Default}
+        >
           All Artists
         </Button>
         <span>By Work:</span>
@@ -82,7 +91,12 @@ export class GeneArtworks extends React.Component<Props, null> {
   }
 
   renderForSaleToggle() {
-    return <ForSaleCheckbox checked={this.props.for_sale} onChange={this.props.onForSaleToggleSelected} />
+    return (
+      <ForSaleCheckbox
+        checked={this.props.for_sale}
+        onChange={this.props.onForSaleToggleSelected}
+      />
+    )
   }
 
   renderArtworks() {
@@ -91,7 +105,9 @@ export class GeneArtworks extends React.Component<Props, null> {
       { val: "-year", name: "Artwork Year (desc.)" },
       { val: "year", name: "Artwork Year (asc.)" },
     ]
-    const selectedSort = pulldownOptions.find(sort => sort.val === this.props.sort)
+    const selectedSort = pulldownOptions.find(
+      sort => sort.val === this.props.sort
+    )
     return (
       <div>
         <SubFilterBar>
@@ -113,7 +129,10 @@ export class GeneArtworks extends React.Component<Props, null> {
             onChange={this.props.onSortSelected}
           />
         </SubFilterBar>
-        <GeneArtworksContent geneID={this.props.gene.id} filtered_artworks={this.props.gene.filtered_artworks as any} />
+        <GeneArtworksContent
+          geneID={this.props.gene.id}
+          filtered_artworks={this.props.gene.filtered_artworks as any}
+        />
       </div>
     )
   }
@@ -133,12 +152,15 @@ export class GeneArtworks extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(GeneArtworks, {
-  gene: graphql.experimental`
+  gene: graphql`
     fragment GeneArtworks_gene on Gene
       @argumentDefinitions(
         for_sale: { type: "Boolean" }
         medium: { type: "String", defaultValue: "*" }
-        aggregations: { type: "[ArtworkAggregation]", defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE] }
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
+        }
         price_range: { type: "String", defaultValue: "*" }
         dimension_range: { type: "String", defaultValue: "*" }
       ) {
