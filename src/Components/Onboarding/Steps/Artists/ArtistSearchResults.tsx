@@ -39,7 +39,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   onArtistFollowed(
-    artistId: string,
+    artist: any,
     store: RecordSourceSelectorProxy,
     data: SelectorData
   ): void {
@@ -57,7 +57,8 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
       { term: this.props.term }
     )
     const updatedPopularArtists = popularArtists.map(
-      artist => (artist.getDataID() === artistId ? artistToSuggest : artist)
+      artistItem =>
+        artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
     )
 
     popularArtistsRootField.setLinkedRecords(
@@ -72,8 +73,8 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Artist",
-      entity_id: artistId,
-      entity_slug: artistId,
+      entity_id: artist._id,
+      entity_slug: artist.id,
       context_module: "onboarding search",
     })
   }
@@ -137,7 +138,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
         excludedArtistIds: Array.from(this.excludedArtistIds),
       },
       updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onArtistFollowed(artist.__id, store, data),
+        this.onArtistFollowed(artist, store, data),
     })
   }
 

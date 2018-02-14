@@ -40,7 +40,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   }
 
   onArtistFollowed(
-    artistId: string,
+    artist: any,
     store: RecordSourceSelectorProxy,
     data: SelectorData
   ): void {
@@ -59,7 +59,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
     const updatedPopularArtists = popularArtistsRootField
       .getLinkedRecords("artists")
       .map(
-        artist => (artist.getDataID() === artistId ? artistToSuggest : artist)
+        artistItem =>
+          artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
       )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
@@ -70,8 +71,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Artist",
-      entity_id: artistId,
-      entity_slug: artistId,
+      entity_id: artist._id,
+      entity_slug: artist.id,
       context_module: "onboarding recommended",
     })
   }
