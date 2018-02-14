@@ -60,7 +60,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   onGeneFollowed(
-    geneId: string,
+    gene: any,
     store: RecordSourceSelectorProxy,
     data: SelectorData
   ): void {
@@ -75,7 +75,8 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
       { term: this.props.term }
     )
     const updatedSuggestedGenes = suggestedGenes.map(
-      gene => (gene.getValue("id") === geneId ? suggestedGene : gene)
+      geneItem =>
+        geneItem.getValue("id") === gene.__id ? suggestedGene : geneItem
     )
 
     suggestedGenesRootField.setLinkedRecords(
@@ -90,8 +91,8 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Gene",
-      entity_id: geneId,
-      entity_slug: geneId,
+      entity_id: gene._id,
+      entity_slug: gene.id,
       context_module: "gene search",
     })
   }
@@ -133,7 +134,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
         excludedGeneIds: Array.from(this.excludedGeneIds),
       },
       updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onGeneFollowed(gene.id, store, data),
+        this.onGeneFollowed(gene, store, data),
     })
   }
 
