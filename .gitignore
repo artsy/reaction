@@ -14,5 +14,4 @@ dist
 .vscode/cSpell.json
 yarn-error.log
 npm-debug.log
-__generated__
 package-lock.json
