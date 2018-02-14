@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction-force",
-  "version": "0.21.0",
+  "version": "0.0.0-development",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -41,7 +41,8 @@
     "test": "node verify-node-version.js && jest",
     "test:watch": "jest --watch --runInBand",
     "type-check": "tsc --noEmit --pretty",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.3.2",
@@ -100,7 +101,8 @@
     "typescript": "^2.6.2",
     "typescript-babel-jest": "^1.0.3",
     "typescript-styled-plugin": "^0.1.2",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "semantic-release": "^12.4.1"
   },
   "dependencies": {
     "history": "^4.6.1",
