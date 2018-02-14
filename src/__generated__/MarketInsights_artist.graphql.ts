@@ -161,12 +161,10 @@ return {
                       ]
                     },
                     v1
-                  ],
-                  "idField": "__id"
+                  ]
                 },
                 v1
-              ],
-              "idField": "__id"
+              ]
             }
           ]
         }
@@ -265,16 +263,14 @@ return {
                   "storageKey": "sale_date(format:\"YYYY\")"
                 },
                 v1
-              ],
-              "idField": "__id"
+              ]
             }
           ]
         }
       ]
     },
     v1
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = 'a0a4f694521912c7257ebe2e713a2a51';

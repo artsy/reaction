@@ -41,8 +41,7 @@ return {
       "type": "ArtworkFilterTag",
       "selections": v0
     }
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = 'fe0e6f752ce23f2a03e177de220f2ed6';

@@ -115,8 +115,7 @@ return {
             "args": null
           },
           v2
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   },
@@ -234,12 +233,10 @@ return {
                             ]
                           },
                           v2
-                        ],
-                        "idField": "__id"
+                        ]
                       },
                       v2
-                    ],
-                    "idField": "__id"
+                    ]
                   }
                 ]
               }
@@ -338,16 +335,14 @@ return {
                         "storageKey": "sale_date(format:\"YYYY\")"
                       },
                       v2
-                    ],
-                    "idField": "__id"
+                    ]
                   }
                 ]
               }
             ]
           },
           v2
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   }

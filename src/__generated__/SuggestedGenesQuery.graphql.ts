@@ -68,8 +68,7 @@ return {
             "args": null
           },
           v0
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   },
@@ -151,8 +150,7 @@ return {
             ]
           },
           v0
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   }

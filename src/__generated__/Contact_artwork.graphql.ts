@@ -110,8 +110,7 @@ return {
           "storageKey": null
         },
         v0
-      ],
-      "idField": "__id"
+      ]
     },
     {
       "kind": "LinkedField",
@@ -137,8 +136,7 @@ return {
           "storageKey": null
         },
         v0
-      ],
-      "idField": "__id"
+      ]
     },
     {
       "kind": "LinkedField",
@@ -161,13 +159,12 @@ return {
             v1,
             {
               "kind": "ScalarField",
-              "alias": null,
+              "alias": "__id",
               "name": "id",
               "args": null,
               "storageKey": null
             }
-          ],
-          "idField": "id"
+          ]
         },
         {
           "kind": "LinkedField",
@@ -200,12 +197,10 @@ return {
           ]
         },
         v0
-      ],
-      "idField": "__id"
+      ]
     },
     v0
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = '15c2a7973aeb8fd0202f593635e2bbf2';

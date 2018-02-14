@@ -115,8 +115,7 @@ const node: ConcreteFragment = {
           "args": null,
           "storageKey": null
         }
-      ],
-      "idField": "__id"
+      ]
     }
   ]
 };

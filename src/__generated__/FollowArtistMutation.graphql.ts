@@ -80,8 +80,7 @@ v1 = [
             "args": null,
             "storageKey": null
           }
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   }

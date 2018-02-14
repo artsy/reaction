@@ -69,8 +69,7 @@ const node: ConcreteFragment = {
               "name": "GridItem_artwork",
               "args": null
             }
-          ],
-          "idField": "__id"
+          ]
         }
       ]
     }

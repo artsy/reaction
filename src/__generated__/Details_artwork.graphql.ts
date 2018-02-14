@@ -105,8 +105,7 @@ return {
         v2,
         v0,
         v3
-      ],
-      "idField": "__id"
+      ]
     },
     {
       "kind": "ScalarField",
@@ -127,8 +126,7 @@ return {
         v3,
         v0,
         v2
-      ],
-      "idField": "__id"
+      ]
     },
     {
       "kind": "LinkedField",
@@ -168,12 +166,10 @@ return {
           "storageKey": null
         },
         v2
-      ],
-      "idField": "__id"
+      ]
     },
     v2
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = '46676bc3e081aefe4bcdb6ea73308dc0';

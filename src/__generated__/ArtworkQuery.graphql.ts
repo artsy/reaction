@@ -82,7 +82,7 @@ fragment Contact_artwork on Artwork {
   sale_artwork {
     highest_bid {
       display
-      id
+      __id: id
     }
     opening_bid {
       display
@@ -145,13 +145,6 @@ v5 = {
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
@@ -161,7 +154,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkQuery",
   "id": null,
-  "text": "query ArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...Artwork_artwork\n    __id\n  }\n}\n\nfragment Artwork_artwork on Artwork {\n  id\n  image {\n    url(version: \"large\")\n    aspect_ratio\n  }\n  ...Metadata_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...Artwork_artwork\n    __id\n  }\n}\n\nfragment Artwork_artwork on Artwork {\n  id\n  image {\n    url(version: \"large\")\n    aspect_ratio\n  }\n  ...Metadata_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -185,8 +178,7 @@ return {
             "args": null
           },
           v2
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   },
@@ -216,10 +208,15 @@ return {
               v2,
               v4,
               v5
-            ],
-            "idField": "__id"
+            ]
           },
-          v6,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
           v4,
           {
             "kind": "ScalarField",
@@ -307,8 +304,7 @@ return {
                 "args": null,
                 "storageKey": null
               }
-            ],
-            "idField": "__id"
+            ]
           },
           {
             "kind": "LinkedField",
@@ -348,8 +344,7 @@ return {
                 "storageKey": null
               },
               v2
-            ],
-            "idField": "__id"
+            ]
           },
           v2,
           {
@@ -384,10 +379,15 @@ return {
                 "concreteType": "SaleArtworkHighestBid",
                 "plural": false,
                 "selections": [
-                  v7,
-                  v6
-                ],
-                "idField": "id"
+                  v6,
+                  {
+                    "kind": "ScalarField",
+                    "alias": "__id",
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
               },
               {
                 "kind": "LinkedField",
@@ -398,7 +398,7 @@ return {
                 "concreteType": "SaleArtworkOpeningBid",
                 "plural": false,
                 "selections": [
-                  v7
+                  v6
                 ]
               },
               {
@@ -420,11 +420,9 @@ return {
                 ]
               },
               v2
-            ],
-            "idField": "__id"
+            ]
           }
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   }

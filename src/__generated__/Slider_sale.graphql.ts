@@ -59,12 +59,10 @@ return {
           "args": null
         },
         v0
-      ],
-      "idField": "__id"
+      ]
     },
     v0
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = 'b5b12d888859091241dbdeda73f3c972';

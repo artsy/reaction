@@ -103,8 +103,7 @@ const node: ConcreteFragment = {
             }
           ]
         }
-      ],
-      "idField": "__id"
+      ]
     }
   ]
 };

@@ -185,7 +185,7 @@ fragment Contact_artwork on Artwork {
   sale_artwork {
     highest_bid {
       display
-      id
+      __id: id
     }
     opening_bid {
       display
@@ -304,7 +304,7 @@ return {
   "operationKind": "query",
   "name": "GeneContentsArtworksQuery",
   "id": null,
-  "text": "query GeneContentsArtworksQuery(\n  $geneID: String!\n  $medium: String\n  $price_range: String\n  $sort: String\n  $for_sale: Boolean\n  $dimension_range: String\n) {\n  gene(id: $geneID) {\n    ...GeneArtworks_gene_2wcu0m\n    __id\n  }\n}\n\nfragment GeneArtworks_gene_2wcu0m on Gene {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], for_sale: $for_sale, medium: $medium, price_range: $price_range, dimension_range: $dimension_range, size: 0, include_medium_filter_in_aggregation: true) {\n    ...TotalCount_filter_artworks\n    ...GeneArtworksContent_filtered_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n      ...Dropdown_aggregation\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        __id\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment TotalCount_filter_artworks on FilterArtworks {\n  counts {\n    total\n  }\n  __id\n}\n\nfragment GeneArtworksContent_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\", sort: $sort) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    id\n    count\n    __id\n  }\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on ArtworkFilterTag {\n    name\n  }\n  ... on ArtworkFilterGene {\n    name\n  }\n  ... on Node {\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query GeneContentsArtworksQuery(\n  $geneID: String!\n  $medium: String\n  $price_range: String\n  $sort: String\n  $for_sale: Boolean\n  $dimension_range: String\n) {\n  gene(id: $geneID) {\n    ...GeneArtworks_gene_2wcu0m\n    __id\n  }\n}\n\nfragment GeneArtworks_gene_2wcu0m on Gene {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], for_sale: $for_sale, medium: $medium, price_range: $price_range, dimension_range: $dimension_range, size: 0, include_medium_filter_in_aggregation: true) {\n    ...TotalCount_filter_artworks\n    ...GeneArtworksContent_filtered_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n      ...Dropdown_aggregation\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        __id\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment TotalCount_filter_artworks on FilterArtworks {\n  counts {\n    total\n  }\n  __id\n}\n\nfragment GeneArtworksContent_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\", sort: $sort) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    id\n    count\n    __id\n  }\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on ArtworkFilterTag {\n    name\n  }\n  ... on ArtworkFilterGene {\n    name\n  }\n  ... on Node {\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -353,8 +353,7 @@ return {
             ]
           },
           v2
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   },
@@ -569,8 +568,7 @@ return {
                               v2,
                               v4,
                               v6
-                            ],
-                            "idField": "__id"
+                            ]
                           },
                           {
                             "kind": "LinkedField",
@@ -630,8 +628,7 @@ return {
                                 "args": null,
                                 "storageKey": null
                               }
-                            ],
-                            "idField": "__id"
+                            ]
                           },
                           {
                             "kind": "LinkedField",
@@ -671,8 +668,7 @@ return {
                                 "storageKey": null
                               },
                               v2
-                            ],
-                            "idField": "__id"
+                            ]
                           },
                           {
                             "kind": "ScalarField",
@@ -707,9 +703,14 @@ return {
                                 "plural": false,
                                 "selections": [
                                   v7,
-                                  v3
-                                ],
-                                "idField": "id"
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": "__id",
+                                    "name": "id",
+                                    "args": null,
+                                    "storageKey": null
+                                  }
+                                ]
                               },
                               {
                                 "kind": "LinkedField",
@@ -742,8 +743,7 @@ return {
                                 ]
                               },
                               v2
-                            ],
-                            "idField": "__id"
+                            ]
                           },
                           v3,
                           {
@@ -754,8 +754,7 @@ return {
                             "storageKey": null
                           },
                           v8
-                        ],
-                        "idField": "__id"
+                        ]
                       },
                       {
                         "kind": "ScalarField",
@@ -833,8 +832,7 @@ return {
                         "args": null,
                         "storageKey": null
                       }
-                    ],
-                    "idField": "__id"
+                    ]
                   }
                 ]
               },
@@ -859,15 +857,12 @@ return {
                     "type": "ArtworkFilterTag",
                     "selections": v9
                   }
-                ],
-                "idField": "__id"
+                ]
               }
-            ],
-            "idField": "__id"
+            ]
           },
           v2
-        ],
-        "idField": "__id"
+        ]
       }
     ]
   }

@@ -168,8 +168,7 @@ return {
                 },
                 v0,
                 v1
-              ],
-              "idField": "__id"
+              ]
             },
             {
               "kind": "FragmentSpread",
@@ -193,16 +192,13 @@ return {
               "args": null
             },
             v1
-          ],
-          "idField": "__id"
+          ]
         },
         v1
-      ],
-      "idField": "__id"
+      ]
     },
     v1
-  ],
-  "idField": "__id"
+  ]
 };
 })();
 (node as any).hash = 'e338dce3de7771de5f87d5d3605e6c19';
