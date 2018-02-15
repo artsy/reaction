@@ -50,11 +50,30 @@
 
 -   There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
 
-## Deployments
+## Commits and Deployments
 
-Circle CI is set up to publish reaction-force in a consistent and reliable way. To update the package version and deploy it on NPM.
+Circle CI is set up to publish releases to NPM automatically via [semantic-release](https://github.com/semantic-release/semantic-release) following every successful merge to master.
 
-    $ npm version <new_version>
-    $ git push --follow-tags
+Release versions (Major, minor, patch) are determined [based on commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), which must adhere to [Angular conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits). All commits must include a header, which consists of a type, scope and subject.  Optionally a body and footer can be included.  Breaking changes AKA major releases must include a line starting with the text `BREAKING CHANGE: ` followed by a description of changes.
 
-The package.json file will be updated and a commit staged. When a tag is pushed to `master`, Circle CI will publish to NPM. See [circle.yml](https://circleci.com/docs/1.0/npm-continuous-deployment/) and the [npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+##### Example Patch Release
+```
+style(onboarding): increase plus-button size
+```
+
+##### Example Minor (Feature) Release
+```
+feat(auctions): relay-based slider component
+<BLANK LINE>
+adds slider of artwork lots to replace existing backbone rails
+```
+
+
+##### Example Major (Breaking) Release
+```
+refactor(publishing): editable image captions
+<BLANK LINE>
+change images to accept editable components as props and not children
+<BLANK LINE>
+BREAKING CHANGE: removes support for children in image caption. Use props to add editable captions instead.
+```
