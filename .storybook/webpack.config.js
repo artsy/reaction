@@ -39,6 +39,7 @@ const plugins = [
     excludeWarnings: true,
     skipFirstNotification: true,
   }),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]
 
 if (USER_ID && USER_ACCESS_TOKEN) {
@@ -68,6 +69,10 @@ module.exports = (baseConfig, env) => {
   const merged = merge(config, {
     devtool: WEBPACK_DEVTOOL,
     devServer: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
       stats: "errors-only",
     },
     resolve: {
