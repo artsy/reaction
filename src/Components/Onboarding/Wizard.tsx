@@ -1,4 +1,6 @@
 import React from "react"
+import Events from "../../Utils/Events"
+import { track } from "../../Utils/track"
 import { ProgressIndicator } from "./ProgressIndicator"
 import { StepComponent, StepSlugs } from "./Types"
 
@@ -6,6 +8,7 @@ interface Props {
   stepComponents: StepComponent[]
   redirectTo?: string
   forceStep?: StepSlugs
+  tracking?: any
 }
 
 interface State {
@@ -14,6 +17,7 @@ interface State {
   percentComplete: number
 }
 
+@track({}, { dispatch: data => Events.postEvent(data) })
 class Wizard extends React.Component<Props, State> {
   static defaultProps = {
     redirectTo: "/",
@@ -61,17 +65,24 @@ class Wizard extends React.Component<Props, State> {
     return <CurrentStep onNextButtonPressed={this.onNextButtonPressed} />
   }
 
+  onFinish = () => {
+    const { redirectTo } = this.props
+    this.setState({ percentComplete: 1 })
+    setTimeout(() => {
+      window.location.href = redirectTo
+    }, 500)
+
+    this.props.tracking.trackEvent({
+      action: "Completed Onboarding",
+    })
+  }
+
   onNextButtonPressed = (increaseBy = 1) => {
     const { currentStep } = this.state
-    const { stepComponents, redirectTo } = this.props
+    const { stepComponents } = this.props
 
     if (currentStep >= stepComponents.length - 1) {
-      this.setState({
-        percentComplete: 1,
-      })
-      setTimeout(() => {
-        window.location.href = redirectTo
-      }, 500)
+      this.onFinish()
     } else {
       const stepIndex = currentStep + increaseBy
       const nextComponent = stepComponents[stepIndex]
