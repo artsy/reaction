@@ -50,11 +50,30 @@
 
 -   There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
 
-## Deployments
+## Commits and Deployments
 
-Circle CI is set up to publish reaction-force in a consistent and reliable way. To update the package version and deploy it on NPM.
+Circle CI is set up to publish releases to NPM automatically via [semantic-release](https://github.com/semantic-release/semantic-release) following every successful merge to master.
 
-    $ npm version <new_version>
-    $ git push --follow-tags
+Release versions (major, minor, patch) are triggered [by commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), when they adhere to [Ember conventions](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-ember/readme.md):
 
-The package.json file will be updated and a commit staged. When a tag is pushed to `master`, Circle CI will publish to NPM. See [circle.yml](https://circleci.com/docs/1.0/npm-continuous-deployment/) and the [npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+```
+[TAG context] commit message
+```
+
+[Valid tags](https://github.com/artsy/reaction/blob/master/package.json#L175) for release include PATCH, DOC, FIX (patch), FEATURE (minor), and BREAKING (major). Commits that do not adhere to this convention will not trigger an NPM release.
+
+##### Example Patch Release
+```
+[FIX onboarding] Modal does not open
+[PATCH] Bump version
+```
+
+##### Example Minor (Feature) Release
+```
+[FEATURE auctions] Add relay-based slider component
+```
+
+##### Example Major (Breaking) Release
+```
+[BREAKING publishing] Replace children with props for caption editing
+```
