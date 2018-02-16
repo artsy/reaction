@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
@@ -10,10 +11,26 @@ interface Props {
   article?: any
   color?: string
   editDescription?: any
+  tracking?: any
 }
 
+@track()
 export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
+
+  componentDidMount() {
+    const trackMe = document.querySelector(".SeriesAbout__description a")
+    trackMe.addEventListener("click", this.onClickFooterLink)
+  }
+
+  onClickFooterLink = event => {
+    this.props.tracking.trackEvent({
+      action: "Click",
+      flow: "Partner Footer CTA",
+      type: "external_link",
+      destination_path: event.currentTarget.href,
+    })
+  }
 
   render() {
     const { article, color, editDescription } = this.props
@@ -45,7 +62,9 @@ export class SeriesAbout extends Component<Props, null> {
               {editDescription}
             </Text>
           ) : (
-            <Text layout="standard" color={color} html={series_description} />
+            <div className="SeriesAbout__description">
+              <Text layout="standard" color={color} html={series_description} />
+            </div>
           )}
           {sponsor && (
             <PartnerBlock
@@ -72,6 +91,7 @@ export const SeriesAboutContainer = styled(Row)`
   max-width: 1200px;
   width: 100%;
 `
+
 const StyledCol = styled(Col)`
   ${PartnerBlockContainer} {
     display: none;
