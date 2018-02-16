@@ -1,11 +1,10 @@
 import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
 import { Text } from "../Sections/Text"
-import { TextTracked } from "../Sections/TextTracked"
 
 interface Props {
   article?: any
@@ -46,11 +45,7 @@ export class SeriesAbout extends Component<Props, null> {
               {editDescription}
             </Text>
           ) : (
-            <TextTracked
-              layout="standard"
-              color={color}
-              html={series_description}
-            />
+            <Text layout="standard" color={color} html={series_description} />
           )}
           {sponsor && (
             <PartnerBlock
@@ -72,15 +67,8 @@ SeriesAbout.defaultProps = {
   color: "black",
 }
 
-interface ColProps {
-  first?: boolean
-}
-
-const Div: StyledFunction<
-  Props & ColProps & React.HTMLProps<HTMLDivElement>
-> = styled(Row)
-export const SeriesAboutContainer = Div`
-  color: ${props => props.color};
+export const SeriesAboutContainer = styled(Row)`
+  color: ${(props: Props) => props.color};
   max-width: 1200px;
   width: 100%;
 `
@@ -114,7 +102,8 @@ const StyledCol = styled(Col)`
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s32")} ${props => media.sm`
+  ${Fonts.unica("s32")};
+  ${props => media.sm`
     margin-bottom: 20px;
   `};
 `
