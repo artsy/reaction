@@ -1,97 +1,74 @@
 import React from "react"
+import { Redirect, Route } from 'react-router'
+
+import Events from "../../Utils/Events"
+import { track } from "../../Utils/track"
 import { ProgressIndicator } from "./ProgressIndicator"
-import { StepComponent, StepSlugs } from "./Types"
 
-interface Props {
-  stepComponents: StepComponent[]
-  redirectTo?: string
-  forceStep?: StepSlugs
+import Artists from './Steps/Artists'
+import { BudgetComponent as Budget } from "./Steps/Budget"
+import { CollectorIntentComponent as CollectorIntent } from "./Steps/CollectorIntent"
+import Genes from './Steps/Genes'
+
+const STEPS = [
+  `/personalize/${CollectorIntent.slug}`,
+  `/personalize/${Artists.slug}`,
+  `/personalize/${Genes.slug}`,
+  `/personalize/${Budget.slug}`
+]
+
+export interface Props {
+  tracking?: any
 }
 
-interface State {
-  currentStep: number
-  nextButtonEnabled: boolean
-  percentComplete: number
+export interface State {
+  finished: boolean
 }
 
-class Wizard extends React.Component<Props, State> {
-  static defaultProps = {
-    redirectTo: "/",
-    forceStep: null,
-  }
-
+@track({}, { dispatch: data => Events.postEvent(data) })
+export class Wizard extends React.Component<Props, State> {
   constructor(props) {
     super(props)
-
     this.state = {
-      currentStep: this.getForceStep(),
-      nextButtonEnabled: false,
-      percentComplete: 0,
+      finished: false,
     }
   }
 
-  getForceStep = () => {
-    const { forceStep } = this.props
-    const stepSlugs = this.props.stepComponents.map(step => step.slug)
-    if (forceStep && stepSlugs.includes(forceStep)) {
-      return stepSlugs.indexOf(forceStep)
-    } else {
-      return 0
-    }
+  onNextButtonPressed = (increaseBy, history) => {
+    history.push(STEPS[STEPS.indexOf(location.pathname) + increaseBy])
   }
 
-  componentDidMount() {
-    const { stepComponents } = this.props
-    const { currentStep } = this.state
-    window.history.pushState(
-      {},
-      "",
-      `/personalize/${stepComponents[currentStep].slug}`
-    )
-  }
+  onFinish = redirectTo => {
+    this.setState({ finished: true })
+    setTimeout(() => (window.location.href = redirectTo || "/"), 500)
 
-  getCurrentStep(): JSX.Element | null {
-    const currentStep = this.state.currentStep
-
-    if (currentStep > this.props.stepComponents.length - 1) {
-      return null
-    }
-
-    const CurrentStep = this.props.stepComponents[currentStep]
-    return <CurrentStep onNextButtonPressed={this.onNextButtonPressed} />
-  }
-
-  onNextButtonPressed = (increaseBy = 1) => {
-    const { currentStep } = this.state
-    const { stepComponents, redirectTo } = this.props
-
-    if (currentStep >= stepComponents.length - 1) {
-      this.setState({
-        percentComplete: 1,
-      })
-      setTimeout(() => {
-        window.location.href = redirectTo
-      }, 500)
-    } else {
-      const stepIndex = currentStep + increaseBy
-      const nextComponent = stepComponents[stepIndex]
-      window.history.pushState({}, "", `/personalize/${nextComponent.slug}`)
-      this.setState({
-        currentStep: stepIndex,
-        percentComplete: stepIndex / stepComponents.length,
-      })
-    }
+    this.props.tracking.trackEvent({
+      action: "Completed Onboarding",
+    })
   }
 
   render() {
-    const step = this.getCurrentStep()
     return (
       <div>
-        <ProgressIndicator percentComplete={this.state.percentComplete} />
-        {step}
+        <Route path='/personalize/*' render={() =>
+          <ProgressIndicator percentComplete={ this.state.finished ? 1 : STEPS.indexOf(location.pathname) / STEPS.length } />
+        } />
+
+        <Route path={`/personalize/${CollectorIntent.slug}`} render={props =>
+          <CollectorIntent {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
+        } />
+        <Route path={`/personalize/${Artists.slug}`} render={props =>
+          <Artists {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
+        } />
+        <Route path={`/personalize/${Genes.slug}`} render={props =>
+          <Genes {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
+        } />
+        <Route path={`/personalize/${Budget.slug}`} render={props =>
+          <Budget {...props} onNextButtonPressed={() => this.onFinish(props.redirectTo)} />
+        } />
+
+        {new RegExp("/personalize(/*)$").exec(location.pathname) && <Redirect to={`/personalize/${CollectorIntent.slug}`} />}
       </div>
     )
   }
 }
-
-export default Wizard

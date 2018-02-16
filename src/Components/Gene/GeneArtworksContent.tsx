@@ -1,5 +1,10 @@
 import * as React from "react"
-import { ConnectionData, createPaginationContainer, graphql, RelayPaginationProp } from "react-relay"
+import {
+  ConnectionData,
+  createPaginationContainer,
+  graphql,
+  RelayPaginationProp,
+} from "react-relay"
 import styled from "styled-components"
 import ArtworkGrid from "../ArtworkGrid"
 import Spinner from "../Spinner"
@@ -38,9 +43,13 @@ export class GeneArtworksContent extends React.Component<Props, State> {
             console.error(error)
           }
           const newLength = this.props.filtered_artworks.artworks.edges.length
-          const newHasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+          const newHasMore = this.props.filtered_artworks.artworks.pageInfo
+            .hasNextPage
           if (newLength - origLength < PageSize && newHasMore) {
-            console.error(`Total count inconsistent with actual records returned for gene: ${this.props.geneID}`)
+            console.error(
+              `Total count inconsistent with actual records returned for gene: ${this
+                .props.geneID}`
+            )
             this.finishedPaginatingWithError = true
           }
           this.setState({ loading: false })
@@ -58,7 +67,9 @@ export class GeneArtworksContent extends React.Component<Props, State> {
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
         />
-        <SpinnerContainer>{this.state.loading ? <Spinner /> : ""}</SpinnerContainer>
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
       </div>
     )
   }
@@ -67,12 +78,18 @@ export class GeneArtworksContent extends React.Component<Props, State> {
 export default createPaginationContainer(
   GeneArtworksContent,
   {
-    filtered_artworks: graphql.experimental`
+    filtered_artworks: graphql`
       fragment GeneArtworksContent_filtered_artworks on FilterArtworks
-        @argumentDefinitions(count: { type: "Int", defaultValue: 10 }, cursor: { type: "String", defaultValue: "" }) {
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+        ) {
         __id
-        artworks: artworks_connection(first: $count, after: $cursor, sort: $sort)
-          @connection(key: "GeneArtworksContent_filtered_artworks") {
+        artworks: artworks_connection(
+          first: $count
+          after: $cursor
+          sort: $sort
+        ) @connection(key: "GeneArtworksContent_filtered_artworks") {
           pageInfo {
             hasNextPage
             endCursor
@@ -108,10 +125,16 @@ export default createPaginationContainer(
         filteredArtworksNodeID: props.filtered_artworks.__id,
       }
     },
-    query: graphql.experimental`
-      query GeneArtworksContentQuery($filteredArtworksNodeID: ID!, $count: Int!, $cursor: String, $sort: String) {
+    query: graphql`
+      query GeneArtworksContentQuery(
+        $filteredArtworksNodeID: ID!
+        $count: Int!
+        $cursor: String
+        $sort: String
+      ) {
         node(__id: $filteredArtworksNodeID) {
-          ...GeneArtworksContent_filtered_artworks @arguments(count: $count, cursor: $cursor)
+          ...GeneArtworksContent_filtered_artworks
+            @arguments(count: $count, cursor: $cursor)
         }
       }
     `,
