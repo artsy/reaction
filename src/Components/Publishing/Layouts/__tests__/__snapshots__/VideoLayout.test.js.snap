@@ -92,13 +92,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-decoration: none;
 }
 
-.c81 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
 .c52 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -761,6 +754,21 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 10px;
 }
 
+.c19 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  margin-left: 20px;
+}
+
+.c81 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
 .c25 {
   width: 28px;
   height: 28px;
@@ -935,14 +943,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c13 .c24 {
   cursor: pointer;
-}
-
-.c19 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 23px;
-  line-height: 1.5em;
-  margin-left: 20px;
 }
 
 .c15 {
@@ -1187,12 +1187,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media (max-width:720px) {
   .c7 {
     display: none;
-  }
-}
-
-@media (max-width:48em) {
-  .c81 {
-    margin-bottom: 20px;
   }
 }
 
@@ -1536,6 +1530,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   .c80 .file__PartnerBlockContainer-icj40k-0 {
     margin-top: 60px;
     display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c81 {
+    margin-bottom: 20px;
   }
 }
 
@@ -2312,16 +2312,20 @@ exports[`Video Layout matches the snapshot 1`] = `
         className="c80 c37 c57"
       >
         <div
-          className="article__text-section c58"
-          color="white"
+          className="SeriesAbout__description"
         >
           <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+            className="article__text-section c58"
+            color="white"
+          >
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+                }
               }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>

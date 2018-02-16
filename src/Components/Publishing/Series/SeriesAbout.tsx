@@ -19,8 +19,10 @@ export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   componentDidMount() {
-    const trackMe = document.querySelector(".SeriesAbout__description a")
-    trackMe.addEventListener("click", this.onClickFooterLink)
+    const textLink = document.querySelector(".SeriesAbout__description a")
+    if (textLink) {
+      textLink.addEventListener("click", this.onClickFooterLink)
+    }
   }
 
   onClickFooterLink = event => {
