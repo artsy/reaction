@@ -2,7 +2,7 @@ import React from "react"
 import { Layout } from "../Typings"
 import { StyledText } from "./StyledText"
 
-export interface TextProps extends React.HTMLProps<HTMLDivElement> {
+interface TextProps extends React.HTMLProps<HTMLDivElement> {
   color?: string
   html?: string
   isContentStart?: boolean

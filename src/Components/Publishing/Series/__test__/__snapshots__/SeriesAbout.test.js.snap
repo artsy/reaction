@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a series about properly 1`] = `
+exports[`SeriesAbout snapshots renders a series about properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -390,7 +390,7 @@ exports[`renders a series about properly 1`] = `
 </div>
 `;
 
-exports[`renders a sponsored series about properly 1`] = `
+exports[`SeriesAbout snapshots renders a sponsored series about properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -843,7 +843,7 @@ exports[`renders a sponsored series about properly 1`] = `
 </div>
 `;
 
-exports[`renders series about with children properly 1`] = `
+exports[`SeriesAbout snapshots renders series about with children properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
