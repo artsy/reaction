@@ -2,7 +2,7 @@ import React from "react"
 import { Layout } from "../Typings"
 import { StyledText } from "./StyledText"
 
-interface TextProps extends React.HTMLProps<HTMLDivElement> {
+export interface TextProps extends React.HTMLProps<HTMLDivElement> {
   color?: string
   html?: string
   isContentStart?: boolean
@@ -12,7 +12,11 @@ interface TextProps extends React.HTMLProps<HTMLDivElement> {
 
 export const Text: React.SFC<TextProps> = props => {
   const { color, html, isContentStart, layout, postscript } = props
-  const child = html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : props.children
+  const child = html ? (
+    <div dangerouslySetInnerHTML={{ __html: html }} />
+  ) : (
+    props.children
+  )
   return (
     <StyledText
       className="article__text-section"
@@ -27,5 +31,5 @@ export const Text: React.SFC<TextProps> = props => {
 }
 
 Text.defaultProps = {
-  color: 'black'
+  color: "black",
 }
