@@ -31,8 +31,5 @@ deployment:
     branch: master
     commands:
       - yarn semantic-release
-  demo:
-    branch: master
-    commands:
       - cp .env.oss .env
       - yarn deploy-storybook
