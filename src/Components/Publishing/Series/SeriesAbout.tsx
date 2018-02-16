@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
@@ -10,46 +11,73 @@ interface Props {
   article?: any
   color?: string
   editDescription?: any
+  tracking?: any
 }
 
+@track()
 export class SeriesAbout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
+
+  componentDidMount() {
+    const textLink = document.querySelector(".SeriesAbout__description a")
+    if (textLink) {
+      textLink.addEventListener("click", this.onClickFooterLink)
+    }
+  }
+
+  onClickFooterLink = event => {
+    this.props.tracking.trackEvent({
+      action: "Click",
+      flow: "Partner Footer CTA",
+      type: "external_link",
+      destination_path: event.currentTarget.href,
+    })
+  }
 
   render() {
     const { article, color, editDescription } = this.props
     const { series_description, sponsor } = article
-    const sponsorLogo = sponsor && (color === "black" ? sponsor.partner_dark_logo : sponsor.partner_light_logo)
+    const sponsorLogo =
+      sponsor &&
+      (color === "black"
+        ? sponsor.partner_dark_logo
+        : sponsor.partner_light_logo)
 
     return (
       <SeriesAboutContainer color={color}>
         <StyledCol xs={12} sm={4}>
           <Title>About the Series</Title>
-          {sponsor &&
+          {sponsor && (
             <PartnerBlock
               logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
-                type: 'external link',
-                destination_path: sponsor.partner_logo_link
+                type: "external link",
+                destination_path: sponsor.partner_logo_link,
               }}
             />
-          }
+          )}
         </StyledCol>
         <StyledCol xs={12} sm={8}>
-          {editDescription
-            ? <Text layout='standard' color={color}>{editDescription}</Text>
-            : <Text layout='standard' color={color} html={series_description} />
-          }
-          {sponsor &&
+          {editDescription ? (
+            <Text layout="standard" color={color}>
+              {editDescription}
+            </Text>
+          ) : (
+            <div className="SeriesAbout__description">
+              <Text layout="standard" color={color} html={series_description} />
+            </div>
+          )}
+          {sponsor && (
             <PartnerBlock
               logo={sponsorLogo}
               url={sponsor.partner_logo_link}
               trackingData={{
-                type: 'external link',
-                destination_path: sponsor.partner_logo_link
+                type: "external link",
+                destination_path: sponsor.partner_logo_link,
               }}
             />
-          }
+          )}
         </StyledCol>
       </SeriesAboutContainer>
     )
@@ -57,20 +85,16 @@ export class SeriesAbout extends Component<Props, null> {
 }
 
 SeriesAbout.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
-interface ColProps {
-  first?: boolean
-}
-
-const Div: StyledFunction<Props & ColProps & React.HTMLProps<HTMLDivElement>> = styled(Row)
-export const SeriesAboutContainer = Div`
-  color: ${props => props.color};
+export const SeriesAboutContainer = styled(Row)`
+  color: ${(props: Props) => props.color};
   max-width: 1200px;
   width: 100%;
 `
-const StyledCol = styled(Col) `
+
+const StyledCol = styled(Col)`
   ${PartnerBlockContainer} {
     display: none;
   }
@@ -96,12 +120,12 @@ const StyledCol = styled(Col) `
       margin-top: 60px;
       display: block;
     }
-  `}
+  `};
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s32")}
+  ${Fonts.unica("s32")};
   ${props => media.sm`
     margin-bottom: 20px;
-  `}
+  `};
 `

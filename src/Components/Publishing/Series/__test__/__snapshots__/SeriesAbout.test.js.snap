@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a series about properly 1`] = `
+exports[`SeriesAbout snapshots renders a series about properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -36,13 +36,6 @@ exports[`renders a series about properly 1`] = `
   flex: 0 0 auto;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
 }
 
 .c6 {
@@ -238,6 +231,13 @@ exports[`renders a series about properly 1`] = `
   margin-bottom: 10px;
 }
 
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
@@ -275,12 +275,6 @@ exports[`renders a series about properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 
@@ -354,6 +348,12 @@ exports[`renders a series about properly 1`] = `
   }
 }
 
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
+  }
+}
+
 <div
   className="c0 c1"
   color="black"
@@ -371,22 +371,26 @@ exports[`renders a series about properly 1`] = `
     className="c2 c5"
   >
     <div
-      className="article__text-section c6"
-      color="black"
+      className="SeriesAbout__description"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+        className="article__text-section c6"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`renders a sponsored series about properly 1`] = `
+exports[`SeriesAbout snapshots renders a sponsored series about properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -426,13 +430,6 @@ exports[`renders a sponsored series about properly 1`] = `
 
 .c6 img {
   max-width: 220px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
 }
 
 .c7 {
@@ -636,6 +633,13 @@ exports[`renders a sponsored series about properly 1`] = `
   margin-bottom: 10px;
 }
 
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
@@ -679,12 +683,6 @@ exports[`renders a sponsored series about properly 1`] = `
 @media (max-width:720px) {
   .c6 img {
     max-width: 195px;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 
@@ -767,6 +765,12 @@ exports[`renders a sponsored series about properly 1`] = `
   }
 }
 
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
+  }
+}
+
 <div
   className="c0 c1"
   color="black"
@@ -802,16 +806,20 @@ exports[`renders a sponsored series about properly 1`] = `
     className="c2 c8"
   >
     <div
-      className="article__text-section c9"
-      color="black"
+      className="SeriesAbout__description"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+        className="article__text-section c9"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
     <div
       className="PartnerBlock c5 c6"
@@ -835,7 +843,7 @@ exports[`renders a sponsored series about properly 1`] = `
 </div>
 `;
 
-exports[`renders series about with children properly 1`] = `
+exports[`SeriesAbout snapshots renders series about with children properly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -871,13 +879,6 @@ exports[`renders series about with children properly 1`] = `
   flex: 0 0 auto;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
 }
 
 .c6 {
@@ -1073,6 +1074,13 @@ exports[`renders series about with children properly 1`] = `
   margin-bottom: 10px;
 }
 
+.c4 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+}
+
 @media only screen and (min-width:0em) {
   .c3 {
     -webkit-flex-basis: 100%;
@@ -1110,12 +1118,6 @@ exports[`renders series about with children properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c4 {
-    margin-bottom: 20px;
   }
 }
 
@@ -1186,6 +1188,12 @@ exports[`renders series about with children properly 1`] = `
   .c2 .file__PartnerBlockContainer-icj40k-0 {
     margin-top: 60px;
     display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c4 {
+    margin-bottom: 20px;
   }
 }
 
