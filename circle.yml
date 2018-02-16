@@ -29,7 +29,8 @@ test:
 deployment:
   release:
     branch: master
-      - yarn run semantic-release
+    commands:
+      - yarn semantic-release
   demo:
     branch: master
     commands:
