@@ -186,8 +186,9 @@
     "analyzeCommits": {
       "preset": "ember",
       "releaseRules": [
-        {"tag": "FIX", "release": "patch"},
         {"tag": "DOC", "release": "patch"},
+        {"tag": "FIX", "release": "patch"},
+        {"tag": "PATCH", "release": "patch"},
         {"tag": "FEATURE", "release": "minor"},
         {"tag": "BREAKING", "release": "major"}
       ]

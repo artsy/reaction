@@ -60,19 +60,20 @@ Release versions (major, minor, patch) are triggered [by commit messages](https:
 [TAG context] commit message
 ```
 
-[Valid tags](https://github.com/artsy/reaction/blob/master/package.json#L175) for release include DOC, FIX (patch), FEATURE (minor), and BREAKING (major). Commits that do not adhere to this convention will not trigger an NPM release.
+[Valid tags](https://github.com/artsy/reaction/blob/master/package.json#L175) for release include PATCH, DOC, FIX (patch), FEATURE (minor), and BREAKING (major). Commits that do not adhere to this convention will not trigger an NPM release.
 
 ##### Example Patch Release
 ```
-[FIX onboarding]: increase plus-button size
+[FIX onboarding] Modal does not open
+[PATCH] Bump version
 ```
 
 ##### Example Minor (Feature) Release
 ```
-[FEATURE auctions]: add relay-based slider component
+[FEATURE auctions] Add relay-based slider component
 ```
 
 ##### Example Major (Breaking) Release
 ```
-[BREAKING publishing]: replace children with props in editable image captions
+[BREAKING publishing] Replace children with props for caption editing
 ```
