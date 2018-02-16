@@ -54,26 +54,25 @@
 
 Circle CI is set up to publish releases to NPM automatically via [semantic-release](https://github.com/semantic-release/semantic-release) following every successful merge to master.
 
-Release versions (Major, minor, patch) are determined [based on commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), which must adhere to [Angular conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits). All commits must include a header, which consists of a type, scope and subject.  Optionally a body and footer can be included.  Breaking changes AKA major releases must include a line starting with the text `BREAKING CHANGE: ` followed by a description of changes.
+Release versions (major, minor, patch) are triggered [by commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), when they adhere to [Ember conventions](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-ember/readme.md):
+
+```
+[TAG context] commit message
+```
+
+[Valid tags](https://github.com/artsy/reaction/blob/master/package.json#L175) for release include DOC, FIX (patch), FEATURE (minor), and BREAKING (major). Commits that do not adhere to this convention will not trigger an NPM release.
 
 ##### Example Patch Release
 ```
-style(onboarding): increase plus-button size
+[FIX onboarding]: increase plus-button size
 ```
 
 ##### Example Minor (Feature) Release
 ```
-feat(auctions): relay-based slider component
-<BLANK LINE>
-adds slider of artwork lots to replace existing backbone rails
+[FEATURE auctions]: add relay-based slider component
 ```
-
 
 ##### Example Major (Breaking) Release
 ```
-refactor(publishing): editable image captions
-<BLANK LINE>
-change images to accept editable components as props and not children
-<BLANK LINE>
-BREAKING CHANGE: removes support for children in image caption. Use props to add editable captions instead.
+[BREAKING publishing]: replace children with props in editable image captions
 ```
