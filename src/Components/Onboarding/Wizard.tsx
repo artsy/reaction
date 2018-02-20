@@ -6,15 +6,15 @@ import { track } from "../../Utils/track"
 import { ProgressIndicator } from "./ProgressIndicator"
 
 import Artists from './Steps/Artists'
-import { BudgetComponent as Budget } from "./Steps/Budget"
-import { CollectorIntentComponent as CollectorIntent } from "./Steps/CollectorIntent"
+import Budget, { BudgetComponent } from "./Steps/Budget"
+import CollectorIntent, { CollectorIntentComponent } from "./Steps/CollectorIntent"
 import Genes from './Steps/Genes'
 
 const STEPS = [
-  `/personalize/${CollectorIntent.slug}`,
+  `/personalize/${CollectorIntentComponent.slug}`,
   `/personalize/${Artists.slug}`,
   `/personalize/${Genes.slug}`,
-  `/personalize/${Budget.slug}`
+  `/personalize/${BudgetComponent.slug}`
 ]
 
 export interface Props {
@@ -54,7 +54,7 @@ export class Wizard extends React.Component<Props, State> {
           <ProgressIndicator percentComplete={ this.state.finished ? 1 : STEPS.indexOf(location.pathname) / STEPS.length } />
         } />
 
-        <Route path={`/personalize/${CollectorIntent.slug}`} render={props =>
+        <Route path={`/personalize/${CollectorIntentComponent.slug}`} render={props =>
           <CollectorIntent {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
         } />
         <Route path={`/personalize/${Artists.slug}`} render={props =>
@@ -63,11 +63,11 @@ export class Wizard extends React.Component<Props, State> {
         <Route path={`/personalize/${Genes.slug}`} render={props =>
           <Genes {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
         } />
-        <Route path={`/personalize/${Budget.slug}`} render={props =>
+        <Route path={`/personalize/${BudgetComponent.slug}`} render={props =>
           <Budget {...props} onNextButtonPressed={() => this.onFinish(props.redirectTo)} />
         } />
 
-        {new RegExp("/personalize(/*)$").exec(location.pathname) && <Redirect to={`/personalize/${CollectorIntent.slug}`} />}
+        {new RegExp("/personalize(/*)$").exec(location.pathname) && <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />}
       </div>
     )
   }
