@@ -63,13 +63,18 @@ const FixedButttonContainer = styled.div`
 const StickyButtonContainer = styled.div`
   position: sticky;
   bottom: 0px;
-  background: ${Colors.gray};
+  background: linear-gradient(
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 17%,
+    white 35%,
+    white
+  )
   display: flex;
   justify-content: center;
 `
 
 const NextButton = styled(InvertedButton)`
-  margin: 20px 0px;
+  margin: 50px 0px;
   display: block;
   width: 250px;
 
@@ -81,7 +86,7 @@ const NextButton = styled(InvertedButton)`
 
   ${media.sm`
     width: 100%;
-    margin: 0;
+    margin: 25px 0 0;
   `};
 `
 
