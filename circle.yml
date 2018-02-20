@@ -33,3 +33,9 @@ deployment:
       - yarn semantic-release
       - cp .env.oss .env
       - yarn deploy-storybook
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master
