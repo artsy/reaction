@@ -39,3 +39,5 @@ experimental:
     branches:
       only:
         - master
+      ignore:
+        - gh-pages
