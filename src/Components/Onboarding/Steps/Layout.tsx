@@ -25,8 +25,7 @@ const Container = styled.div`
 const MainTitle = styled(StyledTitle)`
   text-align: center;
   line-height: normal;
-  margin-top: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   ${media.sm`
     text-align: left;
   `};
@@ -34,8 +33,8 @@ const MainTitle = styled(StyledTitle)`
 const Subtitle = styled(StyledTitle)`
   ${primary.style};
   color: ${Colors.grayDark};
-  margin-top: 0px;
-  margin-bottom: 60px;
+  margin-top: 6px;
+  margin-bottom: 30px;
   text-align: center;
   line-height: normal;
   ${media.sm`
@@ -68,7 +67,7 @@ const StickyButtonContainer = styled.div`
     rgba(255, 255, 255, 0.5) 17%,
     white 35%,
     white
-  )
+  );
   display: flex;
   justify-content: center;
 `
