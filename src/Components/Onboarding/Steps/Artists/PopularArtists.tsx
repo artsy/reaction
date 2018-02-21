@@ -104,6 +104,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
             ) {
               artists {
                 id
+                _id
                 __id
                 name
                 image {

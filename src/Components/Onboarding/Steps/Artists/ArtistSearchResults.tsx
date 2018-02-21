@@ -106,6 +106,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
             ) {
               artists {
                 id
+                _id
                 __id
                 name
                 image {
