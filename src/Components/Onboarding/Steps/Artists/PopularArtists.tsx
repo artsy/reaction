@@ -14,11 +14,23 @@ import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
+interface Artist {
+  id: string | null
+  _id: string | null
+  __id: string | null
+  name: string | null
+  image: {
+    cropped: {
+      url: string | null
+    }
+  } | null
+}
+
 export interface RelayProps {
   tracking?: any
   relay?: RelayProp
   popular_artists: {
-    artists?: any[]
+    artists?: Artist[]
   }
 }
 
@@ -40,7 +52,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   }
 
   onArtistFollowed(
-    artist: any,
+    artist: Artist,
     store: RecordSourceSelectorProxy,
     data: SelectorData
   ): void {
@@ -77,7 +89,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
     })
   }
 
-  onFollowedArtist(artist: any) {
+  onFollowedArtist(artist: Artist) {
     commitMutation(this.props.relay.environment, {
       mutation: graphql`
         mutation PopularArtistsFollowArtistMutation(
@@ -136,7 +148,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
         excludedArtistIds: Array.from(this.excludedArtistIds),
       },
       updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onArtistFollowed(artist.__id, store, data),
+        this.onArtistFollowed(artist, store, data),
     })
   }
 

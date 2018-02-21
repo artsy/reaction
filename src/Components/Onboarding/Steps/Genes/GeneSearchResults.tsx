@@ -19,6 +19,7 @@ import { FollowProps } from "../../Types"
 interface Gene {
   id: string | null
   _id: string | null
+  __id: string | null
   name: string | null
   image: {
     cropped: {
@@ -60,7 +61,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   onGeneFollowed(
-    gene: any,
+    gene: Gene,
     store: RecordSourceSelectorProxy,
     data: SelectorData
   ): void {
@@ -76,7 +77,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
     )
     const updatedSuggestedGenes = suggestedGenes.map(
       geneItem =>
-        geneItem.getValue("id") === gene.__id ? suggestedGene : geneItem
+        geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
     )
 
     suggestedGenesRootField.setLinkedRecords(
