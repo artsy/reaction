@@ -31,7 +31,7 @@ exports[`renders a series properly 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .file__IconPlus-icj40k-0 {
+.c3 .file__IconPlus-yu39to-0 {
   margin: 0 20px;
 }
 
@@ -515,7 +515,7 @@ exports[`renders a series properly 1`] = `
   width: 100%;
 }
 
-.c33 .file__PartnerBlockContainer-icj40k-0 {
+.c33 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
@@ -533,7 +533,7 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c33:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+.c33:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
@@ -550,7 +550,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c13 .file__PartnerBlockContainer-icj40k-0 img {
+.c13 .file__PartnerBlockContainer-yu39to-0 img {
   max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -593,7 +593,7 @@ exports[`renders a series properly 1`] = `
     font-size: 24px;
   }
 
-  .c3 .file__IconPlus-icj40k-0 {
+  .c3 .file__IconPlus-yu39to-0 {
     margin: 0 10px;
   }
 }
@@ -798,11 +798,11 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c33:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+  .c33:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c33 .file__PartnerBlockContainer-icj40k-0 {
+  .c33 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }
@@ -815,7 +815,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .file__PartnerBlockContainer-icj40k-0 img {
+  .c13 .file__PartnerBlockContainer-yu39to-0 img {
     padding-bottom: 0;
   }
 }
@@ -1630,15 +1630,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin-right: auto;
 }
 
-.bmiuNJ .c14 {
+.iAeezU .c14 {
   margin-bottom: 90px;
 }
 
-.bmiuNJ .c20 {
+.iAeezU .c20 {
   margin-bottom: 60px;
 }
 
-.bmiuNJ .c35 {
+.iAeezU .c35 {
   padding-top: 60px;
 }
 
@@ -1927,11 +1927,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .bmiuNJ .c20 {
+  .iAeezU .c20 {
     margin-bottom: 40px;
   }
 
-  .bmiuNJ .c35 {
+  .iAeezU .c35 {
     padding-top: 60px;
   }
 }

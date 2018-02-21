@@ -36,7 +36,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c4 .file__IconPlus-icj40k-0 {
+.c4 .file__IconPlus-yu39to-0 {
   margin: 0 20px;
 }
 
@@ -731,7 +731,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   width: 100%;
 }
 
-.c80 .file__PartnerBlockContainer-icj40k-0 {
+.c80 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
@@ -749,7 +749,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c80:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+.c80:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
@@ -1179,7 +1179,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     font-size: 24px;
   }
 
-  .c4 .file__IconPlus-icj40k-0 {
+  .c4 .file__IconPlus-yu39to-0 {
     margin: 0 10px;
   }
 }
@@ -1523,11 +1523,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c80:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+  .c80:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c80 .file__PartnerBlockContainer-icj40k-0 {
+  .c80 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }

@@ -208,7 +208,7 @@ exports[`SeriesAbout snapshots renders a series about properly 1`] = `
   width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-icj40k-0 {
+.c2 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
@@ -226,7 +226,7 @@ exports[`SeriesAbout snapshots renders a series about properly 1`] = `
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+.c2:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
@@ -338,11 +338,11 @@ exports[`SeriesAbout snapshots renders a series about properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-icj40k-0 {
+  .c2 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }
@@ -1051,7 +1051,7 @@ exports[`SeriesAbout snapshots renders series about with children properly 1`] =
   width: 100%;
 }
 
-.c2 .file__PartnerBlockContainer-icj40k-0 {
+.c2 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
@@ -1069,7 +1069,7 @@ exports[`SeriesAbout snapshots renders series about with children properly 1`] =
   flex-direction: column;
 }
 
-.c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+.c2:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
@@ -1181,11 +1181,11 @@ exports[`SeriesAbout snapshots renders series about with children properly 1`] =
 }
 
 @media (max-width:48em) {
-  .c2:first-of-type .file__PartnerBlockContainer-icj40k-0 {
+  .c2:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c2 .file__PartnerBlockContainer-icj40k-0 {
+  .c2 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }
