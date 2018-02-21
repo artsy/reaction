@@ -35,7 +35,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .file__VideoCover-icj40k-2 {
+.c1 .file__VideoCover-yu39to-2 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
@@ -183,12 +183,12 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.gghrGQ .c3 {
+.bAZKyp .c3 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.gghrGQ .c5 {
+.bAZKyp .c5 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }

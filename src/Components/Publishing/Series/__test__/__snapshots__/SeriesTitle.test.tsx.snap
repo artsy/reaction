@@ -14,7 +14,7 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-icj40k-0 img {
+.c0 .file__PartnerBlockContainer-yu39to-0 img {
   max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -33,7 +33,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-icj40k-0 img {
+  .c0 .file__PartnerBlockContainer-yu39to-0 img {
     padding-bottom: 0;
   }
 }
@@ -64,7 +64,7 @@ exports[`renders a series with children properly 1`] = `
   text-align: center;
 }
 
-.c0 .file__PartnerBlockContainer-icj40k-0 img {
+.c0 .file__PartnerBlockContainer-yu39to-0 img {
   max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
@@ -83,7 +83,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-icj40k-0 img {
+  .c0 .file__PartnerBlockContainer-yu39to-0 img {
     padding-bottom: 0;
   }
 }
