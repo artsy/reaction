@@ -1,5 +1,5 @@
 {
-  "name": "@artsy/reaction-force",
+  "name": "@artsy/reaction",
   "version": "0.0.0-development",
   "description": "Force’s React Components",
   "main": "dist/index.js",
@@ -186,11 +186,26 @@
     "analyzeCommits": {
       "preset": "ember",
       "releaseRules": [
-        {"tag": "DOC", "release": "patch"},
-        {"tag": "FIX", "release": "patch"},
-        {"tag": "PATCH", "release": "patch"},
-        {"tag": "FEATURE", "release": "minor"},
-        {"tag": "BREAKING", "release": "major"}
+        {
+          "tag": "DOC",
+          "release": "patch"
+        },
+        {
+          "tag": "FIX",
+          "release": "patch"
+        },
+        {
+          "tag": "PATCH",
+          "release": "patch"
+        },
+        {
+          "tag": "FEATURE",
+          "release": "minor"
+        },
+        {
+          "tag": "BREAKING",
+          "release": "major"
+        }
       ]
     }
   }
