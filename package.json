@@ -126,7 +126,6 @@
     "lodash": "^4.17.4",
     "moment-timezone": "^0.5.13",
     "numeral": "^2.0.4",
-    "package.json": "^2.0.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
