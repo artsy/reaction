@@ -18,6 +18,7 @@ const STEPS = [
 ]
 
 export interface Props {
+  redirectTo?: string
   tracking?: any
 }
 
@@ -38,9 +39,9 @@ export class Wizard extends React.Component<Props, State> {
     history.push(STEPS[STEPS.indexOf(location.pathname) + increaseBy])
   }
 
-  onFinish = redirectTo => {
+  onFinish = () => {
     this.setState({ finished: true })
-    setTimeout(() => (window.location.href = redirectTo || "/"), 500)
+    setTimeout(() => (window.location.href = this.props.redirectTo || "/"), 500)
 
     this.props.tracking.trackEvent({
       action: "Completed Onboarding",
@@ -64,7 +65,7 @@ export class Wizard extends React.Component<Props, State> {
           <Genes {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
         } />
         <Route path={`/personalize/${BudgetComponent.slug}`} render={props =>
-          <Budget {...props} onNextButtonPressed={() => this.onFinish(props.redirectTo)} />
+          <Budget {...props} onNextButtonPressed={() => this.onFinish()} />
         } />
 
         {new RegExp("/personalize(/*)$").exec(location.pathname) && <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />}
