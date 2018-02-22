@@ -1,6 +1,17 @@
 {
-  "presets": ["es2015", "stage-3", "react"],
+  "presets": [
+    "@babel/typescript",
+    "@babel/react",
+    "@babel/stage-3",
+    ["@babel/env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }]
+  ],
   "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-decorators",
     ["relay", { "artifactDirectory": "./src/__generated__" }],
     [
       "styled-components",
@@ -9,9 +20,11 @@
         "displayName": true,
         "minify": true,
         "transpileTemplateLiterals": true
-        // "preprocess": true // still experimental
       }
-    ]
+    ],
+    ["transform-string-literal-replace", {
+      "../src/__generated__": "./__generated__"
+    }]
   ],
   "env": {
     "test": {

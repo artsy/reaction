@@ -1,5 +1,5 @@
 import * as React from "react"
-import ReactCSSTransitionReplace from 'react-css-transition-replace'
+import ReactCSSTransitionReplace from "react-css-transition-replace"
 import { injectGlobal } from "styled-components"
 
 injectGlobal`
@@ -25,7 +25,10 @@ injectGlobal`
   }
 `
 
-export default props =>
-  <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
-    {...props.children}
-  </ReactCSSTransitionReplace>
+export default props => {
+  return (
+    <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
+      {{...props.children}}
+    </ReactCSSTransitionReplace>
+  )
+}
