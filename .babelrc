@@ -16,27 +16,12 @@
     [
       "styled-components",
       {
-        "ssr": true,
-        "displayName": true,
-        "minify": true,
-        "transpileTemplateLiterals": true
+        "ssr": true
       }
     ],
     ["transform-rename-import", {
       "original": "..\/src\/__generated__",
       "replacement": "$1.\/__generated__"
     }]
-  ],
-  "env": {
-    "test": {
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true
-          }
-        ]
-      ]
-    }
-  }
+  ]
 }

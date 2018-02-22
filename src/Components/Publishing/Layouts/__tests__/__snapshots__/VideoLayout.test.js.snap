@@ -1,11 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Layout matches the snapshot 1`] = `
-.c18 {
-  width: 32px;
-  height: 32px;
-}
-
 .c6 {
   font-family: artsy-icons;
   color: white;
@@ -196,6 +191,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: white;
+}
+
+.c18 {
+  width: 32px;
+  height: 32px;
 }
 
 .c74 {

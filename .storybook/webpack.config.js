@@ -59,6 +59,8 @@ if (USER_ID && USER_ACCESS_TOKEN) {
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
 module.exports = (baseConfig, env) => {
+  console.log("\n[Reaction] Booting...\n")
+
   const config = genDefaultConfig(baseConfig, env)
 
   // The progress plugin does not play nice with `concurrently`, so remove it.
@@ -92,12 +94,6 @@ module.exports = (baseConfig, env) => {
               loader: "babel-loader",
               options: {
                 cacheDirectory: true,
-              },
-            },
-            {
-              loader: "ts-loader",
-              options: {
-                happyPackMode: true,
               },
             },
           ],

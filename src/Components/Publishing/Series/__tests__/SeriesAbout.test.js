@@ -6,7 +6,7 @@ import { SeriesArticle, SeriesArticleSponsored } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
 import { SeriesAbout } from "../SeriesAbout"
 
-jest.mock("../../../../Utils/track.ts", () => ({
+jest.mock("../../../../Utils/track", () => ({
   track: jest.fn(),
 }))
 

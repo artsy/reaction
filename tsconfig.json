@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "allowJs": false,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "experimentalDecorators": true,
@@ -9,10 +9,8 @@
     "module": "es2015",
     "moduleResolution": "node",
     "noUnusedLocals": true,
-    "outDir": "dist",
     "plugins": [{ "name": "typescript-styled-plugin" }],
     "rootDir": "src",
-    "sourceMap": true,
     "target": "es2015"
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
