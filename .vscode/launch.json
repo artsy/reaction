@@ -10,39 +10,30 @@
       "name": "Launch Server",
       "preLaunchTask": "compile:server",
       "program": "${workspaceRoot}/index.js",
-      "args": [
-        "${workspaceRoot}/dist"
-      ],
+      "args": ["${workspaceRoot}/dist"],
       "sourceMaps": true,
-      "outFiles": [
-        "${workspaceRoot}/dist/**/*.js"
-      ],
+      "outFiles": ["${workspaceRoot}/dist/**/*.js"],
       "internalConsoleOptions": "openOnSessionStart"
     },
     {
-    "type": "chrome",
-    "request": "launch",
-    "preLaunchTask": "storybook",
-    "name": "Launch Chrome",
-    "url": "http://localhost:4444",
-    "webRoot": "${workspaceRoot}/src"
-  },
-  {
-    "name": "Run Tests With Debugger (slower, use yarn for normal work)",
-    "type": "node",
-    "request": "launch",
-    "port": 5858,
-    "address": "localhost",
-    "sourceMaps": true,
-    "stopOnEntry": false,
-    "runtimeExecutable": null,
-    "runtimeArgs": [
-      "debug",
-      "--debug-brk",
-      "./node_modules/.bin/jest",
-      "-i"
-    ],
-    "cwd": "${workspaceRoot}"
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "storybook",
+      "name": "Launch Chrome",
+      "url": "http://localhost:4444",
+      "webRoot": "${workspaceRoot}/src"
+    },
+    {
+      "name": "Run Tests With Debugger (slower, use yarn for normal work)",
+      "type": "node",
+      "request": "launch",
+      "port": 5858,
+      "address": "localhost",
+      "sourceMaps": true,
+      "stopOnEntry": false,
+      "runtimeExecutable": null,
+      "runtimeArgs": ["debug", "--debug-brk", "./node_modules/.bin/jest", "-i"],
+      "cwd": "${workspaceRoot}"
     }
   ]
 }

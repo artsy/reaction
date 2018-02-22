@@ -13,15 +13,11 @@
       "isBuildCommand": true,
       "isTestCommand": false,
       "showOutput": "always",
-      "args": [
-        "compile:server"
-      ]
+      "args": ["compile:server"]
     },
     {
       "taskName": "storybook",
-      "args": [
-        "storybook"
-      ]
+      "args": ["storybook"]
     },
     {
       "taskName": "TypeScript: Run type-checker",
@@ -37,10 +33,7 @@
       "args": ["lint"],
       "problemMatcher": {
         "owner": "tslint",
-        "fileLocation": [
-          "relative",
-          "${workspaceRoot}"
-        ],
+        "fileLocation": ["relative", "${workspaceRoot}"],
         "severity": "warning",
         "pattern": {
           "regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",

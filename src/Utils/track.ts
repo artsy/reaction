@@ -1,28 +1,25 @@
 import { default as _track, Track } from "react-tracking"
 
-// tslint:disable-next-line:no-namespace
-export namespace TrackingInfo {
+/**
+ * The global tracking-info keys in Artsy’s schema.
+ */
+export interface Global {
   /**
-   * The global tracking-info keys in Artsy’s schema.
+   * The name of an event.
    */
-  export interface Global {
-    /**
-     * The name of an event.
-     */
-    action: string
+  action: string
 
-    /**
-     * The root container component should specify this as the screen context.
-     */
-    page: string
-  }
+  /**
+   * The root container component should specify this as the screen context.
+   */
+  page: string
+}
 
-  export interface Shareable extends Global {
-    /**
-     * The public slug for this entity.
-     */
-    slug: string
-  }
+export interface Shareable extends Global {
+  /**
+   * The public slug for this entity.
+   */
+  slug: string
 }
 
 /**
@@ -59,7 +56,10 @@ export namespace TrackingInfo {
  *      }
  *
  */
-export function trackWithProps<P, T extends TrackingInfo.Global = TrackingInfo.Global>(): Track<T, P> {
+export function trackWithProps<
+  P,
+  T extends Global = Global
+>(): Track<T, P> {
   return _track
 }
 
@@ -95,7 +95,9 @@ export function trackWithProps<P, T extends TrackingInfo.Global = TrackingInfo.G
  *        }
  *      }
  */
-export function trackWithoutProps<T extends TrackingInfo.Global = TrackingInfo.Global>(): Track<T, any> {
+export function trackWithoutProps<
+  T extends Global = Global
+>(): Track<T, any> {
   return _track
 }
 

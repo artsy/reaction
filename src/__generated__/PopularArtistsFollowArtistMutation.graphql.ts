@@ -14,6 +14,7 @@ export type PopularArtistsFollowArtistMutationResponse = {
         readonly popular_artists: ({
             readonly artists: ReadonlyArray<({
                     readonly id: string;
+                    readonly _id: string;
                     readonly __id: string;
                     readonly name: string | null;
                     readonly image: ({
@@ -57,6 +58,7 @@ mutation PopularArtistsFollowArtistMutation(
     popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
       artists {
         id
+        _id
         __id
         name
         image {
@@ -120,67 +122,77 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "image",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Image",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "cropped",
-      "storageKey": "cropped(height:100,width:100)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "height",
-          "value": 100,
-          "type": "Int!"
-        },
-        {
-          "kind": "Literal",
-          "name": "width",
-          "value": 100,
-          "type": "Int!"
-        }
-      ],
-      "concreteType": "CroppedImageUrl",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "url",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
-},
-v7 = [
+v4 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "_id",
+    "args": null,
+    "storageKey": null
+  },
+  v3,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "name",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "image",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "Image",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "cropped",
+        "storageKey": "cropped(height:100,width:100)",
+        "args": [
+          {
+            "kind": "Literal",
+            "name": "height",
+            "value": 100,
+            "type": "Int!"
+          },
+          {
+            "kind": "Literal",
+            "name": "width",
+            "value": 100,
+            "type": "Int!"
+          }
+        ],
+        "concreteType": "CroppedImageUrl",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "url",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
+  }
+],
+v5 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -223,12 +235,7 @@ v7 = [
             "args": null,
             "concreteType": "Artist",
             "plural": true,
-            "selections": [
-              v3,
-              v4,
-              v5,
-              v6
-            ]
+            "selections": v4
           }
         ]
       },
@@ -241,7 +248,7 @@ v7 = [
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          v4,
+          v3,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -286,19 +293,7 @@ v7 = [
                         "args": null,
                         "concreteType": "Artist",
                         "plural": false,
-                        "selections": [
-                          v3,
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "_id",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          v4,
-                          v5,
-                          v6
-                        ]
+                        "selections": v4
                       }
                     ]
                   }
@@ -316,7 +311,7 @@ return {
   "operationKind": "mutation",
   "name": "PopularArtistsFollowArtistMutation",
   "id": null,
-  "text": "mutation PopularArtistsFollowArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n      artists {\n        id\n        __id\n        name\n        image {\n          cropped(width: 100, height: 100) {\n            url\n          }\n        }\n      }\n    }\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              id\n              _id\n              __id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PopularArtistsFollowArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n      artists {\n        id\n        _id\n        __id\n        name\n        image {\n          cropped(width: 100, height: 100) {\n            url\n          }\n        }\n      }\n    }\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              id\n              _id\n              __id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -324,15 +319,15 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v7
+    "selections": v5
   },
   "operation": {
     "kind": "Operation",
     "name": "PopularArtistsFollowArtistMutation",
     "argumentDefinitions": v0,
-    "selections": v7
+    "selections": v5
   }
 };
 })();
-(node as any).hash = 'be0a256e1e9b66861e539765616beea8';
+(node as any).hash = 'e4118fabe762390fe9a4d9510a83afad';
 export default node;

@@ -28,7 +28,10 @@ interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> {
+export class CanvasSlideshow extends React.Component<
+  CanvasSlideshowProps,
+  any
+> {
   private slider: any
 
   constructor(props) {
@@ -36,13 +39,13 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
     this.onChangeSlide = this.onChangeSlide.bind(this)
 
     this.state = {
-      isOnTitle: true
+      isOnTitle: true,
     }
   }
 
   afterSlideChange = currentSlide => {
     this.setState({
-      isOnTitle: currentSlide === 0
+      isOnTitle: currentSlide === 0,
     })
   }
 
@@ -51,7 +54,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
     label: "Display ad carousel arrow",
     entity_type: "display_ad",
     campaign_name: props.campaign.name,
-    unit_layout: "canvas_slideshow"
+    unit_layout: "canvas_slideshow",
   }))
   onChangeSlide(slide) {
     this.slider.slickGoTo(slide)
@@ -65,10 +68,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
       <Title containerWidth={containerWidth}>
         {children}
 
-        {renderDisclaimer &&
-          <Disclaimer>
-            {disclaimer}
-          </Disclaimer>}
+        {renderDisclaimer && <Disclaimer>{disclaimer}</Disclaimer>}
       </Title>
     )
   }
@@ -78,13 +78,20 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
 
     return unit.assets.map((image, i) => {
       const renderTitleCard = i === 0 && containerWidth >= 900
-      const imageSrc = crop(image.url, { width: 780, height: 460, isDisplayAd: true })
-      const caption = image.caption || ''
+      const imageSrc = crop(image.url, {
+        width: 780,
+        height: 460,
+        isDisplayAd: true,
+      })
+      const caption = image.caption || ""
 
       return (
-        <Slide key={i} className={i === 0 && "title-card"} containerWidth={containerWidth}>
-          {renderTitleCard &&
-            this.renderTitleCard()}
+        <Slide
+          key={i}
+          className={i === 0 && "title-card"}
+          containerWidth={containerWidth}
+        >
+          {renderTitleCard && this.renderTitleCard()}
 
           <div>
             <Image
@@ -93,10 +100,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
               containerWidth={containerWidth}
             />
 
-            {caption &&
-              <Caption>
-                {image.caption}
-              </Caption>}
+            {caption && <Caption>{image.caption}</Caption>}
           </div>
         </Slide>
       )
@@ -150,8 +154,7 @@ export class CanvasSlideshow extends React.Component<CanvasSlideshowProps, any> 
           </Slider>
         </SliderContainer>
 
-        {renderTitleCard &&
-          this.renderTitleCard()}
+        {renderTitleCard && this.renderTitleCard()}
       </div>
     )
   }
@@ -173,7 +176,8 @@ const LeftArrow = props => {
 }
 
 const RightArrow = props => {
-  const slide = props.currentSlide + 1 === props.slideCount ? 0 : props.currentSlide + 1
+  const slide =
+    props.currentSlide + 1 === props.slideCount ? 0 : props.currentSlide + 1
 
   return (
     <NavArrow
@@ -219,7 +223,8 @@ const SliderContainer = responsiveDiv`
   width: 100%;
   overflow: hidden;
   .slick-list {
-    max-height: ${props => "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
+    max-height: ${props =>
+      "calc(" + maxAssetSize(props.containerWidth).height + "px + 2.5em);"}
     padding: 0 !important;
   }
 
@@ -263,7 +268,7 @@ const Disclaimer = styled.div`
   ${pMedia.md`
     margin: 0;
     max-width: calc(100% - 40px);
-  `}
+  `};
 `
 const Image = responsiveImage`
   height: auto;
@@ -275,7 +280,6 @@ const Image = responsiveImage`
   `}
 `
 const Caption = styled.div`
-  ${Fonts.garamond("s11")}
-  color: ${Colors.grayMedium};
+  ${Fonts.garamond("s11")} color: ${Colors.grayMedium};
   margin-top: 10px;
 `
