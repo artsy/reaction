@@ -94,7 +94,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
       action: "Followed Gene",
       entity_id: gene._id,
       entity_slug: gene.id,
-      context_module: "gene search",
+      context_module: "onboarding search",
     })
   }
 
