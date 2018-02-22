@@ -22,8 +22,9 @@
         "transpileTemplateLiterals": true
       }
     ],
-    ["transform-string-literal-replace", {
-      "../src/__generated__": "./__generated__"
+    ["transform-rename-import", {
+      "original": "..\/src\/__generated__",
+      "replacement": "$1.\/__generated__"
     }]
   ],
   "env": {
