@@ -68,6 +68,7 @@ export const StyledButton = styled(Button)`
   text-decoration: none;
 
   &:hover:not(:disabled) {
+    color: white;
     cursor: pointer;
     background: ${colors.purpleRegular};
   }
