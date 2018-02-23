@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Colors from "../../../Assets/Colors"
 import { ContextConsumer, ContextProps } from "../../Artsy"
+import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
 import SelectableToggle from "../SelectableToggle"
 import { StepProps } from "../Types"
@@ -57,6 +58,14 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
     })
   }
 
+  selectedIntents() {
+    const intents = Object.values(CollectorIntentComponent.intentEnum).filter(
+      (_, index) => this.state.selectedOptions[index]
+    )
+
+    return intents
+  }
+
   submit() {
     const intents = Object.values(CollectorIntentComponent.intentEnum).filter(
       (_, index) => this.state.selectedOptions[index]
@@ -99,6 +108,11 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
         title="How would you like to use Artsy?"
         subtitle="Select all that apply"
         onNextButtonPressed={this.submit.bind(this)}
+        buttonState={
+          this.selectedIntents().length > 0
+            ? MultiButtonState.Highlighted
+            : MultiButtonState.Default
+        }
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>

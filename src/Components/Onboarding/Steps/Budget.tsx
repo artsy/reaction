@@ -92,6 +92,11 @@ export class BudgetComponent extends React.Component<
         subtitle="Select one"
         onNextButtonPressed={this.state.selection && this.submit.bind(this)}
         isLastStep
+        // buttonState={
+        //   this.state.selection
+        //     ? MultiButtonState.Highlighted
+        //     : MultiButtonState.Default
+        // }
       >
         <OptionsContainer>{options}</OptionsContainer>
       </Layout>

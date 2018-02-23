@@ -2,6 +2,7 @@ import Button from "./Default"
 import FacebookButton from "./Facebook"
 import GhostButton from "./Ghost"
 import InvertedButton from "./Inverted"
+import MultiStateButton from "./MultiStateButton"
 import TwitterButton from "./Twitter"
 
 export default {
@@ -9,5 +10,6 @@ export default {
   FacebookButton,
   GhostButton,
   InvertedButton,
+  MultiStateButton,
   TwitterButton,
 }
