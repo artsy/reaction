@@ -6,6 +6,7 @@ import Colors from "../../../../Assets/Colors"
 import Icon from "../../../Icon"
 import Input from "../../../Input"
 
+import { MultiButtonState } from "../../../Buttons/MultiStateButton"
 import { media } from "../../../Helpers"
 import { StepProps } from "../../Types"
 import { Layout } from "../Layout"
@@ -75,8 +76,11 @@ export default class Artists extends React.Component<StepProps, State> {
       <Layout
         title="Who are your favorite artists?"
         subtitle="Follow one or more"
-        onNextButtonPressed={
-          this.state.followCount > 0 ? this.submit.bind(this) : null
+        onNextButtonPressed={this.submit.bind(this)}
+        buttonState={
+          this.state.followCount > 0
+            ? MultiButtonState.Highlighted
+            : MultiButtonState.Default
         }
       >
         <OnboardingSearchBox>
