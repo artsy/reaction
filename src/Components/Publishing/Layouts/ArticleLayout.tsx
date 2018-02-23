@@ -1,11 +1,11 @@
-import { get } from 'lodash'
+import { get } from "lodash"
 import { cloneDeep, includes, map, omit } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
-import { Responsive } from '../../../Utils/Responsive'
+import { Responsive } from "../../../Utils/Responsive"
 import track from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { DisplayCanvas } from "../Display/Canvas"
@@ -52,18 +52,22 @@ interface ArticleContainerProps {
   marginTop?: string
 }
 
-@track((props) => {
-  return {
-    page: "Article",
-    entity_type: "article",
-    entity_id: props.article.id
-  }}, {
-    dispatch: data => Events.postEvent(data)
+@track(
+  props => {
+    return {
+      page: "Article",
+      entity_type: "article",
+      entity_id: props.article.id,
+    }
+  },
+  {
+    dispatch: data => Events.postEvent(data),
   }
 )
 export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
   static childContextTypes = {
     onViewFullscreen: PropTypes.func,
+    tracking: PropTypes.object,
   }
 
   static defaultProps = {
@@ -84,7 +88,10 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
   }
 
   getChildContext() {
-    return { onViewFullscreen: this.openViewer }
+    return {
+      onViewFullscreen: this.openViewer,
+      tracking: {},
+    }
   }
 
   openViewer = index => {
@@ -130,27 +137,29 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
   }
 
   renderFeatureArticle() {
-    const { headerHeight, isMobile, isSuper, relatedArticlesForCanvas } = this.props
+    const {
+      headerHeight,
+      isMobile,
+      isSuper,
+      relatedArticlesForCanvas,
+    } = this.props
     const { article } = this.state
 
     return (
       <div>
-        <Header
-          article={article}
-          height={headerHeight}
-          isMobile={isMobile}
-        />
+        <Header article={article} height={headerHeight} isMobile={isMobile} />
 
         <FeatureLayout className="article-content">
           <Sections article={article} isMobile={isMobile} />
         </FeatureLayout>
 
         {relatedArticlesForCanvas &&
-          !isSuper &&
-          <RelatedArticlesCanvas
-            articles={relatedArticlesForCanvas}
-            vertical={article.vertical}
-          />}
+          !isSuper && (
+            <RelatedArticlesCanvas
+              articles={relatedArticlesForCanvas}
+              vertical={article.vertical}
+            />
+          )}
       </div>
     )
   }
@@ -159,14 +168,12 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
     const {
       display,
       relatedArticlesForCanvas,
-      relatedArticlesForPanel
+      relatedArticlesForPanel,
     } = this.props
 
-    const {
-      article
-    } = this.state
+    const { article } = this.state
 
-    const hasPanel = get(display, 'panel', false)
+    const hasPanel = get(display, "panel", false)
     const campaign = omit(display, "panel", "canvas")
     const displayOverflows = display && display.canvas.layout === "slideshow"
 
@@ -177,13 +184,14 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
 
           const DisplayPanelAd = () => {
             return (
-              hasPanel &&
-              <DisplayPanel
-                isMobile={isMobileAd}
-                unit={this.props.display.panel}
-                campaign={campaign}
-                article={article}
-              />
+              hasPanel && (
+                <DisplayPanel
+                  isMobile={isMobileAd}
+                  unit={this.props.display.panel}
+                  campaign={campaign}
+                  article={article}
+                />
+              )
             )
           }
 
@@ -196,10 +204,7 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
                 {/*
                   Header
                 */}
-                <Header
-                  article={article}
-                  isMobile={isMobile}
-                />
+                <Header article={article} isMobile={isMobile} />
 
                 <StandardLayoutParent>
                   <StandardLayout>
@@ -216,32 +221,28 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
                       Sidebar
                     */}
                     <Sidebar>
-                      {this.props.emailSignupUrl &&
+                      {this.props.emailSignupUrl && (
                         <SidebarItem>
-                          <EmailPanel
-                            signupUrl={this.props.emailSignupUrl}
-                          />
+                          <EmailPanel signupUrl={this.props.emailSignupUrl} />
                         </SidebarItem>
-                      }
+                      )}
 
                       {/*
                         Related Articles
                       */}
-                      {relatedArticlesForPanel &&
+                      {relatedArticlesForPanel && (
                         <SidebarItem>
                           <RelatedArticlesPanel
                             label={"Related Stories"}
                             articles={relatedArticlesForPanel}
                           />
                         </SidebarItem>
-                      }
+                      )}
 
                       {/*
                         Display Ad
                       */}
-                      {!isMobileAd && this.props.display &&
-                        <DisplayPanelAd />}
-
+                      {!isMobileAd && this.props.display && <DisplayPanelAd />}
                     </Sidebar>
                   </StandardLayout>
                 </StandardLayoutParent>
@@ -249,7 +250,7 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
                 {/*
                   Canvas: Related Articles
                 */}
-                {relatedArticlesForCanvas &&
+                {relatedArticlesForCanvas && (
                   <div>
                     <LineBreak />
                     <RelatedArticlesCanvas
@@ -257,17 +258,16 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
                       isMobile={isMobile}
                       vertical={article.vertical}
                     />
-                  </div>}
-
+                  </div>
+                )}
               </ReadMoreWrapper>
 
               {/*
                 Read More Button
               */}
-              {this.state.isTruncated &&
-                <ReadMore
-                  onClick={this.removeTruncation}
-                />}
+              {this.state.isTruncated && (
+                <ReadMore onClick={this.removeTruncation} />
+              )}
 
               {/*
                 Footer
@@ -276,22 +276,23 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
                 <div>
                   <LineBreak />
 
-                  {displayOverflows
-                    ? <div>
-                        <DisplayCanvas
-                          unit={this.props.display.canvas}
-                          campaign={campaign}
-                          article={article}
-                        />
-                      </div>
-                    : <FooterContainer>
-                        <DisplayCanvas
-                          unit={this.props.display.canvas}
-                          campaign={campaign}
-                          article={article}
-                        />
-                      </FooterContainer>
-                  }
+                  {displayOverflows ? (
+                    <div>
+                      <DisplayCanvas
+                        unit={this.props.display.canvas}
+                        campaign={campaign}
+                        article={article}
+                      />
+                    </div>
+                  ) : (
+                    <FooterContainer>
+                      <DisplayCanvas
+                        unit={this.props.display.canvas}
+                        campaign={campaign}
+                        article={article}
+                      />
+                    </FooterContainer>
+                  )}
                 </div>
               )}
             </div>
@@ -322,7 +323,10 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
   }
 }
 
-const ArticleDiv: StyledFunction<ArticleContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const ArticleDiv: StyledFunction<
+  ArticleContainerProps & React.HTMLProps<HTMLDivElement>
+> =
+  styled.div
 
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => props.marginTop || "50px"};
@@ -341,5 +345,5 @@ const FooterContainer = styled.div`
   margin: 0 40px;
   ${pMedia.sm`
     margin: 0 20px;
-  `}
+  `};
 `
