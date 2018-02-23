@@ -2,7 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { primary } from "../../../Assets/Fonts"
-import InvertedButton from "../../Buttons/Inverted"
+// import InvertedButton from "../../Buttons/Inverted"
+import MultiStateButton, {
+  MultiButtonState,
+} from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
 import StyledTitle from "../../Title"
 
@@ -11,6 +14,7 @@ interface Props {
   subtitle: string
   onNextButtonPressed?: () => void
   isLastStep?: boolean | null
+  buttonState?: MultiButtonState | null
 }
 
 const Container = styled.div`
@@ -72,15 +76,30 @@ const StickyButtonContainer = styled.div`
   justify-content: center;
 `
 
-const NextButton = styled(InvertedButton)`
+// const NextButton = styled(InvertedButton)`
+//   margin: 50px 0px;
+//   display: block;
+//   width: 250px;
+
+//   &:disabled {
+//     background: white;
+//     border: 1px solid ${Colors.grayRegular};
+//     color: ${Colors.grayMedium};
+//   }
+
+//   ${media.sm`
+//     width: 100%;
+//     margin: 25px 0 0;
+//   `};
+// `
+
+const NextButton = styled(MultiStateButton)`
   margin: 50px 0px;
   display: block;
   width: 250px;
 
   &:disabled {
-    background: white;
     border: 1px solid ${Colors.grayRegular};
-    color: ${Colors.grayMedium};
   }
 
   ${media.sm`
@@ -104,6 +123,7 @@ export class Layout extends React.Component<Props, null> {
             <NextButton
               disabled={disabled}
               onClick={this.props.onNextButtonPressed}
+              state={this.props.buttonState}
             >
               {buttonText}
             </NextButton>

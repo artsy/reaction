@@ -6,6 +6,7 @@ import Colors from "../../../../Assets/Colors"
 import Icon from "../../../Icon"
 import Input from "../../../Input"
 
+import { MultiButtonState } from "../../../Buttons/MultiStateButton"
 import { media } from "../../../Helpers"
 import { StepProps } from "../../Types"
 import { Layout } from "../Layout"
@@ -70,6 +71,11 @@ export default class Genes extends React.Component<StepProps, State> {
         subtitle="Follow one or more"
         onNextButtonPressed={
           this.state.followCount > 0 ? this.clickedNext.bind(this) : null
+        }
+        buttonState={
+          this.state.followCount > 0
+            ? MultiButtonState.Highlighted
+            : MultiButtonState.Default
         }
       >
         <OnboardingSearchBox>

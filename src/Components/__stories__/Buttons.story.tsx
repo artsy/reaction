@@ -5,6 +5,7 @@ import Button, { ButtonState } from "../Buttons/Default"
 import FacebookButton from "../Buttons/Facebook"
 import GhostButton from "../Buttons/Ghost"
 import InvertedButton from "../Buttons/Inverted"
+import MultiStateButton, { MultiButtonState } from "../Buttons/MultiStateButton"
 import TwitterButton from "../Buttons/Twitter"
 
 storiesOf("Components/Buttons", module)
@@ -17,11 +18,15 @@ storiesOf("Components/Buttons", module)
         </div>
         <div>
           <Button state={ButtonState.Success}>Button</Button>
-          <Button state={ButtonState.Success} disabled>Button</Button>
+          <Button state={ButtonState.Success} disabled>
+            Button
+          </Button>
         </div>
         <div>
           <Button state={ButtonState.Failure}>Button</Button>
-          <Button state={ButtonState.Failure} disabled>Button</Button>
+          <Button state={ButtonState.Failure} disabled>
+            Button
+          </Button>
         </div>
       </div>
     )
@@ -56,12 +61,27 @@ storiesOf("Components/Buttons", module)
 
         <br />
 
-        <FacebookButton>
-          Continue with Facebook
-        </FacebookButton>
+        <FacebookButton>Continue with Facebook</FacebookButton>
       </div>
     )
   })
   .add("Twitter Button", () => {
     return <TwitterButton />
+  })
+  .add("Multi State Button", () => {
+    return (
+      <div>
+        <div>
+          <MultiStateButton>Button</MultiStateButton>
+        </div>
+        <div>
+          <MultiStateButton state={MultiButtonState.Highlighted}>
+            Button
+          </MultiStateButton>
+        </div>
+        <div>
+          <MultiStateButton disabled>Button</MultiStateButton>
+        </div>
+      </div>
+    )
   })
