@@ -1,20 +1,22 @@
 import React from "react"
-import { Redirect, Route } from 'react-router'
+import { Redirect, Route } from "react-router"
 
 import Events from "../../Utils/Events"
 import { track } from "../../Utils/track"
 import { ProgressIndicator } from "./ProgressIndicator"
 
-import Artists from './Steps/Artists'
+import Artists from "./Steps/Artists"
 import Budget, { BudgetComponent } from "./Steps/Budget"
-import CollectorIntent, { CollectorIntentComponent } from "./Steps/CollectorIntent"
-import Genes from './Steps/Genes'
+import CollectorIntent, {
+  CollectorIntentComponent,
+} from "./Steps/CollectorIntent"
+import Genes from "./Steps/Genes"
 
 const STEPS = [
   `/personalize/${CollectorIntentComponent.slug}`,
   `/personalize/${Artists.slug}`,
   `/personalize/${Genes.slug}`,
-  `/personalize/${BudgetComponent.slug}`
+  `/personalize/${BudgetComponent.slug}`,
 ]
 
 export interface Props {
@@ -51,24 +53,59 @@ export class Wizard extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <Route path='/personalize/*' render={() =>
-          <ProgressIndicator percentComplete={ this.state.finished ? 1 : STEPS.indexOf(location.pathname) / STEPS.length } />
-        } />
+        <Route
+          path="/personalize/*"
+          render={() => (
+            <ProgressIndicator
+              percentComplete={
+                this.state.finished
+                  ? 1
+                  : STEPS.indexOf(location.pathname) / STEPS.length
+              }
+            />
+          )}
+        />
 
-        <Route path={`/personalize/${CollectorIntentComponent.slug}`} render={props =>
-          <CollectorIntent {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
-        } />
-        <Route path={`/personalize/${Artists.slug}`} render={props =>
-          <Artists {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
-        } />
-        <Route path={`/personalize/${Genes.slug}`} render={props =>
-          <Genes {...props} onNextButtonPressed={(increaseBy = 1) => this.onNextButtonPressed(increaseBy, props.history)} />
-        } />
-        <Route path={`/personalize/${BudgetComponent.slug}`} render={props =>
-          <Budget {...props} onNextButtonPressed={() => this.onFinish()} />
-        } />
+        <Route
+          path={`/personalize/${CollectorIntentComponent.slug}`}
+          render={props => (
+            <CollectorIntent
+              {...props}
+              onNextButtonPressed={(increaseBy = 1) =>
+                this.onNextButtonPressed(increaseBy, props.history)}
+            />
+          )}
+        />
+        <Route
+          path={`/personalize/${Artists.slug}`}
+          render={props => (
+            <Artists
+              {...props}
+              onNextButtonPressed={(increaseBy = 1) =>
+                this.onNextButtonPressed(increaseBy, props.history)}
+            />
+          )}
+        />
+        <Route
+          path={`/personalize/${Genes.slug}`}
+          render={props => (
+            <Genes
+              {...props}
+              onNextButtonPressed={(increaseBy = 1) =>
+                this.onNextButtonPressed(increaseBy, props.history)}
+            />
+          )}
+        />
+        <Route
+          path={`/personalize/${BudgetComponent.slug}`}
+          render={props => (
+            <Budget {...props} onNextButtonPressed={() => this.onFinish()} />
+          )}
+        />
 
-        {new RegExp("/personalize(/*)$").exec(location.pathname) && <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />}
+        {new RegExp("/personalize(/*)$").exec(location.pathname) && (
+          <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />
+        )}
       </div>
     )
   }

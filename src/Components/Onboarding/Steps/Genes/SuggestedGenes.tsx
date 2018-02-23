@@ -82,7 +82,7 @@ class SuggestedGenesContent extends React.Component<Props, null> {
       action: "Followed Gene",
       entity_id: gene._id,
       entity_slug: gene.id,
-      context_module: "gene recommended",
+      context_module: "onboarding recommended",
     })
   }
 
