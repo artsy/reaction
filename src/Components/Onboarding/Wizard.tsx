@@ -103,7 +103,9 @@ export class Wizard extends React.Component<Props, State> {
           )}
         />
 
-        {new RegExp("/personalize(/*)$").exec(location.pathname) && (
+        {new RegExp(
+          "^/personalize(?!(/interests|/artists|/categories|/intents)).*$"
+        ).exec(location.pathname) && (
           <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />
         )}
       </div>
