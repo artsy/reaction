@@ -7,15 +7,19 @@ export function metaphysics<T>(
   user?: User,
   checkStatus: boolean = true
 ): Promise<T> {
+  const headers = {
+    "Content-Type": "application/json",
+    "User-Agent": "Reaction",
+  }
   return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
     method: "POST",
     headers: !!user
       ? {
-          "Content-Type": "application/json",
+          ...headers,
           "X-USER-ID": user && user.id,
           "X-ACCESS-TOKEN": user && user.accessToken,
         }
-      : { "Content-Type": "application/json" },
+      : headers,
     body: JSON.stringify(payload),
   })
     .then(response => {
