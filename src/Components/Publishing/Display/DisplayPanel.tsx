@@ -378,8 +378,8 @@ export class DisplayPanel extends Component<Props, State> {
           {isVideo ? (
             this.renderVideo(url)
           ) : (
-              <Image className="DisplayPanel__Image" />
-            )}
+            <Image className="DisplayPanel__Image" />
+          )}
 
           <div>
             <Headline>{unit.headline}</Headline>
@@ -498,7 +498,7 @@ const SponsoredBy = styled.div`
   color: ${Colors.grayRegular};
 `
 
-const VideoContainer = styled(Image) `
+const VideoContainer = styled(Image)`
   position: relative;
   overflow: hidden;
   display: flex;

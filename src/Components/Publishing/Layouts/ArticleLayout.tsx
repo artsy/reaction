@@ -1,6 +1,5 @@
 import { get } from "lodash"
 import { cloneDeep, includes, map, omit } from "lodash"
-import PropTypes from "prop-types"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../Assets/Colors"
@@ -17,6 +16,7 @@ import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
+import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Sidebar } from "./Components/Sidebar"
@@ -25,24 +25,25 @@ import { StandardLayout, StandardLayoutParent } from "./StandardLayout"
 
 export interface ArticleProps {
   article: ArticleData
-  relatedArticlesForPanel?: any
-  relatedArticlesForCanvas?: any
-  isMobile?: boolean
-  isSuper?: boolean
-  isTruncated?: boolean
-  emailSignupUrl?: string
-  headerHeight?: string
-  marginTop?: string
+  closeViewer?: () => void
   display?: {
     name: string
     panel: object
     canvas: any
   }
+  emailSignupUrl?: string
+  headerHeight?: string
+  isMobile?: boolean
+  isSuper?: boolean
+  isTruncated?: boolean
+  marginTop?: string
+  relatedArticlesForCanvas?: any
+  relatedArticlesForPanel?: any
+  slideIndex?: number
+  viewerIsOpen?: boolean
 }
 
 interface ArticleState {
-  viewerIsOpen: boolean
-  slideIndex: number
   fullscreenImages: any
   article: any
   isTruncated: boolean
@@ -64,12 +65,8 @@ interface ArticleContainerProps {
     dispatch: data => Events.postEvent(data),
   }
 )
+@withFullScreen
 export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
-  static childContextTypes = {
-    onViewFullscreen: PropTypes.func,
-    tracking: PropTypes.object,
-  }
-
   static defaultProps = {
     isMobile: false,
     isSuper: false,
@@ -79,36 +76,10 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
     super(props)
     const { fullscreenImages, article } = this.indexAndExtractImages()
     this.state = {
-      viewerIsOpen: false,
-      slideIndex: 0,
       fullscreenImages,
       article,
       isTruncated: props.isTruncated || false,
     }
-  }
-
-  getChildContext() {
-    return {
-      onViewFullscreen: this.openViewer,
-      tracking: {},
-    }
-  }
-
-  openViewer = index => {
-    const body = document.getElementsByTagName("BODY")[0]
-    body.setAttribute("style", "overflow: hidden;")
-
-    this.setState({
-      viewerIsOpen: true,
-      slideIndex: index,
-    })
-  }
-
-  closeViewer = () => {
-    const body = document.getElementsByTagName("BODY")[0]
-    body.setAttribute("style", "overflow: scroll;")
-
-    this.setState({ viewerIsOpen: false })
   }
 
   removeTruncation = () => {
@@ -313,9 +284,9 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
           : this.renderStandardArticle()}
 
         <FullscreenViewer
-          onClose={this.closeViewer}
-          show={this.state.viewerIsOpen}
-          slideIndex={this.state.slideIndex}
+          onClose={this.props.closeViewer}
+          show={this.props.viewerIsOpen}
+          slideIndex={this.props.slideIndex}
           images={this.state.fullscreenImages}
         />
       </ArticleContainer>

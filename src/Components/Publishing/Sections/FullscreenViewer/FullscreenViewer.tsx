@@ -1,13 +1,13 @@
 import { map } from "lodash"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Component, HTMLProps } from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import { Slide } from "./Slide"
 
-interface FullscreenViewerProps extends React.HTMLProps<HTMLDivElement> {
+interface FullscreenViewerProps extends HTMLProps<HTMLDivElement> {
   images: any
   show: boolean
   onClose: () => void
@@ -18,7 +18,10 @@ interface FullscreenViewerState {
   isCaptionOpen: boolean
 }
 
-export class FullscreenViewer extends React.Component<FullscreenViewerProps, FullscreenViewerState> {
+export class FullscreenViewer extends Component<
+  FullscreenViewerProps,
+  FullscreenViewerState
+> {
   static childContextTypes = {
     onToggleCaption: PropTypes.func,
   }
@@ -59,7 +62,13 @@ export class FullscreenViewer extends React.Component<FullscreenViewerProps, Ful
     const images = this.props.images
     return map(images, (section, i) => {
       return (
-        <Slide isCaptionOpen={this.state.isCaptionOpen} section={section} index={i + 1} total={images.length} key={i} />
+        <Slide
+          isCaptionOpen={this.state.isCaptionOpen}
+          section={section}
+          index={i + 1}
+          total={images.length}
+          key={i}
+        />
       )
     })
   }
@@ -137,14 +146,14 @@ const NavArrow = div`
   height: 100vh;
   top: 0;
   box-sizing: border-box;
-  ${props => (props.direction === "left" ? "left: 0px;" : "")}
-  ${props => (props.direction === "right" ? "right: 0px;" : "")}
+  ${props => (props.direction === "left" ? "left: 0px;" : "")};
+  ${props => (props.direction === "right" ? "right: 0px;" : "")};
   ${Icon} {
     z-index: 10;
     cursor: pointer;
     padding: 60px;
-  }
+  };
   ${pMedia.sm`
     display: none;
-  `}
+  `};
 `

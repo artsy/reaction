@@ -4,6 +4,7 @@ import track from "../../Utils/track"
 import { ArticleLayout } from "./Layouts/ArticleLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
+import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
 import { ArticleData } from "./Typings"
 
 export interface ArticleProps {
@@ -25,14 +26,16 @@ export interface ArticleProps {
   }
 }
 
-@track((props) => {
-  return {
-    page: "Article",
-    entity_type: "article",
-    entity_id: props.article.id
-  }
-}, {
-    dispatch: data => Events.postEvent(data)
+@track(
+  props => {
+    return {
+      page: "Article",
+      entity_type: "article",
+      entity_id: props.article.id,
+    }
+  },
+  {
+    dispatch: data => Events.postEvent(data),
   }
 )
 export class Article extends React.Component<ArticleProps, null> {
@@ -40,10 +43,10 @@ export class Article extends React.Component<ArticleProps, null> {
     const { article } = this.props
 
     switch (article.layout) {
-      case 'series': {
+      case "series": {
         return <SeriesLayout {...this.props} />
       }
-      case 'video': {
+      case "video": {
         return <VideoLayout {...this.props} />
       }
       default: {
@@ -53,10 +56,6 @@ export class Article extends React.Component<ArticleProps, null> {
   }
 
   render() {
-    return (
-      <div>
-        {this.getArticleLayout()}
-      </div>
-    )
+    return <FullScreenProvider>{this.getArticleLayout()}</FullScreenProvider>
   }
 }

@@ -11,13 +11,17 @@ jest.mock("react-slick", () => {
 })
 it("renders properly", () => {
   const onClose = jest.fn()
-  const viewer = renderer.create(<FullscreenViewer images={Images} show onClose={onClose} />).toJSON()
+  const viewer = renderer
+    .create(<FullscreenViewer images={Images} show onClose={onClose} />)
+    .toJSON()
   expect(viewer).toMatchSnapshot()
 })
 
 it("closes the viewer on ESC keydown", () => {
   const onClose = jest.fn()
-  const viewer = mount(<FullscreenViewer images={Images} show onClose={onClose} />)
+  const viewer = mount(
+    <FullscreenViewer images={Images} show onClose={onClose} />
+  )
   viewer.simulate("keyDown", { keyCode: 27 })
   expect(onClose).toBeCalled()
 })
