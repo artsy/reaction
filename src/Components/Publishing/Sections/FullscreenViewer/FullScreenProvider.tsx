@@ -18,18 +18,18 @@ export class FullScreenProvider extends Component<Props, State> {
   }
 
   static childContextTypes = {
+    closeViewer: PropTypes.func.isRequired,
     onViewFullscreen: PropTypes.func.isRequired,
     openViewer: PropTypes.func.isRequired,
-    closeViewer: PropTypes.func.isRequired,
     slideIndex: PropTypes.number.isRequired,
     viewerIsOpen: PropTypes.bool.isRequired,
   }
 
   getChildContext() {
     return {
+      closeViewer: this.closeViewer,
       onViewFullscreen: this.openViewer,
       openViewer: this.openViewer,
-      closeViewer: this.closeViewer,
       slideIndex: this.state.slideIndex,
       viewerIsOpen: this.state.viewerIsOpen,
     }
@@ -48,23 +48,27 @@ export class FullScreenProvider extends Component<Props, State> {
   closeViewer = () => {
     const body = document.getElementsByTagName("BODY")[0]
     body.setAttribute("style", "overflow: scroll;")
+
     this.setState({
       viewerIsOpen: false,
+      slideIndex: 0, // go to beginning on close
     })
   }
 
   render() {
+    const { children } = this.props
     const { slideIndex, viewerIsOpen } = this.state
 
-    if (isFunction(this.props.children)) {
-      return this.props.children({
+    if (isFunction(children)) {
+      return children({
+        closeViewer: this.closeViewer,
+        onViewFullscreen: this.openViewer,
+        openViewer: this.openViewer,
         slideIndex,
         viewerIsOpen,
-        openViewer: this.openViewer,
-        closeViewer: this.closeViewer,
       })
     } else {
-      return this.props.children
+      return children
     }
   }
 }
