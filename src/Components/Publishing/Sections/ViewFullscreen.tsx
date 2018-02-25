@@ -3,13 +3,16 @@ import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { IconExpand } from "../Icon/IconExpand"
+import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 
-interface ViewFullscreenProps extends React.HTMLProps<HTMLDivElement> {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   index?: number
+  onViewFullscreen?: (index: number) => void
 }
 
 @track()
-export class ViewFullscreen extends React.Component<ViewFullscreenProps, null> {
+@withFullScreen
+export class ViewFullscreen extends React.Component<Props, null> {
   static contextTypes = {
     onViewFullscreen: PropTypes.func,
   }
@@ -22,9 +25,7 @@ export class ViewFullscreen extends React.Component<ViewFullscreenProps, null> {
   @track({ action: "Clicked article impression" })
   onClick(e) {
     e.preventDefault()
-    if (this.context.onViewFullscreen) {
-      this.context.onViewFullscreen(this.props.index)
-    }
+    this.props.onViewFullscreen(this.props.index)
   }
 
   render() {

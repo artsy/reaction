@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
-import PropTypes from "prop-types"
 import React from "react"
 import { Artwork } from "../Sections/Artwork"
+import { FullScreenProvider } from "../Sections/FullscreenViewer/FullScreenProvider"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { Image } from "../Sections/Image"
 import { ImageCollection } from "../Sections/ImageCollection"
@@ -9,46 +9,36 @@ import { ImageCollection } from "../Sections/ImageCollection"
 import { Artworks, Images, ImagesNarrow } from "../Fixtures/Components"
 
 class ImageCollectionDemo extends React.Component<any, any> {
-  static childContextTypes = {
-    onViewFullscreen: PropTypes.func,
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = { viewerIsOpen: false, slideIndex: 0 }
-  }
-
-  getChildContext() {
-    return { onViewFullscreen: this.openViewer }
-  }
-
-  openViewer = index => {
-    this.setState({
-      viewerIsOpen: true,
-      slideIndex: index,
-    })
-  }
-
-  closeViewer = () => {
-    this.setState({ viewerIsOpen: false })
-  }
-
   render() {
     return (
-      <div>
-        <div style={{ width: "100%" }}>
-          <ImageCollection images={Images} targetHeight={400} gutter={10} />
-        </div>
-        <div style={{ width: 780 }}>
-          <ImageCollection images={ImagesNarrow} targetHeight={400} gutter={10} />
-        </div>
-        <FullscreenViewer
-          onClose={this.closeViewer}
-          show={this.state.viewerIsOpen}
-          slideIndex={this.state.slideIndex}
-          images={Images}
-        />
-      </div>
+      <FullScreenProvider>
+        {({ openViewer, closeViewer, slideIndex, viewerIsOpen }) => {
+          return (
+            <div>
+              <div style={{ width: "100%" }}>
+                <ImageCollection
+                  images={Images}
+                  targetHeight={400}
+                  gutter={10}
+                />
+              </div>
+              <div style={{ width: 780 }}>
+                <ImageCollection
+                  images={ImagesNarrow}
+                  targetHeight={400}
+                  gutter={10}
+                />
+              </div>
+              <FullscreenViewer
+                onClose={closeViewer}
+                show={viewerIsOpen}
+                slideIndex={slideIndex}
+                images={Images}
+              />
+            </div>
+          )
+        }}
+      </FullScreenProvider>
     )
   }
 }

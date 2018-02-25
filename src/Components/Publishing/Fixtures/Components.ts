@@ -363,6 +363,7 @@ export const Images = [
     width: 1152,
     height: 826,
     credit: "Courtesy of Gary Nader",
+    index: 0,
   },
   {
     url:
@@ -372,6 +373,7 @@ export const Images = [
     height: 1200,
     caption: "<p>Photo by Adam Kuehl for Artsy.</p>",
     setTitle: "New York City",
+    index: 1,
   },
   {
     url:
@@ -382,6 +384,7 @@ export const Images = [
     caption:
       "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
     setTitle: "New York City",
+    index: 2,
   },
 ]
 

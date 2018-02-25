@@ -65,8 +65,8 @@ exports[`renders properly 1`] = `
 
 .c1 .BlockImage__container {
   opacity: 0;
-  -webkit-transition: opacity 1.0s;
-  transition: opacity 1.0s;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 .c1 .image-loaded {
