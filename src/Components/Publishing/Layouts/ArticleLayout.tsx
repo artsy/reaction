@@ -70,6 +70,8 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
   static defaultProps = {
     isMobile: false,
     isSuper: false,
+    article: {},
+    isTruncated: false,
   }
 
   constructor(props) {
