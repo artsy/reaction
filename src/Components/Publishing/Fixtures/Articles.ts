@@ -776,7 +776,7 @@ export const SeriesArticle: ArticleData = {
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, Sponsor)
 
-export const NewsArticle = {
+export const NewsArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
   layout: "news",
   author_id: "57b5fc6acd530e65f8000406",
@@ -829,7 +829,7 @@ export const NewsArticle = {
     {
       type: "text",
       layout: "blockquote",
-      body: "<blockquote><a href='#'>The Guardian</blockquote>",
+      body: "<blockquote><a href='#'>The Guardian</a></blockquote>",
     },
     {
       type: "text",

@@ -1,4 +1,6 @@
+import { compact, map } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
+import { NewsArticle } from "./Articles"
 
 export const ArtworkMissingInfo = {
   type: "artwork",
@@ -587,6 +589,10 @@ const textElements = [
 const classicText = textElements[0].concat(textElements[2])
 const standardText = classicText.concat(textElements[3])
 const featureText = textElements[1].concat(standardText)
+
+export const newsArticleText = () => {
+  return compact(map(NewsArticle.sections, "body")).join("")
+}
 
 export const SectionText = {
   classic: classicText.join(""),

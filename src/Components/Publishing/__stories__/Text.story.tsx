@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { SectionText } from "../Fixtures/Components"
+import { newsArticleText, SectionText } from "../Fixtures/Components"
 import { Text } from "../Sections/Text"
 
 storiesOf("Publishing/Text", module)
@@ -22,6 +22,13 @@ storiesOf("Publishing/Text", module)
     return (
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
         <Text layout="standard" html={SectionText.standard} />
+      </div>
+    )
+  })
+  .add("News", () => {
+    return (
+      <div style={{ maxWidth: 680, margin: "0 auto" }}>
+        <Text layout="news" html={newsArticleText()} />
       </div>
     )
   })
