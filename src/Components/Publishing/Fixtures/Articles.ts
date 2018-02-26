@@ -775,3 +775,75 @@ export const SeriesArticle: ArticleData = {
 }
 
 export const SeriesArticleSponsored = extend({}, SeriesArticle, Sponsor)
+
+export const NewsArticle = {
+  _id: "594a7e2254c37f00177c0ea9",
+  layout: "news",
+  author_id: "57b5fc6acd530e65f8000406",
+  author: {
+    id: "50f4367051e7956b6e00045d",
+    name: "Artsy Editorial",
+  },
+  authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+      bio:
+        "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
+      twitter_handle: "caseylesser",
+    },
+  ],
+  title:
+    "The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.",
+  sections: [
+    {
+      type: "image_collection",
+      images: [
+        {
+          caption: "<p>Illustration by Tomi Um for Artsy.</p>",
+          height: 533,
+          type: "image",
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80",
+          width: 800,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
+    },
+    {
+      type: "text",
+      layout: "blockquote",
+      body:
+        "<blockquote>It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.</blockquote>",
+    },
+    {
+      type: "text",
+      layout: "blockquote",
+      body:
+        "<blockquote>The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.</blockquote>",
+    },
+    {
+      type: "text",
+      layout: "blockquote",
+      body: "<blockquote><a href='#'>The Guardian</blockquote>",
+    },
+    {
+      type: "text",
+      body:
+        "<p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p>",
+    },
+    {
+      type: "text",
+      body:
+        "<h3><strong>Takeaway</strong></h3><h3>Should Prince lose at trial and on appeal the resulting precedent would reign in the broader <em>fair use interpretations</em> now afforded to artists.</h3>",
+    },
+  ],
+  news_source: {
+    title: "The New York Times",
+    url: "http://nytimes.com",
+  },
+}
