@@ -441,33 +441,24 @@ const DisplayPanelContainer = styled.div`
     background: url(${(p: DivUrlProps) => p.imageUrl || ""}) no-repeat center
       center;
     background-size: cover;
+
+    ${(p: DivUrlProps) =>
+      p.showCoverImage &&
+      p.hoverImageUrl &&
+      `
+        background: black url(${p.hoverImageUrl}) no-repeat center center;
+        background-size: contain;
+        border: 10px solid black;
+    `};
   }
 
   ${VideoCover} {
     background: url(${(p: DivUrlProps) => p.coverUrl || ""}) no-repeat center
       center;
     background-size: cover;
+
+    ${(p: DivUrlProps) => p.showCoverImage && !p.isMobile && `display: none;`};
   }
-
-  ${(p: DivUrlProps) =>
-    p.showCoverImage &&
-    p.hoverImageUrl &&
-    `
-      ${Image} {
-        background: black url(${p.hoverImageUrl}) no-repeat center center;
-        background-size: contain;
-        border: 10px solid black;
-      }
-    `};
-
-  ${(p: DivUrlProps) =>
-    p.showCoverImage &&
-    !p.isMobile &&
-    `
-      ${VideoCover} {
-        display: none;
-      }
-  `};
 
   ${breakpoint.md`
     margin: auto;
