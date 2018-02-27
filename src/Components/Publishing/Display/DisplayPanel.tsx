@@ -471,9 +471,11 @@ const DisplayPanelContainer = styled.div`
 
   ${breakpoint.md`
     margin: auto;
-  `} ${breakpoint.sm`
+  `};
+  ${breakpoint.sm`
     margin: auto;
-  `} ${breakpoint.xs`
+  `};
+  ${breakpoint.xs`
     margin: auto;
   `};
 `
