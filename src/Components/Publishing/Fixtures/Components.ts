@@ -556,7 +556,7 @@ export const Videos = [
   },
 ]
 
-export const ArticleText: Object[] = [
+export const ClassicText: Object[] = [
   {
     type: "text",
     body:
@@ -616,7 +616,7 @@ export const ArticleText: Object[] = [
 ]
 
 export const StandardText = flatten([
-  ArticleText,
+  ClassicText,
   {
     type: "text",
     body:
