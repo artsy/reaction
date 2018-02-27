@@ -183,12 +183,12 @@ exports[`snapshots renders the display panel with video 1`] = `
   justify-content: center;
 }
 
-.bAZKyp .c3 {
+.jDFHLF .c3 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.bAZKyp .c5 {
+.jDFHLF .c5 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
