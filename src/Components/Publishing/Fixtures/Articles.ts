@@ -1,6 +1,12 @@
-import { extend } from "lodash"
+import { cloneDeep, extend } from "lodash"
 import { ArticleData } from "../Typings"
-import { Media, Sponsor } from "./Components"
+import {
+  ArticleText,
+  FeatureText,
+  Media,
+  Sponsor,
+  StandardText,
+} from "./Components"
 
 export const ClassicArticle: ArticleData = {
   _id: "597b9f652d35b80017a2a6a7",
@@ -723,6 +729,17 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
 
 export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
   vertical: null,
+})
+
+// Articles with only text sections
+export const TextClassicArticle = extend(cloneDeep(ClassicArticle), {
+  sections: ArticleText,
+})
+export const TextStandardArticle = extend(cloneDeep(StandardArticle), {
+  sections: StandardText,
+})
+export const TextFeatureArticle = extend(cloneDeep(FeatureArticle), {
+  sections: FeatureText,
 })
 
 export const VideoArticle: ArticleData = {
