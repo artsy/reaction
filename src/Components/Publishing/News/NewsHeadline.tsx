@@ -4,16 +4,18 @@ import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 
 interface NewsHeadlineProps {
-  title: string
-  article?: any
+  article: any
+  editTitle?: any
 }
 
 export const NewsHeadline: React.SFC<NewsHeadlineProps> = props => {
-  const { title } = props
+  const { article, editTitle } = props
+  const { title } = article
+
   return (
     <NewsHeadlineParent>
       <NewsHeadlineContainer>
-        <Title>{title}</Title>
+        <Title>{editTitle ? editTitle : title}</Title>
       </NewsHeadlineContainer>
     </NewsHeadlineParent>
   )
@@ -29,6 +31,7 @@ const NewsHeadlineParent = styled.div`
 const NewsHeadlineContainer = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
   max-width: 780px;
   width: 100%;
   margin: 40px auto;

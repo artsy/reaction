@@ -1,7 +1,6 @@
 import React from "react"
 import { ClassicHeader } from "./ClassicHeader"
 import { FeatureHeader } from "./FeatureHeader"
-import { NewsHeadline } from "./NewsHeadline"
 import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
@@ -83,9 +82,6 @@ export const Header: React.SFC<HeaderProps> = props => {
           isMobile={isMobile}
         />
       )
-    }
-    case "news": {
-      return <NewsHeadline article={article} title={title} />
     }
     case "standard": {
       return (

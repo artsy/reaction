@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import _ from "lodash"
 import React from "react"
+
 import { HeroSections } from "../Fixtures/Components"
 import { Header } from "../Header/Header"
 
@@ -9,7 +10,6 @@ import {
   ClassicArticle,
   FeatureArticle,
   MissingVerticalStandardArticle,
-  NewsArticle,
   StandardArticle,
   SuperArticle,
 } from "../Fixtures/Articles"
@@ -164,15 +164,6 @@ storiesOf("Publishing/Headers", module)
           style={{ width: "100%", height: "50px", backgroundColor: "black" }}
         />
         <Header article={article} height="calc(100vh - 50px)" />
-      </div>
-    )
-  })
-  .add("News Headline", () => {
-    return (
-      <div>
-        <div style={{ width: "100%", height: "400px", position: "relative" }}>
-          <Header article={NewsArticle} />
-        </div>
       </div>
     )
   })
