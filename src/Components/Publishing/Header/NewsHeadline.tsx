@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
 
 interface NewsHeadlineProps {
@@ -20,6 +21,9 @@ export const NewsHeadline: React.SFC<NewsHeadlineProps> = props => {
 
 const NewsHeadlineParent = styled.div`
   margin: 0 40px;
+  ${pMedia.sm`
+    margin: 0 20px;
+  `};
 `
 
 const NewsHeadlineContainer = styled.div`
@@ -35,4 +39,8 @@ const NewsHeadlineContainer = styled.div`
 const Title = styled.div`
   ${Fonts.garamond("s34")};
   font-weight: 600;
+  ${pMedia.sm`
+    ${Fonts.garamond("s23")}
+    line-height: 1.1;
+  `};
 `
