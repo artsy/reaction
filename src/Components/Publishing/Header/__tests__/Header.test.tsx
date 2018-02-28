@@ -8,6 +8,7 @@ import {
   ClassicArticle,
   FeatureArticle,
   MissingVerticalStandardArticle,
+  NewsArticle,
   StandardArticle,
 } from "../../Fixtures/Articles"
 
@@ -24,7 +25,9 @@ describe("Header", () => {
   })
 
   it("renders a date passed as prop", () => {
-    const header = mount(<Header article={FeatureArticle} date={"2017-05-19T13:09:18.567Z"} />)
+    const header = mount(
+      <Header article={FeatureArticle} date={"2017-05-19T13:09:18.567Z"} />
+    )
     expect(header.html()).toContain("May 19, 2017 9:09 am")
   })
 
@@ -82,5 +85,12 @@ describe("Header", () => {
     expect(header.html()).toContain("Title Child")
     expect(header.html()).toContain("Deck Child")
     expect(header.html()).toContain("Image Child")
+  })
+
+  it("renders the right header for a news article", () => {
+    const header = mount(<Header article={NewsArticle} />)
+    expect(header.html()).toContain(
+      "The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe."
+    )
   })
 })
