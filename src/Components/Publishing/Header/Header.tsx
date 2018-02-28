@@ -1,6 +1,7 @@
 import React from "react"
 import { ClassicHeader } from "./ClassicHeader"
 import { FeatureHeader } from "./FeatureHeader"
+import { NewsHeadline } from "./NewsHeadline"
 import { StandardHeader } from "./StandardHeader"
 
 interface HeaderProps {
@@ -29,9 +30,11 @@ const getVertical = (article, children) => {
 }
 
 const getLeadParagraph = (article, children) => {
-  const leadParagraph = article.lead_paragraph
-    ? <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-    : false
+  const leadParagraph = article.lead_paragraph ? (
+    <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+  ) : (
+    false
+  )
   return children ? children[1] : leadParagraph
 }
 
@@ -45,9 +48,10 @@ const getDeck = (article, children) => {
 export const Header: React.SFC<HeaderProps> = props => {
   const { article, children, date, height, isMobile } = props
   const title = getTitle(article, children)
+  const layout = article.layout
 
   // Classic Article
-  if (article.layout === "classic") {
+  if (layout === "classic") {
     const leadParagraph = getLeadParagraph(article, children)
     return (
       <ClassicHeader
@@ -58,13 +62,15 @@ export const Header: React.SFC<HeaderProps> = props => {
         leadParagraph={leadParagraph}
       />
     )
-    // Feature
-  } else {
-    const deck = getDeck(article, children)
-    const vertical = getVertical(article, children)
-    const image = children && children[3]
+  }
 
-    if (article.layout === "feature") {
+  const deck = getDeck(article, children)
+  const vertical = getVertical(article, children)
+  const image = children && children[3]
+
+  // tslint:disable-next-line:switch-default
+  switch (layout) {
+    case "feature": {
       return (
         <FeatureHeader
           article={article}
@@ -77,8 +83,11 @@ export const Header: React.SFC<HeaderProps> = props => {
           isMobile={isMobile}
         />
       )
-      // Standard
-    } else {
+    }
+    case "news": {
+      return <NewsHeadline article={article} title={title} />
+    }
+    case "standard": {
       return (
         <StandardHeader
           article={article}
@@ -92,5 +101,5 @@ export const Header: React.SFC<HeaderProps> = props => {
 }
 
 Header.defaultProps = {
-  isMobile: false
+  isMobile: false,
 }
