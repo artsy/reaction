@@ -292,6 +292,18 @@ export const Embeds = [
   },
 ]
 
+export const SocialEmbedTwitter = {
+  url: "https://twitter.com/artsy/status/965246051107164160",
+  layout: "body",
+  type: "social_embed",
+}
+
+export const SocialEmbedInstagram = {
+  url: "https://www.instagram.com/p/BfJ2TU9F6sm/?taken-by=artsy",
+  layout: "body",
+  type: "social_embed",
+}
+
 export const HeroSections = [
   {
     type: "text",
