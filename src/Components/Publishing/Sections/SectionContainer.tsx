@@ -16,7 +16,10 @@ const chooseWidth = (layout, articleLayout, media = null) => {
     if (media && media === "lg" && articleLayout === "standard") {
       return "680px"
     }
-    if (layout === "blockquote" && articleLayout !== "classic") {
+    if (
+      layout === "blockquote" &&
+      ["feature", "standard"].includes(articleLayout)
+    ) {
       const sectionWidth = articleLayout === "feature" ? "900px" : "780px"
       return sectionWidth
     } else if (layout === "overflow_fillwidth" || layout === "blockquote") {
@@ -28,7 +31,7 @@ const chooseWidth = (layout, articleLayout, media = null) => {
   return "680px"
 }
 
-const chooseMobilePadding = (type) => {
+const chooseMobilePadding = type => {
   switch (type) {
     case "author":
     case "blockquote":

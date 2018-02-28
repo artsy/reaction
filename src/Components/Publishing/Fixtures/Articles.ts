@@ -1,6 +1,12 @@
-import { extend } from "lodash"
+import { cloneDeep, extend } from "lodash"
 import { ArticleData } from "../Typings"
-import { Media, Sponsor } from "./Components"
+import {
+  ClassicText,
+  FeatureText,
+  Media,
+  Sponsor,
+  StandardText,
+} from "./Components"
 
 export const ClassicArticle: ArticleData = {
   _id: "597b9f652d35b80017a2a6a7",
@@ -634,9 +640,9 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
-export const SponsoredArticle = extend({}, FeatureArticle, Sponsor)
+export const SponsoredArticle = extend(cloneDeep(FeatureArticle), Sponsor)
 
-export const SuperArticle = extend({}, FeatureArticle, {
+export const SuperArticle = extend(cloneDeep(FeatureArticle), {
   is_super_article: true,
   super_article: {
     footer_blurb:
@@ -663,7 +669,7 @@ export const SuperArticle = extend({}, FeatureArticle, {
   },
 })
 
-export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
+export const ImageHeavyStandardArticle = extend(cloneDeep(StandardArticle), {
   sections: [
     {
       type: "image_collection",
@@ -711,7 +717,7 @@ export const ImageHeavyStandardArticle = extend({}, StandardArticle, {
   ],
 })
 
-export const ShortStandardArticle = extend({}, StandardArticle, {
+export const ShortStandardArticle = extend(cloneDeep(StandardArticle), {
   sections: [
     {
       type: "text",
@@ -721,8 +727,22 @@ export const ShortStandardArticle = extend({}, StandardArticle, {
   ],
 })
 
-export const MissingVerticalStandardArticle = extend({}, StandardArticle, {
-  vertical: null,
+export const MissingVerticalStandardArticle = extend(
+  cloneDeep(StandardArticle),
+  {
+    vertical: null,
+  }
+)
+
+// Articles with only text sections
+export const TextClassicArticle = extend(cloneDeep(ClassicArticle), {
+  sections: ClassicText,
+})
+export const TextStandardArticle = extend(cloneDeep(StandardArticle), {
+  sections: StandardText,
+})
+export const TextFeatureArticle = extend(cloneDeep(FeatureArticle), {
+  sections: FeatureText,
 })
 
 export const VideoArticle: ArticleData = {
@@ -744,7 +764,7 @@ export const VideoArticle: ArticleData = {
   media: Media[0],
 }
 
-export const VideoArticleUnpublished = extend({}, VideoArticle, {
+export const VideoArticleUnpublished = extend(cloneDeep(VideoArticle), {
   media: {
     title: "Trevor Paglan",
     url: "",
@@ -758,7 +778,7 @@ export const VideoArticleUnpublished = extend({}, VideoArticle, {
   },
 })
 
-export const VideoArticleSponsored = extend({}, VideoArticle, Sponsor)
+export const VideoArticleSponsored = extend(cloneDeep(VideoArticle), Sponsor)
 
 export const SeriesArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
@@ -774,9 +794,9 @@ export const SeriesArticle: ArticleData = {
   related_articles: ["594a7e2254c37f00177c0ea9", "597b9f652d35b80017a2a6a7"],
 }
 
-export const SeriesArticleSponsored = extend({}, SeriesArticle, Sponsor)
+export const SeriesArticleSponsored = extend(cloneDeep(SeriesArticle), Sponsor)
 
-export const NewsArticle = {
+export const NewsArticle: ArticleData = {
   _id: "594a7e2254c37f00177c0ea9",
   layout: "news",
   author_id: "57b5fc6acd530e65f8000406",
@@ -829,7 +849,7 @@ export const NewsArticle = {
     {
       type: "text",
       layout: "blockquote",
-      body: "<blockquote><a href='#'>The Guardian</blockquote>",
+      body: "<blockquote><a href='#'>The Guardian</a></blockquote>",
     },
     {
       type: "text",

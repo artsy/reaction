@@ -11,17 +11,25 @@ interface StyledTextProps {
   postscript?: Boolean
 }
 
-const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> =
+  styled.div
 
 function getBlockquoteSize(layout, size) {
-  let font
   const desktop = size === "lg"
-  if (layout === "feature") {
-    font = desktop ? Fonts.unica("s40") : Fonts.unica("s34")
-  } else {
-    font = desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
+
+  switch (layout) {
+    case "feature": {
+      return desktop ? Fonts.unica("s40") : Fonts.unica("s34")
+    }
+    case "news": {
+      return desktop
+        ? Fonts.unica("s19", "medium")
+        : Fonts.unica("s16", "medium")
+    }
+    default: {
+      return desktop ? Fonts.garamond("s40") : Fonts.garamond("s34")
+    }
   }
-  return font
 }
 
 export const StyledText = div`
@@ -32,18 +40,22 @@ export const StyledText = div`
     color: ${props => props.color};
     text-decoration: none;
     position: relative;
-    background-image: linear-gradient(to bottom,transparent 0, ${props => props.color === "black" ? "#333" : props.color} 1px,transparent 0);
+    background-image: linear-gradient(to bottom,transparent 0, ${props =>
+      props.color === "black" ? "#333" : props.color} 1px,transparent 0);
     background-size: 1.25px 4px;
     background-repeat: repeat-x;
     background-position: bottom;
     &:hover {
-      color: ${props => props.color === "black" ? "#999" : props.color};
-      opacity:  ${props => props.color === "black" ? "1" : ".65"};
+      color: ${props => (props.color === "black" ? "#999" : props.color)};
+      opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
   p, ul, ol,
   div[data-block=true] .public-DraftStyleDefault-block {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
+    ${props =>
+      props.layout === "classic"
+        ? Fonts.garamond("s19")
+        : Fonts.garamond("s23")}
     padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     margin: 0;
@@ -61,7 +73,10 @@ export const StyledText = div`
     padding-left: 1em;
   }
   li {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s19") : Fonts.garamond("s23"))}
+    ${props =>
+      props.layout === "classic"
+        ? Fonts.garamond("s19")
+        : Fonts.garamond("s23")}
     padding-top: .5em;
     padding-bottom: .5em;
   }
@@ -85,7 +100,8 @@ export const StyledText = div`
     }
   }
   h2 {
-    ${props => (props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32"))}
+    ${props =>
+      props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32")}
     font-weight: normal;
     margin: 0;
     a {
@@ -93,13 +109,15 @@ export const StyledText = div`
     }
   }
   h3 {
-    ${props => (props.layout === "classic" ? Fonts.avantgarde("s13") : Fonts.unica("s19"))}
+    ${props =>
+      props.layout === "classic" ? Fonts.avantgarde("s13") : Fonts.unica("s19")}
     font-weight: normal;
     padding-top: 23px;
     margin: 0;
     strong {
       font-weight: normal;
-      ${props => (props.layout !== "classic" ? Fonts.unica("s19", "medium") : "")}
+      ${props =>
+        props.layout !== "classic" ? Fonts.unica("s19", "medium") : ""}
     }
     em {
       font-style: ${props => (props.layout === "classic" ? "normal" : "")};
@@ -112,15 +130,28 @@ export const StyledText = div`
     ${props => getBlockquoteSize(props.layout, "lg")}
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
-    padding-top: 46px;
-    padding-bottom: 46px;
+    padding-top: ${props => (props.layout === "news" ? "10px" : "46px")};
+    padding-bottom: ${props => (props.layout === "news" ? "10px" : "46px")};
     margin: 0;
     word-break: break-word;
+    a {
+      ${props =>
+        props.layout === "news" &&
+        `
+        background-size: 1.25px 1px;
+      `}
+    }
   }
   p:first-child:first-letter,
   div[data-block=true]:first-child .public-DraftStyleDefault-block:first-letter {
-    ${props => props.isContentStart && props.layout === "feature" && Fonts.unica("s67", "medium")}
-    ${props => props.isContentStart && props.layout === "feature" && `
+    ${props =>
+      props.isContentStart &&
+      props.layout === "feature" &&
+      Fonts.unica("s67", "medium")}
+    ${props =>
+      props.isContentStart &&
+      props.layout === "feature" &&
+      `
       float: left;
       line-height: .5em;
       margin-right: 10px;
@@ -170,7 +201,9 @@ export const StyledText = div`
       ${props.layout === "classic" ? Fonts.garamond("s28") : Fonts.unica("s32")}
     }
     h3 {
-      ${props.layout === "classic" ? Fonts.avantgarde("s11") : Fonts.unica("s16")}
+      ${props.layout === "classic"
+        ? Fonts.avantgarde("s11")
+        : Fonts.unica("s16")}
       line-height: ${props.layout !== "classic" ? "1.5em" : ""};
     }
     h3 strong {
@@ -186,5 +219,5 @@ export const StyledText = div`
 `
 
 StyledText.defaultProps = {
-  color: 'black'
+  color: "black",
 }
