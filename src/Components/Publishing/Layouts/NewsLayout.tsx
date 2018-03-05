@@ -1,0 +1,34 @@
+import React, { Component } from "react"
+import styled from "styled-components"
+import { NewsHeadline } from "../News/NewsHeadline"
+import { Sections } from "../Sections/Sections"
+
+interface Props {
+  article: any
+  expanded?: boolean
+}
+
+interface State {
+  expanded: boolean
+}
+
+export class NewsLayout extends Component<Props, State> {
+  state = {
+    expanded: this.props.expanded || true,
+  }
+
+  render() {
+    const { article } = this.props
+
+    return (
+      <NewsContainer>
+        <NewsHeadline article={article} />
+        <Sections article={article} />
+      </NewsContainer>
+    )
+  }
+}
+
+const NewsContainer = styled.div`
+  max-width: 580px;
+`

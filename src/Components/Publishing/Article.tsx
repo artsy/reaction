@@ -2,6 +2,7 @@ import React from "react"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
 import { ArticleLayout } from "./Layouts/ArticleLayout"
+import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
@@ -48,6 +49,9 @@ export class Article extends React.Component<ArticleProps, null> {
       }
       case "video": {
         return <VideoLayout {...this.props} />
+      }
+      case "news": {
+        return <NewsLayout {...this.props} />
       }
       default: {
         return <ArticleLayout {...this.props} />
