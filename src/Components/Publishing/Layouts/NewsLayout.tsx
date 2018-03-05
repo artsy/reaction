@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { NewsHeadline } from "../News/NewsHeadline"
-import { NewsSections } from "../Sections/NewsSections"
+import { NewsSections } from "../News/NewsSections"
 
 interface Props {
   article: any

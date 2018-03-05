@@ -2,11 +2,11 @@ import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
+import { Embed } from "../Sections/Embed"
+import { ImageCollection } from "../Sections/ImageCollection"
+import { Text } from "../Sections/Text"
+import { Video } from "../Sections/Video"
 import { Layout } from "../Typings"
-import { Embed } from "./Embed"
-import { ImageCollection } from "./ImageCollection"
-import { Text } from "./Text"
-import { Video } from "./Video"
 
 interface Props {
   article: {
