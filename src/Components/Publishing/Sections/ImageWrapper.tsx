@@ -71,6 +71,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
         />
 
         {layout !== "classic" &&
+          layout !== "news" &&
           linked && (
             <Fullscreen>
               <ViewFullscreen index={index} />

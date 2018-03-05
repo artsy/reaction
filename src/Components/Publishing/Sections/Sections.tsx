@@ -134,6 +134,7 @@ export class Sections extends Component<Props, State> {
       image_collection: (
         <ImageCollection
           sectionLayout={section.layout}
+          articleLayout={article.layout}
           images={section.images}
           targetHeight={500}
           gutter={10}

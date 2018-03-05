@@ -825,7 +825,7 @@ export const NewsArticle: ArticleData = {
           height: 533,
           type: "image",
           url:
-            "https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80",
+            "https://d32dm0rphc51dk.cloudfront.net/N13JE8AbtWFAgvueH8G1uQ/larger.jpg",
           width: 800,
         },
       ],

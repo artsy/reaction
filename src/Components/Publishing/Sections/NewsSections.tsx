@@ -23,10 +23,13 @@ export class NewsSections extends Component<Props, null> {
   }
 
   getSection(section, index) {
+    const { article } = this.props
+
     const sections = {
       image_collection: (
         <ImageCollection
           sectionLayout={section.layout}
+          articleLayout={article.layout}
           images={section.images}
           targetHeight={500}
           gutter={10}

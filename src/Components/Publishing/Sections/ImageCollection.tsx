@@ -5,7 +5,7 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
-import { SectionLayout } from "../Typings"
+import { Layout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 import { ImageCollectionItem } from "./ImageCollectionItem"
@@ -15,6 +15,7 @@ interface ImageCollectionProps {
   targetHeight?: number
   gutter?: number
   sectionLayout?: SectionLayout
+  articleLayout?: Layout
   size?: {
     width: number
   }
@@ -31,7 +32,13 @@ class ImageCollectionComponent extends React.PureComponent<
   }
 
   renderImages(dimensions) {
-    const { gutter, images, sectionLayout, size: { width } } = this.props
+    const {
+      articleLayout,
+      gutter,
+      images,
+      sectionLayout,
+      size: { width },
+    } = this.props
 
     const renderedImages = images.map((image, i) => {
       const url = image.url || image.image
@@ -49,6 +56,7 @@ class ImageCollectionComponent extends React.PureComponent<
           <Image
             image={image}
             sectionLayout={sectionLayout}
+            layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
           />
@@ -58,6 +66,7 @@ class ImageCollectionComponent extends React.PureComponent<
           <Artwork
             artwork={image}
             sectionLayout={sectionLayout}
+            layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
           />
