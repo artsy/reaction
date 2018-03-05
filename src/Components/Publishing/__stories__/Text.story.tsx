@@ -33,7 +33,7 @@ storiesOf("Publishing/Text", module)
   })
   .add("News", () => {
     return (
-      <div style={{ maxWidth: 680, margin: "0 auto" }}>
+      <div style={{ maxWidth: 660, margin: "0 auto" }}>
         <Text layout="news" html={TextFromArticle(NewsArticle)} />
       </div>
     )

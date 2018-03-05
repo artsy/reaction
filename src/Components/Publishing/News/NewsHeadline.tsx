@@ -22,7 +22,7 @@ export const NewsHeadline: React.SFC<NewsHeadlineProps> = props => {
 }
 
 const NewsHeadlineParent = styled.div`
-  margin: 0 40px;
+  margin: 0;
   ${pMedia.sm`
     margin: 0 20px;
   `};
@@ -31,7 +31,7 @@ const NewsHeadlineParent = styled.div`
 const NewsHeadlineContainer = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   max-width: 780px;
   width: 100%;
   margin: 40px auto;

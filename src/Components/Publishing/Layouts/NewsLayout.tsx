@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { NewsHeadline } from "../News/NewsHeadline"
-import { Sections } from "../Sections/Sections"
+import { NewsSections } from "../Sections/NewsSections"
 
 interface Props {
   article: any
@@ -23,12 +23,13 @@ export class NewsLayout extends Component<Props, State> {
     return (
       <NewsContainer>
         <NewsHeadline article={article} />
-        <Sections article={article} />
+        <NewsSections article={article} />
       </NewsContainer>
     )
   }
 }
 
 const NewsContainer = styled.div`
-  max-width: 580px;
+  max-width: 780px;
+  margin: auto;
 `
