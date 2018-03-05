@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
+import { pMedia } from "../../Helpers"
 import { Layout } from "../Typings"
 import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
@@ -99,4 +100,9 @@ const getMaxWidth = type => {
 const NewsSectionContainer = styled(Row)`
   ${(props: ContainerProp) => getMaxWidth(props.type)};
   margin-bottom: 20px;
+
+  ${pMedia.sm`
+    margin: 0 20px 15px 20px;
+    padding: 0px;
+  `};
 `

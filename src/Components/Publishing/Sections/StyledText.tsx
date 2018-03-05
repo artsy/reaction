@@ -210,7 +210,8 @@ export const StyledText = div`
       ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : ""}
     }
     blockquote {
-      ${getBlockquoteSize(props.layout, "sm")}
+      ${getBlockquoteSize(props.layout, "sm")};
+      margin: ${props.layout === "news" ? "0 10px;" : "0"};
     }
     .content-start {
       font-size: 55px;
