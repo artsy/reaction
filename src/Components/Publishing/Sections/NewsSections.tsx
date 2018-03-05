@@ -17,6 +17,10 @@ interface Props {
   isMobile?: boolean
 }
 
+interface ContainerProp {
+  type: string
+}
+
 export class NewsSections extends Component<Props, null> {
   static defaultProps = {
     isMobile: false,
@@ -48,11 +52,15 @@ export class NewsSections extends Component<Props, null> {
   renderSections() {
     const { article } = this.props
 
-    const renderedSections = article.sections.map((sectionItem, index) => {
-      const child = this.getSection(sectionItem, index)
+    const renderedSections = article.sections.map((section, index) => {
+      const child = this.getSection(section, index)
 
       if (child) {
-        return <Row key={index}>{child}</Row>
+        return (
+          <NewsSectionContainer key={index} type={section.type}>
+            {child}
+          </NewsSectionContainer>
+        )
       }
     })
 
@@ -77,3 +85,18 @@ export class NewsSections extends Component<Props, null> {
     )
   }
 }
+
+const getMaxWidth = type => {
+  if (type === "text") {
+    return "max-width: 660px;"
+  } else if (type === "image_collection") {
+    return ""
+  } else {
+    return "max-width: 560px;"
+  }
+}
+
+const NewsSectionContainer = styled(Row)`
+  ${(props: ContainerProp) => getMaxWidth(props.type)};
+  margin-bottom: 20px;
+`

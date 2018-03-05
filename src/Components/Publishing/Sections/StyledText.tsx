@@ -132,7 +132,7 @@ export const StyledText = div`
     font-weight: normal;
     padding-top: ${props => (props.layout === "news" ? "10px" : "46px")};
     padding-bottom: ${props => (props.layout === "news" ? "10px" : "46px")};
-    margin: 0;
+    margin: ${props => (props.layout === "news" ? "0 50px;" : "0")};
     word-break: break-word;
     a {
       ${props =>
