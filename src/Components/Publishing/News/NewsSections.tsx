@@ -12,10 +12,8 @@ interface Props {
   article: {
     layout: Layout
     authors?: any
-    postscript?: string
     sections?: any
   }
-  isMobile?: boolean
 }
 
 interface ContainerProp {
@@ -23,10 +21,6 @@ interface ContainerProp {
 }
 
 export class NewsSections extends Component<Props, null> {
-  static defaultProps = {
-    isMobile: false,
-  }
-
   getSection(section, index) {
     const { article } = this.props
 
