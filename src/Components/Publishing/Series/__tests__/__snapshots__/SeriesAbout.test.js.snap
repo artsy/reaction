@@ -330,6 +330,7 @@ exports[`SeriesAbout snapshots renders a series about properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c6 .content-start {
@@ -747,6 +748,7 @@ exports[`SeriesAbout snapshots renders a sponsored series about properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c9 .content-start {
@@ -1173,6 +1175,7 @@ exports[`SeriesAbout snapshots renders series about with children properly 1`] =
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c6 .content-start {

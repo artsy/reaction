@@ -1,0 +1,610 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the news layout properly 1`] = `
+.c1 {
+  margin: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  max-width: 780px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+  font-weight: 600;
+}
+
+.c6 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c4 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c9 {
+  position: relative;
+}
+
+.c9:hover .file__Fullscreen-yu39to-0 {
+  opacity: 1;
+}
+
+.c9 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.c9 .image-loaded {
+  opacity: 1;
+}
+
+.c10 {
+  display: block;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c12 {
+  padding: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.c12 > p,
+.c12 p,
+.c12 .public-DraftEditorPlaceholder-root,
+.c12 .public-DraftStyleDefault-block {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999;
+  margin: 0;
+}
+
+.c12 > a,
+.c12 a {
+  color: #999;
+}
+
+.c12 > a:hover,
+.c12 a:hover {
+  color: black;
+}
+
+.c8 {
+  margin-right: 0px;
+  width: 100%;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c14 {
+  position: relative;
+  width: 100%;
+}
+
+.c14 a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-size: 1.25px 4px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.c14 a:hover {
+  color: #999;
+  opacity: 1;
+}
+
+.c14 p,
+.c14 ul,
+.c14 ol,
+.c14 div[data-block=true] .public-DraftStyleDefault-block {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-style: inherit;
+}
+
+.c14 p:first-child,
+.c14 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+  padding-top: 0;
+}
+
+.c14 p:last-child,
+.c14 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+  padding-bottom: 0;
+}
+
+.c14 ul,
+.c14 ol {
+  padding-left: 1em;
+}
+
+.c14 li {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 23px;
+  line-height: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.c14 h1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  line-height: 1.1em;
+  font-weight: normal;
+  padding-top: 107px;
+  padding-bottom: 46px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.c14 h1:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 69px;
+  right: calc(50% - 7.5px);
+}
+
+.c14 h2 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.c14 h2 a {
+  background-size: 1.25px 1px;
+}
+
+.c14 h3 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-top: 23px;
+  margin: 0;
+}
+
+.c14 h3 strong {
+  font-weight: normal;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+}
+
+.c14 h3 a {
+  background-size: 1.25px 1px;
+}
+
+.c14 blockquote {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 50px;
+  word-break: break-word;
+}
+
+.c14 blockquote a {
+  background-size: 1.25px 1px;
+}
+
+.c14 .content-end {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.c14 .artist-follow {
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+  background: none transparent;
+}
+
+.c14 .artist-follow:before {
+  font-family: "artsy-icons";
+  content: "";
+  vertical-align: -8.5px;
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.c14 .artist-follow:after {
+  content: "Follow";
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.1em;
+  text-transform: none;
+}
+
+.c5 {
+  margin-bottom: 20px;
+}
+
+.c13 {
+  max-width: 660px;
+  margin-bottom: 20px;
+}
+
+.c0 {
+  max-width: 780px;
+  margin: auto;
+}
+
+@media (max-width:720px) {
+  .c1 {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 23px;
+    line-height: 1.5em;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 .file__Fullscreen-yu39to-0 {
+    opacity: 1;
+  }
+}
+
+@media (max-width:600px) {
+  .c11 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c12 {
+    padding: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c8 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:600px) {
+  .c14 p,
+  .c14 ul,
+  .c14 ol,
+  .c14 div[data-block=true] .public-DraftStyleDefault-block {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c14 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c14 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c14 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c14 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c14 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c14 blockquote {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    margin: 0 10px;
+  }
+
+  .c14 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    margin: 0 20px 15px 20px;
+    padding: 0px;
+  }
+}
+
+@media (max-width:720px) {
+  .c13 {
+    margin: 0 20px 15px 20px;
+    padding: 0px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+      >
+        The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.
+      </div>
+    </div>
+  </div>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5 c6"
+      type="image_collection"
+    >
+      <div
+        className="c7"
+      >
+        <div
+          className="c8"
+          width={undefined}
+        >
+          <div
+            className="article-image"
+          >
+            <div
+              className="c9"
+            >
+              <img
+                alt="Illustration by Tomi Um for Artsy."
+                className="BlockImage__container c10"
+                height="auto"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
+                width="100%"
+              />
+            </div>
+            <div
+              className="c11"
+            >
+              <div
+                className="c12"
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>Illustration by Tomi Um for Artsy.</p>",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<blockquote>It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.</blockquote>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<blockquote>The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.</blockquote>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<blockquote><a href='#'>The Guardian</a></blockquote>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p>",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c13 c6"
+      type="text"
+    >
+      <div
+        className="article__text-section c14"
+        color="black"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<h3><strong>Takeaway</strong></h3><h3>Should Prince lose at trial and on appeal the resulting precedent would reign in the broader <em>fair use interpretations</em> now afforded to artists.</h3>",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

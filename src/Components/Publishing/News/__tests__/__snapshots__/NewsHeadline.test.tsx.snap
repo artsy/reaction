@@ -2,7 +2,7 @@
 
 exports[`renders a headline with children properly 1`] = `
 .c0 {
-  margin: 0 40px;
+  margin: 0;
 }
 
 .c1 {
@@ -13,7 +13,7 @@ exports[`renders a headline with children properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   max-width: 780px;
   width: 100%;
   margin: 40px auto;
@@ -65,7 +65,7 @@ exports[`renders a headline with children properly 1`] = `
 
 exports[`renders a news headline properly 1`] = `
 .c0 {
-  margin: 0 40px;
+  margin: 0;
 }
 
 .c1 {
@@ -76,7 +76,7 @@ exports[`renders a news headline properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   max-width: 780px;
   width: 100%;
   margin: 40px auto;

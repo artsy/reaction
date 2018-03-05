@@ -387,6 +387,7 @@ exports[`Video About matches the snapshot 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c4 .content-start {
@@ -1061,6 +1062,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c4 .content-start {
