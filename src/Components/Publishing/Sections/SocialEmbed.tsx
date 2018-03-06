@@ -1,4 +1,6 @@
+import jsonp from "jsonp"
 import React from "react"
+import EmbedContainer from "react-oembed-container"
 
 interface SocialEmbedProps {
   section: any
@@ -6,37 +8,53 @@ interface SocialEmbedProps {
 
 interface SocialEmbedState {
   html: string
+  error: string
 }
+
+const TWITTER_EMBED_URL = "https://publish.twitter.com/oembed"
+const INSTAGRAM_EMBED_URL = "https://api.instagram.com/oembed"
 
 export class SocialEmbed extends React.Component<
   SocialEmbedProps,
   SocialEmbedState
 > {
-  state = { html: "" }
+  state = { html: "", error: "" }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        html: "WHAT UP!",
-      })
-    }, 3000)
+    jsonp(this.getEmbedUrl(), (err, data) => {
+      if (err) {
+        return this.setState({ error: "Failed to Load." })
+      }
+
+      this.setState({ html: data.html })
+    })
   }
 
-  getEmbedType = () => {
+  getEmbedUrl = () => {
     const { url } = this.props.section
 
     if (url.match("twitter")) {
-      return "twitter"
-    } else if (url.match("instagram")) {
-      return "instagram"
+      return TWITTER_EMBED_URL + `?url=${encodeURIComponent(url)}`
+    } else if (url.match("insta")) {
+      return INSTAGRAM_EMBED_URL + `?url=${encodeURIComponent(url)}`
     }
   }
 
   render() {
-    if (this.state.html) {
-      return this.state.html
+    const { html, error } = this.state
+
+    if (html) {
+      return (
+        <EmbedContainer markup={html}>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </EmbedContainer>
+      )
+    } else if (error) {
+      return <div>{error}</div>
     } else {
       return <div>Loading...</div>
     }
   }
 }
+
+const failed

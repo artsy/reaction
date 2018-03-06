@@ -299,7 +299,7 @@ export const SocialEmbedTwitter = {
 }
 
 export const SocialEmbedInstagram = {
-  url: "https://www.instagram.com/p/BfJ2TU9F6sm/?taken-by=artsy",
+  url: "https://www.instagram.com/p/BfJ2TU9F6sm",
   layout: "body",
   type: "social_embed",
 }
