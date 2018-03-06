@@ -15,6 +15,7 @@ export type SectionLayout =
 
 export type ArticleData = {
   layout: Layout
+  id: string
   sections?: Array<{
     type: string
     layout?: string
