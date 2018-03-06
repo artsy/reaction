@@ -1,12 +1,13 @@
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import { SectionLayout } from "../../Typings"
 import { SectionContainer } from "../SectionContainer"
 import { Text } from "../Text"
 
 it("renders overflow_fillwidth properly", () => {
   const section = {
-    layout: "overflow_fillwidth",
+    layout: "overflow_fillwidth" as SectionLayout,
     body: "<p>Hello, world!</p>",
     type: "text",
   }
@@ -22,7 +23,7 @@ it("renders overflow_fillwidth properly", () => {
 
 it("renders fillwidth properly", () => {
   const section = {
-    layout: "fillwidth",
+    layout: "fillwidth" as SectionLayout,
     body: "<p>Hello, world!</p>",
     type: "text",
   }
@@ -38,7 +39,7 @@ it("renders fillwidth properly", () => {
 
 it("renders column_width properly", () => {
   const section = {
-    layout: "column_width",
+    layout: "column_width" as SectionLayout,
     body: "<p>Hello, world!</p>",
     type: "text",
   }

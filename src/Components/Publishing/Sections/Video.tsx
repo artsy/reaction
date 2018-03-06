@@ -7,12 +7,13 @@ import { resize } from "../../../Utils/resizer"
 import track from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
-import { Layout } from "../Typings"
+import { ArticleLayout } from "../Typings"
 import { Caption } from "./Caption"
-import { VideoControls } from './VideoControls'
+import { VideoControls } from "./VideoControls"
 
-const BLACKLIST = ['gif', 'jpg', 'jpeg', 'png']
-const QUERYSTRING = "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
+const BLACKLIST = ["gif", "jpg", "jpeg", "png"]
+const QUERYSTRING =
+  "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
 export const VIDEO_RATIO = 0.5625
 
 interface VideoProps {
@@ -24,7 +25,7 @@ interface VideoProps {
   size?: any
   tracking?: any
   trackingData?: any
-  layout?: Layout
+  layout?: ArticleLayout
 }
 
 interface VideoState {
@@ -32,19 +33,22 @@ interface VideoState {
   hidden: boolean
 }
 
-@track((props) => {
-  return props.trackingData ? props.trackingData : {}
-}, {
-  dispatch: data => Events.postEvent(data)
-})
+@track(
+  props => {
+    return props.trackingData ? props.trackingData : {}
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 class VideoComponent extends React.Component<VideoProps, VideoState> {
   static defaultProps = {
     size: {
       width: 500,
     },
     tracking: {
-      trackEvent: x => x
-    }
+      trackEvent: x => x,
+    },
   }
 
   constructor(props) {
@@ -61,19 +65,19 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 
       this.state = {
         src: playerSrc,
-        hidden: false
+        hidden: false,
       }
     } else {
       console.error(
-        '(@artsy/reaction) Video.tsx: A url is required for video.', this.props
+        "(@artsy/reaction) Video.tsx: A url is required for video.",
+        this.props
       )
 
       this.state = {
-        hidden: true
+        hidden: true,
       }
     }
     this.playVideo = this.playVideo.bind(this)
- 
   }
 
   trackVideoClick() {
@@ -93,22 +97,21 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
     const { caption, cover_image_url } = this.props.section
     const { width } = this.props.size
     const src = resize(cover_image_url, { width: 1200 })
-    const showCaption = this.props.layout !== 'feature'
+    const showCaption = this.props.layout !== "feature"
 
     return (
-      <VideoContainer
-        layout={this.props.layout}
-        className='VideoContainer'>
-        {cover_image_url &&
+      <VideoContainer layout={this.props.layout} className="VideoContainer">
+        {cover_image_url && (
           <CoverImage
-            className='VideoCover'
+            className="VideoCover"
             src={src}
             height={width * VIDEO_RATIO}
             onClick={this.playVideo}
-            hidden={this.state.hidden}>
+            hidden={this.state.hidden}
+          >
             <VideoControls />
           </CoverImage>
-        }
+        )}
 
         <IFrame
           src={this.state.src}
@@ -117,12 +120,11 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
           height={width * VIDEO_RATIO}
         />
 
-        {showCaption &&
+        {showCaption && (
           <Caption caption={caption} layout={this.props.layout}>
             {this.props.children}
           </Caption>
-        }
-
+        )}
       </VideoContainer>
     )
   }
@@ -130,7 +132,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 
 // Utils
 export function isValidVideoUrl(url: string) {
-  const urlExtension = url && url.split('.').pop()
+  const urlExtension = url && url.split(".").pop()
   const isValid = BLACKLIST.every(bad => urlExtension !== bad)
   return isValid
 }
@@ -145,7 +147,7 @@ function getPlayerUrl(url) {
       return "https://www.youtube.com/embed/"
     }
   } else {
-    return '' // FIXME: check for errors
+    return "" // FIXME: check for errors
   }
 }
 
@@ -159,7 +161,7 @@ function getId(url) {
       return url.pathname.split("/").pop()
     }
   } else {
-    return '' // FIXME: error
+    return "" // FIXME: error
   }
 }
 
@@ -175,17 +177,18 @@ export const IFrame = iframe`
 interface CoverImageProps {
   src?: string
   height?: number
-  layout?: Layout
+  layout?: ArticleLayout
 }
 
-const Div: StyledFunction<CoverImageProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<CoverImageProps & React.HTMLProps<HTMLDivElement>> =
+  styled.div
 
 const VideoContainer = Div`
   width: 100%;
   position: relative;
 
   ${p => {
-    if (p.layout === 'feature') {
+    if (p.layout === "feature") {
       return `
         text-align: center;
         padding-bottom: 53px;

@@ -2,12 +2,12 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { Layout } from "../Typings"
+import { ArticleLayout } from "../Typings"
 
 interface StyledTextProps {
   color?: string
   isContentStart: boolean
-  layout: Layout
+  layout: ArticleLayout
   postscript?: Boolean
 }
 

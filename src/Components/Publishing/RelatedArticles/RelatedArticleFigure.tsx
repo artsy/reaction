@@ -6,6 +6,7 @@ import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
+import { ArticleLayout } from "../Typings"
 
 export interface RelatedArticleFigureData {
   thumbnail_title: string
@@ -18,7 +19,10 @@ interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-export class RelatedArticleFigure extends React.Component<RelatedArticleFigureProps, null> {
+export class RelatedArticleFigure extends React.Component<
+  RelatedArticleFigureProps,
+  null
+> {
   constructor(props) {
     super(props)
     this.onClick = this.onClick.bind(this)
@@ -39,6 +43,7 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
     const { article } = this.props
     const href = getArticleHref(article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
+    const bylineArticle = { ...article, layout: "series" as ArticleLayout }
 
     return (
       <ArticleFigure href={href} onClick={this.onClick}>
@@ -47,7 +52,7 @@ export class RelatedArticleFigure extends React.Component<RelatedArticleFigurePr
           <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
         </ImageTitle>
 
-        <Byline article={article} layout="condensed" />
+        <Byline article={bylineArticle} layout="condensed" />
       </ArticleFigure>
     )
   }

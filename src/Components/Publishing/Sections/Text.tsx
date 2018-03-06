@@ -1,12 +1,12 @@
 import React from "react"
-import { Layout } from "../Typings"
+import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
 
 interface TextProps extends React.HTMLProps<HTMLDivElement> {
   color?: string
   html?: string
   isContentStart?: boolean
-  layout: Layout
+  layout: ArticleLayout
   postscript?: boolean
 }
 

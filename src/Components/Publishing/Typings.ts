@@ -1,4 +1,4 @@
-export type Layout =
+export type ArticleLayout =
   | "classic"
   | "feature"
   | "series"
@@ -14,9 +14,13 @@ export type SectionLayout =
   | "mini"
   | "overflow_fillwidth"
 
+export type BylineLayout = "fullscreen" | "condensed" | "standard" | "split"
+
+export type DateFormat = "monthYear" | "condensed" | "verbose" | "default"
+
 export type ArticleData = {
-  layout: Layout
   id: string
+  layout: ArticleLayout
   sections?: Array<{
     type: string
     layout?: string

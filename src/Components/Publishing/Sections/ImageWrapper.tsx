@@ -2,12 +2,12 @@ import React from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { Layout } from "../Typings"
+import { ArticleLayout } from "../Typings"
 import { ViewFullscreen } from "./ViewFullscreen"
 
 interface Props extends React.HTMLProps<HTMLImageElement> {
   src: string
-  layout?: Layout
+  layout?: ArticleLayout
   linked?: boolean
   width?: string | number
   height?: string | number

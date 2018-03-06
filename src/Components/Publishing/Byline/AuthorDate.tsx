@@ -3,50 +3,78 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
+import { ArticleLayout, BylineLayout, DateFormat } from "../Typings"
 
-interface AuthorDateProps {
+interface AuthorProps {
   authors?: any
+  layout?: BylineLayout
+  articleLayout?: ArticleLayout
   color?: string
-  date?: string
-  layout?: string
 }
 
-export const Author: React.SFC<AuthorDateProps> = props => {
+interface DateProps {
+  date?: string
+  layout?: BylineLayout
+  format?: DateFormat
+}
+
+export const Author: React.SFC<AuthorProps> = props => {
+  const includeBullet = props.articleLayout !== "news"
+
   return (
-    <StyledAuthor className="author" layout={props.layout} color={props.color}>
+    <StyledAuthor
+      className="author"
+      condensed={props.layout === "condensed"}
+      color={props.color}
+      withBullet={includeBullet}
+    >
       By {getAuthorByline(props.authors)}
     </StyledAuthor>
   )
 }
 
-export const Date: React.SFC<AuthorDateProps> = props => {
+export const Date: React.SFC<DateProps> = props => {
+  const condensed = props.layout === "condensed"
+  const format = props.format || (condensed ? "condensed" : "default")
+
   return (
-    <Text className="date" layout={props.layout}>
-      {getDate(props.date, props.layout)}
+    <Text className="date" condensed={condensed}>
+      {getDate(props.date, format)}
     </Text>
   )
 }
 
 Author.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
-const div: StyledFunction<AuthorDateProps & React.HTMLProps<HTMLInputElement>> = styled.div
+interface TextProps {
+  condensed?: boolean
+  withBullet?: boolean
+}
+
+const div: StyledFunction<TextProps & React.HTMLProps<HTMLInputElement>> =
+  styled.div
 
 const Text = div`
-  ${props => (props.layout === "condensed" ? Fonts.unica("s14", "medium") : Fonts.unica("s16", "medium"))}
+  ${props =>
+    props.condensed
+      ? Fonts.unica("s14", "medium")
+      : Fonts.unica("s16", "medium")}
   margin: 10px 30px 0 0;
   &.date {
     white-space: nowrap;
   }
   ${props => pMedia.sm`
-    ${props.layout === "condensed" ? Fonts.unica("s12", "medium") : Fonts.unica("s14", "medium")}
+    ${props.condensed
+      ? Fonts.unica("s12", "medium")
+      : Fonts.unica("s14", "medium")}
     ${Fonts.unica("s14", "medium")}
     margin: 10px 20px 0 0;
   `}
 `
-const adjustForCondensed = layout => {
-  return layout === "condensed"
+const adjustForCondensed = condensed => {
+  return condensed
     ? `
   &:before {
     min-width: 8px;
@@ -55,21 +83,27 @@ const adjustForCondensed = layout => {
   }`
     : ""
 }
+
+const bullet = color => {
+  return `
+    &:before {
+      content: "";
+      display: inline-block;
+      min-width: 10px;
+      min-height: 10px;
+      border-radius: 50%;
+      margin: 6px 10px 1px 0;
+      background-color: ${color};
+    }
+  `
+}
+
 const StyledAuthor = Text.extend`
-  &:before {
-    content: "";
-    display: inline-block;
-    min-width: 10px;
-    min-height: 10px;
-    border-radius: 50%;
-    margin: 6px 10px 1px 0;
-    background-color: ${props => props.color};
-  }
-  ${props => adjustForCondensed(props.layout)}
-  ${pMedia.sm`
+  ${props => (props.withBullet ? bullet(props.color) : "")} ${props =>
+      adjustForCondensed(props.condensed)} ${pMedia.sm`
     &:before {
       min-width: 8px;
       min-height: 8px;
     }
-  `}
+  `};
 `
