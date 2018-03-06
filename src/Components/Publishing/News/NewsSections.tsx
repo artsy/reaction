@@ -20,7 +20,7 @@ interface ContainerProp {
   type: string
 }
 
-export class NewsSections extends Component<Props, null> {
+export class NewsSections extends Component<Props> {
   getSection(section, index) {
     const { article } = this.props
 
@@ -34,8 +34,6 @@ export class NewsSections extends Component<Props, null> {
           gutter={10}
         />
       ),
-      video: <Video section={section} />,
-      embed: <Embed section={section} />,
       text: <Text html={section.body} layout={this.props.article.layout} />,
       default: false,
     }
