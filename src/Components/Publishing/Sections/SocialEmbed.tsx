@@ -8,7 +8,6 @@ interface SocialEmbedProps {
 
 interface SocialEmbedState {
   html: string
-  error: string
 }
 
 const TWITTER_EMBED_URL = "https://publish.twitter.com/oembed"
@@ -23,9 +22,8 @@ export class SocialEmbed extends React.Component<
   componentDidMount() {
     jsonp(this.getEmbedUrl(), (err, data) => {
       if (err) {
-        return this.setState({ error: "Failed to Load." })
+        return
       }
-
       this.setState({ html: data.html })
     })
   }
@@ -34,14 +32,14 @@ export class SocialEmbed extends React.Component<
     const { url } = this.props.section
 
     if (url.match("twitter")) {
-      return TWITTER_EMBED_URL + `?url=${encodeURIComponent(url)}`
+      return TWITTER_EMBED_URL + `?url=${url}`
     } else if (url.match("insta")) {
-      return INSTAGRAM_EMBED_URL + `?url=${encodeURIComponent(url)}`
+      return INSTAGRAM_EMBED_URL + `?url=${url}`
     }
   }
 
   render() {
-    const { html, error } = this.state
+    const { html } = this.state
 
     if (html) {
       return (
@@ -49,12 +47,8 @@ export class SocialEmbed extends React.Component<
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </EmbedContainer>
       )
-    } else if (error) {
-      return <div>{error}</div>
     } else {
-      return <div>Loading...</div>
+      return false
     }
   }
 }
-
-const failed

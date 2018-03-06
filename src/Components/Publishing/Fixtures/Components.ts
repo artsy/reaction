@@ -294,13 +294,13 @@ export const Embeds = [
 
 export const SocialEmbedTwitter = {
   url: "https://twitter.com/artsy/status/965246051107164160",
-  layout: "body",
+  layout: "column_width",
   type: "social_embed",
 }
 
 export const SocialEmbedInstagram = {
   url: "https://www.instagram.com/p/BfJ2TU9F6sm",
-  layout: "body",
+  layout: "column_width",
   type: "social_embed",
 }
 
