@@ -79,9 +79,17 @@ export const getDate = (date, format: DateFormat = "default") => {
         .tz("America/New_York")
         .format("MMM D, YYYY")
     case "verbose":
-      return moment(date)
+      const today = moment()
+      const day = today.isSame(moment(date), "day")
+        ? "Today"
+        : moment(date)
+            .tz("America/New_York")
+            .format("MMM D, YYYY")
+
+      const time = moment(date)
         .tz("America/New_York")
-        .format("MMM D, YYYY h:mm a")
+        .format("h:mm a")
+      return `${day} at ${time}`
     default:
       return moment(date)
         .tz("America/New_York")

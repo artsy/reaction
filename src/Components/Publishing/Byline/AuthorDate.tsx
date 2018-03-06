@@ -19,14 +19,13 @@ interface DateProps {
 }
 
 export const Author: React.SFC<AuthorProps> = props => {
-  const includeBullet = props.articleLayout !== "news"
-
+  const { color, layout } = props
   return (
     <StyledAuthor
       className="author"
-      condensed={props.layout === "condensed"}
-      color={props.color}
-      withBullet={includeBullet}
+      condensed={layout === "condensed"}
+      color={color}
+      withBullet
     >
       By {getAuthorByline(props.authors)}
     </StyledAuthor>

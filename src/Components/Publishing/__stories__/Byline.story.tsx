@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react"
 import { extend } from "lodash"
 import React from "react"
 import { Byline } from "../Byline/Byline"
+import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
 import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
@@ -85,7 +86,7 @@ storiesOf("Publishing/Byline", module)
   .add("News Byline", () => {
     return (
       <div>
-        <Byline article={NewsArticle} />
+        <NewsByline article={NewsArticle} />
       </div>
     )
   })
