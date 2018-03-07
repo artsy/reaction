@@ -1,5 +1,6 @@
 import { flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
+import { SocialEmbedProps } from "../Sections/SocialEmbed"
 
 export const ArtworkMissingInfo = {
   type: "artwork",
@@ -292,13 +293,13 @@ export const Embeds = [
   },
 ]
 
-export const SocialEmbedTwitter = {
+export const SocialEmbedTwitter: SocialEmbedProps["section"] = {
   url: "https://twitter.com/artsy/status/965246051107164160",
   layout: "column_width",
   type: "social_embed",
 }
 
-export const SocialEmbedInstagram = {
+export const SocialEmbedInstagram: SocialEmbedProps["section"] = {
   url: "https://www.instagram.com/p/BfJ2TU9F6sm",
   layout: "column_width",
   type: "social_embed",
