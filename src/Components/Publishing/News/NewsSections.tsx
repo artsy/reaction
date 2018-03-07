@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsByline } from "../Byline/NewsByline"
 import { ImageCollection } from "../Sections/ImageCollection"
+import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Text } from "../Sections/Text"
 import { ArticleData } from "../Typings"
 
@@ -29,6 +30,7 @@ export class NewsSections extends Component<Props> {
           gutter={10}
         />
       ),
+      social_embed: <SocialEmbed section={section} />,
       text: <Text html={section.body} layout={this.props.article.layout} />,
       default: false,
     }
@@ -78,12 +80,10 @@ export class NewsSections extends Component<Props> {
 }
 
 const getMaxWidth = type => {
-  if (type === "text") {
-    return "max-width: 660px;"
-  } else if (type === "image_collection") {
+  if (type === "image_collection") {
     return ""
   } else {
-    return "max-width: 560px;"
+    return "max-width: 660px;"
   }
 }
 

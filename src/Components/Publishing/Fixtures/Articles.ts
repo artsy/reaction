@@ -4,6 +4,8 @@ import {
   ClassicText,
   FeatureText,
   Media,
+  SocialEmbedInstagram,
+  SocialEmbedTwitter,
   Sponsor,
   StandardText,
 } from "./Components"
@@ -836,6 +838,7 @@ export const NewsArticle: ArticleData = {
       body:
         "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
     },
+    SocialEmbedInstagram,
     {
       type: "text",
       layout: "blockquote",
@@ -858,6 +861,7 @@ export const NewsArticle: ArticleData = {
       body:
         "<p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p>",
     },
+    SocialEmbedTwitter,
     {
       type: "text",
       body:

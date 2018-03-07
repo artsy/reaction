@@ -130,10 +130,18 @@ export const StyledText = div`
     ${props => getBlockquoteSize(props.layout, "lg")}
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
     font-weight: normal;
-    padding-top: ${props => (props.layout === "news" ? "10px" : "46px")};
-    padding-bottom: ${props => (props.layout === "news" ? "10px" : "46px")};
-    margin: ${props => (props.layout === "news" ? "0 50px;" : "0")};
+    padding-top: 46px;
+    padding-bottom: 46px;
+    margin: 0;
     word-break: break-word;
+    ${props =>
+      props.layout === "news" &&
+      `
+        padding-top: 10px;
+        padding-bottom: 10px;
+        max-width: 560px;
+        margin: auto;
+      `}
     a {
       ${props =>
         props.layout === "news" &&

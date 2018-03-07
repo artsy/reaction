@@ -1,6 +1,7 @@
 import jsonp from "jsonp"
 import React from "react"
 import EmbedContainer from "react-oembed-container"
+import styled from "styled-components"
 
 interface SocialEmbedProps {
   section: any
@@ -43,12 +44,23 @@ export class SocialEmbed extends React.Component<
 
     if (html) {
       return (
-        <EmbedContainer markup={html}>
+        <StyledEmbedContainer markup={html}>
           <div dangerouslySetInnerHTML={{ __html: html }} />
-        </EmbedContainer>
+        </StyledEmbedContainer>
       )
     } else {
       return false
     }
   }
 }
+
+const StyledEmbedContainer = styled(EmbedContainer)`
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+
+  twitterwidget {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
