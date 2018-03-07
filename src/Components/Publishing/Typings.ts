@@ -33,5 +33,9 @@ export type ArticleData = {
     mobile_height?: number
     height?: number
   }>
+  news_source?: {
+    title?: string
+    url?: string
+  }
   [x: string]: any
 }

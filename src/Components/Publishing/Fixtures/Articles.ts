@@ -805,6 +805,7 @@ export const NewsArticle: ArticleData = {
     id: "50f4367051e7956b6e00045d",
     name: "Artsy Editorial",
   },
+  date: "2018-07-19T17:19:55.909Z",
   authors: [
     {
       id: "523783258b3b815f7100055a",

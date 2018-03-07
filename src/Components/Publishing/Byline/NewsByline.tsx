@@ -1,11 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import colors from "../../../Assets/Colors"
+import { pMedia } from "../../Helpers"
 import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
+import { ArticleData } from "../Typings"
 import { Share } from "./Share"
 
 interface NewsBylineProps {
-  article: any
+  article: ArticleData
 }
 
 export const NewsByline: React.SFC<NewsBylineProps> = props => {
@@ -28,16 +31,27 @@ const DateAndSource: React.SFC<NewsBylineProps> = props => {
   const { article } = props
   const { date, news_source } = article
 
+  const getNewsSource = source => {
+    if (!source || !source.url) return null
+    return (
+      <div>
+        {", via "}
+        <a href={source.url}>{source.title}</a>
+      </div>
+    )
+  }
+
   return (
     <DateSourceContainer>
       {getDate(date, "verbose")}
-      {`, via  ${news_source.title}`}
+      {getNewsSource(news_source)}
     </DateSourceContainer>
   )
 }
 
 const NewsBylineContainer = styled.div`
   display: flex;
+  flex: 1;
   justify-content: space-between;
   align-items: flex-start;
 `
@@ -49,9 +63,20 @@ const AuthorDateContainer = styled.div`
 
 const Poster = styled.div`
   ${Fonts.unica("s14", "medium")};
+
+  ${pMedia.sm`
+    ${Fonts.unica("s12", "medium")}
+  `};
 `
 
 const DateSourceContainer = styled.div`
   display: flex;
-  ${Fonts.unica("s14")} color: #999999;
+  ${Fonts.unica("s14")};
+
+  ${pMedia.sm`
+    ${Fonts.unica("s12")}
+  `} a {
+    color: ${colors.grayDark};
+  }
+  color: ${colors.grayDark};
 `

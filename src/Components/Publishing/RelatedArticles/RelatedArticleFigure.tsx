@@ -43,7 +43,11 @@ export class RelatedArticleFigure extends React.Component<
     const { article } = this.props
     const href = getArticleHref(article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
-    const bylineArticle = { ...article, layout: "series" as ArticleLayout }
+    const bylineArticle = {
+      ...article,
+      layout: "series" as ArticleLayout,
+      id: article.slug,
+    }
 
     return (
       <ArticleFigure href={href} onClick={this.onClick}>

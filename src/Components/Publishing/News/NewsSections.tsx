@@ -2,16 +2,13 @@ import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
+import { NewsByline } from "../Byline/NewsByline"
 import { ImageCollection } from "../Sections/ImageCollection"
 import { Text } from "../Sections/Text"
-import { Layout } from "../Typings"
+import { ArticleData } from "../Typings"
 
 interface Props {
-  article: {
-    layout: Layout
-    authors?: any
-    sections?: any
-  }
+  article: ArticleData
 }
 
 interface ContainerProp {
@@ -62,17 +59,20 @@ export class NewsSections extends Component<Props> {
     const { article: { authors } } = this.props
 
     if (authors) {
-      return
-      // Return a byline
+      return (
+        <BylineContainer>
+          <NewsByline article={this.props.article} />
+        </BylineContainer>
+      )
     }
   }
 
   render() {
     return (
-      <Col>
+      <NewsArticleContainer>
         {this.renderSections()}
         {this.renderByline()}
-      </Col>
+      </NewsArticleContainer>
     )
   }
 }
@@ -92,7 +92,20 @@ const NewsSectionContainer = styled(Row)`
   margin-bottom: 20px;
 
   ${pMedia.sm`
-    margin: 0 20px 15px 20px;
+    margin: 0 20px 15px;
     padding: 0px;
   `};
+`
+
+const BylineContainer = styled(Row)`
+  max-width: 780px;
+  margin-top: 30px;
+  ${pMedia.sm`
+    margin: 30px 20px 0;
+    padding: 0px;
+  `};
+`
+
+const NewsArticleContainer = styled(Col)`
+  margin-bottom: 80px;
 `

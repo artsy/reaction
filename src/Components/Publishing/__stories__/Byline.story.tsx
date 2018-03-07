@@ -90,3 +90,12 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
+  .add("News Byline without source", () => {
+    const article = Object.assign({}, NewsArticle)
+    article.news_source = {}
+    return (
+      <div>
+        <NewsByline article={article} />
+      </div>
+    )
+  })

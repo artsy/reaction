@@ -213,7 +213,8 @@ const Container = div`
 `
 
 const Vertical = styled.div`
-  ${defaults} ${breakpoint.xs`
+  ${defaults};
+  ${breakpoint.xs`
     ${Fonts.unica("s14", "medium")}
   `};
 `
@@ -232,13 +233,15 @@ const Title = styled.div`
 `
 
 const LeadParagraph = styled.div`
-  ${defaults} ${breakpoint.xs`
+  ${defaults};
+  ${breakpoint.xs`
     ${Fonts.unica("s14", "medium")}
   `};
 `
 
 const Author = styled.div`
-  ${defaults} &:before {
+  ${defaults};
+  &:before {
     content: "";
     display: inline-block;
     min-width: 10px;
@@ -254,7 +257,8 @@ const Author = styled.div`
 `
 
 const Date = styled.div`
-  ${defaults} white-space: nowrap;
+  ${defaults};
+  white-space: nowrap;
 
   ${breakpoint.xs`
     ${Fonts.unica("s14", "medium")}
