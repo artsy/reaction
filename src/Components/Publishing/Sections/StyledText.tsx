@@ -132,7 +132,7 @@ export const StyledText = div`
     font-weight: normal;
     padding-top: ${props => (props.layout === "news" ? "10px" : "46px")};
     padding-bottom: ${props => (props.layout === "news" ? "10px" : "46px")};
-    margin: 0;
+    margin: ${props => (props.layout === "news" ? "0 50px;" : "0")};
     word-break: break-word;
     a {
       ${props =>
@@ -210,7 +210,8 @@ export const StyledText = div`
       ${props.layout !== "classic" ? Fonts.unica("s16", "medium") : ""}
     }
     blockquote {
-      ${getBlockquoteSize(props.layout, "sm")}
+      ${getBlockquoteSize(props.layout, "sm")};
+      margin: ${props.layout === "news" ? "0 10px;" : "0"};
     }
     .content-start {
       font-size: 55px;

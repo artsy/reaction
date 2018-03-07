@@ -5,7 +5,7 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
-import { SectionLayout } from "../Typings"
+import { Layout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 import { ImageCollectionItem } from "./ImageCollectionItem"
@@ -15,26 +15,29 @@ interface ImageCollectionProps {
   targetHeight?: number
   gutter?: number
   sectionLayout?: SectionLayout
+  articleLayout?: Layout
   size?: {
     width: number
   }
 }
 
-class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps, null> {
+class ImageCollectionComponent extends React.PureComponent<
+  ImageCollectionProps,
+  null
+> {
   static defaultProps = {
     size: {
-      width: 680
-    }
+      width: 680,
+    },
   }
 
   renderImages(dimensions) {
     const {
+      articleLayout,
       gutter,
       images,
       sectionLayout,
-      size: {
-        width
-      }
+      size: { width },
     } = this.props
 
     const renderedImages = images.map((image, i) => {
@@ -53,6 +56,7 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
           <Image
             image={image}
             sectionLayout={sectionLayout}
+            layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
           />
@@ -62,6 +66,7 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
           <Artwork
             artwork={image}
             sectionLayout={sectionLayout}
+            layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
           />
@@ -73,11 +78,7 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
       const margin = i === dimensions.length - 1 ? 0 : gutter
 
       return (
-        <ImageCollectionItem
-          key={i}
-          margin={margin}
-          width={imageSize.width}
-        >
+        <ImageCollectionItem key={i} margin={margin} width={imageSize.width}>
           {renderedImage}
         </ImageCollectionItem>
       )
@@ -87,14 +88,15 @@ class ImageCollectionComponent extends React.PureComponent<ImageCollectionProps,
 
   render() {
     const { gutter, images, size, targetHeight } = this.props
-    const dimensions = fillwidthDimensions(images, size.width, gutter, targetHeight)
+    const dimensions = fillwidthDimensions(
+      images,
+      size.width,
+      gutter,
+      targetHeight
+    )
     const renderedImages = this.renderImages(dimensions)
 
-    return (
-      <ImageCollectionContainer>
-        {renderedImages}
-      </ImageCollectionContainer>
-    )
+    return <ImageCollectionContainer>{renderedImages}</ImageCollectionContainer>
   }
 }
 

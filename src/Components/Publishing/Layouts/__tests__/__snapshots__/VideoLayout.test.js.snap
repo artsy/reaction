@@ -1456,6 +1456,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c49 .content-start {
@@ -1515,6 +1516,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c58 .content-start {

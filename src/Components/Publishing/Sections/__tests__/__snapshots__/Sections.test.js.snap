@@ -718,6 +718,7 @@ exports[`snapshots renders properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c2 .content-start {

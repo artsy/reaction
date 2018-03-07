@@ -5,6 +5,7 @@ export type Layout =
   | "standard"
   | "video"
   | "news"
+
 export type SectionLayout =
   | "blockquote"
   | "column_width"

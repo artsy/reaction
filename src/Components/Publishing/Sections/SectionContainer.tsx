@@ -13,17 +13,24 @@ const Div: StyledFunction<SectionContainerProps> = styled.div
 
 const chooseWidth = (layout, articleLayout, media = null) => {
   if (layout) {
+    // Standard Desktop
     if (media && media === "lg" && articleLayout === "standard") {
       return "680px"
     }
+
+    // Blockquote
     if (
       layout === "blockquote" &&
       ["feature", "standard"].includes(articleLayout)
     ) {
       const sectionWidth = articleLayout === "feature" ? "900px" : "780px"
       return sectionWidth
+
+      // Overflow Blockquote
     } else if (layout === "overflow_fillwidth" || layout === "blockquote") {
       return "780px"
+
+      // Fillwidth
     } else if (layout === "fillwidth") {
       return "100%"
     }

@@ -790,6 +790,7 @@ exports[`renders a series properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c37 .content-start {
@@ -1896,6 +1897,7 @@ exports[`renders a sponsored series properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c42 .content-start {

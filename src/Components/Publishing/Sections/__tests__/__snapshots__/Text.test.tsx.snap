@@ -227,6 +227,7 @@ exports[`renders classic text properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c0 .content-start {
@@ -465,6 +466,7 @@ exports[`renders feature text properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c0 .content-start {
@@ -703,6 +705,7 @@ exports[`renders news text properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c0 .content-start {
@@ -941,6 +944,7 @@ exports[`renders standard text properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
+    margin: 0;
   }
 
   .c0 .content-start {
