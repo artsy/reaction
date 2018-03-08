@@ -29,7 +29,7 @@ export const NewsByline: React.SFC<NewsBylineProps> = props => {
 
 const DateAndSource: React.SFC<NewsBylineProps> = props => {
   const { article } = props
-  const { date, news_source } = article
+  const { date, news_source, published_at } = article
 
   const getNewsSource = source => {
     if (!source || !source.url) return null
@@ -43,7 +43,7 @@ const DateAndSource: React.SFC<NewsBylineProps> = props => {
 
   return (
     <DateSourceContainer>
-      {getDate(date, "verbose")}
+      {getDate(date || published_at, "verbose")}
       {getNewsSource(news_source)}
     </DateSourceContainer>
   )

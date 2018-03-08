@@ -117,5 +117,6 @@ const IconWrapper = styled.a`
   }
 `
 const ShareLabel = styled.span`
-  ${Fonts.unica("s16", "medium")} margin: 10px 10px 10px 0px;
+  ${Fonts.unica("s16", "medium")};
+  margin: 10px 10px 10px 0px;
 `

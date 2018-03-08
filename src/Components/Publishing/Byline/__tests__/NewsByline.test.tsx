@@ -8,6 +8,7 @@ describe("News Byline", () => {
     const byline = renderer.create(<NewsByline article={NewsArticle} />)
     expect(byline).toMatchSnapshot()
   })
+
   it("renders without a news source", () => {
     const article = NewsArticle
     article.news_source = {}

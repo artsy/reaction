@@ -18,12 +18,17 @@ export type BylineLayout = "fullscreen" | "condensed" | "standard" | "split"
 
 export type DateFormat = "monthYear" | "condensed" | "verbose" | "default"
 
+// TODO: Make some of these non-optional ;)
 export type ArticleData = {
   id: string
-  layout: ArticleLayout
+  layout?: ArticleLayout
+  authors?: any
+  postscript?: string
+  date?: string
+  published_at?: string
   sections?: Array<{
     type: string
-    layout?: string
+    layout?: SectionLayout
     images?: any[]
     body?: string
     url?: string

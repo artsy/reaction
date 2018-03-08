@@ -6,7 +6,6 @@ import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
 import { Fonts } from "../Fonts"
-import { ArticleLayout } from "../Typings"
 
 export interface RelatedArticleFigureData {
   thumbnail_title: string
@@ -43,11 +42,7 @@ export class RelatedArticleFigure extends React.Component<
     const { article } = this.props
     const href = getArticleHref(article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
-    const bylineArticle = {
-      ...article,
-      layout: "series" as ArticleLayout,
-      id: article.slug,
-    }
+    const bylineArticle = { ...article, id: article.slug }
 
     return (
       <ArticleFigure href={href} onClick={this.onClick}>

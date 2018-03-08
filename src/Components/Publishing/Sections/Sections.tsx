@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { ArticleLayout } from "../Typings"
+import { ArticleData } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
@@ -14,13 +14,7 @@ import { Video } from "./Video"
 
 interface Props {
   DisplayPanel?: any
-  article: {
-    layout: ArticleLayout
-    authors?: any
-    id: string
-    postscript?: string
-    sections?: any
-  }
+  article: ArticleData
   isMobile?: boolean
 }
 

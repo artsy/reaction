@@ -34,7 +34,7 @@ export const Byline: React.SFC<BylineProps> = props => {
         articleLayout={article.layout}
       />
 
-      <Date date={date ? date : published_at} layout={layout} />
+      <Date date={date || published_at} layout={layout} />
 
       {layout !== "condensed" && (
         <Share url={url} title={title} color={textColor} />
