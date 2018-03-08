@@ -1,9 +1,15 @@
 import { storiesOf } from "@storybook/react"
-import React from "react"
-import { Authors, Embeds } from "../Fixtures/Components"
+import React, { Fragment } from "react"
+import {
+  Authors,
+  Embeds,
+  SocialEmbedInstagram,
+  SocialEmbedTwitter,
+} from "../Fixtures/Components"
 import { Videos } from "../Fixtures/Components"
 import { Authors as AuthorInfo } from "../Sections/Authors"
 import { Embed } from "../Sections/Embed"
+import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Video } from "../Sections/Video"
 
 storiesOf("Publishing/Sections", module)
@@ -12,6 +18,18 @@ storiesOf("Publishing/Sections", module)
       <div style={{ width: "100%" }}>
         <Embed section={Embeds[0]} />
       </div>
+    )
+  })
+  .add("Social Embed", () => {
+    return (
+      <Fragment>
+        <div style={{ width: "100%" }}>
+          <SocialEmbed section={SocialEmbedTwitter} />
+        </div>
+        <div style={{ width: "100%" }}>
+          <SocialEmbed section={SocialEmbedInstagram} />
+        </div>
+      </Fragment>
     )
   })
   .add("Author Info", () => {

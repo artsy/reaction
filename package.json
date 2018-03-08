@@ -6,7 +6,12 @@
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Eloy Durán <eloy.de.enige@gmail.com>",
   "license": "MIT",
-  "files": ["assets", "data", "dist", "docs"],
+  "files": [
+    "assets",
+    "data",
+    "dist",
+    "docs"
+  ],
   "engines": {
     "node": "8.x.x",
     "npm": "5.4.x"
@@ -119,6 +124,7 @@
   "dependencies": {
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
+    "jsonp": "^0.2.1",
     "lodash": "^4.17.4",
     "moment-timezone": "^0.5.13",
     "numeral": "^2.0.4",
@@ -127,6 +133,7 @@
     "react-css-transition-replace": "^3.0.2",
     "react-lines-ellipsis": "^0.8.0",
     "react-markdown": "^2.5.0",
+    "react-oembed-container": "^0.3.0",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz",
     "react-responsive-decorator": "^0.0.1",
     "react-router": "4.1.1",
@@ -151,14 +158,32 @@
       ".(ts|tsx)": "typescript-babel-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
-    "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/externals/"],
-    "moduleFileExtensions": ["ts", "tsx", "js"],
-    "modulePathIgnorePatterns": ["<rootDir>/dist/*"],
-    "setupFiles": ["raf/polyfill", "./src/setup_jest.ts"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/externals/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/*"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "./src/setup_jest.ts"
+    ]
   },
   "lint-staged": {
-    "*.@(ts|tsx)": ["tslint --fix", "yarn prettier-write --", "git add"],
-    "*.json": ["yarn prettier-write --"]
+    "*.@(ts|tsx)": [
+      "tslint --fix",
+      "yarn prettier-write --",
+      "git add"
+    ],
+    "*.json": [
+      "yarn prettier-write --"
+    ]
   },
   "release": {
     "analyzeCommits": {
