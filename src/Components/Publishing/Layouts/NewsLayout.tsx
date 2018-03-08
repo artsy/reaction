@@ -17,8 +17,12 @@ interface NewsContainerProps {
 }
 
 export class NewsLayout extends Component<Props, State> {
-  state = {
-    isTruncated: this.props.isTruncated || true,
+  constructor(props: Props) {
+    super(props)
+
+    this.state = {
+      isTruncated: this.props.isTruncated || true,
+    }
   }
 
   render() {
