@@ -1,4 +1,5 @@
 import moment from "moment-timezone"
+import { DateFormat } from "../Publishing/Typings"
 
 /**
  * Matches for Email / Instant Articles
@@ -23,7 +24,8 @@ export const getArticleHref = slug => `/article/${slug}`
 /**
  * Absolute path to article
  */
-export const getArticleFullHref = slug => `https://www.artsy.net/article/${slug}`
+export const getArticleFullHref = slug =>
+  `https://www.artsy.net/article/${slug}`
 
 /**
  * Relative path to editorial entity
@@ -33,7 +35,8 @@ export const getEditorialHref = (type, slug) => `/${type}/${slug}`
 /**
  * Absolute path to editorial entity
  */
-export const getFullEditorialHref = (type, slug) => `https://www.artsy.net/${type}/${slug}`
+export const getFullEditorialHref = (type, slug) =>
+  `https://www.artsy.net/${type}/${slug}`
 
 /**
  * ByLine helpers
@@ -43,7 +46,7 @@ export const getAuthorByline = authors => {
   const authorCount = Number(authors && authors.length)
 
   if (authorCount === 1) {
-    return authors[0].name || ''
+    return authors[0].name || ""
   } else if (authorCount > 1) {
     const names = authors.reduce((prev, curr, i) => {
       let delim
@@ -65,15 +68,36 @@ export const getAuthorByline = authors => {
   }
 }
 
-export const getDate = (date, layout = '') => {
-  switch (layout) {
-    case "monthYear": return moment(date).tz("America/New_York").format("MMMM YYYY")
-    case "condensed": return moment(date).tz("America/New_York").format("MMM D, YYYY")
-    default: return moment(date).tz("America/New_York").format("MMM D, YYYY h:mm a")
+export const getDate = (date, format: DateFormat = "default") => {
+  switch (format) {
+    case "monthYear":
+      return moment(date)
+        .tz("America/New_York")
+        .format("MMMM YYYY")
+    case "condensed":
+      return moment(date)
+        .tz("America/New_York")
+        .format("MMM D, YYYY")
+    case "verbose":
+      const today = moment()
+      const day = today.isSame(moment(date), "day")
+        ? "Today"
+        : moment(date)
+            .tz("America/New_York")
+            .format("MMM D, YYYY")
+
+      const time = moment(date)
+        .tz("America/New_York")
+        .format("h:mm a")
+      return `${day} at ${time}`
+    default:
+      return moment(date)
+        .tz("America/New_York")
+        .format("MMM D, YYYY h:mm a")
   }
 }
 
-export const getMediaDate = (article) => {
+export const getMediaDate = article => {
   const { published_at, scheduled_publish_at, media } = article
   const { release_date } = media
 
@@ -84,7 +108,7 @@ export const getMediaDate = (article) => {
   }
 }
 
-export const formatTime = (time) => {
+export const formatTime = time => {
   let minutes = Math.floor(time / 60) % 60
   let seconds = Math.floor(time % 60)
   minutes = minutes <= 0 ? 0 : minutes

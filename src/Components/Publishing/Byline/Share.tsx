@@ -18,15 +18,18 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   hasLabel?: boolean
 }
 
-@track((props) => {
-  return props.trackingData ? props.trackingData : {}
-}, {
-  dispatch: data => Events.postEvent(data)
-})
+@track(
+  props => {
+    return props.trackingData ? props.trackingData : {}
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class Share extends React.Component<Props, null> {
   static defaultProps = {
     color: "black",
-    hasLabel: false
+    hasLabel: false,
   }
 
   constructor(props) {
@@ -37,7 +40,11 @@ export class Share extends React.Component<Props, null> {
 
   trackShare(e) {
     e.preventDefault()
-    window.open(e.currentTarget.attributes.href.value, "Share", "width = 600,height = 300")
+    window.open(
+      e.currentTarget.attributes.href.value,
+      "Share",
+      "width = 600,height = 300"
+    )
 
     this.props.tracking.trackEvent({
       action: "Click",
@@ -47,7 +54,7 @@ export class Share extends React.Component<Props, null> {
         if (href.match("facebook")) return "facebook"
         if (href.match("twitter")) return "twitter"
         if (href.match("mailto")) return "email"
-      })()
+      })(),
     })
   }
 
@@ -63,17 +70,10 @@ export class Share extends React.Component<Props, null> {
   }
 
   render() {
-    const {
-      color,
-      hasLabel
-    } = this.props
+    const { color, hasLabel } = this.props
     return (
       <ShareContainer>
-        {hasLabel &&
-          <ShareLabel>
-            Share
-          </ShareLabel>
-        }
+        {hasLabel && <ShareLabel>Share</ShareLabel>}
         <IconWrapper
           href={this.getHref("facebook")}
           target="_blank"
@@ -88,10 +88,7 @@ export class Share extends React.Component<Props, null> {
         >
           <IconSocialTwitter color={color} />
         </IconWrapper>
-        <IconWrapper
-          href={this.getHref("email")}
-          onClick={this.trackShare}
-        >
+        <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
           <IconSocialEmail color={color} />
         </IconWrapper>
       </ShareContainer>
@@ -106,7 +103,7 @@ export const ShareContainer = styled.div`
   line-height: 1em;
   ${pMedia.xs`
     margin-top: 15px;
-  `}
+  `};
 `
 const IconWrapper = styled.a`
   text-decoration: none;
@@ -120,6 +117,6 @@ const IconWrapper = styled.a`
   }
 `
 const ShareLabel = styled.span`
-  ${Fonts.unica("s16", "medium")}
+  ${Fonts.unica("s16", "medium")};
   margin: 10px 10px 10px 0px;
 `

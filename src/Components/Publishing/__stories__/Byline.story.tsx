@@ -2,15 +2,19 @@ import { storiesOf } from "@storybook/react"
 import { extend } from "lodash"
 import React from "react"
 import { Byline } from "../Byline/Byline"
+import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
-import { StandardArticle } from "../Fixtures/Articles"
+import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Byline", module)
   .add("Share", () => {
     return (
       <div>
-        <Share url="http://artsy.net/article/point-pencils" title="The Point of Pencils" />
+        <Share
+          url="http://artsy.net/article/point-pencils"
+          title="The Point of Pencils"
+        />
       </div>
     )
   })
@@ -46,7 +50,11 @@ storiesOf("Publishing/Byline", module)
   })
   .add("Many Authors Byline", () => {
     const article = extend({}, StandardArticle, {
-      authors: [{ name: "Kana Abe" }, { name: "Anna Louis-Sussman" }, { name: "Halley Johnson" }],
+      authors: [
+        { name: "Kana Abe" },
+        { name: "Anna Louis-Sussman" },
+        { name: "Halley Johnson" },
+      ],
     })
     return (
       <div>
@@ -64,7 +72,7 @@ storiesOf("Publishing/Byline", module)
   .add("Byline with custom color", () => {
     return (
       <div>
-        <Byline article={StandardArticle} color='blue' />
+        <Byline article={StandardArticle} color="blue" />
       </div>
     )
   })
@@ -72,6 +80,22 @@ storiesOf("Publishing/Byline", module)
     return (
       <div>
         <ShareDate article={StandardArticle} />
+      </div>
+    )
+  })
+  .add("News Byline", () => {
+    return (
+      <div>
+        <NewsByline article={NewsArticle} />
+      </div>
+    )
+  })
+  .add("News Byline without source", () => {
+    const article = Object.assign({}, NewsArticle)
+    article.news_source = {}
+    return (
+      <div>
+        <NewsByline article={article} />
       </div>
     )
   })

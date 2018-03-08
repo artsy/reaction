@@ -5,19 +5,19 @@ import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
 import { Fonts } from "../Fonts"
-import { Layout, SectionLayout } from "../Typings"
+import { ArticleLayout, SectionLayout } from "../Typings"
 import { Truncator } from "./Truncator"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
-  layout?: Layout
+  layout?: ArticleLayout
   sectionLayout?: SectionLayout
   linked?: boolean
   isFullscreenCaption?: boolean
 }
 
 interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
-  layout?: Layout
+  layout?: ArticleLayout
   sectionLayout?: SectionLayout
 }
 

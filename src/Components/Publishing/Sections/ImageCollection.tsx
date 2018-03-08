@@ -5,7 +5,7 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
-import { Layout, SectionLayout } from "../Typings"
+import { ArticleLayout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 import { ImageCollectionItem } from "./ImageCollectionItem"
@@ -15,7 +15,7 @@ interface ImageCollectionProps {
   targetHeight?: number
   gutter?: number
   sectionLayout?: SectionLayout
-  articleLayout?: Layout
+  articleLayout?: ArticleLayout
   size?: {
     width: number
   }

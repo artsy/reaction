@@ -1,4 +1,4 @@
-export type Layout =
+export type ArticleLayout =
   | "classic"
   | "feature"
   | "series"
@@ -14,12 +14,21 @@ export type SectionLayout =
   | "mini"
   | "overflow_fillwidth"
 
+export type BylineLayout = "fullscreen" | "condensed" | "standard" | "split"
+
+export type DateFormat = "monthYear" | "condensed" | "verbose" | "default"
+
+// TODO: Make some of these non-optional ;)
 export type ArticleData = {
-  layout: Layout
   id: string
+  layout?: ArticleLayout
+  authors?: any
+  postscript?: string
+  date?: string
+  published_at?: string
   sections?: Array<{
     type: string
-    layout?: string
+    layout?: SectionLayout
     images?: any[]
     body?: string
     url?: string
@@ -29,5 +38,9 @@ export type ArticleData = {
     mobile_height?: number
     height?: number
   }>
+  news_source?: {
+    title?: string
+    url?: string
+  }
   [x: string]: any
 }

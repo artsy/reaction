@@ -1,14 +1,14 @@
 import React from "react"
 import { resize } from "../../../Utils/resizer"
-import { GLOBAL_IMAGE_QUALITY } from '../Constants'
-import { Layout, SectionLayout } from "../Typings"
+import { GLOBAL_IMAGE_QUALITY } from "../Constants"
+import { ArticleLayout, SectionLayout } from "../Typings"
 import { Caption } from "./Caption"
 import { ImageWrapper } from "./ImageWrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   editCaption?: any
   image?: any
-  layout?: Layout
+  layout?: ArticleLayout
   linked?: boolean
   sectionLayout?: SectionLayout
   width?: number | string
@@ -26,7 +26,7 @@ export const Image: React.SFC<ImageProps> = props => {
     sectionLayout,
     width,
   } = props
-  const caption = image.caption || ''
+  const caption = image.caption || ""
   const src = resize(image.url, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
   const alt = caption.replace(/<[^>]*>/g, "") /* strip caption html */
 
@@ -42,11 +42,7 @@ export const Image: React.SFC<ImageProps> = props => {
         index={image.index}
       />
 
-      <Caption
-        caption={caption}
-        layout={layout}
-        sectionLayout={sectionLayout}
-      >
+      <Caption caption={caption} layout={layout} sectionLayout={sectionLayout}>
         {editCaption && editCaption()}
       </Caption>
       {children}
