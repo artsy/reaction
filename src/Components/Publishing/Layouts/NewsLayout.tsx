@@ -5,25 +5,36 @@ import { NewsSections } from "../News/NewsSections"
 
 interface Props {
   article: any
-  expanded?: boolean
+  isTruncated?: boolean
 }
 
 interface State {
-  expanded: boolean
+  isTruncated: boolean
+}
+
+interface NewsContainerProps {
+  isTruncated: boolean
 }
 
 export class NewsLayout extends Component<Props, State> {
   state = {
-    expanded: this.props.expanded || true,
+    isTruncated: this.props.isTruncated || true,
   }
 
   render() {
     const { article } = this.props
+    const { isTruncated } = this.state
 
     return (
-      <NewsContainer>
+      <NewsContainer
+        onClick={() =>
+          this.setState({
+            isTruncated: false,
+          })}
+        isTruncated={isTruncated}
+      >
         <NewsHeadline article={article} />
-        <NewsSections article={article} />
+        <NewsSections article={article} isTruncated={isTruncated} />
       </NewsContainer>
     )
   }
@@ -31,5 +42,14 @@ export class NewsLayout extends Component<Props, State> {
 
 const NewsContainer = styled.div`
   max-width: 780px;
-  margin: auto;
+  margin: 40px auto;
+
+  ${(props: NewsContainerProps) =>
+    props.isTruncated &&
+    `
+    &:hover {
+      outline: 1px solid gray;
+      outline-offset: 30px;
+    }
+    `};
 `
