@@ -34,9 +34,8 @@ const NewsHeadlineContainer = styled.div`
   text-align: left;
   max-width: 780px;
   width: 100%;
-  margin: 40px auto;
+  margin: 10px auto 30px auto;
   box-sizing: border-box;
-  margin-bottom: 30px;
 `
 
 const Title = styled.div`
