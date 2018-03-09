@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsNav renders NewsNav 1`] = `
+.c2 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 25px;
+  line-height: 1.1em;
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.c3 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 25px;
+  line-height: 1.1em;
+  padding: 10px 0;
+}
+
+.c1 {
+  position: relative;
+  max-width: 780px;
+  margin: auto;
+}
+
+.c0 {
+  position: fixed;
+  width: 100%;
+  height: 45px;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width:720px) {
+  .c0 {
+    height: 36px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Jun 06
+    </div>
+    <div
+      className="c3"
+    >
+      The News
+    </div>
+  </div>
+</div>
+`;
