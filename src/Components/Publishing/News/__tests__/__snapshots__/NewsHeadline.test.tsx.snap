@@ -16,9 +16,8 @@ exports[`renders a headline with children properly 1`] = `
   text-align: left;
   max-width: 780px;
   width: 100%;
-  margin: 40px auto;
+  margin: 10px auto 30px;
   box-sizing: border-box;
-  margin-bottom: 30px;
 }
 
 .c2 {
@@ -79,9 +78,8 @@ exports[`renders a news headline properly 1`] = `
   text-align: left;
   max-width: 780px;
   width: 100%;
-  margin: 40px auto;
+  margin: 10px auto 30px;
   box-sizing: border-box;
-  margin-bottom: 30px;
 }
 
 .c2 {

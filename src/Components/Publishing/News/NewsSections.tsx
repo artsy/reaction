@@ -10,6 +10,7 @@ import { ArticleData } from "../Typings"
 
 interface Props {
   article: ArticleData
+  isTruncated: boolean
 }
 
 interface ContainerProp {
@@ -40,9 +41,16 @@ export class NewsSections extends Component<Props> {
   }
 
   renderSections() {
-    const { article } = this.props
+    const { article: { sections }, isTruncated } = this.props
 
-    const renderedSections = article.sections.map((section, index) => {
+    let limit
+    if (isTruncated) {
+      limit = sections[0].type === "image_collection" ? 2 : 1
+    } else {
+      limit = sections.length
+    }
+
+    const renderedSections = sections.slice(0, limit).map((section, index) => {
       const child = this.getSection(section, index)
 
       if (child) {
@@ -71,10 +79,10 @@ export class NewsSections extends Component<Props> {
 
   render() {
     return (
-      <NewsArticleContainer>
+      <Col>
         {this.renderSections()}
         {this.renderByline()}
-      </NewsArticleContainer>
+      </Col>
     )
   }
 }
@@ -87,7 +95,7 @@ const getMaxWidth = type => {
   }
 }
 
-const NewsSectionContainer = styled(Row)`
+export const NewsSectionContainer = styled(Row)`
   ${(props: ContainerProp) => getMaxWidth(props.type)};
   margin-bottom: 20px;
 
@@ -104,8 +112,4 @@ const BylineContainer = styled(Row)`
     margin: 30px 20px 0;
     padding: 0px;
   `};
-`
-
-const NewsArticleContainer = styled(Col)`
-  margin-bottom: 80px;
 `

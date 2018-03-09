@@ -1,35 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the news layout properly 1`] = `
-.c1 {
-  margin: 0;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  text-align: left;
-  max-width: 780px;
-  width: 100%;
-  margin: 40px auto;
-  box-sizing: border-box;
-  margin-bottom: 30px;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 34px;
-  line-height: 1.1em;
-  font-weight: 600;
-}
-
-.c7 {
+exports[`News Layout renders the news layout properly 1`] = `
+.c6 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -48,7 +20,7 @@ exports[`renders the news layout properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c5 {
+.c4 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -57,7 +29,7 @@ exports[`renders the news layout properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c21 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,21 +42,21 @@ exports[`renders the news layout properly 1`] = `
   line-height: 1em;
 }
 
-.c22 {
+.c21 {
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c22:hover {
+.c21:hover {
   opacity: 0.6;
 }
 
-.c22:first-child {
+.c21:first-child {
   padding-left: 0;
 }
 
-.c17 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -102,7 +74,7 @@ exports[`renders the news layout properly 1`] = `
   align-items: flex-start;
 }
 
-.c18 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,14 +84,14 @@ exports[`renders the news layout properly 1`] = `
   flex-direction: column;
 }
 
-.c19 {
+.c18 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c20 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -131,33 +103,33 @@ exports[`renders the news layout properly 1`] = `
   color: #999999;
 }
 
-.c20 a {
+.c19 a {
   color: #999999;
 }
 
-.c10 {
+.c9 {
   position: relative;
 }
 
-.c10:hover .file__Fullscreen-yu39to-0 {
+.c9:hover .file__Fullscreen-yu39to-0 {
   opacity: 1;
 }
 
-.c10 .BlockImage__container {
+.c9 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c10 .image-loaded {
+.c9 .image-loaded {
   opacity: 1;
 }
 
-.c11 {
+.c10 {
   display: block;
 }
 
-.c12 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -169,16 +141,16 @@ exports[`renders the news layout properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c13 {
+.c12 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c13 > p,
-.c13 p,
-.c13 .public-DraftEditorPlaceholder-root,
-.c13 .public-DraftStyleDefault-block {
+.c12 > p,
+.c12 p,
+.c12 .public-DraftEditorPlaceholder-root,
+.c12 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -187,22 +159,22 @@ exports[`renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c13 > a,
-.c13 a {
+.c12 > a,
+.c12 a {
   color: #999;
 }
 
-.c13 > a:hover,
-.c13 a:hover {
+.c12 > a:hover,
+.c12 a:hover {
   color: black;
 }
 
-.c9 {
+.c8 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -214,12 +186,12 @@ exports[`renders the news layout properly 1`] = `
   justify-content: center;
 }
 
-.c15 {
+.c14 {
   position: relative;
   width: 100%;
 }
 
-.c15 a {
+.c14 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -229,15 +201,15 @@ exports[`renders the news layout properly 1`] = `
   background-position: bottom;
 }
 
-.c15 a:hover {
+.c14 a:hover {
   color: #999;
   opacity: 1;
 }
 
-.c15 p,
-.c15 ul,
-.c15 ol,
-.c15 div[data-block=true] .public-DraftStyleDefault-block {
+.c14 p,
+.c14 ul,
+.c14 ol,
+.c14 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -248,22 +220,22 @@ exports[`renders the news layout properly 1`] = `
   font-style: inherit;
 }
 
-.c15 p:first-child,
-.c15 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c14 p:first-child,
+.c14 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c15 p:last-child,
-.c15 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c14 p:last-child,
+.c14 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c15 ul,
-.c15 ol {
+.c14 ul,
+.c14 ol {
   padding-left: 1em;
 }
 
-.c15 li {
+.c14 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -272,7 +244,7 @@ exports[`renders the news layout properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c15 h1 {
+.c14 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -285,7 +257,7 @@ exports[`renders the news layout properly 1`] = `
   text-align: center;
 }
 
-.c15 h1:before {
+.c14 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -296,7 +268,7 @@ exports[`renders the news layout properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c15 h2 {
+.c14 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -305,11 +277,11 @@ exports[`renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c15 h2 a {
+.c14 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c15 h3 {
+.c14 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -319,7 +291,7 @@ exports[`renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c15 h3 strong {
+.c14 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -327,11 +299,11 @@ exports[`renders the news layout properly 1`] = `
   line-height: 1.5em;
 }
 
-.c15 h3 a {
+.c14 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c15 blockquote {
+.c14 blockquote {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -348,11 +320,11 @@ exports[`renders the news layout properly 1`] = `
   margin: auto;
 }
 
-.c15 blockquote a {
+.c14 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c15 .content-end {
+.c14 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -362,14 +334,14 @@ exports[`renders the news layout properly 1`] = `
   margin-left: 12px;
 }
 
-.c15 .artist-follow {
+.c14 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c15 .artist-follow:before {
+.c14 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -377,7 +349,7 @@ exports[`renders the news layout properly 1`] = `
   font-size: 32px;
 }
 
-.c15 .artist-follow:after {
+.c14 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -386,27 +358,191 @@ exports[`renders the news layout properly 1`] = `
   text-transform: none;
 }
 
-.c6 {
+.c5 {
   margin-bottom: 20px;
 }
 
-.c14 {
+.c13 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c16 {
+.c15 {
   max-width: 780px;
   margin-top: 30px;
 }
 
-.c4 {
-  margin-bottom: 80px;
+.c1 {
+  margin: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  max-width: 780px;
+  width: 100%;
+  margin: 10px auto 30px;
+  box-sizing: border-box;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 34px;
+  line-height: 1.1em;
+  font-weight: 600;
 }
 
 .c0 {
+  position: relative;
   max-width: 780px;
-  margin: auto;
+  padding: 20px 30px 30px;
+  margin: 40px auto;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+@media (max-width:600px) {
+  .c20 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c18 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 .file__Fullscreen-yu39to-0 {
+    opacity: 1;
+  }
+}
+
+@media (max-width:600px) {
+  .c11 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c12 {
+    padding: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c8 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:600px) {
+  .c14 p,
+  .c14 ul,
+  .c14 ol,
+  .c14 div[data-block=true] .public-DraftStyleDefault-block {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c14 li {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+  }
+
+  .c14 h1 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c14 h2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c14 h3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c14 h3 strong {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c14 blockquote {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    margin: 0 10px;
+  }
+
+  .c14 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    margin: 0 20px 15px;
+    padding: 0px;
+  }
+}
+
+@media (max-width:720px) {
+  .c13 {
+    margin: 0 20px 15px;
+    padding: 0px;
+  }
+}
+
+@media (max-width:720px) {
+  .c15 {
+    margin: 30px 20px 0;
+    padding: 0px;
+  }
 }
 
 @media (max-width:720px) {
@@ -425,145 +561,15 @@ exports[`renders the news layout properly 1`] = `
   }
 }
 
-@media (max-width:600px) {
-  .c21 {
-    margin-top: 15px;
-  }
-}
-
 @media (max-width:720px) {
-  .c19 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c20 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c10 .file__Fullscreen-yu39to-0 {
-    opacity: 1;
-  }
-}
-
-@media (max-width:600px) {
-  .c12 {
-    padding: 0px 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c13 {
-    padding: 0px;
-  }
-}
-
-@media (max-width:600px) {
-  .c9 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c8 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width:600px) {
-  .c15 p,
-  .c15 ul,
-  .c15 ol,
-  .c15 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c15 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-  }
-
-  .c15 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c15 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c15 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c15 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c15 blockquote {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    margin: 0 10px;
-  }
-
-  .c15 .content-start {
-    font-size: 55px;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 {
-    margin: 0 20px 15px;
-    padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c14 {
-    margin: 0 20px 15px;
-    padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c16 {
-    margin: 30px 20px 0;
+  .c0 {
     padding: 0px;
   }
 }
 
 <div
   className="c0"
+  onClick={[Function]}
 >
   <div
     className="c1"
@@ -579,38 +585,38 @@ exports[`renders the news layout properly 1`] = `
     </div>
   </div>
   <div
-    className="c4 c5"
+    className="c4"
   >
     <div
-      className="c6 c7"
+      className="c5 c6"
       type="image_collection"
     >
       <div
-        className="c8"
+        className="c7"
       >
         <div
-          className="c9"
+          className="c8"
           width={undefined}
         >
           <div
             className="article-image"
           >
             <div
-              className="c10"
+              className="c9"
             >
               <img
                 alt="Illustration by Tomi Um for Artsy."
-                className="BlockImage__container c11"
+                className="BlockImage__container c10"
                 height="auto"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                 width="100%"
               />
             </div>
             <div
-              className="c12"
+              className="c11"
             >
               <div
-                className="c13"
+                className="c12"
               >
                 <div
                   dangerouslySetInnerHTML={
@@ -626,11 +632,11 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -643,15 +649,15 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="social_embed"
     />
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -664,11 +670,11 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -681,11 +687,11 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -698,11 +704,11 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -715,15 +721,15 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="social_embed"
     />
     <div
-      className="c14 c7"
+      className="c13 c6"
       type="text"
     >
       <div
-        className="article__text-section c15"
+        className="article__text-section c14"
         color="black"
       >
         <div
@@ -736,22 +742,22 @@ exports[`renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c16 c7"
+      className="c15 c6"
     >
       <div
-        className="c17"
+        className="c16"
       >
         <div
-          className="c18"
+          className="c17"
         >
           <div
-            className="c19"
+            className="c18"
           >
             Posted by 
             Casey Lesser
           </div>
           <div
-            className="c20"
+            className="c19"
           >
             Jul 19, 2018 at 1:19 pm
             <div>
@@ -765,10 +771,10 @@ exports[`renders the news layout properly 1`] = `
           </div>
         </div>
         <div
-          className="c21"
+          className="c20"
         >
           <a
-            className="c22"
+            className="c21"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
             onClick={[Function]}
             target="_blank"
@@ -794,7 +800,7 @@ exports[`renders the news layout properly 1`] = `
             </svg>
           </a>
           <a
-            className="c22"
+            className="c21"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -820,7 +826,7 @@ exports[`renders the news layout properly 1`] = `
             </svg>
           </a>
           <a
-            className="c22"
+            className="c21"
             href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
             onClick={[Function]}
           >
