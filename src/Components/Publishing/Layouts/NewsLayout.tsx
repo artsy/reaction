@@ -22,7 +22,7 @@ export class NewsLayout extends Component<Props, State> {
     super(props)
 
     this.state = {
-      isTruncated: this.props.isTruncated || true,
+      isTruncated: this.props.isTruncated,
     }
   }
 

@@ -34,7 +34,7 @@ const NewsHeadlineContainer = styled.div`
   text-align: left;
   max-width: 780px;
   width: 100%;
-  margin: 10px auto 30px auto;
+  margin: 10px auto 30px;
   box-sizing: border-box;
 `
 
