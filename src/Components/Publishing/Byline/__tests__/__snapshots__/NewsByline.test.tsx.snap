@@ -1,20 +1,336 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News Byline renders properly 1`] = `
+exports[`News Byline renders on mobile 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c3 a {
+  color: #999999;
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
 <div
-  className="file__NewsBylineContainer-yu39to-0 fCbNId"
+  className="c0"
 >
   <div
-    className="file__AuthorDateContainer-yu39to-1 dvGfOg"
+    className="c1"
   >
     <div
-      className="file__Poster-yu39to-2 cbZmrU"
+      className="c2"
     >
       Posted by 
       Casey Lesser
     </div>
     <div
-      className="file__DateSourceContainer-yu39to-3 kHvutl"
+      className="c3"
+    >
+      Jul 19, 2018 at 1:19 pm
+    </div>
+  </div>
+  <svg
+    height="12px"
+    version="1.1"
+    viewBox="0 0 12 12"
+    width="12px"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <polygon
+        id="path-1"
+        points="0 -7.70894103e-05 11.9316857 -7.70894103e-05 11.9316857 11.9962747 0 11.9962747"
+      />
+    </defs>
+    <g
+      fill="none"
+      fill-rule="evenodd"
+      id="Symbols"
+      stroke="none"
+      stroke-width="1"
+    >
+      <g
+        id="Mobile-Author"
+        transform="translate(-323.000000, -1.000000)"
+      >
+        <g
+          id="icon-share"
+          transform="translate(323.000000, 1.000000)"
+        >
+          <g
+            id="Page-1"
+          >
+            <mask
+              fill="white"
+              id="mask-2"
+            >
+              <use
+                xlinkHref="#path-1"
+              />
+            </mask>
+            <g
+              id="Clip-2"
+            >
+              <path
+                d="M11.8892571,4.58862857 L7.34382857,0.0432 C7.25211429,-0.0493714286 7.0944,0.0166285714 7.0944,0.146057143 L7.0944,2.81348571 C2.85325714,2.81605714 0.159257143,5.35748571 -0.000171428571,11.9360571 C-0.00188571429,12.0054857 0.0992571429,12.0200571 0.1164,11.9523429 C0.970971429,8.49634286 4.14582857,6.90977143 7.0944,6.90805714 L7.0944,9.23691429 C7.0944,9.3672 7.25211429,9.43234286 7.34382857,9.33977143 L11.8892571,4.7952 C11.9458286,4.73777143 11.9458286,4.6452 11.8892571,4.58862857"
+                fill="#000000"
+                id="Fill-1"
+                mask="url(#mask-2)"
+              />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`News Byline renders on mobile truncated 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c2 a {
+  color: #999999;
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Jul 19, 2018 at 1:19 pm
+    </div>
+  </div>
+</div>
+`;
+
+exports[`News Byline renders properly 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.c5 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c3 a {
+  color: #999999;
+}
+
+@media (max-width:600px) {
+  .c4 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Posted by 
+      Casey Lesser
+    </div>
+    <div
+      className="c3"
     >
       Jul 19, 2018 at 1:19 pm
       <div>
@@ -28,10 +344,10 @@ exports[`News Byline renders properly 1`] = `
     </div>
   </div>
   <div
-    className="file__ShareContainer-yu39to-0 jglpoG"
+    className="c4"
   >
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
       onClick={[Function]}
       target="_blank"
@@ -57,7 +373,7 @@ exports[`News Byline renders properly 1`] = `
       </svg>
     </a>
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -83,7 +399,7 @@ exports[`News Byline renders properly 1`] = `
       </svg>
     </a>
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
       onClick={[Function]}
     >
@@ -111,30 +427,201 @@ exports[`News Byline renders properly 1`] = `
 </div>
 `;
 
-exports[`News Byline renders without a news source 1`] = `
+exports[`News Byline renders properly when truncated 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c2 a {
+  color: #999999;
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
 <div
-  className="file__NewsBylineContainer-yu39to-0 fCbNId"
+  className="c0"
 >
   <div
-    className="file__AuthorDateContainer-yu39to-1 dvGfOg"
+    className="c1"
   >
     <div
-      className="file__Poster-yu39to-2 cbZmrU"
+      className="c2"
+    >
+      Jul 19, 2018 at 1:19 pm
+    </div>
+  </div>
+</div>
+`;
+
+exports[`News Byline renders without a news source 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.c5 {
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c3 a {
+  color: #999999;
+}
+
+@media (max-width:600px) {
+  .c4 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
     >
       Posted by 
       Casey Lesser
     </div>
     <div
-      className="file__DateSourceContainer-yu39to-3 kHvutl"
+      className="c3"
     >
       Jul 19, 2018 at 1:19 pm
     </div>
   </div>
   <div
-    className="file__ShareContainer-yu39to-0 jglpoG"
+    className="c4"
   >
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
       onClick={[Function]}
       target="_blank"
@@ -160,7 +647,7 @@ exports[`News Byline renders without a news source 1`] = `
       </svg>
     </a>
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -186,7 +673,7 @@ exports[`News Byline renders without a news source 1`] = `
       </svg>
     </a>
     <a
-      className="file__IconWrapper-yu39to-1 iVqyNu"
+      className="c5"
       href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
       onClick={[Function]}
     >

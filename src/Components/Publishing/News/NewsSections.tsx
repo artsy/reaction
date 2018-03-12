@@ -6,10 +6,12 @@ import { NewsByline } from "../Byline/NewsByline"
 import { ImageCollection } from "../Sections/ImageCollection"
 import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Text } from "../Sections/Text"
+import { Truncator } from "../Sections/Truncator"
 import { ArticleData } from "../Typings"
 
 interface Props {
   article: ArticleData
+  isMobile?: boolean
   isTruncated: boolean
 }
 
@@ -19,7 +21,7 @@ interface ContainerProp {
 
 export class NewsSections extends Component<Props> {
   getSection(section, index) {
-    const { article } = this.props
+    const { article, isMobile, isTruncated } = this.props
 
     const sections = {
       image_collection: (
@@ -37,15 +39,23 @@ export class NewsSections extends Component<Props> {
     }
 
     const sectionComponent = sections[section.type] || sections.default
+    if (section.type === "text" && isTruncated) {
+      return (
+        <Truncator maxLineCount={isMobile ? 3 : 2}>
+          {sectionComponent}
+        </Truncator>
+      )
+    }
     return sectionComponent
   }
 
   renderSections() {
     const { article: { sections }, isTruncated } = this.props
+    const hasMainImage = sections[0].type === "image_collection"
 
     let limit
     if (isTruncated) {
-      limit = sections[0].type === "image_collection" ? 2 : 1
+      limit = hasMainImage ? 2 : 1
     } else {
       limit = sections.length
     }
@@ -66,12 +76,12 @@ export class NewsSections extends Component<Props> {
   }
 
   renderByline() {
-    const { article: { authors } } = this.props
+    const { article: { authors, published_at } } = this.props
 
-    if (authors) {
+    if (authors || published_at) {
       return (
         <BylineContainer>
-          <NewsByline article={this.props.article} />
+          <NewsByline {...this.props} />
         </BylineContainer>
       )
     }

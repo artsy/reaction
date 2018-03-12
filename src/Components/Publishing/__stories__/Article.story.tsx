@@ -218,3 +218,6 @@ story
   .add("News Article - Collapsed", () => {
     return <Article article={NewsArticle} isTruncated />
   })
+  .add("News Article - Mobile Collapsed", () => {
+    return <Article article={NewsArticle} isTruncated isMobile />
+  })

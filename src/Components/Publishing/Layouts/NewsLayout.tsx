@@ -3,9 +3,11 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
+import { ArticleData } from "../Typings"
 
 interface Props {
-  article: any
+  article: ArticleData
+  isMobile?: boolean
   isTruncated?: boolean
 }
 
@@ -39,7 +41,7 @@ export class NewsLayout extends Component<Props, State> {
         isTruncated={isTruncated}
       >
         <NewsHeadline article={article} />
-        <NewsSections article={article} isTruncated={isTruncated} />
+        <NewsSections {...this.props} isTruncated={isTruncated} />
       </NewsContainer>
     )
   }
