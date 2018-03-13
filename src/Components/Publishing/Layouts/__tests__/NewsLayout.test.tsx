@@ -24,4 +24,12 @@ describe("News Layout", () => {
     component.simulate("click")
     expect(component.find(NewsSectionContainer).length).toEqual(9)
   })
+
+  it("renders the news layout on mobile", () => {
+    const component = renderer.create(
+      <NewsLayout article={NewsArticle} isMobile />
+    )
+
+    expect(component).toMatchSnapshot()
+  })
 })
