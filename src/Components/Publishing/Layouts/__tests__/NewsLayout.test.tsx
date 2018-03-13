@@ -25,7 +25,7 @@ describe("News Layout", () => {
     expect(component.find(NewsSectionContainer).length).toEqual(9)
   })
 
-  it("looks right on mobile", () => {
+  it("renders the news layout on mobile", () => {
     const component = renderer.create(
       <NewsLayout article={NewsArticle} isMobile />
     )

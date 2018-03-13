@@ -12,14 +12,18 @@ interface NewsBylineProps {
   article: ArticleData
   isMobile?: boolean
   isTruncated?: boolean
+  onShareFromMobile?: () => void
 }
 
 export const NewsByline: React.SFC<NewsBylineProps> = props => {
-  const { article, isTruncated, isMobile } = props
+  const { article, isTruncated, isMobile, onShareFromMobile } = props
   const { authors, title } = article
   const url = getArticleFullHref(article.slug)
+
   const shareIcon = isMobile ? (
-    <IconShareArrow />
+    <ShareIconContainer onClick={onShareFromMobile}>
+      <IconShareArrow />
+    </ShareIconContainer>
   ) : (
     <Share url={url} title={title} />
   )
@@ -75,6 +79,12 @@ const Poster = styled.div`
   ${pMedia.sm`
     ${Fonts.unica("s12", "medium")}
   `};
+`
+
+const ShareIconContainer = styled.div`
+  &:hover {
+    opacity: 0.6;
+  }
 `
 
 const DateSourceContainer = styled.div`
