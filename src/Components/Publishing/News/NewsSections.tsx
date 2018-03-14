@@ -7,7 +7,7 @@ import { ImageCollection } from "../Sections/ImageCollection"
 import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Text } from "../Sections/Text"
 import { Truncator } from "../Sections/Truncator"
-import { ArticleData } from "../Typings"
+import { ArticleData, SectionData } from "../Typings"
 
 interface Props {
   article: ArticleData
@@ -20,7 +20,7 @@ interface ContainerProp {
 }
 
 export class NewsSections extends Component<Props> {
-  getSection(section, index) {
+  getSection(section: SectionData, index: number) {
     const { article, isMobile, isTruncated } = this.props
 
     const sections = {

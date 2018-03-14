@@ -2,14 +2,10 @@ import jsonp from "jsonp"
 import React from "react"
 import EmbedContainer from "react-oembed-container"
 import styled from "styled-components"
-import { SectionLayout } from "../Typings"
+import { SectionData } from "../Typings"
 
 export interface SocialEmbedProps {
-  section: {
-    type: string
-    url?: string
-    layout?: SectionLayout
-  }
+  section: SectionData
 }
 
 interface SocialEmbedState {

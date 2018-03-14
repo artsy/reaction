@@ -25,6 +25,7 @@ import {
   RelatedCanvas,
   RelatedPanel,
 } from "../Fixtures/Components"
+import { ArticleData } from "../Typings"
 
 const story = storiesOf("Publishing/Articles", module)
   .add("Standard", () => {
@@ -86,7 +87,7 @@ displays.forEach(displayType => {
 })
 
 story.add(`Multiple standard articles`, () => {
-  const article = {
+  const article: ArticleData = {
     ...StandardArticle,
     sections: [
       {
@@ -95,6 +96,7 @@ story.add(`Multiple standard articles`, () => {
       },
     ],
   }
+
   return (
     <div>
       <Article
@@ -149,7 +151,7 @@ story
             "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles.</p>",
         },
       ],
-    })
+    } as ArticleData)
 
     return (
       <Article
