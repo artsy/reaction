@@ -19,6 +19,7 @@ export const ClassicArticle: ArticleData = {
     id: "4f85e1b55ca0370001000072",
     name: "Joanne Artman Gallery",
   },
+  authors: [],
   layout: "classic",
   hero_section: null,
   thumbnail_title:
@@ -157,6 +158,15 @@ export const StandardArticle: ArticleData = {
     {
       id: "523783258b3b815f7100055a",
       name: "Casey Lesser",
+    },
+  ],
+  authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Casey Lesser",
+      bio:
+        "[Casey Lesser](http://artsy.net) is a well-known author and a long-time baker.",
+      twitter_handle: "caseylesser",
     },
   ],
   published_at: "2017-05-19T13:09:18.567Z",
