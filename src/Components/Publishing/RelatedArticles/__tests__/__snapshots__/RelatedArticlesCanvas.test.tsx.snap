@@ -296,7 +296,7 @@ exports[`renders the related articles canvas 1`] = `
           color="black"
         >
           By 
-          Casey Lesser
+          Anna Louis-Sussman and Kana Abe
         </div>
         <div
           className="date c10"
@@ -333,7 +333,7 @@ exports[`renders the related articles canvas 1`] = `
           color="black"
         >
           By 
-          Casey Lesser
+          Halley Johnson
         </div>
         <div
           className="date c10"
@@ -407,7 +407,7 @@ exports[`renders the related articles canvas 1`] = `
           color="black"
         >
           By 
-          Artsy Editors
+          Owen Dodd
         </div>
         <div
           className="date c10"

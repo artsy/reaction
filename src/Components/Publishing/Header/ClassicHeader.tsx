@@ -19,7 +19,7 @@ export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
       <Title>{title}</Title>
       {leadParagraph}
       <AuthorDateClassic
-        authors={article.authors}
+        authors={article.contributing_authors}
         author={article.author}
         date={date ? date : article.published_at}
       />

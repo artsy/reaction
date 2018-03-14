@@ -1,6 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshots renders properly 1`] = `
+.c40 {
+  font-family: artsy-icons;
+  color: black;
+  font-size: 24px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+}
+
+.c35 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.c36 {
+  display: block;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c36 a {
+  color: black;
+}
+
+.c37 {
+  margin-left: 20px;
+}
+
+.c38 {
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.c38 .c39 {
+  vertical-align: middle;
+  margin: 0px;
+}
+
+.c34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 .c22 {
   width: 100%;
   height: 1000px;
@@ -488,6 +549,15 @@ exports[`snapshots renders properly 1`] = `
   width: 100%;
   margin: 0;
   max-width: 780px;
+}
+
+@media (max-width:600px) {
+  .c36 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
 }
 
 @media (max-width:720px) {
@@ -2093,6 +2163,49 @@ exports[`snapshots renders properly 1`] = `
           }
         }
       />
+    </div>
+  </div>
+  <div
+    className="c1"
+    type="author"
+  >
+    <div
+      className="c34"
+    >
+      <div
+        className="c35"
+      >
+        <div
+          className="c36"
+        >
+          <span>
+            <a
+              href="http://artsy.net"
+              title={undefined}
+            >
+              Casey Lesser
+            </a>
+             is a well-known author and a long-time baker.
+          </span>
+          <span
+            className="c37"
+          >
+            <a
+              className="c38"
+              href="http://twitter.com/caseylesser"
+            >
+              <div
+                className="c39 c40"
+                onClick={undefined}
+                style={undefined}
+              >
+                
+              </div>
+              @caseylesser
+            </a>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
