@@ -35,6 +35,7 @@ type Article implements Node {
   id: String!
   cached: Int
   author: Author
+  authors: [Author]
   channel_id: String
   contributing_authors: [Author]
   href: String
@@ -2832,6 +2833,7 @@ type HighlightedArticle implements Node {
   id: String!
   cached: Int
   author: Author
+  authors: [Author]
   channel_id: String
   contributing_authors: [Author]
   href: String

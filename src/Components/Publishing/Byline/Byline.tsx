@@ -18,17 +18,15 @@ interface BylineContainerProps {
 
 export const Byline: React.SFC<BylineProps> = props => {
   const { article, color, date, layout } = props
-  const { contributing_authors, published_at } = article
+  const { authors, published_at } = article
   const title = article.social_title || article.thumbnail_title
   const url = getArticleFullHref(article.slug)
   const textColor = layout === "fullscreen" ? "white" : color
 
-  // TODO: Replace `authors` with `contributing_authors` when ready. Also in
-  // <BasicHeader />
   return (
     <BylineContainer className="Byline" color={textColor}>
       <Author
-        authors={contributing_authors}
+        authors={authors}
         color={textColor}
         layout={layout}
         articleLayout={article.layout}

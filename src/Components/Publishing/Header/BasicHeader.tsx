@@ -51,14 +51,7 @@ export class BasicHeader extends React.Component<Props, State> {
 
   render() {
     const {
-      article: {
-        contributing_authors,
-        // authors, TODO: update when time
-        hero_section,
-        lead_paragraph,
-        published_at,
-        slug,
-      },
+      article: { authors, hero_section, lead_paragraph, published_at, slug },
       date,
       isMobile: passedIsMobile,
       title,
@@ -110,9 +103,7 @@ export class BasicHeader extends React.Component<Props, State> {
                         lg={12}
                         className="Byline__Container"
                       >
-                        <Author>
-                          By {getAuthorByline(contributing_authors)}
-                        </Author>
+                        <Author>By {getAuthorByline(authors)}</Author>
                         <Date>
                           {getDate(
                             date ? date : published_at,
