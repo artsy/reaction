@@ -26,21 +26,32 @@ export type ArticleData = {
   postscript?: string
   date?: string
   published_at?: string
-  sections?: Array<{
-    type: string
-    layout?: SectionLayout
-    images?: any[]
-    body?: string
-    url?: string
-    caption?: string
-    cover_image_url?: string
-    title?: string
-    mobile_height?: number
-    height?: number
-  }>
+  sections?: SectionData[]
   news_source?: {
     title?: string
     url?: string
   }
   [x: string]: any
+}
+
+export type SectionType =
+  | "image_collection"
+  | "image_set"
+  | "embed"
+  | "social_embed"
+  | "text"
+  | "video"
+  | "default"
+
+export type SectionData = {
+  type: SectionType
+  layout?: SectionLayout
+  images?: any[]
+  body?: string
+  url?: string
+  caption?: string
+  cover_image_url?: string
+  title?: string
+  mobile_height?: number
+  height?: number
 }
