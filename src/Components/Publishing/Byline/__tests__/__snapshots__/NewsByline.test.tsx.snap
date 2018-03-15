@@ -332,14 +332,13 @@ exports[`News Byline renders properly 1`] = `
       className="c3"
     >
       Jul 19, 2018 at 1:19 pm
-      <div>
-        , via 
-        <a
-          href="http://nytimes.com"
-        >
-          The New York Times
-        </a>
-      </div>
+      , via
+       
+      <a
+        href="http://nytimes.com"
+      >
+        The New York Times
+      </a>
     </div>
   </div>
   <div

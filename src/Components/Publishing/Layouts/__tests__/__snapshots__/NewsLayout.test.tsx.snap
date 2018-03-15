@@ -731,14 +731,13 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             className="c19"
           >
             Jul 19, 2018 at 1:19 pm
-            <div>
-              , via 
-              <a
-                href="http://nytimes.com"
-              >
-                The New York Times
-              </a>
-            </div>
+            , via
+             
+            <a
+              href="http://nytimes.com"
+            >
+              The New York Times
+            </a>
           </div>
         </div>
         <div
@@ -1556,14 +1555,13 @@ exports[`News Layout renders the news layout properly 1`] = `
             className="c19"
           >
             Jul 19, 2018 at 1:19 pm
-            <div>
-              , via 
-              <a
-                href="http://nytimes.com"
-              >
-                The New York Times
-              </a>
-            </div>
+            , via
+             
+            <a
+              href="http://nytimes.com"
+            >
+              The New York Times
+            </a>
           </div>
         </div>
         <div
