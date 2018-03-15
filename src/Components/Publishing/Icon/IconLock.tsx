@@ -18,9 +18,9 @@ export class IconLock extends Component<any> {
       >
         <g
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill={this.props.color}
-          fill-rule="evenodd"
+          fillRule="evenodd"
           transform="translate(-1008.000000, -224.000000)"
         >
           <g
