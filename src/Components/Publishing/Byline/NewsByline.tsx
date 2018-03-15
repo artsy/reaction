@@ -6,9 +6,10 @@ import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
 import { Fonts } from "../Fonts"
 import { IconShareArrow } from "../Icon/IconShareArrow"
 import { ArticleData } from "../Typings"
+import { DateAndSource } from "./DateAndSource"
 import { Share } from "./Share"
 
-interface NewsBylineProps {
+export interface NewsBylineProps {
   article: ArticleData
   isMobile?: boolean
   isTruncated?: boolean
@@ -39,28 +40,6 @@ export const NewsByline: React.SFC<NewsBylineProps> = props => {
   )
 }
 
-const DateAndSource: React.SFC<NewsBylineProps> = props => {
-  const { article } = props
-  const { date, news_source, published_at } = article
-
-  const getNewsSource = source => {
-    if (!source || !source.url) return null
-    return (
-      <div>
-        {", via "}
-        <a href={source.url}>{source.title}</a>
-      </div>
-    )
-  }
-
-  return (
-    <DateSourceContainer>
-      {getDate(date || published_at, "verbose")}
-      {getNewsSource(news_source)}
-    </DateSourceContainer>
-  )
-}
-
 const NewsBylineContainer = styled.div`
   display: flex;
   flex: 1;
@@ -85,16 +64,4 @@ const ShareIconContainer = styled.div`
   &:hover {
     opacity: 0.6;
   }
-`
-
-const DateSourceContainer = styled.div`
-  display: flex;
-  ${Fonts.unica("s14")};
-
-  ${pMedia.sm`
-    ${Fonts.unica("s12")}
-  `} a {
-    color: ${colors.grayDark};
-  }
-  color: ${colors.grayDark};
 `
