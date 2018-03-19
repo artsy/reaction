@@ -9,6 +9,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
+  errorMessage?: string
 }
 
 interface InputState {
@@ -55,6 +56,23 @@ class Input extends React.Component<InputProps, InputState> {
     value: "",
   }
 
+  //////// Trying to activate html5 native validations... I think it works
+  public inputEl:
+    | any // types don't work
+    | React.ReactHTMLElement<HTMLInputElement>
+    | React.Component<any, any>
+
+  componentDidUpdate() {
+    console.log(this.props.errorMessage)
+    if (
+      this.props.errorMessage &&
+      this.inputEl &&
+      this.inputEl.setCustomValidity
+    ) {
+      this.inputEl.setCustomValidity(this.props.errorMessage)
+    }
+  }
+
   onFocus(e: React.FocusEvent<HTMLInputElement>) {
     this.setState({
       borderClasses: `${BorderClassname} focused`,
@@ -88,6 +106,7 @@ class Input extends React.Component<InputProps, InputState> {
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
             value={this.props.value}
+            innerRef={input => (this.inputEl = input)}
           />
           {this.props.rightView}
         </StyledDiv>
@@ -103,6 +122,7 @@ class Input extends React.Component<InputProps, InputState> {
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
             value={this.props.value}
+            innerRef={input => (this.inputEl = input)}
           />
           {this.props.rightView}
         </StyledDiv>
@@ -119,12 +139,18 @@ class Input extends React.Component<InputProps, InputState> {
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
             value={this.props.value}
+            innerRef={input => (this.inputEl = input)}
           />
         </StyledDiv>
       )
     }
 
-    return <StyledInput {...this.props as any} />
+    return (
+      <StyledInput
+        innerRef={input => (this.inputEl = input)}
+        {...this.props as any}
+      />
+    )
   }
 }
 
