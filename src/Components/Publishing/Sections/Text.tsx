@@ -31,7 +31,6 @@ export const Text: React.SFC<TextProps> = props => {
     <StyledText
       className="article__text-section"
       color={color}
-      isContentEnd={isContentEnd}
       isContentStart={isContentStart}
       layout={layout}
       postscript={postscript}
