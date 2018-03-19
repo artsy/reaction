@@ -613,7 +613,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
+              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style=\\"text-decoration:line-through;\\"><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href=\\"#\\">one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
             }
           }
         />
@@ -668,7 +668,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<blockquote><a href='#'>The Guardian</a></blockquote>",
+              "__html": "<blockquote><a href=\\"#\\">The Guardian</a></blockquote>",
             }
           }
         />
@@ -1437,7 +1437,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
+              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style=\\"text-decoration:line-through;\\"><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href=\\"#\\">one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
             }
           }
         />
@@ -1492,7 +1492,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<blockquote><a href='#'>The Guardian</a></blockquote>",
+              "__html": "<blockquote><a href=\\"#\\">The Guardian</a></blockquote>",
             }
           }
         />

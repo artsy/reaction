@@ -52,6 +52,7 @@ const htmlMaybeWithContentEnd = (html, isContentEnd) => {
   if (existingSpans.length) {
     existingSpans[0].outerHTML = ""
   }
+  // insert content end spans if applicable
   if (isContentEnd) {
     const allParagraphs = doc.getElementsByTagName("P")
     const lastParagraph =
