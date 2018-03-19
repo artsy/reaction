@@ -29,6 +29,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding-left: 0.5rem;
 }
 
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c19 a {
+  color: #999999;
+}
+
 .c16 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -66,22 +82,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 .c20:hover {
   opacity: 0.6;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c19 a {
-  color: #999999;
 }
 
 .c9 {
@@ -386,8 +386,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c18 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  .c19 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -395,8 +395,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c19 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  .c18 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -731,14 +731,13 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             className="c19"
           >
             Jul 19, 2018 at 1:19 pm
-            <div>
-              , via 
-              <a
-                href="http://nytimes.com"
-              >
-                The New York Times
-              </a>
-            </div>
+            , via
+             
+            <a
+              href="http://nytimes.com"
+            >
+              The New York Times
+            </a>
           </div>
         </div>
         <div
@@ -825,6 +824,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   padding-left: 0.5rem;
 }
 
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c19 a {
+  color: #999999;
+}
+
 .c20 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -885,22 +900,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c19 a {
-  color: #999999;
 }
 
 .c9 {
@@ -1204,6 +1203,15 @@ exports[`News Layout renders the news layout properly 1`] = `
   transition: all 0.5s ease;
 }
 
+@media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
 @media (max-width:600px) {
   .c20 {
     margin-top: 15px;
@@ -1213,15 +1221,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 @media (max-width:720px) {
   .c18 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c19 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -1556,14 +1555,13 @@ exports[`News Layout renders the news layout properly 1`] = `
             className="c19"
           >
             Jul 19, 2018 at 1:19 pm
-            <div>
-              , via 
-              <a
-                href="http://nytimes.com"
-              >
-                The New York Times
-              </a>
-            </div>
+            , via
+             
+            <a
+              href="http://nytimes.com"
+            >
+              The New York Times
+            </a>
           </div>
         </div>
         <div

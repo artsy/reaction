@@ -6,6 +6,7 @@ import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
 import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
+import { EditableChild } from "../Fixtures/Helpers"
 
 storiesOf("Publishing/Byline", module)
   .add("Share", () => {
@@ -96,6 +97,14 @@ storiesOf("Publishing/Byline", module)
     return (
       <div>
         <NewsByline article={article} />
+      </div>
+    )
+  })
+  .add("Editable DateSource from NewsByline", () => {
+    const article = Object.assign({}, NewsArticle)
+    return (
+      <div>
+        <NewsByline article={article} editSource={EditableChild("source")} />
       </div>
     )
   })
