@@ -19,15 +19,19 @@ export class SocialEmbed extends React.Component<
   SocialEmbedProps,
   SocialEmbedState
 > {
-  state = { html: "", error: "" }
+  state = { html: "" }
 
   componentDidMount() {
-    jsonp(this.getEmbedUrl(), (err, data) => {
-      if (err) {
-        return
-      }
-      this.setState({ html: data.html })
-    })
+    const url = this.getEmbedUrl()
+
+    if (url) {
+      jsonp(url, (err, data) => {
+        if (err) {
+          return
+        }
+        this.setState({ html: data.html })
+      })
+    }
   }
 
   getEmbedUrl = () => {
