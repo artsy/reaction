@@ -164,12 +164,6 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-@media (max-width:600px) {
-  .c10 .artist-name {
-    margin-right: 30px;
-  }
-}
-
 @media (max-width:720px) {
   .c8 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';

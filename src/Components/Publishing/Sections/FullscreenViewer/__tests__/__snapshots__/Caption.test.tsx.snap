@@ -81,12 +81,6 @@ exports[`renders an artwork caption properly 1`] = `
   flex-direction: column;
 }
 
-@media (max-width:600px) {
-  .c6 .artist-name {
-    margin-right: 30px;
-  }
-}
-
 @media (max-width:720px) {
   .c4 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';

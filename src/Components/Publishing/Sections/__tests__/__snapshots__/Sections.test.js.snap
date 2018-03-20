@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshots renders properly 1`] = `
-.c40 {
+.c41 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -13,7 +13,7 @@ exports[`snapshots renders properly 1`] = `
   letter-spacing: 0px;
 }
 
-.c35 {
+.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`snapshots renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c36 {
+.c37 {
   display: block;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -33,26 +33,26 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c36 a {
+.c37 a {
   color: black;
 }
 
-.c37 {
+.c38 {
   margin-left: 20px;
 }
 
-.c38 {
+.c39 {
   color: black;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c38 .c39 {
+.c39 .c40 {
   vertical-align: middle;
   margin: 0px;
 }
 
-.c34 {
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,22 +62,22 @@ exports[`snapshots renders properly 1`] = `
   flex-direction: column;
 }
 
-.c22 {
+.c23 {
   width: 100%;
   height: 1000px;
 }
 
-.c18 {
+.c19 {
   color: #999;
   text-decoration: none;
 }
 
-.c17 {
+.c18 {
   margin-right: 30px;
   white-space: nowrap;
 }
 
-.c16 {
+.c17 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -91,7 +91,7 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c16 .title {
+.c17 .title {
   font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -143,8 +143,18 @@ exports[`snapshots renders properly 1`] = `
   display: block;
 }
 
-.c15 {
+.c16 {
   text-decoration: none;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c12 {
@@ -197,27 +207,27 @@ exports[`snapshots renders properly 1`] = `
   width: 264px;
 }
 
-.c19 {
-  margin-right: 10px;
-  width: 219px;
-}
-
 .c20 {
-  margin-right: 0px;
+  margin-right: 10px;
   width: 219px;
 }
 
 .c21 {
   margin-right: 0px;
+  width: 219px;
+}
+
+.c22 {
+  margin-right: 0px;
   width: 100%;
 }
 
-.c23 {
+.c24 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c24 {
+.c25 {
   margin-right: 0px;
   width: 222px;
 }
@@ -234,18 +244,18 @@ exports[`snapshots renders properly 1`] = `
   justify-content: center;
 }
 
-.c33 {
+.c34 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c33 > svg {
+.c34 > svg {
   height: 98%;
 }
 
-.c26 {
+.c27 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -271,16 +281,16 @@ exports[`snapshots renders properly 1`] = `
   cursor: pointer;
 }
 
-.c26:hover {
+.c27:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c26:hover .c32 {
+.c27:hover .c33 {
   fill: white;
 }
 
-.c27 {
+.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -295,7 +305,7 @@ exports[`snapshots renders properly 1`] = `
   height: 50px;
 }
 
-.c28 {
+.c29 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -304,21 +314,21 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c29 {
+.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c30 {
+.c31 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c31 {
+.c32 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -359,7 +369,7 @@ exports[`snapshots renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c25 {
+.c26 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -552,7 +562,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c36 {
+  .c37 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -561,20 +571,14 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c23 {
     height: 1300px;
     width: 100vw;
   }
 }
 
 @media (max-width:600px) {
-  .c17 .artist-name {
-    margin-right: 30px;
-  }
-}
-
-@media (max-width:600px) {
-  .c16 {
+  .c17 {
     padding: 0 10px;
   }
 }
@@ -610,12 +614,6 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c19 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c20 {
     margin-bottom: 10px;
   }
@@ -628,13 +626,19 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c23 {
+  .c22 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
   .c24 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c25 {
     margin-bottom: 10px;
   }
 }
@@ -648,13 +652,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c33 {
+  .c34 {
     display: none;
   }
 }
 
 @media (max-width:600px) {
-  .c28 {
+  .c29 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -663,7 +667,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c30 {
+  .c31 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -672,7 +676,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c31 {
+  .c32 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -723,13 +727,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c25 {
+  .c26 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c25 {
+  .c26 {
     width: 100%;
     padding: 0;
     margin: 0 0 40px 0;
@@ -1075,10 +1079,10 @@ exports[`snapshots renders properly 1`] = `
         width={264}
       >
         <div
-          className="display-artwork"
+          className="c15"
         >
           <a
-            className="c15"
+            className="c16"
             href="/artwork/matt-devine-brass-tax"
           >
             <div
@@ -1148,16 +1152,16 @@ exports[`snapshots renders properly 1`] = `
             </div>
           </a>
           <div
-            className="display-artwork__caption c16"
+            className="display-artwork__caption c17"
           >
             <span
-              className="c17"
+              className="c18"
             >
               <span
                 className="name"
               >
                 <a
-                  className="c18"
+                  className="c19"
                   href="/artist/matt-devine"
                 >
                   Matt Devine
@@ -1242,7 +1246,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c19"
+        className="c20"
         width={219}
       >
         <div
@@ -1331,7 +1335,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c20"
         width={219}
       >
         <div
@@ -1420,7 +1424,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1535,7 +1539,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c21"
+        className="c22"
         width={undefined}
       >
         <div
@@ -1647,7 +1651,7 @@ exports[`snapshots renders properly 1`] = `
     type="embed"
   >
     <iframe
-      className="c22"
+      className="c23"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1679,7 +1683,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c23"
+        className="c24"
         width={216}
       >
         <div
@@ -1768,7 +1772,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c20"
         width={219}
       >
         <div
@@ -1857,7 +1861,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c24"
+        className="c25"
         width={222}
       >
         <div
@@ -1965,7 +1969,7 @@ exports[`snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c26"
     type="image_set"
   >
     <div
@@ -1977,27 +1981,27 @@ exports[`snapshots renders properly 1`] = `
       }
     >
       <div
-        className="c26"
+        className="c27"
         onClick={[Function]}
       >
         <div
-          className="c27"
+          className="c28"
         >
           <div
-            className="c28"
+            className="c29"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c29"
+            className="c30"
           >
             <div
-              className="c30"
+              className="c31"
             >
               View Slideshow
             </div>
             <div
-              className="c31"
+              className="c32"
             >
               3
                Images
@@ -2005,7 +2009,7 @@ exports[`snapshots renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c32 c33"
+          className="c33 c34"
         >
           <svg
             className="image-set"
@@ -2051,14 +2055,14 @@ exports[`snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c26"
     type="image_collection"
   >
     <div
       className="c5"
     >
       <div
-        className="c21"
+        className="c22"
         width={undefined}
       >
         <div
@@ -2170,13 +2174,13 @@ exports[`snapshots renders properly 1`] = `
     type="author"
   >
     <div
-      className="c34"
+      className="c35"
     >
       <div
-        className="c35"
+        className="c36"
       >
         <div
-          className="c36"
+          className="c37"
         >
           <span>
             <a
@@ -2188,14 +2192,14 @@ exports[`snapshots renders properly 1`] = `
              is a well-known author and a long-time baker.
           </span>
           <span
-            className="c37"
+            className="c38"
           >
             <a
-              className="c38"
+              className="c39"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c39 c40"
+                className="c40 c41"
                 onClick={undefined}
                 style={undefined}
               >

@@ -113,12 +113,6 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-@media (max-width:600px) {
-  .c9 .artist-name {
-    margin-right: 30px;
-  }
-}
-
 @media (max-width:720px) {
   .c7 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';

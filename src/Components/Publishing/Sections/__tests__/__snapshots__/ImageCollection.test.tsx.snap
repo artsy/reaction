@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
-.c10 {
+.c11 {
   color: #999;
   text-decoration: none;
 }
 
-.c9 {
+.c10 {
   margin-right: 30px;
   white-space: nowrap;
 }
 
-.c8 {
+.c9 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -25,14 +25,14 @@ exports[`renders a single image properly 1`] = `
   line-height: 1.4em;
 }
 
-.c8 .title {
+.c9 .title {
   font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -45,40 +45,50 @@ exports[`renders a single image properly 1`] = `
   transition: opacity 0.3s;
 }
 
-.c7:hover {
+.c8:hover {
   opacity: 1;
 }
 
-.c6 {
+.c7 {
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
-.c3 {
+.c4 {
   position: relative;
 }
 
-.c3:hover .c5 {
+.c4:hover .c6 {
   opacity: 1;
 }
 
-.c3 .BlockImage__container {
+.c4 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c3 .image-loaded {
+.c4 .image-loaded {
   opacity: 1;
 }
 
-.c4 {
+.c5 {
   display: block;
 }
 
-.c2 {
+.c3 {
   text-decoration: none;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c1 {
@@ -99,19 +109,13 @@ exports[`renders a single image properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c9 .artist-name {
-    margin-right: 30px;
-  }
-}
-
-@media (max-width:600px) {
-  .c8 {
+  .c9 {
     padding: 0 10px;
   }
 }
 
 @media (max-width:720px) {
-  .c3 .c5 {
+  .c4 .c6 {
     opacity: 1;
   }
 }
@@ -138,27 +142,27 @@ exports[`renders a single image properly 1`] = `
     width={undefined}
   >
     <div
-      className="display-artwork"
+      className="c2"
     >
       <a
-        className="c2"
+        className="c3"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
         <div
-          className="c3"
+          className="c4"
         >
           <img
             alt="Nude on the Beach"
-            className="BlockImage__container c4"
+            className="BlockImage__container c5"
             height="auto"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width="100%"
           />
           <div
-            className="c5 c6"
+            className="c6 c7"
           >
             <div
-              className="c7"
+              className="c8"
               onClick={[Function]}
             >
               <svg
@@ -211,16 +215,16 @@ exports[`renders a single image properly 1`] = `
         </div>
       </a>
       <div
-        className="display-artwork__caption c8"
+        className="display-artwork__caption c9"
       >
         <span
-          className="c9"
+          className="c10"
         >
           <span
             className="name"
           >
             <a
-              className="c10"
+              className="c11"
               href="/artist/fernando-botero"
             >
               Fernando Botero
@@ -282,17 +286,17 @@ exports[`renders a single image properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c10 {
+.c11 {
   color: #999;
   text-decoration: none;
 }
 
-.c9 {
+.c10 {
   margin-right: 30px;
   white-space: nowrap;
 }
 
-.c8 {
+.c9 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -306,14 +310,14 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c8 .title {
+.c9 .title {
   font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -326,43 +330,53 @@ exports[`renders properly 1`] = `
   transition: opacity 0.3s;
 }
 
-.c7:hover {
+.c8:hover {
   opacity: 1;
 }
 
-.c6 {
+.c7 {
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
-.c3 {
+.c4 {
   position: relative;
 }
 
-.c3:hover .c5 {
+.c4:hover .c6 {
   opacity: 1;
 }
 
-.c3 .BlockImage__container {
+.c4 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c3 .image-loaded {
+.c4 .image-loaded {
   opacity: 1;
 }
 
-.c4 {
+.c5 {
   display: block;
 }
 
-.c2 {
+.c3 {
   text-decoration: none;
 }
 
-.c12 {
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -374,16 +388,16 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c13 {
+.c14 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c13 > p,
-.c13 p,
-.c13 .public-DraftEditorPlaceholder-root,
-.c13 .public-DraftStyleDefault-block {
+.c14 > p,
+.c14 p,
+.c14 .public-DraftEditorPlaceholder-root,
+.c14 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -392,13 +406,13 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c13 > a,
-.c13 a {
+.c14 > a,
+.c14 a {
   color: #999;
 }
 
-.c13 > a:hover,
-.c13 a:hover {
+.c14 > a:hover,
+.c14 a:hover {
   color: black;
 }
 
@@ -407,12 +421,12 @@ exports[`renders properly 1`] = `
   width: 312px;
 }
 
-.c11 {
+.c12 {
   margin-right: 10px;
   width: 168px;
 }
 
-.c14 {
+.c15 {
   margin-right: 0px;
   width: 178px;
 }
@@ -430,31 +444,25 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c9 .artist-name {
-    margin-right: 30px;
-  }
-}
-
-@media (max-width:600px) {
-  .c8 {
+  .c9 {
     padding: 0 10px;
   }
 }
 
 @media (max-width:720px) {
-  .c3 .c5 {
+  .c4 .c6 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c12 {
+  .c13 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c13 {
+  .c14 {
     padding: 0px;
   }
 }
@@ -466,13 +474,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c11 {
+  .c12 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c14 {
+  .c15 {
     margin-bottom: 10px;
   }
 }
@@ -493,27 +501,27 @@ exports[`renders properly 1`] = `
     width={312}
   >
     <div
-      className="display-artwork"
+      className="c2"
     >
       <a
-        className="c2"
+        className="c3"
         href="/artwork/fernando-botero-nude-on-the-beach"
       >
         <div
-          className="c3"
+          className="c4"
         >
           <img
             alt="Nude on the Beach"
-            className="BlockImage__container c4"
+            className="BlockImage__container c5"
             height={224}
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width={312}
           />
           <div
-            className="c5 c6"
+            className="c6 c7"
           >
             <div
-              className="c7"
+              className="c8"
               onClick={[Function]}
             >
               <svg
@@ -566,16 +574,16 @@ exports[`renders properly 1`] = `
         </div>
       </a>
       <div
-        className="display-artwork__caption c8"
+        className="display-artwork__caption c9"
       >
         <span
-          className="c9"
+          className="c10"
         >
           <span
             className="name"
           >
             <a
-              className="c10"
+              className="c11"
               href="/artist/fernando-botero"
             >
               Fernando Botero
@@ -634,27 +642,27 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c11"
+    className="c12"
     width={168}
   >
     <div
       className="article-image"
     >
       <div
-        className="c3"
+        className="c4"
       >
         <img
           alt="Photo by Adam Kuehl for Artsy."
-          className="BlockImage__container c4"
+          className="BlockImage__container c5"
           height={224}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80"
           width={168}
         />
         <div
-          className="c5 c6"
+          className="c6 c7"
         >
           <div
-            className="c7"
+            className="c8"
             onClick={[Function]}
           >
             <svg
@@ -706,10 +714,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c13"
       >
         <div
-          className="c13"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={
@@ -723,27 +731,27 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c14"
+    className="c15"
     width={178}
   >
     <div
       className="article-image"
     >
       <div
-        className="c3"
+        className="c4"
       >
         <img
           alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-          className="BlockImage__container c4"
+          className="BlockImage__container c5"
           height={224}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
           width={178}
         />
         <div
-          className="c5 c6"
+          className="c6 c7"
         >
           <div
-            className="c7"
+            className="c8"
             onClick={[Function]}
           >
             <svg
@@ -795,10 +803,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c13"
       >
         <div
-          className="c13"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={
