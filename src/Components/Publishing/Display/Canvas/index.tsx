@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
@@ -27,24 +27,22 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
     this.trackImpression = this.trackImpression.bind(this)
   }
 
-  @trackImpression((props) => unitLayout(props))
+  @trackImpression(props => unitLayout(props))
   trackImpression() {
     // noop
   }
 
-  @trackViewability((props) => unitLayout(props))
+  @trackViewability(props => unitLayout(props))
   trackViewability() {
     // noop
   }
 
   render() {
     const { unit, campaign, article } = this.props
-    const url = get(unit, 'link.url', '')
+    const url = get(unit, "link.url", "")
 
     const disclaimer = (
-      <Disclaimer layout={unit.layout}>
-        {unit.disclaimer}
-      </Disclaimer>
+      <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
 
     return (
@@ -53,9 +51,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
         <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
 
         <a href={url} target="_blank">
-          <AdvertisementBy>
-            {`Advertisement by ${campaign.name}`}
-          </AdvertisementBy>
+          <AdvertisementBy>{`Sponsored by ${campaign.name}`}</AdvertisementBy>
         </a>
 
         <CanvasContainer
@@ -69,7 +65,6 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
       </DisplayContainer>
     )
   }
-
 }
 
 const Div: StyledFunction<DivProps> = styled.div
@@ -91,8 +86,7 @@ const DisplayContainer = Div`
   `}
 `
 const AdvertisementBy = styled.div`
-  ${Fonts.avantgarde("s11")}
-  color: ${Colors.grayMedium};
+  ${Fonts.avantgarde("s11")} color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
 `
