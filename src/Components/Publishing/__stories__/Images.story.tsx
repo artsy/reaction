@@ -180,6 +180,6 @@ storiesOf("Publishing/Images", module)
   .add("Image Collection", () => {
     return <ImageCollectionDemo />
   })
-  .add("Artwork Collection - more than 2 artists", () => {
+  .add("Artwork Collection -more than 2 artists", () => {
     return <MultipleArtistsImageCollection />
   })

@@ -30,7 +30,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   <div
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 dOFyXN\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span>. Gary Nader</span>",
+        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span>. Gary Nader</span>",
       }
     }
   />
@@ -40,7 +40,6 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 .c2 {
   margin-right: 30px;
-  white-space: nowrap;
 }
 
 .c0 {
@@ -137,7 +136,6 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 .c2 {
   margin-right: 30px;
-  white-space: nowrap;
 }
 
 .c0 {
@@ -161,12 +159,12 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.dabIDz .c1 {
+.fAhLye .c1 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.dabIDz .c1:after {
+.fAhLye .c1:after {
   content: ", ";
 }
 

@@ -21,10 +21,6 @@ interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   sectionLayout?: SectionLayout
 }
 
-interface ArtistNamesProps extends React.HTMLProps<HTMLDivElement> {
-  multipleNames?: boolean
-}
-
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinParts(children, delimiter = ", ") {
     const compacted = _.compact(children)
@@ -39,6 +35,17 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     }
   }
 
+  joinArtistNames(names, delimiter = ", ") {
+    if (names.length === 0) {
+      return []
+    }
+
+    return names.slice(1).reduce((prev, curr, i) => {
+      return prev.concat([delimiter, curr])
+    },
+    [names[0]])
+  }
+
   renderArtists() {
     const { artwork: { artist, artists } } = this.props
 
@@ -49,7 +56,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
         return artistName
       })
 
-      const joinedNames = this.joinParts(names)
+      const joinedNames = this.joinArtistNames(names)
       return joinedNames
 
       // Single artist
@@ -68,11 +75,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       const href = `/artist/${slug}`
 
       return (
-        <span key={`artist-${i}`} className="name">
+        <ArtistName key={`artist-${i}`}>
           <TextLink href={href} color="#999">
             {name}
           </TextLink>
-        </span>
+        </ArtistName>
       )
     } else {
       return <span className="name">{name}</span>
@@ -162,12 +169,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   render() {
-    const {
-      artwork: { artists },
-      layout,
-      isFullscreenCaption,
-      sectionLayout,
-    } = this.props
+    const { layout, isFullscreenCaption, sectionLayout } = this.props
     // Fullscreen
     if (isFullscreenCaption) {
       return (
@@ -204,9 +206,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           sectionLayout={sectionLayout}
           className="display-artwork__caption"
         >
-          <ArtistNames multipleNames={artists && artists.length > 1}>
-            {this.renderArtists()}
-          </ArtistNames>
+          <ArtistNames>{this.renderArtists()}</ArtistNames>
           <div>
             <Truncator>{this.renderTitleDate()}</Truncator>
             <Truncator>{this.renderPartnerCredit()}</Truncator>
@@ -219,8 +219,10 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
 const ArtistNames = styled.span`
   margin-right: 30px;
-  ${(props: ArtistNamesProps) =>
-    !props.multipleNames && `white-space: nowrap;`};
+`
+
+const ArtistName = styled.span`
+  white-space: nowrap;
 `
 
 const StyledArtworkCaption = styled.div`

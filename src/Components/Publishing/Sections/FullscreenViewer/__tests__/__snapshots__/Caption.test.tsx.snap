@@ -1,13 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an artwork caption properly 1`] = `
-.c7 {
+.c8 {
   color: #999;
   text-decoration: none;
 }
 
 .c6 {
   margin-right: 30px;
+}
+
+.c7 {
   white-space: nowrap;
 }
 
@@ -45,7 +48,7 @@ exports[`renders an artwork caption properly 1`] = `
   color: black;
 }
 
-.c8 {
+.c9 {
   margin-left: 20px;
   white-space: nowrap;
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
@@ -133,7 +136,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -179,10 +182,10 @@ exports[`renders an artwork caption properly 1`] = `
             className="c6"
           >
             <span
-              className="name"
+              className="c7"
             >
               <a
-                className="c7"
+                className="c8"
                 href="/artist/fernando-botero"
               >
                 Fernando Botero
@@ -198,7 +201,7 @@ exports[`renders an artwork caption properly 1`] = `
               className="title"
             >
               <a
-                className="c7"
+                className="c8"
                 href="/artwork/fernando-botero-nude-on-the-beach"
               >
                 Nude on the Beach
@@ -215,7 +218,7 @@ exports[`renders an artwork caption properly 1`] = `
             className="c5"
           >
             <a
-              className="c7"
+              className="c8"
               href="/partner/gary-nader"
             >
               Gary Nader
@@ -232,7 +235,7 @@ exports[`renders an artwork caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c8"
+    className="c9"
   >
     2 of 10
   </div>
