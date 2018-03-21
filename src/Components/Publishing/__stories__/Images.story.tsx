@@ -43,6 +43,65 @@ class ImageCollectionDemo extends React.Component<any, any> {
   }
 }
 
+class MultipleArtistsImageCollection extends React.Component<any, any> {
+  render() {
+    return (
+      <FullScreenProvider>
+        {({ openViewer, closeViewer, slideIndex, viewerIsOpen }) => {
+          return (
+            <div>
+              <div style={{ width: "100%" }}>
+                <ImageCollection
+                  images={[workWithThreeArtists, workWithThreeArtists]}
+                  targetHeight={400}
+                  gutter={10}
+                />
+              </div>
+              <FullscreenViewer
+                onClose={closeViewer}
+                show={viewerIsOpen}
+                slideIndex={slideIndex}
+                images={Images}
+              />
+            </div>
+          )
+        }}
+      </FullScreenProvider>
+    )
+  }
+}
+
+const workWithThreeArtists = {
+  type: "artwork",
+  id: "589a6291275b2410d1beb6a5",
+  slug: "fernando-botero-nude-on-the-beach",
+  date: "2000",
+  title: "Nude on the Beach",
+  image:
+    "https://d32dm0rphc51dk.cloudfront.net/0aRUvnVgQKbQk5dj8xcCAg/larger.jpg",
+  partner: {
+    name: "Gary Nader",
+    slug: "gary-nader",
+  },
+  artists: [
+    {
+      name: "Fernando Botero",
+      slug: "fernando-botero",
+    },
+    {
+      name: "Frida Kahlo",
+      slug: "frida-kahlo",
+    },
+    {
+      name: "Frida Kahlo",
+      slug: "frida-kahlo",
+    },
+  ],
+  width: 1152,
+  height: 826,
+  credit: "Courtesy of Gary Nader",
+}
+
 storiesOf("Publishing/Images", module)
   .add("Artwork", () => {
     return (
@@ -120,4 +179,7 @@ storiesOf("Publishing/Images", module)
   })
   .add("Image Collection", () => {
     return <ImageCollectionDemo />
+  })
+  .add("Artwork Collection -more than 2 artists", () => {
+    return <MultipleArtistsImageCollection />
   })
