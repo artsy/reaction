@@ -1,4 +1,5 @@
 import React from "react"
+import { strLeftBack, strRightBack } from "underscore.string"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
 
@@ -45,20 +46,15 @@ Text.defaultProps = {
 }
 
 const htmlMaybeWithContentEnd = (html, isContentEnd) => {
-  const doc = document.createElement("div")
-  doc.innerHTML = html
-  // remove existing content-end spans, remove after backfill
-  const existingSpans = doc.getElementsByClassName("content-end")
-  if (existingSpans.length) {
-    existingSpans[0].outerHTML = ""
-  }
-  // insert content end spans if applicable
+  const cleanedHtml = html.replace("<span class='content-end'> </span>", "")
+
   if (isContentEnd) {
-    const allParagraphs = doc.getElementsByTagName("P")
-    const lastParagraph =
-      allParagraphs.length && allParagraphs[allParagraphs.length - 1]
-    lastParagraph.innerHTML =
-      lastParagraph.innerHTML + "<span class='content-end'> </span>"
+    const stringBefore = strLeftBack(cleanedHtml, "</p>")
+    const stringAfter = strRightBack(cleanedHtml, "</p>")
+    const htmlWithContentEnd = `
+      ${stringBefore}<span class='content-end'> </span></p>${stringAfter}
+    `
+    return htmlWithContentEnd
   }
-  return doc.innerHTML
+  return cleanedHtml
 }

@@ -56,6 +56,14 @@ it("Inserts content-end spans if isContentEnd", () => {
   expect(wrapper.html()).toMatch("content-end")
 })
 
+it("Inserts content-end spans in last paragraph, even if another block follows", () => {
+  const html = "<p>The end of the article</p><h3>An h3 after</h3>"
+  const wrapper = mount(<Text html={html} isContentEnd layout="standard" />)
+  expect(wrapper.html()).toMatch(
+    `<p>The end of the article<span class="content-end"> </span></p><h3>An h3 after</h3>`
+  )
+})
+
 it("Removes content-end spans if not isContentEnd", () => {
   const html =
     "<p>The end of a great article. <span class='content-end> </span></p>"
