@@ -45,7 +45,7 @@ Text.defaultProps = {
   color: "black",
 }
 
-const htmlMaybeWithContentEnd = (html, isContentEnd) => {
+const htmlMaybeWithContentEnd = (html = "", isContentEnd) => {
   const cleanedHtml = html.replace("<span class='content-end'> </span>", "")
 
   if (isContentEnd) {
