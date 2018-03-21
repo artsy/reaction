@@ -51,7 +51,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
         <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
 
         <a href={url} target="_blank">
-          <AdvertisementBy>{`Sponsored by ${campaign.name}`}</AdvertisementBy>
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
         </a>
 
         <CanvasContainer
@@ -85,7 +85,7 @@ const DisplayContainer = Div`
     min-height: 400px;
   `}
 `
-const AdvertisementBy = styled.div`
+const SponsoredBy = styled.div`
   ${Fonts.avantgarde("s11")} color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
