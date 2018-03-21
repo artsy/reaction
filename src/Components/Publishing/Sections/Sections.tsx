@@ -1,4 +1,4 @@
-import { clone, compact, findLastIndex, once } from "lodash"
+import { clone, compact, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
@@ -121,17 +121,6 @@ export class Sections extends Component<Props, State> {
     }
   }
 
-  getContentEndIndex = () => {
-    const { article: { layout, sections } } = this.props
-
-    if (["feature", "standard"].includes(layout)) {
-      const lastText = findLastIndex(sections, section => {
-        return section.type === "text"
-      })
-      return lastText
-    }
-  }
-
   getSection(section, index) {
     const { article } = this.props
 
@@ -153,7 +142,6 @@ export class Sections extends Component<Props, State> {
           html={section.body}
           layout={article.layout}
           isContentStart={index === this.getContentStartIndex()}
-          isContentEnd={index === this.getContentEndIndex()}
         />
       ),
       default: false,
