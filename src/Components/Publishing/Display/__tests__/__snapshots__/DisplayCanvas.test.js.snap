@@ -249,7 +249,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
     <div
       className="c1"
     >
-      Advertisement by Artsy
+      Sponsored by Artsy
     </div>
   </a>
   <a
@@ -636,7 +636,7 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
     <div
       className="c1"
     >
-      Advertisement by Artsy
+      Sponsored by Artsy
     </div>
   </a>
   <div>
@@ -1017,7 +1017,7 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
     <div
       className="c1"
     >
-      Advertisement by Artsy
+      Sponsored by Artsy
     </div>
   </a>
   <a
@@ -1394,7 +1394,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
     <div
       className="c1"
     >
-      Advertisement by Artsy
+      Sponsored by Artsy
     </div>
   </a>
   <a

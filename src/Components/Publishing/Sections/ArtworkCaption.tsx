@@ -35,17 +35,28 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     }
   }
 
+  joinArtistNames(names, delimiter = ", ") {
+    if (names.length === 0) {
+      return []
+    }
+
+    return names.slice(1).reduce((prev, curr, i) => {
+      return prev.concat([delimiter, curr])
+    },
+    [names[0]])
+  }
+
   renderArtists() {
     const { artwork: { artist, artists } } = this.props
 
     // Multiple artists
-    if (artists && artists.length > 0) {
+    if (artists && artists.length > 1) {
       const names = artists.map((a, i) => {
         const artistName = this.renderArtistName(a, i)
         return artistName
       })
 
-      const joinedNames = this.joinParts(names)
+      const joinedNames = this.joinArtistNames(names)
       return joinedNames
 
       // Single artist
@@ -64,11 +75,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       const href = `/artist/${slug}`
 
       return (
-        <span key={`artist-${i}`} className="name">
+        <ArtistName key={`artist-${i}`}>
           <TextLink href={href} color="#999">
             {name}
           </TextLink>
-        </span>
+        </ArtistName>
       )
     } else {
       return <span className="name">{name}</span>
@@ -159,13 +170,12 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   render() {
     const { layout, isFullscreenCaption, sectionLayout } = this.props
-
     // Fullscreen
     if (isFullscreenCaption) {
       return (
         <StyledFullscreenCaption>
           <Line>
-            <ArtistName>{this.renderArtists()}</ArtistName>
+            <ArtistNames>{this.renderArtists()}</ArtistNames>
           </Line>
           <div>
             <Line>{this.renderTitleDate()}</Line>
@@ -179,7 +189,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       return (
         <StyledClassicCaption className="display-artwork__caption">
           <Truncator>
-            <ArtistName>{this.renderArtists()}</ArtistName>
+            <ArtistNames>{this.renderArtists()}</ArtistNames>
 
             {this.renderTitleDate()}
             {". "}
@@ -196,11 +206,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
           sectionLayout={sectionLayout}
           className="display-artwork__caption"
         >
-          <ArtistName>{this.renderArtists()}</ArtistName>
-
+          <ArtistNames>{this.renderArtists()}</ArtistNames>
           <div>
             <Truncator>{this.renderTitleDate()}</Truncator>
-
             <Truncator>{this.renderPartnerCredit()}</Truncator>
           </div>
         </StyledArtworkCaption>
@@ -209,32 +217,27 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 }
 
-const ArtistName = styled.span`
+const ArtistNames = styled.span`
   margin-right: 30px;
-  white-space: nowrap;
+`
 
-  ${pMedia.xs`
-    .artist-name {
-      margin-right: 30px;
-    }
-  `};
+const ArtistName = styled.span`
+  white-space: nowrap;
 `
 
 const StyledArtworkCaption = styled.div`
   padding: ${(props: StyledArtworkCaptionProps) =>
-    props.sectionLayout === "fillwidth" ? "0 10px;" : "0;"}
+    props.sectionLayout === "fillwidth" ? "0 10px;" : "0;"};
   margin-top: 10px;
   display: flex;
   color: ${Colors.grayDark};
-
-  ${Fonts.unica("s14")}
-  .title {
-    ${Fonts.unica("s14", "italic")}
+  ${Fonts.unica("s14")} .title {
+    ${Fonts.unica("s14", "italic")};
   }
 
   ${pMedia.xs`
     padding: 0 10px;
-  `}
+  `};
 `
 
 const StyledClassicCaption = styled.div`
@@ -243,7 +246,7 @@ const StyledClassicCaption = styled.div`
   color: ${Colors.grayDark};
   ${Fonts.garamond("s15")};
 
-  ${ArtistName} {
+  ${ArtistNames} {
     margin-right: 0;
     font-weight: bold;
     &:after {

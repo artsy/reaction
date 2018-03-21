@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshots renders properly 1`] = `
-.c40 {
+.c42 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -13,7 +13,7 @@ exports[`snapshots renders properly 1`] = `
   letter-spacing: 0px;
 }
 
-.c35 {
+.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`snapshots renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c36 {
+.c38 {
   display: block;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -33,26 +33,26 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c36 a {
+.c38 a {
   color: black;
 }
 
-.c37 {
+.c39 {
   margin-left: 20px;
 }
 
-.c38 {
+.c40 {
   color: black;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c38 .c39 {
+.c40 .c41 {
   vertical-align: middle;
   margin: 0px;
 }
 
-.c34 {
+.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,22 +62,25 @@ exports[`snapshots renders properly 1`] = `
   flex-direction: column;
 }
 
-.c22 {
+.c24 {
   width: 100%;
   height: 1000px;
 }
 
-.c18 {
+.c20 {
   color: #999;
   text-decoration: none;
 }
 
-.c17 {
+.c18 {
   margin-right: 30px;
+}
+
+.c19 {
   white-space: nowrap;
 }
 
-.c16 {
+.c17 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -91,7 +94,7 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c16 .title {
+.c17 .title {
   font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -143,8 +146,18 @@ exports[`snapshots renders properly 1`] = `
   display: block;
 }
 
-.c15 {
+.c16 {
   text-decoration: none;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c12 {
@@ -197,27 +210,27 @@ exports[`snapshots renders properly 1`] = `
   width: 264px;
 }
 
-.c19 {
+.c21 {
   margin-right: 10px;
   width: 219px;
 }
 
-.c20 {
+.c22 {
   margin-right: 0px;
   width: 219px;
 }
 
-.c21 {
+.c23 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c23 {
+.c25 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c24 {
+.c26 {
   margin-right: 0px;
   width: 222px;
 }
@@ -234,18 +247,18 @@ exports[`snapshots renders properly 1`] = `
   justify-content: center;
 }
 
-.c33 {
+.c35 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c33 > svg {
+.c35 > svg {
   height: 98%;
 }
 
-.c26 {
+.c28 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -271,16 +284,16 @@ exports[`snapshots renders properly 1`] = `
   cursor: pointer;
 }
 
-.c26:hover {
+.c28:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c26:hover .c32 {
+.c28:hover .c34 {
   fill: white;
 }
 
-.c27 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -295,7 +308,7 @@ exports[`snapshots renders properly 1`] = `
   height: 50px;
 }
 
-.c28 {
+.c30 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -304,21 +317,21 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c29 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c30 {
+.c32 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c31 {
+.c33 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -359,7 +372,7 @@ exports[`snapshots renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c25 {
+.c27 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -552,7 +565,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c36 {
+  .c38 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -561,20 +574,14 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c24 {
     height: 1300px;
     width: 100vw;
   }
 }
 
 @media (max-width:600px) {
-  .c17 .artist-name {
-    margin-right: 30px;
-  }
-}
-
-@media (max-width:600px) {
-  .c16 {
+  .c17 {
     padding: 0 10px;
   }
 }
@@ -610,19 +617,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c19 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c20 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c21 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c22 {
     margin-bottom: 10px;
   }
 }
@@ -634,7 +635,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c24 {
+  .c25 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c26 {
     margin-bottom: 10px;
   }
 }
@@ -648,13 +655,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c33 {
+  .c35 {
     display: none;
   }
 }
 
 @media (max-width:600px) {
-  .c28 {
+  .c30 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -663,7 +670,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c30 {
+  .c32 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -672,7 +679,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c31 {
+  .c33 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -723,13 +730,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c25 {
+  .c27 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c25 {
+  .c27 {
     width: 100%;
     padding: 0;
     margin: 0 0 40px 0;
@@ -1075,10 +1082,10 @@ exports[`snapshots renders properly 1`] = `
         width={264}
       >
         <div
-          className="display-artwork"
+          className="c15"
         >
           <a
-            className="c15"
+            className="c16"
             href="/artwork/matt-devine-brass-tax"
           >
             <div
@@ -1148,16 +1155,16 @@ exports[`snapshots renders properly 1`] = `
             </div>
           </a>
           <div
-            className="display-artwork__caption c16"
+            className="display-artwork__caption c17"
           >
             <span
-              className="c17"
+              className="c18"
             >
               <span
-                className="name"
+                className="c19"
               >
                 <a
-                  className="c18"
+                  className="c20"
                   href="/artist/matt-devine"
                 >
                   Matt Devine
@@ -1242,7 +1249,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c19"
+        className="c21"
         width={219}
       >
         <div
@@ -1331,7 +1338,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c21"
         width={219}
       >
         <div
@@ -1420,7 +1427,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c22"
         width={219}
       >
         <div
@@ -1535,7 +1542,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c21"
+        className="c23"
         width={undefined}
       >
         <div
@@ -1647,7 +1654,7 @@ exports[`snapshots renders properly 1`] = `
     type="embed"
   >
     <iframe
-      className="c22"
+      className="c24"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1679,7 +1686,7 @@ exports[`snapshots renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c23"
+        className="c25"
         width={216}
       >
         <div
@@ -1768,7 +1775,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c19"
+        className="c21"
         width={219}
       >
         <div
@@ -1857,7 +1864,7 @@ exports[`snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c24"
+        className="c26"
         width={222}
       >
         <div
@@ -1965,7 +1972,7 @@ exports[`snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c27"
     type="image_set"
   >
     <div
@@ -1977,27 +1984,27 @@ exports[`snapshots renders properly 1`] = `
       }
     >
       <div
-        className="c26"
+        className="c28"
         onClick={[Function]}
       >
         <div
-          className="c27"
+          className="c29"
         >
           <div
-            className="c28"
+            className="c30"
           >
             The Work of Bruce M. Sherman
           </div>
           <div
-            className="c29"
+            className="c31"
           >
             <div
-              className="c30"
+              className="c32"
             >
               View Slideshow
             </div>
             <div
-              className="c31"
+              className="c33"
             >
               3
                Images
@@ -2005,7 +2012,7 @@ exports[`snapshots renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c32 c33"
+          className="c34 c35"
         >
           <svg
             className="image-set"
@@ -2051,14 +2058,14 @@ exports[`snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c25"
+    className="c27"
     type="image_collection"
   >
     <div
       className="c5"
     >
       <div
-        className="c21"
+        className="c23"
         width={undefined}
       >
         <div
@@ -2159,9 +2166,7 @@ exports[`snapshots renders properly 1`] = `
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "
-      <p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles. The familiar faces of Malcolm X, James Brown, Tina Turner, Howlin’ Wolf, Sister Rosetta Tharpe, and others emerge from the Major Arcana. Sun Ra is there too, appropriately imagined as the Sun card. At a time when Black Americans are at a high risk of being the victims of state-sponsored violence, the Black Power Tarot feels especially urgent. By situating these figures within a centuries-old framework of esoteric wisdom, Khan affirms their value and influence, the importance of their legacy. By placing them on cards used for fortune-telling, he extends their power into the future.<span class='content-end'> </span></p>
-    ",
+            "__html": "<p>The Black Power Tarot was conceived by musician King Khan in consultation with Alejandro Jodorowsky, and designed by illustrator Michael Eaton in 2015. The deck celebrates the strength and achievements of Black musicians, artists, and activists while staying faithful to the imagery and composition of the classic Tarot de Marseilles. The familiar faces of Malcolm X, James Brown, Tina Turner, Howlin’ Wolf, Sister Rosetta Tharpe, and others emerge from the Major Arcana. Sun Ra is there too, appropriately imagined as the Sun card. At a time when Black Americans are at a high risk of being the victims of state-sponsored violence, the Black Power Tarot feels especially urgent. By situating these figures within a centuries-old framework of esoteric wisdom, Khan affirms their value and influence, the importance of their legacy. By placing them on cards used for fortune-telling, he extends their power into the future. <span class='content-end'></span></p><p> &nbsp;—Ariela Gittlen</p>",
           }
         }
       />
@@ -2172,13 +2177,13 @@ exports[`snapshots renders properly 1`] = `
     type="author"
   >
     <div
-      className="c34"
+      className="c36"
     >
       <div
-        className="c35"
+        className="c37"
       >
         <div
-          className="c36"
+          className="c38"
         >
           <span>
             <a
@@ -2190,14 +2195,14 @@ exports[`snapshots renders properly 1`] = `
              is a well-known author and a long-time baker.
           </span>
           <span
-            className="c37"
+            className="c39"
           >
             <a
-              className="c38"
+              className="c40"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c39 c40"
+                className="c41 c42"
                 onClick={undefined}
                 style={undefined}
               >

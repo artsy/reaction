@@ -2,7 +2,7 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Sections } from "../Sections"
-import { StandardArticle, FeatureArticle } from "../../Fixtures/Articles"
+import { StandardArticle } from "../../Fixtures/Articles"
 import { cloneDeep } from "lodash"
 import { mount } from "enzyme"
 
@@ -107,19 +107,5 @@ describe("units", () => {
     )
 
     expect(body).toContain("__mobile_display_inject__234")
-  })
-
-  it("#getContentStartIndex returns the index of first text section if feature", () => {
-    const wrapper = mount(
-      <Sections article={FeatureArticle} />
-    )
-    expect(wrapper.instance().getContentStartIndex()).toBe(0)
-  })
-
-  it("#getContentEndIndex returns the index of last text section", () => {
-    const wrapper = mount(
-      <Sections article={FeatureArticle} />
-    )
-    expect(wrapper.instance().getContentEndIndex()).toBe(11)
   })
 })

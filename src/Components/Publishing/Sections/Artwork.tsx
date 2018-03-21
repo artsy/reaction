@@ -42,7 +42,7 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
     )
 
     return (
-      <div className="display-artwork">
+      <ArtworkContainer>
         {linked ? (
           <ArtworkImageLink href={`/artwork/${artwork.slug}`}>
             <Image />
@@ -53,11 +53,16 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
 
         <ArtworkCaption {...this.props} />
         {children}
-      </div>
+      </ArtworkContainer>
     )
   }
 }
 
 const ArtworkImageLink = styled.a`
   text-decoration: none;
+`
+
+const ArtworkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `

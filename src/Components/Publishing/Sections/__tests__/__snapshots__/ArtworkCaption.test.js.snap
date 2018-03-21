@@ -11,12 +11,12 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   line-height: 1.25em;
 }
 
-.c0 .file__ArtistName-yu39to-0 {
+.c0 .file__ArtistNames-yu39to-0 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.c0 .file__ArtistName-yu39to-0:after {
+.c0 .file__ArtistNames-yu39to-0:after {
   content: ", ";
 }
 
@@ -30,7 +30,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   <div
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<span><span class=\\"file__ArtistName-yu39to-0 bIUqnw\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span>. Gary Nader</span>",
+        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span>. Gary Nader</span>",
       }
     }
   />
@@ -40,7 +40,6 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 .c2 {
   margin-right: 30px;
-  white-space: nowrap;
 }
 
 .c0 {
@@ -60,12 +59,6 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
-}
-
-@media (max-width:600px) {
-  .c2 .artist-name {
-    margin-right: 30px;
-  }
 }
 
 @media (max-width:720px) {
@@ -143,7 +136,6 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 .c2 {
   margin-right: 30px;
-  white-space: nowrap;
 }
 
 .c0 {
@@ -167,19 +159,13 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.eylNHj .c1 {
+.fAhLye .c1 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.eylNHj .c1:after {
+.fAhLye .c1:after {
   content: ", ";
-}
-
-@media (max-width:600px) {
-  .c2 .artist-name {
-    margin-right: 30px;
-  }
 }
 
 @media (max-width:600px) {

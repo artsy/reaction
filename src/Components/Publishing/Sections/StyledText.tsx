@@ -6,7 +6,7 @@ import { ArticleLayout } from "../Typings"
 
 interface StyledTextProps {
   color?: string
-  isContentStart?: boolean
+  isContentStart: boolean
   layout: ArticleLayout
   postscript?: Boolean
 }
