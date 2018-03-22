@@ -12,6 +12,7 @@ interface Props extends React.HTMLProps<HTMLImageElement> {
   width?: string | number
   height?: string | number
   alt?: string
+  editing?: boolean
   index?: number
 }
 
@@ -55,10 +56,10 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
   }
 
   render() {
-    const { layout, linked, index, ...blockImageProps }: any = this.props
+    const { editing, layout, linked, index, ...imageProps }: any = this.props
     let className = "BlockImage__container"
 
-    if (this.state.isLoaded) {
+    if (this.state.isLoaded || editing) {
       className = className + " image-loaded"
     }
 
@@ -67,7 +68,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
         <BlockImage
           className={className}
           ref={ref => (this.image = ref)}
-          {...blockImageProps}
+          {...imageProps}
         />
 
         {layout !== "classic" &&
