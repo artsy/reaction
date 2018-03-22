@@ -7,6 +7,7 @@ import { ImageWrapper } from "./ImageWrapper"
 
 interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   editCaption?: any
+  editing?: boolean
   image?: any
   layout?: ArticleLayout
   linked?: boolean
@@ -18,6 +19,7 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
 export const Image: React.SFC<ImageProps> = props => {
   const {
     children,
+    editing,
     editCaption,
     height,
     image,
@@ -40,6 +42,7 @@ export const Image: React.SFC<ImageProps> = props => {
         height={height}
         alt={alt}
         index={image.index}
+        editing={editCaption || editing}
       />
 
       <Caption caption={caption} layout={layout} sectionLayout={sectionLayout}>
