@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
+import { NewsDateHeader } from "../News/NewsDateHeader"
 import { NewsHeadline } from "../News/NewsHeadline"
 
 import { NewsArticle } from "../Fixtures/Articles"
@@ -10,6 +11,13 @@ storiesOf("Publishing/News", module)
     return (
       <div>
         <NewsHeadline article={NewsArticle} />
+      </div>
+    )
+  })
+  .add("News Date Header", () => {
+    return (
+      <div>
+        <NewsDateHeader date={NewsArticle.published_at} />
       </div>
     )
   })
