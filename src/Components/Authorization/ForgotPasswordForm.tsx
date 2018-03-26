@@ -1,38 +1,58 @@
+import { Formik } from "formik"
 import React from "react"
+import Yup from "yup"
 
 import {
-  BlockButton,
-  FormContainer,
+  BlockButton as Button,
+  ChangeMode,
+  FormContainer as Form,
+  inputValidators,
   StyledInput as Input,
 } from "./commonElements"
 import { FormComponentType } from "./Types"
 
-const ForgotPasswordForm: FormComponentType = props => {
-  const { email } = props
+const LoginForm: FormComponentType = props => {
+  const { email: emailValidator } = inputValidators
   return (
-    <FormContainer>
-      We will send it right over 😎
-      <Input
-        block
-        value={email.value}
-        error={email.error.length > 0}
-        placeholder="Email"
-        onBlur={props.handleUpdateInput("email")}
-        // errorMessage={email.error}
-      />
-      <BlockButton>Sign Up</BlockButton>
-      <p>
-        Go back: {" "}
-        {/* <a onClick={props.handleChangeMode("register")} href="#">
-          Sign Up{" "}
-        </a>
-        or{" "} */}
-        <a onClick={props.handleChangeMode("log_in")} href="#">
-          Log In
-        </a>
-      </p>
-    </FormContainer>
+    <Formik
+      initialValues={props.values}
+      onSubmit={props.handleSubmit}
+      validationSchema={Yup.object().shape({
+        email: emailValidator,
+      })}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+      }) => {
+        return (
+          <Form onSubmit={handleSubmit}>
+            <Input
+              block
+              error={touched.email && errors.email}
+              name="email"
+              placeholder="Email"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {/* touched.email && errors.email && <div>{errors.email}</div */}
+            <Button type="submit" disabled={isSubmitting}>
+              Log In
+            </Button>
+            <ChangeMode handleClick={props.handleChangeMode("log_in")}>
+              Log In
+            </ChangeMode>
+          </Form>
+        )
+      }}
+    </Formik>
   )
 }
-
-export default ForgotPasswordForm
+export default LoginForm

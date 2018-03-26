@@ -1,58 +1,73 @@
+import { Formik } from "formik"
 import React from "react"
+import Yup from "yup"
 
 import {
-  BlockButton,
-  FormContainer,
+  BlockButton as Button,
+  ChangeMode,
+  FormContainer as Form,
+  inputValidators,
   StyledFacebookButton,
   StyledInput as Input,
-  StyledTwitterButton,
 } from "./commonElements"
 import { FormComponentType } from "./Types"
 
 const LoginForm: FormComponentType = props => {
-  const {
-    email,
-    password,
-    handleChangeMode,
-    handleSubmit,
-    handleUpdateInput,
-  } = props
+  const { email: emailValidator } = inputValidators
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <StyledFacebookButton>Log in with Facebook</StyledFacebookButton>
-      <StyledTwitterButton />
-      <Input
-        block
-        value={email.value}
-        placeholder="Email"
-        onChange={handleUpdateInput("email")}
-        error={email.error.length > 0}
-        // errorMessage={email.error}
-      />
-      <Input
-        block
-        value={password.value}
-        type="password"
-        placeholder="Password"
-        onChange={handleUpdateInput("password")}
-        error={password.error.length > 0}
-        // errorMessage={password.error}
-      />
-      <p>
-        Uh oh I{" "}
-        <a onClick={handleChangeMode("forgot_password")} href="#">
-          Forgot My Password
-        </a>
-      </p>
-      <BlockButton>Log In</BlockButton>
-      <p>
-        Don't have an account?{" "}
-        <a onClick={handleChangeMode("register")} href="#">
-          Sign Up
-        </a>
-      </p>
-    </FormContainer>
+    <Formik
+      initialValues={props.values}
+      onSubmit={props.handleSubmit}
+      validationSchema={Yup.object().shape({
+        email: emailValidator,
+        password: Yup.string().required("Please enter your password."),
+      })}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+      }) => {
+        return (
+          <Form onSubmit={handleSubmit}>
+            <Input
+              block
+              error={touched.email && errors.email}
+              name="email"
+              placeholder="Email"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <Input
+              block
+              error={touched.password && errors.password}
+              name="password"
+              placeholder="Password"
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <Button type="submit" disabled={isSubmitting}>
+              Log In
+            </Button>
+            <StyledFacebookButton>Log In with Facebook</StyledFacebookButton>
+            <ChangeMode handleClick={props.handleChangeMode("register")}>
+              Sign Up
+            </ChangeMode>
+            <ChangeMode handleClick={props.handleChangeMode("forgot_password")}>
+              Forgot Password
+            </ChangeMode>
+          </Form>
+        )
+      }}
+    </Formik>
   )
 }
-
 export default LoginForm
