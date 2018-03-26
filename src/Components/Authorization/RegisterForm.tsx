@@ -4,7 +4,7 @@ import {
   FormContainer,
   StyledButton,
   StyledFacebookButton,
-  StyledInput,
+  StyledInput as Input,
 } from "./commonElements"
 import { FormComponentType } from "./Types"
 
@@ -12,29 +12,30 @@ const RegisterForm: FormComponentType = props => {
   const { email, name, password } = props
   return (
     <FormContainer onSubmit={props.handleSubmit}>
-      <StyledInput
+      <Input
         block
         value={name.value}
         placeholder="Name"
         error={name.error.length > 0} // will cause field to turn red
         onChange={props.handleUpdateInput("name")}
-        errorMessage={name.error} // errorMessage will cause input to fail on form submission
+        // errorMessage={name.error} // errorMessage will cause input to fail on form submission
       />
-      <StyledInput
+      <Input
         block
         value={email.value}
         placeholder="Email"
         error={email.error.length > 0}
         onChange={props.handleUpdateInput("email")}
+        // errorMessage={password.error}
       />
-      <StyledInput
+      <Input
         block
         value={password.value}
         type="password"
         placeholder="Password"
         error={password.error.length > 0}
         onChange={props.handleUpdateInput("password")}
-        errorMessage={password.error}
+        // errorMessage={password.error}
       />
       <StyledButton type="submit">Sign Up</StyledButton>
       <StyledFacebookButton>Sign Up Using Facebook</StyledFacebookButton>

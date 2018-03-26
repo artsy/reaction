@@ -4,7 +4,7 @@ import {
   FormContainer,
   StyledButton,
   StyledFacebookButton,
-  StyledInput,
+  StyledInput as Input,
   StyledTwitterButton,
 } from "./commonElements"
 import { FormComponentType } from "./Types"
@@ -21,22 +21,22 @@ const LoginForm: FormComponentType = props => {
     <FormContainer onSubmit={handleSubmit}>
       <StyledFacebookButton>Log in with Facebook</StyledFacebookButton>
       <StyledTwitterButton />
-      <StyledInput
+      <Input
         block
         value={email.value}
         placeholder="Email"
         onChange={handleUpdateInput("email")}
         error={email.error.length > 0}
-        errorMessage={email.error}
+        // errorMessage={email.error}
       />
-      <StyledInput
+      <Input
         block
         value={password.value}
         type="password"
         placeholder="Password"
         onChange={handleUpdateInput("password")}
         error={password.error.length > 0}
-        errorMessage={password.error}
+        // errorMessage={password.error}
       />
       <p>
         Uh oh I{" "}

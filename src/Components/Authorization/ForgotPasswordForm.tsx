@@ -1,6 +1,10 @@
 import React from "react"
 
-import { FormContainer, StyledButton, StyledInput } from "./commonElements"
+import {
+  FormContainer,
+  StyledButton,
+  StyledInput as Input,
+} from "./commonElements"
 import { FormComponentType } from "./Types"
 
 const ForgotPasswordForm: FormComponentType = props => {
@@ -8,13 +12,13 @@ const ForgotPasswordForm: FormComponentType = props => {
   return (
     <FormContainer>
       We will send it right over 😎
-      <StyledInput
+      <Input
         block
         value={email.value}
         error={email.error.length > 0}
         placeholder="Email"
         onBlur={props.handleUpdateInput("email")}
-        errorMessage={email.error}
+        // errorMessage={email.error}
       />
       <StyledButton>Sign Up</StyledButton>
       <p>
