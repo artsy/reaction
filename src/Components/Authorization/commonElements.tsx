@@ -1,3 +1,4 @@
+import React from "react"
 import styled from "styled-components"
 
 import FacebookButton from "../Buttons/Facebook"
@@ -22,9 +23,9 @@ export const StyledFacebookButton = styled(FacebookButton)`
 export const StyledTwitterButton = styled(TwitterButton)`
   width: ${buttonWidth};
 `
-export const StyledButton = styled(InvertedButton)`
-  width: ${buttonWidth};
-`
+export const BlockButton = props => (
+  <InvertedButton block>{props.children}</InvertedButton>
+)
 
 export const StyledInput = styled(Input)`
   margin-bottom: 10px;

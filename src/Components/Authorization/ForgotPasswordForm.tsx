@@ -1,8 +1,8 @@
 import React from "react"
 
 import {
+  BlockButton,
   FormContainer,
-  StyledButton,
   StyledInput as Input,
 } from "./commonElements"
 import { FormComponentType } from "./Types"
@@ -20,7 +20,7 @@ const ForgotPasswordForm: FormComponentType = props => {
         onBlur={props.handleUpdateInput("email")}
         // errorMessage={email.error}
       />
-      <StyledButton>Sign Up</StyledButton>
+      <BlockButton>Sign Up</BlockButton>
       <p>
         Go back: {" "}
         {/* <a onClick={props.handleChangeMode("register")} href="#">

@@ -1,8 +1,8 @@
 import React from "react"
 
 import {
+  BlockButton,
   FormContainer,
-  StyledButton,
   StyledFacebookButton,
   StyledInput as Input,
   StyledTwitterButton,
@@ -44,7 +44,7 @@ const LoginForm: FormComponentType = props => {
           Forgot My Password
         </a>
       </p>
-      <StyledButton>Log In</StyledButton>
+      <BlockButton>Log In</BlockButton>
       <p>
         Don't have an account?{" "}
         <a onClick={handleChangeMode("register")} href="#">

@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
 import { FormComponentType, FormFields, Mode } from "./Types"
 
-type Validator = (val: string) => string
+type InputValidator = (val: string) => string
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   mode: Mode
@@ -49,7 +49,7 @@ class AuthForm extends React.Component<Props, State> {
   }
 
   validateField = (fieldName: string, value: string) => {
-    const validator: Validator = this.validators[fieldName] || (() => "")
+    const validator: InputValidator = this.validators[fieldName] || (() => "")
     return validator(value)
   }
 

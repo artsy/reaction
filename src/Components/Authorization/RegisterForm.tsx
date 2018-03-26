@@ -1,8 +1,8 @@
 import React from "react"
 
 import {
+  BlockButton,
   FormContainer,
-  StyledButton,
   StyledFacebookButton,
   StyledInput as Input,
 } from "./commonElements"
@@ -37,7 +37,7 @@ const RegisterForm: FormComponentType = props => {
         onChange={props.handleUpdateInput("password")}
         // errorMessage={password.error}
       />
-      <StyledButton type="submit">Sign Up</StyledButton>
+      <BlockButton type="submit">Sign Up</BlockButton>
       <StyledFacebookButton>Sign Up Using Facebook</StyledFacebookButton>
       <p>
         Already signed up?{" "}
