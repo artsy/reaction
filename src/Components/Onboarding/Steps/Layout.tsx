@@ -51,20 +51,11 @@ const ItemContainer = styled.div`
   padding-bottom: 50px;
 `
 
-/* MS IE11 and Edge don't support for the sticky position property */
-const FixedButttonContainer = styled.div`
+const StickyButtonContainer = styled.div`
   width: 100%;
   position: fixed;
-  bottom: 0px;
-  left: 0px;
-`
-
-/* Mobile safari doesn't support for the fixed position property:
- *   https://www.eventbrite.com/engineering/mobile-safari-why/
- **/
-const StickyButtonContainer = styled.div`
-  position: sticky;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
   background: linear-gradient(
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0.5) 17%,
@@ -100,17 +91,15 @@ export class Layout extends React.Component<Props, null> {
         <Subtitle titleSize="xxsmall">{this.props.subtitle}</Subtitle>
         <ItemContainer>{this.props.children}</ItemContainer>
 
-        <FixedButttonContainer>
-          <StickyButtonContainer>
-            <NextButton
-              disabled={disabled}
-              onClick={this.props.onNextButtonPressed}
-              state={this.props.buttonState}
-            >
-              {buttonText}
-            </NextButton>
-          </StickyButtonContainer>
-        </FixedButttonContainer>
+        <StickyButtonContainer>
+          <NextButton
+            disabled={disabled}
+            onClick={this.props.onNextButtonPressed}
+            state={this.props.buttonState}
+          >
+            {buttonText}
+          </NextButton>
+        </StickyButtonContainer>
       </Container>
     )
   }
