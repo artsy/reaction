@@ -5,7 +5,6 @@ import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
 import Icon from "../Icon"
 import Input from "../Input"
-// import ValidatedInput from "../ValidatedInput"
 import TextArea from "../TextArea"
 
 storiesOf("Components/Input", module)
@@ -50,13 +49,3 @@ storiesOf("Components/Input", module)
       <Button block>Submit</Button>
     </div>
   ))
-// .add("With Custom Validation", () => {
-//   // const validateOnBlur: (event: React.FocusEvent<HTMLInputElement>) => void = (
-//   //   e => e.target.value === 'cow' ?
-//   // )
-//   return (
-//     <div style={{ padding: 10 }}>
-//       <ValidatedInput placeholder="cow" block />
-//     </div>
-//   )
-// })
