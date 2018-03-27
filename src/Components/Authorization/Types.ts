@@ -1,6 +1,6 @@
 import { FormikProps } from "formik"
 
-export type Mode = "log_in" | "register" | "forgot_password"
+export type Mode = "login" | "register" | "reset_password"
 
 export interface InputValues {
   name?: string

@@ -56,6 +56,7 @@ export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
 interface ModeSelectorProps {
   handleClick: any
 }
+
 const ModeSelector: React.SFC<ModeSelectorProps> = props => (
   <a onClick={props.handleClick} href="#">
     {props.children}

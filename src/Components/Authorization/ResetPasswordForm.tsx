@@ -11,7 +11,7 @@ import {
 } from "./commonElements"
 import { FormComponentType, InputValues } from "./Types"
 
-const LoginForm: FormComponentType = props => {
+export const ResetPasswordForm: FormComponentType = props => {
   const { email: emailValidator } = inputValidators
   return (
     <Formik
@@ -46,7 +46,7 @@ const LoginForm: FormComponentType = props => {
             <Button type="submit" disabled={isSubmitting}>
               Log In
             </Button>
-            <ChangeMode handleClick={props.handleChangeMode("log_in")}>
+            <ChangeMode handleClick={props.handleChangeMode("login")}>
               Log In
             </ChangeMode>
           </Form>
@@ -55,4 +55,3 @@ const LoginForm: FormComponentType = props => {
     </Formik>
   )
 }
-export default LoginForm

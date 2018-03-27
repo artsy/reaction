@@ -1,8 +1,8 @@
 import React from "react"
 
-import ForgotPasswordForm from "./ForgotPasswordForm"
-import LoginForm from "./LoginForm"
-import RegisterForm from "./RegisterForm"
+import { LoginForm } from "./LoginForm"
+import { RegisterForm } from "./RegisterForm"
+import { ResetPasswordForm } from "./ResetPasswordForm"
 import { FormComponentType, InputValues, Mode, SubmitHandler } from "./Types"
 
 interface Props {
@@ -41,14 +41,14 @@ class AuthForm extends React.Component<Props, State> {
   render() {
     let Form: FormComponentType
     switch (this.state.mode) {
-      case "log_in":
+      case "login":
         Form = LoginForm
         break
       case "register":
         Form = RegisterForm
         break
-      case "forgot_password":
-        Form = ForgotPasswordForm
+      case "reset_password":
+        Form = ResetPasswordForm
         break
       default:
         throw new Error(`${this.state.mode} mode needs a component`)

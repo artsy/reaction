@@ -11,9 +11,9 @@ const submit = (values, actions) => {
 }
 
 storiesOf("Components/Authorization", module)
-  .add("Login Mode", () => <AuthForm mode="log_in" handleSubmit={submit} />)
+  .add("Login Mode", () => <AuthForm mode="login" handleSubmit={submit} />)
   .add("Forgot Password", () => (
-    <AuthForm mode="forgot_password" handleSubmit={submit} />
+    <AuthForm mode="reset_password" handleSubmit={submit} />
   ))
   .add("Register Mode", () => (
     <AuthForm mode="register" handleSubmit={submit} />

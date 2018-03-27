@@ -13,7 +13,7 @@ import {
 } from "./commonElements"
 import { FormComponentType, InputValues } from "./Types"
 
-const RegisterForm: FormComponentType = props => {
+export const RegisterForm: FormComponentType = props => {
   return (
     <Formik
       initialValues={props.values}
@@ -84,7 +84,7 @@ const RegisterForm: FormComponentType = props => {
             <StyledFacebookButton>Sign up with Facebook</StyledFacebookButton>
             <p>
               Already have an account?
-              <ChangeMode handleClick={props.handleChangeMode("log_in")}>
+              <ChangeMode handleClick={props.handleChangeMode("login")}>
                 Log In
               </ChangeMode>
             </p>
@@ -94,4 +94,3 @@ const RegisterForm: FormComponentType = props => {
     </Formik>
   )
 }
-export default RegisterForm
