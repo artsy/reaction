@@ -28,8 +28,18 @@ storiesOf("Components/Input", module)
     </div>
   ))
   .add("Input with Label", () => (
-    <div style={{ padding: 10 }}>
-      <Input placeholder="Enter your email address" label="Email" block />
+    <div>
+      <div style={{ padding: 5 }}>
+        <Input placeholder="Enter your email address" label="Email" block />
+      </div>
+      <div style={{ padding: 5 }}>
+        <Input
+          type="password"
+          placeholder="Enter your password"
+          label="Password"
+          block
+        />
+      </div>
     </div>
   ))
   .add("Text Areas", () => (

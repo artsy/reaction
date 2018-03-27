@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { fadeIn, fadeOut } from "../Assets/Animations"
 import * as fonts from "../Assets/Fonts"
 import { block } from "./Helpers"
 import { border, borderedInput } from "./Mixins"
@@ -30,16 +31,10 @@ const BorderlessInput = styled.input`
   flex: 1;
 `
 
-interface StyledDivProps {
-  hasLabel?: boolean
-}
-
-const StyledDiv = styled.div.attrs<StyledDivProps>({
-  hasLabel: false,
-})`
+const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
   ${borderedInput};
   border: 0;
-  padding: ${p => (p.hasLabel ? "15px" : "12px")};
+  padding: ${p => (p.hasLabel ? "16px" : "12px")};
   margin-right: 0;
   display: flex;
   position: relative;
@@ -55,12 +50,15 @@ const StyledDiv = styled.div.attrs<StyledDivProps>({
   }
 `
 
-const Label = styled.label`
+const Label = styled.label.attrs<{ out: boolean }>({})`
   ${fonts.primary.style};
   font-size: 8px;
   position: absolute;
-  left: 16px;
+  left: 17px;
   top: 8px;
+  visibility: ${props => (props.out ? "hidden" : "visible")};
+  animation: ${props => (props.out ? fadeOut : fadeIn)} 0.2s linear;
+  transition: visibility 0.2s linear;
 `
 
 const BorderClassname = "border-container"
@@ -105,9 +103,9 @@ class Input extends React.Component<InputProps, InputState> {
       const { className, ref, ...newProps } = this.props
 
       return (
-        <StyledDiv hasLabel={showLabel}>
+        <StyledDiv hasLabel={!!label}>
           <div className={this.state.borderClasses} />
-          {showLabel && <Label>{label}</Label>}
+          <Label out={!showLabel}>{label}</Label>
           {!!leftView && leftView}
           <BorderlessInput
             {...newProps}
