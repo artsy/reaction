@@ -8,6 +8,7 @@ import { ImageWrapper } from "./ImageWrapper"
 
 interface ArtworkProps {
   artwork: any
+  editing?: boolean
   layout?: ArticleLayout
   sectionLayout?: SectionLayout
   linked?: boolean
@@ -23,7 +24,15 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
   }
 
   render() {
-    const { artwork, children, linked, height, width, layout } = this.props
+    const {
+      artwork,
+      children,
+      editing,
+      linked,
+      height,
+      width,
+      layout,
+    } = this.props
     const src = resize(artwork.image, {
       width: 1200,
       quality: GLOBAL_IMAGE_QUALITY,
@@ -31,6 +40,7 @@ export class Artwork extends React.PureComponent<ArtworkProps, null> {
 
     const Image = () => (
       <ImageWrapper
+        editing={editing}
         layout={layout}
         linked={linked}
         src={src}

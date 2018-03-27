@@ -8,12 +8,12 @@ import { Artwork } from "../Artwork"
 import { ViewFullscreen } from "../ViewFullscreen"
 
 jest.mock("react-lines-ellipsis/lib/html", () => {
-  const React = require('react')
+  const React = require("react")
   return () => <div />
 })
 
-jest.mock('react-dom/server', () => ({
-  renderToStaticMarkup: (x) => x
+jest.mock("react-dom/server", () => ({
+  renderToStaticMarkup: x => x,
 }))
 
 it("renders properly", () => {
@@ -22,27 +22,28 @@ it("renders properly", () => {
 })
 
 it("renders a fullscreen button if linked", () => {
-  const component = mount(
-    <Artwork artwork={Images[0]} linked />
-  )
+  const component = mount(<Artwork artwork={Images[0]} linked />)
   expect(component.find(ViewFullscreen).length).toBe(1)
 })
 
 it("does not render a fullscreen button if not linked", () => {
-  const component = mount(
-    <Artwork
-      artwork={Images[0]}
-      linked={false}
-    />
-  )
+  const component = mount(<Artwork artwork={Images[0]} linked={false} />)
   expect(component.find(ViewFullscreen).length).toBe(0)
 })
 
 it("renders a child if present", () => {
   const component = mount(
-    <Artwork artwork={Images[0]}>
-      {EditableChild('A React child.')}
-    </Artwork>
+    <Artwork artwork={Images[0]}>{EditableChild("A React child.")}</Artwork>
   )
-  expect(component.text()).toMatch('A React child.')
+  expect(component.text()).toMatch("A React child.")
+})
+
+it("adds imagesLoaded class if props.editing", () => {
+  const component = mount(<Artwork artwork={Images[0]} editing />)
+  expect(component.html()).toMatch("BlockImage__container image-loaded")
+})
+
+it("does not add imagesLoaded class if props.editing is false", () => {
+  const component = mount(<Artwork artwork={Images[0]} />)
+  expect(component.html()).not.toMatch("BlockImage__container image-loaded")
 })
