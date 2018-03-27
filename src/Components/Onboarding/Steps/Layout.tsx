@@ -63,7 +63,7 @@ const FixedButttonContainer = styled.div`
  *   https://www.eventbrite.com/engineering/mobile-safari-why/
  **/
 const StickyButtonContainer = styled.div`
-  position: sticky;
+  position: -webkit-sticky;
   bottom: 0px;
   background: linear-gradient(
     rgba(255, 255, 255, 0) 0%,
