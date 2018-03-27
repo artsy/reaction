@@ -3,15 +3,12 @@ import React from "react"
 import ForgotPasswordForm from "./ForgotPasswordForm"
 import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
-import { FormComponentType, InputErrors, InputValues, Mode } from "./Types"
+import { FormComponentType, InputValues, Mode, SubmitHandler } from "./Types"
 
-interface Props extends React.HTMLProps<HTMLFormElement> {
+interface Props {
   mode: Mode
-  values?: InputValues
-  errors?: InputErrors
-  handleSubmit: () => void
-  // signupIntent?: string
-  // destination?: string
+  values?: InputValues // necessary?
+  handleSubmit: SubmitHandler
 }
 
 interface State extends React.HTMLProps<HTMLFormElement> {
@@ -20,10 +17,7 @@ interface State extends React.HTMLProps<HTMLFormElement> {
 
 class AuthForm extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
-    errors: {},
     values: {},
-    // signupIntent: "sign_up",
-    // destination: "/personalize",
   }
 
   constructor(props: Props) {
@@ -45,7 +39,6 @@ class AuthForm extends React.Component<Props, State> {
   }
 
   render() {
-    const { values, errors } = this.props
     let Form: FormComponentType
     switch (this.state.mode) {
       case "log_in":
@@ -62,7 +55,7 @@ class AuthForm extends React.Component<Props, State> {
     }
     return (
       <Form
-        {...{ errors, values }}
+        values={this.props.values}
         handleChangeMode={this.handleChangeMode}
         handleSubmit={this.props.handleSubmit}
       />

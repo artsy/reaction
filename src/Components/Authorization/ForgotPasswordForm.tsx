@@ -1,4 +1,4 @@
-import { Formik } from "formik"
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import Yup from "yup"
 
@@ -9,7 +9,7 @@ import {
   inputValidators,
   StyledInput as Input,
 } from "./commonElements"
-import { FormComponentType } from "./Types"
+import { FormComponentType, InputValues } from "./Types"
 
 const LoginForm: FormComponentType = props => {
   const { email: emailValidator } = inputValidators
@@ -29,7 +29,7 @@ const LoginForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-      }) => {
+      }: FormikProps<InputValues>) => {
         return (
           <Form onSubmit={handleSubmit}>
             <Input

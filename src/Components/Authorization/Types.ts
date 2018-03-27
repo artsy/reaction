@@ -1,27 +1,22 @@
-export type Mode = "log_in" | "register" | "forgot_password"
+import { FormikProps } from "formik"
 
-export interface FormField {
-  value: string
-  error: string
-  // dismissed: boolean
-}
+export type Mode = "log_in" | "register" | "forgot_password"
 
 export interface InputValues {
   name?: string
   email?: string
   password?: string
-  acceptedTermsOfService?: string
+  acceptedTermsOfService?: boolean
 }
-export interface InputErrors extends InputValues {}
 
-export interface FormikFormProps {
+export type SubmitHandler = (
+  values: InputValues,
+  formikBag: FormikProps<InputValues>
+) => void
+export interface FormProps {
   values: InputValues
-  errors: InputErrors
-  handleSubmit: any
+  handleSubmit: SubmitHandler
   handleChangeMode: (mode: Mode) => (event) => void
 }
 
-export type FormComponentType = React.SFC<FormikFormProps>
-// Confusing bit here- can't use the type alias format above with a react class?:
-// type FormComponentType = React.ComponentClass<FormProps>
-//  class LoginForm extends FormComponentType { ... } => ERROR: only refers to a type, but is being used as a value here
+export type FormComponentType = React.SFC<FormProps>

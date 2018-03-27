@@ -1,4 +1,4 @@
-import { Formik } from "formik"
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import Yup from "yup"
 
@@ -11,7 +11,7 @@ import {
   StyledInput as Input,
   TOSCheckbox,
 } from "./commonElements"
-import { FormComponentType } from "./Types"
+import { FormComponentType, InputValues } from "./Types"
 
 const RegisterForm: FormComponentType = props => {
   return (
@@ -28,7 +28,7 @@ const RegisterForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-      }) => {
+      }: FormikProps<InputValues>) => {
         return (
           <FormContainer onSubmit={handleSubmit}>
             <Input

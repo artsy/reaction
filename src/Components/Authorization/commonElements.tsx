@@ -31,11 +31,11 @@ export const FormContainer = styled.form`
 
 const buttonWidth = "100%"
 
-export const StyledFacebookButton = styled(FacebookButton)`
+export const StyledFacebookButton = FacebookButton.extend`
   width: ${buttonWidth};
   background: #4e65b1;
 `
-export const StyledTwitterButton = styled(TwitterButton)`
+export const StyledTwitterButton = TwitterButton.extend`
   width: ${buttonWidth};
 `
 export const BlockButton = props => (
@@ -49,7 +49,7 @@ export const StyledInput = styled(Input)`
 export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
   <div>
     <Checkbox id="accepted-tos" {...{ error, errorMessage, checked: value }} />
-    <label htmlFor="accepted-tos">{props.children}</label>
+    <label htmlFor="accepted-tos">{props.children} - I don't work :(</label>
   </div>
 )
 
