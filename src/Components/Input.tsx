@@ -7,12 +7,14 @@ import { border, borderedInput } from "./Mixins"
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: boolean
   block?: boolean
+  label?: string
   leftView?: JSX.Element
   rightView?: JSX.Element
 }
 
 interface InputState {
   borderClasses: string
+  value: string
 }
 
 const StyledInput = styled.input`
@@ -21,30 +23,44 @@ const StyledInput = styled.input`
 `
 
 const BorderlessInput = styled.input`
-  border: 0;
   ${fonts.secondary.style};
+  border: 0;
   font-size: 17px;
   outline: none;
   flex: 1;
 `
 
-const StyledDiv = styled.div`
+interface StyledDivProps {
+  hasLabel?: boolean
+}
+
+const StyledDiv = styled.div.attrs<StyledDivProps>({
+  hasLabel: false,
+})`
   ${borderedInput};
   border: 0;
-  padding: 12px;
+  padding: ${p => (p.hasLabel ? "15px" : "12px")};
   margin-right: 0;
   display: flex;
   position: relative;
 
   & .border-container {
-    z-index: -1;
     ${border};
+    z-index: -1;
     position: absolute;
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     top: 0;
     left: 0;
   }
+`
+
+const Label = styled.label`
+  ${fonts.primary.style};
+  font-size: 8px;
+  position: absolute;
+  left: 16px;
+  top: 8px;
 `
 
 const BorderClassname = "border-container"
@@ -75,51 +91,32 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
+  onChange(e: React.FocusEvent<HTMLInputElement>) {
+    this.setState({
+      value: e.currentTarget.value,
+    })
+  }
+
   render() {
-    if (this.props.leftView && this.props.rightView) {
+    const { leftView, rightView, label } = this.props
+    const showLabel = !!this.state.value && !!label
+
+    if (leftView || rightView || label) {
       const { className, ref, ...newProps } = this.props
 
       return (
-        <StyledDiv>
+        <StyledDiv hasLabel={showLabel}>
           <div className={this.state.borderClasses} />
-          {this.props.leftView}
+          {showLabel && <Label>{label}</Label>}
+          {!!leftView && leftView}
           <BorderlessInput
             {...newProps}
             onFocus={this.onFocus.bind(this)}
             onBlur={this.onBlur.bind(this)}
+            onKeyUp={this.onChange.bind(this)}
             value={this.props.value}
           />
-          {this.props.rightView}
-        </StyledDiv>
-      )
-    } else if (this.props.rightView) {
-      const { className, ref, ...newProps } = this.props
-
-      return (
-        <StyledDiv>
-          <div className={this.state.borderClasses} />
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-            value={this.props.value}
-          />
-          {this.props.rightView}
-        </StyledDiv>
-      )
-    } else if (this.props.leftView) {
-      const { className, ref, ...newProps } = this.props
-
-      return (
-        <StyledDiv>
-          <div className={this.state.borderClasses} />
-          {this.props.leftView}
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-            value={this.props.value}
-          />
+          {!!rightView && rightView}
         </StyledDiv>
       )
     }
