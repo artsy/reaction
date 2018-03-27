@@ -23,9 +23,6 @@ export const NewsHeadline: React.SFC<NewsHeadlineProps> = props => {
 
 const NewsHeadlineParent = styled.div`
   margin: 0;
-  ${pMedia.sm`
-    margin: 0 20px;
-  `};
 `
 
 const NewsHeadlineContainer = styled.div`
