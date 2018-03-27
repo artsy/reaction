@@ -122,6 +122,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "formik": "^0.11.11",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonp": "^0.2.1",
@@ -145,7 +146,8 @@
     "react-waypoint": "^7.3.3",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
     "sharify": "^0.1.6",
-    "superagent": "^3.6.3"
+    "superagent": "^3.6.3",
+    "yup": "^0.24.1"
   },
   "prettier": {
     "semi": false,
