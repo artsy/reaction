@@ -46,7 +46,7 @@ export class NewsLayout extends Component<Props, State> {
   }
 
   render() {
-    const { article, marginTop } = this.props
+    const { article, isMobile, marginTop } = this.props
     const { isTruncated, isHovered } = this.state
 
     return (
@@ -54,11 +54,15 @@ export class NewsLayout extends Component<Props, State> {
         isTruncated={isTruncated}
         isHovered={isHovered}
         marginTop={marginTop}
-        onMouseOver={() => {
-          this.setState({ isHovered: true })
+        onMouseEnter={() => {
+          if (!isMobile) {
+            this.setState({ isHovered: true })
+          }
         }}
         onMouseLeave={() => {
-          this.setState({ isHovered: false })
+          if (!isMobile) {
+            this.setState({ isHovered: false })
+          }
         }}
       >
         <NewsHeadline article={article} />
@@ -75,7 +79,7 @@ export class NewsLayout extends Component<Props, State> {
   }
 }
 
-const ExpandButton = styled.button`
+export const ExpandButton = styled.button`
   width: 80px;
   height: 30px;
   background-color: black;
@@ -85,13 +89,13 @@ const ExpandButton = styled.button`
   color: white;
   border-radius: 2px;
   border: none;
-  line-height: 2em;
   display: block;
   opacity: 0;
   cursor: pointer;
   padding: 0;
   transition: opacity 0.25s ease;
   ${Fonts.unica("s14", "medium")};
+  line-height: 1em;
 
   &:focus {
     outline: 0;

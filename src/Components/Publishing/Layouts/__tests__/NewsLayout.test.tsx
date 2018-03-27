@@ -4,7 +4,7 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsSectionContainer } from "../../News/NewsSections"
-import { NewsLayout } from "../NewsLayout"
+import { ExpandButton, NewsLayout } from "../NewsLayout"
 
 describe("News Layout", () => {
   it("renders the news layout properly", () => {
@@ -21,7 +21,7 @@ describe("News Layout", () => {
 
   it("expands the article on click", () => {
     const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
-    component.simulate("click")
+    component.find(ExpandButton).simulate("click")
     expect(component.find(NewsSectionContainer).length).toEqual(9)
   })
 
@@ -30,8 +30,22 @@ describe("News Layout", () => {
     const component = mount(
       <NewsLayout article={NewsArticle} onExpand={onExpand} isTruncated />
     )
-    component.simulate("click")
+    component.find(ExpandButton).simulate("click")
     expect(onExpand).toBeCalled()
+  })
+
+  it("sets a hover state onMouseEnter if desktop", () => {
+    const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
+    component.simulate("mouseenter")
+    expect(component.state("isHovered")).toBe(true)
+  })
+
+  it("only uses hover state from props if mobile", () => {
+    const component = mount(
+      <NewsLayout article={NewsArticle} isTruncated isHovered isMobile />
+    )
+    component.simulate("mouseleave")
+    expect(component.state("isHovered")).toBe(true)
   })
 
   it("renders the news layout on mobile", () => {

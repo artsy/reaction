@@ -13,7 +13,7 @@ export class IconShareArrow extends Component<any> {
         <defs>
           <polygon points="0 -7.70894103e-05 11.9316857 -7.70894103e-05 11.9316857 11.9962747 0 11.9962747" />
         </defs>
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g transform="translate(-323.000000, -1.000000)">
             <g transform="translate(323.000000, 1.000000)">
               <g>

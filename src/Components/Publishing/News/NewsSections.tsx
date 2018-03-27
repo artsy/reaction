@@ -114,7 +114,7 @@ export const NewsSectionContainer = styled(Row)`
   margin-bottom: 20px;
 
   ${pMedia.sm`
-    margin: 0;
+    margin: 0 0 15px 0;
     padding: 0;
   `};
 `
