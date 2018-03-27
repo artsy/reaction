@@ -69,7 +69,7 @@ class Input extends React.Component<InputProps, InputState> {
     value: "",
   }
 
-  onFocus(e: React.FocusEvent<HTMLInputElement>) {
+  onFocus = e => {
     this.setState({
       borderClasses: `${BorderClassname} focused`,
     })
@@ -79,7 +79,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  onBlur(e: React.FocusEvent<HTMLInputElement>) {
+  onBlur = e => {
     this.setState({
       borderClasses: BorderClassname,
     })
@@ -89,7 +89,7 @@ class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  onChange(e: React.FocusEvent<HTMLInputElement>) {
+  onChange = e => {
     this.setState({
       value: e.currentTarget.value,
     })
@@ -109,9 +109,9 @@ class Input extends React.Component<InputProps, InputState> {
           {!!leftView && leftView}
           <BorderlessInput
             {...newProps}
-            onFocus={this.onFocus.bind(this)}
-            onBlur={this.onBlur.bind(this)}
-            onKeyUp={this.onChange.bind(this)}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onKeyUp={this.onChange}
             value={this.props.value}
           />
           {!!rightView && rightView}
