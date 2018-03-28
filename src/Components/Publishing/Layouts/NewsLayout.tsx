@@ -9,6 +9,8 @@ interface Props {
   article: ArticleData
   isMobile?: boolean
   isTruncated?: boolean
+  marginTop?: string
+  onExpand?: any
 }
 
 interface State {
@@ -17,6 +19,7 @@ interface State {
 
 interface NewsContainerProps {
   isTruncated: boolean
+  marginTop?: string
 }
 
 export class NewsLayout extends Component<Props, State> {
@@ -28,17 +31,23 @@ export class NewsLayout extends Component<Props, State> {
     }
   }
 
+  onExpand = () => {
+    const { onExpand } = this.props
+    if (onExpand) {
+      onExpand()
+    }
+    this.setState({ isTruncated: false })
+  }
+
   render() {
-    const { article } = this.props
+    const { article, marginTop } = this.props
     const { isTruncated } = this.state
 
     return (
       <NewsContainer
-        onClick={() =>
-          this.setState({
-            isTruncated: false,
-          })}
+        onClick={this.onExpand}
         isTruncated={isTruncated}
+        marginTop={marginTop}
       >
         <NewsHeadline article={article} />
         <NewsSections {...this.props} isTruncated={isTruncated} />
@@ -53,10 +62,13 @@ const NewsContainer = styled.div`
   padding: 20px 30px 30px;
   margin: 40px auto;
   transition: all 0.5s ease;
-
   ${(props: NewsContainerProps) =>
-    props.isTruncated &&
+    props.marginTop &&
     `
+    margin-top: ${props.marginTop};
+  `} ${(props: NewsContainerProps) =>
+      props.isTruncated &&
+      `
     &:hover {
       border-radius: 4px;
       box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
