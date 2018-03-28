@@ -16,7 +16,12 @@ export type SectionLayout =
 
 export type BylineLayout = "fullscreen" | "condensed" | "standard" | "split"
 
-export type DateFormat = "monthYear" | "condensed" | "verbose" | "default"
+export type DateFormat =
+  | "monthYear"
+  | "condensed"
+  | "verbose"
+  | "news"
+  | "default"
 
 // TODO: Make some of these non-optional ;)
 export type ArticleData = {

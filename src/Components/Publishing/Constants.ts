@@ -69,6 +69,11 @@ export const getAuthorByline = authors => {
 }
 
 export const getDate = (date, format: DateFormat = "default") => {
+  const today = moment()
+  const isToday = today.isSame(moment(date), "day")
+  const isThisYear =
+    moment(date).format("YYYY") === moment(today).format("YYYY")
+
   switch (format) {
     case "monthYear":
       return moment(date)
@@ -79,17 +84,25 @@ export const getDate = (date, format: DateFormat = "default") => {
         .tz("America/New_York")
         .format("MMM D, YYYY")
     case "verbose":
-      const today = moment()
-      const day = today.isSame(moment(date), "day")
+      const day = isToday
         ? "Today"
         : moment(date)
             .tz("America/New_York")
             .format("MMM D, YYYY")
-
       const time = moment(date)
         .tz("America/New_York")
         .format("h:mm a")
       return `${day} at ${time}`
+    case "news":
+      return isToday
+        ? "Today"
+        : isThisYear
+          ? moment(date)
+              .tz("America/New_York")
+              .format("MMM D")
+          : moment(date)
+              .tz("America/New_York")
+              .format("MMM D, YYYY")
     default:
       return moment(date)
         .tz("America/New_York")
