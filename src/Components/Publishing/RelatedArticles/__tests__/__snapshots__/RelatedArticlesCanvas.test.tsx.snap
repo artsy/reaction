@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the related articles canvas 1`] = `
+exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 .c10 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
