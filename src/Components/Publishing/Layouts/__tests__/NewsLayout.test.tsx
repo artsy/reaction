@@ -25,6 +25,15 @@ describe("News Layout", () => {
     expect(component.find(NewsSectionContainer).length).toEqual(9)
   })
 
+  it("Calls props.onExpand on click if provided", () => {
+    const onExpand = jest.fn()
+    const component = mount(
+      <NewsLayout article={NewsArticle} onExpand={onExpand} isTruncated />
+    )
+    component.simulate("click")
+    expect(onExpand).toBeCalled()
+  })
+
   it("renders the news layout on mobile", () => {
     const component = renderer.create(
       <NewsLayout article={NewsArticle} isMobile />
