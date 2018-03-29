@@ -12,4 +12,13 @@ describe("DateSource", () => {
     )
     expect(component.text()).toMatch("Child source")
   })
+
+  it("does not render unnecessary text if it doesn't have a source", () => {
+    const article = NewsArticle
+    article.news_source = {}
+
+    const component = mount(<DateSource article={NewsArticle} />)
+
+    expect(component.html()).not.toContain("via")
+  })
 })
