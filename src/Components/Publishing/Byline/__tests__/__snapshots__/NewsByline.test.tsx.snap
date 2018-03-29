@@ -110,9 +110,9 @@ exports[`News Byline renders on mobile 1`] = `
       </defs>
       <g
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
       >
         <g
           transform="translate(-323.000000, -1.000000)"
