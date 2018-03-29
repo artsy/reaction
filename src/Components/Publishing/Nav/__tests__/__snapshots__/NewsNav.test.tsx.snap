@@ -38,7 +38,7 @@ exports[`NewsNav renders NewsNav 1`] = `
 
 .c0 {
   position: fixed;
-  top: 52px;
+  top: 0px;
   left: 0;
   right: 0;
   border-bottom: 1px solid #e5e5e5;
