@@ -5,13 +5,14 @@ import { pMedia } from "../../Helpers"
 import { NewsDateHeader, NewsText } from "../News/NewsDateHeader"
 
 interface Props {
-  date: string
+  date?: string
+  positionTop?: number
 }
 
 export const NewsNav: React.SFC<Props> = props => {
-  const { date } = props
+  const { date, positionTop } = props
   return (
-    <NewsNavContainer>
+    <NewsNavContainer positionTop={positionTop}>
       <MaxWidthContainer>
         {date && <NewsDateHeader date={date} />}
         <Title>The News</Title>
@@ -43,7 +44,7 @@ const MaxWidthContainer = styled.div`
 
 const NewsNavContainer = styled.div`
   position: fixed;
-  top: 52px;
+  top: ${(props: Props) => (props.positionTop ? props.positionTop : 0)}px;
   left: 0;
   right: 0;
   border-bottom: 1px solid ${colors.grayRegular};
