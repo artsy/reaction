@@ -1,16 +1,18 @@
+import { isFunction } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
 import sizeMe from "react-sizeme"
 import styled, { StyledFunction } from "styled-components"
 import { fadeIn, fadeOut } from "../Assets/Animations"
+import { secondary as secondaryFont } from "../Assets/Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   show?: boolean
-  maxWidth?: string
   minWidth?: string
   anchorRef?: HTMLElement
   dismissOnClick?: boolean
   message?: (() => any) | string
+  maxWidth?: string
   // dismissOnTimeout?: boolean
 }
 
@@ -18,6 +20,92 @@ interface PositionProps {
   top: number
   left: number
   width: number
+}
+
+export class Popover extends React.Component<Props, any> {
+  public messageRef
+
+  static defaultProps = {
+    show: false,
+    dismissOnClick: true,
+  }
+
+  constructor(props) {
+    super(props)
+    const message = this.getMessage(props.message)
+    const show = props.show && message
+    const anchorPosition = this.getAnchorPosition(props.anchorRef)
+    this.state = {
+      show,
+      message,
+      anchorPosition,
+    }
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    const newMessage = this.getMessage(nextProps.message)
+    const show = nextProps.show && newMessage
+    const anchorPosition = this.getAnchorPosition(nextProps.anchorRef)
+    this.setState({
+      show,
+      message: newMessage,
+      anchorPosition,
+    })
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll)
+  }
+
+  dismiss = () => {
+    this.setState({ show: false })
+  }
+
+  getAnchorPosition: (ref: any) => PositionProps = ref => {
+    if (ref) {
+      const anchor = ReactDOM.findDOMNode(ref)
+      const rect = anchor.getBoundingClientRect()
+      const { top, left, width, height } = rect
+      return { width, left, top: top + height }
+    }
+  }
+
+  getMessage = message => (isFunction(message) ? message() : message) || ""
+
+  handleClick = e => {
+    if (this.props.dismissOnClick) this.dismiss()
+  }
+
+  handleScroll = () => {
+    const anchorPosition = this.getAnchorPosition(this.props.anchorRef)
+    this.setState({ anchorPosition })
+  }
+
+  render() {
+    return (
+      <Container
+        maxWidth={this.props.maxWidth}
+        minWidth={this.props.minWidth}
+        anchorPosition={this.state.anchorPosition}
+      >
+        <Tip show={this.state.show} anchorPosition={this.state.anchorPosition}>
+          <Arrow anchorPosition={this.state.anchorPosition} />
+          <Message
+            ref={r => (this.messageRef = r)}
+            anchorPosition={this.state.anchorPosition}
+            onClick={this.props.dismissOnClick ? this.dismiss : () => null}
+            minWidth={this.props.minWidth}
+          >
+            {this.state.message}
+          </Message>
+        </Tip>
+      </Container>
+    )
+  }
 }
 
 const Positionable: StyledFunction<
@@ -54,14 +142,7 @@ const Arrow = Positionable`
   left: ${({ anchorPosition }) =>
     anchorPosition && anchorPosition.width / 2 - 10}px;
 `
-// or:
-// width: 12px;
-// height: 12px;
-// transform: rotate(-45deg);
-// background: #000;
 
-// ${/*props => (props.size && console.log(props.size)) ||*/ ""}
-// ${/*props => (props.anchorPosition && console.log(props.anchorPosition)) ||*/ ""}
 const SizelessMessage = Positionable`
   position: absolute;
   top: 10px;
@@ -70,7 +151,9 @@ const SizelessMessage = Positionable`
   padding: 13px 15px;
   background: #000;
   color: #fff;
-  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  ${props => secondaryFont.style};
+  // font-size: 15px;
   cursor: default;
   ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
   & span {
@@ -78,91 +161,3 @@ const SizelessMessage = Positionable`
   }
 `
 const Message = sizeMe(sizeMeOptions)(SizelessMessage)
-
-export class Popover extends React.Component<Props, any> {
-  public messageRef
-
-  static defaultProps = {
-    show: false,
-    dismissOnClick: true,
-    minWidth: "200px",
-  }
-
-  constructor(props) {
-    super(props)
-    const message = this.getMessage(props.message)
-    const show = props.show && message
-    const anchorPosition = this.getAnchorPosition(props.anchorRef)
-    this.state = {
-      show,
-      message,
-      anchorPosition,
-    }
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    const newMessage = this.getMessage(nextProps.message)
-    const show = nextProps.show && newMessage
-    const anchorPosition = this.getAnchorPosition(nextProps.anchorRef)
-    this.setState({
-      show,
-      message: newMessage,
-      anchorPosition,
-    })
-  }
-
-  getAnchorPosition: (ref: any) => PositionProps = ref => {
-    if (ref) {
-      const anchor = ReactDOM.findDOMNode(ref)
-      const rect = anchor.getBoundingClientRect()
-      const { top, left, width, height } = rect
-      return { width, left, top: top + height }
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll)
-  }
-
-  handleScroll = () => {
-    const anchorPosition = this.getAnchorPosition(this.props.anchorRef)
-    this.setState({ anchorPosition })
-  }
-
-  getMessage = message =>
-    (typeof message === "function" ? message() : message) || ""
-
-  dismiss = () => {
-    this.setState({ show: false })
-  }
-
-  handleClick = e => {
-    if (this.props.dismissOnClick) this.dismiss()
-  }
-
-  render() {
-    return (
-      <Container
-        maxWidth={this.props.maxWidth}
-        minWidth={this.props.minWidth}
-        anchorPosition={this.state.anchorPosition}
-      >
-        <Tip show={this.state.show} anchorPosition={this.state.anchorPosition}>
-          <Arrow anchorPosition={this.state.anchorPosition} />
-          <Message
-            ref={r => (this.messageRef = r)}
-            anchorPosition={this.state.anchorPosition}
-            onClick={this.props.dismissOnClick ? this.dismiss : () => null}
-            minWidth={this.props.minWidth}
-          >
-            {this.state.message}
-          </Message>
-        </Tip>
-      </Container>
-    )
-  }
-}
