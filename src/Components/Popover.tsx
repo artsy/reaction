@@ -12,14 +12,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   anchorRef?: HTMLElement
   dismissOnClick?: boolean
   message?: (() => any) | string
-  maxWidth?: string
-  // dismissOnTimeout?: boolean
-}
-
-interface PositionProps {
-  top: number
-  left: number
-  width: number
 }
 
 export class Popover extends React.Component<Props, any> {
@@ -87,11 +79,7 @@ export class Popover extends React.Component<Props, any> {
 
   render() {
     return (
-      <Container
-        maxWidth={this.props.maxWidth}
-        minWidth={this.props.minWidth}
-        anchorPosition={this.state.anchorPosition}
-      >
+      <Container anchorPosition={this.state.anchorPosition}>
         <Tip show={this.state.show} anchorPosition={this.state.anchorPosition}>
           <Arrow anchorPosition={this.state.anchorPosition} />
           <Message
@@ -108,8 +96,14 @@ export class Popover extends React.Component<Props, any> {
   }
 }
 
+interface PositionProps {
+  top: number
+  left: number
+  width: number
+}
+
 const Positionable: StyledFunction<
-  { anchorPosition: PositionProps; ownWidth?: number; size?: any } & Props &
+  { anchorPosition: PositionProps; size?: any } & Props &
     React.HTMLProps<HTMLDivElement>
 > =
   styled.div
@@ -151,10 +145,11 @@ const SizelessMessage = Positionable`
   padding: 13px 15px;
   background: #000;
   color: #fff;
-  text-align: center;
   ${props => secondaryFont.style};
-  // font-size: 15px;
+  text-align: center;
+  font-size: 15px;
   cursor: default;
+  white-space: ${({ minWidth }) => (minWidth ? "normal" : "nowrap")};
   ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
   & span {
     cursor: pointer;
