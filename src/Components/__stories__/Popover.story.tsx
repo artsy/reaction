@@ -64,7 +64,6 @@ class InputWithError extends React.Component<any, any> {
           onBlur={this.onBlur}
         />
         <Popover
-          minWidth="200px"
           show={this.state.showError}
           message={() => this.state.errorMessage}
           anchorRef={this.inputRef}
@@ -99,7 +98,6 @@ storiesOf("Components/Popover", module)
     )
     return (
       <ErrorShower
-        minWidth="200px"
         msgTemplate={count => (
           <div>
             Now{" "}
