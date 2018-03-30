@@ -28,7 +28,7 @@ class ErrorShower extends React.Component<any, any> {
           Click Me
         </Button>
         <Popover
-          minWidth="200px"
+          minWidth={this.props.minWidth}
           show={this.state.showError}
           message={() => this.props.msgTemplate(this.state.count)}
           anchorRef={this.buttonRef}
@@ -64,6 +64,7 @@ class InputWithError extends React.Component<any, any> {
           onBlur={this.onBlur}
         />
         <Popover
+          minWidth="200px"
           show={this.state.showError}
           message={() => this.state.errorMessage}
           anchorRef={this.inputRef}
@@ -73,25 +74,11 @@ class InputWithError extends React.Component<any, any> {
   }
 }
 
-class Basic extends React.Component<any, any> {
-  public inputRef
-  render() {
-    return (
-      <Container>
-        <Input ref={r => (this.inputRef = r)} value={this.props.value} />
-        <Popover
-          show={this.props.show}
-          message={this.props.msg}
-          anchorRef={this.inputRef}
-        />
-      </Container>
-    )
-  }
-}
 storiesOf("Components/Tooltip Error", module)
-  .add("Basic", () => <Basic show value="input" msg="message" />)
+  .add("Basic", () => <ErrorShower msgTemplate={() => "Cool"} />)
   .add("Long Text", () => (
     <ErrorShower
+      minWidth="200px"
       msgTemplate={count =>
         Array(5)
           .fill(`Ceci n'est pas une erreur.`)
@@ -112,6 +99,7 @@ storiesOf("Components/Tooltip Error", module)
     )
     return (
       <ErrorShower
+        minWidth="200px"
         msgTemplate={count => (
           <div>
             Now{" "}
