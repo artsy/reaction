@@ -4,94 +4,124 @@ import React from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 import Input from "../Input"
-import { TooltipError } from "../TooltipError"
+import { Popover } from "../Popover"
 
 const Container = styled.div`
   padding: 50px;
+  height: 1400px;
 `
 
-class BadButton extends React.Component<any, any> {
-  constructor(props) {
-    super(props)
-    this.state = { count: 0, errorMessage: "" }
-  }
-
+class ErrorShower extends React.Component<any, any> {
+  public buttonRef
+  state = { count: 0, errorMessage: "", showError: false }
   showTip = () => {
-    const count = this.state.count
+    const count = this.state.count + 1
     this.setState({
-      errorMessage: this.props.message + ` (${count})`,
-      count: count + 1,
+      showError: true,
+      count,
     })
   }
-
   render(): JSX.Element {
     return (
       <Container>
-        <Button onClick={this.showTip}>Click Me</Button>
-        <TooltipError adjustTop="-10px">{this.state.errorMessage}</TooltipError>
-        <p>
-          Just some unassuming content below the button. Just some unassuming
-          content below the button.
-        </p>
-        <p>
-          Just some unassuming content below the button. Just some unassuming
-          content below the button.
-        </p>
-        <p>
-          Just some unassuming content below the button. Just some unassuming
-          content below the button.
-        </p>
+        <Button ref={r => (this.buttonRef = r)} onClick={this.showTip}>
+          Click Me
+        </Button>
+        <Popover
+          minWidth="200px"
+          show={this.state.showError}
+          message={() => this.props.msgTemplate(this.state.count)}
+          anchorRef={this.buttonRef}
+        />
+        <p>Just some content below the button.</p>
+        <p>Just some content below the button.</p>
+        <p>Just some content below the button.</p>
       </Container>
     )
   }
 }
 
 class InputWithError extends React.Component<any, any> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      errorMessage: "",
-    }
+  private inputRef
+
+  state = {
+    errorMessage: "",
+    showError: false,
   }
 
   onBlur = e => {
     this.setState({
       errorMessage: e.target.value,
+      showError: true,
     })
   }
   render() {
     return (
       <Container>
-        <Input placeholder="Type in me" onBlur={this.onBlur} />
-        <TooltipError>{this.state.errorMessage}</TooltipError>
+        <Input
+          ref={r => (this.inputRef = r)}
+          placeholder="Type in me"
+          onBlur={this.onBlur}
+        />
+        <Popover
+          show={this.state.showError}
+          message={() => this.state.errorMessage}
+          anchorRef={this.inputRef}
+        />
       </Container>
     )
   }
 }
 
+class Basic extends React.Component<any, any> {
+  public inputRef
+  render() {
+    return (
+      <Container>
+        <Input ref={r => (this.inputRef = r)} value={this.props.value} />
+        <Popover
+          show={this.props.show}
+          message={this.props.msg}
+          anchorRef={this.inputRef}
+        />
+      </Container>
+    )
+  }
+}
 storiesOf("Components/Tooltip Error", module)
-  .add("Short Text", () => <BadButton message="Click" />)
-  .add("Medium Text", () => <BadButton message="Ceci n'est pas une erreur" />)
-  // .add("Long Text", () => <BadButton message="Ceci n'est pas une erreur" />)
-  // .add("Custom Max Width", () => <BadButton message="Ceci n'est pas une erreur" />)
-  .add("Plain", () => (
-    <Container>
-      <TooltipError hide={false}>Ceci n'est pas une erreur</TooltipError>
-    </Container>
+  .add("Basic", () => <Basic show value="input" msg="message" />)
+  .add("Long Text", () => (
+    <ErrorShower
+      msgTemplate={count =>
+        Array(5)
+          .fill(`Ceci n'est pas une erreur.`)
+          .concat(count)
+          .join(" ")}
+    />
   ))
-  .add("With something fancy inside", () => (
-    <Container>
-      <TooltipError hide={false}>
-        Maybe{" "}
-        <span>
-          <em>THIS</em>
-        </span>{" "}
-        is something special!
-      </TooltipError>
-    </Container>
-  ))
-  .add("For an Input", () => (
-    <Container>
-      <InputWithError />
-    </Container>
-  ))
+  .add("With something clickable inside", () => {
+    const Fancy = () => (
+      <a
+        onClick={e => {
+          e.stopPropagation()
+          alert("nice click")
+        }}
+      >
+        <em>THIS</em>
+      </a>
+    )
+    return (
+      <ErrorShower
+        msgTemplate={count => (
+          <div>
+            Now{" "}
+            <span>
+              <Fancy />
+            </span>{" "}
+            is something special!
+          </div>
+        )}
+      />
+    )
+  })
+  .add("For an Input", () => <InputWithError />)
