@@ -74,7 +74,7 @@ class InputWithError extends React.Component<any, any> {
   }
 }
 
-storiesOf("Components/Tooltip Error", module)
+storiesOf("Components/Popover", module)
   .add("Basic", () => <ErrorShower msgTemplate={() => "Cool"} />)
   .add("Long Text", () => (
     <ErrorShower
