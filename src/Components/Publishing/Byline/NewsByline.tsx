@@ -1,10 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { getArticleFullHref, getAuthorByline } from "../Constants"
-import { Fonts } from "../Fonts"
 import { IconShareArrow } from "../Icon/IconShareArrow"
 import { ArticleData } from "../Typings"
+import { StyledAuthor } from "./AuthorDate"
 import { DateSource } from "./DateSource"
 import { Share } from "./Share"
 
@@ -38,7 +37,11 @@ export const NewsByline: React.SFC<NewsBylineProps> = props => {
   return (
     <NewsBylineContainer>
       <AuthorDateContainer>
-        {!isTruncated && <Poster>Posted by {getAuthorByline(authors)}</Poster>}
+        {!isTruncated && (
+          <StyledAuthor condensed withBullet color="black">
+            {getAuthorByline(authors)}
+          </StyledAuthor>
+        )}
         <DateSource article={article} editSource={editSource} />
       </AuthorDateContainer>
       {!isTruncated && shareIcon}
@@ -56,14 +59,6 @@ const NewsBylineContainer = styled.div`
 const AuthorDateContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const Poster = styled.div`
-  ${Fonts.unica("s14", "medium")};
-
-  ${pMedia.sm`
-    ${Fonts.unica("s12", "medium")}
-  `};
 `
 
 const ShareIconContainer = styled.div`
