@@ -3,6 +3,7 @@ import React from "react"
 
 import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
+import { Checkbox } from "../Checkbox"
 import Icon from "../Icon"
 import Input from "../Input"
 import TextArea from "../TextArea"
@@ -47,6 +48,24 @@ storiesOf("Components/Input", module)
       <TextArea placeholder="Your Message" />
       <TextArea placeholder="Your Message" error />
       <TextArea placeholder="Your Message" disabled />
+    </div>
+  ))
+  .add("Check Boxes", () => (
+    <div>
+      <div style={{ padding: 10 }}>
+        <Checkbox>Remember me</Checkbox>
+      </div>
+      <div style={{ padding: 10 }}>
+        <Checkbox checked>Remember me</Checkbox>
+      </div>
+      <div style={{ padding: 10 }}>
+        <Checkbox disabled>Remember me</Checkbox>
+      </div>
+      <div style={{ padding: 10 }}>
+        <Checkbox checked disabled>
+          Remember me
+        </Checkbox>
+      </div>
     </div>
   ))
   .add("Form", () => (

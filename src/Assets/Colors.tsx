@@ -1,10 +1,12 @@
 export default {
+  white: "#ffffff",
   gray: "#f8f8f8",
   grayMedium: "#cccccc",
   grayRegular: "#e5e5e5",
   grayDark: "#999999",
   graySemibold: "#666666",
   grayBold: "#333333",
+  black: "#000000",
   purpleLight: "#e2d2ff",
   purpleRegular: "#6e1fff",
   redRegular: "#FFEFED",
