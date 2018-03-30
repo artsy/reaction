@@ -29,6 +29,34 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding-left: 0.5rem;
 }
 
+.c19 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c19.date {
+  white-space: nowrap;
+}
+
+.c19:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: black;
+}
+
+.c19:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
 .c20 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -71,13 +99,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c19 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
 }
 
 .c21:hover {
@@ -422,17 +443,29 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c20 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  .c19 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c19 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  .c19:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:720px) {
+  .c20 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -762,8 +795,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         >
           <div
             className="c19"
+            color="black"
           >
-            Posted by 
             Casey Lesser
           </div>
           <div
@@ -869,6 +902,34 @@ exports[`News Layout renders the news layout properly 1`] = `
   padding-left: 0.5rem;
 }
 
+.c19 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c19.date {
+  white-space: nowrap;
+}
+
+.c19:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: black;
+}
+
+.c19:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
 .c20 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -938,13 +999,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c19 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
 }
 
 .c10 {
@@ -1285,6 +1339,27 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c19:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:720px) {
   .c20 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -1296,15 +1371,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 @media (max-width:600px) {
   .c21 {
     margin-top: 15px;
-  }
-}
-
-@media (max-width:720px) {
-  .c19 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
   }
 }
 
@@ -1631,8 +1697,8 @@ exports[`News Layout renders the news layout properly 1`] = `
         >
           <div
             className="c19"
+            color="black"
           >
-            Posted by 
             Casey Lesser
           </div>
           <div
