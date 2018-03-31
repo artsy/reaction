@@ -14,7 +14,13 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   message?: (() => any) | string
 }
 
-export class Popover extends React.Component<Props, any> {
+interface State {
+  anchorPosition?: any
+  show: boolean
+  message: any
+}
+
+export class Popover extends React.Component<Props, State> {
   public messageRef
 
   static defaultProps = {
