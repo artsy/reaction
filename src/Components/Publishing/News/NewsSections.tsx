@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsByline } from "../Byline/NewsByline"
@@ -89,10 +88,10 @@ export class NewsSections extends Component<Props> {
 
   render() {
     return (
-      <StyledCol>
+      <div>
         {this.renderSections()}
         {this.renderByline()}
-      </StyledCol>
+      </div>
     )
   }
 }
@@ -105,11 +104,7 @@ const getMaxWidth = type => {
   }
 }
 
-const StyledCol = styled(Col)`
-  padding: 0;
-`
-
-export const NewsSectionContainer = styled(Row)`
+export const NewsSectionContainer = styled.div`
   ${(props: ContainerProp) => getMaxWidth(props.type)};
   margin-bottom: 20px;
 
@@ -119,12 +114,12 @@ export const NewsSectionContainer = styled(Row)`
   `};
 `
 
-const BylineContainer = styled(Row)`
+const BylineContainer = styled.div`
   max-width: 780px;
   margin-top: 30px;
 
   ${pMedia.sm`
-    margin: 30px 100px 0 0;
+    margin: 30px 0 0 0;
     padding: 0px;
   `};
 `

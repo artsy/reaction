@@ -54,6 +54,9 @@ const NewsBylineContainer = styled.div`
   flex: 1;
   justify-content: space-between;
   align-items: flex-start;
+  ${StyledAuthor} {
+    margin-top: 0;
+  }
 `
 
 const AuthorDateContainer = styled.div`
