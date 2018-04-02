@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout renders the news layout on mobile 1`] = `
-.c6 {
+.c7 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -20,7 +20,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-left: -0.5rem;
 }
 
-.c4 {
+.c5 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -30,6 +30,34 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c19 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c19.date {
+  white-space: nowrap;
+}
+
+.c19:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: black;
+}
+
+.c19:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,11 +69,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   color: #999999;
 }
 
-.c19 a {
+.c20 a {
   color: #999999;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,7 +91,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   align-items: flex-start;
 }
 
-.c17 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -73,40 +101,33 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   flex-direction: column;
 }
 
-.c18 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-}
-
-.c20:hover {
+.c21:hover {
   opacity: 0.6;
 }
 
-.c9 {
+.c10 {
   position: relative;
 }
 
-.c9:hover .file__Fullscreen-yu39to-0 {
+.c10:hover .file__Fullscreen-yu39to-0 {
   opacity: 1;
 }
 
-.c9 .BlockImage__container {
+.c10 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c9 .image-loaded {
+.c10 .image-loaded {
   opacity: 1;
 }
 
-.c10 {
+.c11 {
   display: block;
 }
 
-.c11 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,16 +139,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c12 {
+.c13 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c12 > p,
-.c12 p,
-.c12 .public-DraftEditorPlaceholder-root,
-.c12 .public-DraftStyleDefault-block {
+.c13 > p,
+.c13 p,
+.c13 .public-DraftEditorPlaceholder-root,
+.c13 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -136,22 +157,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 0;
 }
 
-.c12 > a,
-.c12 a {
+.c13 > a,
+.c13 a {
   color: #999;
 }
 
-.c12 > a:hover,
-.c12 a:hover {
+.c13 > a:hover,
+.c13 a:hover {
   color: black;
 }
 
-.c8 {
+.c9 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -163,12 +184,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   justify-content: center;
 }
 
-.c14 {
+.c15 {
   position: relative;
   width: 100%;
 }
 
-.c14 a {
+.c15 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -178,15 +199,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-position: bottom;
 }
 
-.c14 a:hover {
+.c15 a:hover {
   color: #999;
   opacity: 1;
 }
 
-.c14 p,
-.c14 ul,
-.c14 ol,
-.c14 div[data-block=true] .public-DraftStyleDefault-block {
+.c15 p,
+.c15 ul,
+.c15 ol,
+.c15 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -197,22 +218,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-style: inherit;
 }
 
-.c14 p:first-child,
-.c14 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c15 p:first-child,
+.c15 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c14 p:last-child,
-.c14 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c15 p:last-child,
+.c15 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c14 ul,
-.c14 ol {
+.c15 ul,
+.c15 ol {
   padding-left: 1em;
 }
 
-.c14 li {
+.c15 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -221,7 +242,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding-bottom: .5em;
 }
 
-.c14 h1 {
+.c15 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -234,7 +255,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-align: center;
 }
 
-.c14 h1:before {
+.c15 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -245,7 +266,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c14 h2 {
+.c15 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -254,11 +275,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 0;
 }
 
-.c14 h2 a {
+.c15 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c14 h3 {
+.c15 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -268,7 +289,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 0;
 }
 
-.c14 h3 strong {
+.c15 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -276,11 +297,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1.5em;
 }
 
-.c14 h3 a {
+.c15 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c14 blockquote {
+.c15 blockquote {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -297,11 +318,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: auto;
 }
 
-.c14 blockquote a {
+.c15 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c14 .content-end {
+.c15 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -311,14 +332,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-left: 12px;
 }
 
-.c14 .artist-follow {
+.c15 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c14 .artist-follow:before {
+.c15 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -326,7 +347,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-size: 32px;
 }
 
-.c14 .artist-follow:after {
+.c15 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -335,16 +356,20 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-transform: none;
 }
 
-.c5 {
+.c4 {
+  padding: 0;
+}
+
+.c6 {
   margin-bottom: 20px;
 }
 
-.c13 {
+.c14 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c15 {
+.c16 {
   max-width: 780px;
   margin-top: 30px;
 }
@@ -376,17 +401,70 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-weight: 600;
 }
 
+.c22 {
+  width: 80px;
+  height: 30px;
+  background-color: black;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+  padding: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  line-height: 1em;
+}
+
+.c22:focus {
+  outline: 0;
+}
+
+.c22:hover {
+  color: #e5e5e5;
+}
+
 .c0 {
   position: relative;
   max-width: 780px;
   padding: 20px 30px 30px;
   margin: 40px auto;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
 }
 
 @media (max-width:720px) {
   .c19 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c19:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:720px) {
+  .c20 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -395,40 +473,31 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c18 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c9 .file__Fullscreen-yu39to-0 {
+  .c10 .file__Fullscreen-yu39to-0 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c11 {
+  .c12 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c12 {
+  .c13 {
     padding: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c8 {
+  .c9 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c7 {
+  .c8 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -436,38 +505,38 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c14 p,
-  .c14 ul,
-  .c14 ol,
-  .c14 div[data-block=true] .public-DraftStyleDefault-block {
+  .c15 p,
+  .c15 ul,
+  .c15 ol,
+  .c15 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c14 li {
+  .c15 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c14 h1 {
+  .c15 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c14 h2 {
+  .c15 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c14 h3 {
+  .c15 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -475,14 +544,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     line-height: 1.5em;
   }
 
-  .c14 h3 strong {
+  .c15 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c14 blockquote {
+  .c15 blockquote {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -490,35 +559,29 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     margin: 0 10px;
   }
 
-  .c14 .content-start {
+  .c15 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
-    margin: 0 20px 15px;
-    padding: 0px;
+  .c6 {
+    margin: 0 0 15px 0;
+    padding: 0;
   }
 }
 
 @media (max-width:720px) {
-  .c13 {
-    margin: 0 20px 15px;
-    padding: 0px;
+  .c14 {
+    margin: 0 0 15px 0;
+    padding: 0;
   }
 }
 
 @media (max-width:720px) {
-  .c15 {
-    margin: 30px 20px 0;
+  .c16 {
+    margin: 30px 100px 0 0;
     padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    margin: 0 20px;
   }
 }
 
@@ -533,14 +596,24 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
+  .c22 {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width:720px) {
   .c0 {
-    padding: 0px;
+    margin: 40px 10px;
+    padding: 10px 15px 20px;
   }
 }
 
 <div
   className="c0"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="c1"
@@ -556,38 +629,38 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     </div>
   </div>
   <div
-    className="c4"
+    className="c4 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c7"
       type="image_collection"
     >
       <div
-        className="c7"
+        className="c8"
       >
         <div
-          className="c8"
+          className="c9"
           width={undefined}
         >
           <div
             className="article-image"
           >
             <div
-              className="c9"
+              className="c10"
             >
               <img
                 alt="Illustration by Tomi Um for Artsy."
-                className="BlockImage__container c10"
+                className="BlockImage__container c11"
                 height="auto"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                 width="100%"
               />
             </div>
             <div
-              className="c11"
+              className="c12"
             >
               <div
-                className="c12"
+                className="c13"
               >
                 <div
                   dangerouslySetInnerHTML={
@@ -603,11 +676,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -620,15 +693,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="social_embed"
     />
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -641,11 +714,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -658,11 +731,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -675,11 +748,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -692,15 +765,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="social_embed"
     />
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -713,22 +786,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <div
-      className="c15 c6"
+      className="c16 c7"
     >
       <div
-        className="c16"
+        className="c17"
       >
         <div
-          className="c17"
+          className="c18"
         >
           <div
-            className="c18"
+            className="c19"
+            color="black"
           >
-            Posted by 
             Casey Lesser
           </div>
           <div
-            className="c19"
+            className="c20"
           >
             Jul 19, 2018 at 1:19 pm
             , via
@@ -741,7 +814,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
           </div>
         </div>
         <div
-          className="c20"
+          className="c21"
           onClick={undefined}
         >
           <svg
@@ -758,9 +831,9 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             </defs>
             <g
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <g
                 transform="translate(-323.000000, -1.000000)"
@@ -792,11 +865,17 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
   </div>
+  <button
+    className="c22"
+    onClick={[Function]}
+  >
+    Expand
+  </button>
 </div>
 `;
 
 exports[`News Layout renders the news layout properly 1`] = `
-.c6 {
+.c7 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -815,7 +894,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c4 {
+.c5 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -825,6 +904,34 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c19 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c19.date {
+  white-space: nowrap;
+}
+
+.c19:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: black;
+}
+
+.c19:before {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 5px 1px 0;
+}
+
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -836,11 +943,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   color: #999999;
 }
 
-.c19 a {
+.c20 a {
   color: #999999;
 }
 
-.c20 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -853,21 +960,21 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1em;
 }
 
-.c21 {
+.c22 {
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c21:hover {
+.c22:hover {
   opacity: 0.6;
 }
 
-.c21:first-child {
+.c22:first-child {
   padding-left: 0;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -885,7 +992,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   align-items: flex-start;
 }
 
-.c17 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -895,36 +1002,29 @@ exports[`News Layout renders the news layout properly 1`] = `
   flex-direction: column;
 }
 
-.c18 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-}
-
-.c9 {
+.c10 {
   position: relative;
 }
 
-.c9:hover .file__Fullscreen-yu39to-0 {
+.c10:hover .file__Fullscreen-yu39to-0 {
   opacity: 1;
 }
 
-.c9 .BlockImage__container {
+.c10 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c9 .image-loaded {
+.c10 .image-loaded {
   opacity: 1;
 }
 
-.c10 {
+.c11 {
   display: block;
 }
 
-.c11 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -936,16 +1036,16 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c12 {
+.c13 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c12 > p,
-.c12 p,
-.c12 .public-DraftEditorPlaceholder-root,
-.c12 .public-DraftStyleDefault-block {
+.c13 > p,
+.c13 p,
+.c13 .public-DraftEditorPlaceholder-root,
+.c13 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -954,22 +1054,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c12 > a,
-.c12 a {
+.c13 > a,
+.c13 a {
   color: #999;
 }
 
-.c12 > a:hover,
-.c12 a:hover {
+.c13 > a:hover,
+.c13 a:hover {
   color: black;
 }
 
-.c8 {
+.c9 {
   margin-right: 0px;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -981,12 +1081,12 @@ exports[`News Layout renders the news layout properly 1`] = `
   justify-content: center;
 }
 
-.c14 {
+.c15 {
   position: relative;
   width: 100%;
 }
 
-.c14 a {
+.c15 a {
   color: black;
   text-decoration: none;
   position: relative;
@@ -996,15 +1096,15 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-position: bottom;
 }
 
-.c14 a:hover {
+.c15 a:hover {
   color: #999;
   opacity: 1;
 }
 
-.c14 p,
-.c14 ul,
-.c14 ol,
-.c14 div[data-block=true] .public-DraftStyleDefault-block {
+.c15 p,
+.c15 ul,
+.c15 ol,
+.c15 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1015,22 +1115,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-style: inherit;
 }
 
-.c14 p:first-child,
-.c14 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c15 p:first-child,
+.c15 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c14 p:last-child,
-.c14 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c15 p:last-child,
+.c15 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c14 ul,
-.c14 ol {
+.c15 ul,
+.c15 ol {
   padding-left: 1em;
 }
 
-.c14 li {
+.c15 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1039,7 +1139,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c14 h1 {
+.c15 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1052,7 +1152,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-align: center;
 }
 
-.c14 h1:before {
+.c15 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1063,7 +1163,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c14 h2 {
+.c15 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1072,11 +1172,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c14 h2 a {
+.c15 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c14 h3 {
+.c15 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1086,7 +1186,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c14 h3 strong {
+.c15 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1094,11 +1194,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1.5em;
 }
 
-.c14 h3 a {
+.c15 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c14 blockquote {
+.c15 blockquote {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1115,11 +1215,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: auto;
 }
 
-.c14 blockquote a {
+.c15 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c14 .content-end {
+.c15 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1129,14 +1229,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-left: 12px;
 }
 
-.c14 .artist-follow {
+.c15 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c14 .artist-follow:before {
+.c15 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1144,7 +1244,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-size: 32px;
 }
 
-.c14 .artist-follow:after {
+.c15 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1153,16 +1253,20 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-transform: none;
 }
 
-.c5 {
+.c4 {
+  padding: 0;
+}
+
+.c6 {
   margin-bottom: 20px;
 }
 
-.c13 {
+.c14 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c15 {
+.c16 {
   max-width: 780px;
   margin-top: 30px;
 }
@@ -1194,17 +1298,70 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-weight: 600;
 }
 
+.c23 {
+  width: 80px;
+  height: 30px;
+  background-color: black;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+  padding: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  line-height: 1em;
+}
+
+.c23:focus {
+  outline: 0;
+}
+
+.c23:hover {
+  color: #e5e5e5;
+}
+
 .c0 {
   position: relative;
   max-width: 780px;
   padding: 20px 30px 30px;
   margin: 40px auto;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
 }
 
 @media (max-width:720px) {
   .c19 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c19:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:720px) {
+  .c20 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1213,46 +1370,37 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c20 {
+  .c21 {
     margin-top: 15px;
   }
 }
 
 @media (max-width:720px) {
-  .c18 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c9 .file__Fullscreen-yu39to-0 {
+  .c10 .file__Fullscreen-yu39to-0 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c11 {
+  .c12 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c12 {
+  .c13 {
     padding: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c8 {
+  .c9 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c7 {
+  .c8 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1260,38 +1408,38 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c14 p,
-  .c14 ul,
-  .c14 ol,
-  .c14 div[data-block=true] .public-DraftStyleDefault-block {
+  .c15 p,
+  .c15 ul,
+  .c15 ol,
+  .c15 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c14 li {
+  .c15 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c14 h1 {
+  .c15 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c14 h2 {
+  .c15 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c14 h3 {
+  .c15 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1299,14 +1447,14 @@ exports[`News Layout renders the news layout properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c14 h3 strong {
+  .c15 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c14 blockquote {
+  .c15 blockquote {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1314,35 +1462,29 @@ exports[`News Layout renders the news layout properly 1`] = `
     margin: 0 10px;
   }
 
-  .c14 .content-start {
+  .c15 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
-    margin: 0 20px 15px;
-    padding: 0px;
+  .c6 {
+    margin: 0 0 15px 0;
+    padding: 0;
   }
 }
 
 @media (max-width:720px) {
-  .c13 {
-    margin: 0 20px 15px;
-    padding: 0px;
+  .c14 {
+    margin: 0 0 15px 0;
+    padding: 0;
   }
 }
 
 @media (max-width:720px) {
-  .c15 {
-    margin: 30px 20px 0;
+  .c16 {
+    margin: 30px 100px 0 0;
     padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c1 {
-    margin: 0 20px;
   }
 }
 
@@ -1357,14 +1499,24 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
+  .c23 {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width:720px) {
   .c0 {
-    padding: 0px;
+    margin: 40px 10px;
+    padding: 10px 15px 20px;
   }
 }
 
 <div
   className="c0"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="c1"
@@ -1380,38 +1532,38 @@ exports[`News Layout renders the news layout properly 1`] = `
     </div>
   </div>
   <div
-    className="c4"
+    className="c4 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c7"
       type="image_collection"
     >
       <div
-        className="c7"
+        className="c8"
       >
         <div
-          className="c8"
+          className="c9"
           width={undefined}
         >
           <div
             className="article-image"
           >
             <div
-              className="c9"
+              className="c10"
             >
               <img
                 alt="Illustration by Tomi Um for Artsy."
-                className="BlockImage__container c10"
+                className="BlockImage__container c11"
                 height="auto"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                 width="100%"
               />
             </div>
             <div
-              className="c11"
+              className="c12"
             >
               <div
-                className="c12"
+                className="c13"
               >
                 <div
                   dangerouslySetInnerHTML={
@@ -1427,11 +1579,11 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1444,15 +1596,15 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="social_embed"
     />
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1465,11 +1617,11 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1482,11 +1634,11 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1499,11 +1651,11 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1516,15 +1668,15 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="social_embed"
     />
     <div
-      className="c13 c6"
+      className="c14 c7"
       type="text"
     >
       <div
-        className="article__text-section c14"
+        className="article__text-section c15"
         color="black"
       >
         <div
@@ -1537,22 +1689,22 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <div
-      className="c15 c6"
+      className="c16 c7"
     >
       <div
-        className="c16"
+        className="c17"
       >
         <div
-          className="c17"
+          className="c18"
         >
           <div
-            className="c18"
+            className="c19"
+            color="black"
           >
-            Posted by 
             Casey Lesser
           </div>
           <div
-            className="c19"
+            className="c20"
           >
             Jul 19, 2018 at 1:19 pm
             , via
@@ -1565,10 +1717,10 @@ exports[`News Layout renders the news layout properly 1`] = `
           </div>
         </div>
         <div
-          className="c20"
+          className="c21"
         >
           <a
-            className="c21"
+            className="c22"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
             onClick={[Function]}
             target="_blank"
@@ -1594,7 +1746,7 @@ exports[`News Layout renders the news layout properly 1`] = `
             </svg>
           </a>
           <a
-            className="c21"
+            className="c22"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -1620,7 +1772,7 @@ exports[`News Layout renders the news layout properly 1`] = `
             </svg>
           </a>
           <a
-            className="c21"
+            className="c22"
             href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
             onClick={[Function]}
           >
@@ -1648,5 +1800,11 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
   </div>
+  <button
+    className="c23"
+    onClick={[Function]}
+  >
+    Expand
+  </button>
 </div>
 `;

@@ -89,10 +89,10 @@ export class NewsSections extends Component<Props> {
 
   render() {
     return (
-      <Col>
+      <StyledCol>
         {this.renderSections()}
         {this.renderByline()}
-      </Col>
+      </StyledCol>
     )
   }
 }
@@ -105,21 +105,26 @@ const getMaxWidth = type => {
   }
 }
 
+const StyledCol = styled(Col)`
+  padding: 0;
+`
+
 export const NewsSectionContainer = styled(Row)`
   ${(props: ContainerProp) => getMaxWidth(props.type)};
   margin-bottom: 20px;
 
   ${pMedia.sm`
-    margin: 0 20px 15px;
-    padding: 0px;
+    margin: 0 0 15px 0;
+    padding: 0;
   `};
 `
 
 const BylineContainer = styled(Row)`
   max-width: 780px;
   margin-top: 30px;
+
   ${pMedia.sm`
-    margin: 30px 20px 0;
+    margin: 30px 100px 0 0;
     padding: 0px;
   `};
 `

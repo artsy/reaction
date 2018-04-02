@@ -97,7 +97,7 @@ const bullet = color => {
   `
 }
 
-const StyledAuthor = Text.extend`
+export const StyledAuthor = Text.extend`
   ${props => (props.withBullet ? bullet(props.color) : "")} ${props =>
       adjustForCondensed(props.condensed)} ${pMedia.sm`
     &:before {

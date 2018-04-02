@@ -29,12 +29,6 @@ exports[`renders a headline with children properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c0 {
-    margin: 0 20px;
-  }
-}
-
-@media (max-width:720px) {
   .c2 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -88,12 +82,6 @@ exports[`renders a news headline properly 1`] = `
   font-size: 34px;
   line-height: 1.1em;
   font-weight: 600;
-}
-
-@media (max-width:720px) {
-  .c0 {
-    margin: 0 20px;
-  }
 }
 
 @media (max-width:720px) {

@@ -6,10 +6,6 @@ exports[`NewsNav renders NewsNav 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 25px;
   line-height: 1.1em;
-  padding: 10px 0;
-  position: absolute;
-  width: 100%;
-  text-align: center;
 }
 
 .c3 {
@@ -17,20 +13,38 @@ exports[`NewsNav renders NewsNav 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 25px;
   line-height: 1.1em;
-  padding: 10px 0;
+  position: absolute;
+  left: 30px;
 }
 
 .c1 {
   position: relative;
   max-width: 780px;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 26px;
 }
 
 .c0 {
   position: fixed;
-  width: 100%;
-  height: 45px;
-  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+  top: 0px;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 0;
+  background: white;
+  z-index: 1;
 }
 
 @media (max-width:720px) {
@@ -53,13 +67,13 @@ exports[`NewsNav renders NewsNav 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    margin-left: 20px;
+    left: 20px;
   }
 }
 
 @media (max-width:720px) {
-  .c0 {
-    height: 36px;
+  .c1 {
+    min-height: 16px;
   }
 }
 
@@ -72,7 +86,7 @@ exports[`NewsNav renders NewsNav 1`] = `
     <div
       className="c2"
     >
-      Jun 06
+      Jun 29, 2017
     </div>
     <div
       className="c3"

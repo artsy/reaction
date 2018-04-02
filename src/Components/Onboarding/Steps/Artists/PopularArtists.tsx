@@ -47,7 +47,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(
-      this.props.popular_artists.artists.map(item => item._id)
+      this.props.popular_artists.artists.filter(Boolean).map(item => item._id)
     )
   }
 
@@ -70,6 +70,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
     const updatedPopularArtists = popularArtistsRootField
       .getLinkedRecords("artists")
+      .filter(Boolean)
       .map(
         artistItem =>
           artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
@@ -154,8 +155,9 @@ class PopularArtistsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const artistItems = this.props.popular_artists.artists.map(
-      (artist, index) => (
+    const artistItems = this.props.popular_artists.artists
+      .filter(Boolean)
+      .map((artist, index) => (
         <LinkContainer>
           <ReplaceTransition
             key={index}
@@ -173,8 +175,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
             />
           </ReplaceTransition>
         </LinkContainer>
-      )
-    )
+      ))
 
     return <div>{artistItems}</div>
   }
