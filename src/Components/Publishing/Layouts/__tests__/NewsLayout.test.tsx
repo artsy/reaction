@@ -21,6 +21,26 @@ describe("News Layout", () => {
 
   it("expands the article on click", () => {
     const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
+    component
+      .find(NewsSectionContainer)
+      .at(0)
+      .simulate("click")
+    expect(component.find(NewsSectionContainer).length).toEqual(9)
+  })
+
+  it("only expands the article on click if not mobile", () => {
+    const component = mount(
+      <NewsLayout article={NewsArticle} isTruncated isMobile />
+    )
+    component
+      .find(NewsSectionContainer)
+      .at(0)
+      .simulate("click")
+    expect(component.find(NewsSectionContainer).length).toEqual(2)
+  })
+
+  it("expands the article on clicking expand button", () => {
+    const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
     component.find(ExpandButton).simulate("click")
     expect(component.find(NewsSectionContainer).length).toEqual(9)
   })
