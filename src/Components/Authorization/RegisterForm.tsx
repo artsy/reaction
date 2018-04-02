@@ -13,6 +13,10 @@ import {
 } from "./commonElements"
 import { FormComponentType, InputValues } from "./Types"
 
+import colors from "../../Assets/Colors"
+import Text from "../Text"
+import TextLink from "../TextLink"
+
 export const RegisterForm: FormComponentType = props => {
   return (
     <Formik
@@ -34,8 +38,9 @@ export const RegisterForm: FormComponentType = props => {
             <Input
               block
               error={touched.name && errors.name}
+              placeholder="Enter your full name"
               name="name"
-              placeholder="Name"
+              label="Name"
               type="text"
               value={values.name}
               onChange={handleChange}
@@ -45,8 +50,9 @@ export const RegisterForm: FormComponentType = props => {
             <Input
               block
               error={touched.email && errors.email}
+              placeholder="Please enter your email address"
               name="email"
-              placeholder="Email"
+              label="Email"
               type="email"
               value={values.email}
               onChange={handleChange}
@@ -56,8 +62,9 @@ export const RegisterForm: FormComponentType = props => {
             <Input
               block
               error={touched.password && errors.password}
+              placeholder="Enter a password"
               name="password"
-              placeholder="Password"
+              label="Password"
               type="password"
               value={values.password}
               onChange={handleChange}
@@ -75,19 +82,23 @@ export const RegisterForm: FormComponentType = props => {
               onBlur={handleBlur}
               errorMessage={errors.acceptedTermsOfService}
             >
-              I Agree to the TOS And PP
+              <Text color={colors.grayDark}>
+                I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
+                <TextLink>Privacy Policy</TextLink>
+              </Text>
             </TOSCheckbox>
             {/* touched.password && errors.password && <div>{errors.password}</div> */}
             <Button type="submit" disabled={isSubmitting}>
               Sign Up
             </Button>
             <StyledFacebookButton>Sign up with Facebook</StyledFacebookButton>
-            <p>
+            <Text color={colors.grayDark} align="center">
               Already have an account?
               <ChangeMode handleClick={props.handleChangeMode("login")}>
+                {" "}
                 Log In
               </ChangeMode>
-            </p>
+            </Text>
           </FormContainer>
         )
       }}

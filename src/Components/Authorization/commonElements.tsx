@@ -24,9 +24,7 @@ export const inputValidators = {
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 500px;
-  padding: 15px 20px;
+  padding: 0 20px 15px;
 `
 
 const buttonWidth = "100%"
@@ -49,7 +47,7 @@ export const StyledInput = styled(Input)`
 export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
   <div>
     <Checkbox id="accepted-tos" {...{ error, errorMessage, checked: value }} />
-    <label htmlFor="accepted-tos">{props.children} - I don't work :(</label>
+    <label htmlFor="accepted-tos">{props.children}</label>
   </div>
 )
 

@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 
 import AuthForm from "../Authorization/AuthForm"
+import { DesktopModal } from "../Authorization/DesktopModal"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -11,10 +12,18 @@ const submit = (values, actions) => {
 }
 
 storiesOf("Components/Authorization", module)
-  .add("Login Mode", () => <AuthForm mode="login" handleSubmit={submit} />)
+  .add("Login Mode", () => (
+    <DesktopModal show>
+      <AuthForm mode="login" handleSubmit={submit} />
+    </DesktopModal>
+  ))
   .add("Forgot Password", () => (
-    <AuthForm mode="reset_password" handleSubmit={submit} />
+    <DesktopModal show>
+      <AuthForm mode="reset_password" handleSubmit={submit} />
+    </DesktopModal>
   ))
   .add("Register Mode", () => (
-    <AuthForm mode="register" handleSubmit={submit} />
+    <DesktopModal show>
+      <AuthForm mode="register" handleSubmit={submit} />
+    </DesktopModal>
   ))

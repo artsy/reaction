@@ -45,15 +45,15 @@ const CheckboxInput = styled.input`
 `
 
 const Label = styled.label`
-  cursor: pointer
-  position: absolute
+  cursor: pointer;
+  position: absolute;
   top: 2px;
   right: 2px;
   bottom: 2px;
   left: 2px;
   background-color: white;
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 3px;
     right: 2px;

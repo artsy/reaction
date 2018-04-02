@@ -37,8 +37,9 @@ export const LoginForm: FormComponentType = props => {
             <Input
               block
               error={touched.email && errors.email}
+              placeholder="Please enter your email address"
               name="email"
-              placeholder="Email"
+              label="Email"
               type="email"
               value={values.email}
               onChange={handleChange}
@@ -47,8 +48,9 @@ export const LoginForm: FormComponentType = props => {
             <Input
               block
               error={touched.password && errors.password}
+              placeholder="Enter your password"
               name="password"
-              placeholder="Password"
+              label="Password"
               type="password"
               value={values.password}
               onChange={handleChange}

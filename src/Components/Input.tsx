@@ -36,6 +36,8 @@ const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
   border: 0;
   padding: ${p => (p.hasLabel ? "16px" : "12px")};
   margin-right: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   position: relative;
 
@@ -60,6 +62,16 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   animation: ${props => (props.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
 `
+
+const ShowHide = styled.a`
+  ${fonts.primary.style};
+  font-size: 12px;
+`
+
+const ShowHideButton = props => {
+  const text = props.show ? "Hide" : "Show"
+  return <ShowHide>{text}</ShowHide>
+}
 
 const BorderClassname = "border-container"
 
@@ -96,8 +108,13 @@ class Input extends React.Component<InputProps, InputState> {
   }
 
   render() {
-    const { leftView, rightView, label } = this.props
+    let rightView = this.props.rightView
+    const { leftView, label, type } = this.props
     const showLabel = !!this.state.value && !!label
+
+    if (type === "password") {
+      rightView = <ShowHideButton />
+    }
 
     if (leftView || rightView || label) {
       const { className, ref, ...newProps } = this.props
