@@ -91,7 +91,7 @@ exports[`NewsNav renders NewsNav 1`] = `
     <div
       className="c3"
     >
-      The News
+      News
     </div>
   </div>
 </div>

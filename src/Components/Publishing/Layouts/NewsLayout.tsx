@@ -146,7 +146,12 @@ const NewsContainer = styled.div`
   `};
 
   ${pMedia.sm`
-    margin: 40px 10px;
+    margin: 40px 5px;
     padding: 10px 15px 20px;
+    ${(props: NewsContainerProps) =>
+      props.marginTop &&
+      `
+      margin-top: ${props.marginTop};
+    `};
   `};
 `
