@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component, HTMLProps } from "react"
 
 import Checkbox from "../Checkbox"
 
@@ -6,54 +6,25 @@ import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import { primary } from "../../Assets/Fonts"
 
-interface Props extends React.HTMLProps<ForSaleCheckbox> {
-  onChange?: any
-}
-
-interface State {
-  isChecked: boolean
-}
-
-export class ForSaleCheckbox extends React.Component<Props, State> {
-  state = {
-    isChecked: false,
-  }
-
-  onClick() {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    })
-    this.props.onChange()
-  }
-
+export class ForSaleCheckbox extends Component<HTMLProps<Checkbox>, null> {
   render() {
-    const { isChecked } = this.state
-    const { checked } = this.props
     return (
-      <div className={this.props.className} onClick={() => this.onClick()}>
-        <StyledCheckbox checked={isChecked || checked} />
-        <label>Only for Sale</label>
-      </div>
+      <CheckboxContainer>
+        <Checkbox {...this.props}>Only for Sale</Checkbox>
+      </CheckboxContainer>
     )
   }
 }
 
-const StyledCheckbox = styled(Checkbox)`
-  margin-right: 15px
-`
-
-const StyledForSaleCheckbox = styled(ForSaleCheckbox)`
-  display: inline-block;
+const CheckboxContainer = styled.div`
   border: 1px solid ${colors.grayRegular};
-  font-size: 13px;
-  line-height: 160%;
   padding: 15px 18px;
   font-size: 13px;
   vertical-align: middle;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${primary.style}
+  ${primary.style};
 `
 
-export default StyledForSaleCheckbox
+export default ForSaleCheckbox
