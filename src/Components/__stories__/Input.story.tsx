@@ -22,9 +22,22 @@ storiesOf("Components/Input", module)
       </div>
 
       <div style={{ paddingTop: 10 }}>
+        <Input placeholder="Email" />
+        <Input type="password" placeholder="Password" />
+      </div>
+    </div>
+  ))
+  .add("Input with Label", () => (
+    <div>
+      <div style={{ padding: 5 }}>
+        <Input placeholder="Enter your email address" label="Email" block />
+      </div>
+      <div style={{ padding: 5 }}>
         <Input
-          placeholder="Email"
-          rightView={<Icon name="check" color={colors.greenRegular} />}
+          type="password"
+          placeholder="Enter your password"
+          label="Password"
+          block
         />
       </div>
     </div>
