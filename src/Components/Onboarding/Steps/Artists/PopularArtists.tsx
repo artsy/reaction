@@ -158,9 +158,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
     const artistItems = this.props.popular_artists.artists
       .filter(Boolean)
       .map((artist, index) => (
-        <LinkContainer>
+        <LinkContainer key={`popular-artists-${index}`}>
           <ReplaceTransition
-            key={index}
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={400}
           >

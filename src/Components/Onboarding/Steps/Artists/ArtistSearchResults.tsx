@@ -157,9 +157,8 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
 
   render() {
     const artistItems = this.props.viewer.match_artist.map((artist, index) => (
-      <LinkContainer>
+      <LinkContainer key={`artist-search-results-${index}`}>
         <ReplaceTransition
-          key={index}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={400}
         >
