@@ -47,10 +47,9 @@ export const StyledInput = styled(Input)`
 `
 
 export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
-  <div>
-    <Checkbox id="accepted-tos" {...{ error, errorMessage, checked: value }} />
-    <label htmlFor="accepted-tos">{props.children} - I don't work :(</label>
-  </div>
+  <Checkbox {...{ error, errorMessage, checked: value }}>
+    {props.children} - I don't work :(
+  </Checkbox>
 )
 
 interface ModeSelectorProps {
