@@ -129,9 +129,8 @@ class SuggestedGenesContent extends React.Component<Props, null> {
 
   render() {
     const items = this.props.suggested_genes.map((item, index) => (
-      <LinkContainer>
+      <LinkContainer key={`suggested-genes-${index}`}>
         <ReplaceTransition
-          key={index}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={400}
         >

@@ -141,9 +141,8 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
 
   render() {
     const items = this.props.viewer.match_gene.map((item, index) => (
-      <LinkContainer>
+      <LinkContainer key={`gene-search-results-${index}`}>
         <ReplaceTransition
-          key={index}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={400}
         >
