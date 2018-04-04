@@ -9,7 +9,7 @@ import colors from "../../../Assets/Colors"
 export const ShippingForm = props => {
   return (
     <div>
-      <Title titleSize="large" fontWeight="bold">
+      <Title titleSize="xsmall" fontWeight="bold">
         Shipping details
       </Title>
 
@@ -18,7 +18,7 @@ export const ShippingForm = props => {
         Have questions? Get in touch
       </Text>
 
-      <Title titleSize="large" fontWeight="bold">
+      <Title titleSize="xsmall" fontWeight="bold">
         Shipping address
       </Title>
 
@@ -28,11 +28,18 @@ export const ShippingForm = props => {
       <Input placeholder="City" block />
       <Input placeholder="State / Province / Region" block />
       <Input placeholder="Postal Code" block />
-      <Input placeholder="Country" block />
+
+      <label>Country</label>
+
+      <select id="country">
+        <option>foo</option>
+        <option>bar</option>
+        <option>baz</option>
+      </select>
 
       <InvertedButton block>CONTINUE TO PAYMENT</InvertedButton>
 
-      <Text color={colors.grayDark} textSize="medium" align="center">
+      <Text color={colors.graySemibold} textSize="medium" align="center">
         Questions? Email <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
       </Text>
     </div>

@@ -7,7 +7,6 @@ import { ShippingForm } from "./ShippingForm"
 import { PaymentForm } from "./PaymentForm"
 import { ReviewForm } from "./ReviewForm"
 import { StepMarker } from "./StepMarker"
-import { first } from "lodash"
 
 export const formSteps = [
   {
@@ -28,13 +27,13 @@ export const formSteps = [
 ]
 
 export const OrderForm: SFC = props => {
-  const { Router, basename, firstStep } = getConfig()
+  const { Router, basename } = getConfig()
 
   return (
     <Provider>
       <Router basename={basename}>
         <Container>
-          <Redirect from="/" to={firstStep} />
+          <Redirect from="/" to="/shipping" />
 
           <Content>
             <StepMarker />
@@ -53,12 +52,10 @@ const getConfig = () => {
   const isClient = typeof window !== "undefined"
   const Router = isClient ? BrowserRouter : StaticRouter // TODO: Replace with MemoryRouter
   const basename = isClient && "/order2" // For mounting on SSR route
-  const firstStep = first(formSteps).path
 
   return {
     Router,
     basename,
-    firstStep,
   }
 }
 
