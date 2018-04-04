@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { NewsHeadline } from "../News/NewsHeadline"
-
-import { NewsArticle } from "../Fixtures/Articles"
+import { FeatureArticle, NewsArticle } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
+import { NewsHeadline } from "../News/NewsHeadline"
+import { NewsPanel } from "../News/NewsPanel"
 
 storiesOf("Publishing/News", module)
   .add("News Headline", () => {
@@ -20,6 +20,13 @@ storiesOf("Publishing/News", module)
           article={NewsArticle}
           editTitle={EditableChild("title")}
         />
+      </div>
+    )
+  })
+  .add("News Panel", () => {
+    return (
+      <div>
+        <NewsPanel articles={[NewsArticle, FeatureArticle]} />
       </div>
     )
   })

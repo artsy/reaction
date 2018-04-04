@@ -14,6 +14,10 @@ const textSizesForGaramond = {
     size: "17px",
     height: "1.1em",
   },
+  s18: {
+    size: "18px",
+    height: "1.4em",
+  },
   s19: {
     size: "19px",
     height: "1.5em",
