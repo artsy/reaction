@@ -143,6 +143,7 @@ const NewsContainer = styled.div`
     `
     border-radius: 4px;
     border: 1px solid ${Colors.grayRegular};
+    cursor: pointer;
   `};
 
   ${pMedia.sm`
