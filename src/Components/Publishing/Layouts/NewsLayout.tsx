@@ -32,8 +32,8 @@ export class NewsLayout extends Component<Props, State> {
     super(props)
 
     this.state = {
-      isTruncated: this.props.isTruncated,
-      isHovered: this.props.isHovered,
+      isTruncated: this.props.isTruncated || false,
+      isHovered: this.props.isHovered || false,
     }
   }
 
@@ -55,7 +55,7 @@ export class NewsLayout extends Component<Props, State> {
         isHovered={isHovered}
         marginTop={marginTop}
         onClick={() => {
-          if (!isMobile && isTruncated) {
+          if (isTruncated) {
             this.onExpand()
           }
         }}
