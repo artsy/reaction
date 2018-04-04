@@ -1,5 +1,6 @@
-import React, { Component } from "react"
+import React, { SFC } from "react"
 import styled from "styled-components"
+import { Provider } from "unstated"
 import { Redirect, Route, StaticRouter } from "react-router"
 import { BrowserRouter } from "react-router-dom"
 import { ShippingForm } from "./ShippingForm"
@@ -26,11 +27,11 @@ export const formSteps = [
   },
 ]
 
-export class OrderForm extends Component {
-  render() {
-    const { Router, basename, firstStep } = getConfig()
+export const OrderForm: SFC = props => {
+  const { Router, basename, firstStep } = getConfig()
 
-    return (
+  return (
+    <Provider>
       <Router basename={basename}>
         <Container>
           <Redirect from="/" to={firstStep} />
@@ -44,8 +45,8 @@ export class OrderForm extends Component {
           </Content>
         </Container>
       </Router>
-    )
-  }
+    </Provider>
+  )
 }
 
 const getConfig = () => {
