@@ -11,9 +11,14 @@ storiesOf("Typography", module)
     <div>
       <Title titleSize="xxlarge">XXLarge Title: 72px</Title>
       <Title titleSize="xlarge">XLarge Title: 50px</Title>
-      <Title titleSize="large">Large Title: 37px</Title>
+      <Title titleSize="large" fontWeight="bold">
+        Large Title: 37px, Bold
+      </Title>
       <Title titleSize="medium">Medium Title: 30px</Title>
       <Title titleSize="small">Small Title: 25px</Title>
+      <Title titleSize="xsmall" fontWeight="bold">
+        Small Title: 25px, Bold
+      </Title>
       <Title titleSize="xxsmall">XXSmall Title: 13px</Title>
     </div>
   ))
