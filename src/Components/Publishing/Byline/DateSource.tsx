@@ -21,7 +21,13 @@ export const DateSource: React.SFC<NewsBylineProps & Props> = props => {
     return (
       <Fragment>
         {hasSource && ", via"}&nbsp;
-        {editSource ? editSource : <a href={source.url}>{source.title}</a>}
+        {editSource ? (
+          editSource
+        ) : (
+          <a href={source.url} target="_blank">
+            {source.title}
+          </a>
+        )}
       </Fragment>
     )
   }
