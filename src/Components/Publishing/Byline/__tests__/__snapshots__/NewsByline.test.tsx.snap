@@ -414,6 +414,7 @@ exports[`News Byline renders properly 1`] = `
        
       <a
         href="http://nytimes.com"
+        target="_blank"
       >
         The New York Times
       </a>
