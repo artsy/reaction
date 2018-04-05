@@ -1,4 +1,6 @@
 import React, { SFC } from "react"
+import Nav from "../../Nav"
+import Title from "../../Title"
 import styled from "styled-components"
 import { Provider } from "unstated"
 import { Redirect, Route, StaticRouter } from "react-router"
@@ -33,11 +35,14 @@ export const OrderForm: SFC = props => {
     <Provider>
       <Router basename={basename}>
         <Container>
+          <Nav height={70} logoIcon="logotype">
+            <Title titleSize="xsmall">Secure Checkout</Title>
+            <StepMarker />
+          </Nav>
+
           <Redirect from="/" to="/shipping" />
 
           <Content>
-            <StepMarker />
-
             {formSteps.map(({ path, component }, key) => {
               return <Route path={path} component={component} key={key} />
             })}
