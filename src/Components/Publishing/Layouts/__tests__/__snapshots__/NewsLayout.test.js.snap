@@ -801,6 +801,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
              
             <a
               href="http://nytimes.com"
+              onClick={[Function]}
               target="_blank"
             >
               The New York Times
@@ -1707,6 +1708,7 @@ exports[`News Layout renders the news layout properly 1`] = `
              
             <a
               href="http://nytimes.com"
+              onClick={[Function]}
               target="_blank"
             >
               The New York Times

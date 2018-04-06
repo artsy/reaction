@@ -4,10 +4,10 @@ import React from "react"
 import renderer from "react-test-renderer"
 import * as FullscreenHelpers from "../FullscreenHelpers"
 import { VideoPlayer } from "../VideoPlayer"
-import { track } from '../../../../../Utils/track'
+import { track } from "../../../../../Utils/track"
 
-jest.mock('../../../../../Utils/track.ts', () => ({
-  track: jest.fn()
+jest.mock("../../../../../Utils/track.ts", () => ({
+  track: jest.fn(),
 }))
 
 jest.useFakeTimers()
@@ -15,12 +15,12 @@ jest.useFakeTimers()
 describe("VideoPlayer", () => {
   const trackEvent = jest.fn()
 
-  const getWrapper = (props) => {
+  const getWrapper = props => {
     return mount(
       <VideoPlayer
         url="http://files.artsy.net/videos/placeholder.mp4"
         tracking={{
-          trackEvent
+          trackEvent,
         }}
       />
     )
@@ -34,12 +34,14 @@ describe("VideoPlayer", () => {
   })
 
   it("matches the snapshot", () => {
-    const videoPlayer = renderer.create(
-      <VideoPlayer
-        url="http://files.artsy.net/videos/placeholder.mp4"
-        title="The Video Title"
-      />
-    ).toJSON()
+    const videoPlayer = renderer
+      .create(
+        <VideoPlayer
+          url="http://files.artsy.net/videos/placeholder.mp4"
+          title="The Video Title"
+        />
+      )
+      .toJSON()
     expect(videoPlayer).toMatchSnapshot()
   })
 
@@ -48,8 +50,8 @@ describe("VideoPlayer", () => {
       const videoPlayer = getWrapper()
       videoPlayer.instance().setDuration({
         target: {
-          duration: 10000
-        }
+          duration: 10000,
+        },
       })
       expect(videoPlayer.state("duration")).toBe(10000)
     })
@@ -58,8 +60,8 @@ describe("VideoPlayer", () => {
       const videoPlayer = getWrapper()
       videoPlayer.instance().updateTime({
         target: {
-          currentTime: 20000
-        }
+          currentTime: 20000,
+        },
       })
       expect(videoPlayer.state("currentTime")).toBe(20000)
     })
@@ -114,7 +116,7 @@ describe("VideoPlayer", () => {
 
     it("#pause", () => {
       const videoPlayer = getWrapper()
-      jest.spyOn(videoPlayer.instance().video, 'pause')
+      jest.spyOn(videoPlayer.instance().video, "pause")
       videoPlayer.instance().pause()
       expect(videoPlayer.state("isPlaying")).toBe(false)
       expect(videoPlayer.instance().video.pause).toBeCalled()
@@ -122,7 +124,7 @@ describe("VideoPlayer", () => {
 
     it("#play", () => {
       const videoPlayer = getWrapper()
-      jest.spyOn(videoPlayer.instance().video, 'play')
+      jest.spyOn(videoPlayer.instance().video, "play")
       videoPlayer.instance().play()
       expect(videoPlayer.state("isPlaying")).toBe(true)
       expect(videoPlayer.instance().video.play).toBeCalled()
@@ -171,8 +173,8 @@ describe("VideoPlayer", () => {
 
     it("tracks duration", () => {
       const videoPlayer = getWrapper()
-      Object.defineProperty(videoPlayer.instance().video, 'duration', {
-        writable: true
+      Object.defineProperty(videoPlayer.instance().video, "duration", {
+        writable: true,
       })
       videoPlayer.instance().video.currentTime = 3
       videoPlayer.instance().video.duration = 10
@@ -180,7 +182,7 @@ describe("VideoPlayer", () => {
       expect(trackEvent).toBeCalledWith({
         action: "Video duration",
         label: "Video duration",
-        percent_complete: 25
+        percent_complete: 25,
       })
     })
 
@@ -191,7 +193,7 @@ describe("VideoPlayer", () => {
       expect(trackEvent).toBeCalledWith({
         action: "Video seconds",
         label: "Video seconds",
-        seconds_complete: 3
+        seconds_complete: 3,
       })
     })
   })

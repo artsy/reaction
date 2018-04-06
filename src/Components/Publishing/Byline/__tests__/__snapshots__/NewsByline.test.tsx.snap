@@ -469,6 +469,7 @@ exports[`News Byline renders properly 1`] = `
        
       <a
         href="http://nytimes.com"
+        onClick={[Function]}
         target="_blank"
       >
         The New York Times
