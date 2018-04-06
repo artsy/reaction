@@ -179,7 +179,7 @@
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "tslint --fix",
+      "tslint -c tslint.json --fix",
       "yarn prettier-write --",
       "git add"
     ],
