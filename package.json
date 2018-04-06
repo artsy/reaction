@@ -42,7 +42,7 @@
     "test": "node verify-node-version.js && jest",
     "test:watch": "jest --watch --runInBand",
     "type-check": "tsc --noEmit --pretty",
-    "watch": "yarn clean && concurrently --kill-others 'yarn relay --watch' 'yarn compile -w'",
+    "watch": "concurrently --kill-others 'yarn relay --watch' 'yarn compile -w'",
     "semantic-release": "semantic-release"
   },
   "resolutions": {

@@ -4,9 +4,13 @@ import Text from "../../Text"
 import Input from "../../Input"
 import InvertedButton from "../../Buttons/Inverted"
 import colors from "../../../Assets/Colors"
-// import { Link } from "react-router-dom"
+import styled from "styled-components"
+
+const options = ["foo", "bar", "baz"]
 
 export const ShippingForm = props => {
+  const label = "Country"
+
   return (
     <div>
       <Title titleSize="xsmall" fontWeight="bold">
@@ -29,13 +33,25 @@ export const ShippingForm = props => {
       <Input placeholder="State / Province / Region" block />
       <Input placeholder="Postal Code" block />
 
-      <label>Country</label>
+      <div>
+        <div className="label">{label}</div>
 
-      <select id="country">
-        <option>foo</option>
-        <option>bar</option>
-        <option>baz</option>
-      </select>
+        <label>
+          <select>
+            {options.map(option => {
+              return <option key={option}>{option}</option>
+            })}
+          </select>
+        </label>
+      </div>
+
+      <BorderedSelect>
+        <Select id="country">
+          <option>foo</option>
+          <option>bar</option>
+          <option>baz</option>
+        </Select>
+      </BorderedSelect>
 
       <InvertedButton block>CONTINUE TO PAYMENT</InvertedButton>
 
@@ -45,3 +61,39 @@ export const ShippingForm = props => {
     </div>
   )
 }
+
+const BorderedSelect = styled.label`
+  &:before {
+    display: block;
+    position: absolute;
+    content: " ";
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    width: 24px;
+    background-color: #fff;
+    border-top: 10px solid #fff;
+    border-bottom: 10px solid #fff;
+    border-left: 1px solid #e5e5e5;
+  }
+
+  &:after {
+    display: inline-block;
+    content: " ";
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 8px solid #ccc;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    margin: 2px 0 4px 4px;
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    margin-top: -4px;
+  }
+`
+
+const Select = styled.select`
+  height: 20px;
+`

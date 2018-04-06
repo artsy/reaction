@@ -35,7 +35,7 @@ export const OrderForm: SFC = props => {
     <Provider>
       <Router basename={basename}>
         <Container>
-          <Nav height={70} logoIcon="logotype">
+          <Nav height={70} logoIcon="logotype" logoLink="https://www.artsy.net">
             <Title titleSize="xsmall">Secure Checkout</Title>
             <StepMarker />
           </Nav>
