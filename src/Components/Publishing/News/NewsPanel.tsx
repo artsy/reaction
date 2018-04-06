@@ -20,7 +20,7 @@ export const NewsPanel: React.SFC<Props> = props => {
 
       <ArticlesContainer>
         {props.articles.map((article, i) => (
-          <ArticleHeadline href={article.slug} key={i}>
+          <ArticleHeadline href={`/news/${article.slug}`} key={i}>
             {article.title}
           </ArticleHeadline>
         ))}

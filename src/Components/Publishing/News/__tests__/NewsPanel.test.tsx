@@ -10,3 +10,9 @@ it("Renders article headlines", () => {
   expect(wrapper.text()).toMatch(NewsArticle.title)
   expect(wrapper.text()).toMatch(FeatureArticle.title)
 })
+
+it("Links headlines to article", () => {
+  const wrapper = mount(<NewsPanel articles={[NewsArticle, FeatureArticle]} />)
+  expect(wrapper.html()).toMatch(`/news/${NewsArticle.slug}`)
+  expect(wrapper.html()).toMatch(`/news/${FeatureArticle.slug}`)
+})
