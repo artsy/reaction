@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
@@ -16,6 +16,8 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   tracking?: any
   trackingData?: any
   hasLabel?: boolean
+  isMobile?: boolean
+  isNews?: boolean
 }
 
 @track(
@@ -70,9 +72,10 @@ export class Share extends React.Component<Props, null> {
   }
 
   render() {
-    const { color, hasLabel } = this.props
+    const { color, hasLabel, isMobile, isNews } = this.props
+
     return (
-      <ShareContainer>
+      <ShareContainer removeMarginForMobile={isNews && isMobile}>
         {hasLabel && <ShareLabel>Share</ShareLabel>}
         <IconWrapper
           href={this.getHref("facebook")}
@@ -96,12 +99,24 @@ export class Share extends React.Component<Props, null> {
   }
 }
 
-export const ShareContainer = styled.div`
+interface ShareContainerProps {
+  removeMarginForMobile?: boolean
+}
+
+const div: StyledFunction<
+  ShareContainerProps & React.HTMLProps<HTMLInputElement>
+> =
+  styled.div
+
+export const ShareContainer = div`
   display: flex;
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
-  ${pMedia.xs`
+  ${props =>
+    props.removeMarginForMobile
+      ? ""
+      : pMedia.xs`
     margin-top: 15px;
   `};
 `
