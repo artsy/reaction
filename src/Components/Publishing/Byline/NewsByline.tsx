@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { getArticleFullHref, getAuthorByline } from "../Constants"
-import { IconShareArrow } from "../Icon/IconShareArrow"
 import { ArticleData } from "../Typings"
 import { StyledAuthor } from "./AuthorDate"
 import { DateSource } from "./DateSource"
@@ -16,23 +15,11 @@ export interface NewsBylineProps {
 }
 
 export const NewsByline: React.SFC<NewsBylineProps> = props => {
-  const {
-    article,
-    editSource,
-    isTruncated,
-    isMobile,
-    onShareFromMobile,
-  } = props
+  const { article, editSource, isTruncated, isMobile } = props
   const { authors, title } = article
   const url = getArticleFullHref(article.slug)
 
-  const shareIcon = isMobile ? (
-    <ShareIconContainer onClick={onShareFromMobile}>
-      <IconShareArrow />
-    </ShareIconContainer>
-  ) : (
-    <Share url={url} title={title} />
-  )
+  const shareIcon = <Share url={url} title={title} isNews isMobile={isMobile} />
 
   return (
     <NewsBylineContainer>
@@ -62,10 +49,4 @@ const NewsBylineContainer = styled.div`
 const AuthorDateContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const ShareIconContainer = styled.div`
-  &:hover {
-    opacity: 0.6;
-  }
 `
