@@ -1,9 +1,9 @@
 import React from "react"
-import Title from "../../Title"
-import Text from "../../Text"
-import InvertedButton from "../../Buttons/Inverted"
-import { Checkbox } from "../../Checkbox"
-import colors from "../../../Assets/Colors"
+import Title from "../../../Title"
+import Text from "../../../Text"
+import InvertedButton from "../../../Buttons/Inverted"
+import { Checkbox } from "../../../Checkbox"
+import colors from "../../../../Assets/Colors"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
@@ -16,7 +16,7 @@ export const ReviewForm = props => {
         </Title>
 
         <Text textSize="medium">
-          <Edit to="/shipping">Change</Edit>
+          <Edit onClick={() => props.gotoStep("/shipping")}>Change</Edit>
         </Text>
       </Header>
 
@@ -32,7 +32,7 @@ export const ReviewForm = props => {
         </Title>
 
         <Text textSize="medium">
-          <Edit to="/payment">Change</Edit>
+          <Edit onClick={() => props.gotoStep("/payment")}>Change</Edit>
         </Text>
       </Header>
 
@@ -72,7 +72,9 @@ export const ReviewForm = props => {
         </Text>
       </CenteredCheckbox>
 
-      <InvertedButton block>REVIEW ORDER</InvertedButton>
+      <InvertedButton block onClick={() => props.nextStep()}>
+        REVIEW ORDER
+      </InvertedButton>
 
       <Text color={colors.graySemibold} textSize="medium" align="center">
         Questions? Email <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
@@ -87,7 +89,10 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const Edit = styled(Link)``
+const Edit = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
+`
 
 const Items = styled.div`
   display: flex;

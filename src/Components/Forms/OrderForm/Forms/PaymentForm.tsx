@@ -1,10 +1,10 @@
 import React from "react"
-import Title from "../../Title"
-import Text from "../../Text"
-import Input from "../../Input"
-import InvertedButton from "../../Buttons/Inverted"
-import { Checkbox } from "../../Checkbox"
-import colors from "../../../Assets/Colors"
+import Title from "../../../Title"
+import Text from "../../../Text"
+import Input from "../../../Input"
+import InvertedButton from "../../../Buttons/Inverted"
+import { Checkbox } from "../../../Checkbox"
+import colors from "../../../../Assets/Colors"
 // import { Link } from "react-router-dom"
 
 export const PaymentForm = props => {
@@ -25,7 +25,9 @@ export const PaymentForm = props => {
 
       <Checkbox>Same as shipping</Checkbox>
 
-      <InvertedButton block>REVIEW ORDER</InvertedButton>
+      <InvertedButton block onClick={() => props.nextStep()}>
+        REVIEW ORDER
+      </InvertedButton>
 
       <Text color={colors.graySemibold} textSize="medium" align="center">
         Questions? Email <a href="mailto:orders@artsy.net">orders@artsy.net.</a>

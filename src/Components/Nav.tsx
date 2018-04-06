@@ -39,6 +39,8 @@ const Nav = styled.div`
   border-bottom: 1px solid ${colors.grayRegular};
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   height: ${(p: NavBarProps) => p.height}px;
 
   ${NavIcon} {

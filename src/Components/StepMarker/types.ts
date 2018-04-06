@@ -14,8 +14,10 @@ export interface RenderProps {
 }
 
 export interface Props {
-  children?: (renderProps: RenderProps) => ReactNode
+  children?: (renderProps: RenderProps) => ReactNode | void
   steps: StepProps[]
+  style?: any
+  onChange?: any
 }
 
 export interface State {

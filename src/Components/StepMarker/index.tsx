@@ -7,11 +7,17 @@ import { Fonts } from "../Publishing/Fonts"
 import { Props, State, StepProps } from "./types"
 import { isUndefined } from "lodash"
 
+export * from "./types"
+
 export class StepMarker extends Component<Props, State> {
+  static defaultProps = {
+    disableInternalState: false,
+  }
+
   constructor(props) {
     super(props)
     this.validate(props)
-    this.state = this.getStepState(props)
+    this.state = this.computeStepState(props)
   }
 
   validate(props: Props) {
@@ -25,7 +31,7 @@ export class StepMarker extends Component<Props, State> {
     }
   }
 
-  getStepState(propsOrState: State) {
+  computeStepState(propsOrState: State) {
     let { currentStep, steps } = propsOrState
 
     // If currentStep isn't passed in attempt to infer it from configuration
@@ -60,7 +66,7 @@ export class StepMarker extends Component<Props, State> {
 
   updateStep(currentStep) {
     this.setState(
-      this.getStepState({
+      this.computeStepState({
         ...this.state,
         currentStep,
       })
@@ -84,11 +90,11 @@ export class StepMarker extends Component<Props, State> {
   }
 
   render() {
-    const { children } = this.props
+    const { children, style } = this.props
     const { steps } = this.state
 
     return (
-      <Container>
+      <Container style={style}>
         <Steps>
           {steps.map((step, key) => {
             return (
