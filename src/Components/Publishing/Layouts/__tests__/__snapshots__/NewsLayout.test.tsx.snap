@@ -778,6 +778,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
              
             <a
               href="http://nytimes.com"
+              target="_blank"
             >
               The New York Times
             </a>
@@ -1651,6 +1652,7 @@ exports[`News Layout renders the news layout properly 1`] = `
              
             <a
               href="http://nytimes.com"
+              target="_blank"
             >
               The New York Times
             </a>
