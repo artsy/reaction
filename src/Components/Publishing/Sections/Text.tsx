@@ -43,11 +43,11 @@ export class Text extends Component<Props, State> {
       const paragraphs = doc.getElementsByTagName("P")
       const lastParagraph =
         paragraphs.length && paragraphs[paragraphs.length - 1]
-
-      // insert content-end in last paragraph
-      lastParagraph.innerHTML =
-        lastParagraph.innerHTML + "<span class='content-end'> </span>"
-
+      if (lastParagraph) {
+        // insert content-end in last paragraph
+        lastParagraph.innerHTML =
+          lastParagraph.innerHTML + "<span class='content-end'> </span>"
+      }
       return doc.innerHTML
     }
     return cleanedHtml
