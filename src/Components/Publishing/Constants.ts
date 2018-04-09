@@ -75,6 +75,8 @@ export const getDate = (date, format: DateFormat = "default") => {
     moment(date).format("YYYY") === moment(today).format("YYYY")
 
   switch (format) {
+    case "monthDay":
+      return moment(date).format("MMM D")
     case "monthYear":
       return moment(date)
         .tz("America/New_York")

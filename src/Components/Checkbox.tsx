@@ -1,71 +1,114 @@
-import React from "react"
-
+import React, { Component, HTMLProps } from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
 
-interface Props extends React.HTMLProps<Checkbox> {
+interface CheckboxState {
   checked: boolean
 }
 
-export class Checkbox extends React.Component<Props, null> {
-  static defaultProps = {
-    checked: true,
+export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      checked: props.checked || false,
+    }
+  }
+
+  onChange = event => {
+    if (this.props.onChange) {
+      this.props.onChange(event)
+    }
+
+    this.setState({
+      checked: event.currentTarget.checked,
+    })
   }
 
   render() {
-    const { checked } = this.props
+    const { children, className, ...propsForCheckbox } = this.props
 
     return (
-      <div className={this.props.className}>
+      <Label className={className}>
         <CheckboxInput
-          onChange={() => null}
           type="checkbox"
-          checked={checked}
+          {...propsForCheckbox as any}
+          onChange={this.onChange}
+          checked={this.state.checked}
         />
-        <Label />
-      </div>
+
+        {children}
+      </Label>
     )
   }
 }
 
-const StyledCheckbox = styled(Checkbox)`
+const CheckboxInput = styled.input`
   width: 20px;
   height: 20px;
   position: relative;
-  user-select: none;
-  background: ${colors.grayMedium};
-  display: inline-block;
-`
+  top: -1px;
+  margin: 0 0.5rem 0 0;
 
-const CheckboxInput = styled.input`
-  visibility: hidden;
-  &:checked + label:after {
-    opacity: 1 !important;
+  // The before represents the check mark
+  &:before {
+    transform: rotate(-45deg);
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 4px;
+    width: 0.6rem;
+    height: 0.3rem;
+    border: 2px solid ${colors.black};
+    border-top-style: none;
+    border-right-style: none;
+    transition: opacity 0.25s;
+    opacity: 0;
+  }
+
+  &:hover:before {
+    opacity: 0.1;
+  }
+
+  &:checked:before {
+    opacity: 1;
+  }
+
+  // The after represents the square box
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    background: ${colors.white};
+    border: 2px solid ${colors.grayRegular};
+  }
+
+  &:disabled {
+    &:hover:before {
+      border-color: transparent;
+    }
+
+    &:checked {
+      &:before {
+        border-color: ${colors.grayDark};
+      }
+    }
+
+    &:after {
+      background-color: ${colors.grayRegular};
+    }
   }
 `
 
 const Label = styled.label`
+  position: relative;
+  line-height: 135%;
   cursor: pointer;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
-  background-color: white;
-  &:after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    right: 2px;
-    bottom: 7px;
-    left: 2px;
-    border: 2px solid black;
-    border-top: none;
-    border-right: none;
-    opacity: 0;
-    transform: rotate(-45deg) translateZ(0);
-    transition: opacity 0.25s;
-  }
+  display: flex;
+  align-items: center;
 `
 
-export default StyledCheckbox
+export default Checkbox

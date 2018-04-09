@@ -32,8 +32,8 @@ export class NewsLayout extends Component<Props, State> {
     super(props)
 
     this.state = {
-      isTruncated: this.props.isTruncated,
-      isHovered: this.props.isHovered,
+      isTruncated: this.props.isTruncated || false,
+      isHovered: this.props.isHovered || false,
     }
   }
 
@@ -55,7 +55,7 @@ export class NewsLayout extends Component<Props, State> {
         isHovered={isHovered}
         marginTop={marginTop}
         onClick={() => {
-          if (!isMobile && isTruncated) {
+          if (isTruncated) {
             this.onExpand()
           }
         }}
@@ -143,10 +143,16 @@ const NewsContainer = styled.div`
     `
     border-radius: 4px;
     border: 1px solid ${Colors.grayRegular};
+    cursor: pointer;
   `};
 
   ${pMedia.sm`
-    margin: 40px 10px;
+    margin: 40px 5px;
     padding: 10px 15px 20px;
+    ${(props: NewsContainerProps) =>
+      props.marginTop &&
+      `
+      margin-top: ${props.marginTop};
+    `};
   `};
 `

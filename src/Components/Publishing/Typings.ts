@@ -17,10 +17,11 @@ export type SectionLayout =
 export type BylineLayout = "fullscreen" | "condensed" | "standard" | "split"
 
 export type DateFormat =
-  | "monthYear"
   | "condensed"
-  | "verbose"
+  | "monthYear"
+  | "monthDay"
   | "news"
+  | "verbose"
   | "default"
 
 // TODO: Make some of these non-optional ;)

@@ -15,7 +15,7 @@ export const NewsNav: React.SFC<Props> = props => {
     <NewsNavContainer positionTop={positionTop}>
       <MaxWidthContainer>
         {date && <NewsDateHeader date={date} />}
-        <Title>The News</Title>
+        <Title>News</Title>
       </MaxWidthContainer>
     </NewsNavContainer>
   )
