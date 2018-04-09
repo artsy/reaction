@@ -7,9 +7,14 @@ import {
   ChangeMode,
   FormContainer as Form,
   inputValidators,
-  StyledFacebookButton,
+  GrayFacebookButton,
   StyledInput as Input,
+  TOSCheckbox,
 } from "./commonElements"
+
+import Colors from "../../Assets/Colors"
+import Text from "../Text"
+import TextLink from "../TextLink"
 import { FormComponentType, InputValues } from "./Types"
 
 export const LoginForm: FormComponentType = props => {
@@ -56,10 +61,26 @@ export const LoginForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <TOSCheckbox
+              error={
+                touched.acceptedTermsOfService && errors.acceptedTermsOfService
+              }
+              value={values.acceptedTermsOfService}
+              type="checkbox"
+              name="accepted-terms-of-service"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              errorMessage={errors.acceptedTermsOfService}
+            >
+              <Text color={Colors.grayDark}>
+                I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
+                <TextLink>Privacy Policy</TextLink>
+              </Text>
+            </TOSCheckbox>
             <Button type="submit" disabled={isSubmitting}>
               Log In
             </Button>
-            <StyledFacebookButton>Log In with Facebook</StyledFacebookButton>
+            <GrayFacebookButton>Log In with Facebook</GrayFacebookButton>
             <ChangeMode handleClick={props.handleChangeMode("register")}>
               Sign Up
             </ChangeMode>

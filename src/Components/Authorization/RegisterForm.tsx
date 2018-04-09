@@ -1,21 +1,36 @@
 import { Formik, FormikProps } from "formik"
 import React from "react"
 import Yup from "yup"
+import styled from "styled-components"
 
 import {
-  BlockButton as Button,
-  ChangeMode,
   FormContainer,
   inputValidators,
-  StyledFacebookButton,
+  GrayFacebookButton,
   StyledInput as Input,
   TOSCheckbox,
 } from "./commonElements"
+import Button from "../Buttons/Inverted"
 import { FormComponentType, InputValues } from "./Types"
 
 import colors from "../../Assets/Colors"
 import Text from "../Text"
 import TextLink from "../TextLink"
+import Colors from "../../Assets/Colors"
+
+const LoginText = styled(Text).attrs({
+  color: Colors.grayDark,
+  align: "center",
+})`
+  margin-top: 0;
+`
+
+const SignUpButton = styled(Button).attrs({
+  type: "submit",
+  block: true,
+})`
+  margin-top: 50px;
+`
 
 export const RegisterForm: FormComponentType = props => {
   return (
@@ -88,17 +103,14 @@ export const RegisterForm: FormComponentType = props => {
               </Text>
             </TOSCheckbox>
             {/* touched.password && errors.password && <div>{errors.password}</div> */}
-            <Button type="submit" disabled={isSubmitting}>
-              Sign Up
-            </Button>
-            <StyledFacebookButton>Sign up with Facebook</StyledFacebookButton>
-            <Text color={colors.grayDark} align="center">
-              Already have an account?
-              <ChangeMode handleClick={props.handleChangeMode("login")}>
-                {" "}
-                Log In
-              </ChangeMode>
-            </Text>
+            <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
+            <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
+            <LoginText>
+              Already have an account?{" "}
+              <TextLink onClick={props.handleChangeMode("login")}>
+                Login
+              </TextLink>
+            </LoginText>
           </FormContainer>
         )
       }}

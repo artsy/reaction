@@ -9,6 +9,7 @@ export interface ButtonProps extends React.HTMLProps<Button> {
   state?: ButtonState
   block?: boolean
   icon?: React.ReactElement<IconProps>
+  color?: string
 }
 
 export enum ButtonState {
@@ -28,15 +29,17 @@ class Button extends React.Component<ButtonProps, any> {
     delete newProps.block
     delete newProps.icon
 
-    return this.props.href
-      ? <a className={this.props.className} {...newProps}>
-          {this.props.icon}
-          <span>{this.props.children}</span>
-        </a>
-      : <button className={this.props.className} {...newProps}>
-          {this.props.icon}
-          <span>{this.props.children}</span>
-        </button>
+    return this.props.href ? (
+      <a className={this.props.className} {...newProps}>
+        {this.props.icon}
+        <span>{this.props.children}</span>
+      </a>
+    ) : (
+      <button className={this.props.className} {...newProps}>
+        {this.props.icon}
+        <span>{this.props.children}</span>
+      </button>
+    )
   }
 }
 
@@ -60,7 +63,7 @@ export const StyledButton = styled(Button)`
   font-size: 13px;
   line-height: 1;
   outline: 0;
-  transition: background-color .25s,color .25s;
+  transition: background-color 0.25s, color 0.25s;
   margin: 10px;
   border: none;
   box-sizing: border-box;
@@ -76,8 +79,7 @@ export const StyledButton = styled(Button)`
     }};
   }
 
-  ${fonts.primary.style}
-  ${block()}
+  ${fonts.primary.style} ${block()};
 `
 
 StyledButton.defaultProps = {

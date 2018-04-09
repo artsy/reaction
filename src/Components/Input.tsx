@@ -66,6 +66,8 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
 const ShowHide = styled.a`
   ${fonts.primary.style};
   font-size: 12px;
+  display: flex;
+  align-items: center;
 `
 
 const ShowHideButton = props => {
