@@ -111,7 +111,8 @@ const Container = styled.div`
 
 const Forms = styled.div`
   max-width: 540px;
-  margin: auto;
+  margin: 0 auto;
+  border: 1px solid green;
 `
 
 const StyledTitle = Title.extend`

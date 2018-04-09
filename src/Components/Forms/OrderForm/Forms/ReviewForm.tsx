@@ -6,80 +6,111 @@ import { Checkbox } from "../../../Checkbox"
 import colors from "../../../../Assets/Colors"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { Grid, Row, Col } from "react-styled-flexboxgrid"
 
 export const ReviewForm = props => {
   return (
-    <div>
-      <Header>
-        <Title titleSize="xsmall" fontWeight="bold">
-          Shipping Address
-        </Title>
-
-        <Text textSize="medium">
-          <Edit onClick={() => props.gotoStep("/shipping")}>Change</Edit>
-        </Text>
-      </Header>
-
-      <Text textSize="medium">
-        Brian Watterson <br />
-        401 Broadway, Suite 25 <br />
-        New York, NY 11001
-      </Text>
-
-      <Header>
-        <Title titleSize="xsmall" fontWeight="bold">
-          Payment method
-        </Title>
-
-        <Text textSize="medium">
-          <Edit onClick={() => props.gotoStep("/payment")}>Change</Edit>
-        </Text>
-      </Header>
-
-      <Text textSize="medium">
-        Visa ending in 4444 <br />
-        Billing address: 33 5th Ave, Apt 8, <br />
-        New York, NY 10011
-      </Text>
-
-      <Header>
-        <Title titleSize="xsmall" fontWeight="bold">
-          Review Item
-        </Title>
-      </Header>
-
-      <Items>
-        <Item>
-          <ItemContent>
-            <Image src="https://d32dm0rphc51dk.cloudfront.net/3cB6grnWE6SE4VDHSoP2ow/large.jpg" />
-
-            <Meta>
-              <Artist textSize="medium">Donald Longlaster Ast</Artist>
-              <ArtworkTitle textSize="medium">Flowers, 2015</ArtworkTitle>
-              <Dimensions textSize="medium">22 1/25 × 21 59/100 in</Dimensions>
-            </Meta>
-          </ItemContent>
-
-          <Price textSize="medium">$1000</Price>
-        </Item>
-      </Items>
-
-      <Divider />
-
-      <CenteredCheckbox>
-        <Text textSize="medium">
-          I agree to the <a href="/TODO">Condition of Sale.</a>
-        </Text>
-      </CenteredCheckbox>
-
-      <InvertedButton block onClick={() => props.nextStep()}>
-        REVIEW ORDER
-      </InvertedButton>
-
-      <Text color={colors.graySemibold} textSize="medium" align="center">
-        Questions? Email <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-      </Text>
-    </div>
+    <Grid fluid>
+      <Row>
+        <Col xs>
+          <Header>
+            <Title titleSize="xsmall" fontWeight="bold">
+              Shipping Address
+            </Title>
+            <Text textSize="medium">
+              <Edit onClick={() => props.gotoStep("/shipping")}>Change</Edit>
+            </Text>
+          </Header>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Text textSize="medium">
+            Brian Watterson <br />
+            401 Broadway, Suite 25 <br />
+            New York, NY 11001
+          </Text>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Header>
+            <Title titleSize="xsmall" fontWeight="bold">
+              Payment method
+            </Title>
+            <Text textSize="medium">
+              <Edit onClick={() => props.gotoStep("/payment")}>Change</Edit>
+            </Text>
+          </Header>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Text textSize="medium">
+            Visa ending in 4444 <br />
+            Billing address: 33 5th Ave, Apt 8, <br />
+            New York, NY 10011
+          </Text>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Header>
+            <Title titleSize="xsmall" fontWeight="bold">
+              Review Item
+            </Title>
+          </Header>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Items>
+            <Item>
+              <ItemContent>
+                <Image src="https://d32dm0rphc51dk.cloudfront.net/3cB6grnWE6SE4VDHSoP2ow/large.jpg" />
+                <Meta>
+                  <Artist textSize="medium">Donald Longlaster Ast</Artist>
+                  <ArtworkTitle textSize="medium">Flowers, 2015</ArtworkTitle>
+                  <Dimensions textSize="medium">
+                    22 1/25 × 21 59/100 in
+                  </Dimensions>
+                </Meta>
+              </ItemContent>
+              <Price textSize="medium">$1000</Price>
+            </Item>
+          </Items>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Divider />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <CenteredCheckbox>
+            <Text textSize="medium">
+              I agree to the <a href="/TODO">Condition of Sale.</a>
+            </Text>
+          </CenteredCheckbox>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <InvertedButton block onClick={() => props.nextStep()}>
+            REVIEW ORDER
+          </InvertedButton>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Text color={colors.graySemibold} textSize="medium" align="center">
+            Questions? Email{" "}
+            <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
+          </Text>
+        </Col>
+      </Row>
+    </Grid>
   )
 }
 
