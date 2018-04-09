@@ -6,6 +6,7 @@ import {
   DisplayPopoverOnBlurExample,
   DisplayPopoverOnClickExample,
   DisplayPopoverOnHoverExample,
+  WithAnimationExample,
 } from "./PopoverExamples"
 
 storiesOf("Components/Popover", module)
@@ -25,4 +26,7 @@ storiesOf("Components/Popover", module)
   })
   .add("Display on blur", () => {
     return <DisplayPopoverOnBlurExample />
+  })
+  .add("With animation", () => {
+    return <WithAnimationExample />
   })
