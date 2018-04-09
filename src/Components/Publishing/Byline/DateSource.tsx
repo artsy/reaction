@@ -1,20 +1,31 @@
-import React, { Fragment } from "react"
+import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
 import { Fonts } from "../Fonts"
 import { NewsBylineProps } from "./NewsByline"
+import { track } from "../../../Utils/track"
 
 interface Props {
   editSource?: any
 }
 
-export const DateSource: React.SFC<NewsBylineProps & Props> = props => {
-  const { article, editSource } = props
-  const { news_source, published_at } = article
+@track()
+export class DateSource extends Component<NewsBylineProps & Props, null> {
+  constructor(props) {
+    super(props)
 
-  const getNewsSource = source => {
+    this.onClick = this.onClick.bind(this)
+  }
+
+  @track({ action: "Clicked news source link" })
+  onClick() {
+    // noop
+  }
+
+  getNewsSource = source => {
+    const { editSource } = this.props
     const hasSource = source && source.url
     if (!editSource && !hasSource) return null
 
@@ -24,7 +35,7 @@ export const DateSource: React.SFC<NewsBylineProps & Props> = props => {
         {editSource ? (
           editSource
         ) : (
-          <a href={source.url} target="_blank">
+          <a href={source.url} target="_blank" onClick={this.onClick}>
             {source.title}
           </a>
         )}
@@ -32,12 +43,15 @@ export const DateSource: React.SFC<NewsBylineProps & Props> = props => {
     )
   }
 
-  return (
-    <DateSourceContainer>
-      {getDate(published_at || new Date(), "verbose")}
-      {getNewsSource(news_source)}
-    </DateSourceContainer>
-  )
+  render() {
+    const { news_source, published_at } = this.props.article
+    return (
+      <DateSourceContainer>
+        {getDate(published_at || new Date(), "verbose")}
+        {this.getNewsSource(news_source)}
+      </DateSourceContainer>
+    )
+  }
 }
 
 const DateSourceContainer = styled.div`
