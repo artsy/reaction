@@ -923,6 +923,13 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-overlays@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@types/react-overlays/-/react-overlays-0.8.2.tgz#e31d18e1f7f07c3c5f4023a2b42bf342664c6966"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-transition-group" "*"
+
 "@types/react-relay@^1.3.3":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-1.3.4.tgz#330e6038c43ae48fa1e49a10b9640e8e038c43a7"
@@ -939,6 +946,12 @@
 "@types/react-test-renderer@^15.4.4":
   version "15.4.4"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-15.4.4.tgz#bce97ffa38b8ec3fd522791f779dd0c378d5a995"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-transition-group@*", "@types/react-transition-group@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.7.tgz#2847292d54c5685d982ae5a3ecb6960946689d87"
   dependencies:
     "@types/react" "*"
 
@@ -3712,6 +3725,10 @@ doctrine@^2.0.0:
 dom-helpers@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
+
+dom-helpers@^3.2.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.3.1.tgz#fc1a4e15ffdf60ddde03a480a9c0fece821dd4a6"
 
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
@@ -7598,6 +7615,12 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+prop-types-extra@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/prop-types-extra/-/prop-types-extra-1.0.1.tgz#a57bd4810e82d27a3ff4317ecc1b4ad005f79a82"
+  dependencies:
+    warning "^3.0.0"
+
 prop-types@^15.0.0, prop-types@^15.5.1, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
@@ -7844,6 +7867,17 @@ react-oembed-container@^0.3.0:
   dependencies:
     prop-types "^15.6.0"
 
+react-overlays@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.8.3.tgz#fad65eea5b24301cca192a169f5dddb0b20d3ac5"
+  dependencies:
+    classnames "^2.2.5"
+    dom-helpers "^3.2.1"
+    prop-types "^15.5.10"
+    prop-types-extra "^1.0.1"
+    react-transition-group "^2.2.0"
+    warning "^3.0.0"
+
 "react-relay@https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz":
   version "1.5.0-artsy.3"
   resolved "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz#a060ff5e401cd2a91dc9fe08d42777ad968e6e3e"
@@ -7936,6 +7970,16 @@ react-transition-group@^1.1.2, react-transition-group@^1.2.1:
     dom-helpers "^3.2.0"
     loose-envify "^1.3.1"
     prop-types "^15.5.6"
+    warning "^3.0.0"
+
+react-transition-group@^2.2.0, react-transition-group@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.3.0.tgz#8dd1af58f6af284b19fd057f512e74f20438ad31"
+  dependencies:
+    chain-function "^1.0.0"
+    dom-helpers "^3.2.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.8"
     warning "^3.0.0"
 
 react-treebeard@^2.0.3:
