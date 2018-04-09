@@ -89,6 +89,10 @@ export class StepMarker extends Component<Props, State> {
     this.updateStep(index)
   }
 
+  isComplete = () => {
+    return this.state.currentStep === this.props.steps.length
+  }
+
   render() {
     const { children, style } = this.props
     const { steps } = this.state
@@ -112,6 +116,7 @@ export class StepMarker extends Component<Props, State> {
             previousStep: this.previousStep,
             gotoStep: this.gotoStep,
             stepState: this.state,
+            isComplete: this.isComplete,
           })}
       </Container>
     )

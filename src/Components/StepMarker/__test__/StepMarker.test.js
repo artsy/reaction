@@ -90,6 +90,7 @@ describe("StepMarker", () => {
             "previousStep",
             "gotoStep",
             "stepState",
+            "isComplete",
           ])
         }}
       </StepMarker>
@@ -182,5 +183,36 @@ describe("StepMarker", () => {
     wrapper.find("#previous").simulate("click")
     wrapper.find("#previous").simulate("click")
     expect(wrapper.state().currentStep).toEqual(0)
+  })
+
+  it("returns boolean from isComplete", done => {
+    const wrapper = mount(
+      <StepMarker steps={getSteps()}>
+        {renderProps => {
+          return (
+            <div>
+              <button id="next" onClick={() => renderProps.nextStep()} />
+              <button
+                id="isComplete"
+                onClick={() => {
+                  if (renderProps.isComplete()) {
+                    done()
+                  } else {
+                    fail()
+                  }
+                }}
+              />
+            </div>
+          )
+        }}
+      </StepMarker>
+    )
+
+    wrapper.find("#next").simulate("click")
+    wrapper.find("#next").simulate("click")
+    wrapper.find("#next").simulate("click")
+    wrapper.find("#next").simulate("click")
+    wrapper.find("#next").simulate("click")
+    wrapper.find("#isComplete").simulate("click")
   })
 })

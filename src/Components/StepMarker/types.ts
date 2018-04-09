@@ -11,6 +11,7 @@ export interface RenderProps {
   previousStep: () => void
   gotoStep: (index: number) => void
   stepState: State
+  isComplete: () => boolean
 }
 
 export interface Props {

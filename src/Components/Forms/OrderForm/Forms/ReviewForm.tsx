@@ -5,7 +5,6 @@ import InvertedButton from "../../../Buttons/Inverted"
 import { Checkbox } from "../../../Checkbox"
 import colors from "../../../../Assets/Colors"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
 
 export const ReviewForm = props => {
