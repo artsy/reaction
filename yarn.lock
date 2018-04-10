@@ -972,6 +972,10 @@
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.3.tgz#0ecbe70f87341767793774d3683b51aa3246434c"
 
+"@types/yup@^0.24.3":
+  version "0.24.3"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.24.3.tgz#42da6b4d78d1394bf9af794a8b636ebb423f4f29"
+
 JSONStream@^1.0.4:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.2.tgz#c102371b6ec3a7cf3b847ca00c20bb0fce4c6dea"

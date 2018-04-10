@@ -1,6 +1,7 @@
 import Nav from "../../Nav"
 import React, { Component } from "react"
 import Title from "../../Title"
+import compose from "lodash/fp/compose"
 import styled from "styled-components"
 import { PaymentForm } from "./Forms/PaymentForm"
 import { Redirect, Route } from "react-router"
@@ -8,35 +9,35 @@ import { RenderProps as StepRenderProps } from "../../StepMarker"
 import { ReviewForm } from "./Forms/ReviewForm"
 import { ShippingForm } from "./Forms/ShippingForm"
 import { StepMarker } from "../../StepMarker"
+import { formikConfiguration } from "./formik"
+import { withFormik } from "formik"
 import { withRouter, RouteComponentProps } from "react-router"
 
 export const forms = [
   {
+    label: "Shipping",
     path: "/shipping",
     component: ShippingForm,
-    label: "Shipping",
     isActive: false,
     isComplete: false,
   },
   {
+    label: "Payment",
     path: "/payment",
     component: PaymentForm,
-    label: "Payment",
     isActive: false,
     isComplete: false,
   },
   {
+    label: "Review",
     path: "/review",
     component: ReviewForm,
-    label: "Review",
     isActive: false,
     isComplete: false,
   },
 ]
 
-export const App = withRouter(class extends Component<
-  RouteComponentProps<any>
-> {
+class Form extends Component<RouteComponentProps<any>> {
   stepper: StepRenderProps
 
   registerStepper = (stepper: StepRenderProps) => {
@@ -82,17 +83,13 @@ export const App = withRouter(class extends Component<
           {forms.map(({ path, component: FormComponent }, key) => {
             return (
               <Route
-                key={key}
                 path={path}
+                key={key}
                 render={() => {
                   return (
                     <FormComponent
-                      nextStep={() => {
-                        this.nextStep(path)
-                      }}
-                      gotoStep={stepPath => {
-                        this.gotoStep(stepPath)
-                      }}
+                      nextStep={() => this.nextStep(path)}
+                      gotoStep={this.gotoStep}
                     />
                   )
                 }}
@@ -103,18 +100,17 @@ export const App = withRouter(class extends Component<
       </Container>
     )
   }
-} as any)
+}
 
-const Container = styled.div`
-  border: 1px solid green;
-`
+const Container = styled.div``
 
 const Forms = styled.div`
   max-width: 540px;
   margin: 0 auto;
-  border: 1px solid green;
 `
 
 const StyledTitle = Title.extend`
   flex-grow: 1;
 `
+
+export const App = compose(withFormik(formikConfiguration), withRouter)(Form)

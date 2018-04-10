@@ -1,12 +1,12 @@
 import Input from "../../../Input"
 import InvertedButton from "../../../Buttons/Inverted"
-import React from "react"
+import React, { Fragment } from "react"
 import Text from "../../../Text"
 import Title from "../../../Title"
 import colors from "../../../../Assets/Colors"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
 
-export const ShippingForm = props => {
+export const ShippingForm = (props: any) => {
   return (
     <Grid fluid>
       <Row>
@@ -19,8 +19,9 @@ export const ShippingForm = props => {
       <Row>
         <Col xs>
           <Text textSize="medium">
-            Thank you for your interest in the program.<br />
-            Have questions? Get in touch
+            Upon processing your order, an Artsy Specialist will connect you
+            with the seller for shipping arrangements. Any shipping fees will be
+            collected at that time.
           </Text>
         </Col>
       </Row>
@@ -31,9 +32,48 @@ export const ShippingForm = props => {
           </Title>
         </Col>
       </Row>
+
+      <AddressFormInputs />
+
       <Row>
         <Col xs>
-          <Input placeholder="Full Name" block />
+          <InvertedButton block onClick={() => props.nextStep()}>
+            CONTINUE TO PAYMENT
+          </InvertedButton>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs>
+          <Text color={colors.graySemibold} textSize="medium" align="center">
+            Questions? Email{" "}
+            <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
+          </Text>
+        </Col>
+      </Row>
+    </Grid>
+  )
+}
+
+// Imported in `PaymentForm` if addresss is different than shipping
+export const AddressFormInputs = ({
+  values = {},
+  touched = {},
+  errors = {},
+  handleChange,
+  handleBlur,
+}: any) => {
+  return (
+    <Fragment>
+      <Row>
+        <Col xs>
+          <Input
+            placeholder="Full Name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.fullName}
+            block
+          />
+          {touched.fullName && errors.fullName && <div>{errors.fullName}</div>}
         </Col>
       </Row>
       <Row>
@@ -62,21 +102,6 @@ export const ShippingForm = props => {
           <Input placeholder="Country" block />
         </Col>
       </Row>
-      <Row>
-        <Col xs>
-          <InvertedButton block onClick={() => props.nextStep()}>
-            CONTINUE TO PAYMENT
-          </InvertedButton>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs>
-          <Text color={colors.graySemibold} textSize="medium" align="center">
-            Questions? Email{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-          </Text>
-        </Col>
-      </Row>
-    </Grid>
+    </Fragment>
   )
 }

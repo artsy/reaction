@@ -1,24 +1,146 @@
-import React from "react"
-import Title from "../../../Title"
-import Text from "../../../Text"
 import InvertedButton from "../../../Buttons/Inverted"
-import { Checkbox } from "../../../Checkbox"
+import React, { Component, Fragment } from "react"
+import Text from "../../../Text"
+import Title from "../../../Title"
 import colors from "../../../../Assets/Colors"
 import styled from "styled-components"
+import { Checkbox } from "../../../Checkbox"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
 
-export const ReviewForm = props => {
+interface Props {
+  gotoStep: (path: string) => void
+  nextStep: () => void
+}
+
+export class ReviewForm extends Component<Props> {
+  state = {
+    isComplete: false,
+  }
+
+  submitForm = () => {
+    this.props.nextStep()
+
+    this.setState({
+      isComplete: true,
+    })
+  }
+
+  goBackToPreviousLocation = () => {
+    // TODO
+    console.warn("TODO: Back to previous location")
+  }
+
+  render() {
+    return (
+      <Grid fluid>
+        {!this.state.isComplete ? (
+          <Fragment>
+            <ShippingAddress editable />
+            <PaymentMethod editable />
+            <OrderDetails />
+
+            <Row>
+              <Col xs>
+                <Divider />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <CenteredCheckbox>
+                  <Text textSize="medium">
+                    I agree to the <a href="/TODO">Condition of Sale.</a>
+                  </Text>
+                </CenteredCheckbox>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <InvertedButton block onClick={() => this.submitForm()}>
+                  PLACE ORDER
+                </InvertedButton>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <Text
+                  color={colors.graySemibold}
+                  textSize="medium"
+                  align="center"
+                >
+                  Questions? Email{" "}
+                  <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
+                </Text>
+              </Col>
+            </Row>
+          </Fragment>
+        ) : (
+          // Submission Complete
+          <Fragment>
+            <Row>
+              <Col xs>
+                <Text textSize="medium">
+                  <strong>Thank you for your order.</strong> A confirmation
+                  email has been sent to you and the seller.
+                </Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <Text textSize="medium">
+                  <strong>What’s next?</strong> The seller will be in touch for
+                  pickup or shipping arrangements. If you have questions, please
+                  email orders@artsy.net.
+                </Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <Divider />
+              </Col>
+            </Row>
+
+            <PaymentMethod />
+            <OrderDetails />
+            <ShippingAddress />
+
+            <Row>
+              <Col xs>
+                <Divider />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs>
+                <InvertedButton
+                  block
+                  onClick={() => this.goBackToPreviousLocation()}
+                >
+                  CONTINUE BROWSING
+                </InvertedButton>
+              </Col>
+            </Row>
+          </Fragment>
+        )}
+      </Grid>
+    )
+  }
+}
+
+const ShippingAddress = props => {
   return (
-    <Grid fluid>
+    <Fragment>
       <Row>
         <Col xs>
           <Header>
             <Title titleSize="xsmall" fontWeight="bold">
               Shipping Address
             </Title>
-            <Text textSize="medium">
-              <Edit onClick={() => props.gotoStep("/shipping")}>Change</Edit>
-            </Text>
+            {props.editable && (
+              <Text textSize="medium">
+                <Edit onClick={() => this.props.gotoStep("/shipping")}>
+                  Change
+                </Edit>
+              </Text>
+            )}
           </Header>
         </Col>
       </Row>
@@ -31,15 +153,26 @@ export const ReviewForm = props => {
           </Text>
         </Col>
       </Row>
+    </Fragment>
+  )
+}
+
+const PaymentMethod = props => {
+  return (
+    <Fragment>
       <Row>
         <Col xs>
           <Header>
             <Title titleSize="xsmall" fontWeight="bold">
               Payment method
             </Title>
-            <Text textSize="medium">
-              <Edit onClick={() => props.gotoStep("/payment")}>Change</Edit>
-            </Text>
+            {props.editable && (
+              <Text textSize="medium">
+                <Edit onClick={() => this.props.gotoStep("/payment")}>
+                  Change
+                </Edit>
+              </Text>
+            )}
           </Header>
         </Col>
       </Row>
@@ -52,11 +185,18 @@ export const ReviewForm = props => {
           </Text>
         </Col>
       </Row>
+    </Fragment>
+  )
+}
+
+const OrderDetails = props => {
+  return (
+    <Fragment>
       <Row>
         <Col xs>
           <Header>
             <Title titleSize="xsmall" fontWeight="bold">
-              Review Item
+              Order Details
             </Title>
           </Header>
         </Col>
@@ -80,36 +220,7 @@ export const ReviewForm = props => {
           </Items>
         </Col>
       </Row>
-      <Row>
-        <Col xs>
-          <Divider />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs>
-          <CenteredCheckbox>
-            <Text textSize="medium">
-              I agree to the <a href="/TODO">Condition of Sale.</a>
-            </Text>
-          </CenteredCheckbox>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs>
-          <InvertedButton block onClick={() => props.nextStep()}>
-            REVIEW ORDER
-          </InvertedButton>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs>
-          <Text color={colors.graySemibold} textSize="medium" align="center">
-            Questions? Email{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-          </Text>
-        </Col>
-      </Row>
-    </Grid>
+    </Fragment>
   )
 }
 
