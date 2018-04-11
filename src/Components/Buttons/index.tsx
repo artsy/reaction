@@ -4,6 +4,7 @@ import GhostButton from "./Ghost"
 import InvertedButton from "./Inverted"
 import MultiStateButton from "./MultiStateButton"
 import TwitterButton from "./Twitter"
+import BackButton from "./Back"
 
 export default {
   Button,
@@ -12,4 +13,5 @@ export default {
   InvertedButton,
   MultiStateButton,
   TwitterButton,
+  BackButton,
 }
