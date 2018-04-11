@@ -5,6 +5,11 @@ import renderer from "react-test-renderer"
 import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsSectionContainer } from "../../News/NewsSections"
 import { ExpandButton, NewsLayout } from "../NewsLayout"
+import { track } from "../../../../Utils/track"
+
+jest.mock("../../../../Utils/track.ts", () => ({
+  track: jest.fn(),
+}))
 
 describe("News Layout", () => {
   it("renders the news layout properly", () => {
@@ -63,5 +68,16 @@ describe("News Layout", () => {
     )
 
     expect(component).toMatchSnapshot()
+  })
+
+  describe("Analytics", () => {
+    it("tracks the expand button", () => {
+      const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
+      expect(track.mock.calls[5][0]).toEqual(
+        expect.objectContaining({
+          action: "Clicked read more",
+        })
+      )
+    })
   })
 })
