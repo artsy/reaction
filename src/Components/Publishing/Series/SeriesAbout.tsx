@@ -6,11 +6,13 @@ import { media } from "../../Helpers"
 import { Fonts } from "../Fonts"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
 import { Text } from "../Sections/Text"
+import { ArticleData } from "../Typings"
 
 interface Props {
-  article?: any
+  article?: ArticleData
   color?: string
   editDescription?: any
+  editSubTitle?: any
   tracking?: any
 }
 
@@ -35,8 +37,13 @@ export class SeriesAbout extends Component<Props, null> {
   }
 
   render() {
-    const { article, color, editDescription } = this.props
-    const { series_description, sponsor } = article
+    const {
+      article: { series, series_description, sponsor },
+      color,
+      editDescription,
+      editSubTitle,
+    } = this.props
+
     const sponsorLogo =
       sponsor &&
       (color === "black"
@@ -46,7 +53,11 @@ export class SeriesAbout extends Component<Props, null> {
     return (
       <SeriesAboutContainer color={color}>
         <StyledCol xs={12} sm={4}>
-          <Title>About the Series</Title>
+          <Title>
+            {editSubTitle
+              ? editSubTitle
+              : (series && series.sub_title) || "About the Series"}
+          </Title>
           {sponsor && (
             <PartnerBlock
               logo={sponsorLogo}
@@ -65,7 +76,11 @@ export class SeriesAbout extends Component<Props, null> {
             </Text>
           ) : (
             <div className="SeriesAbout__description">
-              <Text layout="standard" color={color} html={series_description} />
+              <Text
+                layout="standard"
+                color={color}
+                html={series_description || series.description}
+              />
             </div>
           )}
           {sponsor && (

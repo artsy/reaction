@@ -33,6 +33,10 @@ export type ArticleData = {
   date?: string
   published_at?: string
   sections?: SectionData[]
+  series?: {
+    description?: string
+    sub_title?: string
+  }
   news_source?: {
     title?: string
     url?: string
