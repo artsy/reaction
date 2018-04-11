@@ -7,6 +7,7 @@ import { SeriesTitle } from "../Series/SeriesTitle"
 import {
   SeriesArticle,
   SeriesArticleSponsored,
+  SeriesArticleCustomSubTitle,
   StandardArticle,
   VideoArticle,
   VideoArticleUnpublished,
@@ -87,13 +88,21 @@ storiesOf("Publishing/Series", module)
       </div>
     )
   })
-  .add("Series About with children", () => {
+  .add("Series About with editable children", () => {
     return (
       <div>
         <SeriesAbout
           article={SeriesArticle}
           editDescription={EditableChild("description")}
+          editSubTitle={EditableChild("sub_title")}
         />
+      </div>
+    )
+  })
+  .add("Series About with custom sub_title", () => {
+    return (
+      <div>
+        <SeriesAbout article={SeriesArticleCustomSubTitle} />
       </div>
     )
   })
