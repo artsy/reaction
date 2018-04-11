@@ -1,11 +1,14 @@
 import React from "react"
+import { HandleValidation } from "./Wizard"
 
 export interface StepProps {
   // onNextButtonPressed: () => void
-  onValidation?: (hasError: boolean) => void
+  onValidation?: HandleValidation
 }
 
 export class Step extends React.Component<StepProps> {
+  // TODO: How should this be used and how does this relate to the onValidation
+  //       prop that is being passed to this Step component?
   validate() {
     const hasError = React.Children
       .toArray(this.props.children)
@@ -13,11 +16,9 @@ export class Step extends React.Component<StepProps> {
       .reduce((acc, currentValue) => acc && currentValue.props.error)
     return hasError
   }
+
   render() {
     const { props } = this
-    // if (props.onValidation) {
-    //   props.onValidation(hasError)
-    // }
 
     return <div>{props.children}</div>
   }

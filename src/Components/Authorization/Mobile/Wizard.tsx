@@ -1,13 +1,17 @@
-import React, { Children } from "react"
+import React from "react"
 
 import { StepProps } from "./Step"
 import Button from "../../Buttons/Inverted"
 
-// import { StepProps } from "./Types"
+export type HandleValidation = (hasError: boolean) => void
+
+type StepsContainer = React.ReactElement<any>
+
+type RenderCallback = (handleValidation: HandleValidation) => StepsContainer
 
 interface Props {
-  // stepComponents: Array<React.Component<StepProps>>
   redirectTo?: string
+  children: RenderCallback
 }
 
 interface State {
@@ -15,15 +19,21 @@ interface State {
   nextButtonEnabled: boolean
 }
 
+function extractStepsFromContainer(stepsContainer: StepsContainer) {
+  return React.Children.toArray(stepsContainer.props.children)
+}
+
 class Wizard extends React.Component<Props, State> {
   stepComponents = []
-  button
 
   constructor(props, state) {
     super(props, state)
 
-    const children = (this.props.children as any)(this.onValidation.bind(this))
-    this.stepComponents = React.Children.toArray(children.props.children)
+    const renderCallback: RenderCallback = this.props.children
+    const handleValidation: HandleValidation = this.onValidation.bind(this)
+
+    const stepsContainer: StepsContainer = renderCallback(handleValidation)
+    this.stepComponents = extractStepsFromContainer(stepsContainer)
 
     this.state = {
       currentStep: 0,
@@ -73,9 +83,14 @@ class Wizard extends React.Component<Props, State> {
   render() {
     const step = this.stepComponents[this.state.currentStep]
 
-    console.log(
-      Children.toArray(step.props.children).map(input => input.props.name)
-    )
+    console.log("current step:", step.props.children)
+
+    // console.log(
+    //   Children.toArray(step.props.children).map(input => [
+    //     input.props.name,
+    //     input.props.error,
+    //   ])
+    // )
     return (
       <div>
         {step}
