@@ -2,6 +2,8 @@
 
 exports[`renders a mobile menu properly 1`] = `
 .c2 {
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   color: white;
   text-decoration: none;
 }

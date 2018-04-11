@@ -1,26 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 
-import Yup from "yup"
 import FacebookButton from "../Buttons/Facebook"
 import InvertedButton from "../Buttons/Inverted"
 import Colors from "../../Assets/Colors"
 
 import Checkbox from "../Checkbox"
 import Input from "../Input"
-
-export const inputValidators = {
-  name: Yup.string().required("Name is required"),
-  password: Yup.string()
-    .required("Password required")
-    .min(8, "Your password must be at least 8 characters"),
-  acceptedTermsOfService: Yup.boolean().required(
-    "You must agree to our terms to continue."
-  ),
-  email: Yup.string()
-    .email("Please enter a valid email.")
-    .required("Please enter a valid email."),
-}
 
 export const FormContainer = styled.form`
   display: flex;

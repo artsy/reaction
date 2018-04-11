@@ -1,11 +1,9 @@
-import { Formik, FormikProps } from "formik"
 import React from "react"
-import Yup from "yup"
 import styled from "styled-components"
+import { Formik, FormikProps } from "formik"
 
 import {
   FormContainer,
-  inputValidators,
   GrayFacebookButton,
   StyledInput as Input,
   TOSCheckbox,
@@ -13,6 +11,7 @@ import {
 import Button from "../Buttons/Inverted"
 import { FormComponentType, InputValues } from "./Types"
 
+import { Validators } from "./Validators"
 import colors from "../../Assets/Colors"
 import Text from "../Text"
 import TextLink from "../TextLink"
@@ -37,7 +36,7 @@ export const RegisterForm: FormComponentType = props => {
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Yup.object().shape(inputValidators)}
+      validationSchema={Validators}
     >
       {({
         values,
@@ -65,7 +64,7 @@ export const RegisterForm: FormComponentType = props => {
             <Input
               block
               error={touched.email && errors.email}
-              placeholder="Please enter your email address"
+              placeholder="Enter your email address"
               name="email"
               label="Email"
               type="email"

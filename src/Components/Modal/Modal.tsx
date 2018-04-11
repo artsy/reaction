@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
-interface ModalProps extends React.HTMLProps<Modal> {
+export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
-  onClose: () => void
+  onClose?: () => void
 }
 
 const ModalContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -18,7 +18,7 @@ const ModalContainer = styled.div`
 `
 
 const Overlay = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0px;
