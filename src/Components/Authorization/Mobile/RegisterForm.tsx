@@ -14,10 +14,6 @@ import {
 } from "../commonElements"
 import { FormComponentType, InputValues } from "../Types"
 
-// interface StepProps {
-//   onNextButtonPressed: () => void
-// }
-
 export const MobileRegisterForm: FormComponentType = props => {
   return (
     <Formik
@@ -46,16 +42,6 @@ export const MobileRegisterForm: FormComponentType = props => {
                         block
                         error={touched.email && errors.email}
                         name="email"
-                        placeholder="Email"
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <Input
-                        type="email"
-                        block
-                        error={touched.email && errors.email}
-                        name="email2"
                         placeholder="Email"
                         value={values.email}
                         onChange={handleChange}
