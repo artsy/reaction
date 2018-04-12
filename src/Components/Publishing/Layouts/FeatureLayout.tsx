@@ -27,9 +27,15 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       seriesArticle,
     } = this.props
 
+    // TODO: Allow more hero types to use series nav
+    const hasNav =
+      seriesArticle &&
+      article.hero_section &&
+      article.hero_section.type === "fullscreen"
+
     return (
       <FeatureLayoutContainer>
-        {seriesArticle && (
+        {hasNav && (
           <Nav
             canFix={false}
             sponsor={article.sponsor}
