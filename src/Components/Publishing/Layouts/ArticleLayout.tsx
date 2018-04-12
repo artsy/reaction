@@ -11,7 +11,6 @@ import { StandardLayout } from "./StandardLayout"
 
 export interface ArticleProps {
   article: ArticleData
-  seriesArticle?: ArticleData
   closeViewer?: () => void
   display?: {
     name: string

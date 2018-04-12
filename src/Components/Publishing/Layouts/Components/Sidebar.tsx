@@ -31,8 +31,6 @@ export const Sidebar: React.SFC<ArticleProps> = props => {
       )}
 
       {DisplayPanel && <DisplayPanel />}
-
-      {props.children}
     </SidebarContainer>
   )
 }

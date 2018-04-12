@@ -22,12 +22,12 @@ jest.mock("react-slick", () => {
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-tracking", () => jest.fn(c => d => d))
 
-it("renders standard articles in fullscreen layout", () => {
+it("renders standard articles in default layout", () => {
   const article = mount(<Article article={StandardArticle} />)
   expect(article.find(ArticleLayout).length).toBe(1)
 })
 
-it("renders feature articles in fullscreen layout", () => {
+it("renders feature articles in default layout", () => {
   const article = mount(<Article article={FeatureArticle} />)
   expect(article.find(ArticleLayout).length).toBe(1)
 })
@@ -37,7 +37,7 @@ it("renders series articles in series layout", () => {
   expect(article.find(SeriesLayout).length).toBe(1)
 })
 
-it("renders series articles in series layout", () => {
+it("renders video articles in video layout", () => {
   const article = mount(<Article article={VideoArticle} />)
   expect(article.find(VideoLayout).length).toBe(1)
 })

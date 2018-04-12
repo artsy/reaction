@@ -141,17 +141,6 @@ story
       />
     )
   })
-  .add("Feature in series", () => {
-    return <Article article={FeatureArticle} seriesArticle={SeriesArticle} />
-  })
-  .add("Feature in sponsored series", () => {
-    return (
-      <Article
-        article={FeatureArticle}
-        seriesArticle={SeriesArticleSponsored}
-      />
-    )
-  })
   .add("Basic Feature", () => {
     const article = clone({
       ...BasicArticle,
