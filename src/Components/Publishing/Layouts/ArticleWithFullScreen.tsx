@@ -51,7 +51,10 @@ interface ArticleContainerProps {
   }
 )
 @withFullScreen
-export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
+export class ArticleWithFullScreen extends React.Component<
+  ArticleProps,
+  ArticleState
+> {
   static defaultProps = {
     isMobile: false,
     isSuper: false,
