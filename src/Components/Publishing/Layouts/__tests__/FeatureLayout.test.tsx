@@ -1,6 +1,7 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
+import { cloneDeep, extend } from "lodash"
 import { FeatureArticle, SeriesArticle } from "../../Fixtures/Articles"
 import { RelatedCanvas } from "../../Fixtures/Components"
 import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
@@ -42,4 +43,20 @@ it("renders a nav if article is in a series", () => {
     />
   )
   expect(article.find(Nav).length).toBe(1)
+})
+
+it("does not render a nav if article has a non-fullscreen header", () => {
+  const Article = extend(cloneDeep(FeatureArticle), {
+    hero_section: {
+      type: "basic",
+    },
+  })
+  const article = mount(
+    <FeatureLayout
+      article={Article}
+      relatedArticlesForCanvas={RelatedCanvas}
+      seriesArticle={SeriesArticle}
+    />
+  )
+  expect(article.find(Nav).length).toBe(0)
 })
