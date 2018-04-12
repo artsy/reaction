@@ -41,6 +41,12 @@ export class NewsLayout extends Component<Props, State> {
     this.onExpand = this.onExpand.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isHovered !== this.props.isHovered) {
+      this.setState({ isHovered: nextProps.isHovered })
+    }
+  }
+
   @track({ action: "Clicked read more" })
   onExpand() {
     const { onExpand } = this.props
