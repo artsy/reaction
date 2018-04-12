@@ -6,12 +6,10 @@ import { Responsive } from "../../../Utils/Responsive"
 import { pMedia } from "../../Helpers"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
-import { EmailPanel } from "../Email/EmailPanel"
 import { Header } from "../Header/Header"
 import { ReadMore } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Sidebar } from "./Components/Sidebar"
@@ -63,24 +61,6 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
-  displayPanelAd = isMobileAd => {
-    const { article, display } = this.props
-
-    const hasPanel = get(display, "panel", false)
-    const campaign = omit(display, "panel", "canvas")
-
-    if (hasPanel) {
-      return (
-        <DisplayPanel
-          isMobile={isMobileAd}
-          unit={display.panel}
-          campaign={campaign}
-          article={article}
-        />
-      )
-    }
-  }
-
   render() {
     const {
       article,
@@ -97,8 +77,21 @@ export class StandardLayout extends React.Component<
     return (
       <Responsive initialState={{ isMobile: this.props.isMobile }}>
         {({ isMobile, xs, sm, md }) => {
+          const hasPanel = get(display, "panel", false)
           const isMobileAd = Boolean(isMobile || xs || sm || md)
 
+          const DisplayPanelAd = () => {
+            return (
+              hasPanel && (
+                <DisplayPanel
+                  isMobile={isMobileAd}
+                  unit={display.panel}
+                  campaign={campaign}
+                  article={article}
+                />
+              )
+            )
+          }
           return (
             <div>
               <ReadMoreWrapper
@@ -110,34 +103,15 @@ export class StandardLayout extends React.Component<
                 <StandardLayoutParent>
                   <StandardLayoutContainer>
                     <Sections
-                      DisplayPanel={this.displayPanelAd(isMobileAd)}
+                      DisplayPanel={DisplayPanelAd}
                       article={article}
                       isMobile={isMobile}
                     />
-
-                    <Sidebar>
-                      {emailSignupUrl && (
-                        <SidebarItem>
-                          <EmailPanel signupUrl={emailSignupUrl} />
-                        </SidebarItem>
-                      )}
-
-                      {relatedArticlesForPanel && (
-                        <SidebarItem>
-                          <RelatedArticlesPanel
-                            label={"Related Stories"}
-                            articles={relatedArticlesForPanel}
-                          />
-                        </SidebarItem>
-                      )}
-
-                      {/*
-                        Display Ad
-                      */}
-                      {!isMobileAd &&
-                        display &&
-                        this.displayPanelAd(isMobileAd)}
-                    </Sidebar>
+                    <Sidebar
+                      emailSignupUrl={emailSignupUrl}
+                      DisplayPanel={DisplayPanelAd}
+                      relatedArticlesForPanel={relatedArticlesForPanel}
+                    />
                   </StandardLayoutContainer>
                 </StandardLayoutParent>
 
@@ -212,10 +186,6 @@ const StandardLayoutContainer = styled.div`
 const LineBreak = styled.div`
   border-top: 1px solid ${Colors.grayRegular};
   width: 100%;
-`
-
-const SidebarItem = styled.div`
-  margin-bottom: 40px;
 `
 
 const FooterContainer = styled.div`
