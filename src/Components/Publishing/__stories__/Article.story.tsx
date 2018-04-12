@@ -13,6 +13,7 @@ import {
   NewsArticle,
   SeriesArticle,
   SeriesArticleSponsored,
+  SponsoredArticle,
   StandardArticle,
   SuperArticle,
   VideoArticle,
@@ -140,6 +141,9 @@ story
         relatedArticlesForCanvas={RelatedCanvas}
       />
     )
+  })
+  .add("Feature - Series", () => {
+    return <Article article={SponsoredArticle} seriesArticle={SeriesArticle} />
   })
   .add("Basic Feature", () => {
     const article = clone({

@@ -4,6 +4,7 @@ import { Header } from "../Header/Header"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
+import { Nav } from "../Nav/Nav"
 
 export interface ArticleProps {
   article: ArticleData
@@ -12,6 +13,7 @@ export interface ArticleProps {
   isSuper?: boolean
   marginTop?: string
   relatedArticlesForCanvas?: any
+  seriesArticle?: any
 }
 
 export class FeatureLayout extends React.Component<ArticleProps> {
@@ -22,10 +24,19 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       isMobile,
       isSuper,
       relatedArticlesForCanvas,
+      seriesArticle,
     } = this.props
 
     return (
-      <div>
+      <FeatureLayoutContainer>
+        {seriesArticle && (
+          <Nav
+            canFix={false}
+            sponsor={article.sponsor}
+            title={seriesArticle.title}
+            transparent
+          />
+        )}
         <Header article={article} height={headerHeight} isMobile={isMobile} />
 
         <FeatureLayoutContent className="article-content">
@@ -39,7 +50,7 @@ export class FeatureLayout extends React.Component<ArticleProps> {
               vertical={article.vertical}
             />
           )}
-      </div>
+      </FeatureLayoutContainer>
     )
   }
 }
@@ -47,4 +58,12 @@ export class FeatureLayout extends React.Component<ArticleProps> {
 const FeatureLayoutContent = styled.div`
   display: flex;
   width: 100%;
+`
+
+const FeatureLayoutContainer = styled.div`
+  position: relative;
+
+  ${Nav} {
+    position: absolute;
+  }
 `
