@@ -1,27 +1,13 @@
-import { get } from "lodash"
-import { cloneDeep, includes, map, omit } from "lodash"
+import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
-import { Responsive } from "../../../Utils/Responsive"
 import track from "../../../Utils/track"
-import { pMedia } from "../../Helpers"
-import { DisplayCanvas } from "../Display/Canvas"
-import { DisplayPanel } from "../Display/DisplayPanel"
-import { EmailPanel } from "../Email/EmailPanel"
-import { Header } from "../Header/Header"
-import { ReadMore } from "../ReadMore/ReadMoreButton"
-import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
-import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
-import { Sidebar } from "./Components/Sidebar"
 import { FeatureLayout } from "./FeatureLayout"
-import { StandardLayout, StandardLayoutParent } from "./StandardLayout"
+import { StandardLayout } from "./StandardLayout"
 
 export interface ArticleProps {
   article: ArticleData
@@ -45,8 +31,7 @@ export interface ArticleProps {
 
 interface ArticleState {
   fullscreenImages: any
-  article: any
-  isTruncated: boolean
+  article: ArticleData
 }
 
 interface ArticleContainerProps {
@@ -80,18 +65,14 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
     this.state = {
       fullscreenImages,
       article,
-      isTruncated: props.isTruncated || false,
     }
-  }
-
-  removeTruncation = () => {
-    this.setState({ isTruncated: false })
   }
 
   indexAndExtractImages = () => {
     const article = cloneDeep(this.props.article)
     const fullscreenImages = []
     let sectionIndex = 0
+
     const newSections = map(article.sections, section => {
       if (includes(["image_collection", "image_set"], section.type)) {
         const newImages = map(section.images, image => {
@@ -109,187 +90,24 @@ export class ArticleLayout extends React.Component<ArticleProps, ArticleState> {
     return { fullscreenImages, article }
   }
 
-  renderFeatureArticle() {
-    const {
-      headerHeight,
-      isMobile,
-      isSuper,
-      relatedArticlesForCanvas,
-    } = this.props
-    const { article } = this.state
-
-    return (
-      <div>
-        <Header article={article} height={headerHeight} isMobile={isMobile} />
-
-        <FeatureLayout className="article-content">
-          <Sections article={article} isMobile={isMobile} />
-        </FeatureLayout>
-
-        {relatedArticlesForCanvas &&
-          !isSuper && (
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas}
-              vertical={article.vertical}
-            />
-          )}
-      </div>
-    )
-  }
-
-  renderStandardArticle() {
-    const {
-      display,
-      relatedArticlesForCanvas,
-      relatedArticlesForPanel,
-    } = this.props
-
-    const { article } = this.state
-
-    const hasPanel = get(display, "panel", false)
-    const campaign = omit(display, "panel", "canvas")
-    const displayOverflows = display && display.canvas.layout === "slideshow"
-
-    return (
-      <Responsive initialState={{ isMobile: this.props.isMobile }}>
-        {({ isMobile, xs, sm, md }) => {
-          const isMobileAd = Boolean(isMobile || xs || sm || md)
-
-          const DisplayPanelAd = () => {
-            return (
-              hasPanel && (
-                <DisplayPanel
-                  isMobile={isMobileAd}
-                  unit={this.props.display.panel}
-                  campaign={campaign}
-                  article={article}
-                />
-              )
-            )
-          }
-
-          return (
-            <div>
-              <ReadMoreWrapper
-                isTruncated={this.state.isTruncated}
-                hideButton={this.removeTruncation}
-              >
-                {/*
-                  Header
-                */}
-                <Header article={article} isMobile={isMobile} />
-
-                <StandardLayoutParent>
-                  <StandardLayout>
-                    {/*
-                      Body Content
-                    */}
-                    <Sections
-                      DisplayPanel={DisplayPanelAd}
-                      article={article}
-                      isMobile={isMobile}
-                    />
-
-                    {/*
-                      Sidebar
-                    */}
-                    <Sidebar>
-                      {this.props.emailSignupUrl && (
-                        <SidebarItem>
-                          <EmailPanel signupUrl={this.props.emailSignupUrl} />
-                        </SidebarItem>
-                      )}
-
-                      {/*
-                        Related Articles
-                      */}
-                      {relatedArticlesForPanel && (
-                        <SidebarItem>
-                          <RelatedArticlesPanel
-                            label={"Related Stories"}
-                            articles={relatedArticlesForPanel}
-                          />
-                        </SidebarItem>
-                      )}
-
-                      {/*
-                        Display Ad
-                      */}
-                      {!isMobileAd && this.props.display && <DisplayPanelAd />}
-                    </Sidebar>
-                  </StandardLayout>
-                </StandardLayoutParent>
-
-                {/*
-                  Canvas: Related Articles
-                */}
-                {relatedArticlesForCanvas && (
-                  <div>
-                    <LineBreak />
-                    <RelatedArticlesCanvas
-                      articles={relatedArticlesForCanvas}
-                      isMobile={isMobile}
-                      vertical={article.vertical}
-                    />
-                  </div>
-                )}
-              </ReadMoreWrapper>
-
-              {/*
-                Read More Button
-              */}
-              {this.state.isTruncated && (
-                <ReadMore onClick={this.removeTruncation} />
-              )}
-
-              {/*
-                Footer
-              */}
-              {this.props.display && (
-                <div>
-                  <LineBreak />
-
-                  {displayOverflows ? (
-                    <div>
-                      <DisplayCanvas
-                        unit={this.props.display.canvas}
-                        campaign={campaign}
-                        article={article}
-                      />
-                    </div>
-                  ) : (
-                    <FooterContainer>
-                      <DisplayCanvas
-                        unit={this.props.display.canvas}
-                        campaign={campaign}
-                        article={article}
-                      />
-                    </FooterContainer>
-                  )}
-                </div>
-              )}
-            </div>
-          )
-        }}
-      </Responsive>
-    )
-  }
-
   render() {
-    const { article } = this.state
-    const { marginTop } = this.props
+    const { article, fullscreenImages } = this.state
+    const { closeViewer, marginTop, slideIndex, viewerIsOpen } = this.props
+
+    const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
       <ArticleContainer marginTop={marginTop}>
-        {article.layout === "feature"
-          ? this.renderFeatureArticle()
-          : this.renderStandardArticle()}
-
+        {article.layout === "feature" ? (
+          <FeatureLayout {...articleProps} />
+        ) : (
+          <StandardLayout {...articleProps} />
+        )}
         <FullscreenViewer
-          onClose={this.props.closeViewer}
-          show={this.props.viewerIsOpen}
-          slideIndex={this.props.slideIndex}
-          images={this.state.fullscreenImages}
+          onClose={closeViewer}
+          show={viewerIsOpen}
+          slideIndex={slideIndex}
+          images={fullscreenImages}
         />
       </ArticleContainer>
     )
@@ -303,20 +121,4 @@ const ArticleDiv: StyledFunction<
 
 const ArticleContainer = ArticleDiv`
   margin-top: ${props => props.marginTop || "50px"};
-`
-
-const LineBreak = styled.div`
-  border-top: 1px solid ${Colors.grayRegular};
-  width: 100%;
-`
-
-const SidebarItem = styled.div`
-  margin-bottom: 40px;
-`
-
-const FooterContainer = styled.div`
-  margin: 0 40px;
-  ${pMedia.sm`
-    margin: 0 20px;
-  `};
 `

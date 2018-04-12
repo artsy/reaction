@@ -37,7 +37,7 @@ it("renders series articles in series layout", () => {
   expect(article.find(SeriesLayout).length).toBe(1)
 })
 
-it("renders series articles in series layout", () => {
+it("renders video articles in video layout", () => {
   const article = mount(<Article article={VideoArticle} />)
   expect(article.find(VideoLayout).length).toBe(1)
 })
