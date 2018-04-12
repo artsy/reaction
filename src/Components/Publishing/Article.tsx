@@ -14,6 +14,7 @@ export interface ArticleProps {
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
   seriesArticle?: ArticleData
+  isHovered?: boolean
   isMobile?: boolean
   isSuper?: boolean
   isTruncated?: boolean
