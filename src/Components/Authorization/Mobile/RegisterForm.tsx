@@ -32,63 +32,57 @@ export const MobileRegisterForm: FormComponentType = props => {
       }: FormikProps<InputValues>) => {
         return (
           <FormContainer onSubmit={handleSubmit}>
-            <Wizard>
-              {handleValidation => {
-                return (
-                  <div>
-                    <Step onValidation={handleValidation}>
-                      <Input
-                        type="email"
-                        block
-                        error={touched.email && errors.email}
-                        name="email"
-                        placeholder="Email"
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Step>
-                    <Step onValidation={handleValidation}>
-                      <Input
-                        block
-                        error={touched.password && errors.password}
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Step>
-                    <Step onValidation={handleValidation}>
-                      <Input
-                        block
-                        error={touched.name && errors.name}
-                        name="name"
-                        placeholder="Name"
-                        type="text"
-                        value={values.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <TOSCheckbox
-                        error={
-                          touched.acceptedTermsOfService &&
-                          errors.acceptedTermsOfService
-                        }
-                        value={values.acceptedTermsOfService}
-                        type="checkbox"
-                        name="accepted-terms-of-service"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        errorMessage={errors.acceptedTermsOfService}
-                      >
-                        I Agree to the TOS And PP
-                      </TOSCheckbox>
-                    </Step>
-                  </div>
-                )
-              }}
+            <Wizard errors={errors}>
+              <Step>
+                <Input
+                  type="email"
+                  block
+                  error={touched.email && errors.email}
+                  name="email"
+                  placeholder="Email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </Step>
+              <Step>
+                <Input
+                  block
+                  error={touched.password && errors.password}
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </Step>
+              <Step>
+                <Input
+                  block
+                  error={touched.name && errors.name}
+                  name="name"
+                  placeholder="Name"
+                  type="text"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <TOSCheckbox
+                  error={
+                    touched.acceptedTermsOfService &&
+                    errors.acceptedTermsOfService
+                  }
+                  value={values.acceptedTermsOfService}
+                  type="checkbox"
+                  name="accepted-terms-of-service"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  errorMessage={errors.acceptedTermsOfService}
+                >
+                  I Agree to the TOS And PP
+                </TOSCheckbox>
+              </Step>
             </Wizard>
 
             <StyledFacebookButton>Sign up with Facebook</StyledFacebookButton>

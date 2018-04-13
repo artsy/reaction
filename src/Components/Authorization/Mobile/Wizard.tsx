@@ -1,17 +1,9 @@
-import React from "react"
-
-import { StepProps } from "./Step"
+import React, { Children } from "react"
 import Button from "../../Buttons/Inverted"
-
-export type HandleValidation = (hasError: boolean) => void
-
-type StepsContainer = React.ReactElement<any>
-
-type RenderCallback = (handleValidation: HandleValidation) => StepsContainer
 
 interface Props {
   redirectTo?: string
-  children: RenderCallback
+  errors: any
 }
 
 interface State {
@@ -19,26 +11,20 @@ interface State {
   nextButtonEnabled: boolean
 }
 
-function extractStepsFromContainer(stepsContainer: StepsContainer) {
-  return React.Children.toArray(stepsContainer.props.children)
-}
-
 class Wizard extends React.Component<Props, State> {
-  stepComponents = []
+  shouldAllowNextStop = false
 
   constructor(props, state) {
     super(props, state)
-
-    const renderCallback: RenderCallback = this.props.children
-    const handleValidation: HandleValidation = this.onValidation.bind(this)
-
-    const stepsContainer: StepsContainer = renderCallback(handleValidation)
-    this.stepComponents = extractStepsFromContainer(stepsContainer)
 
     this.state = {
       currentStep: 0,
       nextButtonEnabled: false,
     }
+  }
+
+  get stepComponents() {
+    return Children.toArray(this.props.children)
   }
 
   disableButton(hasError: boolean) {
@@ -53,16 +39,10 @@ class Wizard extends React.Component<Props, State> {
     }
 
     const CurrentStep = this.stepComponents[currentStep] as React.ReactElement<
-      StepProps
+      any
     >
 
-    return (
-      <div>{CurrentStep}</div>
-      // <CurrentStep
-      //   onValidate={this.disableButton}
-      //   onNextButtonPressed={this.onNextButtonPressed.bind(this)}
-      // />
-    )
+    return CurrentStep
   }
 
   onNextButtonPressed() {
@@ -74,30 +54,28 @@ class Wizard extends React.Component<Props, State> {
     this.setState({ currentStep: stepIndex })
   }
 
-  onValidation(hasError) {
-    // this.setState({
-    //   nextButtonEnabled: !hasError,
-    // })
+  validate(): boolean {
+    const step = this.stepComponents[this.state.currentStep] as any
+
+    const hasErrors = Children.toArray(step.props.children)
+      .map((input: any) => {
+        return !!this.props.errors[input.props.name]
+      })
+      .reduce((acc, currentValue) => acc && currentValue)
+
+    return hasErrors
   }
 
   render() {
     const step = this.stepComponents[this.state.currentStep]
-
-    console.log("current step:", step.props.children)
-
-    // console.log(
-    //   Children.toArray(step.props.children).map(input => [
-    //     input.props.name,
-    //     input.props.error,
-    //   ])
-    // )
+    this.shouldAllowNextStop = this.validate()
     return (
       <div>
         {step}
 
         <Button
           type="submit"
-          disabled={false}
+          disabled={this.shouldAllowNextStop}
           block
           onClick={this.onNextButtonPressed.bind(this)}
         >
