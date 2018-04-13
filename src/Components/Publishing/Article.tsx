@@ -1,7 +1,7 @@
 import React from "react"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
-import { ArticleLayout } from "./Layouts/ArticleLayout"
+import { ArticleWithFullScreen } from "./Layouts/ArticleWithFullScreen"
 import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
@@ -14,6 +14,7 @@ export interface ArticleProps {
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
   seriesArticle?: ArticleData
+  isHovered?: boolean
   isMobile?: boolean
   isSuper?: boolean
   isTruncated?: boolean
@@ -54,7 +55,7 @@ export class Article extends React.Component<ArticleProps, null> {
         return <NewsLayout {...this.props} />
       }
       default: {
-        return <ArticleLayout {...this.props} />
+        return <ArticleWithFullScreen {...this.props} />
       }
     }
   }
