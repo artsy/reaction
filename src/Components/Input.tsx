@@ -18,6 +18,68 @@ interface InputState {
   value: string
 }
 
+class Input extends React.Component<InputProps, InputState> {
+  state = {
+    borderClasses: BorderClassname,
+    value: "",
+  }
+
+  onFocus = e => {
+    this.setState({
+      borderClasses: `${BorderClassname} focused`,
+    })
+
+    if (this.props.onFocus) {
+      this.props.onFocus(e)
+    }
+  }
+
+  onBlur = e => {
+    this.setState({
+      borderClasses: BorderClassname,
+    })
+
+    if (this.props.onBlur) {
+      this.props.onBlur(e)
+    }
+  }
+
+  onChange = e => {
+    this.setState({
+      value: e.currentTarget.value,
+    })
+  }
+
+  render() {
+    const { leftView, rightView, label } = this.props
+    const showLabel = !!this.state.value && !!label
+
+    if (leftView || rightView || label) {
+      const { className, ref, ...newProps } = this.props
+
+      return (
+        <StyledDiv hasLabel={!!label}>
+          <div className={this.state.borderClasses} />
+
+          {showLabel && <Label out={!showLabel}>{label}</Label>}
+          {!!leftView && leftView}
+
+          <BorderlessInput
+            {...newProps}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onKeyUp={this.onChange}
+            value={this.props.value}
+          />
+          {!!rightView && rightView}
+        </StyledDiv>
+      )
+    }
+
+    return <StyledInput {...this.props as any} />
+  }
+}
+
 const StyledInput = styled.input`
   ${borderedInput};
   ${block(24)};
@@ -62,65 +124,5 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
 `
 
 const BorderClassname = "border-container"
-
-class Input extends React.Component<InputProps, InputState> {
-  state = {
-    borderClasses: BorderClassname,
-    value: "",
-  }
-
-  onFocus = e => {
-    this.setState({
-      borderClasses: `${BorderClassname} focused`,
-    })
-
-    if (this.props.onFocus) {
-      this.props.onFocus(e)
-    }
-  }
-
-  onBlur = e => {
-    this.setState({
-      borderClasses: BorderClassname,
-    })
-
-    if (this.props.onBlur) {
-      this.props.onBlur(e)
-    }
-  }
-
-  onChange = e => {
-    this.setState({
-      value: e.currentTarget.value,
-    })
-  }
-
-  render() {
-    const { leftView, rightView, label } = this.props
-    const showLabel = !!this.state.value && !!label
-
-    if (leftView || rightView || label) {
-      const { className, ref, ...newProps } = this.props
-
-      return (
-        <StyledDiv hasLabel={!!label}>
-          <div className={this.state.borderClasses} />
-          <Label out={!showLabel}>{label}</Label>
-          {!!leftView && leftView}
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onKeyUp={this.onChange}
-            value={this.props.value}
-          />
-          {!!rightView && rightView}
-        </StyledDiv>
-      )
-    }
-
-    return <StyledInput {...this.props as any} />
-  }
-}
 
 export default Input

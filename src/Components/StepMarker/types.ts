@@ -11,11 +11,14 @@ export interface RenderProps {
   previousStep: () => void
   gotoStep: (index: number) => void
   stepState: State
+  isComplete: () => boolean
 }
 
 export interface Props {
-  children?: (renderProps: RenderProps) => ReactNode
+  children?: (renderProps: RenderProps) => ReactNode | void
   steps: StepProps[]
+  style?: any
+  onChange?: any
 }
 
 export interface State {

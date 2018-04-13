@@ -3,15 +3,26 @@ import styled from "styled-components"
 import * as fonts from "../Assets/Fonts"
 import { media } from "./Helpers"
 
-type TitleSize = "xxsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge"
+type TitleSize =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge"
+
+type FontWeight = "inherit" | "bold"
 
 interface TitleProps extends React.HTMLProps<HTMLDivElement> {
   titleSize?: TitleSize
+  fontWeight?: FontWeight
   color?: string
 }
 
 const titleSizes = {
   xxsmall: "13px",
+  xsmall: "20px",
   small: "25px",
   medium: "30px",
   large: "37px",
@@ -28,6 +39,7 @@ const Title: React.SFC<TitleProps> = props => {
 
 const StyledTitle = styled(Title)`
   font-size: ${props => titleSizes[props.titleSize]};
+  font-weight: ${props => props.fontWeight};
   color: ${props => props.color};
   margin: 20px 0;
   ${fonts.secondary.style};
@@ -38,6 +50,7 @@ const StyledTitle = styled(Title)`
 
 StyledTitle.defaultProps = {
   titleSize: "medium",
+  fontWeight: "inherit",
   color: "inherit",
 }
 
