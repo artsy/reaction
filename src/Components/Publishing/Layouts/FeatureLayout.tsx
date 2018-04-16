@@ -13,7 +13,6 @@ export interface ArticleProps {
   isSuper?: boolean
   marginTop?: string
   relatedArticlesForCanvas?: any
-  seriesArticle?: any
 }
 
 export class FeatureLayout extends React.Component<ArticleProps> {
@@ -24,8 +23,8 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       isMobile,
       isSuper,
       relatedArticlesForCanvas,
-      seriesArticle,
     } = this.props
+    const { seriesArticle } = article
 
     // TODO: Allow more hero types to use series nav
     const hasNav =
