@@ -25,6 +25,7 @@ export interface ArticleProps {
   marginTop?: string
   relatedArticlesForCanvas?: any
   relatedArticlesForPanel?: any
+  seriesArticle?: any
   slideIndex?: number
   viewerIsOpen?: boolean
 }

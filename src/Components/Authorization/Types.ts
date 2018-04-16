@@ -15,9 +15,9 @@ export type SubmitHandler = (
 ) => void
 
 export interface FormProps {
-  values: InputValues
-  handleSubmit: SubmitHandler
-  handleChangeMode: (mode: Mode) => (event) => void
+  values?: InputValues
+  handleSubmit?: SubmitHandler
+  handleChangeMode?: (mode: Mode) => (event) => void
 }
 
 export type FormComponentType = React.SFC<FormProps>

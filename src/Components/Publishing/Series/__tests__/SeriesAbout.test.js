@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { SeriesArticle, SeriesArticleSponsored } from "../../Fixtures/Articles"
+import { SeriesArticle, SeriesArticleSponsored, SeriesArticleCustomSubTitle } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
 import { SeriesAbout } from "../SeriesAbout"
 
@@ -12,21 +12,21 @@ jest.mock("../../../../Utils/track", () => ({
 
 describe("SeriesAbout", () => {
   describe("snapshots", () => {
-    it("renders a series about properly", () => {
+    it("Renders properly", () => {
       const component = renderer
         .create(<SeriesAbout article={SeriesArticle} />)
         .toJSON()
       expect(component).toMatchSnapshot()
     })
 
-    it("renders a sponsored series about properly", () => {
+    it("Renders with sponsor", () => {
       const component = renderer
         .create(<SeriesAbout article={SeriesArticleSponsored} />)
         .toJSON()
       expect(component).toMatchSnapshot()
     })
 
-    it("renders series about with children properly", () => {
+    it("Renders with editDescription", () => {
       const component = renderer
         .create(
           <SeriesAbout
@@ -37,20 +37,32 @@ describe("SeriesAbout", () => {
         .toJSON()
       expect(component).toMatchSnapshot()
     })
+
+    it("Renders with editSubTitle", () => {
+      const component = renderer
+        .create(
+          <SeriesAbout
+            article={SeriesArticle}
+            editSubTitle={EditableChild("sub_title")}
+          />
+        )
+        .toJSON()
+      expect(component).toMatchSnapshot()
+    })
   })
 
   describe("unit", () => {
-    it("Renders partner block for a sponsored series", () => {
+    it("Renders PartnerBlock for a sponsored series", () => {
       const component = mount(<SeriesAbout article={SeriesArticleSponsored} />)
       expect(component.find(".PartnerBlock").length).not.toBe(0)
     })
 
-    it("Does not render partner block for an unsponsored series", () => {
+    it("Does not render PartnerBlock for an unsponsored series", () => {
       const component = mount(<SeriesAbout article={SeriesArticle} />)
       expect(component.find(".PartnerBlock").length).toBe(0)
     })
 
-    it("Renders children if present", () => {
+    it("Renders editDescription if present", () => {
       const component = mount(
         <SeriesAbout
           article={SeriesArticle}
@@ -58,6 +70,30 @@ describe("SeriesAbout", () => {
         />
       )
       expect(component.text()).toMatch("Child description")
+    })
+
+    it("Renders editSubTitle if present", () => {
+      const component = mount(
+        <SeriesAbout
+          article={SeriesArticle}
+          editSubTitle={EditableChild("sub_title")}
+        />
+      )
+      expect(component.text()).toMatch("Child sub_title")
+    })
+
+    it("Renders a custom series.sub_title if present", () => {
+      const component = mount(
+        <SeriesAbout article={SeriesArticleCustomSubTitle} />
+      )
+      expect(component.text()).toMatch("About this Feature")
+    })
+
+    it("Renders 'About the Series' by default", () => {
+      const component = mount(
+        <SeriesAbout article={SeriesArticle} />
+      )
+      expect(component.text()).toMatch("About the Series")
     })
 
     it("Tracks click on link in footer", () => {

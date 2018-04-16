@@ -106,7 +106,8 @@ export const Nav = styled(NavComponent)`
   }
 `
 const Title = styled.div`
-  ${garamond("s17")} position: absolute;
+  ${garamond("s17")};
+  position: absolute;
   width: 100%;
   text-align: center;
   font-weight: 600;
