@@ -6,7 +6,7 @@ import Icon from "../Icon"
 
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import { primary, secondary } from "../../Assets/Fonts"
+import { avantgarde, garamond } from "../../Assets/Fonts"
 import { labelMap } from "./ParamMap"
 
 import { find } from "lodash"
@@ -50,7 +50,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 
   getSelectedName(id) {
-    const selectedCount = find(this.props.aggregation.counts, count => count.id === id)
+    const selectedCount = find(
+      this.props.aggregation.counts,
+      count => count.id === id
+    )
     return selectedCount ? selectedCount.name : null
   }
 
@@ -63,7 +66,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
           <span>{count.name}</span>
-          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
+          <NavItemCount>
+            &nbsp;({numeral(count.count).format("0,0")})
+          </NavItemCount>
         </NavItem>
       )
     })
@@ -99,8 +104,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         onMouseEnter={() => this.toggleHover(true)}
         onMouseLeave={() => this.toggleHover(false)}
       >
-        <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
-          {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
+        <Button
+          style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+        >
+          {superLabelText && (
+            <SuperLabel style={{ color: superLabelColor }}>
+              {superLabelText}
+            </SuperLabel>
+          )}
           {labelText}
           <Icon
             name="arrow-down"
@@ -116,19 +127,18 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 }
 
 const Button = styled.div`
+  ${avantgarde("s13")};
   background: white;
   color: black;
   border: 1px solid ${colors.grayRegular};
   display: inline-block;
   line-height: 160%;
   padding: 15px 35px 15px 18px;
-  font-size: 13px;
   vertical-align: middle;
   max-width: 120px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${primary.style};
 `
 
 const Nav = styled.div`
@@ -149,7 +159,8 @@ const SuperLabel = styled.div`
 `
 
 const NavItem = styled.div`
-  ${secondary.style} text-align: left;
+  ${garamond("s11")};
+  text-align: left;
   color: white;
   display: block;
   border-bottom: 1px solid #333;

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Fonts } from "../../Fonts"
+import { garamond } from "Assets/Fonts"
 import { IconVideoFullscreen } from "../../Icon/IconVideoFullscreen"
 import { MuteUnmute, MuteUnmuteContainer } from "./MuteUnmute"
 import { PlayPause } from "./PlayPause"
@@ -34,34 +34,20 @@ export class VideoControls extends Component<Props, null> {
       togglePlay,
       pause,
       play,
-      seekTo
+      seekTo,
     } = this.props
 
     return (
       <VideoControlsContainer>
         <TopControls>
           <Block>
-            <PlayPause
-              togglePlay={togglePlay}
-              isPlaying={isPlaying}
-            />
-            <Title>
-              {title}
-            </Title>
+            <PlayPause togglePlay={togglePlay} isPlaying={isPlaying} />
+            <Title>{title}</Title>
           </Block>
           <Block>
-            <Timestamp
-              currentTime={currentTime}
-              duration={duration}
-            />
-            <MuteUnmute
-              toggleMute={toggleMute}
-              isMuted={isMuted}
-            />
-            <IconVideoFullscreen
-              onClick={toggleFullscreen}
-              color="white"
-            />
+            <Timestamp currentTime={currentTime} duration={duration} />
+            <MuteUnmute toggleMute={toggleMute} isMuted={isMuted} />
+            <IconVideoFullscreen onClick={toggleFullscreen} color="white" />
           </Block>
         </TopControls>
         <Scrubber
@@ -105,8 +91,7 @@ export const VideoControlsContainer = styled.div`
   }
 `
 const Title = styled.div`
-  ${Fonts.garamond("s23")}
-  margin-left: 20px;
+  ${garamond("s23")} margin-left: 20px;
 `
 const Block = styled.div`
   display: flex;

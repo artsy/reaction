@@ -5,7 +5,7 @@ import InvertedButton from "../../Buttons/Inverted"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
 import { MobileMenu } from "../../Nav/MobileMenu"
-import { Fonts } from "../Fonts"
+import { avantgarde } from "Assets/Fonts"
 import { IconHamburger } from "../Icon/IconHamburger"
 
 interface State {
@@ -16,13 +16,13 @@ export class SubNav extends React.Component<null, State> {
   constructor(props) {
     super(props)
     this.state = {
-      mobileNavIsOpen: false
+      mobileNavIsOpen: false,
     }
   }
 
   toggleMobileNav = () => {
     this.setState({
-      mobileNavIsOpen: !this.state.mobileNavIsOpen
+      mobileNavIsOpen: !this.state.mobileNavIsOpen,
     })
   }
 
@@ -30,47 +30,32 @@ export class SubNav extends React.Component<null, State> {
     return (
       <SubNavContainer>
         <Link className="mlh-login" href="/log_in">
-          <Login>
-            Login
-          </Login>
+          <Login>Login</Login>
         </Link>
         <Link className="mlh-signup" href="/sign_up">
-          <Signup>
-            Signup
-          </Signup>
+          <Signup>Signup</Signup>
         </Link>
         <MobileNavToggle>
-          {this.state.mobileNavIsOpen ?
-            <Icon
-              name="close"
-              color="white"
-              onClick={this.toggleMobileNav}
-            />
-          :
-            <IconHamburger
-              color="white"
-              onClick={this.toggleMobileNav}
-            />
-          }
+          {this.state.mobileNavIsOpen ? (
+            <Icon name="close" color="white" onClick={this.toggleMobileNav} />
+          ) : (
+            <IconHamburger color="white" onClick={this.toggleMobileNav} />
+          )}
         </MobileNavToggle>
-        {this.state.mobileNavIsOpen &&
-          <MobileMenu navHeight="46px"/>
-        }
+        {this.state.mobileNavIsOpen && <MobileMenu navHeight="46px" />}
       </SubNavContainer>
     )
   }
 }
 
 const Login = InvertedButton.extend`
-  ${Fonts.avantgarde("s11")}
-  height: 30px;
+  ${avantgarde("s11")} height: 30px;
   width: 80px;
   border-radius: 2px;
   margin: 8px;
 `
 const Signup = StyledButton.extend`
-  ${Fonts.avantgarde("s11")}
-  height: 30px;
+  ${avantgarde("s11")} height: 30px;
   width: 80px;
   background-color: white;
   border-radius: 2px;
@@ -95,5 +80,5 @@ const SubNavContainer = styled.div`
       display: flex;
       align-items: center;
     }
-  `}
+  `};
 `

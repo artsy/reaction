@@ -1,18 +1,18 @@
 import { css } from "styled-components"
-import colors from "../Assets/Colors"
-import * as fonts from "../Assets/Fonts"
+import colors from "Assets/Colors"
+import { garamond } from "Assets/Fonts"
 import { InputProps } from "./Input"
 
 export const borderedInput = (props: InputProps = {}) => {
   return css`
     padding: 10px;
     box-shadow: none;
-    font-size: 17px;
     transition: border-color 0.25s;
     margin-right: 10px;
     resize: none;
 
-    ${fonts.secondary.style} ${border(props)};
+    ${garamond("s17")};
+    ${border(props)};
   `
 }
 

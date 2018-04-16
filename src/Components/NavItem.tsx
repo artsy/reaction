@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import * as fonts from "../Assets/Fonts"
+import { avantgarde } from "Assets/Fonts"
 
 interface NavLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   href: string
@@ -8,8 +8,7 @@ interface NavLinkProps extends React.HTMLProps<HTMLAnchorElement> {
 
 const StyledLink = styled.a`
   align-self: center;
-  font-family: ${fonts.primary.fontFamily};
-  font-size: 14px;
+  font-family: ${avantgarde("s13")};
   line-height: 12px;
   text-decoration: none;
   color: black;
@@ -18,9 +17,8 @@ const StyledLink = styled.a`
   letter-spacing: 0.8;
 `
 
-const NavItem: React.SFC<NavLinkProps> = props =>
-  <StyledLink href={props.href}>
-    {props.children}
-  </StyledLink>
+const NavItem: React.SFC<NavLinkProps> = props => (
+  <StyledLink href={props.href}>{props.children}</StyledLink>
+)
 
 export default NavItem

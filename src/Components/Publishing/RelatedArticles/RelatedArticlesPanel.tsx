@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { Fonts } from "../Fonts"
+import { garamond, unica } from "Assets/Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
@@ -13,31 +13,27 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   }>
 }
 
-export const RelatedArticlesPanel: React.SFC<RelatedArticlesPanelProps> = props => {
+export const RelatedArticlesPanel: React.SFC<
+  RelatedArticlesPanelProps
+> = props => {
   const { articles, label } = props
 
   return (
     <RelatedArticlesContainer>
-      <Label>
-        {label}
-      </Label>
+      <Label>{label}</Label>
 
       <Collection>
         {articles.map((article, i) => {
           const href = getArticleHref(article.slug)
           const articleImageSrc = crop(article.thumbnail_image, {
             width: 160,
-            height: 110
+            height: 110,
           })
 
           return (
             <ArticleLink href={href} key={`relatedarticles-${i}`}>
-              <ArticleImage
-                src={articleImageSrc}
-              />
-              <ArticleTitle>
-                {article.thumbnail_title}
-              </ArticleTitle>
+              <ArticleImage src={articleImageSrc} />
+              <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
             </ArticleLink>
           )
         })}
@@ -60,7 +56,7 @@ const Collection = styled.div`
 `
 
 const Label = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  ${unica("s16", "medium")} margin-bottom: 10px;
 `
 
 const ArticleLink = styled.a`
@@ -80,5 +76,5 @@ const ArticleImage = styled.img`
 `
 
 const ArticleTitle = styled.span`
-  ${Fonts.garamond("s17")} color: black;
+  ${garamond("s17")} color: black;
 `

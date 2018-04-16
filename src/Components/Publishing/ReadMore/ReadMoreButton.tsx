@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 @track()
@@ -38,7 +38,7 @@ const ReadMoreButton = styled.div`
   background-color: black;
   border: 1px solid black;
   border-radius: 2px;
-  ${Fonts.unica("s14", "medium")} padding-top: 1px;
+  ${unica("s14", "medium")} padding-top: 1px;
   &:hover {
     cursor: pointer;
     background-color: white;

@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 
 interface AuthorProps {
   author: any
@@ -12,28 +12,35 @@ interface AuthorProps {
 
 export const Author: React.SFC<AuthorProps> = props => {
   const { author } = props
-  const profileImage = author.image_url ? <ProfileImage src={resize(author.image_url, { width: 200 })} /> : false
+  const profileImage = author.image_url ? (
+    <ProfileImage src={resize(author.image_url, { width: 200 })} />
+  ) : (
+    false
+  )
   return (
     <AuthorContainer>
       {profileImage}
       <AuthorInfo>
-        {
-          author.bio && author.bio.length ?
-            <Markdown source={author.bio} disallowedTypes={["Paragraph"]} unwrapDisallowed containerTagName="span" />
-            :
-            <div>{author.name}</div>
-        }
-        {
-          author.twitter_handle && author.twitter_handle.length ?
-            <Twitter>
-              <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
-                <Icon name="twitter" color="black" />
-                {`@${author.twitter_handle}`}
-              </TwitterHandle>
-            </Twitter>
-            :
-            false
-        }
+        {author.bio && author.bio.length ? (
+          <Markdown
+            source={author.bio}
+            disallowedTypes={["Paragraph"]}
+            unwrapDisallowed
+            containerTagName="span"
+          />
+        ) : (
+          <div>{author.name}</div>
+        )}
+        {author.twitter_handle && author.twitter_handle.length ? (
+          <Twitter>
+            <TwitterHandle href={`http://twitter.com/${author.twitter_handle}`}>
+              <Icon name="twitter" color="black" />
+              {`@${author.twitter_handle}`}
+            </TwitterHandle>
+          </Twitter>
+        ) : (
+          false
+        )}
       </AuthorInfo>
     </AuthorContainer>
   )
@@ -64,13 +71,12 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${Fonts.unica("s16", "medium")}
-  a {
+  ${unica("s16", "medium")} a {
     color: black;
   }
   ${pMedia.xs`
-    ${Fonts.unica("s14", "medium")}
-  `}
+    ${unica("s14", "medium")}
+  `};
 `
 const Twitter = styled.span`
   margin-left: 20px;

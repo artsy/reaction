@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import { Col } from 'react-styled-flexboxgrid'
+import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { garamond } from "Assets/Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
@@ -49,7 +49,7 @@ export class VideoCover extends Component<Props, null> {
       hideCover,
       media,
       seriesLink,
-      seriesTitle
+      seriesTitle,
     } = this.props
 
     return (
@@ -58,17 +58,15 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverOverlay />
         <VideoCoverInfo>
           <VideoCoverInfoRow>
-            <Col
-              xs={2}
-              sm={1}
-              onClick={this.onPlayClick}
-            >
+            <Col xs={2} sm={1} onClick={this.onPlayClick}>
               <IconVideoPlay color="white" />
             </Col>
             <Col xs={10} sm={6}>
               <VideoInfoBlock
                 media={media}
-                subTitle={seriesTitle || (article.vertical && article.vertical.name)}
+                subTitle={
+                  seriesTitle || (article.vertical && article.vertical.name)
+                }
                 subTitleLink={seriesLink}
                 title={article.title}
                 editTitle={editTitle}
@@ -94,10 +92,10 @@ export const VideoCoverAsset = Div`
 `
 
 const VideoCoverOverlay = styled.div`
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
 `
 
-const VideoCoverInfoRow = styled(MaxRow) `
+const VideoCoverInfoRow = styled(MaxRow)`
   width: 100%;
   align-items: flex-end;
 `
@@ -116,7 +114,7 @@ const VideoCoverInfo = styled.div`
   }
   ${media.sm`
     padding-bottom: 40px;
-  `}
+  `};
 `
 
 const CoverDiv: StyledFunction<CoverProps> = styled.div
@@ -127,8 +125,8 @@ export const VideoCoverContainer = CoverDiv`
   width: 100vw;
   height: 100vh;
   color: white;
-  opacity: ${props => props.hideCover ? '0' : '1'};
-  visibility: ${props => props.hideCover ? 'hidden' : 'visible'};
+  opacity: ${props => (props.hideCover ? "0" : "1")};
+  visibility: ${props => (props.hideCover ? "hidden" : "visible")};
   transition: opacity 0.25s ease, visibility 0.25s ease;
   ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
     position: absolute;
@@ -140,8 +138,7 @@ export const VideoCoverContainer = CoverDiv`
 const MediaDescription = styled.div`
   position: relative;
   margin-top: 30px;
-  ${Fonts.garamond("s23")}
-  ${media.sm`
-    ${Fonts.garamond("s19")}
-  `}
+  ${garamond("s23")} ${media.sm`
+    ${garamond("s19")}
+  `};
 `

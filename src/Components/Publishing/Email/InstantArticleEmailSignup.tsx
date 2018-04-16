@@ -5,7 +5,7 @@ import Colors from "../../../Assets/Colors"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
-import { Fonts } from "../Fonts"
+import * as Fonts from "Assets/Fonts"
 
 interface EmailProps {
   signupUrl: string
@@ -23,7 +23,10 @@ interface InputProps {
   isReadOnly: boolean
 }
 
-export class InstantArticleEmailSignup extends React.Component<EmailProps, EmailState> {
+export class InstantArticleEmailSignup extends React.Component<
+  EmailProps,
+  EmailState
+> {
   constructor(props) {
     super(props)
     this.state = {
@@ -37,13 +40,17 @@ export class InstantArticleEmailSignup extends React.Component<EmailProps, Email
   onClick = () => {
     this.setState({ disabled: true })
     if (this.state.value.match(EMAIL_REGEX)) {
-      request.post(this.props.signupUrl).send({ email: this.state.value }).set("accept", "json").end((err, res) => {
-        if (err) {
-          this.flashMessage("Error. Please try again", true)
-        } else {
-          this.flashMessage("Thank you!", false)
-        }
-      })
+      request
+        .post(this.props.signupUrl)
+        .send({ email: this.state.value })
+        .set("accept", "json")
+        .end((err, res) => {
+          if (err) {
+            this.flashMessage("Error. Please try again", true)
+          } else {
+            this.flashMessage("Thank you!", false)
+          }
+        })
     } else {
       this.flashMessage("Invalid Email... Please try again", true)
     }
@@ -63,12 +70,8 @@ export class InstantArticleEmailSignup extends React.Component<EmailProps, Email
   render() {
     return (
       <InstantArticleEmailContainer>
-        <Subtitle>
-          The Daily Editorial Newsletter
-        </Subtitle>
-        <Title>
-          The latest art-world news and stories in your inbox
-        </Title>
+        <Subtitle>The Daily Editorial Newsletter</Subtitle>
+        <Title>The latest art-world news and stories in your inbox</Title>
         <Form>
           <Input
             type="email"
@@ -88,7 +91,8 @@ export class InstantArticleEmailSignup extends React.Component<EmailProps, Email
   }
 }
 
-const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
+const input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> =
+  styled.input
 const Input = input`
   ${borderedInput}
   width: 100%;
@@ -106,19 +110,17 @@ const InstantArticleEmailContainer = styled.div`
   border-bottom: 1px solid ${Colors.grayRegular};
 `
 const Title = styled.div`
-  ${Fonts.garamond("s23")}
-  margin-bottom: 30px;
+  ${Fonts.garamond("s23")} margin-bottom: 30px;
 `
 const Subtitle = styled.div`
-  ${Fonts.avantgarde('s11')}
-  margin-bottom: 10px;
+  ${Fonts.avantgarde("s11")} margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
   border-radius: 2px;
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")}
+  ${Fonts.avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;

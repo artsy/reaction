@@ -5,7 +5,7 @@ import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
 import { BasicHeader } from "./BasicHeader"
 
@@ -215,7 +215,7 @@ const Div = styled.div`
   height: 100%;
   box-sizing: border-box;
 `
-const Overlay = styled(Div) `
+const Overlay = styled(Div)`
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -225,12 +225,12 @@ const Overlay = styled(Div) `
 `
 const Vertical = styled.div`
   margin-bottom: 10px;
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
+    ${unica("s14", "medium")}
   `};
 `
-const HeaderTextContainer = styled(Div) `
+const HeaderTextContainer = styled(Div)`
   margin: auto;
   .PartnerInline {
     position: absolute;
@@ -243,7 +243,7 @@ const HeaderTextContainer = styled(Div) `
     }
   `};
 `
-const HeaderText = styled(Div) `
+const HeaderText = styled(Div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -252,7 +252,7 @@ const HeaderText = styled(Div) `
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = styled(Div) `
+const FeatureImage = styled(Div)`
   position: absolute;
   background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
   background-size: cover;
@@ -266,7 +266,7 @@ const FeatureVideo = styled.video`
   height: 100%;
   object-fit: cover;
 `
-const FeatureVideoContainer = styled(Div) `
+const FeatureVideoContainer = styled(Div)`
   width: 100%;
   height: 100%;
   right: 0;
@@ -284,7 +284,7 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${Fonts.unica("s19", "medium")};
+  ${unica("s19", "medium")};
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -295,28 +295,28 @@ const SubHeader = styled.div`
   `};
 `
 const Title = styled.div`
-  ${Fonts.unica("s100")};
+  ${unica("s100")};
   margin-bottom: 75px;
   letter-spacing: -0.035em;
   ${pMedia.xl`
-    ${Fonts.unica("s80")}
+    ${unica("s80")}
   `} ${pMedia.md`
-    ${Fonts.unica("s65")}
+    ${unica("s65")}
   `} ${pMedia.xs`
-    ${Fonts.unica("s45")}
+    ${unica("s45")}
   `};
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
-    ${Fonts.unica("s14", "medium")}
+    ${unica("s14", "medium")}
   `};
 `
-const FeatureHeaderContainer = styled(Div) `
+const FeatureHeaderContainer = styled(Div)`
   width: 100%;
   height: ${(props: DivProps) => props.height};
   position: relative;

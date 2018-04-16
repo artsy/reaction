@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { Fonts } from "../Fonts"
+import { avantgarde } from "Assets/Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
 
 interface LengthProps extends React.HTMLProps<HTMLDivElement> {
@@ -15,8 +15,7 @@ const Wrapper = styled.div`
   display: flex;
 `
 const Text = styled.div`
-  ${Fonts.avantgarde("s11")}
-  line-height: 1.35em;
+  ${avantgarde("s11")} line-height: 1.35em;
   margin: 0;
 `
 const Remaining = styled.div`
@@ -66,7 +65,9 @@ export class ImageSetPreviewClassic extends Component<any, any> {
   renderImages(images) {
     const items = images.slice(0, 4).map((item, i) => {
       const src = resize(item.image || item.url || "", { width: 500 })
-      const alt = item.caption ? item.caption.replace(/<[^>]*>/g, "") : item.title || ""
+      const alt = item.caption
+        ? item.caption.replace(/<[^>]*>/g, "")
+        : item.title || ""
       if (i < this.state.visibleImages) {
         return (
           <img
@@ -88,13 +89,19 @@ export class ImageSetPreviewClassic extends Component<any, any> {
 
     return (
       <Wrapper className="imageset-preview">
-        <div className="imageset-preview__container" style={{ display: "flex" }}>
+        <div
+          className="imageset-preview__container"
+          style={{ display: "flex" }}
+        >
           {this.renderImages(images)}
         </div>
         <Remaining className="imageset-preview__remaining">
           <IconContainer className="imageset-preview__icon-container">
             <IconImageSet />
-            <Length className="imageset-preview__length" imgLength={images.length}>
+            <Length
+              className="imageset-preview__length"
+              imgLength={images.length}
+            >
               <Text>{images.length}</Text>
             </Length>
           </IconContainer>
@@ -108,6 +115,6 @@ export class ImageSetPreviewClassic extends Component<any, any> {
 const Div: StyledFunction<LengthProps> = styled.div
 const Length = Div`
   position: absolute;
-  left: ${props => props.imgLength > 9 ? "4px" : "8px"};
+  left: ${props => (props.imgLength > 9 ? "4px" : "8px")};
   top: 14px;
 `

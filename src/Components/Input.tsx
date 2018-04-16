@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { fadeIn, fadeOut } from "../Assets/Animations"
-import * as fonts from "../Assets/Fonts"
+import { garamond, unica } from "../Assets/Fonts"
 import { block } from "./Helpers"
 import { border, borderedInput } from "./Mixins"
 
@@ -24,24 +24,24 @@ const StyledInput = styled.input`
 `
 
 const BorderlessInput = styled.input`
-  ${fonts.secondary.style};
+  ${garamond("s17")};
   border: 0;
   font-size: 17px;
   outline: none;
   flex: 1;
 `
-
+const BorderClassname = "border-container"
 const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
   ${borderedInput};
   border: 0;
-  padding: ${p => (p.hasLabel ? "16px" : "12px")};
   margin-right: 0;
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
   position: relative;
+  height: ${p => (p.hasLabel ? "60px" : "40px")};
 
-  & .border-container {
+  & .${BorderClassname} {
     ${border};
     z-index: -1;
     position: absolute;
@@ -53,8 +53,7 @@ const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
 `
 
 const Label = styled.label.attrs<{ out: boolean }>({})`
-  ${fonts.primary.style};
-  font-size: 8px;
+  ${unica("s12")};
   position: absolute;
   left: 17px;
   top: 8px;
@@ -62,20 +61,6 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   animation: ${props => (props.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
 `
-
-const ShowHide = styled.a`
-  ${fonts.primary.style};
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-`
-
-const ShowHideButton = props => {
-  const text = props.show ? "Hide" : "Show"
-  return <ShowHide>{text}</ShowHide>
-}
-
-const BorderClassname = "border-container"
 
 class Input extends React.Component<InputProps, InputState> {
   state = {
@@ -111,12 +96,8 @@ class Input extends React.Component<InputProps, InputState> {
 
   render() {
     let rightView = this.props.rightView
-    const { leftView, label, type } = this.props
+    const { leftView, label } = this.props
     const showLabel = !!this.state.value && !!label
-
-    if (type === "password") {
-      rightView = <ShowHideButton />
-    }
 
     if (leftView || rightView || label) {
       const { className, ref, ...newProps } = this.props

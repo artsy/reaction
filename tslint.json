@@ -12,6 +12,7 @@
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "no-namespace": [true, "allow-declarations"]
+    "no-namespace": [true, "allow-declarations"],
+    "trailing-comma": false
   }
 }

@@ -3,7 +3,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
-import { Fonts } from "../../Fonts"
+import { unica } from "Assets/Fonts"
 import { Caption } from "./Caption"
 
 interface ImageProps {
@@ -17,9 +17,14 @@ export const Slide = props => {
   return (
     <div {...newProps}>
       <SlideContainer>
-        <Title>{section.setTitle || ''}</Title>
+        <Title>{section.setTitle || ""}</Title>
         <Image src={src} />
-        <Caption open={props.isCaptionOpen} section={section} total={props.total} index={props.index} />
+        <Caption
+          open={props.isCaptionOpen}
+          section={section}
+          total={props.total}
+          index={props.index}
+        />
       </SlideContainer>
     </div>
   )
@@ -46,9 +51,8 @@ const Image = Img`
 const Title = styled.div`
   min-height: 25px;
   padding: 30px 60px 0 60px;
-  ${Fonts.unica("s40")}
-  ${pMedia.sm`
+  ${unica("s40")} ${pMedia.sm`
     padding: 20px 60px 0 20px;
-    ${Fonts.unica("s19")}
-  `}
+    ${unica("s19")}
+  `};
 `
