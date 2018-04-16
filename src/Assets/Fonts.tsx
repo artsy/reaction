@@ -138,11 +138,11 @@ const fontFamily = {
   },
   avantgarde: {
     regular:
-      "'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075', AvantGardeGothicITCW01Dm, Helvetica, sans-serif'",
+      "'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075', AvantGardeGothicITCW01Dm, Helvetica, sans-serif",
   },
   garamond: {
     regular:
-      "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif'",
+      "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
   },
 }
 
@@ -158,7 +158,7 @@ export const unica = (size: keyof typeof UnicaSizes, family = "regular") => {
 
 export const avantgarde = (size: keyof typeof AvantGardeSizes) => {
   return css`
-    font-family: AvantGardeSizes[size];
+    font-family: ${fontFamily.avantgarde.regular};
     -webkit-font-smoothing: antialiased;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -170,6 +170,7 @@ export const avantgarde = (size: keyof typeof AvantGardeSizes) => {
 
 export const garamond = (size: keyof typeof GaramondSizes) => {
   return css`
+    font-family: ${fontFamily.garamond.regular};
     font-size: ${GaramondSizes[size].size};
     line-height: ${GaramondSizes[size].height};
     -webkit-font-smoothing: antialiased;
