@@ -3,10 +3,11 @@ import styled, { StyledFunction } from "styled-components"
 import colors from "../../Assets/Colors"
 
 type Styled<P, T> = StyledFunction<P & React.HTMLProps<T>>
+type StyledDiv<P> = Styled<P, HTMLDivElement>
 type StyledInput<P> = Styled<P, HTMLInputElement>
 
 const breakpoints = {
-  medium: "768px"
+  medium: "768px",
 }
 
 const formControlStyle = `
@@ -89,5 +90,26 @@ const withInitialFocus = WrappedComponent => {
 }
 
 export const InitiallyFocusedTextInput = withInitialFocus(TextInput)
+
+const div: StyledDiv<Props> = styled.div
+
+const InlineMessage = div`
+  margin-top: 10px;
+  flex-basis: ${props => props.flexBasis || "100%"};
+`
+
+const withInlineMessage = WrappedComponent => {
+  // could probably use some type info here...
+  return ({ message, flexBasis, ...props }) => {
+    return (
+      <div style={{ flexBasis }}>
+        <WrappedComponent {...props} />
+        {message && <InlineMessage>{message}</InlineMessage>}
+      </div>
+    )
+  }
+}
+
+export const TextInputWithInlineMessage = withInlineMessage(TextInput)
 
 export default TextInput
