@@ -1,7 +1,7 @@
 import { Formik, FormikProps } from "formik"
 import React from "react"
 import Yup from "yup"
-import Wizard from "./Wizard"
+import Wizard from "../../Wizard"
 import { Step } from "./Step"
 
 import {

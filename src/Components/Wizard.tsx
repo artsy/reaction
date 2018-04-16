@@ -1,8 +1,7 @@
 import React, { Children } from "react"
-import Button from "../../Buttons/Inverted"
+import Button from "./Buttons/Inverted"
 
 interface Props {
-  redirectTo?: string
   errors: any
 }
 
@@ -59,7 +58,7 @@ class Wizard extends React.Component<Props, State> {
 
     const hasErrors = Children.toArray(step.props.children)
       .map((input: any) => {
-        return !!this.props.errors[input.props.name]
+        return Boolean(this.props.errors[input.props.name])
       })
       .reduce((acc, currentValue) => acc && currentValue)
 
