@@ -111,5 +111,3 @@ const withInlineMessage = WrappedComponent => {
 }
 
 export const TextInputWithInlineMessage = withInlineMessage(TextInput)
-
-export default TextInput

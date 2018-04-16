@@ -1,7 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import TextInput, {
+import {
+  TextInput,
   InitiallyFocusedTextInput,
   TextInputWithInlineMessage,
 } from "../TextInput"
