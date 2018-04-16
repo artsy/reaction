@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router"
 
 import Events from "../../Utils/Events"
 import { track } from "../../Utils/track"
-import { ProgressIndicator } from "./ProgressIndicator"
+import { ProgressIndicator } from "../ProgressIndicator"
 
 import Artists from "./Steps/Artists"
 import Budget, { BudgetComponent } from "./Steps/Budget"
