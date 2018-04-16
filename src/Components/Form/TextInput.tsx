@@ -57,4 +57,37 @@ export const TextInput = input.attrs({ type: "text" })`
 `
 TextInput.displayName = "TextInput"
 
+const withInitialFocus = WrappedComponent => {
+  interface Focusable {
+    focus()
+  }
+
+  interface HasFocusable {
+    focusable?: Focusable
+  }
+
+  return class extends React.Component implements HasFocusable {
+    focusable = null
+
+    componentDidMount() {
+      if (this.focusable) {
+        this.focusable.focus()
+      }
+    }
+
+    render() {
+      return (
+        <WrappedComponent
+          innerRef={el => {
+            this.focusable = el
+          }}
+          {...this.props}
+        />
+      )
+    }
+  }
+}
+
+export const InitiallyFocusedTextInput = withInitialFocus(TextInput)
+
 export default TextInput
