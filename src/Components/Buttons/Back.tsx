@@ -24,11 +24,9 @@ const Text = styled.span`
   padding-left: 0.15em;
 `
 
-const BackButton = ({ children, fontSize = 11 }) => (
+export const BackButton = ({ children, fontSize = 11 }) => (
   <Wrapper fontSize={fontSize}>
     <Icon name="chevron-small-left" color="black" fontSize={`${fontSize}px`} />
     <Text>{children}</Text>
   </Wrapper>
 )
-
-export default BackButton
