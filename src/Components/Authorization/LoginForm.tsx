@@ -1,27 +1,44 @@
-import { Formik, FormikProps } from "formik"
 import React from "react"
-import Yup from "yup"
+import styled from "styled-components"
+import { Formik, FormikProps } from "formik"
 
 import {
   BlockButton as Button,
-  ChangeMode,
   FormContainer as Form,
-  inputValidators,
-  StyledFacebookButton,
+  GrayFacebookButton,
   StyledInput as Input,
 } from "./commonElements"
+
+import { Validators } from "./Validators"
+import Colors from "../../Assets/Colors"
+import Text from "../Text"
+import TextLink from "../TextLink"
 import { FormComponentType, InputValues } from "./Types"
+import Checkbox from "../Checkbox"
+
+const ForgotPasswordLink = styled(TextLink)`
+  margin-left: auto;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+const LoginText = styled(Text).attrs({
+  color: Colors.grayDark,
+  align: "center",
+})`
+  margin-top: 0;
+`
 
 export const LoginForm: FormComponentType = props => {
-  const { email: emailValidator } = inputValidators
   return (
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Yup.object().shape({
-        email: emailValidator,
-        password: Yup.string().required("Please enter your password."),
-      })}
+      validationSchema={Validators}
     >
       {({
         values,
@@ -37,8 +54,9 @@ export const LoginForm: FormComponentType = props => {
             <Input
               block
               error={touched.email && errors.email}
+              placeholder="Enter your email address"
               name="email"
-              placeholder="Email"
+              label="Email"
               type="email"
               value={values.email}
               onChange={handleChange}
@@ -47,23 +65,41 @@ export const LoginForm: FormComponentType = props => {
             <Input
               block
               error={touched.password && errors.password}
+              placeholder="Enter your password"
               name="password"
-              placeholder="Password"
+              label="Password"
               type="password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <Row>
+              <Checkbox
+                type="checkbox"
+                name="remember-me"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <Text color={Colors.grayDark}>Remember me</Text>
+              </Checkbox>
+              <ForgotPasswordLink
+                onClick={() => props.handleChangeMode("reset_password")}
+                color={Colors.grayDark}
+                underline
+              >
+                Forgot Password?
+              </ForgotPasswordLink>
+            </Row>
             <Button type="submit" disabled={isSubmitting}>
               Log In
             </Button>
-            <StyledFacebookButton>Log In with Facebook</StyledFacebookButton>
-            <ChangeMode handleClick={props.handleChangeMode("register")}>
-              Sign Up
-            </ChangeMode>
-            <ChangeMode handleClick={props.handleChangeMode("reset_password")}>
-              Forgot Password
-            </ChangeMode>
+            <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
+            <LoginText>
+              Don't have an account?{" "}
+              <TextLink onClick={props.handleChangeMode("login")}>
+                Sign Up
+              </TextLink>
+            </LoginText>
           </Form>
         )
       }}

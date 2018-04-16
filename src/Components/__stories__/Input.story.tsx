@@ -38,6 +38,7 @@ storiesOf("Components/Input", module)
           type="password"
           placeholder="Enter your password"
           label="Password"
+          rightView={<Icon name="search" color={colors.graySemibold} />}
           block
         />
       </div>

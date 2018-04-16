@@ -23,8 +23,8 @@ exports[`EmailSignup renders an email signup 1`] = `
   font-size: 13px;
   line-height: 1;
   outline: 0;
-  -webkit-transition: background-color .25s,color .25s;
-  transition: background-color .25s,color .25s;
+  -webkit-transition: background-color 0.25s,color 0.25s;
+  transition: background-color 0.25s,color 0.25s;
   margin: 10px;
   border: none;
   box-sizing: border-box;

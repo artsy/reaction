@@ -1,25 +1,21 @@
-import { Formik, FormikProps } from "formik"
 import React from "react"
-import Yup from "yup"
+import { Formik, FormikProps } from "formik"
 
 import {
   BlockButton as Button,
   ChangeMode,
   FormContainer as Form,
-  inputValidators,
   StyledInput as Input,
 } from "./commonElements"
 import { FormComponentType, InputValues } from "./Types"
+import { Validators } from "./Validators"
 
 export const ResetPasswordForm: FormComponentType = props => {
-  const { email: emailValidator } = inputValidators
   return (
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Yup.object().shape({
-        email: emailValidator,
-      })}
+      validationSchema={Validators}
     >
       {({
         values,

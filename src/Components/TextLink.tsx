@@ -1,9 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import "../Assets/Fonts"
+import { secondary } from "../Assets/Fonts"
 
-export interface LinkProps extends React.Props<TextLink>, React.HTMLAttributes<TextLink> {
+export interface LinkProps
+  extends React.Props<TextLink>,
+    React.HTMLAttributes<TextLink> {
   href?: string
   underline?: boolean
   color?: string
@@ -22,6 +24,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 }
 
 const StyledTextLink = styled(TextLink)`
+  ${secondary.style};
   color: ${props => props.color};
   text-decoration: ${props => (props.underline ? "underline" : "none")};
 `

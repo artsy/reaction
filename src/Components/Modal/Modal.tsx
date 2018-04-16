@@ -1,28 +1,29 @@
 import React from "react"
 import styled from "styled-components"
 
-interface ModalProps extends React.HTMLProps<Modal> {
+export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
-  onClose: () => void
+  onClose?: () => void
 }
 
 const ModalContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  zIndex: 9999;
+  z-index: 9999;
   background: #fff;
-  width: 420px;
+  width: 500px;
+  border-radius: 4px;
 `
 
 const Overlay = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0px;
   left: 0px;
-  zIndex: 9998;
+  z-index: 9998;
   background: rgba(0, 0, 0, 0.3);
 `
 
@@ -51,9 +52,7 @@ class Modal extends React.Component<ModalProps, any> {
     }
     return (
       <div>
-        <ModalContainer {...newProps}>
-          {this.props.children}
-        </ModalContainer>
+        <ModalContainer {...newProps}>{this.props.children}</ModalContainer>
         <Overlay onClick={this.close} />
       </div>
     )

@@ -13,16 +13,10 @@ export class Popover extends React.Component<PopoverProps> {
   }
 
   render() {
-    const {
-      placement,
-      arrowOffsetLeft,
-      arrowOffsetTop,
-      ref,
-      ...props
-    } = this.props
+    const { placement, arrowOffsetLeft, arrowOffsetTop, style } = this.props
 
     return (
-      <PopoverContainer {...props}>
+      <PopoverContainer style={style}>
         {cloneElement(this.Arrows[placement], {
           arrowOffsetLeft,
           arrowOffsetTop,
