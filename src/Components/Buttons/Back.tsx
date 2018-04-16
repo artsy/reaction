@@ -26,7 +26,7 @@ const Text = styled.span`
 
 const BackButton = ({ children, fontSize = 11 }) => (
   <Wrapper fontSize={fontSize}>
-    <Icon name="chevron-left" color="black" fontSize={`${0.8 * fontSize}px`} />
+    <Icon name="chevron-small-left" color="black" fontSize={`${fontSize}px`} />
     <Text>{children}</Text>
   </Wrapper>
 )
