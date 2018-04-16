@@ -1,10 +1,12 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { FeatureArticle } from "../../Fixtures/Articles"
+import { cloneDeep, extend } from "lodash"
+import { FeatureArticle, SeriesArticle } from "../../Fixtures/Articles"
 import { RelatedCanvas } from "../../Fixtures/Components"
 import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
 import { FeatureLayout } from "../FeatureLayout"
+import { Nav } from "../../Nav/Nav"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
@@ -30,4 +32,31 @@ it("Does not render RelatedArticlesCanvas if isSuper", () => {
     />
   )
   expect(article.find(RelatedArticlesCanvas).length).toBe(0)
+})
+
+it("renders a nav if article is in a series", () => {
+  const article = mount(
+    <FeatureLayout
+      article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      seriesArticle={SeriesArticle}
+    />
+  )
+  expect(article.find(Nav).length).toBe(1)
+})
+
+it("does not render a nav if article has a non-fullscreen header", () => {
+  const Article = extend(cloneDeep(FeatureArticle), {
+    hero_section: {
+      type: "basic",
+    },
+  })
+  const article = mount(
+    <FeatureLayout
+      article={Article}
+      relatedArticlesForCanvas={RelatedCanvas}
+      seriesArticle={SeriesArticle}
+    />
+  )
+  expect(article.find(Nav).length).toBe(0)
 })
