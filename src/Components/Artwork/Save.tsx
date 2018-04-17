@@ -1,5 +1,10 @@
 import React from "react"
-import { commitMutation, createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 
 import Icon from "../Icon"
 
@@ -10,15 +15,23 @@ import * as Artsy from "../../Components/Artsy"
 
 const SIZE = 40
 
-export interface Props extends RelayProps, React.HTMLProps<SaveButton>, Artsy.ContextProps {
+export interface Props
+  extends RelayProps,
+    React.HTMLProps<SaveButtonContainer>,
+    Artsy.ContextProps {
   style?: any
   relay?: RelayProp
+  useRelay?: boolean
 }
 
-export class SaveButton extends React.Component<Props, null> {
+export class SaveButtonContainer extends React.Component<Props, null> {
+  static defaultProps = {
+    useRelay: true,
+  }
+
   handleSave() {
-    const { currentUser, artwork, relay } = this.props
-    if (currentUser && currentUser.id) {
+    const { currentUser, artwork, relay, useRelay } = this.props
+    if (useRelay && currentUser && currentUser.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
@@ -45,6 +58,9 @@ export class SaveButton extends React.Component<Props, null> {
           },
         },
       })
+
+      // FIXME: Add non-relay based favorite mechanism
+      // } else {
     } else {
       window.location.href = "/login"
     }
@@ -59,13 +75,18 @@ export class SaveButton extends React.Component<Props, null> {
         onClick={() => this.handleSave()}
         data-saved={artwork.is_saved}
       >
-        <Icon name="heart" height={SIZE} color="white" style={{ verticalAlign: "middle" }} />
+        <Icon
+          name="heart"
+          height={SIZE}
+          color="white"
+          style={{ verticalAlign: "middle" }}
+        />
       </div>
     )
   }
 }
 
-export const StyledSaveButton = styled(SaveButton)`
+export const SaveButton = styled(SaveButtonContainer)`
   width: ${SIZE}px;
   height: ${SIZE}px;
   text-align: center;
@@ -88,7 +109,7 @@ export const StyledSaveButton = styled(SaveButton)`
 `
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(StyledSaveButton),
+  Artsy.ContextConsumer(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id

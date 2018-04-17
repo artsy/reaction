@@ -3,13 +3,14 @@ import ReactDOM from "react-dom"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
-import GridItem from "./Artwork/GridItem"
+import RelayGridItem, { ArtworkGridItem } from "./Artwork/GridItem"
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkGrid> {
+interface Props extends RelayProps, React.HTMLProps<ArtworkGridContainer> {
   columnCount?: number
   sectionMargin?: number
   itemMargin?: number
   onLoadMore?: () => any
+  useRelay?: boolean
 }
 
 interface State {
@@ -17,8 +18,13 @@ interface State {
   interval: any
 }
 
-export class ArtworkGrid extends React.Component<Props, State> {
-  public static defaultProps: Partial<Props>
+class ArtworkGridContainer extends React.Component<Props, State> {
+  static defaultProps = {
+    columnCount: 3,
+    sectionMargin: 20,
+    itemMargin: 20,
+    useRelay: true,
+  }
 
   state = {
     interval: null,
@@ -101,17 +107,27 @@ export class ArtworkGrid extends React.Component<Props, State> {
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        artworkComponents.push(<GridItem artwork={artwork as any} key={"artwork-" + j + "-" + artwork.__id} />)
+        const GridItem = this.props.useRelay ? RelayGridItem : ArtworkGridItem
+        artworkComponents.push(
+          <GridItem
+            artwork={artwork as any}
+            key={"artwork-" + j + "-" + artwork.__id}
+            useRelay={this.props.useRelay}
+          />
+        )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
         if (j < sectionedArtworks[i].length - 1) {
-          artworkComponents.push(<div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />)
+          artworkComponents.push(
+            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />
+          )
         }
       }
 
       const sectionSpecificStyle = {
         flex: 1,
         minWidth: 0,
-        marginRight: i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
+        marginRight:
+          i === this.props.columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
       sections.push(
@@ -129,20 +145,14 @@ export class ArtworkGrid extends React.Component<Props, State> {
   }
 }
 
-ArtworkGrid.defaultProps = {
-  columnCount: 3,
-  sectionMargin: 20,
-  itemMargin: 20,
-}
-
-const StyledGrid = styled(ArtworkGrid) `
+export const ArtworkGrid = styled(ArtworkGridContainer)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `
 
 export default createFragmentContainer(
-  StyledGrid,
+  ArtworkGrid,
   graphql`
     fragment ArtworkGrid_artworks on ArtworkConnection {
       edges {

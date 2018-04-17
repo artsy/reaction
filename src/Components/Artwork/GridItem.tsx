@@ -3,8 +3,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import colors from "../../Assets/Colors"
-import Metadata from "./Metadata"
-import Save from "./Save"
+import RelayMetadata, { Metadata } from "./Metadata"
+import RelaySaveButton, { SaveButton } from "./Save"
 
 const Image = styled.img`
   width: 100%;
@@ -16,35 +16,44 @@ const Image = styled.img`
 const Placeholder = styled.div`
   background-color: ${colors.grayMedium};
   position: relative;
-  width 100%;
+  width: 100%;
 `
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkGridItem> {
+interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
+  useRelay?: boolean
   style?: any
 }
 
-export class ArtworkGridItem extends React.Component<Props, null> {
+class ArtworkGridItemContainer extends React.Component<Props, null> {
+  static defaultProps = {
+    useRelay: true,
+  }
+
   render() {
-    const { style, className, artwork } = this.props
+    const { style, className, artwork, useRelay } = this.props
+    const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
+    const MetadataBlock = useRelay ? RelayMetadata : Metadata
+
     return (
       <div className={className} style={style}>
         <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
           <a href={artwork.href}>
             <Image src={artwork.image.url} />
           </a>
-          <Save
+          <SaveButtonBlock
             className="artwork-save"
             artwork={artwork as any}
             style={{ position: "absolute", right: "10px", bottom: "10px" }}
+            useRelay={useRelay}
           />
         </Placeholder>
-        <Metadata artwork={artwork} />
+        <MetadataBlock artwork={artwork} useRelay={useRelay} />
       </div>
     )
   }
 }
 
-const StyledArtworkGridItem = styled(ArtworkGridItem)`
+export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
   .artwork-save {
     opacity: 0;
   }
@@ -54,7 +63,7 @@ const StyledArtworkGridItem = styled(ArtworkGridItem)`
 `
 
 export default createFragmentContainer(
-  StyledArtworkGridItem,
+  ArtworkGridItem,
   graphql`
     fragment GridItem_artwork on Artwork {
       image {
