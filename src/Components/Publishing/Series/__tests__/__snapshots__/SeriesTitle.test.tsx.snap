@@ -15,7 +15,6 @@ exports[`renders a series title properly 1`] = `
 }
 
 .c0 .file__PartnerBlockContainer-yu39to-0 img {
-  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -65,7 +64,6 @@ exports[`renders a series with children properly 1`] = `
 }
 
 .c0 .file__PartnerBlockContainer-yu39to-0 img {
-  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
@@ -105,7 +103,10 @@ exports[`renders a series with children properly 1`] = `
 
 exports[`renders a sponsored series title properly 1`] = `
 .c3 img {
-  max-width: 220px;
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
 }
 
 .c1 {
@@ -130,17 +131,10 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 .c0 .c2 img {
-  max-width: 240px;
   padding-top: 5px;
   padding-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (max-width:720px) {
-  .c3 img {
-    max-width: 195px;
-  }
 }
 
 @media (max-width:900px) {

@@ -1208,7 +1208,10 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 .c6 img {
-  max-width: 220px;
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
 }
 
 .c7 {
@@ -1456,12 +1459,6 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 img {
-    max-width: 195px;
   }
 }
 
