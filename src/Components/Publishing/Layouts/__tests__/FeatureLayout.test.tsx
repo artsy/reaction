@@ -35,12 +35,11 @@ it("Does not render RelatedArticlesCanvas if isSuper", () => {
 })
 
 it("renders a nav if article is in a series", () => {
+  const Article = extend(cloneDeep(FeatureArticle), {
+    seriesArticle: SeriesArticle,
+  })
   const article = mount(
-    <FeatureLayout
-      article={FeatureArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      seriesArticle={SeriesArticle}
-    />
+    <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />
   )
   expect(article.find(Nav).length).toBe(1)
 })
@@ -50,13 +49,10 @@ it("does not render a nav if article has a non-fullscreen header", () => {
     hero_section: {
       type: "basic",
     },
+    seriesArticle: SeriesArticle,
   })
   const article = mount(
-    <FeatureLayout
-      article={Article}
-      relatedArticlesForCanvas={RelatedCanvas}
-      seriesArticle={SeriesArticle}
-    />
+    <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />
   )
   expect(article.find(Nav).length).toBe(0)
 })
