@@ -53,13 +53,11 @@ export class PartnerBlock extends React.Component<Props, null> {
 
 export const PartnerBlockContainer = styled.div`
   img {
-    max-width: 220px;
+    max-width: 240px;
+    max-height: 40px;
+    object-fit: contain;
+    object-position: left;
   }
-  ${pMedia.sm`
-    img {
-      max-width: 195px;
-    }
-  `};
 `
 const Title = styled.div`
   ${Fonts.unica("s16", "medium")};

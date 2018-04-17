@@ -2,7 +2,10 @@
 
 exports[`renders the partner block 1`] = `
 .c0 img {
-  max-width: 220px;
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
 }
 
 .c1 {
@@ -11,12 +14,6 @@ exports[`renders the partner block 1`] = `
   font-size: 16px;
   line-height: 1.1em;
   margin-bottom: 20px;
-}
-
-@media (max-width:720px) {
-  .c0 img {
-    max-width: 195px;
-  }
 }
 
 @media (max-width:720px) {

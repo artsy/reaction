@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Fonts } from "../Fonts"
-import { PartnerBlock, PartnerBlockContainer } from '../Partner/PartnerBlock'
+import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   article?: any
@@ -18,30 +18,26 @@ export class SeriesTitle extends Component<Props, null> {
     const { sponsor, title } = article
 
     return (
-      <SeriesTitleContainer className='SeriesTitle' color={color}>
+      <SeriesTitleContainer className="SeriesTitle" color={color}>
+        <Title>{editTitle ? editTitle : title}</Title>
 
-        <Title>
-          {editTitle ? editTitle : title}
-        </Title>
-
-        {sponsor &&
+        {sponsor && (
           <PartnerBlock
             logo={sponsor.partner_light_logo}
             url={sponsor.partner_logo_link}
             trackingData={{
-              type: 'external link',
-              destination_path: sponsor.partner_logo_link
+              type: "external link",
+              destination_path: sponsor.partner_logo_link,
             }}
           />
-        }
-
+        )}
       </SeriesTitleContainer>
     )
   }
 }
 
 SeriesTitle.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
 export const SeriesTitleContainer = styled.div`
@@ -49,7 +45,6 @@ export const SeriesTitleContainer = styled.div`
   text-align: center;
 
   ${PartnerBlockContainer} img {
-    max-width: 240px;
     padding-top: 5px;
     padding-bottom: 40px;
     margin-left: auto;
@@ -60,15 +55,14 @@ export const SeriesTitleContainer = styled.div`
     ${PartnerBlockContainer} img {
       padding-bottom: 0;
     }
-  `}
+  `};
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s120")}
-  margin-bottom: 30px;
+  ${Fonts.unica("s120")} margin-bottom: 30px;
 
   ${pMedia.md`
     ${Fonts.unica("s65")}
     margin-bottom: 20px;
-  `}
+  `};
 `
