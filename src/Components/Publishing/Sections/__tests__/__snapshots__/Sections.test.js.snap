@@ -1189,7 +1189,9 @@ exports[`snapshots renders properly 1`] = `
                           Brass Tax
                         </file__StyledTextLink>
                       </span>
-                      , 
+                      <span>
+                        , 
+                      </span>
                       <span
                         className="date"
                       >
@@ -1210,7 +1212,9 @@ exports[`snapshots renders properly 1`] = `
                       >
                         Joanne Artman Gallery
                       </file__StyledTextLink>
-                      . 
+                      <span>
+                        . 
+                      </span>
                       <span
                         className="credit"
                       >
