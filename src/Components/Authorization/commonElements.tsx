@@ -8,6 +8,10 @@ import Colors from "../../Assets/Colors"
 import Checkbox from "../Checkbox"
 import Input from "../Input"
 
+// FIXME: Are these being used?
+export const inputValidators = {}
+export const StyledFacebookButton = FacebookButton
+
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
