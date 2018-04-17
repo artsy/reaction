@@ -30,7 +30,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   <div
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span>. Gary Nader</span>",
+        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
       }
     }
   />
@@ -111,7 +111,9 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
       >
         Nude on the Beach
       </span>
-      , 
+      <span>
+        , 
+      </span>
       <span
         className="date"
       >
@@ -122,7 +124,9 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
       className="c1"
     >
       Gary Nader
-      . 
+      <span>
+        . 
+      </span>
       <span
         className="credit"
       >
@@ -190,14 +194,14 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<span><span class=\\"title\\">Nude on the Beach</span>, <span class=\\"date\\">2000</span></span>",
+          "__html": "<span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span></span>",
         }
       }
     />
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<span>Gary Nader. <span class=\\"credit\\">Courtesy of Gary Nader</span></span>",
+          "__html": "<span>Gary Nader<span>. </span><span class=\\"credit\\">Courtesy of Gary Nader</span></span>",
         }
       }
     />

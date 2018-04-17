@@ -338,7 +338,9 @@ exports[`renders properly 1`] = `
                         Nude on the Beach
                       </a>
                     </span>
-                    , 
+                    <span>
+                      , 
+                    </span>
                     <span
                       className="date"
                     >
@@ -354,7 +356,9 @@ exports[`renders properly 1`] = `
                     >
                       Gary Nader
                     </a>
-                    . 
+                    <span>
+                      . 
+                    </span>
                     <span
                       className="credit"
                     >

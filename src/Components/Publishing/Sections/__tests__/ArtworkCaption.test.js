@@ -54,7 +54,9 @@ describe("ArtworkCaption", () => {
     it("joins two items", () => {
       const component = getWrapper()
       const joined = component.instance().joinParts(["Title", "Date"])
-      expect(joined.join("")).toEqual("Title, Date")
+
+      expect(joined[0]).toEqual("Title")
+      expect(joined[2]).toEqual("Date")
     })
 
     it("joins three items into a nested array", () => {
@@ -88,8 +90,8 @@ describe("ArtworkCaption", () => {
           artists: [{ name: "Andy Warhol" }, { name: "Botero" }],
         }),
       })
-      expect(component.html()).toMatch(
-        '<span class="name">Andy Warhol</span>, <span class="name">Botero</span></span>'
+      expect(component.text()).toMatch(
+        'Andy Warhol, Botero'
       )
     })
 
@@ -97,15 +99,15 @@ describe("ArtworkCaption", () => {
       const component = getWrapper({
         artwork: ArtworkRegular,
       })
-      expect(component.html()).toMatch(
-        '<span class="title">Nude on the Beach</span>, <span class="date">2000</span></span>'
+      expect(component.text()).toMatch(
+        'Nude on the Beach, 2000'
       )
     })
 
     it("renders partner + credit", () => {
       const component = getWrapper()
-      expect(component.html()).toMatch(
-        '<span>Gary Nader. <span class="credit">Courtesy of Gary Nader</span></span>'
+      expect(component.text()).toMatch(
+        'Gary Nader. Courtesy of Gary Nader'
       )
     })
   })
