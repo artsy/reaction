@@ -4,30 +4,36 @@ import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
 
-import Contact from "./Contact"
-import Details from "./Details"
+import RelayContact, { Contact } from "./Contact"
+import RelayDetails, { Details } from "./Details"
 
-export interface ArtworkMetadataProps extends React.HTMLProps<ArtworkMetadata> {
+export interface MetadataProps extends React.HTMLProps<MetadataContainer> {
   artwork: any
   extended?: boolean
+  useRelay?: boolean
 }
 
-export class ArtworkMetadata extends React.Component<ArtworkMetadataProps, null> {
+export class MetadataContainer extends React.Component<MetadataProps> {
   static defaultProps = {
     extended: true,
+    useRelay: true,
   }
 
   render() {
+    const { artwork, className, extended, useRelay } = this.props
+    const DetailsBlock = useRelay ? RelayDetails : Details
+    const ContactBlock = useRelay ? RelayContact : Contact
+
     return (
-      <div className={this.props.className}>
-        <Details showSaleLine={this.props.extended} artwork={this.props.artwork} />
-        {this.props.extended && <Contact artwork={this.props.artwork} />}
+      <div className={className}>
+        <DetailsBlock showSaleLine={extended} artwork={artwork} />
+        {extended && <ContactBlock artwork={artwork} />}
       </div>
     )
   }
 }
 
-export const StyledMetadata = styled(ArtworkMetadata)`
+export const Metadata = styled(MetadataContainer)`
   ${fonts.secondary.style};
   color: ${colors.graySemibold};
   margin-top: 12px;
@@ -37,7 +43,7 @@ export const StyledMetadata = styled(ArtworkMetadata)`
 `
 
 export default createFragmentContainer(
-  StyledMetadata,
+  Metadata,
   graphql`
     fragment Metadata_artwork on Artwork {
       ...Details_artwork

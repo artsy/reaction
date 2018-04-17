@@ -5,7 +5,7 @@ import sizeMe from "react-sizeme"
 import styled from "styled-components"
 
 import fillwidthDimensions from "../../Utils/fillwidth"
-import FillwidthItem from "./FillwidthItem"
+import RelayFillwidthItem, { FillwidthItem } from "./FillwidthItem"
 
 import { find } from "lodash"
 
@@ -17,26 +17,32 @@ interface RelayProps {
   }
 }
 
-interface Props extends RelayProps, React.HTMLAttributes<Fillwidth> {
+interface Props extends RelayProps, React.HTMLAttributes<FillwidthContainer> {
   targetHeight?: number
   gutter?: number
   size?: any
+  useRelay?: boolean
 }
 
-export class Fillwidth extends React.Component<Props, null> {
-  public static defaultProps: Partial<Props>
+class FillwidthContainer extends React.Component<Props, null> {
+  public static defaultProps: Partial<Props> = {
+    useRelay: true,
+  }
 
   renderArtwork(artwork, dimensions, i) {
-    const { gutter } = this.props
+    const { gutter, useRelay } = this.props
     const artworkSize = find(dimensions, ["__id", artwork.__id])
+    const FillWidthItemBlock = useRelay ? RelayFillwidthItem : FillwidthItem
+
     return (
-      <FillwidthItem
+      <FillWidthItemBlock
         artwork={artwork as any}
         key={"artwork--" + artwork.__id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}
         width={artworkSize.width}
         margin={i === dimensions.length - 1 ? 0 : gutter}
+        useRelay={useRelay}
       />
     )
   }
@@ -51,13 +57,15 @@ export class Fillwidth extends React.Component<Props, null> {
     )
     return (
       <div className={this.props.className}>
-        {artworks.map((artwork, i) => this.renderArtwork(artwork.node, dimensions, i))}
+        {artworks.map((artwork, i) =>
+          this.renderArtwork(artwork.node, dimensions, i)
+        )}
       </div>
     )
   }
 }
 
-const StyledFillwidth = styled(Fillwidth)`
+const StyledFillwidth = styled(FillwidthContainer)`
   margin-bottom: 50px;
 `
 
@@ -72,10 +80,12 @@ const sizeMeOptions = {
   refreshMode: "debounce",
 }
 
-const FillwidthDimensions = sizeMe(sizeMeOptions)(StyledFillwidth) as React.StatelessComponent<Props>
+export const Fillwidth = sizeMe(sizeMeOptions)(
+  StyledFillwidth
+) as React.StatelessComponent<Props>
 
 export default createFragmentContainer(
-  FillwidthDimensions,
+  Fillwidth,
   graphql`
     fragment Fillwidth_artworks on ArtworkConnection {
       edges {

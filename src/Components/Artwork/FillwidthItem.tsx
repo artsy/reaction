@@ -2,8 +2,8 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
-import Metadata from "./Metadata"
-import Save from "./Save"
+import RelayMetadata, { Metadata } from "./Metadata"
+import RelaySaveButton, { SaveButton } from "./Save"
 
 const Image = styled.img`
   width: 100%;
@@ -21,35 +21,51 @@ const Placeholder = styled.div`
   width: 100%;
 `
 
-interface Props extends RelayProps, React.HTMLProps<FillwidthItem> {
+interface Props extends RelayProps, React.HTMLProps<FillwidthItemContainer> {
   targetHeight?: number
   imageHeight?: number
   width?: number
   margin?: number
+  useRelay?: boolean
 }
 
-export class FillwidthItem extends React.Component<Props, null> {
+class FillwidthItemContainer extends React.Component<Props, null> {
+  static defaultProps = {
+    useRelay: true,
+  }
+
   render() {
-    const { artwork, className, targetHeight, imageHeight } = this.props
+    const {
+      artwork,
+      className,
+      targetHeight,
+      imageHeight,
+      useRelay,
+    } = this.props
+
+    const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
+    const MetadataBlock = useRelay ? RelayMetadata : Metadata
+
     return (
       <div className={className}>
         <Placeholder style={{ height: targetHeight }}>
           <ImageLink href={artwork.href}>
             <Image src={artwork.image.url} height={imageHeight} />
           </ImageLink>
-          <Save
+          <SaveButtonBlock
             className="artwork-save"
             artwork={artwork as any}
             style={{ position: "absolute", right: "5px", bottom: "5px" }}
+            useRelay={useRelay}
           />
         </Placeholder>
-        <Metadata artwork={artwork} extended />
+        <MetadataBlock artwork={artwork} useRelay={useRelay} extended />
       </div>
     )
   }
 }
 
-const StyledFillwidthItem = styled(FillwidthItem)`
+export const FillwidthItem = styled(FillwidthItemContainer)`
   display: inline-block;
   width: ${props => props.width}px;
   vertical-align: top;
@@ -63,7 +79,7 @@ const StyledFillwidthItem = styled(FillwidthItem)`
 `
 
 export default createFragmentContainer(
-  StyledFillwidthItem,
+  FillwidthItem,
   graphql`
     fragment FillwidthItem_artwork on Artwork {
       image {
