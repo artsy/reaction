@@ -69,15 +69,4 @@ describe("News Layout", () => {
 
     expect(component).toMatchSnapshot()
   })
-
-  describe("Analytics", () => {
-    it("tracks the expand button", () => {
-      const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
-      expect(track.mock.calls[5][0]).toEqual(
-        expect.objectContaining({
-          action: "Clicked read more",
-        })
-      )
-    })
-  })
 })

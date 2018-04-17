@@ -33,9 +33,18 @@ describe("DateSource", () => {
         .find("a")
         .at(0)
         .simulate("click")
-      expect(track.mock.calls[0][0]).toEqual(
+      expect(
+        track.mock.calls[0][0]({
+          article: {
+            news_source: { url: "http://artsy.net" },
+          },
+        })
+      ).toEqual(
         expect.objectContaining({
-          action: "Clicked news source link",
+          action: "Click",
+          type: "external link",
+          label: "news source",
+          destination_path: "http://artsy.net",
         })
       )
     })
