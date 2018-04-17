@@ -40,12 +40,18 @@ export class PartnerBlock extends React.Component<Props, null> {
 
   render() {
     const { logo, url } = this.props
+    const image = <img src={logo} />
+
     return (
       <PartnerBlockContainer className="PartnerBlock">
-        <Title>Presented in Partnership with</Title>
-        <a href={url} target="_blank" onClick={this.onPartnerClick}>
-          <img src={logo} />
-        </a>
+        {logo && <Title>Presented in Partnership with</Title>}
+        {url ? (
+          <a href={url} target="_blank" onClick={this.onPartnerClick}>
+            {image}
+          </a>
+        ) : (
+          image
+        )}
       </PartnerBlockContainer>
     )
   }
