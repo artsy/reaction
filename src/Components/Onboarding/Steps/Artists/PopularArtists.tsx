@@ -13,6 +13,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
+import { AfterArtists } from "./AfterArtists"
 
 interface Artist {
   id: string | null
@@ -41,14 +42,16 @@ interface Props
 
 @track({}, { dispatch: data => Events.postEvent(data) })
 class PopularArtistsContent extends React.Component<Props, null> {
-  private excludedArtistIds: Set<string>
+  private excludedArtistIds: Set<string> = new Set(
+    AfterArtists.map(artist => artist.id)
+  )
   followCount: number = 0
 
   constructor(props: Props, context: any) {
     super(props, context)
-    this.excludedArtistIds = new Set(
-      this.props.popular_artists.artists.filter(Boolean).map(item => item._id)
-    )
+    this.props.popular_artists.artists
+      .filter(Boolean)
+      .map(item => this.excludedArtistIds.add(item._id))
   }
 
   onArtistFollowed(

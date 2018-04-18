@@ -13,6 +13,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
+import { AfterArtists } from "./AfterArtists"
 
 interface Artist {
   id: string | null
@@ -40,14 +41,16 @@ interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
 
 @track({}, { dispatch: data => Events.postEvent(data) })
 class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
-  private excludedArtistIds: Set<string>
+  private excludedArtistIds: Set<string> = new Set(
+    AfterArtists.map(artist => artist.id)
+  )
   followCount: number = 0
 
   constructor(props: RelayProps, context: any) {
     super(props, context)
-    this.excludedArtistIds = new Set(
-      this.props.viewer.match_artist.map(item => item._id)
-    )
+    this.props.viewer.match_artist
+      .filter(Boolean)
+      .map(item => this.excludedArtistIds.add(item._id))
   }
 
   onArtistFollowed(
