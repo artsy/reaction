@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/server"
+import { ErrorBoundary } from "../../ErrorBoundary"
 
 interface Props {
   maxLineCount?: number
@@ -24,11 +25,13 @@ export const Truncator: React.SFC<Props> = ({ children, maxLineCount }) => {
   }
 
   return (
-    <HTMLEllipsis
-      unsafeHTML={html}
-      trimRight={false}
-      maxLine={maxLineCount || 2}
-      ellipsis="..."
-    />
+    <ErrorBoundary>
+      <HTMLEllipsis
+        unsafeHTML={html}
+        trimRight={false}
+        maxLine={maxLineCount || 2}
+        ellipsis="..."
+      />
+    </ErrorBoundary>
   )
 }
