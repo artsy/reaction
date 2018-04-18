@@ -797,6 +797,7 @@ export const SeriesArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   layout: "series",
   title: "The Future of Art",
+  slug: "future-of-art",
   hero_section: {
     url:
       "https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg",

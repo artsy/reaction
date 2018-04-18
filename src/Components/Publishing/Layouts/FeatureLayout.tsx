@@ -5,6 +5,7 @@ import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Nav } from "../Nav/Nav"
+import { RelatedArticleCardFooter } from "../RelatedArticles/RelatedArticleCardFooter"
 
 export interface ArticleProps {
   article: ArticleData
@@ -49,12 +50,14 @@ export class FeatureLayout extends React.Component<ArticleProps> {
         </FeatureLayoutContent>
 
         {relatedArticlesForCanvas &&
-          !isSuper && (
+          !isSuper &&
+          !seriesArticle && (
             <RelatedArticlesCanvas
               articles={relatedArticlesForCanvas}
               vertical={article.vertical}
             />
           )}
+        {seriesArticle && <RelatedArticleCardFooter {...this.props} />}
       </FeatureLayoutContainer>
     )
   }

@@ -128,7 +128,9 @@ export class ArticleCard extends Component<Props, null> {
             <Header>
               <div>{series && series.title}</div>
             </Header>
-            <Title>{editTitle ? editTitle : article.title}</Title>
+            <Title>
+              {editTitle ? editTitle : article.thumbnail_title || article.title}
+            </Title>
             <Description>
               {editDescription ? editDescription : article.description}
             </Description>

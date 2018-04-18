@@ -12,7 +12,6 @@ import { MaxRow } from "../Video/Shared"
 interface Props {
   article?: ArticleData
   color?: string
-  seriesArticle?: ArticleData
   relatedArticles?: any
 }
 
@@ -53,7 +52,7 @@ export const RelatedArticleCardFooter: React.SFC<Props> = props => {
         })}
       {seriesArticle && (
         <MaxRow>
-          <SeriesAbout article={seriesArticle} color="white" />
+          <SeriesAbout article={seriesArticle} color={color} />
         </MaxRow>
       )}
     </RelatedArticlesContainer>
@@ -69,11 +68,12 @@ const Link = styled.a`
 `
 
 const RelatedArticlesContainer = styled.div`
+  color: ${props => (props.color ? props.color : "black")};
   ${ArticleCardContainer} {
     margin-bottom: 60px;
   }
   ${Link} {
-    color: ${props => props.color};
+    color: ${props => (props.color ? props.color : "black")};
   }
 
   ${SeriesAboutContainer} {

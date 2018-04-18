@@ -36,7 +36,12 @@ story
       seriesArticle: SeriesArticle,
     } as ArticleData)
 
-    return <Article article={article} />
+    return (
+      <Article
+        article={article}
+        relatedArticles={[BasicArticle, SuperArticle]}
+      />
+    )
   })
   .add("Feature Basic", () => {
     const article = clone({
