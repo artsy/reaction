@@ -7,6 +7,7 @@ import GhostButton from "../Buttons/Ghost"
 import InvertedButton from "../Buttons/Inverted"
 import MultiStateButton, { MultiButtonState } from "../Buttons/MultiStateButton"
 import TwitterButton from "../Buttons/Twitter"
+import { BackButton } from "../Buttons/Back"
 
 storiesOf("Components/Buttons", module)
   .add("Default Button", () => {
@@ -84,4 +85,7 @@ storiesOf("Components/Buttons", module)
         </div>
       </div>
     )
+  })
+  .add("Back Button", () => {
+    return <BackButton>Manage Artwork</BackButton>
   })

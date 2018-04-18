@@ -4,6 +4,7 @@ import ArtworkGrid from "./ArtworkGrid"
 import BorderedPulldown from "./BorderedPulldown"
 import Buttons from "./Buttons"
 import Checkbox from "./Checkbox"
+import Form from "./Form"
 import Gene from "./Gene"
 import Grid from "./Grid"
 import Icon from "./Icon"
@@ -41,6 +42,7 @@ export default {
   ArtworkGrid,
   BorderedPulldown,
   Checkbox,
+  Form,
   Gene,
   Grid,
   Icon,
