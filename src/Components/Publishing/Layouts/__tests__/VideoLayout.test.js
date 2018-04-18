@@ -26,7 +26,7 @@ describe("Video Layout", () => {
     seriesArticle: SeriesArticle,
   })
 
-  const getWrapper = (props) => {
+  const getWrapper = (props = {}) => {
     const { article, seriesArticle, relatedArticles } = props
     return mount(
       <VideoLayout
@@ -50,17 +50,17 @@ describe("Video Layout", () => {
   })
 
   it("renders the nav", () => {
-    const component = getWrapper({})
+    const component = getWrapper()
     expect(component.find(Nav).length).toBe(1)
   })
 
   it("renders the player", () => {
-    const component = getWrapper({})
+    const component = getWrapper()
     expect(component.find(VideoPlayer).length).toBe(1)
   })
 
   it("renders the about section", () => {
-    const component = getWrapper({})
+    const component = getWrapper()
     expect(component.find(VideoAbout).length).toBe(1)
     expect(component.find(VideoAbout).text()).toMatch(
       "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
@@ -80,7 +80,7 @@ describe("Video Layout", () => {
   })
 
   it("sets isPlaying to false when paused", () => {
-    const component = getWrapper({})
+    const component = getWrapper()
     component.instance().onPlayToggle(false)
     expect(component.state().isPlaying).toBe(false)
   })
