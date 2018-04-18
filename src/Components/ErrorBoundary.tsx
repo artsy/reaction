@@ -4,7 +4,7 @@ interface Props {
   children?: any
 }
 
-export class ErrorBoundary extends React.Component<Props, null> {
+export class ErrorBoundary extends React.Component<Props> {
   componentDidCatch(error, errorInfo) {
     console.error(error)
   }
