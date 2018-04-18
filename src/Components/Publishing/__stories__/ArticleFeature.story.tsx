@@ -31,7 +31,12 @@ story
     )
   })
   .add("Feature Full - Series", () => {
-    return <Article article={SponsoredArticle} seriesArticle={SeriesArticle} />
+    const article = clone({
+      ...SponsoredArticle,
+      seriesArticle: SeriesArticle,
+    } as ArticleData)
+
+    return <Article article={article} />
   })
   .add("Feature Basic", () => {
     const article = clone({
