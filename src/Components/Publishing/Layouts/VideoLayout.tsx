@@ -10,7 +10,7 @@ import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
 import { MaxRow } from "../Video/Shared"
 import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
-import { RelatedArticleCardFooter } from "../RelatedArticles/RelatedArticleCardFooter"
+import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 
 interface Props {
   article: ArticleData
@@ -99,7 +99,7 @@ export class VideoLayout extends Component<Props, State> {
           <VideoAbout article={article} color="white" />
         </MaxRow>
         {(relatedArticles || seriesArticle) && (
-          <RelatedArticleCardFooter {...this.props} color="white" />
+          <ArticleCardsBlock {...this.props} color="white" />
         )}
       </VideoLayoutContainer>
     )

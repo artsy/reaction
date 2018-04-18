@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { track } from "../../../Utils/track"
-import { pMedia } from "../../Helpers"
-import { Date } from "../Byline/AuthorDate"
-import { Byline } from "../Byline/Byline"
-import { formatTime, getMediaDate } from "../Constants"
-import { Fonts } from "../Fonts"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { crop } from "../../../../Utils/resizer"
+import { track } from "../../../../Utils/track"
+import { pMedia } from "../../../Helpers"
+import { Date } from "../../Byline/AuthorDate"
+import { Byline } from "../../Byline/Byline"
+import { formatTime, getMediaDate } from "../../Constants"
+import { Fonts } from "../../Fonts"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 
 interface Props {
   article?: any

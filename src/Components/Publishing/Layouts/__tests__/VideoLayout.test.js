@@ -8,9 +8,8 @@ import {
   StandardArticle,
   VideoArticle,
 } from "../../Fixtures/Articles"
-import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 import { Nav } from "../../Nav/Nav"
-import { ArticleCard } from "../../Series/ArticleCard"
+import { ArticleCard } from "../../RelatedArticles/ArticleCards/ArticleCard"
 import { SeriesAbout } from "../../Series/SeriesAbout"
 import { VideoPlayer } from "../../Video/Player/VideoPlayer"
 import { VideoAbout } from "../../Video/VideoAbout"
@@ -25,14 +24,15 @@ describe("Video Layout", () => {
   const VideoSeriesArticle = clone({
     ...VideoArticle,
     seriesArticle: SeriesArticle,
-  } as ArticleData)
+  })
 
-  const getWrapper = (props: any = {}) => {
+  const getWrapper = (props) => {
+    const { article, seriesArticle, relatedArticles } = props
     return mount(
       <VideoLayout
-        article={props.article || VideoArticle}
-        seriesArticle={props.seriesArticle || null}
-        relatedArticles={props.relatedArticles || null}
+        article={article || VideoArticle}
+        seriesArticle={seriesArticle || null}
+        relatedArticles={relatedArticles || null}
       />
     )
   }
@@ -50,17 +50,17 @@ describe("Video Layout", () => {
   })
 
   it("renders the nav", () => {
-    const component = getWrapper()
+    const component = getWrapper({})
     expect(component.find(Nav).length).toBe(1)
   })
 
   it("renders the player", () => {
-    const component = getWrapper()
+    const component = getWrapper({})
     expect(component.find(VideoPlayer).length).toBe(1)
   })
 
   it("renders the about section", () => {
-    const component = getWrapper()
+    const component = getWrapper({})
     expect(component.find(VideoAbout).length).toBe(1)
     expect(component.find(VideoAbout).text()).toMatch(
       "Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
@@ -80,7 +80,7 @@ describe("Video Layout", () => {
   })
 
   it("sets isPlaying to false when paused", () => {
-    const component = getWrapper()
+    const component = getWrapper({})
     component.instance().onPlayToggle(false)
     expect(component.state().isPlaying).toBe(false)
   })
