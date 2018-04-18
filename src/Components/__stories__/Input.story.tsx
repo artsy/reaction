@@ -1,5 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
+import styled from "styled-components"
+import { unica } from "Assets/Fonts"
 
 import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
@@ -8,38 +10,70 @@ import Icon from "../Icon"
 import Input from "../Input"
 import TextArea from "../TextArea"
 
+const Title = styled.h1`
+  ${unica("s40")};
+`
+const Subtitle = styled.h2`
+  ${unica("s16", "regular")};
+`
+
 storiesOf("Components/Input", module)
-  .add("Inputs", () => (
+  .add("Default Input", () => (
     <div style={{ padding: 10 }}>
-      <Input placeholder="First Name" />
-      <Input placeholder="First Name" error />
-      <Input placeholder="First Name" disabled />
+      <Title>Input</Title>
+      <Subtitle>Our default input style. Title is optional.</Subtitle>
 
-      <div style={{ paddingTop: 10 }}>
+      <section style={{ padding: 10 }}>
+        <Input placeholder="Placeholder" title="Title" block />
+
+        <Input placeholder="Placeholder" title="Title" value="Content" block />
+
+        <Input title="Title" placeholder="Placeholder" block disabled />
+      </section>
+    </div>
+  ))
+  .add("Input with Description", () => (
+    <div style={{ padding: 10 }}>
+      <Title>Input with description</Title>
+      <Subtitle>Used when greater context is needed beyond the title.</Subtitle>
+
+      <section style={{ padding: 10 }}>
         <Input
-          placeholder="Search"
-          leftView={<Icon name="search" color={colors.graySemibold} />}
+          placeholder="Placeholder"
+          title="Title"
+          description="Short description"
+          block
         />
-      </div>
 
-      <div style={{ paddingTop: 10 }}>
-        <Input placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-      </div>
+        <Input
+          placeholder="Placeholder"
+          title="Title"
+          description="Short description"
+          value="Content"
+          block
+        />
+      </section>
     </div>
   ))
   .add("Input with Label", () => (
-    <div>
-      <div style={{ padding: 5 }}>
-        <Input placeholder="Enter your email address" label="Email" block />
-      </div>
-      <div style={{ padding: 5 }}>
+    <div style={{ padding: 10 }}>
+      <Title>Input with label</Title>
+      <Subtitle>Used for short/simple forms</Subtitle>
+
+      <div style={{ padding: 10 }}>
+        <Input
+          placeholder="Enter your email address"
+          label="Email"
+          block
+          quick
+        />
         <Input
           type="password"
           placeholder="Enter your password"
           label="Password"
           rightView={<Icon name="search" color={colors.graySemibold} />}
           block
+          quick
         />
       </div>
     </div>

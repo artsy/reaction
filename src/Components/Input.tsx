@@ -1,22 +1,30 @@
 import React from "react"
 import styled from "styled-components"
-import { fadeIn, fadeOut } from "../Assets/Animations"
-import { garamond, unica } from "../Assets/Fonts"
+import Colors from "Assets/Colors"
+import { fadeIn, fadeOut } from "Assets/Animations"
+import { garamond, unica } from "Assets/Fonts"
 import { block } from "./Helpers"
-import { border, borderedInput } from "./Mixins"
+import { borderedInput } from "./Mixins"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  error?: boolean
+  error?: string
   block?: boolean
   label?: string
+  title?: string
+  description?: string
+  quick?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
 }
 
 interface InputState {
-  borderClasses: string
+  focused: boolean
   value: string
 }
+
+const Container = styled.div`
+  padding: 5px 0;
+`
 
 const StyledInput = styled.input`
   ${borderedInput};
@@ -29,48 +37,62 @@ const BorderlessInput = styled.input`
   font-size: 17px;
   outline: none;
   flex: 1;
+
+  &::placeholder {
+    color: ${Colors.grayMedium};
+  }
 `
-const BorderClassname = "border-container"
-const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
+
+const InputContainer = styled.div.attrs<{
+  hasLabel?: boolean
+  focused?: boolean
+}>({})`
   ${borderedInput};
-  border: 0;
   margin-right: 0;
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
   position: relative;
-  height: ${p => (p.hasLabel ? "60px" : "40px")};
-
-  & .${BorderClassname} {
-    ${border};
-    z-index: -1;
-    position: absolute;
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    top: 0;
-    left: 0;
-  }
+  height: ${p => (p.hasLabel ? "40px" : "20px")};
+  flex-direction: row;
+  align-items: center;
 `
 
 const Label = styled.label.attrs<{ out: boolean }>({})`
   ${unica("s12")};
   position: absolute;
-  left: 17px;
-  top: 8px;
-  visibility: ${props => (props.out ? "hidden" : "visible")};
-  animation: ${props => (props.out ? fadeOut : fadeIn)} 0.2s linear;
+  left: 10px;
+  top: 7px;
+  visibility: ${p => (p.out ? "hidden" : "visible")};
+  animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
+`
+
+const Title = styled.div`
+  ${garamond("s17")};
+`
+
+const Description = styled.div`
+  ${garamond("s15")};
+  color: ${Colors.graySemibold};
+  margin: 3px 0 10px;
+`
+
+const Error = styled.div`
+  ${unica("s12")};
+  margin-top: 10px;
+  color: ${Colors.redMedium};
 `
 
 class Input extends React.Component<InputProps, InputState> {
   state = {
-    borderClasses: BorderClassname,
+    focused: false,
     value: "",
   }
 
   onFocus = e => {
     this.setState({
-      borderClasses: `${BorderClassname} focused`,
+      focused: true,
     })
 
     if (this.props.onFocus) {
@@ -80,7 +102,7 @@ class Input extends React.Component<InputProps, InputState> {
 
   onBlur = e => {
     this.setState({
-      borderClasses: BorderClassname,
+      focused: false,
     })
 
     if (this.props.onBlur) {
@@ -95,31 +117,48 @@ class Input extends React.Component<InputProps, InputState> {
   }
 
   render() {
-    let rightView = this.props.rightView
-    const { leftView, label } = this.props
-    const showLabel = !!this.state.value && !!label
+    const { error, quick } = this.props
 
-    if (leftView || rightView || label) {
-      const { className, ref, ...newProps } = this.props
+    if (quick) {
+      // prettier-ignore
+      const {
+        label,
+        leftView,
+        rightView,
+        className,
+        ref,
+        ...newProps
+      } = this.props
+      const showLabel = !!this.state.value && !!label
 
       return (
-        <StyledDiv hasLabel={!!label}>
-          <div className={this.state.borderClasses} />
-          <Label out={!showLabel}>{label}</Label>
-          {!!leftView && leftView}
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onKeyUp={this.onChange}
-            value={this.props.value}
-          />
-          {!!rightView && rightView}
-        </StyledDiv>
+        <Container>
+          <InputContainer hasLabel={!!label} focused={this.state.focused}>
+            <Label out={!showLabel}>{label}</Label>
+            {!!leftView && leftView}
+            <BorderlessInput
+              {...newProps}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onKeyUp={this.onChange}
+              value={this.props.value}
+            />
+            {!!rightView && rightView}
+          </InputContainer>
+          {!!error && <Error>{error}</Error>}
+        </Container>
       )
     }
 
-    return <StyledInput {...this.props as any} />
+    const { title, description } = this.props
+    return (
+      <Container>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
+        <StyledInput {...this.props as any} />
+        {!!error && <Error>{error}</Error>}
+      </Container>
+    )
   }
 }
 

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Icon from "../Icon"
 import Modal, { ModalProps } from "../Modal/Modal"
 import Text from "../Text"
-import Colors from "../../Assets/Colors"
+import Colors from "Assets/Colors"
 
 const Header = styled.div`
   display: flex;
