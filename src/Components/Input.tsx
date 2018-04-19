@@ -59,7 +59,7 @@ const InputContainer = styled.div.attrs<{
 `
 
 const Label = styled.label.attrs<{ out: boolean }>({})`
-  ${unica("s12")};
+  ${unica("s12", "medium")};
   position: absolute;
   left: 10px;
   top: 7px;

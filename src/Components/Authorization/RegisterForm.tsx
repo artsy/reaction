@@ -5,9 +5,9 @@ import { Formik, FormikProps } from "formik"
 import {
   FormContainer,
   GrayFacebookButton,
-  StyledInput as Input,
   TOSCheckbox,
 } from "./commonElements"
+import Input from "../Input"
 import Button from "../Buttons/Inverted"
 import { FormComponentType, InputValues } from "./Types"
 
@@ -51,6 +51,7 @@ export const RegisterForm: FormComponentType = props => {
           <FormContainer onSubmit={handleSubmit}>
             <Input
               block
+              quick
               error={touched.name && errors.name}
               placeholder="Enter your full name"
               name="name"
@@ -63,6 +64,7 @@ export const RegisterForm: FormComponentType = props => {
             {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
+              quick
               error={touched.email && errors.email}
               placeholder="Enter your email address"
               name="email"
@@ -75,6 +77,7 @@ export const RegisterForm: FormComponentType = props => {
             {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
+              quick
               error={touched.password && errors.password}
               placeholder="Enter a password"
               name="password"

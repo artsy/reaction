@@ -6,10 +6,10 @@ import {
   BlockButton as Button,
   FormContainer as Form,
   GrayFacebookButton,
-  StyledInput as Input,
 } from "./commonElements"
 
 import { Validators } from "./Validators"
+import Input from "../Input"
 import Colors from "../../Assets/Colors"
 import Text from "../Text"
 import TextLink from "../TextLink"
@@ -53,6 +53,7 @@ export const LoginForm: FormComponentType = props => {
           <Form onSubmit={handleSubmit}>
             <Input
               block
+              quick
               error={touched.email && errors.email}
               placeholder="Enter your email address"
               name="email"
@@ -64,6 +65,7 @@ export const LoginForm: FormComponentType = props => {
             />
             <Input
               block
+              quick
               error={touched.password && errors.password}
               placeholder="Enter your password"
               name="password"

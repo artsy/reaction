@@ -38,10 +38,6 @@ export const BlockButton = props => (
   <InvertedButton block>{props.children}</InvertedButton>
 )
 
-export const StyledInput = styled(Input)`
-  margin-bottom: 10px;
-`
-
 export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
   <Checkbox {...{ error, errorMessage, checked: value }}>
     {props.children}

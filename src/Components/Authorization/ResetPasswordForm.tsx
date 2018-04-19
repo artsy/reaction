@@ -5,8 +5,8 @@ import {
   BlockButton as Button,
   ChangeMode,
   FormContainer as Form,
-  StyledInput as Input,
 } from "./commonElements"
+import Input from "../Input"
 import { FormComponentType, InputValues } from "./Types"
 import { Validators } from "./Validators"
 
@@ -30,6 +30,7 @@ export const ResetPasswordForm: FormComponentType = props => {
           <Form onSubmit={handleSubmit}>
             <Input
               block
+              quick
               error={touched.email && errors.email}
               name="email"
               placeholder="Email"
