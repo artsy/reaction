@@ -95,7 +95,53 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c21 {
+.c34 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c16 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c36 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c38 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c23 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -103,11 +149,11 @@ exports[`renders a series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c21.date {
+.c23.date {
   white-space: nowrap;
 }
 
-.c29 {
+.c31 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -115,11 +161,11 @@ exports[`renders a series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c29.date {
+.c31.date {
   white-space: nowrap;
 }
 
-.c29:before {
+.c31:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -129,13 +175,13 @@ exports[`renders a series properly 1`] = `
   background-color: white;
 }
 
-.c29:before {
+.c31:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c28 {
+.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,12 +200,12 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c27 {
+.c29 {
   width: 32px;
   height: 32px;
 }
 
-.c25 {
+.c27 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -169,14 +215,14 @@ exports[`renders a series properly 1`] = `
   display: block;
 }
 
-.c23 {
+.c25 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c16 {
+.c18 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -190,19 +236,19 @@ exports[`renders a series properly 1`] = `
   display: flex;
 }
 
-.c16 .c24 {
+.c18 .c26 {
   opacity: 1;
 }
 
-.c16:hover .c24 {
+.c18:hover .c26 {
   opacity: 0.7;
 }
 
-.c16 .c22 {
+.c18 .c24 {
   background: black;
 }
 
-.c17 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -218,15 +264,15 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c17 .author,
-.c17 .date {
+.c19 .author,
+.c19 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c19 {
+.c21 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -234,7 +280,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c18 {
+.c20 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -242,14 +288,14 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c20 {
+.c22 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c26 {
+.c28 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -272,8 +318,16 @@ exports[`renders a series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c26 svg {
+.c28 svg {
   width: 40px;
+}
+
+.c15 {
+  color: white;
+}
+
+.c15 .c17 {
+  margin-bottom: 60px;
 }
 
 .c7 {
@@ -308,49 +362,12 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c32 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c34 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c36 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c37 {
+.c39 {
   position: relative;
   width: 100%;
 }
 
-.c37 a {
+.c39 a {
   color: white;
   text-decoration: none;
   position: relative;
@@ -360,15 +377,15 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c37 a:hover {
+.c39 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c37 p,
-.c37 ul,
-.c37 ol,
-.c37 div[data-block=true] .public-DraftStyleDefault-block {
+.c39 p,
+.c39 ul,
+.c39 ol,
+.c39 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -379,22 +396,22 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c37 p:first-child,
-.c37 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c39 p:first-child,
+.c39 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c37 p:last-child,
-.c37 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c39 p:last-child,
+.c39 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c37 ul,
-.c37 ol {
+.c39 ul,
+.c39 ol {
   padding-left: 1em;
 }
 
-.c37 li {
+.c39 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -403,7 +420,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c37 h1 {
+.c39 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -416,7 +433,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c37 h1:before {
+.c39 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -427,7 +444,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c37 h2 {
+.c39 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -436,11 +453,11 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c37 h2 a {
+.c39 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c37 h3 {
+.c39 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -450,7 +467,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c37 h3 strong {
+.c39 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -458,11 +475,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c37 h3 a {
+.c39 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c37 blockquote {
+.c39 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -475,7 +492,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c37 .content-end {
+.c39 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -485,14 +502,14 @@ exports[`renders a series properly 1`] = `
   margin-left: 12px;
 }
 
-.c37 .artist-follow {
+.c39 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c37 .artist-follow:before {
+.c39 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -500,7 +517,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c37 .artist-follow:after {
+.c39 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -509,17 +526,17 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c31 {
+.c33 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c33 .file__PartnerBlockContainer-yu39to-0 {
+.c35 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
-.c33:first-of-type {
+.c35:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -533,12 +550,12 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c33:first-of-type .file__PartnerBlockContainer-yu39to-0 {
+.c35:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c35 {
+.c37 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -567,11 +584,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 90px;
 }
 
-.c11 .c15 {
-  margin-bottom: 60px;
-}
-
-.c11 .c30 {
+.c11 .c32 {
   padding-top: 60px;
 }
 
@@ -613,92 +626,18 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c21 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c29 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c29:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:900px) {
-  .c23 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
+@media only screen and (min-width:0em) {
   .c16 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c17 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c19 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c20 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c26 svg {
-    width: 30px;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c34 {
+  .c36 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -708,7 +647,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c34 {
+  .c36 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -718,7 +657,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c36 {
+  .c38 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -728,7 +667,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c36 {
+  .c38 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -737,39 +676,129 @@ exports[`renders a series properly 1`] = `
   }
 }
 
+@media (max-width:720px) {
+  .c23 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c31 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c31:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c25 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c18 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c19 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c21 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c22 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c28 svg {
+    width: 30px;
+  }
+}
+
+@media (max-width:64em) {
+  .c15 .c17 {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width:600px) {
-  .c37 p,
-  .c37 ul,
-  .c37 ol,
-  .c37 div[data-block=true] .public-DraftStyleDefault-block {
+  .c39 p,
+  .c39 ul,
+  .c39 ol,
+  .c39 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c37 li {
+  .c39 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c37 h1 {
+  .c39 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c37 h2 {
+  .c39 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c37 h3 {
+  .c39 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -777,14 +806,14 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c37 h3 strong {
+  .c39 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c37 blockquote {
+  .c39 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
@@ -792,24 +821,24 @@ exports[`renders a series properly 1`] = `
     margin: 0;
   }
 
-  .c37 .content-start {
+  .c39 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c33:first-of-type .file__PartnerBlockContainer-yu39to-0 {
+  .c35:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c33 .file__PartnerBlockContainer-yu39to-0 {
+  .c35 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c35 {
+  .c37 {
     margin-bottom: 20px;
   }
 }
@@ -821,11 +850,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c11 .c15 {
-    margin-bottom: 40px;
-  }
-
-  .c11 .c30 {
+  .c11 .c32 {
     padding-top: 60px;
   }
 }
@@ -894,150 +919,163 @@ exports[`renders a series properly 1`] = `
         The Future of Art
       </div>
     </div>
-    <a
-      className="ArticleCard c15 c16"
-      color="white"
-      href="joanne-artman-gallery-poetry-naturerefinement-form"
-      onClick={[Function]}
-    >
-      <div
-        className="c17"
-      >
-        <div>
-          <div
-            className="c18"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c19"
-          >
-            Trevor Paglan
-          </div>
-          <div
-            className="c20"
-          >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-          </div>
-        </div>
-        <div
-          className="date c21"
-        >
-          Aug 28, 2017
-        </div>
-      </div>
-      <div
-        className="c22 c23"
-      >
-        <img
-          className="c24 c25"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c26"
-        >
-          <svg
-            className="c27"
-            version="1.1"
-            viewBox="0 0 40 56"
-            x="0px"
-            xmlns="http://www.w3.org/2000/svg"
-            y="0px"
-          >
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              strokeWidth="1"
-            >
-              <polygon
-                fill="white"
-                points="0 0 0 56 39.3600006 28"
-              />
-            </g>
-          </svg>
-          02:28
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c15 c16"
-      color="white"
-      href="new-yorks-next-art-district"
-      onClick={[Function]}
-    >
-      <div
-        className="c17"
-      >
-        <div>
-          <div
-            className="c18"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c19"
-          >
-            New York's Next Art District
-          </div>
-          <div
-            className="c20"
-          >
-            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c28"
-          color="white"
-        >
-          <div
-            className="author c29"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c21"
-          >
-            May 19, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c22 c23"
-      >
-        <img
-          className="c24 c25"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-        />
-      </div>
-    </a>
     <div
-      className="c30 c31 c32"
+      className="c15"
       color="white"
     >
       <div
-        className="c33 c34"
+        className="c16"
+      >
+        <a
+          className="ArticleCard c17 c18"
+          color="white"
+          href="joanne-artman-gallery-poetry-naturerefinement-form"
+          onClick={[Function]}
+        >
+          <div
+            className="c19"
+          >
+            <div>
+              <div
+                className="c20"
+              >
+                <div>
+                  The Future of Art
+                </div>
+              </div>
+              <div
+                className="c21"
+              >
+                New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+              </div>
+              <div
+                className="c22"
+              >
+                The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+              </div>
+            </div>
+            <div
+              className="date c23"
+            >
+              Aug 28, 2017
+            </div>
+          </div>
+          <div
+            className="c24 c25"
+          >
+            <img
+              className="c26 c27"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+            />
+            <div
+              className="c28"
+            >
+              <svg
+                className="c29"
+                version="1.1"
+                viewBox="0 0 40 56"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <polygon
+                    fill="white"
+                    points="0 0 0 56 39.3600006 28"
+                  />
+                </g>
+              </svg>
+              02:28
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="c16"
+      >
+        <a
+          className="ArticleCard c17 c18"
+          color="white"
+          href="new-yorks-next-art-district"
+          onClick={[Function]}
+        >
+          <div
+            className="c19"
+          >
+            <div>
+              <div
+                className="c20"
+              >
+                <div>
+                  The Future of Art
+                </div>
+              </div>
+              <div
+                className="c21"
+              >
+                New York's Next Art District
+              </div>
+              <div
+                className="c22"
+              >
+                Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+              </div>
+            </div>
+            <div
+              className="Byline c30"
+              color="white"
+            >
+              <div
+                className="author c31"
+                color="white"
+              >
+                By 
+                Casey Lesser
+              </div>
+              <div
+                className="date c23"
+              >
+                May 19, 2017
+              </div>
+            </div>
+          </div>
+          <div
+            className="c24 c25"
+          >
+            <img
+              className="c26 c27"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      className="c32 c33 c34"
+      color="white"
+    >
+      <div
+        className="c35 c36"
       >
         <div
-          className="c35"
+          className="c37"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c33 c36"
+        className="c35 c38"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c37"
+            className="article__text-section c39"
             color="white"
           >
             <div
@@ -1163,7 +1201,53 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c26 {
+.c39 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c21 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c41 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c43 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c28 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1171,11 +1255,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c26.date {
+.c28.date {
   white-space: nowrap;
 }
 
-.c34 {
+.c36 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1183,11 +1267,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c34.date {
+.c36.date {
   white-space: nowrap;
 }
 
-.c34:before {
+.c36:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -1197,13 +1281,13 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c34:before {
+.c36:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c33 {
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1222,12 +1306,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c32 {
+.c34 {
   width: 32px;
   height: 32px;
 }
 
-.c30 {
+.c32 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1237,14 +1321,14 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c28 {
+.c30 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c21 {
+.c23 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -1258,19 +1342,19 @@ exports[`renders a sponsored series properly 1`] = `
   display: flex;
 }
 
-.c21 .c29 {
+.c23 .c31 {
   opacity: 1;
 }
 
-.c21:hover .c29 {
+.c23:hover .c31 {
   opacity: 0.7;
 }
 
-.c21 .c27 {
+.c23 .c29 {
   background: black;
 }
 
-.c22 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1286,15 +1370,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c22 .author,
-.c22 .date {
+.c24 .author,
+.c24 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c24 {
+.c26 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -1302,7 +1386,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c23 {
+.c25 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1310,14 +1394,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c25 {
+.c27 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c31 {
+.c33 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1340,8 +1424,16 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c31 svg {
+.c33 svg {
   width: 40px;
+}
+
+.c20 {
+  color: white;
+}
+
+.c20 .c22 {
+  margin-bottom: 60px;
 }
 
 .c9 {
@@ -1376,43 +1468,6 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c37 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c39 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c41 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
 .c18 img {
   max-width: 240px;
   max-height: 40px;
@@ -1420,12 +1475,12 @@ exports[`renders a sponsored series properly 1`] = `
   object-position: left;
 }
 
-.c42 {
+.c44 {
   position: relative;
   width: 100%;
 }
 
-.c42 a {
+.c44 a {
   color: white;
   text-decoration: none;
   position: relative;
@@ -1435,15 +1490,15 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c42 a:hover {
+.c44 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c42 p,
-.c42 ul,
-.c42 ol,
-.c42 div[data-block=true] .public-DraftStyleDefault-block {
+.c44 p,
+.c44 ul,
+.c44 ol,
+.c44 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1454,22 +1509,22 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c42 p:first-child,
-.c42 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c44 p:first-child,
+.c44 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c42 p:last-child,
-.c42 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c44 p:last-child,
+.c44 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c42 ul,
-.c42 ol {
+.c44 ul,
+.c44 ol {
   padding-left: 1em;
 }
 
-.c42 li {
+.c44 li {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
@@ -1478,7 +1533,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c42 h1 {
+.c44 h1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1491,7 +1546,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c42 h1:before {
+.c44 h1:before {
   content: "";
   width: 15px;
   height: 15px;
@@ -1502,7 +1557,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 7.5px);
 }
 
-.c42 h2 {
+.c44 h2 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1511,11 +1566,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c42 h2 a {
+.c44 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c42 h3 {
+.c44 h3 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1525,7 +1580,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c42 h3 strong {
+.c44 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1533,11 +1588,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c42 h3 a {
+.c44 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c42 blockquote {
+.c44 blockquote {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1550,7 +1605,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c42 .content-end {
+.c44 .content-end {
   display: inline-block;
   content: "";
   width: 12px;
@@ -1560,14 +1615,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-left: 12px;
 }
 
-.c42 .artist-follow {
+.c44 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c42 .artist-follow:before {
+.c44 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1575,7 +1630,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c42 .artist-follow:after {
+.c44 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1584,17 +1639,17 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c36 {
+.c38 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c38 .c17 {
+.c40 .c17 {
   display: none;
 }
 
-.c38:first-of-type {
+.c40:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1608,12 +1663,12 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c38:first-of-type .c17 {
+.c40:first-of-type .c17 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c40 {
+.c42 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1632,15 +1687,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-right: auto;
 }
 
-.eRkNXN .c14 {
+.jYRMCd .c14 {
   margin-bottom: 90px;
 }
 
-.eRkNXN .c20 {
-  margin-bottom: 60px;
-}
-
-.eRkNXN .c35 {
+.jYRMCd .c37 {
   padding-top: 60px;
 }
 
@@ -1654,11 +1705,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 60px;
 }
 
-.c13 .c20 {
-  margin-bottom: 60px;
-}
-
-.c13 .c35 {
+.c13 .c37 {
   padding-top: 60px;
 }
 
@@ -1716,92 +1763,18 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c26 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c34 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c34:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:900px) {
-  .c28 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
+@media only screen and (min-width:0em) {
   .c21 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c22 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c24 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c25 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 19px;
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c31 svg {
-    width: 30px;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c39 {
+  .c41 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1811,7 +1784,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c39 {
+  .c41 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -1821,7 +1794,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c41 {
+  .c43 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1831,7 +1804,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c41 {
+  .c43 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1840,39 +1813,129 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
+@media (max-width:720px) {
+  .c28 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c36 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c36:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:900px) {
+  .c30 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:900px) {
+  .c23 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c24 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c26 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c27 {
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:900px) {
+  .c33 svg {
+    width: 30px;
+  }
+}
+
+@media (max-width:64em) {
+  .c20 .c22 {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width:600px) {
-  .c42 p,
-  .c42 ul,
-  .c42 ol,
-  .c42 div[data-block=true] .public-DraftStyleDefault-block {
+  .c44 p,
+  .c44 ul,
+  .c44 ol,
+  .c44 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c42 li {
+  .c44 li {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
   }
 
-  .c42 h1 {
+  .c44 h1 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c42 h2 {
+  .c44 h2 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c42 h3 {
+  .c44 h3 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1880,14 +1943,14 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c42 h3 strong {
+  .c44 h3 strong {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c42 blockquote {
+  .c44 blockquote {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
@@ -1895,24 +1958,24 @@ exports[`renders a sponsored series properly 1`] = `
     margin: 0;
   }
 
-  .c42 .content-start {
+  .c44 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c38:first-of-type .c17 {
+  .c40:first-of-type .c17 {
     display: none;
   }
 
-  .c38 .c17 {
+  .c40 .c17 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c40 {
+  .c42 {
     margin-bottom: 20px;
   }
 }
@@ -1924,21 +1987,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .eRkNXN .c20 {
-    margin-bottom: 40px;
-  }
-
-  .eRkNXN .c35 {
+  .jYRMCd .c37 {
     padding-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c13 .c20 {
-    margin-bottom: 40px;
-  }
-
-  .c13 .c35 {
+  .c13 .c37 {
     padding-top: 60px;
   }
 }
@@ -2070,138 +2125,151 @@ exports[`renders a sponsored series properly 1`] = `
         </a>
       </div>
     </div>
-    <a
-      className="ArticleCard c20 c21"
-      color="white"
-      href="joanne-artman-gallery-poetry-naturerefinement-form"
-      onClick={[Function]}
-    >
-      <div
-        className="c22"
-      >
-        <div>
-          <div
-            className="c23"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c24"
-          >
-            Trevor Paglan
-          </div>
-          <div
-            className="c25"
-          >
-            The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-          </div>
-        </div>
-        <div
-          className="date c26"
-        >
-          Aug 28, 2017
-        </div>
-      </div>
-      <div
-        className="c27 c28"
-      >
-        <img
-          className="c29 c30"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-        />
-        <div
-          className="c31"
-        >
-          <svg
-            className="c32"
-            version="1.1"
-            viewBox="0 0 40 56"
-            x="0px"
-            xmlns="http://www.w3.org/2000/svg"
-            y="0px"
-          >
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              strokeWidth="1"
-            >
-              <polygon
-                fill="white"
-                points="0 0 0 56 39.3600006 28"
-              />
-            </g>
-          </svg>
-          02:28
-        </div>
-      </div>
-    </a>
-    <a
-      className="ArticleCard c20 c21"
-      color="white"
-      href="new-yorks-next-art-district"
-      onClick={[Function]}
-    >
-      <div
-        className="c22"
-      >
-        <div>
-          <div
-            className="c23"
-          >
-            <div>
-              The Future of Art
-            </div>
-          </div>
-          <div
-            className="c24"
-          >
-            New York's Next Art District
-          </div>
-          <div
-            className="c25"
-          >
-            Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-          </div>
-        </div>
-        <div
-          className="Byline c33"
-          color="white"
-        >
-          <div
-            className="author c34"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c26"
-          >
-            May 19, 2017
-          </div>
-        </div>
-      </div>
-      <div
-        className="c27 c28"
-      >
-        <img
-          className="c29 c30"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-        />
-      </div>
-    </a>
     <div
-      className="c35 c36 c37"
+      className="c20"
       color="white"
     >
       <div
-        className="c38 c39"
+        className="c21"
+      >
+        <a
+          className="ArticleCard c22 c23"
+          color="white"
+          href="joanne-artman-gallery-poetry-naturerefinement-form"
+          onClick={[Function]}
+        >
+          <div
+            className="c24"
+          >
+            <div>
+              <div
+                className="c25"
+              >
+                <div>
+                  The Future of Art
+                </div>
+              </div>
+              <div
+                className="c26"
+              >
+                New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+              </div>
+              <div
+                className="c27"
+              >
+                The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+              </div>
+            </div>
+            <div
+              className="date c28"
+            >
+              Aug 28, 2017
+            </div>
+          </div>
+          <div
+            className="c29 c30"
+          >
+            <img
+              className="c31 c32"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+            />
+            <div
+              className="c33"
+            >
+              <svg
+                className="c34"
+                version="1.1"
+                viewBox="0 0 40 56"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <polygon
+                    fill="white"
+                    points="0 0 0 56 39.3600006 28"
+                  />
+                </g>
+              </svg>
+              02:28
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="c21"
+      >
+        <a
+          className="ArticleCard c22 c23"
+          color="white"
+          href="new-yorks-next-art-district"
+          onClick={[Function]}
+        >
+          <div
+            className="c24"
+          >
+            <div>
+              <div
+                className="c25"
+              >
+                <div>
+                  The Future of Art
+                </div>
+              </div>
+              <div
+                className="c26"
+              >
+                New York's Next Art District
+              </div>
+              <div
+                className="c27"
+              >
+                Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+              </div>
+            </div>
+            <div
+              className="Byline c35"
+              color="white"
+            >
+              <div
+                className="author c36"
+                color="white"
+              >
+                By 
+                Casey Lesser
+              </div>
+              <div
+                className="date c28"
+              >
+                May 19, 2017
+              </div>
+            </div>
+          </div>
+          <div
+            className="c29 c30"
+          >
+            <img
+              className="c31 c32"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      className="c37 c38 c39"
+      color="white"
+    >
+      <div
+        className="c40 c41"
       >
         <div
-          className="c40"
+          className="c42"
         >
           About the Series
         </div>
@@ -2225,13 +2293,13 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c38 c41"
+        className="c40 c43"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c42"
+            className="article__text-section c44"
             color="white"
           >
             <div

@@ -2,10 +2,10 @@ import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Nav } from "../Nav/Nav"
-import { ArticleCard, ArticleCardContainer } from '../Series/ArticleCard'
-import { FixedBackground } from '../Series/FixedBackground'
-import { SeriesAbout, SeriesAboutContainer } from '../Series/SeriesAbout'
-import { SeriesTitle, SeriesTitleContainer } from '../Series/SeriesTitle'
+import { ArticleCards } from "../RelatedArticles/ArticleCards/ArticleCards"
+import { FixedBackground } from "../Series/FixedBackground"
+import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
+import { SeriesTitle, SeriesTitleContainer } from "../Series/SeriesTitle"
 import { ArticleData } from "../Typings"
 
 interface Props {
@@ -21,19 +21,16 @@ export class SeriesLayout extends Component<Props, null> {
   render() {
     const { article, backgroundColor, color, relatedArticles } = this.props
     const { hero_section, sponsor } = article
-    const backgroundUrl = hero_section && hero_section.url ? hero_section.url : ''
+    const backgroundUrl =
+      hero_section && hero_section.url ? hero_section.url : ""
 
     return (
       <SeriesContainer
-        className='Series'
+        className="Series"
         color={color}
         backgroundColor={backgroundColor}
       >
-        <Nav
-          transparent
-          sponsor={sponsor}
-          canFix={false}
-        />
+        <Nav transparent sponsor={sponsor} canFix={false} />
 
         <FixedBackground
           backgroundColor={backgroundColor}
@@ -41,28 +38,17 @@ export class SeriesLayout extends Component<Props, null> {
         />
 
         <SeriesContent sponsor={sponsor}>
+          <SeriesTitle article={article} color={color} />
 
-          <SeriesTitle
-            article={article}
-            color={color}
-          />
+          {relatedArticles && (
+            <ArticleCards
+              relatedArticles={relatedArticles}
+              series={article}
+              color={color}
+            />
+          )}
 
-          {relatedArticles &&
-            relatedArticles.map((relatedArticle, i) =>
-              <ArticleCard
-                key={i}
-                article={relatedArticle}
-                series={article}
-                color={color}
-              />
-            )
-          }
-
-          <SeriesAbout
-            article={article}
-            color={color}
-          />
-
+          <SeriesAbout article={article} color={color} />
         </SeriesContent>
       </SeriesContainer>
     )
@@ -70,16 +56,19 @@ export class SeriesLayout extends Component<Props, null> {
 }
 
 SeriesLayout.defaultProps = {
-  backgroundColor: 'black',
-  color: 'white'
+  backgroundColor: "black",
+  color: "white",
 }
 
 interface ContainerProps {
-  backgroundUrl?: string,
+  backgroundUrl?: string
   sponsor?: any
 }
 
-const Div: StyledFunction<Props & ContainerProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<
+  Props & ContainerProps & React.HTMLProps<HTMLDivElement>
+> =
+  styled.div
 
 export const SeriesContent = Div`
   max-width: 1200px;
@@ -87,11 +76,7 @@ export const SeriesContent = Div`
   margin: 0 auto;
 
   ${SeriesTitleContainer} {
-    margin-bottom: ${props => props.sponsor ? '60px' : '90px'};
-  }
-
-  ${ArticleCardContainer} {
-    margin-bottom: 60px;
+    margin-bottom: ${props => (props.sponsor ? "60px" : "90px")};
   }
 
   ${SeriesAboutContainer} {
@@ -99,10 +84,6 @@ export const SeriesContent = Div`
   }
 
   ${pMedia.md`
-    ${ArticleCardContainer} {
-      margin-bottom: 40px;
-    }
-
     ${SeriesAboutContainer} {
       padding-top: 60px;
     }
