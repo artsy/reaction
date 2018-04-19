@@ -3,6 +3,7 @@
 exports[`snapshots renders the display panel with an image 1`] = `
 .c0 {
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
   max-width: 360px;
@@ -149,6 +150,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
 exports[`snapshots renders the display panel with video 1`] = `
 .c0 {
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
   max-width: 360px;

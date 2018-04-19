@@ -113,7 +113,7 @@
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^0.9.0",
     "semantic-release": "^12.4.1",
-    "styled-components": "2.4.0",
+    "styled-components": "^3.2.6",
     "ts-loader": "^3.5.0",
     "tslint": "^4.5.0",
     "tslint-config-prettier": "^1.1.0",

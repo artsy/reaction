@@ -84,6 +84,7 @@ exports[`renders a series properly 1`] = `
 
 .c6 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -228,6 +229,7 @@ exports[`renders a series properly 1`] = `
   border-radius: 2px;
   color: white;
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;
@@ -369,6 +371,7 @@ exports[`renders a series properly 1`] = `
 
 .c39 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
@@ -1182,6 +1185,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c8 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -1334,6 +1338,7 @@ exports[`renders a sponsored series properly 1`] = `
   border-radius: 2px;
   color: white;
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;
@@ -1482,6 +1487,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c44 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);

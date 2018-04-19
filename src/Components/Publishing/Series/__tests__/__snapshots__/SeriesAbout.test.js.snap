@@ -45,6 +45,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 .c6 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -436,6 +437,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 .c6 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -820,6 +822,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 
 .c6 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -1229,6 +1232,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 
 .c9 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);

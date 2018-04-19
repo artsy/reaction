@@ -49,6 +49,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 .c19 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -581,6 +582,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 }
 
 .c17 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -1084,6 +1086,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 .c19 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -1624,6 +1627,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 .c18 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -2146,6 +2150,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 .c16 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -2674,6 +2679,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 .c24 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
