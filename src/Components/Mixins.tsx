@@ -20,15 +20,15 @@ export const borderedInput = (props: InputProps = {}) => {
   `
 }
 
-export const border = (props: InputProps = {}) => {
+export const border = (props: any = {}) => {
   return css`
-    border: 1px solid ${!!props.error ? colors.redRegular : colors.grayRegular};
+    border: 1px solid ${props.hasError ? colors.redMedium : colors.grayRegular};
     transition: border-color 0.25s;
 
     &:hover,
     &:focus,
     &.focused {
-      border-color: ${!!props.error ? colors.redRegular : colors.purpleRegular};
+      border-color: ${props.hasError ? colors.redMedium : colors.purpleRegular};
       outline: 0;
     }
 

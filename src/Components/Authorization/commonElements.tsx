@@ -6,7 +6,6 @@ import InvertedButton from "../Buttons/Inverted"
 import Colors from "../../Assets/Colors"
 
 import Checkbox from "../Checkbox"
-import Input from "../Input"
 
 // FIXME: Are these being used?
 export const inputValidators = {}

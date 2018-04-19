@@ -37,6 +37,12 @@ const BorderlessInput = styled.input`
   font-size: 17px;
   outline: none;
   flex: 1;
+  transition: transform 0.25s;
+
+  &:active,
+  &:focus {
+    transform: translateY(2px);
+  }
 
   &::placeholder {
     color: ${Colors.grayMedium};
@@ -46,6 +52,7 @@ const BorderlessInput = styled.input`
 const InputContainer = styled.div.attrs<{
   hasLabel?: boolean
   focused?: boolean
+  hasError: boolean
 }>({})`
   ${borderedInput};
   margin-right: 0;
@@ -133,7 +140,11 @@ class Input extends React.Component<InputProps, InputState> {
 
       return (
         <Container>
-          <InputContainer hasLabel={!!label} focused={this.state.focused}>
+          <InputContainer
+            hasLabel={!!label}
+            focused={this.state.focused}
+            hasError={!!error}
+          >
             <Label out={!showLabel}>{label}</Label>
             {!!leftView && leftView}
             <BorderlessInput
