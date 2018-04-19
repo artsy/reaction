@@ -82,7 +82,7 @@ const Title = styled.div`
 const Description = styled.div`
   ${garamond("s15")};
   color: ${Colors.graySemibold};
-  margin: 3px 0 10px;
+  margin: 3px 0 0;
 `
 
 const Error = styled.div`
