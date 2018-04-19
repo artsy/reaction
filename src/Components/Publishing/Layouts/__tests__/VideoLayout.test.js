@@ -20,7 +20,7 @@ jest.mock('../../../../Utils/track.ts', () => ({
 }))
 
 describe("Video Layout", () => {
-  const getWrapper = (props: any = {}) => {
+  const getWrapper = (props = {}) => {
     return mount(
       <VideoLayout
         article={props.article || VideoArticle}
