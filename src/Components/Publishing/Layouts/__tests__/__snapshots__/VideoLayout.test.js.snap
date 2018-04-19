@@ -87,6 +87,15 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-decoration: none;
 }
 
+.c60 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
 .c52 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -99,7 +108,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   white-space: nowrap;
 }
 
-.c70 {
+.c72 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -107,11 +116,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c70.date {
+.c72.date {
   white-space: nowrap;
 }
 
-.c77 {
+.c79 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -119,11 +128,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 30px 0 0;
 }
 
-.c77.date {
+.c79.date {
   white-space: nowrap;
 }
 
-.c77:before {
+.c79:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -133,7 +142,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-color: white;
 }
 
-.c77:before {
+.c79:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
@@ -174,7 +183,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 10px 10px 0px;
 }
 
-.c76 {
+.c78 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -198,7 +207,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   height: 32px;
 }
 
-.c74 {
+.c76 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -208,14 +217,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: block;
 }
 
-.c72 {
+.c74 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c65 {
+.c67 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -229,19 +238,19 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: flex;
 }
 
-.c65 .c73 {
+.c67 .c75 {
   opacity: 1;
 }
 
-.c65:hover .c73 {
+.c67:hover .c75 {
   opacity: 0.7;
 }
 
-.c65 .c71 {
+.c67 .c73 {
   background: black;
 }
 
-.c66 {
+.c68 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -257,15 +266,15 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 5px;
 }
 
-.c66 .author,
-.c66 .date {
+.c68 .author,
+.c68 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c68 {
+.c70 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -273,7 +282,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 30px;
 }
 
-.c67 {
+.c69 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -281,14 +290,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 10px;
 }
 
-.c69 {
+.c71 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c75 {
+.c77 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -311,7 +320,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.1em;
 }
 
-.c75 svg {
+.c77 svg {
   width: 40px;
 }
 
@@ -388,7 +397,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c63 {
+.c65 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -725,17 +734,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c79 {
+.c81 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c80 .file__PartnerBlockContainer-yu39to-0 {
+.c82 .file__PartnerBlockContainer-yu39to-0 {
   display: none;
 }
 
-.c80:first-of-type {
+.c82:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -749,7 +758,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c80:first-of-type .file__PartnerBlockContainer-yu39to-0 {
+.c82:first-of-type .file__PartnerBlockContainer-yu39to-0 {
   display: block;
   margin-bottom: 10px;
 }
@@ -762,7 +771,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: 20px;
 }
 
-.c81 {
+.c83 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1121,12 +1130,30 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c60 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-  width: 100%;
+.c59 {
+  color: white;
+}
+
+.c59 .c62 {
+  color: white;
+}
+
+.c59 .c80 {
+  margin: 60px 0 100px 0;
+}
+
+.c64 {
+  color: white;
+}
+
+.c64 .c66 {
+  margin-bottom: 60px;
+}
+
+.c63 {
+  text-decoration: none;
+  border-bottom: 2px solid;
+  color: black;
 }
 
 .c0 {
@@ -1140,15 +1167,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   top: 0;
 }
 
-.c0 .c64 {
-  margin-bottom: 60px;
-}
-
-.c0 .c59 {
-  margin-bottom: 40px;
-}
-
-.c0 .c78,
 .c0 .c45 {
   margin: 60px 0 100px 0;
 }
@@ -1162,12 +1180,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c8 .c9 {
   position: absolute;
   top: 0;
-}
-
-.c62 {
-  text-decoration: none;
-  color: white;
-  border-bottom: 2px solid;
 }
 
 @media (max-width:720px) {
@@ -1205,7 +1217,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c70 {
+  .c72 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1219,7 +1231,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c77 {
+  .c79 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1233,7 +1245,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c77:before {
+  .c79:before {
     min-width: 8px;
     min-height: 8px;
   }
@@ -1246,7 +1258,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c72 {
+  .c74 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1254,7 +1266,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c65 {
+  .c67 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1263,14 +1275,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c66 {
+  .c68 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c68 {
+  .c70 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1279,7 +1291,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c69 {
+  .c71 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -1289,7 +1301,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c75 svg {
+  .c77 svg {
     width: 30px;
   }
 }
@@ -1395,7 +1407,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c63 {
+  .c65 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1525,18 +1537,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c80:first-of-type .file__PartnerBlockContainer-yu39to-0 {
+  .c82:first-of-type .file__PartnerBlockContainer-yu39to-0 {
     display: none;
   }
 
-  .c80 .file__PartnerBlockContainer-yu39to-0 {
+  .c82 .file__PartnerBlockContainer-yu39to-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c81 {
+  .c83 {
     margin-bottom: 20px;
   }
 }
@@ -1603,19 +1615,26 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c0 .c64 {
-    margin-bottom: 30px;
-  }
-
-  .c0 .c78,
-  .c0 .c45 {
+  .c59 .c80 {
     margin: 40px 0 100px 0;
   }
 }
 
+@media (max-width:64em) {
+  .c64 .c66 {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width:48em) {
-  .c62 {
+  .c63 {
     display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 .c45 {
+    margin: 40px 0 100px 0;
   }
 }
 
@@ -1863,7 +1882,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c40"
                 >
                   <a
-                    href="/series/undefined"
+                    href="/series/future-of-art"
                   >
                     The Future of Art
                   </a>
@@ -2141,192 +2160,194 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c35 c36"
+    className="c59"
+    color="white"
   >
     <div
-      className="c59 c60 c37 c61"
-    >
-      More in 
-      <a
-        className="c62"
-        href="/series/undefined"
-      >
-        The Future of Art
-      </a>
-    </div>
-  </div>
-  <div
-    className="c35 c36"
-  >
-    <div
-      className="c37 c63"
-    >
-      <a
-        className="ArticleCard c64 c65"
-        color="white"
-        href="joanne-artman-gallery-poetry-naturerefinement-form"
-        onClick={[Function]}
-      >
-        <div
-          className="c66"
-        >
-          <div>
-            <div
-              className="c67"
-            >
-              <div>
-                The Future of Art
-              </div>
-            </div>
-            <div
-              className="c68"
-            >
-              Trevor Paglan
-            </div>
-            <div
-              className="c69"
-            >
-              The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-            </div>
-          </div>
-          <div
-            className="date c70"
-          >
-            Aug 28, 2017
-          </div>
-        </div>
-        <div
-          className="c71 c72"
-        >
-          <img
-            className="c73 c74"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-          />
-          <div
-            className="c75"
-          >
-            <svg
-              className="c17 c18"
-              version="1.1"
-              viewBox="0 0 40 56"
-              x="0px"
-              xmlns="http://www.w3.org/2000/svg"
-              y="0px"
-            >
-              <g
-                fill="none"
-                fillRule="evenodd"
-                stroke="none"
-                strokeWidth="1"
-              >
-                <polygon
-                  fill="white"
-                  points="0 0 0 56 39.3600006 28"
-                />
-              </g>
-            </svg>
-            02:28
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div
-    className="c35 c36"
-  >
-    <div
-      className="c37 c63"
-    >
-      <a
-        className="ArticleCard c64 c65"
-        color="white"
-        href="new-yorks-next-art-district"
-        onClick={[Function]}
-      >
-        <div
-          className="c66"
-        >
-          <div>
-            <div
-              className="c67"
-            >
-              <div>
-                The Future of Art
-              </div>
-            </div>
-            <div
-              className="c68"
-            >
-              New York's Next Art District
-            </div>
-            <div
-              className="c69"
-            >
-              Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-            </div>
-          </div>
-          <div
-            className="Byline c76"
-            color="white"
-          >
-            <div
-              className="author c77"
-              color="white"
-            >
-              By 
-              Casey Lesser
-            </div>
-            <div
-              className="date c70"
-            >
-              May 19, 2017
-            </div>
-          </div>
-        </div>
-        <div
-          className="c71 c72"
-        >
-          <img
-            className="c73 c74"
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-          />
-        </div>
-      </a>
-    </div>
-  </div>
-  <div
-    className="c35 c36"
-  >
-    <div
-      className="c78 c79 c36"
-      color="white"
+      className="c35 c36"
     >
       <div
-        className="c80 c37 c47"
+        className="c60 c37 c61"
       >
-        <div
-          className="c81"
+        More in 
+        <a
+          className="c62 c63"
+          href="/series/future-of-art"
         >
-          About the Series
-        </div>
+          The Future of Art
+        </a>
       </div>
       <div
-        className="c80 c37 c57"
+        className="c64"
+        color="white"
       >
         <div
-          className="SeriesAbout__description"
+          className="c37 c65"
         >
-          <div
-            className="article__text-section c58"
+          <a
+            className="ArticleCard c66 c67"
             color="white"
+            href="joanne-artman-gallery-poetry-naturerefinement-form"
+            onClick={[Function]}
           >
             <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              className="c68"
+            >
+              <div>
+                <div
+                  className="c69"
+                >
+                  <div>
+                    The Future of Art
+                  </div>
+                </div>
+                <div
+                  className="c70"
+                >
+                  New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+                </div>
+                <div
+                  className="c71"
+                >
+                  The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+                </div>
+              </div>
+              <div
+                className="date c72"
+              >
+                Aug 28, 2017
+              </div>
+            </div>
+            <div
+              className="c73 c74"
+            >
+              <img
+                className="c75 c76"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+              />
+              <div
+                className="c77"
+              >
+                <svg
+                  className="c17 c18"
+                  version="1.1"
+                  viewBox="0 0 40 56"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <polygon
+                      fill="white"
+                      points="0 0 0 56 39.3600006 28"
+                    />
+                  </g>
+                </svg>
+                02:28
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          className="c37 c65"
+        >
+          <a
+            className="ArticleCard c66 c67"
+            color="white"
+            href="new-yorks-next-art-district"
+            onClick={[Function]}
+          >
+            <div
+              className="c68"
+            >
+              <div>
+                <div
+                  className="c69"
+                >
+                  <div>
+                    The Future of Art
+                  </div>
+                </div>
+                <div
+                  className="c70"
+                >
+                  New York's Next Art District
+                </div>
+                <div
+                  className="c71"
+                >
+                  Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+                </div>
+              </div>
+              <div
+                className="Byline c78"
+                color="white"
+              >
+                <div
+                  className="author c79"
+                  color="white"
+                >
+                  By 
+                  Casey Lesser
+                </div>
+                <div
+                  className="date c72"
+                >
+                  May 19, 2017
+                </div>
+              </div>
+            </div>
+            <div
+              className="c73 c74"
+            >
+              <img
+                className="c75 c76"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c35 c36"
+    >
+      <div
+        className="c80 c81 c36"
+        color="white"
+      >
+        <div
+          className="c82 c37 c47"
+        >
+          <div
+            className="c83"
+          >
+            About the Series
+          </div>
+        </div>
+        <div
+          className="c82 c37 c57"
+        >
+          <div
+            className="SeriesAbout__description"
+          >
+            <div
+              className="article__text-section c58"
+              color="white"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
