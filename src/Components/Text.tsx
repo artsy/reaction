@@ -46,10 +46,10 @@ const RawText: React.SFC<TextProps> = (props: TextProps) => {
 }
 
 const Text = styled(RawText)`
+  ${props => textStyleNameToCss[props.textStyle]};
   font-size: ${props => TextStyleToTextSize[props.textStyle][props.textSize]};
   text-align: ${props => props.align};
   color: ${props => props.color};
-  ${props => textStyleNameToCss[props.textStyle]};
 `
 
 Text.defaultProps = {

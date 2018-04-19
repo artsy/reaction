@@ -12,7 +12,7 @@ import Button from "../Buttons/Inverted"
 import { FormComponentType, InputValues } from "./Types"
 
 import { Validators } from "./Validators"
-import colors from "../../Assets/Colors"
+
 import Text from "../Text"
 import TextLink from "../TextLink"
 import Colors from "../../Assets/Colors"
@@ -61,7 +61,6 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
               quick
@@ -74,7 +73,6 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
               quick
@@ -87,7 +85,6 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.password && errors.password && <div>{errors.password}</div> */}
             <TOSCheckbox
               error={
                 touched.acceptedTermsOfService && errors.acceptedTermsOfService
@@ -99,12 +96,11 @@ export const RegisterForm: FormComponentType = props => {
               onBlur={handleBlur}
               errorMessage={errors.acceptedTermsOfService}
             >
-              <Text color={colors.grayDark}>
+              <Text color={Colors.grayDark}>
                 I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
                 <TextLink>Privacy Policy</TextLink>
               </Text>
             </TOSCheckbox>
-            {/* touched.password && errors.password && <div>{errors.password}</div> */}
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <LoginText>

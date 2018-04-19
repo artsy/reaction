@@ -24,7 +24,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 }
 
 const StyledTextLink = styled(TextLink)`
-  ${garamond("s11")};
+  ${garamond("s15")};
   color: ${props => props.color};
   text-decoration: ${props => (props.underline ? "underline" : "none")};
 `
