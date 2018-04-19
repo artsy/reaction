@@ -1,55 +1,7 @@
 import { css } from "styled-components"
+import Sizes from "./font-sizes.json"
 
-const GaramondSizes = {
-  s11: {
-    size: "11px",
-    height: "1.1em",
-  },
-  s15: {
-    size: "15px",
-    height: "1.25em",
-  },
-  s17: {
-    size: "17px",
-    height: "1.1em",
-  },
-  s18: {
-    size: "18px",
-    height: "1.4em",
-  },
-  s19: {
-    size: "19px",
-    height: "1.5em",
-  },
-  s23: {
-    size: "23px",
-    height: "1.5em",
-  },
-  s28: {
-    size: "28px",
-    height: "1.2em",
-  },
-  s30: {
-    size: "30px",
-    height: "1.25em",
-  },
-  s34: {
-    size: "34px",
-    height: "1.1em",
-  },
-  s37: {
-    size: "37px",
-    height: "1.2em",
-  },
-  s40: {
-    size: "40px",
-    height: "1.1em",
-  },
-  s50: {
-    size: "50px",
-    height: "1.1em",
-  },
-}
+const GaramondSizes = Sizes.garamond
 
 const UnicaSizes = {
   s10: {
