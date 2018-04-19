@@ -17,6 +17,7 @@ exports[`renders properly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
