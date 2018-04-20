@@ -18,12 +18,7 @@ interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const Caption: React.SFC<CaptionProps> = props => {
-  const {
-    index,
-    open,
-    section,
-    total,
-  } = props
+  const { index, open, section, total } = props
 
   const isArtwork = section.type === "artwork"
   const indexText = `${index} of ${total}`
@@ -31,27 +26,22 @@ export const Caption: React.SFC<CaptionProps> = props => {
   return (
     <CaptionContainer>
       <CaptionTextContainer>
-        <CaptionToggle
-          open={open}
-        />
+        <CaptionToggle open={open} />
 
         <CaptionText open={open}>
-          {isArtwork
-            ? <ArtworkCaption
-              artwork={section}
-              isFullscreenCaption
-              linked
+          {isArtwork ? (
+            <ArtworkCaption artwork={section} isFullscreenCaption linked />
+          ) : (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: section.caption,
+              }}
             />
-            : <div dangerouslySetInnerHTML={{
-              __html: section.caption
-            }} />}
-
+          )}
         </CaptionText>
       </CaptionTextContainer>
 
-      <Index>
-        {indexText}
-      </Index>
+      <Index>{indexText}</Index>
     </CaptionContainer>
   )
 }
@@ -64,9 +54,7 @@ const CaptionToggle: React.SFC<CaptionOpenProps> = (props, context) => {
       onClick={context.onToggleCaption}
       className="fullscreen-viewer__caption-toggle"
     >
-      <span>
-        {toggleMessage}
-      </span>
+      <span>{toggleMessage}</span>
     </StyledCaptionToggle>
   )
 }
@@ -84,7 +72,7 @@ const StyledCaptionToggle = styled.div`
     span {
       border-bottom: 1px solid black;
     }
-  `}
+  `};
 `
 
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
@@ -104,10 +92,9 @@ const CaptionText = CaptionDiv`
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
-  ${Fonts.unica("s16")}
-  ${pMedia.sm`
+  ${Fonts.unica("s16")} ${pMedia.sm`
     ${Fonts.unica("s14")}
-  `}
+  `};
 `
 
 const CaptionContainer = styled.div`
@@ -124,7 +111,7 @@ const CaptionContainer = styled.div`
     width: 100%;
     max-width: 100vh;
     padding: 20px;
-  `}
+  `};
 `
 
 const CaptionTextContainer = styled.div`

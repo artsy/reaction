@@ -70,7 +70,10 @@ const TooltipContainer = Div`
 export class Tooltip extends React.Component<Props, null> {
   render() {
     return (
-      <TooltipContainer message={this.props.message} className={this.props.className}>
+      <TooltipContainer
+        message={this.props.message}
+        className={this.props.className}
+      >
         {this.props.children}
       </TooltipContainer>
     )

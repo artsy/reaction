@@ -6,10 +6,7 @@ import { ShareDate } from "../ShareDate"
 
 it("renders ShareDate properly", () => {
   const share = renderer
-    .create(
-      <ShareDate
-        article={StandardArticle}
-      />
-    ).toJSON()
+    .create(<ShareDate article={StandardArticle} />)
+    .toJSON()
   expect(share).toMatchSnapshot()
 })

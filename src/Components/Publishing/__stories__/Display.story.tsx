@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
-import { clone, extend } from 'lodash'
+import { clone, extend } from "lodash"
 import React from "react"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
-import { StandardArticle } from '../Fixtures/Articles'
+import { StandardArticle } from "../Fixtures/Articles"
 import { Sections } from "../Sections/Sections"
 
 import {
@@ -13,7 +13,7 @@ import {
   UnitCanvasSlideshow,
   UnitCanvasVideo,
   UnitPanel,
-  UnitPanelVideo
+  UnitPanelVideo,
 } from "../Fixtures/Components"
 
 const story = storiesOf("Publishing/Display", module)
@@ -25,7 +25,7 @@ const story = storiesOf("Publishing/Display", module)
   })
   .add("Panel without logo", () => {
     const unit = extend({}, UnitPanel, {
-      logo: ""
+      logo: "",
     })
     return <DisplayPanel unit={unit} campaign={Campaign} />
   })
@@ -36,27 +36,17 @@ const story = storiesOf("Publishing/Display", module)
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} isMobile />
   })
 
-const mobileAdInsertions = [
-  ['Image', UnitPanel],
-  ['Video', UnitPanelVideo]
-]
+const mobileAdInsertions = [["Image", UnitPanel], ["Video", UnitPanelVideo]]
 
 mobileAdInsertions.forEach(([label, unit]) => {
   story.add(`Panel: ${label} injected into mobile body`, () => {
     const article = clone(StandardArticle)
 
-    const DisplayPanelAd = () =>
-      <DisplayPanel isMobile
-        unit={unit}
-        campaign={Campaign}
-      />
-
-    return (
-      <Sections isMobile
-        DisplayPanel={DisplayPanelAd}
-        article={article}
-      />
+    const DisplayPanelAd = () => (
+      <DisplayPanel isMobile unit={unit} campaign={Campaign} />
     )
+
+    return <Sections isMobile DisplayPanel={DisplayPanelAd} article={article} />
   })
 })
 

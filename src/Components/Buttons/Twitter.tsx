@@ -5,11 +5,15 @@ import Button, { ButtonProps } from "./Default"
 
 const TwitterButton = (props: ButtonProps) => {
   const icon = <Icon name="twitter" color="white" />
-  return <Button {...props} icon={icon}>Log in with Twitter</Button>
+  return (
+    <Button {...props} icon={icon}>
+      Log in with Twitter
+    </Button>
+  )
 }
 
 export default styled(TwitterButton)`
-  background: #1D9EF4;
+  background: #1d9ef4;
   color: white;
   height: 40px;
   padding: 0 30px;
@@ -17,6 +21,6 @@ export default styled(TwitterButton)`
   flex-direction: row;
 
   &:hover:not(:disabled) {
-    background: #0D73B6;
+    background: #0d73b6;
   }
 `

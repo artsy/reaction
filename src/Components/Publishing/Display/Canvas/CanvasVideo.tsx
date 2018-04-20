@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
-import { VideoControls } from '../../Sections/VideoControls'
+import { VideoControls } from "../../Sections/VideoControls"
 
 interface Props {
   campaign: any
@@ -18,7 +18,7 @@ export class CanvasVideo extends Component<Props, any> {
   public video: HTMLVideoElement
 
   static defaultProps = {
-    coverUrl: ''
+    coverUrl: "",
   }
 
   constructor(props) {
@@ -26,7 +26,7 @@ export class CanvasVideo extends Component<Props, any> {
     this.onPlayVideo = this.onPlayVideo.bind(this)
 
     this.state = {
-      isPlaying: false
+      isPlaying: false,
     }
   }
 
@@ -34,13 +34,12 @@ export class CanvasVideo extends Component<Props, any> {
     const { onInit } = this.props
 
     if (onInit) {
-
       // Pass handlers back to CanvasContainer so that it can pause video
       // when Display is clicked.
       onInit({
         playVideo: this.playVideo,
         pauseVideo: this.pauseVideo,
-        toggleVideo: this.toggleVideo
+        toggleVideo: this.toggleVideo,
       })
     }
   }
@@ -55,7 +54,9 @@ export class CanvasVideo extends Component<Props, any> {
 
   trackProgress = () => {
     const secondsComplete = Math.floor(this.video.currentTime)
-    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentComplete = Math.floor(
+      this.video.currentTime / this.video.duration * 100
+    )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 
     // Track 25% duration intervals
@@ -69,33 +70,35 @@ export class CanvasVideo extends Component<Props, any> {
     }
   }
 
-  trackDuration = memoize((percentComplete) => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
       percent_complete: percentComplete,
       campaign_name: this.props.campaign.name,
-      unit_layout: "canvas_standard"
+      unit_layout: "canvas_standard",
     })
   })
 
-  trackSeconds = memoize((secondsComplete) => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",
       seconds_complete: secondsComplete,
       campaign_name: this.props.campaign.name,
-      unit_layout: "canvas_standard"
+      unit_layout: "canvas_standard",
     })
   })
 
-  @track(once((props) => ({
-    action: "Click",
-    label: "Display ad play video",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "canvas_standard"
-  })))
+  @track(
+    once(props => ({
+      action: "Click",
+      label: "Display ad play video",
+      entity_type: "display_ad",
+      campaign_name: props.campaign.name,
+      unit_layout: "canvas_standard",
+    }))
+  )
   onPlayVideo() {
     this.toggleVideo()
   }
@@ -105,7 +108,7 @@ export class CanvasVideo extends Component<Props, any> {
       this.video.play()
 
       this.setState({
-        isPlaying: true
+        isPlaying: true,
       })
     }
   }
@@ -115,7 +118,7 @@ export class CanvasVideo extends Component<Props, any> {
       this.video.pause()
 
       this.setState({
-        isPlaying: false
+        isPlaying: false,
       })
     }
   }
@@ -133,14 +136,16 @@ export class CanvasVideo extends Component<Props, any> {
 
     return (
       <VideoContainer onClick={this.onPlayVideo}>
-        {!isPlaying &&
+        {!isPlaying && (
           <Cover coverUrl={this.props.coverUrl}>
             <VideoControls />
-          </Cover>}
+          </Cover>
+        )}
 
-        <video playsInline
+        <video
+          playsInline
           src={this.props.src}
-          className='CanvasVideo__video'
+          className="CanvasVideo__video"
           controls={false}
           ref={video => (this.video = video)}
         />
@@ -148,7 +153,6 @@ export class CanvasVideo extends Component<Props, any> {
     )
   }
 }
-
 
 const VideoContainer = styled.div`
   width: 65%;
@@ -170,15 +174,16 @@ const VideoContainer = styled.div`
     video {
       height: auto;
     }
-  `}
+  `};
 `
 
 const div: StyledFunction<{
   coverUrl?: string
-}> = styled.div
+}> =
+  styled.div
 
 const Cover = div`
-  background: url(${p => (p.coverUrl || "")}) no-repeat center center;
+  background: url(${p => p.coverUrl || ""}) no-repeat center center;
   background-size: cover;
   position: absolute;
   top: 0;

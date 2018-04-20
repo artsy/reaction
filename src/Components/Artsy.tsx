@@ -73,7 +73,8 @@ export class ContextProvider extends React.Component<ContextProps, null>
       }
     }
 
-    this.relayEnvironment = props.relayEnvironment || createEnvironment(this.currentUser)
+    this.relayEnvironment =
+      props.relayEnvironment || createEnvironment(this.currentUser)
   }
 
   getChildContext() {
@@ -111,7 +112,9 @@ export function ContextConsumer<P>(
     constructor(props: P, context: PrivateContextProps) {
       if (!context._isNestedInProvider) {
         const start = name || "A component"
-        throw new Error(`${start}, which needs Artsy props, was not wrapped inside a ContextProvider component.`)
+        throw new Error(
+          `${start}, which needs Artsy props, was not wrapped inside a ContextProvider component.`
+        )
       }
       super(props, context)
     }

@@ -8,41 +8,33 @@ import { VideoAbout } from "../VideoAbout"
 
 describe("Video About", () => {
   it("matches the snapshot", () => {
-    const videoAbout = renderer.create(
-      <VideoAbout
-        article={VideoArticle}
-      />
-    ).toJSON()
+    const videoAbout = renderer
+      .create(<VideoAbout article={VideoArticle} />)
+      .toJSON()
     expect(videoAbout).toMatchSnapshot()
   })
 
   it("matches the snapshot with editable props", () => {
-    const videoAbout = renderer.create(
-      <VideoAbout
-        article={VideoArticle}
-        editDescription={EditableChild('media.description')}
-        editCredits={EditableChild('media.credit')}
-      />
-    ).toJSON()
+    const videoAbout = renderer
+      .create(
+        <VideoAbout
+          article={VideoArticle}
+          editDescription={EditableChild("media.description")}
+          editCredits={EditableChild("media.credit")}
+        />
+      )
+      .toJSON()
     expect(videoAbout).toMatchSnapshot()
   })
 
   it("renders the credits section", () => {
-    const component = mount(
-      <VideoAbout
-        article={VideoArticle}
-      />
-    )
+    const component = mount(<VideoAbout article={VideoArticle} />)
     expect(component.text()).toMatch("Marina Cashdan")
     expect(component.text()).toMatch("Trevor Paglan")
   })
 
   it("renders the about section", () => {
-    const component = mount(
-      <VideoAbout
-        article={VideoArticle}
-      />
-    )
+    const component = mount(<VideoAbout article={VideoArticle} />)
     expect(component.text()).toMatch("Lorem ipsum dolor")
   })
 
@@ -50,8 +42,8 @@ describe("Video About", () => {
     const component = mount(
       <VideoAbout
         article={VideoArticle}
-        editDescription={EditableChild('media.description')}
-        editCredits={EditableChild('media.credit')}
+        editDescription={EditableChild("media.description")}
+        editCredits={EditableChild("media.credit")}
       />
     )
     expect(component.text()).toMatch("Child media.description")

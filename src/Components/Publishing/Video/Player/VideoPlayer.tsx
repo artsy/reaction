@@ -8,24 +8,24 @@ import {
   fullscreenEnabled,
   isFullscreen,
   removeFSEventListener,
-  requestFullscreen
+  requestFullscreen,
 } from "./FullscreenHelpers"
 import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
-  url: string,
-  title?: string,
-  notifyPlayToggle?: (e) => void,
+  url: string
+  title?: string
+  notifyPlayToggle?: (e) => void
   forcePlay?: boolean
   tracking?: any
 }
 
 interface State {
-  isMuted: boolean,
-  isPlaying: boolean,
-  currentTime: number,
+  isMuted: boolean
+  isPlaying: boolean
+  currentTime: number
   duration: number
-  idleTime: number,
+  idleTime: number
   showControls: boolean
 }
 
@@ -45,7 +45,7 @@ export class VideoPlayer extends Component<Props, State> {
     currentTime: 0,
     duration: 0,
     idleTime: 0,
-    showControls: true
+    showControls: true,
   }
 
   constructor(props) {
@@ -91,7 +91,7 @@ export class VideoPlayer extends Component<Props, State> {
   resetTimer = () => {
     this.setState({
       showControls: true,
-      idleTime: 0
+      idleTime: 0,
     })
   }
 
@@ -100,20 +100,20 @@ export class VideoPlayer extends Component<Props, State> {
 
     this.setState({
       idleTime: newIdleTime,
-      showControls: newIdleTime > 3 ? false : true
+      showControls: newIdleTime > 3 ? false : true,
     })
   }
 
-  setDuration = (e) => {
+  setDuration = e => {
     this.setState({
-      duration: e.target.duration
+      duration: e.target.duration,
     })
   }
 
-  updateTime = (e) => {
+  updateTime = e => {
     this.trackProgress()
     this.setState({
-      currentTime: e.target.currentTime
+      currentTime: e.target.currentTime,
     })
   }
 
@@ -129,27 +129,27 @@ export class VideoPlayer extends Component<Props, State> {
     }
 
     this.setState({
-      isPlaying: !this.state.isPlaying
+      isPlaying: !this.state.isPlaying,
     })
   }
 
   toggleMute = () => {
     this.setState({
-      isMuted: !this.state.isMuted
+      isMuted: !this.state.isMuted,
     })
   }
 
   forcePlay = () => {
     this.video.play()
     this.setState({
-      isPlaying: true
+      isPlaying: true,
     })
   }
 
-  @track((props) => {
+  @track(props => {
     return {
       action: "Click",
-      label: "Fullscreen video"
+      label: "Fullscreen video",
     }
   })
   toggleFullscreen() {
@@ -162,30 +162,32 @@ export class VideoPlayer extends Component<Props, State> {
     }
   }
 
-  seekTo = (value) => {
+  seekTo = value => {
     this.video.currentTime = value
     this.setState({
-      currentTime: value
+      currentTime: value,
     })
   }
 
   pause = () => {
     this.video.pause()
     this.setState({
-      isPlaying: false
+      isPlaying: false,
     })
   }
 
   play = () => {
     this.video.play()
     this.setState({
-      isPlaying: true
+      isPlaying: true,
     })
   }
 
   trackProgress = () => {
     const secondsComplete = Math.floor(this.video.currentTime)
-    const percentComplete = Math.floor(this.video.currentTime / this.video.duration * 100)
+    const percentComplete = Math.floor(
+      this.video.currentTime / this.video.duration * 100
+    )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 
     // Track 25% duration intervals
@@ -199,7 +201,7 @@ export class VideoPlayer extends Component<Props, State> {
     }
   }
 
-  trackDuration = memoize((percentComplete) => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Video duration",
@@ -207,7 +209,7 @@ export class VideoPlayer extends Component<Props, State> {
     })
   })
 
-  trackSeconds = memoize((secondsComplete) => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Video seconds",
@@ -216,17 +218,15 @@ export class VideoPlayer extends Component<Props, State> {
   })
 
   render() {
-    const {
-      url,
-      title
-    } = this.props
+    const { url, title } = this.props
 
     return (
       <VideoContainer
         innerRef={container => (this.videoPlayer = container)}
         showControls={this.state.showControls}
       >
-        <video playsInline
+        <video
+          playsInline
           src={url}
           ref={video => (this.video = video)}
           muted={this.state.isMuted}
@@ -261,7 +261,8 @@ const VideoControlsParent = styled.div`
   width: 100%;
 `
 
-const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> =
+  styled.div
 export const VideoContainer = Div`
   width: 100%;
   height: 100%;
@@ -273,6 +274,6 @@ export const VideoContainer = Div`
     height: 100%;
   }
   ${VideoControlsContainer} {
-    opacity: ${props => props.showControls ? '1' : '0'};
+    opacity: ${props => (props.showControls ? "1" : "0")};
   }
 `

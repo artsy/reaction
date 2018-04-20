@@ -15,6 +15,5 @@ const TextArea: React.SFC<TextAreaProps> = props => {
 }
 
 export default styled(TextArea)`
-  ${borderedInput}
-  ${block(24)}
+  ${borderedInput} ${block(24)};
 `

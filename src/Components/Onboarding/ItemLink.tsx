@@ -5,7 +5,7 @@ import Colors from "../../Assets/Colors"
 import * as fonts from "../../Assets/Fonts"
 import { CircleWhiteCheckIcon } from "../../Assets/Icons/CircleWhiteCheckIcon"
 import { PlusIcon } from "../../Assets/Icons/PlusIcon"
-import {media} from "../Helpers";
+import { media } from "../Helpers"
 
 const Link = styled.a`
   display: flex;
@@ -89,7 +89,11 @@ export default class ItemLink extends React.Component<Props, State> {
         </Col>
         <FullWidthCol>{this.props.name}</FullWidthCol>
         <Col>
-          {this.state.selected ? <CircleWhiteCheckIcon width='26' height='26'/> : <PlusIcon width='26' height='26'/>}
+          {this.state.selected ? (
+            <CircleWhiteCheckIcon width="26" height="26" />
+          ) : (
+            <PlusIcon width="26" height="26" />
+          )}
         </Col>
       </Link>
     )

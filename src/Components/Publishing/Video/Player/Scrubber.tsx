@@ -23,7 +23,7 @@ interface State {
 export class Scrubber extends Component<Props, State> {
   state = {
     isScrubbing: false,
-    isPlayingOnMouseDown: false
+    isPlayingOnMouseDown: false,
   }
 
   shouldComponentUpdate(nextProps) {
@@ -35,12 +35,12 @@ export class Scrubber extends Component<Props, State> {
 
   handleMouseDown = () => {
     this.setState({
-      isPlayingOnMouseDown: this.props.isPlaying
+      isPlayingOnMouseDown: this.props.isPlaying,
     })
     this.props.pause()
   }
 
-  handleMouseUp = (e) => {
+  handleMouseUp = e => {
     if (!this.state.isScrubbing) {
       this.props.seekTo(e.target.value)
     }
@@ -50,16 +50,13 @@ export class Scrubber extends Component<Props, State> {
     this.setState({ isScrubbing: false })
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ isScrubbing: true })
     this.props.seekTo(e.target.value)
   }
 
   render() {
-    const {
-      duration,
-      currentTime
-    } = this.props
+    const { duration, currentTime } = this.props
 
     return (
       <ScrubberInput
@@ -77,7 +74,8 @@ export class Scrubber extends Component<Props, State> {
   }
 }
 
-const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> = styled.input
+const Input: StyledFunction<InputProps & React.HTMLProps<HTMLInputElement>> =
+  styled.input
 
 const ScrubberInput = Input`
   width: 100%;

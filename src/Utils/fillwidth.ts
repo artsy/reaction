@@ -2,7 +2,12 @@ import { reduce } from "lodash"
 
 const MAX_ITERATIONS = 1000
 
-const fillwidthDimensions = (items, containerWidth, gutter = 10, targetHeight) => {
+const fillwidthDimensions = (
+  items,
+  containerWidth,
+  gutter = 10,
+  targetHeight
+) => {
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
    * @param img a dimension object that references an artwork image
@@ -65,8 +70,19 @@ const fillwidthDimensions = (items, containerWidth, gutter = 10, targetHeight) =
     // sure to no longer run into infinite loops.
     count++
     if (count === MAX_ITERATIONS) {
-      const data = { items, containerWidth, gutter, targetHeight, dir, dimensions }
-      console.error(`Was unable to calculate a filling width for data: ${JSON.stringify(data)}`)
+      const data = {
+        items,
+        containerWidth,
+        gutter,
+        targetHeight,
+        dir,
+        dimensions,
+      }
+      console.error(
+        `Was unable to calculate a filling width for data: ${JSON.stringify(
+          data
+        )}`
+      )
       break
     }
   }
