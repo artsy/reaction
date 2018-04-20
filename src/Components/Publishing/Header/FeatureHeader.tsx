@@ -220,7 +220,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
 
 const Div = styled.div`
   width: 100%;
-  height: 100%;
+  height: ${(props: DivProps) => props.height || "100%"};
   box-sizing: border-box;
 `
 const Overlay = styled(Div)`
@@ -252,6 +252,7 @@ const HeaderText = styled(Div)`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   padding: 20px;
   color: #000;
   justify-content: flex-start;
@@ -320,10 +321,11 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `};
 `
+
 const FeatureHeaderContainer = styled(Div)`
   width: 100%;
-  height: ${(props: DivProps) => props.height};
   position: relative;
+  height: ${(props: DivProps) => props.height};
   &[data-type="text"] {
     height: auto;
     ${Title} {

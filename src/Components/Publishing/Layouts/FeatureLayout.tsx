@@ -35,18 +35,20 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       seriesArticle &&
       article.hero_section &&
       article.hero_section.type === "fullscreen"
+    const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
+    const height = hasNav ? "100vh" : headerHeight
 
     return (
       <FeatureLayoutContainer>
         {hasNav && (
           <Nav
             canFix={false}
-            sponsor={article.sponsor}
+            sponsor={sponsor}
             title={seriesArticle.title}
             transparent
           />
         )}
-        <Header article={article} height={headerHeight} isMobile={isMobile} />
+        <Header article={article} height={height} isMobile={isMobile} />
 
         <FeatureLayoutContent className="article-content">
           <Sections article={article} isMobile={isMobile} />
