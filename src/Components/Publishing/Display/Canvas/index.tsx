@@ -5,6 +5,7 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
+import { ErrorBoundary } from "../../../ErrorBoundary"
 import { Fonts } from "../../Fonts"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
@@ -46,23 +47,25 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
     )
 
     return (
-      <DisplayContainer layout={unit.layout}>
-        <Waypoint onEnter={this.trackImpression} />
-        <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
+      <ErrorBoundary>
+        <DisplayContainer layout={unit.layout}>
+          <Waypoint onEnter={this.trackImpression} />
+          <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
 
-        <a href={url} target="_blank">
-          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-        </a>
+          <a href={url} target="_blank">
+            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+          </a>
 
-        <CanvasContainer
-          unit={unit}
-          campaign={campaign}
-          article={article}
-          disclaimer={disclaimer}
-        />
+          <CanvasContainer
+            unit={unit}
+            campaign={campaign}
+            article={article}
+            disclaimer={disclaimer}
+          />
 
-        {unit.layout === "overlay" && disclaimer}
-      </DisplayContainer>
+          {unit.layout === "overlay" && disclaimer}
+        </DisplayContainer>
+      </ErrorBoundary>
     )
   }
 }
