@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the partner block 1`] = `
-.c0 img {
+.c0 {
+  display: block;
+}
+
+.c2 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
@@ -33,14 +37,18 @@ exports[`renders the partner block 1`] = `
   >
     Presented in Partnership with
   </div>
-  <a
-    href="https://artsy.net"
-    onClick={[Function]}
-    target="_blank"
+  <div
+    className="c2"
   >
-    <img
-      src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
-    />
-  </a>
+    <a
+      href="https://artsy.net"
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+      />
+    </a>
+  </div>
 </div>
 `;

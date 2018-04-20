@@ -19,12 +19,12 @@ interface Props {
 }
 
 export const ArticleCardsBlock: React.SFC<Props> = props => {
-  const { article, color } = props
-  const { seriesArticle, relatedArticles } = article
+  const { article, color, relatedArticles } = props
+  const { seriesArticle } = article
 
   return (
     <ArticleCardsContainer color={color}>
-      {relatedArticles && (
+      {(relatedArticles || article.relatedArticles) && (
         <MaxRow>
           <Col>
             <VerticalOrSeriesTitle
@@ -34,7 +34,7 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
             />
           </Col>
           <ArticleCards
-            relatedArticles={relatedArticles}
+            relatedArticles={relatedArticles || article.relatedArticles}
             series={seriesArticle}
             color={color}
           />
