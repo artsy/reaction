@@ -49,7 +49,10 @@ export class BorderedPulldown extends React.Component<Props, State> {
       )
     })
 
-    const displayValue = (this.state.selected && this.state.selected.name) || selectedName || defaultValue
+    const displayValue =
+      (this.state.selected && this.state.selected.name) ||
+      selectedName ||
+      defaultValue
     let pulldownStyles = {}
 
     if (this.state.isHovered) {
@@ -65,26 +68,21 @@ export class BorderedPulldown extends React.Component<Props, State> {
         onMouseLeave={() => this.toggleHover(false)}
       >
         <Toggle>
-          <span>
-            {displayValue}
-          </span>
+          <span>{displayValue}</span>
           <CaretHolder>
             <Icon name="arrow-down" fontSize="9px" color={colors.grayMedium} />
           </CaretHolder>
         </Toggle>
-        <PulldownOptions style={pulldownStyles}>
-          {optionEls}
-        </PulldownOptions>
+        <PulldownOptions style={pulldownStyles}>{optionEls}</PulldownOptions>
       </div>
     )
   }
 }
 
 const StyledBorderedPulldown = styled(BorderedPulldown)`
-  ${secondary.style}
-  display: inline-block;
+  ${secondary.style} display: inline-block;
   width: 200px;
-  position :relative;
+  position: relative;
   border: 2px solid ${colors.grayMedium};
   text-align: left;
   font-size: 17px;

@@ -3,8 +3,20 @@ import React, { Component } from "react"
 export class Help extends Component<null, null> {
   render() {
     return (
-      <svg className="icon__help" height="17px" width="17px" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" transform="translate(-554.000000, -945.000000)">
+      <svg
+        className="icon__help"
+        height="17px"
+        width="17px"
+        viewBox="0 0 17 17"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+          transform="translate(-554.000000, -945.000000)"
+        >
           <g transform="translate(555.000000, 946.000000)">
             <circle stroke="#666666" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5" />
             <path

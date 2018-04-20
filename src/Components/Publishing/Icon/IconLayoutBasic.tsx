@@ -11,7 +11,10 @@ export class IconLayoutBasic extends Component<any, null> {
         xmlns="http://www.w3.org/2000/svg"
       >
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-          <g className="layout-basic-group" fill={this.props.fill ? this.props.fill : "#000"}>
+          <g
+            className="layout-basic-group"
+            fill={this.props.fill ? this.props.fill : "#000"}
+          >
             <polyline points="6 25 40 25 40 23 6 23" />
             <polyline points="10 30 36 30 36 28 10 28" />
             <rect x="0" y="0" width="45" height="20" />

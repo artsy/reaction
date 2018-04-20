@@ -4,7 +4,9 @@ import renderer from "react-test-renderer"
 import { Caption } from "../Caption"
 
 it("renders a saved caption properly", () => {
-  const embed = renderer.create(<Caption caption="<p>This is a saved caption</p>" />).toJSON()
+  const embed = renderer
+    .create(<Caption caption="<p>This is a saved caption</p>" />)
+    .toJSON()
   expect(embed).toMatchSnapshot()
 })
 

@@ -6,7 +6,9 @@ import { Byline } from "../Byline"
 
 describe("Byline", () => {
   it("renders a byline", () => {
-    const byline = renderer.create(<Byline article={StandardArticle} layout={"split"} />)
+    const byline = renderer.create(
+      <Byline article={StandardArticle} layout={"split"} />
+    )
     expect(byline).toMatchSnapshot()
   })
 })

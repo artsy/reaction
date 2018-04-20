@@ -3,7 +3,7 @@ import React, { Component } from "react"
 export class IconHamburger extends Component<any, null> {
   static defaultProps = {
     color: "black",
-    onClick: x => x
+    onClick: x => x,
   }
 
   render() {

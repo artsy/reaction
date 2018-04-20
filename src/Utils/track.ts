@@ -56,10 +56,7 @@ export interface Shareable extends Global {
  *      }
  *
  */
-export function trackWithProps<
-  P,
-  T extends Global = Global
->(): Track<T, P> {
+export function trackWithProps<P, T extends Global = Global>(): Track<T, P> {
   return _track
 }
 
@@ -95,9 +92,7 @@ export function trackWithProps<
  *        }
  *      }
  */
-export function trackWithoutProps<
-  T extends Global = Global
->(): Track<T, any> {
+export function trackWithoutProps<T extends Global = Global>(): Track<T, any> {
   return _track
 }
 

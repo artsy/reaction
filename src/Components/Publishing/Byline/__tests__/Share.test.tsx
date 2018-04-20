@@ -5,7 +5,12 @@ import { Share } from "../Share"
 
 it("renders Share properly", () => {
   const share = renderer
-    .create(<Share url="http://artsy.net/article/point-pencils" title="The Point of Pencils" />)
+    .create(
+      <Share
+        url="http://artsy.net/article/point-pencils"
+        title="The Point of Pencils"
+      />
+    )
     .toJSON()
   expect(share).toMatchSnapshot()
 })

@@ -26,7 +26,8 @@ const CircleIcon: React.SFC<CircleIconProps> = (props: CircleIconProps) => {
       <Icon
         {...reminderProps}
         color="white"
-        fontSize={`${parseInt(props.fontSize || "24px", 10) * (props.ratio || 0.55)}px`}
+        fontSize={`${parseInt(props.fontSize || "24px", 10) *
+          (props.ratio || 0.55)}px`}
         style={{ margin: 0, alignSelf: "center" }}
       />
     </CircleIconContainer>

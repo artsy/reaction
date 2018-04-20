@@ -50,7 +50,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 
   getSelectedName(id) {
-    const selectedCount = find(this.props.aggregation.counts, count => count.id === id)
+    const selectedCount = find(
+      this.props.aggregation.counts,
+      count => count.id === id
+    )
     return selectedCount ? selectedCount.name : null
   }
 
@@ -63,7 +66,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
           <span>{count.name}</span>
-          <NavItemCount>&nbsp;({numeral(count.count).format("0,0")})</NavItemCount>
+          <NavItemCount>
+            &nbsp;({numeral(count.count).format("0,0")})
+          </NavItemCount>
         </NavItem>
       )
     })
@@ -99,8 +104,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         onMouseEnter={() => this.toggleHover(true)}
         onMouseLeave={() => this.toggleHover(false)}
       >
-        <Button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
-          {superLabelText && <SuperLabel style={{ color: superLabelColor }}>{superLabelText}</SuperLabel>}
+        <Button
+          style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+        >
+          {superLabelText && (
+            <SuperLabel style={{ color: superLabelColor }}>
+              {superLabelText}
+            </SuperLabel>
+          )}
           {labelText}
           <Icon
             name="arrow-down"

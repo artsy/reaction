@@ -18,7 +18,10 @@ import * as Artsy from "../Components/Artsy"
 
 const SIZE = 32
 
-interface Props extends RelayProps, React.HTMLProps<FollowButton>, Artsy.ContextProps {
+interface Props
+  extends RelayProps,
+    React.HTMLProps<FollowButton>,
+    Artsy.ContextProps {
   style?: any
   relay?: any
 }
@@ -60,7 +63,9 @@ export class FollowButton extends React.Component<Props, null> {
 
   render() {
     const { style, artist } = this.props
-    const iconName = artist.is_followed ? "follow-circle.is-following" : "follow-circle"
+    const iconName = artist.is_followed
+      ? "follow-circle.is-following"
+      : "follow-circle"
 
     return (
       <div
@@ -69,7 +74,11 @@ export class FollowButton extends React.Component<Props, null> {
         onClick={() => this.handleFollow()}
         data-followed={artist.is_followed}
       >
-        <Icon name={iconName} height={SIZE} style={{ verticalAlign: "middle", color: "inherit", margin: 0 }} />
+        <Icon
+          name={iconName}
+          height={SIZE}
+          style={{ verticalAlign: "middle", color: "inherit", margin: 0 }}
+        />
       </div>
     )
   }

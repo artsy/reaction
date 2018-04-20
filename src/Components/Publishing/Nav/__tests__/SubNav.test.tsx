@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import Icon from "../../../Icon" 
+import Icon from "../../../Icon"
 import { IconHamburger } from "../../Icon/IconHamburger"
 import { SubNav } from "../SubNav"
 
