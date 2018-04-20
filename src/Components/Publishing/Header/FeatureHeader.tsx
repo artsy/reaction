@@ -186,7 +186,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                   />
                 )}
                 <HeaderText>
-                  <VerticalOrSeriesTitle article={article} color="white" />
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                    color="white"
+                  />
                   <Title>{title}</Title>
                   {renderMobileSplitAsset(
                     url,

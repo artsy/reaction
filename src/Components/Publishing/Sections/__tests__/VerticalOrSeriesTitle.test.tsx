@@ -1,0 +1,73 @@
+import "jest-styled-components"
+import { clone } from "lodash"
+import { mount } from "enzyme"
+import React from "react"
+import renderer from "react-test-renderer"
+import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
+
+import {
+  FeatureArticle,
+  StandardArticle,
+  SeriesArticleSponsored,
+} from "../../Fixtures/Articles"
+
+jest.mock("react-sizeme", () => jest.fn(c => d => d))
+
+it("renders properly for a feature article", () => {
+  const component = renderer
+    .create(<VerticalOrSeriesTitle article={FeatureArticle} />)
+    .toJSON()
+  expect(component).toMatchSnapshot()
+})
+
+it("renders properly for a standard article", () => {
+  const component = renderer
+    .create(<VerticalOrSeriesTitle article={FeatureArticle} />)
+    .toJSON()
+  expect(component).toMatchSnapshot()
+})
+
+it("renders the article vertical", () => {
+  const component = mount(<VerticalOrSeriesTitle article={FeatureArticle} />)
+  expect(component.text()).toMatch(FeatureArticle.vertical.name)
+})
+
+it("renders a series if feature and fullscreen", () => {
+  const FeatureSeriesArticle = clone({
+    ...FeatureArticle,
+    seriesArticle: SeriesArticleSponsored,
+  })
+  const component = mount(
+    <VerticalOrSeriesTitle article={FeatureSeriesArticle} />
+  )
+  expect(component.text()).toMatch(SeriesArticleSponsored.title)
+})
+
+it("renders a vertical if feature and not fullscreen", () => {
+  const FeatureSeriesArticle = clone({
+    ...FeatureArticle,
+    hero_section: { type: "basic" },
+    seriesArticle: SeriesArticleSponsored,
+  })
+  const component = mount(
+    <VerticalOrSeriesTitle article={FeatureSeriesArticle} />
+  )
+  expect(component.text()).toMatch(FeatureArticle.vertical.name)
+})
+
+it("renders with props vertical", () => {
+  const component = mount(
+    <VerticalOrSeriesTitle
+      article={StandardArticle}
+      vertical="Missing Vertical"
+    />
+  )
+  expect(component.text()).toMatch("Missing Vertical")
+})
+
+it("renders with props prefix", () => {
+  const component = mount(
+    <VerticalOrSeriesTitle article={StandardArticle} prefix="More in " />
+  )
+  expect(component.text()).toMatch("More in Art Market")
+})

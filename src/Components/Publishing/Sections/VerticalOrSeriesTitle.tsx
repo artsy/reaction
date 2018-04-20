@@ -9,13 +9,20 @@ interface Props {
   article?: ArticleData
   color?: string
   prefix?: string
+  vertical?: any
 }
 
 export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   const { article, color, prefix } = props
-  const { vertical, layout, hero_section, seriesArticle } = article
-  const isFullscreen =
-    layout === "feature" && hero_section && hero_section.type === "fullscreen"
+  const { layout, hero_section, seriesArticle } = article
+  const vertical = props.vertical
+    ? props.vertical
+    : article.vertical && article.vertical.name
+  const hasSeries =
+    (layout === "feature" &&
+      hero_section &&
+      hero_section.type === "fullscreen") ||
+    layout === "video"
 
   const seriesLink =
     seriesArticle && getEditorialHref("series", seriesArticle.slug)
@@ -23,10 +30,10 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   return (
     <Vertical color={color}>
       {prefix}
-      {seriesArticle && isFullscreen ? (
+      {seriesArticle && hasSeries ? (
         <a href={seriesLink}>{seriesArticle.title}</a>
       ) : (
-        <span>{vertical && vertical.name}</span>
+        <span>{vertical}</span>
       )}
     </Vertical>
   )
