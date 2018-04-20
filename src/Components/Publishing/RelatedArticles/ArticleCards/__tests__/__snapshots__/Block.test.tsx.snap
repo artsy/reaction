@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders properly 1`] = `
+.c17 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 10px 30px 0 0;
+}
+
+.c17.date {
+  white-space: nowrap;
+}
+
 .c16 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -13,19 +25,7 @@ exports[`ArticleCard renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c15 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c15.date {
-  white-space: nowrap;
-}
-
-.c15:before {
+.c16:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -35,13 +35,13 @@ exports[`ArticleCard renders properly 1`] = `
   background-color: black;
 }
 
-.c15:before {
+.c16:before {
   min-width: 8px;
   min-height: 8px;
   margin: 0 5px 1px 0;
 }
 
-.c14 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,12 +60,12 @@ exports[`ArticleCard renders properly 1`] = `
   color: black;
 }
 
-.c22 {
+.c23 {
   width: 32px;
   height: 32px;
 }
 
-.c20 {
+.c21 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -75,14 +75,14 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c18 {
+.c19 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c9 {
+.c10 {
   display: block;
   border: 1px solid;
   border-radius: 2px;
@@ -97,19 +97,19 @@ exports[`ArticleCard renders properly 1`] = `
   display: flex;
 }
 
-.c9 .c19 {
+.c10 .c20 {
   opacity: 1;
 }
 
-.c9:hover .c19 {
+.c10:hover .c20 {
   opacity: 0.7;
 }
 
-.c9 .c17 {
+.c10 .c18 {
   background: white;
 }
 
-.c10 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -125,15 +125,15 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c10 .author,
-.c10 .date {
+.c11 .author,
+.c11 .date {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
-.c12 {
+.c13 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -141,7 +141,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c11 {
+.c12 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -149,14 +149,14 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c13 {
+.c14 {
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
 }
 
-.c21 {
+.c22 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -179,11 +179,11 @@ exports[`ArticleCard renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c21 svg {
+.c22 svg {
   width: 40px;
 }
 
-.c2 {
+.c3 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -202,7 +202,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-left: -0.5rem;
 }
 
-.c3 {
+.c4 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -211,7 +211,7 @@ exports[`ArticleCard renders properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c7 {
+.c8 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -220,7 +220,7 @@ exports[`ArticleCard renders properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c1 {
+.c2 {
   max-width: 1200px;
   margin: 0px auto;
   padding: 0px 12px;
@@ -230,7 +230,11 @@ exports[`ArticleCard renders properly 1`] = `
   color: black;
 }
 
-.c0 .c4 {
+.c0 .c1 {
+  margin: auto;
+}
+
+.c0 .c5 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -239,7 +243,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c0 .c4 a {
+.c0 .c5 a {
   border-bottom: 2px solid;
 }
 
@@ -247,15 +251,15 @@ exports[`ArticleCard renders properly 1`] = `
   margin: 60px 0 100px 0;
 }
 
-.c6 {
+.c7 {
   color: black;
 }
 
-.c6 .c8 {
+.c7 .c9 {
   margin-bottom: 60px;
 }
 
-.c5 {
+.c6 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -263,10 +267,24 @@ exports[`ArticleCard renders properly 1`] = `
   color: black;
 }
 
-.c5 a {
+.c6 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+@media (max-width:720px) {
+  .c17 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
 }
 
 @media (max-width:720px) {
@@ -284,28 +302,14 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c15 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c15:before {
+  .c16:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:900px) {
-  .c18 {
+  .c19 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -313,7 +317,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c9 {
+  .c10 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -322,14 +326,14 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c11 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c12 {
+  .c13 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -338,7 +342,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 {
+  .c14 {
     font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
@@ -348,13 +352,13 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c21 svg {
+  .c22 svg {
     width: 30px;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c7 {
+  .c8 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -364,7 +368,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c0 .c4 a {
+  .c0 .c5 a {
     display: block;
   }
 }
@@ -376,13 +380,13 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:64em) {
-  .c6 .c8 {
+  .c7 .c9 {
     margin-bottom: 40px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c6 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -395,13 +399,13 @@ exports[`ArticleCard renders properly 1`] = `
   color="black"
 >
   <div
-    className="c1 c2"
+    className="c1 c2 c3"
   >
     <div
-      className="c3"
+      className="c4"
     >
       <div
-        className="c4 c5"
+        className="c5 c6"
         color="black"
       >
         More In 
@@ -411,113 +415,113 @@ exports[`ArticleCard renders properly 1`] = `
       </div>
     </div>
     <div
-      className="c6"
+      className="c7"
       color="black"
     >
       <div
-        className="c7"
+        className="c8"
       >
         <a
-          className="ArticleCard c8 c9"
+          className="ArticleCard c9 c10"
           color="black"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c10"
+            className="c11"
           >
             <div>
               <div
-                className="c11"
+                className="c12"
               >
                 <div />
               </div>
               <div
-                className="c12"
+                className="c13"
               >
                 New York's Next Art District
               </div>
               <div
-                className="c13"
+                className="c14"
               >
                 Land exhibitions, make influential contacts, and gain valuable feedback about your work.
               </div>
             </div>
             <div
-              className="Byline c14"
+              className="Byline c15"
               color="black"
             >
               <div
-                className="author c15"
+                className="author c16"
                 color="black"
               >
                 By 
                 Casey Lesser
               </div>
               <div
-                className="date c16"
+                className="date c17"
               >
                 May 19, 2017
               </div>
             </div>
           </div>
           <div
-            className="c17 c18"
+            className="c18 c19"
           >
             <img
-              className="c19 c20"
+              className="c20 c21"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
             />
           </div>
         </a>
       </div>
       <div
-        className="c7"
+        className="c8"
       >
         <a
-          className="ArticleCard c8 c9"
+          className="ArticleCard c9 c10"
           color="black"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c10"
+            className="c11"
           >
             <div>
               <div
-                className="c11"
+                className="c12"
               >
                 <div />
               </div>
               <div
-                className="c12"
+                className="c13"
               >
                 New Study Shows the Gender Pay Gap for Artists Is Not So Simple
               </div>
               <div
-                className="c13"
+                className="c14"
               >
                 The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
               </div>
             </div>
             <div
-              className="date c16"
+              className="date c17"
             >
               Aug 28, 2017
             </div>
           </div>
           <div
-            className="c17 c18"
+            className="c18 c19"
           >
             <img
-              className="c19 c20"
+              className="c20 c21"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c21"
+              className="c22"
             >
               <svg
-                className="c22"
+                className="c23"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"

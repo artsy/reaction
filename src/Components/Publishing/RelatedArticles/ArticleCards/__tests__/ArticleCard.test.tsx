@@ -80,6 +80,16 @@ describe("ArticleCard", () => {
     expect(component.text()).toMatch("Available ")
   })
 
+  it("Renders publish date if layout does not have media", () => {
+    const component = mount(
+      <ArticleCard article={StandardArticle} series={SeriesArticle} />
+    )
+
+    expect(component.find(IconVideoPlay).length).toBe(0)
+    expect(component.text()).not.toMatch("Coming Soon")
+    expect(component.text()).toMatch("May 19, 2017")
+  })
+
   it("Does not render byline if article has media", () => {
     const component = mount(
       <ArticleCard article={videoArticle} series={SeriesArticle} />

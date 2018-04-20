@@ -24,7 +24,7 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
 
   return (
     <ArticleCardsContainer color={color}>
-      {relatedArticles && (
+      {(relatedArticles || article.relatedArticles) && (
         <MaxRow>
           <Col>
             <VerticalOrSeriesTitle
@@ -34,7 +34,7 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
             />
           </Col>
           <ArticleCards
-            relatedArticles={relatedArticles}
+            relatedArticles={relatedArticles || article.relatedArticles}
             series={seriesArticle}
             color={color}
           />
@@ -53,9 +53,11 @@ ArticleCardsBlock.defaultProps = {
   color: "black",
 }
 
-const ArticleCardsContainer = styled.div`
+export const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
-
+  ${MaxRow} {
+    margin: auto;
+  }
   ${Vertical} {
     ${Fonts.unica("s32")};
     width: 100%;

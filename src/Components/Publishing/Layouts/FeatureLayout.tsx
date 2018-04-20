@@ -5,7 +5,10 @@ import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Nav } from "../Nav/Nav"
-import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
+import {
+  ArticleCardsBlock,
+  ArticleCardsContainer,
+} from "../RelatedArticles/ArticleCards/Block"
 
 export interface ArticleProps {
   article: ArticleData
@@ -32,18 +35,20 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       seriesArticle &&
       article.hero_section &&
       article.hero_section.type === "fullscreen"
+    const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
+    const height = hasNav ? "100vh" : headerHeight
 
     return (
       <FeatureLayoutContainer>
         {hasNav && (
           <Nav
             canFix={false}
-            sponsor={article.sponsor}
+            sponsor={sponsor}
             title={seriesArticle.title}
             transparent
           />
         )}
-        <Header article={article} height={headerHeight} isMobile={isMobile} />
+        <Header article={article} height={height} isMobile={isMobile} />
 
         <FeatureLayoutContent className="article-content">
           <Sections article={article} isMobile={isMobile} />
@@ -73,5 +78,8 @@ const FeatureLayoutContainer = styled.div`
 
   ${Nav} {
     position: absolute;
+  }
+  ${ArticleCardsContainer} {
+    padding-top: 60px;
   }
 `

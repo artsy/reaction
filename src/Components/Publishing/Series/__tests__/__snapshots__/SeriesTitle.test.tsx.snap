@@ -1,6 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series title properly 1`] = `
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__ImageContainer-yu39to-1 {
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c0 .file__ImageContainer-yu39to-1 img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .c1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -9,16 +24,10 @@ exports[`renders a series title properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c0 {
-  color: black;
-  text-align: center;
-}
-
-.c0 .file__PartnerBlockContainer-yu39to-0 img {
-  padding-top: 5px;
-  padding-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+@media (max-width:900px) {
+  .c0 .file__ImageContainer-yu39to-1 {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width:900px) {
@@ -28,12 +37,6 @@ exports[`renders a series title properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-yu39to-0 img {
-    padding-bottom: 0;
   }
 }
 
@@ -50,6 +53,21 @@ exports[`renders a series title properly 1`] = `
 `;
 
 exports[`renders a series with children properly 1`] = `
+.c0 {
+  color: black;
+  text-align: center;
+}
+
+.c0 .file__ImageContainer-yu39to-1 {
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.c0 .file__ImageContainer-yu39to-1 img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .c1 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -58,16 +76,10 @@ exports[`renders a series with children properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c0 {
-  color: black;
-  text-align: center;
-}
-
-.c0 .file__PartnerBlockContainer-yu39to-0 img {
-  padding-top: 5px;
-  padding-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+@media (max-width:900px) {
+  .c0 .file__ImageContainer-yu39to-1 {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width:900px) {
@@ -77,12 +89,6 @@ exports[`renders a series with children properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c0 .file__PartnerBlockContainer-yu39to-0 img {
-    padding-bottom: 0;
   }
 }
 
@@ -102,22 +108,18 @@ exports[`renders a series with children properly 1`] = `
 `;
 
 exports[`renders a sponsored series title properly 1`] = `
-.c3 img {
+.c2 {
+  display: block;
+}
+
+.c5 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
-.c4 {
+.c3 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -130,11 +132,37 @@ exports[`renders a sponsored series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .c2 img {
+.c0 .c4 {
   padding-top: 5px;
   padding-bottom: 40px;
+}
+
+.c0 .c4 img {
   margin-left: auto;
   margin-right: auto;
+}
+
+.c1 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 120px;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:900px) {
+  .c0 .c4 {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width:900px) {
@@ -144,21 +172,6 @@ exports[`renders a sponsored series title properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:720px) {
-  .c4 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:900px) {
-  .c0 .c2 img {
-    padding-bottom: 0;
   }
 }
 
@@ -172,22 +185,26 @@ exports[`renders a sponsored series title properly 1`] = `
     The Future of Art
   </div>
   <div
-    className="PartnerBlock c2 c3"
+    className="PartnerBlock c2"
   >
     <div
-      className="c4"
+      className="c3"
     >
       Presented in Partnership with
     </div>
-    <a
-      href="http://artsy.net"
-      onClick={[Function]}
-      target="_blank"
+    <div
+      className="c4 c5"
     >
-      <img
-        src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
-      />
-    </a>
+      <a
+        href="http://artsy.net"
+        onClick={[Function]}
+        target="_blank"
+      >
+        <img
+          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+        />
+      </a>
+    </div>
   </div>
 </div>
 `;

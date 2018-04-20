@@ -45,12 +45,16 @@ export class PartnerBlock extends React.Component<Props, null> {
     return (
       <PartnerBlockContainer className="PartnerBlock">
         {logo && <Title>Presented in Partnership with</Title>}
-        {url ? (
-          <a href={url} target="_blank" onClick={this.onPartnerClick}>
-            {image}
-          </a>
-        ) : (
-          image
+        {image && (
+          <ImageContainer>
+            {url ? (
+              <a href={url} target="_blank" onClick={this.onPartnerClick}>
+                {image}
+              </a>
+            ) : (
+              image
+            )}
+          </ImageContainer>
         )}
       </PartnerBlockContainer>
     )
@@ -58,6 +62,10 @@ export class PartnerBlock extends React.Component<Props, null> {
 }
 
 export const PartnerBlockContainer = styled.div`
+  display: block;
+`
+
+export const ImageContainer = styled.div`
   img {
     max-width: 240px;
     max-height: 40px;
@@ -65,6 +73,7 @@ export const PartnerBlockContainer = styled.div`
     object-position: left;
   }
 `
+
 const Title = styled.div`
   ${Fonts.unica("s16", "medium")};
   margin-bottom: 20px;
