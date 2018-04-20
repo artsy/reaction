@@ -6,6 +6,10 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
+import {
+  VerticalOrSeriesTitle,
+  Vertical,
+} from "../Sections/VerticalOrSeriesTitle"
 import { PartnerInline } from "../Partner/PartnerInline"
 import { BasicHeader } from "./BasicHeader"
 
@@ -147,9 +151,9 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       height,
       isMobile: passedIsMobile,
     } = this.props
-    const hero = article.hero_section
-    const url = (hero && hero.url) || ""
-    const type = (hero && hero.type) || "text"
+    const { hero_section } = article
+    const url = (hero_section && hero_section.url) || ""
+    const type = (hero_section && hero_section.type) || "text"
 
     if (type === "basic") {
       return (
@@ -182,7 +186,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                   />
                 )}
                 <HeaderText>
-                  <Vertical>{vertical}</Vertical>
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                    color="white"
+                  />
                   <Title>{title}</Title>
                   {renderMobileSplitAsset(
                     url,
@@ -223,19 +231,15 @@ const Overlay = styled(Div)`
     rgba(0, 0, 0, 0.3)
   );
 `
-const Vertical = styled.div`
-  margin-bottom: 10px;
-  ${Fonts.unica("s16", "medium")};
-  ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
-  `};
-`
 const HeaderTextContainer = styled(Div)`
   margin: auto;
   .PartnerInline {
     position: absolute;
     z-index: 1;
     padding: 45px 45px 50px;
+  }
+  ${Vertical} {
+    margin-bottom: 10px;
   }
   ${pMedia.xs`
     .PartnerInline {

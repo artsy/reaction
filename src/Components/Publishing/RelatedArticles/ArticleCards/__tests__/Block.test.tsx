@@ -7,10 +7,12 @@ import {
   SeriesArticleSponsored,
   StandardArticle,
   VideoArticle,
+  FeatureArticle,
 } from "../../../Fixtures/Articles"
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCardsBlock } from "../Block"
 import { SeriesAbout } from "../../../Series/SeriesAbout"
+import { VerticalOrSeriesTitle } from "../../../Sections/VerticalOrSeriesTitle"
 
 jest.mock("../../../../../Utils/track.ts", () => ({
   track: jest.fn(),
@@ -42,17 +44,20 @@ describe("ArticleCard", () => {
   })
 
   it("renders a list of articles in a series properly", () => {
-    const VideoSeriesArticle = clone({
-      ...VideoArticle,
+    const FeatureSeriesArticle = clone({
+      ...FeatureArticle,
       seriesArticle: SeriesArticleSponsored,
     })
     const component = mount(
       <ArticleCardsBlock
-        article={VideoSeriesArticle}
+        article={FeatureSeriesArticle}
         relatedArticles={[StandardArticle, VideoArticle]}
       />
     )
-    expect(component.text()).toMatch(SeriesArticleSponsored.title)
+    expect(component.find(VerticalOrSeriesTitle).length).toBe(1)
+    expect(component.find(VerticalOrSeriesTitle).text()).toMatch(
+      SeriesArticleSponsored.title
+    )
     expect(component.find(ArticleCard).length).toBe(2)
     expect(component.find(SeriesAbout).length).toBe(1)
   })

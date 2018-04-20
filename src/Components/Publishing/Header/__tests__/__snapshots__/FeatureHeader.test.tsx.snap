@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`feature renders feature full header properly 1`] = `
+.c18 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c18.date {
+  white-space: nowrap;
+}
+
 .c17 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -13,19 +25,7 @@ exports[`feature renders feature full header properly 1`] = `
   white-space: nowrap;
 }
 
-.c16 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c16.date {
-  white-space: nowrap;
-}
-
-.c16:before {
+.c17:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -35,7 +35,7 @@ exports[`feature renders feature full header properly 1`] = `
   background-color: white;
 }
 
-.c18 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,22 +48,22 @@ exports[`feature renders feature full header properly 1`] = `
   line-height: 1em;
 }
 
-.c19 {
+.c20 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c19:hover {
+.c20:hover {
   opacity: 0.6;
 }
 
-.c19:first-child {
+.c20:first-child {
   padding-left: 0;
 }
 
-.c15 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -82,6 +82,20 @@ exports[`feature renders feature full header properly 1`] = `
   color: white;
 }
 
+.c9 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c9 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c1 {
   width: 100%;
   height: 100%;
@@ -93,14 +107,6 @@ exports[`feature renders feature full header properly 1`] = `
   background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
 }
 
-.c8 {
-  margin-bottom: 10px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
 .c5 {
   margin: auto;
 }
@@ -109,6 +115,10 @@ exports[`feature renders feature full header properly 1`] = `
   position: absolute;
   z-index: 1;
   padding: 45px 45px 50px;
+}
+
+.c5 .c8 {
+  margin-bottom: 10px;
 }
 
 .c7 {
@@ -139,7 +149,7 @@ exports[`feature renders feature full header properly 1`] = `
   width: 100%;
 }
 
-.c12 {
+.c13 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -161,7 +171,7 @@ exports[`feature renders feature full header properly 1`] = `
   flex-direction: row;
 }
 
-.c10 {
+.c11 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -173,7 +183,7 @@ exports[`feature renders feature full header properly 1`] = `
   letter-spacing: -0.035em;
 }
 
-.c14 {
+.c15 {
   max-width: 460px;
   margin-right: 30px;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -193,11 +203,11 @@ exports[`feature renders feature full header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type="text"] .c9 {
+.c0[data-type="text"] .c10 {
   margin-bottom: 150px;
 }
 
-.c0[data-type="split"] .c9 {
+.c0[data-type="split"] .c10 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -213,16 +223,16 @@ exports[`feature renders feature full header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
   width: 50vw;
 }
 
-.c0[data-type="split"] .c11 {
+.c0[data-type="split"] .c12 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -232,7 +242,7 @@ exports[`feature renders feature full header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .c13 {
+.c0[data-type="split"] .c14 {
   margin-bottom: 30px;
 }
 
@@ -245,6 +255,20 @@ exports[`feature renders feature full header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width:720px) {
+  .c18 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
 }
 
 @media (max-width:720px) {
@@ -262,34 +286,20 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c16 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16:before {
+  .c17:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:600px) {
-  .c18 {
+  .c19 {
     margin-top: 15px;
   }
 }
 
 @media (max-width:720px) {
-  .c8 {
+  .c9 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -304,7 +314,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c12 {
+  .c13 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -316,7 +326,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c10 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -325,7 +335,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -334,7 +344,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c10 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -343,7 +353,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c14 {
+  .c15 {
     margin-bottom: 28px;
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -353,7 +363,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c0[data-type="split"] .c9 {
+  .c0[data-type="split"] .c10 {
     margin-bottom: 20px;
   }
 
@@ -368,14 +378,14 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
     width: 100%;
   }
 }
@@ -408,20 +418,23 @@ exports[`feature renders feature full header properly 1`] = `
       className="c6 c7 c1"
     >
       <div
-        className="c8"
+        className="c8 c9"
+        color="white"
       >
-        Creativity
+        <span>
+          Creativity
+        </span>
       </div>
       <div
-        className="c9 c10"
+        className="c10 c11"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="c11 c12"
+        className="c12 c13"
       >
         <div
-          className="c13 c14"
+          className="c14 c15"
         >
           <div
             className="feature__deck"
@@ -430,26 +443,26 @@ exports[`feature renders feature full header properly 1`] = `
           </div>
         </div>
         <div
-          className="Byline c15"
+          className="Byline c16"
           color="white"
         >
           <div
-            className="author c16"
+            className="author c17"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c17"
+            className="date c18"
           >
             Jun 29, 2017 11:00 am
           </div>
           <div
-            className="c18"
+            className="c19"
           >
             <a
-              className="c19"
+              className="c20"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
@@ -475,7 +488,7 @@ exports[`feature renders feature full header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c19"
+              className="c20"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -501,7 +514,7 @@ exports[`feature renders feature full header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c19"
+              className="c20"
               href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
@@ -534,1051 +547,6 @@ exports[`feature renders feature full header properly 1`] = `
 `;
 
 exports[`feature renders feature full header without a deck properly 1`] = `
-.c15 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c15.date {
-  white-space: nowrap;
-}
-
-.c14 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c14.date {
-  white-space: nowrap;
-}
-
-.c14:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: white;
-}
-
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
-  line-height: 1em;
-}
-
-.c17 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c17:hover {
-  opacity: 0.6;
-}
-
-.c17:first-child {
-  padding-left: 0;
-}
-
-.c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  color: white;
-}
-
-.c1 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.c4 {
-  position: absolute;
-  background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
-}
-
-.c8 {
-  margin-bottom: 10px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c5 {
-  margin: auto;
-}
-
-.c5 .PartnerInline {
-  position: absolute;
-  z-index: 1;
-  padding: 45px 45px 50px;
-}
-
-.c7 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  padding: 20px;
-  color: #000;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.c3 {
-  position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  right: 0;
-  width: 100%;
-}
-
-.c12 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c10 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 100px;
-  line-height: 1.1em;
-  margin-bottom: 75px;
-  -webkit-letter-spacing: -0.035em;
-  -moz-letter-spacing: -0.035em;
-  -ms-letter-spacing: -0.035em;
-  letter-spacing: -0.035em;
-}
-
-.c0 {
-  width: 100%;
-  height: calc(100vh - 50px);
-  position: relative;
-}
-
-.c0[data-type="text"] {
-  height: auto;
-}
-
-.c0[data-type="text"] .c9 {
-  margin-bottom: 150px;
-}
-
-.c0[data-type="split"] .c9 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.c0[data-type="split"] .c6 {
-  width: 50%;
-}
-
-.c0[data-type="split"] .c2 {
-  border: 20px solid white;
-  width: 50%;
-}
-
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
-  border: 20px solid white;
-  width: 50%;
-}
-
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
-  width: 50vw;
-}
-
-.c0[data-type="split"] .c11 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0[data-type="split"] .file__Deck-yu39to-12 {
-  margin-bottom: 30px;
-}
-
-.c0[data-type="fullscreen"] .c6 {
-  padding: 50px;
-  color: #fff;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: auto;
-  text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c15 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c14 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c14:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
-  .c16 {
-    margin-top: 15px;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 .PartnerInline {
-    padding: 20px 15px 20px;
-  }
-}
-
-@media (max-width:720px) {
-  .c12 {
-    -webkit-align-items: flex-start;
-    -webkit-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width:1280px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 80px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-  }
-}
-
-@media (max-width:600px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 45px;
-    line-height: 1.2em;
-  }
-}
-
-@media (max-width:600px) {
-  .c0[data-type="split"] .c9 {
-    margin-bottom: 20px;
-  }
-
-  .c0[data-type="split"] .c6 {
-    width: 100%;
-  }
-
-  .c0[data-type="split"] .c2 {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
-    width: 100%;
-  }
-}
-
-@media (max-width:720px) {
-  .c0[data-type="fullscreen"] .c6 {
-    padding: 20px;
-  }
-}
-
-<div
-  className="c0 c1"
-  data-type="fullscreen"
-  height="calc(100vh - 50px)"
->
-  <div>
-    <div
-      alt="What’s the Path to Winning an Art Prize?"
-      className="c2 c3 c1"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
-    />
-    <div
-      className="c4 c1"
-    />
-  </div>
-  <div
-    className="c5 c1"
-  >
-    <div
-      className="c6 c7 c1"
-    >
-      <div
-        className="c8"
-      >
-        Creativity
-      </div>
-      <div
-        className="c9 c10"
-      >
-        What’s the Path to Winning an Art Prize?
-      </div>
-      <div
-        className="c11 c12"
-      >
-        <div
-          className="Byline c13"
-          color="white"
-        >
-          <div
-            className="author c14"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c15"
-          >
-            Jun 29, 2017 11:00 am
-          </div>
-          <div
-            className="c16"
-          >
-            <a
-              className="c17"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 14 14"
-                width="14px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-            <a
-              className="c17"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 16 14"
-                width="16px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-            <a
-              className="c17"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
-              onClick={[Function]}
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 17 14"
-                width="17px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`feature renders feature header with children properly 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c17.date {
-  white-space: nowrap;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c16.date {
-  white-space: nowrap;
-}
-
-.c16:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: white;
-}
-
-.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
-  line-height: 1em;
-}
-
-.c19 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c19:hover {
-  opacity: 0.6;
-}
-
-.c19:first-child {
-  padding-left: 0;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  color: white;
-}
-
-.c1 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.c4 {
-  position: absolute;
-  background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
-}
-
-.c8 {
-  margin-bottom: 10px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c5 {
-  margin: auto;
-}
-
-.c5 .PartnerInline {
-  position: absolute;
-  z-index: 1;
-  padding: 45px 45px 50px;
-}
-
-.c7 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  padding: 20px;
-  color: #000;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.c3 {
-  position: absolute;
-  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  right: 0;
-  width: 100%;
-}
-
-.c12 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c10 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 100px;
-  line-height: 1.1em;
-  margin-bottom: 75px;
-  -webkit-letter-spacing: -0.035em;
-  -moz-letter-spacing: -0.035em;
-  -ms-letter-spacing: -0.035em;
-  letter-spacing: -0.035em;
-}
-
-.c14 {
-  max-width: 460px;
-  margin-right: 30px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  line-height: 1.4em;
-}
-
-.c0 {
-  width: 100%;
-  height: calc(100vh - 50px);
-  position: relative;
-}
-
-.c0[data-type="text"] {
-  height: auto;
-}
-
-.c0[data-type="text"] .c9 {
-  margin-bottom: 150px;
-}
-
-.c0[data-type="split"] .c9 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.c0[data-type="split"] .c6 {
-  width: 50%;
-}
-
-.c0[data-type="split"] .c2 {
-  border: 20px solid white;
-  width: 50%;
-}
-
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
-  border: 20px solid white;
-  width: 50%;
-}
-
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
-  width: 50vw;
-}
-
-.c0[data-type="split"] .c11 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0[data-type="split"] .c13 {
-  margin-bottom: 30px;
-}
-
-.c0[data-type="fullscreen"] .c6 {
-  padding: 50px;
-  color: #fff;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: auto;
-  text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c17 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
-  .c18 {
-    margin-top: 15px;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 .PartnerInline {
-    padding: 20px 15px 20px;
-  }
-}
-
-@media (max-width:720px) {
-  .c12 {
-    -webkit-align-items: flex-start;
-    -webkit-box-align: flex-start;
-    -ms-flex-align: flex-start;
-    align-items: flex-start;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (max-width:1280px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 80px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-  }
-}
-
-@media (max-width:600px) {
-  .c10 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 45px;
-    line-height: 1.2em;
-  }
-}
-
-@media (max-width:720px) {
-  .c14 {
-    margin-bottom: 28px;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:600px) {
-  .c0[data-type="split"] .c9 {
-    margin-bottom: 20px;
-  }
-
-  .c0[data-type="split"] .c6 {
-    width: 100%;
-  }
-
-  .c0[data-type="split"] .c2 {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
-    width: 100%;
-    position: relative;
-    border: 0px;
-    margin-bottom: 30px;
-  }
-
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
-    width: 100%;
-  }
-}
-
-@media (max-width:720px) {
-  .c0[data-type="fullscreen"] .c6 {
-    padding: 20px;
-  }
-}
-
-<div
-  className="c0 c1"
-  data-type="fullscreen"
-  height="calc(100vh - 50px)"
->
-  <div>
-    <div
-      alt="What’s the Path to Winning an Art Prize?"
-      className="c2 c3 c1"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
-    >
-      <div>
-        Child 3: Image
-      </div>
-    </div>
-    <div
-      className="c4 c1"
-    />
-  </div>
-  <div
-    className="c5 c1"
-  >
-    <div
-      className="c6 c7 c1"
-    >
-      <div
-        className="c8"
-      >
-        Creativity
-      </div>
-      <div
-        className="c9 c10"
-      >
-        <div>
-          Child 1: Title
-        </div>
-      </div>
-      <div
-        className="c11 c12"
-      >
-        <div
-          className="c13 c14"
-        >
-          <div
-            className="feature__deck"
-          >
-            <div>
-              Child 2: Deck
-            </div>
-          </div>
-        </div>
-        <div
-          className="Byline c15"
-          color="white"
-        >
-          <div
-            className="author c16"
-            color="white"
-          >
-            By 
-            Casey Lesser
-          </div>
-          <div
-            className="date c17"
-          >
-            Jun 29, 2017 11:00 am
-          </div>
-          <div
-            className="c18"
-          >
-            <a
-              className="c19"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 14 14"
-                width="14px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-            <a
-              className="c19"
-              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 16 14"
-                width="16px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-            <a
-              className="c19"
-              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
-              onClick={[Function]}
-            >
-              <svg
-                height="14px"
-                version="1.1"
-                viewBox="0 0 17 14"
-                width="17px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <path
-                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`feature renders feature split header properly 1`] = `
 .c16 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -1610,7 +578,7 @@ exports[`feature renders feature split header properly 1`] = `
   min-height: 10px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
-  background-color: black;
+  background-color: white;
 }
 
 .c17 {
@@ -1657,7 +625,21 @@ exports[`feature renders feature split header properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  color: black;
+  color: white;
+}
+
+.c9 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c9 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c1 {
@@ -1666,25 +648,26 @@ exports[`feature renders feature split header properly 1`] = `
   box-sizing: border-box;
 }
 
-.c7 {
-  margin-bottom: 10px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c4 {
+  position: absolute;
+  background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
 }
 
-.c4 {
+.c5 {
   margin: auto;
 }
 
-.c4 .PartnerInline {
+.c5 .PartnerInline {
   position: absolute;
   z-index: 1;
   padding: 45px 45px 50px;
 }
 
-.c6 {
+.c5 .c8 {
+  margin-bottom: 10px;
+}
+
+.c7 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1712,7 +695,7 @@ exports[`feature renders feature split header properly 1`] = `
   width: 100%;
 }
 
-.c11 {
+.c13 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1734,7 +717,7 @@ exports[`feature renders feature split header properly 1`] = `
   flex-direction: row;
 }
 
-.c9 {
+.c11 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -1744,16 +727,6 @@ exports[`feature renders feature split header properly 1`] = `
   -moz-letter-spacing: -0.035em;
   -ms-letter-spacing: -0.035em;
   letter-spacing: -0.035em;
-}
-
-.c13 {
-  max-width: 460px;
-  margin-right: 30px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  line-height: 1.4em;
 }
 
 .c0 {
@@ -1766,18 +739,18 @@ exports[`feature renders feature split header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type="text"] .c8 {
+.c0[data-type="text"] .c10 {
   margin-bottom: 150px;
 }
 
-.c0[data-type="split"] .c8 {
+.c0[data-type="split"] .c10 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c0[data-type="split"] .c5 {
+.c0[data-type="split"] .c6 {
   width: 50%;
 }
 
@@ -1786,16 +759,16 @@ exports[`feature renders feature split header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
   width: 50vw;
 }
 
-.c0[data-type="split"] .c10 {
+.c0[data-type="split"] .c12 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1805,11 +778,11 @@ exports[`feature renders feature split header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .c12 {
+.c0[data-type="split"] .file__Deck-yu39to-11 {
   margin-bottom: 30px;
 }
 
-.c0[data-type="fullscreen"] .c5 {
+.c0[data-type="fullscreen"] .c6 {
   padding: 50px;
   color: #fff;
   -webkit-box-pack: end;
@@ -1862,7 +835,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c9 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1871,13 +844,13 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c4 .PartnerInline {
+  .c5 .PartnerInline {
     padding: 20px 15px 20px;
   }
 }
 
 @media (max-width:720px) {
-  .c11 {
+  .c13 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -1889,7 +862,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c9 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -1898,7 +871,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c9 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1907,7 +880,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c11 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -1915,22 +888,12 @@ exports[`feature renders feature split header properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c13 {
-    margin-bottom: 28px;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 @media (max-width:600px) {
-  .c0[data-type="split"] .c8 {
+  .c0[data-type="split"] .c10 {
     margin-bottom: 20px;
   }
 
-  .c0[data-type="split"] .c5 {
+  .c0[data-type="split"] .c6 {
     width: 100%;
   }
 
@@ -1941,69 +904,68 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
     width: 100%;
   }
 }
 
 @media (max-width:720px) {
-  .c0[data-type="fullscreen"] .c5 {
+  .c0[data-type="fullscreen"] .c6 {
     padding: 20px;
   }
 }
 
 <div
   className="c0 c1"
-  data-type="split"
+  data-type="fullscreen"
   height="calc(100vh - 50px)"
 >
+  <div>
+    <div
+      alt="What’s the Path to Winning an Art Prize?"
+      className="c2 c3 c1"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+    />
+    <div
+      className="c4 c1"
+    />
+  </div>
   <div
-    alt="What’s the Path to Winning an Art Prize?"
-    className="c2 c3 c1"
-    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
-  />
-  <div
-    className="c4 c1"
+    className="c5 c1"
   >
     <div
-      className="c5 c6 c1"
+      className="c6 c7 c1"
     >
       <div
-        className="c7"
-      >
-        Creativity
-      </div>
-      <div
         className="c8 c9"
+        color="white"
       >
-        What’s the Path to Winning an Art Prize?
+        <span>
+          Creativity
+        </span>
       </div>
       <div
         className="c10 c11"
       >
-        <div
-          className="c12 c13"
-        >
-          <div
-            className="feature__deck"
-          >
-            Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
-          </div>
-        </div>
+        What’s the Path to Winning an Art Prize?
+      </div>
+      <div
+        className="c12 c13"
+      >
         <div
           className="Byline c14"
-          color="black"
+          color="white"
         >
           <div
             className="author c15"
-            color="black"
+            color="white"
           >
             By 
             Casey Lesser
@@ -2037,7 +999,7 @@ exports[`feature renders feature split header properly 1`] = `
                 >
                   <path
                     d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
-                    fill="black"
+                    fill="white"
                   />
                 </g>
               </svg>
@@ -2063,13 +1025,1103 @@ exports[`feature renders feature split header properly 1`] = `
                 >
                   <path
                     d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
-                    fill="black"
+                    fill="white"
                   />
                 </g>
               </svg>
             </a>
             <a
               className="c18"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 17 14"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature header with children properly 1`] = `
+.c18 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c18.date {
+  white-space: nowrap;
+}
+
+.c17 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c17.date {
+  white-space: nowrap;
+}
+
+.c17:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: white;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.c20 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c20:hover {
+  opacity: 0.6;
+}
+
+.c20:first-child {
+  padding-left: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.c9 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c9 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.c4 {
+  position: absolute;
+  background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
+}
+
+.c5 {
+  margin: auto;
+}
+
+.c5 .PartnerInline {
+  position: absolute;
+  z-index: 1;
+  padding: 45px 45px 50px;
+}
+
+.c5 .c8 {
+  margin-bottom: 10px;
+}
+
+.c7 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c3 {
+  position: absolute;
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c13 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
+}
+
+.c15 {
+  max-width: 460px;
+  margin-right: 30px;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  line-height: 1.4em;
+}
+
+.c0 {
+  width: 100%;
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
+.c0[data-type="text"] {
+  height: auto;
+}
+
+.c0[data-type="text"] .c10 {
+  margin-bottom: 150px;
+}
+
+.c0[data-type="split"] .c10 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type="split"] .c6 {
+  width: 50%;
+}
+
+.c0[data-type="split"] .c2 {
+  border: 20px solid white;
+  width: 50%;
+}
+
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  border: 20px solid white;
+  width: 50%;
+}
+
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  width: 50vw;
+}
+
+.c0[data-type="split"] .c12 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type="split"] .c14 {
+  margin-bottom: 30px;
+}
+
+.c0[data-type="fullscreen"] .c6 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width:720px) {
+  .c18 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c17 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c17:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c19 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c5 .PartnerInline {
+    padding: 20px 15px 20px;
+  }
+}
+
+@media (max-width:720px) {
+  .c13 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:1280px) {
+  .c11 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c11 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+  }
+}
+
+@media (max-width:600px) {
+  .c11 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width:720px) {
+  .c15 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c0[data-type="split"] .c10 {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type="split"] .c6 {
+    width: 100%;
+  }
+
+  .c0[data-type="split"] .c2 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+    width: 100%;
+  }
+}
+
+@media (max-width:720px) {
+  .c0[data-type="fullscreen"] .c6 {
+    padding: 20px;
+  }
+}
+
+<div
+  className="c0 c1"
+  data-type="fullscreen"
+  height="calc(100vh - 50px)"
+>
+  <div>
+    <div
+      alt="What’s the Path to Winning an Art Prize?"
+      className="c2 c3 c1"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+    >
+      <div>
+        Child 3: Image
+      </div>
+    </div>
+    <div
+      className="c4 c1"
+    />
+  </div>
+  <div
+    className="c5 c1"
+  >
+    <div
+      className="c6 c7 c1"
+    >
+      <div
+        className="c8 c9"
+        color="white"
+      >
+        <span>
+          Creativity
+        </span>
+      </div>
+      <div
+        className="c10 c11"
+      >
+        <div>
+          Child 1: Title
+        </div>
+      </div>
+      <div
+        className="c12 c13"
+      >
+        <div
+          className="c14 c15"
+        >
+          <div
+            className="feature__deck"
+          >
+            <div>
+              Child 2: Deck
+            </div>
+          </div>
+        </div>
+        <div
+          className="Byline c16"
+          color="white"
+        >
+          <div
+            className="author c17"
+            color="white"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c18"
+          >
+            Jun 29, 2017 11:00 am
+          </div>
+          <div
+            className="c19"
+          >
+            <a
+              className="c20"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 14 14"
+                width="14px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c20"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 16 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c20"
+              href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 17 14"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`feature renders feature split header properly 1`] = `
+.c17 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c17.date {
+  white-space: nowrap;
+}
+
+.c16 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c16.date {
+  white-space: nowrap;
+}
+
+.c16:before {
+  content: "";
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin: 6px 10px 1px 0;
+  background-color: black;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.c19 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c19:hover {
+  opacity: 0.6;
+}
+
+.c19:first-child {
+  padding-left: 0;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: black;
+}
+
+.c8 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c8 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.c4 {
+  margin: auto;
+}
+
+.c4 .PartnerInline {
+  position: absolute;
+  z-index: 1;
+  padding: 45px 45px 50px;
+}
+
+.c4 .c7 {
+  margin-bottom: 10px;
+}
+
+.c6 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  color: #000;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c3 {
+  position: absolute;
+  background-image: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 0;
+  width: 100%;
+}
+
+.c12 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 100px;
+  line-height: 1.1em;
+  margin-bottom: 75px;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
+}
+
+.c14 {
+  max-width: 460px;
+  margin-right: 30px;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  line-height: 1.4em;
+}
+
+.c0 {
+  width: 100%;
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
+.c0[data-type="text"] {
+  height: auto;
+}
+
+.c0[data-type="text"] .c9 {
+  margin-bottom: 150px;
+}
+
+.c0[data-type="split"] .c9 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c0[data-type="split"] .c5 {
+  width: 50%;
+}
+
+.c0[data-type="split"] .c2 {
+  border: 20px solid white;
+  width: 50%;
+}
+
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  border: 20px solid white;
+  width: 50%;
+}
+
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  width: 50vw;
+}
+
+.c0[data-type="split"] .c11 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0[data-type="split"] .c13 {
+  margin-bottom: 30px;
+}
+
+.c0[data-type="fullscreen"] .c5 {
+  padding: 50px;
+  color: #fff;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: auto;
+  text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width:720px) {
+  .c17 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c16 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c16:before {
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+@media (max-width:600px) {
+  .c18 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c4 .PartnerInline {
+    padding: 20px 15px 20px;
+  }
+}
+
+@media (max-width:720px) {
+  .c12 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:1280px) {
+  .c10 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 80px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:900px) {
+  .c10 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 65px;
+    line-height: 1em;
+  }
+}
+
+@media (max-width:600px) {
+  .c10 {
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 45px;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width:720px) {
+  .c14 {
+    margin-bottom: 28px;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c0[data-type="split"] .c9 {
+    margin-bottom: 20px;
+  }
+
+  .c0[data-type="split"] .c5 {
+    width: 100%;
+  }
+
+  .c0[data-type="split"] .c2 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+    width: 100%;
+    position: relative;
+    border: 0px;
+    margin-bottom: 30px;
+  }
+
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+    width: 100%;
+  }
+}
+
+@media (max-width:720px) {
+  .c0[data-type="fullscreen"] .c5 {
+    padding: 20px;
+  }
+}
+
+<div
+  className="c0 c1"
+  data-type="split"
+  height="calc(100vh - 50px)"
+>
+  <div
+    alt="What’s the Path to Winning an Art Prize?"
+    className="c2 c3 c1"
+    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZR0wtJhg5Nez7Vm8uCP8Nw%252FDSC_0720-Edit-2.jpg&width=1600&quality=95"
+  />
+  <div
+    className="c4 c1"
+  >
+    <div
+      className="c5 c6 c1"
+    >
+      <div
+        className="c7 c8"
+        color="white"
+      >
+        <span>
+          Creativity
+        </span>
+      </div>
+      <div
+        className="c9 c10"
+      >
+        What’s the Path to Winning an Art Prize?
+      </div>
+      <div
+        className="c11 c12"
+      >
+        <div
+          className="c13 c14"
+        >
+          <div
+            className="feature__deck"
+          >
+            Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper.
+          </div>
+        </div>
+        <div
+          className="Byline c15"
+          color="black"
+        >
+          <div
+            className="author c16"
+            color="black"
+          >
+            By 
+            Casey Lesser
+          </div>
+          <div
+            className="date c17"
+          >
+            Jun 29, 2017 11:00 am
+          </div>
+          <div
+            className="c18"
+          >
+            <a
+              className="c19"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 14 14"
+                width="14px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                    fill="black"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c19"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 16 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                    fill="black"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c19"
               href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
@@ -2102,6 +2154,18 @@ exports[`feature renders feature split header properly 1`] = `
 `;
 
 exports[`feature renders feature text header properly 1`] = `
+.c15 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c15.date {
+  white-space: nowrap;
+}
+
 .c14 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -2114,19 +2178,7 @@ exports[`feature renders feature text header properly 1`] = `
   white-space: nowrap;
 }
 
-.c13 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c13.date {
-  white-space: nowrap;
-}
-
-.c13:before {
+.c14:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -2136,7 +2188,7 @@ exports[`feature renders feature text header properly 1`] = `
   background-color: black;
 }
 
-.c15 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2149,22 +2201,22 @@ exports[`feature renders feature text header properly 1`] = `
   line-height: 1em;
 }
 
-.c16 {
+.c17 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c16:hover {
+.c17:hover {
   opacity: 0.6;
 }
 
-.c16:first-child {
+.c17:first-child {
   padding-left: 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2183,18 +2235,24 @@ exports[`feature renders feature text header properly 1`] = `
   color: black;
 }
 
-.c1 {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.c5 {
-  margin-bottom: 10px;
+.c6 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
+  color: white;
+}
+
+.c6 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .c2 {
@@ -2205,6 +2263,10 @@ exports[`feature renders feature text header properly 1`] = `
   position: absolute;
   z-index: 1;
   padding: 45px 45px 50px;
+}
+
+.c2 .c5 {
+  margin-bottom: 10px;
 }
 
 .c4 {
@@ -2225,19 +2287,19 @@ exports[`feature renders feature text header properly 1`] = `
   justify-content: flex-start;
 }
 
-.c18 {
+.c19 {
   width: 100%;
   height: auto;
   box-sizing: border-box;
 }
 
-.c17 {
+.c18 {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.c9 {
+.c10 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -2259,7 +2321,7 @@ exports[`feature renders feature text header properly 1`] = `
   flex-direction: row;
 }
 
-.c7 {
+.c8 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -2271,7 +2333,7 @@ exports[`feature renders feature text header properly 1`] = `
   letter-spacing: -0.035em;
 }
 
-.c11 {
+.c12 {
   max-width: 460px;
   margin-right: 30px;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -2291,11 +2353,11 @@ exports[`feature renders feature text header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type="text"] .c6 {
+.c0[data-type="text"] .c7 {
   margin-bottom: 150px;
 }
 
-.c0[data-type="split"] .c6 {
+.c0[data-type="split"] .c7 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2306,21 +2368,21 @@ exports[`feature renders feature text header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureImage-yu39to-5 {
+.c0[data-type="split"] .file__FeatureImage-yu39to-4 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
   width: 50vw;
 }
 
-.c0[data-type="split"] .c8 {
+.c0[data-type="split"] .c9 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -2330,7 +2392,7 @@ exports[`feature renders feature text header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .c10 {
+.c0[data-type="split"] .c11 {
   margin-bottom: 30px;
 }
 
@@ -2343,6 +2405,20 @@ exports[`feature renders feature text header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width:720px) {
+  .c15 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
 }
 
 @media (max-width:720px) {
@@ -2360,34 +2436,20 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c13 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c13:before {
+  .c14:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:600px) {
-  .c15 {
+  .c16 {
     margin-top: 15px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c6 {
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -2402,7 +2464,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c9 {
+  .c10 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -2414,7 +2476,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c7 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -2423,7 +2485,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c7 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -2432,7 +2494,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 {
+  .c8 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -2441,7 +2503,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c11 {
+  .c12 {
     margin-bottom: 28px;
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -2451,7 +2513,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c0[data-type="split"] .c6 {
+  .c0[data-type="split"] .c7 {
     margin-bottom: 20px;
   }
 
@@ -2459,21 +2521,21 @@ exports[`feature renders feature text header properly 1`] = `
     width: 100%;
   }
 
-  .c0[data-type="split"] .file__FeatureImage-yu39to-5 {
+  .c0[data-type="split"] .file__FeatureImage-yu39to-4 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
     width: 100%;
   }
 }
@@ -2496,20 +2558,23 @@ exports[`feature renders feature text header properly 1`] = `
       className="c3 c4 c1"
     >
       <div
-        className="c5"
+        className="c5 c6"
+        color="white"
       >
-        Creativity
+        <span>
+          Creativity
+        </span>
       </div>
       <div
-        className="c6 c7"
+        className="c7 c8"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="c8 c9"
+        className="c9 c10"
       >
         <div
-          className="c10 c11"
+          className="c11 c12"
         >
           <div
             className="feature__deck"
@@ -2518,26 +2583,26 @@ exports[`feature renders feature text header properly 1`] = `
           </div>
         </div>
         <div
-          className="Byline c12"
+          className="Byline c13"
           color="black"
         >
           <div
-            className="author c13"
+            className="author c14"
             color="black"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c14"
+            className="date c15"
           >
             Jun 29, 2017 11:00 am
           </div>
           <div
-            className="c15"
+            className="c16"
           >
             <a
-              className="c16"
+              className="c17"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
@@ -2563,7 +2628,7 @@ exports[`feature renders feature text header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c16"
+              className="c17"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -2589,7 +2654,7 @@ exports[`feature renders feature text header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c16"
+              className="c17"
               href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >
@@ -2618,11 +2683,11 @@ exports[`feature renders feature text header properly 1`] = `
       </div>
     </div>
     <div
-      className="c17"
+      className="c18"
     >
       <img
         alt="What’s the Path to Winning an Art Prize?"
-        className="c18"
+        className="c19"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&quality=95"
       />
     </div>
@@ -2631,6 +2696,18 @@ exports[`feature renders feature text header properly 1`] = `
 `;
 
 exports[`feature renders superArticle full header properly 1`] = `
+.c23 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  margin: 10px 30px 0 0;
+}
+
+.c23.date {
+  white-space: nowrap;
+}
+
 .c22 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
@@ -2643,19 +2720,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   white-space: nowrap;
 }
 
-.c21 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c21.date {
-  white-space: nowrap;
-}
-
-.c21:before {
+.c22:before {
   content: "";
   display: inline-block;
   min-width: 10px;
@@ -2665,7 +2730,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   background-color: white;
 }
 
-.c23 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2678,22 +2743,22 @@ exports[`feature renders superArticle full header properly 1`] = `
   line-height: 1em;
 }
 
-.c24 {
+.c25 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c24:hover {
+.c25:hover {
   opacity: 0.6;
 }
 
-.c24:first-child {
+.c25:first-child {
   padding-left: 0;
 }
 
-.c20 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2710,6 +2775,20 @@ exports[`feature renders superArticle full header properly 1`] = `
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: white;
+}
+
+.c14 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c14 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c8 {
@@ -2767,14 +2846,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   background-image: linear-gradient( to bottom,rgba(0,0,0,0),rgba(0,0,0,0.3) );
 }
 
-.c13 {
-  margin-bottom: 10px;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
 .c5 {
   margin: auto;
 }
@@ -2783,6 +2854,10 @@ exports[`feature renders superArticle full header properly 1`] = `
   position: absolute;
   z-index: 1;
   padding: 45px 45px 50px;
+}
+
+.c5 .c13 {
+  margin-bottom: 10px;
 }
 
 .c12 {
@@ -2813,7 +2888,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   width: 100%;
 }
 
-.c17 {
+.c18 {
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -2835,7 +2910,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   flex-direction: row;
 }
 
-.c15 {
+.c16 {
   font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 100px;
@@ -2847,7 +2922,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   letter-spacing: -0.035em;
 }
 
-.c19 {
+.c20 {
   max-width: 460px;
   margin-right: 30px;
   font-family: Unica77LLWebMedium , 'Arial', 'serif';
@@ -2867,11 +2942,11 @@ exports[`feature renders superArticle full header properly 1`] = `
   height: auto;
 }
 
-.c0[data-type="text"] .c14 {
+.c0[data-type="text"] .c15 {
   margin-bottom: 150px;
 }
 
-.c0[data-type="split"] .c14 {
+.c0[data-type="split"] .c15 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2887,16 +2962,16 @@ exports[`feature renders superArticle full header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
   width: 50vw;
 }
 
-.c0[data-type="split"] .c16 {
+.c0[data-type="split"] .c17 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -2906,7 +2981,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .c18 {
+.c0[data-type="split"] .c19 {
   margin-bottom: 30px;
 }
 
@@ -2919,6 +2994,20 @@ exports[`feature renders superArticle full header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+@media (max-width:720px) {
+  .c23 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+    margin: 10px 20px 0 0;
+  }
 }
 
 @media (max-width:720px) {
@@ -2936,29 +3025,24 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c21 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c21:before {
+  .c22:before {
     min-width: 8px;
     min-height: 8px;
   }
 }
 
 @media (max-width:600px) {
-  .c23 {
+  .c24 {
     margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c14 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
   }
 }
 
@@ -2983,15 +3067,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c13 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 @media (max-width:600px) {
   .c5 .PartnerInline {
     padding: 20px 15px 20px;
@@ -2999,7 +3074,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c17 {
+  .c18 {
     -webkit-align-items: flex-start;
     -webkit-box-align: flex-start;
     -ms-flex-align: flex-start;
@@ -3011,7 +3086,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c15 {
+  .c16 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 80px;
@@ -3020,7 +3095,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c15 {
+  .c16 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -3029,7 +3104,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c15 {
+  .c16 {
     font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 45px;
@@ -3038,7 +3113,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c19 {
+  .c20 {
     margin-bottom: 28px;
     font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
@@ -3048,7 +3123,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c0[data-type="split"] .c14 {
+  .c0[data-type="split"] .c15 {
     margin-bottom: 20px;
   }
 
@@ -3063,14 +3138,14 @@ exports[`feature renders superArticle full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-7 {
+  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-6 {
+  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
     width: 100%;
   }
 }
@@ -3163,20 +3238,23 @@ exports[`feature renders superArticle full header properly 1`] = `
       className="c11 c12 c1"
     >
       <div
-        className="c13"
+        className="c13 c14"
+        color="white"
       >
-        Creativity
+        <span>
+          Creativity
+        </span>
       </div>
       <div
-        className="c14 c15"
+        className="c15 c16"
       >
         What’s the Path to Winning an Art Prize?
       </div>
       <div
-        className="c16 c17"
+        className="c17 c18"
       >
         <div
-          className="c18 c19"
+          className="c19 c20"
         >
           <div
             className="feature__deck"
@@ -3185,26 +3263,26 @@ exports[`feature renders superArticle full header properly 1`] = `
           </div>
         </div>
         <div
-          className="Byline c20"
+          className="Byline c21"
           color="white"
         >
           <div
-            className="author c21"
+            className="author c22"
             color="white"
           >
             By 
             Casey Lesser
           </div>
           <div
-            className="date c22"
+            className="date c23"
           >
             Jun 29, 2017 11:00 am
           </div>
           <div
-            className="c23"
+            className="c24"
           >
             <a
-              className="c24"
+              className="c25"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize"
               onClick={[Function]}
               target="_blank"
@@ -3230,7 +3308,7 @@ exports[`feature renders superArticle full header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c24"
+              className="c25"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&text=What’s the Path to Winning an Art Prize?&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-editorial-path-winning-art-prize&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -3256,7 +3334,7 @@ exports[`feature renders superArticle full header properly 1`] = `
               </svg>
             </a>
             <a
-              className="c24"
+              className="c25"
               href="mailto:?subject=What’s the Path to Winning an Art Prize?&body=Check out What’s the Path to Winning an Art Prize? on Artsy: https://www.artsy.net/article/artsy-editorial-path-winning-art-prize"
               onClick={[Function]}
             >

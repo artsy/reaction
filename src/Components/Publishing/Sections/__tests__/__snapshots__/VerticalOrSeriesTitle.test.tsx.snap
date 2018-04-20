@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly for a feature article 1`] = `
+.c0 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: black;
+}
+
+.c0 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+@media (max-width:720px) {
+  .c0 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+  color={undefined}
+>
+  <span>
+    Creativity
+  </span>
+</div>
+`;
+
+exports[`renders properly for a standard article 1`] = `
+.c0 {
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: black;
+}
+
+.c0 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+@media (max-width:720px) {
+  .c0 {
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+
+<div
+  className="c0"
+  color={undefined}
+>
+  <span>
+    Creativity
+  </span>
+</div>
+`;

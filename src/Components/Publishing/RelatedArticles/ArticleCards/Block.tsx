@@ -1,11 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 import { media } from "../../../Helpers"
+import { Col } from "react-styled-flexboxgrid"
 import { SeriesAbout, SeriesAboutContainer } from "../../Series/SeriesAbout"
 import { ArticleData } from "../../Typings"
 import { MaxRow } from "../../Video/Shared"
 import { ArticleCards } from "./ArticleCards"
-import { ArticleCardsTitle, Link } from "./Title"
+import {
+  VerticalOrSeriesTitle,
+  Vertical,
+} from "../../Sections/VerticalOrSeriesTitle"
+import { Fonts } from "../../Fonts"
 
 interface Props {
   article?: ArticleData
@@ -21,7 +26,13 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
     <ArticleCardsContainer color={color}>
       {relatedArticles && (
         <MaxRow>
-          <ArticleCardsTitle article={article} />
+          <Col>
+            <VerticalOrSeriesTitle
+              article={article}
+              color={color}
+              prefix="More In "
+            />
+          </Col>
           <ArticleCards
             relatedArticles={relatedArticles}
             series={seriesArticle}
@@ -45,8 +56,16 @@ ArticleCardsBlock.defaultProps = {
 const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
 
-  ${Link} {
-    color: ${props => props.color};
+  ${Vertical} {
+    ${Fonts.unica("s32")};
+    width: 100%;
+    margin-bottom: 40px;
+    a {
+      border-bottom: 2px solid;
+      ${media.sm`
+        display: block;
+      `};
+    }
   }
 
   ${SeriesAboutContainer} {

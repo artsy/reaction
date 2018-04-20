@@ -4,7 +4,6 @@ import React from "react"
 import { ArticleCard } from "../RelatedArticles/ArticleCards/ArticleCard"
 import { ArticleCards } from "../RelatedArticles/ArticleCards/ArticleCards"
 import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
-import { ArticleCardsTitle } from "../RelatedArticles/ArticleCards/Title"
 import { ArticleData } from "../Typings"
 
 import {
@@ -49,24 +48,6 @@ storiesOf("Publishing/RelatedArticleCards", module)
           series={SeriesArticle}
           relatedArticles={[StandardArticle, VideoArticle]}
         />
-      </div>
-    )
-  })
-  .add("Article Cards title", () => {
-    return (
-      <div>
-        <ArticleCardsTitle article={StandardArticle} />
-      </div>
-    )
-  })
-  .add("Article Cards title - sponsored", () => {
-    const article = clone({
-      ...StandardArticle,
-      seriesArticle: SeriesArticleSponsored,
-    } as ArticleData)
-    return (
-      <div>
-        <ArticleCardsTitle article={article} />
       </div>
     )
   })
