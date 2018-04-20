@@ -13,9 +13,9 @@ export interface RenderProps {
 // This interface is shared with StepMarker and could be two separate things
 export interface Step {
   label: string
-  component: React.ComponentType<any>
+  // TODO: Fix typing here and in WizardForm
+  component: any | React.ComponentType<RenderProps>
   stepName: string
   validate?: any
 }
-
-export type WizardSchema = Step[]
+export type WizardSchema<S = Step> = S[]

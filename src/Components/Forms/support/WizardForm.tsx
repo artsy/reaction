@@ -1,10 +1,22 @@
 import React from "react"
-import { Formik, FormikActions } from "formik"
-import { RenderProps as WizardRenderProps } from "../../Wizard/index"
+import { Formik, FormikActions, FormikProps } from "formik"
+import {
+  RenderProps as WizardRenderProps,
+  WizardSchema,
+  Step,
+} from "../../Wizard"
 
+// TODO: resolve this
+// interface FormStep extends Step {
+//   component: React.ComponentType<{
+//     wizard: WizardRenderProps
+//     form: FormikProps<any>
+//   }>
+// }
 interface Props extends WizardRenderProps {
   initialValues?: any
   container: any // a (probably styled) form element
+  pages?: WizardSchema
 }
 export class WizardForm extends React.Component<Props> {
   static defaultProps = { initialValues: {} }
