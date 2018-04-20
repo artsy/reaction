@@ -38,7 +38,7 @@ export class SeriesAbout extends Component<Props, null> {
 
   render() {
     const {
-      article: { series, series_description, sponsor },
+      article: { series, sponsor },
       color,
       editDescription,
       editSubTitle,
@@ -79,7 +79,7 @@ export class SeriesAbout extends Component<Props, null> {
               <Text
                 layout="standard"
                 color={color}
-                html={series_description || series.description}
+                html={series && series.description}
               />
             </div>
           )}

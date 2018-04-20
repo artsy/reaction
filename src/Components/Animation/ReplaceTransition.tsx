@@ -28,7 +28,7 @@ injectGlobal`
 export default props => {
   return (
     <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
-      {{...props.children}}
+      {{ ...props.children }}
     </ReactCSSTransitionReplace>
   )
 }

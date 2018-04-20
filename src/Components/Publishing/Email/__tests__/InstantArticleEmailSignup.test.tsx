@@ -16,7 +16,9 @@ jest.useFakeTimers()
 
 describe("EmailSignup", () => {
   it("renders an email signup", () => {
-    const emailSignup = renderer.create(<InstantArticleEmailSignup signupUrl="#" />)
+    const emailSignup = renderer.create(
+      <InstantArticleEmailSignup signupUrl="#" />
+    )
     expect(emailSignup).toMatchSnapshot()
   })
 

@@ -1,7 +1,4 @@
-import {
-  formatTime,
-  getMediaDate
-} from '../Constants'
+import { formatTime, getMediaDate } from "../Constants"
 import { VideoArticle } from "../Fixtures/Articles"
 
 describe("getMediaDate", () => {

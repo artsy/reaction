@@ -5,12 +5,9 @@ import { Timestamp } from "../Timestamp"
 
 describe("Timestamp", () => {
   it("matches the snapshot", () => {
-    const timestamp = renderer.create(
-      <Timestamp
-        duration={5000}
-        currentTime={2000}
-      />
-    ).toJSON()
+    const timestamp = renderer
+      .create(<Timestamp duration={5000} currentTime={2000} />)
+      .toJSON()
     expect(timestamp).toMatchSnapshot()
   })
 })

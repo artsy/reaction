@@ -1,4 +1,4 @@
-export const requestFullscreen = (e) => {
+export const requestFullscreen = e => {
   if (e.requestFullscreen) {
     e.requestFullscreen()
   } else if (e.webkitRequestFullscreen) {
@@ -40,16 +40,16 @@ export const isFullscreen = () => {
   )
 }
 
-export const addFSEventListener = (handler) => {
-  document.addEventListener('fullscreenchange', handler)
-  document.addEventListener('webkitfullscreenchange', handler)
-  document.addEventListener('mozfullscreenchange', handler)
-  document.addEventListener('MSFullscreenChange', handler)
+export const addFSEventListener = handler => {
+  document.addEventListener("fullscreenchange", handler)
+  document.addEventListener("webkitfullscreenchange", handler)
+  document.addEventListener("mozfullscreenchange", handler)
+  document.addEventListener("MSFullscreenChange", handler)
 }
 
-export const removeFSEventListener = (handler) => {
-  document.removeEventListener('fullscreenchange', handler)
-  document.removeEventListener('webkitfullscreenchange', handler)
-  document.removeEventListener('mozfullscreenchange', handler)
-  document.removeEventListener('MSFullscreenChange', handler)
+export const removeFSEventListener = handler => {
+  document.removeEventListener("fullscreenchange", handler)
+  document.removeEventListener("webkitfullscreenchange", handler)
+  document.removeEventListener("mozfullscreenchange", handler)
+  document.removeEventListener("MSFullscreenChange", handler)
 }

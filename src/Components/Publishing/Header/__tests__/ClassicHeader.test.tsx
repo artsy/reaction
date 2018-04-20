@@ -28,7 +28,11 @@ describe("AuthorDate", () => {
     const author = "Life at Artsy"
     const authors = [{ name: "Molly Gottschalk" }]
     const authorDate = renderer.create(
-      <AuthorDateClassic author={author} authors={authors} date={"2017-05-19T13:09:18.567Z"} />
+      <AuthorDateClassic
+        author={author}
+        authors={authors}
+        date={"2017-05-19T13:09:18.567Z"}
+      />
     )
     expect(authorDate).toMatchSnapshot()
   })
@@ -37,7 +41,11 @@ describe("AuthorDate", () => {
     const author = "Life at Artsy"
     const authors = [{ name: "Molly Gottschalk" }, { name: "Kana Abe" }]
     const authorDate = renderer.create(
-      <AuthorDateClassic author={author} authors={authors} date={"2017-05-19T13:09:18.567Z"} />
+      <AuthorDateClassic
+        author={author}
+        authors={authors}
+        date={"2017-05-19T13:09:18.567Z"}
+      />
     )
     expect(authorDate).toMatchSnapshot()
   })

@@ -10,18 +10,15 @@ interface Props extends React.HTMLProps<HTMLSpanElement> {
 
 export class MuteUnmute extends React.PureComponent<Props, null> {
   render() {
-    const {
-      isMuted,
-      toggleMute
-    } = this.props
+    const { isMuted, toggleMute } = this.props
 
     return (
       <MuteUnmuteContainer onClick={toggleMute}>
-        {isMuted ?
+        {isMuted ? (
           <IconVideoUnmute color="white" />
-          :
+        ) : (
           <IconVideoMute color="white" />
-        }
+        )}
       </MuteUnmuteContainer>
     )
   }

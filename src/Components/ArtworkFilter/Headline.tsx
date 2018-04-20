@@ -17,8 +17,14 @@ interface Props extends React.HTMLProps<Headline> {
 
 export class Headline extends React.Component<Props, null> {
   getCountName(aggregation, id) {
-    const selectedAggregation = find(this.props.aggregations, agg => agg.slice === aggregation.toUpperCase())
-    const selectedCount = find(selectedAggregation.counts, count => count.id === id)
+    const selectedAggregation = find(
+      this.props.aggregations,
+      agg => agg.slice === aggregation.toUpperCase()
+    )
+    const selectedCount = find(
+      selectedAggregation.counts,
+      count => count.id === id
+    )
     return selectedCount ? selectedCount.name : null
   }
 
@@ -61,7 +67,12 @@ export class Headline extends React.Component<Props, null> {
   }
 
   renderHeadline() {
-    const headline = compact([this.size(), this.medium(), this.priceRange(), this.forSale()]).join(" ")
+    const headline = compact([
+      this.size(),
+      this.medium(),
+      this.priceRange(),
+      this.forSale(),
+    ]).join(" ")
     if (headline === "works") {
       return "Artworks"
     }

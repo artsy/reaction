@@ -15,9 +15,7 @@ const ShareDateComponent: React.SFC<ShareDateProps> = props => {
   const title = article.social_title || article.thumbnail_title
   return (
     <div className={props.className}>
-      <Date
-        date={article.published_at}
-      />
+      <Date date={article.published_at} />
       <Share
         url={getFullEditorialHref(article.layout, article.slug)}
         title={title}
@@ -29,14 +27,14 @@ const ShareDateComponent: React.SFC<ShareDateProps> = props => {
 }
 
 ShareDateComponent.defaultProps = {
-  color: 'black'
+  color: "black",
 }
 
-export const ShareDate = styled(ShareDateComponent) `
-  color: ${props => props.color || 'black'};
+export const ShareDate = styled(ShareDateComponent)`
+  color: ${props => props.color || "black"};
   ${media.sm`
     ${ShareContainer} {
       margin-top: 0px;
     }
-  `}
+  `};
 `
