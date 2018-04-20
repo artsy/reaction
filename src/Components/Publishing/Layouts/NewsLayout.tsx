@@ -6,6 +6,7 @@ import { Fonts } from "../Fonts"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import { ArticleData } from "../Typings"
+import { track } from "../../../Utils/track"
 
 interface Props {
   article: ArticleData
@@ -27,6 +28,7 @@ interface NewsContainerProps {
   isHovered: boolean
 }
 
+@track()
 export class NewsLayout extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -45,6 +47,7 @@ export class NewsLayout extends Component<Props, State> {
     }
   }
 
+  @track({ action: "Clicked read more" })
   onExpand() {
     const { onExpand } = this.props
     if (onExpand) {
