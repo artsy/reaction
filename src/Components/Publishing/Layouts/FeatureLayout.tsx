@@ -5,7 +5,10 @@ import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Nav } from "../Nav/Nav"
-import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
+import {
+  ArticleCardsBlock,
+  ArticleCardsContainer,
+} from "../RelatedArticles/ArticleCards/Block"
 
 export interface ArticleProps {
   article: ArticleData
@@ -73,5 +76,8 @@ const FeatureLayoutContainer = styled.div`
 
   ${Nav} {
     position: absolute;
+  }
+  ${ArticleCardsContainer} {
+    padding-top: 60px;
   }
 `

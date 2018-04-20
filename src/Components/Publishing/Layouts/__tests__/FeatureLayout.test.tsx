@@ -66,6 +66,7 @@ it("does not render a nav if article has a non-fullscreen header", () => {
 it("renders related article cards if in a series", () => {
   const Article = extend(cloneDeep(FeatureArticle), {
     seriesArticle: SeriesArticle,
+    relatedArticles: [FeatureArticle],
   })
   const article = mount(
     <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />

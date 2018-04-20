@@ -19,8 +19,8 @@ interface Props {
 }
 
 export const ArticleCardsBlock: React.SFC<Props> = props => {
-  const { article, color, relatedArticles } = props
-  const { seriesArticle } = article
+  const { article, color } = props
+  const { seriesArticle, relatedArticles } = article
 
   return (
     <ArticleCardsContainer color={color}>
@@ -53,9 +53,11 @@ ArticleCardsBlock.defaultProps = {
   color: "black",
 }
 
-const ArticleCardsContainer = styled.div`
+export const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
-
+  ${MaxRow} {
+    margin: auto;
+  }
   ${Vertical} {
     ${Fonts.unica("s32")};
     width: 100%;
