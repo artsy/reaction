@@ -6,6 +6,10 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { Fonts } from "../Fonts"
+import {
+  VerticalOrSeriesTitle,
+  Vertical,
+} from "../Sections/VerticalOrSeriesTitle"
 import { PartnerInline } from "../Partner/PartnerInline"
 import { BasicHeader } from "./BasicHeader"
 
@@ -147,9 +151,9 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       height,
       isMobile: passedIsMobile,
     } = this.props
-    const hero = article.hero_section
-    const url = (hero && hero.url) || ""
-    const type = (hero && hero.type) || "text"
+    const { hero_section } = article
+    const url = (hero_section && hero_section.url) || ""
+    const type = (hero_section && hero_section.type) || "text"
 
     if (type === "basic") {
       return (
@@ -182,7 +186,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                   />
                 )}
                 <HeaderText>
-                  <Vertical>{vertical}</Vertical>
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                    color="white"
+                  />
                   <Title>{title}</Title>
                   {renderMobileSplitAsset(
                     url,
@@ -215,7 +223,7 @@ const Div = styled.div`
   height: 100%;
   box-sizing: border-box;
 `
-const Overlay = styled(Div) `
+const Overlay = styled(Div)`
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -223,19 +231,15 @@ const Overlay = styled(Div) `
     rgba(0, 0, 0, 0.3)
   );
 `
-const Vertical = styled.div`
-  margin-bottom: 10px;
-  ${Fonts.unica("s16", "medium")};
-  ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
-  `};
-`
-const HeaderTextContainer = styled(Div) `
+const HeaderTextContainer = styled(Div)`
   margin: auto;
   .PartnerInline {
     position: absolute;
     z-index: 1;
     padding: 45px 45px 50px;
+  }
+  ${Vertical} {
+    margin-bottom: 10px;
   }
   ${pMedia.xs`
     .PartnerInline {
@@ -243,7 +247,7 @@ const HeaderTextContainer = styled(Div) `
     }
   `};
 `
-const HeaderText = styled(Div) `
+const HeaderText = styled(Div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -252,7 +256,7 @@ const HeaderText = styled(Div) `
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = styled(Div) `
+const FeatureImage = styled(Div)`
   position: absolute;
   background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
   background-size: cover;
@@ -266,7 +270,7 @@ const FeatureVideo = styled.video`
   height: 100%;
   object-fit: cover;
 `
-const FeatureVideoContainer = styled(Div) `
+const FeatureVideoContainer = styled(Div)`
   width: 100%;
   height: 100%;
   right: 0;
@@ -316,7 +320,7 @@ const Deck = styled.div`
     ${Fonts.unica("s14", "medium")}
   `};
 `
-const FeatureHeaderContainer = styled(Div) `
+const FeatureHeaderContainer = styled(Div)`
   width: 100%;
   height: ${(props: DivProps) => props.height};
   position: relative;

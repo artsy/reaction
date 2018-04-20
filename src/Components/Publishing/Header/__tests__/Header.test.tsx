@@ -58,7 +58,7 @@ describe("Header", () => {
     expect(header.html()).toContain("Title Child")
   })
 
-  it("renders vertical, title, deck, and image on standard article", () => {
+  it("renders vertical, title, deck, and image on feature article", () => {
     const header = mount(<Header article={FeatureArticle} />)
     expect(header.html()).toContain("Creativity")
     expect(header.html()).toContain("What’s the Path to Winning an Art Prize?")
