@@ -68,6 +68,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 .c14 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -382,6 +383,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 
 .c14 a {
   color: white;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

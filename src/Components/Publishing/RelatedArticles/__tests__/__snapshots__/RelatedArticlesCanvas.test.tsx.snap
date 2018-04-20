@@ -69,6 +69,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   min-height: 270px;
 }
@@ -82,6 +83,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 278px;
+  -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
 }

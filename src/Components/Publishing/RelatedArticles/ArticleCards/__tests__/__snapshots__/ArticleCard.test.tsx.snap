@@ -83,6 +83,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   border-radius: 2px;
   color: black;
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;
@@ -304,6 +305,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   border-radius: 2px;
   color: black;
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;
@@ -586,6 +588,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   border-radius: 2px;
   color: black;
   cursor: pointer;
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;

@@ -11,6 +11,7 @@ exports[`renders properly for a feature article 1`] = `
 
 .c0 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -44,6 +45,7 @@ exports[`renders properly for a standard article 1`] = `
 
 .c0 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
