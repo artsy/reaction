@@ -27,7 +27,6 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c5 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;

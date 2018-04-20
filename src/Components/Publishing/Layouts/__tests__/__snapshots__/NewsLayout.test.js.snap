@@ -59,7 +59,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c20 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -191,7 +190,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 .c12 a {
   color: black;
-  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -962,7 +960,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c20 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -1094,7 +1091,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 .c12 a {
   color: black;
-  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);

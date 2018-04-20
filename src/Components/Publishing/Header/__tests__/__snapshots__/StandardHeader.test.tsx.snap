@@ -49,7 +49,6 @@ exports[`Standard Header renders standard header properly 1`] = `
 }
 
 .c8 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -354,7 +353,6 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 }
 
 .c8 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;

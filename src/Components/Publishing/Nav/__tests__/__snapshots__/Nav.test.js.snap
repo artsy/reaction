@@ -82,7 +82,6 @@ exports[`Nav renders a Nav 1`] = `
 
 .c5 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -232,7 +231,6 @@ exports[`Nav renders a sponsored nav 1`] = `
 
 .c7 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -431,7 +429,6 @@ exports[`Nav renders a transparent nav 1`] = `
 
 .c5 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

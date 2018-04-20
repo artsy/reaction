@@ -30,7 +30,6 @@ exports[`Video Info Block matches the snapshot 1`] = `
 
 .c1 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -106,7 +105,6 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
 
 .c1 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

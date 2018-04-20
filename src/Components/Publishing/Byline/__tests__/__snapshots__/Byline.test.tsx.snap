@@ -49,7 +49,6 @@ exports[`Byline renders a byline 1`] = `
 }
 
 .c4 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;

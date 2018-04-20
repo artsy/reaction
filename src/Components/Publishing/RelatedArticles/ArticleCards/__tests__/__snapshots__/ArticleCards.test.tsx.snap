@@ -88,7 +88,6 @@ exports[`ArticleCard renders properly 1`] = `
   border-radius: 2px;
   color: black;
   cursor: pointer;
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;

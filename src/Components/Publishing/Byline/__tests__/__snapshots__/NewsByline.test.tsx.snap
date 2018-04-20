@@ -59,7 +59,6 @@ exports[`News Byline renders on mobile 1`] = `
 }
 
 .c6 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -369,7 +368,6 @@ exports[`News Byline renders properly 1`] = `
 }
 
 .c6 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -694,7 +692,6 @@ exports[`News Byline renders without a news source 1`] = `
 }
 
 .c6 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;

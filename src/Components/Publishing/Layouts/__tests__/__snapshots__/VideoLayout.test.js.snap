@@ -84,7 +84,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c7 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -154,7 +153,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c56 {
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -223,7 +221,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   border-radius: 2px;
   color: white;
   cursor: pointer;
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding: 30px;
   display: -webkit-box;
@@ -407,7 +404,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c49 a {
   color: black;
-  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -572,7 +568,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c58 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
@@ -1019,7 +1014,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding: 0px;
 }
 
-.c46 .c37:nth-of-type(2) .c50 {
+.c46 .c37:nth-of-type (2) .c50 {
   display: none;
 }
 
@@ -1039,7 +1034,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c40 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -1166,7 +1160,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c62 a {
   color: white;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
