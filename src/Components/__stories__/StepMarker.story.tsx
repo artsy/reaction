@@ -36,6 +36,16 @@ storiesOf("Components/StepMarker", module)
       </Container>
     )
   })
+  .add("Tight Space", () => {
+    const Narrow = Container.extend`
+      width: 100px;
+    `
+    return (
+      <Narrow>
+        <StepMarker steps={steps} currentStepIndex={2} />
+      </Narrow>
+    )
+  })
   .add("Many Steps", () => {
     return (
       <Container>

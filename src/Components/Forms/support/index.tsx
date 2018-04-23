@@ -1,9 +1,8 @@
 import yup, { ValidationError } from "yup"
 import { FormikActions } from "formik"
-import { Field } from "./Field"
-
-export * from "./WizardForm"
-export { Field }
+import { FormikInput, FormikCheckbox } from "./FormikInputs"
+import { WizardForm } from "./WizardForm"
+export { FormikInput, FormikCheckbox, WizardForm }
 
 export type FormikHandler = <V>(values: V, bag?: FormikActions<V>) => any
 export const validateYupSchemaSync = schema => values => {

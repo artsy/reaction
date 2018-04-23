@@ -1,18 +1,15 @@
 import React from "react"
-import { Formik, FormikActions, FormikProps } from "formik"
+import {
+  Formik,
+  FormikActions,
+  // FormikProps
+} from "formik"
 import {
   RenderProps as WizardRenderProps,
   WizardSchema,
-  Step,
+  // Step,
 } from "../../Wizard"
 
-// TODO: resolve this
-// interface FormStep extends Step {
-//   component: React.ComponentType<{
-//     wizard: WizardRenderProps
-//     form: FormikProps<any>
-//   }>
-// }
 interface Props extends WizardRenderProps {
   initialValues?: any
   container: any // a (probably styled) form element
