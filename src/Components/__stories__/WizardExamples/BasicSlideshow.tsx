@@ -9,17 +9,17 @@ export const BasicSlideshow = () => {
   const pages: WizardSchema = [
     {
       label: "Start",
-      component: page(colors.greenRegular, "Beginning."),
+      component: makePage(colors.greenRegular, "Beginning."),
       stepName: "step1",
     },
     {
       label: "Middle.",
-      component: page(colors.yellowBold, "Middle."),
+      component: makePage(colors.yellowBold, "Middle."),
       stepName: "step2",
     },
     {
       label: "End",
-      component: page(colors.purpleRegular, "End."),
+      component: makePage(colors.purpleRegular, "End."),
       stepName: "step3",
     },
   ]
@@ -47,7 +47,7 @@ const Container = styled.div`
   height: 500px;
 `
 
-const page: (c, t) => React.SFC<any> = (color, text) => props => (
+const makePage: (c, t) => React.SFC<any> = (color, text) => props => (
   <Page color={color}>
     <Title>{text}</Title>
     <Button onClick={props.previous}>Back</Button>

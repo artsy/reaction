@@ -1,7 +1,7 @@
 import React from "react"
 import yup from "yup"
 import { WizardSchema, Wizard, RenderProps } from "../../Wizard"
-import { StepMarker } from "../../Wizard/StepMarker"
+import { StepMarker } from "../../StepMarker"
 import { Field, validateYupSchemaSync, WizardForm } from "../../Forms/support"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"

@@ -1,9 +1,9 @@
-import Icon from "../../Icon"
+import Icon from "../Icon"
 import React, { Component } from "react"
-import Text from "../../Text"
-import colors from "../../../Assets/Colors"
+import Text from "../Text"
+import colors from "../../Assets/Colors"
 import styled from "styled-components"
-import { Fonts } from "../../Publishing/Fonts"
+import { Fonts } from "../Publishing/Fonts"
 import { Props, State, StepState } from "./types"
 
 export * from "./types"
