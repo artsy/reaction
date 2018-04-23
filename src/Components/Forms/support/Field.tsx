@@ -15,11 +15,9 @@ export const Field: React.SFC<FormikInputProps> = props => {
       name={name}
       type={type}
       placeholder={placeholder}
-      // prettier-ignore
-      // because restProps should not have a trailing comma (fixed in prettier 1.9)
       render={({
         field, // { name, value, onChange, onBlur }
-        form: { touched, errors, values }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+        form: { touched, errors, values }, // also setXXXX, handleXXXX, dirty, isValid, status, etc.
         ...restProps
       }) => (
         <div>
