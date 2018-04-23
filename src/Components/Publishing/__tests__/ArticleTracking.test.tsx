@@ -22,7 +22,9 @@ it("emits analytics events to an event emitter", done => {
     done()
   })
   const shareUrl = getArticleFullHref(StandardArticle.slug)
-  const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
+  const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    shareUrl
+  )}`
   article
     .find(`[href='${fbURL}']`)
     .first()

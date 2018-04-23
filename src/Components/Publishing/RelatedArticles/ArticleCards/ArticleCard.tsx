@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { track } from "../../../Utils/track"
-import { pMedia } from "../../Helpers"
-import { Date } from "../Byline/AuthorDate"
-import { Byline } from "../Byline/Byline"
-import { formatTime, getMediaDate } from "../Constants"
+import { crop } from "../../../../Utils/resizer"
+import { track } from "../../../../Utils/track"
+import { pMedia } from "../../../Helpers"
+import { Date } from "../../Byline/AuthorDate"
+import { Byline } from "../../Byline/Byline"
+import { formatTime, getMediaDate } from "../../Constants"
 import { garamond, unica } from "Assets/Fonts"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 
 interface Props {
   article?: any
@@ -30,8 +30,8 @@ export class ArticleCard extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   isUnpublishedMedia() {
-    const { media } = this.props.article
-    return media && !media.published
+    const { media, layout } = this.props.article
+    return layout === "video" && media && !media.published
   }
 
   isEditing = () => {
@@ -62,6 +62,7 @@ export class ArticleCard extends Component<Props, null> {
   renderMediaDate = () => {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
+    const date = article.layout === "video" ? mediaDate : article.published_at
 
     if (this.isUnpublishedMedia()) {
       return (
@@ -71,7 +72,7 @@ export class ArticleCard extends Component<Props, null> {
         </MediaDate>
       )
     } else {
-      return <Date layout="condensed" date={mediaDate} />
+      return <Date layout="condensed" date={date} />
     }
   }
 
@@ -112,7 +113,7 @@ export class ArticleCard extends Component<Props, null> {
       editTitle,
       series,
     } = this.props
-    const { media } = article
+    const { layout, media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
     return (
@@ -128,7 +129,9 @@ export class ArticleCard extends Component<Props, null> {
             <Header>
               <div>{series && series.title}</div>
             </Header>
-            <Title>{editTitle ? editTitle : article.title}</Title>
+            <Title>
+              {editTitle ? editTitle : article.thumbnail_title || article.title}
+            </Title>
             <Description>
               {editDescription ? editDescription : article.description}
             </Description>
@@ -144,7 +147,7 @@ export class ArticleCard extends Component<Props, null> {
               src={crop(article.thumbnail_image, { width: 680, height: 450 })}
             />
           )}
-          {media && this.renderMediaCoverInfo()}
+          {media && layout === "video" && this.renderMediaCoverInfo()}
         </ImageContainer>
       </ArticleCardContainer>
     )

@@ -35,7 +35,8 @@ export class VideoInfoBlock extends Component<Props, null> {
 }
 
 const SubTitle = styled.span`
-  ${unica("s16")} margin-right: 35px;
+  ${unica("s16")};
+  margin-right: 35px;
 
   a {
     color: white;

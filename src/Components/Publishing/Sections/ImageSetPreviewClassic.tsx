@@ -15,7 +15,8 @@ const Wrapper = styled.div`
   display: flex;
 `
 const Text = styled.div`
-  ${avantgarde("s11")} line-height: 1.35em;
+  ${avantgarde("s11")};
+  line-height: 1.35em;
   margin: 0;
 `
 const Remaining = styled.div`

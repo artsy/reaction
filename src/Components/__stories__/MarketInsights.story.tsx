@@ -19,4 +19,6 @@ storiesOf("Components/Artist/MarketInsights", module)
   .add("Huma Bhabha", () => RenderMarketInsightsFor("huma-bhabha"))
   .add("Robert Longo", () => RenderMarketInsightsFor("robert-longo"))
   .add("Carla Accardi", () => RenderMarketInsightsFor("carla-accardi"))
-  .add("Armando Castro-Uribe (none)", () => RenderMarketInsightsFor("armando-castro-uribe"))
+  .add("Armando Castro-Uribe (none)", () =>
+    RenderMarketInsightsFor("armando-castro-uribe")
+  )

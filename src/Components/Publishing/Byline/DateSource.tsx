@@ -19,7 +19,12 @@ export class DateSource extends Component<NewsBylineProps & Props, null> {
     this.onClick = this.onClick.bind(this)
   }
 
-  @track({ action: "Clicked news source link" })
+  @track(props => ({
+    action: "Click",
+    type: "external link",
+    label: "news source",
+    destination_path: props.article.news_source.url,
+  }))
   onClick() {
     // noop
   }

@@ -17,6 +17,7 @@ exports[`renders properly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -338,7 +339,9 @@ exports[`renders properly 1`] = `
                         Nude on the Beach
                       </a>
                     </span>
-                    , 
+                    <span>
+                      , 
+                    </span>
                     <span
                       className="date"
                     >
@@ -354,7 +357,9 @@ exports[`renders properly 1`] = `
                     >
                       Gary Nader
                     </a>
-                    . 
+                    <span>
+                      . 
+                    </span>
                     <span
                       className="credit"
                     >

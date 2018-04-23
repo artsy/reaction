@@ -24,6 +24,7 @@ exports[`renders the related articles panel 1`] = `
 }
 
 .c3 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   display: -webkit-box;
   display: -webkit-flex;

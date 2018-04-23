@@ -40,27 +40,40 @@ export class PartnerBlock extends React.Component<Props, null> {
 
   render() {
     const { logo, url } = this.props
+    const image = <img src={logo} />
+
     return (
       <PartnerBlockContainer className="PartnerBlock">
-        <Title>Presented in Partnership with</Title>
-        <a href={url} target="_blank" onClick={this.onPartnerClick}>
-          <img src={logo} />
-        </a>
+        {logo && <Title>Presented in Partnership with</Title>}
+        {image && (
+          <ImageContainer>
+            {url ? (
+              <a href={url} target="_blank" onClick={this.onPartnerClick}>
+                {image}
+              </a>
+            ) : (
+              image
+            )}
+          </ImageContainer>
+        )}
       </PartnerBlockContainer>
     )
   }
 }
 
 export const PartnerBlockContainer = styled.div`
-  img {
-    max-width: 220px;
-  }
-  ${pMedia.sm`
-    img {
-      max-width: 195px;
-    }
-  `};
+  display: block;
 `
+
+export const ImageContainer = styled.div`
+  img {
+    max-width: 240px;
+    max-height: 40px;
+    object-fit: contain;
+    object-position: left;
+  }
+`
+
 const Title = styled.div`
   ${unica("s16", "medium")};
   margin-bottom: 20px;

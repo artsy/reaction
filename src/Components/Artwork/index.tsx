@@ -3,7 +3,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled, { css } from "styled-components"
 
 import theme from "../../Assets/Theme"
-import Metadata from "./Metadata"
+import RelayMetadata, { Metadata } from "./Metadata"
 
 const Container = styled.div`
   width: 100%;
@@ -59,11 +59,13 @@ const Image = styled.img`
 
 export interface OverlayProps {
   selected: boolean
+  useRelay?: boolean
 }
 
 export interface ArtworkProps extends RelayProps {
   extended?: boolean
   Overlay?: React.SFC<OverlayProps>
+  useRelay?: boolean
   onSelect?: (selected: boolean) => void
   showOverlayOnHover?: boolean
 }
@@ -76,6 +78,7 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   static defaultProps = {
     extended: true,
     overlay: null,
+    useRelay: true,
     showOverlayOnHover: false,
   }
 
@@ -98,21 +101,29 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   }
 
   render() {
-    const { artwork, Overlay, showOverlayOnHover } = this.props
+    const { artwork, Overlay, useRelay, showOverlayOnHover } = this.props
     let overlayClasses = "overlay-container"
 
     overlayClasses += showOverlayOnHover ? " hovered" : ""
     overlayClasses += this.state.isSelected ? " selected" : ""
+
+    const MetadataBlock = useRelay ? RelayMetadata : Metadata
 
     return (
       <Container onClick={this.onSelected}>
         <ImageContainer>
           <Image src={artwork.image.url} />
           <div className={overlayClasses}>
-            {Overlay && <Overlay selected={this.state.isSelected} />}
+            {Overlay && (
+              <Overlay selected={this.state.isSelected} useRelay={useRelay} />
+            )}
           </div>
         </ImageContainer>
-        <Metadata extended={this.props.extended} artwork={artwork} />
+        <MetadataBlock
+          extended={this.props.extended}
+          artwork={artwork}
+          useRelay={useRelay}
+        />
       </Container>
     )
   }

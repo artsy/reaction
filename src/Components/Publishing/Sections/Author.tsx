@@ -71,7 +71,8 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${unica("s16", "medium")} a {
+  ${unica("s16", "medium")};
+  a {
     color: black;
   }
   ${pMedia.xs`

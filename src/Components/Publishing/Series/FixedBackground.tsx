@@ -6,7 +6,6 @@ interface Props {
   backgroundUrl?: string
 }
 
-
 export const FixedBackground: React.SFC<Props> = props => {
   const { backgroundColor, backgroundUrl } = props
 
@@ -18,9 +17,7 @@ export const FixedBackground: React.SFC<Props> = props => {
       </FixedBackgroundContainer>
     )
   }
-  return (
-    <FixedBackgroundContainer backgroundColor={backgroundColor} />
-  )
+  return <FixedBackgroundContainer backgroundColor={backgroundColor} />
 }
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div

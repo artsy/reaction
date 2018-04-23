@@ -45,6 +45,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c11 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -77,6 +78,7 @@ exports[`Video About matches the snapshot 1`] = `
 
 .c4 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -265,7 +267,7 @@ exports[`Video About matches the snapshot 1`] = `
   padding: 0px;
 }
 
-.c0 .c1:nth-of-type(2) .c5 {
+.c0 .c1:nth-of-type (2) .c5 {
   display: none;
 }
 
@@ -720,6 +722,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c11 {
+  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
@@ -752,6 +755,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 
 .c4 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -940,7 +944,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding: 0px;
 }
 
-.c0 .c1:nth-of-type(2) .c5 {
+.c0 .c1:nth-of-type (2) .c5 {
   display: none;
 }
 

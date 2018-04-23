@@ -24,10 +24,11 @@ interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinParts(children, delimiter = ", ") {
     const compacted = _.compact(children)
+    const delimSpan = <span>{delimiter}</span>
 
     if (compacted.length) {
       const reduced = compacted.reduce((prev, curr) => {
-        return [prev, delimiter, curr]
+        return [prev, delimSpan, curr]
       })
       return reduced
     } else {
@@ -39,9 +40,10 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (names.length === 0) {
       return []
     }
+    const delimSpan = <span>{delimiter}</span>
 
     return names.slice(1).reduce((prev, curr, i) => {
-      return prev.concat([delimiter, curr])
+      return prev.concat([delimSpan, curr])
     },
     [names[0]])
   }

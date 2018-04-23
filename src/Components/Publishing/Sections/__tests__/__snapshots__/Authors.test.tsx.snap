@@ -61,6 +61,7 @@ exports[`renders properly 1`] = `
 
 .c5 {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }

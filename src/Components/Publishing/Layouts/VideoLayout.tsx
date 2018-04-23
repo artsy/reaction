@@ -1,19 +1,16 @@
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
-import { unica } from "Assets/Fonts"
 import { Nav } from "../Nav/Nav"
-import { ArticleCard, ArticleCardContainer } from "../Series/ArticleCard"
-import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
 import { ArticleData } from "../Typings"
 import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
 import { MaxRow } from "../Video/Shared"
 import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
+import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 
 interface Props {
   article: ArticleData
@@ -74,8 +71,8 @@ export class VideoLayout extends Component<Props, State> {
   }
 
   render() {
-    const { article, seriesArticle, relatedArticles } = this.props
-    const { media } = article
+    const { article, relatedArticles } = this.props
+    const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const seriesLink =
       seriesArticle && getEditorialHref("series", seriesArticle.slug)
@@ -101,45 +98,13 @@ export class VideoLayout extends Component<Props, State> {
         <MaxRow>
           <VideoAbout article={article} color="white" />
         </MaxRow>
-        {relatedArticles && (
-          <MaxRow>
-            <RelatedArticlesTitle>
-              {"More in "}
-              {seriesArticle ? (
-                <Link href={seriesLink}>{seriesArticle.title}</Link>
-              ) : (
-                <span>{article.vertical && article.vertical.name}</span>
-              )}
-            </RelatedArticlesTitle>
-          </MaxRow>
-        )}
-        {relatedArticles &&
-          relatedArticles.map((relatedArticle, i) => {
-            return (
-              <MaxRow key={i}>
-                <Col xs={12}>
-                  <ArticleCard
-                    article={relatedArticle}
-                    color="white"
-                    series={seriesArticle}
-                  />
-                </Col>
-              </MaxRow>
-            )
-          })}
-        {seriesArticle && (
-          <MaxRow>
-            <SeriesAbout article={seriesArticle} color="white" />
-          </MaxRow>
+        {(relatedArticles || seriesArticle) && (
+          <ArticleCardsBlock {...this.props} color="white" />
         )}
       </VideoLayoutContainer>
     )
   }
 }
-
-const RelatedArticlesTitle = styled(Col)`
-  ${unica("s32")} width: 100%;
-`
 
 const VideoLayoutContainer = styled.div`
   background: black;
@@ -151,23 +116,12 @@ const VideoLayoutContainer = styled.div`
     top: 0;
   }
 
-  ${ArticleCardContainer} {
-    margin-bottom: 60px;
-  }
-
-  ${RelatedArticlesTitle} {
-    margin-bottom: 40px;
-  }
-
-  ${SeriesAboutContainer}, ${VideoAboutContainer} {
+  ${VideoAboutContainer} {
     margin: 60px 0 100px 0;
   }
 
   ${media.sm`
-    ${ArticleCardContainer} {
-      margin-bottom: 30px;
-    }
-    ${SeriesAboutContainer}, ${VideoAboutContainer} {
+    ${VideoAboutContainer} {
       margin: 40px 0 100px 0;
     }
   `};
@@ -182,14 +136,4 @@ const VideoPlayerContainer = styled.div`
     position: absolute;
     top: 0;
   }
-`
-
-const Link = styled.a`
-  text-decoration: none;
-  color: white;
-  border-bottom: 2px solid;
-
-  ${media.sm`
-    display: block;
-  `};
 `

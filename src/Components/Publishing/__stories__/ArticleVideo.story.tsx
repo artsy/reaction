@@ -1,6 +1,8 @@
+import { clone } from "lodash"
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Article } from "../Article"
+import { ArticleData } from "../Typings"
 
 import {
   SeriesArticle,
@@ -15,10 +17,14 @@ storiesOf("Publishing/Video Articles", module)
     return <Article article={VideoArticle} />
   })
   .add("Video Article - Series", () => {
+    const article = clone({
+      ...VideoArticle,
+      seriesArticle: SeriesArticle,
+    } as ArticleData)
+
     return (
       <Article
-        article={VideoArticle}
-        seriesArticle={SeriesArticle}
+        article={article}
         relatedArticles={[StandardArticle, VideoArticle]}
       />
     )
@@ -27,10 +33,14 @@ storiesOf("Publishing/Video Articles", module)
     return <Article article={VideoArticleSponsored} />
   })
   .add("Video Article - Series + Sponsored", () => {
+    const article = clone({
+      ...VideoArticle,
+      seriesArticle: SeriesArticleSponsored,
+    } as ArticleData)
+
     return (
       <Article
-        article={VideoArticleSponsored}
-        seriesArticle={SeriesArticleSponsored}
+        article={article}
         relatedArticles={[StandardArticle, VideoArticle]}
       />
     )

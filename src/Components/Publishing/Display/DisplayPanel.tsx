@@ -8,6 +8,7 @@ import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { avantgarde, garamond, unica } from "Assets/Fonts"
+import { ErrorBoundary } from "../../ErrorBoundary"
 import { VideoControls } from "../Sections/VideoControls"
 import { trackImpression } from "./track-once"
 
@@ -361,39 +362,41 @@ export class DisplayPanel extends Component<Props, State> {
     const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
 
     return (
-      <Wrapper
-        onClick={this.handleClick}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <Waypoint onEnter={this.trackImpression} />
-        <DisplayPanelContainer
-          className="DisplayPanel__DisplayPanelContainer"
-          imageUrl={imageUrl}
-          isMobile={isMobile}
-          hoverImageUrl={hoverImageUrl}
-          coverUrl={coverUrl}
-          showCoverImage={showCoverImage}
+      <ErrorBoundary>
+        <Wrapper
+          onClick={this.handleClick}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
-          {isVideo ? (
-            this.renderVideo(url)
-          ) : (
-            <Image className="DisplayPanel__Image" />
-          )}
+          <Waypoint onEnter={this.trackImpression} />
+          <DisplayPanelContainer
+            className="DisplayPanel__DisplayPanelContainer"
+            imageUrl={imageUrl}
+            isMobile={isMobile}
+            hoverImageUrl={hoverImageUrl}
+            coverUrl={coverUrl}
+            showCoverImage={showCoverImage}
+          >
+            {isVideo ? (
+              this.renderVideo(url)
+            ) : (
+              <Image className="DisplayPanel__Image" />
+            )}
 
-          <div>
-            <Headline>{unit.headline}</Headline>
+            <div>
+              <Headline>{unit.headline}</Headline>
 
-            <Body
-              dangerouslySetInnerHTML={{
-                __html: unit.body,
-              }}
-            />
+              <Body
+                dangerouslySetInnerHTML={{
+                  __html: unit.body,
+                }}
+              />
 
-            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-          </div>
-        </DisplayPanelContainer>
-      </Wrapper>
+              <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+            </div>
+          </DisplayPanelContainer>
+        </Wrapper>
+      </ErrorBoundary>
     )
   }
 }

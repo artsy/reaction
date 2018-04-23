@@ -8,25 +8,29 @@ import { VideoInfoBlock } from "../VideoInfoBlock"
 
 describe("Video Info Block", () => {
   it("matches the snapshot", () => {
-    const videoInfo = renderer.create(
-      <VideoInfoBlock
-        media={Media[0]}
-        subTitle="The Future of Art"
-        title="Trevor Paglan"
-      />
-    ).toJSON()
+    const videoInfo = renderer
+      .create(
+        <VideoInfoBlock
+          media={Media[0]}
+          subTitle="The Future of Art"
+          title="Trevor Paglan"
+        />
+      )
+      .toJSON()
     expect(videoInfo).toMatchSnapshot()
   })
 
   it("matches the snapshot with edit props", () => {
-    const videoInfo = renderer.create(
-      <VideoInfoBlock
-        subTitle="The Future of Art"
-        media={Media[0]}
-        title="Trevor Paglan"
-        editTitle={EditableChild('title')}
-      />
-    ).toJSON()
+    const videoInfo = renderer
+      .create(
+        <VideoInfoBlock
+          subTitle="The Future of Art"
+          media={Media[0]}
+          title="Trevor Paglan"
+          editTitle={EditableChild("title")}
+        />
+      )
+      .toJSON()
     expect(videoInfo).toMatchSnapshot()
   })
 
@@ -49,7 +53,7 @@ describe("Video Info Block", () => {
         subTitle="The Future of Art"
         media={Media[0]}
         title="Trevor Paglan"
-        editTitle={EditableChild('title')}
+        editTitle={EditableChild("title")}
       />
     )
     expect(component.text()).toMatch("Child title")

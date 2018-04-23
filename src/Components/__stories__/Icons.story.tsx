@@ -16,44 +16,48 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
         <Title>Normal Icons</Title>
       </Row>
       <Row>
-        {iconNames.map(iconName =>
+        {iconNames.map(iconName => (
           <Col style={{ padding: 10 }}>
             <Icon name={iconName as IconName} color="black" />
           </Col>
-        )}
+        ))}
       </Row>
 
       <Row>
         <Title>Large Icons</Title>
       </Row>
       <Row>
-        {iconNames.map(iconName =>
+        {iconNames.map(iconName => (
           <Col style={{ padding: 10 }}>
             <Icon name={iconName as IconName} fontSize="60px" color="black" />
           </Col>
-        )}
+        ))}
       </Row>
 
       <Row>
         <Title>Circle Icons</Title>
       </Row>
       <Row>
-        {iconNames.map(iconName =>
+        {iconNames.map(iconName => (
           <Col style={{ padding: 10 }}>
             <CircleIcon name={iconName as IconName} color="black" />
           </Col>
-        )}
+        ))}
       </Row>
 
       <Row>
         <Title>Large Circle Icons</Title>
       </Row>
       <Row>
-        {iconNames.map(iconName =>
+        {iconNames.map(iconName => (
           <Col style={{ padding: 10 }}>
-            <CircleIcon name={iconName as IconName} color="black" fontSize="60px" />
+            <CircleIcon
+              name={iconName as IconName}
+              color="black"
+              fontSize="60px"
+            />
           </Col>
-        )}
+        ))}
       </Row>
 
       <Row>
@@ -61,10 +65,10 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
       </Row>
       <Row>
         <Col style={{ padding: 10 }}>
-          <Icon name='logo' color='#6E1FFF' fontSize="60px" />
+          <Icon name="logo" color="#6E1FFF" fontSize="60px" />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='logo' color='#6E1FFF' fontSize="60px" />
+          <CircleIcon name="logo" color="#6E1FFF" fontSize="60px" />
         </Col>
       </Row>
 
@@ -73,34 +77,59 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
       </Row>
       <Row>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.7}/>
+          <CircleIcon name="check" color="black" fontSize="60px" ratio={0.7} />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.6}/>
+          <CircleIcon name="check" color="black" fontSize="60px" ratio={0.6} />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.5}/>
+          <CircleIcon name="check" color="black" fontSize="60px" ratio={0.5} />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.4}/>
+          <CircleIcon name="check" color="black" fontSize="60px" ratio={0.4} />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='check' color='black' fontSize="60px" ratio={0.3}/>
+          <CircleIcon name="check" color="black" fontSize="60px" ratio={0.3} />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.7}/>
+          <CircleIcon
+            name="heart-small"
+            color="black"
+            fontSize="60px"
+            ratio={0.7}
+          />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.6}/>
+          <CircleIcon
+            name="heart-small"
+            color="black"
+            fontSize="60px"
+            ratio={0.6}
+          />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.5}/>
+          <CircleIcon
+            name="heart-small"
+            color="black"
+            fontSize="60px"
+            ratio={0.5}
+          />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.4}/>
+          <CircleIcon
+            name="heart-small"
+            color="black"
+            fontSize="60px"
+            ratio={0.4}
+          />
         </Col>
         <Col style={{ padding: 10 }}>
-          <CircleIcon name='heart-small' color='black' fontSize="60px" ratio={0.3}/>
+          <CircleIcon
+            name="heart-small"
+            color="black"
+            fontSize="60px"
+            ratio={0.3}
+          />
         </Col>
       </Row>
     </div>

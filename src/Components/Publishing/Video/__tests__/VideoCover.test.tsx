@@ -9,26 +9,30 @@ import { VideoCover, VideoCoverAsset } from "../VideoCover"
 
 describe("Video Cover", () => {
   it("matches the snapshot", () => {
-    const videoCover = renderer.create(
-      <VideoCover
-        article={VideoArticle}
-        media={Media[0]}
-        seriesTitle="Future of Art"
-      />
-    ).toJSON()
+    const videoCover = renderer
+      .create(
+        <VideoCover
+          article={VideoArticle}
+          media={Media[0]}
+          seriesTitle="Future of Art"
+        />
+      )
+      .toJSON()
     expect(videoCover).toMatchSnapshot()
   })
 
   it("matches the snapshot with edit props", () => {
-    const videoInfo = renderer.create(
-      <VideoCover
-        article={VideoArticle}
-        media={Media[0]}
-        seriesTitle="Future of Art"
-        editDescription={EditableChild('description')}
-        editTitle={EditableChild('title')}
-      />
-    ).toJSON()
+    const videoInfo = renderer
+      .create(
+        <VideoCover
+          article={VideoArticle}
+          media={Media[0]}
+          seriesTitle="Future of Art"
+          editDescription={EditableChild("description")}
+          editTitle={EditableChild("title")}
+        />
+      )
+      .toJSON()
     expect(videoInfo).toMatchSnapshot()
   })
 
@@ -40,7 +44,9 @@ describe("Video Cover", () => {
         seriesTitle="Future of Art"
       />
     )
-    expect(component.find(VideoCoverAsset).props().src).toEqual("https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg")
+    expect(component.find(VideoCoverAsset).props().src).toEqual(
+      "https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
+    )
   })
 
   it("renders video info", () => {
@@ -61,12 +67,11 @@ describe("Video Cover", () => {
         article={VideoArticle}
         media={Media[0]}
         seriesTitle="Future of Art"
-        editDescription={EditableChild('description')}
-        editTitle={EditableChild('title')}
+        editDescription={EditableChild("description")}
+        editTitle={EditableChild("title")}
       />
     )
     expect(component.text()).toMatch("Child description")
     expect(component.text()).toMatch("Child title")
   })
-
 })

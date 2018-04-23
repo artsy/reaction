@@ -92,7 +92,8 @@ const CaptionText = CaptionDiv`
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
-  ${unica("s16")} ${pMedia.sm`
+  ${unica("s16")};
+  ${pMedia.sm`
     ${unica("s14")}
   `};
 `

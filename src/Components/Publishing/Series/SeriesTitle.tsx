@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { unica } from "Assets/Fonts"
-import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
+import { PartnerBlock, ImageContainer } from "../Partner/PartnerBlock"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   article?: any
@@ -44,23 +44,25 @@ export const SeriesTitleContainer = styled.div`
   color: ${(props: Props) => props.color};
   text-align: center;
 
-  ${PartnerBlockContainer} img {
-    max-width: 240px;
+  ${ImageContainer} {
     padding-top: 5px;
     padding-bottom: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   ${pMedia.md`
-    ${PartnerBlockContainer} img {
+    ${ImageContainer} {
       padding-bottom: 0;
     }
   `};
 `
 
 const Title = styled.div`
-  ${unica("s120")} margin-bottom: 30px;
+  ${unica("s120")};
+  margin-bottom: 30px;
 
   ${pMedia.md`
     ${unica("s65")}

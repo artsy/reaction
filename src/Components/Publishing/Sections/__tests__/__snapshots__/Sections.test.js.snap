@@ -43,6 +43,7 @@ exports[`snapshots renders properly 1`] = `
 
 .c40 {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -71,6 +72,7 @@ exports[`snapshots renders properly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -149,6 +151,7 @@ exports[`snapshots renders properly 1`] = `
 }
 
 .c16 {
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -392,6 +395,7 @@ exports[`snapshots renders properly 1`] = `
 
 .c2 a {
   color: black;
+  -webkit-text-decoration: none;
   text-decoration: none;
   position: relative;
   background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
@@ -1189,7 +1193,9 @@ exports[`snapshots renders properly 1`] = `
                           Brass Tax
                         </file__StyledTextLink>
                       </span>
-                      , 
+                      <span>
+                        , 
+                      </span>
                       <span
                         className="date"
                       >
@@ -1210,7 +1216,9 @@ exports[`snapshots renders properly 1`] = `
                       >
                         Joanne Artman Gallery
                       </file__StyledTextLink>
-                      . 
+                      <span>
+                        . 
+                      </span>
                       <span
                         className="credit"
                       >

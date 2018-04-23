@@ -38,9 +38,15 @@ describe("ReadMore", () => {
     const viewer = mount(readMore)
     jest.runAllTimers()
     expect(viewer.state().truncationHeight).toEqual("100%")
-    expect(viewer.find("div").at(0).prop("style")).toEqual({
+    expect(
+      viewer
+        .find("div")
+        .at(0)
+        .prop("style")
+    ).toEqual({
       height: "100%",
-      overflow: "auto" })
+      overflow: "auto",
+    })
   })
 
   it("calls hideButton when truncation is too small", () => {

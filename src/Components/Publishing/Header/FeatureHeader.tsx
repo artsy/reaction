@@ -6,6 +6,10 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { unica } from "Assets/Fonts"
+import {
+  VerticalOrSeriesTitle,
+  Vertical,
+} from "../Sections/VerticalOrSeriesTitle"
 import { PartnerInline } from "../Partner/PartnerInline"
 import { BasicHeader } from "./BasicHeader"
 
@@ -147,9 +151,9 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       height,
       isMobile: passedIsMobile,
     } = this.props
-    const hero = article.hero_section
-    const url = (hero && hero.url) || ""
-    const type = (hero && hero.type) || "text"
+    const { hero_section } = article
+    const url = (hero_section && hero_section.url) || ""
+    const type = (hero_section && hero_section.type) || "text"
 
     if (type === "basic") {
       return (
@@ -182,7 +186,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                   />
                 )}
                 <HeaderText>
-                  <Vertical>{vertical}</Vertical>
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                    color="white"
+                  />
                   <Title>{title}</Title>
                   {renderMobileSplitAsset(
                     url,
@@ -212,7 +220,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
 
 const Div = styled.div`
   width: 100%;
-  height: 100%;
+  height: ${(props: DivProps) => props.height || "100%"};
   box-sizing: border-box;
 `
 const Overlay = styled(Div)`
@@ -223,19 +231,15 @@ const Overlay = styled(Div)`
     rgba(0, 0, 0, 0.3)
   );
 `
-const Vertical = styled.div`
-  margin-bottom: 10px;
-  ${unica("s16", "medium")};
-  ${pMedia.sm`
-    ${unica("s14", "medium")}
-  `};
-`
 const HeaderTextContainer = styled(Div)`
   margin: auto;
   .PartnerInline {
     position: absolute;
     z-index: 1;
     padding: 45px 45px 50px;
+  }
+  ${Vertical} {
+    margin-bottom: 10px;
   }
   ${pMedia.xs`
     .PartnerInline {
@@ -248,6 +252,7 @@ const HeaderText = styled(Div)`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   padding: 20px;
   color: #000;
   justify-content: flex-start;
@@ -318,8 +323,8 @@ const Deck = styled.div`
 `
 const FeatureHeaderContainer = styled(Div)`
   width: 100%;
-  height: ${(props: DivProps) => props.height};
   position: relative;
+  height: ${(props: DivProps) => props.height};
   &[data-type="text"] {
     height: auto;
     ${Title} {

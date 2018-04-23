@@ -83,7 +83,9 @@ describe("MarketInsights", () => {
       __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
     }
 
-    const marketInsights = renderer.create(<MarketInsights artist={artistProps} />).toJSON()
+    const marketInsights = renderer
+      .create(<MarketInsights artist={artistProps} />)
+      .toJSON()
     expect(marketInsights).toMatchSnapshot()
   })
 })

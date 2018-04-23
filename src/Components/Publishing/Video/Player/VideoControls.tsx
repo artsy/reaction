@@ -91,7 +91,8 @@ export const VideoControlsContainer = styled.div`
   }
 `
 const Title = styled.div`
-  ${garamond("s23")} margin-left: 20px;
+  ${garamond("s23")};
+  margin-left: 20px;
 `
 const Block = styled.div`
   display: flex;

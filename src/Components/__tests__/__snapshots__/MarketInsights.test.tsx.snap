@@ -5,6 +5,7 @@ exports[`MarketInsights renders correctly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #666666;
+  -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 

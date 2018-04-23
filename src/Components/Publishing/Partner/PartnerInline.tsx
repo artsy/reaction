@@ -67,7 +67,7 @@ const PartnerInlineContainer = styled.div`
   align-items: center;
   margin: ${(props: DivProps) => props.margin};
   img {
-    max-height: 32px;
+    max-height: 24px;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
   }

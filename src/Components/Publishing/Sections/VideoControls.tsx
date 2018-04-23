@@ -9,16 +9,16 @@ export const VideoControls: React.SFC<VideoControlsProps> = props => {
   const { mini } = props
 
   return (
-    <PlayButton mini={mini} className='PlayButton'>
-      <PlayButtonCaret
-        className='PlayButton__PlayButtonCaret'
-        mini={mini}
-      />
+    <PlayButton mini={mini} className="PlayButton">
+      <PlayButtonCaret className="PlayButton__PlayButtonCaret" mini={mini} />
     </PlayButton>
   )
 }
 
-const Div: StyledFunction<VideoControlsProps & React.HTMLProps<HTMLDivElement>> = styled.div
+const Div: StyledFunction<
+  VideoControlsProps & React.HTMLProps<HTMLDivElement>
+> =
+  styled.div
 
 const PlayButtonCaret = Div`
   color: black;

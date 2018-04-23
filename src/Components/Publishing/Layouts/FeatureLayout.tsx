@@ -5,6 +5,10 @@ import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 import { Nav } from "../Nav/Nav"
+import {
+  ArticleCardsBlock,
+  ArticleCardsContainer,
+} from "../RelatedArticles/ArticleCards/Block"
 
 export interface ArticleProps {
   article: ArticleData
@@ -13,7 +17,6 @@ export interface ArticleProps {
   isSuper?: boolean
   marginTop?: string
   relatedArticlesForCanvas?: any
-  seriesArticle?: any
 }
 
 export class FeatureLayout extends React.Component<ArticleProps> {
@@ -24,38 +27,42 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       isMobile,
       isSuper,
       relatedArticlesForCanvas,
-      seriesArticle,
     } = this.props
+    const { seriesArticle } = article
 
     // TODO: Allow more hero types to use series nav
     const hasNav =
       seriesArticle &&
       article.hero_section &&
       article.hero_section.type === "fullscreen"
+    const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
+    const height = hasNav ? "100vh" : headerHeight
 
     return (
       <FeatureLayoutContainer>
         {hasNav && (
           <Nav
             canFix={false}
-            sponsor={article.sponsor}
+            sponsor={sponsor}
             title={seriesArticle.title}
             transparent
           />
         )}
-        <Header article={article} height={headerHeight} isMobile={isMobile} />
+        <Header article={article} height={height} isMobile={isMobile} />
 
         <FeatureLayoutContent className="article-content">
           <Sections article={article} isMobile={isMobile} />
         </FeatureLayoutContent>
 
         {relatedArticlesForCanvas &&
-          !isSuper && (
+          !isSuper &&
+          !seriesArticle && (
             <RelatedArticlesCanvas
               articles={relatedArticlesForCanvas}
               vertical={article.vertical}
             />
           )}
+        {seriesArticle && <ArticleCardsBlock {...this.props} />}
       </FeatureLayoutContainer>
     )
   }
@@ -71,5 +78,8 @@ const FeatureLayoutContainer = styled.div`
 
   ${Nav} {
     position: absolute;
+  }
+  ${ArticleCardsContainer} {
+    padding-top: 60px;
   }
 `

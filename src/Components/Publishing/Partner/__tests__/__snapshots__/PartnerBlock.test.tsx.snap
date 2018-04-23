@@ -1,8 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the partner block 1`] = `
-.c0 img {
-  max-width: 220px;
+.c0 {
+  display: block;
+}
+
+.c2 img {
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
 }
 
 .c1 {
@@ -11,12 +18,6 @@ exports[`renders the partner block 1`] = `
   font-size: 16px;
   line-height: 1.1em;
   margin-bottom: 20px;
-}
-
-@media (max-width:720px) {
-  .c0 img {
-    max-width: 195px;
-  }
 }
 
 @media (max-width:720px) {
@@ -36,14 +37,18 @@ exports[`renders the partner block 1`] = `
   >
     Presented in Partnership with
   </div>
-  <a
-    href="https://artsy.net"
-    onClick={[Function]}
-    target="_blank"
+  <div
+    className="c2"
   >
-    <img
-      src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
-    />
-  </a>
+    <a
+      href="https://artsy.net"
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="https://artsy-media-uploads.s3.amazonaws.com/kq-CcNCHEgAuPadHtOveeg%2FPlanetArt_Black.png"
+      />
+    </a>
+  </div>
 </div>
 `;

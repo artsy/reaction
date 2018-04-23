@@ -6,16 +6,18 @@ import { Scrubber } from "../Scrubber"
 
 describe("Scrubber", () => {
   it("matches the snapshot", () => {
-    const scrubber = renderer.create(
-      <Scrubber
-        isPlaying={false}
-        duration={5000}
-        currentTime={0}
-        pause={jest.fn()}
-        play={jest.fn()}
-        seekTo={jest.fn()}
-      />
-    ).toJSON()
+    const scrubber = renderer
+      .create(
+        <Scrubber
+          isPlaying={false}
+          duration={5000}
+          currentTime={0}
+          pause={jest.fn()}
+          play={jest.fn()}
+          seekTo={jest.fn()}
+        />
+      )
+      .toJSON()
     expect(scrubber).toMatchSnapshot()
   })
 
@@ -67,7 +69,7 @@ describe("Scrubber", () => {
       />
     )
     component.setState({ isPlayingOnMouseDown: true })
-    component.simulate("mouseup", { target: { value: 1000 }})
+    component.simulate("mouseup", { target: { value: 1000 } })
     expect(seekTo.mock.calls[0][0]).toBe(1000)
     expect(play).toBeCalled()
   })

@@ -5,6 +5,7 @@ exports[`renders a single image properly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -83,6 +84,7 @@ exports[`renders a single image properly 1`] = `
 }
 
 .c3 {
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -252,7 +254,9 @@ exports[`renders a single image properly 1`] = `
                       Nude on the Beach
                     </file__StyledTextLink>
                   </span>
-                  , 
+                  <span>
+                    , 
+                  </span>
                   <span
                     className="date"
                   >
@@ -273,7 +277,9 @@ exports[`renders a single image properly 1`] = `
                   >
                     Gary Nader
                   </file__StyledTextLink>
-                  . 
+                  <span>
+                    . 
+                  </span>
                   <span
                     className="credit"
                   >
@@ -295,6 +301,7 @@ exports[`renders properly 1`] = `
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -373,6 +380,7 @@ exports[`renders properly 1`] = `
 }
 
 .c3 {
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -616,7 +624,9 @@ exports[`renders properly 1`] = `
                       Nude on the Beach
                     </file__StyledTextLink>
                   </span>
-                  , 
+                  <span>
+                    , 
+                  </span>
                   <span
                     className="date"
                   >
@@ -637,7 +647,9 @@ exports[`renders properly 1`] = `
                   >
                     Gary Nader
                   </file__StyledTextLink>
-                  . 
+                  <span>
+                    . 
+                  </span>
                   <span
                     className="credit"
                   >
