@@ -102,7 +102,6 @@
     "husky": "^0.13.4",
     "jest": "^22.1.4",
     "jest-styled-components": "^4.11.0-1",
-    "json-loader": "^0.5.7",
     "lint-staged": "^4.0.0",
     "patch-package": "^5.0.0",
     "postinstall-prepare": "^1.0.1",
