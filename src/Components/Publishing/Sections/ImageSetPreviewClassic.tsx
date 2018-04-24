@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { avantgarde } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
 
 interface LengthProps extends React.HTMLProps<HTMLDivElement> {
@@ -15,8 +15,7 @@ const Wrapper = styled.div`
   display: flex;
 `
 const Text = styled.div`
-  ${avantgarde("s11")};
-  line-height: 1.35em;
+  ${Fonts.avantgarde("s11")} line-height: 1.35em;
   margin: 0;
 `
 const Remaining = styled.div`

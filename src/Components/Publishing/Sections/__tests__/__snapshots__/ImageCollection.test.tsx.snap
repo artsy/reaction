@@ -2,9 +2,7 @@
 
 exports[`renders a single image properly 1`] = `
 .c12 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 11px;
-  line-height: 1.1em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
   -webkit-text-decoration: none;
@@ -27,14 +25,14 @@ exports[`renders a single image properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c9 .title {
-  font-family: Unica77LLWebItalic,Arial,serif;
+  font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -300,9 +298,7 @@ exports[`renders a single image properly 1`] = `
 
 exports[`renders properly 1`] = `
 .c12 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 11px;
-  line-height: 1.1em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
   -webkit-text-decoration: none;
@@ -325,14 +321,14 @@ exports[`renders properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c9 .title {
-  font-family: Unica77LLWebItalic,Arial,serif;
+  font-family: Unica77LLWebItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -420,7 +416,7 @@ exports[`renders properly 1`] = `
 .c15 p,
 .c15 .public-DraftEditorPlaceholder-root,
 .c15 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;

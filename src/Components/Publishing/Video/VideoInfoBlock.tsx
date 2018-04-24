@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { formatTime } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface Props {
   editTitle?: any
@@ -35,8 +35,7 @@ export class VideoInfoBlock extends Component<Props, null> {
 }
 
 const SubTitle = styled.span`
-  ${unica("s16")};
-  margin-right: 35px;
+  ${Fonts.unica("s16")} margin-right: 35px;
 
   a {
     color: white;
@@ -46,9 +45,9 @@ const SubTitle = styled.span`
 
 const MediaTitle = styled.span`
   position: relative;
-  ${unica("s45")};
+  ${Fonts.unica("s45")};
 `
 
 const MediaDuration = styled.span`
-  ${unica("s16")};
+  ${Fonts.unica("s16")};
 `

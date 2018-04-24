@@ -2,9 +2,7 @@
 
 exports[`Artwork renders correctly 1`] = `
 .c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 11px;
-  line-height: 1.1em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #333333;
   -webkit-text-decoration: none;
@@ -19,13 +17,13 @@ exports[`Artwork renders correctly 1`] = `
 }
 
 .c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #666666;
   margin-top: 12px;
+  font-size: 15px;
   text-align: left;
+  line-height: 20px;
 }
 
 .c0 {

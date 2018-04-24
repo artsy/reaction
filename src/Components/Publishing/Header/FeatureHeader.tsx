@@ -5,7 +5,7 @@ import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import {
   VerticalOrSeriesTitle,
   Vertical,
@@ -289,7 +289,7 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${unica("s19", "medium")};
+  ${Fonts.unica("s19", "medium")};
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -300,27 +300,28 @@ const SubHeader = styled.div`
   `};
 `
 const Title = styled.div`
-  ${unica("s100")};
+  ${Fonts.unica("s100")};
   margin-bottom: 75px;
   letter-spacing: -0.035em;
   ${pMedia.xl`
-    ${unica("s80")}
+    ${Fonts.unica("s80")}
   `} ${pMedia.md`
-    ${unica("s65")}
+    ${Fonts.unica("s65")}
   `} ${pMedia.xs`
-    ${unica("s45")}
+    ${Fonts.unica("s45")}
   `};
 `
 const Deck = styled.div`
   max-width: 460px;
   margin-right: 30px;
-  ${unica("s16", "medium")};
+  ${Fonts.unica("s16", "medium")};
   line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `
+
 const FeatureHeaderContainer = styled(Div)`
   width: 100%;
   position: relative;

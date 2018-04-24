@@ -2,7 +2,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 
@@ -49,6 +49,10 @@ export class ImageSetPreview extends React.PureComponent<Props, null> {
     }
 
     return <img {...imageProps} />
+    // return (
+    //   <ImageWrapper {...imageProps} />
+    // )
+    // return <img src={src} width={width} height={height} alt={this.props.section.title || "Open Slideshow"} />
   }
 
   onClick = () => {
@@ -182,23 +186,23 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${unica("s19", "medium")} margin-bottom: 8px;
+  ${Fonts.unica("s19", "medium")} margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
-    ${unica("s16", "medium")}
+    ${Fonts.unica("s16", "medium")}
   `};
 `
 const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${unica("s14", "medium")} ${pMedia.xs`
-    ${unica("s12", "medium")}
+  ${Fonts.unica("s14", "medium")} ${pMedia.xs`
+    ${Fonts.unica("s12", "medium")}
   `};
 `
 const SubTitleCount = styled.div`
-  ${unica("s14")} margin-left: 20px;
+  ${Fonts.unica("s14")} margin-left: 20px;
   ${pMedia.xs`
-    ${unica("s12")}
+    ${Fonts.unica("s12")}
   `};
 `

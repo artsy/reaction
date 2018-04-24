@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface Props {
   logo: string
@@ -75,10 +75,10 @@ export const ImageContainer = styled.div`
 `
 
 const Title = styled.div`
-  ${unica("s16", "medium")};
+  ${Fonts.unica("s16", "medium")};
   margin-bottom: 20px;
 
   ${pMedia.sm`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `

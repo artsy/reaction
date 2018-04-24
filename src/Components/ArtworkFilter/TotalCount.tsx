@@ -3,7 +3,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import styled from "styled-components"
-import { garamond } from "../../Assets/Fonts"
+import { secondary } from "../../Assets/Fonts"
 
 interface TotalCountProps extends RelayProps, React.HTMLProps<TotalCount> {
   filter_artworks: any
@@ -23,7 +23,7 @@ export class TotalCount extends React.Component<TotalCountProps, null> {
 
 const StyledTotalCount = styled(TotalCount)`
   font-style: italic;
-  ${garamond("s11")};
+  ${secondary.style};
 `
 
 export default createFragmentContainer(

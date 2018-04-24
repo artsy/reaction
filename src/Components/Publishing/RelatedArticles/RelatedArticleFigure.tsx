@@ -5,7 +5,7 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 export interface RelatedArticleFigureData {
   thumbnail_title: string
@@ -80,8 +80,8 @@ const ArticleFigure = styled.a`
 `
 
 const ArticleTitle = styled.div`
-  ${unica("s16")} ${pMedia.sm`
-    ${unica("s14")}
+  ${Fonts.unica("s16")} ${pMedia.sm`
+    ${Fonts.unica("s14")}
   `};
 `
 

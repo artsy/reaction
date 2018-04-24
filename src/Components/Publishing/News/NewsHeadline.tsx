@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { garamond } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface NewsHeadlineProps {
   article: any
@@ -36,10 +36,10 @@ const NewsHeadlineContainer = styled.div`
 `
 
 const Title = styled.div`
-  ${garamond("s34")};
+  ${Fonts.garamond("s34")};
   font-weight: 600;
   ${pMedia.sm`
-    ${garamond("s23")}
+    ${Fonts.garamond("s23")}
     line-height: 1.1;
   `};
 `

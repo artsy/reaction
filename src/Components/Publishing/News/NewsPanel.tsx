@@ -3,7 +3,7 @@ import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { garamond, unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { ArticleData } from "../Typings"
 
 interface Props {
@@ -52,9 +52,9 @@ const Header = styled.div`
 `
 
 const HeaderText = styled.div`
-  ${unica("s19", "medium")};
+  ${Fonts.unica("s19", "medium")};
   ${pMedia.sm`
-    ${unica("s16", "medium")}
+    ${Fonts.unica("s16", "medium")}
   `};
 `
 
@@ -73,18 +73,18 @@ const ArticlesContainer = styled.div`
 `
 
 const ArticleHeadline = styled.a`
-  ${garamond("s18")} padding: 10px 0;
+  ${Fonts.garamond("s18")} padding: 10px 0;
   cursor: pointer;
   text-decoration: none;
   ${pMedia.sm`
-    ${garamond("s15")}
+    ${Fonts.garamond("s15")}
     line-height: 1.4em;
   `};
 `
 
 const Footer = styled.div`
-  ${unica("s16")};
+  ${Fonts.unica("s16")};
   ${pMedia.sm`
-    ${unica("s12")}
+    ${Fonts.unica("s12")}
   `};
 `

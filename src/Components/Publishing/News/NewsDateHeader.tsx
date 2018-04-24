@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface Props {
   date: string
@@ -15,8 +15,8 @@ export const NewsDateHeader: React.SFC<Props> = props => {
 }
 
 export const NewsText = styled.div`
-  ${unica("s25", "medium")};
+  ${Fonts.unica("s25", "medium")};
   ${pMedia.sm`
-    ${unica("s16", "medium")}
+    ${Fonts.unica("s16", "medium")}
   `};
 `

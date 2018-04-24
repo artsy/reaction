@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import colors from "Assets/Colors"
-import { avantgarde } from "Assets/Fonts"
+import colors from "../../Assets/Colors"
+import * as fonts from "../../Assets/Fonts"
 import { block } from "../Helpers"
 import { IconProps } from "../Icon"
 
@@ -44,7 +44,6 @@ class Button extends React.Component<ButtonProps, any> {
 }
 
 export const StyledButton = styled(Button)`
-  ${avantgarde("s13")};
   background: ${props => {
     if (props.state === ButtonState.Success) return colors.greenRegular
     if (props.state === ButtonState.Failure) return colors.redRegular
@@ -61,6 +60,7 @@ export const StyledButton = styled(Button)`
   align-items: center;
   justify-content: center;
   padding: 15px 30px;
+  font-size: 13px;
   line-height: 1;
   outline: 0;
   transition: background-color 0.25s, color 0.25s;
@@ -79,7 +79,7 @@ export const StyledButton = styled(Button)`
     }};
   }
 
-  ${block()};
+  ${fonts.primary.style} ${block()};
 `
 
 StyledButton.defaultProps = {

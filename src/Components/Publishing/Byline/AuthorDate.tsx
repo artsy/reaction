@@ -2,7 +2,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getAuthorByline, getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { ArticleLayout, BylineLayout, DateFormat } from "../Typings"
 
 interface AuthorProps {
@@ -57,14 +57,18 @@ const div: StyledFunction<TextProps & React.HTMLProps<HTMLInputElement>> =
 
 const Text = div`
   ${props =>
-    props.condensed ? unica("s14", "medium") : unica("s16", "medium")}
+    props.condensed
+      ? Fonts.unica("s14", "medium")
+      : Fonts.unica("s16", "medium")}
   margin: 10px 30px 0 0;
   &.date {
     white-space: nowrap;
   }
   ${props => pMedia.sm`
-    ${props.condensed ? unica("s12", "medium") : unica("s14", "medium")}
-    ${unica("s14", "medium")}
+    ${props.condensed
+      ? Fonts.unica("s12", "medium")
+      : Fonts.unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
     margin: 10px 20px 0 0;
   `}
 `

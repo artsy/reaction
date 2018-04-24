@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { garamond } from "Assets/Fonts"
+import * as fonts from "../Assets/Fonts"
 import { media } from "./Helpers"
 
-type TitleSize = "xxsmall" | "small" | "medium" | "large" | "xlarge"
+type TitleSize = "xxsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge"
 
 interface TitleProps extends React.HTMLProps<HTMLDivElement> {
   titleSize?: TitleSize
@@ -11,11 +11,12 @@ interface TitleProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const titleSizes = {
-  xxsmall: "s15",
-  small: "s23",
-  medium: "s30",
-  large: "s37",
-  xlarge: "s50",
+  xxsmall: "13px",
+  small: "25px",
+  medium: "30px",
+  large: "37px",
+  xlarge: "50px",
+  xxlarge: "72px",
 }
 
 const Title: React.SFC<TitleProps> = props => {
@@ -26,9 +27,10 @@ const Title: React.SFC<TitleProps> = props => {
 }
 
 const StyledTitle = styled(Title)`
+  font-size: ${props => titleSizes[props.titleSize]};
   color: ${props => props.color};
   margin: 20px 0;
-  ${p => garamond(titleSizes[p.titleSize] as any)};
+  ${fonts.secondary.style};
   ${media.sm`
     font-size: ${titleSizes.small};
   `};
