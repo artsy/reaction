@@ -55,6 +55,7 @@ exports[`EmailSignup renders an email signup 1`] = `
   color: black;
   padding: 10px;
   box-shadow: none;
+  font-size: 17px;
   -webkit-transition: border-color 0.25s;
   transition: border-color 0.25s;
   margin-right: 10px;
@@ -68,6 +69,23 @@ exports[`EmailSignup renders an email signup 1`] = `
   transition: border-color 0.25s;
 }
 
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
+}
+
+.c3::-moz-placeholder {
+  color: #cccccc;
+}
+
+.c3:-ms-input-placeholder {
+  color: #cccccc;
+}
+
+.c3::placeholder {
+  color: #cccccc;
+}
+
+.c3:hover,
 .c3:focus,
 .c3.focused {
   border-color: #6e1fff;
