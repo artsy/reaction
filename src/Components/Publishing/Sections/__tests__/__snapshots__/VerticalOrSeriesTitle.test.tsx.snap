@@ -2,7 +2,7 @@
 
 exports[`renders properly for a feature article 1`] = `
 .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -17,7 +17,7 @@ exports[`renders properly for a feature article 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -36,7 +36,7 @@ exports[`renders properly for a feature article 1`] = `
 
 exports[`renders properly for a standard article 1`] = `
 .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -51,7 +51,7 @@ exports[`renders properly for a standard article 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;

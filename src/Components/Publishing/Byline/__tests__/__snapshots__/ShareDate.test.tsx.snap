@@ -2,7 +2,7 @@
 
 exports[`renders ShareDate properly 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -42,7 +42,7 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c4 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -55,11 +55,11 @@ exports[`renders ShareDate properly 1`] = `
 
 @media (max-width:720px) {
   .c1 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;

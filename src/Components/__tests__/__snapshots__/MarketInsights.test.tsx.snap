@@ -2,7 +2,9 @@
 
 exports[`MarketInsights renders correctly 1`] = `
 .c6 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   color: #666666;
   -webkit-text-decoration: underline;
@@ -134,7 +136,7 @@ exports[`MarketInsights renders correctly 1`] = `
 }
 
 .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
   line-height: 1.1em;
@@ -146,7 +148,7 @@ exports[`MarketInsights renders correctly 1`] = `
 
 .c5 {
   color: #666666;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 10px;
   line-height: 1.4em;

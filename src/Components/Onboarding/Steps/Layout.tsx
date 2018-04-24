@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import Colors from "../../../Assets/Colors"
-import { primary } from "../../../Assets/Fonts"
+import Colors from "Assets/Colors"
+import { avantgarde } from "Assets/Fonts"
 import MultiStateButton, {
   MultiButtonState,
 } from "../../Buttons/MultiStateButton"
@@ -34,7 +34,7 @@ const MainTitle = styled(StyledTitle)`
   `};
 `
 const Subtitle = styled(StyledTitle)`
-  ${primary.style};
+  ${avantgarde("s13")};
   color: ${Colors.grayDark};
   margin-top: 6px;
   margin-bottom: 30px;
@@ -43,7 +43,6 @@ const Subtitle = styled(StyledTitle)`
   ${media.sm`
     text-align: left;
     margin-bottom: 15px;
-    font-size: 13px;
   `};
 `
 

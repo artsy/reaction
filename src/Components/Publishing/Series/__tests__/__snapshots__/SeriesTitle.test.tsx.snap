@@ -17,7 +17,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
   line-height: 1.1em;
@@ -32,7 +32,7 @@ exports[`renders a series title properly 1`] = `
 
 @media (max-width:900px) {
   .c1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
     line-height: 1em;
@@ -69,7 +69,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
   line-height: 1.1em;
@@ -84,7 +84,7 @@ exports[`renders a series with children properly 1`] = `
 
 @media (max-width:900px) {
   .c1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
     line-height: 1em;
@@ -120,7 +120,7 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 .c3 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -143,7 +143,7 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
   line-height: 1.1em;
@@ -152,7 +152,7 @@ exports[`renders a sponsored series title properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -167,7 +167,7 @@ exports[`renders a sponsored series title properly 1`] = `
 
 @media (max-width:900px) {
   .c1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
     line-height: 1em;

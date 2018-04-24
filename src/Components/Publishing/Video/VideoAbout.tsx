@@ -3,7 +3,7 @@ import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { Text } from "../Sections/Text"
 
 interface Props {
@@ -58,10 +58,10 @@ const Div: StyledFunction<TitleProps> = styled.div
 const Title = Div`
   color: ${props => props.color};
   margin-bottom: 15px;
-  ${Fonts.unica("s34")}
+  ${unica("s34")}
 
   ${media.sm`
-    ${Fonts.unica("s32")}
+    ${unica("s32")}
   `}
 `
 

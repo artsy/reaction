@@ -3,7 +3,7 @@ import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { garamond } from "Assets/Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
@@ -138,7 +138,8 @@ export const VideoCoverContainer = CoverDiv`
 const MediaDescription = styled.div`
   position: relative;
   margin-top: 30px;
-  ${Fonts.garamond("s23")} ${media.sm`
-    ${Fonts.garamond("s19")}
+  ${garamond("s23")};
+  ${media.sm`
+    ${garamond("s19")}
   `};
 `

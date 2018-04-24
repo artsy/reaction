@@ -72,10 +72,10 @@ exports[`renders a series properly 1`] = `
 }
 
 .c6 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -89,7 +89,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c14 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
   line-height: 1.1em;
@@ -143,7 +143,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c23 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -155,7 +155,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c31 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -268,14 +268,14 @@ exports[`renders a series properly 1`] = `
 
 .c19 .author,
 .c19 .date {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
 .c21 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
@@ -283,7 +283,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c20 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -291,10 +291,10 @@ exports[`renders a series properly 1`] = `
 }
 
 .c22 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c28 {
@@ -314,7 +314,7 @@ exports[`renders a series properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -365,7 +365,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c37 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -396,10 +396,10 @@ exports[`renders a series properly 1`] = `
 .c39 ul,
 .c39 ol,
 .c39 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -422,16 +422,16 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c39 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -455,7 +455,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -468,7 +468,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -479,7 +479,7 @@ exports[`renders a series properly 1`] = `
 
 .c39 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -490,10 +490,10 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -529,10 +529,10 @@ exports[`renders a series properly 1`] = `
 
 .c39 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -624,7 +624,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:900px) {
   .c14 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
     line-height: 1em;
@@ -684,11 +684,11 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:720px) {
   .c23 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -698,11 +698,11 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:720px) {
   .c31 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -743,7 +743,7 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:900px) {
   .c21 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
@@ -752,10 +752,10 @@ exports[`renders a series properly 1`] = `
 
 @media (max-width:900px) {
   .c22 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
     margin-bottom: 20px;
   }
 }
@@ -783,35 +783,35 @@ exports[`renders a series properly 1`] = `
   .c39 ul,
   .c39 ol,
   .c39 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c39 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c39 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c39 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c39 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -819,17 +819,17 @@ exports[`renders a series properly 1`] = `
   }
 
   .c39 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c39 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 
@@ -1176,10 +1176,10 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c8 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -1193,7 +1193,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c16 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
   line-height: 1.1em;
@@ -1247,7 +1247,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c30 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1259,7 +1259,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c37 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1379,14 +1379,14 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c26 .author,
 .c26 .date {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
 .c28 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
@@ -1394,7 +1394,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c27 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1402,10 +1402,10 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c29 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c34 {
@@ -1425,7 +1425,7 @@ exports[`renders a sponsored series properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1480,14 +1480,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c43 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
 }
 
 .c19 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1519,10 +1519,10 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 ul,
 .c45 ol,
 .c45 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -1545,16 +1545,16 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c45 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -1578,7 +1578,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -1591,7 +1591,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -1602,7 +1602,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c45 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -1613,10 +1613,10 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -1652,10 +1652,10 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c45 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -1762,7 +1762,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c16 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
     line-height: 1em;
@@ -1822,11 +1822,11 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c30 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1836,11 +1836,11 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c37 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1881,7 +1881,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c28 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
@@ -1890,10 +1890,10 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:900px) {
   .c29 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
     margin-bottom: 20px;
   }
 }
@@ -1918,7 +1918,7 @@ exports[`renders a sponsored series properly 1`] = `
 
 @media (max-width:720px) {
   .c19 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1930,35 +1930,35 @@ exports[`renders a sponsored series properly 1`] = `
   .c45 ul,
   .c45 ol,
   .c45 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c45 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c45 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c45 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c45 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -1966,17 +1966,17 @@ exports[`renders a sponsored series properly 1`] = `
   }
 
   .c45 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c45 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 

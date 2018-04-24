@@ -2,10 +2,10 @@
 
 exports[`Timestamp matches the snapshot 1`] = `
 .c0 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 <div

@@ -3,7 +3,7 @@ import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
 import { Text } from "../Sections/Text"
 import { ArticleData } from "../Typings"
@@ -139,7 +139,7 @@ const StyledCol = styled(Col)`
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s32")};
+  ${unica("s32")};
   ${props => media.sm`
     margin-bottom: 20px;
   `};

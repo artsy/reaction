@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { garamond, unica } from "Assets/Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
 
 interface CaptionProps {
@@ -52,8 +52,7 @@ const Figcaption = div`
   & > p, p,
   .public-DraftEditorPlaceholder-root,
   .public-DraftStyleDefault-block {
-    ${props =>
-      props.layout === "classic" ? Fonts.garamond("s15") : Fonts.unica("s14")}
+    ${props => (props.layout === "classic" ? garamond("s15") : unica("s14"))}
     color: ${props => (props.layout === "classic" ? "#666" : "#999")};
     margin: 0;
   }

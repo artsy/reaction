@@ -3,15 +3,15 @@ import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
-import colors from "../../../Assets/Colors"
-import { Fonts } from "../../Publishing/Fonts"
+import colors from "Assets/Colors"
+import { unica } from "Assets/Fonts"
 import TextLink from "../../TextLink"
 import { Tooltip } from "../../Tooltip"
 
 import { Help } from "../../../Assets/Icons/Help"
 
 const MarketInsightsContainer = styled.div`
-  ${Fonts.unica("s18", "medium")};
+  ${unica("s18", "medium")};
 `
 
 const SubHeadline = styled.div`
@@ -20,7 +20,7 @@ const SubHeadline = styled.div`
 
 const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
-  ${Fonts.unica("s10", "regular")};
+  ${unica("s10", "regular")};
 `
 
 const TooltipContainer = styled.div`

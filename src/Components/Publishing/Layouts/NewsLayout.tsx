@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Colors from "../../../Assets/Colors"
+import Colors from "Assets/Colors"
+import { unica } from "Assets/Fonts"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import { ArticleData } from "../Typings"
@@ -110,7 +110,7 @@ export const ExpandButton = styled.button`
   cursor: pointer;
   padding: 0;
   transition: opacity 0.25s ease;
-  ${Fonts.unica("s14", "medium")};
+  ${unica("s14", "medium")};
   line-height: 1em;
 
   &:focus {

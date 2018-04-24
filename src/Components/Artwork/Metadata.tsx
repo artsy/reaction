@@ -1,8 +1,8 @@
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import colors from "../../Assets/Colors"
-import * as fonts from "../../Assets/Fonts"
+import colors from "Assets/Colors"
+import { garamond } from "Assets/Fonts"
 
 import RelayContact, { Contact } from "./Contact"
 import RelayDetails, { Details } from "./Details"
@@ -34,12 +34,10 @@ export class MetadataContainer extends React.Component<MetadataProps> {
 }
 
 export const Metadata = styled(MetadataContainer)`
-  ${fonts.secondary.style};
+  ${garamond("s15")};
   color: ${colors.graySemibold};
   margin-top: 12px;
-  font-size: 15px;
   text-align: left;
-  line-height: 20px;
 `
 
 export default createFragmentContainer(

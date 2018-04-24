@@ -2,12 +2,12 @@ import { compact, map } from "lodash"
 import React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../../Assets/Colors"
+import Colors from "Assets/Colors"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
-import { Fonts } from "../../Fonts"
+import { garamond } from "Assets/Fonts"
 import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {
@@ -280,6 +280,6 @@ const Image = responsiveImage`
   `}
 `
 const Caption = styled.div`
-  ${Fonts.garamond("s11")} color: ${Colors.grayMedium};
+  ${garamond("s11")} color: ${Colors.grayMedium};
   margin-top: 10px;
 `
