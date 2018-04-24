@@ -4,17 +4,13 @@ import {
   FormikActions,
   // FormikProps
 } from "formik"
-import {
-  RenderProps as WizardRenderProps,
-  WizardSteps,
-  // Step,
-} from "../../Wizard"
+import { RenderProps as WizardRenderProps, Step } from "../../Wizard"
 import styled from "styled-components"
 
 interface Props extends WizardRenderProps {
   initialValues?: any
   container?: React.ComponentClass<any> // a (probably styled) form element
-  pages?: WizardSteps
+  pages?: Step[]
 }
 
 const FormContainer = styled.form`
@@ -40,7 +36,7 @@ export class WizardForm extends React.Component<Props> {
     actions
     // formikActions I think this may not be available
   ) => {
-    if (this.isLastPage) {
+    if (this.props.isLastPage) {
       this.props.onComplete(values)
     } else {
       actions.setSubmitting(false)
@@ -48,24 +44,16 @@ export class WizardForm extends React.Component<Props> {
     }
   }
 
-  get isLastPage() {
-    return this.props.pageIndex === this.props.pages.length - 1
-  }
-
-  get activePage(): any {
-    return this.props.pages[this.props.pageIndex]
-  }
-
   render() {
     // Don't pass props.next to the child- use formik's onSubmit
     const { initialValues, container: Form, next, ...wizardProps } = this.props
-    const ActiveComponent = this.activePage.component
+    const ActiveComponent = this.props.activePage.component
 
     return (
       <Formik
         initialValues={initialValues}
-        validate={this.activePage.validate}
-        validationSchema={this.activePage.validationSchema}
+        validate={this.props.activePage.validate}
+        validationSchema={this.props.activePage.validationSchema}
         onSubmit={this.handleSubmit}
         render={formikRenderProps => {
           const { handleSubmit } = formikRenderProps

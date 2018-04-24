@@ -1,12 +1,12 @@
 import React from "react"
-import { WizardSteps, Wizard, RenderProps } from "../../Wizard"
+import { Step, Wizard } from "../../Wizard"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import Title from "../../Title"
 
 export const BasicSlideshow = () => {
-  const pages: WizardSteps = [
+  const pages: Step[] = [
     {
       label: "Start",
       component: makePage(colors.greenRegular, "Beginning."),
@@ -23,45 +23,26 @@ export const BasicSlideshow = () => {
       stepName: "step3",
     },
   ]
-  return (
-    <Wizard pages={pages}>
-      {(wizardBag: RenderProps) => <BasicWizardContainer {...wizardBag} />}
-    </Wizard>
-  )
+  return <Wizard pages={pages} />
 }
-
-class BasicWizardContainer extends React.Component<RenderProps, any> {
-  render() {
-    const { pages, pageIndex } = this.props
-    const Component = pages[pageIndex].component
-    return (
-      <Container>
-        <Component next={this.props.next} previous={this.props.previous} />
-      </Container>
-    )
-  }
-}
-
-const Container = styled.div`
-  width: 500px;
-  height: 500px;
-`
 
 const makePage: (bg, t, c?) => React.SFC<any> = (
   bgColor,
   text,
   textColor = "black"
-) => props => (
-  <Page color={bgColor}>
-    <Title color={textColor}>{text}</Title>
-    <Button onClick={props.previous}>Back</Button>
-    <Button onClick={props.next}>Next</Button>
-  </Page>
-)
+) => props => {
+  return (
+    <Page color={bgColor}>
+      <Title color={textColor}>{text}</Title>
+      <Button onClick={props.wizard.previous}>Back</Button>
+      <Button onClick={props.wizard.next}>Next</Button>
+    </Page>
+  )
+}
 
 const Page = styled.div`
-  height: 100%;
-  width: 100%;
+  height: 500px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;

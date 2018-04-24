@@ -5,8 +5,10 @@ export interface RenderProps<V = {}> {
   previous: () => void
   onComplete: (values: V) => void
   pageIndex: number
-  pages?: WizardSteps
+  pages?: Step[]
   values?: any
+  activePage: Step
+  isLastPage: boolean
 }
 
 // This interface is shared with StepMarker and could be two separate things
@@ -18,4 +20,3 @@ export interface Step {
   validate?: any
   validationSchema?: any
 }
-export type WizardSteps<S = Step> = S[]

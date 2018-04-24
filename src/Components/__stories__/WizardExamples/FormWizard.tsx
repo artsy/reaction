@@ -1,9 +1,8 @@
 import React from "react"
 import yup from "yup"
 import { Field } from "formik"
-import { WizardSteps, Wizard, RenderProps } from "../../Wizard"
+import { Step, Wizard } from "../../Wizard"
 import { StepMarker } from "../../StepMarker"
-import { WizardForm } from "../../Forms/support"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
@@ -15,7 +14,7 @@ export const FormWizard = () => {
     actions.setSubmitting(false)
   }
 
-  const pages: WizardSteps = [
+  const pages: Step[] = [
     {
       label: "Name",
       component: ({ form, wizard }) => (
@@ -91,21 +90,29 @@ export const FormWizard = () => {
       stepName: "review",
     },
   ]
+
   return (
     <Wizard onComplete={submitForm} pages={pages}>
-      {(wizardBag: RenderProps) => (
-        <Container>
-          <Nav>
-            <Icon name="logotype" color="black" fontSize="32px" />
-            <StepMarker
-              steps={wizardBag.pages}
-              currentStepIndex={wizardBag.pageIndex}
-            />
-          </Nav>
-          <WizardForm {...wizardBag} container={Form} />
-          <pre>Values: {JSON.stringify(wizardBag.values, null, 2)}</pre>
-        </Container>
-      )}
+      {props => {
+        const { wizard, form } = props
+        const {
+          activePage: { component: Component },
+        } = wizard
+        return (
+          <Container>
+            <Nav>
+              <Icon name="logotype" color="black" fontSize="32px" />
+              <StepMarker
+                steps={wizard.pages}
+                currentStepIndex={wizard.pageIndex}
+              />
+            </Nav>
+            <Component wizard={wizard} form={form} />
+
+            <pre>Values: {JSON.stringify(wizard.values, null, 2)}</pre>
+          </Container>
+        )
+      }}
     </Wizard>
   )
 }
@@ -132,12 +139,6 @@ const FormPage = styled.div`
   background: ${colors.white};
   justify-content: space-between;
   align-items: center;
-`
-
-const Form = styled.form`
-  width: 100%;
-  height: 100%;
-  padding: 20px;
 `
 
 const Fields = styled.div`
