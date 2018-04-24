@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Fonts } from "../../Fonts"
+import { garamond } from "Assets/Fonts"
 import { IconVideoFullscreen } from "../../Icon/IconVideoFullscreen"
 import { MuteUnmute, MuteUnmuteContainer } from "./MuteUnmute"
 import { PlayPause } from "./PlayPause"
@@ -91,7 +91,8 @@ export const VideoControlsContainer = styled.div`
   }
 `
 const Title = styled.div`
-  ${Fonts.garamond("s23")} margin-left: 20px;
+  ${garamond("s23")};
+  margin-left: 20px;
 `
 const Block = styled.div`
   display: flex;

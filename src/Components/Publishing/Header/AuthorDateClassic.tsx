@@ -1,7 +1,7 @@
 import moment from "moment-timezone"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { Fonts } from "../Fonts"
+import { avantgarde } from "Assets/Fonts"
 
 interface AuthorDateClassicProps {
   authors?: any
@@ -63,10 +63,10 @@ export const AuthorDateClassic: React.SFC<AuthorDateClassicProps> = props => {
 const div: StyledFunction<TextSmProps> = styled.div
 
 const TextSm = div`
-  ${Fonts.avantgarde("s11")}
+  ${avantgarde("s11")}
   color: ${props => (props.color ? props.color : "#000")};
 `
 const AuthorDateClassicContainer = styled.div`
   display: block;
-  ${Fonts.avantgarde("s13")};
+  ${avantgarde("s13")};
 `

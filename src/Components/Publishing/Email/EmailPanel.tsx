@@ -7,7 +7,7 @@ import { track } from "../../../Utils/track"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
-import { Fonts } from "../Fonts"
+import { avantgarde, unica } from "Assets/Fonts"
 
 interface EmailPanelProps {
   signupUrl: string
@@ -110,7 +110,7 @@ const Input = styled.input`
   width: 100%;
   border-width: 1px;
   color: ${(props: InputProps) => (props.isError ? Colors.redMedium : "black")};
-  ${(props: InputProps) => (props.isReadOnly ? Fonts.unica("s16") : "")};
+  ${(props: InputProps) => (props.isReadOnly ? unica("s16") : "")};
   ${borderedInput};
 `
 const EmailPanelContainer = styled.div`
@@ -120,7 +120,7 @@ const EmailPanelContainer = styled.div`
   width: 100%;
 `
 const Title = styled.div`
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   margin-bottom: 10px;
 `
 const StyledButton = InvertedButton.extend`
@@ -128,7 +128,7 @@ const StyledButton = InvertedButton.extend`
   height: 30px;
   width: 80px;
   margin-left: -100px;
-  ${Fonts.avantgarde("s11")};
+  ${avantgarde("s11")};
 `
 const Form = styled.div`
   display: flex;

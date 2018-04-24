@@ -9,7 +9,6 @@ import Title from "../Title"
 storiesOf("Typography", module)
   .add("Headings", () => (
     <div>
-      <Title titleSize="xxlarge">XXLarge Title: 72px</Title>
       <Title titleSize="xlarge">XLarge Title: 50px</Title>
       <Title titleSize="large">Large Title: 37px</Title>
       <Title titleSize="medium">Medium Title: 30px</Title>

@@ -1,8 +1,6 @@
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
-import { secondary } from "../../Assets/Fonts"
-
+import { garamond } from "Assets/Fonts"
 import { compact, find } from "lodash"
 import styled from "styled-components"
 
@@ -85,7 +83,8 @@ export class Headline extends React.Component<Props, null> {
 }
 
 const StyledHeadline = styled(Headline)`
-  ${secondary.style} font-weight: normal;
+  ${garamond("s11")};
+  font-weight: normal;
   margin: 0;
   font-size: 2em;
 `

@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import Colors from "../../Assets/Colors"
-import * as fonts from "../../Assets/Fonts"
+import Colors from "Assets/Colors"
+import { avantgarde } from "Assets/Fonts"
 import { CircleBlackCheckIcon } from "../../Assets/Icons/CircleBlackCheckIcon"
 import { media } from "../Helpers"
 
@@ -15,10 +15,9 @@ interface SelectableToggleProps {
 
 const Link = styled.a`
   display: flex;
-  font-size: 14px;
   color: black;
   text-decoration: none;
-  ${fonts.primary.style};
+  ${avantgarde("s13")};
   &:hover {
     background-color: ${Colors.gray};
     cursor: pointer;

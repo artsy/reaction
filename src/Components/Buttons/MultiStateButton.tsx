@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import colors from "../../Assets/Colors"
-import * as fonts from "../../Assets/Fonts"
+import colors from "Assets/Colors"
+import { avantgarde } from "Assets/Fonts"
 import { block } from "../Helpers"
 import { IconProps } from "../Icon"
 
@@ -41,6 +41,7 @@ class Button extends React.Component<ButtonProps, any> {
 }
 
 export const StyledButton = styled(Button)`
+  ${avantgarde("s13")};
   background: ${props => {
     if (props.state === MultiButtonState.Highlighted) return "black"
     return "white"
@@ -73,7 +74,7 @@ export const StyledButton = styled(Button)`
     background: ${colors.purpleRegular};
   }
 
-  ${fonts.primary.style} ${block()};
+  ${block()};
 `
 
 StyledButton.defaultProps = {

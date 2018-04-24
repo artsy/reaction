@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Fonts } from "../Fonts"
+import { avantgarde, garamond, unica } from "Assets/Fonts"
 
 export const Typography = () => {
   return (
@@ -39,82 +39,108 @@ export const Typography = () => {
 }
 
 const GaramondS11 = styled.div`
-  ${Fonts.garamond("s11")} margin-bottom: 20px;
+  ${garamond("s11")};
+  margin-bottom: 20px;
 `
 const GaramondS15 = styled.div`
-  ${Fonts.garamond("s15")} margin-bottom: 20px;
+  ${garamond("s15")};
+  margin-bottom: 20px;
 `
 const GaramondS17 = styled.div`
-  ${Fonts.garamond("s17")} margin-bottom: 20px;
+  ${garamond("s17")};
+  margin-bottom: 20px;
 `
 const GaramondS19 = styled.div`
-  ${Fonts.garamond("s19")} margin-bottom: 20px;
+  ${garamond("s19")};
+  margin-bottom: 20px;
 `
 const GaramondS23 = styled.div`
-  ${Fonts.garamond("s23")} margin-bottom: 20px;
+  ${garamond("s23")};
+  margin-bottom: 20px;
 `
 const GaramondS28 = styled.div`
-  ${Fonts.garamond("s28")} margin-bottom: 20px;
+  ${garamond("s28")};
+  margin-bottom: 20px;
 `
 const GaramondS30 = styled.div`
-  ${Fonts.garamond("s30")} margin-bottom: 20px;
+  ${garamond("s30")};
+  margin-bottom: 20px;
 `
 const GaramondS34 = styled.div`
-  ${Fonts.garamond("s34")} margin-bottom: 20px;
+  ${garamond("s34")};
+  margin-bottom: 20px;
 `
 const GaramondS37 = styled.div`
-  ${Fonts.garamond("s37")} margin-bottom: 20px;
+  ${garamond("s37")};
+  margin-bottom: 20px;
 `
 const GaramondS40 = styled.div`
-  ${Fonts.garamond("s40")} margin-bottom: 20px;
+  ${garamond("s40")};
+  margin-bottom: 20px;
 `
 const GaramondS50 = styled.div`
-  ${Fonts.garamond("s50")} margin-bottom: 20px;
+  ${garamond("s50")};
+  margin-bottom: 20px;
 `
 
 const AvantGardeS11 = styled.div`
-  ${Fonts.avantgarde("s11")} margin-bottom: 20px;
+  ${avantgarde("s11")};
+  margin-bottom: 20px;
 `
 const AvantGardeS13 = styled.div`
-  ${Fonts.avantgarde("s13")} margin-bottom: 20px;
+  ${avantgarde("s13")};
+  margin-bottom: 20px;
 `
 
 const UnicaS12 = styled.div`
-  ${Fonts.unica("s12")} margin-bottom: 20px;
+  ${unica("s12")};
+  margin-bottom: 20px;
 `
 const UnicaS14 = styled.div`
-  ${Fonts.unica("s14")} margin-bottom: 20px;
+  ${unica("s14")};
+  margin-bottom: 20px;
 `
 const UnicaS16 = styled.div`
-  ${Fonts.unica("s16")} margin-bottom: 20px;
+  ${unica("s16")};
+  margin-bottom: 20px;
 `
 const UnicaS19 = styled.div`
-  ${Fonts.unica("s19")} margin-bottom: 20px;
+  ${unica("s19")};
+  margin-bottom: 20px;
 `
 const UnicaS32 = styled.div`
-  ${Fonts.unica("s32")} margin-bottom: 20px;
+  ${unica("s32")};
+  margin-bottom: 20px;
 `
 const UnicaS34 = styled.div`
-  ${Fonts.unica("s34")} margin-bottom: 20px;
+  ${unica("s34")};
+  margin-bottom: 20px;
 `
 const UnicaS40 = styled.div`
-  ${Fonts.unica("s40")} margin-bottom: 20px;
+  ${unica("s40")};
+  margin-bottom: 20px;
 `
 const UnicaS45 = styled.div`
-  ${Fonts.unica("s45")} margin-bottom: 20px;
+  ${unica("s45")};
+  margin-bottom: 20px;
 `
 const UnicaS65 = styled.div`
-  ${Fonts.unica("s65")} margin-bottom: 20px;
+  ${unica("s65")};
+  margin-bottom: 20px;
 `
 const UnicaS67 = styled.div`
-  ${Fonts.unica("s67")} margin-bottom: 20px;
+  ${unica("s67")};
+  margin-bottom: 20px;
 `
 const UnicaS80 = styled.div`
-  ${Fonts.unica("s80")} margin-bottom: 20px;
+  ${unica("s80")};
+  margin-bottom: 20px;
 `
 const UnicaS100 = styled.div`
-  ${Fonts.unica("s100")} margin-bottom: 20px;
+  ${unica("s100")};
+  margin-bottom: 20px;
 `
 const UnicaS120 = styled.div`
-  ${Fonts.unica("s120")} margin-bottom: 20px;
+  ${unica("s120")};
+  margin-bottom: 20px;
 `

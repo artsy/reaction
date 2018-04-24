@@ -7,7 +7,7 @@ import {
 } from "react-relay"
 import styled from "styled-components"
 
-import * as fonts from "../../Assets/Fonts"
+import { avantgarde } from "Assets/Fonts"
 import Spinner from "../Spinner"
 import ArtistRow from "./ArtistRow"
 
@@ -40,8 +40,7 @@ const LoadMoreContainer = styled.div`
 `
 
 const LoadMoreButton = styled.a`
-  font-family: ${fonts.primary.fontFamily};
-  font-size: 14px;
+  font-family: ${avantgarde("s13")};
   cursor: pointer;
   text-transform: uppercase;
   border-bottom: 2px solid transparent;

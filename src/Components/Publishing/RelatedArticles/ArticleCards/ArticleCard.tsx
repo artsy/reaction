@@ -6,7 +6,7 @@ import { pMedia } from "../../../Helpers"
 import { Date } from "../../Byline/AuthorDate"
 import { Byline } from "../../Byline/Byline"
 import { formatTime, getMediaDate } from "../../Constants"
-import { Fonts } from "../../Fonts"
+import { garamond, unica } from "Assets/Fonts"
 import { IconVideoPlay } from "../../Icon/IconVideoPlay"
 
 interface Props {
@@ -214,7 +214,7 @@ const TextContainer = styled.div`
   margin-bottom: 5px;
   .author,
   .date {
-    ${Fonts.unica("s16", "medium")};
+    ${unica("s16", "medium")};
   }
   ${pMedia.md`
     width: 100%;
@@ -223,28 +223,28 @@ const TextContainer = styled.div`
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s45")};
+  ${unica("s45")};
   margin-bottom: 30px;
   ${pMedia.md`
-    ${Fonts.unica("s32")}
+    ${unica("s32")}
   `};
 `
 
 const Header = styled.div`
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   margin-bottom: 10px;
 `
 
 const Description = styled.div`
-  ${Fonts.garamond("s23")};
+  ${garamond("s23")};
   ${pMedia.md`
-    ${Fonts.garamond("s19")}
+    ${garamond("s19")}
     margin-bottom: 20px;
   `};
 `
 
 const MediaDate = styled.div`
-  ${Fonts.unica("s16", "medium")} display: flex;
+  ${unica("s16", "medium")} display: flex;
   align-items: flex-end;
   span {
     margin-right: 5px;
@@ -262,7 +262,7 @@ const Media = styled.div`
 `
 
 const MediaPlay = Media.extend`
-  ${Fonts.unica("s16", "medium")} svg {
+  ${unica("s16", "medium")} svg {
     width: 40px;
   }
   ${pMedia.md`
@@ -273,8 +273,8 @@ const MediaPlay = Media.extend`
 `
 
 const MediaComingSoon = Media.extend`
-  ${Fonts.unica("s45")};
+  ${unica("s45")};
   ${pMedia.md`
-    ${Fonts.unica("s32")}
+    ${unica("s32")}
   `};
 `

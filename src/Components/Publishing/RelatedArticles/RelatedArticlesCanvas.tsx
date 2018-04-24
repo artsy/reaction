@@ -2,7 +2,7 @@ import _ from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import {
   RelatedArticleFigure,
   RelatedArticleFigureData,
@@ -70,7 +70,7 @@ const RelatedArticlesContainer = styled.div`
   `};
 `
 const Title = styled.div`
-  ${Fonts.unica("s32")} margin-bottom: 30px;
+  ${unica("s32")} margin-bottom: 30px;
   ${pMedia.xl`
     margin: 0 20px 30px 40px;
   `} ${pMedia.sm`

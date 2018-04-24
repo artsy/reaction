@@ -2,7 +2,7 @@ import React from "react"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { garamond } from "Assets/Fonts"
 import { PartnerInline } from "../Partner/PartnerInline"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
@@ -106,7 +106,8 @@ export const Nav = styled(NavComponent)`
   }
 `
 const Title = styled.div`
-  ${Fonts.garamond("s17")} position: absolute;
+  ${garamond("s17")};
+  position: absolute;
   width: 100%;
   text-align: center;
   font-weight: 600;
