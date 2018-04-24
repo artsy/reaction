@@ -5,10 +5,10 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   margin-top: 10px;
   display: block;
   color: #999999;
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
   line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c0 .file__ArtistNames-yu39to-0 {
@@ -43,7 +43,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 }
 
 .c0 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -55,7 +55,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 }
 
 .c0 .title {
-  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
+  font-family: Unica77LLWebMediumItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -63,7 +63,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 
 @media (max-width:720px) {
   .c0 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -73,7 +73,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   }
 
   .c0 .title {
-    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
+    font-family: Unica77LLWebMediumItalic,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -150,25 +150,25 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: #999999;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
 .c0 .title {
-  font-family: Unica77LLWebItalic , 'Arial', 'serif';
+  font-family: Unica77LLWebItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.fAhLye .c1 {
+.deDFfa .c1 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.fAhLye .c1:after {
+.deDFfa .c1:after {
   content: ", ";
 }
 

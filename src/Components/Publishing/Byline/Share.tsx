@@ -3,7 +3,7 @@ import styled, { StyledFunction } from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
@@ -132,6 +132,6 @@ const IconWrapper = styled.a`
   }
 `
 const ShareLabel = styled.span`
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   margin: 10px 10px 10px 0px;
 `

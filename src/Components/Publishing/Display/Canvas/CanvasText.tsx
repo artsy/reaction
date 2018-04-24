@@ -2,7 +2,7 @@ import { compact, map } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../../Helpers"
-import { Fonts } from "../../Fonts"
+import { garamond } from "Assets/Fonts"
 
 interface CanvasTextProps {
   disclaimer?: any
@@ -75,12 +75,11 @@ const CanvasInner = Div`
   `}
 `
 const Headline = Div`
-  ${props =>
-    props.layout === "overlay" ? Fonts.garamond("s23") : Fonts.garamond("s40")}
+  ${props => (props.layout === "overlay" ? garamond("s23") : garamond("s40"))}
   line-height: ${props => (props.layout === "overlay" ? "1.35em;" : "1.1em;")} 
   margin-bottom: 25px;
   ${props => pMedia.lg`
-    ${props.layout !== "overlay" && Fonts.garamond("s23")}
+    ${props.layout !== "overlay" && garamond("s23")}
   `}
   ${props => pMedia.sm`
     margin: 0 auto 10px auto;
@@ -88,12 +87,12 @@ const Headline = Div`
     ${props.layout !== "overlay" && "margin-left: 0;"}
   `}
   ${props => pMedia.xs`
-    ${props.layout === "overlay" && Fonts.garamond("s17")}
+    ${props.layout === "overlay" && garamond("s17")}
     line-height: 1.35em;
   `}
 `
 const Link = Div`
-  ${Fonts.garamond("s23")}
+  ${garamond("s23")}
   line-height: 1.35em;
   margin-bottom: 10px;
   display: initial;
@@ -107,10 +106,10 @@ const Link = Div`
     opacity: .6;
   }
   ${props => pMedia.lg`
-    ${props.layout !== "overlay" && Fonts.garamond("s17")}
+    ${props.layout !== "overlay" && garamond("s17")}
   `}
   ${pMedia.md`
-    ${Fonts.garamond("s17")}
+    ${garamond("s17")}
     line-height: 1.35em;
   `}
 `

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 import { PartnerBlock, ImageContainer } from "../Partner/PartnerBlock"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
@@ -61,10 +61,11 @@ export const SeriesTitleContainer = styled.div`
 `
 
 const Title = styled.div`
-  ${Fonts.unica("s120")} margin-bottom: 30px;
+  ${unica("s120")};
+  margin-bottom: 30px;
 
   ${pMedia.md`
-    ${Fonts.unica("s65")}
+    ${unica("s65")}
     margin-bottom: 20px;
   `};
 `

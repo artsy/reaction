@@ -22,6 +22,13 @@
     ["transform-rename-import", {
       "original": "..\/src\/__generated__",
       "replacement": "$1.\/__generated__"
+    }],
+    ["module-resolver", {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"],
+      "root": ["./src"],
+      "alias": {
+        "Assets": "./src/Assets"
+      }
     }]
   ]
 }

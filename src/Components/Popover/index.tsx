@@ -1,7 +1,7 @@
 import React, { cloneElement } from "react"
 import styled from "styled-components"
 
-import * as fonts from "../../Assets/Fonts"
+import { garamond } from "Assets/Fonts"
 import { PopoverArrowPositionProps, PopoverProps } from "./types"
 
 export class Popover extends React.Component<PopoverProps> {
@@ -79,5 +79,5 @@ const PopoverInner = styled.div`
   color: #fff;
   text-align: center;
   background-color: #000;
-  ${fonts.secondary.style};
+  ${garamond("s11")};
 `

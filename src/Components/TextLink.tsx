@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import { secondary } from "../Assets/Fonts"
+import { garamond } from "Assets/Fonts"
 
 export interface LinkProps
   extends React.Props<TextLink>,
@@ -24,7 +24,7 @@ export class TextLink extends React.Component<LinkProps, null> {
 }
 
 const StyledTextLink = styled(TextLink)`
-  ${secondary.style};
+  ${garamond("s11")};
   color: ${props => props.color};
   text-decoration: ${props => (props.underline ? "underline" : "none")};
 `

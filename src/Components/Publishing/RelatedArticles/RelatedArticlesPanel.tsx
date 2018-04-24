@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { Fonts } from "../Fonts"
+import { garamond, unica } from "Assets/Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
@@ -56,7 +56,7 @@ const Collection = styled.div`
 `
 
 const Label = styled.div`
-  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
+  ${unica("s16", "medium")} margin-bottom: 10px;
 `
 
 const ArticleLink = styled.a`
@@ -76,5 +76,5 @@ const ArticleImage = styled.img`
 `
 
 const ArticleTitle = styled.span`
-  ${Fonts.garamond("s17")} color: black;
+  ${garamond("s17")} color: black;
 `

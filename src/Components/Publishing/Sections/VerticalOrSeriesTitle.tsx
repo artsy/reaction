@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { getEditorialHref } from "../Constants"
 import { pMedia } from "../../Helpers"
 import { ArticleData } from "../Typings"
-import { Fonts } from "../Fonts"
+import { unica } from "Assets/Fonts"
 
 interface Props {
   article?: ArticleData
@@ -40,13 +40,13 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
 }
 
 export const Vertical = styled.div`
-  ${Fonts.unica("s16", "medium")};
+  ${unica("s16", "medium")};
   color: ${props => props.color || "black"};
   a {
     color: ${props => props.color || "black"};
     text-decoration: none;
   }
   ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
+    ${unica("s14", "medium")}
   `};
 `

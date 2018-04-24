@@ -10,7 +10,7 @@ import {
   VerticalOrSeriesTitle,
   Vertical,
 } from "../../Sections/VerticalOrSeriesTitle"
-import { Fonts } from "../../Fonts"
+import { unica } from "Assets/Fonts"
 
 interface Props {
   article?: ArticleData
@@ -59,7 +59,7 @@ export const ArticleCardsContainer = styled.div`
     margin: auto;
   }
   ${Vertical} {
-    ${Fonts.unica("s32")};
+    ${unica("s32")};
     width: 100%;
     margin-bottom: 40px;
     a {

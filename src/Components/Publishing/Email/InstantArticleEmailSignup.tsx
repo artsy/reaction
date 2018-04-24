@@ -5,7 +5,7 @@ import Colors from "../../../Assets/Colors"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
-import { Fonts } from "../Fonts"
+import * as Fonts from "Assets/Fonts"
 
 interface EmailProps {
   signupUrl: string

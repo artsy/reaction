@@ -3,7 +3,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
-import { Fonts } from "../../Fonts"
+import { unica } from "Assets/Fonts"
 import { ArtworkCaption } from "../ArtworkCaption"
 
 interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
@@ -66,7 +66,7 @@ CaptionToggle.contextTypes = {
 const StyledCaptionToggle = styled.div`
   display: none;
   ${pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
+    ${unica("s14", "medium")}
     cursor: pointer;
     display: inline-block;
     span {
@@ -78,12 +78,12 @@ const StyledCaptionToggle = styled.div`
 const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
 
 const CaptionText = CaptionDiv`
-  ${Fonts.unica("s16", "medium")}
+  ${unica("s16", "medium")}
   a {
     color: black;
   }
   ${props => pMedia.sm`
-    ${Fonts.unica("s14", "medium")}
+    ${unica("s14", "medium")}
     display: ${props.open ? "block" : "none"};
     margin-top: ${props.open ? "20px" : "0px"};
   `}
@@ -92,8 +92,9 @@ const CaptionText = CaptionDiv`
 const Index = styled.div`
   margin-left: 20px;
   white-space: nowrap;
-  ${Fonts.unica("s16")} ${pMedia.sm`
-    ${Fonts.unica("s14")}
+  ${unica("s16")};
+  ${pMedia.sm`
+    ${unica("s14")}
   `};
 `
 

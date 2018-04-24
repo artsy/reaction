@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import Colors from "../../Assets/Colors"
-import * as fonts from "../../Assets/Fonts"
-import { CircleWhiteCheckIcon } from "../../Assets/Icons/CircleWhiteCheckIcon"
-import { PlusIcon } from "../../Assets/Icons/PlusIcon"
+import Colors from "Assets/Colors"
+import { avantgarde } from "Assets/Fonts"
+import { CircleWhiteCheckIcon } from "Assets/Icons/CircleWhiteCheckIcon"
+import { PlusIcon } from "Assets/Icons/PlusIcon"
 import { media } from "../Helpers"
 
 const Link = styled.a`
@@ -12,7 +12,7 @@ const Link = styled.a`
   font-size: 14px;
   color: black;
   text-decoration: none;
-  ${fonts.primary.style};
+  ${avantgarde("s13")};
   &:hover {
     background-color: ${Colors.gray};
     cursor: pointer;

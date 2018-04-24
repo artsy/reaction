@@ -5,8 +5,8 @@ import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
+import { avantgarde, garamond } from "Assets/Fonts"
 import { ErrorBoundary } from "../../../ErrorBoundary"
-import { Fonts } from "../../Fonts"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
 
@@ -89,12 +89,12 @@ const DisplayContainer = Div`
   `}
 `
 const SponsoredBy = styled.div`
-  ${Fonts.avantgarde("s11")} color: ${Colors.grayMedium};
+  ${avantgarde("s11")} color: ${Colors.grayMedium};
   margin: 10px 0;
   text-align: center;
 `
 const Disclaimer = Div`
-  ${Fonts.garamond("s11")}
+  ${garamond("s11")}
   color: ${Colors.grayMedium};
   margin: 15px 0 0 0;
   ${props => props.layout === "overlay" && "text-align: center;"}

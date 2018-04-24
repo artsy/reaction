@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { secondary } from "../../Assets/Fonts"
+import { garamond } from "Assets/Fonts"
 import StyledTextLink from "../TextLink"
 
 interface Props {
@@ -44,8 +44,7 @@ MobileMenu.defaultProps = {
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
 const MobileMenuContainer = Div`
-  ${secondary.style}
-  font-size: 20px;
+  ${garamond("s19")};
   box-sizing: border-box;
   position: absolute;
   z-index: 1;

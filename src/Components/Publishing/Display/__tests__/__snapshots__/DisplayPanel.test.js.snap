@@ -42,7 +42,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
 }
 
 .c4 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -51,10 +51,10 @@ exports[`snapshots renders the display panel with an image 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.53em;
   margin-bottom: 20px;
 }
@@ -64,7 +64,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
 }
 
 .c6 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -220,7 +220,7 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c8 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -229,10 +229,10 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c9 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.53em;
   margin-bottom: 20px;
 }
@@ -242,7 +242,7 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c10 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;

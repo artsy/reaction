@@ -70,10 +70,10 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -220,10 +220,10 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -419,10 +419,10 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;

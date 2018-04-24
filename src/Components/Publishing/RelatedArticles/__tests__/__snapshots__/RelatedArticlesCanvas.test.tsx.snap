@@ -2,7 +2,7 @@
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 .c10 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -14,7 +14,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c9 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -89,7 +89,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c7 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -116,7 +116,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -149,11 +149,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c10 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -163,11 +163,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c9 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -196,7 +196,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;

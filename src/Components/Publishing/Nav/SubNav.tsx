@@ -5,7 +5,7 @@ import InvertedButton from "../../Buttons/Inverted"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
 import { MobileMenu } from "../../Nav/MobileMenu"
-import { Fonts } from "../Fonts"
+import { avantgarde } from "Assets/Fonts"
 import { IconHamburger } from "../Icon/IconHamburger"
 
 interface State {
@@ -49,13 +49,15 @@ export class SubNav extends React.Component<null, State> {
 }
 
 const Login = InvertedButton.extend`
-  ${Fonts.avantgarde("s11")} height: 30px;
+  ${avantgarde("s11")};
+  height: 30px;
   width: 80px;
   border-radius: 2px;
   margin: 8px;
 `
 const Signup = StyledButton.extend`
-  ${Fonts.avantgarde("s11")} height: 30px;
+  ${avantgarde("s11")};
+  height: 30px;
   width: 80px;
   background-color: white;
   border-radius: 2px;

@@ -4,7 +4,7 @@ import Icon from "./Icon"
 
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import { secondary } from "../Assets/Fonts"
+import { garamond } from "../Assets/Fonts"
 
 interface Props extends React.HTMLProps<BorderedPulldown> {
   options: any
@@ -80,12 +80,12 @@ export class BorderedPulldown extends React.Component<Props, State> {
 }
 
 const StyledBorderedPulldown = styled(BorderedPulldown)`
-  ${secondary.style} display: inline-block;
+  ${garamond("s17")};
+  display: inline-block;
   width: 200px;
   position: relative;
   border: 2px solid ${colors.grayMedium};
   text-align: left;
-  font-size: 17px;
   &.is-disabled {
     .bordered-pulldown-toggle {
       cursor: default;
