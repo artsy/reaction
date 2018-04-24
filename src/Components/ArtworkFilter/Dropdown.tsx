@@ -6,7 +6,7 @@ import Icon from "../Icon"
 
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import { avantgarde, garamond } from "../../Assets/Fonts"
+import { primary, secondary } from "../../Assets/Fonts"
 import { labelMap } from "./ParamMap"
 
 import { find } from "lodash"
@@ -127,18 +127,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 }
 
 const Button = styled.div`
-  ${avantgarde("s13")};
   background: white;
   color: black;
   border: 1px solid ${colors.grayRegular};
   display: inline-block;
   line-height: 160%;
   padding: 15px 35px 15px 18px;
+  font-size: 13px;
   vertical-align: middle;
   max-width: 120px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${primary.style};
 `
 
 const Nav = styled.div`
@@ -159,8 +160,7 @@ const SuperLabel = styled.div`
 `
 
 const NavItem = styled.div`
-  ${garamond("s11")};
-  text-align: left;
+  ${secondary.style} text-align: left;
   color: white;
   display: block;
   border-bottom: 1px solid #333;

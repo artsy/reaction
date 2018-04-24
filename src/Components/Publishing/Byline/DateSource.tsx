@@ -3,7 +3,7 @@ import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { NewsBylineProps } from "./NewsByline"
 import { track } from "../../../Utils/track"
 
@@ -61,10 +61,10 @@ export class DateSource extends Component<NewsBylineProps & Props, null> {
 
 const DateSourceContainer = styled.div`
   display: flex;
-  ${unica("s14")};
+  ${Fonts.unica("s14")};
 
   ${pMedia.sm`
-    ${unica("s12")}
+    ${Fonts.unica("s12")}
   `} a {
     color: ${colors.grayDark};
   }

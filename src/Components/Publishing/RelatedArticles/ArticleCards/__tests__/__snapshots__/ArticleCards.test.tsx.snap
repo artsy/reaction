@@ -2,7 +2,7 @@
 
 exports[`ArticleCard renders properly 1`] = `
 .c10 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -14,7 +14,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c9 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -127,14 +127,14 @@ exports[`ArticleCard renders properly 1`] = `
 
 .c4 .author,
 .c4 .date {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
 .c6 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
@@ -142,7 +142,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c5 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -150,10 +150,10 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .c15 {
@@ -173,7 +173,7 @@ exports[`ArticleCard renders properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -202,11 +202,11 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media (max-width:720px) {
   .c10 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -216,11 +216,11 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media (max-width:720px) {
   .c9 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -261,7 +261,7 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media (max-width:900px) {
   .c6 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
@@ -270,10 +270,10 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media (max-width:900px) {
   .c7 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
     margin-bottom: 20px;
   }
 }

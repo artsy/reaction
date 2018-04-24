@@ -2,9 +2,7 @@
 
 exports[`renders an artwork caption properly 1`] = `
 .c8 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 11px;
-  line-height: 1.1em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
   -webkit-text-decoration: none;
@@ -20,7 +18,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 .c4 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -32,7 +30,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 .c4 .title {
-  font-family: Unica77LLWebMediumItalic,Arial,serif;
+  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -43,7 +41,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 .c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -56,7 +54,7 @@ exports[`renders an artwork caption properly 1`] = `
 .c9 {
   margin-left: 20px;
   white-space: nowrap;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -91,7 +89,7 @@ exports[`renders an artwork caption properly 1`] = `
 
 @media (max-width:720px) {
   .c4 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -101,7 +99,7 @@ exports[`renders an artwork caption properly 1`] = `
   }
 
   .c4 .title {
-    font-family: Unica77LLWebMediumItalic,Arial,serif;
+    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -116,7 +114,7 @@ exports[`renders an artwork caption properly 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -131,7 +129,7 @@ exports[`renders an artwork caption properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -142,7 +140,7 @@ exports[`renders an artwork caption properly 1`] = `
 
 @media (max-width:720px) {
   .c9 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -257,7 +255,7 @@ exports[`renders an image caption properly 1`] = `
 }
 
 .c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -270,7 +268,7 @@ exports[`renders an image caption properly 1`] = `
 .c4 {
   margin-left: 20px;
   white-space: nowrap;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -305,7 +303,7 @@ exports[`renders an image caption properly 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -320,7 +318,7 @@ exports[`renders an image caption properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -331,7 +329,7 @@ exports[`renders an image caption properly 1`] = `
 
 @media (max-width:720px) {
   .c4 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;

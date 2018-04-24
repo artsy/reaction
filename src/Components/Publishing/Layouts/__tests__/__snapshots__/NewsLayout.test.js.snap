@@ -2,7 +2,7 @@
 
 exports[`News Layout renders the news layout on mobile 1`] = `
 .c17 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -34,7 +34,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -149,7 +149,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c10 p,
 .c10 .public-DraftEditorPlaceholder-root,
 .c10 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -209,10 +209,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c12 ul,
 .c12 ol,
 .c12 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -235,16 +235,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 li {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c12 h1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -268,7 +268,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 h2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -281,7 +281,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 h3 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -292,7 +292,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 .c12 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -303,7 +303,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 blockquote {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -350,10 +350,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 .c12 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -391,10 +391,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 34px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   font-weight: 600;
 }
 
@@ -414,7 +414,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding: 0;
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -441,11 +441,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 @media (max-width:720px) {
   .c17 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -462,7 +462,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 @media (max-width:720px) {
   .c18 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -506,35 +506,35 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   .c12 ul,
   .c12 ol,
   .c12 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c12 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c12 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c12 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c12 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -542,14 +542,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   }
 
   .c12 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c12 blockquote {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -584,10 +584,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 23px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
     line-height: 1.1;
   }
 }
@@ -905,7 +905,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 exports[`News Layout renders the news layout properly 1`] = `
 .c17 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -937,7 +937,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1052,7 +1052,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c10 p,
 .c10 .public-DraftEditorPlaceholder-root,
 .c10 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1112,10 +1112,10 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c12 ul,
 .c12 ol,
 .c12 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -1138,16 +1138,16 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 li {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c12 h1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -1171,7 +1171,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 h2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -1184,7 +1184,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 h3 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -1195,7 +1195,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 .c12 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -1206,7 +1206,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 blockquote {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -1253,10 +1253,10 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 .c12 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -1294,10 +1294,10 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 34px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   font-weight: 600;
 }
 
@@ -1317,7 +1317,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   padding: 0;
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1344,11 +1344,11 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 @media (max-width:720px) {
   .c17 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1365,7 +1365,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 @media (max-width:720px) {
   .c18 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -1415,35 +1415,35 @@ exports[`News Layout renders the news layout properly 1`] = `
   .c12 ul,
   .c12 ol,
   .c12 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c12 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c12 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c12 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c12 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -1451,14 +1451,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   }
 
   .c12 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c12 blockquote {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -1493,10 +1493,10 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 23px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
     line-height: 1.1;
   }
 }

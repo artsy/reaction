@@ -7,8 +7,8 @@ import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
-import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ErrorBoundary } from "../../ErrorBoundary"
+import { Fonts } from "../Fonts"
 import { VideoControls } from "../Sections/VideoControls"
 import { trackImpression } from "./track-once"
 
@@ -475,13 +475,13 @@ const DisplayPanelContainer = styled.div`
 `
 
 const Headline = styled.div`
-  ${unica("s16", "medium")};
+  ${Fonts.unica("s16", "medium")};
   line-height: 1.23em;
   margin-bottom: 3px;
 `
 
 const Body = styled.div`
-  ${garamond("s17")};
+  ${Fonts.garamond("s17")};
   line-height: 1.53em;
   margin-bottom: 20px;
   a {
@@ -490,7 +490,7 @@ const Body = styled.div`
 `
 
 const SponsoredBy = styled.div`
-  ${avantgarde("s11")};
+  ${Fonts.avantgarde("s11")};
   color: ${Colors.grayRegular};
 `
 

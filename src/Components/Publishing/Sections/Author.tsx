@@ -4,7 +4,7 @@ import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface AuthorProps {
   author: any
@@ -71,12 +71,11 @@ const AuthorContainer = styled.div`
 `
 const AuthorInfo = styled.div`
   display: block;
-  ${unica("s16", "medium")};
-  a {
+  ${Fonts.unica("s16", "medium")} a {
     color: black;
   }
   ${pMedia.xs`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `
 const Twitter = styled.span`

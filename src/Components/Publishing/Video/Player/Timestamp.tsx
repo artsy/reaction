@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { formatTime } from "../../Constants"
-import { garamond } from "Assets/Fonts"
+import { Fonts } from "../../Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   duration: number
@@ -19,5 +19,5 @@ const TimestampComponent: React.SFC<Props> = props => {
 }
 
 export const Timestamp = styled(TimestampComponent)`
-  ${garamond("s23")};
+  ${Fonts.garamond("s23")};
 `

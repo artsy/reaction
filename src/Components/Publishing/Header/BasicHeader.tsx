@@ -7,7 +7,7 @@ import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
 import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
 import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 import {
   CoverImage,
@@ -134,7 +134,7 @@ const Description = styled.div`
 `
 
 const defaults = css`
-  ${unica("s16", "medium")} line-height: 1.1em;
+  ${Fonts.unica("s16", "medium")} line-height: 1.1em;
   margin-bottom: 10px;
 `
 
@@ -206,12 +206,12 @@ const Container = div`
 const Vertical = styled.div`
   ${defaults};
   ${breakpoint.xs`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `
 
 const Title = styled.div`
-  ${unica("s80", "regular")} line-height: 1.1em;
+  ${Fonts.unica("s80", "regular")} line-height: 1.1em;
   letter-spacing: -0.035em;
   max-width: 1250px;
   margin: 0 auto 27px auto;
@@ -226,7 +226,7 @@ const Title = styled.div`
 const LeadParagraph = styled.div`
   ${defaults};
   ${breakpoint.xs`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `
 
@@ -243,7 +243,7 @@ const Author = styled.div`
   }
 
   ${breakpoint.xs`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `
 
@@ -252,6 +252,6 @@ const Date = styled.div`
   white-space: nowrap;
 
   ${breakpoint.xs`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `

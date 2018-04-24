@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import Text from "../Text"
 import colors from "../../Assets/Colors"
 import styled from "styled-components"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../Publishing/Fonts"
 import { Props, State, StepProps } from "./types"
 import { isUndefined } from "lodash"
 
@@ -174,7 +174,7 @@ const Step = styled.div`
 `
 
 const StyledText = Text.extend`
-  ${unica("s12", "regular")};
+  ${Fonts.unica("s12", "regular")};
   margin-top: 0;
   margin-bottom: 0;
 `

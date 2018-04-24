@@ -72,10 +72,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -89,7 +89,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c53 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -101,7 +101,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c72 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -113,7 +113,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c79 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -169,7 +169,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c56 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -262,14 +262,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c68 .author,
 .c68 .date {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
 }
 
 .c70 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
@@ -277,7 +277,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c69 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -285,10 +285,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c71 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .c77 {
@@ -308,7 +308,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -401,15 +401,15 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c19 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   margin-left: 20px;
 }
 
 .c83 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -440,10 +440,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c50 ul,
 .c50 ol,
 .c50 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -466,16 +466,16 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 li {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c50 h1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -499,7 +499,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 h2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -512,7 +512,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 h3 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -523,7 +523,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c50 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -534,10 +534,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 blockquote {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -573,10 +573,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c50 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -605,10 +605,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c59 ul,
 .c59 ol,
 .c59 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -631,16 +631,16 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 li {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c59 h1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -664,7 +664,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 h2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -677,7 +677,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 h3 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -688,7 +688,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c59 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -699,10 +699,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 blockquote {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -738,10 +738,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c59 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 17px;
   line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -897,10 +897,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c21 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .c14 {
@@ -991,7 +991,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c49 {
   color: white;
   margin-bottom: 15px;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 34px;
   line-height: 1.1em;
@@ -1030,7 +1030,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c41 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1045,14 +1045,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c43 {
   position: relative;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
 }
 
 .c42 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1121,10 +1121,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c45 {
   position: relative;
   margin-top: 30px;
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  -webkit-font-smoothing: antialiased;
   font-size: 23px;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .c60 {
@@ -1136,7 +1136,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c60 .c62 {
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -1161,7 +1161,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c63 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -1222,11 +1222,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:720px) {
   .c53 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1236,11 +1236,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:720px) {
   .c72 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1250,11 +1250,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:720px) {
   .c79 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -1301,7 +1301,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:900px) {
   .c70 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
@@ -1310,10 +1310,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:900px) {
   .c71 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
     margin-bottom: 20px;
   }
 }
@@ -1445,35 +1445,35 @@ exports[`Video Layout matches the snapshot 1`] = `
   .c50 ul,
   .c50 ol,
   .c50 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c50 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c50 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c50 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c50 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -1481,17 +1481,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 
   .c50 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c50 blockquote {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 
@@ -1505,35 +1505,35 @@ exports[`Video Layout matches the snapshot 1`] = `
   .c59 ul,
   .c59 ol,
   .c59 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c59 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 
   .c59 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c59 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c59 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -1541,17 +1541,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 
   .c59 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c59 blockquote {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 
@@ -1579,7 +1579,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:48em) {
   .c49 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
@@ -1625,10 +1625,10 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:48em) {
   .c45 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+    -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -1652,7 +1652,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media (max-width:720px) {
   .c63 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;

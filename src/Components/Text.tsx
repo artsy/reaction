@@ -35,8 +35,8 @@ const TextStyleToTextSize = {
 }
 
 const textStyleNameToCss = {
-  primary: fonts.avantgarde("s11"),
-  secondary: fonts.garamond("s11"),
+  primary: fonts.primary.style,
+  secondary: fonts.secondary.style,
 }
 
 const RawText: React.SFC<TextProps> = (props: TextProps) => {

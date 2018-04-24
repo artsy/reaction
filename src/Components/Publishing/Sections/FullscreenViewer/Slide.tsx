@@ -3,7 +3,7 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
-import { unica } from "Assets/Fonts"
+import { Fonts } from "../../Fonts"
 import { Caption } from "./Caption"
 
 interface ImageProps {
@@ -51,9 +51,8 @@ const Image = Img`
 const Title = styled.div`
   min-height: 25px;
   padding: 30px 60px 0 60px;
-  ${unica("s40")};
-  ${pMedia.sm`
+  ${Fonts.unica("s40")} ${pMedia.sm`
     padding: 20px 60px 0 20px;
-    ${unica("s19")}
+    ${Fonts.unica("s19")}
   `};
 `

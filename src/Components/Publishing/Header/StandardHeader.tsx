@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { garamond, unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 
 interface StandardHeaderProps {
   article?: any
@@ -43,14 +43,14 @@ const StandardHeaderContainer = styled.div`
   `};
 `
 const Title = styled.div`
-  ${garamond("s50")} margin-bottom: 50px;
+  ${Fonts.garamond("s50")} margin-bottom: 50px;
   ${pMedia.sm`
-    ${garamond("s34")}
+    ${Fonts.garamond("s34")}
   `};
 `
 const Vertical = styled.div`
-  ${unica("s16", "medium")} margin-bottom: 10px;
+  ${Fonts.unica("s16", "medium")} margin-bottom: 10px;
   ${pMedia.sm`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
   `};
 `

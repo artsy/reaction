@@ -1,16 +1,17 @@
 import { Formik, FormikProps } from "formik"
 import React from "react"
+import Yup from "yup"
 import Wizard from "../../Wizard"
 import { Step } from "./Step"
 
 import {
   ChangeMode,
   FormContainer,
-  GrayFacebookButton,
+  inputValidators,
+  StyledFacebookButton,
   StyledInput as Input,
   TOSCheckbox,
 } from "../commonElements"
-import { Validators } from "../Validators"
 import { FormComponentType, InputValues } from "../Types"
 
 export const MobileRegisterForm: FormComponentType = props => {
@@ -18,7 +19,7 @@ export const MobileRegisterForm: FormComponentType = props => {
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Validators}
+      validationSchema={Yup.object().shape(inputValidators)}
     >
       {({
         values,
@@ -84,7 +85,7 @@ export const MobileRegisterForm: FormComponentType = props => {
               </Step>
             </Wizard>
 
-            <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
+            <StyledFacebookButton>Sign up with Facebook</StyledFacebookButton>
             <p>
               Already have an account?
               <ChangeMode handleClick={props.handleChangeMode("login")}>

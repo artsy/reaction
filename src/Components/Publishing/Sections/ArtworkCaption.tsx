@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
-import { garamond, unica } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
 import { Truncator } from "./Truncator"
 
@@ -233,8 +233,8 @@ const StyledArtworkCaption = styled.div`
   margin-top: 10px;
   display: flex;
   color: ${Colors.grayDark};
-  ${unica("s14")} .title {
-    ${unica("s14", "italic")};
+  ${Fonts.unica("s14")} .title {
+    ${Fonts.unica("s14", "italic")};
   }
 
   ${pMedia.xs`
@@ -246,7 +246,7 @@ const StyledClassicCaption = styled.div`
   margin-top: 10px;
   display: block;
   color: ${Colors.grayDark};
-  ${garamond("s15")};
+  ${Fonts.garamond("s15")};
 
   ${ArtistNames} {
     margin-right: 0;
@@ -262,20 +262,20 @@ const StyledClassicCaption = styled.div`
 `
 
 const StyledFullscreenCaption = styled.div`
-  ${unica("s16", "medium")};
+  ${Fonts.unica("s16", "medium")};
   display: flex;
   color: black;
 
   .title {
-    ${unica("s16", "mediumItalic")};
+    ${Fonts.unica("s16", "mediumItalic")};
   }
 
   ${pMedia.sm`
-    ${unica("s14", "medium")}
+    ${Fonts.unica("s14", "medium")}
     flex-direction: column;
 
     .title {
-      ${unica("s14", "mediumItalic")}
+      ${Fonts.unica("s14", "mediumItalic")}
     }
   `};
 `

@@ -8,7 +8,7 @@ import {
 } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
-import { garamond } from "Assets/Fonts"
+import * as fonts from "../../../../Assets/Fonts"
 import Events from "../../../../Utils/Events"
 import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
@@ -41,9 +41,9 @@ interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
 }
 
 const NoResultsContainer = styled.div`
-  ${garamond("s17")};
-  text-align: center;
+  ${fonts.secondary.style} text-align: center;
   font-style: italic;
+  font-size: 17px;
   border-bottom: none;
   font-weight: lighter;
 `

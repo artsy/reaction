@@ -2,9 +2,7 @@
 
 exports[`renders properly 1`] = `
 .c11 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 11px;
-  line-height: 1.1em;
+  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   -webkit-font-smoothing: antialiased;
   color: #999;
   -webkit-text-decoration: none;
@@ -20,7 +18,7 @@ exports[`renders properly 1`] = `
 }
 
 .c7 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -32,7 +30,7 @@ exports[`renders properly 1`] = `
 }
 
 .c7 .title {
-  font-family: Unica77LLWebMediumItalic,Arial,serif;
+  font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -43,7 +41,7 @@ exports[`renders properly 1`] = `
 }
 
 .c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
+  font-family: Unica77LLWebMedium , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -56,7 +54,7 @@ exports[`renders properly 1`] = `
 .c12 {
   margin-left: 20px;
   white-space: nowrap;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -115,7 +113,7 @@ exports[`renders properly 1`] = `
 .c1 {
   min-height: 25px;
   padding: 30px 60px 0 60px;
-  font-family: Unica77LLWebRegular,Arial,serif;
+  font-family: Unica77LLWebRegular , 'Arial', 'serif';
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -123,7 +121,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:720px) {
   .c7 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -133,7 +131,7 @@ exports[`renders properly 1`] = `
   }
 
   .c7 .title {
-    font-family: Unica77LLWebMediumItalic,Arial,serif;
+    font-family: Unica77LLWebMediumItalic , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -148,7 +146,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -163,7 +161,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
+    font-family: Unica77LLWebMedium , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -174,7 +172,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:720px) {
   .c12 {
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -200,7 +198,7 @@ exports[`renders properly 1`] = `
 @media (max-width:720px) {
   .c1 {
     padding: 20px 60px 0 20px;
-    font-family: Unica77LLWebRegular,Arial,serif;
+    font-family: Unica77LLWebRegular , 'Arial', 'serif';
     -webkit-font-smoothing: antialiased;
     font-size: 19px;
     line-height: 1.5em;

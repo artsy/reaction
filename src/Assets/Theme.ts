@@ -1,7 +1,4 @@
-import Colors from "./Colors"
-
 export default {
-  breakpoints: [768, 900, 1024, 1192],
   flexboxgrid: {
     // Defaults
     gutterWidth: 3, // rem
@@ -27,5 +24,4 @@ export default {
       xl: 1280, // px
     },
   },
-  colors: Colors,
 }

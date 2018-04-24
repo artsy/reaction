@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { garamond } from "Assets/Fonts"
+import { Fonts } from "../Fonts"
 import { AuthorDateClassic } from "./AuthorDateClassic"
 
 interface ClassicHeaderProps {
@@ -37,7 +37,7 @@ const ClassicHeaderContainer = styled.div`
   text-align: center;
   p,
   > p {
-    ${garamond("s19")};
+    ${Fonts.garamond("s19")};
     line-height: 1.35em;
     text-align: left;
     max-width: 580px;
@@ -51,16 +51,16 @@ const ClassicHeaderContainer = styled.div`
   `} ${pMedia.xs`
     text-align: left;
     p, > p {
-      ${garamond("s17")};
+      ${Fonts.garamond("s17")};
       line-height: 1.35em;
     }
   `};
 `
 const Title = styled.div`
-  ${garamond("s37")};
+  ${Fonts.garamond("s37")};
   margin-bottom: 30px;
 
   ${pMedia.xs`
-    ${garamond("s34")}
+    ${Fonts.garamond("s34")}
   `};
 `
