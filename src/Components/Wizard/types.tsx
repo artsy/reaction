@@ -7,7 +7,7 @@ export interface RenderProps {
   previous: (v: any) => void
   onComplete: (v: any) => void
   pageIndex: number
-  pages?: WizardSchema
+  pages?: WizardSteps
   values?: any
 }
 
@@ -20,4 +20,4 @@ export interface Step {
   validate?: any
   validationSchema?: any
 }
-export type WizardSchema<S = Step> = S[]
+export type WizardSteps<S = Step> = S[]

@@ -1,12 +1,12 @@
 import React from "react"
-import { WizardSchema, Wizard, RenderProps } from "../../Wizard"
+import { WizardSteps, Wizard, RenderProps } from "../../Wizard"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import Title from "../../Title"
 
 export const BasicSlideshow = () => {
-  const pages: WizardSchema = [
+  const pages: WizardSteps = [
     {
       label: "Start",
       component: makePage(colors.greenRegular, "Beginning."),

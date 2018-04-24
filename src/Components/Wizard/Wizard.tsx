@@ -1,6 +1,6 @@
 import React from "react"
 
-import { RenderProps, WizardSchema } from "./types"
+import { RenderProps, WizardSteps } from "./types"
 
 // export const Step: StepType = ({ component: Component, ...restProps }) => (
 //   <Component {...restProps} />
@@ -8,7 +8,7 @@ import { RenderProps, WizardSchema } from "./types"
 
 interface Props {
   onComplete?: any // (values: any) => void // FormikHandler
-  pages: WizardSchema
+  pages: WizardSteps
   children: React.ComponentType<RenderProps>
 }
 

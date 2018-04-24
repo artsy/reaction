@@ -1,4 +1,4 @@
-import { RenderProps, WizardSchema, Step } from "./types"
+import { RenderProps, WizardSteps, Step } from "./types"
 import { Wizard } from "./Wizard"
 
-export { RenderProps, Wizard, Step, WizardSchema }
+export { RenderProps, Wizard, Step, WizardSteps }

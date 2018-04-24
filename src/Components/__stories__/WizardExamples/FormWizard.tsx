@@ -1,7 +1,7 @@
 import React from "react"
 import yup from "yup"
 import { Field } from "formik"
-import { WizardSchema, Wizard, RenderProps } from "../../Wizard"
+import { WizardSteps, Wizard, RenderProps } from "../../Wizard"
 import { StepMarker } from "../../StepMarker"
 import { WizardForm } from "../../Forms/support"
 import Button from "../../Buttons/Default"
@@ -15,7 +15,7 @@ export const FormWizard = () => {
     actions.setSubmitting(false)
   }
 
-  const pages: WizardSchema = [
+  const pages: WizardSteps = [
     {
       label: "Name",
       component: ({ form, wizard }) => (

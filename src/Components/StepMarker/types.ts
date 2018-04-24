@@ -4,11 +4,11 @@ export interface RenderProps {
   nextStep: () => void
   previousStep: () => void
   gotoStep: (index: number) => void
-  stepState: State
+  stepState: StepMarkerState
   isComplete: () => boolean
 }
 
-export interface Props {
+export interface StepMarkerProps {
   children?: (renderProps: RenderProps) => ReactNode | void
   steps: Step[]
   style?: any
@@ -16,7 +16,7 @@ export interface Props {
   currentStepIndex: number
 }
 
-export interface State {
+export interface StepMarkerState {
   currentStepIndex: number
   steps: StepState[]
 }
