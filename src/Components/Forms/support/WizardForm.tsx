@@ -54,6 +54,7 @@ export class WizardForm extends React.Component<Props> {
       <Formik
         initialValues={initialValues}
         validate={this.activePage.validate}
+        validationSchema={this.activePage.validationSchema}
         onSubmit={this.handleSubmit}
         render={formikRenderProps => {
           const { handleSubmit } = formikRenderProps

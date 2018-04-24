@@ -1,13 +1,9 @@
 import React from "react"
 import yup from "yup"
+import { Field } from "formik"
 import { WizardSchema, Wizard, RenderProps } from "../../Wizard"
 import { StepMarker } from "../../StepMarker"
-import {
-  FormikInput,
-  FormikCheckbox,
-  validateYupSchemaSync,
-  WizardForm,
-} from "../../Forms/support"
+import { WizardForm } from "../../Forms/support"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
@@ -22,21 +18,32 @@ export const FormWizard = () => {
   const pages: WizardSchema = [
     {
       label: "Name",
-      component: props => (
+      component: ({ form, wizard }) => (
         <FormPage>
           <Fields>
-            <FormikInput
-              autoFocus
-              name="name"
-              type="text"
-              placeholder="Your Name"
-            />
+            <InputContainer>
+              <Label htmlFor="name">Name</Label>
+              <Field
+                autoFocus
+                name="name"
+                type="text"
+                placeholder="Your Name"
+              />
+            </InputContainer>
           </Fields>
-          <Button onClick={props.form.handleSubmit}>Continue to Age</Button>
+          <Button
+            disabled={!(Object.keys(form.errors).length === 0)}
+            onClick={form.handleSubmit}
+          >
+            Continue to Age
+          </Button>
+          <pre>
+            Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
+          </pre>
         </FormPage>
       ),
       stepName: "name",
-      validate: validateYupSchemaSync({
+      validationSchema: yup.object().shape({
         name: yup.string().required("Please enter your name"),
       }),
     },
@@ -45,38 +52,56 @@ export const FormWizard = () => {
       component: ({ form, wizard }) => (
         <FormPage>
           <Fields>
-            <FormikInput
-              autoFocus
-              name="age"
-              type="text"
-              placeholder="Your Age"
-            />
-            <FormikCheckbox name="agree">Agree</FormikCheckbox>
+            <InputContainer>
+              <Label htmlFor="age">Age</Label>
+              <Field autoFocus name="age" type="text" placeholder="Your Age" />
+            </InputContainer>
+            <InputContainer>
+              <Label htmlFor="agree">Agree</Label>
+              <Field checked={form.values.agree} type="checkbox" name="agree" />
+            </InputContainer>
           </Fields>
-          <Button onClick={form.handleSubmit}>Finish</Button>
+          <Button
+            disabled={!(Object.keys(form.errors).length === 0)}
+            onClick={form.handleSubmit}
+          >
+            Finish
+          </Button>
           <Button onClick={wizard.previous}>Back</Button>
+          <pre>
+            Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
+          </pre>
         </FormPage>
       ),
       stepName: "age",
-      validate: validateYupSchemaSync({
-        agree: yup.boolean().oneOf([true], "You must agree"),
-        age: yup
-          .number()
-          .min(18, "You must be at least 18 to proceed")
-          .required("Age is required"),
-      }),
+      validate: values => {
+        const errors: any = {}
+        const age = Number(values.age)
+        if (age < 18) errors.age = "You must be at least 18 to proceed"
+        if (Number.isNaN(age)) errors.age = "Ages are numbers"
+        if (!values.agree) errors.agree = "You must agree"
+        return errors
+      },
     },
     {
       label: "Review",
-      component: ({ wizard, form }) => (
+      component: ({ form, wizard }) => (
         <FormPage>
           <Fields>
             Please Confirm:
             {JSON.stringify(form.values)}
           </Fields>
 
-          <Button onClick={form.handleSubmit}>Submit</Button>
+          <Button
+            disabled={!(Object.keys(form.errors).length === 0)}
+            onClick={form.handleSubmit}
+          >
+            Submit
+          </Button>
           <Button onClick={wizard.previous}>Back</Button>
+          <pre>
+            Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
+          </pre>
         </FormPage>
       ),
       stepName: "review",
@@ -94,7 +119,7 @@ export const FormWizard = () => {
             />
           </Nav>
           <WizardForm {...wizardBag} container={Form} />
-          <pre>{JSON.stringify(wizardBag.values, null, 2)}</pre>
+          <pre>Values: {JSON.stringify(wizardBag.values, null, 2)}</pre>
         </Container>
       )}
     </Wizard>
@@ -105,6 +130,14 @@ const Container = styled.div`
   margin: 20px;
   width: 500px;
   height: 400px;
+`
+
+const Label = styled.label`
+  margin-right: 10px;
+`
+
+const InputContainer = styled.div`
+  text-align: left;
 `
 
 const FormPage = styled.div`
@@ -125,6 +158,7 @@ const Form = styled.form`
 
 const Fields = styled.div`
   margin: auto;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -142,6 +176,3 @@ const Nav = styled.div`
   width: 100%;
   height: 70px;
 `
-// ${NavIcon} {
-//   height: ${(p: any) => p.height}px;
-// }

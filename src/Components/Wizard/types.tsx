@@ -2,6 +2,7 @@ import { FormikHandler } from "../Forms/support"
 
 export interface RenderProps {
   validate?: () => any | FormikHandler
+  validationSchema?: () => any | FormikHandler
   next: (v: any) => void
   previous: (v: any) => void
   onComplete: (v: any) => void
@@ -17,5 +18,6 @@ export interface Step {
   component: any | React.ComponentType<RenderProps>
   stepName: string
   validate?: any
+  validationSchema?: any
 }
 export type WizardSchema<S = Step> = S[]
