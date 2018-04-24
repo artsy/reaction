@@ -31,12 +31,7 @@ export const FormWizard = () => {
               />
             </InputContainer>
           </Fields>
-          <Button
-            disabled={!(Object.keys(form.errors).length === 0)}
-            onClick={form.handleSubmit}
-          >
-            Continue to Age
-          </Button>
+          <Button onClick={form.handleSubmit}>Continue to Age</Button>
           <pre>
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
           </pre>
@@ -61,12 +56,7 @@ export const FormWizard = () => {
               <Field checked={form.values.agree} type="checkbox" name="agree" />
             </InputContainer>
           </Fields>
-          <Button
-            disabled={!(Object.keys(form.errors).length === 0)}
-            onClick={form.handleSubmit}
-          >
-            Finish
-          </Button>
+          <Button onClick={form.handleSubmit}>Finish</Button>
           <Button onClick={wizard.previous}>Back</Button>
           <pre>
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
@@ -91,13 +81,7 @@ export const FormWizard = () => {
             Please Confirm:
             {JSON.stringify(form.values)}
           </Fields>
-
-          <Button
-            disabled={!(Object.keys(form.errors).length === 0)}
-            onClick={form.handleSubmit}
-          >
-            Submit
-          </Button>
+          <Button onClick={form.handleSubmit}>Submit</Button>
           <Button onClick={wizard.previous}>Back</Button>
           <pre>
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}

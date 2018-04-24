@@ -1,11 +1,9 @@
-import { FormikHandler } from "../Forms/support"
-
-export interface RenderProps {
-  validate?: () => any | FormikHandler
-  validationSchema?: () => any | FormikHandler
-  next: (v: any) => void
-  previous: (v: any) => void
-  onComplete: (v: any) => void
+export interface RenderProps<V = {}> {
+  validate?: (values: V) => Partial<V>
+  validationSchema?: () => any
+  next: (values: V) => void
+  previous: () => void
+  onComplete: (values: V) => void
   pageIndex: number
   pages?: WizardSteps
   values?: any

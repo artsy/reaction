@@ -19,7 +19,7 @@ export const BasicSlideshow = () => {
     },
     {
       label: "End",
-      component: makePage(colors.purpleRegular, "End."),
+      component: makePage(colors.purpleRegular, "End.", "white"),
       stepName: "step3",
     },
   ]
@@ -47,9 +47,13 @@ const Container = styled.div`
   height: 500px;
 `
 
-const makePage: (c, t) => React.SFC<any> = (color, text) => props => (
-  <Page color={color}>
-    <Title>{text}</Title>
+const makePage: (bg, t, c?) => React.SFC<any> = (
+  bgColor,
+  text,
+  textColor = "black"
+) => props => (
+  <Page color={bgColor}>
+    <Title color={textColor}>{text}</Title>
     <Button onClick={props.previous}>Back</Button>
     <Button onClick={props.next}>Next</Button>
   </Page>

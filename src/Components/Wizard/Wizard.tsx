@@ -1,13 +1,8 @@
 import React from "react"
-
 import { RenderProps, WizardSteps } from "./types"
 
-// export const Step: StepType = ({ component: Component, ...restProps }) => (
-//   <Component {...restProps} />
-// )
-
 interface Props {
-  onComplete?: any // (values: any) => void // FormikHandler
+  onComplete?: any
   pages: WizardSteps
   children: React.ComponentType<RenderProps>
 }
@@ -53,19 +48,14 @@ export class Wizard extends React.Component<Props, State> {
 
   render() {
     const { pageIndex } = this.state
-    const { children: Wrapper } = this.props
-    return (
-      <Wrapper
-        pages={this.props.pages}
-        pageIndex={pageIndex}
-        next={this.next}
-        previous={this.previous}
-        onComplete={this.props.onComplete}
-        values={this.state.values}
-        // goToPage=
-        // reset=
-        // exit=
-      />
-    )
+    const { pages, onComplete } = this.props
+    return React.createElement(this.props.children, {
+      pages,
+      pageIndex,
+      next: this.next,
+      previous: this.previous,
+      onComplete,
+      values: this.state.values,
+    })
   }
 }

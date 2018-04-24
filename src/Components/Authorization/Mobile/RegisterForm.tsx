@@ -1,6 +1,6 @@
 import { Formik, FormikProps } from "formik"
 import React from "react"
-import Wizard from "../../Wizard"
+import { Wizard } from "../../Wizard"
 import { Step } from "./Step"
 
 import {
@@ -12,6 +12,8 @@ import {
 } from "../commonElements"
 import { Validators } from "../Validators"
 import { FormComponentType, InputValues } from "../Types"
+
+const Wiz: any = Wizard
 
 export const MobileRegisterForm: FormComponentType = props => {
   return (
@@ -31,7 +33,7 @@ export const MobileRegisterForm: FormComponentType = props => {
       }: FormikProps<InputValues>) => {
         return (
           <FormContainer onSubmit={handleSubmit}>
-            <Wizard errors={errors}>
+            <Wiz errors={errors}>
               <Step>
                 <Input
                   type="email"
@@ -82,7 +84,7 @@ export const MobileRegisterForm: FormComponentType = props => {
                   I Agree to the TOS And PP
                 </TOSCheckbox>
               </Step>
-            </Wizard>
+            </Wiz>
 
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <p>

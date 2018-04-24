@@ -9,14 +9,25 @@ import {
   WizardSteps,
   // Step,
 } from "../../Wizard"
+import styled from "styled-components"
 
 interface Props extends WizardRenderProps {
   initialValues?: any
-  container: any // a (probably styled) form element
+  container?: React.ComponentClass<any> // a (probably styled) form element
   pages?: WizardSteps
 }
+
+const FormContainer = styled.form`
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+`
+
 export class WizardForm extends React.Component<Props> {
-  static defaultProps = { initialValues: {} }
+  static defaultProps = {
+    initialValues: {},
+    container: FormContainer,
+  }
   private next: <Values>(v: Values) => void
 
   constructor(props) {
