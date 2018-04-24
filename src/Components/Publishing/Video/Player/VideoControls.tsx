@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { garamond } from "Assets/Fonts"
+import { garamond } from "Assets/Fonts.tsx"
 import { IconVideoFullscreen } from "../../Icon/IconVideoFullscreen"
 import { MuteUnmute, MuteUnmuteContainer } from "./MuteUnmute"
 import { PlayPause } from "./PlayPause"

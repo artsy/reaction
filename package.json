@@ -181,7 +181,10 @@
     "setupFiles": [
       "raf/polyfill",
       "./src/setup_jest.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "Assets(.*)$": "<rootDir>/src/Assets/$1"
+    }
   },
   "lint-staged": {
     "*.@(ts|tsx)": [

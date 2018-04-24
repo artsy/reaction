@@ -2,7 +2,7 @@
 
 exports[`News Byline renders on mobile 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -34,7 +34,7 @@ exports[`News Byline renders on mobile 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -107,11 +107,11 @@ exports[`News Byline renders on mobile 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -128,7 +128,7 @@ exports[`News Byline renders on mobile 1`] = `
 
 @media (max-width:720px) {
   .c4 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -243,7 +243,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -288,7 +288,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -312,7 +312,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
 
 exports[`News Byline renders properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -344,7 +344,7 @@ exports[`News Byline renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -417,11 +417,11 @@ exports[`News Byline renders properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -438,7 +438,7 @@ exports[`News Byline renders properly 1`] = `
 
 @media (max-width:720px) {
   .c4 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -568,7 +568,7 @@ exports[`News Byline renders properly when truncated 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -613,7 +613,7 @@ exports[`News Byline renders properly when truncated 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
@@ -637,7 +637,7 @@ exports[`News Byline renders properly when truncated 1`] = `
 
 exports[`News Byline renders without a news source 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -669,7 +669,7 @@ exports[`News Byline renders without a news source 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -742,11 +742,11 @@ exports[`News Byline renders without a news source 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -763,7 +763,7 @@ exports[`News Byline renders without a news source 1`] = `
 
 @media (max-width:720px) {
   .c4 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;

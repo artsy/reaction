@@ -37,10 +37,10 @@ exports[`renders column_width properly 1`] = `
 .c1 ul,
 .c1 ol,
 .c1 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -63,16 +63,16 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c1 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -96,7 +96,7 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -109,7 +109,7 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -120,7 +120,7 @@ exports[`renders column_width properly 1`] = `
 
 .c1 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -131,10 +131,10 @@ exports[`renders column_width properly 1`] = `
 }
 
 .c1 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -170,10 +170,10 @@ exports[`renders column_width properly 1`] = `
 
 .c1 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -196,35 +196,35 @@ exports[`renders column_width properly 1`] = `
   .c1 ul,
   .c1 ol,
   .c1 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c1 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c1 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -232,17 +232,17 @@ exports[`renders column_width properly 1`] = `
   }
 
   .c1 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c1 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 
@@ -307,10 +307,10 @@ exports[`renders fillwidth properly 1`] = `
 .c1 ul,
 .c1 ol,
 .c1 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -333,16 +333,16 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c1 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -366,7 +366,7 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -379,7 +379,7 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -390,7 +390,7 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -401,10 +401,10 @@ exports[`renders fillwidth properly 1`] = `
 }
 
 .c1 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -440,10 +440,10 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -466,35 +466,35 @@ exports[`renders fillwidth properly 1`] = `
   .c1 ul,
   .c1 ol,
   .c1 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c1 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c1 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -502,17 +502,17 @@ exports[`renders fillwidth properly 1`] = `
   }
 
   .c1 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c1 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 
@@ -577,10 +577,10 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 ul,
 .c1 ol,
 .c1 div[data-block=true] .public-DraftStyleDefault-block {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0;
@@ -603,16 +603,16 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 li {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
 .c1 h1 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
   line-height: 1.1em;
@@ -636,7 +636,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 h2 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
   line-height: 1.1em;
@@ -649,7 +649,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 h3 {
-  font-family: Unica77LLWebRegular , 'Arial', 'serif';
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -660,7 +660,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 h3 strong {
   font-weight: normal;
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
   line-height: 1.5em;
@@ -671,10 +671,10 @@ exports[`renders overflow_fillwidth properly 1`] = `
 }
 
 .c1 blockquote {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
@@ -710,10 +710,10 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 .artist-follow:after {
   content: "Follow";
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   text-transform: none;
 }
 
@@ -736,35 +736,35 @@ exports[`renders overflow_fillwidth properly 1`] = `
   .c1 ul,
   .c1 ol,
   .c1 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 li {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 
   .c1 h1 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
   .c1 h2 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
   .c1 h3 {
-    font-family: Unica77LLWebRegular , 'Arial', 'serif';
+    font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
@@ -772,17 +772,17 @@ exports[`renders overflow_fillwidth properly 1`] = `
   }
 
   .c1 h3 strong {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
   .c1 blockquote {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
 

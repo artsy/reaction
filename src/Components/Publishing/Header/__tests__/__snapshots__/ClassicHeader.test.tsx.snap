@@ -2,7 +2,7 @@
 
 exports[`AuthorDate renders a single author 1`] = `
 .c2 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -19,7 +19,7 @@ exports[`AuthorDate renders a single author 1`] = `
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -37,7 +37,7 @@ exports[`AuthorDate renders a single author 1`] = `
 
 .c0 {
   display: block;
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -74,7 +74,7 @@ exports[`AuthorDate renders a single author 1`] = `
 
 exports[`AuthorDate renders multiple authors 1`] = `
 .c2 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -91,7 +91,7 @@ exports[`AuthorDate renders multiple authors 1`] = `
 }
 
 .c1 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -109,7 +109,7 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 .c0 {
   display: block;
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -146,7 +146,7 @@ exports[`AuthorDate renders multiple authors 1`] = `
 
 exports[`Classic Header renders classic header properly 1`] = `
 .c3 {
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -164,7 +164,7 @@ exports[`Classic Header renders classic header properly 1`] = `
 
 .c2 {
   display: block;
-  font-family: 'ITC Avant Garde Gothic W04', 'AvantGardeGothicITCW01D 731075', 'AvantGardeGothicITCW01Dm', 'Helvetica', 'sans-serif';
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
   -webkit-letter-spacing: 1px;
@@ -196,10 +196,10 @@ exports[`Classic Header renders classic header properly 1`] = `
 
 .c0 p,
 .c0 > p {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 19px;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.35em;
   text-align: left;
   max-width: 580px;
@@ -209,10 +209,10 @@ exports[`Classic Header renders classic header properly 1`] = `
 }
 
 .c1 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 37px;
   line-height: 1.2em;
+  -webkit-font-smoothing: antialiased;
   margin-bottom: 30px;
 }
 
@@ -229,20 +229,20 @@ exports[`Classic Header renders classic header properly 1`] = `
 
   .c0 p,
   .c0 > p {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 17px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
     line-height: 1.35em;
   }
 }
 
 @media (max-width:600px) {
   .c1 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -277,7 +277,7 @@ exports[`Classic Header renders classic header properly 1`] = `
 
 exports[`Classic Header renders classic header with children properly 1`] = `
 .c6 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -289,7 +289,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 }
 
 .c5 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -358,10 +358,10 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 }
 
 .c3 {
-  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 50px;
   line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
   margin-bottom: 50px;
 }
 
@@ -384,7 +384,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 }
 
 .c2 {
-  font-family: Unica77LLWebMedium , 'Arial', 'serif';
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -393,11 +393,11 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 
 @media (max-width:720px) {
   .c6 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -407,11 +407,11 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 
 @media (max-width:720px) {
   .c5 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
@@ -434,10 +434,10 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 
 @media (max-width:720px) {
   .c3 {
-    font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -455,7 +455,7 @@ exports[`Classic Header renders classic header with children properly 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebMedium , 'Arial', 'serif';
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
