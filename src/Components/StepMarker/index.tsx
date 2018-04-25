@@ -4,109 +4,83 @@ import Text from "../Text"
 import colors from "../../Assets/Colors"
 import styled from "styled-components"
 import { unica } from "Assets/Fonts"
-import { Props, State, StepProps } from "./types"
-import { isUndefined } from "lodash"
+import { ReactNode } from "react"
 
-export class StepMarker extends Component<Props, State> {
+export interface RenderProps {
+  nextStep: () => void
+  previousStep: () => void
+  gotoStep: (index: number) => void
+  stepState: StepMarkerState
+  isComplete: () => boolean
+}
+
+export interface StepMarkerProps {
+  children?: (renderProps: RenderProps) => ReactNode | void
+  steps: MarkLabel[]
+  style?: any
+  onChange?: any
+  currentStepIndex: number
+}
+
+export interface StepMarkerState {
+  currentStepIndex: number
+  steps: MarkState[]
+}
+
+type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
+
+interface MarkLabel {
+  label?: string
+  onClick?: any
+}
+
+export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
+  static defaultProps = {
+    disableInternalState: false,
+  }
+
   constructor(props) {
     super(props)
-    this.validate(props)
-    this.state = this.getStepState(props)
+    this.state = this.computeStepState(props)
   }
 
-  validate(props: Props) {
-    const isInvalid = props.steps.filter(step => step.isActive).length > 1
-
-    if (isInvalid) {
-      console.error(
-        "(Components/StepMarker) Error: Step configuration has more than",
-        "one active item."
-      )
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentStepIndex !== this.props.currentStepIndex) {
+      this.setState(this.computeStepState(nextProps))
     }
   }
 
-  getStepState(propsOrState: State) {
-    let { currentStep, steps } = propsOrState
-
-    // If currentStep isn't passed in attempt to infer it from configuration
-    if (isUndefined(currentStep)) {
-      currentStep = steps.reduce((acc, step, index) => {
-        return step.isActive || step.isComplete ? index : acc
-      }, 0)
-    }
-
-    steps = steps.reduce((acc, step, index) => {
-      let stepToUpdate = {
-        ...step,
-        isActive: false,
-        isComplete: false,
-      }
-
-      if (index < currentStep) {
-        stepToUpdate.isComplete = true
-      }
-      if (index === currentStep) {
-        stepToUpdate.isActive = true
-      }
-
-      return acc.concat([stepToUpdate])
-    }, [])
-
+  computeStepState(props) {
+    let { currentStepIndex, steps } = props
+    const stepState = steps.map((step, i) => {
+      const isActive = i === currentStepIndex
+      const isComplete = i < currentStepIndex
+      return { ...step, isActive, isComplete }
+    })
     return {
-      currentStep,
-      steps,
+      steps: stepState,
+      currentStepIndex,
     }
-  }
-
-  updateStep(currentStep) {
-    this.setState(
-      this.getStepState({
-        ...this.state,
-        currentStep,
-      })
-    )
-  }
-
-  nextStep = () => {
-    if (this.state.currentStep < this.props.steps.length) {
-      this.updateStep(this.state.currentStep + 1)
-    }
-  }
-
-  previousStep = () => {
-    if (this.state.currentStep > 0) {
-      this.updateStep(this.state.currentStep - 1)
-    }
-  }
-
-  gotoStep = index => {
-    this.updateStep(index)
   }
 
   render() {
-    const { children } = this.props
+    const { style } = this.props
     const { steps } = this.state
 
     return (
-      <Container>
-        <Steps>
+      <Container style={style}>
+        <Markers>
           {steps.map((step, key) => {
             return (
-              <Step {...step} key={key}>
+              <Mark {...step} key={key}>
                 {step.isComplete && <StyledIcon name="check" color="white" />}
-                <StyledText align="center">{step.label}</StyledText>
-              </Step>
+                <StyledText onClick={step.onClick} align="center">
+                  {step.label}
+                </StyledText>
+              </Mark>
             )
           })}
-        </Steps>
-
-        {children &&
-          children({
-            nextStep: this.nextStep,
-            previousStep: this.previousStep,
-            gotoStep: this.gotoStep,
-            stepState: this.state,
-          })}
+        </Markers>
       </Container>
     )
   }
@@ -116,12 +90,12 @@ const Container = styled.div`
   padding: 20px;
 `
 
-const Steps = styled.div`
+const Markers = styled.div`
   display: flex;
 `
 
-const Step = styled.div`
-  ${(props: StepProps) => {
+const Mark = styled.div`
+  ${(props: MarkState) => {
     const { isActive, isComplete } = props
     const circleSize = "10px" // + 2px border
     let bgColor = colors.white
@@ -189,5 +163,3 @@ const StyledIcon = Icon.extend`
   left: -3px;
   z-index: 3;
 `
-
-Step.displayName = "Step"
