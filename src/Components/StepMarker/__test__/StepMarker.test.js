@@ -9,16 +9,6 @@ describe("StepMarker", () => {
     <Step label="Shipping" />,
     <Step label="Payment" />,
     <Step label="Review" />,
-    // {
-    //   label: "Payment",
-    //   isActive: false,
-    //   isComplete: false,
-    // },
-    // {
-    //   label: "Review",
-    //   isActive: false,
-    //   isComplete: false,
-    // },
   ]
 
   const getSteps = () => cloneDeep(defaultSteps)
