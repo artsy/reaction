@@ -22,6 +22,90 @@ interface InputState {
   value: string
 }
 
+class Input extends React.Component<InputProps, InputState> {
+  state = {
+    focused: false,
+    value: "",
+  }
+
+  onFocus = e => {
+    this.setState({
+      focused: true,
+    })
+
+    if (this.props.onFocus) {
+      this.props.onFocus(e)
+    }
+  }
+
+  onBlur = e => {
+    this.setState({
+      focused: false,
+    })
+
+    if (this.props.onBlur) {
+      this.props.onBlur(e)
+    }
+  }
+
+  onChange = e => {
+    this.setState({
+      value: e.currentTarget.value,
+    })
+  }
+
+  render() {
+    const { error, quick } = this.props
+
+    if (quick) {
+      // prettier-ignore
+      const {
+        label,
+        leftView,
+        rightView,
+        className,
+        ref,
+        type,
+        ...newProps
+      } = this.props
+      const showLabel = (!!this.state.focused || !!this.state.value) && !!label
+
+      return (
+        <Container>
+          <InputContainer
+            hasLabel={!!label}
+            focused={this.state.focused}
+            hasError={!!error}
+          >
+            <Label out={!showLabel}>{label}</Label>
+            {!!leftView && leftView}
+            <InputComponent
+              {...newProps}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onKeyUp={this.onChange}
+              value={this.props.value}
+              type={type}
+            />
+            {!!rightView && rightView}
+          </InputContainer>
+          {!!error && <Error>{error}</Error>}
+        </Container>
+      )
+    }
+
+    const { title, description } = this.props
+    return (
+      <Container>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
+        <StyledInput {...this.props as any} />
+        {!!error && <Error>{error}</Error>}
+      </Container>
+    )
+  }
+}
+
 const Container = styled.div`
   padding: 5px 0;
 `
@@ -31,7 +115,7 @@ const StyledInput = styled.input`
   ${block(24)};
 `
 
-const BorderlessInput = styled.input`
+const InputComponent = styled.input`
   ${garamond("s17")};
   border: 0;
   font-size: 17px;
@@ -40,7 +124,8 @@ const BorderlessInput = styled.input`
   transition: transform 0.25s;
 
   &:active,
-  &:focus {
+  &:focus,
+  &:not(:placeholder-shown) {
     transform: translateY(2px);
   }
 
@@ -90,87 +175,5 @@ const Error = styled.div`
   margin-top: 10px;
   color: ${Colors.redMedium};
 `
-
-class Input extends React.Component<InputProps, InputState> {
-  state = {
-    focused: false,
-    value: "",
-  }
-
-  onFocus = e => {
-    this.setState({
-      focused: true,
-    })
-
-    if (this.props.onFocus) {
-      this.props.onFocus(e)
-    }
-  }
-
-  onBlur = e => {
-    this.setState({
-      focused: false,
-    })
-
-    if (this.props.onBlur) {
-      this.props.onBlur(e)
-    }
-  }
-
-  onChange = e => {
-    this.setState({
-      value: e.currentTarget.value,
-    })
-  }
-
-  render() {
-    const { error, quick } = this.props
-
-    if (quick) {
-      // prettier-ignore
-      const {
-        label,
-        leftView,
-        rightView,
-        className,
-        ref,
-        ...newProps
-      } = this.props
-      const showLabel = !!this.state.value && !!label
-
-      return (
-        <Container>
-          <InputContainer
-            hasLabel={!!label}
-            focused={this.state.focused}
-            hasError={!!error}
-          >
-            <Label out={!showLabel}>{label}</Label>
-            {!!leftView && leftView}
-            <BorderlessInput
-              {...newProps}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              onKeyUp={this.onChange}
-              value={this.props.value}
-            />
-            {!!rightView && rightView}
-          </InputContainer>
-          {!!error && <Error>{error}</Error>}
-        </Container>
-      )
-    }
-
-    const { title, description } = this.props
-    return (
-      <Container>
-        {title && <Title>{title}</Title>}
-        {description && <Description>{description}</Description>}
-        <StyledInput {...this.props as any} />
-        {!!error && <Error>{error}</Error>}
-      </Container>
-    )
-  }
-}
 
 export default Input

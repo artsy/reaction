@@ -55,7 +55,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   color: black;
   padding: 10px;
   box-shadow: none;
-  font-size: 17px;
   -webkit-transition: border-color 0.25s;
   transition: border-color 0.25s;
   margin-right: 10px;
