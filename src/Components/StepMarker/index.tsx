@@ -4,9 +4,35 @@ import Text from "../Text"
 import colors from "../../Assets/Colors"
 import styled from "styled-components"
 import { unica } from "Assets/Fonts"
-import { StepMarkerProps, StepMarkerState, StepState } from "./types"
+import { ReactNode } from "react"
 
-export * from "./types"
+export interface RenderProps {
+  nextStep: () => void
+  previousStep: () => void
+  gotoStep: (index: number) => void
+  stepState: StepMarkerState
+  isComplete: () => boolean
+}
+
+export interface StepMarkerProps {
+  children?: (renderProps: RenderProps) => ReactNode | void
+  steps: MarkLabel[]
+  style?: any
+  onChange?: any
+  currentStepIndex: number
+}
+
+export interface StepMarkerState {
+  currentStepIndex: number
+  steps: MarkState[]
+}
+
+type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
+
+interface MarkLabel {
+  label?: string
+  onClick?: any
+}
 
 export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
   static defaultProps = {
@@ -43,18 +69,18 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
 
     return (
       <Container style={style}>
-        <Steps>
+        <Markers>
           {steps.map((step, key) => {
             return (
-              <Step {...step} key={key}>
+              <Mark {...step} key={key}>
                 {step.isComplete && <StyledIcon name="check" color="white" />}
                 <StyledText onClick={step.onClick} align="center">
                   {step.label}
                 </StyledText>
-              </Step>
+              </Mark>
             )
           })}
-        </Steps>
+        </Markers>
       </Container>
     )
   }
@@ -64,12 +90,12 @@ const Container = styled.div`
   padding: 20px;
 `
 
-const Steps = styled.div`
+const Markers = styled.div`
   display: flex;
 `
 
-const Step = styled.div`
-  ${(props: StepState) => {
+const Mark = styled.div`
+  ${(props: MarkState) => {
     const { isActive, isComplete } = props
     const circleSize = "10px" // + 2px border
     let bgColor = colors.white
@@ -137,5 +163,3 @@ const StyledIcon = Icon.extend`
   left: -3px;
   z-index: 3;
 `
-
-Step.displayName = "Step"

@@ -1,42 +1,107 @@
-import React from "react"
-import { Step } from "./types"
-import { Formik, FormikBag } from "formik"
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { StepElement, StepProps, WizardRenderProps } from "./types"
+import { Formik, FormikActions } from "formik"
+import { FormValues, WizardContext } from "./types"
 
-interface Props {
-  onComplete?: (values?: { (key: string): any }, actions?: any) => void
+interface WizardProps {
+  onComplete?: (
+    values?: FormValues,
+    actions?: FormikActions<FormValues>
+  ) => void
   initialValues?: any
-  pages: Step[]
-  children?: React.ComponentType<{ wizard: any; form: any }>
+  steps?: StepElement[]
+  children?:
+    | ((
+        props: { wizard: WizardRenderProps; form: any }
+      ) => React.ReactElement<any>)
+    | StepElement
+    | StepElement[]
 }
 
-interface State {
-  pageIndex: number
-  values?: any
+interface WizardState {
+  currentStepIndex: number
 }
 
-export class Wizard extends React.Component<Props, State> {
+/**
+ * Generate a multi-step wizard wrapped in a form.
+ * steps can be an Array of children of the shape
+ *
+ * The wizard can be used in two different ways,
+ * using the render prop API or passing steps in
+ * as children.
+ *
+ * @example
+ *
+ * ```javascript
+ * <Wizard steps={[<Step />, <Step />]}>
+ *  {({ wizard, form }) => {
+ *   <div>
+ *     Current step: {wizard.currentStepIndex}
+ *     <div>{wizard.currentStep}</div>
+ *     <NextButton onClick={wizard.next} />
+ *   </div>
+ *  }}
+ * </Wizard>
+ * ```
+ *
+ * or
+ *
+ * ```javascript
+ * <Wizard>
+ *   <Step />
+ *   <Step />
+ * </Wizard>
+ * ```
+ */
+export class Wizard extends React.Component<WizardProps, WizardState> {
   static defaultProps = {
     initialValues: null,
   }
+
   constructor(props) {
     super(props)
     this.state = {
-      pageIndex: 0,
+      currentStepIndex: 0,
     }
   }
 
-  get activePage() {
-    return this.props.pages[this.state.pageIndex]
+  get steps(): StepElement[] {
+    if (!!this.props.steps) {
+      return this.props.steps
+    } else {
+      return React.Children.toArray(this.props.children) as Array<
+        React.ReactElement<StepProps>
+      >
+    }
   }
 
-  get isLastPage() {
-    return this.state.pageIndex === this.props.pages.length - 1
+  get currentStep() {
+    return this.steps[this.state.currentStepIndex] as StepElement
+  }
+
+  get isLastStep() {
+    return this.state.currentStepIndex === this.steps.length - 1
+  }
+
+  get wizardProps(): WizardRenderProps {
+    return {
+      currentStep: this.currentStep,
+      isLastStep: this.isLastStep,
+      previous: this.previous,
+      next: this.next,
+      currentStepIndex: this.state.currentStepIndex,
+      steps: this.steps,
+    }
   }
 
   next = (e: React.FormEvent<any> | null, values) => {
     e && e.preventDefault()
     this.setState(state => ({
-      pageIndex: Math.min(state.pageIndex + 1, this.props.pages.length - 1),
+      currentStepIndex: Math.min(
+        state.currentStepIndex + 1,
+        this.steps.length - 1
+      ),
       values,
     }))
   }
@@ -44,17 +109,17 @@ export class Wizard extends React.Component<Props, State> {
   previous = (e: React.FormEvent<any> | null, values) => {
     e && e.preventDefault()
     this.setState(state => ({
-      pageIndex: Math.max(state.pageIndex - 1, 0),
+      currentStepIndex: Math.max(state.currentStepIndex - 1, 0),
     }))
   }
 
-  handleSubmit: (values: any, actions?: FormikBag<any, any>) => void = (
-    values,
-    actions
-  ) => {
+  handleSubmit: (
+    values: FormValues,
+    actions?: FormikActions<FormValues>
+  ) => void = (values, actions) => {
     const { onComplete } = this.props
-    if (this.isLastPage) {
-      onComplete && onComplete(values)
+    if (this.isLastStep) {
+      onComplete && onComplete(values, actions)
     } else {
       actions && actions.setSubmitting(false)
       this.next(null, values)
@@ -62,24 +127,8 @@ export class Wizard extends React.Component<Props, State> {
   }
 
   render() {
-    const { pageIndex } = this.state
-    const { pages, onComplete, initialValues, children } = this.props
-    const {
-      component: ActiveComponent,
-      validate,
-      validationSchema,
-    } = this.activePage
-
-    const wizardProps = {
-      activePage: this.activePage,
-      isLastPage: this.isLastPage,
-      previous: this.previous,
-      next: this.next,
-      onComplete,
-      pageIndex,
-      pages,
-      values: this.state.values,
-    }
+    const { initialValues, children } = this.props
+    const { validate, validationSchema } = this.currentStep.props
 
     return (
       <Formik
@@ -88,30 +137,40 @@ export class Wizard extends React.Component<Props, State> {
         validationSchema={validationSchema}
         onSubmit={this.handleSubmit}
         render={formikRenderProps => {
-          const { handleSubmit } = formikRenderProps
+          const context: WizardContext = {
+            wizard: this.wizardProps,
+            form: formikRenderProps,
+          }
+
           return (
-            <form onSubmit={handleSubmit}>
-              {children ? (
-                React.createElement(children, {
-                  wizard: wizardProps,
-                  form: formikRenderProps,
-                })
-              ) : (
-                <ActiveComponent
-                  form={formikRenderProps}
-                  wizard={wizardProps}
-                />
-              )}
+            <form onSubmit={formikRenderProps.handleSubmit}>
+              <WizardContextProvider {...context}>
+                {!!this.props.steps
+                  ? React.createElement(children as any, context)
+                  : this.currentStep}
+              </WizardContextProvider>
             </form>
           )
-          // return children ?
-          //   React.createElement(children, { wizard: wizardProps, formik: formikRenderProps})
-          //   : ( <form onSubmit={handleSubmit}>
-          //     <ActiveComponent form={formikRenderProps} wizard={wizardProps} />
-          //   </form>
-          // )
         }}
       />
     )
+  }
+}
+
+class WizardContextProvider extends Component<WizardContext> {
+  static childContextTypes = {
+    wizard: PropTypes.object,
+    form: PropTypes.object,
+  }
+
+  getChildContext(): WizardContext {
+    return {
+      wizard: this.props.wizard,
+      form: this.props.form,
+    }
+  }
+
+  render() {
+    return this.props.children
   }
 }

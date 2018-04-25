@@ -1,29 +1,19 @@
 import React from "react"
-import { Step, Wizard } from "../../Wizard"
+import { Wizard } from "../../Wizard"
+import { Step } from "../../Wizard/Step"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import Title from "../../Title"
 
 export const BasicSlideshow = () => {
-  const pages: Step[] = [
-    {
-      label: "Start",
-      component: makePage(colors.greenRegular, "Beginning."),
-      stepName: "step1",
-    },
-    {
-      label: "Middle.",
-      component: makePage(colors.yellowBold, "Middle."),
-      stepName: "step2",
-    },
-    {
-      label: "End",
-      component: makePage(colors.purpleRegular, "End.", "white"),
-      stepName: "step3",
-    },
-  ]
-  return <Wizard pages={pages} />
+  return (
+    <Wizard>
+      <Step label="Start">{makePage(colors.greenRegular, "Beginning.")}</Step>
+      <Step label="Middle.">{makePage(colors.yellowBold, "Middle.")}</Step>
+      <Step label="End">{makePage(colors.purpleRegular, "End.", "white")}</Step>
+    </Wizard>
+  )
 }
 
 const makePage: (bg, t, c?) => React.SFC<any> = (

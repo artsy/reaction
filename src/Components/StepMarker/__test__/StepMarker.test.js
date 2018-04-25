@@ -2,38 +2,26 @@ import React from "react"
 import { StepMarker } from "../"
 import { cloneDeep } from "lodash"
 import { mount } from "enzyme"
+import { Step } from "../../Wizard"
 
 describe("StepMarker", () => {
   const defaultSteps = [
-    {
-      label: "Shipping",
-      isActive: false,
-      isComplete: false,
-    },
-    {
-      label: "Payment",
-      isActive: false,
-      isComplete: false,
-    },
-    {
-      label: "Review",
-      isActive: false,
-      isComplete: false,
-    },
+    <Step label="Shipping" />,
+    <Step label="Payment" />,
+    <Step label="Review" />,
+    // {
+    //   label: "Payment",
+    //   isActive: false,
+    //   isComplete: false,
+    // },
+    // {
+    //   label: "Review",
+    //   isActive: false,
+    //   isComplete: false,
+    // },
   ]
 
   const getSteps = () => cloneDeep(defaultSteps)
-
-  it("sets step labels", () => {
-    const wrapper = mount(<StepMarker steps={getSteps()} />)
-    const Steps = wrapper.find("Step")
-
-    Steps.forEach((Step, index) => {
-      expect(Step.text()).toContain(defaultSteps[index].label)
-    })
-
-    expect(Steps.length).toEqual(3)
-  })
 
   it("sets first step active by default", () => {
     mount(

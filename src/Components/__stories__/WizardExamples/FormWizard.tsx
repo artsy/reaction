@@ -1,12 +1,14 @@
 import React from "react"
 import yup from "yup"
 import { Field } from "formik"
-import { Step, Wizard } from "../../Wizard"
+import { Wizard } from "../../Wizard"
 import { StepMarker } from "../../StepMarker"
 import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import Icon from "../../Icon"
+import { Step } from "../../Wizard/Step"
+import { StepElement } from "../../Wizard/types"
 
 export const FormWizard = () => {
   const submitForm = (values, actions) => {
@@ -14,17 +16,21 @@ export const FormWizard = () => {
     actions.setSubmitting(false)
   }
 
-  const pages: Step[] = [
-    {
-      label: "Name",
-      component: ({ form, wizard }) => (
+  const steps: StepElement[] = [
+    <Step
+      label="Name"
+      validationSchema={yup.object().shape({
+        fullname: yup.string().required("Please enter your name"),
+      })}
+    >
+      {({ form, wizard }) => (
         <FormPage>
           <Fields>
             <InputContainer>
               <Label htmlFor="name">Name</Label>
               <Field
                 autoFocus
-                name="name"
+                name="fullname"
                 type="text"
                 placeholder="Your Name"
               />
@@ -35,15 +41,20 @@ export const FormWizard = () => {
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
           </pre>
         </FormPage>
-      ),
-      stepName: "name",
-      validationSchema: yup.object().shape({
-        name: yup.string().required("Please enter your name"),
-      }),
-    },
-    {
-      label: "Terms",
-      component: ({ form, wizard }) => (
+      )}
+    </Step>,
+    <Step
+      label="Terms"
+      validate={values => {
+        const errors: any = {}
+        const age = Number(values.age)
+        if (age < 18) errors.age = "You must be at least 18 to proceed"
+        if (Number.isNaN(age)) errors.age = "Ages are numbers"
+        if (!values.agree) errors.agree = "You must agree"
+        return errors
+      }}
+    >
+      {({ form, wizard }) => (
         <FormPage>
           <Fields>
             <InputContainer>
@@ -61,20 +72,10 @@ export const FormWizard = () => {
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
           </pre>
         </FormPage>
-      ),
-      stepName: "age",
-      validate: values => {
-        const errors: any = {}
-        const age = Number(values.age)
-        if (age < 18) errors.age = "You must be at least 18 to proceed"
-        if (Number.isNaN(age)) errors.age = "Ages are numbers"
-        if (!values.agree) errors.agree = "You must agree"
-        return errors
-      },
-    },
-    {
-      label: "Review",
-      component: ({ form, wizard }) => (
+      )}
+    </Step>,
+    <Step label="Review">
+      {({ form, wizard }) => (
         <FormPage>
           <Fields>
             Please Confirm:
@@ -86,30 +87,27 @@ export const FormWizard = () => {
             Errors: {form.errors && JSON.stringify(form.errors, null, 2)}
           </pre>
         </FormPage>
-      ),
-      stepName: "review",
-    },
+      )}
+    </Step>,
   ]
 
   return (
-    <Wizard onComplete={submitForm} pages={pages}>
+    <Wizard onComplete={submitForm} steps={steps}>
       {props => {
-        const { wizard, form } = props
-        const {
-          activePage: { component: Component },
-        } = wizard
+        const { wizard } = props
+        const { currentStep } = wizard
         return (
           <Container>
             <Nav>
               <Icon name="logotype" color="black" fontSize="32px" />
               <StepMarker
-                steps={wizard.pages}
-                currentStepIndex={wizard.pageIndex}
+                steps={wizard.steps.map(step => step.props)}
+                currentStepIndex={wizard.currentStepIndex}
               />
             </Nav>
-            <Component wizard={wizard} form={form} />
+            {currentStep}
 
-            <pre>Values: {JSON.stringify(wizard.values, null, 2)}</pre>
+            <pre>Values: {JSON.stringify(props.form.values, null, 2)}</pre>
           </Container>
         )
       }}
