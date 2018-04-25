@@ -1,18 +1,9 @@
 import React from "react"
 import { Step, Wizard } from "../../Wizard"
 
-import {
-  ChangeMode,
-  GrayFacebookButton,
-  TOSCheckbox,
-} from "../commonElements"
-<<<<<<< HEAD
-import { FormComponentType } from "../Types"
-=======
+import { ChangeMode, GrayFacebookButton, TOSCheckbox } from "../commonElements"
 import Input from "../../Input"
-import { Validators } from "../Validators"
-import { FormComponentType, InputValues } from "../Types"
->>>>>>> Sign up form
+import { FormComponentType } from "../Types"
 
 export const MobileRegisterForm: FormComponentType = props => {
   const steps = [
