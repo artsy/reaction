@@ -1,10 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import Colors from "Assets/Colors"
-import { fadeIn, fadeOut } from "Assets/Animations"
+import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import { block } from "./Helpers"
 import { borderedInput } from "./Mixins"
+import { OpenEye } from "Assets/Icons/OpenEye"
+import { ClosedEye } from "Assets/Icons/ClosedEye"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: string
@@ -20,12 +22,14 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 interface InputState {
   focused: boolean
   value: string
+  showPassword: boolean
 }
 
 class Input extends React.Component<InputProps, InputState> {
   state = {
     focused: false,
     value: "",
+    showPassword: false,
   }
 
   onFocus = e => {
@@ -54,6 +58,30 @@ class Input extends React.Component<InputProps, InputState> {
     })
   }
 
+  getRightViewForPassword() {
+    let icon = this.state.showPassword ? (
+      <ClosedEye onClick={this.toggleShowPassword} />
+    ) : (
+      <OpenEye onClick={this.toggleShowPassword} />
+    )
+
+    return <span onClick={this.toggleShowPassword}>{icon}</span>
+  }
+
+  toggleShowPassword = e => {
+    this.setState({
+      showPassword: !this.state.showPassword,
+    })
+  }
+
+  get convertedType() {
+    const { type } = this.props
+    if (this.state.showPassword && type === "password") {
+      return "text"
+    }
+    return type
+  }
+
   render() {
     const { error, quick } = this.props
 
@@ -69,6 +97,7 @@ class Input extends React.Component<InputProps, InputState> {
         ...newProps
       } = this.props
       const showLabel = (!!this.state.focused || !!this.state.value) && !!label
+      const isPassword = type === "password"
 
       return (
         <Container>
@@ -85,11 +114,13 @@ class Input extends React.Component<InputProps, InputState> {
               onBlur={this.onBlur}
               onKeyUp={this.onChange}
               value={this.props.value}
-              type={type}
+              type={this.convertedType}
             />
-            {!!rightView && rightView}
+            {isPassword
+              ? this.getRightViewForPassword()
+              : !!rightView && rightView}
           </InputContainer>
-          {!!error && <Error>{error}</Error>}
+          <Error show={!!error}>{error}</Error>
         </Container>
       )
     }
@@ -100,7 +131,7 @@ class Input extends React.Component<InputProps, InputState> {
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         <StyledInput {...this.props as any} />
-        {!!error && <Error>{error}</Error>}
+        <Error show={!!error}>{error}</Error>
       </Container>
     )
   }
@@ -170,10 +201,14 @@ const Description = styled.div`
   margin: 3px 0 0;
 `
 
-const Error = styled.div`
+const Error = styled.div.attrs<{ show: boolean }>({})`
   ${unica("s12")};
   margin-top: 10px;
   color: ${Colors.redMedium};
+  visibility: ${p => (p.show ? "visible" : "hidden")};
+  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
+  height: ${p => (p.show ? "16px" : "0")};
+  transition: visibility 0.2s linear;
 `
 
 export default Input
