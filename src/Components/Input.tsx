@@ -25,6 +25,32 @@ interface InputState {
   showPassword: boolean
 }
 
+/**
+ * Configurable input field. It comes in two modes, standard & quick.
+ * In standard mode, the `title` and `description` props are rendered above
+ * the input. In quick mode, `title` and `description` are ignored, only
+ * `label` is rendered inside the input.
+ * 
+ * @example
+ * 
+ * ```javascript
+ *  // Quick mode
+ *  <Input
+ *    quick
+ *    label="Name"
+ *    type="text"
+ *    placeholder="Enter you name"
+ *  />
+ *  ```
+ * 
+ * ```
+ *  // Standard mode
+ *  <Input
+ *    title="Name"
+ *    description="Your full name."
+ *    type="text"
+ *  />
+ */
 class Input extends React.Component<InputProps, InputState> {
   state = {
     focused: false,
