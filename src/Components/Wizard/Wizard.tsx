@@ -17,6 +17,7 @@ interface WizardProps {
       ) => React.ReactElement<any>)
     | StepElement
     | StepElement[]
+  validationSchema: object
 }
 
 interface WizardState {
