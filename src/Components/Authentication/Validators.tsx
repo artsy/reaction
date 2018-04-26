@@ -25,3 +25,12 @@ export const LoginValidator = Yup.object().shape({
   email,
   password: Yup.string().required("Password required"),
 })
+
+export const MobileRegisterValidator = Yup.object().shape({
+  email,
+  name,
+  password: Yup.string()
+    .required("Password required")
+    .min(8, "Your password must be at least 8 characters"),
+  acceptedTermsOfService,
+})

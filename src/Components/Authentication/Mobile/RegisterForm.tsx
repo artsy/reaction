@@ -1,9 +1,17 @@
 import React from "react"
 import { Step, Wizard } from "../../Wizard"
 
-import { ChangeMode, GrayFacebookButton, TOSCheckbox } from "../commonElements"
+import { GrayFacebookButton } from "../commonElements"
+import styled from "styled-components"
 import Input from "../../Input"
+import Button from "../../Buttons/Inverted"
+import Icon from "../../Icon"
 import { FormComponentType } from "../Types"
+
+import Text from "../../Text"
+import TextLink from "../../TextLink"
+import Colors from "Assets/Colors"
+import { Validators } from "../Validators"
 
 export const MobileRegisterForm: FormComponentType = props => {
   const steps = [
@@ -12,16 +20,24 @@ export const MobileRegisterForm: FormComponentType = props => {
         wizard,
         form: { errors, touched, values, handleChange, handleBlur },
       }) => (
-        <Input
-          type="email"
-          block
-          error={touched.email && errors.email}
-          name="email"
-          placeholder="Email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+        <div>
+          <Input
+            block
+            error={touched.email && errors.email}
+            placeholder="Enter your email address"
+            name="email"
+            label="Email"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
+          <LoginText>
+            Already have an account?{" "}
+            <TextLink onClick={props.handleChangeMode("login")}>Login</TextLink>
+          </LoginText>
+        </div>
       )}
     </Step>,
     <Step>
@@ -29,16 +45,18 @@ export const MobileRegisterForm: FormComponentType = props => {
         wizard,
         form: { errors, touched, values, handleChange, handleBlur },
       }) => (
-        <Input
-          block
-          error={touched.password && errors.password}
-          name="password"
-          placeholder="Password"
-          type="password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+        <div>
+          <Input
+            block
+            error={touched.password && errors.password}
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </div>
       )}
     </Step>,
     <Step>
@@ -57,39 +75,65 @@ export const MobileRegisterForm: FormComponentType = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <TOSCheckbox
-            error={
-              touched.acceptedTermsOfService && errors.acceptedTermsOfService
-            }
-            value={values.acceptedTermsOfService}
-            type="checkbox"
-            name="accepted-terms-of-service"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            errorMessage={errors.acceptedTermsOfService}
-          >
-            I Agree to the TOS And PP
-          </TOSCheckbox>
         </div>
       )}
     </Step>,
   ]
   return (
-    <Wizard steps={steps}>
+    <Wizard steps={steps} validationSchema={Validators}>
       {context => {
         const { wizard } = context
         const { currentStep } = wizard
         return (
-          <div>
+          <Container>
+            <Header>
+              <BackButton onClick={wizard.previous as any}>Back</BackButton>
+              <Logo name="logotype" />
+            </Header>
             {currentStep}
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <p>
               Already have an account?
               <ChangeMode>Log In</ChangeMode>
             </p>
-          </div>
+            <Button onClick={wizard.next as any} block>
+              Next
+            </Button>
+          </Container>
         )
       }}
     </Wizard>
   )
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: stretch;
+`
+
+const Header = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px 0 0;
+`
+
+const Logo = styled(Icon).attrs({
+  color: "black",
+  fontSize: "34px",
+})`
+  display: block;
+`
+
+const LoginText = styled(Text).attrs({
+  color: Colors.grayDark,
+  align: "center",
+})`
+  margin-top: 0;
+`
+
+const BackButton = styled.button``
