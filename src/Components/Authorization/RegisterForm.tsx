@@ -5,14 +5,14 @@ import { Formik, FormikProps } from "formik"
 import {
   FormContainer,
   GrayFacebookButton,
-  StyledInput as Input,
   TOSCheckbox,
 } from "./commonElements"
+import Input from "../Input"
 import Button from "../Buttons/Inverted"
 import { FormComponentType, InputValues } from "./Types"
 
 import { Validators } from "./Validators"
-import colors from "../../Assets/Colors"
+
 import Text from "../Text"
 import TextLink from "../TextLink"
 import Colors from "../../Assets/Colors"
@@ -51,6 +51,7 @@ export const RegisterForm: FormComponentType = props => {
           <FormContainer onSubmit={handleSubmit}>
             <Input
               block
+              quick
               error={touched.name && errors.name}
               placeholder="Enter your full name"
               name="name"
@@ -60,9 +61,9 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
+              quick
               error={touched.email && errors.email}
               placeholder="Enter your email address"
               name="email"
@@ -72,9 +73,9 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.email && errors.email && <div>{errors.email}</div */}
             <Input
               block
+              quick
               error={touched.password && errors.password}
               placeholder="Enter a password"
               name="password"
@@ -84,7 +85,6 @@ export const RegisterForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.password && errors.password && <div>{errors.password}</div> */}
             <TOSCheckbox
               error={
                 touched.acceptedTermsOfService && errors.acceptedTermsOfService
@@ -96,12 +96,11 @@ export const RegisterForm: FormComponentType = props => {
               onBlur={handleBlur}
               errorMessage={errors.acceptedTermsOfService}
             >
-              <Text color={colors.grayDark}>
+              <Text color={Colors.grayDark}>
                 I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
                 <TextLink>Privacy Policy</TextLink>
               </Text>
             </TOSCheckbox>
-            {/* touched.password && errors.password && <div>{errors.password}</div> */}
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <LoginText>

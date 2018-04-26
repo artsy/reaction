@@ -1,76 +1,66 @@
 import React from "react"
 import styled from "styled-components"
-import { fadeIn, fadeOut } from "../Assets/Animations"
-import { garamond, unica } from "../Assets/Fonts"
+import Colors from "Assets/Colors"
+import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
+import { garamond, unica } from "Assets/Fonts"
 import { block } from "./Helpers"
-import { border, borderedInput } from "./Mixins"
+import { borderedInput } from "./Mixins"
+import { OpenEye } from "Assets/Icons/OpenEye"
+import { ClosedEye } from "Assets/Icons/ClosedEye"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  error?: boolean
+  error?: string
   block?: boolean
   label?: string
+  title?: string
+  description?: string
+  quick?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
 }
 
 interface InputState {
-  borderClasses: string
+  focused: boolean
   value: string
+  showPassword: boolean
 }
 
-const StyledInput = styled.input`
-  ${borderedInput};
-  ${block(24)};
-`
-
-const BorderlessInput = styled.input`
-  ${garamond("s17")};
-  border: 0;
-  font-size: 17px;
-  outline: none;
-  flex: 1;
-`
-const BorderClassname = "border-container"
-const StyledDiv = styled.div.attrs<{ hasLabel?: boolean }>({})`
-  ${borderedInput};
-  border: 0;
-  margin-right: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: flex;
-  position: relative;
-  height: ${p => (p.hasLabel ? "60px" : "40px")};
-
-  & .${BorderClassname} {
-    ${border};
-    z-index: -1;
-    position: absolute;
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    top: 0;
-    left: 0;
-  }
-`
-
-const Label = styled.label.attrs<{ out: boolean }>({})`
-  ${unica("s12")};
-  position: absolute;
-  left: 17px;
-  top: 8px;
-  visibility: ${props => (props.out ? "hidden" : "visible")};
-  animation: ${props => (props.out ? fadeOut : fadeIn)} 0.2s linear;
-  transition: visibility 0.2s linear;
-`
-
+/**
+ * Configurable input field. It comes in two modes, standard & quick.
+ * In standard mode, the `title` and `description` props are rendered above
+ * the input. In quick mode, `title` and `description` are ignored, only
+ * `label` is rendered inside the input.
+ * 
+ * @example
+ * 
+ * ```javascript
+ *  // Quick mode
+ *  <Input
+ *    quick
+ *    label="Name"
+ *    type="text"
+ *    placeholder="Enter you name"
+ *  />
+ *  ```
+ * 
+ * ```
+ *  // Standard mode
+ *  <Input
+ *    title="Name"
+ *    description="Your full name."
+ *    type="text"
+ *  />
+ */
 class Input extends React.Component<InputProps, InputState> {
   state = {
-    borderClasses: BorderClassname,
+    focused: false,
     value: "",
+    showPassword: false,
   }
 
   onFocus = e => {
     this.setState({
-      borderClasses: `${BorderClassname} focused`,
+      focused: true,
     })
 
     if (this.props.onFocus) {
@@ -80,7 +70,7 @@ class Input extends React.Component<InputProps, InputState> {
 
   onBlur = e => {
     this.setState({
-      borderClasses: BorderClassname,
+      focused: false,
     })
 
     if (this.props.onBlur) {
@@ -94,33 +84,157 @@ class Input extends React.Component<InputProps, InputState> {
     })
   }
 
-  render() {
-    let rightView = this.props.rightView
-    const { leftView, label } = this.props
-    const showLabel = !!this.state.value && !!label
+  getRightViewForPassword() {
+    let icon = this.state.showPassword ? (
+      <ClosedEye onClick={this.toggleShowPassword} />
+    ) : (
+      <OpenEye onClick={this.toggleShowPassword} />
+    )
 
-    if (leftView || rightView || label) {
-      const { className, ref, ...newProps } = this.props
+    return <span onClick={this.toggleShowPassword}>{icon}</span>
+  }
+
+  toggleShowPassword = e => {
+    this.setState({
+      showPassword: !this.state.showPassword,
+    })
+  }
+
+  get convertedType() {
+    const { type } = this.props
+    if (this.state.showPassword && type === "password") {
+      return "text"
+    }
+    return type
+  }
+
+  render() {
+    const { error, quick } = this.props
+
+    if (quick) {
+      // prettier-ignore
+      const {
+        label,
+        leftView,
+        rightView,
+        className,
+        ref,
+        type,
+        ...newProps
+      } = this.props
+      const showLabel = (!!this.state.focused || !!this.state.value) && !!label
+      const isPassword = type === "password"
 
       return (
-        <StyledDiv hasLabel={!!label}>
-          <div className={this.state.borderClasses} />
-          <Label out={!showLabel}>{label}</Label>
-          {!!leftView && leftView}
-          <BorderlessInput
-            {...newProps}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onKeyUp={this.onChange}
-            value={this.props.value}
-          />
-          {!!rightView && rightView}
-        </StyledDiv>
+        <Container>
+          <InputContainer
+            hasLabel={!!label}
+            focused={this.state.focused}
+            hasError={!!error}
+          >
+            <Label out={!showLabel}>{label}</Label>
+            {!!leftView && leftView}
+            <InputComponent
+              {...newProps}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onKeyUp={this.onChange}
+              value={this.props.value}
+              type={this.convertedType}
+            />
+            {isPassword
+              ? this.getRightViewForPassword()
+              : !!rightView && rightView}
+          </InputContainer>
+          <Error show={!!error}>{error}</Error>
+        </Container>
       )
     }
 
-    return <StyledInput {...this.props as any} />
+    const { title, description } = this.props
+    return (
+      <Container>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
+        <StyledInput {...this.props as any} />
+        <Error show={!!error}>{error}</Error>
+      </Container>
+    )
   }
 }
+
+const Container = styled.div`
+  padding: 5px 0;
+`
+
+const StyledInput = styled.input`
+  ${borderedInput};
+  ${block(24)};
+`
+
+const InputComponent = styled.input`
+  ${garamond("s17")};
+  border: 0;
+  font-size: 17px;
+  outline: none;
+  flex: 1;
+  transition: transform 0.25s;
+
+  &:active,
+  &:focus,
+  &:not(:placeholder-shown) {
+    transform: translateY(2px);
+  }
+
+  &::placeholder {
+    color: ${Colors.grayMedium};
+  }
+`
+
+const InputContainer = styled.div.attrs<{
+  hasLabel?: boolean
+  focused?: boolean
+  hasError: boolean
+}>({})`
+  ${borderedInput};
+  margin-right: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  position: relative;
+  height: ${p => (p.hasLabel ? "40px" : "20px")};
+  flex-direction: row;
+  align-items: center;
+`
+
+const Label = styled.label.attrs<{ out: boolean }>({})`
+  ${unica("s12", "medium")};
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  visibility: ${p => (p.out ? "hidden" : "visible")};
+  animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
+  transition: visibility 0.2s linear;
+`
+
+const Title = styled.div`
+  ${garamond("s17")};
+`
+
+const Description = styled.div`
+  ${garamond("s15")};
+  color: ${Colors.graySemibold};
+  margin: 3px 0 0;
+`
+
+const Error = styled.div.attrs<{ show: boolean }>({})`
+  ${unica("s12")};
+  margin-top: 10px;
+  color: ${Colors.redMedium};
+  visibility: ${p => (p.show ? "visible" : "hidden")};
+  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
+  height: ${p => (p.show ? "16px" : "0")};
+  transition: visibility 0.2s linear;
+`
 
 export default Input

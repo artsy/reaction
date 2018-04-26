@@ -68,6 +68,23 @@ exports[`EmailSignup renders an email signup 1`] = `
   color: black;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #cccccc;
+}
+
+.c4::-moz-placeholder {
+  color: #cccccc;
+}
+
+.c4:-ms-input-placeholder {
+  color: #cccccc;
+}
+
+.c4::placeholder {
+  color: #cccccc;
+}
+
+.c4:hover,
 .c4:focus,
 .c4.focused {
   border-color: #6e1fff;
