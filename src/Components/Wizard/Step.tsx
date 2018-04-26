@@ -1,6 +1,7 @@
 import { Component } from "react"
 import PropTypes from "prop-types"
 import { StepProps } from "./types"
+import React from "react"
 
 /**
  * Step within a Wizard.
@@ -26,6 +27,6 @@ export class Step extends Component<StepProps> {
       return null
     }
     const { wizard, form } = this.context
-    return this.props.children({ wizard, form })
+    return React.createElement(this.props.children, { wizard, form })
   }
 }
