@@ -14,8 +14,6 @@ export const Field: (props: any) => any = props => {
       name={name}
       type={type}
       placeholder={placeholder}
-      // prettier-ignore
-      // because restProps should not have a trailing comma (fixed in prettier 1.9)
       render={({
         field, // { name, value, onChange, onBlur }
         form: { touched, errors, values }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -23,7 +21,7 @@ export const Field: (props: any) => any = props => {
       }) => (
         <div>
           <Input
-          {...field}
+            {...field}
             block={block}
             type={type}
             placeholder={placeholder}
