@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import { garamond, unica } from "Assets/Fonts"
+import { garamond } from "Assets/Fonts"
 import Markdown from "react-markdown"
 import { Truncator } from "../Sections/Truncator"
 import { FollowButton } from "./Components/FollowButton"

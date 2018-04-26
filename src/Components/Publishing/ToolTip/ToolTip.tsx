@@ -37,6 +37,8 @@ export const ToolTipContainer = styled.div`
   width: 240px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
+  background: white;
+  margin-bottom: 15px;
   ${ArrowContainer} {
     bottom: -15px;
     left: calc(50% - 30px);
