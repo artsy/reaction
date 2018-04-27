@@ -3,12 +3,10 @@ import styled, { injectGlobal } from "styled-components"
 import colors from "../Assets/Colors"
 import Icon from "./Icon"
 
-const navHeight = "70px"
-
 const Nav = styled.div`
   border-bottom: 1px solid ${colors.grayRegular};
   display: flex;
-  height: ${navHeight};
+  height: 70px;
   align-content: center;
 `
 

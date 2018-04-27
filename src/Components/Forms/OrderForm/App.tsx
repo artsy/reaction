@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import Title from "../../Title"
 import styled from "styled-components"
 import { PaymentForm } from "./Forms/PaymentForm"
-import { StepMarker } from "../../StepMarker"
+import { StepMarker, StepMarkerProps } from "../../StepMarker"
 import { ReviewForm } from "./Forms/ReviewForm"
 import { ShippingForm } from "./Forms/ShippingForm"
 import { validationSchema } from "./formik"
@@ -28,9 +28,9 @@ export class App extends Component<{ onSubmit: any }> {
         {({ wizard, form }) => (
           <Container>
             <Nav>
-              <StyledTitle titleSize="medium">Secure Checkout</StyledTitle>
-              <StepMarker
-                style={{ marginTop: 15, marginRight: 15 }}
+              <StyledTitle titleSize="small">Secure Checkout</StyledTitle>
+              <StyledStepMarker
+                style={{}}
                 steps={wizard.steps.map(step => step.props)}
                 currentStepIndex={wizard.currentStepIndex}
               />
@@ -42,10 +42,20 @@ export class App extends Component<{ onSubmit: any }> {
     )
   }
 }
+
+const StyledStepMarker = styled(StepMarker)`
+  width: 300px;
+  padding: 30px 0;
+  margin-left: "auto";
+  margin-right: 15;
+  padding: 30px 22px 30px 0;
+`
+
 const Container = styled.div`
   width: 768px;
 `
 
 export const StyledTitle = Title.extend`
+  font-weight: bold;
   flex-grow: 1;
 `

@@ -35,11 +35,7 @@ interface MarkLabel {
 }
 
 export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
-  static defaultProps = {
-    disableInternalState: false,
-  }
-
-  constructor(props) {
+  constructor(props: StepMarkerProps) {
     super(props)
     this.state = this.computeStepState(props)
   }
@@ -87,11 +83,13 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
 }
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 20px 0;
 `
 
 const Markers = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 `
 
 const Mark = styled.div`
@@ -114,9 +112,12 @@ const Mark = styled.div`
 
     return `
       position: relative;
-      padding: 12px;
+      margin: 0 12px;
+      padding: 12px 0;
       text-align: center;
       width: 100%;
+      &:last-child { margin-right: 0; }
+      &:first-child { margin-left: 0; }
 
       &:before {
         background: ${bgColor};
@@ -140,9 +141,15 @@ const Mark = styled.div`
         content: " ";
       }
 
+      &:last-child:before {
+        left: initial;
+        right: calc(50% - calc(${circleSize}));
+      }
+
       &:last-child:after {
         border-top: none;
       }
+
     `
   }};
 `
