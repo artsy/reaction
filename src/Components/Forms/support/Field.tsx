@@ -2,10 +2,8 @@ import React from "react"
 import { Field as FormikField } from "formik"
 import { default as Input } from "../../Input"
 
-// export interface FormikInputProps<T> extends InputProps {}
-
 /**
- * An input with the standard FormimkProps added for rendering niceness
+ * A text input with the standard FormimkProps added for rendering niceness
  */
 export const Field: (props: any) => any = props => {
   const { name, type, placeholder, block } = props

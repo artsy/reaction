@@ -56,52 +56,6 @@ export class ReviewForm extends Component<WizardStepChildProps> {
   }
 }
 
-// // Submission Complete
-// <Fragment>
-//   <Row>
-//     <Col xs>
-//       <Text textSize="medium">
-//         <strong>Thank you for your order.</strong> A confirmation
-//         email has been sent to you and the seller.
-//       </Text>
-//     </Col>
-//   </Row>
-//   <Row>
-//     <Col xs>
-//       <Text textSize="medium">
-//         <strong>What’s next?</strong> The seller will be in touch for
-//         pickup or shipping arrangements. If you have questions, please
-//         email orders@artsy.net.
-//       </Text>
-//     </Col>
-//   </Row>
-//   <Row>
-//     <Col xs>
-//       <Divider />
-//     </Col>
-//   </Row>
-
-//   <PaymentMethod />
-//   <OrderDetails />
-//   <ShippingAddress />
-
-//   <Row>
-//     <Col xs>
-//       <Divider />
-//     </Col>
-//   </Row>
-//   <Row>
-//     <Col xs>
-//       <InvertedButton
-//         block
-//         onClick={this.props.wizard.previous}
-//       >
-//         CONTINUE BROWSING
-//       </InvertedButton>
-//     </Col>
-//   </Row>
-// </Fragment>
-
 const ShippingAddress = props => {
   return (
     <Fragment>
