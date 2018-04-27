@@ -7,6 +7,7 @@ import TextLink from "../../TextLink"
 import { garamond, unica } from "Assets/Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
 import { Truncator } from "./Truncator"
+import { ErrorBoundary } from "../../ErrorBoundary"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
@@ -42,14 +43,18 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     }
     const delimSpan = <span>{delimiter}</span>
 
-    return names.slice(1).reduce((prev, curr, i) => {
-      return prev.concat([delimSpan, curr])
-    },
-    [names[0]])
+    return names.slice(1).reduce(
+      (prev, curr, i) => {
+        return prev.concat([delimSpan, curr])
+      },
+      [names[0]]
+    )
   }
 
   renderArtists() {
-    const { artwork: { artist, artists } } = this.props
+    const {
+      artwork: { artist, artists },
+    } = this.props
 
     // Multiple artists
     if (artists && artists.length > 1) {
@@ -90,13 +95,15 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   renderTitleDate() {
     const children = [this.renderTitle(), this.renderDate()]
-
     const titleDate = this.joinParts(children)
     return titleDate
   }
 
   renderTitle() {
-    const { artwork: { slug, title }, linked } = this.props
+    const {
+      artwork: { slug, title },
+      linked,
+    } = this.props
 
     if (title) {
       if (linked) {
@@ -120,7 +127,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   renderDate() {
-    const { artwork: { date } } = this.props
+    const {
+      artwork: { date },
+    } = this.props
 
     if (date && date.length) {
       return (
@@ -132,7 +141,12 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   renderPartner() {
-    const { artwork: { partner: { name, slug } }, linked } = this.props
+    const {
+      artwork: {
+        partner: { name, slug },
+      },
+      linked,
+    } = this.props
 
     if (name) {
       const createTextLink = Boolean(linked && slug)
@@ -152,7 +166,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   renderCredit() {
-    const { artwork: { credit } } = this.props
+    const {
+      artwork: { credit },
+    } = this.props
 
     if (credit && credit.length) {
       return (
@@ -170,52 +186,65 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     return joined
   }
 
-  render() {
-    const { layout, isFullscreenCaption, sectionLayout } = this.props
-    // Fullscreen
-    if (isFullscreenCaption) {
-      return (
-        <StyledFullscreenCaption>
-          <Line>
-            <ArtistNames>{this.renderArtists()}</ArtistNames>
-          </Line>
-          <div>
-            <Line>{this.renderTitleDate()}</Line>
-            <Line>{this.renderPartnerCredit()}</Line>
-          </div>
-        </StyledFullscreenCaption>
-      )
-
-      // Classic Layout
-    } else if (layout === "classic") {
-      return (
-        <StyledClassicCaption className="display-artwork__caption">
-          <Truncator>
-            <ArtistNames>{this.renderArtists()}</ArtistNames>
-
-            {this.renderTitleDate()}
-            {". "}
-            {this.renderPartner()}
-          </Truncator>
-        </StyledClassicCaption>
-      )
-
-      // Default (Standard + Feature)
-    } else {
-      return (
-        <StyledArtworkCaption
-          layout={layout}
-          sectionLayout={sectionLayout}
-          className="display-artwork__caption"
-        >
+  renderFullscreenCaption = () => {
+    return (
+      <StyledFullscreenCaption>
+        <Line>
           <ArtistNames>{this.renderArtists()}</ArtistNames>
-          <div>
-            <Truncator>{this.renderTitleDate()}</Truncator>
-            <Truncator>{this.renderPartnerCredit()}</Truncator>
-          </div>
-        </StyledArtworkCaption>
-      )
-    }
+        </Line>
+        <div>
+          <Line>{this.renderTitleDate()}</Line>
+          <Line>{this.renderPartnerCredit()}</Line>
+        </div>
+      </StyledFullscreenCaption>
+    )
+  }
+
+  renderClassicCaption = () => {
+    return (
+      <StyledClassicCaption className="display-artwork__caption">
+        <Truncator>
+          <ArtistNames>{this.renderArtists()}</ArtistNames>
+          {this.renderTitleDate()}
+          {". "}
+          {this.renderPartner()}
+        </Truncator>
+      </StyledClassicCaption>
+    )
+  }
+
+  renderEditorialCaption = () => {
+    const { layout, sectionLayout } = this.props
+
+    return (
+      <StyledArtworkCaption
+        layout={layout}
+        sectionLayout={sectionLayout}
+        className="display-artwork__caption"
+      >
+        <ArtistNames>{this.renderArtists()}</ArtistNames>
+        <div>
+          <Truncator>{this.renderTitleDate()}</Truncator>
+          <Truncator>{this.renderPartnerCredit()}</Truncator>
+        </div>
+      </StyledArtworkCaption>
+    )
+  }
+
+  render() {
+    const { layout, isFullscreenCaption } = this.props
+
+    return (
+      <ErrorBoundary>
+        <div>
+          {isFullscreenCaption
+            ? this.renderFullscreenCaption()
+            : layout === "classic"
+              ? this.renderClassicCaption()
+              : this.renderEditorialCaption()}
+        </div>
+      </ErrorBoundary>
+    )
   }
 }
 
@@ -233,10 +262,15 @@ const StyledArtworkCaption = styled.div`
   margin-top: 10px;
   display: flex;
   color: ${Colors.grayDark};
-  ${unica("s14")} .title {
+  ${unica("s14")};
+  .title,
+  .title a {
     ${unica("s14", "italic")};
   }
-
+  a {
+    color: ${Colors.grayDark};
+    ${unica("s14")};
+  }
   ${pMedia.xs`
     padding: 0 10px;
   `};
