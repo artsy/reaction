@@ -5,11 +5,23 @@ export type FormErrors = { [key: string]: any } | null
 
 export type StepElement = React.ReactElement<StepProps>
 
+// Extending WizardContext here causes
+// `Type '(e: FormEvent<HTMLFormElement>) => any' is not assignable to type '(event: MouseEvent<Button>) => void'
+// in form.handleSubmit for button onClick prop
+// OR '(e: FormEvent<any>, values: { [key: string]: any; }) => void' is not assignable to type '(event: MouseEvent<Button>) => void'
+// for wizard.previous  for button OnClick prop
+export interface WizardStepChildProps {
+  form: any
+  wizard: any
+}
+
 export interface StepProps {
   label?: string
   validate?: (values: FormValues) => FormErrors
   validationSchema?: object
-  children: (props: { form: any; wizard: any }) => React.ReactElement<any>
+  children:
+    | React.ComponentClass<WizardStepChildProps>
+    | React.SFC<WizardStepChildProps>
 }
 
 export interface WizardRenderProps {
