@@ -821,6 +821,7 @@ export const NewsArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   _id: "594a7e2254c37f00177c0ea9",
   layout: "news",
+  slug: "news-article",
   author_id: "57b5fc6acd530e65f8000406",
   author: {
     id: "50f4367051e7956b6e00045d",

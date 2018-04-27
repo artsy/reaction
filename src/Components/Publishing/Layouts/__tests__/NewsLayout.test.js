@@ -5,7 +5,6 @@ import renderer from "react-test-renderer"
 import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsSectionContainer } from "../../News/NewsSections"
 import { ExpandButton, NewsLayout } from "../NewsLayout"
-import { track } from "../../../../Utils/track"
 
 jest.mock("../../../../Utils/track.ts", () => ({
   track: jest.fn(),
@@ -72,12 +71,21 @@ describe("News Layout", () => {
 
   describe("Analytics", () => {
     it("tracks the expand button", () => {
-      const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
-      expect(track.mock.calls[5][0]).toEqual(
-        expect.objectContaining({
-          action: "Clicked read more",
-        })
+      const trackEvent = jest.fn()
+      const component = mount(
+        <NewsLayout
+          article={NewsArticle}
+          isTruncated
+          tracking={{
+            trackEvent,
+          }}
+        />
       )
+      component.find(ExpandButton).simulate("click")
+      expect(trackEvent.mock.calls[0][0]).toEqual({
+        action: "Clicked read more",
+        pathname: "/news/news-article",
+      })
     })
   })
 })

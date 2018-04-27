@@ -6,15 +6,17 @@ import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import { ArticleData } from "../Typings"
+import { once } from "lodash"
 import { track } from "../../../Utils/track"
 
 interface Props {
   article: ArticleData
   isMobile?: boolean
+  isHovered?: boolean
   isTruncated?: boolean
   marginTop?: string
   onExpand?: any
-  isHovered?: boolean
+  tracking?: any
 }
 
 interface State {
@@ -39,6 +41,7 @@ export class NewsLayout extends Component<Props, State> {
     }
 
     this.onExpand = this.onExpand.bind(this)
+    this.trackExpand = once(this.trackExpand)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,13 +50,23 @@ export class NewsLayout extends Component<Props, State> {
     }
   }
 
-  @track({ action: "Clicked read more" })
   onExpand() {
     const { onExpand } = this.props
+    this.trackExpand()
     if (onExpand) {
       onExpand()
     }
     this.setState({ isTruncated: false })
+  }
+
+  trackExpand = () => {
+    const { article, tracking } = this.props
+    if (tracking) {
+      tracking.trackEvent({
+        action: "Clicked read more",
+        pathname: `/news/${article.slug}`,
+      })
+    }
   }
 
   render() {

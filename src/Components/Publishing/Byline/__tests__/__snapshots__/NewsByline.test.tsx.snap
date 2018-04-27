@@ -158,7 +158,7 @@ exports[`News Byline renders on mobile 1`] = `
   >
     <a
       className="c6"
-      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
     >
@@ -184,7 +184,7 @@ exports[`News Byline renders on mobile 1`] = `
     </a>
     <a
       className="c6"
-      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
+      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
     >
@@ -210,7 +210,7 @@ exports[`News Byline renders on mobile 1`] = `
     </a>
     <a
       className="c6"
-      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
+      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
     >
       <svg
@@ -483,7 +483,7 @@ exports[`News Byline renders properly 1`] = `
   >
     <a
       className="c6"
-      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
     >
@@ -509,7 +509,7 @@ exports[`News Byline renders properly 1`] = `
     </a>
     <a
       className="c6"
-      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
+      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
     >
@@ -535,7 +535,7 @@ exports[`News Byline renders properly 1`] = `
     </a>
     <a
       className="c6"
-      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
+      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
     >
       <svg
@@ -799,7 +799,7 @@ exports[`News Byline renders without a news source 1`] = `
   >
     <a
       className="c6"
-      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
     >
@@ -825,7 +825,7 @@ exports[`News Byline renders without a news source 1`] = `
     </a>
     <a
       className="c6"
-      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fundefined&via=artsy"
+      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
     >
@@ -851,7 +851,7 @@ exports[`News Byline renders without a news source 1`] = `
     </a>
     <a
       className="c6"
-      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/undefined"
+      href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
     >
       <svg
