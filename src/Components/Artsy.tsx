@@ -29,6 +29,11 @@ export interface ContextProps {
    * If none is provided to the `ContextProvider` then one is created, using the `currentUser` if available.
    */
   relayEnvironment?: Environment
+
+  /**
+   * Useful for passing data down from parent to children, for example during SSR
+   */
+  variables?: object
 }
 
 interface PrivateContextProps extends ContextProps {
@@ -42,6 +47,7 @@ const ContextTypes: React.ValidationMap<PrivateContextProps> = {
   _isNestedInProvider: PropTypes.bool,
   currentUser: PropTypes.object,
   relayEnvironment: PropTypes.object,
+  variables: PropTypes.object,
 }
 
 /**
@@ -58,6 +64,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
   private relayEnvironment: Environment
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
+    console.log(props)
     if (React.Children.count(props.children) > 1) {
       throw new Error("A ContextProvider expects a single child.")
     }
@@ -74,7 +81,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
     }
 
     this.relayEnvironment =
-      props.relayEnvironment || createEnvironment(this.currentUser)
+      props.relayEnvironment || createEnvironment({ user: this.currentUser })
   }
 
   getChildContext() {
@@ -82,6 +89,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
       _isNestedInProvider: true,
       currentUser: this.currentUser,
       relayEnvironment: this.relayEnvironment,
+      variables: this.props.variables,
     }
   }
 

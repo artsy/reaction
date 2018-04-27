@@ -28,7 +28,7 @@ interface Props extends RelayProps {
   initialSlide?: number
 }
 
-const Container = styled.div`
+const Content = styled.div`
   width: 100%;
 
   .SlickContainer {
@@ -39,7 +39,7 @@ const Container = styled.div`
 
 const Container = (props: Props) => {
   return (
-    <Container>
+    <Content>
       <Title style={{ marginLeft: "10%" }} titleSize="large">
         Lots by Followed Artists
       </Title>
@@ -63,7 +63,7 @@ const Container = (props: Props) => {
           )
         })}
       </Slick>
-    </Container>
+    </Content>
   )
 }
 
