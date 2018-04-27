@@ -94,7 +94,7 @@ export class ReviewForm extends Component<WizardStepChildProps> {
 //     <Col xs>
 //       <InvertedButton
 //         block
-//         onClick={this.props.wizard.previous as any}
+//         onClick={this.props.wizard.previous}
 //       >
 //         CONTINUE BROWSING
 //       </InvertedButton>

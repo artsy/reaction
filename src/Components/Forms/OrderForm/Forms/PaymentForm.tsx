@@ -87,7 +87,7 @@ export class PaymentForm extends Component<WizardStepChildProps, State> {
 
         <Row>
           <Col xs>
-            <InvertedButton block onClick={this.props.form.handleSubmit as any}>
+            <InvertedButton block onClick={this.props.form.handleSubmit}>
               REVIEW ORDER
             </InvertedButton>
           </Col>
