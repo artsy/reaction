@@ -16,6 +16,7 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly METAPHYSICS_ENDPOINT: string
+      readonly XAPP_TOKEN: string
     }
 
     export interface ResponseLocalData extends GlobalData {

@@ -21,10 +21,12 @@ const {
   METAPHYSICS_ENDPOINT,
   USER_ID,
   USER_ACCESS_TOKEN,
+  XAPP_TOKEN,
 } = process.env
 
 const sharifyPath = sharify({
   METAPHYSICS_ENDPOINT,
+  XAPP_TOKEN,
 })
 
 const plugins = [
@@ -47,6 +49,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
     new webpack.DefinePlugin({
       "process.env.USER_ID": JSON.stringify(USER_ID),
       "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
+      "process.env.XAPP_TOKEN": JSON.stringify(XAPP_TOKEN),
     })
   )
 } else {

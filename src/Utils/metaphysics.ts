@@ -11,13 +11,23 @@ export function metaphysics<T>(
     "Content-Type": "application/json",
     "User-Agent": "Reaction",
   }
+
+  // TODO: rename User to AuthTokens and conver to union type
+  const AuthHeaders = !!user
+    ? !!user.appToken
+      ? { "X-XAPP-TOKEN": user.appToken }
+      : {
+          "X-USER-ID": user.id,
+          "X-ACCESS-TOKEN": user.accessToken,
+        }
+    : null
+
   return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
     method: "POST",
     headers: !!user
       ? {
           ...headers,
-          "X-USER-ID": user && user.id,
-          "X-ACCESS-TOKEN": user && user.accessToken,
+          ...AuthHeaders,
         }
       : headers,
     body: JSON.stringify(payload),
@@ -34,6 +44,6 @@ export function metaphysics<T>(
     .then<T>(response => response.json())
 }
 
-export default function query<T>(query: string): Promise<T> {
+export function query<T>(query: string): Promise<T> {
   return metaphysics<{ data: T }>({ query }).then(({ data }) => data)
 }
