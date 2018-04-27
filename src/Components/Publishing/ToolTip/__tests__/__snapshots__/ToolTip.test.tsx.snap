@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolTip snapshots Renders properly 1`] = `
+.c6 {
+  border: 1px solid #e5e5e5;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  width: 80px;
+  height: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c8 a {
+  color: #cccccc;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
+}
+
+.c1 {
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: black;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 1.4em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
+.c4 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c2 {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 .c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c10 {
+  position: relative;
+}
+
+.c11 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid white;
+  z-index: 1;
+}
+
+.c12 {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+}
+
+.c0 {
+  position: relative;
+  width: 240px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
+  padding: 20px;
+  background: white;
+  margin-bottom: 15px;
+}
+
+.c0 .c9 {
+  bottom: -15px;
+  left: calc(50% - 30px);
+}
+
+<div
+  className="c0"
+>
+  <div>
+    <a
+      className="c1"
+      href="gene/capitalist-realism"
+    >
+      <img
+        className="c2"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg"
+      />
+      <div
+        className="c3"
+      >
+        Capitalist Realism
+      </div>
+      <div
+        className="c4"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —<a href=\\"/artist/gerhard-richter\\">Gerhard Richter</a></em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists <a href=\\"/artist/gerhard-richter\\">Gerhard Richter</a>, <a href=\\"/artist/sigmar-polke\\">Sigmar Polke</a>, and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of <a href=\\"/gene/pop-art\\">Pop Art</a>, with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of <a href=\\"/gene/socialist-realism\\">Socialist Realism</a>. The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
+            }
+          }
+        />
+      </div>
+    </a>
+    <div
+      className="c5"
+    >
+      <div
+        className="c6"
+      >
+        Follow
+      </div>
+       
+      <div
+        className="c7 c8"
+      >
+        <span>
+          This is a new feature.
+        </span>
+        <a
+          href="mailto:productfeedback@artsy.net?subject=Feedback"
+          target="_blank"
+        >
+          Tell us what you think.
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c9 c10"
+  >
+    <div
+      className="c11"
+    />
+    <div
+      className="c12"
+    />
+  </div>
+</div>
+`;
