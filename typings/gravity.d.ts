@@ -1,4 +1,5 @@
 interface User {
-  id: string
-  accessToken: string
+  id?: string
+  accessToken?: string
+  appToken?: string
 }
