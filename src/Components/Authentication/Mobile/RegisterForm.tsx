@@ -12,10 +12,36 @@ import Text from "../../Text"
 import TextLink from "../../TextLink"
 import Colors from "Assets/Colors"
 import { Validators } from "../Validators"
+import { metaphysics } from "../../../Utils/metaphysics"
+import * as sharify from "sharify"
+
+const checkEmail = (values, actions) => {
+  const query = `
+    query {
+      user(email: "${values.email}") {
+        userAlreadyExists
+      }
+    }
+  `
+
+  return metaphysics(
+    { query },
+    {
+      appToken: sharify.data.XAPP_TOKEN,
+    }
+  ).then(({ data }: any) => {
+    if (data.user.userAlreadyExists) {
+      actions.setFieldError("email", "Email already exists.")
+      actions.setSubmitting(false)
+      return false
+    }
+    return true
+  })
+}
 
 export const MobileRegisterForm: FormComponentType = props => {
   const steps = [
-    <Step>
+    <Step validationSchema={Validators.email} onSubmit={checkEmail}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur },
@@ -23,7 +49,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={touched.email && errors.email}
+            error={errors.email}
             placeholder="Enter your email address"
             name="email"
             label="Email"
@@ -31,6 +57,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            quick
           />
           <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
           <LoginText>
@@ -40,7 +67,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         </div>
       )}
     </Step>,
-    <Step>
+    <Step validationSchema={Validators.password}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur },
@@ -48,18 +75,19 @@ export const MobileRegisterForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={touched.password && errors.password}
+            error={errors.password}
             name="password"
             placeholder="Password"
             type="password"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
+            quick
           />
         </div>
       )}
     </Step>,
-    <Step>
+    <Step validationSchema={Validators.name}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur },
@@ -67,27 +95,30 @@ export const MobileRegisterForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={touched.name && errors.name}
+            error={errors.name}
             name="name"
             placeholder="Name"
             type="text"
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
+            quick
           />
         </div>
       )}
     </Step>,
   ]
   return (
-    <Wizard steps={steps} validationSchema={Validators}>
+    <Wizard steps={steps}>
       {context => {
-        const { wizard } = context
+        const { form, wizard } = context
         const { currentStep } = wizard
         return (
           <Container>
             <Header>
-              <BackButton onClick={wizard.previous as any}>Back</BackButton>
+              <BackButton onClick={wizard.previous as any}>
+                <Icon name="chevron-left" color="black" />
+              </BackButton>
               <Logo name="logotype" />
             </Header>
             {currentStep}
@@ -96,7 +127,11 @@ export const MobileRegisterForm: FormComponentType = props => {
               Already have an account?
               <ChangeMode>Log In</ChangeMode>
             </p>
-            <Button onClick={wizard.next as any} block>
+            <Button
+              onClick={form.handleSubmit as any}
+              block
+              disabled={!wizard.shouldAllowNext}
+            >
               Next
             </Button>
           </Container>
@@ -136,4 +171,6 @@ const LoginText = styled(Text).attrs({
   margin-top: 0;
 `
 
-const BackButton = styled.button``
+const BackButton = styled.div`
+  display: inline;
+`
