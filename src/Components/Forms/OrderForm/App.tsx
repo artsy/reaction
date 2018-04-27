@@ -28,7 +28,7 @@ export class App extends Component<{ onSubmit: any }> {
         {({ wizard, form }) => (
           <Container>
             <Nav>
-              <StyledTitle titleSize="xxsmall">Secure Checkout</StyledTitle>
+              <StyledTitle titleSize="medium">Secure Checkout</StyledTitle>
               <StepMarker
                 style={{ marginTop: 15, marginRight: 15 }}
                 steps={wizard.steps.map(step => step.props)}
@@ -42,7 +42,9 @@ export class App extends Component<{ onSubmit: any }> {
     )
   }
 }
-const Container = styled.div``
+const Container = styled.div`
+  width: 768px;
+`
 
 export const StyledTitle = Title.extend`
   flex-grow: 1;
