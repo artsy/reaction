@@ -37,34 +37,38 @@ const Container = styled.div`
   }
 `
 
+const Container = (props: Props) => {
+  return (
+    <Container>
+      <Title style={{ marginLeft: "10%" }} titleSize="large">
+        Lots by Followed Artists
+      </Title>
+
+      <Slick {...SETTINGS}>
+        {props.sale.artworks.map((artwork, key) => {
+          const {
+            image: { aspect_ratio },
+          } = artwork
+
+          return (
+            <div key={key}>
+              <FillwidthItem
+                artwork={artwork}
+                targetHeight={ITEM_HEIGHT}
+                imageHeight={ITEM_HEIGHT}
+                width={ITEM_HEIGHT * aspect_ratio}
+                margin={20}
+              />
+            </div>
+          )
+        })}
+      </Slick>
+    </Container>
+  )
+}
+
 export const Slider = createFragmentContainer(
-  (props: Props) => {
-    return (
-      <Container>
-        <Title style={{ marginLeft: "10%" }} titleSize="large">
-          Lots by Followed Artists
-        </Title>
-
-        <Slick {...SETTINGS}>
-          {props.sale.artworks.map((artwork, key) => {
-            const { image: { aspect_ratio } } = artwork
-
-            return (
-              <div key={key}>
-                <FillwidthItem
-                  artwork={artwork}
-                  targetHeight={ITEM_HEIGHT}
-                  imageHeight={ITEM_HEIGHT}
-                  width={ITEM_HEIGHT * aspect_ratio}
-                  margin={20}
-                />
-              </div>
-            )
-          })}
-        </Slick>
-      </Container>
-    )
-  },
+  Container,
   graphql`
     fragment Slider_sale on Sale {
       artworks {
