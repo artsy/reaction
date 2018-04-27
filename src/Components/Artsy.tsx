@@ -64,7 +64,6 @@ export class ContextProvider extends React.Component<ContextProps, null>
   private relayEnvironment: Environment
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
-    console.log(props)
     if (React.Children.count(props.children) > 1) {
       throw new Error("A ContextProvider expects a single child.")
     }

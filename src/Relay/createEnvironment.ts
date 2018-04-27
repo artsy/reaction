@@ -26,3 +26,13 @@ export function createEnvironment(config: EnvironmentProps) {
     store,
   })
 }
+
+export function getRelayEnvironment(records, user) {
+  const network = createEnvironment({})
+  const source = new RecordSource(records)
+  const store = new Store(source)
+  return new Environment({
+    network,
+    store,
+  })
+}

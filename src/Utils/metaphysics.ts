@@ -13,7 +13,12 @@ export function metaphysics<T>(
 
   const { user, endpoint, checkStatus = true } = config
 
-  return fetch(endpoint || sharify.data.METAPHYSICS_ENDPOINT, {
+  const fetchEndpoint =
+    endpoint ||
+    sharify.data.METAPHYSICS_ENDPOINT ||
+    process.env.METAPHYSICS_ENDPOINT
+
+  return fetch(fetchEndpoint, {
     method: "POST",
     headers: !!user
       ? {
