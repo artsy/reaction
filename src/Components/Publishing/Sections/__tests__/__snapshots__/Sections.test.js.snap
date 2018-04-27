@@ -100,8 +100,17 @@ exports[`snapshots renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c17 .title {
+.c17 .title,
+.c17 .title a {
   font-family: Unica77LLWebItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c17 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -1162,74 +1171,76 @@ exports[`snapshots renders properly 1`] = `
               </div>
             </div>
           </a>
-          <div
-            className="display-artwork__caption c17"
-          >
-            <span
-              className="c18"
+          <div>
+            <div
+              className="display-artwork__caption c17"
             >
               <span
-                className="c19"
+                className="c18"
               >
-                <a
-                  className="c20"
-                  href="/artist/matt-devine"
+                <span
+                  className="c19"
                 >
-                  Matt Devine
-                </a>
+                  <a
+                    className="c20"
+                    href="/artist/matt-devine"
+                  >
+                    Matt Devine
+                  </a>
+                </span>
               </span>
-            </span>
-            <div>
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": <span>
-                      <span
-                        className="title"
-                      >
+              <div>
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": <span>
+                        <span
+                          className="title"
+                        >
+                          <file__StyledTextLink
+                            color="#999"
+                            href="/artwork/matt-devine-brass-tax"
+                            underline={false}
+                          >
+                            Brass Tax
+                          </file__StyledTextLink>
+                        </span>
+                        <span>
+                          , 
+                        </span>
+                        <span
+                          className="date"
+                        >
+                          2000
+                        </span>
+                      </span>,
+                    }
+                  }
+                />
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": <span>
                         <file__StyledTextLink
                           color="#999"
-                          href="/artwork/matt-devine-brass-tax"
+                          href="/partner/joanne-artman-gallery"
                           underline={false}
                         >
-                          Brass Tax
+                          Joanne Artman Gallery
                         </file__StyledTextLink>
-                      </span>
-                      <span>
-                        , 
-                      </span>
-                      <span
-                        className="date"
-                      >
-                        2000
-                      </span>
-                    </span>,
+                        <span>
+                          . 
+                        </span>
+                        <span
+                          className="credit"
+                        >
+                          Courtesy of The Metropolitan Museum of Art
+                        </span>
+                      </span>,
+                    }
                   }
-                }
-              />
-              <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": <span>
-                      <file__StyledTextLink
-                        color="#999"
-                        href="/partner/joanne-artman-gallery"
-                        underline={false}
-                      >
-                        Joanne Artman Gallery
-                      </file__StyledTextLink>
-                      <span>
-                        . 
-                      </span>
-                      <span
-                        className="credit"
-                      >
-                        Courtesy of The Metropolitan Museum of Art
-                      </span>
-                    </span>,
-                  }
-                }
-              />
+                />
+              </div>
             </div>
           </div>
         </div>

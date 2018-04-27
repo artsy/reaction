@@ -241,67 +241,69 @@ exports[`renders properly 1`] = `
           className="c6"
           open={undefined}
         >
-          <div
-            className="c7"
-          >
+          <div>
             <div
-              className="c8"
+              className="c7"
             >
-              <span
-                className="c9"
-              >
-                <span
-                  className="c10"
-                >
-                  <a
-                    className="c11"
-                    href="/artist/fernando-botero"
-                  >
-                    Fernando Botero
-                  </a>
-                </span>
-              </span>
-            </div>
-            <div>
               <div
                 className="c8"
               >
                 <span
-                  className="title"
+                  className="c9"
                 >
-                  <a
-                    className="c11"
-                    href="/artwork/fernando-botero-nude-on-the-beach"
+                  <span
+                    className="c10"
                   >
-                    Nude on the Beach
-                  </a>
-                </span>
-                <span>
-                  , 
-                </span>
-                <span
-                  className="date"
-                >
-                  2000
+                    <a
+                      className="c11"
+                      href="/artist/fernando-botero"
+                    >
+                      Fernando Botero
+                    </a>
+                  </span>
                 </span>
               </div>
-              <div
-                className="c8"
-              >
-                <a
-                  className="c11"
-                  href="/partner/gary-nader"
+              <div>
+                <div
+                  className="c8"
                 >
-                  Gary Nader
-                </a>
-                <span>
-                  . 
-                </span>
-                <span
-                  className="credit"
+                  <span
+                    className="title"
+                  >
+                    <a
+                      className="c11"
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                    >
+                      Nude on the Beach
+                    </a>
+                  </span>
+                  <span>
+                    , 
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                </div>
+                <div
+                  className="c8"
                 >
-                  Courtesy of Gary Nader
-                </span>
+                  <a
+                    className="c11"
+                    href="/partner/gary-nader"
+                  >
+                    Gary Nader
+                  </a>
+                  <span>
+                    . 
+                  </span>
+                  <span
+                    className="credit"
+                  >
+                    Courtesy of Gary Nader
+                  </span>
+                </div>
               </div>
             </div>
           </div>

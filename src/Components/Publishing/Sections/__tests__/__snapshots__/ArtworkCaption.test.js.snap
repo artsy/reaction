@@ -24,16 +24,18 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   font-style: italic;
 }
 
-<div
-  className="display-artwork__caption c0"
->
+<div>
   <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
+    className="display-artwork__caption c0"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;
 
@@ -86,52 +88,54 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   }
 }
 
-<div
-  className="c0"
->
+<div>
   <div
-    className="c1"
+    className="c0"
   >
-    <span
-      className="c2"
-    >
-      <span
-        className="name"
-      >
-        Fernando Botero
-      </span>
-    </span>
-  </div>
-  <div>
     <div
       className="c1"
     >
       <span
-        className="title"
+        className="c2"
       >
-        Nude on the Beach
-      </span>
-      <span>
-        , 
-      </span>
-      <span
-        className="date"
-      >
-        2000
+        <span
+          className="name"
+        >
+          Fernando Botero
+        </span>
       </span>
     </div>
-    <div
-      className="c1"
-    >
-      Gary Nader
-      <span>
-        . 
-      </span>
-      <span
-        className="credit"
+    <div>
+      <div
+        className="c1"
       >
-        Courtesy of Gary Nader
-      </span>
+        <span
+          className="title"
+        >
+          Nude on the Beach
+        </span>
+        <span>
+          , 
+        </span>
+        <span
+          className="date"
+        >
+          2000
+        </span>
+      </div>
+      <div
+        className="c1"
+      >
+        Gary Nader
+        <span>
+          . 
+        </span>
+        <span
+          className="credit"
+        >
+          Courtesy of Gary Nader
+        </span>
+      </div>
     </div>
   </div>
 </div>
@@ -156,8 +160,17 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.c0 .title {
+.c0 .title,
+.c0 .title a {
   font-family: Unica77LLWebItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c0 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -178,33 +191,35 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   }
 }
 
-<div
-  className="display-artwork__caption c0"
->
-  <span
-    className="c1 c2"
+<div>
+  <div
+    className="display-artwork__caption c0"
   >
     <span
-      className="name"
+      className="c1 c2"
     >
-      Fernando Botero
+      <span
+        className="name"
+      >
+        Fernando Botero
+      </span>
     </span>
-  </span>
-  <div>
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span></span>",
+    <div>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span></span>",
+          }
         }
-      }
-    />
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<span>Gary Nader<span>. </span><span class=\\"credit\\">Courtesy of Gary Nader</span></span>",
+      />
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span>Gary Nader<span>. </span><span class=\\"credit\\">Courtesy of Gary Nader</span></span>",
+          }
         }
-      }
-    />
+      />
+    </div>
   </div>
 </div>
 `;

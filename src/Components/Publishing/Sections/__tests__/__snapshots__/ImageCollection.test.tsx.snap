@@ -33,8 +33,17 @@ exports[`renders a single image properly 1`] = `
   line-height: 1.4em;
 }
 
-.c9 .title {
+.c9 .title,
+.c9 .title a {
   font-family: Unica77LLWebItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c9 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -223,74 +232,76 @@ exports[`renders a single image properly 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="display-artwork__caption c9"
-      >
-        <span
-          className="c10"
+      <div>
+        <div
+          className="display-artwork__caption c9"
         >
           <span
-            className="c11"
+            className="c10"
           >
-            <a
-              className="c12"
-              href="/artist/fernando-botero"
+            <span
+              className="c11"
             >
-              Fernando Botero
-            </a>
+              <a
+                className="c12"
+                href="/artist/fernando-botero"
+              >
+                Fernando Botero
+              </a>
+            </span>
           </span>
-        </span>
-        <div>
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": <span>
-                  <span
-                    className="title"
-                  >
+          <div>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": <span>
+                    <span
+                      className="title"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artwork/fernando-botero-nude-on-the-beach"
+                        underline={false}
+                      >
+                        Nude on the Beach
+                      </file__StyledTextLink>
+                    </span>
+                    <span>
+                      , 
+                    </span>
+                    <span
+                      className="date"
+                    >
+                      2000
+                    </span>
+                  </span>,
+                }
+              }
+            />
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": <span>
                     <file__StyledTextLink
                       color="#999"
-                      href="/artwork/fernando-botero-nude-on-the-beach"
+                      href="/partner/gary-nader"
                       underline={false}
                     >
-                      Nude on the Beach
+                      Gary Nader
                     </file__StyledTextLink>
-                  </span>
-                  <span>
-                    , 
-                  </span>
-                  <span
-                    className="date"
-                  >
-                    2000
-                  </span>
-                </span>,
+                    <span>
+                      . 
+                    </span>
+                    <span
+                      className="credit"
+                    >
+                      Courtesy of Gary Nader
+                    </span>
+                  </span>,
+                }
               }
-            }
-          />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": <span>
-                  <file__StyledTextLink
-                    color="#999"
-                    href="/partner/gary-nader"
-                    underline={false}
-                  >
-                    Gary Nader
-                  </file__StyledTextLink>
-                  <span>
-                    . 
-                  </span>
-                  <span
-                    className="credit"
-                  >
-                    Courtesy of Gary Nader
-                  </span>
-                </span>,
-              }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -331,8 +342,17 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c9 .title {
+.c9 .title,
+.c9 .title a {
   font-family: Unica77LLWebItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c9 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -595,74 +615,76 @@ exports[`renders properly 1`] = `
           </div>
         </div>
       </a>
-      <div
-        className="display-artwork__caption c9"
-      >
-        <span
-          className="c10"
+      <div>
+        <div
+          className="display-artwork__caption c9"
         >
           <span
-            className="c11"
+            className="c10"
           >
-            <a
-              className="c12"
-              href="/artist/fernando-botero"
+            <span
+              className="c11"
             >
-              Fernando Botero
-            </a>
+              <a
+                className="c12"
+                href="/artist/fernando-botero"
+              >
+                Fernando Botero
+              </a>
+            </span>
           </span>
-        </span>
-        <div>
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": <span>
-                  <span
-                    className="title"
-                  >
+          <div>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": <span>
+                    <span
+                      className="title"
+                    >
+                      <file__StyledTextLink
+                        color="#999"
+                        href="/artwork/fernando-botero-nude-on-the-beach"
+                        underline={false}
+                      >
+                        Nude on the Beach
+                      </file__StyledTextLink>
+                    </span>
+                    <span>
+                      , 
+                    </span>
+                    <span
+                      className="date"
+                    >
+                      2000
+                    </span>
+                  </span>,
+                }
+              }
+            />
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": <span>
                     <file__StyledTextLink
                       color="#999"
-                      href="/artwork/fernando-botero-nude-on-the-beach"
+                      href="/partner/gary-nader"
                       underline={false}
                     >
-                      Nude on the Beach
+                      Gary Nader
                     </file__StyledTextLink>
-                  </span>
-                  <span>
-                    , 
-                  </span>
-                  <span
-                    className="date"
-                  >
-                    2000
-                  </span>
-                </span>,
+                    <span>
+                      . 
+                    </span>
+                    <span
+                      className="credit"
+                    >
+                      Courtesy of Gary Nader
+                    </span>
+                  </span>,
+                }
               }
-            }
-          />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": <span>
-                  <file__StyledTextLink
-                    color="#999"
-                    href="/partner/gary-nader"
-                    underline={false}
-                  >
-                    Gary Nader
-                  </file__StyledTextLink>
-                  <span>
-                    . 
-                  </span>
-                  <span
-                    className="credit"
-                  >
-                    Courtesy of Gary Nader
-                  </span>
-                </span>,
-              }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>

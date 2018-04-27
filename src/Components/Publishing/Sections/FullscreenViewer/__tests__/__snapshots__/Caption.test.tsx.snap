@@ -177,67 +177,69 @@ exports[`renders an artwork caption properly 1`] = `
       className="c3"
       open={true}
     >
-      <div
-        className="c4"
-      >
+      <div>
         <div
-          className="c5"
+          className="c4"
         >
-          <span
-            className="c6"
-          >
-            <span
-              className="c7"
-            >
-              <a
-                className="c8"
-                href="/artist/fernando-botero"
-              >
-                Fernando Botero
-              </a>
-            </span>
-          </span>
-        </div>
-        <div>
           <div
             className="c5"
           >
             <span
-              className="title"
+              className="c6"
             >
-              <a
-                className="c8"
-                href="/artwork/fernando-botero-nude-on-the-beach"
+              <span
+                className="c7"
               >
-                Nude on the Beach
-              </a>
-            </span>
-            <span>
-              , 
-            </span>
-            <span
-              className="date"
-            >
-              2000
+                <a
+                  className="c8"
+                  href="/artist/fernando-botero"
+                >
+                  Fernando Botero
+                </a>
+              </span>
             </span>
           </div>
-          <div
-            className="c5"
-          >
-            <a
-              className="c8"
-              href="/partner/gary-nader"
+          <div>
+            <div
+              className="c5"
             >
-              Gary Nader
-            </a>
-            <span>
-              . 
-            </span>
-            <span
-              className="credit"
+              <span
+                className="title"
+              >
+                <a
+                  className="c8"
+                  href="/artwork/fernando-botero-nude-on-the-beach"
+                >
+                  Nude on the Beach
+                </a>
+              </span>
+              <span>
+                , 
+              </span>
+              <span
+                className="date"
+              >
+                2000
+              </span>
+            </div>
+            <div
+              className="c5"
             >
-              Courtesy of Gary Nader
-            </span>
+              <a
+                className="c8"
+                href="/partner/gary-nader"
+              >
+                Gary Nader
+              </a>
+              <span>
+                . 
+              </span>
+              <span
+                className="credit"
+              >
+                Courtesy of Gary Nader
+              </span>
+            </div>
           </div>
         </div>
       </div>
