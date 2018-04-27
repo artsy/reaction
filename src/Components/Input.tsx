@@ -30,9 +30,9 @@ interface InputState {
  * In standard mode, the `title` and `description` props are rendered above
  * the input. In quick mode, `title` and `description` are ignored, only
  * `label` is rendered inside the input.
- * 
+ *
  * @example
- * 
+ *
  * ```javascript
  *  // Quick mode
  *  <Input
@@ -42,7 +42,7 @@ interface InputState {
  *    placeholder="Enter you name"
  *  />
  *  ```
- * 
+ *
  * ```
  *  // Standard mode
  *  <Input
@@ -85,7 +85,7 @@ class Input extends React.Component<InputProps, InputState> {
   }
 
   getRightViewForPassword() {
-    let icon = this.state.showPassword ? (
+    const icon = this.state.showPassword ? (
       <ClosedEye onClick={this.toggleShowPassword} />
     ) : (
       <OpenEye onClick={this.toggleShowPassword} />

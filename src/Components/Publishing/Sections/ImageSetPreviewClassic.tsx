@@ -49,7 +49,7 @@ export class ImageSetPreviewClassic extends Component<any, any> {
   }
 
   getVisibleImages(images) {
-    let widths = []
+    const widths = []
     let hidden = 0
     images.map((item, i) => {
       const adjustedWidth = containerHeight * item.width / item.height

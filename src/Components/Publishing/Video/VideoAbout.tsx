@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
-import { media } from "../../Helpers"
+import { media as mediaQuery } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
 import { unica } from "Assets/Fonts"
 import { Text } from "../Sections/Text"
@@ -60,7 +60,7 @@ const Title = Div`
   margin-bottom: 15px;
   ${unica("s34")}
 
-  ${media.sm`
+  ${mediaQuery.sm`
     ${unica("s32")}
   `}
 `
@@ -89,7 +89,7 @@ export const VideoAboutContainer = styled.div`
     }
   }
 
-  ${media.sm`
+  ${mediaQuery.sm`
     flex-direction: column-reverse;
 
     ${Col}:first-of-type {

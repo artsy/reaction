@@ -16,6 +16,7 @@ import { SeriesLayout } from "../Layouts/SeriesLayout"
 import { VideoLayout } from "../Layouts/VideoLayout"
 
 jest.mock("react-slick", () => {
+  // tslint:disable-next-line:no-shadowed-variable
   const React = require("react")
   return props => <div>{props.children}</div>
 })

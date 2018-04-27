@@ -1,3 +1,5 @@
+// tslint:disable:jsx-key
+
 import React from "react"
 import { Step, Wizard } from "../../Wizard"
 

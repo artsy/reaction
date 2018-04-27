@@ -8,7 +8,7 @@ interface StyledTextProps {
   color?: string
   isContentStart: boolean
   layout: ArticleLayout
-  postscript?: Boolean
+  postscript?: boolean
 }
 
 const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> =

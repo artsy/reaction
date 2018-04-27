@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
-import { media } from "../../Helpers"
+import { media as mediaQuery } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Nav } from "../Nav/Nav"
 import { ArticleData } from "../Typings"
@@ -120,7 +120,7 @@ const VideoLayoutContainer = styled.div`
     margin: 60px 0 100px 0;
   }
 
-  ${media.sm`
+  ${mediaQuery.sm`
     ${VideoAboutContainer} {
       margin: 40px 0 100px 0;
     }

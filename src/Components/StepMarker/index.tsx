@@ -51,7 +51,7 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
   }
 
   computeStepState(props) {
-    let { currentStepIndex, steps } = props
+    const { currentStepIndex, steps } = props
     const stepState = steps.map((step, i) => {
       const isActive = i === currentStepIndex
       const isComplete = i < currentStepIndex

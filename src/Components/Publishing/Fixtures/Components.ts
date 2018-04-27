@@ -569,7 +569,7 @@ export const Videos = [
   },
 ]
 
-export const ClassicText: Object[] = [
+export const ClassicText: object[] = [
   {
     type: "text",
     body:

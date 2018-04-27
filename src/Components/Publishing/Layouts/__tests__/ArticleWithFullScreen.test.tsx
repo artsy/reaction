@@ -10,6 +10,7 @@ import { FeatureLayout } from "../FeatureLayout"
 import { StandardLayout } from "../StandardLayout"
 
 jest.mock("react-slick", () => {
+  // tslint:disable-next-line:no-shadowed-variable
   const React = require("react")
   return props => <div>{props.children}</div>
 })
