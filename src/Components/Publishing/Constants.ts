@@ -1,4 +1,7 @@
+import { compact, last } from "lodash"
+import cheerio from "cheerio"
 import moment from "moment-timezone"
+import url from "url"
 import { DateFormat } from "../Publishing/Typings"
 
 /**
@@ -132,4 +135,40 @@ export const formatTime = time => {
   const minutesStr = minutes < 10 ? "0" + minutes : minutes
   const secondsStr = seconds < 10 ? "0" + seconds : seconds
   return minutesStr + ":" + secondsStr
+}
+
+export const getArtsySlugsFromArticle = article => {
+  const articleBody = article.sections
+    .map(section => {
+      if (section.type === "text") {
+        return section.body
+      }
+    })
+    .join()
+
+  let artists = getArtsySlugsFromHTML(articleBody, "artist")
+  let genes = getArtsySlugsFromHTML(articleBody, "gene")
+
+  return {
+    artists,
+    genes,
+  }
+}
+
+export const getArtsySlugsFromHTML = (html, model) => {
+  const $ = cheerio.load(html)
+
+  const slugs = compact($("a")).map(a => {
+    let href = $(a).attr("href")
+    if (href) {
+      if (href.match(`artsy.net/${model}`)) {
+        return last(url.parse(href).pathname.split("/"))
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  })
+  return compact(slugs)
 }
