@@ -5,9 +5,6 @@ export const Validators = {
     email: Yup.string()
       .email("Please enter a valid email.")
       .required("Please enter a valid email."),
-    acceptedTermsOfService: Yup.boolean().required(
-      "You must agree to our terms to continue."
-    ),
   }),
   name: Yup.object().shape({
     name: Yup.string().required("Name is required"),
