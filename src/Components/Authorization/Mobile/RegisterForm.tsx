@@ -78,6 +78,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             block
             error={errors.password}
             name="password"
+            label="Password"
             placeholder="Password"
             type="password"
             value={values.password}
@@ -98,6 +99,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             block
             error={errors.name}
             name="name"
+            label="Name"
             placeholder="Name"
             type="text"
             value={values.name}
@@ -116,13 +118,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         const { currentStep } = wizard
         return (
           <Container>
-            <ProgressIndicator
-              percentComplete={
-                wizard.isLastStep
-                  ? 1
-                  : (wizard.currentStepIndex + 1) / wizard.steps.length
-              }
-            />
+            <ProgressIndicator percentComplete={wizard.progressPercentage} />
             <BackButton onClick={wizard.previous as any}>
               <Icon name="chevron-left" color="#cccccc" fontSize="20px" />
             </BackButton>
@@ -150,6 +146,7 @@ const Container = styled.div`
   flex: 1;
   align-items: stretch;
   position: relative;
+  min-width: 260px;
 `
 
 const Header = styled.div`

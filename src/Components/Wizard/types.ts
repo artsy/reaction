@@ -24,6 +24,7 @@ export interface WizardRenderProps {
   currentStepIndex: number
   steps: StepElement[]
   shouldAllowNext: boolean
+  progressPercentage: number
 }
 
 export interface WizardContext {
