@@ -31,7 +31,7 @@ export interface StepMarkerState {
 type MarkState = MarkLabel & {
   isActive: boolean
   isComplete: boolean
-  stepLength: number
+  stepLength: string
 }
 
 interface MarkLabel {
@@ -71,7 +71,9 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
       : null
   }
   get stepLength() {
-    return this.width ? this.width / (this.props.steps.length - 1) : 0
+    return (
+      String(this.width ? this.width / (this.props.steps.length - 1) : 0) + "px"
+    )
   }
 
   render() {
@@ -132,12 +134,11 @@ const Mark = styled.div`
       padding: 12px 0;
       text-align: center;
       width: 100%;
-      &:first-child { margin-left: 0; }
-      &:last-child { margin-right: 0; }
       border-left: 1px solid red;
       border-right: 1px solid blue;
       &:first-child {
         flex: 0;
+        margin-left: 0;
       }
 
       &:before {
@@ -155,8 +156,8 @@ const Mark = styled.div`
 
       &:after {
         border-top: 2px solid ${connectingBorderColor};
-        width: calc(${stepLength}px - ${circleSize});
-        left: 50%;
+        width: calc(${stepLength} - ${circleSize});
+        left: calc(50% - calc(${circleSize} / 2));
         top: 1px;
         position: absolute;
         content: " ";
@@ -164,6 +165,7 @@ const Mark = styled.div`
 
       &:last-child{
         flex: 0;
+        margin-right: 0;
         border: 1px solid green;
         padding-right: 0
         &:before {
