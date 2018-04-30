@@ -94,6 +94,7 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
       currentStepIndex: this.state.currentStepIndex,
       steps: this.steps,
       shouldAllowNext: false,
+      progressPercentage: (this.state.currentStepIndex + 1) / this.steps.length,
     }
   }
 
