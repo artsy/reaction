@@ -45,7 +45,7 @@ storiesOf("Components/StepMarker", module)
   })
   .add("Tight Space", () => {
     return (
-      <Container width="100px">
+      <Container width="80px">
         <StepMarker steps={steps} currentStepIndex={1} />
       </Container>
     )
@@ -62,5 +62,5 @@ storiesOf("Components/StepMarker", module)
   })
 
 const Container = styled.div`
-  width: ${(p: { width?: string }) => (p.width ? p.width : "100%")};
+  min-width: ${(p: { width?: string }) => (p.width ? p.width : "100%")};
 `

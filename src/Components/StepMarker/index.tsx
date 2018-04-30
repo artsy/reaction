@@ -1,6 +1,5 @@
 import Icon from "../Icon"
 import React, { Component } from "react"
-import ReactDOM from "react-dom"
 import Text from "../Text"
 import colors from "../../Assets/Colors"
 import styled from "styled-components"
@@ -28,11 +27,7 @@ export interface StepMarkerState {
   steps: MarkState[]
 }
 
-type MarkState = MarkLabel & {
-  isActive: boolean
-  isComplete: boolean
-  stepLength: string
-}
+type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
 
 interface MarkLabel {
   label?: string
@@ -40,7 +35,6 @@ interface MarkLabel {
 }
 
 export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
-  private containerRef
   constructor(props: StepMarkerProps) {
     super(props)
     this.state = this.computeStepState(props)
@@ -65,34 +59,21 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
     }
   }
 
-  get width() {
-    return this.containerRef
-      ? ReactDOM.findDOMNode(this.containerRef).clientWidth
-      : null
-  }
-  get stepLength() {
-    return (
-      String(this.width ? this.width / (this.props.steps.length - 1) : 0) + "px"
-    )
-  }
-
   render() {
     const { style } = this.props
     const { steps } = this.state
 
     return (
-      <Container style={style} innerRef={r => (this.containerRef = r)}>
+      <Container style={style}>
         <Markers>
           {steps.map((step, key) => {
             return (
-              this.containerRef && (
-                <Mark {...step} key={key} stepLength={this.stepLength}>
-                  {step.isComplete && <StyledIcon name="check" color="white" />}
-                  <StyledText onClick={step.onClick} align="center">
-                    {step.label}
-                  </StyledText>
-                </Mark>
-              )
+              <Mark {...step} key={key}>
+                {step.isComplete && <StyledIcon name="check" color="white" />}
+                <StyledText onClick={step.onClick} align="center">
+                  {step.label}
+                </StyledText>
+              </Mark>
             )
           })}
         </Markers>
@@ -102,17 +83,16 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
 }
 
 const Container = styled.div`
-  padding: 20px 0;
+  padding: 20px;
 `
 
 const Markers = styled.div`
   display: flex;
-  width: 100%;
 `
 
 const Mark = styled.div`
   ${(props: MarkState) => {
-    const { isActive, isComplete, stepLength } = props
+    const { isActive, isComplete } = props
     const circleSize = "10px" // + 2px border
     let bgColor = colors.white
     let circleBorderColor = colors.grayRegular
@@ -130,16 +110,9 @@ const Mark = styled.div`
 
     return `
       position: relative;
-      margin:: 0 12px
-      padding: 12px 0;
+      padding: 12px;
       text-align: center;
       width: 100%;
-      border-left: 1px solid red;
-      border-right: 1px solid blue;
-      &:first-child {
-        flex: 0;
-        margin-left: 0;
-      }
 
       &:before {
         background: ${bgColor};
@@ -156,28 +129,16 @@ const Mark = styled.div`
 
       &:after {
         border-top: 2px solid ${connectingBorderColor};
-        width: calc(${stepLength} - ${circleSize});
-        left: calc(50% - calc(${circleSize} / 2));
+        width: 100%;
+        left: 50%;
         top: 1px;
         position: absolute;
         content: " ";
       }
 
-      &:last-child{
-        flex: 0;
-        margin-right: 0;
-        border: 1px solid green;
-        padding-right: 0
-        &:before {
-          left: initial;
-          right: calc(50% - calc(${circleSize}));
-        }
-
-        &:after {
-          border-top: none;
-        }
+      &:last-child:after {
+        border-top: none;
       }
-
     `
   }};
 `

@@ -29,11 +29,13 @@ export class App extends Component<{ onSubmit: any }> {
           <Container>
             <Nav>
               <StyledTitle titleSize="small">Secure Checkout</StyledTitle>
-              <StyledStepMarker
-                style={{}}
-                steps={wizard.steps.map(step => step.props)}
-                currentStepIndex={wizard.currentStepIndex}
-              />
+              <StepMarkerContainer>
+                <StyledStepMarker
+                  style={{ padding: "30px 5px" }}
+                  steps={wizard.steps.map(step => step.props)}
+                  currentStepIndex={wizard.currentStepIndex}
+                />
+              </StepMarkerContainer>
             </Nav>
             {wizard.currentStep}
           </Container>
@@ -43,12 +45,12 @@ export class App extends Component<{ onSubmit: any }> {
   }
 }
 
-const StyledStepMarker = styled(StepMarker)`
+const StepMarkerContainer = styled.div`
   width: 300px;
-  padding: 30px 0;
-  margin-left: "auto";
-  margin-right: 15;
-  padding: 30px 22px 30px 0;
+  /* margin-left: auto; */
+`
+const StyledStepMarker = styled(StepMarker)`
+  /* this doesn't work? */
 `
 
 const Container = styled.div`
