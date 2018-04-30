@@ -36,14 +36,18 @@ storiesOf("Components/StepMarker", module)
       </Container>
     )
   })
-  .add("Tight Space", () => {
-    const Narrow = Container.extend`
-      width: 100px;
-    `
+  .add("Space Constrained", () => {
     return (
-      <Narrow>
-        <StepMarker steps={steps} currentStepIndex={2} />
-      </Narrow>
+      <Container width="300px">
+        <StepMarker steps={steps} currentStepIndex={1} />
+      </Container>
+    )
+  })
+  .add("Tight Space", () => {
+    return (
+      <Container width="100px">
+        <StepMarker steps={steps} currentStepIndex={1} />
+      </Container>
     )
   })
   .add("Many Steps", () => {
@@ -58,5 +62,5 @@ storiesOf("Components/StepMarker", module)
   })
 
 const Container = styled.div`
-  width: 100%;
+  width: ${(p: { width?: string }) => (p.width ? p.width : "100%")};
 `
