@@ -8,6 +8,7 @@ import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
+import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
 
 export interface ArticleProps {
   article: ArticleData
