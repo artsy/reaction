@@ -2,7 +2,7 @@ import { compact, last } from "lodash"
 import cheerio from "cheerio"
 import moment from "moment-timezone"
 import url from "url"
-import { DateFormat } from "../Publishing/Typings"
+import { ArticleData, DateFormat } from "../Publishing/Typings"
 
 /**
  * Matches for Email / Instant Articles
@@ -137,7 +137,14 @@ export const formatTime = time => {
   return minutesStr + ":" + secondsStr
 }
 
-export const getArtsySlugsFromArticle = article => {
+interface SlugsFromArticle {
+  artists: string[]
+  genes: string[]
+}
+
+export const getArtsySlugsFromArticle = (
+  article: ArticleData
+): SlugsFromArticle => {
   const articleBody = article.sections
     .map(section => {
       if (section.type === "text") {
@@ -155,7 +162,10 @@ export const getArtsySlugsFromArticle = article => {
   }
 }
 
-export const getArtsySlugsFromHTML = (html, model) => {
+export const getArtsySlugsFromHTML = (
+  html: string,
+  model: string
+): string[] => {
   const $ = cheerio.load(html)
 
   const slugs = compact($("a")).map(a => {
