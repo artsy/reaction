@@ -1,5 +1,6 @@
 import React from "react"
 import { Step, Wizard } from "../../Wizard"
+import { ProgressIndicator } from "../../ProgressIndicator"
 
 import { GrayFacebookButton } from "../commonElements"
 import styled from "styled-components"
@@ -49,7 +50,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={errors.email}
+            error={touched.email && errors.email}
             placeholder="Enter your email address"
             name="email"
             label="Email"
@@ -115,10 +116,17 @@ export const MobileRegisterForm: FormComponentType = props => {
         const { currentStep } = wizard
         return (
           <Container>
+            <ProgressIndicator
+              percentComplete={
+                wizard.isLastStep
+                  ? 1
+                  : (wizard.currentStepIndex + 1) / wizard.steps.length
+              }
+            />
+            <BackButton onClick={wizard.previous as any}>
+              <Icon name="chevron-left" color="#cccccc" fontSize="20px" />
+            </BackButton>
             <Header>
-              <BackButton onClick={wizard.previous as any}>
-                <Icon name="chevron-left" color="black" />
-              </BackButton>
               <Logo name="logotype" />
             </Header>
             {currentStep}
@@ -146,13 +154,14 @@ const Container = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: stretch;
+  position: relative;
 `
 
 const Header = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   padding: 10px;
   margin: 20px 0 0;
 `
@@ -172,5 +181,11 @@ const LoginText = styled(Text).attrs({
 `
 
 const BackButton = styled.div`
-  display: inline;
+  display: flex;
+  justify-self: start;
+  align-self: center;
+  position: absolute;
+  left: -7px;
+  top: 44px;
+  color: Colors.grayMedium;
 `
