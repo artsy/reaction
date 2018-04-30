@@ -125,6 +125,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "formik": "^0.11.11",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
