@@ -24,7 +24,7 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
   } = image
 
   return (
-    <div>
+    <Wrapper>
       <GeneContainer href={href}>
         {url && <Image src={url} />}
         <Title>{name}</Title>
@@ -32,7 +32,11 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
         {description && (
           <Description>
             <Truncator maxLineCount={3}>
-              <Markdown source={description} containerTagName="span" />
+              <Markdown
+                source={description}
+                containerTagName="span"
+                disallowedTypes={["Link"]}
+              />
             </Truncator>
           </Description>
         )}
@@ -42,9 +46,13 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
         <FollowButton /> {/* TODO: Replace with relay follow */}
         <NewFeature />
       </ToolTipFooter>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  width: 240px;
+`
 
 export const GeneContainer = styled.a`
   position: relative;

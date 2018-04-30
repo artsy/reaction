@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import React from "react"
+import { ArtistToolTip } from "./Artist"
 import { GeneToolTip } from "./Gene"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
@@ -13,11 +14,14 @@ export class ToolTip extends React.Component<Props, null> {
     const { entity, model } = this.props
 
     switch (model) {
+      case "artist": {
+        return <ArtistToolTip {...entity} />
+      }
       case "gene": {
         return <GeneToolTip {...entity} />
       }
       default: {
-        return <div />
+        return null
       }
     }
   }
@@ -34,11 +38,11 @@ export class ToolTip extends React.Component<Props, null> {
 
 export const ToolTipContainer = styled.div`
   position: relative;
-  width: 240px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
   margin-bottom: 15px;
+  width: fit-content;
   ${ArrowContainer} {
     bottom: -15px;
     left: calc(50% - 30px);
