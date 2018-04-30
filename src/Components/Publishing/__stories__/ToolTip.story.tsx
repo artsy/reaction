@@ -1,13 +1,26 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Artist, Gene } from "../Fixtures/Components"
+import { Artists, Gene } from "../Fixtures/Components"
 import { ToolTip } from "../ToolTip/ToolTip"
 
 storiesOf("Publishing/ToolTips", module)
-  .add("Artist", () => {
+  .add("Artist: bio", () => {
     return (
       <div style={{ maxWidth: 580, margin: "0 auto" }}>
-        <ToolTip entity={Artist} model="artist" />
+        <ToolTip entity={Artists[0]} model="artist" />
+        <ToolTip entity={Artists[1]} model="artist" />
+        <ToolTip entity={Artists[2]} model="artist" />
+        <ToolTip entity={Artists[3]} model="artist" />
+      </div>
+    )
+  })
+  .add("Artist: market data", () => {
+    return (
+      <div style={{ maxWidth: 580, margin: "0 auto" }}>
+        <ToolTip entity={Artists[0]} model="artist" showTestVariant />
+        <ToolTip entity={Artists[1]} model="artist" showTestVariant />
+        <ToolTip entity={Artists[2]} model="artist" showTestVariant />
+        <ToolTip entity={Artists[3]} model="artist" showTestVariant />
       </div>
     )
   })

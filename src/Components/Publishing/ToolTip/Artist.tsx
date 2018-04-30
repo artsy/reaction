@@ -2,15 +2,36 @@ import styled from "styled-components"
 import React from "react"
 import { map } from "lodash"
 import { garamond, unica } from "Assets/Fonts"
-import Markdown from "react-markdown"
 import fillwidthDimensions from "../../../Utils/fillwidth"
-import { Truncator } from "../Sections/Truncator"
+import { ToolTipDescription } from "./Components/Description"
 import { FollowButton } from "./Components/FollowButton"
 import { NewFeature } from "./Components/NewFeature"
+import { ArtistMarketData } from "./Components/ArtistMarketData"
 
 export interface ArtistProps {
+  auctionResults?: {
+    edges: Array<{
+      node: {
+        organization: string
+      }
+    }>
+  } | null
   blurb?: string
+  collections?: string[]
   formatted_nationality_and_birthday?: string
+  highlights?: {
+    partners?: {
+      edges: Array<{
+        node: {
+          name: string
+          categories: Array<{
+            id: string
+            name: string
+          }>
+        }
+      }>
+    } | null
+  } | null
   href?: string
   carousel?: {
     images: [
@@ -22,6 +43,7 @@ export interface ArtistProps {
     ]
   }
   name?: string
+  showTestVariant?: boolean
 }
 
 export const ArtistToolTip: React.SFC<ArtistProps> = props => {
@@ -31,6 +53,7 @@ export const ArtistToolTip: React.SFC<ArtistProps> = props => {
     formatted_nationality_and_birthday,
     href,
     name,
+    showTestVariant,
   } = props
   const displayImages = map(carousel.images.slice(0, 2), "resized")
   const images = fillwidthDimensions(displayImages, 320, 15, 150)
@@ -50,6 +73,7 @@ export const ArtistToolTip: React.SFC<ArtistProps> = props => {
             ))}
           </Images>
         )}
+
         <Header>
           <TitleDate>
             <Title>{name}</Title>
@@ -60,16 +84,10 @@ export const ArtistToolTip: React.SFC<ArtistProps> = props => {
           <FollowButton /> {/* TODO: Replace with relay follow */}
         </Header>
 
-        {blurb && (
-          <Description>
-            <Truncator maxLineCount={3}>
-              <Markdown
-                source={blurb}
-                containerTagName="span"
-                disallowedTypes={["Link"]}
-              />
-            </Truncator>
-          </Description>
+        {showTestVariant ? (
+          <ArtistMarketData {...props} />
+        ) : (
+          blurb && <ToolTipDescription text={blurb} />
         )}
       </ArtistContainer>
 
@@ -108,10 +126,6 @@ const Date = styled.div`
   ${unica("s14", "medium")};
 `
 
-const Description = styled.div`
-  ${garamond("s15")};
-`
-
 const Images = styled.div`
   width: 100%;
   margin-bottom: 20px;
@@ -120,13 +134,8 @@ const Images = styled.div`
 `
 
 // {
-//   artist(id: "andy-warhol") {
+//   artist(id: "") {
 //   	name
-//     image {
-//       cropped(width: 240, height: 160) {
-//         url
-//       }
-//     }
 //     formatted_nationality_and_birthday
 //     href
 //     blurb
@@ -150,7 +159,7 @@ const Images = styled.div`
 //         edges {
 //           node {
 //             categories {
-//               name
+//               id
 //             }
 //           }
 //         }
