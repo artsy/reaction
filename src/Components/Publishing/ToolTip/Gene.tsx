@@ -1,8 +1,7 @@
 import styled from "styled-components"
 import React from "react"
 import { garamond } from "Assets/Fonts"
-import Markdown from "react-markdown"
-import { Truncator } from "../Sections/Truncator"
+import { ToolTipDescription } from "./Components/Description"
 import { FollowButton } from "./Components/FollowButton"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 
@@ -24,27 +23,25 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
   } = image
 
   return (
-    <div>
+    <Wrapper>
       <GeneContainer href={href}>
         {url && <Image src={url} />}
         <Title>{name}</Title>
 
-        {description && (
-          <Description>
-            <Truncator maxLineCount={3}>
-              <Markdown source={description} containerTagName="span" />
-            </Truncator>
-          </Description>
-        )}
+        {description && <ToolTipDescription text={description} />}
       </GeneContainer>
 
       <ToolTipFooter>
         <FollowButton /> {/* TODO: Replace with relay follow */}
         <NewFeature />
       </ToolTipFooter>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  width: 240px;
+`
 
 export const GeneContainer = styled.a`
   position: relative;
@@ -55,10 +52,6 @@ export const GeneContainer = styled.a`
 const Title = styled.div`
   ${garamond("s18")};
   font-weight: 600;
-`
-
-const Description = styled.div`
-  ${garamond("s15")};
 `
 
 const Image = styled.img`

@@ -1,6 +1,8 @@
 import { flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
+import { ArtistProps } from "../ToolTip/Artist"
+import { GeneProps } from "../ToolTip/Gene"
 
 export const ArtworkMissingInfo = {
   type: "artwork",
@@ -642,7 +644,7 @@ export const FeatureText = flatten([
   StandardText,
 ])
 
-export const Gene = {
+export const Gene: GeneProps = {
   name: "Capitalist Realism",
   image: {
     cropped: {
@@ -654,3 +656,315 @@ export const Gene = {
   description:
     "_“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —[Gerhard Richter](/artist/gerhard-richter)_\n\nCapitalist Realism was launched in 1963 in Germany by the artists [Gerhard Richter](/artist/gerhard-richter), [Sigmar Polke](/artist/sigmar-polke), and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of [Pop Art](/gene/pop-art), with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of [Socialist Realism](/gene/socialist-realism). The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.",
 }
+
+export const Artists: ArtistProps[] = [
+  {
+    name: "Nick Mauss",
+    formatted_nationality_and_birthday: "American, b. 1980",
+    href: "/artist/nick-mauss",
+    blurb:
+      "Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of [silkscreen](/gene/silkscreen-1) prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.",
+    carousel: {
+      images: [
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=152&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg",
+            width: 152,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=258&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F_lnI3nNFEo6D9TFqm2oM1w%2Flarge.jpg",
+            width: 258,
+            height: 200,
+          },
+        },
+      ],
+    },
+    collections: ["Museum of Modern Art (MoMA)"],
+    highlights: {
+      partners: {
+        edges: [
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "established",
+                },
+                {
+                  id: "top-established",
+                },
+              ],
+            },
+          },
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "established",
+                },
+                {
+                  id: "modern",
+                },
+                {
+                  id: "painting",
+                },
+                {
+                  id: "blue-chip",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    auctionResults: {
+      edges: [
+        {
+          node: {
+            price_realized: {
+              display: "$63,312,500",
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: "Jutta Koether",
+    formatted_nationality_and_birthday: "German, b. 1958",
+    href: "/artist/jutta-koether",
+    blurb:
+      "Since the 1990s, German artist Jutta Koether has reflected on contemporary culture through her painting, performance, music, and writing. Koether is most commonly recognized for her abstract paintings that combine vibrant colors and gestural strokes with contemporary and historical imagery, such as graffiti-like brushwork, song lyrics, images of women, floral motifs, and other symbolic references. In her own take on [Neoclassical](/gene/neoclassicism) renderings of landscapes and Biblical images, Koether painted a series based on 17th-century painter [Nicolas Poussin](/artist/nicolas-poussin)'s _The Four Seasons_. Using frenetic lines in contrast to Poussin's formal refined techniques, Koether reveals her contemporary view of the seasons and notes the context of the work, a theme also carried through in her display of the works, frequently meant to be site-specific.",
+    carousel: {
+      images: [
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=299&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F1vTtdhvFhNbqpPQuX-Iv6w%2Flarge.jpg",
+            width: 299,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=300&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fzjk5e7k2ii8LVpcZNGN75w%2Flarge.jpg",
+            width: 300,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=150&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F4fWiy9ypPV9eBAzbmhe5HQ%2Flarge.jpg",
+            width: 150,
+            height: 200,
+          },
+        },
+      ],
+    },
+    collections: ["Museum of Modern Art (MoMA)"],
+    highlights: {
+      partners: {
+        edges: [
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "painting",
+                },
+                {
+                  id: "top-established",
+                },
+              ],
+            },
+          },
+          {
+            node: {
+              categories: [
+                {
+                  id: "top-established",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    auctionResults: null,
+  },
+  {
+    name: "Diamond Stingily",
+    formatted_nationality_and_birthday: "",
+    href: "/artist/diamond-stingily",
+    blurb:
+      "Diamond Stingily is an American artist whose work explores memory and identity through powerful, restrained installations mediated by an intentional choice of material and careful negotiation of spatial relationships. Using [childhood](/gene/childhood) as a universalizing inflection point, Stingily addresses neglected narratives, particularly the ignored experience of black girlhood, drawing on experiences in her mother’s hair salon and childhood diary, which was published in 2014. Stingily has used braids to materialize the historical and contemporary implications of black women’s hair, and more broadly, the physical alienation and exploitation. Structures of power emerge in unexpected presentations of familiar objects, highlighting disproportionate systemic limitation, physical violence, and [surveillance](/gene/surveillance). ",
+    carousel: {
+      images: [
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=321&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FBnViN8O7L4qm1LF95wBxSw%2Flarge.jpg",
+            width: 321,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=133&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCtQrdlNO8F36Bo46olHNzw%2Flarge.jpg",
+            width: 133,
+            height: 200,
+          },
+        },
+      ],
+    },
+    collections: null,
+    highlights: {
+      partners: {
+        edges: [],
+      },
+    },
+    auctionResults: null,
+  },
+  {
+    name: "Anni Albers",
+    formatted_nationality_and_birthday: "German-American, 1899–1994",
+    href: "/artist/anni-albers",
+    blurb:
+      "Printmaker and textile artist Anni Albers is widely recognized both for her geometric patterned compositions and deep involvement with the [Bauhaus](/gene/bauhaus) and Black Mountain College, teaching at the latter between 1933 and 1949. Albers arrived at the Bauhaus in Weimar, Germany in 1922, but was limited in the coursework she could pursue as certain disciplines were not taught to women. Although she began weaving almost by default, Albers became among the 20th century’s defining “pictorial” textile artists. At the Bauhaus she studied under painters [Paul Klee](/artist/paul-klee) and [Wassily Kandinsky](/artist/wassily-kandinsky), focusing on relationships between colors and the expressive potential of simple forms. She then married leading Bauhaus figure and renowned color theorist [Josef Albers](/artist/josef-albers) in 1925. In addition to frequent conversations with her many friends and colleagues, Albers drew inspiration from the pre-Columbian art she viewed during travels throughout Mexico and the Americas.",
+    carousel: {
+      images: [
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=300&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fyywb0L33PlhpPIzUfvu2Sg%2Flarge.jpg",
+            width: 300,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=324&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjPPb9arcM1qqw9Fn6zMSbw%2Flarge.jpg",
+            width: 324,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=154&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FxX8DYk6TSmsdRAzXAA3VVA%2Flarge.jpg",
+            width: 154,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=252&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FM9rbjJsD4VoyPzI_Rein7A%2Flarge.jpg",
+            width: 252,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=121&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FX3BBTgq-WcCpnvg-FbW52Q%2Flarge.jpg",
+            width: 121,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=285&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FbjOpm_qN7B0XDqdnxs1wUw%2Flarge.jpg",
+            width: 285,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=123&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fgli7IyWJ4yxCB9RVqUvhEg%2Flarge.jpg",
+            width: 123,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=174&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FDeBaVbdN3cmIHXr4NUho0g%2Flarge.jpg",
+            width: 174,
+            height: 200,
+          },
+        },
+        {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=167&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0qT9YOV0Ct7fUqL43klckA%2Flarge.jpg",
+            width: 167,
+            height: 200,
+          },
+        },
+      ],
+    },
+    collections: ["Tate", "Museum of Modern Art (MoMA)"],
+    highlights: {
+      partners: {
+        edges: [
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "established",
+                },
+                {
+                  id: "blue-chip",
+                },
+              ],
+            },
+          },
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "established",
+                },
+                {
+                  id: "modern",
+                },
+                {
+                  id: "prints-and-multiples",
+                },
+                {
+                  id: "top-established",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    auctionResults: null,
+  },
+]
