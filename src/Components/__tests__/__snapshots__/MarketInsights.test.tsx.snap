@@ -54,6 +54,7 @@ exports[`MarketInsights renders correctly 1`] = `
   display: block;
   top: 0;
   left: 0;
+  right: auto;
   position: absolute;
   visibility: hidden;
   text-align: left;
@@ -116,6 +117,7 @@ exports[`MarketInsights renders correctly 1`] = `
   display: block;
   top: 0;
   left: 0;
+  right: auto;
   position: absolute;
   visibility: hidden;
   text-align: left;
