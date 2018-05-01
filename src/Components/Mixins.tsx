@@ -10,9 +10,14 @@ export const borderedInput = (props: InputProps = {}) => {
     transition: border-color 0.25s;
     margin-right: 10px;
     resize: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &::placeholder {
       color: ${colors.grayMedium};
+      text-overflow: ellipsis;
     }
 
     ${garamond("s17")};

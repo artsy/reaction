@@ -6,7 +6,7 @@ import { default as Input } from "../../Input"
  * A text input with the standard FormimkProps added for rendering niceness
  */
 export const Field: (props: any) => any = props => {
-  const { name, type, placeholder, block } = props
+  const { name, type, placeholder, block, title } = props
   return (
     <FormikField
       name={name}
@@ -20,6 +20,7 @@ export const Field: (props: any) => any = props => {
         <div>
           <Input
             {...field}
+            title={title}
             block={block}
             type={type}
             placeholder={placeholder}

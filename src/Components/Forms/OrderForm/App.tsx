@@ -37,7 +37,7 @@ export class App extends Component<{ onSubmit: any }> {
                 />
               </StepMarkerContainer>
             </Nav>
-            {wizard.currentStep}
+            <StepContainer>{wizard.currentStep}</StepContainer>
           </Container>
         )}
       </Wizard>
@@ -47,14 +47,20 @@ export class App extends Component<{ onSubmit: any }> {
 
 const StepMarkerContainer = styled.div`
   width: 300px;
-  /* margin-left: auto; */
 `
 const StyledStepMarker = styled(StepMarker)`
   /* this doesn't work? */
 `
 
 const Container = styled.div`
-  width: 768px;
+  width: 100%;
+  min-width: 768px;
+`
+
+const StepContainer = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 `
 
 export const StyledTitle = Title.extend`

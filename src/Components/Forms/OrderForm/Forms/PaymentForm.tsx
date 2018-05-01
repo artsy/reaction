@@ -6,7 +6,8 @@ import Title from "../../../Title"
 import colors from "../../../../Assets/Colors"
 import { AddressFormInputs } from "./ShippingForm"
 import { Checkbox } from "../../../Checkbox"
-import { Grid, Row, Col } from "react-styled-flexboxgrid"
+import { Row, Col } from "react-styled-flexboxgrid"
+import { StyledGrid as Grid, Contact } from "./common"
 import { WizardStepChildProps } from "../../../Wizard/types"
 
 interface State {
@@ -28,7 +29,7 @@ export class PaymentForm extends Component<WizardStepChildProps, State> {
 
   render() {
     return (
-      <Grid fluid>
+      <Grid>
         <Row>
           <Col xs>
             <Title titleSize="medium">Payment method</Title>
@@ -94,10 +95,7 @@ export class PaymentForm extends Component<WizardStepChildProps, State> {
         </Row>
         <Row>
           <Col xs>
-            <Text color={colors.graySemibold} textSize="medium" align="center">
-              Questions? Email{" "}
-              <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-            </Text>
+            <Contact />
           </Col>
         </Row>
       </Grid>

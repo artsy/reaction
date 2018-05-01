@@ -5,7 +5,8 @@ import Title from "../../../Title"
 import colors from "../../../../Assets/Colors"
 import styled from "styled-components"
 import { Checkbox } from "../../../Checkbox"
-import { Grid, Row, Col } from "react-styled-flexboxgrid"
+import { Row, Col } from "react-styled-flexboxgrid"
+import { StyledGrid as Grid, Contact } from "./common"
 import { WizardStepChildProps } from "../../../Wizard/types"
 
 export class ReviewForm extends Component<WizardStepChildProps> {
@@ -40,14 +41,7 @@ export class ReviewForm extends Component<WizardStepChildProps> {
           </Row>
           <Row>
             <Col xs>
-              <Text
-                color={colors.graySemibold}
-                textSize="medium"
-                align="center"
-              >
-                Questions? Email{" "}
-                <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-              </Text>
+              <Contact />
             </Col>
           </Row>
         </Fragment>

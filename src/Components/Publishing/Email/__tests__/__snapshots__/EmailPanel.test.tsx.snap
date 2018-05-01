@@ -59,6 +59,10 @@ exports[`EmailSignup renders an email signup 1`] = `
   transition: border-color 0.25s;
   margin-right: 10px;
   resize: none;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
@@ -70,18 +74,22 @@ exports[`EmailSignup renders an email signup 1`] = `
 
 .c3::-webkit-input-placeholder {
   color: #cccccc;
+  text-overflow: ellipsis;
 }
 
 .c3::-moz-placeholder {
   color: #cccccc;
+  text-overflow: ellipsis;
 }
 
 .c3:-ms-input-placeholder {
   color: #cccccc;
+  text-overflow: ellipsis;
 }
 
 .c3::placeholder {
   color: #cccccc;
+  text-overflow: ellipsis;
 }
 
 .c3:hover,
