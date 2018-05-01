@@ -38,11 +38,7 @@ export class ToolTip extends React.Component<Props> {
 }
 
 export const ToolTipContainer = styled.div`
-<<<<<<< HEAD
-  position: relative;
-=======
-  width: 240px;
->>>>>>> [Tooltips] attach tooltips to links
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
