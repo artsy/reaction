@@ -54,8 +54,16 @@ export interface InputState {
 export class Input extends React.Component<InputProps, InputState> {
   state = {
     focused: false,
-    value: "",
+    value: (this.props.value as string) || "",
     showPassword: false,
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.name !== newProps.name) {
+      this.setState({
+        value: "",
+      })
+    }
   }
 
   onFocus = e => {
@@ -82,6 +90,10 @@ export class Input extends React.Component<InputProps, InputState> {
     this.setState({
       value: e.currentTarget.value,
     })
+
+    if (this.props.onChange) {
+      this.props.onChange(e)
+    }
   }
 
   getRightViewForPassword() {
@@ -120,6 +132,7 @@ export class Input extends React.Component<InputProps, InputState> {
         className,
         ref,
         type,
+        onChange,
         ...newProps
       } = this.props
       const showLabel = (!!this.state.focused || !!this.state.value) && !!label
@@ -138,8 +151,8 @@ export class Input extends React.Component<InputProps, InputState> {
               {...newProps}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
-              onKeyUp={this.onChange}
-              value={this.props.value}
+              onChange={this.onChange}
+              value={this.state.value}
               type={this.convertedType}
             />
             {isPassword

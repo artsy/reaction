@@ -50,7 +50,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={touched.email && errors.email}
+            error={errors.email}
             placeholder="Enter your email address"
             name="email"
             label="Email"
