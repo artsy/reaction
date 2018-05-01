@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import AuthForm from "../Authorization/AuthForm"
+import { AuthForm } from "../Authorization/AuthForm"
 import { DesktopModal } from "../Authorization/DesktopModal"
 
 const submit = (values, actions) => {
