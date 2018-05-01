@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
+import ReactHtmlParser from "react-html-parser"
+import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   color?: string
@@ -57,6 +59,13 @@ export class Text extends Component<Props, State> {
     const { children, color, isContentStart, layout, postscript } = this.props
     const { html } = this.state
 
+    const transform = node => {
+      if (node.type === "a") {
+        console.log(node)
+        return <LinkWithTooltip url={node.href} />
+      }
+    }
+
     return (
       <StyledText
         className="article__text-section"
@@ -66,7 +75,7 @@ export class Text extends Component<Props, State> {
         postscript={postscript}
       >
         {html.length ? (
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div>{ReactHtmlParser(html, { transform })}</div>
         ) : (
           children
         )}
