@@ -102,19 +102,21 @@ export class ArticleWithFullScreen extends React.Component<
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <ArticleContainer marginTop={marginTop}>
-        {article.layout === "feature" ? (
-          <FeatureLayout {...articleProps} />
-        ) : (
-          <StandardLayout {...articleProps} />
-        )}
-        <FullscreenViewer
-          onClose={closeViewer}
-          show={viewerIsOpen}
-          slideIndex={slideIndex}
-          images={fullscreenImages}
-        />
-      </ArticleContainer>
+      <TooltipsDataLoader article={article}>
+        <ArticleContainer marginTop={marginTop}>
+          {article.layout === "feature" ? (
+            <FeatureLayout {...articleProps} />
+          ) : (
+            <StandardLayout {...articleProps} />
+          )}
+          <FullscreenViewer
+            onClose={closeViewer}
+            show={viewerIsOpen}
+            slideIndex={slideIndex}
+            images={fullscreenImages}
+          />
+        </ArticleContainer>
+      </TooltipsDataLoader>
     )
   }
 }

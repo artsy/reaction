@@ -1,9 +1,11 @@
 import React, { Component } from "react"
 import { QueryRenderer, graphql } from "react-relay"
 import { createEnvironment } from "../../../Relay/createEnvironment"
+import { ArticleData } from "../Typings"
+import PropTypes from "prop-types"
 
 interface Props {
-  articleHTML: string
+  article: ArticleData
 }
 
 const environment = createEnvironment()
@@ -15,7 +17,7 @@ export class TooltipsDataLoader extends Component<Props> {
         environment={environment}
         query={graphql`
         query TooltipsQuery($artistIds) {
-          artists(ids: $artistIds) {
+          artists(slugs: $artistIds) {
             id
             name
             href
@@ -24,15 +26,38 @@ export class TooltipsDataLoader extends Component<Props> {
             }
             bio
           }
+          
         }
       `}
         variables={{
-          artistIds: [""],
+          artistIds: ["andy-warhol", "pablo-picasso"],
         }}
         render={() => {
-          return <div />
+          return (
+            <TooltipsContextProvider>
+              {this.props.children}
+            </TooltipsContextProvider>
+          )
         }}
       />
     )
+  }
+}
+
+class TooltipsContextProvider extends Component<any> {
+  static childContextTypes = {
+    wizard: PropTypes.object,
+    form: PropTypes.object,
+  }
+
+  getChildContext() {
+    return {
+      artists: this.props.artists,
+      fairs: this.props.fairs,
+    }
+  }
+
+  render() {
+    return this.props.children
   }
 }
