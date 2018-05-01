@@ -20,7 +20,7 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
 
   hasAuctionRecord = () => {
     const { auctionResults } = this.props
-    return auctionResults && auctionResults.edges.length
+    return auctionResults && auctionResults.edges.length > 0
   }
 
   galleryCategories = () => {

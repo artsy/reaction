@@ -23,12 +23,10 @@ export interface ArtistProps {
   formatted_nationality_and_birthday?: string
   highlights?: {
     partners?: {
-      edges: Array<{
-        node: {
-          name: string
+      edges?: Array<{
+        node?: {
           categories: Array<{
             id: string
-            name: string
           }>
         }
       }>
@@ -36,16 +34,16 @@ export interface ArtistProps {
   } | null
   href?: string
   carousel?: {
-    images: [
-      {
-        resized: {
-          url: string
-        }
+    images?: Array<{
+      resized: {
+        url: string
+        width: number
+        height: number
       }
-    ]
+    }>
   }
   name?: string
-  showTestVariant?: boolean
+  showMarketData?: boolean
 }
 
 export const ArtistToolTip: React.SFC<ArtistProps> = props => {
@@ -55,7 +53,7 @@ export const ArtistToolTip: React.SFC<ArtistProps> = props => {
     formatted_nationality_and_birthday,
     href,
     name,
-    showTestVariant,
+    showMarketData,
   } = props
   const displayImages = map(carousel.images.slice(0, 2), "resized")
   const images = fillwidthDimensions(displayImages, 320, 15, 150)
@@ -86,7 +84,7 @@ export const ArtistToolTip: React.SFC<ArtistProps> = props => {
           <FollowButton /> {/* TODO: Replace with relay follow */}
         </Header>
 
-        {showTestVariant ? (
+        {showMarketData ? (
           <ArtistMarketData {...props} />
         ) : (
           blurb && <ToolTipDescription text={blurb} />

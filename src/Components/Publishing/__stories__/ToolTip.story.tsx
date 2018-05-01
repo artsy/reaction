@@ -17,10 +17,10 @@ storiesOf("Publishing/ToolTips", module)
   .add("Artist: market data", () => {
     return (
       <div style={{ maxWidth: 580, margin: "0 auto" }}>
-        <ToolTip entity={Artists[0]} model="artist" showTestVariant />
-        <ToolTip entity={Artists[1]} model="artist" showTestVariant />
-        <ToolTip entity={Artists[2]} model="artist" showTestVariant />
-        <ToolTip entity={Artists[3]} model="artist" showTestVariant />
+        <ToolTip entity={Artists[0]} model="artist" showMarketData />
+        <ToolTip entity={Artists[1]} model="artist" showMarketData />
+        <ToolTip entity={Artists[2]} model="artist" showMarketData />
+        <ToolTip entity={Artists[3]} model="artist" showMarketData />
       </div>
     )
   })

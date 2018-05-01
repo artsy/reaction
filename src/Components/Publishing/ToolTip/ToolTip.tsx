@@ -7,16 +7,16 @@ import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 interface Props {
   entity: object
   model: string
-  showTestVariant?: boolean
+  showMarketData?: boolean
 }
 
 export class ToolTip extends React.Component<Props, null> {
   getToolTip = () => {
-    const { entity, model, showTestVariant } = this.props
+    const { entity, model, showMarketData } = this.props
 
     switch (model) {
       case "artist": {
-        return <ArtistToolTip showTestVariant={showTestVariant} {...entity} />
+        return <ArtistToolTip showMarketData={showMarketData} {...entity} />
       }
       case "gene": {
         return <GeneToolTip {...entity} />
