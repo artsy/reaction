@@ -12,7 +12,9 @@ export interface ArtistProps {
   auctionResults?: {
     edges: Array<{
       node: {
-        organization: string
+        price_realized: {
+          display: string
+        }
       }
     }>
   } | null
@@ -134,7 +136,7 @@ const Images = styled.div`
 `
 
 // {
-//   artist(id: "") {
+//   artist(id: "andy-warhol") {
 //   	name
 //     formatted_nationality_and_birthday
 //     href
@@ -151,7 +153,7 @@ const Images = styled.div`
 //     collections
 //     highlights {
 //       partners(
-//         first: 3
+//         first: 5
 //         display_on_partner_profile: true
 //         represented_by: true
 //         partner_category: ["blue-chip", "top-established", "top-emerging"]
@@ -172,7 +174,9 @@ const Images = styled.div`
 //     ) {
 //       edges {
 //         node {
-//           organization
+//           price_realized {
+//             display
+//           }
 //         }
 //       }
 //     }

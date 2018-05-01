@@ -726,7 +726,15 @@ export const Artists = [
       },
     },
     auctionResults: {
-      edges: [{ node: { organization: "Christie's" } }],
+      edges: [
+        {
+          node: {
+            price_realized: {
+              display: "$63,312,500",
+            },
+          },
+        },
+      ],
     },
   },
   {

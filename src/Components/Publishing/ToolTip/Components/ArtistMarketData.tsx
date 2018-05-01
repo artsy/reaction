@@ -4,17 +4,11 @@ import { countBy, intersection, flatten, map } from "lodash"
 import { unica } from "Assets/Fonts"
 import { ArtistProps } from "../Artist"
 import { ToolTipDescription } from "./Description"
+import { Truncator } from "../../Sections/Truncator"
 
 const ALLOWED_CATEGORIES = ["blue-chip", "top-established", "top-emerging"]
 
 export class ArtistMarketData extends React.Component<ArtistProps> {
-  galleryCategories = () => {
-    const { highlights } = this.props
-    const partners = highlights.partners ? highlights.partners.edges : []
-
-    return map(flatten(map(partners, "node.categories")), "id")
-  }
-
   hasGalleryData = () => {
     return intersection(this.galleryCategories(), ALLOWED_CATEGORIES).length > 0
   }
@@ -22,6 +16,18 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
   hasCollections = () => {
     const { collections } = this.props
     return collections && collections.length > 0
+  }
+
+  hasAuctionRecord = () => {
+    const { auctionResults } = this.props
+    return auctionResults && auctionResults.edges.length
+  }
+
+  galleryCategories = () => {
+    const { highlights } = this.props
+    const partners = highlights.partners ? highlights.partners.edges : []
+
+    return map(flatten(map(partners, "node.categories")), "id")
   }
 
   renderGalleryCategories = () => {
@@ -50,29 +56,49 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
     }
   }
 
-  renderMarketData = () => {
-    return (
-      <div>
-        {this.renderGalleryCategories()}
-        {this.hasCollections() && <div>Collected by major museums</div>}
-      </div>
-    )
+  renderCollections = () => {
+    if (this.hasCollections()) {
+      const { collections } = this.props
+      let text
+
+      if (collections.length > 1) {
+        text = `In the collections of ${collections.join(", ")}`
+      } else {
+        text = `In the collection of ${collections[0]}`
+      }
+      return <div>{text}</div>
+    }
   }
 
-  renderArtistCategories = () => {
+  renderAuctionRecord = () => {
+    if (this.hasAuctionRecord()) {
+      const auctionRecord = this.props.auctionResults.edges[0].node
+        .price_realized.display
+
+      return <div>{auctionRecord} auction record</div>
+    }
+  }
+
+  renderArtistGenes = () => {
     // TODO: Artist genes
     return <ToolTipDescription text={this.props.blurb} />
   }
 
   render() {
-    // TODO: Auction results
-    const hasMarketData = this.hasCollections() || this.hasGalleryData()
+    const hasMarketData =
+      this.hasCollections() || this.hasGalleryData() || this.hasAuctionRecord()
 
     return (
       <Wrapper>
-        {hasMarketData
-          ? this.renderMarketData()
-          : this.renderArtistCategories()}
+        {hasMarketData ? (
+          <Truncator maxLineCount={3}>
+            {this.renderGalleryCategories()}
+            {this.renderCollections()}
+            {this.renderAuctionRecord()}
+          </Truncator>
+        ) : (
+          this.renderArtistGenes()
+        )}
       </Wrapper>
     )
   }
@@ -82,54 +108,3 @@ const Wrapper = styled.div`
   ${unica("s12")};
   padding: 10px 0;
 `
-
-// {
-//   artist(id: "andy-warhol") {
-//   	name
-//     image {
-//       cropped(width: 240, height: 160) {
-//         url
-//       }
-//     }
-//     formatted_nationality_and_birthday
-//     href
-//     blurb
-//     carousel {
-//       images {
-//         resized(height:200){
-//           url
-//           width
-//           height
-//         }
-//       }
-//     }
-//     collections
-//     highlights {
-//       partners(
-//         first: 5
-//         display_on_partner_profile: true
-//         represented_by: true
-//         partner_category: ["blue-chip", "top-established", "top-emerging"]
-//       ) {
-//         edges {
-//           node {
-//             categories {
-//               id
-//             }
-//           }
-//         }
-//       }
-//     }
-//     auctionResults(
-//       recordsTrusted: true
-//       first: 1
-//       sort: PRICE_AND_DATE_DESC
-//     ) {
-//       edges {
-//         node {
-//           organization
-//         }
-//       }
-//     }
-//   }
-// }
