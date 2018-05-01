@@ -10,7 +10,7 @@ interface Props {
   showMarketData?: boolean
 }
 
-export class ToolTip extends React.Component<Props, null> {
+export class ToolTip extends React.Component<Props> {
   getToolTip = () => {
     const { entity, model, showMarketData } = this.props
 
@@ -38,7 +38,11 @@ export class ToolTip extends React.Component<Props, null> {
 }
 
 export const ToolTipContainer = styled.div`
+<<<<<<< HEAD
   position: relative;
+=======
+  width: 240px;
+>>>>>>> [Tooltips] attach tooltips to links
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;

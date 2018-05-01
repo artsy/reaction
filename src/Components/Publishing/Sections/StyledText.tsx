@@ -48,7 +48,7 @@ export const StyledText = div`
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
-  p, ul, ol,
+  p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
     padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
@@ -57,10 +57,12 @@ export const StyledText = div`
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
   p:first-child,
+  .paragraph:first-child,
   div[data-block=true]:first-child .public-DraftStyleDefault-block {
     padding-top: 0;
   }
   p:last-child,
+  .paragraph:last-child,
   div[data-block=true]:last-child .public-DraftStyleDefault-block {
     padding-bottom: 0;
   }
@@ -140,6 +142,7 @@ export const StyledText = div`
     }
   }
   p:first-child:first-letter,
+  .paragraph:first-child:first-letter,
   div[data-block=true]:first-child .public-DraftStyleDefault-block:first-letter {
     ${props =>
       props.isContentStart &&

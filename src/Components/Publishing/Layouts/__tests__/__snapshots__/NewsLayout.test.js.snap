@@ -678,13 +678,32 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
-            }
-          }
-        />
+        <div>
+          <p>
+            <strong>
+              The design for the as-yet-uncompleted sculpture
+            </strong>
+            , 
+            <span
+              style={
+                Object {
+                  "textDecoration": "line-through",
+                }
+              }
+            >
+              <em>
+                Bouquet of Tulips
+              </em>
+            </span>
+            , was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, 
+            <a
+              href="#"
+            >
+              one of the world’s richest living artists
+            </a>
+            , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -699,13 +718,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote>It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.</blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -716,13 +733,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote>The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.</blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -733,13 +748,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote><a href='#'>The Guardian</a></blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            <a
+              href="#"
+            >
+              The Guardian
+            </a>
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -750,13 +767,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p>",
-            }
-          }
-        />
+        <div>
+          <p>
+            It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
+            <em>
+              New York Times
+            </em>
+            .
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -771,13 +790,20 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<h3><strong>Takeaway</strong></h3><h3>Should Prince lose at trial and on appeal the resulting precedent would reign in the broader <em>fair use interpretations</em> now afforded to artists.</h3>",
-            }
-          }
-        />
+        <div>
+          <h3>
+            <strong>
+              Takeaway
+            </strong>
+          </h3>
+          <h3>
+            Should Prince lose at trial and on appeal the resulting precedent would reign in the broader 
+            <em>
+              fair use interpretations
+            </em>
+             now afforded to artists.
+          </h3>
+        </div>
       </div>
     </div>
     <div
@@ -1587,13 +1613,32 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p>",
-            }
-          }
-        />
+        <div>
+          <p>
+            <strong>
+              The design for the as-yet-uncompleted sculpture
+            </strong>
+            , 
+            <span
+              style={
+                Object {
+                  "textDecoration": "line-through",
+                }
+              }
+            >
+              <em>
+                Bouquet of Tulips
+              </em>
+            </span>
+            , was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, 
+            <a
+              href="#"
+            >
+              one of the world’s richest living artists
+            </a>
+            , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -1608,13 +1653,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote>It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.</blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -1625,13 +1668,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote>The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.</blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -1642,13 +1683,15 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<blockquote><a href='#'>The Guardian</a></blockquote>",
-            }
-          }
-        />
+        <div>
+          <blockquote>
+            <a
+              href="#"
+            >
+              The Guardian
+            </a>
+          </blockquote>
+        </div>
       </div>
     </div>
     <div
@@ -1659,13 +1702,15 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p>",
-            }
-          }
-        />
+        <div>
+          <p>
+            It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
+            <em>
+              New York Times
+            </em>
+            .
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -1680,13 +1725,20 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="article__text-section c12"
         color="black"
       >
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<h3><strong>Takeaway</strong></h3><h3>Should Prince lose at trial and on appeal the resulting precedent would reign in the broader <em>fair use interpretations</em> now afforded to artists.</h3>",
-            }
-          }
-        />
+        <div>
+          <h3>
+            <strong>
+              Takeaway
+            </strong>
+          </h3>
+          <h3>
+            Should Prince lose at trial and on appeal the resulting precedent would reign in the broader 
+            <em>
+              fair use interpretations
+            </em>
+             now afforded to artists.
+          </h3>
+        </div>
       </div>
     </div>
     <div

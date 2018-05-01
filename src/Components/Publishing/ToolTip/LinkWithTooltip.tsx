@@ -2,9 +2,11 @@ import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
+import { Gene } from "../Fixtures/Components"
 
 interface Props {
   url: string
+  node: any
 }
 
 interface State {
@@ -22,11 +24,16 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   render() {
     const { show } = this.state
-    const toolTip = <ToolTip entity={null} model={null} />
+    const toolTip = (
+      <div>
+        <ToolTip entity={Gene} model="gene" />
+      </div>
+    )
 
     return (
-      <OverlayTrigger show={show} placement="bottom" overlay={toolTip}>
+      <OverlayTrigger show={show} placement="top" overlay={toolTip}>
         <a
+          href={this.props.url}
           onMouseEnter={() => this.setState({ show: true })}
           onMouseLeave={() => this.setState({ show: false })}
         >

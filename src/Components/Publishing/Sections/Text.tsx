@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
-import ReactHtmlParser from "react-html-parser"
+import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
+import { startsWith } from "lodash"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   color?: string
@@ -59,10 +60,24 @@ export class Text extends Component<Props, State> {
     const { children, color, isContentStart, layout, postscript } = this.props
     const { html } = this.state
 
-    const transform = node => {
-      if (node.type === "a") {
-        console.log(node)
-        return <LinkWithTooltip url={node.href} />
+    const transform = (node, index) => {
+      if (node.name === "p") {
+        node.name = "div"
+        node.attribs.class = "paragraph"
+        return convertNodeToElement(node, index, transform)
+      }
+
+      if (
+        node.name === "a" &&
+        startsWith(node.attribs.href, "https://www.artsy.net/")
+      ) {
+        const href = node.attribs.href
+        const text = node.children[0].data
+        return (
+          <LinkWithTooltip key={href + index} url={href} node={node}>
+            {text}
+          </LinkWithTooltip>
+        )
       }
     }
 

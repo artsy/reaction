@@ -31,7 +31,7 @@ export class TooltipsDataLoader extends Component<Props> {
         variables={{
           artistIds: ["andy-warhol", "pablo-picasso"],
         }}
-        render={() => {
+        render={readyState => {
           return (
             <TooltipsContextProvider>
               {this.props.children}
