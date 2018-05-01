@@ -16,19 +16,18 @@ export class TooltipsDataLoader extends Component<Props> {
       <QueryRenderer
         environment={environment}
         query={graphql`
-        query TooltipsQuery($artistIds) {
-          artists(slugs: $artistIds) {
-            id
-            name
-            href
-            image {
-              url
+          query TooltipsDataLoaderQuery($artistIds: [String!]) {
+            artists(slugs: $artistIds) {
+              id
+              name
+              href
+              image {
+                url
+              }
+              bio
             }
-            bio
           }
-          
-        }
-      `}
+        `}
         variables={{
           artistIds: ["andy-warhol", "pablo-picasso"],
         }}
@@ -46,14 +45,15 @@ export class TooltipsDataLoader extends Component<Props> {
 
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
-    wizard: PropTypes.object,
-    form: PropTypes.object,
+    tooltipsData: PropTypes.object,
   }
 
   getChildContext() {
     return {
-      artists: this.props.artists,
-      fairs: this.props.fairs,
+      tooltipsData: {
+        artists: this.props.artists,
+        fairs: this.props.fairs,
+      },
     }
   }
 
