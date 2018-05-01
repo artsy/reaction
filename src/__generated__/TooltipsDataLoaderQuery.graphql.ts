@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type TooltipsDataLoaderQueryVariables = {
-    readonly artistIds?: ReadonlyArray<string> | null;
+    readonly artistSlugs?: ReadonlyArray<string> | null;
 };
 export type TooltipsDataLoaderQueryResponse = {
     readonly artists: ReadonlyArray<({
@@ -20,9 +20,9 @@ export type TooltipsDataLoaderQueryResponse = {
 
 /*
 query TooltipsDataLoaderQuery(
-  $artistIds: [String!]
+  $artistSlugs: [String!]
 ) {
-  artists(slugs: $artistIds) {
+  artists(slugs: $artistSlugs) {
     id
     name
     href
@@ -39,7 +39,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistIds",
+    "name": "artistSlugs",
     "type": "[String!]",
     "defaultValue": null
   }
@@ -54,7 +54,7 @@ v1 = [
       {
         "kind": "Variable",
         "name": "slugs",
-        "variableName": "artistIds",
+        "variableName": "artistSlugs",
         "type": "[String]"
       }
     ],
@@ -122,7 +122,7 @@ return {
   "operationKind": "query",
   "name": "TooltipsDataLoaderQuery",
   "id": null,
-  "text": "query TooltipsDataLoaderQuery(\n  $artistIds: [String!]\n) {\n  artists(slugs: $artistIds) {\n    id\n    name\n    href\n    image {\n      url\n    }\n    bio\n    __id\n  }\n}\n",
+  "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    name\n    href\n    image {\n      url\n    }\n    bio\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -140,5 +140,5 @@ return {
   }
 };
 })();
-(node as any).hash = '50ce07f44f14b8ccb37a50a96be1cd66';
+(node as any).hash = 'a254e154a8ae74958ee27fb90089566e';
 export default node;

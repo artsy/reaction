@@ -30,6 +30,8 @@ export class LinkWithTooltip extends Component<Props, State> {
       </div>
     )
 
+    if (this.context.tooltipsData) console.log(this.context.tooltipsData)
+
     return (
       <OverlayTrigger show={show} placement="top" overlay={toolTip}>
         <a

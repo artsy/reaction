@@ -3,6 +3,7 @@ import { QueryRenderer, graphql } from "react-relay"
 import { createEnvironment } from "../../../Relay/createEnvironment"
 import { ArticleData } from "../Typings"
 import PropTypes from "prop-types"
+import { getArtsySlugsFromArticle } from "../Constants"
 
 interface Props {
   article: ArticleData
@@ -12,12 +13,16 @@ const environment = createEnvironment()
 
 export class TooltipsDataLoader extends Component<Props> {
   render() {
+    const { artists: artistSlugs } = getArtsySlugsFromArticle(
+      this.props.article
+    )
+
     return (
       <QueryRenderer
         environment={environment}
         query={graphql`
-          query TooltipsDataLoaderQuery($artistIds: [String!]) {
-            artists(slugs: $artistIds) {
+          query TooltipsDataLoaderQuery($artistSlugs: [String!]) {
+            artists(slugs: $artistSlugs) {
               id
               name
               href
@@ -29,11 +34,11 @@ export class TooltipsDataLoader extends Component<Props> {
           }
         `}
         variables={{
-          artistIds: ["andy-warhol", "pablo-picasso"],
+          artistSlugs,
         }}
         render={readyState => {
           return (
-            <TooltipsContextProvider>
+            <TooltipsContextProvider {...readyState.props}>
               {this.props.children}
             </TooltipsContextProvider>
           )
