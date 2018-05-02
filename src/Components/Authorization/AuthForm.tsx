@@ -34,10 +34,6 @@ export class AuthForm extends React.Component<Props, State> {
     }
   }
 
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = e => {
-    return true
-  }
-
   render() {
     let Form: FormComponentType
     switch (this.state.mode) {
@@ -55,10 +51,17 @@ export class AuthForm extends React.Component<Props, State> {
     }
     return (
       <Form
-        values={this.props.values}
+        values={values}
         handleChangeMode={this.handleChangeMode}
         handleSubmit={this.props.handleSubmit}
       />
     )
   }
+}
+
+const values = {
+  email: "",
+  password: "",
+  name: "",
+  acceptedTermsOfService: false,
 }

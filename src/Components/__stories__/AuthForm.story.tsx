@@ -11,19 +11,23 @@ const submit = (values, actions) => {
   }, 1000)
 }
 
+const close = () => {
+  return
+}
+
 storiesOf("Components/Authorization", module)
   .add("Login Mode", () => (
-    <DesktopModal show>
+    <DesktopModal show onClose={close}>
       <AuthForm mode="login" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Forgot Password", () => (
-    <DesktopModal show>
+    <DesktopModal show onClose={close}>
       <AuthForm mode="reset_password" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Register Mode", () => (
-    <DesktopModal show>
+    <DesktopModal show onClose={close}>
       <AuthForm mode="register" handleSubmit={submit} />
     </DesktopModal>
   ))

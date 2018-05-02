@@ -164,7 +164,7 @@ class Input extends React.Component<InputProps, InputState> {
 }
 
 const Container = styled.div`
-  padding: 5px 0;
+  padding-bottom: 5px;
 `
 
 const StyledInput = styled.input`
@@ -183,7 +183,7 @@ const InputComponent = styled.input`
   &:active,
   &:focus,
   &:not(:placeholder-shown) {
-    transform: translateY(2px);
+    transform: translateY(5px);
   }
 
   &::placeholder {
@@ -230,12 +230,12 @@ const Description = styled.div`
 
 const Error = styled.div.attrs<{ show: boolean }>({})`
   ${unica("s12")};
-  margin-top: 10px;
+  margin-top: 5px;
   color: ${Colors.redMedium};
   visibility: ${p => (p.show ? "visible" : "hidden")};
+  transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
   height: ${p => (p.show ? "16px" : "0")};
-  transition: visibility 0.2s linear;
 `
 
 export default Input
