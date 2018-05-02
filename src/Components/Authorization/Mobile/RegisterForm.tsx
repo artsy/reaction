@@ -45,7 +45,7 @@ export const MobileRegisterForm: FormComponentType = props => {
     <Step validationSchema={Validators.email} onSubmit={checkEmail}>
       {({
         wizard,
-        form: { errors, touched, values, handleChange, handleBlur },
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
         <div>
           <Input
@@ -58,6 +58,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            setTouched={setTouched}
             quick
           />
           <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
@@ -71,9 +72,9 @@ export const MobileRegisterForm: FormComponentType = props => {
     <Step validationSchema={Validators.password}>
       {({
         wizard,
-        form: { errors, touched, values, handleChange, handleBlur },
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
-        <div>
+        <div style={{ marginBottom: "80px" }}>
           <Input
             block
             error={errors.password}
@@ -84,6 +85,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
+            setTouched={setTouched}
             quick
           />
         </div>
@@ -92,9 +94,9 @@ export const MobileRegisterForm: FormComponentType = props => {
     <Step validationSchema={Validators.name}>
       {({
         wizard,
-        form: { errors, touched, values, handleChange, handleBlur },
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
-        <div>
+        <div style={{ marginBottom: "80px" }}>
           <Input
             block
             error={errors.name}
@@ -105,6 +107,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
+            setTouched={setTouched}
             quick
           />
         </div>
@@ -119,20 +122,26 @@ export const MobileRegisterForm: FormComponentType = props => {
         return (
           <Container>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
-            <BackButton onClick={wizard.previous as any}>
-              <Icon name="chevron-left" color="#cccccc" fontSize="20px" />
-            </BackButton>
-            <Header>
-              <Logo name="logotype" />
-            </Header>
-            {currentStep}
-            <Button
-              onClick={form.handleSubmit as any}
-              block
-              disabled={!wizard.shouldAllowNext}
-            >
-              Next
-            </Button>
+            <InnerWrapper>
+              <BackButton onClick={wizard.previous as any}>
+                <Icon
+                  name="chevron-left"
+                  color={Colors.grayMedium}
+                  fontSize="20px"
+                />
+              </BackButton>
+              <Header>
+                <Logo name="logotype" />
+              </Header>
+              {currentStep}
+              <Button
+                onClick={form.handleSubmit as any}
+                block
+                disabled={!wizard.shouldAllowNext}
+              >
+                Next
+              </Button>
+            </InnerWrapper>
           </Container>
         )
       }}
@@ -145,8 +154,14 @@ const Container = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: stretch;
-  position: relative;
+  width: 100%;
   min-width: 260px;
+`
+
+const InnerWrapper = styled.div`
+  position: relative;
+  margin-left: 35px;
+  margin-right: 35px;
 `
 
 const Header = styled.div`
@@ -177,7 +192,7 @@ const BackButton = styled.div`
   justify-self: start;
   align-self: center;
   position: absolute;
-  left: -7px;
-  top: 44px;
+  left: -9px;
+  top: 40px;
   color: Colors.grayMedium;
 `

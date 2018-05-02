@@ -26,6 +26,7 @@ export const GrayFacebookButton = FacebookButton.extend.attrs({
   background: #fff;
   color: ${Colors.grayDark};
   margin-top: 0;
+  padding: 0 20px;
   font-size: 12px;
 
   &:hover:not(:disabled) {
