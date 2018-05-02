@@ -5,7 +5,7 @@ import colors from "../Assets/Colors"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   message: string
   hoverAlign?: string
-  hoverWidth?: Number
+  hoverWidth?: number
 }
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
