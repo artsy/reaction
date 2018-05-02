@@ -2,28 +2,28 @@ import styled from "styled-components"
 import React from "react"
 import { countBy, intersection, flatten, map } from "lodash"
 import { unica } from "Assets/Fonts"
-import { ArtistProps } from "../Artist"
+import { ArtistToolTipProps } from "../ArtistToolTip"
 import { Truncator } from "../../Sections/Truncator"
 
 const ALLOWED_CATEGORIES = ["blue-chip", "top-established", "top-emerging"]
 
-export class ArtistMarketData extends React.Component<ArtistProps> {
+export class ArtistMarketData extends React.Component<ArtistToolTipProps> {
   hasGalleryData = () => {
     return intersection(this.galleryCategories(), ALLOWED_CATEGORIES).length > 0
   }
 
   hasCollections = () => {
-    const { collections } = this.props
+    const { collections } = this.props.artist
     return collections && collections.length > 0
   }
 
   hasAuctionRecord = () => {
-    const { auctionResults } = this.props
+    const { auctionResults } = this.props.artist
     return auctionResults && auctionResults.edges.length > 0
   }
 
   galleryCategories = () => {
-    const { highlights } = this.props
+    const { highlights } = this.props.artist
     const partners = highlights.partners ? highlights.partners.edges : []
 
     return map(flatten(map(partners, "node.categories")), "id")
@@ -57,7 +57,7 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
 
   renderCollections = () => {
     if (this.hasCollections()) {
-      const { collections } = this.props
+      const { collections } = this.props.artist
       let text
 
       if (collections.length > 1) {
@@ -71,7 +71,7 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
 
   renderAuctionRecord = () => {
     if (this.hasAuctionRecord()) {
-      const auctionRecord = this.props.auctionResults.edges[0].node
+      const auctionRecord = this.props.artist.auctionResults.edges[0].node
         .price_realized.display
 
       return <div>{auctionRecord} auction record</div>
