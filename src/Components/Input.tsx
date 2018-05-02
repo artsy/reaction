@@ -17,6 +17,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   quick?: boolean
   leftView?: JSX.Element
   rightView?: JSX.Element
+  setTouched?: (fields: { [field: string]: boolean }) => void
 }
 
 export interface InputState {
@@ -87,6 +88,9 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   onChange = e => {
+    if (this.props.setTouched) {
+      this.props.setTouched({ [this.props.name]: true })
+    }
     this.setState({
       value: e.currentTarget.value,
     })
@@ -133,6 +137,7 @@ export class Input extends React.Component<InputProps, InputState> {
         ref,
         type,
         onChange,
+        setTouched,
         ...newProps
       } = this.props
       const showLabel = (!!this.state.focused || !!this.state.value) && !!label

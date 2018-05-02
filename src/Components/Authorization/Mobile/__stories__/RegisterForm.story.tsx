@@ -11,9 +11,12 @@ const MobileContainer = styled.div`
   width: 320px;
   height: 460px;
   margin: 0 auto;
-  align-items: center;
   align-self: center;
   justify-content: center;
+
+  form {
+    width: 100%;
+  }
 `
 
 storiesOf("Components/Auth/Mobile", module).add("RegisterForm", () => (
