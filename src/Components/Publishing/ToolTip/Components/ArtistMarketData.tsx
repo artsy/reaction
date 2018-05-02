@@ -3,7 +3,6 @@ import React from "react"
 import { countBy, intersection, flatten, map } from "lodash"
 import { unica } from "Assets/Fonts"
 import { ArtistProps } from "../Artist"
-import { ToolTipDescription } from "./Description"
 import { Truncator } from "../../Sections/Truncator"
 
 const ALLOWED_CATEGORIES = ["blue-chip", "top-established", "top-emerging"]
@@ -84,8 +83,6 @@ export class ArtistMarketData extends React.Component<ArtistProps> {
     if (genes.length) {
       const formattedGenes = map(genes, "name").join(", ")
       return <div>{formattedGenes}</div>
-    } else {
-      return <ToolTipDescription text={this.props.blurb} />
     }
   }
 

@@ -17,13 +17,11 @@ describe("Artist Market Data", () => {
       expect(component.text()).toMatch('Emerging Art')
     })
 
-    it("renders description if no market data or genes", () => {
+    it("renders nothing if no market data or genes", () => {
       const artist = cloneDeep(Artists[2])
       artist.genes = []
       const component = mount(<ArtistMarketData {...artist} />)
-      expect(component.text()).toMatch(
-        "Diamond Stingily is an American artist whose work"
-      )
+      expect(component.text()).toBe('')
     })
   })
 
