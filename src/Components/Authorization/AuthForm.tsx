@@ -15,7 +15,7 @@ interface State extends React.HTMLProps<HTMLFormElement> {
   mode?: Mode
 }
 
-class AuthForm extends React.Component<Props, State> {
+export class AuthForm extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
   }
@@ -62,5 +62,3 @@ class AuthForm extends React.Component<Props, State> {
     )
   }
 }
-
-export default AuthForm

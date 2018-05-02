@@ -8,7 +8,7 @@ const FEEDBACK_EMAIL = "mailto:productfeedback@artsy.net?subject=Feedback"
 export const NewFeature: React.SFC = () => {
   return (
     <NewFeatureContainer>
-      <span>This is a new feature.</span>
+      <span>This is a new feature. </span>
       <a href={FEEDBACK_EMAIL} target="_blank">
         Tell us what you think.
       </a>

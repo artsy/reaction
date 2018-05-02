@@ -15,4 +15,9 @@ const FollowButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    border-color: black;
+    background: black;
+    color: white;
+  }
 `
