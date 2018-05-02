@@ -95,6 +95,7 @@ exports[`Video About matches the snapshot 1`] = `
 .c4 p,
 .c4 ul,
 .c4 ol,
+.c4 .paragraph,
 .c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -107,11 +108,13 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c4 p:first-child,
+.c4 .paragraph:first-child,
 .c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c4 p:last-child,
+.c4 .paragraph:last-child,
 .c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -454,22 +457,30 @@ exports[`Video About matches the snapshot 1`] = `
       color="black"
     >
       <div>
-        <p>
+        <div
+          className="paragraph"
+        >
           <b>
             Director
           </b>
-        </p>
-        <p>
+        </div>
+        <div
+          className="paragraph"
+        >
           Marina Cashdan
-        </p>
-        <p>
+        </div>
+        <div
+          className="paragraph"
+        >
           <b>
             Featuring
           </b>
-        </p>
-        <p>
+        </div>
+        <div
+          className="paragraph"
+        >
           Trevor Paglan
-        </p>
+        </div>
       </div>
     </div>
     <div
@@ -582,7 +593,9 @@ exports[`Video About matches the snapshot 1`] = `
       color="black"
     >
       <div>
-        <p>
+        <div
+          className="paragraph"
+        >
           Integer posuere erat a ante venenatis 
           <a
             href="artsy.net"
@@ -590,13 +603,17 @@ exports[`Video About matches the snapshot 1`] = `
             dapibus posuere velit
           </a>
            aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <p>
+        </div>
+        <div
+          className="paragraph"
+        >
           Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-        </p>
-        <p>
+        </div>
+        <div
+          className="paragraph"
+        >
           Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-        </p>
+        </div>
       </div>
     </div>
     <div
@@ -793,6 +810,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c4 p,
 .c4 ul,
 .c4 ol,
+.c4 .paragraph,
 .c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -805,11 +823,13 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c4 p:first-child,
+.c4 .paragraph:first-child,
 .c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c4 p:last-child,
+.c4 .paragraph:last-child,
 .c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }

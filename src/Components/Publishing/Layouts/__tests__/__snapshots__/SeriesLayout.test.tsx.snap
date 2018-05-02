@@ -395,6 +395,7 @@ exports[`renders a series properly 1`] = `
 .c39 p,
 .c39 ul,
 .c39 ol,
+.c39 .paragraph,
 .c39 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -407,11 +408,13 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 p:first-child,
+.c39 .paragraph:first-child,
 .c39 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c39 p:last-child,
+.c39 .paragraph:last-child,
 .c39 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1085,7 +1088,9 @@ exports[`renders a series properly 1`] = `
             color="white"
           >
             <div>
-              <p>
+              <div
+                className="paragraph"
+              >
                 Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
                 <a
                   href="http://artsy.net"
@@ -1093,13 +1098,17 @@ exports[`renders a series properly 1`] = `
                   Curabitur blandit
                 </a>
                  tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <p>
+              </div>
+              <div
+                className="paragraph"
+              >
                 Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-              </p>
-              <p>
+              </div>
+              <div
+                className="paragraph"
+              >
                 Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1528,6 +1537,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 p,
 .c45 ul,
 .c45 ol,
+.c45 .paragraph,
 .c45 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1540,11 +1550,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 p:first-child,
+.c45 .paragraph:first-child,
 .c45 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c45 p:last-child,
+.c45 .paragraph:last-child,
 .c45 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -2337,7 +2349,9 @@ exports[`renders a sponsored series properly 1`] = `
             color="white"
           >
             <div>
-              <p>
+              <div
+                className="paragraph"
+              >
                 Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
                 <a
                   href="http://artsy.net"
@@ -2345,13 +2359,17 @@ exports[`renders a sponsored series properly 1`] = `
                   Curabitur blandit
                 </a>
                  tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <p>
+              </div>
+              <div
+                className="paragraph"
+              >
                 Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-              </p>
-              <p>
+              </div>
+              <div
+                className="paragraph"
+              >
                 Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-              </p>
+              </div>
             </div>
           </div>
         </div>

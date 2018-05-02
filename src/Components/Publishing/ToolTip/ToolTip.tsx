@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import React from "react"
-import { ArtistToolTip } from "./Artist"
-import { GeneToolTip } from "./Gene"
+import { ArtistTooltipContainer } from "./ArtistToolTip"
+import { GeneToolTip } from "./GeneToolTip"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
 interface Props {
@@ -16,7 +16,12 @@ export class ToolTip extends React.Component<Props> {
 
     switch (model) {
       case "artist": {
-        return <ArtistToolTip showMarketData={showMarketData} {...entity} />
+        return (
+          <ArtistTooltipContainer
+            showMarketData={showMarketData}
+            artist={entity as any}
+          />
+        )
       }
       case "gene": {
         return <GeneToolTip {...entity} />

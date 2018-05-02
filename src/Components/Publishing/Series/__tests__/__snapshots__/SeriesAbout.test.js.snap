@@ -69,6 +69,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 .c6 p,
 .c6 ul,
 .c6 ol,
+.c6 .paragraph,
 .c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -81,11 +82,13 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 .c6 p:first-child,
+.c6 .paragraph:first-child,
 .c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c6 p:last-child,
+.c6 .paragraph:last-child,
 .c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -380,7 +383,9 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
             <a
               href="http://artsy.net"
@@ -388,13 +393,17 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
               Curabitur blandit
             </a>
              tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -471,6 +480,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 .c6 p,
 .c6 ul,
 .c6 ol,
+.c6 .paragraph,
 .c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -483,11 +493,13 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 .c6 p:first-child,
+.c6 .paragraph:first-child,
 .c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c6 p:last-child,
+.c6 .paragraph:last-child,
 .c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -856,6 +868,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c6 p,
 .c6 ul,
 .c6 ol,
+.c6 .paragraph,
 .c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -868,11 +881,13 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 .c6 p:first-child,
+.c6 .paragraph:first-child,
 .c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c6 p:last-child,
+.c6 .paragraph:last-child,
 .c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1170,7 +1185,9 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
             <a
               href="http://artsy.net"
@@ -1178,13 +1195,17 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
               Curabitur blandit
             </a>
              tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1280,6 +1301,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c10 p,
 .c10 ul,
 .c10 ol,
+.c10 .paragraph,
 .c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1292,11 +1314,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 .c10 p:first-child,
+.c10 .paragraph:first-child,
 .c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c10 p:last-child,
+.c10 .paragraph:last-child,
 .c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1622,7 +1646,9 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             Integer posuere erat a ante venenatis dapibus posuere velit aliquet. 
             <a
               href="http://artsy.net"
@@ -1630,13 +1656,17 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
               Curabitur blandit
             </a>
              tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
-          </p>
-          <p>
+          </div>
+          <div
+            className="paragraph"
+          >
             Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
-          </p>
+          </div>
         </div>
       </div>
     </div>

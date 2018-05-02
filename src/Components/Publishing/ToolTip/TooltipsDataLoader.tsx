@@ -4,6 +4,7 @@ import { createEnvironment } from "../../../Relay/createEnvironment"
 import { ArticleData } from "../Typings"
 import PropTypes from "prop-types"
 import { getArtsySlugsFromArticle } from "../Constants"
+import { keyBy } from "lodash"
 
 interface Props {
   article: ArticleData
@@ -24,12 +25,7 @@ export class TooltipsDataLoader extends Component<Props> {
           query TooltipsDataLoaderQuery($artistSlugs: [String!]) {
             artists(slugs: $artistSlugs) {
               id
-              name
-              href
-              image {
-                url
-              }
-              bio
+              ...ArtistToolTip_artist
             }
           }
         `}
@@ -37,8 +33,13 @@ export class TooltipsDataLoader extends Component<Props> {
           artistSlugs,
         }}
         render={readyState => {
+          const data = {}
+          Object.keys(readyState.props || {}).forEach(key => {
+            const col = readyState.props[key]
+            data[key] = keyBy(col, "id")
+          })
           return (
-            <TooltipsContextProvider {...readyState.props}>
+            <TooltipsContextProvider {...data}>
               {this.props.children}
             </TooltipsContextProvider>
           )
@@ -57,7 +58,7 @@ class TooltipsContextProvider extends Component<any> {
     return {
       tooltipsData: {
         artists: this.props.artists,
-        fairs: this.props.fairs,
+        genes: this.props.genes,
       },
     }
   }

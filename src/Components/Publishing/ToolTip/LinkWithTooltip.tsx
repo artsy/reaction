@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
-import { Gene } from "../Fixtures/Components"
 
 interface Props {
   url: string
@@ -22,16 +21,41 @@ export class LinkWithTooltip extends Component<Props, State> {
     show: false,
   }
 
+  urlToEntityType(): { entityType: string; slug: string } {
+    const urlComponents = new URL(this.props.url).pathname.split("/")
+    urlComponents.shift()
+
+    return {
+      entityType: urlComponents[0],
+      slug: urlComponents[1],
+    }
+  }
+
+  entityTypeToEntity() {
+    const { entityType, slug } = this.urlToEntityType()
+    const data = this.context.tooltipsData
+    const collectionKey = entityType + "s"
+
+    if (!data || !data[collectionKey]) return null
+
+    return {
+      entityType,
+      entity: data[collectionKey][slug],
+    }
+  }
+
   render() {
-    const { show } = this.state
-    const toolTip = (
+    const toolTipData = this.entityTypeToEntity()
+
+    const toolTip = toolTipData ? (
       <div>
-        <ToolTip entity={Gene} model="gene" />
+        <ToolTip entity={toolTipData.entity} model={toolTipData.entityType} />
       </div>
+    ) : (
+      <div />
     )
 
-    if (this.context.tooltipsData) console.log(this.context.tooltipsData)
-
+    const { show } = this.state
     return (
       <OverlayTrigger show={show} placement="top" overlay={toolTip}>
         <a

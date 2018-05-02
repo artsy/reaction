@@ -25,6 +25,7 @@ exports[`renders classic text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
+.c0 .paragraph,
 .c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 19px;
@@ -37,11 +38,13 @@ exports[`renders classic text properly 1`] = `
 }
 
 .c0 p:first-child,
+.c0 .paragraph:first-child,
 .c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
+.c0 .paragraph:last-child,
 .c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -175,6 +178,10 @@ exports[`renders classic text properly 1`] = `
   text-transform: none;
 }
 
+.c1 {
+  display: inline-block;
+}
+
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -241,15 +248,27 @@ exports[`renders classic text properly 1`] = `
   color="black"
 >
   <div>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the 
-      <a
-        href="https://www.artsy.net/"
+      <div
+        className="c1"
       >
-        Lower East Side and Chinatown
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            Lower East Side and Chinatown
+          </a>
+        </div>
+      </div>
       . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </p>
+    </div>
     <ul>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -273,7 +292,9 @@ exports[`renders classic text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ul>
-    <p>
+    <div
+      className="paragraph"
+    >
       And 
       <em>
         not a stone’s throw away
@@ -283,7 +304,7 @@ exports[`renders classic text properly 1`] = `
         hundreds
       </strong>
        of more galleries gather.
-    </p>
+    </div>
     <blockquote>
       Hardly a week goes by without murmurings that yet another gallery is opening
     </blockquote>
@@ -301,9 +322,11 @@ exports[`renders classic text properly 1`] = `
       </em>
        Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
     </h3>
-    <p>
+    <div
+      className="paragraph"
+    >
       The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </p>
+    </div>
     <ol>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -318,35 +341,55 @@ exports[`renders classic text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ol>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </p>
+    </div>
     <h2>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
     </h2>
-    <p>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+    <div
+      className="paragraph"
+    >
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
-    </p>
+    </div>
   </div>
 </div>
 `;
@@ -376,6 +419,7 @@ exports[`renders feature text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
+.c0 .paragraph,
 .c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -388,11 +432,13 @@ exports[`renders feature text properly 1`] = `
 }
 
 .c0 p:first-child,
+.c0 .paragraph:first-child,
 .c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
+.c0 .paragraph:last-child,
 .c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -515,6 +561,10 @@ exports[`renders feature text properly 1`] = `
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   text-transform: none;
+}
+
+.c1 {
+  display: inline-block;
 }
 
 @media (max-width:600px) {
@@ -585,15 +635,27 @@ exports[`renders feature text properly 1`] = `
     <h1>
       Standard Header
     </h1>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the 
-      <a
-        href="https://www.artsy.net/"
+      <div
+        className="c1"
       >
-        Lower East Side and Chinatown
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            Lower East Side and Chinatown
+          </a>
+        </div>
+      </div>
       . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </p>
+    </div>
     <ul>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -617,7 +679,9 @@ exports[`renders feature text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ul>
-    <p>
+    <div
+      className="paragraph"
+    >
       And 
       <em>
         not a stone’s throw away
@@ -627,7 +691,7 @@ exports[`renders feature text properly 1`] = `
         hundreds
       </strong>
        of more galleries gather.
-    </p>
+    </div>
     <blockquote>
       Hardly a week goes by without murmurings that yet another gallery is opening
     </blockquote>
@@ -645,9 +709,11 @@ exports[`renders feature text properly 1`] = `
       </em>
        Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
     </h3>
-    <p>
+    <div
+      className="paragraph"
+    >
       The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </p>
+    </div>
     <ol>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -662,38 +728,60 @@ exports[`renders feature text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ol>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </p>
+    </div>
     <h2>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
     </h2>
-    <p>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+    <div
+      className="paragraph"
+    >
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
-    </p>
-    <p>
+    </div>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </p>
+    </div>
   </div>
 </div>
 `;
@@ -723,6 +811,7 @@ exports[`renders news text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
+.c0 .paragraph,
 .c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -735,11 +824,13 @@ exports[`renders news text properly 1`] = `
 }
 
 .c0 p:first-child,
+.c0 .paragraph:first-child,
 .c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
+.c0 .paragraph:last-child,
 .c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -929,7 +1020,9 @@ exports[`renders news text properly 1`] = `
   color="black"
 >
   <div>
-    <p>
+    <div
+      className="paragraph"
+    >
       <strong>
         The design for the as-yet-uncompleted sculpture
       </strong>
@@ -952,7 +1045,7 @@ exports[`renders news text properly 1`] = `
         one of the world’s richest living artists
       </a>
       , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
-    </p>
+    </div>
     <blockquote>
       It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.
     </blockquote>
@@ -966,13 +1059,15 @@ exports[`renders news text properly 1`] = `
         The Guardian
       </a>
     </blockquote>
-    <p>
+    <div
+      className="paragraph"
+    >
       It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
       <em>
         New York Times
       </em>
       .
-    </p>
+    </div>
     <h3>
       <strong>
         Takeaway
@@ -1014,6 +1109,7 @@ exports[`renders standard text properly 1`] = `
 .c0 p,
 .c0 ul,
 .c0 ol,
+.c0 .paragraph,
 .c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1026,11 +1122,13 @@ exports[`renders standard text properly 1`] = `
 }
 
 .c0 p:first-child,
+.c0 .paragraph:first-child,
 .c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c0 p:last-child,
+.c0 .paragraph:last-child,
 .c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1155,6 +1253,10 @@ exports[`renders standard text properly 1`] = `
   text-transform: none;
 }
 
+.c1 {
+  display: inline-block;
+}
+
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -1220,15 +1322,27 @@ exports[`renders standard text properly 1`] = `
   color="black"
 >
   <div>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the 
-      <a
-        href="https://www.artsy.net/"
+      <div
+        className="c1"
       >
-        Lower East Side and Chinatown
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            Lower East Side and Chinatown
+          </a>
+        </div>
+      </div>
       . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </p>
+    </div>
     <ul>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -1252,7 +1366,9 @@ exports[`renders standard text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ul>
-    <p>
+    <div
+      className="paragraph"
+    >
       And 
       <em>
         not a stone’s throw away
@@ -1262,7 +1378,7 @@ exports[`renders standard text properly 1`] = `
         hundreds
       </strong>
        of more galleries gather.
-    </p>
+    </div>
     <blockquote>
       Hardly a week goes by without murmurings that yet another gallery is opening
     </blockquote>
@@ -1280,9 +1396,11 @@ exports[`renders standard text properly 1`] = `
       </em>
        Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
     </h3>
-    <p>
+    <div
+      className="paragraph"
+    >
       The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </p>
+    </div>
     <ol>
       <li>
         Chinatown stalwart Reena Spaulings Fine Art
@@ -1297,38 +1415,60 @@ exports[`renders standard text properly 1`] = `
         Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
       </li>
     </ol>
-    <p>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </p>
+    </div>
     <h2>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
     </h2>
-    <p>
-      <a
-        className="is-follow-link"
-        href="https://www.artsy.net/artist/ej-hill"
-        name="EJ_Hill"
+    <div
+      className="paragraph"
+    >
+      <div
+        className="c1"
       >
-        EJ Hill
-      </a>
+        <div
+          className="c1"
+        >
+          <a
+            href="https://www.artsy.net/artist/ej-hill"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            EJ Hill
+          </a>
+        </div>
+      </div>
       <a
         className="entity-follow artist-follow"
         data-id="ej-hill"
       />
-    </p>
-    <p>
+    </div>
+    <div
+      className="paragraph"
+    >
       Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </p>
+    </div>
   </div>
 </div>
 `;

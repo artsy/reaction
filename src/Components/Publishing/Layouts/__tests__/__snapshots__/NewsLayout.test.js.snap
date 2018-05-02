@@ -208,6 +208,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c12 p,
 .c12 ul,
 .c12 ol,
+.c12 .paragraph,
 .c12 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -220,11 +221,13 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 p:first-child,
+.c12 .paragraph:first-child,
 .c12 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c12 p:last-child,
+.c12 .paragraph:last-child,
 .c12 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -357,6 +360,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-transform: none;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 34px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
 .c4 {
   margin-bottom: 20px;
 }
@@ -388,14 +399,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   width: 100%;
   margin: 10px auto 30px;
   box-sizing: border-box;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
 }
 
 .c21 {
@@ -562,6 +565,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width:720px) {
   .c4 {
     margin: 0 0 15px 0;
     padding: 0;
@@ -579,16 +592,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   .c13 {
     margin: 30px 0 0 0;
     padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
   }
 }
 
@@ -679,7 +682,9 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             <strong>
               The design for the as-yet-uncompleted sculpture
             </strong>
@@ -702,7 +707,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               one of the world’s richest living artists
             </a>
             , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -768,13 +773,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
             <em>
               New York Times
             </em>
             .
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1137,6 +1144,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c12 p,
 .c12 ul,
 .c12 ol,
+.c12 .paragraph,
 .c12 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1149,11 +1157,13 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 p:first-child,
+.c12 .paragraph:first-child,
 .c12 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c12 p:last-child,
+.c12 .paragraph:last-child,
 .c12 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1286,6 +1296,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-transform: none;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 34px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
 .c4 {
   margin-bottom: 20px;
 }
@@ -1317,14 +1335,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   width: 100%;
   margin: 10px auto 30px;
   box-sizing: border-box;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
 }
 
 .c21 {
@@ -1497,6 +1507,16 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width:720px) {
   .c4 {
     margin: 0 0 15px 0;
     padding: 0;
@@ -1514,16 +1534,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   .c13 {
     margin: 30px 0 0 0;
     padding: 0px;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
   }
 }
 
@@ -1614,7 +1624,9 @@ exports[`News Layout renders the news layout properly 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             <strong>
               The design for the as-yet-uncompleted sculpture
             </strong>
@@ -1637,7 +1649,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               one of the world’s richest living artists
             </a>
             , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1703,13 +1715,15 @@ exports[`News Layout renders the news layout properly 1`] = `
         color="black"
       >
         <div>
-          <p>
+          <div
+            className="paragraph"
+          >
             It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
             <em>
               New York Times
             </em>
             .
-          </p>
+          </div>
         </div>
       </div>
     </div>

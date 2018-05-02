@@ -1,63 +1,29 @@
 import styled from "styled-components"
 import React from "react"
 import { map } from "lodash"
+import { createFragmentContainer, graphql } from "react-relay"
 import { garamond, unica } from "Assets/Fonts"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { ToolTipDescription } from "./Components/Description"
 import { FollowButton } from "./Components/FollowButton"
 import { NewFeature } from "./Components/NewFeature"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
+import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 
-export interface ArtistProps {
-  auctionResults?: {
-    edges: Array<{
-      node: {
-        price_realized: {
-          display: string
-        }
-      }
-    }>
-  } | null
-  blurb?: string
-  collections?: string[]
-  formatted_nationality_and_birthday?: string
-  genes?: Array<{
-    name: string
-  }>
-  highlights?: {
-    partners?: {
-      edges?: Array<{
-        node?: {
-          categories: Array<{
-            id: string
-          }>
-        }
-      }>
-    } | null
-  } | null
-  href?: string
-  carousel?: {
-    images?: Array<{
-      resized: {
-        url: string
-        width: number
-        height: number
-      }
-    }>
-  }
-  name?: string
+export interface ArtistToolTipProps {
   showMarketData?: boolean
+  artist: ArtistToolTip_artist
 }
 
-export const ArtistToolTip: React.SFC<ArtistProps> = props => {
+export const ArtistToolTip: React.SFC<ArtistToolTipProps> = props => {
   const {
     blurb,
     carousel,
     formatted_nationality_and_birthday,
     href,
     name,
-    showMarketData,
-  } = props
+  } = props.artist
+  const { showMarketData } = props
   const displayImages = map(carousel.images.slice(0, 2), "resized")
   const images = fillwidthDimensions(displayImages, 320, 15, 150)
 
@@ -136,53 +102,56 @@ const Images = styled.div`
   justify-content: space-between;
 `
 
-// {
-//   artist(id: "andy-warhol") {
-//   	name
-//     formatted_nationality_and_birthday
-//     href
-//     blurb
-//     carousel {
-//       images {
-//         resized(height:200){
-//           url
-//           width
-//           height
-//         }
-//       }
-//     }
-//     collections
-//     highlights {
-//       partners(
-//         first: 5
-//         display_on_partner_profile: true
-//         represented_by: true
-//         partner_category: ["blue-chip", "top-established", "top-emerging"]
-//       ) {
-//         edges {
-//           node {
-//             categories {
-//               id
-//             }
-//           }
-//         }
-//       }
-//     }
-//     auctionResults(
-//       recordsTrusted: true
-//       first: 1
-//       sort: PRICE_AND_DATE_DESC
-//     ) {
-//       edges {
-//         node {
-//           price_realized {
-//             display
-//           }
-//         }
-//       }
-//     }
-//   }
-//   genes {
-//     name
-//   }
-// }
+export const ArtistTooltipContainer = createFragmentContainer(
+  ArtistToolTip,
+  graphql`
+    fragment ArtistToolTip_artist on Artist {
+      name
+      formatted_nationality_and_birthday
+      href
+      blurb
+      carousel {
+        images {
+          resized(height: 200) {
+            url
+            width
+            height
+          }
+        }
+      }
+      collections
+      highlights {
+        partners(
+          first: 5
+          display_on_partner_profile: true
+          represented_by: true
+          partner_category: ["blue-chip", "top-established", "top-emerging"]
+        ) {
+          edges {
+            node {
+              categories {
+                id
+              }
+            }
+          }
+        }
+      }
+      auctionResults(
+        recordsTrusted: true
+        first: 1
+        sort: PRICE_AND_DATE_DESC
+      ) {
+        edges {
+          node {
+            price_realized {
+              display
+            }
+          }
+        }
+      }
+      genes {
+        name
+      }
+    }
+  `
+)
