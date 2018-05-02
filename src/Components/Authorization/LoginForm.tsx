@@ -2,11 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import {
-  BlockButton as Button,
-  FormContainer as Form,
-  GrayFacebookButton,
-} from "./commonElements"
+import { FormContainer as Form, GrayFacebookButton } from "./commonElements"
 
 import { Validators } from "./Validators"
 import Input from "../Input"
@@ -15,6 +11,7 @@ import Text from "../Text"
 import TextLink from "../TextLink"
 import { FormComponentType, InputValues } from "./Types"
 import Checkbox from "../Checkbox"
+import Button from "../Buttons/Inverted"
 
 const ForgotPasswordLink = styled(TextLink)`
   margin-left: auto;
@@ -33,8 +30,11 @@ const LoginText = styled(Text).attrs({
   margin-top: 0;
 `
 
-const RememberMeText = styled(Text)`
-  margin: 20px 0 130px 0;
+const LoginButton = styled(Button).attrs({
+  type: "submit",
+  block: true,
+})`
+  margin-top: 130px;
 `
 
 export const LoginForm: FormComponentType = props => {
@@ -86,9 +86,7 @@ export const LoginForm: FormComponentType = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                <RememberMeText color={Colors.grayDark}>
-                  Remember me
-                </RememberMeText>
+                <Text color={Colors.grayDark}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
                 onClick={() => props.handleChangeMode("reset_password")}
@@ -98,9 +96,9 @@ export const LoginForm: FormComponentType = props => {
                 Forgot Password?
               </ForgotPasswordLink>
             </Row>
-            <Button type="submit" disabled={isSubmitting}>
+            <LoginButton type="submit" disabled={isSubmitting}>
               Log In
-            </Button>
+            </LoginButton>
             <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
             <LoginText>
               Don't have an account?{" "}

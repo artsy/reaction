@@ -97,8 +97,14 @@ export const RegisterForm: FormComponentType = props => {
               errorMessage={errors.acceptedTermsOfService}
             >
               <Text color={Colors.grayDark}>
-                I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
-                <TextLink>Privacy Policy</TextLink>
+                {"I agree to the "}
+                <TextLink href="https://www.artsy.net/terms" target="_blank">
+                  Terms Of Service
+                </TextLink>
+                {" and "}
+                <TextLink href="https://www.artsy.net/privacy" target="_blank">
+                  Privacy Policy
+                </TextLink>
               </Text>
             </TOSCheckbox>
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
