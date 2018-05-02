@@ -205,6 +205,7 @@ const InputContainer = styled.div.attrs<{
   height: ${p => (p.hasLabel ? "40px" : "20px")};
   flex-direction: row;
   align-items: center;
+  box-sizing: content-box;
 `
 
 const Label = styled.label.attrs<{ out: boolean }>({})`

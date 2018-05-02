@@ -33,6 +33,10 @@ const LoginText = styled(Text).attrs({
   margin-top: 0;
 `
 
+const RememberMeText = styled(Text)`
+  margin: 20px 0 130px 0;
+`
+
 export const LoginForm: FormComponentType = props => {
   return (
     <Formik
@@ -82,7 +86,9 @@ export const LoginForm: FormComponentType = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                <Text color={Colors.grayDark}>Remember me</Text>
+                <RememberMeText color={Colors.grayDark}>
+                  Remember me
+                </RememberMeText>
               </Checkbox>
               <ForgotPasswordLink
                 onClick={() => props.handleChangeMode("reset_password")}

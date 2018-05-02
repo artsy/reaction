@@ -35,4 +35,5 @@ const Header = styled.div`
   flex-direction: column;
   padding: 10px;
   margin: 20px 0 0;
+  line-height: 1em;
 `

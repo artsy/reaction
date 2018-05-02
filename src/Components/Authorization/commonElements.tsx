@@ -14,7 +14,7 @@ export const StyledFacebookButton = FacebookButton
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0 20px 15px;
+  padding: 0 20px 30px;
 `
 
 const buttonWidth = "100%"
