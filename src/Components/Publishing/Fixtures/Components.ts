@@ -738,6 +738,38 @@ export const Artists: ArtistProps[] = [
         },
       ],
     },
+    genes: [
+      {
+        name: "United States",
+      },
+      {
+        name: "Abstract Art",
+      },
+      {
+        name: "21st Century",
+      },
+      {
+        name: "1970–present",
+      },
+      {
+        name: "Use of Common Materials",
+      },
+      {
+        name: "Drawing",
+      },
+      {
+        name: "Painting",
+      },
+      {
+        name: "Immersive",
+      },
+      {
+        name: "Ceramic",
+      },
+      {
+        name: "Mixed-Media",
+      },
+    ],
   },
   {
     name: "Jutta Koether",
@@ -805,6 +837,7 @@ export const Artists: ArtistProps[] = [
       },
     },
     auctionResults: null,
+    genes: [],
   },
   {
     name: "Diamond Stingily",
@@ -839,6 +872,11 @@ export const Artists: ArtistProps[] = [
       },
     },
     auctionResults: null,
+    genes: [
+      {
+        name: "Emerging Art",
+      },
+    ],
   },
   {
     name: "Anni Albers",
@@ -966,5 +1004,6 @@ export const Artists: ArtistProps[] = [
       },
     },
     auctionResults: null,
+    genes: [],
   },
 ]
