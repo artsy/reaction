@@ -4,6 +4,8 @@ import colors from "../Assets/Colors"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   message: string
+  hoverAlign?: string
+  hoverWidth?: number
 }
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
@@ -48,13 +50,14 @@ const TooltipContainer = Div`
   &:after {
     display: block;
     top: 0;
-    left: 0;
+    left: ${props => (props.hoverAlign === "right" ? `0` : "auto")}
+    right: ${props => (props.hoverAlign === "left" ? `-7px` : "auto")}
     position: absolute;
     visibility: hidden;
     text-align: left;
     z-index: 1;
     margin: -10px 0 0 -10px;
-    width: 300px;
+    width: ${props => props.hoverWidth + `px`};
     color: ${colors.graySemibold};
     background-color: white;
     padding: 15px 15px 25px 15px;
@@ -72,6 +75,8 @@ export class Tooltip extends React.Component<Props, null> {
     return (
       <TooltipContainer
         message={this.props.message}
+        hoverAlign={this.props.hoverAlign || "right"}
+        hoverWidth={this.props.hoverWidth || 300}
         className={this.props.className}
       >
         {this.props.children}
