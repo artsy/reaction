@@ -21,6 +21,9 @@ export interface ArtistProps {
   blurb?: string
   collections?: string[]
   formatted_nationality_and_birthday?: string
+  genes?: Array<{
+    name: string
+  }>
   highlights?: {
     partners?: {
       edges?: Array<{
@@ -178,5 +181,8 @@ const Images = styled.div`
 //         }
 //       }
 //     }
+//   }
+//   genes {
+//     name
 //   }
 // }

@@ -1,10 +1,32 @@
 import { mount } from "enzyme"
+import { cloneDeep } from "lodash"
 import "jest-styled-components"
 import React from "react"
 import { Artists } from "../../Fixtures/Components"
 import { ArtistMarketData } from "../Components/ArtistMarketData"
 
 describe("Artist Market Data", () => {
+  describe("rendering", () => {
+    it("renders market data if present", () => {
+      const component = mount(<ArtistMarketData {...Artists[0]} />)
+      expect(component.text()).toMatch('Represented by a blue chip gallery')
+    })
+
+    it("renders genes if present and no market data", () => {
+      const component = mount(<ArtistMarketData {...Artists[2]} />)
+      expect(component.text()).toMatch('Emerging Art')
+    })
+
+    it("renders description if no market data or genes", () => {
+      const artist = cloneDeep(Artists[2])
+      artist.genes = []
+      const component = mount(<ArtistMarketData {...artist} />)
+      expect(component.text()).toMatch(
+        "Diamond Stingily is an American artist whose work"
+      )
+    })
+  })
+
   it("#hasGalleryData is true if artist has gallery in allowed category", () => {
     const hasData = mount(<ArtistMarketData {...Artists[0]} />)
     const noData = mount(<ArtistMarketData {...Artists[2]} />)

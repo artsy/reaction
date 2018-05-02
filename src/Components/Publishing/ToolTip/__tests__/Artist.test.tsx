@@ -44,10 +44,7 @@ describe("ArtistToolTip", () => {
     it("Renders categories if no artist data", () => {
       const artist = Artists[2]
       const component = mount(<ArtistToolTip {...artist} showMarketData />)
-      // TODO: Use categories instead of bio
-      expect(component.text()).toMatch(
-        "Diamond Stingily is an American artist whose work"
-      )
+      expect(component.text()).toMatch("Emerging Art")
     })
   })
 })
