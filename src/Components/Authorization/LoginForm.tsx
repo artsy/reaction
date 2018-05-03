@@ -11,7 +11,6 @@ import {
 import { LoginValidator } from "./Validators"
 import Input from "../Input"
 import Text from "../Text"
-import TextLink from "../TextLink"
 import Colors from "../../Assets/Colors"
 import { FormComponentType, InputValues } from "./Types"
 import Checkbox from "../Checkbox"
@@ -93,7 +92,7 @@ export const LoginForm: FormComponentType = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                <TextLink color={Colors.grayDark}>Remember me</TextLink>
+                <Text color={Colors.grayDark}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
                 handleClick={props.handleChangeMode("reset_password")}

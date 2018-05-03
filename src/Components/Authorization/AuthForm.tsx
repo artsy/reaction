@@ -49,19 +49,21 @@ export class AuthForm extends React.Component<Props, State> {
       default:
         throw new Error(`${this.state.mode} mode needs a component`)
     }
+
+    const { values } = this.props
+    const defaultValues = {
+      email: values.email || "",
+      password: values.password || "",
+      name: values.name || "",
+      acceptedTermsOfService: values.acceptedTermsOfService || false,
+    }
+
     return (
       <Form
-        values={values}
+        values={defaultValues}
         handleChangeMode={this.handleChangeMode}
         handleSubmit={this.props.handleSubmit}
       />
     )
   }
-}
-
-const values = {
-  email: "",
-  password: "",
-  name: "",
-  acceptedTermsOfService: false,
 }
