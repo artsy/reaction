@@ -6,14 +6,16 @@ import { Help } from "../../Assets/Icons/Help"
 
 function RenderTooltip(
   message: string,
-  hoverAlign: string,
+  horizontalAlign?: string,
+  verticalAlign?: string,
   hoverWidth?: number
 ) {
   return (
-    <div style={{ padding: "20px 0px 0px 300px" }}>
+    <div style={{ padding: "100px 0px 0px 300px" }}>
       <Tooltip
         message={message}
-        hoverAlign={hoverAlign}
+        horizontalAlign={horizontalAlign}
+        verticalAlign={verticalAlign}
         hoverWidth={hoverWidth}
       >
         <Help />
@@ -23,9 +25,15 @@ function RenderTooltip(
 }
 
 storiesOf("Components/Tooltips", module)
-  .add("Right aligned", () =>
-    RenderTooltip("this is a right aligned tooltip", "right")
+  .add("Right top aligned", () =>
+    RenderTooltip("this is a right top aligned tooltip", "right", "top")
   )
-  .add("Left aligned", () =>
-    RenderTooltip("this is a left aligned tooltip", "left", 200)
+  .add("Right bottom aligned", () =>
+    RenderTooltip("this is a right bottom aligned tooltip", "right", "bottom")
+  )
+  .add("Left top aligned", () =>
+    RenderTooltip("this is a left top aligned tooltip", "left", "top", 200)
+  )
+  .add("Left bottom aligned", () =>
+    RenderTooltip("this is a left bottom aligned tooltip", "left", "bottom")
   )
