@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
-.c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
 .c7 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -28,12 +21,21 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: black;
+  cursor: pointer;
 }
 
 .c7:hover {
   border-color: black;
   background: black;
   color: white;
+}
+
+.c5 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c9 {
@@ -182,6 +184,9 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
     >
       <div
         className="c7"
+        onClick={undefined}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         Follow
       </div>
@@ -215,13 +220,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
-.c9 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
 .c8 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -242,12 +240,21 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: black;
+  cursor: pointer;
 }
 
 .c8:hover {
   border-color: black;
   background: black;
   color: white;
+}
+
+.c9 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c10 {
@@ -417,10 +424,12 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
         </div>
         <div
           className="c8"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           Follow
         </div>
-         
       </div>
       <div
         className="c9"

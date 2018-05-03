@@ -4,8 +4,8 @@ import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond, unica } from "Assets/Fonts"
 import fillwidthDimensions from "../../../Utils/fillwidth"
+import { FollowArtistButton } from "../../FollowButton/FollowArtistButton"
 import { ToolTipDescription } from "./Components/Description"
-import { FollowButton } from "./Components/FollowButton"
 import { NewFeature } from "./Components/NewFeature"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
@@ -50,7 +50,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = props => {
               <Date>{formatted_nationality_and_birthday}</Date>
             )}
           </TitleDate>
-          <FollowButton /> {/* TODO: Replace with relay follow */}
+          <FollowArtistButton />
         </Header>
 
         {showMarketData ? (

@@ -3,13 +3,9 @@ import React from "react"
 import { unica } from "Assets/Fonts"
 import Colors from "Assets/Colors"
 
-interface Props {
-  item?: {
-    __id: string
-    id: string
-    is_followed: boolean | null
-  }
-  currentUser?: object
+export interface Props {
+  handleFollow?: any
+  isFollowed?: boolean
 }
 
 interface State {
@@ -17,13 +13,18 @@ interface State {
 }
 
 export class FollowButton extends React.Component<Props, State> {
+  static defaultProps = {
+    isFollowed: false,
+  }
+
   state = {
     showUnfollow: false,
   }
 
   render() {
     const { showUnfollow } = this.state
-    const isFollowed = this.props.item ? this.props.item.is_followed : true
+    const { handleFollow, isFollowed } = this.props
+
     const text = isFollowed
       ? showUnfollow
         ? "Unfollow"
@@ -33,6 +34,7 @@ export class FollowButton extends React.Component<Props, State> {
     return (
       <FollowButtonContainer
         isFollowed={isFollowed}
+        onClick={handleFollow}
         onMouseEnter={() => this.setState({ showUnfollow: true })}
         onMouseLeave={() => this.setState({ showUnfollow: false })}
       >
@@ -58,6 +60,7 @@ const FollowButtonContainer = Div`
   justify-content: center;
   align-items: center;
   color: ${props => (props.isFollowed ? Colors.grayMedium : "black")}
+  cursor: pointer;
   &:hover {
     ${props =>
       !props.isFollowed &&
