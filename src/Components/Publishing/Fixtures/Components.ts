@@ -739,39 +739,39 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
+      genes: [
+        {
+          name: "United States",
+        },
+        {
+          name: "Abstract Art",
+        },
+        {
+          name: "21st Century",
+        },
+        {
+          name: "1970–present",
+        },
+        {
+          name: "Use of Common Materials",
+        },
+        {
+          name: "Drawing",
+        },
+        {
+          name: "Painting",
+        },
+        {
+          name: "Immersive",
+        },
+        {
+          name: "Ceramic",
+        },
+        {
+          name: "Mixed-Media",
+        },
+      ],
     },
-    genes: [
-      {
-        name: "United States",
-      },
-      {
-        name: "Abstract Art",
-      },
-      {
-        name: "21st Century",
-      },
-      {
-        name: "1970–present",
-      },
-      {
-        name: "Use of Common Materials",
-      },
-      {
-        name: "Drawing",
-      },
-      {
-        name: "Painting",
-      },
-      {
-        name: "Immersive",
-      },
-      {
-        name: "Ceramic",
-      },
-      {
-        name: "Mixed-Media",
-      },
-    ],
   },
   {
     artist: {

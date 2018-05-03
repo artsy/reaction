@@ -178,10 +178,6 @@ exports[`renders classic text properly 1`] = `
   text-transform: none;
 }
 
-.c1 {
-  display: inline-block;
-}
-
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -247,150 +243,13 @@ exports[`renders classic text properly 1`] = `
   className="article__text-section c0"
   color="black"
 >
-  <div>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the 
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            Lower East Side and Chinatown
-          </a>
-        </div>
-      </div>
-      . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </div>
-    <ul>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new 
-        <span
-          style={
-            Object {
-              "textDecoration": "line-through",
-            }
-          }
-        >
-          Foxy Production
-        </span>
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ul>
-    <div
-      className="paragraph"
-    >
-      And 
-      <em>
-        not a stone’s throw away
-      </em>
-       are the southern bounds of the Lower East Side, where 
-      <strong>
-        hundreds
-      </strong>
-       of more galleries gather.
-    </div>
-    <blockquote>
-      Hardly a week goes by without murmurings that yet another gallery is opening
-    </blockquote>
-    <h3>
-      <strong>
-        Galleries Section, Booth 10221
-      </strong>
-    </h3>
-    <h2>
-      neugerriemschneider
-    </h2>
-    <h3>
-      <em>
-        With works by
-      </em>
-       Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
-    </h3>
-    <div
-      className="paragraph"
-    >
-      The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </div>
-    <ol>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new Foxy Production
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ol>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </div>
-    <h2>
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </h2>
-    <div
-      className="paragraph"
-    >
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </div>
-  </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Rines is a part of a recent migration that has galleries gravitating to the <a href='https://www.artsy.net/'>Lower East Side and Chinatown</a>. The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:</p><ul><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new <span style='text-decoration: line-through;'>Foxy Production</span></li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ul><p>And <em>not a stone’s throw away</em> are the southern bounds of the Lower East Side, where <strong>hundreds</strong> of more galleries gather.</p><blockquote>Hardly a week goes by without murmurings that yet another gallery is opening</blockquote><h3><strong>Galleries Section, Booth 10221</strong></h3><h2>neugerriemschneider</h2><h3><em>With works by</em> Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White</h3><p>The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.</p><ol><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new Foxy Production</li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ol><p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p><h2><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></h2><p><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></p>",
+      }
+    }
+  />
 </div>
 `;
 
@@ -563,10 +422,6 @@ exports[`renders feature text properly 1`] = `
   text-transform: none;
 }
 
-.c1 {
-  display: inline-block;
-}
-
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -631,158 +486,13 @@ exports[`renders feature text properly 1`] = `
   className="article__text-section c0"
   color="black"
 >
-  <div>
-    <h1>
-      Standard Header
-    </h1>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the 
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            Lower East Side and Chinatown
-          </a>
-        </div>
-      </div>
-      . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </div>
-    <ul>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new 
-        <span
-          style={
-            Object {
-              "textDecoration": "line-through",
-            }
-          }
-        >
-          Foxy Production
-        </span>
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ul>
-    <div
-      className="paragraph"
-    >
-      And 
-      <em>
-        not a stone’s throw away
-      </em>
-       are the southern bounds of the Lower East Side, where 
-      <strong>
-        hundreds
-      </strong>
-       of more galleries gather.
-    </div>
-    <blockquote>
-      Hardly a week goes by without murmurings that yet another gallery is opening
-    </blockquote>
-    <h3>
-      <strong>
-        Galleries Section, Booth 10221
-      </strong>
-    </h3>
-    <h2>
-      neugerriemschneider
-    </h2>
-    <h3>
-      <em>
-        With works by
-      </em>
-       Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
-    </h3>
-    <div
-      className="paragraph"
-    >
-      The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </div>
-    <ol>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new Foxy Production
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ol>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </div>
-    <h2>
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </h2>
-    <div
-      className="paragraph"
-    >
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </div>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </div>
-  </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1>Standard Header</h1><p>Rines is a part of a recent migration that has galleries gravitating to the <a href='https://www.artsy.net/'>Lower East Side and Chinatown</a>. The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:</p><ul><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new <span style='text-decoration: line-through;'>Foxy Production</span></li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ul><p>And <em>not a stone’s throw away</em> are the southern bounds of the Lower East Side, where <strong>hundreds</strong> of more galleries gather.</p><blockquote>Hardly a week goes by without murmurings that yet another gallery is opening</blockquote><h3><strong>Galleries Section, Booth 10221</strong></h3><h2>neugerriemschneider</h2><h3><em>With works by</em> Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White</h3><p>The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.</p><ol><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new Foxy Production</li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ol><p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p><h2><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></h2><p><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></p><p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p>",
+      }
+    }
+  />
 </div>
 `;
 
@@ -1019,68 +729,13 @@ exports[`renders news text properly 1`] = `
   className="article__text-section c0"
   color="black"
 >
-  <div>
-    <div
-      className="paragraph"
-    >
-      <strong>
-        The design for the as-yet-uncompleted sculpture
-      </strong>
-      , 
-      <span
-        style={
-          Object {
-            "textDecoration": "line-through",
-          }
-        }
-      >
-        <em>
-          Bouquet of Tulips
-        </em>
-      </span>
-      , was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, 
-      <a
-        href="#"
-      >
-        one of the world’s richest living artists
-      </a>
-      , didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” 
-    </div>
-    <blockquote>
-      It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.
-    </blockquote>
-    <blockquote>
-      The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.
-    </blockquote>
-    <blockquote>
-      <a
-        href="#"
-      >
-        The Guardian
-      </a>
-    </blockquote>
-    <div
-      className="paragraph"
-    >
-      It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the 
-      <em>
-        New York Times
-      </em>
-      .
-    </div>
-    <h3>
-      <strong>
-        Takeaway
-      </strong>
-    </h3>
-    <h3>
-      Should Prince lose at trial and on appeal the resulting precedent would reign in the broader 
-      <em>
-        fair use interpretations
-      </em>
-       now afforded to artists.
-    </h3>
-  </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p><strong>The design for the as-yet-uncompleted sculpture</strong>, <span style='text-decoration:line-through;'><em>Bouquet of Tulips</em></span>, was donated by Koons to the French capital in November 2016 as a memorial to the recent terrorist attacks that have taken place in the city. But Koons, <a href='#'>one of the world’s richest living artists</a>, didn’t donate the $4.3 million needed to create 40-foot-tall sculpture, which was raised separately via donations. And the work, slated for installation in front of the Palais de Tokyo and Paris’s Museum of Modern Art, has attracted opposition. In a letter published in the French newspaper Libération on Sunday, signatories—including Frédéric Mitterrand, the country’s former culture minister—demanded that the city halt its plans to install the sculpture, calling it “shocking.” </p><blockquote>It is understood the [British Museum] has been in talks about a possible loan of the tapestry for several years, but there will be other contenders to host it.</blockquote><blockquote>The bookmaker Ladbrokes is offering odds on where it might go, with the British Museum evens favourite, followed by Westminster Cathedral at 3/1, Canterbury Cathedral at 5/1 and Hastings at 8/1.</blockquote><blockquote><a href='#'>The Guardian</a></blockquote><p>It further criticized Koons for using the opportunity as a publicity stunt, as the sculpture’s planned location is in a tourist-heavy area far from where the 2015 terrorist attacks actually took place. “We appreciate gifts, [but ones that are] free, unconditional, and without ulterior motives,” the letter said. In any case, Parisian officials have not yet granted authorization to install the sculpture, according to the <em>New York Times</em>.</p><h3><strong>Takeaway</strong></h3><h3>Should Prince lose at trial and on appeal the resulting precedent would reign in the broader <em>fair use interpretations</em> now afforded to artists.</h3>",
+      }
+    }
+  />
 </div>
 `;
 
@@ -1253,10 +908,6 @@ exports[`renders standard text properly 1`] = `
   text-transform: none;
 }
 
-.c1 {
-  display: inline-block;
-}
-
 @media (max-width:600px) {
   .c0 p,
   .c0 ul,
@@ -1321,154 +972,12 @@ exports[`renders standard text properly 1`] = `
   className="article__text-section c0"
   color="black"
 >
-  <div>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the 
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            Lower East Side and Chinatown
-          </a>
-        </div>
-      </div>
-      . The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:
-    </div>
-    <ul>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new 
-        <span
-          style={
-            Object {
-              "textDecoration": "line-through",
-            }
-          }
-        >
-          Foxy Production
-        </span>
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ul>
-    <div
-      className="paragraph"
-    >
-      And 
-      <em>
-        not a stone’s throw away
-      </em>
-       are the southern bounds of the Lower East Side, where 
-      <strong>
-        hundreds
-      </strong>
-       of more galleries gather.
-    </div>
-    <blockquote>
-      Hardly a week goes by without murmurings that yet another gallery is opening
-    </blockquote>
-    <h3>
-      <strong>
-        Galleries Section, Booth 10221
-      </strong>
-    </h3>
-    <h2>
-      neugerriemschneider
-    </h2>
-    <h3>
-      <em>
-        With works by
-      </em>
-       Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White
-    </h3>
-    <div
-      className="paragraph"
-    >
-      The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.
-    </div>
-    <ol>
-      <li>
-        Chinatown stalwart Reena Spaulings Fine Art
-      </li>
-      <li>
-        The shiny new Foxy Production
-      </li>
-      <li>
-        Freshly launched programs like Erin Goldberger’s New Release
-      </li>
-      <li>
-        Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall
-      </li>
-    </ol>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </div>
-    <h2>
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </h2>
-    <div
-      className="paragraph"
-    >
-      <div
-        className="c1"
-      >
-        <div
-          className="c1"
-        >
-          <a
-            href="https://www.artsy.net/artist/ej-hill"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            EJ Hill
-          </a>
-        </div>
-      </div>
-      <a
-        className="entity-follow artist-follow"
-        data-id="ej-hill"
-      />
-    </div>
-    <div
-      className="paragraph"
-    >
-      Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.
-    </div>
-  </div>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Rines is a part of a recent migration that has galleries gravitating to the <a href='https://www.artsy.net/'>Lower East Side and Chinatown</a>. The new gallery sits on a stretch of Henry Street that also includes Chapter NY, Cuevas Tilleard, and newcomer Shrine, and is just blocks from:</p><ul><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new <span style='text-decoration: line-through;'>Foxy Production</span></li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ul><p>And <em>not a stone’s throw away</em> are the southern bounds of the Lower East Side, where <strong>hundreds</strong> of more galleries gather.</p><blockquote>Hardly a week goes by without murmurings that yet another gallery is opening</blockquote><h3><strong>Galleries Section, Booth 10221</strong></h3><h2>neugerriemschneider</h2><h3><em>With works by</em> Franz Ackermann, Ai Weiwei, Pawel Althamer, Billy Childish, Keith Edmier, Olafur Eliasson, Andreas Eriksson, Noa Eshkol, Mario García Torres, Renata Lucas, Michel Majerus, Mike Nelson, Jorge Pardo, Elizabeth Peyton, Tobias Rehberger, Thaddeus Strode, Rirkrit Tiravanija, Pae White</h3><p>The resultant work allows Salley the chance to recount her experiences of the aftermath of her scandal in her own words. In the film, Fujiwara and Salley are shown meeting professionals from public relations, advertising, and fashion companies as they seek to construct a new public image for her. Alongside the film, light boxes display fashion photographer Andreas Larsson’s pictures of Salley, which were taken as part of the project to rebuild her profile. While the show tackles public identity, female iconography, and Salley’s voice as an artist, the pair’s close working relationship—one in which the conventional power relationship has been overturned—no doubt aided their collaboration.</p><ol><li>Chinatown stalwart Reena Spaulings Fine Art</li><li>The shiny new Foxy Production</li><li>Freshly launched programs like Erin Goldberger’s New Release</li><li>Angelo Lanza’s gallery Jeffrey Stark in the basement of the East Broadway Mall</li></ol><p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p><h2><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></h2><p><a href='https://www.artsy.net/artist/ej-hill' class='is-follow-link' name='EJ_Hill'>EJ Hill</a><a data-id='ej-hill' class='entity-follow artist-follow'></a></p><p>Rines is a part of a recent migration that has galleries gravitating to the Lower East Side and Chinatown. She opened 56 Henry in December 2015, just four months after being forced to shutter her previous microgallery 55 Gansevoort—an elevator shaft a block east of the Whitney—after Restoration Hardware bought its building.</p>",
+      }
+    }
+  />
 </div>
 `;

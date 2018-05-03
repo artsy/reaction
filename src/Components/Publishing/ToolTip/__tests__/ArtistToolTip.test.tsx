@@ -46,7 +46,7 @@ describe("ArtistToolTip", () => {
       const component = mount(<ArtistToolTip artist={artist} showMarketData />)
       // TODO: Use categories instead of bio
       expect(component.text()).toMatch(
-        "Diamond Stingily is an American artist whose work"
+        "Diamond StingilyFollow Emerging ArtThis is a new feature. Tell us what you think."
       )
     })
   })

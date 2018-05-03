@@ -262,13 +262,13 @@ exports[`renders column_width properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div>
-      <div
-        className="paragraph"
-      >
-        Hello, world!
-      </div>
-    </div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
+      }
+    />
   </div>
 </div>
 `;
@@ -535,13 +535,13 @@ exports[`renders fillwidth properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div>
-      <div
-        className="paragraph"
-      >
-        Hello, world!
-      </div>
-    </div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
+      }
+    />
   </div>
 </div>
 `;
@@ -808,13 +808,13 @@ exports[`renders overflow_fillwidth properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div>
-      <div
-        className="paragraph"
-      >
-        Hello, world!
-      </div>
-    </div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello, world!</p>",
+        }
+      }
+    />
   </div>
 </div>
 `;

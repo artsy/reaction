@@ -79,7 +79,7 @@ export class ArtistMarketData extends React.Component<ArtistToolTipProps> {
   }
 
   renderArtistGenes = () => {
-    const { genes } = this.props
+    const { genes } = this.props.artist
     if (genes.length) {
       const formattedGenes = map(genes, "name").join(", ")
       return <div>{formattedGenes}</div>

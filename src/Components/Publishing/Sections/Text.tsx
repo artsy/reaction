@@ -12,6 +12,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   isContentStart?: boolean
   layout: ArticleLayout
   postscript?: boolean
+  showTooltip?: boolean
 }
 
 interface State {
@@ -21,6 +22,7 @@ interface State {
 export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
+    showToolTip: false,
   }
 
   state = {
@@ -57,7 +59,14 @@ export class Text extends Component<Props, State> {
   }
 
   render() {
-    const { children, color, isContentStart, layout, postscript } = this.props
+    const {
+      children,
+      color,
+      isContentStart,
+      layout,
+      postscript,
+      showTooltip,
+    } = this.props
     const { html } = this.state
 
     const transform = (node, index) => {
@@ -90,7 +99,11 @@ export class Text extends Component<Props, State> {
         postscript={postscript}
       >
         {html.length ? (
-          <div>{ReactHtmlParser(html, { transform })}</div>
+          showTooltip ? (
+            <div>{ReactHtmlParser(html, { transform })}</div>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          )
         ) : (
           children
         )}

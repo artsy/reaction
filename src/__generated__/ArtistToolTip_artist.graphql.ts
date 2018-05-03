@@ -64,16 +64,29 @@ export type ArtistToolTip_artist = {
         > | null
       })
     | null
+  readonly genes: ReadonlyArray<
+    | ({
+        readonly name: string | null
+      })
+    | null
+  > | null
 }
 
 const node: ConcreteFragment = (function() {
   var v0 = {
-    kind: "ScalarField",
-    alias: null,
-    name: "__id",
-    args: null,
-    storageKey: null,
-  }
+      kind: "ScalarField",
+      alias: null,
+      name: "name",
+      args: null,
+      storageKey: null,
+    },
+    v1 = {
+      kind: "ScalarField",
+      alias: null,
+      name: "__id",
+      args: null,
+      storageKey: null,
+    }
   return {
     kind: "Fragment",
     name: "ArtistToolTip_artist",
@@ -81,13 +94,7 @@ const node: ConcreteFragment = (function() {
     metadata: null,
     argumentDefinitions: [],
     selections: [
-      {
-        kind: "ScalarField",
-        alias: null,
-        name: "name",
-        args: null,
-        storageKey: null,
-      },
+      v0,
       {
         kind: "ScalarField",
         alias: null,
@@ -257,10 +264,10 @@ const node: ConcreteFragment = (function() {
                           },
                         ],
                       },
-                      v0,
+                      v1,
                     ],
                   },
-                  v0,
+                  v1,
                 ],
               },
             ],
@@ -332,16 +339,26 @@ const node: ConcreteFragment = (function() {
                       },
                     ],
                   },
-                  v0,
+                  v1,
                 ],
               },
             ],
           },
         ],
       },
-      v0,
+      {
+        kind: "LinkedField",
+        alias: null,
+        name: "genes",
+        storageKey: null,
+        args: null,
+        concreteType: "Gene",
+        plural: true,
+        selections: [v0, v1],
+      },
+      v1,
     ],
   }
 })()
-;(node as any).hash = "de5a0a17013ecf8a135677c28adf5044"
+;(node as any).hash = "5e06b9ea478b59074f878ab5037e17e2"
 export default node

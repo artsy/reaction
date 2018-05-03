@@ -54,7 +54,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = props => {
         </Header>
 
         {showMarketData ? (
-          <ArtistMarketData {...props} />
+          <ArtistMarketData artist={props.artist} />
         ) : (
           blurb && <ToolTipDescription text={blurb} />
         )}

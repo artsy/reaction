@@ -26,7 +26,7 @@ describe("ReadMore", () => {
     )
     const viewer = mount(readMore)
     jest.runAllTimers()
-    expect(viewer.state().truncationHeight).toEqual("100%")
+    expect(viewer.state().truncationHeight).toEqual(200)
   })
 
   it("shows the whole article when not truncated", () => {

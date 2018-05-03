@@ -62,6 +62,10 @@ fragment ArtistToolTip_artist on Artist {
       }
     }
   }
+  genes {
+    name
+    __id
+  }
   __id
 }
 */
@@ -96,6 +100,13 @@ const node: ConcreteRequest = (function() {
       name: "__id",
       args: null,
       storageKey: null,
+    },
+    v4 = {
+      kind: "ScalarField",
+      alias: null,
+      name: "name",
+      args: null,
+      storageKey: null,
     }
   return {
     kind: "Request",
@@ -103,7 +114,7 @@ const node: ConcreteRequest = (function() {
     name: "TooltipsDataLoaderQuery",
     id: null,
     text:
-      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n',
+      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n',
     metadata: {},
     fragment: {
       kind: "Fragment",
@@ -146,35 +157,6 @@ const node: ConcreteRequest = (function() {
           concreteType: "Artist",
           plural: true,
           selections: [
-            v2,
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "name",
-              args: null,
-              storageKey: null,
-            },
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "formatted_nationality_and_birthday",
-              args: null,
-              storageKey: null,
-            },
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "href",
-              args: null,
-              storageKey: null,
-            },
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "blurb",
-              args: null,
-              storageKey: null,
-            },
             {
               kind: "LinkedField",
               alias: null,
@@ -236,6 +218,29 @@ const node: ConcreteRequest = (function() {
                 },
               ],
             },
+            v2,
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "formatted_nationality_and_birthday",
+              args: null,
+              storageKey: null,
+            },
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "href",
+              args: null,
+              storageKey: null,
+            },
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "blurb",
+              args: null,
+              storageKey: null,
+            },
+            v4,
             {
               kind: "ScalarField",
               alias: null,
@@ -396,6 +401,16 @@ const node: ConcreteRequest = (function() {
                   ],
                 },
               ],
+            },
+            {
+              kind: "LinkedField",
+              alias: null,
+              name: "genes",
+              storageKey: null,
+              args: null,
+              concreteType: "Gene",
+              plural: true,
+              selections: [v4, v3],
             },
             v3,
           ],
