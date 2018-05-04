@@ -3,7 +3,10 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Images } from "../../Fixtures/Components"
-import { EditableChild } from "../../Fixtures/Helpers"
+import {
+  EditableChild,
+  WrapperWithFullscreenContext,
+} from "../../Fixtures/Helpers"
 import { Artwork } from "../Artwork"
 import { ViewFullscreen } from "../ViewFullscreen"
 
@@ -16,34 +19,77 @@ jest.mock("react-dom/server", () => ({
   renderToStaticMarkup: x => x,
 }))
 
-it("renders properly", () => {
-  const artwork = renderer.create(<Artwork artwork={Images[0]} />).toJSON()
-  expect(artwork).toMatchSnapshot()
-})
+describe("Artwork", () => {
+  const renderSnapshot = props => {
+    return renderer
+      .create(WrapperWithFullscreenContext(<Artwork {...props} />))
+      .toJSON()
+  }
 
-it("renders a fullscreen button if linked", () => {
-  const component = mount(<Artwork artwork={Images[0]} linked />)
-  expect(component.find(ViewFullscreen).length).toBe(1)
-})
+  const mountWrapper = props => {
+    return mount(WrapperWithFullscreenContext(<Artwork {...props} />))
+  }
 
-it("does not render a fullscreen button if not linked", () => {
-  const component = mount(<Artwork artwork={Images[0]} linked={false} />)
-  expect(component.find(ViewFullscreen).length).toBe(0)
-})
+  let props
+  beforeEach(() => {
+    props = {}
+  })
 
-it("renders a child if present", () => {
-  const component = mount(
-    <Artwork artwork={Images[0]}>{EditableChild("A React child.")}</Artwork>
-  )
-  expect(component.text()).toMatch("A React child.")
-})
+  describe("snapshots", () => {
+    it("renders properly", () => {
+      props = {
+        artwork: Images[0],
+      }
+      const artwork = renderSnapshot(props)
+      expect(artwork).toMatchSnapshot()
+    })
+  })
 
-it("adds imagesLoaded class if props.editing", () => {
-  const component = mount(<Artwork artwork={Images[0]} editing />)
-  expect(component.html()).toMatch("BlockImage__container image-loaded")
-})
+  describe("unit", () => {
+    it("renders a fullscreen button if linked", () => {
+      props = {
+        artwork: Images[0],
+        linked: true,
+      }
+      const component = mountWrapper(props)
+      expect(component.find(ViewFullscreen).length).toBe(1)
+    })
 
-it("does not add imagesLoaded class if props.editing is false", () => {
-  const component = mount(<Artwork artwork={Images[0]} />)
-  expect(component.html()).not.toMatch("BlockImage__container image-loaded")
+    it("does not render a fullscreen button if not linked", () => {
+      props = {
+        artwork: Images[0],
+        linked: false,
+      }
+      const component = mountWrapper(props)
+      expect(component.find(ViewFullscreen).length).toBe(0)
+    })
+
+    it("renders a child if present", () => {
+      const component = mount(
+        WrapperWithFullscreenContext(
+          <Artwork artwork={Images[0]}>
+            {EditableChild("A React child.")}
+          </Artwork>
+        )
+      )
+      expect(component.text()).toMatch("A React child.")
+    })
+
+    it("adds imagesLoaded class if props.editing", () => {
+      props = {
+        artwork: Images[0],
+        editing: true,
+      }
+      const component = mountWrapper(props)
+      expect(component.html()).toMatch("BlockImage__container image-loaded")
+    })
+
+    it("does not add imagesLoaded class if props.editing is false", () => {
+      props = {
+        artwork: Images[0],
+      }
+      const component = mountWrapper(props)
+      expect(component.html()).not.toMatch("BlockImage__container image-loaded")
+    })
+  })
 })

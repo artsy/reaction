@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshots renders properly 1`] = `
+exports[`Sections snapshots renders properly 1`] = `
 .c42 {
   font-family: artsy-icons;
   color: black;
@@ -1223,7 +1223,7 @@ exports[`snapshots renders properly 1`] = `
                       "__html": <span>
                         <file__StyledTextLink
                           color="#999"
-                          href="/partner/joanne-artman-gallery"
+                          href="/joanne-artman-gallery"
                           underline={false}
                         >
                           Joanne Artman Gallery

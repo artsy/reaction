@@ -93,6 +93,7 @@
     "cache-loader": "^1.2.0",
     "concurrently": "^3.5.0",
     "conventional-changelog-ember": "^0.3.4",
+    "create-react-class": "^15.6.3",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
