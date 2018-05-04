@@ -152,10 +152,8 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       const createTextLink = Boolean(linked && slug)
 
       if (createTextLink) {
-        const href = `/partner/${slug}`
-
         return (
-          <TextLink key={2} href={href} color="#999">
+          <TextLink key={2} href={`/${slug}`} color="#999">
             {name}
           </TextLink>
         )
@@ -304,11 +302,20 @@ const StyledFullscreenCaption = styled.div`
     ${unica("s16", "mediumItalic")};
   }
 
+  .title,
+  .title a {
+    ${unica("s16", "mediumItalic")};
+  }
+  a {
+    color: black;
+    ${unica("s16", "medium")};
+  }
+
   ${pMedia.sm`
     ${unica("s14", "medium")}
     flex-direction: column;
 
-    .title {
+    .title, .title a {
       ${unica("s14", "mediumItalic")}
     }
   `};
