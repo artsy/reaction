@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a long caption properly 1`] = `
+exports[`Image snapshots renders a long caption properly 1`] = `
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -190,7 +190,7 @@ exports[`renders a long caption properly 1`] = `
 </div>
 `;
 
-exports[`renders a react child as caption properly 1`] = `
+exports[`Image snapshots renders a react child as caption properly 1`] = `
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -384,7 +384,7 @@ exports[`renders a react child as caption properly 1`] = `
 </div>
 `;
 
-exports[`renders properly 1`] = `
+exports[`Image snapshots renders properly 1`] = `
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;

@@ -63,6 +63,22 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   line-height: 1.1em;
 }
 
+.c0 .title,
+.c0 .title a {
+  font-family: Unica77LLWebMediumItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c0 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 @media (max-width:720px) {
   .c0 {
     font-family: Unica77LLWebMedium,Arial,serif;
@@ -74,7 +90,8 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
     flex-direction: column;
   }
 
-  .c0 .title {
+  .c0 .title,
+  .c0 .title a {
     font-family: Unica77LLWebMediumItalic,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;

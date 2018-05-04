@@ -284,7 +284,7 @@ exports[`renders a single image properly 1`] = `
                   "__html": <span>
                     <file__StyledTextLink
                       color="#999"
-                      href="/partner/gary-nader"
+                      href="/gary-nader"
                       underline={false}
                     >
                       Gary Nader
@@ -667,7 +667,7 @@ exports[`renders properly 1`] = `
                   "__html": <span>
                     <file__StyledTextLink
                       color="#999"
-                      href="/partner/gary-nader"
+                      href="/gary-nader"
                       underline={false}
                     >
                       Gary Nader
