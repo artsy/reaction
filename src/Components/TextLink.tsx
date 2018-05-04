@@ -13,7 +13,9 @@ export interface LinkProps
 }
 
 export class TextLink extends React.Component<LinkProps, null> {
-  public static defaultProps: LinkProps
+  public static defaultProps: LinkProps = {
+    target: "_self",
+  }
 
   render() {
     return (

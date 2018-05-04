@@ -324,6 +324,7 @@ exports[`MarketInsights renders correctly 1`] = `
     <a
       className="c6"
       href="mailto:productfeedback@artsy.net?subject=Feedback on \\"About the Artist\\" information"
+      target="_self"
     >
       Tell us what you think.
     </a>

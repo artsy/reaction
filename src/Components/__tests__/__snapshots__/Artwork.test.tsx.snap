@@ -103,6 +103,7 @@ exports[`Artwork renders correctly 1`] = `
           <a
             className="c5"
             href={undefined}
+            target="_self"
           >
             Mikael Olson
           </a>
@@ -114,6 +115,7 @@ exports[`Artwork renders correctly 1`] = `
         <a
           className="c5"
           href="/artwork/mikael-olson-some-kind-of-dinosaur"
+          target="_self"
         >
           <em>
             Some Kind of Dinosaur
@@ -127,6 +129,7 @@ exports[`Artwork renders correctly 1`] = `
         <a
           className="c5"
           href={undefined}
+          target="_self"
         >
           Gallery 1261
         </a>

@@ -207,6 +207,7 @@ exports[`Artwork snapshots renders properly 1`] = `
           <a
             className="c10"
             href="/artist/fernando-botero"
+            target="_self"
           >
             Fernando Botero
           </a>

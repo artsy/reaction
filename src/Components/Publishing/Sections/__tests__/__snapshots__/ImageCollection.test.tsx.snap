@@ -245,6 +245,7 @@ exports[`renders a single image properly 1`] = `
               <a
                 className="c12"
                 href="/artist/fernando-botero"
+                target="_self"
               >
                 Fernando Botero
               </a>
@@ -628,6 +629,7 @@ exports[`renders properly 1`] = `
               <a
                 className="c12"
                 href="/artist/fernando-botero"
+                target="_self"
               >
                 Fernando Botero
               </a>
