@@ -3,7 +3,7 @@ import React from "react"
 import { unica } from "Assets/Fonts"
 import Colors from "Assets/Colors"
 
-export interface Props {
+interface Props {
   handleFollow?: any
   isFollowed?: boolean
 }

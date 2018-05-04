@@ -7,20 +7,13 @@ import {
 } from "react-relay"
 import { FollowButton } from "./Button"
 import * as Artsy from "../Artsy"
+import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 
-export interface Props
-  extends RelayProps,
-    React.HTMLProps<FollowArtistButton>,
+interface Props
+  extends React.HTMLProps<FollowArtistButton>,
     Artsy.ContextProps {
   relay?: RelayProp
-}
-
-interface RelayProps {
-  artist?: {
-    __id: string
-    id: string
-    is_followed: boolean | null
-  }
+  artist?: FollowArtistButton_artist
 }
 
 interface State {
@@ -80,7 +73,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
 }
 
 export default createFragmentContainer(
-  FollowArtistButton,
+  Artsy.ContextConsumer(FollowArtistButton),
   graphql`
     fragment FollowArtistButton_artist on Artist {
       __id
