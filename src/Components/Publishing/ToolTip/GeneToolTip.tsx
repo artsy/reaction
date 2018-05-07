@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import React from "react"
 import { garamond } from "Assets/Fonts"
+import { FollowButton } from "../../FollowButton/Button"
 import { ToolTipDescription } from "./Components/Description"
-import { FollowButton } from "./Components/FollowButton"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 
 export interface GeneProps {

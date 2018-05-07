@@ -1709,11 +1709,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-right: auto;
 }
 
-.jYRMCd .c14 {
+.kPJXvy .c14 {
   margin-bottom: 90px;
 }
 
-.jYRMCd .c38 {
+.kPJXvy .c38 {
   padding-top: 60px;
 }
 
@@ -2009,7 +2009,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .jYRMCd .c38 {
+  .kPJXvy .c38 {
     padding-top: 60px;
   }
 }
