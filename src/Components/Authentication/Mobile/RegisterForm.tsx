@@ -2,17 +2,17 @@ import React from "react"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 
-import { GrayFacebookButton } from "../commonElements"
+import { GrayFacebookButton, TOSCheckbox } from "../commonElements"
 import styled from "styled-components"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
 import Icon from "../../Icon"
-import { FormComponentType } from "../Types"
+import { FormComponentType, ModalType } from "../Types"
 
 import Text from "../../Text"
 import TextLink from "../../TextLink"
 import Colors from "Assets/Colors"
-import { Validators } from "../Validators"
+import { CustomMobileValidator, MobileRegisterValidator } from "../Validators"
 import { metaphysics } from "../../../Utils/metaphysics"
 import * as sharify from "sharify"
 
@@ -42,7 +42,10 @@ const checkEmail = (values, actions) => {
 
 export const MobileRegisterForm: FormComponentType = props => {
   const steps = [
-    <Step validationSchema={Validators.email} onSubmit={checkEmail}>
+    <Step
+      validationSchema={MobileRegisterValidator.email}
+      onSubmit={checkEmail}
+    >
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
@@ -64,12 +67,14 @@ export const MobileRegisterForm: FormComponentType = props => {
           <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
           <LoginText>
             Already have an account?{" "}
-            <TextLink onClick={props.handleChangeMode("login")}>Login</TextLink>
+            <TextLink onClick={() => props.handleTypeChange(ModalType.login)}>
+              Login
+            </TextLink>
           </LoginText>
         </div>
       )}
     </Step>,
-    <Step validationSchema={Validators.password}>
+    <Step validationSchema={MobileRegisterValidator.password}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
@@ -91,7 +96,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         </div>
       )}
     </Step>,
-    <Step validationSchema={Validators.name}>
+    <Step validationSchema={CustomMobileValidator}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
@@ -110,6 +115,22 @@ export const MobileRegisterForm: FormComponentType = props => {
             setTouched={setTouched}
             quick
           />
+          <TOSCheckbox
+            error={
+              touched.acceptedTermsOfService && errors.acceptedTermsOfService
+            }
+            value={values.acceptedTermsOfService}
+            type="checkbox"
+            name="accepted-terms-of-service"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            errorMessage={errors.acceptedTermsOfService}
+          >
+            <Text color={Colors.grayDark}>
+              I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
+              <TextLink>Privacy Policy</TextLink>
+            </Text>
+          </TOSCheckbox>
         </div>
       )}
     </Step>,

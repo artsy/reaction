@@ -19,6 +19,10 @@ export interface StepProps {
   label?: string
   validate?: (values: FormValues) => FormErrors
   validationSchema?: object
+  onSubmit?: (
+    values: FormValues,
+    actions?: FormikActions<FormValues>
+  ) => boolean | Promise<boolean>
   children:
     | React.ComponentClass<WizardStepChildProps>
     | React.SFC<WizardStepChildProps>

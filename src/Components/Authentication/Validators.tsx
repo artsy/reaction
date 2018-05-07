@@ -1,10 +1,14 @@
 import Yup from "yup"
 
-const email = Yup.string()
+export const email = Yup.string()
   .email("Please enter a valid email.")
   .required("Please enter a valid email.")
 
 const name = Yup.string().required("Name is required")
+
+const password = Yup.string()
+  .required("Password required")
+  .min(8, "Your password must be at least 8 characters")
 
 const acceptedTermsOfService = Yup.boolean()
   .required("You must agree to our terms to continue.")
@@ -26,11 +30,14 @@ export const LoginValidator = Yup.object().shape({
   password: Yup.string().required("Password required"),
 })
 
-export const MobileRegisterValidator = Yup.object().shape({
-  email,
+export const MobileRegisterValidator = {
+  email: Yup.object().shape({ email }),
+  name: Yup.object().shape({ name }),
+  password: Yup.object().shape({ password }),
+  acceptedTermsOfService: Yup.object().shape({ acceptedTermsOfService }),
+}
+
+export const CustomMobileValidator = Yup.object().shape({
   name,
-  password: Yup.string()
-    .required("Password required")
-    .min(8, "Your password must be at least 8 characters"),
   acceptedTermsOfService,
 })
