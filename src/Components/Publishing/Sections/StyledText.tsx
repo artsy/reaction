@@ -9,6 +9,7 @@ interface StyledTextProps {
   isContentStart: boolean
   layout: ArticleLayout
   postscript?: Boolean
+  showTooltips?: boolean
 }
 
 const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> =

@@ -162,7 +162,7 @@ export class Sections extends Component<Props, State> {
           layout={article.layout}
           isContentStart={index === this.getContentStartIndex()}
           isContentEnd={index === this.getContentEndIndex()}
-          showTooltip={showTooltips}
+          showTooltips={showTooltips}
         />
       ),
       default: false,

@@ -12,7 +12,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   isContentStart?: boolean
   layout: ArticleLayout
   postscript?: boolean
-  showTooltip?: boolean
+  showTooltips?: boolean
 }
 
 interface State {
@@ -96,7 +96,7 @@ export class Text extends Component<Props, State> {
       isContentStart,
       layout,
       postscript,
-      showTooltip,
+      showTooltips,
     } = this.props
     const { html } = this.state
 
@@ -107,9 +107,10 @@ export class Text extends Component<Props, State> {
         isContentStart={isContentStart}
         layout={layout}
         postscript={postscript}
+        showTooltips={showTooltips}
       >
         {html.length ? (
-          showTooltip ? (
+          showTooltips ? (
             <div>
               {ReactHtmlParser(html, { transform: this.transformNode })}
             </div>

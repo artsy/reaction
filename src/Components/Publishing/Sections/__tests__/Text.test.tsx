@@ -74,6 +74,6 @@ it("Removes content-end spans if not isContentEnd", () => {
 
 it("Should add LinkWithTooltip when artsy link is contained", () => {
   const html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
-  const wrapper = mount(<Text html={html} layout="standard" showTooltip />)
+  const wrapper = mount(<Text html={html} layout="standard" showTooltips />)
   expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
 })

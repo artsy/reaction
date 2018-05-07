@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
+import styled from "styled-components"
 
 interface Props {
   url: string
@@ -58,14 +59,33 @@ export class LinkWithTooltip extends Component<Props, State> {
     const { show } = this.state
     return (
       <OverlayTrigger show={show} placement="top" overlay={toolTip}>
-        <a
-          href={this.props.url}
-          onMouseEnter={() => this.setState({ show: true })}
-          onMouseLeave={() => this.setState({ show: false })}
+        <Link
+          target="_blank"
+          onMouseEnter={() =>
+            new Promise((resolve, reject) => {
+              this.setState({ show: true }, resolve)
+            })
+          }
+          onMouseLeave={() =>
+            new Promise((resolve, reject) =>
+              this.setState({ show: false }, resolve)
+            )
+          }
         >
           {this.props.children}
-        </a>
+        </Link>
       </OverlayTrigger>
     )
   }
 }
+
+export const Link = styled.a`
+  background-image: none !important;
+  border-bottom: 1.5px dashed rgba(51, 51, 51, 0.63);
+  display: inline-block;
+  line-height: 23px;
+
+  &:hover {
+    border-bottom-color: #999;
+  }
+`
