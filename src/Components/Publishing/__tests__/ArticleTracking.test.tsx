@@ -14,7 +14,7 @@ jest.mock("react-slick", () => {
 })
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
-xit("emits analytics events to an event emitter", done => {
+it("emits analytics events to an event emitter", done => {
   const article = mount(<Article article={StandardArticle} />)
   Events.onEvent(data => {
     expect(data.action).toEqual("Click")

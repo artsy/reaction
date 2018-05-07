@@ -10,6 +10,7 @@ import {
 } from "../../Fixtures/Articles"
 import { TextFromArticle } from "../../Fixtures/Helpers"
 import { Text } from "../Text"
+import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
 
 it("renders classic text properly", () => {
   const text = renderer
@@ -69,4 +70,10 @@ it("Removes content-end spans if not isContentEnd", () => {
     "<p>The end of a great article. <span class='content-end> </span></p>"
   const wrapper = mount(<Text html={html} layout="feature" />)
   expect(wrapper.html()).not.toMatch("content-end")
+})
+
+it("Should add LinkWithTooltip when artsy link is contained", () => {
+  const html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
+  const wrapper = mount(<Text html={html} layout="standard" showTooltip />)
+  expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
 })
