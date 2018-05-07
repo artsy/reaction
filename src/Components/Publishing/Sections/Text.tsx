@@ -58,6 +58,37 @@ export class Text extends Component<Props, State> {
     return cleanedHtml
   }
 
+  shouldShowTooltipForURL = node => {
+    const urlBase = "https://www.artsy.net/"
+    const types = ["artist/", "gene/"]
+
+    for (const type of types) {
+      if (startsWith(node.attribs.href, urlBase + type)) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  transformNode = (node, index) => {
+    if (node.name === "p") {
+      node.name = "div"
+      node.attribs.class = "paragraph"
+      return convertNodeToElement(node, index, this.transformNode)
+    }
+
+    if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
+      const href = node.attribs.href
+      const text = node.children[0].data
+      return (
+        <LinkWithTooltip key={href + index} url={href} node={node}>
+          {text}
+        </LinkWithTooltip>
+      )
+    }
+  }
+
   render() {
     const {
       children,
@@ -69,27 +100,6 @@ export class Text extends Component<Props, State> {
     } = this.props
     const { html } = this.state
 
-    const transform = (node, index) => {
-      if (node.name === "p") {
-        node.name = "div"
-        node.attribs.class = "paragraph"
-        return convertNodeToElement(node, index, transform)
-      }
-
-      if (
-        node.name === "a" &&
-        startsWith(node.attribs.href, "https://www.artsy.net/")
-      ) {
-        const href = node.attribs.href
-        const text = node.children[0].data
-        return (
-          <LinkWithTooltip key={href + index} url={href} node={node}>
-            {text}
-          </LinkWithTooltip>
-        )
-      }
-    }
-
     return (
       <StyledText
         className="article__text-section"
@@ -100,7 +110,9 @@ export class Text extends Component<Props, State> {
       >
         {html.length ? (
           showTooltip ? (
-            <div>{ReactHtmlParser(html, { transform })}</div>
+            <div>
+              {ReactHtmlParser(html, { transform: this.transformNode })}
+            </div>
           ) : (
             <div dangerouslySetInnerHTML={{ __html: html }} />
           )

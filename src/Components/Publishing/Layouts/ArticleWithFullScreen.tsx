@@ -9,28 +9,7 @@ import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
 import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
-
-export interface ArticleProps {
-  article: ArticleData
-  closeViewer?: () => void
-  display?: {
-    name: string
-    panel: object
-    canvas: any
-  }
-  emailSignupUrl?: string
-  headerHeight?: string
-  isMobile?: boolean
-  isSuper?: boolean
-  isTruncated?: boolean
-  marginTop?: string
-  relatedArticlesForCanvas?: any
-  relatedArticlesForPanel?: any
-  seriesArticle?: any
-  slideIndex?: number
-  viewerIsOpen?: boolean
-}
-
+import { ArticleProps } from "../Article"
 interface ArticleState {
   fullscreenImages: any
   article: ArticleData
@@ -62,6 +41,7 @@ export class ArticleWithFullScreen extends React.Component<
     isSuper: false,
     article: {},
     isTruncated: false,
+    showTooltips: false,
   }
 
   constructor(props) {
@@ -102,7 +82,10 @@ export class ArticleWithFullScreen extends React.Component<
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <TooltipsDataLoader article={article}>
+      <TooltipsDataLoader
+        article={article}
+        shouldFetchData={this.props.showTooltips}
+      >
         <ArticleContainer marginTop={marginTop}>
           {article.layout === "feature" ? (
             <FeatureLayout {...articleProps} />

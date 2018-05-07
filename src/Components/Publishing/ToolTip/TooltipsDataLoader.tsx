@@ -9,16 +9,25 @@ import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/Tooltips
 
 interface Props {
   article: ArticleData
+  shouldFetchData?: boolean
 }
 
 // TODO: get enviroment from context or pass it in as prop
 const environment = createEnvironment()
 
 export class TooltipsDataLoader extends Component<Props> {
+  static defaultProps = {
+    shouldFetchData: true,
+  }
+
   render() {
     const { artists: artistSlugs } = getArtsySlugsFromArticle(
       this.props.article
     )
+
+    if (!this.props.shouldFetchData) {
+      return this.props.children
+    }
 
     return (
       <QueryRenderer
