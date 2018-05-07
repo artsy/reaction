@@ -6,10 +6,7 @@ import { Link, LinkWithTooltip } from "../LinkWithTooltip"
 describe("LinkWithTooltip", () => {
   it("Renders correctly", () => {
     const wrapper = mount(
-      <LinkWithTooltip
-        url="https://www.artsy.net/artist/judy-chicago"
-        node={node}
-      >
+      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago">
         Judy
       </LinkWithTooltip>
     )
@@ -19,10 +16,7 @@ describe("LinkWithTooltip", () => {
 
   it("extracts entity type from URL", () => {
     const wrapper = mount(
-      <LinkWithTooltip
-        url="https://www.artsy.net/artist/judy-chicago"
-        node={node}
-      />
+      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago" />
     )
 
     const instance: any = wrapper.instance()
@@ -35,10 +29,7 @@ describe("LinkWithTooltip", () => {
 
   it("correctly gets data from tooltips context", () => {
     const wrapper = mount(
-      <LinkWithTooltip
-        url="https://www.artsy.net/artist/judy-chicago"
-        node={node}
-      >
+      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago">
         Judy
       </LinkWithTooltip>,
       { context }
@@ -53,10 +44,7 @@ describe("LinkWithTooltip", () => {
 
   it("ToolTip correctly shows on hover", () => {
     const wrapper = mount(
-      <LinkWithTooltip
-        url="https://www.artsy.net/artist/judy-chicago"
-        node={node}
-      >
+      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago">
         Judy
       </LinkWithTooltip>,
       { context }
@@ -74,10 +62,7 @@ describe("LinkWithTooltip", () => {
 
   it("ToolTip correctly hides on hover", () => {
     const wrapper = mount(
-      <LinkWithTooltip
-        url="https://www.artsy.net/artist/judy-chicago"
-        node={node}
-      >
+      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago">
         Judy
       </LinkWithTooltip>,
       { context }
@@ -93,20 +78,6 @@ describe("LinkWithTooltip", () => {
     })
   })
 })
-
-const node = {
-  name: "a",
-  type: "tag",
-  attribs: {
-    href: "https://www.artsy.net/artist/judy-chicago",
-  },
-  children: [
-    {
-      type: "text",
-      data: "Judy",
-    },
-  ],
-}
 
 const context = {
   tooltipsData: {

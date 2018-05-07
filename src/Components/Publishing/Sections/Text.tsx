@@ -81,8 +81,9 @@ export class Text extends Component<Props, State> {
     if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
       const href = node.attribs.href
       const text = node.children[0].data
+
       return (
-        <LinkWithTooltip key={href + index} url={href} node={node}>
+        <LinkWithTooltip key={href + index} url={href}>
           {text}
         </LinkWithTooltip>
       )
