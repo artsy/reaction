@@ -6,7 +6,11 @@ interface CheckboxState {
   checked: boolean
 }
 
-export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
+interface CheckboxProps extends HTMLProps<Checkbox> {
+  error?: boolean
+}
+
+export class Checkbox extends Component<CheckboxProps, CheckboxState> {
   constructor(props) {
     super(props)
 
@@ -26,7 +30,7 @@ export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
   }
 
   render() {
-    const { children, className, ...propsForCheckbox } = this.props
+    const { children, className, error, ...propsForCheckbox } = this.props
 
     return (
       <Label className={className}>
@@ -35,6 +39,7 @@ export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
           {...propsForCheckbox as any}
           onChange={this.onChange}
           checked={this.state.checked}
+          error={error}
         />
 
         {children}
@@ -43,7 +48,7 @@ export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
   }
 }
 
-const CheckboxInput = styled.input`
+const CheckboxInput = styled.input.attrs<{ error: boolean }>({})`
   width: 20px;
   height: 20px;
   position: relative;
@@ -101,6 +106,15 @@ const CheckboxInput = styled.input`
       background-color: ${colors.grayRegular};
     }
   }
+
+  ${p =>
+    p.error &&
+    `
+    color: ${colors.redMedium};
+    &:after {
+      border: 2px solid ${colors.redMedium};
+    }
+  `};
 `
 
 const Label = styled.label`

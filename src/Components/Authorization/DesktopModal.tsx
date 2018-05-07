@@ -28,6 +28,7 @@ const CloseButton = styled(Icon).attrs({
   position: absolute;
   top: 20px;
   right: 15px;
+  cursor: pointer;
 `
 
 const Content = styled.div`

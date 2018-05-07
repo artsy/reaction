@@ -19,6 +19,7 @@ const Logo = styled(Icon).attrs({
   fontSize: "34px",
 })`
   display: block;
+  line-height: 1em;
 `
 
 const Subtitle = styled(Text).attrs({

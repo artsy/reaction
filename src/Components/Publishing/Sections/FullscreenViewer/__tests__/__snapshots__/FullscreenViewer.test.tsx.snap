@@ -339,6 +339,7 @@ exports[`renders properly 1`] = `
                         <a
                           className="c12"
                           href="/artist/fernando-botero"
+                          target="_self"
                         >
                           Fernando Botero
                         </a>
@@ -355,6 +356,7 @@ exports[`renders properly 1`] = `
                         <a
                           className="c12"
                           href="/artwork/fernando-botero-nude-on-the-beach"
+                          target="_self"
                         >
                           Nude on the Beach
                         </a>
@@ -374,6 +376,7 @@ exports[`renders properly 1`] = `
                       <a
                         className="c12"
                         href="/gary-nader"
+                        target="_self"
                       >
                         Gary Nader
                       </a>

@@ -3,20 +3,21 @@ import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
 import {
-  BlockButton as Button,
+  ChangeMode,
   FormContainer as Form,
   GrayFacebookButton,
 } from "./commonElements"
 
-import { Validators } from "./Validators"
+import { LoginValidator } from "./Validators"
 import Input from "../Input"
-import Colors from "../../Assets/Colors"
 import Text from "../Text"
-import TextLink from "../TextLink"
+import Colors from "../../Assets/Colors"
 import { FormComponentType, InputValues } from "./Types"
 import Checkbox from "../Checkbox"
+import { garamond } from "../../Assets/Fonts"
+import Button from "../Buttons/Inverted"
 
-const ForgotPasswordLink = styled(TextLink)`
+const ForgotPasswordLink = styled(ChangeMode)`
   margin-left: auto;
 `
 
@@ -31,6 +32,14 @@ const LoginText = styled(Text).attrs({
   align: "center",
 })`
   margin-top: 0;
+  ${garamond("s14")};
+`
+
+const LoginButton = styled(Button).attrs({
+  type: "submit",
+  block: true,
+})`
+  margin: auto 0 10px 0;
 `
 
 export const LoginForm: FormComponentType = props => {
@@ -38,7 +47,7 @@ export const LoginForm: FormComponentType = props => {
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Validators}
+      validationSchema={LoginValidator}
     >
       {({
         values,
@@ -48,6 +57,7 @@ export const LoginForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        isValid,
       }: FormikProps<InputValues>) => {
         return (
           <Form onSubmit={handleSubmit}>
@@ -85,22 +95,18 @@ export const LoginForm: FormComponentType = props => {
                 <Text color={Colors.grayDark}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
-                onClick={() => props.handleChangeMode("reset_password")}
-                color={Colors.grayDark}
-                underline
+                handleClick={props.handleChangeMode("reset_password")}
               >
                 Forgot Password?
               </ForgotPasswordLink>
             </Row>
-            <Button type="submit" disabled={isSubmitting}>
-              Log In
-            </Button>
+            <LoginButton disabled={isSubmitting}>Log In</LoginButton>
             <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
             <LoginText>
               Don't have an account?{" "}
-              <TextLink onClick={props.handleChangeMode("login")}>
+              <ChangeMode handleClick={props.handleChangeMode("register")}>
                 Sign Up
-              </TextLink>
+              </ChangeMode>
             </LoginText>
           </Form>
         )

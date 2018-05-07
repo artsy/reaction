@@ -1187,6 +1187,7 @@ exports[`Sections snapshots renders properly 1`] = `
                   <a
                     className="c20"
                     href="/artist/matt-devine"
+                    target="_self"
                   >
                     Matt Devine
                   </a>
