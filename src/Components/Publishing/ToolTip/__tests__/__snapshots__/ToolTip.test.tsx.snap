@@ -131,7 +131,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 }
 
 .c0 {
-  position: relative;
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
   padding: 20px;
   background: white;
@@ -359,7 +359,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 }
 
 .c0 {
-  position: relative;
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
   padding: 20px;
   background: white;

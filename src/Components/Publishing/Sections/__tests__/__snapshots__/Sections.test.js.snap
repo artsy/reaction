@@ -423,6 +423,7 @@ exports[`Sections snapshots renders properly 1`] = `
 .c2 p,
 .c2 ul,
 .c2 ol,
+.c2 .paragraph,
 .c2 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -435,11 +436,13 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 .c2 p:first-child,
+.c2 .paragraph:first-child,
 .c2 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c2 p:last-child,
+.c2 .paragraph:last-child,
 .c2 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import React from "react"
-import { ArtistToolTip } from "./Artist"
-import { GeneToolTip } from "./Gene"
+import { ArtistTooltipContainer } from "./ArtistToolTip"
+import { GeneToolTip } from "./GeneToolTip"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
 interface Props {
@@ -10,13 +10,18 @@ interface Props {
   showMarketData?: boolean
 }
 
-export class ToolTip extends React.Component<Props, null> {
+export class ToolTip extends React.Component<Props> {
   getToolTip = () => {
     const { entity, model, showMarketData } = this.props
 
     switch (model) {
       case "artist": {
-        return <ArtistToolTip showMarketData={showMarketData} {...entity} />
+        return (
+          <ArtistTooltipContainer
+            showMarketData={showMarketData}
+            artist={entity as any}
+          />
+        )
       }
       case "gene": {
         return <GeneToolTip {...entity} />
@@ -28,6 +33,8 @@ export class ToolTip extends React.Component<Props, null> {
   }
 
   render() {
+    if (!this.props.entity) return null
+
     return (
       <ToolTipContainer>
         {this.getToolTip()}
@@ -38,7 +45,7 @@ export class ToolTip extends React.Component<Props, null> {
 }
 
 export const ToolTipContainer = styled.div`
-  position: relative;
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;

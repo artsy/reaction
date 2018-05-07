@@ -2,12 +2,12 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip } from "../Artist"
+import { ArtistToolTip } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {
   it("Renders artist data", () => {
-    const artist = Artists[0]
-    const component = mount(<ArtistToolTip {...artist} />)
+    const artist = Artists[0].artist
+    const component = mount(<ArtistToolTip artist={artist} />)
 
     expect(component.text()).toMatch(artist.name)
     expect(component.text()).toMatch(artist.formatted_nationality_and_birthday)
@@ -22,8 +22,8 @@ describe("ArtistToolTip", () => {
 
   describe("Market Data", () => {
     it("Renders artist data", () => {
-      const artist = Artists[0]
-      const component = mount(<ArtistToolTip {...artist} showMarketData />)
+      const artist = Artists[0].artist
+      const component = mount(<ArtistToolTip artist={artist} showMarketData />)
 
       expect(component.text()).toMatch(artist.name)
       expect(component.text()).toMatch(
@@ -42,9 +42,12 @@ describe("ArtistToolTip", () => {
     })
 
     it("Renders categories if no artist data", () => {
-      const artist = Artists[2]
-      const component = mount(<ArtistToolTip {...artist} showMarketData />)
-      expect(component.text()).toMatch("Emerging Art")
+      const artist = Artists[2].artist
+      const component = mount(<ArtistToolTip artist={artist} showMarketData />)
+      // TODO: Use categories instead of bio
+      expect(component.text()).toMatch(
+        "Diamond StingilyFollow Emerging ArtThis is a new feature. Tell us what you think."
+      )
     })
   })
 })

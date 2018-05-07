@@ -26,6 +26,10 @@ export interface ArticleProps {
     panel: object
     canvas: any
   }
+  showTooltips?: boolean
+  slideIndex?: number
+  closeViewer?: () => void
+  viewerIsOpen?: boolean
 }
 
 @track(

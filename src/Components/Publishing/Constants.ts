@@ -1,4 +1,4 @@
-import { compact, last } from "lodash"
+import { compact, last, uniq } from "lodash"
 import cheerio from "cheerio"
 import moment from "moment-timezone"
 import url from "url"
@@ -153,8 +153,8 @@ export const getArtsySlugsFromArticle = (
     })
     .join()
 
-  let artists = getArtsySlugsFromHTML(articleBody, "artist")
-  let genes = getArtsySlugsFromHTML(articleBody, "gene")
+  let artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
+  let genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))
 
   return {
     artists,

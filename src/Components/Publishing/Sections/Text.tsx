@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
+import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
+import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
+import { startsWith } from "lodash"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   color?: string
@@ -9,6 +12,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   isContentStart?: boolean
   layout: ArticleLayout
   postscript?: boolean
+  showTooltips?: boolean
 }
 
 interface State {
@@ -18,6 +22,7 @@ interface State {
 export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
+    showToolTip: false,
   }
 
   state = {
@@ -53,8 +58,46 @@ export class Text extends Component<Props, State> {
     return cleanedHtml
   }
 
+  shouldShowTooltipForURL = node => {
+    const urlBase = "https://www.artsy.net/"
+    const types = ["artist/", "gene/"]
+
+    for (const type of types) {
+      if (startsWith(node.attribs.href, urlBase + type)) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  transformNode = (node, index) => {
+    if (node.name === "p") {
+      node.name = "div"
+      node.attribs.class = "paragraph"
+      return convertNodeToElement(node, index, this.transformNode)
+    }
+
+    if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
+      const href = node.attribs.href
+      const text = node.children[0].data
+      return (
+        <LinkWithTooltip key={href + index} url={href} node={node}>
+          {text}
+        </LinkWithTooltip>
+      )
+    }
+  }
+
   render() {
-    const { children, color, isContentStart, layout, postscript } = this.props
+    const {
+      children,
+      color,
+      isContentStart,
+      layout,
+      postscript,
+      showTooltips,
+    } = this.props
     const { html } = this.state
 
     return (
@@ -64,9 +107,16 @@ export class Text extends Component<Props, State> {
         isContentStart={isContentStart}
         layout={layout}
         postscript={postscript}
+        showTooltips={showTooltips}
       >
         {html.length ? (
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          showTooltips ? (
+            <div>
+              {ReactHtmlParser(html, { transform: this.transformNode })}
+            </div>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          )
         ) : (
           children
         )}

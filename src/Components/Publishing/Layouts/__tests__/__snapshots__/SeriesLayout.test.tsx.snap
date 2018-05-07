@@ -395,6 +395,7 @@ exports[`renders a series properly 1`] = `
 .c39 p,
 .c39 ul,
 .c39 ol,
+.c39 .paragraph,
 .c39 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -407,11 +408,13 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 p:first-child,
+.c39 .paragraph:first-child,
 .c39 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c39 p:last-child,
+.c39 .paragraph:last-child,
 .c39 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1518,6 +1521,7 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 p,
 .c45 ul,
 .c45 ol,
+.c45 .paragraph,
 .c45 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1530,11 +1534,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 p:first-child,
+.c45 .paragraph:first-child,
 .c45 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c45 p:last-child,
+.c45 .paragraph:last-child,
 .c45 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }

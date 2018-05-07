@@ -55,6 +55,17 @@ const story = storiesOf("Publishing/Standard Articles", module)
       />
     )
   })
+  .add("Standard with tooltips", () => {
+    return (
+      <Article
+        article={StandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        showTooltips
+      />
+    )
+  })
 
 const displays = ["overlay", "image", "video", "slideshow"]
 displays.forEach(displayType => {

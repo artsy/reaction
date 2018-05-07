@@ -11,29 +11,8 @@ import { ReadMore } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
-import { ArticleData } from "../Typings"
 import { Sidebar } from "./Components/Sidebar"
-
-export interface ArticleProps {
-  article: ArticleData
-  seriesArticle?: ArticleData
-  closeViewer?: () => void
-  display?: {
-    name: string
-    panel: object
-    canvas: any
-  }
-  emailSignupUrl?: string
-  headerHeight?: string
-  isMobile?: boolean
-  isSuper?: boolean
-  isTruncated?: boolean
-  marginTop?: string
-  relatedArticlesForCanvas?: any
-  relatedArticlesForPanel?: any
-  slideIndex?: number
-  viewerIsOpen?: boolean
-}
+import { ArticleProps } from "../Article"
 
 interface ArticleState {
   isTruncated: boolean
@@ -68,6 +47,7 @@ export class StandardLayout extends React.Component<
       emailSignupUrl,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
+      showTooltips,
     } = this.props
     const { isTruncated } = this.state
 
@@ -106,6 +86,7 @@ export class StandardLayout extends React.Component<
                       DisplayPanel={DisplayPanelAd}
                       article={article}
                       isMobile={isMobile}
+                      showTooltips={showTooltips}
                     />
                     <Sidebar
                       emailSignupUrl={emailSignupUrl}
