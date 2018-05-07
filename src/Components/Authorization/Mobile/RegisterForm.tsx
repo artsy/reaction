@@ -2,7 +2,7 @@ import React from "react"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 
-import { GrayFacebookButton } from "../commonElements"
+import { GrayFacebookButton, TOSCheckbox } from "../commonElements"
 import styled from "styled-components"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
@@ -110,6 +110,22 @@ export const MobileRegisterForm: FormComponentType = props => {
             setTouched={setTouched}
             quick
           />
+          <TOSCheckbox
+            error={
+              touched.acceptedTermsOfService && errors.acceptedTermsOfService
+            }
+            value={values.acceptedTermsOfService}
+            type="checkbox"
+            name="accepted-terms-of-service"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            errorMessage={errors.acceptedTermsOfService}
+          >
+            <Text color={Colors.grayDark}>
+              I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
+              <TextLink>Privacy Policy</TextLink>
+            </Text>
+          </TOSCheckbox>
         </div>
       )}
     </Step>,
