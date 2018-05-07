@@ -3,7 +3,7 @@ import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-
+import Colors from "Assets/Colors"
 interface Props {
   url: string
   node: any
@@ -81,11 +81,11 @@ export class LinkWithTooltip extends Component<Props, State> {
 
 export const Link = styled.a`
   background-image: none !important;
-  border-bottom: 1.5px dashed rgba(51, 51, 51, 0.63);
+  border-bottom: 1.5px dashed ${Colors.graySemibold};
   display: inline-block;
   line-height: 23px;
 
   &:hover {
-    border-bottom-color: #999;
+    border-bottom-color: ${Colors.grayDark};
   }
 `

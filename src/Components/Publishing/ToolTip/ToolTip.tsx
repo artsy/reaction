@@ -33,6 +33,8 @@ export class ToolTip extends React.Component<Props> {
   }
 
   render() {
+    if (!this.props.entity) return null
+
     return (
       <ToolTipContainer>
         {this.getToolTip()}
