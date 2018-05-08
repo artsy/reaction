@@ -62,7 +62,7 @@ storiesOf("Publishing/ToolTips", module)
   })
   .add("Gene", () => {
     return (
-      <div style={{ maxWidth: 580, margin: "250px auto" }}>
+      <div style={{ maxWidth: 580, margin: "350px auto" }}>
         <TooltipsDataLoader article={StandardArticle}>
           <div>
             <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
