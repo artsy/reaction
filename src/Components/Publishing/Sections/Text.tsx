@@ -13,6 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   layout: ArticleLayout
   postscript?: boolean
   showTooltips?: boolean
+  showToolTipMarketData?: boolean
 }
 
 interface State {
@@ -23,6 +24,7 @@ export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
     showToolTip: false,
+    showToolTipMarketData: false,
   }
 
   state = {
@@ -81,9 +83,14 @@ export class Text extends Component<Props, State> {
     if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
       const href = node.attribs.href
       const text = node.children[0].data
+      const { showToolTipMarketData } = this.props
 
       return (
-        <LinkWithTooltip key={href + index} url={href}>
+        <LinkWithTooltip
+          key={href + index}
+          url={href}
+          showMarketData={showToolTipMarketData}
+        >
           {text}
         </LinkWithTooltip>
       )
