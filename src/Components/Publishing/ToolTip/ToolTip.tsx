@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import React from "react"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
-import { GeneToolTip } from "./GeneToolTip"
+import { GeneToolTipContainer } from "./GeneToolTip"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
 interface Props {
@@ -24,7 +24,7 @@ export class ToolTip extends React.Component<Props> {
         )
       }
       case "gene": {
-        return <GeneToolTip {...entity} />
+        return <GeneToolTipContainer gene={entity as any} />
       }
       default: {
         return null
