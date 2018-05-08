@@ -23,7 +23,7 @@ const story = storiesOf("Publishing/Standard Articles", module)
       />
     )
   })
-  .add("Standard without Vertical", () => {
+  .add("Without Vertical", () => {
     return (
       <Article
         article={MissingVerticalStandardArticle}
@@ -33,7 +33,7 @@ const story = storiesOf("Publishing/Standard Articles", module)
       />
     )
   })
-  .add("Standard with top margin", () => {
+  .add("With top margin", () => {
     return (
       <Article
         article={ImageHeavyStandardArticle}
@@ -44,7 +44,7 @@ const story = storiesOf("Publishing/Standard Articles", module)
       />
     )
   })
-  .add("Standard truncated", () => {
+  .add("Truncated", () => {
     return (
       <Article
         article={ImageHeavyStandardArticle}
@@ -55,7 +55,7 @@ const story = storiesOf("Publishing/Standard Articles", module)
       />
     )
   })
-  .add("Standard with tooltips", () => {
+  .add("With tooltips (bio)", () => {
     return (
       <Article
         article={StandardArticle}
@@ -63,13 +63,26 @@ const story = storiesOf("Publishing/Standard Articles", module)
         relatedArticlesForCanvas={RelatedCanvas}
         emailSignupUrl="#"
         showTooltips
+        showToolTipMarketData
+      />
+    )
+  })
+  .add("With tooltips (data)", () => {
+    return (
+      <Article
+        article={StandardArticle}
+        relatedArticlesForPanel={RelatedPanel}
+        relatedArticlesForCanvas={RelatedCanvas}
+        emailSignupUrl="#"
+        showTooltips
+        showToolTipMarketData
       />
     )
   })
 
 const displays = ["overlay", "image", "video", "slideshow"]
 displays.forEach(displayType => {
-  story.add(`Standard with ${displayType} ad`, () => {
+  story.add(`With ${displayType} ad`, () => {
     return (
       <Article
         article={StandardArticle}
@@ -82,7 +95,7 @@ displays.forEach(displayType => {
   })
 })
 
-story.add(`Multiple standard articles`, () => {
+story.add(`Multiple articles`, () => {
   const article: ArticleData = {
     ...StandardArticle,
     sections: [

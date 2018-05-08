@@ -17,6 +17,7 @@ export interface ArticleProps {
   isSuper?: boolean
   marginTop?: string
   relatedArticlesForCanvas?: any
+  showToolTipMarketData?: boolean
 }
 
 export class FeatureLayout extends React.Component<ArticleProps> {
@@ -27,6 +28,7 @@ export class FeatureLayout extends React.Component<ArticleProps> {
       isMobile,
       isSuper,
       relatedArticlesForCanvas,
+      showToolTipMarketData,
     } = this.props
     const { seriesArticle } = article
 
@@ -51,7 +53,11 @@ export class FeatureLayout extends React.Component<ArticleProps> {
         <Header article={article} height={height} isMobile={isMobile} />
 
         <FeatureLayoutContent className="article-content">
-          <Sections article={article} isMobile={isMobile} />
+          <Sections
+            article={article}
+            isMobile={isMobile}
+            showToolTipMarketData={showToolTipMarketData}
+          />
         </FeatureLayoutContent>
 
         {relatedArticlesForCanvas &&
