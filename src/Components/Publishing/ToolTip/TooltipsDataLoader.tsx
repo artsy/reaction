@@ -5,7 +5,7 @@ import { createEnvironment } from "../../../Relay/createEnvironment"
 import { ArticleData } from "../Typings"
 import { getArtsySlugsFromArticle } from "../Constants"
 import { keyBy } from "lodash"
-// import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/TooltipsDataLoaderQuery.graphql"
+import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/TooltipsDataLoaderQuery.graphql"
 
 interface Props {
   article: ArticleData
@@ -52,7 +52,10 @@ export class TooltipsDataLoader extends Component<Props> {
           geneSlugs,
         }}
         render={readyState => {
-          const data: any = { artists: [], genes: [] }
+          const data: TooltipsDataLoaderQueryResponse = {
+            artists: [],
+            genes: [],
+          }
           Object.keys(readyState.props || {}).forEach(key => {
             const col = readyState.props[key]
             data[key] = keyBy(col, "id")

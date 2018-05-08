@@ -36,7 +36,12 @@ storiesOf("Publishing/ToolTips", module)
               url="https://artsy.net/gene/art-nouveau"
               node={"p"}
             >
-              art-nouveau
+              Art Nouveau
+            </LinkWithTooltip>
+          </div>
+          <div>
+            <LinkWithTooltip url="https://artsy.net/gene/art-deco" node={"p"}>
+              Art Deco
             </LinkWithTooltip>
           </div>
         </TooltipsDataLoader>

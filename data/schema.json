@@ -203,7 +203,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description": null,
+                  "description": "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -1153,6 +1153,47 @@
                 "kind": "OBJECT",
                 "name": "Gene",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "genes",
+              "description": "A list of Genes",
+              "args": [
+                {
+                  "name": "size",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "slugs",
+                  "description": "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Gene",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -5183,6 +5224,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "in_editorial_feed",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -9891,7 +9942,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason": "This field no longer exists, this is for backwards compatability"
+              "deprecationReason": "This field no longer exists, this is for backwards compatibility"
             },
             {
               "name": "is_linkable",
@@ -10118,7 +10169,7 @@
         {
           "kind": "OBJECT",
           "name": "Category",
-          "description": null,
+          "description": "Fields of partner category (currently from Gravity).",
           "fields": [
             {
               "name": "id",
@@ -12407,6 +12458,18 @@
             },
             {
               "name": "is_published",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "is_followed",
               "description": null,
               "args": [],
               "type": {
@@ -24413,6 +24476,18 @@
               "deprecationReason": null
             },
             {
+              "name": "is_followed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "mode",
               "description": null,
               "args": [],
@@ -26241,7 +26316,7 @@
             },
             {
               "name": "collector_profile",
-              "description": null,
+              "description": "A collector profile.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -26789,6 +26864,26 @@
               "deprecationReason": null
             },
             {
+              "name": "recentlyViewedArtworkIds",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "recentlyViewedArtworks",
               "description": "A list of the current user’s recently viewed artworks.",
               "args": [
@@ -27186,7 +27281,7 @@
             },
             {
               "name": "artist_id",
-              "description": null,
+              "description": "The gravity ID for an Artist",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -30049,7 +30144,7 @@
         {
           "kind": "OBJECT",
           "name": "Delivery",
-          "description": null,
+          "description": "Fields of a delivery (currently from Radiation)",
           "fields": [
             {
               "name": "id",
@@ -30264,7 +30359,7 @@
         {
           "kind": "OBJECT",
           "name": "Attachment",
-          "description": null,
+          "description": "Fields of an attachment (currently from Radiation)",
           "fields": [
             {
               "name": "id",
@@ -30339,7 +30434,7 @@
         {
           "kind": "OBJECT",
           "name": "Invoice",
-          "description": null,
+          "description": "Fields of an invoice (currently from Lewitt)",
           "fields": [
             {
               "name": "__id",
@@ -31726,6 +31821,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "in_editorial_feed",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -35156,6 +35261,18 @@
               "deprecationReason": null
             },
             {
+              "name": "is_followed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "mode",
               "description": null,
               "args": [],
@@ -36676,7 +36793,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description": null,
+                  "description": "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -37626,6 +37743,47 @@
                 "kind": "OBJECT",
                 "name": "Gene",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "genes",
+              "description": "A list of Genes",
+              "args": [
+                {
+                  "name": "size",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "slugs",
+                  "description": "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Gene",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -39011,7 +39169,7 @@
             },
             {
               "name": "createCreditCard",
-              "description": null,
+              "description": "Create a credit card",
               "args": [
                 {
                   "name": "input",
@@ -39038,7 +39196,7 @@
             },
             {
               "name": "followArtist",
-              "description": null,
+              "description": "Follow (or unfollow) an artist",
               "args": [
                 {
                   "name": "input",
@@ -39065,7 +39223,7 @@
             },
             {
               "name": "followGene",
-              "description": null,
+              "description": "Follow (or unfollow) an gene",
               "args": [
                 {
                   "name": "input",
@@ -39092,7 +39250,7 @@
             },
             {
               "name": "updateCollectorProfile",
-              "description": null,
+              "description": "Updating a collector profile (loyalty applicant status).",
               "args": [
                 {
                   "name": "input",
@@ -39173,7 +39331,7 @@
             },
             {
               "name": "updateOrder",
-              "description": null,
+              "description": "Update an order",
               "args": [
                 {
                   "name": "input",
@@ -39200,7 +39358,7 @@
             },
             {
               "name": "submitOrder",
-              "description": null,
+              "description": "Submit an order with payment",
               "args": [
                 {
                   "name": "input",
@@ -39543,12 +39701,12 @@
           "description": null,
           "fields": [
             {
-              "name": "position",
+              "name": "result",
               "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "BidderPosition",
+                "name": "BidderPositionMutationResult",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -39561,6 +39719,69 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "BidderPositionMutationResult",
+          "description": null,
+          "fields": [
+            {
+              "name": "status",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "message_header",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "message_description_md",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "position",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "BidderPosition",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -42160,7 +42381,7 @@
           "inputFields": [
             {
               "name": "artist_id",
-              "description": null,
+              "description": "The gravity ID for an Artist",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -42434,7 +42655,7 @@
             },
             {
               "name": "artist_id",
-              "description": null,
+              "description": "The gravity ID for an Artist",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
