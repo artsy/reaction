@@ -6,7 +6,7 @@ import styled from "styled-components"
 import Colors from "Assets/Colors"
 interface Props {
   url: string
-  node: any
+  showMarketData?: boolean
 }
 
 interface State {
@@ -47,10 +47,15 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   render() {
     const toolTipData = this.entityTypeToEntity()
+    const { showMarketData } = this.props
 
     const toolTip = toolTipData ? (
       <div>
-        <ToolTip entity={toolTipData.entity} model={toolTipData.entityType} />
+        <ToolTip
+          entity={toolTipData.entity}
+          model={toolTipData.entityType}
+          showMarketData={showMarketData}
+        />
       </div>
     ) : (
       <div />

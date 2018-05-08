@@ -48,6 +48,7 @@ export class StandardLayout extends React.Component<
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
       showTooltips,
+      showToolTipMarketData,
     } = this.props
     const { isTruncated } = this.state
 
@@ -87,6 +88,7 @@ export class StandardLayout extends React.Component<
                       article={article}
                       isMobile={isMobile}
                       showTooltips={showTooltips}
+                      showToolTipMarketData={showToolTipMarketData}
                     />
                     <Sidebar
                       emailSignupUrl={emailSignupUrl}
