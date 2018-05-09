@@ -7,25 +7,23 @@ import {
 } from "react-relay"
 import { FollowButton } from "./Button"
 import * as Artsy from "../Artsy"
-import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
+import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
 
-interface Props
-  extends React.HTMLProps<FollowArtistButton>,
-    Artsy.ContextProps {
+interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   relay?: RelayProp
-  artist?: FollowArtistButton_artist
+  gene?: FollowGeneButton_gene
 }
 
-export class FollowArtistButton extends React.Component<Props> {
+export class FollowGeneButton extends React.Component<Props> {
   handleFollow = () => {
-    const { artist, currentUser, relay } = this.props
+    const { gene, currentUser, relay } = this.props
 
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
-          mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
-            followArtist(input: $input) {
-              artist {
+          mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
+            followGene(input: $input) {
+              gene {
                 is_followed
               }
             }
@@ -33,15 +31,15 @@ export class FollowArtistButton extends React.Component<Props> {
         `,
         variables: {
           input: {
-            artist_id: artist.id,
-            unfollow: artist.is_followed,
+            gene_id: gene.id,
+            unfollow: gene.is_followed,
           },
         },
         optimisticResponse: {
-          followArtist: {
-            artist: {
-              __id: artist.__id,
-              is_followed: !artist.is_followed,
+          followGene: {
+            gene: {
+              __id: gene.__id,
+              is_followed: !gene.is_followed,
             },
           },
         },
@@ -53,11 +51,11 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 
   render() {
-    const { artist } = this.props
+    const { gene } = this.props
 
     return (
       <FollowButton
-        isFollowed={artist && artist.is_followed}
+        isFollowed={gene && gene.is_followed}
         handleFollow={this.handleFollow}
       />
     )
@@ -65,9 +63,9 @@ export class FollowArtistButton extends React.Component<Props> {
 }
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(FollowArtistButton),
+  Artsy.ContextConsumer(FollowGeneButton),
   graphql`
-    fragment FollowArtistButton_artist on Artist {
+    fragment FollowGeneButton_gene on Gene {
       __id
       id
       is_followed
