@@ -90,12 +90,25 @@ storiesOf("Components/Input", module)
       <div style={{ padding: 10 }}>
         <Checkbox>Remember me</Checkbox>
       </div>
+
       <div style={{ padding: 10 }}>
         <Checkbox checked>Remember me</Checkbox>
       </div>
+
+      <div style={{ padding: 10 }}>
+        <Checkbox error>Remember me</Checkbox>
+      </div>
+
+      <div style={{ padding: 10 }}>
+        <Checkbox error checked>
+          Remember me
+        </Checkbox>
+      </div>
+
       <div style={{ padding: 10 }}>
         <Checkbox disabled>Remember me</Checkbox>
       </div>
+
       <div style={{ padding: 10 }}>
         <Checkbox checked disabled>
           Remember me

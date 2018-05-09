@@ -1,16 +1,18 @@
-import React, { Component, HTMLProps } from "react"
+import React, { Component } from "react"
 
-import Checkbox from "../Checkbox"
+import Checkbox, { CheckboxProps } from "../Checkbox"
 
 import styled from "styled-components"
 import colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
 
-export class ForSaleCheckbox extends Component<HTMLProps<Checkbox>, null> {
+export class ForSaleCheckbox extends Component<CheckboxProps, null> {
   render() {
+    const { ref, ...remainderProps } = this.props
+
     return (
       <CheckboxContainer>
-        <Checkbox {...this.props}>Only for Sale</Checkbox>
+        <Checkbox {...remainderProps}>Only for Sale</Checkbox>
       </CheckboxContainer>
     )
   }
