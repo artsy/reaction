@@ -8,6 +8,7 @@ interface Props {
   entity: object
   model: string
   showMarketData?: boolean
+  onHovered?: (hovered: boolean) => void
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -34,9 +35,13 @@ export class ToolTip extends React.Component<Props> {
 
   render() {
     if (!this.props.entity) return null
+    const onHovered = this.props.onHovered
 
     return (
-      <ToolTipContainer>
+      <ToolTipContainer
+        onMouseEnter={() => onHovered && onHovered(true)}
+        onMouseLeave={() => onHovered && onHovered(false)}
+      >
         {this.getToolTip()}
         <ArrowDown />
       </ToolTipContainer>
