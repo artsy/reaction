@@ -1,57 +1,103 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
+import renderer from "react-test-renderer"
 import React from "react"
 import { FollowButton } from "../Button"
+import { FollowArtistButton } from "../FollowArtistButton"
+import { FollowGeneButton } from "../FollowGeneButton"
 
 describe("FollowButton", () => {
   const getWrapper = props => {
     return mount(<FollowButton {...props} />)
   }
 
-  let props
-  beforeEach(() => {
-    props = {
-      handleFollow: jest.fn(),
-      isFollowed: false,
-    }
+  let props = {
+    handleFollow: jest.fn(),
+    isFollowed: false,
+  }
+
+  describe("snapshots", () => {
+    it("Renders FollowButton properly", () => {
+      const component = renderer.create(<FollowButton {...props} />).toJSON()
+      expect(component).toMatchSnapshot()
+    })
+
+    it("Renders FollowArtistButton properly", () => {
+      const component = renderer
+        .create(
+          <FollowArtistButton
+            artist={{
+              id: "damon-zucconi",
+              __id: "1234",
+              is_followed: false,
+            }}
+          />
+        )
+        .toJSON()
+      expect(component).toMatchSnapshot()
+    })
+
+    it("Renders FollowGeneButton properly", () => {
+      const component = renderer
+        .create(
+          <FollowGeneButton
+            gene={{
+              id: "brooklyn-artists",
+              __id: "1234",
+              is_followed: false,
+            }}
+          />
+        )
+        .toJSON()
+      expect(component).toMatchSnapshot()
+    })
   })
 
-  describe("CTA text", () => {
-    it("Reads 'follow' if isFollowed is false", () => {
-      const component = getWrapper(props)
-      expect(component.text()).toMatch("Follow")
+  describe("unit", () => {
+    beforeEach(() => {
+      props = {
+        handleFollow: jest.fn(),
+        isFollowed: false,
+      }
     })
 
-    it("Reads 'Following' if props.isFollowed", () => {
-      props.isFollowed = true
-      const component = getWrapper(props)
-      expect(component.text()).toMatch("Following")
+    describe("CTA text", () => {
+      it("Reads 'follow' if isFollowed is false", () => {
+        const component = getWrapper(props)
+        expect(component.text()).toMatch("Follow")
+      })
+
+      it("Reads 'Following' if props.isFollowed", () => {
+        props.isFollowed = true
+        const component = getWrapper(props)
+        expect(component.text()).toMatch("Following")
+      })
+
+      it("Reads 'Unfollow' if props.isFollowed and state.showUnfollow", () => {
+        props.isFollowed = true
+        const component = getWrapper(props)
+        component.setState({ showUnfollow: true })
+        expect(component.text()).toMatch("Unfollow")
+      })
     })
 
-    it("Reads 'Unfollow' if props.isFollowed and state.showUnfollow", () => {
-      props.isFollowed = true
+    it("Calls props.handleFollow onClick", () => {
+      const component = getWrapper(props)
+      component.simulate("click")
+      expect(props.handleFollow).toBeCalled()
+    })
+
+    it("Sets state.showUnfollow on onMouseEnter", () => {
+      const component = getWrapper(props)
+      component.simulate("mouseEnter")
+      expect(component.state().showUnfollow).toBe(true)
+    })
+
+    it("Sets state.showUnfollow on onMouseLeave", () => {
       const component = getWrapper(props)
       component.setState({ showUnfollow: true })
-      expect(component.text()).toMatch("Unfollow")
+      component.simulate("mouseLeave")
+      expect(component.state().showUnfollow).toBeFalsy()
     })
-  })
-
-  it("Calls props.handleFollow onClick", () => {
-    const component = getWrapper(props)
-    component.simulate("click")
-    expect(props.handleFollow).toBeCalled()
-  })
-
-  it("Sets state.showUnfollow on onMouseEnter", () => {
-    const component = getWrapper(props)
-    component.simulate("mouseEnter")
-    expect(component.state().showUnfollow).toBe(true)
-  })
-
-  it("Sets state.showUnfollow on onMouseLeave", () => {
-    const component = getWrapper(props)
-    component.setState({ showUnfollow: true })
-    component.simulate("mouseLeave")
-    expect(component.state().showUnfollow).toBeFalsy()
   })
 })
