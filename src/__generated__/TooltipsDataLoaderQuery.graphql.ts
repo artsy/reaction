@@ -3,9 +3,16 @@
 import { ConcreteRequest } from "relay-runtime"
 export type TooltipsDataLoaderQueryVariables = {
   readonly artistSlugs?: ReadonlyArray<string> | null
+  readonly geneSlugs?: ReadonlyArray<string> | null
 }
 export type TooltipsDataLoaderQueryResponse = {
   readonly artists: ReadonlyArray<
+    | ({
+        readonly id: string
+      })
+    | null
+  > | null
+  readonly genes: ReadonlyArray<
     | ({
         readonly id: string
       })
@@ -16,10 +23,16 @@ export type TooltipsDataLoaderQueryResponse = {
 /*
 query TooltipsDataLoaderQuery(
   $artistSlugs: [String!]
+  $geneSlugs: [String!]
 ) {
   artists(slugs: $artistSlugs) {
     id
     ...ArtistToolTip_artist
+    __id
+  }
+  genes(slugs: $geneSlugs) {
+    id
+    ...GeneToolTip_gene
     __id
   }
 }
@@ -68,6 +81,18 @@ fragment ArtistToolTip_artist on Artist {
   }
   __id
 }
+
+fragment GeneToolTip_gene on Gene {
+  description
+  href
+  image {
+    cropped(width: 240, height: 160) {
+      url
+    }
+  }
+  name
+  __id
+}
 */
 
 const node: ConcreteRequest = (function() {
@@ -75,6 +100,12 @@ const node: ConcreteRequest = (function() {
       {
         kind: "LocalArgument",
         name: "artistSlugs",
+        type: "[String!]",
+        defaultValue: null,
+      },
+      {
+        kind: "LocalArgument",
+        name: "geneSlugs",
         type: "[String!]",
         defaultValue: null,
       },
@@ -101,7 +132,29 @@ const node: ConcreteRequest = (function() {
       args: null,
       storageKey: null,
     },
-    v4 = {
+    v4 = [
+      {
+        kind: "Variable",
+        name: "slugs",
+        variableName: "geneSlugs",
+        type: "[String]",
+      },
+    ],
+    v5 = {
+      kind: "ScalarField",
+      alias: null,
+      name: "url",
+      args: null,
+      storageKey: null,
+    },
+    v6 = {
+      kind: "ScalarField",
+      alias: null,
+      name: "href",
+      args: null,
+      storageKey: null,
+    },
+    v7 = {
       kind: "ScalarField",
       alias: null,
       name: "name",
@@ -114,7 +167,7 @@ const node: ConcreteRequest = (function() {
     name: "TooltipsDataLoaderQuery",
     id: null,
     text:
-      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n',
+      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    ...GeneToolTip_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  image {\n    cropped(width: 240, height: 160) {\n      url\n    }\n  }\n  name\n  __id\n}\n',
     metadata: {},
     fragment: {
       kind: "Fragment",
@@ -136,6 +189,24 @@ const node: ConcreteRequest = (function() {
             {
               kind: "FragmentSpread",
               name: "ArtistToolTip_artist",
+              args: null,
+            },
+            v3,
+          ],
+        },
+        {
+          kind: "LinkedField",
+          alias: null,
+          name: "genes",
+          storageKey: null,
+          args: v4,
+          concreteType: "Gene",
+          plural: true,
+          selections: [
+            v2,
+            {
+              kind: "FragmentSpread",
+              name: "GeneToolTip_gene",
               args: null,
             },
             v3,
@@ -191,13 +262,7 @@ const node: ConcreteRequest = (function() {
                       concreteType: "ResizedImageUrl",
                       plural: false,
                       selections: [
-                        {
-                          kind: "ScalarField",
-                          alias: null,
-                          name: "url",
-                          args: null,
-                          storageKey: null,
-                        },
+                        v5,
                         {
                           kind: "ScalarField",
                           alias: null,
@@ -226,13 +291,7 @@ const node: ConcreteRequest = (function() {
               args: null,
               storageKey: null,
             },
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "href",
-              args: null,
-              storageKey: null,
-            },
+            v6,
             {
               kind: "ScalarField",
               alias: null,
@@ -240,7 +299,7 @@ const node: ConcreteRequest = (function() {
               args: null,
               storageKey: null,
             },
-            v4,
+            v7,
             {
               kind: "ScalarField",
               alias: null,
@@ -410,8 +469,64 @@ const node: ConcreteRequest = (function() {
               args: null,
               concreteType: "Gene",
               plural: true,
-              selections: [v4, v3],
+              selections: [v7, v3],
             },
+            v3,
+          ],
+        },
+        {
+          kind: "LinkedField",
+          alias: null,
+          name: "genes",
+          storageKey: null,
+          args: v4,
+          concreteType: "Gene",
+          plural: true,
+          selections: [
+            v2,
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "description",
+              args: null,
+              storageKey: null,
+            },
+            v6,
+            {
+              kind: "LinkedField",
+              alias: null,
+              name: "image",
+              storageKey: null,
+              args: null,
+              concreteType: "Image",
+              plural: false,
+              selections: [
+                {
+                  kind: "LinkedField",
+                  alias: null,
+                  name: "cropped",
+                  storageKey: "cropped(height:160,width:240)",
+                  args: [
+                    {
+                      kind: "Literal",
+                      name: "height",
+                      value: 160,
+                      type: "Int!",
+                    },
+                    {
+                      kind: "Literal",
+                      name: "width",
+                      value: 240,
+                      type: "Int!",
+                    },
+                  ],
+                  concreteType: "CroppedImageUrl",
+                  plural: false,
+                  selections: [v5],
+                },
+              ],
+            },
+            v7,
             v3,
           ],
         },
@@ -419,5 +534,5 @@ const node: ConcreteRequest = (function() {
     },
   }
 })()
-;(node as any).hash = "31feb2591c5deb76227613e0e0480b74"
+;(node as any).hash = "856e84fb67615c7edb111e056c0c5e5a"
 export default node

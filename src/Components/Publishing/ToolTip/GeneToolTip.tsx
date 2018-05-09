@@ -1,23 +1,18 @@
 import styled from "styled-components"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
 import { FollowButton } from "../../FollowButton/Button"
 import { ToolTipDescription } from "./Components/Description"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
+import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 
 export interface GeneProps {
-  description?: string
-  href?: string
-  image?: {
-    cropped: {
-      url: string
-    }
-  }
-  name?: string
+  gene: GeneToolTip_gene
 }
 
 export const GeneToolTip: React.SFC<GeneProps> = props => {
-  const { description, href, image, name } = props
+  const { description, href, image, name } = props.gene
   const {
     cropped: { url },
   } = image
@@ -68,3 +63,19 @@ export const ToolTipFooter = styled.div`
     flex-direction: column;
   }
 `
+
+export const GeneToolTipContainer = createFragmentContainer(
+  GeneToolTip,
+  graphql`
+    fragment GeneToolTip_gene on Gene {
+      description
+      href
+      image {
+        cropped(width: 240, height: 160) {
+          url
+        }
+      }
+      name
+    }
+  `
+)

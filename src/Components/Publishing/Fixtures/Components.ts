@@ -644,18 +644,22 @@ export const FeatureText = flatten([
   StandardText,
 ])
 
-export const Gene: GeneProps = {
-  name: "Capitalist Realism",
-  image: {
-    cropped: {
-      url:
-        "https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg",
+export const Genes: GeneProps[] = [
+  {
+    gene: {
+      name: "Capitalist Realism",
+      image: {
+        cropped: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg",
+        },
+      },
+      href: "gene/capitalist-realism",
+      description:
+        "_“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —[Gerhard Richter](/artist/gerhard-richter)_\n\nCapitalist Realism was launched in 1963 in Germany by the artists [Gerhard Richter](/artist/gerhard-richter), [Sigmar Polke](/artist/sigmar-polke), and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of [Pop Art](/gene/pop-art), with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of [Socialist Realism](/gene/socialist-realism). The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.",
     },
   },
-  href: "gene/capitalist-realism",
-  description:
-    "_“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —[Gerhard Richter](/artist/gerhard-richter)_\n\nCapitalist Realism was launched in 1963 in Germany by the artists [Gerhard Richter](/artist/gerhard-richter), [Sigmar Polke](/artist/sigmar-polke), and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of [Pop Art](/gene/pop-art), with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of [Socialist Realism](/gene/socialist-realism). The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.",
-}
+]
 
 export const Artists: ArtistToolTipProps[] = [
   {

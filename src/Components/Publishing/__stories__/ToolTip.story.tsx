@@ -1,10 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Gene } from "../Fixtures/Components"
-import { StandardArticle } from "../Fixtures/Articles"
-import { ToolTip } from "../ToolTip/ToolTip"
 import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
 import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
+import { StandardArticle } from "../Fixtures/Articles"
 
 storiesOf("Publishing/ToolTips", module)
   .add("Artist: bio", () => {
@@ -64,8 +62,19 @@ storiesOf("Publishing/ToolTips", module)
   })
   .add("Gene", () => {
     return (
-      <div style={{ maxWidth: 580, margin: "0 auto" }}>
-        <ToolTip entity={Gene} model="gene" />
+      <div style={{ maxWidth: 580, margin: "350px auto" }}>
+        <TooltipsDataLoader article={StandardArticle}>
+          <div>
+            <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
+              Art Nouveau
+            </LinkWithTooltip>
+          </div>
+          <div>
+            <LinkWithTooltip url="https://artsy.net/gene/art-deco">
+              Art Deco
+            </LinkWithTooltip>
+          </div>
+        </TooltipsDataLoader>
       </div>
     )
   })

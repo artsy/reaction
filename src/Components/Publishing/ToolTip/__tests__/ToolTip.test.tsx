@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Gene, Artists } from "../../Fixtures/Components"
+import { Genes, Artists } from "../../Fixtures/Components"
 import { ArtistToolTip } from "../ArtistToolTip"
 import { GeneToolTip } from "../GeneToolTip"
 import { ToolTip } from "../ToolTip"
@@ -18,7 +18,7 @@ describe("ToolTip", () => {
 
     it("Renders a gene properly", () => {
       const component = renderer
-        .create(<ToolTip model="gene" entity={Gene} />)
+        .create(<ToolTip model="gene" entity={Genes[0].gene} />)
         .toJSON()
       expect(component).toMatchSnapshot()
     })
@@ -33,8 +33,8 @@ describe("ToolTip", () => {
   })
 
   it("Renders a gene", () => {
-    const component = mount(<ToolTip model="gene" entity={Gene} />)
+    const component = mount(<ToolTip model="gene" entity={Genes[0].gene} />)
     expect(component.find(GeneToolTip).length).toBe(1)
-    expect(component.text()).toMatch(Gene.name)
+    expect(component.text()).toMatch(Genes[0].gene.name)
   })
 })
