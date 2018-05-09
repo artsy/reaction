@@ -125,6 +125,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "formik": "^0.11.11",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
@@ -135,6 +136,7 @@
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
+    "react-html-parser": "^2.0.2",
     "react-lines-ellipsis": "^0.8.0",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",

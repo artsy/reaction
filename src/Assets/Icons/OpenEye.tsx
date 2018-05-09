@@ -1,12 +1,14 @@
 import React from "react"
+import styled from "styled-components"
 
 export const OpenEye = props => {
   return (
-    <svg
+    <StyledOpenEye
       width={props.width || 20}
       height={props.height || 20}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 12 12"
+      className={props.className}
     >
       <path
         fill="#c2c2c2"
@@ -16,6 +18,10 @@ export const OpenEye = props => {
         fill="#c2c2c2"
         d="M6,4.5A1.5,1.5,0,1,0,7.5,6,1.5,1.5,0,0,0,6,4.5Z"
       />
-    </svg>
+    </StyledOpenEye>
   )
 }
+
+const StyledOpenEye = styled.svg`
+  vertical-align: middle;
+`

@@ -15,7 +15,7 @@ interface State extends React.HTMLProps<HTMLFormElement> {
   mode?: Mode
 }
 
-class AuthForm extends React.Component<Props, State> {
+export class AuthForm extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
   }
@@ -34,10 +34,6 @@ class AuthForm extends React.Component<Props, State> {
     }
   }
 
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = e => {
-    return true
-  }
-
   render() {
     let Form: FormComponentType
     switch (this.state.mode) {
@@ -53,14 +49,21 @@ class AuthForm extends React.Component<Props, State> {
       default:
         throw new Error(`${this.state.mode} mode needs a component`)
     }
+
+    const { values } = this.props
+    const defaultValues = {
+      email: values.email || "",
+      password: values.password || "",
+      name: values.name || "",
+      acceptedTermsOfService: values.acceptedTermsOfService || false,
+    }
+
     return (
       <Form
-        values={this.props.values}
+        values={defaultValues}
         handleChangeMode={this.handleChangeMode}
         handleSubmit={this.props.handleSubmit}
       />
     )
   }
 }
-
-export default AuthForm

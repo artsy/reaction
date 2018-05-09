@@ -1,10 +1,10 @@
-import { Field } from "../../support"
-import InvertedButton from "../../../Buttons/Inverted"
 import React, { Fragment } from "react"
+import { Row, Col } from "react-styled-flexboxgrid"
 import Text from "../../../Text"
 import Title from "../../../Title"
-import colors from "../../../../Assets/Colors"
-import { Grid, Row, Col } from "react-styled-flexboxgrid"
+import InvertedButton from "../../../Buttons/Inverted"
+import { Field } from "../../support"
+import { StyledGrid as Grid, Contact } from "./common"
 import { WizardStepChildProps } from "../../../Wizard/types"
 
 export const ShippingForm: React.SFC<WizardStepChildProps> = ({
@@ -15,12 +15,12 @@ export const ShippingForm: React.SFC<WizardStepChildProps> = ({
     <Grid fluid>
       <Row>
         <Col xs>
-          <Title titleSize="medium">Shipping details</Title>
+          <Title titleSize="small">Shipping details</Title>
         </Col>
       </Row>
       <Row>
         <Col xs>
-          <Text textSize="medium">
+          <Text style={{ lineHeight: 1.63 }} textSize="medium">
             Upon processing your order, an Artsy Specialist will connect you
             with the seller for shipping arrangements. Any shipping fees will be
             collected at that time.
@@ -44,10 +44,7 @@ export const ShippingForm: React.SFC<WizardStepChildProps> = ({
       </Row>
       <Row>
         <Col xs>
-          <Text color={colors.graySemibold} textSize="medium" align="center">
-            Questions? Email{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net.</a>
-          </Text>
+          <Contact />
         </Col>
       </Row>
     </Grid>
@@ -63,7 +60,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             name={billing ? "billingFullName" : "fullName"}
             type="text"
-            placeholder="Full Name"
+            title="Full Name"
+            placeholder="Enter your full name"
             block
           />
         </Col>
@@ -72,7 +70,8 @@ export const AddressFormInputs = ({ billing = false }) => {
         <Col xs>
           <Field
             name={billing ? "billingAddressLine1" : "addressLine1"}
-            placeholder="Address Line 1"
+            title="Address Line 1"
+            placeholder="Enter your street address"
             block
           />
         </Col>
@@ -82,7 +81,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             name={billing ? "billingAddressLine2" : "addressLine2"}
             type="text"
-            placeholder="Address Line 2 (Optional)"
+            title="Address Line 2 (Optional)"
+            placeholder="Enter your apt, floor, suite, etc"
             block
           />
         </Col>
@@ -92,7 +92,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             name={billing ? "billingCity" : "city"}
             type="text"
-            placeholder="City"
+            title="City"
+            placeholder="Enter your city"
             block
           />
         </Col>
@@ -100,7 +101,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             name={billing ? "billingState" : "state"}
             type="text"
-            placeholder="State / Province / Region"
+            title="State, province, or region"
+            placeholder="Enter your state, province, or region"
             block
           />
         </Col>
@@ -110,7 +112,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             type="text"
             name={billing ? "billingPostalCode" : "postalCode"}
-            placeholder="Postal Code"
+            title="Postal code"
+            placeholder="Enter your postal Code"
             block
           />
         </Col>
@@ -118,7 +121,8 @@ export const AddressFormInputs = ({ billing = false }) => {
           <Field
             type="text"
             name={billing ? "billingCountry" : "country"}
-            placeholder="Country"
+            title="Country"
+            placeholder="Select your country"
             block
           />
         </Col>

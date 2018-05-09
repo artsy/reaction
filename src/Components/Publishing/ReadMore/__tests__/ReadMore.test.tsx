@@ -3,6 +3,7 @@ import "jest-styled-components"
 import { extend } from "lodash"
 import React from "react"
 import { StandardArticle } from "../../Fixtures/Articles"
+import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
 import { Sections } from "../../Sections/Sections"
 import { ReadMoreWrapper } from "../ReadMoreWrapper"
 
@@ -19,25 +20,27 @@ describe("ReadMore", () => {
   })
 
   it("finds the optimal truncation height", () => {
-    const readMore = (
+    const readMore = WrapperWithFullscreenContext(
       <ReadMoreWrapper isTruncated hideButton={jest.fn()}>
         <Sections article={StandardArticle} />
       </ReadMoreWrapper>
     )
     const viewer = mount(readMore)
+      .childAt(0)
+      .instance()
     jest.runAllTimers()
-    expect(viewer.state().truncationHeight).toEqual(200)
+    expect(viewer.state.truncationHeight).toEqual(200)
   })
 
   it("shows the whole article when not truncated", () => {
-    const readMore = (
+    const readMore = WrapperWithFullscreenContext(
       <ReadMoreWrapper isTruncated={false} hideButton={jest.fn()}>
         <Sections article={StandardArticle} />
       </ReadMoreWrapper>
     )
     const viewer = mount(readMore)
     jest.runAllTimers()
-    expect(viewer.state().truncationHeight).toEqual("100%")
+    expect(viewer.childAt(0).instance().state.truncationHeight).toEqual("100%")
     expect(
       viewer
         .find("div")
@@ -59,14 +62,16 @@ describe("ReadMore", () => {
       ],
     })
     const hideButton = jest.fn()
-    const readMore = (
+    const readMore = WrapperWithFullscreenContext(
       <ReadMoreWrapper isTruncated hideButton={hideButton}>
-        <Sections article={smallArticle} />
+        WrapperWithFullscreenContext(<Sections article={smallArticle} />)
       </ReadMoreWrapper>
     )
     const viewer = mount(readMore)
+      .childAt(0)
+      .instance()
     jest.runAllTimers()
-    expect(viewer.state().truncationHeight).toEqual("100%")
+    expect(viewer.state.truncationHeight).toEqual("100%")
     expect(hideButton).toBeCalled()
   })
 })

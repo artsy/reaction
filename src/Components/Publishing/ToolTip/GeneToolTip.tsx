@@ -1,50 +1,42 @@
 import styled from "styled-components"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
-import Markdown from "react-markdown"
-import { Truncator } from "../Sections/Truncator"
-import { FollowButton } from "./Components/FollowButton"
+import { FollowButton } from "../../FollowButton/Button"
+import { ToolTipDescription } from "./Components/Description"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
+import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 
 export interface GeneProps {
-  description?: string
-  href?: string
-  image?: {
-    cropped: {
-      url: string
-    }
-  }
-  name?: string
+  gene: GeneToolTip_gene
 }
 
 export const GeneToolTip: React.SFC<GeneProps> = props => {
-  const { description, href, image, name } = props
+  const { description, href, image, name } = props.gene
   const {
     cropped: { url },
   } = image
 
   return (
-    <div>
+    <Wrapper>
       <GeneContainer href={href}>
         {url && <Image src={url} />}
         <Title>{name}</Title>
 
-        {description && (
-          <Description>
-            <Truncator maxLineCount={3}>
-              <Markdown source={description} containerTagName="span" />
-            </Truncator>
-          </Description>
-        )}
+        {description && <ToolTipDescription text={description} />}
       </GeneContainer>
 
       <ToolTipFooter>
         <FollowButton /> {/* TODO: Replace with relay follow */}
         <NewFeature />
       </ToolTipFooter>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  width: 240px;
+`
 
 export const GeneContainer = styled.a`
   position: relative;
@@ -55,10 +47,6 @@ export const GeneContainer = styled.a`
 const Title = styled.div`
   ${garamond("s18")};
   font-weight: 600;
-`
-
-const Description = styled.div`
-  ${garamond("s15")};
 `
 
 const Image = styled.img`
@@ -75,3 +63,19 @@ export const ToolTipFooter = styled.div`
     flex-direction: column;
   }
 `
+
+export const GeneToolTipContainer = createFragmentContainer(
+  GeneToolTip,
+  graphql`
+    fragment GeneToolTip_gene on Gene {
+      description
+      href
+      image {
+        cropped(width: 240, height: 160) {
+          url
+        }
+      }
+      name
+    }
+  `
+)

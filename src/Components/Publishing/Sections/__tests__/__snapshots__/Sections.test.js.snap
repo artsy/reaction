@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshots renders properly 1`] = `
+exports[`Sections snapshots renders properly 1`] = `
 .c42 {
   font-family: artsy-icons;
   color: black;
@@ -423,6 +423,7 @@ exports[`snapshots renders properly 1`] = `
 .c2 p,
 .c2 ul,
 .c2 ol,
+.c2 .paragraph,
 .c2 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -435,11 +436,13 @@ exports[`snapshots renders properly 1`] = `
 }
 
 .c2 p:first-child,
+.c2 .paragraph:first-child,
 .c2 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
 .c2 p:last-child,
+.c2 .paragraph:last-child,
 .c2 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
@@ -1184,6 +1187,7 @@ exports[`snapshots renders properly 1`] = `
                   <a
                     className="c20"
                     href="/artist/matt-devine"
+                    target="_self"
                   >
                     Matt Devine
                   </a>
@@ -1223,7 +1227,7 @@ exports[`snapshots renders properly 1`] = `
                       "__html": <span>
                         <file__StyledTextLink
                           color="#999"
-                          href="/partner/joanne-artman-gallery"
+                          href="/joanne-artman-gallery"
                           underline={false}
                         >
                           Joanne Artman Gallery

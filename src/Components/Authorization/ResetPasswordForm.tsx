@@ -1,21 +1,18 @@
 import React from "react"
 import { Formik, FormikProps } from "formik"
 
-import {
-  BlockButton as Button,
-  ChangeMode,
-  FormContainer as Form,
-} from "./commonElements"
+import { ChangeMode, FormContainer as Form } from "./commonElements"
 import Input from "../Input"
 import { FormComponentType, InputValues } from "./Types"
-import { Validators } from "./Validators"
+import { ResetPasswordValidator } from "./Validators"
+import Button from "../Buttons/Inverted"
 
 export const ResetPasswordForm: FormComponentType = props => {
   return (
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={Validators}
+      validationSchema={ResetPasswordValidator}
     >
       {({
         values,
@@ -25,6 +22,7 @@ export const ResetPasswordForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        isValid,
       }: FormikProps<InputValues>) => {
         return (
           <Form onSubmit={handleSubmit}>
@@ -32,16 +30,17 @@ export const ResetPasswordForm: FormComponentType = props => {
               block
               quick
               error={touched.email && errors.email}
+              placeholder="Enter your email address"
               name="email"
-              placeholder="Email"
+              label="Email"
               type="email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
             />
             {/* touched.email && errors.email && <div>{errors.email}</div */}
-            <Button type="submit" disabled={isSubmitting}>
-              Log In
+            <Button block type="submit" disabled={isSubmitting}>
+              Send Reset Instructions
             </Button>
             <ChangeMode handleClick={props.handleChangeMode("login")}>
               Log In

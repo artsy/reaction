@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ToolTip snapshots Renders properly 1`] = `
-.c6 {
+exports[`ToolTip snapshots Renders a gene properly 1`] = `
+.c7 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -21,9 +21,24 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: black;
+  cursor: pointer;
 }
 
-.c8 {
+.c7:hover {
+  border-color: black;
+  background: black;
+  color: white;
+}
+
+.c5 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c9 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 10px;
@@ -31,7 +46,7 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   color: #cccccc;
 }
 
-.c8 a {
+.c9 a {
   color: #cccccc;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -40,13 +55,17 @@ exports[`ToolTip snapshots Renders properly 1`] = `
 }
 
 .c1 {
+  width: 240px;
+}
+
+.c2 {
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
 }
 
-.c3 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 1.4em;
@@ -54,19 +73,12 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   font-weight: 600;
 }
 
-.c4 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.c2 {
+.c3 {
   width: 100%;
   margin-bottom: 10px;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,7 +93,7 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   align-items: center;
 }
 
-.c5 .c7 {
+.c6 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -91,11 +103,11 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   flex-direction: column;
 }
 
-.c10 {
+.c11 {
   position: relative;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   left: 0;
   top: 0;
@@ -107,7 +119,7 @@ exports[`ToolTip snapshots Renders properly 1`] = `
   z-index: 1;
 }
 
-.c12 {
+.c13 {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -121,15 +133,17 @@ exports[`ToolTip snapshots Renders properly 1`] = `
 }
 
 .c0 {
-  position: relative;
-  width: 240px;
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
   padding: 20px;
   background: white;
   margin-bottom: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   bottom: -15px;
   left: calc(50% - 30px);
 }
@@ -137,46 +151,51 @@ exports[`ToolTip snapshots Renders properly 1`] = `
 <div
   className="c0"
 >
-  <div>
+  <div
+    className="c1"
+  >
     <a
-      className="c1"
+      className="c2"
       href="gene/capitalist-realism"
     >
       <img
-        className="c2"
+        className="c3"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg"
       />
       <div
-        className="c3"
+        className="c4"
       >
         Capitalist Realism
       </div>
       <div
-        className="c4"
+        className="c5"
       >
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —<a href=\\"/artist/gerhard-richter\\">Gerhard Richter</a></em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists <a href=\\"/artist/gerhard-richter\\">Gerhard Richter</a>, <a href=\\"/artist/sigmar-polke\\">Sigmar Polke</a>, and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of <a href=\\"/gene/pop-art\\">Pop Art</a>, with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of <a href=\\"/gene/socialist-realism\\">Socialist Realism</a>. The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
+              "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —</em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists , , and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of , with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of . The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
             }
           }
         />
       </div>
     </a>
     <div
-      className="c5"
+      className="c6"
     >
       <div
-        className="c6"
+        className="c7"
+        onClick={undefined}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         Follow
       </div>
        
       <div
-        className="c7 c8"
+        className="c8 c9"
       >
         <span>
-          This is a new feature.
+          This is a new feature. 
         </span>
         <a
           href="mailto:productfeedback@artsy.net?subject=Feedback"
@@ -188,13 +207,264 @@ exports[`ToolTip snapshots Renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c9 c10"
+    className="c10 c11"
   >
     <div
-      className="c11"
+      className="c12"
     />
     <div
-      className="c12"
+      className="c13"
+    />
+  </div>
+</div>
+`;
+
+exports[`ToolTip snapshots Renders an artist properly 1`] = `
+.c8 {
+  border: 1px solid #e5e5e5;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  width: 80px;
+  height: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  cursor: pointer;
+}
+
+.c8:hover {
+  border-color: black;
+  background: black;
+  color: white;
+}
+
+.c9 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c10 a {
+  color: #cccccc;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
+}
+
+.c1 {
+  width: 320px;
+}
+
+.c2 {
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: black;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 1.4em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c3 {
+  width: 100%;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 {
+  position: relative;
+}
+
+.c13 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid white;
+  z-index: 1;
+}
+
+.c14 {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+}
+
+.c0 {
+  height: 310px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
+  padding: 20px;
+  background: white;
+  margin-bottom: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c0 .c11 {
+  bottom: -15px;
+  left: calc(50% - 30px);
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <a
+      className="c2"
+      href="/artist/nick-mauss"
+    >
+      <div
+        className="c3"
+      >
+        <img
+          height={148}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=152&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg"
+          width={112}
+        />
+        <img
+          height={148}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=258&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F_lnI3nNFEo6D9TFqm2oM1w%2Flarge.jpg"
+          width={190}
+        />
+      </div>
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+          >
+            Nick Mauss
+          </div>
+          <div
+            className="c7"
+          >
+            American, b. 1980
+          </div>
+        </div>
+        <div
+          className="c8"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          Follow
+        </div>
+      </div>
+      <div
+        className="c9"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of  prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
+            }
+          }
+        />
+      </div>
+    </a>
+    <div
+      className="c10"
+    >
+      <span>
+        This is a new feature. 
+      </span>
+      <a
+        href="mailto:productfeedback@artsy.net?subject=Feedback"
+        target="_blank"
+      >
+        Tell us what you think.
+      </a>
+    </div>
+  </div>
+  <div
+    className="c11 c12"
+  >
+    <div
+      className="c13"
+    />
+    <div
+      className="c14"
     />
   </div>
 </div>

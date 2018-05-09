@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`Artwork snapshots renders properly 1`] = `
 .c10 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -207,6 +207,7 @@ exports[`renders properly 1`] = `
           <a
             className="c10"
             href="/artist/fernando-botero"
+            target="_self"
           >
             Fernando Botero
           </a>
@@ -246,7 +247,7 @@ exports[`renders properly 1`] = `
               "__html": <span>
                 <file__StyledTextLink
                   color="#999"
-                  href="/partner/gary-nader"
+                  href="/gary-nader"
                   underline={false}
                 >
                   Gary Nader

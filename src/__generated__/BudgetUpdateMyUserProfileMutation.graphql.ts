@@ -39,6 +39,7 @@ mutation BudgetUpdateMyUserProfileMutation(
   updateMyUserProfile(input: $input) {
     user {
       name
+      __id
     }
   }
 }
@@ -85,6 +86,13 @@ v1 = [
             "name": "name",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -96,7 +104,7 @@ return {
   "operationKind": "mutation",
   "name": "BudgetUpdateMyUserProfileMutation",
   "id": null,
-  "text": "mutation BudgetUpdateMyUserProfileMutation(\n  $input: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $input) {\n    user {\n      name\n    }\n  }\n}\n",
+  "text": "mutation BudgetUpdateMyUserProfileMutation(\n  $input: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $input) {\n    user {\n      name\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

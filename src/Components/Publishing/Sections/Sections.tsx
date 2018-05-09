@@ -16,6 +16,8 @@ interface Props {
   DisplayPanel?: any
   article: ArticleData
   isMobile?: boolean
+  showTooltips?: boolean
+  showToolTipMarketData?: boolean
 }
 
 interface State {
@@ -41,7 +43,10 @@ export class Sections extends Component<Props, State> {
   }
 
   componentWillMount() {
-    const { article: { layout }, isMobile } = this.props
+    const {
+      article: { layout },
+      isMobile,
+    } = this.props
 
     this.injectDisplayPanelMarker = once(this.injectDisplayPanelMarker)
     const shouldInjectMobileDisplay = isMobile && layout !== "feature"
@@ -111,7 +116,9 @@ export class Sections extends Component<Props, State> {
   }
 
   getContentStartIndex = () => {
-    const { article: { layout, sections } } = this.props
+    const {
+      article: { layout, sections },
+    } = this.props
 
     if (layout === "feature") {
       const firstText = sections.findIndex(section => {
@@ -122,7 +129,9 @@ export class Sections extends Component<Props, State> {
   }
 
   getContentEndIndex = () => {
-    const { article: { layout, sections } } = this.props
+    const {
+      article: { layout, sections },
+    } = this.props
 
     if (["feature", "standard"].includes(layout)) {
       const lastText = findLastIndex(sections, section => {
@@ -133,7 +142,7 @@ export class Sections extends Component<Props, State> {
   }
 
   getSection(section, index) {
-    const { article } = this.props
+    const { article, showTooltips, showToolTipMarketData } = this.props
 
     const sections = {
       image_collection: (
@@ -154,6 +163,8 @@ export class Sections extends Component<Props, State> {
           layout={article.layout}
           isContentStart={index === this.getContentStartIndex()}
           isContentEnd={index === this.getContentEndIndex()}
+          showTooltips={showTooltips}
+          showToolTipMarketData={showToolTipMarketData}
         />
       ),
       default: false,
@@ -209,7 +220,9 @@ export class Sections extends Component<Props, State> {
   }
 
   renderAuthors() {
-    const { article: { authors } } = this.props
+    const {
+      article: { authors },
+    } = this.props
 
     if (authors) {
       return (

@@ -1,28 +1,40 @@
 import styled from "styled-components"
 import React from "react"
-import { GeneToolTip } from "./Gene"
+import { ArtistTooltipContainer } from "./ArtistToolTip"
+import { GeneToolTipContainer } from "./GeneToolTip"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
 interface Props {
   entity: object
   model: string
+  showMarketData?: boolean
 }
 
-export class ToolTip extends React.Component<Props, null> {
+export class ToolTip extends React.Component<Props> {
   getToolTip = () => {
-    const { entity, model } = this.props
+    const { entity, model, showMarketData } = this.props
 
     switch (model) {
+      case "artist": {
+        return (
+          <ArtistTooltipContainer
+            showMarketData={showMarketData}
+            artist={entity as any}
+          />
+        )
+      }
       case "gene": {
-        return <GeneToolTip {...entity} />
+        return <GeneToolTipContainer gene={entity as any} />
       }
       default: {
-        return <div />
+        return null
       }
     }
   }
 
   render() {
+    if (!this.props.entity) return null
+
     return (
       <ToolTipContainer>
         {this.getToolTip()}
@@ -33,12 +45,12 @@ export class ToolTip extends React.Component<Props, null> {
 }
 
 export const ToolTipContainer = styled.div`
-  position: relative;
-  width: 240px;
+  height: 310px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
   margin-bottom: 15px;
+  width: fit-content;
   ${ArrowContainer} {
     bottom: -15px;
     left: calc(50% - 30px);

@@ -2,19 +2,15 @@ import React from "react"
 import styled from "styled-components"
 
 import FacebookButton from "../Buttons/Facebook"
-import InvertedButton from "../Buttons/Inverted"
 import Colors from "../../Assets/Colors"
-
+import { garamond } from "../../Assets/Fonts"
 import Checkbox from "../Checkbox"
-
-// FIXME: Are these being used?
-export const inputValidators = {}
-export const StyledFacebookButton = FacebookButton
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0 20px 15px;
+  padding: 0 20px 30px;
+  height: 425px;
 `
 
 const buttonWidth = "100%"
@@ -28,31 +24,40 @@ export const GrayFacebookButton = FacebookButton.extend.attrs({
   margin-top: 0;
   font-size: 12px;
 
+  div {
+    margin: 0px;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+
   &:hover:not(:disabled) {
     background: #fff;
   }
 `
 
-export const BlockButton = props => (
-  <InvertedButton block>{props.children}</InvertedButton>
-)
-
-export const TOSCheckbox = ({ error, errorMessage, value, ...props }) => (
-  <Checkbox {...{ error, errorMessage, checked: value }}>
+export const TOSCheckbox = ({ error, name, onChange, value, ...props }) => (
+  <StyledCheckbox {...{ checked: value, error, onChange, name }}>
     {props.children}
-  </Checkbox>
+  </StyledCheckbox>
 )
 
-interface ModeSelectorProps {
+const StyledCheckbox = styled(Checkbox)`
+  margin-bottom: 5px;
+`
+
+interface ModeSelectorProps extends React.HTMLProps<HTMLAnchorElement> {
   handleClick: any
 }
 
 const ModeSelector: React.SFC<ModeSelectorProps> = props => (
-  <a onClick={props.handleClick} href="#">
+  <a onClick={props.handleClick} href="#" className={props.className}>
     {props.children}
   </a>
 )
 
 export const ChangeMode = styled(ModeSelector)`
-  color: green;
+  color: ${Colors.grayDark};
+  ${garamond("s14")};
 `

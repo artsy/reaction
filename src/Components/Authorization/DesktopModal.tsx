@@ -2,36 +2,24 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import Icon from "../Icon"
 import Modal, { ModalProps } from "../Modal/Modal"
-import Text from "../Text"
 import Colors from "Assets/Colors"
+import { DesktopHeader } from "./DesktopHeader"
 
-const Header = styled.div`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  margin: 20px 0 0;
-`
+export interface DesktopModalProps extends ModalProps {
+  subtitle?: string
+}
 
-const Content = styled.div`
-  box-sizing: border-box;
-  margin: 0px 60px;
-`
-
-const Logo = styled(Icon).attrs({
-  color: "black",
-  fontSize: "34px",
-})`
-  display: block;
-`
-
-const Subtitle = styled(Text).attrs({
-  textSize: "medium",
-  align: "center",
-})`
-  margin: 10px 0 15px 0;
-`
+export class DesktopModal extends Component<DesktopModalProps> {
+  render() {
+    return (
+      <Modal {...this.props}>
+        <CloseButton name="close" onClick={this.props.onClose} />
+        <DesktopHeader subtitle={this.props.subtitle} />
+        <Content>{this.props.children}</Content>
+      </Modal>
+    )
+  }
+}
 
 const CloseButton = styled(Icon).attrs({
   color: Colors.grayRegular,
@@ -40,24 +28,10 @@ const CloseButton = styled(Icon).attrs({
   position: absolute;
   top: 20px;
   right: 15px;
+  cursor: pointer;
 `
 
-export interface DesktopModalProps extends ModalProps {
-  subtitle?: string
-}
-
-export class DesktopModal extends Component<DesktopModalProps> {
-  render() {
-    const subtitle = this.props.subtitle || "The Art World Online"
-    return (
-      <Modal {...this.props}>
-        <Header>
-          <Logo name="logotype" />
-          <Subtitle>{subtitle}</Subtitle>
-          <CloseButton name="close" onClick={this.props.onClose} />
-        </Header>
-        <Content>{this.props.children}</Content>
-      </Modal>
-    )
-  }
-}
+const Content = styled.div`
+  box-sizing: border-box;
+  margin: 0px 60px;
+`

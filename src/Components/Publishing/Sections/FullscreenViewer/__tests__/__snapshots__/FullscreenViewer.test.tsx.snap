@@ -50,6 +50,22 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
+.c8 .title,
+.c8 .title a {
+  font-family: Unica77LLWebMediumItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+.c8 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c6 {
   display: none;
 }
@@ -183,7 +199,8 @@ exports[`renders properly 1`] = `
     flex-direction: column;
   }
 
-  .c8 .title {
+  .c8 .title,
+  .c8 .title a {
     font-family: Unica77LLWebMediumItalic,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -322,6 +339,7 @@ exports[`renders properly 1`] = `
                         <a
                           className="c12"
                           href="/artist/fernando-botero"
+                          target="_self"
                         >
                           Fernando Botero
                         </a>
@@ -338,6 +356,7 @@ exports[`renders properly 1`] = `
                         <a
                           className="c12"
                           href="/artwork/fernando-botero-nude-on-the-beach"
+                          target="_self"
                         >
                           Nude on the Beach
                         </a>
@@ -356,7 +375,8 @@ exports[`renders properly 1`] = `
                     >
                       <a
                         className="c12"
-                        href="/partner/gary-nader"
+                        href="/gary-nader"
+                        target="_self"
                       >
                         Gary Nader
                       </a>

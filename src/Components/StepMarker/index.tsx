@@ -35,11 +35,7 @@ interface MarkLabel {
 }
 
 export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
-  static defaultProps = {
-    disableInternalState: false,
-  }
-
-  constructor(props) {
+  constructor(props: StepMarkerProps) {
     super(props)
     this.state = this.computeStepState(props)
   }
