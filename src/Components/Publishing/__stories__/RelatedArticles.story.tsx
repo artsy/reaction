@@ -4,11 +4,8 @@ import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
 
-storiesOf("Publishing/Related Articles", module)
-  .add("Related Articles Panel", () => {
-    return <RelatedArticlesPanel articles={RelatedPanel} />
-  })
-  .add("Related Articles Canvas - with vertical", () => {
+storiesOf("Publishing/Related Articles/Canvas", module)
+  .add("With vertical", () => {
     return (
       <RelatedArticlesCanvas
         articles={RelatedCanvas}
@@ -19,6 +16,10 @@ storiesOf("Publishing/Related Articles", module)
       />
     )
   })
-  .add("Related Articles Canvas - without vertical", () => {
+  .add("Without vertical", () => {
     return <RelatedArticlesCanvas articles={RelatedCanvas} />
   })
+
+storiesOf("Publishing/Related Articles/Panel", module).add("Panel", () => {
+  return <RelatedArticlesPanel articles={RelatedPanel} />
+})

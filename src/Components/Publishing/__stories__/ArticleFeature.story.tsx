@@ -19,10 +19,10 @@ import {
 } from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
 
-const story = storiesOf("Publishing/Feature Articles", module)
+const story = storiesOf("Publishing/Articles/Feature", module)
 
 story
-  .add("Feature", () => {
+  .add("Fullscreen", () => {
     return (
       <Article
         article={FeatureArticle}
@@ -30,7 +30,7 @@ story
       />
     )
   })
-  .add("Feature Full - Series", () => {
+  .add("Fullscreen Series", () => {
     const article = clone({
       ...SponsoredArticle,
       seriesArticle: SeriesArticle,
@@ -39,7 +39,18 @@ story
 
     return <Article article={article} />
   })
-  .add("Feature Basic", () => {
+  .add("Split", () => {
+    const article = clone({
+      ...FeatureArticle,
+      hero_section: {
+        type: "split",
+        url: FeatureArticle.hero_section.url,
+      },
+    } as ArticleData)
+
+    return <Article article={article} />
+  })
+  .add("Basic", () => {
     const article = clone({
       ...BasicArticle,
       sections: [

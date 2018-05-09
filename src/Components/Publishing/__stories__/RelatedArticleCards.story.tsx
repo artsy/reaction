@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import { clone } from "lodash"
 import { storiesOf } from "@storybook/react"
 import React from "react"
@@ -15,66 +16,66 @@ import {
 } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
 
-storiesOf("Publishing/RelatedArticleCards", module)
-  .add("Article Cards Block", () => {
+storiesOf("Publishing/Related Articles/ArticleCards", module)
+  .add("Block", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCardsBlock
           article={StandardArticle}
           relatedArticles={[StandardArticle, VideoArticle]}
         />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Cards Block - Sponsored", () => {
+  .add("Block: Sponsored", () => {
     const article = clone({
       ...StandardArticle,
       seriesArticle: SeriesArticleSponsored,
     } as ArticleData)
 
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCardsBlock
           article={article}
           relatedArticles={[StandardArticle, VideoArticle]}
         />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Cards", () => {
+  .add("ArticleCards", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCards
           series={SeriesArticle}
           relatedArticles={[StandardArticle, VideoArticle]}
         />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Card", () => {
+  .add("Standard Article", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCard article={StandardArticle} series={SeriesArticle} />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Card: Media", () => {
+  .add("Media Article", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCard article={VideoArticle} series={SeriesArticle} />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Card: Media Unpublished", () => {
+  .add("Unpublished Media", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCard article={VideoArticleUnpublished} series={SeriesArticle} />
-      </div>
+      </MaxWidthContainer>
     )
   })
-  .add("Article Card with children", () => {
+  .add("With children", () => {
     return (
-      <div>
+      <MaxWidthContainer>
         <ArticleCard
           article={StandardArticle}
           series={SeriesArticle}
@@ -83,6 +84,12 @@ storiesOf("Publishing/RelatedArticleCards", module)
           editImage={EditableChild("image")}
           editTitle={EditableChild("title")}
         />
-      </div>
+      </MaxWidthContainer>
     )
   })
+
+const MaxWidthContainer = styled.div`
+  width: 90%;
+  max-width: 1250px;
+  margin: 20px auto;
+`

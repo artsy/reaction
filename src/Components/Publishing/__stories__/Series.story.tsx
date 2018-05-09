@@ -10,22 +10,22 @@ import {
 } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
 
-storiesOf("Publishing/Series", module)
-  .add("Series Title", () => {
+storiesOf("Publishing/Series/Title", module)
+  .add("Title", () => {
     return (
       <div>
         <SeriesTitle article={SeriesArticle} />
       </div>
     )
   })
-  .add("Series Title: Sponsored", () => {
+  .add("Sponsored", () => {
     return (
       <div>
         <SeriesTitle article={SeriesArticleSponsored} />
       </div>
     )
   })
-  .add("Series Title with Children", () => {
+  .add("Editable Children", () => {
     return (
       <div>
         <SeriesTitle
@@ -35,21 +35,23 @@ storiesOf("Publishing/Series", module)
       </div>
     )
   })
-  .add("Series About", () => {
+
+storiesOf("Publishing/Series/About", module)
+  .add("About", () => {
     return (
       <div>
         <SeriesAbout article={SeriesArticle} />
       </div>
     )
   })
-  .add("Series About: Sponsored", () => {
+  .add("Sponsored", () => {
     return (
       <div>
         <SeriesAbout article={SeriesArticleSponsored} />
       </div>
     )
   })
-  .add("Series About with editable children", () => {
+  .add("Editable children", () => {
     return (
       <div>
         <SeriesAbout
@@ -60,7 +62,7 @@ storiesOf("Publishing/Series", module)
       </div>
     )
   })
-  .add("Series About with custom sub_title", () => {
+  .add("Custom sub_title", () => {
     return (
       <div>
         <SeriesAbout article={SeriesArticleCustomSubTitle} />

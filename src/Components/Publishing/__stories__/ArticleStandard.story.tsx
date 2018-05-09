@@ -12,7 +12,7 @@ import {
 import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
 
-const story = storiesOf("Publishing/Standard Articles", module)
+const story = storiesOf("Publishing/Articles/Standard", module)
   .add("Standard", () => {
     return (
       <Article
