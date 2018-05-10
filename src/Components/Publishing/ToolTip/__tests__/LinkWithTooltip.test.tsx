@@ -59,24 +59,6 @@ describe("LinkWithTooltip", () => {
       return expect(wrapper.state("show")).toBeTruthy()
     })
   })
-
-  it("ToolTip correctly hides on hover", () => {
-    const wrapper = mount(
-      <LinkWithTooltip url="https://www.artsy.net/artist/judy-chicago">
-        Judy
-      </LinkWithTooltip>,
-      { context }
-    )
-
-    const promise = (wrapper
-      .find(Link)
-      .props()
-      .onMouseLeave(null) as any) as Promise<any>
-
-    return promise.then(() => {
-      return expect(wrapper.state("show")).toBeFalsy()
-    })
-  })
 })
 
 const context = {

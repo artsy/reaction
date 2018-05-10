@@ -1,6 +1,7 @@
 import React, { cloneElement, ReactInstance } from "react"
 import { Overlay } from "react-overlays"
 import styled from "styled-components"
+import { findDOMNode } from "react-dom"
 
 import { OverlayTriggerProps } from "./types"
 
@@ -16,7 +17,7 @@ export class OverlayTrigger extends React.Component<OverlayTriggerProps> {
           {children}
         </Container>
 
-        <Overlay target={this.target} {...props}>
+        <Overlay {...props} target={() => findDOMNode(this.target)}>
           {cloneElement(overlay, {
             ...overlay.props,
             style: {

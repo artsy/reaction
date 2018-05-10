@@ -9,6 +9,7 @@ import Colors from "Assets/Colors"
 interface Props {
   url: string
   showMarketData?: boolean
+  hideOnLeaveTimeout?: number
 }
 
 interface State {
@@ -52,31 +53,32 @@ export class LinkWithTooltip extends Component<Props, State> {
     const { showMarketData } = this.props
 
     const toolTip = toolTipData ? (
-      <div>
-        <ToolTip
-          entity={toolTipData.entity}
-          model={toolTipData.entityType}
-          showMarketData={showMarketData}
-        />
-      </div>
+      <ToolTip
+        entity={toolTipData.entity}
+        model={toolTipData.entityType}
+        showMarketData={showMarketData}
+      />
     ) : (
       <div />
     )
 
     const { show } = this.state
     return (
-      <OverlayTrigger show={show} placement="top" overlay={toolTip}>
+      <OverlayTrigger
+        show={show}
+        placement="top"
+        overlay={toolTip}
+        rootClose
+        onHide={() => {
+          this.setState({ show: false })
+        }}
+      >
         <Link
           target="_blank"
           onMouseEnter={() =>
             new Promise((resolve, reject) => {
               this.setState({ show: true }, resolve)
             })
-          }
-          onMouseLeave={() =>
-            new Promise((resolve, reject) =>
-              this.setState({ show: false }, resolve)
-            )
           }
         >
           {this.props.children}

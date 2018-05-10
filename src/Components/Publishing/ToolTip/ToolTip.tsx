@@ -4,7 +4,7 @@ import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
 import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
   model: string
   showMarketData?: boolean
@@ -36,16 +36,21 @@ export class ToolTip extends React.Component<Props> {
     if (!this.props.entity) return null
 
     return (
-      <ToolTipContainer>
-        {this.getToolTip()}
-        <ArrowDown />
+      <ToolTipContainer style={{ ...this.props.style }}>
+        <Content>
+          {this.getToolTip()}
+          <ArrowDown />
+        </Content>
       </ToolTipContainer>
     )
   }
 }
 
 export const ToolTipContainer = styled.div`
-  height: 310px;
+  position: absolute;
+`
+
+const Content = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
