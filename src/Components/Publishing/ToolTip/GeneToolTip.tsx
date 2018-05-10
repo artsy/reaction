@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
-import { FollowButton } from "../../FollowButton/Button"
+import { FollowGeneButton } from "../../FollowButton/FollowGeneButton"
 import { ToolTipDescription } from "./Components/Description"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
@@ -27,7 +27,7 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
       </GeneContainer>
 
       <ToolTipFooter>
-        <FollowButton /> {/* TODO: Replace with relay follow */}
+        <FollowGeneButton />
         <NewFeature />
       </ToolTipFooter>
     </Wrapper>
