@@ -7,6 +7,7 @@ import { DesktopHeader } from "./DesktopHeader"
 
 export interface DesktopModalProps extends ModalProps {
   subtitle?: string
+  onTypeChange?: (type: any) => void
 }
 
 export class DesktopModal extends Component<DesktopModalProps> {

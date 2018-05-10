@@ -47,17 +47,7 @@ const StyledCheckbox = styled(Checkbox)`
   margin-bottom: 5px;
 `
 
-interface ModeSelectorProps extends React.HTMLProps<HTMLAnchorElement> {
-  handleClick: any
-}
-
-const ModeSelector: React.SFC<ModeSelectorProps> = props => (
-  <a onClick={props.handleClick} href="#" className={props.className}>
-    {props.children}
-  </a>
-)
-
-export const ChangeMode = styled(ModeSelector)`
+export const ChangeMode = styled.a`
   color: ${Colors.grayDark};
   ${garamond("s14")};
 `

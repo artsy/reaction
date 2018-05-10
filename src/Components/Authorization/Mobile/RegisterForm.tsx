@@ -85,7 +85,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <p>
               Already have an account?
-              <ChangeMode handleClick={() => null}>Log In</ChangeMode>
+              <ChangeMode>Log In</ChangeMode>
             </p>
           </div>
         )

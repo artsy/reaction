@@ -42,7 +42,7 @@ export const ResetPasswordForm: FormComponentType = props => {
             <Button block type="submit" disabled={isSubmitting}>
               Send Reset Instructions
             </Button>
-            <ChangeMode handleClick={props.handleChangeMode("login")}>
+            <ChangeMode onClick={() => props.handleChangeMode("login")}>
               Log In
             </ChangeMode>
           </Form>
