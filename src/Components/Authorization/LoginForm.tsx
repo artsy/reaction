@@ -95,7 +95,7 @@ export const LoginForm: FormComponentType = props => {
                 <Text color={Colors.grayDark}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
-                handleClick={props.handleChangeMode("reset_password")}
+                onClick={() => props.handleTypeChange("reset_password")}
               >
                 Forgot Password?
               </ForgotPasswordLink>
@@ -104,7 +104,7 @@ export const LoginForm: FormComponentType = props => {
             <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
             <LoginText>
               Don't have an account?{" "}
-              <ChangeMode handleClick={props.handleChangeMode("register")}>
+              <ChangeMode onClick={() => props.handleTypeChange("signup")}>
                 Sign Up
               </ChangeMode>
             </LoginText>
