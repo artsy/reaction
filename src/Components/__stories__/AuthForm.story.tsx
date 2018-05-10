@@ -18,16 +18,16 @@ const close = () => {
 storiesOf("Components/Authorization", module)
   .add("Login Mode", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm mode="login" handleSubmit={submit} />
+      <AuthForm type="login" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm mode="reset_password" handleSubmit={submit} />
+      <AuthForm type="reset_password" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Register Mode", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm mode="register" handleSubmit={submit} />
+      <AuthForm type="signup" handleSubmit={submit} />
     </DesktopModal>
   ))

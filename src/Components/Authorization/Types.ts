@@ -1,6 +1,6 @@
 import { FormikProps } from "formik"
 
-export type Mode = "login" | "register" | "reset_password"
+export type ModalType = "login" | "signup" | "reset_password"
 
 export interface InputValues {
   name?: string
@@ -17,7 +17,7 @@ export type SubmitHandler = (
 export interface FormProps {
   values?: InputValues
   handleSubmit?: SubmitHandler
-  handleChangeMode?: (mode: Mode) => (event) => void
+  handleTypeChange?: (modalType: ModalType) => (event) => void
 }
 
 export type FormComponentType = React.SFC<FormProps>

@@ -121,7 +121,7 @@ export const RegisterForm: FormComponentType = props => {
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <LoginText>
               Already have an account?{" "}
-              <ChangeMode onClick={() => props.handleChangeMode("login")}>
+              <ChangeMode onClick={() => props.handleTypeChange("login")}>
                 Login
               </ChangeMode>
             </LoginText>
