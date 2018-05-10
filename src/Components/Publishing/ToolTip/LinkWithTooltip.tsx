@@ -1,9 +1,11 @@
+import url from "url"
 import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import Colors from "Assets/Colors"
+
 interface Props {
   url: string
   showMarketData?: boolean
@@ -23,7 +25,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
-    const urlComponents = new URL(this.props.url).pathname.split("/")
+    const urlComponents = url.parse(this.props.url).pathname.split("/")
     urlComponents.shift()
 
     return {
