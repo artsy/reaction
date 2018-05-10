@@ -4,6 +4,7 @@ import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import Colors from "Assets/Colors"
+
 interface Props {
   url: string
   showMarketData?: boolean
@@ -15,9 +16,6 @@ interface State {
 }
 
 export class LinkWithTooltip extends Component<Props, State> {
-  tooltipHovered = false
-  linkHovered = false
-
   static contextTypes = {
     tooltipsData: PropTypes.object,
   }
@@ -54,50 +52,34 @@ export class LinkWithTooltip extends Component<Props, State> {
     const { showMarketData } = this.props
 
     const toolTip = toolTipData ? (
-      <div>
-        <ToolTip
-          entity={toolTipData.entity}
-          model={toolTipData.entityType}
-          showMarketData={showMarketData}
-          onHovered={hovered => {
-            this.tooltipHovered = hovered
-
-            if (!hovered && !this.linkHovered) {
-              this.setState({ show: false })
-            }
-          }}
-        />
-      </div>
+      <ToolTip
+        entity={toolTipData.entity}
+        model={toolTipData.entityType}
+        showMarketData={showMarketData}
+      />
     ) : (
       <div />
     )
 
     const { show } = this.state
     return (
-      <OverlayTrigger show={show} placement="top" overlay={toolTip}>
+      <OverlayTrigger
+        show={show}
+        placement="top"
+        // container={this}
+        overlay={toolTip}
+        rootClose
+        onHide={() => {
+          this.setState({ show: false })
+        }}
+      >
         <Link
           target="_blank"
           onMouseEnter={() =>
             new Promise((resolve, reject) => {
-              this.linkHovered = true
               this.setState({ show: true }, resolve)
             })
           }
-          onMouseLeave={() => {
-            // Give user enough time to move from link to tooltip
-            // before hiding
-            return new Promise((resolve, reject) =>
-              setTimeout(() => {
-                this.linkHovered = true
-
-                if (!this.tooltipHovered) {
-                  this.setState({ show: false }, resolve)
-                } else {
-                  resolve()
-                }
-              }, this.props.hideOnLeaveTimeout || 1000)
-            )
-          }}
         >
           {this.props.children}
         </Link>
