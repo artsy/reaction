@@ -13,6 +13,10 @@ const GaramondSizes = {
     size: "15px",
     height: "1.25em",
   },
+  s16: {
+    size: "16px",
+    height: "1.4em",
+  },
   s17: {
     size: "17px",
     height: "1.1em",

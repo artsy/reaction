@@ -1,3 +1,4 @@
+import url from "url"
 import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
@@ -25,7 +26,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
-    const urlComponents = new URL(this.props.url).pathname.split("/")
+    const urlComponents = url.parse(this.props.url).pathname.split("/")
     urlComponents.shift()
 
     return {
@@ -66,7 +67,6 @@ export class LinkWithTooltip extends Component<Props, State> {
       <OverlayTrigger
         show={show}
         placement="top"
-        // container={this}
         overlay={toolTip}
         rootClose
         onHide={() => {

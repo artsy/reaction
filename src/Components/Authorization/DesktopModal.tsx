@@ -2,11 +2,13 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import Icon from "../Icon"
 import Modal, { ModalProps } from "../Modal/Modal"
+import { ModalType } from "./Types"
 import Colors from "Assets/Colors"
 import { DesktopHeader } from "./DesktopHeader"
 
 export interface DesktopModalProps extends ModalProps {
   subtitle?: string
+  onTypeChange?: (type: ModalType) => void
 }
 
 export class DesktopModal extends Component<DesktopModalProps> {

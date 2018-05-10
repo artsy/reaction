@@ -191,13 +191,12 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
       >
         <div
           className="c8"
-          onClick={undefined}
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           Follow
         </div>
-         
         <div
           className="c9 c10"
         >

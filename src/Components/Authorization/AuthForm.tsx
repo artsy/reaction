@@ -3,16 +3,21 @@ import React from "react"
 import { LoginForm } from "./LoginForm"
 import { RegisterForm } from "./RegisterForm"
 import { ResetPasswordForm } from "./ResetPasswordForm"
-import { FormComponentType, InputValues, Mode, SubmitHandler } from "./Types"
+import {
+  FormComponentType,
+  InputValues,
+  ModalType,
+  SubmitHandler,
+} from "./Types"
 
 interface Props {
-  mode: Mode
+  type: ModalType
   values?: InputValues // necessary?
   handleSubmit: SubmitHandler
 }
 
 interface State extends React.HTMLProps<HTMLFormElement> {
-  mode?: Mode
+  type?: ModalType
 }
 
 export class AuthForm extends React.Component<Props, State> {
@@ -23,31 +28,31 @@ export class AuthForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      mode: this.props.mode,
+      type: this.props.type,
     }
   }
 
-  handleChangeMode = (newMode: Mode) => {
+  presentModal = (newType: ModalType) => {
     return event => {
       event.preventDefault()
-      this.setState({ mode: newMode })
+      this.setState({ type: newType })
     }
   }
 
   render() {
     let Form: FormComponentType
-    switch (this.state.mode) {
+    switch (this.state.type) {
       case "login":
         Form = LoginForm
         break
-      case "register":
+      case "signup":
         Form = RegisterForm
         break
       case "reset_password":
         Form = ResetPasswordForm
         break
       default:
-        throw new Error(`${this.state.mode} mode needs a component`)
+        throw new Error(`${this.state.type} mode needs a component`)
     }
 
     const { values } = this.props
@@ -61,7 +66,7 @@ export class AuthForm extends React.Component<Props, State> {
     return (
       <Form
         values={defaultValues}
-        handleChangeMode={this.handleChangeMode}
+        handleTypeChange={this.presentModal}
         handleSubmit={this.props.handleSubmit}
       />
     )

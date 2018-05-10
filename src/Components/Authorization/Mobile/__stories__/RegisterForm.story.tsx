@@ -7,6 +7,6 @@ storiesOf("Components/Auth/Mobile", module).add("RegisterForm", () => (
   <MobileRegisterForm
     values={{}}
     handleSubmit={() => null}
-    handleChangeMode={() => mode => null}
+    handleTypeChange={() => mode => null}
   />
 ))
