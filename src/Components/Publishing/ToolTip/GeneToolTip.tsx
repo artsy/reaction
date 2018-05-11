@@ -13,9 +13,7 @@ export interface GeneProps {
 
 export const GeneToolTip: React.SFC<GeneProps> = props => {
   const { description, href, image, name } = props.gene
-  const {
-    cropped: { url },
-  } = image
+  const { url } = image
 
   return (
     <Wrapper>
@@ -71,9 +69,7 @@ export const GeneToolTipContainer = createFragmentContainer(
       description
       href
       image {
-        cropped(width: 240, height: 160) {
-          url
-        }
+        url(version: "tall")
       }
       name
     }
