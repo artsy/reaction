@@ -64,7 +64,7 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
+export const FollowArtistButtonContainer = createFragmentContainer(
   Artsy.ContextConsumer(FollowArtistButton),
   graphql`
     fragment FollowArtistButton_artist on Artist {

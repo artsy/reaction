@@ -39,7 +39,9 @@ export class TooltipsDataLoader extends Component<Props> {
           ) {
             artists(slugs: $artistSlugs) {
               id
+              is_followed
               ...ArtistToolTip_artist
+              ...FollowArtistButton_artist
             }
             genes(slugs: $geneSlugs) {
               id

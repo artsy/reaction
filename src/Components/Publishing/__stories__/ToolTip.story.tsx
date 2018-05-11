@@ -3,60 +3,65 @@ import React from "react"
 import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
 import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
 import { StandardArticle } from "../Fixtures/Articles"
+import { ContextProvider } from "../../Artsy"
 
 storiesOf("Publishing/ToolTips", module)
   .add("Artist: bio", () => {
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
-        <TooltipsDataLoader article={StandardArticle}>
-          <div>
-            <LinkWithTooltip url="https://artsy.net/artist/fra-angelico">
-              Fra Angelico
-            </LinkWithTooltip>
-          </div>
-          <div>
-            <LinkWithTooltip url="https://artsy.net/artist/judy-chicago">
-              Judy Chicago
-            </LinkWithTooltip>
-          </div>
-          <div>
-            <LinkWithTooltip url="https://artsy.net/artist/alfred-stieglitz">
-              Alfred Stieglitz
-            </LinkWithTooltip>
-          </div>
-        </TooltipsDataLoader>
+        <ContextProvider>
+          <TooltipsDataLoader article={StandardArticle}>
+            <div>
+              <LinkWithTooltip url="https://artsy.net/artist/fra-angelico">
+                Fra Angelico
+              </LinkWithTooltip>
+            </div>
+            <div>
+              <LinkWithTooltip url="https://artsy.net/artist/judy-chicago">
+                Judy Chicago
+              </LinkWithTooltip>
+            </div>
+            <div>
+              <LinkWithTooltip url="https://artsy.net/artist/alfred-stieglitz">
+                Alfred Stieglitz
+              </LinkWithTooltip>
+            </div>
+          </TooltipsDataLoader>
+        </ContextProvider>
       </div>
     )
   })
   .add("Artist: market data", () => {
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
-        <TooltipsDataLoader article={StandardArticle}>
-          <div>
-            <LinkWithTooltip
-              url="https://artsy.net/artist/fra-angelico"
-              showMarketData
-            >
-              Fra Angelico
-            </LinkWithTooltip>
-          </div>
-          <div>
-            <LinkWithTooltip
-              url="https://artsy.net/artist/judy-chicago"
-              showMarketData
-            >
-              Judy Chicago
-            </LinkWithTooltip>
-          </div>
-          <div>
-            <LinkWithTooltip
-              url="https://artsy.net/artist/alfred-stieglitz"
-              showMarketData
-            >
-              Alfred Stieglitz
-            </LinkWithTooltip>
-          </div>
-        </TooltipsDataLoader>
+        <ContextProvider>
+          <TooltipsDataLoader article={StandardArticle}>
+            <div>
+              <LinkWithTooltip
+                url="https://artsy.net/artist/fra-angelico"
+                showMarketData
+              >
+                Fra Angelico
+              </LinkWithTooltip>
+            </div>
+            <div>
+              <LinkWithTooltip
+                url="https://artsy.net/artist/judy-chicago"
+                showMarketData
+              >
+                Judy Chicago
+              </LinkWithTooltip>
+            </div>
+            <div>
+              <LinkWithTooltip
+                url="https://artsy.net/artist/alfred-stieglitz"
+                showMarketData
+              >
+                Alfred Stieglitz
+              </LinkWithTooltip>
+            </div>
+          </TooltipsDataLoader>
+        </ContextProvider>
       </div>
     )
   })
