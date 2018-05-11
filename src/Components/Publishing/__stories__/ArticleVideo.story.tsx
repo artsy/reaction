@@ -12,11 +12,11 @@ import {
   VideoArticleSponsored,
 } from "../Fixtures/Articles"
 
-storiesOf("Publishing/Video Articles", module)
-  .add("Video Article", () => {
+storiesOf("Publishing/Articles/Video", module)
+  .add("Video", () => {
     return <Article article={VideoArticle} />
   })
-  .add("Video Article - Series", () => {
+  .add("In Series", () => {
     const article = clone({
       ...VideoArticle,
       seriesArticle: SeriesArticle,
@@ -29,10 +29,10 @@ storiesOf("Publishing/Video Articles", module)
       />
     )
   })
-  .add("Video Article - Sponsored", () => {
+  .add("With Sponsor", () => {
     return <Article article={VideoArticleSponsored} />
   })
-  .add("Video Article - Series + Sponsored", () => {
+  .add("Series + Sponsored", () => {
     const article = clone({
       ...VideoArticle,
       seriesArticle: SeriesArticleSponsored,

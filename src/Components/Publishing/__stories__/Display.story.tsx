@@ -16,30 +16,30 @@ import {
   UnitPanelVideo,
 } from "../Fixtures/Components"
 
-const story = storiesOf("Publishing/Display", module)
+const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
   })
-  .add("Panel (mobile)", () => {
+  .add("Mobile Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
   })
-  .add("Panel without logo", () => {
+  .add("Without logo", () => {
     const unit = extend({}, UnitPanel, {
       logo: "",
     })
     return <DisplayPanel unit={unit} campaign={Campaign} />
   })
-  .add("Panel: Video", () => {
+  .add("Video", () => {
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
   })
-  .add("Panel: Video (mobile)", () => {
+  .add("Video (mobile)", () => {
     return <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} isMobile />
   })
 
 const mobileAdInsertions = [["Image", UnitPanel], ["Video", UnitPanelVideo]]
 
 mobileAdInsertions.forEach(([label, unit]) => {
-  story.add(`Panel: ${label} injected into mobile body`, () => {
+  story.add(`${label} injected into mobile body`, () => {
     const article = clone(StandardArticle)
 
     const DisplayPanelAd = () => (
@@ -50,16 +50,16 @@ mobileAdInsertions.forEach(([label, unit]) => {
   })
 })
 
-story
-  .add("Canvas: Overlay", () => {
+storiesOf("Publishing/Display/Canvas", module)
+  .add("Overlay", () => {
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
   })
-  .add("Canvas: Image", () => {
+  .add("Image", () => {
     return <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />
   })
-  .add("Canvas: Video", () => {
+  .add("Video", () => {
     return <DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />
   })
-  .add("Canvas: Slideshow", () => {
+  .add("Slideshow", () => {
     return <DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />
   })
