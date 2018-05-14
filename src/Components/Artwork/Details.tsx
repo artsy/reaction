@@ -31,10 +31,10 @@ export class Details extends React.Component<Props, null> {
       )
     } else if (artists && artists.length) {
       const artistLine = artists
-        .reduce((acc, artist) => {
+        .reduce((acc, artist, index) => {
           return acc.concat([
             ", ",
-            <TextLink href={artist.href} key={artist.__id}>
+            <TextLink href={artist.href} key={artist.__id + "-" + index}>
               {artist.name}
             </TextLink>,
           ])
