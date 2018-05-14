@@ -11,6 +11,7 @@ export type SaveArtworkMutationVariables = {
 export type SaveArtworkMutationResponse = {
     readonly saveArtwork: ({
         readonly artwork: ({
+            readonly id: string;
             readonly is_saved: boolean | null;
         }) | null;
     }) | null;
@@ -24,6 +25,7 @@ mutation SaveArtworkMutation(
 ) {
   saveArtwork(input: $input) {
     artwork {
+      id
       is_saved
       __id
     }
@@ -69,6 +71,13 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "is_saved",
             "args": null,
             "storageKey": null
@@ -90,7 +99,7 @@ return {
   "operationKind": "mutation",
   "name": "SaveArtworkMutation",
   "id": null,
-  "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      is_saved\n      __id\n    }\n  }\n}\n",
+  "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      id\n      is_saved\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -108,5 +117,5 @@ return {
   }
 };
 })();
-(node as any).hash = '691d5afb5f5bfd147f30029511d66cb0';
+(node as any).hash = 'b7e3f17c96d3173b62d2ece993864fe1';
 export default node;
