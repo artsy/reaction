@@ -81,6 +81,8 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 .c4 {
   width: 100%;
   margin-bottom: 10px;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .c7 {
@@ -158,6 +160,8 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 
 <div
   className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
   style={Object {}}
 >
   <div
@@ -406,6 +410,8 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 <div
   className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
   style={Object {}}
 >
   <div
