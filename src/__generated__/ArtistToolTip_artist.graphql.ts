@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistToolTip_artist = {
     readonly name: string | null;
+    readonly id: string;
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
     readonly blurb: string | null;
@@ -54,6 +55,13 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -65,28 +73,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "formatted_nationality_and_birthday",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "blurb",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -148,6 +134,29 @@ return {
         }
       ]
     },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "formatted_nationality_and_birthday",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "blurb",
+      "args": null,
+      "storageKey": null
+    },
+    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -229,19 +238,13 @@ return {
                       "concreteType": "Category",
                       "plural": true,
                       "selections": [
-                        {
-                          "kind": "ScalarField",
-                          "alias": null,
-                          "name": "id",
-                          "args": null,
-                          "storageKey": null
-                        }
+                        v1
                       ]
                     },
-                    v1
+                    v2
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -312,7 +315,7 @@ return {
                     }
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -329,12 +332,12 @@ return {
       "plural": true,
       "selections": [
         v0,
-        v1
+        v2
       ]
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = '5e06b9ea478b59074f878ab5037e17e2';
+(node as any).hash = '10b99c63399555511e9d9e3f84965e14';
 export default node;

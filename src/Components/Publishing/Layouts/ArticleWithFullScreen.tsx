@@ -8,7 +8,7 @@ import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
-import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
+import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
 import { ArticleProps } from "../Article"
 interface ArticleState {
   fullscreenImages: any
@@ -83,10 +83,7 @@ export class ArticleWithFullScreen extends React.Component<
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <TooltipsDataLoader
-        article={article}
-        shouldFetchData={this.props.showTooltips}
-      >
+      <TooltipsData article={article} shouldFetchData={this.props.showTooltips}>
         <ArticleContainer marginTop={marginTop}>
           {article.layout === "feature" ? (
             <FeatureLayout {...articleProps} />
@@ -100,7 +97,7 @@ export class ArticleWithFullScreen extends React.Component<
             images={fullscreenImages}
           />
         </ArticleContainer>
-      </TooltipsDataLoader>
+      </TooltipsData>
     )
   }
 }

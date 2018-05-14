@@ -1,13 +1,37 @@
+import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists } from "../../Fixtures/Components"
 import { ArtistToolTip } from "../ArtistToolTip"
+import { ContextProvider } from "../../../Artsy"
 
 describe("ArtistToolTip", () => {
+  const getWrapper = props => {
+    return mount(
+      wrapperWithContext(
+        {
+          tooltipsData: {
+            artists: [props.artist],
+          },
+        },
+        {
+          tooltipsData: PropTypes.object,
+        },
+        <ContextProvider>
+          <ArtistToolTip
+            artist={props.artist}
+            showMarketData={props.showMarketData}
+          />
+        </ContextProvider>
+      )
+    )
+  }
+
   it("Renders artist data", () => {
     const artist = Artists[0].artist
-    const component = mount(<ArtistToolTip artist={artist} />)
+    const component = getWrapper({ artist })
 
     expect(component.text()).toMatch(artist.name)
     expect(component.text()).toMatch(artist.formatted_nationality_and_birthday)
@@ -23,7 +47,7 @@ describe("ArtistToolTip", () => {
   describe("Market Data", () => {
     it("Renders artist data", () => {
       const artist = Artists[0].artist
-      const component = mount(<ArtistToolTip artist={artist} showMarketData />)
+      const component = getWrapper({ artist, showMarketData: true })
 
       expect(component.text()).toMatch(artist.name)
       expect(component.text()).toMatch(
@@ -43,7 +67,7 @@ describe("ArtistToolTip", () => {
 
     it("Renders categories if no artist data", () => {
       const artist = Artists[2].artist
-      const component = mount(<ArtistToolTip artist={artist} showMarketData />)
+      const component = getWrapper({ artist, showMarketData: true })
 
       expect(component.text()).toMatch("Emerging Art")
     })

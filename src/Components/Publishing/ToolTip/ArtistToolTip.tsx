@@ -1,37 +1,43 @@
 import styled from "styled-components"
+import PropTypes from "prop-types"
 import React from "react"
 import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
-import { garamond, unica } from "Assets/Fonts"
 import fillwidthDimensions from "../../../Utils/fillwidth"
-import { FollowArtistButton } from "../../FollowButton/FollowArtistButton"
-import { ToolTipDescription } from "./Components/Description"
-import { NewFeature } from "./Components/NewFeature"
+import { garamond, unica } from "Assets/Fonts"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
+import { NewFeature } from "./Components/NewFeature"
+import { ToolTipDescription } from "./Components/Description"
+import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean
   artist: ArtistToolTip_artist
 }
 
-export const ArtistToolTip: React.SFC<ArtistToolTipProps> = props => {
+export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
+  props,
+  context
+) => {
   const {
     blurb,
     carousel,
     formatted_nationality_and_birthday,
     href,
+    id,
     name,
   } = props.artist
   const { showMarketData } = props
   const displayImages = map(carousel.images.slice(0, 2), "resized")
   const images = fillwidthDimensions(displayImages, 320, 15, 150)
+  const { artists } = context.tooltipsData
 
   return (
     <Wrapper>
-      <ArtistContainer href={href}>
+      <ArtistContainer>
         {images && (
-          <Images>
+          <Images href={href}>
             {images.map((img, i) => (
               <img
                 key={i}
@@ -44,20 +50,22 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = props => {
         )}
 
         <Header>
-          <TitleDate>
+          <TitleDate href={href}>
             <Title>{name}</Title>
             {formatted_nationality_and_birthday && (
               <Date>{formatted_nationality_and_birthday}</Date>
             )}
           </TitleDate>
-          <FollowArtistButton />
+          <FollowArtistButton artist={artists[id] as any} />
         </Header>
 
-        {showMarketData ? (
-          <ArtistMarketData artist={props.artist} />
-        ) : (
-          blurb && <ToolTipDescription text={blurb} />
-        )}
+        <a href={href}>
+          {showMarketData ? (
+            <ArtistMarketData artist={props.artist} />
+          ) : (
+            blurb && <ToolTipDescription text={blurb} />
+          )}
+        </a>
       </ArtistContainer>
 
       <NewFeature />
@@ -69,10 +77,12 @@ const Wrapper = styled.div`
   width: 320px;
 `
 
-export const ArtistContainer = styled.a`
+export const ArtistContainer = styled.div`
   position: relative;
-  text-decoration: none;
-  color: black;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `
 
 const Header = styled.div`
@@ -81,7 +91,7 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const TitleDate = styled.div`
+const TitleDate = styled.a`
   display: flex;
   flex-direction: column;
 `
@@ -95,7 +105,7 @@ const Date = styled.div`
   ${unica("s14", "medium")};
 `
 
-const Images = styled.div`
+const Images = styled.a`
   width: 100%;
   margin-bottom: 20px;
   display: flex;
@@ -107,6 +117,7 @@ export const ArtistTooltipContainer = createFragmentContainer(
   graphql`
     fragment ArtistToolTip_artist on Artist {
       name
+      id
       formatted_nationality_and_birthday
       href
       blurb
@@ -155,3 +166,7 @@ export const ArtistTooltipContainer = createFragmentContainer(
     }
   `
 )
+
+ArtistToolTip.contextTypes = {
+  tooltipsData: PropTypes.object,
+}

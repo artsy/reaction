@@ -3,7 +3,8 @@ import React from "react"
 import { unica } from "Assets/Fonts"
 import Colors from "Assets/Colors"
 
-const FEEDBACK_EMAIL = "mailto:productfeedback@artsy.net?subject=Feedback"
+const FEEDBACK_EMAIL =
+  "mailto:productfeedback@artsy.net?subject=Feedback on article tooltips"
 
 export const NewFeature: React.SFC = () => {
   return (
