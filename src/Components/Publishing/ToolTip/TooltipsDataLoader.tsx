@@ -1,19 +1,16 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { QueryRenderer, graphql } from "react-relay"
-import { createEnvironment } from "../../../Relay/createEnvironment"
 import { ArticleData } from "../Typings"
 import { getArtsySlugsFromArticle } from "../Constants"
 import { keyBy } from "lodash"
 import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/TooltipsDataLoaderQuery.graphql"
+import * as Artsy from "../../Artsy"
 
-interface Props {
+interface Props extends Artsy.ContextProps {
   article: ArticleData
   shouldFetchData?: boolean
 }
-
-// TODO: get enviroment from context or pass it in as prop
-const environment = createEnvironment()
 
 export class TooltipsDataLoader extends Component<Props> {
   static defaultProps = {
@@ -21,17 +18,25 @@ export class TooltipsDataLoader extends Component<Props> {
   }
 
   render() {
+    const {
+      article,
+      children,
+      currentUser,
+      relayEnvironment,
+      shouldFetchData,
+    } = this.props
+
     const { artists: artistSlugs, genes: geneSlugs } = getArtsySlugsFromArticle(
-      this.props.article
+      article
     )
 
-    if (!this.props.shouldFetchData) {
-      return this.props.children
+    if (!shouldFetchData) {
+      return children
     }
 
     return (
       <QueryRenderer
-        environment={environment}
+        environment={relayEnvironment}
         query={graphql`
           query TooltipsDataLoaderQuery(
             $artistSlugs: [String!]
@@ -63,8 +68,8 @@ export class TooltipsDataLoader extends Component<Props> {
             data[key] = keyBy(col, "id")
           })
           return (
-            <TooltipsContextProvider {...data}>
-              {this.props.children}
+            <TooltipsContextProvider {...data} currentUser={currentUser}>
+              {children}
             </TooltipsContextProvider>
           )
         }}
@@ -76,14 +81,17 @@ export class TooltipsDataLoader extends Component<Props> {
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     tooltipsData: PropTypes.object,
+    currentUser: PropTypes.object,
   }
 
   getChildContext() {
+    const { artists, currentUser, genes } = this.props
     return {
       tooltipsData: {
-        artists: this.props.artists,
-        genes: this.props.genes,
+        artists,
+        genes,
       },
+      currentUser,
     }
   }
 
@@ -91,3 +99,5 @@ class TooltipsContextProvider extends Component<any> {
     return this.props.children
   }
 }
+
+export const TooltipsData = Artsy.ContextConsumer(TooltipsDataLoader)
