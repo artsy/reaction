@@ -1,6 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
+.c2 {
+  width: 240px;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c10 a {
+  color: #cccccc;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  margin: 10px 0;
+}
+
+.c6 p {
+  margin: 0;
+}
+
 .c8 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -29,33 +61,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   border-color: black;
   background: black;
   color: white;
-}
-
-.c6 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.c10 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 10px;
-  line-height: 1.4em;
-  color: #cccccc;
-}
-
-.c10 a {
-  color: #cccccc;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border-bottom: 1px solid #e5e5e5;
-  line-height: 1em;
-}
-
-.c2 {
-  width: 240px;
 }
 
 .c3 {
@@ -204,7 +209,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
             This is a new feature. 
           </span>
           <a
-            href="mailto:productfeedback@artsy.net?subject=Feedback"
+            href="mailto:productfeedback@artsy.net?subject=Feedback on article tooltips"
             target="_blank"
           >
             Tell us what you think.
@@ -227,6 +232,38 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
+.c2 {
+  width: 320px;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c11 a {
+  color: #cccccc;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
+}
+
+.c10 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  margin: 10px 0;
+}
+
+.c10 p {
+  margin: 0;
+}
+
 .c9 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -257,35 +294,11 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: white;
 }
 
-.c10 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.c11 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 10px;
-  line-height: 1.4em;
-  color: #cccccc;
-}
-
-.c11 a {
-  color: #cccccc;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border-bottom: 1px solid #e5e5e5;
-  line-height: 1em;
-}
-
-.c2 {
-  width: 320px;
-}
-
 .c3 {
   position: relative;
+}
+
+.c3 a {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
@@ -401,12 +414,12 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
     <div
       className="c2"
     >
-      <a
+      <div
         className="c3"
-        href="/artist/nick-mauss"
       >
-        <div
+        <a
           className="c4"
+          href="/artist/nick-mauss"
         >
           <img
             height={148}
@@ -418,12 +431,13 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=258&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F_lnI3nNFEo6D9TFqm2oM1w%2Flarge.jpg"
             width={190}
           />
-        </div>
+        </a>
         <div
           className="c5"
         >
-          <div
+          <a
             className="c6"
+            href="/artist/nick-mauss"
           >
             <div
               className="c7"
@@ -435,7 +449,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
             >
               American, b. 1980
             </div>
-          </div>
+          </a>
           <div
             className="c9"
             onClick={[Function]}
@@ -445,18 +459,22 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
             Follow
           </div>
         </div>
-        <div
-          className="c10"
+        <a
+          href="/artist/nick-mauss"
         >
           <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of  prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
+            className="c10"
+          >
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of  prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
+                }
               }
-            }
-          />
-        </div>
-      </a>
+            />
+          </div>
+        </a>
+      </div>
       <div
         className="c11"
       >
@@ -464,7 +482,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           This is a new feature. 
         </span>
         <a
-          href="mailto:productfeedback@artsy.net?subject=Feedback"
+          href="mailto:productfeedback@artsy.net?subject=Feedback on article tooltips"
           target="_blank"
         >
           Tell us what you think.

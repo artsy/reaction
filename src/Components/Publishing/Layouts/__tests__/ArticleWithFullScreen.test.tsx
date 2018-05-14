@@ -19,7 +19,7 @@ jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))
 jest.mock("../../ToolTip/TooltipsDataLoader", () => ({
-  TooltipsDataLoader: props => props.children,
+  TooltipsData: props => props.children,
 }))
 
 it("indexes and titles images", () => {
