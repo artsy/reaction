@@ -4,13 +4,13 @@ import { Article } from "../Article"
 
 import { NewsArticle } from "../Fixtures/Articles"
 
-storiesOf("Publishing/News Articles", module)
-  .add("News Article", () => {
+storiesOf("Publishing/Articles/News", module)
+  .add("Expanded", () => {
     return <Article article={NewsArticle} />
   })
-  .add("News Article - Collapsed", () => {
+  .add("Collapsed", () => {
     return <Article article={NewsArticle} isTruncated />
   })
-  .add("News Article - Mobile Collapsed", () => {
+  .add("Mobile Collapsed", () => {
     return <Article article={NewsArticle} isTruncated isMobile />
   })

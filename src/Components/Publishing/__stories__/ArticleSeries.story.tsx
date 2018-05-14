@@ -9,7 +9,7 @@ import {
   VideoArticle,
 } from "../Fixtures/Articles"
 
-storiesOf("Publishing/Series Articles", module)
+storiesOf("Publishing/Articles/Series", module)
   .add("Series", () => {
     return (
       <Article
@@ -18,7 +18,7 @@ storiesOf("Publishing/Series Articles", module)
       />
     )
   })
-  .add("Series - Sponsored", () => {
+  .add("Sponsored", () => {
     return (
       <Article
         article={SeriesArticleSponsored}

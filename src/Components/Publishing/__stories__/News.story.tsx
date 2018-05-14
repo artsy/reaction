@@ -5,15 +5,15 @@ import { EditableChild } from "../Fixtures/Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsPanel } from "../News/NewsPanel"
 
-storiesOf("Publishing/News", module)
-  .add("News Headline", () => {
+storiesOf("Publishing/News/Headline", module)
+  .add("Headline", () => {
     return (
       <div>
         <NewsHeadline article={NewsArticle} />
       </div>
     )
   })
-  .add("News Headline with children", () => {
+  .add("With children", () => {
     return (
       <div>
         <NewsHeadline
@@ -23,10 +23,11 @@ storiesOf("Publishing/News", module)
       </div>
     )
   })
-  .add("News Panel", () => {
-    return (
-      <div>
-        <NewsPanel articles={[NewsArticle, FeatureArticle]} />
-      </div>
-    )
-  })
+
+storiesOf("Publishing/News/Panel", module).add("Panel", () => {
+  return (
+    <div>
+      <NewsPanel articles={[NewsArticle, FeatureArticle]} />
+    </div>
+  )
+})

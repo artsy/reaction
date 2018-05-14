@@ -5,8 +5,8 @@ import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
 import { StandardArticle } from "../Fixtures/Articles"
 import { ContextProvider } from "../../Artsy"
 
-storiesOf("Publishing/ToolTips", module)
-  .add("Artist: bio", () => {
+storiesOf("Publishing/ToolTips/Artist", module)
+  .add("With Bio", () => {
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
         <ContextProvider>
@@ -31,7 +31,7 @@ storiesOf("Publishing/ToolTips", module)
       </div>
     )
   })
-  .add("Artist: market data", () => {
+  .add("With Market data", () => {
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
         <ContextProvider>

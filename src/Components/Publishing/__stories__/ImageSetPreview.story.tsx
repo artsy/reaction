@@ -12,21 +12,46 @@ import {
   ImageSetMiniSansTitle,
 } from "../Fixtures/Components"
 
-storiesOf("Publishing/Image Set Preview", module)
-  .add("Imageset Preview - Classic", () => {
+storiesOf("Publishing/Sections/Image Set/Classic", module).add(
+  "Preview",
+  () => {
     return <ImageSetPreviewClassic images={Images} />
-  })
-  .add("Imageset Preview", () => {
+  }
+)
+
+storiesOf("Publishing/Sections/Image Set/Editorial/Full", module)
+  .add("Full", () => {
     return (
       <FullScreenProvider>
         <div style={{ maxWidth: 680, width: "100%" }}>
           <ImageSetPreview section={ImageSetFull} />
-          <br />
-          <ImageSetPreview section={ImageSetMini} />
-          <br />
-          <p>Without titles:</p>
+        </div>
+      </FullScreenProvider>
+    )
+  })
+  .add("No title", () => {
+    return (
+      <FullScreenProvider>
+        <div style={{ maxWidth: 680, width: "100%" }}>
           <ImageSetPreview section={ImageSetFullSansTitle} />
-          <br />
+        </div>
+      </FullScreenProvider>
+    )
+  })
+storiesOf("Publishing/Sections/Image Set/Editorial/Mini", module)
+  .add("Mini", () => {
+    return (
+      <FullScreenProvider>
+        <div style={{ maxWidth: 680, width: "100%" }}>
+          <ImageSetPreview section={ImageSetMini} />
+        </div>
+      </FullScreenProvider>
+    )
+  })
+  .add("No title", () => {
+    return (
+      <FullScreenProvider>
+        <div style={{ maxWidth: 680, width: "100%" }}>
           <ImageSetPreview section={ImageSetMiniSansTitle} />
         </div>
       </FullScreenProvider>

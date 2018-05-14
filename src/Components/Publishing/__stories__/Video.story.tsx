@@ -7,18 +7,19 @@ import { VideoPlayer } from "../Video/Player/VideoPlayer"
 import { VideoAbout } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
 
-storiesOf("Publishing/Video", module)
-  .add("Video Player", () => {
-    return (
-      <div style={{ width: "100vw", height: "100vh" }}>
-        <VideoPlayer {...Media[0]} />
-      </div>
-    )
-  })
-  .add("Video Cover", () => {
+storiesOf("Publishing/Video/Player", module).add("Player", () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <VideoPlayer {...Media[0]} />
+    </div>
+  )
+})
+
+storiesOf("Publishing/Video/Cover", module)
+  .add("Cover", () => {
     return <VideoCover article={VideoArticle} media={Media[0]} />
   })
-  .add("Video Cover in Series", () => {
+  .add("In Series", () => {
     return (
       <VideoCover
         article={VideoArticle}
@@ -27,7 +28,7 @@ storiesOf("Publishing/Video", module)
       />
     )
   })
-  .add("Video Cover with edit props", () => {
+  .add("With edit props", () => {
     return (
       <VideoCover
         article={VideoArticle}
@@ -38,10 +39,12 @@ storiesOf("Publishing/Video", module)
       />
     )
   })
-  .add("Video About", () => {
+
+storiesOf("Publishing/Video/About", module)
+  .add("About", () => {
     return <VideoAbout article={VideoArticle} />
   })
-  .add("Video About with edit props", () => {
+  .add("With edit props", () => {
     return (
       <VideoAbout
         article={VideoArticle}
