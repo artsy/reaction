@@ -44,13 +44,13 @@ export class TooltipsDataLoader extends Component<Props> {
           ) {
             artists(slugs: $artistSlugs) {
               id
-              is_followed
               ...ArtistToolTip_artist
               ...FollowArtistButton_artist
             }
             genes(slugs: $geneSlugs) {
               id
               ...GeneToolTip_gene
+              ...FollowGeneButton_gene
             }
           }
         `}
@@ -86,6 +86,7 @@ class TooltipsContextProvider extends Component<any> {
 
   getChildContext() {
     const { artists, currentUser, genes } = this.props
+
     return {
       tooltipsData: {
         artists,

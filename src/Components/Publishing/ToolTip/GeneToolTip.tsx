@@ -1,19 +1,21 @@
 import styled from "styled-components"
+import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
-import { FollowGeneButton } from "../../FollowButton/FollowGeneButton"
-import { ToolTipDescription } from "./Components/Description"
-import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
+import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
+import { ToolTipDescription } from "./Components/Description"
+import FollowGeneButton from "../../FollowButton/FollowGeneButton"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
 }
 
-export const GeneToolTip: React.SFC<GeneProps> = props => {
-  const { description, href, image, name } = props.gene
+export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
+  const { description, href, id, image, name } = props.gene
   const { url } = image
+  const { genes } = context.tooltipsData
 
   return (
     <Wrapper>
@@ -25,7 +27,7 @@ export const GeneToolTip: React.SFC<GeneProps> = props => {
       </GeneContainer>
 
       <ToolTipFooter>
-        <FollowGeneButton />
+        <FollowGeneButton gene={genes[id] as any} />
         <NewFeature />
       </ToolTipFooter>
     </Wrapper>
@@ -68,6 +70,7 @@ export const GeneToolTipContainer = createFragmentContainer(
     fragment GeneToolTip_gene on Gene {
       description
       href
+      id
       image {
         url(version: "tall")
       }
@@ -75,3 +78,7 @@ export const GeneToolTipContainer = createFragmentContainer(
     }
   `
 )
+
+GeneToolTip.contextTypes = {
+  tooltipsData: PropTypes.object,
+}

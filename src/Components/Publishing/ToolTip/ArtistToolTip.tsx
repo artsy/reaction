@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import React from "react"
 import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
-import { garamond, unica } from "Assets/Fonts"
 import fillwidthDimensions from "../../../Utils/fillwidth"
-import { FollowArtistButtonContainer } from "../../FollowButton/FollowArtistButton"
-import { ToolTipDescription } from "./Components/Description"
-import { NewFeature } from "./Components/NewFeature"
+import { garamond, unica } from "Assets/Fonts"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
+import { NewFeature } from "./Components/NewFeature"
+import { ToolTipDescription } from "./Components/Description"
+import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean
@@ -56,7 +56,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
               <Date>{formatted_nationality_and_birthday}</Date>
             )}
           </TitleDate>
-          <FollowArtistButtonContainer artist={artists[id] as any} />
+          <FollowArtistButton artist={artists[id] as any} />
         </Header>
 
         <a href={href}>

@@ -4,6 +4,7 @@ import { ConcreteFragment } from "relay-runtime"
 export type GeneToolTip_gene = {
   readonly description: string | null
   readonly href: string | null
+  readonly id: string
   readonly image:
     | ({
         readonly url: string | null
@@ -30,6 +31,13 @@ const node: ConcreteFragment = {
       kind: "ScalarField",
       alias: null,
       name: "href",
+      args: null,
+      storageKey: null,
+    },
+    {
+      kind: "ScalarField",
+      alias: null,
+      name: "id",
       args: null,
       storageKey: null,
     },
@@ -74,5 +82,5 @@ const node: ConcreteFragment = {
     },
   ],
 }
-;(node as any).hash = "cf83cd4c4e3570684b5da26ed12269fe"
+;(node as any).hash = "d25182382c636ab875d2f45e31232159"
 export default node

@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { TooltipsDataLoader } from "../ToolTip/TooltipsDataLoader"
+import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
 import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
 import { StandardArticle } from "../Fixtures/Articles"
 import { ContextProvider } from "../../Artsy"
@@ -10,7 +10,7 @@ storiesOf("Publishing/ToolTips", module)
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
         <ContextProvider>
-          <TooltipsDataLoader article={StandardArticle}>
+          <TooltipsData article={StandardArticle}>
             <div>
               <LinkWithTooltip url="https://artsy.net/artist/fra-angelico">
                 Fra Angelico
@@ -26,7 +26,7 @@ storiesOf("Publishing/ToolTips", module)
                 Alfred Stieglitz
               </LinkWithTooltip>
             </div>
-          </TooltipsDataLoader>
+          </TooltipsData>
         </ContextProvider>
       </div>
     )
@@ -35,7 +35,7 @@ storiesOf("Publishing/ToolTips", module)
     return (
       <div style={{ maxWidth: 580, margin: "350px auto 0 auto" }}>
         <ContextProvider>
-          <TooltipsDataLoader article={StandardArticle}>
+          <TooltipsData article={StandardArticle}>
             <div>
               <LinkWithTooltip
                 url="https://artsy.net/artist/fra-angelico"
@@ -60,7 +60,7 @@ storiesOf("Publishing/ToolTips", module)
                 Alfred Stieglitz
               </LinkWithTooltip>
             </div>
-          </TooltipsDataLoader>
+          </TooltipsData>
         </ContextProvider>
       </div>
     )
@@ -68,7 +68,7 @@ storiesOf("Publishing/ToolTips", module)
   .add("Gene", () => {
     return (
       <div style={{ maxWidth: 580, margin: "350px auto" }}>
-        <TooltipsDataLoader article={StandardArticle}>
+        <TooltipsData article={StandardArticle}>
           <div>
             <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
               Art Nouveau
@@ -79,7 +79,7 @@ storiesOf("Publishing/ToolTips", module)
               Art Deco
             </LinkWithTooltip>
           </div>
-        </TooltipsDataLoader>
+        </TooltipsData>
       </div>
     )
   })

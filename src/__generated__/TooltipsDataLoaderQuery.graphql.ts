@@ -9,7 +9,6 @@ export type TooltipsDataLoaderQueryResponse = {
   readonly artists: ReadonlyArray<
     | ({
         readonly id: string
-        readonly is_followed: boolean | null
       })
     | null
   > | null
@@ -28,7 +27,6 @@ query TooltipsDataLoaderQuery(
 ) {
   artists(slugs: $artistSlugs) {
     id
-    is_followed
     ...ArtistToolTip_artist
     ...FollowArtistButton_artist
     __id
@@ -36,6 +34,7 @@ query TooltipsDataLoaderQuery(
   genes(slugs: $geneSlugs) {
     id
     ...GeneToolTip_gene
+    ...FollowGeneButton_gene
     __id
   }
 }
@@ -95,11 +94,18 @@ fragment FollowArtistButton_artist on Artist {
 fragment GeneToolTip_gene on Gene {
   description
   href
+  id
   image {
     url(version: "tall")
   }
   name
   __id
+}
+
+fragment FollowGeneButton_gene on Gene {
+  __id
+  id
+  is_followed
 }
 */
 
@@ -136,18 +142,11 @@ const node: ConcreteRequest = (function() {
     v3 = {
       kind: "ScalarField",
       alias: null,
-      name: "is_followed",
-      args: null,
-      storageKey: null,
-    },
-    v4 = {
-      kind: "ScalarField",
-      alias: null,
       name: "__id",
       args: null,
       storageKey: null,
     },
-    v5 = [
+    v4 = [
       {
         kind: "Variable",
         name: "slugs",
@@ -155,6 +154,13 @@ const node: ConcreteRequest = (function() {
         type: "[String]",
       },
     ],
+    v5 = {
+      kind: "ScalarField",
+      alias: null,
+      name: "href",
+      args: null,
+      storageKey: null,
+    },
     v6 = {
       kind: "ScalarField",
       alias: null,
@@ -165,7 +171,7 @@ const node: ConcreteRequest = (function() {
     v7 = {
       kind: "ScalarField",
       alias: null,
-      name: "href",
+      name: "is_followed",
       args: null,
       storageKey: null,
     }
@@ -175,7 +181,7 @@ const node: ConcreteRequest = (function() {
     name: "TooltipsDataLoaderQuery",
     id: null,
     text:
-      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    is_followed\n    ...ArtistToolTip_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    ...GeneToolTip_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  image {\n    url(version: "tall")\n  }\n  name\n  __id\n}\n',
+      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  image {\n    url(version: "tall")\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n',
     metadata: {},
     fragment: {
       kind: "Fragment",
@@ -194,7 +200,6 @@ const node: ConcreteRequest = (function() {
           plural: true,
           selections: [
             v2,
-            v3,
             {
               kind: "FragmentSpread",
               name: "ArtistToolTip_artist",
@@ -205,7 +210,7 @@ const node: ConcreteRequest = (function() {
               name: "FollowArtistButton_artist",
               args: null,
             },
-            v4,
+            v3,
           ],
         },
         {
@@ -213,7 +218,7 @@ const node: ConcreteRequest = (function() {
           alias: null,
           name: "genes",
           storageKey: null,
-          args: v5,
+          args: v4,
           concreteType: "Gene",
           plural: true,
           selections: [
@@ -223,7 +228,12 @@ const node: ConcreteRequest = (function() {
               name: "GeneToolTip_gene",
               args: null,
             },
-            v4,
+            {
+              kind: "FragmentSpread",
+              name: "FollowGeneButton_gene",
+              args: null,
+            },
+            v3,
           ],
         },
       ],
@@ -242,6 +252,29 @@ const node: ConcreteRequest = (function() {
           concreteType: "Artist",
           plural: true,
           selections: [
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "collections",
+              args: null,
+              storageKey: null,
+            },
+            v2,
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "formatted_nationality_and_birthday",
+              args: null,
+              storageKey: null,
+            },
+            v5,
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "blurb",
+              args: null,
+              storageKey: null,
+            },
             {
               kind: "LinkedField",
               alias: null,
@@ -303,31 +336,7 @@ const node: ConcreteRequest = (function() {
                 },
               ],
             },
-            v2,
             v6,
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "formatted_nationality_and_birthday",
-              args: null,
-              storageKey: null,
-            },
-            v7,
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "blurb",
-              args: null,
-              storageKey: null,
-            },
-            v3,
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "collections",
-              args: null,
-              storageKey: null,
-            },
             {
               kind: "LinkedField",
               alias: null,
@@ -400,10 +409,10 @@ const node: ConcreteRequest = (function() {
                               plural: true,
                               selections: [v2],
                             },
-                            v4,
+                            v3,
                           ],
                         },
-                        v4,
+                        v3,
                       ],
                     },
                   ],
@@ -475,7 +484,7 @@ const node: ConcreteRequest = (function() {
                             },
                           ],
                         },
-                        v4,
+                        v3,
                       ],
                     },
                   ],
@@ -490,9 +499,10 @@ const node: ConcreteRequest = (function() {
               args: null,
               concreteType: "Gene",
               plural: true,
-              selections: [v6, v4],
+              selections: [v6, v3],
             },
-            v4,
+            v3,
+            v7,
           ],
         },
         {
@@ -500,7 +510,7 @@ const node: ConcreteRequest = (function() {
           alias: null,
           name: "genes",
           storageKey: null,
-          args: v5,
+          args: v4,
           concreteType: "Gene",
           plural: true,
           selections: [
@@ -512,7 +522,7 @@ const node: ConcreteRequest = (function() {
               args: null,
               storageKey: null,
             },
-            v7,
+            v5,
             {
               kind: "LinkedField",
               alias: null,
@@ -539,12 +549,13 @@ const node: ConcreteRequest = (function() {
               ],
             },
             v6,
-            v4,
+            v3,
+            v7,
           ],
         },
       ],
     },
   }
 })()
-;(node as any).hash = "47e2df93fd937b62ad131ada557909b2"
+;(node as any).hash = "5e59e66c2896bcd93f1b1ee6720fa731"
 export default node
