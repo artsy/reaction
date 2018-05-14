@@ -52,6 +52,8 @@ const Title = styled.div`
 const Image = styled.img`
   width: 100%;
   margin-bottom: 10px;
+  max-height: 300px;
+  object-fit: cover;
 `
 
 export const ToolTipFooter = styled.div`

@@ -8,6 +8,8 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
   model: string
   showMarketData?: boolean
+  onMouseEnter?: any
+  onMouseLeave?: any
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -33,10 +35,16 @@ export class ToolTip extends React.Component<Props> {
   }
 
   render() {
-    if (!this.props.entity) return null
+    const { entity, onMouseEnter, onMouseLeave, style } = this.props
+
+    if (!entity) return null
 
     return (
-      <ToolTipContainer style={{ ...this.props.style }}>
+      <ToolTipContainer
+        style={{ ...style }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         <Content>
           {this.getToolTip()}
           <ArrowDown />

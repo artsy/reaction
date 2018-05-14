@@ -1,19 +1,21 @@
 import url from "url"
+import { defer } from "lodash"
 import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import Colors from "Assets/Colors"
 
 interface Props {
   url: string
   showMarketData?: boolean
-  hideOnLeaveTimeout?: number
 }
 
 interface State {
   show: boolean
+  inToolTip: boolean
+  maybeHideToolTip: boolean
 }
 
 export class LinkWithTooltip extends Component<Props, State> {
@@ -23,6 +25,8 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   state = {
     show: false,
+    inToolTip: false,
+    maybeHideToolTip: false,
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
@@ -48,6 +52,33 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
+  leftLink = () => {
+    this.setState({ maybeHideToolTip: true })
+  }
+
+  hideToolTIp = () => {
+    this.setState({
+      show: false,
+      inToolTip: false,
+      maybeHideToolTip: false,
+    })
+  }
+
+  maybeHideToolTip = () => {
+    const { inToolTip, maybeHideToolTip } = this.state
+
+    setTimeout(() => {
+      if (!inToolTip && maybeHideToolTip) {
+        this.hideToolTIp()
+      }
+    }, 1000)
+  }
+
+  onLeaveLink = () => {
+    this.leftLink()
+    defer(this.maybeHideToolTip)
+  }
+
   render() {
     const toolTipData = this.entityTypeToEntity()
     const { showMarketData } = this.props
@@ -57,6 +88,10 @@ export class LinkWithTooltip extends Component<Props, State> {
         entity={toolTipData.entity}
         model={toolTipData.entityType}
         showMarketData={showMarketData}
+        onMouseLeave={this.hideToolTIp}
+        onMouseEnter={() => {
+          this.setState({ inToolTip: true })
+        }}
       />
     ) : (
       <div />
@@ -69,9 +104,7 @@ export class LinkWithTooltip extends Component<Props, State> {
         placement="top"
         overlay={toolTip}
         rootClose
-        onHide={() => {
-          this.setState({ show: false })
-        }}
+        onHide={this.hideToolTIp}
       >
         <Link
           target="_blank"
@@ -80,6 +113,7 @@ export class LinkWithTooltip extends Component<Props, State> {
               this.setState({ show: true }, resolve)
             })
           }
+          onMouseLeave={this.onLeaveLink}
         >
           {this.props.children}
         </Link>
@@ -88,11 +122,19 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 }
 
-export const Link = styled.a`
+interface AProps {
+  onMouseEnter: any
+  onMouseLeave: any
+  target: string
+}
+
+const A: StyledFunction<AProps> = styled.a
+
+export const Link = A`
   background-image: none !important;
-  border-bottom: 1.5px dashed ${Colors.graySemibold};
+  border-bottom: 1.25px dashed ${Colors.graySemibold};
   display: inline-block;
-  line-height: 23px;
+  line-height: 21px;
 
   &:hover {
     border-bottom-color: ${Colors.grayDark};
