@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
 import React from "react"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
@@ -10,6 +10,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   showMarketData?: boolean
   onMouseEnter?: any
   onMouseLeave?: any
+  positionLeft?: number
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -35,13 +36,13 @@ export class ToolTip extends React.Component<Props> {
   }
 
   render() {
-    const { entity, onMouseEnter, onMouseLeave, style } = this.props
+    const { entity, onMouseEnter, onMouseLeave, positionLeft } = this.props
 
     if (!entity) return null
 
     return (
       <ToolTipContainer
-        style={{ ...style }}
+        positionLeft={positionLeft}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
@@ -54,8 +55,19 @@ export class ToolTip extends React.Component<Props> {
   }
 }
 
-export const ToolTipContainer = styled.div`
+interface DivProps {
+  onMouseEnter: any
+  onMouseLeave: any
+  positionLeft: number
+}
+
+const Div: StyledFunction<DivProps> = styled.div
+
+export const ToolTipContainer = Div`
   position: absolute;
+  bottom: 95%;
+  z-index: 1;
+  left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
 `
 
 const Content = styled.div`
@@ -64,6 +76,9 @@ const Content = styled.div`
   background: white;
   margin-bottom: 15px;
   width: fit-content;
+  a {
+    background-image: none;
+  }
   ${ArrowContainer} {
     bottom: -15px;
     left: calc(50% - 30px);
