@@ -5,6 +5,10 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   width: 240px;
 }
 
+.c2 a:hover {
+  color: black;
+}
+
 .c10 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +35,10 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 
 .c6 p {
   margin: 0;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c8 {
@@ -81,7 +89,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 .c4 {
   width: 100%;
   margin-bottom: 10px;
-  max-height: 300px;
+  max-height: 160px;
   object-fit: cover;
 }
 
@@ -141,6 +149,9 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 
 .c0 {
   position: absolute;
+  bottom: 95%;
+  z-index: 1;
+  left: 0px;
 }
 
 .c1 {
@@ -153,6 +164,10 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   width: fit-content;
 }
 
+.c1 a {
+  background-image: none;
+}
+
 .c1 .c11 {
   bottom: -15px;
   left: calc(50% - 30px);
@@ -162,7 +177,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -173,6 +187,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
       <a
         className="c3"
         href="gene/capitalist-realism"
+        target="_blank"
       >
         <img
           className="c4"
@@ -266,6 +281,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 .c10 p {
   margin: 0;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c9 {
@@ -305,6 +324,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 .c3 a {
   -webkit-text-decoration: none;
   text-decoration: none;
+  color: black;
+}
+
+.c3 a:hover {
   color: black;
 }
 
@@ -391,6 +414,9 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 .c0 {
   position: absolute;
+  bottom: 95%;
+  z-index: 1;
+  left: 0px;
 }
 
 .c1 {
@@ -403,6 +429,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   width: fit-content;
 }
 
+.c1 a {
+  background-image: none;
+}
+
 .c1 .c12 {
   bottom: -15px;
   left: calc(50% - 30px);
@@ -412,7 +442,6 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -444,6 +473,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           <a
             className="c6"
             href="/artist/nick-mauss"
+            target="_blank"
           >
             <div
               className="c7"
@@ -467,6 +497,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
         </div>
         <a
           href="/artist/nick-mauss"
+          target="_blank"
         >
           <div
             className="c10"

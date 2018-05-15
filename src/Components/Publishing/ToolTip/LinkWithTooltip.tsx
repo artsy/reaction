@@ -78,7 +78,6 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   maybeHideToolTip = () => {
     const { inToolTip, maybeHideToolTip } = this.state
-
     setTimeout(() => {
       if (!inToolTip && maybeHideToolTip) {
         this.hideToolTip()
