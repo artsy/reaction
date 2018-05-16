@@ -41,13 +41,30 @@ describe("LinkWithTooltip", () => {
   }
 
   let props
+  let position
+  const window = {
+    innerHeight: 800
+  }
+
   beforeEach(() => {
     context.onTriggerToolTip = jest.fn()
     props = {
       url: "https://www.artsy.net/artist/nick-mauss",
       text: "Nick Mauss"
     }
+
+    position = {
+      bottom: 1164.25,
+      height: 22.25,
+      left: 254.859375,
+      right: 382.21875,
+      top: 1142,
+      width: 127.359375,
+      x: 254.859375,
+      y: 1142
+    }
   })
+
 
   it("Renders correctly", () => {
     const wrapper = getWrapper(context, props)
@@ -95,6 +112,14 @@ describe("LinkWithTooltip", () => {
     expect(wrapper.state.position.left).toBe(0)
   })
 
+  it("Calls #setupToolTipPosition on #componentDidMount", () => {
+    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    wrapper.setupToolTipPosition = jest.fn()
+
+    wrapper.componentDidMount()
+    expect(wrapper.setupToolTipPosition.mock.calls.length).toBe(1)
+  })
+
   it("Calls #onLeaveLink on mouseLeave", (done) => {
     context.activeToolTip = "nick-mauss"
     const wrapper = getWrapper(context, props)
@@ -113,18 +138,34 @@ describe("LinkWithTooltip", () => {
     })
   })
 
-  describe("#getToolTipPosition", () => {
-    let position = {
-      bottom: 1164.25,
-      height: 22.25,
-      left: 254.859375,
-      right: 382.21875,
-      top: 1142,
-      width: 127.359375,
-      x: 254.859375,
-      y: 1142
-    }
+  it("#setupToolTipPosition sets state with link position and isBelowContent", () => {
+    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    wrapper.setState = jest.fn()
+    wrapper.setupToolTipPosition()
 
+    expect(wrapper.setState.mock.calls[0][0].position.top).toBe(0)
+    expect(wrapper.setState.mock.calls[0][0].isBelowContent).toBe(true)
+  })
+
+  describe("#isBelowContent", () => {
+    it("Returns true if space above link is < 350", () => {
+      position.top = 300
+      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const isBelowContent = wrapper.isBelowContent(position)
+
+      expect(isBelowContent).toBe(true)
+    })
+
+    it("Returns false if space above link is > 350", () => {
+      position.top = 500
+      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const isBelowContent = wrapper.isBelowContent(position)
+
+      expect(isBelowContent).toBe(false)
+    })
+  })
+
+  describe("#getToolTipPosition", () => {
     it("Returns a position for artist links", () => {
       const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
       wrapper.setState({ position })
@@ -145,6 +186,7 @@ describe("LinkWithTooltip", () => {
     })
 
     it("Returns a position for gene links at left window boundary", () => {
+      position.x = 80
       const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("gene")).toBe(-70)

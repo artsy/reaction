@@ -111,7 +111,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
-  getToolTipOrientation = position => {
+  isBelowContent = position => {
     const height = window ? window.innerHeight : 0
     const linkPosition = position.top
     const isBelowContent = height - linkPosition > 350
@@ -122,7 +122,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   setupToolTipPosition = () => {
     if (this.link) {
       const position = findDOMNode(this.link).getBoundingClientRect()
-      const isBelowContent = this.getToolTipOrientation(position)
+      const isBelowContent = this.isBelowContent(position)
 
       this.setState({ position, isBelowContent })
     }

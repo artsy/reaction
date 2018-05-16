@@ -73,11 +73,13 @@ interface DivProps {
 
 export const ToolTipContainer = styled.div.attrs<DivProps>({})`
   position: absolute;
+  z-index: 10;
+  left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
   ${props =>
     props.isBelowContent
       ? `top: calc(100% + 10px);`
-      : `bottom: 95%;`} z-index: 1;
-  left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
+      : `bottom: 95%;
+    `};
 `
 
 const Content = styled.div.attrs<{ isBelowContent?: boolean }>({})`
