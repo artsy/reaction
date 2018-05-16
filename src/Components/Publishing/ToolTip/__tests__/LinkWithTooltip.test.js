@@ -3,9 +3,9 @@ import { defer } from "lodash"
 import { mount } from "enzyme"
 import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists, Genes } from "../../Fixtures/Components"
-import { ContextProvider } from "../../../Artsy"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
+import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
+import { ContextProvider } from "Components/Artsy"
 import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
@@ -16,20 +16,20 @@ describe("LinkWithTooltip", () => {
       artists: { "nick-mauss": Artists[0].artist },
       genes: { "capitalist-realism": Genes[0].gene },
     },
-    onOpenToolTip: jest.fn()
+    onTriggerToolTip: jest.fn()
   }
 
   const getWrapper = (context, props) => {
-    const { activeToolTip, tooltipsData, onOpenToolTip } = context
+    const { activeToolTip, tooltipsData, onTriggerToolTip } = context
     const { text, url } = props
 
     return mount(
       wrapperWithContext(
-        { activeToolTip, tooltipsData, onOpenToolTip },
+        { activeToolTip, tooltipsData, onTriggerToolTip },
         {
           activeToolTip: PropTypes.string,
           tooltipsData: PropTypes.object,
-          onOpenToolTip: PropTypes.func
+          onTriggerToolTip: PropTypes.func
         },
         <ContextProvider>
           <LinkWithTooltip url={url}>
@@ -42,7 +42,7 @@ describe("LinkWithTooltip", () => {
 
   let props
   beforeEach(() => {
-    context.onOpenToolTip = jest.fn()
+    context.onTriggerToolTip = jest.fn()
     props = {
       url: "https://www.artsy.net/artist/nick-mauss",
       text: "Nick Mauss"
@@ -81,13 +81,13 @@ describe("LinkWithTooltip", () => {
     expect(wrapper.text()).toMatch("American, b. 1980")
   })
 
-  it("Calls context.onOpenToolTip on hover", () => {
+  it("Calls context.onTriggerToolTip on hover", () => {
     const wrapper = getWrapper(context, props)
     wrapper
       .find(Link)
       .simulate("mouseEnter")
 
-    expect(context.onOpenToolTip.mock.calls[0][0]).toBe("nick-mauss")
+    expect(context.onTriggerToolTip.mock.calls[0][0]).toBe("nick-mauss")
   })
 
   it("Sets tooltip position on mount", () => {
@@ -106,7 +106,7 @@ describe("LinkWithTooltip", () => {
     expect(instance.state.maybeHideToolTip).toBe(true)
     defer(() => {
       setTimeout(() => {
-        expect(context.onOpenToolTip.mock.calls[0][0]).toBe(null)
+        expect(context.onTriggerToolTip.mock.calls[0][0]).toBe(null)
         expect(instance.state.maybeHideToolTip).toBe(false)
         done()
       }, 750)

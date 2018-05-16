@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { QueryRenderer, graphql } from "react-relay"
-import { ArticleData } from "../Typings"
-import { getArtsySlugsFromArticle } from "../Constants"
+import { ArticleData } from "Components/Publishing/Typings"
+import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { keyBy } from "lodash"
-import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/TooltipsDataLoaderQuery.graphql"
-import * as Artsy from "../../Artsy"
+import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
+import * as Artsy from "Components/Artsy"
 
 interface Props extends Artsy.ContextProps {
   article: ArticleData
@@ -80,17 +80,17 @@ export class TooltipsDataLoader extends Component<Props> {
 
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
-    tooltipsData: PropTypes.object,
-    currentUser: PropTypes.object,
     activeToolTip: PropTypes.any,
-    onOpenToolTip: PropTypes.func,
+    currentUser: PropTypes.object,
+    onTriggerToolTip: PropTypes.func,
+    tooltipsData: PropTypes.object,
   }
 
   state = {
     activeToolTip: null,
   }
 
-  onOpenToolTip = activeToolTip => {
+  onTriggerToolTip = activeToolTip => {
     if (activeToolTip !== this.state.activeToolTip) {
       this.setState({ activeToolTip })
     }
@@ -101,13 +101,13 @@ class TooltipsContextProvider extends Component<any> {
     const { activeToolTip } = this.state
 
     return {
+      activeToolTip,
+      currentUser,
+      onTriggerToolTip: this.onTriggerToolTip,
       tooltipsData: {
         artists,
         genes,
       },
-      currentUser,
-      activeToolTip,
-      onOpenToolTip: this.onOpenToolTip,
     }
   }
 

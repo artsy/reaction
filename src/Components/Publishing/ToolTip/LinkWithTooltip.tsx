@@ -1,11 +1,11 @@
 import url from "url"
 import { defer } from "lodash"
+import { findDOMNode } from "react-dom"
 import React, { Component } from "react"
-import { ToolTip } from "./ToolTip"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
-import { findDOMNode } from "react-dom"
 
 interface Props {
   url: string
@@ -16,12 +16,13 @@ interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
   position: object | null
+  isBelowContent: boolean
 }
 
 export class LinkWithTooltip extends Component<Props, State> {
   static contextTypes = {
     tooltipsData: PropTypes.object,
-    onOpenToolTip: PropTypes.func,
+    onTriggerToolTip: PropTypes.func,
     activeToolTip: PropTypes.any,
   }
 
@@ -31,6 +32,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     inToolTip: false,
     maybeHideToolTip: false,
     position: null,
+    isBelowContent: false,
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
@@ -44,10 +46,11 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.link) {
-      const position = findDOMNode(this.link).getBoundingClientRect()
-      this.setState({ position })
-    }
+    const SetupToolTipPosition = () => defer(this.setupToolTipPosition)
+    this.setupToolTipPosition()
+
+    window.addEventListener("scroll", SetupToolTipPosition)
+    window.addEventListener("resize", SetupToolTipPosition)
   }
 
   entityTypeToEntity() {
@@ -68,7 +71,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   hideToolTip = () => {
-    this.context.onOpenToolTip(null)
+    this.context.onTriggerToolTip(null)
 
     this.setState({
       inToolTip: false,
@@ -107,9 +110,27 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
+  getToolTipOrientation = position => {
+    const height = window ? window.innerHeight : 0
+    const linkPosition = position.top
+    const isBelowContent = height - linkPosition > 350
+
+    return isBelowContent
+  }
+
+  setupToolTipPosition = () => {
+    if (this.link) {
+      const position = findDOMNode(this.link).getBoundingClientRect()
+      const isBelowContent = this.getToolTipOrientation(position)
+
+      this.setState({ position, isBelowContent })
+    }
+  }
+
   render() {
     const { showMarketData } = this.props
-    const { activeToolTip, onOpenToolTip } = this.context
+    const { activeToolTip, onTriggerToolTip } = this.context
+    const { isBelowContent } = this.state
 
     const toolTipData = this.entityTypeToEntity()
     const { entity, entityType } = toolTipData
@@ -121,7 +142,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     return (
       <Link
         onMouseEnter={() => {
-          onOpenToolTip(id && id)
+          onTriggerToolTip(id && id)
         }}
         ref={link => (this.link = link)}
       >
@@ -137,6 +158,7 @@ export class LinkWithTooltip extends Component<Props, State> {
               this.setState({ inToolTip: true })
             }}
             positionLeft={toolTipLeft}
+            isBelowContent={isBelowContent}
           />
         )}
         {show && <Background onMouseLeave={this.onLeaveLink} />}
