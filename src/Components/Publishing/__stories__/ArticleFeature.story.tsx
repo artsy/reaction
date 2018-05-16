@@ -1,33 +1,34 @@
 import { storiesOf } from "@storybook/react"
 import { clone, extend } from "lodash"
 import React from "react"
-import { Article } from "../Article"
-
+import { ContextProvider } from "Components/Artsy"
+import { Article } from "Components/Publishing/Article"
 import {
   BasicArticle,
   FeatureArticle,
   SeriesArticle,
   SponsoredArticle,
   SuperArticle,
-} from "../Fixtures/Articles"
-
+} from "Components/Publishing/Fixtures/Articles"
 import {
   Display,
   HeroSections,
   RelatedCanvas,
   RelatedPanel,
-} from "../Fixtures/Components"
-import { ArticleData } from "../Typings"
+} from "Components/Publishing/Fixtures/Components"
+import { ArticleData } from "Components/Publishing/Typings"
 
 const story = storiesOf("Publishing/Articles/Feature", module)
 
 story
   .add("Fullscreen", () => {
     return (
-      <Article
-        article={FeatureArticle}
-        relatedArticlesForCanvas={RelatedCanvas}
-      />
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+        />
+      </ContextProvider>
     )
   })
   .add("Fullscreen Series", () => {
@@ -37,7 +38,11 @@ story
       relatedArticles: [BasicArticle, SuperArticle],
     } as ArticleData)
 
-    return <Article article={article} />
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
   })
   .add("Split", () => {
     const article = clone({
@@ -48,7 +53,11 @@ story
       },
     } as ArticleData)
 
-    return <Article article={article} />
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
   })
   .add("Basic", () => {
     const article = clone({
@@ -63,23 +72,27 @@ story
     } as ArticleData)
 
     return (
-      <Article
-        article={article}
-        display={Display("image")}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-        isTruncated
-      />
+      <ContextProvider>
+        <Article
+          article={article}
+          display={Display("image")}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          isTruncated
+        />
+      </ContextProvider>
     )
   })
   .add("Super Article", () => {
     const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return (
-      <Article
-        article={article}
-        isSuper
-        relatedArticlesForCanvas={RelatedCanvas}
-      />
+      <ContextProvider>
+        <Article
+          article={article}
+          isSuper
+          relatedArticlesForCanvas={RelatedCanvas}
+        />
+      </ContextProvider>
     )
   })

@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
-import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
-import { StandardArticle } from "../Fixtures/Articles"
-import { ContextProvider } from "../../Artsy"
+import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
+import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
+import { ContextProvider } from "Components/Artsy"
 
 storiesOf("Publishing/ToolTips/Artist", module)
   .add("With Bio", () => {
@@ -65,9 +65,10 @@ storiesOf("Publishing/ToolTips/Artist", module)
       </div>
     )
   })
-  .add("Gene", () => {
-    return (
-      <div style={{ maxWidth: 580, margin: "350px auto" }}>
+storiesOf("Publishing/ToolTips/Gene", module).add("Gene", () => {
+  return (
+    <div style={{ maxWidth: 580, margin: "350px auto" }}>
+      <ContextProvider>
         <TooltipsData article={StandardArticle}>
           <div>
             <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
@@ -80,6 +81,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
             </LinkWithTooltip>
           </div>
         </TooltipsData>
-      </div>
-    )
-  })
+      </ContextProvider>
+    </div>
+  )
+})
