@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { QueryRenderer, graphql } from "react-relay"
 import { ArticleData } from "../Typings"
+import { ArticleProps } from "../Article"
 import { getArtsySlugsFromArticle } from "../Constants"
 import { keyBy } from "lodash"
 import { TooltipsDataLoaderQueryResponse } from "../../../__generated__/TooltipsDataLoaderQuery.graphql"
@@ -10,6 +11,7 @@ import * as Artsy from "../../Artsy"
 interface Props extends Artsy.ContextProps {
   article: ArticleData
   shouldFetchData?: boolean
+  onOpenAuthModal?: ArticleProps["onOpenAuthModal"]
 }
 
 export class TooltipsDataLoader extends Component<Props> {
@@ -24,6 +26,7 @@ export class TooltipsDataLoader extends Component<Props> {
       currentUser,
       relayEnvironment,
       shouldFetchData,
+      onOpenAuthModal,
     } = this.props
 
     const { artists: artistSlugs, genes: geneSlugs } = getArtsySlugsFromArticle(
@@ -68,7 +71,11 @@ export class TooltipsDataLoader extends Component<Props> {
             data[key] = keyBy(col, "id")
           })
           return (
-            <TooltipsContextProvider {...data} currentUser={currentUser}>
+            <TooltipsContextProvider
+              {...data}
+              currentUser={currentUser}
+              onOpenAuthModal={onOpenAuthModal}
+            >
               {children}
             </TooltipsContextProvider>
           )
@@ -82,10 +89,11 @@ class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     tooltipsData: PropTypes.object,
     currentUser: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
   }
 
   getChildContext() {
-    const { artists, currentUser, genes } = this.props
+    const { artists, currentUser, genes, onOpenAuthModal } = this.props
 
     return {
       tooltipsData: {
@@ -93,6 +101,7 @@ class TooltipsContextProvider extends Component<any> {
         genes,
       },
       currentUser,
+      onOpenAuthModal,
     }
   }
 
