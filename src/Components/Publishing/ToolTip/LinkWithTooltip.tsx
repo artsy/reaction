@@ -6,6 +6,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
+import FadeTransition from "Components/Animation/FadeTransition"
 
 interface Props {
   url: string
@@ -148,7 +149,12 @@ export class LinkWithTooltip extends Component<Props, State> {
       >
         {this.props.children}
 
-        {show && (
+        <FadeTransition
+          in={show}
+          mountOnEnter
+          unmountOnExit
+          timeout={{ enter: 200, exit: 250 }}
+        >
           <ToolTip
             entity={entity}
             model={entityType}
@@ -160,7 +166,8 @@ export class LinkWithTooltip extends Component<Props, State> {
             positionLeft={toolTipLeft}
             isBelowContent={isBelowContent}
           />
-        )}
+        </FadeTransition>
+
         {show && <Background onMouseLeave={this.onLeaveLink} />}
       </Link>
     )

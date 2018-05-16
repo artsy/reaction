@@ -90,9 +90,7 @@ const Content = styled.div.attrs<{ isBelowContent?: boolean }>({})`
     background-image: none;
   }
   ${ArrowContainer} {
-    ${props =>
-      props.isBelowContent
-        ? `top: -35px;`
-        : `bottom: -15px;`} left: calc(50% - 30px);
+    left: calc(50% - 30px);
+    ${props => (props.isBelowContent ? `top: -35px;` : `bottom: -15px;`)};
   }
 `
