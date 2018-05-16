@@ -50,7 +50,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
         )}
 
         <Header>
-          <TitleDate href={href}>
+          <TitleDate href={href} target="_blank">
             <Title>{name}</Title>
             {formatted_nationality_and_birthday && (
               <Date>{formatted_nationality_and_birthday}</Date>
@@ -59,7 +59,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
           <FollowArtistButton artist={artists[id] as any} />
         </Header>
 
-        <a href={href}>
+        <a href={href} target="_blank">
           {showMarketData ? (
             <ArtistMarketData artist={props.artist} />
           ) : (
@@ -82,6 +82,9 @@ export const ArtistContainer = styled.div`
   a {
     text-decoration: none;
     color: black;
+    &:hover {
+      color: black;
+    }
   }
 `
 
