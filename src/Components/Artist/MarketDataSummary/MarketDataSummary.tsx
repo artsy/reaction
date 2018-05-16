@@ -18,6 +18,7 @@ const Categories = {
   "top-established": "Top Established",
   "top-emerging": "Top Emerging",
 }
+const orderedCategories = ["blue-chip", "top-established", "top-emerging"]
 
 export class MarketDataSummary extends React.Component<
   MarketDataSummaryProps,
@@ -78,7 +79,11 @@ export class MarketDataSummary extends React.Component<
         return category
       })
 
-      const highestCategory = Object.keys(groupedByCategory)[0]
+      const highestCategory = orderedCategories.filter(
+        category =>
+          groupedByCategory[category] && groupedByCategory[category].length > 0
+      )[0]
+
       return (
         <div>
           {this.renderGalleryCategory(
