@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
-import FadeTransition from "Components/Animation/FadeTransition"
+import FadeTransition from "../../Animation/FadeTransition"
 
 interface Props {
   url: string
