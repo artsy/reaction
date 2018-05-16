@@ -90,10 +90,23 @@ class TooltipsContextProvider extends Component<any> {
     tooltipsData: PropTypes.object,
     currentUser: PropTypes.object,
     onOpenAuthModal: PropTypes.func,
+    activeToolTip: PropTypes.any,
+    onOpenToolTip: PropTypes.func,
+  }
+
+  state = {
+    activeToolTip: null,
+  }
+
+  onOpenToolTip = activeToolTip => {
+    if (activeToolTip !== this.state.activeToolTip) {
+      this.setState({ activeToolTip })
+    }
   }
 
   getChildContext() {
     const { artists, currentUser, genes, onOpenAuthModal } = this.props
+    const { activeToolTip } = this.state
 
     return {
       tooltipsData: {
@@ -102,6 +115,8 @@ class TooltipsContextProvider extends Component<any> {
       },
       currentUser,
       onOpenAuthModal,
+      activeToolTip,
+      onOpenToolTip: this.onOpenToolTip,
     }
   }
 

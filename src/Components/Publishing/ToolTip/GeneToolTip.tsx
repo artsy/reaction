@@ -20,7 +20,7 @@ export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
 
   return (
     <Wrapper>
-      <GeneContainer href={href}>
+      <GeneContainer href={href} target="_blank">
         {url && <Image src={url} />}
         <Title>{name}</Title>
 
@@ -40,6 +40,9 @@ export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
 
 const Wrapper = styled.div`
   width: 240px;
+  a:hover {
+    color: black;
+  }
 `
 
 export const GeneContainer = styled.a`
@@ -56,6 +59,8 @@ const Title = styled.div`
 const Image = styled.img`
   width: 100%;
   margin-bottom: 10px;
+  max-height: 160px;
+  object-fit: cover;
 `
 
 export const ToolTipFooter = styled.div`
