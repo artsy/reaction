@@ -228,7 +228,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
             This is a new feature. 
           </span>
           <a
-            href="mailto:productfeedback@artsy.net?subject=Feedback on article tooltips"
+            href="mailto:productfeedback@artsy.net?subject=Feedback on 'Article Tooltips'"
             target="_blank"
           >
             Tell us what you think.
@@ -519,7 +519,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           This is a new feature. 
         </span>
         <a
-          href="mailto:productfeedback@artsy.net?subject=Feedback on article tooltips"
+          href="mailto:productfeedback@artsy.net?subject=Feedback on 'Article Tooltips'"
           target="_blank"
         >
           Tell us what you think.
