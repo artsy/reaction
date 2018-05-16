@@ -6,7 +6,7 @@ import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { ContextProvider } from "../../../Artsy"
-import { Link, LinkWithTooltip } from "../LinkWithTooltip"
+import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
 describe("LinkWithTooltip", () => {
@@ -100,7 +100,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(context, props)
     const instance = wrapper.childAt(0).childAt(0).instance()
     wrapper
-      .find(Link)
+      .find(Background)
       .simulate("mouseLeave")
 
     expect(instance.state.maybeHideToolTip).toBe(true)

@@ -3,7 +3,7 @@ import { defer } from "lodash"
 import React, { Component } from "react"
 import { ToolTip } from "./ToolTip"
 import PropTypes from "prop-types"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { findDOMNode } from "react-dom"
 
@@ -123,7 +123,6 @@ export class LinkWithTooltip extends Component<Props, State> {
         onMouseEnter={() => {
           onOpenToolTip(id && id)
         }}
-        onMouseLeave={show ? this.onLeaveLink : undefined}
         ref={link => (this.link = link)}
       >
         {this.props.children}
@@ -140,19 +139,13 @@ export class LinkWithTooltip extends Component<Props, State> {
             positionLeft={toolTipLeft}
           />
         )}
+        {show && <Background onMouseLeave={this.onLeaveLink} />}
       </Link>
     )
   }
 }
 
-interface AProps {
-  onMouseEnter: any
-  onMouseLeave: any
-}
-
-const A: StyledFunction<AProps> = styled.div
-
-export const Link = A`
+export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
   background-image: none !important;
   border-bottom: 1.25px dashed ${Colors.graySemibold};
   display: inline-block;
@@ -162,4 +155,11 @@ export const Link = A`
   &:hover {
     border-bottom-color: ${Colors.grayDark};
   }
+`
+export const Background = styled.div`
+  position: absolute;
+  left: 0;
+  top: -10px;
+  bottom: -10px;
+  right: 0;
 `

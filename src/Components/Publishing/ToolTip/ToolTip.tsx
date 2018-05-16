@@ -1,4 +1,4 @@
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import React from "react"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
@@ -61,9 +61,7 @@ interface DivProps {
   positionLeft: number
 }
 
-const Div: StyledFunction<DivProps> = styled.div
-
-export const ToolTipContainer = Div`
+export const ToolTipContainer = styled.div.attrs<DivProps>({})`
   position: absolute;
   bottom: 95%;
   z-index: 1;
