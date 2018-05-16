@@ -82,10 +82,23 @@ class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     tooltipsData: PropTypes.object,
     currentUser: PropTypes.object,
+    activeToolTip: PropTypes.any,
+    onOpenToolTip: PropTypes.func,
+  }
+
+  state = {
+    activeToolTip: null,
+  }
+
+  onOpenToolTip = activeToolTip => {
+    if (activeToolTip !== this.state.activeToolTip) {
+      this.setState({ activeToolTip })
+    }
   }
 
   getChildContext() {
     const { artists, currentUser, genes } = this.props
+    const { activeToolTip } = this.state
 
     return {
       tooltipsData: {
@@ -93,6 +106,8 @@ class TooltipsContextProvider extends Component<any> {
         genes,
       },
       currentUser,
+      activeToolTip,
+      onOpenToolTip: this.onOpenToolTip,
     }
   }
 

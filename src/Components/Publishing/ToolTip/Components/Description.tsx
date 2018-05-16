@@ -28,6 +28,7 @@ const Description = styled.div`
   ${garamond("s15")};
   p {
     margin: 0;
+    ${garamond("s15")};
   }
   margin: 10px 0;
 `

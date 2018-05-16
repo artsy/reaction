@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders classic text properly 1`] = `
+exports[`Text Snapshots renders classic text properly 1`] = `
 .c0 {
   position: relative;
   width: 100%;
@@ -253,7 +253,7 @@ exports[`renders classic text properly 1`] = `
 </div>
 `;
 
-exports[`renders feature text properly 1`] = `
+exports[`Text Snapshots renders feature text properly 1`] = `
 .c0 {
   position: relative;
   width: 100%;
@@ -496,7 +496,7 @@ exports[`renders feature text properly 1`] = `
 </div>
 `;
 
-exports[`renders news text properly 1`] = `
+exports[`Text Snapshots renders news text properly 1`] = `
 .c0 {
   position: relative;
   width: 100%;
@@ -619,16 +619,24 @@ exports[`renders news text properly 1`] = `
 }
 
 .c0 blockquote {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 40px;
-  line-height: 1.1em;
+  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 19px;
+  line-height: 1.5em;
   text-align: left;
   font-weight: normal;
   padding-top: 46px;
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 560px;
+  margin: auto;
+}
+
+.c0 blockquote a {
+  background-size: 1.25px 1px;
 }
 
 .c0 .content-end {
@@ -713,11 +721,11 @@ exports[`renders news text properly 1`] = `
   }
 
   .c0 blockquote {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 34px;
-    line-height: 1.1em;
+    font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
-    margin: 0;
+    font-size: 16px;
+    line-height: 1.1em;
+    margin: 0 10px;
   }
 
   .c0 .content-start {
@@ -739,7 +747,7 @@ exports[`renders news text properly 1`] = `
 </div>
 `;
 
-exports[`renders standard text properly 1`] = `
+exports[`Text Snapshots renders standard text properly 1`] = `
 .c0 {
   position: relative;
   width: 100%;

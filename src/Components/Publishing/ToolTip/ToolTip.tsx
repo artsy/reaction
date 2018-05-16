@@ -8,6 +8,9 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
   model: string
   showMarketData?: boolean
+  onMouseEnter?: any
+  onMouseLeave?: any
+  positionLeft?: number
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -33,10 +36,16 @@ export class ToolTip extends React.Component<Props> {
   }
 
   render() {
-    if (!this.props.entity) return null
+    const { entity, onMouseEnter, onMouseLeave, positionLeft } = this.props
+
+    if (!entity) return null
 
     return (
-      <ToolTipContainer style={{ ...this.props.style }}>
+      <ToolTipContainer
+        positionLeft={positionLeft}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         <Content>
           {this.getToolTip()}
           <ArrowDown />
@@ -46,8 +55,17 @@ export class ToolTip extends React.Component<Props> {
   }
 }
 
-export const ToolTipContainer = styled.div`
+interface DivProps {
+  onMouseEnter: any
+  onMouseLeave: any
+  positionLeft: number
+}
+
+export const ToolTipContainer = styled.div.attrs<DivProps>({})`
   position: absolute;
+  bottom: 95%;
+  z-index: 1;
+  left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
 `
 
 const Content = styled.div`
@@ -56,6 +74,9 @@ const Content = styled.div`
   background: white;
   margin-bottom: 15px;
   width: fit-content;
+  a {
+    background-image: none;
+  }
   ${ArrowContainer} {
     bottom: -15px;
     left: calc(50% - 30px);
