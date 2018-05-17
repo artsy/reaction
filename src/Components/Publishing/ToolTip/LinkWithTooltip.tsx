@@ -1,11 +1,12 @@
 import url from "url"
 import { defer } from "lodash"
+import { findDOMNode } from "react-dom"
 import React, { Component } from "react"
-import { ToolTip } from "./ToolTip"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
-import { findDOMNode } from "react-dom"
+import FadeTransition from "../../Animation/FadeTransition"
 
 interface Props {
   url: string
@@ -16,21 +17,24 @@ interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
   position: object | null
+  orientation?: string
 }
 
 export class LinkWithTooltip extends Component<Props, State> {
   static contextTypes = {
     tooltipsData: PropTypes.object,
-    onOpenToolTip: PropTypes.func,
+    onTriggerToolTip: PropTypes.func,
     activeToolTip: PropTypes.any,
   }
 
   public link: any
+  public SetupToolTipPosition: any
 
   state = {
     inToolTip: false,
     maybeHideToolTip: false,
     position: null,
+    orientation: "up",
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
@@ -44,10 +48,16 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.link) {
-      const position = findDOMNode(this.link).getBoundingClientRect()
-      this.setState({ position })
-    }
+    this.SetupToolTipPosition = () => defer(this.setupToolTipPosition)
+    this.setupToolTipPosition()
+
+    window.addEventListener("scroll", this.SetupToolTipPosition)
+    window.addEventListener("resize", this.SetupToolTipPosition)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.SetupToolTipPosition)
+    window.removeEventListener("resize", this.SetupToolTipPosition)
   }
 
   entityTypeToEntity() {
@@ -68,7 +78,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   hideToolTip = () => {
-    this.context.onOpenToolTip(null)
+    this.context.onTriggerToolTip(null)
 
     this.setState({
       inToolTip: false,
@@ -107,9 +117,27 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
+  getOrientation = position => {
+    const height = window ? window.innerHeight : 0
+    const linkPosition = position.top
+    const orientation = height - linkPosition > 350 ? "down" : "up"
+
+    return orientation
+  }
+
+  setupToolTipPosition = () => {
+    if (this.link) {
+      const position = findDOMNode(this.link).getBoundingClientRect()
+      const orientation = this.getOrientation(position)
+
+      this.setState({ position, orientation })
+    }
+  }
+
   render() {
-    const { showMarketData } = this.props
-    const { activeToolTip, onOpenToolTip } = this.context
+    const { showMarketData, url } = this.props
+    const { activeToolTip, onTriggerToolTip } = this.context
+    const { orientation } = this.state
 
     const toolTipData = this.entityTypeToEntity()
     const { entity, entityType } = toolTipData
@@ -121,13 +149,20 @@ export class LinkWithTooltip extends Component<Props, State> {
     return (
       <Link
         onMouseEnter={() => {
-          onOpenToolTip(id && id)
+          onTriggerToolTip(id && id)
         }}
         ref={link => (this.link = link)}
       >
-        {this.props.children}
+        <PrimaryLink href={url} target="_blank">
+          {this.props.children}
+        </PrimaryLink>
 
-        {show && (
+        <FadeTransition
+          in={show}
+          mountOnEnter
+          unmountOnExit
+          timeout={{ enter: 200, exit: 250 }}
+        >
           <ToolTip
             entity={entity}
             model={entityType}
@@ -137,25 +172,38 @@ export class LinkWithTooltip extends Component<Props, State> {
               this.setState({ inToolTip: true })
             }}
             positionLeft={toolTipLeft}
+            orientation={orientation}
           />
-        )}
+        </FadeTransition>
+
         {show && <Background onMouseLeave={this.onLeaveLink} />}
       </Link>
     )
   }
 }
 
-export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
+const PrimaryLink = styled.a`
   background-image: none !important;
+  text-decoration: none;
+  color: black;
+  line-height: 20px;
   border-bottom: 1.25px dashed ${Colors.graySemibold};
-  display: inline-block;
-  line-height: 21px;
-  position: relative;
+  z-index: 0;
+`
 
+export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
   &:hover {
-    border-bottom-color: ${Colors.grayDark};
+    ${PrimaryLink} {
+      opacity: 0.65;
+      border-bottom-color: ${Colors.grayDark};
+      color: ${Colors.grayDark};
+    }
   }
 `
+
 export const Background = styled.div`
   position: absolute;
   left: 0;

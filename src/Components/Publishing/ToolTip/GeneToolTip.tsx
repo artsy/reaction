@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
+import { getFullArtsyHref } from "../Constants"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
@@ -19,7 +20,7 @@ export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
 
   return (
     <Wrapper>
-      <GeneContainer href={href} target="_blank">
+      <GeneContainer href={getFullArtsyHref(href)} target="_blank">
         {url && <Image src={url} />}
         <Title>{name}</Title>
 
