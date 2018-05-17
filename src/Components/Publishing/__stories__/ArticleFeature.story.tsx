@@ -31,11 +31,26 @@ story
       </ContextProvider>
     )
   })
-  .add("Fullscreen Series", () => {
+  .add("Fullscreen (series)", () => {
     const article = clone({
       ...SponsoredArticle,
       seriesArticle: SeriesArticle,
       relatedArticles: [BasicArticle, SuperArticle],
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
+  })
+  .add("Text", () => {
+    const article = clone({
+      ...FeatureArticle,
+      hero_section: {
+        type: "text",
+        url: FeatureArticle.hero_section.url,
+      },
     } as ArticleData)
 
     return (
@@ -92,6 +107,29 @@ story
           article={article}
           isSuper
           relatedArticlesForCanvas={RelatedCanvas}
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (bio)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+          showTooltips
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (data)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+          showTooltips
+          showToolTipMarketData
         />
       </ContextProvider>
     )

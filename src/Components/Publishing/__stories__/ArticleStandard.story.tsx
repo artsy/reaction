@@ -73,7 +73,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           relatedArticlesForCanvas={RelatedCanvas}
           emailSignupUrl="#"
           showTooltips
-          showToolTipMarketData
         />
       </ContextProvider>
     )

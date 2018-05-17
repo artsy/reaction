@@ -26,7 +26,8 @@ export const ToolTipDescription: React.SFC<Props> = props => {
 
 const Description = styled.div`
   ${garamond("s15")};
-  p {
+  p,
+  p:first-child:first-letter {
     margin: 0;
     ${garamond("s15")};
   }
