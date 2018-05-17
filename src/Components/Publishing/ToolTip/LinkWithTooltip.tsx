@@ -129,7 +129,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   render() {
-    const { showMarketData } = this.props
+    const { showMarketData, url } = this.props
     const { activeToolTip, onTriggerToolTip } = this.context
     const { isBelowContent } = this.state
 
@@ -147,7 +147,9 @@ export class LinkWithTooltip extends Component<Props, State> {
         }}
         ref={link => (this.link = link)}
       >
-        {this.props.children}
+        <PrimaryLink href={url} target="_blank">
+          {this.props.children}
+        </PrimaryLink>
 
         <FadeTransition
           in={show}
@@ -175,16 +177,22 @@ export class LinkWithTooltip extends Component<Props, State> {
 }
 
 export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
-  background-image: none !important;
-  border-bottom: 1.25px dashed ${Colors.graySemibold};
   display: inline-block;
-  line-height: 21px;
   position: relative;
+`
 
+const PrimaryLink = styled.a`
+  background-image: none !important;
+  text-decoration: none;
+  color: black;
+  line-height: 20px;
+  border-bottom: 1.25px dashed ${Colors.graySemibold};
+  z-index: 0;
   &:hover {
     border-bottom-color: ${Colors.grayDark};
   }
 `
+
 export const Background = styled.div`
   position: absolute;
   left: 0;

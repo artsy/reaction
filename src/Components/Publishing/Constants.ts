@@ -42,6 +42,11 @@ export const getFullEditorialHref = (type, slug) =>
   `https://www.artsy.net/${type}/${slug}`
 
 /**
+ * Absolute path to artsy entity
+ */
+export const getFullArtsyHref = slug => `https://www.artsy.net/${slug}`
+
+/**
  * ByLine helpers
  * TODO: Move this into some kind of utils folder
  */
