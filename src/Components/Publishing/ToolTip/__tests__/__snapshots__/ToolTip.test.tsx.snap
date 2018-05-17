@@ -33,7 +33,8 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   margin: 10px 0;
 }
 
-.c6 p {
+.c6 p,
+.c6 p:first-child:first-letter {
   margin: 0;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -186,7 +187,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
     >
       <a
         className="c3"
-        href="gene/capitalist-realism"
+        href="https://www.artsy.net/gene/capitalist-realism"
         target="_blank"
       >
         <img
@@ -279,7 +280,8 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   margin: 10px 0;
 }
 
-.c10 p {
+.c10 p,
+.c10 p:first-child:first-letter {
   margin: 0;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
