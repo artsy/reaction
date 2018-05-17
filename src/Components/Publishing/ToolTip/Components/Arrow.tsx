@@ -32,10 +32,11 @@ const ArrowBody = styled.div.attrs<Props>({})`
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
+  z-index: 1;
   ${props =>
     props.up
       ? `border-bottom: 20px solid white;`
-      : `border-top: 20px solid white;`} z-index: 1;
+      : `border-top: 20px solid white;`};
 `
 
 const ArrowShadow = styled.div.attrs<Props>({})`
@@ -45,6 +46,7 @@ const ArrowShadow = styled.div.attrs<Props>({})`
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
   ${props =>
     props.up
       ? `
@@ -54,5 +56,5 @@ const ArrowShadow = styled.div.attrs<Props>({})`
       : `
       border-top: 15px solid white;
       top: 5px;
-    `} filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+    `};
 `

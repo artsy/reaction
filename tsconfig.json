@@ -17,8 +17,7 @@
     "rootDir": "src",
     "target": "es2015",
     "paths": {
-      "Assets/*": ["./Assets/*"],
-      "Components/*": ["./Components/*"]
+      "Assets/*": ["./Assets/*"]
     }
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React from "react"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
-import { Arrow, ArrowContainer } from "./Components/ArrowDown"
+import { Arrow, ArrowContainer } from "./Components/Arrow"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object

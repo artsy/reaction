@@ -131,8 +131,8 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 20px solid white;
   z-index: 1;
+  border-top: 20px solid white;
 }
 
 .c14 {
@@ -142,10 +142,10 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid white;
-  top: 5px;
   -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+  border-top: 15px solid white;
+  top: 5px;
 }
 
 .c0 {
@@ -397,8 +397,8 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 20px solid white;
   z-index: 1;
+  border-top: 20px solid white;
 }
 
 .c15 {
@@ -408,10 +408,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid white;
-  top: 5px;
   -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+  border-top: 15px solid white;
+  top: 5px;
 }
 
 .c0 {
