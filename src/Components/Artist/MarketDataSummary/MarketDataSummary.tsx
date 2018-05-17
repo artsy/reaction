@@ -8,10 +8,10 @@ import { unica } from "Assets/Fonts"
 const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};
 `
-
-export interface MarketDataSummaryProps
-  extends RelayProps,
-    React.HTMLProps<MarketDataSummary> {}
+import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
+interface Props extends React.HTMLProps<MarketDataSummary> {
+  artist: MarketDataSummary_artist
+}
 
 const Categories = {
   "blue-chip": "Blue Chip",
@@ -20,10 +20,7 @@ const Categories = {
 }
 const orderedCategories = ["blue-chip", "top-established", "top-emerging"]
 
-export class MarketDataSummary extends React.Component<
-  MarketDataSummaryProps,
-  null
-> {
+export class MarketDataSummary extends React.Component<Props, null> {
   renderGalleryCategory(categorySlug, partnerCount) {
     let introSentence
     const category = Categories[categorySlug]
@@ -175,30 +172,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  artist: {
-    _id: string
-    collections: string[] | null
-    highlights: {
-      partners: {
-        edges: Array<{
-          node: {
-            categories: Array<{
-              id: string
-            }> | null
-          } | null
-        }> | null
-      } | null
-    } | null
-    auctionResults: {
-      edges: Array<{
-        node: {
-          price_realized: {
-            display: string | null
-          }
-        } | null
-      }> | null
-    } | null
-  }
-}
