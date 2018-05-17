@@ -15,13 +15,13 @@ describe("snapshots", () => {
   it("renders the display panel with an image", () => {
     const displayPanel = renderer
       .create(
-      <DisplayPanel
-        unit={UnitPanel}
-        campaign={Campaign}
-        tracking={{
-          trackEvent: jest.fn(),
-        }}
-      />
+        <DisplayPanel
+          unit={UnitPanel}
+          campaign={Campaign}
+          tracking={{
+            trackEvent: jest.fn(),
+          }}
+        />
       )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
@@ -30,13 +30,13 @@ describe("snapshots", () => {
   it("renders the display panel with video", () => {
     const displayPanel = renderer
       .create(
-      <DisplayPanel
-        unit={UnitPanelVideo}
-        campaign={Campaign}
-        tracking={{
-          trackEvent: jest.fn(),
-        }}
-      />
+        <DisplayPanel
+          unit={UnitPanelVideo}
+          campaign={Campaign}
+          tracking={{
+            trackEvent: jest.fn(),
+          }}
+        />
       )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
@@ -171,6 +171,21 @@ describe("units", () => {
           label: "Display ad play video",
         })
       )
+    })
+
+    it("calls renderPixelTracker with a unit object", () => {
+      const spy = jest.fn()
+      const displayPanel = renderer.create(
+        <DisplayPanel
+          unit={UnitPanelVideo}
+          campaign={Campaign}
+          tracking={{
+            trackEvent: jest.fn(),
+          }}
+          renderPixelTracker={spy}
+        />
+      )
+      expect(spy).toBeCalledWith(UnitPanelVideo)
     })
   })
 
