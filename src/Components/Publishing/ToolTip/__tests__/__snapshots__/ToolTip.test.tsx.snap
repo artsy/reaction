@@ -119,40 +119,11 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   flex-direction: column;
 }
 
-.c12 {
-  position: relative;
-}
-
-.c13 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  z-index: 1;
-  border-top: 20px solid white;
-}
-
-.c14 {
-  position: absolute;
-  left: 5px;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  border-top: 15px solid white;
-  top: 5px;
-}
-
 .c0 {
   position: absolute;
   z-index: 10;
   left: 0px;
-  bottom: 95%;
+  top: calc(100% + 10px);
 }
 
 .c1 {
@@ -169,7 +140,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   background-image: none;
 }
 
-.c1 .c11 {
+.c1 .file__ArrowContainer-yu39to-0 {
   left: calc(50% - 30px);
   bottom: -15px;
 }
@@ -178,9 +149,11 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
+  orientation={undefined}
 >
   <div
     className="c1"
+    orientation={undefined}
   >
     <div
       className="c2"
@@ -236,16 +209,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
           </a>
         </div>
       </div>
-    </div>
-    <div
-      className="c11 c12"
-    >
-      <div
-        className="c13"
-      />
-      <div
-        className="c14"
-      />
     </div>
   </div>
 </div>
@@ -385,40 +348,11 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   justify-content: space-between;
 }
 
-.c13 {
-  position: relative;
-}
-
-.c14 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  z-index: 1;
-  border-top: 20px solid white;
-}
-
-.c15 {
-  position: absolute;
-  left: 5px;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  border-top: 15px solid white;
-  top: 5px;
-}
-
 .c0 {
   position: absolute;
   z-index: 10;
   left: 0px;
-  bottom: 95%;
+  top: calc(100% + 10px);
 }
 
 .c1 {
@@ -435,7 +369,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   background-image: none;
 }
 
-.c1 .c12 {
+.c1 .file__ArrowContainer-yu39to-0 {
   left: calc(50% - 30px);
   bottom: -15px;
 }
@@ -444,9 +378,11 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
+  orientation={undefined}
 >
   <div
     className="c1"
+    orientation={undefined}
   >
     <div
       className="c2"
@@ -527,16 +463,6 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           Tell us what you think.
         </a>
       </div>
-    </div>
-    <div
-      className="c12 c13"
-    >
-      <div
-        className="c14"
-      />
-      <div
-        className="c15"
-      />
     </div>
   </div>
 </div>

@@ -2,22 +2,20 @@ import styled from "styled-components"
 import React from "react"
 
 interface Props {
-  up?: boolean
+  orientation?: string
 }
 
 export const Arrow: React.SFC<Props> = props => {
-  const { up } = props
-
   return (
     <ArrowContainer>
-      <ArrowBody up={up} />
-      <ArrowShadow up={up} />
+      <ArrowBody {...props} />
+      <ArrowShadow {...props} />
     </ArrowContainer>
   )
 }
 
 Arrow.defaultProps = {
-  up: false,
+  orientation: "up",
 }
 
 export const ArrowContainer = styled.div`
@@ -34,7 +32,7 @@ const ArrowBody = styled.div.attrs<Props>({})`
   border-right: 20px solid transparent;
   z-index: 1;
   ${props =>
-    props.up
+    props.orientation === "up"
       ? `border-bottom: 20px solid white;`
       : `border-top: 20px solid white;`};
 `
@@ -48,7 +46,7 @@ const ArrowShadow = styled.div.attrs<Props>({})`
   border-right: 15px solid transparent;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
   ${props =>
-    props.up
+    props.orientation === "up"
       ? `
       border-bottom: 15px solid white;
       top: 0px;

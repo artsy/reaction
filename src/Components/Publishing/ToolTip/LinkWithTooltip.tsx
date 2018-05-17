@@ -17,7 +17,7 @@ interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
   position: object | null
-  isBelowContent: boolean
+  orientation?: string
 }
 
 export class LinkWithTooltip extends Component<Props, State> {
@@ -28,12 +28,13 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   public link: any
+  public SetupToolTipPosition: any
 
   state = {
     inToolTip: false,
     maybeHideToolTip: false,
     position: null,
-    isBelowContent: false,
+    orientation: "up",
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
@@ -47,11 +48,16 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const SetupToolTipPosition = () => defer(this.setupToolTipPosition)
+    this.SetupToolTipPosition = () => defer(this.setupToolTipPosition)
     this.setupToolTipPosition()
 
-    window.addEventListener("scroll", SetupToolTipPosition)
-    window.addEventListener("resize", SetupToolTipPosition)
+    window.addEventListener("scroll", this.SetupToolTipPosition)
+    window.addEventListener("resize", this.SetupToolTipPosition)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.SetupToolTipPosition)
+    window.removeEventListener("resize", this.SetupToolTipPosition)
   }
 
   entityTypeToEntity() {
@@ -111,27 +117,27 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
-  isBelowContent = position => {
+  getOrientation = position => {
     const height = window ? window.innerHeight : 0
     const linkPosition = position.top
-    const isBelowContent = height - linkPosition > 350
+    const orientation = height - linkPosition > 350 ? "down" : "up"
 
-    return isBelowContent
+    return orientation
   }
 
   setupToolTipPosition = () => {
     if (this.link) {
       const position = findDOMNode(this.link).getBoundingClientRect()
-      const isBelowContent = this.isBelowContent(position)
+      const orientation = this.getOrientation(position)
 
-      this.setState({ position, isBelowContent })
+      this.setState({ position, orientation })
     }
   }
 
   render() {
     const { showMarketData, url } = this.props
     const { activeToolTip, onTriggerToolTip } = this.context
-    const { isBelowContent } = this.state
+    const { orientation } = this.state
 
     const toolTipData = this.entityTypeToEntity()
     const { entity, entityType } = toolTipData
@@ -166,7 +172,7 @@ export class LinkWithTooltip extends Component<Props, State> {
               this.setState({ inToolTip: true })
             }}
             positionLeft={toolTipLeft}
-            isBelowContent={isBelowContent}
+            orientation={orientation}
           />
         </FadeTransition>
 

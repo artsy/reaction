@@ -138,30 +138,30 @@ describe("LinkWithTooltip", () => {
     })
   })
 
-  it("#setupToolTipPosition sets state with link position and isBelowContent", () => {
+  it("#setupToolTipPosition sets state with link position and getOrientation", () => {
     const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
     wrapper.setState = jest.fn()
     wrapper.setupToolTipPosition()
 
     expect(wrapper.setState.mock.calls[0][0].position.top).toBe(0)
-    expect(wrapper.setState.mock.calls[0][0].isBelowContent).toBe(true)
+    expect(wrapper.setState.mock.calls[0][0].orientation).toBe("down")
   })
 
-  describe("#isBelowContent", () => {
-    it("Returns true if space above link is < 350", () => {
+  describe("#getOrientation", () => {
+    it("Returns 'down' if space above link is < 350", () => {
       position.top = 300
       const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
-      const isBelowContent = wrapper.isBelowContent(position)
+      const getOrientation = wrapper.getOrientation(position)
 
-      expect(isBelowContent).toBe(true)
+      expect(getOrientation).toBe("down")
     })
 
-    it("Returns false if space above link is > 350", () => {
+    it("Returns 'up' if space above link is > 350", () => {
       position.top = 500
       const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
-      const isBelowContent = wrapper.isBelowContent(position)
+      const getOrientation = wrapper.getOrientation(position)
 
-      expect(isBelowContent).toBe(false)
+      expect(getOrientation).toBe("up")
     })
   })
 
