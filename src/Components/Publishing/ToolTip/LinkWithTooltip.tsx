@@ -176,11 +176,6 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 }
 
-export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
-  display: inline-block;
-  position: relative;
-`
-
 const PrimaryLink = styled.a`
   background-image: none !important;
   text-decoration: none;
@@ -188,8 +183,18 @@ const PrimaryLink = styled.a`
   line-height: 20px;
   border-bottom: 1.25px dashed ${Colors.graySemibold};
   z-index: 0;
+`
+
+export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
   &:hover {
-    border-bottom-color: ${Colors.grayDark};
+    ${PrimaryLink} {
+      opacity: 0.65;
+      border-bottom-color: ${Colors.grayDark};
+      color: ${Colors.grayDark};
+    }
   }
 `
 
