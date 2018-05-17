@@ -18,6 +18,7 @@ export const ToolTipDescription: React.SFC<Props> = props => {
           source={text}
           containerTagName="span"
           disallowedTypes={["Link"]}
+          unwrapDisallowed
         />
       </Truncator>
     </Description>
