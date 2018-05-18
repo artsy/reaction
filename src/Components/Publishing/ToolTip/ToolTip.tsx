@@ -2,10 +2,11 @@ import styled from "styled-components"
 import React from "react"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
-import { ArrowDown, ArrowContainer } from "./Components/ArrowDown"
+import { Arrow, ArrowContainer } from "./Components/Arrow"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
+  orientation?: string
   model: string
   showMarketData?: boolean
   onMouseEnter?: any
@@ -36,19 +37,33 @@ export class ToolTip extends React.Component<Props> {
   }
 
   render() {
-    const { entity, onMouseEnter, onMouseLeave, positionLeft } = this.props
+    const {
+      entity,
+      orientation,
+      onMouseEnter,
+      onMouseLeave,
+      positionLeft,
+    } = this.props
 
     if (!entity) return null
 
     return (
       <ToolTipContainer
-        positionLeft={positionLeft}
+        orientation={orientation}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        positionLeft={positionLeft}
       >
-        <Content>
+        <Content orientation={orientation}>
+          {orientation === "down" && (
+            // point up from below content
+            <Arrow orientation="up" />
+          )}
           {this.getToolTip()}
-          <ArrowDown />
+          {orientation === "up" && (
+            // point down from above content
+            <Arrow orientation="down" />
+          )}
         </Content>
       </ToolTipContainer>
     )
@@ -56,6 +71,7 @@ export class ToolTip extends React.Component<Props> {
 }
 
 interface DivProps {
+  orientation: string
   onMouseEnter: any
   onMouseLeave: any
   positionLeft: number
@@ -63,12 +79,13 @@ interface DivProps {
 
 export const ToolTipContainer = styled.div.attrs<DivProps>({})`
   position: absolute;
-  bottom: 95%;
-  z-index: 1;
+  z-index: 10;
   left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
+  ${props =>
+    props.orientation === "up" ? `bottom: 95%;` : `top: calc(100% + 10px);`};
 `
 
-const Content = styled.div`
+const Content = styled.div.attrs<{ orientation: string }>({})`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
@@ -78,7 +95,8 @@ const Content = styled.div`
     background-image: none;
   }
   ${ArrowContainer} {
-    bottom: -15px;
     left: calc(50% - 30px);
+    ${props =>
+      props.orientation === "down" ? `top: -35px;` : `bottom: -15px;`};
   }
 `

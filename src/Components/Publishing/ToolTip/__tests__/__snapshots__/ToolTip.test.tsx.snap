@@ -33,7 +33,8 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   margin: 10px 0;
 }
 
-.c6 p {
+.c6 p,
+.c6 p:first-child:first-letter {
   margin: 0;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -118,40 +119,11 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   flex-direction: column;
 }
 
-.c12 {
-  position: relative;
-}
-
-.c13 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid white;
-  z-index: 1;
-}
-
-.c14 {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid white;
-  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-}
-
 .c0 {
   position: absolute;
-  bottom: 95%;
-  z-index: 1;
+  z-index: 10;
   left: 0px;
+  top: calc(100% + 10px);
 }
 
 .c1 {
@@ -168,25 +140,27 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   background-image: none;
 }
 
-.c1 .c11 {
-  bottom: -15px;
+.c1 .file__ArrowContainer-yu39to-0 {
   left: calc(50% - 30px);
+  bottom: -15px;
 }
 
 <div
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
+  orientation={undefined}
 >
   <div
     className="c1"
+    orientation={undefined}
   >
     <div
       className="c2"
     >
       <a
         className="c3"
-        href="gene/capitalist-realism"
+        href="https://www.artsy.net/gene/capitalist-realism"
         target="_blank"
       >
         <img
@@ -204,7 +178,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
           <div
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —</em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists , , and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of , with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of . The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
+                "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —Gerhard Richter</em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists Gerhard Richter, Sigmar Polke, and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of Pop Art, with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of Socialist Realism. The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
               }
             }
           />
@@ -235,16 +209,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
           </a>
         </div>
       </div>
-    </div>
-    <div
-      className="c11 c12"
-    >
-      <div
-        className="c13"
-      />
-      <div
-        className="c14"
-      />
     </div>
   </div>
 </div>
@@ -279,7 +243,8 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   margin: 10px 0;
 }
 
-.c10 p {
+.c10 p,
+.c10 p:first-child:first-letter {
   margin: 0;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -383,40 +348,11 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   justify-content: space-between;
 }
 
-.c13 {
-  position: relative;
-}
-
-.c14 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid white;
-  z-index: 1;
-}
-
-.c15 {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid white;
-  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
-}
-
 .c0 {
   position: absolute;
-  bottom: 95%;
-  z-index: 1;
+  z-index: 10;
   left: 0px;
+  top: calc(100% + 10px);
 }
 
 .c1 {
@@ -433,18 +369,20 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   background-image: none;
 }
 
-.c1 .c12 {
-  bottom: -15px;
+.c1 .file__ArrowContainer-yu39to-0 {
   left: calc(50% - 30px);
+  bottom: -15px;
 }
 
 <div
   className="c0"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
+  orientation={undefined}
 >
   <div
     className="c1"
+    orientation={undefined}
   >
     <div
       className="c2"
@@ -505,7 +443,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
             <div
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of  prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
+                  "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of silkscreen prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
                 }
               }
             />
@@ -525,16 +463,6 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           Tell us what you think.
         </a>
       </div>
-    </div>
-    <div
-      className="c12 c13"
-    >
-      <div
-        className="c14"
-      />
-      <div
-        className="c15"
-      />
     </div>
   </div>
 </div>

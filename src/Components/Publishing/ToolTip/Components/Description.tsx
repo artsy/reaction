@@ -18,6 +18,7 @@ export const ToolTipDescription: React.SFC<Props> = props => {
           source={text}
           containerTagName="span"
           disallowedTypes={["Link"]}
+          unwrapDisallowed
         />
       </Truncator>
     </Description>
@@ -26,7 +27,8 @@ export const ToolTipDescription: React.SFC<Props> = props => {
 
 const Description = styled.div`
   ${garamond("s15")};
-  p {
+  p,
+  p:first-child:first-letter {
     margin: 0;
     ${garamond("s15")};
   }
