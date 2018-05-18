@@ -40,8 +40,8 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
-  renderPixelTracker(unit) {
-    let url = unit.pixel_tracking_code
+  renderPixelTracker({ pixel_tracking_code }) {
+    let url = pixel_tracking_code
     if (!url) {
       return null
     }
@@ -53,7 +53,7 @@ export class StandardLayout extends React.Component<
       )
     }
 
-    // handle doubleclick
+    // TODO: handle doubleclick
     return <TrackerImage width={1} height={1} src={url} />
   }
 

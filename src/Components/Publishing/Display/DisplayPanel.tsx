@@ -88,7 +88,7 @@ export class DisplayPanel extends Component<Props, State> {
 
   @trackImpression(() => "panel")
   trackImpression() {
-    // Add 3rd party impression support
+    // noop
   }
 
   // TODO: This could be shared with <CanvasVideo />
