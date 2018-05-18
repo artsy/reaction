@@ -10,67 +10,84 @@ import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artis
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
+import track from "react-tracking"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean
   artist: ArtistToolTip_artist
+  tracking?: any
 }
 
-export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
-  props,
-  context
-) => {
-  const {
-    blurb,
-    carousel,
-    formatted_nationality_and_birthday,
-    href,
-    id,
-    name,
-  } = props.artist
-  const { showMarketData } = props
-  const displayImages = map(carousel.images.slice(0, 2), "resized")
-  const images = fillwidthDimensions(displayImages, 320, 15, 150)
-  const { artists } = context.tooltipsData
+export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
+  static contextTypes = {
+    tooltipsData: PropTypes.object,
+  }
 
-  return (
-    <Wrapper>
-      <ArtistContainer>
-        {images && (
-          <Images href={href}>
-            {images.map((img, i) => (
-              <img
-                key={i}
-                src={img.__id}
-                width={img.width}
-                height={img.height}
-              />
-            ))}
-          </Images>
-        )}
+  trackClick = () => {
+    const { tracking } = this.props
+    const { href } = this.props.artist
 
-        <Header>
-          <TitleDate href={href} target="_blank">
-            <Title>{name}</Title>
-            {formatted_nationality_and_birthday && (
-              <Date>{formatted_nationality_and_birthday}</Date>
-            )}
-          </TitleDate>
-          <FollowArtistButton artist={artists[id] as any} />
-        </Header>
+    tracking.trackEvent({
+      action: "Click",
+      type: "intext_tooltip",
+      context_module: "tooltip",
+      destination_path: href,
+    })
+  }
 
-        <a href={href} target="_blank">
-          {showMarketData ? (
-            <ArtistMarketData artist={props.artist} />
-          ) : (
-            blurb && <ToolTipDescription text={blurb} />
+  render() {
+    const {
+      blurb,
+      carousel,
+      formatted_nationality_and_birthday,
+      href,
+      id,
+      name,
+    } = this.props.artist
+    const { showMarketData, artist } = this.props
+    const displayImages = map(carousel.images.slice(0, 2), "resized")
+    const images = fillwidthDimensions(displayImages, 320, 15, 150)
+    const { artists } = this.context.tooltipsData
+
+    return (
+      <Wrapper>
+        <ArtistContainer>
+          {images && (
+            <Images href={href} onClick={this.trackClick}>
+              {images.map((img, i) => (
+                <img
+                  key={i}
+                  src={img.__id}
+                  width={img.width}
+                  height={img.height}
+                />
+              ))}
+            </Images>
           )}
-        </a>
-      </ArtistContainer>
 
-      <NewFeature />
-    </Wrapper>
-  )
+          <Header>
+            <TitleDate href={href} target="_blank" onClick={this.trackClick}>
+              <Title>{name}</Title>
+              {formatted_nationality_and_birthday && (
+                <Date>{formatted_nationality_and_birthday}</Date>
+              )}
+            </TitleDate>
+            <FollowArtistButton artist={artists[id] as any} />
+          </Header>
+
+          <a href={href} target="_blank" onClick={this.trackClick}>
+            {showMarketData ? (
+              <ArtistMarketData artist={artist} />
+            ) : (
+              blurb && <ToolTipDescription text={blurb} />
+            )}
+          </a>
+        </ArtistContainer>
+
+        <NewFeature />
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`
@@ -170,6 +187,4 @@ export const ArtistTooltipContainer = createFragmentContainer(
   `
 )
 
-ArtistToolTip.contextTypes = {
-  tooltipsData: PropTypes.object,
-}
+export default track()(ArtistTooltipContainer)

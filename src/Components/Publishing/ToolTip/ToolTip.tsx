@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import { ArtistTooltipContainer } from "./ArtistToolTip"
+import ArtistTooltip from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
 import { Arrow, ArrowContainer } from "./Components/Arrow"
 
@@ -21,7 +21,7 @@ export class ToolTip extends React.Component<Props> {
     switch (model) {
       case "artist": {
         return (
-          <ArtistTooltipContainer
+          <ArtistTooltip
             showMarketData={showMarketData}
             artist={entity as any}
           />
