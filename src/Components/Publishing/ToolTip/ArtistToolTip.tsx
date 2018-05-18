@@ -4,13 +4,13 @@ import React from "react"
 import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
 import fillwidthDimensions from "../../../Utils/fillwidth"
+import { track } from "../../../Utils/track"
 import { garamond, unica } from "Assets/Fonts"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
-import track from "react-tracking"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean

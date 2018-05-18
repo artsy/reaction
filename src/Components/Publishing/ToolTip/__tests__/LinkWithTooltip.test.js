@@ -9,6 +9,10 @@ import { ContextProvider } from "Components/Artsy"
 import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
+jest.mock("../../../../Utils/track.ts", () => ({
+  track: () => jest.fn(c => c)
+}))
+
 describe("LinkWithTooltip", () => {
   let context = {
     activeTooltip: null,
@@ -21,7 +25,7 @@ describe("LinkWithTooltip", () => {
 
   const getWrapper = (context, props) => {
     const { activeToolTip, tooltipsData, onTriggerToolTip } = context
-    const { text, url } = props
+    const { text, url, tracking } = props
 
     return mount(
       wrapperWithContext(
@@ -32,7 +36,7 @@ describe("LinkWithTooltip", () => {
           onTriggerToolTip: PropTypes.func
         },
         <ContextProvider>
-          <LinkWithTooltip url={url}>
+          <LinkWithTooltip url={url} tracking={tracking}>
             {text}
           </LinkWithTooltip>
         </ContextProvider>
@@ -50,7 +54,10 @@ describe("LinkWithTooltip", () => {
     context.onTriggerToolTip = jest.fn()
     props = {
       url: "https://www.artsy.net/artist/nick-mauss",
-      text: "Nick Mauss"
+      text: "Nick Mauss",
+      tracking: {
+        trackEvent: jest.fn()
+      }
     }
 
     position = {
@@ -99,6 +106,7 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Calls context.onTriggerToolTip on hover", () => {
+    context.activeToolTip = null
     const wrapper = getWrapper(context, props)
     wrapper
       .find(Link)

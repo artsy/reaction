@@ -4,10 +4,10 @@ import { findDOMNode } from "react-dom"
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
 import FadeTransition from "../../Animation/FadeTransition"
-import track from "react-tracking"
 
 interface Props {
   url: string
@@ -171,7 +171,7 @@ export class LinkWithTooltip extends Component<Props, State> {
 
       return (
         <Link
-          onMouseEnter={() => this.showToolTip(toolTipData)}
+          onMouseEnter={() => !show && this.showToolTip(toolTipData)}
           ref={link => (this.link = link)}
         >
           <PrimaryLink href={url} target="_blank">

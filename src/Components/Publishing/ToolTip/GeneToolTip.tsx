@@ -4,6 +4,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
 import { getFullArtsyHref } from "../Constants"
+import { track } from "../../../Utils/track"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
@@ -11,28 +12,53 @@ import FollowGeneButton from "../../FollowButton/FollowGeneButton"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
+  tracking?: any
 }
 
-export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
-  const { description, href, id, image, name } = props.gene
-  const { url } = image
-  const { genes } = context.tooltipsData
+export class GeneToolTip extends React.Component<GeneProps> {
+  static contextTypes = {
+    tooltipsData: PropTypes.object,
+  }
 
-  return (
-    <Wrapper>
-      <GeneContainer href={getFullArtsyHref(href)} target="_blank">
-        {url && <Image src={url} />}
-        <Title>{name}</Title>
+  trackClick = () => {
+    const { tracking } = this.props
+    const { href } = this.props.gene
 
-        {description && <ToolTipDescription text={description} />}
-      </GeneContainer>
+    tracking.trackEvent({
+      action: "Click",
+      type: "intext_tooltip",
+      context_module: "tooltip",
+      destination_path: href,
+    })
+  }
 
-      <ToolTipFooter>
-        <FollowGeneButton gene={genes[id] as any} />
-        <NewFeature />
-      </ToolTipFooter>
-    </Wrapper>
-  )
+  render() {
+    const { description, href, id, image, name } = this.props.gene
+    const { url } = image
+    const {
+      tooltipsData: { genes },
+    } = this.context
+
+    return (
+      <Wrapper>
+        <GeneContainer
+          href={getFullArtsyHref(href)}
+          target="_blank"
+          onClick={this.trackClick}
+        >
+          {url && <Image src={url} />}
+          <Title>{name}</Title>
+
+          {description && <ToolTipDescription text={description} />}
+        </GeneContainer>
+
+        <ToolTipFooter>
+          <FollowGeneButton gene={genes[id] as any} />
+          <NewFeature />
+        </ToolTipFooter>
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`
@@ -85,6 +111,4 @@ export const GeneToolTipContainer = createFragmentContainer(
   `
 )
 
-GeneToolTip.contextTypes = {
-  tooltipsData: PropTypes.object,
-}
+export default track()(GeneToolTipContainer)
