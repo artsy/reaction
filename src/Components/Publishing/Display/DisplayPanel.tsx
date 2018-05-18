@@ -18,6 +18,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   isMobile?: boolean
   unit: any
   tracking?: any
+  renderPixelTracker?: (unit: any) => React.ReactElement<any>
 }
 
 interface State {
@@ -353,7 +354,7 @@ export class DisplayPanel extends Component<Props, State> {
 
   render() {
     const { showCoverImage } = this.state
-    const { unit, campaign, isMobile } = this.props
+    const { unit, campaign, isMobile, renderPixelTracker } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const cover = unit.cover_image_url || ""
@@ -395,6 +396,7 @@ export class DisplayPanel extends Component<Props, State> {
               <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
             </div>
           </DisplayPanelContainer>
+          {renderPixelTracker && renderPixelTracker(unit)}
         </Wrapper>
       </ErrorBoundary>
     )
