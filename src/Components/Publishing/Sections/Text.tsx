@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
-import { LinkWithTooltip } from "../ToolTip/LinkWithTooltip"
+import LinkWithTooltip from "../ToolTip/LinkWithTooltip"
 import { startsWith } from "lodash"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
