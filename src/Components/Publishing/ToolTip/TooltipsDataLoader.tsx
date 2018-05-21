@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { QueryRenderer, graphql } from "react-relay"
+import { ArticleProps } from "../Article"
 import { ArticleData } from "Components/Publishing/Typings"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { keyBy } from "lodash"
@@ -10,6 +11,7 @@ import * as Artsy from "Components/Artsy"
 interface Props extends Artsy.ContextProps {
   article: ArticleData
   shouldFetchData?: boolean
+  onOpenAuthModal?: ArticleProps["onOpenAuthModal"]
 }
 
 export class TooltipsDataLoader extends Component<Props> {
@@ -24,6 +26,7 @@ export class TooltipsDataLoader extends Component<Props> {
       currentUser,
       relayEnvironment,
       shouldFetchData,
+      onOpenAuthModal,
     } = this.props
 
     const { artists: artistSlugs, genes: geneSlugs } = getArtsySlugsFromArticle(
@@ -68,7 +71,11 @@ export class TooltipsDataLoader extends Component<Props> {
             data[key] = keyBy(col, "id")
           })
           return (
-            <TooltipsContextProvider {...data} currentUser={currentUser}>
+            <TooltipsContextProvider
+              {...data}
+              currentUser={currentUser}
+              onOpenAuthModal={onOpenAuthModal}
+            >
               {children}
             </TooltipsContextProvider>
           )
@@ -80,10 +87,11 @@ export class TooltipsDataLoader extends Component<Props> {
 
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
-    activeToolTip: PropTypes.any,
-    currentUser: PropTypes.object,
-    onTriggerToolTip: PropTypes.func,
     tooltipsData: PropTypes.object,
+    currentUser: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
+    activeToolTip: PropTypes.any,
+    onTriggerToolTip: PropTypes.func,
   }
 
   state = {
@@ -97,7 +105,7 @@ class TooltipsContextProvider extends Component<any> {
   }
 
   getChildContext() {
-    const { artists, currentUser, genes } = this.props
+    const { artists, currentUser, genes, onOpenAuthModal } = this.props
     const { activeToolTip } = this.state
 
     return {
@@ -108,6 +116,7 @@ class TooltipsContextProvider extends Component<any> {
         artists,
         genes,
       },
+      onOpenAuthModal,
     }
   }
 

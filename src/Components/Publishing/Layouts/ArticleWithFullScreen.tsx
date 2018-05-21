@@ -78,12 +78,22 @@ export class ArticleWithFullScreen extends React.Component<
 
   render() {
     const { article, fullscreenImages } = this.state
-    const { closeViewer, marginTop, slideIndex, viewerIsOpen } = this.props
+    const {
+      closeViewer,
+      marginTop,
+      slideIndex,
+      viewerIsOpen,
+      onOpenAuthModal,
+    } = this.props
 
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <TooltipsData article={article} shouldFetchData={this.props.showTooltips}>
+      <TooltipsData
+        article={article}
+        shouldFetchData={this.props.showTooltips}
+        onOpenAuthModal={onOpenAuthModal}
+      >
         <ArticleContainer marginTop={marginTop}>
           {article.layout === "feature" ? (
             <FeatureLayout {...articleProps} />
