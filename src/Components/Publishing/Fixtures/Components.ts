@@ -649,6 +649,7 @@ export const Genes: GeneProps[] = [
     gene: {
       name: "Capitalist Realism",
       id: "capitalist-realism",
+      _id: "5955005ceaaedc0017acdd1f",
       image: {
         url:
           "https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg",

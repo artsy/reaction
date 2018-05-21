@@ -5,6 +5,8 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { extend } from "lodash"
+import { track } from "../../Utils/track"
 import { FollowButton } from "./Button"
 import * as Artsy from "../Artsy"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
@@ -12,9 +14,30 @@ import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene
 interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   relay?: RelayProp
   gene?: FollowGeneButton_gene
+  tracking?: any
+  trackingData?: any
 }
 
 export class FollowGeneButton extends React.Component<Props> {
+  trackFollow = () => {
+    const {
+      tracking,
+      gene: { is_followed },
+    } = this.props
+    const trackingData = this.props.trackingData || {}
+
+    if (!is_followed) {
+      tracking.trackEvent(
+        extend(
+          {
+            action: "Followed Gene",
+          },
+          trackingData
+        )
+      )
+    }
+  }
+
   handleFollow = () => {
     const { gene, currentUser, relay } = this.props
 
@@ -44,6 +67,7 @@ export class FollowGeneButton extends React.Component<Props> {
           },
         },
       })
+      this.trackFollow()
     } else {
       // TODO: trigger signup/login modal
       window.location.href = "/login"
@@ -62,13 +86,15 @@ export class FollowGeneButton extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  Artsy.ContextConsumer(FollowGeneButton),
-  graphql`
-    fragment FollowGeneButton_gene on Gene {
-      __id
-      id
-      is_followed
-    }
-  `
+export default track()(
+  createFragmentContainer(
+    Artsy.ContextConsumer(FollowGeneButton),
+    graphql`
+      fragment FollowGeneButton_gene on Gene {
+        __id
+        id
+        is_followed
+      }
+    `
+  )
 )

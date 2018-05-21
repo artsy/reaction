@@ -33,11 +33,17 @@ export class GeneToolTip extends React.Component<GeneProps> {
   }
 
   render() {
-    const { description, href, id, image, name } = this.props.gene
+    const { description, href, id, _id, image, name } = this.props.gene
     const { url } = image
     const {
       tooltipsData: { genes },
     } = this.context
+
+    const trackingData = {
+      context_module: "tooltip",
+      tooltip_entity_id: _id,
+      tooltip_entity_slug: href,
+    }
 
     return (
       <Wrapper>
@@ -53,7 +59,10 @@ export class GeneToolTip extends React.Component<GeneProps> {
         </GeneContainer>
 
         <ToolTipFooter>
-          <FollowGeneButton gene={genes[id] as any} />
+          <FollowGeneButton
+            gene={genes[id] as any}
+            trackingData={trackingData}
+          />
           <NewFeature />
         </ToolTipFooter>
       </Wrapper>
@@ -103,6 +112,7 @@ export const GeneToolTipContainer = createFragmentContainer(
       description
       href
       id
+      _id
       image {
         url(version: "tall")
       }

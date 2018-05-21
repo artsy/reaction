@@ -22,20 +22,14 @@ interface Props
 
 export class FollowArtistButton extends React.Component<Props> {
   trackFollow = () => {
-    const { tracking } = this.props
-    const { is_followed } = this.props.artist
+    const {
+      tracking,
+      artist: { is_followed },
+    } = this.props
     const trackingData = this.props.trackingData || {}
+    const action = is_followed ? "Unfollowed Artist" : "Followed Artist"
 
-    if (!is_followed) {
-      tracking.trackEvent(
-        extend(
-          {
-            action: "Followed Artist",
-          },
-          trackingData
-        )
-      )
-    }
+    tracking.trackEvent(extend({ action }, trackingData))
   }
 
   handleFollow = () => {
@@ -70,7 +64,7 @@ export class FollowArtistButton extends React.Component<Props> {
       this.trackFollow()
     } else {
       // TODO: trigger signup/login modal
-      window.location.href = "/login"
+      window.location.assign("/login")
     }
   }
 
