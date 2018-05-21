@@ -31,6 +31,7 @@ export interface ArticleProps {
   slideIndex?: number
   closeViewer?: () => void
   viewerIsOpen?: boolean
+  onOpenAuthModal?: (type: "register" | "login", config: Object) => void
 }
 
 @track(

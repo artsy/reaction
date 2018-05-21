@@ -17,6 +17,7 @@ export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
   const { description, href, id, image, name } = props.gene
   const { url } = image
   const { genes } = context.tooltipsData
+  const { onOpenAuthModal } = context
 
   return (
     <Wrapper>
@@ -28,7 +29,10 @@ export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
       </GeneContainer>
 
       <ToolTipFooter>
-        <FollowGeneButton gene={genes[id] as any} />
+        <FollowGeneButton
+          gene={genes[id] as any}
+          onOpenAuthModal={onOpenAuthModal}
+        />
         <NewFeature />
       </ToolTipFooter>
     </Wrapper>
@@ -87,4 +91,5 @@ export const GeneToolTipContainer = createFragmentContainer(
 
 GeneToolTip.contextTypes = {
   tooltipsData: PropTypes.object,
+  onOpenAuthModal: PropTypes.func,
 }
