@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import React from "react"
 import { Arrow, ArrowContainer } from "./Components/Arrow"
-import ArtistTooltip from "./ArtistToolTip"
-import GeneToolTip from "./GeneToolTip"
+import { ArtistTooltipContainer } from "./ArtistToolTip"
+import { GeneToolTipContainer } from "./GeneToolTip"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
@@ -21,14 +21,14 @@ export class ToolTip extends React.Component<Props> {
     switch (model) {
       case "artist": {
         return (
-          <ArtistTooltip
+          <ArtistTooltipContainer
             showMarketData={showMarketData}
             artist={entity as any}
           />
         )
       }
       case "gene": {
-        return <GeneToolTip gene={entity as any} />
+        return <GeneToolTipContainer gene={entity as any} />
       }
       default: {
         return null

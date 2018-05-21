@@ -105,20 +105,20 @@ export const ToolTipFooter = styled.div`
   }
 `
 
-export const GeneToolTipContainer = createFragmentContainer(
-  GeneToolTip,
-  graphql`
-    fragment GeneToolTip_gene on Gene {
-      description
-      href
-      id
-      _id
-      image {
-        url(version: "tall")
+export const GeneToolTipContainer = track()(
+  createFragmentContainer(
+    GeneToolTip,
+    graphql`
+      fragment GeneToolTip_gene on Gene {
+        description
+        href
+        id
+        _id
+        image {
+          url(version: "tall")
+        }
+        name
       }
-      name
-    }
-  `
+    `
+  )
 )
-
-export default track()(GeneToolTipContainer)

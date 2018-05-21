@@ -4,7 +4,7 @@ import "jest-styled-components"
 import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip } from "../ArtistToolTip"
+import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
 
 describe("ArtistToolTip", () => {
@@ -20,21 +20,30 @@ describe("ArtistToolTip", () => {
           tooltipsData: PropTypes.object,
         },
         <ContextProvider>
-          <ArtistToolTip
-            artist={props.artist}
-            showMarketData={props.showMarketData}
-          />
+          <ArtistToolTip {...props} />
         </ContextProvider>
       )
     )
   }
 
-  it("Renders artist data", () => {
-    const artist = Artists[0].artist
-    const component = getWrapper({ artist })
+  let props
+  beforeEach(() => {
+    props = {
+      tracking: {
+        trackEvent: jest.fn(),
+      },
+      artist: Artists[0].artist,
+      showMarketData: false,
+    }
+  })
 
-    expect(component.text()).toMatch(artist.name)
-    expect(component.text()).toMatch(artist.formatted_nationality_and_birthday)
+  it("Renders artist data", () => {
+    const component = getWrapper(props)
+
+    expect(component.text()).toMatch(props.artist.name)
+    expect(component.text()).toMatch(
+      props.artist.formatted_nationality_and_birthday
+    )
     expect(component.text()).toMatch(
       "Nick Mauss makes drawings, prints, and paintings that often"
     )
@@ -44,18 +53,32 @@ describe("ArtistToolTip", () => {
     expect(component.find("img").length).toBe(2)
   })
 
+  it("Tracks clicks to artist page", () => {
+    const component = getWrapper(props)
+    component
+      .find(TitleDate)
+      .at(0)
+      .simulate("click")
+    const trackingData = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(trackingData.action).toBe("Click")
+    expect(trackingData.type).toBe("intext_tooltip")
+    expect(trackingData.context_module).toBe("tooltip")
+    expect(trackingData.destination_path).toBe("/artist/nick-mauss")
+  })
+
   describe("Market Data", () => {
     it("Renders artist data", () => {
-      const artist = Artists[0].artist
-      const component = getWrapper({ artist, showMarketData: true })
+      props.showMarketData = true
+      const component = getWrapper(props)
 
-      expect(component.text()).toMatch(artist.name)
+      expect(component.text()).toMatch(props.artist.name)
       expect(component.text()).toMatch(
-        artist.formatted_nationality_and_birthday
+        props.artist.formatted_nationality_and_birthday
       )
-      expect(component.text()).toMatch(artist.collections[0])
+      expect(component.text()).toMatch(props.artist.collections[0])
       expect(component.text()).toMatch(
-        artist.auctionResults.edges[0].node.price_realized.display
+        props.artist.auctionResults.edges[0].node.price_realized.display
       )
       expect(component.text()).toMatch("Represented by a blue chip gallery")
       expect(component.find("img").length).toBe(2)
@@ -66,8 +89,9 @@ describe("ArtistToolTip", () => {
     })
 
     it("Renders categories if no artist data", () => {
-      const artist = Artists[2].artist
-      const component = getWrapper({ artist, showMarketData: true })
+      props.artist = Artists[2].artist
+      props.showMarketData = true
+      const component = getWrapper(props)
 
       expect(component.text()).toMatch("Emerging Art")
     })

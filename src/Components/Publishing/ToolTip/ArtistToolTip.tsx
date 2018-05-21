@@ -120,7 +120,7 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const TitleDate = styled.a`
+export const TitleDate = styled.a`
   display: flex;
   flex-direction: column;
 `
@@ -141,60 +141,60 @@ const Images = styled.a`
   justify-content: space-between;
 `
 
-export const ArtistTooltipContainer = createFragmentContainer(
-  ArtistToolTip,
-  graphql`
-    fragment ArtistToolTip_artist on Artist {
-      name
-      id
-      _id
-      formatted_nationality_and_birthday
-      href
-      blurb
-      carousel {
-        images {
-          resized(height: 200) {
-            url
-            width
-            height
+export const ArtistTooltipContainer = track()(
+  createFragmentContainer(
+    ArtistToolTip,
+    graphql`
+      fragment ArtistToolTip_artist on Artist {
+        name
+        id
+        _id
+        formatted_nationality_and_birthday
+        href
+        blurb
+        carousel {
+          images {
+            resized(height: 200) {
+              url
+              width
+              height
+            }
           }
         }
-      }
-      collections
-      highlights {
-        partners(
-          first: 5
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: ["blue-chip", "top-established", "top-emerging"]
-        ) {
-          edges {
-            node {
-              categories {
-                id
+        collections
+        highlights {
+          partners(
+            first: 5
+            display_on_partner_profile: true
+            represented_by: true
+            partner_category: ["blue-chip", "top-established", "top-emerging"]
+          ) {
+            edges {
+              node {
+                categories {
+                  id
+                }
               }
             }
           }
         }
-      }
-      auctionResults(
-        recordsTrusted: true
-        first: 1
-        sort: PRICE_AND_DATE_DESC
-      ) {
-        edges {
-          node {
-            price_realized {
-              display
+        auctionResults(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized {
+                display
+              }
             }
           }
         }
+        genes {
+          name
+        }
       }
-      genes {
-        name
-      }
-    }
-  `
+    `
+  )
 )
-
-export default track()(ArtistTooltipContainer)
