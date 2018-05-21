@@ -25,17 +25,9 @@ export class FollowGeneButton extends React.Component<Props> {
       gene: { is_followed },
     } = this.props
     const trackingData = this.props.trackingData || {}
+    const action = is_followed ? "Unfollowed Gene" : "Followed Gene"
 
-    if (!is_followed) {
-      tracking.trackEvent(
-        extend(
-          {
-            action: "Followed Gene",
-          },
-          trackingData
-        )
-      )
-    }
+    tracking.trackEvent(extend({ action }, trackingData))
   }
 
   handleFollow = () => {
@@ -70,7 +62,7 @@ export class FollowGeneButton extends React.Component<Props> {
       this.trackFollow()
     } else {
       // TODO: trigger signup/login modal
-      window.location.href = "/login"
+      window.location.assign("/login")
     }
   }
 

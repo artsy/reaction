@@ -3,7 +3,7 @@ import "jest-styled-components"
 import renderer from "react-test-renderer"
 import React from "react"
 import { FollowButton } from "../Button"
-import FollowArtistButton from "../FollowArtistButton"
+import FollowGeneButton from "../FollowGeneButton"
 import { ContextProvider } from "../../Artsy"
 
 
@@ -17,12 +17,12 @@ jest.mock("../../../Utils/track.ts", () => ({
   track: () => jest.fn(c => c)
 }))
 
-describe("FollowArtistButton", () => {
+describe("FollowGeneButton", () => {
   let props
   const getWrapper = (props, currentUser = {}) => {
     return mount(
       <ContextProvider currentUser={currentUser}>
-        <FollowArtistButton
+        <FollowGeneButton
           relay={{ environment: '' }}
           {...props}
         />
@@ -37,8 +37,8 @@ describe("FollowArtistButton", () => {
       tracking: {
         trackEvent: jest.fn()
       },
-      artist: {
-        id: "damon-zucconi",
+      gene: {
+        id: "modernism",
         __id: "1234",
         is_followed: false,
       }
@@ -50,7 +50,7 @@ describe("FollowArtistButton", () => {
       const component = renderer
         .create(
           <ContextProvider>
-            <FollowArtistButton {...props} />
+            <FollowGeneButton {...props} />
           </ContextProvider>
         )
         .toJSON()
@@ -66,22 +66,22 @@ describe("FollowArtistButton", () => {
       expect(window.location.assign.mock.calls[0][0]).toBe('/login')
     })
 
-    it("Follows an artist if current user", () => {
+    it("Follows an gene if current user", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
       const mutation = commitMutation.mock.calls[0][1].variables.input
 
-      expect(mutation.artist_id).toBe("damon-zucconi")
+      expect(mutation.gene_id).toBe("modernism")
       expect(mutation.unfollow).toBe(false)
     })
 
     it("Unfollows an artist if current user", () => {
-      props.artist.is_followed = true
+      props.gene.is_followed = true
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
       const mutation = commitMutation.mock.calls[1][1].variables.input
 
-      expect(mutation.artist_id).toBe("damon-zucconi")
+      expect(mutation.gene_id).toBe("modernism")
       expect(mutation.unfollow).toBe(true)
     })
 
@@ -89,15 +89,15 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Followed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Followed Gene")
     })
 
     it("Tracks unfollow click when unfollowing", () => {
-      props.artist.is_followed = true
+      props.gene.is_followed = true
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Unfollowed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Unfollowed Gene")
     })
 
     it("Tracks with custom trackingData if provided", () => {

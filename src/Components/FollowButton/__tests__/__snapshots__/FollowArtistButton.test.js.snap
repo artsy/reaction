@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FollowArtistButton snapshots Renders FollowArtistButton properly 1`] = `
+exports[`FollowArtistButton snapshots Renders properly 1`] = `
 .c0 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
