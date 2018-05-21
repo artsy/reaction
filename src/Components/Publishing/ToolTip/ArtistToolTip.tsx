@@ -32,6 +32,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
   const displayImages = map(carousel.images.slice(0, 2), "resized")
   const images = fillwidthDimensions(displayImages, 320, 15, 150)
   const { artists } = context.tooltipsData
+  const { onOpenAuthModal } = context
 
   return (
     <Wrapper>
@@ -56,7 +57,10 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
               <Date>{formatted_nationality_and_birthday}</Date>
             )}
           </TitleDate>
-          <FollowArtistButton artist={artists[id] as any} />
+          <FollowArtistButton
+            artist={artists[id] as any}
+            onOpenAuthModal={onOpenAuthModal}
+          />
         </Header>
 
         <a href={href} target="_blank">
@@ -172,4 +176,5 @@ export const ArtistTooltipContainer = createFragmentContainer(
 
 ArtistToolTip.contextTypes = {
   tooltipsData: PropTypes.object,
+  onOpenAuthModal: PropTypes.func,
 }
