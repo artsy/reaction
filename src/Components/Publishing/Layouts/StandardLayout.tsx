@@ -40,6 +40,23 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
+  renderPixelTracker({ pixel_tracking_code }) {
+    let url = pixel_tracking_code
+    if (!url) {
+      return null
+    }
+    const isSizmek = url.indexOf("serving-sys") !== -1
+    if (isSizmek) {
+      url = url.replace(
+        "[timestamp]",
+        String(new Date().getMilliseconds() / 1000)
+      )
+    }
+
+    // TODO: handle doubleclick
+    return <TrackerImage width={1} height={1} src={url} />
+  }
+
   render() {
     const {
       article,
@@ -69,6 +86,7 @@ export class StandardLayout extends React.Component<
                   unit={display.panel}
                   campaign={campaign}
                   article={article}
+                  renderPixelTracker={this.renderPixelTracker}
                 />
               )
             )
@@ -131,6 +149,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderPixelTracker={this.renderPixelTracker}
                       />
                     </div>
                   ) : (
@@ -139,6 +158,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderPixelTracker={this.renderPixelTracker}
                       />
                     </FooterContainer>
                   )}
@@ -176,4 +196,8 @@ const FooterContainer = styled.div`
   ${pMedia.sm`
     margin: 0 20px;
   `};
+`
+
+const TrackerImage = styled.img`
+  display: none;
 `

@@ -1,4 +1,5 @@
 import MarketInsights from "./Artist/MarketInsights"
+import MarketDataSummary from "./Artist/MarketDataSummary"
 import Artwork from "./Artwork"
 import ArtworkGrid from "./ArtworkGrid"
 import BorderedPulldown from "./BorderedPulldown"
@@ -35,6 +36,7 @@ export function init(options: InitOptions) {
 
 export default {
   MarketInsights,
+  MarketDataSummary,
   Artwork,
   Buttons,
   Modal,
