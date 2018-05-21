@@ -5,6 +5,8 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { extend } from "lodash"
+import { track } from "../../Utils/track"
 import { FollowButton } from "./Button"
 import * as Artsy from "../Artsy"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
@@ -14,9 +16,28 @@ interface Props
     Artsy.ContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
+  tracking?: any
+  trackingData?: any
 }
 
 export class FollowArtistButton extends React.Component<Props> {
+  trackFollow = () => {
+    const { tracking } = this.props
+    const { is_followed } = this.props.artist
+    const trackingData = this.props.trackingData || {}
+
+    if (!is_followed) {
+      tracking.trackEvent(
+        extend(
+          {
+            action: "Followed Artist",
+          },
+          trackingData
+        )
+      )
+    }
+  }
+
   handleFollow = () => {
     const { artist, currentUser, relay } = this.props
 
@@ -46,6 +67,7 @@ export class FollowArtistButton extends React.Component<Props> {
           },
         },
       })
+      this.trackFollow()
     } else {
       // TODO: trigger signup/login modal
       window.location.href = "/login"
@@ -64,13 +86,15 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  Artsy.ContextConsumer(FollowArtistButton),
-  graphql`
-    fragment FollowArtistButton_artist on Artist {
-      __id
-      id
-      is_followed
-    }
-  `
+export default track()(
+  createFragmentContainer(
+    Artsy.ContextConsumer(FollowArtistButton),
+    graphql`
+      fragment FollowArtistButton_artist on Artist {
+        __id
+        id
+        is_followed
+      }
+    `
+  )
 )

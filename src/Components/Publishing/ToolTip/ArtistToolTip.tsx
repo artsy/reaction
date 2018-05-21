@@ -45,9 +45,15 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       name,
     } = this.props.artist
     const { showMarketData, artist } = this.props
+    const { artists } = this.context.tooltipsData
     const displayImages = map(carousel.images.slice(0, 2), "resized")
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
-    const { artists } = this.context.tooltipsData
+
+    const trackingData = {
+      context_module: "tooltip",
+      tooltip_entity_id: id,
+      tooltip_entity_slug: href,
+    }
 
     return (
       <Wrapper>
@@ -72,7 +78,10 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
                 <Date>{formatted_nationality_and_birthday}</Date>
               )}
             </TitleDate>
-            <FollowArtistButton artist={artists[id] as any} />
+            <FollowArtistButton
+              artist={artists[id] as any}
+              trackingData={trackingData}
+            />
           </Header>
 
           <a href={href} target="_blank" onClick={this.trackClick}>
@@ -138,6 +147,7 @@ export const ArtistTooltipContainer = createFragmentContainer(
     fragment ArtistToolTip_artist on Artist {
       name
       id
+      _id
       formatted_nationality_and_birthday
       href
       blurb
