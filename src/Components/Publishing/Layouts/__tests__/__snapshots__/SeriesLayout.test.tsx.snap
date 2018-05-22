@@ -380,8 +380,7 @@ exports[`renders a series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -390,6 +389,12 @@ exports[`renders a series properly 1`] = `
 .c39 a:hover {
   color: white;
   opacity: .65;
+}
+
+.c39 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c39 p,
@@ -468,6 +473,10 @@ exports[`renders a series properly 1`] = `
 
 .c39 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c39 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c39 h3 {
@@ -1506,8 +1515,7 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -1516,6 +1524,12 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 a:hover {
   color: white;
   opacity: .65;
+}
+
+.c45 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c45 p,
@@ -1594,6 +1608,10 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c45 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c45 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c45 h3 {

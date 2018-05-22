@@ -54,16 +54,21 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c6 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c6 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c6 p,
@@ -142,6 +147,10 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 .c6 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c6 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c6 h3 {
@@ -449,16 +458,21 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c6 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c6 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c6 p,
@@ -537,6 +551,10 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 .c6 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c6 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c6 h3 {
@@ -837,16 +855,21 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c6 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c6 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c6 p,
@@ -925,6 +948,10 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 
 .c6 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c6 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c6 h3 {
@@ -1254,16 +1281,21 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c10 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c10 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c10 p,
@@ -1342,6 +1374,10 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 
 .c10 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c10 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c10 h3 {

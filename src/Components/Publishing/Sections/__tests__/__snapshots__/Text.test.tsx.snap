@@ -10,16 +10,21 @@ exports[`Text Snapshots renders classic text properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c0 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c0 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c0 p,
@@ -98,6 +103,10 @@ exports[`Text Snapshots renders classic text properly 1`] = `
 
 .c0 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c0 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c0 h3 {
@@ -263,16 +272,21 @@ exports[`Text Snapshots renders feature text properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c0 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c0 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c0 p,
@@ -351,6 +365,10 @@ exports[`Text Snapshots renders feature text properly 1`] = `
 
 .c0 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c0 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c0 h3 {
@@ -506,16 +524,21 @@ exports[`Text Snapshots renders news text properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c0 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c0 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c0 p,
@@ -594,6 +617,10 @@ exports[`Text Snapshots renders news text properly 1`] = `
 
 .c0 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c0 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c0 h3 {
@@ -757,16 +784,21 @@ exports[`Text Snapshots renders standard text properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c0 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
+}
+
+.c0 .file__PrimaryLink-yu39to-0 {
+  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
+  background-size: 3px 1.75px;
+  background-position: 0 1.07em;
 }
 
 .c0 p,
@@ -845,6 +877,10 @@ exports[`Text Snapshots renders standard text properly 1`] = `
 
 .c0 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c0 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c0 h3 {
