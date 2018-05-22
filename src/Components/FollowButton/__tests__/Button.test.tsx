@@ -31,6 +31,7 @@ describe("FollowButton", () => {
               __id: "1234",
               is_followed: false,
             }}
+            onOpenAuthModal={null}
           />
         )
         .toJSON()

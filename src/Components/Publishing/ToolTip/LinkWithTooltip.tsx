@@ -195,7 +195,13 @@ export const PrimaryLink = styled.a.attrs<{ show: boolean }>({})`
   z-index: auto;
   color: black;
   transition: color 0.25s;
-
+  background-image: linear-gradient(
+    to right,
+    ${Colors.graySemibold} 50%,
+    transparent 50%
+  ) !important;
+  background-size: 3px 1.75px !important;
+  background-position: 0 1.07em !important;
   ${props =>
     props.show &&
     `

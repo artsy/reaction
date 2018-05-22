@@ -21,12 +21,6 @@ exports[`Text Snapshots renders classic text properly 1`] = `
   opacity: 1;
 }
 
-.c0 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -283,12 +277,6 @@ exports[`Text Snapshots renders feature text properly 1`] = `
   opacity: 1;
 }
 
-.c0 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -533,12 +521,6 @@ exports[`Text Snapshots renders news text properly 1`] = `
 .c0 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c0 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c0 p,
@@ -793,12 +775,6 @@ exports[`Text Snapshots renders standard text properly 1`] = `
 .c0 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c0 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c0 p,

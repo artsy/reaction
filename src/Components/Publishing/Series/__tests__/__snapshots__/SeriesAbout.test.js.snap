@@ -65,12 +65,6 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   opacity: 1;
 }
 
-.c6 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -469,12 +463,6 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   opacity: 1;
 }
 
-.c6 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -864,12 +852,6 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c6 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c6 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c6 p,
@@ -1290,12 +1272,6 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c10 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c10 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c10 p,

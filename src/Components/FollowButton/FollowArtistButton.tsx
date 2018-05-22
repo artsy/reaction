@@ -14,11 +14,12 @@ interface Props
     Artsy.ContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
+  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 
 export class FollowArtistButton extends React.Component<Props> {
   handleFollow = () => {
-    const { artist, currentUser, relay } = this.props
+    const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
@@ -47,8 +48,7 @@ export class FollowArtistButton extends React.Component<Props> {
         },
       })
     } else {
-      // TODO: trigger signup/login modal
-      window.location.href = "/login"
+      onOpenAuthModal && onOpenAuthModal("register")
     }
   }
 

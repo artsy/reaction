@@ -32,12 +32,6 @@ exports[`renders column_width properly 1`] = `
   opacity: 1;
 }
 
-.c1 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c1 p,
 .c1 ul,
 .c1 ol,
@@ -314,12 +308,6 @@ exports[`renders fillwidth properly 1`] = `
   opacity: 1;
 }
 
-.c1 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c1 p,
 .c1 ul,
 .c1 ol,
@@ -594,12 +582,6 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c1 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c1 p,

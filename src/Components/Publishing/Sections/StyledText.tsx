@@ -55,15 +55,6 @@ export const StyledText = div`
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
-  ${PrimaryLink} {
-    background-image: linear-gradient(
-      to right,
-      ${Colors.graySemibold} 50%,
-      transparent 50%
-    );
-    background-size: 3px 1.75px;
-    background-position: 0 1.07em;
-  }
   p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}

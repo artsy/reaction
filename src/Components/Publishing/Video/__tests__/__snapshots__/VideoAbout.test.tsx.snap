@@ -91,12 +91,6 @@ exports[`Video About matches the snapshot 1`] = `
   opacity: 1;
 }
 
-.c4 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c4 p,
 .c4 ul,
 .c4 ol,
@@ -778,12 +772,6 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c4 a:hover {
   color: #999999;
   opacity: 1;
-}
-
-.c4 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c4 p,

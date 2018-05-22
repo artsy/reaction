@@ -391,12 +391,6 @@ exports[`renders a series properly 1`] = `
   opacity: .65;
 }
 
-.c39 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c39 p,
 .c39 ul,
 .c39 ol,
@@ -1524,12 +1518,6 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 a:hover {
   color: white;
   opacity: .65;
-}
-
-.c45 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c45 p,

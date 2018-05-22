@@ -14,6 +14,7 @@ interface DisplayCanvasProps {
   unit: any
   campaign: any
   article?: any
+  renderPixelTracker?: (unit: any) => React.ReactElement<any>
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -39,7 +40,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
   }
 
   render() {
-    const { unit, campaign, article } = this.props
+    const { unit, campaign, article, renderPixelTracker } = this.props
     const url = get(unit, "link.url", "")
 
     const disclaimer = (
@@ -64,6 +65,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
           />
 
           {unit.layout === "overlay" && disclaimer}
+          {renderPixelTracker && renderPixelTracker(unit)}
         </DisplayContainer>
       </ErrorBoundary>
     )

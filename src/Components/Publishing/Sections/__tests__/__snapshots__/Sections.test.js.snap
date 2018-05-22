@@ -419,12 +419,6 @@ exports[`Sections snapshots renders properly 1`] = `
   opacity: 1;
 }
 
-.c2 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c2 p,
 .c2 ul,
 .c2 ol,

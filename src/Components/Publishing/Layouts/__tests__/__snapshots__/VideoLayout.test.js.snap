@@ -435,12 +435,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   opacity: 1;
 }
 
-.c50 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
-}
-
 .c50 p,
 .c50 ul,
 .c50 ol,
@@ -610,12 +604,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c59 a:hover {
   color: white;
   opacity: .65;
-}
-
-.c59 .file__PrimaryLink-yu39to-0 {
-  background-image: linear-gradient( to right, #666666 50%, transparent 50% );
-  background-size: 3px 1.75px;
-  background-position: 0 1.07em;
 }
 
 .c59 p,

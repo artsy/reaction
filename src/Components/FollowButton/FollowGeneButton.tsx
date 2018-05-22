@@ -12,11 +12,12 @@ import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene
 interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   relay?: RelayProp
   gene?: FollowGeneButton_gene
+  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {
   handleFollow = () => {
-    const { gene, currentUser, relay } = this.props
+    const { gene, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
@@ -45,8 +46,7 @@ export class FollowGeneButton extends React.Component<Props> {
         },
       })
     } else {
-      // TODO: trigger signup/login modal
-      window.location.href = "/login"
+      onOpenAuthModal && onOpenAuthModal("register")
     }
   }
 
