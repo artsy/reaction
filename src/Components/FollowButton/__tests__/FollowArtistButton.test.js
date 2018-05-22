@@ -34,14 +34,15 @@ describe("FollowArtistButton", () => {
 
   beforeEach(() => {
     props = {
-      tracking: {
-        trackEvent: jest.fn()
-      },
       artist: {
         id: "damon-zucconi",
         __id: "1234",
         is_followed: false,
-      }
+      },
+      onOpenAuthModal: jest.fn(),
+      tracking: {
+        trackEvent: jest.fn()
+      },
     }
   })
 
@@ -59,11 +60,11 @@ describe("FollowArtistButton", () => {
   })
 
   describe("unit", () => {
-    xit("Redirects to login if no current user", () => {
+    it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(props)
       component.find(FollowButton).simulate("click")
 
-      expect(window.location.assign.mock.calls[0][0]).toBe('/login')
+      expect(props.onOpenAuthModal.mock.calls[0][0]).toBe("register")
     })
 
     it("Follows an artist if current user", () => {
