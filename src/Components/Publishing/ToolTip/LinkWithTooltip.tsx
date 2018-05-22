@@ -78,7 +78,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   hideToolTip = () => {
-    this.context.onTriggerToolTip(null)
+    // this.context.onTriggerToolTip(null)
 
     this.setState({
       inToolTip: false,
@@ -152,6 +152,7 @@ export class LinkWithTooltip extends Component<Props, State> {
           onTriggerToolTip(id && id)
         }}
         ref={link => (this.link = link)}
+        show={show}
       >
         <PrimaryLink href={url} target="_blank">
           {this.props.children}
@@ -183,22 +184,28 @@ export class LinkWithTooltip extends Component<Props, State> {
 }
 
 const PrimaryLink = styled.a`
-  background-image: none !important;
+  background-image: linear-gradient(
+    to right,
+    ${Colors.graySemibold} 50%,
+    transparent 50%
+  ) !important;
+  background-size: 4px 2px !important;
   text-decoration: none;
   color: black;
-  line-height: 20px;
-  border-bottom: 1.25px dashed ${Colors.graySemibold};
-  z-index: 0;
+  z-index: -1;
 `
 
-export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
+export const Link = styled.div.attrs<{ onMouseEnter: any; show: boolean }>({})`
   display: inline-block;
   position: relative;
   cursor: pointer;
+  z-index: ${props => (props.show ? 10 : -10)}
   &:hover {
     ${PrimaryLink} {
       opacity: 0.65;
-      border-bottom-color: ${Colors.grayDark};
+      background-image: linear-gradient(to right, ${
+        Colors.grayDark
+      } 50%, transparent 50%) !important;
       color: ${Colors.grayDark};
     }
   }

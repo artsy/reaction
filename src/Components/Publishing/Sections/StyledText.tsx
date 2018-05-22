@@ -56,6 +56,7 @@ export const StyledText = div`
     padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     margin: 0;
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
+    z-index: 0;
   }
   p:first-child,
   .paragraph:first-child,
