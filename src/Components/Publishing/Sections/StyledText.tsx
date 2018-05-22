@@ -3,6 +3,8 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ArticleLayout } from "../Typings"
+import { PrimaryLink } from "../ToolTip/LinkWithTooltip"
+import Colors from "Assets/Colors"
 
 interface StyledTextProps {
   color?: string
@@ -38,7 +40,6 @@ export const StyledText = div`
   a {
     color: ${props => props.color};
     text-decoration: none;
-    position: relative;
     background-image: linear-gradient(to bottom,transparent 0, ${props =>
       props.color === "black" ? "#333" : props.color} 1px,transparent 0);
     background-size: 1.25px 4px;
@@ -49,6 +50,24 @@ export const StyledText = div`
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
+  ${PrimaryLink} {
+    background-image: linear-gradient(
+      to right,
+      ${Colors.graySemibold} 50%,
+      transparent 50%
+    );
+    background-size: 3px 1.75px;
+    background-position: 0 1.07em;
+    &:hover {
+      opacity: 0.65;
+      color: ${Colors.grayDark};
+      background-image: linear-gradient(
+        to right,
+        ${Colors.grayDark} 50%,
+        transparent 50%
+      ) !important;
+    }
+  }
   p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
@@ -56,7 +75,6 @@ export const StyledText = div`
     padding-bottom: ${props => (props.layout === "classic" ? ".75em" : "1em")};
     margin: 0;
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
-    z-index: 0;
   }
   p:first-child,
   .paragraph:first-child,
@@ -101,6 +119,9 @@ export const StyledText = div`
     margin: 0;
     a {
       background-size: 1.25px 1px;
+    }
+    ${PrimaryLink} {
+      background-position: bottom;
     }
   }
   h3 {

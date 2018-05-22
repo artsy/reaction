@@ -84,21 +84,28 @@ class TooltipsContextProvider extends Component<any> {
     currentUser: PropTypes.object,
     onTriggerToolTip: PropTypes.func,
     tooltipsData: PropTypes.object,
+    waitForFade: PropTypes.string,
   }
 
   state = {
     activeToolTip: null,
+    waitForFade: null,
   }
 
   onTriggerToolTip = activeToolTip => {
     if (activeToolTip !== this.state.activeToolTip) {
-      this.setState({ activeToolTip })
+      if (activeToolTip === null) {
+        setTimeout(() => {
+          this.setState({ waitForFade: null })
+        }, 250)
+      }
+      this.setState({ activeToolTip, waitForFade: this.state.activeToolTip })
     }
   }
 
   getChildContext() {
     const { artists, currentUser, genes } = this.props
-    const { activeToolTip } = this.state
+    const { activeToolTip, waitForFade } = this.state
 
     return {
       activeToolTip,
@@ -108,6 +115,7 @@ class TooltipsContextProvider extends Component<any> {
         artists,
         genes,
       },
+      waitForFade,
     }
   }
 
