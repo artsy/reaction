@@ -18,6 +18,7 @@ export interface GeneProps {
 export class GeneToolTip extends React.Component<GeneProps> {
   static contextTypes = {
     tooltipsData: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
   }
 
   trackClick = () => {
@@ -37,6 +38,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
     const { url } = image
     const {
       tooltipsData: { genes },
+      onOpenAuthModal,
     } = this.context
 
     const trackingData = {
@@ -62,6 +64,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
           <FollowGeneButton
             gene={genes[id] as any}
             trackingData={trackingData}
+            onOpenAuthModal={onOpenAuthModal}
           />
           <NewFeature />
         </ToolTipFooter>

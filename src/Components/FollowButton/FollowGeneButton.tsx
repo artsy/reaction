@@ -16,6 +16,7 @@ interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   gene?: FollowGeneButton_gene
   tracking?: any
   trackingData?: any
+  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {
@@ -31,7 +32,7 @@ export class FollowGeneButton extends React.Component<Props> {
   }
 
   handleFollow = () => {
-    const { gene, currentUser, relay } = this.props
+    const { gene, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
@@ -61,8 +62,7 @@ export class FollowGeneButton extends React.Component<Props> {
       })
       this.trackFollow()
     } else {
-      // TODO: trigger signup/login modal
-      window.location.assign("/login")
+      onOpenAuthModal && onOpenAuthModal("register")
     }
   }
 

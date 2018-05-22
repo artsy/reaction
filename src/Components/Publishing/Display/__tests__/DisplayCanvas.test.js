@@ -24,35 +24,35 @@ jest.mock("react-slick", () => {
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: jest.fn()
+  track: jest.fn(),
 }))
 
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {
-    const displayPanel = renderer.create(
-      <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />
-    ).toJSON()
+    const displayPanel = renderer
+      .create(<DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />)
+      .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the canvas in standard layout with video", () => {
-    const displayPanel = renderer.create(
-      <DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />
-    ).toJSON()
+    const displayPanel = renderer
+      .create(<DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />)
+      .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the canvas in overlay layout", () => {
-    const displayPanel = renderer.create(
-      <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
-    ).toJSON()
+    const displayPanel = renderer
+      .create(<DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />)
+      .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the canvas in slideshow layout", () => {
-    const displayPanel = renderer.create(
-      <DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />
-    ).toJSON()
+    const displayPanel = renderer
+      .create(<DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />)
+      .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 })
@@ -72,7 +72,9 @@ describe("unit", () => {
   }
 
   it("renders the unit data", () => {
-    const canvas = mount(<DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />)
+    const canvas = mount(
+      <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />
+    )
     expect(canvas.html()).toMatch(UnitCanvasImage.disclaimer)
     expect(canvas.html()).toMatch(UnitCanvasImage.headline)
     expect(canvas.html()).toMatch(UnitCanvasImage.link.text)
@@ -84,13 +86,29 @@ describe("unit", () => {
   })
 
   it("renders the video component if standard layout with video", () => {
-    const canvas = mount(<DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />)
+    const canvas = mount(
+      <DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />
+    )
     expect(canvas.find(CanvasVideo).length).toBe(1)
   })
 
   it("renders the slideshow component if slideshow layout", () => {
-    const canvas = mount(<DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />)
+    const canvas = mount(
+      <DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />
+    )
     expect(canvas.find(CanvasSlideshow).length).toBe(1)
+  })
+
+  it("calls renderPixelTracker with a unit object", () => {
+    const spy = jest.fn()
+    const displayPanel = renderer.create(
+      <DisplayCanvas
+        unit={UnitCanvasVideo}
+        campaign={Campaign}
+        renderPixelTracker={spy}
+      />
+    )
+    expect(spy).toBeCalledWith(UnitCanvasVideo)
   })
 
   describe("analytics", () => {
@@ -103,7 +121,7 @@ describe("unit", () => {
           action: "Impression",
           entity_type: "display_ad",
           campaign_name: "Artsy",
-          unit_layout: "canvas_standard"
+          unit_layout: "canvas_standard",
         })
       )
     })
@@ -117,7 +135,7 @@ describe("unit", () => {
           action: "Viewability",
           entity_type: "display_ad",
           campaign_name: "Artsy",
-          unit_layout: "canvas_standard"
+          unit_layout: "canvas_standard",
         })
       )
     })

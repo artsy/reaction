@@ -6,20 +6,24 @@ import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists } from "../../Fixtures/Components"
 import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
+import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
 
 describe("ArtistToolTip", () => {
-  const getWrapper = props => {
+  const getWrapper = (props, context = {}) => {
     return mount(
       wrapperWithContext(
         {
+          ...context,
           tooltipsData: {
             artists: [props.artist],
           },
         },
         {
           tooltipsData: PropTypes.object,
+          onOpenAuthModal: PropTypes.func,
+          currentUser: PropTypes.object,
         },
-        <ContextProvider>
+        <ContextProvider currentUser={(context as any).currentUser}>
           <ArtistToolTip {...props} />
         </ContextProvider>
       )
@@ -94,6 +98,20 @@ describe("ArtistToolTip", () => {
       const component = getWrapper(props)
 
       expect(component.text()).toMatch("Emerging Art")
+    })
+  })
+
+  describe("Open Auth Modal", () => {
+    it("callback gets called when followButton is clicked", () => {
+      const artist = Artists[0].artist
+      const context = {
+        onOpenAuthModal: jest.fn(),
+        currentUser: null,
+      }
+      const component = getWrapper({ artist }, context)
+      component.find(FollowArtistButton).simulate("click")
+
+      expect(context.onOpenAuthModal).toBeCalledWith("register")
     })
   })
 })

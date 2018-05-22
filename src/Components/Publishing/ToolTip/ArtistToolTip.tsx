@@ -21,6 +21,7 @@ export interface ArtistToolTipProps {
 export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
   static contextTypes = {
     tooltipsData: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
   }
 
   trackClick = () => {
@@ -36,6 +37,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
   }
 
   render() {
+    const { showMarketData, artist } = this.props
     const {
       blurb,
       carousel,
@@ -43,9 +45,11 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       href,
       id,
       name,
-    } = this.props.artist
-    const { showMarketData, artist } = this.props
-    const { artists } = this.context.tooltipsData
+    } = artist
+    const {
+      tooltipsData: { artists },
+      onOpenAuthModal,
+    } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
 
@@ -81,6 +85,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
             <FollowArtistButton
               artist={artists[id] as any}
               trackingData={trackingData}
+              onOpenAuthModal={onOpenAuthModal}
             />
           </Header>
 

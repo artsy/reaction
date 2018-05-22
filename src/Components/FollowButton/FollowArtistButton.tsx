@@ -18,6 +18,7 @@ interface Props
   artist?: FollowArtistButton_artist
   tracking?: any
   trackingData?: any
+  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 
 export class FollowArtistButton extends React.Component<Props> {
@@ -33,7 +34,7 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 
   handleFollow = () => {
-    const { artist, currentUser, relay } = this.props
+    const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
@@ -63,8 +64,7 @@ export class FollowArtistButton extends React.Component<Props> {
       })
       this.trackFollow()
     } else {
-      // TODO: trigger signup/login modal
-      window.location.assign("/login")
+      onOpenAuthModal && onOpenAuthModal("register")
     }
   }
 

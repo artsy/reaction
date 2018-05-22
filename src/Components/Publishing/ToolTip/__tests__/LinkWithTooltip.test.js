@@ -3,9 +3,9 @@ import { defer } from "lodash"
 import { mount } from "enzyme"
 import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
-import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
-import { ContextProvider } from "Components/Artsy"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { Artists, Genes } from "../../Fixtures/Components"
+import { ContextProvider } from "../../../Artsy"
 import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
@@ -20,7 +20,7 @@ describe("LinkWithTooltip", () => {
       artists: { "nick-mauss": Artists[0].artist },
       genes: { "capitalist-realism": Genes[0].gene },
     },
-    onTriggerToolTip: jest.fn()
+    onTriggerToolTip: jest.fn(),
   }
 
   const getWrapper = (context, props) => {
@@ -29,11 +29,17 @@ describe("LinkWithTooltip", () => {
 
     return mount(
       wrapperWithContext(
-        { activeToolTip, tooltipsData, onTriggerToolTip },
+        {
+          activeToolTip,
+          tooltipsData,
+          onTriggerToolTip,
+          relay: { environment: {} },
+        },
         {
           activeToolTip: PropTypes.string,
           tooltipsData: PropTypes.object,
-          onTriggerToolTip: PropTypes.func
+          onTriggerToolTip: PropTypes.func,
+          relay: PropTypes.object,
         },
         <ContextProvider>
           <LinkWithTooltip url={url} tracking={tracking}>
@@ -47,7 +53,7 @@ describe("LinkWithTooltip", () => {
   let props
   let position
   const window = {
-    innerHeight: 800
+    innerHeight: 800,
   }
 
   beforeEach(() => {
@@ -68,10 +74,9 @@ describe("LinkWithTooltip", () => {
       top: 1142,
       width: 127.359375,
       x: 254.859375,
-      y: 1142
+      y: 1142,
     }
   })
-
 
   it("Renders correctly", () => {
     const wrapper = getWrapper(context, props)
@@ -80,7 +85,10 @@ describe("LinkWithTooltip", () => {
   })
 
   it("#urlToEntityType extracts entity type from URL", () => {
-    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    const wrapper = getWrapper(context, props)
+      .childAt(0)
+      .childAt(0)
+      .instance()
 
     expect(wrapper.urlToEntityType()).toEqual({
       entityType: "artist",
@@ -89,7 +97,10 @@ describe("LinkWithTooltip", () => {
   })
 
   it("#entityTypeToEntity correctly gets data from tooltips context", () => {
-    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    const wrapper = getWrapper(context, props)
+      .childAt(0)
+      .childAt(0)
+      .instance()
 
     expect(wrapper.entityTypeToEntity()).toEqual({
       entityType: "artist",
@@ -108,33 +119,38 @@ describe("LinkWithTooltip", () => {
   it("Calls context.onTriggerToolTip on hover", () => {
     context.activeToolTip = null
     const wrapper = getWrapper(context, props)
-    wrapper
-      .find(Link)
-      .simulate("mouseEnter")
+    wrapper.find(Link).simulate("mouseEnter")
 
     expect(context.onTriggerToolTip.mock.calls[0][0]).toBe("nick-mauss")
   })
 
   it("Sets tooltip position on mount", () => {
-    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    const wrapper = getWrapper(context, props)
+      .childAt(0)
+      .childAt(0)
+      .instance()
     expect(wrapper.state.position.left).toBe(0)
   })
 
   it("Calls #setupToolTipPosition on #componentDidMount", () => {
-    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    const wrapper = getWrapper(context, props)
+      .childAt(0)
+      .childAt(0)
+      .instance()
     wrapper.setupToolTipPosition = jest.fn()
 
     wrapper.componentDidMount()
     expect(wrapper.setupToolTipPosition.mock.calls.length).toBe(1)
   })
 
-  it("Calls #onLeaveLink on mouseLeave", (done) => {
+  it("Calls #onLeaveLink on mouseLeave", done => {
     context.activeToolTip = "nick-mauss"
     const wrapper = getWrapper(context, props)
-    const instance = wrapper.childAt(0).childAt(0).instance()
-    wrapper
-      .find(Background)
-      .simulate("mouseLeave")
+    const instance = wrapper
+      .childAt(0)
+      .childAt(0)
+      .instance()
+    wrapper.find(Background).simulate("mouseLeave")
 
     expect(instance.state.maybeHideToolTip).toBe(true)
     defer(() => {
@@ -147,7 +163,10 @@ describe("LinkWithTooltip", () => {
   })
 
   it("#setupToolTipPosition sets state with link position and getOrientation", () => {
-    const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+    const wrapper = getWrapper(context, props)
+      .childAt(0)
+      .childAt(0)
+      .instance()
     wrapper.setState = jest.fn()
     wrapper.setupToolTipPosition()
 
@@ -158,7 +177,10 @@ describe("LinkWithTooltip", () => {
   describe("#getOrientation", () => {
     it("Returns 'down' if space above link is < 350", () => {
       position.top = 300
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       const getOrientation = wrapper.getOrientation(position)
 
       expect(getOrientation).toBe("down")
@@ -166,7 +188,10 @@ describe("LinkWithTooltip", () => {
 
     it("Returns 'up' if space above link is > 350", () => {
       position.top = 500
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       const getOrientation = wrapper.getOrientation(position)
 
       expect(getOrientation).toBe("up")
@@ -175,27 +200,39 @@ describe("LinkWithTooltip", () => {
 
   describe("#getToolTipPosition", () => {
     it("Returns a position for artist links", () => {
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("artist")).toBe(-116.3203125)
     })
 
     it("Returns a position for gene links", () => {
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("gene")).toBe(-76.3203125)
     })
 
     it("Returns a position for artist links at left window boundary", () => {
       position.x = 80
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("artist")).toBe(-70)
     })
 
     it("Returns a position for gene links at left window boundary", () => {
       position.x = 80
-      const wrapper = getWrapper(context, props).childAt(0).childAt(0).instance()
+      const wrapper = getWrapper(context, props)
+        .childAt(0)
+        .childAt(0)
+        .instance()
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("gene")).toBe(-70)
     })
