@@ -43,8 +43,9 @@ export class GeneToolTip extends React.Component<GeneProps> {
 
     const trackingData = {
       context_module: "tooltip",
-      tooltip_entity_id: _id,
-      tooltip_entity_slug: href,
+      entity_id: _id,
+      entity_slug: id,
+      entity_type: "gene",
     }
 
     return (

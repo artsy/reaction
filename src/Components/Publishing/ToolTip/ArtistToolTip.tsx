@@ -44,6 +44,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       formatted_nationality_and_birthday,
       href,
       id,
+      _id,
       name,
     } = artist
     const {
@@ -55,8 +56,9 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
 
     const trackingData = {
       context_module: "tooltip",
-      tooltip_entity_id: id,
-      tooltip_entity_slug: href,
+      entity_id: _id,
+      entity_slug: id,
+      entity_type: "artist",
     }
 
     return (

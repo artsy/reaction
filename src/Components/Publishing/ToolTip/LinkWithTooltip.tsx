@@ -87,9 +87,9 @@ export class LinkWithTooltip extends Component<Props, State> {
         action: "Hover",
         type: "tooltip",
         tooltip_type: "intext_tooltip",
-        tooltip_entity_type: entityType,
-        tooltip_entity_id: entity.id,
-        tooltip_entity_slug: entity._id,
+        entity_type: entityType,
+        entity_id: entity._id,
+        entity_slug: entity.id,
       })
     }
   }
