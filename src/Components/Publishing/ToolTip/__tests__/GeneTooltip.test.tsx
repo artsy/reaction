@@ -21,8 +21,9 @@ describe("GeneTooltip", () => {
         {
           tooltipsData: PropTypes.object,
           onOpenAuthModal: PropTypes.func,
+          currentUser: PropTypes.object,
         },
-        <ContextProvider>
+        <ContextProvider currentUser={(context as any).currentUser}>
           <GeneToolTip gene={props.gene} />
         </ContextProvider>
       )
@@ -41,6 +42,7 @@ describe("GeneTooltip", () => {
       const gene = Genes[0].gene
       const context = {
         onOpenAuthModal: jest.fn(),
+        currentUser: null,
       }
       const component = getWrapper({ gene }, context)
       component.find(FollowGeneButton).simulate("click")

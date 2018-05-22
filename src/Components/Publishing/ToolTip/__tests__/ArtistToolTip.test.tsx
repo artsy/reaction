@@ -21,8 +21,9 @@ describe("ArtistToolTip", () => {
         {
           tooltipsData: PropTypes.object,
           onOpenAuthModal: PropTypes.func,
+          currentUser: PropTypes.object,
         },
-        <ContextProvider>
+        <ContextProvider currentUser={(context as any).currentUser}>
           <ArtistToolTip
             artist={props.artist}
             showMarketData={props.showMarketData}
@@ -81,6 +82,7 @@ describe("ArtistToolTip", () => {
       const artist = Artists[0].artist
       const context = {
         onOpenAuthModal: jest.fn(),
+        currentUser: null,
       }
       const component = getWrapper({ artist }, context)
       component.find(FollowArtistButton).simulate("click")
