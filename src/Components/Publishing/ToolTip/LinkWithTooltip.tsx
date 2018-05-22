@@ -143,9 +143,9 @@ export class LinkWithTooltip extends Component<Props, State> {
     const toolTipData = this.entityTypeToEntity()
     const { entity, entityType } = toolTipData
     const id = entity ? entity.id : null
-    const show = id && id === activeToolTip
-
     const toolTipLeft = this.getToolTipPosition(entityType)
+    const show = id ? id === activeToolTip : false
+    const showWithFade = show || waitForFade === id
 
     return (
       <Link
@@ -153,11 +153,12 @@ export class LinkWithTooltip extends Component<Props, State> {
           onTriggerToolTip(id && id)
         }}
         ref={link => (this.link = link)}
-        show={show || waitForFade === id}
+        show={showWithFade}
       >
-        <PrimaryLink href={url} target="_blank">
+        <PrimaryLink href={url} target="_blank" show={showWithFade}>
           {this.props.children}
         </PrimaryLink>
+
         <FadeContainer>
           <FadeTransition
             in={show}
@@ -178,15 +179,35 @@ export class LinkWithTooltip extends Component<Props, State> {
             />
           </FadeTransition>
         </FadeContainer>
-        {show && <Background onMouseLeave={this.onLeaveLink} />}
+        {show && (
+          <Background
+            onMouseLeave={this.onLeaveLink}
+            href={url}
+            target="_blank"
+          />
+        )}
       </Link>
     )
   }
 }
 
-export const PrimaryLink = styled.a`
-  z-index: -1;
+export const PrimaryLink = styled.a.attrs<{ show: boolean }>({})`
+  z-index: auto;
+  color: black;
+  transition: color 0.25s;
+
+  ${props =>
+    props.show &&
+    `
+    color: ${Colors.grayDark} !important;
+    background-image: linear-gradient(
+      to right,
+      ${Colors.grayDark} 50%,
+      transparent 50%
+    ) !important;
+  `};
 `
+
 const FadeContainer = styled.div`
   position: absolute;
   top: 0;
@@ -200,28 +221,18 @@ export const Link = styled.div.attrs<{ onMouseEnter: any; show: boolean }>({})`
   display: inline-block;
   position: relative;
   cursor: pointer;
-  z-index: ${props => (props.show ? 10 : -10)} ${FadeContainer} {
+  z-index: ${props => (props.show ? 10 : 0)};
+  ${FadeContainer} {
     ${props => props.show && `z-index: 10`};
-  }
-  &:hover {
-    z-index: 10;
-    ${PrimaryLink} {
-      opacity: 0.65;
-      background-image: linear-gradient(
-        to right,
-        ${Colors.grayDark} 50%,
-        transparent 50%
-      ) !important;
-      color: ${Colors.grayDark};
-    }
   }
 `
 
-export const Background = styled.div`
+export const Background = styled.a`
   position: absolute;
   left: 0;
   top: -10px;
   bottom: -10px;
   right: 0;
-  z-index: 1;
+  z-index: 10;
+  background-image: none !important;
 `
