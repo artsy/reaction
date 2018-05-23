@@ -28,6 +28,7 @@ query TooltipsDataLoaderQuery(
   artists(slugs: $artistSlugs) {
     id
     ...ArtistToolTip_artist
+    ...MarketDataSummary_artist
     ...FollowArtistButton_artist
     __id
   }
@@ -54,9 +55,14 @@ fragment ArtistToolTip_artist on Artist {
       }
     }
   }
+  __id
+}
+
+fragment MarketDataSummary_artist on Artist {
+  _id
   collections
   highlights {
-    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
+    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
       edges {
         node {
           categories {
@@ -72,7 +78,7 @@ fragment ArtistToolTip_artist on Artist {
     edges {
       node {
         price_realized {
-          display
+          display(format: "0a")
         }
         __id
       }
@@ -181,7 +187,7 @@ const node: ConcreteRequest = (function() {
     name: "TooltipsDataLoaderQuery",
     id: null,
     text:
-      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  collections\n  highlights {\n    partners(first: 5, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  image {\n    url(version: "tall")\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n',
+      'query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  __id\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: "0a")\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  image {\n    url(version: "tall")\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n',
     metadata: {},
     fragment: {
       kind: "Fragment",
@@ -203,6 +209,11 @@ const node: ConcreteRequest = (function() {
             {
               kind: "FragmentSpread",
               name: "ArtistToolTip_artist",
+              args: null,
+            },
+            {
+              kind: "FragmentSpread",
+              name: "MarketDataSummary_artist",
               args: null,
             },
             {
@@ -252,13 +263,7 @@ const node: ConcreteRequest = (function() {
           concreteType: "Artist",
           plural: true,
           selections: [
-            {
-              kind: "ScalarField",
-              alias: null,
-              name: "collections",
-              args: null,
-              storageKey: null,
-            },
+            v3,
             v2,
             {
               kind: "ScalarField",
@@ -338,6 +343,20 @@ const node: ConcreteRequest = (function() {
             },
             v6,
             {
+              kind: "ScalarField",
+              alias: null,
+              name: "_id",
+              args: null,
+              storageKey: null,
+            },
+            {
+              kind: "ScalarField",
+              alias: null,
+              name: "collections",
+              args: null,
+              storageKey: null,
+            },
+            {
               kind: "LinkedField",
               alias: null,
               name: "highlights",
@@ -351,7 +370,7 @@ const node: ConcreteRequest = (function() {
                   alias: null,
                   name: "partners",
                   storageKey:
-                    'partners(display_on_partner_profile:true,first:5,partner_category:["blue-chip","top-established","top-emerging"],represented_by:true)',
+                    'partners(display_on_partner_profile:true,first:10,partner_category:["blue-chip","top-established","top-emerging"],represented_by:true)',
                   args: [
                     {
                       kind: "Literal",
@@ -362,7 +381,7 @@ const node: ConcreteRequest = (function() {
                     {
                       kind: "Literal",
                       name: "first",
-                      value: 5,
+                      value: 10,
                       type: "Int",
                     },
                     {
@@ -479,8 +498,15 @@ const node: ConcreteRequest = (function() {
                               kind: "ScalarField",
                               alias: null,
                               name: "display",
-                              args: null,
-                              storageKey: null,
+                              args: [
+                                {
+                                  kind: "Literal",
+                                  name: "format",
+                                  value: "0a",
+                                  type: "String",
+                                },
+                              ],
+                              storageKey: 'display(format:"0a")',
                             },
                           ],
                         },
@@ -501,7 +527,6 @@ const node: ConcreteRequest = (function() {
               plural: true,
               selections: [v6, v3],
             },
-            v3,
             v7,
           ],
         },
@@ -557,5 +582,5 @@ const node: ConcreteRequest = (function() {
     },
   }
 })()
-;(node as any).hash = "5e59e66c2896bcd93f1b1ee6720fa731"
+;(node as any).hash = "6e56dded5a6f7367afd6fbd1bb443d7a"
 export default node

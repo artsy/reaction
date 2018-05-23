@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
-.c2 {
-  width: 240px;
-}
-
-.c2 a:hover {
-  color: black;
-}
-
 .c10 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -70,6 +62,14 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   border-color: black;
   background: black;
   color: white;
+}
+
+.c2 {
+  width: 240px;
+}
+
+.c2 a:hover {
+  color: black;
 }
 
 .c3 {
@@ -215,10 +215,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
-.c2 {
-  width: 320px;
-}
-
 .c11 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -282,6 +278,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: white;
 }
 
+.c2 {
+  width: 320px;
+}
+
 .c3 {
   position: relative;
 }
@@ -294,6 +294,14 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 .c3 a:hover {
   color: black;
+}
+
+.c3 .file__MarketDataSummaryContainer-yu39to-0 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  padding: 10px 0;
 }
 
 .c5 {
