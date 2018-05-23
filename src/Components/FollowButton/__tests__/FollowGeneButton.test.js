@@ -72,17 +72,15 @@ describe("FollowGeneButton", () => {
       const mutation = commitMutation.mock.calls[0][1].variables.input
 
       expect(mutation.gene_id).toBe("modernism")
-      expect(mutation.unfollow).toBe(false)
     })
 
-    it("Unfollows an artist if current user", () => {
+    it("Unfollows an gene if current user", () => {
       props.gene.is_followed = true
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
       const mutation = commitMutation.mock.calls[1][1].variables.input
 
       expect(mutation.gene_id).toBe("modernism")
-      expect(mutation.unfollow).toBe(true)
     })
 
     it("Tracks follow click when following", () => {
