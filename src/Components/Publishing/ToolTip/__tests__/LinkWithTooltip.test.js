@@ -130,12 +130,11 @@ describe("LinkWithTooltip", () => {
     wrapper.find(Link).simulate("mouseEnter")
     const tracking = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(tracking.action).toBe("Hover")
+    expect(tracking.action).toBe("Viewed tooltip")
     expect(tracking.entity_id).toBe("5955005ceaaedc0017acdd1f")
     expect(tracking.entity_slug).toBe("nick-mauss")
     expect(tracking.entity_type).toBe("artist")
-    expect(tracking.type).toBe("tooltip")
-    expect(tracking.tooltip_type).toBe("intext_tooltip")
+    expect(tracking.type).toBe("intext tooltip")
   })
 
   it("Sets tooltip position on mount", () => {

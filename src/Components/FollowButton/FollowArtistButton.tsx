@@ -28,7 +28,7 @@ export class FollowArtistButton extends React.Component<Props> {
       tracking,
       artist: { is_followed },
     } = this.props
-    const trackingData = this.props.trackingData || {}
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
     const action = is_followed ? "Unfollowed Artist" : "Followed Artist"
 
     tracking.trackEvent(extend({ action }, trackingData))

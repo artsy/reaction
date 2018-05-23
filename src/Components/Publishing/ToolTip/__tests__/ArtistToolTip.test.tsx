@@ -66,8 +66,9 @@ describe("ArtistToolTip", () => {
     const trackingData = props.tracking.trackEvent.mock.calls[0][0]
 
     expect(trackingData.action).toBe("Click")
-    expect(trackingData.type).toBe("intext_tooltip")
-    expect(trackingData.context_module).toBe("tooltip")
+    expect(trackingData.flow).toBe("tooltip")
+    expect(trackingData.type).toBe("artist stub")
+    expect(trackingData.context_module).toBe("intext tooltip")
     expect(trackingData.destination_path).toBe("/artist/nick-mauss")
   })
 

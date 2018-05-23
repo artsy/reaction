@@ -84,9 +84,8 @@ export class LinkWithTooltip extends Component<Props, State> {
       onTriggerToolTip(entity.id)
 
       tracking.trackEvent({
-        action: "Hover",
-        type: "tooltip",
-        tooltip_type: "intext_tooltip",
+        action: "Viewed tooltip",
+        type: "intext tooltip",
         entity_type: entityType,
         entity_id: entity._id,
         entity_slug: entity.id,

@@ -28,8 +28,9 @@ export class GeneToolTip extends React.Component<GeneProps> {
 
     tracking.trackEvent({
       action: "Click",
-      type: "intext_tooltip",
-      context_module: "tooltip",
+      flow: "tooltip",
+      type: "gene stub",
+      context_module: "intext tooltip",
       destination_path: href,
     })
   }
@@ -46,7 +47,6 @@ export class GeneToolTip extends React.Component<GeneProps> {
       context_module: "tooltip",
       entity_id: _id,
       entity_slug: id,
-      entity_type: "gene",
     }
 
     return (
