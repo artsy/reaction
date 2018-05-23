@@ -3,6 +3,7 @@ import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
 import { GeneProps } from "../ToolTip/GeneToolTip"
+import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
 
 export const ArtworkMissingInfo = {
   type: "artwork",
@@ -689,92 +690,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "modern",
-                  },
-                  {
-                    id: "painting",
-                  },
-                  {
-                    id: "blue-chip",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: {
-        edges: [
-          {
-            node: {
-              price_realized: {
-                display: "$63,312,500",
-              },
-            },
-          },
-        ],
-      },
-      genes: [
-        {
-          name: "United States",
-        },
-        {
-          name: "Abstract Art",
-        },
-        {
-          name: "21st Century",
-        },
-        {
-          name: "1970–present",
-        },
-        {
-          name: "Use of Common Materials",
-        },
-        {
-          name: "Drawing",
-        },
-        {
-          name: "Painting",
-        },
-        {
-          name: "Immersive",
-        },
-        {
-          name: "Ceramic",
-        },
-        {
-          name: "Mixed-Media",
-        },
-      ],
     },
   },
   {
@@ -813,39 +728,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "painting",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: null,
-      genes: [],
     },
   },
   {
@@ -876,18 +758,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: null,
-      highlights: {
-        partners: {
-          edges: [],
-        },
-      },
-      auctionResults: null,
-      genes: [
-        {
-          name: "Emerging Art",
-        },
-      ],
     },
   },
   {
@@ -974,51 +844,119 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Tate", "Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "blue-chip",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "modern",
-                  },
-                  {
-                    id: "prints-and-multiples",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: null,
-      genes: [],
     },
+  },
+]
+
+export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
+  {
+    _id: "589a6291275b2410d1beb6a5",
+    collections: ["Museum of Modern Art (MoMA)"],
+    highlights: {
+      partners: {
+        edges: [
+          {
+            node: {
+              categories: [
+                {
+                  id: "contemporary",
+                },
+                {
+                  id: "established",
+                },
+                {
+                  id: "top-established",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    auctionResults: {
+      edges: [
+        {
+          node: {
+            price_realized: {
+              display: "$63,312,500",
+            },
+          },
+        },
+      ],
+    },
+    genes: [
+      {
+        name: "United States",
+      },
+      {
+        name: "Abstract Art",
+      },
+      {
+        name: "21st Century",
+      },
+      {
+        name: "1970–present",
+      },
+      {
+        name: "Use of Common Materials",
+      },
+      {
+        name: "Drawing",
+      },
+      {
+        name: "Painting",
+      },
+      {
+        name: "Immersive",
+      },
+      {
+        name: "Ceramic",
+      },
+      {
+        name: "Mixed-Media",
+      },
+    ],
+  },
+  {
+    _id: "551361eb72616903f6d50300",
+    collections: null,
+    highlights: {
+      partners: {
+        edges: [],
+      },
+    },
+    auctionResults: null,
+    genes: [
+      {
+        name: "United States",
+      },
+      {
+        name: "Abstract Art",
+      },
+      {
+        name: "21st Century",
+      },
+      {
+        name: "1970–present",
+      },
+      {
+        name: "Contemporary Conceptualism",
+      },
+      {
+        name: "Painting",
+      },
+      {
+        name: "Film/Video",
+      },
+      {
+        name: "Installation",
+      },
+      {
+        name: "Mixed-Media",
+      },
+      {
+        name: "Machines",
+      },
+    ],
   },
 ]
