@@ -49,7 +49,6 @@ export class FollowGeneButton extends React.Component<Props> {
         variables: {
           input: {
             gene_id: gene.id,
-            unfollow: gene.is_followed,
           },
         },
         optimisticResponse: {
