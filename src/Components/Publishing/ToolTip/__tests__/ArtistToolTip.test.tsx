@@ -4,7 +4,7 @@ import "jest-styled-components"
 import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip } from "../ArtistToolTip"
+import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
 
@@ -24,21 +24,30 @@ describe("ArtistToolTip", () => {
           currentUser: PropTypes.object,
         },
         <ContextProvider currentUser={(context as any).currentUser}>
-          <ArtistToolTip
-            artist={props.artist}
-            showMarketData={props.showMarketData}
-          />
+          <ArtistToolTip {...props} />
         </ContextProvider>
       )
     )
   }
 
-  it("Renders artist data", () => {
-    const artist = Artists[0].artist
-    const component = getWrapper({ artist })
+  let props
+  beforeEach(() => {
+    props = {
+      tracking: {
+        trackEvent: jest.fn(),
+      },
+      artist: Artists[0].artist,
+      showMarketData: false,
+    }
+  })
 
-    expect(component.text()).toMatch(artist.name)
-    expect(component.text()).toMatch(artist.formatted_nationality_and_birthday)
+  it("Renders artist data", () => {
+    const component = getWrapper(props)
+
+    expect(component.text()).toMatch(props.artist.name)
+    expect(component.text()).toMatch(
+      props.artist.formatted_nationality_and_birthday
+    )
     expect(component.text()).toMatch(
       "Nick Mauss makes drawings, prints, and paintings that often"
     )
@@ -46,6 +55,21 @@ describe("ArtistToolTip", () => {
       "https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg"
     )
     expect(component.find("img").length).toBe(2)
+  })
+
+  it("Tracks clicks to artist page", () => {
+    const component = getWrapper(props)
+    component
+      .find(TitleDate)
+      .at(0)
+      .simulate("click")
+    const trackingData = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(trackingData.action).toBe("Click")
+    expect(trackingData.flow).toBe("tooltip")
+    expect(trackingData.type).toBe("artist stub")
+    expect(trackingData.context_module).toBe("intext tooltip")
+    expect(trackingData.destination_path).toBe("/artist/nick-mauss")
   })
 
   describe("Open Auth Modal", () => {

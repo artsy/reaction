@@ -4,6 +4,8 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
 import { getFullArtsyHref } from "../Constants"
+import { track } from "../../../Utils/track"
+import { FollowTrackingData } from "../../FollowButton/Typings"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
@@ -11,32 +13,66 @@ import FollowGeneButton from "../../FollowButton/FollowGeneButton"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
+  tracking?: any
 }
 
-export const GeneToolTip: React.SFC<GeneProps> = (props, context) => {
-  const { description, href, id, image, name } = props.gene
-  const { url } = image
-  const { genes } = context.tooltipsData
-  const { onOpenAuthModal } = context
+export class GeneToolTip extends React.Component<GeneProps> {
+  static contextTypes = {
+    tooltipsData: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
+  }
 
-  return (
-    <Wrapper>
-      <GeneContainer href={getFullArtsyHref(href)} target="_blank">
-        {url && <Image src={url} />}
-        <Title>{name}</Title>
+  trackClick = () => {
+    const { tracking } = this.props
+    const { href } = this.props.gene
 
-        {description && <ToolTipDescription text={description} />}
-      </GeneContainer>
+    tracking.trackEvent({
+      action: "Click",
+      flow: "tooltip",
+      type: "gene stub",
+      context_module: "intext tooltip",
+      destination_path: href,
+    })
+  }
 
-      <ToolTipFooter>
-        <FollowGeneButton
-          gene={genes[id] as any}
-          onOpenAuthModal={onOpenAuthModal}
-        />
-        <NewFeature />
-      </ToolTipFooter>
-    </Wrapper>
-  )
+  render() {
+    const { description, href, id, _id, image, name } = this.props.gene
+    const { url } = image
+    const {
+      tooltipsData: { genes },
+      onOpenAuthModal,
+    } = this.context
+
+    const trackingData: FollowTrackingData = {
+      context_module: "tooltip",
+      entity_id: _id,
+      entity_slug: id,
+    }
+
+    return (
+      <Wrapper>
+        <GeneContainer
+          href={getFullArtsyHref(href)}
+          target="_blank"
+          onClick={this.trackClick}
+        >
+          {url && <Image src={url} />}
+          <Title>{name}</Title>
+
+          {description && <ToolTipDescription text={description} />}
+        </GeneContainer>
+
+        <ToolTipFooter>
+          <FollowGeneButton
+            gene={genes[id] as any}
+            trackingData={trackingData}
+            onOpenAuthModal={onOpenAuthModal}
+          />
+          <NewFeature />
+        </ToolTipFooter>
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`
@@ -74,22 +110,20 @@ export const ToolTipFooter = styled.div`
   }
 `
 
-export const GeneToolTipContainer = createFragmentContainer(
-  GeneToolTip,
-  graphql`
-    fragment GeneToolTip_gene on Gene {
-      description
-      href
-      id
-      image {
-        url(version: "tall")
+export const GeneToolTipContainer = track()(
+  createFragmentContainer(
+    GeneToolTip,
+    graphql`
+      fragment GeneToolTip_gene on Gene {
+        description
+        href
+        id
+        _id
+        image {
+          url(version: "tall")
+        }
+        name
       }
-      name
-    }
-  `
+    `
+  )
 )
-
-GeneToolTip.contextTypes = {
-  tooltipsData: PropTypes.object,
-  onOpenAuthModal: PropTypes.func,
-}

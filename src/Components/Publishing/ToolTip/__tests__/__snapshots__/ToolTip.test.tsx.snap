@@ -161,6 +161,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
       <a
         className="c3"
         href="https://www.artsy.net/gene/capitalist-realism"
+        onClick={[Function]}
         target="_blank"
       >
         <img
@@ -401,6 +402,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
         <a
           className="c4"
           href="/artist/nick-mauss"
+          onClick={[Function]}
         >
           <img
             height={148}
@@ -419,6 +421,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           <a
             className="c6"
             href="/artist/nick-mauss"
+            onClick={[Function]}
             target="_blank"
           >
             <div
@@ -443,6 +446,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
         </div>
         <a
           href="/artist/nick-mauss"
+          onClick={[Function]}
           target="_blank"
         >
           <div

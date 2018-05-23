@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
+exports[`FollowArtistButton snapshots Renders properly 1`] = `
 .c0 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -33,7 +33,7 @@ exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
 
 <div
   className="c0"
-  onClick={[MockFunction]}
+  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >

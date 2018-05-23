@@ -4,6 +4,7 @@ import { findDOMNode } from "react-dom"
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
 import FadeTransition from "../../Animation/FadeTransition"
@@ -11,12 +12,13 @@ import FadeTransition from "../../Animation/FadeTransition"
 interface Props {
   url: string
   showMarketData?: boolean
+  tracking?: any
 }
 
 interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
-  position: object | null
+  position: ClientRect
   orientation?: string
 }
 
@@ -60,7 +62,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     window.removeEventListener("resize", this.SetupToolTipPosition)
   }
 
-  entityTypeToEntity() {
+  entityTypeToEntity = () => {
     const { entityType, slug } = this.urlToEntityType()
     const data = this.context.tooltipsData
     const collectionKey = entityType + "s"
@@ -70,6 +72,24 @@ export class LinkWithTooltip extends Component<Props, State> {
     return {
       entityType,
       entity: data[collectionKey][slug],
+    }
+  }
+
+  showToolTip = toolTipData => {
+    const { tracking } = this.props
+    const { onTriggerToolTip } = this.context
+    const { entity, entityType } = toolTipData
+
+    if (entity) {
+      onTriggerToolTip(entity.id)
+
+      tracking.trackEvent({
+        action: "Viewed tooltip",
+        type: "intext tooltip",
+        entity_type: entityType,
+        entity_id: entity._id,
+        entity_slug: entity.id,
+      })
     }
   }
 
@@ -136,49 +156,56 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   render() {
     const { showMarketData, url } = this.props
-    const { activeToolTip, onTriggerToolTip } = this.context
+    const { activeToolTip } = this.context
     const { orientation } = this.state
 
     const toolTipData = this.entityTypeToEntity()
-    const { entity, entityType } = toolTipData
-    const id = entity ? entity.id : null
-    const show = id && id === activeToolTip
+    let show = false
 
-    const toolTipLeft = this.getToolTipPosition(entityType)
+    if (toolTipData) {
+      const { entity, entityType } = toolTipData
+      const toolTipLeft = this.getToolTipPosition(entityType)
+      const id = entity ? entity.id : null
+      show = id && id === activeToolTip
 
-    return (
-      <Link
-        onMouseEnter={() => {
-          onTriggerToolTip(id && id)
-        }}
-        ref={link => (this.link = link)}
-      >
-        <PrimaryLink href={url} target="_blank">
-          {this.props.children}
-        </PrimaryLink>
-
-        <FadeTransition
-          in={show}
-          mountOnEnter
-          unmountOnExit
-          timeout={{ enter: 200, exit: 250 }}
+      return (
+        <Link
+          onMouseEnter={() => !show && this.showToolTip(toolTipData)}
+          ref={link => (this.link = link)}
         >
-          <ToolTip
-            entity={entity}
-            model={entityType}
-            showMarketData={showMarketData}
-            onMouseLeave={this.hideToolTip}
-            onMouseEnter={() => {
-              this.setState({ inToolTip: true })
-            }}
-            positionLeft={toolTipLeft}
-            orientation={orientation}
-          />
-        </FadeTransition>
+          <PrimaryLink href={url} target="_blank">
+            {this.props.children}
+          </PrimaryLink>
 
-        {show && <Background onMouseLeave={this.onLeaveLink} />}
-      </Link>
-    )
+          <FadeTransition
+            in={show}
+            mountOnEnter
+            unmountOnExit
+            timeout={{ enter: 200, exit: 250 }}
+          >
+            <ToolTip
+              entity={entity}
+              model={entityType}
+              showMarketData={showMarketData}
+              onMouseLeave={this.hideToolTip}
+              onMouseEnter={() => {
+                this.setState({ inToolTip: true })
+              }}
+              positionLeft={toolTipLeft}
+              orientation={orientation}
+            />
+          </FadeTransition>
+
+          {show && <Background onMouseLeave={this.onLeaveLink} />}
+        </Link>
+      )
+    } else {
+      return (
+        <a href={url} target="_blank">
+          {this.props.children}
+        </a>
+      )
+    }
   }
 }
 
@@ -211,3 +238,5 @@ export const Background = styled.div`
   bottom: -10px;
   right: 0;
 `
+
+export default track()(LinkWithTooltip)

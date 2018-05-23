@@ -4,8 +4,10 @@ import React from "react"
 import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
 import fillwidthDimensions from "../../../Utils/fillwidth"
+import { track } from "../../../Utils/track"
 import { garamond, unica } from "Assets/Fonts"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
+import { FollowTrackingData } from "../../FollowButton/Typings"
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
@@ -16,67 +18,95 @@ import MarketDataSummary, {
 export interface ArtistToolTipProps {
   showMarketData?: boolean
   artist: ArtistToolTip_artist
+  tracking?: any
 }
 
-export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
-  props,
-  context
-) => {
-  const {
-    blurb,
-    carousel,
-    formatted_nationality_and_birthday,
-    href,
-    id,
-    name,
-  } = props.artist
-  const { showMarketData } = props
-  const displayImages = map(carousel.images.slice(0, 2), "resized")
-  const images = fillwidthDimensions(displayImages, 320, 15, 150)
-  const { artists } = context.tooltipsData
-  const { onOpenAuthModal } = context
+export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
+  static contextTypes = {
+    tooltipsData: PropTypes.object,
+    onOpenAuthModal: PropTypes.func,
+  }
 
-  return (
-    <Wrapper>
-      <ArtistContainer>
-        {images && (
-          <Images href={href}>
-            {images.map((img, i) => (
-              <img
-                key={i}
-                src={img.__id}
-                width={img.width}
-                height={img.height}
-              />
-            ))}
-          </Images>
-        )}
+  trackClick = () => {
+    const { tracking } = this.props
+    const { href } = this.props.artist
 
-        <Header>
-          <TitleDate href={href} target="_blank">
-            <Title>{name}</Title>
-            {formatted_nationality_and_birthday && (
-              <Date>{formatted_nationality_and_birthday}</Date>
-            )}
-          </TitleDate>
-          <FollowArtistButton
-            artist={artists[id] as any}
-            onOpenAuthModal={onOpenAuthModal}
-          />
-        </Header>
+    tracking.trackEvent({
+      action: "Click",
+      flow: "tooltip",
+      type: "artist stub",
+      context_module: "intext tooltip",
+      destination_path: href,
+    })
+  }
 
-        <a href={href} target="_blank">
-          {showMarketData ? (
-            <MarketDataSummary artist={artists[id] as any} showGenes />
-          ) : (
-            blurb && <ToolTipDescription text={blurb} />
+  render() {
+    const { showMarketData, artist } = this.props
+    const {
+      blurb,
+      carousel,
+      formatted_nationality_and_birthday,
+      href,
+      id,
+      _id,
+      name,
+    } = artist
+    const {
+      tooltipsData: { artists },
+      onOpenAuthModal,
+    } = this.context
+    const displayImages = map(carousel.images.slice(0, 2), "resized")
+    const images = fillwidthDimensions(displayImages, 320, 15, 150)
+
+    const trackingData: FollowTrackingData = {
+      context_module: "tooltip",
+      entity_id: _id,
+      entity_slug: id,
+    }
+
+    return (
+      <Wrapper>
+        <ArtistContainer>
+          {images && (
+            <Images href={href} onClick={this.trackClick}>
+              {images.map((img, i) => (
+                <img
+                  key={i}
+                  src={img.__id}
+                  width={img.width}
+                  height={img.height}
+                />
+              ))}
+            </Images>
           )}
-        </a>
-      </ArtistContainer>
 
-      <NewFeature />
-    </Wrapper>
-  )
+          <Header>
+            <TitleDate href={href} target="_blank" onClick={this.trackClick}>
+              <Title>{name}</Title>
+              {formatted_nationality_and_birthday && (
+                <Date>{formatted_nationality_and_birthday}</Date>
+              )}
+            </TitleDate>
+            <FollowArtistButton
+              artist={artists[id] as any}
+              trackingData={trackingData}
+              onOpenAuthModal={onOpenAuthModal}
+            />
+          </Header>
+
+          <a href={href} target="_blank" onClick={this.trackClick}>
+            {showMarketData ? (
+              <MarketDataSummary artist={artists[id] as any} showGenes />
+            ) : (
+              blurb && <ToolTipDescription text={blurb} />
+            )}
+          </a>
+        </ArtistContainer>
+
+        <NewFeature />
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`
@@ -104,7 +134,7 @@ const Header = styled.div`
   justify-content: space-between;
 `
 
-const TitleDate = styled.a`
+export const TitleDate = styled.a`
   display: flex;
   flex-direction: column;
 `
@@ -125,29 +155,27 @@ const Images = styled.a`
   justify-content: space-between;
 `
 
-export const ArtistTooltipContainer = createFragmentContainer(
-  ArtistToolTip,
-  graphql`
-    fragment ArtistToolTip_artist on Artist {
-      name
-      id
-      formatted_nationality_and_birthday
-      href
-      blurb
-      carousel {
-        images {
-          resized(height: 200) {
-            url
-            width
-            height
+export const ArtistTooltipContainer = track()(
+  createFragmentContainer(
+    ArtistToolTip,
+    graphql`
+      fragment ArtistToolTip_artist on Artist {
+        name
+        id
+        _id
+        formatted_nationality_and_birthday
+        href
+        blurb
+        carousel {
+          images {
+            resized(height: 200) {
+              url
+              width
+              height
+            }
           }
         }
       }
-    }
-  `
+    `
+  )
 )
-
-ArtistToolTip.contextTypes = {
-  tooltipsData: PropTypes.object,
-  onOpenAuthModal: PropTypes.func,
-}

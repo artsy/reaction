@@ -6,8 +6,8 @@ import { SeriesArticle, SeriesArticleSponsored, SeriesArticleCustomSubTitle } fr
 import { EditableChild } from "../../Fixtures/Helpers"
 import { SeriesAbout } from "../SeriesAbout"
 
-jest.mock("../../../../Utils/track", () => ({
-  track: jest.fn(),
+jest.mock("../../../../Utils/track.ts", () => ({
+  track: () => jest.fn(c => c)
 }))
 
 describe("SeriesAbout", () => {
