@@ -15,7 +15,7 @@ import { SeriesAbout } from "../../../Series/SeriesAbout"
 import { VerticalOrSeriesTitle } from "../../../Sections/VerticalOrSeriesTitle"
 
 jest.mock("../../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
+  track: () => jest.fn(c => c),
 }))
 
 describe("ArticleCard", () => {
