@@ -5,11 +5,13 @@ import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { garamond, unica } from "Assets/Fonts"
-import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
+import MarketDataSummary, {
+  MarketDataSummaryContainer,
+} from "../../Artist/MarketDataSummary/MarketDataSummary"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean
@@ -65,7 +67,7 @@ export const ArtistToolTip: React.SFC<ArtistToolTipProps> = (
 
         <a href={href} target="_blank">
           {showMarketData ? (
-            <ArtistMarketData artist={props.artist} />
+            <MarketDataSummary artist={artists[id] as any} showGenes />
           ) : (
             blurb && <ToolTipDescription text={blurb} />
           )}
@@ -89,6 +91,10 @@ export const ArtistContainer = styled.div`
     &:hover {
       color: black;
     }
+  }
+  ${MarketDataSummaryContainer} {
+    ${unica("s12")};
+    padding: 10px 0;
   }
 `
 
@@ -136,39 +142,6 @@ export const ArtistTooltipContainer = createFragmentContainer(
             height
           }
         }
-      }
-      collections
-      highlights {
-        partners(
-          first: 5
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: ["blue-chip", "top-established", "top-emerging"]
-        ) {
-          edges {
-            node {
-              categories {
-                id
-              }
-            }
-          }
-        }
-      }
-      auctionResults(
-        recordsTrusted: true
-        first: 1
-        sort: PRICE_AND_DATE_DESC
-      ) {
-        edges {
-          node {
-            price_realized {
-              display
-            }
-          }
-        }
-      }
-      genes {
-        name
       }
     }
   `

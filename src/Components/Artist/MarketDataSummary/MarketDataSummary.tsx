@@ -1,16 +1,17 @@
-import { groupBy } from "lodash"
+import { groupBy, map } from "lodash"
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
 
-const MarketDataSummaryContainer = styled.div`
+export const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};
 `
 import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
 interface Props extends React.HTMLProps<MarketDataSummary> {
   artist: MarketDataSummary_artist
+  showGenes?: boolean
 }
 
 const Categories = {
@@ -114,13 +115,30 @@ export class MarketDataSummary extends React.Component<Props, null> {
     return <div>Collected by major museums</div>
   }
 
+  renderArtistGenes = () => {
+    const { genes } = this.props.artist
+
+    if (genes.length) {
+      const formattedGenes = map(genes, "name").join(", ")
+      return <div>{formattedGenes}</div>
+    }
+  }
+
   render() {
+    const { showGenes } = this.props
+
     if (this.hasSections()) {
       return (
         <MarketDataSummaryContainer>
           {this.renderAuctionHighlight()}
           {this.renderGalleryRepresentation()}
           {this.renderPermanentCollection()}
+        </MarketDataSummaryContainer>
+      )
+    } else if (showGenes) {
+      return (
+        <MarketDataSummaryContainer>
+          {this.renderArtistGenes()}
         </MarketDataSummaryContainer>
       )
     }
@@ -168,6 +186,9 @@ export default createFragmentContainer(
             }
           }
         }
+      }
+      genes {
+        name
       }
     }
   `
