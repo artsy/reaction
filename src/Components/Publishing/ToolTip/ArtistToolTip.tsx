@@ -8,6 +8,7 @@ import { track } from "../../../Utils/track"
 import { garamond, unica } from "Assets/Fonts"
 import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
+import { FollowTrackingData } from "../../FollowButton/Typings"
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
@@ -54,7 +55,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     const displayImages = map(carousel.images.slice(0, 2), "resized")
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
 
-    const trackingData = {
+    const trackingData: FollowTrackingData = {
       context_module: "tooltip",
       entity_id: _id,
       entity_slug: id,

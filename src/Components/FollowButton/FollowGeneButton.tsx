@@ -8,6 +8,7 @@ import {
 import { extend } from "lodash"
 import { track } from "../../Utils/track"
 import { FollowButton } from "./Button"
+import { FollowTrackingData } from "./Typings"
 import * as Artsy from "../Artsy"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
 
@@ -15,7 +16,7 @@ interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   relay?: RelayProp
   gene?: FollowGeneButton_gene
   tracking?: any
-  trackingData?: any
+  trackingData?: FollowTrackingData
   onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 

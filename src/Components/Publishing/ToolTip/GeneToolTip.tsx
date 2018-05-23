@@ -5,6 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
 import { getFullArtsyHref } from "../Constants"
 import { track } from "../../../Utils/track"
+import { FollowTrackingData } from "../../FollowButton/Typings"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
 import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
@@ -41,7 +42,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
       onOpenAuthModal,
     } = this.context
 
-    const trackingData = {
+    const trackingData: FollowTrackingData = {
       context_module: "tooltip",
       entity_id: _id,
       entity_slug: id,

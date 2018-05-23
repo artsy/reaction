@@ -1,3 +1,4 @@
+import { commitMutation } from "react-relay"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import renderer from "react-test-renderer"
@@ -6,12 +7,10 @@ import { FollowButton } from "../Button"
 import FollowArtistButton from "../FollowArtistButton"
 import { ContextProvider } from "../../Artsy"
 
-
 jest.mock('react-relay', () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component
 }))
-import { commitMutation } from "react-relay"
 
 jest.mock("../../../Utils/track.ts", () => ({
   track: () => jest.fn(c => c)

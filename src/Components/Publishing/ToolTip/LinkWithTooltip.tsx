@@ -18,7 +18,7 @@ interface Props {
 interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
-  position: any
+  position: ClientRect
   orientation?: string
 }
 
