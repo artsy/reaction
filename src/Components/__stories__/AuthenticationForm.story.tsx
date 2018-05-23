@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { AuthForm } from "../Authorization/AuthForm"
-import { DesktopModal } from "../Authorization/DesktopModal"
+import { AuthenticationForm } from "../Authentication/AuthenticationForm"
+import { DesktopModal } from "../Authentication/DesktopModal"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -15,19 +15,19 @@ const close = () => {
   return
 }
 
-storiesOf("Components/Authorization", module)
+storiesOf("Components/Authentication/Desktop", module)
   .add("Login Mode", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm type="login" handleSubmit={submit} />
+      <AuthenticationForm type="login" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm type="reset_password" handleSubmit={submit} />
+      <AuthenticationForm type="reset_password" handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Register Mode", () => (
     <DesktopModal show onClose={close}>
-      <AuthForm type="signup" handleSubmit={submit} />
+      <AuthenticationForm type="signup" handleSubmit={submit} />
     </DesktopModal>
   ))
