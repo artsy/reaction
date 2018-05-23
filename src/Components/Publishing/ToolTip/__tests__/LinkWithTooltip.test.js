@@ -9,6 +9,10 @@ import { ContextProvider } from "../../../Artsy"
 import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
+jest.mock("../../../../Utils/track.ts", () => ({
+  track: () => jest.fn(c => c)
+}))
+
 describe("LinkWithTooltip", () => {
   let context = {
     activeTooltip: null,
@@ -21,7 +25,7 @@ describe("LinkWithTooltip", () => {
 
   const getWrapper = (context, props) => {
     const { activeToolTip, tooltipsData, onTriggerToolTip } = context
-    const { text, url } = props
+    const { text, url, tracking } = props
 
     return mount(
       wrapperWithContext(
@@ -38,7 +42,9 @@ describe("LinkWithTooltip", () => {
           relay: PropTypes.object,
         },
         <ContextProvider>
-          <LinkWithTooltip url={url}>{text}</LinkWithTooltip>
+          <LinkWithTooltip url={url} tracking={tracking}>
+            {text}
+          </LinkWithTooltip>
         </ContextProvider>
       )
     )
@@ -55,6 +61,9 @@ describe("LinkWithTooltip", () => {
     props = {
       url: "https://www.artsy.net/artist/nick-mauss",
       text: "Nick Mauss",
+      tracking: {
+        trackEvent: jest.fn()
+      }
     }
 
     position = {
@@ -108,10 +117,24 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Calls context.onTriggerToolTip on hover", () => {
+    context.activeToolTip = null
     const wrapper = getWrapper(context, props)
     wrapper.find(Link).simulate("mouseEnter")
 
     expect(context.onTriggerToolTip.mock.calls[0][0]).toBe("nick-mauss")
+  })
+
+  it("Tracks hover events", () => {
+    context.activeToolTip = null
+    const wrapper = getWrapper(context, props)
+    wrapper.find(Link).simulate("mouseEnter")
+    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(tracking.action).toBe("Viewed tooltip")
+    expect(tracking.entity_id).toBe("5955005ceaaedc0017acdd1f")
+    expect(tracking.entity_slug).toBe("nick-mauss")
+    expect(tracking.entity_type).toBe("artist")
+    expect(tracking.type).toBe("intext tooltip")
   })
 
   it("Sets tooltip position on mount", () => {

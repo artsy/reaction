@@ -3,8 +3,6 @@ import "jest-styled-components"
 import renderer from "react-test-renderer"
 import React from "react"
 import { FollowButton } from "../Button"
-import { FollowArtistButton } from "../FollowArtistButton"
-import { FollowGeneButton } from "../FollowGeneButton"
 
 describe("FollowButton", () => {
   const getWrapper = props => {
@@ -19,37 +17,6 @@ describe("FollowButton", () => {
   describe("snapshots", () => {
     it("Renders FollowButton properly", () => {
       const component = renderer.create(<FollowButton {...props} />).toJSON()
-      expect(component).toMatchSnapshot()
-    })
-
-    it("Renders FollowArtistButton properly", () => {
-      const component = renderer
-        .create(
-          <FollowArtistButton
-            artist={{
-              id: "damon-zucconi",
-              __id: "1234",
-              is_followed: false,
-            }}
-            onOpenAuthModal={null}
-          />
-        )
-        .toJSON()
-      expect(component).toMatchSnapshot()
-    })
-
-    it("Renders FollowGeneButton properly", () => {
-      const component = renderer
-        .create(
-          <FollowGeneButton
-            gene={{
-              id: "brooklyn-artists",
-              __id: "1234",
-              is_followed: false,
-            }}
-          />
-        )
-        .toJSON()
       expect(component).toMatchSnapshot()
     })
   })
