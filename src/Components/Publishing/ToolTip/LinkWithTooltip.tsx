@@ -4,6 +4,7 @@ import { findDOMNode } from "react-dom"
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
 import FadeTransition from "../../Animation/FadeTransition"
@@ -11,12 +12,13 @@ import FadeTransition from "../../Animation/FadeTransition"
 interface Props {
   url: string
   showMarketData?: boolean
+  tracking?: any
 }
 
 interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
-  position: object | null
+  position: ClientRect
   orientation?: string
 }
 
@@ -61,7 +63,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     window.removeEventListener("resize", this.SetupToolTipPosition)
   }
 
-  entityTypeToEntity() {
+  entityTypeToEntity = () => {
     const { entityType, slug } = this.urlToEntityType()
     const data = this.context.tooltipsData
     const collectionKey = entityType + "s"
@@ -71,6 +73,24 @@ export class LinkWithTooltip extends Component<Props, State> {
     return {
       entityType,
       entity: data[collectionKey][slug],
+    }
+  }
+
+  showToolTip = toolTipData => {
+    const { tracking } = this.props
+    const { onTriggerToolTip } = this.context
+    const { entity, entityType } = toolTipData
+
+    if (entity) {
+      onTriggerToolTip(entity.id)
+
+      tracking.trackEvent({
+        action: "Viewed tooltip",
+        type: "intext tooltip",
+        entity_type: entityType,
+        entity_id: entity._id,
+        entity_slug: entity.id,
+      })
     }
   }
 
@@ -137,7 +157,7 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   render() {
     const { showMarketData, url } = this.props
-    const { activeToolTip, onTriggerToolTip, waitForFade } = this.context
+    const { activeToolTip, waitForFade } = this.context
     const { orientation } = this.state
 
     const toolTipData = this.entityTypeToEntity()
@@ -150,7 +170,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     return (
       <Link
         onMouseEnter={() => {
-          onTriggerToolTip(id && id)
+          !show && this.showToolTip(toolTipData)
         }}
         ref={link => (this.link = link)}
         show={showWithFade}
@@ -179,6 +199,7 @@ export class LinkWithTooltip extends Component<Props, State> {
             />
           </FadeTransition>
         </FadeContainer>
+
         {show && (
           <Background
             onMouseLeave={this.onLeaveLink}
@@ -242,3 +263,5 @@ export const Background = styled.a`
   z-index: 10;
   background-image: none !important;
 `
+
+export default track()(LinkWithTooltip)

@@ -20,7 +20,7 @@ interface State extends React.HTMLProps<HTMLFormElement> {
   type?: ModalType
 }
 
-export class AuthForm extends React.Component<Props, State> {
+export class AuthenticationForm extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
   }

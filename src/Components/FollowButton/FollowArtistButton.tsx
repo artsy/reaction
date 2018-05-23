@@ -5,7 +5,10 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { extend } from "lodash"
+import { track } from "../../Utils/track"
 import { FollowButton } from "./Button"
+import { FollowTrackingData } from "./Typings"
 import * as Artsy from "../Artsy"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 
@@ -14,10 +17,23 @@ interface Props
     Artsy.ContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
+  tracking?: any
+  trackingData?: FollowTrackingData
   onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
 }
 
 export class FollowArtistButton extends React.Component<Props> {
+  trackFollow = () => {
+    const {
+      tracking,
+      artist: { is_followed },
+    } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
+    const action = is_followed ? "Unfollowed Artist" : "Followed Artist"
+
+    tracking.trackEvent(extend({ action }, trackingData))
+  }
+
   handleFollow = () => {
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
@@ -47,6 +63,7 @@ export class FollowArtistButton extends React.Component<Props> {
           },
         },
       })
+      this.trackFollow()
     } else {
       onOpenAuthModal && onOpenAuthModal("register")
     }
@@ -64,13 +81,15 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  Artsy.ContextConsumer(FollowArtistButton),
-  graphql`
-    fragment FollowArtistButton_artist on Artist {
-      __id
-      id
-      is_followed
-    }
-  `
+export default track()(
+  createFragmentContainer(
+    Artsy.ContextConsumer(FollowArtistButton),
+    graphql`
+      fragment FollowArtistButton_artist on Artist {
+        __id
+        id
+        is_followed
+      }
+    `
+  )
 )
