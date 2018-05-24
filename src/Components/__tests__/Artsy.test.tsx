@@ -4,8 +4,10 @@ import renderer from "react-test-renderer"
 import "jest-styled-components"
 
 jest.mock("../../Relay/createEnvironment", () => ({
-  createEnvironment: (user: User) => ({
-    description: `A mocked env for ${user ? user.id : "no-current-user"}`,
+  createEnvironment: config => ({
+    description: `A mocked env for ${
+      config.user ? config.user.id : "no-current-user"
+    }`,
   }),
 }))
 

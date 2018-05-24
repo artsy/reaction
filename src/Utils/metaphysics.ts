@@ -4,14 +4,21 @@ import { NetworkError } from "./errors"
 
 export function metaphysics<T>(
   payload: { query: string; variables?: object },
-  user?: User,
-  checkStatus: boolean = true
+  config?: { user: User; endpoint?: string; checkStatus?: boolean }
 ): Promise<T> {
   const headers = {
     "Content-Type": "application/json",
     "User-Agent": "Reaction",
   }
-  return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
+
+  const { user, endpoint, checkStatus = true } = config
+
+  const fetchEndpoint =
+    endpoint ||
+    sharify.data.METAPHYSICS_ENDPOINT ||
+    process.env.METAPHYSICS_ENDPOINT
+
+  return fetch(fetchEndpoint, {
     method: "POST",
     headers: !!user
       ? {

@@ -1,4 +1,5 @@
 import React from "react"
+import QueryLookupRenderer from "relay-query-lookup-renderer"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
 import { QueryRenderer } from "react-relay"
 import { CacheConfig, RerunParam, Variables } from "relay-runtime"
@@ -15,6 +16,7 @@ interface QueryRendererProps {
   cacheConfig?: CacheConfig
   query: GraphQLTaggedNode
   variables: Variables
+  isomorphic?: boolean
   rerunParamExperimental?: RerunParam
   render(readyState: ReadyState): React.ReactElement<any> | undefined | null
 }
@@ -25,8 +27,15 @@ const Renderer: React.SFC<Props> = ({
   currentUser,
   relayEnvironment,
   children,
-  ...props,
-}) => <QueryRenderer {...props} environment={relayEnvironment} />
+  isomorphic = false,
+  ...props
+}) => {
+  return isomorphic ? (
+    <QueryLookupRenderer lookup {...props} environment={relayEnvironment} />
+  ) : (
+    <QueryRenderer {...props} environment={relayEnvironment} />
+  )
+}
 
 const RendererWithContext = ContextConsumer(Renderer)
 
@@ -39,9 +48,13 @@ const RendererWithContext = ContextConsumer(Renderer)
 export const RootQueryRenderer: React.SFC<Props> = ({
   currentUser,
   children,
-  ...props,
+  relayEnvironment,
+  ...props
 }) => (
-  <ContextProvider currentUser={currentUser}>
+  <ContextProvider
+    relayEnvironment={relayEnvironment}
+    currentUser={currentUser}
+  >
     <RendererWithContext {...props} />
   </ContextProvider>
 )
