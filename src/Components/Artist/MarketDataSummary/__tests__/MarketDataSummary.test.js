@@ -28,27 +28,26 @@ describe("MarketDataSummary", () => {
       const component = mount(
         <MarketDataSummary artist={MarketDataSummaryArtists[0]} />
       )
-      expect(component.text()).toMatch("$63,312,500 auction record")
+      expect(component.text()).toMatch("$63m auction record")
       expect(component.text()).toMatch("Represented by a top established gallery")
       expect(component.text()).toMatch("Collected by a major museum")
     })
 
     it("renders genes if props.showGenes and no market data", () => {
       const component = mount(
-        <MarketDataSummary artist={MarketDataSummaryArtists[1]} showGenes />
+        <MarketDataSummary
+          artist={MarketDataSummaryArtists[1]}
+          onEmptyText="United States, Abstract Art"
+        />
       )
-      expect(component.text()).toMatch("United States, Abstract Art, 21st Century, 1970–present")
+      expect(component.text()).toMatch("United States, Abstract Art")
     })
 
-    it("renders nothing if no market data or genes", () => {
-      let artist = extend(
-        cloneDeep(MarketDataSummaryArtists[1]),
-        { genes: [] }
-      )
+    it("renders nothing if no market data or onEmptyText", () => {
       const component = mount(
-        <MarketDataSummary artist={artist} showGenes />
+        <MarketDataSummary artist={MarketDataSummaryArtists[1]} />
       )
-      expect(component.text()).toBe("")
+      expect(component.html()).toBe(null)
     })
 
     describe("#renderGalleryCategory", () => {

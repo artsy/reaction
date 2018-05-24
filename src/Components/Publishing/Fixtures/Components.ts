@@ -763,6 +763,7 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
+      genes: [],
     },
   },
   {
@@ -889,6 +890,7 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
+      genes: [],
     },
   },
 ]
@@ -923,7 +925,7 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
         {
           node: {
             price_realized: {
-              display: "$63,312,500",
+              display: "$63m",
             },
           },
         },
