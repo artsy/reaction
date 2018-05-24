@@ -6,7 +6,7 @@ import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { ContextProvider } from "../../../Artsy"
-import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
+import { Link, LinkWithTooltip, PrimaryLink, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
 jest.mock("../../../../Utils/track.ts", () => ({
@@ -135,6 +135,19 @@ describe("LinkWithTooltip", () => {
     expect(tracking.entity_slug).toBe("nick-mauss")
     expect(tracking.entity_type).toBe("artist")
     expect(tracking.type).toBe("intext tooltip")
+  })
+
+  it("Tracks click events", () => {
+    context.activeToolTip = null
+    const wrapper = getWrapper(context, props)
+    wrapper.find(PrimaryLink).simulate("click")
+    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(tracking.action).toBe("Click")
+    expect(tracking.flow).toBe("tooltip")
+    expect(tracking.type).toBe("artist stub")
+    expect(tracking.context_module).toBe("intext tooltip")
+    expect(tracking.destination_path).toBe("/artist/nick-mauss")
   })
 
   it("Sets tooltip position on mount", () => {

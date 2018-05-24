@@ -67,9 +67,10 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
 
     const trackingData: FollowTrackingData = {
-      context_module: "tooltip",
+      context_module: "intext tooltip",
       entity_id: _id,
       entity_slug: id,
+      entity_type: "artist",
     }
 
     return (
