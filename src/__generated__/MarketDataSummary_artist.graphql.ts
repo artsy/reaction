@@ -24,9 +24,6 @@ export type MarketDataSummary_artist = {
                 }) | null;
             }) | null> | null;
     }) | null;
-    readonly genes: ReadonlyArray<({
-            readonly name: string | null;
-        }) | null> | null;
 };
 
 
@@ -238,28 +235,9 @@ return {
         }
       ]
     },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "genes",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Gene",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
-        v0
-      ]
-    },
     v0
   ]
 };
 })();
-(node as any).hash = 'e24236087c89427574b7bc80cf14d1a0';
+(node as any).hash = '04d6d58696b4cf04d800e6706066c9f8';
 export default node;

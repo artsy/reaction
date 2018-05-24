@@ -11,7 +11,7 @@ export const MarketDataSummaryContainer = styled.div`
 import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
 interface Props extends React.HTMLProps<MarketDataSummary> {
   artist: MarketDataSummary_artist
-  showGenes?: boolean
+  onEmptyText?: string
 }
 
 const Categories = {
@@ -115,17 +115,8 @@ export class MarketDataSummary extends React.Component<Props, null> {
     return <div>Collected by major museums</div>
   }
 
-  renderArtistGenes = () => {
-    const { genes } = this.props.artist
-
-    if (genes.length) {
-      const formattedGenes = map(genes, "name").join(", ")
-      return <div>{formattedGenes}</div>
-    }
-  }
-
   render() {
-    const { showGenes } = this.props
+    const { onEmptyText } = this.props
 
     if (this.hasSections()) {
       return (
@@ -135,11 +126,9 @@ export class MarketDataSummary extends React.Component<Props, null> {
           {this.renderPermanentCollection()}
         </MarketDataSummaryContainer>
       )
-    } else if (showGenes) {
+    } else if (onEmptyText) {
       return (
-        <MarketDataSummaryContainer>
-          {this.renderArtistGenes()}
-        </MarketDataSummaryContainer>
+        <MarketDataSummaryContainer>{onEmptyText}</MarketDataSummaryContainer>
       )
     }
     return null
@@ -186,9 +175,6 @@ export default createFragmentContainer(
             }
           }
         }
-      }
-      genes {
-        name
       }
     }
   `

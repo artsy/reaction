@@ -692,6 +692,38 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
+      genes: [
+        {
+          name: "United States",
+        },
+        {
+          name: "Abstract Art",
+        },
+        {
+          name: "21st Century",
+        },
+        {
+          name: "1970–present",
+        },
+        {
+          name: "Use of Common Materials",
+        },
+        {
+          name: "Drawing",
+        },
+        {
+          name: "Painting",
+        },
+        {
+          name: "Immersive",
+        },
+        {
+          name: "Ceramic",
+        },
+        {
+          name: "Mixed-Media",
+        },
+      ],
     },
   },
   {
@@ -762,6 +794,14 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
+      genes: [
+        {
+          name: "Emerging Art",
+        },
+        {
+          name: "Brooklyn Artists",
+        },
+      ],
     },
   },
   {
@@ -889,38 +929,6 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
         },
       ],
     },
-    genes: [
-      {
-        name: "United States",
-      },
-      {
-        name: "Abstract Art",
-      },
-      {
-        name: "21st Century",
-      },
-      {
-        name: "1970–present",
-      },
-      {
-        name: "Use of Common Materials",
-      },
-      {
-        name: "Drawing",
-      },
-      {
-        name: "Painting",
-      },
-      {
-        name: "Immersive",
-      },
-      {
-        name: "Ceramic",
-      },
-      {
-        name: "Mixed-Media",
-      },
-    ],
   },
   {
     _id: "551361eb72616903f6d50300",
@@ -931,37 +939,5 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
       },
     },
     auctionResults: null,
-    genes: [
-      {
-        name: "United States",
-      },
-      {
-        name: "Abstract Art",
-      },
-      {
-        name: "21st Century",
-      },
-      {
-        name: "1970–present",
-      },
-      {
-        name: "Contemporary Conceptualism",
-      },
-      {
-        name: "Painting",
-      },
-      {
-        name: "Film/Video",
-      },
-      {
-        name: "Installation",
-      },
-      {
-        name: "Mixed-Media",
-      },
-      {
-        name: "Machines",
-      },
-    ],
   },
 ]

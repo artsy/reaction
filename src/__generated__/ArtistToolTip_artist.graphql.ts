@@ -17,24 +17,36 @@ export type ArtistToolTip_artist = {
                 }) | null;
             }) | null> | null;
     }) | null;
+    readonly genes: ReadonlyArray<({
+            readonly name: string | null;
+        }) | null> | null;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtistToolTip_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -132,13 +144,21 @@ const node: ConcreteFragment = {
       ]
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "__id",
+      "name": "genes",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    }
+      "concreteType": "Gene",
+      "plural": true,
+      "selections": [
+        v0,
+        v1
+      ]
+    },
+    v1
   ]
 };
-(node as any).hash = 'd541257d660a1af30637014b8944a8c5';
+})();
+(node as any).hash = 'b66365bad87a0ff55816fd0106213acb';
 export default node;

@@ -47,10 +47,6 @@ fragment MarketDataSummary_artist on Artist {
       }
     }
   }
-  genes {
-    name
-    __id
-  }
   __id
 }
 */
@@ -84,7 +80,7 @@ return {
   "operationKind": "query",
   "name": "MarketDataSummaryContentsQuery",
   "id": null,
-  "text": "query MarketDataSummaryContentsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...MarketDataSummary_artist\n    __id\n  }\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n",
+  "text": "query MarketDataSummaryContentsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...MarketDataSummary_artist\n    __id\n  }\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -309,25 +305,6 @@ return {
                   }
                 ]
               }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "genes",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Gene",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
-              v2
             ]
           },
           v2

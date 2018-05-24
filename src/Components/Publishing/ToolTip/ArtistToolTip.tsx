@@ -40,6 +40,14 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     })
   }
 
+  renderArtistGenes = () => {
+    const { genes } = this.props.artist
+
+    if (genes.length) {
+      return map(genes, "name").join(", ")
+    }
+  }
+
   render() {
     const { showMarketData, artist } = this.props
     const {
@@ -96,7 +104,10 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
 
           <a href={href} target="_blank" onClick={this.trackClick}>
             {showMarketData ? (
-              <MarketDataSummary artist={artists[id] as any} showGenes />
+              <MarketDataSummary
+                artist={artists[id] as any}
+                onEmptyText={this.renderArtistGenes()}
+              />
             ) : (
               blurb && <ToolTipDescription text={blurb} />
             )}
@@ -124,7 +135,7 @@ export const ArtistContainer = styled.div`
   }
   ${MarketDataSummaryContainer} {
     ${unica("s12")};
-    padding: 10px 0;
+    padding-bottom: 10px;
   }
 `
 
@@ -132,6 +143,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 10px;
 `
 
 export const TitleDate = styled.a`
@@ -174,6 +186,9 @@ export const ArtistTooltipContainer = track()(
               height
             }
           }
+        }
+        genes {
+          name
         }
       }
     `
