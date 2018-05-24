@@ -72,36 +72,6 @@ describe("ArtistToolTip", () => {
     expect(trackingData.destination_path).toBe("/artist/nick-mauss")
   })
 
-  describe("Market Data", () => {
-    it("Renders artist data", () => {
-      props.showMarketData = true
-      const component = getWrapper(props)
-
-      expect(component.text()).toMatch(props.artist.name)
-      expect(component.text()).toMatch(
-        props.artist.formatted_nationality_and_birthday
-      )
-      expect(component.text()).toMatch(props.artist.collections[0])
-      expect(component.text()).toMatch(
-        props.artist.auctionResults.edges[0].node.price_realized.display
-      )
-      expect(component.text()).toMatch("Represented by a blue chip gallery")
-      expect(component.find("img").length).toBe(2)
-
-      expect(component.text()).not.toMatch(
-        "Nick Mauss makes drawings, prints, and paintings that often"
-      )
-    })
-
-    it("Renders categories if no artist data", () => {
-      props.artist = Artists[2].artist
-      props.showMarketData = true
-      const component = getWrapper(props)
-
-      expect(component.text()).toMatch("Emerging Art")
-    })
-  })
-
   describe("Open Auth Modal", () => {
     it("callback gets called when followButton is clicked", () => {
       const artist = Artists[0].artist

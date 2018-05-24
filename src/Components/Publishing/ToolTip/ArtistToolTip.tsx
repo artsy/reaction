@@ -6,12 +6,14 @@ import { createFragmentContainer, graphql } from "react-relay"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { track } from "../../../Utils/track"
 import { garamond, unica } from "Assets/Fonts"
-import { ArtistMarketData } from "./Components/ArtistMarketData"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { NewFeature } from "./Components/NewFeature"
 import { ToolTipDescription } from "./Components/Description"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
+import MarketDataSummary, {
+  MarketDataSummaryContainer,
+} from "../../Artist/MarketDataSummary/MarketDataSummary"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean
@@ -36,6 +38,14 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       context_module: "intext tooltip",
       destination_path: href,
     })
+  }
+
+  renderArtistGenes = () => {
+    const { genes } = this.props.artist
+
+    if (genes.length) {
+      return map(genes, "name").join(", ")
+    }
   }
 
   render() {
@@ -94,7 +104,10 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
 
           <a href={href} target="_blank" onClick={this.trackClick}>
             {showMarketData ? (
-              <ArtistMarketData artist={artist} />
+              <MarketDataSummary
+                artist={artists[id] as any}
+                onEmptyText={this.renderArtistGenes()}
+              />
             ) : (
               blurb && <ToolTipDescription text={blurb} />
             )}
@@ -120,12 +133,17 @@ export const ArtistContainer = styled.div`
       color: black;
     }
   }
+  ${MarketDataSummaryContainer} {
+    ${unica("s12")};
+    padding-bottom: 10px;
+  }
 `
 
 const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 10px;
 `
 
 export const TitleDate = styled.a`
@@ -166,36 +184,6 @@ export const ArtistTooltipContainer = track()(
               url
               width
               height
-            }
-          }
-        }
-        collections
-        highlights {
-          partners(
-            first: 5
-            display_on_partner_profile: true
-            represented_by: true
-            partner_category: ["blue-chip", "top-established", "top-emerging"]
-          ) {
-            edges {
-              node {
-                categories {
-                  id
-                }
-              }
-            }
-          }
-        }
-        auctionResults(
-          recordsTrusted: true
-          first: 1
-          sort: PRICE_AND_DATE_DESC
-        ) {
-          edges {
-            node {
-              price_realized {
-                display
-              }
             }
           }
         }

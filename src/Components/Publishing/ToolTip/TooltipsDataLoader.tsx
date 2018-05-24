@@ -49,6 +49,7 @@ export class TooltipsDataLoader extends Component<Props> {
               id
               _id
               ...ArtistToolTip_artist
+              ...MarketDataSummary_artist
               ...FollowArtistButton_artist
             }
             genes(slugs: $geneSlugs) {

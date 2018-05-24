@@ -1,7 +1,7 @@
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import MarketInsights from "../Artist/MarketInsights/MarketInsights"
+import MarketInsights from "../MarketInsights"
 
 describe("MarketInsights", () => {
   it("renders correctly", () => {
