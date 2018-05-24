@@ -184,6 +184,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   justify-content: center;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 34px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
 .c12 {
   position: relative;
   width: 100%;
@@ -193,15 +201,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c12 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
 }
 
@@ -283,6 +290,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-size: 1.25px 1px;
 }
 
+.c12 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
+}
+
 .c12 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -358,14 +369,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   text-transform: none;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
 }
 
 .c4 {
@@ -504,6 +507,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   }
 }
 
+@media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.1;
+  }
+}
+
 @media (max-width:600px) {
   .c12 p,
   .c12 ul,
@@ -561,16 +574,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
   .c12 .content-start {
     font-size: 55px;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
   }
 }
 
@@ -1090,6 +1093,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   justify-content: center;
 }
 
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 34px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+}
+
 .c12 {
   position: relative;
   width: 100%;
@@ -1099,15 +1110,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,#333 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c12 a:hover {
-  color: #999;
+  color: #999999;
   opacity: 1;
 }
 
@@ -1189,6 +1199,10 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-size: 1.25px 1px;
 }
 
+.c12 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
+}
+
 .c12 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1264,14 +1278,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   text-transform: none;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
 }
 
 .c4 {
@@ -1416,6 +1422,16 @@ exports[`News Layout renders the news layout properly 1`] = `
   }
 }
 
+@media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.1;
+  }
+}
+
 @media (max-width:600px) {
   .c12 p,
   .c12 ul,
@@ -1473,16 +1489,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 
   .c12 .content-start {
     font-size: 55px;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
   }
 }
 

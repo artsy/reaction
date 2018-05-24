@@ -380,8 +380,7 @@ exports[`renders a series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -468,6 +467,10 @@ exports[`renders a series properly 1`] = `
 
 .c39 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c39 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c39 h3 {
@@ -1506,8 +1509,7 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to bottom,transparent 0,white 1px,transparent 0);
+  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -1594,6 +1596,10 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c45 h2 a {
   background-size: 1.25px 1px;
+}
+
+.c45 h2 .file__PrimaryLink-yu39to-0 {
+  background-position: bottom;
 }
 
 .c45 h3 {

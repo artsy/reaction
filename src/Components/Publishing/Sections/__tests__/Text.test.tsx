@@ -85,7 +85,7 @@ describe("Text", () => {
       const wrapper = mount(getWrapper(props))
 
       expect(wrapper.html()).toMatch(
-        `<div class=\"article__text-section sc-bdVaJa jpelOv\" color=\"black\"><div><p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3></div></div>`
+        `<p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3>`
       )
     })
 

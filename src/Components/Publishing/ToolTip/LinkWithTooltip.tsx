@@ -27,6 +27,7 @@ export class LinkWithTooltip extends Component<Props, State> {
     tooltipsData: PropTypes.object,
     onTriggerToolTip: PropTypes.func,
     activeToolTip: PropTypes.any,
+    waitForFade: PropTypes.string,
   }
 
   public link: any
@@ -156,27 +157,29 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   render() {
     const { showMarketData, url } = this.props
-    const { activeToolTip } = this.context
+    const { activeToolTip, waitForFade } = this.context
     const { orientation } = this.state
 
     const toolTipData = this.entityTypeToEntity()
-    let show = false
+    const { entity, entityType } = toolTipData
+    const id = entity ? entity.id : null
+    const toolTipLeft = this.getToolTipPosition(entityType)
+    const show = id ? id === activeToolTip : false
+    const showWithFade = show || waitForFade === id
 
-    if (toolTipData) {
-      const { entity, entityType } = toolTipData
-      const toolTipLeft = this.getToolTipPosition(entityType)
-      const id = entity ? entity.id : null
-      show = id && id === activeToolTip
+    return (
+      <Link
+        onMouseEnter={() => {
+          !show && this.showToolTip(toolTipData)
+        }}
+        ref={link => (this.link = link)}
+        show={showWithFade}
+      >
+        <PrimaryLink href={url} target="_blank" show={showWithFade}>
+          {this.props.children}
+        </PrimaryLink>
 
-      return (
-        <Link
-          onMouseEnter={() => !show && this.showToolTip(toolTipData)}
-          ref={link => (this.link = link)}
-        >
-          <PrimaryLink href={url} target="_blank">
-            {this.props.children}
-          </PrimaryLink>
-
+        <FadeContainer>
           <FadeTransition
             in={show}
             mountOnEnter
@@ -195,48 +198,70 @@ export class LinkWithTooltip extends Component<Props, State> {
               orientation={orientation}
             />
           </FadeTransition>
+        </FadeContainer>
 
-          {show && <Background onMouseLeave={this.onLeaveLink} />}
-        </Link>
-      )
-    } else {
-      return (
-        <a href={url} target="_blank">
-          {this.props.children}
-        </a>
-      )
-    }
+        {show && (
+          <Background
+            onMouseLeave={this.onLeaveLink}
+            href={url}
+            target="_blank"
+          />
+        )}
+      </Link>
+    )
   }
 }
 
-const PrimaryLink = styled.a`
-  background-image: none !important;
-  text-decoration: none;
+export const PrimaryLink = styled.a.attrs<{ show: boolean }>({})`
+  z-index: auto;
   color: black;
-  line-height: 20px;
-  border-bottom: 1.25px dashed ${Colors.graySemibold};
+  transition: color 0.25s;
+  background-image: linear-gradient(
+    to right,
+    ${Colors.graySemibold} 50%,
+    transparent 50%
+  ) !important;
+  background-size: 3px 1.75px !important;
+  background-position: 0 1.07em !important;
+  ${props =>
+    props.show &&
+    `
+    color: ${Colors.grayDark} !important;
+    background-image: linear-gradient(
+      to right,
+      ${Colors.grayDark} 50%,
+      transparent 50%
+    ) !important;
+  `};
+`
+
+const FadeContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 0;
 `
 
-export const Link = styled.div.attrs<{ onMouseEnter: any }>({})`
+export const Link = styled.div.attrs<{ onMouseEnter: any; show: boolean }>({})`
   display: inline-block;
   position: relative;
   cursor: pointer;
-  &:hover {
-    ${PrimaryLink} {
-      opacity: 0.65;
-      border-bottom-color: ${Colors.grayDark};
-      color: ${Colors.grayDark};
-    }
+  z-index: ${props => (props.show ? 10 : 0)};
+  ${FadeContainer} {
+    ${props => props.show && `z-index: 10`};
   }
 `
 
-export const Background = styled.div`
+export const Background = styled.a`
   position: absolute;
   left: 0;
   top: -10px;
   bottom: -10px;
   right: 0;
+  z-index: 10;
+  background-image: none !important;
 `
 
 export default track()(LinkWithTooltip)
