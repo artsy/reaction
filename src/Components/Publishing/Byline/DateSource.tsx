@@ -31,7 +31,7 @@ export class DateSource extends Component<NewsBylineProps & Props, null> {
 
   getNewsSource = source => {
     const { editSource } = this.props
-    const hasSource = source && source.url
+    const hasSource = source && (source.url || source.title)
     if (!editSource && !hasSource) return null
 
     return (
@@ -39,10 +39,12 @@ export class DateSource extends Component<NewsBylineProps & Props, null> {
         {hasSource && ", via"}&nbsp;
         {editSource ? (
           editSource
-        ) : (
+        ) : source.url ? (
           <a href={source.url} target="_blank" onClick={this.onClick}>
             {source.title}
           </a>
+        ) : (
+          source.title
         )}
       </Fragment>
     )
