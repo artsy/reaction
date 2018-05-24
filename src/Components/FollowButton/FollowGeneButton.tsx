@@ -62,7 +62,11 @@ export class FollowGeneButton extends React.Component<Props> {
       })
       this.trackFollow()
     } else {
-      onOpenAuthModal && onOpenAuthModal("register")
+      onOpenAuthModal &&
+        onOpenAuthModal("register", {
+          context_module: "intext tooltip",
+          intent: "follow gene",
+        })
     }
   }
 
