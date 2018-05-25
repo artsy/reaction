@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
-.c2 {
-  width: 240px;
-}
-
-.c2 a:hover {
-  color: black;
-}
-
 .c10 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -30,7 +22,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   font-size: 15px;
   line-height: 1.25em;
   -webkit-font-smoothing: antialiased;
-  margin: 10px 0;
+  padding-bottom: 10px;
 }
 
 .c6 p,
@@ -72,11 +64,20 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   color: white;
 }
 
+.c2 {
+  width: 240px;
+}
+
+.c2 a:hover {
+  color: black;
+}
+
 .c3 {
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
+  padding-bottom: 10px;
 }
 
 .c5 {
@@ -85,11 +86,12 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   line-height: 1.4em;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  padding-bottom: 10px;
 }
 
 .c4 {
   width: 100%;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   max-height: 160px;
   object-fit: cover;
 }
@@ -216,10 +218,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
-.c2 {
-  width: 320px;
-}
-
 .c11 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -241,7 +239,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   font-size: 15px;
   line-height: 1.25em;
   -webkit-font-smoothing: antialiased;
-  margin: 10px 0;
+  padding-bottom: 10px;
 }
 
 .c10 p,
@@ -283,6 +281,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: white;
 }
 
+.c2 {
+  width: 320px;
+}
+
 .c3 {
   position: relative;
 }
@@ -297,6 +299,14 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: black;
 }
 
+.c3 .file__MarketDataSummaryContainer-yu39to-0 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  padding-bottom: 10px;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -309,6 +319,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .c6 {

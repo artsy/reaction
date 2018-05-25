@@ -86,16 +86,18 @@ export const GeneContainer = styled.a`
   position: relative;
   text-decoration: none;
   color: black;
+  padding-bottom: 10px;
 `
 
 const Title = styled.div`
   ${garamond("s18")};
   font-weight: 600;
+  padding-bottom: 10px;
 `
 
 const Image = styled.img`
   width: 100%;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   max-height: 160px;
   object-fit: cover;
 `
