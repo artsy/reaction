@@ -1,4 +1,4 @@
-import { groupBy, map } from "lodash"
+import { groupBy } from "lodash"
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -11,32 +11,44 @@ import { Tooltip } from "../../Tooltip"
 import { Help } from "../../../Assets/Icons/Help"
 
 const MarketInsightsContainer = styled.div`
-  ${unica("s18", "medium")};
+  ${unica("s14", "medium")};
 `
 
-const SubHeadline = styled.div`
-  font-size: 12px;
+const MarketInsightsDataContainer = styled.div`
+  > div {
+    display: inline-block;
+    padding: 30px;
+  }
+  text-align: center;
+  border-bottom: 1px solid ${colors.grayRegular};
+  border-top: 1px solid ${colors.grayRegular};
 `
 
 const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
-  ${unica("s10", "regular")};
+  padding: 8px 0;
+  ${unica("s10")};
+  a {
+    ${unica("s10")};
+  }
 `
 
 const TooltipContainer = styled.div`
   display: inline-block;
-  font-size: 12px;
 `
 
-export interface MarketInsightsProps
-  extends RelayProps,
-    React.HTMLProps<MarketInsights> {}
+import { MarketInsights_artist } from "../../../__generated__/MarketInsights_artist.graphql"
+interface Props extends React.HTMLProps<MarketInsights> {
+  artist: MarketInsights_artist
+}
 
 const Categories = {
   "blue-chip": "Blue Chip",
   "top-established": "Top Established",
   "top-emerging": "Top Emerging",
 }
+
+const orderedCategories = ["blue-chip", "top-established", "top-emerging"]
 
 const CategoryTooltipContent = {
   "blue-chip":
@@ -47,21 +59,16 @@ const CategoryTooltipContent = {
     "Top emerging dealers participate in curated, up-and-coming art fairs.",
 }
 
-export class MarketInsights extends React.Component<MarketInsightsProps, null> {
-  renderGalleryCategory(categorySlug, partnerList) {
+export class MarketInsights extends React.Component<Props, null> {
+  renderGalleryCategory(categorySlug, partnerCount) {
     let introSentence
     const category = Categories[categorySlug]
     const categoryTooltipContent = CategoryTooltipContent[categorySlug]
-    if (partnerList.length > 1) {
+    if (partnerCount > 1) {
       introSentence = "Represented by " + category.toLowerCase() + " galleries"
     } else {
       introSentence = "Represented by a " + category.toLowerCase() + " gallery"
     }
-
-    const galleryList = map(
-      partnerList,
-      ({ node: partner }) => partner.name
-    ).join(", ")
 
     return (
       <div>
@@ -73,7 +80,6 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
             </span>
           </Tooltip>
         </TooltipContainer>
-        <SubHeadline>{galleryList}</SubHeadline>
       </div>
     )
   }
@@ -122,21 +128,17 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
         return category
       })
 
+      const highestCategory = orderedCategories.filter(
+        category =>
+          groupedByCategory[category] && groupedByCategory[category].length > 0
+      )[0]
+
       return (
         <div>
-          {Object.keys(groupedByCategory).map(categorySlug => {
-            return (
-              <div key={categorySlug}>
-                <div>
-                  {this.renderGalleryCategory(
-                    categorySlug,
-                    groupedByCategory[categorySlug]
-                  )}
-                </div>
-                <br />
-              </div>
-            )
-          })}
+          {this.renderGalleryCategory(
+            highestCategory,
+            groupedByCategory[highestCategory].length
+          )}
         </div>
       )
     }
@@ -150,39 +152,24 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
       return null
     }
     const topAuctionResult = this.props.artist.auctionResults.edges[0].node
-
-    return (
-      <div>
-        <div>
-          {topAuctionResult.price_realized.display} auction record
-          <SubHeadline>
-            {topAuctionResult.organization} {topAuctionResult.sale_date}
-          </SubHeadline>
-        </div>
-        <br />
-      </div>
-    )
+    return <div>{topAuctionResult.price_realized.display} auction record</div>
   }
 
   renderPermanentCollection() {
     const { collections } = this.props.artist
-    if (collections && collections.length > 0) {
-      return (
-        <div>
-          <div>
-            Collected by major museums
-            <SubHeadline>{collections.join(", ")}</SubHeadline>
-          </div>
-          <br />
-        </div>
-      )
+    if (!collections || collections.length === 0) {
+      return null
     }
+    if (collections.length === 1) {
+      return <div>Collected by a major museum</div>
+    }
+    return <div>Collected by major museums</div>
   }
 
   renderFeedbackLine() {
     return (
       <FeedbackContainer>
-        This is a new feature.&nbsp;
+        Generated using partial data.&nbsp;
         <TextLink
           color={colors.graySemibold}
           underline
@@ -195,14 +182,19 @@ export class MarketInsights extends React.Component<MarketInsightsProps, null> {
   }
 
   render() {
-    return (
-      <MarketInsightsContainer>
-        {this.renderAuctionHighlight()}
-        {this.renderGalleryRepresentation()}
-        {this.renderPermanentCollection()}
-        {this.hasSections() ? this.renderFeedbackLine() : null}
-      </MarketInsightsContainer>
-    )
+    if (this.hasSections()) {
+      return (
+        <MarketInsightsContainer>
+          <MarketInsightsDataContainer>
+            {this.renderAuctionHighlight()}
+            {this.renderGalleryRepresentation()}
+            {this.renderPermanentCollection()}
+          </MarketInsightsDataContainer>
+          {this.renderFeedbackLine()}
+        </MarketInsightsContainer>
+      )
+    }
+    return null
   }
 }
 
@@ -227,10 +219,8 @@ export default createFragmentContainer(
         ) {
           edges {
             node {
-              name
               categories {
                 id
-                name
               }
             }
           }
@@ -243,45 +233,12 @@ export default createFragmentContainer(
       ) {
         edges {
           node {
-            organization
             price_realized {
               display(format: "0a")
             }
-            sale_date(format: "YYYY")
           }
         }
       }
     }
   `
 )
-
-interface RelayProps {
-  artist: {
-    _id: string
-    collections: string[] | null
-    highlights: {
-      partners: {
-        edges: Array<{
-          node: {
-            name: string | null
-            categories: Array<{
-              id: string
-              name: string | null
-            }> | null
-          } | null
-        }> | null
-      } | null
-    } | null
-    auctionResults: {
-      edges: Array<{
-        node: {
-          organization: string | null
-          price_realized: {
-            display: string | null
-          }
-          sale_date: string | null
-        } | null
-      }> | null
-    } | null
-  }
-}
