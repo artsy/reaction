@@ -3,6 +3,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 interface ReadMoreWrapperProps {
+  hasTooltips?: boolean
   isTruncated: boolean
   hideButton: () => void
 }
@@ -35,7 +36,9 @@ export class ReadMoreWrapper extends React.Component<
   }
 
   calculateTruncationHeight = () => {
-    if (this.props.isTruncated) {
+    const { hasTooltips, isTruncated } = this.props
+
+    if (isTruncated) {
       let height = 0
       let charCount = 0
       const thisNode = ReactDOM.findDOMNode(this)
@@ -47,7 +50,10 @@ export class ReadMoreWrapper extends React.Component<
           let sectionCharCount = 0
 
           // Iterate over paragraph tags
-          const foundTag = find(section.getElementsByTagName("p"), tag => {
+          const tags = hasTooltips
+            ? section.getElementsByClassName("paragraph")
+            : section.getElementsByTagName("p")
+          const foundTag = find(tags, tag => {
             const textContent = tag.textContent
             const textLength = textContent.length
 
