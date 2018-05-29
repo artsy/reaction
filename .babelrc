@@ -30,6 +30,7 @@
         "Assets": "./src/Assets",
         "Components": "./src/Components"
       }
-    }]
+    }],
+    "lodash"
   ]
 }

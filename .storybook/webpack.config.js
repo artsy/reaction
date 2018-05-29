@@ -19,6 +19,7 @@ env.load()
 const {
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   METAPHYSICS_ENDPOINT,
+  SSR_ENABLED,
   USER_ID,
   USER_ACCESS_TOKEN,
 } = process.env
@@ -47,6 +48,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
     new webpack.DefinePlugin({
       "process.env.USER_ID": JSON.stringify(USER_ID),
       "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
+      "process.env.SSR_ENABLED": JSON.stringify(SSR_ENABLED),
     })
   )
 } else {
@@ -78,7 +80,7 @@ module.exports = (baseConfig, env) => {
       stats: "errors-only",
     },
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
         sharify: sharifyPath.replace(/\.js$/, ""),
       },
