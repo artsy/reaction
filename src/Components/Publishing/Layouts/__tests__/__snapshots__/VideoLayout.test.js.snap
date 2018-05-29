@@ -514,7 +514,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c50 h3 {
@@ -685,7 +685,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c59 h3 {

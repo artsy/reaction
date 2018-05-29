@@ -498,7 +498,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 .c2 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c2 h3 {

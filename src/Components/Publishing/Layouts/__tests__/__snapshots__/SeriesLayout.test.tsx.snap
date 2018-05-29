@@ -470,7 +470,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c39 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c39 h3 {
@@ -1599,7 +1599,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c45 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c45 h3 {
