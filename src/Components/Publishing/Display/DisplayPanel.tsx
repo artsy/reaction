@@ -11,6 +11,7 @@ import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ErrorBoundary } from "../../ErrorBoundary"
 import { VideoControls } from "../Sections/VideoControls"
 import { trackImpression } from "./track-once"
+import { PixelTracker } from "./PixelTracker"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   campaign: any
@@ -18,7 +19,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   isMobile?: boolean
   unit: any
   tracking?: any
-  renderPixelTracker?: (unit: any) => React.ReactElement<any>
 }
 
 interface State {
@@ -354,7 +354,7 @@ export class DisplayPanel extends Component<Props, State> {
 
   render() {
     const { showCoverImage } = this.state
-    const { unit, campaign, isMobile, renderPixelTracker } = this.props
+    const { unit, campaign, isMobile } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const cover = unit.cover_image_url || ""
@@ -396,7 +396,7 @@ export class DisplayPanel extends Component<Props, State> {
               <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
             </div>
           </DisplayPanelContainer>
-          {renderPixelTracker && renderPixelTracker(unit)}
+          <PixelTracker unit={unit} />
         </Wrapper>
       </ErrorBoundary>
     )
