@@ -22,7 +22,6 @@ export type DateFormat =
   | "monthDay"
   | "news"
   | "verbose"
-  | "unix"
   | "default"
 
 // TODO: Make some of these non-optional ;)

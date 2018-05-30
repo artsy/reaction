@@ -219,7 +219,7 @@ const Image = styled.img`
     object-fit: contain;
   `};
 `
-const CanvasLink = responsiveLink`
+export const CanvasLink = responsiveLink`
   width: 100%;
   height: 460px;
   color: #000;

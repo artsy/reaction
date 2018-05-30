@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { getDate } from "../Constants"
 
 export const PixelTracker = props => {
   const { unit, date } = props

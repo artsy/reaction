@@ -120,8 +120,7 @@ export const getDate = (date, format: DateFormat = "default") => {
   }
 }
 
-export const getCurrentUnixTimestamp = () =>
-  (new Date().getTime() / 1000).toFixed(0).toString()
+export const getCurrentUnixTimestamp = () => moment().unix()
 
 export const getMediaDate = article => {
   const { published_at, scheduled_publish_at, media } = article

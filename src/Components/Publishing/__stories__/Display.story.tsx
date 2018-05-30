@@ -11,8 +11,10 @@ import {
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
+  UnitCanvasTracked,
   UnitCanvasVideo,
   UnitPanel,
+  UnitPanelTracked,
   UnitPanelVideo,
 } from "../Fixtures/Components"
 
@@ -21,15 +23,10 @@ const story = storiesOf("Publishing/Display/Panel", module)
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
   })
   .add("Panel with 3rd party tracking", () => {
-    const UnitPanelTracked = extend({}, UnitPanel, {
-      link: { url: "https://artsy.net?ord=[timestamp]" },
-      pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
-    })
     return (
       <DisplayPanel
         unit={UnitPanelTracked}
         campaign={Campaign}
-        article={StandardArticle}
         renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
       />
     )
@@ -69,15 +66,10 @@ storiesOf("Publishing/Display/Canvas", module)
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
   })
   .add("Overlay with 3rd party tracking", () => {
-    const UnitCanvasTracked = extend({}, UnitCanvasOverlay, {
-      link: { url: "https://artsy.net?ord=[timestamp]" },
-      pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
-    })
     return (
       <DisplayCanvas
         unit={UnitCanvasTracked}
         campaign={Campaign}
-        article={StandardArticle}
         renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
       />
     )
