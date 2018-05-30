@@ -17,7 +17,7 @@ export const ToolTipDescription: React.SFC<Props> = props => {
         <Markdown
           source={text}
           containerTagName="span"
-          disallowedTypes={["Link"]}
+          disallowedTypes={["Link", "Paragraph"]}
           unwrapDisallowed
         />
       </Truncator>
