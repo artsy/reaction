@@ -96,7 +96,6 @@ export class StandardLayout extends React.Component<
               <ReadMoreWrapper
                 isTruncated={isTruncated}
                 hideButton={this.removeTruncation}
-                hasTooltips={showTooltips}
               >
                 <Header article={article} isMobile={isMobile} />
 

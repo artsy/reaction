@@ -86,15 +86,17 @@ export class Text extends Component<Props, State> {
       const text = node.children[0] && node.children[0].data
       const { showToolTipMarketData } = this.props
 
-      return (
-        <LinkWithTooltip
-          key={href + index}
-          url={href}
-          showMarketData={showToolTipMarketData}
-        >
-          {text}
-        </LinkWithTooltip>
-      )
+      if (text) {
+        return (
+          <LinkWithTooltip
+            key={href + index}
+            url={href}
+            showMarketData={showToolTipMarketData}
+          >
+            {text}
+          </LinkWithTooltip>
+        )
+      }
     }
   }
 
