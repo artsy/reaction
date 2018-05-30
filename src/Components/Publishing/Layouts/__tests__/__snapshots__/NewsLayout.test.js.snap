@@ -212,6 +212,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   opacity: 1;
 }
 
+.c12 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c12 p,
 .c12 ul,
 .c12 ol,
@@ -1119,6 +1125,12 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c12 a:hover {
   color: #999999;
   opacity: 1;
+}
+
+.c12 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
 }
 
 .c12 p,

@@ -391,6 +391,12 @@ exports[`renders a series properly 1`] = `
   opacity: .65;
 }
 
+.c39 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c39 p,
 .c39 ul,
 .c39 ol,
@@ -1518,6 +1524,12 @@ exports[`renders a sponsored series properly 1`] = `
 .c45 a:hover {
   color: white;
   opacity: .65;
+}
+
+.c45 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
 }
 
 .c45 p,

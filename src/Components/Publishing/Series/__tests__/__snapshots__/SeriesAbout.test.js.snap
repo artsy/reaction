@@ -65,6 +65,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   opacity: 1;
 }
 
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -463,6 +469,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   opacity: 1;
 }
 
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -852,6 +864,12 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c6 a:hover {
   color: #999999;
   opacity: 1;
+}
+
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
 }
 
 .c6 p,
@@ -1272,6 +1290,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c10 a:hover {
   color: #999999;
   opacity: 1;
+}
+
+.c10 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
 }
 
 .c10 p,

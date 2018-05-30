@@ -22,7 +22,6 @@ export const NewFeatureContainer = styled.div`
   color: ${Colors.grayMedium};
   a {
     color: ${Colors.grayMedium};
-    text-decoration: none;
     border-bottom: 1px solid ${Colors.grayRegular};
     line-height: 1em;
   }
