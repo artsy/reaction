@@ -4,11 +4,13 @@ import { mount } from "enzyme"
 
 describe("buildClientApp", () => {
   const getWrapper = async (props = {}) => {
-    const { ClientApp } = await buildClientApp([
-      {
-        Component: () => <div />,
-      },
-    ])
+    const { ClientApp } = await buildClientApp({
+      routes: [
+        {
+          Component: () => <div />,
+        },
+      ],
+    })
 
     return mount(<ClientApp />)
   }

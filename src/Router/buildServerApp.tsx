@@ -1,30 +1,18 @@
-import React, { ComponentType } from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
 import createRender from "found/lib/createRender"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { AppShell } from "./AppShell"
 import { Resolver } from "found-relay"
-import { RouteConfig } from "found"
-import { createRelayEnvironment } from "./relayEnvironment"
+import { createRelayEnvironment } from "../Relay/createEnvironment"
 import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
+import { AppConfig, ServerResolveProps } from "./types"
 
-interface ResolveProps {
-  ServerApp?: ComponentType<any>
-  redirect?: string
-  status?: string
-}
-
-export function buildServerApp(
-  routeConfig: RouteConfig,
-  currentRoute = "/"
-): Promise<ResolveProps> {
+export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!process.env.SSR_ENABLED) {
-        return resolve()
-      }
-
+      const { routes, currentRoute } = config
       const relayEnvironment = createRelayEnvironment()
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
@@ -33,7 +21,7 @@ export function buildServerApp(
       const { redirect, status, element } = await getFarceResult({
         url: currentRoute,
         historyMiddlewares,
-        routeConfig,
+        routeConfig: routes,
         resolver,
         render,
       })
@@ -48,15 +36,16 @@ export function buildServerApp(
       }
 
       const AppContainer = props => {
+        // console.log(props)
         return (
           <AppShell
-            relayData={props.relayData}
+            data={props.relayData}
             loadableState={props.loadableState}
             provide={{
               relayEnvironment,
               reactionRouter: {
                 resolver,
-                routeConfig,
+                routes,
               },
             }}
             {...props}
@@ -76,7 +65,7 @@ export function buildServerApp(
       resolve({
         ServerApp: props => (
           <AppContainer
-            relayData={relayData}
+            data={relayData}
             loadableState={loadableState}
             {...props}
           />

@@ -7,8 +7,8 @@ import { isEmpty, isUndefined, pick } from "lodash/fp"
 export { Link } from "found"
 
 interface Props extends ContextProps, Found.WithRouter {
-  onToggleLoading: (isLoading: boolean) => void
   immediate?: boolean
+  onToggleLoading: (isLoading: boolean) => void
   replace?: string
   to?: string
 }
@@ -21,11 +21,14 @@ export const PreloadLink = Found.withRouter<Props>(props => {
   class PreloadLink extends Component<Props, State> {
     static propTypes = {
       immediate: PropTypes.bool, // load route data transparently in the bg
+      onToggleLoading: PropTypes.func,
       relayEnvironment: PropTypes.object.isRequired,
       reactionRouter: PropTypes.shape({
-        routeConfig: PropTypes.array.isRequired,
+        routes: PropTypes.array.isRequired,
         resolver: PropTypes.object.isRequired,
       }).isRequired,
+      replace: PropTypes.string,
+      to: PropTypes.string,
     }
 
     static defaultProps = {
@@ -99,7 +102,6 @@ export const PreloadLink = Found.withRouter<Props>(props => {
           return resolve()
         }
 
-        // Prime the store cache
         try {
           this.toggleLoading(true)
           await fetchQuery(relayEnvironment, query, routeVariables, cacheConfig)
@@ -108,8 +110,6 @@ export const PreloadLink = Found.withRouter<Props>(props => {
           // TODO: Pass this error back up
         } catch (error) {
           console.error("[Reaction Router/PreloadLink]", error)
-
-          // TODO: pass to toggle which calls callback
         } finally {
           this.toggleLoading(false)
         }
@@ -136,7 +136,6 @@ export const PreloadLink = Found.withRouter<Props>(props => {
       return (
         <Found.Link onClick={this.handleClick} {..._props}>
           {this.props.children}
-          {this.state.isLoading ? " [loading...]" : null}
         </Found.Link>
       )
     }

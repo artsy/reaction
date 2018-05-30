@@ -136,7 +136,7 @@ const defaultProps = {
     })),
   },
   reactionRouter: {
-    routeConfig: [
+    routes: [
       {
         Component: () => <div />,
         path: "/",

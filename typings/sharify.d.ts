@@ -16,6 +16,10 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly METAPHYSICS_ENDPOINT: string
+      readonly CURRENT_USER?: {
+        id: string
+        accessToken: string
+      }
     }
 
     export interface ResponseLocalData extends GlobalData {

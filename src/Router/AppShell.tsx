@@ -1,15 +1,10 @@
 import React, { SFC } from "react"
 import serialize from "serialize-javascript"
 import { ContextProvider } from "../Components/Artsy"
+import { AppShellProps } from "./types"
 
-interface Props {
-  loadableState?: any
-  relayData?: any
-  provide?: any
-}
-
-export const AppShell: SFC<Props> = props => {
-  const { loadableState, relayData, children, provide } = props
+export const AppShell: SFC<AppShellProps> = props => {
+  const { loadableState, data, children, provide } = props
 
   return (
     <ContextProvider {...provide}>
@@ -23,7 +18,7 @@ export const AppShell: SFC<Props> = props => {
 
             <script>
               var __RELAY_BOOTSTRAP__ = ${serialize(
-                JSON.stringify(relayData || {}),
+                JSON.stringify(data || {}),
                 {
                   isJSON: true,
                 }

@@ -15,25 +15,21 @@ jest.mock("loadable-components/server", () => ({
 
 describe("buildServerApp", () => {
   const getWrapper = async (url = "/") => {
-    const { ServerApp, status } = await buildServerApp(
-      [
+    const { ServerApp, status } = await buildServerApp({
+      routes: [
         {
           path: "/",
           Component: () => <div>hi!</div>,
         },
       ],
-      url
-    )
+      currentRoute: url,
+    })
 
     return {
       wrapper: render(<ServerApp />),
       status,
     }
   }
-
-  beforeEach(() => {
-    global.process.env.SSR_ENABLED = true
-  })
 
   it("resolved with a <ServerApp /> component", async () => {
     const { wrapper } = await getWrapper()
@@ -54,10 +50,5 @@ describe("buildServerApp", () => {
   it("resolves with a 404 status if url does not match request", async () => {
     const { status } = await getWrapper("/bad-url")
     expect(status).toEqual(404)
-  })
-
-  it("resolves with no values if SSR_ENABLED is false", async () => {
-    global.process.env.SSR_ENABLED = false
-    expect(await buildServerApp([])).toEqual(undefined)
   })
 })
