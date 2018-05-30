@@ -20,6 +20,20 @@ const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
   })
+  .add("Panel with 3rd party tracking", () => {
+    const UnitPanelTracked = extend({}, UnitPanel, {
+      link: { url: "https://artsy.net?ord=[timestamp]" },
+      pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+    })
+    return (
+      <DisplayPanel
+        unit={UnitPanelTracked}
+        campaign={Campaign}
+        article={StandardArticle}
+        renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
+      />
+    )
+  })
   .add("Mobile Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
   })
@@ -53,6 +67,20 @@ mobileAdInsertions.forEach(([label, unit]) => {
 storiesOf("Publishing/Display/Canvas", module)
   .add("Overlay", () => {
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
+  })
+  .add("Overlay with 3rd party tracking", () => {
+    const UnitCanvasTracked = extend({}, UnitCanvasOverlay, {
+      link: { url: "https://artsy.net?ord=[timestamp]" },
+      pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+    })
+    return (
+      <DisplayCanvas
+        unit={UnitCanvasTracked}
+        campaign={Campaign}
+        article={StandardArticle}
+        renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
+      />
+    )
   })
   .add("Image", () => {
     return <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />

@@ -9,12 +9,14 @@ import { avantgarde, garamond } from "Assets/Fonts"
 import { ErrorBoundary } from "../../../ErrorBoundary"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
-import { PixelTracker } from "../PixelTracker"
+import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
+import { getCurrentUnixTimestamp } from "../../Constants"
 
 interface DisplayCanvasProps {
   unit: any
   campaign: any
   article?: any
+  renderTime?: string
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -40,9 +42,8 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
   }
 
   render() {
-    const { unit, campaign, article } = this.props
+    const { unit, campaign, article, renderTime } = this.props
     const url = get(unit, "link.url", "")
-
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
@@ -53,7 +54,10 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
           <Waypoint onEnter={this.trackImpression} />
           <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
 
-          <a href={url} target="_blank">
+          <a
+            href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
+            target="_blank"
+          >
             <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
           </a>
 
@@ -65,7 +69,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
           />
 
           {unit.layout === "overlay" && disclaimer}
-          <PixelTracker unit={unit} />
+          <PixelTracker unit={unit} date={renderTime} />
         </DisplayContainer>
       </ErrorBoundary>
     )

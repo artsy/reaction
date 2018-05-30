@@ -54,6 +54,7 @@ export class StandardLayout extends React.Component<
 
     const campaign = omit(display, "panel", "canvas")
     const displayOverflows = display && display.canvas.layout === "slideshow"
+    const renderTime = (new Date().getTime() / 1000).toFixed(0).toString()
 
     return (
       <Responsive initialState={{ isMobile: this.props.isMobile }}>
@@ -69,6 +70,7 @@ export class StandardLayout extends React.Component<
                   unit={display.panel}
                   campaign={campaign}
                   article={article}
+                  renderTime={renderTime}
                 />
               )
             )
@@ -131,6 +133,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderTime={renderTime}
                       />
                     </div>
                   ) : (
@@ -139,6 +142,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderTime={renderTime}
                       />
                     </FooterContainer>
                   )}
