@@ -94,6 +94,21 @@ export class LinkWithTooltip extends Component<Props, State> {
     }
   }
 
+  trackClick = toolTipData => {
+    const { tracking } = this.props
+    const { entity, entityType } = toolTipData
+
+    if (entity) {
+      tracking.trackEvent({
+        action: "Click",
+        flow: "tooltip",
+        type: `${entityType} stub`,
+        context_module: "intext tooltip",
+        destination_path: entity.href,
+      })
+    }
+  }
+
   leftLink = () => {
     this.setState({ maybeHideToolTip: true })
   }
@@ -175,7 +190,12 @@ export class LinkWithTooltip extends Component<Props, State> {
         ref={link => (this.link = link)}
         show={showWithFade}
       >
-        <PrimaryLink href={url} target="_blank" show={showWithFade}>
+        <PrimaryLink
+          href={url}
+          target="_blank"
+          show={showWithFade}
+          onClick={() => this.trackClick(toolTipData)}
+        >
           {this.props.children}
         </PrimaryLink>
 

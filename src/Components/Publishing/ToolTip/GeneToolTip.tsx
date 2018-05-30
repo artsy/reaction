@@ -47,6 +47,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
       context_module: "tooltip",
       entity_id: _id,
       entity_slug: id,
+      entity_type: "gene",
     }
 
     return (

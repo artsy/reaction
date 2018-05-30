@@ -108,7 +108,7 @@ export const StyledText = div`
       background-size: 1.25px 1px;
     }
     ${PrimaryLink} {
-      background-position: bottom;
+      background-position: bottom !important;
     }
   }
   h3 {

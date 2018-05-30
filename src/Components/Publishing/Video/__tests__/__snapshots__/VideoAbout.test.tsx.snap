@@ -170,7 +170,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c4 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c4 h3 {
@@ -853,7 +853,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c4 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c4 h3 {

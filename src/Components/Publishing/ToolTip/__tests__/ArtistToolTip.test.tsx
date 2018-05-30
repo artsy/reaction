@@ -81,8 +81,11 @@ describe("ArtistToolTip", () => {
       }
       const component = getWrapper({ artist }, context)
       component.find(FollowArtistButton).simulate("click")
+      const args = context.onOpenAuthModal.mock.calls[0]
 
-      expect(context.onOpenAuthModal).toBeCalledWith("register")
+      expect(args[0]).toBe("register")
+      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].intent).toBe("follow artist")
     })
   })
 })
