@@ -13,6 +13,7 @@ import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { Sidebar } from "./Components/Sidebar"
 import { ArticleProps } from "../Article"
+import { getCurrentUnixTimestamp } from "../Constants"
 
 interface ArticleState {
   isTruncated: boolean
@@ -54,7 +55,7 @@ export class StandardLayout extends React.Component<
 
     const campaign = omit(display, "panel", "canvas")
     const displayOverflows = display && display.canvas.layout === "slideshow"
-    const renderTime = (new Date().getTime() / 1000).toFixed(0).toString()
+    const renderTime = getCurrentUnixTimestamp()
 
     return (
       <Responsive initialState={{ isMobile: this.props.isMobile }}>
