@@ -91,6 +91,12 @@ exports[`Video About matches the snapshot 1`] = `
   opacity: 1;
 }
 
+.c4 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c4 p,
 .c4 ul,
 .c4 ol,
@@ -772,6 +778,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c4 a:hover {
   color: #999999;
   opacity: 1;
+}
+
+.c4 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
 }
 
 .c4 p,

@@ -419,6 +419,12 @@ exports[`Sections snapshots renders properly 1`] = `
   opacity: 1;
 }
 
+.c2 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c2 p,
 .c2 ul,
 .c2 ol,

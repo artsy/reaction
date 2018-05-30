@@ -23,7 +23,7 @@ export const wrapperWithContext = (context, contextTypes, children) => {
   return React.createElement(WrapperWithContext)
 }
 
-const FullscreenViewerContext = {
+export const FullscreenViewerContext = {
   onViewFullscreen: x => x,
   openViewer: x => x,
   closeViewer: x => x,
@@ -31,7 +31,7 @@ const FullscreenViewerContext = {
   viewerIsOpen: false,
 }
 
-const FullscreenViewerContextTypes = {
+export const FullscreenViewerContextTypes = {
   onViewFullscreen: PropTypes.func,
   openViewer: PropTypes.func,
   closeViewer: PropTypes.func,
