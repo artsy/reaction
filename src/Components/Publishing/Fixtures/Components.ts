@@ -3,7 +3,6 @@ import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
 import { GeneProps } from "../ToolTip/GeneToolTip"
-import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
 
 export const ArtworkMissingInfo = {
   type: "artwork",
@@ -892,54 +891,5 @@ export const Artists: ArtistToolTipProps[] = [
       },
       genes: [],
     },
-  },
-]
-
-export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
-  {
-    _id: "589a6291275b2410d1beb6a5",
-    collections: ["Museum of Modern Art (MoMA)"],
-    highlights: {
-      partners: {
-        edges: [
-          {
-            node: {
-              categories: [
-                {
-                  id: "contemporary",
-                },
-                {
-                  id: "established",
-                },
-                {
-                  id: "top-established",
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-    auctionResults: {
-      edges: [
-        {
-          node: {
-            price_realized: {
-              display: "$63m",
-            },
-          },
-        },
-      ],
-    },
-  },
-  {
-    _id: "551361eb72616903f6d50300",
-    collections: null,
-    highlights: {
-      partners: {
-        edges: [],
-      },
-    },
-    auctionResults: null,
   },
 ]
