@@ -5,6 +5,7 @@ import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { GeneToolTipContainer } from "./GeneToolTip"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
+  arrowLeft?: string
   entity: object
   orientation?: string
   model: string
@@ -38,6 +39,7 @@ export class ToolTip extends React.Component<Props> {
 
   render() {
     const {
+      arrowLeft,
       entity,
       orientation,
       onMouseEnter,
@@ -54,7 +56,7 @@ export class ToolTip extends React.Component<Props> {
         onMouseLeave={onMouseLeave}
         positionLeft={positionLeft}
       >
-        <Content orientation={orientation}>
+        <Content orientation={orientation} arrowLeft={arrowLeft}>
           {orientation === "down" && (
             // point up from below content
             <Arrow orientation="up" />
@@ -85,7 +87,9 @@ export const ToolTipContainer = styled.div.attrs<DivProps>({})`
     props.orientation === "up" ? `bottom: 95%;` : `top: calc(100% + 10px);`};
 `
 
-const Content = styled.div.attrs<{ orientation: string }>({})`
+const Content = styled.div.attrs<{ orientation: string; arrowLeft?: string }>(
+  {}
+)`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   background: white;
@@ -95,7 +99,7 @@ const Content = styled.div.attrs<{ orientation: string }>({})`
     background-image: none;
   }
   ${ArrowContainer} {
-    left: calc(50% - 30px);
+    left: ${props => (props.arrowLeft ? props.arrowLeft : `calc(50% - 30px)`)};
     ${props =>
       props.orientation === "down" ? `top: -35px;` : `bottom: -15px;`};
   }

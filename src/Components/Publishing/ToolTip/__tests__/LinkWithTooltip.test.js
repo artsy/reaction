@@ -238,42 +238,52 @@ describe("LinkWithTooltip", () => {
   })
 
   describe("#getToolTipPosition", () => {
-    it("Returns a position for artist links", () => {
+    it("Returns tooltip position for artist links", () => {
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("artist")).toBe(-116.3203125)
+      expect(wrapper.getToolTipPosition("artist").toolTipLeft).toBe(-116.3203125)
     })
 
-    it("Returns a position for gene links", () => {
+    it("Returns tooltip position for gene links", () => {
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("gene")).toBe(-76.3203125)
+      expect(wrapper.getToolTipPosition("gene").toolTipLeft).toBe(-76.3203125)
     })
 
-    it("Returns a position for artist links at left window boundary", () => {
+    it("Returns tooltip and arrow position for artist links at left window boundary", () => {
       position.x = 80
+      position.width = 100
+      position.left = 60
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("artist")).toBe(-70)
+      const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("artist")
+
+      expect(toolTipLeft).toBe(-70)
+      expect(arrowLeft).toBe("60px")
     })
 
     it("Returns a position for gene links at left window boundary", () => {
       position.x = 80
+      position.width = 100
+      position.left = 60
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("gene")).toBe(-70)
+      const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("gene")
+
+      expect(toolTipLeft).toBe(-70)
+      expect(arrowLeft).toBe("60px")
     })
   })
 })
