@@ -1,4 +1,4 @@
-import { flatten } from "lodash"
+import { cloneDeep, extend, flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
@@ -153,6 +153,14 @@ export const UnitCanvasOverlay = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
+export const UnitCanvasTracked = extend(cloneDeep(UnitCanvasOverlay), {
+  pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+  link: {
+    text: "",
+    url: "https://artsy.net?ord=[timestamp]",
+  },
+})
+
 export const UnitCanvasImage = {
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
@@ -244,6 +252,13 @@ export const UnitPanel = {
     url: "http://artsy.net",
   },
 }
+export const UnitPanelTracked = extend(cloneDeep(UnitPanel), {
+  link: {
+    text: "",
+    url: "https://artsy.net?ord=[timestamp]",
+  },
+  pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+})
 
 export const UnitPanelVideo = {
   headline: "Euismod Inceptos Quam",

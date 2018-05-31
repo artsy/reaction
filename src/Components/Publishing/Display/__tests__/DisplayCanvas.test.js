@@ -6,13 +6,16 @@ import { DisplayCanvas } from "../Canvas"
 import { CanvasSlideshow } from "../Canvas/CanvasSlideshow"
 import { CanvasText } from "../Canvas/CanvasText"
 import { CanvasVideo } from "../Canvas/CanvasVideo"
+import { CanvasLink } from "../Canvas/CanvasContainer"
 import { track } from "../../../../Utils/track"
+import { getCurrentUnixTimestamp } from "../../Constants"
 
 import {
   Campaign,
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
+  UnitCanvasTracked,
   UnitCanvasVideo,
 } from "../../Fixtures/Components"
 
@@ -62,11 +65,12 @@ describe("unit", () => {
   const getWrapper = (props = {}) => {
     return mount(
       <DisplayCanvas
-        unit={UnitCanvasImage || props.unit}
-        campaign={Campaign || props.campaign}
+        unit={props.unit || UnitCanvasImage}
+        campaign={props.campaign || Campaign}
         tracking={{
           trackEvent,
         }}
+        renderTime="12345"
       />
     )
   }
@@ -99,16 +103,11 @@ describe("unit", () => {
     expect(canvas.find(CanvasSlideshow).length).toBe(1)
   })
 
-  it("calls renderPixelTracker with a unit object", () => {
-    const spy = jest.fn()
-    const displayPanel = renderer.create(
-      <DisplayCanvas
-        unit={UnitCanvasVideo}
-        campaign={Campaign}
-        renderPixelTracker={spy}
-      />
-    )
-    expect(spy).toBeCalledWith(UnitCanvasVideo)
+  it("renders a pixel impression if there is a url", () => {
+    const wrapper = getWrapper({
+      unit: UnitCanvasTracked,
+    })
+    expect(wrapper.html()).toMatch("impression?ord=12345")
   })
 
   describe("analytics", () => {
@@ -138,6 +137,18 @@ describe("unit", () => {
           unit_layout: "canvas_standard",
         })
       )
+    })
+
+    it("busts 3rd party cache on click", () => {
+      const wrapper = getWrapper({
+        unit: UnitCanvasTracked,
+      })
+      const currentTime = getCurrentUnixTimestamp()
+        .toString()
+        .substring(6)
+      wrapper.find(CanvasLink).simulate("click")
+      expect(window.open.mock.calls[0][0]).toMatch("?ord=")
+      expect(window.open.mock.calls[0][0]).toMatch(currentTime)
     })
   })
 })

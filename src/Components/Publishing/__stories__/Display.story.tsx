@@ -5,20 +5,32 @@ import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { StandardArticle } from "../Fixtures/Articles"
 import { Sections } from "../Sections/Sections"
+import { getCurrentUnixTimestamp } from "../Constants"
 
 import {
   Campaign,
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
+  UnitCanvasTracked,
   UnitCanvasVideo,
   UnitPanel,
+  UnitPanelTracked,
   UnitPanelVideo,
 } from "../Fixtures/Components"
 
 const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
+  })
+  .add("Panel with 3rd party tracking", () => {
+    return (
+      <DisplayPanel
+        unit={UnitPanelTracked}
+        campaign={Campaign}
+        renderTime={getCurrentUnixTimestamp()}
+      />
+    )
   })
   .add("Mobile Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
@@ -53,6 +65,15 @@ mobileAdInsertions.forEach(([label, unit]) => {
 storiesOf("Publishing/Display/Canvas", module)
   .add("Overlay", () => {
     return <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
+  })
+  .add("Overlay with 3rd party tracking", () => {
+    return (
+      <DisplayCanvas
+        unit={UnitCanvasTracked}
+        campaign={Campaign}
+        renderTime={getCurrentUnixTimestamp()}
+      />
+    )
   })
   .add("Image", () => {
     return <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />

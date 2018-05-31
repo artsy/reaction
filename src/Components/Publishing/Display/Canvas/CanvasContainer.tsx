@@ -8,6 +8,8 @@ import { SIZE_ME_REFRESH_RATE } from "../../Constants"
 import { CanvasSlideshow } from "./CanvasSlideshow"
 import { CanvasText } from "./CanvasText"
 import { CanvasVideo } from "./CanvasVideo"
+import { replaceWithCacheBuster } from "../ExternalTrackers"
+import { getCurrentUnixTimestamp } from "../../Constants"
 
 interface CanvasContainerProps {
   campaign: any
@@ -69,13 +71,22 @@ export class CanvasContainerComponent extends React.Component<
         this.canvasVideoHandlers.pauseVideo()
       }
 
-      window.open(e.currentTarget.attributes.href.value, "_blank")
+      const url = replaceWithCacheBuster(
+        e.currentTarget.attributes.href.value,
+        getCurrentUnixTimestamp()
+      )
+      window.open(url, "_blank")
     }
   }
 
   render() {
     const { campaign, disclaimer, size, unit } = this.props
-    const { assets, cover_image_url, layout, link: { url } } = unit
+    const {
+      assets,
+      cover_image_url,
+      layout,
+      link: { url },
+    } = unit
     const isOverlay = layout === "overlay"
     const isSlideshow = layout === "slideshow"
 
@@ -208,7 +219,7 @@ const Image = styled.img`
     object-fit: contain;
   `};
 `
-const CanvasLink = responsiveLink`
+export const CanvasLink = responsiveLink`
   width: 100%;
   height: 460px;
   color: #000;
