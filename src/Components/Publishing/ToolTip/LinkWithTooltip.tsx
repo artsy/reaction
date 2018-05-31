@@ -225,6 +225,7 @@ export class LinkWithTooltip extends Component<Props, State> {
             onMouseLeave={this.onLeaveLink}
             href={url}
             target="_blank"
+            onClick={() => this.trackClick(toolTipData)}
           />
         )}
       </Link>
