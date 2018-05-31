@@ -17,11 +17,12 @@ const MarketInsightsContainer = styled.div`
 const MarketInsightsDataContainer = styled.div`
   > div {
     display: inline-block;
-    padding: 30px;
+    padding: 10px 30px;
   }
-  text-align: center;
   border-bottom: 1px solid ${colors.grayRegular};
   border-top: 1px solid ${colors.grayRegular};
+  padding: 20px;
+  text-align: center;
 `
 
 const FeedbackContainer = styled.div`
