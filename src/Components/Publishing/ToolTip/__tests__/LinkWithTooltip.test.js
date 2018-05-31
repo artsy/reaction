@@ -150,6 +150,19 @@ describe("LinkWithTooltip", () => {
     expect(tracking.destination_path).toBe("/artist/nick-mauss")
   })
 
+  it("Tracks click events from hover background", () => {
+    context.activeToolTip = "nick-mauss"
+    const wrapper = getWrapper(context, props)
+    wrapper.find(Background).simulate("click")
+    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(tracking.action).toBe("Click")
+    expect(tracking.flow).toBe("tooltip")
+    expect(tracking.type).toBe("artist stub")
+    expect(tracking.context_module).toBe("intext tooltip")
+    expect(tracking.destination_path).toBe("/artist/nick-mauss")
+  })
+
   it("Sets tooltip position on mount", () => {
     const wrapper = getWrapper(context, props)
       .childAt(0)
