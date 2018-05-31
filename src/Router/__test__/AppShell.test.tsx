@@ -30,10 +30,10 @@ describe("AppShell", () => {
   })
 
   it("injects __RELAY_BOOTSTRAP__ hydration variable", () => {
-    const relayData = ["hello"]
+    const data = ["hello"]
     expect(
       getWrapper({
-        relayData,
+        data,
       }).html()
     ).toContain("hello")
   })

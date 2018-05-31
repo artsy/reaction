@@ -69,6 +69,17 @@ describe("PreloadLink", () => {
     })
   })
 
+  it("calls onToggleLoading callback if loading", done => {
+    resolveFetch()
+    const onToggleLoading = jest.fn()
+    getWrapper({ onToggleLoading })
+    expect(onToggleLoading).toBeCalledWith(true)
+    setTimeout(() => {
+      expect(onToggleLoading).toBeCalledWith(false)
+      done()
+    })
+  })
+
   it("logs with an error if there is an error during fetch", done => {
     ;(fetchQuery as any).mockImplementation(() => Promise.reject("Error!"))
     global.console.error = jest.fn()

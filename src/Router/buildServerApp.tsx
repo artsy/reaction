@@ -12,14 +12,14 @@ import { AppConfig, ServerResolveProps } from "./types"
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, currentRoute } = config
+      const { routes, url } = config
       const relayEnvironment = createRelayEnvironment()
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
 
       const { redirect, status, element } = await getFarceResult({
-        url: currentRoute,
+        url,
         historyMiddlewares,
         routeConfig: routes,
         resolver,

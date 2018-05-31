@@ -1,24 +1,14 @@
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import { ContextProps, ContextConsumer } from "../Components/Artsy"
+import { ContextConsumer } from "../Components/Artsy"
 import * as Found from "found"
 import { fetchQuery } from "react-relay"
-import { isEmpty, isUndefined, pick } from "lodash/fp"
+import { isEmpty, isFunction, isUndefined, pick } from "lodash/fp"
+import { PreloadLinkProps, PreloadLinkState } from "./types"
 export { Link } from "found"
 
-interface Props extends ContextProps, Found.WithRouter {
-  immediate?: boolean
-  onToggleLoading: (isLoading: boolean) => void
-  replace?: string
-  to?: string
-}
-
-interface State {
-  isLoading: boolean
-}
-
-export const PreloadLink = Found.withRouter<Props>(props => {
-  class PreloadLink extends Component<Props, State> {
+export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
+  class PreloadLink extends Component<PreloadLinkProps, PreloadLinkState> {
     static propTypes = {
       immediate: PropTypes.bool, // load route data transparently in the bg
       onToggleLoading: PropTypes.func,
@@ -131,11 +121,14 @@ export const PreloadLink = Found.withRouter<Props>(props => {
     }
 
     render() {
+      const { children } = this.props
+      const { isLoading } = this.state
       const _props = pick(["to", "replace"], this.props)
+      const hasRenderProp = isFunction(this.props.children)
 
       return (
         <Found.Link onClick={this.handleClick} {..._props}>
-          {this.props.children}
+          {hasRenderProp ? children({ isLoading }) : children}
         </Found.Link>
       )
     }

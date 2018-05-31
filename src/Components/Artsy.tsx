@@ -147,7 +147,6 @@ export function ContextConsumer<P>(
         this.props
       )
 
-      // console.log(this.context)
       return <Component {...props} />
     }
   }

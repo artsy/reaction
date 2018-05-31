@@ -22,7 +22,7 @@ describe("buildServerApp", () => {
           Component: () => <div>hi!</div>,
         },
       ],
-      currentRoute: url,
+      url,
     })
 
     return {
