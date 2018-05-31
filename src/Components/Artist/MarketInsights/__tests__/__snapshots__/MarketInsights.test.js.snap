@@ -84,14 +84,15 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
 }
 
 .c1 {
-  text-align: center;
   border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;
+  padding: 20px;
+  text-align: center;
 }
 
 .c1 > div {
   display: inline-block;
-  padding: 30px;
+  padding: 10px 30px;
 }
 
 .c4 {
