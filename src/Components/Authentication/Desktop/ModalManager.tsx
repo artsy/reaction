@@ -1,13 +1,24 @@
 import React, { Component } from "react"
+import { FormikProps } from "formik"
 import { DesktopModal } from "./Components/DesktopModal"
 import { FormSwitcher } from "./FormSwitcher"
-import { handleSubmit } from "Components/Authentication/helpers"
-import { ModalType } from "Components/Authentication/Types"
+import { handleSubmit as defaultHandleSubmit } from "Components/Authentication/helpers"
+import {
+  InputValues,
+  SubmitHandler,
+  ModalType,
+} from "Components/Authentication/Types"
 
 interface Props {
   submitUrls: { [P in ModalType]: string }
   csrf: string
   redirectUrl?: string
+  type?: ModalType
+  handleSubmit?: (
+    type: ModalType,
+    values: InputValues,
+    formikBag: FormikProps<InputValues>
+  ) => void
 }
 
 interface State {
@@ -16,7 +27,7 @@ interface State {
 
 export class ModalManager extends Component<Props, State> {
   state = {
-    currentType: null,
+    currentType: this.props.type || null,
   }
 
   openModal = (type: ModalType, redirectUrl?: string) => {
@@ -39,20 +50,17 @@ export class ModalManager extends Component<Props, State> {
       return null
     }
 
+    const handleSubmit: SubmitHandler = !!this.props.handleSubmit
+      ? this.props.handleSubmit.bind(this, currentType)
+      : defaultHandleSubmit(submitUrls[currentType], csrf, redirectUrl)
+
     return (
       <DesktopModal
         show
         onTypeChange={this.openModal}
         onClose={this.closeModal}
       >
-        <FormSwitcher
-          type={currentType}
-          handleSubmit={handleSubmit(
-            submitUrls[currentType],
-            csrf,
-            redirectUrl
-          )}
-        />
+        <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
       </DesktopModal>
     )
   }
