@@ -12,19 +12,16 @@ interface Props {
 
 interface State {
   currentType: ModalType
-  redirectUrl: string
 }
 
 export class ModalManager extends Component<Props, State> {
   state = {
     currentType: null,
-    redirectUrl: this.props.redirectUrl || "/",
   }
 
   openModal = (type: ModalType, redirectUrl?: string) => {
     this.setState({
       currentType: type,
-      redirectUrl,
     })
   }
 
@@ -35,8 +32,8 @@ export class ModalManager extends Component<Props, State> {
   }
 
   render() {
-    const { csrf, submitUrls } = this.props
-    const { currentType, redirectUrl } = this.state
+    const { csrf, submitUrls, redirectUrl } = this.props
+    const { currentType } = this.state
 
     if (!currentType) {
       return null
