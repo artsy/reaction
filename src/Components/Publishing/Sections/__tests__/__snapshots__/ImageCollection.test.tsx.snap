@@ -259,13 +259,13 @@ exports[`renders a single image properly 1`] = `
                     <span
                       className="title"
                     >
-                      <file__StyledTextLink
+                      <TextLink__StyledTextLink
                         color="#999"
                         href="/artwork/fernando-botero-nude-on-the-beach"
                         underline={false}
                       >
                         Nude on the Beach
-                      </file__StyledTextLink>
+                      </TextLink__StyledTextLink>
                     </span>
                     <span>
                       , 
@@ -283,13 +283,13 @@ exports[`renders a single image properly 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": <span>
-                    <file__StyledTextLink
+                    <TextLink__StyledTextLink
                       color="#999"
                       href="/gary-nader"
                       underline={false}
                     >
                       Gary Nader
-                    </file__StyledTextLink>
+                    </TextLink__StyledTextLink>
                     <span>
                       . 
                     </span>
@@ -643,13 +643,13 @@ exports[`renders properly 1`] = `
                     <span
                       className="title"
                     >
-                      <file__StyledTextLink
+                      <TextLink__StyledTextLink
                         color="#999"
                         href="/artwork/fernando-botero-nude-on-the-beach"
                         underline={false}
                       >
                         Nude on the Beach
-                      </file__StyledTextLink>
+                      </TextLink__StyledTextLink>
                     </span>
                     <span>
                       , 
@@ -667,13 +667,13 @@ exports[`renders properly 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": <span>
-                    <file__StyledTextLink
+                    <TextLink__StyledTextLink
                       color="#999"
                       href="/gary-nader"
                       underline={false}
                     >
                       Gary Nader
-                    </file__StyledTextLink>
+                    </TextLink__StyledTextLink>
                     <span>
                       . 
                     </span>

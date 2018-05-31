@@ -1,12 +1,8 @@
-import MarketInsights from "./Artist/MarketInsights"
-import MarketDataSummary from "./Artist/MarketDataSummary"
 import Artwork from "./Artwork"
 import ArtworkGrid from "./ArtworkGrid"
 import BorderedPulldown from "./BorderedPulldown"
 import Buttons from "./Buttons"
 import Checkbox from "./Checkbox"
-import Gene from "./Gene"
-import Grid from "./Grid"
 import Icon from "./Icon"
 import Input from "./Input"
 import Modal from "./Modal/Modal"
@@ -35,16 +31,12 @@ export function init(options: InitOptions) {
 }
 
 export default {
-  MarketInsights,
-  MarketDataSummary,
   Artwork,
   Buttons,
   Modal,
   ArtworkGrid,
   BorderedPulldown,
   Checkbox,
-  Gene,
-  Grid,
   Icon,
   Input,
   Nav,

@@ -11,12 +11,12 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
-.c0 .file__ArtistNames-yu39to-0 {
+.c0 .ArtworkCaption__ArtistNames-t0bcvj-0 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.c0 .file__ArtistNames-yu39to-0:after {
+.c0 .ArtworkCaption__ArtistNames-t0bcvj-0:after {
   content: ", ";
 }
 
@@ -31,7 +31,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<span><span class=\\"file__ArtistNames-yu39to-0 cwiqgm\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
+          "__html": "<span><span class=\\"ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
         }
       }
     />
@@ -193,12 +193,12 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.deDFfa .c1 {
+.iKwEjk .c1 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.deDFfa .c1:after {
+.iKwEjk .c1:after {
   content: ", ";
 }
 

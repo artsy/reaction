@@ -6,16 +6,16 @@ import {
   ChangeMode,
   FormContainer as Form,
   GrayFacebookButton,
-} from "./commonElements"
+} from "../commonElements"
 
-import { LoginValidator } from "./Validators"
-import Input from "../Input"
-import Text from "../Text"
-import Colors from "../../Assets/Colors"
-import { FormComponentType, InputValues } from "./Types"
-import Checkbox from "../Checkbox"
-import { garamond } from "../../Assets/Fonts"
-import Button from "../Buttons/Inverted"
+import { LoginValidator } from "Components/Authentication/Validators"
+import Input from "Components/Input"
+import Text from "Components/Text"
+import Colors from "Assets/Colors"
+import { FormComponentType, InputValues, ModalType } from "../Types"
+import Checkbox from "Components/Checkbox"
+import { garamond } from "Assets/Fonts"
+import Button from "Components/Buttons/Inverted"
 
 const ForgotPasswordLink = styled(ChangeMode)`
   margin-left: auto;
@@ -58,7 +58,10 @@ export const LoginForm: FormComponentType = props => {
         handleSubmit,
         isSubmitting,
         isValid,
+        status,
       }: FormikProps<InputValues>) => {
+        const hasErrors = Object.keys(errors).length > 0 || !!status
+
         return (
           <Form onSubmit={handleSubmit}>
             <Input
@@ -95,16 +98,20 @@ export const LoginForm: FormComponentType = props => {
                 <Text color={Colors.grayDark}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
-                onClick={() => props.handleTypeChange("reset_password")}
+                onClick={() => props.handleTypeChange(ModalType.resetPassword)}
               >
                 Forgot Password?
               </ForgotPasswordLink>
             </Row>
-            <LoginButton disabled={isSubmitting}>Log In</LoginButton>
+            <LoginButton disabled={isSubmitting || hasErrors}>
+              Log In
+            </LoginButton>
             <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
             <LoginText>
               Don't have an account?{" "}
-              <ChangeMode onClick={() => props.handleTypeChange("signup")}>
+              <ChangeMode
+                onClick={() => props.handleTypeChange(ModalType.signup)}
+              >
                 Sign Up
               </ChangeMode>
             </LoginText>

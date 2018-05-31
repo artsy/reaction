@@ -1,42 +1,37 @@
 import React from "react"
-
 import { LoginForm } from "./LoginForm"
-import { RegisterForm } from "./RegisterForm"
+import { SignUpForm } from "./SignUpForm"
 import { ResetPasswordForm } from "./ResetPasswordForm"
 import {
   FormComponentType,
   InputValues,
   ModalType,
   SubmitHandler,
-} from "./Types"
+} from "../Types"
 
 interface Props {
   type: ModalType
-  values?: InputValues // necessary?
+  values?: InputValues
   handleSubmit: SubmitHandler
+  signupIntent?: string
+  redirectUrl?: string
 }
 
-interface State extends React.HTMLProps<HTMLFormElement> {
+interface State {
   type?: ModalType
 }
 
-export class AuthenticationForm extends React.Component<Props, State> {
+export class FormSwitcher extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
   }
 
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      type: this.props.type,
-    }
+  state = {
+    type: this.props.type,
   }
 
   presentModal = (newType: ModalType) => {
-    return event => {
-      event.preventDefault()
-      this.setState({ type: newType })
-    }
+    this.setState({ type: newType })
   }
 
   render() {
@@ -46,7 +41,7 @@ export class AuthenticationForm extends React.Component<Props, State> {
         Form = LoginForm
         break
       case "signup":
-        Form = RegisterForm
+        Form = SignUpForm
         break
       case "reset_password":
         Form = ResetPasswordForm
@@ -66,7 +61,7 @@ export class AuthenticationForm extends React.Component<Props, State> {
     return (
       <Form
         values={defaultValues}
-        handleTypeChange={this.presentModal}
+        handleTypeChange={type => this.presentModal(type)}
         handleSubmit={this.props.handleSubmit}
       />
     )

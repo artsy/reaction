@@ -7,14 +7,14 @@ import {
   FormContainer,
   GrayFacebookButton,
   TOSCheckbox,
-} from "./commonElements"
-import Text from "../Text"
-import TextLink from "../TextLink"
-import Input from "../Input"
-import { FormComponentType, InputValues } from "./Types"
-import Button from "../Buttons/Inverted"
-import { RegisterValidator } from "./Validators"
-import Colors from "../../Assets/Colors"
+} from "../commonElements"
+import Text from "Components/Text"
+import TextLink from "Components/TextLink"
+import Input from "Components/Input"
+import { FormComponentType, InputValues, ModalType } from "../Types"
+import Button from "Components/Buttons/Inverted"
+import { RegisterValidator } from "../Validators"
+import Colors from "Assets/Colors"
 
 const LoginText = styled(Text).attrs({
   color: Colors.grayDark,
@@ -30,7 +30,7 @@ const SignUpButton = styled(Button).attrs({
   margin-top: auto;
 `
 
-export const RegisterForm: FormComponentType = props => {
+export const SignUpForm: FormComponentType = props => {
   return (
     <Formik
       initialValues={props.values}
@@ -121,7 +121,9 @@ export const RegisterForm: FormComponentType = props => {
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <LoginText>
               Already have an account?{" "}
-              <ChangeMode onClick={() => props.handleTypeChange("login")}>
+              <ChangeMode
+                onClick={() => props.handleTypeChange(ModalType.login)}
+              >
                 Login
               </ChangeMode>
             </LoginText>

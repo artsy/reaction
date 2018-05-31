@@ -116,7 +116,7 @@ exports[`renders column_width properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -398,7 +398,7 @@ exports[`renders fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -680,7 +680,7 @@ exports[`renders overflow_fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 

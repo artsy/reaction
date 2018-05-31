@@ -82,14 +82,6 @@ exports[`Standard Header renders standard header properly 1`] = `
   color: black;
 }
 
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 50px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 50px;
-}
-
 .c0 {
   margin: 0 40px;
 }
@@ -106,6 +98,14 @@ exports[`Standard Header renders standard header properly 1`] = `
   width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 50px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  margin-bottom: 50px;
 }
 
 .c2 {
@@ -158,15 +158,6 @@ exports[`Standard Header renders standard header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 34px;
-    line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
-  }
-}
-
-@media (max-width:720px) {
   .c0 {
     margin: 0 20px;
   }
@@ -175,6 +166,15 @@ exports[`Standard Header renders standard header properly 1`] = `
 @media (max-width:720px) {
   .c1 {
     margin: 30px auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -387,14 +387,6 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   color: black;
 }
 
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 50px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 50px;
-}
-
 .c0 {
   margin: 0 40px;
 }
@@ -411,6 +403,14 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   width: 100%;
   margin: 40px auto;
   box-sizing: border-box;
+}
+
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 50px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  margin-bottom: 50px;
 }
 
 .c2 {
@@ -463,15 +463,6 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 34px;
-    line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
-  }
-}
-
-@media (max-width:720px) {
   .c0 {
     margin: 0 20px;
   }
@@ -480,6 +471,15 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 @media (max-width:720px) {
   .c1 {
     margin: 30px auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
