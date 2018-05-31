@@ -226,6 +226,28 @@ exports[`ArticleCard renders properly 1`] = `
   padding: 0px 12px;
 }
 
+.c7 {
+  color: black;
+}
+
+.c7 .c9 {
+  margin-bottom: 60px;
+}
+
+.c6 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: black;
+}
+
+.c6 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c0 {
   color: black;
 }
@@ -247,30 +269,8 @@ exports[`ArticleCard renders properly 1`] = `
   border-bottom: 2px solid;
 }
 
-.c0 .file__SeriesAboutContainer-yu39to-0 {
+.c0 .SeriesAbout__SeriesAboutContainer-s1xh0wwc-0 {
   margin: 60px 0 100px 0;
-}
-
-.c7 {
-  color: black;
-}
-
-.c7 .c9 {
-  margin-bottom: 60px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: black;
-}
-
-.c6 a {
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
 }
 
 @media (max-width:720px) {
@@ -367,18 +367,6 @@ exports[`ArticleCard renders properly 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c0 .c5 a {
-    display: block;
-  }
-}
-
-@media (max-width:48em) {
-  .c0 .file__SeriesAboutContainer-yu39to-0 {
-    margin: 40px 0 100px 0;
-  }
-}
-
 @media (max-width:64em) {
   .c7 .c9 {
     margin-bottom: 40px;
@@ -391,6 +379,18 @@ exports[`ArticleCard renders properly 1`] = `
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 .c5 a {
+    display: block;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 .SeriesAbout__SeriesAboutContainer-s1xh0wwc-0 {
+    margin: 40px 0 100px 0;
   }
 }
 

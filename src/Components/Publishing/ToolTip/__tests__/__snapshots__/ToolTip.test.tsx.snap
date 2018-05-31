@@ -140,7 +140,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   background-image: none;
 }
 
-.c1 .file__ArrowContainer-yu39to-0 {
+.c1 .Arrow__ArrowContainer-ahn4xm-0 {
   left: calc(50% - 30px);
   bottom: -15px;
 }
@@ -295,7 +295,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: black;
 }
 
-.c3 .file__MarketDataSummaryContainer-yu39to-0 {
+.c3 .MarketDataSummary__MarketDataSummaryContainer-vkk0cf-0 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 12px;
@@ -377,7 +377,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   background-image: none;
 }
 
-.c1 .file__ArrowContainer-yu39to-0 {
+.c1 .Arrow__ArrowContainer-ahn4xm-0 {
   left: calc(50% - 30px);
   bottom: -15px;
 }

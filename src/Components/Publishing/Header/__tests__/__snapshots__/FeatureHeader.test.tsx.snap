@@ -230,12 +230,12 @@ exports[`feature renders feature full header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -385,14 +385,14 @@ exports[`feature renders feature full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
@@ -773,12 +773,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -792,7 +792,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .file__Deck-yu39to-11 {
+.c0[data-type="split"] .FeatureHeader__Deck-s6aooro-11 {
   margin-bottom: 30px;
 }
 
@@ -918,14 +918,14 @@ exports[`feature renders feature full header without a deck properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
@@ -1307,12 +1307,12 @@ exports[`feature renders feature header with children properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -1462,14 +1462,14 @@ exports[`feature renders feature header with children properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
@@ -1863,12 +1863,12 @@ exports[`feature renders feature split header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -2018,14 +2018,14 @@ exports[`feature renders feature split header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
@@ -2403,17 +2403,17 @@ exports[`feature renders feature text header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureImage-yu39to-4 {
+.c0[data-type="split"] .FeatureHeader__FeatureImage-s6aooro-4 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -2556,21 +2556,21 @@ exports[`feature renders feature text header properly 1`] = `
     width: 100%;
   }
 
-  .c0[data-type="split"] .file__FeatureImage-yu39to-4 {
+  .c0[data-type="split"] .FeatureHeader__FeatureImage-s6aooro-4 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
@@ -3004,12 +3004,12 @@ exports[`feature renders superArticle full header properly 1`] = `
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
   border: 20px solid white;
   width: 50%;
 }
 
-.c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+.c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
   width: 50vw;
 }
 
@@ -3180,14 +3180,14 @@ exports[`feature renders superArticle full header properly 1`] = `
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideoContainer-yu39to-6 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideoContainer-s6aooro-6 {
     width: 100%;
     position: relative;
     border: 0px;
     margin-bottom: 30px;
   }
 
-  .c0[data-type="split"] .file__FeatureVideo-yu39to-5 {
+  .c0[data-type="split"] .FeatureHeader__FeatureVideo-s6aooro-5 {
     width: 100%;
   }
 }
