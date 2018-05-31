@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 import FacebookButton from "../Buttons/Facebook"
-import Colors from "../../Assets/Colors"
-import { garamond } from "../../Assets/Fonts"
+import Colors from "Assets/Colors"
+import { garamond } from "Assets/Fonts"
 import Checkbox from "../Checkbox"
 
 export const FormContainer = styled.form`
