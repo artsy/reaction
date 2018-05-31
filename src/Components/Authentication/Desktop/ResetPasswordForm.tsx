@@ -6,7 +6,7 @@ import {
   FormContainer as Form,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
-import { FormComponentType, InputValues } from "../Types"
+import { FormComponentType, InputValues, ModalType } from "../Types"
 import { ResetPasswordValidator } from "../Validators"
 import Button from "Components/Buttons/Inverted"
 
@@ -45,7 +45,7 @@ export const ResetPasswordForm: FormComponentType = props => {
             <Button block type="submit" disabled={isSubmitting}>
               Send Reset Instructions
             </Button>
-            <ChangeMode onClick={() => props.handleTypeChange("login")}>
+            <ChangeMode onClick={() => props.handleTypeChange(ModalType.login)}>
               Log In
             </ChangeMode>
           </Form>

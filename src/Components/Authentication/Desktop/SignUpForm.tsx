@@ -11,7 +11,7 @@ import {
 import Text from "Components/Text"
 import TextLink from "Components/TextLink"
 import Input from "Components/Input"
-import { FormComponentType, InputValues } from "../Types"
+import { FormComponentType, InputValues, ModalType } from "../Types"
 import Button from "Components/Buttons/Inverted"
 import { RegisterValidator } from "../Validators"
 import Colors from "Assets/Colors"
@@ -121,7 +121,9 @@ export const SignUpForm: FormComponentType = props => {
             <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
             <LoginText>
               Already have an account?{" "}
-              <ChangeMode onClick={() => props.handleTypeChange("login")}>
+              <ChangeMode
+                onClick={() => props.handleTypeChange(ModalType.login)}
+              >
                 Login
               </ChangeMode>
             </LoginText>
