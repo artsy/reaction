@@ -5,6 +5,7 @@ import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { StandardArticle } from "../Fixtures/Articles"
 import { Sections } from "../Sections/Sections"
+import { getCurrentUnixTimestamp } from "../Constants"
 
 import {
   Campaign,
@@ -27,7 +28,7 @@ const story = storiesOf("Publishing/Display/Panel", module)
       <DisplayPanel
         unit={UnitPanelTracked}
         campaign={Campaign}
-        renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
+        renderTime={getCurrentUnixTimestamp()}
       />
     )
   })
@@ -70,7 +71,7 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasTracked}
         campaign={Campaign}
-        renderTime={(new Date().getTime() / 1000).toFixed(0).toString()}
+        renderTime={getCurrentUnixTimestamp()}
       />
     )
   })

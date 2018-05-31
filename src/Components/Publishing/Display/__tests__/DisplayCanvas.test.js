@@ -144,6 +144,8 @@ describe("unit", () => {
         unit: UnitCanvasTracked,
       })
       const currentTime = getCurrentUnixTimestamp()
+        .toString()
+        .substring(6)
       wrapper.find(CanvasLink).simulate("click")
       expect(window.open.mock.calls[0][0]).toMatch("?ord=")
       expect(window.open.mock.calls[0][0]).toMatch(currentTime)
