@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "experimentalDecorators": true,
     "jsx": "react",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016",
-      "es2017"
-    ],
+    "lib": ["dom", "es2015", "es2016", "es2017"],
     "module": "es2015",
     "moduleResolution": "node",
     "noUnusedLocals": true,
@@ -22,21 +16,14 @@
     "rootDir": "src",
     "target": "es2015",
     "paths": {
-      "Assets/*": [
-        "./Assets/*"
-      ]
+      "Assets/*": ["./Assets/*"]
     }
   },
   "include": [
+    "node_modules/styled-components/typings/styled-components.d.ts",
     "typings/*.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "data",
-    "externals",
-    "danger"
-  ]
+  "exclude": ["node_modules", "dist", "data", "externals", "danger"]
 }
