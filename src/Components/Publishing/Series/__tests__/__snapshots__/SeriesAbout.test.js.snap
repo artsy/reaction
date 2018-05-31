@@ -65,6 +65,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   opacity: 1;
 }
 
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -144,7 +150,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 .c6 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c6 h3 {
@@ -463,6 +469,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   opacity: 1;
 }
 
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -542,7 +554,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 .c6 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c6 h3 {
@@ -854,6 +866,12 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   opacity: 1;
 }
 
+.c6 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c6 p,
 .c6 ul,
 .c6 ol,
@@ -933,7 +951,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 .c6 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c6 h3 {
@@ -1274,6 +1292,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   opacity: 1;
 }
 
+.c10 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c10 p,
 .c10 ul,
 .c10 ol,
@@ -1353,7 +1377,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 .c10 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c10 h3 {

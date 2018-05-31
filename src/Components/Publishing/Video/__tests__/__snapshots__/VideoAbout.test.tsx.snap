@@ -91,6 +91,12 @@ exports[`Video About matches the snapshot 1`] = `
   opacity: 1;
 }
 
+.c4 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c4 p,
 .c4 ul,
 .c4 ol,
@@ -170,7 +176,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c4 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c4 h3 {
@@ -774,6 +780,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   opacity: 1;
 }
 
+.c4 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c4 p,
 .c4 ul,
 .c4 ol,
@@ -853,7 +865,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c4 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c4 h3 {

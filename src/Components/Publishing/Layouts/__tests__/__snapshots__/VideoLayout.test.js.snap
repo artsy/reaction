@@ -435,6 +435,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   opacity: 1;
 }
 
+.c50 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c50 p,
 .c50 ul,
 .c50 ol,
@@ -514,7 +520,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c50 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c50 h3 {
@@ -606,6 +612,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   opacity: .65;
 }
 
+.c59 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c59 p,
 .c59 ul,
 .c59 ol,
@@ -685,7 +697,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c59 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c59 h3 {

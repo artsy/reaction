@@ -21,6 +21,12 @@ exports[`Text Snapshots renders classic text properly 1`] = `
   opacity: 1;
 }
 
+.c0 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -100,7 +106,7 @@ exports[`Text Snapshots renders classic text properly 1`] = `
 }
 
 .c0 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c0 h3 {
@@ -277,6 +283,12 @@ exports[`Text Snapshots renders feature text properly 1`] = `
   opacity: 1;
 }
 
+.c0 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -356,7 +368,7 @@ exports[`Text Snapshots renders feature text properly 1`] = `
 }
 
 .c0 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c0 h3 {
@@ -523,6 +535,12 @@ exports[`Text Snapshots renders news text properly 1`] = `
   opacity: 1;
 }
 
+.c0 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -602,7 +620,7 @@ exports[`Text Snapshots renders news text properly 1`] = `
 }
 
 .c0 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c0 h3 {
@@ -777,6 +795,12 @@ exports[`Text Snapshots renders standard text properly 1`] = `
   opacity: 1;
 }
 
+.c0 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c0 p,
 .c0 ul,
 .c0 ol,
@@ -856,7 +880,7 @@ exports[`Text Snapshots renders standard text properly 1`] = `
 }
 
 .c0 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c0 h3 {

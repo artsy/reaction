@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MarketDataSummary renders correctly 1`] = `
+exports[`MarketDataSummary snapshots renders correctly 1`] = `
 .c0 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -17,11 +17,13 @@ exports[`MarketDataSummary renders correctly 1`] = `
   </div>
   <div>
     <div>
-      Represented by blue chip galleries
+      Represented by a top established gallery
     </div>
   </div>
   <div>
-    Collected by major museums
+    Collected by a major museum
   </div>
 </div>
 `;
+
+exports[`MarketDataSummary snapshots renders correctly with genes 1`] = `null`;

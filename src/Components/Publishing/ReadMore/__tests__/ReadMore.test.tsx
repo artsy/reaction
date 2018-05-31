@@ -1,15 +1,33 @@
+import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { extend } from "lodash"
 import React from "react"
 import { StandardArticle } from "../../Fixtures/Articles"
-import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
+import {
+  FullscreenViewerContext,
+  FullscreenViewerContextTypes,
+  wrapperWithContext,
+  WrapperWithFullscreenContext,
+} from "../../Fixtures/Helpers"
 import { Sections } from "../../Sections/Sections"
 import { ReadMoreWrapper } from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
 
 describe("ReadMore", () => {
+  const getWrapper = (readMoreProps, sectionsProps) => {
+    return mount(
+      WrapperWithFullscreenContext(
+        <ReadMoreWrapper {...readMoreProps}>
+          <Sections {...sectionsProps} />
+        </ReadMoreWrapper>
+      )
+    )
+  }
+
+  let readMoreProps
+  let sectionsProps
   beforeEach(() => {
     Element.prototype.getBoundingClientRect = jest.fn(() => {
       return {
@@ -17,15 +35,40 @@ describe("ReadMore", () => {
         bottom: 300,
       }
     })
+    readMoreProps = {
+      hideButton: jest.fn(),
+      isTruncated: true,
+    }
+    sectionsProps = {
+      article: StandardArticle,
+    }
   })
 
   it("finds the optimal truncation height", () => {
-    const readMore = WrapperWithFullscreenContext(
-      <ReadMoreWrapper isTruncated hideButton={jest.fn()}>
-        <Sections article={StandardArticle} />
-      </ReadMoreWrapper>
+    const viewer = getWrapper(readMoreProps, sectionsProps)
+      .childAt(0)
+      .instance()
+    jest.runAllTimers()
+    expect(viewer.state.truncationHeight).toEqual(200)
+  })
+
+  it("truncates articles with toolTips", () => {
+    const context = extend(FullscreenViewerContext, {
+      tooltipsData: { artists: [], genes: [] },
+    })
+    const contextTypes = extend(FullscreenViewerContextTypes, {
+      tooltipsData: PropTypes.object,
+    })
+    sectionsProps.showTooltips = true
+    const viewer = mount(
+      wrapperWithContext(
+        context,
+        contextTypes,
+        <ReadMoreWrapper isTruncated hideButton={jest.fn()}>
+          <Sections {...sectionsProps} />
+        </ReadMoreWrapper>
+      )
     )
-    const viewer = mount(readMore)
       .childAt(0)
       .instance()
     jest.runAllTimers()
@@ -33,13 +76,10 @@ describe("ReadMore", () => {
   })
 
   it("shows the whole article when not truncated", () => {
-    const readMore = WrapperWithFullscreenContext(
-      <ReadMoreWrapper isTruncated={false} hideButton={jest.fn()}>
-        <Sections article={StandardArticle} />
-      </ReadMoreWrapper>
-    )
-    const viewer = mount(readMore)
+    readMoreProps.isTruncated = false
+    const viewer = getWrapper(readMoreProps, sectionsProps)
     jest.runAllTimers()
+
     expect(viewer.childAt(0).instance().state.truncationHeight).toEqual("100%")
     expect(
       viewer
@@ -53,7 +93,7 @@ describe("ReadMore", () => {
   })
 
   it("calls hideButton when truncation is too small", () => {
-    const smallArticle = extend({}, StandardArticle, {
+    sectionsProps.article = extend({}, StandardArticle, {
       sections: [
         {
           type: "text",
@@ -61,17 +101,11 @@ describe("ReadMore", () => {
         },
       ],
     })
-    const hideButton = jest.fn()
-    const readMore = WrapperWithFullscreenContext(
-      <ReadMoreWrapper isTruncated hideButton={hideButton}>
-        WrapperWithFullscreenContext(<Sections article={smallArticle} />)
-      </ReadMoreWrapper>
-    )
-    const viewer = mount(readMore)
+    const viewer = getWrapper(readMoreProps, sectionsProps)
       .childAt(0)
       .instance()
     jest.runAllTimers()
     expect(viewer.state.truncationHeight).toEqual("100%")
-    expect(hideButton).toBeCalled()
+    expect(readMoreProps.hideButton).toBeCalled()
   })
 })

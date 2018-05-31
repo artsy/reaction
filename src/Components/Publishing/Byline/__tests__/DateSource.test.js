@@ -19,6 +19,23 @@ describe("DateSource", () => {
     expect(component.text()).toMatch("Child source")
   })
 
+  it("Renders a source with link", () => {
+    const article = extend(cloneDeep(NewsArticle))
+    const component = mount(<DateSource article={NewsArticle} />)
+
+    expect(component.text()).toMatch("via")
+    expect(component.text()).toMatch("The New York Times")
+    expect(component.html()).toMatch('href="http://nytimes.com"')
+  })
+
+  it("Renders a source with title only", () => {
+    const article = extend(cloneDeep(NewsArticle), { news_source: { title: "The New York Times" } })
+    const component = mount(<DateSource article={article} />)
+
+    expect(component.find('a').length).toBe(0)
+    expect(component.text()).toContain("via The New York Times")
+  })
+
   it("does not render unnecessary text if it doesn't have a source", () => {
     const article = extend(cloneDeep(NewsArticle), { news_source: {} })
     const component = mount(<DateSource article={article} />)

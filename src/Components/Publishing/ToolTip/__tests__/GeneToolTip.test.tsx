@@ -46,8 +46,11 @@ describe("GeneTooltip", () => {
       }
       const component = getWrapper({ gene }, context)
       component.find(FollowGeneButton).simulate("click")
+      const args = context.onOpenAuthModal.mock.calls[0]
 
-      expect(context.onOpenAuthModal).toBeCalledWith("register")
+      expect(args[0]).toBe("register")
+      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].intent).toBe("follow gene")
     })
   })
 })

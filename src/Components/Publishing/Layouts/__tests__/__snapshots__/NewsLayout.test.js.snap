@@ -212,6 +212,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   opacity: 1;
 }
 
+.c12 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c12 p,
 .c12 ul,
 .c12 ol,
@@ -291,7 +297,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c12 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c12 h3 {
@@ -1121,6 +1127,12 @@ exports[`News Layout renders the news layout properly 1`] = `
   opacity: 1;
 }
 
+.c12 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c12 p,
 .c12 ul,
 .c12 ol,
@@ -1200,7 +1212,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c12 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+  background-position: bottom !important;
 }
 
 .c12 h3 {

@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
-.c2 {
-  width: 240px;
-}
-
-.c2 a:hover {
-  color: black;
-}
-
 .c10 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -19,8 +11,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 
 .c10 a {
   color: #cccccc;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   border-bottom: 1px solid #e5e5e5;
   line-height: 1em;
 }
@@ -30,7 +20,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   font-size: 15px;
   line-height: 1.25em;
   -webkit-font-smoothing: antialiased;
-  margin: 10px 0;
+  padding-bottom: 10px;
 }
 
 .c6 p,
@@ -72,11 +62,20 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   color: white;
 }
 
+.c2 {
+  width: 240px;
+}
+
+.c2 a:hover {
+  color: black;
+}
+
 .c3 {
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
+  padding-bottom: 10px;
 }
 
 .c5 {
@@ -85,11 +84,12 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   line-height: 1.4em;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  padding-bottom: 10px;
 }
 
 .c4 {
   width: 100%;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   max-height: 160px;
   object-fit: cover;
 }
@@ -179,7 +179,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
           <div
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<span><span><p><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —Gerhard Richter</em></p><p>Capitalist Realism was launched in 1963 in Germany by the artists Gerhard Richter, Sigmar Polke, and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of Pop Art, with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of Socialist Realism. The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</p></span></span>",
+                "__html": "<span><span><em>“Capitalist Realism was another form of provocation. This term somehow attacked both sides: It made Socialist Realism look ridiculous, and did the same to the possibility of Capitalist Realism as well.” —Gerhard Richter</em>Capitalist Realism was launched in 1963 in Germany by the artists Gerhard Richter, Sigmar Polke, and Konrad Lueg (later to become the dealer Konrad Fischer) not as a movement, but rather as a send-up. Its most iconic expression was a performance titled “Living with Pop – A Demonstration for Capitalist Realism,” orchestrated by Richter and Lueg in the Berges department store in Dusseldorf that same year. The artists invited patrons to come view “what is hailed in America as the greatest breakthrough in art since Cubism,” as an advertisement for the event proclaimed. Puzzled visitors arrived to find the artists making themselves at home in a staged and decidedly average living room (Richter was reading a mystery novel). Of course Capitalist Realism had no such reputation in the U.S.; the artists were parodying the overnight ascendance of Pop Art, with its celebrity culture and embrace of everyday commodities, as well as the German craze for all things American. Against the backdrop of the Cold War and a divided Germany, the fake movement’s title also alluded to the Soviet doctrine of Socialist Realism. The concerns of so-called Capitalist Realism—heavy-handed irony, investigation of the political aspects of consumerism, and critique of popular culture—have been seen by some as predecessors to a German strain of Pop Art, though the existence thereof is, itself, debatable.</span></span>",
               }
             }
           />
@@ -216,10 +216,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
-.c2 {
-  width: 320px;
-}
-
 .c11 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -230,8 +226,6 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 .c11 a {
   color: #cccccc;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   border-bottom: 1px solid #e5e5e5;
   line-height: 1em;
 }
@@ -241,7 +235,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   font-size: 15px;
   line-height: 1.25em;
   -webkit-font-smoothing: antialiased;
-  margin: 10px 0;
+  padding-bottom: 10px;
 }
 
 .c10 p,
@@ -283,6 +277,10 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: white;
 }
 
+.c2 {
+  width: 320px;
+}
+
 .c3 {
   position: relative;
 }
@@ -297,6 +295,14 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: black;
 }
 
+.c3 .file__MarketDataSummaryContainer-yu39to-0 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  padding-bottom: 10px;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -309,6 +315,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .c6 {
@@ -447,7 +454,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
             <div
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "<span><span><p>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of silkscreen prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</p></span></span>",
+                  "__html": "<span><span>Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of silkscreen prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.</span></span>",
                 }
               }
             />

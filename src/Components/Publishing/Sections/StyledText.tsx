@@ -8,7 +8,7 @@ import Colors from "Assets/Colors"
 
 interface StyledTextProps {
   color?: string
-  isContentStart: boolean
+  isContentStart?: boolean
   layout: ArticleLayout
   postscript?: Boolean
   showTooltips?: boolean
@@ -54,6 +54,11 @@ export const StyledText = div`
         props.color === "black" ? Colors.grayDark : props.color};
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
+  }
+  div[class*='ToolTip'] a {
+    background-image: none;
+    opacity: 1;
+    color: inherit;
   }
   p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
@@ -108,7 +113,7 @@ export const StyledText = div`
       background-size: 1.25px 1px;
     }
     ${PrimaryLink} {
-      background-position: bottom;
+      background-position: bottom !important;
     }
   }
   h3 {

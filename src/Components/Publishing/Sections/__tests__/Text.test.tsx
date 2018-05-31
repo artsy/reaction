@@ -106,5 +106,14 @@ describe("Text", () => {
 
       expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
     })
+
+    it("Does not render for empty links", () => {
+      props.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a></p>`
+      props.layout = "standard"
+      props.showTooltips = true
+      const wrapper = mount(getWrapper(props))
+
+      expect(wrapper.find(LinkWithTooltip)).toHaveLength(0)
+    })
   })
 })
