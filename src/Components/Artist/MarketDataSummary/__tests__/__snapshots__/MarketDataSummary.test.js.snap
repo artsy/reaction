@@ -25,5 +25,3 @@ exports[`MarketDataSummary snapshots renders correctly 1`] = `
   </div>
 </div>
 `;
-
-exports[`MarketDataSummary snapshots renders correctly with genes 1`] = `null`;
