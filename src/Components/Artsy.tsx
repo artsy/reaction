@@ -2,13 +2,15 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Environment } from "relay-runtime"
 import { createEnvironment } from "../Relay/createEnvironment"
+import { Router } from "../Router/types"
 
 // TODO: Once this PR for `rest` https://github.com/Microsoft/TypeScript/pull/13470 lands
 // we’ll be able to not make this optional and simply remove it from the props that a
 // component wrapped with the `ContextConsumer` HOC accepts.
 
 /**
- * The Artsy specific props injected by the higher-order component produced by `ContextConsumer`.
+ * The Artsy specific props injected by the higher-order component produced
+ * by `ContextConsumer`.
  *
  * @see {@link ContextProvider}
  * @see {@link ContextConsumer}
@@ -18,17 +20,25 @@ export interface ContextProps {
   /**
    * The currently signed-in user.
    *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID` and `USER_ACCESS_TOKEN` environment
-   * variables if available.
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   currentUser?: User | null
 
   /**
-   * A configured environment object that can be used for any Relay operations  that need an environment object.
+   * A configured environment object that can be used for any Relay operations
+   * that need an environment object.
    *
-   * If none is provided to the `ContextProvider` then one is created, using the `currentUser` if available.
+   * If none is provided to the `ContextProvider` then one is created, using
+   * the `currentUser` if available.
    */
   relayEnvironment?: Environment
+
+  /**
+   * Provides top-level route config and route resolution if utilizing routing
+   * features (see src/Router).
+   */
+  reactionRouter?: Router
 }
 
 interface PrivateContextProps extends ContextProps {
@@ -42,11 +52,16 @@ const ContextTypes: React.ValidationMap<PrivateContextProps> = {
   _isNestedInProvider: PropTypes.bool,
   currentUser: PropTypes.object,
   relayEnvironment: PropTypes.object,
+  reactionRouter: PropTypes.shape({
+    routes: PropTypes.array.isRequired,
+    resolver: PropTypes.object.isRequired,
+  }),
 }
 
 /**
- * This component provides Artsy specific context props to components down the tree. Components that wish to consume
- * these props should be wrapped with the `ContextConsumer` higher-order component.
+ * This component provides Artsy specific context props to components down the
+ * tree. Components that wish to consume these props should be wrapped with the
+ * `ContextConsumer` higher-order component.
  *
  * @see {@link ContextConsumer}
  */
@@ -56,6 +71,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
 
   private currentUser: User | null
   private relayEnvironment: Environment
+  private reactionRouter: Router
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
     if (React.Children.count(props.children) > 1) {
@@ -74,7 +90,9 @@ export class ContextProvider extends React.Component<ContextProps, null>
     }
 
     this.relayEnvironment =
-      props.relayEnvironment || createEnvironment(this.currentUser)
+      props.relayEnvironment || createEnvironment({ user: this.currentUser })
+
+    this.reactionRouter = props.reactionRouter
   }
 
   getChildContext() {
@@ -82,6 +100,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
       _isNestedInProvider: true,
       currentUser: this.currentUser,
       relayEnvironment: this.relayEnvironment,
+      reactionRouter: this.reactionRouter,
     }
   }
 
@@ -91,8 +110,9 @@ export class ContextProvider extends React.Component<ContextProps, null>
 }
 
 /**
- * Wraps a component in a higher-order component that injects the Artsy specific context props into the given component.
- * Wrapped components are expected to be rendered in a tree that contains a `ContextProvider` component.
+ * Wraps a component in a higher-order component that injects the Artsy
+ * specific context props into the given component. Wrapped components are
+ * expected to be rendered in a tree that contains a `ContextProvider` component.
  *
  * The injected props are described in `ContextProps`.
  *
@@ -120,8 +140,13 @@ export function ContextConsumer<P>(
     }
 
     render() {
-      const { currentUser, relayEnvironment } = this.context
-      const props = Object.assign({ currentUser, relayEnvironment }, this.props)
+      const { currentUser, relayEnvironment, reactionRouter } = this.context
+
+      const props = Object.assign(
+        { currentUser, reactionRouter, relayEnvironment },
+        this.props
+      )
+
       return <Component {...props} />
     }
   }

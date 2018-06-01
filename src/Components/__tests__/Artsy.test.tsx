@@ -4,8 +4,10 @@ import renderer from "react-test-renderer"
 import "jest-styled-components"
 
 jest.mock("../../Relay/createEnvironment", () => ({
-  createEnvironment: (user: User) => ({
-    description: `A mocked env for ${user ? user.id : "no-current-user"}`,
+  createEnvironment: (config: { user: User }) => ({
+    description: `A mocked env for ${
+      config.user ? config.user.id : "no-current-user"
+    }`,
   }),
 }))
 
@@ -122,12 +124,14 @@ describe("Artsy context", () => {
   })
 
   it("throws an error when not embedded in a context provider", () => {
+    global.console.error = jest.fn()
     expect(() => {
       renderer.create(<WithCurrentUser />)
     }).toThrowErrorMatchingSnapshot()
   })
 
   it("throws an error when trying to embed more than a single child in a context provider", () => {
+    global.console.error = jest.fn()
     expect(() => {
       renderer.create(
         <Artsy.ContextProvider>

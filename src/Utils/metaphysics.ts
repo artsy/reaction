@@ -1,3 +1,6 @@
+// TODO: Deprecated in favor of react-relay-network-modern, need to remove.
+// See `Relay/createEnvironment` for new implementation.
+
 import "isomorphic-fetch"
 import * as sharify from "sharify"
 import { NetworkError } from "./errors"

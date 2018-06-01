@@ -19,6 +19,7 @@
   "peerDependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
     "styled-components": "^2 || ^3"
   },
   "scripts": {
@@ -84,6 +85,8 @@
     "@types/storybook__react": "^3.0.5",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.0-beta.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/babel-plugin-relay-1.5.0-artsy.3.tgz",
     "babel-plugin-styled-components": "^1.5.0",
@@ -98,6 +101,7 @@
     "fork-ts-checker-notifier-webpack-plugin": "^0.2.0",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
     "graphql-config-parser": "^1.2.1",
+    "graphql-fetch-schema": "^0.8.0",
     "husky": "^0.13.4",
     "jest": "^22.1.4",
     "jest-styled-components": "^4.11.0-1",
@@ -121,14 +125,19 @@
     "tslint-react": "^2.4.0",
     "typescript": "^2.6.2",
     "typescript-styled-plugin": "^0.1.2",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "farce": "^0.2.6",
     "formik": "^0.11.11",
+    "found": "^0.3.11",
+    "found-relay": "^0.3.0-alpha.13",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonp": "^0.2.1",
+    "loadable-components": "^2.2.2",
     "lodash": "^4.17.4",
     "moment-timezone": "^0.5.13",
     "numeral": "^2.0.4",
@@ -141,16 +150,19 @@
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz",
+    "react-relay-network-modern": "^2.3.1",
+    "react-relay-network-modern-ssr": "^1.1.2",
     "react-responsive-decorator": "^0.0.1",
-    "react-router": "4.1.1",
-    "react-sizeme": "^2.3.2",
+    "react-router": "^4.2.0",
+    "react-sizeme": "^2.4.4",
     "react-slick": "^0.14.11",
-    "react-styled-flexboxgrid": "^2.0.0",
+    "react-styled-flexboxgrid": "^2.2.0",
     "react-tracking": "^4.2.1",
     "react-transition-group": "^2.3.0",
     "react-url-query": "^1.1.4",
     "react-waypoint": "^7.3.3",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
+    "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
     "superagent": "^3.6.3",
     "url": "^0.11.0",
@@ -183,6 +195,10 @@
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/*"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/src"
     ],
     "setupFiles": [
       "raf/polyfill",
