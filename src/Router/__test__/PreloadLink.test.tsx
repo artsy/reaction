@@ -138,7 +138,7 @@ const defaultProps = {
     createLocation: jest.fn(),
     matcher: {
       getRoutes: jest.fn(),
-      match: jest.fn(),
+      match: jest.fn(() => true),
     },
   },
   store: {

@@ -1,7 +1,6 @@
 import { ComponentType } from "react"
 import { RouteConfig } from "found"
 import { ContextProps } from "../Components/Artsy"
-import * as Found from "found"
 
 type ReactComponent = ComponentType<any>
 
@@ -34,13 +33,13 @@ export interface AppShellProps {
   provide?: ContextProps
 }
 
-export interface PreloadLinkProps extends ContextProps, Found.WithRouter {
+export interface PreloadLinkProps extends ContextProps {
+  children?: any
   immediate?: boolean
-  onToggleLoading: (isLoading: boolean) => void
+  onToggleLoading?: (isLoading: boolean) => void
+  router?: any // TODO
   replace?: string
   to?: string
-  children: any
-  render?: (renderProps: PreloadLinkState) => ReactComponent
 }
 
 export interface PreloadLinkState {

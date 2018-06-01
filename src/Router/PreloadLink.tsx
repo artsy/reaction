@@ -54,6 +54,11 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
       const { getRouteMatches, getRouteValues } = Found.ResolverUtils
       const location = router.createLocation(to)
       const match = router.matcher.match(location)
+
+      if (!match) {
+        return
+      }
+
       const routes = router.matcher.getRoutes(match)
       const augmentedMatch = { ...match, routes }
       const routeMatches = getRouteMatches(augmentedMatch)
@@ -82,11 +87,14 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
     }
 
     fetchData() {
-      const { query, cacheConfig, routeVariables } = this.getRouteQuery()
-      const { relayEnvironment } = this.props
-
       return new Promise(async (resolve, reject) => {
-        const missingEnvironmentOrQuery = !(relayEnvironment && query)
+        const { relayEnvironment } = this.props
+        const routeQuery = this.getRouteQuery()
+        const missingEnvironmentOrQuery = !(
+          relayEnvironment &&
+          routeQuery &&
+          routeQuery.query
+        )
 
         if (missingEnvironmentOrQuery) {
           return resolve()
@@ -94,6 +102,7 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
 
         try {
           this.toggleLoading(true)
+          const { query, cacheConfig, routeVariables } = routeQuery
           await fetchQuery(relayEnvironment, query, routeVariables, cacheConfig)
           resolve()
 

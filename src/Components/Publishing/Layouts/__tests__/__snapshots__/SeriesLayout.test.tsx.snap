@@ -1727,11 +1727,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.hJeLkf .c14 {
+.cxLUmf .c14 {
   margin-bottom: 90px;
 }
 
-.hJeLkf .c39 {
+.cxLUmf .c39 {
   padding-top: 60px;
 }
 
@@ -2027,7 +2027,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .hJeLkf .c39 {
+  .cxLUmf .c39 {
     padding-top: 60px;
   }
 }
