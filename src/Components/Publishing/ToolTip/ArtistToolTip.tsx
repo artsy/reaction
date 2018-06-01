@@ -64,6 +64,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       onOpenAuthModal,
     } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
+
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
 
     const trackingData: FollowTrackingData = {
@@ -79,12 +80,9 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
           {images && (
             <Images href={href} onClick={this.trackClick}>
               {images.map((img, i) => (
-                <img
-                  key={i}
-                  src={img.__id}
-                  width={img.width}
-                  height={img.height}
-                />
+                <div key={i}>
+                  <img src={img.__id} />
+                </div>
               ))}
             </Images>
           )}
@@ -166,6 +164,13 @@ const Images = styled.a`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  div:first-child {
+    margin-right: 15px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
 `
 
 export const ArtistTooltipContainer = track()(
