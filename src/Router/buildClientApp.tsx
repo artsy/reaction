@@ -20,7 +20,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
-        user: sd.CURRENT_USER,
+        user: (sd as any).CURRENT_USER, // FIXME: https://github.com/artsy/reaction/pull/704#pullrequestreview-12508005
       })
 
       const getHistoryProtocol = () => {

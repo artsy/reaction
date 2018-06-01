@@ -31,7 +31,7 @@ export interface AppShellProps {
   loadableState?: {
     getScriptTag: () => string
   }
-  data?: Object[]
+  data?: Array<object>
   provide?: ContextProps
 }
 
