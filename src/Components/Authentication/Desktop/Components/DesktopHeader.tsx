@@ -1,10 +1,9 @@
 import React, { SFC } from "react"
 import styled from "styled-components"
-import Text from "../Text"
-import Icon from "../Icon"
-import { DesktopModalProps } from "./DesktopModal"
+import Text from "Components/Text"
+import Icon from "Components/Icon"
 
-export const DesktopHeader: SFC<DesktopModalProps> = props => {
+export const DesktopHeader: SFC<{ subtitle?: string }> = props => {
   const subtitle = props.subtitle || "The Art World Online"
   return (
     <Header>

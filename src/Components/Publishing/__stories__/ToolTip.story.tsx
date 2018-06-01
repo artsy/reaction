@@ -4,6 +4,7 @@ import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
 import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { ContextProvider } from "Components/Artsy"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
 
 storiesOf("Publishing/ToolTips/Artist", module)
   .add("With Bio", () => {
@@ -11,7 +12,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
       <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>
         <ContextProvider>
           <TooltipsData article={StandardArticle}>
-            <p>
+            <StyledText layout="standard">
               <LinkWithTooltip url="https://artsy.net/artist/fra-angelico">
                 Fra Angelico
               </LinkWithTooltip>
@@ -23,7 +24,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
               <LinkWithTooltip url="https://artsy.net/artist/alfred-stieglitz">
                 Alfred Stieglitz
               </LinkWithTooltip>
-            </p>
+            </StyledText>
           </TooltipsData>
         </ContextProvider>
       </div>
@@ -34,7 +35,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
       <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>
         <ContextProvider>
           <TooltipsData article={StandardArticle}>
-            <p>
+            <StyledText layout="standard">
               <LinkWithTooltip
                 url="https://artsy.net/artist/fra-angelico"
                 showMarketData
@@ -55,7 +56,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
               >
                 Alfred Stieglitz
               </LinkWithTooltip>
-            </p>
+            </StyledText>
           </TooltipsData>
         </ContextProvider>
       </div>
@@ -66,7 +67,7 @@ storiesOf("Publishing/ToolTips/Gene", module).add("Gene", () => {
     <div style={{ maxWidth: 580, margin: "50px auto" }}>
       <ContextProvider>
         <TooltipsData article={StandardArticle}>
-          <p>
+          <StyledText layout="standard">
             <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
               Art Nouveau
             </LinkWithTooltip>
@@ -74,7 +75,7 @@ storiesOf("Publishing/ToolTips/Gene", module).add("Gene", () => {
             <LinkWithTooltip url="https://artsy.net/gene/art-deco">
               Art Deco
             </LinkWithTooltip>
-          </p>
+          </StyledText>
         </TooltipsData>
       </ContextProvider>
     </div>

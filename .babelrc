@@ -27,8 +27,10 @@
       "extensions": [".js", ".jsx", ".ts", ".tsx"],
       "root": ["./src"],
       "alias": {
-        "Assets": "./src/Assets"
+        "Assets": "./src/Assets",
+        "Components": "./src/Components"
       }
-    }]
+    }],
+    "lodash"
   ]
 }

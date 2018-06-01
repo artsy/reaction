@@ -1,4 +1,4 @@
-import { flatten } from "lodash"
+import { cloneDeep, extend, flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
@@ -153,6 +153,14 @@ export const UnitCanvasOverlay = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
+export const UnitCanvasTracked = extend(cloneDeep(UnitCanvasOverlay), {
+  pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+  link: {
+    text: "",
+    url: "https://artsy.net?ord=[timestamp]",
+  },
+})
+
 export const UnitCanvasImage = {
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
@@ -244,6 +252,13 @@ export const UnitPanel = {
     url: "http://artsy.net",
   },
 }
+export const UnitPanelTracked = extend(cloneDeep(UnitPanel), {
+  link: {
+    text: "",
+    url: "https://artsy.net?ord=[timestamp]",
+  },
+  pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+})
 
 export const UnitPanelVideo = {
   headline: "Euismod Inceptos Quam",
@@ -691,60 +706,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "modern",
-                  },
-                  {
-                    id: "painting",
-                  },
-                  {
-                    id: "blue-chip",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: {
-        edges: [
-          {
-            node: {
-              price_realized: {
-                display: "$63,312,500",
-              },
-            },
-          },
-        ],
-      },
       genes: [
         {
           name: "United States",
@@ -816,38 +777,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "painting",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: null,
       genes: [],
     },
   },
@@ -880,16 +809,12 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: null,
-      highlights: {
-        partners: {
-          edges: [],
-        },
-      },
-      auctionResults: null,
       genes: [
         {
           name: "Emerging Art",
+        },
+        {
+          name: "Brooklyn Artists",
         },
       ],
     },
@@ -979,50 +904,6 @@ export const Artists: ArtistToolTipProps[] = [
           },
         ],
       },
-      collections: ["Tate", "Museum of Modern Art (MoMA)"],
-      highlights: {
-        partners: {
-          edges: [
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "blue-chip",
-                  },
-                ],
-              },
-            },
-            {
-              node: {
-                categories: [
-                  {
-                    id: "contemporary",
-                  },
-                  {
-                    id: "established",
-                  },
-                  {
-                    id: "modern",
-                  },
-                  {
-                    id: "prints-and-multiples",
-                  },
-                  {
-                    id: "top-established",
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      auctionResults: null,
       genes: [],
     },
   },

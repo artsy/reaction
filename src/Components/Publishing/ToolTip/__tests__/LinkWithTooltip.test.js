@@ -6,7 +6,7 @@ import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { ContextProvider } from "../../../Artsy"
-import { Link, LinkWithTooltip, Background } from "../LinkWithTooltip"
+import { Link, LinkWithTooltip, PrimaryLink, Background } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
 jest.mock("../../../../Utils/track.ts", () => ({
@@ -137,6 +137,32 @@ describe("LinkWithTooltip", () => {
     expect(tracking.type).toBe("intext tooltip")
   })
 
+  it("Tracks click events", () => {
+    context.activeToolTip = null
+    const wrapper = getWrapper(context, props)
+    wrapper.find(PrimaryLink).simulate("click")
+    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(tracking.action).toBe("Click")
+    expect(tracking.flow).toBe("tooltip")
+    expect(tracking.type).toBe("artist stub")
+    expect(tracking.context_module).toBe("intext tooltip")
+    expect(tracking.destination_path).toBe("/artist/nick-mauss")
+  })
+
+  it("Tracks click events from hover background", () => {
+    context.activeToolTip = "nick-mauss"
+    const wrapper = getWrapper(context, props)
+    wrapper.find(Background).simulate("click")
+    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+
+    expect(tracking.action).toBe("Click")
+    expect(tracking.flow).toBe("tooltip")
+    expect(tracking.type).toBe("artist stub")
+    expect(tracking.context_module).toBe("intext tooltip")
+    expect(tracking.destination_path).toBe("/artist/nick-mauss")
+  })
+
   it("Sets tooltip position on mount", () => {
     const wrapper = getWrapper(context, props)
       .childAt(0)
@@ -212,42 +238,52 @@ describe("LinkWithTooltip", () => {
   })
 
   describe("#getToolTipPosition", () => {
-    it("Returns a position for artist links", () => {
+    it("Returns tooltip position for artist links", () => {
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("artist")).toBe(-116.3203125)
+      expect(wrapper.getToolTipPosition("artist").toolTipLeft).toBe(-116.3203125)
     })
 
-    it("Returns a position for gene links", () => {
+    it("Returns tooltip position for gene links", () => {
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("gene")).toBe(-76.3203125)
+      expect(wrapper.getToolTipPosition("gene").toolTipLeft).toBe(-76.3203125)
     })
 
-    it("Returns a position for artist links at left window boundary", () => {
+    it("Returns tooltip and arrow position for artist links at left window boundary", () => {
       position.x = 80
+      position.width = 100
+      position.left = 60
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("artist")).toBe(-70)
+      const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("artist")
+
+      expect(toolTipLeft).toBe(-70)
+      expect(arrowLeft).toBe("60px")
     })
 
     it("Returns a position for gene links at left window boundary", () => {
       position.x = 80
+      position.width = 100
+      position.left = 60
       const wrapper = getWrapper(context, props)
         .childAt(0)
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("gene")).toBe(-70)
+      const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("gene")
+
+      expect(toolTipLeft).toBe(-70)
+      expect(arrowLeft).toBe("60px")
     })
   })
 })

@@ -62,8 +62,11 @@ describe("FollowArtistButton", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(props)
       component.find(FollowButton).simulate("click")
+      const args = props.onOpenAuthModal.mock.calls[0]
 
-      expect(props.onOpenAuthModal.mock.calls[0][0]).toBe("register")
+      expect(args[0]).toBe("register")
+      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].intent).toBe("follow artist")
     })
 
     it("Follows an artist if current user", () => {

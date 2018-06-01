@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Icon from "../Icon"
-import Modal, { ModalProps } from "../Modal/Modal"
-import { ModalType } from "./Types"
+import Icon from "Components/Icon"
+import Modal, { ModalProps } from "Components/Modal/Modal"
+import { ModalType } from "Components/Authentication/Types"
 import Colors from "Assets/Colors"
 import { DesktopHeader } from "./DesktopHeader"
 

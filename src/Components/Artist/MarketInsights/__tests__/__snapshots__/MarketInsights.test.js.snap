@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarketInsights snapshots renders correctly 1`] = `
+.c5 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  color: #666666;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  display: inline-block;
+  position: relative;
+  cursor: help;
+  margin: 0 0.5em;
+  width: 14px;
+  height: 14px;
+  margin-bottom: -2px;
+}
+
+.c3:before {
+  display: block;
+  top: 0;
+  left: 0;
+  position: absolute;
+  content: "";
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+}
+
+.c3:hover:before {
+  visibility: hidden;
+}
+
+.c3:hover:after {
+  opacity: 1;
+  z-index: 3;
+  visibility: visible;
+}
+
+.c3:after {
+  display: block;
+  top: 0;
+  bottom: inherit;
+  left: 0;
+  right: inherit;
+  position: absolute;
+  visibility: hidden;
+  text-align: left;
+  z-index: 1;
+  margin: -10px 0 0 -10px;
+  width: 300px;
+  color: #666666;
+  font-weight: normal;
+  background-color: white;
+  padding: 20px;
+  opacity: 0;
+  margin: 0;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  border: 1px solid #e5e5e5;
+  content: "Blue chip galleries have multiple locations internationally and participate in major art fairs.";
+}
+
+.c0 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.c1 {
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  padding: 20px;
+  text-align: center;
+}
+
+.c1 > div {
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.c4 {
+  color: #666666;
+  padding: 8px 0;
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+}
+
+.c4 a {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+}
+
+.c2 {
+  display: inline-block;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div>
+      $63m
+       auction record
+    </div>
+    <div>
+      <div>
+        Represented by blue chip galleries
+         
+        <div
+          className="c2"
+        >
+          <div
+            className="c3"
+          >
+            <span
+              style={
+                Object {
+                  "verticalAlign": "text-top",
+                }
+              }
+            >
+              <svg
+                className="icon__help"
+                height="17px"
+                viewBox="0 0 17 17"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                  transform="translate(-554.000000, -945.000000)"
+                >
+                  <g
+                    transform="translate(555.000000, 946.000000)"
+                  >
+                    <circle
+                      cx="7.5"
+                      cy="7.5"
+                      fill="#FFFFFF"
+                      r="7.5"
+                      stroke="#666666"
+                    />
+                    <path
+                      d="M7.91666667,11.125 L7.91666667,9.94078947 L6.73245614,9.94078947 L6.73245614,11.125 L7.91666667,11.125 Z M7.79605263,9.04166667 L7.79605263,8.85526316 C7.79605263,7.12280702 10,6.82675439 10,5.06140351 C10,3.67982456 8.80482456,3 7.60964912,3 C6.32675439,3 5.01096491,3.82236842 5,5.46710526 L6.05263158,5.46710526 C6.05263158,4.29385965 6.80921053,3.82236842 7.54385965,3.82236842 C8.25657895,3.82236842 8.88157895,4.22807018 8.88157895,5.07236842 C8.88157895,5.52192982 8.62938596,5.96052632 8.16885965,6.35526316 C7.03947368,7.34210526 6.85307018,7.70394737 6.82017544,8.84429825 L6.82017544,9.04166667 L7.79605263,9.04166667 Z"
+                      fill="#666666"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      Collected by major museums
+    </div>
+  </div>
+  <div
+    className="c4"
+  >
+    Generated using partial data. 
+    <a
+      className="c5"
+      href="mailto:productfeedback@artsy.net?subject=Feedback on \\"About the Artist\\" information"
+      target="_self"
+    >
+      Tell us what you think.
+    </a>
+  </div>
+</div>
+`;

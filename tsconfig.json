@@ -16,14 +16,10 @@
     "rootDir": "src",
     "target": "es2015",
     "paths": {
-      "Assets/*": ["./Assets/*"]
+      "Assets/*": ["./Assets/*"],
+      "^Components/*": ["./Components/*"]
     }
   },
-  "include": [
-    "node_modules/styled-components/typings/styled-components.d.ts",
-    "typings/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
+  "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "data", "externals", "danger"]
 }

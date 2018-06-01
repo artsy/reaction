@@ -1,8 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { AuthenticationForm } from "../Authentication/AuthenticationForm"
-import { DesktopModal } from "../Authentication/DesktopModal"
+import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
+import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
+import { ModalType } from "../Authentication/Types"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -16,18 +17,18 @@ const close = () => {
 }
 
 storiesOf("Components/Authentication/Desktop", module)
-  .add("Login Mode", () => (
+  .add("Login", () => (
     <DesktopModal show onClose={close}>
-      <AuthenticationForm type="login" handleSubmit={submit} />
+      <FormSwitcher type={ModalType.login} handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <AuthenticationForm type="reset_password" handleSubmit={submit} />
+      <FormSwitcher type={ModalType.resetPassword} handleSubmit={submit} />
     </DesktopModal>
   ))
-  .add("Register Mode", () => (
+  .add("Sign Up", () => (
     <DesktopModal show onClose={close}>
-      <AuthenticationForm type="signup" handleSubmit={submit} />
+      <FormSwitcher type={ModalType.signup} handleSubmit={submit} />
     </DesktopModal>
   ))

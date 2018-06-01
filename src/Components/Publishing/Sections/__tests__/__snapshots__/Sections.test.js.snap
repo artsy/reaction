@@ -419,6 +419,12 @@ exports[`Sections snapshots renders properly 1`] = `
   opacity: 1;
 }
 
+.c2 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c2 p,
 .c2 ul,
 .c2 ol,
@@ -497,8 +503,8 @@ exports[`Sections snapshots renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c2 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+.c2 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+  background-position: bottom !important;
 }
 
 .c2 h3 {
@@ -1204,13 +1210,13 @@ exports[`Sections snapshots renders properly 1`] = `
                         <span
                           className="title"
                         >
-                          <file__StyledTextLink
+                          <TextLink__StyledTextLink
                             color="#999"
                             href="/artwork/matt-devine-brass-tax"
                             underline={false}
                           >
                             Brass Tax
-                          </file__StyledTextLink>
+                          </TextLink__StyledTextLink>
                         </span>
                         <span>
                           , 
@@ -1228,13 +1234,13 @@ exports[`Sections snapshots renders properly 1`] = `
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": <span>
-                        <file__StyledTextLink
+                        <TextLink__StyledTextLink
                           color="#999"
                           href="/joanne-artman-gallery"
                           underline={false}
                         >
                           Joanne Artman Gallery
-                        </file__StyledTextLink>
+                        </TextLink__StyledTextLink>
                         <span>
                           . 
                         </span>

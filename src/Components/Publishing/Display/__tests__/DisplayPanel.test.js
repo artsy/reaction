@@ -1,7 +1,12 @@
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Campaign, UnitPanel, UnitPanelVideo } from "../../Fixtures/Components"
+import {
+  Campaign,
+  UnitPanel,
+  UnitPanelTracked,
+  UnitPanelVideo,
+} from "../../Fixtures/Components"
 import { DisplayPanel } from "../DisplayPanel"
 import { cloneDeep } from "lodash"
 import { mount } from "enzyme"
@@ -46,7 +51,7 @@ describe("snapshots", () => {
 describe("units", () => {
   const getWrapper = (props = {}) => {
     const { isVideo = false, ...rest } = props
-    let unit = UnitPanel
+    let unit = props.unit || UnitPanel
 
     if (isVideo) {
       unit = cloneDeep(UnitPanel)
@@ -60,6 +65,7 @@ describe("units", () => {
         tracking={{
           trackEvent: jest.fn(),
         }}
+        renderTime="12345"
         {...rest}
       />
     )
@@ -85,6 +91,13 @@ describe("units", () => {
         spy,
       }
     }
+
+    it("renders a pixel impression if there is a url", () => {
+      const wrapper = getWrapper({
+        unit: UnitPanelTracked,
+      })
+      expect(wrapper.html()).toMatch("impression?ord=12345")
+    })
 
     it("tracks impressions", () => {
       const { wrapper, instance, spy } = getTracker()
@@ -171,21 +184,6 @@ describe("units", () => {
           label: "Display ad play video",
         })
       )
-    })
-
-    it("calls renderPixelTracker with a unit object", () => {
-      const spy = jest.fn()
-      const displayPanel = renderer.create(
-        <DisplayPanel
-          unit={UnitPanelVideo}
-          campaign={Campaign}
-          tracking={{
-            trackEvent: jest.fn(),
-          }}
-          renderPixelTracker={spy}
-        />
-      )
-      expect(spy).toBeCalledWith(UnitPanelVideo)
     })
   })
 

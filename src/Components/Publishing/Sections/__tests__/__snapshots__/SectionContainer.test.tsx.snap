@@ -32,6 +32,12 @@ exports[`renders column_width properly 1`] = `
   opacity: 1;
 }
 
+.c1 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c1 p,
 .c1 ul,
 .c1 ol,
@@ -110,8 +116,8 @@ exports[`renders column_width properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+  background-position: bottom !important;
 }
 
 .c1 h3 {
@@ -308,6 +314,12 @@ exports[`renders fillwidth properly 1`] = `
   opacity: 1;
 }
 
+.c1 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c1 p,
 .c1 ul,
 .c1 ol,
@@ -386,8 +398,8 @@ exports[`renders fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+  background-position: bottom !important;
 }
 
 .c1 h3 {
@@ -584,6 +596,12 @@ exports[`renders overflow_fillwidth properly 1`] = `
   opacity: 1;
 }
 
+.c1 div[class*='ToolTip'] a {
+  background-image: none;
+  opacity: 1;
+  color: inherit;
+}
+
 .c1 p,
 .c1 ul,
 .c1 ol,
@@ -662,8 +680,8 @@ exports[`renders overflow_fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .file__PrimaryLink-yu39to-0 {
-  background-position: bottom;
+.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+  background-position: bottom !important;
 }
 
 .c1 h3 {

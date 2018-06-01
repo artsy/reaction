@@ -50,6 +50,7 @@ export class Text extends Component<Props, State> {
       const paragraphs = doc.getElementsByTagName("P")
       const lastParagraph =
         paragraphs.length && paragraphs[paragraphs.length - 1]
+
       if (lastParagraph) {
         // insert content-end in last paragraph
         lastParagraph.innerHTML =
@@ -82,18 +83,20 @@ export class Text extends Component<Props, State> {
 
     if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
       const href = node.attribs.href
-      const text = node.children[0].data
+      const text = node.children[0] && node.children[0].data
       const { showToolTipMarketData } = this.props
 
-      return (
-        <LinkWithTooltip
-          key={href + index}
-          url={href}
-          showMarketData={showToolTipMarketData}
-        >
-          {text}
-        </LinkWithTooltip>
-      )
+      if (text) {
+        return (
+          <LinkWithTooltip
+            key={href + index}
+            url={href}
+            showMarketData={showToolTipMarketData}
+          >
+            {text}
+          </LinkWithTooltip>
+        )
+      }
     }
   }
 

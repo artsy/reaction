@@ -5,12 +5,13 @@ import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
 
-const MarketDataSummaryContainer = styled.div`
+export const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};
 `
 import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
 interface Props extends React.HTMLProps<MarketDataSummary> {
   artist: MarketDataSummary_artist
+  onEmptyText?: string
 }
 
 const Categories = {
@@ -115,6 +116,8 @@ export class MarketDataSummary extends React.Component<Props, null> {
   }
 
   render() {
+    const { onEmptyText } = this.props
+
     if (this.hasSections()) {
       return (
         <MarketDataSummaryContainer>
@@ -122,6 +125,10 @@ export class MarketDataSummary extends React.Component<Props, null> {
           {this.renderGalleryRepresentation()}
           {this.renderPermanentCollection()}
         </MarketDataSummaryContainer>
+      )
+    } else if (onEmptyText) {
+      return (
+        <MarketDataSummaryContainer>{onEmptyText}</MarketDataSummaryContainer>
       )
     }
     return null

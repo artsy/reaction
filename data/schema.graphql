@@ -540,7 +540,7 @@ type Artwork implements Node {
   publisher(format: Format): String
   related(size: Int): [Artwork]
   sale: Sale
-  sale_artwork: SaleArtwork
+  sale_artwork(sale_id: String = null): SaleArtwork
   sale_message: String
   series(format: Format): String
   show(size: Int, active: Boolean, at_a_fair: Boolean, sort: PartnerShowSorts): PartnerShow
@@ -1157,7 +1157,7 @@ type ArtworkItem implements Node {
   publisher(format: Format): String
   related(size: Int): [Artwork]
   sale: Sale
-  sale_artwork: SaleArtwork
+  sale_artwork(sale_id: String = null): SaleArtwork
   sale_message: String
   series(format: Format): String
   show(size: Int, active: Boolean, at_a_fair: Boolean, sort: PartnerShowSorts): PartnerShow
@@ -1442,16 +1442,16 @@ type BidderPositionMaxBid {
   display: String
 }
 
-type BidderPositionMutationResult {
+type BidderPositionPayload {
+  result: BidderPositionResult
+  clientMutationId: String
+}
+
+type BidderPositionResult {
   status: String!
   message_header: String
   message_description_md: String
   position: BidderPosition
-}
-
-type BidderPositionPayload {
-  result: BidderPositionMutationResult
-  clientMutationId: String
 }
 
 type BidderPositionSuggestedNextBid {
@@ -1806,6 +1806,16 @@ type ConversationResponder {
 type coordinates {
   lat: Float
   lng: Float
+}
+
+input CreateBidderInput {
+  sale_id: String!
+  clientMutationId: String
+}
+
+type CreateBidderPayload {
+  bidder: Bidder
+  clientMutationId: String
 }
 
 input CreateGeminiEntryForAssetInput {
@@ -2888,6 +2898,8 @@ enum HomePageArtworkModuleTypes {
   RELATED_ARTISTS
   SAVED_WORKS
   RECENTLY_VIEWED_WORKS
+  SIMILAR_TO_RECENTLY_VIEWED
+  SIMILAR_TO_SAVED_WORKS
 }
 
 type HomePageFairsModule {
@@ -3373,7 +3385,7 @@ type Me implements Node {
   ): [BidderPosition]
 
   # Returns a single bidder position
-  bidder_position(id: String!): BidderPosition
+  bidder_position(id: String!): BidderPositionResult
 
   # A collector profile.
   collector_profile: CollectorProfileType
@@ -3549,6 +3561,9 @@ type MessageInitiator {
 }
 
 type Mutation {
+  # Create a bidder
+  createBidder(input: CreateBidderInput!): CreateBidderPayload
+
   # Creates a bidder position
   createBidderPosition(input: BidderPositionInput!): BidderPositionPayload
 

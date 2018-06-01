@@ -17,7 +17,7 @@ export const ToolTipDescription: React.SFC<Props> = props => {
         <Markdown
           source={text}
           containerTagName="span"
-          disallowedTypes={["Link"]}
+          disallowedTypes={["Link", "Paragraph"]}
           unwrapDisallowed
         />
       </Truncator>
@@ -32,5 +32,5 @@ const Description = styled.div`
     margin: 0;
     ${garamond("s15")};
   }
-  margin: 10px 0;
+  padding-bottom: 10px;
 `
