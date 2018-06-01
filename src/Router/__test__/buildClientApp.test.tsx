@@ -5,9 +5,11 @@ import { mount } from "enzyme"
 describe("buildClientApp", () => {
   const getWrapper = async (props = {}) => {
     const { ClientApp } = await buildClientApp({
+      historyProtocol: "memory",
       routes: [
         {
-          Component: () => <div />,
+          path: "/",
+          Component: () => <div>Hello Route</div>,
         },
       ],
     })
@@ -16,7 +18,7 @@ describe("buildClientApp", () => {
   }
 
   it("resolves with a <ClientApp /> component", async () => {
-    expect((await getWrapper()).html()).toContain("<div>")
+    expect((await getWrapper()).html()).toContain("<div>Hello Route</div>")
   })
 
   it("bootstraps data from __RELAY_BOOTSTRAP__", async () => {

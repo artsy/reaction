@@ -97,7 +97,9 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
         )
 
         if (missingEnvironmentOrQuery) {
-          return resolve()
+          resolve()
+
+          return
         }
 
         try {

@@ -3,8 +3,10 @@ import { RouteConfig } from "found"
 import { ContextProps } from "../Components/Artsy"
 
 type ReactComponent = ComponentType<any>
+type HistoryProtocol = "browser" | "hash" | "memory"
 
 export interface AppConfig {
+  historyProtocol?: HistoryProtocol
   routes: RouteConfig
   url?: string
   user?: User

@@ -1,5 +1,7 @@
-import BrowserProtocol from "farce/lib/BrowserProtocol"
 import React from "react"
+import BrowserProtocol from "farce/lib/BrowserProtocol"
+import HashProtocol from "farce/lib/HashProtocol"
+import MemoryProtocol from "farce/lib/MemoryProtocol"
 import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import queryMiddleware from "farce/lib/queryMiddleware"
@@ -13,7 +15,7 @@ import { AppConfig, ClientResolveProps } from "./types"
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes } = config
+      const { routes, historyProtocol = "browser" } = config
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
       const relayEnvironment = createEnvironment({
@@ -21,11 +23,24 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         user: sd.CURRENT_USER,
       })
 
+      const getHistoryProtocol = () => {
+        switch (historyProtocol) {
+          case "browser":
+            return new BrowserProtocol()
+          case "hash":
+            return new HashProtocol()
+          case "memory":
+            return new MemoryProtocol("/")
+          default:
+            return new BrowserProtocol()
+        }
+      }
+
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
       const Router = await createInitialFarceRouter({
-        historyProtocol: new BrowserProtocol(),
+        historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
         routeConfig: routes,
         resolver,

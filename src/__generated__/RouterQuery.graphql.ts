@@ -1,10 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime"
-export type RelayRouterQueryVariables = {
+export type RouterQueryVariables = {
   readonly artistID: string
 }
-export type RelayRouterQueryResponse = {
+export type RouterQueryResponse = {
   readonly artist:
     | ({
         readonly name: string | null
@@ -14,7 +14,7 @@ export type RelayRouterQueryResponse = {
 }
 
 /*
-query RelayRouterQuery(
+query RouterQuery(
   $artistID: String!
 ) {
   artist(id: $artistID) {
@@ -78,14 +78,14 @@ const node: ConcreteRequest = (function() {
   return {
     kind: "Request",
     operationKind: "query",
-    name: "RelayRouterQuery",
+    name: "RouterQuery",
     id: null,
     text:
-      "query RelayRouterQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    name\n    bio\n    __id\n  }\n}\n",
+      "query RouterQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    name\n    bio\n    __id\n  }\n}\n",
     metadata: {},
     fragment: {
       kind: "Fragment",
-      name: "RelayRouterQuery",
+      name: "RouterQuery",
       type: "Query",
       metadata: null,
       argumentDefinitions: v0,
@@ -93,11 +93,11 @@ const node: ConcreteRequest = (function() {
     },
     operation: {
       kind: "Operation",
-      name: "RelayRouterQuery",
+      name: "RouterQuery",
       argumentDefinitions: v0,
       selections: v1,
     },
   }
 })()
-;(node as any).hash = "8cd7f1f7c6ea15609afc7a87745fbcf3"
+;(node as any).hash = "77c943d093be0b5dd2cdad6a932bbb9e"
 export default node
