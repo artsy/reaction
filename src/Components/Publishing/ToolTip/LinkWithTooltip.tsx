@@ -150,7 +150,7 @@ export class LinkWithTooltip extends Component<Props, State> {
         const padding = 20
         const arrowSize = 30
 
-        arrowLeft = `${left + linkCenter - padding - arrowSize}px`
+        arrowLeft = left + linkCenter - padding - arrowSize
         toolTipLeft = 10 - x
       }
       return {
