@@ -5,6 +5,7 @@ import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 import RelayClientSSR from "react-relay-network-modern-ssr/lib/client"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { NetworkError } from "../Utils/errors"
+import { data as sd } from "sharify"
 
 import {
   RelayNetworkLayer,
@@ -37,9 +38,13 @@ export function createEnvironment(config: Config = {}) {
     "User-Agent": "Reaction",
   }
 
+  const url = isServer
+    ? process.env.METAPHYSICS_ENDPOINT
+    : sd.METAPHYSICS_ENDPOINT
+
   const network = new RelayNetworkLayer([
     urlMiddleware({
-      url: process.env.METAPHYSICS_ENDPOINT,
+      url,
       headers: !!user
         ? {
             ...headers,
@@ -69,7 +74,8 @@ export function createEnvironment(config: Config = {}) {
         throw error
       }
     },
-    loggerMiddleware(),
+    // TODO: Audit logging
+    !isServer && loggerMiddleware(),
   ])
 
   const source = new RecordSource()
