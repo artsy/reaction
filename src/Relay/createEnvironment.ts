@@ -3,15 +3,14 @@ import "regenerator-runtime/runtime"
 
 import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 import RelayClientSSR from "react-relay-network-modern-ssr/lib/client"
-import { Environment, Network, RecordSource, Store } from "relay-runtime"
+import { Environment, RecordSource, Store } from "relay-runtime"
 import { NetworkError } from "../Utils/errors"
-import { metaphysics } from "../Utils/metaphysics"
 
 import {
   RelayNetworkLayer,
   urlMiddleware,
   cacheMiddleware,
-  // loggerMiddleware,
+  loggerMiddleware,
 } from "react-relay-network-modern"
 
 interface Config {
@@ -24,20 +23,7 @@ interface RelayEnvironment extends Environment {
   relaySSRMiddleware: RelayClientSSR | RelayServerSSR
 }
 
-export function createEnvironment(user?: User) {
-  const fetchQuery = (operation, variables, cacheConfig, uploadables) => {
-    return metaphysics({ query: operation.text, variables }, user)
-  }
-  const network = Network.create(fetchQuery)
-  const source = new RecordSource()
-  const store = new Store(source)
-  return new Environment({
-    network,
-    store,
-  })
-}
-
-export function createRelayEnvironment(config: Config = {}) {
+export function createEnvironment(config: Config = {}) {
   const { cache = {}, checkStatus, user } = config
   const isServer = typeof window === "undefined"
   const relaySSRMiddleware = isServer
@@ -83,7 +69,7 @@ export function createRelayEnvironment(config: Config = {}) {
         throw error
       }
     },
-    // loggerMiddleware(),
+    loggerMiddleware(),
   ])
 
   const source = new RecordSource()

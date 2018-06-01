@@ -90,7 +90,7 @@ export class ContextProvider extends React.Component<ContextProps, null>
     }
 
     this.relayEnvironment =
-      props.relayEnvironment || createEnvironment(this.currentUser)
+      props.relayEnvironment || createEnvironment({ user: this.currentUser })
 
     this.reactionRouter = props.reactionRouter
   }

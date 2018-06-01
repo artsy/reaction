@@ -4,7 +4,7 @@ import createRender from "found/lib/createRender"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { AppShell } from "./AppShell"
 import { Resolver } from "found-relay"
-import { createRelayEnvironment } from "../Relay/createEnvironment"
+import { createEnvironment } from "../Relay/createEnvironment"
 import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import { AppConfig, ServerResolveProps } from "./types"
@@ -13,7 +13,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const { routes, url } = config
-      const relayEnvironment = createRelayEnvironment()
+      const relayEnvironment = createEnvironment()
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})

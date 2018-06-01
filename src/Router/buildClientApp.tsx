@@ -5,7 +5,7 @@ import createRender from "found/lib/createRender"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { AppShell } from "./AppShell"
 import { Resolver } from "found-relay"
-import { createRelayEnvironment } from "../Relay/createEnvironment"
+import { createEnvironment } from "../Relay/createEnvironment"
 import { loadComponents } from "loadable-components"
 import { data as sd } from "sharify"
 import { AppConfig, ClientResolveProps } from "./types"
@@ -16,7 +16,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       const { routes } = config
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
-      const relayEnvironment = createRelayEnvironment({
+      const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
         user: sd.CURRENT_USER,
       })
