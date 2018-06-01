@@ -13,6 +13,7 @@ export interface ArticleProps {
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
+  renderTime?: string
   seriesArticle?: ArticleData
   isHovered?: boolean
   isMobile?: boolean
