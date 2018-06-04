@@ -85,7 +85,9 @@ Release versions (major, minor, patch) are triggered [by commit messages](https:
 [BREAKING publishing] Replace children with props for caption editing
 ```
 
+
 ## Emitting types
+
 
 We recently started shipping Emission builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
 
@@ -97,3 +99,34 @@ src/Components/Forms/OrderForm/App.tsx:63:14 - error TS4023: Exported variable '
 ```
 
 What that error essentially means because you are exporting `StyledTitle`, the interface `IconProps` also needs to be exported. You can learn more about declarations files [here](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
+
+
+##### Exporting interfaces
+
+This also affects a bit how we declare our interfaces. Instead using a private `Props` interface as we've been doing
+
+```typescript
+interface Props {
+  ...
+}
+
+export class Icon extends Component<Props> {
+  ...
+}
+```
+
+you should write that instead
+
+```typescript
+export interface IconProps {
+  ...
+}
+
+export class Icon extends Component<IconProps> {
+  ...
+}
+```
+
+The more descriptive interface name (`IconProps`) is to get more useful error messages from the compiler when something goes wrong,
+and it's clearer which interface is being referred to in type defintion files.
+
