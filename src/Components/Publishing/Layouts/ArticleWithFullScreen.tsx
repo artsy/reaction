@@ -8,28 +8,8 @@ import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
-
-export interface ArticleProps {
-  article: ArticleData
-  closeViewer?: () => void
-  display?: {
-    name: string
-    panel: object
-    canvas: any
-  }
-  emailSignupUrl?: string
-  headerHeight?: string
-  isMobile?: boolean
-  isSuper?: boolean
-  isTruncated?: boolean
-  marginTop?: string
-  relatedArticlesForCanvas?: any
-  relatedArticlesForPanel?: any
-  seriesArticle?: any
-  slideIndex?: number
-  viewerIsOpen?: boolean
-}
-
+import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
+import { ArticleProps } from "../Article"
 interface ArticleState {
   fullscreenImages: any
   article: ArticleData
@@ -61,6 +41,8 @@ export class ArticleWithFullScreen extends React.Component<
     isSuper: false,
     article: {},
     isTruncated: false,
+    showTooltips: false,
+    showToolTipMarketData: false,
   }
 
   constructor(props) {
@@ -96,24 +78,36 @@ export class ArticleWithFullScreen extends React.Component<
 
   render() {
     const { article, fullscreenImages } = this.state
-    const { closeViewer, marginTop, slideIndex, viewerIsOpen } = this.props
+    const {
+      closeViewer,
+      marginTop,
+      slideIndex,
+      viewerIsOpen,
+      onOpenAuthModal,
+    } = this.props
 
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <ArticleContainer marginTop={marginTop}>
-        {article.layout === "feature" ? (
-          <FeatureLayout {...articleProps} />
-        ) : (
-          <StandardLayout {...articleProps} />
-        )}
-        <FullscreenViewer
-          onClose={closeViewer}
-          show={viewerIsOpen}
-          slideIndex={slideIndex}
-          images={fullscreenImages}
-        />
-      </ArticleContainer>
+      <TooltipsData
+        article={article}
+        shouldFetchData={this.props.showTooltips}
+        onOpenAuthModal={onOpenAuthModal}
+      >
+        <ArticleContainer marginTop={marginTop}>
+          {article.layout === "feature" ? (
+            <FeatureLayout {...articleProps} />
+          ) : (
+            <StandardLayout {...articleProps} />
+          )}
+          <FullscreenViewer
+            onClose={closeViewer}
+            show={viewerIsOpen}
+            slideIndex={slideIndex}
+            images={fullscreenImages}
+          />
+        </ArticleContainer>
+      </TooltipsData>
     )
   }
 }

@@ -3,12 +3,15 @@ import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ArticleLayout } from "../Typings"
+import { PrimaryLink } from "../ToolTip/LinkWithTooltip"
+import Colors from "Assets/Colors"
 
 interface StyledTextProps {
   color?: string
-  isContentStart: boolean
+  isContentStart?: boolean
   layout: ArticleLayout
-  postscript?: boolean
+  postscript?: Boolean
+  showTooltips?: boolean
 }
 
 const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> =
@@ -37,18 +40,27 @@ export const StyledText = div`
   a {
     color: ${props => props.color};
     text-decoration: none;
-    position: relative;
-    background-image: linear-gradient(to bottom,transparent 0, ${props =>
-      props.color === "black" ? "#333" : props.color} 1px,transparent 0);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      ${props => (props.color === "black" ? Colors.grayBold : props.color)} 1px,
+        transparent 0
+      );
     background-size: 1.25px 4px;
     background-repeat: repeat-x;
     background-position: bottom;
     &:hover {
-      color: ${props => (props.color === "black" ? "#999" : props.color)};
+      color: ${props =>
+        props.color === "black" ? Colors.grayDark : props.color};
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
-  p, ul, ol,
+  div[class*='ToolTip'] a {
+    background-image: none;
+    opacity: 1;
+    color: inherit;
+  }
+  p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
     padding-top: ${props => (props.layout === "classic" ? ".75em" : "1em")};
@@ -57,10 +69,12 @@ export const StyledText = div`
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
   p:first-child,
+  .paragraph:first-child,
   div[data-block=true]:first-child .public-DraftStyleDefault-block {
     padding-top: 0;
   }
   p:last-child,
+  .paragraph:last-child,
   div[data-block=true]:last-child .public-DraftStyleDefault-block {
     padding-bottom: 0;
   }
@@ -97,6 +111,9 @@ export const StyledText = div`
     margin: 0;
     a {
       background-size: 1.25px 1px;
+    }
+    ${PrimaryLink} {
+      background-position: bottom !important;
     }
   }
   h3 {
@@ -140,6 +157,7 @@ export const StyledText = div`
     }
   }
   p:first-child:first-letter,
+  .paragraph:first-child:first-letter,
   div[data-block=true]:first-child .public-DraftStyleDefault-block:first-letter {
     ${props =>
       props.isContentStart &&

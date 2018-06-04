@@ -19,6 +19,9 @@ jest.mock("react-tracking", () => jest.fn(c => d => d))
 jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))
+jest.mock("../../ToolTip/TooltipsDataLoader", () => ({
+  TooltipsData: props => props.children,
+}))
 
 it("indexes and titles images", () => {
   const article = mount(<ArticleWithFullScreen article={StandardArticle} />)

@@ -27,7 +27,7 @@ const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.3);
 `
 
-class Modal extends React.Component<ModalProps, any> {
+export class Modal extends React.Component<ModalProps, any> {
   static defaultProps = {
     show: false,
   }

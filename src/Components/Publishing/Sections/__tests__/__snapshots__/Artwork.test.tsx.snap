@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`Artwork snapshots renders properly 1`] = `
 .c10 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -207,6 +207,7 @@ exports[`renders properly 1`] = `
           <a
             className="c10"
             href="/artist/fernando-botero"
+            target="_self"
           >
             Fernando Botero
           </a>
@@ -220,13 +221,13 @@ exports[`renders properly 1`] = `
                 <span
                   className="title"
                 >
-                  <file__StyledTextLink
+                  <TextLink__StyledTextLink
                     color="#999"
                     href="/artwork/fernando-botero-nude-on-the-beach"
                     underline={false}
                   >
                     Nude on the Beach
-                  </file__StyledTextLink>
+                  </TextLink__StyledTextLink>
                 </span>
                 <span>
                   , 
@@ -244,13 +245,13 @@ exports[`renders properly 1`] = `
           dangerouslySetInnerHTML={
             Object {
               "__html": <span>
-                <file__StyledTextLink
+                <TextLink__StyledTextLink
                   color="#999"
-                  href="/partner/gary-nader"
+                  href="/gary-nader"
                   underline={false}
                 >
                   Gary Nader
-                </file__StyledTextLink>
+                </TextLink__StyledTextLink>
                 <span>
                   . 
                 </span>

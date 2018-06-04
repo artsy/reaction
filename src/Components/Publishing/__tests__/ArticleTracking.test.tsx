@@ -14,6 +14,9 @@ jest.mock("react-slick", () => {
   return props => <div>{props.children}</div>
 })
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("../ToolTip/TooltipsDataLoader", () => ({
+  TooltipsData: props => props.children,
+}))
 
 it("emits analytics events to an event emitter", done => {
   const article = mount(<Article article={StandardArticle} />)

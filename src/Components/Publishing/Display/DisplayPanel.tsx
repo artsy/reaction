@@ -11,16 +11,19 @@ import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ErrorBoundary } from "../../ErrorBoundary"
 import { VideoControls } from "../Sections/VideoControls"
 import { trackImpression } from "./track-once"
+import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
+import { getCurrentUnixTimestamp } from "../Constants"
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   campaign: any
   article?: any
   isMobile?: boolean
   unit: any
   tracking?: any
+  renderTime?: string
 }
 
-interface State {
+export interface DisplayPanelState {
   isPlaying: boolean
   isMuted: boolean
   showCoverImage: boolean
@@ -40,7 +43,10 @@ interface DivUrlProps extends HTMLProps<HTMLDivElement> {
     dispatch: data => Events.postEvent(data),
   }
 )
-export class DisplayPanel extends Component<Props, State> {
+export class DisplayPanel extends Component<
+  DisplayPanelProps,
+  DisplayPanelState
+> {
   public video: HTMLVideoElement
 
   state = {
@@ -109,7 +115,7 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  trackDuration = memoize(percentComplete => {
+  trackDuration: Function = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -119,7 +125,7 @@ export class DisplayPanel extends Component<Props, State> {
     })
   })
 
-  trackSeconds = memoize(secondsComplete => {
+  trackSeconds: Function = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",
@@ -161,7 +167,11 @@ export class DisplayPanel extends Component<Props, State> {
         unit_layout: "panel",
       })
 
-      window.open(url, "_blank")
+      if (url)
+        window.open(
+          replaceWithCacheBuster(url, getCurrentUnixTimestamp()),
+          "_blank"
+        )
     }
 
     if (isMobile) {
@@ -353,7 +363,7 @@ export class DisplayPanel extends Component<Props, State> {
 
   render() {
     const { showCoverImage } = this.state
-    const { unit, campaign, isMobile } = this.props
+    const { unit, campaign, isMobile, renderTime } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const cover = unit.cover_image_url || ""
@@ -395,6 +405,7 @@ export class DisplayPanel extends Component<Props, State> {
               <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
             </div>
           </DisplayPanelContainer>
+          <PixelTracker unit={unit} date={renderTime} />
         </Wrapper>
       </ErrorBoundary>
     )

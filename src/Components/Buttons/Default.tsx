@@ -1,5 +1,6 @@
 import React from "react"
-import styled from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
 import { block } from "../Helpers"
@@ -19,7 +20,7 @@ export enum ButtonState {
   Failure,
 }
 
-class Button extends React.Component<ButtonProps, any> {
+export class Button extends React.Component<ButtonProps, any> {
   public static defaultProps: ButtonProps
 
   render(): JSX.Element {

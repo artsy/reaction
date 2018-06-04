@@ -1,5 +1,6 @@
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import styled, { css } from "styled-components"
 
 import theme from "../../Assets/Theme"
@@ -143,7 +144,7 @@ export default createFragmentContainer(
   `
 )
 
-interface RelayProps {
+export interface RelayProps {
   artwork: {
     id: string | null
     image: {

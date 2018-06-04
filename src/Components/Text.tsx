@@ -1,12 +1,13 @@
 import React from "react"
-import styled from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import * as fonts from "../Assets/Fonts"
 
-type TextAlign = "start" | "center" | "end"
-type TextSize = "small" | "medium" | "large" | "xlarge"
-type TextStyle = "primary" | "secondary"
+export type TextAlign = "start" | "center" | "end"
+export type TextSize = "small" | "medium" | "large" | "xlarge"
+export type TextStyle = "primary" | "secondary"
 
-interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
+export interface TextProps extends React.HTMLProps<HTMLParagraphElement> {
   textSize?: TextSize
   textStyle?: TextStyle
   align?: TextAlign

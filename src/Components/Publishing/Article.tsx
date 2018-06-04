@@ -13,6 +13,7 @@ export interface ArticleProps {
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
+  renderTime?: string
   seriesArticle?: ArticleData
   isHovered?: boolean
   isMobile?: boolean
@@ -26,6 +27,12 @@ export interface ArticleProps {
     panel: object
     canvas: any
   }
+  showTooltips?: boolean
+  showToolTipMarketData?: boolean
+  slideIndex?: number
+  closeViewer?: () => void
+  viewerIsOpen?: boolean
+  onOpenAuthModal?: (type: "register" | "login", config: Object) => void
 }
 
 @track(

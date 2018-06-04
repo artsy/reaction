@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import styled from "styled-components"
-import { Article } from "../Article"
+import { Article } from "Components/Publishing/Article"
 
 import {
   ImageHeavyStandardArticle,
@@ -11,67 +11,105 @@ import {
 
 import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
+import { ContextProvider } from "../../Artsy"
 
-const story = storiesOf("Publishing/Standard Articles", module)
+const story = storiesOf("Publishing/Articles/Standard", module)
   .add("Standard", () => {
     return (
-      <Article
-        article={StandardArticle}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
+      <ContextProvider>
+        <Article
+          article={StandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+      </ContextProvider>
     )
   })
-  .add("Standard without Vertical", () => {
+  .add("Without Vertical", () => {
     return (
-      <Article
-        article={MissingVerticalStandardArticle}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
+      <ContextProvider>
+        <Article
+          article={MissingVerticalStandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+      </ContextProvider>
     )
   })
-  .add("Standard with top margin", () => {
+  .add("With top margin", () => {
     return (
-      <Article
-        article={ImageHeavyStandardArticle}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-        marginTop="100px"
-      />
+      <ContextProvider>
+        <Article
+          article={ImageHeavyStandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          marginTop="100px"
+        />
+      </ContextProvider>
     )
   })
-  .add("Standard truncated", () => {
+  .add("Truncated", () => {
     return (
-      <Article
-        article={ImageHeavyStandardArticle}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-        isTruncated
-      />
+      <ContextProvider>
+        <Article
+          article={ImageHeavyStandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          isTruncated
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (bio)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={StandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          showTooltips
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (data)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={StandardArticle}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          showTooltips
+          showToolTipMarketData
+        />
+      </ContextProvider>
     )
   })
 
 const displays = ["overlay", "image", "video", "slideshow"]
 displays.forEach(displayType => {
-  story.add(`Standard with ${displayType} ad`, () => {
+  story.add(`With ${displayType} ad`, () => {
     return (
-      <Article
-        article={StandardArticle}
-        display={Display(displayType)}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
+      <ContextProvider>
+        <Article
+          article={StandardArticle}
+          display={Display(displayType)}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+      </ContextProvider>
     )
   })
 })
 
-story.add(`Multiple standard articles`, () => {
+story.add(`Multiple articles`, () => {
   const article: ArticleData = {
     ...StandardArticle,
     sections: [
@@ -84,29 +122,31 @@ story.add(`Multiple standard articles`, () => {
 
   return (
     <div>
-      <Article
-        article={article}
-        display={Display("slideshow")}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
-      <Break />
-      <Article
-        article={article}
-        display={Display("video")}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
-      <Break />
-      <Article
-        article={article}
-        display={Display("image")}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-      />
+      <ContextProvider>
+        <Article
+          article={article}
+          display={Display("slideshow")}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+        <Break />
+        <Article
+          article={article}
+          display={Display("video")}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+        <Break />
+        <Article
+          article={article}
+          display={Display("image")}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+        />
+      </ContextProvider>
     </div>
   )
 })

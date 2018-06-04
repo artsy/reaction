@@ -27,19 +27,15 @@ export interface StepMarkerState {
   steps: MarkState[]
 }
 
-type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
+export type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
 
-interface MarkLabel {
+export interface MarkLabel {
   label?: string
   onClick?: any
 }
 
 export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
-  static defaultProps = {
-    disableInternalState: false,
-  }
-
-  constructor(props) {
+  constructor(props: StepMarkerProps) {
     super(props)
     this.state = this.computeStepState(props)
   }

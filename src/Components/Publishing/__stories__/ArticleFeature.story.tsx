@@ -1,45 +1,80 @@
 import { storiesOf } from "@storybook/react"
 import { clone, extend } from "lodash"
 import React from "react"
-import { Article } from "../Article"
-
+import { ContextProvider } from "Components/Artsy"
+import { Article } from "Components/Publishing/Article"
 import {
   BasicArticle,
   FeatureArticle,
   SeriesArticle,
   SponsoredArticle,
   SuperArticle,
-} from "../Fixtures/Articles"
-
+} from "Components/Publishing/Fixtures/Articles"
 import {
   Display,
   HeroSections,
   RelatedCanvas,
   RelatedPanel,
-} from "../Fixtures/Components"
-import { ArticleData } from "../Typings"
+} from "Components/Publishing/Fixtures/Components"
+import { ArticleData } from "Components/Publishing/Typings"
 
-const story = storiesOf("Publishing/Feature Articles", module)
+const story = storiesOf("Publishing/Articles/Feature", module)
 
 story
-  .add("Feature", () => {
+  .add("Fullscreen", () => {
     return (
-      <Article
-        article={FeatureArticle}
-        relatedArticlesForCanvas={RelatedCanvas}
-      />
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+        />
+      </ContextProvider>
     )
   })
-  .add("Feature Full - Series", () => {
+  .add("Fullscreen (series)", () => {
     const article = clone({
       ...SponsoredArticle,
       seriesArticle: SeriesArticle,
       relatedArticles: [BasicArticle, SuperArticle],
     } as ArticleData)
 
-    return <Article article={article} />
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
   })
-  .add("Feature Basic", () => {
+  .add("Text", () => {
+    const article = clone({
+      ...FeatureArticle,
+      hero_section: {
+        type: "text",
+        url: FeatureArticle.hero_section.url,
+      },
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
+  })
+  .add("Split", () => {
+    const article = clone({
+      ...FeatureArticle,
+      hero_section: {
+        type: "split",
+        url: FeatureArticle.hero_section.url,
+      },
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article article={article} />
+      </ContextProvider>
+    )
+  })
+  .add("Basic", () => {
     const article = clone({
       ...BasicArticle,
       sections: [
@@ -52,23 +87,50 @@ story
     } as ArticleData)
 
     return (
-      <Article
-        article={article}
-        display={Display("image")}
-        relatedArticlesForPanel={RelatedPanel}
-        relatedArticlesForCanvas={RelatedCanvas}
-        emailSignupUrl="#"
-        isTruncated
-      />
+      <ContextProvider>
+        <Article
+          article={article}
+          display={Display("image")}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          emailSignupUrl="#"
+          isTruncated
+        />
+      </ContextProvider>
     )
   })
   .add("Super Article", () => {
     const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return (
-      <Article
-        article={article}
-        isSuper
-        relatedArticlesForCanvas={RelatedCanvas}
-      />
+      <ContextProvider>
+        <Article
+          article={article}
+          isSuper
+          relatedArticlesForCanvas={RelatedCanvas}
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (bio)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+          showTooltips
+        />
+      </ContextProvider>
+    )
+  })
+  .add("With tooltips (data)", () => {
+    return (
+      <ContextProvider>
+        <Article
+          article={FeatureArticle}
+          relatedArticlesForCanvas={RelatedCanvas}
+          showTooltips
+          showToolTipMarketData
+        />
+      </ContextProvider>
     )
   })

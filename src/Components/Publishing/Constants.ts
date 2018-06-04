@@ -1,5 +1,8 @@
+import { compact, last, uniq } from "lodash"
+import cheerio from "cheerio"
 import moment from "moment-timezone"
-import { DateFormat } from "../Publishing/Typings"
+import url from "url"
+import { ArticleData, DateFormat } from "../Publishing/Typings"
 
 /**
  * Matches for Email / Instant Articles
@@ -37,6 +40,11 @@ export const getEditorialHref = (type, slug) => `/${type}/${slug}`
  */
 export const getFullEditorialHref = (type, slug) =>
   `https://www.artsy.net/${type}/${slug}`
+
+/**
+ * Absolute path to artsy entity
+ */
+export const getFullArtsyHref = slug => `https://www.artsy.net/${slug}`
 
 /**
  * ByLine helpers
@@ -112,6 +120,8 @@ export const getDate = (date, format: DateFormat = "default") => {
   }
 }
 
+export const getCurrentUnixTimestamp = () => moment().unix()
+
 export const getMediaDate = article => {
   const { published_at, scheduled_publish_at, media } = article
   const { release_date } = media
@@ -132,4 +142,50 @@ export const formatTime = time => {
   const minutesStr = minutes < 10 ? "0" + minutes : minutes
   const secondsStr = seconds < 10 ? "0" + seconds : seconds
   return minutesStr + ":" + secondsStr
+}
+
+interface SlugsFromArticle {
+  artists: string[]
+  genes: string[]
+}
+
+export const getArtsySlugsFromArticle = (
+  article: ArticleData
+): SlugsFromArticle => {
+  const articleBody = article.sections
+    .map(section => {
+      if (section.type === "text") {
+        return section.body
+      }
+    })
+    .join()
+
+  let artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
+  let genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))
+
+  return {
+    artists,
+    genes,
+  }
+}
+
+export const getArtsySlugsFromHTML = (
+  html: string,
+  model: string
+): string[] => {
+  const $ = cheerio.load(html)
+
+  const slugs = compact($("a")).map(a => {
+    let href = $(a).attr("href")
+    if (href) {
+      if (href.match(`artsy.net/${model}`)) {
+        return last(url.parse(href).pathname.split("/"))
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  })
+  return compact(slugs)
 }

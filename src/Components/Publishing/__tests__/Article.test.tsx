@@ -22,6 +22,9 @@ jest.mock("react-slick", () => {
 })
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-tracking", () => jest.fn(c => d => d))
+jest.mock("../ToolTip/TooltipsDataLoader", () => ({
+  TooltipsData: props => props.children,
+}))
 
 it("renders standard articles in fullscreen layout", () => {
   const article = mount(<Article article={StandardArticle} />)

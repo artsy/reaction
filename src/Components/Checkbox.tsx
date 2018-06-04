@@ -1,12 +1,18 @@
 import React, { Component, HTMLProps } from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
+import { Checkmark } from "Assets/Checkmark"
+import { garamond } from "Assets/Fonts"
 
-interface CheckboxState {
+export interface CheckboxState {
   checked: boolean
 }
 
-export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
+export interface CheckboxProps extends HTMLProps<HTMLInputElement> {
+  error?: boolean
+}
+
+export class Checkbox extends Component<CheckboxProps, CheckboxState> {
   constructor(props) {
     super(props)
 
@@ -26,16 +32,34 @@ export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
   }
 
   render() {
-    const { children, className, ...propsForCheckbox } = this.props
+    const {
+      children,
+      className,
+      disabled,
+      error,
+      ref,
+      ...remainderProps
+    } = this.props
+    const { checked } = this.state
 
     return (
-      <Label className={className}>
-        <CheckboxInput
-          type="checkbox"
-          {...propsForCheckbox as any}
-          onChange={this.onChange}
-          checked={this.state.checked}
-        />
+      <Label className={className} error={error}>
+        <CheckmarkContainer>
+          <CheckboxInput
+            {...remainderProps}
+            type="checkbox"
+            onChange={this.onChange}
+            checked={checked}
+            disabled={disabled}
+            error={error}
+          />
+
+          {(!disabled || checked) && (
+            <PositionedCheckmark
+              stroke={disabled && checked && colors.black30}
+            />
+          )}
+        </CheckmarkContainer>
 
         {children}
       </Label>
@@ -43,72 +67,65 @@ export class Checkbox extends Component<HTMLProps<Checkbox>, CheckboxState> {
   }
 }
 
-const CheckboxInput = styled.input`
+const CheckmarkContainer = styled.div`
   width: 20px;
   height: 20px;
-  position: relative;
   top: -1px;
-  margin: 0 0.5rem 0 0;
+  margin-right: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
-  // The before represents the check mark
-  &:before {
-    transform: rotate(-45deg);
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 5px;
-    left: 4px;
-    width: 0.6rem;
-    height: 0.3rem;
-    border: 2px solid ${colors.black};
-    border-top-style: none;
-    border-right-style: none;
-    transition: opacity 0.25s;
-    opacity: 0;
-  }
+const PositionedCheckmark = styled(Checkmark)`
+  z-index: 1;
+  margin-top: 1px;
+`
 
-  &:hover:before {
-    opacity: 0.1;
-  }
-
-  &:checked:before {
-    opacity: 1;
-  }
+const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin: 0;
 
   // The after represents the square box
   &:after {
+    transition: all 0.25s;
     content: "";
     position: absolute;
-    left: 0;
-    width: 1rem;
-    height: 1rem;
-    background: ${colors.white};
-    border: 2px solid ${colors.grayRegular};
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    background-color: ${colors.white};
+    border: 2px solid
+      ${({ error }) => (error ? colors.redMedium : colors.grayRegular)};
   }
 
-  &:disabled {
-    &:hover:before {
-      border-color: transparent;
-    }
+  &:hover:after {
+    background-color: ${colors.grayRegular};
+    border-color: ${colors.grayRegular};
+  }
 
-    &:checked {
-      &:before {
-        border-color: ${colors.grayDark};
-      }
-    }
+  &:checked:after {
+    background-color: ${colors.black};
+    border-color: ${colors.black};
+  }
 
-    &:after {
-      background-color: ${colors.grayRegular};
-    }
+  &:disabled:after {
+    background-color: ${colors.gray};
+    border-color: ${colors.grayRegular};
   }
 `
 
-const Label = styled.label`
+const Label = styled.label.attrs<CheckboxProps>({})`
+  ${garamond("s16")};
   position: relative;
   line-height: 135%;
   cursor: pointer;
   display: flex;
   align-items: center;
+  ${({ error }) => error && `color: ${colors.redMedium}`};
 `
 
 export default Checkbox

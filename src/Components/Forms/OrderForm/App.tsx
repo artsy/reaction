@@ -30,24 +30,39 @@ export class App extends Component<{ onSubmit: any }> {
         {({ wizard, form }) => (
           <Container>
             <Nav>
-              <StyledTitle titleSize="medium">Secure Checkout</StyledTitle>
-              <StepMarker
-                style={{ marginTop: 15, marginRight: 15 }}
-                steps={wizard.steps.map(step => step.props)}
-                currentStepIndex={wizard.currentStepIndex}
-              />
+              <StyledTitle titleSize="small">Secure Checkout</StyledTitle>
+              <StepMarkerContainer>
+                <StepMarker
+                  style={{ padding: "30px 5px" }}
+                  steps={wizard.steps.map(step => step.props)}
+                  currentStepIndex={wizard.currentStepIndex}
+                />
+              </StepMarkerContainer>
             </Nav>
-            {wizard.currentStep}
+            <StepContainer>{wizard.currentStep}</StepContainer>
           </Container>
         )}
       </Wizard>
     )
   }
 }
+
+const StepMarkerContainer = styled.div`
+  width: 300px;
+`
+
 const Container = styled.div`
-  width: 768px;
+  width: 100%;
+  min-width: 768px;
+`
+
+const StepContainer = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 `
 
 export const StyledTitle = Title.extend`
+  font-weight: bold;
   flex-grow: 1;
 `

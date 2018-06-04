@@ -78,7 +78,7 @@ module.exports = (baseConfig, env) => {
       stats: "errors-only",
     },
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
         sharify: sharifyPath.replace(/\.js$/, ""),
       },

@@ -6,9 +6,11 @@ import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
 import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
+import { Authors } from "../Fixtures/Components"
 import { EditableChild } from "../Fixtures/Helpers"
+import { Authors as AuthorInfo } from "../Sections/Authors"
 
-storiesOf("Publishing/Byline", module)
+storiesOf("Publishing/Byline/Share", module)
   .add("Share", () => {
     return (
       <div>
@@ -19,7 +21,7 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
-  .add("Share with custom tracking", () => {
+  .add("With custom tracking", () => {
     const data = { entity_id: "1234", entity_type: "feature" }
     return (
       <div>
@@ -31,7 +33,7 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
-  .add("Share with label", () => {
+  .add("With label", () => {
     return (
       <div>
         <Share
@@ -42,14 +44,15 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
-  .add("Full Byline", () => {
+storiesOf("Publishing/Byline/Byline", module)
+  .add("Byline", () => {
     return (
       <div>
         <Byline article={StandardArticle} />
       </div>
     )
   })
-  .add("Many Authors Byline", () => {
+  .add("Many Authors", () => {
     const article = extend({}, StandardArticle, {
       authors: [
         { name: "Kana Abe" },
@@ -63,35 +66,45 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
-  .add("Condensed Byline", () => {
+  .add("Condensed", () => {
     return (
       <div>
         <Byline article={StandardArticle} layout="condensed" />
       </div>
     )
   })
-  .add("Byline with custom color", () => {
+  .add("Custom color", () => {
     return (
       <div>
         <Byline article={StandardArticle} color="blue" />
       </div>
     )
   })
-  .add("Share Date", () => {
-    return (
-      <div>
-        <ShareDate article={StandardArticle} />
-      </div>
-    )
-  })
-  .add("News Byline", () => {
+storiesOf("Publishing/Byline/ShareDate", module).add("Share Date", () => {
+  return (
+    <div>
+      <ShareDate article={StandardArticle} />
+    </div>
+  )
+})
+storiesOf("Publishing/Byline/NewsByline", module)
+  .add("Byline", () => {
     return (
       <div>
         <NewsByline article={NewsArticle} />
       </div>
     )
   })
-  .add("News Byline without source", () => {
+  .add("Without link", () => {
+    const article = Object.assign({}, NewsArticle)
+    delete article.news_source.url
+    return (
+      <div>
+        <NewsByline article={article} />
+      </div>
+    )
+  })
+  .add("Without source", () => {
     const article = Object.assign({}, NewsArticle)
     article.news_source = {}
     return (
@@ -100,11 +113,44 @@ storiesOf("Publishing/Byline", module)
       </div>
     )
   })
-  .add("Editable DateSource from NewsByline", () => {
+  .add("Editable DateSource", () => {
     const article = Object.assign({}, NewsArticle)
     return (
       <div>
         <NewsByline article={article} editSource={EditableChild("source")} />
+      </div>
+    )
+  })
+
+storiesOf("Publishing/Byline/AuthorInfo", module)
+  .add("Multiple Authors", () => {
+    return (
+      <div style={{ margin: "20px" }}>
+        <AuthorInfo authors={Authors} />
+      </div>
+    )
+  })
+  .add("Single Author", () => {
+    const authors = [Authors[0]]
+    return (
+      <div style={{ margin: "20px" }}>
+        <AuthorInfo authors={authors} />
+      </div>
+    )
+  })
+  .add("No Image", () => {
+    const authors = [Authors[2]]
+    return (
+      <div style={{ margin: "20px" }}>
+        <AuthorInfo authors={authors} />
+      </div>
+    )
+  })
+  .add("No Meta", () => {
+    const authors = [Authors[3]]
+    return (
+      <div style={{ margin: "20px" }}>
+        <AuthorInfo authors={authors} />
       </div>
     )
   })

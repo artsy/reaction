@@ -15,6 +15,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "no-namespace": [true, "allow-declarations"],
-    "trailing-comma": false
+    "trailing-comma": false,
+    "variable-name": [true, "ban-keywords", "allow-leading-underscore"]
   }
 }

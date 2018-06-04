@@ -9,14 +9,21 @@ export interface LinkProps
   href?: string
   underline?: boolean
   color?: string
+  target?: string
 }
 
 export class TextLink extends React.Component<LinkProps, null> {
-  public static defaultProps: LinkProps
+  public static defaultProps: LinkProps = {
+    target: "_self",
+  }
 
   render() {
     return (
-      <a href={this.props.href} className={this.props.className}>
+      <a
+        href={this.props.href}
+        className={this.props.className}
+        target={this.props.target}
+      >
         {this.props.children}
       </a>
     )

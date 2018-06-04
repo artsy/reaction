@@ -11,29 +11,8 @@ import { ReadMore } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
-import { ArticleData } from "../Typings"
 import { Sidebar } from "./Components/Sidebar"
-
-export interface ArticleProps {
-  article: ArticleData
-  seriesArticle?: ArticleData
-  closeViewer?: () => void
-  display?: {
-    name: string
-    panel: object
-    canvas: any
-  }
-  emailSignupUrl?: string
-  headerHeight?: string
-  isMobile?: boolean
-  isSuper?: boolean
-  isTruncated?: boolean
-  marginTop?: string
-  relatedArticlesForCanvas?: any
-  relatedArticlesForPanel?: any
-  slideIndex?: number
-  viewerIsOpen?: boolean
-}
+import { ArticleProps } from "../Article"
 
 interface ArticleState {
   isTruncated: boolean
@@ -68,6 +47,9 @@ export class StandardLayout extends React.Component<
       emailSignupUrl,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
+      renderTime,
+      showTooltips,
+      showToolTipMarketData,
     } = this.props
     const { isTruncated } = this.state
 
@@ -88,6 +70,7 @@ export class StandardLayout extends React.Component<
                   unit={display.panel}
                   campaign={campaign}
                   article={article}
+                  renderTime={renderTime}
                 />
               )
             )
@@ -106,6 +89,8 @@ export class StandardLayout extends React.Component<
                       DisplayPanel={DisplayPanelAd}
                       article={article}
                       isMobile={isMobile}
+                      showTooltips={showTooltips}
+                      showToolTipMarketData={showToolTipMarketData}
                     />
                     <Sidebar
                       emailSignupUrl={emailSignupUrl}
@@ -148,6 +133,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderTime={renderTime}
                       />
                     </div>
                   ) : (
@@ -156,6 +142,7 @@ export class StandardLayout extends React.Component<
                         unit={display.canvas}
                         campaign={campaign}
                         article={article}
+                        renderTime={renderTime}
                       />
                     </FooterContainer>
                   )}

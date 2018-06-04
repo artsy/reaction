@@ -1,14 +1,19 @@
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import colors from "../Assets/Colors"
+import { unica } from "Assets/Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
+  horizontalAlign?: string
+  hoverWidth?: number
   message: string
+  verticalAlign?: string
 }
 
 const Div: StyledFunction<Props & React.HTMLProps<HTMLDivElement>> = styled.div
 
 const TooltipContainer = Div`
+  ${unica("s12", "regular")};
   display: inline-block;
   position: relative;
   cursor: help;
@@ -30,9 +35,6 @@ const TooltipContainer = Div`
     line-height: 15px;
     text-align: center;
     vertical-align: middle;
-    font-family: sans-serif;
-    font-size: 12px;
-    font-weight: bold;
     color: white;
   }
   &:hover {
@@ -47,20 +49,22 @@ const TooltipContainer = Div`
   }
   &:after {
     display: block;
-    top: 0;
-    left: 0;
+    top: ${props => (props.verticalAlign === "top" ? `0` : "inherit")}
+    bottom: ${props => (props.verticalAlign === "bottom" ? `-7px` : "inherit")}
+    left: ${props => (props.horizontalAlign === "right" ? `0` : "inherit")}
+    right: ${props => (props.horizontalAlign === "left" ? `-7px` : "inherit")}
     position: absolute;
     visibility: hidden;
     text-align: left;
     z-index: 1;
     margin: -10px 0 0 -10px;
-    width: 300px;
+    width: ${props => props.hoverWidth + `px`};
     color: ${colors.graySemibold};
+    font-weight: normal;
     background-color: white;
-    padding: 15px 15px 25px 15px;
+    padding: 20px;
     opacity: 0;
     margin: 0;
-    line-height: 1.3;
     transform: translateZ(0);
     border: 1px solid ${colors.grayRegular};
     content: ${props => `"` + props.message + `"`};
@@ -72,6 +76,9 @@ export class Tooltip extends React.Component<Props, null> {
     return (
       <TooltipContainer
         message={this.props.message}
+        horizontalAlign={this.props.horizontalAlign || "right"}
+        verticalAlign={this.props.verticalAlign || "top"}
+        hoverWidth={this.props.hoverWidth || 300}
         className={this.props.className}
       >
         {this.props.children}
