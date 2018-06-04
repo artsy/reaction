@@ -141,7 +141,7 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 }
 
 .c1 .Arrow__ArrowContainer-ahn4xm-0 {
-  left: calc(50% - 30px);
+  left: calc(50% - 15px);
   bottom: -15px;
 }
 
@@ -356,6 +356,15 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   justify-content: space-between;
 }
 
+.c4 div:first-child {
+  margin-right: 15px;
+}
+
+.c4 img {
+  width: 100%;
+  height: auto;
+}
+
 .c0 {
   position: absolute;
   z-index: 10;
@@ -378,7 +387,7 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 }
 
 .c1 .Arrow__ArrowContainer-ahn4xm-0 {
-  left: calc(50% - 30px);
+  left: calc(50% - 15px);
   bottom: -15px;
 }
 
@@ -403,16 +412,16 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
           href="/artist/nick-mauss"
           onClick={[Function]}
         >
-          <img
-            height={148}
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=152&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg"
-            width={112}
-          />
-          <img
-            height={148}
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=258&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F_lnI3nNFEo6D9TFqm2oM1w%2Flarge.jpg"
-            width={190}
-          />
+          <div>
+            <img
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=152&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg"
+            />
+          </div>
+          <div>
+            <img
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=258&height=200&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F_lnI3nNFEo6D9TFqm2oM1w%2Flarge.jpg"
+            />
+          </div>
         </a>
         <div
           className="c5"

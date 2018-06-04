@@ -6,6 +6,8 @@ import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { ContextProvider } from "Components/Artsy"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
 
+const tracking = { trackEvent: x => x }
+
 storiesOf("Publishing/ToolTips/Artist", module)
   .add("With Bio", () => {
     return (
@@ -13,15 +15,24 @@ storiesOf("Publishing/ToolTips/Artist", module)
         <ContextProvider>
           <TooltipsData article={StandardArticle}>
             <StyledText layout="standard">
-              <LinkWithTooltip url="https://artsy.net/artist/fra-angelico">
+              <LinkWithTooltip
+                url="https://artsy.net/artist/fra-angelico"
+                tracking={tracking}
+              >
                 Fra Angelico
               </LinkWithTooltip>
               {`, `}
-              <LinkWithTooltip url="https://artsy.net/artist/judy-chicago">
+              <LinkWithTooltip
+                url="https://artsy.net/artist/judy-chicago"
+                tracking={tracking}
+              >
                 Judy Chicago
               </LinkWithTooltip>
               {`, and `}
-              <LinkWithTooltip url="https://artsy.net/artist/alfred-stieglitz">
+              <LinkWithTooltip
+                url="https://artsy.net/artist/alfred-stieglitz"
+                tracking={tracking}
+              >
                 Alfred Stieglitz
               </LinkWithTooltip>
             </StyledText>
@@ -39,6 +50,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
               <LinkWithTooltip
                 url="https://artsy.net/artist/fra-angelico"
                 showMarketData
+                tracking={tracking}
               >
                 Fra Angelico
               </LinkWithTooltip>
@@ -46,6 +58,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
               <LinkWithTooltip
                 url="https://artsy.net/artist/judy-chicago"
                 showMarketData
+                tracking={tracking}
               >
                 Judy Chicago
               </LinkWithTooltip>
@@ -53,6 +66,7 @@ storiesOf("Publishing/ToolTips/Artist", module)
               <LinkWithTooltip
                 url="https://artsy.net/artist/alfred-stieglitz"
                 showMarketData
+                tracking={tracking}
               >
                 Alfred Stieglitz
               </LinkWithTooltip>
@@ -68,11 +82,17 @@ storiesOf("Publishing/ToolTips/Gene", module).add("Gene", () => {
       <ContextProvider>
         <TooltipsData article={StandardArticle}>
           <StyledText layout="standard">
-            <LinkWithTooltip url="https://artsy.net/gene/art-nouveau">
+            <LinkWithTooltip
+              url="https://artsy.net/gene/art-nouveau"
+              tracking={tracking}
+            >
               Art Nouveau
             </LinkWithTooltip>
             {` and `}
-            <LinkWithTooltip url="https://artsy.net/gene/art-deco">
+            <LinkWithTooltip
+              url="https://artsy.net/gene/art-deco"
+              tracking={tracking}
+            >
               Art Deco
             </LinkWithTooltip>
           </StyledText>

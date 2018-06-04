@@ -268,7 +268,7 @@ describe("LinkWithTooltip", () => {
       const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("artist")
 
       expect(toolTipLeft).toBe(-70)
-      expect(arrowLeft).toBe("60px")
+      expect(arrowLeft).toBe(60)
     })
 
     it("Returns a position for gene links at left window boundary", () => {
@@ -283,7 +283,7 @@ describe("LinkWithTooltip", () => {
       const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("gene")
 
       expect(toolTipLeft).toBe(-70)
-      expect(arrowLeft).toBe("60px")
+      expect(arrowLeft).toBe(60)
     })
   })
 })
