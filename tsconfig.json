@@ -2,18 +2,22 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
+    "declaration": true,
     "experimentalDecorators": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "es2016", "es2017"],
+    "listEmittedFiles": true,
     "module": "es2015",
     "moduleResolution": "node",
     "noUnusedLocals": true,
+    "outDir": "dist",
     "plugins": [
       {
         "name": "typescript-styled-plugin"
       }
     ],
     "rootDir": "src",
+    "sourceMap": true,
     "target": "es2015",
     "paths": {
       "Assets/*": ["./Assets/*"],
@@ -21,5 +25,14 @@
     }
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "dist", "data", "externals", "danger"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "data",
+    "externals",
+    "danger",
+    "src/**/__tests__",
+    "src/**/__stories__",
+    "src/__generated__/**.ts"
+  ]
 }

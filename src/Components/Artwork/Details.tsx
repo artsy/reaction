@@ -11,7 +11,7 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
 `
 
-interface Props extends RelayProps, React.HTMLProps<Details> {
+export interface Props extends RelayProps, React.HTMLProps<Details> {
   showSaleLine: boolean
 }
 
@@ -99,7 +99,7 @@ export class Details extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(
+export default createFragmentContainer<Props>(
   Details,
   graphql`
     fragment Details_artwork on Artwork {
@@ -128,7 +128,7 @@ export default createFragmentContainer(
   `
 )
 
-interface RelayProps {
+export interface RelayProps {
   artwork: {
     href: string | null
     title: string | null

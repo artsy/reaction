@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import {
   ConnectionData,
   createPaginationContainer,
@@ -9,12 +9,12 @@ import styled from "styled-components"
 import ArtworkGrid from "../ArtworkGrid"
 import Spinner from "../Spinner"
 
-interface Props extends RelayProps {
+export interface Props extends RelayProps {
   relay?: RelayPaginationProp
   tagID: string
 }
 
-interface State {
+export interface State {
   loading: boolean
 }
 
@@ -47,8 +47,9 @@ export class TagArtworksContent extends React.Component<Props, State> {
             .hasNextPage
           if (newLength - origLength < PageSize && newHasMore) {
             console.error(
-              `Total count inconsistent with actual records returned for tag: ${this
-                .props.tagID}`
+              `Total count inconsistent with actual records returned for tag: ${
+                this.props.tagID
+              }`
             )
             this.finishedPaginatingWithError = true
           }
@@ -141,7 +142,7 @@ export default createPaginationContainer(
   }
 )
 
-interface RelayProps {
+export interface RelayProps {
   filtered_artworks: {
     artworks: {
       edges: Array<{}>
