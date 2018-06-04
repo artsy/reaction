@@ -19,7 +19,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   rightView?: JSX.Element
 }
 
-interface InputState {
+export interface InputState {
   focused: boolean
   value: string
   showPassword: boolean
@@ -51,7 +51,7 @@ interface InputState {
  *    type="text"
  *  />
  */
-class Input extends React.Component<InputProps, InputState> {
+export class Input extends React.Component<InputProps, InputState> {
   state = {
     focused: false,
     value: "",

@@ -13,7 +13,7 @@ interface Props {
   editCredits?: any
 }
 
-interface TitleProps {
+export interface TitleProps {
   color: string
 }
 
