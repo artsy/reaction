@@ -99,7 +99,8 @@ const Content = styled.div.attrs<{ orientation: string; arrowLeft?: string }>(
     background-image: none;
   }
   ${ArrowContainer} {
-    left: ${props => (props.arrowLeft ? props.arrowLeft : `calc(50% - 30px)`)};
+    left: ${props =>
+      props.arrowLeft ? `${props.arrowLeft}px` : `calc(50% - 15px)`};
     ${props =>
       props.orientation === "down" ? `top: -35px;` : `bottom: -15px;`};
   }
