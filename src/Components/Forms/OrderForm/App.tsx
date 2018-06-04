@@ -1,3 +1,5 @@
+// tslint:disable:jsx-key
+
 import Nav from "../../Nav"
 import React, { Component } from "react"
 import Title from "../../Title"

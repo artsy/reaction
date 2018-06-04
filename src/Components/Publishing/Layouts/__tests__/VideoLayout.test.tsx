@@ -17,7 +17,7 @@ import { VideoLayout } from "../VideoLayout"
 import { ArticleData } from "../../Typings"
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("Video Layout", () => {

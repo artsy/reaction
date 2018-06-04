@@ -7,24 +7,21 @@ import { FollowButton } from "../Button"
 import FollowGeneButton from "../FollowGeneButton"
 import { ContextProvider } from "../../Artsy"
 
-jest.mock('react-relay', () => ({
+jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
-  createFragmentContainer: component => component
+  createFragmentContainer: component => component,
 }))
 
 jest.mock("../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("FollowGeneButton", () => {
   let props
-  const getWrapper = (props, currentUser = {}) => {
+  const getWrapper = (someProps, currentUser = {}) => {
     return mount(
       <ContextProvider currentUser={currentUser}>
-        <FollowGeneButton
-          relay={{ environment: '' }}
-          {...props}
-        />
+        <FollowGeneButton relay={{ environment: "" }} {...someProps} />
       </ContextProvider>
     )
   }
@@ -40,8 +37,8 @@ describe("FollowGeneButton", () => {
       },
       onOpenAuthModal: jest.fn(),
       tracking: {
-        trackEvent: jest.fn()
-      }
+        trackEvent: jest.fn(),
+      },
     }
   })
 
@@ -67,7 +64,6 @@ describe("FollowGeneButton", () => {
       expect(args[0]).toBe("register")
       expect(args[1].context_module).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow gene")
-
     })
 
     it("Follows an gene if current user", () => {
@@ -91,7 +87,9 @@ describe("FollowGeneButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Followed Gene")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Followed Gene"
+      )
     })
 
     it("Tracks unfollow click when unfollowing", () => {
@@ -99,17 +97,21 @@ describe("FollowGeneButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Unfollowed Gene")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Unfollowed Gene"
+      )
     })
 
     it("Tracks with custom trackingData if provided", () => {
       props.trackingData = {
-        context_module: "tooltip"
+        context_module: "tooltip",
       }
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe("tooltip")
+      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe(
+        "tooltip"
+      )
     })
   })
 })

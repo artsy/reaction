@@ -47,7 +47,7 @@ export class BudgetComponent extends React.Component<
   }
 
   onOptionSelected = (index: number) => {
-    let selection = { selection: Object.values(this.options)[index] }
+    const selection = { selection: Object.values(this.options)[index] }
     this.setState(selection)
   }
 

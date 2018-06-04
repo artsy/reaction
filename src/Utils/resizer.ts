@@ -4,6 +4,7 @@ const GEMINI_DISPLAY_CLOUDFRONT_URL = "https://de5y2r7wr8mpb.cloudfront.net"
 
 const warn = message => {
   if (process.env.NODE_ENV === "development") {
+    // tslint:disable-next-line:no-console
     console.warn(message)
   }
 }

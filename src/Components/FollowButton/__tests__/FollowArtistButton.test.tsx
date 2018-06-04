@@ -7,24 +7,21 @@ import { FollowButton } from "../Button"
 import FollowArtistButton from "../FollowArtistButton"
 import { ContextProvider } from "../../Artsy"
 
-jest.mock('react-relay', () => ({
+jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
-  createFragmentContainer: component => component
+  createFragmentContainer: component => component,
 }))
 
 jest.mock("../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("FollowArtistButton", () => {
   let props
-  const getWrapper = (props, currentUser = {}) => {
+  const getWrapper = (someProps, currentUser = {}) => {
     return mount(
       <ContextProvider currentUser={currentUser}>
-        <FollowArtistButton
-          relay={{ environment: '' }}
-          {...props}
-        />
+        <FollowArtistButton relay={{ environment: "" }} {...someProps} />
       </ContextProvider>
     )
   }
@@ -40,7 +37,7 @@ describe("FollowArtistButton", () => {
       },
       onOpenAuthModal: jest.fn(),
       tracking: {
-        trackEvent: jest.fn()
+        trackEvent: jest.fn(),
       },
     }
   })
@@ -92,7 +89,9 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Followed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Followed Artist"
+      )
     })
 
     it("Tracks unfollow click when unfollowing", () => {
@@ -100,17 +99,21 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Unfollowed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Unfollowed Artist"
+      )
     })
 
     it("Tracks with custom trackingData if provided", () => {
       props.trackingData = {
-        context_module: "tooltip"
+        context_module: "tooltip",
       }
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe("tooltip")
+      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe(
+        "tooltip"
+      )
     })
   })
 })

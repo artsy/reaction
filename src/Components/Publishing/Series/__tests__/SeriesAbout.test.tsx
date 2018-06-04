@@ -2,12 +2,16 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { SeriesArticle, SeriesArticleSponsored, SeriesArticleCustomSubTitle } from "../../Fixtures/Articles"
+import {
+  SeriesArticle,
+  SeriesArticleSponsored,
+  SeriesArticleCustomSubTitle,
+} from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
 import { SeriesAbout } from "../SeriesAbout"
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("SeriesAbout", () => {
@@ -90,9 +94,7 @@ describe("SeriesAbout", () => {
     })
 
     it("Renders 'About the Series' by default", () => {
-      const component = mount(
-        <SeriesAbout article={SeriesArticle} />
-      )
+      const component = mount(<SeriesAbout article={SeriesArticle} />)
       expect(component.text()).toMatch("About the Series")
     })
 

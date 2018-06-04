@@ -586,7 +586,7 @@ export const Videos = [
   },
 ]
 
-export const ClassicText: Object[] = [
+export const ClassicText: Array<object> = [
   {
     type: "text",
     body:

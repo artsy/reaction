@@ -85,7 +85,7 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   getRightViewForPassword() {
-    let icon = this.state.showPassword ? (
+    const icon = this.state.showPassword ? (
       <ClosedEye onClick={this.toggleShowPassword} />
     ) : (
       <OpenEye onClick={this.toggleShowPassword} />

@@ -11,20 +11,20 @@ const fillwidthDimensions = (
   /**
    * Scales an image object proportionally based on a direction (either -1 or 1)
    * @param img a dimension object that references an artwork image
-   * @param dir the direction we need to scale an image, either -1 or 1
+   * @param heightDir the direction we need to scale an image, either -1 or 1
    */
-  const resizeHeight = (img, dir) => {
-    img.width += img.width / img.height * dir
-    img.height += dir
+  const resizeHeight = (img, heightDir) => {
+    img.width += img.width / img.height * heightDir
+    img.height += heightDir
   }
 
   const totalWhitespace = () => {
     return (items.length - 1) * gutter
   }
 
-  const widthDiff = dimensions => {
+  const widthDiff = dims => {
     const currentWidth = reduce(
-      dimensions,
+      dims,
       (sum, img) => {
         return sum + img.width
       },
@@ -34,7 +34,7 @@ const fillwidthDimensions = (
   }
 
   // Get initial dimensions based on the targetHeight
-  let dimensions = items.map(item => {
+  const dimensions = items.map(item => {
     let id
     let aspectRatio
 
@@ -55,12 +55,12 @@ const fillwidthDimensions = (
   })
 
   // If the total width difference is too small or negative we need to scale down. If not, scale up.
-  let dir = widthDiff(dimensions) < 1 ? -1 : 1
+  const dir = widthDiff(dimensions) < 1 ? -1 : 1
 
   // Keep looping until we get an acceptable width difference
   let count = 0
   while (widthDiff(dimensions) <= 1) {
-    for (let img of dimensions) {
+    for (const img of dimensions) {
       resizeHeight(img, dir)
       if (widthDiff(dimensions) > 1) {
         break
@@ -78,6 +78,7 @@ const fillwidthDimensions = (
         dir,
         dimensions,
       }
+      // tslint:disable-next-line:no-console
       console.error(
         `Was unable to calculate a filling width for data: ${JSON.stringify(
           data
@@ -88,7 +89,7 @@ const fillwidthDimensions = (
   }
 
   // Round image dimensions to whole numbers
-  for (let img of dimensions) {
+  for (const img of dimensions) {
     img.width = Math.floor(img.width)
     img.height = Math.floor(img.height)
     if (widthDiff(dimensions) === 0) {

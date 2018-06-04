@@ -18,28 +18,23 @@ jest.mock("react-dom/server", () => ({
 }))
 
 const renderSnapshot = props => {
-  return renderer.create(
-    WrapperWithFullscreenContext(
-      <Sections {...props} />
-    )
-  ).toJSON()
+  return renderer
+    .create(WrapperWithFullscreenContext(<Sections {...props} />))
+    .toJSON()
 }
 
 const mountWrapper = props => {
-  return mount(
-    WrapperWithFullscreenContext(
-      <Sections {...props} />
-    )
-  )
+  return mount(WrapperWithFullscreenContext(<Sections {...props} />))
 }
 
 describe("Sections", () => {
   let props
-  beforeEach(() => props = {
-    article: StandardArticle,
-    DisplayPanel: () => <div>hi!</div>,
-    isMobile: true
-  })
+  beforeEach(() =>
+    (props = {
+      article: StandardArticle,
+      DisplayPanel: () => <div>hi!</div>,
+      isMobile: true,
+    }))
 
   describe("snapshots", () => {
     it("renders properly", () => {
@@ -72,7 +67,9 @@ describe("Sections", () => {
       article.layout = "feature"
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
       props.article = article
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -80,7 +77,9 @@ describe("Sections", () => {
     it("does not inject if desktop", () => {
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
       props.isMobile = false
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -91,7 +90,9 @@ describe("Sections", () => {
       document.getElementById = () => element
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
 
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(true)
       expect(spy).toHaveBeenCalled()
     })
@@ -114,13 +115,17 @@ describe("Sections", () => {
 
     it("#getContentStartIndex returns the index of first text section if feature", () => {
       props.article = FeatureArticle
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.getContentStartIndex()).toBe(0)
     })
 
     it("#getContentEndIndex returns the index of last text section", () => {
       props.article = FeatureArticle
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
   })

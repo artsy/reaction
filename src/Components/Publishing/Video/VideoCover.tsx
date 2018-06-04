@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
 import styled, { StyledFunction } from "styled-components"
 import { track } from "../../../Utils/track"
-import { media } from "../../Helpers"
+import { media as mediaQuery } from "../../Helpers"
 import { garamond } from "Assets/Fonts"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { MaxRow } from "./Shared"
@@ -112,7 +112,7 @@ const VideoCoverInfo = styled.div`
     margin-right: 15px;
     cursor: pointer;
   }
-  ${media.sm`
+  ${mediaQuery.sm`
     padding-bottom: 40px;
   `};
 `
@@ -139,7 +139,7 @@ const MediaDescription = styled.div`
   position: relative;
   margin-top: 30px;
   ${garamond("s23")};
-  ${media.sm`
+  ${mediaQuery.sm`
     ${garamond("s19")}
   `};
 `

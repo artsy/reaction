@@ -11,6 +11,7 @@ import { Artwork } from "../Artwork"
 import { ViewFullscreen } from "../ViewFullscreen"
 
 jest.mock("react-lines-ellipsis/lib/html", () => {
+  // tslint:disable-next-line:no-shadowed-variable
   const React = require("react")
   return () => <div />
 })

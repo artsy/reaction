@@ -29,10 +29,12 @@ describe("DateSource", () => {
   })
 
   it("Renders a source with title only", () => {
-    const article = extend(cloneDeep(NewsArticle), { news_source: { title: "The New York Times" } })
+    const article = extend(cloneDeep(NewsArticle), {
+      news_source: { title: "The New York Times" },
+    })
     const component = mount(<DateSource article={article} />)
 
-    expect(component.find('a').length).toBe(0)
+    expect(component.find("a").length).toBe(0)
     expect(component.text()).toContain("via The New York Times")
   })
 

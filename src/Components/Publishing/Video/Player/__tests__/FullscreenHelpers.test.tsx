@@ -4,7 +4,7 @@ import {
   fullscreenEnabled,
   isFullscreen,
   removeFSEventListener,
-  requestFullscreen
+  requestFullscreen,
 } from "../FullscreenHelpers"
 
 describe("Fullscreen helper methods", () => {
@@ -78,11 +78,11 @@ describe("Fullscreen helper methods", () => {
 
   it("#exitFullscreen escapes an element in fullscreen", () => {
     const exit = jest.fn()
-    Object.defineProperty(document, 'exitFullscreen', {
+    Object.defineProperty(document, "exitFullscreen", {
       configurable: true,
       enumerable: true,
       value: exit,
-      writable: true
+      writable: true,
     })
     exitFullscreen()
     expect(exit).toHaveBeenCalled()
@@ -90,11 +90,11 @@ describe("Fullscreen helper methods", () => {
 
   it("#exitFullscreen escapes an element in fullscreen (webkit)", () => {
     const webkitExitFullscreen = jest.fn()
-    Object.defineProperty(document, 'webkitExitFullscreen', {
+    Object.defineProperty(document, "webkitExitFullscreen", {
       configurable: true,
       enumerable: true,
       value: webkitExitFullscreen,
-      writable: true
+      writable: true,
     })
     exitFullscreen()
     expect(webkitExitFullscreen).toHaveBeenCalled()
@@ -102,11 +102,11 @@ describe("Fullscreen helper methods", () => {
 
   it("#exitFullscreen escapes an element in fullscreen (mozilla)", () => {
     const mozCancelFullScreen = jest.fn()
-    Object.defineProperty(document, 'mozCancelFullScreen', {
+    Object.defineProperty(document, "mozCancelFullScreen", {
       configurable: true,
       enumerable: true,
       value: mozCancelFullScreen,
-      writable: true
+      writable: true,
     })
     exitFullscreen()
     expect(mozCancelFullScreen).toHaveBeenCalled()
@@ -114,11 +114,11 @@ describe("Fullscreen helper methods", () => {
 
   it("#exitFullscreen escapes an element in fullscreen (ms)", () => {
     const msExitFullscreen = jest.fn()
-    Object.defineProperty(document, 'msExitFullscreen', {
+    Object.defineProperty(document, "msExitFullscreen", {
       configurable: true,
       enumerable: true,
       value: msExitFullscreen,
-      writable: true
+      writable: true,
     })
     exitFullscreen()
     expect(msExitFullscreen).toHaveBeenCalled()

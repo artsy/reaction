@@ -90,25 +90,19 @@ describe("ArtworkCaption", () => {
           artists: [{ name: "Andy Warhol" }, { name: "Botero" }],
         }),
       })
-      expect(component.text()).toMatch(
-        'Andy Warhol, Botero'
-      )
+      expect(component.text()).toMatch("Andy Warhol, Botero")
     })
 
     it("renders title + date", () => {
       const component = getWrapper({
         artwork: ArtworkRegular,
       })
-      expect(component.text()).toMatch(
-        'Nude on the Beach, 2000'
-      )
+      expect(component.text()).toMatch("Nude on the Beach, 2000")
     })
 
     it("renders partner + credit", () => {
       const component = getWrapper()
-      expect(component.text()).toMatch(
-        'Gary Nader. Courtesy of Gary Nader'
-      )
+      expect(component.text()).toMatch("Gary Nader. Courtesy of Gary Nader")
     })
   })
 })

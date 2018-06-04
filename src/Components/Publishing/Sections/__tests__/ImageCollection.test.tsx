@@ -7,6 +7,7 @@ import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-lines-ellipsis/lib/html", () => {
+  // tslint:disable-next-line:no-shadowed-variable
   const React = require("react")
   return () => <div />
 })

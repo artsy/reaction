@@ -7,7 +7,7 @@ import { NewsSectionContainer } from "../../News/NewsSections"
 import { ExpandButton, NewsLayout } from "../NewsLayout"
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("News Layout", () => {
