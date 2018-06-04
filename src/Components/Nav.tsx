@@ -24,7 +24,7 @@ injectGlobal`
   }
 `
 
-interface NavBarProps extends React.Props<HTMLDivElement> {
+export interface NavBarProps extends React.Props<HTMLDivElement> {
   logoLink?: string
 }
 

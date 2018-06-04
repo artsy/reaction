@@ -27,9 +27,9 @@ export interface StepMarkerState {
   steps: MarkState[]
 }
 
-type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
+export type MarkState = MarkLabel & { isActive: boolean; isComplete: boolean }
 
-interface MarkLabel {
+export interface MarkLabel {
   label?: string
   onClick?: any
 }

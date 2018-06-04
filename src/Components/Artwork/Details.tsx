@@ -1,5 +1,6 @@
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import TextLink from "../TextLink"
 
 import styled from "styled-components"
@@ -11,7 +12,7 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
 `
 
-interface Props extends RelayProps, React.HTMLProps<Details> {
+export interface Props extends RelayProps, React.HTMLProps<Details> {
   showSaleLine: boolean
 }
 
@@ -99,7 +100,7 @@ export class Details extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(
+export default createFragmentContainer<Props>(
   Details,
   graphql`
     fragment Details_artwork on Artwork {
@@ -128,7 +129,7 @@ export default createFragmentContainer(
   `
 )
 
-interface RelayProps {
+export interface RelayProps {
   artwork: {
     href: string | null
     title: string | null

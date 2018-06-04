@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SubNav renders SubNav 1`] = `
-.c4 {
+.c3 {
   font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -42,16 +42,6 @@ exports[`SubNav renders SubNav 1`] = `
   box-sizing: border-box;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c4:hover:not(:disabled) {
-  cursor: pointer;
-  background: #cccccc;
-}
-
-.c3 {
-  background: black;
-  color: white;
   font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -72,10 +62,11 @@ exports[`SubNav renders SubNav 1`] = `
 }
 
 .c3:hover:not(:disabled) {
-  background: #6e1fff;
+  cursor: pointer;
+  background: #cccccc;
 }
 
-.c6 {
+.c4 {
   font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -136,7 +127,7 @@ exports[`SubNav renders SubNav 1`] = `
   margin: 8px;
 }
 
-.c6:hover:not(:disabled) {
+.c4:hover:not(:disabled) {
   cursor: pointer;
   background: #cccccc;
 }
@@ -146,7 +137,7 @@ exports[`SubNav renders SubNav 1`] = `
   text-decoration: none;
 }
 
-.c8 {
+.c6 {
   display: none;
   margin-right: 5px;
   max-width: 32px;
@@ -162,11 +153,11 @@ exports[`SubNav renders SubNav 1`] = `
 
 @media (max-width:720px) {
   .c0 .c2,
-  .c0 .c5 {
+  .c0 .c2 {
     display: none;
   }
 
-  .c0 .c7 {
+  .c0 .c5 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -186,7 +177,7 @@ exports[`SubNav renders SubNav 1`] = `
     href="/log_in"
   >
     <button
-      className="c2 c3 c4"
+      className="c2 c3"
     >
       <span>
         Login
@@ -198,7 +189,7 @@ exports[`SubNav renders SubNav 1`] = `
     href="/sign_up"
   >
     <button
-      className="c5 c6"
+      className="c2 c4"
     >
       <span>
         Signup
@@ -206,7 +197,7 @@ exports[`SubNav renders SubNav 1`] = `
     </button>
   </a>
   <div
-    className="c7 c8"
+    className="c5 c6"
   >
     <svg
       enableBackground="new 0 0 32 32"

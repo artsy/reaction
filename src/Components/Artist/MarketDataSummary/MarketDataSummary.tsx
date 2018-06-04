@@ -1,15 +1,16 @@
 import { groupBy } from "lodash"
 import * as React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import { unica } from "Assets/Fonts"
 
 export const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};
 `
 import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
-interface Props extends React.HTMLProps<MarketDataSummary> {
+export interface Props extends React.HTMLProps<MarketDataSummary> {
   artist: MarketDataSummary_artist
   onEmptyText?: string
 }

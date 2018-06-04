@@ -10,7 +10,11 @@ export const TextFromArticle = article => {
   return compact(map(article.sections, "body")).join("")
 }
 
-export const wrapperWithContext = (context, contextTypes, children) => {
+export const wrapperWithContext: Function = (
+  context,
+  contextTypes,
+  children
+) => {
   class WrapperWithContext extends React.Component {
     static childContextTypes = contextTypes
     getChildContext() {

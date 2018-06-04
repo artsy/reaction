@@ -2,23 +2,28 @@ import React from "react"
 
 import Icon from "./Icon"
 
-import styled from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import colors from "../Assets/Colors"
 import { garamond } from "../Assets/Fonts"
 
-interface Props extends React.HTMLProps<BorderedPulldown> {
+export interface BorderedPullDownProps
+  extends React.HTMLProps<BorderedPulldown> {
   options: any
   defaultValue: string
   onChange?: any
   selectedName?: string
 }
 
-interface State {
+export interface BorderedPulldownState {
   selected: any
   isHovered: boolean
 }
 
-export class BorderedPulldown extends React.Component<Props, State> {
+export class BorderedPulldown extends React.Component<
+  BorderedPullDownProps,
+  BorderedPulldownState
+> {
   state = {
     selected: null,
     isHovered: false,

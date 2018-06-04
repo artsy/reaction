@@ -4,7 +4,7 @@ import colors from "../Assets/Colors"
 import { Checkmark } from "Assets/Checkmark"
 import { garamond } from "Assets/Fonts"
 
-interface CheckboxState {
+export interface CheckboxState {
   checked: boolean
 }
 

@@ -47,7 +47,7 @@ Author.defaultProps = {
   color: "black",
 }
 
-interface TextProps {
+export interface TextProps {
   condensed?: boolean
   withBullet?: boolean
 }
@@ -95,7 +95,7 @@ const bullet = color => {
 
 export const StyledAuthor = Text.extend`
   ${props => (props.withBullet ? bullet(props.color) : "")} ${props =>
-      adjustForCondensed(props.condensed)} ${pMedia.sm`
+  adjustForCondensed(props.condensed)} ${pMedia.sm`
     &:before {
       min-width: 8px;
       min-height: 8px;

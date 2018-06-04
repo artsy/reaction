@@ -1,4 +1,5 @@
-import Button from "./Default"
+// @ts-ignore
+import Button, { ButtonProps } from "./Default"
 import FacebookButton from "./Facebook"
 import GhostButton from "./Ghost"
 import InvertedButton from "./Inverted"

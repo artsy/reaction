@@ -25,7 +25,7 @@ const Renderer: React.SFC<Props> = ({
   currentUser,
   relayEnvironment,
   children,
-  ...props,
+  ...props
 }) => <QueryRenderer {...props} environment={relayEnvironment} />
 
 const RendererWithContext = ContextConsumer(Renderer)
@@ -39,7 +39,7 @@ const RendererWithContext = ContextConsumer(Renderer)
 export const RootQueryRenderer: React.SFC<Props> = ({
   currentUser,
   children,
-  ...props,
+  ...props
 }) => (
   <ContextProvider currentUser={currentUser}>
     <RendererWithContext {...props} />

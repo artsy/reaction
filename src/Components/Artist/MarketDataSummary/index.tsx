@@ -4,7 +4,7 @@ import { graphql, QueryRenderer } from "react-relay"
 import { ContextConsumer, ContextProps } from "../../Artsy"
 import MarketDataSummary from "./MarketDataSummary"
 
-interface Props extends ContextProps {
+export interface Props extends ContextProps {
   artistID: string
 }
 
