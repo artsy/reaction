@@ -4,28 +4,28 @@ import { graphql, QueryRenderer } from "react-relay"
 import { ContextConsumer, ContextProps } from "../Artsy"
 import TagArtworks from "./TagArtworks"
 
-interface Filters {
+export interface Filters {
   for_sale: boolean
   dimension_range: string
   price_range: string
   medium: string
 }
 
-type Sort = "year" | "-year" | "-partner_updated_at"
+export type Sort = "year" | "-year" | "-partner_updated_at"
 
-interface StateChangePayload {
+export interface StateChangePayload {
   filters: Filters
   sort: Sort
 }
 
-interface Props extends ContextProps {
+export interface Props extends ContextProps {
   filters?: Partial<Filters>
   tagID: string
   sort?: Sort
   onStateChange: (payload: StateChangePayload) => void
 }
 
-interface State extends Filters {
+export interface State extends Filters {
   sort?: Sort
 }
 
@@ -70,7 +70,7 @@ class TagContents extends React.Component<Props, State> {
     this.setState(
       {
         [filter]: value,
-      },
+      } as any,
       this.handleStateChange
     )
   }

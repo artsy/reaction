@@ -5,24 +5,24 @@ import { ContextConsumer, ContextProps } from "../Artsy"
 import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 
-interface Filters {
+export interface Filters {
   for_sale: boolean
   dimension_range: string
   price_range: string
-  medium: string
+  medium?: string
 }
 
-type Sort = "year" | "-year" | "-partner_updated_at"
+export type Sort = "year" | "-year" | "-partner_updated_at"
 
-type Mode = "artists" | "artworks"
+export type Mode = "artists" | "artworks"
 
-interface StateChangePayload {
+export interface StateChangePayload {
   filters: Filters
   sort: Sort
   mode: Mode
 }
 
-interface Props extends ContextProps {
+export interface Props extends ContextProps {
   mode: Mode
   filters?: Partial<Filters>
   geneID: string
@@ -30,7 +30,7 @@ interface Props extends ContextProps {
   onStateChange: (payload: StateChangePayload) => void
 }
 
-interface State extends Filters {
+export interface State extends Filters {
   mode: Mode
   sort?: Sort
 }
@@ -75,17 +75,17 @@ class GeneContents extends React.Component<Props, State> {
   // Because `for_sale` is a proper filter of its own, but
   // we include its aggregation as part of `price_range`, we
   // have to handle it specially.
-  onDropdownSelect(slice: string, value: string) {
-    let filter = slice.toLowerCase() as any
+  onDropdownSelect(slice: string, value: string | boolean) {
+    let filter = slice.toLowerCase() as string
     if (filter === "price_range" && value === "*-*") {
       filter = "for_sale"
-      value = "true"
+      value = true
     }
     this.setState(
       {
         [filter]: value,
         mode: "artworks",
-      },
+      } as any,
       this.handleStateChange
     )
   }

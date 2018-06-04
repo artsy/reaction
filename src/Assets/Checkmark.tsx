@@ -1,12 +1,12 @@
 import React, { HTMLProps } from "react"
 
-interface CheckmarkProps extends HTMLProps<SVGElement> {
+export interface CheckmarkProps extends HTMLProps<SVGElement> {
   stroke?: string
 }
 
 export class Checkmark extends React.Component<CheckmarkProps> {
   render() {
-    const { stroke, ...remainderProps } = this.props
+    const { stroke, ref, ...remainderProps } = this.props
 
     return (
       <svg width={14} height={11} viewBox="0 0 14 11" {...remainderProps}>
