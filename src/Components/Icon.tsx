@@ -1,4 +1,5 @@
-import React from "react"
+// @ts-ignore
+import React, { StatelessComponent } from "react"
 import styled from "styled-components"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
