@@ -6,7 +6,7 @@ import { ArticleLayout, SectionLayout } from "../Typings"
 import { ArtworkCaption } from "./ArtworkCaption"
 import { ImageWrapper } from "./ImageWrapper"
 
-interface ArtworkProps {
+export interface ArtworkProps {
   artwork: any
   editing?: boolean
   layout?: ArticleLayout

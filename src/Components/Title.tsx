@@ -1,11 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import { garamond } from "Assets/Fonts"
 import { media } from "./Helpers"
 
-type TitleSize = "xxsmall" | "small" | "medium" | "large" | "xlarge"
+export type TitleSize = "xxsmall" | "small" | "medium" | "large" | "xlarge"
 
-interface TitleProps extends React.HTMLProps<HTMLDivElement> {
+export interface TitleProps extends React.HTMLProps<HTMLDivElement> {
   titleSize?: TitleSize
   color?: string
 }

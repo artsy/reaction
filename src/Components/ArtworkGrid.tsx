@@ -1,11 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 import RelayGridItem, { ArtworkGridItem } from "./Artwork/GridItem"
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkGridContainer> {
+export interface ArtworkGridContainerProps
+  extends RelayProps,
+    React.HTMLProps<ArtworkGridContainer> {
   columnCount?: number
   sectionMargin?: number
   itemMargin?: number
@@ -13,12 +16,15 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridContainer> {
   useRelay?: boolean
 }
 
-interface State {
+export interface ArtworkGridContainerState {
   loading: boolean
   interval: any
 }
 
-class ArtworkGridContainer extends React.Component<Props, State> {
+export class ArtworkGridContainer extends React.Component<
+  ArtworkGridContainerProps,
+  ArtworkGridContainerState
+> {
   static defaultProps = {
     columnCount: 3,
     sectionMargin: 20,
@@ -168,14 +174,14 @@ export default createFragmentContainer(
   `
 )
 
-interface ArtworkRelayProps {
+export interface ArtworkRelayProps {
   __id: string
   image: {
     aspect_ratio: number | null
   } | null
 }
 
-interface RelayProps {
+export interface RelayProps {
   artworks: {
     edges: Array<{
       node: any

@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
-import styled, { StyledFunction } from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass, StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
 import { unica } from "Assets/Fonts"
 import { Text } from "../Sections/Text"
 
-interface Props {
+export interface VideoAboutProps {
   article: any
   color?: string
   editDescription?: any
@@ -17,7 +18,7 @@ export interface TitleProps {
   color: string
 }
 
-export class VideoAbout extends Component<Props, null> {
+export class VideoAbout extends Component<VideoAboutProps, null> {
   static defaultProps = {
     color: "black",
   }

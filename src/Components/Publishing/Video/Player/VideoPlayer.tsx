@@ -1,6 +1,7 @@
 import { memoize } from "lodash"
 import React, { Component } from "react"
-import styled, { StyledFunction } from "styled-components"
+// @ts-ignore
+import styled, { StyledComponentClass, StyledFunction } from "styled-components"
 import { track } from "../../../../Utils/track"
 import {
   addFSEventListener,
@@ -12,7 +13,7 @@ import {
 } from "./FullscreenHelpers"
 import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+export interface VideoPlayerProps extends React.HTMLProps<HTMLDivElement> {
   url: string
   title?: string
   notifyPlayToggle?: (e) => void
@@ -20,7 +21,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   tracking?: any
 }
 
-interface State {
+export interface VideoPlayerState {
   isMuted: boolean
   isPlaying: boolean
   currentTime: number
@@ -29,12 +30,12 @@ interface State {
   showControls: boolean
 }
 
-interface DivProps {
+export interface DivProps {
   showControls: boolean
 }
 
 @track()
-export class VideoPlayer extends Component<Props, State> {
+export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
   public video: HTMLVideoElement
   public videoPlayer: HTMLDivElement
   public timer
@@ -201,7 +202,7 @@ export class VideoPlayer extends Component<Props, State> {
     }
   }
 
-  trackDuration = memoize(percentComplete => {
+  trackDuration: Function = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Video duration",
@@ -209,7 +210,7 @@ export class VideoPlayer extends Component<Props, State> {
     })
   })
 
-  trackSeconds = memoize(secondsComplete => {
+  trackSeconds: Function = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Video seconds",

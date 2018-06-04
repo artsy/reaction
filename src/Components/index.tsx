@@ -1,18 +1,27 @@
-import Artwork from "./Artwork"
-import ArtworkGrid from "./ArtworkGrid"
-import BorderedPulldown from "./BorderedPulldown"
+// @ts-ignore
+import Artwork, { ArtworkProps } from "./Artwork"
+// @ts-ignore
+import ArtworkGrid, { ArtworkGridContainerProps } from "./ArtworkGrid"
+// @ts-ignore
+import BorderedPulldown, { BorderedPullDownProps } from "./BorderedPulldown"
 import Buttons from "./Buttons"
 import Checkbox from "./Checkbox"
-import Icon from "./Icon"
-import Input from "./Input"
+// @ts-ignore
+import Icon, { IconProps } from "./Icon"
+// @ts-ignore
+import Input, { InputProps } from "./Input"
 import Modal from "./Modal/Modal"
-import Nav from "./Nav"
-import Text from "./Text"
+// @ts-ignore
+import Nav, { NavBarProps } from "./Nav"
+// @ts-ignore
+import Text, { TextProps } from "./Text"
 import TextArea from "./TextArea"
-import TextLink from "./TextLink"
-import Title from "./Title"
+// @ts-ignore
+import TextLink, { LinkProps } from "./TextLink"
+// @ts-ignore
+import Title, { TitleProps } from "./Title"
 
-interface InitOptions {
+export interface InitOptions {
   user: User
   component: any
   domID: string

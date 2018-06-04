@@ -1,5 +1,6 @@
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import TextLink from "../TextLink"
 
 import styled from "styled-components"

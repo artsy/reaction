@@ -5,7 +5,7 @@ import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from "../../Sections/VideoControls"
 
-interface Props {
+export interface CanvasVideoProps {
   campaign: any
   coverUrl?: string
   src: any
@@ -14,7 +14,7 @@ interface Props {
 }
 
 @track()
-export class CanvasVideo extends Component<Props, any> {
+export class CanvasVideo extends Component<CanvasVideoProps, any> {
   public video: HTMLVideoElement
 
   static defaultProps = {
@@ -70,7 +70,7 @@ export class CanvasVideo extends Component<Props, any> {
     }
   }
 
-  trackDuration = memoize(percentComplete => {
+  trackDuration: Function = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -80,7 +80,7 @@ export class CanvasVideo extends Component<Props, any> {
     })
   })
 
-  trackSeconds = memoize(secondsComplete => {
+  trackSeconds: Function = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",

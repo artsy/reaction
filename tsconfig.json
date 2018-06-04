@@ -16,6 +16,7 @@
         "name": "typescript-styled-plugin"
       }
     ],
+    "pretty": true,
     "rootDir": "src",
     "sourceMap": true,
     "target": "es2015",

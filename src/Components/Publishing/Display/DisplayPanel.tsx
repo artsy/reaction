@@ -14,7 +14,7 @@ import { trackImpression } from "./track-once"
 import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
 import { getCurrentUnixTimestamp } from "../Constants"
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   campaign: any
   article?: any
   isMobile?: boolean
@@ -23,7 +23,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   renderTime?: string
 }
 
-interface State {
+export interface DisplayPanelState {
   isPlaying: boolean
   isMuted: boolean
   showCoverImage: boolean
@@ -43,7 +43,10 @@ interface DivUrlProps extends HTMLProps<HTMLDivElement> {
     dispatch: data => Events.postEvent(data),
   }
 )
-export class DisplayPanel extends Component<Props, State> {
+export class DisplayPanel extends Component<
+  DisplayPanelProps,
+  DisplayPanelState
+> {
   public video: HTMLVideoElement
 
   state = {
@@ -112,7 +115,7 @@ export class DisplayPanel extends Component<Props, State> {
     }
   }
 
-  trackDuration = memoize(percentComplete => {
+  trackDuration: Function = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -122,7 +125,7 @@ export class DisplayPanel extends Component<Props, State> {
     })
   })
 
-  trackSeconds = memoize(secondsComplete => {
+  trackSeconds: Function = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",

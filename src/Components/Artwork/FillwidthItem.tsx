@@ -1,6 +1,8 @@
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
+// @ts-ignore
+import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+// @ts-ignore
+import styled, { StyledComponentClass } from "styled-components"
 
 import RelayMetadata, { Metadata } from "./Metadata"
 import RelaySaveButton, { SaveButton } from "./Save"
@@ -21,7 +23,9 @@ const Placeholder = styled.div`
   width: 100%;
 `
 
-interface Props extends RelayProps, React.HTMLProps<FillwidthItemContainer> {
+export interface FillwidthItemContainerProps
+  extends RelayProps,
+    React.HTMLProps<FillwidthItemContainer> {
   targetHeight?: number
   imageHeight?: number
   width?: number
@@ -29,7 +33,10 @@ interface Props extends RelayProps, React.HTMLProps<FillwidthItemContainer> {
   useRelay?: boolean
 }
 
-class FillwidthItemContainer extends React.Component<Props, null> {
+export class FillwidthItemContainer extends React.Component<
+  FillwidthItemContainerProps,
+  null
+> {
   static defaultProps = {
     useRelay: true,
   }
@@ -94,7 +101,7 @@ export default createFragmentContainer(
   `
 )
 
-interface RelayProps {
+export interface RelayProps {
   artwork: {
     href: string | null
     image: {
