@@ -98,7 +98,7 @@ src/Components/Forms/OrderForm/App.tsx:63:14 - error TS4023: Exported variable '
                 ~~~~~~~~~~~
 ```
 
-What that error essentially means because you are exporting `StyledTitle`, the interface `IconProps` also needs to be exported. You can learn more about declarations files [here](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
+What that error essentially means because you are exporting `StyledTitle`, the interface `TitleProps` also needs to be exported. You can learn more about declarations files [here](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
 
 
 ##### Exporting interfaces
