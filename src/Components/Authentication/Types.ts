@@ -51,6 +51,14 @@ export interface ModalOptions {
    * the page before the page on which the sign up was triggered.
    */
   signupReferer?: string
+  /**
+   * the location where the modal was triggered.
+   */
+  contextModule?: string
+  /**
+   * the url the user should go to after onboarding
+   */
+  destination?: string
 }
 
 export type FormComponentType = React.SFC<FormProps>
