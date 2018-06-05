@@ -24,11 +24,27 @@ export interface FormProps {
   handleTypeChange?: (modalType: ModalType) => void
 }
 
+/**
+ * ModalOptions Description
+ *
+ * copy: the free string copy of the modal that was triggered.
+ *
+ * mode: the type of modal to display.
+ *
+ * redirectUrl: the page path the user is redirected to after successfully
+ * login or account creation (skips onboarding).
+ *
+ * signupIntent: the action taken that prompted user to signup or login.
+ *
+ * signupReferer: the page before the page on which the sign up was triggered.
+ *
+ */
+
 export interface ModalOptions {
   copy?: string
-  signupIntent?: string
-  redirectUrl?: string
   mode?: ModalType
+  redirectUrl?: string
+  signupIntent?: string
   signupReferer?: string
 }
 
