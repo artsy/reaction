@@ -9,11 +9,10 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 
-interface Props {
+export interface ModalManagerProps {
   submitUrls: { [P in ModalType]: string }
   csrf: string
   redirectUrl?: string
-  type?: ModalType
   handleSubmit?: (
     type: ModalType,
     values: InputValues,
@@ -21,13 +20,16 @@ interface Props {
   ) => void
 }
 
-interface State {
-  currentType: ModalType
+export interface ModalManagerState {
+  currentType?: ModalType
 }
 
-export class ModalManager extends Component<Props, State> {
+export class ModalManager extends Component<
+  ModalManagerProps,
+  ModalManagerState
+> {
   state = {
-    currentType: this.props.type || null,
+    currentType: null,
   }
 
   openModal = (type: ModalType, redirectUrl?: string) => {
