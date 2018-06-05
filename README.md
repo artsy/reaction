@@ -89,7 +89,7 @@ Release versions (major, minor, patch) are triggered [by commit messages](https:
 ## Emitting types
 
 
-We recently started shipping Emission builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
+We recently started shipping Reaction builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
 
 ```typescript
 src/Components/Forms/OrderForm/App.tsx:63:14 - error TS4023: Exported variable 'StyledTitle' has or is using name 'TitleProps' from external module "/Users/lucsucces/Projects/reaction/src/Components/Title" but cannot be named.
