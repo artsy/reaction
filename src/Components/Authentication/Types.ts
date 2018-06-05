@@ -24,4 +24,11 @@ export interface FormProps {
   handleTypeChange?: (modalType: ModalType) => void
 }
 
+export interface ModalOptions {
+  copy?: string
+  signupIntent?: string
+  redirectUrl?: string
+  mode?: ModalType
+}
+
 export type FormComponentType = React.SFC<FormProps>
