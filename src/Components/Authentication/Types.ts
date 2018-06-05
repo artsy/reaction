@@ -29,6 +29,7 @@ export interface ModalOptions {
   signupIntent?: string
   redirectUrl?: string
   mode?: ModalType
+  signupReferer?: string
 }
 
 export type FormComponentType = React.SFC<FormProps>
