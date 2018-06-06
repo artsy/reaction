@@ -24,7 +24,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "tsc",
+    "compile": "babel src --out-dir dist --copy-files -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__ && yarn emit-types",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
@@ -41,10 +41,10 @@
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
     "sync-schema": "cd externals/metaphysics && git fetch && git checkout origin/master && cp .env.example .env && yarn install && yarn dump-schema -- ../../data",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema -- ../reaction/data",
-    "test": "node verify-node-version.js && jest",
+    "test": "node verify-node-version.js && jest --no-cache",
     "test:watch": "jest --watch --runInBand",
     "type-check": "tsc --noEmit --pretty",
-    "watch": "concurrently --kill-others 'yarn relay --watch' 'yarn compile -w'",
+    "watch": "concurrently --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types -w'",
     "semantic-release": "semantic-release"
   },
   "resolutions": {
@@ -60,7 +60,6 @@
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "7.0.0-beta.40",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
-    "@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-es2015": "7.0.0-beta.40",
     "@babel/preset-react": "7.0.0-beta.40",
@@ -85,6 +84,7 @@
     "@types/relay-runtime": "^1.3.2",
     "@types/storybook__react": "^3.0.5",
     "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
     "babel-loader": "8.0.0-beta.0",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-lodash": "^3.3.2",
@@ -125,11 +125,13 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-react": "^2.4.0",
     "typescript": "^2.9.1",
+    "typescript-babel-jest": "^1.0.5",
     "typescript-styled-plugin": "^0.6.3",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.40",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",

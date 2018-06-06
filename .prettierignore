@@ -1,1 +1,2 @@
 package.json
+src/__generated__/**.ts
