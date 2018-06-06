@@ -6,6 +6,7 @@ import { handleSubmit as defaultHandleSubmit } from "Components/Authentication/h
 import {
   InputValues,
   SubmitHandler,
+  ModalOptions,
   ModalType,
 } from "Components/Authentication/Types"
 
@@ -22,11 +23,7 @@ export interface ModalManagerProps {
 
 export interface ModalManagerState {
   currentType?: ModalType
-}
-
-export interface ModalOptions {
-  mode: ModalType
-  edirectUrl?: string
+  copy?: string | null
 }
 
 export class ModalManager extends Component<
@@ -38,9 +35,9 @@ export class ModalManager extends Component<
   }
 
   openModal = (options: ModalOptions) => {
-    const type = options.mode
     this.setState({
-      currentType: type,
+      currentType: options.mode,
+      copy: options.copy,
     })
   }
 
@@ -58,7 +55,7 @@ export class ModalManager extends Component<
 
   render() {
     const { csrf, submitUrls, redirectUrl } = this.props
-    const { currentType } = this.state
+    const { currentType, copy } = this.state
 
     if (!currentType) {
       return null
@@ -73,6 +70,7 @@ export class ModalManager extends Component<
         show
         onTypeChange={this.onTypeChange}
         onClose={this.closeModal}
+        subtitle={copy}
       >
         <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
       </DesktopModal>
