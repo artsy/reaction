@@ -8,10 +8,10 @@ export type Details_artwork = {
     readonly sale_message: string | null;
     readonly cultural_maker: string | null;
     readonly artists: ReadonlyArray<({
-            readonly __id: string;
-            readonly href: string | null;
-            readonly name: string | null;
-        }) | null> | null;
+        readonly __id: string;
+        readonly href: string | null;
+        readonly name: string | null;
+    }) | null> | null;
     readonly collecting_institution: string | null;
     readonly partner: ({
         readonly name: string | null;

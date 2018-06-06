@@ -4,8 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 export type ArtistRow_artist = {
     readonly name: string | null;
     readonly href: string | null;
-    readonly artworks: ({
-    }) | null;
+    readonly artworks: ({}) | null;
 };
 
 

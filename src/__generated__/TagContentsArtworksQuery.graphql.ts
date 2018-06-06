@@ -10,8 +10,7 @@ export type TagContentsArtworksQueryVariables = {
     readonly dimension_range?: string | null;
 };
 export type TagContentsArtworksQueryResponse = {
-    readonly tag: ({
-    }) | null;
+    readonly tag: ({}) | null;
 };
 
 

@@ -6,14 +6,13 @@ export type GeneArtworks_gene = {
     readonly id: string;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
-                readonly slice: ArtworkAggregation | null;
-                readonly counts: ReadonlyArray<({
-                        readonly name: string | null;
-                        readonly id: string;
-                    }) | null> | null;
+            readonly slice: ArtworkAggregation | null;
+            readonly counts: ReadonlyArray<({
+                readonly name: string | null;
+                readonly id: string;
             }) | null> | null;
-        readonly facet: ({
-        }) | null;
+        }) | null> | null;
+        readonly facet: ({}) | null;
     }) | null;
 };
 

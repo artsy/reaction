@@ -5,10 +5,10 @@ export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS
 export type Dropdown_aggregation = {
     readonly slice: ArtworkAggregation | null;
     readonly counts: ReadonlyArray<({
-            readonly name: string | null;
-            readonly id: string;
-            readonly count: number | null;
-        }) | null> | null;
+        readonly name: string | null;
+        readonly id: string;
+        readonly count: number | null;
+    }) | null> | null;
 };
 
 

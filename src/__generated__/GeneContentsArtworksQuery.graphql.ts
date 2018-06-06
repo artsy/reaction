@@ -10,8 +10,7 @@ export type GeneContentsArtworksQueryVariables = {
     readonly dimension_range?: string | null;
 };
 export type GeneContentsArtworksQueryResponse = {
-    readonly gene: ({
-    }) | null;
+    readonly gene: ({}) | null;
 };
 
 

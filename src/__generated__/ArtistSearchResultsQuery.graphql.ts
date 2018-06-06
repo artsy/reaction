@@ -5,8 +5,7 @@ export type ArtistSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type ArtistSearchResultsQueryResponse = {
-    readonly viewer: ({
-    }) | null;
+    readonly viewer: ({}) | null;
 };
 
 

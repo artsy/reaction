@@ -3,15 +3,15 @@
 import { ConcreteFragment } from "relay-runtime";
 export type GeneSearchResultsContent_viewer = {
     readonly match_gene: ReadonlyArray<({
-            readonly name: string | null;
-            readonly id: string;
-            readonly _id: string;
-            readonly image: ({
-                readonly cropped: ({
-                    readonly url: string | null;
-                }) | null;
+        readonly name: string | null;
+        readonly id: string;
+        readonly _id: string;
+        readonly image: ({
+            readonly cropped: ({
+                readonly url: string | null;
             }) | null;
-        }) | null> | null;
+        }) | null;
+    }) | null> | null;
 };
 
 

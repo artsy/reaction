@@ -6,8 +6,7 @@ export type FillwidthQueryVariables = {
 };
 export type FillwidthQueryResponse = {
     readonly artist: ({
-        readonly artworks: ({
-        }) | null;
+        readonly artworks: ({}) | null;
     }) | null;
 };
 

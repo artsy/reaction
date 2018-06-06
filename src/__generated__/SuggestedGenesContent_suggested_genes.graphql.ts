@@ -2,15 +2,15 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type SuggestedGenesContent_suggested_genes = ReadonlyArray<{
-        readonly id: string;
-        readonly _id: string;
-        readonly name: string | null;
-        readonly image: ({
-            readonly cropped: ({
-                readonly url: string | null;
-            }) | null;
+    readonly id: string;
+    readonly _id: string;
+    readonly name: string | null;
+    readonly image: ({
+        readonly cropped: ({
+            readonly url: string | null;
         }) | null;
-    }>;
+    }) | null;
+}>;
 
 
 

@@ -5,8 +5,7 @@ export type GeneSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type GeneSearchResultsQueryResponse = {
-    readonly viewer: ({
-    }) | null;
+    readonly viewer: ({}) | null;
 };
 
 
