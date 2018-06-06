@@ -21,7 +21,7 @@ export interface ArticleProps {
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
-  marginTop: string | null | undefined
+  marginTop?: string | null
   display?: {
     name: string
     panel: object

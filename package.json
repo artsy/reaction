@@ -60,6 +60,7 @@
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "7.0.0-beta.40",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-es2015": "7.0.0-beta.40",
     "@babel/preset-react": "7.0.0-beta.40",
@@ -131,7 +132,6 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "7.0.0-beta.40",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
