@@ -33,7 +33,6 @@
     "externals",
     "danger",
     "src/**/__tests__",
-    "src/**/__stories__",
     "src/__generated__/**.ts"
   ]
 }
