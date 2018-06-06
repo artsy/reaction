@@ -5,8 +5,7 @@ export type InquiryArtworkQueryVariables = {
     readonly artworkID: string;
 };
 export type InquiryArtworkQueryResponse = {
-    readonly artwork: ({
-    }) | null;
+    readonly artwork: ({}) | null;
 };
 
 

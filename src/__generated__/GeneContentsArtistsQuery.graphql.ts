@@ -5,8 +5,7 @@ export type GeneContentsArtistsQueryVariables = {
     readonly geneID: string;
 };
 export type GeneContentsArtistsQueryResponse = {
-    readonly gene: ({
-    }) | null;
+    readonly gene: ({}) | null;
 };
 
 

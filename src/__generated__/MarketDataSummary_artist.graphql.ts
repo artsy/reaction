@@ -7,22 +7,22 @@ export type MarketDataSummary_artist = {
     readonly highlights: ({
         readonly partners: ({
             readonly edges: ReadonlyArray<({
-                    readonly node: ({
-                        readonly categories: ReadonlyArray<({
-                                readonly id: string;
-                            }) | null> | null;
-                    }) | null;
-                }) | null> | null;
+                readonly node: ({
+                    readonly categories: ReadonlyArray<({
+                        readonly id: string;
+                    }) | null> | null;
+                }) | null;
+            }) | null> | null;
         }) | null;
     }) | null;
     readonly auctionResults: ({
         readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly price_realized: ({
-                        readonly display: string | null;
-                    }) | null;
+            readonly node: ({
+                readonly price_realized: ({
+                    readonly display: string | null;
                 }) | null;
-            }) | null> | null;
+            }) | null;
+        }) | null> | null;
     }) | null;
 };
 

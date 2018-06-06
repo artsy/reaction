@@ -5,8 +5,7 @@ export type MarketDataSummaryContentsQueryVariables = {
     readonly artistID: string;
 };
 export type MarketDataSummaryContentsQueryResponse = {
-    readonly artist: ({
-    }) | null;
+    readonly artist: ({}) | null;
 };
 
 

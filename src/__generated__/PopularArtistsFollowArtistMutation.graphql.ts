@@ -13,34 +13,34 @@ export type PopularArtistsFollowArtistMutationResponse = {
     readonly followArtist: ({
         readonly popular_artists: ({
             readonly artists: ReadonlyArray<({
-                    readonly id: string;
-                    readonly _id: string;
-                    readonly __id: string;
-                    readonly name: string | null;
-                    readonly image: ({
-                        readonly cropped: ({
-                            readonly url: string | null;
-                        }) | null;
+                readonly id: string;
+                readonly _id: string;
+                readonly __id: string;
+                readonly name: string | null;
+                readonly image: ({
+                    readonly cropped: ({
+                        readonly url: string | null;
                     }) | null;
-                }) | null> | null;
+                }) | null;
+            }) | null> | null;
         }) | null;
         readonly artist: ({
             readonly __id: string;
             readonly related: ({
                 readonly suggested: ({
                     readonly edges: ReadonlyArray<({
-                            readonly node: ({
-                                readonly id: string;
-                                readonly _id: string;
-                                readonly __id: string;
-                                readonly name: string | null;
-                                readonly image: ({
-                                    readonly cropped: ({
-                                        readonly url: string | null;
-                                    }) | null;
+                        readonly node: ({
+                            readonly id: string;
+                            readonly _id: string;
+                            readonly __id: string;
+                            readonly name: string | null;
+                            readonly image: ({
+                                readonly cropped: ({
+                                    readonly url: string | null;
                                 }) | null;
                             }) | null;
-                        }) | null> | null;
+                        }) | null;
+                    }) | null> | null;
                 }) | null;
             }) | null;
         }) | null;

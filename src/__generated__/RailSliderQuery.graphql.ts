@@ -5,8 +5,7 @@ export type RailSliderQueryVariables = {
     readonly saleID: string;
 };
 export type RailSliderQueryResponse = {
-    readonly sale: ({
-    }) | null;
+    readonly sale: ({}) | null;
 };
 
 

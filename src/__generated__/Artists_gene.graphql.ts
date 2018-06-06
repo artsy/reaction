@@ -9,15 +9,15 @@ export type Artists_gene = {
             readonly hasNextPage: boolean;
         };
         readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly __id: string;
-                }) | null;
-            }) | null> | null;
+            readonly node: ({
+                readonly __id: string;
+            }) | null;
+        }) | null> | null;
     }) | null;
     readonly filter_aggregations: ({
         readonly aggregations: ReadonlyArray<({
-                readonly slice: ArtworkAggregation | null;
-            }) | null> | null;
+            readonly slice: ArtworkAggregation | null;
+        }) | null> | null;
     }) | null;
 };
 

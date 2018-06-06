@@ -3,16 +3,16 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistSearchResultsContent_viewer = {
     readonly match_artist: ReadonlyArray<({
-            readonly id: string;
-            readonly _id: string;
-            readonly __id: string;
-            readonly name: string | null;
-            readonly image: ({
-                readonly cropped: ({
-                    readonly url: string | null;
-                }) | null;
+        readonly id: string;
+        readonly _id: string;
+        readonly __id: string;
+        readonly name: string | null;
+        readonly image: ({
+            readonly cropped: ({
+                readonly url: string | null;
             }) | null;
-        }) | null> | null;
+        }) | null;
+    }) | null> | null;
 };
 
 
