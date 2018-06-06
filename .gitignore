@@ -6,6 +6,7 @@
 .storybook/manager.js
 .vscode/cSpell.json
 assets/reaction-force.js
+public/assets/fonts
 dist
 dist
 node_modules

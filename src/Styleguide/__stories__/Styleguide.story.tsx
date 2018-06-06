@@ -1,13 +1,22 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Styleguide } from "../"
+import { Artwork, Artist } from "../"
+import { Theme } from "../theme"
 
 const stories = storiesOf("Styleguide", module)
 
 stories
   .add("Static Artwork Page", () => {
-    return <Styleguide />
+    return (
+      <Theme>
+        <Artwork />
+      </Theme>
+    )
   })
   .add("Static Artist Page", () => {
-    return <Styleguide />
+    return (
+      <Theme>
+        <Artist />
+      </Theme>
+    )
   })
