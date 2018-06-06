@@ -32,6 +32,7 @@ export class ModalManager extends Component<
 > {
   state = {
     currentType: null,
+    copy: null,
   }
 
   openModal = (options: ModalOptions) => {
@@ -44,12 +45,6 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
-    })
-  }
-
-  onTypeChange = (type: ModalType, redirectUrl?: string) => {
-    this.openModal({
-      mode: type,
     })
   }
 
@@ -68,7 +63,7 @@ export class ModalManager extends Component<
     return (
       <DesktopModal
         show
-        onTypeChange={this.onTypeChange}
+        onTypeChange={this.openModal}
         onClose={this.closeModal}
         subtitle={copy}
       >
