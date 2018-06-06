@@ -8,8 +8,7 @@ export type TagArtworksContentQueryVariables = {
     readonly sort?: string | null;
 };
 export type TagArtworksContentQueryResponse = {
-    readonly node: ({
-    }) | null;
+    readonly node: ({}) | null;
 };
 
 

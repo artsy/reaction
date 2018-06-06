@@ -3,10 +3,10 @@
 import { ConcreteFragment } from "relay-runtime";
 export type Slider_sale = {
     readonly artworks: ReadonlyArray<({
-            readonly image: ({
-                readonly aspect_ratio: number | null;
-            }) | null;
-        }) | null> | null;
+        readonly image: ({
+            readonly aspect_ratio: number | null;
+        }) | null;
+    }) | null> | null;
 };
 
 

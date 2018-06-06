@@ -3,13 +3,13 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkGrid_artworks = {
     readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly __id: string;
-                readonly image: ({
-                    readonly aspect_ratio: number | null;
-                }) | null;
+        readonly node: ({
+            readonly __id: string;
+            readonly image: ({
+                readonly aspect_ratio: number | null;
             }) | null;
-        }) | null> | null;
+        }) | null;
+    }) | null> | null;
 };
 
 

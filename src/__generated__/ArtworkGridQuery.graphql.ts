@@ -6,8 +6,7 @@ export type ArtworkGridQueryVariables = {
 };
 export type ArtworkGridQueryResponse = {
     readonly artist: ({
-        readonly artworks: ({
-        }) | null;
+        readonly artworks: ({}) | null;
     }) | null;
 };
 

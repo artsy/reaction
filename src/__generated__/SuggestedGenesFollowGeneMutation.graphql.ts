@@ -13,18 +13,18 @@ export type SuggestedGenesFollowGeneMutationResponse = {
         readonly gene: ({
             readonly similar: ({
                 readonly edges: ReadonlyArray<({
-                        readonly node: ({
-                            readonly id: string;
-                            readonly _id: string;
-                            readonly __id: string;
-                            readonly name: string | null;
-                            readonly image: ({
-                                readonly cropped: ({
-                                    readonly url: string | null;
-                                }) | null;
+                    readonly node: ({
+                        readonly id: string;
+                        readonly _id: string;
+                        readonly __id: string;
+                        readonly name: string | null;
+                        readonly image: ({
+                            readonly cropped: ({
+                                readonly url: string | null;
                             }) | null;
                         }) | null;
-                    }) | null> | null;
+                    }) | null;
+                }) | null> | null;
             }) | null;
         }) | null;
     }) | null;

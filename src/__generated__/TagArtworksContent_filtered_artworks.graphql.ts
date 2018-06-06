@@ -9,10 +9,10 @@ export type TagArtworksContent_filtered_artworks = {
             readonly endCursor: string | null;
         };
         readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly __id: string;
-                }) | null;
-            }) | null> | null;
+            readonly node: ({
+                readonly __id: string;
+            }) | null;
+        }) | null> | null;
     }) | null;
 };
 
