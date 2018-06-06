@@ -11,6 +11,8 @@ import {
   TermsOfServiceCheckbox,
   Footer,
 } from "../../Components/Authentication/commonElements"
+import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
+import { MobileResetPasswordForm } from "../../Components/Authentication/Mobile/ResetPasswordForm"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -29,7 +31,7 @@ storiesOf("Components/Authentication/Desktop", module)
       <FormSwitcher type={ModalType.login} handleSubmit={submit} />
     </DesktopModal>
   ))
-  .add("Forgot Password", () => (
+  .add("Reset Password", () => (
     <DesktopModal show onClose={close}>
       <FormSwitcher type={ModalType.resetPassword} handleSubmit={submit} />
     </DesktopModal>
@@ -40,15 +42,34 @@ storiesOf("Components/Authentication/Desktop", module)
     </DesktopModal>
   ))
 
-storiesOf("Components/Authentication/Mobile", module).add("Sign Up", () => (
-  <MobileContainer>
-    <MobileSignUpForm
-      values={{}}
-      handleSubmit={() => null}
-      handleTypeChange={() => mode => null}
-    />
-  </MobileContainer>
-))
+storiesOf("Components/Authentication/Mobile", module)
+  .add("Login", () => (
+    <MobileContainer>
+      <MobileLoginForm
+        values={{}}
+        handleSubmit={() => null}
+        handleTypeChange={() => mode => null}
+      />
+    </MobileContainer>
+  ))
+  .add("Reset Password", () => (
+    <MobileContainer>
+      <MobileResetPasswordForm
+        values={{}}
+        handleSubmit={() => null}
+        handleTypeChange={() => mode => null}
+      />
+    </MobileContainer>
+  ))
+  .add("Sign Up", () => (
+    <MobileContainer>
+      <MobileSignUpForm
+        values={{}}
+        handleSubmit={() => null}
+        handleTypeChange={() => mode => null}
+      />
+    </MobileContainer>
+  ))
 
 storiesOf("Components/Authentication/Common Elements", module)
   .add("Footer - Signup", () => (
