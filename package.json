@@ -166,6 +166,7 @@
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
     "superagent": "^3.6.3",
+    "unstated": "^2.1.1",
     "url": "^0.11.0",
     "yup": "^0.24.1"
   },
