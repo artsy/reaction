@@ -21,7 +21,7 @@ export interface ArticleProps {
   isTruncated?: boolean
   emailSignupUrl?: string
   headerHeight?: string
-  marginTop?: string
+  marginTop: string | null | undefined
   display?: {
     name: string
     panel: object
@@ -33,6 +33,7 @@ export interface ArticleProps {
   closeViewer?: () => void
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: Object) => void
+  onExpand?: () => void
 }
 
 @track(
@@ -47,7 +48,7 @@ export interface ArticleProps {
     dispatch: data => Events.postEvent(data),
   }
 )
-export class Article extends React.Component<ArticleProps, null> {
+export class Article extends React.Component<ArticleProps> {
   getArticleLayout = () => {
     const { article } = this.props
 

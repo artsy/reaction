@@ -24,6 +24,11 @@ export interface ModalManagerState {
   currentType?: ModalType
 }
 
+export interface ModalOptions {
+  mode: ModalType
+  edirectUrl?: string
+}
+
 export class ModalManager extends Component<
   ModalManagerProps,
   ModalManagerState
@@ -32,7 +37,8 @@ export class ModalManager extends Component<
     currentType: null,
   }
 
-  openModal = (type: ModalType, redirectUrl?: string) => {
+  openModal = (options: ModalOptions) => {
+    const type = options.mode
     this.setState({
       currentType: type,
     })
@@ -41,6 +47,12 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
+    })
+  }
+
+  onTypeChange = (type: ModalType, redirectUrl?: string) => {
+    this.openModal({
+      mode: type,
     })
   }
 
@@ -59,7 +71,7 @@ export class ModalManager extends Component<
     return (
       <DesktopModal
         show
-        onTypeChange={this.openModal}
+        onTypeChange={this.onTypeChange}
         onClose={this.closeModal}
       >
         <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
