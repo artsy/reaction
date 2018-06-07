@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Theme } from "../../theme"
+import { Theme } from "@artsy/palette"
 import { withInfo } from "@storybook/addon-info"
 import { Tabs } from "../Tabs"
 

@@ -1,4 +1,4 @@
-import * as Grid from "styled-bootstrap-grid"
+import * as StyledGrid from "styled-bootstrap-grid"
 import { space } from "styled-system"
 export { media } from "styled-bootstrap-grid"
 
@@ -7,13 +7,13 @@ import styled, { StyledComponentClass } from "styled-components"
 
 const DEBUG = true
 
-export const Container = styled(Grid.Container)`
+export const Grid = styled(StyledGrid.Container)`
   ${space};
 `
-export const Row = styled(Grid.Row)`
+export const Row = styled(StyledGrid.Row)`
   ${space};
 `
-export const Col = styled(Grid.Col)`
+export const Col = styled(StyledGrid.Col)`
   ${space};
 
   ${() => {

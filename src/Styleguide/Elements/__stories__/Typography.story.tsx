@@ -1,12 +1,15 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Theme } from "../../theme"
+import { Theme, Display, Sans, Serif } from "@artsy/palette"
+import { Col } from "../Grid"
 import { withInfo } from "@storybook/addon-info"
-import { Display, Sans, Serif } from "../Typography"
 
 const stories = storiesOf("Styleguide/Typography", module)
 
 stories
+  .addDecorator(storyFn => {
+    return <Theme>{storyFn()}</Theme>
+  })
   .add(
     "Sans",
     withInfo(`
@@ -14,25 +17,19 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
+      // prettier-ignore
+      const sizes = ['1', '2', '3', '3t', '4', '4t', '5',
+                     '5t', '6', '8', '10', '12', '14', '16']
       return (
-        <Theme>
-          <div>
-            <Sans size="1">Donald Judd</Sans>
-            <Sans size="2">Donald Judd</Sans>
-            <Sans size="3">Donald Judd</Sans>
-            <Sans size="3t">Donald Judd</Sans>
-            <Sans size="4">Donald Judd</Sans>
-            <Sans size="4t">Donald Judd</Sans>
-            <Sans size="5">Donald Judd</Sans>
-            <Sans size="5t">Donald Judd</Sans>
-            <Sans size="6">Donald Judd</Sans>
-            <Sans size="8">Donald Judd</Sans>
-            <Sans size="10">Donald Judd</Sans>
-            <Sans size="12">Donald Judd</Sans>
-            <Sans size="14">Donald Judd</Sans>
-            <Sans size="16">Donald Judd</Sans>
-          </div>
-        </Theme>
+        <div>
+          {sizes.map(size => {
+            return (
+              <Col>
+                <Sans size={size}>Donald Judd</Sans>
+              </Col>
+            )
+          })}
+        </div>
       )
     })
   )
@@ -43,23 +40,19 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
+      // prettier-ignore
+      const sizes = ['1', '2', '3', '3t', '4', '4t', '5',
+                     '5t', '6', '8', '10', '12']
       return (
-        <Theme>
-          <div>
-            <Serif size="1">Donald Judd</Serif>
-            <Serif size="2">Donald Judd</Serif>
-            <Serif size="3">Donald Judd</Serif>
-            <Serif size="3t">Donald Judd</Serif>
-            <Serif size="4">Donald Judd</Serif>
-            <Serif size="4t">Donald Judd</Serif>
-            <Serif size="5">Donald Judd</Serif>
-            <Serif size="5t">Donald Judd</Serif>
-            <Serif size="6">Donald Judd</Serif>
-            <Serif size="8">Donald Judd</Serif>
-            <Serif size="10">Donald Judd</Serif>
-            <Serif size="12">Donald Judd</Serif>
-          </div>
-        </Theme>
+        <div>
+          {sizes.map(size => {
+            return (
+              <Col>
+                <Serif size={size}>Donald Judd</Serif>
+              </Col>
+            )
+          })}
+        </div>
       )
     })
   )
@@ -70,16 +63,19 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
+      // prettier-ignore
+      const sizes = ['2', '3t', '4t', '5t', '6']
+
       return (
-        <Theme>
-          <div>
-            <Display size="2">Donald Judd</Display>
-            <Display size="3t">Donald Judd</Display>
-            <Display size="4t">Donald Judd</Display>
-            <Display size="5t">Donald Judd</Display>
-            <Display size="6">Donald Judd</Display>
-          </div>
-        </Theme>
+        <div>
+          {sizes.map(size => {
+            return (
+              <Col>
+                <Display size={size}>Donald Judd</Display>
+              </Col>
+            )
+          })}
+        </div>
       )
     })
   )
