@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { FlexboxProperties, MarginProperties } from "../StyledSystemTypes"
+import { FlexboxProps, MarginProps } from "../StyledSystemTypes"
 import {
   flexDirection,
   alignItems,
@@ -8,7 +8,7 @@ import {
   space,
 } from "styled-system"
 
-export type FlexProps = FlexboxProperties & MarginProperties
+export type FlexProps = FlexboxProps & MarginProps
 
 export const Flex = styled.div.attrs<FlexProps>({})`
   display: flex;

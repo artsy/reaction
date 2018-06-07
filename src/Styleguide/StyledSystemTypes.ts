@@ -1,4 +1,4 @@
-export interface MarginProperties {
+export interface MarginProps {
   m?: number
   mr?: number
   ml?: number
@@ -6,7 +6,7 @@ export interface MarginProperties {
   mb?: number
 }
 
-export interface FlexboxProperties {
+export interface FlexboxProps {
   flexDirection?: "row" | "column"
   alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch"
   alignContent?:
