@@ -1,6 +1,8 @@
+// @ts-ignore
+import React from "react"
 import styled from "styled-components"
 
-interface AvatarProps {
+export interface AvatarProps {
   size: string
 }
 
