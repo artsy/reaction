@@ -1,6 +1,7 @@
 import { compact, last, uniq } from "lodash"
 import cheerio from "cheerio"
-import moment from "moment-timezone"
+import moment from "moment"
+import momentTz from "moment-timezone"
 import url from "url"
 import { ArticleData, DateFormat } from "../Publishing/Typings"
 
@@ -86,20 +87,20 @@ export const getDate = (date, format: DateFormat = "default") => {
     case "monthDay":
       return moment(date).format("MMM D")
     case "monthYear":
-      return moment(date)
+      return momentTz(date)
         .tz("America/New_York")
         .format("MMMM YYYY")
     case "condensed":
-      return moment(date)
+      return momentTz(date)
         .tz("America/New_York")
         .format("MMM D, YYYY")
     case "verbose":
       const day = isToday
         ? "Today"
-        : moment(date)
+        : momentTz(date)
             .tz("America/New_York")
             .format("MMM D, YYYY")
-      const time = moment(date)
+      const time = momentTz(date)
         .tz("America/New_York")
         .format("h:mm a")
       return `${day} at ${time}`
@@ -107,14 +108,14 @@ export const getDate = (date, format: DateFormat = "default") => {
       return isToday
         ? "Today"
         : isThisYear
-          ? moment(date)
+          ? momentTz(date)
               .tz("America/New_York")
               .format("MMM D")
-          : moment(date)
+          : momentTz(date)
               .tz("America/New_York")
               .format("MMM D, YYYY")
     default:
-      return moment(date)
+      return momentTz(date)
         .tz("America/New_York")
         .format("MMM D, YYYY h:mm a")
   }
