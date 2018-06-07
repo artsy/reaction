@@ -7,8 +7,12 @@ const Flex = styled.div`
   flex-direction: row;
 `
 
-const RoundedImage = styled.img`
-  width: ${props => props.size};
+interface RoundedImageProps {
+  size: string
+}
+
+const RoundedImage = styled.img.attrs<RoundedImageProps>({})`
+  width: ${(props: RoundedImageProps) => props.size};
   height: ${props => props.size};
   border-radius: ${props => props.size};
 `
