@@ -147,8 +147,8 @@ export class Input extends React.Component<InputProps, InputState> {
         <Container>
           <InputContainer
             hasLabel={!!label}
-            focused={this.state.focused}
             hasError={!!error}
+            className={this.state.focused ? "focused" : ""}
           >
             <Label out={!showLabel}>{label}</Label>
             {!!leftView && leftView}
@@ -211,7 +211,6 @@ const InputComponent = styled.input`
 
 const InputContainer = styled.div.attrs<{
   hasLabel?: boolean
-  focused?: boolean
   hasError: boolean
 }>({})`
   ${borderedInput};
