@@ -1,11 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type SuggestedGenesQueryVariables = {
-};
+export type SuggestedGenesQueryVariables = {};
 export type SuggestedGenesQueryResponse = {
-    readonly suggested_genes: ReadonlyArray<({
-        }) | null> | null;
+    readonly suggested_genes: ReadonlyArray<({}) | null> | null;
 };
 
 

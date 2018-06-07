@@ -1,8 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type Metadata_artwork = {
-};
+export type Metadata_artwork = {};
 
 
 

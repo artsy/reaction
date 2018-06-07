@@ -5,8 +5,7 @@ export type ArtistFollowQueryVariables = {
     readonly artistID: string;
 };
 export type ArtistFollowQueryResponse = {
-    readonly artist: ({
-    }) | null;
+    readonly artist: ({}) | null;
 };
 
 

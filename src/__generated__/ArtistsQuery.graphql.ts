@@ -9,8 +9,7 @@ export type ArtistsQueryVariables = {
     readonly aggregations?: ReadonlyArray<ArtworkAggregation | null> | null;
 };
 export type ArtistsQueryResponse = {
-    readonly node: ({
-    }) | null;
+    readonly node: ({}) | null;
 };
 
 
