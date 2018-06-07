@@ -4,6 +4,7 @@ import { Container, Col, Row } from "../Elements/Grid"
 import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
+import { Banner } from "./Banner"
 
 export class Artwork extends Component {
   state = {
@@ -19,6 +20,11 @@ export class Artwork extends Component {
   render() {
     return (
       <Container fluid>
+        <Row>
+          <Col sm={8}>
+            <Banner />
+          </Col>
+        </Row>
         <Row>
           <Col sm={8}>
             <ArtworkSlider>
