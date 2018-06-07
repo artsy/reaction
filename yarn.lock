@@ -9916,10 +9916,6 @@ react-overlays@^0.8.3:
     react-transition-group "^2.2.0"
     warning "^3.0.0"
 
-react-primatives@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/react-primatives/-/react-primatives-0.0.5.tgz#0448e56f8bf9509e0ccbcd06eae1c5d4e6484c1d"
-
 react-reconciler@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.7.0.tgz#9614894103e5f138deeeb5eabaf3ee80eb1d026d"
