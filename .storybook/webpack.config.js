@@ -87,6 +87,7 @@ module.exports = (baseConfig, env) => {
       rules: [
         {
           test: /\.tsx?$/,
+          include: [/src/],
           exclude: [/node_modules/, /__tests__/],
           use: [
             { loader: "cache-loader" },
@@ -96,6 +97,11 @@ module.exports = (baseConfig, env) => {
                 cacheDirectory: true,
               },
             },
+            // NOTE: Painfully slow startup
+            // See: https://github.com/strothj/react-docgen-typescript-loader
+            // {
+            //   loader: "react-docgen-typescript-loader",
+            // },
           ],
         },
       ],

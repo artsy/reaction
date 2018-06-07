@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import { color, maxWidth, space, textAlign, themeGet } from "styled-system"
@@ -33,13 +34,25 @@ const StyledText = styled.div`
   ${textAlign};
 `
 
-export const Sans = props => (
-  <StyledText family="unica" typeSize={`sans${props.size || 4}`} {...props} />
-)
+const propTypes = {
+  size: PropTypes.string,
+  weight: PropTypes.string,
+  italics: PropTypes.bool,
+}
+
+const defaultProps = {
+  size: "4",
+  weight: "medium",
+  italic: false,
+}
 
 // Example: <Sans size="2" weight="medium" italic>
 
-export const Serif = props => (
+export const Sans: any = props => (
+  <StyledText family="unica" typeSize={`sans${props.size || 4}`} {...props} />
+)
+
+export const Serif: any = props => (
   <StyledText
     family="garamond"
     typeSize={`serif${props.size || 4}`}
@@ -54,3 +67,7 @@ export const Display = props => (
     {...props}
   />
 )
+;[Sans, Serif, Display].forEach(TypeStyle => {
+  TypeStyle.propTypes = propTypes
+  TypeStyle.defaultProps = defaultProps
+})
