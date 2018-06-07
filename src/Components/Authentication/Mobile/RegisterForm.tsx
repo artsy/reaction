@@ -2,7 +2,7 @@ import React from "react"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 
-import { GrayFacebookButton, TOSCheckbox } from "../commonElements"
+import { Footer, TOSCheckbox } from "../commonElements"
 import styled from "styled-components"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
@@ -64,13 +64,9 @@ export const MobileRegisterForm: FormComponentType = props => {
             setTouched={setTouched}
             quick
           />
-          <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
-          <LoginText>
-            Already have an account?{" "}
-            <TextLink onClick={() => props.handleTypeChange(ModalType.login)}>
-              Login
-            </TextLink>
-          </LoginText>
+          <Footer
+            handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+          />
         </div>
       )}
     </Step>,
@@ -199,13 +195,6 @@ const Logo = styled(Icon).attrs({
   fontSize: "34px",
 })`
   display: block;
-`
-
-const LoginText = styled(Text).attrs({
-  color: Colors.grayDark,
-  align: "center",
-})`
-  margin-top: 0;
 `
 
 const BackButton = styled.div`

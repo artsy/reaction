@@ -1,9 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
+import styled from "styled-components"
+import Colors from "Assets/Colors"
 
 import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { ModalType } from "../Authentication/Types"
+import { MobileRegisterForm } from "../../Components/Authentication/Mobile/RegisterForm"
+import { Footer } from "../../Components/Authentication/commonElements"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -32,3 +36,35 @@ storiesOf("Components/Authentication/Desktop", module)
       <FormSwitcher type={ModalType.signup} handleSubmit={submit} />
     </DesktopModal>
   ))
+
+storiesOf("Components/Authentication/Mobile", module).add(
+  "RegisterForm",
+  () => (
+    <MobileContainer>
+      <MobileRegisterForm
+        values={{}}
+        handleSubmit={() => null}
+        handleTypeChange={() => mode => null}
+      />
+    </MobileContainer>
+  )
+)
+
+storiesOf("Components/Authentication/commonElements", module)
+  .add("Footer - Signup", () => <Footer mode="signup" />)
+  .add("Footer - Reset Password", () => <Footer mode="reset_password" />)
+  .add("Footer - Login", () => <Footer mode="login" />)
+
+const MobileContainer = styled.div`
+  border: 1px solid ${Colors.grayRegular};
+  display: flex;
+  width: 320px;
+  height: 460px;
+  margin: 0 auto;
+  align-self: center;
+  justify-content: center;
+
+  form {
+    width: 100%;
+  }
+`

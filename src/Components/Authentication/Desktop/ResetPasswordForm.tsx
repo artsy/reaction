@@ -2,7 +2,7 @@ import React from "react"
 import { Formik, FormikProps } from "formik"
 
 import {
-  ChangeMode,
+  Footer,
   FormContainer as Form,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
@@ -45,9 +45,9 @@ export const ResetPasswordForm: FormComponentType = props => {
             <Button block type="submit" disabled={isSubmitting}>
               Send Reset Instructions
             </Button>
-            <ChangeMode onClick={() => props.handleTypeChange(ModalType.login)}>
-              Log In
-            </ChangeMode>
+            <Footer
+              handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+            />
           </Form>
         )
       }}
