@@ -4,7 +4,7 @@ import { pMedia } from "../../Helpers"
 import { NewsDateHeader } from "./NewsDateHeader"
 
 interface Props {
-  date: string
+  date?: string
 }
 
 export const NewsDateDivider: React.SFC<Props> = props => {

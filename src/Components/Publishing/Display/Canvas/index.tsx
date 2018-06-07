@@ -24,7 +24,7 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 @track()
-export class DisplayCanvas extends React.Component<DisplayCanvasProps, null> {
+export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
   constructor(props) {
     super(props)
     this.trackViewability = this.trackViewability.bind(this)

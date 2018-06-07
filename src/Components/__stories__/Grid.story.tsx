@@ -3,7 +3,7 @@ import React from "react"
 
 import { Col, Row } from "../Grid"
 
-const boxStyle = {
+const boxStyle: React.CSSProperties = {
   backgroundColor: "#f8f8f8",
   height: "100px",
   lineHeight: "100px",

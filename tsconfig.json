@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "declaration": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "es2016", "es2017"],
@@ -33,7 +33,6 @@
     "externals",
     "danger",
     "src/**/__tests__",
-    "src/**/__stories__",
     "src/__generated__/**.ts"
   ]
 }
