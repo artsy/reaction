@@ -52,7 +52,7 @@ class Artworks extends React.Component<Props> {
     const pages = []
     for (
       page = 1;
-      page < this.props.filtered_artworks.artworks.totalPages;
+      page < this.props.filtered_artworks.artworks.totalPages + 1;
       page++
     ) {
       pages.push(
@@ -61,7 +61,7 @@ class Artworks extends React.Component<Props> {
           onClick={e => {
             this.loadPage(
               filters,
-              parseInt(e.currentTarget.getAttribute("data-page"))
+              parseInt(e.currentTarget.getAttribute("data-page"), 10)
             )
           }}
         >
