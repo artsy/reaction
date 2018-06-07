@@ -1,4 +1,4 @@
-import { FormikProps } from "formik"
+import { FormikActions, FormikProps } from "formik"
 
 export type FormValues = { [key: string]: any } | null
 export type FormErrors = { [key: string]: any } | null
@@ -22,6 +22,10 @@ export interface StepProps {
   children:
     | React.ComponentClass<WizardStepChildProps>
     | React.SFC<WizardStepChildProps>
+  onSubmit?: (
+    values: FormValues,
+    actions?: FormikActions<FormValues>
+  ) => boolean | Promise<boolean>
 }
 
 export interface WizardRenderProps {
@@ -31,6 +35,8 @@ export interface WizardRenderProps {
   next: (e: React.FormEvent<any> | null, values: FormValues) => void
   currentStepIndex: number
   steps: StepElement[]
+  shouldAllowNext: boolean
+  progressPercentage: number
 }
 
 export interface WizardContext {

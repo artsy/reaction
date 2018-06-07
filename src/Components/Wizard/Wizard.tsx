@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { StepElement, StepProps, WizardRenderProps } from "./types"
 import { Formik, FormikActions } from "formik"
 import { FormValues, WizardContext } from "./types"
+import { isEmpty } from "lodash"
 
 interface WizardProps {
   onComplete?: (
@@ -89,9 +90,11 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
       currentStep: this.currentStep,
       isLastStep: this.isLastStep,
       previous: this.previous,
-      next: this.next,
+      next: this.handleSubmit,
       currentStepIndex: this.state.currentStepIndex,
       steps: this.steps,
+      shouldAllowNext: false,
+      progressPercentage: (this.state.currentStepIndex + 1) / this.steps.length,
     }
   }
 
@@ -122,7 +125,24 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
       onComplete && onComplete(values, actions)
     } else {
       actions && actions.setSubmitting(false)
-      this.next(null, values)
+      // If exist, call onSubmit on the current step
+      const onSubmit = this.currentStep.props.onSubmit
+      if (onSubmit) {
+        actions.setSubmitting(true)
+        const result = onSubmit(values, actions)
+
+        if (result instanceof Boolean) {
+          return result
+        } else {
+          return (result as Promise<boolean>).then(shouldGoNext => {
+            if (shouldGoNext) {
+              this.next(null, values)
+            }
+          })
+        }
+      } else {
+        this.next(null, values)
+      }
     }
   }
 
@@ -141,6 +161,10 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
             wizard: this.wizardProps,
             form: formikRenderProps,
           }
+
+          context.wizard.shouldAllowNext =
+            isEmpty(formikRenderProps.errors) &&
+            !isEmpty(formikRenderProps.touched)
 
           return (
             <form onSubmit={formikRenderProps.handleSubmit}>

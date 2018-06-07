@@ -1,5 +1,5 @@
 jest.mock("isomorphic-fetch")
-import metaphysics from "../metaphysics"
+import { query as metaphysics } from "../metaphysics"
 
 declare const global: any
 global.fetch = jest.fn(() =>
@@ -15,7 +15,10 @@ it("Adds a user agent for reaction", () => {
   return metaphysics("query {}").then(() => {
     expect(global.fetch).toBeCalledWith(undefined, {
       body: '{"query":"query {}"}',
-      headers: { "Content-Type": "application/json", "User-Agent": "Reaction" },
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "Reaction",
+      },
       method: "POST",
     })
   })
