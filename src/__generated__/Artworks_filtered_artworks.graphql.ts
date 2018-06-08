@@ -8,6 +8,23 @@ export type Artworks_filtered_artworks = {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
+        readonly pageCursors: ({
+            readonly around: ReadonlyArray<({
+                readonly cursor: string;
+                readonly page: number;
+                readonly isCurrent: boolean;
+            }) | null>;
+            readonly first: ({
+                readonly cursor: string;
+                readonly page: number;
+                readonly isCurrent: boolean;
+            }) | null;
+            readonly last: ({
+                readonly cursor: string;
+                readonly page: number;
+                readonly isCurrent: boolean;
+            }) | null;
+        }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly __id: string;
@@ -25,33 +42,45 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-};
+},
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cursor",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "page",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "isCurrent",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "Artworks_filtered_artworks",
   "type": "FilterArtworks",
-  "metadata": {
-    "connection": [
-      {
-        "count": "count",
-        "cursor": "cursor",
-        "direction": "forward",
-        "path": [
-          "artworks"
-        ]
-      }
-    ]
-  },
+  "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "count",
+      "name": "first",
       "type": "Int",
       "defaultValue": 10
     },
     {
       "kind": "LocalArgument",
-      "name": "cursor",
+      "name": "after",
       "type": "String",
       "defaultValue": ""
     }
@@ -61,9 +90,22 @@ return {
     {
       "kind": "LinkedField",
       "alias": "artworks",
-      "name": "__Artworks_filtered_artworks_connection",
+      "name": "artworks_connection",
       "storageKey": null,
-      "args": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "after",
+          "variableName": "after",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
+          "name": "first",
+          "variableName": "first",
+          "type": "Int"
+        }
+      ],
       "concreteType": "ArtworkConnection",
       "plural": false,
       "selections": [
@@ -93,6 +135,47 @@ return {
           ]
         },
         {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageCursors",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageCursors",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "around",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PageCursor",
+              "plural": true,
+              "selections": v1
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "first",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PageCursor",
+              "plural": false,
+              "selections": v1
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "last",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PageCursor",
+              "plural": false,
+              "selections": v1
+            }
+          ]
+        },
+        {
           "kind": "FragmentSpread",
           "name": "ArtworkGrid_artworks",
           "args": null
@@ -115,22 +198,8 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0,
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__typename",
-                  "args": null,
-                  "storageKey": null
-                }
+                v0
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "cursor",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -139,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '250ba34f28ae36138f84452694a88f27';
+(node as any).hash = '94cfa97000cde16ce76ce1cb64ad74fa';
 export default node;
