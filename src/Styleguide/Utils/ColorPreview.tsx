@@ -15,7 +15,7 @@ function getContrast(hex) {
 }
 const visibleColor = color => getContrast(theme.colors[color])
 
-export interface ColorBlockProps {
+interface ColorBlockProps {
   bg: string
 }
 
