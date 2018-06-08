@@ -74,6 +74,7 @@ export const SignUpForm: FormComponentType = props => {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
+              showPasswordMessage
             />
             <Input
               block
