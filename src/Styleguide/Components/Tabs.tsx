@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { borders, themeGet } from "styled-system"
-import { Display } from "../Elements/Typography"
+import { Display } from "@artsy/palette"
 
 export interface TabsProps {
   labels: any[]

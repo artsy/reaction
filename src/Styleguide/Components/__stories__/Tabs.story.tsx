@@ -1,6 +1,5 @@
-import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Theme } from "../../theme"
+import { storiesOf } from "storybook/storiesOf"
 import { withInfo } from "@storybook/addon-info"
 import { Tabs } from "../Tabs"
 
@@ -11,10 +10,6 @@ storiesOf("Styleguide/Components", module).add(
     Tabs
 
   `)(() => {
-    return (
-      <Theme>
-        <Tabs labels={["Hello", "World"]} />
-      </Theme>
-    )
+    return <Tabs labels={["Hello", "World"]} />
   })
 )

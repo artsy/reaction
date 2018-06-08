@@ -1,6 +1,6 @@
 import React from "react"
 import { Avatar } from "../Elements/Avatar"
-import { Sans, Serif } from "../Elements/Typography"
+import { Sans, Serif } from "@artsy/palette"
 import { Flex } from "../Elements/Flex"
 
 export class Banner extends React.Component {

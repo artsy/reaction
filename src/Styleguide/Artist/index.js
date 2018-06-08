@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Container, Col, Row, media } from "../Elements/Grid"
+import { Grid, Col, Row, media } from "../Elements/Grid"
 import { Articles } from "./Articles"
 import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
@@ -8,7 +8,7 @@ import { Overview } from "./Overview"
 import { Shows } from "./Shows"
 import { RelatedArtists } from "./RelatedArtists"
 
-import { Serif } from "../Elements/Typography"
+import { Serif } from "@artsy/palette"
 import { Slider } from "../Components/Slider"
 import { Button } from "../Elements/Button"
 
@@ -25,7 +25,7 @@ export class Artist extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Grid fluid>
         <Row mb={7}>
           <Col>
             <Slider size="large" />
@@ -134,7 +134,7 @@ export class Artist extends Component {
             </Footer>
           </Col>
         </Row>
-      </Container>
+      </Grid>
     )
   }
 }

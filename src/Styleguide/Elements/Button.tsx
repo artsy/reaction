@@ -1,6 +1,6 @@
 import React, { SFC } from "react"
 import styled from "styled-components"
-import { Sans } from "./Typography"
+import { Sans } from "@artsy/palette"
 import { pick } from "lodash/fp"
 
 import {
