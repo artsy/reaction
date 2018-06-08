@@ -11,9 +11,14 @@ import {
   space,
   textAlign,
   width,
+  BorderRadiusProps,
+  PseudoStyleValue,
+  SpaceProps,
 } from "styled-system"
 
-export const Button: SFC = ({ children, ...rest }) => {
+export type ButtonProps = SpaceProps & PseudoStyleValue & BorderRadiusProps
+
+export const Button: SFC<ButtonProps> = ({ children, ...rest }) => {
   const textProps = pick(["color", "size", "weight"], rest)
 
   return (
@@ -26,7 +31,6 @@ export const Button: SFC = ({ children, ...rest }) => {
 Button.defaultProps = {
   color: "white100",
   backgroundColor: "black100",
-  border: 0,
   borderRadius: 3,
   px: 4,
   py: 3,
