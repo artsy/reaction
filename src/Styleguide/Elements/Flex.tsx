@@ -1,20 +1,28 @@
 import styled from "styled-components"
-import { FlexboxProps, MarginProps } from "../StyledSystemTypes"
+
 import {
-  flexDirection,
-  alignItems,
   alignContent,
+  alignItems,
+  AlignItemsProps,
+  flexDirection,
+  FlexDirectionProps,
   justifyContent,
+  JustifyContentProps,
   space,
+  SpaceProps,
 } from "styled-system"
 
-export type FlexProps = FlexboxProps & MarginProps
+interface FlexProps
+  extends AlignItemsProps,
+    FlexDirectionProps,
+    JustifyContentProps,
+    SpaceProps {}
 
 export const Flex = styled.div.attrs<FlexProps>({})`
   display: flex;
-  ${flexDirection};
-  ${alignItems};
   ${alignContent};
+  ${alignItems};
+  ${flexDirection};
   ${justifyContent};
   ${space};
 `
