@@ -12,7 +12,7 @@ import { FormComponentType, ModalType } from "../Types"
 import Text from "../../Text"
 import TextLink from "../../TextLink"
 import Colors from "Assets/Colors"
-import { CustomMobileValidator, MobileRegisterValidator } from "../Validators"
+import { CustomMobileValidator, MobileSignUpValidator } from "../Validators"
 import { metaphysics } from "../../../Utils/metaphysics"
 import * as sharify from "sharify"
 
@@ -40,12 +40,9 @@ const checkEmail = (values, actions) => {
   })
 }
 
-export const MobileRegisterForm: FormComponentType = props => {
+export const MobileSignUpForm: FormComponentType = props => {
   const steps = [
-    <Step
-      validationSchema={MobileRegisterValidator.email}
-      onSubmit={checkEmail}
-    >
+    <Step validationSchema={MobileSignUpValidator.email} onSubmit={checkEmail}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
@@ -70,7 +67,7 @@ export const MobileRegisterForm: FormComponentType = props => {
         </div>
       )}
     </Step>,
-    <Step validationSchema={MobileRegisterValidator.password}>
+    <Step validationSchema={MobileSignUpValidator.password}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
@@ -88,6 +85,7 @@ export const MobileRegisterForm: FormComponentType = props => {
             onBlur={handleBlur}
             setTouched={setTouched}
             quick
+            showPasswordMessage
           />
         </div>
       )}
@@ -96,39 +94,57 @@ export const MobileRegisterForm: FormComponentType = props => {
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
-      }) => (
-        <div style={{ marginBottom: "80px" }}>
-          <Input
-            block
-            error={errors.name}
-            name="name"
-            label="Name"
-            placeholder="Name"
-            type="text"
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            setTouched={setTouched}
-            quick
-          />
-          <TOSCheckbox
-            error={
-              touched.acceptedTermsOfService && errors.acceptedTermsOfService
-            }
-            value={values.acceptedTermsOfService}
-            type="checkbox"
-            name="accepted-terms-of-service"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            errorMessage={errors.acceptedTermsOfService}
-          >
-            <Text color={Colors.grayDark}>
-              I Agree to the <TextLink>Terms Of Service</TextLink> And{" "}
-              <TextLink>Privacy Policy</TextLink>
-            </Text>
-          </TOSCheckbox>
-        </div>
-      )}
+      }) => {
+        const checkboxError =
+          touched.acceptedTermsOfService && errors.acceptedTermsOfService
+        return (
+          <div style={{ marginBottom: "80px" }}>
+            <Input
+              block
+              error={errors.name}
+              name="name"
+              label="Name"
+              placeholder="Name"
+              type="text"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              setTouched={setTouched}
+              quick
+            />
+            <TOSCheckbox
+              error={checkboxError}
+              value={values.acceptedTermsOfService}
+              checked={values.acceptedTermsOfService}
+              type="checkbox"
+              name="acceptedTermsOfService"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            >
+              <Text color={checkboxError ? Colors.redMedium : Colors.grayDark}>
+                {"I agree to the "}
+                <TextLink
+                  href="https://www.artsy.net/terms"
+                  target="_blank"
+                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
+                  underline
+                >
+                  Terms Of Service
+                </TextLink>
+                {" and "}
+                <TextLink
+                  href="https://www.artsy.net/privacy"
+                  target="_blank"
+                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
+                  underline
+                >
+                  Privacy Policy
+                </TextLink>
+              </Text>
+            </TOSCheckbox>
+          </div>
+        )
+      }}
     </Step>,
   ]
   return (

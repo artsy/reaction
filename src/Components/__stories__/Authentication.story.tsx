@@ -6,7 +6,7 @@ import Colors from "Assets/Colors"
 import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { ModalType } from "../Authentication/Types"
-import { MobileRegisterForm } from "../../Components/Authentication/Mobile/RegisterForm"
+import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
 import { Footer } from "../../Components/Authentication/Footer"
 
 const submit = (values, actions) => {
@@ -37,18 +37,15 @@ storiesOf("Components/Authentication/Desktop", module)
     </DesktopModal>
   ))
 
-storiesOf("Components/Authentication/Mobile", module).add(
-  "RegisterForm",
-  () => (
-    <MobileContainer>
-      <MobileRegisterForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
-      />
-    </MobileContainer>
-  )
-)
+storiesOf("Components/Authentication/Mobile", module).add("Sign Up", () => (
+  <MobileContainer>
+    <MobileSignUpForm
+      values={{}}
+      handleSubmit={() => null}
+      handleTypeChange={() => mode => null}
+    />
+  </MobileContainer>
+))
 
 storiesOf("Components/Authentication/Common Elements", module)
   .add("Footer - Signup", () => (

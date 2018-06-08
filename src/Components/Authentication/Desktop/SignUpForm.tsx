@@ -8,7 +8,7 @@ import TextLink from "Components/TextLink"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
 import Button from "Components/Buttons/Inverted"
-import { RegisterValidator } from "../Validators"
+import { SignUpValidator } from "../Validators"
 import Colors from "Assets/Colors"
 
 const SignUpButton = styled(Button).attrs({
@@ -23,7 +23,7 @@ export const SignUpForm: FormComponentType = props => {
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={RegisterValidator}
+      validationSchema={SignUpValidator}
     >
       {({
         values,
