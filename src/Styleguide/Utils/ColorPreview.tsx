@@ -1,9 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { color } from "styled-system"
-import { Display } from "../Elements/Typography"
+import { Display, themeProps } from "@artsy/palette"
 import { Flex } from "../Elements/Flex"
-import { theme } from "../theme"
 
 // http://24ways.org/2010/calculating-color-contrast/
 function getContrast(hex) {
@@ -13,7 +12,7 @@ function getContrast(hex) {
   let yiq = (r * 299 + g * 587 + b * 114) / 1000
   return yiq >= 128 ? "black" : "white"
 }
-const visibleColor = color => getContrast(theme.colors[color])
+const visibleColor = color => getContrast(themeProps.colors[color])
 
 export interface ColorBlockProps {
   bg: string
@@ -33,7 +32,7 @@ const LabeledColorBlock = ({ name }) => (
         {name.toUpperCase()}
       </Display>
       <Display color={visibleColor(name)} size="4t">
-        {theme.colors[name]}
+        {themeProps.colors[name]}
       </Display>
     </Flex>
   </ColorBlock>
@@ -47,6 +46,8 @@ const Grid = styled.div`
 
 export const ColorPreview = () => (
   <Grid>
-    {Object.keys(theme.colors).map(color => <LabeledColorBlock name={color} />)}
+    {Object.keys(themeProps.colors).map(color => (
+      <LabeledColorBlock name={color} />
+    ))}
   </Grid>
 )
