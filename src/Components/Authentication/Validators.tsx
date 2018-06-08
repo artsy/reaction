@@ -14,7 +14,7 @@ const acceptedTermsOfService = Yup.boolean()
   .required("You must agree to our terms to continue.")
   .oneOf([true])
 
-export const RegisterValidator = Yup.object().shape({
+export const SignUpValidator = Yup.object().shape({
   name,
   email,
   password: Yup.string()
@@ -30,7 +30,7 @@ export const LoginValidator = Yup.object().shape({
   password: Yup.string().required("Password required."),
 })
 
-export const MobileRegisterValidator = {
+export const MobileSignUpValidator = {
   email: Yup.object().shape({ email }),
   name: Yup.object().shape({ name }),
   password: Yup.object().shape({ password }),

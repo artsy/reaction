@@ -2,26 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import {
-  ChangeMode,
-  FormContainer,
-  GrayFacebookButton,
-  TOSCheckbox,
-} from "../commonElements"
+import { Footer, FormContainer, TOSCheckbox } from "../commonElements"
 import Text from "Components/Text"
 import TextLink from "Components/TextLink"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
 import Button from "Components/Buttons/Inverted"
-import { RegisterValidator } from "../Validators"
+import { SignUpValidator } from "../Validators"
 import Colors from "Assets/Colors"
-
-const LoginText = styled(Text).attrs({
-  color: Colors.grayDark,
-  align: "center",
-})`
-  margin: 0;
-`
 
 const SignUpButton = styled(Button).attrs({
   type: "submit",
@@ -35,7 +23,7 @@ export const SignUpForm: FormComponentType = props => {
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={RegisterValidator}
+      validationSchema={SignUpValidator}
     >
       {({
         values,
@@ -119,15 +107,9 @@ export const SignUpForm: FormComponentType = props => {
               </Text>
             </TOSCheckbox>
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
-            <GrayFacebookButton>Sign up with Facebook</GrayFacebookButton>
-            <LoginText>
-              Already have an account?{" "}
-              <ChangeMode
-                onClick={() => props.handleTypeChange(ModalType.login)}
-              >
-                Login
-              </ChangeMode>
-            </LoginText>
+            <Footer
+              handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+            />
           </FormContainer>
         )
       }}
