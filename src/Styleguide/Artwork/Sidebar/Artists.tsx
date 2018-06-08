@@ -1,5 +1,5 @@
 import React from "react"
-import { Serif } from "../../Elements/Typography"
+import { Serif } from "@artsy/palette"
 import TextLink from "../../../Components/TextLink"
 import { FollowArtistButton } from "../../../Components/FollowButton/FollowArtistButton"
 
