@@ -1,4 +1,4 @@
-import { storiesOf } from "@storybook/react"
+import { storiesOf } from "storybook/storiesOf"
 import React from "react"
 import { Avatar } from "../Avatar"
 
