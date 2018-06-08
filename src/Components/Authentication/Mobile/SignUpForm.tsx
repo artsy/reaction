@@ -2,7 +2,7 @@ import React from "react"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 
-import { Footer, TOSCheckbox } from "../commonElements"
+import { Footer, MobileHeader, TOSCheckbox } from "../commonElements"
 import styled from "styled-components"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
@@ -60,9 +60,6 @@ export const MobileSignUpForm: FormComponentType = props => {
             onBlur={handleBlur}
             setTouched={setTouched}
             quick
-          />
-          <Footer
-            handleTypeChange={() => props.handleTypeChange(ModalType.login)}
           />
         </div>
       )}
@@ -163,9 +160,7 @@ export const MobileSignUpForm: FormComponentType = props => {
                   fontSize="20px"
                 />
               </BackButton>
-              <Header>
-                <Logo name="logotype" />
-              </Header>
+              <MobileHeader>Sign up</MobileHeader>
               {currentStep}
               <Button
                 onClick={form.handleSubmit as any}
@@ -174,6 +169,9 @@ export const MobileSignUpForm: FormComponentType = props => {
               >
                 Next
               </Button>
+              <Footer
+                handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+              />
             </InnerWrapper>
           </Container>
         )
@@ -195,22 +193,6 @@ const InnerWrapper = styled.div`
   position: relative;
   margin-left: 35px;
   margin-right: 35px;
-`
-
-const Header = styled.div`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  flex-direction: row;
-  padding: 10px;
-  margin: 20px 0 0;
-`
-
-const Logo = styled(Icon).attrs({
-  color: "black",
-  fontSize: "34px",
-})`
-  display: block;
 `
 
 const BackButton = styled.div`

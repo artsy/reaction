@@ -24,13 +24,8 @@ const StyledCheckbox = styled(Checkbox)`
   margin-bottom: 5px;
 `
 
-export const ChangeMode = styled.a`
-  color: ${Colors.grayDark};
-  ${garamond("s14")};
-`
-
 export const SmallTextLink = styled.a`
-  color: ${Colors.grayDark};
+  color: ${Colors.black30};
   text-decoration: underline;
   cursor: pointer;
   ${unica("s12")};
@@ -38,7 +33,7 @@ export const SmallTextLink = styled.a`
 
 export const SmallText = styled.span`
   margin: 0px;
-  color: ${Colors.grayDark};
+  color: ${Colors.black30};
   ${unica("s12")};
 `
 
