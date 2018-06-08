@@ -27,6 +27,7 @@
       "extensions": [".js", ".jsx", ".ts", ".tsx"],
       "root": ["./src"],
       "alias": {
+        "storybook": "./src/__stories__",
         "Assets": "./src/Assets",
         "Components": "./src/Components"
       }

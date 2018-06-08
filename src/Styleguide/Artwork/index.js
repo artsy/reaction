@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Container, Col, Row } from "../Elements/Grid"
+import { Grid, Col, Row } from "../Elements/Grid"
 import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
@@ -19,7 +19,7 @@ export class Artwork extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Grid fluid>
         <Row>
           <Col sm={8}>
             <Banner
@@ -226,7 +226,7 @@ export class Artwork extends Component {
             </Footer>
           </Col>
         </Row>
-      </Container>
+      </Grid>
     )
   }
 }

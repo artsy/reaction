@@ -1,20 +1,21 @@
-import * as Grid from "styled-bootstrap-grid"
-import { space } from "styled-system"
+import * as StyledGrid from "styled-bootstrap-grid"
+import { space, width } from "styled-system"
 export { media } from "styled-bootstrap-grid"
 
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 
-const DEBUG = true
+const DEBUG = false
 
-export const Container = styled(Grid.Container)`
+export const Grid = styled(StyledGrid.Container)`
   ${space};
 `
-export const Row = styled(Grid.Row)`
+export const Row = styled(StyledGrid.Row)`
   ${space};
 `
-export const Col = styled(Grid.Col)`
+export const Col = styled(StyledGrid.Col)`
   ${space};
+  ${width};
 
   ${() => {
     if (DEBUG) {
