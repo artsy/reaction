@@ -21,6 +21,7 @@
     "sourceMap": true,
     "target": "es2015",
     "paths": {
+      "storybook/*": ["./__stories__/*"],
       "Assets/*": ["./Assets/*"],
       "^Components/*": ["./Components/*"]
     }

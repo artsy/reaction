@@ -1,15 +1,20 @@
-import { storiesOf } from "@storybook/react"
+import { storiesOf } from "storybook/storiesOf"
 import React from "react"
-import { Theme, Display, Sans, Serif } from "@artsy/palette"
+import { Display, Sans, Serif, themeProps } from "@artsy/palette"
 import { Col } from "../Grid"
 import { withInfo } from "@storybook/addon-info"
 
 const stories = storiesOf("Styleguide/Typography", module)
 
+function getTypeSizes(type) {
+  const sizes = Object.keys(themeProps.typeSizes)
+    .filter(size => size.includes(type))
+    .map(size => size.replace(type, ""))
+
+  return sizes
+}
+
 stories
-  .addDecorator(storyFn => {
-    return <Theme>{storyFn()}</Theme>
-  })
   .add(
     "Sans",
     withInfo(`
@@ -17,14 +22,13 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
-      // prettier-ignore
-      const sizes = ['1', '2', '3', '3t', '4', '4t', '5',
-                     '5t', '6', '8', '10', '12', '14', '16']
+      const sizes = getTypeSizes("sans")
+
       return (
         <div>
-          {sizes.map(size => {
+          {sizes.map((size, key) => {
             return (
-              <Col>
+              <Col key={key}>
                 <Sans size={size}>Donald Judd</Sans>
               </Col>
             )
@@ -40,9 +44,8 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
-      // prettier-ignore
-      const sizes = ['1', '2', '3', '3t', '4', '4t', '5',
-                     '5t', '6', '8', '10', '12']
+      const sizes = getTypeSizes("serif")
+
       return (
         <div>
           {sizes.map(size => {
@@ -63,8 +66,7 @@ stories
     https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
 
   `)(() => {
-      // prettier-ignore
-      const sizes = ['2', '3t', '4t', '5t', '6']
+      const sizes = getTypeSizes("display")
 
       return (
         <div>

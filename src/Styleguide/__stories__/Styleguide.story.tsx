@@ -1,23 +1,11 @@
-import { storiesOf } from "@storybook/react"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import { Artwork, Artist } from "../"
-import { Theme } from "@artsy/palette"
 
 storiesOf("Styleguide", module)
-  .addDecorator(storyFn => {
-    return <Theme>{storyFn()}</Theme>
-  })
   .add("Static Artwork Page", () => {
-    return (
-      <Theme>
-        <Artwork />
-      </Theme>
-    )
+    return <Artwork />
   })
   .add("Static Artist Page", () => {
-    return (
-      <Theme>
-        <Artist />
-      </Theme>
-    )
+    return <Artist />
   })
