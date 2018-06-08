@@ -22,7 +22,12 @@ export class Artwork extends Component {
       <Grid fluid>
         <Row>
           <Col sm={8}>
-            <Banner />
+            <Banner
+              src="https://picsum.photos/110/110/?random"
+              badge="In show"
+              headline="Francesca DiMattio: Boucherouite"
+              subHeadline="Salon 94"
+            />
           </Col>
         </Row>
         <Row>
