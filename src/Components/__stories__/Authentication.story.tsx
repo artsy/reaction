@@ -7,7 +7,7 @@ import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { ModalType } from "../Authentication/Types"
 import { MobileRegisterForm } from "../../Components/Authentication/Mobile/RegisterForm"
-import { Footer } from "../../Components/Authentication/commonElements"
+import { Footer } from "../../Components/Authentication/Footer"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -50,10 +50,22 @@ storiesOf("Components/Authentication/Mobile", module).add(
   )
 )
 
-storiesOf("Components/Authentication/commonElements", module)
-  .add("Footer - Signup", () => <Footer mode="signup" />)
+storiesOf("Components/Authentication/Common Elements", module)
+  .add("Footer - Signup", () => (
+    <div>
+      <Footer mode="signup" />
+      <br />
+      <Footer mode="signup" inline />
+    </div>
+  ))
+  .add("Footer - Login", () => (
+    <div>
+      <Footer mode="login" />
+      <br />
+      <Footer mode="login" inline />
+    </div>
+  ))
   .add("Footer - Reset Password", () => <Footer mode="reset_password" />)
-  .add("Footer - Login", () => <Footer mode="login" />)
 
 const MobileContainer = styled.div`
   border: 1px solid ${Colors.grayRegular};

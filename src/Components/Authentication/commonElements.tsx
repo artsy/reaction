@@ -1,10 +1,11 @@
-import React, { Fragment } from "react"
+import React from "react"
 import styled from "styled-components"
 
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import Checkbox from "../Checkbox"
-import Text from "Components/Text"
+
+export { Footer } from "./Footer"
 
 export const FormContainer = styled.form`
   display: flex;
@@ -35,64 +36,11 @@ export const SmallTextLink = styled.a`
   ${unica("s12")};
 `
 
-export const SmallText = styled(Text)`
+export const SmallText = styled.span`
   margin: 0px;
   color: ${Colors.grayDark};
   ${unica("s12")};
 `
-
-export const Footer = props => {
-  const { onFacebookLogin, handleTypeChange, mode } = props
-  switch (mode) {
-    case "login": {
-      return (
-        <Fragment>
-          <SmallTextLink onClick={onFacebookLogin}>
-            Log in using Facebook
-          </SmallTextLink>
-          <SmallText>
-            {"Don't have an account? "}
-            <SmallTextLink onClick={handleTypeChange}>Sign up.</SmallTextLink>
-          </SmallText>
-        </Fragment>
-      )
-    }
-    case "reset_password": {
-      return (
-        <Fragment>
-          <SmallTextLink onClick={onFacebookLogin}>
-            Log in using Facebook
-          </SmallTextLink>
-          <SmallText>
-            {mode === "login"
-              ? "Don't have an account? "
-              : "Already have an account? "}
-            <SmallTextLink onClick={handleTypeChange}>
-              {mode === "login" ? "Sign up." : "Log in."}
-            </SmallTextLink>
-          </SmallText>
-        </Fragment>
-      )
-    }
-    default: {
-      return (
-        <Fragment>
-          <SmallTextLink onClick={onFacebookLogin}>
-            Log in using Facebook
-          </SmallTextLink>
-          <SmallText>
-            {mode === "login"
-              ? "Don't have an account? "
-              : "Already have an account? "}
-            <SmallTextLink onClick={handleTypeChange}>
-              {mode === "login" ? "Sign up." : "Log in."}
-            </SmallTextLink>
-          </SmallText>
-        </Fragment>
-      )
-    }
-  }
-}
 
 export const MobileHeader = styled.div`
   display: flex;
