@@ -9,15 +9,16 @@ import { OpenEye } from "Assets/Icons/OpenEye"
 import { ClosedEye } from "Assets/Icons/ClosedEye"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  error?: string
   block?: boolean
-  label?: string
-  title?: string
   description?: string
-  quick?: boolean
+  error?: string
+  label?: string
   leftView?: JSX.Element
   rightView?: JSX.Element
   setTouched?: (fields: { [field: string]: boolean }) => void
+  showPasswordMessage?: boolean
+  title?: string
+  quick?: boolean
 }
 
 export interface InputState {
@@ -130,11 +131,12 @@ export class Input extends React.Component<InputProps, InputState> {
     if (quick) {
       // prettier-ignore
       const {
+        className,
         label,
         leftView,
-        rightView,
-        className,
         ref,
+        rightView,
+        showPasswordMessage,
         type,
         onChange,
         setTouched,
@@ -147,8 +149,8 @@ export class Input extends React.Component<InputProps, InputState> {
         <Container>
           <InputContainer
             hasLabel={!!label}
-            focused={this.state.focused}
             hasError={!!error}
+            className={this.state.focused ? "focused" : ""}
           >
             <Label out={!showLabel}>{label}</Label>
             {!!leftView && leftView}
@@ -164,6 +166,13 @@ export class Input extends React.Component<InputProps, InputState> {
               ? this.getRightViewForPassword()
               : !!rightView && rightView}
           </InputContainer>
+          {!error && showPasswordMessage ? (
+            <PasswordMessage>
+              Password must be at least 8 characters.
+            </PasswordMessage>
+          ) : (
+            ""
+          )}
           <Error show={!!error}>{error}</Error>
         </Container>
       )
@@ -211,13 +220,12 @@ const InputComponent = styled.input`
 
 const InputContainer = styled.div.attrs<{
   hasLabel?: boolean
-  focused?: boolean
   hasError: boolean
 }>({})`
   ${borderedInput};
   margin-right: 0;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   position: relative;
   height: ${p => (p.hasLabel ? "40px" : "20px")};
@@ -248,12 +256,19 @@ const Description = styled.div`
 
 const Error = styled.div.attrs<{ show: boolean }>({})`
   ${unica("s12")};
-  margin-top: 5px;
+  margin-top: ${p => (p.show ? "10px" : "0")};
   color: ${Colors.redMedium};
   visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
   height: ${p => (p.show ? "16px" : "0")};
+`
+
+const PasswordMessage = styled.div`
+  ${unica("s12")};
+  margin-top: 10px;
+  color: ${Colors.grayDark};
+  height: 16px;
 `
 
 export default Input
