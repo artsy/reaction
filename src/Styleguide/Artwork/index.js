@@ -5,6 +5,8 @@ import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
+import { Artists } from "./Sidebar/Artists"
+import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 
 export class Artwork extends Component {
   state = {
@@ -38,8 +40,7 @@ export class Artwork extends Component {
           </Col>
           <Col sm={4}>
             <ArtworkInfo>
-              <ArtistName>Francesca DiMattio</ArtistName>
-              <FollowButton>TODO: Follow Button Icon</FollowButton>
+              <Artists artists={SingleFollowedArtist} />
               <ArtworkMetadata>
                 The Fox and the Hound, 2018 <br />
                 Oil on canvas <br />
