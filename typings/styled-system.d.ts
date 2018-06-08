@@ -47,6 +47,15 @@ declare module "styled-system" {
     width?: ResponsiveWidthValue
   }
 
+  export type HeightValue = number | string
+  export type ResponsiveHeightValue = ResponsiveValue<HeightValue>
+
+  export interface HeightProps {
+    height?: ResponsiveHeightValue
+  }
+
+  export function height(...args: any[]): any
+
   export function width(...args: any[]): any
 
   export type FontSizeValue = number | string
@@ -131,6 +140,7 @@ declare module "styled-system" {
 
   export interface AlignItemsProps {
     align?: ResponsiveAlignItemsValue
+    alignItems?: ResponsiveAlignItemsValue
   }
 
   export function alignItems(...args: any[]): any
@@ -315,7 +325,7 @@ declare module "styled-system" {
 
   export interface LowLevelStyleFunctionArguments {
     prop: string
-    cssProperty: string
+    cssProperty?: string
     key?: string
     numberToPx?: boolean
   }
