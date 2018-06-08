@@ -1,7 +1,8 @@
 import { storiesOf } from "storybook/storiesOf"
 import React from "react"
+import styled from "styled-components"
+import { InfoContainer } from "../../Utils/InfoContainer"
 import { Display, Sans, Serif, themeProps } from "@artsy/palette"
-import { Col } from "../Grid"
 import { withInfo } from "@storybook/addon-info"
 
 const stories = storiesOf("Styleguide/Typography", module)
@@ -25,15 +26,15 @@ stories
       const sizes = getTypeSizes("sans")
 
       return (
-        <div>
+        <InfoContainer>
           {sizes.map((size, key) => {
             return (
-              <Col key={key}>
+              <Item key={key}>
                 <Sans size={size}>Donald Judd</Sans>
-              </Col>
+              </Item>
             )
           })}
-        </div>
+        </InfoContainer>
       )
     })
   )
@@ -47,15 +48,15 @@ stories
       const sizes = getTypeSizes("serif")
 
       return (
-        <div>
+        <InfoContainer>
           {sizes.map(size => {
             return (
-              <Col>
+              <Item>
                 <Serif size={size}>Donald Judd</Serif>
-              </Col>
+              </Item>
             )
           })}
-        </div>
+        </InfoContainer>
       )
     })
   )
@@ -69,15 +70,69 @@ stories
       const sizes = getTypeSizes("display")
 
       return (
-        <div>
+        <InfoContainer>
           {sizes.map(size => {
             return (
-              <Col>
+              <Item>
                 <Display size={size}>Donald Judd</Display>
-              </Col>
+              </Item>
             )
           })}
+        </InfoContainer>
+      )
+    })
+  )
+  .add(
+    "Paragraph Text",
+    withInfo(`
+
+    https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
+
+  `)(() => {
+      return (
+        <div>
+          <InfoContainer>
+            <Serif size={3}>
+              Donald Judd, widely regarded as one of the most significant
+              American artists of the post-war period, is perhaps best-known for
+              the large-scale outdoor installations and long, spacious interiors
+              he designed in Marfa, Texas. His oeuvre has come to define what
+              has been referred to as Minimalist art—a label the artist strongly
+              objected to. His <a href="#">sculptures and installations</a>,
+              constructed out of industrial materials such as Plexiglas,
+              concrete, and steel and arranged in precise geometric shapes, were
+              intended to emphasize the purity of the objects themselves rather
+              than any symbolic meaning they might have—“the simple expression
+              of complex thought,” said Judd. His particular interest in
+              architecture led him to design both the sculptures and the spaces
+              in which they would be contained, influencing a generation of
+              artists and designers from Anish Kapoor to David Batchelor.
+            </Serif>
+          </InfoContainer>
+
+          <InfoContainer>
+            <Sans size={3}>
+              Donald Judd, widely regarded as one of the most significant
+              American artists of the post-war period, is perhaps best-known for
+              the large-scale outdoor installations and long, spacious interiors
+              he designed in Marfa, Texas. His oeuvre has come to define what
+              has been referred to as Minimalist art—a label the artist strongly
+              objected to. His <a href="#">sculptures and installations</a>,
+              constructed out of industrial materials such as Plexiglas,
+              concrete, and steel and arranged in precise geometric shapes, were
+              intended to emphasize the purity of the objects themselves rather
+              than any symbolic meaning they might have—“the simple expression
+              of complex thought,” said Judd. His particular interest in
+              architecture led him to design both the sculptures and the spaces
+              in which they would be contained, influencing a generation of
+              artists and designers from Anish Kapoor to David Batchelor.
+            </Sans>
+          </InfoContainer>
         </div>
       )
     })
   )
+
+const Item = styled.div`
+  margin-bottom: 2px;
+`
