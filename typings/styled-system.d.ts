@@ -1,4 +1,8 @@
-declare namespace StyledSystem {
+/**
+ * Author: https://gist.github.com/maxdeviant/cfed775121829eb02283347083915383
+ */
+
+declare module "styled-system" {
   export interface BaseTheme {
     breakpoints?: number[]
     space?: number[]
@@ -10,9 +14,9 @@ declare namespace StyledSystem {
 
   type ResponsiveValue<T> = T | Array<T | null>
 
-  //
-  // Core
-  //
+  /**
+   * Core
+   */
 
   export type SpaceValue = number | string
   export type ResponsiveSpaceValue = ResponsiveValue<SpaceValue>
@@ -57,16 +61,16 @@ declare namespace StyledSystem {
   export type ColorValue = string
   export type ResponsiveColorValue = ResponsiveValue<ColorValue>
 
-  export interface ColorProps {
-    color?: ResponsiveColorValue
-    bg?: ResponsiveColorValue
-  }
+  // export interface ColorProps {
+  //   color?: ResponsiveColorValue
+  //   bg?: ResponsiveColorValue
+  // }
 
   export function color(...args: any[]): any
 
-  //
-  // Extras
-  //
+  /**
+   * Extras
+   */
 
   export type TextAlignValue =
     | "left"
@@ -294,9 +298,9 @@ declare namespace StyledSystem {
 
   export function maxWidth(...args: any[]): any
 
-  //
-  // Utilities
-  //
+  /**
+   * Utilities
+   */
 
   export function theme(keys: string): any
   export function themeGet(keys: string): any
@@ -305,9 +309,9 @@ declare namespace StyledSystem {
 
   export function removeProps(props: any): any
 
-  //
-  // Low-level style functions
-  //
+  /**
+   * Low-level style functions
+   */
 
   export interface LowLevelStyleFunctionArguments {
     prop: string
@@ -321,8 +325,23 @@ declare namespace StyledSystem {
   export function responsiveStyle(args: LowLevelStyleFunctionArguments): any
 
   export function pseudoStyle(args: LowLevelStyleFunctionArguments): any
-}
 
-declare module "styled-system" {
-  export = StyledSystem
+  /**
+   * Artsy
+   *
+   * WIP / FIXME / Additions
+   */
+
+  export type BorderValue = string | number
+
+  export interface BorderProps {
+    border?: BorderValue
+  }
+
+  // FIXME: Should be able to use ColorProps above
+  export interface ColorProps {
+    color?: ColorValue
+    bg?: ColorValue
+    backgroundColor?: ColorValue
+  }
 }

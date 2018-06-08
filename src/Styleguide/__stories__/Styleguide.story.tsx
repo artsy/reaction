@@ -5,9 +5,7 @@ import { ColorPreview } from "../Utils/ColorPreview"
 
 storiesOf("Styleguide", module)
   .add("Colors", () => {
-    return (
-      <ColorPreview />
-    )
+    return <ColorPreview />
   })
   .add("Static Artwork Page", () => {
     return <Artwork />
