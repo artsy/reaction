@@ -1,6 +1,7 @@
 import { storiesOf } from "storybook/storiesOf"
 import React from "react"
 import styled from "styled-components"
+import { space } from "styled-system"
 import { InfoContainer } from "../../Utils/InfoContainer"
 import { Display, Sans, Serif, themeProps } from "@artsy/palette"
 import { withInfo } from "@storybook/addon-info"
@@ -20,7 +21,7 @@ stories
     "Sans",
     withInfo(`
 
-    https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
+    [Typography Spec](https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221)
 
   `)(() => {
       const sizes = getTypeSizes("sans")
@@ -42,16 +43,16 @@ stories
     "Serif",
     withInfo(`
 
-    https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
+    [Typography Spec](https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221)
 
   `)(() => {
       const sizes = getTypeSizes("serif")
 
       return (
         <InfoContainer>
-          {sizes.map(size => {
+          {sizes.map((size, key) => {
             return (
-              <Item>
+              <Item key={key}>
                 <Serif size={size}>Donald Judd</Serif>
               </Item>
             )
@@ -64,16 +65,16 @@ stories
     "Display",
     withInfo(`
 
-    https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
+    [Typography Spec](https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221)
 
   `)(() => {
       const sizes = getTypeSizes("display")
 
       return (
         <InfoContainer>
-          {sizes.map(size => {
+          {sizes.map((size, key) => {
             return (
-              <Item>
+              <Item key={key}>
                 <Display size={size}>Donald Judd</Display>
               </Item>
             )
@@ -86,7 +87,7 @@ stories
     "Paragraph Text",
     withInfo(`
 
-    https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221
+    [Typography Spec](https://www.notion.so/artsy/Typography-d1f9f6731f3d47c78003d6d016c30221)
 
   `)(() => {
       return (
@@ -129,6 +130,74 @@ stories
             </Sans>
           </InfoContainer>
         </div>
+      )
+    })
+  )
+  .add(
+    "Links",
+    withInfo(`
+
+    [Link Spec](zpl.io/2Gm6D3d)
+
+  `)(() => {
+      const Section = styled.div`
+        ${space};
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      `
+      return (
+        <InfoContainer>
+          <Section>
+            <div>default</div>
+            <hr />
+
+            <Sans mx={5}>
+              <a href="#">This is a link</a>
+            </Sans>
+
+            <Serif mx={5}>
+              <a href="#">This is a link</a>
+            </Serif>
+          </Section>
+          <Section>
+            <div>.noUnderline</div>
+            <hr />
+
+            <Sans mx={5}>
+              <a href="#" className="noUnderline">
+                This is a link
+              </a>
+            </Sans>
+
+            <Serif mx={5}>
+              <a href="#" className="noUnderline">
+                This is a link
+              </a>
+            </Serif>
+
+            <Display size="4t" mx={5}>
+              <a href="#" className="noUnderline">
+                This is a link
+              </a>
+            </Display>
+          </Section>
+          <Section>
+            <div>.colorLink</div>
+            <hr />
+
+            <Sans mx={5}>
+              <a href="#" className="colorLink">
+                This is a link
+              </a>
+            </Sans>
+
+            <Serif mx={5}>
+              <a href="#" className="colorLink">
+                This is a link
+              </a>
+            </Serif>
+          </Section>
+        </InfoContainer>
       )
     })
   )

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Grid, Col, Row } from "../Elements/Grid"
+import { Grid, Col, Row } from "../../Elements/Grid"
 import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"

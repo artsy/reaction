@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { Col, Row } from "../Elements/Grid"
+import { Col, Row } from "../../Elements/Grid"
 
-export const Bibliography = () => {
+export const ExhibitionHistory = () => {
   return (
     <Content>
       <Row>
