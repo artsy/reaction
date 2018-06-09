@@ -46,8 +46,8 @@ const Grid = styled.div`
 
 export const ColorPreview = () => (
   <Grid>
-    {Object.keys(themeProps.colors).map(color => (
-      <LabeledColorBlock name={color} />
+    {Object.keys(themeProps.colors).map((color, key) => (
+      <LabeledColorBlock name={color} key={key} />
     ))}
   </Grid>
 )

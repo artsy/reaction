@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from "react"
 import styled from "styled-components"
+import { themeGet } from "styled-system"
 import { Sans, TypographyProps } from "@artsy/palette"
 import { pick } from "lodash/fp"
 
@@ -21,14 +22,18 @@ import {
 } from "styled-system"
 
 enum ButtonSize {
-  default = "default",
-  large = "large",
+  default = "medium",
   small = "small",
+  medium = "medium",
+  large = "large",
 }
 
 enum ButtonVariant {
-  default = "default",
-  outline = "outline",
+  default = "primaryBlack",
+  primaryBlack = "primaryBlack",
+  primaryWhite = "primaryWhite",
+  secondaryGray = "secondaryGray",
+  secondaryOutline = "secondaryOutline",
 }
 
 export interface ButtonProps extends ButtonBaseProps {
@@ -47,12 +52,13 @@ export class Button extends Component<ButtonProps> {
     const { size } = this.props
 
     switch (size) {
-      case ButtonSize.large:
-        return { size: 3, px: 4, py: 3 }
       case ButtonSize.small:
         return { size: 1, px: 3, py: 1 }
-      default:
+      case ButtonSize.medium:
         return { size: 2, px: 4, py: 3 }
+      case ButtonSize.large:
+        return { size: 3, px: 5, py: 3 }
+      default:
     }
   }
 
@@ -60,19 +66,25 @@ export class Button extends Component<ButtonProps> {
     const { variant } = this.props
 
     switch (variant) {
-      case ButtonVariant.outline:
+      case ButtonVariant.primaryBlack:
+        return {
+          bg: "black100",
+          color: "white100",
+          borderColor: "black100",
+        }
+      case ButtonVariant.primaryWhite:
         return {
           bg: "white100",
-          border: 1,
+          color: "black100",
+          borderColor: "white100",
+        }
+      case ButtonVariant.secondaryOutline:
+        return {
+          bg: "white100",
+          color: "black100",
           borderColor: "black10",
         }
       default:
-        return {
-          bg: "black100",
-          border: 1,
-          borderColor: "black100",
-          color: "white100",
-        }
     }
   }
 
@@ -99,7 +111,7 @@ export interface ButtonBaseProps
 
 export class ButtonBase extends Component<ButtonBaseProps> {
   static defaultProps = {
-    border: 0,
+    border: 1,
     borderRadius: 3,
   }
 
@@ -127,7 +139,15 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
   cursor: pointer;
   text-transform: uppercase;
 
-  &:focus {
-    outline: 0;
+  &:hover {
+    background-color: ${themeGet("colors.purple100")};
+    border-color: ${themeGet("colors.purple100")};
+    color: ${themeGet("colors.white100")};
+
+    ${Sans} {
+      color: ${themeGet("colors.white100")};
+    }
+
+    transition: all 250ms ease-out 0s;
   }
 `

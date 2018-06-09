@@ -1,2 +1,2 @@
-export { Artist } from "./Artist"
-export { Artwork } from "./Artwork"
+export { Artist } from "./Pages/Artist"
+export { Artwork } from "./Pages/Artwork"

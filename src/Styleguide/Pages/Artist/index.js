@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Grid, Col, Row, media } from "../Elements/Grid"
+import { Grid, Col, Row, media } from "../../Elements/Grid"
 import { Articles } from "./Articles"
 import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
@@ -9,8 +9,8 @@ import { Shows } from "./Shows"
 import { RelatedArtists } from "./RelatedArtists"
 
 import { Serif } from "@artsy/palette"
-import { Slider } from "../Components/Slider"
-import { Button } from "../Elements/Button"
+import { Slider } from "../../Components/Slider"
+import { Button } from "../../Elements/Button"
 
 export class Artist extends Component {
   state = {
