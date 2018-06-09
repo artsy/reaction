@@ -7,7 +7,26 @@ import { withInfo } from "@storybook/addon-info"
 storiesOf("Styleguide/Elements", module).add(
   "Button",
   withInfo(`
-      hey
+
+      ~~~js
+      <Button>
+        Follow
+      </Button>
+
+      // Default
+      <Button variant='primaryBlack' size='medium'>
+        Follow
+      </Button>
+
+      <Button variant='primaryWhite' size='small'>
+        Follow
+      </Button>
+
+      <Button variant='secondaryOutline' size='large'>
+        Follow
+      </Button>
+      ~~~
+
     `)(() => {
     return (
       <Container>
