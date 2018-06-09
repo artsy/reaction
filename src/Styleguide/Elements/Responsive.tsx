@@ -7,6 +7,7 @@ interface Breakpoints {
 }
 
 interface ResponsiveProviderProps {
+  initialBreakpoint?: string
   breakpoints: Breakpoints
 }
 
@@ -30,7 +31,7 @@ export class ResponsiveProvider extends React.Component<
       breakpoints: {
         ...Object.keys(props.breakpoints)
           .map(breakpoint => ({
-            [breakpoint]: false,
+            [breakpoint]: breakpoint === props.initialBreakpoint ? true : false,
           }))
           .reduce((acc, curr) => ({ ...acc, ...curr }), {}),
       },
