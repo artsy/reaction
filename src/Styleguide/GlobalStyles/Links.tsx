@@ -17,12 +17,6 @@ export const Links = () => css`
       color: ${themeGet("colors.black100")};
     }
 
-    &:focus {
-      border: 1px solid ${themeGet("colors.purple100")};
-      outline: 0;
-      padding: 2px;
-    }
-
     /* ts-styled-plugin erroniously parses this; see: */
     /* https://github.com/Microsoft/typescript-styled-plugin/issues/54 */
 
@@ -50,12 +44,6 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
-      &:focus {
-        border: 1px solid ${themeGet("colors.purple100")};
-        outline: 0;
-        padding: 2px;
-      }
-
       &.noUnderline {
         ${noUnderline};
       }
@@ -81,12 +69,6 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
-      &:focus {
-        border: 1px solid ${themeGet("colors.purple100")};
-        outline: 0;
-        padding: 2px;
-      }
-
       &.noUnderline {
         ${noUnderline};
       }
@@ -108,12 +90,6 @@ export const Links = () => css`
 
       &:hover {
         text-decoration: underline;
-      }
-
-      &:focus {
-        border: 1px solid ${themeGet("colors.purple100")};
-        outline: 0;
-        padding: 2px;
       }
     }
   }

@@ -354,4 +354,26 @@ declare module "styled-system" {
     bg?: ColorValue
     backgroundColor?: ColorValue
   }
+
+  export type DisplayValue =
+    | "inline"
+    | "block"
+    | "contents"
+    | "flex"
+    | "grid"
+    | "inline-block"
+
+  export interface DisplayProps {
+    display?: DisplayValue
+  }
+
+  export function position(...args: any[]): any
+  export function top(...args: any[]): any
+
+  export type PositionValue = string | number
+
+  export interface PositionProps {
+    top?: PositionValue
+    bottom?: PositionValue
+  }
 }

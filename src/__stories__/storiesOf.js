@@ -1,9 +1,16 @@
 import React from "react"
 import { storiesOf as _storiesOf } from "@storybook/react"
+import { GlobalStyles } from "../Styleguide/GlobalStyles"
 import { Theme, injectGlobalCSS } from "@artsy/palette"
-import { ResponsiveProvider } from "../Styleguide/Elements/Responsive"
+import { ResponsiveProvider } from "../Styleguide/Utils/Responsive"
 
-injectGlobalCSS()
+injectGlobalCSS(`
+  html, body {
+    font-family: 'AGaramondPro-Regular';
+    font-size: 16px;
+    line-height: 24px;
+  }
+`)
 
 const breakpoints = {
   xl: "(min-width: 1192px)",
@@ -17,9 +24,11 @@ export function storiesOf(desc, mod) {
   return _storiesOf(desc, mod).addDecorator(storyFn => {
     return (
       <Theme>
-        <ResponsiveProvider breakpoints={breakpoints}>
-          {storyFn()}
-        </ResponsiveProvider>
+        <GlobalStyles>
+          <ResponsiveProvider breakpoints={breakpoints}>
+            {storyFn()}
+          </ResponsiveProvider>
+        </GlobalStyles>
       </Theme>
     )
   })

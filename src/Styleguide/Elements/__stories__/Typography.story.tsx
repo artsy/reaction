@@ -30,9 +30,9 @@ stories
         <InfoContainer>
           {sizes.map((size, key) => {
             return (
-              <Item key={key}>
-                <Sans size={size}>Donald Judd</Sans>
-              </Item>
+              <Sans size={size} key={key}>
+                Donald Judd
+              </Sans>
             )
           })}
         </InfoContainer>
@@ -52,9 +52,9 @@ stories
         <InfoContainer>
           {sizes.map((size, key) => {
             return (
-              <Item key={key}>
-                <Serif size={size}>Donald Judd</Serif>
-              </Item>
+              <Serif size={size} key={key}>
+                Donald Judd
+              </Serif>
             )
           })}
         </InfoContainer>
@@ -74,9 +74,9 @@ stories
         <InfoContainer>
           {sizes.map((size, key) => {
             return (
-              <Item key={key}>
-                <Display size={size}>Donald Judd</Display>
-              </Item>
+              <Display size={size} key={key}>
+                Donald Judd
+              </Display>
             )
           })}
         </InfoContainer>
@@ -91,8 +91,8 @@ stories
 
   `)(() => {
       return (
-        <div>
-          <InfoContainer>
+        <InfoContainer>
+          <Item>
             <Serif size={3}>
               Donald Judd, widely regarded as one of the most significant
               American artists of the post-war period, is perhaps best-known for
@@ -109,9 +109,8 @@ stories
               in which they would be contained, influencing a generation of
               artists and designers from Anish Kapoor to David Batchelor.
             </Serif>
-          </InfoContainer>
-
-          <InfoContainer>
+          </Item>
+          <Item>
             <Sans size={3}>
               Donald Judd, widely regarded as one of the most significant
               American artists of the post-war period, is perhaps best-known for
@@ -128,8 +127,8 @@ stories
               in which they would be contained, influencing a generation of
               artists and designers from Anish Kapoor to David Batchelor.
             </Sans>
-          </InfoContainer>
-        </div>
+          </Item>
+        </InfoContainer>
       )
     })
   )
@@ -203,5 +202,5 @@ stories
   )
 
 const Item = styled.div`
-  margin-bottom: 2px;
+  padding-bottom: 30px;
 `

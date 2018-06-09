@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   margin: 20px;
 `
 
-storiesOf("Styleguide/Artist", module).add("ArtistCard", () => {
+storiesOf("Styleguide/Components", module).add("ArtistCard", () => {
   return (
     <Wrapper>
       <ArtistCard

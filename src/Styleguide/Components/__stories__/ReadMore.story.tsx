@@ -4,6 +4,7 @@ import { InfoContainer } from "../../Utils/InfoContainer"
 import { storiesOf } from "storybook/storiesOf"
 import { withInfo } from "@storybook/addon-info"
 import { ReadMore } from "../ReadMore"
+import { Sans } from "@artsy/palette"
 
 storiesOf("Styleguide/Components", module).add(
   "ReadMore",
@@ -15,18 +16,20 @@ storiesOf("Styleguide/Components", module).add(
     return (
       <InfoContainer>
         <Item>
-          <ReadMore maxLineCount={2}>
-            Donald Judd, widely regarded as one of the most significant American
-            artists of the post-war period, is perhaps best-known for the
-            large-scale outdoor installations and long, spacious interiors he
-            designed in Marfa. Donald Judd, widely regarded as one of the most
-            significant American artists of the post-war period, is perhaps
-            best-known for the large-scale outdoor installations and long,
-            spacious interiors he designed in Marfa
-          </ReadMore>
+          <Sans>
+            <ReadMore maxLineCount={2}>
+              Donald Judd, widely regarded as one of the most significant
+              American artists of the post-war period, is perhaps best-known for
+              the large-scale outdoor installations and long, spacious interiors
+              he designed in Marfa. Donald Judd, widely regarded as one of the
+              most significant American artists of the post-war period, is
+              perhaps best-known for the large-scale outdoor installations and
+              long, spacious interiors he designed in Marfa.
+            </ReadMore>
+          </Sans>
         </Item>
         <Item>
-          <ReadMore>
+          <ReadMore maxLineCount={4}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor <a href="#">incididunt ut labore et dolore</a> magna
             aliqua. Ut enim ad minim veniam, <a href="#">quis nostrud</a>{" "}

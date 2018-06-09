@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@artsy/palette@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.2.0.tgz#2de49f85d64e6d740721b4429bdfd6a6e3e8e4b4"
+"@artsy/palette@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.2.2.tgz#fcf591c73e411f0f1dc4bfcea92e02a9165cc4bf"
   dependencies:
     react "^16.3.2"
     react-primitives "^0.5.0"
@@ -10359,7 +10359,7 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-lines-ellipsis@damassi/react-lines-ellipsis#77616c11401f3f468e33bf2b91e69a50f86732c9:
+react-lines-ellipsis@damassi/react-lines-ellipsis#77616c1:
   version "0.10.5"
   resolved "https://codeload.github.com/damassi/react-lines-ellipsis/tar.gz/77616c11401f3f468e33bf2b91e69a50f86732c9"
 
