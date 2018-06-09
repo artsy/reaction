@@ -9,13 +9,24 @@ import {
   JustifyContentProps,
   space,
   SpaceProps,
+  HeightProps,
+  height,
+  style,
 } from "styled-system"
+
+const flexGrow = style({
+  prop: "flexGrow",
+  numberToPx: false,
+})
 
 interface FlexProps
   extends AlignItemsProps,
     FlexDirectionProps,
     JustifyContentProps,
-    SpaceProps {}
+    SpaceProps,
+    HeightProps {
+  flexGrow?: number | string
+}
 
 export const Flex = styled.div.attrs<FlexProps>({})`
   display: flex;
@@ -24,4 +35,6 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${flexDirection};
   ${justifyContent};
   ${space};
+  ${height};
+  ${flexGrow};
 `
