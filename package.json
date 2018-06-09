@@ -156,7 +156,7 @@
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
     "react-html-parser": "^2.0.2",
-    "react-lines-ellipsis": "^0.8.0",
+    "react-lines-ellipsis": "damassi/react-lines-ellipsis#77616c11401f3f468e33bf2b91e69a50f86732c9",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",
