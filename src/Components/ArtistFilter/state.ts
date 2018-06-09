@@ -1,6 +1,6 @@
 import { Container } from "unstated"
 
-type State = {
+export type FilterStateType = {
   medium: string
   major_periods?: string[]
   partner_id?: string
@@ -8,12 +8,8 @@ type State = {
   page?: number
 }
 
-export class FilterState extends Container<State> {
-  state = {
-    medium: "*",
-    for_sale: true,
-    page: 1,
-  }
+export class FilterState extends Container<FilterStateType> {
+  state = { medium: "*", for_sale: true, page: 1 }
 
   setMajorPeriods(value) {
     this.setState({ major_periods: [value], page: 1 })
@@ -27,6 +23,14 @@ export class FilterState extends Container<State> {
     this.setState({ page: this.state.page + 1 })
   }
 
+  decrementPage() {
+    this.setState({ page: this.state.page - 1 })
+  }
+
+  setPage(page) {
+    this.setState({ page })
+  }
+
   setFilter(filter, value) {
     if (filter === "major_period") {
       return this.setMajorPeriods(value)
@@ -34,9 +38,6 @@ export class FilterState extends Container<State> {
     if (filter === "gallery" || filter === "institution") {
       return this.setPartner(value)
     }
-    this.setState({
-      [filter.toLowerCase()]: value,
-      page: 1,
-    })
+    this.setState({ [filter.toLowerCase()]: value, page: 1 })
   }
 }

@@ -7,7 +7,7 @@ import ArtworksContent from "./Artworks"
 
 import { Filter_artist } from "../../__generated__/Filter_artist.graphql"
 
-interface Props {
+export interface Props {
   artist: Filter_artist
 }
 

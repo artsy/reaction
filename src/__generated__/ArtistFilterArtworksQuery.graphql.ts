@@ -48,18 +48,17 @@ fragment Filter_artist_81Ela on Artist {
 
 fragment Artworks_filtered_artworks on FilterArtworks {
   __id
-  artworks: artworks_connection(first: 10, after: "") {
+  artworks: artworks_connection(page: 1, size: 10) {
     pageInfo {
       hasNextPage
       endCursor
     }
+    totalPages
     ...ArtworkGrid_artworks
     edges {
       node {
         __id
-        __typename
       }
-      cursor
     }
   }
 }
@@ -248,7 +247,7 @@ return {
   "operationKind": "query",
   "name": "ArtistFilterArtworksQuery",
   "id": null,
-  "text": "query ArtistFilterArtworksQuery(\n  $artistID: String!\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n) {\n  artist(id: $artistID) {\n    ...Filter_artist_81Ela\n    __id\n  }\n}\n\nfragment Filter_artist_81Ela on Artist {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        count\n        id\n        __id\n      }\n    }\n    ...Artworks_filtered_artworks\n    __id\n  }\n  __id\n}\n\nfragment Artworks_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtistFilterArtworksQuery(\n  $artistID: String!\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n) {\n  artist(id: $artistID) {\n    ...Filter_artist_81Ela\n    __id\n  }\n}\n\nfragment Filter_artist_81Ela on Artist {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        count\n        id\n        __id\n      }\n    }\n    ...Artworks_filtered_artworks\n    __id\n  }\n  __id\n}\n\nfragment Artworks_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(page: 1, size: 10) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    totalPages\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -412,17 +411,17 @@ return {
                 "kind": "LinkedField",
                 "alias": "artworks",
                 "name": "artworks_connection",
-                "storageKey": "artworks_connection(after:\"\",first:10)",
+                "storageKey": "artworks_connection(page:1,size:10)",
                 "args": [
                   {
                     "kind": "Literal",
-                    "name": "after",
-                    "value": "",
-                    "type": "String"
+                    "name": "page",
+                    "value": 1,
+                    "type": "Int"
                   },
                   {
                     "kind": "Literal",
-                    "name": "first",
+                    "name": "size",
                     "value": 10,
                     "type": "Int"
                   }
@@ -454,6 +453,13 @@ return {
                         "storageKey": null
                       }
                     ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "totalPages",
+                    "args": null,
+                    "storageKey": null
                   },
                   {
                     "kind": "LinkedField",
@@ -706,48 +712,12 @@ return {
                             "name": "is_saved",
                             "args": null,
                             "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__typename",
-                            "args": null,
-                            "storageKey": null
                           }
                         ]
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "cursor",
-                        "args": null,
-                        "storageKey": null
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "kind": "LinkedHandle",
-                "alias": "artworks",
-                "name": "artworks_connection",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "after",
-                    "value": "",
-                    "type": "String"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 10,
-                    "type": "Int"
-                  }
-                ],
-                "handle": "connection",
-                "key": "Artworks_filtered_artworks",
-                "filters": null
               }
             ]
           },
