@@ -14,6 +14,9 @@ import {
   style,
 } from "styled-system"
 
+// @ts-ignore
+import { ClassAttributes, HTMLAttributes } from "react"
+
 const flexGrow = style({
   prop: "flexGrow",
   numberToPx: false,
