@@ -26,7 +26,7 @@
     "clean": "rm -rf dist",
     "compile": "babel src --out-dir dist --copy-files -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__ && yarn emit-types",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
-    "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --outDir dist",
+    "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "prepare": "patch-package",
     "precommit": "lint-staged",
@@ -227,6 +227,7 @@
   "lint-staged": {
     "*.@(ts|tsx)": [
       "tslint -c tslint.json --fix",
+      "yarn emit-types",
       "yarn prettier-write --",
       "git add"
     ],
