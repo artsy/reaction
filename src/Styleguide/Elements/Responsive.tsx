@@ -18,7 +18,7 @@ interface BreakpointState {
 interface ResponsiveProviderState {
   breakpoints: BreakpointState
   mediaMatchers: MediaQueryList[]
-  mqHandler: null | MediaQueryListListener
+  mqHandler: MediaQueryListListener | null
 }
 
 export class ResponsiveProvider extends React.Component<
