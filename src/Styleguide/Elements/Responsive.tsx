@@ -4,20 +4,20 @@ import createContext, { ConsumerProps } from "create-react-context"
 // FIXME: Replace with React.createContext after React 16.3+ upgrade
 const ResponsiveContext = createContext({})
 
-interface Breakpoints {
+export interface Breakpoints {
   [breakpoint: string]: string
 }
 
-interface ResponsiveProviderProps {
+export interface ResponsiveProviderProps {
   initialBreakpoint?: string
   breakpoints: Breakpoints
 }
 
-interface BreakpointState {
+export interface BreakpointState {
   [breakpoint: string]: boolean
 }
 
-interface ResponsiveProviderState {
+export interface ResponsiveProviderState {
   breakpoints: BreakpointState
   mediaMatchers: MediaQueryList[]
   mqHandler: MediaQueryListListener | null
