@@ -1,7 +1,12 @@
 import React from "react"
-import { storiesOf } from "storybook/storiesOf"
+import { Section } from "../../Utils/Section"
 import { ColorPreview } from "../../Utils/ColorPreview"
+import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Colors", () => {
-  return <ColorPreview />
+  return (
+    <Section title="Colors">
+      <ColorPreview />
+    </Section>
+  )
 })

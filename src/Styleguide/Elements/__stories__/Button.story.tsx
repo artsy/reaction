@@ -1,118 +1,67 @@
-import { storiesOf } from "storybook/storiesOf"
 import React from "react"
 import styled from "styled-components"
-import { Button, Grid, Row, Col } from "../"
-import { withInfo } from "@storybook/addon-info"
+import { color, space } from "styled-system"
+import { Button } from "../"
+import { Section } from "../../Utils/Section"
+import { storiesOf } from "storybook/storiesOf"
 
-storiesOf("Styleguide/Elements", module).add(
-  "Button",
-  withInfo(`
+storiesOf("Styleguide/Elements", module).add("Button", () => {
+  return (
+    <React.Fragment>
+      <Section title="primaryBlack">
+        <Button variant="primaryBlack" size="small" m={2}>
+          Follow
+        </Button>
+        <Button variant="primaryBlack" size="medium" m={2}>
+          Follow
+        </Button>
+        <Button variant="primaryBlack" size="large" m={2}>
+          Follow
+        </Button>
+      </Section>
 
-      ~~~js
-      <Button>
-        Follow
-      </Button>
+      <Section title="primaryWhite">
+        <Item bg="black" p={3} m={2}>
+          <Button variant="primaryWhite" size="small">
+            Follow
+          </Button>
+        </Item>
+        <Item bg="black" p={3} m={2}>
+          <Button variant="primaryWhite" size="medium">
+            Follow
+          </Button>
+        </Item>
+        <Item bg="black" p={3} m={2}>
+          <Button variant="primaryWhite" size="large">
+            Follow
+          </Button>
+        </Item>
+      </Section>
 
-      // Default
-      <Button variant='primaryBlack' size='medium'>
-        Follow
-      </Button>
+      <Section title="secondaryOutline">
+        <Button variant="secondaryOutline" size="small" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryOutline" size="medium" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryOutline" size="large" m={2}>
+          Follow
+        </Button>
+      </Section>
+      <Section title="Full width">
+        <Button width="100%" size="large" m={2}>
+          Contact Gallery
+        </Button>
+        <Button variant="secondaryOutline" width="100%" size="medium" m={2}>
+          Contact Gallery
+        </Button>
+      </Section>
+    </React.Fragment>
+  )
+})
 
-      <Button variant='primaryWhite' size='small'>
-        Follow
-      </Button>
-
-      <Button variant='secondaryOutline' size='large'>
-        Follow
-      </Button>
-      ~~~
-
-    `)(() => {
-    return (
-      <Container>
-        <Grid>
-          <Row>
-            <Col xs={3}>
-              <Button variant="primaryBlack" size="small">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={3} bg="black" my={3} py={3}>
-              <Button variant="primaryWhite" size="small">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={3}>
-              <Button variant="secondaryOutline" size="small">
-                Follow
-              </Button>
-            </Col>
-          </Row>
-
-          <hr />
-
-          <Row>
-            <Col xs={3}>
-              <Button variant="primaryBlack" size="medium">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={3} bg="black" my={3} py={3}>
-              <Button variant="primaryWhite" size="medium">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={3}>
-              <Button variant="secondaryOutline" size="medium">
-                Follow
-              </Button>
-            </Col>
-          </Row>
-
-          <hr />
-
-          <Row>
-            <Col xs={6}>
-              <Button variant="primaryBlack" size="large">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={6} bg="black" my={3} py={3}>
-              <Button variant="primaryWhite" size="large">
-                Follow
-              </Button>
-            </Col>
-            <Col xs={3}>
-              <Button variant="secondaryOutline" size="large">
-                Follow
-              </Button>
-            </Col>
-          </Row>
-
-          <hr />
-
-          <Row>
-            <Col>
-              <Button width="100%" size="large">
-                Contact Gallery
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button variant="secondaryOutline" size="small">
-                Log in to see price
-              </Button>
-            </Col>
-          </Row>
-        </Grid>
-      </Container>
-    )
-  })
-)
-
-const Container = styled.div`
-  ${Row} {
-    margin: 10px;
-  }
+const Item = styled.div.attrs<any>({})`
+  ${space};
+  ${color};
 `

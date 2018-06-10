@@ -1,7 +1,7 @@
 import React from "react"
+import styled from "styled-components"
 import { Flex } from "../Elements/Flex"
 import { Sans } from "@artsy/palette"
-import styled from "styled-components"
 import { themeGet } from "styled-system"
 
 const Header = styled.div`
@@ -16,7 +16,7 @@ const Header = styled.div`
 `
 
 export interface SectionProps {
-  title: string
+  title?: string
 }
 
 export class Section extends React.Component<SectionProps> {

@@ -3,31 +3,51 @@ import Icon from "Components/Icon"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Sans } from "@artsy/palette"
+import { Responsive } from "../Utils/Responsive"
+import { Flex } from "../Elements/Flex"
 
 export class Pagination extends Component {
-  state = {
-    hasNextPage: false,
-    hasPreviousPage: false,
-  }
-
   render() {
     return (
-      <div>
-        <Page num={1} />
-        <PageSpan mx={2} />
-
-        <Page num={4} active />
-        <Page num={5} />
-        <Page num={6} />
-
-        <PageSpan mx={1} />
-        <Page num={7} />
-
-        <PrevButton />
-        <NextButton />
-      </div>
+      <Responsive>
+        {({ xs }) => {
+          if (xs) {
+            return <SmallPagination />
+          } else {
+            return <LargePagination />
+          }
+        }}
+      </Responsive>
     )
   }
+}
+
+export const LargePagination = () => {
+  return (
+    <Flex flexDirection="row">
+      <Page num={1} />
+      <PageSpan mx={2} />
+
+      <Page num={4} active />
+      <Page num={5} />
+      <Page num={6} />
+
+      <PageSpan mx={1} />
+      <Page num={7} />
+
+      <PrevButton />
+      <NextButton />
+    </Flex>
+  )
+}
+
+export const SmallPagination = () => {
+  return (
+    <Flex flexDirection="row">
+      <PrevButton />
+      <NextButton />
+    </Flex>
+  )
 }
 
 const Page = ({ num, ...props }) => {

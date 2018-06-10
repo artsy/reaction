@@ -1,7 +1,7 @@
 // @ts-ignore
 import React, { StatelessComponent } from "react"
 import styled from "styled-components"
-import { top, PositionProps } from "styled-system"
+import { space, PositionProps } from "styled-system"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
 
@@ -33,5 +33,5 @@ export default styled(Icon)`
   letter-spacing: 0px;
   position: relative;
 
-  ${top};
+  ${space};
 `

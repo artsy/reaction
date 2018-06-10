@@ -1,20 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import { InfoContainer } from "../../Utils/InfoContainer"
+import { Section } from "../../Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
-import { withInfo } from "@storybook/addon-info"
 import { ReadMore } from "../ReadMore"
 import { Sans } from "@artsy/palette"
 
-storiesOf("Styleguide/Components", module).add(
-  "ReadMore",
-  withInfo(`
-
-    Expandable Read More
-
-  `)(() => {
-    return (
-      <InfoContainer>
+storiesOf("Styleguide/Components", module).add("ReadMore", () => {
+  return (
+    <React.Fragment>
+      <Section title="Max lines">
         <Item>
           <Sans>
             <ReadMore maxLineCount={2}>
@@ -56,11 +50,16 @@ storiesOf("Styleguide/Components", module).add(
             velit esse cillum dolore eu fugiat nulla pariatur.
           </ReadMore>
         </Item>
-      </InfoContainer>
-    )
-  })
-)
+      </Section>
+      <Section title="Character cap">
+        <Sans>
+          <ReadMore maxLineCount={2}>TODO</ReadMore>
+        </Sans>
+      </Section>
+    </React.Fragment>
+  )
+})
 
 const Item = styled.div`
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 `

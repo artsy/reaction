@@ -14,7 +14,7 @@ export const Truncator: React.SFC<Props> = ({
   ellipsis,
   maxLineCount,
 }) => {
-  const html = ReactDOM.renderToString(<span>{children}</span>)
+  const html = ReactDOM.renderToStaticMarkup(<span>{children}</span>)
   let readMoreHTML = null
 
   if (ReadMoreLink) {

@@ -2,7 +2,7 @@ import React from "react"
 import { Flex } from "../../Elements/Flex"
 import { Avatar, Button } from "../../Elements"
 import { Serif, Sans } from "@artsy/palette"
-import { Responsive } from "../../Elements/Responsive"
+import { Responsive } from "../../Utils/Responsive"
 
 export interface GalleryProps {
   src: string
