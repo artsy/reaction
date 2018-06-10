@@ -142,6 +142,7 @@
   "dependencies": {
     "@artsy/palette": "^1.2.0",
     "cheerio": "^1.0.0-rc.2",
+    "create-react-context": "^0.2.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
     "found": "^0.3.11",
