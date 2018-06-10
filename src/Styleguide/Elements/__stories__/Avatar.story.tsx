@@ -5,8 +5,13 @@ import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Avatar", () => {
   return (
-    <Section title="Default">
-      <Avatar size="110px" src="https://picsum.photos/110/110/?random" />
-    </Section>
+    <React.Fragment>
+      <Section title="Default Avatar">
+        <Avatar src="https://picsum.photos/110/110/?random" />
+      </Section>
+      <Section title="Small Avatar">
+        <Avatar size="small" src="https://picsum.photos/110/110/?random" />
+      </Section>
+    </React.Fragment>
   )
 })
