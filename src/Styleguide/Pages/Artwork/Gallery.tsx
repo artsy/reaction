@@ -25,7 +25,7 @@ export class Gallery extends React.Component<GalleryProps> {
 
 export const LargeGallery = props => (
   <Flex>
-    <Avatar src={props.src} size="100px" mr={4} />
+    <Avatar src={props.src} mr={4} />
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="5t">{props.headline}</Serif>
       <Sans size="2">{props.subHeadline}</Sans>
@@ -45,6 +45,6 @@ export const SmallGallery = props => (
         Follow
       </Button>
     </Flex>
-    <Avatar src={props.src} size="100px" ml={4} />
+    <Avatar src={props.src} size="small" ml={4} />
   </Flex>
 )
