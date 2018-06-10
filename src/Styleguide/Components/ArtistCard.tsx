@@ -1,19 +1,9 @@
 import React from "react"
-import styled from "styled-components"
 import { Flex } from "../Elements/Flex"
+import { Card } from "../Elements/Card"
 import { Avatar, Button } from "../Elements"
 import { Serif, Sans } from "@artsy/palette"
-import { themeGet } from "styled-system"
 import { Responsive } from "../Utils/Responsive"
-
-const Container = styled(Flex)`
-  border: 1px solid ${themeGet("colors.black10")};
-  border-radius: 2px;
-
-  &:hover {
-    border-color: ${themeGet("colors.black60")};
-  }
-`
 
 interface ArtistCardProps {
   src: string
@@ -35,7 +25,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 }
 
 export const LargeArtistCard = props => (
-  <Container flexDirection="column" height="254px" p={4}>
+  <Card flexDirection="column" height="254px" p={4}>
     <Flex flexDirection="column" flexGrow="1" alignItems="center">
       <Avatar src={props.src} mb={3} />
       <Serif size="3t">{props.headline}</Serif>
@@ -46,11 +36,11 @@ export const LargeArtistCard = props => (
         Follow
       </Button>
     </Flex>
-  </Container>
+  </Card>
 )
 
 export const SmallArtistCard = props => (
-  <Container p={4}>
+  <Card p={4}>
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
@@ -62,5 +52,5 @@ export const SmallArtistCard = props => (
       </Button>
     </Flex>
     <Avatar size="small" src={props.src} ml={4} />
-  </Container>
+  </Card>
 )
