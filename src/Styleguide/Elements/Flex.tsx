@@ -10,7 +10,9 @@ import {
   space,
   SpaceProps,
   HeightProps,
+  WidthProps,
   height,
+  width,
   style,
 } from "styled-system"
 
@@ -27,7 +29,8 @@ interface FlexProps
     FlexDirectionProps,
     JustifyContentProps,
     SpaceProps,
-    HeightProps {
+    HeightProps,
+    WidthProps {
   flexGrow?: number | string
 }
 
@@ -39,5 +42,6 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${justifyContent};
   ${space};
   ${height};
+  ${width};
   ${flexGrow};
 `
