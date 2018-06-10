@@ -1,32 +1,29 @@
 import React from "react"
 import styled from "styled-components"
-import { InfoContainer } from "../../Utils/InfoContainer"
+import { Section } from "../../Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
-import { withInfo } from "@storybook/addon-info"
 import { ReadMore } from "../ReadMore"
+import { Sans } from "@artsy/palette"
 
-storiesOf("Styleguide/Components", module).add(
-  "ReadMore",
-  withInfo(`
-
-    Expandable Read More
-
-  `)(() => {
-    return (
-      <InfoContainer>
+storiesOf("Styleguide/Components", module).add("ReadMore", () => {
+  return (
+    <React.Fragment>
+      <Section title="Max lines">
         <Item>
-          <ReadMore maxLineCount={2}>
-            Donald Judd, widely regarded as one of the most significant American
-            artists of the post-war period, is perhaps best-known for the
-            large-scale outdoor installations and long, spacious interiors he
-            designed in Marfa. Donald Judd, widely regarded as one of the most
-            significant American artists of the post-war period, is perhaps
-            best-known for the large-scale outdoor installations and long,
-            spacious interiors he designed in Marfa
-          </ReadMore>
+          <Sans>
+            <ReadMore maxLineCount={2}>
+              Donald Judd, widely regarded as one of the most significant
+              American artists of the post-war period, is perhaps best-known for
+              the large-scale outdoor installations and long, spacious interiors
+              he designed in Marfa. Donald Judd, widely regarded as one of the
+              most significant American artists of the post-war period, is
+              perhaps best-known for the large-scale outdoor installations and
+              long, spacious interiors he designed in Marfa.
+            </ReadMore>
+          </Sans>
         </Item>
         <Item>
-          <ReadMore>
+          <ReadMore maxLineCount={4}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor <a href="#">incididunt ut labore et dolore</a> magna
             aliqua. Ut enim ad minim veniam, <a href="#">quis nostrud</a>{" "}
@@ -53,11 +50,16 @@ storiesOf("Styleguide/Components", module).add(
             velit esse cillum dolore eu fugiat nulla pariatur.
           </ReadMore>
         </Item>
-      </InfoContainer>
-    )
-  })
-)
+      </Section>
+      <Section title="Character cap">
+        <Sans>
+          <ReadMore maxLineCount={2}>TODO</ReadMore>
+        </Sans>
+      </Section>
+    </React.Fragment>
+  )
+})
 
 const Item = styled.div`
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 `

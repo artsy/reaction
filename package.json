@@ -140,7 +140,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^1.2.0",
+    "@artsy/palette": "^1.2.2",
     "cheerio": "^1.0.0-rc.2",
     "create-react-context": "^0.2.2",
     "farce": "^0.2.6",
@@ -158,7 +158,7 @@
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
     "react-html-parser": "^2.0.2",
-    "react-lines-ellipsis": "damassi/react-lines-ellipsis#77616c11401f3f468e33bf2b91e69a50f86732c9",
+    "react-lines-ellipsis": "damassi/react-lines-ellipsis#77616c1",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",

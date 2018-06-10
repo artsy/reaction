@@ -42,62 +42,66 @@ export interface ButtonProps extends ButtonBaseProps {
   variant?: any // FIXME, ButtonVariant?
 }
 
-export class Button extends Component<ButtonProps> {
-  static defaultProps = {
-    size: ButtonSize.default,
-    variant: ButtonVariant.default,
-  }
-
-  getSize() {
-    const { size } = this.props
-
-    switch (size) {
-      case ButtonSize.small:
-        return { size: 1, px: 3, py: 1 }
-      case ButtonSize.medium:
-        return { size: 2, px: 4, py: 3 }
-      case ButtonSize.large:
-        return { size: 3, px: 5, py: 3 }
-      default:
-    }
-  }
-
-  getVariant() {
-    const { variant } = this.props
-
-    switch (variant) {
-      case ButtonVariant.primaryBlack:
-        return {
-          bg: "black100",
-          color: "white100",
-          borderColor: "black100",
-        }
-      case ButtonVariant.primaryWhite:
-        return {
-          bg: "white100",
-          color: "black100",
-          borderColor: "white100",
-        }
-      case ButtonVariant.secondaryOutline:
-        return {
-          bg: "white100",
-          color: "black100",
-          borderColor: "black10",
-        }
-      default:
-    }
-  }
-
-  render() {
-    const buttonProps = {
-      ...this.props,
-      ...this.getSize(),
-      ...this.getVariant(),
+export const Button = styled(
+  class extends Component<ButtonProps> {
+    static defaultProps = {
+      size: ButtonSize.default,
+      variant: ButtonVariant.default,
     }
 
-    return <ButtonBase {...buttonProps}>{this.props.children}</ButtonBase>
+    getSize() {
+      const { size } = this.props
+
+      switch (size) {
+        case ButtonSize.small:
+          return { size: 1, px: 3, py: 1 }
+        case ButtonSize.medium:
+          return { size: 2, px: 4, py: 3 }
+        case ButtonSize.large:
+          return { size: 3, px: 5, py: 3 }
+        default:
+      }
+    }
+
+    getVariant() {
+      const { variant } = this.props
+
+      switch (variant) {
+        case ButtonVariant.primaryBlack:
+          return {
+            bg: "black100",
+            color: "white100",
+            borderColor: "black100",
+          }
+        case ButtonVariant.primaryWhite:
+          return {
+            bg: "white100",
+            color: "black100",
+            borderColor: "white100",
+          }
+        case ButtonVariant.secondaryOutline:
+          return {
+            bg: "white100",
+            color: "black100",
+            borderColor: "black10",
+          }
+        default:
+      }
+    }
+
+    render() {
+      const buttonProps = {
+        ...this.props,
+        ...this.getSize(),
+        ...this.getVariant(),
+      }
+
+      return <ButtonBase {...buttonProps}>{this.props.children}</ButtonBase>
+    }
   }
-}
+)`
+  ${space};
+`
 
 export interface ButtonBaseProps
   extends BorderProps,

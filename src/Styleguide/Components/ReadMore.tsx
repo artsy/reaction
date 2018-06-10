@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 import styled from "styled-components"
+import { DisplayProps } from "styled-system"
 import { Truncator } from "../../Components/Truncator"
 import { Theme, Sans } from "@artsy/palette"
 
-interface ReadMoreProps {
+interface ReadMoreProps extends DisplayProps {
   isExpanded?: boolean
   maxLineCount?: number
 }
@@ -63,17 +64,18 @@ const ReadMoreLink = ({ children }) => {
     // breaks the context chain requiring us to wrap ReadMore in a <Theme />
 
     <Theme>
-      <ReadMoreLinkContiner>
+      <ReadMoreLinkContainer>
         ... <Sans size="2">{children}</Sans>
-      </ReadMoreLinkContiner>
+      </ReadMoreLinkContainer>
     </Theme>
   )
 }
 
-const ReadMoreLinkContiner = styled.span`
+const ReadMoreLinkContainer = styled.span`
   ${Sans} {
     cursor: pointer;
     text-decoration: underline;
+    display: inline-block;
   }
 `
 
