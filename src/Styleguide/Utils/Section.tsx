@@ -43,7 +43,6 @@ export class Section extends React.Component<SectionProps> {
         </Header>
         {this.state.expanded && (
           <Flex
-            // @ts-ignore
             flexDirection="column"
             alignItems="center"
             mt={4}
