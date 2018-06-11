@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react"
 import styled, { css } from "styled-components"
 import { Flex, FlexProps } from "./Flex"
 import {
