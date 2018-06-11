@@ -27,6 +27,8 @@ const groupExhibitions = (exhibitions: Exhibition[]): GroupedExhibitions[] => {
     .map(year => [year, exhibitionsByYear[year]] as GroupedExhibitions)
 }
 
+const isCollapsed = props => props.collapsible && !props.expanded
+
 export interface ExhibitionsHeadlineProps {
   exhibitionCount: number
   expanded: boolean
@@ -38,16 +40,13 @@ const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
       {props.exhibitionCount < MIN_FOR_SELECTED_EXHIBITIONS
         ? "Exhibitions"
         : "Selected exhibitions"}
-      {props.collapsible && !props.expanded
-        ? ` (${props.exhibitionCount})`
-        : ""}
+      {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
-    {props.collapsible &&
-      !props.expanded && (
-        <Sans size="2" color="black60">
-          Show
-        </Sans>
-      )}
+    {isCollapsed(props) && (
+      <Sans size="2" color="black60">
+        Show
+      </Sans>
+    )}
   </Flex>
 )
 
@@ -109,7 +108,7 @@ export class SelectedExhibitions extends React.Component<
             collapsible={this.props.collapsible}
             exhibitionCount={this.props.exhibitions.length}
           />
-          {(!this.props.collapsible || this.state.expanded) && (
+          {!isCollapsed(this.props) && (
             <FullExhibitionList exhibitions={this.props.exhibitions} />
           )}
         </Flex>
