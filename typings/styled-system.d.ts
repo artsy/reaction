@@ -419,6 +419,27 @@ declare module "styled-system" {
     display?: DisplayValue
   }
 
+  export type FlexBasisValue =
+    | "auto"
+    | "fill"
+    | "max-content"
+    | "min-content"
+    | "fit-content"
+    | "content"
+    | "inherit"
+    | "initial"
+    | "unset"
+
+  export interface FlexBasisProps {
+    // TODO: The FlexBasisValue currently really only exists for documentation
+    //       purposes, because flex-basis also accepts `Nem` and `Npx` strings.
+    //       Not sure there’s a way to still have the union values show up as
+    //       auto-completion results.
+    flexBasis?: FlexBasisValue | string
+  }
+
+  export function flexBasis(...args: any[]): any
+
   export type PositionValue = string | number
 
   export interface PositionProps {
