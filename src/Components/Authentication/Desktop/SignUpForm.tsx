@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import { Footer, FormContainer, TOSCheckbox } from "../commonElements"
+import { Error, Footer, FormContainer, TOSCheckbox } from "../commonElements"
 import Text from "Components/Text"
 import TextLink from "Components/TextLink"
 import Input from "Components/Input"
@@ -34,6 +34,7 @@ export const SignUpForm: FormComponentType = props => {
         handleSubmit,
         isSubmitting,
         isValid,
+        status,
       }: FormikProps<InputValues>) => {
         const checkboxError =
           touched.acceptedTermsOfService && errors.acceptedTermsOfService
@@ -106,6 +107,7 @@ export const SignUpForm: FormComponentType = props => {
                 </TextLink>
               </Text>
             </TOSCheckbox>
+            {status && !status.success && <Error show>{status.error}</Error>}
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
