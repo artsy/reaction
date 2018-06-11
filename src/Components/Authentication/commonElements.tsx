@@ -1,13 +1,9 @@
-import React from "react"
 import styled from "styled-components"
-
 import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
-import Checkbox from "../Checkbox"
-import Text from "../Text"
-
 export { Footer } from "./Footer"
+export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
 
 interface FormProps {
   height?: number
@@ -18,21 +14,6 @@ export const FormContainer = styled.form`
   flex-direction: column;
   height: ${(props: FormProps) =>
     props.height ? props.height + "px" : "auto"};
-`
-
-export const TOSCheckbox = ({ error, name, onChange, value, ...props }) => (
-  <StyledCheckbox {...{ checked: value, error, onChange, name }}>
-    {props.children}
-  </StyledCheckbox>
-)
-
-const StyledCheckbox = styled(Checkbox)`
-  margin-bottom: 5px;
-  align-items: flex-start;
-`
-
-export const TOSText = styled(Text)`
-  margin: 0 0 0 5px;
 `
 
 export const SmallTextLink = styled.a`

@@ -7,7 +7,10 @@ import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { ModalType } from "../Authentication/Types"
 import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
-import { Footer } from "../../Components/Authentication/Footer"
+import {
+  TermsOfServiceCheckbox,
+  Footer,
+} from "../../Components/Authentication/commonElements"
 
 const submit = (values, actions) => {
   setTimeout(() => {
@@ -63,6 +66,15 @@ storiesOf("Components/Authentication/Common Elements", module)
     </div>
   ))
   .add("Footer - Reset Password", () => <Footer mode="reset_password" />)
+  .add("TermsOfServiceCheckbox", () => (
+    <TermsOfServiceCheckbox
+      error={null}
+      name="accepted_terms_of_service"
+      onChange={() => null}
+      onBlur={() => null}
+      value={false}
+    />
+  ))
 
 const MobileContainer = styled.div`
   border: 1px solid ${Colors.grayRegular};

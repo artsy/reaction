@@ -24,14 +24,13 @@ export class DesktopModal extends Component<DesktopModalProps> {
 }
 
 const CloseButton = styled(Icon).attrs({
-  color: Colors.grayRegular,
+  color: Colors.graySemibold,
   fontSize: "16px",
 })`
   position: absolute;
   top: 20px;
   right: 15px;
   cursor: pointer;
-  color: ${Colors.black30};
 `
 
 const Content = styled.div`
