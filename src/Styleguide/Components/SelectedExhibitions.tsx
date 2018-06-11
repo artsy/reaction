@@ -46,7 +46,7 @@ const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
   <Flex>
     <Sans size="2">{props.year}</Sans>
     <Flex flexDirection="column">
-      {props.exhibitions.filter(e => e).map(exhibition => (
+      {props.exhibitions.map(exhibition => (
         <Box display="inline" ml={3}>
           <Sans size="2" display="inline" verticalAlign="top">
             {exhibition.show}
