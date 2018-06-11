@@ -2,14 +2,20 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import { Error, Footer, FormContainer, TOSCheckbox } from "../commonElements"
-import Text from "Components/Text"
-import TextLink from "Components/TextLink"
+import {
+  Error,
+  Footer,
+  FormContainer as Form,
+  TermsOfServiceCheckbox,
+} from "Components/Authentication/commonElements"
 import Input from "Components/Input"
-import { FormComponentType, InputValues, ModalType } from "../Types"
+import {
+  FormComponentType,
+  InputValues,
+  ModalType,
+} from "Components/Authentication/Types"
 import Button from "Components/Buttons/Inverted"
-import { SignUpValidator } from "../Validators"
-import Colors from "Assets/Colors"
+import { SignUpValidator } from "Components/Authentication/Validators"
 
 const SignUpButton = styled(Button).attrs({
   type: "submit",
@@ -36,10 +42,8 @@ export const SignUpForm: FormComponentType = props => {
         isValid,
         status,
       }: FormikProps<InputValues>) => {
-        const checkboxError =
-          touched.acceptedTermsOfService && errors.acceptedTermsOfService
         return (
-          <FormContainer onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} height={430}>
             <Input
               block
               quick
@@ -77,42 +81,24 @@ export const SignUpForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <TOSCheckbox
-              error={checkboxError}
+            <TermsOfServiceCheckbox
+              error={
+                touched.acceptedTermsOfService && errors.acceptedTermsOfService
+              }
               checked={values.acceptedTermsOfService}
               value={values.acceptedTermsOfService}
               type="checkbox"
               name="acceptedTermsOfService"
               onChange={handleChange}
               onBlur={handleBlur}
-            >
-              <Text color={checkboxError ? Colors.redMedium : Colors.grayDark}>
-                {"I agree to the "}
-                <TextLink
-                  href="https://www.artsy.net/terms"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Terms Of Service
-                </TextLink>
-                {" and "}
-                <TextLink
-                  href="https://www.artsy.net/privacy"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Privacy Policy
-                </TextLink>
-              </Text>
-            </TOSCheckbox>
+            />
             {status && !status.success && <Error show>{status.error}</Error>}
             <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+              inline
             />
-          </FormContainer>
+          </Form>
         )
       }}
     </Formik>
