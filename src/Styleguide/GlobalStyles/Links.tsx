@@ -7,10 +7,10 @@ export const Links = () => css`
 
   a {
     color: ${themeGet("colors.black60")};
+    transition: 0.25s;
 
     &:hover {
       color: ${themeGet("colors.black100")};
-      transition: all 250ms ease-out 0s;
     }
 
     &:active {
