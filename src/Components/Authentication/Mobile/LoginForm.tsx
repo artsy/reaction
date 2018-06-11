@@ -1,44 +1,27 @@
 import React from "react"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
-import styled from "styled-components"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
 import Icon from "../../Icon"
 import { FormComponentType } from "../Types"
 import Colors from "Assets/Colors"
 import { LoginValidator } from "../Validators"
-import { metaphysics } from "../../../Utils/metaphysics"
-import * as sharify from "sharify"
-import { Footer, MobileHeader } from "../commonElements"
-
-const checkEmail = (values, actions) => {
-  const query = `
-    query {
-      user(email: "${values.email}") {
-        userAlreadyExists
-      }
-    }
-  `
-
-  return metaphysics(
-    { query },
-    {
-      appToken: sharify.data.XAPP_TOKEN,
-    }
-  ).then(({ data }: any) => {
-    if (data.user.userAlreadyExists) {
-      return true
-    }
-    actions.setFieldError("email", "Email does not exist.")
-    actions.setSubmitting(false)
-    return false
-  })
-}
+import {
+  BackButton,
+  Footer,
+  MobileContainer,
+  MobileHeader,
+  MobileInnerWrapper,
+} from "../commonElements"
+import { checkEmailDoesNotExist } from "Components/Authentication/helpers"
 
 export const MobileLoginForm: FormComponentType = props => {
   const steps = [
-    <Step validationSchema={LoginValidator.email} onSubmit={checkEmail}>
+    <Step
+      validationSchema={LoginValidator.email}
+      onSubmit={checkEmailDoesNotExist}
+    >
       {({
         wizard,
         form: {
@@ -127,9 +110,9 @@ export const MobileLoginForm: FormComponentType = props => {
         const { wizard } = context
         const { currentStep } = wizard
         return (
-          <Container>
+          <MobileContainer>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
-            <InnerWrapper>
+            <MobileInnerWrapper>
               <BackButton onClick={wizard.previous as any}>
                 <Icon
                   name="chevron-left"
@@ -139,35 +122,10 @@ export const MobileLoginForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Log in</MobileHeader>
               {currentStep}
-            </InnerWrapper>
-          </Container>
+            </MobileInnerWrapper>
+          </MobileContainer>
         )
       }}
     </Wizard>
   )
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: stretch;
-  width: 100%;
-  min-width: 260px;
-`
-
-const InnerWrapper = styled.div`
-  position: relative;
-  margin-left: 35px;
-  margin-right: 35px;
-`
-
-const BackButton = styled.div`
-  display: flex;
-  justify-self: start;
-  align-self: center;
-  position: absolute;
-  left: -9px;
-  top: 40px;
-  color: Colors.grayMedium;
-`

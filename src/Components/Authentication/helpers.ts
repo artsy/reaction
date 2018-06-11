@@ -1,3 +1,6 @@
+import * as sharify from "sharify"
+import { metaphysics } from "Utils/metaphysics"
+
 export const handleSubmit = (
   url: string,
   csrf: string,
@@ -33,4 +36,44 @@ export async function sendAuthData(
   })
   const data = await res.json()
   return data
+}
+
+const query = email => `
+  query {
+    user(email: "${email}") {
+      userAlreadyExists
+    }
+  }
+`
+
+export const checkEmailExists = (values, actions) => {
+  return metaphysics(
+    { query: query(values.email) },
+    {
+      appToken: sharify.data.XAPP_TOKEN,
+    }
+  ).then(({ data }: any) => {
+    if (data.user.userAlreadyExists) {
+      actions.setFieldError("email", "Email already exists.")
+      actions.setSubmitting(false)
+      return false
+    }
+    return true
+  })
+}
+
+export const checkEmailDoesNotExist = (values, actions) => {
+  return metaphysics(
+    { query: query(values.email) },
+    {
+      appToken: sharify.data.XAPP_TOKEN,
+    }
+  ).then(({ data }: any) => {
+    if (data.user.userAlreadyExists) {
+      return true
+    }
+    actions.setFieldError("email", "Email does not exist.")
+    actions.setSubmitting(false)
+    return false
+  })
 }

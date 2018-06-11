@@ -51,3 +51,27 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
   height: ${p => (p.show ? "16px" : "0")};
 `
+
+export const MobileInnerWrapper = styled.div`
+  position: relative;
+  margin: 0 20px;
+`
+
+export const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: stretch;
+  width: 100%;
+  min-width: 260px;
+`
+
+export const BackButton = styled.div`
+  display: flex;
+  justify-self: start;
+  align-self: center;
+  position: absolute;
+  left: -9px;
+  top: 40px;
+  color: Colors.grayMedium;
+`
