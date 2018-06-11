@@ -54,7 +54,7 @@ export class ArtworkGridContainer extends React.Component<
 
   maybeLoadMore() {
     const threshold = window.innerHeight + window.scrollY
-    const el = ReactDOM.findDOMNode(this)
+    const el = ReactDOM.findDOMNode(this) as Element
     if (threshold >= el.clientHeight + el.scrollTop) {
       this.props.onLoadMore()
     }
