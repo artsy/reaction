@@ -5,17 +5,17 @@ import { Section } from "../../Utils/Section"
 
 const exhibitions = [
   {
-    year: 2018,
+    year: "2018",
     show: "Some show this year 1",
     gallery: "Some gallery",
   },
   {
-    year: 2018,
+    year: "2018",
     show: "Some show this year 2",
     gallery: "Some gallery",
   },
   {
-    year: 2017,
+    year: "2017",
     show: "Blaahhhhh",
     gallery: "You don't know me 123",
   },
