@@ -170,7 +170,9 @@ export class LinkWithTooltip extends Component<Props, State> {
 
   setupToolTipPosition = () => {
     if (this.link) {
-      const position = findDOMNode(this.link).getBoundingClientRect()
+      const position = (findDOMNode(
+        this.link
+      ) as Element).getBoundingClientRect()
       const orientation = this.getOrientation(position)
 
       this.setState({ position, orientation })

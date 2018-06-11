@@ -12,15 +12,15 @@ import {
   SpaceProps,
 } from "styled-system"
 
-interface RadioProps {
+export interface RadioProps {
   selected?: boolean
 }
 
-interface RadioState {
+export interface RadioState {
   selected: boolean
 }
 
-interface RadioToggleProps
+export interface RadioToggleProps
   extends RadioProps,
     BorderProps,
     SizeProps,

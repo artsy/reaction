@@ -24,7 +24,7 @@ const flexGrow = style({
   numberToPx: false,
 })
 
-interface FlexProps
+export interface FlexProps
   extends AlignItemsProps,
     FlexDirectionProps,
     JustifyContentProps,

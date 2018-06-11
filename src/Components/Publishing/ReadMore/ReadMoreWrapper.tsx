@@ -40,7 +40,7 @@ export class ReadMoreWrapper extends React.Component<
     if (isTruncated) {
       let height = 0
       let charCount = 0
-      const thisNode = ReactDOM.findDOMNode(this)
+      const thisNode = ReactDOM.findDOMNode(this) as Element
 
       // Iterate over text sections
       find(
