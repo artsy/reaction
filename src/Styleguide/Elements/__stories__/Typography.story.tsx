@@ -122,15 +122,28 @@ stories.add("Typography", () => {
           </a>
         </Display>
       </Section>
-      <Section title="Links .colorLink">
+      <Section title="Links .purpleLink">
         <Sans mx={5}>
-          <a href="#" className="colorLink">
+          <a href="#" className="purpleLink">
             This is a link
           </a>
         </Sans>
 
         <Serif mx={5}>
-          <a href="#" className="colorLink">
+          <a href="#" className="purpleLink">
+            This is a link
+          </a>
+        </Serif>
+      </Section>
+      <Section title="Links .blackLink">
+        <Sans mx={5}>
+          <a href="#" className="blabkLink">
+            This is a link
+          </a>
+        </Sans>
+
+        <Serif mx={5}>
+          <a href="#" className="blackLink">
             This is a link
           </a>
         </Serif>

@@ -1,6 +1,8 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
-import { FollowButton } from "../../../../Components/Follow"
+import styled from "styled-components"
+import { themeGet } from "styled-system"
+import { FollowIcon } from "../../../Elements/FollowIcon"
 
 interface ArtistsProps {
   artists: Array<{
@@ -12,11 +14,19 @@ interface ArtistsProps {
   }>
 }
 
+const Artist = styled.div`
+  a {
+    color: ${themeGet("colors.black100")};
+  }
+`
+
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
     return artist.href ? (
       <Serif size="5t" display="inline-block">
-        <a href={artist.href}>{artist.name}</a>
+        <a href={artist.href} className="blackLink">
+          {artist.name}
+        </a>
       </Serif>
     ) : (
       <Serif size="5t" display="inline-block">
@@ -30,10 +40,10 @@ export class Artists extends React.Component<ArtistsProps> {
     if (artists.length === 1) {
       const artist = artists[0]
       return (
-        <React.Fragment>
+        <Artist>
           {this.renderArtistName(artist)}
-          <FollowButton artist={artist} />
-        </React.Fragment>
+          <FollowIcon is_followed={artist.is_followed} />
+        </Artist>
       )
     } else {
       return artists.map((artist, index) => {

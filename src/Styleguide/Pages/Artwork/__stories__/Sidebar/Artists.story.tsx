@@ -1,5 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { Section } from "../../../../Utils/Section"
 import { Artists } from "../../Sidebar/Artists"
 
 export const SingleFollowedArtist = [
@@ -37,13 +38,18 @@ export const MultipleArtists = [
   },
 ]
 
-storiesOf("Styleguide/Artwork/Sidebar", module)
-  .add("Single Followed Artist", () => {
-    return <Artists artists={SingleFollowedArtist} />
-  })
-  .add("Single Not Followed Artist", () => {
-    return <Artists artists={SingleNonFollowedArtist} />
-  })
-  .add("Multipe Artists", () => {
-    return <Artists artists={MultipleArtists} />
-  })
+storiesOf("Styleguide/Artwork/Sidebar", module).add("Artists", () => {
+  return (
+    <React.Fragment>
+      <Section title="Single Followed Artist">
+        <Artists artists={SingleFollowedArtist} />
+      </Section>
+      <Section title="Single Not Followed Artist">
+        <Artists artists={SingleNonFollowedArtist} />
+      </Section>
+      <Section title="Multipe Artists">
+        <Artists artists={MultipleArtists} />
+      </Section>
+    </React.Fragment>
+  )
+})

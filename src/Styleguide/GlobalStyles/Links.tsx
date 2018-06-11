@@ -20,13 +20,17 @@ export const Links = () => css`
     /* ts-styled-plugin erroniously parses this; see: */
     /* https://github.com/Microsoft/typescript-styled-plugin/issues/54 */
 
+    &.blackLink {
+      ${blackLink};
+    }
+
     &.noUnderline {
       ${noUnderline};
     }
 
-    &.colorLink {
+    &.purpleLink {
       ${noUnderline};
-      ${colorLink};
+      ${purpleLink};
     }
   }
 
@@ -44,13 +48,17 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
+      &.blackLink {
+        ${blackLink};
+      }
+
       &.noUnderline {
         ${noUnderline};
       }
 
-      &.colorLink {
+      &.purpleLink {
         ${noUnderline};
-        ${colorLink};
+        ${purpleLink};
       }
     }
   }
@@ -69,13 +77,17 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
+      &.blackLink {
+        ${blackLink};
+      }
+
       &.noUnderline {
         ${noUnderline};
       }
 
-      &.colorLink {
+      &.purpleLink {
         ${noUnderline};
-        ${colorLink};
+        ${purpleLink};
       }
     }
   }
@@ -105,6 +117,10 @@ const noUnderline = css`
   }
 `
 
-const colorLink = css`
+const purpleLink = css`
   color: ${themeGet("colors.purple100")};
+`
+
+const blackLink = css`
+  color: ${themeGet("colors.black100")};
 `
