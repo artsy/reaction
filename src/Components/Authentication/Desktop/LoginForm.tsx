@@ -2,12 +2,20 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import { SmallTextLink, Footer, FormContainer as Form } from "../commonElements"
+import {
+  SmallTextLink,
+  Footer,
+  FormContainer as Form,
+} from "Components/Authentication/commonElements"
 import { LoginValidator } from "Components/Authentication/Validators"
 import Input from "Components/Input"
 import Text from "Components/Text"
 import Colors from "Assets/Colors"
-import { FormComponentType, InputValues, ModalType } from "../Types"
+import {
+  FormComponentType,
+  InputValues,
+  ModalType,
+} from "Components/Authentication/Types"
 import Checkbox from "Components/Checkbox"
 import Button from "Components/Buttons/Inverted"
 

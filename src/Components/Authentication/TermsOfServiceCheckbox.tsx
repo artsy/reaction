@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import Checkbox from "../Checkbox"
-import Text from "../Text"
-import Colors from "../../Assets/Colors"
-import TextLink from "../TextLink"
+import Checkbox from "Components/Checkbox"
+import Text from "Components/Text"
+import Colors from "Assets/Colors"
+import TextLink from "Components/TextLink"
 
 export const TermsOfServiceCheckbox = ({
   error,

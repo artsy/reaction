@@ -1,18 +1,24 @@
 import React from "react"
 import styled from "styled-components"
 import * as sharify from "sharify"
-import { metaphysics } from "../../../Utils/metaphysics"
+import { metaphysics } from "Utils/metaphysics"
 
-import { Step, Wizard } from "../../Wizard"
-import { ProgressIndicator } from "../../ProgressIndicator"
-import { Footer, MobileHeader } from "../commonElements"
-import Input from "../../Input"
-import Button from "../../Buttons/Inverted"
-import Icon from "../../Icon"
-import { FormComponentType, ModalType } from "../Types"
+import { Step, Wizard } from "Components/Wizard"
+import { ProgressIndicator } from "Components/ProgressIndicator"
+import {
+  Footer,
+  MobileHeader,
+  TermsOfServiceCheckbox,
+} from "Components/Authentication/commonElements"
+import Input from "Components/Input"
+import Button from "Components/Buttons/Inverted"
+import Icon from "Components/Icon"
+import { FormComponentType, ModalType } from "Components/Authentication/Types"
 import Colors from "Assets/Colors"
-import { CustomMobileValidator, MobileSignUpValidator } from "../Validators"
-import { TermsOfServiceCheckbox } from "../TermsOfServiceCheckbox"
+import {
+  CustomMobileValidator,
+  MobileSignUpValidator,
+} from "Components/Authentication/Validators"
 
 const checkEmail = (values, actions) => {
   const query = `
