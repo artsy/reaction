@@ -41,7 +41,6 @@ export const Truncator: React.SFC<Props> = ({
     <ErrorBoundary>
       <HTMLEllipsis
         unsafeHTML={html}
-        trimRight={false}
         maxLine={maxLineCount || 2}
         ellipsis={ellipsis}
         ellipsisHTML={readMoreHTML}

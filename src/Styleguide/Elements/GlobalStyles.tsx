@@ -1,8 +1,26 @@
+import styled from "styled-components"
 import { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Sans, Serif, Display } from "@artsy/palette"
 
-export const Links = () => css`
+// @ts-ignore
+import { ClassAttributes, HTMLAttributes } from "react"
+
+// Mixins
+
+const noUnderline = css`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const colorLink = css`
+  color: ${themeGet("colors.purple100")};
+`
+
+export const GlobalStyles = styled.div`
   /* Default links */
 
   a {
@@ -93,18 +111,4 @@ export const Links = () => css`
       }
     }
   }
-`
-
-// Mixins
-
-const noUnderline = css`
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
-const colorLink = css`
-  color: ${themeGet("colors.purple100")};
 `
