@@ -2,6 +2,7 @@ import React, { SFC } from "react"
 import { Flex } from "../Elements/Flex"
 import { Box, BorderBox } from "../Elements/Box"
 import { Sans } from "@artsy/palette"
+import { groupBy, toPairs } from "lodash"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2
@@ -12,19 +13,6 @@ export interface Exhibition {
   year: Year
   show: string
   gallery: string
-}
-
-type GroupedExhibitions = [Year, Exhibition[]]
-
-const groupExhibitions = (exhibitions: Exhibition[]): GroupedExhibitions[] => {
-  const exhibitionsByYear = exhibitions.reduce((acc, curr) => {
-    const { year } = curr
-    acc[year] = [].concat(acc[year], curr)
-    return acc
-  }, {})
-  return Object.keys(exhibitionsByYear)
-    .reverse()
-    .map(year => [year, exhibitionsByYear[year]] as GroupedExhibitions)
 }
 
 const isCollapsed = props => props.collapsible && !props.expanded
@@ -78,9 +66,11 @@ interface FullExhibitionListProps {
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   <React.Fragment>
-    {groupExhibitions(props.exhibitions).map(([year, exhibitions]) => (
-      <ExhibitionYearList year={year} exhibitions={exhibitions} />
-    ))}
+    {toPairs(groupBy(props.exhibitions, ({ year }) => year))
+      .reverse()
+      .map(([year, exhibitions]) => (
+        <ExhibitionYearList year={year} exhibitions={exhibitions.reverse()} />
+      ))}
     <Sans size="2" color="black60">
       View all
     </Sans>
