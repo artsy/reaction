@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Flex } from "../Elements/Flex"
 import { Responsive } from "../Utils/Responsive"
 import { Sans, Serif } from "@artsy/palette"
+import { FlexDirectionProps } from "styled-system"
 
 export class Footer extends React.Component {
   render() {
@@ -20,56 +21,62 @@ export class Footer extends React.Component {
 export const LargeFooter = props => <FooterContainer flexDirection="row" />
 export const SmallFooter = props => <FooterContainer flexDirection="column" />
 
-const FooterContainer = props => {
+export interface FooterContainerProps extends FlexDirectionProps {}
+const FooterContainer: React.SFC<FooterContainerProps> = props => {
   return (
-    <React.Fragment>
-      <Flex
-        flexDirection={props.flexDirection}
-        justifyContent="space-between"
-        width="100%"
-      >
-        <Flex flexDirection="column" my={3}>
-          <Sans size="2">Buy</Sans>
-          <Serif size="2">
-            <Link>Buying fr2m Galleries FAQ</Link>
-            <Link>Buying from Auctions FAQ</Link>
-            <Link>Consign with Artsy</Link>
-            <Link>Artsy for Professional Buyers</Link>
-          </Serif>
-        </Flex>
-        <Flex flexDirection="column" my={3}>
-          <Sans size="2">Learn</Sans>
-          <Serif size="2">
-            <Link>Education</Link>
-            <Link>The Art Genome Project</Link>
-          </Serif>
-        </Flex>
-        <Flex flexDirection="column" my={3}>
-          <Sans size="2">About us</Sans>
-          <Serif size="2">
-            <Link>About</Link>
-            <Link>Blog</Link>
-            <Link>Jobs</Link>
-            <Link>Open Source</Link>
-            <Link>Press</Link>
-            <Link>Contact</Link>
-            <Link>Send us feedback</Link>
-          </Serif>
-        </Flex>
-        <Flex flexDirection="column" my={3}>
-          <Sans size="2">Partners</Sans>
-          <Serif size="2">
-            <Link>Buying from Galleries FAQ</Link>
-            <Link>Buying from Auctions FAQ</Link>
-            <Link>Consign with Artsy</Link>
-            <Link>Artsy for Professional Buyers</Link>
-          </Serif>
-        </Flex>
+    <Flex
+      flexDirection={props.flexDirection}
+      justifyContent="space-between"
+      width="100%"
+    >
+      <Flex flexDirection="column" mb={3}>
+        <Sans size="2">Buy</Sans>
+        <Serif size="2">
+          <Link href="https://www.artsy.net/#">Buying from Galleries FAQ</Link>
+          <Link href="https://www.artsy.net/#">Buying from Auctions FAQ</Link>
+          <Link href="https://www.artsy.net/consign">Consign with Artsy</Link>
+          <Link href="https://www.artsy.net/professional-buyer">
+            Artsy for Professional Buyers
+          </Link>
+        </Serif>
       </Flex>
-    </React.Fragment>
+      <Flex flexDirection="column" mb={3}>
+        <Sans size="2">Learn</Sans>
+        <Serif size="2">
+          <Link href="https://www.artsy.net/artsy-education">Education</Link>
+          <Link href="https://www.artsy.net/categories">
+            The Art Genome Project
+          </Link>
+        </Serif>
+      </Flex>
+      <Flex flexDirection="column" mb={3}>
+        <Sans size="2">About us</Sans>
+        <Serif size="2">
+          <Link href="https://www.artsy.net/about">About</Link>
+          <Link href="https://medium.com/artsy-blog">Blog</Link>
+          <Link href="https://www.artsy.net/about/jobs">Jobs</Link>
+          <Link href="https://artsy.github.com/open-source">Open Source</Link>
+          <Link href="https://www.artsy.net/about/press">Press</Link>
+          <Link href="#">Contact</Link>
+          <Link href="#">Send us feedback</Link>
+        </Serif>
+      </Flex>
+      <Flex flexDirection="column" mb={3}>
+        <Sans size="2">Partners</Sans>
+        <Serif size="2">
+          <Link href="">Buying from Galleries FAQ</Link>
+          <Link href="#">Buying from Auctions FAQ</Link>
+          <Link href="#">Consign with Artsy</Link>
+          <Link href="#">Artsy for Professional Buyers</Link>
+        </Serif>
+      </Flex>
+    </Flex>
   )
 }
 
 const Link = styled.a`
   display: block;
+  margin-top: ${props => props.theme.space[3]}px;
+  margin-bottom: ${props => props.theme.space[3]}px;
+  text-decoration: none;
 `
