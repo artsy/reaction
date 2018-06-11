@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react"
 import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
@@ -12,8 +14,7 @@ interface FormProps {
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  height: ${(props: FormProps) =>
-    props.height ? props.height + "px" : "auto"};
+  height: ${(p: FormProps) => (p.height ? p.height + "px" : "auto")};
 `
 
 export const SmallTextLink = styled.a`
