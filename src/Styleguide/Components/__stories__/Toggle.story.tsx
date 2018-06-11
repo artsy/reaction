@@ -2,7 +2,10 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../Utils/Section"
 import { Toggle } from "../Toggle"
+import { Checkbox } from "../../Elements/Checkbox"
+import { Radio } from "../../Elements/Radio"
 import { Sans, Serif } from "@artsy/palette"
+import { Flex } from "../../Elements/Flex"
 import styled from "styled-components"
 
 storiesOf("Styleguide/Components", module).add("Toggle", () => {
@@ -46,7 +49,16 @@ storiesOf("Styleguide/Components", module).add("Toggle", () => {
       </Section>
       <Section title="Artwork Filter">
         <Item>
-          <Toggle label="Medium" />
+          <Toggle label="Purchase type" expanded disabled>
+            <Flex justifyContent="space-between">
+              <Checkbox>For sale</Checkbox>
+              <Serif color="black60">1000</Serif>
+            </Flex>
+          </Toggle>
+          <Toggle label="Medium" expanded>
+            <Radio>Painting</Radio>
+            <Radio>Sculpture</Radio>
+          </Toggle>
           <Toggle label="Gallery" />
           <Toggle label="Institution" />
           <Toggle label="Time period" />

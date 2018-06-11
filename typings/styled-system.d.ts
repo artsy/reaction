@@ -54,9 +54,15 @@ declare module "styled-system" {
     height?: ResponsiveHeightValue
   }
 
+  export function width(...args: any[]): any
+
   export function height(...args: any[]): any
 
-  export function width(...args: any[]): any
+  export interface SizeProps {
+    size?: ResponsiveWidthValue | ResponsiveHeightValue
+  }
+
+  export function size(...args: any[]): any
 
   export type FontSizeValue = number | string
   export type ResponsiveFontSizeValue = ResponsiveValue<FontSizeValue>
@@ -367,13 +373,18 @@ declare module "styled-system" {
     display?: DisplayValue
   }
 
-  export function position(...args: any[]): any
-  export function top(...args: any[]): any
-
   export type PositionValue = string | number
 
   export interface PositionProps {
     top?: PositionValue
+    right?: PositionValue
     bottom?: PositionValue
+    left?: PositionValue
   }
+
+  export function position(...args: any[]): any
+  export function top(...args: any[]): any
+  export function right(...args: any[]): any
+  export function bottom(...args: any[]): any
+  export function left(...args: any[]): any
 }
