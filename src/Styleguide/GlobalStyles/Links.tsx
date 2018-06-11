@@ -6,7 +6,7 @@ export const Links = () => css`
   /* Default links */
 
   a {
-    color: ${themeGet("colors.black60")};
+    color: inherit;
     transition: 0.25s;
 
     &:hover {
@@ -20,17 +20,13 @@ export const Links = () => css`
     /* ts-styled-plugin erroniously parses this; see: */
     /* https://github.com/Microsoft/typescript-styled-plugin/issues/54 */
 
-    &.blackLink {
-      ${blackLink};
-    }
-
     &.noUnderline {
       ${noUnderline};
     }
 
-    &.purpleLink {
+    &.colorLink {
       ${noUnderline};
-      ${purpleLink};
+      ${colorLink};
     }
   }
 
@@ -38,7 +34,7 @@ export const Links = () => css`
 
   ${Sans} {
     a {
-      color: ${themeGet("colors.black60")};
+      color: inherit;
 
       &:hover {
         color: ${themeGet("colors.black100")};
@@ -48,17 +44,13 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
-      &.blackLink {
-        ${blackLink};
-      }
-
       &.noUnderline {
         ${noUnderline};
       }
 
-      &.purpleLink {
+      &.colorLink {
         ${noUnderline};
-        ${purpleLink};
+        ${colorLink};
       }
     }
   }
@@ -67,7 +59,7 @@ export const Links = () => css`
 
   ${Serif} {
     a {
-      color: ${themeGet("colors.black60")};
+      color: inherit;
 
       &:hover {
         color: ${themeGet("colors.black100")};
@@ -77,17 +69,13 @@ export const Links = () => css`
         color: ${themeGet("colors.black100")};
       }
 
-      &.blackLink {
-        ${blackLink};
-      }
-
       &.noUnderline {
         ${noUnderline};
       }
 
-      &.purpleLink {
+      &.colorLink {
         ${noUnderline};
-        ${purpleLink};
+        ${colorLink};
       }
     }
   }
@@ -117,10 +105,6 @@ const noUnderline = css`
   }
 `
 
-const purpleLink = css`
+const colorLink = css`
   color: ${themeGet("colors.purple100")};
-`
-
-const blackLink = css`
-  color: ${themeGet("colors.black100")};
 `

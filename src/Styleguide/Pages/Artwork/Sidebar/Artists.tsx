@@ -24,9 +24,7 @@ export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
     return artist.href ? (
       <Serif size="5t" display="inline-block">
-        <a href={artist.href} className="blackLink">
-          {artist.name}
-        </a>
+        <a href={artist.href}>{artist.name}</a>
       </Serif>
     ) : (
       <Serif size="5t" display="inline-block">
