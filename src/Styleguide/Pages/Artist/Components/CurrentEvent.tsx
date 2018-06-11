@@ -1,26 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import { Responsive } from "../../../Utils/Responsive"
 import { Flex } from "../../../Elements/Flex"
+import { Image } from "../../../Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
-
-import {
-  space,
-  width,
-  SpaceProps,
-  WidthProps,
-  height,
-  HeightProps,
-} from "styled-system"
-
-interface ArtworkImageProps extends SpaceProps, WidthProps, HeightProps {
-  src: string
-}
-const ArtworkImage = styled.img.attrs<ArtworkImageProps>({})`
-  ${space};
-  ${width};
-  ${height};
-`
 
 export interface CurrentEventProps {
   src: string
@@ -46,7 +28,7 @@ export class CurrentEvent extends React.Component<CurrentEventProps> {
 export const LargeCurrentEvent = props => {
   return (
     <Flex flexDirection="column">
-      <ArtworkImage src={props.src} mb={3} />
+      <Image src={props.src} mb={3} />
       <Sans size="2" my={2}>
         Currently on view
       </Sans>

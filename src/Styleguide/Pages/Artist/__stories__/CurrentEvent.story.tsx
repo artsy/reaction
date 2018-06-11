@@ -6,7 +6,7 @@ import { CurrentEvent, LargeCurrentEvent } from "../Components/CurrentEvent"
 storiesOf("Styleguide/Artist", module).add("Current Event", () => {
   return (
     <React.Fragment>
-      <Section title="Responsive">
+      <Section title="Responsive Current Event">
         <CurrentEvent
           src="https://picsum.photos/300/200/?random"
           title="Brancusi: Pioneer of American Minimalism"
