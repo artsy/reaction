@@ -3,6 +3,9 @@ import { Flex } from "../Elements/Flex"
 import { Box, BorderBox } from "../Elements/Box"
 import { Sans } from "@artsy/palette"
 
+const MIN_FOR_SELECTED_EXHIBITIONS = 3
+const MIN_EXHIBITIONS = 2
+
 type Year = string
 
 export interface Exhibition {
@@ -32,7 +35,9 @@ export interface ExhibitionsHeadlineProps {
 const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
   <Flex justifyContent="space-between">
     <Sans size="2" weight="medium" mb={3}>
-      {props.exhibitionCount < 3 ? "Exhibitions" : "Selected exhibitions"}
+      {props.exhibitionCount < MIN_FOR_SELECTED_EXHIBITIONS
+        ? "Exhibitions"
+        : "Selected exhibitions"}
       {props.collapsible && !props.expanded
         ? ` (${props.exhibitionCount})`
         : ""}
@@ -95,7 +100,7 @@ export class SelectedExhibitions extends React.Component<
     expanded: false,
   }
   render() {
-    if (this.props.exhibitions.length < 2) return null
+    if (this.props.exhibitions.length < MIN_EXHIBITIONS) return null
     return (
       <BorderBox>
         <Flex flexDirection="column">
