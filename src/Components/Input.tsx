@@ -267,7 +267,7 @@ const Error = styled.div.attrs<{ show: boolean }>({})`
 const PasswordMessage = styled.div`
   ${unica("s12")};
   margin-top: 10px;
-  color: ${Colors.grayDark};
+  color: ${Colors.graySemibold};
   height: 16px;
 `
 

@@ -5,14 +5,19 @@ import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import Checkbox from "../Checkbox"
+import Text from "../Text"
 
 export { Footer } from "./Footer"
+
+interface FormProps {
+  height?: number
+}
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0 20px 30px;
-  height: 425px;
+  height: ${(props: FormProps) =>
+    props.height ? props.height + "px" : "auto"};
 `
 
 export const TOSCheckbox = ({ error, name, onChange, value, ...props }) => (
@@ -22,7 +27,12 @@ export const TOSCheckbox = ({ error, name, onChange, value, ...props }) => (
 )
 
 const StyledCheckbox = styled(Checkbox)`
-  margin: 20px 0;
+  margin-bottom: 5px;
+  align-items: flex-start;
+`
+
+export const TOSText = styled(Text)`
+  margin: 0 0 0 5px;
 `
 
 export const SmallTextLink = styled.a`

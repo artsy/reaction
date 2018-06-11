@@ -1,20 +1,18 @@
 import React from "react"
+import styled from "styled-components"
+import * as sharify from "sharify"
+import { metaphysics } from "../../../Utils/metaphysics"
+
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
-
-import { Footer, MobileHeader, TOSCheckbox } from "../commonElements"
-import styled from "styled-components"
+import { Footer, MobileHeader } from "../commonElements"
 import Input from "../../Input"
 import Button from "../../Buttons/Inverted"
 import Icon from "../../Icon"
 import { FormComponentType, ModalType } from "../Types"
-
-import Text from "../../Text"
-import TextLink from "../../TextLink"
 import Colors from "Assets/Colors"
 import { CustomMobileValidator, MobileSignUpValidator } from "../Validators"
-import { metaphysics } from "../../../Utils/metaphysics"
-import * as sharify from "sharify"
+import { TermsOfServiceCheckbox } from "../TermsOfServiceCheckbox"
 
 const checkEmail = (values, actions) => {
   const query = `
@@ -92,8 +90,6 @@ export const MobileSignUpForm: FormComponentType = props => {
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => {
-        const checkboxError =
-          touched.acceptedTermsOfService && errors.acceptedTermsOfService
         return (
           <div style={{ marginBottom: "80px" }}>
             <Input
@@ -109,36 +105,17 @@ export const MobileSignUpForm: FormComponentType = props => {
               setTouched={setTouched}
               quick
             />
-            <TOSCheckbox
-              error={checkboxError}
-              value={values.acceptedTermsOfService}
+            <TermsOfServiceCheckbox
+              error={
+                touched.acceptedTermsOfService && errors.acceptedTermsOfService
+              }
               checked={values.acceptedTermsOfService}
+              value={values.acceptedTermsOfService}
               type="checkbox"
               name="acceptedTermsOfService"
               onChange={handleChange}
               onBlur={handleBlur}
-            >
-              <Text color={checkboxError ? Colors.redMedium : Colors.grayDark}>
-                {"I agree to the "}
-                <TextLink
-                  href="https://www.artsy.net/terms"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Terms Of Service
-                </TextLink>
-                {" and "}
-                <TextLink
-                  href="https://www.artsy.net/privacy"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Privacy Policy
-                </TextLink>
-              </Text>
-            </TOSCheckbox>
+            />
           </div>
         )
       }}

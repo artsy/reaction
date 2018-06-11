@@ -31,9 +31,9 @@ const CloseButton = styled(Icon).attrs({
   top: 20px;
   right: 15px;
   cursor: pointer;
+  color: ${Colors.black30};
 `
 
 const Content = styled.div`
   box-sizing: border-box;
-  margin: 0px 60px;
 `
