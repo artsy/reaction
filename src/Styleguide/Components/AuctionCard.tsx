@@ -1,6 +1,6 @@
 import React from "react"
 import { Responsive } from "../Utils/Responsive"
-import { Card } from "../Elements/Card"
+import { BorderBox } from "../Elements/Box"
 import { Flex } from "../Elements/Flex"
 import { Serif, Sans } from "@artsy/palette"
 import styled from "styled-components"
@@ -54,7 +54,7 @@ export class AuctionCard extends React.Component<AuctionCardProps> {
 }
 
 export const LargeAuctionCard = props => (
-  <Card flexDirection="column" p={4}>
+  <BorderBox hover flexDirection="column">
     <Serif size="3t" weight="semibold">
       {props.headline}
     </Serif>
@@ -63,7 +63,7 @@ export const LargeAuctionCard = props => (
     <Sans size="1" weight="medium">
       {props.badge}
     </Sans>
-  </Card>
+  </BorderBox>
 )
 
 export const SmallAuctionCard = props => (
