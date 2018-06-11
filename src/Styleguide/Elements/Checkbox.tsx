@@ -13,15 +13,15 @@ import {
   SpaceProps,
 } from "styled-system"
 
-interface CheckboxProps {
+export interface CheckboxProps {
   selected?: boolean
 }
 
-interface CheckboxState {
+export interface CheckboxState {
   selected: boolean
 }
 
-interface CheckboxToggleProps
+export interface CheckboxToggleProps
   extends CheckboxProps,
     BorderProps,
     SizeProps,

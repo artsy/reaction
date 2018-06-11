@@ -32,7 +32,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
      * Guard against snapshot tests See: https://reactjs.org/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
      */
     try {
-      const imgTag = ReactDOM.findDOMNode(this.image)
+      const imgTag = ReactDOM.findDOMNode(this.image) as Element
       const imgSrc = imgTag.getAttribute("src")
       img.src = imgSrc
     } catch (error) {

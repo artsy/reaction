@@ -137,6 +137,7 @@ exports[`EmailSignup renders an email signup 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   border-radius: 2px;
+  border-radius: 2px;
   height: 30px;
   width: 80px;
   margin-left: -100px;

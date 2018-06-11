@@ -1,19 +1,19 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import { DisplayProps } from "styled-system"
 import { Truncator } from "../../Components/Truncator"
 import { Theme, Sans } from "@artsy/palette"
 
-interface ReadMoreProps extends DisplayProps {
+export interface ReadMoreProps extends DisplayProps {
   isExpanded?: boolean
   maxLineCount?: number
 }
 
-interface ReadMoreState {
+export interface ReadMoreState {
   isExpanded: boolean
 }
 
-export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
+export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
   state = {
     isExpanded: false,
   }

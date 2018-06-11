@@ -1,20 +1,24 @@
 import React from "react"
-import { Step, Wizard } from "../../Wizard"
-import { ProgressIndicator } from "../../ProgressIndicator"
-
-import { Footer, MobileHeader, TOSCheckbox } from "../commonElements"
 import styled from "styled-components"
-import Input from "../../Input"
-import Button from "../../Buttons/Inverted"
-import Icon from "../../Icon"
-import { FormComponentType, ModalType } from "../Types"
-
-import Text from "../../Text"
-import TextLink from "../../TextLink"
-import Colors from "Assets/Colors"
-import { CustomMobileValidator, MobileSignUpValidator } from "../Validators"
-import { metaphysics } from "../../../Utils/metaphysics"
 import * as sharify from "sharify"
+import { metaphysics } from "Utils/metaphysics"
+
+import { Step, Wizard } from "Components/Wizard"
+import { ProgressIndicator } from "Components/ProgressIndicator"
+import {
+  Footer,
+  MobileHeader,
+  TermsOfServiceCheckbox,
+} from "Components/Authentication/commonElements"
+import Input from "Components/Input"
+import Button from "Components/Buttons/Inverted"
+import Icon from "Components/Icon"
+import { FormComponentType, ModalType } from "Components/Authentication/Types"
+import Colors from "Assets/Colors"
+import {
+  CustomMobileValidator,
+  MobileSignUpValidator,
+} from "Components/Authentication/Validators"
 
 const checkEmail = (values, actions) => {
   const query = `
@@ -92,8 +96,6 @@ export const MobileSignUpForm: FormComponentType = props => {
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => {
-        const checkboxError =
-          touched.acceptedTermsOfService && errors.acceptedTermsOfService
         return (
           <div style={{ marginBottom: "80px" }}>
             <Input
@@ -109,36 +111,17 @@ export const MobileSignUpForm: FormComponentType = props => {
               setTouched={setTouched}
               quick
             />
-            <TOSCheckbox
-              error={checkboxError}
-              value={values.acceptedTermsOfService}
+            <TermsOfServiceCheckbox
+              error={
+                touched.acceptedTermsOfService && errors.acceptedTermsOfService
+              }
               checked={values.acceptedTermsOfService}
+              value={values.acceptedTermsOfService}
               type="checkbox"
               name="acceptedTermsOfService"
               onChange={handleChange}
               onBlur={handleBlur}
-            >
-              <Text color={checkboxError ? Colors.redMedium : Colors.grayDark}>
-                {"I agree to the "}
-                <TextLink
-                  href="https://www.artsy.net/terms"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Terms Of Service
-                </TextLink>
-                {" and "}
-                <TextLink
-                  href="https://www.artsy.net/privacy"
-                  target="_blank"
-                  color={checkboxError ? Colors.redMedium : Colors.grayDark}
-                  underline
-                >
-                  Privacy Policy
-                </TextLink>
-              </Text>
-            </TOSCheckbox>
+            />
           </div>
         )
       }}

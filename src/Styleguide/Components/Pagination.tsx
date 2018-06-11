@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import Icon from "Components/Icon"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
@@ -6,16 +6,13 @@ import { Sans } from "@artsy/palette"
 import { Responsive } from "../Utils/Responsive"
 import { Flex } from "../Elements/Flex"
 
-export class Pagination extends Component {
+export class Pagination extends React.Component {
   render() {
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) {
-            return <SmallPagination />
-          } else {
-            return <LargePagination />
-          }
+          if (xs) return <SmallPagination />
+          else return <LargePagination />
         }}
       </Responsive>
     )

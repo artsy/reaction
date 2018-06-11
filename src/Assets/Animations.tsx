@@ -40,6 +40,6 @@ export const shrinkAndFadeOut = height => keyframes`
 
   to {
     opacity: 1;
-    height: ${height}
+    height: ${height};
   }
 `
