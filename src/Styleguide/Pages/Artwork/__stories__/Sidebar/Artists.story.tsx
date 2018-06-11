@@ -1,5 +1,5 @@
 import React from "react"
-import { storiesOf } from "@storybook/react"
+import { storiesOf } from "storybook/storiesOf"
 import { Artists } from "../../Sidebar/Artists"
 
 export const SingleFollowedArtist = [
@@ -42,7 +42,7 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
     return <Artists artists={SingleFollowedArtist} />
   })
   .add("Single Not Followed Artist", () => {
-    return <Artists artists={SingleFollowedArtist} />
+    return <Artists artists={SingleNonFollowedArtist} />
   })
   .add("Multipe Artists", () => {
     return <Artists artists={MultipleArtists} />

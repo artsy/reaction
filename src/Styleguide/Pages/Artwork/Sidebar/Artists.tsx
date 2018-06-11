@@ -1,7 +1,6 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
-import TextLink from "../../../Components/TextLink"
-import { FollowArtistButton } from "../../../Components/FollowButton/FollowArtistButton"
+import { FollowButton } from "../../../../Components/Follow"
 
 interface ArtistsProps {
   artists: Array<{
@@ -16,11 +15,13 @@ interface ArtistsProps {
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
     return artist.href ? (
-      <TextLink href={artist.href}>
-        <Serif size="5t">{artist.name}</Serif>
-      </TextLink>
+      <Serif size="5t" display="inline-block">
+        <a href={artist.href}>{artist.name}</a>
+      </Serif>
     ) : (
-      <Serif>{artist.name}</Serif>
+      <Serif size="5t" display="inline-block">
+        {artist.name}
+      </Serif>
     )
   }
 
@@ -31,7 +32,7 @@ export class Artists extends React.Component<ArtistsProps> {
       return (
         <React.Fragment>
           {this.renderArtistName(artist)}
-          <FollowArtistButton artist={artist} />
+          <FollowButton artist={artist} />
         </React.Fragment>
       )
     } else {
