@@ -1,9 +1,9 @@
 // @ts-ignore
 import React, { StatelessComponent } from "react"
 import styled from "styled-components"
-import { space, PositionProps } from "styled-system"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
+import { top, right, bottom, left, space, PositionProps } from "styled-system"
 
 export type FontName = string
 
@@ -34,4 +34,8 @@ export default styled(Icon)`
   position: relative;
 
   ${space};
+  ${top};
+  ${right};
+  ${bottom};
+  ${left};
 `
