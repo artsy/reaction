@@ -1,20 +1,47 @@
 import styled from "styled-components"
-import { FlexboxProps, MarginProps } from "../StyledSystemTypes"
 import {
-  flexDirection,
-  alignItems,
   alignContent,
+  alignItems,
+  AlignItemsProps,
+  flexDirection,
+  FlexDirectionProps,
   justifyContent,
+  JustifyContentProps,
   space,
+  SpaceProps,
+  HeightProps,
+  WidthProps,
+  height,
+  width,
+  style,
 } from "styled-system"
 
-export type FlexProps = FlexboxProps & MarginProps
+// @ts-ignore
+import { ClassAttributes, HTMLAttributes } from "react"
+
+const flexGrow = style({
+  prop: "flexGrow",
+  numberToPx: false,
+})
+
+interface FlexProps
+  extends AlignItemsProps,
+    FlexDirectionProps,
+    JustifyContentProps,
+    SpaceProps,
+    HeightProps,
+    WidthProps {
+  flexGrow?: number | string
+}
 
 export const Flex = styled.div.attrs<FlexProps>({})`
   display: flex;
-  ${flexDirection};
-  ${alignItems};
   ${alignContent};
+  ${alignItems};
+  ${flexDirection};
   ${justifyContent};
   ${space};
+  ${height};
+  ${width};
+  ${flexGrow};
 `

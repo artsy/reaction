@@ -2,22 +2,16 @@ import React from "react"
 import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
-import {
-  ChangeMode,
-  FormContainer as Form,
-  GrayFacebookButton,
-} from "../commonElements"
-
+import { SmallTextLink, Footer, FormContainer as Form } from "../commonElements"
 import { LoginValidator } from "Components/Authentication/Validators"
 import Input from "Components/Input"
 import Text from "Components/Text"
 import Colors from "Assets/Colors"
 import { FormComponentType, InputValues, ModalType } from "../Types"
 import Checkbox from "Components/Checkbox"
-import { garamond } from "Assets/Fonts"
 import Button from "Components/Buttons/Inverted"
 
-const ForgotPasswordLink = styled(ChangeMode)`
+const ForgotPasswordLink = styled(SmallTextLink)`
   margin-left: auto;
 `
 
@@ -25,14 +19,6 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
-
-const LoginText = styled(Text).attrs({
-  color: Colors.grayDark,
-  align: "center",
-})`
-  margin-top: 0;
-  ${garamond("s14")};
 `
 
 const LoginButton = styled(Button).attrs({
@@ -106,15 +92,10 @@ export const LoginForm: FormComponentType = props => {
             <LoginButton disabled={isSubmitting || hasErrors}>
               Log In
             </LoginButton>
-            <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
-            <LoginText>
-              Don't have an account?{" "}
-              <ChangeMode
-                onClick={() => props.handleTypeChange(ModalType.signup)}
-              >
-                Sign Up
-              </ChangeMode>
-            </LoginText>
+            <Footer
+              handleTypeChange={() => props.handleTypeChange(ModalType.signup)}
+              mode="login"
+            />
           </Form>
         )
       }}

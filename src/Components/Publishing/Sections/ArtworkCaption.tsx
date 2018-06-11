@@ -6,7 +6,7 @@ import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
 import { garamond, unica } from "Assets/Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
-import { Truncator } from "./Truncator"
+import { Truncator } from "Components/Truncator"
 import { ErrorBoundary } from "../../ErrorBoundary"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {

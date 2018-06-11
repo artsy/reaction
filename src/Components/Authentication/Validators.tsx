@@ -4,7 +4,7 @@ export const email = Yup.string()
   .email("Please enter a valid email.")
   .required("Please enter a valid email.")
 
-const name = Yup.string().required("Name is required")
+const name = Yup.string().required("Name is required.")
 
 const password = Yup.string()
   .required("Password required")
@@ -14,12 +14,12 @@ const acceptedTermsOfService = Yup.boolean()
   .required("You must agree to our terms to continue.")
   .oneOf([true])
 
-export const RegisterValidator = Yup.object().shape({
+export const SignUpValidator = Yup.object().shape({
   name,
   email,
   password: Yup.string()
     .required("Password required")
-    .min(8, "Your password must be at least 8 characters"),
+    .min(8, "Password must be at least 8 characters."),
   acceptedTermsOfService,
 })
 
@@ -27,10 +27,10 @@ export const ResetPasswordValidator = Yup.object().shape({ email })
 
 export const LoginValidator = Yup.object().shape({
   email,
-  password: Yup.string().required("Password required"),
+  password: Yup.string().required("Password required."),
 })
 
-export const MobileRegisterValidator = {
+export const MobileSignUpValidator = {
   email: Yup.object().shape({ email }),
   name: Yup.object().shape({ name }),
   password: Yup.object().shape({ password }),

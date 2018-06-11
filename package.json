@@ -24,9 +24,9 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "babel src --out-dir dist --copy-files -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__ && yarn emit-types",
+    "compile": "babel src --out-dir dist --copy-files -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
-    "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --outDir dist",
+    "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "prepare": "patch-package",
     "precommit": "lint-staged",
@@ -45,7 +45,7 @@
     "test": "node verify-node-version.js && jest",
     "test:watch": "jest --watch --runInBand",
     "type-check": "tsc --noEmit --pretty",
-    "watch": "concurrently --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types -w'",
+    "watch": "concurrently --kill-others 'yarn relay --watch' 'yarn compile -w'",
     "semantic-release": "semantic-release"
   },
   "resolutions": {
@@ -122,6 +122,7 @@
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^0.9.0",
     "semantic-release": "^12.4.1",
+    "storybook-addon-scissors": "^4.0.1",
     "styled-bootstrap-grid": "damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3",
     "styled-components": "^3.3.2",
     "stylelint": "^9.2.1",
@@ -139,8 +140,9 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^1.1.1",
+    "@artsy/palette": "^1.2.2",
     "cheerio": "^1.0.0-rc.2",
+    "create-react-context": "^0.2.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
     "found": "^0.3.11",
@@ -156,7 +158,7 @@
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
     "react-html-parser": "^2.0.2",
-    "react-lines-ellipsis": "^0.8.0",
+    "react-lines-ellipsis": "damassi/react-lines-ellipsis#77616c1",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",

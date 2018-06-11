@@ -11,6 +11,7 @@ exports[`Nav renders a Nav 1`] = `
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
+  position: relative;
 }
 
 .c2 {
@@ -156,6 +157,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
+  position: relative;
 }
 
 .c6 {
@@ -358,6 +360,7 @@ exports[`Nav renders a transparent nav 1`] = `
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
+  position: relative;
 }
 
 .c2 {

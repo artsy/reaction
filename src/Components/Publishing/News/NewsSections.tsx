@@ -5,7 +5,7 @@ import { NewsByline } from "../Byline/NewsByline"
 import { ImageCollection } from "../Sections/ImageCollection"
 import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Text } from "../Sections/Text"
-import { Truncator } from "../Sections/Truncator"
+import { Truncator } from "Components/Truncator"
 import { ArticleData, SectionData } from "../Typings"
 
 interface Props {
@@ -49,7 +49,10 @@ export class NewsSections extends Component<Props> {
   }
 
   renderSections() {
-    const { article: { sections }, isTruncated } = this.props
+    const {
+      article: { sections },
+      isTruncated,
+    } = this.props
     const hasMainImage = sections[0].type === "image_collection"
 
     let limit
@@ -75,7 +78,9 @@ export class NewsSections extends Component<Props> {
   }
 
   renderByline() {
-    const { article: { authors, published_at } } = this.props
+    const {
+      article: { authors, published_at },
+    } = this.props
 
     if (authors || published_at) {
       return (

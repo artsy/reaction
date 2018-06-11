@@ -3,10 +3,13 @@ import React, { StatelessComponent } from "react"
 import styled from "styled-components"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
+import { top, right, bottom, left, space, PositionProps } from "styled-system"
 
 export type FontName = string
 
-export interface IconProps extends React.HTMLProps<HTMLDivElement> {
+export interface IconProps
+  extends React.HTMLProps<HTMLDivElement>,
+    PositionProps {
   font?: FontName
   name: IconName
   color?: string
@@ -28,4 +31,11 @@ export default styled(Icon)`
   margin: 0 5px;
   display: inline-block;
   letter-spacing: 0px;
+  position: relative;
+
+  ${space};
+  ${top};
+  ${right};
+  ${bottom};
+  ${left};
 `
