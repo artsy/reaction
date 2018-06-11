@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import { borders, themeGet } from "styled-system"
 import { Sans } from "@artsy/palette"
@@ -12,7 +12,7 @@ export interface TabsState {
   activeTab: number
 }
 
-export class Tabs extends Component<TabsProps, TabsState> {
+export class Tabs extends React.Component<TabsProps, TabsState> {
   state = {
     activeTab: 0,
   }

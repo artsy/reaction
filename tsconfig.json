@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
+    "declaration": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "jsx": "react",
