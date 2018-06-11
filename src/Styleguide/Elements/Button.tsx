@@ -142,6 +142,7 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
 
   cursor: pointer;
   text-transform: uppercase;
+  transition: 0.25s;
 
   &:hover {
     background-color: ${themeGet("colors.purple100")};
@@ -151,7 +152,5 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
     ${Sans} {
       color: ${themeGet("colors.white100")};
     }
-
-    transition: all 250ms ease-out 0s;
   }
 `
