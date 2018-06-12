@@ -3,8 +3,8 @@
 
 
 "@artsy/palette@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.2.2.tgz#fcf591c73e411f0f1dc4bfcea92e02a9165cc4bf"
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.3.0.tgz#cca8f5b4c5623ba60e4bdc2bee4c59ca7b79d292"
   dependencies:
     react "^16.3.2"
     react-primitives "^0.5.0"
@@ -6313,8 +6313,8 @@ icss-utils@^2.1.0:
     postcss "^6.0.1"
 
 ieee754@^1.1.4:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.11.tgz#c16384ffe00f5b7835824e67b6f2bd44a5229455"
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
 
 iferr@^0.1.5:
   version "0.1.5"
@@ -12127,7 +12127,7 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-bootstrap-grid@damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3:
+styled-bootstrap-grid@damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3, "styled-bootstrap-grid@github:damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3":
   version "1.0.3-2"
   resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/5a115a48a7f4d5608bc73097d52e14265edc6dd3"
 

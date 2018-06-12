@@ -361,6 +361,8 @@ declare module "styled-system" {
     backgroundColor?: ColorValue
   }
 
+  export function display(...args: any[]): any
+
   export type DisplayValue =
     | "inline"
     | "block"
