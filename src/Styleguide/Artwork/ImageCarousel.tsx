@@ -50,6 +50,13 @@ const Image = styled.img`
   max-width: 100%;
 `
 
+// TODO: Should Icon have this styling by default?
+const Button = styled.a`
+  ${Icon /* sc-selector */} {
+    vertical-align: middle;
+  }
+`
+
 const ButtonsContainer = styled(Flex)`
   /* -debug-background-color: #f1af1b; */
 `
@@ -74,12 +81,12 @@ export class ImageCarousel extends React.Component<ImageCarouselProps> {
           flexBasis={`${ButtonsContainerHeight}px`}
         >
           <div>
-            <a href="#TODO">
+            <Button href="#TODO">
               <Icon name="heart" color="black" />
-            </a>
-            <a href="#TODO">
+            </Button>
+            <Button href="#TODO">
               <Icon name="share" color="black" />
-            </a>
+            </Button>
           </div>
         </ButtonsContainer>
       </Container>
