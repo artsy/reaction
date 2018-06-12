@@ -1,8 +1,6 @@
 import React from "react"
-import createContext, { ConsumerProps } from "create-react-context"
 
-// FIXME: Replace with React.createContext after React 16.3+ upgrade
-const ResponsiveContext = createContext({})
+const ResponsiveContext = React.createContext({})
 
 export interface Breakpoints {
   [breakpoint: string]: string
@@ -82,5 +80,7 @@ export class ResponsiveProvider extends React.Component<
   }
 }
 
-export const Responsive: React.ComponentClass<ConsumerProps<BreakpointState>> =
+export const Responsive: React.ComponentType<
+  React.ConsumerProps<BreakpointState>
+> =
   ResponsiveContext.Consumer

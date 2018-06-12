@@ -1,35 +1,20 @@
 import React from "react"
 import { Responsive } from "../Utils/Responsive"
-import { Card } from "../Elements/Card"
+import { BorderBox } from "../Elements/Box"
 import { Flex } from "../Elements/Flex"
+import { Image } from "../Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
 import styled from "styled-components"
-import {
-  space,
-  width,
-  SpaceProps,
-  WidthProps,
-  height,
-  HeightProps,
-} from "styled-system"
+import { height, HeightProps } from "styled-system"
 
 interface ImageWrapperProps extends HeightProps {}
 const ImageWrapper = styled.div.attrs<ImageWrapperProps>({})`
   ${height};
 `
 
-interface ArtworkImageProps extends SpaceProps, WidthProps, HeightProps {
-  src: string
-}
-const ArtworkImage = styled.img.attrs<ArtworkImageProps>({})`
-  ${space};
-  ${width};
-  ${height};
-`
-
 const ScaledArtworkImage = props => (
   <ImageWrapper height={props.height}>
-    <ArtworkImage {...props} />
+    <Image {...props} />
   </ImageWrapper>
 )
 
@@ -54,16 +39,16 @@ export class AuctionCard extends React.Component<AuctionCardProps> {
 }
 
 export const LargeAuctionCard = props => (
-  <Card flexDirection="column" p={4}>
+  <BorderBox hover flexDirection="column">
     <Serif size="3t" weight="semibold">
       {props.headline}
     </Serif>
     <Serif size="3t">{props.subHeadline}</Serif>
-    <ArtworkImage src={props.src} m={4} />
+    <Image src={props.src} m={4} />
     <Sans size="1" weight="medium">
       {props.badge}
     </Sans>
-  </Card>
+  </BorderBox>
 )
 
 export const SmallAuctionCard = props => (

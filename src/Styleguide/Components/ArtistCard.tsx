@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex } from "../Elements/Flex"
-import { Card } from "../Elements/Card"
+import { BorderBox } from "../Elements/Box"
 import { Avatar, Button } from "../Elements"
 import { Serif, Sans } from "@artsy/palette"
 import { Responsive } from "../Utils/Responsive"
@@ -25,7 +25,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 }
 
 export const LargeArtistCard = props => (
-  <Card flexDirection="column" height="254px" p={4}>
+  <BorderBox hover flexDirection="column" height="254px">
     <Flex flexDirection="column" flexGrow="1" alignItems="center">
       <Avatar src={props.src} mb={3} />
       <Serif size="3t">{props.headline}</Serif>
@@ -36,11 +36,11 @@ export const LargeArtistCard = props => (
         Follow
       </Button>
     </Flex>
-  </Card>
+  </BorderBox>
 )
 
 export const SmallArtistCard = props => (
-  <Card p={4}>
+  <BorderBox hover>
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
@@ -52,5 +52,5 @@ export const SmallArtistCard = props => (
       </Button>
     </Flex>
     <Avatar size="small" src={props.src} ml={4} />
-  </Card>
+  </BorderBox>
 )

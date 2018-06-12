@@ -69,6 +69,7 @@ export const StyledButton = styled(Button)`
   border: none;
   box-sizing: border-box;
   text-decoration: none;
+  border-radius: 2px;
 
   &:hover:not(:disabled) {
     cursor: pointer;
