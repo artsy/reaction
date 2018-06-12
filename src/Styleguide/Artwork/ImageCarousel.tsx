@@ -9,6 +9,7 @@ import Icon from "Components/Icon"
  * for the buttons below the image.
  */
 const ButtonsContainerHeight = 60
+const ButtonsContainerWithPageIndicatorsHeight = ButtonsContainerHeight + 20
 const ImageContainerViewportMargin = 100 + ButtonsContainerHeight
 
 const Container = styled(Flex)`
@@ -47,6 +48,23 @@ const NavigationButtonsContainer = styled(Flex)`
 
 const ActionButtonsContainer = styled(Flex)`
   /* background-color: #f1af1b; */
+`
+
+const PageIndicator = styled.span`
+  &::after {
+    content: "•";
+  }
+
+  color: ${({ isHighlighted }: { isHighlighted: boolean }) =>
+    isHighlighted ? "#000" : "#d8d8d8"};
+`
+
+const PageIndicators = styled(Flex)`
+  ${PageIndicator} + ${PageIndicator} {
+    margin-left: 5px;
+  }
+
+  /* background-color: red; */
 `
 
 interface ImageCarouselProps {
@@ -109,13 +127,18 @@ export class ImageCarousel extends React.Component<
     )
   }
 
+  hasMultipleImages() {
+    return this.props.src.length > 1
+  }
+
   renderImageArea() {
-    const hasMultipleImages = this.props.src.length > 1
     return (
       <ImageAreaContainer flexDirection="row">
-        {hasMultipleImages && this.renderNavigationButton("chevron-left", -1)}
+        {this.hasMultipleImages() &&
+          this.renderNavigationButton("chevron-left", -1)}
         {this.renderImageContainer()}
-        {hasMultipleImages && this.renderNavigationButton("chevron-right", +1)}
+        {this.hasMultipleImages() &&
+          this.renderNavigationButton("chevron-right", +1)}
       </ImageAreaContainer>
     )
   }
@@ -123,21 +146,44 @@ export class ImageCarousel extends React.Component<
   renderActionButtonsContainer() {
     return (
       <ActionButtonsContainer
-        flexDirection="row"
-        alignItems="center"
+        flexDirection="column"
         justifyContent="center"
-        flexBasis={`${ButtonsContainerHeight}px`}
+        flexBasis={`${
+          this.hasMultipleImages()
+            ? ButtonsContainerWithPageIndicatorsHeight
+            : ButtonsContainerHeight
+        }px`}
       >
-        <div>
-          <Button href="#TODO">
-            <Icon name="heart" color="black" />
-          </Button>
-          <Button href="#TODO">
-            <Icon name="share" color="black" />
-          </Button>
-        </div>
+        {this.renderPageIndicators()}
+        <Flex flexDirection="row" alignItems="center" justifyContent="center">
+          <div>
+            <Button href="#TODO">
+              <Icon name="heart" color="black" />
+            </Button>
+            <Button href="#TODO">
+              <Icon name="share" color="black" />
+            </Button>
+          </div>
+        </Flex>
       </ActionButtonsContainer>
     )
+  }
+
+  renderPageIndicators() {
+    if (this.props.src.length <= 1) {
+      return null
+    } else {
+      return (
+        <PageIndicators flexDirection="row" justifyContent="center">
+          {[...new Array(this.props.src.length)].map((_, i) => (
+            <PageIndicator
+              key={i}
+              isHighlighted={i === this.state.currentImage}
+            />
+          ))}
+        </PageIndicators>
+      )
+    }
   }
 
   render() {
