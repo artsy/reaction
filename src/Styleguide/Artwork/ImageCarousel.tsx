@@ -5,19 +5,6 @@ import { Flex } from "Styleguide/Elements/Flex"
 import Icon from "Components/Icon"
 
 /**
- * TODO: There’s a few uses of a `-debug-` CSS vendor prefix. Right now those
- *       are meant to manually be removed, but it might be nice to make it
- *       possible to automatically enable these (and things like adding labels
- *       to elements with their displayName) either as an extension to
- *       styled-components or as a wrapper.
- *
- *       We can take cues from https://github.com/kitze/styles-debugger for what
- *       is helpful in terms of debugging, but I find the way that that library
- *       to introduce too much API and thus not allowing all of CSS or re-using
- *       tooling like autocompletion, stylelint, etc.
- */
-
-/**
  * The image should be placed 100px from the top of the document and leave 60px
  * for the buttons below the image.
  */
@@ -25,7 +12,7 @@ const ButtonsContainerHeight = 60
 const ImageContainerViewportMargin = 100 + ButtonsContainerHeight
 
 const Container = styled(Flex)`
-  /* -debug-background-color: #0fdb82; */
+  /* background-color: #0fdb82; */
 `
 
 const ImageAreaContainer = styled(Flex)`
@@ -55,11 +42,11 @@ const Button = styled.a`
 
 const NavigationButtonsContainer = styled(Flex)`
   width: 40px;
-  /* -debug-background-color: blue; */
+  /* background-color: blue; */
 `
 
 const ActionButtonsContainer = styled(Flex)`
-  /* -debug-background-color: #f1af1b; */
+  /* background-color: #f1af1b; */
 `
 
 interface ImageCarouselProps {
