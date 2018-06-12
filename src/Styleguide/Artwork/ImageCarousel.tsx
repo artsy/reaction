@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { Flex } from "Styleguide/Elements/Flex"
 import Icon from "Components/Icon"
+import { Responsive } from "../Utils/Responsive"
 
 /**
  * The image should be placed 100px from the top of the document and leave 60px
@@ -110,20 +111,30 @@ export class ImageCarousel extends React.Component<
     changeCurrentImageBy: number
   ) {
     return (
-      <NavigationButtonsContainer
-        flexDirection="column"
-        justifyContent="center"
-      >
-        <Button
-          href="#"
-          onClick={e => {
-            e.preventDefault()
-            this.changeCurrentImage(changeCurrentImageBy)
-          }}
-        >
-          <Icon name={iconName} color="black" />
-        </Button>
-      </NavigationButtonsContainer>
+      <Responsive>
+        {({ xs }) => {
+          if (xs) {
+            return null
+          } else {
+            return (
+              <NavigationButtonsContainer
+                flexDirection="column"
+                justifyContent="center"
+              >
+                <Button
+                  href="#"
+                  onClick={e => {
+                    e.preventDefault()
+                    this.changeCurrentImage(changeCurrentImageBy)
+                  }}
+                >
+                  <Icon name={iconName} color="black" />
+                </Button>
+              </NavigationButtonsContainer>
+            )
+          }
+        }}
+      </Responsive>
     )
   }
 
