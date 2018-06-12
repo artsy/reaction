@@ -90,7 +90,7 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
   margin: 0;
 
   // The after represents the square box
-  &:after {
+  &::after {
     transition: all 0.25s;
     content: "";
     position: absolute;
@@ -102,17 +102,12 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
       ${({ error }) => (error ? colors.redMedium : colors.grayRegular)};
   }
 
-  &:hover:after {
-    background-color: ${colors.grayRegular};
-    border-color: ${colors.grayRegular};
-  }
-
-  &:checked:after {
+  &:checked::after {
     background-color: ${colors.black};
     border-color: ${colors.black};
   }
 
-  &:disabled:after {
+  &:disabled::after {
     background-color: ${colors.gray};
     border-color: ${colors.grayRegular};
   }
@@ -126,6 +121,15 @@ const Label = styled.label.attrs<CheckboxProps>({})`
   display: flex;
   align-items: center;
   ${({ error }) => error && `color: ${colors.redMedium}`};
+
+  &:hover {
+    ${CheckboxInput} {
+      &::after {
+        background-color: ${colors.grayRegular};
+        border-color: ${colors.grayRegular};
+      }
+    }
+  }
 `
 
 export default Checkbox
