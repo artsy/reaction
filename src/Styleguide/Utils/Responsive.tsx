@@ -9,22 +9,24 @@ const shallowEqual = (a, b) => {
   return true
 }
 
-export interface Breakpoints {
-  [breakpoint: string]: string
-}
+// TODO: Make this generic on the consumer component when we OSS this separately
+//       and keep this module from where we’ll export our own `Responsive`
+//       wrapper that has these Artsy specific breakpoint typings.
+type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
+type Breakpoints<T> = { [K in Breakpoint]: T }
+
+type BreakpointKeys = Breakpoint[]
+type BreakpointsProp = Breakpoints<string>
+type BreakpointState = Breakpoints<boolean>
 
 export interface ResponsiveProviderProps {
-  initialBreakpoint?: string
-  breakpoints: Breakpoints
-}
-
-export interface BreakpointState {
-  [breakpoint: string]: boolean
+  initialBreakpoint?: Breakpoint
+  breakpoints: BreakpointsProp
 }
 
 export interface ResponsiveProviderState {
   breakpoints: BreakpointState
-  breakpointKeys: string[]
+  breakpointKeys: BreakpointKeys
   mediaMatchers: MediaQueryList[]
 }
 
@@ -32,16 +34,16 @@ export class ResponsiveProvider extends React.Component<
   ResponsiveProviderProps,
   ResponsiveProviderState
 > {
-  constructor(props) {
+  constructor(props: ResponsiveProviderProps) {
     super(props)
-    const breakpointKeys = Object.keys(props.breakpoints)
+    const breakpointKeys = Object.keys(props.breakpoints) as BreakpointKeys
 
     // Build initial breakpoint map --> { breakpoint1: false, breakpoint2: false, ...etc}
     let breakpoints = breakpointKeys
       .map(breakpoint => ({
         [breakpoint]: breakpoint === props.initialBreakpoint ? true : false,
       }))
-      .reduce((acc, curr) => ({ ...acc, ...curr }), {})
+      .reduce((acc, curr) => ({ ...acc, ...curr }), {}) as BreakpointState
 
     // Build up the MediaQueryList objects that observe mq changes
     const mediaMatchers = this.setupMatchers(props.breakpoints, breakpointKeys)
@@ -63,7 +65,10 @@ export class ResponsiveProvider extends React.Component<
   /**
    * Create an array of media matchers that can validate each breakpoint
    */
-  setupMatchers = (breakpoints, breakpointKeys) => {
+  setupMatchers = (
+    breakpoints: BreakpointsProp,
+    breakpointKeys: BreakpointKeys
+  ): MediaQueryList[] => {
     return breakpointKeys.map(breakpoint =>
       window.matchMedia(breakpoints[breakpoint])
     )
@@ -72,7 +77,11 @@ export class ResponsiveProvider extends React.Component<
   /**
    * Uses the mediaMatchers list to build a map of the states of each breakpoint
    */
-  checkBreakpoints = (breakpoints, breakpointKeys, mediaMatchers) => {
+  checkBreakpoints = (
+    breakpoints: BreakpointState,
+    breakpointKeys: BreakpointKeys,
+    mediaMatchers: MediaQueryList[]
+  ): BreakpointState => {
     let nextBreakpoints = breakpoints
     for (let i = 0; i < mediaMatchers.length; ++i) {
       nextBreakpoints = {
@@ -108,7 +117,12 @@ export class ResponsiveProvider extends React.Component<
 
   // Lifecycle methods
 
-  shouldComponentUpdate(nextProps, nextState) {
+  // FIXME: Why doesn’t this get typed automatically?
+  shouldComponentUpdate(
+    nextProps: Readonly<{ children?: React.ReactNode }> &
+      Readonly<ResponsiveProviderProps>,
+    nextState: Readonly<ResponsiveProviderState>
+  ) {
     if (nextProps.children !== this.props.children) return true
     if (shallowEqual(this.state.breakpoints, nextState.breakpoints)) {
       return false
