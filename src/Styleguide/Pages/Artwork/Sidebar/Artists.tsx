@@ -1,7 +1,6 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { FollowIcon } from "../../../Elements/FollowIcon"
 
 interface ArtistsProps {
@@ -14,11 +13,8 @@ interface ArtistsProps {
   }>
 }
 
-const Artist = styled.div`
-  a {
-    color: ${themeGet("colors.black100")};
-  }
-`
+const Artist = styled.div``
+const ArtistsContainer = styled.div``
 
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
@@ -33,6 +29,17 @@ export class Artists extends React.Component<ArtistsProps> {
     )
   }
 
+  renderArtists(artists) {
+    return artists.map((artist, index) => {
+      return (
+        <React.Fragment>
+          {this.renderArtistName(artist)}
+          {index !== artists.length - 1 ? ", " : ""}
+        </React.Fragment>
+      )
+    })
+  }
+
   render() {
     const { artists } = this.props
     if (artists.length === 1) {
@@ -44,14 +51,7 @@ export class Artists extends React.Component<ArtistsProps> {
         </Artist>
       )
     } else {
-      return artists.map((artist, index) => {
-        return (
-          <React.Fragment>
-            {this.renderArtistName(artist)}
-            {index !== artists.length - 1 ? ", " : ""}
-          </React.Fragment>
-        )
-      })
+      return <ArtistsContainer>{this.renderArtists(artists)}</ArtistsContainer>
     }
   }
 }
