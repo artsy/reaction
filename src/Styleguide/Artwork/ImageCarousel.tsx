@@ -25,15 +25,14 @@ const ButtonsContainerHeight = 60
 const ImageContainerViewportMargin = 100 + ButtonsContainerHeight
 
 interface ImageCarouselProps {
-  src: string
+  src: string[]
 }
 
 const Container = styled(Flex)`
   /* -debug-background-color: #0fdb82; */
 `
 
-const ZoomHitTarget = styled.a`
-  cursor: zoom-in;
+const ImageAreaContainer = styled(Flex)`
   width: 100%;
   min-height: 450px;
   height: calc(100vh - ${ImageContainerViewportMargin}px);
@@ -46,6 +45,7 @@ const ImageContainer = styled(Flex)`
 `
 
 const Image = styled.img`
+  cursor: zoom-in;
   max-height: 100%;
   max-width: 100%;
 `
@@ -57,24 +57,57 @@ const Button = styled.a`
   }
 `
 
-const ButtonsContainer = styled(Flex)`
+const NavigationButtonsContainer = styled(Flex)`
+  width: 40px;
+  /* -debug-background-color: blue; */
+`
+
+const ActionButtonsContainer = styled(Flex)`
   /* -debug-background-color: #f1af1b; */
 `
 
 export class ImageCarousel extends React.Component<ImageCarouselProps> {
+  hasMultipleImages() {
+    return this.props.src.length > 1
+  }
+
   render() {
     return (
       <Container flexDirection="column">
-        <ZoomHitTarget>
+        <ImageAreaContainer flexDirection="row">
+          {this.hasMultipleImages() && (
+            <NavigationButtonsContainer
+              flexDirection="column"
+              justifyContent="center"
+            >
+              <Button href="#TODO">
+                <Icon name="chevron-left" color="black" />
+              </Button>
+            </NavigationButtonsContainer>
+          )}
           <ImageContainer
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
           >
-            <Image src={this.props.src} />
+            <Image
+              src={this.props.src[0]}
+              // tslint:disable-next-line:no-console
+              onClick={() => console.log("Zoom")}
+            />
           </ImageContainer>
-        </ZoomHitTarget>
-        <ButtonsContainer
+          {this.hasMultipleImages() && (
+            <NavigationButtonsContainer
+              flexDirection="column"
+              justifyContent="center"
+            >
+              <Button href="#TODO">
+                <Icon name="chevron-right" color="black" />
+              </Button>
+            </NavigationButtonsContainer>
+          )}
+        </ImageAreaContainer>
+        <ActionButtonsContainer
           flexDirection="row"
           alignItems="center"
           justifyContent="center"
@@ -88,7 +121,7 @@ export class ImageCarousel extends React.Component<ImageCarouselProps> {
               <Icon name="share" color="black" />
             </Button>
           </div>
-        </ButtonsContainer>
+        </ActionButtonsContainer>
       </Container>
     )
   }
