@@ -179,6 +179,7 @@ export class ImageCarousel extends React.Component<
             <PageIndicator
               key={i}
               isHighlighted={i === this.state.currentImage}
+              onClick={() => this.setState({ currentImage: i })}
             />
           ))}
         </PageIndicators>
