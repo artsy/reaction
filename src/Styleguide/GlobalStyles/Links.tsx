@@ -6,7 +6,7 @@ export const Links = () => css`
   /* Default links */
 
   a {
-    color: ${themeGet("colors.black60")};
+    color: inherit;
     transition: 0.25s;
 
     &:hover {
@@ -34,7 +34,7 @@ export const Links = () => css`
 
   ${Sans} {
     a {
-      color: ${themeGet("colors.black60")};
+      color: inherit;
 
       &:hover {
         color: ${themeGet("colors.black100")};
@@ -59,7 +59,7 @@ export const Links = () => css`
 
   ${Serif} {
     a {
-      color: ${themeGet("colors.black60")};
+      color: inherit;
 
       &:hover {
         color: ${themeGet("colors.black100")};
