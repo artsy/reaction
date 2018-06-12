@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
@@ -67,7 +67,7 @@ export const MobileLoginForm: FormComponentType = props => {
           setTouched,
         },
       }) => (
-        <div>
+        <Fragment>
           <Input
             block
             error={errors.password}
@@ -89,7 +89,7 @@ export const MobileLoginForm: FormComponentType = props => {
               }
             />
           </Row>
-        </div>
+        </Fragment>
       )}
     </Step>,
   ]
@@ -98,6 +98,7 @@ export const MobileLoginForm: FormComponentType = props => {
       {context => {
         const { wizard, form } = context
         const { currentStep } = wizard
+
         return (
           <MobileContainer>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />

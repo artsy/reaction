@@ -60,7 +60,7 @@ export const MobileInnerWrapper = styled.div`
   margin: 0 20px;
   display: flex;
   flex-direction: column;
-  height: 275px;
+  height: 285px;
 `
 
 export const MobileContainer = styled.div`

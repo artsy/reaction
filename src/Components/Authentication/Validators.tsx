@@ -41,5 +41,5 @@ export const MobileSignUpValidator = {
 
 export const MobileLoginValidator = {
   email: Yup.object().shape({ email }),
-  password: Yup.object().shape({ loginPassword }),
+  password: Yup.object().shape({ password: loginPassword }),
 }

@@ -32,7 +32,7 @@ export const MobileResetPasswordForm: FormComponentType = props => {
         return (
           <MobileContainer>
             <MobileInnerWrapper>
-              <Form onSubmit={handleSubmit} height={260}>
+              <Form onSubmit={handleSubmit} height={270}>
                 <MobileHeader>Reset your password</MobileHeader>
                 <Input
                   block
