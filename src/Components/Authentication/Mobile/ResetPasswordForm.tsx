@@ -3,7 +3,9 @@ import { Formik, FormikProps } from "formik"
 import {
   FormContainer as Form,
   Footer,
+  MobileContainer,
   MobileHeader,
+  MobileInnerWrapper,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
@@ -28,28 +30,34 @@ export const MobileResetPasswordForm: FormComponentType = props => {
         isValid,
       }: FormikProps<InputValues>) => {
         return (
-          <Form onSubmit={handleSubmit}>
-            <MobileHeader>Reset your password</MobileHeader>
-            <Input
-              block
-              quick
-              error={touched.email && errors.email}
-              placeholder="Enter your email address"
-              name="email"
-              label="Email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Button block type="submit" disabled={isSubmitting}>
-              Next
-            </Button>
-            <Footer
-              handleTypeChange={() => props.handleTypeChange(ModalType.login)}
-              mode="reset_password"
-            />
-          </Form>
+          <MobileContainer>
+            <MobileInnerWrapper>
+              <Form onSubmit={handleSubmit}>
+                <MobileHeader>Reset your password</MobileHeader>
+                <Input
+                  block
+                  quick
+                  error={errors.email}
+                  placeholder="Enter your email address"
+                  name="email"
+                  label="Email"
+                  type="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <Button block type="submit" disabled={isSubmitting}>
+                  Next
+                </Button>
+                <Footer
+                  handleTypeChange={() =>
+                    props.handleTypeChange(ModalType.login)
+                  }
+                  mode="reset_password"
+                />
+              </Form>
+            </MobileInnerWrapper>
+          </MobileContainer>
         )
       }}
     </Formik>

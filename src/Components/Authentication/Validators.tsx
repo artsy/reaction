@@ -10,6 +10,8 @@ const password = Yup.string()
   .required("Password required")
   .min(8, "Your password must be at least 8 characters")
 
+const loginPassword = Yup.string().required("Password required")
+
 const acceptedTermsOfService = Yup.boolean()
   .required("You must agree to our terms to continue.")
   .oneOf([true])
@@ -35,4 +37,9 @@ export const MobileSignUpValidator = {
   name: Yup.object().shape({ name }),
   password: Yup.object().shape({ password }),
   acceptedTermsOfService: Yup.object().shape({ acceptedTermsOfService }),
+}
+
+export const MobileLoginValidator = {
+  email: Yup.object().shape({ email }),
+  password: Yup.object().shape({ loginPassword }),
 }

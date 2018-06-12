@@ -12,7 +12,7 @@ import {
 import Input from "Components/Input"
 import Button from "Components/Buttons/Inverted"
 import Icon from "Components/Icon"
-import { FormComponentType, ModalType } from "Components/Authentication/Types"
+import { FormComponentType } from "Components/Authentication/Types"
 import Colors from "Assets/Colors"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import { checkEmailExists } from "Components/Authentication/helpers"
@@ -114,21 +114,22 @@ export const MobileSignUpForm: FormComponentType = props => {
               <BackButton onClick={wizard.previous as any}>
                 <Icon
                   name="chevron-left"
-                  color={Colors.grayMedium}
-                  fontSize="20px"
+                  color={Colors.graySemibold}
+                  fontSize="16px"
                 />
               </BackButton>
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
               <Button
-                onClick={form.handleSubmit as any}
                 block
                 disabled={!wizard.shouldAllowNext}
+                onClick={form.handleSubmit as any}
               >
                 Next
               </Button>
               <Footer
-                handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+                mode="signup"
+                handleTypeChange={() => (window.location.href = "/login")}
               />
             </MobileInnerWrapper>
           </MobileContainer>

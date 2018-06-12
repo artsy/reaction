@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 import Input from "../../Input"
@@ -6,22 +7,52 @@ import Button from "../../Buttons/Inverted"
 import Icon from "../../Icon"
 import { FormComponentType } from "../Types"
 import Colors from "Assets/Colors"
-import { LoginValidator } from "../Validators"
+import { MobileLoginValidator } from "../Validators"
 import {
   BackButton,
   Footer,
+  ForgotPassword,
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
+  RememberMe,
 } from "../commonElements"
 import { checkEmailDoesNotExist } from "Components/Authentication/helpers"
 
 export const MobileLoginForm: FormComponentType = props => {
   const steps = [
     <Step
-      validationSchema={LoginValidator.email}
+      validationSchema={MobileLoginValidator.email}
       onSubmit={checkEmailDoesNotExist}
     >
+      {({
+        wizard,
+        form: {
+          errors,
+          touched,
+          values,
+          handleChange,
+          handleSubmit,
+          handleBlur,
+          setTouched,
+        },
+      }) => (
+        <Input
+          block
+          error={errors.email}
+          placeholder="Enter your email address"
+          name="email"
+          label="Email"
+          type="email"
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          setTouched={setTouched}
+          quick
+        />
+      )}
+    </Step>,
+    <Step validationSchema={MobileLoginValidator.password}>
       {({
         wizard,
         form: {
@@ -37,47 +68,6 @@ export const MobileLoginForm: FormComponentType = props => {
         <div>
           <Input
             block
-            error={errors.email}
-            placeholder="Enter your email address"
-            name="email"
-            label="Email"
-            type="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            setTouched={setTouched}
-            quick
-          />
-          <Button
-            onClick={handleSubmit as any}
-            block
-            disabled={!wizard.shouldAllowNext}
-          >
-            Next
-          </Button>
-          <Footer
-            mode="login"
-            // handleTypeChange={}
-          />
-        </div>
-      )}
-    </Step>,
-    <Step validationSchema={LoginValidator.password}>
-      {({
-        wizard,
-        form: {
-          errors,
-          touched,
-          values,
-          handleChange,
-          handleSubmit,
-          handleBlur,
-          setTouched,
-        },
-      }) => (
-        <div style={{ marginBottom: "80px" }}>
-          <Input
-            block
             error={errors.password}
             name="password"
             label="Password"
@@ -89,17 +79,14 @@ export const MobileLoginForm: FormComponentType = props => {
             setTouched={setTouched}
             quick
           />
-          <Button
-            onClick={handleSubmit as any}
-            block
-            disabled={!wizard.shouldAllowNext}
-          >
-            Next
-          </Button>
-          <Footer
-            mode="login"
-            // handleTypeChange={}
-          />
+          <Row>
+            <RememberMe handleChange={handleChange} handleBlur={handleBlur} />
+            <ForgotPassword
+              handleForgotPasswordChange={() =>
+                (window.location.href = "/forgot")
+              }
+            />
+          </Row>
         </div>
       )}
     </Step>,
@@ -107,7 +94,7 @@ export const MobileLoginForm: FormComponentType = props => {
   return (
     <Wizard steps={steps}>
       {context => {
-        const { wizard } = context
+        const { wizard, form } = context
         const { currentStep } = wizard
         return (
           <MobileContainer>
@@ -116,12 +103,23 @@ export const MobileLoginForm: FormComponentType = props => {
               <BackButton onClick={wizard.previous as any}>
                 <Icon
                   name="chevron-left"
-                  color={Colors.grayMedium}
-                  fontSize="20px"
+                  color={Colors.graySemibold}
+                  fontSize="16px"
                 />
               </BackButton>
               <MobileHeader>Log in</MobileHeader>
               {currentStep}
+              <Button
+                block
+                disabled={!wizard.shouldAllowNext}
+                onClick={form.handleSubmit as any}
+              >
+                Next
+              </Button>
+              <Footer
+                mode="login"
+                handleTypeChange={() => (window.location.href = "/signup")}
+              />
             </MobileInnerWrapper>
           </MobileContainer>
         )
@@ -129,3 +127,9 @@ export const MobileLoginForm: FormComponentType = props => {
     </Wizard>
   )
 }
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
