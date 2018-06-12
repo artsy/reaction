@@ -17,13 +17,15 @@ import {
   MobileSubmitButton,
   RememberMe,
 } from "../commonElements"
-import { checkEmailDoesNotExist } from "Components/Authentication/helpers"
+import { checkEmail } from "Components/Authentication/helpers"
 
 export const MobileLoginForm: FormComponentType = props => {
   const steps = [
     <Step
       validationSchema={MobileLoginValidator.email}
-      onSubmit={checkEmailDoesNotExist}
+      onSubmit={(values, actions) =>
+        checkEmail({ values, actions, shouldExist: true })
+      }
     >
       {({
         wizard,

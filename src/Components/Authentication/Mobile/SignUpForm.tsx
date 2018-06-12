@@ -15,13 +15,15 @@ import Icon from "Components/Icon"
 import { FormComponentType } from "Components/Authentication/Types"
 import Colors from "Assets/Colors"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
-import { checkEmailExists } from "Components/Authentication/helpers"
+import { checkEmail } from "Components/Authentication/helpers"
 
 export const MobileSignUpForm: FormComponentType = props => {
   const steps = [
     <Step
       validationSchema={MobileSignUpValidator.email}
-      onSubmit={checkEmailExists}
+      onSubmit={(values, actions) =>
+        checkEmail({ values, actions, shouldExist: false })
+      }
     >
       {({
         wizard,

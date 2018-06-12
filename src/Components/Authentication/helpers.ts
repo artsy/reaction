@@ -38,15 +38,14 @@ export async function sendAuthData(
   return data
 }
 
-const query = email => `
-  query {
-    user(email: "${email}") {
-      userAlreadyExists
+export const checkEmail = ({ values, actions, shouldExist }) => {
+  const query = email => `
+    query {
+      user(email: "${email}") {
+        userAlreadyExists
+      }
     }
-  }
-`
-
-export const checkEmailExists = (values, actions) => {
+  `
   return metaphysics(
     { query: query(values.email) },
     {
@@ -54,26 +53,21 @@ export const checkEmailExists = (values, actions) => {
     }
   ).then(({ data }: any) => {
     if (data.user.userAlreadyExists) {
-      actions.setFieldError("email", "Email already exists.")
-      actions.setSubmitting(false)
-      return false
+      if (shouldExist) {
+        return true
+      } else {
+        actions.setFieldError("email", "Email already exists.")
+        actions.setSubmitting(false)
+        return false
+      }
+    } else {
+      if (shouldExist) {
+        actions.setFieldError("email", "Email does not exist.")
+        actions.setSubmitting(false)
+        return false
+      } else {
+        return true
+      }
     }
-    return true
-  })
-}
-
-export const checkEmailDoesNotExist = (values, actions) => {
-  return metaphysics(
-    { query: query(values.email) },
-    {
-      appToken: sharify.data.XAPP_TOKEN,
-    }
-  ).then(({ data }: any) => {
-    if (data.user.userAlreadyExists) {
-      return true
-    }
-    actions.setFieldError("email", "Email does not exist.")
-    actions.setSubmitting(false)
-    return false
   })
 }
