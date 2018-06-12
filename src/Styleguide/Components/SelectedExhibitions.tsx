@@ -1,6 +1,7 @@
 import React, { SFC } from "react"
 import { Flex } from "../Elements/Flex"
 import { Box, BorderBox } from "../Elements/Box"
+import { Responsive } from "../Utils/Responsive"
 import { Sans } from "@artsy/palette"
 import { groupBy, toPairs } from "lodash"
 
@@ -15,23 +16,24 @@ export interface Exhibition {
   gallery: string
 }
 
-const isCollapsed = props => props.collapsible && !props.expanded
+export const isCollapsed = props => props.collapsible && !props.expanded
 
 export interface ExhibitionsHeadlineProps {
   exhibitionCount: number
   expanded: boolean
   collapsible: boolean
+  onShowClicked: Function
 }
-const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
-  <Flex justifyContent="space-between">
-    <Sans size="2" weight="medium" mb={3}>
+export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
+  <Flex justifyContent="space-between" mb={isCollapsed(props) ? 0 : 3}>
+    <Sans size="2" weight="medium">
       {props.exhibitionCount < MIN_FOR_SELECTED_EXHIBITIONS
         ? "Exhibitions"
         : "Selected exhibitions"}
       {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
     {isCollapsed(props) && (
-      <Sans size="2" color="black60">
+      <Sans size="2" color="black60" ml={4} onClick={props.onShowClicked}>
         Show
       </Sans>
     )}
@@ -42,12 +44,12 @@ export interface ExhibitionYearListProps {
   year: Year
   exhibitions: Exhibition[]
 }
-const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
+export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
   <Flex>
     <Sans size="2">{props.year}</Sans>
     <Flex flexDirection="column">
       {props.exhibitions.map(exhibition => (
-        <Box display="inline" ml={3}>
+        <Box key={exhibition.show} display="inline" ml={3}>
           <Sans size="2" display="inline" verticalAlign="top">
             {exhibition.show}
             {", "}
@@ -69,7 +71,11 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
     {toPairs(groupBy(props.exhibitions, ({ year }) => year))
       .reverse()
       .map(([year, exhibitions]) => (
-        <ExhibitionYearList year={year} exhibitions={exhibitions.reverse()} />
+        <ExhibitionYearList
+          key={year}
+          year={year}
+          exhibitions={exhibitions.reverse()}
+        />
       ))}
     <Sans size="2" color="black60">
       View all
@@ -79,11 +85,15 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
 
 export interface SelectedExhibitionsProps {
   exhibitions: Exhibition[]
+}
+
+export interface SelectedExhibitionsContainerProps
+  extends SelectedExhibitionsProps {
   collapsible?: boolean
 }
 
-export class SelectedExhibitions extends React.Component<
-  SelectedExhibitionsProps
+export class SelectedExhibitionsContainer extends React.Component<
+  SelectedExhibitionsContainerProps
 > {
   state = {
     expanded: false,
@@ -97,8 +107,9 @@ export class SelectedExhibitions extends React.Component<
             expanded={this.state.expanded}
             collapsible={this.props.collapsible}
             exhibitionCount={this.props.exhibitions.length}
+            onShowClicked={() => this.setState({ expanded: true })}
           />
-          {!isCollapsed(this.props) && (
+          {!isCollapsed({ expanded: this.state.expanded, ...this.props }) && (
             <FullExhibitionList exhibitions={this.props.exhibitions} />
           )}
         </Flex>
@@ -106,3 +117,12 @@ export class SelectedExhibitions extends React.Component<
     )
   }
 }
+
+export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
+  <Responsive>
+    {({ xs }) => {
+      if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
+      else return <SelectedExhibitionsContainer {...props} />
+    }}
+  </Responsive>
+)
