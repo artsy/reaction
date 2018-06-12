@@ -3,6 +3,7 @@ import { Formik, FormikProps } from "formik"
 import styled from "styled-components"
 
 import {
+  Error,
   Footer,
   FormContainer as Form,
 } from "Components/Authentication/commonElements"
@@ -34,6 +35,7 @@ export const ResetPasswordForm: FormComponentType = props => {
         handleSubmit,
         isSubmitting,
         isValid,
+        status,
       }: FormikProps<InputValues>) => {
         return (
           <Form onSubmit={handleSubmit} height={180}>
@@ -49,7 +51,7 @@ export const ResetPasswordForm: FormComponentType = props => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* touched.email && errors.email && <div>{errors.email}</div */}
+            {status && !status.success && <Error show>{status.error}</Error>}
             <ResetButton block type="submit" disabled={isSubmitting}>
               Send Reset Instructions
             </ResetButton>
