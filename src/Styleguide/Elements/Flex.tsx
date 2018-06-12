@@ -1,12 +1,15 @@
 import styled from "styled-components"
 import {
   alignContent,
+  AlignContentProps,
   alignItems,
   AlignItemsProps,
   flexDirection,
   FlexDirectionProps,
   justifyContent,
   JustifyContentProps,
+  maxWidth,
+  maxHeight,
   space,
   SpaceProps,
   HeightProps,
@@ -14,6 +17,8 @@ import {
   height,
   width,
   style,
+  MaxHeightProps,
+  MaxWidthProps,
 } from "styled-system"
 
 // @ts-ignore
@@ -26,11 +31,14 @@ const flexGrow = style({
 
 export interface FlexProps
   extends AlignItemsProps,
+    AlignContentProps,
     FlexDirectionProps,
     JustifyContentProps,
     SpaceProps,
     HeightProps,
-    WidthProps {
+    WidthProps,
+    MaxHeightProps,
+    MaxWidthProps {
   flexGrow?: number | string
 }
 
@@ -42,6 +50,8 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${justifyContent};
   ${space};
   ${height};
+  ${maxHeight};
   ${width};
+  ${maxWidth};
   ${flexGrow};
 `

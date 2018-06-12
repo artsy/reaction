@@ -2,6 +2,13 @@ import React from "react"
 
 const ResponsiveContext = React.createContext({})
 
+const shallowEqual = (a, b) => {
+  for (let key in a) {
+    if (a[key] !== b[key]) return false
+  }
+  return true
+}
+
 export interface Breakpoints {
   [breakpoint: string]: string
 }
@@ -40,6 +47,14 @@ export class ResponsiveProvider extends React.Component<
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.children !== this.props.children) return true
+    if (shallowEqual(this.state.breakpoints, nextState.breakpoints)) {
+      return false
+    }
+    return true
+  }
+
   componentDidMount() {
     this.setupObservers(this.props.breakpoints)
   }
@@ -60,7 +75,10 @@ export class ResponsiveProvider extends React.Component<
     const mqHandler = () => {
       for (let i = 0; i < mediaMatchers.length; ++i) {
         this.setState({
-          breakpoints: { [breakpointKeys[i]]: mediaMatchers[i].matches },
+          breakpoints: {
+            ...this.state.breakpoints,
+            [breakpointKeys[i]]: mediaMatchers[i].matches,
+          },
         })
       }
     }

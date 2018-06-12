@@ -16,7 +16,7 @@ const breakpoints = {
   xl: "(min-width: 1192px)",
   lg: "(min-width: 1024px) and (max-width: 1191px)",
   md: "(min-width: 900px) and (max-width: 1023px)",
-  sm: "(min-width: 768px) and (max-width: 889px)",
+  sm: "(min-width: 768px) and (max-width: 899px)",
   xs: "(max-width: 767px)",
 }
 

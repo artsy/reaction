@@ -51,6 +51,10 @@ declare module "styled-system" {
     minWidth?: ResponsiveWidthValue
   }
 
+  export interface MaxWidthProps {
+    maxWidth?: ResponsiveWidthValue
+  }
+
   export type HeightValue = number | string
   export type ResponsiveHeightValue = ResponsiveValue<HeightValue>
 
@@ -58,9 +62,20 @@ declare module "styled-system" {
     height?: ResponsiveHeightValue
   }
 
+  export interface MinHeightProps {
+    minHeight?: ResponsiveHeightValue
+  }
+
+  export interface MaxHeightProps {
+    maxHeight?: ResponsiveHeightValue
+  }
+
   export function width(...args: any[]): any
   export function minWidth(...args: any[]): any
+  export function maxWidth(...args: any[]): any
   export function height(...args: any[]): any
+  export function minHeight(...args: any[]): any
+  export function maxHeight(...args: any[]): any
 
   export interface SizeProps {
     size?: ResponsiveWidthValue | ResponsiveHeightValue
@@ -151,6 +166,31 @@ declare module "styled-system" {
   export interface AlignItemsProps {
     align?: ResponsiveAlignItemsValue
     alignItems?: ResponsiveAlignItemsValue
+  }
+
+  export type AlignContentValue =
+    | "center"
+    | "start"
+    | "end"
+    | "flex-start"
+    | "flex-end"
+    | "normal"
+    | "baseline"
+    | "first baseline"
+    | "last baseline"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch"
+    | "safe center"
+    | "unsafe center"
+    | "inherit"
+    | "initial"
+    | "unset"
+  export type ResponsiveAlignContentValue = ResponsiveValue<AlignContentValue>
+
+  export interface AlignContentProps {
+    alignContent?: ResponsiveAlignItemsValue
   }
 
   export function alignItems(...args: any[]): any
