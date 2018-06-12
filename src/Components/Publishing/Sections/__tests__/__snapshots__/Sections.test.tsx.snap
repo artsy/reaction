@@ -12,6 +12,7 @@ exports[`Sections snapshots renders properly 1`] = `
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   position: relative;
+  color: black;
 }
 
 .c37 {

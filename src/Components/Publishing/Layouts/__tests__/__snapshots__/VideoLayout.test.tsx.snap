@@ -12,6 +12,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
   position: relative;
+  color: white;
 }
 
 .c4 {
