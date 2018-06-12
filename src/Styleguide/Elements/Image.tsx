@@ -13,6 +13,7 @@ import {
 
 export interface ImageProps extends SpaceProps, WidthProps, HeightProps {
   src: string
+  style?: object
 }
 export const Image = styled.img.attrs<ImageProps>({})`
   ${space};
