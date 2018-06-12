@@ -11,8 +11,8 @@ import {
 } from "Components/Authentication/Types"
 
 export interface ModalManagerProps {
-  submitUrls: { [P in ModalType]: string }
-  csrf: string
+  submitUrls?: { [P in ModalType]: string }
+  csrf?: string
   redirectUrl?: string
   handleSubmit?: (
     type: ModalType,
