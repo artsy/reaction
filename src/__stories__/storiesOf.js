@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf as _storiesOf } from "@storybook/react"
-import { GlobalStyles } from "../Styleguide/GlobalStyles"
 import { Theme, injectGlobalCSS } from "@artsy/palette"
+import { GlobalStyles } from "../Styleguide/Elements/GlobalStyles"
 import { ResponsiveProvider } from "../Styleguide/Utils/Responsive"
 
 injectGlobalCSS(`
