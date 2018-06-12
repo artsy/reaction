@@ -24,10 +24,6 @@ import Icon from "Components/Icon"
 const ButtonsContainerHeight = 60
 const ImageContainerViewportMargin = 100 + ButtonsContainerHeight
 
-interface ImageCarouselProps {
-  src: string[]
-}
-
 const Container = styled(Flex)`
   /* -debug-background-color: #0fdb82; */
 `
@@ -66,62 +62,102 @@ const ActionButtonsContainer = styled(Flex)`
   /* -debug-background-color: #f1af1b; */
 `
 
-export class ImageCarousel extends React.Component<ImageCarouselProps> {
-  hasMultipleImages() {
-    return this.props.src.length > 1
+interface ImageCarouselProps {
+  src: string[]
+}
+
+interface ImageCarouselState {
+  currentImage: number
+}
+
+export class ImageCarousel extends React.Component<
+  ImageCarouselProps,
+  ImageCarouselState
+> {
+  state = {
+    currentImage: 0,
+  }
+
+  changeCurrentImage(by: number) {
+    this.setState({
+      currentImage: (this.state.currentImage + by) % this.props.src.length,
+    })
+  }
+
+  renderImageContainer() {
+    return (
+      <ImageContainer
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Image
+          src={this.props.src[this.state.currentImage]}
+          // tslint:disable-next-line:no-console
+          onClick={() => console.log("Zoom")}
+        />
+      </ImageContainer>
+    )
+  }
+
+  renderNavigationButton(
+    iconName: "chevron-left" | "chevron-right",
+    changeCurrentImageBy: number
+  ) {
+    return (
+      <NavigationButtonsContainer
+        flexDirection="column"
+        justifyContent="center"
+      >
+        <Button
+          href="#"
+          onClick={e => {
+            e.preventDefault()
+            this.changeCurrentImage(changeCurrentImageBy)
+          }}
+        >
+          <Icon name={iconName} color="black" />
+        </Button>
+      </NavigationButtonsContainer>
+    )
+  }
+
+  renderImageArea() {
+    const hasMultipleImages = this.props.src.length > 1
+    return (
+      <ImageAreaContainer flexDirection="row">
+        {hasMultipleImages && this.renderNavigationButton("chevron-left", -1)}
+        {this.renderImageContainer()}
+        {hasMultipleImages && this.renderNavigationButton("chevron-right", +1)}
+      </ImageAreaContainer>
+    )
+  }
+
+  renderActionButtonsContainer() {
+    return (
+      <ActionButtonsContainer
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        flexBasis={`${ButtonsContainerHeight}px`}
+      >
+        <div>
+          <Button href="#TODO">
+            <Icon name="heart" color="black" />
+          </Button>
+          <Button href="#TODO">
+            <Icon name="share" color="black" />
+          </Button>
+        </div>
+      </ActionButtonsContainer>
+    )
   }
 
   render() {
     return (
       <Container flexDirection="column">
-        <ImageAreaContainer flexDirection="row">
-          {this.hasMultipleImages() && (
-            <NavigationButtonsContainer
-              flexDirection="column"
-              justifyContent="center"
-            >
-              <Button href="#TODO">
-                <Icon name="chevron-left" color="black" />
-              </Button>
-            </NavigationButtonsContainer>
-          )}
-          <ImageContainer
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Image
-              src={this.props.src[0]}
-              // tslint:disable-next-line:no-console
-              onClick={() => console.log("Zoom")}
-            />
-          </ImageContainer>
-          {this.hasMultipleImages() && (
-            <NavigationButtonsContainer
-              flexDirection="column"
-              justifyContent="center"
-            >
-              <Button href="#TODO">
-                <Icon name="chevron-right" color="black" />
-              </Button>
-            </NavigationButtonsContainer>
-          )}
-        </ImageAreaContainer>
-        <ActionButtonsContainer
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="center"
-          flexBasis={`${ButtonsContainerHeight}px`}
-        >
-          <div>
-            <Button href="#TODO">
-              <Icon name="heart" color="black" />
-            </Button>
-            <Button href="#TODO">
-              <Icon name="share" color="black" />
-            </Button>
-          </div>
-        </ActionButtonsContainer>
+        {this.renderImageArea()}
+        {this.renderActionButtonsContainer()}
       </Container>
     )
   }
