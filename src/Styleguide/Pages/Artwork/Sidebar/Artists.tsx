@@ -1,6 +1,7 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
 import styled from "styled-components"
+import { space, SpaceProps } from "styled-system"
 import { FollowIcon } from "../../../Elements/FollowIcon"
 
 interface ArtistsProps {
@@ -13,8 +14,9 @@ interface ArtistsProps {
   }>
 }
 
-const Artist = styled.div``
-const ArtistsContainer = styled.div``
+const ArtistsContainer = styled.div.attrs<SpaceProps>({})`
+  ${space};
+`
 
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
@@ -29,7 +31,16 @@ export class Artists extends React.Component<ArtistsProps> {
     )
   }
 
-  renderArtists(artists) {
+  renderSingleArtist(artist) {
+    return (
+      <React.Fragment>
+        {this.renderArtistName(artist)}
+        <FollowIcon is_followed={artist.is_followed} />
+      </React.Fragment>
+    )
+  }
+
+  renderMultipleArtists(artists) {
     return artists.map((artist, index) => {
       return (
         <React.Fragment>
@@ -42,16 +53,12 @@ export class Artists extends React.Component<ArtistsProps> {
 
   render() {
     const { artists } = this.props
-    if (artists.length === 1) {
-      const artist = artists[0]
-      return (
-        <Artist>
-          {this.renderArtistName(artist)}
-          <FollowIcon is_followed={artist.is_followed} />
-        </Artist>
-      )
-    } else {
-      return <ArtistsContainer>{this.renderArtists(artists)}</ArtistsContainer>
-    }
+    return (
+      <ArtistsContainer pb={4}>
+        {artists.length === 1
+          ? this.renderSingleArtist(artists[0])
+          : this.renderMultipleArtists(artists)}
+      </ArtistsContainer>
+    )
   }
 }
