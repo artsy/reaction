@@ -45,6 +45,7 @@ export class ResponsiveProvider extends React.Component<
       mediaMatchers: [],
       mqHandler: null,
     }
+    this.setupObservers(this.props.breakpoints)
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -53,10 +54,6 @@ export class ResponsiveProvider extends React.Component<
       return false
     }
     return true
-  }
-
-  componentDidMount() {
-    this.setupObservers(this.props.breakpoints)
   }
 
   componentWillUnmount() {
