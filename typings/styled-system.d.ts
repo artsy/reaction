@@ -47,6 +47,10 @@ declare module "styled-system" {
     width?: ResponsiveWidthValue
   }
 
+  export interface MinWidthProps {
+    minWidth?: ResponsiveWidthValue
+  }
+
   export type HeightValue = number | string
   export type ResponsiveHeightValue = ResponsiveValue<HeightValue>
 
@@ -55,7 +59,7 @@ declare module "styled-system" {
   }
 
   export function width(...args: any[]): any
-
+  export function minWidth(...args: any[]): any
   export function height(...args: any[]): any
 
   export interface SizeProps {
@@ -389,4 +393,17 @@ declare module "styled-system" {
   export function right(...args: any[]): any
   export function bottom(...args: any[]): any
   export function left(...args: any[]): any
+
+  export type WhiteSpaceValue =
+    | "inherit"
+    | "initial"
+    | "normal"
+    | "nowrap"
+    | "pre-line"
+    | "pre-wrap"
+    | "pre"
+
+  export interface WhiteSpaceProps {
+    whiteSpace?: WhiteSpaceValue
+  }
 }

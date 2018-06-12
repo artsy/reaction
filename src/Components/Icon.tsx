@@ -3,7 +3,15 @@ import React, { StatelessComponent } from "react"
 import styled from "styled-components"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
-import { top, right, bottom, left, space, PositionProps } from "styled-system"
+import {
+  color,
+  top,
+  right,
+  bottom,
+  left,
+  space,
+  PositionProps,
+} from "styled-system"
 
 export type FontName = string
 
@@ -33,9 +41,10 @@ export default styled(Icon)`
   letter-spacing: 0px;
   position: relative;
 
+  ${bottom};
+  ${color};
+  ${left};
+  ${right};
   ${space};
   ${top};
-  ${right};
-  ${bottom};
-  ${left};
 `
