@@ -24,11 +24,11 @@ export class SizeInfo extends React.Component<SizeInfoProps> {
     return (
       <SizeInfoContainer>
         <Serif size="2">
-          {artwork.dimensions
-            ? [artwork.dimensions.in, artwork.dimensions.cm].join("; ")
-            : ""}
+          {artwork.dimensions &&
+            (artwork.dimensions.in || artwork.dimensions.cm) &&
+            [artwork.dimensions.in, artwork.dimensions.cm].join("; ")}
         </Serif>
-        {artwork.edition_of ? <Serif size="2">{artwork.edition_of}</Serif> : ""}
+        {artwork.edition_of && <Serif size="2">{artwork.edition_of}</Serif>}
       </SizeInfoContainer>
     )
   }

@@ -45,7 +45,7 @@ export class Artists extends React.Component<ArtistsProps> {
       return (
         <React.Fragment>
           {this.renderArtistName(artist)}
-          {index !== artists.length - 1 ? ", " : ""}
+          {index !== artists.length - 1 && ", "}
         </React.Fragment>
       )
     })

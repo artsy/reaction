@@ -13,6 +13,7 @@ export const ArtworkWithSizeOnly = {
 }
 
 export const ArtworkWithEditionOfOnly = {
+  dimensions: { in: null, cm: null },
   edition_of: "Edition of 20",
 }
 

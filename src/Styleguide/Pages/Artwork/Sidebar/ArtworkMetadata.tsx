@@ -34,7 +34,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps> {
     return (
       <ArtworkMetadataContainer pb={4}>
         <TitleInfo artwork={artwork} />
-        {artwork.edition_sets.length > 1 ? "" : <SizeInfo artwork={artwork} />}
+        {artwork.edition_sets.length < 2 && <SizeInfo artwork={artwork} />}
         <Classification artwork={artwork} />
       </ArtworkMetadataContainer>
     )
