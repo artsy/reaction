@@ -1,7 +1,6 @@
 import React from "react"
 import { mount } from "enzyme"
 import { ModalManager } from "../../Desktop/ModalManager"
-import { ModalType } from "../../Types"
 import { LoginForm } from "../../Desktop/LoginForm"
 
 describe("ModalManager", () => {
@@ -29,7 +28,6 @@ describe("ModalManager", () => {
           reset_password: "/reset_password",
         }}
         csrf="CSRF_TOKEN"
-        type={ModalType.login}
       />
     )
 
