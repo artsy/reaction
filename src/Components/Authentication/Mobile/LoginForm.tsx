@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Step, Wizard } from "../../Wizard"
 import { ProgressIndicator } from "../../ProgressIndicator"
 import Input from "../../Input"
-import Button from "../../Buttons/Inverted"
 import Icon from "../../Icon"
 import { FormComponentType } from "../Types"
 import Colors from "Assets/Colors"
@@ -15,6 +14,7 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
+  MobileSubmitButton,
   RememberMe,
 } from "../commonElements"
 import { checkEmailDoesNotExist } from "Components/Authentication/helpers"
@@ -109,16 +109,15 @@ export const MobileLoginForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Log in</MobileHeader>
               {currentStep}
-              <Button
-                block
+              <MobileSubmitButton
                 disabled={!wizard.shouldAllowNext}
                 onClick={form.handleSubmit as any}
               >
                 Next
-              </Button>
+              </MobileSubmitButton>
               <Footer
                 mode="login"
-                handleTypeChange={() => (window.location.href = "/signup")}
+                handleTypeChange={type => (window.location.href = "/" + type)}
               />
             </MobileInnerWrapper>
           </MobileContainer>

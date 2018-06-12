@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
+import Button from "Components/Buttons/Inverted"
 import Text from "Components/Text"
 import Checkbox from "Components/Checkbox"
 export { Footer } from "./Footer"
@@ -57,6 +58,9 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
 export const MobileInnerWrapper = styled.div`
   position: relative;
   margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  height: 275px;
 `
 
 export const MobileContainer = styled.div`
@@ -73,7 +77,8 @@ export const BackButton = styled.div`
   justify-self: start;
   align-self: center;
   position: absolute;
-  top: 30px;
+  top: 35px;
+  left: 0;
   cursor: pointer;
 `
 
@@ -100,3 +105,10 @@ export const RememberMe = props => (
     </Text>
   </Checkbox>
 )
+
+export const MobileSubmitButton = styled(Button).attrs({
+  type: "submit",
+  block: true,
+})`
+  margin: auto 0 10px 0;
+`

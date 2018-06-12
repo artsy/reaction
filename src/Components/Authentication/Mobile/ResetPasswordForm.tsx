@@ -6,11 +6,11 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
+  MobileSubmitButton,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
-import { FormComponentType, InputValues, ModalType } from "../Types"
+import { FormComponentType, InputValues } from "../Types"
 import { ResetPasswordValidator } from "../Validators"
-import Button from "Components/Buttons/Inverted"
 
 export const MobileResetPasswordForm: FormComponentType = props => {
   return (
@@ -32,7 +32,7 @@ export const MobileResetPasswordForm: FormComponentType = props => {
         return (
           <MobileContainer>
             <MobileInnerWrapper>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} height={260}>
                 <MobileHeader>Reset your password</MobileHeader>
                 <Input
                   block
@@ -46,13 +46,11 @@ export const MobileResetPasswordForm: FormComponentType = props => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                <Button block type="submit" disabled={isSubmitting}>
+                <MobileSubmitButton disabled={isSubmitting}>
                   Next
-                </Button>
+                </MobileSubmitButton>
                 <Footer
-                  handleTypeChange={() =>
-                    props.handleTypeChange(ModalType.login)
-                  }
+                  handleTypeChange={type => (window.location.href = "/" + type)}
                   mode="reset_password"
                 />
               </Form>

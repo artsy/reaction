@@ -7,10 +7,10 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
+  MobileSubmitButton,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
-import Button from "Components/Buttons/Inverted"
 import Icon from "Components/Icon"
 import { FormComponentType } from "Components/Authentication/Types"
 import Colors from "Assets/Colors"
@@ -120,16 +120,15 @@ export const MobileSignUpForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
-              <Button
-                block
+              <MobileSubmitButton
                 disabled={!wizard.shouldAllowNext}
                 onClick={form.handleSubmit as any}
               >
                 Next
-              </Button>
+              </MobileSubmitButton>
               <Footer
                 mode="signup"
-                handleTypeChange={() => (window.location.href = "/login")}
+                handleTypeChange={type => (window.location.href = "/" + type)}
               />
             </MobileInnerWrapper>
           </MobileContainer>
