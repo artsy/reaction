@@ -7,6 +7,8 @@ import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
 import { Artists } from "./Sidebar/Artists"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
+import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
+import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 
 export class Artwork extends Component {
   state = {
@@ -44,17 +46,8 @@ export class Artwork extends Component {
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
-            <ArtworkInfo>
-              <Artists artists={SingleFollowedArtist} />
-              <ArtworkMetadata>
-                The Fox and the Hound, 2018 <br />
-                Oil on canvas <br />
-                96 × 79 in; 243.8 × 200.7 cm <br />
-                <br />
-                <br />
-                This is a unique work.
-              </ArtworkMetadata>
-            </ArtworkInfo>
+            <Artists artists={SingleFollowedArtist} />
+            <ArtworkMetadata artwork={FilledOutMetadataNoEditions} />
 
             <hr />
 
@@ -63,12 +56,12 @@ export class Artwork extends Component {
             <Gallery>
               <ContactButton>Contact Gallery</ContactButton>
 
-              <Metadata>
+              <PartnerInfo>
                 <Name>Salon 94</Name>
                 <PinIcon>TODO: Pin Icon</PinIcon>
                 <Location>New York, London, Beijing, Hong Kong</Location>
                 <FollowButton>Follow Button</FollowButton>
-              </Metadata>
+              </PartnerInfo>
             </Gallery>
 
             <hr />
@@ -238,14 +231,12 @@ const SlideIndicatorDots = styled.div``
 const UtilityButtons = styled.div``
 const FavoriteButton = styled.div``
 const ShareButton = styled.div``
-const ArtworkInfo = styled.div``
 const ArtistName = styled.div``
 const FollowButton = styled.div``
-const ArtworkMetadata = styled.div``
 const Price = styled.div``
 const Gallery = styled.div``
 const ContactButton = styled.div``
-const Metadata = styled.div``
+const PartnerInfo = styled.div``
 const Name = styled.div``
 const PinIcon = styled.div``
 const Location = styled.div``
@@ -253,6 +244,7 @@ const HelpText = styled.div``
 const Tabber = styled.div``
 const TabNav = styled.div``
 const Tab = styled.div``
+const Metadata = styled.div``
 const TabContent = styled.div``
 const OtherWorksByArtist = styled.div``
 const GridBlock = styled.div``

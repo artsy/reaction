@@ -43,7 +43,7 @@ export const MobileHeader = styled.div`
 
 export const Error = styled.div.attrs<{ show: boolean }>({})`
   ${unica("s12")};
-  margin-top: ${p => (p.show ? "10px" : "0")};
+  margin-top: ${p => (p.show ? "auto" : "0")};
   margin-bottom: 10px;
   color: ${Colors.redMedium};
   visibility: ${p => (p.show ? "visible" : "hidden")};

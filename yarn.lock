@@ -12131,6 +12131,10 @@ styled-bootstrap-grid@damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e
   version "1.0.3-2"
   resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/5a115a48a7f4d5608bc73097d52e14265edc6dd3"
 
+styled-bootstrap-grid@damassi/styled-bootstrap-grid#e9d0160ea4ca97645fb88d812cbfab299f0919f8:
+  version "1.0.3-2"
+  resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/e9d0160ea4ca97645fb88d812cbfab299f0919f8"
+
 styled-components@^3.2.6, styled-components@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.3.2.tgz#087b96830ee3d60d9a8b5ef17c132b4f29cc71df"

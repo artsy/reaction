@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
 import {
+  Error,
   SmallTextLink,
   Footer,
   FormContainer as Form,
@@ -98,6 +99,7 @@ export const LoginForm: FormComponentType = props => {
                 Forgot Password?
               </ForgotPasswordLink>
             </Row>
+            {status && !status.success && <Error show>{status.error}</Error>}
             <LoginButton disabled={isSubmitting || hasErrors}>
               Log In
             </LoginButton>
