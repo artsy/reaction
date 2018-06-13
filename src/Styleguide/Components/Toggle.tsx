@@ -1,6 +1,6 @@
 import React from "react"
-import Icon from "Components/Icon"
 import styled from "styled-components"
+import { Arrow } from "../Elements/Arrow"
 import { Flex } from "../Elements/Flex"
 import { Sans } from "@artsy/palette"
 import { themeGet } from "styled-system"
@@ -41,7 +41,7 @@ export class Toggle extends React.Component<ToggleProps> {
       <Flex width="100%" flexDirection="column">
         <Header onClick={this.toggleExpand} disabled={disabled}>
           <Flex justifyContent="space-between">
-            <Sans size="2" color="black100" mt={1}>
+            <Sans size="2" weight="medium" color="black100" mt={1}>
               {this.props.label}
             </Sans>
             {!disabled && (
@@ -69,9 +69,3 @@ const Header = styled.div.attrs<ToggleProps>({})`
   pointer-events: ${props => (props.disabled ? "none" : "auto")};
   user-select: none;
 `
-
-const Arrow = ({ direction }) => {
-  return (
-    <Icon name={`chevron-${direction}` as any} color="black" fontSize="9px" />
-  )
-}

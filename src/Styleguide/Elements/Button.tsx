@@ -10,6 +10,8 @@ import {
   BorderRadiusProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   width,
   WidthProps,
 } from "styled-system"
@@ -136,6 +138,7 @@ export interface ButtonBaseProps
   extends BorderProps,
     BorderRadiusProps,
     SpaceProps,
+    TextAlignProps,
     TypographyProps,
     WidthProps {
   variantStyles?: any // FIXME: Type to styled.css
@@ -153,7 +156,9 @@ export class ButtonBase extends Component<ButtonBaseProps> {
 
     return (
       <Container {...rest}>
-        <Sans {...textProps}>{children}</Sans>
+        <Sans {...textProps} pt="1px">
+          {children}
+        </Sans>
       </Container>
     )
   }
@@ -163,6 +168,7 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
   ${border};
   ${borderRadius};
   ${space};
+  ${textAlign};
   ${width};
 
   cursor: pointer;

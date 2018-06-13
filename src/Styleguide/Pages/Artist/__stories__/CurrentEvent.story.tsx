@@ -9,6 +9,7 @@ storiesOf("Styleguide/Artist", module).add("Current Event", () => {
       <Section title="Responsive Current Event">
         <CurrentEvent
           src="https://picsum.photos/300/200/?random"
+          label="Currently on view"
           title="Brancusi: Pioneer of American Minimalism"
           gallery="Paul Kasmin Gallery"
           location="Miami"
@@ -18,6 +19,7 @@ storiesOf("Styleguide/Artist", module).add("Current Event", () => {
       <Section title="Large Current Event">
         <LargeCurrentEvent
           src="https://picsum.photos/300/200/?random"
+          label="Currently on view"
           title="Brancusi: Pioneer of American Minimalism"
           gallery="Paul Kasmin Gallery"
           location="Miami"

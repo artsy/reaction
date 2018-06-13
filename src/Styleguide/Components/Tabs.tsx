@@ -51,13 +51,17 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
 const Tab = ({ children, ...props }) => (
   <TabContainer {...props}>
-    <Sans size="3t">{children}</Sans>
+    <Sans size="3t" weight="medium" color="black30">
+      {children}
+    </Sans>
   </TabContainer>
 )
 
 const ActiveTab = ({ children }) => (
   <ActiveTabContainer>
-    <Sans size="3t">{children}</Sans>
+    <Sans size="3t" weight="medium">
+      {children}
+    </Sans>
   </ActiveTabContainer>
 )
 
