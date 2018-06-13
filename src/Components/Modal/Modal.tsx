@@ -33,7 +33,7 @@ const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   opacity: 0;
 `
 
-export class Modal extends React.PureComponent<ModalProps, any> {
+export class Modal extends React.Component<ModalProps, any> {
   static defaultProps = {
     show: false,
   }
