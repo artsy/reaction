@@ -1,9 +1,9 @@
 import React from "react"
-import Icon from "Components/Icon"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Sans } from "@artsy/palette"
 import { Responsive } from "../Utils/Responsive"
+import { Arrow } from "../Elements/Arrow"
 import { Flex } from "../Elements/Flex"
 
 export class Pagination extends React.Component {
@@ -40,9 +40,21 @@ export const LargePagination = () => {
 
 export const SmallPagination = () => {
   return (
-    <Flex flexDirection="row">
-      <PrevButton />
-      <NextButton />
+    <Flex flexDirection="row" width="100%">
+      <Flex width="50%" pl={5} pr={2}>
+        <ButtonWithBorder
+          alignItems="center"
+          justifyContent="flex-start"
+          pl={3}
+        >
+          <Arrow direction="left" />
+        </ButtonWithBorder>
+      </Flex>
+      <Flex width="50%" pr={5} pl={2}>
+        <ButtonWithBorder alignItems="center" justifyContent="flex-end" pr={3}>
+          <Arrow direction="right" />
+        </ButtonWithBorder>
+      </Flex>
     </Flex>
   )
 }
@@ -50,7 +62,7 @@ export const SmallPagination = () => {
 const Page = ({ num, ...props }) => {
   return (
     <Button {...props}>
-      <Sans display="inline" size={3}>
+      <Sans size="3" weight="medium" display="inline">
         {num}
       </Sans>
     </Button>
@@ -59,7 +71,7 @@ const Page = ({ num, ...props }) => {
 
 const PageSpan = ({ mx }) => {
   return (
-    <Sans display="inline" size={3} mx={mx} color="black30">
+    <Sans size="3" display="inline" mx={mx} color="black30">
       ...
     </Sans>
   )
@@ -67,7 +79,7 @@ const PageSpan = ({ mx }) => {
 
 const PrevButton = props => {
   return (
-    <Sans display="inline" size={3} mx={2}>
+    <Sans size="3" weight="medium" display="inline" mx={2}>
       <a href="#" className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
@@ -77,22 +89,11 @@ const PrevButton = props => {
 
 const NextButton = props => {
   return (
-    <Sans display="inline" size={3} mx={2}>
+    <Sans size="3" weight="medium" display="inline" mx={2}>
       <a href="#" className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>
-  )
-}
-
-const Arrow = ({ direction }) => {
-  return (
-    <Icon
-      name={`chevron-${direction}` as any}
-      color="black"
-      fontSize="9px"
-      top={-1}
-    />
   )
 }
 
@@ -116,4 +117,12 @@ const Button = styled.button.attrs<{ active?: boolean }>({})`
   &:hover {
     ${activeButton};
   }
+`
+
+const ButtonWithBorder = styled(Flex)`
+  border: ${props => props.theme.borders[1]};
+  border-color: ${themeGet("colors.black10")};
+  border-radius: 3px;
+  width: 100%;
+  height: ${props => props.theme.space[6]}px;
 `

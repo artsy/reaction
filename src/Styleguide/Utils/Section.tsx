@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Flex } from "../Elements/Flex"
-import { Sans } from "@artsy/palette"
+import { Sans, themeProps } from "@artsy/palette"
 import { themeGet } from "styled-system"
 
 const Header = styled.div`
@@ -27,6 +27,8 @@ export class Section extends React.Component<SectionProps> {
     this.setState({ expanded: !this.state.expanded })
   }
   render() {
+    const maxWidth = themeProps.grid.breakpoints.xl + "px"
+
     return (
       <React.Fragment>
         <Header onClick={this.toggleExpand}>
@@ -46,8 +48,8 @@ export class Section extends React.Component<SectionProps> {
             flexDirection="column"
             alignItems="center"
             my={4}
-            mx="auto"
-            maxWidth="1192px"
+            mx={3}
+            maxWidth={maxWidth}
           >
             {this.props.children}
           </Flex>
