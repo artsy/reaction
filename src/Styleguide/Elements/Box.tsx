@@ -8,6 +8,12 @@ import {
   DisplayProps,
   space,
   SpaceProps,
+  maxWidth,
+  MaxWidthProps,
+  width,
+  WidthProps,
+  height,
+  HeightProps,
 } from "styled-system"
 
 const hover = css`
@@ -16,22 +22,36 @@ const hover = css`
   }
 `
 
-export interface BorderBoxProps extends FlexProps {
+export interface BorderBoxProps
+  extends FlexProps,
+    SpaceProps,
+    MaxWidthProps,
+    WidthProps,
+    HeightProps {
   hover?: boolean
 }
 
 export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
   border: 1px solid ${themeGet("colors.black10")};
   border-radius: 2px;
-  padding: 20px;
   ${props => props.hover && hover};
+  ${space};
+  ${maxWidth};
+  ${width};
+  ${height};
 `
 BorderBox.defaultProps = {
   p: 4,
 }
 
-export interface BoxProps extends DisplayProps, SpaceProps {}
+export interface BoxProps
+  extends DisplayProps,
+    SpaceProps,
+    WidthProps,
+    HeightProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
   ${display};
+  ${width};
+  ${height};
 `

@@ -12,13 +12,13 @@ const auctions = [
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "https://picsum.photos/400/180/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "https://picsum.photos/200/600/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
