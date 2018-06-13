@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import Icon from "Components/Icon"
 import { Responsive } from "../Utils/Responsive"
+import { Arrow } from "../Elements/Arrow"
 
 const Container = styled.div`
   display: flex;
@@ -144,9 +145,9 @@ const PageIndicators: React.SFC<{
 )
 
 const NavigationButton: React.SFC<{
-  iconName: "chevron-left" | "chevron-right"
+  direction: "left" | "right"
   onClick: () => void
-}> = ({ iconName, onClick }) => (
+}> = ({ direction, onClick }) => (
   <NavigationButtonContainer>
     <Button
       href="#"
@@ -155,7 +156,7 @@ const NavigationButton: React.SFC<{
         onClick()
       }}
     >
-      <Icon name={iconName} color="black" />
+      <Arrow direction={direction} fontSize="24px" />
     </Button>
   </NavigationButtonContainer>
 )
@@ -192,7 +193,7 @@ export class ImageCarousel extends React.Component<
               <ImageArea>
                 {showNavigation && (
                   <NavigationButton
-                    iconName="chevron-left"
+                    direction="left"
                     onClick={this.changeCurrentImage.bind(this, -1)}
                   />
                 )}
@@ -205,7 +206,7 @@ export class ImageCarousel extends React.Component<
                 </ImageContainer>
                 {showNavigation && (
                   <NavigationButton
-                    iconName="chevron-right"
+                    direction="right"
                     onClick={this.changeCurrentImage.bind(this, +1)}
                   />
                 )}
