@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../../../Utils/Section"
 import { ArtworkMetadata } from "../../Sidebar/ArtworkMetadata"
 
-export const FilledOutMetadataNoEditions = {
+const FilledOutMetadataNoEditions = {
   title: "Full metadata / No editions",
   date: "2016-2017",
   medium:
@@ -19,7 +19,7 @@ export const FilledOutMetadataNoEditions = {
   edition_sets: [],
 }
 
-export const FilledOutMetadataOneEditionSet = {
+const FilledOutMetadataOneEditionSet = {
   title: "Full metadata / One Edition Set",
   date: "2016-2017",
   medium:
@@ -30,7 +30,7 @@ export const FilledOutMetadataOneEditionSet = {
   edition_sets: [{ id: "5b1ffd455405ff0020d933bb" }],
 }
 
-export const FilledOutMetadataMultipleEditionSets = {
+const FilledOutMetadataMultipleEditionSets = {
   title: "Full metadata / Multiple edition sets",
   date: "2016-2017",
   medium:
@@ -49,7 +49,7 @@ export const FilledOutMetadataMultipleEditionSets = {
   ],
 }
 
-export const EmptyMetadataNoEditions = {
+const EmptyMetadataNoEditions = {
   title: "Empty metadata / No editions",
   date: " ",
   medium: "",
@@ -62,7 +62,7 @@ export const EmptyMetadataNoEditions = {
   edition_sets: [],
 }
 
-export const EmptyMetadataOneEditionSet = {
+const EmptyMetadataOneEditionSet = {
   title: "Empty metadata / One edition set",
   date: " ",
   medium: "",
@@ -79,7 +79,7 @@ export const EmptyMetadataOneEditionSet = {
   ],
 }
 
-export const EmptyMetadataMultipleEditionSets = {
+const EmptyMetadataMultipleEditionSets = {
   title: "Empty metadata / Multiple edition Sets",
   date: " ",
   medium: "",

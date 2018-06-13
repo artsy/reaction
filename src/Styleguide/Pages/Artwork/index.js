@@ -5,10 +5,8 @@ import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
-import { Artists } from "./Sidebar/Artists"
-import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
+import { Sidebar } from "./Sidebar"
+import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
 
 export class Artwork extends Component {
   state = {
@@ -46,16 +44,9 @@ export class Artwork extends Component {
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
-            <Artists artists={SingleFollowedArtist} />
-            <ArtworkMetadata artwork={FilledOutMetadataNoEditions} />
-
-            <hr />
-
-            <Price>Contact for price</Price>
+            <Sidebar artwork={ArtworkWithCompleteData} />
 
             <Gallery>
-              <ContactButton>Contact Gallery</ContactButton>
-
               <PartnerInfo>
                 <Name>Salon 94</Name>
                 <PinIcon>TODO: Pin Icon</PinIcon>

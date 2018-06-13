@@ -5,7 +5,7 @@ import { TitleInfo } from "./TitleInfo"
 import { SizeInfo } from "./SizeInfo"
 import { Classification } from "./Classification"
 
-interface ArtworkMetadataProps {
+export interface ArtworkMetadataProps {
   artwork: {
     readonly title: string
     readonly date: string
@@ -19,7 +19,7 @@ interface ArtworkMetadataProps {
       short_description: string
     }
     readonly edition_sets: Array<{
-      id: string
+      readonly id: string
     }>
   }
 }
