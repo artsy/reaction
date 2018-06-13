@@ -6,7 +6,7 @@ import { SizeInfo } from "./SizeInfo"
 import { RulerSeparator } from "../../../Elements/RulerSeparator"
 import { Button } from "../../../Elements/Button"
 
-export interface CommertialProps {
+export interface CommercialProps {
   artwork: {
     readonly sale_message: string | null
     readonly is_inquireable: boolean
@@ -21,7 +21,7 @@ export interface CommertialProps {
   }
 }
 
-const CommertialContainer = styled.div.attrs<SpaceProps>({})`
+const CommercialContainer = styled.div.attrs<SpaceProps>({})`
   text-align: left;
   ${space};
 `
@@ -29,7 +29,7 @@ const PricingInfoContainer = styled.div.attrs<SpaceProps>({})`
   ${space};
 `
 
-export class Commertial extends React.Component<CommertialProps> {
+export class Commercial extends React.Component<CommercialProps> {
   renderSaleMessage(artwork) {
     return <Serif size="5t">{artwork.sale_message}</Serif>
   }
@@ -51,7 +51,7 @@ export class Commertial extends React.Component<CommertialProps> {
   render() {
     const { artwork } = this.props
     return (
-      <CommertialContainer pb={4}>
+      <CommercialContainer pb={4}>
         {artwork.edition_sets.length < 2 ? (
           <PricingInfoContainer pb={4}>
             {this.renderSaleMessage(artwork)}
@@ -64,7 +64,7 @@ export class Commertial extends React.Component<CommertialProps> {
             Contact Gallery
           </Button>
         )}
-      </CommertialContainer>
+      </CommercialContainer>
     )
   }
 }

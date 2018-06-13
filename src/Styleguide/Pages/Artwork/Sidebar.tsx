@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { RulerSeparator } from "../../Elements/RulerSeparator"
 import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { Commertial } from "./Sidebar/Commertial"
+import { Commercial } from "./Sidebar/Commercial"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
@@ -49,7 +49,7 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
         <Artists artists={artwork.artists} />
         <ArtworkMetadata artwork={artwork} />
         <RulerSeparator />
-        <Commertial artwork={artwork} />
+        <Commercial artwork={artwork} />
       </SidebarContainer>
     )
   }

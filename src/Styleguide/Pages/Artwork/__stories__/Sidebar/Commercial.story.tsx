@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../../../Utils/Section"
-import { Commertial } from "../../Sidebar/Commertial"
+import { Commercial } from "../../Sidebar/Commercial"
 
 const FoSaleArtworkNoEditions = {
   availability: "for sale",
@@ -85,20 +85,20 @@ const ContactForPriceWork = {
   ],
 }
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("Commertial", () => {
+storiesOf("Styleguide/Artwork/Sidebar", module).add("Commercial", () => {
   return (
     <React.Fragment>
       <Section title="For sale artwork with no editions">
-        <Commertial artwork={FoSaleArtworkNoEditions} />
+        <Commercial artwork={FoSaleArtworkNoEditions} />
       </Section>
       <Section title="For sale artwork with one edition set">
-        <Commertial artwork={FoSaleArtworkWithOneEdition} />
+        <Commercial artwork={FoSaleArtworkWithOneEdition} />
       </Section>
       <Section title="For sale artwork with multiple edition sets">
-        <Commertial artwork={FoSaleArtworkWithMultipleEditions} />
+        <Commercial artwork={FoSaleArtworkWithMultipleEditions} />
       </Section>
       <Section title="Contact for price work">
-        <Commertial artwork={ContactForPriceWork} />
+        <Commercial artwork={ContactForPriceWork} />
       </Section>
     </React.Fragment>
   )
