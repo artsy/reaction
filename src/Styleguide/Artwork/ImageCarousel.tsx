@@ -44,13 +44,9 @@ const Button = styled.a`
 
 const NavigationButtonsContainer = styled(Flex)`
   width: 40px;
+
   /* background-color: blue; */
 `
-
-const ActionButtonsContainer = styled(Flex)`
-  /* background-color: #f1af1b; */
-`
-
 const PageIndicator = styled.span`
   &::after {
     content: "•";
@@ -60,7 +56,23 @@ const PageIndicator = styled.span`
     isHighlighted ? "#000" : "#d8d8d8"};
 `
 
-const PageIndicators = styled(Flex)`
+const ControlsContainer = styled(Flex)`
+  /* background-color: #f1af1b; */
+`
+
+/**
+ * Give items margin on both sides so they don’t hug the side on small screens
+ * when the controls are shown next to each other, but also are still centered
+ * on larger screens when they are shown above each other.
+ */
+const ControlsContainerItem = styled(Flex)`
+  margin-left: 20px;
+  margin-right: 20px;
+`
+
+const ActionButtonsContainer = styled(ControlsContainerItem)``
+
+const PageIndicatorsContainer = styled(ControlsContainerItem)`
   ${PageIndicator} + ${PageIndicator} {
     margin-left: 5px;
   }
@@ -154,29 +166,40 @@ export class ImageCarousel extends React.Component<
     )
   }
 
-  renderActionButtonsContainer() {
+  renderControlsContainer() {
     return (
-      <ActionButtonsContainer
-        flexDirection="column"
-        justifyContent="center"
-        flexBasis={`${
-          this.hasMultipleImages()
-            ? ButtonsContainerWithPageIndicatorsHeight
-            : ButtonsContainerHeight
-        }px`}
-      >
-        {this.renderPageIndicators()}
-        <Flex flexDirection="row" alignItems="center" justifyContent="center">
-          <div>
-            <Button href="#TODO">
-              <Icon name="heart" color="black" />
-            </Button>
-            <Button href="#TODO">
-              <Icon name="share" color="black" />
-            </Button>
-          </div>
-        </Flex>
-      </ActionButtonsContainer>
+      <Responsive>
+        {({ xs }) => {
+          return (
+            <ControlsContainer
+              flexDirection={xs ? "row-reverse" : "column"}
+              justifyContent="center"
+              flexBasis={`${
+                !xs && this.hasMultipleImages()
+                  ? ButtonsContainerWithPageIndicatorsHeight
+                  : ButtonsContainerHeight
+              }px`}
+            >
+              {this.renderPageIndicators()}
+              {xs && <Flex flexGrow="1" /> /* spacer */}
+              <Flex
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <ActionButtonsContainer>
+                  <Button href="#TODO">
+                    <Icon name="heart" color="black" />
+                  </Button>
+                  <Button href="#TODO">
+                    <Icon name="share" color="black" />
+                  </Button>
+                </ActionButtonsContainer>
+              </Flex>
+            </ControlsContainer>
+          )
+        }}
+      </Responsive>
     )
   }
 
@@ -185,7 +208,11 @@ export class ImageCarousel extends React.Component<
       return null
     } else {
       return (
-        <PageIndicators flexDirection="row" justifyContent="center">
+        <PageIndicatorsContainer
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+        >
           {[...new Array(this.props.src.length)].map((_, i) => (
             <PageIndicator
               key={i}
@@ -193,7 +220,7 @@ export class ImageCarousel extends React.Component<
               onClick={() => this.setState({ currentImage: i })}
             />
           ))}
-        </PageIndicators>
+        </PageIndicatorsContainer>
       )
     }
   }
@@ -202,7 +229,7 @@ export class ImageCarousel extends React.Component<
     return (
       <Container flexDirection="column">
         {this.renderImageArea()}
-        {this.renderActionButtonsContainer()}
+        {this.renderControlsContainer()}
       </Container>
     )
   }
