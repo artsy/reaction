@@ -1,10 +1,5 @@
 import * as React from "react"
-import {
-  ConnectionData,
-  createPaginationContainer,
-  graphql,
-  RelayPaginationProp,
-} from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "./state"
@@ -14,40 +9,70 @@ import { Artworks_filtered_artworks } from "../../__generated__/Artworks_filtere
 
 interface Props {
   filtered_artworks: Artworks_filtered_artworks
-  relay: RelayPaginationProp
+  relay: RelayRefetchProp
   artistID: string
 }
 
 const PAGE_SIZE = 10
 
 class Artworks extends React.Component<Props> {
-  loadMoreArtworks(filters) {
-    const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
-    const endCursor = this.props.filtered_artworks.artworks.pageInfo.endCursor
-    if (hasMore) {
-      // TODO: Should refetchConnection keep appending records?
-      this.props.relay.refetchConnection(
-        PAGE_SIZE,
-        error => {
-          if (error) {
-            console.error(error)
-          }
-          filters.incrementPage()
-        },
-        { cursor: endCursor }
-      )
-    }
+  loadArtworks(filters, cursor, page) {
+    this.props.relay.refetch(
+      {
+        first: PAGE_SIZE,
+        after: cursor,
+        filteredArtworksNodeID: this.props.filtered_artworks.__id,
+      },
+      null,
+      error => {
+        if (error) {
+          console.error(error)
+        }
+        filters.setPage(page)
+      }
+    )
   }
-  renderPagination(filters) {
-    return (
-      <div>
-        <div>Current Page: {filters.state.page}</div>
-        <div
+  renderPages(filters, pageCursors, options = { prefix: "", suffix: null }) {
+    return pageCursors.map(pageCursor => {
+      const { cursor, isCurrent, page } = pageCursor
+      const { prefix, suffix } = options
+      return (
+        <span
           onClick={() => {
-            this.loadMoreArtworks(filters)
+            this.loadArtworks(filters, cursor, page)
+          }}
+          style={{
+            padding: `${isCurrent ? "0 10px 0 10px" : "0 3px 0 0"}`,
           }}
         >
-          Next
+          {prefix ? prefix + page : page}
+          {suffix}
+        </span>
+      )
+    })
+  }
+  renderPagination(filters) {
+    const {
+      first,
+      last,
+      around,
+    } = this.props.filtered_artworks.artworks.pageCursors
+    return (
+      <div>
+        <div>
+          {first
+            ? this.renderPages(filters, [first], {
+                prefix: "",
+                suffix: "...",
+              })
+            : null}
+          {this.renderPages(filters, around)}
+          {last
+            ? this.renderPages(filters, [last], {
+                prefix: "...",
+                suffix: "",
+              })
+            : null}
         </div>
       </div>
     )
@@ -73,21 +98,37 @@ class Artworks extends React.Component<Props> {
   }
 }
 
-export default createPaginationContainer(
+export default createRefetchContainer(
   Artworks,
   {
     filtered_artworks: graphql`
       fragment Artworks_filtered_artworks on FilterArtworks
         @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String", defaultValue: "" }
+          first: { type: "Int", defaultValue: 10 }
+          after: { type: "String", defaultValue: "" }
         ) {
         __id
-        artworks: artworks_connection(first: $count, after: $cursor)
-          @connection(key: "Artworks_filtered_artworks") {
+        artworks: artworks_connection(first: $first, after: $after) {
           pageInfo {
             hasNextPage
             endCursor
+          }
+          pageCursors {
+            around {
+              cursor
+              page
+              isCurrent
+            }
+            first {
+              cursor
+              page
+              isCurrent
+            }
+            last {
+              cursor
+              page
+              isCurrent
+            }
           }
           ...ArtworkGrid_artworks
           edges {
@@ -99,38 +140,15 @@ export default createPaginationContainer(
       }
     `,
   },
-  {
-    direction: "forward",
-    getConnectionFromProps(props) {
-      return props.filtered_artworks.artworks as ConnectionData
-    },
-    getFragmentVariables(prevVars, totalCount) {
-      return {
-        ...prevVars,
-        count: totalCount,
+  graphql`
+    query ArtworksQuery(
+      $filteredArtworksNodeID: ID!
+      $first: Int!
+      $after: String
+    ) {
+      node(__id: $filteredArtworksNodeID) {
+        ...Artworks_filtered_artworks @arguments(first: $first, after: $after)
       }
-    },
-    getVariables(props, { count, cursor }, fragmentVariables) {
-      return {
-        // in most cases, for variables other than connection filters like
-        // `first`, `after`, etc. you may want to use the previous values.
-        ...fragmentVariables,
-        count,
-        cursor,
-        filteredArtworksNodeID: props.filtered_artworks.__id,
-      }
-    },
-    query: graphql`
-      query ArtworksQuery(
-        $filteredArtworksNodeID: ID!
-        $count: Int!
-        $cursor: String
-      ) {
-        node(__id: $filteredArtworksNodeID) {
-          ...Artworks_filtered_artworks
-            @arguments(count: $count, cursor: $cursor)
-        }
-      }
-    `,
-  }
+    }
+  `
 )
