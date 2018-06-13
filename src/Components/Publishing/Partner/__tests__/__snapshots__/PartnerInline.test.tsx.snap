@@ -76,8 +76,6 @@ exports[`renders the partner inline 1`] = `
   >
     <div
       className="c1 c2"
-      onClick={undefined}
-      style={undefined}
     >
       
     </div>
