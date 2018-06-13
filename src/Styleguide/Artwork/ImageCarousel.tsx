@@ -1,25 +1,24 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Flex } from "Styleguide/Elements/Flex"
 import Icon from "Components/Icon"
 import { Responsive } from "../Utils/Responsive"
 
-/**
- * The image should be placed 100px from the top of the document and leave 60px
- * for the buttons below the image.
- */
-const ButtonsContainerHeight = 60
-const ButtonsContainerWithPageIndicatorsHeight = ButtonsContainerHeight + 20
-const ImageContainerViewportMargin = 100 + ButtonsContainerHeight
-
-const Container = styled(Flex)`
-  /* background-color: #0fdb82; */
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
-const BaseImageArea = styled(Flex)`
+const Spacer = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
+const BaseImageArea = styled.div`
   line-height: 0; /* Don’t introduce visual margins */
   width: 100%;
+  display: flex;
+  flex-direction: row;
 `
 
 const SmallImageArea = styled(BaseImageArea)`
@@ -28,26 +27,29 @@ const SmallImageArea = styled(BaseImageArea)`
 
 const LargeImageArea = styled(BaseImageArea)`
   min-height: 450px;
-  height: calc(100vh - ${ImageContainerViewportMargin}px);
+  height: calc(100vh - 160px);
 `
 
-const ImageContainer = styled(Flex)`
+const ImageContainer = styled.div`
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `
 
 const BaseImage = styled.img`
   cursor: zoom-in;
+  max-width: 100%;
 `
 
 const SmallImage = styled(BaseImage)`
   max-height: calc(100vh - 120px);
-  max-width: 100%;
 `
 
 const LargeImage = styled(BaseImage)`
   max-height: 100%;
-  max-width: 100%;
 `
 
 // TODO: Should Icon have this styling by default?
@@ -57,11 +59,13 @@ const Button = styled.a`
   }
 `
 
-const NavigationButton = styled(Flex)`
+const NavigationButtonContainer = styled.div`
   width: 40px;
-
-  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
+
 const PageIndicator = styled.span`
   &::after {
     content: "•";
@@ -71,8 +75,19 @@ const PageIndicator = styled.span`
     isHighlighted ? "#000" : "#d8d8d8"};
 `
 
-const ControlsContainer = styled(Flex)`
-  /* background-color: #f1af1b; */
+const BaseControlsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const SmallControlsContainer = styled(BaseControlsContainer)`
+  height: 60px;
+  flex-direction: row-reverse;
+`
+
+const LargeControlsContainer = styled(BaseControlsContainer)`
+  height: 80px;
+  flex-direction: column;
 `
 
 /**
@@ -80,19 +95,28 @@ const ControlsContainer = styled(Flex)`
  * when the controls are shown next to each other, but also are still centered
  * on larger screens when they are shown above each other.
  */
-const ControlsContainerItem = styled(Flex)`
+const ControlsContainerItem = styled.div`
   margin-left: 20px;
   margin-right: 20px;
+  display: flex;
 `
 
 const ActionButtons = styled(ControlsContainerItem)``
 
-const PageIndicators = styled(ControlsContainerItem)`
+const PageIndicatorsContainer = styled(ControlsContainerItem)`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
   ${PageIndicator} + ${PageIndicator} {
     margin-left: 5px;
   }
+`
 
-  /* background-color: red; */
+const ActionButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 interface ImageCarouselProps {
@@ -102,6 +126,39 @@ interface ImageCarouselProps {
 interface ImageCarouselState {
   currentImage: number
 }
+
+const PageIndicators: React.SFC<{
+  size: number
+  highlightIndex: number
+  onSelect: (index: number) => void
+}> = ({ size, highlightIndex, onSelect }) => (
+  <PageIndicatorsContainer>
+    {[...new Array(size)].map((_, i) => (
+      <PageIndicator
+        key={i}
+        isHighlighted={i === highlightIndex}
+        onClick={() => onSelect(i)}
+      />
+    ))}
+  </PageIndicatorsContainer>
+)
+
+const NavigationButton: React.SFC<{
+  iconName: "chevron-left" | "chevron-right"
+  onClick: () => void
+}> = ({ iconName, onClick }) => (
+  <NavigationButtonContainer>
+    <Button
+      href="#"
+      onClick={e => {
+        e.preventDefault()
+        onClick()
+      }}
+    >
+      <Icon name={iconName} color="black" />
+    </Button>
+  </NavigationButtonContainer>
+)
 
 export class ImageCarousel extends React.Component<
   ImageCarouselProps,
@@ -117,146 +174,66 @@ export class ImageCarousel extends React.Component<
     })
   }
 
-  renderImageContainer() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          const Image = xs ? SmallImage : LargeImage
-          return (
-            <ImageContainer
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Image
-                src={this.props.src[this.state.currentImage]}
-                // tslint:disable-next-line:no-console
-                onClick={() => console.log("Zoom")}
-              />
-            </ImageContainer>
-          )
-        }}
-      </Responsive>
-    )
-  }
-
-  renderNavigationButton(
-    iconName: "chevron-left" | "chevron-right",
-    changeCurrentImageBy: number
-  ) {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) {
-            return null
-          } else {
-            return (
-              <NavigationButton flexDirection="column" justifyContent="center">
-                <Button
-                  href="#"
-                  onClick={e => {
-                    e.preventDefault()
-                    this.changeCurrentImage(changeCurrentImageBy)
-                  }}
-                >
-                  <Icon name={iconName} color="black" />
-                </Button>
-              </NavigationButton>
-            )
-          }
-        }}
-      </Responsive>
-    )
-  }
-
-  hasMultipleImages() {
-    return this.props.src.length > 1
-  }
-
-  renderImageArea() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          const ImageArea = xs ? SmallImageArea : LargeImageArea
-          return (
-            <ImageArea flexDirection="row">
-              {this.hasMultipleImages() &&
-                this.renderNavigationButton("chevron-left", -1)}
-              {this.renderImageContainer()}
-              {this.hasMultipleImages() &&
-                this.renderNavigationButton("chevron-right", +1)}
-            </ImageArea>
-          )
-        }}
-      </Responsive>
-    )
-  }
-
-  renderControlsContainer() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          return (
-            <ControlsContainer
-              flexDirection={xs ? "row-reverse" : "column"}
-              justifyContent="center"
-              flexBasis={`${
-                !xs && this.hasMultipleImages()
-                  ? ButtonsContainerWithPageIndicatorsHeight
-                  : ButtonsContainerHeight
-              }px`}
-            >
-              {this.renderPageIndicators()}
-              {xs && <Flex flexGrow="1" /> /* spacer */}
-              <Flex
-                flexDirection="row"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ActionButtons>
-                  <Button href="#TODO">
-                    <Icon name="heart" color="black" />
-                  </Button>
-                  <Button href="#TODO">
-                    <Icon name="share" color="black" />
-                  </Button>
-                </ActionButtons>
-              </Flex>
-            </ControlsContainer>
-          )
-        }}
-      </Responsive>
-    )
-  }
-
-  renderPageIndicators() {
-    if (this.props.src.length <= 1) {
-      return null
-    } else {
-      return (
-        <PageIndicators
-          flexDirection="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          {[...new Array(this.props.src.length)].map((_, i) => (
-            <PageIndicator
-              key={i}
-              isHighlighted={i === this.state.currentImage}
-              onClick={() => this.setState({ currentImage: i })}
-            />
-          ))}
-        </PageIndicators>
-      )
-    }
-  }
-
   render() {
     return (
-      <Container flexDirection="column">
-        {this.renderImageArea()}
-        {this.renderControlsContainer()}
-      </Container>
+      <Responsive>
+        {({ xs }) => {
+          const hasMultipleImages = this.props.src.length > 1
+          const showNavigation = !xs && hasMultipleImages
+
+          const Image = xs ? SmallImage : LargeImage
+          const ImageArea = xs ? SmallImageArea : LargeImageArea
+          const ControlsContainer = showNavigation
+            ? LargeControlsContainer
+            : SmallControlsContainer
+
+          return (
+            <Container>
+              <ImageArea>
+                {showNavigation && (
+                  <NavigationButton
+                    iconName="chevron-left"
+                    onClick={this.changeCurrentImage.bind(this, -1)}
+                  />
+                )}
+                <ImageContainer>
+                  <Image
+                    src={this.props.src[this.state.currentImage]}
+                    // tslint:disable-next-line:no-console
+                    onClick={() => console.log("Zoom")}
+                  />
+                </ImageContainer>
+                {showNavigation && (
+                  <NavigationButton
+                    iconName="chevron-right"
+                    onClick={this.changeCurrentImage.bind(this, +1)}
+                  />
+                )}
+              </ImageArea>
+              <ControlsContainer>
+                {hasMultipleImages && (
+                  <PageIndicators
+                    size={this.props.src.length}
+                    highlightIndex={this.state.currentImage}
+                    onSelect={i => this.setState({ currentImage: i })}
+                  />
+                )}
+                {xs && <Spacer />}
+                <ActionButtonsContainer>
+                  <ActionButtons>
+                    <Button href="#TODO">
+                      <Icon name="heart" color="black" />
+                    </Button>
+                    <Button href="#TODO">
+                      <Icon name="share" color="black" />
+                    </Button>
+                  </ActionButtons>
+                </ActionButtonsContainer>
+              </ControlsContainer>
+            </Container>
+          )
+        }}
+      </Responsive>
     )
   }
 }
