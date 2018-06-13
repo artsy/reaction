@@ -37,6 +37,8 @@ export const ResetPasswordForm: FormComponentType = props => {
         isValid,
         status,
       }: FormikProps<InputValues>) => {
+        const hasErrors = Object.keys(errors).length > 0
+
         return (
           <Form onSubmit={handleSubmit} height={180}>
             <Input
@@ -52,7 +54,11 @@ export const ResetPasswordForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             {status && !status.success && <Error show>{status.error}</Error>}
-            <ResetButton block type="submit" disabled={isSubmitting}>
+            <ResetButton
+              block
+              type="submit"
+              disabled={isSubmitting || hasErrors}
+            >
               Send Reset Instructions
             </ResetButton>
             <Footer

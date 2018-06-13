@@ -26,8 +26,11 @@ export class FormSwitcher extends React.Component<Props, State> {
     values: {},
   }
 
-  state = {
-    type: this.props.type,
+  constructor(props) {
+    super(props)
+    this.state = {
+      type: this.props.type,
+    }
   }
 
   presentModal = (newType: ModalType) => {
@@ -47,7 +50,7 @@ export class FormSwitcher extends React.Component<Props, State> {
         Form = ResetPasswordForm
         break
       default:
-        throw new Error(`${this.state.type} mode needs a component`)
+        return null
     }
 
     const { values } = this.props
