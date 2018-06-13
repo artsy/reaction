@@ -45,7 +45,7 @@ export const LargeAuctionCard = props => (
 )
 
 export const SmallAuctionCard = props => (
-  <Flex p={4} flexGrow="1">
+  <Flex p={4} width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="space-between">
       <div>
         <Serif size="3t" weight="semibold">
