@@ -45,10 +45,9 @@ export class Section extends React.Component<SectionProps> {
           <Flex
             flexDirection="column"
             alignItems="center"
-            mt={4}
-            mb={4}
-            ml={2}
-            mr={2}
+            my={4}
+            mx="auto"
+            maxWidth="1192px"
           >
             {this.props.children}
           </Flex>

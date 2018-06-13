@@ -4,26 +4,19 @@ import { Formik, FormikProps } from "formik"
 
 import {
   Error,
-  SmallTextLink,
+  ForgotPassword,
   Footer,
   FormContainer as Form,
+  RememberMe,
 } from "Components/Authentication/commonElements"
 import { LoginValidator } from "Components/Authentication/Validators"
 import Input from "Components/Input"
-import Text from "Components/Text"
-import Colors from "Assets/Colors"
 import {
   FormComponentType,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
-import Checkbox from "Components/Checkbox"
 import Button from "Components/Buttons/Inverted"
-
-const ForgotPasswordLink = styled(SmallTextLink)`
-  margin-left: auto;
-  color: ${Colors.graySemibold};
-`
 
 const Row = styled.div`
   display: flex;
@@ -85,19 +78,12 @@ export const LoginForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             <Row>
-              <Checkbox
-                type="checkbox"
-                name="remember-me"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              >
-                <Text color={Colors.graySemibold}>Remember me</Text>
-              </Checkbox>
-              <ForgotPasswordLink
-                onClick={() => props.handleTypeChange(ModalType.resetPassword)}
-              >
-                Forgot Password?
-              </ForgotPasswordLink>
+              <RememberMe handleChange={handleChange} handleBlur={handleBlur} />
+              <ForgotPassword
+                handleForgotPasswordChange={() =>
+                  props.handleTypeChange(ModalType.resetPassword)
+                }
+              />
             </Row>
             {status && !status.success && <Error show>{status.error}</Error>}
             <LoginButton disabled={isSubmitting || hasErrors || !dirty}>

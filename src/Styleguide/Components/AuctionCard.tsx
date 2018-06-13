@@ -4,18 +4,11 @@ import { BorderBox } from "../Elements/Box"
 import { Flex } from "../Elements/Flex"
 import { Image } from "../Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
-import styled from "styled-components"
-import { height, HeightProps } from "styled-system"
-
-interface ImageWrapperProps extends HeightProps {}
-const ImageWrapper = styled.div.attrs<ImageWrapperProps>({})`
-  ${height};
-`
 
 const ScaledArtworkImage = props => (
-  <ImageWrapper height={props.height}>
+  <Flex height={props.height} justifyContent="center">
     <Image {...props} />
-  </ImageWrapper>
+  </Flex>
 )
 
 export interface AuctionCardProps {
@@ -44,7 +37,7 @@ export const LargeAuctionCard = props => (
       {props.headline}
     </Serif>
     <Serif size="3t">{props.subHeadline}</Serif>
-    <Image src={props.src} m={4} />
+    <ScaledArtworkImage src={props.src} maxWidth="100%" height="auto" m={4} />
     <Sans size="1" weight="medium">
       {props.badge}
     </Sans>
@@ -52,7 +45,7 @@ export const LargeAuctionCard = props => (
 )
 
 export const SmallAuctionCard = props => (
-  <Flex p={4}>
+  <Flex p={4} width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="space-between">
       <div>
         <Serif size="3t" weight="semibold">

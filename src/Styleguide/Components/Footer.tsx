@@ -30,7 +30,9 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
       width="100%"
     >
       <Flex flexDirection="column" mb={3}>
-        <Sans size="2">Buy</Sans>
+        <Sans size="2" weight="medium">
+          Buy
+        </Sans>
         <Serif size="2">
           <Link href="https://www.artsy.net/#">Buying from Galleries FAQ</Link>
           <Link href="https://www.artsy.net/#">Buying from Auctions FAQ</Link>
@@ -41,7 +43,9 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
         </Serif>
       </Flex>
       <Flex flexDirection="column" mb={3}>
-        <Sans size="2">Learn</Sans>
+        <Sans size="2" weight="medium">
+          Learn
+        </Sans>
         <Serif size="2">
           <Link href="https://www.artsy.net/artsy-education">Education</Link>
           <Link href="https://www.artsy.net/categories">
@@ -50,7 +54,9 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
         </Serif>
       </Flex>
       <Flex flexDirection="column" mb={3}>
-        <Sans size="2">About us</Sans>
+        <Sans size="2" weight="medium">
+          About us
+        </Sans>
         <Serif size="2">
           <Link href="https://www.artsy.net/about">About</Link>
           <Link href="https://medium.com/artsy-blog">Blog</Link>
@@ -62,7 +68,9 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
         </Serif>
       </Flex>
       <Flex flexDirection="column" mb={3}>
-        <Sans size="2">Partners</Sans>
+        <Sans size="2" weight="medium">
+          Partners
+        </Sans>
         <Serif size="2">
           <Link href="">Buying from Galleries FAQ</Link>
           <Link href="#">Buying from Auctions FAQ</Link>

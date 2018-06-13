@@ -640,6 +640,7 @@ type ArtworkConnection {
 
   # A list of edges.
   edges: [ArtworkEdge]
+  pageCursors: PageCursors
 }
 
 union ArtworkContext = ArtworkContextAuction | ArtworkContextFair | ArtworkContextPartnerShow | ArtworkContextSale
@@ -716,6 +717,7 @@ type ArtworkContextAuction implements Node {
 
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
+  partner: Partner
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
@@ -956,6 +958,7 @@ type ArtworkContextSale implements Node {
 
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
+  partner: Partner
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
@@ -3259,6 +3262,7 @@ type HomePageModuleContextSale implements Node {
 
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
+  partner: Partner
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
@@ -3860,6 +3864,23 @@ type OrderLineItem {
 type organizer {
   profile_id: ID
   profile: Profile
+}
+
+type PageCursor {
+  cursor: String!
+  page: Int!
+  isCurrent: Boolean!
+}
+
+type PageCursors {
+  # Optional, may be included in `around` (if current page is near the beginning).
+  first: PageCursor
+
+  # Optional, may be included in `around` (if current page is near the end).
+  last: PageCursor
+
+  # Always includes current page
+  around: [PageCursor]!
 }
 
 # Information about pagination in a connection.
@@ -4864,6 +4885,7 @@ type Sale implements Node {
 
   # Returns a live auctions url if the sale is open and start time is after now
   live_url_if_open: String
+  partner: Partner
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
