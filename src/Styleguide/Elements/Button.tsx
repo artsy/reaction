@@ -1,34 +1,32 @@
 import React, { Component, ReactNode } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Sans, TypographyProps } from "@artsy/palette"
 import { pick } from "lodash/fp"
 
 import {
   border,
   BorderProps,
-  borderColor,
-  BorderColorProps,
   borderRadius,
   BorderRadiusProps,
-  color,
-  ColorProps,
   space,
   SpaceProps,
-  textAlign,
-  TextAlignProps,
   width,
   WidthProps,
 } from "styled-system"
 
 enum ButtonSize {
-  default = "default",
-  large = "large",
+  default = "medium",
   small = "small",
+  medium = "medium",
+  large = "large",
 }
 
 enum ButtonVariant {
-  default = "default",
-  outline = "outline",
+  default = "primaryBlack",
+  primaryBlack = "primaryBlack",
+  primaryWhite = "primaryWhite",
+  secondaryGray = "secondaryGray",
+  secondaryOutline = "secondaryOutline",
 }
 
 export interface ButtonProps extends ButtonBaseProps {
@@ -37,69 +35,115 @@ export interface ButtonProps extends ButtonBaseProps {
   variant?: any // FIXME, ButtonVariant?
 }
 
-export class Button extends Component<ButtonProps> {
-  static defaultProps = {
-    size: ButtonSize.default,
-    variant: ButtonVariant.default,
-  }
-
-  getSize() {
-    const { size } = this.props
-
-    switch (size) {
-      case ButtonSize.large:
-        return { size: 3, px: 4, py: 3 }
-      case ButtonSize.small:
-        return { size: 1, px: 3, py: 1 }
-      default:
-        return { size: 2, px: 4, py: 3 }
-    }
-  }
-
-  getVariant() {
-    const { variant } = this.props
-
-    switch (variant) {
-      case ButtonVariant.outline:
-        return {
-          bg: "white100",
-          border: 1,
-          borderColor: "black10",
-        }
-      default:
-        return {
-          bg: "black100",
-          border: 1,
-          borderColor: "black100",
-          color: "white100",
-        }
-    }
-  }
-
-  render() {
-    const buttonProps = {
-      ...this.props,
-      ...this.getSize(),
-      ...this.getVariant(),
+export const Button = styled(
+  class extends Component<ButtonProps> {
+    static defaultProps = {
+      size: ButtonSize.default,
+      variant: ButtonVariant.default,
     }
 
-    return <ButtonBase {...buttonProps}>{this.props.children}</ButtonBase>
+    getSize() {
+      const { size } = this.props
+
+      switch (size) {
+        case ButtonSize.small:
+          return { size: 1, px: 3, py: 1 }
+        case ButtonSize.medium:
+          return { size: 2, px: 4, py: 3 }
+        case ButtonSize.large:
+          return { size: 3, px: 5, py: 3 }
+        default:
+      }
+    }
+
+    getVariant() {
+      const { variant } = this.props
+
+      switch (variant) {
+        case ButtonVariant.primaryBlack:
+          return css`
+            ${props => {
+              const { colors } = props.theme
+
+              return `
+                background-color: ${colors.black100};
+                border-color: ${colors.black100};
+                color: ${colors.white100};
+
+                &:hover {
+                  background-color: ${colors.purple100};
+                  border-color: ${colors.purple100};
+                  color: ${colors.white100};
+                }
+              `
+            }};
+          `
+        case ButtonVariant.primaryWhite:
+          return css`
+            ${props => {
+              const { colors } = props.theme
+
+              return `
+                background-color: ${colors.white100};
+                border-color: ${colors.white100};
+                color: ${colors.black100};
+
+                &:hover {
+                  background-color: ${colors.purple100};
+                  border-color: ${colors.purple100};
+                  color: ${colors.white100};
+                }
+              `
+            }};
+          `
+        case ButtonVariant.secondaryOutline:
+          return css`
+            ${props => {
+              const { colors } = props.theme
+
+              return `
+                background-color: ${colors.white100};
+                border-color: ${colors.black10};
+                color: ${colors.black100};
+
+                &:hover {
+                  background-color: ${colors.white100};
+                  border-color: ${colors.black100};
+                  color: ${colors.black100};
+                }
+              `
+            }};
+          `
+        default:
+      }
+    }
+
+    render() {
+      const buttonProps = {
+        ...this.props,
+        ...this.getSize(),
+        variantStyles: this.getVariant(),
+      }
+
+      return <ButtonBase {...buttonProps}>{this.props.children}</ButtonBase>
+    }
   }
-}
+)`
+  ${space};
+`
 
 export interface ButtonBaseProps
   extends BorderProps,
-    BorderColorProps,
     BorderRadiusProps,
-    ColorProps,
     SpaceProps,
-    TextAlignProps,
     TypographyProps,
-    WidthProps {}
+    WidthProps {
+  variantStyles?: any // FIXME: Type to styled.css
+}
 
 export class ButtonBase extends Component<ButtonBaseProps> {
   static defaultProps = {
-    border: 0,
+    border: 1,
     borderRadius: 3,
   }
 
@@ -117,17 +161,13 @@ export class ButtonBase extends Component<ButtonBaseProps> {
 
 const Container = styled.button.attrs<ButtonBaseProps>({})`
   ${border};
-  ${borderColor};
   ${borderRadius};
-  ${color};
   ${space};
   ${width};
-  ${textAlign};
 
   cursor: pointer;
   text-transform: uppercase;
+  transition: 0.25s ease;
 
-  &:focus {
-    outline: 0;
-  }
+  ${p => p.variantStyles};
 `

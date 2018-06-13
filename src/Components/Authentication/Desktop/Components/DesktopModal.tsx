@@ -24,7 +24,7 @@ export class DesktopModal extends Component<DesktopModalProps> {
 }
 
 const CloseButton = styled(Icon).attrs({
-  color: Colors.grayRegular,
+  color: Colors.graySemibold,
   fontSize: "16px",
 })`
   position: absolute;
@@ -35,5 +35,4 @@ const CloseButton = styled(Icon).attrs({
 
 const Content = styled.div`
   box-sizing: border-box;
-  margin: 0px 60px;
 `

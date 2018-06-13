@@ -1,15 +1,28 @@
 import React from "react"
 import styled from "styled-components"
 import { borders, themeGet } from "styled-system"
-import { Display } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 
 export interface TabsProps {
-  labels: any[]
+  labels: string[]
+  activeTabIndex?: number
 }
 
-export class Tabs extends React.Component<TabsProps> {
+export interface TabsState {
+  activeTab: number
+}
+
+export class Tabs extends React.Component<TabsProps, TabsState> {
   state = {
     activeTab: 0,
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      activeTab: props.activeTabIndex || 0,
+    }
   }
 
   setActiveTab = activeTab => {
@@ -17,13 +30,16 @@ export class Tabs extends React.Component<TabsProps> {
   }
 
   render() {
+    const { labels } = this.props
+    const { activeTab } = this.state
+
     return (
       <TabsContainer>
-        {this.props.labels.map((label, index) => {
-          return this.state.activeTab === index ? (
+        {labels.map((label, index) => {
+          return activeTab === index ? (
             <ActiveTab key={index}>{label}</ActiveTab>
           ) : (
-            <Tab key={index} onPress={() => this.setActiveTab(index)}>
+            <Tab key={index} onClick={() => this.setActiveTab(index)}>
               {label}
             </Tab>
           )
@@ -34,27 +50,25 @@ export class Tabs extends React.Component<TabsProps> {
 }
 
 const Tab = ({ children, ...props }) => (
-  <TabContainer>
-    <Display size="3t">{children}</Display>
+  <TabContainer {...props}>
+    <Sans size="3t">{children}</Sans>
   </TabContainer>
 )
 
-const ActiveTab = ({ children, ...props }) => (
+const ActiveTab = ({ children }) => (
   <ActiveTabContainer>
-    <Display size="3t">{children}</Display>
+    <Sans size="3t">{children}</Sans>
   </ActiveTabContainer>
 )
 
 const TabsContainer = styled.div`
-  height: 10px;
+  border-bottom: 1px solid ${themeGet("colors.black10")};
   display: flex;
-  flex-direction: row;
-  border-bottom-width: 1px;
-  border-bottom-color: ${themeGet("colors.black10")};
   margin-bottom: 5px;
 `
 
 const TabContainer = styled.div`
+  cursor: pointer;
   padding-bottom: 13px;
   margin-bottom: -1px;
   margin-right: 20px;
@@ -62,9 +76,9 @@ const TabContainer = styled.div`
 `
 
 const ActiveTabContainer = styled.div`
+  pointer-events: none;
   padding-bottom: 13px;
   margin-bottom: -1px;
   margin-right: 20px;
-  border-bottom-width: 1px;
-  border-bottom-color: ${themeGet("colors.black60")};
+  border-bottom: 1px solid ${themeGet("colors.black60")};
 `

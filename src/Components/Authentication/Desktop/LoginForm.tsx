@@ -3,36 +3,32 @@ import styled from "styled-components"
 import { Formik, FormikProps } from "formik"
 
 import {
-  ChangeMode,
+  Error,
+  SmallTextLink,
+  Footer,
   FormContainer as Form,
-  GrayFacebookButton,
-} from "../commonElements"
-
+} from "Components/Authentication/commonElements"
 import { LoginValidator } from "Components/Authentication/Validators"
 import Input from "Components/Input"
 import Text from "Components/Text"
 import Colors from "Assets/Colors"
-import { FormComponentType, InputValues, ModalType } from "../Types"
+import {
+  FormComponentType,
+  InputValues,
+  ModalType,
+} from "Components/Authentication/Types"
 import Checkbox from "Components/Checkbox"
-import { garamond } from "Assets/Fonts"
 import Button from "Components/Buttons/Inverted"
 
-const ForgotPasswordLink = styled(ChangeMode)`
+const ForgotPasswordLink = styled(SmallTextLink)`
   margin-left: auto;
+  color: ${Colors.graySemibold};
 `
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
-
-const LoginText = styled(Text).attrs({
-  color: Colors.grayDark,
-  align: "center",
-})`
-  margin-top: 0;
-  ${garamond("s14")};
 `
 
 const LoginButton = styled(Button).attrs({
@@ -63,7 +59,7 @@ export const LoginForm: FormComponentType = props => {
         const hasErrors = Object.keys(errors).length > 0 || !!status
 
         return (
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} height={320}>
             <Input
               block
               quick
@@ -95,7 +91,7 @@ export const LoginForm: FormComponentType = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                <Text color={Colors.grayDark}>Remember me</Text>
+                <Text color={Colors.graySemibold}>Remember me</Text>
               </Checkbox>
               <ForgotPasswordLink
                 onClick={() => props.handleTypeChange(ModalType.resetPassword)}
@@ -103,18 +99,15 @@ export const LoginForm: FormComponentType = props => {
                 Forgot Password?
               </ForgotPasswordLink>
             </Row>
+            {status && !status.success && <Error show>{status.error}</Error>}
             <LoginButton disabled={isSubmitting || hasErrors}>
               Log In
             </LoginButton>
-            <GrayFacebookButton>Sign In with Facebook</GrayFacebookButton>
-            <LoginText>
-              Don't have an account?{" "}
-              <ChangeMode
-                onClick={() => props.handleTypeChange(ModalType.signup)}
-              >
-                Sign Up
-              </ChangeMode>
-            </LoginText>
+            <Footer
+              handleTypeChange={() => props.handleTypeChange(ModalType.signup)}
+              mode="login"
+              inline
+            />
           </Form>
         )
       }}

@@ -1,53 +1,53 @@
+// @ts-ignore
 import React from "react"
 import styled from "styled-components"
-
-import FacebookButton from "../Buttons/Facebook"
 import Colors from "Assets/Colors"
-import { garamond } from "Assets/Fonts"
-import Checkbox from "../Checkbox"
+import { growAndFadeIn } from "Assets/Animations"
+import { garamond, unica } from "Assets/Fonts"
+export { Footer } from "./Footer"
+export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
+
+interface FormProps {
+  height?: number
+}
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0 20px 30px;
-  height: 425px;
+  height: ${(p: FormProps) => (p.height ? p.height + "px" : "auto")};
 `
 
-const buttonWidth = "100%"
-
-export const GrayFacebookButton = FacebookButton.extend.attrs({
-  color: Colors.grayDark,
-})`
-  width: ${buttonWidth};
-  background: #fff;
-  color: ${Colors.grayDark};
-  margin-top: 0;
-  font-size: 12px;
-
-  div {
-    margin: 0px;
-  }
-
-  span {
-    margin-left: 5px;
-  }
-
-  &:hover:not(:disabled) {
-    background: #fff;
-  }
+export const SmallTextLink = styled.a`
+  color: ${Colors.black30};
+  text-decoration: underline;
+  cursor: pointer;
+  ${unica("s12")};
 `
 
-export const TOSCheckbox = ({ error, name, onChange, value, ...props }) => (
-  <StyledCheckbox {...{ checked: value, error, onChange, name }}>
-    {props.children}
-  </StyledCheckbox>
-)
-
-const StyledCheckbox = styled(Checkbox)`
-  margin-bottom: 5px;
+export const SmallText = styled.span`
+  margin: 0;
+  color: ${Colors.black30};
+  ${unica("s12")};
 `
 
-export const ChangeMode = styled.a`
-  color: ${Colors.grayDark};
-  ${garamond("s14")};
+export const MobileHeader = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+  margin: 20px 0 0;
+  ${garamond("s23")};
+  font-weight: bold;
+`
+
+export const Error = styled.div.attrs<{ show: boolean }>({})`
+  ${unica("s12")};
+  margin-top: ${p => (p.show ? "auto" : "0")};
+  margin-bottom: 10px;
+  color: ${Colors.redMedium};
+  visibility: ${p => (p.show ? "visible" : "hidden")};
+  transition: visibility 0.2s linear;
+  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
+  height: ${p => (p.show ? "16px" : "0")};
 `

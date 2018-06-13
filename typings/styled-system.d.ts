@@ -47,7 +47,41 @@ declare module "styled-system" {
     width?: ResponsiveWidthValue
   }
 
+  export interface MinWidthProps {
+    minWidth?: ResponsiveWidthValue
+  }
+
+  export interface MaxWidthProps {
+    maxWidth?: ResponsiveWidthValue
+  }
+
+  export type HeightValue = number | string
+  export type ResponsiveHeightValue = ResponsiveValue<HeightValue>
+
+  export interface HeightProps {
+    height?: ResponsiveHeightValue
+  }
+
+  export interface MinHeightProps {
+    minHeight?: ResponsiveHeightValue
+  }
+
+  export interface MaxHeightProps {
+    maxHeight?: ResponsiveHeightValue
+  }
+
   export function width(...args: any[]): any
+  export function minWidth(...args: any[]): any
+  export function maxWidth(...args: any[]): any
+  export function height(...args: any[]): any
+  export function minHeight(...args: any[]): any
+  export function maxHeight(...args: any[]): any
+
+  export interface SizeProps {
+    size?: ResponsiveWidthValue | ResponsiveHeightValue
+  }
+
+  export function size(...args: any[]): any
 
   export type FontSizeValue = number | string
   export type ResponsiveFontSizeValue = ResponsiveValue<FontSizeValue>
@@ -131,6 +165,32 @@ declare module "styled-system" {
 
   export interface AlignItemsProps {
     align?: ResponsiveAlignItemsValue
+    alignItems?: ResponsiveAlignItemsValue
+  }
+
+  export type AlignContentValue =
+    | "center"
+    | "start"
+    | "end"
+    | "flex-start"
+    | "flex-end"
+    | "normal"
+    | "baseline"
+    | "first baseline"
+    | "last baseline"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch"
+    | "safe center"
+    | "unsafe center"
+    | "inherit"
+    | "initial"
+    | "unset"
+  export type ResponsiveAlignContentValue = ResponsiveValue<AlignContentValue>
+
+  export interface AlignContentProps {
+    alignContent?: ResponsiveAlignItemsValue
   }
 
   export function alignItems(...args: any[]): any
@@ -315,7 +375,7 @@ declare module "styled-system" {
 
   export interface LowLevelStyleFunctionArguments {
     prop: string
-    cssProperty: string
+    cssProperty?: string
     key?: string
     numberToPx?: boolean
   }
@@ -343,5 +403,47 @@ declare module "styled-system" {
     color?: ColorValue
     bg?: ColorValue
     backgroundColor?: ColorValue
+  }
+
+  export function display(...args: any[]): any
+
+  export type DisplayValue =
+    | "inline"
+    | "block"
+    | "contents"
+    | "flex"
+    | "grid"
+    | "inline-block"
+
+  export interface DisplayProps {
+    display?: DisplayValue
+  }
+
+  export type PositionValue = string | number
+
+  export interface PositionProps {
+    top?: PositionValue
+    right?: PositionValue
+    bottom?: PositionValue
+    left?: PositionValue
+  }
+
+  export function position(...args: any[]): any
+  export function top(...args: any[]): any
+  export function right(...args: any[]): any
+  export function bottom(...args: any[]): any
+  export function left(...args: any[]): any
+
+  export type WhiteSpaceValue =
+    | "inherit"
+    | "initial"
+    | "normal"
+    | "nowrap"
+    | "pre-line"
+    | "pre-wrap"
+    | "pre"
+
+  export interface WhiteSpaceProps {
+    whiteSpace?: WhiteSpaceValue
   }
 }

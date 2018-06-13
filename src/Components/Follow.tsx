@@ -26,6 +26,32 @@ interface Props
   relay?: any
 }
 
+export const StyledFollowButton = styled.div`
+  display: flex;
+  cursor: pointer;
+  color: black;
+  font-size: 16px;
+  align-items: center;
+  margin-left: 5px;
+  &:after {
+    content: "Follow";
+  }
+  &:hover {
+    color: ${colors.purpleRegular};
+  }
+  &[data-followed="true"] {
+    &:after {
+      content: "Following";
+    }
+    &:hover {
+      color: ${colors.redBold};
+      &:after {
+        content: "Unfollow";
+      }
+    }
+  }
+`
+
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
     const { artist, currentUser, relay } = this.props
@@ -68,7 +94,7 @@ export class FollowButton extends React.Component<Props, null> {
       : "follow-circle"
 
     return (
-      <div
+      <StyledFollowButton
         className={this.props.className}
         style={style}
         onClick={() => this.handleFollow()}
@@ -79,7 +105,7 @@ export class FollowButton extends React.Component<Props, null> {
           height={SIZE}
           style={{ verticalAlign: "middle", color: "inherit", margin: 0 }}
         />
-      </div>
+      </StyledFollowButton>
     )
   }
 }
@@ -92,34 +118,8 @@ interface RelayProps {
   }
 }
 
-export const StyledFollowButton = styled(FollowButton)`
-  display: flex;
-  cursor: pointer;
-  color: black;
-  font-size: 16px;
-  align-items: center;
-  margin-left: 5px;
-  &:after {
-    content: "Follow";
-  }
-  &:hover {
-    color: ${colors.purpleRegular};
-  }
-  &[data-followed="true"] {
-    &:after {
-      content: "Following";
-    }
-    &:hover {
-      color: ${colors.redBold};
-      &:after {
-        content: "Unfollow";
-      }
-    }
-  }
-`
-
 export default createFragmentContainer(
-  Artsy.ContextConsumer(StyledFollowButton),
+  Artsy.ContextConsumer(FollowButton),
   graphql`
     fragment Follow_artist on Artist {
       __id
