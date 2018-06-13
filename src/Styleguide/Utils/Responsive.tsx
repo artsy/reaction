@@ -106,7 +106,7 @@ export class ResponsiveProvider extends React.Component<
     })
   }
 
-  // Lifecyle methods
+  // Lifecycle methods
 
   shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.children !== this.props.children) return true
