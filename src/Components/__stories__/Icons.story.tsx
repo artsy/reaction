@@ -18,7 +18,7 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
       <Row>
         {iconNames.map(iconName => (
           <Col style={{ padding: 10 }}>
-            <Icon name={iconName as IconName} color="black" />
+            <Icon name={iconName as IconName} color="black" title={iconName} />
           </Col>
         ))}
       </Row>
