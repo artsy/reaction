@@ -6,6 +6,7 @@ import { metaphysics } from "Utils/metaphysics"
 import { Step, Wizard } from "Components/Wizard"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import {
+  Error,
   Footer,
   MobileHeader,
   TermsOfServiceCheckbox,
@@ -130,8 +131,12 @@ export const MobileSignUpForm: FormComponentType = props => {
   return (
     <Wizard steps={steps}>
       {context => {
-        const { form, wizard } = context
+        const {
+          form: { handleSubmit, status },
+          wizard,
+        } = context
         const { currentStep } = wizard
+
         return (
           <Container>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
@@ -145,8 +150,9 @@ export const MobileSignUpForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
+              {status && !status.success && <Error show>{status.error}</Error>}
               <Button
-                onClick={form.handleSubmit as any}
+                onClick={handleSubmit as any}
                 block
                 disabled={!wizard.shouldAllowNext}
               >
