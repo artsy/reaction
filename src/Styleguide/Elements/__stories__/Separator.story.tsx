@@ -1,17 +1,17 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../Utils/Section"
-import { RulerSeparator } from "../RulerSeparator"
+import { Separator } from "../Separator"
 
-storiesOf("Styleguide/Elements", module).add("RulerSeparator", () => {
+storiesOf("Styleguide/Elements", module).add("Separator", () => {
   return (
     <React.Fragment>
       <Section title="One version for now with 20px space at the bottom">
-        <RulerSeparator />
+        <Separator />
         Some text
-        <RulerSeparator />
+        <Separator />
         Some other text to separate
-        <RulerSeparator />
+        <Separator />
       </Section>
     </React.Fragment>
   )

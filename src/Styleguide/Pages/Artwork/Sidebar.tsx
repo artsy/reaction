@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { RulerSeparator } from "../../Elements/RulerSeparator"
+import { Separator } from "../../Elements/Separator"
 import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { Commercial } from "./Sidebar/Commercial"
@@ -48,7 +48,7 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
       <SidebarContainer>
         <Artists artists={artwork.artists} />
         <ArtworkMetadata artwork={artwork} />
-        <RulerSeparator />
+        <Separator />
         <Commercial artwork={artwork} />
       </SidebarContainer>
     )

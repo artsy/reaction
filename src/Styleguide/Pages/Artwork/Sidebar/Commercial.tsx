@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { space, SpaceProps } from "styled-system"
 import { SizeInfo } from "./SizeInfo"
-import { RulerSeparator } from "../../../Elements/RulerSeparator"
+import { Separator } from "../../../Elements/Separator"
 import { Button } from "../../../Elements/Button"
 
 export interface CommercialProps {
@@ -42,7 +42,7 @@ export class Commercial extends React.Component<CommercialProps> {
             {this.renderSaleMessage(edition)}
             <SizeInfo artwork={edition} />
           </PricingInfoContainer>
-          {index !== editions.length - 1 && <RulerSeparator />}
+          {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
     })
