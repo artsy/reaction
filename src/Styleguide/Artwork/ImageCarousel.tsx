@@ -17,11 +17,18 @@ const Container = styled(Flex)`
   /* background-color: #0fdb82; */
 `
 
-const ImageAreaContainer = styled(Flex)`
+const BaseImageArea = styled(Flex)`
+  line-height: 0; /* Don’t introduce visual margins */
   width: 100%;
+`
+
+const SmallImageArea = styled(BaseImageArea)`
+  max-height: calc(100vh - 120px);
+`
+
+const LargeImageArea = styled(BaseImageArea)`
   min-height: 450px;
   height: calc(100vh - ${ImageContainerViewportMargin}px);
-  line-height: 0; /* Don’t introduce visual margins */
 `
 
 const ImageContainer = styled(Flex)`
@@ -29,8 +36,16 @@ const ImageContainer = styled(Flex)`
   width: 100%;
 `
 
-const Image = styled.img`
+const BaseImage = styled.img`
   cursor: zoom-in;
+`
+
+const SmallImage = styled(BaseImage)`
+  max-height: calc(100vh - 120px);
+  max-width: 100%;
+`
+
+const LargeImage = styled(BaseImage)`
   max-height: 100%;
   max-width: 100%;
 `
@@ -42,7 +57,7 @@ const Button = styled.a`
   }
 `
 
-const NavigationButtonsContainer = styled(Flex)`
+const NavigationButton = styled(Flex)`
   width: 40px;
 
   /* background-color: blue; */
@@ -70,9 +85,9 @@ const ControlsContainerItem = styled(Flex)`
   margin-right: 20px;
 `
 
-const ActionButtonsContainer = styled(ControlsContainerItem)``
+const ActionButtons = styled(ControlsContainerItem)``
 
-const PageIndicatorsContainer = styled(ControlsContainerItem)`
+const PageIndicators = styled(ControlsContainerItem)`
   ${PageIndicator} + ${PageIndicator} {
     margin-left: 5px;
   }
@@ -104,17 +119,24 @@ export class ImageCarousel extends React.Component<
 
   renderImageContainer() {
     return (
-      <ImageContainer
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Image
-          src={this.props.src[this.state.currentImage]}
-          // tslint:disable-next-line:no-console
-          onClick={() => console.log("Zoom")}
-        />
-      </ImageContainer>
+      <Responsive>
+        {({ xs }) => {
+          const Image = xs ? SmallImage : LargeImage
+          return (
+            <ImageContainer
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Image
+                src={this.props.src[this.state.currentImage]}
+                // tslint:disable-next-line:no-console
+                onClick={() => console.log("Zoom")}
+              />
+            </ImageContainer>
+          )
+        }}
+      </Responsive>
     )
   }
 
@@ -129,10 +151,7 @@ export class ImageCarousel extends React.Component<
             return null
           } else {
             return (
-              <NavigationButtonsContainer
-                flexDirection="column"
-                justifyContent="center"
-              >
+              <NavigationButton flexDirection="column" justifyContent="center">
                 <Button
                   href="#"
                   onClick={e => {
@@ -142,7 +161,7 @@ export class ImageCarousel extends React.Component<
                 >
                   <Icon name={iconName} color="black" />
                 </Button>
-              </NavigationButtonsContainer>
+              </NavigationButton>
             )
           }
         }}
@@ -156,13 +175,20 @@ export class ImageCarousel extends React.Component<
 
   renderImageArea() {
     return (
-      <ImageAreaContainer flexDirection="row">
-        {this.hasMultipleImages() &&
-          this.renderNavigationButton("chevron-left", -1)}
-        {this.renderImageContainer()}
-        {this.hasMultipleImages() &&
-          this.renderNavigationButton("chevron-right", +1)}
-      </ImageAreaContainer>
+      <Responsive>
+        {({ xs }) => {
+          const ImageArea = xs ? SmallImageArea : LargeImageArea
+          return (
+            <ImageArea flexDirection="row">
+              {this.hasMultipleImages() &&
+                this.renderNavigationButton("chevron-left", -1)}
+              {this.renderImageContainer()}
+              {this.hasMultipleImages() &&
+                this.renderNavigationButton("chevron-right", +1)}
+            </ImageArea>
+          )
+        }}
+      </Responsive>
     )
   }
 
@@ -187,14 +213,14 @@ export class ImageCarousel extends React.Component<
                 alignItems="center"
                 justifyContent="center"
               >
-                <ActionButtonsContainer>
+                <ActionButtons>
                   <Button href="#TODO">
                     <Icon name="heart" color="black" />
                   </Button>
                   <Button href="#TODO">
                     <Icon name="share" color="black" />
                   </Button>
-                </ActionButtonsContainer>
+                </ActionButtons>
               </Flex>
             </ControlsContainer>
           )
@@ -208,7 +234,7 @@ export class ImageCarousel extends React.Component<
       return null
     } else {
       return (
-        <PageIndicatorsContainer
+        <PageIndicators
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -220,7 +246,7 @@ export class ImageCarousel extends React.Component<
               onClick={() => this.setState({ currentImage: i })}
             />
           ))}
-        </PageIndicatorsContainer>
+        </PageIndicators>
       )
     }
   }
