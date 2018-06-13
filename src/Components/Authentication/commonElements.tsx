@@ -5,8 +5,6 @@ import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import Button from "Components/Buttons/Inverted"
-import Text from "Components/Text"
-import Checkbox from "Components/Checkbox"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
 
@@ -91,19 +89,6 @@ export const ForgotPassword = props => (
   <ForgotPasswordLink onClick={props.handleForgotPassword}>
     Forgot Password?
   </ForgotPasswordLink>
-)
-
-export const RememberMe = props => (
-  <Checkbox
-    type="checkbox"
-    name="remember-me"
-    onChange={props.handleChange}
-    onBlur={props.handleBlur}
-  >
-    <Text style={{ margin: "0px" }} color={Colors.graySemibold}>
-      Remember me
-    </Text>
-  </Checkbox>
 )
 
 export const MobileSubmitButton = styled(Button).attrs({

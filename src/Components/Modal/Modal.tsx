@@ -61,17 +61,21 @@ export class Modal extends React.Component<ModalProps, any> {
     return (
       <div>
         <Spring {...transitions as any}>
-          {(styles: any) => (
-            <animated.div>
-              <Overlay
-                style={{ opacity: styles.opacity }}
-                onClick={this.close}
-                show={show}
-              />
-              <ModalContainer style={{ ...styles }}>{children}</ModalContainer>
-              <div />
-            </animated.div>
-          )}
+          {(styles: any) =>
+            show && (
+              <animated.div>
+                <Overlay
+                  style={{ opacity: styles.opacity }}
+                  onClick={this.close}
+                  show={show}
+                />
+                <ModalContainer style={{ ...styles }}>
+                  {children}
+                </ModalContainer>
+                <div />
+              </animated.div>
+            )
+          }
         </Spring>
       </div>
     )

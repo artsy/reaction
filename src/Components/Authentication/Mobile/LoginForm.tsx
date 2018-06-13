@@ -15,7 +15,6 @@ import {
   MobileHeader,
   MobileInnerWrapper,
   MobileSubmitButton,
-  RememberMe,
 } from "../commonElements"
 import { checkEmail } from "Components/Authentication/helpers"
 
@@ -82,7 +81,6 @@ export const MobileLoginForm: FormComponentType = props => {
             quick
           />
           <Row>
-            <RememberMe handleChange={handleChange} handleBlur={handleBlur} />
             <ForgotPassword
               handleForgotPasswordChange={() =>
                 (window.location.href = "/forgot")

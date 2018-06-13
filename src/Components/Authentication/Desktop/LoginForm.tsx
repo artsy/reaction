@@ -7,7 +7,6 @@ import {
   ForgotPassword,
   Footer,
   FormContainer as Form,
-  RememberMe,
 } from "Components/Authentication/commonElements"
 import { LoginValidator } from "Components/Authentication/Validators"
 import Input from "Components/Input"
@@ -78,7 +77,6 @@ export const LoginForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             <Row>
-              <RememberMe handleChange={handleChange} handleBlur={handleBlur} />
               <ForgotPassword
                 handleForgotPasswordChange={() =>
                   props.handleTypeChange(ModalType.resetPassword)
