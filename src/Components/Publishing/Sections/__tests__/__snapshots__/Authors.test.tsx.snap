@@ -137,8 +137,6 @@ exports[`renders properly 1`] = `
         >
           <div
             className="c6 c7"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>
@@ -175,8 +173,6 @@ exports[`renders properly 1`] = `
         >
           <div
             className="c6 c7"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>
@@ -209,8 +205,6 @@ exports[`renders properly 1`] = `
         >
           <div
             className="c6 c7"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>

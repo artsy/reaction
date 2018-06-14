@@ -4,6 +4,8 @@ import {
   AlignContentProps,
   alignItems,
   AlignItemsProps,
+  flexBasis,
+  FlexBasisProps,
   flexDirection,
   FlexDirectionProps,
   justifyContent,
@@ -32,6 +34,7 @@ const flexGrow = style({
 export interface FlexProps
   extends AlignItemsProps,
     AlignContentProps,
+    FlexBasisProps,
     FlexDirectionProps,
     JustifyContentProps,
     SpaceProps,
@@ -46,6 +49,7 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   display: flex;
   ${alignContent};
   ${alignItems};
+  ${flexBasis};
   ${flexDirection};
   ${justifyContent};
   ${space};

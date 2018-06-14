@@ -101,7 +101,7 @@ export class SelectedExhibitionsContainer extends React.Component<
   render() {
     if (this.props.exhibitions.length < MIN_EXHIBITIONS) return null
     return (
-      <BorderBox>
+      <BorderBox width="100%">
         <Flex flexDirection="column">
           <ExhibitionsHeadline
             expanded={this.state.expanded}

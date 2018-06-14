@@ -7,6 +7,7 @@ import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
 import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
+import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
 
 export class Artwork extends Component {
   state = {
@@ -20,6 +21,15 @@ export class Artwork extends Component {
   }
 
   render() {
+    const slideshowImages = [
+      "https://picsum.photos/800/600/?random",
+      "https://picsum.photos/500/400/?random",
+      "https://picsum.photos/300/700/?random",
+      "https://picsum.photos/800/600/?random",
+      "https://picsum.photos/700/600/?random",
+      "https://picsum.photos/500/600/?random",
+    ]
+
     return (
       <Grid fluid>
         <Row>
@@ -35,12 +45,7 @@ export class Artwork extends Component {
         <Row>
           <Col sm={8}>
             <ArtworkSlider>
-              <ArtworkImage>TODO: Artwork Image</ArtworkImage>
-              <SlideIndicatorDots>. . .</SlideIndicatorDots>
-              <UtilityButtons>
-                <FavoriteButton>TODO: Heart Icon</FavoriteButton>
-                <ShareButton>TODO: Share Icon</ShareButton>
-              </UtilityButtons>
+              <ImageCarousel src={slideshowImages} />
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
@@ -217,16 +222,8 @@ export class Artwork extends Component {
 }
 
 const ArtworkSlider = styled.div``
-const ArtworkImage = styled.div``
-const SlideIndicatorDots = styled.div``
-const UtilityButtons = styled.div``
-const FavoriteButton = styled.div``
-const ShareButton = styled.div``
-const ArtistName = styled.div``
 const FollowButton = styled.div``
-const Price = styled.div``
 const Gallery = styled.div``
-const ContactButton = styled.div``
 const PartnerInfo = styled.div``
 const Name = styled.div``
 const PinIcon = styled.div``

@@ -23,8 +23,8 @@ export class FilterState extends Container<State> {
     this.setState({ partner_id: value, page: 1 })
   }
 
-  incrementPage() {
-    this.setState({ page: this.state.page + 1 })
+  setPage(page) {
+    this.setState({ page })
   }
 
   setFilter(filter, value) {

@@ -7043,6 +7043,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "pageCursors",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "PageCursors",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -7146,6 +7158,122 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "PageCursors",
+          "description": null,
+          "fields": [
+            {
+              "name": "first",
+              "description":
+                "Optional, may be included in `around` (if current page is near the beginning).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "PageCursor",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last",
+              "description":
+                "Optional, may be included in `around` (if current page is near the end).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "PageCursor",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "around",
+              "description": "Always includes current page",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "PageCursor",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "PageCursor",
+          "description": null,
+          "fields": [
+            {
+              "name": "cursor",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "page",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "isCurrent",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
                   "ofType": null
                 }
               },
@@ -15962,6 +16090,18 @@
               "deprecationReason": null
             },
             {
+              "name": "partner",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Partner",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "profile",
               "description": null,
               "args": [],
@@ -18704,6 +18844,18 @@
               "deprecationReason": null
             },
             {
+              "name": "partner",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Partner",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "profile",
               "description": null,
               "args": [],
@@ -20610,6 +20762,18 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "partner",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Partner",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -25718,6 +25882,18 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "partner",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Partner",
                 "ofType": null
               },
               "isDeprecated": false,

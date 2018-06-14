@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../../Utils/Section"
-import { CurrentEvent, LargeCurrentEvent } from "../Components/CurrentEvent"
+import { CurrentEvent, LargeCurrentEvent } from "../CurrentEvent"
 
 storiesOf("Styleguide/Artist", module).add("Current Event", () => {
   return (
@@ -9,6 +9,7 @@ storiesOf("Styleguide/Artist", module).add("Current Event", () => {
       <Section title="Responsive Current Event">
         <CurrentEvent
           src="https://picsum.photos/300/200/?random"
+          label="Currently on view"
           title="Brancusi: Pioneer of American Minimalism"
           gallery="Paul Kasmin Gallery"
           location="Miami"
@@ -18,6 +19,7 @@ storiesOf("Styleguide/Artist", module).add("Current Event", () => {
       <Section title="Large Current Event">
         <LargeCurrentEvent
           src="https://picsum.photos/300/200/?random"
+          label="Currently on view"
           title="Brancusi: Pioneer of American Minimalism"
           gallery="Paul Kasmin Gallery"
           location="Miami"
