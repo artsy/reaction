@@ -9,6 +9,7 @@ import { Artists } from "./Sidebar/Artists"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
+import { ImageCarousel } from "../../Artwork/ImageCarousel"
 
 export class Artwork extends Component {
   state = {
@@ -22,6 +23,14 @@ export class Artwork extends Component {
   }
 
   render() {
+    const slideshowImages = [
+      "https://picsum.photos/400/200/?random",
+      "https://picsum.photos/200/200/?random",
+      "https://picsum.photos/500/200/?random",
+      "https//picsum.photos/200/200/?random",
+      "https://picsum.photos/300/200j/?random",
+    ]
+
     return (
       <Grid fluid>
         <Row>
@@ -37,6 +46,7 @@ export class Artwork extends Component {
         <Row>
           <Col sm={8}>
             <ArtworkSlider>
+              <ImageCarousel src={slideshowImages} />
               <ArtworkImage>TODO: Artwork Image</ArtworkImage>
               <SlideIndicatorDots>. . .</SlideIndicatorDots>
               <UtilityButtons>
