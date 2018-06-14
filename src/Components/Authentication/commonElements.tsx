@@ -4,6 +4,9 @@ import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
+import Button from "Components/Buttons/Inverted"
+import Text from "Components/Text"
+import Checkbox from "Components/Checkbox"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
 
@@ -50,4 +53,62 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
   height: ${p => (p.show ? "16px" : "0")};
+`
+
+export const MobileInnerWrapper = styled.div`
+  position: relative;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  height: 285px;
+`
+
+export const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: stretch;
+  width: 100%;
+  min-width: 260px;
+`
+
+export const BackButton = styled.div`
+  display: flex;
+  justify-self: start;
+  align-self: center;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  cursor: pointer;
+`
+
+const ForgotPasswordLink = styled(SmallTextLink)`
+  margin-left: auto;
+  color: ${Colors.graySemibold};
+`
+
+export const ForgotPassword = props => (
+  <ForgotPasswordLink onClick={props.handleForgotPassword}>
+    Forgot Password?
+  </ForgotPasswordLink>
+)
+
+export const RememberMe = props => (
+  <Checkbox
+    type="checkbox"
+    name="remember-me"
+    onChange={props.handleChange}
+    onBlur={props.handleBlur}
+  >
+    <Text style={{ margin: "0px" }} color={Colors.graySemibold}>
+      Remember me
+    </Text>
+  </Checkbox>
+)
+
+export const MobileSubmitButton = styled(Button).attrs({
+  type: "submit",
+  block: true,
+})`
+  margin: auto 0 10px 0;
 `

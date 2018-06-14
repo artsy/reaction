@@ -891,8 +891,6 @@ exports[`renders a series properly 1`] = `
         >
           <div
             className="c4 c5"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>
@@ -2058,8 +2056,6 @@ exports[`renders a sponsored series properly 1`] = `
         >
           <div
             className="c4 c5"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>
