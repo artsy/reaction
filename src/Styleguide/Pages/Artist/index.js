@@ -1,137 +1,206 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
-import { Grid, Col, Row, media } from "../../Elements/Grid"
+import { space, width } from "styled-system"
 import { Articles } from "./Articles"
 import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
-import { Overview } from "./Overview"
 import { Shows } from "./Shows"
 import { RelatedArtists } from "./RelatedArtists"
 
-import { Serif } from "@artsy/palette"
-import { Slider } from "../../Components/Slider"
+// import { Overview } from "./Overview"
+// import { Slider } from "../../Components/Slider"
+
+import { Sans, Serif } from "@artsy/palette"
+import { Grid, Col, Row, media } from "../../Elements/Grid"
 import { Button } from "../../Elements/Button"
+import { Flex } from "../../Elements/Flex"
+import { Tabs } from "../../Components/Tabs"
+import { SelectedExhibitions } from "../../Components/SelectedExhibitions"
+import { ReadMore } from "../../Components/ReadMore"
+import { Toggle } from "../../Components/Toggle"
+import { Checkbox } from "../../Elements/Checkbox"
+import { Radio } from "../../Elements/Radio"
+import { ArtworkGridExample } from "../../../Components/__stories__/ArtworkGrid.story"
+import { SmallSelect } from "../../Elements/Select"
+import { CurrentEvent } from "./Components/CurrentEvent"
 
-export class Artist extends Component {
-  state = {
-    tab: "Overview",
-  }
-
-  handleTab(tab) {
-    this.setState({
-      tab,
-    })
-  }
-
+export class Artist extends React.Component {
   render() {
     return (
       <Grid fluid>
-        <Row mb={7}>
-          <Col>
-            <Slider size="large" />
-          </Col>
+        <Row>
+          <Col />
         </Row>
         <Row>
-          <Col sm={10}>
+          <Col sm={10} mt={6}>
             <ArtistMetadata>
               <Serif size="10">Donald Judd</Serif>
-              <Details>
-                <DetailItem>Brazilian, 1886-1973</DetailItem>
-                <DetailItem>4,321 followers</DetailItem>
-              </Details>
+              <Flex>
+                <Serif size="3">Brazilian, 1886-1973</Serif>
+                <Serif size="3">4,321 followers</Serif>
+              </Flex>
             </ArtistMetadata>
           </Col>
-          <Col sm={2}>
-            <FollowButton bg="black100" color="white">
-              Follow
-            </FollowButton>
+          <Col sm={2} mt={7}>
+            <FollowButton variant="primaryBlack">Follow</FollowButton>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Tabber>
-              <TabNav>
-                <Tab onClick={() => this.handleTab("Overview")}>Overview</Tab>
-                <Tab onClick={() => this.handleTab("CV")}>CV</Tab>
-                <Tab onClick={() => this.handleTab("Articles")}>Articles</Tab>
-                <Tab onClick={() => this.handleTab("Shows")}>Shows</Tab>
-                <Tab onClick={() => this.handleTab("Auction results")}>
-                  Auction Results
-                </Tab>
-                <Tab onClick={() => this.handleTab("Related artists")}>
-                  Related Articles
-                </Tab>
-              </TabNav>
-              <TabContent>
-                {(() => {
-                  switch (this.state.tab) {
-                    case "Overview":
-                      return <Overview />
-                    case "CV":
-                      return <CV />
-                    case "Articles":
-                      return <Articles />
-                    case "Shows":
-                      return <Shows />
-                    case "Auction results":
-                      return <AuctionResults />
-                    case "Related artists":
-                      return <RelatedArtists />
-                    default:
-                      return <div />
-                  }
-                })()}
-              </TabContent>
-            </Tabber>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <RecentlyViewed>
-              <CategoryLarge>Recently viewed</CategoryLarge>
-              <Slider size="small" />
-            </RecentlyViewed>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <hr />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Footer>
-              <Row>
-                <Col sm={3}>
-                  <Category>Buy</Category>
-                  <a>Buying from Galleries FAQ</a>
-                  <a>Buying from Auctions FAQ</a>
-                  <a>Consign with Artsy</a>
-                  <a>Artsy for Professional Buyers</a>
-                </Col>
-                <Col sm={3}>
-                  <Category>Learn</Category>
-                  <a>Education</a>
-                  <a>The Art Genome Project</a>
-                </Col>
-                <Col sm={3}>
-                  <Category>About us</Category>
-                  <a>About</a>
-                  <a>Blog</a>
-                  <a>Jobs</a>
-                  <a>Open Source</a>
-                  <a>Press</a>
-                  <a>Contact</a>
-                  <a>Send us feedback</a>
-                </Col>
-                <Col sm={3}>
-                  <Category>Partner with us</Category>
-                  <a>Artsy for Galleries</a>
-                  <a>Artwsy for Museums</a>
-                  <a>Artsy for Auctions</a>
-                </Col>
-              </Row>
-            </Footer>
+          <Col mt={5}>
+            <Tabs
+              labels={[
+                "Overview",
+                "CV",
+                "Articles",
+                "Shows",
+                "Auction Results",
+              ]}
+            >
+              {({ activeTab }) => {
+                switch (activeTab.label) {
+                  case "Overview":
+                    return (
+                      <div>
+                        <div>
+                          <Flex mt={5}>
+                            <Flex flexDirection="column" pr={4} width="70%">
+                              <SelectedExhibitions
+                                expanded
+                                exhibitions={[
+                                  {
+                                    year: "2018",
+                                    show: "Adman: Warhol Before Pop",
+                                    gallery: "Andy Warhol Museum",
+                                  },
+                                  {
+                                    year: "2017",
+                                    // prettier-ignore
+                                    show: "Brancusi: Pioneer of American Minimalism",
+                                    gallery: "Paul Kasmin Gallery",
+                                  },
+                                  {
+                                    year: "2016",
+                                    show: "Sculpture on the Move 1946–2016",
+                                    gallery: "Kunstmuseum Basel",
+                                  },
+                                ]}
+                              />
+                              <ArtistBio size="3" my={3}>
+                                {/* FIXME: Add truncated character count feature */}
+                                <ReadMore maxLi4eCount={5}>
+                                  Donald Judd, widely regarded as one of the
+                                  most significant American artists of the
+                                  post-war period, is perhaps best-known for the
+                                  large-scale outdoor installations and long,
+                                  spacious interiors he designed in Marfa,
+                                  Texas. His oeuvre has come to define what has
+                                  been referred to as Minimalist art—a label the
+                                  artist strongly objected to. His sculptures
+                                  and installations, constructed out of
+                                  industrial materials such as Plexiglas,
+                                  concrete, and steel and arranged in precise
+                                  geometric shapes, were intended to emphasize
+                                  the purity of the objects themselves rather
+                                  than any symbolic meaning they might have—“the
+                                  simple expression of complex thought,” said
+                                  Judd. His particular interest in architecture
+                                  led him to design both the sculptures and the
+                                  spaces in which they would be contained,
+                                  influencing a generation of artists and
+                                  designers from Anish Kapoor to David
+                                  Batchelor.
+                                </ReadMore>
+                              </ArtistBio>
+                              <GeneFamily my={3}>
+                                <Sans size="2" weight="medium">
+                                  Gene family name
+                                </Sans>
+                                {[
+                                  "Silhouettes",
+                                  "Intersectionality",
+                                  "Trauma and Struggle",
+                                  "Identity Politics",
+                                  "Racial and Ethnic Identity",
+                                  "Allegory",
+                                  "Paper Cut-outs",
+                                  "Sex",
+                                ].map((gene, index, list) => {
+                                  const geneDivider =
+                                    index < list.length - 1 ? "," : ""
+
+                                  return (
+                                    <GeneFamilyItem
+                                      href="#"
+                                      className="noUnderline"
+                                      mr={2}
+                                    >
+                                      {gene}
+                                      {geneDivider}
+                                    </GeneFamilyItem>
+                                  )
+                                })}
+                              </GeneFamily>
+
+                              <Sans size="2" color="black60">
+                                <a href="#">Consign</a> a work by this artist.
+                              </Sans>
+                            </Flex>
+                            <Flex width="30%">
+                              <CurrentEvent
+                                src="https://picsum.photos/300/200/?random"
+                                label="Currently on view"
+                                title="Brancusi: Pioneer of American Minimalism"
+                                gallery="Paul Kasmin Gallery"
+                                location="Miami"
+                                date="May 3 – 21, 2018"
+                              />
+                            </Flex>
+                          </Flex>
+                        </div>
+                        <div>
+                          <ArtworkBrowser mt={6}>
+                            <Sidebar width="30%" mr={4}>
+                              <Toggle label="Purchase type" expanded disabled>
+                                <Flex justifyContent="space-between">
+                                  <Checkbox>For sale</Checkbox>
+                                </Flex>
+                              </Toggle>
+                              <Toggle label="Medium" expanded>
+                                <Radio>Painting</Radio>
+                                <Radio>Sculpture</Radio>
+                              </Toggle>
+                              <Toggle label="Gallery" />
+                              <Toggle label="Institution" />
+                              <Toggle label="Time period" />
+                            </Sidebar>
+
+                            <ArtworkGrid
+                              width="70%"
+                              flexDirection="column"
+                              alignItems="flex-end"
+                            >
+                              <SmallSelect pb={4} pr={3} />
+                              <ArtworkGridExample artistID="pablo-picasso" />
+                            </ArtworkGrid>
+                          </ArtworkBrowser>
+                        </div>
+                      </div>
+                    )
+                  case "CV":
+                    return <CV />
+                  case "Articles":
+                    return <Articles />
+                  case "Shows":
+                    return <Shows />
+                  case "Auction results":
+                    return <AuctionResults />
+                  case "Related artists":
+                    return <RelatedArtists />
+                  default:
+                    return <div />
+                }
+              }}
+            </Tabs>
           </Col>
         </Row>
       </Grid>
@@ -146,6 +215,23 @@ const FollowButton = styled(Button)`
     float: left;
   `};
 `
+
+const ArtistBio = styled(Flex)``
+
+const GeneFamily = styled.div`
+  ${space};
+`
+const GeneFamilyItem = styled.a`
+  display: inline-block;
+  ${space};
+`
+
+const ArtworkBrowser = styled(Flex)``
+const Sidebar = styled.div`
+  ${space};
+  ${width};
+`
+const ArtworkGrid = styled(Flex)``
 
 const ArtistMetadata = styled.div``
 const Details = styled.div``
