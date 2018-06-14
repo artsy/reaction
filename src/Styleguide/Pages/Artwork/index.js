@@ -24,11 +24,12 @@ export class Artwork extends Component {
 
   render() {
     const slideshowImages = [
-      "https://picsum.photos/400/200/?random",
-      "https://picsum.photos/200/200/?random",
-      "https://picsum.photos/500/200/?random",
-      "https//picsum.photos/200/200/?random",
-      "https://picsum.photos/300/200j/?random",
+      "https://picsum.photos/800/600/?random",
+      "https://picsum.photos/500/400/?random",
+      "https://picsum.photos/300/700/?random",
+      "https://picsum.photos/800/600/?random",
+      "https://picsum.photos/700/600/?random",
+      "https://picsum.photos/500/600/?random",
     ]
 
     return (
