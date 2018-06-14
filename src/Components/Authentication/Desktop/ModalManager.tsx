@@ -11,7 +11,10 @@ import {
 } from "Components/Authentication/Types"
 
 export interface ModalManagerProps {
-  submitUrls?: { [P in ModalType]: string }
+  submitUrls?: { [P in ModalType]: string } & {
+    facebook?: string
+    twitter?: string
+  }
   csrf?: string
   redirectUrl?: string
   handleSubmit?: (
@@ -24,6 +27,7 @@ export interface ModalManagerProps {
 export interface ModalManagerState {
   currentType?: ModalType
   copy?: string | null
+  redirectTo?: string
 }
 
 export class ModalManager extends Component<
@@ -33,12 +37,14 @@ export class ModalManager extends Component<
   state = {
     currentType: null,
     copy: null,
+    redirectTo: "/",
   }
 
   openModal = (options: ModalOptions) => {
     this.setState({
       currentType: options.mode,
       copy: options.copy,
+      redirectTo: options.redirectUrl || "/",
     })
   }
 
@@ -49,8 +55,9 @@ export class ModalManager extends Component<
   }
 
   render() {
-    const { csrf, submitUrls, redirectUrl } = this.props
-    const { currentType, copy } = this.state
+    const { csrf, submitUrls } = this.props
+    const { currentType, copy, redirectTo } = this.state
+    const redirectUrl = this.props.redirectUrl || redirectTo
 
     if (!currentType) {
       return null
@@ -67,7 +74,18 @@ export class ModalManager extends Component<
         onClose={this.closeModal}
         subtitle={copy}
       >
-        <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
+        <FormSwitcher
+          type={currentType}
+          handleSubmit={handleSubmit}
+          onFacebookLogin={() =>
+            (window.location.href =
+              submitUrls.facebook + "?redirect-to=" + redirectUrl)
+          }
+          onTwitterLogin={() =>
+            (window.location.href =
+              submitUrls.twitter + "?redirect-to=" + redirectUrl)
+          }
+        />
       </DesktopModal>
     )
   }

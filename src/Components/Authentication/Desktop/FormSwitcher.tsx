@@ -15,6 +15,8 @@ interface Props {
   handleSubmit: SubmitHandler
   signupIntent?: string
   redirectUrl?: string
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
 }
 
 interface State {
@@ -38,6 +40,8 @@ export class FormSwitcher extends React.Component<Props, State> {
   }
 
   render() {
+    const { onFacebookLogin, onTwitterLogin } = this.props
+
     let Form: FormComponentType
     switch (this.state.type) {
       case "login":
@@ -66,6 +70,8 @@ export class FormSwitcher extends React.Component<Props, State> {
         values={defaultValues}
         handleTypeChange={type => this.presentModal(type)}
         handleSubmit={this.props.handleSubmit}
+        onFacebookLogin={onFacebookLogin}
+        onTwitterLogin={onTwitterLogin}
       />
     )
   }

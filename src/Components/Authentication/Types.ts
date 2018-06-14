@@ -22,6 +22,8 @@ export interface FormProps {
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
 }
 
 export interface ModalOptions {
@@ -46,6 +48,20 @@ export interface ModalOptions {
    * the page before the page on which the sign up was triggered.
    */
   signupReferer?: string
+  /**
+   * url path to redirect the user after onboarding
+   */
+  destination?: string
+  /**
+   * defines an action to take after the user successfully signs up
+   *
+   * @example
+   * {
+   *   action: 'save',
+   *   objectId: artwork.id
+   * }
+   */
+  afterSignUpAction?: string
 }
 
 export type FormComponentType = React.SFC<FormProps>
