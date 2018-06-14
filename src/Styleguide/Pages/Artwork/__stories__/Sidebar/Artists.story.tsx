@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../../../Utils/Section"
 import { Artists } from "../../Sidebar/Artists"
 
-export const SingleFollowedArtist = [
+const SingleFollowedArtist = [
   {
     __id: "francesca-dimattio",
     id: "francesca-dimattio",
@@ -13,7 +13,7 @@ export const SingleFollowedArtist = [
   },
 ]
 
-export const SingleNonFollowedArtist = [
+const SingleNonFollowedArtist = [
   {
     __id: "francesca-dimattio",
     id: "francesca-dimattio",
@@ -22,7 +22,7 @@ export const SingleNonFollowedArtist = [
   },
 ]
 
-export const MultipleArtists = [
+const MultipleArtists = [
   {
     __id: "francesca-dimattio",
     id: "francesca-dimattio",

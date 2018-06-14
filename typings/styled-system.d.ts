@@ -356,8 +356,6 @@ declare module "styled-system" {
 
   export function disabled(...args: any[]): any
 
-  export function maxWidth(...args: any[]): any
-
   /**
    * Utilities
    */

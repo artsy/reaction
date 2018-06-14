@@ -3,21 +3,21 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "../../../../Utils/Section"
 import { TitleInfo } from "../../Sidebar/TitleInfo"
 
-export const ArtworkWithTitleDateAndMedium = {
+const ArtworkWithTitleDateAndMedium = {
   title: "The Fox and the Hound",
   date: "2018",
   medium: "Oil on canvas",
 }
 
-export const ArtworkWithTitleOnly = {
+const ArtworkWithTitleOnly = {
   title: "The Fox and the Hound",
 }
 
-export const ArtworkWithTitlAndDate = {
+const ArtworkWithTitlAndDate = {
   title: "The Fox and the Hound",
   date: " 2013 - 2012 ",
 }
-export const ArtworkWithTitleAndMedium = {
+const ArtworkWithTitleAndMedium = {
   title: "The Fox and the Hound",
   date: null,
   medium:
