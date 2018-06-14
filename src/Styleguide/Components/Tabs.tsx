@@ -76,14 +76,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         </TabsContainer>
 
         {children && (
-          <Flex flexDirection="column" width="100%">
+          // <Flex flexDirection="column" width="100%">
+          <React.Fragment>
             {children({
               activeTab: {
                 index: activeTab.index,
                 label: activeTab.label,
               },
             })}
-          </Flex>
+          </React.Fragment>
+          // </Flex>
         )}
       </React.Fragment>
     )
