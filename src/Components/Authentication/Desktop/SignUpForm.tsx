@@ -100,6 +100,8 @@ export const SignUpForm: FormComponentType = props => {
             </SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+              onFacebookLogin={props.onFacebookLogin}
+              onTwitterLogin={props.onTwitterLogin}
               inline
             />
           </Form>
