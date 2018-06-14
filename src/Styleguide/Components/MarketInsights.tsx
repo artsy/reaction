@@ -25,7 +25,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
             const TextWrap = wrapper(xs)
             return this.props.insights.map(insight => {
               return (
-                <TextWrap>
+                <TextWrap key={insight.primaryLabel}>
                   <Sans size="2" weight="medium" display="inline" mr={3}>
                     {insight.primaryLabel}
                   </Sans>
