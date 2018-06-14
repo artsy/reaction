@@ -6,6 +6,7 @@ import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
 import { Shows } from "./Shows"
 import { RelatedArtists } from "./RelatedArtists"
+import { Box } from "../../Elements/Box"
 
 // import { Overview } from "./Overview"
 // import { Slider } from "../../Components/Slider"
@@ -23,6 +24,9 @@ import { Radio } from "../../Elements/Radio"
 import { ArtworkGridExample } from "../../../Components/__stories__/ArtworkGrid.story"
 import { SmallSelect } from "../../Elements/Select"
 import { CurrentEvent } from "../../Components/Artist/CurrentEvent"
+import { MarketInsights } from "../../Components/MarketInsights"
+import { insights } from "../../Components/__stories__/MarketInsight.story"
+import { exhibitions } from "../../Components/__stories__/SelectedExhibitions.story"
 
 export class Artist extends React.Component {
   render() {
@@ -64,26 +68,12 @@ export class Artist extends React.Component {
                         <div>
                           <Flex mt={5}>
                             <Flex flexDirection="column" pr={4} width="70%">
+                              <Box mb={3}>
+                                <MarketInsights insights={insights} />
+                              </Box>
                               <SelectedExhibitions
                                 expanded
-                                exhibitions={[
-                                  {
-                                    year: "2018",
-                                    show: "Adman: Warhol Before Pop",
-                                    gallery: "Andy Warhol Museum",
-                                  },
-                                  {
-                                    year: "2017",
-                                    // prettier-ignore
-                                    show: "Brancusi: Pioneer of American Minimalism",
-                                    gallery: "Paul Kasmin Gallery",
-                                  },
-                                  {
-                                    year: "2016",
-                                    show: "Sculpture on the Move 1946–2016",
-                                    gallery: "Kunstmuseum Basel",
-                                  },
-                                ]}
+                                exhibitions={exhibitions}
                               />
                               <ArtistBio size="3" my={3}>
                                 {/* FIXME: Add truncated character count feature */}

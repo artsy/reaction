@@ -48,7 +48,7 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
         ) : (
           <Truncator
             maxLineCount={maxLineCount}
-            ReadMoreLink={() => <ReadMoreLink>Read More</ReadMoreLink>}
+            ReadMoreLink={() => <ReadMoreLink>Read more</ReadMoreLink>}
           >
             {this.props.children}
           </Truncator>
@@ -65,7 +65,10 @@ const ReadMoreLink = ({ children }) => {
 
     <Theme>
       <ReadMoreLinkContainer>
-        ... <Sans size="2">{children}</Sans>
+        ...{" "}
+        <Sans size="2" weight="medium">
+          {children}
+        </Sans>
       </ReadMoreLinkContainer>
     </Theme>
   )
