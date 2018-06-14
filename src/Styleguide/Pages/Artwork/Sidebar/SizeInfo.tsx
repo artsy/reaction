@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { themeGet } from "styled-system"
 
-interface SizeInfoProps {
+export interface SizeInfoProps {
   artwork: {
     readonly dimensions?: {
       readonly in: string

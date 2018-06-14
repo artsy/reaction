@@ -5,10 +5,8 @@ import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
-import { Artists } from "./Sidebar/Artists"
-import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
+import { Sidebar } from "./Sidebar"
+import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
 import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
 
 export class Artwork extends Component {
@@ -48,25 +46,12 @@ export class Artwork extends Component {
           <Col sm={8}>
             <ArtworkSlider>
               <ImageCarousel src={slideshowImages} />
-              <ArtworkImage>TODO: Artwork Image</ArtworkImage>
-              <SlideIndicatorDots>. . .</SlideIndicatorDots>
-              <UtilityButtons>
-                <FavoriteButton>TODO: Heart Icon</FavoriteButton>
-                <ShareButton>TODO: Share Icon</ShareButton>
-              </UtilityButtons>
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
-            <Artists artists={SingleFollowedArtist} />
-            <ArtworkMetadata artwork={FilledOutMetadataNoEditions} />
-
-            <hr />
-
-            <Price>Contact for price</Price>
+            <Sidebar artwork={ArtworkWithCompleteData} />
 
             <Gallery>
-              <ContactButton>Contact Gallery</ContactButton>
-
               <PartnerInfo>
                 <Name>Salon 94</Name>
                 <PinIcon>TODO: Pin Icon</PinIcon>
@@ -237,16 +222,8 @@ export class Artwork extends Component {
 }
 
 const ArtworkSlider = styled.div``
-const ArtworkImage = styled.div``
-const SlideIndicatorDots = styled.div``
-const UtilityButtons = styled.div``
-const FavoriteButton = styled.div``
-const ShareButton = styled.div``
-const ArtistName = styled.div``
 const FollowButton = styled.div``
-const Price = styled.div``
 const Gallery = styled.div``
-const ContactButton = styled.div``
 const PartnerInfo = styled.div``
 const Name = styled.div``
 const PinIcon = styled.div``

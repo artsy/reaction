@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { themeGet, space, SpaceProps } from "styled-system"
 
-interface ClassificationProps {
+export interface ClassificationProps {
   artwork: {
     readonly attribution_class?: {
       readonly short_description: string
