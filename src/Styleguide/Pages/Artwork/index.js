@@ -6,10 +6,14 @@ import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
 import { Artists } from "./Sidebar/Artists"
+import { ArtistInfo } from "./ArtistInfo"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
+import { bio } from "../../Components/__stories__/ArtistBio.story"
+import { insights } from "../../Components/__stories__/MarketInsight.story"
+import { exhibitions } from "../../Components/__stories__/SelectedExhibitions.story"
 
 export class Artwork extends Component {
   state = {
@@ -112,6 +116,16 @@ export class Artwork extends Component {
                 }
               })()}
             </TabContent>
+          </Col>
+        </Row>
+        <Row>
+          <Col xl={8} lg={8} md={8} sm={12} xs={12}>
+            <ArtistInfo
+              name="Francesca DiMattio"
+              insights={insights}
+              exhibitions={exhibitions}
+              bio={bio}
+            />
           </Col>
         </Row>
         <Row>

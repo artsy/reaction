@@ -31,7 +31,7 @@ const auctions = [
   },
 ]
 
-storiesOf("Styleguide/Sections", module).add("Other Auctions", () => {
+storiesOf("Styleguide/Artwork", module).add("Other Auctions", () => {
   return (
     <Section title="Responsive Other Auctions">
       <OtherAuctions>
