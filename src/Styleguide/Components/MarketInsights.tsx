@@ -28,7 +28,6 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
                 <TextWrap>
                   <Sans size="2" weight="medium" display="inline" mr={3}>
                     {insight.primaryLabel}
-                    k{" "}
                   </Sans>
                   <Sans size="2" display="inline" color="black60">
                     {insight.secondaryLabel}
