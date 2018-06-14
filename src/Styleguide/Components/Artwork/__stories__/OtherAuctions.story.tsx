@@ -1,8 +1,8 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { OtherAuctions } from "../OtherAuctions"
-import { Section } from "../../Utils/Section"
-import { AuctionCard } from "../../Components/AuctionCard"
+import { Section } from "../../../Utils/Section"
+import { AuctionCard } from "../../../Components/AuctionCard"
 
 const auctions = [
   {
