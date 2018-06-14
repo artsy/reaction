@@ -1,7 +1,7 @@
 import React from "react"
 import { Responsive } from "../../../Utils/Responsive"
-import { Flex } from "../../../Elements/Flex"
-import { Image } from "../../../Elements/Image"
+import { Flex } from "../../Elements/Flex"
+import { Image } from "../../Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
 
 export interface CurrentEventProps {

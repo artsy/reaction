@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 import Icon from "Components/Icon"
-import { Responsive } from "../Utils/Responsive"
-import { Arrow } from "../Elements/Arrow"
+import { Responsive } from "../../Utils/Responsive"
+import { Arrow } from "../../Elements/Arrow"
 
 const Container = styled.div`
   display: flex;

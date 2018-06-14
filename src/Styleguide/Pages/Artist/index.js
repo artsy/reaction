@@ -22,7 +22,7 @@ import { Checkbox } from "../../Elements/Checkbox"
 import { Radio } from "../../Elements/Radio"
 import { ArtworkGridExample } from "../../../Components/__stories__/ArtworkGrid.story"
 import { SmallSelect } from "../../Elements/Select"
-import { CurrentEvent } from "./Components/CurrentEvent"
+import { CurrentEvent } from "../../Components/Artist/CurrentEvent"
 
 export class Artist extends React.Component {
   render() {

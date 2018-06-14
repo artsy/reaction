@@ -2,7 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { ImageCarousel } from "../ImageCarousel"
 import { Col } from "Styleguide/Elements/Grid"
-import { Section } from "../../Utils/Section"
+import { Section } from "../../../Utils/Section"
 
 function generateStory(imageCount: number) {
   const src = (value: string) =>

@@ -9,7 +9,7 @@ import { Artists } from "./Sidebar/Artists"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
-import { ImageCarousel } from "../../Artwork/ImageCarousel"
+import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
 
 export class Artwork extends Component {
   state = {
