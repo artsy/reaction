@@ -62,7 +62,7 @@ export class ModalManager extends Component<
 
     return (
       <DesktopModal
-        show
+        show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
         subtitle={copy}
