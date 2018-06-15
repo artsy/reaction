@@ -60,17 +60,6 @@ export class Artwork extends Component {
           <Col sm={4}>
             <Sidebar artwork={ArtworkWithCompleteData} />
 
-            <Gallery>
-              <PartnerInfo>
-                <Name>Salon 94</Name>
-                <PinIcon>TODO: Pin Icon</PinIcon>
-                <Location>New York, London, Beijing, Hong Kong</Location>
-                <FollowButton>Follow Button</FollowButton>
-              </PartnerInfo>
-            </Gallery>
-
-            <hr />
-
             <HelpText>
               First time buying on Artsy? <a>Read our FAQ</a>. <br />
               Want to sell a work by this artist? <a>Learn more</a>.

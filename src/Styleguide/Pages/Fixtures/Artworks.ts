@@ -1,7 +1,9 @@
 import { SingleFollowedArtist } from "./Artists"
+import { PartnerWithLocations } from "./Partners"
 
 export const ArtworkWithCompleteData = {
   artists: SingleFollowedArtist,
+  partner: PartnerWithLocations,
   title: "Wall with editions",
   date: "some time in 2016",
   medium: "Paper",

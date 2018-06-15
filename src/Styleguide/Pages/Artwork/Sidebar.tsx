@@ -4,6 +4,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { Commercial } from "./Sidebar/Commercial"
+import { PartnerInfo } from "./Sidebar/PartnerInfo"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
@@ -14,6 +15,14 @@ export interface ArtworkSidebarProps {
       readonly is_followed: boolean | null
       readonly href?: string
     }>
+    readonly partner: {
+      readonly __id: string
+      readonly name: string
+      readonly href?: string
+      readonly locations: Array<{
+        readonly city: string
+      }>
+    }
     readonly title: string
     readonly date: string
     readonly medium: string
@@ -21,6 +30,7 @@ export interface ArtworkSidebarProps {
       in: string
       cm: string
     }
+    readonly collecting_institution?: string
     readonly edition_of: string
     readonly attribution_class: {
       short_description: string
@@ -50,6 +60,8 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
         <ArtworkMetadata artwork={artwork} />
         <Separator />
         <Commercial artwork={artwork} />
+        <PartnerInfo partner={artwork.partner} artwork={artwork} />
+        <Separator />
       </SidebarContainer>
     )
   }
