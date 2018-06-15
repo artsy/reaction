@@ -94,7 +94,7 @@ export const MobileLoginForm: FormComponentType = props => {
     </Step>,
   ]
   return (
-    <Wizard steps={steps}>
+    <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
         const { wizard, form } = context
         const { currentStep } = wizard
