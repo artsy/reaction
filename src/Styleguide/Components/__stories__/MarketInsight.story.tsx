@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { MarketInsights } from "../MarketInsights"
 
 export const insights = [

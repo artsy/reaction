@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { AuctionCard, SmallAuctionCard, LargeAuctionCard } from "../AuctionCard"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
   return (

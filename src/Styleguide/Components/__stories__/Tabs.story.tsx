@@ -1,7 +1,7 @@
 import React from "react"
 import { Sans } from "@artsy/palette"
-import { Flex } from "../../Elements/Flex"
-import { Section } from "../../Utils/Section"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Section } from "Styleguide/Utils/Section"
 import { Tabs } from "../Tabs"
 import { storiesOf } from "storybook/storiesOf"
 

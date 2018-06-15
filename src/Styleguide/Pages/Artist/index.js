@@ -6,27 +6,24 @@ import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
 import { Shows } from "./Shows"
 import { RelatedArtists } from "./RelatedArtists"
-import { Box } from "../../Elements/Box"
-
-// import { Overview } from "./Overview"
-// import { Slider } from "../../Components/Slider"
+import { Box } from "Styleguide/Elements/Box"
 
 import { Sans, Serif } from "@artsy/palette"
-import { Grid, Col, Row, media } from "../../Elements/Grid"
-import { Button } from "../../Elements/Button"
-import { Flex } from "../../Elements/Flex"
-import { Tabs } from "../../Components/Tabs"
-import { SelectedExhibitions } from "../../Components/SelectedExhibitions"
-import { ReadMore } from "../../Components/ReadMore"
-import { Toggle } from "../../Components/Toggle"
-import { Checkbox } from "../../Elements/Checkbox"
-import { Radio } from "../../Elements/Radio"
-import { ArtworkGridExample } from "../../../Components/__stories__/ArtworkGrid.story"
-import { SmallSelect } from "../../Elements/Select"
-import { CurrentEvent } from "../../Components/Artist/CurrentEvent"
-import { MarketInsights } from "../../Components/MarketInsights"
-import { insights } from "../../Components/__stories__/MarketInsight.story"
-import { exhibitions } from "../../Components/__stories__/SelectedExhibitions.story"
+import { Grid, Col, Row, media } from "Styleguide/Elements/Grid"
+import { Button } from "Styleguide/Elements/Button"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Tabs } from "Styleguide/Components/Tabs"
+import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
+import { ReadMore } from "Styleguide/Components/ReadMore"
+import { Toggle } from "Styleguide/Components/Toggle"
+import { Checkbox } from "Styleguide/Elements/Checkbox"
+import { Radio } from "Styleguide/Elements/Radio"
+import { ArtworkGridExample } from "Components/__stories__/ArtworkGrid.story"
+import { SmallSelect } from "Styleguide/Elements/Select"
+import { CurrentEvent } from "./CurrentEvent"
+import { MarketInsights } from "Styleguide/Components/MarketInsights"
+import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 
 export class Artist extends React.Component {
   render() {
@@ -36,16 +33,10 @@ export class Artist extends React.Component {
           <Col />
         </Row>
         <Row>
-          <Col sm={10} mt={6}>
-            <ArtistMetadata>
-              <Serif size="10">Donald Judd</Serif>
-              <Flex>
-                <Serif size="3">Brazilian, 1886-1973</Serif>
-                <Serif size="3">4,321 followers</Serif>
-              </Flex>
-            </ArtistMetadata>
+          <Col sm={10}>
+            <ArtistMetadata />
           </Col>
-          <Col sm={2} mt={7}>
+          <Col sm={2}>
             <FollowButton variant="primaryBlack">Follow</FollowButton>
           </Col>
         </Row>

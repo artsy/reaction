@@ -3,14 +3,14 @@ import { Serif } from "@artsy/palette"
 import {
   MarketInsights,
   MarketInsightsProps,
-} from "../../Components/MarketInsights"
+} from "Styleguide/Components/MarketInsights"
 import {
   SelectedExhibitionsProps,
   SelectedExhibitions,
-} from "../../Components/SelectedExhibitions"
-import { ArtistBio } from "../../Components/ArtistBio"
-import { Box } from "../../Elements/Box"
-import { Responsive } from "../../Utils/Responsive"
+} from "Styleguide/Components/SelectedExhibitions"
+import { ArtistBio } from "Styleguide/Components/ArtistBio"
+import { Box } from "Styleguide/Elements/Box"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 interface ArtistInfoProps
   extends MarketInsightsProps,

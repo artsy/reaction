@@ -1,5 +1,5 @@
 import React from "react"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { Select, LargeSelect, SmallSelect } from "../Select"
 import { storiesOf } from "storybook/storiesOf"
 

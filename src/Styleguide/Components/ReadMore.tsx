@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { DisplayProps } from "styled-system"
-import { Truncator } from "../../Components/Truncator"
+import { Truncator } from "Components/Truncator"
 import { Theme, Sans } from "@artsy/palette"
 
 export interface ReadMoreProps extends DisplayProps {

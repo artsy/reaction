@@ -1,5 +1,5 @@
 import React from "react"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { Image, ResponsiveImage } from "../Image"
 import { storiesOf } from "storybook/storiesOf"
 import { BorderBox } from "../Box"

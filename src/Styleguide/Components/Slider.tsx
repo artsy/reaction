@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Responsive } from "../Utils/Responsive"
-import { Flex } from "../Elements/Flex"
-import { Arrow } from "../Elements/Arrow"
-import { ImageProps } from "../Elements/Image"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Arrow } from "Styleguide/Elements/Arrow"
+import { ImageProps } from "Styleguide/Elements/Image"
 
 import {
   border,

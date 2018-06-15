@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { ArtistBio } from "../ArtistBio"
 
 export const bio = `Donald Judd, widely regarded as one of the most significant American artists of

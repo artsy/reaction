@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { space, SpaceProps } from "styled-system"
 import { SizeInfo } from "./SizeInfo"
-import { Separator } from "../../../Elements/Separator"
-import { Button } from "../../../Elements/Button"
+import { Separator } from "Styleguide/Elements/Separator"
+import { Button } from "Styleguide/Elements/Button"
 
 export interface CommercialProps {
   artwork: {
