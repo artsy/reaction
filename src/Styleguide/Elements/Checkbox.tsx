@@ -49,8 +49,8 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     const { children } = this.props
 
     return (
-      <Flex my={2} onClick={this.toggleSelected}>
-        <CheckboxButton border={1} mr={3} selected={selected}>
+      <Flex my={0.5} onClick={this.toggleSelected}>
+        <CheckboxButton border={1} mr={1} selected={selected}>
           {selected && (
             <Icon
               name="check"
@@ -63,7 +63,7 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         </CheckboxButton>
         <Label>{children}</Label>
       </Flex>
-    )
+    );
   }
 }
 

@@ -47,14 +47,14 @@ export class Section extends React.Component<SectionProps> {
           <Flex
             flexDirection="column"
             alignItems="center"
-            my={4}
-            mx={3}
+            my={2}
+            mx={1}
             maxWidth={maxWidth}
           >
             {this.props.children}
           </Flex>
         )}
       </React.Fragment>
-    )
+    );
   }
 }

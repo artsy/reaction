@@ -25,10 +25,10 @@ export const Overview = () => {
       <Row>
         <Col sm={9}>
           <MarketInsights insights={insights} />
-          <Spacer mb={3} />
+          <Spacer mb={undefined} />
 
           <SelectedExhibitions exhibitions={exhibitions} />
-          <Spacer mb={5} />
+          <Spacer mb={0.3} />
 
           <ArtistBio>
             Donald Judd, widely regarded as one of the most significant American
@@ -47,7 +47,7 @@ export const Overview = () => {
             to David Batchelor.
           </ArtistBio>
 
-          <Spacer mb={3} />
+          <Spacer mb={undefined} />
 
           <GeneFamily>
             <Sans size="2" weight="medium">
@@ -66,15 +66,15 @@ export const Overview = () => {
               const geneDivider = index < list.length - 1 ? "," : ""
 
               return (
-                <GeneFamilyItem href="#" className="noUnderline" mr={2}>
+                <GeneFamilyItem href="#" className="noUnderline" mr={undefined}>
                   {gene}
                   {geneDivider}
                 </GeneFamilyItem>
-              )
+              );
             })}
           </GeneFamily>
 
-          <Spacer mb={3} />
+          <Spacer mb={undefined} />
 
           <Sans size="2" color="black60">
             <a href="#">Consign</a> a work by this artist.
@@ -92,7 +92,7 @@ export const Overview = () => {
         </Col>
       </Row>
 
-      <Spacer mb={6} />
+      <Spacer mb={0.5} />
 
       <Row>
         <Col>
@@ -101,7 +101,7 @@ export const Overview = () => {
               return (
                 <ArtworkBrowser>
                   {!xs && (
-                    <Sidebar width="30%" mr={4}>
+                    <Sidebar width="30%" mr={undefined}>
                       <Toggle label="Purchase type" expanded disabled>
                         <Flex justifyContent="space-between">
                           <Checkbox>For sale</Checkbox>
@@ -122,7 +122,7 @@ export const Overview = () => {
                     flexDirection="column"
                     alignItems="flex-end"
                   >
-                    <Flex width="100%" pb={4} justifyContent="flex-end">
+                    <Flex width="100%" pb={undefined} justifyContent="flex-end">
                       <Select />
                     </Flex>
 
@@ -131,17 +131,17 @@ export const Overview = () => {
                       columnCount={xs ? 2 : 3}
                     />
 
-                    <Spacer mb={5} />
+                    <Spacer mb={0.3} />
                     <Pagination />
                   </ArtworkGrid>
                 </ArtworkBrowser>
-              )
+              );
             }}
           </Responsive>
         </Col>
       </Row>
     </React.Fragment>
-  )
+  );
 }
 
 const GeneFamily = styled.div``

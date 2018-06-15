@@ -94,49 +94,49 @@ stories.add("Typography", () => {
       </Section>
 
       <Section title="Links - default">
-        <Sans mx={5}>
+        <Sans mx={1}>
           <a href="#">This is a link</a>
         </Sans>
 
-        <Serif mx={5}>
+        <Serif mx={1}>
           <a href="#">This is a link</a>
         </Serif>
       </Section>
 
       <Section title="Links - .noUnderline">
-        <Sans mx={5}>
+        <Sans mx={1}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={5}>
+        <Serif mx={1}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
         </Serif>
 
-        <Display size="4t" mx={5}>
+        <Display size="4t" mx={1}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
         </Display>
       </Section>
       <Section title="Links .colorLink">
-        <Sans mx={5}>
+        <Sans mx={1}>
           <a href="#" className="colorLink">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={5}>
+        <Serif mx={1}>
           <a href="#" className="colorLink">
             This is a link
           </a>
         </Serif>
       </Section>
     </React.Fragment>
-  )
+  );
 })
 
 const Item = styled.div`
