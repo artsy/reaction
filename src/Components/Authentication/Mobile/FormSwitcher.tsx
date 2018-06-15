@@ -37,13 +37,13 @@ export class FormSwitcher extends React.Component<Props, State> {
   render() {
     let Form: FormComponentType
     switch (this.state.type) {
-      case "login":
+      case ModalType.login:
         Form = MobileLoginForm
         break
-      case "signup":
+      case ModalType.signup:
         Form = MobileSignUpForm
         break
-      case "reset_password":
+      case ModalType.resetPassword:
         Form = MobileResetPasswordForm
         break
       default:
