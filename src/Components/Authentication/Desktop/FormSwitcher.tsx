@@ -58,7 +58,9 @@ export class FormSwitcher extends React.Component<Props, State> {
           }
         : null
     )
-    tracking.trackEvent(event)
+    if (tracking) {
+      tracking.trackEvent(event)
+    }
   }
 
   presentModal = (newType: ModalType) => {

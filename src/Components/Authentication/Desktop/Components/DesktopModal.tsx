@@ -38,7 +38,7 @@ export class DesktopModal extends Component<DesktopModalProps> {
   }
 }
 
-const CloseButton = styled(Icon).attrs({
+export const CloseButton = styled(Icon).attrs({
   color: Colors.graySemibold,
   fontSize: "16px",
 })`
