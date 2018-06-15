@@ -118,7 +118,7 @@ export const Overview = () => {
                   )}
 
                   <ArtworkGrid
-                    width={xs ? "100%" : "70%"}
+                    width={"100%"}
                     flexDirection="column"
                     alignItems="flex-end"
                   >
@@ -126,7 +126,7 @@ export const Overview = () => {
                       <Select />
                     </Flex>
 
-                    <ArtworkGridExample
+                    <ArtworkGridItems
                       artistID="pablo-picasso"
                       columnCount={xs ? 2 : 3}
                     />
@@ -155,3 +155,7 @@ const Sidebar = styled.div`
   ${width};
 `
 const ArtworkGrid = styled(Flex)``
+
+const ArtworkGridItems = styled(ArtworkGridExample)`
+  width: 100%;
+`
