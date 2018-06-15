@@ -84,6 +84,7 @@ module.exports = (baseConfig, env) => {
       extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
         sharify: sharifyPath.replace(/\.js$/, ""),
+        "styled-components": path.resolve("./node_modules/styled-components"),
       },
     },
     module: {

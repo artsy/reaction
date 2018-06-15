@@ -50,9 +50,7 @@ export class Artist extends React.Component {
           </Col>
         </Row>
 
-        <Box my={6}>
-          <Separator />
-        </Box>
+        <Separator my={6} />
 
         <Row>
           <Col>
@@ -60,6 +58,6 @@ export class Artist extends React.Component {
           </Col>
         </Row>
       </Grid>
-    );
+    )
   }
 }
