@@ -9,29 +9,29 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
   return (
     <React.Fragment>
       <Section title="primaryBlack">
-        <Button variant="primaryBlack" size="small" m={2}>
+        <Button variant="primaryBlack" size="small" m={0.5}>
           Follow
         </Button>
-        <Button variant="primaryBlack" size="medium" m={2}>
+        <Button variant="primaryBlack" size="medium" m={0.5}>
           Follow
         </Button>
-        <Button variant="primaryBlack" size="large" m={2}>
+        <Button variant="primaryBlack" size="large" m={0.5}>
           Follow
         </Button>
       </Section>
 
       <Section title="primaryWhite">
-        <Item bg="black" p={3} m={2}>
+        <Item bg="black" p={1} m={0.5}>
           <Button variant="primaryWhite" size="small">
             Follow
           </Button>
         </Item>
-        <Item bg="black" p={3} m={2}>
+        <Item bg="black" p={1} m={0.5}>
           <Button variant="primaryWhite" size="medium">
             Follow
           </Button>
         </Item>
-        <Item bg="black" p={3} m={2}>
+        <Item bg="black" p={1} m={0.5}>
           <Button variant="primaryWhite" size="large">
             Follow
           </Button>
@@ -39,34 +39,34 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
       </Section>
 
       <Section title="secondaryGray">
-        <Button variant="secondaryGray" size="small" m={2}>
+        <Button variant="secondaryGray" size="small" m={0.5}>
           Follow
         </Button>
-        <Button variant="secondaryGray" size="medium" m={2}>
+        <Button variant="secondaryGray" size="medium" m={0.5}>
           Follow
         </Button>
-        <Button variant="secondaryGray" size="large" m={2}>
+        <Button variant="secondaryGray" size="large" m={0.5}>
           Follow
         </Button>
       </Section>
 
       <Section title="secondaryOutline">
-        <Button variant="secondaryOutline" size="small" m={2}>
+        <Button variant="secondaryOutline" size="small" m={0.5}>
           Follow
         </Button>
-        <Button variant="secondaryOutline" size="medium" m={2}>
+        <Button variant="secondaryOutline" size="medium" m={0.5}>
           Follow
         </Button>
-        <Button variant="secondaryOutline" size="large" m={2}>
+        <Button variant="secondaryOutline" size="large" m={0.5}>
           Follow
         </Button>
       </Section>
 
       <Section title="Full width">
-        <Button width="100%" size="large" m={2}>
+        <Button width="100%" size="large" m={0.5}>
           Contact Gallery
         </Button>
-        <Button variant="secondaryOutline" width="100%" size="medium" m={2}>
+        <Button variant="secondaryOutline" width="100%" size="medium" m={0.5}>
           Contact Gallery
         </Button>
       </Section>

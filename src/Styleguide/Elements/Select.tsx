@@ -23,7 +23,7 @@ export class Select extends React.Component<SelectProps> {
 // Appears on both mobile and desktop
 export const LargeSelect = () => {
   return (
-    <LargeSelectContainer p={3}>
+    <LargeSelectContainer p={1}>
       <select>
         <option value="0">Recently updated</option>
         <option value="1">Recently added </option>
@@ -91,7 +91,7 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
     content: "";
     position: absolute;
     top: 45%;
-    right: 10px;
+    right: ${props => props.theme.space["1"]}px;
 
     ${caretArrow};
   }
@@ -111,7 +111,7 @@ const SmallSelectContainer = styled.div.attrs<SelectProps>({})`
   &:after {
     content: "";
     position: absolute;
-    top: 10px;
+    top: ${props => props.theme.space["1"]}px;
 
     ${caretArrow};
   }

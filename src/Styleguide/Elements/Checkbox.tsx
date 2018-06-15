@@ -82,7 +82,7 @@ const CheckboxButton = styled.div.attrs<CheckboxToggleProps>({})`
 
     const backgroundColor = selected ? black100 : white100
     const borderColor = selected ? black100 : black10
-    const buttonSize = space[4]
+    const buttonSize = space[2]
 
     return `
       background-color: ${backgroundColor};

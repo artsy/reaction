@@ -12152,13 +12152,13 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
+styled-bootstrap-grid@damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3:
+  version "1.0.3-2"
+  resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/5a115a48a7f4d5608bc73097d52e14265edc6dd3"
+
 styled-bootstrap-grid@damassi/styled-bootstrap-grid#respect-padding-in-fluid:
   version "1.0.3-2"
   resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/f4908956cb3b31ef811c729d3a50784efafe62da"
-
-"styled-bootstrap-grid@github:damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e14265edc6dd3":
-  version "1.0.3-2"
-  resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/5a115a48a7f4d5608bc73097d52e14265edc6dd3"
 
 styled-components@^3.2.6, styled-components@^3.3.2:
   version "3.3.2"
