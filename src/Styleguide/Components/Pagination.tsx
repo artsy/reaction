@@ -2,9 +2,9 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Sans } from "@artsy/palette"
-import { Responsive } from "../Utils/Responsive"
-import { Arrow } from "../Elements/Arrow"
-import { Flex } from "../Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { Arrow } from "Styleguide/Elements/Arrow"
+import { Flex } from "Styleguide/Elements/Flex"
 
 export class Pagination extends React.Component {
   render() {
@@ -41,7 +41,7 @@ export const LargePagination = () => {
 export const SmallPagination = () => {
   return (
     <Flex flexDirection="row" width="100%">
-      <Flex width="50%" pl={5} pr={2}>
+      <Flex width="50%" pr={2}>
         <ButtonWithBorder
           alignItems="center"
           justifyContent="flex-start"
@@ -50,7 +50,7 @@ export const SmallPagination = () => {
           <Arrow direction="left" />
         </ButtonWithBorder>
       </Flex>
-      <Flex width="50%" pr={5} pl={2}>
+      <Flex width="50%" pl={2}>
         <ButtonWithBorder alignItems="center" justifyContent="flex-end" pr={3}>
           <Arrow direction="right" />
         </ButtonWithBorder>

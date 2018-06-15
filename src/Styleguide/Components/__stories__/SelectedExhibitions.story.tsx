@@ -4,7 +4,7 @@ import {
   SelectedExhibitions,
   SelectedExhibitionsContainer,
 } from "../SelectedExhibitions"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 
 export const exhibitions = [
   {

@@ -1,6 +1,7 @@
 import React from "react"
 import { Formik, FormikProps } from "formik"
 import {
+  Error,
   FormContainer as Form,
   Footer,
   MobileContainer,
@@ -28,6 +29,7 @@ export const MobileResetPasswordForm: FormComponentType = props => {
         handleSubmit,
         isSubmitting,
         isValid,
+        status,
       }: FormikProps<InputValues>) => {
         return (
           <MobileContainer>
@@ -46,6 +48,8 @@ export const MobileResetPasswordForm: FormComponentType = props => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {status &&
+                  !status.success && <Error show>{status.error}</Error>}
                 <MobileSubmitButton disabled={isSubmitting}>
                   Next
                 </MobileSubmitButton>

@@ -1,21 +1,22 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Grid, Col, Row } from "../../Elements/Grid"
+import { Grid, Col, Row } from "Styleguide/Elements/Grid"
 import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
 import { Artists } from "./Sidebar/Artists"
 import { ArtistInfo } from "./ArtistInfo"
+import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
-import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
-import { bio } from "../../Components/__stories__/ArtistBio.story"
-import { insights } from "../../Components/__stories__/MarketInsight.story"
-import { exhibitions } from "../../Components/__stories__/SelectedExhibitions.story"
+import { ImageCarousel } from "./ImageCarousel"
+import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
+import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 
 export class Artwork extends Component {
   state = {
@@ -78,33 +79,17 @@ export class Artwork extends Component {
         </Row>
         <Row>
           <Col>
-            <Tabber>
-              <TabNav>
-                <Tab onClick={() => this.handleTab("About the work")}>
-                  About the work
-                </Tab>
-                <Tab onClick={() => this.handleTab("Exhibition history")}>
-                  CV
-                </Tab>
-                <Tab onClick={() => this.handleTab("Bibliography")}>
-                  Articles
-                </Tab>
-              </TabNav>
-            </Tabber>
-            <TabContent>
-              {(() => {
-                switch (this.state.tab) {
-                  case "About the work":
-                    return <AboutTheWork />
-                  case "Exhibition history":
-                    return <ExhibitionHistory />
-                  case "Bibliography":
-                    return <Bibliography />
-                  default:
-                    return <div />
-                }
-              })()}
-            </TabContent>
+            <Tabs>
+              <Tab name="About the work">
+                <AboutTheWork />
+              </Tab>
+              <Tab name="Exhibition history">
+                <ExhibitionHistory />
+              </Tab>
+              <Tab name="Bibliography">
+                <Bibliography />
+              </Tab>
+            </Tabs>
           </Col>
         </Row>
         <Row>
@@ -149,19 +134,28 @@ export class Artwork extends Component {
               <GridBlock>
                 <Title>Related works</Title>
                 <ViewAllButton>View all</ViewAllButton>
-                <Tabber>
-                  <TabNav>
-                    <Tab>Gene</Tab>
-                    <Tab>Another Gene</Tab>
-                    <Tab>Third Gene</Tab>
-                    <Tab>Most Similar</Tab>
-                  </TabNav>
-                  <TabContent>
+                <Tabs>
+                  <Tab name="Gene">
                     <GridContainer>
                       <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
                     </GridContainer>
-                  </TabContent>
-                </Tabber>
+                  </Tab>
+                  <Tab name="Another Gene">
+                    <GridContainer>
+                      <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
+                    </GridContainer>
+                  </Tab>
+                  <Tab name="Third Gene">
+                    <GridContainer>
+                      <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
+                    </GridContainer>
+                  </Tab>
+                  <Tab name="Most Similar">
+                    <GridContainer>
+                      <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
+                    </GridContainer>
+                  </Tab>
+                </Tabs>
               </GridBlock>
             </RelatedWorks>
           </Col>
@@ -247,9 +241,6 @@ const Name = styled.div``
 const PinIcon = styled.div``
 const Location = styled.div``
 const HelpText = styled.div``
-const Tabber = styled.div``
-const TabNav = styled.div``
-const Tab = styled.div``
 const Metadata = styled.div``
 const TabContent = styled.div``
 const OtherWorksByArtist = styled.div``

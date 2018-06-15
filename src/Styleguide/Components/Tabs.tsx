@@ -1,21 +1,21 @@
-import React, { ReactNode } from "react"
+import React from "react"
 import styled from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
 import { Sans } from "@artsy/palette"
-import { Flex } from "../Elements/Flex"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Box } from "Styleguide/Elements/Box"
 
-export interface ActiveTabProps {
-  activeTab: {
-    index: number
-    label: string
-  }
+export interface TabLike extends JSX.Element {
+  props: TabProps
 }
-
+export interface TabInfo {
+  name: string
+  tabIndex: number
+}
 export interface TabsProps extends WidthProps {
-  children?: (activeTab: ActiveTabProps) => ReactNode
-  onChange?: (activeTab?: ActiveTabProps) => void
-  activeTabIndex?: number
-  labels: string[]
+  onChange?: (tabInfo?: TabInfo) => void
+  initialTabIndex?: number
+  children: TabLike[]
 }
 
 export interface TabsState {
@@ -30,69 +30,59 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   constructor(props) {
     super(props)
 
+    const activeTabIndex = props.initialTabIndex || 0
     this.state = {
-      activeTabIndex: props.activeTabIndex || this.state.activeTabIndex,
+      activeTabIndex,
     }
   }
 
-  setActiveTab = (activeTabIndex, label) => {
+  setActiveTab = activeTabIndex => {
     this.setState({
       activeTabIndex,
     })
-
     if (this.props.onChange) {
-      this.props.onChange(this.getActiveTab())
+      this.props.onChange({
+        tabIndex: activeTabIndex,
+        name: this.props.children[activeTabIndex].props.name,
+      })
     }
   }
 
-  getActiveTab() {
-    const { activeTabIndex } = this.state
-    const activeTabLabel = this.props.labels[activeTabIndex]
-
-    return {
-      activeTab: {
-        index: activeTabIndex,
-        label: activeTabLabel,
-      },
-    }
+  renderTab = (tab, index) => {
+    const { name } = tab.props
+    return this.state.activeTabIndex === index ? (
+      <ActiveTabButton key={index}>{name}</ActiveTabButton>
+    ) : (
+      <TabButton key={index} onClick={() => this.setActiveTab(index)}>
+        {name}
+      </TabButton>
+    )
   }
 
   render() {
-    const { children, labels } = this.props
-    const { activeTab } = this.getActiveTab()
+    const { children = [] } = this.props
 
     return (
       <React.Fragment>
         <TabsContainer mb={2} width="100%">
-          {labels.map((label, index) => {
-            return activeTab.index === index ? (
-              <ActiveTab key={index}>{label}</ActiveTab>
-            ) : (
-              <Tab key={index} onClick={() => this.setActiveTab(index, label)}>
-                {label}
-              </Tab>
-            )
-          })}
+          {children.map(this.renderTab)}
         </TabsContainer>
-
-        {children && (
-          // <Flex flexDirection="column" width="100%">
-          <React.Fragment>
-            {children({
-              activeTab: {
-                index: activeTab.index,
-                label: activeTab.label,
-              },
-            })}
-          </React.Fragment>
-          // </Flex>
-        )}
+        <Box pt={5}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
     )
   }
 }
 
-const Tab = ({ children, ...props }) => (
+interface TabProps {
+  name: string
+}
+export class Tab extends React.Component<TabProps> {
+  render() {
+    return this.props.children || null
+  }
+}
+
+const TabButton = ({ children, ...props }) => (
   <TabContainer {...props}>
     <Sans size="3t" weight="medium" color="black30">
       {children}
@@ -100,7 +90,7 @@ const Tab = ({ children, ...props }) => (
   </TabContainer>
 )
 
-const ActiveTab = ({ children }) => (
+const ActiveTabButton = ({ children }) => (
   <ActiveTabContainer>
     <Sans size="3t" weight="medium">
       {children}

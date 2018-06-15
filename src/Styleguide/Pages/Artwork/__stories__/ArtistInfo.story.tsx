@@ -1,11 +1,11 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { ArtistInfo } from "../ArtistInfo"
-import { Grid, Row, Col } from "../../../Elements/Grid"
-import { bio } from "../../../Components/__stories__/ArtistBio.story"
-import { insights } from "../../../Components/__stories__/MarketInsight.story"
-import { exhibitions } from "../../../Components/__stories__/SelectedExhibitions.story"
+import { Grid, Row, Col } from "Styleguide/Elements/Grid"
+import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
+import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 
 storiesOf("Styleguide/Artwork", module).add("ArtistInfo", () => {
   return (

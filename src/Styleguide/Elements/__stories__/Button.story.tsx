@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { color, space } from "styled-system"
 import { Button } from "../"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Button", () => {
@@ -38,6 +38,18 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
         </Item>
       </Section>
 
+      <Section title="secondaryGray">
+        <Button variant="secondaryGray" size="small" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryGray" size="medium" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryGray" size="large" m={2}>
+          Follow
+        </Button>
+      </Section>
+
       <Section title="secondaryOutline">
         <Button variant="secondaryOutline" size="small" m={2}>
           Follow
@@ -49,6 +61,7 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
           Follow
         </Button>
       </Section>
+
       <Section title="Full width">
         <Button width="100%" size="large" m={2}>
           Contact Gallery

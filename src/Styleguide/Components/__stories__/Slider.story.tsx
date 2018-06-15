@@ -1,8 +1,8 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../Utils/Section"
-import { Image } from "../../Elements/Image"
-import { Slider, LargeSlider, SmallSlider } from "../../Components/Slider"
+import { Section } from "Styleguide/Utils/Section"
+import { Image } from "Styleguide/Elements/Image"
+import { Slider, LargeSlider, SmallSlider } from "Styleguide/Components/Slider"
 
 storiesOf("Styleguide/Components", module).add("Slider", () => {
   return (

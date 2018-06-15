@@ -1,20 +1,25 @@
 import React from "react"
 import styled from "styled-components"
-import s from "styled-components"
-import { Col, Row } from "../../Elements/Grid"
+import { Box } from "Styleguide/Elements/Box"
+import { Col, Row } from "Styleguide/Elements/Grid"
+import { Serif } from "@artsy/palette"
 
 export const AboutTheWork = () => {
   return (
     <Content>
       <Row>
         <Col>
-          <AboutWork>
-            Series: Lorem Ipsum Dolor Signature: Signed and numbered Publisher:
-            Factory Editions, New York Manufacturer: Mfg Group Provenance: Peter
-            Freeman Inc., New York Image rights: Courtesy of the artist and
-            Salon 94
+          <AboutWork mb={5}>
+            <Serif size="3">Series: Lorem Ipsum Dolor</Serif>
+            <Serif size="3">Signature: Signed and numbered</Serif>
+            <Serif size="3">Publisher: Factory Editions, New York</Serif>
+            <Serif size="3">Manufacturer: Mfg Group</Serif>
+            <Serif size="3">Provenance: Peter Freeman Inc., New York</Serif>
+            <Serif size="3">
+              Image rights: Courtesy of the artist and Salon 94
+            </Serif>
           </AboutWork>
-          <AdminBlurb>
+          <AdminBlurb mb={5}>
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -36,146 +41,13 @@ export const AboutTheWork = () => {
           </ReadMore>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <ArtistSection>
-            <Row>
-              <Col>
-                <ArtistName>Francesca DiMattio</ArtistName>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <MarketInsights>
-                  <DataPoint>
-                    <Bold>High auction record</Bold>
-                    $105 million sale, Sotheby’s 2013
-                  </DataPoint>
-                  <DataPoint>
-                    <Bold>Blue Chip</Bold>
-                    Represented by internationally reputable galleries.
-                  </DataPoint>
-                  <DataPoint>
-                    <Bold>Collected by major museums</Bold>
-                    Tate, Museum of Modern Art (MoMA)
-                  </DataPoint>
-                </MarketInsights>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <SelectedExhibitions>
-                  <Category>Selected exhibitions</Category>
-
-                  <ExhibitionItem>
-                    2018 Adman: Warhol Before Pop,{" "}
-                    <Light>Andy Warhol Museum</Light>
-                  </ExhibitionItem>
-                  <ExhibitionItem>
-                    2017 Brancusi: Pioneer of American Minimalism,{" "}
-                    <Light>Paul Kasmin Gallery</Light>
-                  </ExhibitionItem>
-                  <ExhibitionItem>
-                    2016 Sculpture on the Move 1946–2016,{" "}
-                    <Light>Kunstmuseum Basel</Light>
-                  </ExhibitionItem>
-
-                  <ViewAllButton>View All</ViewAllButton>
-                </SelectedExhibitions>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <ReadMore cap={3}>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolor… Read more
-                  </Text>
-                </ReadMore>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <ArtsyBio>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                    ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore
-                    eu fugiat nulla pariatur. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris.
-                  </Text>
-                </ArtsyBio>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <GalleryBio>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                    ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore
-                    eu fugiat nulla pariatur. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris.
-                  </Text>
-                </GalleryBio>
-              </Col>
-            </Row>
-          </ArtistSection>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <GallerySection>
-            <Gallery>
-              <Image>TODO: Gallery Image</Image>
-              <Metadata>
-                <Name>Salon 94</Name>
-                <Location>New York, London, Beijing, Hong Kong</Location>
-                <FollowButton>Follow Button</FollowButton>
-              </Metadata>
-            </Gallery>
-            <Gallery>
-              <Image>TODO: Gallery Image</Image>
-              <Metadata>
-                <Name>Salon 94</Name>
-                <Location>New York, London, Beijing, Hong Kong</Location>
-                <FollowButton>Follow Button</FollowButton>
-              </Metadata>
-            </Gallery>
-          </GallerySection>
-        </Col>
-      </Row>
     </Content>
   )
 }
 
-const Content = styled.div``
-const AboutWork = styled.div``
-const AdminBlurb = styled.div``
+const Content = Box
+const AboutWork = Box
+const AdminBlurb = Box
 const Text = styled.div``
 const ReadMore = styled.div``
 const ArtistSection = styled.div``

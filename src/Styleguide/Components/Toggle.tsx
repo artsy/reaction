@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Arrow } from "../Elements/Arrow"
-import { Flex } from "../Elements/Flex"
+import { Arrow } from "Styleguide/Elements/Arrow"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Sans } from "@artsy/palette"
 import { themeGet } from "styled-system"
 

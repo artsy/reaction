@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Banner, SmallBanner, LargeBanner } from "../Banner"
-import { Section } from "../../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork", module).add("Banner", () => {
   return (
