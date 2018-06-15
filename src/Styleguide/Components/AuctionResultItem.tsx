@@ -54,7 +54,7 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
             src={props.imageUrl}
             width="auto"
             height="30px"
-            mx={4}
+            mx={2}
           />
         </div>
         <div>
@@ -66,7 +66,7 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
             <Serif size="2">{props.dimensions.in}</Serif>
             <Serif size="2">{props.dimensions.cm}</Serif>
           </MetadataContainer>
-          <Box pt={3}>
+          <Box pt={1}>
             <Serif size="2">{props.organization}</Serif>
             <MetadataContainer>
               <Serif size="2">{props.auctionDate}</Serif>
@@ -76,7 +76,7 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
             </MetadataContainer>
           </Box>
 
-          <Box pt={3}>
+          <Box pt={1}>
             <Serif size="2">Sale: {props.salePrice}</Serif>
             <MetadataContainer>
               <Serif size="2">Est: {props.estimate}</Serif>
@@ -97,7 +97,7 @@ export const SmallAuctionResultItem = (props: AuctionResultItemProps) => {
             src={props.imageUrl}
             width="auto"
             height="70px"
-            mx={4}
+            mx={2}
           />
         </div>
         <div>
@@ -109,7 +109,7 @@ export const SmallAuctionResultItem = (props: AuctionResultItemProps) => {
             <Serif size="2">{props.dimensions.in}</Serif>
             <Serif size="2">{props.dimensions.cm}</Serif>
           </MetadataContainer>
-          <Box pt={3}>
+          <Box pt={1}>
             <Serif size="2">{props.organization}</Serif>
             <MetadataContainer>
               <Serif size="2">{props.auctionDate}</Serif>
@@ -140,7 +140,7 @@ export const LargeAuctionResultItem = (props: AuctionResultItemProps) => {
             src={props.imageUrl}
             width="auto"
             height="70px"
-            mx={4}
+            mx={2}
           />
         </div>
         <div>
