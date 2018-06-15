@@ -106,7 +106,7 @@ export const MobileSignUpForm: FormComponentType = props => {
     </Step>,
   ]
   return (
-    <Wizard steps={steps}>
+    <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
         const {
           form: { handleSubmit, status },

@@ -1,7 +1,7 @@
 import React from "react"
-import { LoginForm } from "./LoginForm"
-import { SignUpForm } from "./SignUpForm"
-import { ResetPasswordForm } from "./ResetPasswordForm"
+import { MobileLoginForm } from "./LoginForm"
+import { MobileSignUpForm } from "./SignUpForm"
+import { MobileResetPasswordForm } from "./ResetPasswordForm"
 import {
   FormComponentType,
   InputValues,
@@ -26,11 +26,8 @@ export class FormSwitcher extends React.Component<Props, State> {
     values: {},
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      type: this.props.type,
-    }
+  state = {
+    type: this.props.type,
   }
 
   presentModal = (newType: ModalType) => {
@@ -41,16 +38,16 @@ export class FormSwitcher extends React.Component<Props, State> {
     let Form: FormComponentType
     switch (this.state.type) {
       case ModalType.login:
-        Form = LoginForm
+        Form = MobileLoginForm
         break
       case ModalType.signup:
-        Form = SignUpForm
+        Form = MobileSignUpForm
         break
       case ModalType.resetPassword:
-        Form = ResetPasswordForm
+        Form = MobileResetPasswordForm
         break
       default:
-        return null
+        throw new Error(`${this.state.type} mode needs a component`)
     }
 
     const { values } = this.props
