@@ -38,6 +38,18 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
         </Item>
       </Section>
 
+      <Section title="secondaryGray">
+        <Button variant="secondaryGray" size="small" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryGray" size="medium" m={2}>
+          Follow
+        </Button>
+        <Button variant="secondaryGray" size="large" m={2}>
+          Follow
+        </Button>
+      </Section>
+
       <Section title="secondaryOutline">
         <Button variant="secondaryOutline" size="small" m={2}>
           Follow
@@ -49,6 +61,7 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
           Follow
         </Button>
       </Section>
+
       <Section title="Full width">
         <Button width="100%" size="large" m={2}>
           Contact Gallery

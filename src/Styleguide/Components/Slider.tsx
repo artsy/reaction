@@ -4,6 +4,7 @@ import { Responsive } from "Styleguide/Utils/Responsive"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { ImageProps } from "Styleguide/Elements/Image"
+import { Box } from "Styleguide/Elements/Box"
 
 import {
   border,
@@ -29,7 +30,7 @@ export class Slider extends React.Component {
 
 export const LargeSlider = props => {
   return (
-    <Container>
+    <Box>
       <Flex justifyContent="space-around" alignItems="center">
         <Button>
           <Arrow direction="left" color="black10" />
@@ -48,7 +49,7 @@ export const LargeSlider = props => {
           <Arrow direction="right" color="black10" />
         </Button>
       </Flex>
-    </Container>
+    </Box>
   )
 }
 
@@ -85,12 +86,6 @@ export const SmallSlider = props => {
   )
 }
 
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  min-width: 0;
-`
-
 const Button = styled.div`
   height: 100%;
   position: relative;
@@ -101,8 +96,7 @@ const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
   overflow-x: scroll;
   display: inline-block;
   white-space: nowrap;
-  text-align: center;
-  width: 95%;
+  width: 100%;
   height: 100%;
 
   ${width};

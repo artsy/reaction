@@ -3,17 +3,23 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Flex, FlexProps } from "./Flex"
 import {
-  themeGet,
+  bottom,
   display,
   DisplayProps,
-  space,
-  SpaceProps,
-  maxWidth,
-  MaxWidthProps,
-  width,
-  WidthProps,
   height,
   HeightProps,
+  left,
+  maxWidth,
+  MaxWidthProps,
+  position,
+  PositionProps,
+  right,
+  space,
+  SpaceProps,
+  themeGet,
+  top,
+  width,
+  WidthProps,
 } from "styled-system"
 
 const hover = css`
@@ -48,10 +54,16 @@ export interface BoxProps
   extends DisplayProps,
     SpaceProps,
     WidthProps,
-    HeightProps {}
+    HeightProps,
+    PositionProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
   ${display};
   ${width};
   ${height};
+  ${position};
+  ${top};
+  ${right};
+  ${bottom};
+  ${left};
 `
