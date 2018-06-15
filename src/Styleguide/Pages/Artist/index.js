@@ -25,6 +25,8 @@ import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
 import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 
+import { ArtistDetails } from "./ArtistDetails"
+
 export class Artist extends React.Component {
   render() {
     return (
@@ -33,11 +35,8 @@ export class Artist extends React.Component {
           <Col />
         </Row>
         <Row>
-          <Col sm={10}>
-            <ArtistMetadata />
-          </Col>
-          <Col sm={2}>
-            <FollowButton variant="primaryBlack">Follow</FollowButton>
+          <Col sm={12}>
+            <ArtistDetails />
           </Col>
         </Row>
         <Row>
@@ -201,7 +200,6 @@ const Sidebar = styled.div`
 `
 const ArtworkGrid = styled(Flex)``
 
-const ArtistMetadata = styled.div``
 const Details = styled.div``
 const DetailItem = styled.div``
 const Category = styled.div``
