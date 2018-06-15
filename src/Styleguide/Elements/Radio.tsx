@@ -48,13 +48,13 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     const { children } = this.props
 
     return (
-      <Flex my={1} onClick={this.toggleSelected}>
-        <RadioButton border={1} mr={3} selected={selected}>
+      <Flex my={0.3} onClick={this.toggleSelected}>
+        <RadioButton border={1} mr={1} selected={selected}>
           {selected && <InnerCircle />}
         </RadioButton>
         <Label>{children}</Label>
       </Flex>
-    )
+    );
   }
 }
 

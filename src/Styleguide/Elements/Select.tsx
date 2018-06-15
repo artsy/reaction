@@ -38,7 +38,7 @@ export const SmallSelect = props => {
   return (
     <SmallSelectContainer {...props}>
       <label>
-        <Sans size="2" display="inline" mr={2}>
+        <Sans size="2" display="inline" mr={0.5}>
           Sort:
         </Sans>
 
@@ -50,7 +50,7 @@ export const SmallSelect = props => {
         </select>
       </label>
     </SmallSelectContainer>
-  )
+  );
 }
 
 const hideDefaultSkin = css`

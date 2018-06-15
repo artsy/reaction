@@ -54,11 +54,11 @@ export class Artists extends React.Component<ArtistsProps> {
   render() {
     const { artists } = this.props
     return (
-      <ArtistsContainer pb={4}>
+      <ArtistsContainer pb={2}>
         {artists.length === 1
           ? this.renderSingleArtist(artists[0])
           : this.renderMultipleArtists(artists)}
       </ArtistsContainer>
-    )
+    );
   }
 }

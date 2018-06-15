@@ -32,11 +32,11 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkMetadataContainer pb={4}>
+      <ArtworkMetadataContainer pb={2}>
         <TitleInfo artwork={artwork} />
         {artwork.edition_sets.length < 2 && <SizeInfo artwork={artwork} />}
         <Classification artwork={artwork} />
       </ArtworkMetadataContainer>
-    )
+    );
   }
 }

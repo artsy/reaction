@@ -24,11 +24,11 @@ export class Classification extends React.Component<ClassificationProps> {
       return null
     }
     return (
-      <ClassificationContainer pt={4}>
+      <ClassificationContainer pt={2}>
         <Serif size="2">
           <a href="#">{artwork.attribution_class.short_description}</a>.
         </Serif>
       </ClassificationContainer>
-    )
+    );
   }
 }

@@ -12,22 +12,24 @@ const isSpaceAttr = attr =>
     "pr",
     "pt",
     "pb",
-  ].includes(attr.value.name.name)
+  ].includes(attr.node.name.name)
 
 const convertSpace = s => [0, 0.3, 0.5, 1, 2, 3, 4, 6, 9, 12, 18][s]
 
-export default function transformer(file, api) {
-  const j = api.jscodeshift
+export default function(babel) {
+  const { types: t } = babel
 
-  return j(file.source)
-    .find(j.JSXAttribute)
-    .filter(isSpaceAttr)
-    .map(attr => {
-      // There's probably a better way to do this...
-      attr.value.value.expression.value = convertSpace(
-        attr.value.value.expression.value
-      )
-      return attr
-    })
-    .toSource()
+  return {
+    name: "ast-transform", // not required
+    visitor: {
+      JSXAttribute(path) {
+        const { name } = path.node.name
+        if (isSpaceAttr(path)) {
+          path.node.value.expression.value = convertSpace(
+            path.node.value.expression.value
+          )
+        }
+      },
+    },
+  }
 }

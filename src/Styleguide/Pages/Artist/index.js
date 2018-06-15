@@ -23,7 +23,7 @@ export class Artist extends React.Component {
           </Col>
         </Row>
 
-        <Spacer mb={5} />
+        <Spacer mb={3} />
 
         <Row>
           <Col>
@@ -50,7 +50,7 @@ export class Artist extends React.Component {
           </Col>
         </Row>
 
-        <Box my={7}>
+        <Box my={6}>
           <Separator />
         </Box>
 
@@ -60,6 +60,6 @@ export class Artist extends React.Component {
           </Col>
         </Row>
       </Grid>
-    )
+    );
   }
 }

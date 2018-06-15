@@ -24,7 +24,7 @@ export class ArtistHeader extends React.Component {
 export const LargeArtistHeader = () => {
   return (
     <Box width="100%">
-      <SliderContainer my={5}>
+      <SliderContainer my={3}>
         <LargeSlider>
           <Image src="https://picsum.photos/400/200/?random" />
           <Image src="https://picsum.photos/200/200/?random" />
@@ -46,7 +46,7 @@ export const LargeArtistHeader = () => {
         </Button>
       </Flex>
     </Box>
-  )
+  );
 }
 
 export const SmallArtistHeader = () => {
@@ -62,19 +62,19 @@ export const SmallArtistHeader = () => {
       <Flex flexDirection="column" alignItems="center">
         <Serif size="5">Donald Judd</Serif>
         <Flex>
-          <Box mx={3}>
+          <Box mx={1}>
             <Serif size="2">Brazilian, 1886-1973</Serif>
           </Box>
           <Serif size="2">4,321 followers</Serif>
         </Flex>
       </Flex>
-      <Box my={4}>
+      <Box my={2}>
         <Button variant="primaryBlack" size="medium" width="100%">
           Follow
         </Button>
       </Box>
     </Flex>
-  )
+  );
 }
 
 const SliderContainer = styled(Box)`

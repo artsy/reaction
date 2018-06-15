@@ -5,7 +5,7 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Sans } from "@artsy/palette"
 
 const wrapper = xs => props =>
-  xs ? <Flex flexDirection="column" mb={3} {...props} /> : <Box {...props} />
+  xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />
 
 export interface MarketInsight {
   primaryLabel: string
@@ -26,18 +26,18 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
             return this.props.insights.map(insight => {
               return (
                 <TextWrap key={insight.primaryLabel}>
-                  <Sans size="2" weight="medium" display="inline" mr={3}>
+                  <Sans size="2" weight="medium" display="inline" mr={1}>
                     {insight.primaryLabel}
                   </Sans>
                   <Sans size="2" display="inline" color="black60">
                     {insight.secondaryLabel}
                   </Sans>
                 </TextWrap>
-              )
-            })
+              );
+            });
           }}
         </Responsive>
       </BorderBox>
-    )
+    );
   }
 }
