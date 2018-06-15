@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { color } from "styled-system"
 import { Display, themeProps } from "@artsy/palette"
-import { Flex } from "../Elements/Flex"
+import { Flex } from "Styleguide/Elements/Flex"
 
 // http://24ways.org/2010/calculating-color-contrast/
 function getContrast(hex) {

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { color, space } from "styled-system"
 import { Button } from "../"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Button", () => {

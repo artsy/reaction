@@ -1,15 +1,9 @@
 import React from "react"
-import { Responsive } from "../Utils/Responsive"
-import { BorderBox } from "../Elements/Box"
-import { Flex } from "../Elements/Flex"
-import { Image } from "../Elements/Image"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { BorderBox } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
-
-const ScaledArtworkImage = props => (
-  <Flex height={props.height} justifyContent="center">
-    <Image {...props} />
-  </Flex>
-)
 
 export interface AuctionCardProps {
   src: string
@@ -37,7 +31,7 @@ export const LargeAuctionCard = props => (
       {props.headline}
     </Serif>
     <Serif size="3t">{props.subHeadline}</Serif>
-    <ScaledArtworkImage src={props.src} maxWidth="100%" height="auto" m={4} />
+    <ResponsiveImage src={props.src} my={4} />
     <Sans size="1" weight="medium">
       {props.badge}
     </Sans>
@@ -57,12 +51,6 @@ export const SmallAuctionCard = props => (
         {props.badge}
       </Sans>
     </Flex>
-    <ScaledArtworkImage
-      src={props.src}
-      width="auto"
-      height="82px"
-      mr={4}
-      ml={4}
-    />
+    <Image src={props.src} height="82px" mx={4} />
   </Flex>
 )

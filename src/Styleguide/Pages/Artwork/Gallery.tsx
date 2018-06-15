@@ -1,8 +1,8 @@
 import React from "react"
-import { Flex } from "../../Elements/Flex"
-import { Avatar, Button } from "../../Elements"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Avatar, Button } from "Styleguide/Elements"
 import { Serif, Sans } from "@artsy/palette"
-import { Responsive } from "../../Utils/Responsive"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export interface GalleryProps {
   src: string

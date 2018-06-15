@@ -1706,8 +1706,6 @@ exports[`Video Layout matches the snapshot 1`] = `
         >
           <div
             className="c5 c6"
-            onClick={undefined}
-            style={undefined}
           >
             
           </div>

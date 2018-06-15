@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Spring, animated } from "react-spring"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
@@ -16,16 +17,20 @@ const ModalContainer = styled.div`
   width: 440px;
   border-radius: 4px;
   padding: 20px 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 `
 
-const Overlay = styled.div`
+const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 9998;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(200, 200, 200, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  opacity: 0;
 `
 
 export class Modal extends React.Component<ModalProps, any> {
@@ -44,17 +49,30 @@ export class Modal extends React.Component<ModalProps, any> {
   }
 
   render(): JSX.Element {
-    const newProps: any = { ...this.props }
-    delete newProps.onClose
-    delete newProps.show
+    const { children, show } = this.props
 
-    if (!this.props.show) {
-      return null
-    }
+    const transitions = show
+      ? {
+          from: { opacity: 0, transform: "translate(-50%,-40%)" },
+          to: { opacity: 1, transform: "translate(-50%,-50%)" },
+        }
+      : { from: { opacity: 1 }, to: { opacity: 0 } }
+
     return (
       <div>
-        <ModalContainer {...newProps}>{this.props.children}</ModalContainer>
-        <Overlay onClick={this.close} />
+        <Spring {...transitions as any}>
+          {(styles: any) => (
+            <animated.div>
+              <Overlay
+                style={{ opacity: styles.opacity }}
+                onClick={this.close}
+                show={show}
+              />
+              <ModalContainer style={{ ...styles }}>{children}</ModalContainer>
+              <div />
+            </animated.div>
+          )}
+        </Spring>
       </div>
     )
   }

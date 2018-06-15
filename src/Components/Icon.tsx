@@ -26,11 +26,13 @@ export interface IconProps
   onClick?: () => void
 }
 
-const Icon: React.SFC<IconProps> = props => (
-  <div className={props.className} style={props.style} onClick={props.onClick}>
-    {icons[props.name]}
-  </div>
-)
+const Icon: React.SFC<IconProps> = ({
+  color,
+  font,
+  fontSize,
+  name,
+  ...props
+}) => <div {...props}>{icons[name]}</div>
 
 export default styled(Icon)`
   font-family: ${props => props.font || "artsy-icons"};

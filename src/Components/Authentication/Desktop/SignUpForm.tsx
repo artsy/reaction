@@ -39,9 +39,11 @@ export const SignUpForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-        isValid,
+        dirty,
         status,
       }: FormikProps<InputValues>) => {
+        const hasErrors = Object.keys(errors).length > 0
+
         return (
           <Form onSubmit={handleSubmit} height={430}>
             <Input
@@ -93,7 +95,9 @@ export const SignUpForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             {status && !status.success && <Error show>{status.error}</Error>}
-            <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
+            <SignUpButton disabled={isSubmitting || hasErrors || !dirty}>
+              Sign Up
+            </SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
               inline

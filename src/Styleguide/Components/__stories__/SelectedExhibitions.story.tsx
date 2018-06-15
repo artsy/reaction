@@ -4,23 +4,23 @@ import {
   SelectedExhibitions,
   SelectedExhibitionsContainer,
 } from "../SelectedExhibitions"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 
-const exhibitions = [
+export const exhibitions = [
   {
     year: "2018",
-    show: "Some show this year 1",
-    gallery: "Some gallery",
+    show: "Adman: Warhol Before Pop",
+    gallery: "Andy Warhol Museum",
   },
   {
     year: "2018",
-    show: "Some show this year 2",
-    gallery: "Some gallery",
+    show: "Brancusi: Pioneer of American Minimalism",
+    gallery: "Paul Kasmin Gallery",
   },
   {
     year: "2017",
-    show: "Blaahhhhh",
-    gallery: "You don't know me 123",
+    show: "Sculpture on the Move 1946–2016",
+    gallery: "Kunstmuseum Basel",
   },
 ]
 

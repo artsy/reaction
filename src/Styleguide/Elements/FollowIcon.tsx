@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
-import Icon from "../../Components/Icon"
+import Icon from "Components/Icon"
 import { Flex } from "./Flex"
 import { Serif } from "@artsy/palette"
 

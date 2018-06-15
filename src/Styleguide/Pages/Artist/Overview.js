@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { Col, Row } from "../../Elements/Grid"
+import { Col, Row } from "Styleguide/Elements/Grid"
 
 export const Overview = () => {
   return (
-    <Content>
+    <React.Fragment>
       <Row>
-        <Col sm={8}>
+        <Col xs={8}>
           <Row>
             <Col>
               <MarketInsights>
@@ -76,7 +76,7 @@ export const Overview = () => {
             </Col>
           </Row>
         </Col>
-        <Col sm={4}>
+        <Col xs={4}>
           <FeaturedShow>
             <FeaturedShowImage />
             <Category>Featured show</Category>
@@ -90,7 +90,7 @@ export const Overview = () => {
         <Col>
           <ArtworkBrowser>
             <Row>
-              <Col sm={3}>
+              <Col xs={3}>
                 <Filter>
                   <FilterItem>
                     <Category>Purchase Type</Category>
@@ -112,7 +112,7 @@ export const Overview = () => {
                   </FilterItem>
                 </Filter>
               </Col>
-              <Col sm={9}>
+              <Col xs={9}>
                 <Sort>
                   Sort: <Bold>Recently updated</Bold>
                 </Sort>
@@ -131,7 +131,7 @@ export const Overview = () => {
           </ArtworkBrowser>
         </Col>
       </Row>
-    </Content>
+    </React.Fragment>
   )
 }
 

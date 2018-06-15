@@ -1,8 +1,8 @@
 import React from "react"
-import { Avatar } from "../../Elements/Avatar"
+import { Avatar } from "Styleguide/Elements/Avatar"
 import { Sans, Serif } from "@artsy/palette"
-import { Flex } from "../../Elements/Flex"
-import { Responsive } from "../../Utils/Responsive"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export interface BannerProps {
   src: string

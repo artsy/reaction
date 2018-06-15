@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { Arrow } from "../Arrow"
 
 storiesOf("Styleguide/Elements", module).add("Arrow", () => {

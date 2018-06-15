@@ -2241,8 +2241,6 @@ exports[`Sections snapshots renders properly 1`] = `
             >
               <div
                 className="c41 c42"
-                onClick={undefined}
-                style={undefined}
               >
                 
               </div>

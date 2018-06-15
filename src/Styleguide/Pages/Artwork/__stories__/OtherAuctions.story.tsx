@@ -1,8 +1,8 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { OtherAuctions } from "../OtherAuctions"
-import { Section } from "../../Utils/Section"
-import { AuctionCard } from "../../Components/AuctionCard"
+import { Section } from "Styleguide/Utils/Section"
+import { AuctionCard } from "Styleguide/Components/AuctionCard"
 
 const auctions = [
   {
@@ -12,13 +12,13 @@ const auctions = [
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "https://picsum.photos/400/180/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "https://picsum.photos/200/600/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
@@ -31,12 +31,15 @@ const auctions = [
   },
 ]
 
-storiesOf("Styleguide/Sections", module).add("Other Auctions", () => {
-  return (
-    <Section title="Responsive Other Auctions">
-      <OtherAuctions>
-        {auctions.map(auction => <AuctionCard {...auction} />)}
-      </OtherAuctions>
-    </Section>
-  )
-})
+storiesOf("Styleguide/Artwork/OtherAuctions", module).add(
+  "Other Auctions",
+  () => {
+    return (
+      <Section title="Responsive Other Auctions">
+        <OtherAuctions>
+          {auctions.map(auction => <AuctionCard {...auction} />)}
+        </OtherAuctions>
+      </Section>
+    )
+  }
+)

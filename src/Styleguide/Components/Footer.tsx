@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "../Elements/Flex"
-import { Responsive } from "../Utils/Responsive"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
 import { Sans, Serif } from "@artsy/palette"
 import { FlexDirectionProps } from "styled-system"
 

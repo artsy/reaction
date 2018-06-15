@@ -46,10 +46,10 @@ export const LoginForm: FormComponentType = props => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-        isValid,
+        dirty,
         status,
       }: FormikProps<InputValues>) => {
-        const hasErrors = Object.keys(errors).length > 0 || !!status
+        const hasErrors = Object.keys(errors).length > 0
 
         return (
           <Form onSubmit={handleSubmit} height={320}>
@@ -86,7 +86,7 @@ export const LoginForm: FormComponentType = props => {
               />
             </Row>
             {status && !status.success && <Error show>{status.error}</Error>}
-            <LoginButton disabled={isSubmitting || hasErrors}>
+            <LoginButton disabled={isSubmitting || hasErrors || !dirty}>
               Log In
             </LoginButton>
             <Footer

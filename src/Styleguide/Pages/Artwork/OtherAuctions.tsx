@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react"
-import { Grid, Row, Col } from "../Elements/Grid"
-import { Flex } from "../Elements/Flex"
-import { Button } from "../Elements/Button"
-import { Responsive } from "../Utils/Responsive"
+import { Grid, Row, Col } from "Styleguide/Elements/Grid"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Button } from "Styleguide/Elements/Button"
+import { Responsive } from "Styleguide/Utils/Responsive"
 import { Serif } from "@artsy/palette"
 import { take } from "lodash"
 
