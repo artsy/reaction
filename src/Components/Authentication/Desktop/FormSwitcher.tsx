@@ -14,7 +14,7 @@ interface Props {
   values?: InputValues
   handleSubmit: SubmitHandler
   signupIntent?: string
-  redirectUrl?: string
+  redirectTo?: string
 }
 
 interface State {
