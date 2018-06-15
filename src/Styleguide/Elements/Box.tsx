@@ -47,7 +47,7 @@ export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
   ${height};
 `
 BorderBox.defaultProps = {
-  p: 4,
+  p: 2,
 }
 
 export interface BoxProps

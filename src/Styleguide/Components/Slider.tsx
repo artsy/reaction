@@ -40,7 +40,7 @@ export const LargeSlider = props => {
             props.children,
             (child: React.ReactElement<ImageProps>) => {
               return React.cloneElement(child, {
-                mx: 2,
+                mx: 0.5,
               })
             }
           )}
@@ -68,7 +68,7 @@ export const SmallSlider = props => {
               style: {
                 objectFit: "cover",
               },
-              mx: 2,
+              mx: 0.5,
               width: "100%",
               height: "200px",
             })

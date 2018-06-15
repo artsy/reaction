@@ -52,7 +52,7 @@ export class Toggle extends React.Component<ToggleProps> {
           </Flex>
         </Header>
         {expanded && (
-          <Flex flexDirection="column" alignItems="left" mt={-3} mb={1}>
+          <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
             {this.props.children}
           </Flex>
         )}

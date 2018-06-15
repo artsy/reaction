@@ -25,7 +25,7 @@ export interface ExhibitionsHeadlineProps {
   onShowClicked: Function
 }
 export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
-  <Flex justifyContent="space-between" mb={isCollapsed(props) ? 0 : 3}>
+  <Flex justifyContent="space-between" mb={isCollapsed(props) ? 0 : 1}>
     <Sans size="2" weight="medium">
       {props.exhibitionCount < MIN_FOR_SELECTED_EXHIBITIONS
         ? "Exhibitions"
