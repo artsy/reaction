@@ -38,7 +38,7 @@ export class Commercial extends React.Component<CommercialProps> {
     return editions.map((edition, index) => {
       return (
         <React.Fragment>
-          <PricingInfoContainer pb={4}>
+          <PricingInfoContainer pb={2}>
             {this.renderSaleMessage(edition)}
             <SizeInfo artwork={edition} />
           </PricingInfoContainer>
@@ -51,9 +51,9 @@ export class Commercial extends React.Component<CommercialProps> {
   render() {
     const { artwork } = this.props
     return (
-      <CommercialContainer pb={4}>
+      <CommercialContainer pb={2}>
         {artwork.edition_sets.length < 2 ? (
-          <PricingInfoContainer pb={4}>
+          <PricingInfoContainer pb={2}>
             {this.renderSaleMessage(artwork)}
           </PricingInfoContainer>
         ) : (

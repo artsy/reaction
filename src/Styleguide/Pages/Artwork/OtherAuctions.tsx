@@ -27,10 +27,10 @@ export class OtherAuctions extends React.Component<OtherAuctionsProps> {
 
 const LargeOtherAuctions = ({ cardsPerRow = 4, children }) => (
   <Flex flexDirection="column" width="100%" alignItems="center">
-    <Serif size="8" mb={3}>
+    <Serif size="8" mb={1}>
       Other auctions
     </Serif>
-    <Button variant="secondaryOutline" size="medium" mb={5}>
+    <Button variant="secondaryOutline" size="medium" mb={3}>
       View All
     </Button>
     <Grid fluid>
@@ -47,10 +47,10 @@ const LargeOtherAuctions = ({ cardsPerRow = 4, children }) => (
 
 const SmallOtherAuctions = props => (
   <React.Fragment>
-    <Serif size="8" mb={3}>
+    <Serif size="8" mb={1}>
       Other auctions
     </Serif>
-    <Button variant="secondaryOutline" size="medium" mb={5}>
+    <Button variant="secondaryOutline" size="medium" mb={3}>
       View All
     </Button>
     <hr />

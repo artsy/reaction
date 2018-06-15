@@ -75,7 +75,7 @@ export const SmallSlider = props => {
           }
         )}
       </ImageContainer>
-      <Dots justifyContent="center" mt={3}>
+      <Dots justifyContent="center" mt={1}>
         <Dot active />
         <Dot />
         <Dot />

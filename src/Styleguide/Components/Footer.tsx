@@ -29,7 +29,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
       justifyContent="space-between"
       width="100%"
     >
-      <Flex flexDirection="column" mb={3}>
+      <Flex flexDirection="column" mb={1}>
         <Sans size="2" weight="medium">
           Buy
         </Sans>
@@ -42,7 +42,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           </Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={3}>
+      <Flex flexDirection="column" mb={1}>
         <Sans size="2" weight="medium">
           Learn
         </Sans>
@@ -53,7 +53,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           </Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={3}>
+      <Flex flexDirection="column" mb={1}>
         <Sans size="2" weight="medium">
           About us
         </Sans>
@@ -67,7 +67,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           <Link href="#">Send us feedback</Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={3}>
+      <Flex flexDirection="column" mb={1}>
         <Sans size="2" weight="medium">
           Partners
         </Sans>
@@ -84,7 +84,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
 
 const Link = styled.a`
   display: block;
-  margin-top: ${props => props.theme.space[3]}px;
-  margin-bottom: ${props => props.theme.space[3]}px;
+  margin-top: ${props => props.theme.space[1]}px;
+  margin-bottom: ${props => props.theme.space[1]}px;
   text-decoration: none;
 `
