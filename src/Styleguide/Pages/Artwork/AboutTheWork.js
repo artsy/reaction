@@ -9,7 +9,7 @@ export const AboutTheWork = () => {
     <Content>
       <Row>
         <Col>
-          <AboutWork mb={0.3}>
+          <AboutWork mb={5}>
             <Serif size="3">Series: Lorem Ipsum Dolor</Serif>
             <Serif size="3">Signature: Signed and numbered</Serif>
             <Serif size="3">Publisher: Factory Editions, New York</Serif>
@@ -19,7 +19,7 @@ export const AboutTheWork = () => {
               Image rights: Courtesy of the artist and Salon 94
             </Serif>
           </AboutWork>
-          <AdminBlurb mb={0.3}>
+          <AdminBlurb mb={5}>
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -42,7 +42,7 @@ export const AboutTheWork = () => {
         </Col>
       </Row>
     </Content>
-  );
+  )
 }
 
 const Content = Box
