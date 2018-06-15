@@ -77,7 +77,7 @@ interface TabProps {
 }
 export class Tab extends React.Component<TabProps> {
   render() {
-    return this.props.children
+    return this.props.children || null
   }
 }
 
