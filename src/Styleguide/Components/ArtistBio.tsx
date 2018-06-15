@@ -8,7 +8,7 @@ export class ArtistBio extends React.Component {
       <Responsive>
         {({ xs }) => {
           if (xs) return <ReadMore>{this.props.children}</ReadMore>
-          return <ReadMore maxLineCount={10}>{this.props.children}</ReadMore>
+          return <ReadMore maxLineCount={7}>{this.props.children}</ReadMore>
         }}
       </Responsive>
     )

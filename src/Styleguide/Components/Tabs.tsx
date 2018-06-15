@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
 import { Sans } from "@artsy/palette"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Box } from "Styleguide/Elements/Box"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
@@ -66,7 +67,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         <TabsContainer mb={2} width="100%">
           {children.map(this.renderTab)}
         </TabsContainer>
-        {children[this.state.activeTabIndex]}
+        <Box pt={5}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
     )
   }

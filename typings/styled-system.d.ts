@@ -438,9 +438,11 @@ declare module "styled-system" {
 
   export function flexBasis(...args: any[]): any
 
+  export type PositionLayoutValue = "relative" | "absolute"
   export type PositionValue = string | number
 
   export interface PositionProps {
+    position?: PositionLayoutValue
     top?: PositionValue
     right?: PositionValue
     bottom?: PositionValue
