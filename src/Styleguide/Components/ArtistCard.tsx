@@ -27,7 +27,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 export const LargeArtistCard = props => (
   <BorderBox hover flexDirection="column" height="254px">
     <Flex flexDirection="column" flexGrow="1" alignItems="center">
-      <Avatar src={props.src} mb={1} />
+      <Avatar src={props.src} mb={3} />
       <Serif size="3t">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>
     </Flex>
@@ -47,10 +47,10 @@ export const SmallArtistCard = props => (
       </Sans>
       <Serif size="3t">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>
-      <Button size="small" variant="secondaryOutline" width="70px" mt={1}>
+      <Button size="small" variant="secondaryOutline" width="70px" mt={3}>
         Follow
       </Button>
     </Flex>
-    <Avatar size="small" src={props.src} ml={2} />
+    <Avatar size="small" src={props.src} ml={4} />
   </BorderBox>
 )

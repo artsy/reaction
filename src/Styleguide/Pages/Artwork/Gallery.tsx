@@ -25,11 +25,11 @@ export class Gallery extends React.Component<GalleryProps> {
 
 export const LargeGallery = props => (
   <Flex>
-    <Avatar src={props.src} mr={2} />
+    <Avatar src={props.src} mr={4} />
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="5t">{props.headline}</Serif>
       <Sans size="2">{props.subHeadline}</Sans>
-      <Button variant="secondaryOutline" size="small" mt={1} width="90px">
+      <Button variant="secondaryOutline" size="small" mt={3} width="90px">
         Follow
       </Button>
     </Flex>
@@ -41,10 +41,10 @@ export const SmallGallery = props => (
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="4">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>
-      <Button variant="secondaryOutline" size="small" mt={0.5} width="90px">
+      <Button variant="secondaryOutline" size="small" mt={2} width="90px">
         Follow
       </Button>
     </Flex>
-    <Avatar src={props.src} size="small" ml={2} />
+    <Avatar src={props.src} size="small" ml={4} />
   </Flex>
 )

@@ -31,6 +31,6 @@ export class TitleInfo extends React.Component<TitleInfoProps> {
         </Serif>
         {artwork.medium && <Serif size="2">{artwork.medium}</Serif>}
       </TitleInfoContainer>
-    );
+    )
   }
 }

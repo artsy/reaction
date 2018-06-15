@@ -10,6 +10,6 @@ const HR = styled.div.attrs<SpaceProps>({})`
 
 export class Separator extends React.Component {
   render() {
-    return <HR mb={2} />;
+    return <HR mb={4} />
   }
 }

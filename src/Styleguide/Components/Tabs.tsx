@@ -64,12 +64,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
     return (
       <React.Fragment>
-        <TabsContainer mb={0.5} width="100%">
+        <TabsContainer mb={2} width="100%">
           {children.map(this.renderTab)}
         </TabsContainer>
-        <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
+        <Box pt={5}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
-    );
+    )
   }
 }
 

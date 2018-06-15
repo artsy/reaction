@@ -75,7 +75,7 @@ export const SmallSlider = props => {
           }
         )}
       </ImageContainer>
-      <Dots justifyContent="center" mt={1}>
+      <Dots justifyContent="center" mt={3}>
         <Dot active />
         <Dot />
         <Dot />
@@ -83,7 +83,7 @@ export const SmallSlider = props => {
         <Dot />
       </Dots>
     </Flex>
-  );
+  )
 }
 
 const Button = styled.div`

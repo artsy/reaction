@@ -31,7 +31,7 @@ export const LargeAuctionCard = props => (
       {props.headline}
     </Serif>
     <Serif size="3t">{props.subHeadline}</Serif>
-    <ResponsiveImage src={props.src} my={2} />
+    <ResponsiveImage src={props.src} my={4} />
     <Sans size="1" weight="medium">
       {props.badge}
     </Sans>
@@ -51,6 +51,6 @@ export const SmallAuctionCard = props => (
         {props.badge}
       </Sans>
     </Flex>
-    <Image src={props.src} height="82px" mx={2} />
+    <Image src={props.src} height="82px" mx={4} />
   </Flex>
 )

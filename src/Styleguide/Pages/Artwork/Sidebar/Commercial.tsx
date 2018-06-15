@@ -38,22 +38,22 @@ export class Commercial extends React.Component<CommercialProps> {
     return editions.map((edition, index) => {
       return (
         <React.Fragment>
-          <PricingInfoContainer pb={2}>
+          <PricingInfoContainer pb={4}>
             {this.renderSaleMessage(edition)}
             <SizeInfo artwork={edition} />
           </PricingInfoContainer>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
-      );
-    });
+      )
+    })
   }
 
   render() {
     const { artwork } = this.props
     return (
-      <CommercialContainer pb={2}>
+      <CommercialContainer pb={4}>
         {artwork.edition_sets.length < 2 ? (
-          <PricingInfoContainer pb={2}>
+          <PricingInfoContainer pb={4}>
             {this.renderSaleMessage(artwork)}
           </PricingInfoContainer>
         ) : (
@@ -65,6 +65,6 @@ export class Commercial extends React.Component<CommercialProps> {
           </Button>
         )}
       </CommercialContainer>
-    );
+    )
   }
 }

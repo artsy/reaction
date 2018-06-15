@@ -23,40 +23,40 @@ export const LargePagination = () => {
   return (
     <Flex flexDirection="row">
       <Page num={1} />
-      <PageSpan mx={0.5} />
+      <PageSpan mx={2} />
 
       <Page num={4} active />
       <Page num={5} />
       <Page num={6} />
 
-      <PageSpan mx={0.3} />
+      <PageSpan mx={1} />
       <Page num={7} />
 
       <PrevButton />
       <NextButton />
     </Flex>
-  );
+  )
 }
 
 export const SmallPagination = () => {
   return (
     <Flex flexDirection="row" width="100%">
-      <Flex width="50%" pr={0.5}>
+      <Flex width="50%" pr={2}>
         <ButtonWithBorder
           alignItems="center"
           justifyContent="flex-start"
-          pl={1}
+          pl={3}
         >
           <Arrow direction="left" />
         </ButtonWithBorder>
       </Flex>
-      <Flex width="50%" pl={0.5}>
-        <ButtonWithBorder alignItems="center" justifyContent="flex-end" pr={1}>
+      <Flex width="50%" pl={2}>
+        <ButtonWithBorder alignItems="center" justifyContent="flex-end" pr={3}>
           <Arrow direction="right" />
         </ButtonWithBorder>
       </Flex>
     </Flex>
-  );
+  )
 }
 
 const Page = ({ num, ...props }) => {
@@ -79,22 +79,22 @@ const PageSpan = ({ mx }) => {
 
 const PrevButton = props => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
+    <Sans size="3" weight="medium" display="inline" mx={2}>
       <a href="#" className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
     </Sans>
-  );
+  )
 }
 
 const NextButton = props => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
+    <Sans size="3" weight="medium" display="inline" mx={2}>
       <a href="#" className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>
-  );
+  )
 }
 
 const activeButton = css`

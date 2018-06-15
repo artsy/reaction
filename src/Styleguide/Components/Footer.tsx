@@ -29,7 +29,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
       justifyContent="space-between"
       width="100%"
     >
-      <Flex flexDirection="column" mb={1}>
+      <Flex flexDirection="column" mb={3}>
         <Sans size="2" weight="medium">
           Buy
         </Sans>
@@ -42,7 +42,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           </Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={1}>
+      <Flex flexDirection="column" mb={3}>
         <Sans size="2" weight="medium">
           Learn
         </Sans>
@@ -53,7 +53,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           </Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={1}>
+      <Flex flexDirection="column" mb={3}>
         <Sans size="2" weight="medium">
           About us
         </Sans>
@@ -67,7 +67,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           <Link href="#">Send us feedback</Link>
         </Serif>
       </Flex>
-      <Flex flexDirection="column" mb={1}>
+      <Flex flexDirection="column" mb={3}>
         <Sans size="2" weight="medium">
           Partners
         </Sans>
@@ -79,7 +79,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
         </Serif>
       </Flex>
     </Flex>
-  );
+  )
 }
 
 const Link = styled.a`
