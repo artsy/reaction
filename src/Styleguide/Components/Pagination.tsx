@@ -124,5 +124,5 @@ const ButtonWithBorder = styled(Flex)`
   border-color: ${themeGet("colors.black10")};
   border-radius: 3px;
   width: 100%;
-  height: ${props => props.theme.space[6]}px;
+  height: ${props => props.theme.space[4]}px;
 `

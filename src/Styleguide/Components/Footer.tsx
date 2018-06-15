@@ -84,7 +84,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
 
 const Link = styled.a`
   display: block;
-  margin-top: ${props => props.theme.space[3]}px;
-  margin-bottom: ${props => props.theme.space[3]}px;
+  margin-top: ${props => props.theme.space[1]}px;
+  margin-bottom: ${props => props.theme.space[1]}px;
   text-decoration: none;
 `

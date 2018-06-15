@@ -79,6 +79,6 @@ export const SmallArtistHeader = () => {
 
 const SliderContainer = styled(Box)`
   position: relative;
-  left: -${props => props.theme.space[4]}px;
-  width: calc(100% + ${props => props.theme.space[6]}px);
+  left: -${props => props.theme.space[2]}px;
+  width: calc(100% + ${props => props.theme.space[4]}px);
 `
