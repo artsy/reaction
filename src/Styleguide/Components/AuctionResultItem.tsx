@@ -45,8 +45,12 @@ export class AuctionResultItem extends React.Component<AuctionResultItemProps> {
 }
 
 export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => (
-  <Flex p={2} width="100%" justifyContent="space-between">
-    <Flex flexDirection="column" justifyContent="space-between">
+  <Flex p={2} width="100%">
+    <Flex
+      flexBasis="40px"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
       <div>
         <ScaledArtworkImage
           src={props.imageUrl}
@@ -57,7 +61,7 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => (
         />
       </div>
     </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
+    <Flex flexDirection="column">
       <div>
         <Serif size="3t">
           <Title>{props.title}, </Title>
@@ -82,8 +86,12 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => (
 )
 
 export const SmallAuctionResultItem = (props: AuctionResultItemProps) => (
-  <Flex p={3} width="100%" justifyContent="space-between">
-    <Flex flexDirection="column" justifyContent="space-between">
+  <Flex p={3} width="100%">
+    <Flex
+      flexDirection="column"
+      flexBasis="70px"
+      justifyContent="space-between"
+    >
       <div>
         <ScaledArtworkImage
           src={props.imageUrl}
@@ -94,7 +102,7 @@ export const SmallAuctionResultItem = (props: AuctionResultItemProps) => (
         />
       </div>
     </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
+    <Flex flexBasis="33%" flexDirection="column" justifyContent="space-between">
       <div>
         <Serif size="3t">
           <Title>{props.title}, </Title>
