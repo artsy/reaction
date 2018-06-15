@@ -47,7 +47,7 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
       return locationCities.indexOf(city) === pos
     })
     return (
-      <Serif size="2" display="inline-block" pl={3} pt={1}>
+      <Serif size="2" display="inline-block" pl={1} pt={0.3}>
         {filteredForDuplicates.join(", ")}
       </Serif>
     )
@@ -56,13 +56,13 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
   render() {
     const { artwork, partner } = this.props
     return (
-      <PartnerInfoContainer pb={4}>
+      <PartnerInfoContainer pb={2}>
         {artwork && artwork.collecting_institution
           ? this.renderCollectingInstitution(artwork)
           : this.renderPartnerName(partner)}
         {partner.locations.length > 0 && (
           <LocationsContainer>
-            <Flex width="100%" pt={3}>
+            <Flex width="100%" pt={1}>
               <Flex flexDirection="column">
                 <Location />
               </Flex>
