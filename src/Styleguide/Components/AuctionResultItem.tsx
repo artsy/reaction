@@ -6,6 +6,7 @@ import { Serif } from "@artsy/palette"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
 import TextLink from "../../Components/TextLink"
+import { Box } from "../Elements/Box"
 
 const ScaledArtworkImage = props => (
   <Flex height={props.height} justifyContent="center">
@@ -44,142 +45,134 @@ export class AuctionResultItem extends React.Component<AuctionResultItemProps> {
   }
 }
 
-export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => (
-  <Flex p={2} width="100%">
-    <Flex
-      flexBasis="40px"
-      flexDirection="column"
-      justifyContent="space-between"
-    >
-      <div>
-        <ScaledArtworkImage
-          src={props.imageUrl}
-          width="auto"
-          height="30px"
-          mr={4}
-          ml={4}
-        />
-      </div>
-    </Flex>
-    <Flex flexDirection="column">
-      <div>
-        <Serif size="3t">
-          <Title>{props.title}, </Title>
-          {props.date}
-        </Serif>
-        <MetadataContainer>
-          <Serif size="3t">{props.dimensions.in}</Serif>
-          <Serif size="3t">{props.dimensions.cm}</Serif>
-        </MetadataContainer>
-        <br />
-        <Serif size="3t">{props.organization}</Serif>
-        <MetadataContainer>
-          <Serif size="3t">{props.auctionDate}</Serif>
-        </MetadataContainer>
-        <Serif size="3t">Sale: {props.salePrice}</Serif>
-        <MetadataContainer>
-          <Serif size="3t">Est: {props.estimate}</Serif>
-        </MetadataContainer>
-      </div>
-    </Flex>
-  </Flex>
-)
-
-export const SmallAuctionResultItem = (props: AuctionResultItemProps) => (
-  <Flex p={3} width="100%">
-    <Flex
-      flexDirection="column"
-      flexBasis="70px"
-      justifyContent="space-between"
-    >
-      <div>
-        <ScaledArtworkImage
-          src={props.imageUrl}
-          width="auto"
-          height="70px"
-          mr={4}
-          ml={4}
-        />
-      </div>
-    </Flex>
-    <Flex flexBasis="33%" flexDirection="column" justifyContent="space-between">
-      <div>
-        <Serif size="3t">
-          <Title>{props.title}, </Title>
-          {props.date}
-        </Serif>
-        <MetadataContainer>
-          <Serif size="3t">{props.dimensions.in}</Serif>
-          <Serif size="3t">{props.dimensions.cm}</Serif>
-        </MetadataContainer>
-        <br />
-        <Serif size="3t">{props.organization}</Serif>
-        <MetadataContainer>
-          <Serif size="3t">{props.auctionDate}</Serif>
-          <Serif size="3t">
-            <TextLink underline>View Details</TextLink>
+export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
+  return (
+    <Flex width="100%" justifyContent="space-between">
+      <Flex width="70%">
+        <div>
+          <ScaledArtworkImage
+            src={props.imageUrl}
+            width="auto"
+            height="30px"
+            mx={4}
+          />
+        </div>
+        <div>
+          <Serif size="2">
+            <Title>{props.title}, </Title>
+            {props.date}
           </Serif>
-        </MetadataContainer>
-      </div>
-    </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
-      <div>
-        <Serif size="3t">Sale: {props.salePrice}</Serif>
-        <MetadataContainer>
-          <Serif size="3t">Est: {props.estimate}</Serif>
-        </MetadataContainer>
-      </div>
-    </Flex>
-  </Flex>
-)
+          <MetadataContainer>
+            <Serif size="2">{props.dimensions.in}</Serif>
+            <Serif size="2">{props.dimensions.cm}</Serif>
+          </MetadataContainer>
+          <Box pt={3}>
+            <Serif size="2">{props.organization}</Serif>
+            <MetadataContainer>
+              <Serif size="2">{props.auctionDate}</Serif>
+              <Serif size="2">
+                <TextLink underline>View Details</TextLink>
+              </Serif>
+            </MetadataContainer>
+          </Box>
 
-export const LargeAuctionResultItem = (props: AuctionResultItemProps) => (
-  <Flex p={4} width="100%" justifyContent="space-between">
-    <Flex flexDirection="column" justifyContent="space-between">
-      <div>
-        <ScaledArtworkImage
-          src={props.imageUrl}
-          width="auto"
-          height="70px"
-          mr={4}
-          ml={4}
-        />
-      </div>
+          <Box pt={3}>
+            <Serif size="2">Sale: {props.salePrice}</Serif>
+            <MetadataContainer>
+              <Serif size="2">Est: {props.estimate}</Serif>
+            </MetadataContainer>
+          </Box>
+        </div>
+      </Flex>
     </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
+  )
+}
+
+export const SmallAuctionResultItem = (props: AuctionResultItemProps) => {
+  return (
+    <Flex width="100%" justifyContent="space-between">
+      <Flex width="70%">
+        <div>
+          <ScaledArtworkImage
+            src={props.imageUrl}
+            width="auto"
+            height="70px"
+            mx={4}
+          />
+        </div>
+        <div>
+          <Serif size="2">
+            <Title>{props.title}, </Title>
+            {props.date}
+          </Serif>
+          <MetadataContainer>
+            <Serif size="2">{props.dimensions.in}</Serif>
+            <Serif size="2">{props.dimensions.cm}</Serif>
+          </MetadataContainer>
+          <Box pt={3}>
+            <Serif size="2">{props.organization}</Serif>
+            <MetadataContainer>
+              <Serif size="2">{props.auctionDate}</Serif>
+              <Serif size="2">
+                <TextLink underline>View Details</TextLink>
+              </Serif>
+            </MetadataContainer>
+          </Box>
+        </div>
+      </Flex>
+
       <div>
-        <Serif size="3t">
-          <Title>{props.title}, </Title>
-          {props.date}
-        </Serif>
+        <Serif size="2">Sale: {props.salePrice}</Serif>
         <MetadataContainer>
-          <Serif size="3t">{props.dimensions.in}</Serif>
-          <Serif size="3t">{props.dimensions.cm}</Serif>
-          <Serif size="3t">{props.description}</Serif>
+          <Serif size="2">Est: {props.estimate}</Serif>
         </MetadataContainer>
       </div>
     </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
+  )
+}
+
+export const LargeAuctionResultItem = (props: AuctionResultItemProps) => {
+  return (
+    <Flex width="100%" justifyContent="space-between">
+      <Flex width="40%">
+        <div>
+          <ScaledArtworkImage
+            src={props.imageUrl}
+            width="auto"
+            height="70px"
+            mx={4}
+          />
+        </div>
+        <div>
+          <Serif size="2">
+            <Title>{props.title}, </Title>
+            {props.date}
+          </Serif>
+          <MetadataContainer>
+            <Serif size="2">{props.dimensions.in}</Serif>
+            <Serif size="2">{props.dimensions.cm}</Serif>
+            <Serif size="1">{props.description}</Serif>
+          </MetadataContainer>
+        </div>
+      </Flex>
       <div>
-        <Serif size="3t">{props.organization}</Serif>
+        <Serif size="2">{props.organization}</Serif>
         <MetadataContainer>
-          <Serif size="3t">{props.auctionDate}</Serif>
-          <Serif size="3t">
+          <Serif size="2">{props.auctionDate}</Serif>
+          <Serif size="2">
             <TextLink underline>Full Description</TextLink>
           </Serif>
         </MetadataContainer>
       </div>
-    </Flex>
-    <Flex flexDirection="column" justifyContent="space-between">
       <div>
-        <Serif size="3t">Sale: {props.salePrice}</Serif>
+        <Serif size="2">Sale: {props.salePrice}</Serif>
         <MetadataContainer>
-          <Serif size="3t">Est: {props.estimate}</Serif>
+          <Serif size="2">Est: {props.estimate}</Serif>
         </MetadataContainer>
       </div>
     </Flex>
-  </Flex>
-)
+  )
+}
 
 const MetadataContainer = styled.div`
   color: ${themeGet("colors.black60")};
