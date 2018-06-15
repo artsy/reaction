@@ -48,8 +48,8 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     const { children } = this.props
 
     return (
-      <Flex my={1} onClick={this.toggleSelected}>
-        <RadioButton border={1} mr={3} selected={selected}>
+      <Flex my={0.3} onClick={this.toggleSelected}>
+        <RadioButton border={1} mr={1} selected={selected}>
           {selected && <InnerCircle />}
         </RadioButton>
         <Label>{children}</Label>
@@ -73,7 +73,7 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
 
     const backgroundColor = selected ? black100 : white100
     const borderColor = selected ? black100 : black10
-    const buttonSize = space[4]
+    const buttonSize = space[2]
 
     return `
       background-color: ${backgroundColor};
@@ -88,8 +88,8 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
 `
 
 const InnerCircle = styled.div`
-  width: ${props => props.theme.space[3]}px;
-  height: ${props => props.theme.space[3]}px;
+  width: ${props => props.theme.space[1]}px;
+  height: ${props => props.theme.space[1]}px;
   border-radius: 50%;
   background-color: white;
   position: relative;

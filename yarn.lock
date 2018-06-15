@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@artsy/palette@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.4.2.tgz#1d1ac01fe97ef30a80ae0e48126a0680f56eb067"
+"@artsy/palette@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.0.0.tgz#66a2d6718aa7c853c926a1b649c121cd2c8788d1"
   dependencies:
     react "^16.3.2"
     react-primitives "^0.5.0"

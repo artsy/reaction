@@ -49,8 +49,8 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     const { children } = this.props
 
     return (
-      <Flex my={2} onClick={this.toggleSelected}>
-        <CheckboxButton border={1} mr={3} selected={selected}>
+      <Flex my={0.5} onClick={this.toggleSelected}>
+        <CheckboxButton border={1} mr={1} selected={selected}>
           {selected && (
             <Icon
               name="check"
@@ -82,7 +82,7 @@ const CheckboxButton = styled.div.attrs<CheckboxToggleProps>({})`
 
     const backgroundColor = selected ? black100 : white100
     const borderColor = selected ? black100 : black10
-    const buttonSize = space[4]
+    const buttonSize = space[2]
 
     return `
       background-color: ${backgroundColor};

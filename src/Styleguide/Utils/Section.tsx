@@ -36,7 +36,7 @@ export class Section extends React.Component<SectionProps> {
             <Sans size="4" color="black60">
               {this.props.title}
             </Sans>
-            <Flex width="20px" justifyContent="center">
+            <Flex width={2} justifyContent="center">
               <Sans size="6" color="black60">
                 {this.state.expanded ? "-" : "+"}
               </Sans>
@@ -47,8 +47,8 @@ export class Section extends React.Component<SectionProps> {
           <Flex
             flexDirection="column"
             alignItems="center"
-            my={4}
-            mx={3}
+            my={2}
+            mx={1}
             maxWidth={maxWidth}
           >
             {this.props.children}

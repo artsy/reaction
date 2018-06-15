@@ -13,7 +13,7 @@ import {
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string }
   csrf?: string
-  redirectUrl?: string
+  redirectTo?: string
   handleSubmit?: (
     type: ModalType,
     values: InputValues,
@@ -49,7 +49,7 @@ export class ModalManager extends Component<
   }
 
   render() {
-    const { csrf, submitUrls, redirectUrl } = this.props
+    const { csrf, submitUrls, redirectTo } = this.props
     const { currentType, copy } = this.state
 
     if (!currentType) {
@@ -58,7 +58,7 @@ export class ModalManager extends Component<
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
       ? this.props.handleSubmit.bind(this, currentType)
-      : defaultHandleSubmit(submitUrls[currentType], csrf, redirectUrl)
+      : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
     return (
       <DesktopModal

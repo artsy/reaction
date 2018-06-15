@@ -26,7 +26,7 @@ export class Banner extends React.Component<BannerProps> {
 
 export const LargeBanner = props => (
   <Flex flexDirection="row">
-    <Avatar src={props.src} mr={4} />
+    <Avatar src={props.src} mr={2} />
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
@@ -50,6 +50,6 @@ export const SmallBanner = props => (
         {props.subHeadline}
       </Serif>
     </Flex>
-    <Avatar size="small" src={props.src} ml={4} />
+    <Avatar size="small" src={props.src} ml={2} />
   </Flex>
 )

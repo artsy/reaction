@@ -2,6 +2,7 @@ import React from "react"
 import { Tabs, Tab } from "Styleguide/Components/Tabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
+import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Articles } from "./Articles"
 import { ArtistHeader } from "./ArtistHeader"
@@ -10,6 +11,7 @@ import { CV } from "./CV"
 import { Overview } from "./Overview"
 import { RelatedArtists } from "./RelatedArtists"
 import { Shows } from "./Shows"
+import { Footer } from "Styleguide/Components/Footer"
 
 export class Artist extends React.Component {
   render() {
@@ -21,7 +23,7 @@ export class Artist extends React.Component {
           </Col>
         </Row>
 
-        <Spacer mb={5} />
+        <Spacer mb={3} />
 
         <Row>
           <Col>
@@ -47,7 +49,17 @@ export class Artist extends React.Component {
             </Tabs>
           </Col>
         </Row>
+
+        <Box my={6}>
+          <Separator />
+        </Box>
+
+        <Row>
+          <Col>
+            <Footer />
+          </Col>
+        </Row>
       </Grid>
-    )
+    );
   }
 }
