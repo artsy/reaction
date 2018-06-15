@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Separator } from "../../Elements/Separator"
+import { Separator } from "Styleguide/Elements/Separator"
 import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { Commercial } from "./Sidebar/Commercial"

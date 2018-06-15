@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { Responsive } from "../Utils/Responsive"
+import { Responsive } from "Styleguide/Utils/Responsive"
 import { Sans } from "@artsy/palette"
 
 import { PositionProps, space, SpaceProps, themeGet } from "styled-system"

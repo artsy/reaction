@@ -1,6 +1,6 @@
 import React from "react"
 import { ReadMore } from "./ReadMore"
-import { Responsive } from "../Utils/Responsive"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export class ArtistBio extends React.Component {
   render() {

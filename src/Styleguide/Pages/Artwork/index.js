@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Grid, Col, Row } from "../../Elements/Grid"
+import { Grid, Col, Row } from "Styleguide/Elements/Grid"
 import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
@@ -12,10 +12,10 @@ import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
-import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
-import { bio } from "../../Components/__stories__/ArtistBio.story"
-import { insights } from "../../Components/__stories__/MarketInsight.story"
-import { exhibitions } from "../../Components/__stories__/SelectedExhibitions.story"
+import { ImageCarousel } from "./ImageCarousel"
+import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
+import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 
 export class Artwork extends Component {
   state = {

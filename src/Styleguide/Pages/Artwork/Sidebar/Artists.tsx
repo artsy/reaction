@@ -2,7 +2,7 @@ import React from "react"
 import { Serif } from "@artsy/palette"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
-import { FollowIcon } from "../../../Elements/FollowIcon"
+import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
 interface ArtistsProps {
   artists: Array<{

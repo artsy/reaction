@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { Display, Sans, Serif, themeProps } from "@artsy/palette"
 import { Flex } from "../Flex"
 

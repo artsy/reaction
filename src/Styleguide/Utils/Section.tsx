@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "../Elements/Flex"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Sans, themeProps } from "@artsy/palette"
 import { themeGet } from "styled-system"
 

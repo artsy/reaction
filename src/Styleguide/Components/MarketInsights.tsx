@@ -1,7 +1,7 @@
 import React from "react"
-import { Responsive } from "../Utils/Responsive"
-import { Box, BorderBox } from "../Elements/Box"
-import { Flex } from "../Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { Box, BorderBox } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Sans } from "@artsy/palette"
 
 const wrapper = xs => props =>

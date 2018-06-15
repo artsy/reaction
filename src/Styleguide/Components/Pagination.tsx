@@ -2,9 +2,9 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Sans } from "@artsy/palette"
-import { Responsive } from "../Utils/Responsive"
-import { Arrow } from "../Elements/Arrow"
-import { Flex } from "../Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { Arrow } from "Styleguide/Elements/Arrow"
+import { Flex } from "Styleguide/Elements/Flex"
 
 export class Pagination extends React.Component {
   render() {

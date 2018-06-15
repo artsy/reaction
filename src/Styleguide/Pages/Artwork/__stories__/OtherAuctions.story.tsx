@@ -1,8 +1,8 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { OtherAuctions } from "../OtherAuctions"
-import { Section } from "../../../Utils/Section"
-import { AuctionCard } from "../../../Components/AuctionCard"
+import { Section } from "Styleguide/Utils/Section"
+import { AuctionCard } from "Styleguide/Components/AuctionCard"
 
 const auctions = [
   {
@@ -31,12 +31,15 @@ const auctions = [
   },
 ]
 
-storiesOf("Styleguide/Artwork", module).add("Other Auctions", () => {
-  return (
-    <Section title="Responsive Other Auctions">
-      <OtherAuctions>
-        {auctions.map(auction => <AuctionCard {...auction} />)}
-      </OtherAuctions>
-    </Section>
-  )
-})
+storiesOf("Styleguide/Artwork/OtherAuctions", module).add(
+  "Other Auctions",
+  () => {
+    return (
+      <Section title="Responsive Other Auctions">
+        <OtherAuctions>
+          {auctions.map(auction => <AuctionCard {...auction} />)}
+        </OtherAuctions>
+      </Section>
+    )
+  }
+)

@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { ArtistCard, SmallArtistCard, LargeArtistCard } from "../ArtistCard"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("ArtistCard", () => {
   return (

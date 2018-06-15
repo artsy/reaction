@@ -1,8 +1,8 @@
 import React from "react"
-import { Responsive } from "../Utils/Responsive"
-import { BorderBox } from "../Elements/Box"
-import { Flex } from "../Elements/Flex"
-import { Image, ResponsiveImage } from "../Elements/Image"
+import { Responsive } from "Styleguide/Utils/Responsive"
+import { BorderBox } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
 import { Serif, Sans } from "@artsy/palette"
 
 export interface AuctionCardProps {
