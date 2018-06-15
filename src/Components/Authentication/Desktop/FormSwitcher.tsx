@@ -8,6 +8,8 @@ import {
   ModalType,
   SubmitHandler,
 } from "../Types"
+import { track } from "Utils/track"
+import Events from "Utils/Events"
 
 interface Props {
   type: ModalType
@@ -17,12 +19,14 @@ interface Props {
     signupIntent?: string
     redirectTo?: string
   }
+  tracking?: any
 }
 
 interface State {
   type?: ModalType
 }
 
+@track({}, { dispatch: data => Events.postEvent(data) })
 export class FormSwitcher extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
@@ -33,6 +37,28 @@ export class FormSwitcher extends React.Component<Props, State> {
     this.state = {
       type: this.props.type,
     }
+  }
+
+  componentDidMount() {
+    const { signupIntent, redirectUrl, type, tracking } = this.props
+
+    // Analytics
+    const event = Object.assign(
+      {
+        action: "Auth impression",
+        type,
+        // label: contextModule,
+        // modal_copy: copy,
+      },
+      type === "signup"
+        ? {
+            signup_intent: signupIntent,
+            // signup_redirect: redirectUrl || destination,
+            onboarding: !redirectUrl,
+          }
+        : null
+    )
+    tracking.trackEvent(event)
   }
 
   presentModal = (newType: ModalType) => {
