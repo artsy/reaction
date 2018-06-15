@@ -33,7 +33,7 @@ export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
       {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
     {isCollapsed(props) && (
-      <Sans size="2" color="black60" ml={4} onClick={props.onShowClicked}>
+      <Sans size="2" color="black60" ml={2} onClick={props.onShowClicked}>
         Show
       </Sans>
     )}
@@ -49,7 +49,7 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
     <Sans size="2">{props.year}</Sans>
     <Flex flexDirection="column">
       {props.exhibitions.map(exhibition => (
-        <Box key={exhibition.show} display="inline" ml={3}>
+        <Box key={exhibition.show} display="inline" ml={1}>
           <Sans size="2" display="inline" verticalAlign="top">
             {exhibition.show}
             {", "}

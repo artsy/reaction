@@ -29,8 +29,8 @@ export class CurrentEvent extends React.Component<CurrentEventProps> {
 export const LargeCurrentEvent = props => {
   return (
     <Flex flexDirection="column">
-      <Image src={props.src} mb={3} />
-      <Sans size="2" weight="medium" my={2}>
+      <Image src={props.src} mb={1} />
+      <Sans size="2" weight="medium" my={0.5}>
         {props.label}
       </Sans>
       <Serif size="3t">{props.title}</Serif>
