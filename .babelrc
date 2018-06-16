@@ -29,7 +29,8 @@
       "alias": {
         "storybook": "./src/__stories__",
         "Assets": "./src/Assets",
-        "Components": "./src/Components"
+        "Components": "./src/Components",
+        "Styleguide": "./src/Styleguide"
       }
     }],
     "lodash"

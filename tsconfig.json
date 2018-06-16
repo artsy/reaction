@@ -23,7 +23,8 @@
     "paths": {
       "storybook/*": ["./__stories__/*"],
       "Assets/*": ["./Assets/*"],
-      "^Components/*": ["./Components/*"]
+      "^Components/*": ["./Components/*"],
+      "^Styleguide/*": ["./Styleguide/*"]
     }
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],

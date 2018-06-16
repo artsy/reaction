@@ -2,12 +2,10 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Classification } from "../../Sidebar/Classification"
-
-const ArtworkWithClassification = {
-  attribution_class: { short_description: "This is a unique work" },
-}
-
-const ArtworkWithoutClassification = { attribution_class: null }
+import {
+  ArtworkWithClassification,
+  ArtworkWithoutClassification,
+} from "Styleguide/Pages/Fixtures/Artwork/Sidebar/Classification"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("Classification", () => {
   return (

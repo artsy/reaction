@@ -1,6 +1,5 @@
 import React from "react"
 import { Tabs, Tab } from "Styleguide/Components/Tabs"
-import { Box } from "Styleguide/Elements/Box"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -50,9 +49,7 @@ export class Artist extends React.Component {
           </Col>
         </Row>
 
-        <Box my={6}>
-          <Separator />
-        </Box>
+        <Separator my={6} />
 
         <Row>
           <Col>
@@ -60,6 +57,6 @@ export class Artist extends React.Component {
           </Col>
         </Row>
       </Grid>
-    );
+    )
   }
 }
