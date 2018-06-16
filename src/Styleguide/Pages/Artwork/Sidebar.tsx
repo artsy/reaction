@@ -8,6 +8,7 @@ import { PartnerInfo } from "./Sidebar/PartnerInfo"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
+    readonly __id: string
     readonly artists: Array<{
       readonly __id: string
       readonly id: string
@@ -36,7 +37,7 @@ export interface ArtworkSidebarProps {
       short_description: string
     }
     readonly edition_sets: Array<{
-      readonly id: string
+      readonly __id: string
       readonly dimensions: {
         readonly in: string
         readonly cm: string
@@ -60,7 +61,7 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
         <ArtworkMetadata artwork={artwork} />
         <Separator />
         <Commercial artwork={artwork} />
-        <PartnerInfo partner={artwork.partner} artwork={artwork} />
+        <PartnerInfo artwork={artwork} />
         <Separator />
       </SidebarContainer>
     )

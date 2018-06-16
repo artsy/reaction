@@ -5,7 +5,7 @@ import { Avatar, Button } from "Styleguide/Elements"
 import { Serif, Sans } from "@artsy/palette"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-interface ArtistCardProps {
+export interface ArtistCardProps {
   src: string
   headline: string
   subHeadline: string

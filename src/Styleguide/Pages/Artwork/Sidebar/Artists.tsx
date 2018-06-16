@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
 import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
-interface ArtistsProps {
+export interface ArtistsProps {
   artists: Array<{
     readonly __id: string
     readonly id: string
@@ -40,7 +40,8 @@ export class Artists extends React.Component<ArtistsProps> {
     )
   }
 
-  renderMultipleArtists(artists) {
+  renderMultipleArtists() {
+    const { artists } = this.props
     return artists.map((artist, index) => {
       return (
         <React.Fragment>
@@ -57,7 +58,7 @@ export class Artists extends React.Component<ArtistsProps> {
       <ArtistsContainer pb={2}>
         {artists.length === 1
           ? this.renderSingleArtist(artists[0])
-          : this.renderMultipleArtists(artists)}
+          : this.renderMultipleArtists()}
       </ArtistsContainer>
     )
   }

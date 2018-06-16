@@ -8,7 +8,7 @@ import { groupBy, toPairs } from "lodash"
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2
 
-type Year = string
+export type Year = string
 
 export interface Exhibition {
   year: Year
@@ -99,7 +99,11 @@ export class SelectedExhibitionsContainer extends React.Component<
     expanded: false,
   }
   render() {
-    if (this.props.exhibitions.length < MIN_EXHIBITIONS) return null
+    if (
+      !this.props.exhibitions ||
+      this.props.exhibitions.length < MIN_EXHIBITIONS
+    )
+      return null
     return (
       <BorderBox width="100%">
         <Flex flexDirection="column">
