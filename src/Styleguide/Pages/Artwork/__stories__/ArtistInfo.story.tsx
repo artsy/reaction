@@ -3,9 +3,9 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { ArtistInfo } from "../ArtistInfo"
 import { Grid, Row, Col } from "Styleguide/Elements/Grid"
-import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
-import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
+import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
+import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 
 storiesOf("Styleguide/Artwork", module).add("ArtistInfo", () => {
   return (

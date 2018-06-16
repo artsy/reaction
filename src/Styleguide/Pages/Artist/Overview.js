@@ -1,15 +1,15 @@
 import { Sans } from "@artsy/palette"
-import { ArtworkGridExample } from "Components/__stories__/ArtworkGrid.story"
 import React from "react"
 import styled from "styled-components"
 import { space, width } from "styled-system"
+import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { Pagination } from "Styleguide/Components/Pagination"
 import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Toggle } from "Styleguide/Components/Toggle"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
-import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
+import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -70,7 +70,7 @@ export const Overview = () => {
                   {gene}
                   {geneDivider}
                 </GeneFamilyItem>
-              );
+              )
             })}
           </GeneFamily>
 
@@ -135,13 +135,13 @@ export const Overview = () => {
                     <Pagination />
                   </ArtworkGrid>
                 </ArtworkBrowser>
-              );
+              )
             }}
           </Responsive>
         </Col>
       </Row>
     </React.Fragment>
-  );
+  )
 }
 
 const GeneFamily = styled.div``

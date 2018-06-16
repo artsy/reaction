@@ -2,27 +2,12 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { TitleInfo } from "../../Sidebar/TitleInfo"
-
-const ArtworkWithTitleDateAndMedium = {
-  title: "The Fox and the Hound",
-  date: "2018",
-  medium: "Oil on canvas",
-}
-
-const ArtworkWithTitleOnly = {
-  title: "The Fox and the Hound",
-}
-
-const ArtworkWithTitlAndDate = {
-  title: "The Fox and the Hound",
-  date: " 2013 - 2012 ",
-}
-const ArtworkWithTitleAndMedium = {
-  title: "The Fox and the Hound",
-  date: null,
-  medium:
-    "Hand selected materials to paint this piece were sourced from the old villages on magic lands.",
-}
+import {
+  ArtworkWithTitleDateAndMedium,
+  ArtworkWithTitleOnly,
+  ArtworkWithTitlAndDate,
+  ArtworkWithTitleAndMedium,
+} from "Styleguide/Pages/Fixtures/Artwork/Sidebar/TitleInfo"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
   return (
