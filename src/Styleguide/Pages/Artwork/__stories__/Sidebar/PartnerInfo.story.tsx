@@ -26,6 +26,10 @@ const PartnerWithLocations = {
     { city: "Central, Hong Kong" },
   ],
 }
+const ArtworkFromPartnerWithLocations = {
+  _id: "artwork_from_partner_with_locations",
+  partner: PartnerWithLocations,
+}
 
 const PartnerWithoutLocations = {
   __id: "UGFydG5lcjpnYWxlcmllLWtyb25zYmVpbg==",
@@ -33,24 +37,27 @@ const PartnerWithoutLocations = {
   href: "/galerie-kronsbein",
   locations: [],
 }
+const ArtworkFromPartnerWithoutLocations = {
+  __id: "artwork_from_partner_without_locations",
+  partner: PartnerWithoutLocations,
+}
+
 const ArtworkWithCollectingInstitution = {
   collecting_institution: "National Gallery of Art, Washington D.C.",
+  partner: PartnerWithLocations,
 }
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("PartnerInfo", () => {
   return (
     <React.Fragment>
       <Section title="Rartner with locations">
-        <PartnerInfo partner={PartnerWithLocations} />
+        <PartnerInfo artwork={ArtworkFromPartnerWithLocations} />
       </Section>
       <Section title="Partner without locations">
-        <PartnerInfo partner={PartnerWithoutLocations} />
+        <PartnerInfo artwork={ArtworkFromPartnerWithoutLocations} />
       </Section>
       <Section title="Institutional seller">
-        <PartnerInfo
-          partner={PartnerWithoutLocations}
-          artwork={ArtworkWithCollectingInstitution}
-        />
+        <PartnerInfo artwork={ArtworkWithCollectingInstitution} />
       </Section>
     </React.Fragment>
   )

@@ -7,6 +7,7 @@ import { Classification } from "./Classification"
 
 export interface ArtworkMetadataProps {
   artwork: {
+    readonly __id: string
     readonly title: string
     readonly date: string
     readonly medium: string
@@ -19,7 +20,7 @@ export interface ArtworkMetadataProps {
       short_description: string
     }
     readonly edition_sets: Array<{
-      readonly id: string
+      readonly __id: string
     }>
   }
 }

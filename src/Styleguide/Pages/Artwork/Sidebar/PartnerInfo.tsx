@@ -8,14 +8,14 @@ import { Location } from "../../../../Assets/Icons/Location"
 export interface PartnerInfoProps {
   artwork?: {
     readonly collecting_institution?: string
-  }
-  partner: {
-    readonly __id: string
-    readonly name: string
-    readonly href?: string
-    readonly locations: Array<{
-      readonly city: string
-    }>
+    partner: {
+      readonly __id: string
+      readonly name: string
+      readonly href?: string
+      readonly locations: Array<{
+        readonly city: string
+      }>
+    }
   }
 }
 
@@ -25,7 +25,8 @@ const PartnerInfoContainer = styled.div.attrs<SpaceProps>({})`
 const LocationsContainer = styled.div``
 
 export class PartnerInfo extends React.Component<PartnerInfoProps> {
-  renderPartnerName(partner) {
+  renderPartnerName() {
+    const partner = this.props.artwork.partner
     return partner.href ? (
       <Serif size="5t" display="inline-block">
         <a href={partner.href}>{partner.name}</a>
@@ -36,10 +37,11 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
       </Serif>
     )
   }
-  renderCollectingInstitution(artwork) {
-    return <Serif size="3">{artwork.collecting_institution}</Serif>
+  renderCollectingInstitution() {
+    return <Serif size="3">{this.props.artwork.collecting_institution}</Serif>
   }
-  renderLocations(locations) {
+  renderLocations() {
+    const locations = this.props.artwork.partner.locations
     const locationCities = locations.map((location, index) => {
       return location.city
     })
@@ -54,21 +56,19 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
   }
 
   render() {
-    const { artwork, partner } = this.props
+    const { artwork } = this.props
     return (
       <PartnerInfoContainer pb={2}>
         {artwork && artwork.collecting_institution
-          ? this.renderCollectingInstitution(artwork)
-          : this.renderPartnerName(partner)}
-        {partner.locations.length > 0 && (
+          ? this.renderCollectingInstitution()
+          : this.renderPartnerName()}
+        {this.props.artwork.partner.locations.length > 0 && (
           <LocationsContainer>
             <Flex width="100%" pt={1}>
               <Flex flexDirection="column">
                 <Location />
               </Flex>
-              <Flex flexDirection="column">
-                {this.renderLocations(partner.locations)}
-              </Flex>
+              <Flex flexDirection="column">{this.renderLocations()}</Flex>
             </Flex>
           </LocationsContainer>
         )}
