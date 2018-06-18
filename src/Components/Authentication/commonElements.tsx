@@ -88,7 +88,7 @@ const ForgotPasswordLink = styled(SmallTextLink)`
 `
 
 export const ForgotPassword = props => (
-  <ForgotPasswordLink onClick={props.handleForgotPassword}>
+  <ForgotPasswordLink onClick={props.handleForgotPasswordChange}>
     Forgot Password?
   </ForgotPasswordLink>
 )
