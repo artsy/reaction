@@ -6,6 +6,7 @@ export type AuctionResults_artist = {
     readonly auctionResults: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
+            readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
         readonly pageCursors: ({
@@ -96,11 +97,23 @@ return {
       "kind": "LocalArgument",
       "name": "first",
       "type": "Int",
-      "defaultValue": 20
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "last",
+      "type": "Int",
+      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
       "name": "after",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "before",
       "type": "String",
       "defaultValue": null
     }
@@ -127,8 +140,20 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "before",
+          "variableName": "before",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "first",
           "variableName": "first",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "last",
+          "variableName": "last",
           "type": "Int"
         }
       ],
@@ -148,6 +173,13 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "startCursor",
               "args": null,
               "storageKey": null
             },
@@ -333,5 +365,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '34dba26e5790f9508d465e1a5d44014b';
+(node as any).hash = 'd460f622616a7a8c1d381f505047cdf3';
 export default node;

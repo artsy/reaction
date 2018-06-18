@@ -17,6 +17,8 @@ interface PaginationProps {
   last: PageCursor
   around: ReadOnlyArray<PageCursor>
   onClick?: (cursor: string) => void
+  onNext?: () => void
+  onPrev?: () => void
 }
 
 export class Pagination extends React.Component<PaginationProps> {
@@ -24,8 +26,8 @@ export class Pagination extends React.Component<PaginationProps> {
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) return <SmallPagination />
-          else return <LargePagination {...this.props} />
+          // if (xs) return <SmallPagination />
+          return <LargePagination {...this.props} />
         }}
       </Responsive>
     )
@@ -65,8 +67,8 @@ export const LargePagination = (props: PaginationProps) => {
         </div>
       ) : null}
 
-      <PrevButton />
-      <NextButton />
+      <PrevButton onClick={() => props.onPrev()} />
+      <NextButton onClick={() => props.onNext()} />
     </Flex>
   )
 }
@@ -113,7 +115,7 @@ const PageSpan = ({ mx }) => {
 const PrevButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a href="#" className="noUnderline">
+      <a onClick={() => props.onClick()} className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
     </Sans>
@@ -123,7 +125,7 @@ const PrevButton = props => {
 const NextButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a href="#" className="noUnderline">
+      <a onClick={() => props.onClick()} className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>

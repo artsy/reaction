@@ -2,8 +2,10 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type AuctionResultsQueryVariables = {
-    readonly first: number;
+    readonly first?: number | null;
+    readonly last?: number | null;
     readonly after?: string | null;
+    readonly before?: string | null;
     readonly sort?: string | null;
     readonly artistID: string;
 };
@@ -15,21 +17,24 @@ export type AuctionResultsQueryResponse = {
 
 /*
 query AuctionResultsQuery(
-  $first: Int!
+  $first: Int
+  $last: Int
   $after: String
+  $before: String
   $artistID: String!
 ) {
   artist(id: $artistID) {
-    ...AuctionResults_artist_dWkdd
+    ...AuctionResults_artist_2TjZs4
     __id
   }
 }
 
-fragment AuctionResults_artist_dWkdd on Artist {
+fragment AuctionResults_artist_2TjZs4 on Artist {
   id
-  auctionResults(first: $first, after: $after) {
+  auctionResults(first: $first, after: $after, before: $before, last: $last) {
     pageInfo {
       hasNextPage
+      startCursor
       endCursor
     }
     pageCursors {
@@ -79,12 +84,24 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "first",
-    "type": "Int!",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
     "defaultValue": null
   },
   {
     "kind": "LocalArgument",
     "name": "after",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "before",
     "type": "String",
     "defaultValue": null
   },
@@ -144,7 +161,7 @@ return {
   "operationKind": "query",
   "name": "AuctionResultsQuery",
   "id": null,
-  "text": "query AuctionResultsQuery(\n  $first: Int!\n  $after: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_dWkdd\n    __id\n  }\n}\n\nfragment AuctionResults_artist_dWkdd on Artist {\n  id\n  auctionResults(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display(format: \"0a\")\n          cents_usd\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResults_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last) {\n    pageInfo {\n      hasNextPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display(format: \"0a\")\n          cents_usd\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -174,8 +191,20 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "before",
+                "variableName": "before",
+                "type": null
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
                 "variableName": "first",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
                 "type": null
               },
               {
@@ -226,8 +255,20 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "before",
+                "variableName": "before",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
                 "variableName": "first",
+                "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
                 "type": "Int"
               }
             ],
@@ -247,6 +288,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "hasNextPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
                     "args": null,
                     "storageKey": null
                   },
@@ -435,5 +483,5 @@ return {
   }
 };
 })();
-(node as any).hash = '940f3826b61476708b7a69d85543d1c0';
+(node as any).hash = 'c0c743efe133e9bd983475745f13d6d5';
 export default node;

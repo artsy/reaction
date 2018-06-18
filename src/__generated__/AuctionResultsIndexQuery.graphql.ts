@@ -3,6 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 export type AuctionResultsIndexQueryVariables = {
     readonly artistID: string;
+    readonly first: number;
 };
 export type AuctionResultsIndexQueryResponse = {
     readonly artist: ({}) | null;
@@ -13,18 +14,20 @@ export type AuctionResultsIndexQueryResponse = {
 /*
 query AuctionResultsIndexQuery(
   $artistID: String!
+  $first: Int!
 ) {
   artist(id: $artistID) {
-    ...AuctionResults_artist
+    ...AuctionResults_artist_3ASum4
     __id
   }
 }
 
-fragment AuctionResults_artist on Artist {
+fragment AuctionResults_artist_3ASum4 on Artist {
   id
-  auctionResults(first: 20) {
+  auctionResults(first: $first) {
     pageInfo {
       hasNextPage
+      startCursor
       endCursor
     }
     pageCursors {
@@ -76,6 +79,12 @@ var v0 = [
     "name": "artistID",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int!",
+    "defaultValue": null
   }
 ],
 v1 = [
@@ -121,7 +130,7 @@ return {
   "operationKind": "query",
   "name": "AuctionResultsIndexQuery",
   "id": null,
-  "text": "query AuctionResultsIndexQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    __id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  id\n  auctionResults(first: 20) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display(format: \"0a\")\n          cents_usd\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsIndexQuery(\n  $artistID: String!\n  $first: Int!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_3ASum4\n    __id\n  }\n}\n\nfragment AuctionResults_artist_3ASum4 on Artist {\n  id\n  auctionResults(first: $first) {\n    pageInfo {\n      hasNextPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display(format: \"0a\")\n          cents_usd\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -142,7 +151,14 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "AuctionResults_artist",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "first",
+                "variableName": "first",
+                "type": null
+              }
+            ]
           },
           v2
         ]
@@ -174,12 +190,12 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "auctionResults",
-            "storageKey": "auctionResults(first:20)",
+            "storageKey": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "first",
-                "value": 20,
+                "variableName": "first",
                 "type": "Int"
               }
             ],
@@ -199,6 +215,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "hasNextPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
                     "args": null,
                     "storageKey": null
                   },
@@ -387,5 +410,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'db9dc7f6700c5f03989e999575475759';
+(node as any).hash = '29607541ccf17d8bcdad6d1bc83e5002';
 export default node;

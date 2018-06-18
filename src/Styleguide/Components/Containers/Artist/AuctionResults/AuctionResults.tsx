@@ -17,12 +17,41 @@ interface Props {
 const PAGE_SIZE = 20
 
 class AuctionResults extends React.Component<Props> {
+  loadPrev() {
+    const cursor = this.props.artist.auctionResults.pageInfo.startCursor
+    this.loadBefore(cursor)
+  }
+  loadNext() {
+    const { hasNextPage, endCursor } = this.props.artist.auctionResults.pageInfo
+    if (hasNextPage) {
+      this.loadAfter(endCursor)
+    }
+  }
+  loadBefore(cursor) {
+    this.props.relay.refetch(
+      {
+        first: null,
+        before: cursor,
+        artistID: this.props.artist.id,
+        after: null,
+        last: PAGE_SIZE,
+      },
+      null,
+      error => {
+        if (error) {
+          console.error(error)
+        }
+      }
+    )
+  }
   loadAfter(cursor) {
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
         after: cursor,
         artistID: this.props.artist.id,
+        before: null,
+        last: null,
       },
       null,
       error => {
@@ -40,6 +69,8 @@ class AuctionResults extends React.Component<Props> {
           last={this.props.artist.auctionResults.pageCursors.last}
           around={this.props.artist.auctionResults.pageCursors.around}
           onClick={this.loadAfter.bind(this)}
+          onNext={this.loadNext.bind(this)}
+          onPrev={this.loadPrev.bind(this)}
         />
       </div>
     )
@@ -86,13 +117,21 @@ export default createRefetchContainer(
       fragment AuctionResults_artist on Artist
         @argumentDefinitions(
           sort: { type: "String" }
-          first: { type: "Int", defaultValue: 20 }
+          first: { type: "Int" }
+          last: { type: "Int" }
           after: { type: "String" }
+          before: { type: "String" }
         ) {
         id
-        auctionResults(first: $first, after: $after) {
+        auctionResults(
+          first: $first
+          after: $after
+          before: $before
+          last: $last
+        ) {
           pageInfo {
             hasNextPage
+            startCursor
             endCursor
           }
           pageCursors {
@@ -137,14 +176,22 @@ export default createRefetchContainer(
   },
   graphql`
     query AuctionResultsQuery(
-      $first: Int!
+      $first: Int
+      $last: Int
       $after: String
+      $before: String
       $sort: String
       $artistID: String!
     ) {
       artist(id: $artistID) {
         ...AuctionResults_artist
-          @arguments(first: $first, after: $after, sort: $sort)
+          @arguments(
+            first: $first
+            last: $last
+            after: $after
+            before: $before
+            sort: $sort
+          )
       }
     }
   `

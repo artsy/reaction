@@ -16,13 +16,13 @@ class ArtistFilter extends React.Component<Props, null> {
       <QueryRenderer
         environment={relayEnvironment}
         query={graphql`
-          query AuctionResultsIndexQuery($artistID: String!) {
+          query AuctionResultsIndexQuery($artistID: String!, $first: Int!) {
             artist(id: $artistID) {
-              ...AuctionResults_artist
+              ...AuctionResults_artist @arguments(first: $first)
             }
           }
         `}
-        variables={{ artistID }}
+        variables={{ artistID, first: 20 }}
         render={({ props }) => {
           if (props) {
             return <Container artist={props.artist} />
