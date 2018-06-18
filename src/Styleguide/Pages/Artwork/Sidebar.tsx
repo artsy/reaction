@@ -5,6 +5,7 @@ import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { Commercial } from "./Sidebar/Commercial"
 import { PartnerInfo } from "./Sidebar/PartnerInfo"
+import { ExtraLinks } from "./Sidebar/ExtraLinks"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
@@ -15,6 +16,7 @@ export interface ArtworkSidebarProps {
       readonly name: string
       readonly is_followed: boolean | null
       readonly href?: string
+      readonly is_consignable: boolean
     }>
     readonly partner: {
       readonly __id: string
@@ -47,6 +49,7 @@ export interface ArtworkSidebarProps {
     readonly sale_message: string | null
     readonly is_inquireable: boolean
     readonly is_price_range?: boolean | null
+    readonly is_for_sale: boolean
   }
 }
 
@@ -63,6 +66,7 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
         <Commercial artwork={artwork} />
         <PartnerInfo artwork={artwork} />
         <Separator />
+        <ExtraLinks artwork={artwork} />
       </SidebarContainer>
     )
   }

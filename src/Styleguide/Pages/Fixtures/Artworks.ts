@@ -19,6 +19,7 @@ export const ArtworkWithCompleteData = {
   sale_message: "$2,500 - 5,000",
   is_inquireable: true,
   is_price_range: false,
+  is_for_sale: true,
   edition_sets: [
     {
       __id: "complete_data_edition_1",

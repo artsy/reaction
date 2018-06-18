@@ -59,11 +59,6 @@ export class Artwork extends Component {
           </Col>
           <Col sm={4}>
             <Sidebar artwork={ArtworkWithCompleteData} />
-
-            <HelpText>
-              First time buying on Artsy? <a>Read our FAQ</a>. <br />
-              Want to sell a work by this artist? <a>Learn more</a>.
-            </HelpText>
           </Col>
         </Row>
         <Row>
@@ -229,7 +224,6 @@ const PartnerInfo = styled.div``
 const Name = styled.div``
 const PinIcon = styled.div``
 const Location = styled.div``
-const HelpText = styled.div``
 const Metadata = styled.div``
 const TabContent = styled.div``
 const OtherWorksByArtist = styled.div``
