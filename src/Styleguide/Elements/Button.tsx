@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
-import { Sans, TypographyProps } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import { pick } from "lodash/fp"
 
 import {
@@ -159,7 +159,6 @@ export interface ButtonBaseProps
     BorderRadiusProps,
     SpaceProps,
     TextAlignProps,
-    TypographyProps,
     WidthProps,
     HeightProps {
   variantStyles?: any // FIXME: Type to styled.css
