@@ -37,9 +37,14 @@ export interface ModalOptions {
   mode?: ModalType
   /**
    * the page path the user is redirected to after successfully
+   * login or account creation after onboarding.
+   */
+  destination?: string
+  /**
+   * the page path the user is redirected to after successfully
    * login or account creation (skips onboarding).
    */
-  redirectUrl?: string
+  redirectTo?: string
   /**
    * the action taken that prompted user to signup or login.
    */

@@ -4,13 +4,13 @@ import { metaphysics } from "Utils/metaphysics"
 export const handleSubmit = (
   url: string,
   csrf: string,
-  redirectUrl?: string
+  redirectTo?: string
 ) => async (values, formikBag) => {
   try {
     const data = await sendAuthData(url, { _csrf: csrf, ...values })
     if (data.success) {
-      if (redirectUrl) {
-        document.location.pathname = redirectUrl
+      if (redirectTo) {
+        document.location.pathname = redirectTo
       }
     } else {
       formikBag.setStatus(data)

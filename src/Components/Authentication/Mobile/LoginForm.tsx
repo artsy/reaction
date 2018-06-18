@@ -9,6 +9,7 @@ import Colors from "Assets/Colors"
 import { MobileLoginValidator } from "../Validators"
 import {
   BackButton,
+  Error,
   Footer,
   ForgotPassword,
   MobileContainer,
@@ -92,9 +93,12 @@ export const MobileLoginForm: FormComponentType = props => {
     </Step>,
   ]
   return (
-    <Wizard steps={steps}>
+    <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
-        const { wizard, form } = context
+        const {
+          wizard,
+          form: { handleSubmit, status },
+        } = context
         const { currentStep } = wizard
 
         return (
@@ -110,9 +114,10 @@ export const MobileLoginForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Log in</MobileHeader>
               {currentStep}
+              {status && !status.success && <Error show>{status.error}</Error>}
               <MobileSubmitButton
                 disabled={!wizard.shouldAllowNext}
-                onClick={form.handleSubmit as any}
+                onClick={handleSubmit as any}
               >
                 Next
               </MobileSubmitButton>

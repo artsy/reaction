@@ -1,5 +1,5 @@
 import React from "react"
-import { Section } from "../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { Checkbox } from "../Checkbox"
 import { Radio } from "../Radio"
 import { storiesOf } from "storybook/storiesOf"

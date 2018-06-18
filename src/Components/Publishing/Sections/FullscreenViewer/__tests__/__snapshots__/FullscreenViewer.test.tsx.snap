@@ -507,8 +507,6 @@ exports[`renders properly 1`] = `
   >
     <div
       className="c17"
-      onClick={undefined}
-      style={undefined}
     >
       
     </div>

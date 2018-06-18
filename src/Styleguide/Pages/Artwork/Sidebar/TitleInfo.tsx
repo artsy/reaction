@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { themeGet } from "styled-system"
 
-interface TitleInfoProps {
+export interface TitleInfoProps {
   artwork: {
     readonly title: string
     readonly date?: string

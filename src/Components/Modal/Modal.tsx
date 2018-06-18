@@ -33,14 +33,37 @@ const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   opacity: 0;
 `
 
-export class Modal extends React.Component<ModalProps, any> {
+export interface ModalState {
+  isAnimating: boolean
+  isShown: boolean
+}
+
+export class Modal extends React.Component<ModalProps, ModalState> {
   static defaultProps = {
     show: false,
+  }
+
+  state = {
+    isAnimating: false,
+    isShown: this.props.show || false,
   }
 
   constructor(props) {
     super(props)
     this.close = this.close.bind(this)
+  }
+
+  static getDerivedStateFromProps(newProps, state) {
+    let newState = state
+    // if (newProps.show !== state.isShown) {
+    newState = {
+      ...state,
+      isShown: newProps.show,
+      isAnimating: state.isAnimating || newProps.show,
+    }
+    // }
+
+    return newState
   }
 
   close(e) {
@@ -50,19 +73,31 @@ export class Modal extends React.Component<ModalProps, any> {
 
   render(): JSX.Element {
     const { children, show } = this.props
+    const { isAnimating, isShown } = this.state
 
-    const transitions = show
+    const transitions = isShown
       ? {
-          from: { opacity: 0, transform: "translate(-50%,-40%)" },
-          to: { opacity: 1, transform: "translate(-50%,-50%)" },
+          from: {
+            opacity: 0,
+            transform: "translate(-50%,-40%)",
+          },
+          to: {
+            opacity: 1,
+            transform: "translate(-50%,-50%)",
+          },
         }
       : { from: { opacity: 1 }, to: { opacity: 0 } }
 
     return (
       <div>
-        <Spring {...transitions as any}>
+        <Spring
+          {...transitions as any}
+          onRest={() => {
+            this.setState({ isAnimating: false })
+          }}
+        >
           {(styles: any) =>
-            show && (
+            (isShown || isAnimating) && (
               <animated.div>
                 <Overlay
                   style={{ opacity: styles.opacity }}

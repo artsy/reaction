@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@artsy/palette@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.4.1.tgz#80a25e9d0af9d67c7a7c1bab7605a358001faa0a"
+"@artsy/palette@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-1.4.2.tgz#1d1ac01fe97ef30a80ae0e48126a0680f56eb067"
   dependencies:
     react "^16.3.2"
     react-primitives "^0.5.0"
@@ -12156,9 +12156,9 @@ styled-bootstrap-grid@damassi/styled-bootstrap-grid#5a115a48a7f4d5608bc73097d52e
   version "1.0.3-2"
   resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/5a115a48a7f4d5608bc73097d52e14265edc6dd3"
 
-styled-bootstrap-grid@damassi/styled-bootstrap-grid#e9d0160ea4ca97645fb88d812cbfab299f0919f8:
+styled-bootstrap-grid@damassi/styled-bootstrap-grid#respect-padding-in-fluid:
   version "1.0.3-2"
-  resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/e9d0160ea4ca97645fb88d812cbfab299f0919f8"
+  resolved "https://codeload.github.com/damassi/styled-bootstrap-grid/tar.gz/f4908956cb3b31ef811c729d3a50784efafe62da"
 
 styled-components@^3.2.6, styled-components@^3.3.2:
   version "3.3.2"

@@ -5,7 +5,10 @@ import { graphql } from "react-relay"
 import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import RelayArtworkGrid, { ArtworkGrid } from "../ArtworkGrid"
 
-function GridExample(props: { artistID: string }) {
+export function ArtworkGridExample(props: {
+  artistID: string
+  columnCount?: number
+}) {
   return (
     <RootQueryRenderer
       query={graphql`
@@ -21,7 +24,7 @@ function GridExample(props: { artistID: string }) {
       render={readyState => {
         return (
           readyState.props && (
-            <RelayArtworkGrid {...readyState.props.artist as any} />
+            <RelayArtworkGrid {...readyState.props.artist as any} {...props} />
           )
         )
       }}
@@ -31,7 +34,7 @@ function GridExample(props: { artistID: string }) {
 
 storiesOf("Components/Artworks/ArtworkGrid", module)
   .add("A typical grid", () => {
-    return <GridExample artistID="banksy" />
+    return <ArtworkGridExample artistID="banksy" />
   })
   .add("Without Relay", () => {
     return <ArtworkGrid artworks={artworks as any} useRelay={false} />

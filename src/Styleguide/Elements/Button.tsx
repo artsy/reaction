@@ -10,8 +10,12 @@ import {
   BorderRadiusProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   width,
   WidthProps,
+  height,
+  HeightProps,
 } from "styled-system"
 
 enum ButtonSize {
@@ -47,11 +51,11 @@ export const Button = styled(
 
       switch (size) {
         case ButtonSize.small:
-          return { size: 1, px: 3, py: 1 }
+          return { height: "26px", size: 2, px: 3 }
         case ButtonSize.medium:
-          return { size: 2, px: 4, py: 3 }
+          return { height: "40px", size: "3t", px: 4 }
         case ButtonSize.large:
-          return { size: 3, px: 5, py: 3 }
+          return { height: "50px", size: "3t", px: 5 }
         default:
       }
     }
@@ -96,6 +100,24 @@ export const Button = styled(
               `
             }};
           `
+        case ButtonVariant.secondaryGray:
+          return css`
+            ${props => {
+              const { colors } = props.theme
+
+              return `
+              background-color: ${colors.black10};
+              border-color: ${colors.black10};
+              color: ${colors.black100};
+
+              &:hover {
+                background-color: ${colors.black30};
+                border-color: ${colors.black30};
+                color: ${colors.black100};
+              }
+            `
+            }};
+          `
         case ButtonVariant.secondaryOutline:
           return css`
             ${props => {
@@ -136,8 +158,10 @@ export interface ButtonBaseProps
   extends BorderProps,
     BorderRadiusProps,
     SpaceProps,
+    TextAlignProps,
     TypographyProps,
-    WidthProps {
+    WidthProps,
+    HeightProps {
   variantStyles?: any // FIXME: Type to styled.css
 }
 
@@ -153,7 +177,9 @@ export class ButtonBase extends Component<ButtonBaseProps> {
 
     return (
       <Container {...rest}>
-        <Sans {...textProps}>{children}</Sans>
+        <Sans weight="medium" {...textProps} pt="1px">
+          {children}
+        </Sans>
       </Container>
     )
   }
@@ -163,10 +189,11 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
   ${border};
   ${borderRadius};
   ${space};
+  ${textAlign};
   ${width};
+  ${height};
 
   cursor: pointer;
-  text-transform: uppercase;
   transition: 0.25s ease;
 
   ${p => p.variantStyles};

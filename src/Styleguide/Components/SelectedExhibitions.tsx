@@ -1,7 +1,7 @@
 import React, { SFC } from "react"
-import { Flex } from "../Elements/Flex"
-import { Box, BorderBox } from "../Elements/Box"
-import { Responsive } from "../Utils/Responsive"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Box, BorderBox } from "Styleguide/Elements/Box"
+import { Responsive } from "Styleguide/Utils/Responsive"
 import { Sans } from "@artsy/palette"
 import { groupBy, toPairs } from "lodash"
 
@@ -101,7 +101,7 @@ export class SelectedExhibitionsContainer extends React.Component<
   render() {
     if (this.props.exhibitions.length < MIN_EXHIBITIONS) return null
     return (
-      <BorderBox>
+      <BorderBox width="100%">
         <Flex flexDirection="column">
           <ExhibitionsHeadline
             expanded={this.state.expanded}

@@ -16,7 +16,7 @@ export interface ModalManagerProps {
     twitter?: string
   }
   csrf?: string
-  redirectUrl?: string
+  redirectTo?: string
   handleSubmit?: (
     type: ModalType,
     values: InputValues,
@@ -44,7 +44,7 @@ export class ModalManager extends Component<
     this.setState({
       currentType: options.mode,
       copy: options.copy,
-      redirectTo: options.redirectUrl || "/",
+      redirectTo: options.redirectTo || "/",
     })
   }
 
@@ -55,17 +55,12 @@ export class ModalManager extends Component<
   }
 
   render() {
-    const { csrf, submitUrls } = this.props
-    const { currentType, copy, redirectTo } = this.state
-    const redirectUrl = this.props.redirectUrl || redirectTo
-
-    if (!currentType) {
-      return null
-    }
+    const { csrf, submitUrls, redirectTo } = this.props
+    const { currentType, copy } = this.state
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
       ? this.props.handleSubmit.bind(this, currentType)
-      : defaultHandleSubmit(submitUrls[currentType], csrf, redirectUrl)
+      : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
     return (
       <DesktopModal
@@ -79,11 +74,11 @@ export class ModalManager extends Component<
           handleSubmit={handleSubmit}
           onFacebookLogin={() =>
             (window.location.href =
-              submitUrls.facebook + "?redirect-to=" + redirectUrl)
+              submitUrls.facebook + "?redirect-to=" + redirectTo)
           }
           onTwitterLogin={() =>
             (window.location.href =
-              submitUrls.twitter + "?redirect-to=" + redirectUrl)
+              submitUrls.twitter + "?redirect-to=" + redirectTo)
           }
         />
       </DesktopModal>

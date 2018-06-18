@@ -120,8 +120,6 @@ exports[`Nav renders a Nav 1`] = `
       >
         <div
           className="c3 c4"
-          onClick={undefined}
-          style={undefined}
         >
           
         </div>
@@ -279,8 +277,6 @@ exports[`Nav renders a sponsored nav 1`] = `
       >
         <div
           className="c3 c4"
-          onClick={undefined}
-          style={undefined}
         >
           
         </div>
@@ -473,8 +469,6 @@ exports[`Nav renders a transparent nav 1`] = `
       >
         <div
           className="c3 c4"
-          onClick={undefined}
-          style={undefined}
         >
           
         </div>

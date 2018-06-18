@@ -2,6 +2,7 @@ import React from "react"
 import { Step, Wizard } from "Components/Wizard"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import {
+  Error,
   BackButton,
   Footer,
   MobileContainer,
@@ -105,10 +106,14 @@ export const MobileSignUpForm: FormComponentType = props => {
     </Step>,
   ]
   return (
-    <Wizard steps={steps}>
+    <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
-        const { form, wizard } = context
+        const {
+          form: { handleSubmit, status },
+          wizard,
+        } = context
         const { currentStep } = wizard
+
         return (
           <MobileContainer>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
@@ -122,9 +127,10 @@ export const MobileSignUpForm: FormComponentType = props => {
               </BackButton>
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
+              {status && !status.success && <Error show>{status.error}</Error>}
               <MobileSubmitButton
                 disabled={!wizard.shouldAllowNext}
-                onClick={form.handleSubmit as any}
+                onClick={handleSubmit as any}
               >
                 Next
               </MobileSubmitButton>

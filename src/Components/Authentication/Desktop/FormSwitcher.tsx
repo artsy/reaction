@@ -13,8 +13,10 @@ interface Props {
   type: ModalType
   values?: InputValues
   handleSubmit: SubmitHandler
-  signupIntent?: string
-  redirectUrl?: string
+  options?: {
+    signupIntent?: string
+    redirectTo?: string
+  }
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
 }
@@ -44,13 +46,13 @@ export class FormSwitcher extends React.Component<Props, State> {
 
     let Form: FormComponentType
     switch (this.state.type) {
-      case "login":
+      case ModalType.login:
         Form = LoginForm
         break
-      case "signup":
+      case ModalType.signup:
         Form = SignUpForm
         break
-      case "reset_password":
+      case ModalType.resetPassword:
         Form = ResetPasswordForm
         break
       default:

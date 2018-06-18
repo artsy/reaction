@@ -1,18 +1,18 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../../../Utils/Section"
+import { Section } from "Styleguide/Utils/Section"
 import { SizeInfo } from "../../Sidebar/SizeInfo"
 
-export const ArtworkWithSizeAndEditionOf = {
+const ArtworkWithSizeAndEditionOf = {
   dimensions: { in: "10 1/4 × 8 7/8 in", cm: "26 × 22.5 cm" },
   edition_of: "Edition of 20",
 }
 
-export const ArtworkWithSizeOnly = {
+const ArtworkWithSizeOnly = {
   dimensions: { in: "10 1/4 × 8 7/8 in", cm: "26 × 22.5 cm" },
 }
 
-export const ArtworkWithEditionOfOnly = {
+const ArtworkWithEditionOfOnly = {
   dimensions: { in: null, cm: null },
   edition_of: "Edition of 20",
 }
