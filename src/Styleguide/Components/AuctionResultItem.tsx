@@ -16,7 +16,7 @@ const ScaledArtworkImage = props => (
 
 export interface Dimensions {
   in: string
-  cm: string
+  cm?: string
 }
 
 export interface AuctionResultItemProps {
@@ -27,7 +27,7 @@ export interface AuctionResultItemProps {
   organization: string
   auctionDate: string
   salePrice: string
-  estimate: string
+  estimate?: string
   description: string
 }
 

@@ -6,31 +6,64 @@ import { Responsive } from "Styleguide/Utils/Responsive"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
 
-export class Pagination extends React.Component {
+interface PageCursor {
+  page: number
+  cursor: string
+  isCurrent: boolean
+}
+
+interface PaginationProps {
+  first: PageCursor
+  last: PageCursor
+  around: ReadOnlyArray<PageCursor>
+  onClick?: (cursor: string) => void
+}
+
+export class Pagination extends React.Component<PaginationProps> {
   render() {
     return (
       <Responsive>
         {({ xs }) => {
           if (xs) return <SmallPagination />
-          else return <LargePagination />
+          else return <LargePagination {...this.props} />
         }}
       </Responsive>
     )
   }
 }
 
-export const LargePagination = () => {
+export const LargePagination = (props: PaginationProps) => {
   return (
     <Flex flexDirection="row">
-      <Page num={1} />
-      <PageSpan mx={0.5} />
+      {props.first ? (
+        <div>
+          <Page
+            onClick={() => props.onClick(props.first.cursor)}
+            num={props.first.page}
+            active={props.first.isCurrent}
+          />
+          <PageSpan mx={0.5} />
+        </div>
+      ) : null}
 
-      <Page num={4} active />
-      <Page num={5} />
-      <Page num={6} />
+      {props.around.map(pageInfo => (
+        <Page
+          onClick={() => props.onClick(pageInfo.cursor)}
+          num={pageInfo.page}
+          active={pageInfo.isCurrent}
+        />
+      ))}
 
-      <PageSpan mx={0.3} />
-      <Page num={7} />
+      {props.last ? (
+        <div>
+          <PageSpan mx={0.5} />
+          <Page
+            onClick={() => props.onClick(props.last.cursor)}
+            num={props.last.page}
+            active={props.last.isCurrent}
+          />
+        </div>
+      ) : null}
 
       <PrevButton />
       <NextButton />

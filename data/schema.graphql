@@ -60,6 +60,25 @@ type Article implements Node {
   ): String
 }
 
+# A connection to a list of items.
+type ArticleConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArticleEdge]
+  pageCursors: PageCursors
+}
+
+# An edge in a connection.
+type ArticleEdge {
+  # The item at the end of the edge
+  node: Article
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 enum ArticleSorts {
   PUBLISHED_AT_ASC
   PUBLISHED_AT_DESC
@@ -76,6 +95,7 @@ type Artist implements Node {
   _id: String!
   cached: Int
   alternate_names: [String]
+  articlesConnection(sort: ArticleSorts, limit: Int, in_editorial_feed: Boolean, after: String, first: Int, before: String, last: Int): ArticleConnection
   articles(sort: ArticleSorts, limit: Int, in_editorial_feed: Boolean): [Article]
   artists(
     # The number of Artists to return
@@ -230,6 +250,23 @@ type Artist implements Node {
     visible_to_public: Boolean
     sort: PartnerShowSorts
   ): [Show]
+  showsConnection(
+    active: Boolean
+    at_a_fair: Boolean
+    is_reference: Boolean
+
+    # The number of PartnerShows to return
+    size: Int
+    solo_show: Boolean
+    status: String
+    top_tier: Boolean
+    visible_to_public: Boolean
+    sort: PartnerShowSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
 
   # Use this attribute to sort by when sorting a collection of Artists
   sortable_id: String
@@ -262,6 +299,7 @@ type ArtistConnection {
 
   # A list of edges.
   edges: [ArtistEdge]
+  pageCursors: PageCursors
 }
 
 type ArtistCounts {
@@ -313,6 +351,7 @@ type ArtistItem implements Node {
   _id: String!
   cached: Int
   alternate_names: [String]
+  articlesConnection(sort: ArticleSorts, limit: Int, in_editorial_feed: Boolean, after: String, first: Int, before: String, last: Int): ArticleConnection
   articles(sort: ArticleSorts, limit: Int, in_editorial_feed: Boolean): [Article]
   artists(
     # The number of Artists to return
@@ -467,6 +506,23 @@ type ArtistItem implements Node {
     visible_to_public: Boolean
     sort: PartnerShowSorts
   ): [Show]
+  showsConnection(
+    active: Boolean
+    at_a_fair: Boolean
+    is_reference: Boolean
+
+    # The number of PartnerShows to return
+    size: Int
+    solo_show: Boolean
+    status: String
+    top_tier: Boolean
+    visible_to_public: Boolean
+    sort: PartnerShowSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
 
   # Use this attribute to sort by when sorting a collection of Artists
   sortable_id: String
@@ -1391,6 +1447,7 @@ type AuctionResultConnection {
 
   # A list of edges.
   edges: [AuctionResultEdge]
+  pageCursors: PageCursors
 }
 
 # An edge in a connection.
@@ -3486,6 +3543,7 @@ type Me implements Node {
   # A list of the current user’s inquiry requests
   followed_genes(after: String, first: Int, before: String, last: Int): FollowGeneConnection
   followsAndSaves: FollowsAndSaves
+  has_credit_cards: Boolean
   has_qualified_credit_cards: Boolean
 
   # An invoice
@@ -3880,7 +3938,7 @@ type PageCursors {
   last: PageCursor
 
   # Always includes current page
-  around: [PageCursor]!
+  around: [PageCursor!]!
 }
 
 # Information about pagination in a connection.
@@ -4536,6 +4594,9 @@ type Query {
     __id: ID!
   ): Node
 
+  # Returns a single Order
+  order(id: String!): Order
+
   # An OrderedSet
   ordered_set(
     # The ID of the OrderedSet
@@ -4734,6 +4795,9 @@ type RecordArtworkViewPayload {
 }
 
 type RelatedArtists {
+  contemporary(exclude_artists_without_artworks: Boolean = true, after: String, first: Int, before: String, last: Int): ArtistConnection
+  main(exclude_artists_without_artworks: Boolean = true, after: String, first: Int, before: String, last: Int): ArtistConnection
+
   # A list of the current user’s suggested artists, based on a single artist
   suggested(
     # The slug or ID of an artist
@@ -5334,6 +5398,7 @@ type ShowConnection {
 
   # A list of edges.
   edges: [ShowEdge]
+  pageCursors: PageCursors
 }
 
 type ShowCounts {
@@ -5952,6 +6017,9 @@ type Viewer {
     # The ID of the object
     __id: ID!
   ): Node
+
+  # Returns a single Order
+  order(id: String!): Order
 
   # An OrderedSet
   ordered_set(
