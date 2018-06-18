@@ -15,7 +15,7 @@ const Spacer = styled.div`
   flex-grow: 1;
 `
 
-const BaseImageArea = styled.div`
+const BaseImageArea = styled.div.attrs<{ aspectRatio: number }>({})`
   line-height: 0; /* Don’t introduce visual margins */
   width: 100%;
   display: flex;
@@ -24,6 +24,14 @@ const BaseImageArea = styled.div`
 
 const SmallImageArea = styled(BaseImageArea)`
   max-height: calc(100vh - 120px);
+
+  /**
+   * This will make sure the image area already exists prior to image loading
+   * and the layout won’t jump later on, but it does rely on the current design
+   * where this image is supposed to be shown from the left side of the screen
+   * to the right side of the screen, i.e. the width of the viewport.
+   */
+  height: calc(100vw / ${({ aspectRatio }) => aspectRatio});
 `
 
 const LargeImageArea = styled(BaseImageArea)`
@@ -121,7 +129,7 @@ const ActionButtonsContainer = styled.div`
 `
 
 interface ImageCarouselProps {
-  src: string[]
+  images: Array<{ uri: string; aspectRatio: number }>
 }
 
 interface ImageCarouselState {
@@ -171,7 +179,7 @@ export class ImageCarousel extends React.Component<
 
   changeCurrentImage(by: number) {
     this.setState({
-      currentImage: (this.state.currentImage + by) % this.props.src.length,
+      currentImage: (this.state.currentImage + by) % this.props.images.length,
     })
   }
 
@@ -179,8 +187,10 @@ export class ImageCarousel extends React.Component<
     return (
       <Responsive>
         {({ xs }) => {
-          const hasMultipleImages = this.props.src.length > 1
+          const hasMultipleImages = this.props.images.length > 1
           const showNavigation = !xs && hasMultipleImages
+
+          const image = this.props.images[this.state.currentImage]
 
           const Image = xs ? SmallImage : LargeImage
           const ImageArea = xs ? SmallImageArea : LargeImageArea
@@ -190,7 +200,7 @@ export class ImageCarousel extends React.Component<
 
           return (
             <Container>
-              <ImageArea>
+              <ImageArea aspectRatio={image.aspectRatio}>
                 {showNavigation && (
                   <NavigationButton
                     direction="left"
@@ -199,7 +209,7 @@ export class ImageCarousel extends React.Component<
                 )}
                 <ImageContainer>
                   <Image
-                    src={this.props.src[this.state.currentImage]}
+                    src={image.uri}
                     // tslint:disable-next-line:no-console
                     onClick={() => console.log("Zoom")}
                   />
@@ -214,7 +224,7 @@ export class ImageCarousel extends React.Component<
               <ControlsContainer>
                 {hasMultipleImages && (
                   <PageIndicators
-                    size={this.props.src.length}
+                    size={this.props.images.length}
                     highlightIndex={this.state.currentImage}
                     onSelect={i => this.setState({ currentImage: i })}
                   />
