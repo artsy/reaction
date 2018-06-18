@@ -13,20 +13,26 @@ interface PageCursor {
 }
 
 interface PaginationProps {
-  first: PageCursor
-  last: PageCursor
-  around: ReadOnlyArray<PageCursor>
+  first?: PageCursor
+  last?: PageCursor
+  around: ReadonlyArray<PageCursor>
   onClick?: (cursor: string) => void
   onNext?: () => void
   onPrev?: () => void
 }
 
 export class Pagination extends React.Component<PaginationProps> {
+  static defaultProps = {
+    onClick: _cursor => ({}),
+    onNext: () => ({}),
+    onPrev: () => ({}),
+  }
+
   render() {
     return (
       <Responsive>
         {({ xs }) => {
-          // if (xs) return <SmallPagination />
+          if (xs) return <SmallPagination {...this.props} />
           return <LargePagination {...this.props} />
         }}
       </Responsive>
@@ -34,38 +40,32 @@ export class Pagination extends React.Component<PaginationProps> {
   }
 }
 
+const renderPage = (
+  pageCursor: PageCursor,
+  onClick: (cursor: string) => void
+) => {
+  const { cursor, isCurrent, page } = pageCursor
+  return <Page onClick={() => onClick(cursor)} num={page} active={isCurrent} />
+}
+
 export const LargePagination = (props: PaginationProps) => {
   return (
     <Flex flexDirection="row">
-      {props.first ? (
+      {props.first && (
         <div>
-          <Page
-            onClick={() => props.onClick(props.first.cursor)}
-            num={props.first.page}
-            active={props.first.isCurrent}
-          />
+          {renderPage(props.first, props.onClick)}
           <PageSpan mx={0.5} />
         </div>
-      ) : null}
+      )}
 
-      {props.around.map(pageInfo => (
-        <Page
-          onClick={() => props.onClick(pageInfo.cursor)}
-          num={pageInfo.page}
-          active={pageInfo.isCurrent}
-        />
-      ))}
+      {props.around.map(pageInfo => renderPage(pageInfo, props.onClick))}
 
-      {props.last ? (
+      {props.last && (
         <div>
           <PageSpan mx={0.5} />
-          <Page
-            onClick={() => props.onClick(props.last.cursor)}
-            num={props.last.page}
-            active={props.last.isCurrent}
-          />
+          {renderPage(props.last, props.onClick)}
         </div>
-      ) : null}
+      )}
 
       <PrevButton onClick={() => props.onPrev()} />
       <NextButton onClick={() => props.onNext()} />
@@ -73,7 +73,7 @@ export const LargePagination = (props: PaginationProps) => {
   )
 }
 
-export const SmallPagination = () => {
+export const SmallPagination = (props: PaginationProps) => {
   return (
     <Flex flexDirection="row" width="100%">
       <Flex width="50%" pr={0.5}>
@@ -81,12 +81,18 @@ export const SmallPagination = () => {
           alignItems="center"
           justifyContent="flex-start"
           pl={1}
+          onClick={() => props.onPrev()}
         >
           <Arrow direction="left" />
         </ButtonWithBorder>
       </Flex>
       <Flex width="50%" pl={0.5}>
-        <ButtonWithBorder alignItems="center" justifyContent="flex-end" pr={1}>
+        <ButtonWithBorder
+          onClick={() => props.onNext()}
+          alignItems="center"
+          justifyContent="flex-end"
+          pr={1}
+        >
           <Arrow direction="right" />
         </ButtonWithBorder>
       </Flex>

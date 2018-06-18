@@ -1,13 +1,14 @@
 import * as React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
-// import { Subscribe } from "unstated"
-// import { FilterState } from "./state"
+import { Subscribe } from "unstated"
+import { FilterState } from "./state"
 
-import { AuctionResults_artist } from "../../../../../__generated__/AuctionResults_artist.graphql"
+import { AuctionResults_artist } from "__generated__/AuctionResults_artist.graphql"
 
-import { AuctionResultItem } from "../../../AuctionResultItem"
-import { Pagination } from "../../../Pagination"
+import { AuctionResultItem } from "Styleguide/Components/AuctionResultItem"
+import { Pagination } from "Styleguide/Components/Pagination"
+import { Select } from "Styleguide/Elements/Select"
 
 interface Props {
   relay: RelayRefetchProp
@@ -16,17 +17,40 @@ interface Props {
 
 const PAGE_SIZE = 20
 
+const Sorts = [
+  {
+    value: "DATE_DESC",
+    text: "Most Recent",
+  },
+  {
+    value: "ESTIMATE_AND_DATE_DESC",
+    text: "Estimate",
+  },
+  {
+    value: "PRICE_AND_DATE_DESC",
+    text: "Sale Price",
+  },
+]
+
 class AuctionResults extends React.Component<Props> {
-  loadPrev() {
-    const cursor = this.props.artist.auctionResults.pageInfo.startCursor
-    this.loadBefore(cursor)
+  // Used for pagination callbacks
+  loadPrev = () => {
+    const {
+      startCursor,
+      hasPreviousPage,
+    } = this.props.artist.auctionResults.pageInfo
+    if (hasPreviousPage) {
+      this.loadBefore(startCursor)
+    }
   }
-  loadNext() {
+
+  loadNext = () => {
     const { hasNextPage, endCursor } = this.props.artist.auctionResults.pageInfo
     if (hasNextPage) {
       this.loadAfter(endCursor)
     }
   }
+
   loadBefore(cursor) {
     this.props.relay.refetch(
       {
@@ -44,7 +68,8 @@ class AuctionResults extends React.Component<Props> {
       }
     )
   }
-  loadAfter(cursor) {
+
+  loadAfter = cursor => {
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -61,25 +86,24 @@ class AuctionResults extends React.Component<Props> {
       }
     )
   }
+
   renderPagination() {
     return (
       <div>
         <Pagination
-          first={this.props.artist.auctionResults.pageCursors.first}
-          last={this.props.artist.auctionResults.pageCursors.last}
-          around={this.props.artist.auctionResults.pageCursors.around}
-          onClick={this.loadAfter.bind(this)}
-          onNext={this.loadNext.bind(this)}
-          onPrev={this.loadPrev.bind(this)}
+          {...this.props.artist.auctionResults.pageCursors}
+          onClick={this.loadAfter}
+          onNext={this.loadNext}
+          onPrev={this.loadPrev}
         />
       </div>
     )
   }
+
   renderResults() {
     return (
       <div>
         {this.props.artist.auctionResults.edges.map(({ node }) => {
-          const inches = `${node.dimension_text}`
           return (
             <AuctionResultItem
               title={node.title}
@@ -88,24 +112,37 @@ class AuctionResults extends React.Component<Props> {
               description={node.description}
               date={node.date_text}
               auctionDate={node.sale_date_text}
-              dimensions={{ in: inches }}
+              dimensions={node.dimension_text}
               salePrice={
                 node.price_realized.cents_usd === 0
-                  ? ""
+                  ? null
                   : node.price_realized.display
               }
+              estimate={node.estimate.display}
             />
           )
         })}
       </div>
     )
   }
+
   render() {
     return (
-      <div>
-        {this.renderResults()}
-        {this.renderPagination()}
-      </div>
+      <Subscribe to={[FilterState]}>
+        {filters => {
+          return (
+            <div>
+              <Select
+                options={Sorts}
+                selected={filters.state.sort}
+                onSelect={(filters as any).setSort}
+              />
+              {this.renderResults()}
+              {this.renderPagination()}
+            </div>
+          )
+        }}
+      </Subscribe>
     )
   }
 }
@@ -116,7 +153,7 @@ export default createRefetchContainer(
     artist: graphql`
       fragment AuctionResults_artist on Artist
         @argumentDefinitions(
-          sort: { type: "String" }
+          sort: { type: "AuctionResultSorts" }
           first: { type: "Int" }
           last: { type: "Int" }
           after: { type: "String" }
@@ -128,9 +165,11 @@ export default createRefetchContainer(
           after: $after
           before: $before
           last: $last
+          sort: $sort
         ) {
           pageInfo {
             hasNextPage
+            hasPreviousPage
             startCursor
             endCursor
           }
@@ -165,8 +204,11 @@ export default createRefetchContainer(
               date_text
               sale_date_text
               price_realized {
-                display(format: "0a")
+                display
                 cents_usd
+              }
+              estimate {
+                display
               }
             }
           }
@@ -180,7 +222,7 @@ export default createRefetchContainer(
       $last: Int
       $after: String
       $before: String
-      $sort: String
+      $sort: AuctionResultSorts
       $artistID: String!
     ) {
       artist(id: $artistID) {

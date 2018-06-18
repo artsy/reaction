@@ -1398,6 +1398,12 @@ type AuctionLotDimensions {
   depth: Float
 }
 
+type AuctionLotEstimate {
+  low: Float
+  high: Float
+  display: String
+}
+
 type AuctionLotImages {
   larger: Image
   thumbnail: Image
@@ -1437,6 +1443,7 @@ type AuctionResult implements Node {
   description: String
   external_url: String
   images: AuctionLotImages
+  estimate: AuctionLotEstimate
   price_realized: AuctionResultPriceRealized
 }
 
@@ -1460,8 +1467,8 @@ type AuctionResultEdge {
 }
 
 type AuctionResultPriceRealized {
-  cents: Int
-  cents_usd: Int
+  cents: Float
+  cents_usd: Float
   display(
     # Passes in to numeral, such as `'0.00'`
     format: String = ""
@@ -1469,7 +1476,9 @@ type AuctionResultPriceRealized {
 }
 
 enum AuctionResultSorts {
+  DATE_DESC
   PRICE_AND_DATE_DESC
+  ESTIMATE_AND_DATE_DESC
 }
 
 type Author {

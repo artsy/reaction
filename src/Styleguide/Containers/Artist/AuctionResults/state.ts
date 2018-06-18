@@ -6,13 +6,13 @@ type State = {
 }
 
 export class FilterState extends Container<State> {
-  state = {}
+  state = { sort: "PRICE_AND_DATE_DESC" }
 
   setPage(page) {
     this.setState({ page })
   }
 
-  setSort(sort) {
+  setSort = sort => {
     this.setState({ sort })
   }
 }

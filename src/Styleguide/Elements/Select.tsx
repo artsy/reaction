@@ -5,15 +5,26 @@ import { Sans } from "@artsy/palette"
 
 import { PositionProps, space, SpaceProps, themeGet } from "styled-system"
 
-export interface SelectProps extends PositionProps, SpaceProps {}
+interface Option {
+  value: string
+  text: string
+}
+export interface SelectProps extends PositionProps, SpaceProps {
+  options: Option[]
+  selected?: string
+  onSelect?: (value) => void
+}
 
 export class Select extends React.Component<SelectProps> {
+  static defaultProps = {
+    onSelect: _value => ({}),
+  }
   render() {
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) return <LargeSelect />
-          else return <SmallSelect />
+          if (xs) return <LargeSelect {...this.props} />
+          else return <SmallSelect {...this.props} />
         }}
       </Responsive>
     )
@@ -21,14 +32,15 @@ export class Select extends React.Component<SelectProps> {
 }
 
 // Appears on both mobile and desktop
-export const LargeSelect = () => {
+export const LargeSelect = (props: SelectProps) => {
   return (
-    <LargeSelectContainer p={1}>
-      <select>
-        <option value="0">Recently updated</option>
-        <option value="1">Recently added </option>
-        <option value="2">Artwork year (desc.)</option>
-        <option value="3">Artwork year (asc.)</option>
+    <LargeSelectContainer {...props} p={1}>
+      <select onChange={event => props.onSelect(event.target.value)}>
+        {props.options.map(({ value, text }) => (
+          <option selected={value === props.selected} value={value}>
+            {text}
+          </option>
+        ))}
       </select>
     </LargeSelectContainer>
   )
@@ -42,11 +54,12 @@ export const SmallSelect = props => {
           Sort:
         </Sans>
 
-        <select>
-          <option value="0">Recently updated</option>
-          <option value="1">Recently added </option>
-          <option value="2">Artwork year (desc.)</option>
-          <option value="3">Artwork year (asc.)</option>
+        <select onChange={event => props.onSelect(event.target.value)}>
+          {props.options.map(({ value, text }) => (
+            <option selected={value === props.selected} value={value}>
+              {text}
+            </option>
+          ))}
         </select>
       </label>
     </SmallSelectContainer>

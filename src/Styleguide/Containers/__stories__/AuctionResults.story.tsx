@@ -1,6 +1,6 @@
-import { storiesOf } from "@storybook/react"
+import { storiesOf } from "storybook/storiesOf"
 import React from "react"
-import { Browser } from "../Containers/Artist/AuctionResults"
+import { AuctionResultsContainer } from "Styleguide/Containers/Artist/AuctionResults"
 
 import { ContextProvider } from "../../../Components/Artsy"
 import { Provider as StateProvider } from "unstated"
@@ -12,7 +12,7 @@ storiesOf("Containers/Artist/AuctionResults", module).add(
       <div>
         <ContextProvider>
           <StateProvider>
-            <Browser artistID="pablo-picasso" />
+            <AuctionResultsContainer artistID="pablo-picasso" />
           </StateProvider>
         </ContextProvider>
       </div>

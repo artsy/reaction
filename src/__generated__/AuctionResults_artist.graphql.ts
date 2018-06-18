@@ -6,6 +6,7 @@ export type AuctionResults_artist = {
     readonly auctionResults: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
+            readonly hasPreviousPage: boolean;
             readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
@@ -43,6 +44,9 @@ export type AuctionResults_artist = {
                     readonly display: string | null;
                     readonly cents_usd: number | null;
                 }) | null;
+                readonly estimate: ({
+                    readonly display: string | null;
+                }) | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -77,6 +81,13 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "display",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -90,7 +101,7 @@ return {
     {
       "kind": "LocalArgument",
       "name": "sort",
-      "type": "String",
+      "type": "AuctionResultSorts",
       "defaultValue": null
     },
     {
@@ -155,6 +166,12 @@ return {
           "name": "last",
           "variableName": "last",
           "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": "AuctionResultSorts"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -173,6 +190,13 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasPreviousPage",
               "args": null,
               "storageKey": null
             },
@@ -331,20 +355,7 @@ return {
                   "concreteType": "AuctionResultPriceRealized",
                   "plural": false,
                   "selections": [
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "display",
-                      "args": [
-                        {
-                          "kind": "Literal",
-                          "name": "format",
-                          "value": "0a",
-                          "type": "String"
-                        }
-                      ],
-                      "storageKey": "display(format:\"0a\")"
-                    },
+                    v1,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -354,16 +365,28 @@ return {
                     }
                   ]
                 },
-                v1
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "estimate",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "AuctionLotEstimate",
+                  "plural": false,
+                  "selections": [
+                    v1
+                  ]
+                },
+                v2
               ]
             }
           ]
         }
       ]
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = 'd460f622616a7a8c1d381f505047cdf3';
+(node as any).hash = '730efcc5e2022e85b65f2f5961898266';
 export default node;

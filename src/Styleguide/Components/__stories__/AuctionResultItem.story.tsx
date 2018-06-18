@@ -9,10 +9,8 @@ import {
 import { Section } from "../../Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("AuctionResultItem", () => {
-  const dimensions = {
-    in: "14 1/2 x 76 1/2 x 25 1/2 in",
-    cm: "30 x 21.8 x 16.5 cm",
-  }
+  const dimensions = "14 1/2 x 76 1/2 x 25 1/2 in"
+
   return (
     <React.Fragment>
       <Section title="Responsive Auction Result Item">

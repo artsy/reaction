@@ -1,12 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type AuctionResultSorts = "DATE_DESC" | "ESTIMATE_AND_DATE_DESC" | "PRICE_AND_DATE_DESC" | "%future added value";
 export type AuctionResultsQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
     readonly after?: string | null;
     readonly before?: string | null;
-    readonly sort?: string | null;
+    readonly sort?: AuctionResultSorts | null;
     readonly artistID: string;
 };
 export type AuctionResultsQueryResponse = {
@@ -21,6 +22,7 @@ query AuctionResultsQuery(
   $last: Int
   $after: String
   $before: String
+  $sort: AuctionResultSorts
   $artistID: String!
 ) {
   artist(id: $artistID) {
@@ -31,9 +33,10 @@ query AuctionResultsQuery(
 
 fragment AuctionResults_artist_2TjZs4 on Artist {
   id
-  auctionResults(first: $first, after: $after, before: $before, last: $last) {
+  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {
     pageInfo {
       hasNextPage
+      hasPreviousPage
       startCursor
       endCursor
     }
@@ -68,8 +71,11 @@ fragment AuctionResults_artist_2TjZs4 on Artist {
         date_text
         sale_date_text
         price_realized {
-          display(format: "0a")
+          display
           cents_usd
+        }
+        estimate {
+          display
         }
         __id
       }
@@ -108,7 +114,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "sort",
-    "type": "String",
+    "type": "AuctionResultSorts",
     "defaultValue": null
   },
   {
@@ -155,13 +161,20 @@ v3 = [
     "args": null,
     "storageKey": null
   }
-];
+],
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "display",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "AuctionResultsQuery",
   "id": null,
-  "text": "query AuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResults_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last) {\n    pageInfo {\n      hasNextPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display(format: \"0a\")\n          cents_usd\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResults_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -270,6 +283,12 @@ return {
                 "name": "last",
                 "variableName": "last",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "sort",
+                "variableName": "sort",
+                "type": "AuctionResultSorts"
               }
             ],
             "concreteType": "AuctionResultConnection",
@@ -288,6 +307,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "hasNextPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "hasPreviousPage",
                     "args": null,
                     "storageKey": null
                   },
@@ -446,20 +472,7 @@ return {
                         "concreteType": "AuctionResultPriceRealized",
                         "plural": false,
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "display",
-                            "args": [
-                              {
-                                "kind": "Literal",
-                                "name": "format",
-                                "value": "0a",
-                                "type": "String"
-                              }
-                            ],
-                            "storageKey": "display(format:\"0a\")"
-                          },
+                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -467,6 +480,18 @@ return {
                             "args": null,
                             "storageKey": null
                           }
+                        ]
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "estimate",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "AuctionLotEstimate",
+                        "plural": false,
+                        "selections": [
+                          v4
                         ]
                       },
                       v2
@@ -483,5 +508,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c0c743efe133e9bd983475745f13d6d5';
+(node as any).hash = '3754664f36080914bcf5f8d5a5191917';
 export default node;
