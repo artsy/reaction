@@ -52,6 +52,8 @@ describe("FormSwitcher", () => {
       const wrapper = getWrapper({ type: ModalType.login, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
+        auth_redirect: "/foo",
+        intent: "follow artist",
         type: "login",
         context_module: "Header",
         modal_copy: "Foo Bar",
@@ -65,7 +67,9 @@ describe("FormSwitcher", () => {
       const wrapper = getWrapper({ type: ModalType.resetPassword, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
+        auth_redirect: "/foo",
         type: "reset_password",
+        intent: "follow artist",
         context_module: "Header",
         modal_copy: "Foo Bar",
         trigger: "timed",
