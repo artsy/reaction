@@ -86,8 +86,12 @@ const ForgotPasswordLink = styled(SmallTextLink)`
   color: ${Colors.graySemibold};
 `
 
-export const ForgotPassword = props => (
-  <ForgotPasswordLink onClick={props.handleForgotPassword}>
+export interface ForgotPasswordProps {
+  handleForgotPasswordChange: () => void
+}
+
+export const ForgotPassword = (props: ForgotPasswordProps) => (
+  <ForgotPasswordLink onClick={props.handleForgotPasswordChange}>
     Forgot Password?
   </ForgotPasswordLink>
 )
