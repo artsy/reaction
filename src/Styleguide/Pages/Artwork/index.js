@@ -16,9 +16,7 @@ import { ImageCarousel } from "./ImageCarousel"
 import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
 import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
 import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
-import { imageData } from "../../Components/Artwork/__stories__/ImageCarousel.story"
+import { imageData } from "./__stories__/ImageCarousel.story"
 
 export class Artwork extends Component {
   state = {
@@ -57,12 +55,12 @@ export class Artwork extends Component {
           <Col sm={8}>
             <ArtworkSlider>
               <ImageCarousel images={slideshowImages} />
-              <ArtworkImage>TODO: Artwork Image</ArtworkImage>
+              {/* <ArtworkImage>TODO: Artwork Image</ArtworkImage>
               <SlideIndicatorDots>. . .</SlideIndicatorDots>
               <UtilityButtons>
                 <FavoriteButton>TODO: Heart Icon</FavoriteButton>
                 <ShareButton>TODO: Share Icon</ShareButton>
-              </UtilityButtons>
+              </UtilityButtons> */}
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
