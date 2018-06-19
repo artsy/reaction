@@ -1,4 +1,3 @@
-// @ts-ignore
 import React, { Component } from "react"
 import { FormikProps } from "formik"
 import { DesktopModal } from "./Components/DesktopModal"
