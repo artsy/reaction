@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 import { TitleInfo } from "./TitleInfo"
 import { SizeInfo } from "./SizeInfo"
 import { Classification } from "./Classification"
@@ -25,15 +25,13 @@ export interface ArtworkMetadataProps {
   }
 }
 
-const ArtworkMetadataContainer = styled.div.attrs<SpaceProps>({})`
-  ${space};
-`
+const ArtworkMetadataContainer = styled(Box)``
 
 export class ArtworkMetadata extends React.Component<ArtworkMetadataProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkMetadataContainer pb={2}>
+      <ArtworkMetadataContainer pb={3}>
         <TitleInfo artwork={artwork} />
         {artwork.edition_sets.length < 2 && <SizeInfo artwork={artwork} />}
         <Classification artwork={artwork} />

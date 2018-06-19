@@ -1,7 +1,7 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
 import styled from "styled-components"
-import { space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Location } from "../../../../Assets/Icons/Location"
 
@@ -19,20 +19,18 @@ export interface PartnerInfoProps {
   }
 }
 
-const PartnerInfoContainer = styled.div.attrs<SpaceProps>({})`
-  ${space};
-`
+const PartnerInfoContainer = styled(Box)``
 const LocationsContainer = styled.div``
 
 export class PartnerInfo extends React.Component<PartnerInfoProps> {
   renderPartnerName() {
     const partner = this.props.artwork.partner
     return partner.href ? (
-      <Serif size="5t" display="inline-block">
+      <Serif size="5t" display="inline-block" weight="semibold">
         <a href={partner.href}>{partner.name}</a>
       </Serif>
     ) : (
-      <Serif size="5t" display="inline-block">
+      <Serif size="5t" display="inline-block" weight="semibold">
         {partner.name}
       </Serif>
     )
@@ -58,7 +56,7 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
   render() {
     const { artwork } = this.props
     return (
-      <PartnerInfoContainer pb={2}>
+      <PartnerInfoContainer pb={3}>
         {artwork && artwork.collecting_institution
           ? this.renderCollectingInstitution()
           : this.renderPartnerName()}

@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Serif } from "@artsy/palette"
-import { themeGet, space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
+import { themeGet } from "styled-system"
 
 export interface ClassificationProps {
   artwork: {
@@ -11,10 +12,9 @@ export interface ClassificationProps {
   }
 }
 
-const ClassificationContainer = styled.div.attrs<SpaceProps>({})`
+const ClassificationContainer = styled(Box)`
   color: ${themeGet("colors.black60")};
   text-align: left;
-  ${space};
 `
 
 export class Classification extends React.Component<ClassificationProps> {
