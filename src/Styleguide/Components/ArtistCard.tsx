@@ -40,7 +40,7 @@ export const LargeArtistCard = props => (
 )
 
 export const SmallArtistCard = props => (
-  <BorderBox hover>
+  <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
