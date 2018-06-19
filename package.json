@@ -24,7 +24,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "babel src --out-dir dist --copy-files -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
+    "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
@@ -139,7 +139,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.0.2",
+    "@artsy/palette": "^2.1.1",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
