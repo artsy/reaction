@@ -55,12 +55,6 @@ export class Artwork extends Component {
           <Col sm={8}>
             <ArtworkSlider>
               <ImageCarousel images={slideshowImages} />
-              {/* <ArtworkImage>TODO: Artwork Image</ArtworkImage>
-              <SlideIndicatorDots>. . .</SlideIndicatorDots>
-              <UtilityButtons>
-                <FavoriteButton>TODO: Heart Icon</FavoriteButton>
-                <ShareButton>TODO: Share Icon</ShareButton>
-              </UtilityButtons> */}
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
