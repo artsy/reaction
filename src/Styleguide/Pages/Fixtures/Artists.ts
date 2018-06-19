@@ -4,6 +4,7 @@ export const SingleFollowedArtist = [
     id: "francesca-dimattio",
     name: "Francesca DiMattio",
     is_followed: true,
+    is_consignable: true,
     href: "https://www.artsy.net/artist/francesca-dimattio",
   },
 ]
