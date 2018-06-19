@@ -1,5 +1,4 @@
 import { FormikProps } from "formik"
-import { OverlayTrigger } from "^Components/OverlayTrigger"
 
 export enum ModalType {
   login = "login",

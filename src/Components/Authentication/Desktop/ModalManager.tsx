@@ -18,6 +18,7 @@ export interface ModalManagerProps {
   type?: ModalType
   handleSubmit?: (
     type: ModalType,
+    options: ModalOptions,
     values: InputValues,
     formikBag: FormikProps<InputValues>
   ) => void
@@ -64,7 +65,7 @@ export class ModalManager extends Component<
     }
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
-      ? this.props.handleSubmit.bind(this, currentType)
+      ? this.props.handleSubmit.bind(this, currentType, options)
       : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
     return (
