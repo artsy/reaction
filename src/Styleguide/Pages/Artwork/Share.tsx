@@ -38,7 +38,9 @@ const Platform: React.SFC<{ iconName: IconName; title: string }> = ({
 }) => (
   <Flex flexDirection="row" flexBasis="50%">
     <Icon name={iconName} color="black" />
-    <Sans color="black60">{title}</Sans>
+    <Sans size="3" color="black60">
+      {title}
+    </Sans>
   </Flex>
 )
 
@@ -54,11 +56,11 @@ export class Share extends React.Component<ShareProps> {
   render() {
     return (
       <Container flexDirection="column" p={2}>
-        <Sans typeSize="sans3" weight="medium" color="black100" mb={2}>
+        <Sans size="3" weight="medium" color="black100" mb={2}>
           Share
         </Sans>
         <Flex flexDirection="row">
-          <SansGrow typeSize="sans2" color="black60">
+          <SansGrow size="2" color="black60">
             <URLInput
               type="text"
               readOnly
@@ -67,14 +69,11 @@ export class Share extends React.Component<ShareProps> {
               onClick={this.selectURL}
             />
           </SansGrow>
-          <Sans
-            typeSize="sans2"
-            weight="medium"
-            color="black60"
-            onClick={this.selectURL}
-          >
-            Copy
-          </Sans>
+          <a onClick={this.selectURL}>
+            <Sans size="2" weight="medium" color="black60">
+              Copy
+            </Sans>
+          </a>
         </Flex>
         <Separator />
         <Flex flexDirection="row" wrap>
