@@ -14,8 +14,11 @@ export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string }
   csrf?: string
   redirectTo?: string
+  tracking?: any
+  type?: ModalType
   handleSubmit?: (
     type: ModalType,
+    options: ModalOptions,
     values: InputValues,
     formikBag: FormikProps<InputValues>
   ) => void
@@ -23,7 +26,7 @@ export interface ModalManagerProps {
 
 export interface ModalManagerState {
   currentType?: ModalType
-  copy?: string | null
+  options?: ModalOptions
 }
 
 export class ModalManager extends Component<
@@ -32,32 +35,37 @@ export class ModalManager extends Component<
 > {
   state = {
     currentType: null,
-    copy: null,
+    options: {
+      copy: null,
+    },
   }
 
   openModal = (options: ModalOptions) => {
+    const { mode } = options
+
     this.setState({
-      currentType: options.mode,
-      copy: options.copy,
+      currentType: mode,
+      options,
     })
   }
 
   closeModal = () => {
     this.setState({
       currentType: null,
+      options: null,
     })
   }
 
   render() {
     const { csrf, submitUrls, redirectTo } = this.props
-    const { currentType, copy } = this.state
+    const { currentType, options } = this.state
 
     if (!currentType) {
       return null
     }
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
-      ? this.props.handleSubmit.bind(this, currentType)
+      ? this.props.handleSubmit.bind(this, currentType, options)
       : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
     return (
@@ -65,9 +73,13 @@ export class ModalManager extends Component<
         show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
-        subtitle={copy}
+        subtitle={options.copy}
       >
-        <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
+        <FormSwitcher
+          type={currentType}
+          handleSubmit={handleSubmit}
+          options={options}
+        />
       </DesktopModal>
     )
   }
