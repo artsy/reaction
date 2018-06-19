@@ -10,7 +10,7 @@ storiesOf("Styleguide/Components", module).add("ReadMore", () => {
     <React.Fragment>
       <Section title="Max lines">
         <Item>
-          <Sans>
+          <Sans size="3">
             <ReadMore maxLineCount={2}>
               Donald Judd, widely regarded as one of the most significant
               American artists of the post-war period, is perhaps best-known for
@@ -52,7 +52,7 @@ storiesOf("Styleguide/Components", module).add("ReadMore", () => {
         </Item>
       </Section>
       <Section title="Character cap">
-        <Sans>
+        <Sans size="3">
           <ReadMore maxLineCount={2}>TODO</ReadMore>
         </Sans>
       </Section>

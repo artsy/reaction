@@ -22,7 +22,7 @@ export interface ExhibitionsHeadlineProps {
   exhibitionCount: number
   expanded: boolean
   collapsible: boolean
-  onShowClicked: Function
+  onShowClicked: (event: React.MouseEvent<HTMLElement>) => void
 }
 export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
   <Flex justifyContent="space-between" mb={isCollapsed(props) ? 0 : 1}>
@@ -33,9 +33,11 @@ export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
       {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
     {isCollapsed(props) && (
-      <Sans size="2" color="black60" ml={2} onClick={props.onShowClicked}>
-        Show
-      </Sans>
+      <div onClick={props.onShowClicked}>
+        <Sans size="2" color="black60" ml={2}>
+          Show
+        </Sans>
+      </div>
     )}
   </Flex>
 )

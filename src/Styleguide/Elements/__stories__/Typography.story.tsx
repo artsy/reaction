@@ -3,16 +3,17 @@ import styled from "styled-components"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Display, Sans, Serif, themeProps } from "@artsy/palette"
+import {
+  FontTypes,
+  TypeSizeKeys,
+} from "@artsy/palette/dist/elements/Typography"
 import { Flex } from "../Flex"
 
 const stories = storiesOf("Styleguide/Elements", module)
 
-function getTypeSizes(type) {
-  const sizes = Object.keys(themeProps.typeSizes)
-    .filter(size => size.includes(type))
-    .map(size => size.replace(type, ""))
-
-  return sizes
+function getTypeSizes<T extends FontTypes>(type: T) {
+  const typeSizes = themeProps.typeSizes[type] // as TypeSizes[T]
+  return Object.keys(typeSizes) as Array<TypeSizeKeys[T]>
 }
 
 stories.add("Typography", () => {
@@ -56,7 +57,7 @@ stories.add("Typography", () => {
 
       <Section title="Paragraph text">
         <Item>
-          <Serif size={3}>
+          <Serif size="3">
             Donald Judd, widely regarded as one of the most significant American
             artists of the post-war period, is perhaps best-known for the
             large-scale outdoor installations and long, spacious interiors he
@@ -74,7 +75,7 @@ stories.add("Typography", () => {
           </Serif>
         </Item>
         <Item>
-          <Sans size={3}>
+          <Sans size="3">
             Donald Judd, widely regarded as one of the most significant American
             artists of the post-war period, is perhaps best-known for the
             large-scale outdoor installations and long, spacious interiors he
@@ -94,23 +95,23 @@ stories.add("Typography", () => {
       </Section>
 
       <Section title="Links - default">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#">This is a link</a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#">This is a link</a>
         </Serif>
       </Section>
 
       <Section title="Links - .noUnderline">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
@@ -123,13 +124,13 @@ stories.add("Typography", () => {
         </Display>
       </Section>
       <Section title="Links .colorLink">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#" className="colorLink">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#" className="colorLink">
             This is a link
           </a>
