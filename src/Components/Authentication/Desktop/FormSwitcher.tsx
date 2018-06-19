@@ -62,10 +62,10 @@ export class FormSwitcher extends React.Component<Props, State> {
         trigger: trigger || "click",
         trigger_seconds: triggerSeconds,
         intent,
+        auth_redirect: redirectTo || destination,
       },
       type === "signup"
         ? {
-            auth_redirect: redirectTo || destination,
             onboarding: !redirectTo,
           }
         : null
