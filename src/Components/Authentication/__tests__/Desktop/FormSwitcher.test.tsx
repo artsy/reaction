@@ -17,7 +17,13 @@ describe("FormSwitcher", () => {
         type={props.type || ModalType.login}
         handleSubmit={null}
         tracking={props.tracking}
-        signupIntent={props.signupIntent}
+        options={{
+          contextModule: "Header",
+          copy: "Foo Bar",
+          destination: "/collect",
+          signupIntent: "follow artist",
+          redirectTo: "/foo",
+        }}
       />
     )
 
@@ -45,28 +51,36 @@ describe("FormSwitcher", () => {
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         type: "login",
+        context_module: "Header",
+        modal_copy: "Foo Bar",
       })
     })
+
     it("tracks reset password impressions", () => {
       const tracking = { trackEvent: jest.fn() }
       const wrapper = getWrapper({ type: ModalType.resetPassword, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         type: "reset_password",
+        context_module: "Header",
+        modal_copy: "Foo Bar",
       })
     })
+
     it("tracks signup impressions", () => {
       const tracking = { trackEvent: jest.fn() }
       const wrapper = getWrapper({
         type: ModalType.signup,
         tracking,
-        signupIntent: "foo",
       })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         type: "signup",
-        onboarding: true,
-        signup_intent: "foo",
+        context_module: "Header",
+        onboarding: false,
+        signup_redirect: "/foo",
+        signup_intent: "follow artist",
+        modal_copy: "Foo Bar",
       })
     })
   })

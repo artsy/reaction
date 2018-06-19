@@ -5,6 +5,7 @@ import { ResetPasswordForm } from "./ResetPasswordForm"
 import {
   FormComponentType,
   InputValues,
+  ModalOptions,
   ModalType,
   SubmitHandler,
 } from "../Types"
@@ -12,14 +13,11 @@ import { track } from "Utils/track"
 import Events from "Utils/Events"
 
 interface Props {
+  handleSubmit: SubmitHandler
+  options?: ModalOptions
+  tracking?: any
   type: ModalType
   values?: InputValues
-  handleSubmit: SubmitHandler
-  options?: {
-    signupIntent?: string
-    redirectTo?: string
-  }
-  tracking?: any
 }
 
 interface State {
@@ -40,21 +38,25 @@ export class FormSwitcher extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    const { signupIntent, redirectUrl, type, tracking } = this.props
+    const {
+      options: { contextModule, copy, destination, signupIntent, redirectTo },
+      type,
+      tracking,
+    } = this.props
 
     // Analytics
     const event = Object.assign(
       {
         action: "Auth impression",
         type,
-        // label: contextModule,
-        // modal_copy: copy,
+        context_module: contextModule,
+        modal_copy: copy,
       },
       type === "signup"
         ? {
             signup_intent: signupIntent,
-            // signup_redirect: redirectUrl || destination,
-            onboarding: !redirectUrl,
+            signup_redirect: redirectTo || destination,
+            onboarding: !redirectTo,
           }
         : null
     )

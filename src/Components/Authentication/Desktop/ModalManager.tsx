@@ -26,7 +26,7 @@ export interface ModalManagerProps {
 
 export interface ModalManagerState {
   currentType?: ModalType
-  copy?: string | null
+  options?: ModalOptions
 }
 
 export class ModalManager extends Component<
@@ -35,27 +35,30 @@ export class ModalManager extends Component<
 > {
   state = {
     currentType: null,
-    copy: null,
+    options: {
+      copy: null,
+    },
   }
 
   openModal = (options: ModalOptions) => {
-    const { mode, copy } = options
+    const { mode } = options
 
     this.setState({
       currentType: mode,
-      copy,
+      options,
     })
   }
 
   closeModal = () => {
     this.setState({
       currentType: null,
+      options: null,
     })
   }
 
   render() {
     const { csrf, submitUrls, redirectTo } = this.props
-    const { currentType, copy } = this.state
+    const { currentType, options } = this.state
 
     if (!currentType) {
       return null
@@ -70,9 +73,13 @@ export class ModalManager extends Component<
         show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
-        subtitle={copy}
+        subtitle={options.copy}
       >
-        <FormSwitcher type={currentType} handleSubmit={handleSubmit} />
+        <FormSwitcher
+          type={currentType}
+          handleSubmit={handleSubmit}
+          options={options}
+        />
       </DesktopModal>
     )
   }
