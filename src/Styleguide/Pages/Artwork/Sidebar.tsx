@@ -26,6 +26,15 @@ export interface ArtworkSidebarProps {
         readonly city: string
       }>
     }
+    readonly sale: {
+      readonly is_live_open: boolean
+    }
+    readonly sale_artwork: {
+      readonly lot_label: string
+    }
+    readonly is_in_auction: boolean
+    readonly is_biddable: boolean
+    readonly is_sold: boolean
     readonly title: string
     readonly date: string
     readonly medium: string
@@ -44,6 +53,7 @@ export interface ArtworkSidebarProps {
         readonly in: string
         readonly cm: string
       }
+      readonly sale_message: string | null
       readonly edition_of?: string
     }>
     readonly sale_message: string | null

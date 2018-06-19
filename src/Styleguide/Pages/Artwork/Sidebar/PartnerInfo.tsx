@@ -38,35 +38,39 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
   renderCollectingInstitution() {
     return <Serif size="3">{this.props.artwork.collecting_institution}</Serif>
   }
-  renderLocations() {
-    const locations = this.props.artwork.partner.locations
-    const locationCities = locations.map((location, index) => {
-      return location.city
-    })
-    const filteredForDuplicates = locationCities.filter((city, pos) => {
-      return locationCities.indexOf(city) === pos
-    })
+  renderLocations(locationNames) {
     return (
       <Serif size="2" display="inline-block" pl={1} pt={0.3}>
-        {filteredForDuplicates.join(", ")}
+        {locationNames.join(", ")}
       </Serif>
     )
   }
 
   render() {
     const { artwork } = this.props
+    const locationCities = artwork.partner.locations.map((location, index) => {
+      return location.city
+    })
+    const filteredForDuplicatesAndBlanks = locationCities.filter(
+      (city, pos) => {
+        return city && locationCities.indexOf(city) === pos && city.length > 0
+      }
+    )
+
     return (
       <PartnerInfoContainer pb={3}>
         {artwork && artwork.collecting_institution
           ? this.renderCollectingInstitution()
           : this.renderPartnerName()}
-        {this.props.artwork.partner.locations.length > 0 && (
+        {filteredForDuplicatesAndBlanks.length > 0 && (
           <LocationsContainer>
             <Flex width="100%" pt={1}>
               <Flex flexDirection="column">
                 <Location />
               </Flex>
-              <Flex flexDirection="column">{this.renderLocations()}</Flex>
+              <Flex flexDirection="column">
+                {this.renderLocations(filteredForDuplicatesAndBlanks)}
+              </Flex>
             </Flex>
           </LocationsContainer>
         )}

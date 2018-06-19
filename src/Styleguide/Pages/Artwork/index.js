@@ -11,7 +11,7 @@ import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { Sidebar } from "./Sidebar"
-import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
+import { RegularArtwork2Editions } from "../Fixtures/Artworks"
 import { ImageCarousel } from "./ImageCarousel"
 import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
 import { insights } from "Styleguide/Components/__stories__/MarketInsights.story"
@@ -58,7 +58,7 @@ export class Artwork extends Component {
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
-            <Sidebar artwork={ArtworkWithCompleteData} />
+            <Sidebar artwork={RegularArtwork2Editions} />
           </Col>
         </Row>
         <Row>
