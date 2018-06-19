@@ -1,4 +1,5 @@
 import { FormikProps } from "formik"
+import { OverlayTrigger } from "^Components/OverlayTrigger"
 
 export enum ModalType {
   login = "login",
@@ -55,6 +56,14 @@ export interface ModalOptions {
    * the location where the modal was triggered.
    */
   contextModule?: string
+  /**
+   * the type of action that triggered the modal (eg: click, timed)
+   */
+  trigger?: string
+  /**
+   * the number of seconds before a modal was triggered
+   */
+  triggerSeconds?: number
 }
 
 export type FormComponentType = React.SFC<FormProps>

@@ -39,7 +39,15 @@ export class FormSwitcher extends React.Component<Props, State> {
 
   componentDidMount() {
     const {
-      options: { contextModule, copy, destination, signupIntent, redirectTo },
+      options: {
+        contextModule,
+        copy,
+        destination,
+        redirectTo,
+        signupIntent,
+        trigger,
+        triggerSeconds,
+      },
       type,
       tracking,
     } = this.props
@@ -51,6 +59,8 @@ export class FormSwitcher extends React.Component<Props, State> {
         type,
         context_module: contextModule,
         modal_copy: copy,
+        trigger: trigger || "click",
+        trigger_seconds: triggerSeconds,
       },
       type === "signup"
         ? {

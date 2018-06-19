@@ -23,6 +23,8 @@ describe("FormSwitcher", () => {
           destination: "/collect",
           signupIntent: "follow artist",
           redirectTo: "/foo",
+          trigger: "timed",
+          triggerSeconds: 1,
         }}
       />
     )
@@ -53,6 +55,8 @@ describe("FormSwitcher", () => {
         type: "login",
         context_module: "Header",
         modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
       })
     })
 
@@ -64,6 +68,8 @@ describe("FormSwitcher", () => {
         type: "reset_password",
         context_module: "Header",
         modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
       })
     })
 
@@ -81,6 +87,8 @@ describe("FormSwitcher", () => {
         signup_redirect: "/foo",
         signup_intent: "follow artist",
         modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
       })
     })
   })
