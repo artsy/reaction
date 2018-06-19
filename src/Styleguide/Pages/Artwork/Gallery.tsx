@@ -37,7 +37,7 @@ export const LargeGallery = props => (
 )
 
 export const SmallGallery = props => (
-  <Flex>
+  <Flex width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="4">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>

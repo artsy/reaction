@@ -14,7 +14,7 @@ import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
 import { ImageCarousel } from "./ImageCarousel"
 import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { insights } from "Styleguide/Components/__stories__/MarketInsights.story"
 import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
 import { imageData } from "./__stories__/ImageCarousel.story"
 

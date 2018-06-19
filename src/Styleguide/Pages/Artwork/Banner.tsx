@@ -40,7 +40,7 @@ export const LargeBanner = props => (
 )
 
 export const SmallBanner = props => (
-  <Flex flexDirection="row">
+  <Flex flexDirection="row" width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
