@@ -1,11 +1,11 @@
 import { storiesOf } from "storybook/storiesOf"
 import React from "react"
-import { AuctionResultsContainer } from "Styleguide/Containers/Artist/AuctionResults"
+import { AuctionResultsContainer } from "Styleguide/Pages/Artist/Containers/AuctionResults"
 
-import { ContextProvider } from "../../../Components/Artsy"
+import { ContextProvider } from "Components/Artsy"
 import { Provider as StateProvider } from "unstated"
 
-storiesOf("Containers/Artist/AuctionResults", module).add(
+storiesOf("Styleguide/Artist/AuctionResults", module).add(
   "Pablo Picasso",
   () => {
     return (
