@@ -14,7 +14,7 @@ storiesOf("Styleguide/Components", module).add("Toggle", () => {
       <Section title="Toggle">
         <Item>
           <Toggle label="Artist Bio">
-            <Sans>
+            <Sans size="3">
               Donald Judd, widely regarded as one of the most significant
               American artists of the post-war period, is perhaps best-known for
               the large-scale outdoor installations and long, spacious interiors
@@ -26,7 +26,7 @@ storiesOf("Styleguide/Components", module).add("Toggle", () => {
       <Section title="Auto-expand">
         <Item>
           <Toggle label="Description" expanded>
-            <Sans>
+            <Sans size="3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -38,7 +38,7 @@ storiesOf("Styleguide/Components", module).add("Toggle", () => {
       <Section title="Disabled">
         <Item>
           <Toggle label="Description" expanded disabled>
-            <Serif>
+            <Serif size="3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -52,7 +52,9 @@ storiesOf("Styleguide/Components", module).add("Toggle", () => {
           <Toggle label="Purchase type" expanded disabled>
             <Flex justifyContent="space-between">
               <Checkbox>For sale</Checkbox>
-              <Serif color="black60">1000</Serif>
+              <Serif size="3" color="black60">
+                1000
+              </Serif>
             </Flex>
           </Toggle>
           <Toggle label="Medium" expanded>

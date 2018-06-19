@@ -5,20 +5,27 @@ import { AboutTheWork } from "./AboutTheWork"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { Banner } from "./Banner"
-import { Artists } from "./Sidebar/Artists"
+// import { Artists } from "./Sidebar/Artists"
 import { ArtistInfo } from "./ArtistInfo"
 import { Tab, Tabs } from "Styleguide/Components/Tabs"
-import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
-import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
 import { ImageCarousel } from "./ImageCarousel"
-import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
-import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { ImageCarousel } from "../../Components/Artwork/ImageCarousel"
-import { imageData } from "../../Components/Artwork/__stories__/ImageCarousel.story"
+import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
+import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
+// import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
+// import { imageData } from "../../Components/Artwork/__stories__/ImageCarousel.story"
+
+// FIXME: This is duplicated from above
+function imageData(width: number, height: number, imageIndex?: number) {
+  return {
+    uri: `https://picsum.photos/${width}/${height}/?${
+      imageIndex === undefined ? "random" : `image=${imageIndex}`
+    }`,
+    aspectRatio: width / height,
+  }
+}
 
 export class Artwork extends Component {
   state = {
@@ -57,12 +64,12 @@ export class Artwork extends Component {
           <Col sm={8}>
             <ArtworkSlider>
               <ImageCarousel images={slideshowImages} />
-              <ArtworkImage>TODO: Artwork Image</ArtworkImage>
+              {/* <ArtworkImage>TODO: Artwork Image</ArtworkImage>
               <SlideIndicatorDots>. . .</SlideIndicatorDots>
               <UtilityButtons>
                 <FavoriteButton>TODO: Heart Icon</FavoriteButton>
                 <ShareButton>TODO: Share Icon</ShareButton>
-              </UtilityButtons>
+              </UtilityButtons> */}
             </ArtworkSlider>
           </Col>
           <Col sm={4}>

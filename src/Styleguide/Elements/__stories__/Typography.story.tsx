@@ -22,7 +22,7 @@ stories.add("Typography", () => {
         <Flex flexDirection="column" p={2}>
           {getTypeSizes("sans").map((size, key) => {
             return (
-              <Sans size={size} key={key}>
+              <Sans size={size as any} key={key}>
                 Donald Judd
               </Sans>
             )
@@ -34,7 +34,7 @@ stories.add("Typography", () => {
         <Flex flexDirection="column" p={2}>
           {getTypeSizes("serif").map((size, key) => {
             return (
-              <Serif size={size} key={key}>
+              <Serif size={size as any} key={key}>
                 Donald Judd
               </Serif>
             )
@@ -46,7 +46,7 @@ stories.add("Typography", () => {
         <Flex flexDirection="column" p={2}>
           {getTypeSizes("display").map((size, key) => {
             return (
-              <Display size={size} key={key}>
+              <Display size={size as any} key={key}>
                 Donald Judd
               </Display>
             )
@@ -56,7 +56,7 @@ stories.add("Typography", () => {
 
       <Section title="Paragraph text">
         <Item>
-          <Serif size={3}>
+          <Serif size="3">
             Donald Judd, widely regarded as one of the most significant American
             artists of the post-war period, is perhaps best-known for the
             large-scale outdoor installations and long, spacious interiors he
@@ -74,7 +74,7 @@ stories.add("Typography", () => {
           </Serif>
         </Item>
         <Item>
-          <Sans size={3}>
+          <Sans size="3">
             Donald Judd, widely regarded as one of the most significant American
             artists of the post-war period, is perhaps best-known for the
             large-scale outdoor installations and long, spacious interiors he
@@ -94,23 +94,23 @@ stories.add("Typography", () => {
       </Section>
 
       <Section title="Links - default">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#">This is a link</a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#">This is a link</a>
         </Serif>
       </Section>
 
       <Section title="Links - .noUnderline">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#" className="noUnderline">
             This is a link
           </a>
@@ -123,13 +123,13 @@ stories.add("Typography", () => {
         </Display>
       </Section>
       <Section title="Links .colorLink">
-        <Sans mx={3}>
+        <Sans size="3" mx={3}>
           <a href="#" className="colorLink">
             This is a link
           </a>
         </Sans>
 
-        <Serif mx={3}>
+        <Serif size="3" mx={3}>
           <a href="#" className="colorLink">
             This is a link
           </a>
