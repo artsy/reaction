@@ -9,11 +9,11 @@ export type Artworks_filtered_artworks = {
             readonly endCursor: string | null;
         };
         readonly pageCursors: ({
-            readonly around: ReadonlyArray<({
+            readonly around: ReadonlyArray<{
                 readonly cursor: string;
                 readonly page: number;
                 readonly isCurrent: boolean;
-            }) | null>;
+            }>;
             readonly first: ({
                 readonly cursor: string;
                 readonly page: number;

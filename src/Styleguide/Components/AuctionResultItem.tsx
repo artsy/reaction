@@ -14,19 +14,14 @@ const ScaledArtworkImage = props => (
   </Flex>
 )
 
-export interface Dimensions {
-  in: string
-  cm: string
-}
-
 export interface AuctionResultItemProps {
   imageUrl: string
   title: string
   date: string
-  dimensions: Dimensions
+  dimensions: string
   organization: string
   auctionDate: string
-  salePrice: string
+  salePrice?: string
   estimate: string
   description: string
 }
@@ -63,8 +58,7 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
             {props.date}
           </Serif>
           <MetadataContainer>
-            <Serif size="2">{props.dimensions.in}</Serif>
-            <Serif size="2">{props.dimensions.cm}</Serif>
+            <Serif size="2">{props.dimensions}</Serif>
           </MetadataContainer>
           <Box pt={1}>
             <Serif size="2">{props.organization}</Serif>
@@ -77,7 +71,9 @@ export const ExtraSmallAuctionResultItem = (props: AuctionResultItemProps) => {
           </Box>
 
           <Box pt={1}>
-            <Serif size="2">Sale: {props.salePrice}</Serif>
+            {props.salePrice && (
+              <Serif size="2">{`Sale: ${props.salePrice}`}</Serif>
+            )}
             <MetadataContainer>
               <Serif size="2">Est: {props.estimate}</Serif>
             </MetadataContainer>
@@ -106,8 +102,7 @@ export const SmallAuctionResultItem = (props: AuctionResultItemProps) => {
             {props.date}
           </Serif>
           <MetadataContainer>
-            <Serif size="2">{props.dimensions.in}</Serif>
-            <Serif size="2">{props.dimensions.cm}</Serif>
+            <Serif size="2">{props.dimensions}</Serif>
           </MetadataContainer>
           <Box pt={1}>
             <Serif size="2">{props.organization}</Serif>
@@ -122,7 +117,9 @@ export const SmallAuctionResultItem = (props: AuctionResultItemProps) => {
       </Flex>
 
       <div>
-        <Serif size="2">Sale: {props.salePrice}</Serif>
+        {props.salePrice && (
+          <Serif size="2">{`Sale: ${props.salePrice}`}</Serif>
+        )}
         <MetadataContainer>
           <Serif size="2">Est: {props.estimate}</Serif>
         </MetadataContainer>
@@ -149,8 +146,7 @@ export const LargeAuctionResultItem = (props: AuctionResultItemProps) => {
             {props.date}
           </Serif>
           <MetadataContainer>
-            <Serif size="2">{props.dimensions.in}</Serif>
-            <Serif size="2">{props.dimensions.cm}</Serif>
+            <Serif size="2">{props.dimensions}</Serif>
             <Serif size="1">{props.description}</Serif>
           </MetadataContainer>
         </div>
@@ -165,7 +161,9 @@ export const LargeAuctionResultItem = (props: AuctionResultItemProps) => {
         </MetadataContainer>
       </div>
       <div>
-        <Serif size="2">Sale: {props.salePrice}</Serif>
+        {props.salePrice && (
+          <Serif size="2">{`Sale: ${props.salePrice}`}</Serif>
+        )}
         <MetadataContainer>
           <Serif size="2">Est: {props.estimate}</Serif>
         </MetadataContainer>

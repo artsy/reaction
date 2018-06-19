@@ -123,7 +123,7 @@ export const Overview = () => {
                     alignItems="flex-end"
                   >
                     <Flex width="100%" pb={2} justifyContent="flex-end">
-                      <Select />
+                      <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
 
                     <ArtworkGridItems
@@ -132,7 +132,9 @@ export const Overview = () => {
                     />
 
                     <Spacer mb={3} />
-                    <Pagination />
+                    <Pagination
+                      around={[{ page: 1, cursor: "blah", isCurrent: true }]}
+                    />
                   </ArtworkGrid>
                 </ArtworkBrowser>
               )
