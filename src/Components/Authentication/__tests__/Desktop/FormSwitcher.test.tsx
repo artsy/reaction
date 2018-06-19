@@ -21,7 +21,7 @@ describe("FormSwitcher", () => {
           contextModule: "Header",
           copy: "Foo Bar",
           destination: "/collect",
-          signupIntent: "follow artist",
+          intent: "follow artist",
           redirectTo: "/foo",
           trigger: "timed",
           triggerSeconds: 1,

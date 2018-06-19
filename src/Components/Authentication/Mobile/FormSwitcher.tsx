@@ -13,7 +13,6 @@ interface Props {
   type: ModalType
   values?: InputValues
   handleSubmit: SubmitHandler
-  signupIntent?: string
   redirectUrl?: string
 }
 
