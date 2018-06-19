@@ -41,7 +41,7 @@ export class Toggle extends React.Component<ToggleProps> {
       <Flex width="100%" flexDirection="column">
         <Header onClick={this.toggleExpand} disabled={disabled}>
           <Flex justifyContent="space-between">
-            <Sans size="2" weight="medium" color="black100" mt={1}>
+            <Sans size="2" weight="medium" color="black100" mt={0.3}>
               {this.props.label}
             </Sans>
             {!disabled && (
@@ -52,7 +52,7 @@ export class Toggle extends React.Component<ToggleProps> {
           </Flex>
         </Header>
         {expanded && (
-          <Flex flexDirection="column" alignItems="left" mt={-3} mb={3}>
+          <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
             {this.props.children}
           </Flex>
         )}

@@ -8,10 +8,12 @@ import { Button } from "Styleguide/Elements/Button"
 
 export interface CommercialProps {
   artwork: {
+    readonly __id: string
     readonly sale_message: string | null
     readonly is_inquireable: boolean
     readonly is_price_range?: boolean | null
     readonly edition_sets: Array<{
+      readonly __id: string
       readonly dimensions: {
         readonly in: string
         readonly cm: string
@@ -30,16 +32,17 @@ const PricingInfoContainer = styled.div.attrs<SpaceProps>({})`
 `
 
 export class Commercial extends React.Component<CommercialProps> {
-  renderSaleMessage(artwork) {
-    return <Serif size="5t">{artwork.sale_message}</Serif>
+  renderSaleMessage() {
+    return <Serif size="5t">{this.props.artwork.sale_message}</Serif>
   }
 
-  renderEditions(editions) {
+  renderEditions() {
+    const editions = this.props.artwork.edition_sets
     return editions.map((edition, index) => {
       return (
-        <React.Fragment>
-          <PricingInfoContainer pb={4}>
-            {this.renderSaleMessage(edition)}
+        <React.Fragment key={edition.__id}>
+          <PricingInfoContainer pb={2}>
+            {this.renderSaleMessage()}
             <SizeInfo artwork={edition} />
           </PricingInfoContainer>
           {index !== editions.length - 1 && <Separator />}
@@ -51,13 +54,13 @@ export class Commercial extends React.Component<CommercialProps> {
   render() {
     const { artwork } = this.props
     return (
-      <CommercialContainer pb={4}>
+      <CommercialContainer pb={2}>
         {artwork.edition_sets.length < 2 ? (
-          <PricingInfoContainer pb={4}>
-            {this.renderSaleMessage(artwork)}
+          <PricingInfoContainer pb={2}>
+            {this.renderSaleMessage()}
           </PricingInfoContainer>
         ) : (
-          this.renderEditions(artwork.edition_sets)
+          this.renderEditions()
         )}
         {artwork.is_inquireable && (
           <Button width="100%" size="medium">

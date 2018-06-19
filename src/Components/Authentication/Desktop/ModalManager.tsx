@@ -17,8 +17,11 @@ export interface ModalManagerProps {
   }
   csrf?: string
   redirectTo?: string
+  tracking?: any
+  type?: ModalType
   handleSubmit?: (
     type: ModalType,
+    options: ModalOptions,
     values: InputValues,
     formikBag: FormikProps<InputValues>
   ) => void
@@ -26,8 +29,7 @@ export interface ModalManagerProps {
 
 export interface ModalManagerState {
   currentType?: ModalType
-  copy?: string | null
-  redirectTo?: string
+  options?: ModalOptions
 }
 
 export class ModalManager extends Component<
@@ -36,30 +38,34 @@ export class ModalManager extends Component<
 > {
   state = {
     currentType: null,
-    copy: null,
-    redirectTo: "/",
+    options: {
+      copy: null,
+      redirectTo: "/",
+    },
   }
 
   openModal = (options: ModalOptions) => {
+    const { mode } = options
+
     this.setState({
-      currentType: options.mode,
-      copy: options.copy,
-      redirectTo: options.redirectTo || "/",
+      currentType: mode,
+      options,
     })
   }
 
   closeModal = () => {
     this.setState({
       currentType: null,
+      options: null,
     })
   }
 
   render() {
     const { csrf, submitUrls, redirectTo } = this.props
-    const { currentType, copy } = this.state
+    const { currentType, options } = this.state
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
-      ? this.props.handleSubmit.bind(this, currentType)
+      ? this.props.handleSubmit.bind(this, currentType, options)
       : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
     return (
@@ -67,7 +73,7 @@ export class ModalManager extends Component<
         show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
-        subtitle={copy}
+        subtitle={options.copy}
       >
         <FormSwitcher
           type={currentType}
@@ -80,6 +86,7 @@ export class ModalManager extends Component<
             (window.location.href =
               submitUrls.twitter + "?redirect-to=" + redirectTo)
           }
+          options={options}
         />
       </DesktopModal>
     )

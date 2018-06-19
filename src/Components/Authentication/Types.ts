@@ -54,10 +54,6 @@ export interface ModalOptions {
    */
   signupReferer?: string
   /**
-   * url path to redirect the user after onboarding
-   */
-  destination?: string
-  /**
    * defines an action to take after the user successfully signs up
    *
    * @example
@@ -67,6 +63,18 @@ export interface ModalOptions {
    * }
    */
   afterSignUpAction?: string
+  /*
+   * the location where the modal was triggered.
+   */
+  contextModule?: string
+  /**
+   * the type of action that triggered the modal (eg: click, timed)
+   */
+  trigger?: string
+  /**
+   * the number of seconds before a modal was triggered
+   */
+  triggerSeconds?: number
 }
 
 export type FormComponentType = React.SFC<FormProps>

@@ -6,27 +6,90 @@ import { SignUpForm } from "../../Desktop/SignUpForm"
 import { ResetPasswordForm } from "../../Desktop/ResetPasswordForm"
 import { ModalType } from "../../Types"
 
+jest.mock("Utils/track.ts", () => ({
+  track: () => jest.fn(c => c),
+}))
+
 describe("FormSwitcher", () => {
+  const getWrapper = (props: any = {}) =>
+    mount(
+      <FormSwitcher
+        type={props.type || ModalType.login}
+        handleSubmit={null}
+        tracking={props.tracking}
+        options={{
+          contextModule: "Header",
+          copy: "Foo Bar",
+          destination: "/collect",
+          signupIntent: "follow artist",
+          redirectTo: "/foo",
+          trigger: "timed",
+          triggerSeconds: 1,
+        }}
+      />
+    )
+
   describe("renders states correctly", () => {
     it("login form", () => {
-      const wrapper = mount(
-        <FormSwitcher type={ModalType.login} handleSubmit={null} />
-      )
+      const wrapper = getWrapper()
       expect(wrapper.find(LoginForm).length).toEqual(1)
     })
 
     it("signup form", () => {
-      const wrapper = mount(
-        <FormSwitcher type={ModalType.signup} handleSubmit={null} />
-      )
+      const wrapper = getWrapper({ type: ModalType.signup })
       expect(wrapper.find(SignUpForm).length).toEqual(1)
     })
 
     it("reset password form", () => {
-      const wrapper = mount(
-        <FormSwitcher type={ModalType.resetPassword} handleSubmit={null} />
-      )
+      const wrapper = getWrapper({ type: ModalType.resetPassword })
       expect(wrapper.find(ResetPasswordForm).length).toEqual(1)
+    })
+  })
+
+  describe("Analytics", () => {
+    it("tracks login impressions", () => {
+      const tracking = { trackEvent: jest.fn() }
+      const wrapper = getWrapper({ type: ModalType.login, tracking })
+      expect(tracking.trackEvent).toBeCalledWith({
+        action: "Auth impression",
+        type: "login",
+        context_module: "Header",
+        modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
+      })
+    })
+
+    it("tracks reset password impressions", () => {
+      const tracking = { trackEvent: jest.fn() }
+      const wrapper = getWrapper({ type: ModalType.resetPassword, tracking })
+      expect(tracking.trackEvent).toBeCalledWith({
+        action: "Auth impression",
+        type: "reset_password",
+        context_module: "Header",
+        modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
+      })
+    })
+
+    it("tracks signup impressions", () => {
+      const tracking = { trackEvent: jest.fn() }
+      const wrapper = getWrapper({
+        type: ModalType.signup,
+        tracking,
+      })
+      expect(tracking.trackEvent).toBeCalledWith({
+        action: "Auth impression",
+        type: "signup",
+        context_module: "Header",
+        onboarding: false,
+        signup_redirect: "/foo",
+        signup_intent: "follow artist",
+        modal_copy: "Foo Bar",
+        trigger: "timed",
+        trigger_seconds: 1,
+      })
     })
   })
 })

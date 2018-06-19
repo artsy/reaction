@@ -5,18 +5,19 @@ import { ResetPasswordForm } from "./ResetPasswordForm"
 import {
   FormComponentType,
   InputValues,
+  ModalOptions,
   ModalType,
   SubmitHandler,
 } from "../Types"
+import { track } from "Utils/track"
+import Events from "Utils/Events"
 
 interface Props {
+  handleSubmit: SubmitHandler
+  options?: ModalOptions
+  tracking?: any
   type: ModalType
   values?: InputValues
-  handleSubmit: SubmitHandler
-  options?: {
-    signupIntent?: string
-    redirectTo?: string
-  }
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
 }
@@ -25,6 +26,7 @@ interface State {
   type?: ModalType
 }
 
+@track({}, { dispatch: data => Events.postEvent(data) })
 export class FormSwitcher extends React.Component<Props, State> {
   static defaultProps: Partial<Props> = {
     values: {},
@@ -34,6 +36,44 @@ export class FormSwitcher extends React.Component<Props, State> {
     super(props)
     this.state = {
       type: this.props.type,
+    }
+  }
+
+  componentDidMount() {
+    const {
+      options: {
+        contextModule,
+        copy,
+        destination,
+        redirectTo,
+        signupIntent,
+        trigger,
+        triggerSeconds,
+      },
+      type,
+      tracking,
+    } = this.props
+
+    // Analytics
+    const event = Object.assign(
+      {
+        action: "Auth impression",
+        type,
+        context_module: contextModule,
+        modal_copy: copy,
+        trigger: trigger || "click",
+        trigger_seconds: triggerSeconds,
+      },
+      type === "signup"
+        ? {
+            signup_intent: signupIntent,
+            signup_redirect: redirectTo || destination,
+            onboarding: !redirectTo,
+          }
+        : null
+    )
+    if (tracking) {
+      tracking.trackEvent(event)
     }
   }
 

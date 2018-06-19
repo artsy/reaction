@@ -9,14 +9,14 @@ import { Artists } from "./Sidebar/Artists"
 import { ArtistInfo } from "./ArtistInfo"
 import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { SingleFollowedArtist } from "./__stories__/Sidebar/Artists.story"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { FilledOutMetadataNoEditions } from "./__stories__/Sidebar/ArtworkMetadata.story"
 import { Sidebar } from "./Sidebar"
 import { ArtworkWithCompleteData } from "../Fixtures/Artworks"
 import { ImageCarousel } from "./ImageCarousel"
 import { bio } from "Styleguide/Components/__stories__/ArtistBio.story"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
+import { insights } from "Styleguide/Components/__stories__/MarketInsights.story"
 import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
+import { imageData } from "./__stories__/ImageCarousel.story"
 
 export class Artwork extends Component {
   state = {
@@ -31,12 +31,12 @@ export class Artwork extends Component {
 
   render() {
     const slideshowImages = [
-      "https://picsum.photos/800/600/?random",
-      "https://picsum.photos/500/400/?random",
-      "https://picsum.photos/300/700/?random",
-      "https://picsum.photos/800/600/?random",
-      "https://picsum.photos/700/600/?random",
-      "https://picsum.photos/500/600/?random",
+      imageData(800, 600),
+      imageData(500, 400),
+      imageData(300, 700),
+      imageData(800, 600),
+      imageData(700, 600),
+      imageData(500, 600),
     ]
 
     return (
@@ -54,27 +54,11 @@ export class Artwork extends Component {
         <Row>
           <Col sm={8}>
             <ArtworkSlider>
-              <ImageCarousel src={slideshowImages} />
+              <ImageCarousel images={slideshowImages} />
             </ArtworkSlider>
           </Col>
           <Col sm={4}>
             <Sidebar artwork={ArtworkWithCompleteData} />
-
-            <Gallery>
-              <PartnerInfo>
-                <Name>Salon 94</Name>
-                <PinIcon>TODO: Pin Icon</PinIcon>
-                <Location>New York, London, Beijing, Hong Kong</Location>
-                <FollowButton>Follow Button</FollowButton>
-              </PartnerInfo>
-            </Gallery>
-
-            <hr />
-
-            <HelpText>
-              First time buying on Artsy? <a>Read our FAQ</a>. <br />
-              Want to sell a work by this artist? <a>Learn more</a>.
-            </HelpText>
           </Col>
         </Row>
         <Row>
@@ -240,7 +224,6 @@ const PartnerInfo = styled.div``
 const Name = styled.div``
 const PinIcon = styled.div``
 const Location = styled.div``
-const HelpText = styled.div``
 const Metadata = styled.div``
 const TabContent = styled.div``
 const OtherWorksByArtist = styled.div``

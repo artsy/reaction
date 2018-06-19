@@ -5,7 +5,7 @@ import { Avatar, Button } from "Styleguide/Elements"
 import { Serif, Sans } from "@artsy/palette"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-interface ArtistCardProps {
+export interface ArtistCardProps {
   src: string
   headline: string
   subHeadline: string
@@ -27,7 +27,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 export const LargeArtistCard = props => (
   <BorderBox hover flexDirection="column" height="254px">
     <Flex flexDirection="column" flexGrow="1" alignItems="center">
-      <Avatar src={props.src} mb={3} />
+      <Avatar src={props.src} mb={1} />
       <Serif size="3t">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>
     </Flex>
@@ -40,17 +40,17 @@ export const LargeArtistCard = props => (
 )
 
 export const SmallArtistCard = props => (
-  <BorderBox hover>
+  <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
       <Sans weight="medium" size="2">
         {props.badge}
       </Sans>
       <Serif size="3t">{props.headline}</Serif>
       <Sans size="1">{props.subHeadline}</Sans>
-      <Button size="small" variant="secondaryOutline" width="70px" mt={3}>
+      <Button size="small" variant="secondaryOutline" width="70px" mt={1}>
         Follow
       </Button>
     </Flex>
-    <Avatar size="small" src={props.src} ml={4} />
+    <Avatar size="small" src={props.src} ml={2} />
   </BorderBox>
 )

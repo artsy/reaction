@@ -1,15 +1,15 @@
 import { Sans } from "@artsy/palette"
-import { ArtworkGridExample } from "Components/__stories__/ArtworkGrid.story"
 import React from "react"
 import styled from "styled-components"
 import { space, width } from "styled-system"
+import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { Pagination } from "Styleguide/Components/Pagination"
 import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Toggle } from "Styleguide/Components/Toggle"
-import { insights } from "Styleguide/Components/__stories__/MarketInsight.story"
-import { exhibitions } from "Styleguide/Components/__stories__/SelectedExhibitions.story"
+import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -25,10 +25,10 @@ export const Overview = () => {
       <Row>
         <Col sm={9}>
           <MarketInsights insights={insights} />
-          <Spacer mb={3} />
+          <Spacer mb={1} />
 
           <SelectedExhibitions exhibitions={exhibitions} />
-          <Spacer mb={5} />
+          <Spacer mb={3} />
 
           <ArtistBio>
             Donald Judd, widely regarded as one of the most significant American
@@ -47,7 +47,7 @@ export const Overview = () => {
             to David Batchelor.
           </ArtistBio>
 
-          <Spacer mb={3} />
+          <Spacer mb={1} />
 
           <GeneFamily>
             <Sans size="2" weight="medium">
@@ -66,7 +66,7 @@ export const Overview = () => {
               const geneDivider = index < list.length - 1 ? "," : ""
 
               return (
-                <GeneFamilyItem href="#" className="noUnderline" mr={2}>
+                <GeneFamilyItem href="#" className="noUnderline" mr={0.5}>
                   {gene}
                   {geneDivider}
                 </GeneFamilyItem>
@@ -74,7 +74,7 @@ export const Overview = () => {
             })}
           </GeneFamily>
 
-          <Spacer mb={3} />
+          <Spacer mb={1} />
 
           <Sans size="2" color="black60">
             <a href="#">Consign</a> a work by this artist.
@@ -92,7 +92,7 @@ export const Overview = () => {
         </Col>
       </Row>
 
-      <Spacer mb={6} />
+      <Spacer mb={4} />
 
       <Row>
         <Col>
@@ -101,7 +101,7 @@ export const Overview = () => {
               return (
                 <ArtworkBrowser>
                   {!xs && (
-                    <Sidebar width="30%" mr={4}>
+                    <Sidebar width="30%" mr={2}>
                       <Toggle label="Purchase type" expanded disabled>
                         <Flex justifyContent="space-between">
                           <Checkbox>For sale</Checkbox>
@@ -122,7 +122,7 @@ export const Overview = () => {
                     flexDirection="column"
                     alignItems="flex-end"
                   >
-                    <Flex width="100%" pb={4} justifyContent="flex-end">
+                    <Flex width="100%" pb={2} justifyContent="flex-end">
                       <Select />
                     </Flex>
 
@@ -131,7 +131,7 @@ export const Overview = () => {
                       columnCount={xs ? 2 : 3}
                     />
 
-                    <Spacer mb={5} />
+                    <Spacer mb={3} />
                     <Pagination />
                   </ArtworkGrid>
                 </ArtworkBrowser>

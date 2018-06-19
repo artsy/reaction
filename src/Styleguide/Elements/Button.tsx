@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
-import { Sans, TypographyProps } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import { pick } from "lodash/fp"
 
 import {
@@ -51,11 +51,11 @@ export const Button = styled(
 
       switch (size) {
         case ButtonSize.small:
-          return { height: "26px", size: 2, px: 3 }
+          return { height: "26px", size: 2, px: 1 }
         case ButtonSize.medium:
-          return { height: "40px", size: "3t", px: 4 }
+          return { height: "40px", size: "3t", px: 2 }
         case ButtonSize.large:
-          return { height: "50px", size: "3t", px: 5 }
+          return { height: "50px", size: "3t", px: 3 }
         default:
       }
     }
@@ -159,7 +159,6 @@ export interface ButtonBaseProps
     BorderRadiusProps,
     SpaceProps,
     TextAlignProps,
-    TypographyProps,
     WidthProps,
     HeightProps {
   variantStyles?: any // FIXME: Type to styled.css
