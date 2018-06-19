@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { Sans } from "@artsy/palette"
 import { Box } from "Styleguide/Elements/Box"
 
@@ -14,7 +13,7 @@ export interface ExtraLinksProps {
   }
 }
 
-const ExtraLinksContainer = styled(Box)``
+const ExtraLinksContainer = Box
 
 export class ExtraLinks extends React.Component<ExtraLinksProps> {
   render() {

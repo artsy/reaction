@@ -1,6 +1,5 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
-import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Location } from "../../../../Assets/Icons/Location"
@@ -19,8 +18,8 @@ export interface PartnerInfoProps {
   }
 }
 
-const PartnerInfoContainer = styled(Box)``
-const LocationsContainer = styled.div``
+const PartnerInfoContainer = Box
+const LocationsContainer = Box
 
 export class PartnerInfo extends React.Component<PartnerInfoProps> {
   renderPartnerName() {
@@ -36,7 +35,11 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
     )
   }
   renderCollectingInstitution() {
-    return <Serif size="3">{this.props.artwork.collecting_institution}</Serif>
+    return (
+      <Serif size="3" pt={1}>
+        {this.props.artwork.collecting_institution}
+      </Serif>
+    )
   }
   renderLocations(locationNames) {
     return (
@@ -59,20 +62,24 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
 
     return (
       <PartnerInfoContainer pb={3}>
-        {artwork && artwork.collecting_institution
-          ? this.renderCollectingInstitution()
-          : this.renderPartnerName()}
-        {filteredForDuplicatesAndBlanks.length > 0 && (
-          <LocationsContainer>
-            <Flex width="100%" pt={1}>
-              <Flex flexDirection="column">
-                <Location />
-              </Flex>
-              <Flex flexDirection="column">
-                {this.renderLocations(filteredForDuplicatesAndBlanks)}
-              </Flex>
-            </Flex>
-          </LocationsContainer>
+        {artwork && artwork.collecting_institution ? (
+          this.renderCollectingInstitution()
+        ) : (
+          <React.Fragment>
+            {this.renderPartnerName()}
+            {filteredForDuplicatesAndBlanks.length > 0 && (
+              <LocationsContainer>
+                <Flex width="100%" pt={1}>
+                  <Flex flexDirection="column">
+                    <Location />
+                  </Flex>
+                  <Flex flexDirection="column">
+                    {this.renderLocations(filteredForDuplicatesAndBlanks)}
+                  </Flex>
+                </Flex>
+              </LocationsContainer>
+            )}
+          </React.Fragment>
         )}
       </PartnerInfoContainer>
     )

@@ -4,6 +4,7 @@ import { Section } from "Styleguide/Utils/Section"
 import { Sidebar } from "../../Artwork/Sidebar"
 
 import {
+  CollecingInstitutionArtwork,
   MultipleArtistsArtwork,
   RegularNonEditionedArtwork,
   RegularArtworkWithOneEdition,
@@ -16,6 +17,9 @@ import {
 storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {
   return (
     <React.Fragment>
+      <Section title="Artwork with collectiing_institution attribute set">
+        <Sidebar artwork={CollecingInstitutionArtwork} />
+      </Section>
       <Section title="Multiple artists artwork">
         <Sidebar artwork={MultipleArtistsArtwork} />
       </Section>

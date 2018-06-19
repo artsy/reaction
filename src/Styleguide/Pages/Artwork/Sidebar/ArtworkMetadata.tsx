@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { TitleInfo } from "./TitleInfo"
 import { SizeInfo } from "./SizeInfo"
@@ -25,7 +24,7 @@ export interface ArtworkMetadataProps {
   }
 }
 
-const ArtworkMetadataContainer = styled(Box)``
+const ArtworkMetadataContainer = Box
 
 export class ArtworkMetadata extends React.Component<ArtworkMetadataProps> {
   render() {

@@ -1,3 +1,55 @@
+export const CollecingInstitutionArtwork = {
+  __id:
+    "QXJ0d29yazpyZW1icmFuZHQtdmFuLXJpam4tZ2FueW1lZGUtaW4tdGhlLWNsYXdzLW9mLXRoZS1lYWdsZQ==",
+  artists: [
+    {
+      __id: "QXJ0aXN0OnJlbWJyYW5kdC12YW4tcmlqbg==",
+      id: "rembrandt-van-rijn",
+      name: "Rembrandt van Rijn",
+      is_followed: false,
+      href: "/artist/rembrandt-van-rijn",
+      is_consignable: true,
+    },
+  ],
+  partner: {
+    __id: "UGFydG5lcjpiZWx2ZWRlcmUtbXVzZXVt",
+    name: "Belvedere Museum",
+    href: "/belvedere-museum",
+    locations: [
+      {
+        city: "Vienna",
+      },
+      {
+        city: "Vienna",
+      },
+      {
+        city: "Vienna",
+      },
+    ],
+  },
+  sale: null,
+  sale_artwork: null,
+  is_in_auction: false,
+  is_biddable: false,
+  is_sold: false,
+  title: "Ganymede in the Claws of the Eagle",
+  date: "1635",
+  medium: "Oil on canvas",
+  dimensions: {
+    in: "69 7/10 × 50 4/5 in",
+    cm: "177 × 129 cm",
+  },
+  collecting_institution:
+    '"Rembrandt – Titian – Bellotto: Spirit and Splendour of the Dresden Picture Gallery" at the Belvedere Museum, Vienna',
+  edition_of: null,
+  attribution_class: null,
+  edition_sets: [],
+  sale_message: null,
+  is_inquireable: false,
+  is_price_range: false,
+  is_for_sale: false,
+}
+
 export const MultipleArtistsArtwork = {
   __id: "QXJ0d29yazpkYW1pZW4taGlyc3QtbXl0aG9zLXNsYXNoLXJlLW9iamVjdHM=",
   artists: [

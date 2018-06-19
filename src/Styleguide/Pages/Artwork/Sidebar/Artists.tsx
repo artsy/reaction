@@ -1,6 +1,5 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
-import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
@@ -14,7 +13,7 @@ export interface ArtistsProps {
   }>
 }
 
-const ArtistsContainer = styled(Box)``
+const ArtistsContainer = Box
 
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {

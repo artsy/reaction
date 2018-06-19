@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { Box } from "Styleguide/Elements/Box"
 import { SizeInfo } from "./SizeInfo"
@@ -23,10 +22,8 @@ export interface CommercialProps {
   }
 }
 
-const CommercialContainer = styled(Box)`
-  text-align: left;
-`
-const PricingInfoContainer = styled(Box)``
+const CommercialContainer = Box
+const PricingInfoContainer = Box
 
 export class Commercial extends React.Component<CommercialProps> {
   renderSaleMessage() {
@@ -54,10 +51,13 @@ export class Commercial extends React.Component<CommercialProps> {
 
   render() {
     const { artwork } = this.props
+    if (!artwork.sale_message && !artwork.is_inquireable) {
+      return null
+    }
     return (
-      <CommercialContainer pb={3}>
-        {artwork.edition_sets.length < 2 ? (
-          <PricingInfoContainer pb={2}>
+      <CommercialContainer pb={3} align="left">
+        {artwork.edition_sets.length < 2 && artwork.sale_message ? (
+          <PricingInfoContainer pb={2} pt={1}>
             {this.renderSaleMessage()}
           </PricingInfoContainer>
         ) : (

@@ -1,7 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Serif } from "@artsy/palette"
-import { themeGet } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 
 export interface TitleInfoProps {
   artwork: {
@@ -11,16 +10,13 @@ export interface TitleInfoProps {
   }
 }
 
-const TitleInfoContainer = styled.div`
-  color: ${themeGet("colors.black60")};
-  text-align: left;
-`
+const TitleInfoContainer = Box
 
 export class TitleInfo extends React.Component<TitleInfoProps> {
   render() {
     const { artwork } = this.props
     return (
-      <TitleInfoContainer>
+      <TitleInfoContainer color="black60" align="left">
         <Serif size="2">
           <Serif size="2" display="inline-block" italic>
             {artwork.title}

@@ -1,8 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { Box } from "Styleguide/Elements/Box"
-import { themeGet } from "styled-system"
 
 export interface ClassificationProps {
   artwork: {
@@ -12,10 +10,7 @@ export interface ClassificationProps {
   }
 }
 
-const ClassificationContainer = styled(Box)`
-  color: ${themeGet("colors.black60")};
-  text-align: left;
-`
+const ClassificationContainer = Box
 
 export class Classification extends React.Component<ClassificationProps> {
   render() {
@@ -24,7 +19,7 @@ export class Classification extends React.Component<ClassificationProps> {
       return null
     }
     return (
-      <ClassificationContainer pt={2}>
+      <ClassificationContainer pt={2} color="black60" align="left">
         <Serif size="2">
           <a href="#">{artwork.attribution_class.short_description}</a>.
         </Serif>
