@@ -45,15 +45,20 @@ export class ResponsiveProvider extends React.Component<
       }))
       .reduce((acc, curr) => ({ ...acc, ...curr }), {}) as BreakpointState
 
-    // Build up the MediaQueryList objects that observe mq changes
-    const mediaMatchers = this.setupMatchers(props.breakpoints, breakpointKeys)
+    let mediaMatchers = []
+    const isClient = typeof window !== "undefined"
 
-    // Perform initial breakpoint check so that first render is correct
-    breakpoints = this.checkBreakpoints(
-      breakpoints,
-      breakpointKeys,
-      mediaMatchers
-    )
+    if (isClient) {
+      // Build up the MediaQueryList objects that observe mq changes
+      mediaMatchers = this.setupMatchers(props.breakpoints, breakpointKeys)
+
+      // Perform initial breakpoint check so that first render is correct
+      breakpoints = this.checkBreakpoints(
+        breakpoints,
+        breakpointKeys,
+        mediaMatchers
+      )
+    }
 
     this.state = {
       breakpoints,

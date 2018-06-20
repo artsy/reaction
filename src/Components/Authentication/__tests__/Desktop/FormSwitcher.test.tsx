@@ -21,7 +21,7 @@ describe("FormSwitcher", () => {
           contextModule: "Header",
           copy: "Foo Bar",
           destination: "/collect",
-          signupIntent: "follow artist",
+          intent: "follow artist",
           redirectTo: "/foo",
           trigger: "timed",
           triggerSeconds: 1,
@@ -52,6 +52,8 @@ describe("FormSwitcher", () => {
       const wrapper = getWrapper({ type: ModalType.login, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
+        auth_redirect: "/foo",
+        intent: "follow artist",
         type: "login",
         context_module: "Header",
         modal_copy: "Foo Bar",
@@ -65,7 +67,9 @@ describe("FormSwitcher", () => {
       const wrapper = getWrapper({ type: ModalType.resetPassword, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
+        auth_redirect: "/foo",
         type: "reset_password",
+        intent: "follow artist",
         context_module: "Header",
         modal_copy: "Foo Bar",
         trigger: "timed",
@@ -84,8 +88,8 @@ describe("FormSwitcher", () => {
         type: "signup",
         context_module: "Header",
         onboarding: false,
-        signup_redirect: "/foo",
-        signup_intent: "follow artist",
+        auth_redirect: "/foo",
+        intent: "follow artist",
         modal_copy: "Foo Bar",
         trigger: "timed",
         trigger_seconds: 1,

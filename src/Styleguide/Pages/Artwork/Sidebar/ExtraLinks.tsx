@@ -1,7 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Sans } from "@artsy/palette"
-import { space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 
 export interface ExtraLinksProps {
   artwork: {
@@ -14,9 +13,7 @@ export interface ExtraLinksProps {
   }
 }
 
-const ExtraLinksContainer = styled.div.attrs<SpaceProps>({})`
-  ${space};
-`
+const ExtraLinksContainer = Box
 
 export class ExtraLinks extends React.Component<ExtraLinksProps> {
   render() {
@@ -28,7 +25,7 @@ export class ExtraLinks extends React.Component<ExtraLinksProps> {
       return null
     }
     return (
-      <ExtraLinksContainer pb={2}>
+      <ExtraLinksContainer pb={3} pt={1}>
         {isForSaleArtwork && (
           <Sans size="2" color="black60">
             Questions about buying art on Artsy? <a href="#">Read our FAQ</a>.

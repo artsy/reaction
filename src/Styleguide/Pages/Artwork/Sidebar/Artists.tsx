@@ -1,7 +1,6 @@
 import React from "react"
 import { Serif } from "@artsy/palette"
-import styled from "styled-components"
-import { space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
 export interface ArtistsProps {
@@ -14,18 +13,16 @@ export interface ArtistsProps {
   }>
 }
 
-const ArtistsContainer = styled.div.attrs<SpaceProps>({})`
-  ${space};
-`
+const ArtistsContainer = Box
 
 export class Artists extends React.Component<ArtistsProps> {
   renderArtistName(artist) {
     return artist.href ? (
-      <Serif size="5t" display="inline-block">
+      <Serif size="5t" display="inline-block" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
       </Serif>
     ) : (
-      <Serif size="5t" display="inline-block">
+      <Serif size="5t" display="inline-block" weight="semibold">
         {artist.name}
       </Serif>
     )
@@ -44,7 +41,7 @@ export class Artists extends React.Component<ArtistsProps> {
     const { artists } = this.props
     return artists.map((artist, index) => {
       return (
-        <React.Fragment>
+        <React.Fragment key={artist.__id}>
           {this.renderArtistName(artist)}
           {index !== artists.length - 1 && ", "}
         </React.Fragment>

@@ -43,7 +43,7 @@ const FollowingHover = styled.div`
       display: none;
     }
     ${Unfollow} {
-      display: inline-block;
+      display: block;
     }
   }
 `

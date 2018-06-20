@@ -47,7 +47,7 @@ export class FormSwitcher extends React.Component<Props, State> {
         copy,
         destination,
         redirectTo,
-        signupIntent,
+        intent,
         trigger,
         triggerSeconds,
       },
@@ -64,11 +64,11 @@ export class FormSwitcher extends React.Component<Props, State> {
         modal_copy: copy,
         trigger: trigger || "click",
         trigger_seconds: triggerSeconds,
+        intent,
+        auth_redirect: redirectTo || destination,
       },
       type === "signup"
         ? {
-            signup_intent: signupIntent,
-            signup_redirect: redirectTo || destination,
             onboarding: !redirectTo,
           }
         : null

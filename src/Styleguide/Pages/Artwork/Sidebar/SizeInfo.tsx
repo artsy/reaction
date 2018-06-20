@@ -1,7 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Serif } from "@artsy/palette"
-import { themeGet } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 
 export interface SizeInfoProps {
   artwork: {
@@ -13,16 +12,13 @@ export interface SizeInfoProps {
   }
 }
 
-const SizeInfoContainer = styled.div`
-  color: ${themeGet("colors.black60")};
-  text-align: left;
-`
+const SizeInfoContainer = Box
 
 export class SizeInfo extends React.Component<SizeInfoProps> {
   render() {
     const { artwork } = this.props
     return (
-      <SizeInfoContainer>
+      <SizeInfoContainer color="black60" align="left">
         <Serif size="2">
           {artwork.dimensions &&
             (artwork.dimensions.in || artwork.dimensions.cm) &&

@@ -1,4 +1,4 @@
-import { Sans } from "@artsy/palette"
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, width } from "styled-system"
@@ -66,10 +66,12 @@ export const Overview = () => {
               const geneDivider = index < list.length - 1 ? "," : ""
 
               return (
-                <GeneFamilyItem href="#" className="noUnderline" mr={0.5}>
-                  {gene}
-                  {geneDivider}
-                </GeneFamilyItem>
+                <Serif size="3t" display="inline-block" key={index}>
+                  <GeneLink href="#" className="noUnderline" mr={0.5}>
+                    {gene}
+                    {geneDivider}
+                  </GeneLink>
+                </Serif>
               )
             })}
           </GeneFamily>
@@ -123,7 +125,7 @@ export const Overview = () => {
                     alignItems="flex-end"
                   >
                     <Flex width="100%" pb={2} justifyContent="flex-end">
-                      <Select />
+                      <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
 
                     <ArtworkGridItems
@@ -132,7 +134,9 @@ export const Overview = () => {
                     />
 
                     <Spacer mb={3} />
-                    <Pagination />
+                    <Pagination
+                      around={[{ page: 1, cursor: "blah", isCurrent: true }]}
+                    />
                   </ArtworkGrid>
                 </ArtworkBrowser>
               )
@@ -145,7 +149,7 @@ export const Overview = () => {
 }
 
 const GeneFamily = styled.div``
-const GeneFamilyItem = styled.a`
+const GeneLink = styled.a`
   display: inline-block;
   ${space};
 `
