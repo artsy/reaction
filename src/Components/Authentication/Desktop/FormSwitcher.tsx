@@ -18,6 +18,7 @@ interface Props {
   tracking?: any
   type: ModalType
   values?: InputValues
+  error?: string
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
 }
@@ -82,7 +83,7 @@ export class FormSwitcher extends React.Component<Props, State> {
   }
 
   render() {
-    const { onFacebookLogin, onTwitterLogin } = this.props
+    const { error, onFacebookLogin, onTwitterLogin } = this.props
 
     let Form: FormComponentType
     switch (this.state.type) {
@@ -109,8 +110,9 @@ export class FormSwitcher extends React.Component<Props, State> {
 
     return (
       <Form
+        error={error}
         values={defaultValues}
-        handleTypeChange={type => this.presentModal(type)}
+        handleTypeChange={this.presentModal}
         handleSubmit={this.props.handleSubmit}
         onFacebookLogin={onFacebookLogin}
         onTwitterLogin={onTwitterLogin}

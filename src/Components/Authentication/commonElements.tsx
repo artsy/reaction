@@ -49,7 +49,7 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
   visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
-  height: ${p => (p.show ? "16px" : "0")};
+  height: ${p => (p.show ? "auto" : "0")};
 `
 
 export const MobileInnerWrapper = styled.div`
@@ -85,9 +85,7 @@ const ForgotPasswordLink = styled(SmallTextLink)`
 `
 
 export const ForgotPassword = props => (
-  <ForgotPasswordLink onClick={props.handleForgotPassword}>
-    Forgot Password?
-  </ForgotPasswordLink>
+  <ForgotPasswordLink {...props}>Forgot Password?</ForgotPasswordLink>
 )
 
 export const MobileSubmitButton = styled(Button).attrs({

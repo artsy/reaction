@@ -19,6 +19,11 @@ export type SubmitHandler = (
 ) => void
 
 export interface FormProps {
+  /**
+   * any global error that comes from an external data source
+   * (e.g. server)
+   */
+  error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void

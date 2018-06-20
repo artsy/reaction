@@ -30,13 +30,14 @@ export interface ModalManagerProps {
 export interface ModalManagerState {
   currentType?: ModalType
   options?: ModalOptions
+  error?: string
 }
 
 export class ModalManager extends Component<
   ModalManagerProps,
   ModalManagerState
 > {
-  state = {
+  state: ModalManagerState = {
     currentType: null,
     options: {
       copy: null,
@@ -51,18 +52,22 @@ export class ModalManager extends Component<
       currentType: mode,
       options,
     })
+
+    document.body.style.overflowY = "hidden"
   }
 
   closeModal = () => {
     this.setState({
       currentType: null,
-      options: null,
     })
+    document.body.style.overflowY = "auto"
   }
+
+  setError = err => this.setState({ error: err })
 
   render() {
     const { csrf, submitUrls, redirectTo } = this.props
-    const { currentType, options } = this.state
+    const { currentType, options, error } = this.state
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
       ? this.props.handleSubmit.bind(this, currentType, options)
@@ -77,6 +82,7 @@ export class ModalManager extends Component<
       >
         <FormSwitcher
           type={currentType}
+          error={error}
           handleSubmit={handleSubmit}
           onFacebookLogin={() =>
             (window.location.href =
