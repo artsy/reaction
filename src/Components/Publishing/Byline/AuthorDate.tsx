@@ -64,28 +64,17 @@ const Text = div`
   }
   ${props => pMedia.sm`
     ${props.condensed ? unica("s12", "medium") : unica("s14", "medium")}
-    ${unica("s14", "medium")}
     margin: 10px 20px 0 0;
   `}
 `
-const adjustForCondensed = condensed => {
-  return condensed
-    ? `
-  &:before {
-    min-width: 8px;
-    min-height: 8px;
-    margin: 0 5px 1px 0;
-  }`
-    : ""
-}
 
 const bullet = color => {
   return `
     &:before {
       content: "";
       display: inline-block;
-      min-width: 10px;
-      min-height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       margin: 6px 10px 1px 0;
       background-color: ${color};
@@ -94,11 +83,12 @@ const bullet = color => {
 }
 
 export const StyledAuthor = Text.extend`
-  ${props => (props.withBullet ? bullet(props.color) : "")} ${props =>
-  adjustForCondensed(props.condensed)} ${pMedia.sm`
+  ${props => (props.withBullet ? bullet(props.color) : "")};
+  ${props =>
+    props.condensed &&
+    `
     &:before {
-      min-width: 8px;
-      min-height: 8px;
+      margin: 0 5px 1px 0;
     }
   `};
 `
