@@ -1,5 +1,5 @@
 import * as StyledGrid from "styled-bootstrap-grid"
-import { color, space, textAlign, width } from "styled-system"
+import { color, flex, space, textAlign, width } from "styled-system"
 export { media } from "styled-bootstrap-grid"
 
 // @ts-ignore
@@ -16,6 +16,7 @@ export const Row = styled(StyledGrid.Row)`
 `
 export const Col = styled(StyledGrid.Col)`
   ${color};
+  ${flex};
   ${space};
   ${textAlign};
   ${width};

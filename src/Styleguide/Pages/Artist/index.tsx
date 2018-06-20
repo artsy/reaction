@@ -1,21 +1,21 @@
-import { Theme, themeProps, injectGlobalCSS } from "@artsy/palette"
+import { injectGlobalCSS, Theme, themeProps } from "@artsy/palette"
+import { ContextProvider } from "Components/Artsy"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
 import { Tab, Tabs } from "Styleguide/Components/Tabs"
+import { Box } from "Styleguide/Elements/Box"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
-import { ArticlesContent } from "./Articles"
 import { ArtistHeader } from "./ArtistHeader"
-import { AuctionResults } from "./AuctionResults"
-import { CV } from "./CV"
-import { Overview } from "./Overview"
-import { RelatedArtists } from "./RelatedArtists"
-import { ContextProvider } from "Components/Artsy"
-
-import { Shows } from "./Shows"
+import { ArticlesContent } from "./Routes/Articles"
+import { AuctionResults } from "./Routes/AuctionResults"
+import { CV } from "./Routes/CV"
+import { Overview } from "./Routes/Overview"
+import { RelatedArtists } from "./Routes/RelatedArtists"
+import { Shows } from "./Routes/Shows"
 
 injectGlobalCSS()
 
@@ -36,7 +36,7 @@ export class Artist extends React.Component {
 
               <Row>
                 <Col>
-                  <Tabs initialTabIndex={2}>
+                  <Tabs initialTabIndex={4}>
                     <Tab name="Overview">
                       <Overview />
                     </Tab>
@@ -61,8 +61,9 @@ export class Artist extends React.Component {
                 </Col>
               </Row>
 
-              <Spacer mb={3} />
-              <Separator my={6} />
+              <Box my={3}>
+                <Separator />
+              </Box>
 
               <Row>
                 <Col>

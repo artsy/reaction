@@ -2,38 +2,19 @@ import React from "react"
 import { Section } from "Styleguide/Utils/Section"
 import { Select, LargeSelect, SmallSelect } from "../Select"
 import { storiesOf } from "storybook/storiesOf"
+import { selectProps } from "Styleguide/Pages/Fixtures/Select"
 
 storiesOf("Styleguide/Elements", module).add("Select", () => {
-  const options = [
-    {
-      value: "meow",
-      text: "Cat",
-    },
-    { value: "bark", text: "Dog" },
-    { value: "moo", text: "Cow" },
-  ]
-
-  const loggingWithValue = value => {
-    // tslint:disable-next-line:no-console
-    console.log(value)
-  }
-
-  const props = {
-    options,
-    selected: "bark",
-    onSelect: loggingWithValue,
-  }
-
   return (
     <React.Fragment>
       <Section title="Responsive Select">
-        <Select {...props} />
+        <Select {...selectProps} />
       </Section>
       <Section title="Large Select">
-        <LargeSelect {...props} />
+        <LargeSelect {...selectProps} />
       </Section>
       <Section title="Small Select">
-        <SmallSelect {...props} />
+        <SmallSelect {...selectProps} />
       </Section>
     </React.Fragment>
   )
