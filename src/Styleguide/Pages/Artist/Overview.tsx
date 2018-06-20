@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { space, width } from "styled-system"
+import { space } from "styled-system"
 import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
@@ -10,6 +10,7 @@ import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
+import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -66,8 +67,8 @@ export const Overview = () => {
               const geneDivider = index < list.length - 1 ? "," : ""
 
               return (
-                <Serif size="3t" display="inline-block" key={index}>
-                  <GeneLink href="#" className="noUnderline" mr={0.5}>
+                <Serif size="3t" display="inline-block" key={index} mr={0.5}>
+                  <GeneLink href="#" className="noUnderline">
                     {gene}
                     {geneDivider}
                   </GeneLink>
@@ -83,14 +84,16 @@ export const Overview = () => {
           </Sans>
         </Col>
         <Col sm={3}>
-          <CurrentEvent
-            src="https://picsum.photos/300/200/?random"
-            label="Currently on view"
-            title="Brancusi: Pioneer of American Minimalism"
-            gallery="Paul Kasmin Gallery"
-            location="Miami"
-            date="May 3 – 21, 2018"
-          />
+          <Box pl={2}>
+            <CurrentEvent
+              src="https://picsum.photos/300/200/?random"
+              label="Currently on view"
+              title="Brancusi: Pioneer of American Minimalism"
+              gallery="Paul Kasmin Gallery"
+              location="Miami"
+              date="May 3 – 21, 2018"
+            />
+          </Box>
         </Col>
       </Row>
 
@@ -154,10 +157,7 @@ const GeneLink = styled.a`
   ${space};
 `
 const ArtworkBrowser = styled(Flex)``
-const Sidebar = styled.div`
-  ${space};
-  ${width};
-`
+const Sidebar = Box
 const ArtworkGrid = styled(Flex)``
 
 const ArtworkGridItems = styled(ArtworkGridExample)`

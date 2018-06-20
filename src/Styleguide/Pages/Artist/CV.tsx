@@ -16,15 +16,17 @@ export const CV = () => {
             <Row>
               <Col>
                 <CVItems>
-                  <CVItem my={1}>
+                  <CVItem>
                     <Row>
-                      <Col xs={2}>
-                        <Category size="3" weight="medium">
-                          Solo shows
-                        </Category>
+                      <Col sm={2}>
+                        <Box mb={xs ? 1 : 1}>
+                          <Category size="3" weight="medium">
+                            Solo shows
+                          </Category>
+                        </Box>
                       </Col>
-                      <Col xs={10}>
-                        <YearGroup>
+                      <Col sm={10}>
+                        <YearGroup mb={1}>
                           <Year size="3">2017</Year>
                           <Spacer mr={xs ? 1 : 4} />
                           <ShowGroup>
@@ -38,9 +40,29 @@ export const CV = () => {
                                 MOCA
                               </a>, Los Angeles
                             </Show>
+                            <Show size="3">
+                              <Serif size="3" display="inline" italic>
+                                <a href="#" className="noUnderline">
+                                  Mickalene Thomas: Do I Look Like a Lady?
+                                </a>
+                              </Serif>,{" "}
+                              <a href="#" className="noUnderline">
+                                MOCA
+                              </a>, Los Angeles
+                            </Show>
+                            <Show size="3">
+                              <Serif size="3" display="inline" italic>
+                                <a href="#" className="noUnderline">
+                                  Mickalene Thomas: Do I Look Like a Lady?
+                                </a>
+                              </Serif>,{" "}
+                              <a href="#" className="noUnderline">
+                                MOCA
+                              </a>, Los Angeles
+                            </Show>
                           </ShowGroup>
                         </YearGroup>
-                        <YearGroup>
+                        <YearGroup mb={1}>
                           <Year size="3">2016</Year>
                           <Spacer mr={xs ? 1 : 4} />
                           <ShowGroup>
@@ -56,8 +78,11 @@ export const CV = () => {
                 </CVItems>
               </Col>
             </Row>
+
+            <Spacer my={1} />
+
             <Row>
-              <Col smOffset={1}>
+              <Col smOffset={2}>
                 <Disclaimer size="2" color="black60">
                   Artist CVs are assembled using only exhibition data available
                   on Artsy.
