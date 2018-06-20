@@ -11,6 +11,7 @@ import Events from "Utils/Events"
 export interface DesktopModalProps extends ModalProps {
   subtitle?: string
   onTypeChange?: (options: ModalOptions) => void
+  onClose: () => void
   tracking?: any
 }
 
