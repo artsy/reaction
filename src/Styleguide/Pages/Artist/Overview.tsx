@@ -2,7 +2,7 @@ import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space } from "styled-system"
-import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
+import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { Pagination } from "Styleguide/Components/Pagination"
@@ -102,7 +102,7 @@ export const Overview = () => {
       <Row>
         <Col>
           <Responsive>
-            {({ xs }) => {
+            {({ xs, sm, md }) => {
               return (
                 <ArtworkBrowser>
                   {!xs && (
@@ -122,25 +122,25 @@ export const Overview = () => {
                     </Sidebar>
                   )}
 
-                  <ArtworkGrid
+                  <ArtworkGridArea
                     width={"100%"}
                     flexDirection="column"
                     alignItems="flex-end"
                   >
-                    <Flex width="100%" pb={2} justifyContent="flex-end">
+                    <Flex pb={2} justifyContent="flex-end">
                       <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
 
-                    <ArtworkGridItems
+                    <ArtworkGrid
                       artistID="pablo-picasso"
-                      columnCount={xs ? 2 : 3}
+                      columnCount={xs || sm || md ? 2 : 3}
                     />
 
                     <Spacer mb={3} />
                     <Pagination
                       around={[{ page: 1, cursor: "blah", isCurrent: true }]}
                     />
-                  </ArtworkGrid>
+                  </ArtworkGridArea>
                 </ArtworkBrowser>
               )
             }}
@@ -157,9 +157,5 @@ const GeneLink = styled.a`
   ${space};
 `
 const ArtworkBrowser = styled(Flex)``
+const ArtworkGridArea = styled(Flex)``
 const Sidebar = Box
-const ArtworkGrid = styled(Flex)``
-
-const ArtworkGridItems = styled(ArtworkGridExample)`
-  width: 100%;
-`
