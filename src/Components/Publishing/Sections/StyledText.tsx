@@ -96,13 +96,13 @@ export const StyledText = div`
     text-align: center;
     &:before {
       content: "";
-      width: 15px;
-      height: 15px;
+      width: 8px;
+      height: 8px;
       background: black;
       border-radius: 50%;
       position: absolute;
       top: 69px;
-      right: calc(50% - 7.5px);
+      right: calc(50% - 4px);
     }
   }
   h2 {
@@ -177,11 +177,12 @@ export const StyledText = div`
   .content-end {
     display: inline-block;
     content: "";
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     background: black;
     border-radius: 50%;
     margin-left: 12px;
+    margin-bottom: 3px;
   }
   .artist-follow {
     vertical-align: middle;
