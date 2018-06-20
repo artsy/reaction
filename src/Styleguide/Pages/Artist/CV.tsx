@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
@@ -15,17 +16,17 @@ export const CV = () => {
             <Row>
               <Col>
                 <CVItems>
-                  <CVItem>
+                  <CVItem my={1}>
                     <Row>
-                      <Col sm={2}>
+                      <Col xs={2}>
                         <Category size="3" weight="medium">
                           Solo shows
                         </Category>
                       </Col>
-                      <Col sm={10}>
+                      <Col xs={10}>
                         <YearGroup>
                           <Year size="3">2017</Year>
-                          <Spacer mr={4} />
+                          <Spacer mr={xs ? 1 : 4} />
                           <ShowGroup>
                             <Show size="3">
                               <Serif size="3" display="inline" italic>
@@ -41,7 +42,7 @@ export const CV = () => {
                         </YearGroup>
                         <YearGroup>
                           <Year size="3">2016</Year>
-                          <Spacer mr={4} />
+                          <Spacer mr={xs ? 1 : 4} />
                           <ShowGroup>
                             <Show size="3">
                               Mickalene Thomas: Do I Look Like a Lady?, MOCA,
@@ -56,8 +57,8 @@ export const CV = () => {
               </Col>
             </Row>
             <Row>
-              <Col>
-                <Disclaimer>
+              <Col smOffset={1}>
+                <Disclaimer size="2" color="black60">
                   Artist CVs are assembled using only exhibition data available
                   on Artsy.
                 </Disclaimer>
@@ -153,10 +154,10 @@ export const CV = () => {
 
 // const Content = styled.div``
 const CVItems = styled.div``
-const CVItem = styled.div``
+const CVItem = Box
 const Category = Sans
 const YearGroup = styled(Flex)``
 const Year = Serif
 const ShowGroup = styled.div``
 const Show = Serif
-const Disclaimer = styled.div``
+const Disclaimer = Serif
