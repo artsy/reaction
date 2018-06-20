@@ -27,7 +27,7 @@ export const NewsPanel: React.SFC<Props> = props => {
       </ArticlesContainer>
 
       <Footer>
-        <a href="/news">More In News</a>
+        <a href="/news">More in News</a>
       </Footer>
     </NewsPanelContainer>
   )
