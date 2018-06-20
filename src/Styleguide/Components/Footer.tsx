@@ -72,7 +72,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           Partners
         </Sans>
         <Serif size="2">
-          <Link href="">Buying from Galleries FAQ</Link>
+          <Link href="#">Buying from Galleries FAQ</Link>
           <Link href="#">Buying from Auctions FAQ</Link>
           <Link href="#">Consign with Artsy</Link>
           <Link href="#">Artsy for Professional Buyers</Link>

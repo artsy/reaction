@@ -1,47 +1,55 @@
 import React from "react"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Spacer } from "Styleguide/Elements/Spacer"
+import { Sans, Serif } from "@artsy/palette"
 
 export const CV = () => {
   return (
-    <Content>
+    <React.Fragment>
       <Row>
         <Col>
           <CVItems>
-            <Item>
+            <CVItem>
               <Row>
                 <Col sm={2}>
-                  <Category>Solo shows</Category>
+                  <Category size="2" weight="medium">
+                    Solo shows
+                  </Category>
                 </Col>
                 <Col sm={10}>
-                  <Group>
-                    <Year>2017</Year>
-                    <GroupItems>
-                      <GroupItem>
+                  <YearGroup>
+                    <Year size="3">2017</Year>
+                    <Spacer mr={3} />
+
+                    <ShowGroup>
+                      <Show size="3">
                         Mickalene Thomas: Do I Look Like a Lady?, MOCA, Los
                         Angeles
-                      </GroupItem>
-                    </GroupItems>
-                  </Group>
-                  <Group>
-                    <Year>2016</Year>
-                    <GroupItems>
-                      <GroupItem>
+                      </Show>
+                    </ShowGroup>
+                  </YearGroup>
+                  <YearGroup>
+                    <Year size="3">2016</Year>
+                    <Spacer mr={5} />
+                    <ShowGroup>
+                      <Show size="3">
                         Mickalene Thomas: Do I Look Like a Lady?, MOCA, Los
                         Angeles
-                      </GroupItem>
-                    </GroupItems>
-                  </Group>
+                      </Show>
+                    </ShowGroup>
+                  </YearGroup>
                 </Col>
               </Row>
-            </Item>
-            <Item>
+            </CVItem>
+            {/* <Item>
               <Row>
                 <Col sm={2}>
-                  <Category>Group shows</Category>
+                  <Category size='2' weight='medium'>Group shows</Category>
                 </Col>
                 <Col sm={10}>
-                  <Group>
+                  <YearGroup>
                     <Year>2017</Year>
                     <GroupItems>
                       <GroupItem>
@@ -57,8 +65,8 @@ export const CV = () => {
                         Angeles
                       </GroupItem>
                     </GroupItems>
-                  </Group>
-                  <Group>
+                  </YearGroup>
+                  <YearGroup>
                     <Year>2016</Year>
                     <GroupItems>
                       <GroupItem>
@@ -75,8 +83,8 @@ export const CV = () => {
                         Angeles
                       </GroupItem>
                     </GroupItems>
-                  </Group>
-                  <Group>
+                  </YearGroup>
+                  <YearGroup>
                     <Year>2015</Year>
                     <GroupItems>
                       <GroupItem>
@@ -89,11 +97,11 @@ export const CV = () => {
                         Angeles
                       </GroupItem>
                     </GroupItems>
-                  </Group>
+                  </YearGroup>
                 </Col>
               </Row>
-            </Item>
-            <Item>
+            </Item> */}
+            {/* <Item>
               <Row>
                 <Col sm={2}>
                   <Category>Fair History</Category>
@@ -114,7 +122,7 @@ export const CV = () => {
                   </Group>
                 </Col>
               </Row>
-            </Item>
+            </Item> */}
           </CVItems>
         </Col>
       </Row>
@@ -126,16 +134,16 @@ export const CV = () => {
           </Disclaimer>
         </Col>
       </Row>
-    </Content>
+    </React.Fragment>
   )
 }
 
-const Content = styled.div``
+// const Content = styled.div``
 const CVItems = styled.div``
-const Category = styled.div``
-const Item = styled.div``
-const Group = styled.div``
-const Year = styled.div``
-const GroupItems = styled.div``
-const GroupItem = styled.div``
+const CVItem = styled.div``
+const Category = Sans
+const YearGroup = styled(Flex)``
+const Year = Serif
+const ShowGroup = styled.div``
+const Show = Serif
 const Disclaimer = styled.div``
