@@ -2,9 +2,12 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
-import { ArtworkGrid } from "./ArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid"
 
-export function ArtworkGridExample(props: { artistID: string }) {
+export function ArtworkGridExample(props: {
+  artistID: string
+  columnCount?: number
+}) {
   return (
     <RootQueryRenderer
       query={graphql`

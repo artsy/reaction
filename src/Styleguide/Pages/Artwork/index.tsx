@@ -17,7 +17,8 @@ import { ExhibitionHistory } from "./ExhibitionHistory"
 import { ImageCarousel } from "./ImageCarousel"
 import { Sidebar } from "./Sidebar"
 import { RegularArtwork2Editions } from "Styleguide/Pages/Fixtures/Artworks"
-import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
+import { FullArtworkGrid } from "Styleguide/Components/ArtworkGrid"
+import { OtherWorks } from "Styleguide/Pages/Artwork/OtherWorks"
 
 injectGlobalCSS()
 
@@ -67,7 +68,7 @@ export class Artwork extends Component {
                   <Sidebar artwork={RegularArtwork2Editions} />
                 </Col>
               </Row>
-              <Row>
+              <Row mb={6}>
                 <Col>
                   <Tabs>
                     <Tab name="About the work">
@@ -82,7 +83,7 @@ export class Artwork extends Component {
                   </Tabs>
                 </Col>
               </Row>
-              <Row>
+              <Row mb={6}>
                 <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                   <ArtistInfo
                     name="Francesca DiMattio"
@@ -92,27 +93,11 @@ export class Artwork extends Component {
                   />
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <OtherWorksByArtist>
-                    <GridBlock>
-                      <Title>Other works by Francesca DiMattio</Title>
-                      <ViewAllButton>View all</ViewAllButton>
-                      <ArtworkGrid artistID="pablo-picasso" />
-                    </GridBlock>
-                  </OtherWorksByArtist>
-                </Col>
+              <Row mb={6}>
+                <OtherWorks headline="Other works by Banksy" />
               </Row>
-              <Row>
-                <Col>
-                  <OtherWorksByGallery>
-                    <GridBlock>
-                      <Title>Other works from Salon 94</Title>
-                      <ViewAllButton>View all</ViewAllButton>
-                      <ArtworkGrid artistID="pablo-picasso" />
-                    </GridBlock>
-                  </OtherWorksByGallery>
-                </Col>
+              <Row mb={6}>
+                <OtherWorks headline="Other works from Salon 94" />
               </Row>
               <Row>
                 <Col>
@@ -122,16 +107,16 @@ export class Artwork extends Component {
                       <ViewAllButton>View all</ViewAllButton>
                       <Tabs>
                         <Tab name="Gene">
-                          <ArtworkGrid artistID="pablo-picasso" />
+                          <FullArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Another Gene">
-                          <ArtworkGrid artistID="pablo-picasso" />
+                          <FullArtworkGrid artistID="banksy" />
                         </Tab>
                         <Tab name="Third Gene">
-                          <ArtworkGrid artistID="pablo-picasso" />
+                          <FullArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Most Similar">
-                          <ArtworkGrid artistID="pablo-picasso" />
+                          <FullArtworkGrid artistID="banksy" />
                         </Tab>
                       </Tabs>
                     </GridBlock>
@@ -218,11 +203,9 @@ const ArtworkSlider = styled.div``
 const FollowButton = styled.div``
 const Name = styled.div``
 const Metadata = styled.div``
-const OtherWorksByArtist = styled.div``
 const GridBlock = styled.div``
 const Title = styled.div``
 const ViewAllButton = styled.div``
-const OtherWorksByGallery = styled.div``
 const RelatedWorks = styled.div``
 const RelatedArtists = styled.div``
 const RelatedArtistItem = styled.div``

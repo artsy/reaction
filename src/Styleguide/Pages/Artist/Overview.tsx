@@ -102,7 +102,7 @@ export const Overview = () => {
       <Row>
         <Col>
           <Responsive>
-            {({ xs }) => {
+            {({ xs, sm, md }) => {
               return (
                 <ArtworkBrowser>
                   {!xs && (
@@ -127,11 +127,14 @@ export const Overview = () => {
                     flexDirection="column"
                     alignItems="flex-end"
                   >
-                    <Flex width="100%" pb={2} justifyContent="flex-end">
+                    <Flex pb={2} justifyContent="flex-end">
                       <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
 
-                    <ArtworkGrid artistID="pablo-picasso" />
+                    <ArtworkGrid
+                      artistID="pablo-picasso"
+                      columnCount={xs || sm || md ? 2 : 3}
+                    />
 
                     <Spacer mb={3} />
                     <Pagination

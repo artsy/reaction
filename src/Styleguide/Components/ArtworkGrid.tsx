@@ -1,11 +1,21 @@
 import React from "react"
 import { Responsive } from "../Utils/Responsive"
-import LegacyArtworkGrid from "Components/ArtworkGrid"
+import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
 
-export const ArtworkGrid = props => (
+export const FullArtworkGrid = props => (
   <Responsive>
-    {({ xs, sm }) => (
-      <LegacyArtworkGrid columnCount={xs ? 2 : sm ? 3 : 4} {...props} />
-    )}
+    {({ xs, sm }) => {
+      let columns
+      if (xs) {
+        columns = 2
+      } else if (sm) {
+        columns = 3
+      } else {
+        columns = 4
+      }
+      return <ArtworkGridExample columnCount={columns} {...props} />
+    }}
   </Responsive>
 )
+
+export const ArtworkGrid = ArtworkGridExample
