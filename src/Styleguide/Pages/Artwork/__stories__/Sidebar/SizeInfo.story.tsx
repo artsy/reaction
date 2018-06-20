@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { SizeInfo } from "../../Sidebar/SizeInfo"
+import { SizeInfo } from "Styleguide/Pages/Artwork/Sidebar/SizeInfo"
 import {
   ArtworkWithSizeAndEditionOf,
   ArtworkWithSizeOnly,

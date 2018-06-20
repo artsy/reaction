@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Classification } from "../../Sidebar/Classification"
+import { Classification } from "Styleguide/Pages/Artwork/Sidebar/Classification"
 import {
   ArtworkWithClassification,
   ArtworkWithoutClassification,
