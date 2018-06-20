@@ -12,7 +12,7 @@ import {
 import { track } from "Utils/track"
 import Events from "Utils/Events"
 
-interface Props {
+export interface FormSwitcherProps {
   handleSubmit: SubmitHandler
   options?: ModalOptions
   tracking?: any
@@ -23,13 +23,13 @@ interface Props {
   onTwitterLogin?: (e: Event) => void
 }
 
-interface State {
+export interface State {
   type?: ModalType
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-export class FormSwitcher extends React.Component<Props, State> {
-  static defaultProps: Partial<Props> = {
+export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
+  static defaultProps: Partial<FormSwitcherProps> = {
     values: {},
   }
 
