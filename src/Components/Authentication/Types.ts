@@ -46,7 +46,7 @@ export interface ModalOptions {
   /**
    * the action taken that prompted user to signup or login.
    */
-  signupIntent?: string
+  intent?: string
   /**
    * the page before the page on which the sign up was triggered.
    */
