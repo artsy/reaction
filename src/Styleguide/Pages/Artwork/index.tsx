@@ -7,7 +7,6 @@ import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { exhibitions } from "Styleguide/Pages/Fixtures//SelectedExhibitions"
 import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
 import { imageData } from "Styleguide/Pages/Fixtures/Artwork/imageData"
-// import { ArtworkWithCompleteData } from "Styleguide/Pages/Fixtures/Artworks"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
 import { AboutTheWork } from "./AboutTheWork"
@@ -16,7 +15,8 @@ import { Banner } from "./Banner"
 import { Bibliography } from "./Bibliography"
 import { ExhibitionHistory } from "./ExhibitionHistory"
 import { ImageCarousel } from "./ImageCarousel"
-// import { Sidebar } from "./Sidebar"
+import { Sidebar } from "./Sidebar"
+import { RegularArtwork2Editions } from "Styleguide/Pages/Fixtures/Artworks"
 
 injectGlobalCSS()
 
@@ -63,8 +63,7 @@ export class Artwork extends Component {
                   </ArtworkSlider>
                 </Col>
                 <Col sm={4}>
-                  {/* FIXME: This file seems to have gone missing? */}
-                  {/* <Sidebar artwork={ArtworkWithCompleteData} /> */}
+                  <Sidebar artwork={RegularArtwork2Editions} />
                 </Col>
               </Row>
               <Row>

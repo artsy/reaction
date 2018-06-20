@@ -41,7 +41,7 @@ export class Artists extends React.Component<ArtistsProps> {
     const { artists } = this.props
     return artists.map((artist, index) => {
       return (
-        <React.Fragment>
+        <React.Fragment key={artist.__id}>
           {this.renderArtistName(artist)}
           {index !== artists.length - 1 && ", "}
         </React.Fragment>
