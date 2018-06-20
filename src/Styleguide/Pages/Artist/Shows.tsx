@@ -6,6 +6,7 @@ import { ResponsiveImage } from "Styleguide/Elements/Image"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Pagination } from "Styleguide/Components/Pagination"
 import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
 
@@ -75,13 +76,15 @@ export const Shows = () => {
           </Box>
           <Row>
             <Col>
-              <Flex mb={2} justifyContent="flex-end">
+              <Flex justifyContent="flex-end">
                 <Pagination {...cursor} {...callbacks} />
               </Flex>
             </Col>
           </Row>
         </Col>
       </Row>
+
+      <Spacer mb={6} />
 
       <Row>
         <Col>
@@ -117,14 +120,58 @@ export const Shows = () => {
                       <Serif size="2">London</Serif>
                     </Col>
                   </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
+                </ShowListItem>
+                <ShowListItem>
+                  <Row>
+                    <Col sm={3}>
+                      <Serif size="2">May 22-29, 2018</Serif>
+                    </Col>
+                    <Col sm={6}>
+                      <Serif size="4">
+                        Brookhart Jonquil: Endless Light in an Endless Night
+                      </Serif>
+                      <Serif size="2" color="black60">
+                        Toth Gallery
+                      </Serif>
+                    </Col>
+                    <Col sm={3}>
+                      <Serif size="2">London</Serif>
+                    </Col>
+                  </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
+                </ShowListItem>
+                <ShowListItem>
+                  <Row>
+                    <Col sm={3}>
+                      <Serif size="2">May 22-29, 2018</Serif>
+                    </Col>
+                    <Col sm={6}>
+                      <Serif size="4">
+                        Brookhart Jonquil: Endless Light in an Endless Night
+                      </Serif>
+                      <Serif size="2" color="black60">
+                        Toth Gallery
+                      </Serif>
+                    </Col>
+                    <Col sm={3}>
+                      <Serif size="2">London</Serif>
+                    </Col>
+                  </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
                 </ShowListItem>
               </ShowList>
             </Col>
           </Row>
-
-          <Box py={2}>
-            <Separator />
-          </Box>
           <Row>
             <Col>
               <Flex mb={2} justifyContent="flex-end">
@@ -134,6 +181,9 @@ export const Shows = () => {
           </Row>
         </Col>
       </Row>
+
+      <Spacer mb={6} />
+
       <Row>
         <Col>
           <Row>
@@ -153,28 +203,76 @@ export const Shows = () => {
               <ShowList>
                 <ShowListItem>
                   <Row>
-                    <Col sm={3}>May 22-29, 2018</Col>
+                    <Col sm={3}>
+                      <Serif size="2">May 22-29, 2018</Serif>
+                    </Col>
                     <Col sm={6}>
-                      <Title>
+                      <Serif size="4">
                         Brookhart Jonquil: Endless Light in an Endless Night
-                      </Title>
-                      <Gallery>Toth Gallery</Gallery>
+                      </Serif>
+                      <Serif size="2" color="black60">
+                        Toth Gallery
+                      </Serif>
                     </Col>
                     <Col sm={3}>
-                      <Location>London</Location>
+                      <Serif size="2">London</Serif>
                     </Col>
                   </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
+                </ShowListItem>
+                <ShowListItem>
+                  <Row>
+                    <Col sm={3}>
+                      <Serif size="2">May 22-29, 2018</Serif>
+                    </Col>
+                    <Col sm={6}>
+                      <Serif size="4">
+                        Brookhart Jonquil: Endless Light in an Endless Night
+                      </Serif>
+                      <Serif size="2" color="black60">
+                        Toth Gallery
+                      </Serif>
+                    </Col>
+                    <Col sm={3}>
+                      <Serif size="2">London</Serif>
+                    </Col>
+                  </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
+                </ShowListItem>
+                <ShowListItem>
+                  <Row>
+                    <Col sm={3}>
+                      <Serif size="2">May 22-29, 2018</Serif>
+                    </Col>
+                    <Col sm={6}>
+                      <Serif size="4">
+                        Brookhart Jonquil: Endless Light in an Endless Night
+                      </Serif>
+                      <Serif size="2" color="black60">
+                        Toth Gallery
+                      </Serif>
+                    </Col>
+                    <Col sm={3}>
+                      <Serif size="2">London</Serif>
+                    </Col>
+                  </Row>
+
+                  <Box pt={3} pb={1}>
+                    <Separator />
+                  </Box>
                 </ShowListItem>
               </ShowList>
             </Col>
           </Row>
-
-          <Box py={2}>
-            <Separator />
-          </Box>
           <Row>
             <Col>
-              <Flex mb={2} justifyContent="flex-end">
+              <Flex mb={3} justifyContent="flex-end">
                 <Pagination {...cursor} {...callbacks} />
               </Flex>
             </Col>
@@ -194,9 +292,6 @@ const Show = props => {
   )
 }
 
-const Category = Sans
-const Title = styled.div``
-const Gallery = styled.div``
-const Location = styled.div``
 const ShowList = styled.div``
-const ShowListItem = styled.div``
+const Category = Sans
+const ShowListItem = Box
