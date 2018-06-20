@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { ExtraLinks } from "../../Sidebar/ExtraLinks"
+import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
 import {
   ArtworkNotForSaleWithNoConsignableArtists,
   ForSaleArtworkWithNoConsignableArtists,

@@ -2,7 +2,7 @@ import React from "react"
 import { Serif } from "@artsy/palette"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Location } from "../../../../Assets/Icons/Location"
+import { Location } from "Assets/Icons/Location"
 
 export interface PartnerInfoProps {
   artwork: {

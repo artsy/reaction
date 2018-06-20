@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Commercial } from "../../Sidebar/Commercial"
+import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
 import {
   FoSaleArtworkNoEditions,
   FoSaleArtworkWithOneEdition,

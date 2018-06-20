@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Sidebar } from "../../Artwork/Sidebar"
+import { Sidebar } from "Styleguide/Pages/Artwork/Sidebar"
 
 import {
   CollecingInstitutionArtwork,

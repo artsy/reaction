@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Artists } from "../../Sidebar/Artists"
+import { Artists } from "Styleguide/Pages/Artwork/Sidebar/Artists"
 import {
   SingleFollowedArtist,
   SingleNonFollowedArtist,

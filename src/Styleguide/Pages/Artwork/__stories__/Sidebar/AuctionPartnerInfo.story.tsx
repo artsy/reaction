@@ -1,50 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "../../../../Utils/Section"
-import { AuctionPartnerInfo } from "../../Sidebar/AuctionPartnerInfo"
-
-const ArtworkNoEstimateNoPremium = {
-  _id: "auction_artwork",
-  is_biddable: true,
-  partner: {
-    __id: "phillips",
-    name: "Phillips",
-  },
-  sale_artwork: {},
-  sale: {
-    is_with_buyers_premium: false,
-  },
-}
-
-const ArtworkWithEstimateNoPremium = {
-  _id: "auction_artwork",
-  is_biddable: true,
-  partner: {
-    __id: "phillips",
-    name: "Phillips",
-  },
-  sale_artwork: {
-    estimate: "$300 - $500",
-  },
-  sale: {
-    is_with_buyers_premium: false,
-  },
-}
-
-const ArtworkWithEstimateAndPremium = {
-  _id: "auction_artwork",
-  is_biddable: true,
-  partner: {
-    __id: "phillips",
-    name: "Phillips",
-  },
-  sale_artwork: {
-    estimate: "$300 - $500",
-  },
-  sale: {
-    is_with_buyers_premium: true,
-  },
-}
+import { Section } from "Styleguide/Utils/Section"
+import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
+import {
+  ArtworkNoEstimateNoPremium,
+  ArtworkWithEstimateNoPremium,
+  ArtworkWithEstimateAndPremium,
+} from "Styleguide/Pages/Fixtures/Artwork/Sidebar/AuctionPartnerInfo"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add(
   "AuctionPartnerInfo",

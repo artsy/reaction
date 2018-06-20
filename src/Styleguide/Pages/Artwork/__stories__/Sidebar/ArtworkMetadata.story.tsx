@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { ArtworkMetadata } from "../../Sidebar/ArtworkMetadata"
+import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
 import {
   FilledOutMetadataNoEditions,
   FilledOutMetadataOneEditionSet,
