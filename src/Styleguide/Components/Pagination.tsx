@@ -15,7 +15,7 @@ interface PageCursor {
 interface PaginationProps {
   first?: PageCursor
   last?: PageCursor
-  around: ReadonlyArray<PageCursor>
+  around?: ReadonlyArray<PageCursor>
   onClick?: (cursor: string) => void
   onNext?: () => void
   onPrev?: () => void

@@ -34,7 +34,7 @@ export class Artist extends React.Component {
 
               <Row>
                 <Col>
-                  <Tabs initialTabIndex={1}>
+                  <Tabs initialTabIndex={3}>
                     <Tab name="Overview">
                       <Overview />
                     </Tab>
