@@ -3,11 +3,12 @@ import styled from "styled-components"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Artists } from "./Sidebar/Artists"
 import { Serif } from "@artsy/palette"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { Commercial } from "./Sidebar/Commercial"
-import { AuctionPartnerInfo } from "./Sidebar/AuctionPartnerInfo"
-import { PartnerInfo } from "./Sidebar/PartnerInfo"
-import { ExtraLinks } from "./Sidebar/ExtraLinks"
+import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
+import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
+import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
+import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
+import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
+import { AuctionBidInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionBidInfo"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
@@ -29,6 +30,8 @@ export interface ArtworkSidebarProps {
       }>
     }
     readonly sale: {
+      readonly is_open: boolean
+      readonly is_closed: boolean
       readonly is_live_open: boolean
       readonly is_with_buyers_premium?: boolean
     }
@@ -85,17 +88,18 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
           )}
         <ArtworkMetadata artwork={artwork} />
 
-        {!artwork.is_in_auction && (
+        {artwork.is_in_auction ? (
+          <React.Fragment>
+            <AuctionPartnerInfo artwork={artwork} />
+            <Separator />
+            <AuctionBidInfo artwork={artwork} />
+          </React.Fragment>
+        ) : (
           <React.Fragment>
             <Separator />
             <Commercial artwork={artwork} />
+            <PartnerInfo artwork={artwork} />
           </React.Fragment>
-        )}
-
-        {artwork.is_in_auction ? (
-          <AuctionPartnerInfo artwork={artwork} />
-        ) : (
-          <PartnerInfo artwork={artwork} />
         )}
 
         <Separator />
