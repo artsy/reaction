@@ -1,7 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Serif } from "@artsy/palette"
-import { space, SpaceProps } from "styled-system"
+import { Box } from "Styleguide/Elements/Box"
 import { SizeInfo } from "./SizeInfo"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Button } from "Styleguide/Elements/Button"
@@ -23,17 +22,16 @@ export interface CommercialProps {
   }
 }
 
-const CommercialContainer = styled.div.attrs<SpaceProps>({})`
-  text-align: left;
-  ${space};
-`
-const PricingInfoContainer = styled.div.attrs<SpaceProps>({})`
-  ${space};
-`
+const CommercialContainer = Box
+const PricingInfoContainer = Box
 
 export class Commercial extends React.Component<CommercialProps> {
   renderSaleMessage() {
-    return <Serif size="5t">{this.props.artwork.sale_message}</Serif>
+    return (
+      <Serif size="5t" weight="semibold">
+        {this.props.artwork.sale_message}
+      </Serif>
+    )
   }
 
   renderEditions() {
@@ -53,17 +51,20 @@ export class Commercial extends React.Component<CommercialProps> {
 
   render() {
     const { artwork } = this.props
+    if (!artwork.sale_message && !artwork.is_inquireable) {
+      return null
+    }
     return (
-      <CommercialContainer pb={2}>
-        {artwork.edition_sets.length < 2 ? (
-          <PricingInfoContainer pb={2}>
+      <CommercialContainer pb={3} align="left">
+        {artwork.edition_sets.length < 2 && artwork.sale_message ? (
+          <PricingInfoContainer pb={2} pt={1}>
             {this.renderSaleMessage()}
           </PricingInfoContainer>
         ) : (
           this.renderEditions()
         )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="medium">
+          <Button width="100%" size="medium" mt={1}>
             Contact Gallery
           </Button>
         )}

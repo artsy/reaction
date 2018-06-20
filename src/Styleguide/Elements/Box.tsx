@@ -20,6 +20,10 @@ import {
   top,
   width,
   WidthProps,
+  textAlign,
+  TextAlignProps,
+  color,
+  ColorProps,
 } from "styled-system"
 
 const hover = css`
@@ -55,6 +59,8 @@ export interface BoxProps
     SpaceProps,
     WidthProps,
     HeightProps,
+    ColorProps,
+    TextAlignProps,
     PositionProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
@@ -66,4 +72,6 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${right};
   ${bottom};
   ${left};
+  ${color};
+  ${textAlign};
 `
