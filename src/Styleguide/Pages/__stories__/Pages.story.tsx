@@ -1,5 +1,5 @@
 import React from "react"
-import { storiesOf } from "storybook/storiesOf"
+import { storiesOf } from "@storybook/react"
 import { Artwork, Artist } from "../../"
 
 storiesOf("Styleguide/Pages", module)

@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Serif } from "@artsy/palette"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Button } from "Styleguide/Elements/Button"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { Box } from "Styleguide/Elements/Box"
@@ -36,10 +37,11 @@ export const LargeArtistHeader = () => {
       <Flex justifyContent="space-between">
         <Box>
           <Serif size="10">Donald Judd</Serif>
-          <Box>
+          <Flex>
             <Serif size="3">Brazilian, 1886-1973</Serif>
+            <Spacer mr={2} />
             <Serif size="3">4,321 followers</Serif>
-          </Box>
+          </Flex>
         </Box>
         <Button variant="primaryBlack" size="medium">
           Follow
