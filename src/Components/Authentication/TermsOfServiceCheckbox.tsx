@@ -3,7 +3,6 @@ import styled from "styled-components"
 import Checkbox from "Components/Checkbox"
 import Text from "Components/Text"
 import Colors from "Assets/Colors"
-import TextLink from "Components/TextLink"
 
 export const TermsOfServiceCheckbox = ({
   error,
@@ -16,22 +15,22 @@ export const TermsOfServiceCheckbox = ({
   <StyledCheckbox {...{ checked: value, error, onChange, onBlur, name }}>
     <TOSText color={error ? Colors.redMedium : Colors.graySemibold}>
       {"I agree to Artsy’s "}
-      <TextLink
+      <A
         href="https://www.artsy.net/terms"
         target="_blank"
         color={error ? Colors.redMedium : Colors.graySemibold}
       >
-        Terms Of Service
-      </TextLink>
+        Terms Of Use
+      </A>
       {" and "}
-      <TextLink
+      <A
         href="https://www.artsy.net/privacy"
         target="_blank"
         color={error ? Colors.redMedium : Colors.graySemibold}
       >
         Privacy Policy
-      </TextLink>
-      {" and to receive emails from Artsy."}
+      </A>
+      {", and to receive emails from Artsy."}
     </TOSText>
   </StyledCheckbox>
 )
@@ -39,6 +38,9 @@ export const TermsOfServiceCheckbox = ({
 const StyledCheckbox = styled(Checkbox)`
   margin: 5px 0;
   align-items: flex-start;
+`
+const A = styled.a`
+  color: ${props => props.color};
 `
 
 export const TOSText = styled(Text)`
