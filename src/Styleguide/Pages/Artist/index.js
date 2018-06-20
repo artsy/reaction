@@ -7,12 +7,14 @@ import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
-import { Articles } from "./Articles"
+import { ArticlesContent } from "./Articles"
 import { ArtistHeader } from "./ArtistHeader"
 import { AuctionResults } from "./AuctionResults"
 import { CV } from "./CV"
 import { Overview } from "./Overview"
 import { RelatedArtists } from "./RelatedArtists"
+import { ContextProvider } from "Components/Artsy"
+
 import { Shows } from "./Shows"
 
 injectGlobalCSS()
@@ -34,7 +36,7 @@ export class Artist extends React.Component {
 
               <Row>
                 <Col>
-                  <Tabs initialTabIndex={3}>
+                  <Tabs initialTabIndex={2}>
                     <Tab name="Overview">
                       <Overview />
                     </Tab>
@@ -42,7 +44,9 @@ export class Artist extends React.Component {
                       <CV />
                     </Tab>
                     <Tab name="Articles">
-                      <Articles />
+                      <ContextProvider>
+                        <ArticlesContent artistID="pablo-picasso" />
+                      </ContextProvider>
                     </Tab>
                     <Tab name="Shows">
                       <Shows />

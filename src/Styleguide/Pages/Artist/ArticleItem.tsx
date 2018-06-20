@@ -6,7 +6,15 @@ import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { Sans, Serif } from "@artsy/palette"
 
-export const ArticleItem = props => {
+interface ArticleItemProps {
+  imageUrl: string
+  date: string
+  author: string
+  title: string
+  href: string
+}
+
+export const ArticleItem = (props: ArticleItemProps) => {
   return (
     <Responsive>
       {({ xs }) => {
@@ -17,50 +25,45 @@ export const ArticleItem = props => {
   )
 }
 
-const LargeArticleItem = props => {
+const LargeArticleItem = (props: ArticleItemProps) => {
   return (
     <React.Fragment>
       <Row>
         <Col sm={2}>
           <Date size="3" weight="medium">
-            May 22, 2018
+            {props.date}
           </Date>
         </Col>
         <Col sm={8}>
           <Flex>
             <Box pr={12}>
               <Title size="5">
-                <a href="#" className="noUnderline">
-                  How Vincent van Gogh’s Market Was Tirelessly Built by His
-                  Sister-in-Law, Jo
+                <a href={props.href} className="noUnderline">
+                  {props.title}
                 </a>
               </Title>
               <Credit size="2" color="black60">
-                Artsy Magazine
+                {props.author}
               </Credit>
             </Box>
           </Flex>
         </Col>
         <Col sm={2}>
-          <Image
-            width="135px"
-            height="85px"
-            src="https://picsum.photos/135/85/?random"
-          />
+          <Image width="135px" height="85px" src={props.imageUrl} />
         </Col>
       </Row>
     </React.Fragment>
   )
 }
 
-const SmallArticleItem = () => {
+const SmallArticleItem = (props: ArticleItemProps) => {
   return (
     <React.Fragment>
       <Row>
         <Col sm={2}>
           <Box mb={0.5}>
             <Date size="1" weight="medium">
-              May 22, 2018
+              {props.date}
             </Date>
           </Box>
         </Col>
@@ -68,20 +71,15 @@ const SmallArticleItem = () => {
           <Flex>
             <Box pr={3}>
               <Title size="2">
-                <a href="#" className="noUnderline">
-                  How Vincent van Gogh’s Market Was Tirelessly Built by His
-                  Sister-in-Law, Jo
+                <a href={props.href} className="noUnderline">
+                  {props.title}
                 </a>
               </Title>
               <Credit size="2" color="black60">
-                Artsy Magazine
+                {props.author}
               </Credit>
             </Box>
-            <Image
-              width="80px"
-              height="50px"
-              src="https://picsum.photos/80/50/?random"
-            />
+            <Image width="80px" height="50px" src={props.imageUrl} />
           </Flex>
         </Col>
       </Row>
