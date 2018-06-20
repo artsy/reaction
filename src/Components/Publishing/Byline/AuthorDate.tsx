@@ -1,8 +1,8 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getAuthorByline, getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
 import { ArticleLayout, BylineLayout, DateFormat } from "../Typings"
 
 interface AuthorProps {

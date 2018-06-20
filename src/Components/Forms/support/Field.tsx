@@ -1,5 +1,5 @@
-import React from "react"
 import { Field as FormikField } from "formik"
+import React from "react"
 import { default as Input } from "../../Input"
 
 /**

@@ -1,7 +1,7 @@
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import { garamond } from "Assets/Fonts"
 
 export interface LinkProps
   extends React.Props<TextLink>,

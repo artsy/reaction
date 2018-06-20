@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
 import colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
+import React from "react"
+import styled from "styled-components"
 import { block } from "../Helpers"
 import { IconProps } from "../Icon"
 

@@ -1,5 +1,5 @@
-import React from "react"
 import { Formik, FormikProps } from "formik"
+import React from "react"
 import styled from "styled-components"
 
 import {
@@ -7,10 +7,10 @@ import {
   Footer,
   FormContainer as Form,
 } from "Components/Authentication/commonElements"
+import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
 import { ResetPasswordValidator } from "../Validators"
-import Button from "Components/Buttons/Inverted"
 
 const ResetButton = styled(Button).attrs({
   type: "submit",

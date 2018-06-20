@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { Tooltip } from "../Tooltip"
 import { Help } from "../../Assets/Icons/Help"
+import { Tooltip } from "../Tooltip"
 
 function RenderTooltip(
   message: string,

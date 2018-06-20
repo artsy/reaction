@@ -1,15 +1,15 @@
-import React from "react"
-import { Formik, FormikProps } from "formik"
 import {
   Error,
-  FormContainer as Form,
   Footer,
+  FormContainer as Form,
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
   MobileSubmitButton,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
+import { Formik, FormikProps } from "formik"
+import React from "react"
 import { FormComponentType, InputValues } from "../Types"
 import { ResetPasswordValidator } from "../Validators"
 

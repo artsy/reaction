@@ -1,14 +1,14 @@
-import React, { Component } from "react"
-import { FormikProps } from "formik"
-import { DesktopModal } from "./Components/DesktopModal"
-import { FormSwitcher } from "./FormSwitcher"
 import { handleSubmit as defaultHandleSubmit } from "Components/Authentication/helpers"
 import {
   InputValues,
-  SubmitHandler,
   ModalOptions,
   ModalType,
+  SubmitHandler,
 } from "Components/Authentication/Types"
+import { FormikProps } from "formik"
+import React, { Component } from "react"
+import { DesktopModal } from "./Components/DesktopModal"
+import { FormSwitcher } from "./FormSwitcher"
 
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string }

@@ -1,3 +1,4 @@
+import { extend } from "lodash"
 import React from "react"
 import {
   commitMutation,
@@ -5,12 +6,11 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { extend } from "lodash"
+import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { track } from "../../Utils/track"
+import * as Artsy from "../Artsy"
 import { FollowButton } from "./Button"
 import { FollowTrackingData } from "./Typings"
-import * as Artsy from "../Artsy"
-import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 
 interface Props
   extends React.HTMLProps<FollowArtistButton>,

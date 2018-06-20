@@ -1,16 +1,16 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
 import {
+  ArtworkFromLiveAuction,
+  ArtworkNotForSaleWithMultipleConsignableArtist,
   ArtworkNotForSaleWithNoConsignableArtists,
+  ArtworkNotForSaleWithOneConsignableArtist,
+  ForSaleArtworkWithMultipleConsignableArtists,
   ForSaleArtworkWithNoConsignableArtists,
   ForSaleArtworkWithOneConsignableArtist,
-  ForSaleArtworkWithMultipleConsignableArtists,
-  ArtworkNotForSaleWithOneConsignableArtist,
-  ArtworkNotForSaleWithMultipleConsignableArtist,
-  ArtworkFromLiveAuction,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/ExtraLinks"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
   return (

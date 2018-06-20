@@ -1,5 +1,5 @@
-import { ComponentType } from "react"
 import { RouteConfig } from "found"
+import { ComponentType } from "react"
 import { ContextProps } from "../Components/Artsy"
 
 type ReactComponent = ComponentType<any>

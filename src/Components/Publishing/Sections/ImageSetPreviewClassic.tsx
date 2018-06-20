@@ -1,7 +1,7 @@
+import { avantgarde } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { avantgarde } from "Assets/Fonts"
 import { IconImageSet } from "../Icon/IconImageSet"
 
 interface LengthProps extends React.HTMLProps<HTMLDivElement> {
@@ -52,7 +52,7 @@ export class ImageSetPreviewClassic extends Component<any, any> {
     let widths = []
     let hidden = 0
     images.map((item, i) => {
-      const adjustedWidth = containerHeight * item.width / item.height
+      const adjustedWidth = (containerHeight * item.width) / item.height
       widths.push(adjustedWidth)
       const total = widths.reduce((a, b) => a + b, 0)
       const margins = widths.length * margin

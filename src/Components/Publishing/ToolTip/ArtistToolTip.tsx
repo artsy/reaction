@@ -1,19 +1,19 @@
-import styled from "styled-components"
+import { garamond, unica } from "Assets/Fonts"
+import { map } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import { map } from "lodash"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
+import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { track } from "../../../Utils/track"
-import { garamond, unica } from "Assets/Fonts"
-import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
-import { FollowTrackingData } from "../../FollowButton/Typings"
-import { NewFeature } from "./Components/NewFeature"
-import { ToolTipDescription } from "./Components/Description"
-import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 import MarketDataSummary, {
   MarketDataSummaryContainer,
 } from "../../Artist/MarketDataSummary/MarketDataSummary"
+import FollowArtistButton from "../../FollowButton/FollowArtistButton"
+import { FollowTrackingData } from "../../FollowButton/Typings"
+import { ToolTipDescription } from "./Components/Description"
+import { NewFeature } from "./Components/NewFeature"
 
 export interface ArtistToolTipProps {
   showMarketData?: boolean

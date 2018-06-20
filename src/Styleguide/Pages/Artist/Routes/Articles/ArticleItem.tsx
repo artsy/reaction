@@ -1,10 +1,10 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
-import { Sans, Serif } from "@artsy/palette"
 
 interface ArticleItemProps {
   imageUrl: string

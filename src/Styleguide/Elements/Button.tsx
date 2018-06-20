@@ -1,21 +1,21 @@
-import React, { Component, ReactNode } from "react"
-import styled, { css } from "styled-components"
 import { Sans } from "@artsy/palette"
 import { pick } from "lodash/fp"
+import React, { Component, ReactNode } from "react"
+import styled, { css } from "styled-components"
 
 import {
   border,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
+  height,
+  HeightProps,
   space,
   SpaceProps,
   textAlign,
   TextAlignProps,
   width,
   WidthProps,
-  height,
-  HeightProps,
 } from "styled-system"
 
 enum ButtonSize {

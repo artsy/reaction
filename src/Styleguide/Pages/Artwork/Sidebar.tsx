@@ -1,14 +1,14 @@
+import { Serif } from "@artsy/palette"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { Separator } from "Styleguide/Elements/Separator"
-import { Artists } from "./Sidebar/Artists"
-import { Serif } from "@artsy/palette"
 import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
-import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
-import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
-import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
-import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
 import { AuctionBidInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionBidInfo"
+import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
+import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
+import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
+import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
+import { Artists } from "./Sidebar/Artists"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {

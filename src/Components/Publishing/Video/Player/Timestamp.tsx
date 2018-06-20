@@ -1,7 +1,7 @@
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { formatTime } from "../../Constants"
-import { garamond } from "Assets/Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   duration: number

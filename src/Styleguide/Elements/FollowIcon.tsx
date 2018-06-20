@@ -1,9 +1,9 @@
+import { Serif } from "@artsy/palette"
+import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
-import Icon from "Components/Icon"
 import { Flex } from "./Flex"
-import { Serif } from "@artsy/palette"
 
 interface FollowIconProps {
   readonly is_followed?: boolean | false

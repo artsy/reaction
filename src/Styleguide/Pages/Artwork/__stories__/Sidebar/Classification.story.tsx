@@ -1,11 +1,11 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { Classification } from "Styleguide/Pages/Artwork/Sidebar/Classification"
 import {
   ArtworkWithClassification,
   ArtworkWithoutClassification,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/Classification"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("Classification", () => {
   return (

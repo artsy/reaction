@@ -1,13 +1,13 @@
-import InvertedButton from "../../../Buttons/Inverted"
 import React, { Component, Fragment } from "react"
+import { Col, Row } from "react-styled-flexboxgrid"
+import styled from "styled-components"
+import colors from "../../../../Assets/Colors"
+import InvertedButton from "../../../Buttons/Inverted"
+import { Checkbox } from "../../../Checkbox"
 import Text from "../../../Text"
 import Title from "../../../Title"
-import colors from "../../../../Assets/Colors"
-import styled from "styled-components"
-import { Checkbox } from "../../../Checkbox"
-import { Row, Col } from "react-styled-flexboxgrid"
-import { StyledGrid as Grid, Contact } from "./common"
 import { WizardStepChildProps } from "../../../Wizard/types"
+import { Contact, StyledGrid as Grid } from "./common"
 
 export class ReviewForm extends Component<WizardStepChildProps> {
   render() {

@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Gallery, SmallGallery, LargeGallery } from "../Gallery"
 import { Section } from "Styleguide/Utils/Section"
+import { Gallery, LargeGallery, SmallGallery } from "../Gallery"
 
 storiesOf("Styleguide/Artwork", module).add("Gallery", () => {
   return (

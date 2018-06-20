@@ -1,9 +1,9 @@
-import React from "react"
-import { Responsive } from "Styleguide/Utils/Responsive"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export const ShowListItem = props => {
   return (

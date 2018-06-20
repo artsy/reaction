@@ -1,7 +1,7 @@
+import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { garamond, unica } from "Assets/Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
 
 interface CaptionProps {

@@ -1,8 +1,8 @@
 import React from "react"
-import { Section } from "Styleguide/Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
-import { Pagination, LargePagination, SmallPagination } from "../Pagination"
 import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
+import { Section } from "Styleguide/Utils/Section"
+import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 storiesOf("Styleguide/Components", module).add("Pagination", () => {
   const { cursor, callbacks } = paginationProps

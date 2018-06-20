@@ -1,3 +1,4 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
@@ -5,7 +6,6 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
-import { unica } from "Assets/Fonts"
 
 export interface RelatedArticleFigureData {
   thumbnail_title: string

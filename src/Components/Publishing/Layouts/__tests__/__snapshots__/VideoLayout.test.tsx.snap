@@ -1049,10 +1049,57 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: none;
 }
 
+.c63 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c63 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c36 {
   max-width: 1200px;
   margin: 0px auto;
   padding: 0px 12px;
+}
+
+.c64 {
+  color: white;
+}
+
+.c64 .c66 {
+  margin-bottom: 60px;
+}
+
+.c60 {
+  color: white;
+}
+
+.c60 .c35 {
+  margin: auto;
+}
+
+.c60 .c62 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.c60 .c62 a {
+  border-bottom: 2px solid;
+}
+
+.c60 .c80 {
+  margin: 60px 0 100px 0;
 }
 
 .c41 {
@@ -1151,53 +1198,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
-}
-
-.c64 {
-  color: white;
-}
-
-.c64 .c66 {
-  margin-bottom: 60px;
-}
-
-.c63 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: white;
-}
-
-.c63 a {
-  color: white;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c60 {
-  color: white;
-}
-
-.c60 .c35 {
-  margin: auto;
-}
-
-.c60 .c62 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.c60 .c62 a {
-  border-bottom: 2px solid;
-}
-
-.c60 .c80 {
-  margin: 60px 0 100px 0;
 }
 
 .c0 {
@@ -1643,33 +1643,18 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c33 {
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width:48em) {
-  .c45 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-  }
-}
-
-@media (max-width:64em) {
-  .c64 .c66 {
-    margin-bottom: 40px;
-  }
-}
-
 @media (max-width:720px) {
   .c63 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
+  }
+}
+
+@media (max-width:64em) {
+  .c64 .c66 {
+    margin-bottom: 40px;
   }
 }
 
@@ -1682,6 +1667,21 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media (max-width:48em) {
   .c60 .c80 {
     margin: 40px 0 100px 0;
+  }
+}
+
+@media (max-width:48em) {
+  .c33 {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width:48em) {
+  .c45 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
   }
 }
 

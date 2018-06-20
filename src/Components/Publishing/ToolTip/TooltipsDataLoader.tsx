@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { QueryRenderer, graphql } from "react-relay"
-import { ArticleProps } from "../Article"
-import { ArticleData } from "Components/Publishing/Typings"
-import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
-import { keyBy } from "lodash"
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
 import * as Artsy from "Components/Artsy"
+import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
+import { ArticleData } from "Components/Publishing/Typings"
+import { keyBy } from "lodash"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { graphql, QueryRenderer } from "react-relay"
+import { ArticleProps } from "../Article"
 
 interface Props extends Artsy.ContextProps {
   article: ArticleData

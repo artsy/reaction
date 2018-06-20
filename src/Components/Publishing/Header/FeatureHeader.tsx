@@ -1,3 +1,4 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
@@ -5,12 +6,11 @@ import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { unica } from "Assets/Fonts"
-import {
-  VerticalOrSeriesTitle,
-  Vertical,
-} from "../Sections/VerticalOrSeriesTitle"
 import { PartnerInline } from "../Partner/PartnerInline"
+import {
+  Vertical,
+  VerticalOrSeriesTitle,
+} from "../Sections/VerticalOrSeriesTitle"
 import { BasicHeader } from "./BasicHeader"
 
 function renderFeatureAsset(url, layout, isMobile, title, imageChild) {

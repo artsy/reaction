@@ -2812,20 +2812,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   color: white;
 }
 
-.c15 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: white;
-}
-
-.c15 a {
-  color: white;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
 .c9 {
   font-family: artsy-icons;
   color: white;
@@ -2870,6 +2856,20 @@ exports[`feature renders superArticle full header properly 1`] = `
 .c7 .c8 {
   margin: 0;
   vertical-align: middle;
+}
+
+.c15 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c15 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c1 {
@@ -3081,15 +3081,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c15 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 @media (max-width:900px) {
   .c11 {
     width: 13px;
@@ -3108,6 +3099,15 @@ exports[`feature renders superArticle full header properly 1`] = `
 
   .c7 .c10 {
     margin: 0 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c15 {
+    font-family: Unica77LLWebMedium,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
   }
 }
 

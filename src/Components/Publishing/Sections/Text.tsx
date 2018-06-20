@@ -1,9 +1,9 @@
+import { startsWith } from "lodash"
 import React, { Component } from "react"
-import { ArticleLayout } from "../Typings"
-import { StyledText } from "./StyledText"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import LinkWithTooltip from "../ToolTip/LinkWithTooltip"
-import { startsWith } from "lodash"
+import { ArticleLayout } from "../Typings"
+import { StyledText } from "./StyledText"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   color?: string

@@ -1,12 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { Section } from "../../Utils/Section"
 import {
   AuctionResultItem,
+  ExtraSmallAuctionResultItem,
   LargeAuctionResultItem,
   SmallAuctionResultItem,
-  ExtraSmallAuctionResultItem,
 } from "../AuctionResultItem"
-import { Section } from "../../Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("AuctionResultItem", () => {
   const dimensions = "14 1/2 x 76 1/2 x 25 1/2 in"

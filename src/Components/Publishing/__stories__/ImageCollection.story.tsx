@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
+import { Images, ImagesNarrow } from "../Fixtures/Components"
 import { FullScreenProvider } from "../Sections/FullscreenViewer/FullScreenProvider"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { ImageCollection } from "../Sections/ImageCollection"
-import { Images, ImagesNarrow } from "../Fixtures/Components"
 
 class ImageCollectionDemo extends React.Component<any, any> {
   render() {

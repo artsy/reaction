@@ -1,9 +1,9 @@
-import React from "react"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
-import { SizeInfo } from "./SizeInfo"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Button } from "Styleguide/Elements/Button"
+import { Separator } from "Styleguide/Elements/Separator"
+import { SizeInfo } from "./SizeInfo"
 
 export interface CommercialProps {
   artwork: {

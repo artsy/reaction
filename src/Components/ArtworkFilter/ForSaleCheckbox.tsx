@@ -2,9 +2,9 @@ import React, { Component } from "react"
 
 import Checkbox, { CheckboxProps } from "../Checkbox"
 
-import styled from "styled-components"
 import colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
+import styled from "styled-components"
 
 export class ForSaleCheckbox extends Component<CheckboxProps, null> {
   render() {

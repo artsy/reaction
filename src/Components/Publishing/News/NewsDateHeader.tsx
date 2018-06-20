@@ -1,8 +1,8 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
 
 interface Props {
   date: string

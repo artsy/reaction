@@ -1,8 +1,8 @@
 import React from "react"
 import { Box } from "Styleguide/Elements/Box"
-import { TitleInfo } from "./TitleInfo"
-import { SizeInfo } from "./SizeInfo"
 import { Classification } from "./Classification"
+import { SizeInfo } from "./SizeInfo"
+import { TitleInfo } from "./TitleInfo"
 
 export interface ArtworkMetadataProps {
   artwork: {

@@ -10,19 +10,19 @@ import {
   FlexDirectionProps,
   flexWrap,
   FlexWrapProps,
+  height,
+  HeightProps,
   justifyContent,
   JustifyContentProps,
   maxHeight,
   MaxHeightProps,
-  height,
-  HeightProps,
   maxWidth,
   MaxWidthProps,
-  width,
-  WidthProps,
   space,
   SpaceProps,
   style,
+  width,
+  WidthProps,
 } from "styled-system"
 
 // @ts-ignore

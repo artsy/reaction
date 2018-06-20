@@ -1,18 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import { Responsive } from "Styleguide/Utils/Responsive"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { ImageProps } from "Styleguide/Elements/Image"
 import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { ImageProps } from "Styleguide/Elements/Image"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 import {
   border,
   height,
   HeightProps,
+  themeGet,
   width,
   WidthProps,
-  themeGet,
 } from "styled-system"
 
 export class Slider extends React.Component {

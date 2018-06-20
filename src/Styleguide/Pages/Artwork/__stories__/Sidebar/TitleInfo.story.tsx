@@ -1,13 +1,13 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { TitleInfo } from "Styleguide/Pages/Artwork/Sidebar/TitleInfo"
 import {
-  ArtworkWithTitleDateAndMedium,
-  ArtworkWithTitleOnly,
   ArtworkWithTitlAndDate,
   ArtworkWithTitleAndMedium,
+  ArtworkWithTitleDateAndMedium,
+  ArtworkWithTitleOnly,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/TitleInfo"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
   return (

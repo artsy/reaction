@@ -1,22 +1,22 @@
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import styled from "styled-components"
-import { Formik, FormikProps } from "formik"
 
 import {
   Error,
-  ForgotPassword,
   Footer,
+  ForgotPassword,
   FormContainer as Form,
   RememberMe,
 } from "Components/Authentication/commonElements"
-import { LoginValidator } from "Components/Authentication/Validators"
-import Input from "Components/Input"
 import {
   FormComponentType,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
+import { LoginValidator } from "Components/Authentication/Validators"
 import Button from "Components/Buttons/Inverted"
+import Input from "Components/Input"
 
 const Row = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import { Avatar } from "Styleguide/Elements/Avatar"
-import { Sans, Serif } from "@artsy/palette"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
 

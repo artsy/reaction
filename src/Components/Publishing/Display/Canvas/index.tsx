@@ -1,16 +1,16 @@
+import { avantgarde, garamond } from "Assets/Fonts"
 import { get } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { track } from "../../../../Utils/track"
-import { pMedia } from "../../../Helpers"
-import { avantgarde, garamond } from "Assets/Fonts"
 import { ErrorBoundary } from "../../../ErrorBoundary"
+import { pMedia } from "../../../Helpers"
+import { getCurrentUnixTimestamp } from "../../Constants"
+import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
-import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
-import { getCurrentUnixTimestamp } from "../../Constants"
 
 interface DisplayCanvasProps {
   unit: any

@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
+import reduce from "lodash/reduce"
 import React from "react"
 import styled from "styled-components"
-import reduce from "lodash/reduce"
 import { StepMarker } from "../StepMarker"
 const steps = [
   {

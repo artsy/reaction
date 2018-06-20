@@ -1,7 +1,7 @@
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 import { garamond } from "Assets/Fonts"
 import { compact, find } from "lodash"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 interface Props extends React.HTMLProps<Headline> {

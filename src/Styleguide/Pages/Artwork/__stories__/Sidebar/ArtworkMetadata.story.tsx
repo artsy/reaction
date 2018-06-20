@@ -1,15 +1,15 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
 import {
-  FilledOutMetadataNoEditions,
-  FilledOutMetadataOneEditionSet,
-  FilledOutMetadataMultipleEditionSets,
+  EmptyMetadataMultipleEditionSets,
   EmptyMetadataNoEditions,
   EmptyMetadataOneEditionSet,
-  EmptyMetadataMultipleEditionSets,
+  FilledOutMetadataMultipleEditionSets,
+  FilledOutMetadataNoEditions,
+  FilledOutMetadataOneEditionSet,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/ArtworkMetadata"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("ArtworkMetadata", () => {
   return (

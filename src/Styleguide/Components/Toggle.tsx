@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
+import { themeGet } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Sans } from "@artsy/palette"
-import { themeGet } from "styled-system"
 
 export interface ToggleProps {
   disabled?: boolean

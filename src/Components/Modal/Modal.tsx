@@ -1,6 +1,6 @@
 import React from "react"
+import { animated, Spring } from "react-spring"
 import styled from "styled-components"
-import { Spring, animated } from "react-spring"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean

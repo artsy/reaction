@@ -1,5 +1,5 @@
-import { storiesOf } from "storybook/storiesOf"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import { AuctionResultsContainer } from "Styleguide/Pages/Artist/Containers/AuctionResults"
 
 import { ContextProvider } from "Components/Artsy"

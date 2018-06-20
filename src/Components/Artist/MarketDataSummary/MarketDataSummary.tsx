@@ -1,10 +1,10 @@
+import { unica } from "Assets/Fonts"
 import { groupBy } from "lodash"
 import * as React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-import { unica } from "Assets/Fonts"
 
 export const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};

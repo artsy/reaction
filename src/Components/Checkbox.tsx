@@ -1,8 +1,8 @@
+import { Checkmark } from "Assets/Checkmark"
+import { garamond } from "Assets/Fonts"
 import React, { Component, HTMLProps } from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import { Checkmark } from "Assets/Checkmark"
-import { garamond } from "Assets/Fonts"
 
 export interface CheckboxState {
   checked: boolean

@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
-import { Sans } from "@artsy/palette"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 
 export interface TabLike extends JSX.Element {
   props: TabProps

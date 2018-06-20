@@ -1,8 +1,8 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
 import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 @track()

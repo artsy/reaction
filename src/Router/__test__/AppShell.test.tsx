@@ -1,6 +1,6 @@
+import { mount } from "enzyme"
 import React from "react"
 import { AppShell } from "../AppShell"
-import { mount } from "enzyme"
 
 describe("AppShell", () => {
   const getWrapper = (props = {}) => {
