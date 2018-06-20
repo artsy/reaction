@@ -128,6 +128,11 @@ const Label = styled.label.attrs<CheckboxProps>({})`
         background-color: ${colors.grayRegular};
         border-color: ${colors.grayRegular};
       }
+
+      &:checked::after {
+        background-color: ${colors.black};
+        border-color: ${colors.black};
+      }
     }
   }
 `
