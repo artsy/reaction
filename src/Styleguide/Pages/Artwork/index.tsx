@@ -17,6 +17,7 @@ import { ExhibitionHistory } from "./ExhibitionHistory"
 import { ImageCarousel } from "./ImageCarousel"
 import { Sidebar } from "./Sidebar"
 import { RegularArtwork2Editions } from "Styleguide/Pages/Fixtures/Artworks"
+import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
 
 injectGlobalCSS()
 
@@ -97,9 +98,7 @@ export class Artwork extends Component {
                     <GridBlock>
                       <Title>Other works by Francesca DiMattio</Title>
                       <ViewAllButton>View all</ViewAllButton>
-                      <GridContainer>
-                        <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                      </GridContainer>
+                      <ArtworkGrid artistID="pablo-picasso" />
                     </GridBlock>
                   </OtherWorksByArtist>
                 </Col>
@@ -110,9 +109,7 @@ export class Artwork extends Component {
                     <GridBlock>
                       <Title>Other works from Salon 94</Title>
                       <ViewAllButton>View all</ViewAllButton>
-                      <GridContainer>
-                        <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                      </GridContainer>
+                      <ArtworkGrid artistID="pablo-picasso" />
                     </GridBlock>
                   </OtherWorksByGallery>
                 </Col>
@@ -125,24 +122,16 @@ export class Artwork extends Component {
                       <ViewAllButton>View all</ViewAllButton>
                       <Tabs>
                         <Tab name="Gene">
-                          <GridContainer>
-                            <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                          </GridContainer>
+                          <ArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Another Gene">
-                          <GridContainer>
-                            <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                          </GridContainer>
+                          <ArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Third Gene">
-                          <GridContainer>
-                            <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                          </GridContainer>
+                          <ArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Most Similar">
-                          <GridContainer>
-                            <ArtworkGrid>TODO: Artwork Grid Items</ArtworkGrid>
-                          </GridContainer>
+                          <ArtworkGrid artistID="pablo-picasso" />
                         </Tab>
                       </Tabs>
                     </GridBlock>
@@ -231,10 +220,8 @@ const Name = styled.div``
 const Metadata = styled.div``
 const OtherWorksByArtist = styled.div``
 const GridBlock = styled.div``
-const GridContainer = styled.div``
 const Title = styled.div``
 const ViewAllButton = styled.div``
-const ArtworkGrid = styled.div``
 const OtherWorksByGallery = styled.div``
 const RelatedWorks = styled.div``
 const RelatedArtists = styled.div``

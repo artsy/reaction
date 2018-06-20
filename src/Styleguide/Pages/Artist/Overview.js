@@ -2,7 +2,7 @@ import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, width } from "styled-system"
-import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
+import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { Pagination } from "Styleguide/Components/Pagination"
@@ -119,7 +119,7 @@ export const Overview = () => {
                     </Sidebar>
                   )}
 
-                  <ArtworkGrid
+                  <ArtworkGridArea
                     width={"100%"}
                     flexDirection="column"
                     alignItems="flex-end"
@@ -128,16 +128,13 @@ export const Overview = () => {
                       <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
 
-                    <ArtworkGridItems
-                      artistID="pablo-picasso"
-                      columnCount={xs ? 2 : 3}
-                    />
+                    <ArtworkGrid artistID="pablo-picasso" />
 
                     <Spacer mb={3} />
                     <Pagination
                       around={[{ page: 1, cursor: "blah", isCurrent: true }]}
                     />
-                  </ArtworkGrid>
+                  </ArtworkGridArea>
                 </ArtworkBrowser>
               )
             }}
@@ -154,12 +151,8 @@ const GeneLink = styled.a`
   ${space};
 `
 const ArtworkBrowser = styled(Flex)``
+const ArtworkGridArea = styled(Flex)``
 const Sidebar = styled.div`
   ${space};
   ${width};
-`
-const ArtworkGrid = styled(Flex)``
-
-const ArtworkGridItems = styled(ArtworkGridExample)`
-  width: 100%;
 `
