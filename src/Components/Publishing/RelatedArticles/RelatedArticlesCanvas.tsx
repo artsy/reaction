@@ -66,14 +66,15 @@ const RelatedArticlesContainer = styled.div`
   max-width: 1250px;
   margin: 30px auto 30px auto;
   ${pMedia.xl`
-    margin: 30px 0 30px 0;
+    margin: 40px 0 80px 0;
   `};
 `
 const Title = styled.div`
   ${unica("s32")} margin-bottom: 30px;
   ${pMedia.xl`
     margin: 0 20px 30px 40px;
-  `} ${pMedia.sm`
+  `};
+  ${pMedia.sm`
     margin-left: 20px;
   `};
 `

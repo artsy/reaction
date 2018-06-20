@@ -3,9 +3,10 @@ import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { Byline } from "../Byline/Byline"
+import { Byline, BylineContainer } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
-import { unica } from "Assets/Fonts"
+import { garamond, unica } from "Assets/Fonts"
+import { Serif, Sans } from "@artsy/palette"
 
 export interface RelatedArticleFigureData {
   thumbnail_title: string
@@ -51,7 +52,9 @@ export class RelatedArticleFigure extends React.Component<
           <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
         </ImageTitle>
 
-        <Byline article={bylineArticle} layout="condensed" />
+        <Sans size="2">
+          <Byline article={bylineArticle} layout="condensed" />
+        </Sans>
       </ArticleFigure>
     )
   }
@@ -62,7 +65,7 @@ const ImageTitle = styled.div`
   flex-direction: column;
   color: black;
   text-decoration: none;
-  min-height: 270px;
+  /* min-height: 270px; */
   ${pMedia.sm`
     min-height: 235px;
   `};
@@ -80,9 +83,7 @@ const ArticleFigure = styled.a`
 `
 
 const ArticleTitle = styled.div`
-  ${unica("s16")} ${pMedia.sm`
-    ${unica("s14")}
-  `};
+  ${garamond("s16")};
 `
 
 const BlockImage = styled.img`

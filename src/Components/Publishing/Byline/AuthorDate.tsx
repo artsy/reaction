@@ -4,6 +4,7 @@ import { pMedia } from "../../Helpers"
 import { getAuthorByline, getDate } from "../Constants"
 import { unica } from "Assets/Fonts"
 import { ArticleLayout, BylineLayout, DateFormat } from "../Typings"
+import { Sans } from "@artsy/palette"
 
 interface AuthorProps {
   authors?: any
@@ -22,6 +23,7 @@ export const Author: React.SFC<AuthorProps> = props => {
   const { color, layout } = props
   return (
     <StyledAuthor
+      size={layout === "condensed" ? "2" : "3t"}
       className="author"
       condensed={layout === "condensed"}
       color={color}
@@ -55,17 +57,16 @@ export interface TextProps {
 const div: StyledFunction<TextProps & React.HTMLProps<HTMLInputElement>> =
   styled.div
 
-const Text = div`
-  ${props =>
-    props.condensed ? unica("s14", "medium") : unica("s16", "medium")}
+const Text = Sans.extend`
   margin: 10px 30px 0 0;
+
   &.date {
     white-space: nowrap;
   }
+
   ${props => pMedia.sm`
-    ${props.condensed ? unica("s12", "medium") : unica("s14", "medium")}
     margin: 10px 20px 0 0;
-  `}
+  `};
 `
 
 const bullet = color => {
