@@ -9,6 +9,7 @@ import {
   ForSaleArtworkWithMultipleConsignableArtists,
   ArtworkNotForSaleWithOneConsignableArtist,
   ArtworkNotForSaleWithMultipleConsignableArtist,
+  ArtworkFromLiveAuction,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/ExtraLinks"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
@@ -31,6 +32,9 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
       </Section>
       <Section title="Not for sale artwork with multiple consignable artists">
         <ExtraLinks artwork={ArtworkNotForSaleWithMultipleConsignableArtist} />
+      </Section>
+      <Section title="Artwork from live auction">
+        <ExtraLinks artwork={ArtworkFromLiveAuction} />
       </Section>
     </React.Fragment>
   )

@@ -38,7 +38,7 @@ storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {
       <Section title="Live auction artwork">
         <Sidebar artwork={LiveAuctionArtwork} />
       </Section>
-      <Section title="Live auction artwork">
+      <Section title="Closed auction artwork">
         <Sidebar artwork={ClosedAuctionArtwork} />
       </Section>
     </React.Fragment>

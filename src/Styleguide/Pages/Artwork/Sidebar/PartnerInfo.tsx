@@ -5,7 +5,7 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Location } from "../../../../Assets/Icons/Location"
 
 export interface PartnerInfoProps {
-  artwork?: {
+  artwork: {
     readonly collecting_institution?: string
     partner: {
       readonly __id: string
