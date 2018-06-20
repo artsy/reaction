@@ -29,6 +29,7 @@ export const Footer = props => {
             <SmallTextLink onClick={onFacebookLogin}>Facebook</SmallTextLink>
             {" or "}
             <SmallTextLink onClick={onTwitterLogin}>Twitter</SmallTextLink>
+            {". "}
           </SmallText>
 
           <SmallText>
@@ -63,7 +64,7 @@ export const Footer = props => {
             Sign up using Facebook.
           </SmallTextLink>
           <SmallText>
-            {". Already have an account? "}
+            {" Already have an account? "}
             <SmallTextLink onClick={() => handleTypeChange("login")}>
               Log in.
             </SmallTextLink>

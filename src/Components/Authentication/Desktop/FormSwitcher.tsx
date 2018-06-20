@@ -78,6 +78,14 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.type !== nextProps.type && nextProps.type) {
+      this.setState({
+        type: nextProps.type,
+      })
+    }
+  }
+
   presentModal = (newType: ModalType) => {
     this.setState({ type: newType })
   }

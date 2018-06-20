@@ -21,10 +21,10 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     isShown: this.props.show || false,
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.show !== newProps.show) {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.show !== nextProps.show) {
       this.setState({
-        isShown: newProps.show,
+        isShown: nextProps.show,
         isAnimating: true,
       })
     }
