@@ -1,8 +1,8 @@
+import colors from "Assets/Colors"
+import { avantgarde } from "Assets/Fonts"
 import React from "react"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-import colors from "Assets/Colors"
-import { avantgarde } from "Assets/Fonts"
 import { block } from "../Helpers"
 import { IconProps } from "../Icon"
 

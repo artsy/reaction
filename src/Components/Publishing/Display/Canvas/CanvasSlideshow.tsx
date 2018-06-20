@@ -1,13 +1,13 @@
+import Colors from "Assets/Colors"
+import { garamond } from "Assets/Fonts"
 import { compact, map } from "lodash"
 import React from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "Assets/Colors"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
-import { garamond } from "Assets/Fonts"
 import { maxAssetSize } from "./CanvasContainer"
 
 interface CanvasSlideshowProps {

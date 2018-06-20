@@ -1,12 +1,11 @@
+import Colors from "Assets/Colors"
+import { checkEmail } from "Components/Authentication/helpers"
 import React, { Fragment } from "react"
 import styled from "styled-components"
-import { Step, Wizard } from "../../Wizard"
-import { ProgressIndicator } from "../../ProgressIndicator"
-import Input from "../../Input"
 import Icon from "../../Icon"
-import { FormComponentType } from "../Types"
-import Colors from "Assets/Colors"
-import { MobileLoginValidator } from "../Validators"
+import Input from "../../Input"
+import { ProgressIndicator } from "../../ProgressIndicator"
+import { Step, Wizard } from "../../Wizard"
 import {
   BackButton,
   Error,
@@ -18,7 +17,8 @@ import {
   MobileSubmitButton,
   RememberMe,
 } from "../commonElements"
-import { checkEmail } from "Components/Authentication/helpers"
+import { FormComponentType } from "../Types"
+import { MobileLoginValidator } from "../Validators"
 
 export const MobileLoginForm: FormComponentType = props => {
   const steps = [

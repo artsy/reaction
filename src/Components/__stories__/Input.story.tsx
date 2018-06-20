@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { unica } from "Assets/Fonts"
 
 import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"

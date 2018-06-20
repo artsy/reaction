@@ -1,6 +1,6 @@
+import { ContextConsumer, ContextProps } from "Components/Artsy"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
-import { ContextProps, ContextConsumer } from "Components/Artsy"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "./state"

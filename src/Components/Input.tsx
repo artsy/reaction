@@ -1,12 +1,12 @@
+import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
+import Colors from "Assets/Colors"
+import { garamond, unica } from "Assets/Fonts"
+import { ClosedEye } from "Assets/Icons/ClosedEye"
+import { OpenEye } from "Assets/Icons/OpenEye"
 import React from "react"
 import styled from "styled-components"
-import Colors from "Assets/Colors"
-import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
-import { garamond, unica } from "Assets/Fonts"
 import { block } from "./Helpers"
 import { borderedInput } from "./Mixins"
-import { OpenEye } from "Assets/Icons/OpenEye"
-import { ClosedEye } from "Assets/Icons/ClosedEye"
 
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean

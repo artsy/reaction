@@ -2,9 +2,9 @@
  * @jest-environment node
  */
 
+import { render } from "enzyme"
 import React from "react"
 import { buildServerApp } from "../buildServerApp"
-import { render } from "enzyme"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>

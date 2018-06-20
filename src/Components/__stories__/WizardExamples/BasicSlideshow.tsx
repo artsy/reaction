@@ -1,10 +1,10 @@
 import React from "react"
-import { Wizard } from "../../Wizard"
-import { Step } from "../../Wizard/Step"
-import Button from "../../Buttons/Default"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
+import Button from "../../Buttons/Default"
 import Title from "../../Title"
+import { Wizard } from "../../Wizard"
+import { Step } from "../../Wizard/Step"
 
 export const BasicSlideshow = () => {
   return (

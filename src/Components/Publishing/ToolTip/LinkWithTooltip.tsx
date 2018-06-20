@@ -1,13 +1,13 @@
-import url from "url"
-import { defer } from "lodash"
-import { findDOMNode } from "react-dom"
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { track } from "../../../Utils/track"
-import { ToolTip } from "./ToolTip"
 import Colors from "Assets/Colors"
+import { defer } from "lodash"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { findDOMNode } from "react-dom"
+import styled from "styled-components"
+import url from "url"
+import { track } from "../../../Utils/track"
 import FadeTransition from "../../Animation/FadeTransition"
+import { ToolTip } from "./ToolTip"
 
 interface Props {
   url: string

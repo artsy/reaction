@@ -1,3 +1,4 @@
+import { garamond } from "Assets/Fonts"
 import * as React from "react"
 import {
   commitMutation,
@@ -8,7 +9,6 @@ import {
 } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
-import { garamond } from "Assets/Fonts"
 import Events from "../../../../Utils/Events"
 import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"

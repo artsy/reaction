@@ -1,8 +1,8 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { Flex } from "Styleguide/Elements/Flex"
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Avatar, Button } from "Styleguide/Elements"
-import { Serif, Sans } from "@artsy/palette"
+import { BorderBox } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 export interface ArtistCardProps {

@@ -1,9 +1,9 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { getEditorialHref } from "../Constants"
 import { pMedia } from "../../Helpers"
+import { getEditorialHref } from "../Constants"
 import { ArticleData } from "../Typings"
-import { unica } from "Assets/Fonts"
 
 interface Props {
   article?: ArticleData

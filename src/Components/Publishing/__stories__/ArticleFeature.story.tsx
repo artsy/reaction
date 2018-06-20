@@ -1,6 +1,4 @@
 import { storiesOf } from "@storybook/react"
-import { clone, extend } from "lodash"
-import React from "react"
 import { ContextProvider } from "Components/Artsy"
 import { Article } from "Components/Publishing/Article"
 import {
@@ -17,6 +15,8 @@ import {
   RelatedPanel,
 } from "Components/Publishing/Fixtures/Components"
 import { ArticleData } from "Components/Publishing/Typings"
+import { clone, extend } from "lodash"
+import React from "react"
 
 const story = storiesOf("Publishing/Articles/Feature", module)
 

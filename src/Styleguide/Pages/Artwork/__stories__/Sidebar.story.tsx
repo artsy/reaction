@@ -1,17 +1,17 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { Sidebar } from "Styleguide/Pages/Artwork/Sidebar"
+import { Section } from "Styleguide/Utils/Section"
 
 import {
-  CollecingInstitutionArtwork,
-  MultipleArtistsArtwork,
-  RegularNonEditionedArtwork,
-  RegularArtworkWithOneEdition,
-  RegularArtwork2Editions,
-  OpenAuctionArtwork,
-  LiveAuctionArtwork,
   ClosedAuctionArtwork,
+  CollecingInstitutionArtwork,
+  LiveAuctionArtwork,
+  MultipleArtistsArtwork,
+  OpenAuctionArtwork,
+  RegularArtwork2Editions,
+  RegularArtworkWithOneEdition,
+  RegularNonEditionedArtwork,
 } from "Styleguide/Pages/Fixtures/Artworks"
 
 storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {

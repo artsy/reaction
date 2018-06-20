@@ -1,9 +1,9 @@
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
 import { color, space } from "styled-system"
-import { Button } from "../"
 import { Section } from "Styleguide/Utils/Section"
-import { storiesOf } from "storybook/storiesOf"
+import { Button } from "../"
 
 storiesOf("Styleguide/Elements", module).add("Button", () => {
   return (

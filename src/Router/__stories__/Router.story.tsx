@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React, { Component } from "react"
-import { PreloadLink, buildClientApp } from "../../Router"
 import { graphql } from "react-relay"
+import { buildClientApp, PreloadLink } from "../../Router"
 
 class RouterExampleApp extends Component {
   state = {

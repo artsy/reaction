@@ -1,6 +1,6 @@
-import React from "react"
 import { storiesOf } from "@storybook/react"
-import { Artwork, Artist } from "../../"
+import React from "react"
+import { Artist, Artwork } from "../../"
 
 storiesOf("Styleguide/Pages", module)
   .add("Static Artwork Page", () => {

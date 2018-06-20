@@ -1,5 +1,5 @@
-import { clone } from "lodash"
 import { storiesOf } from "@storybook/react"
+import { clone } from "lodash"
 import React from "react"
 import { Article } from "../Article"
 import { ArticleData } from "../Typings"

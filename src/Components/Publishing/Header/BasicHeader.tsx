@@ -1,3 +1,4 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
 import styled, { css, StyledFunction } from "styled-components"
@@ -7,7 +8,6 @@ import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
 import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
 import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
 
 import {
   CoverImage,

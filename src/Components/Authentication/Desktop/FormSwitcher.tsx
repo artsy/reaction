@@ -1,7 +1,6 @@
 import React from "react"
-import { LoginForm } from "./LoginForm"
-import { SignUpForm } from "./SignUpForm"
-import { ResetPasswordForm } from "./ResetPasswordForm"
+import Events from "Utils/Events"
+import { track } from "Utils/track"
 import {
   FormComponentType,
   InputValues,
@@ -9,8 +8,9 @@ import {
   ModalType,
   SubmitHandler,
 } from "../Types"
-import { track } from "Utils/track"
-import Events from "Utils/Events"
+import { LoginForm } from "./LoginForm"
+import { ResetPasswordForm } from "./ResetPasswordForm"
+import { SignUpForm } from "./SignUpForm"
 
 interface Props {
   handleSubmit: SubmitHandler

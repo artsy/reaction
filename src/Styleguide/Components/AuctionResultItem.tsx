@@ -1,12 +1,12 @@
-import React from "react"
-import { Responsive } from "../Utils/Responsive"
-import { Flex } from "../Elements/Flex"
-import { Image } from "../Elements/Image"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
 import TextLink from "../../Components/TextLink"
 import { Box } from "../Elements/Box"
+import { Flex } from "../Elements/Flex"
+import { Image } from "../Elements/Image"
+import { Responsive } from "../Utils/Responsive"
 
 const ScaledArtworkImage = props => (
   <Flex height={props.height} justifyContent="center">

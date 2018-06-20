@@ -1,5 +1,5 @@
-import { compact, last, uniq } from "lodash"
 import cheerio from "cheerio"
+import { compact, last, uniq } from "lodash"
 import moment from "moment"
 import momentTz from "moment-timezone"
 import url from "url"

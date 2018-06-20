@@ -1,12 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { SizeInfo } from "Styleguide/Pages/Artwork/Sidebar/SizeInfo"
 import {
+  ArtworkWithEditionOfOnly,
   ArtworkWithSizeAndEditionOf,
   ArtworkWithSizeOnly,
-  ArtworkWithEditionOfOnly,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/SizeInfo"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("SizeInfo", () => {
   return (

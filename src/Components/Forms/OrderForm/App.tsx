@@ -1,13 +1,13 @@
-import Nav from "../../Nav"
 import React, { Component } from "react"
-import Title from "../../Title"
 import styled from "styled-components"
-import { PaymentForm } from "./Forms/PaymentForm"
+import Nav from "../../Nav"
 import { StepMarker } from "../../StepMarker"
+import Title from "../../Title"
+import { Step, Wizard } from "../../Wizard/index"
+import { validationSchema } from "./formik"
+import { PaymentForm } from "./Forms/PaymentForm"
 import { ReviewForm } from "./Forms/ReviewForm"
 import { ShippingForm } from "./Forms/ShippingForm"
-import { validationSchema } from "./formik"
-import { Wizard, Step } from "../../Wizard/index"
 
 export const forms = [
   <Step validationSchema={validationSchema.shipping} label="Shipping">

@@ -1,7 +1,7 @@
+import { garamond } from "Assets/Fonts"
+import Icon from "Components/Icon"
 import React, { SFC } from "react"
 import styled from "styled-components"
-import Icon from "Components/Icon"
-import { garamond } from "Assets/Fonts"
 
 export const DesktopHeader: SFC<{ subtitle?: string }> = props => {
   const subtitle = props.subtitle || "The art world online"

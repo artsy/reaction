@@ -10,7 +10,6 @@
     "member-access": [false],
     "member-ordering": false,
     "no-unused-expression": false,
-    "no-unused-imports": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "ordered-imports": true,

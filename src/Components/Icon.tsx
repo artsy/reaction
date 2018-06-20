@@ -1,17 +1,17 @@
 // @ts-ignore
 import React, { StatelessComponent } from "react"
 import styled from "styled-components"
+import {
+  bottom,
+  color,
+  left,
+  PositionProps,
+  right,
+  space,
+  top,
+} from "styled-system"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
-import {
-  color,
-  top,
-  right,
-  bottom,
-  left,
-  space,
-  PositionProps,
-} from "styled-system"
 
 export type FontName = string
 

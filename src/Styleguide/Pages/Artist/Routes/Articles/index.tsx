@@ -1,18 +1,18 @@
+import { ContextConsumer, ContextProps } from "Components/Artsy"
 import React from "react"
 import {
+  createRefetchContainer,
   graphql,
   QueryRenderer,
-  createRefetchContainer,
   RelayRefetchProp,
 } from "react-relay"
-import { ContextProps, ContextConsumer } from "Components/Artsy"
 import styled from "styled-components"
-import { Col, Row } from "Styleguide/Elements/Grid"
+import { Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { ArticleItem } from "./ArticleItem"
-import { Pagination } from "Styleguide/Components/Pagination"
 
 import { Articles_artist } from "__generated__/Articles_artist.graphql"
 

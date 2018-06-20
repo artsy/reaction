@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 
-import { FormWizard, BasicSlideshow } from "./WizardExamples"
+import { BasicSlideshow, FormWizard } from "./WizardExamples"
 
 storiesOf("Components/Wizard", module)
   .add("Basic", BasicSlideshow)

@@ -1,12 +1,12 @@
-import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Sans, Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
+import { Col, Row } from "Styleguide/Elements/Grid"
+import { ResponsiveImage } from "Styleguide/Elements/Image"
+import { LargeSelect } from "Styleguide/Elements/Select"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { LargeSelect } from "Styleguide/Elements/Select"
 import { selectProps } from "Styleguide/Pages/Fixtures/Select"
-import { ResponsiveImage } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 const TableColumns = () => {

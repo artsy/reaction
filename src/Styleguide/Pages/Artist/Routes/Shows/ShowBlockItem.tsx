@@ -1,7 +1,7 @@
+import { Serif } from "@artsy/palette"
 import React from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { ResponsiveImage } from "Styleguide/Elements/Image"
-import { Serif } from "@artsy/palette"
 
 export const ShowBlockItem = props => {
   return (

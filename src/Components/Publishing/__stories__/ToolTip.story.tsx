@@ -1,10 +1,10 @@
 import { storiesOf } from "@storybook/react"
-import React from "react"
-import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
-import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
-import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { ContextProvider } from "Components/Artsy"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
+import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
+import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
+import React from "react"
 
 const tracking = { trackEvent: x => x }
 

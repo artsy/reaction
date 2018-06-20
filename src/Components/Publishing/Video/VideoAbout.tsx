@@ -1,10 +1,10 @@
+import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
 // @ts-ignore
 import styled, { StyledComponentClass, StyledFunction } from "styled-components"
 import { media } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
-import { unica } from "Assets/Fonts"
 import { Text } from "../Sections/Text"
 
 export interface VideoAboutProps {

@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { Header } from "../Header/Header"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { Sections } from "../Sections/Sections"
-import { ArticleData } from "../Typings"
 import { Nav } from "../Nav/Nav"
 import {
   ArticleCardsBlock,
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
+import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
+import { Sections } from "../Sections/Sections"
+import { ArticleData } from "../Typings"
 
 export interface ArticleProps {
   article: ArticleData

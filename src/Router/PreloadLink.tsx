@@ -1,9 +1,9 @@
+import * as Found from "found"
+import { isEmpty, isFunction, isUndefined, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
-import { ContextConsumer } from "../Components/Artsy"
-import * as Found from "found"
 import { fetchQuery } from "react-relay"
-import { isEmpty, isFunction, isUndefined, pick } from "lodash/fp"
+import { ContextConsumer } from "../Components/Artsy"
 import { PreloadLinkProps, PreloadLinkState } from "./types"
 export { Link } from "found"
 

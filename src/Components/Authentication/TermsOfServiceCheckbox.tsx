@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
+import Colors from "Assets/Colors"
 import Checkbox from "Components/Checkbox"
 import Text from "Components/Text"
-import Colors from "Assets/Colors"
+import React from "react"
+import styled from "styled-components"
 
 export const TermsOfServiceCheckbox = ({
   error,

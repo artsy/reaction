@@ -1,9 +1,9 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
+import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
-import { Sans, Serif } from "@artsy/palette"
-import { FlexDirectionProps } from "styled-system"
 
 export class Footer extends React.Component {
   render() {

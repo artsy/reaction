@@ -1,13 +1,13 @@
 import React from "react"
-import { MobileLoginForm } from "./LoginForm"
-import { MobileSignUpForm } from "./SignUpForm"
-import { MobileResetPasswordForm } from "./ResetPasswordForm"
 import {
   FormComponentType,
   InputValues,
   ModalType,
   SubmitHandler,
 } from "../Types"
+import { MobileLoginForm } from "./LoginForm"
+import { MobileResetPasswordForm } from "./ResetPasswordForm"
+import { MobileSignUpForm } from "./SignUpForm"
 
 interface Props {
   type: ModalType

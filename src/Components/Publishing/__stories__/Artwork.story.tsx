@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Artwork } from "../Sections/Artwork"
 import { Artworks } from "../Fixtures/Components"
+import { Artwork } from "../Sections/Artwork"
 
 storiesOf("Publishing/Artwork", module)
   .add("Single artist", () => {

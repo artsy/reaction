@@ -3,13 +3,13 @@ import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Events from "../../../Utils/Events"
 import track from "../../../Utils/track"
+import { ArticleProps } from "../Article"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
+import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
-import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
-import { ArticleProps } from "../Article"
 interface ArticleState {
   fullscreenImages: any
   article: ArticleData

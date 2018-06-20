@@ -4,12 +4,12 @@ import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
+import { getCurrentUnixTimestamp } from "../../Constants"
 import { SIZE_ME_REFRESH_RATE } from "../../Constants"
+import { replaceWithCacheBuster } from "../ExternalTrackers"
 import { CanvasSlideshow } from "./CanvasSlideshow"
 import { CanvasText } from "./CanvasText"
 import { CanvasVideo } from "./CanvasVideo"
-import { replaceWithCacheBuster } from "../ExternalTrackers"
-import { getCurrentUnixTimestamp } from "../../Constants"
 
 interface CanvasContainerProps {
   campaign: any

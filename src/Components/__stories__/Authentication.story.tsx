@@ -1,18 +1,18 @@
 import { storiesOf } from "@storybook/react"
+import Colors from "Assets/Colors"
 import React from "react"
 import styled from "styled-components"
-import Colors from "Assets/Colors"
 
-import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
-import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
-import { ModalType } from "../Authentication/Types"
-import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
 import {
-  TermsOfServiceCheckbox,
   Footer,
+  TermsOfServiceCheckbox,
 } from "../../Components/Authentication/commonElements"
 import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
 import { MobileResetPasswordForm } from "../../Components/Authentication/Mobile/ResetPasswordForm"
+import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
+import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
+import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
+import { ModalType } from "../Authentication/Types"
 
 const submit = (values, actions) => {
   setTimeout(() => {

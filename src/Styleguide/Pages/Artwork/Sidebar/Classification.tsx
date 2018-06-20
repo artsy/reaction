@@ -1,5 +1,5 @@
-import React from "react"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
 
 export interface ClassificationProps {

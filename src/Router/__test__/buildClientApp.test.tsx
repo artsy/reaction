@@ -1,6 +1,6 @@
+import { mount } from "enzyme"
 import React from "react"
 import { buildClientApp } from "../buildClientApp"
-import { mount } from "enzyme"
 
 describe("buildClientApp", () => {
   const getWrapper = async (props = {}) => {

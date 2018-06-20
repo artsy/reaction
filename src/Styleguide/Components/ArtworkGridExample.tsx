@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "react-relay"
 
-import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
 
 export function ArtworkGridExample(props: {
   artistID: string

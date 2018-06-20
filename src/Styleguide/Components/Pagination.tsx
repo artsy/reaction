@@ -1,10 +1,10 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
-import { Sans } from "@artsy/palette"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 interface PageCursor {
   page: number

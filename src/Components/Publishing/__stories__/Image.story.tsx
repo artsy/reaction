@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { Image } from "../Sections/Image"
 import { Images } from "../Fixtures/Components"
+import { Image } from "../Sections/Image"
 
 storiesOf("Publishing/Image", module)
   .add("Image", () => {

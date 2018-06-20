@@ -1,7 +1,7 @@
 // TODO: This and <Radio /> can be shared
 
-import React from "react"
 import Icon from "Components/Icon"
+import React from "react"
 import styled from "styled-components"
 import { Flex } from "./Flex"
 

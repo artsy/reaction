@@ -1,8 +1,8 @@
 import React from "react"
-import { Section } from "Styleguide/Utils/Section"
-import { Select, LargeSelect, SmallSelect } from "../Select"
 import { storiesOf } from "storybook/storiesOf"
 import { selectProps } from "Styleguide/Pages/Fixtures/Select"
+import { Section } from "Styleguide/Utils/Section"
+import { LargeSelect, Select, SmallSelect } from "../Select"
 
 storiesOf("Styleguide/Elements", module).add("Select", () => {
   return (

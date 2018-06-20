@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
+import { Article } from "Components/Publishing/Article"
 import React from "react"
 import styled from "styled-components"
-import { Article } from "Components/Publishing/Article"
 
 import {
   ImageHeavyStandardArticle,
@@ -9,9 +9,9 @@ import {
   StandardArticle,
 } from "../Fixtures/Articles"
 
+import { ContextProvider } from "../../Artsy"
 import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
-import { ContextProvider } from "../../Artsy"
 
 const story = storiesOf("Publishing/Articles/Standard", module)
   .add("Standard", () => {
