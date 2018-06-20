@@ -58,6 +58,7 @@ export interface BoxProps
   extends DisplayProps,
     SpaceProps,
     WidthProps,
+    MaxWidthProps,
     HeightProps,
     ColorProps,
     TextAlignProps,

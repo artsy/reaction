@@ -8,6 +8,8 @@ import {
   FlexBasisProps,
   flexDirection,
   FlexDirectionProps,
+  flexWrap,
+  FlexWrapProps,
   justifyContent,
   JustifyContentProps,
   maxHeight,
@@ -36,6 +38,7 @@ export interface FlexProps
     AlignContentProps,
     FlexBasisProps,
     FlexDirectionProps,
+    FlexWrapProps,
     JustifyContentProps,
     SpaceProps,
     HeightProps,
@@ -51,6 +54,7 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${alignItems};
   ${flexBasis};
   ${flexDirection};
+  ${flexWrap};
   ${justifyContent};
   ${space};
   ${height};

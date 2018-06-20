@@ -66,6 +66,7 @@ export class FollowGeneButton extends React.Component<Props> {
         onOpenAuthModal("register", {
           context_module: "intext tooltip",
           intent: "follow gene",
+          copy: "Sign up to follow categories",
         })
     }
   }
