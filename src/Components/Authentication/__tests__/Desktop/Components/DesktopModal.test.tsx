@@ -4,7 +4,6 @@ import {
   CloseButton,
   DesktopModal,
 } from "../../../Desktop/Components/DesktopModal"
-import { DesktopHeader } from "../../../Desktop/Components/DesktopHeader"
 
 jest.mock("Utils/track.ts", () => ({
   track: () => jest.fn(c => c),

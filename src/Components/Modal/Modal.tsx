@@ -101,13 +101,11 @@ const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   top: 0;
   left: 0;
   z-index: 9998;
-  // background: rgba(200, 200, 200, 0.5);
-  // -webkit-backdrop-filter: blur(20px);
-  // backdrop-filter: blur(20px);
+  background: rgba(200, 200, 200, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   opacity: 0;
   pointer-events: ${p => (p.show ? "inherit" : "none")};
-  box-shadow: inset 0 0 0 100% rgba(255, 255, 255, 0.3);
-  filter: blur(10px);
 `
 
 export default Modal
