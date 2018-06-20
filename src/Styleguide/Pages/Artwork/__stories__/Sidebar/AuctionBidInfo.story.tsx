@@ -1,14 +1,14 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { AuctionBidInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionBidInfo"
 import {
   ClosedAuctionArtwork,
   OpenAuctionArtwork,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/AuctionBidInfo"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add(
-  "AuctionPartnerInfo",
+  "AuctionPartnerInfo2",
   () => {
     return (
       <React.Fragment>
