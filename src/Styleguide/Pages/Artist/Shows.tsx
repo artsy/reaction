@@ -9,6 +9,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Pagination } from "Styleguide/Components/Pagination"
 import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
+import { ShowItem } from "./ShowItem"
 
 export const Shows = () => {
   const { cursor, callbacks } = paginationProps
@@ -103,72 +104,9 @@ export const Shows = () => {
           <Row>
             <Col>
               <ShowList>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
+                <ShowItem />
+                <ShowItem />
+                <ShowItem />
               </ShowList>
             </Col>
           </Row>
@@ -201,72 +139,9 @@ export const Shows = () => {
           <Row>
             <Col>
               <ShowList>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
-                <ShowListItem>
-                  <Row>
-                    <Col sm={3}>
-                      <Serif size="2">May 22-29, 2018</Serif>
-                    </Col>
-                    <Col sm={6}>
-                      <Serif size="4">
-                        Brookhart Jonquil: Endless Light in an Endless Night
-                      </Serif>
-                      <Serif size="2" color="black60">
-                        Toth Gallery
-                      </Serif>
-                    </Col>
-                    <Col sm={3}>
-                      <Serif size="2">London</Serif>
-                    </Col>
-                  </Row>
-
-                  <Box pt={3} pb={1}>
-                    <Separator />
-                  </Box>
-                </ShowListItem>
+                <ShowItem />
+                <ShowItem />
+                <ShowItem />
               </ShowList>
             </Col>
           </Row>
@@ -294,4 +169,3 @@ const Show = props => {
 
 const ShowList = styled.div``
 const Category = Sans
-const ShowListItem = Box
