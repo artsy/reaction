@@ -5,7 +5,14 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-export const ShowListItem = props => {
+interface Props {
+  exhibitionInfo: string
+  name: string
+  partner: string
+  city: string
+}
+
+export const ShowListItem = (props: Props) => {
   return (
     <Responsive>
       {({ xs }) => {
@@ -16,27 +23,27 @@ export const ShowListItem = props => {
   )
 }
 
-const LargeShowListItem = props => {
+const LargeShowListItem = (props: Props) => {
   return (
     <React.Fragment>
       <Row>
         <Col sm={3}>
-          <Serif size="2">May 22-29, 2018</Serif>
+          <Serif size="2">{props.exhibitionInfo}</Serif>
         </Col>
         <Col sm={6}>
           <Serif size="4">
             <a href="#" className="noUnderline">
-              Brookhart Jonquil: Endless Light in an Endless Night
+              {props.name}
             </a>
           </Serif>
           <Serif size="2" color="black60">
             <a href="#" className="noUnderline">
-              Toth Gallery
+              {props.partner}
             </a>
           </Serif>
         </Col>
         <Col sm={3}>
-          <Serif size="2">London</Serif>
+          <Serif size="2">{props.city}</Serif>
         </Col>
       </Row>
 
@@ -47,21 +54,21 @@ const LargeShowListItem = props => {
   )
 }
 
-const SmallShowListItem = props => {
+const SmallShowListItem = (props: Props) => {
   return (
     <React.Fragment>
       <Serif size="3">
         <a href="#" className="noUnderline">
-          Brookhart Jonquil: Endless Light in an Endless Night
+          {props.name}
         </a>
       </Serif>
       <Serif size="2" color="black60">
         <a href="#" className="noUnderline">
-          Toth Gallery
+          {props.partner}
         </a>
       </Serif>
       <Serif size="1" color="black60">
-        May 22-29, 2018
+        {props.exhibitionInfo}
       </Serif>
       <Box pt={3} pb={1}>
         <Separator />
