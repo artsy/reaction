@@ -1,4 +1,4 @@
-import { Sans } from "@artsy/palette"
+import { Sans, Serif } from "@artsy/palette"
 import { injectGlobalCSS, Theme, themeProps } from "@artsy/palette"
 import { ContextProvider } from "Components/Artsy"
 import React from "react"
@@ -14,7 +14,7 @@ import { Provider as StateProvider } from "unstated"
 import { ArtistHeader } from "./ArtistHeader"
 import { ArticlesContent } from "./Routes/Articles"
 import { RelayAuctionResults } from "./Routes/AuctionResults"
-import { CV } from "./Routes/CV"
+import { RelayCVContent } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtists } from "./Routes/RelatedArtists"
 import { RelayShowsContent } from "./Routes/Shows"
@@ -45,7 +45,44 @@ export class Artist extends React.Component {
                           <Overview />
                         </Tab>
                         <Tab name="CV">
-                          <CV />
+                          <RelayCVContent
+                            artistID="pablo-picasso"
+                            filters={{
+                              at_a_fair: false,
+                              solo_show: true,
+                              sort: "start_at_desc",
+                              is_reference: true,
+                              visible_to_public: false,
+                            }}
+                            category="Solo Shows"
+                          />
+                          <Spacer my={1} />
+                          <RelayCVContent
+                            artistID="pablo-picasso"
+                            filters={{
+                              at_a_fair: false,
+                              solo_show: false,
+                              sort: "start_at_desc",
+                              is_reference: true,
+                              visible_to_public: false,
+                            }}
+                            category="Group Shows"
+                          />
+                          <Spacer my={1} />
+                          <RelayCVContent
+                            artistID="pablo-picasso"
+                            filters={{ at_a_fair: true, sort: "start_at_desc" }}
+                            category="Fair Booths"
+                          />
+                          <Spacer my={1} />
+                          <Row>
+                            <Col smOffset={2}>
+                              <Serif size="2" color="black60">
+                                Artist CVs are assembled using only exhibition
+                                data available on Artsy.
+                              </Serif>
+                            </Col>
+                          </Row>
                         </Tab>
                         <Tab name="Articles">
                           <ContextProvider>
