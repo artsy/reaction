@@ -1,4 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
+import { groupBy } from "lodash"
 import React from "react"
 import {
   createPaginationContainer,
@@ -57,8 +58,27 @@ export const Container = createPaginationContainer(
         </div>
       )
     }
-
+    renderShow(node) {
+      return (
+        <Show size="3">
+          <Serif size="3" display="inline" italic>
+            <a href="#" className="noUnderline">
+              {node.name}
+            </a>
+          </Serif>,{" "}
+          <a href="#" className="noUnderline">
+            {node.partner.name}
+          </a>, {node.city}
+        </Show>
+      )
+    }
     render() {
+      const groupedByYear = groupBy(
+        this.props.artist.showsConnection.edges,
+        ({ node: show }) => {
+          return show.start_at
+        }
+      )
       return (
         <Responsive>
           {({ xs }) => {
@@ -77,28 +97,23 @@ export const Container = createPaginationContainer(
                             </Box>
                           </Col>
                           <Col sm={10}>
-                            {this.props.artist.showsConnection.edges.map(
-                              ({ node }) => {
+                            {Object.keys(groupedByYear)
+                              .sort()
+                              .reverse()
+                              .map(year => {
                                 return (
                                   <YearGroup mb={1}>
-                                    <Year size="3">{node.start_at}</Year>
+                                    <Year size="3">{year}</Year>
                                     <Spacer mr={xs ? 1 : 4} />
                                     <ShowGroup>
-                                      <Show size="3">
-                                        <Serif size="3" display="inline" italic>
-                                          <a href="#" className="noUnderline">
-                                            {node.name}
-                                          </a>
-                                        </Serif>,{" "}
-                                        <a href="#" className="noUnderline">
-                                          {node.partner.name}
-                                        </a>, {node.city}
-                                      </Show>
+                                      {groupedByYear[year].map(({ node }) => {
+                                        return this.renderShow(node)
+                                      })}
                                     </ShowGroup>
                                   </YearGroup>
                                 )
-                              }
-                            )}
+                              })}
+
                             <Spacer my={1} />
                             {this.renderPagination()}
                           </Col>
