@@ -39,7 +39,7 @@ export const Shows = () => {
                   <Col>
                     <ShowBlocks
                       flexDirection={blockDirection}
-                      wrap={"true" as any}
+                      flexWrap={"true" as any}
                     >
                       <ShowBlockItem blockWidth={blockWidth} />
                       <ShowBlockItem blockWidth={blockWidth} />

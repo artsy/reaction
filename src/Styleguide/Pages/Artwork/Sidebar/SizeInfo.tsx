@@ -18,7 +18,7 @@ export class SizeInfo extends React.Component<SizeInfoProps> {
   render() {
     const { artwork } = this.props
     return (
-      <SizeInfoContainer color="black60" align="left">
+      <SizeInfoContainer color="black60" textAlign="left">
         <Serif size="2">
           {artwork.dimensions &&
             (artwork.dimensions.in || artwork.dimensions.cm) &&

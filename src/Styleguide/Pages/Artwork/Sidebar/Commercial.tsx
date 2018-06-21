@@ -55,7 +55,7 @@ export class Commercial extends React.Component<CommercialProps> {
       return null
     }
     return (
-      <CommercialContainer pb={3} align="left">
+      <CommercialContainer pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
           <PricingInfoContainer pb={2} pt={1}>
             {this.renderSaleMessage()}

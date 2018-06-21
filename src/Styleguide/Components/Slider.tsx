@@ -7,7 +7,8 @@ import { ImageProps } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 import {
-  border,
+  BorderProps,
+  borders,
   height,
   HeightProps,
   themeGet,
@@ -91,7 +92,7 @@ const Button = styled.div`
   position: relative;
 `
 
-interface ImageContainerProps extends WidthProps, HeightProps {}
+interface ImageContainerProps extends WidthProps, HeightProps, BorderProps {}
 const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
   overflow-x: scroll;
   display: inline-block;
@@ -105,7 +106,7 @@ const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
 
   ${width};
   ${height};
-  ${border};
+  ${borders};
 `
 
 const Dots = styled(Flex)``
