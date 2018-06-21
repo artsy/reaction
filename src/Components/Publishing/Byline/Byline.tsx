@@ -59,7 +59,7 @@ Byline.defaultProps = {
   color: "black",
 }
 
-const BylineContainer = styled.div.attrs<{ color: string }>({})`
+export const BylineContainer = styled.div.attrs<{ color: string }>({})`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;

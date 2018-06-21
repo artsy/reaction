@@ -155,6 +155,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
           title={title}
           isMobile={passedIsMobile}
           date={date && date}
+          deck={deck}
         />
       )
       // Fullscreen, Text, Split

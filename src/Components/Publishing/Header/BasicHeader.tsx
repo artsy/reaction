@@ -5,7 +5,7 @@ import { Sans } from "@artsy/palette"
 import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { Byline } from "../Byline/Byline"
+import { Byline, BylineContainer } from "../Byline/Byline"
 import { ShareContainer as ShareContainerStyles } from "../Byline/Share"
 import { unica } from "Assets/Fonts"
 import { VerticalOrSeriesTitle } from "../Sections/VerticalOrSeriesTitle"
@@ -22,7 +22,7 @@ interface Props {
   article: any
   isMobile?: any
   date?: string
-  leadParagraph?: any
+  deck?: any
   layout?: any
   title: any
   vertical?: any
@@ -57,8 +57,9 @@ export class BasicHeader extends React.Component<Props, State> {
       isMobile: passedIsMobile,
       title,
       vertical,
+      deck,
     } = this.props
-    const { hero_section, lead_paragraph, published_at } = article
+    const { hero_section, published_at } = article
     const { url } = hero_section
     const hasVideo = url && isValidVideoUrl(url)
 
@@ -92,22 +93,13 @@ export class BasicHeader extends React.Component<Props, State> {
                   <Col xs={12} sm={12} md={12} lg={12}>
                     <Row>
                       <Col xs sm md lg>
-                        {/* TODO: should this be deck? */}
                         <Deck size="3t" weight="medium">
-                          <div
-                            dangerouslySetInnerHTML={{ __html: lead_paragraph }}
-                          />
+                          {deck}
                         </Deck>
                       </Col>
                     </Row>
                     <Row>
-                      <Col
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className="Byline__Container"
-                      >
+                      <Col xs={12} sm={12} md={12} lg={12}>
                         <Byline article={article} date={date || published_at} />
                       </Col>
                     </Row>
@@ -163,8 +155,7 @@ const Container = styled.div.attrs<{ hasVideo: boolean }>({})`
     `}
   }
 
-  .Byline__Container {
-    display: inherit;
+  ${BylineContainer} {
     justify-content: center;
 
     div {
