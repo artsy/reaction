@@ -16,7 +16,7 @@ export class TitleInfo extends React.Component<TitleInfoProps> {
   render() {
     const { artwork } = this.props
     return (
-      <TitleInfoContainer color="black60" align="left">
+      <TitleInfoContainer color="black60" textAlign="left">
         <Serif size="2">
           <Serif size="2" display="inline-block" italic>
             {artwork.title}

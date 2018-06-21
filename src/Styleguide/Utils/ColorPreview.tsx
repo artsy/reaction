@@ -1,7 +1,7 @@
 import { Display, themeProps } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { color } from "styled-system"
+import { BackgroundProps, color, ColorProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 
 // http://24ways.org/2010/calculating-color-contrast/
@@ -14,9 +14,7 @@ function getContrast(hex) {
 }
 const visibleColor = color => getContrast(themeProps.colors[color])
 
-export interface ColorBlockProps {
-  bg: string
-}
+export interface ColorBlockProps extends ColorProps, BackgroundProps {}
 
 const ColorBlock = styled.div.attrs<ColorBlockProps>({})`
   width: 100px;

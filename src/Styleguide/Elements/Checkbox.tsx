@@ -6,8 +6,8 @@ import styled from "styled-components"
 import { Flex } from "./Flex"
 
 import {
-  border,
   BorderProps,
+  borders,
   SizeProps,
   space,
   SpaceProps,
@@ -68,7 +68,7 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
 }
 
 const CheckboxButton = styled.div.attrs<CheckboxToggleProps>({})`
-  ${border};
+  ${borders};
   ${space};
 
   ${props => {

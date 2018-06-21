@@ -5,8 +5,8 @@ import styled from "styled-components"
 import { Flex } from "./Flex"
 
 import {
-  border,
   BorderProps,
+  borders,
   SizeProps,
   space,
   SpaceProps,
@@ -59,7 +59,7 @@ export class Radio extends React.Component<RadioProps, RadioState> {
 }
 
 const RadioButton = styled.div.attrs<RadioToggleProps>({})`
-  ${border};
+  ${borders};
   ${space};
 
   ${props => {

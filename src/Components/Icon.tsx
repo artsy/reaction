@@ -3,12 +3,16 @@ import React, { StatelessComponent } from "react"
 import styled from "styled-components"
 import {
   bottom,
+  BottomProps,
   color,
   left,
-  PositionProps,
+  LeftProps,
   right,
+  RightProps,
   space,
+  SpaceProps,
   top,
+  TopProps,
 } from "styled-system"
 import "../Assets/Fonts"
 import icons, { IconName } from "../Assets/Icons"
@@ -17,10 +21,13 @@ export type FontName = string
 
 export interface IconProps
   extends React.HTMLProps<HTMLDivElement>,
-    PositionProps {
+    TopProps,
+    LeftProps,
+    BottomProps,
+    RightProps,
+    SpaceProps {
   font?: FontName
   name: IconName
-  color?: string
   fontSize?: string
   style?: any
   onClick?: () => void

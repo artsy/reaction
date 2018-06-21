@@ -4,10 +4,10 @@ import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
 
 import {
-  border,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
+  borders,
   height,
   HeightProps,
   space,
@@ -185,7 +185,7 @@ export class ButtonBase extends Component<ButtonBaseProps> {
 }
 
 const Container = styled.button.attrs<ButtonBaseProps>({})`
-  ${border};
+  ${borders};
   ${borderRadius};
   ${space};
   ${textAlign};
