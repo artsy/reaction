@@ -37,7 +37,7 @@ export const LargeSelect = (props: SelectProps) => {
     <LargeSelectContainer {...props} p={1}>
       <select onChange={event => props.onSelect(event.target.value)}>
         {props.options.map(({ value, text }) => (
-          <option selected={value === props.selected} value={value}>
+          <option selected={value === props.selected} value={value} key={value}>
             {text}
           </option>
         ))}
@@ -56,7 +56,11 @@ export const SmallSelect = props => {
 
         <select onChange={event => props.onSelect(event.target.value)}>
           {props.options.map(({ value, text }) => (
-            <option selected={value === props.selected} value={value}>
+            <option
+              selected={value === props.selected}
+              value={value}
+              key={value}
+            >
               {text}
             </option>
           ))}

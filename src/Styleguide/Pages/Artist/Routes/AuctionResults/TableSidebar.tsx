@@ -6,21 +6,43 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { LargeSelect } from "Styleguide/Elements/Select"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { selectProps } from "Styleguide/Pages/Fixtures/Select"
 import { Responsive } from "Styleguide/Utils/Responsive"
+import { Subscribe } from "unstated"
+import { FilterState } from "./state"
+
+const SORTS = [
+  {
+    value: "DATE_DESC",
+    text: "Most Recent",
+  },
+  {
+    value: "ESTIMATE_AND_DATE_DESC",
+    text: "Estimate",
+  },
+  {
+    value: "PRICE_AND_DATE_DESC",
+    text: "Sale Price",
+  },
+]
 
 export const TableSidebar = () => {
   return (
-    <Responsive>
-      {({ xs }) => {
-        if (xs) return <SmallTableSidebar />
-        else return <LargeTableSidebar />
+    <Subscribe to={[FilterState]}>
+      {filters => {
+        return (
+          <Responsive>
+            {({ xs }) => {
+              if (xs) return <SmallTableSidebar filters={filters} />
+              else return <LargeTableSidebar filters={filters} />
+            }}
+          </Responsive>
+        )
       }}
-    </Responsive>
+    </Subscribe>
   )
 }
 
-const LargeTableSidebar = () => {
+const LargeTableSidebar = props => {
   return (
     <React.Fragment>
       <Col sm={2} pr={2}>
@@ -38,7 +60,11 @@ const LargeTableSidebar = () => {
 
         <Row>
           <Col>
-            <LargeSelect {...selectProps} />
+            <LargeSelect
+              options={SORTS}
+              selected={props.filters.state.sort}
+              onSelect={(props.filters as any).setSort}
+            />
           </Col>
         </Row>
       </Col>
@@ -46,7 +72,7 @@ const LargeTableSidebar = () => {
   )
 }
 
-const SmallTableSidebar = () => {
+const SmallTableSidebar = props => {
   return (
     <Col>
       <Flex flexDirection="column" alignItems="center">
@@ -56,7 +82,11 @@ const SmallTableSidebar = () => {
           </Sans>
         </Box>
 
-        <LargeSelect {...selectProps} />
+        <LargeSelect
+          options={SORTS}
+          selected={props.filters.state.sort}
+          onSelect={(props.filters as any).setSort}
+        />
 
         <Spacer mb={2} />
       </Flex>

@@ -9,9 +9,10 @@ import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
+import { Provider as StateProvider } from "unstated"
 import { ArtistHeader } from "./ArtistHeader"
 import { ArticlesContent } from "./Routes/Articles"
-import { AuctionResults } from "./Routes/AuctionResults"
+import { RelayAuctionResults } from "./Routes/AuctionResults"
 import { CV } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtists } from "./Routes/RelatedArtists"
@@ -22,58 +23,62 @@ injectGlobalCSS()
 export class Artist extends React.Component {
   render() {
     return (
-      <Theme>
-        <GlobalStyles>
+      <ContextProvider>
+        <StateProvider>
           <ResponsiveProvider breakpoints={themeProps.mediaQueries}>
-            <Grid fluid>
-              <Row>
-                <Col>
-                  <ArtistHeader />
-                </Col>
-              </Row>
+            <GlobalStyles>
+              <Theme>
+                <Grid fluid>
+                  <Row>
+                    <Col>
+                      <ArtistHeader />
+                    </Col>
+                  </Row>
 
-              <Spacer mb={3} />
+                  <Spacer mb={3} />
 
-              <Row>
-                <Col>
-                  <Tabs initialTabIndex={4}>
-                    <Tab name="Overview">
-                      <Overview />
-                    </Tab>
-                    <Tab name="CV">
-                      <CV />
-                    </Tab>
-                    <Tab name="Articles">
-                      <ContextProvider>
-                        <ArticlesContent artistID="pablo-picasso" />
-                      </ContextProvider>
-                    </Tab>
-                    <Tab name="Shows">
-                      <Shows />
-                    </Tab>
-                    <Tab name="Auction results">
-                      <AuctionResults />
-                    </Tab>
-                    <Tab name="Related artists">
-                      <RelatedArtists />
-                    </Tab>
-                  </Tabs>
-                </Col>
-              </Row>
+                  <Row>
+                    <Col>
+                      <Tabs initialTabIndex={4}>
+                        <Tab name="Overview">
+                          <Overview />
+                        </Tab>
+                        <Tab name="CV">
+                          <CV />
+                        </Tab>
+                        <Tab name="Articles">
+                          <ContextProvider>
+                            <ArticlesContent artistID="pablo-picasso" />
+                          </ContextProvider>
+                        </Tab>
+                        <Tab name="Shows">
+                          <Shows />
+                        </Tab>
+                        <Tab name="Auction results">
+                          <RelayAuctionResults artistID="pablo-picasso" />
+                        </Tab>
+                        <Tab name="Related artists">
+                          <RelatedArtists />
+                        </Tab>
+                      </Tabs>
+                    </Col>
+                  </Row>
 
-              <Box my={3}>
-                <Separator />
-              </Box>
+                  <Box my={3}>
+                    <Separator />
+                  </Box>
 
-              <Row>
-                <Col>
-                  <Footer />
-                </Col>
-              </Row>
-            </Grid>
+                  <Row>
+                    <Col>
+                      <Footer />
+                    </Col>
+                  </Row>
+                </Grid>
+              </Theme>
+            </GlobalStyles>
           </ResponsiveProvider>
-        </GlobalStyles>
-      </Theme>
+        </StateProvider>
+      </ContextProvider>
     )
   }
 }
