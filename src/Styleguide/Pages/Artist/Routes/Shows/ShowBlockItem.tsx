@@ -3,20 +3,28 @@ import React from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { ResponsiveImage } from "Styleguide/Elements/Image"
 
-export const ShowBlockItem = props => {
+interface Props {
+  imageUrl: string
+  blockWidth: string
+  name: string
+  exhibitionInfo: string
+  partner: string
+}
+
+export const ShowBlockItem = (props: Props) => {
   return (
     <Box maxWidth="460px" width={props.blockWidth} height="auto" p={1}>
       <a href="#" className="noUnderline">
-        <ResponsiveImage src="https://picsum.photos/460/400/?random" />
-        <Serif size="3t">Room With Its Own Rules</Serif>
+        <ResponsiveImage src={props.imageUrl} />
+        <Serif size="3t">{props.name}</Serif>
       </a>
       <Serif size="2" color="black60">
         <a href="#" className="noUnderline">
-          Toth Gallery
+          {props.partner}
         </a>
       </Serif>
       <Serif size="1" color="black60">
-        Miami, May 30 – Jun 21
+        {props.exhibitionInfo}
       </Serif>
     </Box>
   )

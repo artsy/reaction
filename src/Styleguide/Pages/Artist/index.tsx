@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import { injectGlobalCSS, Theme, themeProps } from "@artsy/palette"
 import { ContextProvider } from "Components/Artsy"
 import React from "react"
@@ -16,7 +17,7 @@ import { RelayAuctionResults } from "./Routes/AuctionResults"
 import { CV } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtists } from "./Routes/RelatedArtists"
-import { Shows } from "./Routes/Shows"
+import { RelayShowsContent } from "./Routes/Shows"
 
 injectGlobalCSS()
 
@@ -52,7 +53,36 @@ export class Artist extends React.Component {
                           </ContextProvider>
                         </Tab>
                         <Tab name="Shows">
-                          <Shows />
+                          <Sans size="3" weight="medium">
+                            Currently on view
+                          </Sans>
+                          <ContextProvider>
+                            <RelayShowsContent
+                              status="running"
+                              artistID="pablo-picasso"
+                              sort="end_at_asc"
+                            />
+                          </ContextProvider>
+                          <Sans size="3" weight="medium">
+                            Upcoming
+                          </Sans>
+                          <ContextProvider>
+                            <RelayShowsContent
+                              status="upcoming"
+                              artistID="andy-warhol"
+                              sort="start_at_asc"
+                            />
+                          </ContextProvider>
+                          <Sans size="3" weight="medium">
+                            Past
+                          </Sans>
+                          <ContextProvider>
+                            <RelayShowsContent
+                              status="closed"
+                              artistID="pablo-picasso"
+                              sort="end_at_desc"
+                            />
+                          </ContextProvider>
                         </Tab>
                         <Tab name="Auction results">
                           <RelayAuctionResults artistID="pablo-picasso" />
