@@ -50,16 +50,16 @@ We use [Formik](https://github.com/jaredpalmer/formik) to handle form entries an
 
 ### Component Responsibilities
 **Desktop**
-`ModalContainer` (Force): Listens for changes to Force's mediator and triggers opens to ModalManager. It is also responsible for setting Cookies like `destination` and `afterAuthAction`.
-`ModalManager` (Reaction): Manages the state of the modal (open/close).
-`FormSwitcher` (Reaction): Responsible for switching between form types.
-`LoginForm`/`SignUpForm`/`ResetPasswordForm` (Reaction): The Formik forms for handling inputs.
+- `ModalContainer` (Force): Listens for changes to Force's mediator and triggers opens to ModalManager. It is also responsible for setting Cookies like `destination` and `afterAuthAction`.
+- `ModalManager` (Reaction): Manages the state of the modal (open/close).
+- `FormSwitcher` (Reaction): Responsible for switching between form types.
+- `LoginForm`/`SignUpForm`/`ResetPasswordForm` (Reaction): The Formik forms for handling inputs.
 
-`AuthStatic` (Force): Wrapper for authentication via url route (desktop).
+- `AuthStatic` (Force): Wrapper for authentication via url route (desktop).
 
 **Mobile**
-`MobileAuthStatic` (Force): Wrapper for authentication via url route (mobile).
-`FormSwitcher` (Reaction): See above.
+- `MobileAuthStatic` (Force): Wrapper for authentication via url route (mobile).
+- `FormSwitcher` (Reaction): See above.
 
 ### Configuration
 This `ModalOptions` interface is used to configure the modal's look and behavior. For example, `mode` determines which form type to display and `copy` changes the subtitle of the form. These properties are also used for analytics. [See the full list of options here.](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Types.ts#L34)
