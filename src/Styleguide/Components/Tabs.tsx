@@ -116,5 +116,6 @@ const ActiveTabContainer = styled.div`
   padding-bottom: 13px;
   margin-bottom: -1px;
   margin-right: 20px;
+  white-space: nowrap;
   border-bottom: 1px solid ${themeGet("colors.black60")};
 `
