@@ -3,6 +3,7 @@ import React from "react"
 import { Avatar, Button } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 export interface ArtistCardProps {
@@ -25,12 +26,17 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 }
 
 export const LargeArtistCard = props => (
-  <BorderBox hover flexDirection="column" height="254px">
-    <Flex flexDirection="column" flexGrow="1" alignItems="center">
+  <BorderBox hover flexDirection="column" width="100%">
+    <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       <Avatar src={props.src} mb={1} />
-      <Serif size="3t">{props.headline}</Serif>
-      <Sans size="1">{props.subHeadline}</Sans>
+      <Serif size="3t" weight="semibold">
+        {props.headline}
+      </Serif>
+      <Sans size="2">{props.subHeadline}</Sans>
     </Flex>
+
+    <Spacer mb={1} />
+
     <Flex flexDirection="column" alignItems="center">
       <Button size="small" variant="secondaryOutline" width="90px">
         Follow
