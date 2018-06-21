@@ -1,9 +1,9 @@
+import styled from "styled-components"
+import { Sans } from "@artsy/palette"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
 import Events from "../../../Utils/Events"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
 import { IconSocialEmail } from "../Icon/IconSocialEmail"
 import { IconSocialFacebook } from "../Icon/IconSocialFacebook"
 import { IconSocialTwitter } from "../Icon/IconSocialTwitter"
@@ -71,29 +71,49 @@ export class Share extends React.Component<Props, null> {
     return channels[type]
   }
 
+  getIcon = type => {
+    const { color } = this.props
+
+    const icon = service => {
+      switch (service) {
+        case "email": {
+          return <IconSocialEmail color={color} />
+        }
+        case "facebook": {
+          return <IconSocialFacebook color={color} />
+        }
+        case "twitter": {
+          return <IconSocialTwitter color={color} />
+        }
+        default: {
+          break
+        }
+      }
+    }
+    return (
+      <IconWrapper
+        href={this.getHref(type)}
+        target="_blank"
+        onClick={this.trackShare}
+      >
+        {icon(type)}
+      </IconWrapper>
+    )
+  }
+
   render() {
-    const { color, hasLabel, isMobile, isNews } = this.props
+    const { hasLabel, isMobile, isNews } = this.props
 
     return (
       <ShareContainer removeMarginForMobile={isNews && isMobile}>
-        {hasLabel && <ShareLabel>Share</ShareLabel>}
-        <IconWrapper
-          href={this.getHref("facebook")}
-          target="_blank"
-          onClick={this.trackShare}
-        >
-          <IconSocialFacebook color={color} />
-        </IconWrapper>
-        <IconWrapper
-          href={this.getHref("twitter")}
-          target="_blank"
-          onClick={this.trackShare}
-        >
-          <IconSocialTwitter color={color} />
-        </IconWrapper>
-        <IconWrapper href={this.getHref("email")} onClick={this.trackShare}>
-          <IconSocialEmail color={color} />
-        </IconWrapper>
+        {hasLabel && (
+          <ShareLabel size="3t" weight="medium">
+            Share
+          </ShareLabel>
+        )}
+        {this.getIcon("facebook")}
+        {this.getIcon("twitter")}
+        {this.getIcon("email")}
       </ShareContainer>
     )
   }
@@ -103,22 +123,12 @@ interface ShareContainerProps {
   removeMarginForMobile?: boolean
 }
 
-const div: StyledFunction<
-  ShareContainerProps & React.HTMLProps<HTMLInputElement>
-> =
-  styled.div
-
-export const ShareContainer = div`
+export const ShareContainer = styled.div.attrs<ShareContainerProps>({})`
   display: flex;
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
-  ${props =>
-    props.removeMarginForMobile
-      ? ""
-      : pMedia.xs`
-    margin-top: 15px;
-  `};
+  ${props => props.removeMarginForMobile && pMedia.xs`margin-top: 15px;`};
 `
 const IconWrapper = styled.a`
   text-decoration: none;
@@ -131,7 +141,6 @@ const IconWrapper = styled.a`
     padding-left: 0;
   }
 `
-const ShareLabel = styled.span`
-  ${unica("s16", "medium")};
+const ShareLabel = Sans.extend`
   margin: 10px 10px 10px 0px;
 `

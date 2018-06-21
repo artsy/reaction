@@ -29,12 +29,6 @@ exports[`renders Share properly 1`] = `
   padding-left: 0;
 }
 
-@media (max-width:600px) {
-  .c0 {
-    margin-top: 15px;
-  }
-}
-
 <div
   className="c0"
 >
@@ -94,6 +88,7 @@ exports[`renders Share properly 1`] = `
     className="c1"
     href="mailto:?subject=The Point of Pencils&body=Check out The Point of Pencils on Artsy: http://artsy.net/article/point-pencils"
     onClick={[Function]}
+    target="_blank"
   >
     <svg
       height="14px"

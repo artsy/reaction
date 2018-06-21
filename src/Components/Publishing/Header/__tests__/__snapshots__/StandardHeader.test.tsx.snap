@@ -1,41 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Standard Header renders standard header properly 1`] = `
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c4 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c7 {
   margin: 10px 30px 0 0;
 }
 
-.c6.date {
-  white-space: nowrap;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c5.date {
-  white-space: nowrap;
-}
-
-.c5:before {
+.c7:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
-.c7 {
+.c8 {
+  margin: 10px 30px 0 0;
+  white-space: nowrap;
+}
+
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,22 +39,22 @@ exports[`Standard Header renders standard header properly 1`] = `
   line-height: 1em;
 }
 
-.c8 {
+.c10 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c8:hover {
+.c10:hover {
   opacity: 0.6;
 }
 
-.c8:first-child {
+.c10:first-child {
   padding-left: 0;
 }
 
-.c4 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,15 +62,17 @@ exports[`Standard Header renders standard header properly 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: black;
+}
+
+.c3 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c0 {
@@ -100,7 +93,7 @@ exports[`Standard Header renders standard header properly 1`] = `
   box-sizing: border-box;
 }
 
-.c3 {
+.c5 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 50px;
   line-height: 1.1em;
@@ -109,51 +102,18 @@ exports[`Standard Header renders standard header properly 1`] = `
 }
 
 .c2 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
   margin-bottom: 10px;
 }
 
 @media (max-width:720px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c5 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c5:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
   .c7 {
-    margin-top: 15px;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    margin: 10px 20px 0 0;
   }
 }
 
@@ -170,20 +130,11 @@ exports[`Standard Header renders standard header properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
+  .c5 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
     -webkit-font-smoothing: antialiased;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
   }
 }
 
@@ -196,34 +147,54 @@ exports[`Standard Header renders standard header properly 1`] = `
     <div
       className="c2"
     >
-      Art Market
+      <div
+        className="c3 c4"
+        color={undefined}
+        fontFamily="Unica77LLWebMedium"
+        fontSize={14}
+      >
+        <span>
+          Art Market
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
+      className="c5"
     >
       New York's Next Art District
     </div>
     <div
-      className="Byline c4"
+      className="Byline c6"
       color="black"
     >
       <div
-        className="author c5"
-        color="black"
+        className="c4"
+        fontFamily="Unica77LLWebMedium"
+        fontSize={14}
       >
-        By 
-        Casey Lesser
+        <div
+          className="c7"
+          color="black"
+        >
+          Casey Lesser
+        </div>
       </div>
       <div
-        className="date c6"
+        className="c8"
       >
-        May 19, 2017 9:09 am
+        <div
+          className="c4"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={14}
+        >
+          May 19, 2017 9:09 am
+        </div>
       </div>
       <div
-        className="c7"
+        className="c9"
       >
         <a
-          className="c8"
+          className="c10"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -249,7 +220,7 @@ exports[`Standard Header renders standard header properly 1`] = `
           </svg>
         </a>
         <a
-          className="c8"
+          className="c10"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -275,9 +246,10 @@ exports[`Standard Header renders standard header properly 1`] = `
           </svg>
         </a>
         <a
-          className="c8"
+          className="c10"
           href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
           onClick={[Function]}
+          target="_blank"
         >
           <svg
             height="14px"
@@ -306,41 +278,32 @@ exports[`Standard Header renders standard header properly 1`] = `
 `;
 
 exports[`Standard Header renders standard header with children properly 1`] = `
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c4 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c7 {
   margin: 10px 30px 0 0;
 }
 
-.c6.date {
-  white-space: nowrap;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c5.date {
-  white-space: nowrap;
-}
-
-.c5:before {
+.c7:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
-.c7 {
+.c8 {
+  margin: 10px 30px 0 0;
+  white-space: nowrap;
+}
+
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -353,22 +316,22 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   line-height: 1em;
 }
 
-.c8 {
+.c10 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c8:hover {
+.c10:hover {
   opacity: 0.6;
 }
 
-.c8:first-child {
+.c10:first-child {
   padding-left: 0;
 }
 
-.c4 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -376,15 +339,17 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: black;
+}
+
+.c3 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c0 {
@@ -405,7 +370,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
   box-sizing: border-box;
 }
 
-.c3 {
+.c5 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 50px;
   line-height: 1.1em;
@@ -414,51 +379,18 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 }
 
 .c2 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
   margin-bottom: 10px;
 }
 
 @media (max-width:720px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c5 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c5:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
   .c7 {
-    margin-top: 15px;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    margin: 10px 20px 0 0;
   }
 }
 
@@ -475,20 +407,11 @@ exports[`Standard Header renders standard header with children properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
+  .c5 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
     -webkit-font-smoothing: antialiased;
-  }
-}
-
-@media (max-width:720px) {
-  .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
   }
 }
 
@@ -501,36 +424,56 @@ exports[`Standard Header renders standard header with children properly 1`] = `
     <div
       className="c2"
     >
-      Art Market
+      <div
+        className="c3 c4"
+        color={undefined}
+        fontFamily="Unica77LLWebMedium"
+        fontSize={14}
+      >
+        <span>
+          Art Market
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
+      className="c5"
     >
       <div>
         Child 1: Title
       </div>
     </div>
     <div
-      className="Byline c4"
+      className="Byline c6"
       color="black"
     >
       <div
-        className="author c5"
-        color="black"
+        className="c4"
+        fontFamily="Unica77LLWebMedium"
+        fontSize={14}
       >
-        By 
-        Casey Lesser
+        <div
+          className="c7"
+          color="black"
+        >
+          Casey Lesser
+        </div>
       </div>
       <div
-        className="date c6"
+        className="c8"
       >
-        May 19, 2017 9:09 am
+        <div
+          className="c4"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={14}
+        >
+          May 19, 2017 9:09 am
+        </div>
       </div>
       <div
-        className="c7"
+        className="c9"
       >
         <a
-          className="c8"
+          className="c10"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -556,7 +499,7 @@ exports[`Standard Header renders standard header with children properly 1`] = `
           </svg>
         </a>
         <a
-          className="c8"
+          className="c10"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -582,9 +525,10 @@ exports[`Standard Header renders standard header with children properly 1`] = `
           </svg>
         </a>
         <a
-          className="c8"
+          className="c10"
           href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
           onClick={[Function]}
+          target="_blank"
         >
           <svg
             height="14px"

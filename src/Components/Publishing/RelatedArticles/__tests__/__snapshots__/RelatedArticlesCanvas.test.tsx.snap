@@ -1,44 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
-.c10 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c10.date {
-  white-space: nowrap;
-}
-
 .c9 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  font-family: Unica77LLWebMedium;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c10 {
   margin: 10px 30px 0 0;
 }
 
-.c9.date {
-  white-space: nowrap;
-}
-
-.c9:before {
+.c10:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 0 5px 1px 0;
   background-color: black;
 }
 
-.c9:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
+.c11 {
+  margin: 10px 30px 0 0;
+  white-space: nowrap;
 }
 
 .c8 {
@@ -49,10 +34,6 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -71,7 +52,6 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  min-height: 270px;
 }
 
 .c4 {
@@ -89,10 +69,10 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c7 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 16px;
-  line-height: 1.1em;
+  line-height: 1.4em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c6 {
@@ -149,36 +129,13 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 @media (max-width:720px) {
   .c10 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c9 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+  .c11 {
     margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c9:before {
-    min-width: 8px;
-    min-height: 8px;
   }
 }
 
@@ -195,15 +152,6 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
   .c6 {
     width: 225px;
     height: 150px;
@@ -212,7 +160,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 @media (max-width:1280px) {
   .c0 {
-    margin: 30px 0 30px 0;
+    margin: 40px 0 80px 0;
   }
 }
 
@@ -294,16 +242,27 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="author c9"
-          color="black"
+          className="c9"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={12}
         >
-          By 
-          Anna Louis-Sussman and Kana Abe
+          <div
+            className="c10"
+            color="black"
+          >
+            Anna Louis-Sussman and Kana Abe
+          </div>
         </div>
         <div
-          className="date c10"
+          className="c11"
         >
-          May 19, 2017
+          <div
+            className="c9"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={12}
+          >
+            May 19, 2017
+          </div>
         </div>
       </div>
     </a>
@@ -331,16 +290,27 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="author c9"
-          color="black"
+          className="c9"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={12}
         >
-          By 
-          Halley Johnson
+          <div
+            className="c10"
+            color="black"
+          >
+            Halley Johnson
+          </div>
         </div>
         <div
-          className="date c10"
+          className="c11"
         >
-          May 19, 2017
+          <div
+            className="c9"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={12}
+          >
+            May 19, 2017
+          </div>
         </div>
       </div>
     </a>
@@ -368,16 +338,27 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="author c9"
-          color="black"
+          className="c9"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={12}
         >
-          By 
-          Casey Lesser
+          <div
+            className="c10"
+            color="black"
+          >
+            Casey Lesser
+          </div>
         </div>
         <div
-          className="date c10"
+          className="c11"
         >
-          May 19, 2017
+          <div
+            className="c9"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={12}
+          >
+            May 19, 2017
+          </div>
         </div>
       </div>
     </a>
@@ -405,16 +386,27 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="author c9"
-          color="black"
+          className="c9"
+          fontFamily="Unica77LLWebMedium"
+          fontSize={12}
         >
-          By 
-          Owen Dodd
+          <div
+            className="c10"
+            color="black"
+          >
+            Owen Dodd
+          </div>
         </div>
         <div
-          className="date c10"
+          className="c11"
         >
-          May 19, 2017
+          <div
+            className="c9"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={12}
+          >
+            May 19, 2017
+          </div>
         </div>
       </div>
     </a>

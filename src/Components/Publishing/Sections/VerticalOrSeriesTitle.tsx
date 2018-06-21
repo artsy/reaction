@@ -1,9 +1,7 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
-import styled from "styled-components"
 import { getEditorialHref } from "../Constants"
-import { pMedia } from "../../Helpers"
 import { ArticleData } from "../Typings"
-import { unica } from "Assets/Fonts"
 
 interface Props {
   article?: ArticleData
@@ -28,7 +26,7 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
     seriesArticle && getEditorialHref("series", seriesArticle.slug)
 
   return (
-    <Vertical color={color}>
+    <Vertical size="3t" weight="medium" color={color}>
       {prefix}
       {seriesArticle && hasSeries ? (
         <a href={seriesLink}>{seriesArticle.title}</a>
@@ -39,14 +37,9 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   )
 }
 
-export const Vertical = styled.div`
-  ${unica("s16", "medium")};
-  color: ${props => props.color || "black"};
+export const Vertical = Sans.extend`
   a {
     color: ${props => props.color || "black"};
     text-decoration: none;
   }
-  ${pMedia.sm`
-    ${unica("s14", "medium")}
-  `};
 `

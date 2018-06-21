@@ -118,11 +118,6 @@ interface FeatureHeaderProps {
   }
 }
 
-interface DivProps extends React.HTMLProps<HTMLDivElement> {
-  height?: string
-  src?: string
-}
-
 @track()
 class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   static defaultProps = {
@@ -216,6 +211,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       )
     }
   }
+}
+
+interface DivProps extends React.HTMLProps<HTMLDivElement> {
+  height?: string
+  src?: string
 }
 
 const Div = styled.div`
@@ -325,12 +325,14 @@ const FeatureHeaderContainer = styled(Div)`
   width: 100%;
   position: relative;
   height: ${(props: DivProps) => props.height};
+
   &[data-type="text"] {
     height: auto;
     ${Title} {
       margin-bottom: 150px;
     }
   }
+
   &[data-type="split"] {
     ${Title} {
       flex-grow: 1;
@@ -380,6 +382,7 @@ const FeatureHeaderContainer = styled(Div)`
       }
     `};
   }
+
   &[data-type="fullscreen"] {
     ${HeaderText} {
       padding: 50px;

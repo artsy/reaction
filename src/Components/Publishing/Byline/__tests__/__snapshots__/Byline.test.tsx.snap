@@ -1,41 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Byline renders a byline 1`] = `
-.c2 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
-}
-
-.c2.date {
-  white-space: nowrap;
-}
-
 .c1 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c2 {
   margin: 10px 30px 0 0;
 }
 
-.c1.date {
-  white-space: nowrap;
-}
-
-.c1:before {
+.c2:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
 .c3 {
+  margin: 10px 30px 0 0;
+  white-space: nowrap;
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,18 +39,18 @@ exports[`Byline renders a byline 1`] = `
   line-height: 1em;
 }
 
-.c4 {
+.c5 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 0.6;
 }
 
-.c4:first-child {
+.c5:first-child {
   padding-left: 0;
 }
 
@@ -71,10 +62,6 @@ exports[`Byline renders a byline 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -84,42 +71,13 @@ exports[`Byline renders a byline 1`] = `
 
 @media (max-width:720px) {
   .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c1 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c1:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:600px) {
   .c3 {
-    margin-top: 15px;
+    margin: 10px 20px 0 0;
   }
 }
 
@@ -128,22 +86,33 @@ exports[`Byline renders a byline 1`] = `
   color="black"
 >
   <div
-    className="author c1"
-    color="black"
+    className="c1"
+    fontFamily="Unica77LLWebMedium"
+    fontSize={14}
   >
-    By 
-    Casey Lesser
-  </div>
-  <div
-    className="date c2"
-  >
-    May 19, 2017 9:09 am
+    <div
+      className="c2"
+      color="black"
+    >
+      Casey Lesser
+    </div>
   </div>
   <div
     className="c3"
   >
+    <div
+      className="c1"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
+    >
+      May 19, 2017 9:09 am
+    </div>
+  </div>
+  <div
+    className="c4"
+  >
     <a
-      className="c4"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -169,7 +138,7 @@ exports[`Byline renders a byline 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -195,9 +164,10 @@ exports[`Byline renders a byline 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
+      target="_blank"
     >
       <svg
         height="14px"

@@ -172,7 +172,6 @@ export const avantgarde = (size: keyof typeof AvantGardeSizes) => {
     letter-spacing: 1px;
     font-size: ${AvantGardeSizes[size].size};
     line-height: ${AvantGardeSizes[size].height};
-    letter-spacing: 1px;
   `
 }
 

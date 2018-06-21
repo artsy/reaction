@@ -30,7 +30,7 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
             <VerticalOrSeriesTitle
               article={article}
               color={color}
-              prefix="More In "
+              prefix="More in "
             />
           </Col>
           <ArticleCards
@@ -58,10 +58,12 @@ export const ArticleCardsContainer = styled.div`
   ${MaxRow} {
     margin: auto;
   }
+
   ${Vertical} {
     ${unica("s32")};
     width: 100%;
     margin-bottom: 40px;
+
     a {
       border-bottom: 2px solid;
       ${media.sm`

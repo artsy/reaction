@@ -1,47 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders properly 1`] = `
-.c10 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c8 {
+  font-family: Unica77LLWebMedium;
   font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
+  line-height: 20px;
 }
 
-.c10.date {
+.c10 {
+  margin: 10px 30px 0 0;
   white-space: nowrap;
 }
 
 .c9 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
   margin: 10px 30px 0 0;
-}
-
-.c9.date {
-  white-space: nowrap;
 }
 
 .c9:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 0 5px 1px 0;
   background-color: black;
 }
 
-.c9:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,10 +34,6 @@ exports[`ArticleCard renders properly 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -125,15 +106,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c4 .author,
-.c4 .date {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c6 {
+.c5 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -141,15 +114,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c5 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-.c7 {
+.c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -173,10 +138,6 @@ exports[`ArticleCard renders properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
 }
 
 .c15 svg {
@@ -202,36 +163,13 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media (max-width:720px) {
   .c10 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
   .c9 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
     margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c9:before {
-    min-width: 8px;
-    min-height: 8px;
   }
 }
 
@@ -260,7 +198,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c6 {
+  .c5 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -269,7 +207,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c7 {
+  .c6 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -320,34 +258,40 @@ exports[`ArticleCard renders properly 1`] = `
           <div
             className="c5"
           >
-            <div />
-          </div>
-          <div
-            className="c6"
-          >
             New York's Next Art District
           </div>
           <div
-            className="c7"
+            className="c6"
           >
             Land exhibitions, make influential contacts, and gain valuable feedback about your work.
           </div>
         </div>
         <div
-          className="Byline c8"
+          className="Byline c7"
           color="black"
         >
           <div
-            className="author c9"
-            color="black"
+            className="c8"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={14}
           >
-            By 
-            Casey Lesser
+            <div
+              className="c9"
+              color="black"
+            >
+              Casey Lesser
+            </div>
           </div>
           <div
-            className="date c10"
+            className="c10"
           >
-            May 19, 2017
+            <div
+              className="c8"
+              fontFamily="Unica77LLWebMedium"
+              fontSize={14}
+            >
+              May 19, 2017
+            </div>
           </div>
         </div>
       </div>
@@ -377,23 +321,24 @@ exports[`ArticleCard renders properly 1`] = `
           <div
             className="c5"
           >
-            <div />
-          </div>
-          <div
-            className="c6"
-          >
             New Study Shows the Gender Pay Gap for Artists Is Not So Simple
           </div>
           <div
-            className="c7"
+            className="c6"
           >
             The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
           </div>
         </div>
         <div
-          className="date c10"
+          className="c10"
         >
-          Aug 28, 2017
+          <div
+            className="c8"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={14}
+          >
+            Aug 28, 2017
+          </div>
         </div>
       </div>
       <div
@@ -426,7 +371,13 @@ exports[`ArticleCard renders properly 1`] = `
               />
             </g>
           </svg>
-          02:28
+          <div
+            className="c8"
+            fontFamily="Unica77LLWebMedium"
+            fontSize={14}
+          >
+            02:28
+          </div>
         </div>
       </div>
     </a>

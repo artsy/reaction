@@ -1,19 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders ShareDate properly 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin: 10px 30px 0 0;
+.c2 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-.c1.date {
+.c1 {
+  margin: 10px 30px 0 0;
   white-space: nowrap;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,26 +25,22 @@ exports[`renders ShareDate properly 1`] = `
   line-height: 1em;
 }
 
-.c5 {
+.c6 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c6:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c6:first-child {
   padding-left: 0;
 }
 
-.c4 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c5 {
   margin: 10px 10px 10px 0px;
 }
 
@@ -55,26 +50,12 @@ exports[`renders ShareDate properly 1`] = `
 
 @media (max-width:720px) {
   .c1 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
     margin: 10px 20px 0 0;
   }
 }
 
-@media (max-width:600px) {
-  .c3 {
-    margin-top: 15px;
-  }
-}
-
 @media (max-width:48em) {
-  .c0 .c2 {
+  .c0 .c3 {
     margin-top: 0px;
   }
 }
@@ -83,20 +64,28 @@ exports[`renders ShareDate properly 1`] = `
   className="c0"
 >
   <div
-    className="date c1"
+    className="c1"
   >
-    May 19, 2017 9:09 am
+    <div
+      className="c2"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
+    >
+      May 19, 2017 9:09 am
+    </div>
   </div>
   <div
-    className="c2 c3"
+    className="c3 c4"
   >
-    <span
-      className="c4"
+    <div
+      className="c5 c2"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
     >
       Share
-    </span>
+    </div>
     <a
-      className="c5"
+      className="c6"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -122,7 +111,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c6"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -148,9 +137,10 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c6"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/standard/new-yorks-next-art-district"
       onClick={[Function]}
+      target="_blank"
     >
       <svg
         height="14px"

@@ -3,11 +3,12 @@ import styled from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
-import { Date } from "../../Byline/AuthorDate"
+import { Date } from "../../Byline/Date"
 import { Byline } from "../../Byline/Byline"
 import { formatTime, getMediaDate } from "../../Constants"
 import { garamond, unica } from "Assets/Fonts"
 import { IconVideoPlay } from "../../Icon/IconVideoPlay"
+import { Sans } from "@artsy/palette"
 
 interface Props {
   article?: any
@@ -51,11 +52,17 @@ export class ArticleCard extends Component<Props, null> {
     const { media } = article
 
     if (editDate) {
-      return <MediaDate>{editDate}</MediaDate>
+      return (
+        <MediaDate size="3t" weight="medium">
+          {editDate}
+        </MediaDate>
+      )
     } else if (media) {
       return this.renderMediaDate()
     } else {
-      return <Byline article={article} color={color} layout="condensed" />
+      return (
+        <Byline article={article} color={color} size="3t" layout="condensed" />
+      )
     }
   }
 
@@ -66,13 +73,13 @@ export class ArticleCard extends Component<Props, null> {
 
     if (this.isUnpublishedMedia()) {
       return (
-        <MediaDate>
+        <MediaDate size="3t" weight="medium">
           <span>Available </span>
           <Date format="monthYear" date={mediaDate} />
         </MediaDate>
       )
     } else {
-      return <Date layout="condensed" date={date} />
+      return <Date layout="condensed" size="3t" date={date} />
     }
   }
 
@@ -85,7 +92,9 @@ export class ArticleCard extends Component<Props, null> {
       return (
         <MediaPlay>
           <IconVideoPlay color={color} />
-          {formatTime(article.media.duration)}
+          <Sans size="3t" weight="medium">
+            {formatTime(article.media.duration)}
+          </Sans>
         </MediaPlay>
       )
     }
@@ -116,6 +125,12 @@ export class ArticleCard extends Component<Props, null> {
     const { layout, media } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
+    const description = editDescription ? editDescription : article.description
+
+    const title = editTitle
+      ? editTitle
+      : article.thumbnail_title || article.title
+
     return (
       <ArticleCardContainer
         href={isUnpublishedMedia ? "" : article.slug}
@@ -126,15 +141,14 @@ export class ArticleCard extends Component<Props, null> {
       >
         <TextContainer>
           <div>
-            <Header>
-              <div>{series && series.title}</div>
-            </Header>
-            <Title>
-              {editTitle ? editTitle : article.thumbnail_title || article.title}
-            </Title>
-            <Description>
-              {editDescription ? editDescription : article.description}
-            </Description>
+            {series && (
+              <SeriesTitle size="3t" weight="medium">
+                {series.title}
+              </SeriesTitle>
+            )}
+            <Title>{title}</Title>
+
+            <Description>{description}</Description>
           </div>
           {this.renderDate()}
         </TextContainer>
@@ -212,10 +226,6 @@ const TextContainer = styled.div`
   justify-content: space-between;
   width: 50%;
   margin-bottom: 5px;
-  .author,
-  .date {
-    ${unica("s16", "medium")};
-  }
   ${pMedia.md`
     width: 100%;
     margin-bottom: 0;
@@ -230,8 +240,7 @@ const Title = styled.div`
   `};
 `
 
-const Header = styled.div`
-  ${unica("s16", "medium")};
+const SeriesTitle = Sans.extend`
   margin-bottom: 10px;
 `
 
@@ -243,8 +252,8 @@ const Description = styled.div`
   `};
 `
 
-const MediaDate = styled.div`
-  ${unica("s16", "medium")} display: flex;
+const MediaDate = Sans.extend`
+  display: flex;
   align-items: flex-end;
   span {
     margin-right: 5px;
@@ -262,7 +271,7 @@ const Media = styled.div`
 `
 
 const MediaPlay = Media.extend`
-  ${unica("s16", "medium")} svg {
+  svg {
     width: 40px;
   }
   ${pMedia.md`

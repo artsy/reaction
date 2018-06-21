@@ -1,46 +1,39 @@
-import { shallow } from "enzyme"
 import "jest-styled-components"
+import { mount } from "enzyme"
 import moment from "moment-timezone"
-import React from "react"
 import renderer from "react-test-renderer"
+import React from "react"
 import { getDate } from "../../Constants"
-import { Author, Date } from "../AuthorDate"
+import { Date } from "../Date"
 
-describe("Author/Date", () => {
-  it("renders a single author", () => {
-    const authors = [{ name: "Molly Gottschalk" }]
-    const author = renderer.create(
-      <Author authors={authors} layout={"split"} />
-    )
-    expect(author).toMatchSnapshot()
-    const shallowAuthor = shallow(<Author authors={authors} layout={"split"} />)
-    expect(shallowAuthor.html()).toContain("Molly Gottschalk")
+describe("Date", () => {
+  const date = "2017-05-19T13:09:18.567Z"
+
+  describe("Snapshots", () => {
+    it("renders a date", () => {
+      const snapshot = renderer.create(<Date date={date} layout="split" />)
+      expect(snapshot).toMatchSnapshot()
+    })
+    it("renders a condensed date", () => {
+      const snapshot = renderer.create(<Date date={date} layout="condensed" />)
+      expect(snapshot).toMatchSnapshot()
+    })
   })
 
-  it("renders multiple authors", () => {
-    const authors = [{ name: "Molly Gottschalk" }, { name: "Kana Abe" }]
-    const author = renderer.create(
-      <Author authors={authors} layout={"split"} />
-    )
-    expect(author).toMatchSnapshot()
-    const shallowAuthor = shallow(<Author authors={authors} layout={"split"} />)
-    expect(shallowAuthor.html()).toContain("Molly Gottschalk")
-    expect(shallowAuthor.html()).toContain("Kana Abe")
-  })
+  describe("Unit", () => {
+    it("renders the date", () => {
+      const component = mount(<Date date={date} layout="split" />)
+      expect(component.text()).toBe("May 19, 2017 9:09 am")
+    })
 
-  it("renders the date", () => {
-    const date = renderer.create(
-      <Date date="2017-05-19T13:09:18.567Z" layout="split" />
-    )
-    expect(date).toMatchSnapshot()
-    const shallowDate = shallow(
-      <Date date="2017-05-19T13:09:18.567Z" layout="split" />
-    )
-    expect(shallowDate.html()).toContain("May 19, 2017 9:09 am")
+    it("renders condensed date", () => {
+      const component = mount(<Date date={date} layout="condensed" />)
+      expect(component.text()).toBe("May 19, 2017")
+    })
   })
 })
 
-describe("Date", () => {
+describe("#getDate", () => {
   const timestamp = "2017-02-22T19:22:05.709Z"
   const expectedFormattedDates = {
     monthYear: "February 2017",

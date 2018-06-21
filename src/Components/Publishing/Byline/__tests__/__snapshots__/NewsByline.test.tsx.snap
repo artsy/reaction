@@ -1,35 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Byline renders on mobile 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c2 {
+  font-family: Unica77LLWebMedium;
   font-size: 14px;
-  line-height: 1.4em;
+  line-height: 20px;
+}
+
+.c4 {
   margin: 10px 30px 0 0;
 }
 
-.c3.date {
-  white-space: nowrap;
-}
-
-.c3:before {
+.c4:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
-.c3:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,11 +33,11 @@ exports[`News Byline renders on mobile 1`] = `
   color: #999999;
 }
 
-.c4 a {
+.c5 a {
   color: #999999;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -58,18 +50,18 @@ exports[`News Byline renders on mobile 1`] = `
   line-height: 1em;
 }
 
-.c6 {
+.c7 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c7:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c7:first-child {
   padding-left: 0;
 }
 
@@ -91,7 +83,7 @@ exports[`News Byline renders on mobile 1`] = `
   align-items: flex-start;
 }
 
-.c0 .c2 {
+.c0 .c3 {
   margin-top: 0;
 }
 
@@ -106,32 +98,23 @@ exports[`News Byline renders on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+  .c4 {
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c3:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:720px) {
-  .c4 {
+  .c5 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c6 {
+    margin-top: 15px;
   }
 }
 
@@ -142,22 +125,28 @@ exports[`News Byline renders on mobile 1`] = `
     className="c1"
   >
     <div
-      className="c2 c3"
-      color="black"
+      className="c2"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
     >
-      Casey Lesser
+      <div
+        className="c3 c4"
+        color="black"
+      >
+        Casey Lesser
+      </div>
     </div>
     <div
-      className="c4"
+      className="c5"
     >
       Jul 19, 2018 at 1:19 pm
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <a
-      className="c6"
+      className="c7"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
@@ -183,7 +172,7 @@ exports[`News Byline renders on mobile 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -209,9 +198,10 @@ exports[`News Byline renders on mobile 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
+      target="_blank"
     >
       <svg
         height="14px"
@@ -272,7 +262,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
   align-items: flex-start;
 }
 
-.c0 .sc-bwzfXH {
+.c0 .Author__StyledAuthor-sbiape-0 {
   margin-top: 0;
 }
 
@@ -311,35 +301,27 @@ exports[`News Byline renders on mobile truncated 1`] = `
 `;
 
 exports[`News Byline renders properly 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c2 {
+  font-family: Unica77LLWebMedium;
   font-size: 14px;
-  line-height: 1.4em;
+  line-height: 20px;
+}
+
+.c4 {
   margin: 10px 30px 0 0;
 }
 
-.c3.date {
-  white-space: nowrap;
-}
-
-.c3:before {
+.c4:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
-.c3:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -351,11 +333,11 @@ exports[`News Byline renders properly 1`] = `
   color: #999999;
 }
 
-.c4 a {
+.c5 a {
   color: #999999;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -368,18 +350,18 @@ exports[`News Byline renders properly 1`] = `
   line-height: 1em;
 }
 
-.c6 {
+.c7 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c7:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c7:first-child {
   padding-left: 0;
 }
 
@@ -401,7 +383,7 @@ exports[`News Byline renders properly 1`] = `
   align-items: flex-start;
 }
 
-.c0 .c2 {
+.c0 .c3 {
   margin-top: 0;
 }
 
@@ -416,38 +398,17 @@ exports[`News Byline renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+  .c4 {
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c3:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:720px) {
-  .c4 {
+  .c5 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
-    margin-top: 15px;
   }
 }
 
@@ -458,13 +419,19 @@ exports[`News Byline renders properly 1`] = `
     className="c1"
   >
     <div
-      className="c2 c3"
-      color="black"
+      className="c2"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
     >
-      Casey Lesser
+      <div
+        className="c3 c4"
+        color="black"
+      >
+        Casey Lesser
+      </div>
     </div>
     <div
-      className="c4"
+      className="c5"
     >
       Jul 19, 2018 at 1:19 pm
       , via
@@ -479,10 +446,10 @@ exports[`News Byline renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <a
-      className="c6"
+      className="c7"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
@@ -508,7 +475,7 @@ exports[`News Byline renders properly 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -534,9 +501,10 @@ exports[`News Byline renders properly 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
+      target="_blank"
     >
       <svg
         height="14px"
@@ -597,7 +565,7 @@ exports[`News Byline renders properly when truncated 1`] = `
   align-items: flex-start;
 }
 
-.c0 .sc-bwzfXH {
+.c0 .Author__StyledAuthor-sbiape-0 {
   margin-top: 0;
 }
 
@@ -636,35 +604,27 @@ exports[`News Byline renders properly when truncated 1`] = `
 `;
 
 exports[`News Byline renders without a news source 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c2 {
+  font-family: Unica77LLWebMedium;
   font-size: 14px;
-  line-height: 1.4em;
+  line-height: 20px;
+}
+
+.c4 {
   margin: 10px 30px 0 0;
 }
 
-.c3.date {
-  white-space: nowrap;
-}
-
-.c3:before {
+.c4:before {
   content: "";
   display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin: 6px 10px 1px 0;
   background-color: black;
 }
 
-.c3:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -676,11 +636,11 @@ exports[`News Byline renders without a news source 1`] = `
   color: #999999;
 }
 
-.c4 a {
+.c5 a {
   color: #999999;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -693,18 +653,18 @@ exports[`News Byline renders without a news source 1`] = `
   line-height: 1em;
 }
 
-.c6 {
+.c7 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c7:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c7:first-child {
   padding-left: 0;
 }
 
@@ -726,7 +686,7 @@ exports[`News Byline renders without a news source 1`] = `
   align-items: flex-start;
 }
 
-.c0 .c2 {
+.c0 .c3 {
   margin-top: 0;
 }
 
@@ -741,38 +701,17 @@ exports[`News Byline renders without a news source 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+  .c4 {
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c3:before {
-    min-width: 8px;
-    min-height: 8px;
-  }
-}
-
-@media (max-width:720px) {
-  .c4 {
+  .c5 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
-    margin-top: 15px;
   }
 }
 
@@ -783,22 +722,28 @@ exports[`News Byline renders without a news source 1`] = `
     className="c1"
   >
     <div
-      className="c2 c3"
-      color="black"
+      className="c2"
+      fontFamily="Unica77LLWebMedium"
+      fontSize={14}
     >
-      Casey Lesser
+      <div
+        className="c3 c4"
+        color="black"
+      >
+        Casey Lesser
+      </div>
     </div>
     <div
-      className="c4"
+      className="c5"
     >
       Jul 19, 2018 at 1:19 pm
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <a
-      className="c6"
+      className="c7"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
       onClick={[Function]}
       target="_blank"
@@ -824,7 +769,7 @@ exports[`News Byline renders without a news source 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -850,9 +795,10 @@ exports[`News Byline renders without a news source 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c7"
       href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
       onClick={[Function]}
+      target="_blank"
     >
       <svg
         height="14px"

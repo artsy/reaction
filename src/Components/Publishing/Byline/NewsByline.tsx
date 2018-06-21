@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { getArticleFullHref, getAuthorByline } from "../Constants"
+import { getArticleFullHref } from "../Constants"
 import { ArticleData } from "../Typings"
-import { StyledAuthor } from "./AuthorDate"
+import { Author, StyledAuthor } from "./Author"
 import { DateSource } from "./DateSource"
 import { Share } from "./Share"
 
@@ -19,19 +19,16 @@ export const NewsByline: React.SFC<NewsBylineProps> = props => {
   const { authors, title } = article
   const url = getArticleFullHref(article.slug)
 
-  const shareIcon = <Share url={url} title={title} isNews isMobile={isMobile} />
-
   return (
     <NewsBylineContainer>
       <AuthorDateContainer>
-        {!isTruncated && (
-          <StyledAuthor condensed withBullet color="black">
-            {getAuthorByline(authors)}
-          </StyledAuthor>
-        )}
+        {!isTruncated && <Author authors={authors} />}
         <DateSource article={article} editSource={editSource} />
       </AuthorDateContainer>
-      {!isTruncated && shareIcon}
+
+      {!isTruncated && (
+        <Share url={url} title={title} isMobile={isMobile} isNews />
+      )}
     </NewsBylineContainer>
   )
 }

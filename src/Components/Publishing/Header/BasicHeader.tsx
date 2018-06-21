@@ -5,9 +5,10 @@ import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
-import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
-import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
+import { Byline } from "../Byline/Byline"
+import { ShareContainer as ShareContainerStyles } from "../Byline/Share"
 import { unica } from "Assets/Fonts"
+import { VerticalOrSeriesTitle } from "../Sections/VerticalOrSeriesTitle"
 
 import {
   CoverImage,
@@ -51,13 +52,13 @@ export class BasicHeader extends React.Component<Props, State> {
 
   render() {
     const {
-      article: { authors, hero_section, lead_paragraph, published_at, slug },
+      article,
       date,
       isMobile: passedIsMobile,
       title,
       vertical,
     } = this.props
-
+    const { hero_section, lead_paragraph, published_at } = article
     const { url } = hero_section
     const hasVideo = url && isValidVideoUrl(url)
 
@@ -75,7 +76,10 @@ export class BasicHeader extends React.Component<Props, State> {
               )}
               <Row>
                 <Col xs sm md lg>
-                  <Vertical>{vertical}</Vertical>
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                  />
                 </Col>
               </Row>
               <Row>
@@ -88,6 +92,7 @@ export class BasicHeader extends React.Component<Props, State> {
                   <Col xs={12} sm={12} md={12} lg={12}>
                     <Row>
                       <Col xs sm md lg>
+                        {/* TODO: should this be deck? */}
                         <LeadParagraph
                           dangerouslySetInnerHTML={{
                             __html: lead_paragraph,
@@ -103,18 +108,7 @@ export class BasicHeader extends React.Component<Props, State> {
                         lg={12}
                         className="Byline__Container"
                       >
-                        <Author>By {getAuthorByline(authors)}</Author>
-                        <Date>
-                          {getDate(
-                            date ? date : published_at,
-                            isMobile ? "condensed" : "default"
-                          )}
-                        </Date>
-                        <Share
-                          title={title}
-                          url={getArticleFullHref(slug)}
-                          className="share"
-                        />
+                        <Byline article={article} date={date || published_at} />
                       </Col>
                     </Row>
                   </Col>
@@ -134,7 +128,8 @@ const Description = styled.div`
 `
 
 const defaults = css`
-  ${unica("s16", "medium")} line-height: 1.1em;
+  ${unica("s16", "medium")};
+  line-height: 1.1em;
   margin-bottom: 10px;
 `
 
@@ -203,21 +198,16 @@ const Container = div`
   }
 `
 
-const Vertical = styled.div`
-  ${defaults};
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
 const Title = styled.div`
-  ${unica("s80", "regular")} line-height: 1.1em;
+  ${unica("s80", "regular")};
+  line-height: 1.1em;
   letter-spacing: -0.035em;
   max-width: 1250px;
   margin: 0 auto 27px auto;
   ${breakpoint.md`
     font-size: 60px;
-  `} ${breakpoint.xs`
+  `};
+  ${breakpoint.xs`
     font-size: 40px;
     margin-bottom: 15px;
   `};
@@ -225,32 +215,6 @@ const Title = styled.div`
 
 const LeadParagraph = styled.div`
   ${defaults};
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
-const Author = styled.div`
-  ${defaults};
-  &:before {
-    content: "";
-    display: inline-block;
-    min-width: 10px;
-    min-height: 10px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: black;
-  }
-
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
-const Date = styled.div`
-  ${defaults};
-  white-space: nowrap;
-
   ${breakpoint.xs`
     ${unica("s14", "medium")}
   `};

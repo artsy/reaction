@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { media } from "../../Helpers"
 import { getFullEditorialHref } from "../Constants"
-import { Date } from "./AuthorDate"
+import { Date } from "./Date"
 import { Share, ShareContainer } from "./Share"
 
 interface ShareDateProps extends React.HTMLProps<HTMLDivElement> {

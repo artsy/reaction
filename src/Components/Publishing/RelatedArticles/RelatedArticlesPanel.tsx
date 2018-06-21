@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import { Sans } from "@artsy/palette"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { garamond, unica } from "Assets/Fonts"
+import { garamond } from "Assets/Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
@@ -20,7 +21,9 @@ export const RelatedArticlesPanel: React.SFC<
 
   return (
     <RelatedArticlesContainer>
-      <Label>{label}</Label>
+      <Label size="3t" weight="medium">
+        {label}
+      </Label>
 
       <Collection>
         {articles.map((article, i) => {
@@ -31,7 +34,7 @@ export const RelatedArticlesPanel: React.SFC<
           })
 
           return (
-            <ArticleLink href={href} key={`relatedarticles-${i}`}>
+            <ArticleLink href={href} key={`relatedArticles-${i}`}>
               <ArticleImage src={articleImageSrc} />
               <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
             </ArticleLink>
@@ -55,8 +58,8 @@ const Collection = styled.div`
   flex-direction: column;
 `
 
-const Label = styled.div`
-  ${unica("s16", "medium")} margin-bottom: 10px;
+const Label = Sans.extend`
+  margin-bottom: 10px;
 `
 
 const ArticleLink = styled.a`
@@ -64,6 +67,7 @@ const ArticleLink = styled.a`
   display: flex;
   justify-content: left;
   margin-bottom: 20px;
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -76,5 +80,6 @@ const ArticleImage = styled.img`
 `
 
 const ArticleTitle = styled.span`
-  ${garamond("s17")} color: black;
+  ${garamond("s17")};
+  color: black;
 `
