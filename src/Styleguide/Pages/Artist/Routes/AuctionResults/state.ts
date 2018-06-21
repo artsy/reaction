@@ -1,6 +1,6 @@
 import { Container } from "unstated"
 
-type State = {
+interface State {
   sort?: string
   page?: number
 }

@@ -24,6 +24,7 @@ export const GlobalStyles = styled.div`
   /* Default links */
 
   a {
+    cursor: pointer;
     color: inherit;
     transition: 0.25s;
 

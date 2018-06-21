@@ -100,9 +100,16 @@ export const SmallPagination = (props: PaginationProps) => {
   )
 }
 
-const Page = ({ num, ...props }) => {
+const scrollToTop = clickHandler => {
+  return () => {
+    window.scrollTo(0, 0)
+    clickHandler()
+  }
+}
+
+const Page = ({ num, onClick, ...props }) => {
   return (
-    <Button {...props}>
+    <Button {...props} onClick={() => scrollToTop(onClick)()}>
       <Sans size="3" weight="medium" display="inline">
         {num}
       </Sans>
@@ -121,7 +128,7 @@ const PageSpan = ({ mx }) => {
 const PrevButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => props.onClick()} className="noUnderline">
+      <a onClick={() => scrollToTop(props.onClick)()} className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
     </Sans>
@@ -131,7 +138,7 @@ const PrevButton = props => {
 const NextButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => props.onClick()} className="noUnderline">
+      <a onClick={() => scrollToTop(props.onClick)()} className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>
@@ -166,4 +173,5 @@ const ButtonWithBorder = styled(Flex)`
   border-radius: 3px;
   width: 100%;
   height: ${props => props.theme.space[4]}px;
+  cursor: pointer;
 `
