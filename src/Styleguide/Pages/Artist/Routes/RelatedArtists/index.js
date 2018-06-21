@@ -13,15 +13,15 @@ export const RelatedArtists = () => {
 
   return (
     <Responsive>
-      {({ xs, sm }) => {
+      {({ xs, sm, md }) => {
         let width
-        // if (xs) {
-        //   width = "100%"
-        // } else if (sm) {
-        //   // width = "50%"
-        // } else {
-        //   width = "25%"
-        // }
+        if (xs) {
+          width = "100%"
+        } else if (sm || md) {
+          width = "33%"
+        } else {
+          width = "25%"
+        }
 
         return (
           <React.Fragment>

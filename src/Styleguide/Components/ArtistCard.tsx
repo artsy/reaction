@@ -18,8 +18,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
       <Responsive>
         {({ xs }) => {
           if (xs) return <SmallArtistCard {...this.props} />
-          else return <ExtraLargeArtistCard {...this.props} />
-          // else return <LargeArtistCard {...this.props} />
+          else return <LargeArtistCard {...this.props} />
         }}
       </Responsive>
     )
@@ -27,22 +26,7 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
 }
 
 export const LargeArtistCard = props => (
-  <BorderBox hover flexDirection="column">
-    <Flex flexDirection="column" flexGrow="1" alignItems="center">
-      <Avatar src={props.src} mb={1} />
-      <Serif size="3t">{props.headline}</Serif>
-      <Sans size="1">{props.subHeadline}</Sans>
-    </Flex>
-    <Flex flexDirection="column" alignItems="center">
-      <Button size="small" variant="secondaryOutline" width="90px">
-        Follow
-      </Button>
-    </Flex>
-  </BorderBox>
-)
-
-export const ExtraLargeArtistCard = props => (
-  <BorderBox hover flexDirection="column" width="220px" height="250px">
+  <BorderBox hover flexDirection="column" width="100%">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       <Avatar src={props.src} mb={1} />
       <Serif size="3t" weight="semibold">
