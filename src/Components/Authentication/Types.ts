@@ -19,9 +19,16 @@ export type SubmitHandler = (
 ) => void
 
 export interface FormProps {
+  /**
+   * any global error that comes from an external data source
+   * (e.g. server)
+   */
+  error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
 }
 
 export interface ModalOptions {
@@ -52,6 +59,16 @@ export interface ModalOptions {
    */
   signupReferer?: string
   /**
+   * defines an action to take after the user successfully signs up
+   *
+   * @example
+   * {
+   *   action: 'save',
+   *   objectId: artwork.id
+   * }
+   */
+  afterSignUpAction?: string
+  /*
    * the location where the modal was triggered.
    */
   contextModule?: string

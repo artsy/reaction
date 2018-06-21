@@ -1,10 +1,84 @@
 import React from "react"
-import { animated, Spring } from "react-spring"
+import { Spring } from "react-spring"
 import styled from "styled-components"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
   onClose?: () => void
+}
+export interface ModalState {
+  isAnimating: boolean
+  isShown: boolean
+}
+
+export class Modal extends React.Component<ModalProps, ModalState> {
+  static defaultProps = {
+    show: false,
+  }
+
+  state = {
+    isAnimating: this.props.show || false,
+    isShown: this.props.show || false,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.show !== nextProps.show) {
+      this.setState({
+        isShown: nextProps.show,
+        isAnimating: true,
+      })
+    }
+  }
+
+  close = e => {
+    e.preventDefault()
+    this.props.onClose()
+  }
+
+  render(): JSX.Element {
+    const { children } = this.props
+    const { isAnimating, isShown } = this.state
+
+    const transitions = isShown
+      ? {
+          from: {
+            opacity: 0,
+            transform: "translate(-50%,-40%)",
+          },
+          to: {
+            opacity: 1,
+            transform: "translate(-50%,-50%)",
+          },
+        }
+      : { from: { opacity: 1 }, to: { opacity: 0 } }
+
+    return (
+      <div>
+        <Spring
+          {...transitions as any}
+          onRest={() => {
+            this.setState({ isAnimating: false })
+          }}
+        >
+          {(styles: any) =>
+            (isShown || isAnimating) && (
+              <div>
+                <Overlay
+                  style={{ opacity: (styles || {}).opacity }}
+                  onClick={this.close}
+                  show={isShown}
+                />
+                <ModalContainer style={{ ...styles }}>
+                  {children}
+                </ModalContainer>
+                <div />
+              </div>
+            )
+          }
+        </Spring>
+      </div>
+    )
+  }
 }
 
 const ModalContainer = styled.div`
@@ -31,51 +105,7 @@ const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   opacity: 0;
+  pointer-events: ${p => (p.show ? "inherit" : "none")};
 `
-
-export class Modal extends React.Component<ModalProps, any> {
-  static defaultProps = {
-    show: false,
-  }
-
-  constructor(props) {
-    super(props)
-    this.close = this.close.bind(this)
-  }
-
-  close(e) {
-    e.preventDefault()
-    this.props.onClose()
-  }
-
-  render(): JSX.Element {
-    const { children, show } = this.props
-
-    const transitions = show
-      ? {
-          from: { opacity: 0, transform: "translate(-50%,-40%)" },
-          to: { opacity: 1, transform: "translate(-50%,-50%)" },
-        }
-      : { from: { opacity: 1 }, to: { opacity: 0 } }
-
-    return (
-      <div>
-        <Spring {...transitions as any}>
-          {(styles: any) => (
-            <animated.div>
-              <Overlay
-                style={{ opacity: styles.opacity }}
-                onClick={this.close}
-                show={show}
-              />
-              <ModalContainer style={{ ...styles }}>{children}</ModalContainer>
-              <div />
-            </animated.div>
-          )}
-        </Spring>
-      </div>
-    )
-  }
-}
 
 export default Modal

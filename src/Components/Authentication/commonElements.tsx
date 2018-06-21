@@ -2,8 +2,6 @@ import { growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import Button from "Components/Buttons/Inverted"
-import Checkbox from "Components/Checkbox"
-import Text from "Components/Text"
 import React from "react"
 import styled from "styled-components"
 export { Footer } from "./Footer"
@@ -51,7 +49,7 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
   visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
-  height: ${p => (p.show ? "16px" : "0")};
+  height: ${p => (p.show ? "auto" : "0")};
 `
 
 export const MobileInnerWrapper = styled.div`
@@ -86,27 +84,8 @@ const ForgotPasswordLink = styled(SmallTextLink)`
   color: ${Colors.graySemibold};
 `
 
-export interface ForgotPasswordProps {
-  handleForgotPasswordChange: () => void
-}
-
-export const ForgotPassword = (props: ForgotPasswordProps) => (
-  <ForgotPasswordLink onClick={props.handleForgotPasswordChange}>
-    Forgot Password?
-  </ForgotPasswordLink>
-)
-
-export const RememberMe = props => (
-  <Checkbox
-    type="checkbox"
-    name="remember-me"
-    onChange={props.handleChange}
-    onBlur={props.handleBlur}
-  >
-    <Text style={{ margin: "0px" }} color={Colors.graySemibold}>
-      Remember me
-    </Text>
-  </Checkbox>
+export const ForgotPassword = props => (
+  <ForgotPasswordLink {...props}>Forgot Password?</ForgotPasswordLink>
 )
 
 export const MobileSubmitButton = styled(Button).attrs({

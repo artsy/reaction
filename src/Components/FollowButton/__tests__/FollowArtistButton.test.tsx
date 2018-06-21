@@ -1,11 +1,11 @@
-import { commitMutation } from "react-relay"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import renderer from "react-test-renderer"
 import React from "react"
+import { commitMutation } from "react-relay"
+import renderer from "react-test-renderer"
+import { ContextProvider } from "../../Artsy"
 import { FollowButton } from "../Button"
 import FollowArtistButton from "../FollowArtistButton"
-import { ContextProvider } from "../../Artsy"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),

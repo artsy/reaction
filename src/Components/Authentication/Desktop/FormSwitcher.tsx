@@ -12,21 +12,24 @@ import { LoginForm } from "./LoginForm"
 import { ResetPasswordForm } from "./ResetPasswordForm"
 import { SignUpForm } from "./SignUpForm"
 
-interface Props {
+export interface FormSwitcherProps {
   handleSubmit: SubmitHandler
   options?: ModalOptions
   tracking?: any
   type: ModalType
   values?: InputValues
+  error?: string
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
 }
 
-interface State {
+export interface State {
   type?: ModalType
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-export class FormSwitcher extends React.Component<Props, State> {
-  static defaultProps: Partial<Props> = {
+export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
+  static defaultProps: Partial<FormSwitcherProps> = {
     values: {},
   }
 
@@ -75,11 +78,21 @@ export class FormSwitcher extends React.Component<Props, State> {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.type !== nextProps.type && nextProps.type) {
+      this.setState({
+        type: nextProps.type,
+      })
+    }
+  }
+
   presentModal = (newType: ModalType) => {
     this.setState({ type: newType })
   }
 
   render() {
+    const { error, onFacebookLogin, onTwitterLogin } = this.props
+
     let Form: FormComponentType
     switch (this.state.type) {
       case ModalType.login:
@@ -105,9 +118,12 @@ export class FormSwitcher extends React.Component<Props, State> {
 
     return (
       <Form
+        error={error}
         values={defaultValues}
-        handleTypeChange={type => this.presentModal(type)}
+        handleTypeChange={this.presentModal}
         handleSubmit={this.props.handleSubmit}
+        onFacebookLogin={onFacebookLogin}
+        onTwitterLogin={onTwitterLogin}
       />
     )
   }

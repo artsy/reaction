@@ -11,6 +11,7 @@ import { DesktopHeader } from "./DesktopHeader"
 export interface DesktopModalProps extends ModalProps {
   subtitle?: string
   onTypeChange?: (options: ModalOptions) => void
+  onClose: () => void
   tracking?: any
 }
 

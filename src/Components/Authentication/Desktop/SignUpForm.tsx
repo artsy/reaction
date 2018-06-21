@@ -41,6 +41,8 @@ export const SignUpForm: FormComponentType = props => {
         isSubmitting,
         dirty,
         status,
+        setTouched,
+        validateForm,
       }: FormikProps<InputValues>) => {
         const hasErrors = Object.keys(errors).length > 0
 
@@ -100,6 +102,16 @@ export const SignUpForm: FormComponentType = props => {
             </SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+              onFacebookLogin={e => {
+                if (!values.acceptedTermsOfService) {
+                  setTouched({
+                    acceptedTermsOfService: true,
+                  })
+                } else {
+                  props.onFacebookLogin(e)
+                }
+              }}
+              onTwitterLogin={props.onTwitterLogin}
               inline
             />
           </Form>
