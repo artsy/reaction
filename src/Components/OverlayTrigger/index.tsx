@@ -1,7 +1,7 @@
 import React, { cloneElement, ReactInstance } from "react"
+import { findDOMNode } from "react-dom"
 import { Overlay } from "react-overlays"
 import styled from "styled-components"
-import { findDOMNode } from "react-dom"
 
 import { OverlayTriggerProps } from "./types"
 

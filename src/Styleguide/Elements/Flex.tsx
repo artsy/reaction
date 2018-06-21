@@ -8,19 +8,21 @@ import {
   FlexBasisProps,
   flexDirection,
   FlexDirectionProps,
+  flexWrap,
+  FlexWrapProps,
+  height,
+  HeightProps,
   justifyContent,
   JustifyContentProps,
   maxHeight,
   MaxHeightProps,
-  height,
-  HeightProps,
   maxWidth,
   MaxWidthProps,
-  width,
-  WidthProps,
   space,
   SpaceProps,
   style,
+  width,
+  WidthProps,
 } from "styled-system"
 
 // @ts-ignore
@@ -36,6 +38,7 @@ export interface FlexProps
     AlignContentProps,
     FlexBasisProps,
     FlexDirectionProps,
+    FlexWrapProps,
     JustifyContentProps,
     SpaceProps,
     HeightProps,
@@ -51,6 +54,7 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${alignItems};
   ${flexBasis};
   ${flexDirection};
+  ${flexWrap};
   ${justifyContent};
   ${space};
   ${height};

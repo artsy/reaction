@@ -1,7 +1,7 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import colors from "../Assets/Colors"
-import { unica } from "Assets/Fonts"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   horizontalAlign?: string

@@ -1,6 +1,6 @@
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import styled from "styled-components"
-import { Formik, FormikProps } from "formik"
 
 import {
   Error,
@@ -8,14 +8,14 @@ import {
   FormContainer as Form,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
-import Input from "Components/Input"
 import {
   FormComponentType,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
-import Button from "Components/Buttons/Inverted"
 import { SignUpValidator } from "Components/Authentication/Validators"
+import Button from "Components/Buttons/Inverted"
+import Input from "Components/Input"
 
 const SignUpButton = styled(Button).attrs({
   type: "submit",

@@ -1,5 +1,5 @@
-import React from "react"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
 
 export interface ClassificationProps {
@@ -19,7 +19,7 @@ export class Classification extends React.Component<ClassificationProps> {
       return null
     }
     return (
-      <ClassificationContainer pt={2} color="black60" align="left">
+      <ClassificationContainer pt={2} color="black60" textAlign="left">
         <Serif size="2">
           <a href="#">{artwork.attribution_class.short_description}</a>.
         </Serif>

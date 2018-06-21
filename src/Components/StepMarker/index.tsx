@@ -1,10 +1,10 @@
-import Icon from "../Icon"
-import React, { Component } from "react"
-import Text from "../Text"
-import colors from "../../Assets/Colors"
-import styled from "styled-components"
 import { unica } from "Assets/Fonts"
+import React, { Component } from "react"
 import { ReactNode } from "react"
+import styled from "styled-components"
+import colors from "../../Assets/Colors"
+import Icon from "../Icon"
+import Text from "../Text"
 
 export interface RenderProps {
   nextStep: () => void

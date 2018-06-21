@@ -2,8 +2,8 @@ import * as React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 
-import { FilterState } from "./state"
 import ArtworkGrid from "../ArtworkGrid"
+import { FilterState } from "./state"
 
 import { Artworks_filtered_artworks } from "../../__generated__/Artworks_filtered_artworks.graphql"
 

@@ -1,8 +1,8 @@
 import React from "react"
-import { Section } from "Styleguide/Utils/Section"
-import { Image, ResponsiveImage } from "../Image"
 import { storiesOf } from "storybook/storiesOf"
+import { Section } from "Styleguide/Utils/Section"
 import { BorderBox } from "../Box"
+import { Image, ResponsiveImage } from "../Image"
 
 storiesOf("Styleguide/Elements", module).add("Image", () => {
   return (

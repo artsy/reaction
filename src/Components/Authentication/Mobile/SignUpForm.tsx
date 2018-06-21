@@ -1,9 +1,7 @@
-import React from "react"
-import { Step, Wizard } from "Components/Wizard"
-import { ProgressIndicator } from "Components/ProgressIndicator"
+import Colors from "Assets/Colors"
 import {
-  Error,
   BackButton,
+  Error,
   Footer,
   MobileContainer,
   MobileHeader,
@@ -11,12 +9,14 @@ import {
   MobileSubmitButton,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
-import Input from "Components/Input"
-import Icon from "Components/Icon"
-import { FormComponentType } from "Components/Authentication/Types"
-import Colors from "Assets/Colors"
-import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import { checkEmail } from "Components/Authentication/helpers"
+import { FormComponentType } from "Components/Authentication/Types"
+import { MobileSignUpValidator } from "Components/Authentication/Validators"
+import Icon from "Components/Icon"
+import Input from "Components/Input"
+import { ProgressIndicator } from "Components/ProgressIndicator"
+import { Step, Wizard } from "Components/Wizard"
+import React from "react"
 
 export const MobileSignUpForm: FormComponentType = props => {
   const steps = [

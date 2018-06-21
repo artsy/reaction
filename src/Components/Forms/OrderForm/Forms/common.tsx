@@ -1,8 +1,8 @@
-import styled from "styled-components"
-import { Grid } from "react-styled-flexboxgrid"
 import React from "react"
-import Text from "../../../Text"
+import { Grid } from "react-styled-flexboxgrid"
+import styled from "styled-components"
 import colors from "../../../../Assets/Colors"
+import Text from "../../../Text"
 
 export const StyledGrid = Grid.extend`
   padding: 38px 158px 51px;

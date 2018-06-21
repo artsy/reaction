@@ -1,9 +1,9 @@
-import "regenerator-runtime/runtime" // FIXME: Open PR react-relay-network-modern to fix this
-import React from "react"
-import { ContextProvider } from "../../Components/Artsy"
 import { mount } from "enzyme"
-import { PreloadLink } from "../PreloadLink"
+import React from "react"
 import { fetchQuery } from "react-relay"
+import "regenerator-runtime/runtime" // FIXME: Open PR react-relay-network-modern to fix this
+import { ContextProvider } from "../../Components/Artsy"
+import { PreloadLink } from "../PreloadLink"
 
 jest.mock("react-relay", () => ({
   fetchQuery: jest.fn(),

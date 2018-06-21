@@ -1,6 +1,6 @@
+import { ErrorBoundary } from "Components/ErrorBoundary"
 import React from "react"
 import ReactDOM from "react-dom/server"
-import { ErrorBoundary } from "Components/ErrorBoundary"
 
 interface Props {
   maxLineCount?: number

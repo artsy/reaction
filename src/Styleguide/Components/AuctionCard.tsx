@@ -1,9 +1,9 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
-import { Serif, Sans } from "@artsy/palette"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export interface AuctionCardProps {
   src: string

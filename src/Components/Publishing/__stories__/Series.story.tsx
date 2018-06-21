@@ -5,8 +5,8 @@ import { SeriesTitle } from "../Series/SeriesTitle"
 
 import {
   SeriesArticle,
-  SeriesArticleSponsored,
   SeriesArticleCustomSubTitle,
+  SeriesArticleSponsored,
 } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
 

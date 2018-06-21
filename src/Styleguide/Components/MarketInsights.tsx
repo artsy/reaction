@@ -1,8 +1,8 @@
-import React from "react"
-import { Responsive } from "Styleguide/Utils/Responsive"
-import { Box, BorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Sans } from "@artsy/palette"
+import React from "react"
+import { BorderBox, Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 const wrapper = xs => props =>
   xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />

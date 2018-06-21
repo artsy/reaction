@@ -1,7 +1,7 @@
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { garamond } from "Assets/Fonts"
 
 interface NewsHeadlineProps {
   article: any

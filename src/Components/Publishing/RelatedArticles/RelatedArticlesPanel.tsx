@@ -1,8 +1,8 @@
+import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { garamond, unica } from "Assets/Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string

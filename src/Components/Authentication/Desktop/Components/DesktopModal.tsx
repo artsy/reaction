@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import styled from "styled-components"
+import Colors from "Assets/Colors"
+import { ModalOptions } from "Components/Authentication/Types"
 import Icon from "Components/Icon"
 import Modal, { ModalProps } from "Components/Modal/Modal"
-import { ModalOptions } from "Components/Authentication/Types"
-import Colors from "Assets/Colors"
-import { DesktopHeader } from "./DesktopHeader"
-import { track } from "Utils/track"
+import React, { Component } from "react"
+import styled from "styled-components"
 import Events from "Utils/Events"
+import { track } from "Utils/track"
+import { DesktopHeader } from "./DesktopHeader"
 
 export interface DesktopModalProps extends ModalProps {
   subtitle?: string

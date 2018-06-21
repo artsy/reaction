@@ -1,36 +1,33 @@
-import { commitMutation } from "react-relay"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import renderer from "react-test-renderer"
 import React from "react"
+import { commitMutation } from "react-relay"
+import renderer from "react-test-renderer"
+import { ContextProvider } from "../../Artsy"
 import { FollowButton } from "../Button"
 import FollowArtistButton from "../FollowArtistButton"
-import { ContextProvider } from "../../Artsy"
 
-jest.mock('react-relay', () => ({
+jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
-  createFragmentContainer: component => component
+  createFragmentContainer: component => component,
 }))
 
 jest.mock("../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("FollowArtistButton", () => {
-  let props
-  const getWrapper = (props, currentUser = {}) => {
+  const getWrapper = (props = {}, currentUser = {}) => {
     return mount(
       <ContextProvider currentUser={currentUser}>
-        <FollowArtistButton
-          relay={{ environment: '' }}
-          {...props}
-        />
+        <FollowArtistButton relay={{ environment: "" }} {...props} />
       </ContextProvider>
     )
   }
 
   window.location.assign = jest.fn()
 
+  let props
   beforeEach(() => {
     props = {
       artist: {
@@ -40,7 +37,7 @@ describe("FollowArtistButton", () => {
       },
       onOpenAuthModal: jest.fn(),
       tracking: {
-        trackEvent: jest.fn()
+        trackEvent: jest.fn(),
       },
     }
   })
@@ -67,6 +64,7 @@ describe("FollowArtistButton", () => {
       expect(args[0]).toBe("register")
       expect(args[1].context_module).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow artist")
+      expect(args[1].copy).toBe("Sign up to follow artists")
     })
 
     it("Follows an artist if current user", () => {
@@ -92,7 +90,9 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Followed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Followed Artist"
+      )
     })
 
     it("Tracks unfollow click when unfollowing", () => {
@@ -100,17 +100,21 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe("Unfollowed Artist")
+      expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
+        "Unfollowed Artist"
+      )
     })
 
     it("Tracks with custom trackingData if provided", () => {
       props.trackingData = {
-        context_module: "tooltip"
+        context_module: "tooltip",
       }
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButton).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe("tooltip")
+      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe(
+        "tooltip"
+      )
     })
   })
 })

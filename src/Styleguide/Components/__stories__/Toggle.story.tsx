@@ -1,12 +1,12 @@
+import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import styled from "styled-components"
+import { Checkbox } from "Styleguide/Elements/Checkbox"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Radio } from "Styleguide/Elements/Radio"
 import { Section } from "Styleguide/Utils/Section"
 import { Toggle } from "../Toggle"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Radio } from "Styleguide/Elements/Radio"
-import { Sans, Serif } from "@artsy/palette"
-import { Flex } from "Styleguide/Elements/Flex"
-import styled from "styled-components"
 
 storiesOf("Styleguide/Components", module).add("Toggle", () => {
   return (

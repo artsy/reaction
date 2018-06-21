@@ -1,7 +1,7 @@
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Avatar } from "../Avatar"
-import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Avatar", () => {
   return (

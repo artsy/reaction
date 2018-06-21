@@ -1,13 +1,13 @@
+import { Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { Serif } from "@artsy/palette"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Spacer } from "Styleguide/Elements/Spacer"
-import { Button } from "Styleguide/Elements/Button"
-import { Responsive } from "Styleguide/Utils/Responsive"
-import { Box } from "Styleguide/Elements/Box"
 import { LargeSlider, SmallSlider } from "Styleguide/Components/Slider"
+import { Box } from "Styleguide/Elements/Box"
+import { Button } from "Styleguide/Elements/Button"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
+import { Spacer } from "Styleguide/Elements/Spacer"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 export class ArtistHeader extends React.Component {
   render() {

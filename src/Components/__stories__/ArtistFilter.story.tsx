@@ -2,8 +2,8 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Browser } from "../ArtistFilter"
 
-import { ContextProvider } from "../Artsy"
 import { Provider as StateProvider } from "unstated"
+import { ContextProvider } from "../Artsy"
 
 storiesOf("Components/ArtistFilter/Browser", module).add(
   "Pablo Picasso",

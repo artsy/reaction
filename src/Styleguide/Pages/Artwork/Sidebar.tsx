@@ -1,11 +1,14 @@
+import { Serif } from "@artsy/palette"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { Separator } from "Styleguide/Elements/Separator"
+import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
+import { AuctionBidInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionBidInfo"
+import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
+import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
+import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
+import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
 import { Artists } from "./Sidebar/Artists"
-import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
-import { Commercial } from "./Sidebar/Commercial"
-import { PartnerInfo } from "./Sidebar/PartnerInfo"
-import { ExtraLinks } from "./Sidebar/ExtraLinks"
 
 export interface ArtworkSidebarProps {
   readonly artwork: {
@@ -27,10 +30,14 @@ export interface ArtworkSidebarProps {
       }>
     }
     readonly sale: {
+      readonly is_open: boolean
+      readonly is_closed: boolean
       readonly is_live_open: boolean
+      readonly is_with_buyers_premium?: boolean
     }
     readonly sale_artwork: {
       readonly lot_label: string
+      readonly estimate?: string
     }
     readonly is_in_auction: boolean
     readonly is_biddable: boolean
@@ -71,10 +78,30 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
     return (
       <SidebarContainer>
         <Artists artists={artwork.artists} />
+
+        {artwork.is_biddable &&
+          artwork.sale_artwork &&
+          artwork.sale_artwork.lot_label && (
+            <Serif size="2" weight="semibold" color="black100">
+              Lot {artwork.sale_artwork.lot_label}
+            </Serif>
+          )}
         <ArtworkMetadata artwork={artwork} />
-        <Separator />
-        <Commercial artwork={artwork} />
-        <PartnerInfo artwork={artwork} />
+
+        {artwork.is_in_auction ? (
+          <React.Fragment>
+            <AuctionPartnerInfo artwork={artwork} />
+            <Separator />
+            <AuctionBidInfo artwork={artwork} />
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Separator />
+            <Commercial artwork={artwork} />
+            <PartnerInfo artwork={artwork} />
+          </React.Fragment>
+        )}
+
         <Separator />
         <ExtraLinks artwork={artwork} />
       </SidebarContainer>

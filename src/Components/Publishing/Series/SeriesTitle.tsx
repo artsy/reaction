@@ -1,8 +1,8 @@
+import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
-import { PartnerBlock, ImageContainer } from "../Partner/PartnerBlock"
+import { ImageContainer, PartnerBlock } from "../Partner/PartnerBlock"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   article?: any

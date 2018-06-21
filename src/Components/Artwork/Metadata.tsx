@@ -1,8 +1,8 @@
+import colors from "Assets/Colors"
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import colors from "Assets/Colors"
-import { garamond } from "Assets/Fonts"
 
 import RelayContact, { Contact } from "./Contact"
 import RelayDetails, { Details } from "./Details"

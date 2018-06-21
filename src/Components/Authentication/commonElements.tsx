@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import Colors from "Assets/Colors"
 import { growAndFadeIn } from "Assets/Animations"
+import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import Button from "Components/Buttons/Inverted"
+import React from "react"
+import styled from "styled-components"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
 

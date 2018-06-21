@@ -1,9 +1,9 @@
+import { unica } from "Assets/Fonts"
 import { omit } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
-import { unica } from "Assets/Fonts"
 import { Caption } from "./Caption"
 
 interface ImageProps {

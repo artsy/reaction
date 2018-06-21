@@ -1,11 +1,11 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
+import { Section } from "Styleguide/Utils/Section"
 import {
   SelectedExhibitions,
   SelectedExhibitionsContainer,
 } from "../SelectedExhibitions"
-import { Section } from "Styleguide/Utils/Section"
-import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 
 storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
   return (

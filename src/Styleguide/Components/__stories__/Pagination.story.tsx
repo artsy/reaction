@@ -1,32 +1,11 @@
 import React from "react"
-import { Section } from "Styleguide/Utils/Section"
 import { storiesOf } from "storybook/storiesOf"
-import { Pagination, LargePagination, SmallPagination } from "../Pagination"
+import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
+import { Section } from "Styleguide/Utils/Section"
+import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 storiesOf("Styleguide/Components", module).add("Pagination", () => {
-  const around = [
-    { page: 6, cursor: "blah", isCurrent: true },
-    { page: 7, cursor: "blah", isCurrent: false },
-    { page: 8, cursor: "blah", isCurrent: false },
-    { page: 9, cursor: "blah", isCurrent: false },
-  ]
-
-  const first = { page: 1, cursor: "blah", isCurrent: false }
-
-  const last = { page: 20, cursor: "blah", isCurrent: false }
-
-  const cursor = { first, last, around }
-
-  // tslint:disable-next-line:no-console
-  const consoleLogValue = value => console.log(value)
-  // tslint:disable-next-line:no-console
-  const emptyLog = () => console.log(`Logging`)
-
-  const callbacks = {
-    onClick: consoleLogValue,
-    onNext: emptyLog,
-    onPrev: emptyLog,
-  }
+  const { cursor, callbacks } = paginationProps
 
   return (
     <React.Fragment>

@@ -220,20 +220,6 @@ exports[`ArticleCard renders properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c2 {
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
-}
-
-.c7 {
-  color: black;
-}
-
-.c7 .c9 {
-  margin-bottom: 60px;
-}
-
 .c6 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -246,6 +232,20 @@ exports[`ArticleCard renders properly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c2 {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 12px;
+}
+
+.c7 {
+  color: black;
+}
+
+.c7 .c9 {
+  margin-bottom: 60px;
 }
 
 .c0 {
@@ -367,18 +367,18 @@ exports[`ArticleCard renders properly 1`] = `
   }
 }
 
-@media (max-width:64em) {
-  .c7 .c9 {
-    margin-bottom: 40px;
-  }
-}
-
 @media (max-width:720px) {
   .c6 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.4em;
+  }
+}
+
+@media (max-width:64em) {
+  .c7 .c9 {
+    margin-bottom: 40px;
   }
 }
 

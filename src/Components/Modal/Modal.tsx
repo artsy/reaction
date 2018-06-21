@@ -1,6 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 import { Spring } from "react-spring"
+import styled from "styled-components"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean

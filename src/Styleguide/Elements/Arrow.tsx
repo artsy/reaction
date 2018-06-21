@@ -1,5 +1,5 @@
-import React from "react"
 import Icon from "Components/Icon"
+import React from "react"
 import { ColorProps, SizeProps } from "styled-system"
 
 interface ArrowProps extends ColorProps, SizeProps {

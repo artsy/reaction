@@ -1,3 +1,4 @@
+import { avantgarde, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import request from "superagent"
@@ -7,7 +8,6 @@ import { track } from "../../../Utils/track"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
-import { avantgarde, unica } from "Assets/Fonts"
 
 interface EmailPanelProps {
   signupUrl: string

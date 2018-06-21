@@ -5,12 +5,12 @@ import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Nav } from "../Nav/Nav"
+import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 import { ArticleData } from "../Typings"
 import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
 import { MaxRow } from "../Video/Shared"
 import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
-import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 
 interface Props {
   article: ArticleData

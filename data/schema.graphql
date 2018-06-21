@@ -68,6 +68,7 @@ type ArticleConnection {
   # A list of edges.
   edges: [ArticleEdge]
   pageCursors: PageCursors
+  totalCount: Int
 }
 
 # An edge in a connection.
@@ -300,6 +301,7 @@ type ArtistConnection {
   # A list of edges.
   edges: [ArtistEdge]
   pageCursors: PageCursors
+  totalCount: Int
 }
 
 type ArtistCounts {
@@ -697,6 +699,7 @@ type ArtworkConnection {
   # A list of edges.
   edges: [ArtworkEdge]
   pageCursors: PageCursors
+  totalCount: Int
 }
 
 union ArtworkContext = ArtworkContextAuction | ArtworkContextFair | ArtworkContextPartnerShow | ArtworkContextSale
@@ -1455,6 +1458,7 @@ type AuctionResultConnection {
   # A list of edges.
   edges: [AuctionResultEdge]
   pageCursors: PageCursors
+  totalCount: Int
 }
 
 # An edge in a connection.
@@ -5408,6 +5412,7 @@ type ShowConnection {
   # A list of edges.
   edges: [ShowEdge]
   pageCursors: PageCursors
+  totalCount: Int
 }
 
 type ShowCounts {

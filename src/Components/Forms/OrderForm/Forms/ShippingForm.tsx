@@ -1,11 +1,11 @@
 import React, { Fragment } from "react"
-import { Row, Col } from "react-styled-flexboxgrid"
+import { Col, Row } from "react-styled-flexboxgrid"
+import InvertedButton from "../../../Buttons/Inverted"
 import Text from "../../../Text"
 import Title from "../../../Title"
-import InvertedButton from "../../../Buttons/Inverted"
-import { Field } from "../../support"
-import { StyledGrid as Grid, Contact } from "./common"
 import { WizardStepChildProps } from "../../../Wizard/types"
+import { Field } from "../../support"
+import { Contact, StyledGrid as Grid } from "./common"
 
 export const ShippingForm: React.SFC<WizardStepChildProps> = ({
   form,

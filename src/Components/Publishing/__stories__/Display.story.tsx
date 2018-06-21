@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react"
 import { clone, extend } from "lodash"
 import React from "react"
+import { getCurrentUnixTimestamp } from "../Constants"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { StandardArticle } from "../Fixtures/Articles"
 import { Sections } from "../Sections/Sections"
-import { getCurrentUnixTimestamp } from "../Constants"
 
 import {
   Campaign,

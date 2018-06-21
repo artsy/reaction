@@ -1,17 +1,17 @@
 import "isomorphic-fetch"
 import "regenerator-runtime/runtime"
 
-import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 import RelayClientSSR from "react-relay-network-modern-ssr/lib/client"
+import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 import { Environment, RecordSource, Store } from "relay-runtime"
-import { NetworkError } from "../Utils/errors"
 import { data as sd } from "sharify"
+import { NetworkError } from "../Utils/errors"
 
 import {
-  RelayNetworkLayer,
-  urlMiddleware,
   cacheMiddleware,
   loggerMiddleware,
+  RelayNetworkLayer,
+  urlMiddleware,
 } from "react-relay-network-modern"
 
 interface Config {
