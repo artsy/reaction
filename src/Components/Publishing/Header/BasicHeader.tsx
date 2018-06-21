@@ -1,9 +1,9 @@
+import styled from "styled-components"
 import React from "react"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
-import styled, { css, StyledFunction } from "styled-components"
+import { Sans } from "@artsy/palette"
 import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
-import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { ShareContainer as ShareContainerStyles } from "../Byline/Share"
@@ -93,11 +93,11 @@ export class BasicHeader extends React.Component<Props, State> {
                     <Row>
                       <Col xs sm md lg>
                         {/* TODO: should this be deck? */}
-                        <LeadParagraph
-                          dangerouslySetInnerHTML={{
-                            __html: lead_paragraph,
-                          }}
-                        />
+                        <Deck size="3t" weight="medium">
+                          <div
+                            dangerouslySetInnerHTML={{ __html: lead_paragraph }}
+                          />
+                        </Deck>
                       </Col>
                     </Row>
                     <Row>
@@ -127,15 +127,7 @@ const Description = styled.div`
   margin: auto;
 `
 
-const defaults = css`
-  ${unica("s16", "medium")};
-  line-height: 1.1em;
-  margin-bottom: 10px;
-`
-
-const div: StyledFunction<{ hasVideo: boolean }> = styled.div
-
-const Container = div`
+const Container = styled.div.attrs<{ hasVideo: boolean }>({})`
   text-align: center;
   margin-top: 70px;
 
@@ -145,25 +137,26 @@ const Container = div`
     margin-top: -40px;
   `}
 
-  ${CoverImage}, ${IFrame} {
+  ${CoverImage},
+  ${IFrame} {
     width: 100%;
 
     @media screen and (min-width: 1250px) {
       height: ${1100 * VIDEO_RATIO}px;
     }
-    ${breakpoint.xl`
+    ${pMedia.xl`
       height: ${1100 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.lg`
+    ${pMedia.lg`
       height: ${950 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.md`
+    ${pMedia.md`
       height: ${800 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.sm`
+    ${pMedia.sm`
       height: ${620 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.xs`
+    ${pMedia.xs`
       height: ${340 * VIDEO_RATIO}px;
       margin-top: 25px;
       margin-bottom: -25px;
@@ -178,7 +171,7 @@ const Container = div`
       padding-right: 30px;
     }
 
-    ${breakpoint.xs`
+    ${pMedia.xs`
       display: flex;
       flex-flow: row wrap;
       align-items: center;
@@ -204,18 +197,15 @@ const Title = styled.div`
   letter-spacing: -0.035em;
   max-width: 1250px;
   margin: 0 auto 27px auto;
-  ${breakpoint.md`
+  ${pMedia.md`
     font-size: 60px;
   `};
-  ${breakpoint.xs`
+  ${pMedia.xs`
     font-size: 40px;
     margin-bottom: 15px;
   `};
 `
 
-const LeadParagraph = styled.div`
-  ${defaults};
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
+const Deck = Sans.extend`
+  margin-bottom: 10px;
 `

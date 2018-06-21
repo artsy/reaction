@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
@@ -100,10 +101,6 @@ function isVideo(url) {
   return url.includes("mp4")
 }
 
-const renderDeck = deck => {
-  return deck ? <Deck>{deck}</Deck> : false
-}
-
 interface FeatureHeaderProps {
   article?: any
   date?: string
@@ -195,7 +192,11 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                     image
                   )}
                   <SubHeader>
-                    {renderDeck(deck)}
+                    {deck && (
+                      <Deck size="3t" weight="medium">
+                        {deck}
+                      </Deck>
+                    )}
                     <Byline
                       article={article}
                       layout={type}
@@ -311,14 +312,11 @@ const Title = styled.div`
     ${unica("s45")}
   `};
 `
-const Deck = styled.div`
+const Deck = Sans.extend`
   max-width: 460px;
   margin-right: 30px;
-  ${unica("s16", "medium")};
-  line-height: 1.4em;
   ${pMedia.sm`
     margin-bottom: 28px;
-    ${unica("s14", "medium")}
   `};
 `
 const FeatureHeaderContainer = styled(Div)`
