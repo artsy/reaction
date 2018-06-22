@@ -1,3 +1,58 @@
+export const VideoArtwork = {
+  __id: "QXJ0d29yazpqZXJlbXktY2hhbmRsZXItcHJvbmUtcG9zaXRpb24=",
+  artists: [
+    {
+      __id: "QXJ0aXN0OmplcmVteS1jaGFuZGxlcg==",
+      id: "jeremy-chandler",
+      name: "Jeremy Chandler",
+      is_followed: false,
+      href: "/artist/jeremy-chandler",
+      is_consignable: false,
+    },
+  ],
+  partner: {
+    __id: "UGFydG5lcjptaW5keS1zb2xvbW9uLWdhbGxlcnk=",
+    name: "Mindy Solomon Gallery",
+    href: "/mindy-solomon-gallery",
+    locations: [
+      {
+        city: "Miami",
+      },
+    ],
+  },
+  sale: null,
+  sale_artwork: null,
+  is_in_auction: false,
+  is_biddable: false,
+  is_sold: false,
+  title: "Prone Position",
+  date: "2015",
+  medium: "2 min. 40 sec. short film",
+  dimensions: {
+    in: null,
+    cm: null,
+  },
+  collecting_institution: null,
+  edition_of: "Edition of 12",
+  attribution_class: {
+    short_description: "This is part of a limited edition set",
+  },
+  edition_sets: [
+    {
+      __id: "RWRpdGlvblNldDo1NmFiOWE0MjlhY2M4YTY2OTUwMDAwNjI=",
+      dimensions: {
+        cm: null,
+        in: null,
+      },
+      sale_message: "$850",
+      edition_of: "Edition of 12",
+    },
+  ],
+  sale_message: "$850",
+  is_inquireable: true,
+  is_price_range: false,
+  is_for_sale: true,
+}
 export const CollecingInstitutionArtwork = {
   __id:
     "QXJ0d29yazpyZW1icmFuZHQtdmFuLXJpam4tZ2FueW1lZGUtaW4tdGhlLWNsYXdzLW9mLXRoZS1lYWdsZQ==",
@@ -350,6 +405,7 @@ export const RegularArtwork2Editions = {
   is_for_sale: true,
 }
 
+// gideon-rubin-elba-number-5-and-the-eccentricities-of-a-nightingale
 export const OpenAuctionArtwork = {
   __id:
     "QXJ0d29yazpnaWRlb24tcnViaW4tZWxiYS1udW1iZXItNS1hbmQtdGhlLWVjY2VudHJpY2l0aWVzLW9mLWEtbmlnaHRpbmdhbGU=",
@@ -375,7 +431,19 @@ export const OpenAuctionArtwork = {
     is_live_open: false,
     is_with_buyers_premium: true,
   },
-  sale_artwork: { lot_label: "2", estimate: "$700–$900" },
+  sale_artwork: {
+    lot_label: "2",
+    estimate: "$700–$900",
+    is_with_reserve: true,
+    reserve_message: "Reserve met",
+    reserve_status: "reserve_met",
+    current_bid: {
+      display: "$450",
+    },
+    counts: {
+      bidder_positions: 3,
+    },
+  },
   is_in_auction: true,
   is_biddable: true,
   is_sold: false,
@@ -393,6 +461,7 @@ export const OpenAuctionArtwork = {
   is_for_sale: true,
 }
 
+// ai-weiwei-odyssey-from-good-fences-make-good-neighbors-poster-1
 export const LiveAuctionArtwork = {
   __id:
     "QXJ0d29yazphaS13ZWl3ZWktb2R5c3NleS1mcm9tLWdvb2QtZmVuY2VzLW1ha2UtZ29vZC1uZWlnaGJvcnMtcG9zdGVyLTE=",
@@ -418,7 +487,19 @@ export const LiveAuctionArtwork = {
     is_live_open: true,
     is_with_buyers_premium: true,
   },
-  sale_artwork: { lot_label: "14002", estimate: "$800–$1,200" },
+  sale_artwork: {
+    lot_label: "14002",
+    estimate: "$800–$1,200",
+    is_with_reserve: false,
+    reserve_message: null,
+    reserve_status: "no_reserve",
+    current_bid: {
+      display: "$400",
+    },
+    counts: {
+      bidder_positions: 1,
+    },
+  },
   is_in_auction: true,
   is_biddable: true,
   is_sold: false,
@@ -443,6 +524,7 @@ export const LiveAuctionArtwork = {
   is_for_sale: true,
 }
 
+// marc-chagall-paris-de-la-fenetre-paris-through-the-window
 export const ClosedAuctionArtwork = {
   __id:
     "QXJ0d29yazptYXJjLWNoYWdhbGwtcGFyaXMtZGUtbGEtZmVuZXRyZS1wYXJpcy10aHJvdWdoLXRoZS13aW5kb3c=",
@@ -468,7 +550,19 @@ export const ClosedAuctionArtwork = {
     is_live_open: false,
     is_with_buyers_premium: true,
   },
-  sale_artwork: { lot_label: "2", estimate: "£15,000–£20,000" },
+  sale_artwork: {
+    lot_label: "2",
+    estimate: "£15,000–£20,000",
+    is_with_reserve: false,
+    reserve_message: null,
+    reserve_status: "no_reserve",
+    current_bid: {
+      display: "£12,000",
+    },
+    counts: {
+      bidder_positions: 0,
+    },
+  },
   is_in_auction: true,
   is_biddable: false,
   is_sold: false,

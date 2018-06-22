@@ -3,9 +3,9 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { Separator } from "Styleguide/Elements/Separator"
 import { ArtworkMetadata } from "Styleguide/Pages/Artwork/Sidebar/ArtworkMetadata"
-import { AuctionBidInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionBidInfo"
 import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
 import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
+import { CurrentBidInfo } from "Styleguide/Pages/Artwork/Sidebar/CurrentBidInfo"
 import { ExtraLinks } from "Styleguide/Pages/Artwork/Sidebar/ExtraLinks"
 import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
 import { Artists } from "./Sidebar/Artists"
@@ -37,7 +37,16 @@ export interface ArtworkSidebarProps {
     }
     readonly sale_artwork: {
       readonly lot_label: string
-      readonly estimate?: string
+      readonly estimate: string
+      readonly is_with_reserve: boolean
+      readonly reserve_message: string
+      readonly reserve_status: string
+      readonly current_bid: {
+        readonly display: string
+      }
+      readonly counts: {
+        readonly bidder_positions: number
+      }
     }
     readonly is_in_auction: boolean
     readonly is_biddable: boolean
@@ -92,7 +101,7 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
           <React.Fragment>
             <AuctionPartnerInfo artwork={artwork} />
             <Separator />
-            <AuctionBidInfo artwork={artwork} />
+            <CurrentBidInfo artwork={artwork} />
           </React.Fragment>
         ) : (
           <React.Fragment>

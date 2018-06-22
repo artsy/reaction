@@ -12,6 +12,7 @@ import {
   RegularArtwork2Editions,
   RegularArtworkWithOneEdition,
   RegularNonEditionedArtwork,
+  VideoArtwork,
 } from "Styleguide/Pages/Fixtures/Artworks"
 
 storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {
@@ -31,6 +32,9 @@ storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {
       </Section>
       <Section title="Regular artwork with 2 editions">
         <Sidebar artwork={RegularArtwork2Editions} />
+      </Section>
+      <Section title="Video artwork">
+        <Sidebar artwork={VideoArtwork} />
       </Section>
       <Section title="Current auction artwork with bidding allowed">
         <Sidebar artwork={OpenAuctionArtwork} />
