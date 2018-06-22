@@ -1,5 +1,7 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
+import { PreloadLink } from "Router"
+import { PreloadLinkProps } from "Router/types"
 import styled from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
@@ -49,12 +51,17 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   renderTab = (tab, index) => {
-    const { name } = tab.props
+    const { name, children, ...preloadProps } = tab.props
+    const buttonContent = Object.keys(preloadProps).length ? (
+      <PreloadLink {...preloadProps}>{name}</PreloadLink>
+    ) : (
+      name
+    )
     return this.state.activeTabIndex === index ? (
-      <ActiveTabButton key={index}>{name}</ActiveTabButton>
+      <ActiveTabButton key={index}>{buttonContent}</ActiveTabButton>
     ) : (
       <TabButton key={index} onClick={() => this.setActiveTab(index)}>
-        {name}
+        {buttonContent}
       </TabButton>
     )
   }
@@ -76,7 +83,10 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 interface TabProps {
   name: string
 }
-export class Tab extends React.Component<TabProps> {
+interface PreloadLinkTabProps extends TabProps, PreloadLinkProps {
+  children: never
+}
+export class Tab extends React.Component<TabProps | PreloadLinkTabProps> {
   render() {
     return this.props.children || null
   }

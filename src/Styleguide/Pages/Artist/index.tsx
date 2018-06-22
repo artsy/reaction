@@ -1,8 +1,7 @@
 import React from "react"
-import { PreloadLink } from "Router/PreloadLink"
 import { StorybooksRouter } from "Router/StorybooksRouter"
 import { Footer } from "Styleguide/Components/Footer"
-import { Tabs } from "Styleguide/Components/Tabs"
+import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
@@ -15,8 +14,6 @@ import { CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRoute } from "./Routes/Shows"
-
-const Tab = PreloadLink
 
 export const Artist = () => {
   return (
@@ -39,24 +36,12 @@ export const Artist = () => {
                   return (
                     <React.Fragment>
                       <Tabs initialTabIndex={0}>
-                        <Tab to="/" name="Overview">
-                          <Overview />
-                        </Tab>
-                        <Tab to="/cv" name="CV">
-                          <CVRoute />
-                        </Tab>
-                        <Tab to="/articles" name="Articles">
-                          <ArticlesRoute />
-                        </Tab>
-                        <Tab to="/shows" name="Shows">
-                          <ShowsRoute />
-                        </Tab>
-                        <Tab to="/auction-results" name="Auction results">
-                          <AuctionResultsRoute />
-                        </Tab>
-                        <Tab to="related-artists" name="Related artists">
-                          <RelatedArtistsRoute />
-                        </Tab>
+                        <Tab to="/" name="Overview" />
+                        <Tab to="/cv" name="CV" />
+                        <Tab to="/articles" name="Articles" />
+                        <Tab to="/shows" name="Shows" />
+                        <Tab to="/auction-results" name="Auction results" />
+                        <Tab to="related-artists" name="Related artists" />
                       </Tabs>
                     </React.Fragment>
                   )
