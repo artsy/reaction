@@ -1,5 +1,5 @@
-import React from "react"
 import { mount } from "enzyme"
+import React from "react"
 import {
   CloseButton,
   DesktopModal,
@@ -24,7 +24,7 @@ describe("DesktopModal", () => {
       </DesktopModal>
     )
 
-  it("login form", () => {
+  it("renders children", () => {
     const wrapper = getWrapper()
     expect(wrapper.html()).toMatch("Modal Contents")
   })
