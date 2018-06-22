@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -69,7 +69,10 @@ export const Shows = () => {
                 <Row>
                   <Col>
                     <Flex justifyContent="flex-end">
-                      <Pagination {...cursor} {...callbacks} />
+                      <PaginationFragmentContainer
+                        pageCursors={cursor}
+                        {...callbacks}
+                      />
                     </Flex>
                   </Col>
                 </Row>
@@ -104,7 +107,10 @@ export const Shows = () => {
                 <Row>
                   <Col>
                     <Flex mb={2} justifyContent="flex-end">
-                      <Pagination {...cursor} {...callbacks} />
+                      <PaginationFragmentContainer
+                        pageCursors={cursor}
+                        {...callbacks}
+                      />
                     </Flex>
                   </Col>
                 </Row>
@@ -139,7 +145,10 @@ export const Shows = () => {
                 <Row>
                   <Col>
                     <Flex mb={3} justifyContent="flex-end">
-                      <Pagination {...cursor} {...callbacks} />
+                      <PaginationFragmentContainer
+                        pageCursors={cursor}
+                        {...callbacks}
+                      />
                     </Flex>
                   </Col>
                 </Row>

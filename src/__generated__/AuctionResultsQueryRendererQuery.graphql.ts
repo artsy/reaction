@@ -35,21 +35,7 @@ fragment AuctionResultsRefetchContainer_artist_13W90y on Artist {
       endCursor
     }
     pageCursors {
-      around {
-        cursor
-        page
-        isCurrent
-      }
-      first {
-        cursor
-        page
-        isCurrent
-      }
-      last {
-        cursor
-        page
-        isCurrent
-      }
+      ...Pagination_pageCursors
     }
     edges {
       node {
@@ -76,6 +62,24 @@ fragment AuctionResultsRefetchContainer_artist_13W90y on Artist {
     }
   }
   __id
+}
+
+fragment Pagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
 }
 */
 
@@ -150,7 +154,7 @@ return {
   "operationKind": "query",
   "name": "AuctionResultsQueryRendererQuery",
   "id": null,
-  "text": "query AuctionResultsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: AuctionResultSorts\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_13W90y\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_13W90y on Artist {\n  id\n  auctionResults(first: $first, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: AuctionResultSorts\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_13W90y\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_13W90y on Artist {\n  id\n  auctionResults(first: $first, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

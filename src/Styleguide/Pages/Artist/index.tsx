@@ -38,7 +38,7 @@ export const Artist = () => {
                 Component: ({ children }) => {
                   return (
                     <React.Fragment>
-                      <Tabs initialTabIndex={0}>
+                      <Tabs initialTabIndex={2}>
                         <Tab to="/" name="Overview">
                           <Overview />
                         </Tab>

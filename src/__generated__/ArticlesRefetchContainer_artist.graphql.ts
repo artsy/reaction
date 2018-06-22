@@ -10,23 +10,7 @@ export type ArticlesRefetchContainer_artist = {
             readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
-            readonly around: ReadonlyArray<{
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }>;
-            readonly first: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-            readonly last: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-        }) | null;
+        readonly pageCursors: ({}) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly href: string | null;
@@ -48,30 +32,7 @@ export type ArticlesRefetchContainer_artist = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "isCurrent",
-    "args": null,
-    "storageKey": null
-  }
-],
-v1 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -212,34 +173,9 @@ return {
           "plural": false,
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "around",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": true,
-              "selections": v0
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "first",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v0
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "last",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v0
+              "kind": "FragmentSpread",
+              "name": "Pagination_pageCursors",
+              "args": null
             }
           ]
         },
@@ -291,7 +227,7 @@ return {
                       "args": null,
                       "storageKey": null
                     },
-                    v1
+                    v0
                   ]
                 },
                 {
@@ -344,16 +280,16 @@ return {
                     }
                   ]
                 },
-                v1
+                v0
               ]
             }
           ]
         }
       ]
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = '2ddf84ba25012ea4761a56dd723d2f7f';
+(node as any).hash = 'c0a2419365ae6ac4b4323fe0279b1ec4';
 export default node;
