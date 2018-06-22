@@ -54,18 +54,23 @@ fragment RelatedArtistsRefetchContainer_artist_8ukLP on Artist {
       }
       edges {
         node {
-          name
-          image {
-            cropped(width: 400, height: 300) {
-              url
-            }
-          }
-          formatted_nationality_and_birthday
+          ...ArtistCard_artist
           __id
         }
       }
     }
   }
+  __id
+}
+
+fragment ArtistCard_artist on Artist {
+  name
+  image {
+    cropped(width: 400, height: 300) {
+      url
+    }
+  }
+  formatted_nationality_and_birthday
   __id
 }
 */
@@ -134,7 +139,7 @@ return {
   "operationKind": "query",
   "name": "RelatedArtistsQueryRendererQuery",
   "id": null,
-  "text": "query RelatedArtistsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $kind: RelatedArtistsKind!\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_8ukLP\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_8ukLP on Artist {\n  id\n  related {\n    artists(first: $first, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        around {\n          cursor\n          page\n          isCurrent\n        }\n        first {\n          cursor\n          page\n          isCurrent\n        }\n        last {\n          cursor\n          page\n          isCurrent\n        }\n      }\n      edges {\n        node {\n          name\n          image {\n            cropped(width: 400, height: 300) {\n              url\n            }\n          }\n          formatted_nationality_and_birthday\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query RelatedArtistsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $kind: RelatedArtistsKind!\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_8ukLP\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_8ukLP on Artist {\n  id\n  related {\n    artists(first: $first, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        around {\n          cursor\n          page\n          isCurrent\n        }\n        first {\n          cursor\n          page\n          isCurrent\n        }\n        last {\n          cursor\n          page\n          isCurrent\n        }\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

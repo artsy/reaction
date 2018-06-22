@@ -29,15 +29,7 @@ export type RelatedArtistsRefetchContainer_artist = {
                 }) | null;
             }) | null;
             readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly name: string | null;
-                    readonly image: ({
-                        readonly cropped: ({
-                            readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                    readonly formatted_nationality_and_birthday: string | null;
-                }) | null;
+                readonly node: ({}) | null;
             }) | null> | null;
         }) | null;
     }) | null;
@@ -269,60 +261,9 @@ return {
                   "plural": false,
                   "selections": [
                     {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "name",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "LinkedField",
-                      "alias": null,
-                      "name": "image",
-                      "storageKey": null,
-                      "args": null,
-                      "concreteType": "Image",
-                      "plural": false,
-                      "selections": [
-                        {
-                          "kind": "LinkedField",
-                          "alias": null,
-                          "name": "cropped",
-                          "storageKey": "cropped(height:300,width:400)",
-                          "args": [
-                            {
-                              "kind": "Literal",
-                              "name": "height",
-                              "value": 300,
-                              "type": "Int!"
-                            },
-                            {
-                              "kind": "Literal",
-                              "name": "width",
-                              "value": 400,
-                              "type": "Int!"
-                            }
-                          ],
-                          "concreteType": "CroppedImageUrl",
-                          "plural": false,
-                          "selections": [
-                            {
-                              "kind": "ScalarField",
-                              "alias": null,
-                              "name": "url",
-                              "args": null,
-                              "storageKey": null
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "formatted_nationality_and_birthday",
-                      "args": null,
-                      "storageKey": null
+                      "kind": "FragmentSpread",
+                      "name": "ArtistCard_artist",
+                      "args": null
                     },
                     v1
                   ]
@@ -337,5 +278,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e1b01bcf0de3337be16a5248d17e3aff';
+(node as any).hash = '9db2b9398ae4a12b64193c142fede252';
 export default node;
