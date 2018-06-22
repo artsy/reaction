@@ -20,23 +20,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
   margin-left: -0.5rem;
 }
 
-.c2 {
-  font-family: Unica77LLWebRegular;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c1 {
-  margin-right: 35px;
-}
-
-.c1 a {
-  color: white;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -49,14 +33,14 @@ exports[`Video Info Block matches the snapshot 1`] = `
     className="c0"
   >
     <div
-      className="c1 c2"
+      className="kUUSdr fhqIwK"
       fontFamily="Unica77LLWebRegular"
       fontSize={14}
     >
       The Future of Art
     </div>
     <div
-      className="c2"
+      className="uTxCW fhqIwK"
       fontFamily="Unica77LLWebRegular"
       fontSize={14}
     >
@@ -67,7 +51,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
     className="c0"
   >
     <span
-      className="c3"
+      className="c1"
     >
       Trevor Paglan
     </span>
@@ -95,23 +79,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   margin-left: -0.5rem;
 }
 
-.c2 {
-  font-family: Unica77LLWebRegular;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c1 {
-  margin-right: 35px;
-}
-
-.c1 a {
-  color: white;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -124,14 +92,14 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     className="c0"
   >
     <div
-      className="c1 c2"
+      className="kUUSdr fhqIwK"
       fontFamily="Unica77LLWebRegular"
       fontSize={14}
     >
       The Future of Art
     </div>
     <div
-      className="c2"
+      className="uTxCW fhqIwK"
       fontFamily="Unica77LLWebRegular"
       fontSize={14}
     >
@@ -142,7 +110,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     className="c0"
   >
     <span
-      className="c3"
+      className="c1"
     >
       <div>
         Child 

@@ -1,18 +1,18 @@
-import { clone } from "lodash"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { clone } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import {
+  FeatureArticle,
   SeriesArticleSponsored,
   StandardArticle,
   VideoArticle,
-  FeatureArticle,
 } from "../../../Fixtures/Articles"
+import { VerticalOrSeriesTitle } from "../../../Sections/VerticalOrSeriesTitle"
+import { SeriesAbout } from "../../../Series/SeriesAbout"
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCardsBlock } from "../Block"
-import { SeriesAbout } from "../../../Series/SeriesAbout"
-import { VerticalOrSeriesTitle } from "../../../Sections/VerticalOrSeriesTitle"
 
 jest.mock("../../../../../Utils/track.ts", () => ({
   track: () => jest.fn(c => c),

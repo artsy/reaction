@@ -1,17 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the related articles panel 1`] = `
-.c2 {
-  font-family: Unica77LLWebMedium;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c0 {
   max-width: 360px;
 }
 
-.c3 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21,11 +15,7 @@ exports[`renders the related articles panel 1`] = `
   flex-direction: column;
 }
 
-.c1 {
-  margin-bottom: 10px;
-}
-
-.c4 {
+.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
   display: -webkit-box;
@@ -39,17 +29,17 @@ exports[`renders the related articles panel 1`] = `
   margin-bottom: 20px;
 }
 
-.c4:last-child {
+.c2:last-child {
   margin-bottom: 0;
 }
 
-.c5 {
+.c3 {
   min-width: 80px;
   height: 55px;
   margin-right: 10px;
 }
 
-.c6 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
@@ -61,53 +51,53 @@ exports[`renders the related articles panel 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="sc-ifAKCX boUFRc bTNvyd"
     fontFamily="Unica77LLWebMedium"
     fontSize={14}
   >
     Related Stories
   </div>
   <div
-    className="c3"
+    className="c1"
   >
     <a
-      className="c4"
+      className="c2"
       href="/article/artsy-editorial-15-top-art-schools-united-states"
     >
       <img
-        className="c5"
+        className="c3"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=160&height=110&quality=95"
       />
       <span
-        className="c6"
+        className="c4"
       >
         The 15 Top Art Schools in the United States
       </span>
     </a>
     <a
-      className="c4"
+      className="c2"
       href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
     >
       <img
-        className="c5"
+        className="c3"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=160&height=110&quality=95"
       />
       <span
-        className="c6"
+        className="c4"
       >
         Four Years after Walter De Maria’s Death, His Final Work Is Complete
       </span>
     </a>
     <a
-      className="c4"
+      className="c2"
       href="/article/artsy-editorial-french-art-history-in-a-nutshell"
     >
       <img
-        className="c5"
+        className="c3"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=160&height=110&quality=95"
       />
       <span
-        className="c6"
+        className="c4"
       >
         French Art History in a Nutshell
       </span>

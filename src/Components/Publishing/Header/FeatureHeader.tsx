@@ -54,12 +54,8 @@ function renderAsset(url, title, imageChild) {
     )
   } else {
     const src = url.length && resize(url, { width: 1600 })
-    const alt = url.length ? title : ""
-    return (
-      <FeatureImage src={src} alt={alt}>
-        {imageChild}
-      </FeatureImage>
-    )
+
+    return <FeatureImage src={src}>{imageChild}</FeatureImage>
   }
 }
 
@@ -215,17 +211,12 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
   }
 }
 
-interface DivProps extends React.HTMLProps<HTMLDivElement> {
+interface DivProps {
   height?: string
   src?: string
 }
 
-const Div = styled.div`
-  width: 100%;
-  height: ${(props: DivProps) => props.height || "100%"};
-  box-sizing: border-box;
-`
-const Overlay = styled(Div)`
+const Overlay = styled.div`
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -233,8 +224,9 @@ const Overlay = styled(Div)`
     rgba(0, 0, 0, 0.3)
   );
 `
-const HeaderTextContainer = styled(Div)`
+const HeaderTextContainer = styled.div`
   margin: auto;
+  height: 100%;
   .PartnerInline {
     position: absolute;
     z-index: 1;
@@ -249,7 +241,7 @@ const HeaderTextContainer = styled(Div)`
     }
   `};
 `
-const HeaderText = styled(Div)`
+const HeaderText = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -259,21 +251,22 @@ const HeaderText = styled(Div)`
   color: #000;
   justify-content: flex-start;
 `
-const FeatureImage = styled(Div)`
+const FeatureImage = styled.div.attrs<DivProps>({})`
   position: absolute;
-  background-image: url(${(props: DivProps) => (props.src ? props.src : "")});
+  background-image: url(${props => (props.src ? props.src : "")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   right: 0;
   width: 100%;
+  height: 100%;
 `
 const FeatureVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `
-const FeatureVideoContainer = styled(Div)`
+const FeatureVideoContainer = styled.div`
   width: 100%;
   height: 100%;
   right: 0;
@@ -291,7 +284,6 @@ const TextAsset = styled.div`
   box-sizing: border-box;
 `
 const SubHeader = styled.div`
-  ${unica("s19", "medium")};
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -320,10 +312,10 @@ const Deck = Sans.extend`
     margin-bottom: 28px;
   `};
 `
-const FeatureHeaderContainer = styled(Div)`
+const FeatureHeaderContainer = styled.div.attrs<DivProps>({})`
   width: 100%;
   position: relative;
-  height: ${(props: DivProps) => props.height};
+  height: ${props => props.height};
 
   &[data-type="text"] {
     height: auto;

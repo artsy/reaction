@@ -37,30 +37,26 @@ const ClassicHeaderContainer = styled.div`
   text-align: center;
   p,
   > p {
-    ${garamond("s19")};
     line-height: 1.35em;
     text-align: left;
     max-width: 580px;
     width: 100%;
     margin: 0 auto;
     padding-bottom: 30px;
+    ${garamond("s19")};
   }
 
-  ${pMedia.xl`
-    padding: 0 20px;
-  `} ${pMedia.xs`
+  ${pMedia.xl`padding: 0 20px;`} ${pMedia.xs`
     text-align: left;
     p, > p {
-      ${garamond("s17")};
       line-height: 1.35em;
+      ${garamond("s17")}
     }
   `};
 `
 const Title = styled.div`
-  ${garamond("s37")};
   margin-bottom: 30px;
-
-  ${pMedia.xs`
+  ${garamond("s37")} ${pMedia.xs`
     ${garamond("s34")}
   `};
 `

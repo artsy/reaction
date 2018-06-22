@@ -1,3 +1,4 @@
+import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
 import styled from "styled-components"
@@ -65,7 +66,8 @@ export class VideoAbout extends Component<VideoAboutProps, null> {
 const Title = styled.div.attrs<{ color: string }>({})`
   color: ${props => props.color};
   margin-bottom: 15px;
-  ${unica("s34")} ${pMedia.sm`
+  ${unica("s34")};
+  ${pMedia.sm`
     ${unica("s32")}
   `};
 `

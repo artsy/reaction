@@ -129,8 +129,7 @@ const Container = styled.div.attrs<{ hasVideo: boolean }>({})`
     margin-top: -40px;
   `}
 
-  ${CoverImage},
-  ${IFrame} {
+  ${CoverImage}, ${IFrame} {
     width: 100%;
 
     @media screen and (min-width: 1250px) {
@@ -183,18 +182,19 @@ const Container = styled.div.attrs<{ hasVideo: boolean }>({})`
 `
 
 const Title = styled.div`
-  ${unica("s80", "regular")};
   line-height: 1.1em;
   letter-spacing: -0.035em;
   max-width: 1250px;
   margin: 0 auto 27px auto;
+  ${unica("s80", "regular")}
+
   ${pMedia.md`
     font-size: 60px;
-  `};
+  `}
   ${pMedia.xs`
     font-size: 40px;
     margin-bottom: 15px;
-  `};
+  `}
 `
 
 const Deck = Sans.extend`

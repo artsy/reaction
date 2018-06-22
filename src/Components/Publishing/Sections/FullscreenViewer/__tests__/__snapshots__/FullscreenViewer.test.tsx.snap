@@ -289,226 +289,228 @@ exports[`renders properly 1`] = `
   }
 }
 
-<div
-  className="c0"
-  onKeyDown={[Function]}
->
-  <div>
+<div>
+  <div
+    className="c0"
+    onKeyDown={[Function]}
+  >
     <div>
-      <div
-        className="c1"
-      >
+      <div>
         <div
-          className="c2"
-        >
-          
-        </div>
-        <div
-          className="c3"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
-        />
-        <div
-          className="c4"
+          className="c1"
         >
           <div
-            className="c5"
+            className="c2"
+          >
+            
+          </div>
+          <div
+            className="c3"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+          />
+          <div
+            className="c4"
           >
             <div
-              className="fullscreen-viewer__caption-toggle c6"
-              onClick={[Function]}
+              className="c5"
             >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="c7"
-              open={false}
-            >
-              <div>
-                <div
-                  className="c8"
-                >
+              <div
+                className="fullscreen-viewer__caption-toggle c6"
+                onClick={[Function]}
+              >
+                <span>
+                  View Caption
+                </span>
+              </div>
+              <div
+                className="c7"
+                open={false}
+              >
+                <div>
                   <div
-                    className="c9"
+                    className="c8"
                   >
-                    <span
-                      className="c10"
-                    >
-                      <span
-                        className="c11"
-                      >
-                        <a
-                          className="c12"
-                          href="/artist/fernando-botero"
-                          target="_self"
-                        >
-                          Fernando Botero
-                        </a>
-                      </span>
-                    </span>
-                  </div>
-                  <div>
                     <div
                       className="c9"
                     >
                       <span
-                        className="title"
+                        className="c10"
                       >
-                        <a
-                          className="c12"
-                          href="/artwork/fernando-botero-nude-on-the-beach"
-                          target="_self"
+                        <span
+                          className="c11"
                         >
-                          Nude on the Beach
-                        </a>
-                      </span>
-                      <span>
-                        , 
-                      </span>
-                      <span
-                        className="date"
-                      >
-                        2000
+                          <a
+                            className="c12"
+                            href="/artist/fernando-botero"
+                            target="_self"
+                          >
+                            Fernando Botero
+                          </a>
+                        </span>
                       </span>
                     </div>
-                    <div
-                      className="c9"
-                    >
-                      <a
-                        className="c12"
-                        href="/gary-nader"
-                        target="_self"
+                    <div>
+                      <div
+                        className="c9"
                       >
-                        Gary Nader
-                      </a>
-                      <span>
-                        . 
-                      </span>
-                      <span
-                        className="credit"
+                        <span
+                          className="title"
+                        >
+                          <a
+                            className="c12"
+                            href="/artwork/fernando-botero-nude-on-the-beach"
+                            target="_self"
+                          >
+                            Nude on the Beach
+                          </a>
+                        </span>
+                        <span>
+                          , 
+                        </span>
+                        <span
+                          className="date"
+                        >
+                          2000
+                        </span>
+                      </div>
+                      <div
+                        className="c9"
                       >
-                        Courtesy of Gary Nader
-                      </span>
+                        <a
+                          className="c12"
+                          href="/gary-nader"
+                          target="_self"
+                        >
+                          Gary Nader
+                        </a>
+                        <span>
+                          . 
+                        </span>
+                        <span
+                          className="credit"
+                        >
+                          Courtesy of Gary Nader
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="c13"
-          >
-            1 of 3
+            <div
+              className="c13"
+            >
+              1 of 3
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="c1"
-      >
+      <div>
         <div
-          className="c2"
-        >
-          New York City
-        </div>
-        <div
-          className="c14"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
-        />
-        <div
-          className="c4"
+          className="c1"
         >
           <div
-            className="c5"
+            className="c2"
+          >
+            New York City
+          </div>
+          <div
+            className="c14"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=95"
+          />
+          <div
+            className="c4"
           >
             <div
-              className="fullscreen-viewer__caption-toggle c6"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="c7"
-              open={false}
+              className="c5"
             >
               <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+                className="fullscreen-viewer__caption-toggle c6"
+                onClick={[Function]}
+              >
+                <span>
+                  View Caption
+                </span>
+              </div>
+              <div
+                className="c7"
+                open={false}
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+                    }
                   }
-                }
-              />
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="c13"
-          >
-            2 of 3
+            <div
+              className="c13"
+            >
+              2 of 3
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="c1"
-      >
+      <div>
         <div
-          className="c2"
-        >
-          New York City
-        </div>
-        <div
-          className="c15"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
-        />
-        <div
-          className="c4"
+          className="c1"
         >
           <div
-            className="c5"
+            className="c2"
+          >
+            New York City
+          </div>
+          <div
+            className="c15"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=95"
+          />
+          <div
+            className="c4"
           >
             <div
-              className="fullscreen-viewer__caption-toggle c6"
-              onClick={[Function]}
-            >
-              <span>
-                View Caption
-              </span>
-            </div>
-            <div
-              className="c7"
-              open={false}
+              className="c5"
             >
               <div
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+                className="fullscreen-viewer__caption-toggle c6"
+                onClick={[Function]}
+              >
+                <span>
+                  View Caption
+                </span>
+              </div>
+              <div
+                className="c7"
+                open={false}
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+                    }
                   }
-                }
-              />
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="c13"
-          >
-            3 of 3
+            <div
+              className="c13"
+            >
+              3 of 3
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="c16"
-    onClick={[Function]}
-  >
     <div
-      className="c17"
+      className="c16"
+      onClick={[Function]}
     >
-      
+      <div
+        className="c17"
+      >
+        
+      </div>
     </div>
   </div>
 </div>

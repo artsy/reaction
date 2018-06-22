@@ -86,18 +86,19 @@ export class FullscreenViewer extends Component<
       prevArrow: <LeftArrow />,
       initialSlide: this.props.slideIndex,
     }
-    if (!this.props.show) {
-      return null
-    }
     return (
-      <FullscreenViewerContainer onKeyDown={this.handleKeydown}>
-        <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
-          {this.renderImageComponents()}
-        </Slider>
-        <Close onClick={this.close}>
-          <Icon name="close" color="gray" fontSize="24px" />
-        </Close>
-      </FullscreenViewerContainer>
+      <div>
+        {this.props.show && (
+          <FullscreenViewerContainer onKeyDown={this.handleKeydown}>
+            <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
+              {this.renderImageComponents()}
+            </Slider>
+            <Close onClick={this.close}>
+              <Icon name="close" color="gray" fontSize="24px" />
+            </Close>
+          </FullscreenViewerContainer>
+        )}
+      </div>
     )
   }
 }

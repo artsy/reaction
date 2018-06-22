@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Date Snapshots renders a condensed date 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium;
-  font-size: 12px;
-  line-height: 16px;
-}
-
 .c0 {
   margin: 10px 30px 0 0;
   white-space: nowrap;
@@ -22,7 +16,7 @@ exports[`Date Snapshots renders a condensed date 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="uTxCW fwcVer"
     fontFamily="Unica77LLWebMedium"
     fontSize={12}
   >
@@ -32,12 +26,6 @@ exports[`Date Snapshots renders a condensed date 1`] = `
 `;
 
 exports[`Date Snapshots renders a date 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c0 {
   margin: 10px 30px 0 0;
   white-space: nowrap;
@@ -53,7 +41,7 @@ exports[`Date Snapshots renders a date 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="uTxCW bTNvyd"
     fontFamily="Unica77LLWebMedium"
     fontSize={14}
   >
