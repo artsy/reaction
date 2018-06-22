@@ -21,7 +21,6 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
         }).isRequired,
         replace: PropTypes.string,
         to: PropTypes.string,
-        name: PropTypes.string,
       }
 
       static defaultProps = {
