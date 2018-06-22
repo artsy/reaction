@@ -14,7 +14,7 @@ import { SignUpForm } from "./SignUpForm"
 
 export interface FormSwitcherProps {
   handleSubmit: SubmitHandler
-  options?: ModalOptions
+  options: ModalOptions
   tracking?: any
   type: ModalType
   values?: InputValues

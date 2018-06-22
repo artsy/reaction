@@ -28,17 +28,25 @@ const close = () => {
 storiesOf("Components/Authentication/Desktop", module)
   .add("Login", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.login} handleSubmit={submit} />
+      <FormSwitcher type={ModalType.login} handleSubmit={submit} options={{}} />
     </DesktopModal>
   ))
   .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.forgotPassword} handleSubmit={submit} />
+      <FormSwitcher
+        type={ModalType.forgotPassword}
+        handleSubmit={submit}
+        options={{}}
+      />
     </DesktopModal>
   ))
   .add("Sign Up", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.signup} handleSubmit={submit} />
+      <FormSwitcher
+        type={ModalType.signup}
+        handleSubmit={submit}
+        options={{}}
+      />
     </DesktopModal>
   ))
 
