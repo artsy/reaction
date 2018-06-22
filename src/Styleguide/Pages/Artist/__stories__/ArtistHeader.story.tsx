@@ -6,7 +6,7 @@ import {
   ArtistHeader,
   LargeArtistHeader,
   SmallArtistHeader,
-} from "../ArtistHeader"
+} from "../Components/ArtistHeader"
 
 storiesOf("Styleguide/Artist", module).add("ArtistHeader", () => {
   return (

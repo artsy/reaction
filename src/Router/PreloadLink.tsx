@@ -8,143 +8,170 @@ import { PreloadLinkProps, PreloadLinkState } from "./types"
 export { Link } from "found"
 
 export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
-  class PreloadLink extends Component<PreloadLinkProps, PreloadLinkState> {
-    static propTypes = {
-      immediate: PropTypes.bool, // load route data transparently in the bg
-      onToggleLoading: PropTypes.func,
-      relayEnvironment: PropTypes.object.isRequired,
-      reactionRouter: PropTypes.shape({
-        routes: PropTypes.array.isRequired,
-        resolver: PropTypes.object.isRequired,
-      }).isRequired,
-      replace: PropTypes.string,
-      to: PropTypes.string,
-    }
-
-    static defaultProps = {
-      immediate: false,
-      onToggleLoading: x => x,
-    }
-
-    state = {
-      isLoading: false,
-    }
-
-    componentDidMount() {
-      if (this.props.immediate) {
-        this.fetchData()
-      }
-    }
-
-    toggleLoading(isLoading) {
-      this.props.onToggleLoading(isLoading)
-
-      this.setState({
-        isLoading,
-      })
-    }
-
-    getRouteQuery() {
-      const {
-        reactionRouter: { resolver },
-        router,
-        to,
-      } = this.props
-
-      const { getRouteMatches, getRouteValues } = Found.ResolverUtils
-      const location = router.createLocation(to)
-      const match = router.matcher.match(location)
-
-      if (!match) {
-        return
+  const PreloadLinkWrapper = ContextConsumer(
+    class extends Component<PreloadLinkProps, PreloadLinkState> {
+      static propTypes = {
+        Component: PropTypes.any,
+        immediate: PropTypes.bool, // load route data transparently in the bg
+        onToggleLoading: PropTypes.func,
+        relayEnvironment: PropTypes.object.isRequired,
+        reactionRouter: PropTypes.shape({
+          routes: PropTypes.array.isRequired,
+          resolver: PropTypes.object.isRequired,
+        }).isRequired,
+        replace: PropTypes.string,
+        to: PropTypes.string,
+        name: PropTypes.string,
       }
 
-      const routes = router.matcher.getRoutes(match)
-      const augmentedMatch = { ...match, routes }
-      const routeMatches = getRouteMatches(augmentedMatch)
-
-      const query = getRouteValues(
-        routeMatches,
-        route => route.getQuery,
-        route => route.query
-      ).find(q => !isUndefined(q))
-
-      const cacheConfig = getRouteValues(
-        routeMatches,
-        route => route.getCacheConfig,
-        route => route.cacheConfig
-      ).find(caches => !isUndefined(caches))
-
-      const routeVariables = resolver
-        .getRouteVariables(match, routeMatches)
-        .find(variables => !isUndefined(variables) && !isEmpty(variables))
-
-      return {
-        query,
-        cacheConfig,
-        routeVariables,
+      static defaultProps = {
+        Component: ({ children, ...childProps }) =>
+          React.cloneElement(children, { ...childProps }),
+        immediate: false,
+        onToggleLoading: x => x,
       }
-    }
 
-    fetchData() {
-      return new Promise(async (resolve, reject) => {
-        const { relayEnvironment } = this.props
-        const routeQuery = this.getRouteQuery()
-        const missingEnvironmentOrQuery = !(
-          relayEnvironment &&
-          routeQuery &&
-          routeQuery.query
-        )
+      state = {
+        isLoading: false,
+      }
 
-        if (missingEnvironmentOrQuery) {
-          resolve()
+      componentDidMount() {
+        if (this.props.immediate) {
+          this.fetchData()
+        }
+      }
 
+      toggleLoading(isLoading) {
+        this.props.onToggleLoading(isLoading)
+
+        this.setState({
+          isLoading,
+        })
+      }
+
+      getRouteQuery() {
+        const {
+          reactionRouter: { resolver },
+          router,
+          to,
+        } = this.props
+
+        const { getRouteMatches, getRouteValues } = Found.ResolverUtils
+        const location = router.createLocation(to)
+        const match = router.matcher.match(location)
+
+        if (!match) {
           return
         }
 
-        try {
-          this.toggleLoading(true)
-          const { query, cacheConfig, routeVariables } = routeQuery
-          await fetchQuery(relayEnvironment, query, routeVariables, cacheConfig)
-          resolve()
+        const routes = router.matcher.getRoutes(match)
+        const augmentedMatch = { ...match, routes }
+        const routeMatches = getRouteMatches(augmentedMatch)
 
-          // TODO: Pass this error back up
-        } catch (error) {
-          console.error("[Reaction Router/PreloadLink]", error)
-        } finally {
-          this.toggleLoading(false)
+        const query = getRouteValues(
+          routeMatches,
+          route => route.getQuery,
+          route => route.query
+        ).find(q => !isUndefined(q))
+
+        const cacheConfig = getRouteValues(
+          routeMatches,
+          route => route.getCacheConfig,
+          route => route.cacheConfig
+        ).find(caches => !isUndefined(caches))
+
+        const routeVariables = resolver
+          .getRouteVariables(match, routeMatches)
+          .find(variables => !isUndefined(variables) && !isEmpty(variables))
+
+        return {
+          query,
+          cacheConfig,
+          routeVariables,
         }
-      })
-    }
+      }
 
-    handleClick = event => {
-      event.preventDefault()
+      fetchData() {
+        return new Promise(async (resolve, reject) => {
+          const { relayEnvironment } = this.props
+          const routeQuery = this.getRouteQuery()
+          const missingEnvironmentOrQuery = !(
+            relayEnvironment &&
+            routeQuery &&
+            routeQuery.query
+          )
 
-      this.fetchData().then(() => {
-        const { router, replace, to } = this.props
+          if (missingEnvironmentOrQuery) {
+            resolve()
 
-        if (replace) {
-          router.replace(replace)
-        } else {
-          router.push(to)
+            return
+          }
+
+          try {
+            this.toggleLoading(true)
+            const { query, cacheConfig, routeVariables } = routeQuery
+            await fetchQuery(
+              relayEnvironment,
+              query,
+              routeVariables,
+              cacheConfig
+            )
+            resolve()
+
+            // TODO: Pass this error back up
+          } catch (error) {
+            console.error("[Reaction Router/PreloadLink]", error)
+          } finally {
+            this.toggleLoading(false)
+          }
+        })
+      }
+
+      handleClick = event => {
+        event.preventDefault()
+
+        this.fetchData().then(() => {
+          const { router, replace, to, onClick } = this.props
+
+          onClick()
+
+          if (replace) {
+            router.replace(replace)
+          } else {
+            router.push(to)
+          }
+        })
+      }
+
+      render() {
+        const { children } = this.props
+        const { isLoading } = this.state
+        const _props = pick(["to", "replace", "Component"], this.props)
+        const hasRenderProp = isFunction(this.props.children)
+
+        const renderChildren = () => {
+          if (hasRenderProp) {
+            return children({
+              isLoading,
+            })
+          } else {
+            if (children) {
+              return children
+              // TODO: PR back to Found to handle null children
+            } else {
+              return <div />
+            }
+          }
         }
-      })
+
+        return (
+          <Found.Link onClick={this.handleClick} {..._props}>
+            {renderChildren()}
+          </Found.Link>
+        )
+      }
     }
+  )
 
-    render() {
-      const { children } = this.props
-      const { isLoading } = this.state
-      const _props = pick(["to", "replace"], this.props)
-      const hasRenderProp = isFunction(this.props.children)
-
-      return (
-        <Found.Link onClick={this.handleClick} {..._props}>
-          {hasRenderProp ? children({ isLoading }) : children}
-        </Found.Link>
-      )
-    }
-  }
-
-  const PreloadLinkWrapper = ContextConsumer(PreloadLink)
   return <PreloadLinkWrapper {...props} />
 })
