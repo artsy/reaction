@@ -3,22 +3,14 @@ import React from "react"
 import styled from "styled-components"
 import { space } from "styled-system"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
-import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
-import { Pagination } from "Styleguide/Components/Pagination"
 import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
-import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Radio } from "Styleguide/Elements/Radio"
-import { Select } from "Styleguide/Elements/Select"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
-import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
 import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { ArtworkFilter } from "./ArtworkFilter"
 import { CurrentEvent } from "./CurrentEvent"
 
 export const Overview = () => {
@@ -102,47 +94,7 @@ export const Overview = () => {
 
       <Row>
         <Col>
-          <Responsive>
-            {({ xs, sm, md }) => {
-              return (
-                <ArtworkBrowser>
-                  {!xs && (
-                    <Sidebar width="30%" mr={2}>
-                      <Toggle label="Purchase type" expanded disabled>
-                        <Flex justifyContent="space-between">
-                          <Checkbox>For sale</Checkbox>
-                        </Flex>
-                      </Toggle>
-                      <Toggle label="Medium" expanded>
-                        <Radio>Painting</Radio>
-                        <Radio>Sculpture</Radio>
-                      </Toggle>
-                      <Toggle label="Gallery" />
-                      <Toggle label="Institution" />
-                      <Toggle label="Time period" />
-                    </Sidebar>
-                  )}
-
-                  <ArtworkGridArea
-                    width={"100%"}
-                    flexDirection="column"
-                    alignItems="flex-end"
-                  >
-                    <Flex pb={2} justifyContent="flex-end">
-                      <Select options={[{ value: "percy", text: "Cat" }]} />
-                    </Flex>
-                    <ArtworkGrid
-                      artistID="pablo-picasso"
-                      columnCount={xs || sm || md ? 2 : 3}
-                    />
-                    <Spacer mb={3} />
-                    <Pagination pageCursors={paginationProps.cursor} />
-                    />
-                  </ArtworkGridArea>
-                </ArtworkBrowser>
-              )
-            }}
-          </Responsive>
+          <ArtworkFilter />
         </Col>
       </Row>
     </React.Fragment>
@@ -154,6 +106,3 @@ const GeneLink = styled.a`
   display: inline-block;
   ${space};
 `
-const ArtworkBrowser = styled(Flex)``
-const ArtworkGridArea = styled(Flex)``
-const Sidebar = Box
