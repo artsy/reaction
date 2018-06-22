@@ -44,6 +44,7 @@ export interface PreloadLinkProps extends ContextProps {
   to?: string
   name?: string
   onClick?: () => void
+  exact?: boolean
 }
 
 export interface PreloadLinkState {

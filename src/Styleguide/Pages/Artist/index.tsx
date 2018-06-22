@@ -1,9 +1,12 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import { PreloadLink } from "Router/PreloadLink"
 import { StorybooksRouter } from "Router/StorybooksRouter"
+import styled from "styled-components"
+import { borders, themeGet } from "styled-system"
 import { Footer } from "Styleguide/Components/Footer"
-import { Tabs } from "Styleguide/Components/Tabs"
 import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -16,7 +19,46 @@ import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRoute } from "./Routes/Shows"
 
-const Tab = PreloadLink
+const Navigation = ({ children }) => {
+  return (
+    <React.Fragment>
+      <RouterTabs>
+        <PreloadLink to="/" exact>
+          <Sans size="3t" weight="medium">
+            Overview
+          </Sans>
+        </PreloadLink>
+        <PreloadLink to="/cv">
+          <Sans size="3t" weight="medium">
+            CV
+          </Sans>
+        </PreloadLink>
+        <PreloadLink to="/articles">
+          <Sans size="3t" weight="medium">
+            Articles
+          </Sans>
+        </PreloadLink>
+        <PreloadLink to="/shows">
+          <Sans size="3t" weight="medium">
+            Shows
+          </Sans>
+        </PreloadLink>
+        <PreloadLink to="/auction-results">
+          <Sans size="3t" weight="medium">
+            Auction results
+          </Sans>
+        </PreloadLink>
+        <PreloadLink to="/related-artists">
+          <Sans size="3t" weight="medium">
+            Related artists
+          </Sans>
+        </PreloadLink>
+      </RouterTabs>
+
+      <Box pt={3}>{children}</Box>
+    </React.Fragment>
+  )
+}
 
 export const Artist = () => {
   return (
@@ -35,55 +77,30 @@ export const Artist = () => {
             routes={[
               {
                 path: "/",
-                Component: ({ children }) => {
-                  return (
-                    <React.Fragment>
-                      <Tabs initialTabIndex={2}>
-                        <Tab to="/" name="Overview">
-                          <Overview />
-                        </Tab>
-                        <Tab to="/cv" name="CV">
-                          <CVRoute />
-                        </Tab>
-                        <Tab to="/articles" name="Articles">
-                          <ArticlesRoute />
-                        </Tab>
-                        <Tab to="/shows" name="Shows">
-                          <ShowsRoute />
-                        </Tab>
-                        <Tab to="/auction-results" name="Auction results">
-                          <AuctionResultsRoute />
-                        </Tab>
-                        <Tab to="related-artists" name="Related artists">
-                          <RelatedArtistsRoute />
-                        </Tab>
-                      </Tabs>
-                    </React.Fragment>
-                  )
-                },
+                Component: Navigation,
                 children: [
                   {
-                    path: "/overview",
+                    path: "/",
                     Component: Overview,
                   },
                   {
-                    path: "/cv",
+                    path: "cv",
                     Component: CVRoute,
                   },
                   {
-                    path: "/articles",
+                    path: "articles",
                     Component: ArticlesRoute,
                   },
                   {
-                    path: "/shows",
+                    path: "shows",
                     Component: ShowsRoute,
                   },
                   {
-                    path: "/auction-results",
+                    path: "auction-results",
                     Component: AuctionResultsRoute,
                   },
                   {
-                    path: "/related-artists",
+                    path: "related-artists",
                     Component: RelatedArtistsRoute,
                   },
                 ],
@@ -105,3 +122,28 @@ export const Artist = () => {
     </Boot>
   )
 }
+
+const RouterTabs = styled(Flex)`
+  border-bottom: 1px solid ${themeGet("colors.black10")};
+
+  a {
+    color: ${themeGet("colors.black30")};
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 13px;
+    margin-bottom: -1px;
+    margin-right: 20px;
+    white-space: nowrap;
+    ${borders};
+
+    &.active {
+      color: ${themeGet("colors.black100")};
+      pointer-events: none;
+      padding-bottom: 13px;
+      margin-bottom: -1px;
+      margin-right: 20px;
+      white-space: nowrap;
+      border-bottom: 1px solid ${themeGet("colors.black60")};
+    }
+  }
+`
