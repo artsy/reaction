@@ -1,12 +1,8 @@
-import { Sans } from "@artsy/palette"
 import React from "react"
-import { PreloadLink } from "Router/PreloadLink"
 import { StorybooksRouter } from "Router/StorybooksRouter"
-import styled from "styled-components"
-import { borders, themeGet } from "styled-system"
 import { Footer } from "Styleguide/Components/Footer"
+import { RouterTab, RouterTabs } from "Styleguide/Components/RouterTabs"
 import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -18,47 +14,6 @@ import { CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRoute } from "./Routes/Shows"
-
-const Navigation = ({ children }) => {
-  return (
-    <React.Fragment>
-      <RouterTabs>
-        <PreloadLink to="/" exact>
-          <Sans size="3t" weight="medium">
-            Overview
-          </Sans>
-        </PreloadLink>
-        <PreloadLink to="/cv">
-          <Sans size="3t" weight="medium">
-            CV
-          </Sans>
-        </PreloadLink>
-        <PreloadLink to="/articles">
-          <Sans size="3t" weight="medium">
-            Articles
-          </Sans>
-        </PreloadLink>
-        <PreloadLink to="/shows">
-          <Sans size="3t" weight="medium">
-            Shows
-          </Sans>
-        </PreloadLink>
-        <PreloadLink to="/auction-results">
-          <Sans size="3t" weight="medium">
-            Auction results
-          </Sans>
-        </PreloadLink>
-        <PreloadLink to="/related-artists">
-          <Sans size="3t" weight="medium">
-            Related artists
-          </Sans>
-        </PreloadLink>
-      </RouterTabs>
-
-      <Box pt={3}>{children}</Box>
-    </React.Fragment>
-  )
-}
 
 export const Artist = () => {
   return (
@@ -77,7 +32,28 @@ export const Artist = () => {
             routes={[
               {
                 path: "/",
-                Component: Navigation,
+                Component: ({ children }) => {
+                  return (
+                    <React.Fragment>
+                      <RouterTabs>
+                        <RouterTab to="/" exact>
+                          Overview
+                        </RouterTab>
+                        <RouterTab to="/cv">CV</RouterTab>
+                        <RouterTab to="/articles">Articles</RouterTab>
+                        <RouterTab to="/shows">Shows</RouterTab>
+                        <RouterTab to="/auction-results">
+                          Auction results
+                        </RouterTab>
+                        <RouterTab to="/related-artists">
+                          Related artists
+                        </RouterTab>
+                      </RouterTabs>
+
+                      <Box pt={3}>{children}</Box>
+                    </React.Fragment>
+                  )
+                },
                 children: [
                   {
                     path: "/",
@@ -122,28 +98,3 @@ export const Artist = () => {
     </Boot>
   )
 }
-
-const RouterTabs = styled(Flex)`
-  border-bottom: 1px solid ${themeGet("colors.black10")};
-
-  a {
-    color: ${themeGet("colors.black30")};
-    text-decoration: none;
-    cursor: pointer;
-    padding-bottom: 13px;
-    margin-bottom: -1px;
-    margin-right: 20px;
-    white-space: nowrap;
-    ${borders};
-
-    &.active {
-      color: ${themeGet("colors.black100")};
-      pointer-events: none;
-      padding-bottom: 13px;
-      margin-bottom: -1px;
-      margin-right: 20px;
-      white-space: nowrap;
-      border-bottom: 1px solid ${themeGet("colors.black60")};
-    }
-  }
-`
