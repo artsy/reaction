@@ -1,14 +1,14 @@
-import React from "react"
 import { Serif } from "@artsy/palette"
+import React from "react"
+import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import {
   MarketInsights,
   MarketInsightsProps,
 } from "Styleguide/Components/MarketInsights"
 import {
-  SelectedExhibitionsProps,
   SelectedExhibitions,
+  SelectedExhibitionsProps,
 } from "Styleguide/Components/SelectedExhibitions"
-import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { Box } from "Styleguide/Elements/Box"
 import { Responsive } from "Styleguide/Utils/Responsive"
 

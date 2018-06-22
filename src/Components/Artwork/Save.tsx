@@ -1,17 +1,17 @@
 import { isNull } from "lodash"
 import React from "react"
-import * as RelayRuntimeTypes from "relay-runtime"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
   RelayProp,
 } from "react-relay"
+import * as RelayRuntimeTypes from "relay-runtime"
 
-import Icon from "../Icon"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as Artsy from "../../Components/Artsy"
+import Icon from "../Icon"
 
 const SIZE = 40
 

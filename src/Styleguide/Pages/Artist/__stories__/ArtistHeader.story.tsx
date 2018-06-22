@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { Box } from "Styleguide/Elements/Box"
+import { Section } from "Styleguide/Utils/Section"
 import {
   ArtistHeader,
   LargeArtistHeader,

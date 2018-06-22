@@ -1,12 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { Artists } from "Styleguide/Pages/Artwork/Sidebar/Artists"
 import {
+  MultipleArtists,
   SingleFollowedArtist,
   SingleNonFollowedArtist,
-  MultipleArtists,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/Artists"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("Artists", () => {
   return (

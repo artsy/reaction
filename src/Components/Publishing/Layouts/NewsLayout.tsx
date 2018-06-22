@@ -1,13 +1,13 @@
-import React, { Component } from "react"
-import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { unica } from "Assets/Fonts"
+import { once } from "lodash"
+import React, { Component } from "react"
+import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import { ArticleData } from "../Typings"
-import { once } from "lodash"
-import { track } from "../../../Utils/track"
 
 interface Props {
   article: ArticleData

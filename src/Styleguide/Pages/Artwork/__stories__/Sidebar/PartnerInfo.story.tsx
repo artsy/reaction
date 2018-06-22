@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { PartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/PartnerInfo"
+import { Section } from "Styleguide/Utils/Section"
 
 const PartnerWithLocations = {
   __id: "UGFydG5lcjpnYWdvc2lhbg==",

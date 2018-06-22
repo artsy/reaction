@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import React from "react"
-import { unica } from "Assets/Fonts"
 import Colors from "Assets/Colors"
+import { unica } from "Assets/Fonts"
+import React from "react"
+import styled from "styled-components"
 
 const FEEDBACK_EMAIL =
   "mailto:productfeedback@artsy.net?subject=Feedback on 'Article Tooltips'"

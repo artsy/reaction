@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
 import { Section } from "Styleguide/Utils/Section"
-import { storiesOf } from "storybook/storiesOf"
 import { ReadMore } from "../ReadMore"
-import { Sans } from "@artsy/palette"
 
 storiesOf("Styleguide/Components", module).add("ReadMore", () => {
   return (

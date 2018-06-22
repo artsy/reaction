@@ -2,8 +2,8 @@ import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Subscribe } from "unstated"
 
-import { FilterState } from "./state"
 import ArtworksContent from "./Artworks"
+import { FilterState } from "./state"
 
 import { Filter_artist } from "../../__generated__/Filter_artist.graphql"
 

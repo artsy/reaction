@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
-import { Sans } from "@artsy/palette"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
@@ -116,5 +116,6 @@ const ActiveTabContainer = styled.div`
   padding-bottom: 13px;
   margin-bottom: -1px;
   margin-right: 20px;
+  white-space: nowrap;
   border-bottom: 1px solid ${themeGet("colors.black60")};
 `

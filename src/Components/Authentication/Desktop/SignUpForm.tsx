@@ -1,6 +1,6 @@
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import styled from "styled-components"
-import { Formik, FormikProps } from "formik"
 
 import {
   Error,
@@ -8,14 +8,14 @@ import {
   FormContainer as Form,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
-import Input from "Components/Input"
 import {
   FormComponentType,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
-import Button from "Components/Buttons/Inverted"
 import { SignUpValidator } from "Components/Authentication/Validators"
+import Button from "Components/Buttons/Inverted"
+import Input from "Components/Input"
 
 const SignUpButton = styled(Button).attrs({
   type: "submit",
@@ -41,6 +41,8 @@ export const SignUpForm: FormComponentType = props => {
         isSubmitting,
         dirty,
         status,
+        setTouched,
+        validateForm,
       }: FormikProps<InputValues>) => {
         const hasErrors = Object.keys(errors).length > 0
 
@@ -100,6 +102,16 @@ export const SignUpForm: FormComponentType = props => {
             </SignUpButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
+              onFacebookLogin={e => {
+                if (!values.acceptedTermsOfService) {
+                  setTouched({
+                    acceptedTermsOfService: true,
+                  })
+                } else {
+                  props.onFacebookLogin(e)
+                }
+              }}
+              onTwitterLogin={props.onTwitterLogin}
               inline
             />
           </Form>

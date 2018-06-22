@@ -1,3 +1,4 @@
+import { avantgarde } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import StyledButton from "../../Buttons/Default"
@@ -5,7 +6,6 @@ import InvertedButton from "../../Buttons/Inverted"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
 import { MobileMenu } from "../../Nav/MobileMenu"
-import { avantgarde } from "Assets/Fonts"
 import { IconHamburger } from "../Icon/IconHamburger"
 
 interface State {

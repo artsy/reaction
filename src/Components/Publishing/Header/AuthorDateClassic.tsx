@@ -1,7 +1,7 @@
+import { avantgarde } from "Assets/Fonts"
 import moment from "moment-timezone"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { avantgarde } from "Assets/Fonts"
 
 interface AuthorDateClassicProps {
   authors?: any

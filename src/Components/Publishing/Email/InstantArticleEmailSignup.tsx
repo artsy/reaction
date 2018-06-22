@@ -1,3 +1,4 @@
+import * as Fonts from "Assets/Fonts"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import request from "superagent"
@@ -5,7 +6,6 @@ import Colors from "../../../Assets/Colors"
 import InvertedButton from "../../Buttons/Inverted"
 import { borderedInput } from "../../Mixins"
 import { EMAIL_REGEX } from "../Constants"
-import * as Fonts from "Assets/Fonts"
 
 interface EmailProps {
   signupUrl: string

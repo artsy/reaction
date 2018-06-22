@@ -1044,13 +1044,68 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-top: 40px;
 }
 
+.c63 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: white;
+}
+
+.c63 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c36 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 12px;
 }
 
+<<<<<<< HEAD
 .c40 {
+=======
+.c64 {
+  color: white;
+}
+
+.c64 .c66 {
+  margin-bottom: 60px;
+}
+
+.c60 {
+  color: white;
+}
+
+.c60 .c35 {
+  margin: auto;
+}
+
+.c60 .c62 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 32px;
+  line-height: 1.1em;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.c60 .c62 a {
+  border-bottom: 2px solid;
+}
+
+.c60 .c80 {
+  margin: 60px 0 100px 0;
+}
+
+.c41 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+>>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
   margin-right: 35px;
 }
 
@@ -1137,6 +1192,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
+<<<<<<< HEAD
 .c68 {
   color: white;
 }
@@ -1176,6 +1232,8 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 60px 0 100px 0;
 }
 
+=======
+>>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
 .c0 {
   background: black;
   color: white;
@@ -1638,6 +1696,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
+<<<<<<< HEAD
 @media (max-width:48em) {
   .c33 {
     padding-bottom: 40px;
@@ -1649,7 +1708,14 @@ exports[`Video Layout matches the snapshot 1`] = `
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
+=======
+@media (max-width:720px) {
+  .c63 {
+    font-family: Unica77LLWebMedium,Arial,serif;
+>>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
     -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.4em;
   }
 }
 
@@ -1672,7 +1738,26 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
+<<<<<<< HEAD
   .c0 .c45 {
+=======
+  .c33 {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width:48em) {
+  .c45 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:48em) {
+  .c0 .c46 {
+>>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
     margin: 40px 0 100px 0;
   }
 }

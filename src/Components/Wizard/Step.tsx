@@ -1,7 +1,7 @@
-import { Component } from "react"
 import PropTypes from "prop-types"
-import { StepProps } from "./types"
+import { Component } from "react"
 import React from "react"
+import { StepProps } from "./types"
 
 /**
  * Step within a Wizard.

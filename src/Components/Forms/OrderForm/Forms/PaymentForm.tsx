@@ -1,12 +1,12 @@
-import { Field } from "../../support"
-import InvertedButton from "../../../Buttons/Inverted"
 import React, { Component } from "react"
-import Title from "../../../Title"
-import { AddressFormInputs } from "./ShippingForm"
+import { Col, Row } from "react-styled-flexboxgrid"
+import InvertedButton from "../../../Buttons/Inverted"
 import { Checkbox } from "../../../Checkbox"
-import { Row, Col } from "react-styled-flexboxgrid"
-import { StyledGrid as Grid, Contact } from "./common"
+import Title from "../../../Title"
 import { WizardStepChildProps } from "../../../Wizard/types"
+import { Field } from "../../support"
+import { Contact, StyledGrid as Grid } from "./common"
+import { AddressFormInputs } from "./ShippingForm"
 
 interface State {
   showPaymentAddress: boolean

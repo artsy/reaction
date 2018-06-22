@@ -1,8 +1,8 @@
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Checkbox } from "../Checkbox"
 import { Radio } from "../Radio"
-import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Styleguide/Elements", module).add("Inputs", () => {
   return (

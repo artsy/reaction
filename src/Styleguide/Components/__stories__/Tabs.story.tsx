@@ -1,7 +1,7 @@
 import React from "react"
-import { Section } from "Styleguide/Utils/Section"
-import { Tabs, Tab } from "../Tabs"
 import { storiesOf } from "storybook/storiesOf"
+import { Section } from "Styleguide/Utils/Section"
+import { Tab, Tabs } from "../Tabs"
 
 storiesOf("Styleguide/Components", module).add("Tabs", () => {
   return (

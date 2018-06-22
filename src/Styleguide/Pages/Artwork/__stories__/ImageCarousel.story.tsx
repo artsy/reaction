@@ -1,8 +1,8 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ImageCarousel } from "../ImageCarousel"
 import { Col } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
+import { ImageCarousel } from "../ImageCarousel"
 
 export function imageData(width: number, height: number, imageIndex?: number) {
   return {

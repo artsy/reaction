@@ -1,6 +1,6 @@
 import React, { Children, cloneElement } from "react"
-import styled from "styled-components"
 import Transition, { TransitionProps } from "react-transition-group/Transition"
+import styled from "styled-components"
 import { injectGlobal } from "styled-components"
 
 import CircleIcon from "../../CircleIcon"
@@ -40,7 +40,8 @@ class Fade extends React.Component<TransitionProps> {
           cloneElement(Children.only(children), {
             ...innerProps,
             className: `fade ${this.fadeStyles[status]}`,
-          })}
+          })
+        }
       </Transition>
     )
   }

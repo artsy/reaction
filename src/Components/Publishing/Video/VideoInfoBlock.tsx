@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
+import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Row } from "react-styled-flexboxgrid"
-import { Sans } from "@artsy/palette"
 import styled from "styled-components"
 import { formatTime } from "../Constants"
-import { unica } from "Assets/Fonts"
 
 interface Props {
   editTitle?: any

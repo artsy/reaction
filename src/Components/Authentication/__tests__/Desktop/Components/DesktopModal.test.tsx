@@ -1,5 +1,5 @@
-import React from "react"
 import { mount } from "enzyme"
+import React from "react"
 import {
   CloseButton,
   DesktopModal,
@@ -9,10 +9,17 @@ jest.mock("Utils/track.ts", () => ({
   track: () => jest.fn(c => c),
 }))
 
+jest.mock("react-spring", () => ({
+  Spring: p => p.children(),
+  animated: {
+    div: c => c,
+  },
+}))
+
 describe("DesktopModal", () => {
   const getWrapper = (props: any = {}) =>
     mount(
-      <DesktopModal tracking={props.tracking} onClose={jest.fn()}>
+      <DesktopModal tracking={props.tracking} onClose={jest.fn()} show>
         <div>Modal Contents</div>
       </DesktopModal>
     )
@@ -20,6 +27,15 @@ describe("DesktopModal", () => {
   it("login form", () => {
     const wrapper = getWrapper()
     expect(wrapper.html()).toMatch("Modal Contents")
+  })
+
+  it("renders a subtitle", () => {
+    const wrapper = mount(
+      <DesktopModal subtitle="Test Subtitle" onClose={jest.fn()} show>
+        <div>Modal Contents</div>
+      </DesktopModal>
+    )
+    expect(wrapper.text()).toMatch("Test Subtitle")
   })
 
   describe("Analytics", () => {

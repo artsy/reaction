@@ -1,14 +1,14 @@
+import { Sans } from "@artsy/palette"
+import { garamond, unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
-import { Date } from "../../Byline/Date"
 import { Byline } from "../../Byline/Byline"
+import { Date } from "../../Byline/Date"
 import { formatTime, getMediaDate } from "../../Constants"
-import { garamond, unica } from "Assets/Fonts"
 import { IconVideoPlay } from "../../Icon/IconVideoPlay"
-import { Sans } from "@artsy/palette"
 
 interface Props {
   article?: any

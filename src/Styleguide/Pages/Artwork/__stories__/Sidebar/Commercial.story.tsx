@@ -1,13 +1,13 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { Commercial } from "Styleguide/Pages/Artwork/Sidebar/Commercial"
 import {
-  FoSaleArtworkNoEditions,
-  FoSaleArtworkWithOneEdition,
-  FoSaleArtworkWithMultipleEditions,
   ContactForPriceWork,
+  FoSaleArtworkNoEditions,
+  FoSaleArtworkWithMultipleEditions,
+  FoSaleArtworkWithOneEdition,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/Commercial"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("Commercial", () => {
   return (

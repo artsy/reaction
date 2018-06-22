@@ -1,12 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
 import {
   ArtworkNoEstimateNoPremium,
-  ArtworkWithEstimateNoPremium,
   ArtworkWithEstimateAndPremium,
+  ArtworkWithEstimateNoPremium,
 } from "Styleguide/Pages/Fixtures/Artwork/Sidebar/AuctionPartnerInfo"
+import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add(
   "AuctionPartnerInfo",

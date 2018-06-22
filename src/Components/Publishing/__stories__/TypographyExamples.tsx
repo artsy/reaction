@@ -1,6 +1,6 @@
+import { avantgarde, garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { avantgarde, garamond, unica } from "Assets/Fonts"
 
 export const Typography = () => {
   return (

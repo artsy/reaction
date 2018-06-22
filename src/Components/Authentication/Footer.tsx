@@ -13,14 +13,25 @@ const FooterContainer = styled.div`
 `
 
 export const Footer = props => {
-  const { onFacebookLogin, handleTypeChange, mode, inline } = props
+  const {
+    onFacebookLogin,
+    onTwitterLogin,
+    handleTypeChange,
+    mode,
+    inline,
+  } = props
   switch (mode) {
     case "login": {
       return (
         <FooterContainer inline={inline}>
-          <SmallTextLink onClick={onFacebookLogin}>
-            Log in using Facebook.
-          </SmallTextLink>
+          <SmallText>
+            {"Log in using "}
+            <SmallTextLink onClick={onFacebookLogin}>Facebook</SmallTextLink>
+            {" or "}
+            <SmallTextLink onClick={onTwitterLogin}>Twitter</SmallTextLink>
+            {". "}
+          </SmallText>
+
           <SmallText>
             {" Don’t have an account? "}
             <SmallTextLink onClick={() => handleTypeChange("signup")}>
@@ -50,7 +61,7 @@ export const Footer = props => {
       return (
         <FooterContainer inline={inline}>
           <SmallTextLink onClick={onFacebookLogin}>
-            Log in using Facebook.
+            Sign up using Facebook.
           </SmallTextLink>
           <SmallText>
             {" Already have an account? "}

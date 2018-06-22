@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import { Responsive } from "../../../Utils/Responsive"
 import { pMedia } from "../../Helpers"
+import { ArticleProps } from "../Article"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
@@ -12,7 +13,6 @@ import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { Sidebar } from "./Components/Sidebar"
-import { ArticleProps } from "../Article"
 
 interface ArticleState {
   isTruncated: boolean

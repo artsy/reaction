@@ -1,15 +1,15 @@
-import styled from "styled-components"
+import { garamond } from "Assets/Fonts"
 import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { garamond } from "Assets/Fonts"
-import { getFullArtsyHref } from "../Constants"
-import { track } from "../../../Utils/track"
-import { FollowTrackingData } from "../../FollowButton/Typings"
+import styled from "styled-components"
 import { GeneToolTip_gene } from "../../../__generated__/GeneToolTip_gene.graphql"
-import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
-import { ToolTipDescription } from "./Components/Description"
+import { track } from "../../../Utils/track"
 import FollowGeneButton from "../../FollowButton/FollowGeneButton"
+import { FollowTrackingData } from "../../FollowButton/Typings"
+import { getFullArtsyHref } from "../Constants"
+import { ToolTipDescription } from "./Components/Description"
+import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 
 export interface GeneProps {
   gene: GeneToolTip_gene

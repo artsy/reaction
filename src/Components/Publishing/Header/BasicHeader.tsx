@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import { Sans } from "@artsy/palette"
+import { unica } from "Assets/Fonts"
 import React from "react"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
-import { Sans } from "@artsy/palette"
+import styled from "styled-components"
 import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline, BylineContainer } from "../Byline/Byline"
 import { ShareContainer as ShareContainerStyles } from "../Byline/Share"
-import { unica } from "Assets/Fonts"
 import { VerticalOrSeriesTitle } from "../Sections/VerticalOrSeriesTitle"
 
 import {
@@ -39,7 +39,7 @@ export class BasicHeader extends React.Component<Props, State> {
   }
 
   // TODO: Waiting for final values
-  @track(props => ({
+  @track(() => ({
     action: "Click",
     label: "Track Basic feature video click ",
     impression_type: "sa_basic_feature_video",

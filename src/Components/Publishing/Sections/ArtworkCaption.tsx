@@ -1,13 +1,13 @@
+import { garamond, unica } from "Assets/Fonts"
+import { Truncator } from "Components/Truncator"
 import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
+import { ErrorBoundary } from "../../ErrorBoundary"
 import { pMedia } from "../../Helpers"
 import TextLink from "../../TextLink"
-import { garamond, unica } from "Assets/Fonts"
 import { ArticleLayout, SectionLayout } from "../Typings"
-import { Truncator } from "Components/Truncator"
-import { ErrorBoundary } from "../../ErrorBoundary"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any

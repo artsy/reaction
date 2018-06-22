@@ -1,12 +1,12 @@
-import React from "react"
-import ReactDOMServer from "react-dom/server"
-import createRender from "found/lib/createRender"
 import queryMiddleware from "farce/lib/queryMiddleware"
-import { AppShell } from "./AppShell"
 import { Resolver } from "found-relay"
-import { createEnvironment } from "../Relay/createEnvironment"
+import createRender from "found/lib/createRender"
 import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
+import React from "react"
+import ReactDOMServer from "react-dom/server"
+import { createEnvironment } from "../Relay/createEnvironment"
+import { AppShell } from "./AppShell"
 import { AppConfig, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {

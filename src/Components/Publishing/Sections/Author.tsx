@@ -1,10 +1,10 @@
+import { unica } from "Assets/Fonts"
 import React from "react"
 import Markdown from "react-markdown"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import Icon from "../../Icon"
-import { unica } from "Assets/Fonts"
 
 interface AuthorProps {
   author: any

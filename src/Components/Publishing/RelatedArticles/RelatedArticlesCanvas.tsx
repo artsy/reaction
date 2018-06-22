@@ -1,8 +1,8 @@
+import { unica } from "Assets/Fonts"
 import _ from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { unica } from "Assets/Fonts"
 import {
   RelatedArticleFigure,
   RelatedArticleFigureData,

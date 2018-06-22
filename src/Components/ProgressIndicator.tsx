@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
 import Colors from "Assets/Colors"
 import { media } from "Components/Helpers"
+import React from "react"
+import styled from "styled-components"
 
 interface Props {
   percentComplete: number

@@ -1,9 +1,9 @@
+import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { garamond, unica } from "Assets/Fonts"
 import { ArticleData } from "../Typings"
 
 interface Props {

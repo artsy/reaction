@@ -1,9 +1,9 @@
+import { Sans } from "@artsy/palette"
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { Sans } from "@artsy/palette"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { garamond } from "Assets/Fonts"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string

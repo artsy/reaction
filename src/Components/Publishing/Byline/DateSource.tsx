@@ -1,11 +1,11 @@
+import { unica } from "Assets/Fonts"
 import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
-import { unica } from "Assets/Fonts"
 import { NewsBylineProps } from "./NewsByline"
-import { track } from "../../../Utils/track"
 
 interface Props {
   editSource?: any

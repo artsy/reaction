@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
-import { ContextProps, ContextConsumer } from "../Artsy"
 import { Subscribe } from "unstated"
+import { ContextConsumer, ContextProps } from "../Artsy"
 
-import { FilterState } from "./state"
 import FilterContainer from "./Filter"
+import { FilterState } from "./state"
 
 interface Props extends ContextProps {
   artistID: string

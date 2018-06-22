@@ -1,9 +1,9 @@
-import React from "react"
 import { Serif } from "@artsy/palette"
+import React from "react"
 import { Box } from "Styleguide/Elements/Box"
-import { SizeInfo } from "./SizeInfo"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Button } from "Styleguide/Elements/Button"
+import { Separator } from "Styleguide/Elements/Separator"
+import { SizeInfo } from "./SizeInfo"
 
 export interface CommercialProps {
   artwork: {
@@ -55,7 +55,7 @@ export class Commercial extends React.Component<CommercialProps> {
       return null
     }
     return (
-      <CommercialContainer pb={3} align="left">
+      <CommercialContainer pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
           <PricingInfoContainer pb={2} pt={1}>
             {this.renderSaleMessage()}

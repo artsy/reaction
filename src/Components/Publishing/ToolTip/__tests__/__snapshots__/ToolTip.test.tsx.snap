@@ -1,37 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip snapshots Renders a gene properly 1`] = `
-.c10 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 10px;
-  line-height: 1.4em;
-  color: #cccccc;
-}
-
-.c10 a {
-  color: #cccccc;
-  border-bottom: 1px solid #e5e5e5;
-  line-height: 1em;
-}
-
-.c6 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: 10px;
-}
-
-.c6 p,
-.c6 p:first-child:first-letter {
-  margin: 0;
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
 .c8 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -60,6 +29,37 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
   border-color: black;
   background: black;
   color: white;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 10px;
+}
+
+.c6 p,
+.c6 p:first-child:first-letter {
+  margin: 0;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c10 a {
+  color: #cccccc;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
 }
 
 .c2 {
@@ -216,37 +216,6 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 `;
 
 exports[`ToolTip snapshots Renders an artist properly 1`] = `
-.c11 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 10px;
-  line-height: 1.4em;
-  color: #cccccc;
-}
-
-.c11 a {
-  color: #cccccc;
-  border-bottom: 1px solid #e5e5e5;
-  line-height: 1em;
-}
-
-.c10 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: 10px;
-}
-
-.c10 p,
-.c10 p:first-child:first-letter {
-  margin: 0;
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-}
-
 .c9 {
   border: 1px solid #e5e5e5;
   font-family: Unica77LLWebMedium,Arial,serif;
@@ -275,6 +244,37 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   border-color: black;
   background: black;
   color: white;
+}
+
+.c10 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 10px;
+}
+
+.c10 p,
+.c10 p:first-child:first-letter {
+  margin: 0;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 10px;
+  line-height: 1.4em;
+  color: #cccccc;
+}
+
+.c11 a {
+  color: #cccccc;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1em;
 }
 
 .c2 {

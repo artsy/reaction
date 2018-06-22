@@ -1,9 +1,9 @@
-import React, { SFC } from "react"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Box, BorderBox } from "Styleguide/Elements/Box"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { Sans } from "@artsy/palette"
 import { groupBy, toPairs } from "lodash"
+import React, { SFC } from "react"
+import { BorderBox, Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2

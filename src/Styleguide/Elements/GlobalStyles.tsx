@@ -1,7 +1,7 @@
+import { Display, Sans, Serif } from "@artsy/palette"
 import styled from "styled-components"
 import { css } from "styled-components"
 import { themeGet } from "styled-system"
-import { Sans, Serif, Display } from "@artsy/palette"
 
 // @ts-ignore
 import { ClassAttributes, HTMLAttributes } from "react"
@@ -24,6 +24,7 @@ export const GlobalStyles = styled.div`
   /* Default links */
 
   a {
+    cursor: pointer;
     color: inherit;
     transition: 0.25s;
 

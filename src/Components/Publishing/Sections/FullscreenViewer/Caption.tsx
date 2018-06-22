@@ -1,9 +1,9 @@
+import { unica } from "Assets/Fonts"
 import PropTypes from "prop-types"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
 import Colors from "../../../../Assets/Colors"
 import { pMedia } from "../../../Helpers"
-import { unica } from "Assets/Fonts"
 import { ArtworkCaption } from "../ArtworkCaption"
 
 interface CaptionProps extends React.HTMLProps<HTMLDivElement> {

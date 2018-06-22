@@ -1,9 +1,10 @@
 // @ts-ignore
 import React from "react"
 import styled, { css } from "styled-components"
-import { Flex, FlexProps } from "./Flex"
 import {
   bottom,
+  color,
+  ColorProps,
   display,
   DisplayProps,
   height,
@@ -16,15 +17,14 @@ import {
   right,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   themeGet,
   top,
   width,
   WidthProps,
-  textAlign,
-  TextAlignProps,
-  color,
-  ColorProps,
 } from "styled-system"
+import { Flex, FlexProps } from "./Flex"
 
 const hover = css`
   &:hover {

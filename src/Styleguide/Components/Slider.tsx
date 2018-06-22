@@ -1,18 +1,19 @@
 import React from "react"
 import styled from "styled-components"
-import { Responsive } from "Styleguide/Utils/Responsive"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { ImageProps } from "Styleguide/Elements/Image"
 import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { ImageProps } from "Styleguide/Elements/Image"
+import { Responsive } from "Styleguide/Utils/Responsive"
 
 import {
-  border,
+  BorderProps,
+  borders,
   height,
   HeightProps,
+  themeGet,
   width,
   WidthProps,
-  themeGet,
 } from "styled-system"
 
 export class Slider extends React.Component {
@@ -91,7 +92,7 @@ const Button = styled.div`
   position: relative;
 `
 
-interface ImageContainerProps extends WidthProps, HeightProps {}
+interface ImageContainerProps extends WidthProps, HeightProps, BorderProps {}
 const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
   overflow-x: scroll;
   display: inline-block;
@@ -105,7 +106,7 @@ const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
 
   ${width};
   ${height};
-  ${border};
+  ${borders};
 `
 
 const Dots = styled(Flex)``

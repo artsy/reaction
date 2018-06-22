@@ -1,6 +1,6 @@
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { garamond } from "Assets/Fonts"
 import StyledTextLink from "../TextLink"
 
 interface Props {

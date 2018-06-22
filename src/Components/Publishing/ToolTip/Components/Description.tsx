@@ -1,8 +1,8 @@
-import styled from "styled-components"
-import React from "react"
 import { garamond } from "Assets/Fonts"
-import Markdown from "react-markdown"
 import { Truncator } from "Components/Truncator"
+import React from "react"
+import Markdown from "react-markdown"
+import styled from "styled-components"
 
 interface Props {
   text: string

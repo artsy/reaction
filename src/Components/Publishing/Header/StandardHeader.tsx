@@ -1,8 +1,8 @@
+import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { garamond } from "Assets/Fonts"
 import { VerticalOrSeriesTitle } from "../Sections/VerticalOrSeriesTitle"
 
 interface StandardHeaderProps {
@@ -47,7 +47,8 @@ const StandardHeaderContainer = styled.div`
   `};
 `
 const Title = styled.div`
-  ${garamond("s50")} margin-bottom: 50px;
+  ${garamond("s50")};
+  margin-bottom: 50px;
   ${pMedia.sm`
     ${garamond("s34")}
   `};

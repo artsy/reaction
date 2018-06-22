@@ -1,22 +1,21 @@
+import { Formik, FormikProps } from "formik"
 import React from "react"
 import styled from "styled-components"
-import { Formik, FormikProps } from "formik"
 
 import {
   Error,
-  ForgotPassword,
   Footer,
+  ForgotPassword,
   FormContainer as Form,
-  RememberMe,
 } from "Components/Authentication/commonElements"
-import { LoginValidator } from "Components/Authentication/Validators"
-import Input from "Components/Input"
 import {
   FormComponentType,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
+import { LoginValidator } from "Components/Authentication/Validators"
 import Button from "Components/Buttons/Inverted"
+import Input from "Components/Input"
 
 const Row = styled.div`
   display: flex;
@@ -50,6 +49,8 @@ export const LoginForm: FormComponentType = props => {
         status,
       }: FormikProps<InputValues>) => {
         const hasErrors = Object.keys(errors).length > 0
+        const globalError =
+          props.error || (status && !status.success && status.error)
 
         return (
           <Form onSubmit={handleSubmit} height={320}>
@@ -78,20 +79,19 @@ export const LoginForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             <Row>
-              <RememberMe handleChange={handleChange} handleBlur={handleBlur} />
               <ForgotPassword
-                handleForgotPasswordChange={() =>
-                  props.handleTypeChange(ModalType.resetPassword)
-                }
+                onClick={() => props.handleTypeChange(ModalType.resetPassword)}
               />
             </Row>
-            {status && !status.success && <Error show>{status.error}</Error>}
+            {globalError && <Error show>{globalError}</Error>}
             <LoginButton disabled={isSubmitting || hasErrors || !dirty}>
               Log In
             </LoginButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.signup)}
               mode="login"
+              onFacebookLogin={props.onFacebookLogin}
+              onTwitterLogin={props.onTwitterLogin}
               inline
             />
           </Form>

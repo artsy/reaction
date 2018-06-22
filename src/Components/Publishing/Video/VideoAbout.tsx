@@ -1,9 +1,8 @@
-import styled from "styled-components"
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { ShareDate } from "../Byline/ShareDate"
-import { unica } from "Assets/Fonts"
 import { Text } from "../Sections/Text"
 
 export interface VideoAboutProps {
@@ -97,6 +96,6 @@ export const VideoAboutContainer = styled.div`
   }
 
   ${pMedia.sm`
-    flex-direction: column-reverse !important;
+    flex-direction: column-reverse;
   `};
 `

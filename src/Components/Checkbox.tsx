@@ -1,8 +1,8 @@
+import { Checkmark } from "Assets/Checkmark"
+import { garamond } from "Assets/Fonts"
 import React, { Component, HTMLProps } from "react"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import { Checkmark } from "Assets/Checkmark"
-import { garamond } from "Assets/Fonts"
 
 export interface CheckboxState {
   checked: boolean
@@ -127,6 +127,11 @@ const Label = styled.label.attrs<CheckboxProps>({})`
       &::after {
         background-color: ${colors.grayRegular};
         border-color: ${colors.grayRegular};
+      }
+
+      &:checked::after {
+        background-color: ${colors.black};
+        border-color: ${colors.black};
       }
     }
   }

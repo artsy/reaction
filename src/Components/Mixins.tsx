@@ -1,6 +1,6 @@
-import { css } from "styled-components"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
+import { css } from "styled-components"
 import { InputProps } from "./Input"
 
 export const borderedInput = (props: InputProps = {}) => {

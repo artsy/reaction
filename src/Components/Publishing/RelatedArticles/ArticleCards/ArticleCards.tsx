@@ -1,9 +1,9 @@
-import styled from "styled-components"
 import React from "react"
 import { Col } from "react-styled-flexboxgrid"
+import styled from "styled-components"
 import { media } from "../../../Helpers"
-import { ArticleCard, ArticleCardContainer } from "./ArticleCard"
 import { ArticleData } from "../../Typings"
+import { ArticleCard, ArticleCardContainer } from "./ArticleCard"
 
 interface Props {
   series?: ArticleData

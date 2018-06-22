@@ -1,7 +1,7 @@
-import styled, { StyledFunction } from "styled-components"
-import React from "react"
-import { unica } from "Assets/Fonts"
 import Colors from "Assets/Colors"
+import { unica } from "Assets/Fonts"
+import React from "react"
+import styled, { StyledFunction } from "styled-components"
 
 interface Props {
   handleFollow?: any

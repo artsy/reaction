@@ -1,3 +1,4 @@
+import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
 import Waypoint from "react-waypoint"
@@ -6,13 +7,12 @@ import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
-import { pMedia as breakpoint } from "../../Helpers"
-import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { ErrorBoundary } from "../../ErrorBoundary"
-import { VideoControls } from "../Sections/VideoControls"
-import { trackImpression } from "./track-once"
-import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
+import { pMedia as breakpoint } from "../../Helpers"
 import { getCurrentUnixTimestamp } from "../Constants"
+import { VideoControls } from "../Sections/VideoControls"
+import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
+import { trackImpression } from "./track-once"
 
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   campaign: any
@@ -100,7 +100,7 @@ export class DisplayPanel extends Component<
   trackProgress() {
     const secondsComplete = Math.floor(this.video.currentTime)
     const percentComplete = Math.floor(
-      this.video.currentTime / this.video.duration * 100
+      (this.video.currentTime / this.video.duration) * 100
     )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 
