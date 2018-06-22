@@ -25,8 +25,6 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
       }
 
       static defaultProps = {
-        Component: ({ children, ...childProps }) =>
-          React.cloneElement(children, { ...childProps }),
         immediate: false,
         onToggleLoading: x => x,
       }
@@ -131,9 +129,7 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
         event.preventDefault()
 
         this.fetchData().then(() => {
-          const { router, replace, to, onClick } = this.props
-
-          onClick()
+          const { router, replace, to } = this.props
 
           if (replace) {
             router.replace(replace)
@@ -146,7 +142,7 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
       render() {
         const { children } = this.props
         const { isLoading } = this.state
-        const _props = pick(["to", "replace", "Component"], this.props)
+        const _props = pick(["to", "replace", "Component", "exact"], this.props)
         const hasRenderProp = isFunction(this.props.children)
 
         const renderChildren = () => {
@@ -165,7 +161,11 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
         }
 
         return (
-          <Found.Link onClick={this.handleClick} {..._props}>
+          <Found.Link
+            onClick={this.handleClick}
+            {..._props}
+            activeClassName="active"
+          >
             {renderChildren()}
           </Found.Link>
         )
