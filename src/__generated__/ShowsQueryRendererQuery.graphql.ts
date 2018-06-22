@@ -2,46 +2,59 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type PartnerShowSorts = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "END_AT_ASC" | "END_AT_DESC" | "NAME_ASC" | "NAME_DESC" | "PUBLISH_AT_ASC" | "PUBLISH_AT_DESC" | "START_AT_ASC" | "START_AT_DESC" | "created_at_asc" | "created_at_desc" | "end_at_asc" | "end_at_desc" | "name_asc" | "name_desc" | "publish_at_asc" | "publish_at_desc" | "start_at_asc" | "start_at_desc" | "%future added value";
-export type CVArtistQueryVariables = {
+export type ShowsQueryRendererQueryVariables = {
     readonly artistID: string;
     readonly first: number;
     readonly sort?: PartnerShowSorts | null;
-    readonly at_a_fair?: boolean | null;
-    readonly solo_show?: boolean | null;
-    readonly is_reference?: boolean | null;
-    readonly visible_to_public?: boolean | null;
+    readonly status: string;
 };
-export type CVArtistQueryResponse = {
+export type ShowsQueryRendererQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query CVArtistQuery(
+query ShowsQueryRendererQuery(
   $artistID: String!
+  $first: Int!
   $sort: PartnerShowSorts
-  $at_a_fair: Boolean
-  $solo_show: Boolean
-  $is_reference: Boolean
-  $visible_to_public: Boolean
+  $status: String!
 ) {
   artist(id: $artistID) {
-    ...CVContents_artist_39hiyk
+    ...ShowsRefetchContainer_artist_2L65Wq
     __id
   }
 }
 
-fragment CVContents_artist_39hiyk on Artist {
+fragment ShowsRefetchContainer_artist_2L65Wq on Artist {
   id
-  showsConnection(first: 10, after: "", sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {
+  showsConnection(first: $first, sort: $sort, status: $status) {
     pageInfo {
       hasNextPage
+      hasPreviousPage
+      startCursor
       endCursor
+    }
+    pageCursors {
+      around {
+        cursor
+        page
+        isCurrent
+      }
+      first {
+        cursor
+        page
+        isCurrent
+      }
+      last {
+        cursor
+        page
+        isCurrent
+      }
     }
     edges {
       node {
-        __id
         partner {
           __typename
           ... on ExternalPartner {
@@ -56,11 +69,15 @@ fragment CVContents_artist_39hiyk on Artist {
           }
         }
         name
-        start_at(format: "YYYY")
+        exhibition_period
+        cover_image {
+          cropped(width: 800, height: 600) {
+            url
+          }
+        }
         city
-        __typename
+        __id
       }
-      cursor
     }
   }
   __id
@@ -89,26 +106,8 @@ var v0 = [
   },
   {
     "kind": "LocalArgument",
-    "name": "at_a_fair",
-    "type": "Boolean",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "solo_show",
-    "type": "Boolean",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "is_reference",
-    "type": "Boolean",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "visible_to_public",
-    "type": "Boolean",
+    "name": "status",
+    "type": "String!",
     "defaultValue": null
   }
 ],
@@ -127,13 +126,29 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cursor",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "page",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "isCurrent",
+    "args": null,
+    "storageKey": null
+  }
+],
 v4 = {
   "kind": "ScalarField",
   "alias": null,
@@ -147,13 +162,13 @@ v5 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "CVArtistQuery",
+  "name": "ShowsQueryRendererQuery",
   "id": null,
-  "text": "query CVArtistQuery(\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVContents_artist_39hiyk\n    __id\n  }\n}\n\nfragment CVContents_artist_39hiyk on Artist {\n  id\n  showsConnection(first: 10, after: \"\", sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query ShowsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_2L65Wq\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_2L65Wq on Artist {\n  id\n  showsConnection(first: $first, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "CVArtistQuery",
+    "name": "ShowsQueryRendererQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -169,30 +184,12 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CVContents_artist",
+            "name": "ShowsRefetchContainer_artist",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": null
-              },
               {
                 "kind": "Variable",
                 "name": "first",
                 "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
                 "type": null
               },
               {
@@ -203,8 +200,8 @@ return {
               },
               {
                 "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
+                "name": "status",
+                "variableName": "status",
                 "type": null
               }
             ]
@@ -216,7 +213,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CVArtistQuery",
+    "name": "ShowsQueryRendererQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -242,34 +239,10 @@ return {
             "storageKey": null,
             "args": [
               {
-                "kind": "Literal",
-                "name": "after",
-                "value": "",
-                "type": "String"
-              },
-              {
                 "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Literal",
                 "name": "first",
-                "value": 10,
+                "variableName": "first",
                 "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
-                "type": "Boolean"
               },
               {
                 "kind": "Variable",
@@ -279,9 +252,9 @@ return {
               },
               {
                 "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
-                "type": "Boolean"
+                "name": "status",
+                "variableName": "status",
+                "type": "String"
               }
             ],
             "concreteType": "ShowConnection",
@@ -306,9 +279,64 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
+                    "name": "hasPreviousPage",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startCursor",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
                     "name": "endCursor",
                     "args": null,
                     "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "pageCursors",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "PageCursors",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "around",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": true,
+                    "selections": v3
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "first",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": false,
+                    "selections": v3
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "last",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": false,
+                    "selections": v3
                   }
                 ]
               },
@@ -330,7 +358,6 @@ return {
                     "concreteType": "Show",
                     "plural": false,
                     "selections": [
-                      v2,
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -340,7 +367,13 @@ return {
                         "concreteType": null,
                         "plural": false,
                         "selections": [
-                          v3,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__typename",
+                            "args": null,
+                            "storageKey": null
+                          },
                           v2,
                           {
                             "kind": "InlineFragment",
@@ -358,16 +391,51 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "start_at",
-                        "args": [
+                        "name": "exhibition_period",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "cover_image",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Image",
+                        "plural": false,
+                        "selections": [
                           {
-                            "kind": "Literal",
-                            "name": "format",
-                            "value": "YYYY",
-                            "type": "String"
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "cropped",
+                            "storageKey": "cropped(height:600,width:800)",
+                            "args": [
+                              {
+                                "kind": "Literal",
+                                "name": "height",
+                                "value": 600,
+                                "type": "Int!"
+                              },
+                              {
+                                "kind": "Literal",
+                                "name": "width",
+                                "value": 800,
+                                "type": "Int!"
+                              }
+                            ],
+                            "concreteType": "CroppedImageUrl",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": null,
+                                "storageKey": null
+                              }
+                            ]
                           }
-                        ],
-                        "storageKey": "start_at(format:\"YYYY\")"
+                        ]
                       },
                       {
                         "kind": "ScalarField",
@@ -376,76 +444,11 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v3
+                      v2
                     ]
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "cursor",
-                    "args": null,
-                    "storageKey": null
                   }
                 ]
               }
-            ]
-          },
-          {
-            "kind": "LinkedHandle",
-            "alias": null,
-            "name": "showsConnection",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "after",
-                "value": "",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 10,
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": "PartnerShowSorts"
-              },
-              {
-                "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
-                "type": "Boolean"
-              }
-            ],
-            "handle": "connection",
-            "key": "Artist_showsConnection",
-            "filters": [
-              "sort",
-              "at_a_fair",
-              "solo_show",
-              "is_reference",
-              "visible_to_public"
             ]
           },
           v2
@@ -455,5 +458,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'f3abb1a914b73a28a0d938638ffc1dd4';
+(node as any).hash = 'dd3a956edd3c0c9d3462aab7c2076d54';
 export default node;

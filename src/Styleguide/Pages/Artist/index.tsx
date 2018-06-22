@@ -1,4 +1,3 @@
-import { Sans, Serif } from "@artsy/palette"
 import { injectGlobalCSS, Theme, themeProps } from "@artsy/palette"
 import { ContextProvider } from "Components/Artsy"
 import React from "react"
@@ -12,12 +11,12 @@ import { Spacer } from "Styleguide/Elements/Spacer"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
 import { Provider as StateProvider } from "unstated"
 import { ArtistHeader } from "./ArtistHeader"
-import { ArticlesContent } from "./Routes/Articles"
-import { RelayAuctionResults } from "./Routes/AuctionResults"
-import { RelayCVContent } from "./Routes/CV"
+import { ArticlesRoute } from "./Routes/Articles"
+import { AuctionResultsRoute } from "./Routes/AuctionResults"
+import { CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
-import { RelayRelatedArtistsContent } from "./Routes/RelatedArtists"
-import { RelayShowsContent } from "./Routes/Shows"
+import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
+import { ShowsRoute } from "./Routes/Shows"
 
 injectGlobalCSS()
 
@@ -45,100 +44,19 @@ export class Artist extends React.Component {
                           <Overview />
                         </Tab>
                         <Tab name="CV">
-                          <RelayCVContent
-                            artistID="pablo-picasso"
-                            filters={{
-                              at_a_fair: false,
-                              solo_show: true,
-                              sort: "start_at_desc",
-                              is_reference: true,
-                              visible_to_public: false,
-                            }}
-                            category="Solo Shows"
-                          />
-                          <Spacer my={1} />
-                          <RelayCVContent
-                            artistID="pablo-picasso"
-                            filters={{
-                              at_a_fair: false,
-                              solo_show: false,
-                              sort: "start_at_desc",
-                              is_reference: true,
-                              visible_to_public: false,
-                            }}
-                            category="Group Shows"
-                          />
-                          <Spacer my={1} />
-                          <RelayCVContent
-                            artistID="pablo-picasso"
-                            filters={{ at_a_fair: true, sort: "start_at_desc" }}
-                            category="Fair Booths"
-                          />
-                          <Spacer my={1} />
-                          <Row>
-                            <Col smOffset={2}>
-                              <Serif size="2" color="black60">
-                                Artist CVs are assembled using only exhibition
-                                data available on Artsy.
-                              </Serif>
-                            </Col>
-                          </Row>
+                          <CVRoute />
                         </Tab>
                         <Tab name="Articles">
-                          <ContextProvider>
-                            <ArticlesContent artistID="pablo-picasso" />
-                          </ContextProvider>
+                          <ArticlesRoute />
                         </Tab>
                         <Tab name="Shows">
-                          <Sans size="3" weight="medium">
-                            Currently on view
-                          </Sans>
-                          <ContextProvider>
-                            <RelayShowsContent
-                              status="running"
-                              artistID="pablo-picasso"
-                              sort="end_at_asc"
-                            />
-                          </ContextProvider>
-                          <Sans size="3" weight="medium">
-                            Upcoming
-                          </Sans>
-                          <ContextProvider>
-                            <RelayShowsContent
-                              status="upcoming"
-                              artistID="andy-warhol"
-                              sort="start_at_asc"
-                            />
-                          </ContextProvider>
-                          <Sans size="3" weight="medium">
-                            Past
-                          </Sans>
-                          <ContextProvider>
-                            <RelayShowsContent
-                              status="closed"
-                              artistID="pablo-picasso"
-                              sort="end_at_desc"
-                            />
-                          </ContextProvider>
+                          <ShowsRoute />
                         </Tab>
                         <Tab name="Auction results">
-                          <RelayAuctionResults artistID="pablo-picasso" />
+                          <AuctionResultsRoute />
                         </Tab>
                         <Tab name="Related artists">
-                          <Sans size="3" weight="medium">
-                            Related
-                          </Sans>
-                          <RelayRelatedArtistsContent
-                            artistID="pablo-picasso"
-                            kind="MAIN"
-                          />
-                          <Sans size="3" weight="medium">
-                            Suggested contemporary
-                          </Sans>
-                          <RelayRelatedArtistsContent
-                            artistID="pablo-picasso"
-                            kind="CONTEMPORARY"
-                          />
+                          <RelatedArtistsRoute />
                         </Tab>
                       </Tabs>
                     </Col>

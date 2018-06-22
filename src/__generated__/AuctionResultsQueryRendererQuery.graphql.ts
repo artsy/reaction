@@ -2,30 +2,30 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type AuctionResultSorts = "DATE_DESC" | "ESTIMATE_AND_DATE_DESC" | "PRICE_AND_DATE_DESC" | "%future added value";
-export type AuctionResultsIndexQueryVariables = {
+export type AuctionResultsQueryRendererQueryVariables = {
     readonly artistID: string;
     readonly first: number;
     readonly sort?: AuctionResultSorts | null;
 };
-export type AuctionResultsIndexQueryResponse = {
+export type AuctionResultsQueryRendererQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query AuctionResultsIndexQuery(
+query AuctionResultsQueryRendererQuery(
   $artistID: String!
   $first: Int!
   $sort: AuctionResultSorts
 ) {
   artist(id: $artistID) {
-    ...AuctionResults_artist_13W90y
+    ...AuctionResultsRefetchContainer_artist_13W90y
     __id
   }
 }
 
-fragment AuctionResults_artist_13W90y on Artist {
+fragment AuctionResultsRefetchContainer_artist_13W90y on Artist {
   id
   auctionResults(first: $first, sort: $sort) {
     pageInfo {
@@ -148,13 +148,13 @@ v4 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "AuctionResultsIndexQuery",
+  "name": "AuctionResultsQueryRendererQuery",
   "id": null,
-  "text": "query AuctionResultsIndexQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: AuctionResultSorts\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist_13W90y\n    __id\n  }\n}\n\nfragment AuctionResults_artist_13W90y on Artist {\n  id\n  auctionResults(first: $first, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: AuctionResultSorts\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_13W90y\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_13W90y on Artist {\n  id\n  auctionResults(first: $first, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "AuctionResultsIndexQuery",
+    "name": "AuctionResultsQueryRendererQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -170,7 +170,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "AuctionResults_artist",
+            "name": "AuctionResultsRefetchContainer_artist",
             "args": [
               {
                 "kind": "Variable",
@@ -193,7 +193,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AuctionResultsIndexQuery",
+    "name": "AuctionResultsQueryRendererQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -448,5 +448,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c9cf73b183486f839eca458b612d6467';
+(node as any).hash = 'a29b9e64e2fec39c5a894c4beaec98d8';
 export default node;

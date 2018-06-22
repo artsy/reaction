@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type CVContents_artist = {
+export type CVPaginationContainer_artist = {
     readonly id: string;
     readonly showsConnection: ({
         readonly pageInfo: {
@@ -43,7 +43,7 @@ v2 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "CVContents_artist",
+  "name": "CVPaginationContainer_artist",
   "type": "Artist",
   "metadata": {
     "connection": [
@@ -261,5 +261,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a255ba54058b9770f701abb37e2c301b';
+(node as any).hash = 'ac99d11a148fbc5f05f5385e560b583f';
 export default node;

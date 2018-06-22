@@ -1,36 +1,39 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type ArticlesQueryVariables = {
+export type AuctionResultSorts = "DATE_DESC" | "ESTIMATE_AND_DATE_DESC" | "PRICE_AND_DATE_DESC" | "%future added value";
+export type AuctionResultsRefetchContainerQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
     readonly after?: string | null;
     readonly before?: string | null;
+    readonly sort?: AuctionResultSorts | null;
     readonly artistID: string;
 };
-export type ArticlesQueryResponse = {
+export type AuctionResultsRefetchContainerQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query ArticlesQuery(
+query AuctionResultsRefetchContainerQuery(
   $first: Int
   $last: Int
   $after: String
   $before: String
+  $sort: AuctionResultSorts
   $artistID: String!
 ) {
   artist(id: $artistID) {
-    ...Articles_artist_pbnwq
+    ...AuctionResultsRefetchContainer_artist_2TjZs4
     __id
   }
 }
 
-fragment Articles_artist_pbnwq on Artist {
+fragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {
   id
-  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
+  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -56,17 +59,23 @@ fragment Articles_artist_pbnwq on Artist {
     }
     edges {
       node {
-        href
-        thumbnail_title
-        author {
-          name
-          __id
-        }
-        published_at(format: "MMM d, YYYY")
-        thumbnail_image {
-          resized(width: 300) {
+        title
+        dimension_text
+        organization
+        images {
+          thumbnail {
             url
           }
+        }
+        description
+        date_text
+        sale_date_text
+        price_realized {
+          display
+          cents_usd
+        }
+        estimate {
+          display
         }
         __id
       }
@@ -100,6 +109,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "before",
     "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "sort",
+    "type": "AuctionResultSorts",
     "defaultValue": null
   },
   {
@@ -146,17 +161,24 @@ v3 = [
     "args": null,
     "storageKey": null
   }
-];
+],
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "display",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArticlesQuery",
+  "name": "AuctionResultsRefetchContainerQuery",
   "id": null,
-  "text": "query ArticlesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist_pbnwq\n    __id\n  }\n}\n\nfragment Articles_artist_pbnwq on Artist {\n  id\n  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArticlesQuery",
+    "name": "AuctionResultsRefetchContainerQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -172,7 +194,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Articles_artist",
+            "name": "AuctionResultsRefetchContainer_artist",
             "args": [
               {
                 "kind": "Variable",
@@ -197,6 +219,12 @@ return {
                 "name": "last",
                 "variableName": "last",
                 "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "sort",
+                "variableName": "sort",
+                "type": null
               }
             ]
           },
@@ -207,7 +235,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArticlesQuery",
+    "name": "AuctionResultsRefetchContainerQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -229,7 +257,7 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "articlesConnection",
+            "name": "auctionResults",
             "storageKey": null,
             "args": [
               {
@@ -251,25 +279,19 @@ return {
                 "type": "Int"
               },
               {
-                "kind": "Literal",
-                "name": "in_editorial_feed",
-                "value": true,
-                "type": "Boolean"
-              },
-              {
                 "kind": "Variable",
                 "name": "last",
                 "variableName": "last",
                 "type": "Int"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "sort",
-                "value": "PUBLISHED_AT_DESC",
-                "type": "ArticleSorts"
+                "variableName": "sort",
+                "type": "AuctionResultSorts"
               }
             ],
-            "concreteType": "ArticleConnection",
+            "concreteType": "AuctionResultConnection",
             "plural": false,
             "selections": [
               {
@@ -358,7 +380,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "ArticleEdge",
+                "concreteType": "AuctionResultEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -367,79 +389,46 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Article",
+                    "concreteType": "AuctionResult",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "href",
+                        "name": "title",
                         "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "thumbnail_title",
+                        "name": "dimension_text",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "organization",
                         "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "author",
+                        "name": "images",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "Author",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "name",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          v2
-                        ]
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "published_at",
-                        "args": [
-                          {
-                            "kind": "Literal",
-                            "name": "format",
-                            "value": "MMM d, YYYY",
-                            "type": "String"
-                          }
-                        ],
-                        "storageKey": "published_at(format:\"MMM d, YYYY\")"
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "thumbnail_image",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "Image",
+                        "concreteType": "AuctionLotImages",
                         "plural": false,
                         "selections": [
                           {
                             "kind": "LinkedField",
                             "alias": null,
-                            "name": "resized",
-                            "storageKey": "resized(width:300)",
-                            "args": [
-                              {
-                                "kind": "Literal",
-                                "name": "width",
-                                "value": 300,
-                                "type": "Int"
-                              }
-                            ],
-                            "concreteType": "ResizedImageUrl",
+                            "name": "thumbnail",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
                             "plural": false,
                             "selections": [
                               {
@@ -451,6 +440,58 @@ return {
                               }
                             ]
                           }
+                        ]
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "description",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "date_text",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "sale_date_text",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "price_realized",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "AuctionResultPriceRealized",
+                        "plural": false,
+                        "selections": [
+                          v4,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "cents_usd",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "estimate",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "AuctionLotEstimate",
+                        "plural": false,
+                        "selections": [
+                          v4
                         ]
                       },
                       v2
@@ -467,5 +508,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5fee54bc67e295196bfd8ab07cf7858c';
+(node as any).hash = '048b9ae9176c6bee3588849b7378268a';
 export default node;
