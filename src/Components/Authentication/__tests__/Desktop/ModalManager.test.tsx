@@ -8,8 +8,8 @@ const getWrapper = (): ReactWrapper<ModalManagerProps> => {
     <ModalManager
       submitUrls={{
         login: "/login",
-        signup: "/sign_up",
-        forgot_password: "/forgot_password",
+        signup: "/signup",
+        forgot: "/forgot",
       }}
       csrf="CSRF_TOKEN"
     />

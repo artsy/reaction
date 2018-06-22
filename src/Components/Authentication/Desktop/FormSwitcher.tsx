@@ -101,7 +101,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       case ModalType.signup:
         Form = SignUpForm
         break
-      case ModalType.forgotPassword:
+      case ModalType.forgot:
         Form = ForgotPasswordForm
         break
       default:

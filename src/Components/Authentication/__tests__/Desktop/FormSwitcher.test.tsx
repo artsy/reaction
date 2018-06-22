@@ -41,7 +41,7 @@ describe("FormSwitcher", () => {
     })
 
     it("forgot password form", () => {
-      const wrapper = getWrapper({ type: ModalType.forgotPassword })
+      const wrapper = getWrapper({ type: ModalType.forgot })
       expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
     })
   })
@@ -64,11 +64,11 @@ describe("FormSwitcher", () => {
 
     it("tracks forgot password impressions", () => {
       const tracking = { trackEvent: jest.fn() }
-      const wrapper = getWrapper({ type: ModalType.forgotPassword, tracking })
+      const wrapper = getWrapper({ type: ModalType.forgot, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         auth_redirect: "/foo",
-        type: "forgot_password",
+        type: "forgot",
         intent: "follow artist",
         context_module: "Header",
         modal_copy: "Foo Bar",

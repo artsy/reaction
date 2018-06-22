@@ -55,7 +55,7 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                 </MobileSubmitButton>
                 <Footer
                   handleTypeChange={type => (window.location.href = "/" + type)}
-                  mode="forgot_password"
+                  mode="forgot"
                 />
               </Form>
             </MobileInnerWrapper>

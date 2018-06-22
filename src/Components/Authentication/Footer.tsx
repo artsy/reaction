@@ -41,7 +41,7 @@ export const Footer = props => {
         </FooterContainer>
       )
     }
-    case "forgot_password": {
+    case "forgot": {
       return (
         <FooterContainer inline={inline}>
           <SmallText>

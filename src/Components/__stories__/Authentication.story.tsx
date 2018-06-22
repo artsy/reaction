@@ -34,7 +34,7 @@ storiesOf("Components/Authentication/Desktop", module)
   .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
       <FormSwitcher
-        type={ModalType.forgotPassword}
+        type={ModalType.forgot}
         handleSubmit={submit}
         options={{}}
       />
@@ -94,7 +94,7 @@ storiesOf("Components/Authentication/Common Elements", module)
       <Footer mode="login" inline />
     </div>
   ))
-  .add("Footer - Forgot Password", () => <Footer mode="forgot_password" />)
+  .add("Footer - Forgot Password", () => <Footer mode="forgot" />)
   .add("TermsOfServiceCheckbox", () => (
     <TermsOfServiceCheckbox
       error={null}

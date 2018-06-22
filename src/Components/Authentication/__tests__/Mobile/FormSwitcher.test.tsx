@@ -24,7 +24,7 @@ describe("FormSwitcher", () => {
 
     it("forgot password form", () => {
       const wrapper = mount(
-        <FormSwitcher type={ModalType.forgotPassword} handleSubmit={null} />
+        <FormSwitcher type={ModalType.forgot} handleSubmit={null} />
       )
       expect(wrapper.find(MobileForgotPasswordForm).length).toEqual(1)
     })

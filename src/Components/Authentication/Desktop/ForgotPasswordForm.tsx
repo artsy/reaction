@@ -63,7 +63,7 @@ export const ForgotPasswordForm: FormComponentType = props => {
             </SubmitButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
-              mode="forgot_password"
+              mode="forgot"
             />
           </Form>
         )
