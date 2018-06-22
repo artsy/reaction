@@ -25,7 +25,7 @@ export const SignUpValidator = Yup.object().shape({
   acceptedTermsOfService,
 })
 
-export const ResetPasswordValidator = Yup.object().shape({ email })
+export const ForgotPasswordValidator = Yup.object().shape({ email })
 
 export const LoginValidator = Yup.object().shape({
   email,

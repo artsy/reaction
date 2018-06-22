@@ -11,14 +11,14 @@ import Input from "Components/Input"
 import { Formik, FormikProps } from "formik"
 import React from "react"
 import { FormComponentType, InputValues } from "../Types"
-import { ResetPasswordValidator } from "../Validators"
+import { ForgotPasswordValidator } from "../Validators"
 
-export const MobileResetPasswordForm: FormComponentType = props => {
+export const MobileForgotPasswordForm: FormComponentType = props => {
   return (
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={ResetPasswordValidator}
+      validationSchema={ForgotPasswordValidator}
     >
       {({
         values,
@@ -55,7 +55,7 @@ export const MobileResetPasswordForm: FormComponentType = props => {
                 </MobileSubmitButton>
                 <Footer
                   handleTypeChange={type => (window.location.href = "/" + type)}
-                  mode="reset_password"
+                  mode="forgot_password"
                 />
               </Form>
             </MobileInnerWrapper>

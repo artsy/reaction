@@ -5,8 +5,8 @@ import {
   ModalType,
   SubmitHandler,
 } from "../Types"
+import { MobileForgotPasswordForm } from "./ForgotPasswordForm"
 import { MobileLoginForm } from "./LoginForm"
-import { MobileResetPasswordForm } from "./ResetPasswordForm"
 import { MobileSignUpForm } from "./SignUpForm"
 
 interface Props {
@@ -42,8 +42,8 @@ export class FormSwitcher extends React.Component<Props, State> {
       case ModalType.signup:
         Form = MobileSignUpForm
         break
-      case ModalType.resetPassword:
-        Form = MobileResetPasswordForm
+      case ModalType.forgotPassword:
+        Form = MobileForgotPasswordForm
         break
       default:
         throw new Error(`${this.state.type} mode needs a component`)

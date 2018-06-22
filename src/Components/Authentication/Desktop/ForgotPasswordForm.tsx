@@ -10,21 +10,21 @@ import {
 import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
-import { ResetPasswordValidator } from "../Validators"
+import { ForgotPasswordValidator } from "../Validators"
 
-const ResetButton = styled(Button).attrs({
+const SubmitButton = styled(Button).attrs({
   type: "submit",
   block: true,
 })`
   margin: auto 0 10px 0;
 `
 
-export const ResetPasswordForm: FormComponentType = props => {
+export const ForgotPasswordForm: FormComponentType = props => {
   return (
     <Formik
       initialValues={props.values}
       onSubmit={props.handleSubmit}
-      validationSchema={ResetPasswordValidator}
+      validationSchema={ForgotPasswordValidator}
     >
       {({
         values,
@@ -54,16 +54,16 @@ export const ResetPasswordForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             {status && !status.success && <Error show>{status.error}</Error>}
-            <ResetButton
+            <SubmitButton
               block
               type="submit"
               disabled={isSubmitting || hasErrors}
             >
               Send Reset Instructions
-            </ResetButton>
+            </SubmitButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
-              mode="reset_password"
+              mode="forgot_password"
             />
           </Form>
         )

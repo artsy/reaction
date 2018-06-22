@@ -7,8 +7,8 @@ import {
   Footer,
   TermsOfServiceCheckbox,
 } from "../../Components/Authentication/commonElements"
+import { MobileForgotPasswordForm } from "../../Components/Authentication/Mobile/ForgotPasswordForm"
 import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
-import { MobileResetPasswordForm } from "../../Components/Authentication/Mobile/ResetPasswordForm"
 import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
@@ -31,9 +31,9 @@ storiesOf("Components/Authentication/Desktop", module)
       <FormSwitcher type={ModalType.login} handleSubmit={submit} />
     </DesktopModal>
   ))
-  .add("Reset Password", () => (
+  .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.resetPassword} handleSubmit={submit} />
+      <FormSwitcher type={ModalType.forgotPassword} handleSubmit={submit} />
     </DesktopModal>
   ))
   .add("Sign Up", () => (
@@ -52,9 +52,9 @@ storiesOf("Components/Authentication/Mobile", module)
       />
     </MobileContainer>
   ))
-  .add("Reset Password", () => (
+  .add("Forgot Password", () => (
     <MobileContainer>
-      <MobileResetPasswordForm
+      <MobileForgotPasswordForm
         values={{}}
         handleSubmit={() => null}
         handleTypeChange={() => mode => null}
@@ -86,7 +86,7 @@ storiesOf("Components/Authentication/Common Elements", module)
       <Footer mode="login" inline />
     </div>
   ))
-  .add("Footer - Reset Password", () => <Footer mode="reset_password" />)
+  .add("Footer - Forgot Password", () => <Footer mode="forgot_password" />)
   .add("TermsOfServiceCheckbox", () => (
     <TermsOfServiceCheckbox
       error={null}

@@ -80,7 +80,7 @@ export const LoginForm: FormComponentType = props => {
             />
             <Row>
               <ForgotPassword
-                onClick={() => props.handleTypeChange(ModalType.resetPassword)}
+                onClick={() => props.handleTypeChange(ModalType.forgotPassword)}
               />
             </Row>
             {globalError && <Error show>{globalError}</Error>}

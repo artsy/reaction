@@ -1,9 +1,9 @@
-import React from "react"
 import { mount } from "enzyme"
+import React from "react"
+import { ForgotPasswordForm } from "../../Desktop/ForgotPasswordForm"
 import { FormSwitcher } from "../../Desktop/FormSwitcher"
 import { LoginForm } from "../../Desktop/LoginForm"
 import { SignUpForm } from "../../Desktop/SignUpForm"
-import { ResetPasswordForm } from "../../Desktop/ResetPasswordForm"
 import { ModalType } from "../../Types"
 
 jest.mock("Utils/track.ts", () => ({
@@ -40,9 +40,9 @@ describe("FormSwitcher", () => {
       expect(wrapper.find(SignUpForm).length).toEqual(1)
     })
 
-    it("reset password form", () => {
-      const wrapper = getWrapper({ type: ModalType.resetPassword })
-      expect(wrapper.find(ResetPasswordForm).length).toEqual(1)
+    it("forgot password form", () => {
+      const wrapper = getWrapper({ type: ModalType.forgotPassword })
+      expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
     })
   })
 
@@ -62,13 +62,13 @@ describe("FormSwitcher", () => {
       })
     })
 
-    it("tracks reset password impressions", () => {
+    it("tracks forgot password impressions", () => {
       const tracking = { trackEvent: jest.fn() }
-      const wrapper = getWrapper({ type: ModalType.resetPassword, tracking })
+      const wrapper = getWrapper({ type: ModalType.forgotPassword, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         auth_redirect: "/foo",
-        type: "reset_password",
+        type: "forgot_password",
         intent: "follow artist",
         context_module: "Header",
         modal_copy: "Foo Bar",
