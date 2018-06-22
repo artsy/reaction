@@ -32,9 +32,16 @@ export const RelatedArtists = () => {
                     return (
                       <Box p={1} width={width}>
                         <ArtistCard
-                          src="https://picsum.photos/110/110/?random"
-                          headline="Francesca DiMattio"
-                          subHeadline="American, b. 1979"
+                          artist={{
+                            image: {
+                              cropped: {
+                                url: "https://picsum.photos/110/110/?random",
+                              },
+                            },
+                            name: "Francesca DiMattio",
+                            formatted_nationality_and_birthday:
+                              "American, b. 1979",
+                          }}
                         />
                       </Box>
                     )

@@ -6,13 +6,14 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-export interface ArtistCardProps {
-  src: string
-  headline: string
-  subHeadline: string
+import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
+import { createFragmentContainer, graphql } from "react-relay"
+
+interface Props {
+  artist: ArtistCard_artist
 }
 
-export class ArtistCard extends React.Component<ArtistCardProps> {
+export class ArtistCard extends React.Component<Props> {
   render() {
     return (
       <Responsive>
@@ -25,14 +26,16 @@ export class ArtistCard extends React.Component<ArtistCardProps> {
   }
 }
 
-export const LargeArtistCard = props => (
+export const LargeArtistCard = (props: Props) => (
   <BorderBox hover flexDirection="column" width="100%">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
-      <Avatar src={props.src} mb={1} />
+      {props.artist.image && (
+        <Avatar src={props.artist.image.cropped.url} mb={1} />
+      )}
       <Serif size="3t" weight="semibold">
-        {props.headline}
+        {props.artist.name}
       </Serif>
-      <Sans size="2">{props.subHeadline}</Sans>
+      <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
     </Flex>
 
     <Spacer mb={1} />
@@ -45,18 +48,32 @@ export const LargeArtistCard = props => (
   </BorderBox>
 )
 
-export const SmallArtistCard = props => (
+export const SmallArtistCard = (props: Props) => (
   <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
-      <Sans weight="medium" size="2">
-        {props.badge}
-      </Sans>
-      <Serif size="3t">{props.headline}</Serif>
-      <Sans size="1">{props.subHeadline}</Sans>
+      <Serif size="3t">{props.artist.name}</Serif>
+      <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
       <Button size="small" variant="secondaryOutline" width="70px" mt={1}>
         Follow
       </Button>
     </Flex>
-    <Avatar size="small" src={props.src} ml={2} />
+    {props.artist.image && (
+      <Avatar size="small" src={props.artist.image.cropped.url} ml={2} />
+    )}
   </BorderBox>
+)
+
+export const ArtistCardFragmentContainer = createFragmentContainer(
+  ArtistCard,
+  graphql`
+    fragment ArtistCard_artist on Artist {
+      name
+      image {
+        cropped(width: 400, height: 300) {
+          url
+        }
+      }
+      formatted_nationality_and_birthday
+    }
+  `
 )

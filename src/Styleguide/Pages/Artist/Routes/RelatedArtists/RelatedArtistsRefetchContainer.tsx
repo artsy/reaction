@@ -1,7 +1,7 @@
 import { RelatedArtistsRefetchContainer_artist } from "__generated__/RelatedArtistsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtistCard } from "Styleguide/Components/ArtistCard"
+import { ArtistCardFragmentContainer } from "Styleguide/Components/ArtistCard"
 import { Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -110,12 +110,8 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                         ({ node }) => {
                           return (
                             <Box p={1} width={width}>
-                              <ArtistCard
-                                src={node.image.cropped.url}
-                                headline={node.name}
-                                subHeadline={
-                                  node.formatted_nationality_and_birthday
-                                }
+                              <ArtistCardFragmentContainer
+                                artist={node as any}
                               />
                             </Box>
                           )
@@ -192,13 +188,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
             }
             edges {
               node {
-                name
-                image {
-                  cropped(width: 400, height: 300) {
-                    url
-                  }
-                }
-                formatted_nationality_and_birthday
+                ...ArtistCard_artist
               }
             }
           }
