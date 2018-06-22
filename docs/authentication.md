@@ -51,15 +51,20 @@ We use [Formik](https://github.com/jaredpalmer/formik) to handle form entries an
 ### Component Responsibilities
 **Desktop**
 - `ModalContainer` (Force): Listens for changes to Force's mediator and triggers opens to ModalManager. It is also responsible for setting Cookies like `destination` and `afterAuthAction`.
-- `ModalManager` (Reaction): Manages the state of the modal (open/close).
-- `FormSwitcher` (Reaction): Responsible for switching between form types.
-- `LoginForm`/`SignUpForm`/`ResetPasswordForm` (Reaction): The Formik forms for handling inputs.
+- [`ModalManager`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/ModalManager.tsx) (Reaction): Manages the state of the modal (open/close).
+- [`FormSwitcher`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/FormSwitcher.tsx) (Reaction): Responsible for switching between form types.
+- [`LoginForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/LoginForm.tsx)/[`SignUpForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/SignUpForm.tsx)/[`ResetPasswordForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/ResetPasswordForm.tsx) (Reaction): The Formik forms for handling inputs.
 
 - `AuthStatic` (Force): Wrapper for authentication via url route (desktop).
 
-**Mobile**
+[Desktop Storybooks](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FDesktop&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
+
+[**Mobile**](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FMobile&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
 - `MobileAuthStatic` (Force): Wrapper for authentication via url route (mobile).
-- `FormSwitcher` (Reaction): See above.
+- [`FormSwitcher`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/FormSwitcher.tsx) (Reaction): See above.
+- [`LoginForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/LoginForm.tsx)/[`SignUpForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/SignUpForm.tsx)/[`ResetPasswordForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/ResetPasswordForm.tsx)
+
+[Mobile Storybooks](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FMobile&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
 
 ### Configuration
 This `ModalOptions` interface is used to configure the modal's look and behavior. For example, `mode` determines which form type to display and `copy` changes the subtitle of the form. These properties are also used for analytics. [See the full list of options here.](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Types.ts#L34)
