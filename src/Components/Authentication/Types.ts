@@ -33,7 +33,7 @@ export interface FormProps {
 
 export interface ModalOptions {
   /**
-   * the free string copy of the modal that was triggered.
+   * the subtitle of the form
    */
   copy?: string
   /**
