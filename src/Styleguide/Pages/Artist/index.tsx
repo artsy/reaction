@@ -16,7 +16,7 @@ import { ArticlesContent } from "./Routes/Articles"
 import { RelayAuctionResults } from "./Routes/AuctionResults"
 import { RelayCVContent } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
-import { RelatedArtists } from "./Routes/RelatedArtists"
+import { RelayRelatedArtistsContent } from "./Routes/RelatedArtists"
 import { RelayShowsContent } from "./Routes/Shows"
 
 injectGlobalCSS()
@@ -125,7 +125,20 @@ export class Artist extends React.Component {
                           <RelayAuctionResults artistID="pablo-picasso" />
                         </Tab>
                         <Tab name="Related artists">
-                          <RelatedArtists />
+                          <Sans size="3" weight="medium">
+                            Related
+                          </Sans>
+                          <RelayRelatedArtistsContent
+                            artistID="pablo-picasso"
+                            kind="MAIN"
+                          />
+                          <Sans size="3" weight="medium">
+                            Suggested contemporary
+                          </Sans>
+                          <RelayRelatedArtistsContent
+                            artistID="pablo-picasso"
+                            kind="CONTEMPORARY"
+                          />
                         </Tab>
                       </Tabs>
                     </Col>
