@@ -26,7 +26,8 @@ const resolveFetch = () => {
   ;(fetchQuery as any).mockImplementation(() => Promise.resolve({}))
 }
 
-describe("PreloadLink", () => {
+// FIXME: Reenable
+xdescribe("PreloadLink", () => {
   const getWrapper = (props = {}) => {
     return mount(
       <ContextProvider>

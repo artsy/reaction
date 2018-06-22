@@ -42,6 +42,8 @@ export interface PreloadLinkProps extends ContextProps {
   router?: any // TODO
   replace?: string
   to?: string
+  name?: string
+  onClick?: () => void
 }
 
 export interface PreloadLinkState {
