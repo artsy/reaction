@@ -2,7 +2,7 @@ import { RelatedArtistsRefetchContainer_artist } from "__generated__/RelatedArti
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ArtistCard } from "Styleguide/Components/ArtistCard"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { RelayPagination } from "Styleguide/Components/RelayPagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -78,8 +78,8 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     renderPagination() {
       return (
         <div>
-          <Pagination
-            {...this.props.artist.related.artists.pageCursors}
+          <RelayPagination
+            pageCursors={this.props.artist.related.artists.pageCursors as any}
             onClick={this.loadAfter}
             onNext={this.loadNext}
             onPrev={this.loadPrev}
@@ -132,8 +132,10 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                 <Row>
                   <Col>
                     <Flex justifyContent="flex-end">
-                      <Pagination
-                        {...this.props.artist.related.artists.pageCursors}
+                      <RelayPagination
+                        pageCursors={
+                          this.props.artist.related.artists.pageCursors as any
+                        }
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
                         onPrev={this.loadPrev}
@@ -174,21 +176,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
               endCursor
             }
             pageCursors {
-              around {
-                cursor
-                page
-                isCurrent
-              }
-              first {
-                cursor
-                page
-                isCurrent
-              }
-              last {
-                cursor
-                page
-                isCurrent
-              }
+              ...RelayPagination_pageCursors
             }
             edges {
               node {

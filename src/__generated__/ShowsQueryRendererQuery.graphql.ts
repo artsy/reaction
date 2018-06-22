@@ -37,21 +37,7 @@ fragment ShowsRefetchContainer_artist_2L65Wq on Artist {
       endCursor
     }
     pageCursors {
-      around {
-        cursor
-        page
-        isCurrent
-      }
-      first {
-        cursor
-        page
-        isCurrent
-      }
-      last {
-        cursor
-        page
-        isCurrent
-      }
+      ...RelayPagination_pageCursors
     }
     edges {
       node {
@@ -81,6 +67,24 @@ fragment ShowsRefetchContainer_artist_2L65Wq on Artist {
     }
   }
   __id
+}
+
+fragment RelayPagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
 }
 */
 
@@ -164,7 +168,7 @@ return {
   "operationKind": "query",
   "name": "ShowsQueryRendererQuery",
   "id": null,
-  "text": "query ShowsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_2L65Wq\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_2L65Wq on Artist {\n  id\n  showsConnection(first: $first, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ShowsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_2L65Wq\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_2L65Wq on Artist {\n  id\n  showsConnection(first: $first, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...RelayPagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment RelayPagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

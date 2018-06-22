@@ -42,21 +42,7 @@ fragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {
         endCursor
       }
       pageCursors {
-        around {
-          cursor
-          page
-          isCurrent
-        }
-        first {
-          cursor
-          page
-          isCurrent
-        }
-        last {
-          cursor
-          page
-          isCurrent
-        }
+        ...RelayPagination_pageCursors
       }
       edges {
         node {
@@ -73,6 +59,24 @@ fragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {
     }
   }
   __id
+}
+
+fragment RelayPagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
 }
 */
 
@@ -158,7 +162,7 @@ return {
   "operationKind": "query",
   "name": "RelatedArtistsRefetchContainerQuery",
   "id": null,
-  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        around {\n          cursor\n          page\n          isCurrent\n        }\n        first {\n          cursor\n          page\n          isCurrent\n        }\n        last {\n          cursor\n          page\n          isCurrent\n        }\n      }\n      edges {\n        node {\n          name\n          image {\n            cropped(width: 400, height: 300) {\n              url\n            }\n          }\n          formatted_nationality_and_birthday\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        ...RelayPagination_pageCursors\n      }\n      edges {\n        node {\n          name\n          image {\n            cropped(width: 400, height: 300) {\n              url\n            }\n          }\n          formatted_nationality_and_birthday\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RelayPagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

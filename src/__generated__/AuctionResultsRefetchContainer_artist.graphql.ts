@@ -10,23 +10,7 @@ export type AuctionResultsRefetchContainer_artist = {
             readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
-            readonly around: ReadonlyArray<{
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }>;
-            readonly first: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-            readonly last: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-        }) | null;
+        readonly pageCursors: ({}) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly title: string | null;
@@ -55,37 +39,14 @@ export type AuctionResultsRefetchContainer_artist = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "isCurrent",
-    "args": null,
-    "storageKey": null
-  }
-],
-v1 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -226,34 +187,9 @@ return {
           "plural": false,
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "around",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": true,
-              "selections": v0
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "first",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v0
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "last",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v0
+              "kind": "FragmentSpread",
+              "name": "RelayPagination_pageCursors",
+              "args": null
             }
           ]
         },
@@ -355,7 +291,7 @@ return {
                   "concreteType": "AuctionResultPriceRealized",
                   "plural": false,
                   "selections": [
-                    v1,
+                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -374,19 +310,19 @@ return {
                   "concreteType": "AuctionLotEstimate",
                   "plural": false,
                   "selections": [
-                    v1
+                    v0
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
         }
       ]
     },
-    v2
+    v1
   ]
 };
 })();
-(node as any).hash = '1c84a096a6328c41638386cc66f5f869';
+(node as any).hash = '5307a19934b80c37047a116a2381368b';
 export default node;
