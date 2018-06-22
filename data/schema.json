@@ -189,8 +189,7 @@
               "args": [
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return artists matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return artists matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -204,8 +203,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description":
-                    "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
+                  "description": "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -262,8 +260,7 @@
             },
             {
               "name": "causality_jwt",
-              "description":
-                "Creates, and authorizes, a JWT custom for Causality",
+              "description": "Creates, and authorizes, a JWT custom for Causality",
               "args": [
                 {
                   "name": "role",
@@ -425,8 +422,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return fairs matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return fairs matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -537,8 +533,7 @@
                 },
                 {
                   "name": "eligible_for_primary_bucket",
-                  "description":
-                    "Indicates tier 1/2 for gallery, 1 for institution",
+                  "description": "Indicates tier 1/2 for gallery, 1 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -548,8 +543,7 @@
                 },
                 {
                   "name": "eligible_for_secondary_bucket",
-                  "description":
-                    "Indicates tier 3/4 for gallery, 2 for institution",
+                  "description": "Indicates tier 3/4 for gallery, 2 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -603,8 +597,7 @@
                 },
                 {
                   "name": "partner_categories",
-                  "description":
-                    "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -853,8 +846,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -1136,8 +1128,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "This type has been superceded by `sale_artworks`"
+              "deprecationReason": "This type has been superceded by `sale_artworks`"
             },
             {
               "name": "gene",
@@ -1182,8 +1173,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description":
-                    "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -1321,8 +1311,7 @@
                 },
                 {
                   "name": "size",
-                  "description":
-                    "Maximum number of items to retrieve. Default: 5.",
+                  "description": "Maximum number of items to retrieve. Default: 5.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1387,8 +1376,7 @@
                 },
                 {
                   "name": "size",
-                  "description":
-                    "Maximum number of items to retrieve. Default: 5.",
+                  "description": "Maximum number of items to retrieve. Default: 5.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -1532,8 +1520,7 @@
               "args": [
                 {
                   "name": "key",
-                  "description":
-                    "Key to the OrderedSet or group of OrderedSets",
+                  "description": "Key to the OrderedSet or group of OrderedSets",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -1762,8 +1749,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -1874,8 +1860,7 @@
                 },
                 {
                   "name": "eligible_for_primary_bucket",
-                  "description":
-                    "Indicates tier 1/2 for gallery, 1 for institution",
+                  "description": "Indicates tier 1/2 for gallery, 1 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -1885,8 +1870,7 @@
                 },
                 {
                   "name": "eligible_for_secondary_bucket",
-                  "description":
-                    "Indicates tier 3/4 for gallery, 2 for institution",
+                  "description": "Indicates tier 3/4 for gallery, 2 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -1940,8 +1924,7 @@
                 },
                 {
                   "name": "partner_categories",
-                  "description":
-                    "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -2282,8 +2265,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -2432,8 +2414,7 @@
               "args": [
                 {
                   "name": "double_time_period",
-                  "description":
-                    "Fetch the top artists for each metric within double the base time period",
+                  "description": "Fetch the top artists for each metric within double the base time period",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -2544,8 +2525,7 @@
               "args": [
                 {
                   "name": "exclude_followed_artists",
-                  "description":
-                    "If true, will exclude followed artists for the user",
+                  "description": "If true, will exclude followed artists for the user",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -2555,8 +2535,7 @@
                 },
                 {
                   "name": "exclude_artist_ids",
-                  "description":
-                    "Exclude these ids from results, may result in all artists being excluded.",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -2589,8 +2568,7 @@
             },
             {
               "name": "viewer",
-              "description":
-                "A wildcard used to support complex root queries in Relay",
+              "description": "A wildcard used to support complex root queries in Relay",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -2609,8 +2587,7 @@
         {
           "kind": "SCALAR",
           "name": "String",
-          "description":
-            "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -2744,8 +2721,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -2860,8 +2836,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -3086,8 +3061,7 @@
         {
           "kind": "SCALAR",
           "name": "ID",
-          "description":
-            "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+          "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -3097,8 +3071,7 @@
         {
           "kind": "SCALAR",
           "name": "Int",
-          "description":
-            "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
+          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -3164,8 +3137,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Profiles have been removed and thus author hrefs don't exist anymore."
+              "deprecationReason": "Profiles have been removed and thus author hrefs don't exist anymore."
             },
             {
               "name": "profile_handle",
@@ -3188,8 +3160,7 @@
         {
           "kind": "SCALAR",
           "name": "Boolean",
-          "description":
-            "The `Boolean` scalar type represents `true` or `false`.",
+          "description": "The `Boolean` scalar type represents `true` or `false`.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -3442,8 +3413,7 @@
             },
             {
               "name": "placeholder",
-              "description":
-                "Value to use when `padding-bottom` for fluid image placeholders",
+              "description": "Value to use when `padding-bottom` for fluid image placeholders",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3624,8 +3594,7 @@
         {
           "kind": "SCALAR",
           "name": "Float",
-          "description":
-            "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
+          "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -3984,8 +3953,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -4008,8 +3976,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -4226,8 +4193,7 @@
             },
             {
               "name": "embed",
-              "description":
-                "Returns an HTML string representing the embedded content (video)",
+              "description": "Returns an HTML string representing the embedded content (video)",
               "args": [
                 {
                   "name": "width",
@@ -4436,8 +4402,7 @@
             },
             {
               "name": "is_biddable",
-              "description":
-                "Is this artwork part of an auction that is currently running?",
+              "description": "Is this artwork part of an auction that is currently running?",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4449,8 +4414,7 @@
             },
             {
               "name": "is_buy_nowable",
-              "description":
-                "When in an auction, can the work be bought immediately",
+              "description": "When in an auction, can the work be bought immediately",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4474,8 +4438,7 @@
             },
             {
               "name": "is_contactable",
-              "description":
-                "Are we able to display a contact form on artwork pages?",
+              "description": "Are we able to display a contact form on artwork pages?",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4519,8 +4482,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Should not be used to determine anything UI-level"
+              "deprecationReason": "Should not be used to determine anything UI-level"
             },
             {
               "name": "is_for_sale",
@@ -4632,8 +4594,7 @@
             },
             {
               "name": "is_purchasable",
-              "description":
-                "True for inquireable artworks that have an exact price.",
+              "description": "True for inquireable artworks that have an exact price.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -4806,8 +4767,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -5637,8 +5597,7 @@
                 },
                 {
                   "name": "recordsTrusted",
-                  "description":
-                    "When true, will only return records for whitelisted artists.",
+                  "description": "When true, will only return records for whitelisted artists.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -5725,8 +5684,7 @@
               "args": [
                 {
                   "name": "partner_bio",
-                  "description":
-                    "If true, will return featured bio over Artsy one.",
+                  "description": "If true, will return featured bio over Artsy one.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -5903,8 +5861,7 @@
             },
             {
               "name": "exhibition_highlights",
-              "description":
-                "Custom-sorted list of shows for an artist, in order of significance.",
+              "description": "Custom-sorted list of shows for an artist, in order of significance.",
               "args": [
                 {
                   "name": "size",
@@ -6095,8 +6052,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -6247,8 +6203,7 @@
             },
             {
               "name": "formatted_artworks_count",
-              "description":
-                "A string showing the total number of works and those for sale",
+              "description": "A string showing the total number of works and those for sale",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6260,8 +6215,7 @@
             },
             {
               "name": "formatted_nationality_and_birthday",
-              "description":
-                "A string of the form \"Nationality, Birthday (or Birthday-Deathday)\"",
+              "description": "A string of the form \"Nationality, Birthday (or Birthday-Deathday)\"",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -6384,8 +6338,7 @@
             },
             {
               "name": "is_display_auction_link",
-              "description":
-                "Only specific Artists should show a link to auction results.",
+              "description": "Only specific Artists should show a link to auction results.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7023,8 +6976,7 @@
             },
             {
               "name": "sortable_id",
-              "description":
-                "Use this attribute to sort by when sorting a collection of Artists",
+              "description": "Use this attribute to sort by when sorting a collection of Artists",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7188,8 +7140,7 @@
             },
             {
               "name": "startCursor",
-              "description":
-                "When paginating backwards, the cursor to continue.",
+              "description": "When paginating backwards, the cursor to continue.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7201,8 +7152,7 @@
             },
             {
               "name": "endCursor",
-              "description":
-                "When paginating forwards, the cursor to continue.",
+              "description": "When paginating forwards, the cursor to continue.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -7264,8 +7214,7 @@
           "fields": [
             {
               "name": "first",
-              "description":
-                "Optional, may be included in `around` (if current page is near the beginning).",
+              "description": "Optional, may be included in `around` (if current page is near the beginning).",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -7277,8 +7226,7 @@
             },
             {
               "name": "last",
-              "description":
-                "Optional, may be included in `around` (if current page is near the end).",
+              "description": "Optional, may be included in `around` (if current page is near the end).",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -7887,8 +7835,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8003,8 +7950,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8347,8 +8293,7 @@
             },
             {
               "name": "partner_id",
-              "description":
-                "The partner id of the partner who submitted the featured bio.",
+              "description": "The partner id of the partner who submitted the featured bio.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -8402,8 +8347,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8436,8 +8380,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8470,8 +8413,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8504,8 +8446,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8565,8 +8506,7 @@
         {
           "kind": "SCALAR",
           "name": "FormattedNumber",
-          "description":
-            "The `FormattedNumber` type represents a number that can optionally be returnedas a formatted String. It does not try to coerce the type.",
+          "description": "The `FormattedNumber` type represents a number that can optionally be returnedas a formatted String. It does not try to coerce the type.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -8710,8 +8650,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -8792,8 +8731,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -8956,8 +8894,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8992,8 +8929,7 @@
             },
             {
               "name": "exhibition_period",
-              "description":
-                "A formatted description of the start to end dates",
+              "description": "A formatted description of the start to end dates",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -9088,8 +9024,7 @@
             },
             {
               "name": "is_active",
-              "description":
-                "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
+              "description": "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -9244,8 +9179,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9280,8 +9214,7 @@
               "args": [
                 {
                   "name": "max_days",
-                  "description":
-                    "Before this many days no update will be generated",
+                  "description": "Before this many days no update will be generated",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -9356,8 +9289,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9457,8 +9389,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9501,8 +9432,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9845,8 +9775,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9889,8 +9818,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10423,8 +10351,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10866,8 +10793,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Prefer artwork contact_message to handle availability-based prompts."
+              "deprecationReason": "Prefer artwork contact_message to handle availability-based prompts."
             },
             {
               "name": "counts",
@@ -10962,8 +10888,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "This field no longer exists, this is for backwards compatibility"
+              "deprecationReason": "This field no longer exists, this is for backwards compatibility"
             },
             {
               "name": "is_linkable",
@@ -11086,8 +11011,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -11262,8 +11186,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11296,8 +11219,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11330,8 +11252,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11364,8 +11285,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11398,8 +11318,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11432,8 +11351,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11466,8 +11384,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11500,8 +11417,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11534,8 +11450,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11568,8 +11483,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11602,8 +11516,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -11972,8 +11885,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -12088,8 +12000,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12156,8 +12067,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12192,8 +12102,7 @@
             },
             {
               "name": "exhibition_period",
-              "description":
-                "A formatted description of the start to end dates",
+              "description": "A formatted description of the start to end dates",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -12288,8 +12197,7 @@
             },
             {
               "name": "is_active",
-              "description":
-                "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
+              "description": "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -12432,8 +12340,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12468,8 +12375,7 @@
               "args": [
                 {
                   "name": "max_days",
-                  "description":
-                    "Before this many days no update will be generated",
+                  "description": "Before this many days no update will be generated",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -12544,8 +12450,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12751,8 +12656,7 @@
             },
             {
               "name": "aggregations",
-              "description":
-                "Returns aggregation counts for the given filter query.",
+              "description": "Returns aggregation counts for the given filter query.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -12827,8 +12731,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favour artwork connections that take filter arguments."
+              "deprecationReason": "Favour artwork connections that take filter arguments."
             },
             {
               "name": "counts",
@@ -12872,8 +12775,7 @@
             },
             {
               "name": "merchandisable_artists",
-              "description":
-                "Returns a list of merchandisable artists sorted by merch score.",
+              "description": "Returns a list of merchandisable artists sorted by merch score.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13052,8 +12954,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13086,8 +12987,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13432,8 +13332,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13885,8 +13784,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -14347,8 +14245,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -14727,8 +14624,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -14955,8 +14851,7 @@
               "args": [
                 {
                   "name": "exclude_gene_ids",
-                  "description":
-                    "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
+                  "description": "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -15201,8 +15096,7 @@
             },
             {
               "name": "aggregations",
-              "description":
-                "Returns aggregation counts for the given filter query.",
+              "description": "Returns aggregation counts for the given filter query.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -15611,8 +15505,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -15645,8 +15538,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -15824,7 +15716,7 @@
           "description": null,
           "fields": [
             {
-              "name": "contemporary",
+              "name": "artists",
               "description": null,
               "args": [
                 {
@@ -15838,67 +15730,14 @@
                   "defaultValue": "true"
                 },
                 {
-                  "name": "after",
+                  "name": "kind",
                   "description": null,
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
+                    "kind": "ENUM",
+                    "name": "RelatedArtistsKind",
                     "ofType": null
                   },
                   "defaultValue": null
-                },
-                {
-                  "name": "first",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "before",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "last",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "ArtistConnection",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "main",
-              "description": null,
-              "args": [
-                {
-                  "name": "exclude_artists_without_artworks",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": "true"
                 },
                 {
                   "name": "after",
@@ -15951,8 +15790,7 @@
             },
             {
               "name": "suggested",
-              "description":
-                "A list of the current user’s suggested artists, based on a single artist",
+              "description": "A list of the current user’s suggested artists, based on a single artist",
               "args": [
                 {
                   "name": "artist_id",
@@ -15996,8 +15834,7 @@
                 },
                 {
                   "name": "exclude_artist_ids",
-                  "description":
-                    "Exclude these ids from results, may result in all artists being excluded.",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -16082,6 +15919,29 @@
           "inputFields": null,
           "interfaces": [],
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "RelatedArtistsKind",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "MAIN",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "CONTEMPORARY",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {
@@ -16280,8 +16140,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -16328,13 +16187,11 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favor `status` for consistency with other models"
+              "deprecationReason": "Favor `status` for consistency with other models"
             },
             {
               "name": "bid_increments",
-              "description":
-                "A bid increment policy that explains minimum bids in ranges.",
+              "description": "A bid increment policy that explains minimum bids in ranges.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -16450,8 +16307,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16494,8 +16350,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16538,8 +16393,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16702,8 +16556,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16722,8 +16575,7 @@
             },
             {
               "name": "live_url_if_open",
-              "description":
-                "Returns a live auctions url if the sale is open and start time is after now",
+              "description": "Returns a live auctions url if the sale is open and start time is after now",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -16795,8 +16647,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16963,8 +16814,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17146,8 +16996,7 @@
             },
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -17161,8 +17010,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17689,8 +17537,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17730,8 +17577,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -17745,8 +17591,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17830,8 +17675,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -17845,8 +17689,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17966,8 +17809,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17998,8 +17840,7 @@
             },
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -18013,8 +17854,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -18145,8 +17985,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -18160,8 +17999,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -18245,8 +18083,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -18260,8 +18097,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -18345,8 +18181,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -18360,8 +18195,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -18445,8 +18279,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -18460,8 +18293,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -18860,8 +18692,7 @@
             },
             {
               "name": "info",
-              "description":
-                "Descriptive phrase used as companion for attribution class name display",
+              "description": "Descriptive phrase used as companion for attribution class name display",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -18885,8 +18716,7 @@
             },
             {
               "name": "long_description",
-              "description":
-                "Long descriptive phrase used as companion for short_description",
+              "description": "Long descriptive phrase used as companion for short_description",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -19034,8 +18864,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -19082,13 +18911,11 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favor `status` for consistency with other models"
+              "deprecationReason": "Favor `status` for consistency with other models"
             },
             {
               "name": "bid_increments",
-              "description":
-                "A bid increment policy that explains minimum bids in ranges.",
+              "description": "A bid increment policy that explains minimum bids in ranges.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -19204,8 +19031,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19248,8 +19074,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19292,8 +19117,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19456,8 +19280,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19476,8 +19299,7 @@
             },
             {
               "name": "live_url_if_open",
-              "description":
-                "Returns a live auctions url if the sale is open and start time is after now",
+              "description": "Returns a live auctions url if the sale is open and start time is after now",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -19549,8 +19371,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19717,8 +19538,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20118,8 +19938,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20162,8 +19981,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20319,8 +20137,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -20435,8 +20252,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20503,8 +20319,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20539,8 +20354,7 @@
             },
             {
               "name": "exhibition_period",
-              "description":
-                "A formatted description of the start to end dates",
+              "description": "A formatted description of the start to end dates",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -20635,8 +20449,7 @@
             },
             {
               "name": "is_active",
-              "description":
-                "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
+              "description": "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -20779,8 +20592,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20815,8 +20627,7 @@
               "args": [
                 {
                   "name": "max_days",
-                  "description":
-                    "Before this many days no update will be generated",
+                  "description": "Before this many days no update will be generated",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -20958,8 +20769,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -21006,13 +20816,11 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favor `status` for consistency with other models"
+              "deprecationReason": "Favor `status` for consistency with other models"
             },
             {
               "name": "bid_increments",
-              "description":
-                "A bid increment policy that explains minimum bids in ranges.",
+              "description": "A bid increment policy that explains minimum bids in ranges.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -21128,8 +20936,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21172,8 +20979,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21216,8 +21022,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21380,8 +21185,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21400,8 +21204,7 @@
             },
             {
               "name": "live_url_if_open",
-              "description":
-                "Returns a live auctions url if the sale is open and start time is after now",
+              "description": "Returns a live auctions url if the sale is open and start time is after now",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -21473,8 +21276,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21641,8 +21443,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22002,8 +21803,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -22118,8 +21918,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22186,8 +21985,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22222,8 +22020,7 @@
             },
             {
               "name": "exhibition_period",
-              "description":
-                "A formatted description of the start to end dates",
+              "description": "A formatted description of the start to end dates",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -22318,8 +22115,7 @@
             },
             {
               "name": "is_active",
-              "description":
-                "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
+              "description": "Gravity doesn’t expose the `active` flag. Temporarily re-state its logic.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -22462,8 +22258,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22498,8 +22293,7 @@
               "args": [
                 {
                   "name": "max_days",
-                  "description":
-                    "Before this many days no update will be generated",
+                  "description": "Before this many days no update will be generated",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -22667,8 +22461,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22783,8 +22576,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23631,8 +23423,7 @@
           "fields": [
             {
               "name": "aggregations",
-              "description":
-                "Returns aggregation counts for the given filter query.",
+              "description": "Returns aggregation counts for the given filter query.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -23730,8 +23521,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23764,8 +23554,7 @@
               "args": [
                 {
                   "name": "format",
-                  "description":
-                    "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23989,8 +23778,7 @@
               "args": [
                 {
                   "name": "followed_artist_id",
-                  "description":
-                    "ID of followed artist to target for related artist rails",
+                  "description": "ID of followed artist to target for related artist rails",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24030,8 +23818,7 @@
                 },
                 {
                   "name": "related_artist_id",
-                  "description":
-                    "ID of related artist to target for related artist rails",
+                  "description": "ID of related artist to target for related artist rails",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24054,8 +23841,7 @@
               "args": [
                 {
                   "name": "max_followed_gene_rails",
-                  "description":
-                    "Maximum number of followed genes to return, disable with a negative number",
+                  "description": "Maximum number of followed genes to return, disable with a negative number",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -24065,8 +23851,7 @@
                 },
                 {
                   "name": "max_rails",
-                  "description":
-                    "Maximum number of modules to return, disable limit with a negative number",
+                  "description": "Maximum number of modules to return, disable limit with a negative number",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -24076,8 +23861,7 @@
                 },
                 {
                   "name": "order",
-                  "description":
-                    "The preferred order of modules, defaults to order returned by Gravity",
+                  "description": "The preferred order of modules, defaults to order returned by Gravity",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -24118,8 +23902,7 @@
             },
             {
               "name": "hero_units",
-              "description":
-                "A list of enabled hero units to show on the requested platform",
+              "description": "A list of enabled hero units to show on the requested platform",
               "args": [
                 {
                   "name": "platform",
@@ -24299,8 +24082,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favor `is_`-prefixed Booleans (*and* this should be a Boolean)"
+              "deprecationReason": "Favor `is_`-prefixed Booleans (*and* this should be a Boolean)"
             },
             {
               "name": "is_displayable",
@@ -24744,8 +24526,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24788,8 +24569,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -25233,8 +25013,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -25613,8 +25392,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -25841,8 +25619,7 @@
               "args": [
                 {
                   "name": "exclude_gene_ids",
-                  "description":
-                    "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
+                  "description": "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -26078,8 +25855,7 @@
                 },
                 {
                   "name": "exclude",
-                  "description":
-                    "List of artwork IDs to exclude from the response (irrespective of size)",
+                  "description": "List of artwork IDs to exclude from the response (irrespective of size)",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -26126,13 +25902,11 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Favor `status` for consistency with other models"
+              "deprecationReason": "Favor `status` for consistency with other models"
             },
             {
               "name": "bid_increments",
-              "description":
-                "A bid increment policy that explains minimum bids in ranges.",
+              "description": "A bid increment policy that explains minimum bids in ranges.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -26248,8 +26022,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26292,8 +26065,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26336,8 +26108,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26500,8 +26271,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26520,8 +26290,7 @@
             },
             {
               "name": "live_url_if_open",
-              "description":
-                "Returns a live auctions url if the sale is open and start time is after now",
+              "description": "Returns a live auctions url if the sale is open and start time is after now",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -26593,8 +26362,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26761,8 +26529,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -27250,8 +27017,7 @@
             },
             {
               "name": "background_image_url",
-              "description":
-                "The image to show, on desktop this defaults to the wide version.",
+              "description": "The image to show, on desktop this defaults to the wide version.",
               "args": [
                 {
                   "name": "version",
@@ -27418,8 +27184,7 @@
             },
             {
               "name": "consignment_submissions",
-              "description":
-                "A list of the current user’s consignment submissions",
+              "description": "A list of the current user’s consignment submissions",
               "args": [
                 {
                   "name": "after",
@@ -27535,8 +27300,7 @@
             },
             {
               "name": "bidders",
-              "description":
-                "A list of the current user’s bidder registrations",
+              "description": "A list of the current user’s bidder registrations",
               "args": [
                 {
                   "name": "sale_id",
@@ -27563,8 +27327,7 @@
             },
             {
               "name": "bidder_status",
-              "description":
-                "The current user's status relating to bids on artworks",
+              "description": "The current user's status relating to bids on artworks",
               "args": [
                 {
                   "name": "artwork_id",
@@ -27609,8 +27372,7 @@
               "args": [
                 {
                   "name": "artwork_id",
-                  "description":
-                    "Only the bidder positions on a specific artwork",
+                  "description": "Only the bidder positions on a specific artwork",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -27620,8 +27382,7 @@
                 },
                 {
                   "name": "current",
-                  "description":
-                    "Only the most recent bidder positions per artwork.",
+                  "description": "Only the most recent bidder positions per artwork.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -27631,8 +27392,7 @@
                 },
                 {
                   "name": "sale_id",
-                  "description":
-                    "Only the bidder positions for a specific auction",
+                  "description": "Only the bidder positions for a specific auction",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -27694,8 +27454,7 @@
             },
             {
               "name": "conversation",
-              "description":
-                "A conversation, usually between a user and a partner",
+              "description": "A conversation, usually between a user and a partner",
               "args": [
                 {
                   "name": "id",
@@ -27722,8 +27481,7 @@
             },
             {
               "name": "conversations",
-              "description":
-                "Conversations, usually between a user and partner.",
+              "description": "Conversations, usually between a user and partner.",
               "args": [
                 {
                   "name": "after",
@@ -27800,8 +27558,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28048,8 +27805,7 @@
             },
             {
               "name": "lot_standing",
-              "description":
-                "The current user's status relating to bids on artworks",
+              "description": "The current user's status relating to bids on artworks",
               "args": [
                 {
                   "name": "artwork_id",
@@ -28090,13 +27846,11 @@
             },
             {
               "name": "lot_standings",
-              "description":
-                "A list of the current user's auction standings for given lots",
+              "description": "A list of the current user's auction standings for given lots",
               "args": [
                 {
                   "name": "active_positions",
-                  "description":
-                    "Only includes lots on which you have a leading bidder position.",
+                  "description": "Only includes lots on which you have a leading bidder position.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28116,8 +27870,7 @@
                 },
                 {
                   "name": "live",
-                  "description":
-                    "Only the lot standings for currently open or closed auctions.",
+                  "description": "Only the lot standings for currently open or closed auctions.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28127,8 +27880,7 @@
                 },
                 {
                   "name": "sale_id",
-                  "description":
-                    "Only the lot standings for a specific auction",
+                  "description": "Only the lot standings for a specific auction",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28186,8 +27938,7 @@
             },
             {
               "name": "notifications_connection",
-              "description":
-                "A list of feed items, indicating published artworks (grouped by date and artists).",
+              "description": "A list of feed items, indicating published artworks (grouped by date and artists).",
               "args": [
                 {
                   "name": "after",
@@ -28236,8 +27987,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Prefer to use followed_artists_artwork_groups."
+              "deprecationReason": "Prefer to use followed_artists_artwork_groups."
             },
             {
               "name": "paddle_number",
@@ -28273,8 +28023,7 @@
             },
             {
               "name": "recentlyViewedArtworks",
-              "description":
-                "A list of the current user’s recently viewed artworks.",
+              "description": "A list of the current user’s recently viewed artworks.",
               "args": [
                 {
                   "name": "after",
@@ -28341,8 +28090,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -28421,8 +28169,7 @@
             },
             {
               "name": "suggested_artists",
-              "description":
-                "A list of the current user’s suggested artists, based on a single artist",
+              "description": "A list of the current user’s suggested artists, based on a single artist",
               "args": [
                 {
                   "name": "artist_id",
@@ -28466,8 +28213,7 @@
                 },
                 {
                   "name": "exclude_artist_ids",
-                  "description":
-                    "Exclude these ids from results, may result in all artists being excluded.",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -28689,8 +28435,7 @@
             },
             {
               "name": "authenticity_certificate",
-              "description":
-                "Does the artwork come with an certificate of authenticity?",
+              "description": "Does the artwork come with an certificate of authenticity?",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -28870,8 +28615,7 @@
             },
             {
               "name": "state",
-              "description":
-                "The internal state of the work, e.g. draft/submitted",
+              "description": "The internal state of the work, e.g. draft/submitted",
               "args": [],
               "type": {
                 "kind": "ENUM",
@@ -29296,8 +29040,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29399,8 +29142,7 @@
             },
             {
               "name": "is_leading_bidder",
-              "description":
-                "You are the leading bidder without regard to reserve",
+              "description": "You are the leading bidder without regard to reserve",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -29412,8 +29154,7 @@
             },
             {
               "name": "most_recent_bid",
-              "description":
-                "Your most recent bid—which is not necessarily winning (may be higher or lower)",
+              "description": "Your most recent bid—which is not necessarily winning (may be higher or lower)",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -29516,8 +29257,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29560,8 +29300,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29604,8 +29343,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29835,8 +29573,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29879,8 +29616,7 @@
             },
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -29894,8 +29630,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30003,8 +29738,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -30018,8 +29752,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30103,8 +29836,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -30118,8 +29850,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30346,8 +30077,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30414,8 +30144,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30458,8 +30187,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30502,8 +30230,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30605,8 +30332,7 @@
             },
             {
               "name": "to",
-              "description":
-                "The participant(s) responding to the conversation",
+              "description": "The participant(s) responding to the conversation",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -30658,8 +30384,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30702,8 +30427,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30798,8 +30522,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -30830,8 +30553,7 @@
             },
             {
               "name": "is_last_message_to_user",
-              "description":
-                "True if user/conversation initiator is a recipient.",
+              "description": "True if user/conversation initiator is a recipient.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -30843,8 +30565,7 @@
             },
             {
               "name": "last_message_open",
-              "description":
-                "Timestamp if the user opened the last message, null in all other cases",
+              "description": "Timestamp if the user opened the last message, null in all other cases",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -30856,8 +30577,7 @@
             },
             {
               "name": "last_message_delivery_id",
-              "description":
-                "Delivery id if the user is a recipient of the last message, null otherwise.",
+              "description": "Delivery id if the user is a recipient of the last message, null otherwise.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -30885,8 +30605,7 @@
             },
             {
               "name": "items",
-              "description":
-                "The artworks and/or partner shows discussed in the conversation.",
+              "description": "The artworks and/or partner shows discussed in the conversation.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -30902,8 +30621,7 @@
             },
             {
               "name": "messages",
-              "description":
-                "A connection for all messages in a single conversation",
+              "description": "A connection for all messages in a single conversation",
               "args": [
                 {
                   "name": "sort",
@@ -30991,8 +30709,7 @@
         {
           "kind": "OBJECT",
           "name": "ConversationInitiator",
-          "description":
-            "The participant who started the conversation, currently always a User",
+          "description": "The participant who started the conversation, currently always a User",
           "fields": [
             {
               "name": "id",
@@ -31090,8 +30807,7 @@
         {
           "kind": "OBJECT",
           "name": "ConversationResponder",
-          "description":
-            "The participant responding to the conversation, currently always a Partner",
+          "description": "The participant responding to the conversation, currently always a Partner",
           "fields": [
             {
               "name": "id",
@@ -31143,8 +30859,7 @@
             },
             {
               "name": "reply_to_impulse_ids",
-              "description":
-                "An array of Impulse IDs that correspond to all email addresses that messages should be sent to",
+              "description": "An array of Impulse IDs that correspond to all email addresses that messages should be sent to",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -31471,8 +31186,7 @@
             },
             {
               "name": "body",
-              "description":
-                "Unaltered text if possible, otherwise `body`: a parsed/sanitized version from Sendgrid.",
+              "description": "Unaltered text if possible, otherwise `body`: a parsed/sanitized version from Sendgrid.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -31564,8 +31278,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31692,8 +31405,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31736,8 +31448,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31780,8 +31491,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31824,8 +31534,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32002,8 +31711,7 @@
             },
             {
               "name": "total",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -32017,8 +31725,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32538,8 +32245,7 @@
           "fields": [
             {
               "name": "bundledArtworksByArtist",
-              "description":
-                "A list of published artworks by followed artists (grouped by date and artists).",
+              "description": "A list of published artworks by followed artists (grouped by date and artists).",
               "args": [
                 {
                   "name": "sort",
@@ -32930,8 +32636,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -33339,8 +33044,7 @@
           "fields": [
             {
               "name": "amount",
-              "description":
-                "A formatted price with various currency formatting options.",
+              "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
                   "name": "decimal",
@@ -33354,8 +33058,7 @@
                 },
                 {
                   "name": "format",
-                  "description":
-                    "Allows control of symbol position (%v = value, %s = symbol)",
+                  "description": "Allows control of symbol position (%v = value, %s = symbol)",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -33547,8 +33250,7 @@
             },
             {
               "name": "country",
-              "description":
-                "Country code associated with the address (standard 3-letter code)",
+              "description": "Country code associated with the address (standard 3-letter code)",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -34150,8 +33852,7 @@
                 },
                 {
                   "name": "recordsTrusted",
-                  "description":
-                    "When true, will only return records for whitelisted artists.",
+                  "description": "When true, will only return records for whitelisted artists.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34238,8 +33939,7 @@
               "args": [
                 {
                   "name": "partner_bio",
-                  "description":
-                    "If true, will return featured bio over Artsy one.",
+                  "description": "If true, will return featured bio over Artsy one.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34416,8 +34116,7 @@
             },
             {
               "name": "exhibition_highlights",
-              "description":
-                "Custom-sorted list of shows for an artist, in order of significance.",
+              "description": "Custom-sorted list of shows for an artist, in order of significance.",
               "args": [
                 {
                   "name": "size",
@@ -34608,8 +34307,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -34760,8 +34458,7 @@
             },
             {
               "name": "formatted_artworks_count",
-              "description":
-                "A string showing the total number of works and those for sale",
+              "description": "A string showing the total number of works and those for sale",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -34773,8 +34470,7 @@
             },
             {
               "name": "formatted_nationality_and_birthday",
-              "description":
-                "A string of the form \"Nationality, Birthday (or Birthday-Deathday)\"",
+              "description": "A string of the form \"Nationality, Birthday (or Birthday-Deathday)\"",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -34897,8 +34593,7 @@
             },
             {
               "name": "is_display_auction_link",
-              "description":
-                "Only specific Artists should show a link to auction results.",
+              "description": "Only specific Artists should show a link to auction results.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -35536,8 +35231,7 @@
             },
             {
               "name": "sortable_id",
-              "description":
-                "Use this attribute to sort by when sorting a collection of Artists",
+              "description": "Use this attribute to sort by when sorting a collection of Artists",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -35677,8 +35371,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -35701,8 +35394,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -35919,8 +35611,7 @@
             },
             {
               "name": "embed",
-              "description":
-                "Returns an HTML string representing the embedded content (video)",
+              "description": "Returns an HTML string representing the embedded content (video)",
               "args": [
                 {
                   "name": "width",
@@ -36129,8 +35820,7 @@
             },
             {
               "name": "is_biddable",
-              "description":
-                "Is this artwork part of an auction that is currently running?",
+              "description": "Is this artwork part of an auction that is currently running?",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -36142,8 +35832,7 @@
             },
             {
               "name": "is_buy_nowable",
-              "description":
-                "When in an auction, can the work be bought immediately",
+              "description": "When in an auction, can the work be bought immediately",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -36167,8 +35856,7 @@
             },
             {
               "name": "is_contactable",
-              "description":
-                "Are we able to display a contact form on artwork pages?",
+              "description": "Are we able to display a contact form on artwork pages?",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -36212,8 +35900,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "Should not be used to determine anything UI-level"
+              "deprecationReason": "Should not be used to determine anything UI-level"
             },
             {
               "name": "is_for_sale",
@@ -36325,8 +36012,7 @@
             },
             {
               "name": "is_purchasable",
-              "description":
-                "True for inquireable artworks that have an exact price.",
+              "description": "True for inquireable artworks that have an exact price.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -36499,8 +36185,7 @@
               "args": [
                 {
                   "name": "shallow",
-                  "description":
-                    "Use whatever is in the original response instead of making a request",
+                  "description": "Use whatever is in the original response instead of making a request",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -36872,8 +36557,7 @@
           "fields": [
             {
               "name": "id",
-              "description":
-                "Attempt to get the ID of the entity of the FeaturedLink",
+              "description": "Attempt to get the ID of the entity of the FeaturedLink",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -37260,8 +36944,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -37640,8 +37323,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -37868,8 +37550,7 @@
               "args": [
                 {
                   "name": "exclude_gene_ids",
-                  "description":
-                    "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
+                  "description": "Array of gene ids (not slugs) to exclude, may result in all genes being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -38101,8 +37782,7 @@
                 },
                 {
                   "name": "eligible_for_primary_bucket",
-                  "description":
-                    "Indicates tier 1/2 for gallery, 1 for institution",
+                  "description": "Indicates tier 1/2 for gallery, 1 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -38112,8 +37792,7 @@
                 },
                 {
                   "name": "eligible_for_secondary_bucket",
-                  "description":
-                    "Indicates tier 3/4 for gallery, 2 for institution",
+                  "description": "Indicates tier 3/4 for gallery, 2 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -38167,8 +37846,7 @@
                 },
                 {
                   "name": "partner_categories",
-                  "description":
-                    "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -38282,8 +37960,7 @@
             },
             {
               "name": "aggregations",
-              "description":
-                "Returns aggregation counts for the given filter query.",
+              "description": "Returns aggregation counts for the given filter query.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -38757,8 +38434,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -38929,15 +38605,13 @@
           "enumValues": [
             {
               "name": "ARTIST_AUCTION_LOT",
-              "description":
-                "Cumulative price achieved at auction. Base time period: 12 weeks",
+              "description": "Cumulative price achieved at auction. Base time period: 12 weeks",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "ARTIST_FAIR",
-              "description":
-                "Number of artworks in fairs. Base time period: 12 weeks.",
+              "description": "Number of artworks in fairs. Base time period: 12 weeks.",
               "isDeprecated": false,
               "deprecationReason": null
             },
@@ -39106,8 +38780,7 @@
             },
             {
               "name": "location",
-              "description":
-                "The given location of the user as structured data",
+              "description": "The given location of the user as structured data",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -39131,8 +38804,7 @@
             },
             {
               "name": "userAlreadyExists",
-              "description":
-                "Check whether a user exists by email address before creating an account.",
+              "description": "Check whether a user exists by email address before creating an account.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -39178,8 +38850,7 @@
         {
           "kind": "OBJECT",
           "name": "Viewer",
-          "description":
-            "A wildcard used to support complex root queries in Relay",
+          "description": "A wildcard used to support complex root queries in Relay",
           "fields": [
             {
               "name": "article",
@@ -39356,8 +39027,7 @@
               "args": [
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return artists matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return artists matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -39371,8 +39041,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description":
-                    "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
+                  "description": "\n        Only return artists matching specified slugs.\n        Accepts list of slugs. (e.g. 'andy-warhol', 'banksy')\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -39429,8 +39098,7 @@
             },
             {
               "name": "causality_jwt",
-              "description":
-                "Creates, and authorizes, a JWT custom for Causality",
+              "description": "Creates, and authorizes, a JWT custom for Causality",
               "args": [
                 {
                   "name": "role",
@@ -39592,8 +39260,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return fairs matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return fairs matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -39704,8 +39371,7 @@
                 },
                 {
                   "name": "eligible_for_primary_bucket",
-                  "description":
-                    "Indicates tier 1/2 for gallery, 1 for institution",
+                  "description": "Indicates tier 1/2 for gallery, 1 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -39715,8 +39381,7 @@
                 },
                 {
                   "name": "eligible_for_secondary_bucket",
-                  "description":
-                    "Indicates tier 3/4 for gallery, 2 for institution",
+                  "description": "Indicates tier 3/4 for gallery, 2 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -39770,8 +39435,7 @@
                 },
                 {
                   "name": "partner_categories",
-                  "description":
-                    "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -40020,8 +39684,7 @@
                 },
                 {
                   "name": "medium",
-                  "description":
-                    "A string from the list of allocations, or * to denote all mediums",
+                  "description": "A string from the list of allocations, or * to denote all mediums",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -40303,8 +39966,7 @@
                 "ofType": null
               },
               "isDeprecated": true,
-              "deprecationReason":
-                "This type has been superceded by `sale_artworks`"
+              "deprecationReason": "This type has been superceded by `sale_artworks`"
             },
             {
               "name": "gene",
@@ -40349,8 +40011,7 @@
                 },
                 {
                   "name": "slugs",
-                  "description":
-                    "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return genes matching specified slugs.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -40488,8 +40149,7 @@
                 },
                 {
                   "name": "size",
-                  "description":
-                    "Maximum number of items to retrieve. Default: 5.",
+                  "description": "Maximum number of items to retrieve. Default: 5.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -40554,8 +40214,7 @@
                 },
                 {
                   "name": "size",
-                  "description":
-                    "Maximum number of items to retrieve. Default: 5.",
+                  "description": "Maximum number of items to retrieve. Default: 5.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -40699,8 +40358,7 @@
               "args": [
                 {
                   "name": "key",
-                  "description":
-                    "Key to the OrderedSet or group of OrderedSets",
+                  "description": "Key to the OrderedSet or group of OrderedSets",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -40929,8 +40587,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return shows matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -41041,8 +40698,7 @@
                 },
                 {
                   "name": "eligible_for_primary_bucket",
-                  "description":
-                    "Indicates tier 1/2 for gallery, 1 for institution",
+                  "description": "Indicates tier 1/2 for gallery, 1 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -41052,8 +40708,7 @@
                 },
                 {
                   "name": "eligible_for_secondary_bucket",
-                  "description":
-                    "Indicates tier 3/4 for gallery, 2 for institution",
+                  "description": "Indicates tier 3/4 for gallery, 2 for institution",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -41107,8 +40762,7 @@
                 },
                 {
                   "name": "partner_categories",
-                  "description":
-                    "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
+                  "description": "\n        Only return partners of the specified partner categories.\n        Accepts list of slugs.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -41449,8 +41103,7 @@
                 },
                 {
                   "name": "ids",
-                  "description":
-                    "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
+                  "description": "\n        Only return sales matching specified ids.\n        Accepts list of ids.\n      ",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -41599,8 +41252,7 @@
               "args": [
                 {
                   "name": "double_time_period",
-                  "description":
-                    "Fetch the top artists for each metric within double the base time period",
+                  "description": "Fetch the top artists for each metric within double the base time period",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -41711,8 +41363,7 @@
               "args": [
                 {
                   "name": "exclude_followed_artists",
-                  "description":
-                    "If true, will exclude followed artists for the user",
+                  "description": "If true, will exclude followed artists for the user",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -41722,8 +41373,7 @@
                 },
                 {
                   "name": "exclude_artist_ids",
-                  "description":
-                    "Exclude these ids from results, may result in all artists being excluded.",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -41902,8 +41552,7 @@
             },
             {
               "name": "updateCollectorProfile",
-              "description":
-                "Updating a collector profile (loyalty applicant status).",
+              "description": "Updating a collector profile (loyalty applicant status).",
               "args": [
                 {
                   "name": "input",
@@ -42065,8 +41714,7 @@
             },
             {
               "name": "saveArtwork",
-              "description":
-                "Save (or remove) an artwork to (from) a users default collection.",
+              "description": "Save (or remove) an artwork to (from) a users default collection.",
               "args": [
                 {
                   "name": "input",
@@ -42120,8 +41768,7 @@
             },
             {
               "name": "requestCredentialsForAssetUpload",
-              "description":
-                "Attach an gemini asset to a consignment submission",
+              "description": "Attach an gemini asset to a consignment submission",
               "args": [
                 {
                   "name": "input",
@@ -42148,8 +41795,7 @@
             },
             {
               "name": "createGeminiEntryForAsset",
-              "description":
-                "Attach an gemini asset to a consignment submission",
+              "description": "Attach an gemini asset to a consignment submission",
               "args": [
                 {
                   "name": "input",
@@ -42176,8 +41822,7 @@
             },
             {
               "name": "createConsignmentSubmission",
-              "description":
-                "Create a new consignment submission using Convection",
+              "description": "Create a new consignment submission using Convection",
               "args": [
                 {
                   "name": "input",
@@ -42231,8 +41876,7 @@
             },
             {
               "name": "addAssetToConsignmentSubmission",
-              "description":
-                "Attach an gemini asset to a consignment submission",
+              "description": "Attach an gemini asset to a consignment submission",
               "args": [
                 {
                   "name": "input",
@@ -42711,8 +42355,7 @@
               "args": [
                 {
                   "name": "exclude_followed_artists",
-                  "description":
-                    "If true, will exclude followed artists for the user",
+                  "description": "If true, will exclude followed artists for the user",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -42722,8 +42365,7 @@
                 },
                 {
                   "name": "exclude_artist_ids",
-                  "description":
-                    "Exclude these ids from results, may result in all artists being excluded.",
+                  "description": "Exclude these ids from results, may result in all artists being excluded.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -43037,8 +42679,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -43105,8 +42746,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -43149,8 +42789,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -43193,8 +42832,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description":
-                    "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -43283,8 +42921,7 @@
             },
             {
               "name": "location",
-              "description":
-                "The given location of the user as structured data",
+              "description": "The given location of the user as structured data",
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "EditableLocation",
@@ -43415,8 +43052,7 @@
             },
             {
               "name": "state_code",
-              "description":
-                "The (optional) state code of the state for location",
+              "description": "The (optional) state code of the state for location",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -43570,8 +43206,7 @@
             },
             {
               "name": "email",
-              "description":
-                "Email address, required of an unauthenticated user",
+              "description": "Email address, required of an unauthenticated user",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -44213,8 +43848,7 @@
         {
           "kind": "OBJECT",
           "name": "Credentials",
-          "description":
-            "An asset which is assigned to a consignment submission",
+          "description": "An asset which is assigned to a consignment submission",
           "fields": [
             {
               "name": "credentials",
@@ -44332,8 +43966,7 @@
         {
           "kind": "OBJECT",
           "name": "S3PolicyConditionsType",
-          "description":
-            "The conditions for uploading assets to media.artsy.net",
+          "description": "The conditions for uploading assets to media.artsy.net",
           "fields": [
             {
               "name": "bucket",
@@ -44427,8 +44060,7 @@
             },
             {
               "name": "template_key",
-              "description":
-                "The template key, this is `name` in the asset request",
+              "description": "The template key, this is `name` in the asset request",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -44456,8 +44088,7 @@
             },
             {
               "name": "metadata",
-              "description":
-                "Additional JSON data to pass through gemini, should deiinitely contain an `id` and a `_type`",
+              "description": "Additional JSON data to pass through gemini, should deiinitely contain an `id` and a `_type`",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -44487,8 +44118,7 @@
         {
           "kind": "SCALAR",
           "name": "JSON",
-          "description":
-            "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
+          "description": "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -44579,8 +44209,7 @@
             },
             {
               "name": "authenticity_certificate",
-              "description":
-                "Does the artwork come with an certificate of authenticity?",
+              "description": "Does the artwork come with an certificate of authenticity?",
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
@@ -44730,8 +44359,7 @@
             },
             {
               "name": "state",
-              "description":
-                "The internal state of the work, e.g. draft/submitted",
+              "description": "The internal state of the work, e.g. draft/submitted",
               "type": {
                 "kind": "ENUM",
                 "name": "SubmissionStateAggregation",
@@ -44855,8 +44483,7 @@
             },
             {
               "name": "authenticity_certificate",
-              "description":
-                "Does the artwork come with an certificate of authenticity?",
+              "description": "Does the artwork come with an certificate of authenticity?",
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
@@ -45006,8 +44633,7 @@
             },
             {
               "name": "state",
-              "description":
-                "The internal state of the work, e.g. draft/submitted",
+              "description": "The internal state of the work, e.g. draft/submitted",
               "type": {
                 "kind": "ENUM",
                 "name": "SubmissionStateAggregation",
@@ -45131,8 +44757,7 @@
             },
             {
               "name": "submission_id",
-              "description":
-                "The id of the submission you want to attach an asset to",
+              "description": "The id of the submission you want to attach an asset to",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -45197,8 +44822,7 @@
         {
           "kind": "OBJECT",
           "name": "Asset",
-          "description":
-            "An asset which is assigned to a consignment submission",
+          "description": "An asset which is assigned to a consignment submission",
           "fields": [
             {
               "name": "id",
@@ -45335,8 +44959,7 @@
         {
           "kind": "OBJECT",
           "name": "__Schema",
-          "description":
-            "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+          "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
           "fields": [
             {
               "name": "types",
@@ -45364,8 +44987,7 @@
             },
             {
               "name": "queryType",
-              "description":
-                "The type that query operations will be rooted at.",
+              "description": "The type that query operations will be rooted at.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -45381,8 +45003,7 @@
             },
             {
               "name": "mutationType",
-              "description":
-                "If this server supports mutation, the type that mutation operations will be rooted at.",
+              "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -45394,8 +45015,7 @@
             },
             {
               "name": "subscriptionType",
-              "description":
-                "If this server support subscription, the type that subscription operations will be rooted at.",
+              "description": "If this server support subscription, the type that subscription operations will be rooted at.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -45407,8 +45027,7 @@
             },
             {
               "name": "directives",
-              "description":
-                "A list of all directives supported by this server.",
+              "description": "A list of all directives supported by this server.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -45439,8 +45058,7 @@
         {
           "kind": "OBJECT",
           "name": "__Type",
-          "description":
-            "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+          "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
           "fields": [
             {
               "name": "kind",
@@ -45625,8 +45243,7 @@
         {
           "kind": "ENUM",
           "name": "__TypeKind",
-          "description":
-            "An enum describing what kind of type a given `__Type` is.",
+          "description": "An enum describing what kind of type a given `__Type` is.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -45639,50 +45256,43 @@
             },
             {
               "name": "OBJECT",
-              "description":
-                "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
+              "description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "INTERFACE",
-              "description":
-                "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
+              "description": "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "UNION",
-              "description":
-                "Indicates this type is a union. `possibleTypes` is a valid field.",
+              "description": "Indicates this type is a union. `possibleTypes` is a valid field.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "ENUM",
-              "description":
-                "Indicates this type is an enum. `enumValues` is a valid field.",
+              "description": "Indicates this type is an enum. `enumValues` is a valid field.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "INPUT_OBJECT",
-              "description":
-                "Indicates this type is an input object. `inputFields` is a valid field.",
+              "description": "Indicates this type is an input object. `inputFields` is a valid field.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "LIST",
-              "description":
-                "Indicates this type is a list. `ofType` is a valid field.",
+              "description": "Indicates this type is a list. `ofType` is a valid field.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "NON_NULL",
-              "description":
-                "Indicates this type is a non-null. `ofType` is a valid field.",
+              "description": "Indicates this type is a non-null. `ofType` is a valid field.",
               "isDeprecated": false,
               "deprecationReason": null
             }
@@ -45692,8 +45302,7 @@
         {
           "kind": "OBJECT",
           "name": "__Field",
-          "description":
-            "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+          "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
           "fields": [
             {
               "name": "name",
@@ -45800,8 +45409,7 @@
         {
           "kind": "OBJECT",
           "name": "__InputValue",
-          "description":
-            "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+          "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
           "fields": [
             {
               "name": "name",
@@ -45849,8 +45457,7 @@
             },
             {
               "name": "defaultValue",
-              "description":
-                "A GraphQL-formatted string representing the default value for this input value.",
+              "description": "A GraphQL-formatted string representing the default value for this input value.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -45869,8 +45476,7 @@
         {
           "kind": "OBJECT",
           "name": "__EnumValue",
-          "description":
-            "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+          "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
           "fields": [
             {
               "name": "name",
@@ -45937,8 +45543,7 @@
         {
           "kind": "OBJECT",
           "name": "__Directive",
-          "description":
-            "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+          "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
           "fields": [
             {
               "name": "name",
@@ -46073,8 +45678,7 @@
         {
           "kind": "ENUM",
           "name": "__DirectiveLocation",
-          "description":
-            "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+          "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -46177,15 +45781,13 @@
             },
             {
               "name": "INPUT_OBJECT",
-              "description":
-                "Location adjacent to an input object type definition.",
+              "description": "Location adjacent to an input object type definition.",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
               "name": "INPUT_FIELD_DEFINITION",
-              "description":
-                "Location adjacent to an input object field definition.",
+              "description": "Location adjacent to an input object field definition.",
               "isDeprecated": false,
               "deprecationReason": null
             }
@@ -46196,9 +45798,12 @@
       "directives": [
         {
           "name": "include",
-          "description":
-            "Directs the executor to include this field or fragment only when the `if` argument is true.",
-          "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+          "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+          "locations": [
+            "FIELD",
+            "FRAGMENT_SPREAD",
+            "INLINE_FRAGMENT"
+          ],
           "args": [
             {
               "name": "if",
@@ -46218,9 +45823,12 @@
         },
         {
           "name": "skip",
-          "description":
-            "Directs the executor to skip this field or fragment when the `if` argument is true.",
-          "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+          "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+          "locations": [
+            "FIELD",
+            "FRAGMENT_SPREAD",
+            "INLINE_FRAGMENT"
+          ],
           "args": [
             {
               "name": "if",
@@ -46240,14 +45848,15 @@
         },
         {
           "name": "deprecated",
-          "description":
-            "Marks an element of a GraphQL schema as no longer supported.",
-          "locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
+          "description": "Marks an element of a GraphQL schema as no longer supported.",
+          "locations": [
+            "FIELD_DEFINITION",
+            "ENUM_VALUE"
+          ],
           "args": [
             {
               "name": "reason",
-              "description":
-                "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted in [Markdown](https://daringfireball.net/projects/markdown/).",
+              "description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted in [Markdown](https://daringfireball.net/projects/markdown/).",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
