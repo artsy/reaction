@@ -1,14 +1,14 @@
-import React from "react"
 import { mount } from "enzyme"
-import { MobileResetPasswordForm } from "../../Mobile/ResetPasswordForm"
+import React from "react"
 import Input from "../../../Input"
 import { MobileSubmitButton } from "../../commonElements"
+import { MobileForgotPasswordForm } from "../../Mobile/ForgotPasswordForm"
 
 describe("MobileLoginForm", () => {
   const handleSubmit = jest.fn()
   const getWrapper = props =>
     mount(
-      <MobileResetPasswordForm
+      <MobileForgotPasswordForm
         values={props.values || {}}
         handleSubmit={handleSubmit}
         handleTypeChange={jest.fn()}

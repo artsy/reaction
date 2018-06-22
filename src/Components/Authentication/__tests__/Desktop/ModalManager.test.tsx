@@ -1,15 +1,15 @@
-import React from "react"
 import { mount, ReactWrapper } from "enzyme"
-import { ModalManager, ModalManagerProps } from "../../Desktop/ModalManager"
+import React from "react"
 import { LoginForm } from "../../Desktop/LoginForm"
+import { ModalManager, ModalManagerProps } from "../../Desktop/ModalManager"
 
 const getWrapper = (): ReactWrapper<ModalManagerProps> => {
   const wrapper = mount(
     <ModalManager
       submitUrls={{
         login: "/login",
-        signup: "/sign_up",
-        reset_password: "/reset_password",
+        signup: "/signup",
+        forgot: "/forgot",
       }}
       csrf="CSRF_TOKEN"
     />

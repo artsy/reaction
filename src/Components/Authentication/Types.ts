@@ -3,7 +3,7 @@ import { FormikProps } from "formik"
 export enum ModalType {
   login = "login",
   signup = "signup",
-  resetPassword = "reset_password",
+  forgot = "forgot",
 }
 
 export interface InputValues {
