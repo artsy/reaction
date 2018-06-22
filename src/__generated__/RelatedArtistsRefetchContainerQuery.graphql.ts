@@ -2,33 +2,39 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type RelatedArtistsKind = "CONTEMPORARY" | "MAIN" | "%future added value";
-export type RelatedArtistsArtistQueryVariables = {
+export type RelatedArtistsRefetchContainerQueryVariables = {
+    readonly first?: number | null;
+    readonly last?: number | null;
+    readonly after?: string | null;
+    readonly before?: string | null;
     readonly artistID: string;
-    readonly first: number;
-    readonly kind: RelatedArtistsKind;
+    readonly kind?: RelatedArtistsKind | null;
 };
-export type RelatedArtistsArtistQueryResponse = {
+export type RelatedArtistsRefetchContainerQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query RelatedArtistsArtistQuery(
+query RelatedArtistsRefetchContainerQuery(
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
   $artistID: String!
-  $first: Int!
-  $kind: RelatedArtistsKind!
+  $kind: RelatedArtistsKind
 ) {
   artist(id: $artistID) {
-    ...RelatedArtistsContents_artist_8ukLP
+    ...RelatedArtistsRefetchContainer_artist_dxT5s
     __id
   }
 }
 
-fragment RelatedArtistsContents_artist_8ukLP on Artist {
+fragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {
   id
   related {
-    artists(first: $first, kind: $kind) {
+    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -74,20 +80,38 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "after",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "before",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
     "name": "artistID",
     "type": "String!",
     "defaultValue": null
   },
   {
     "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "kind",
-    "type": "RelatedArtistsKind!",
+    "type": "RelatedArtistsKind",
     "defaultValue": null
   }
 ],
@@ -132,13 +156,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "RelatedArtistsArtistQuery",
+  "name": "RelatedArtistsRefetchContainerQuery",
   "id": null,
-  "text": "query RelatedArtistsArtistQuery(\n  $artistID: String!\n  $first: Int!\n  $kind: RelatedArtistsKind!\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsContents_artist_8ukLP\n    __id\n  }\n}\n\nfragment RelatedArtistsContents_artist_8ukLP on Artist {\n  id\n  related {\n    artists(first: $first, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        around {\n          cursor\n          page\n          isCurrent\n        }\n        first {\n          cursor\n          page\n          isCurrent\n        }\n        last {\n          cursor\n          page\n          isCurrent\n        }\n      }\n      edges {\n        node {\n          name\n          image {\n            cropped(width: 400, height: 300) {\n              url\n            }\n          }\n          formatted_nationality_and_birthday\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        around {\n          cursor\n          page\n          isCurrent\n        }\n        first {\n          cursor\n          page\n          isCurrent\n        }\n        last {\n          cursor\n          page\n          isCurrent\n        }\n      }\n      edges {\n        node {\n          name\n          image {\n            cropped(width: 400, height: 300) {\n              url\n            }\n          }\n          formatted_nationality_and_birthday\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RelatedArtistsArtistQuery",
+    "name": "RelatedArtistsRefetchContainerQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -154,8 +178,20 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "RelatedArtistsContents_artist",
+            "name": "RelatedArtistsRefetchContainer_artist",
             "args": [
+              {
+                "kind": "Variable",
+                "name": "after",
+                "variableName": "after",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "before",
+                "variableName": "before",
+                "type": null
+              },
               {
                 "kind": "Variable",
                 "name": "first",
@@ -167,6 +203,12 @@ return {
                 "name": "kind",
                 "variableName": "kind",
                 "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
+                "type": null
               }
             ]
           },
@@ -177,7 +219,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RelatedArtistsArtistQuery",
+    "name": "RelatedArtistsRefetchContainerQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -213,6 +255,18 @@ return {
                 "args": [
                   {
                     "kind": "Variable",
+                    "name": "after",
+                    "variableName": "after",
+                    "type": "String"
+                  },
+                  {
+                    "kind": "Variable",
+                    "name": "before",
+                    "variableName": "before",
+                    "type": "String"
+                  },
+                  {
+                    "kind": "Variable",
                     "name": "first",
                     "variableName": "first",
                     "type": "Int"
@@ -222,6 +276,12 @@ return {
                     "name": "kind",
                     "variableName": "kind",
                     "type": "RelatedArtistsKind"
+                  },
+                  {
+                    "kind": "Variable",
+                    "name": "last",
+                    "variableName": "last",
+                    "type": "Int"
                   }
                 ],
                 "concreteType": "ArtistConnection",
@@ -397,5 +457,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1a219afdbe35d92431adf7e68be5a4e9';
+(node as any).hash = 'ade51a3cf2f33dbe917e0bf896dceae6';
 export default node;

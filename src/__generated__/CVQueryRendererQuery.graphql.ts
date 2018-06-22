@@ -2,26 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type PartnerShowSorts = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "END_AT_ASC" | "END_AT_DESC" | "NAME_ASC" | "NAME_DESC" | "PUBLISH_AT_ASC" | "PUBLISH_AT_DESC" | "START_AT_ASC" | "START_AT_DESC" | "created_at_asc" | "created_at_desc" | "end_at_asc" | "end_at_desc" | "name_asc" | "name_desc" | "publish_at_asc" | "publish_at_desc" | "start_at_asc" | "start_at_desc" | "%future added value";
-export type CVContentsQueryVariables = {
-    readonly count?: number | null;
-    readonly cursor?: string | null;
+export type CVQueryRendererQueryVariables = {
     readonly artistID: string;
+    readonly first: number;
     readonly sort?: PartnerShowSorts | null;
     readonly at_a_fair?: boolean | null;
     readonly solo_show?: boolean | null;
     readonly is_reference?: boolean | null;
     readonly visible_to_public?: boolean | null;
 };
-export type CVContentsQueryResponse = {
+export type CVQueryRendererQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query CVContentsQuery(
-  $count: Int
-  $cursor: String
+query CVQueryRendererQuery(
   $artistID: String!
   $sort: PartnerShowSorts
   $at_a_fair: Boolean
@@ -30,14 +27,14 @@ query CVContentsQuery(
   $visible_to_public: Boolean
 ) {
   artist(id: $artistID) {
-    ...CVContents_artist_2utmRv
+    ...CVPaginationContainer_artist_39hiyk
     __id
   }
 }
 
-fragment CVContents_artist_2utmRv on Artist {
+fragment CVPaginationContainer_artist_39hiyk on Artist {
   id
-  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {
+  showsConnection(first: 10, after: "", sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {
     pageInfo {
       hasNextPage
       endCursor
@@ -74,20 +71,14 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "count",
-    "type": "Int",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "cursor",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "artistID",
     "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int!",
     "defaultValue": null
   },
   {
@@ -156,13 +147,13 @@ v5 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "CVContentsQuery",
+  "name": "CVQueryRendererQuery",
   "id": null,
-  "text": "query CVContentsQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVContents_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVContents_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query CVQueryRendererQuery(\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVPaginationContainer_artist_39hiyk\n    __id\n  }\n}\n\nfragment CVPaginationContainer_artist_39hiyk on Artist {\n  id\n  showsConnection(first: 10, after: \"\", sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "CVContentsQuery",
+    "name": "CVQueryRendererQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -178,7 +169,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CVContents_artist",
+            "name": "CVPaginationContainer_artist",
             "args": [
               {
                 "kind": "Variable",
@@ -188,14 +179,8 @@ return {
               },
               {
                 "kind": "Variable",
-                "name": "count",
-                "variableName": "count",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "cursor",
-                "variableName": "cursor",
+                "name": "first",
+                "variableName": "first",
                 "type": null
               },
               {
@@ -231,7 +216,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CVContentsQuery",
+    "name": "CVQueryRendererQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -257,9 +242,9 @@ return {
             "storageKey": null,
             "args": [
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "after",
-                "variableName": "cursor",
+                "value": "",
                 "type": "String"
               },
               {
@@ -269,9 +254,9 @@ return {
                 "type": "Boolean"
               },
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "first",
-                "variableName": "count",
+                "value": 10,
                 "type": "Int"
               },
               {
@@ -411,9 +396,9 @@ return {
             "name": "showsConnection",
             "args": [
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "after",
-                "variableName": "cursor",
+                "value": "",
                 "type": "String"
               },
               {
@@ -423,9 +408,9 @@ return {
                 "type": "Boolean"
               },
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "first",
-                "variableName": "count",
+                "value": 10,
                 "type": "Int"
               },
               {
@@ -470,5 +455,5 @@ return {
   }
 };
 })();
-(node as any).hash = '308add12337bea5aaa141882f6586899';
+(node as any).hash = '03bc61d3231b47d7f19f874e7d236722';
 export default node;

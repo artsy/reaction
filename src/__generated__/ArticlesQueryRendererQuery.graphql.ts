@@ -1,41 +1,30 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type PartnerShowSorts = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "END_AT_ASC" | "END_AT_DESC" | "NAME_ASC" | "NAME_DESC" | "PUBLISH_AT_ASC" | "PUBLISH_AT_DESC" | "START_AT_ASC" | "START_AT_DESC" | "created_at_asc" | "created_at_desc" | "end_at_asc" | "end_at_desc" | "name_asc" | "name_desc" | "publish_at_asc" | "publish_at_desc" | "start_at_asc" | "start_at_desc" | "%future added value";
-export type ShowContentsQueryVariables = {
-    readonly first?: number | null;
-    readonly last?: number | null;
-    readonly after?: string | null;
-    readonly before?: string | null;
+export type ArticlesQueryRendererQueryVariables = {
     readonly artistID: string;
-    readonly sort?: PartnerShowSorts | null;
-    readonly status: string;
+    readonly first: number;
 };
-export type ShowContentsQueryResponse = {
+export type ArticlesQueryRendererQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query ShowContentsQuery(
-  $first: Int
-  $last: Int
-  $after: String
-  $before: String
+query ArticlesQueryRendererQuery(
   $artistID: String!
-  $sort: PartnerShowSorts
-  $status: String!
+  $first: Int!
 ) {
   artist(id: $artistID) {
-    ...ShowContents_artist_1Q1mII
+    ...ArticlesRefetchContainer_artist_3ASum4
     __id
   }
 }
 
-fragment ShowContents_artist_1Q1mII on Artist {
+fragment ArticlesRefetchContainer_artist_3ASum4 on Artist {
   id
-  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {
+  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -61,27 +50,18 @@ fragment ShowContents_artist_1Q1mII on Artist {
     }
     edges {
       node {
-        partner {
-          __typename
-          ... on ExternalPartner {
-            name
-            __id
-          }
-          ... on Partner {
-            name
-          }
-          ... on Node {
-            __id
-          }
+        href
+        thumbnail_title
+        author {
+          name
+          __id
         }
-        name
-        exhibition_period
-        cover_image {
-          cropped(width: 800, height: 600) {
+        published_at(format: "MMM d, YYYY")
+        thumbnail_image {
+          resized(width: 300) {
             url
           }
         }
-        city
         __id
       }
     }
@@ -94,44 +74,14 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "last",
-    "type": "Int",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "after",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "before",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "artistID",
     "type": "String!",
     "defaultValue": null
   },
   {
     "kind": "LocalArgument",
-    "name": "sort",
-    "type": "PartnerShowSorts",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "status",
-    "type": "String!",
+    "name": "first",
+    "type": "Int!",
     "defaultValue": null
   }
 ],
@@ -172,27 +122,17 @@ v3 = [
     "args": null,
     "storageKey": null
   }
-],
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = [
-  v4
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ShowContentsQuery",
+  "name": "ArticlesQueryRendererQuery",
   "id": null,
-  "text": "query ShowContentsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowContents_artist_1Q1mII\n    __id\n  }\n}\n\nfragment ShowContents_artist_1Q1mII on Artist {\n  id\n  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ArticlesQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_3ASum4\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_3ASum4 on Artist {\n  id\n  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ShowContentsQuery",
+    "name": "ArticlesQueryRendererQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -208,42 +148,12 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ShowContents_artist",
+            "name": "ArticlesRefetchContainer_artist",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": null
-              },
               {
                 "kind": "Variable",
                 "name": "first",
                 "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "status",
-                "variableName": "status",
                 "type": null
               }
             ]
@@ -255,7 +165,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ShowContentsQuery",
+    "name": "ArticlesQueryRendererQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -277,21 +187,9 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "showsConnection",
+            "name": "articlesConnection",
             "storageKey": null,
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": "String"
-              },
               {
                 "kind": "Variable",
                 "name": "first",
@@ -299,25 +197,19 @@ return {
                 "type": "Int"
               },
               {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": "Int"
+                "kind": "Literal",
+                "name": "in_editorial_feed",
+                "value": true,
+                "type": "Boolean"
               },
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "sort",
-                "variableName": "sort",
-                "type": "PartnerShowSorts"
-              },
-              {
-                "kind": "Variable",
-                "name": "status",
-                "variableName": "status",
-                "type": "String"
+                "value": "PUBLISHED_AT_DESC",
+                "type": "ArticleSorts"
               }
             ],
-            "concreteType": "ShowConnection",
+            "concreteType": "ArticleConnection",
             "plural": false,
             "selections": [
               {
@@ -406,7 +298,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "ShowEdge",
+                "concreteType": "ArticleEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -415,50 +307,60 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Show",
+                    "concreteType": "Article",
                     "plural": false,
                     "selections": [
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
-                        "name": "partner",
-                        "storageKey": null,
+                        "name": "href",
                         "args": null,
-                        "concreteType": null,
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__typename",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          v2,
-                          {
-                            "kind": "InlineFragment",
-                            "type": "Partner",
-                            "selections": v5
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "type": "ExternalPartner",
-                            "selections": v5
-                          }
-                        ]
+                        "storageKey": null
                       },
-                      v4,
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "exhibition_period",
+                        "name": "thumbnail_title",
                         "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "cover_image",
+                        "name": "author",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Author",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "name",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          v2
+                        ]
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "published_at",
+                        "args": [
+                          {
+                            "kind": "Literal",
+                            "name": "format",
+                            "value": "MMM d, YYYY",
+                            "type": "String"
+                          }
+                        ],
+                        "storageKey": "published_at(format:\"MMM d, YYYY\")"
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "thumbnail_image",
                         "storageKey": null,
                         "args": null,
                         "concreteType": "Image",
@@ -467,23 +369,17 @@ return {
                           {
                             "kind": "LinkedField",
                             "alias": null,
-                            "name": "cropped",
-                            "storageKey": "cropped(height:600,width:800)",
+                            "name": "resized",
+                            "storageKey": "resized(width:300)",
                             "args": [
                               {
                                 "kind": "Literal",
-                                "name": "height",
-                                "value": 600,
-                                "type": "Int!"
-                              },
-                              {
-                                "kind": "Literal",
                                 "name": "width",
-                                "value": 800,
-                                "type": "Int!"
+                                "value": 300,
+                                "type": "Int"
                               }
                             ],
-                            "concreteType": "CroppedImageUrl",
+                            "concreteType": "ResizedImageUrl",
                             "plural": false,
                             "selections": [
                               {
@@ -496,13 +392,6 @@ return {
                             ]
                           }
                         ]
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "city",
-                        "args": null,
-                        "storageKey": null
                       },
                       v2
                     ]
@@ -518,5 +407,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b85e3db386d33b7eb495df6bd16ba516';
+(node as any).hash = 'f4921b30c23ad51ae5626bbde1088a1f';
 export default node;

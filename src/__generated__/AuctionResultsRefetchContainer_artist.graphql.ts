@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type ShowContents_artist = {
+export type AuctionResultsRefetchContainer_artist = {
     readonly id: string;
-    readonly showsConnection: ({
+    readonly auctionResults: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly hasPreviousPage: boolean;
@@ -29,17 +29,24 @@ export type ShowContents_artist = {
         }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
-                readonly partner: ({
-                    readonly name?: string | null;
-                }) | null;
-                readonly name: string | null;
-                readonly exhibition_period: string | null;
-                readonly cover_image: ({
-                    readonly cropped: ({
+                readonly title: string | null;
+                readonly dimension_text: string | null;
+                readonly organization: string | null;
+                readonly images: ({
+                    readonly thumbnail: ({
                         readonly url: string | null;
                     }) | null;
                 }) | null;
-                readonly city: string | null;
+                readonly description: string | null;
+                readonly date_text: string | null;
+                readonly sale_date_text: string | null;
+                readonly price_realized: ({
+                    readonly display: string | null;
+                    readonly cents_usd: number | null;
+                }) | null;
+                readonly estimate: ({
+                    readonly display: string | null;
+                }) | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -74,26 +81,29 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "display",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "__id",
   "args": null,
   "storageKey": null
-},
-v3 = [
-  v2
-];
+};
 return {
   "kind": "Fragment",
-  "name": "ShowContents_artist",
+  "name": "AuctionResultsRefetchContainer_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "AuctionResultSorts",
+      "defaultValue": null
+    },
     {
       "kind": "LocalArgument",
       "name": "first",
@@ -117,18 +127,6 @@ return {
       "name": "before",
       "type": "String",
       "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "sort",
-      "type": "PartnerShowSorts",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "status",
-      "type": "String",
-      "defaultValue": null
     }
   ],
   "selections": [
@@ -142,7 +140,7 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "showsConnection",
+      "name": "auctionResults",
       "storageKey": null,
       "args": [
         {
@@ -173,16 +171,10 @@ return {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": "PartnerShowSorts"
-        },
-        {
-          "kind": "Variable",
-          "name": "status",
-          "variableName": "status",
-          "type": "String"
+          "type": "AuctionResultSorts"
         }
       ],
-      "concreteType": "ShowConnection",
+      "concreteType": "AuctionResultConnection",
       "plural": false,
       "selections": [
         {
@@ -271,7 +263,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "ShowEdge",
+          "concreteType": "AuctionResultEdge",
           "plural": true,
           "selections": [
             {
@@ -280,68 +272,46 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "Show",
+              "concreteType": "AuctionResult",
               "plural": false,
               "selections": [
                 {
-                  "kind": "LinkedField",
+                  "kind": "ScalarField",
                   "alias": null,
-                  "name": "partner",
-                  "storageKey": null,
+                  "name": "title",
                   "args": null,
-                  "concreteType": null,
-                  "plural": false,
-                  "selections": [
-                    v1,
-                    {
-                      "kind": "InlineFragment",
-                      "type": "Partner",
-                      "selections": v3
-                    },
-                    {
-                      "kind": "InlineFragment",
-                      "type": "ExternalPartner",
-                      "selections": v3
-                    }
-                  ]
+                  "storageKey": null
                 },
-                v2,
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "exhibition_period",
+                  "name": "dimension_text",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "organization",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "LinkedField",
                   "alias": null,
-                  "name": "cover_image",
+                  "name": "images",
                   "storageKey": null,
                   "args": null,
-                  "concreteType": "Image",
+                  "concreteType": "AuctionLotImages",
                   "plural": false,
                   "selections": [
                     {
                       "kind": "LinkedField",
                       "alias": null,
-                      "name": "cropped",
-                      "storageKey": "cropped(height:600,width:800)",
-                      "args": [
-                        {
-                          "kind": "Literal",
-                          "name": "height",
-                          "value": 600,
-                          "type": "Int!"
-                        },
-                        {
-                          "kind": "Literal",
-                          "name": "width",
-                          "value": 800,
-                          "type": "Int!"
-                        }
-                      ],
-                      "concreteType": "CroppedImageUrl",
+                      "name": "thumbnail",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "Image",
                       "plural": false,
                       "selections": [
                         {
@@ -358,20 +328,65 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "city",
+                  "name": "description",
                   "args": null,
                   "storageKey": null
                 },
-                v1
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "date_text",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "sale_date_text",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "price_realized",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "AuctionResultPriceRealized",
+                  "plural": false,
+                  "selections": [
+                    v1,
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "cents_usd",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "estimate",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "AuctionLotEstimate",
+                  "plural": false,
+                  "selections": [
+                    v1
+                  ]
+                },
+                v2
               ]
             }
           ]
         }
       ]
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = '8dc9a92909f545d0b1cb8b6153bf9f61';
+(node as any).hash = '1c84a096a6328c41638386cc66f5f869';
 export default node;

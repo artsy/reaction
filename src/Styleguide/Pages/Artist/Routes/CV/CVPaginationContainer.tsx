@@ -1,39 +1,29 @@
 import { Sans, Serif } from "@artsy/palette"
+import { CVPaginationContainer_artist } from "__generated__/CVPaginationContainer_artist.graphql"
 import { groupBy } from "lodash"
 import React from "react"
+import styled from "styled-components"
+import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Col, Row } from "Styleguide/Elements/Grid"
+import { Spacer } from "Styleguide/Elements/Spacer"
+import { Responsive } from "Styleguide/Utils/Responsive"
+
 import {
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
-import styled from "styled-components"
-
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Spacer } from "Styleguide/Elements/Spacer"
-
-import { Responsive } from "Styleguide/Utils/Responsive"
-
-import { CVContents_artist } from "__generated__/CVContents_artist.graphql"
 
 interface CVProps {
   relay: RelayPaginationProp
-  artist: CVContents_artist
+  artist: CVPaginationContainer_artist
   category: string
 }
 
 export const PAGE_SIZE = 10
 
-const CVItems = styled.div``
-const CVItem = Box
-const YearGroup = styled(Flex)``
-const Year = Serif
-const ShowGroup = styled.div``
-const Show = Serif
-const Category = Sans
-
-export const Container = createPaginationContainer(
+export const CVPaginationContainer = createPaginationContainer(
   class extends React.Component<CVProps> {
     loadMore() {
       const hasMore = this.props.artist.showsConnection.pageInfo.hasNextPage
@@ -58,6 +48,7 @@ export const Container = createPaginationContainer(
         </div>
       )
     }
+
     renderShow(node) {
       return (
         <Show size="3">
@@ -72,6 +63,7 @@ export const Container = createPaginationContainer(
         </Show>
       )
     }
+
     render() {
       const groupedByYear = groupBy(
         this.props.artist.showsConnection.edges,
@@ -90,7 +82,7 @@ export const Container = createPaginationContainer(
                       <CVItem>
                         <Row>
                           <Col sm={2}>
-                            <Box mb={xs ? 1 : 1}>
+                            <Box mb={1}>
                               <Category size="3" weight="medium">
                                 {this.props.category}
                               </Category>
@@ -131,7 +123,7 @@ export const Container = createPaginationContainer(
   },
   {
     artist: graphql`
-      fragment CVContents_artist on Artist
+      fragment CVPaginationContainer_artist on Artist
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
@@ -193,7 +185,7 @@ export const Container = createPaginationContainer(
       }
     },
     query: graphql`
-      query CVContentsQuery(
+      query CVPaginationContainerQuery(
         $count: Int
         $cursor: String
         $artistID: String!
@@ -204,7 +196,7 @@ export const Container = createPaginationContainer(
         $visible_to_public: Boolean
       ) {
         artist(id: $artistID) {
-          ...CVContents_artist
+          ...CVPaginationContainer_artist
             @arguments(
               sort: $sort
               count: $count
@@ -219,3 +211,11 @@ export const Container = createPaginationContainer(
     `,
   }
 )
+
+const CVItems = styled.div``
+const CVItem = Box
+const YearGroup = styled(Flex)``
+const Year = Serif
+const ShowGroup = styled.div``
+const Show = Serif
+const Category = Sans

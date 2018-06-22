@@ -1,3 +1,4 @@
+import { RelatedArtistsRefetchContainer_artist } from "__generated__/RelatedArtistsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ArtistCard } from "Styleguide/Components/ArtistCard"
@@ -8,18 +9,15 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-import { RelatedArtistsContents_artist } from "__generated__/RelatedArtistsContents_artist.graphql"
-
 interface ShowProps {
   relay: RelayRefetchProp
-  artist: RelatedArtistsContents_artist
+  artist: RelatedArtistsRefetchContainer_artist
   kind: string
 }
 
 export const PAGE_SIZE = 6
 
-// This is the actual Refetch Container we want to use.
-export const Container = createRefetchContainer(
+export const RelatedArtistsRefetchContainer = createRefetchContainer(
   class extends React.Component<ShowProps> {
     loadPrev = () => {
       const {
@@ -152,7 +150,7 @@ export const Container = createRefetchContainer(
   },
   {
     artist: graphql`
-      fragment RelatedArtistsContents_artist on Artist
+      fragment RelatedArtistsRefetchContainer_artist on Artist
         @argumentDefinitions(
           first: { type: "Int" }
           last: { type: "Int" }
@@ -209,7 +207,7 @@ export const Container = createRefetchContainer(
     `,
   },
   graphql`
-    query RelatedArtistsContentsQuery(
+    query RelatedArtistsRefetchContainerQuery(
       $first: Int
       $last: Int
       $after: String
@@ -218,7 +216,7 @@ export const Container = createRefetchContainer(
       $kind: RelatedArtistsKind
     ) {
       artist(id: $artistID) {
-        ...RelatedArtistsContents_artist
+        ...RelatedArtistsRefetchContainer_artist
           @arguments(
             kind: $kind
             first: $first

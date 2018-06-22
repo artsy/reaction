@@ -1,3 +1,4 @@
+import { ShowsRefetchContainer_artist } from "__generated__/ShowsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Pagination } from "Styleguide/Components/Pagination"
@@ -5,26 +6,19 @@ import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
-
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { ShowBlockItem } from "./ShowBlockItem"
 import { ShowListItem } from "./ShowListItem"
 
-import { ShowContents_artist } from "__generated__/ShowContents_artist.graphql"
-
-const ShowBlocks = Flex
-const ShowList = Box
-
 interface ShowProps {
   relay: RelayRefetchProp
-  artist: ShowContents_artist
+  artist: ShowsRefetchContainer_artist
   status: string
 }
 
 export const PAGE_SIZE = 4
 
-// This is the actual Refetch Container we want to use.
-export const Container = createRefetchContainer(
+export const ShowsRefetchContainer = createRefetchContainer(
   class extends React.Component<ShowProps> {
     loadPrev = () => {
       const {
@@ -82,18 +76,6 @@ export const Container = createRefetchContainer(
       )
     }
 
-    renderPagination() {
-      return (
-        <div>
-          <Pagination
-            {...this.props.artist.showsConnection.pageCursors}
-            onClick={this.loadAfter}
-            onNext={this.loadNext}
-            onPrev={this.loadPrev}
-          />
-        </div>
-      )
-    }
     renderShowBlocks(blockWidth: string, blockDirection: any) {
       return (
         <ShowBlocks flexDirection={blockDirection} flexWrap={"true" as any}>
@@ -111,6 +93,7 @@ export const Container = createRefetchContainer(
         </ShowBlocks>
       )
     }
+
     renderShowList() {
       return (
         <ShowList>
@@ -127,6 +110,7 @@ export const Container = createRefetchContainer(
         </ShowList>
       )
     }
+
     render() {
       return (
         <Responsive>
@@ -154,7 +138,12 @@ export const Container = createRefetchContainer(
                   <Row>
                     <Col>
                       <Flex justifyContent="flex-end">
-                        {this.renderPagination()}
+                        <Pagination
+                          {...this.props.artist.showsConnection.pageCursors}
+                          onClick={this.loadAfter}
+                          onNext={this.loadNext}
+                          onPrev={this.loadPrev}
+                        />
                       </Flex>
                     </Col>
                   </Row>
@@ -168,7 +157,7 @@ export const Container = createRefetchContainer(
   },
   {
     artist: graphql`
-      fragment ShowContents_artist on Artist
+      fragment ShowsRefetchContainer_artist on Artist
         @argumentDefinitions(
           first: { type: "Int" }
           last: { type: "Int" }
@@ -234,7 +223,7 @@ export const Container = createRefetchContainer(
     `,
   },
   graphql`
-    query ShowContentsQuery(
+    query ShowsRefetchContainerQuery(
       $first: Int
       $last: Int
       $after: String
@@ -244,7 +233,7 @@ export const Container = createRefetchContainer(
       $status: String!
     ) {
       artist(id: $artistID) {
-        ...ShowContents_artist
+        ...ShowsRefetchContainer_artist
           @arguments(
             sort: $sort
             first: $first
@@ -257,3 +246,6 @@ export const Container = createRefetchContainer(
     }
   `
 )
+
+const ShowBlocks = Flex
+const ShowList = Box
