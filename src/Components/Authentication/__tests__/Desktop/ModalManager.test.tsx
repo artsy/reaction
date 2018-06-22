@@ -1,9 +1,12 @@
-import React from "react"
 import { mount, ReactWrapper } from "enzyme"
-import { ModalManager, ModalManagerProps } from "../../Desktop/ModalManager"
+import { Formik } from "formik"
+import React from "react"
 import { LoginForm } from "../../Desktop/LoginForm"
+import { ModalManager, ModalManagerProps } from "../../Desktop/ModalManager"
 
-const getWrapper = (): ReactWrapper<ModalManagerProps> => {
+const getWrapper = (
+  props?: ModalManagerProps
+): ReactWrapper<ModalManagerProps> => {
   const wrapper = mount(
     <ModalManager
       submitUrls={{
@@ -12,6 +15,7 @@ const getWrapper = (): ReactWrapper<ModalManagerProps> => {
         reset_password: "/reset_password",
       }}
       csrf="CSRF_TOKEN"
+      {...props}
     />
   )
 
