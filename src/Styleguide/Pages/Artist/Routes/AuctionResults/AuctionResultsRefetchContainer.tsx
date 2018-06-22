@@ -6,7 +6,7 @@ import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
-import { AuctionResultItem } from "./AuctionResultItem"
+import { AuctionResultItemFragmentContainer } from "./AuctionResultItem"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
 
@@ -93,7 +93,11 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
               </Box>
 
               {this.props.artist.auctionResults.edges.map(({ node }) => {
-                return <AuctionResultItem {...node} />
+                return (
+                  <AuctionResultItemFragmentContainer
+                    auctionResult={node as any}
+                  />
+                )
               })}
             </Col>
           </Row>
@@ -145,24 +149,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
           }
           edges {
             node {
-              title
-              dimension_text
-              organization
-              images {
-                thumbnail {
-                  url
-                }
-              }
-              description
-              date_text
-              sale_date_text
-              price_realized {
-                display
-                cents_usd
-              }
-              estimate {
-                display
-              }
+              ...AuctionResultItem_auctionResult
             }
           }
         }

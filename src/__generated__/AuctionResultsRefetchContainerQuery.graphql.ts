@@ -45,24 +45,7 @@ fragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {
     }
     edges {
       node {
-        title
-        dimension_text
-        organization
-        images {
-          thumbnail {
-            url
-          }
-        }
-        description
-        date_text
-        sale_date_text
-        price_realized {
-          display
-          cents_usd
-        }
-        estimate {
-          display
-        }
+        ...AuctionResultItem_auctionResult
         __id
       }
     }
@@ -86,6 +69,28 @@ fragment Pagination_pageCursors on PageCursors {
     page
     isCurrent
   }
+}
+
+fragment AuctionResultItem_auctionResult on AuctionResult {
+  title
+  dimension_text
+  organization
+  images {
+    thumbnail {
+      url
+    }
+  }
+  description
+  date_text
+  sale_date_text
+  price_realized {
+    display
+    cents_usd
+  }
+  estimate {
+    display
+  }
+  __id
 }
 */
 
@@ -178,7 +183,7 @@ return {
   "operationKind": "query",
   "name": "AuctionResultsRefetchContainerQuery",
   "id": null,
-  "text": "query AuctionResultsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        title\n        dimension_text\n        organization\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text\n        sale_date_text\n        price_realized {\n          display\n          cents_usd\n        }\n        estimate {\n          display\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
+  "text": "query AuctionResultsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        ...AuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment AuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
