@@ -38,21 +38,7 @@ fragment ArticlesRefetchContainer_artist_pbnwq on Artist {
       endCursor
     }
     pageCursors {
-      around {
-        cursor
-        page
-        isCurrent
-      }
-      first {
-        cursor
-        page
-        isCurrent
-      }
-      last {
-        cursor
-        page
-        isCurrent
-      }
+      ...RelayPagination_pageCursors
     }
     edges {
       node {
@@ -73,6 +59,24 @@ fragment ArticlesRefetchContainer_artist_pbnwq on Artist {
     }
   }
   __id
+}
+
+fragment RelayPagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
 }
 */
 
@@ -152,7 +156,7 @@ return {
   "operationKind": "query",
   "name": "ArticlesRefetchContainerQuery",
   "id": null,
-  "text": "query ArticlesRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_pbnwq\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_pbnwq on Artist {\n  id\n  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ArticlesRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_pbnwq\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_pbnwq on Artist {\n  id\n  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...RelayPagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment RelayPagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
