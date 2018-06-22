@@ -1,5 +1,7 @@
 import { Serif } from "@artsy/palette"
+import { AuctionResultItem_auctionResult } from "__generated__/AuctionResultItem_auctionResult.graphql"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -8,30 +10,11 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-interface PriceProps {
-  cents_usd: number
-  display: string
+export interface Props {
+  auctionResult: AuctionResultItem_auctionResult
 }
 
-export interface AuctionResultItemProps {
-  title: string
-  images: {
-    thumbnail: {
-      url: string
-    }
-  }
-  organization: string
-  description: string
-  date_text: string
-  sale_date_text: string
-  dimension_text: string
-  price_realized: PriceProps
-  estimate: {
-    display: string
-  }
-}
-
-const getSalePrice = (price_realized: PriceProps) => {
+const getSalePrice = price_realized => {
   const salePrice =
     price_realized.cents_usd === 0 ? null : price_realized.display
   return salePrice
@@ -42,31 +25,17 @@ const getDescription = (fullDescription: string) => {
   return truncatedDescription
 }
 
-export const AuctionResultItem: React.SFC<AuctionResultItemProps> = ({
-  description,
-  ...props
-}) => {
-  const truncatedDescription = getDescription(description)
-
+export const AuctionResultItem: React.SFC<Props> = (props: Props) => {
   return (
     <Row>
       <Responsive>
         {({ xs, sm, md }) => {
           if (xs) {
-            return (
-              <ExtraSmallAuctionItem
-                {...props}
-                description={truncatedDescription}
-              />
-            )
+            return <ExtraSmallAuctionItem {...props} />
           } else if (sm || md) {
-            return (
-              <SmallAuctionItem {...props} description={truncatedDescription} />
-            )
+            return <SmallAuctionItem {...props} />
           } else {
-            return (
-              <LargeAuctionItem {...props} description={truncatedDescription} />
-            )
+            return <LargeAuctionItem {...props} />
           }
         }}
       </Responsive>
@@ -80,34 +49,34 @@ export const AuctionResultItem: React.SFC<AuctionResultItemProps> = ({
   )
 }
 
-const LargeAuctionItem: React.SFC<AuctionResultItemProps> = props => {
-  const salePrice = getSalePrice(props.price_realized)
-
+const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
+  const salePrice = getSalePrice(props.auctionResult.price_realized)
+  const truncatedDescription = getDescription(props.auctionResult.description)
   return (
     <React.Fragment>
       <Col sm={1}>
         <Box maxWidth="70px" width="70px" height="auto">
-          <ResponsiveImage src={props.images.thumbnail.url} />
+          <ResponsiveImage src={props.auctionResult.images.thumbnail.url} />
         </Box>
       </Col>
       <Col sm={4}>
         <Box pl={1} pr={2}>
           <Serif size="2" italic>
-            {props.title && props.title + ","}
-            {props.date_text}
+            {props.auctionResult.title && props.auctionResult.title + ","}
+            {props.auctionResult.date_text}
           </Serif>
-          <Serif size="2">{props.dimension_text}</Serif>
+          <Serif size="2">{props.auctionResult.dimension_text}</Serif>
           <Spacer pt={1} />
           <Serif size="1" color="black60">
-            {props.description}
+            {truncatedDescription}
           </Serif>
         </Box>
       </Col>
       <Col sm={3}>
         <Box pt={1} pr={2}>
-          <Serif size="2">{props.organization}</Serif>
+          <Serif size="2">{props.auctionResult.organization}</Serif>
           <Serif size="2" color="black60">
-            {props.sale_date_text}
+            {props.auctionResult.sale_date_text}
           </Serif>
           <Serif size="2" color="black60">
             <a href="#">Full description</a>
@@ -117,35 +86,36 @@ const LargeAuctionItem: React.SFC<AuctionResultItemProps> = props => {
       <Col sm={4}>
         {salePrice && <Serif size="2">{`Sale: ${salePrice}`}</Serif>}
         <Serif size="2" color="black60">
-          Est: {props.estimate.display}
+          Est: {props.auctionResult.estimate.display}
         </Serif>
       </Col>
     </React.Fragment>
   )
 }
 
-const SmallAuctionItem: React.SFC<AuctionResultItemProps> = props => {
-  const salePrice = getSalePrice(props.price_realized)
+const SmallAuctionItem: React.SFC<Props> = props => {
+  const salePrice = getSalePrice(props.auctionResult.price_realized)
+  const truncatedDescription = getDescription(props.auctionResult.description)
 
   return (
     <React.Fragment>
       <Col sm={6}>
         <Flex>
           <Box maxWidth="70px" width="70px" height="auto">
-            <ResponsiveImage src={props.images.thumbnail.url} />
+            <ResponsiveImage src={props.auctionResult.images.thumbnail.url} />
           </Box>
 
           <Spacer mr={2} />
 
           <Box pr={6}>
             <Serif size="2" italic>
-              {props.title && props.title + ","}
-              {props.date_text}
+              {props.auctionResult.title && props.auctionResult.title + ","}
+              {props.auctionResult.date_text}
             </Serif>
-            <Serif size="2">{props.dimension_text}</Serif>
+            <Serif size="2">{props.auctionResult.dimension_text}</Serif>
             <Spacer pt={1} />
             <Serif size="1" color="black60">
-              {props.description}
+              {truncatedDescription}
             </Serif>
           </Box>
         </Flex>
@@ -154,38 +124,38 @@ const SmallAuctionItem: React.SFC<AuctionResultItemProps> = props => {
         {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
 
         <Serif size="2" color="black60">
-          Est: {props.estimate.display}
+          Est: {props.auctionResult.estimate.display}
         </Serif>
       </Col>
     </React.Fragment>
   )
 }
 
-const ExtraSmallAuctionItem: React.SFC<AuctionResultItemProps> = props => {
-  const salePrice = getSalePrice(props.price_realized)
+const ExtraSmallAuctionItem: React.SFC<Props> = props => {
+  const salePrice = getSalePrice(props.auctionResult.price_realized)
 
   return (
     <React.Fragment>
       <Col>
         <Flex>
           <Box maxWidth="30px" width="30px" height="auto">
-            <ResponsiveImage src={props.images.thumbnail.url} />
+            <ResponsiveImage src={props.auctionResult.images.thumbnail.url} />
           </Box>
 
           <Spacer mr={2} />
 
           <Box>
             <Serif size="2" italic>
-              {props.title && props.title + ","}
-              {props.date_text}
+              {props.auctionResult.title && props.auctionResult.title + ","}
+              {props.auctionResult.date_text}
             </Serif>
-            <Serif size="2">{props.dimension_text}</Serif>
+            <Serif size="2">{props.auctionResult.dimension_text}</Serif>
 
             <Spacer pb={1} />
 
-            <Serif size="2">{props.organization}</Serif>
+            <Serif size="2">{props.auctionResult.organization}</Serif>
             <Serif size="2" color="black60">
-              {props.sale_date_text}
+              {props.auctionResult.sale_date_text}
             </Serif>
 
             <Spacer pb={1} />
@@ -193,7 +163,7 @@ const ExtraSmallAuctionItem: React.SFC<AuctionResultItemProps> = props => {
             {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
 
             <Serif size="2" color="black60">
-              Est: {props.estimate.display}
+              Est: {props.auctionResult.estimate.display}
             </Serif>
           </Box>
         </Flex>
@@ -201,3 +171,29 @@ const ExtraSmallAuctionItem: React.SFC<AuctionResultItemProps> = props => {
     </React.Fragment>
   )
 }
+
+export const AuctionResultItemFragmentContainer = createFragmentContainer(
+  AuctionResultItem,
+  graphql`
+    fragment AuctionResultItem_auctionResult on AuctionResult {
+      title
+      dimension_text
+      organization
+      images {
+        thumbnail {
+          url
+        }
+      }
+      description
+      date_text
+      sale_date_text
+      price_realized {
+        display
+        cents_usd
+      }
+      estimate {
+        display
+      }
+    }
+  `
+)
