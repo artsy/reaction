@@ -16,6 +16,7 @@ import { Radio } from "Styleguide/Elements/Radio"
 import { Select } from "Styleguide/Elements/Select"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
 import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { CurrentEvent } from "./CurrentEvent"
@@ -130,15 +131,12 @@ export const Overview = () => {
                     <Flex pb={2} justifyContent="flex-end">
                       <Select options={[{ value: "percy", text: "Cat" }]} />
                     </Flex>
-
                     <ArtworkGrid
                       artistID="pablo-picasso"
                       columnCount={xs || sm || md ? 2 : 3}
                     />
-
                     <Spacer mb={3} />
-                    <Pagination
-                      around={[{ page: 1, cursor: "blah", isCurrent: true }]}
+                    <Pagination pageCursors={paginationProps.cursor} />
                     />
                   </ArtworkGridArea>
                 </ArtworkBrowser>

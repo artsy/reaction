@@ -2,7 +2,7 @@ import { ArticlesRefetchContainer_artist } from "__generated__/ArticlesRefetchCo
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -77,8 +77,10 @@ export const ArticlesRefetchContainer = createRefetchContainer(
     renderPagination() {
       return (
         <div>
-          <Pagination
-            {...this.props.artist.articlesConnection.pageCursors}
+          <PaginationFragmentContainer
+            pageCursors={
+              this.props.artist.articlesConnection.pageCursors as any
+            }
             onClick={this.loadAfter}
             onNext={this.loadNext}
             onPrev={this.loadPrev}
@@ -148,21 +150,7 @@ export const ArticlesRefetchContainer = createRefetchContainer(
             endCursor
           }
           pageCursors {
-            around {
-              cursor
-              page
-              isCurrent
-            }
-            first {
-              cursor
-              page
-              isCurrent
-            }
-            last {
-              cursor
-              page
-              isCurrent
-            }
+            ...Pagination_pageCursors
           }
           edges {
             node {

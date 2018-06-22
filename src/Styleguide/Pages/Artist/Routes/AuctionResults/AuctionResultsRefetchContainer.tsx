@@ -1,7 +1,7 @@
 import { AuctionResultsRefetchContainer_artist } from "__generated__/AuctionResultsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -101,8 +101,10 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
           <Row>
             <Col>
               <Flex justifyContent="flex-end">
-                <Pagination
-                  {...this.props.artist.auctionResults.pageCursors}
+                <PaginationFragmentContainer
+                  pageCursors={
+                    this.props.artist.auctionResults.pageCursors as any
+                  }
                   onClick={this.loadAfter}
                   onNext={this.loadNext}
                   onPrev={this.loadPrev}
@@ -139,21 +141,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
             endCursor
           }
           pageCursors {
-            around {
-              cursor
-              page
-              isCurrent
-            }
-            first {
-              cursor
-              page
-              isCurrent
-            }
-            last {
-              cursor
-              page
-              isCurrent
-            }
+            ...Pagination_pageCursors
           }
           edges {
             node {

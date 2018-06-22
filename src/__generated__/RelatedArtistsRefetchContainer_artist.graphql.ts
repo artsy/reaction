@@ -11,23 +11,7 @@ export type RelatedArtistsRefetchContainer_artist = {
                 readonly startCursor: string | null;
                 readonly endCursor: string | null;
             };
-            readonly pageCursors: ({
-                readonly around: ReadonlyArray<{
-                    readonly cursor: string;
-                    readonly page: number;
-                    readonly isCurrent: boolean;
-                }>;
-                readonly first: ({
-                    readonly cursor: string;
-                    readonly page: number;
-                    readonly isCurrent: boolean;
-                }) | null;
-                readonly last: ({
-                    readonly cursor: string;
-                    readonly page: number;
-                    readonly isCurrent: boolean;
-                }) | null;
-            }) | null;
+            readonly pageCursors: ({}) | null;
             readonly edges: ReadonlyArray<({
                 readonly node: ({}) | null;
             }) | null> | null;
@@ -38,30 +22,7 @@ export type RelatedArtistsRefetchContainer_artist = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "isCurrent",
-    "args": null,
-    "storageKey": null
-  }
-],
-v1 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -211,34 +172,9 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "around",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "PageCursor",
-                  "plural": true,
-                  "selections": v0
-                },
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "first",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "PageCursor",
-                  "plural": false,
-                  "selections": v0
-                },
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "last",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "PageCursor",
-                  "plural": false,
-                  "selections": v0
+                  "kind": "FragmentSpread",
+                  "name": "Pagination_pageCursors",
+                  "args": null
                 }
               ]
             },
@@ -265,7 +201,7 @@ return {
                       "name": "ArtistCard_artist",
                       "args": null
                     },
-                    v1
+                    v0
                   ]
                 }
               ]
@@ -274,9 +210,9 @@ return {
         }
       ]
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = '9db2b9398ae4a12b64193c142fede252';
+(node as any).hash = 'e8f3127223d3c7e2d77b50e96f3a3ce4';
 export default node;
