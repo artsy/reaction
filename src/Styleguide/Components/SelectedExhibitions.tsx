@@ -1,5 +1,8 @@
 import { Sans } from "@artsy/palette"
 import { groupBy, toPairs } from "lodash"
+import { createFragmentContainer, graphql } from "react-relay"
+
+import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
 import React, { SFC } from "react"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -9,12 +12,6 @@ const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2
 
 export type Year = string
-
-export interface Exhibition {
-  year: Year
-  show: string
-  gallery: string
-}
 
 export const isCollapsed = props => props.collapsible && !props.expanded
 
@@ -44,20 +41,20 @@ export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
 
 export interface ExhibitionYearListProps {
   year: Year
-  exhibitions: Exhibition[]
+  exhibitions: SelectedExhibitions_exhibitions
 }
 export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
   <Flex>
     <Sans size="2">{props.year}</Sans>
     <Flex flexDirection="column">
       {props.exhibitions.map(exhibition => (
-        <Box key={exhibition.show} display="inline" ml={1}>
+        <Box key={exhibition.name} display="inline" ml={1}>
           <Sans size="2" display="inline" verticalAlign="top">
-            {exhibition.show}
+            {exhibition.name}
             {", "}
           </Sans>
           <Sans size="2" display="inline" verticalAlign="top" color="black60">
-            {exhibition.gallery}
+            {exhibition.partner.name}
           </Sans>
         </Box>
       ))}
@@ -66,11 +63,11 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
 )
 
 interface FullExhibitionListProps {
-  exhibitions: Exhibition[]
+  exhibitions: SelectedExhibitions_exhibitions
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   <React.Fragment>
-    {toPairs(groupBy(props.exhibitions, ({ year }) => year))
+    {toPairs(groupBy(props.exhibitions, ({ start_at }) => start_at))
       .reverse()
       .map(([year, exhibitions]) => (
         <ExhibitionYearList
@@ -86,7 +83,7 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
 )
 
 export interface SelectedExhibitionsProps {
-  exhibitions: Exhibition[]
+  exhibitions: SelectedExhibitions_exhibitions
 }
 
 export interface SelectedExhibitionsContainerProps
@@ -131,4 +128,28 @@ export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
       else return <SelectedExhibitionsContainer {...props} />
     }}
   </Responsive>
+)
+
+export const SelectedExhibitionFragmentContainer = createFragmentContainer(
+  SelectedExhibitions,
+  graphql`
+    fragment SelectedExhibitions_exhibitions on Show @relay(plural: true) {
+      partner {
+        ... on ExternalPartner {
+          name
+        }
+        ... on Partner {
+          name
+        }
+      }
+      name
+      start_at(format: "YYYY")
+      cover_image {
+        cropped(width: 800, height: 600) {
+          url
+        }
+      }
+      city
+    }
+  `
 )

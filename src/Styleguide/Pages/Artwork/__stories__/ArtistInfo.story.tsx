@@ -17,7 +17,7 @@ storiesOf("Styleguide/Artwork", module).add("ArtistInfo", () => {
               <ArtistInfo
                 name="Francesca DiMattio"
                 insights={insights}
-                exhibitions={exhibitions}
+                exhibitions={exhibitions as any}
                 bio={bio}
               />
             </Col>

@@ -4,14 +4,13 @@ import styled from "styled-components"
 import { space } from "styled-system"
 import { ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
-import { SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
-import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 import { ArtworkFilter } from "./ArtworkFilter"
 import { CurrentEvent } from "./CurrentEvent"
+import { ExhibitionHighlightsQueryRenderer } from "./ExhibitionHighlightsQueryRenderer"
 
 export const Overview = () => {
   return (
@@ -21,7 +20,7 @@ export const Overview = () => {
           <MarketInsights insights={insights} />
           <Spacer mb={1} />
 
-          <SelectedExhibitions exhibitions={exhibitions} />
+          <ExhibitionHighlightsQueryRenderer artistID="pablo-picasso" />
           <Spacer mb={3} />
 
           <ArtistBio>
