@@ -1,5 +1,5 @@
 import React from "react"
-import { ArticlesRefetchContainer } from "./ArticlesRefetchContainer"
+import { ArticlesRefetchContainer as Articles } from "./ArticlesRefetchContainer"
 
 interface Props {
   artist: any
@@ -7,6 +7,6 @@ interface Props {
 
 export class ArticlesRoute extends React.Component<Props> {
   render() {
-    return <ArticlesRefetchContainer artist={this.props.artist} />
+    return <Articles artist={this.props.artist} />
   }
 }

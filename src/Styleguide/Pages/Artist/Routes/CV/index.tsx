@@ -3,7 +3,7 @@ import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { CVPaginationContainer } from "./CVPaginationContainer"
+import { CVPaginationContainer as CV } from "./CVPaginationContainer"
 import { CVQueryRenderer } from "./CVQueryRenderer"
 
 interface Props {
@@ -17,7 +17,7 @@ export class CVRoute extends React.Component<Props> {
 
     return (
       <React.Fragment>
-        <CVPaginationContainer category={category} artist={artist as any} />
+        <CV category={category} artist={artist as any} />
 
         <Spacer my={1} />
 

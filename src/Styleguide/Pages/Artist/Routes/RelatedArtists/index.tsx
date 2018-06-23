@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { RelatedArtistsQueryRenderer } from "./RelatedArtistsQueryRenderer"
-import { RelatedArtistsRefetchContainer } from "./RelatedArtistsRefetchContainer"
+import { RelatedArtistsRefetchContainer as RelatedArtists } from "./RelatedArtistsRefetchContainer"
 
 export const RelatedArtistsRoute = props => {
   return (
@@ -10,7 +10,7 @@ export const RelatedArtistsRoute = props => {
         Related
       </Sans>
 
-      <RelatedArtistsRefetchContainer kind={props.kind} artist={props.artist} />
+      <RelatedArtists kind={props.kind} artist={props.artist} />
 
       <Sans size="3" weight="medium">
         Suggested contemporary

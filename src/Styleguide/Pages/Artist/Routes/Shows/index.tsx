@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { ShowsQueryRenderer } from "./ShowsQueryRenderer"
-import { ShowsRefetchContainer } from "./ShowsRefetchContainer"
+import { ShowsRefetchContainer as Shows } from "./ShowsRefetchContainer"
 
 export const ShowsRoute = props => {
   return (
@@ -9,7 +9,7 @@ export const ShowsRoute = props => {
       <Sans size="3" weight="medium">
         Currently on view
       </Sans>
-      <ShowsRefetchContainer status={status} artist={props.artist} />
+      <Shows status={status} artist={props.artist} />
       <Sans size="3" weight="medium">
         Upcoming
       </Sans>

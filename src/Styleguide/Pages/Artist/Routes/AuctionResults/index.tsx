@@ -1,6 +1,6 @@
 import React from "react"
-import { AuctionResultsRefetchContainer } from "./AuctionResultsRefetchContainer"
+import { AuctionResultsRefetchContainer as AuctionResults } from "./AuctionResultsRefetchContainer"
 
 export const AuctionResultsRoute = props => {
-  return <AuctionResultsRefetchContainer artist={props.artist} />
+  return <AuctionResults artist={props.artist} />
 }
