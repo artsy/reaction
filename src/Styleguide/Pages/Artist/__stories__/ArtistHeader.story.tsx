@@ -23,17 +23,17 @@ storiesOf("Styleguide/Artist", module).add("ArtistHeader", () => {
     <React.Fragment>
       <Section title="Responsive Artist Header">
         <Box width="98%">
-          <ArtistHeader artist={artist} />
+          <ArtistHeader artist={artist as any} />
         </Box>
       </Section>
       <Section title="Large Artist Header">
         <Box width="98%">
-          <LargeArtistHeader artist={artist} />
+          <LargeArtistHeader artist={artist as any} />
         </Box>
       </Section>
       <Section title="Small Artist Header">
         <Box width="100%">
-          <SmallArtistHeader artist={artist} />
+          <SmallArtistHeader artist={artist as any} />
         </Box>
       </Section>
     </React.Fragment>

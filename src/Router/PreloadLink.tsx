@@ -163,8 +163,8 @@ export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
         return (
           <Found.Link
             onClick={this.handleClick}
-            {..._props}
             activeClassName="active"
+            {..._props}
           >
             {renderChildren()}
           </Found.Link>

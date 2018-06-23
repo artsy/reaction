@@ -5,14 +5,14 @@ import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { ArtistHeaderQueryRenderer } from "./Components/ArtistHeaderQueryRenderer"
+import { ArtistHeaderQueryRenderer as ArtistHeader } from "./Components/ArtistHeaderQueryRenderer"
 
 export const ArtistApp = ({ children }) => {
   return (
     <React.Fragment>
       <Row>
         <Col>
-          <ArtistHeaderQueryRenderer artistID="pablo-picasso" />
+          <ArtistHeader artistID="pablo-picasso" />
         </Col>
       </Row>
 
