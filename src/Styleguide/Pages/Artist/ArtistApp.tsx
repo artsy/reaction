@@ -1,4 +1,4 @@
-import ArtistHeader_artist from "__generated__/ArtistHeader_artist.graphql"
+import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
