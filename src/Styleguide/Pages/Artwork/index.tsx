@@ -81,7 +81,7 @@ export class Artwork extends Component {
             <ArtistInfo
               name="Francesca DiMattio"
               insights={insights}
-              exhibitions={exhibitions}
+              exhibitions={exhibitions as any}
               bio={bio}
             />
           </Col>
