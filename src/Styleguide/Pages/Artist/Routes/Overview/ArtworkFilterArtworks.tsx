@@ -140,7 +140,8 @@ export default createRefetchContainer(
       $after: String
     ) {
       node(__id: $filteredArtworksNodeID) {
-        ...Artworks_filtered_artworks @arguments(first: $first, after: $after)
+        ...ArtworkFilterArtworks_filtered_artworks
+          @arguments(first: $first, after: $after)
       }
     }
   `

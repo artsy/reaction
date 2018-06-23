@@ -20,34 +20,22 @@ query ArtworkFilterArtworksQuery(
 ) {
   node(__id: $filteredArtworksNodeID) {
     __typename
-    ...Artworks_filtered_artworks_2HEEH6
+    ...ArtworkFilterArtworks_filtered_artworks_2HEEH6
     __id
   }
 }
 
-fragment Artworks_filtered_artworks_2HEEH6 on FilterArtworks {
+fragment ArtworkFilterArtworks_filtered_artworks_2HEEH6 on FilterArtworks {
   __id
   artworks: artworks_connection(first: $first, after: $after) {
     pageInfo {
       hasNextPage
       endCursor
+      startCursor
+      hasPreviousPage
     }
     pageCursors {
-      around {
-        cursor
-        page
-        isCurrent
-      }
-      first {
-        cursor
-        page
-        isCurrent
-      }
-      last {
-        cursor
-        page
-        isCurrent
-      }
+      ...Pagination_pageCursors
     }
     ...ArtworkGrid_artworks
     edges {
@@ -55,6 +43,24 @@ fragment Artworks_filtered_artworks_2HEEH6 on FilterArtworks {
         __id
       }
     }
+  }
+}
+
+fragment Pagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
   }
 }
 
@@ -246,7 +252,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkFilterArtworksQuery",
   "id": null,
-  "text": "query ArtworkFilterArtworksQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...Artworks_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment Artworks_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkFilterArtworksQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...ArtworkFilterArtworks_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment ArtworkFilterArtworks_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      startCursor\n      hasPreviousPage\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -266,7 +272,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Artworks_filtered_artworks",
+            "name": "ArtworkFilterArtworks_filtered_artworks",
             "args": [
               {
                 "kind": "Variable",
@@ -355,6 +361,20 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "endCursor",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "startCursor",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "hasPreviousPage",
                         "args": null,
                         "storageKey": null
                       }
@@ -673,5 +693,5 @@ return {
   }
 };
 })();
-(node as any).hash = '705e1f8e5c536b44351b5b588a94b533';
+(node as any).hash = '7c34b1d19e224cbc6c041286c33aff13';
 export default node;
