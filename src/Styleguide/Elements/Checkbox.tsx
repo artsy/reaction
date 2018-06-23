@@ -15,6 +15,7 @@ import {
 
 export interface CheckboxProps {
   selected?: boolean
+  onSelect?: any
 }
 
 export interface CheckboxState {
@@ -49,7 +50,13 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     const { children } = this.props
 
     return (
-      <Flex my={0.5} onClick={this.toggleSelected}>
+      <Flex
+        my={0.5}
+        onClick={() => {
+          this.props.onSelect && this.props.onSelect(this.state.selected)
+          this.toggleSelected
+        }}
+      >
         <CheckboxButton border={1} mr={1} selected={selected}>
           {selected && (
             <Icon

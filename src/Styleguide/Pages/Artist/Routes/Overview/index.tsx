@@ -1,4 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
+
 import React from "react"
 import styled from "styled-components"
 import { space } from "styled-system"
@@ -8,7 +9,7 @@ import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
-import { ArtworkFilter } from "./ArtworkFilter"
+import { ArtworkFilterQueryRenderer } from "./ArtworkFilterQueryRenderer"
 import { CurrentEvent } from "./CurrentEvent"
 import { ExhibitionHighlightsQueryRenderer } from "./ExhibitionHighlightsQueryRenderer"
 
@@ -93,7 +94,7 @@ export const Overview = () => {
 
       <Row>
         <Col>
-          <ArtworkFilter />
+          <ArtworkFilterQueryRenderer artistID="pablo-picasso" />
         </Col>
       </Row>
     </React.Fragment>
