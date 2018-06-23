@@ -14,6 +14,8 @@ import {
 
 export interface RadioProps {
   selected?: boolean
+  onSelect?: any
+  value?: string
 }
 
 export interface RadioState {
@@ -48,7 +50,13 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     const { children } = this.props
 
     return (
-      <Flex my={0.3} onClick={this.toggleSelected}>
+      <Flex
+        my={0.3}
+        onClick={() => {
+          this.props.onSelect && this.props.onSelect(this.props.value)
+          this.toggleSelected()
+        }}
+      >
         <RadioButton border={1} mr={1} selected={selected}>
           {selected && <InnerCircle />}
         </RadioButton>

@@ -1,30 +1,16 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type Artworks_filtered_artworks = {
+export type ArtworkFilterArtworks_filtered_artworks = {
     readonly __id: string;
     readonly artworks: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
+            readonly startCursor: string | null;
+            readonly hasPreviousPage: boolean;
         };
-        readonly pageCursors: ({
-            readonly around: ReadonlyArray<{
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }>;
-            readonly first: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-            readonly last: ({
-                readonly cursor: string;
-                readonly page: number;
-                readonly isCurrent: boolean;
-            }) | null;
-        }) | null;
+        readonly pageCursors: ({}) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly __id: string;
@@ -42,33 +28,10 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "isCurrent",
-    "args": null,
-    "storageKey": null
-  }
-];
+};
 return {
   "kind": "Fragment",
-  "name": "Artworks_filtered_artworks",
+  "name": "ArtworkFilterArtworks_filtered_artworks",
   "type": "FilterArtworks",
   "metadata": null,
   "argumentDefinitions": [
@@ -131,6 +94,20 @@ return {
               "name": "endCursor",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "startCursor",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasPreviousPage",
+              "args": null,
+              "storageKey": null
             }
           ]
         },
@@ -144,34 +121,9 @@ return {
           "plural": false,
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "around",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": true,
-              "selections": v1
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "first",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v1
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "last",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageCursor",
-              "plural": false,
-              "selections": v1
+              "kind": "FragmentSpread",
+              "name": "Pagination_pageCursors",
+              "args": null
             }
           ]
         },
@@ -208,5 +160,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '94cfa97000cde16ce76ce1cb64ad74fa';
+(node as any).hash = '50e96f30293bf86c71283b2146c9d9de';
 export default node;
