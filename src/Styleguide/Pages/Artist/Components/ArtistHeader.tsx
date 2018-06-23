@@ -1,5 +1,7 @@
 import { Serif } from "@artsy/palette"
+import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { LargeSlider, SmallSlider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
@@ -9,29 +11,32 @@ import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-export class ArtistHeader extends React.Component {
+interface Props {
+  artist: ArtistHeader_artist
+}
+
+export class ArtistHeader extends React.Component<Props> {
   render() {
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) return <SmallArtistHeader />
-          else return <LargeArtistHeader />
+          if (xs) return <SmallArtistHeader {...this.props} />
+          else return <LargeArtistHeader {...this.props} />
         }}
       </Responsive>
     )
   }
 }
 
-export const LargeArtistHeader = () => {
+export const LargeArtistHeader = (props: Props) => {
+  const { carousel } = props.artist
   return (
     <Box width="100%">
       <SliderContainer my={3}>
         <LargeSlider>
-          <Image src="https://picsum.photos/400/200/?random" />
-          <Image src="https://picsum.photos/200/200/?random" />
-          <Image src="https://picsum.photos/500/200/?random" />
-          <Image src="https://picsum.photos/200/200/?random" />
-          <Image src="https://picsum.photos/300/200j/?random" />
+          {carousel.images.map(image => {
+            return <Image src={image.resized.url} />
+          })}
         </LargeSlider>
       </SliderContainer>
       <Flex justifyContent="space-between">
@@ -51,15 +56,14 @@ export const LargeArtistHeader = () => {
   )
 }
 
-export const SmallArtistHeader = () => {
+export const SmallArtistHeader = (props: Props) => {
+  const { carousel } = props.artist
   return (
     <Flex flexDirection="column">
       <SmallSlider>
-        <Image src="https://picsum.photos/400/200/?random" />
-        <Image src="https://picsum.photos/200/200/?random" />
-        <Image src="https://picsum.photos/500/200/?random" />
-        <Image src="https://picsum.photos/200/200/?random" />
-        <Image src="https://picsum.photos/300/200j/?random" />
+        {carousel.images.map(image => {
+          return <Image src={image.resized.url} />
+        })}
       </SmallSlider>
       <Flex flexDirection="column" alignItems="center">
         <Serif size="5">Donald Judd</Serif>
@@ -84,3 +88,18 @@ const SliderContainer = styled(Box)`
   left: -${props => props.theme.space[2]}px;
   width: calc(100% + ${props => props.theme.space[4]}px);
 `
+
+export const ArtistHeaderFragmentContainer = createFragmentContainer(
+  ArtistHeader,
+  graphql`
+    fragment ArtistHeader_artist on Artist {
+      carousel {
+        images {
+          resized(height: 300) {
+            url
+          }
+        }
+      }
+    }
+  `
+)
