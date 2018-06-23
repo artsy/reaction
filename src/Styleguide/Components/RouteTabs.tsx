@@ -6,17 +6,7 @@ import { themeGet } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"
 
-export const RouterTab = ({ children, ...props }) => {
-  return (
-    <PreloadLink {...props}>
-      <Sans size="3t" weight="medium">
-        {children}
-      </Sans>
-    </PreloadLink>
-  )
-}
-
-export const RouterTabs = styled(Flex)`
+export const RouteTabs = styled(Flex)`
   ${styles.tabsContainer};
 
   a {
@@ -30,3 +20,13 @@ export const RouterTabs = styled(Flex)`
     }
   }
 `
+
+export const RouteTab = ({ children, ...props }) => {
+  return (
+    <PreloadLink {...props}>
+      <Sans size="3t" weight="medium">
+        {children}
+      </Sans>
+    </PreloadLink>
+  )
+}

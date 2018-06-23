@@ -1,51 +1,62 @@
+import ArtistHeader_artist from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
-import { RouterTab, RouterTabs } from "Styleguide/Components/RouterTabs"
+import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ArtistHeaderQueryRenderer as ArtistHeader } from "./Components/ArtistHeaderQueryRenderer"
 
-export const ArtistApp = ({ children }) => {
-  return (
-    <React.Fragment>
-      <Row>
-        <Col>
-          <ArtistHeader artistID="pablo-picasso" />
-        </Col>
-      </Row>
+// TODO:
+// Max width 1192
+// Inner content max width 1112
 
-      <Spacer mb={3} />
+interface Props {
+  artist: ArtistHeader_artist
+}
 
-      <Row>
-        <Col>
-          <RouterTabs>
-            <RouterTab to="/" exact>
-              Overview
-            </RouterTab>
-            <RouterTab to="/cv">CV</RouterTab>
-            <RouterTab to="/articles">Articles</RouterTab>
-            <RouterTab to="/shows">Shows</RouterTab>
-            <RouterTab to="/auction-results">Auction results</RouterTab>
-            <RouterTab to="/related-artists">Related artists</RouterTab>
-          </RouterTabs>
+export class ArtistApp extends React.Component<Props> {
+  render() {
+    return (
+      <React.Fragment>
+        <Row>
+          <Col>
+            <ArtistHeader artistID="pablo-picasso" />
+          </Col>
+        </Row>
 
-          <Spacer mb={3} />
+        <Spacer mb={3} />
 
-          {children}
-        </Col>
-      </Row>
+        <Row>
+          <Col>
+            <RouteTabs>
+              <RouteTab to="/" exact>
+                Overview
+              </RouteTab>
+              <RouteTab to="/cv">CV</RouteTab>
+              <RouteTab to="/articles">Articles</RouteTab>
+              <RouteTab to="/shows">Shows</RouteTab>
+              <RouteTab to="/auction-results">Auction results</RouteTab>
+              <RouteTab to="/related-artists">Related artists</RouteTab>
+            </RouteTabs>
 
-      <Box my={3}>
-        <Separator />
-      </Box>
+            <Spacer mb={3} />
 
-      <Row>
-        <Col>
-          <Footer />
-        </Col>
-      </Row>
-    </React.Fragment>
-  )
+            {this.props.children}
+          </Col>
+        </Row>
+
+        <Box my={3}>
+          <Separator />
+        </Box>
+
+        <Row>
+          <Col>
+            <Footer />
+          </Col>
+        </Row>
+      </React.Fragment>
+    )
+  }
 }

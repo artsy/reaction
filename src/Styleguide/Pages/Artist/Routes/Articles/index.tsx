@@ -1,8 +1,12 @@
 import React from "react"
-import { ArticlesQueryRenderer } from "./ArticlesQueryRenderer"
+import { ArticlesRefetchContainer } from "./ArticlesRefetchContainer"
 
-export class ArticlesRoute extends React.Component {
+interface Props {
+  artist: any
+}
+
+export class ArticlesRoute extends React.Component<Props> {
   render() {
-    return <ArticlesQueryRenderer artistID="pablo-picasso" />
+    return <ArticlesRefetchContainer artist={this.props.artist} />
   }
 }

@@ -1,6 +1,6 @@
 import React from "react"
-import { AuctionResultsQueryRenderer } from "./AuctionResultsQueryRenderer"
+import { AuctionResultsRefetchContainer } from "./AuctionResultsRefetchContainer"
 
-export const AuctionResultsRoute = () => {
-  return <AuctionResultsQueryRenderer artistID="pablo-picasso" />
+export const AuctionResultsRoute = props => {
+  return <AuctionResultsRefetchContainer artist={props.artist} />
 }

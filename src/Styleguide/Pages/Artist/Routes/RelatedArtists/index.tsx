@@ -1,15 +1,16 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { RelatedArtistsQueryRenderer } from "./RelatedArtistsQueryRenderer"
+import { RelatedArtistsRefetchContainer } from "./RelatedArtistsRefetchContainer"
 
-export const RelatedArtistsRoute = () => {
+export const RelatedArtistsRoute = props => {
   return (
     <React.Fragment>
       <Sans size="3" weight="medium">
         Related
       </Sans>
 
-      <RelatedArtistsQueryRenderer artistID="pablo-picasso" kind="MAIN" />
+      <RelatedArtistsRefetchContainer kind={props.kind} artist={props.artist} />
 
       <Sans size="3" weight="medium">
         Suggested contemporary
