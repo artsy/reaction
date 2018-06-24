@@ -8,6 +8,8 @@ export type ArtistHeader_artist = {
         readonly images: ReadonlyArray<({
             readonly resized: ({
                 readonly url: string | null;
+                readonly width: number | null;
+                readonly height: number | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -76,6 +78,20 @@ const node: ConcreteFragment = {
                   "name": "url",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "width",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "height",
+                  "args": null,
+                  "storageKey": null
                 }
               ]
             }
@@ -92,5 +108,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'fed4de77e2861c8a8910d2baafe80255';
+(node as any).hash = 'a6bbf080f695c7356986caefbe8140b0';
 export default node;
