@@ -1,10 +1,10 @@
-import React from "react"
-import { Flex } from "../../Elements/Flex"
-import Icon from "Components/Icon"
-import { IconName } from "Assets/Icons"
-import { Separator } from "../../Elements/Separator"
 import { Sans } from "@artsy/palette"
+import { IconName } from "Assets/Icons"
+import Icon from "Components/Icon"
+import React from "react"
 import styled from "styled-components"
+import { Flex } from "../../Elements/Flex"
+import { Separator } from "../../Elements/Separator"
 
 interface ShareProps {
   url: string
@@ -30,6 +30,7 @@ const URLInput = styled.input`
   text-overflow: ellipsis;
   display: flex;
   flex-grow: 1;
+  color: inherit;
 `
 
 const Platform: React.SFC<{ iconName: IconName; title: string }> = ({
@@ -59,8 +60,8 @@ export class Share extends React.Component<ShareProps> {
         <Sans size="3" weight="medium" color="black100" mb={2}>
           Share
         </Sans>
-        <Flex flexDirection="row">
-          <SansGrow size="2" color="black60">
+        <Flex flexDirection="row" mb={1}>
+          <SansGrow size="2" color="black60" mr={4}>
             <URLInput
               type="text"
               readOnly
@@ -76,7 +77,7 @@ export class Share extends React.Component<ShareProps> {
           </a>
         </Flex>
         <Separator />
-        <Flex flexDirection="row" wrap>
+        <Flex flexDirection="row" flexWrap>
           <Platform iconName="facebook" title="Facebook" />
           <Platform iconName="twitter" title="Twitter" />
           <Platform iconName="mail" title="Email" />
