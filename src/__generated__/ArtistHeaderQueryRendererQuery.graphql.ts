@@ -27,6 +27,8 @@ fragment ArtistHeader_artist on Artist {
     images {
       resized(height: 300) {
         url
+        width
+        height
       }
     }
   }
@@ -63,7 +65,7 @@ return {
   "operationKind": "query",
   "name": "ArtistHeaderQueryRendererQuery",
   "id": null,
-  "text": "query ArtistHeaderQueryRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistHeader_artist\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  name\n  bio\n  carousel {\n    images {\n      resized(height: 300) {\n        url\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtistHeaderQueryRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistHeader_artist\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  name\n  bio\n  carousel {\n    images {\n      resized(height: 300) {\n        url\n        width\n        height\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -157,6 +159,20 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "url",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "width",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "height",
                         "args": null,
                         "storageKey": null
                       }

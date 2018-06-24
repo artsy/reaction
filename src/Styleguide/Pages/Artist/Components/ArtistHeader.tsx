@@ -2,12 +2,10 @@ import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-import { LargeSlider, SmallSlider } from "Styleguide/Components/Slider"
+import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
@@ -33,13 +31,9 @@ export const LargeArtistHeader = (props: Props) => {
 
   return (
     <Box width="100%">
-      <SliderContainer my={3}>
-        <LargeSlider>
-          {carousel.images.map(image => {
-            return <Image src={image.resized.url} />
-          })}
-        </LargeSlider>
-      </SliderContainer>
+      <Slider height={200} images={carousel.images as any} />
+      <Spacer my={2} />
+
       <Flex justifyContent="space-between">
         <Box>
           <Serif size="10">{props.artist.name}</Serif>
@@ -61,11 +55,9 @@ export const SmallArtistHeader = (props: Props) => {
   const { carousel } = props.artist
   return (
     <Flex flexDirection="column">
-      <SmallSlider>
-        {carousel.images.map(image => {
-          return <Image src={image.resized.url} />
-        })}
-      </SmallSlider>
+      <Slider images={carousel.images as any} />
+      <Spacer my={2} />
+
       <Flex flexDirection="column" alignItems="center">
         <Serif size="5">{props.artist.name}</Serif>
         <Flex>
@@ -84,12 +76,6 @@ export const SmallArtistHeader = (props: Props) => {
   )
 }
 
-const SliderContainer = styled(Box)`
-  position: relative;
-  left: -${props => props.theme.space[2]}px;
-  width: calc(100% + ${props => props.theme.space[4]}px);
-`
-
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   graphql`
@@ -100,6 +86,8 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
         images {
           resized(height: 300) {
             url
+            width
+            height
           }
         }
       }

@@ -1,22 +1,29 @@
 import React from "react"
+import Slick from "react-slick"
 import styled from "styled-components"
+import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { ImageProps } from "Styleguide/Elements/Image"
+import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-import {
-  BorderProps,
-  borders,
-  height,
-  HeightProps,
-  themeGet,
-  width,
-  WidthProps,
-} from "styled-system"
+interface Props {
+  height?: number
+  images: Array<{
+    resized: {
+      url: string
+      width: number
+      height: number
+    }
+  }>
+}
 
-export class Slider extends React.Component {
+export class Slider extends React.Component<Props> {
+  static defaultProps = {
+    height: 300,
+  }
+
   render() {
     return (
       <Responsive>
@@ -29,99 +36,104 @@ export class Slider extends React.Component {
   }
 }
 
-export const LargeSlider = props => {
-  return (
-    <Box>
-      <Flex justifyContent="space-around" alignItems="center">
-        <Button>
-          <Arrow direction="left" color="black10" />
-        </Button>
-        <ImageContainer>
-          {React.Children.map(
-            props.children,
-            (child: React.ReactElement<ImageProps>) => {
-              return React.cloneElement(child, {
-                mx: 0.5,
-              })
-            }
-          )}
-        </ImageContainer>
-        <Button>
-          <Arrow direction="right" color="black10" />
-        </Button>
-      </Flex>
-    </Box>
-  )
-}
+export const LargeSlider = (props: Props) => {
+  const slickConfig = {
+    arrows: false,
+    draggable: false,
+    infinite: true,
+    speed: 500,
+    variableWidth: true,
+  }
 
-export const SmallSlider = props => {
+  let slickRef = null
+
   return (
-    <Flex
-      flexDirection="column"
-      justifyContent="space-around"
-      alignItems="center"
-    >
-      <ImageContainer {...props}>
-        {React.Children.map(
-          props.children,
-          (child: React.ReactElement<ImageProps>) => {
-            return React.cloneElement(child, {
-              style: {
-                objectFit: "cover",
-              },
-              mx: 0.5,
-              width: "100%",
-              height: "200px",
-            })
-          }
-        )}
-      </ImageContainer>
-      <Dots justifyContent="center" mt={1}>
-        <Dot active />
-        <Dot />
-        <Dot />
-        <Dot />
-        <Dot />
-      </Dots>
+    <Flex justifyContent="space-around" alignItems="center">
+      <ArrowButton left={-10} onClick={() => slickRef.slickPrev()}>
+        <Arrow direction="left" color="black100" fontSize="11px" />
+      </ArrowButton>
+
+      <SliderContainer>
+        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
+          {props.images.map((image, index) => {
+            const { url, width, height } = image.resized
+            return (
+              <Box key={index}>
+                <Image px={5} src={url} width={width} height={height} />
+              </Box>
+            )
+          })}
+        </Slick>
+      </SliderContainer>
+
+      <ArrowButton right={-10} onClick={() => slickRef.slickNext()}>
+        <Arrow direction="right" color="black100" fontSize="11px" />
+      </ArrowButton>
     </Flex>
   )
 }
 
-const Button = styled.div`
-  height: 100%;
-  position: relative;
-`
-
-interface ImageContainerProps extends WidthProps, HeightProps, BorderProps {}
-const ImageContainer = styled.div.attrs<ImageContainerProps>({})`
-  overflow-x: scroll;
-  display: inline-block;
-  white-space: nowrap;
-  width: 100%;
-  height: 100%;
-
-  img {
-    display: inline-block;
+export const SmallSlider = (props: Props) => {
+  const slickConfig = {
+    arrows: false,
+    centerMode: true,
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    speed: 500,
+    swipeToSlide: true,
+    touchThreshold: 60,
+    variableWidth: true,
   }
 
-  ${width};
-  ${height};
-  ${borders};
+  return (
+    <Flex justifyContent="space-around" alignItems="center">
+      <SliderContainer>
+        <Slick {...slickConfig}>
+          {props.images.map((image, index) => {
+            const { url, width, height } = image.resized
+            return (
+              <Box key={index}>
+                <Image px={5} src={url} width={width} height={height} />
+              </Box>
+            )
+          })}
+        </Slick>
+      </SliderContainer>
+    </Flex>
+  )
+}
+
+const SliderContainer = styled.div`
+  width: 100%;
+
+  .slick-dots li {
+    width: 0;
+
+    button {
+      &:before {
+        font-size: 4px;
+      }
+    }
+  }
 `
 
-const Dots = styled(Flex)``
+const ArrowButton = styled(Flex).attrs<LeftProps & RightProps>({})`
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 300px;
+  user-select: none;
+  opacity: 0.1;
 
-const Dot = styled.div.attrs<{ active?: boolean }>({})`
-  ${props => {
-    const colors = themeGet("colors")(props)
-    const activeColor = props.active ? colors.black100 : colors.black10
+  transition: opacity 0.25s;
 
-    return `
-      background: ${activeColor};
-      border-radius: 50%;
-      width: 3px;
-      height: 3px;
-      margin: 1px;
-    `
-  }};
+  &:hover {
+    opacity: 1;
+  }
+
+  ${left};
+  ${right};
 `

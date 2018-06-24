@@ -36,7 +36,7 @@ const SliderContainer = ContextConsumer((props: Props) => {
 export const RailSlider: SFC = () => {
   return (
     <ContextProvider>
-      <SliderContainer saleID="shared-live-mocktion" />
+      <SliderContainer saleID="forum-auctions-modern-icons" />
     </ContextProvider>
   )
 }
