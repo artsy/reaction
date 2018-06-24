@@ -1,17 +1,17 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type ArtistHeaderQueryRendererQueryVariables = {
+export type routes_OverviewQueryRendererQueryVariables = {
     readonly artistID: string;
 };
-export type ArtistHeaderQueryRendererQueryResponse = {
+export type routes_OverviewQueryRendererQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query ArtistHeaderQueryRendererQuery(
+query routes_OverviewQueryRendererQuery(
   $artistID: String!
 ) {
   artist(id: $artistID) {
@@ -61,13 +61,13 @@ v2 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtistHeaderQueryRendererQuery",
+  "name": "routes_OverviewQueryRendererQuery",
   "id": null,
-  "text": "query ArtistHeaderQueryRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistHeader_artist\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  name\n  bio\n  carousel {\n    images {\n      resized(height: 300) {\n        url\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query routes_OverviewQueryRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistHeader_artist\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  name\n  bio\n  carousel {\n    images {\n      resized(height: 300) {\n        url\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtistHeaderQueryRendererQuery",
+    "name": "routes_OverviewQueryRendererQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -93,7 +93,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtistHeaderQueryRendererQuery",
+    "name": "routes_OverviewQueryRendererQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -173,5 +173,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a4cb8fc68508c74d1db13949e2b01eb3';
+(node as any).hash = '66f993cba7ef71fcc29a41bff000d2ee';
 export default node;

@@ -1,6 +1,7 @@
 import { ContextConsumer, ContextProps } from "Components/Artsy"
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { QueryRenderer } from "react-relay"
+import { RelatedArtistsQuery } from "./RelatedArtistsQuery"
 
 import {
   PAGE_SIZE,
@@ -19,18 +20,7 @@ export const RelatedArtistsQueryRenderer = ContextConsumer(
       return (
         <QueryRenderer
           environment={relayEnvironment}
-          query={graphql`
-            query RelatedArtistsQueryRendererQuery(
-              $artistID: String!
-              $first: Int!
-              $kind: RelatedArtistsKind!
-            ) {
-              artist(id: $artistID) {
-                ...RelatedArtistsRefetchContainer_artist
-                  @arguments(kind: $kind, first: $first)
-              }
-            }
-          `}
+          query={RelatedArtistsQuery}
           variables={{ artistID, first: PAGE_SIZE, kind }}
           render={({ props }) => {
             if (props) {

@@ -2,6 +2,8 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistHeader_artist = {
+    readonly name: string | null;
+    readonly bio: string | null;
     readonly carousel: ({
         readonly images: ReadonlyArray<({
             readonly resized: ({
@@ -20,6 +22,20 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "bio",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -76,5 +92,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'e984b0711b6aab50d62ddb33321545f5';
+(node as any).hash = 'fed4de77e2861c8a8910d2baafe80255';
 export default node;

@@ -30,6 +30,7 @@ export class ArtistHeader extends React.Component<Props> {
 
 export const LargeArtistHeader = (props: Props) => {
   const { carousel } = props.artist
+
   return (
     <Box width="100%">
       <SliderContainer my={3}>
@@ -41,7 +42,7 @@ export const LargeArtistHeader = (props: Props) => {
       </SliderContainer>
       <Flex justifyContent="space-between">
         <Box>
-          <Serif size="10">Donald Judd</Serif>
+          <Serif size="10">{props.artist.name}</Serif>
           <Flex>
             <Serif size="3">Brazilian, 1886-1973</Serif>
             <Spacer mr={2} />
@@ -66,7 +67,7 @@ export const SmallArtistHeader = (props: Props) => {
         })}
       </SmallSlider>
       <Flex flexDirection="column" alignItems="center">
-        <Serif size="5">Donald Judd</Serif>
+        <Serif size="5">{props.artist.name}</Serif>
         <Flex>
           <Box mx={1}>
             <Serif size="2">Brazilian, 1886-1973</Serif>
@@ -93,6 +94,8 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   graphql`
     fragment ArtistHeader_artist on Artist {
+      name
+      bio
       carousel {
         images {
           resized(height: 300) {

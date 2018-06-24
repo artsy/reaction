@@ -1,7 +1,8 @@
 import { ContextConsumer, ContextProps } from "Components/Artsy"
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { QueryRenderer } from "react-relay"
 import { CVPaginationContainer, PAGE_SIZE } from "./CVPaginationContainer"
+import { CVQuery } from "./CVQuery"
 
 interface ShowFilter {
   at_a_fair: boolean
@@ -24,30 +25,7 @@ export const CVQueryRenderer = ContextConsumer(
       return (
         <QueryRenderer
           environment={relayEnvironment}
-          query={graphql`
-            query CVQueryRendererQuery(
-              $artistID: String!
-              $first: Int!
-              $sort: PartnerShowSorts
-              $at_a_fair: Boolean
-              $solo_show: Boolean
-              $is_reference: Boolean
-              $visible_to_public: Boolean
-            ) {
-              artist(id: $artistID) {
-                ...CVPaginationContainer_artist
-                  @arguments(
-                    sort: $sort
-
-                    first: $first
-                    at_a_fair: $at_a_fair
-                    solo_show: $solo_show
-                    is_reference: $is_reference
-                    visible_to_public: $visible_to_public
-                  )
-              }
-            }
-          `}
+          query={CVQuery}
           variables={{ artistID, first: PAGE_SIZE, ...filters }}
           render={({ props }) => {
             if (props) {

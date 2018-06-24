@@ -1,18 +1,15 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { ShowsQueryRenderer } from "./ShowsQueryRenderer"
+import { ShowsRefetchContainer as Shows } from "./ShowsRefetchContainer"
 
-export const ShowsRoute = () => {
+export const ShowsRoute = props => {
   return (
     <React.Fragment>
       <Sans size="3" weight="medium">
         Currently on view
       </Sans>
-      <ShowsQueryRenderer
-        status="running"
-        artistID="pablo-picasso"
-        sort="end_at_asc"
-      />
+      <Shows status={status} artist={props.artist} />
       <Sans size="3" weight="medium">
         Upcoming
       </Sans>
