@@ -3,7 +3,7 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { Subscribe } from "unstated"
 import { AuctionResultsRefetchContainer } from "./AuctionResultsRefetchContainer"
-import { FilterState } from "./state"
+import { AuctionResultsStateContainer } from "./AuctionResultsState"
 
 const PAGE_SIZE = 10
 
@@ -17,7 +17,7 @@ export const AuctionResultsQueryRenderer = ContextConsumer(
       const { artistID, relayEnvironment } = this.props
 
       return (
-        <Subscribe to={[FilterState]}>
+        <Subscribe to={[AuctionResultsStateContainer]}>
           {filters => {
             const { sort } = filters.state
 
