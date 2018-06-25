@@ -2,14 +2,16 @@
 
 exports[`ArticleCard renders properly 1`] = `
 .c7 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: black;
 }
 
 .c16 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -323,7 +325,12 @@ exports[`ArticleCard renders properly 1`] = `
       <div
         className="c5 c6 c7"
         color="black"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         More in 
@@ -366,7 +373,12 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div
                 className="c16"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 <div
@@ -381,7 +393,12 @@ exports[`ArticleCard renders properly 1`] = `
               >
                 <div
                   className="c16"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   May 19, 2017
@@ -428,7 +445,12 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div
                 className="c16"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Aug 28, 2017
@@ -467,7 +489,12 @@ exports[`ArticleCard renders properly 1`] = `
               </svg>
               <div
                 className="c16"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 02:28

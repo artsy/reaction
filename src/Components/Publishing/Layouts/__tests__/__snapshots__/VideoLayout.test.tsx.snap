@@ -91,19 +91,21 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c41 {
-  font-family: Unica77LLWebRegular;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
 }
 
 .c55 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
 .c67 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
@@ -1906,7 +1908,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               >
                 <div
                   className="c40 c41"
-                  fontFamily="Unica77LLWebRegular"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={14}
                 >
                   <a
@@ -1917,7 +1919,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
                 <div
                   className="c41"
-                  fontFamily="Unica77LLWebRegular"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={14}
                 >
                   02:28
@@ -1989,7 +1991,12 @@ exports[`Video Layout matches the snapshot 1`] = `
             >
               <div
                 className="c55"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Jul 28, 2017 4:38 pm
@@ -2000,7 +2007,12 @@ exports[`Video Layout matches the snapshot 1`] = `
             >
               <div
                 className="c58 c55"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Share
@@ -2123,7 +2135,12 @@ exports[`Video Layout matches the snapshot 1`] = `
             >
               <div
                 className="c55"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Jul 28, 2017 4:38 pm
@@ -2134,7 +2151,12 @@ exports[`Video Layout matches the snapshot 1`] = `
             >
               <div
                 className="c58 c55"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Share
@@ -2236,7 +2258,12 @@ exports[`Video Layout matches the snapshot 1`] = `
         <div
           className="c65 c66 c67"
           color="white"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           More in 
@@ -2266,7 +2293,12 @@ exports[`Video Layout matches the snapshot 1`] = `
               <div>
                 <div
                   className="c72 c55"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   The Future of Art
@@ -2287,7 +2319,12 @@ exports[`Video Layout matches the snapshot 1`] = `
               >
                 <div
                   className="c55"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   Aug 28, 2017
@@ -2326,7 +2363,12 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </svg>
                 <div
                   className="c55"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   02:28
@@ -2350,7 +2392,12 @@ exports[`Video Layout matches the snapshot 1`] = `
               <div>
                 <div
                   className="c72 c55"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   The Future of Art
@@ -2372,7 +2419,12 @@ exports[`Video Layout matches the snapshot 1`] = `
               >
                 <div
                   className="c55"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   <div
@@ -2387,7 +2439,12 @@ exports[`Video Layout matches the snapshot 1`] = `
                 >
                   <div
                     className="c55"
-                    fontFamily="Unica77LLWebMedium"
+                    fontFamily={
+                      Object {
+                        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        "fontWeight": 500,
+                      }
+                    }
                     fontSize={14}
                   >
                     May 19, 2017

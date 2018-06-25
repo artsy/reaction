@@ -2,7 +2,8 @@
 
 exports[`Byline renders a byline 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -76,7 +77,12 @@ exports[`Byline renders a byline 1`] = `
 >
   <div
     className="c1"
-    fontFamily="Unica77LLWebMedium"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
+      }
+    }
     fontSize={14}
   >
     <div
@@ -91,7 +97,12 @@ exports[`Byline renders a byline 1`] = `
   >
     <div
       className="c1"
-      fontFamily="Unica77LLWebMedium"
+      fontFamily={
+        Object {
+          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+          "fontWeight": 500,
+        }
+      }
       fontSize={14}
     >
       May 19, 2017 9:09 am

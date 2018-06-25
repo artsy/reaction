@@ -2,7 +2,7 @@
 
 exports[`Video Info Block matches the snapshot 1`] = `
 .c2 {
-  font-family: Unica77LLWebRegular;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
 }
@@ -50,14 +50,14 @@ exports[`Video Info Block matches the snapshot 1`] = `
   >
     <div
       className="c1 c2"
-      fontFamily="Unica77LLWebRegular"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize={14}
     >
       The Future of Art
     </div>
     <div
       className="c2"
-      fontFamily="Unica77LLWebRegular"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize={14}
     >
       02:28
@@ -77,7 +77,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
 
 exports[`Video Info Block matches the snapshot with edit props 1`] = `
 .c2 {
-  font-family: Unica77LLWebRegular;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
 }
@@ -125,14 +125,14 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   >
     <div
       className="c1 c2"
-      fontFamily="Unica77LLWebRegular"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize={14}
     >
       The Future of Art
     </div>
     <div
       className="c2"
-      fontFamily="Unica77LLWebRegular"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize={14}
     >
       02:28

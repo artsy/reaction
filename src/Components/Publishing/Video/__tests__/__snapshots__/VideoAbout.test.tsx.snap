@@ -29,7 +29,8 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c9 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -519,7 +520,12 @@ exports[`Video About matches the snapshot 1`] = `
         >
           <div
             className="c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Jul 28, 2017 4:38 pm
@@ -530,7 +536,12 @@ exports[`Video About matches the snapshot 1`] = `
         >
           <div
             className="c12 c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Share
@@ -653,7 +664,12 @@ exports[`Video About matches the snapshot 1`] = `
         >
           <div
             className="c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Jul 28, 2017 4:38 pm
@@ -664,7 +680,12 @@ exports[`Video About matches the snapshot 1`] = `
         >
           <div
             className="c12 c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Share
@@ -783,7 +804,8 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c9 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -1270,7 +1292,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
         >
           <div
             className="c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Jul 28, 2017 4:38 pm
@@ -1281,7 +1308,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
         >
           <div
             className="c12 c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Share
@@ -1401,7 +1433,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
         >
           <div
             className="c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Jul 28, 2017 4:38 pm
@@ -1412,7 +1449,12 @@ exports[`Video About matches the snapshot with editable props 1`] = `
         >
           <div
             className="c12 c9"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             Share

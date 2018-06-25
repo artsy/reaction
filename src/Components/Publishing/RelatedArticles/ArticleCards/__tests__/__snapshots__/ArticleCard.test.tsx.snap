@@ -2,7 +2,8 @@
 
 exports[`ArticleCard renders an article properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -175,7 +176,12 @@ exports[`ArticleCard renders an article properly 1`] = `
     <div>
       <div
         className="c2 c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         The Future of Art
@@ -197,7 +203,12 @@ exports[`ArticleCard renders an article properly 1`] = `
     >
       <div
         className="c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <div
@@ -212,7 +223,12 @@ exports[`ArticleCard renders an article properly 1`] = `
       >
         <div
           className="c3"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           May 19, 2017
@@ -233,7 +249,8 @@ exports[`ArticleCard renders an article properly 1`] = `
 
 exports[`ArticleCard renders an article with children properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -411,7 +428,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     <div>
       <div
         className="c2 c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         The Future of Art
@@ -435,7 +457,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     </div>
     <div
       className="c6 c3"
-      fontFamily="Unica77LLWebMedium"
+      fontFamily={
+        Object {
+          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+          "fontWeight": 500,
+        }
+      }
       fontSize={14}
     >
       <div>
@@ -476,7 +503,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       </svg>
       <div
         className="c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         02:28
@@ -488,7 +520,8 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 
 exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 .c3 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -666,7 +699,12 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     <div>
       <div
         className="c2 c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         The Future of Art
@@ -687,7 +725,12 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     >
       <div
         className="c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         Aug 28, 2017
@@ -726,7 +769,12 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       </svg>
       <div
         className="c3"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         02:28

@@ -2,7 +2,7 @@
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 .c2 {
-  font-family: Unica77LLWebRegular;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
 }
@@ -14,7 +14,8 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c10 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
@@ -184,7 +185,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 >
   <div
     className="c1 c2"
-    fontFamily="Unica77LLWebRegular"
+    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={28}
   >
     Further Reading in 
@@ -224,7 +225,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       >
         <div
           className="c10"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={12}
         >
           <div
@@ -239,7 +245,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         >
           <div
             className="c10"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={12}
           >
             May 19, 2017
@@ -274,7 +285,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       >
         <div
           className="c10"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={12}
         >
           <div
@@ -289,7 +305,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         >
           <div
             className="c10"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={12}
           >
             May 19, 2017
@@ -324,7 +345,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       >
         <div
           className="c10"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={12}
         >
           <div
@@ -339,7 +365,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         >
           <div
             className="c10"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={12}
           >
             May 19, 2017
@@ -374,7 +405,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       >
         <div
           className="c10"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={12}
         >
           <div
@@ -389,7 +425,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         >
           <div
             className="c10"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={12}
           >
             May 19, 2017

@@ -2,7 +2,8 @@
 
 exports[`News Byline renders on mobile 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -122,7 +123,12 @@ exports[`News Byline renders on mobile 1`] = `
   >
     <div
       className="c2"
-      fontFamily="Unica77LLWebMedium"
+      fontFamily={
+        Object {
+          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+          "fontWeight": 500,
+        }
+      }
       fontSize={14}
     >
       <div
@@ -299,7 +305,8 @@ exports[`News Byline renders on mobile truncated 1`] = `
 
 exports[`News Byline renders properly 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -413,7 +420,12 @@ exports[`News Byline renders properly 1`] = `
   >
     <div
       className="c2"
-      fontFamily="Unica77LLWebMedium"
+      fontFamily={
+        Object {
+          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+          "fontWeight": 500,
+        }
+      }
       fontSize={14}
     >
       <div
@@ -599,7 +611,8 @@ exports[`News Byline renders properly when truncated 1`] = `
 
 exports[`News Byline renders without a news source 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -713,7 +726,12 @@ exports[`News Byline renders without a news source 1`] = `
   >
     <div
       className="c2"
-      fontFamily="Unica77LLWebMedium"
+      fontFamily={
+        Object {
+          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+          "fontWeight": 500,
+        }
+      }
       fontSize={14}
     >
       <div

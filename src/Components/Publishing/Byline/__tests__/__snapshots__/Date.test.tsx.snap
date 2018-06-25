@@ -2,7 +2,8 @@
 
 exports[`Date Snapshots renders a condensed date 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
@@ -17,7 +18,12 @@ exports[`Date Snapshots renders a condensed date 1`] = `
 >
   <div
     className="c1"
-    fontFamily="Unica77LLWebMedium"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
+      }
+    }
     fontSize={12}
   >
     May 19, 2017
@@ -27,7 +33,8 @@ exports[`Date Snapshots renders a condensed date 1`] = `
 
 exports[`Date Snapshots renders a date 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -42,7 +49,12 @@ exports[`Date Snapshots renders a date 1`] = `
 >
   <div
     className="c1"
-    fontFamily="Unica77LLWebMedium"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
+      }
+    }
     fontSize={14}
   >
     May 19, 2017 9:09 am

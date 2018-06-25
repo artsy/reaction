@@ -2,7 +2,8 @@
 
 exports[`News Layout renders the news layout on mobile 1`] = `
 .c16 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -783,7 +784,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         >
           <div
             className="c16"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -904,7 +910,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 exports[`News Layout renders the news layout properly 1`] = `
 .c16 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -1679,7 +1686,12 @@ exports[`News Layout renders the news layout properly 1`] = `
         >
           <div
             className="c16"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div

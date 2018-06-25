@@ -2,14 +2,16 @@
 
 exports[`feature renders feature full header properly 1`] = `
 .c9 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c16 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -340,7 +342,12 @@ exports[`feature renders feature full header properly 1`] = `
       <div
         className="c7 c8 c9"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -357,7 +364,12 @@ exports[`feature renders feature full header properly 1`] = `
       >
         <div
           className="c14 c15 c16"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           <div
@@ -372,7 +384,12 @@ exports[`feature renders feature full header properly 1`] = `
         >
           <div
             className="c16"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -387,7 +404,12 @@ exports[`feature renders feature full header properly 1`] = `
           >
             <div
               className="c16"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am
@@ -484,14 +506,16 @@ exports[`feature renders feature full header properly 1`] = `
 
 exports[`feature renders feature full header without a deck properly 1`] = `
 .c9 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c15 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -811,7 +835,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
       <div
         className="c7 c8 c9"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -832,7 +861,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
         >
           <div
             className="c15"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -847,7 +881,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
           >
             <div
               className="c15"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am
@@ -944,14 +983,16 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 
 exports[`feature renders feature header with children properly 1`] = `
 .c9 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c16 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -1286,7 +1327,12 @@ exports[`feature renders feature header with children properly 1`] = `
       <div
         className="c7 c8 c9"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -1305,7 +1351,12 @@ exports[`feature renders feature header with children properly 1`] = `
       >
         <div
           className="c14 c15 c16"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           <div
@@ -1322,7 +1373,12 @@ exports[`feature renders feature header with children properly 1`] = `
         >
           <div
             className="c16"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -1337,7 +1393,12 @@ exports[`feature renders feature header with children properly 1`] = `
           >
             <div
               className="c16"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am
@@ -1434,14 +1495,16 @@ exports[`feature renders feature header with children properly 1`] = `
 
 exports[`feature renders feature split header properly 1`] = `
 .c8 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c15 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -1762,7 +1825,12 @@ exports[`feature renders feature split header properly 1`] = `
       <div
         className="c6 c7 c8"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -1779,7 +1847,12 @@ exports[`feature renders feature split header properly 1`] = `
       >
         <div
           className="c13 c14 c15"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           <div
@@ -1794,7 +1867,12 @@ exports[`feature renders feature split header properly 1`] = `
         >
           <div
             className="c15"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -1809,7 +1887,12 @@ exports[`feature renders feature split header properly 1`] = `
           >
             <div
               className="c15"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am
@@ -1906,14 +1989,16 @@ exports[`feature renders feature split header properly 1`] = `
 
 exports[`feature renders feature text header properly 1`] = `
 .c6 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c13 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -2231,7 +2316,12 @@ exports[`feature renders feature text header properly 1`] = `
       <div
         className="c4 c5 c6"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -2248,7 +2338,12 @@ exports[`feature renders feature text header properly 1`] = `
       >
         <div
           className="c11 c12 c13"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           <div
@@ -2263,7 +2358,12 @@ exports[`feature renders feature text header properly 1`] = `
         >
           <div
             className="c13"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -2278,7 +2378,12 @@ exports[`feature renders feature text header properly 1`] = `
           >
             <div
               className="c13"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am
@@ -2384,14 +2489,16 @@ exports[`feature renders feature text header properly 1`] = `
 
 exports[`feature renders superArticle full header properly 1`] = `
 .c14 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: white;
 }
 
 .c21 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -2847,7 +2954,12 @@ exports[`feature renders superArticle full header properly 1`] = `
       <div
         className="c12 c13 c14"
         color="white"
-        fontFamily="Unica77LLWebMedium"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
         fontSize={14}
       >
         <span>
@@ -2864,7 +2976,12 @@ exports[`feature renders superArticle full header properly 1`] = `
       >
         <div
           className="c19 c20 c21"
-          fontFamily="Unica77LLWebMedium"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
           fontSize={14}
         >
           <div
@@ -2879,7 +2996,12 @@ exports[`feature renders superArticle full header properly 1`] = `
         >
           <div
             className="c21"
-            fontFamily="Unica77LLWebMedium"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
             fontSize={14}
           >
             <div
@@ -2894,7 +3016,12 @@ exports[`feature renders superArticle full header properly 1`] = `
           >
             <div
               className="c21"
-              fontFamily="Unica77LLWebMedium"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
               fontSize={14}
             >
               Jun 29, 2017 11:00 am

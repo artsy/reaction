@@ -2,7 +2,8 @@
 
 exports[`renders properly for a feature article 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -16,7 +17,12 @@ exports[`renders properly for a feature article 1`] = `
 <div
   className="c0 c1"
   color={undefined}
-  fontFamily="Unica77LLWebMedium"
+  fontFamily={
+    Object {
+      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "fontWeight": 500,
+    }
+  }
   fontSize={14}
 >
   <span>
@@ -27,7 +33,8 @@ exports[`renders properly for a feature article 1`] = `
 
 exports[`renders properly for a standard article 1`] = `
 .c1 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -41,7 +48,12 @@ exports[`renders properly for a standard article 1`] = `
 <div
   className="c0 c1"
   color={undefined}
-  fontFamily="Unica77LLWebMedium"
+  fontFamily={
+    Object {
+      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "fontWeight": 500,
+    }
+  }
   fontSize={14}
 >
   <span>

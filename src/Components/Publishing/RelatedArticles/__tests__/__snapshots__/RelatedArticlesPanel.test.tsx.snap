@@ -2,7 +2,8 @@
 
 exports[`renders the related articles panel 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -62,7 +63,12 @@ exports[`renders the related articles panel 1`] = `
 >
   <div
     className="c1 c2"
-    fontFamily="Unica77LLWebMedium"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
+      }
+    }
     fontSize={14}
   >
     Related Stories

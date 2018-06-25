@@ -137,7 +137,8 @@ exports[`renders a series properly 1`] = `
 }
 
 .c21 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -887,7 +888,12 @@ exports[`renders a series properly 1`] = `
             <div>
               <div
                 className="c20 c21"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 The Future of Art
@@ -908,7 +914,12 @@ exports[`renders a series properly 1`] = `
             >
               <div
                 className="c21"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Aug 28, 2017
@@ -947,7 +958,12 @@ exports[`renders a series properly 1`] = `
               </svg>
               <div
                 className="c21"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 02:28
@@ -971,7 +987,12 @@ exports[`renders a series properly 1`] = `
             <div>
               <div
                 className="c20 c21"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 The Future of Art
@@ -993,7 +1014,12 @@ exports[`renders a series properly 1`] = `
             >
               <div
                 className="c21"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 <div
@@ -1008,7 +1034,12 @@ exports[`renders a series properly 1`] = `
               >
                 <div
                   className="c21"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   May 19, 2017
@@ -1207,7 +1238,8 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c28 {
-  font-family: Unica77LLWebMedium;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
@@ -2073,7 +2105,12 @@ exports[`renders a sponsored series properly 1`] = `
             <div>
               <div
                 className="c27 c28"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 The Future of Art
@@ -2094,7 +2131,12 @@ exports[`renders a sponsored series properly 1`] = `
             >
               <div
                 className="c28"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 Aug 28, 2017
@@ -2133,7 +2175,12 @@ exports[`renders a sponsored series properly 1`] = `
               </svg>
               <div
                 className="c28"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 02:28
@@ -2157,7 +2204,12 @@ exports[`renders a sponsored series properly 1`] = `
             <div>
               <div
                 className="c27 c28"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 The Future of Art
@@ -2179,7 +2231,12 @@ exports[`renders a sponsored series properly 1`] = `
             >
               <div
                 className="c28"
-                fontFamily="Unica77LLWebMedium"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
                 fontSize={14}
               >
                 <div
@@ -2194,7 +2251,12 @@ exports[`renders a sponsored series properly 1`] = `
               >
                 <div
                   className="c28"
-                  fontFamily="Unica77LLWebMedium"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
                   fontSize={14}
                 >
                   May 19, 2017
