@@ -110,7 +110,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c81 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c81:before {
@@ -124,7 +124,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c54 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -139,6 +139,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c59 {
@@ -157,7 +158,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c58 {
-  margin: 10px 10px 10px 0px;
+  margin: 5px 10px 5px 0px;
 }
 
 .c80 {
@@ -1090,7 +1091,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c40 {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c40 a {
@@ -1219,18 +1220,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media (max-width:720px) {
   .c7 {
     display: none;
-  }
-}
-
-@media (max-width:720px) {
-  .c81 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c54 {
-    margin: 10px 20px 0 0;
   }
 }
 

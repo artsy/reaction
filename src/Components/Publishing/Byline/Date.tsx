@@ -1,7 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
 import { BylineLayout, DateFormat } from "../Typings"
 
@@ -42,7 +41,6 @@ export const Date: React.SFC<DateProps> = props => {
 }
 
 const DateContainer = styled.div.attrs<{ condensed?: boolean }>({})`
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
-  ${props => pMedia.sm` margin: 10px 20px 0 0;`};
 `

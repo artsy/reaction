@@ -20,7 +20,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c11 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c11:before {
@@ -34,7 +34,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 .c12 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -126,18 +126,6 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 .c4 a:last-child {
   margin-right: 0;
-}
-
-@media (max-width:720px) {
-  .c11 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c12 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:720px) {

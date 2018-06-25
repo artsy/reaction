@@ -8,7 +8,7 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c1 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -23,6 +23,7 @@ exports[`renders ShareDate properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c6 {
@@ -41,17 +42,11 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c5 {
-  margin: 10px 10px 10px 0px;
+  margin: 5px 10px 5px 0px;
 }
 
 .c0 {
   color: black;
-}
-
-@media (max-width:720px) {
-  .c1 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:48em) {

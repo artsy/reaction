@@ -21,7 +21,7 @@ exports[`feature renders feature full header properly 1`] = `
 }
 
 .c18 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c18:before {
@@ -30,12 +30,12 @@ exports[`feature renders feature full header properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: white;
 }
 
 .c19 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -50,6 +50,7 @@ exports[`feature renders feature full header properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c21 {
@@ -229,18 +230,6 @@ exports[`feature renders feature full header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c18 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c19 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:600px) {
@@ -514,7 +503,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
 }
 
 .c16 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c16:before {
@@ -523,12 +512,12 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: white;
 }
 
 .c17 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -543,6 +532,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c19 {
@@ -717,18 +707,6 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c16 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c17 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:600px) {
@@ -985,7 +963,7 @@ exports[`feature renders feature header with children properly 1`] = `
 }
 
 .c18 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c18:before {
@@ -994,12 +972,12 @@ exports[`feature renders feature header with children properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: white;
 }
 
 .c19 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -1014,6 +992,7 @@ exports[`feature renders feature header with children properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c21 {
@@ -1193,18 +1172,6 @@ exports[`feature renders feature header with children properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c18 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c19 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:600px) {
@@ -1486,7 +1453,7 @@ exports[`feature renders feature split header properly 1`] = `
 }
 
 .c17 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c17:before {
@@ -1495,12 +1462,12 @@ exports[`feature renders feature split header properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
 .c18 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -1515,6 +1482,7 @@ exports[`feature renders feature split header properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c20 {
@@ -1689,18 +1657,6 @@ exports[`feature renders feature split header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c17 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c18 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:600px) {
@@ -1969,7 +1925,7 @@ exports[`feature renders feature text header properly 1`] = `
 }
 
 .c15 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c15:before {
@@ -1978,12 +1934,12 @@ exports[`feature renders feature text header properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
 .c16 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -1998,6 +1954,7 @@ exports[`feature renders feature text header properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c18 {
@@ -2173,18 +2130,6 @@ exports[`feature renders feature text header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c15 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:600px) {
@@ -2458,7 +2403,7 @@ exports[`feature renders superArticle full header properly 1`] = `
 }
 
 .c23 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c23:before {
@@ -2467,12 +2412,12 @@ exports[`feature renders superArticle full header properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: white;
 }
 
 .c24 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -2487,6 +2432,7 @@ exports[`feature renders superArticle full header properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c26 {
@@ -2712,18 +2658,6 @@ exports[`feature renders superArticle full header properly 1`] = `
   justify-content: flex-end;
   margin: auto;
   text-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-@media (max-width:720px) {
-  .c23 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c24 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:900px) {

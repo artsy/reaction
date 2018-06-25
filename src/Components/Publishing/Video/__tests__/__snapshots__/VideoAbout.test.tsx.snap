@@ -35,7 +35,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c8 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -50,6 +50,7 @@ exports[`Video About matches the snapshot 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c13 {
@@ -68,7 +69,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c12 {
-  margin: 10px 10px 10px 0px;
+  margin: 5px 10px 5px 0px;
 }
 
 .c7 {
@@ -340,12 +341,6 @@ exports[`Video About matches the snapshot 1`] = `
 @media only screen and (min-width:48em) {
   .c15 {
     display: none;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 {
-    margin: 10px 20px 0 0;
   }
 }
 
@@ -794,7 +789,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c8 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -809,6 +804,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c13 {
@@ -827,7 +823,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c12 {
-  margin: 10px 10px 10px 0px;
+  margin: 5px 10px 5px 0px;
 }
 
 .c7 {
@@ -1099,12 +1095,6 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 @media only screen and (min-width:48em) {
   .c15 {
     display: none;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 {
-    margin: 10px 20px 0 0;
   }
 }
 

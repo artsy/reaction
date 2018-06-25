@@ -58,7 +58,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c17 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c17:before {
@@ -72,7 +72,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c18 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -240,18 +240,6 @@ exports[`ArticleCard renders properly 1`] = `
     flex-basis: 100%;
     max-width: 100%;
     display: block;
-  }
-}
-
-@media (max-width:720px) {
-  .c17 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c18 {
-    margin: 10px 20px 0 0;
   }
 }
 

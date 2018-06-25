@@ -65,7 +65,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c14 {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c14 a {
@@ -379,7 +379,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c14 {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c14 a {

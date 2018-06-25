@@ -36,7 +36,7 @@ export class VideoInfoBlock extends Component<Props, null> {
 }
 
 const SubTitle = Sans.extend`
-  margin-right: 35px;
+  margin-right: 20px;
 
   a {
     color: white;

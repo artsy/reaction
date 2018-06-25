@@ -8,12 +8,12 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 .c8 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
 .c7 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c7:before {
@@ -118,18 +118,6 @@ exports[`ArticleCard renders an article properly 1`] = `
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
-}
-
-@media (max-width:720px) {
-  .c8 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c7 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:900px) {
@@ -506,7 +494,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 .c6 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -615,12 +603,6 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 
 .c11 svg {
   width: 40px;
-}
-
-@media (max-width:720px) {
-  .c6 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:900px) {

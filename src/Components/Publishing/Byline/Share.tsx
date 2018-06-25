@@ -128,6 +128,7 @@ export const ShareContainer = styled.div.attrs<ShareContainerProps>({})`
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
   ${props => props.removeMarginForMobile && pMedia.xs`margin-top: 15px;`};
 `
 const IconWrapper = styled.a`
@@ -142,5 +143,5 @@ const IconWrapper = styled.a`
   }
 `
 const ShareLabel = Sans.extend`
-  margin: 10px 10px 10px 0px;
+  margin: 5px 10px 5px 0px;
 `

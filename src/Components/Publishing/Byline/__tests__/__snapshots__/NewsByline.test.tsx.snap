@@ -8,7 +8,7 @@ exports[`News Byline renders on mobile 1`] = `
 }
 
 .c4 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c4:before {
@@ -17,7 +17,7 @@ exports[`News Byline renders on mobile 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
@@ -48,6 +48,7 @@ exports[`News Byline renders on mobile 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c7 {
@@ -85,6 +86,7 @@ exports[`News Byline renders on mobile 1`] = `
 
 .c0 .c3 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .c1 {
@@ -95,12 +97,6 @@ exports[`News Byline renders on mobile 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-@media (max-width:720px) {
-  .c4 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:720px) {
@@ -264,6 +260,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
 
 .c0 .Author__StyledAuthor-sbiape-0 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .c1 {
@@ -308,7 +305,7 @@ exports[`News Byline renders properly 1`] = `
 }
 
 .c4 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c4:before {
@@ -317,7 +314,7 @@ exports[`News Byline renders properly 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
@@ -348,6 +345,7 @@ exports[`News Byline renders properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c7 {
@@ -385,6 +383,7 @@ exports[`News Byline renders properly 1`] = `
 
 .c0 .c3 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .c1 {
@@ -395,12 +394,6 @@ exports[`News Byline renders properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-@media (max-width:720px) {
-  .c4 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:720px) {
@@ -567,6 +560,7 @@ exports[`News Byline renders properly when truncated 1`] = `
 
 .c0 .Author__StyledAuthor-sbiape-0 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .c1 {
@@ -611,7 +605,7 @@ exports[`News Byline renders without a news source 1`] = `
 }
 
 .c4 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c4:before {
@@ -620,7 +614,7 @@ exports[`News Byline renders without a news source 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
@@ -651,6 +645,7 @@ exports[`News Byline renders without a news source 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c7 {
@@ -688,6 +683,7 @@ exports[`News Byline renders without a news source 1`] = `
 
 .c0 .c3 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .c1 {
@@ -698,12 +694,6 @@ exports[`News Byline renders without a news source 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-@media (max-width:720px) {
-  .c4 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:720px) {

@@ -8,7 +8,7 @@ exports[`Byline renders a byline 1`] = `
 }
 
 .c2 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c2:before {
@@ -17,12 +17,12 @@ exports[`Byline renders a byline 1`] = `
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin: 6px 10px 1px 0;
+  margin: 5px 5px 1px 0;
   background-color: black;
 }
 
 .c3 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -37,6 +37,7 @@ exports[`Byline renders a byline 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c5 {
@@ -67,18 +68,6 @@ exports[`Byline renders a byline 1`] = `
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: black;
-}
-
-@media (max-width:720px) {
-  .c2 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 <div

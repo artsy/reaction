@@ -27,7 +27,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
 }
 
 .c1 {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c1 a {
@@ -102,7 +102,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
 }
 
 .c1 {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c1 a {

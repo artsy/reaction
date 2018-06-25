@@ -1,7 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { getAuthorByline } from "../Constants"
 import { BylineLayout } from "../Typings"
 
@@ -48,8 +47,8 @@ export const StyledAuthor = styled.div.attrs<{
   condensed?: boolean
   color: string
 }>({})`
-  ${props => bullet(props.color, props.condensed)} margin: 10px 30px 0 0;
-  ${props => pMedia.sm` margin: 10px 20px 0 0;`};
+  margin: 10px 20px 0 0;
+  ${props => bullet(props.color, props.condensed)};
 `
 
 const bullet = (color, condensed = false) => {
@@ -60,7 +59,7 @@ const bullet = (color, condensed = false) => {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      margin: ${condensed ? "0 5px 1px 0;" : "6px 10px 1px 0"};
+      margin: ${condensed ? "0 5px 1px 0;" : "5px 5px 1px 0"};
       background-color: ${color};
     }
   `

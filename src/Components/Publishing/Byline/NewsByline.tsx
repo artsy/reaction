@@ -40,6 +40,7 @@ const NewsBylineContainer = styled.div`
   align-items: flex-start;
   ${StyledAuthor} {
     margin-top: 0;
+    margin-bottom: 5px;
   }
 `
 

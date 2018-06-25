@@ -12,6 +12,7 @@ exports[`renders Share properly 1`] = `
   align-items: center;
   white-space: nowrap;
   line-height: 1em;
+  margin-top: 5px;
 }
 
 .c1 {

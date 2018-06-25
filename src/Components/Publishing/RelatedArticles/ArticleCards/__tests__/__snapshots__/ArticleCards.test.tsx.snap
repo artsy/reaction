@@ -8,7 +8,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c9 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c9:before {
@@ -22,7 +22,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c10 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -159,18 +159,6 @@ exports[`ArticleCard renders properly 1`] = `
 
 .c0 .c2 {
   margin-bottom: 60px;
-}
-
-@media (max-width:720px) {
-  .c9 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c10 {
-    margin: 10px 20px 0 0;
-  }
 }
 
 @media (max-width:900px) {

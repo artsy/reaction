@@ -143,7 +143,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c32 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c32:before {
@@ -157,7 +157,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c24 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -649,18 +649,6 @@ exports[`renders a series properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
-  }
-}
-
-@media (max-width:720px) {
-  .c32 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c24 {
-    margin: 10px 20px 0 0;
   }
 }
 
@@ -1225,7 +1213,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c39 {
-  margin: 10px 30px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .c39:before {
@@ -1239,7 +1227,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c31 {
-  margin: 10px 30px 0 0;
+  margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
@@ -1765,18 +1753,6 @@ exports[`renders a sponsored series properly 1`] = `
     flex-basis: 66.66666666666667%;
     max-width: 66.66666666666667%;
     display: block;
-  }
-}
-
-@media (max-width:720px) {
-  .c39 {
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c31 {
-    margin: 10px 20px 0 0;
   }
 }
 
