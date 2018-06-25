@@ -25,6 +25,7 @@ export interface ModalManagerProps {
     values: InputValues,
     formikBag: FormikProps<InputValues>
   ) => void
+  blurContainerSelector?: string
 }
 
 export interface ModalManagerState {
@@ -66,7 +67,7 @@ export class ModalManager extends Component<
   setError = err => this.setState({ error: err })
 
   render() {
-    const { csrf, submitUrls, redirectTo } = this.props
+    const { blurContainerSelector, csrf, submitUrls, redirectTo } = this.props
     const { currentType, options, error } = this.state
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
@@ -75,6 +76,7 @@ export class ModalManager extends Component<
 
     return (
       <DesktopModal
+        blurContainerSelector={blurContainerSelector}
         show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
@@ -86,11 +88,11 @@ export class ModalManager extends Component<
           handleSubmit={handleSubmit}
           onFacebookLogin={() =>
             (window.location.href =
-              submitUrls.facebook + "?redirect-to=" + redirectTo)
+              submitUrls.facebook + "?redirect-to=" + options.redirectTo)
           }
           onTwitterLogin={() =>
             (window.location.href =
-              submitUrls.twitter + "?redirect-to=" + redirectTo)
+              submitUrls.twitter + "?redirect-to=" + options.redirectTo)
           }
           options={options}
         />

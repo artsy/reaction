@@ -1,24 +1,36 @@
 import React from "react"
 import { Spring } from "react-spring"
-import styled from "styled-components"
+import styled, { injectGlobal } from "styled-components"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
   onClose?: () => void
+  blurContainerSelector?: string
 }
 export interface ModalState {
   isAnimating: boolean
   isShown: boolean
+  blurContainers: Element[]
 }
+
+injectGlobal`
+  .blurred {
+    filter: blur(50px);
+  }
+`
 
 export class Modal extends React.Component<ModalProps, ModalState> {
   static defaultProps = {
     show: false,
+    blurContainerSelector: "",
   }
 
   state = {
     isAnimating: this.props.show || false,
     isShown: this.props.show || false,
+    blurContainers: Array.from(
+      document.querySelectorAll(this.props.blurContainerSelector)
+    ),
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,27 +42,57 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
   }
 
+  shouldComponentUpdate(newProps) {
+    return this.props.show !== newProps.show
+  }
+
+  componentWillUnmount() {
+    this.removeBlurToContainers()
+  }
+
   close = e => {
     e.preventDefault()
     this.props.onClose()
+
+    this.removeBlurToContainers()
+  }
+
+  addBlurToContainers = () => {
+    for (let container of this.state.blurContainers) {
+      container.classList.add("blurred")
+    }
+  }
+
+  removeBlurToContainers = () => {
+    for (let container of this.state.blurContainers) {
+      container.classList.remove("blurred")
+    }
   }
 
   render(): JSX.Element {
     const { children } = this.props
     const { isAnimating, isShown } = this.state
 
+    const animationStates = {
+      from: {
+        opacity: 0,
+        transform: "translate(-50%,-40%)",
+      },
+      to: {
+        opacity: 1,
+        transform: "translate(-50%,-50%)",
+      },
+    }
+
     const transitions = isShown
-      ? {
-          from: {
-            opacity: 0,
-            transform: "translate(-50%,-40%)",
-          },
-          to: {
-            opacity: 1,
-            transform: "translate(-50%,-50%)",
-          },
-        }
-      : { from: { opacity: 1 }, to: { opacity: 0 } }
+      ? animationStates
+      : { from: animationStates.to, to: animationStates.from }
+
+    if (isShown) {
+      this.addBlurToContainers()
+    } else {
+      this.removeBlurToContainers()
+    }
 
     return (
       <div>
@@ -102,8 +144,6 @@ const Overlay = styled.div.attrs<{ show?: boolean }>({})`
   left: 0;
   z-index: 9998;
   background: rgba(200, 200, 200, 0.5);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
   opacity: 0;
   pointer-events: ${p => (p.show ? "inherit" : "none")};
 `
