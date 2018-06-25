@@ -1,5 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
-import { CVPaginationContainer_artist } from "__generated__/CVPaginationContainer_artist.graphql"
+import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -17,7 +17,7 @@ import {
 
 interface CVProps {
   relay: RelayPaginationProp
-  artist: CVPaginationContainer_artist
+  artist: CVItem_artist
   category: string
 }
 
@@ -49,9 +49,9 @@ export const CVPaginationContainer = createPaginationContainer(
       )
     }
 
-    renderShow(node) {
+    renderShow(node, index) {
       return (
-        <Show size="3">
+        <Show size="3" key={index}>
           <Serif size="3" display="inline" italic>
             <a href="#" className="noUnderline">
               {node.name}
@@ -92,15 +92,17 @@ export const CVPaginationContainer = createPaginationContainer(
                             {Object.keys(groupedByYear)
                               .sort()
                               .reverse()
-                              .map(year => {
+                              .map((year, index) => {
                                 return (
-                                  <YearGroup mb={1}>
+                                  <YearGroup mb={1} key={index}>
                                     <Year size="3">{year}</Year>
                                     <Spacer mr={xs ? 1 : 4} />
                                     <ShowGroup>
-                                      {groupedByYear[year].map(({ node }) => {
-                                        return this.renderShow(node)
-                                      })}
+                                      {groupedByYear[year].map(
+                                        ({ node }, key) => {
+                                          return this.renderShow(node, key)
+                                        }
+                                      )}
                                     </ShowGroup>
                                   </YearGroup>
                                 )
@@ -123,15 +125,15 @@ export const CVPaginationContainer = createPaginationContainer(
   },
   {
     artist: graphql`
-      fragment CVPaginationContainer_artist on Artist
+      fragment CVItem_artist on Artist
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
-          sort: { type: "PartnerShowSorts" }
-          at_a_fair: { type: "Boolean" }
-          solo_show: { type: "Boolean" }
-          is_reference: { type: "Boolean" }
-          visible_to_public: { type: "Boolean" }
+          sort: { type: "PartnerShowSorts", defaultValue: "start_at_desc" }
+          at_a_fair: { type: "Boolean", defaultValue: false }
+          solo_show: { type: "Boolean", defaultValue: false }
+          is_reference: { type: "Boolean", defaultValue: true }
+          visible_to_public: { type: "Boolean", defaultValue: false }
         ) {
         id
         showsConnection(
@@ -185,7 +187,7 @@ export const CVPaginationContainer = createPaginationContainer(
       }
     },
     query: graphql`
-      query CVPaginationContainerQuery(
+      query CVItemQuery(
         $count: Int
         $cursor: String
         $artistID: String!
@@ -196,7 +198,7 @@ export const CVPaginationContainer = createPaginationContainer(
         $visible_to_public: Boolean
       ) {
         artist(id: $artistID) {
-          ...CVPaginationContainer_artist
+          ...CVItem_artist
             @arguments(
               sort: $sort
               count: $count
