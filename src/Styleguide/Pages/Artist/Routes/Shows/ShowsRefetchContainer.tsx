@@ -14,6 +14,7 @@ interface ShowProps {
   relay: RelayRefetchProp
   artist: ShowsRefetchContainer_artist
   status: string
+  sort: string
 }
 
 export const PAGE_SIZE = 4
@@ -48,6 +49,8 @@ export const ShowsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           after: null,
           last: PAGE_SIZE,
+          status: this.props.status,
+          sort: this.props.sort,
         },
         null,
         error => {
@@ -66,6 +69,8 @@ export const ShowsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           before: null,
           last: null,
+          status: this.props.status,
+          sort: this.props.sort,
         },
         null,
         error => {
@@ -161,7 +166,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment ShowsRefetchContainer_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int" }
+          first: { type: "Int", defaultValue: 4 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
