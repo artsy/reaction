@@ -2,13 +2,13 @@ import { ContextConsumer, ContextProps } from "Components/Artsy"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { SelectedExhibitionFragmentContainer } from "Styleguide/Components/SelectedExhibitions"
+import { ArtistBioFragmentContainer } from "Styleguide/Components/ArtistBio"
 
 interface Props extends ContextProps {
   artistID: string
 }
 
-export const ExhibitionHighlightsQueryRenderer = ContextConsumer(
+export const OverviewQueryRenderer = ContextConsumer(
   class extends React.Component<Props> {
     render() {
       const { artistID, relayEnvironment } = this.props
@@ -16,22 +16,16 @@ export const ExhibitionHighlightsQueryRenderer = ContextConsumer(
         <QueryRenderer
           environment={relayEnvironment}
           query={graphql`
-            query ExhibitionHighlightsQueryRendererQuery($artistID: String!) {
+            query OverviewQueryRendererQuery($artistID: String!) {
               artist(id: $artistID) {
-                exhibition_highlights(size: 15) {
-                  ...SelectedExhibitions_exhibitions
-                }
+                ...ArtistBio_bio
               }
             }
           `}
           variables={{ artistID }}
           render={({ props }) => {
             if (props) {
-              return (
-                <SelectedExhibitionFragmentContainer
-                  exhibitions={props.artist.exhibition_highlights.slice(0, 10)}
-                />
-              )
+              return <ArtistBioFragmentContainer bio={props.artist as any} />
             } else {
               return null
             }
