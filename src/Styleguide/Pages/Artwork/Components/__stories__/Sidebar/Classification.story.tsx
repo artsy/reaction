@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Classification } from "Styleguide/Pages/Artwork/Sidebar/Classification"
+import { Classification } from "Styleguide/Pages/Artwork/Components/Sidebar/Classification"
 import {
   ArtworkWithClassification,
   ArtworkWithoutClassification,
