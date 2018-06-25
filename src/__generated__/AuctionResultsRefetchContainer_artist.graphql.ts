@@ -37,13 +37,13 @@ return {
       "kind": "LocalArgument",
       "name": "sort",
       "type": "AuctionResultSorts",
-      "defaultValue": null
+      "defaultValue": "PRICE_AND_DATE_DESC"
     },
     {
       "kind": "LocalArgument",
       "name": "first",
       "type": "Int",
-      "defaultValue": null
+      "defaultValue": 10
     },
     {
       "kind": "LocalArgument",
@@ -201,5 +201,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '086c0fcb029649f61e746bfcf5d3f3c4';
+(node as any).hash = '3eb7a1b8003fe0c15c7c90fbee9964d2';
 export default node;
