@@ -92,7 +92,7 @@ export const SignUpForm: FormComponentType = props => {
               checked={values.acceptedTermsOfService}
               value={values.acceptedTermsOfService}
               type="checkbox"
-              name="acceptedTermsOfService"
+              name="accepted_terms_of_service"
               onChange={handleChange}
               onBlur={handleBlur}
             />
