@@ -47,6 +47,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           after: null,
           last: PAGE_SIZE,
+          kind: this.props.kind,
         },
         null,
         error => {
@@ -65,6 +66,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           before: null,
           last: null,
+          kind: this.props.kind,
         },
         null,
         error => {
@@ -150,7 +152,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment RelatedArtistsRefetchContainer_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int" }
+          first: { type: "Int", defaultValue: 6 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
