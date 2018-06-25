@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type CVPaginationContainer_artist = {
+export type CVItem_artist = {
     readonly id: string;
     readonly showsConnection: ({
         readonly pageInfo: {
@@ -43,7 +43,7 @@ v2 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "CVPaginationContainer_artist",
+  "name": "CVItem_artist",
   "type": "Artist",
   "metadata": {
     "connection": [
@@ -74,31 +74,31 @@ return {
       "kind": "LocalArgument",
       "name": "sort",
       "type": "PartnerShowSorts",
-      "defaultValue": null
+      "defaultValue": "start_at_desc"
     },
     {
       "kind": "LocalArgument",
       "name": "at_a_fair",
       "type": "Boolean",
-      "defaultValue": null
+      "defaultValue": false
     },
     {
       "kind": "LocalArgument",
       "name": "solo_show",
       "type": "Boolean",
-      "defaultValue": null
+      "defaultValue": false
     },
     {
       "kind": "LocalArgument",
       "name": "is_reference",
       "type": "Boolean",
-      "defaultValue": null
+      "defaultValue": true
     },
     {
       "kind": "LocalArgument",
       "name": "visible_to_public",
       "type": "Boolean",
-      "defaultValue": null
+      "defaultValue": false
     }
   ],
   "selections": [
@@ -261,5 +261,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ac99d11a148fbc5f05f5385e560b583f';
+(node as any).hash = 'e3d362d88348a0f2e333d9009714b43f';
 export default node;

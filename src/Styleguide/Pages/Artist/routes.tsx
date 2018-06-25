@@ -2,13 +2,17 @@ import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
 import { ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRoute } from "./Routes/AuctionResults"
-import { CVRoute } from "./Routes/CV"
-import { CVQuery } from "./Routes/CV/CVQuery"
+import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { RelatedArtistsQuery } from "./Routes/RelatedArtists/RelatedArtistsQuery"
 import { ShowsRoute } from "./Routes/Shows"
 import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
+
+// @ts-ignore
+import { ComponentClass, StatelessComponent } from "react"
+// @ts-ignore
+import { CVRouteProps } from "./Routes/CV"
 
 export const routes = [
   {
@@ -33,7 +37,13 @@ export const routes = [
       {
         path: "cv",
         Component: CVRoute,
-        query: CVQuery,
+        query: graphql`
+          query routes_CVQuery($artistID: String!) {
+            viewer {
+              ...CV_viewer
+            }
+          }
+        `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
           first: 10,

@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type PartnerShowSorts = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "END_AT_ASC" | "END_AT_DESC" | "NAME_ASC" | "NAME_DESC" | "PUBLISH_AT_ASC" | "PUBLISH_AT_DESC" | "START_AT_ASC" | "START_AT_DESC" | "created_at_asc" | "created_at_desc" | "end_at_asc" | "end_at_desc" | "name_asc" | "name_desc" | "publish_at_asc" | "publish_at_desc" | "start_at_asc" | "start_at_desc" | "%future added value";
-export type CVPaginationContainerQueryVariables = {
+export type CVItemQueryVariables = {
     readonly count?: number | null;
     readonly cursor?: string | null;
     readonly artistID: string;
@@ -12,14 +12,14 @@ export type CVPaginationContainerQueryVariables = {
     readonly is_reference?: boolean | null;
     readonly visible_to_public?: boolean | null;
 };
-export type CVPaginationContainerQueryResponse = {
+export type CVItemQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query CVPaginationContainerQuery(
+query CVItemQuery(
   $count: Int
   $cursor: String
   $artistID: String!
@@ -30,12 +30,12 @@ query CVPaginationContainerQuery(
   $visible_to_public: Boolean
 ) {
   artist(id: $artistID) {
-    ...CVPaginationContainer_artist_2utmRv
+    ...CVItem_artist_2utmRv
     __id
   }
 }
 
-fragment CVPaginationContainer_artist_2utmRv on Artist {
+fragment CVItem_artist_2utmRv on Artist {
   id
   showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {
     pageInfo {
@@ -156,13 +156,13 @@ v5 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "CVPaginationContainerQuery",
+  "name": "CVItemQuery",
   "id": null,
-  "text": "query CVPaginationContainerQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVPaginationContainer_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVPaginationContainer_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query CVItemQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVItem_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVItem_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "CVPaginationContainerQuery",
+    "name": "CVItemQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -178,7 +178,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CVPaginationContainer_artist",
+            "name": "CVItem_artist",
             "args": [
               {
                 "kind": "Variable",
@@ -231,7 +231,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CVPaginationContainerQuery",
+    "name": "CVItemQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -470,5 +470,5 @@ return {
   }
 };
 })();
-(node as any).hash = '550d03863169339e8f84ddc3b407b9d2';
+(node as any).hash = '0b1a3246fdd41a497dffb3b7697f5422';
 export default node;
