@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { SizeInfo } from "Styleguide/Pages/Artwork/Sidebar/SizeInfo"
+import { SizeInfo } from "Styleguide/Pages/Artwork/Components/Sidebar/SizeInfo"
 import {
   ArtworkWithEditionOfOnly,
   ArtworkWithSizeAndEditionOf,

@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Sidebar } from "Styleguide/Pages/Artwork/Sidebar"
+import { Sidebar } from "Styleguide/Pages/Artwork/Components/Sidebar"
 import { Section } from "Styleguide/Utils/Section"
 
 import {
