@@ -32,21 +32,7 @@ fragment ArticlesRefetchContainer_artist_3ASum4 on Artist {
       endCursor
     }
     pageCursors {
-      around {
-        cursor
-        page
-        isCurrent
-      }
-      first {
-        cursor
-        page
-        isCurrent
-      }
-      last {
-        cursor
-        page
-        isCurrent
-      }
+      ...Pagination_pageCursors
     }
     edges {
       node {
@@ -67,6 +53,24 @@ fragment ArticlesRefetchContainer_artist_3ASum4 on Artist {
     }
   }
   __id
+}
+
+fragment Pagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
 }
 */
 
@@ -128,7 +132,7 @@ return {
   "operationKind": "query",
   "name": "ArticlesQueryRendererQuery",
   "id": null,
-  "text": "query ArticlesQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_3ASum4\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_3ASum4 on Artist {\n  id\n  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      around {\n        cursor\n        page\n        isCurrent\n      }\n      first {\n        cursor\n        page\n        isCurrent\n      }\n      last {\n        cursor\n        page\n        isCurrent\n      }\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ArticlesQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_3ASum4\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_3ASum4 on Artist {\n  id\n  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

@@ -38,7 +38,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c15 {
+.c17 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -58,7 +58,23 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding: 0 12px;
 }
 
+.c15 {
+  font-family: Unica77LLWebRegular;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c14 {
+  margin-right: 35px;
+}
+
+.c14 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c16 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -126,7 +142,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   height: 100%;
 }
 
-.c16 {
+.c18 {
   position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
@@ -176,7 +192,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c15 {
+  .c17 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -186,7 +202,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c15 {
+  .c17 {
     -webkit-flex-basis: 58.333333333333336%;
     -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
@@ -202,7 +218,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c16 {
+  .c18 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -259,14 +275,14 @@ exports[`Video Cover matches the snapshot 1`] = `
             className="c9"
           >
             <div
-              className="kUUSdr fhqIwK"
+              className="c14 c15"
               fontFamily="Unica77LLWebRegular"
               fontSize={14}
             >
               Future of Art
             </div>
             <div
-              className="uTxCW fhqIwK"
+              className="c15"
               fontFamily="Unica77LLWebRegular"
               fontSize={14}
             >
@@ -277,7 +293,7 @@ exports[`Video Cover matches the snapshot 1`] = `
             className="c9"
           >
             <span
-              className="c14"
+              className="c16"
             >
               Trevor Paglan
             </span>
@@ -285,10 +301,10 @@ exports[`Video Cover matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        className="c15"
+        className="c17"
       >
         <div
-          className="c16"
+          className="c18"
         >
           The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
         </div>
@@ -336,7 +352,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding-left: 0.5rem;
 }
 
-.c15 {
+.c17 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -356,7 +372,23 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding: 0 12px;
 }
 
+.c15 {
+  font-family: Unica77LLWebRegular;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c14 {
+  margin-right: 35px;
+}
+
+.c14 a {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c16 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -424,7 +456,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   height: 100%;
 }
 
-.c16 {
+.c18 {
   position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
@@ -474,7 +506,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c15 {
+  .c17 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -484,7 +516,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c15 {
+  .c17 {
     -webkit-flex-basis: 58.333333333333336%;
     -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
@@ -500,7 +532,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media (max-width:48em) {
-  .c16 {
+  .c18 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -557,14 +589,14 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
             className="c9"
           >
             <div
-              className="kUUSdr fhqIwK"
+              className="c14 c15"
               fontFamily="Unica77LLWebRegular"
               fontSize={14}
             >
               Future of Art
             </div>
             <div
-              className="uTxCW fhqIwK"
+              className="c15"
               fontFamily="Unica77LLWebRegular"
               fontSize={14}
             >
@@ -575,7 +607,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
             className="c9"
           >
             <span
-              className="c14"
+              className="c16"
             >
               <div>
                 Child 
@@ -586,10 +618,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         </div>
       </div>
       <div
-        className="c15"
+        className="c17"
       >
         <div
-          className="c16"
+          className="c18"
         >
           <div>
             Child 

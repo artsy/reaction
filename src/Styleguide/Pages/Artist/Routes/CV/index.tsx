@@ -1,24 +1,23 @@
 import { Serif } from "@artsy/palette"
+import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { CVPaginationContainer as CV } from "./CVPaginationContainer"
 import { CVQueryRenderer } from "./CVQueryRenderer"
 
-export class CVRoute extends React.Component {
+interface Props {
+  artist: ArtistHeader_artist
+  category: string
+}
+
+export class CVRoute extends React.Component<Props> {
   render() {
+    const { artist, category } = this.props
+
     return (
       <React.Fragment>
-        <CVQueryRenderer
-          artistID="pablo-picasso"
-          filters={{
-            at_a_fair: false,
-            solo_show: true,
-            sort: "start_at_desc",
-            is_reference: true,
-            visible_to_public: false,
-          }}
-          category="Solo Shows"
-        />
+        <CV category={category} artist={artist as any} />
 
         <Spacer my={1} />
 

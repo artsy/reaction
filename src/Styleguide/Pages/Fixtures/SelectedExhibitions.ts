@@ -1,17 +1,17 @@
 export const exhibitions = [
   {
-    year: "2018",
-    show: "Adman: Warhol Before Pop",
-    gallery: "Andy Warhol Museum",
+    start_at: "2018",
+    name: "Adman: Warhol Before Pop",
+    partner: { name: "Andy Warhol Museum" },
   },
   {
-    year: "2018",
-    show: "Brancusi: Pioneer of American Minimalism",
-    gallery: "Paul Kasmin Gallery",
+    start_at: "2018",
+    name: "Brancusi: Pioneer of American Minimalism",
+    partner: { name: "Paul Kasmin Gallery" },
   },
   {
-    year: "2017",
-    show: "Sculpture on the Move 1946–2016",
-    gallery: "Kunstmuseum Basel",
+    start_at: "2017",
+    name: "Sculpture on the Move 1946–2016",
+    partner: { name: "Kunstmuseum Basel" },
   },
 ]

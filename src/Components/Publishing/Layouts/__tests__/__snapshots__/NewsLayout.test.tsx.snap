@@ -335,7 +335,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c12 .artist-follow {
@@ -1241,7 +1241,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c12 .artist-follow {

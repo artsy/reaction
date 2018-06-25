@@ -182,7 +182,7 @@ export const StyledText = div`
     background: black;
     border-radius: 50%;
     margin-left: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
   }
   .artist-follow {
     vertical-align: middle;

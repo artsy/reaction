@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders ShareDate properly 1`] = `
+.c2 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c1 {
   margin: 10px 30px 0 0;
   white-space: nowrap;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,19 +25,23 @@ exports[`renders ShareDate properly 1`] = `
   line-height: 1em;
 }
 
-.c4 {
+.c6 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c4:hover {
+.c6:hover {
   opacity: 0.6;
 }
 
-.c4:first-child {
+.c6:first-child {
   padding-left: 0;
+}
+
+.c5 {
+  margin: 10px 10px 10px 0px;
 }
 
 .c0 {
@@ -45,7 +55,7 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c0 .c2 {
+  .c0 .c3 {
     margin-top: 0px;
   }
 }
@@ -57,7 +67,7 @@ exports[`renders ShareDate properly 1`] = `
     className="c1"
   >
     <div
-      className="uTxCW bTNvyd"
+      className="c2"
       fontFamily="Unica77LLWebMedium"
       fontSize={14}
     >
@@ -65,17 +75,17 @@ exports[`renders ShareDate properly 1`] = `
     </div>
   </div>
   <div
-    className="c2 c3"
+    className="c3 c4"
   >
     <div
-      className="sc-ifAKCX hXcgnM bTNvyd"
+      className="c5 c2"
       fontFamily="Unica77LLWebMedium"
       fontSize={14}
     >
       Share
     </div>
     <a
-      className="c4"
+      className="c6"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -101,7 +111,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c6"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -127,7 +137,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c6"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/standard/new-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"

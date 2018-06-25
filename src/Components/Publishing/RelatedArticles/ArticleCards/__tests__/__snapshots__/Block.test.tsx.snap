@@ -14,9 +14,47 @@ exports[`ArticleCard renders properly 1`] = `
   line-height: 20px;
 }
 
-.c18 {
-  margin: 10px 30px 0 0;
-  white-space: nowrap;
+.c6 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c4 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c9 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .c17 {
@@ -31,6 +69,11 @@ exports[`ArticleCard renders properly 1`] = `
   border-radius: 50%;
   margin: 0 5px 1px 0;
   background-color: black;
+}
+
+.c18 {
+  margin: 10px 30px 0 0;
+  white-space: nowrap;
 }
 
 .c15 {
@@ -151,44 +194,6 @@ exports[`ArticleCard renders properly 1`] = `
   width: 40px;
 }
 
-.c3 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c4 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c9 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-<<<<<<< HEAD
 .c2 {
   max-width: 1200px;
   margin: 0 auto;
@@ -200,36 +205,6 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c8 .c10 {
-  margin-bottom: 60px;
-}
-
-=======
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: black;
-}
-
->>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
-.c6 a {
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c2 {
-  max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
-}
-
-.c7 {
-  color: black;
-}
-
-.c7 .c9 {
   margin-bottom: 60px;
 }
 
@@ -258,14 +233,24 @@ exports[`ArticleCard renders properly 1`] = `
   margin: 60px 0 100px 0;
 }
 
-@media (max-width:720px) {
-  .c18 {
-    margin: 10px 20px 0 0;
+@media only screen and (min-width:0em) {
+  .c9 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
   }
 }
 
 @media (max-width:720px) {
   .c17 {
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c18 {
     margin: 10px 20px 0 0;
   }
 }
@@ -319,32 +304,8 @@ exports[`ArticleCard renders properly 1`] = `
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c9 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-<<<<<<< HEAD
 @media (max-width:64em) {
   .c8 .c10 {
-=======
-@media (max-width:720px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:64em) {
-  .c7 .c9 {
->>>>>>> c1b85cbfc69ddae0a74aa2d9b3c592e84706b825
     margin-bottom: 40px;
   }
 }

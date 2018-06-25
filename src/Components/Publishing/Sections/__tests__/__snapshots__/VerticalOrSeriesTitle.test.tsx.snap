@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly for a feature article 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c0 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 <div
-  className="sc-ifAKCX gbcicG bTNvyd"
+  className="c0 c1"
   color={undefined}
   fontFamily="Unica77LLWebMedium"
   fontSize={14}
@@ -14,8 +26,20 @@ exports[`renders properly for a feature article 1`] = `
 `;
 
 exports[`renders properly for a standard article 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c0 a {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 <div
-  className="sc-ifAKCX gbcicG bTNvyd"
+  className="c0 c1"
   color={undefined}
   fontFamily="Unica77LLWebMedium"
   fontSize={14}

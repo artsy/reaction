@@ -1,12 +1,15 @@
 import { AuctionResultsRefetchContainer_artist } from "__generated__/AuctionResultsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
-import { AuctionResultItem } from "./AuctionResultItem"
+import { Subscribe } from "unstated"
+import { AuctionDetailsModal } from "./AuctionDetailsModal"
+import { AuctionResultItemFragmentContainer } from "./AuctionResultItem"
+import { AuctionResultsStateContainer } from "./AuctionResultsState"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
 
@@ -79,38 +82,56 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
 
     render() {
       return (
-        <React.Fragment>
-          <Row>
-            <TableSidebar />
+        <Subscribe to={[AuctionResultsStateContainer]}>
+          {({ state }: AuctionResultsStateContainer) => {
+            return (
+              <React.Fragment>
+                <Row>
+                  <TableSidebar />
 
-            <Col sm={10}>
-              <Row>
-                <TableColumns />
-              </Row>
+                  <Col sm={10}>
+                    <Row>
+                      <TableColumns />
+                    </Row>
 
-              <Box pt={0.5}>
-                <Separator />
-              </Box>
+                    <Box pt={0.5}>
+                      <Separator />
+                    </Box>
 
-              {this.props.artist.auctionResults.edges.map(({ node }) => {
-                return <AuctionResultItem {...node} />
-              })}
-            </Col>
-          </Row>
+                    <AuctionDetailsModal
+                      auctionResult={state.selectedAuction}
+                    />
 
-          <Row>
-            <Col>
-              <Flex justifyContent="flex-end">
-                <Pagination
-                  {...this.props.artist.auctionResults.pageCursors}
-                  onClick={this.loadAfter}
-                  onNext={this.loadNext}
-                  onPrev={this.loadPrev}
-                />
-              </Flex>
-            </Col>
-          </Row>
-        </React.Fragment>
+                    {this.props.artist.auctionResults.edges.map(({ node }) => {
+                      return (
+                        <React.Fragment>
+                          <AuctionResultItemFragmentContainer
+                            auctionResult={node as any}
+                          />
+                        </React.Fragment>
+                      )
+                    })}
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <Flex justifyContent="flex-end">
+                      <PaginationFragmentContainer
+                        pageCursors={
+                          this.props.artist.auctionResults.pageCursors as any
+                        }
+                        onClick={this.loadAfter}
+                        onNext={this.loadNext}
+                        onPrev={this.loadPrev}
+                      />
+                    </Flex>
+                  </Col>
+                </Row>
+              </React.Fragment>
+            )
+          }}
+        </Subscribe>
       )
     }
   },
@@ -139,42 +160,11 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
             endCursor
           }
           pageCursors {
-            around {
-              cursor
-              page
-              isCurrent
-            }
-            first {
-              cursor
-              page
-              isCurrent
-            }
-            last {
-              cursor
-              page
-              isCurrent
-            }
+            ...Pagination_pageCursors
           }
           edges {
             node {
-              title
-              dimension_text
-              organization
-              images {
-                thumbnail {
-                  url
-                }
-              }
-              description
-              date_text
-              sale_date_text
-              price_realized {
-                display
-                cents_usd
-              }
-              estimate {
-                display
-              }
+              ...AuctionResultItem_auctionResult
             }
           }
         }

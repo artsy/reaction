@@ -11,7 +11,7 @@ type State = {
 export class FilterState extends Container<State> {
   state = {
     medium: "*",
-    for_sale: true,
+    for_sale: null,
     page: 1,
   }
 

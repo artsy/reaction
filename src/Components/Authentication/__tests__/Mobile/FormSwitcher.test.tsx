@@ -1,9 +1,9 @@
-import React from "react"
 import { mount } from "enzyme"
+import React from "react"
+import { MobileForgotPasswordForm } from "../../Mobile/ForgotPasswordForm"
 import { FormSwitcher } from "../../Mobile/FormSwitcher"
 import { MobileLoginForm } from "../../Mobile/LoginForm"
 import { MobileSignUpForm } from "../../Mobile/SignUpForm"
-import { MobileResetPasswordForm } from "../../Mobile/ResetPasswordForm"
 import { ModalType } from "../../Types"
 
 describe("FormSwitcher", () => {
@@ -22,11 +22,11 @@ describe("FormSwitcher", () => {
       expect(wrapper.find(MobileSignUpForm).length).toEqual(1)
     })
 
-    it("reset password form", () => {
+    it("forgot password form", () => {
       const wrapper = mount(
-        <FormSwitcher type={ModalType.resetPassword} handleSubmit={null} />
+        <FormSwitcher type={ModalType.forgot} handleSubmit={null} />
       )
-      expect(wrapper.find(MobileResetPasswordForm).length).toEqual(1)
+      expect(wrapper.find(MobileForgotPasswordForm).length).toEqual(1)
     })
   })
 })

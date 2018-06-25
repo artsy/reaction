@@ -1,6 +1,6 @@
 import React from "react"
 import { ArtistCard } from "Styleguide/Components/ArtistCard"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -32,9 +32,16 @@ export const RelatedArtists = () => {
                     return (
                       <Box p={1} width={width}>
                         <ArtistCard
-                          src="https://picsum.photos/110/110/?random"
-                          headline="Francesca DiMattio"
-                          subHeadline="American, b. 1979"
+                          artist={{
+                            image: {
+                              cropped: {
+                                url: "https://picsum.photos/110/110/?random",
+                              },
+                            },
+                            name: "Francesca DiMattio",
+                            formatted_nationality_and_birthday:
+                              "American, b. 1979",
+                          }}
                         />
                       </Box>
                     )
@@ -50,7 +57,10 @@ export const RelatedArtists = () => {
             <Row>
               <Col>
                 <Flex justifyContent="flex-end">
-                  <Pagination {...cursor} {...callbacks} />
+                  <PaginationFragmentContainer
+                    pageCursors={cursor}
+                    {...callbacks}
+                  />
                 </Flex>
               </Col>
             </Row>

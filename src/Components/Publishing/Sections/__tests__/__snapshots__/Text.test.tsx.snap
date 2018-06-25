@@ -157,7 +157,7 @@ exports[`Text Snapshots renders classic text properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -407,7 +407,7 @@ exports[`Text Snapshots renders feature text properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -668,7 +668,7 @@ exports[`Text Snapshots renders news text properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -921,7 +921,7 @@ exports[`Text Snapshots renders standard text properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {

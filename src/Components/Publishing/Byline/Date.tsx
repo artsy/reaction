@@ -1,6 +1,6 @@
-import styled from "styled-components"
 import { Sans } from "@artsy/palette"
 import React from "react"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
 import { BylineLayout, DateFormat } from "../Typings"

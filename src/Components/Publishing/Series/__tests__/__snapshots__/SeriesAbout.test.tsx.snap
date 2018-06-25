@@ -189,7 +189,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -594,7 +594,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -992,7 +992,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -1419,7 +1419,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background: black;
   border-radius: 50%;
   margin-left: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .c10 .artist-follow {

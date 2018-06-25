@@ -1,8 +1,8 @@
-import "jest-styled-components"
 import { mount } from "enzyme"
+import "jest-styled-components"
 import moment from "moment-timezone"
-import renderer from "react-test-renderer"
 import React from "react"
+import renderer from "react-test-renderer"
 import { getDate } from "../../Constants"
 import { Date } from "../Date"
 
@@ -14,6 +14,7 @@ describe("Date", () => {
       const snapshot = renderer.create(<Date date={date} layout="split" />)
       expect(snapshot).toMatchSnapshot()
     })
+
     it("renders a condensed date", () => {
       const snapshot = renderer.create(<Date date={date} layout="condensed" />)
       expect(snapshot).toMatchSnapshot()

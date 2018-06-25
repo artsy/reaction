@@ -7,8 +7,8 @@ import {
   Footer,
   TermsOfServiceCheckbox,
 } from "../../Components/Authentication/commonElements"
+import { MobileForgotPasswordForm } from "../../Components/Authentication/Mobile/ForgotPasswordForm"
 import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
-import { MobileResetPasswordForm } from "../../Components/Authentication/Mobile/ResetPasswordForm"
 import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
@@ -28,17 +28,25 @@ const close = () => {
 storiesOf("Components/Authentication/Desktop", module)
   .add("Login", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.login} handleSubmit={submit} />
+      <FormSwitcher type={ModalType.login} handleSubmit={submit} options={{}} />
     </DesktopModal>
   ))
-  .add("Reset Password", () => (
+  .add("Forgot Password", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.resetPassword} handleSubmit={submit} />
+      <FormSwitcher
+        type={ModalType.forgot}
+        handleSubmit={submit}
+        options={{}}
+      />
     </DesktopModal>
   ))
   .add("Sign Up", () => (
     <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.signup} handleSubmit={submit} />
+      <FormSwitcher
+        type={ModalType.signup}
+        handleSubmit={submit}
+        options={{}}
+      />
     </DesktopModal>
   ))
 
@@ -52,9 +60,9 @@ storiesOf("Components/Authentication/Mobile", module)
       />
     </MobileContainer>
   ))
-  .add("Reset Password", () => (
+  .add("Forgot Password", () => (
     <MobileContainer>
-      <MobileResetPasswordForm
+      <MobileForgotPasswordForm
         values={{}}
         handleSubmit={() => null}
         handleTypeChange={() => mode => null}
@@ -86,7 +94,7 @@ storiesOf("Components/Authentication/Common Elements", module)
       <Footer mode="login" inline />
     </div>
   ))
-  .add("Footer - Reset Password", () => <Footer mode="reset_password" />)
+  .add("Footer - Forgot Password", () => <Footer mode="forgot" />)
   .add("TermsOfServiceCheckbox", () => (
     <TermsOfServiceCheckbox
       error={null}

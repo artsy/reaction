@@ -161,7 +161,8 @@ export interface ButtonBaseProps
     TextAlignProps,
     WidthProps,
     HeightProps {
-  variantStyles?: any // FIXME: Type to styled.css
+  variantStyles?: any // FIXME
+  onClick?: () => void
 }
 
 export class ButtonBase extends Component<ButtonBaseProps> {

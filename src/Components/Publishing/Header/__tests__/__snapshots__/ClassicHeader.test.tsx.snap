@@ -164,24 +164,24 @@ exports[`Classic Header renders classic header properly 1`] = `
 
 .c0 p,
 .c0 > p {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 19px;
-  line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
   line-height: 1.35em;
   text-align: left;
   max-width: 580px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 30px;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 19px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 .c1 {
+  margin-bottom: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 37px;
   line-height: 1.2em;
   -webkit-font-smoothing: antialiased;
-  margin-bottom: 30px;
 }
 
 @media (max-width:1280px) {
@@ -197,11 +197,11 @@ exports[`Classic Header renders classic header properly 1`] = `
 
   .c0 p,
   .c0 > p {
+    line-height: 1.35em;
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 17px;
     line-height: 1.1em;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.35em;
   }
 }
 

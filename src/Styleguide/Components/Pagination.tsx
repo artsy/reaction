@@ -6,22 +6,17 @@ import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
-interface PageCursor {
-  page: number
-  cursor: string
-  isCurrent: boolean
-}
+import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
+import { createFragmentContainer, graphql } from "react-relay"
 
-interface PaginationProps {
-  first?: PageCursor
-  last?: PageCursor
-  around?: ReadonlyArray<PageCursor>
+interface Props {
   onClick?: (cursor: string) => void
   onNext?: () => void
   onPrev?: () => void
+  pageCursors: Pagination_pageCursors
 }
 
-export class Pagination extends React.Component<PaginationProps> {
+export class Pagination extends React.Component<Props> {
   static defaultProps = {
     onClick: _cursor => ({}),
     onNext: () => ({}),
@@ -40,30 +35,29 @@ export class Pagination extends React.Component<PaginationProps> {
   }
 }
 
-const renderPage = (
-  pageCursor: PageCursor,
-  onClick: (cursor: string) => void
-) => {
+const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
   const { cursor, isCurrent, page } = pageCursor
   return <Page onClick={() => onClick(cursor)} num={page} active={isCurrent} />
 }
 
-export const LargePagination = (props: PaginationProps) => {
+export const LargePagination = (props: Props) => {
   return (
     <Flex flexDirection="row">
-      {props.first && (
+      {props.pageCursors.first && (
         <div>
-          {renderPage(props.first, props.onClick)}
+          {renderPage(props.pageCursors.first, props.onClick)}
           <PageSpan mx={0.5} />
         </div>
       )}
 
-      {props.around.map(pageInfo => renderPage(pageInfo, props.onClick))}
+      {props.pageCursors.around.map(pageInfo =>
+        renderPage(pageInfo, props.onClick)
+      )}
 
-      {props.last && (
+      {props.pageCursors.last && (
         <div>
           <PageSpan mx={0.5} />
-          {renderPage(props.last, props.onClick)}
+          {renderPage(props.pageCursors.last, props.onClick)}
         </div>
       )}
 
@@ -73,7 +67,7 @@ export const LargePagination = (props: PaginationProps) => {
   )
 }
 
-export const SmallPagination = (props: PaginationProps) => {
+export const SmallPagination = (props: Props) => {
   return (
     <Flex flexDirection="row" width="100%">
       <Flex width="50%" pr={0.5}>
@@ -175,3 +169,26 @@ const ButtonWithBorder = styled(Flex)`
   height: ${props => props.theme.space[4]}px;
   cursor: pointer;
 `
+
+export const PaginationFragmentContainer = createFragmentContainer(
+  Pagination,
+  graphql`
+    fragment Pagination_pageCursors on PageCursors {
+      around {
+        cursor
+        page
+        isCurrent
+      }
+      first {
+        cursor
+        page
+        isCurrent
+      }
+      last {
+        cursor
+        page
+        isCurrent
+      }
+    }
+  `
+)

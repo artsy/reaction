@@ -1,8 +1,8 @@
 import { RelatedArtistsRefetchContainer_artist } from "__generated__/RelatedArtistsRefetchContainer_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtistCard } from "Styleguide/Components/ArtistCard"
-import { Pagination } from "Styleguide/Components/Pagination"
+import { ArtistCardFragmentContainer } from "Styleguide/Components/ArtistCard"
+import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -78,8 +78,8 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     renderPagination() {
       return (
         <div>
-          <Pagination
-            {...this.props.artist.related.artists.pageCursors}
+          <PaginationFragmentContainer
+            pageCursors={this.props.artist.related.artists.pageCursors as any}
             onClick={this.loadAfter}
             onNext={this.loadNext}
             onPrev={this.loadPrev}
@@ -110,12 +110,8 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                         ({ node }) => {
                           return (
                             <Box p={1} width={width}>
-                              <ArtistCard
-                                src={node.image.cropped.url}
-                                headline={node.name}
-                                subHeadline={
-                                  node.formatted_nationality_and_birthday
-                                }
+                              <ArtistCardFragmentContainer
+                                artist={node as any}
                               />
                             </Box>
                           )
@@ -132,8 +128,10 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                 <Row>
                   <Col>
                     <Flex justifyContent="flex-end">
-                      <Pagination
-                        {...this.props.artist.related.artists.pageCursors}
+                      <PaginationFragmentContainer
+                        pageCursors={
+                          this.props.artist.related.artists.pageCursors as any
+                        }
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
                         onPrev={this.loadPrev}
@@ -174,31 +172,11 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
               endCursor
             }
             pageCursors {
-              around {
-                cursor
-                page
-                isCurrent
-              }
-              first {
-                cursor
-                page
-                isCurrent
-              }
-              last {
-                cursor
-                page
-                isCurrent
-              }
+              ...Pagination_pageCursors
             }
             edges {
               node {
-                name
-                image {
-                  cropped(width: 400, height: 300) {
-                    url
-                  }
-                }
-                formatted_nationality_and_birthday
+                ...ArtistCard_artist
               }
             }
           }

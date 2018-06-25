@@ -2,10 +2,16 @@
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 .c9 {
+  font-family: Unica77LLWebMedium;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c10 {
   margin: 10px 30px 0 0;
 }
 
-.c9:before {
+.c10:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -15,7 +21,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   background-color: black;
 }
 
-.c10 {
+.c11 {
   margin: 10px 30px 0 0;
   white-space: nowrap;
 }
@@ -122,13 +128,13 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 @media (max-width:720px) {
-  .c9 {
+  .c10 {
     margin: 10px 20px 0 0;
   }
 }
 
 @media (max-width:720px) {
-  .c10 {
+  .c11 {
     margin: 10px 20px 0 0;
   }
 }
@@ -236,22 +242,22 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="uTxCW fwcVer"
+          className="c9"
           fontFamily="Unica77LLWebMedium"
           fontSize={12}
         >
           <div
-            className="c9"
+            className="c10"
             color="black"
           >
             Anna Louis-Sussman and Kana Abe
           </div>
         </div>
         <div
-          className="c10"
+          className="c11"
         >
           <div
-            className="uTxCW fwcVer"
+            className="c9"
             fontFamily="Unica77LLWebMedium"
             fontSize={12}
           >
@@ -284,22 +290,22 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="uTxCW fwcVer"
+          className="c9"
           fontFamily="Unica77LLWebMedium"
           fontSize={12}
         >
           <div
-            className="c9"
+            className="c10"
             color="black"
           >
             Halley Johnson
           </div>
         </div>
         <div
-          className="c10"
+          className="c11"
         >
           <div
-            className="uTxCW fwcVer"
+            className="c9"
             fontFamily="Unica77LLWebMedium"
             fontSize={12}
           >
@@ -332,22 +338,22 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="uTxCW fwcVer"
+          className="c9"
           fontFamily="Unica77LLWebMedium"
           fontSize={12}
         >
           <div
-            className="c9"
+            className="c10"
             color="black"
           >
             Casey Lesser
           </div>
         </div>
         <div
-          className="c10"
+          className="c11"
         >
           <div
-            className="uTxCW fwcVer"
+            className="c9"
             fontFamily="Unica77LLWebMedium"
             fontSize={12}
           >
@@ -380,22 +386,22 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         color="black"
       >
         <div
-          className="uTxCW fwcVer"
+          className="c9"
           fontFamily="Unica77LLWebMedium"
           fontSize={12}
         >
           <div
-            className="c9"
+            className="c10"
             color="black"
           >
             Owen Dodd
           </div>
         </div>
         <div
-          className="c10"
+          className="c11"
         >
           <div
-            className="uTxCW fwcVer"
+            className="c9"
             fontFamily="Unica77LLWebMedium"
             fontSize={12}
           >
