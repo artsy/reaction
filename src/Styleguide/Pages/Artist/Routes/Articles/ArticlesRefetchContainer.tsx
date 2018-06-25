@@ -129,7 +129,7 @@ export const ArticlesRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment ArticlesRefetchContainer_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int" }
+          first: { type: "Int", defaultValue: 10 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

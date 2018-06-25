@@ -1,30 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type routes_ArticlesQueryRendererQueryVariables = {
+export type routes_ArticlesQueryVariables = {
     readonly artistID: string;
-    readonly first: number;
 };
-export type routes_ArticlesQueryRendererQueryResponse = {
+export type routes_ArticlesQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query routes_ArticlesQueryRendererQuery(
+query routes_ArticlesQuery(
   $artistID: String!
-  $first: Int!
 ) {
   artist(id: $artistID) {
-    ...ArticlesRefetchContainer_artist_3ASum4
+    ...Articles_artist
     __id
   }
 }
 
-fragment ArticlesRefetchContainer_artist_3ASum4 on Artist {
+fragment Articles_artist on Artist {
+  ...ArticlesRefetchContainer_artist
+  __id
+}
+
+fragment ArticlesRefetchContainer_artist on Artist {
   id
-  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
+  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -81,12 +84,6 @@ var v0 = [
     "name": "artistID",
     "type": "String!",
     "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int!",
-    "defaultValue": null
   }
 ],
 v1 = [
@@ -130,13 +127,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_ArticlesQueryRendererQuery",
+  "name": "routes_ArticlesQuery",
   "id": null,
-  "text": "query routes_ArticlesQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n) {\n  artist(id: $artistID) {\n    ...ArticlesRefetchContainer_artist_3ASum4\n    __id\n  }\n}\n\nfragment ArticlesRefetchContainer_artist_3ASum4 on Artist {\n  id\n  articlesConnection(first: $first, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
+  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArticlesRefetchContainer_artist\n  __id\n}\n\nfragment ArticlesRefetchContainer_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_ArticlesQueryRendererQuery",
+    "name": "routes_ArticlesQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -152,15 +149,8 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArticlesRefetchContainer_artist",
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": null
-              }
-            ]
+            "name": "Articles_artist",
+            "args": null
           },
           v2
         ]
@@ -169,7 +159,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_ArticlesQueryRendererQuery",
+    "name": "routes_ArticlesQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -192,12 +182,12 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "articlesConnection",
-            "storageKey": null,
+            "storageKey": "articlesConnection(first:10,in_editorial_feed:true,sort:\"PUBLISHED_AT_DESC\")",
             "args": [
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "first",
-                "variableName": "first",
+                "value": 10,
                 "type": "Int"
               },
               {
@@ -411,5 +401,5 @@ return {
   }
 };
 })();
-(node as any).hash = '68e8571876e15d082e4c089cac2358b3';
+(node as any).hash = 'c9b790c3bf82673cdc79e82e99663083';
 export default node;

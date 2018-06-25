@@ -1,6 +1,6 @@
 import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
-import { ArticlesRoute } from "./Routes/Articles"
+import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
@@ -9,6 +9,8 @@ import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
+// @ts-ignore
+import { Props as ArticleProps } from "./Routes/Articles"
 // @ts-ignore
 import { AuctionResultProps } from "./Routes/AuctionResults"
 // @ts-ignore
@@ -29,15 +31,9 @@ export const routes = [
         }
       }
     `,
-    prepareVariables: params => ({
-      artistID: "pablo-picasso",
-    }),
-
+    prepareVariables: params => ({ artistID: "pablo-picasso" }),
     children: [
-      {
-        path: "/",
-        Component: Overview,
-      },
+      { path: "/", Component: Overview },
       {
         path: "cv",
         Component: CVRoute,
@@ -48,27 +44,19 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
+        prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "articles",
         Component: ArticlesRoute,
         query: graphql`
-          query routes_ArticlesQueryRendererQuery(
-            $artistID: String!
-            $first: Int!
-          ) {
+          query routes_ArticlesQuery($artistID: String!) {
             artist(id: $artistID) {
-              ...ArticlesRefetchContainer_artist @arguments(first: $first)
+              ...Articles_artist
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-          first: 10,
-        }),
+        prepareVariables: params => ({ artistID: "pablo-picasso", first: 10 }),
       },
       {
         path: "shows",
@@ -80,9 +68,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
+        prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "auction-results",
@@ -94,9 +80,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
+        prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "related-artists",
@@ -108,9 +92,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
+        prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
     ],
   },
