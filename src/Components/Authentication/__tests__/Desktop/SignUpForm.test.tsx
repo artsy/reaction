@@ -41,4 +41,16 @@ describe("SignUpForm", () => {
       done()
     })
   })
+
+  it("clears error after input change", done => {
+    const wrapper = mount(<SignUpForm error="Some global server error" />)
+    const input = wrapper.find(`input[name="email"]`)
+    expect(wrapper.state().error).toEqual("Some global server error")
+    input.simulate("change")
+    wrapper.update()
+    setTimeout(() => {
+      expect(wrapper.state().error).toEqual(null)
+      done()
+    })
+  })
 })
