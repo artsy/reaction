@@ -4,8 +4,7 @@ import { ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
-import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
-import { RelatedArtistsQuery } from "./Routes/RelatedArtists/RelatedArtistsQuery"
+import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRoute } from "./Routes/Shows"
 import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
 
@@ -13,6 +12,8 @@ import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
 import { ComponentClass, StatelessComponent } from "react"
 // @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
+// @ts-ignore
+import { RelatedArtistsProps } from "./Routes/RelatedArtists"
 
 export const routes = [
   {
@@ -46,12 +47,6 @@ export const routes = [
         `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          first: 10,
-          at_a_fair: false,
-          solo_show: true,
-          sort: "start_at_desc",
-          is_reference: true,
-          visible_to_public: false,
         }),
       },
       {
@@ -109,11 +104,15 @@ export const routes = [
       {
         path: "related-artists",
         Component: RelatedArtistsRoute,
-        query: RelatedArtistsQuery,
+        query: graphql`
+          query routes_RelatedArtistsQuery($artistID: String!) {
+            viewer {
+              ...RelatedArtists_viewer
+            }
+          }
+        `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          first: 10,
-          kind: "MAIN",
         }),
       },
     ],
