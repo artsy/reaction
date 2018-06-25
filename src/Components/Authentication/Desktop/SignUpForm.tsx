@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import { Formik, FormikProps } from "formik"
 import React from "react"
 import styled from "styled-components"
@@ -22,6 +23,7 @@ const SignUpButton = styled(Button).attrs({
   block: true,
 })`
   margin-top: auto;
+  text-transform: inherit;
 `
 
 export const SignUpForm: FormComponentType = props => {
@@ -97,9 +99,11 @@ export const SignUpForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             {status && !status.success && <Error show>{status.error}</Error>}
-            <SignUpButton disabled={isSubmitting || hasErrors || !dirty}>
-              Sign Up
-            </SignUpButton>
+            <Sans size="3t">
+              <SignUpButton disabled={isSubmitting || hasErrors || !dirty}>
+                Sign up
+              </SignUpButton>
+            </Sans>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
               onFacebookLogin={e => {
