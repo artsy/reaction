@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { CurrentBidInfo } from "Styleguide/Pages/Artwork/Sidebar/CurrentBidInfo"
+import { CurrentBidInfo } from "Styleguide/Pages/Artwork/Components/Sidebar/CurrentBidInfo"
 import {
   ClosedAuctionArtwork,
   OpenAuctionNoReserveNoBids,

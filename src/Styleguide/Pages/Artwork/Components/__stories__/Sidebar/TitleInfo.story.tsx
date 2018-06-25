@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { TitleInfo } from "Styleguide/Pages/Artwork/Sidebar/TitleInfo"
+import { TitleInfo } from "Styleguide/Pages/Artwork/Components/Sidebar/TitleInfo"
 import {
   ArtworkWithTitlAndDate,
   ArtworkWithTitleAndMedium,

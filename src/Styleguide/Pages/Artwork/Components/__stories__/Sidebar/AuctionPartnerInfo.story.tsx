@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Sidebar/AuctionPartnerInfo"
+import { AuctionPartnerInfo } from "Styleguide/Pages/Artwork/Components/Sidebar/AuctionPartnerInfo"
 import {
   ArtworkNoEstimateNoPremium,
   ArtworkWithEstimateAndPremium,

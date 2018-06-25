@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Artists } from "Styleguide/Pages/Artwork/Sidebar/Artists"
+import { Artists } from "Styleguide/Pages/Artwork/Components/Sidebar/Artists"
 import {
   MultipleArtists,
   SingleFollowedArtist,
