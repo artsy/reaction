@@ -5,8 +5,7 @@ import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./R
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
-import { ShowsRoute } from "./Routes/Shows"
-import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
+import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
@@ -16,6 +15,8 @@ import { AuctionResultProps } from "./Routes/AuctionResults"
 import { CVRouteProps } from "./Routes/CV"
 // @ts-ignore
 import { RelatedArtistsProps } from "./Routes/RelatedArtists"
+// @ts-ignore
+import { Props as ShowProps } from "./Routes/Shows"
 
 export const routes = [
   {
@@ -72,12 +73,15 @@ export const routes = [
       {
         path: "shows",
         Component: ShowsRoute,
-        query: ShowsQuery,
+        query: graphql`
+          query routes_ShowsQuery($artistID: String!) {
+            viewer {
+              ...Shows_viewer
+            }
+          }
+        `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          status: "running",
-          sort: "end_at_asc",
-          first: 10,
         }),
       },
       {
