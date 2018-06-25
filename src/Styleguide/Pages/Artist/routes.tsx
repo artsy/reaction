@@ -1,18 +1,21 @@
 import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
 import { ArticlesRoute } from "./Routes/Articles"
-import { AuctionResultsRoute } from "./Routes/AuctionResults"
+import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
-import { RelatedArtistsRoute } from "./Routes/RelatedArtists"
-import { RelatedArtistsQuery } from "./Routes/RelatedArtists/RelatedArtistsQuery"
+import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRoute } from "./Routes/Shows"
 import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
 // @ts-ignore
+import { AuctionResultProps } from "./Routes/AuctionResults"
+// @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
+// @ts-ignore
+import { RelatedArtistsProps } from "./Routes/RelatedArtists"
 
 export const routes = [
   {
@@ -46,12 +49,6 @@ export const routes = [
         `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          first: 10,
-          at_a_fair: false,
-          solo_show: true,
-          sort: "start_at_desc",
-          is_reference: true,
-          visible_to_public: false,
         }),
       },
       {
@@ -87,33 +84,28 @@ export const routes = [
         path: "auction-results",
         Component: AuctionResultsRoute,
         query: graphql`
-          query routes_ResultsQueryRendererQuery(
-            $artistID: String!
-            $first: Int!
-            $sort: AuctionResultSorts
-          ) {
+          query routes_AuctionResultsQuery($artistID: String!) {
             artist(id: $artistID) {
-              ...AuctionResultsRefetchContainer_artist
-                @arguments(first: $first, sort: $sort)
+              ...AuctionResults_artist
             }
           }
         `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          status: "running",
-          first: 10,
-          // FIXME: Pull from state
-          sort: "PRICE_AND_DATE_DESC",
         }),
       },
       {
         path: "related-artists",
         Component: RelatedArtistsRoute,
-        query: RelatedArtistsQuery,
+        query: graphql`
+          query routes_RelatedArtistsQuery($artistID: String!) {
+            viewer {
+              ...RelatedArtists_viewer
+            }
+          }
+        `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          first: 10,
-          kind: "MAIN",
         }),
       },
     ],

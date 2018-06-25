@@ -1,33 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type AuctionResultSorts = "DATE_DESC" | "ESTIMATE_AND_DATE_DESC" | "PRICE_AND_DATE_DESC" | "%future added value";
-export type AuctionResultsQueryRendererQueryVariables = {
+export type routes_AuctionResultsQueryVariables = {
     readonly artistID: string;
-    readonly first: number;
-    readonly sort?: AuctionResultSorts | null;
 };
-export type AuctionResultsQueryRendererQueryResponse = {
+export type routes_AuctionResultsQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query AuctionResultsQueryRendererQuery(
+query routes_AuctionResultsQuery(
   $artistID: String!
-  $first: Int!
-  $sort: AuctionResultSorts
 ) {
   artist(id: $artistID) {
-    ...AuctionResultsRefetchContainer_artist_13W90y
+    ...AuctionResults_artist
     __id
   }
 }
 
-fragment AuctionResultsRefetchContainer_artist_13W90y on Artist {
+fragment AuctionResults_artist on Artist {
+  ...AuctionResultsRefetchContainer_artist
+  __id
+}
+
+fragment AuctionResultsRefetchContainer_artist on Artist {
   id
-  auctionResults(first: $first, sort: $sort) {
+  auctionResults(first: 10, sort: PRICE_AND_DATE_DESC) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -95,18 +95,6 @@ var v0 = [
     "name": "artistID",
     "type": "String!",
     "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int!",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "sort",
-    "type": "AuctionResultSorts",
-    "defaultValue": null
   }
 ],
 v1 = [
@@ -157,13 +145,13 @@ v4 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "AuctionResultsQueryRendererQuery",
+  "name": "routes_AuctionResultsQuery",
   "id": null,
-  "text": "query AuctionResultsQueryRendererQuery(\n  $artistID: String!\n  $first: Int!\n  $sort: AuctionResultSorts\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_13W90y\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_13W90y on Artist {\n  id\n  auctionResults(first: $first, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        ...AuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment AuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
+  "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    __id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...AuctionResultsRefetchContainer_artist\n  __id\n}\n\nfragment AuctionResultsRefetchContainer_artist on Artist {\n  id\n  auctionResults(first: 10, sort: PRICE_AND_DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        ...AuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment AuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "AuctionResultsQueryRendererQuery",
+    "name": "routes_AuctionResultsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -179,21 +167,8 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "AuctionResultsRefetchContainer_artist",
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": null
-              }
-            ]
+            "name": "AuctionResults_artist",
+            "args": null
           },
           v2
         ]
@@ -202,7 +177,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AuctionResultsQueryRendererQuery",
+    "name": "routes_AuctionResultsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -225,18 +200,18 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "auctionResults",
-            "storageKey": null,
+            "storageKey": "auctionResults(first:10,sort:\"PRICE_AND_DATE_DESC\")",
             "args": [
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "first",
-                "variableName": "first",
+                "value": 10,
                 "type": "Int"
               },
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "sort",
-                "variableName": "sort",
+                "value": "PRICE_AND_DATE_DESC",
                 "type": "AuctionResultSorts"
               }
             ],
@@ -457,5 +432,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a29b9e64e2fec39c5a894c4beaec98d8';
+(node as any).hash = '7e7cc15afd3067174c965fdb4e749616';
 export default node;
