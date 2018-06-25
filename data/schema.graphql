@@ -4808,8 +4808,7 @@ type RecordArtworkViewPayload {
 }
 
 type RelatedArtists {
-  contemporary(exclude_artists_without_artworks: Boolean = true, after: String, first: Int, before: String, last: Int): ArtistConnection
-  main(exclude_artists_without_artworks: Boolean = true, after: String, first: Int, before: String, last: Int): ArtistConnection
+  artists(exclude_artists_without_artworks: Boolean = true, kind: RelatedArtistsKind, after: String, first: Int, before: String, last: Int): ArtistConnection
 
   # A list of the current user’s suggested artists, based on a single artist
   suggested(
@@ -4838,6 +4837,11 @@ type RelatedArtists {
     before: String
     last: Int
   ): ArtistConnection
+}
+
+enum RelatedArtistsKind {
+  MAIN
+  CONTEMPORARY
 }
 
 input RequestCredentialsForAssetUploadInput {

@@ -1,106 +1,60 @@
-import { Sans, Serif } from "@artsy/palette"
+import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React from "react"
-import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Col, Row } from "Styleguide/Elements/Grid"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { CVPaginationContainer as CVItem } from "./CVItem"
 
-export const CV = () => {
-  return (
-    <Responsive>
-      {({ xs }) => {
-        return (
-          <React.Fragment>
-            <Row>
-              <Col>
-                <CVItems>
-                  <CVItem>
-                    <Row>
-                      <Col sm={2}>
-                        <Box mb={xs ? 1 : 1}>
-                          <Category size="3" weight="medium">
-                            Solo shows
-                          </Category>
-                        </Box>
-                      </Col>
-                      <Col sm={10}>
-                        <YearGroup mb={1}>
-                          <Year size="3">2017</Year>
-                          <Spacer mr={xs ? 1 : 4} />
-                          <ShowGroup>
-                            <Show size="3">
-                              <Serif size="3" display="inline" italic>
-                                <a href="#" className="noUnderline">
-                                  Mickalene Thomas: Do I Look Like a Lady?
-                                </a>
-                              </Serif>,{" "}
-                              <a href="#" className="noUnderline">
-                                MOCA
-                              </a>, Los Angeles
-                            </Show>
-                            <Show size="3">
-                              <Serif size="3" display="inline" italic>
-                                <a href="#" className="noUnderline">
-                                  Mickalene Thomas: Do I Look Like a Lady?
-                                </a>
-                              </Serif>,{" "}
-                              <a href="#" className="noUnderline">
-                                MOCA
-                              </a>, Los Angeles
-                            </Show>
-                            <Show size="3">
-                              <Serif size="3" display="inline" italic>
-                                <a href="#" className="noUnderline">
-                                  Mickalene Thomas: Do I Look Like a Lady?
-                                </a>
-                              </Serif>,{" "}
-                              <a href="#" className="noUnderline">
-                                MOCA
-                              </a>, Los Angeles
-                            </Show>
-                          </ShowGroup>
-                        </YearGroup>
-                        <YearGroup mb={1}>
-                          <Year size="3">2016</Year>
-                          <Spacer mr={xs ? 1 : 4} />
-                          <ShowGroup>
-                            <Show size="3">
-                              Mickalene Thomas: Do I Look Like a Lady?, MOCA,
-                              Los Angeles
-                            </Show>
-                          </ShowGroup>
-                        </YearGroup>
-                      </Col>
-                    </Row>
-                  </CVItem>
-                </CVItems>
-              </Col>
-            </Row>
-
-            <Spacer my={1} />
-
-            <Row>
-              <Col smOffset={2}>
-                <Disclaimer size="2" color="black60">
-                  Artist CVs are assembled using only exhibition data available
-                  on Artsy.
-                </Disclaimer>
-              </Col>
-            </Row>
-          </React.Fragment>
-        )
-      }}
-    </Responsive>
-  )
+export interface CVRouteProps {
+  viewer: CV_viewer
 }
 
-const CVItems = styled.div``
-const CVItem = Box
-const Category = Sans
-const YearGroup = styled(Flex)``
-const Year = Serif
-const ShowGroup = styled.div``
-const Show = Serif
-const Disclaimer = Serif
+export class CVRoute extends React.Component<CVRouteProps> {
+  render() {
+    const { viewer } = this.props
+
+    return (
+      <React.Fragment>
+        <CVItem category="Solo shows" artist={viewer.artist_soloShows as any} />
+        <Spacer my={1} />
+
+        <CVItem
+          category="Group shows"
+          artist={viewer.artist_groupShows as any}
+        />
+        <Spacer my={1} />
+
+        <CVItem
+          category="Fair booths"
+          artist={viewer.artist_fairBooths as any}
+        />
+      </React.Fragment>
+    )
+  }
+}
+
+export const CVRouteFragmentContainer = createFragmentContainer(
+  CVRoute,
+  graphql`
+    fragment CV_viewer on Viewer
+      @argumentDefinitions(
+        soloShows_at_a_fair: { type: "Boolean", defaultValue: false }
+        soloShows_solo_show: { type: "Boolean", defaultValue: true }
+        groupShows_at_a_fair: { type: "Boolean", defaultValue: false }
+        fairBooths_at_a_fair: { type: "Boolean", defaultValue: true }
+      ) {
+      artist_soloShows: artist(id: $artistID) {
+        ...CVItem_artist
+          @arguments(
+            at_a_fair: $soloShows_at_a_fair
+            solo_show: $soloShows_solo_show
+          )
+      }
+      artist_groupShows: artist(id: $artistID) {
+        ...CVItem_artist @arguments(at_a_fair: $groupShows_at_a_fair)
+      }
+      artist_fairBooths: artist(id: $artistID) {
+        ...CVItem_artist @arguments(at_a_fair: $fairBooths_at_a_fair)
+      }
+    }
+  `
+)

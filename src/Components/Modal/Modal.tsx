@@ -23,6 +23,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   static defaultProps = {
     show: false,
     blurContainerSelector: "",
+    style: {},
   }
 
   state = {
@@ -110,7 +111,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
                   onClick={this.close}
                   show={isShown}
                 />
-                <ModalContainer style={{ ...styles }}>
+                <ModalContainer style={{ ...styles, ...this.props.style }}>
                   {children}
                 </ModalContainer>
                 <div />

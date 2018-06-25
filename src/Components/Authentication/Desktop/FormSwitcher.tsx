@@ -8,13 +8,13 @@ import {
   ModalType,
   SubmitHandler,
 } from "../Types"
+import { ForgotPasswordForm } from "./ForgotPasswordForm"
 import { LoginForm } from "./LoginForm"
-import { ResetPasswordForm } from "./ResetPasswordForm"
 import { SignUpForm } from "./SignUpForm"
 
 export interface FormSwitcherProps {
   handleSubmit: SubmitHandler
-  options?: ModalOptions
+  options: ModalOptions
   tracking?: any
   type: ModalType
   values?: InputValues
@@ -101,8 +101,8 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       case ModalType.signup:
         Form = SignUpForm
         break
-      case ModalType.resetPassword:
-        Form = ResetPasswordForm
+      case ModalType.forgot:
+        Form = ForgotPasswordForm
         break
       default:
         return null

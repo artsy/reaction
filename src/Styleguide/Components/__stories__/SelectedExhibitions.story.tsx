@@ -11,28 +11,33 @@ storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
   return (
     <React.Fragment>
       <Section title="3 exhibitions responsive">
-        <SelectedExhibitions exhibitions={exhibitions} />
+        <SelectedExhibitions exhibitions={exhibitions as any} />
       </Section>
       <Section title="2 exhibitions responsive">
-        <SelectedExhibitions exhibitions={exhibitions.slice(1)} />
+        <SelectedExhibitions exhibitions={exhibitions.slice(1) as any} />
       </Section>
       <Section title="3 exhibitions full">
-        <SelectedExhibitionsContainer exhibitions={exhibitions} />
+        <SelectedExhibitionsContainer exhibitions={exhibitions as any} />
       </Section>
       <Section title="2 exhibitions full">
-        <SelectedExhibitionsContainer exhibitions={exhibitions.slice(1)} />
+        <SelectedExhibitionsContainer
+          exhibitions={exhibitions.slice(1) as any}
+        />
       </Section>
       <Section title="3 exhibitions collapsed (xs)">
-        <SelectedExhibitionsContainer collapsible exhibitions={exhibitions} />
+        <SelectedExhibitionsContainer
+          collapsible
+          exhibitions={exhibitions as any}
+        />
       </Section>
       <Section title="2 exhibitions collapsed (xs)">
         <SelectedExhibitionsContainer
           collapsible
-          exhibitions={exhibitions.slice(1)}
+          exhibitions={exhibitions.slice(1) as any}
         />
       </Section>
       <Section title="1 exhibition">
-        <SelectedExhibitions exhibitions={exhibitions.slice(2)} />
+        <SelectedExhibitions exhibitions={exhibitions.slice(2) as any} />
       </Section>
     </React.Fragment>
   )

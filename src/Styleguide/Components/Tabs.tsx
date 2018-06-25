@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { borders, themeGet, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -98,24 +98,39 @@ const ActiveTabButton = ({ children }) => (
   </ActiveTabContainer>
 )
 
+// Share with <RouterTabs />
+export const styles = {
+  tabsContainer: css`
+    border-bottom: 1px solid ${themeGet("colors.black10")};
+  `,
+
+  tabContainer: css`
+    cursor: pointer;
+    padding-bottom: 13px;
+    margin-bottom: -1px;
+    margin-right: 20px;
+    white-space: nowrap;
+    ${borders};
+  `,
+
+  activeTabContainer: css`
+    pointer-events: none;
+    padding-bottom: 13px;
+    margin-bottom: -1px;
+    margin-right: 20px;
+    white-space: nowrap;
+    border-bottom: 1px solid ${themeGet("colors.black60")};
+  `,
+}
+
 const TabsContainer = styled(Flex)`
-  border-bottom: 1px solid ${themeGet("colors.black10")};
+  ${styles.tabsContainer};
 `
 
 const TabContainer = styled.div`
-  cursor: pointer;
-  padding-bottom: 13px;
-  margin-bottom: -1px;
-  margin-right: 20px;
-  white-space: nowrap;
-  ${borders};
+  ${styles.tabContainer};
 `
 
 const ActiveTabContainer = styled.div`
-  pointer-events: none;
-  padding-bottom: 13px;
-  margin-bottom: -1px;
-  margin-right: 20px;
-  white-space: nowrap;
-  border-bottom: 1px solid ${themeGet("colors.black60")};
+  ${styles.activeTabContainer};
 `

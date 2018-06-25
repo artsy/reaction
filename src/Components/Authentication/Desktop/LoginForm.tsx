@@ -94,9 +94,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
               />
               <Row>
                 <ForgotPassword
-                  onClick={() =>
-                    this.props.handleTypeChange(ModalType.resetPassword)
-                  }
+                  onClick={() => this.props.handleTypeChange(ModalType.forgot)}
                 />
               </Row>
               {globalError && <Error show>{globalError}</Error>}

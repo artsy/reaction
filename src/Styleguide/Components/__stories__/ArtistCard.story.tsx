@@ -1,31 +1,30 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
+
+const artist = {
+  image: {
+    cropped: {
+      url: "https://picsum.photos/110/110/?random",
+    },
+  },
+  name: "Francesca DiMattio",
+  formatted_nationality_and_birthday: "American, b. 1979",
+}
 
 storiesOf("Styleguide/Components", module).add("ArtistCard", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Artist Card">
-        <ArtistCard
-          src="https://picsum.photos/110/110/?random"
-          headline="Francesca DiMattio"
-          subHeadline="American, b. 1979"
-        />
+        <ArtistCard artist={artist} />
       </Section>
       <Section title="Large Artist Card">
-        <LargeArtistCard
-          src="https://picsum.photos/110/110/?random"
-          headline="Francesca DiMattio"
-          subHeadline="American, b. 1979"
-        />
+        <LargeArtistCard artist={artist} />
       </Section>
       <Section title="Small Artist Card">
-        <SmallArtistCard
-          src="https://picsum.photos/110/110/?random"
-          headline="Francesca DiMattio"
-          subHeadline="American, b. 1979"
-        />
+        <SmallArtistCard artist={artist} />
       </Section>
     </React.Fragment>
   )
