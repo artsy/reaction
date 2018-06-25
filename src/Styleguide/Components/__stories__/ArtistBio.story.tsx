@@ -8,9 +8,7 @@ storiesOf("Styleguide/Components", module).add("ArtistBio", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Artist Bio">
-        <ArtistBio
-          bio={{ biography_blurb: { text: bio, credit: "Gagosian" } }}
-        />
+        <ArtistBio>{bio}</ArtistBio>
       </Section>
     </React.Fragment>
   )

@@ -29,7 +29,7 @@ export const ExhibitionHighlightsQueryRenderer = ContextConsumer(
             if (props) {
               return (
                 <SelectedExhibitionFragmentContainer
-                  exhibitions={props.artist.exhibition_highlights.slice(0, 10)}
+                  exhibitions={props.artist.exhibition_highlights as any}
                 />
               )
             } else {
