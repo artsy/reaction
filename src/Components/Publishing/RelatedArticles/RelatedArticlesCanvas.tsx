@@ -1,7 +1,7 @@
-import { unica } from "Assets/Fonts"
+import { Sans } from "@artsy/palette"
 import _ from "lodash"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import {
   RelatedArticleFigure,
@@ -46,31 +46,24 @@ export const RelatedArticlesCanvas: React.SFC<
 const getTitle = vertical => {
   if (vertical) {
     return (
-      <Title>
+      <Title size="8">
         Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
       </Title>
     )
   } else {
-    return <Title>More from Artsy Editorial</Title>
+    return <Title size="8">More from Artsy Editorial</Title>
   }
 }
-
-const ScrollingContainer: StyledFunction<
-  ScrollingContainerProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
 
 const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;
-  margin: 30px auto 30px auto;
-  ${pMedia.xl`
-    margin: 40px 0 80px 0;
-  `};
+  margin: 40px auto 80px auto;
 `
-const Title = styled.div`
-  ${unica("s32")} margin-bottom: 30px;
+
+const Title = Sans.extend`
+  margin-bottom: 20px;
   ${pMedia.xl`
     margin: 0 20px 30px 40px;
   `};
@@ -83,7 +76,7 @@ const VerticalSpan = styled.span`
     display: block;
   `};
 `
-const ArticlesWrapper = ScrollingContainer`
+const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
   display: flex;
   justify-content: space-between;
   overflow-x: scroll;
@@ -103,12 +96,11 @@ const ArticlesWrapper = ScrollingContainer`
       &:last-child {
         border-right: 20px solid white;
       }
-    `}
-    ${pMedia.sm`
+    `} ${pMedia.sm`
       &:first-child {
         margin-left: 20px;
       }
-    `}
+    `};
   }
-  ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"}
+  ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"};
 `
