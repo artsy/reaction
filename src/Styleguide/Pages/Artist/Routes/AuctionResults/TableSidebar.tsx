@@ -8,7 +8,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { Subscribe } from "unstated"
-import { FilterState } from "./state"
+import { AuctionResultsStateContainer } from "./AuctionResultsState"
 
 const SORTS = [
   {
@@ -27,7 +27,7 @@ const SORTS = [
 
 export const TableSidebar = () => {
   return (
-    <Subscribe to={[FilterState]}>
+    <Subscribe to={[AuctionResultsStateContainer]}>
       {filters => {
         return (
           <Responsive>
