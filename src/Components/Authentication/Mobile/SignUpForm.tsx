@@ -6,7 +6,7 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
-  MobileSubmitButton,
+  SubmitButton,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import { checkEmail } from "Components/Authentication/helpers"
@@ -128,12 +128,12 @@ export const MobileSignUpForm: FormComponentType = props => {
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
-              <MobileSubmitButton
+              <SubmitButton
                 disabled={!wizard.shouldAllowNext}
                 onClick={handleSubmit as any}
               >
                 Next
-              </MobileSubmitButton>
+              </SubmitButton>
               <Footer
                 mode="signup"
                 handleTypeChange={type => (window.location.href = "/" + type)}
