@@ -1,7 +1,7 @@
 import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
 import { ArticlesRoute } from "./Routes/Articles"
-import { AuctionResultsRoute } from "./Routes/AuctionResults"
+import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
@@ -10,6 +10,8 @@ import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
+// @ts-ignore
+import { AuctionResultProps } from "./Routes/AuctionResults"
 // @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
 // @ts-ignore
@@ -82,23 +84,14 @@ export const routes = [
         path: "auction-results",
         Component: AuctionResultsRoute,
         query: graphql`
-          query routes_ResultsQueryRendererQuery(
-            $artistID: String!
-            $first: Int!
-            $sort: AuctionResultSorts
-          ) {
+          query routes_AuctionResultsQuery($artistID: String!) {
             artist(id: $artistID) {
-              ...AuctionResultsRefetchContainer_artist
-                @arguments(first: $first, sort: $sort)
+              ...AuctionResults_artist
             }
           }
         `,
         prepareVariables: params => ({
           artistID: "pablo-picasso",
-          status: "running",
-          first: 10,
-          // FIXME: Pull from state
-          sort: "PRICE_AND_DATE_DESC",
         }),
       },
       {
