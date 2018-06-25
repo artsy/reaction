@@ -1,5 +1,5 @@
 import { Formik, FormikProps } from "formik"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 
 import {
@@ -9,7 +9,7 @@ import {
   FormContainer as Form,
 } from "Components/Authentication/commonElements"
 import {
-  FormComponentType,
+  FormProps,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
@@ -30,73 +30,90 @@ const LoginButton = styled(Button).attrs({
   margin: auto 0 10px 0;
 `
 
-export const LoginForm: FormComponentType = props => {
-  return (
-    <Formik
-      initialValues={props.values}
-      onSubmit={props.handleSubmit}
-      validationSchema={LoginValidator}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        dirty,
-        status,
-      }: FormikProps<InputValues>) => {
-        const hasErrors = Object.keys(errors).length > 0
-        const globalError =
-          props.error || (status && !status.success && status.error)
+export interface LoginFormState {
+  error: string
+}
 
-        return (
-          <Form onSubmit={handleSubmit} height={320}>
-            <Input
-              block
-              quick
-              error={touched.email && errors.email}
-              placeholder="Enter your email address"
-              name="email"
-              label="Email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Input
-              block
-              quick
-              error={touched.password && errors.password}
-              placeholder="Enter your password"
-              name="password"
-              label="Password"
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Row>
-              <ForgotPassword
-                onClick={() => props.handleTypeChange(ModalType.resetPassword)}
+export class LoginForm extends Component<FormProps, LoginFormState> {
+  state = {
+    error: this.props.error,
+  }
+
+  render() {
+    return (
+      <Formik
+        initialValues={this.props.values}
+        onSubmit={this.props.handleSubmit}
+        validationSchema={LoginValidator}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange: formikHandleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          status,
+          setStatus,
+        }: FormikProps<InputValues>) => {
+          const globalError =
+            this.state.error || (status && !status.success && status.error)
+
+          const handleChange = e => {
+            setStatus(null)
+            this.setState({ error: null })
+            formikHandleChange(e)
+          }
+
+          return (
+            <Form onSubmit={handleSubmit} height={320}>
+              <Input
+                block
+                quick
+                error={touched.email && errors.email}
+                placeholder="Enter your email address"
+                name="email"
+                label="Email"
+                type="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
-            </Row>
-            {globalError && <Error show>{globalError}</Error>}
-            <LoginButton disabled={isSubmitting || hasErrors || !dirty}>
-              Log In
-            </LoginButton>
-            <Footer
-              handleTypeChange={() => props.handleTypeChange(ModalType.signup)}
-              mode="login"
-              onFacebookLogin={props.onFacebookLogin}
-              onTwitterLogin={props.onTwitterLogin}
-              inline
-            />
-          </Form>
-        )
-      }}
-    </Formik>
-  )
+              <Input
+                block
+                quick
+                error={touched.password && errors.password}
+                placeholder="Enter your password"
+                name="password"
+                label="Password"
+                type="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <Row>
+                <ForgotPassword
+                  onClick={() =>
+                    this.props.handleTypeChange(ModalType.resetPassword)
+                  }
+                />
+              </Row>
+              {globalError && <Error show>{globalError}</Error>}
+              <LoginButton disabled={isSubmitting}>Log In</LoginButton>
+              <Footer
+                handleTypeChange={() =>
+                  this.props.handleTypeChange(ModalType.signup)
+                }
+                mode="login"
+                onFacebookLogin={this.props.onFacebookLogin}
+                onTwitterLogin={this.props.onTwitterLogin}
+                inline
+              />
+            </Form>
+          )
+        }}
+      </Formik>
+    )
+  }
 }

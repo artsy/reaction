@@ -1,5 +1,5 @@
 import { Formik, FormikProps } from "formik"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 
 import {
@@ -9,7 +9,7 @@ import {
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import {
-  FormComponentType,
+  FormProps,
   InputValues,
   ModalType,
 } from "Components/Authentication/Types"
@@ -24,99 +24,113 @@ const SignUpButton = styled(Button).attrs({
   margin-top: auto;
 `
 
-export const SignUpForm: FormComponentType = props => {
-  return (
-    <Formik
-      initialValues={props.values}
-      onSubmit={props.handleSubmit}
-      validationSchema={SignUpValidator}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        dirty,
-        status,
-        setTouched,
-        validateForm,
-      }: FormikProps<InputValues>) => {
-        const hasErrors = Object.keys(errors).length > 0
+export interface SignUpFormState {
+  error?: string
+}
 
-        return (
-          <Form onSubmit={handleSubmit} height={430}>
-            <Input
-              block
-              quick
-              error={touched.email && errors.email}
-              placeholder="Enter your email address"
-              name="email"
-              label="Email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <Input
-              block
-              quick
-              error={touched.password && errors.password}
-              placeholder="Enter a password"
-              name="password"
-              label="Password"
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              showPasswordMessage
-            />
-            <Input
-              block
-              quick
-              error={touched.name && errors.name}
-              placeholder="Enter your full name"
-              name="name"
-              label="Name"
-              type="text"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <TermsOfServiceCheckbox
-              error={
-                touched.acceptedTermsOfService && errors.acceptedTermsOfService
-              }
-              checked={values.acceptedTermsOfService}
-              value={values.acceptedTermsOfService}
-              type="checkbox"
-              name="acceptedTermsOfService"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {status && !status.success && <Error show>{status.error}</Error>}
-            <SignUpButton disabled={isSubmitting || hasErrors || !dirty}>
-              Sign Up
-            </SignUpButton>
-            <Footer
-              handleTypeChange={() => props.handleTypeChange(ModalType.login)}
-              onFacebookLogin={e => {
-                if (!values.acceptedTermsOfService) {
-                  setTouched({
-                    acceptedTermsOfService: true,
-                  })
-                } else {
-                  props.onFacebookLogin(e)
+export class SignUpForm extends Component<FormProps, SignUpFormState> {
+  state = {
+    error: this.props.error,
+  }
+
+  render() {
+    return (
+      <Formik
+        initialValues={this.props.values}
+        onSubmit={this.props.handleSubmit}
+        validationSchema={SignUpValidator}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange: formikHandleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          status,
+          setStatus,
+          setTouched,
+        }: FormikProps<InputValues>) => {
+          const handleChange = e => {
+            setStatus(null)
+            this.setState({ error: null })
+            formikHandleChange(e)
+          }
+
+          return (
+            <Form onSubmit={handleSubmit} height={430}>
+              <Input
+                block
+                quick
+                error={touched.email && errors.email}
+                placeholder="Enter your email address"
+                name="email"
+                label="Email"
+                type="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <Input
+                block
+                quick
+                error={touched.password && errors.password}
+                placeholder="Enter a password"
+                name="password"
+                label="Password"
+                type="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                showPasswordMessage
+              />
+              <Input
+                block
+                quick
+                error={touched.name && errors.name}
+                placeholder="Enter your full name"
+                name="name"
+                label="Name"
+                type="text"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <TermsOfServiceCheckbox
+                error={
+                  touched.acceptedTermsOfService &&
+                  errors.acceptedTermsOfService
                 }
-              }}
-              onTwitterLogin={props.onTwitterLogin}
-              inline
-            />
-          </Form>
-        )
-      }}
-    </Formik>
-  )
+                checked={values.acceptedTermsOfService}
+                value={values.acceptedTermsOfService}
+                type="checkbox"
+                name="acceptedTermsOfService"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {status && !status.success && <Error show>{status.error}</Error>}
+              <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
+              <Footer
+                handleTypeChange={() =>
+                  this.props.handleTypeChange(ModalType.login)
+                }
+                onFacebookLogin={e => {
+                  if (!values.acceptedTermsOfService) {
+                    setTouched({
+                      acceptedTermsOfService: true,
+                    })
+                  } else {
+                    this.props.onFacebookLogin(e)
+                  }
+                }}
+                onTwitterLogin={this.props.onTwitterLogin}
+                inline
+              />
+            </Form>
+          )
+        }}
+      </Formik>
+    )
+  }
 }

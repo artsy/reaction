@@ -28,9 +28,9 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   state = {
     isAnimating: this.props.show || false,
     isShown: this.props.show || false,
-    blurContainers: Array.from(
-      document.querySelectorAll(this.props.blurContainerSelector)
-    ),
+    blurContainers: this.props.blurContainerSelector
+      ? Array.from(document.querySelectorAll(this.props.blurContainerSelector))
+      : [],
   }
 
   componentWillReceiveProps(nextProps) {

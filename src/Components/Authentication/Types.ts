@@ -82,4 +82,6 @@ export interface ModalOptions {
   triggerSeconds?: number
 }
 
-export type FormComponentType = React.SFC<FormProps>
+export type FormComponentType =
+  | React.SFC<FormProps>
+  | React.ComponentClass<FormProps>
