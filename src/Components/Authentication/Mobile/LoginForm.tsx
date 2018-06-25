@@ -124,6 +124,8 @@ export const MobileLoginForm: FormComponentType = props => {
               <Footer
                 mode="login"
                 handleTypeChange={type => (window.location.href = "/" + type)}
+                onFacebookLogin={props.onFacebookLogin}
+                onTwitterLogin={props.onTwitterLogin}
               />
             </MobileInnerWrapper>
           </MobileContainer>
