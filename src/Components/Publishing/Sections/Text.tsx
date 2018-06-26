@@ -76,7 +76,7 @@ export class Text extends Component<Props, State> {
   transformNode = (node, index) => {
     // Dont include relay components unless necessary
     // To avoid 'regeneratorRuntime' error
-    const LinkWithTooltip = require("../ToolTip/LinkWithTooltip")
+    const { LinkWithTooltip } = require("../ToolTip/LinkWithTooltip")
 
     if (node.name === "p") {
       node.name = "div"
