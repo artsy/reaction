@@ -108,7 +108,7 @@ export class Input extends React.Component<InputProps, InputState> {
       <OpenEye onClick={this.toggleShowPassword} />
     )
 
-    return <span onClick={this.toggleShowPassword}>{icon}</span>
+    return <Eye onClick={this.toggleShowPassword}>{icon}</Eye>
   }
 
   toggleShowPassword = e => {
@@ -161,6 +161,7 @@ export class Input extends React.Component<InputProps, InputState> {
               onChange={this.onChange}
               value={this.state.value}
               type={this.convertedType}
+              showLabel={showLabel}
             />
             {isPassword
               ? this.getRightViewForPassword()
@@ -199,21 +200,24 @@ const StyledInput = styled.input`
   ${block(24)};
 `
 
-const InputComponent = styled.input`
+const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   ${garamond("s17")};
   border: 0;
   font-size: 17px;
   outline: none;
   flex: 1;
-  transition: transform 0.25s;
+  transition: all 0.25s;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 12px;
 
-  &:active,
-  &:focus,
-  &:not(:placeholder-shown) {
-    transform: translateY(5px);
-  }
-
-  &::placeholder {
+  ${props =>
+    props.showLabel &&
+    `
+    padding: 10px 12px 0 12px;
+  `} &::placeholder {
     color: ${Colors.grayMedium};
   }
 `
@@ -242,6 +246,7 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   visibility: ${p => (p.out ? "hidden" : "visible")};
   animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
+  z-index: 1;
 `
 
 const Title = styled.div`
@@ -269,6 +274,12 @@ const PasswordMessage = styled.div`
   margin-top: 10px;
   color: ${Colors.graySemibold};
   height: 16px;
+`
+
+const Eye = styled.span`
+  position: absolute;
+  right: 10px;
+  z-index: 1;
 `
 
 export default Input
