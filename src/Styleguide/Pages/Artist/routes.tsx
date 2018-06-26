@@ -1,3 +1,4 @@
+import React from "react"
 import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
@@ -22,7 +23,7 @@ import { Props as ShowProps } from "./Routes/Shows"
 
 export const routes = [
   {
-    path: "/",
+    path: ":artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_OverviewQueryRendererQuery($artistID: String!) {
@@ -31,9 +32,12 @@ export const routes = [
         }
       }
     `,
-    prepareVariables: params => ({ artistID: "pablo-picasso" }),
+    // prepareVariables: params => ({ artistID: "pablo-picasso" }),
     children: [
-      { path: "/", Component: Overview },
+      {
+        path: "/",
+        Component: Overview,
+      },
       {
         path: "cv",
         Component: CVRoute,
@@ -44,7 +48,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({ artistID: "pablo-picasso" }),
+        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "articles",
@@ -56,7 +60,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({ artistID: "pablo-picasso", first: 10 }),
+        // prepareVariables: params => ({ artistID: "pablo-picasso", first: 10 }),
       },
       {
         path: "shows",
@@ -68,7 +72,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({ artistID: "pablo-picasso" }),
+        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "auction-results",
@@ -80,7 +84,7 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({ artistID: "pablo-picasso" }),
+        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "related-artists",
@@ -92,7 +96,14 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({ artistID: "pablo-picasso" }),
+        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
+      },
+      {
+        path: "*",
+        Component: props => {
+          console.warn(props)
+          return <div>Page not found</div>
+        },
       },
     ],
   },

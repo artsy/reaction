@@ -14,15 +14,22 @@ import { ArtistHeaderQueryRenderer as ArtistHeader } from "./Components/ArtistHe
 
 interface Props {
   artist: ArtistHeader_artist
+  params: {
+    artistID: string
+  }
 }
 
 export class ArtistApp extends React.Component<Props> {
   render() {
+    const {
+      params: { artistID },
+    } = this.props
+
     return (
       <React.Fragment>
         <Row>
           <Col>
-            <ArtistHeader artistID="pablo-picasso" />
+            <ArtistHeader artistID={artistID} />
           </Col>
         </Row>
 
@@ -34,11 +41,15 @@ export class ArtistApp extends React.Component<Props> {
               <RouteTab to="/" exact>
                 Overview
               </RouteTab>
-              <RouteTab to="/cv">CV</RouteTab>
-              <RouteTab to="/articles">Articles</RouteTab>
-              <RouteTab to="/shows">Shows</RouteTab>
-              <RouteTab to="/auction-results">Auction results</RouteTab>
-              <RouteTab to="/related-artists">Related artists</RouteTab>
+              <RouteTab to={`/${artistID}/cv`}>CV</RouteTab>
+              <RouteTab to={`/${artistID}/articles`}>Articles</RouteTab>
+              <RouteTab to={`/${artistID}/shows`}>Shows</RouteTab>
+              <RouteTab to={`/${artistID}/auction-results`}>
+                Auction results
+              </RouteTab>
+              <RouteTab to={`/${artistID}/related-artists`}>
+                Related artists
+              </RouteTab>
             </RouteTabs>
 
             <Spacer mb={3} />

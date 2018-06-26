@@ -6,7 +6,7 @@ import { routes } from "./routes"
 export const Artist = () => {
   return (
     <Boot>
-      <StorybooksRouter routes={routes} />
+      <StorybooksRouter routes={routes} initialRoute="/andy-warhol/cv" />
     </Boot>
   )
 }

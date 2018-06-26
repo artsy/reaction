@@ -15,7 +15,7 @@ import { AppConfig, ClientResolveProps } from "./types"
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, historyProtocol = "browser" } = config
+      const { routes, historyProtocol = "browser", initialRoute = "/" } = config
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
       const relayEnvironment = createEnvironment({
@@ -30,7 +30,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
           case "hash":
             return new HashProtocol()
           case "memory":
-            return new MemoryProtocol("/")
+            return new MemoryProtocol(initialRoute)
           default:
             return new BrowserProtocol()
         }
