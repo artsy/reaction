@@ -75,4 +75,5 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${left};
   ${color};
   ${textAlign};
+  ${maxWidth};
 `
