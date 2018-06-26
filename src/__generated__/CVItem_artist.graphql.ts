@@ -16,6 +16,7 @@ export type CVItem_artist = {
                 readonly name: string | null;
                 readonly start_at: string | null;
                 readonly city: string | null;
+                readonly href: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -240,6 +241,13 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "href",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "__typename",
                   "args": null,
                   "storageKey": null
@@ -261,5 +269,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3d362d88348a0f2e333d9009714b43f';
+(node as any).hash = '95c391c331cb9f39c31407302b9ffb8a';
 export default node;
