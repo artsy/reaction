@@ -117,9 +117,10 @@ export const ShowsRefetchContainer = createRefetchContainer(
                       {this.props.status === "running" ? (
                         <ShowBlocks flexDirection={blockDirection} flexWrap>
                           {this.props.artist.showsConnection.edges.map(
-                            ({ node }) => {
+                            ({ node }, edgeKey) => {
                               return (
                                 <ShowBlockItem
+                                  key={edgeKey}
                                   blockWidth={blockWidth}
                                   imageUrl={node.cover_image.cropped.url}
                                   partner={node.partner.name}
