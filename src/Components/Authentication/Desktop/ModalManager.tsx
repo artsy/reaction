@@ -1,5 +1,4 @@
 import { FormikProps } from "formik"
-import { cloneDeep } from "lodash"
 import React, { Component } from "react"
 
 import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
@@ -70,9 +69,10 @@ export class ModalManager extends Component<
   }
 
   handleTypeChange = type => {
-    const newOptions = Object.assign(cloneDeep(this.state.options), {
+    const newOptions = {
+      ...this.state.options,
       mode: type,
-    })
+    }
 
     this.setState({
       currentType: type,
