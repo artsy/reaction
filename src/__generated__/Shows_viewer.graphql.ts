@@ -41,7 +41,7 @@ return {
       "kind": "LocalArgument",
       "name": "currentShowsSort",
       "type": "PartnerShowSorts",
-      "defaultValue": "end_at_desc"
+      "defaultValue": "end_at_asc"
     },
     {
       "kind": "LocalArgument",
@@ -167,5 +167,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e90239ddfcc679502e133ff3eb006e9a';
+(node as any).hash = 'a179b73c9c4a0daa2603c14f781199ec';
 export default node;

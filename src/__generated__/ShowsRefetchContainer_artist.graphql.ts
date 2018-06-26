@@ -17,6 +17,7 @@ export type ShowsRefetchContainer_artist = {
                     readonly name?: string | null;
                 }) | null;
                 readonly name: string | null;
+                readonly href: string | null;
                 readonly exhibition_period: string | null;
                 readonly cover_image: ({
                     readonly cropped: ({
@@ -245,6 +246,13 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "href",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "exhibition_period",
                   "args": null,
                   "storageKey": null
@@ -309,5 +317,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'aa98a46b146ff0d2fe602b845daf8450';
+(node as any).hash = '223cc4d995c26ac8ebab1a46dfeef911';
 export default node;

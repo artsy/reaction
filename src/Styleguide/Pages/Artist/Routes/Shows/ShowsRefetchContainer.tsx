@@ -92,6 +92,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                 partner={node.partner.name}
                 name={node.name}
                 exhibitionInfo={node.exhibition_period}
+                href={node.href}
               />
             )
           })}
@@ -126,6 +127,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                                   exhibitionInfo={node.exhibition_period}
                                   pr={pr}
                                   pb={pb}
+                                  href={node.href}
                                 />
                               )
                             }
@@ -206,6 +208,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                 }
               }
               name
+              href
               exhibition_period
               cover_image {
                 cropped(width: 800, height: 600) {
