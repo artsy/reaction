@@ -32,7 +32,6 @@ export const routes = [
         }
       }
     `,
-    // prepareVariables: params => ({ artistID: "pablo-picasso" }),
     children: [
       {
         path: "/",
@@ -48,7 +47,6 @@ export const routes = [
             }
           }
         `,
-        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "articles",
@@ -60,7 +58,6 @@ export const routes = [
             }
           }
         `,
-        // prepareVariables: params => ({ artistID: "pablo-picasso", first: 10 }),
       },
       {
         path: "shows",
@@ -72,7 +69,6 @@ export const routes = [
             }
           }
         `,
-        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "auction-results",
@@ -84,7 +80,6 @@ export const routes = [
             }
           }
         `,
-        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "related-artists",
@@ -96,12 +91,11 @@ export const routes = [
             }
           }
         `,
-        // prepareVariables: params => ({ artistID: "pablo-picasso" }),
       },
       {
         path: "*",
         Component: props => {
-          console.warn(props)
+          console.warn("Route not found: ", props)
           return <div>Page not found</div>
         },
       },
