@@ -1,3 +1,4 @@
+import qs from "querystring"
 import React from "react"
 import Events from "Utils/Events"
 import { track } from "Utils/track"
@@ -17,16 +18,17 @@ import {
 } from "./Types"
 
 export interface FormSwitcherProps {
+  error?: string
   handleSubmit: SubmitHandler
+  handleTypeChange?: (e: string) => void
+  isMobile?: boolean
+  isStatic?: boolean
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
   options: ModalOptions
   tracking?: any
   type: ModalType
   values?: InputValues
-  error?: string
-  onFacebookLogin?: (e: Event) => void
-  onTwitterLogin?: (e: Event) => void
-  isMobile?: boolean
-  handleTypeChange?: (e: string) => void
 }
 
 export interface State {
@@ -93,13 +95,14 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
   }
 
   handleTypeChange = (newType: ModalType) => {
-    if (this.props.isMobile) {
-      // TODO stringify options
-      window.location.href = `/${newType}`
+    const { isMobile, isStatic, handleTypeChange, options } = this.props
+
+    if (isMobile || isStatic) {
+      window.location.href = `/${newType}?${qs.stringify(options)}`
     } else {
       this.setState({ type: newType })
-      if (this.props.handleTypeChange) {
-        this.props.handleTypeChange(newType)
+      if (handleTypeChange) {
+        handleTypeChange(newType)
       }
     }
   }
